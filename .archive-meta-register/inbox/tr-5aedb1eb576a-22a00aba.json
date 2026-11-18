@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-5aedb1eb576a-22a00aba",
+  "examUid": "21_순천고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "5958846141f08821a168fbc8ca8125e162c27953",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+        "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_8d542b81abd03dc944a8d9e8e06818410ea6151e765aa4da8cfa91f83db99910",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "그림3×3도로의 오른쪽3·위3 이동열을6C3=20으로 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "90821535fb56a297c60aee0af7d0943f65654b65836a05362ba28096b3c49611",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6b0e4ce980b5cd9da74afc44b2815f44880aee07f85c676fe0691dfd9d067467",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER"
+      },
+      "rationale": "f1<f3인 두값을5C2로 정하고 f2,f4각5를 곱해250이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "ad7d65f9653eb1007e8f52cfe780976c6cc18bda476696cfa0592ab15129a202",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_43d682a2d97ccd04eefdaa1f18ef3f54a31dc50ff77b064d3ee015a4472b87fe",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION"
+      },
+      "rationale": "6영역 색배정6!에서 도형의120도 회전군3개로 나누어240이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "b966e891993138bf80ce3b29c0b18a72f077fdc740c795eacefcabb1823a1af5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1c00ed8f709b78ca487bd75c1fc20908e14090c2bc84c34293b0bef017e85ee2",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER"
+      },
+      "rationale": "가운데 f3짝수6,8,10별 좌우단조 중복선택수를15,36,15로 세어66이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "b4d42161eb5fff80c0738923e799c11d318c93d0675ed3546739c328b751711b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b0c180e90b930f7a6e73ebaeca5c85bdb060939567ddfc251281efac0fba8938",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER"
+      },
+      "rationale": "(10+2)^10에서10차수3이상인1000배수를 제외하고 나머지224의 자릿수합8이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e0cfaca99da3b0bf6dda4a4cd81d557d39a64986336e39afb5dc269c746e4438",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_52cb3d93ebb96ea1ec7bf28441bed2d8b3ecb2f87e754ad43a53f012a721b532",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT"
+      },
+      "rationale": "t=x-1 치환 후 (1+t)^k의 t7계수를 k7~10에서 더해165이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "a332f373e69510783db2b8ee62093efc0c1781aa11254084c04b9ffa96dd3962",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f8e25b5737ad41eb3b49a69ca46a391364da32f0cd709153e07b67e96726a1bf",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "인접금지2↔8을 끝자리상태점화로 세어 길이4인178개에서2미포함81개를 빼97이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "ea1e070db85e4978910869ed3bcb75a18b148619ed42e0423d2921f1a873ab6d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-5aedb1eb576a-22a00aba.type-ledger.json",
+          "sha256": "3c4b2434e510863ac670f934e53d2e6a7ef7caec7bee6e9ae9de68f31fd446b7"
+        }
+      ]
+    }
+  ]
+}

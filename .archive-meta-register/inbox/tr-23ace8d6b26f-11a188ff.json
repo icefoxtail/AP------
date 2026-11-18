@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-23ace8d6b26f-11a188ff",
+  "examUid": "20_연향중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_연향중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "c4c950882c3f8dd696089a5e12aeb65b8a81e065",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-23ace8d6b26f-11a188ff.type-ledger.json",
+        "sha256": "0de8734328455b40ab1861c97415ba5590ac6937296b057e8018c5fb42e32ab2"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2c4653864ba84a0d7ed70e121de38f78d4c817cae8cc158d07472cd4e6457bcd",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_TABLE_LOOKUP"
+      },
+      "rationale": "사인열0.6561의행41도,코사인열0.7660의행40도를찾아합81이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "d5c9e81ece465d68b1371109b56acb91d927d6d0169f2e22d4076e67a1cb1252",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-23ace8d6b26f-11a188ff.type-ledger.json",
+          "sha256": "0de8734328455b40ab1861c97415ba5590ac6937296b057e8018c5fb42e32ab2"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_17e1e3ae633002ccca08101a78914e2ad1bc3ec5f7677cffe5a6f06a39ca4546",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION"
+      },
+      "rationale": "AB=√5,BD=√2를구하고△ABD넓이1/2를두변사인식과같게놓아sinx=1/√10이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "c7c6a62bde5d6c1771a950633443d3d308327163c227fb769e16c09fcfa968c6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-23ace8d6b26f-11a188ff.type-ledger.json",
+          "sha256": "0de8734328455b40ab1861c97415ba5590ac6937296b057e8018c5fb42e32ab2"
+        }
+      ]
+    }
+  ]
+}

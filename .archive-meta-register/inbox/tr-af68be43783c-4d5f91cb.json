@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-af68be43783c-4d5f91cb",
+  "examUid": "백발백중_공통수학2_P10_Q01_20261019_B001_S1_S2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/백발백중_공통수학2/백발백중_공통수학2_P10_Q01_20261019_B001_S1_S2.js",
+  "expectedSourceBlobSha1": "a3edd19d534fcd3fbc6069749420045cdc4151e8",
+  "expectedQuestionCount": 2,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/백발백중_공통수학2.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-af68be43783c-4d5f91cb.type-ledger.json",
+        "sha256": "c5c311a03c71baa9857c6c5a05f901c92c87cc6db2b78f21da6f83758d00753b"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2b55a54794ab287d80e856f1357866741bcfe7f388a98151dc4758ca0ff6c2d0",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_DISTANCE_UNKNOWN"
+      },
+      "rationale": "거리 조건 (t−1)²+16=41에서 두 해 6, −4의 합을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "271d86ad859e91b111d15cf94355277f5f222a9ef88a0e4e9e046a302b1c75fa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-af68be43783c-4d5f91cb.type-ledger.json",
+          "sha256": "c5c311a03c71baa9857c6c5a05f901c92c87cc6db2b78f21da6f83758d00753b"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0d55e927eefb2634592a36da60a43da8233a9558106e38684819e3639fe3f585",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_DISTANCE_UNKNOWN"
+      },
+      "rationale": "거리 조건 (k−1)²+9=25의 두 해 중 양수 k=5를 택한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "c4e9c9126d6fb990a651b6e2cafa16ca182b932a58ffcf600e74151a843d0194",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-af68be43783c-4d5f91cb.type-ledger.json",
+          "sha256": "c5c311a03c71baa9857c6c5a05f901c92c87cc6db2b78f21da6f83758d00753b"
+        }
+      ]
+    }
+  ]
+}

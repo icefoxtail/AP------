@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-a604ff3d9777-43c5a4e7",
+  "sourceArchiveFile": "original/high/h2/1final/21_제일고_1학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d57daca9ec4f1954db1cd23c00d927184b98920489392278e2bf54fb44688452",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "첫 제품 불량/정상 두 경로4/16×3/15+12/16×4/15를 합해1/4이다.",
+      "note": "원문 복원여부 생략이나 두번째 주변확률은 어느 해석도1/4이다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d5c7a0cb2b9378880b5dd163ed29c07b1d7061074be6f0ec2642b594a883a15",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_RANDOM_VARIABLE_DISTRIBUTION_CLASSIFICATION",
+      "step": "확률변수 정의와 유한/가산무한 값의 이산성을 구분하여 ㄱㄴ만 참이다.",
+      "note": "필요 TPL: 확률변수의 이산·연속 개념 판별. 정의: 표본공간에서 실수로의 함수와 값집합의 가산성을 검토한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_edf7ceeae0e046ea648581e376f4c5695f8c93df4935f371d9bbd265e891a1f9",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "C부전승 우승11/90와 예선진출 우승 각2/45를 합쳐 분모19/90으로 나누어11/19이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3e46fcd57229edc0491d2f187a2e95d1543a584d5463e1c3da783daf3a814c34",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "앞면수 B(3,1/2)의 분산3/4에서 표준편차√3/2이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab075d672018b109efbc902c789b4a41667d169f2868dd1029942676d68be612",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "진품·가품판정 결합0.021을 가품판정 전체0.306으로 나누어7/102,합109이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e882abc51906115265825b0e2e2daacbe1c93a6819013065e17e4dcca4e594b",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PROBABILITY",
+      "step": "금액X=100K와 K의 B(5,1/2)를 연결해 PMF아래첨자x/100을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e4c9df9ae48b200826b3741e2a56ce025a156b5602d656c278fbb55d1065cb65",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "수강생 중 남자비율0.3m/[0.3m+0.4(100-m)]=1/3을 풀어40명이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cc957e2b70be914cf49a94e3d642db5fbf622425f38dbad046e8304456c76744",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "이동흰공수0,1,2에 따라 B흰공확률1/6,2/6,3/6을 가중합해5/18이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f669722cb8571dde327714054b3acfc0dd34527cd2aadfc651628185e309cb7",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "step": "5이상 눈 횟수Y에 총상금5000+1000Y를 대응하여 Y4,5 확률합11/243이다.",
+      "note": "해설 LaTex 역슬래시 제어문자 손상 확인, 원문 조건과 수치계산은 명확.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_23dd256701bdeac37834b9eb8a2ae91d7b3e7248f02f77e6b2495819ce6a1c8a",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "정사면체의 추출개수1,2,3,4별 초코2개 조건확률을1/4 가중합해5/16이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11222f0a3ad66cad4aff6be174d252771455524ba057cf038bae48d412d27fc1",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "독립조건으로 B원소수9,교집합수3을 정하고4C3×8C6=112로 센다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d419e5fc5c59a953719725d8eadbc5226f7d0ad78c940ca32be52a2a40c00667",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+      "step": "6회 이동량3k-6이6배수이려면 앞면수k가짝수이므로 이항계수짝수합32/64=1/2이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

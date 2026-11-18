@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-6c2aafef5a7a-4f871a64",
+  "sourceArchiveFile": "original/high/h1/1mid/19_복성고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_862559ac4761549fd35bd1f81ebc2edfabf525923cf228e5bdf9cefcb5e5eb1a",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "step": "t=a/b로 치환하여 t+1/t와 그 제곱·세제곱 관계로 각 명제의 값을 계산한다.",
+      "note": "복소수 분수의 선행 연산과 대칭식 변형을 구분. 원본 보기 직접 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_970b977f3fee6cdcbc94870447ef8ea0b4b37070b1207cf33c52569132667782",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "step": "중근 조건을 (f(t)-7)(f(t)+1)=0으로 바꾸고 원본 그래프의 최댓값과 비교하여 가능한 t의 개수를 센다.",
+      "note": "원본 그래프의 근 -2,1과 아래로 열린 모양 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e6f88ecab566656819e14e8ce17801f2491692b0d24ba1d42137fcfac4f5627c",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "주어진 복소근을 방정식에 대입하고 실수부·허수부를 0으로 두어 a²와 b의 두 값을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

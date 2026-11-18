@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-146906c6cf9d-f431f2f6",
+  "sourceArchiveFile": "original/high/h1/1final/19_매산여고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_51ed9ddc29d49ca9befac3de4a8e43185469e64f8de31584a9992039b73a3e4c",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_GEOMETRY",
+      "step": "세로를 10-x로 놓고 길이비 조건과 넓이의 이차부등식 해를 교차한다.",
+      "note": " 새 TPL 제안: 세로를 10-x로 놓고 길이비 조건과 넓이의 이차부등식 해를 교차한다. 정의: 세로를 10-x로 놓고 길이비 조건과 넓이의 이차부등식 해를 교차한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ff9f3744bb220aa531d11303315fec16819f8184e2efd2890e4884077fa76670",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+      "step": "수직 조건으로 직선 x-8y+6=0을 정한 뒤 점과 직선 사이 거리 공식을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_59b4f3c3dbdf278f8df6724ba23242660f6cc533989a2ebeb523e3a86b0b0c7c",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "step": "평행의 계수비 조건과 수직 조건 mm'+nn'=0을 이용해 보기의 참거짓을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b64c7816ea10dea3e9df9fb76540796ac71d6f9832684a8e59e12e88a514796",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "step": "내분점 (-1,4)와 BC에 수직인 기울기 -3을 구해 목표 직선식을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d48631bd4822cbd069bc6f51f0125e24533aaea0e4a42691823a7631813aa33b",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_GEOMETRY_RATIO",
+      "step": "부분 삼각형 넓이비로 AP:PC와 BP:PD를 정하고 내분 좌표식을 연립한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22ad90fa1b84f17e476005d0be9b8698f44ddd295d90ea88071883a54ff2df51",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+      "step": "접점현 중점까지의 거리 CM=r²/CP를 구하여 현 길이와 삼각형 높이를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f26d9ba454c17e8e10bb1fef45bd31815ad8170d16ae42fd262799e2fda7da1b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PERPENDICULAR_FOOT_ALTITUDE",
+      "templateKey": "TPL_PERPENDICULAR_FOOT_COORDINATE",
+      "step": "AB와 원점을 지나는 수직선의 교점 H를 구하고 AH와 OH로 넓이를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9f4d4376f136ce92a09f9fd4506ac3f5aa692fc4504ecd386b3e4aa2bd9c86b6",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "원의 중심과 직선 사이 거리가 반지름보다 작다는 조건으로 |k|<2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-c7c6a3c76964-9e6e2201",
+  "examUid": "24_팔마고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/24_팔마고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "0ea64de5b898d41b50897234345624a576d89c6f",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c7c6a3c76964-9e6e2201.type-ledger.json",
+        "sha256": "e68a6a32b86a453f62392ce7d9b44068730fc131aa0d51515a3c2956bc94477d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_5a6243d31ead03a0ad05148b9dbbcc1b850978e5ee731f88ce0a850a43ac8420",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+      },
+      "rationale": "두 제수가 같은 영점 -1을 가짐을 이용해 xP(x)+4에 -1을 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "01a65c0e975a97fd65166867df55b7c5fe52e47a9c004739d8f4c6dcc5bea890",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c7c6a3c76964-9e6e2201.type-ledger.json",
+          "sha256": "e68a6a32b86a453f62392ce7d9b44068730fc131aa0d51515a3c2956bc94477d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f8736c9db5d5c7424117739d29d57b98ef5ef3409dbe800eb6974c2075013c71",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_STANDARD"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_POLY_FACTORIZATION_COEFFICIENT"
+      },
+      "rationale": "이차항을 두 일차인수로 나누고 각 일차항과 상수항의 계수를 비교해 인수분해 가능한 k를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "ef061f4790834effd6c0d104a39631efdaedd3f0c0ef5851bd460a5381958f86",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c7c6a3c76964-9e6e2201.type-ledger.json",
+          "sha256": "e68a6a32b86a453f62392ce7d9b44068730fc131aa0d51515a3c2956bc94477d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ff234e98fc6b5b1f59a12510bf6c723a872037b28d539ff45d52c1c12edbd697",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION"
+      },
+      "rationale": "허근의 이차관계로 고차항을 낮추고 실수계수의 실수부·허수부 조건으로 p,q를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "da637a3ba98709faf686a6db58f0933faa76d041a32e9adbef58edb05e58d0ba",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c7c6a3c76964-9e6e2201.type-ledger.json",
+          "sha256": "e68a6a32b86a453f62392ce7d9b44068730fc131aa0d51515a3c2956bc94477d"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_14f60a83e279e600a6610268da2fd425587003087d88bb9910863e5d1f252df8",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+        "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT"
+      },
+      "rationale": "우변을 유리화한 뒤 양변의 실수부와 허수부를 각각 비교해 x,y를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "08cd9108744f4dcc8e4afb79b1ec6b41f7ea14e718a7b28767f1f48f95738f17",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c7c6a3c76964-9e6e2201.type-ledger.json",
+          "sha256": "e68a6a32b86a453f62392ce7d9b44068730fc131aa0d51515a3c2956bc94477d"
+        }
+      ]
+    }
+  ]
+}

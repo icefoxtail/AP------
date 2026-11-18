@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-f8030dc82b7d-3b1cd21a",
+  "examUid": "21_순천여고_1학기_기말_고2_수학I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/21_순천여고_1학기_기말_고2_수학I.js",
+  "expectedSourceBlobSha1": "f79555abe39f5007d22bcfb19ce22afebcbb893b",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f8030dc82b7d-3b1cd21a.type-ledger.json",
+        "sha256": "c49f704207df91e4310f16785700ecf8a48dd9c7e6224176e626169ac8592cd9"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d280dd607fbe9398daa99fb24745dbe79c68cc5b967bcb1dec206812ccf0c1a9",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_INTERSECTION_CARDINALITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION",
+        "templateKey": "TPL_OPERATION_NUMBER_SET"
+      },
+      "rationale": "두 집합의 공통 원소는 3으로 나눈 나머지가 1인 5의 배수 10,25,…,100이므로 교집합의 원소 수는 7이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "f664b5b603b26e92a52035e8562e811ef2fb4ae4841c843d4b8d2dd14ec164d6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f8030dc82b7d-3b1cd21a.type-ledger.json",
+          "sha256": "c49f704207df91e4310f16785700ecf8a48dd9c7e6224176e626169ac8592cd9"
+        }
+      ]
+    }
+  ]
+}

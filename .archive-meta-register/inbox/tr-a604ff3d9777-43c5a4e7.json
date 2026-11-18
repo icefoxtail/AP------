@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-a604ff3d9777-43c5a4e7",
+  "examUid": "21_제일고_1학기_기말_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/21_제일고_1학기_기말_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "b8359a052148d0625dde6eb8214e04a03c97f4d1",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+        "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d57daca9ec4f1954db1cd23c00d927184b98920489392278e2bf54fb44688452",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "첫 제품 불량/정상 두 경로4/16×3/15+12/16×4/15를 합해1/4이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "b6159f91c928edc4d93d528d59f9c3afc6f793496e10b2299c047ccaa3c0e13a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2d5c7a0cb2b9378880b5dd163ed29c07b1d7061074be6f0ec2642b594a883a15",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_RANDOM_VARIABLE_DISTRIBUTION_CLASSIFICATION"
+      },
+      "rationale": "확률변수 정의와 유한/가산무한 값의 이산성을 구분하여 ㄱㄴ만 참이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "0915a13a60a3fed2877aee8eb444aeb7351c02863f84b1dc7749acdafce73e5b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_edf7ceeae0e046ea648581e376f4c5695f8c93df4935f371d9bbd265e891a1f9",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "C부전승 우승11/90와 예선진출 우승 각2/45를 합쳐 분모19/90으로 나누어11/19이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "4abf410378083d978dbdde18b8e5da1a8ac07c71266af0cb311167635a5fa478",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3e46fcd57229edc0491d2f187a2e95d1543a584d5463e1c3da783daf3a814c34",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "앞면수 B(3,1/2)의 분산3/4에서 표준편차√3/2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "226d5e6b6eb54da5f9037d81c0650b623fb6d6ef79e84cfec8baa495d8177e05",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ab075d672018b109efbc902c789b4a41667d169f2868dd1029942676d68be612",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "진품·가품판정 결합0.021을 가품판정 전체0.306으로 나누어7/102,합109이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "53511071572840dbc8af60032a8de0a935ce427c9cf58b846b8cc13df7cbc06e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2e882abc51906115265825b0e2e2daacbe1c93a6819013065e17e4dcca4e594b",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PROBABILITY"
+      },
+      "rationale": "금액X=100K와 K의 B(5,1/2)를 연결해 PMF아래첨자x/100을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "62a526e05bb0a5145a68b7e62d6801bbd3a63984fc9b5bafa3f9d6146916f468",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e4c9df9ae48b200826b3741e2a56ce025a156b5602d656c278fbb55d1065cb65",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "수강생 중 남자비율0.3m/[0.3m+0.4(100-m)]=1/3을 풀어40명이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "fad5860a886f5d68ab0c5599008473df6057a2fd55dbea28841055024b3742c2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cc957e2b70be914cf49a94e3d642db5fbf622425f38dbad046e8304456c76744",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "이동흰공수0,1,2에 따라 B흰공확률1/6,2/6,3/6을 가중합해5/18이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "bb47496dcc904c66af62b761cd8b790d3d9daed9ebd2637ed328ef130f40b79b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4f669722cb8571dde327714054b3acfc0dd34527cd2aadfc651628185e309cb7",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PROBABILITY"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+      },
+      "rationale": "5이상 눈 횟수Y에 총상금5000+1000Y를 대응하여 Y4,5 확률합11/243이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f5bc1ddb81df0cb2cf6c41f36110d55955b0ad17b3632e549554e7482e9d7e78",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_23dd256701bdeac37834b9eb8a2ae91d7b3e7248f02f77e6b2495819ce6a1c8a",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "정사면체의 추출개수1,2,3,4별 초코2개 조건확률을1/4 가중합해5/16이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "2f5274b5c27af296d4f86499f488883cea23a09d7d78a8057cd5b82e92b8e24a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_11222f0a3ad66cad4aff6be174d252771455524ba057cf038bae48d412d27fc1",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+        "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "독립조건으로 B원소수9,교집합수3을 정하고4C3×8C6=112로 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "6fb8b5516af349244c27ed12240304c4dba3d18f38712600306e69e5327cf373",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d419e5fc5c59a953719725d8eadbc5226f7d0ad78c940ca32be52a2a40c00667",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY"
+      },
+      "rationale": "6회 이동량3k-6이6배수이려면 앞면수k가짝수이므로 이항계수짝수합32/64=1/2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "8f386f2ab0f4287a7d73a5499db867b20a7dbf7d0fe08830f5deea6086c17f4e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-a604ff3d9777-43c5a4e7.type-ledger.json",
+          "sha256": "d06ad367a59ede2976d16dc584189139a30e9bb72401c77917517304b1b3bf94"
+        }
+      ]
+    }
+  ]
+}

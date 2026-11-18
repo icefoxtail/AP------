@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-8959ad80490c-ab1e3c04",
+  "sourceArchiveFile": "original/high/h1/1mid/19_순천고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6f6ff461f9daa69764cd7d948302275008c562459e15af006e9b1d55cdcff955",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "step": "실계수 이차식의 켤레근 1-√3i를 구하고 두 근의 합·곱으로 a,b를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d6a2369aef3bcb298c813d9e04c8e180e31971700928d92a7ad727ab54f2a66c",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "step": "완전제곱식 -(x-a)²+a²+b의 꼭짓점을 (2,9)와 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_852e5182c33efd8dec21229ff8f822ef8144580953523b581773403e3a433a47",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "알려진 두 근의 인수 (x-1)(x-2)를 분리하고 x³ 계수 비교로 나머지 이차인수의 근의 합 0을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0b2777a4286c1a575048f56965b8e0f9b08ac9ab27e95ab43299c7ee5610bd2f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "step": "y=x+1을 대입한 이차방정식의 판별식이 0이어야 한 쌍의 실수해만 존재한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a860ac3bfead4cb4ba46afc11bcc257a92039e91416e82930fcd4582635663c3",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "각 일차부등식의 공통 해구간 -1≤x<3-a가 비도록 끝점 순서를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6866b52d76b142398ae9db7a42c373b856230218667618e4aefb8eceaeff6a0e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+      "step": "연속된 나눗셈 항등식으로 f를 복원하고 x²-1로 직접 나눠 몫과 나머지를 더한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d4bb70c885da4816a8890ed77eb47c9b181e9b423e8b30c02f61628c0ef6e02",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
+      "step": "음수 제곱근의 곱·몫의 부호 규칙을 구간별 적용하여 두 조건의 교집합 [1,2]를 얻는다.",
+      "note": "새 TPL 제안: 음수 제곱근 곱·몫의 성립 범위. 정의: 제곱근 내부 부호와 영점·분모 제외를 구분하여 근호 법칙의 부호가 성립하는 실수 범위를 구한다. 새 TPL 제안: 음수 제곱근의 곱·몫의 부호 규칙을 구간별 적용하여 두 조건의 교집합 [1,2]를 얻는다. 정의: 음수 제곱근의 곱·몫의 부호 규칙을 구간별 적용하여 두 조건의 교집합 [1,2]를 얻는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_09c3002740abaa4b36f1e7a030140bf9790f2896f166896c9e1b31340daea1fd",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "step": "접선 교점 방정식의 판별식이 모든 a에서 0이 되도록 a의 계수와 상수항을 0으로 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a58023deba7a9bd9e106c6cb56e6d71a1808925383aa1bc86bead5ca8f80991f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "step": "u³+v³+w³-3uvw를 제곱차 합으로 분해하고 양수 조건에서 2a=2b=1을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f5d9341531dc3105301617eeca876efabc2e2e189a322f49dfafb6a80ad6f9af",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "연립방정식에서 x=1-a,y=-a-2를 구한 뒤 제4사분면 조건 x>0,y<0의 교집합을 취한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_95a8935c17def0134443d3f84a36ae71089226ecc546c08d4f98f7a15fd03044",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "교점으로 f-직선을 인수형으로 복원하고 a<0에서 구간 양 끝값 중 더 작은 f(4)를 -4로 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5d1b3c0b4b9b6a9c7a46e9b04c217be4118ceeabc804cbb95e290dd80651d9ec",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "함수 항등식을 인수분해하고 양의 최고차항 조건으로 f=x+1을 정한 뒤 교점 허용 범위에서 삼각형 넓이를 최대로 한다.",
+      "note": "발문이 최고차항을 언급하므로 다항함수로 해석한 원문 해설을 확인. 해설의 인수분해 항등식도 직접 확인.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

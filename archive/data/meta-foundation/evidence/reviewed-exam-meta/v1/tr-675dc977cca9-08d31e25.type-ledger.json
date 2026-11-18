@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-675dc977cca9-08d31e25",
+  "sourceArchiveFile": "similar/middle/m1/1mid/16_연향중_1학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a8f1ae9e70c11d131699573c12262ead762107322ebcf9c587093b5b6f669790",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_CALCULATE",
+      "step": "공통 소인수의 최소지수로12,모든 소인수의 최대지수로360을 구한다.",
+      "note": "새 TPL 제안: 최대공약수·최소공배수 직접 계산: 소인수별 지수의 최소·최대를 사용하여 최대공약수와 최소공배수를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9fc39584456f2fe5aceae891402cb6c2e271700330ac5a41e11e5db8c262e149",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_DIVISOR_APPLICATION",
+      "templateKey": "TPL_M1_GCD_DIVISOR_APPLICATION_COMMON_DIVISOR",
+      "step": "나머지를 뺀120,180의 최대공약수60을 구하고 나머지보다 큼을 확인한다.",
+      "note": "새 TPL 제안: 나머지가 있는 공약수 상황: 각 수에서 나머지를 빼고 얻은 수들의 공약수를 구하여 나머지 크기 조건을 적용한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b81e01fb07efe414d78f0b222e05f90c462fec35aa4b10262ac1a7fd1de84343",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INTEGER_MEMBERSHIP_COUNT",
+      "templateKey": "TPL_INTEGER_MEMBERSHIP_COUNT_CORE",
+      "step": "분수를 약분하여 정수4개와 정수가 아닌 유리수2개를 구분한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c347e838d8654159e3ffbbd787799e6a03563dedadc0aa1e993e069fd950d71d",
+      "sourceOrdinal": 7,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_INEQUALITY",
+      "templateKey": null,
+      "step": "이상은 등호를 포함하고 미만은 제외하여 -4≤x<5로 표현한다.",
+      "note": "새 PT 제안: 수의 범위 부등호 표현. 이상·이하·초과·미만 또는 부정형 표현을 등호 포함 여부에 맞춰 부등식으로 옮긴다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_08988eebbfad573328d2996176eb45ac2538db15144fefde6c40fa8a92c6201f",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_ABSOLUTE",
+      "step": "|x|=4와 x>-4에서 x=4를 얻고 거리 비교로 x<z<y를 정한다.",
+      "note": "새 TPL 제안: 수직선 거리·절댓값 대소 추론: 절댓값과 수직선상 거리 조건으로 수와 대소관계를 정한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7186f334dc10273e7eb3f9dd35a08eb8795c285ba335fa4ebb2c0b3f392f83b2",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
+      "step": "540=2²·3³·5에서 후보의 각 소인수 지수가 상한을 넘는지 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_27dcedb828a29ec55798c55dea06702d024e50bb78494759887b7cc9902899a4",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+      "templateKey": "TPL_MINIMUM_FACTOR_TO_PERFECT_SQUARE_MULTIPLIER",
+      "step": "45n의 소인수 지수가 모두 짝수가 되도록 n=5k²로 두고100이하5,20,45,80을 합한다.",
+      "note": "새 TPL 제안: 완전제곱수의 인수 조건: 곱하거나 나누어 제곱수가 되도록 소인수 지수의 짝홀을 조정하고 범위조건을 적용한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_746bb41c5f7c5a9759f8a1fe13aa85b40297d3adffb70914a84e402f3342ee60",
+      "sourceOrdinal": 11,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_PATTERN",
+      "templateKey": null,
+      "step": "앞 두 행의 A+B=C² 규칙을 찾아96+B=121로 빈칸25를 구한다.",
+      "note": "새 PT 제안: 수 대응표의 규칙 추론. 주어진 수 대응표에서 공통 연산 규칙을 추론하고 그 규칙으로 빠진 값을 계산한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c7bd2b81f23ba26880523e3ec5a1eeb840c3757321fb1e34772da356ac694c5b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_LAWS",
+      "step": "덧셈 순서를 바꾸는 교환법칙과 두 항을 묶는 결합법칙을 구별해61·30을 계산한다.",
+      "note": "새 TPL 제안: 연산법칙·계산순서 판정: 각 식 변형을 교환·결합·분배법칙이나 연산 우선순위에 대응한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_58d09aff93bb8b2c2dde6c2010d0792e90edc5d2958a3c13d986acf8755e1677",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK",
+      "step": "a=-1을 대입해 첫째만 -1이고 나머지는1임을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad1d173bd092cad468f801720876acec400329aad83f59abf0c424491758ffcb",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_DISTRIBUTION",
+      "step": "98=100-2로 바꾸어 분배법칙을 적용해 -2500+50=-2450을 계산한다.",
+      "note": "새 TPL 제안: 연산법칙·계산순서 판정: 각 식 변형을 교환·결합·분배법칙이나 연산 우선순위에 대응한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_90d6f940383f6d3f024cb10c341a0e5b5b13e1d2802b41060bdbcd197868f07f",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_POLYNOMIAL",
+      "templateKey": null,
+      "step": "항의 지수·계수·상수항을 읽어 상수항7,일차항계수 -5,항3개를 확인한다.",
+      "note": "새 PT 제안: 다항식의 구조 판별. 다항식의 항·계수·차수·상수항을 부호와 함께 식별하고 관련 조건을 판별한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d412536c5dd808807b6d0100f260403d769156cc1860aa41edc16d98673ed834",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "step": "가족별 수량을 x+4,3x,4x-1로 나타내고 총합9x+3에3을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    }
+  ]
+}

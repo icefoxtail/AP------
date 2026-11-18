@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-37febd310314-92c66fda",
+  "sourceArchiveFile": "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e508d239885fcbaa6aea9aca83486cb7411ce21d4c25c947e3b9005528237d39",
+      "sourceOrdinal": 8,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "연속 두 무게중심의 높이비1/9와 밑변BD의비1/2를 곱해 목표넓이를 전체90의1/18인5로 구한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+      "sourceOrdinal": 23,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "독립 가정 아래 A만성공5/6×1/8과 B만성공1/6×7/8을 더해 정확히하나 성공확률1/4를 구한다.",
+      "note": "원문의심: 신호별 성공의 독립성이 발문에 없지만 해설은 확률을 곱했다. 주변확률만으로 (3)~(5)는 유일하게 결정되지 않는다. 새 PT 제안: 독립 시행의 확률 곱과 합. 독립인 시행에서 요구된 성공·실패 조합의 확률을 곱하고 배반인 경우를 더한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

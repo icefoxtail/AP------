@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-257f7fc13feb-982c1618",
+  "examUid": "22_동산중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_동산중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "689d39aa080ac952058095bde76d957433122b2d",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-257f7fc13feb-982c1618.type-ledger.json",
+        "sha256": "1d08412ed8fb64495facbb607227e8c797c58aefb713967bd632c7c3b91f971d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cffc61f8b140a52ccbd49c883f033748a63535aef18f922665b3befcf8325493",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION"
+      },
+      "rationale": "반지름1과여각관계로사인·코사인선분을대응시키며tanz=OD/CD=1/CD이므로OD라한⑤가거짓이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "be9ccbc5c5282a9d351261c2bdcb4b04f182edc92f379f4ce26ed4bee1bfd7c2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-257f7fc13feb-982c1618.type-ledger.json",
+          "sha256": "1d08412ed8fb64495facbb607227e8c797c58aefb713967bd632c7c3b91f971d"
+        }
+      ]
+    }
+  ]
+}

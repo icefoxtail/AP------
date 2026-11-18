@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-b833f2cff990-4ecc11dc",
+  "examUid": "19_순천여고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/19_순천여고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "cc0d3263111e3b0bfc1ecbdba2b5b11281ff7b1e",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-b833f2cff990-4ecc11dc.type-ledger.json",
+        "sha256": "de97d35d6259cad6d2ebd07e9d8e38cbd9ed5348d09b46b3959ad57344ec99d2"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a4c518e8ae88acf2f83112057e55f9dd40003ae9f50f583e6a33306560241046",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+      },
+      "rationale": "중근 조건으로 h=f-g=3(x-2)²를 정하고 x-4 나머지 h(4)=12를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "620d6d957f3b99843925d64409a1a51d1500ba794cb7b3df254e525dcffed087",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-b833f2cff990-4ecc11dc.type-ledger.json",
+          "sha256": "de97d35d6259cad6d2ebd07e9d8e38cbd9ed5348d09b46b3959ad57344ec99d2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-e203ea1a87d1-d7ded5c3",
+  "sourceArchiveFile": "similar/high/h1/1mid/26_매산여고_1학기_중간_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_efe6383a1007657c3b33fdf1d54bc1f163acc05a840205b5a854696cf06da87c",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "step": "곱의 두 인수에서 차수 합이 2인 세 항의 곱만 골라 계수를 합한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_202f9f3319f92f6bc96ea7b1248a858da7c8c3fdfca68d41f8277ecc2a73171e",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축과 한 교점일 조건을 판별식 0으로 두어 k의 이차방정식을 푼다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_66468e59577bb2e739d772730bfbf6eee131d867f2e38c4edf81f9a16e43a127",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "제수를 두 일차인수로 분해해 두 근에서 P가 0인 연립조건으로 a,b를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a00e62be95d218c779492fc40f64186a0960997ad5d5cc7d6328bf7e291a806",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "step": "같은 일차인수로 두 번 나누어떨어지므로 원래 식과 첫 나눗셈 몫에 x=2를 차례로 대입한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6945a05f45448c90a05544c6c28039ced527790b5d3964128b9a4786c9650a62",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "몫을 최고차항 계수 1의 일차식으로 놓고 나머지가 몫의 두 배인 항등식과 추가 인수 조건으로 P를 정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 필요한 TPL 이름: 몫과 나머지의 함수 관계로 다항식 결정; 정의: 제수·몫·나머지 항등식에서 주어진 배수 관계와 차수를 이용해 다항식을 매개변수로 표현하고 인수·함수값 조건으로 결정한다. 검사: TPL_NOT_ACTIVE(null TPL에 대한 도구 결과).",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ac4c8ce7e4cc979b46002e83aa8deaf4ca27b6414ae57086e8de901a7d7c3941",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "두 근의 이차관계로 f의 값을 일차식으로 낮추고 교차곱 등식의 차 및 f(−1)로 계수를 정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1295a1e57677e2ead078ef8ad685655b6a2fde6e094b065d6addd2909f37eab9",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "두 포물선의 꼭짓점 높이와 공통 교점 높이를 구분하여 수평선의 서로 다른 교점이 세 개인 높이를 찾는다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 도구 후보 밖이지만 ACTIVE 정의와 직접 읽은 풀이 단계가 일치하여 판정함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aba5a512247958fe8c30062db35e20a9f0d0403bfa722576f07103b8c8fcead7",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "서로 바뀐 제수·몫과 공통 나머지의 차수 제약으로 Q는 일차 P는 이차임을 정한 뒤 최고차항 계수로 함수를 복원한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 필요한 TPL 이름: 제수·몫 교환과 공통 나머지의 차수 제약; 정의: 제수와 몫을 서로 바꾼 두 나눗셈에서 같은 나머지가 두 제수보다 낮은 차수여야 함을 이용해 각 차수를 정하고 최고차항·함수값 조건으로 다항식을 복원한다. 검사: TPL_NOT_ACTIVE(null TPL에 대한 도구 결과).",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    }
+  ]
+}
