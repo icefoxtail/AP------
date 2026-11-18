@@ -70,8 +70,10 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.match(register, /--remote origin --branch main --max-attempts 6/);
   assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 1);
   assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
-  assert.match(register.split('    steps:')[0], /timeout-minutes: 150/);
-  assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 90/);
+  assert.match(register.split('    steps:')[0], /timeout-minutes: 345/);
+  assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 170/);
+  // The reviewed inbox lane may run 120 minutes; its enclosing prepare step must outlast it.
+  assert.match(step(register, /^        id: prepare$/m), /timeout-minutes: 150/);
   assert.match(register, /--verify-command 'node tools\/check-git-growth\.mjs --base "\$DERIVED_BASE_SHA" --head "\$DERIVED_HEAD_SHA"'/);
   assert.match(register, /--reapply-check 'node tools\/ci\/archive-registration-writer\.mjs --unrelated-range "\$DERIVED_BASE_SHA" "\$COMPETITOR_HEAD_SHA"'/);
   assert.doesNotMatch(register, /--force|git\s+(?:commit|push)\b/);
