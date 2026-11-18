@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-9baef99f2654-7d8daa98",
+  "examUid": "22_순천고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/22_순천고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "d05b15f77c8ec373fb49d1856b75604d49f546aa",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9baef99f2654-7d8daa98.type-ledger.json",
+        "sha256": "5359609a1ef9b7cfc6b86990491faefb9dd81fbd8988aa52340e884b89881244"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_213e5dce57245cb205ff24e5204d234706a4b8328b05837b30eb5d8dbeb5643f",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT"
+      },
+      "rationale": "f(2)를 고정한 뒤 남은 세 입력마다 다섯 출력 중 하나를 독립 선택하여5³=125를 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "993e1be60e5565e838f30f433f7cc606d339fc09fee38bb705c322e569e15741",
+        "contentFingerprint": "7122e9d832f1694bd60a74de04721cc04d6042b8f513bd4d02f496d42575eb20"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9baef99f2654-7d8daa98.type-ledger.json",
+          "sha256": "5359609a1ef9b7cfc6b86990491faefb9dd81fbd8988aa52340e884b89881244"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d8311aaabf8051752fcd6f0543822ec0e6f2b5075bce663136c5af7429190a48",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "P 전후 최단 이동의 같은 방향 순열을 각각6C2와4C2로 세어 곱90을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "14e20ee97c7e0f16307467854af1f8bcf4556f33f2d5725aa71cfbc90371c279",
+        "contentFingerprint": "96af32b96a8d714f87c13c0536e053344c53bc0332d7d04deebf53381fdc4922"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9baef99f2654-7d8daa98.type-ledger.json",
+          "sha256": "5359609a1ef9b7cfc6b86990491faefb9dd81fbd8988aa52340e884b89881244"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_066651c820d93f84a1c4f1ed3f32e64a30c5ae5276b2754290e650a10cd61637",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "rationale": "무기명은 후보별 득표수의 비음수 정수해6C2=15, 기명은 독립 투표3⁴=81로 구별하여96을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "77f1a7b8efa39916f9ad6a38f68bb52a5f09b19f60d1fff056cd4989d4c21b9b",
+        "contentFingerprint": "aa1d553288091db7343eb5a655eb262a0a9ce2ea2b29343e7cdcf09c7eb77937"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9baef99f2654-7d8daa98.type-ledger.json",
+          "sha256": "5359609a1ef9b7cfc6b86990491faefb9dd81fbd8988aa52340e884b89881244"
+        }
+      ]
+    }
+  ]
+}

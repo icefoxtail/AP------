@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8fd1381cd8a0-3a606b2d",
+  "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_169a6ff0fbaf3907dc055833dfeb22b86e8e27cc0e27d1f22d153e7f43141944",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_PH_CONCENTRATION_RATIO_SHIFT",
+      "step": "농도의 비를 pH 로그식에 대입하여 로그의 차를 더하는 변화량으로 바꾼다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_24b60252e27a3139539a5137cf4128975ba4171061d895453cdde5b191b0d45f",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+      "step": "밑을 통일하여 이차방정식의 두 근 후보를 구하고 진수 양수를 만족하는 근이 정확히 하나인 매개변수 구간을 찾는다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6a8217de836bc2d3334b17928281f51eb96f8beb7a90cadcd681703473abfef8",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+      "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
+      "step": "3의 지수식을 양수 t로 치환하여 이차방정식이 서로 다른 두 양근을 갖는 상수 조건을 구한다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb5d26a25cb23c859bd1edb8da1a0ad1f6ed68943d3aa12a1f8a27b55f0b1e69",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+      "step": "각 변환으로 탄젠트 비를 구하고 코사인 부호로 사분면을 정해 반지름에 따른 좌표를 구한다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8239b227fe0a5bfc01bad94eae4cb338cc5659caa4055e30423d07e81c3e5e30",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+      "step": "각 변환으로 짝함수 및 x=2 대칭을 검증하되 모든 실수에서 정의되는 조건으로 탄젠트 후보를 제외한다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}
