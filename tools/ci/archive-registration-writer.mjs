@@ -275,7 +275,11 @@ export function readStageTimes(file) {
   const rows=[];
   for(const line of text.split(/\r?\n/)) {
     if(!line.trim()||rows.length>=40)continue;
-    try{const r=JSON.parse(line);if(typeof r.stage==='string'&&Number.isFinite(r.durationMs))rows.push({stage:r.stage.slice(0,64),durationMs:r.durationMs,exitCode:Number(r.exitCode)||0});}catch{/* partial last line */}
+    try{const r=JSON.parse(line);if(typeof r.stage==='string'&&Number.isFinite(r.durationMs)){
+      // A step time below zero is a wall-clock step-back, never a duration: show 0 and keep the fact it was adjusted.
+      const adjusted=r.clockAdjusted===true||r.durationMs<0;
+      rows.push({stage:r.stage.slice(0,64),durationMs:Math.max(0,r.durationMs),exitCode:Number(r.exitCode)||0,...(adjusted?{clockAdjusted:true}:{})});
+    }}catch{/* partial last line */}
   }
   return rows;
 }
