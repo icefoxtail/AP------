@@ -124,7 +124,7 @@ const nativeApprovals = new Map(), issuedApprovals = new Map();
 const nativeInputs = [];
 // 지금 원본·영수증으로 Native 검증이 통과하지 않는 문항(원본이 영수증 이후 정상 수정됨 등)은 재등록 대기로 센다.
 // 2026-11-18 사용자 결정: 발급 당시 판본·렌더러 표를 현재 원본과 대조하는 보존 검사는 없앴다(실패 아님).
-const staleSourceUids = new Set();
+const staleSourceUids = new Set(), operationalBlockUids = new Set();
 function nativeInput(metadata, row, owner = runtime) {
   const source = sourcePath(metadata.sourceArchiveFile);
   if (!nativeSources.has(source)) {
@@ -192,6 +192,36 @@ function assertNativeApproval(input, label) {
   return receiptPath;
 }
 
+// 원본은 영수증과 같은데 운영 검증기(nativeReviewReceipt)가 거절하는 문항(렌더러·UI 연속성 고정 등 운영 쪽 조건)은 Native 통과로 세지 않는다.
+// 대신 영수증 자체의 무결성만 여기서 직접 증명한다(렌더러·엔진 바이트는 보지 않는다): 영수증 형식·상태, 원본 지문, 증거 해시,
+// 적용 행·런타임 행·신원 행이 현재 값과 같음, 메타 개정 문자열. 하나라도 어긋나면 실패다.
+function assertReceiptIntegrity(input, label) {
+  const { current, identity, source, ordinal } = input, { bytes, blobSha1, runtimeRecord } = input.nativeSource;
+  const prefix = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/";
+  const found = (current.approvalEvidence || []).filter(ref => typeof ref === "string" && ref.startsWith(prefix) && ref.endsWith(".json"))
+    .map(ref => ({ ref, receipt: JSON.parse(fs.readFileSync(path.join(input.nativeSource.root, ref), "utf8")) }))
+    .filter(row => row.receipt.schemaVersion === "archive-reviewed-exam-meta-registration-v2");
+  assert(found.length >= 1, label + ": no registered receipt in approvalEvidence");
+  const { ref, receipt } = found[0], approval = receipt.approval;
+  assert.strictEqual(ref, prefix + receipt.requestId + ".json", label);
+  assert.strictEqual(receipt.metadataRegistrationStatus, "REGISTERED", label);
+  assert.strictEqual(receipt.sourceArchiveFile, source, label);
+  assert.strictEqual(receipt.sourceRawSha256, sha256(bytes), label);
+  assert.strictEqual(receipt.sourceBlobSha1, blobSha1, label);
+  assert.strictEqual(approval.type, current.metadataApprovalType, label);
+  assert.strictEqual(approval.metadataReviewed, true, label);
+  assert(String(approval.approvedBy || "").trim(), label);
+  if (approval.type === "REVIEW2") assert.strictEqual(approval.reviewPassCount, 2, label);
+  assert(Array.isArray(approval.evidenceRefs) && approval.evidenceRefs.length, label);
+  for (const evidence of approval.evidenceRefs)
+    assert.strictEqual(sha256(fs.readFileSync(path.join(input.nativeSource.root, evidence.path))), evidence.sha256, label + ": evidence bytes drifted");
+  const one = (rows, what) => { const hit = rows.filter(row => row.questionUid === current.questionUid); assert.strictEqual(hit.length, 1, label + ": " + what); return hit[0]; };
+  assert.deepStrictEqual(one(receipt.appliedRecords, "applied record"), current, label);
+  assert.deepStrictEqual(one(receipt.runtimeRecords, "runtime record"), runtimeRecord, label);
+  assert.deepStrictEqual(one(receipt.appliedIdentityRecords, "identity record"), identity, label);
+  assert.strictEqual(Number(one(receipt.appliedRecords, "applied record").sourceOrdinal), ordinal, label);
+  return ref;
+}
 function assertReviewedState(input, label) {
   try {
     return { receiptPath: assertNativeApproval(input, label), currentNativeReady: true };
@@ -200,19 +230,21 @@ function assertReviewedState(input, label) {
     // 원본 시험지가 영수증 이후 정상 수정되어 어긋난 문항만 재등록 대기로 센다(실패 아님).
     // 영수증이 현재 원본과 같은데 어긋나는 것(영수증 누락·위조, 신원/행 불일치, 잘못된 결합, 증거 해시 불일치)은 그대로 실패한다.
     if (sourceChangedSinceReview(input)) return { receiptPath: null, currentNativeReady: false, staleSource: true };
-    throw error;
+    if (!["FINAL_QA", "REVIEW2"].includes(input.current.metadataApprovalType)) throw error;
+    return { receiptPath: assertReceiptIntegrity(input, label), currentNativeReady: false, operationalBlock: true, nativeError: error.message };
   }
 }
 function rememberReviewedState(input, state) {
   if (state.staleSource) { staleSourceUids.add(input.current.questionUid); return; }
   const uid = input.current.questionUid;
   issuedApprovals.set(uid, state.receiptPath);
+  if (state.operationalBlock) { operationalBlockUids.add(uid); return; }
   nativeApprovals.set(uid, state.receiptPath);
   if (!nativeInputs.some(value => value.current.questionUid === uid)) nativeInputs.push(input);
 }
 
 function verifyHistoricalCohorts(index, remember = false) {
-  let unchanged = 0, reviewedTransitions = 0, currentNativeReady = 0, staleSource = 0;
+  let unchanged = 0, reviewedTransitions = 0, currentNativeReady = 0, staleSource = 0, operationalBlock = 0;
   for (const [uid, baseline] of historicalByUid) {
     const entries = index.get(uid) || [];
     assert.strictEqual(entries.length, 1, "historical runtime UID missing/duplicated: " + uid);
@@ -235,12 +267,12 @@ function verifyHistoricalCohorts(index, remember = false) {
     const input = nativeInput(metadata, row, entry);
     const state = assertReviewedState(input, "historical reviewed transition: " + uid);
     if (remember) rememberReviewedState(input, state);
-    if (state.staleSource) staleSource += 1; else currentNativeReady += 1;
+    if (state.staleSource) staleSource += 1; else if (state.operationalBlock) operationalBlock += 1; else currentNativeReady += 1;
     reviewedTransitions += 1;
   }
   assert.strictEqual(unchanged + reviewedTransitions, historicalByUid.size);
-  assert.strictEqual(currentNativeReady + staleSource, reviewedTransitions);
-  return { unchanged, reviewedTransitions, currentNativeReady, staleSource };
+  assert.strictEqual(currentNativeReady + staleSource + operationalBlock, reviewedTransitions);
+  return { unchanged, reviewedTransitions, currentNativeReady, staleSource, operationalBlock };
 }
 // Approval kinds an additional runtime row may carry besides FINAL_QA/REVIEW2 (handled by the
 // native reviewed-state path): an explicit set, anything else (unknown or empty) fails.
@@ -288,6 +320,7 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   assert.deepStrictEqual(metadata.conditionKeys, row.conditionKeys);
 }
 
+console.log(`REREGISTRATION_PENDING source-edited=${staleSourceUids.size} receipt-verified-but-native-refused=${operationalBlockUids.size}`);
 // 음성 사례는 영수증이 현재 원본과 맞는(재등록 대기가 아닌) 문항으로 건다. 재등록 대기 문항은 분류가 거절되지 않는다.
 const historicalUid = nativeInputs.map(input => input.current.questionUid).find(uid => historicalByUid.has(uid) &&
   historical.cohorts["1.0.0"].some(row => row[0] === uid) && sha256(stable(activeRuntimeByUid.get(uid)[0].row)) !== historicalByUid.get(uid).digest) || historical.cohorts["1.0.0"][0][0];
@@ -303,7 +336,7 @@ for (const [label, entries] of invalidCohortCases) {
   const invalid = new Map(activeRuntimeByUid).set(historicalUid, entries);
   assert.throws(() => verifyHistoricalCohorts(invalid), { name: "AssertionError" }, label);
 }
-console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} issued transitions (${preservedCohorts.currentNativeReady} current Native READY, ${preservedCohorts.staleSource} awaiting re-registration after a source edit); ${invalidCohortCases.length} rejected corruptions`);
+console.log(`PASS historical cohorts 904/47/24: ${preservedCohorts.unchanged} unchanged, ${preservedCohorts.reviewedTransitions} issued transitions (${preservedCohorts.currentNativeReady} current Native READY, ${preservedCohorts.staleSource} awaiting re-registration after a source edit, ${preservedCohorts.operationalBlock} receipt-verified but refused by the production Native verifier); ${invalidCohortCases.length} rejected corruptions`);
 
 const reviewedInput = nativeInputs.find(input => ["FINAL_QA", "REVIEW2"].includes(input.current.metadataApprovalType));
 assert(reviewedInput, "at least one current Native FINAL_QA/REVIEW2 positive is required; re-registration-pending rows cannot substitute");
