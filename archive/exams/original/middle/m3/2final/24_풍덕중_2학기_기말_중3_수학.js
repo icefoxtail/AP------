@@ -422,7 +422,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "삼각형 $ABC$의 세 꼭짓점에서 같은 원에 그은 두 접선의 길이는 같다. $AD=AF=a$, $BD=BE=b$, $CE=CF=c$라 놓으면 $a+b=6$, $b+c=11$, $c+a=8$이다. 따라서 $2c=11+8-6=13$이고 $c=6.5$이다. $PR$이 내접원에 접하는 점을 $T$라고 하면 $PT=PF$, $RT=RE$이다. 따라서 $CP+PR+RC=(CP+PF)+(RE+RC)=CF+CE=2c=13\\text{ cm}$이다. 정답은 ⑤.",
-    "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q09.png",
+    "image": "assets/images/24_풍덕중_2학기_기말_중3_수학/q09-problem-v2.svg",
     "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "candidate_evidence",
