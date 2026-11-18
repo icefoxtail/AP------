@@ -229,7 +229,11 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q04-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q04-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 세 점이 같은 간격으로 놓여 있고, 이웃한 두 점 사이의 간격이 각각 d로 표시되어 있다.",
+    "solutionImageCaption": "세 카드의 값을 작은 것부터 L, M, R로 두면 가운데 수가 양 끝의 평균이다. 같은 두 간격 d를 나타낸 대표 배치이며 특정 카드 숫자를 정한 그림은 아니다. 1부터 8 안에 놓이는 세 수를 센 뒤 배열 순서를 센다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -406,7 +410,11 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q07-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 12는 채운 점, 16은 빈 원으로 하여 12 이상 16 미만의 범위가 표시되어 있고, 그 안의 정수 자리에 점이 찍혀 있다. 가로축의 문자는 t이다.",
+    "solutionImageCaption": "사용한 마지막 텐트에는 적어도 한 명이 있어야 한다. 8명씩 배정할 때의 엄격한 하한과 상한을 함께 적용하여 텐트 수의 정수 범위를 읽는다. 학생 수는 이 범위의 양 끝에서 따로 계산한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -756,7 +764,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_광양제철고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_광양제철고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 위의 두 줄은 각각 다섯 칸, 맨 아래 줄은 왼쪽 네 칸으로 이루어진 14개의 합동인 정사각형 도형이 그려져 있다.",
+    "solutionImageCaption": "위 두 줄은 각각 다섯 칸, 아래 줄은 왼쪽 네 칸이다. 높이 한 칸, 두 칸, 세 칸마다 가능한 두 세로선의 선택을 세고, 그중 가로와 세로 길이가 같은 경우를 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

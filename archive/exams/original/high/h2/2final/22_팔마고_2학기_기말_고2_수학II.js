@@ -857,7 +857,10 @@ window.questionBank = [
       "examUid": "22_팔마고_2학기_기말_고2_수학II",
       "sourceOnlySha256": "58d347ce1266380db1bf4a32db251e80a53e79348c878459d8ee71790565768d"
     },
-    "solutionImage": "assets/solutions/22_팔마고_2학기_기말_고2_수학II/q16_solution.svg"
+    "solutionImage": "assets/images/22_팔마고_2학기_기말_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=−x²+6x와 x축으로 둘러싸인 부분에 원점을 지나는 직선 y=(5/4)x가 그어져 교점 (19/4, 95/16)이 표시되어 있다. 직선 위·포물선 아래의 S₁, 직선 아래의 S₂, 그 오른쪽 포물선 아래의 S₃으로 나뉘어 칠해져 있다.",
+    "solutionImageCaption": "곡선 y=-x²+6x와 x축으로 둘러싸인 전체 넓이는 ∫₀⁶(-x²+6x)dx=36이다. 직선 y=mx와의 교점을 x=b라 하면 b=6-m이고, 직선 위쪽·곡선 아래쪽 넓이는 ∫₀ᵇ(bx-x²)dx=b³/6이다(S₁). 이등분 조건 S₁=S₂+S₃=18에서 b³/6=18, b³=108이므로 (6-m)³=108이다 (정답 ⑤). 그림은 m=5/4(b=19/4)인 표본이며 실제 m은 6-∛108이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

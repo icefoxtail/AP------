@@ -213,7 +213,11 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q04-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점이 표시되어 있다.",
+    "solutionImageCaption": "y=(x+2)(x−7)에서 두 x절편은−2,7이다. 정답 a+b=5.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -438,7 +442,11 @@ window.questionBank = [
     "sourceQid": 8,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q08-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q08-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q08-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 a, 세로축 m인 좌표평면에 왼쪽에서 오른쪽으로 내려가다가 꺾인 점을 지나 다시 올라가는 그래프가 그려져 있다. 시작점은 빈 원으로, 그래프가 가로축과 만나는 점은 채운 점으로 표시되어 있다.",
+    "solutionImageCaption": "a>0에서 최소함수 m(a)는0<a≤3일 때−a−9, a>3일 때a²−7a이다. 첫 구간은 음수, 둘째 구간의 영점 중 허용되는 것은7이다. x와 매개변수 a를 구분한다. 정답 a=7. 왼쪽 a=0 및 음수로 이어지는 보조곡선은 비교용 연장이며 실제 최소함수의 정의역은 a>0뿐이며 a=0은 제외한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -714,7 +722,11 @@ window.questionBank = [
     "sourceQid": 13,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q13-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 h인 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점과 꼭짓점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "h=f−g의 최고차항 계수는2이다. h≤0의 경계−1,3에서 h=2(x+1)(x−3). h(1)=−8이므로 정답 g(1)−f(1)=8.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -1185,7 +1197,11 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q22-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 가운데가 수평인 V자 모양의 그래프와, 높이 7을 지나는 점선 y=7이 그려져 있다. 점선과 그래프가 만나는 두 점이 표시되어 있다.",
+    "solutionImageCaption": "절댓값의 합은−3,2에서 식이 바뀌고 중간 높이는5이다. 수평선 y=7보다 아래인 x범위는−4<x<3, 따라서 a=−4,b=3, 정답 a−b=−7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1290,7 +1306,11 @@ window.questionBank = [
     "sourceQid": 24,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_효천고_1학기_기말_고1_유사_plans/q24-solution.plan.json",
+    "solutionImage": "assets/images/26_효천고_1학기_기말_고1_유사/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x, 세로축 h인 좌표평면에 아래로 볼록한 포물선의 0≤x≤5 부분이 그려져 있고, 양 끝점과 꼭짓점, x축과 만나는 두 점이 표시되어 있다.",
+    "solutionImageCaption": "원본 f와 g 그림은 유지하고 차이 h만 따로 그렸다. h=c(x−1)(x−7),h(4)=−9에서 c=1. 구간0≤x≤5에서 꼭짓점 최소−9, 두 끝점 높이7,−8을 비교하면 정답 x=0에서 최댓값7.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,

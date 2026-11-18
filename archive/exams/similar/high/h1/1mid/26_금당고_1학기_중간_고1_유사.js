@@ -325,7 +325,11 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q06-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q06-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q06-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 축의 x좌표 A=−2보다 구간의 두 끝점 B=−1, C=3이 모두 오른쪽에 있다. C가 축에서 더 멀어 함수값이 더 크다.",
+    "solutionImageCaption": "축의 x좌표 A=−2보다 구간의 두 끝점 B=−1, C=3이 모두 오른쪽에 있다. C가 축에서 더 멀어 함수값이 더 크다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -1069,7 +1073,11 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1mid/26_금당고_1학기_중간_고1_유사_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 외접하는 두 구의 중심을 지나는 단면이다. 중심 사이 거리 7은 접점 양쪽 반지름의 합이다.",
+    "solutionImageCaption": "서로 외접하는 두 구의 중심을 지나는 단면이다. 중심 사이 거리 7은 접점 양쪽 반지름의 합이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

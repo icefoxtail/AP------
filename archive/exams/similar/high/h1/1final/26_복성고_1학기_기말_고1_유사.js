@@ -271,7 +271,11 @@ window.questionBank = [
     "sourceQid": 5,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q05-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q05-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q05-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 −3/2부터 7/2까지의 닫힌 구간이 표시되어 있다.",
+    "solutionImageCaption": "4x²−8x−21=(2x+3)(2x−7)≤0이므로 −3/2≤x≤7/2이다. 이 범위의 정수는 −1, 0, 1, 2, 3의 5개이므로 답은 ④ 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -377,7 +381,11 @@ window.questionBank = [
     "sourceQid": 7,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q07-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q07-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q07-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_유사/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 두 줄에 −2 이상을 나타내는 오른쪽 반직선과 3/2 이하를 나타내는 왼쪽 반직선이 각각 표시되어 있다.",
+    "solutionImageCaption": "x−4≤5x+4에서 x≥−2, 5x+4≤3x+7에서 x≤3/2이므로 −2≤x≤3/2이다. a=−2, b=3/2이므로 a+2b=−2+3=1이고, 따라서 답은 ③ 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -994,7 +1002,11 @@ window.questionBank = [
     "sourceQid": 18,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q18-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q18-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q18-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_유사/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원기둥을 위에서 본 원 안에 한 변이 b인 정사각형 구멍이 그려져 있고, 원의 반지름 a와 정사각형의 한 변 b가 표시되어 있다.",
+    "solutionImageCaption": "겉넓이는 바깥 옆면 2πab, 남은 위아래 면 2(πa²−b²), 구멍 안쪽 네 면 4b²의 합인 2a(a+b)π+2b²이다. 2a(a+b)=90, 2b²=32에서 b=4, a=5이므로 a−b=1이고, 따라서 답은 ② 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1049,7 +1061,11 @@ window.questionBank = [
     "sourceQid": 19,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q19-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q19-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q19-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_유사/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 점 A, B, C, D가 선으로 이어져 있고, A와 C, A와 B, B와 C, A와 D, C와 D가 연결되어 있으며 B와 D 사이에는 선이 없다.",
+    "solutionImageCaption": "A에 k가지, C에 k−1가지, B와 D에 각각 k−2가지를 칠할 수 있으므로 k(k−1)(k−2)²=1050이다. k=7일 때 7×6×25=1050이 되므로 답은 ③ 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1206,7 +1222,11 @@ window.questionBank = [
     "sourceQid": 22,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q22-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q22-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_복성고_1학기_기말_고1_유사_plans/q22-solution.plan.json",
+    "solutionImage": "assets/images/26_복성고_1학기_기말_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 첫째 줄에 −2부터 5까지의 닫힌 구간이, 둘째 줄에 −3부터 3까지의 열린 구간이 표시되어 있다.",
+    "solutionImageCaption": "예: k=0일 때 공통 정수는 −2부터 2까지이고 합은 0이다. 이차부등식의 해는 −2≤x≤5이고, 이동 구간이 만드는 정수 다섯 개의 합이 5가 되는 k는 1과 7이므로 답은 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

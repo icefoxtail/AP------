@@ -576,9 +576,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q13-solution.svg",
-    "solutionImageAlt": "a=3, 2, −2의 대칭차 결과를 비교한 경우표",
-    "solutionImageCaption": "대칭차가 {0,1}인 경우는 a=2뿐이다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 세 개의 벤 다이어그램에 각각 a=3, a=2, a=−2인 경우의 집합 A와 B가 그려져 있고, 공통 원소 3과 2, A만·B만의 원소가 적혀 있다. A만과 B만의 부분이 회색으로 칠해져 있고, 위에 대칭차 {1, 7}, {0, 1}, {−4, −3}이 적혀 있다.",
+    "solutionImageCaption": "대칭차(색칠)가 {0,1}이면 B의 원소 2는 A에도 있어야 하므로 a-1=2 또는 a²-2=2에서 a=3, 2, -2를 얻는다. a=3이면 A={2,3,7}, B={1,2,3}으로 대칭차가 {1,7}, a=-2이면 A={-3,2,3}, B={-4,2,3}으로 {-4,-3}이라 조건에 맞지 않고, a=2이면 A={1,2,3}, B={0,2,3}으로 대칭차가 {0,1}이 되어 성립한다. 따라서 b=1+2+3=6, ab=12 (정답 ③).",
     "solutionImageSize": "full"
   },
   {
@@ -626,9 +626,9 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "주어진 두 선분 그래프와 y=2, y=1의 교점에서 f(t)의 원상을 읽는 해설 그래프",
-    "solutionImageCaption": "f(t)=2의 원상 −1/3은 치역 밖이고, f(t)=1의 원상 −2/3과 2만 남는다.",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고1_기출/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 함수 y=f(x)의 그래프가 (−1, 0)에서 (0, 3)까지 올라갔다가 (3, 0)까지 내려가는 꺾은선으로 그려져 있고, 수평선 y=2, y=1과 만나는 점 (−1/3, 2), (1, 2), (−2/3, 1), (2, 1)이 표시되어 있다.",
+    "solutionImageCaption": "f(f(x))=2이면 먼저 f(t)=2에서 t=-1/3 또는 t=1이다(y=2와의 교점 P, Q). 따라서 f(x)=-1/3 또는 f(x)=1이다. f의 치역은 [0,3]이라 f(x)=-1/3은 해가 없고(정의역 밖), f(x)=1에서 x=-2/3, x=2(y=1과의 교점 R, T)이다. 구하는 곱은 (-2/3)·2=-4/3이다 (정답 ④).",
     "solutionImageSize": "full"
   },
   {
