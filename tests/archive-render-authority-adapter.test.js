@@ -88,8 +88,8 @@ test('direct mobile problem flow admits only explicitly marked inline images thr
   assert.doesNotMatch(mobile, /:has\(\.q-box \.q-content img\)/);
   const mixed = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
   assert.match(mixed, /archive2-preview-mobile\.css\?v=20261117-figure-large-1/);
-  const wrapSource = engine.slice(engine.indexOf('function wrapLatex('), engine.indexOf('function normalizeSolutionLineBreaks('));
-  const wrapLatex = vm.runInNewContext('(' + wrapSource.trim() + ')');
+  // wrapLatex 본문은 engine.html·mixed_engine.html이 같이 쓰는 render-text.js에 있다.
+  const { wrapLatex } = require('../archive/render-text.js');
   const marked = '<img src="assets/images/example/q12.png" class="exam-img" alt="그림" data-archive-mobile-figure="true">';
   assert.equal(wrapLatex('그림을 본다.<br>' + marked), '그림을 본다.<br>' + marked);
 });

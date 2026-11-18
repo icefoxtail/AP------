@@ -1,0 +1,488 @@
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === "object" && module.exports) module.exports = api;
+  else root.APRenderText = api;
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+  "use strict";
+  // 시험지 본문·해설·보기·정답 문자열을 화면용 HTML로 바꾸는 순수 함수 모음.
+  // engine.html(원본 시험지)과 mixed_engine.html(문제지 만들기·단원별 기출)이 이 파일 하나를 같이 쓴다.
+  // 두 HTML에 같은 이름 함수를 따로 복사해 두면 한쪽만 고쳐져 같은 문항이 화면마다 다르게 나온다(tests/archive-render-text-shared.test.js가 막는다).
+  // DOM·window·MathJax에 닿지 않는다. 표 엔진(ApTableEngine)만 globalThis에서 읽고, 시험에서는 setTableEngine으로 바꿀 수 있다.
+  let tableEngineOverride = null;
+  function tableEngine() { return tableEngineOverride || (typeof globalThis !== "undefined" ? globalThis.ApTableEngine : null) || null; }
+  function setTableEngine(engine) { tableEngineOverride = engine || null; }
+
+  const MATH_SEGMENT_RE = /(\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$)/g;
+
+  // 한글·자모로 시작하는 <이름표>만 글자로 바꾼다. 진짜 태그(영문 이름이나 /)와 속성 값 안의 한글은 건드리지 않는다.
+  function escapeLooseAngleLabels(html) {
+      return String(html).replace(/<(?=[가-힣ㄱ-ㅎ])([^<>]*)>/g, '&lt;$1&gt;');
+  }
+
+  // 수식($...$) 밖 글자 한 조각에서 $ 없이 쓴 TeX 명령(\frac, \circ 등)을 수식으로 감싼다.
+  // 하위 첨자(_) 패턴이 바로 뒤의 __HTMLTAG_n__ 표지를 하위 첨자로 먹지 않게 `__`에서 멈춘다.
+  function wrapBareLatex(seg) {
+      const trimmed = seg.trim(); if (!trimmed) return seg;
+      const hasKorean = /[가-힣]/.test(seg);
+      // Source strings may encode line breaks as a literal backslash-n before
+      // HTML blocks; exclude that token from TeX-macro detection.
+      const hasLatex = /\\[a-zA-Z]/.test(seg.replace(/\\n(?![a-zA-Z])/g, ''));
+      if (!hasKorean && /\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}/.test(seg)) return `$$${seg}$$`;
+      if (!hasKorean && hasLatex && /^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\!;:]+$/.test(trimmed)) return `$${trimmed}$`;
+      if (hasKorean && hasLatex) return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_(?!_)\{?(?:(?!__)[^}\s])+\}?)?(?:\^\{?(?:(?!__)[^}\s])+\}?)?)/g, '$$$1$$');
+      return seg;
+  }
+
+  // 표·보기 상자는 통째로 보호하되(표 트리를 지키려고), 그 안의 글자는 보호하지 않은 글처럼 다룬다:
+  // 수식 안 <, >는 글자로(`$x<y$`의 <y가 태그로 읽히지 않게), 한글 <이름표>도 글자로, $ 없는 TeX 명령은 수식으로.
+  function repairStructuralBlock(block) {
+      return String(block).split(MATH_SEGMENT_RE).map((seg, idx) => {
+          if (idx % 2 === 1) return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          return escapeLooseAngleLabels(seg)
+              .split(/(<\/?[a-zA-Z][^>]*>|<!--[\s\S]*?-->)/)
+              .map((piece, pieceIdx) => (pieceIdx % 2 === 1 ? piece : wrapBareLatex(piece)))
+              .join('');
+      }).join('');
+  }
+
+  function wrapLatex(text) {
+      if (text == null) return '';
+      let s = String(text);
+      // AP Table Engine: pipe tables and legacy HTML tables become one canonical table before any text rewriting.
+      const tables = tableEngine();
+      if (tables) s = tables.renderApTables(s);
+      // Table and structured question blocks must survive text/LaTex rewriting as
+      // complete HTML units. Protecting only individual tag boundaries loses the
+      // table tree when the intervening content is split around math segments.
+      const structuralBlocks = [];
+      const saveStructuralBlock = match => {
+          const token = `__WRAP_STRUCTURAL_BLOCK_${structuralBlocks.length}__`;
+          // 표 셀 안의 <보기>·<조건> 같은 꺾쇠 이름표는 HTML 태그가 아니라 글자다. 표를 통째로 보호하면 브라우저가 모르는 태그로 읽어 글자가 사라지므로 미리 글자로 바꿔 둔다.
+          structuralBlocks.push(repairStructuralBlock(match));
+          return token;
+      };
+      s = s
+          .replace(/<div[^>]*class=["'][^"']*question-table-wrap[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, saveStructuralBlock)
+          .replace(/<table[\s\S]*?<\/table>/gi, saveStructuralBlock);
+      s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
+      s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
+      const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
+      const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
+      const htmlTags = [];
+      // Split math before protecting HTML tags.  Otherwise an inequality such as
+      // `$5a<b<7a$` is mistaken for a malformed `<b...>` tag and leaks raw
+      // delimiters into the rendered solution.
+      // Valid display/inline math can contain a source line break. Treat the
+      // complete dollar-delimited segment as math and normalize only its line
+      // breaks to spaces before the final HTML <br> pass.
+      const mathSegmentRe = MATH_SEGMENT_RE;
+      s = s.split(mathSegmentRe).map((seg, idx) => {
+          if (idx % 2 === 1) return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r\n|\r|\n/g, ' ');
+          let t = seg;
+          t = t.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
+              const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
+          });
+          t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));
+          return t.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }).join('');
+      // HTML tags are represented by restore tokens at this point.  They are
+      // ordinary non-math segments and must stay in the split stream until the
+      // final restore; including the tokens in the delimiter silently discards
+      // inline <img>/<br>/<div> markup before DOM construction.
+      s = s.split(mathSegmentRe).map((seg, idx) => {
+          if (idx % 2 === 1) return seg;
+          return wrapBareLatex(seg);
+      }).join('');
+      s = s.split(mathSegmentRe).map((seg, idx) => {
+          if (idx % 2 === 1) return seg;
+          return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
+      }).join('');
+      s = s.split(mathSegmentRe).map((seg, idx) => {
+          if (idx % 2 === 0) return seg;
+          return seg.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }).join('');
+      s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
+      return s
+          .replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '')
+          .replace(/__WRAP_STRUCTURAL_BLOCK_(\d+)__/g, (_, i) => structuralBlocks[i] || '');
+  }
+
+  function normalizeSolutionLineBreaks(text) {
+      // A student-supplement paragraph may legitimately begin with an ASCII variable
+      // (for example, "A,B,C"). Protect only the known section marker so that its
+      // escaped line break is not mistaken for a LaTeX command such as \\neq.
+      return String(text || '')
+          .replace(/(\[학생용 보강\])\\n/g, '$1\n')
+          .replace(/\\n(?![a-zA-Z])/g, '\n');
+  }
+
+  function extractChoice(c) {
+      if (c === null || c === undefined) return '';
+      if (typeof c === 'object') return c.text || c.content || c.value || c.answer || Object.values(c)[0] || '';
+      return String(c);
+  }
+
+  function stripChoicePrefix(text) {
+      return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|(?:\(?\d+\)|\d+\.(?!\d)|\d+\))(?=\s))\s*/, '').trim();
+  }
+
+  function detectChoiceRenderMode(choices) {
+      if (!choices || choices.length === 0) return 'compact';
+
+      const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
+      // LaTeX 수식 제거 후 길이 측정 (LaTeX 소스 길이로 오인식 방지)
+      const stripped = texts.map(t => t.replace(/\$\$[\s\S]*?\$\$/g, '~').replace(/\$[^$\n]*?\$/g, '~').trim());
+
+      const avgLen = stripped.reduce((s, t) => s + t.length, 0) / Math.max(stripped.length, 1);
+      const isVeryLong = stripped.some(t => t.length > 36);
+      const hasLineBreak = texts.some(t => /\\n|\n|<br/i.test(t));
+      const hasSentence = stripped.some(t => /[.?!。]|입니다|한다|된다|아니다|같다|옳다|옳지/.test(t) && t.length > 20);
+      // boxed: 선택지 자체에 ㄱ/ㄴ/㉠/㉡ 마커가 2개 이상 포함된 경우만 (보기형 선택지)
+      const hasMultiMarker = texts.some(t => (t.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤/g) || []).length >= 2);
+
+      if (hasMultiMarker) return 'boxed';
+      if (isVeryLong || hasLineBreak || hasSentence || avgLen > 28) return 'block';
+
+      const isLong = stripped.some(t => t.length > 20);
+      const hasBlockPrefix = texts.some(t => /^[가-힣ㄱ-ㅎa-zA-Z][\.\)]/.test(t));
+
+      return (isLong || hasBlockPrefix) ? 'block' : 'compact';
+  }
+
+  // options.formatChoice: 보기 한 개를 화면용으로 고치는 선택 훅(문제지 만들기가 GeneratedMockSelection.formatChoiceForDisplay를 넘긴다). 없으면 그대로 쓴다.
+  function renderChoicesHTML(q, options) {
+      const formatChoice = typeof options?.formatChoice === 'function' ? options.formatChoice : null;
+      if (q.choicesEmbeddedInImage === true || q.sourcePayload?.choicesEmbeddedInImage === true) return '';
+      const circled = ['①', '②', '③', '④', '⑤'];
+      const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
+      if (isSubjective) return '<div class="answer-box"></div>';
+      const requestedColumns = Number.parseInt(q.choiceColumns, 10);
+      const hasCustomGrid = requestedColumns >= 1 && requestedColumns <= 5;
+      const mode = hasCustomGrid ? 'grid' : detectChoiceRenderMode(q.choices);
+      const itemsHTML = q.choices.map((c, ci) => {
+          const choiceText = extractChoice(c);
+          const shown = q.preserveChoicePrefixes ? choiceText : stripChoicePrefix(choiceText);
+          const text = wrapLatex(formatChoice ? formatChoice(shown) : shown);
+          return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
+      }).join('');
+      const gridStyle = hasCustomGrid ? ` style="grid-template-columns:repeat(${requestedColumns}, minmax(0, 1fr))"` : '';
+      return `<div class="choices choices-${mode}"${gridStyle}>${itemsHTML}</div>`;
+  }
+
+  function protectRenderSegments(html) {
+      const tokens = [];
+      const save = (match) => {
+          const token = `__PROTECTED_SEGMENT_${tokens.length}__`;
+          tokens.push(match);
+          return token;
+      };
+
+      // 블록 HTML을 먼저 보호한 뒤 인라인 수식을 보호한다.
+      // 기존 순서(수식 → table/div)는 table 안의 수식 토큰이 table 토큰 안에 다시 들어가면서
+      // __PROTECTED_SEGMENT_n__ 문자열이 한 번만 복원되고 화면에 그대로 남는 문제가 있었다.
+      let protectedHtml = String(html || '')
+          .replace(/<div[^>]*class=["'][^"']*(?:question-table-wrap|question-note-box|box)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, save)
+          .replace(/<table[\s\S]*?<\/table>/gi, save)
+          .replace(/\$\$[\s\S]*?\$\$/g, save)
+          .replace(/\$[^$\n]*?\$/g, save);
+
+      return {
+          html: protectedHtml,
+          restore(value) {
+              let restored = String(value || '');
+              // 과거 저장본/예외 케이스에 중첩 토큰이 남아도 끝까지 복원한다.
+              for (let pass = 0; pass < tokens.length + 2 && /__PROTECTED_SEGMENT_\d+__/.test(restored); pass++) {
+                  restored = restored.replace(/__PROTECTED_SEGMENT_(\d+)__/g, (match, i) => {
+                      const idx = Number(i);
+                      if (tokens[idx] !== undefined) return tokens[idx];
+                      console.warn('[JS Archive] protected segment restore failed:', match);
+                      return '';
+                  });
+              }
+              if (/__PROTECTED_SEGMENT_\d+__/.test(restored)) {
+                  console.warn('[JS Archive] protected segment remained after restore:', restored);
+              }
+              return restored;
+          }
+      };
+  }
+
+  function normalizeHangulStatementBreaks(html) {
+      if (!html) return '';
+
+      const tokens = [];
+      const save = (kind, match) => {
+          const token = '__HANGUL_STATEMENT_' + kind + '_' + tokens.length + '__';
+          tokens.push(match);
+          return token;
+      };
+
+      // Keep the existing note/box wrappers available for normalization, while
+      // shielding structures whose text is not a question statement stream.
+      let protectedHtml = String(html)
+          .replace(
+              /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
+              match => save('BLOCK', match)
+          )
+          .replace(
+              /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi,
+              match => save('BLOCK', match)
+          )
+          .replace(
+              /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
+              match => save('MATH', match)
+          )
+          .replace(/<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi, match => save('TAG', match));
+
+      const rank = new Map([['ㄱ', 0], ['ㄴ', 1], ['ㄷ', 2], ['ㄹ', 3], ['ㅁ', 4]]);
+      const markers = [...protectedHtml.matchAll(/([ㄱㄴㄷㄹㅁ])\./g)];
+      const replacements = [];
+
+      for (let index = 1; index < markers.length; index += 1) {
+          const previous = markers[index - 1];
+          const current = markers[index];
+          if (rank.get(current[1]) <= rank.get(previous[1])) continue;
+
+          const between = protectedHtml.slice(previous.index + previous[0].length, current.index);
+          if (/__HANGUL_STATEMENT_BLOCK_\d+__/.test(between)) continue;
+
+          const separatorMatch = between.match(
+              /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__HANGUL_STATEMENT_TAG_\d+__)*$/i
+          );
+          const separator = separatorMatch ? separatorMatch[0] : '';
+          const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
+          const tagMatches = [...separator.matchAll(/__HANGUL_STATEMENT_TAG_\d+__/gi)];
+          const lastTag = tagMatches[tagMatches.length - 1];
+          const normalizedSeparator = breakMatches.length > 0
+              ? separator.slice(0, breakMatches[0].index)
+                  + '<br>'
+                  + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
+                      .replace(/<br\s*\/?>/gi, '')
+                      .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                      .replace(/^\s+|\s+$/g, '')
+              : lastTag
+              ? separator.slice(0, lastTag.index + lastTag[0].length)
+                  + separator.slice(lastTag.index + lastTag[0].length)
+                      .replace(/<br\s*\/?>/gi, '')
+                      .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                      .replace(/\s+/g, '')
+                  + '<br>'
+              : separator
+                  .replace(/<br\s*\/?>/gi, '')
+                  .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                  .replace(/\s+/g, '') + '<br>';
+
+          replacements.push({
+              start: current.index - separator.length,
+              end: current.index,
+              value: normalizedSeparator
+          });
+      }
+
+      for (let index = replacements.length - 1; index >= 0; index -= 1) {
+          const replacement = replacements[index];
+          protectedHtml = protectedHtml.slice(0, replacement.start)
+              + replacement.value
+              + protectedHtml.slice(replacement.end);
+      }
+
+      return protectedHtml.replace(
+          /__HANGUL_STATEMENT_(?:BLOCK|MATH|TAG)_(\d+)__/g,
+          (match, index) => tokens[Number(index)] ?? ''
+      );
+  }
+
+  function normalizeConditionMarkerBreaks(html) {
+      if (!html) return '';
+
+      const tokens = [];
+      const conditionTokenRe = /__CONDITION_(?:BLOCK|MATH|TAG)_(\d+)__/g;
+      const conditionTagTokenRe = /__CONDITION_TAG_\d+__/g;
+      const conditionTagIndexRe = /^__CONDITION_TAG_(\d+)__$/;
+      const save = (kind, match) => {
+          const token = '__CONDITION_' + kind + '_' + tokens.length + '__';
+          tokens.push(match);
+          return token;
+      };
+      const tagTokenSource = token => {
+          const match = String(token || '').match(conditionTagIndexRe);
+          return match ? String(tokens[Number(match[1])] || '') : '';
+      };
+      const isOpeningTagToken = token => /^<[A-Za-z][^>]*>$/.test(tagTokenSource(token));
+      const findMarkerWrapperStart = separator => {
+          conditionTagTokenRe.lastIndex = 0;
+          const tagMatches = [...String(separator || '').matchAll(conditionTagTokenRe)];
+          let lastNonOpening = -1;
+          for (let index = 0; index < tagMatches.length; index += 1) {
+              if (!isOpeningTagToken(tagMatches[index][0])) lastNonOpening = index;
+          }
+          for (let index = lastNonOpening + 1; index < tagMatches.length; index += 1) {
+              if (isOpeningTagToken(tagMatches[index][0])) return tagMatches[index];
+          }
+          return null;
+      };
+      let protectedHtml = String(html)
+          .replace(
+              /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
+              match => save('BLOCK', match)
+          )
+          .replace(
+              /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<img\b[^>]*>/gi,
+              match => save('BLOCK', match)
+          )
+          .replace(
+              /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
+              match => save('MATH', match)
+          )
+          .replace(
+              /<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi,
+              match => save('TAG', match)
+          );
+
+      const markers = [];
+      const addMarker = (match, index, label) => markers.push({ index, end: index + match.length, label });
+      for (const match of protectedHtml.matchAll(/[（(][가나다라마][）)]/g)) {
+          addMarker(match[0], match.index, match[0].replace(/[（()）]/g, ''));
+      }
+      for (const match of protectedHtml.matchAll(/(?:^|[\s>]|__CONDITION_TAG_\d+__)([가나다라마])\./g)) {
+          addMarker(match[0].slice(-2), match.index + match[0].length - 2, match[1]);
+      }
+      markers.sort((left, right) => left.index - right.index);
+
+      const rank = new Map([['가', 0], ['나', 1], ['다', 2], ['라', 3], ['마', 4]]);
+      const replacements = [];
+      for (let index = 1; index < markers.length; index += 1) {
+          const previous = markers[index - 1];
+          const current = markers[index];
+          if (rank.get(current.label) <= rank.get(previous.label)) continue;
+
+          const between = protectedHtml.slice(previous.end, current.index);
+          const separatorMatch = between.match(
+              /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__CONDITION_TAG_\d+__)*$/i
+          );
+          const separator = separatorMatch ? separatorMatch[0] : '';
+          const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
+          const markerOnlySeparator = between
+              .replace(/<br\s*\/?>/gi, '')
+              .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+              .replace(conditionTagTokenRe, '')
+              .replace(/\s+/g, '');
+          if (!breakMatches.length && /^[,，、;；:：~〜～∼\-–—…·와]*$/.test(markerOnlySeparator)) continue;
+          const markerWrapperStart = findMarkerWrapperStart(separator);
+          let normalizedSeparator;
+          if (markerWrapperStart) {
+              const beforeWrapper = separator.slice(0, markerWrapperStart.index)
+                  .replace(/<br\s*\/?>/gi, '')
+                  .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                  .replace(/\s+$/g, '');
+              const afterWrapper = separator.slice(markerWrapperStart.index)
+                  .replace(/<br\s*\/?>/gi, '')
+                  .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                  .replace(/\s+/g, '');
+              normalizedSeparator = beforeWrapper + '<br>' + afterWrapper;
+          } else {
+              normalizedSeparator = breakMatches.length > 0
+                  ? separator.slice(0, breakMatches[0].index)
+                      + '<br>'
+                      + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
+                          .replace(/<br\s*\/?>/gi, '')
+                          .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                          .replace(/^\s+|\s+$/g, '')
+                  : separator
+                      .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
+                      .replace(/\s+/g, '')
+                      + '<br>';
+          }
+
+          replacements.push({
+              start: current.index - separator.length,
+              end: current.index,
+              value: normalizedSeparator
+          });
+      }
+
+      for (let index = replacements.length - 1; index >= 0; index -= 1) {
+          const replacement = replacements[index];
+          protectedHtml = protectedHtml.slice(0, replacement.start)
+              + replacement.value
+              + protectedHtml.slice(replacement.end);
+      }
+
+      conditionTokenRe.lastIndex = 0;
+      return protectedHtml.replace(
+          conditionTokenRe,
+          (match, index) => tokens[Number(index)] ?? ''
+      );
+  }
+
+  function normalizeViewBlocks(html) {
+      if (!html) return '';
+      const normalizedHtml = normalizeConditionMarkerBreaks(normalizeHangulStatementBreaks(html));
+      const protectedState = protectRenderSegments(normalizedHtml);
+      let out = protectedState.html;
+
+      // 보기/조건/자료 라벨은 문자열 시작 또는 명시적 줄바꿈 뒤에서만 블록으로 승격한다.
+      // 발문 안의 "보기에서", "보기의", "보기 중" 같은 인라인 단어를 별도 박스로
+      // 오인하면 문장이 강제로 줄바꿈되고 뒤 내용 전체가 박스에 들어갈 수 있다.
+      out = out.replace(
+          /(^|(?:<br\s*\/?>\s*)+)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
+          (match, boundary, body) => {
+              const plain = body.replace(/<[^>]+>/g, '').trim();
+              const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤|①|②|③|④|⑤/g) || []).length;
+              if (plain.length < 60 && markerCount < 2) return match;
+              const label = /조건\s*:/.test(match) ? '조건' : (/자료\s*:/.test(match) ? '자료' : '보기');
+              return `${boundary}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
+          }
+      );
+
+      out = out.replace(
+          /((?:<br\s*\/?>\s*)*)((?:[ㄱㄴㄷㄹㅁ]\.\s*[\s\S]*?){2,})(?=(?:<br\s*\/?>\s*){2,}|$)/g,
+          (match, breaks, body) => {
+              const plain = body.replace(/<[^>]+>/g, '').trim();
+              const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\./g) || []).length;
+              if (plain.length < 60 || markerCount < 2) return match;
+              return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
+          }
+      );
+
+      out = out.replace(
+          /((?:<br\s*\/?>\s*)*)((?:㉠\s*[\s\S]*?㉡\s*[\s\S]*?(?:㉢|㉣|㉤)[\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}|$)/g,
+          (match, breaks, body) => {
+              const plain = body.replace(/<[^>]+>/g, '').trim();
+              const markerCount = (plain.match(/㉠|㉡|㉢|㉣|㉤/g) || []).length;
+              if (plain.length < 60 || markerCount < 3) return match;
+              return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
+          }
+      );
+
+      return protectedState.restore(out);
+  }
+
+  function formatGridAnswer(answer) {
+      const raw = String(answer ?? '–').replace(/\s+\/\s+(?=\(\d+\))/g, '<br>');
+      // Fraction highlighting is only for plain-text answer atoms.  Injecting
+      // HTML spans inside an existing $...$ segment prevents MathJax from
+      // recognizing the segment and leaks literal dollar signs into the answer
+      // table (notably for fractional coordinates and slope/intercept answers).
+      const value = raw.split(/(\$[^$]*\$)/g).map(part => {
+          if (part.startsWith('$') && part.endsWith('$')) return part;
+          return part.replace(/\b\d+\/\d+\b/g, match => `<span class="ans-atomic">${match}</span>`);
+      }).join('');
+      return wrapLatex(value);
+  }
+
+  return {
+    wrapLatex,
+    normalizeSolutionLineBreaks,
+    extractChoice,
+    stripChoicePrefix,
+    detectChoiceRenderMode,
+    renderChoicesHTML,
+    protectRenderSegments,
+    normalizeHangulStatementBreaks,
+    normalizeConditionMarkerBreaks,
+    normalizeViewBlocks,
+    formatGridAnswer,
+    setTableEngine
+  };
+});

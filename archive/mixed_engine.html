@@ -59,6 +59,7 @@
     <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
+    <script src="render-text.js?v=20261118-render-text-1"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -1450,64 +1451,12 @@ async function measureRenderPhase(label, work) {
 }
 let pageCount = 0;
 
-/** [성역] wrapLatex */
-function wrapLatexPreserveBlocks(text) {
-    if (text == null) return '';
-    let s = String(text);
-    // AP Table Engine: pipe tables and legacy HTML tables become one canonical table before any text rewriting.
-    if (typeof globalThis !== 'undefined' && globalThis.ApTableEngine) s = globalThis.ApTableEngine.renderApTables(s);
-    s = s.replace(/\\\([\s\S]+?\\\)/g, m => '$' + m.slice(2, -2) + '$');
-    s = s.replace(/\\\[[\s\S]+?\\\]/g, m => '$$' + m.slice(2, -2) + '$$');
-    // A source line break within inline TeX is whitespace, not a prose BR.
-    // Keep the complete formula together before the single-line token passes.
-    s = s.replace(/(\$\$[\s\S]*?\$\$)|(\$[^$]*?\$)/g, (match, display, inline) => display || inline.replace(/\r\n|\r|\n/g, ' '));
-    const combRepl = T => (m, a1, a2, b1, b2) => `$_{${a1||a2}}${T}_{${b1||b2}}$`;
-    const combPat = prefix => new RegExp(`(?<!\\$)(?:\\{\\}|\\[\\])_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))${prefix}_(?:\\{([^}]+)\\}|([a-zA-Z0-9+\\-]+))`, 'g');
-    const htmlTags = [];
-    // Escape comparison operators before shielding real HTML tags. Otherwise
-    // a valid math block such as `$v<u$ ... $u>v$` can be captured as an
-    // HTML <u> tag and restored later as malformed solution markup.
-    s = s.replace(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g, mathBlock =>
-        mathBlock.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    );
-    s = s.replace(/<svg[\s\S]*?<\/svg>|<img[^>]*>|<br\s*\/?>|\n*<\/?p(?![a-zA-Z])[^>]*>\n*|<\/?(div|span|b|i|strong|em|u|sup|sub|table|thead|tbody|tr|th|td|colgroup|col)[^>]*>/gi, m => {
-        const token = `__HTMLTAG_${htmlTags.length}__`; htmlTags.push(m); return token;
-    });
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
-        if (idx % 2 === 1) return seg;
-        let t = seg;
-        t = t.replace(combPat('C'), combRepl('C')).replace(combPat('H'), combRepl('H')).replace(combPat('P'), combRepl('P'));
-        return t.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }).join('');
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$|__HTMLTAG_\d+__)/g).map((seg, idx) => {
-        if (idx % 2 === 1) return seg;
-        const trimmed = seg.trim(); if (!trimmed) return seg;
-        const hasKorean = /[가-힣]/.test(seg); const hasLatex = /\\[a-zA-Z]/.test(seg);
-        if (!hasKorean && /\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix|Vmatrix)\}/.test(seg)) return `$$${seg}$$`;
-        if (!hasKorean && hasLatex && /^[0-9a-zA-Z\s\+\-\*\/\=\^\{\}\(\)\[\]_\.,\\!;:]+$/.test(trimmed)) return `$${trimmed}$`;
-        if (hasKorean && hasLatex) return seg.replace(/(\\[a-zA-Z]+(?:\{[^}]*\})*(?:\{[^}]*\})*(?:_\{?[^}\s]+\}?)?(?:\^\{?[^}\s]+\}?)?)/g, '$$$1$$');
-        return seg;
-    }).join('');
-    s = s.split(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g).map((seg, idx) => {
-        if (idx % 2 === 1) return seg;
-        return seg.replace(/(\\\{(?:[^{}]|\{[^}]*\})*\\\})/g, '$$$1$$');
-    }).join('');
-    // Escape comparison operators in every math block independently. A
-    // split/map parity pass can become misaligned when an earlier formatter
-    // pass inserts or preserves adjacent math delimiters, allowing `$v<u$`
-    // or `$u>v$` to reach innerHTML as an HTML tag.
-    s = s.replace(/(\$\$[\s\S]*?\$\$|\$[^$\n]*?\$)/g, mathBlock =>
-        mathBlock.replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    );
-    s = s.replace(/\\n(?![a-zA-Z])/g, '<br>').replace(/\r\n|\r|\n/g, '<br>');
-    return s.replace(/__HTMLTAG_(\d+)__/g, (_, i) => htmlTags[i] || '');
-}
-function wrapLatex(text) { return wrapLatexPreserveBlocks(text); }
+// 문자열 처리 순수 함수는 render-text.js(APRenderText) 한 곳에 있다. 여기에는 같은 이름의 한 줄 위임만 둔다.
+function wrapLatexPreserveBlocks(text) { return APRenderText.wrapLatex(text); }
+function wrapLatex(text) { return APRenderText.wrapLatex(text); }
 
 /** [성역] autoCompress & fitQuestionBox */
-function normalizeSolutionLineBreaks(text) {
-    return String(text || '').replace(/\\n(?![a-zA-Z])/g, '\n');
-}
+function normalizeSolutionLineBreaks(text) { return APRenderText.normalizeSolutionLineBreaks(text); }
 
 function decorateSolutionSections(html) {
     let s = String(html || '');
@@ -1626,50 +1575,10 @@ function makeLongSolutionShell(sourceBox, qNo, continuation) {
 }
 
 /** Helper: Choice & Content Handling */
-function extractChoice(c) {
-    if (c == null) return '';
-    if (typeof c === 'object') return c.text || c.content || c.value || Object.values(c)[0] || '';
-    return String(c);
-}
-function stripChoicePrefix(text) {
-    return String(text || '').replace(/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\(?\d+\)|\d+\.(?!\d)|\d+\))\s*/, '').trim();
-}
-function detectChoiceRenderMode(choices) {
-    if (!choices || choices.length === 0) return 'compact';
-
-    const texts = choices.map(c => stripChoicePrefix(extractChoice(c)).trim());
-    // LaTeX 수식 제거 후 길이 측정 (LaTeX 소스 길이로 오인식 방지)
-    const stripped = texts.map(t => t.replace(/\$\$[\s\S]*?\$\$/g, '~').replace(/\$[^$\n]*?\$/g, '~').trim());
-
-    const avgLen = stripped.reduce((s, t) => s + t.length, 0) / Math.max(stripped.length, 1);
-    const isVeryLong = stripped.some(t => t.length > 36);
-    const hasLineBreak = texts.some(t => /\\n|\n|<br/i.test(t));
-    const hasSentence = stripped.some(t => /[.?!。]|입니다|한다|된다|아니다|같다|옳다|옳지/.test(t) && t.length > 20);
-    // boxed: 선택지 자체에 ㄱ/ㄴ/㉠/㉡ 마커가 2개 이상 포함된 경우만 (보기형 선택지)
-    const hasMultiMarker = texts.some(t => (t.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤/g) || []).length >= 2);
-
-    if (hasMultiMarker) return 'boxed';
-    if (isVeryLong || hasLineBreak || hasSentence || avgLen > 28) return 'block';
-
-    const isLong = stripped.some(t => t.length > 20);
-    const hasBlockPrefix = texts.some(t => /^[가-힣ㄱ-ㅎa-zA-Z][\.\)]/.test(t));
-
-    return (isLong || hasBlockPrefix) ? 'block' : 'compact';
-}
-function renderChoicesHTML(q) {
-    if (q.choicesEmbeddedInImage === true || q.sourcePayload?.choicesEmbeddedInImage === true) return '';
-    const circled = ['①', '②', '③', '④', '⑤'];
-    const isSubjective = !Array.isArray(q.choices) || q.choices.length === 0 || q.choices[0] === '주관식' || q.choices.every(c => extractChoice(c).trim() === '');
-    if (isSubjective) return '<div class="answer-box"></div>';
-    const mode = detectChoiceRenderMode(q.choices);
-    const itemsHTML = q.choices.map((c, ci) => {
-        const raw = stripChoicePrefix(extractChoice(c));
-        const display = window.GeneratedMockSelection?.formatChoiceForDisplay(raw) ?? raw;
-        const text = wrapLatex(display);
-        return `<div class="choice-item"><span class="choice-no">${circled[ci] || ''}</span><span class="choice-text">${text}</span></div>`;
-    }).join('');
-    return `<div class="choices choices-${mode}">${itemsHTML}</div>`;
-}
+function extractChoice(c) { return APRenderText.extractChoice(c); }
+function stripChoicePrefix(text) { return APRenderText.stripChoicePrefix(text); }
+function detectChoiceRenderMode(choices) { return APRenderText.detectChoiceRenderMode(choices); }
+function renderChoicesHTML(q) { return APRenderText.renderChoicesHTML(q, { formatChoice: window.GeneratedMockSelection?.formatChoiceForDisplay }); }
 function applyQuestionContentBreaks(html) {
     if (!html) return '';
     let count = 0;
@@ -1741,286 +1650,11 @@ function normalizeQuestionNotes(html) {
     );
 }
 
-function normalizeHangulStatementBreaks(html) {
-    if (!html) return '';
 
-    const tokens = [];
-    const save = (kind, match) => {
-        const token = '__HANGUL_STATEMENT_' + kind + '_' + tokens.length + '__';
-        tokens.push(match);
-        return token;
-    };
-
-    // Keep the existing note/box wrappers available for normalization, while
-    // shielding structures whose text is not a question statement stream.
-    let protectedHtml = String(html)
-        .replace(
-            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
-            match => save('MATH', match)
-        )
-        .replace(/<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi, match => save('TAG', match));
-
-    const rank = new Map([['ㄱ', 0], ['ㄴ', 1], ['ㄷ', 2], ['ㄹ', 3], ['ㅁ', 4]]);
-    const markers = [...protectedHtml.matchAll(/([ㄱㄴㄷㄹㅁ])\./g)];
-    const replacements = [];
-
-    for (let index = 1; index < markers.length; index += 1) {
-        const previous = markers[index - 1];
-        const current = markers[index];
-        if (rank.get(current[1]) <= rank.get(previous[1])) continue;
-
-        const between = protectedHtml.slice(previous.index + previous[0].length, current.index);
-        if (/__HANGUL_STATEMENT_BLOCK_\d+__/.test(between)) continue;
-
-        const separatorMatch = between.match(
-            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__HANGUL_STATEMENT_TAG_\d+__)*$/i
-        );
-        const separator = separatorMatch ? separatorMatch[0] : '';
-        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
-        const tagMatches = [...separator.matchAll(/__HANGUL_STATEMENT_TAG_\d+__/gi)];
-        const lastTag = tagMatches[tagMatches.length - 1];
-        const normalizedSeparator = breakMatches.length > 0
-            ? separator.slice(0, breakMatches[0].index)
-                + '<br>'
-                + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
-                    .replace(/<br\s*\/?>/gi, '')
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/^\s+|\s+$/g, '')
-            : lastTag
-            ? separator.slice(0, lastTag.index + lastTag[0].length)
-                + separator.slice(lastTag.index + lastTag[0].length)
-                    .replace(/<br\s*\/?>/gi, '')
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/\s+/g, '')
-                + '<br>'
-            : separator
-                .replace(/<br\s*\/?>/gi, '')
-                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+/g, '') + '<br>';
-
-        replacements.push({
-            start: current.index - separator.length,
-            end: current.index,
-            value: normalizedSeparator
-        });
-    }
-
-    for (let index = replacements.length - 1; index >= 0; index -= 1) {
-        const replacement = replacements[index];
-        protectedHtml = protectedHtml.slice(0, replacement.start)
-            + replacement.value
-            + protectedHtml.slice(replacement.end);
-    }
-
-    return protectedHtml.replace(
-        /__HANGUL_STATEMENT_(?:BLOCK|MATH|TAG)_(\d+)__/g,
-        (match, index) => tokens[Number(index)] ?? ''
-    );
-}
-
-function protectRenderSegments(html) {
-    const tokens = [];
-    const save = (match) => {
-        const token = `__PROTECTED_SEGMENT_${tokens.length}__`;
-        tokens.push(match);
-        return token;
-    };
-    let protectedHtml = String(html || '')
-        .replace(/\$\$[\s\S]*?\$\$/g, save)
-        .replace(/\$[^$\n]*?\$/g, save)
-        .replace(/<table[\s\S]*?<\/table>/gi, save)
-        .replace(/<div[^>]*class=["'][^"']*(?:question-note-box|box)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, save);
-    return {
-        html: protectedHtml,
-        restore(value) {
-            let restored = String(value || '');
-            for (let pass = 0; pass < tokens.length + 2 && /__PROTECTED_SEGMENT_\d+__/.test(restored); pass++) {
-                restored = restored.replace(/__PROTECTED_SEGMENT_(\d+)__/g, (match, i) => {
-                    const idx = Number(i);
-                    if (tokens[idx] !== undefined) return tokens[idx];
-                    console.warn('[JS Archive] protected segment restore failed:', match);
-                    return '';
-                });
-            }
-            if (/__PROTECTED_SEGMENT_\d+__/.test(restored)) {
-                console.warn('[JS Archive] protected segment remained after restore:', restored);
-            }
-            return restored;
-        }
-    };
-}
+function protectRenderSegments(html) { return APRenderText.protectRenderSegments(html); }
 
 
-function normalizeConditionMarkerBreaks(html) {
-    if (!html) return '';
-
-    const tokens = [];
-    const conditionTokenRe = /__CONDITION_(?:BLOCK|MATH|TAG)_(\d+)__/g;
-    const conditionTagTokenRe = /__CONDITION_TAG_\d+__/g;
-    const conditionTagIndexRe = /^__CONDITION_TAG_(\d+)__$/;
-    const save = (kind, match) => {
-        const token = '__CONDITION_' + kind + '_' + tokens.length + '__';
-        tokens.push(match);
-        return token;
-    };
-    const tagTokenSource = token => {
-        const match = String(token || '').match(conditionTagIndexRe);
-        return match ? String(tokens[Number(match[1])] || '') : '';
-    };
-    const isOpeningTagToken = token => /^<[A-Za-z][^>]*>$/.test(tagTokenSource(token));
-    const findMarkerWrapperStart = separator => {
-        conditionTagTokenRe.lastIndex = 0;
-        const tagMatches = [...String(separator || '').matchAll(conditionTagTokenRe)];
-        let lastNonOpening = -1;
-        for (let index = 0; index < tagMatches.length; index += 1) {
-            if (!isOpeningTagToken(tagMatches[index][0])) lastNonOpening = index;
-        }
-        for (let index = lastNonOpening + 1; index < tagMatches.length; index += 1) {
-            if (isOpeningTagToken(tagMatches[index][0])) return tagMatches[index];
-        }
-        return null;
-    };
-    let protectedHtml = String(html)
-        .replace(
-            /<div[^>]*class=["'][^"']*(?:\bchoices\b|\bsol-meta\b|\bsol-exp\b|\bsolution\b)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /<table\b[\s\S]*?<\/table>|<svg\b[\s\S]*?<\/svg>|<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<img\b[^>]*>/gi,
-            match => save('BLOCK', match)
-        )
-        .replace(
-            /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$(?!\$)[\s\S]*?(?<!\$)\$/g,
-            match => save('MATH', match)
-        )
-        .replace(
-            /<(?!br\b)\/?[A-Za-z][^>]*>|<!--[\s\S]*?-->/gi,
-            match => save('TAG', match)
-        );
-
-    const markers = [];
-    const addMarker = (match, index, label) => markers.push({ index, end: index + match.length, label });
-    for (const match of protectedHtml.matchAll(/[（(][가나다라마][）)]/g)) {
-        addMarker(match[0], match.index, match[0].replace(/[（()）]/g, ''));
-    }
-    for (const match of protectedHtml.matchAll(/(?:^|[\s>]|__CONDITION_TAG_\d+__)([가나다라마])\./g)) {
-        addMarker(match[0].slice(-2), match.index + match[0].length - 2, match[1]);
-    }
-    markers.sort((left, right) => left.index - right.index);
-
-    const rank = new Map([['가', 0], ['나', 1], ['다', 2], ['라', 3], ['마', 4]]);
-    const replacements = [];
-    for (let index = 1; index < markers.length; index += 1) {
-        const previous = markers[index - 1];
-        const current = markers[index];
-        if (rank.get(current.label) <= rank.get(previous.label)) continue;
-
-        const between = protectedHtml.slice(previous.end, current.index);
-        const separatorMatch = between.match(
-            /(?:\s|&(?:nbsp|ensp|emsp|thinsp);|<br\s*\/?>(?:\s*)?|__CONDITION_TAG_\d+__)*$/i
-        );
-        const separator = separatorMatch ? separatorMatch[0] : '';
-        const breakMatches = [...separator.matchAll(/<br\s*\/?>/gi)];
-        const markerOnlySeparator = between
-            .replace(/<br\s*\/?>/gi, '')
-            .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-            .replace(conditionTagTokenRe, '')
-            .replace(/\s+/g, '');
-        if (!breakMatches.length && /^[,，、;；:：~〜～∼\-–—…·와]*$/.test(markerOnlySeparator)) continue;
-        const markerWrapperStart = findMarkerWrapperStart(separator);
-        let normalizedSeparator;
-        if (markerWrapperStart) {
-            const beforeWrapper = separator.slice(0, markerWrapperStart.index)
-                .replace(/<br\s*\/?>/gi, '')
-                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+$/g, '');
-            const afterWrapper = separator.slice(markerWrapperStart.index)
-                .replace(/<br\s*\/?>/gi, '')
-                .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                .replace(/\s+/g, '');
-            normalizedSeparator = beforeWrapper + '<br>' + afterWrapper;
-        } else {
-            normalizedSeparator = breakMatches.length > 0
-                ? separator.slice(0, breakMatches[0].index)
-                    + '<br>'
-                    + separator.slice(breakMatches[0].index + breakMatches[0][0].length)
-                        .replace(/<br\s*\/?>/gi, '')
-                        .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                        .replace(/^\s+|\s+$/g, '')
-                : separator
-                    .replace(/&(?:nbsp|ensp|emsp|thinsp);/gi, '')
-                    .replace(/\s+/g, '')
-                    + '<br>';
-        }
-
-        replacements.push({
-            start: current.index - separator.length,
-            end: current.index,
-            value: normalizedSeparator
-        });
-    }
-
-    for (let index = replacements.length - 1; index >= 0; index -= 1) {
-        const replacement = replacements[index];
-        protectedHtml = protectedHtml.slice(0, replacement.start)
-            + replacement.value
-            + protectedHtml.slice(replacement.end);
-    }
-
-    conditionTokenRe.lastIndex = 0;
-    return protectedHtml.replace(
-        conditionTokenRe,
-        (match, index) => tokens[Number(index)] ?? ''
-    );
-}
-
-function normalizeViewBlocks(html) {
-    if (!html) return '';
-    const normalizedHtml = normalizeConditionMarkerBreaks(normalizeHangulStatementBreaks(html));
-    const protectedState = protectRenderSegments(normalizedHtml);
-    let out = protectedState.html;
-
-    out = out.replace(
-        /((?:<br\s*\/?>\s*)*)(?:\[보기\]|&lt;보기&gt;|<보기>|보기\s*:|조건\s*:|자료\s*:)\s*([\s\S]*?)(?=(?:<br\s*\/?>\s*){2,}|$)/gi,
-        (match, breaks, body) => {
-            const plain = body.replace(/<[^>]+>/g, '').trim();
-            const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\.|㉠|㉡|㉢|㉣|㉤|①|②|③|④|⑤/g) || []).length;
-            if (plain.length < 60 && markerCount < 2) return match;
-            const label = /조건\s*:/.test(match) ? '조건' : (/자료\s*:/.test(match) ? '자료' : '보기');
-            return `${breaks}<div class="question-note-box"><b>${label}</b><br>${body.trim()}</div>`;
-        }
-    );
-
-    out = out.replace(
-        /((?:<br\s*\/?>\s*)*)((?:[ㄱㄴㄷㄹㅁ]\.\s*[\s\S]*?){2,})(?=(?:<br\s*\/?>\s*){2,}|$)/g,
-        (match, breaks, body) => {
-            const plain = body.replace(/<[^>]+>/g, '').trim();
-            const markerCount = (plain.match(/[ㄱㄴㄷㄹㅁ]\./g) || []).length;
-            if (plain.length < 60 || markerCount < 2) return match;
-            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
-        }
-    );
-
-    out = out.replace(
-        /((?:<br\s*\/?>\s*)*)((?:㉠\s*[\s\S]*?㉡\s*[\s\S]*?(?:㉢|㉣|㉤)[\s\S]*?))(?=(?:<br\s*\/?>\s*){2,}|$)/g,
-        (match, breaks, body) => {
-            const plain = body.replace(/<[^>]+>/g, '').trim();
-            const markerCount = (plain.match(/㉠|㉡|㉢|㉣|㉤/g) || []).length;
-            if (plain.length < 60 || markerCount < 3) return match;
-            return `${breaks}<div class="question-note-box">${body.trim()}</div>`;
-        }
-    );
-
-    return protectedState.restore(out);
-}
+function normalizeViewBlocks(html) { return APRenderText.normalizeViewBlocks(html); }
 
 function sanitizeProtectedSegments(html) {
     const value = String(html || '');
@@ -3014,10 +2648,7 @@ async function renderSol(area, data) {
     }
 }
 
-function formatGridAnswer(answer) {
-    const value = String(answer ?? '–').replace(/\s+\/\s+(?=\(\d+\))/g, '<br>');
-    return wrapLatex(value);
-}
+function formatGridAnswer(answer) { return APRenderText.formatGridAnswer(answer); }
 
 function renderAns(area, data, perPage = 40) {
     if (buildContext && new URLSearchParams(buildContext.input.url).get('executor') !== 'legacy') return APAnswerRenderExecutor.render({ area, data, perPage, deps: mixedExecutorDeps() });
