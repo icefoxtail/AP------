@@ -110,7 +110,7 @@ g(c, "add", "-A"); g(c, "commit", "-q", "-m", "competitor noise"); g(c, "push", 
   assert.match(r.summary, /attempt 1: base `[0-9a-f]{40}`/);
   assert.match(r.summary, /attempt 3: base `[0-9a-f]{40}`/);
   assert.ok(r.summary.includes(remoteTip), "summary names the final remote SHA");
-  assert.match(r.summary, /next action: Re-run this workflow via workflow_dispatch.*competing writer = [0-9a-f]+ test: competitor noise/s);
+  assert.match(r.summary, /next action: .*Re-run this workflow via workflow_dispatch.*competing writer = [0-9a-f]+ test: competitor noise/s);
   const log = f.originLog();
   assert.equal(log.filter(s => s === "competitor noise").length, 3, "every competitor commit survives (no force push)");
   assert.equal(log.length, 4, "seed + 3 competitor commits, none of ours");

@@ -200,7 +200,7 @@ export function pushDerivedWithRetry(opt, { cwd = process.cwd(), log = console.l
 }
 
 const NEXT_ACTION = {
-  RETRY_EXHAUSTED: r => `Re-run this workflow via workflow_dispatch after main settles; competing writer = ${r.competitor}.`,
+  RETRY_EXHAUSTED: r => `Nothing was pushed; the next push or hourly run redoes it on the newer main. Re-run this workflow via workflow_dispatch after main settles to do it sooner; competing writer = ${r.competitor}.`,
   PUSH_REJECTED: () => "The push was rejected although main did not move (permissions, branch protection or network). Fix the cause in the error above, then re-run this workflow via workflow_dispatch.",
   REGENERATE_FAILED: r => `Regeneration/validation failed on the new main base (${r.error}). Read the step log above, fix the input data it names, then re-run via workflow_dispatch. Competing writer = ${r.competitor}.`,
   NO_REGENERATE: r => `Main moved first and no regenerate command is configured; re-run via workflow_dispatch. Competing writer = ${r.competitor}.`,
