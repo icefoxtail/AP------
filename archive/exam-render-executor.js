@@ -58,13 +58,16 @@
         return clipped;
     }
 
-    function usesEqualSlots(qpp, questions, deps) {
+    // allowSpan: 시험지 렌더(render)는 입구(APRenderStateNormalizer.renderQuestionLayout)에서 배치 힌트를 이미 지웠고 layoutForce만
+    // subjective-2up으로 남아 있다. 그래서 쪽당 4문항이면 항상 균등 칸 엔진이 놓고, 한 단 전체(span 2)는 그 엔진이 정한다.
+    // 반 합성(renderComposed)은 입구 정리가 없어 예전처럼 태그가 있으면 옛 갈래를 쓴다.
+    function usesEqualSlots(qpp, questions, deps, allowSpan = false) {
         const url = deps.engineUrl || root.location?.href || 'https://ap.invalid/';
         const params = new URL(url, 'https://ap.invalid/').searchParams;
         if (Number(qpp) !== 4 || params.get('slotEngine') === 'legacy') return false;
-        if (params.get('equalSlots') !== '1' && questions.some(q => q.wide === true || ['fullwidth', 'subjective-2up', 'subjective-4up'].includes(q.layoutTag))) return false;
+        if (!allowSpan && params.get('equalSlots') !== '1' && questions.some(q => q.wide === true || ['fullwidth', 'subjective-2up', 'subjective-4up'].includes(q.layoutTag))) return false;
         if (!root.APEqualSlotEngine) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
-        return root.APEqualSlotEngine.enabled(qpp, url, questions);
+        return root.APEqualSlotEngine.enabled(qpp, url, questions, allowSpan);
     }
 
     function buildSlotPages(items, qpp, forcedWide) {
@@ -203,10 +206,10 @@
             staging.appendChild(box);
             return { q, box, originalIndex: i };
         });
-        if (usesEqualSlots(appState.qpp, data, deps)) {
+        if (usesEqualSlots(appState.qpp, data, deps, true)) {
             appState.layoutMeasurementLedger = null;
             return root.APEqualSlotEngine.render({ area, items, deps: {
-                ...deps, applyAutoImageSizeClasses: prepareImageSizes, deferFinalize: true,
+                ...deps, applyAutoImageSizeClasses: prepareImageSizes, deferFinalize: true, autoPromote: true,
                 makePage: (target, number) => { const page = deps.makePage(target, 'exam', number); return { page, body: page.body }; }
             } });
         }
