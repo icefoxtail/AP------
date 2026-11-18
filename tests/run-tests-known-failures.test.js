@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const {
-  runnableFiles, runPlan, classifyRun, validateKnownFailures, formatKnownFailureSummary, loadKnownFailures, parseFailures,
+  runnableFiles, runPlan, classifyRun, abnormalReason, validateKnownFailures, formatKnownFailureSummary, loadKnownFailures, parseFailures,
 } = require('../tools/lib/known-failures.js');
 const { collectTests } = require('../tools/run-tests.js');
 
@@ -26,7 +26,7 @@ const ALPHA_CHANGED = write('alpha-changed.test.js', `const test = require('node
 test('alpha', () => assert.fail('a different message'));`);
 const GREEN = write('green.test.js', `const test = require('node:test'); test('ok', () => {});`);
 const PLAIN = write('plain.test.js', `throw new Error('plain-boom');`);
-const SLOW = write('slow.test.js', `setTimeout(() => {}, 60000);`);
+const SLOW = write('slow.test.js', `console.log('Error: known-boom happened'); setTimeout(() => {}, 60000);`);
 
 function entry(extra = {}) {
   return { file: ALPHA, testName: 'alpha', pattern: 'boom-alpha', repair: 'R-1', cause: '원인 한 줄', resolvedWhen: '무엇이 되면 풀리는가', ...extra };
@@ -81,10 +81,51 @@ test('테스트 이름이 없는 스크립트 실패는 문구 패턴으로 대�
   assert.deepEqual(run([item(PLAIN)], [other]).result.failed, [PLAIN]);
 });
 
-test('시간 초과도 서명(TIMEOUT)으로 적을 수 있다', () => {
-  const sig = entry({ file: SLOW, testName: undefined, pattern: 'TIMEOUT' });
-  const { result } = run([item(SLOW, { timeout: 500 })], [sig]);
-  assert.equal(result.knownMatched.length, 1);
+test('시간 초과: 서명 문구를 이미 찍은 뒤 멈춰도 알려진 실패로 삼키지 않고 FAIL (실제 자식 프로세스)', () => {
+  const sig = entry({ file: SLOW, testName: undefined, pattern: 'known-boom' });
+  const { result, text } = run([item(SLOW, { timeout: 800 })], [sig]);
+  assert.equal(result.knownMatched.length, 0);
+  assert.deepEqual(result.failed, [SLOW]);
+  assert.match(text, /시간 초과 — 알려진 실패로 보지 않음/);
+});
+
+// 비정상 종료 세 경우: 서명 문구가 출력에 이미 있어도 무조건 FAIL이다(항목이 있든 없든).
+const SIGNATURE_TEXT = 'Error: known-boom happened\n';
+const ABNORMAL_CASES = [
+  ['ETIMEDOUT', { status: null, signal: 'SIGTERM', error: Object.assign(new Error('spawnSync ETIMEDOUT'), { code: 'ETIMEDOUT' }), stdout: SIGNATURE_TEXT, stderr: '' }, /시간 초과/],
+  ['ENOBUFS', { status: null, signal: 'SIGTERM', error: Object.assign(new Error('spawnSync ENOBUFS'), { code: 'ENOBUFS' }), stdout: SIGNATURE_TEXT, stderr: '' }, /출력 버퍼 초과/],
+  ['신호 종료(SIGKILL)', { status: null, signal: 'SIGKILL', stdout: SIGNATURE_TEXT, stderr: '' }, /신호 종료\(SIGKILL\)/],
+];
+for (const [label, spawned, reason] of ABNORMAL_CASES) {
+  test(`비정상 종료 ${label}: 서명 문구가 찍혀 있어도 FAIL, 항목이 없어도 FAIL`, () => {
+    const sig = entry({ file: PLAIN, testName: undefined, pattern: 'known-boom' });
+    const errors = [];
+    const withEntry = runPlan({ root: tmp, plan: [item(PLAIN)], entries: [sig], spawn: () => spawned, stdout: { write() {} }, stderr: { write() {} }, error: s => errors.push(s) });
+    assert.equal(withEntry.knownMatched.length, 0);
+    assert.deepEqual(withEntry.failed, [PLAIN]);
+    assert.match(withEntry.problemLines.join('\n'), reason);
+    assert.match(withEntry.problemLines.join('\n'), /알려진 실패로 보지 않음/);
+    const noEntry = runPlan({ root: tmp, plan: [item(PLAIN)], entries: [], spawn: () => spawned, error: () => {} });
+    assert.deepEqual(noEntry.failed, [PLAIN], '항목이 없어도 원래대로 실패');
+    assert.equal(classifyRun({ entries: [sig], ok: false, abnormal: abnormalReason(spawned), output: SIGNATURE_TEXT }).verdict, 'fail');
+  });
+}
+
+test('자식 테스트에 부모의 NODE_TEST_CONTEXT가 새지 않는다 (node --test 안에서 불려도 같은 판정)', () => {
+  const seen = [];
+  const spawn = (cmd, args, options) => { seen.push(options.env); return { status: 0, stdout: '', stderr: '' }; };
+  const saved = process.env.NODE_TEST_CONTEXT;
+  try {
+    process.env.NODE_TEST_CONTEXT = 'child-v8';
+    runPlan({ root: tmp, plan: [item('a.js'), item('b.js', { files: ['b.js'] })], entries: [entry({ file: 'b.js' })], spawn, stdout: { write() {} }, stderr: { write() {} }, error: () => {} });
+  } finally {
+    if (saved === undefined) delete process.env.NODE_TEST_CONTEXT; else process.env.NODE_TEST_CONTEXT = saved;
+  }
+  assert.equal(seen.length, 2);
+  for (const env of seen) {
+    assert.ok(env && !('NODE_TEST_CONTEXT' in env));
+    assert.equal(env.PATH ?? env.Path, process.env.PATH ?? process.env.Path, '나머지 환경은 그대로');
+  }
 });
 
 test('목록이 비어 있으면 예전과 똑같이 stdio를 그대로 넘기고, 통과/실패도 그대로 집계한다', () => {

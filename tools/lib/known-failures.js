@@ -133,9 +133,13 @@ function validateKnownFailures(doc, { root, runnable }) {
 
 // 한 명령(테스트 파일)의 실행 결과를 목록과 대조한다.
 //  entries: 이 명령을 가리키는 항목들
-//  ok: 종료 코드 0   timedOut: 시간 초과   output: 표준 출력+오류
+//  ok: 종료 코드 0   output: 표준 출력+오류
+//  abnormal: 시간 초과·출력 버퍼 초과·신호 종료 같은 비정상 종료의 한 줄 사유(없으면 null)
+// 비정상 종료는 항목 유무와 무관하게 무조건 FAIL이다. 서명 문구가 이미 찍힌 뒤에 멈췄더라도 그 뒤에 무엇이 가려졌는지
+// 알 수 없으므로 알려진 상태가 될 수 없다(원래 실행기도 이 경우를 무조건 실패로 셌다).
 // 돌려주는 verdict: 'pass' | 'fail' | 'known'
-function classifyRun({ entries, ok, timedOut = false, output = '' }) {
+function classifyRun({ entries, ok, abnormal = null, output = '' }) {
+  if (abnormal) return { verdict: 'fail', reproduced: [], problems: [`${abnormal} — 알려진 실패로 보지 않음`] };
   if (ok) {
     if (!entries.length) return { verdict: 'pass', problems: [], reproduced: [] };
     return {
@@ -144,7 +148,7 @@ function classifyRun({ entries, ok, timedOut = false, output = '' }) {
     };
   }
   if (!entries.length) return { verdict: 'fail', problems: [], reproduced: [] };
-  const text = `${output}${timedOut ? '\n[runner] TIMEOUT' : ''}`;
+  const text = String(output);
   const { names, blocks } = parseFailures(text);
   const problems = [];
   const reproduced = [];
@@ -167,12 +171,33 @@ function classifyRun({ entries, ok, timedOut = false, output = '' }) {
   return { verdict: problems.length ? 'fail' : 'known', problems, reproduced };
 }
 
+// 비정상 종료의 사유. spawn 결과의 error(ETIMEDOUT·ENOBUFS 등)나 signal이 있으면 정상 실패가 아니다.
+function abnormalReason(run) {
+  if (run.error) {
+    const code = run.error.code || run.error.message;
+    if (code === 'ETIMEDOUT') return '시간 초과';
+    if (code === 'ENOBUFS') return '출력 버퍼 초과';
+    return `실행 오류(${code})`;
+  }
+  if (run.signal) return `신호 종료(${run.signal})`;
+  return null;
+}
+
+// 자식 테스트에 부모의 node:test 문맥(NODE_TEST_CONTEXT)이 새지 않게 한다. 실행기가 node --test 안에서 불리는 일은 없지만,
+// 불리면 자식 node가 부모의 보고 채널로 출력해 stdout을 붙잡을 수 없게 된다. 변수가 없으면 env 옵션을 아예 넘기지 않는다.
+function childEnvOption() {
+  if (process.env.NODE_TEST_CONTEXT === undefined) return {};
+  const env = { ...process.env };
+  delete env.NODE_TEST_CONTEXT;
+  return { env };
+}
+
 // 명령 하나를 돌린다. 이 명령을 가리키는 항목이 없으면 예전과 똑같이 stdio를 그대로 넘겨 실행하고,
 // 있으면 출력을 붙잡아 서명과 대조한 뒤 그대로 다시 내보낸다.
 //  item: { args, timeout, files }  → { ok, run, verdict }  (verdict는 항목이 있을 때만)
 function runCommand({ root, item, entries, spawn = spawnSync, stdout = process.stdout, stderr = process.stderr }) {
   const itemEntries = entries.filter(entry => item.files.includes(entry.file));
-  const options = { cwd: root, timeout: item.timeout };
+  const options = { cwd: root, timeout: item.timeout, ...childEnvOption() };
   if (!itemEntries.length) {
     const run = spawn(process.execPath, item.args, { ...options, stdio: 'inherit' });
     return { ok: run.status === 0, run, verdict: null };
@@ -181,8 +206,7 @@ function runCommand({ root, item, entries, spawn = spawnSync, stdout = process.s
   stdout.write(run.stdout || '');
   stderr.write(run.stderr || '');
   const ok = run.status === 0;
-  const timedOut = !!run.error && run.error.code === 'ETIMEDOUT';
-  return { ok, run, verdict: classifyRun({ entries: itemEntries, ok, timedOut, output: `${run.stdout || ''}${run.stderr || ''}` }) };
+  return { ok, run, verdict: classifyRun({ entries: itemEntries, ok, abnormal: abnormalReason(run), output: `${run.stdout || ''}${run.stderr || ''}` }) };
 }
 
 // 전체 실행 계획을 순서대로 돌린다.
@@ -225,6 +249,6 @@ function formatKnownFailureSummary(entries, matched = []) {
 }
 
 module.exports = {
-  runnableFiles, runCommand, runPlan, formatKnownFailureSummary, LIST_FILE, loadKnownFailures,
+  runnableFiles, runCommand, abnormalReason, runPlan, formatKnownFailureSummary, LIST_FILE, loadKnownFailures,
   validateKnownFailures, classifyRun, parseFailures, parseFailingNames, describeEntry, entryNames,
 };

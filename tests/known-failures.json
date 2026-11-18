@@ -6,16 +6,16 @@
       "file": "tests/meta-foundation-limit-continuity-runtime.test.js",
       "pattern": "AssertionError \\[ERR_ASSERTION\\]: historical reviewed transition: qid_v1_0a3b270b73f1cc901c3255340f093f139a511ca4e8106bcb4ae180411325cfb3: canonical native assignment missing/ambiguous",
       "repair": "37-①",
-      "cause": "고2 수학II 4개 시험지(24 조대부고·25 매산고·25 매산여고·25 제일고 2학기 중간) REVIEW2 영수증의 sourceRawSha256이 현재 원본과 다름(#2376·#2373 뒤), 31문항. CI 첫 실패 문구는 'canonical native assignment missing/ambiguous'(0 !== 1)이며 이 시점에서 첫 실패에서 멈춘다.",
-      "resolvedWhen": "재결속 기록 형식이 정해져 4개 시험지의 영수증이 현재 원본으로 재결속되면",
+      "cause": "[CI 로그에서 확인한 사실] 첫 실패 문항 qid_v1_0a3b270b…에서 'canonical native assignment missing/ambiguous'(0 !== 1)로 멈춘다. [관제 조사, 로그에서는 첫 문항만 확인] 고2 수학II 4개 시험지(24 조대부고·25 매산고·25 매산여고·25 제일고 2학기 중간) REVIEW2 영수증의 sourceRawSha256이 현재 원본과 다름(#2376·#2373 뒤), 31문항.",
+      "resolvedWhen": "재결속 기록 형식이 정해져 4개 시험지의 영수증이 현재 원본으로 재결속되면. 그 뒤에도 실패하면 다음 실패(첫 실패에서 멈춰 가려져 있던 것)에 맞춰 서명을 갱신",
       "stopsAtFirstFailure": true
     },
     {
       "file": "tests/meta-foundation-middle-geometry-runtime.test.js",
       "pattern": "historical reviewed transition: qid_v1_204dd3224ff8354e6989356a1f9151983e1bb875d1705e1aaf2d884aeafcfbc9: unknown live renderer change",
       "repair": "37-②",
-      "cause": "20 왕의중 2학기 기말 중2 영수증 e050이 #2372 뒤 발급 상태 핀 목록에 없고, 24 왕운중 2학기 기말 중1 7번 MAIN_MERGE 행을 테스트가 받지 않음. CI 첫 실패 문구는 'unknown live renderer change'(archive/engine.html 현재 바이트가 핀과 다름)이며 첫 실패에서 멈춘다.",
-      "resolvedWhen": "e050 영수증을 발급 상태 핀 목록에 반영하고 24 왕운중 7번 MAIN_MERGE 행을 테스트가 받도록 고치면",
+      "cause": "[CI 로그에서 확인한 사실] 첫 실패 문항 qid_v1_204dd322…에서 'unknown live renderer change'(archive/engine.html 바이트 198587, 고정된 핀은 196085)로 멈춘다. [관제 보고, 로그에서 미확인, 첫 실패에서 멈춰 가려짐] 20 왕의중 2학기 기말 중2 영수증 e050이 발급 상태 핀 목록에 없음, 24 왕운중 2학기 기말 중1 7번 MAIN_MERGE 행을 테스트가 받지 않음.",
+      "resolvedWhen": "engine.html 핀이 현재 판본으로 재결속된 뒤에도 실패하면 다음 실패(위 관제 보고 항목)로 서명을 갱신하고, 모두 해결되면 항목 삭제",
       "stopsAtFirstFailure": true
     },
     {
@@ -71,7 +71,7 @@
       ],
       "pattern": "live bytes",
       "repair": "37-⑤",
-      "cause": "현행 UI 결속: 34개 중 18개 하위 테스트가 모두 'live bytes'(현재 archive/engine.html 바이트 198587 !== 고정값 196085)로 실패. #2399/#2411 무렵부터 main에서 빨강.",
+      "cause": "현행 UI 결속: 34개 중 18개 하위 테스트가 모두 'live bytes'(현재 archive/engine.html 바이트 198587 !== 고정값 196085)로 실패. #2399/#2411 무렵부터 main에서 빨강. 'live bytes'는 어느 live 파일의 길이 불일치든 같은 문구이며, 첫 불일치 뒤는 가려진다.",
       "resolvedWhen": "현행 UI 결속(engine.html 핀)이 현재 engine.html로 재결속되면"
     }
   ]
