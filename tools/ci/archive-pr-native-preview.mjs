@@ -1119,6 +1119,7 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
             || exams[0].preservedMetadataApprovals !== r.questionCount || exams[0].approvalType !== r.preservedApprovalType
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || r.kind === 'direct-type-judgment' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
+            || !['directTypeApprovals', 'typeNotDisplayed'].every(k => Number.isSafeInteger(exams[0][k]) && exams[0][k] >= 0)
             || exams[0].directTypeApprovals + exams[0].typeNotDisplayed !== r.questionCount
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || r.kind === 'basic-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
@@ -1144,11 +1145,16 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   const newBasic = requests.filter(r => r.kind === 'basic-parent-registration');
   const newBasicParentApprovals = newBasic.length ? { requests: newBasic.length,
     newBasicParentApprovals: newBasic.reduce((sum, r) => sum + r.questionCount, 0), preservedMetadataApprovals: 0, advancedApprovals: 0 } : null;
+  // Type-only judgments: how many rows the catalog shows by type, and how many it does not (stale binding) are reported, not hidden.
+  const direct = requests.filter(r => r.kind === 'direct-type-judgment');
+  const directTypeJudgments = direct.length ? { requests: direct.length, newMetadataApprovals: 0,
+    directTypeApprovals: direct.reduce((sum, r) => sum + result.exams.find(e => e.file === r.path).directTypeApprovals, 0),
+    typeNotDisplayed: direct.reduce((sum, r) => sum + result.exams.find(e => e.file === r.path).typeNotDisplayed, 0) } : null;
   noUnexpectedMutation(root, before, new Set());
   return [{ id: 'native-projection', outcome: 'success' },
     { id: 'native-consumer', outcome: 'success', ...(difficultyOnly ? { difficultyOnly } : {}),
       ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}), ...(preservedBasicApprovals ? { preservedBasicApprovals } : {}),
-      ...(newBasicParentApprovals ? { newBasicParentApprovals } : {}) }];
+      ...(newBasicParentApprovals ? { newBasicParentApprovals } : {}), ...(directTypeJudgments ? { directTypeJudgments } : {}) }];
 }
 
 export function nativeOutputManifest(root, plans) {
