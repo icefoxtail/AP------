@@ -219,8 +219,12 @@
             const item = state?.itemByBox.get(r.box);
             if (fit.belowMin && canPromote && r.span === 1 && item) promote.push(item);
             else if (fit.belowMin) {
-                // 글자를 10.8px 밑으로 줄이지 않는다: 가장 작게 만든 후보를 최소 배율로 놓으면 칸을 넘친다.
-                fit = { ...fit, scale: r.minScale, status: 'overflow', overflow: true };
+                // 글자를 10.8px 밑으로 줄이지 않는다: 가장 작게 만든 후보를 최소 배율로 놓으면 칸을 넘친다(세로로 넘치는 쪽은 안전하다).
+                // 단 가로로 넘치는 문항(칸보다 넓은 표·그림)은 칸을 키울 수 없고, 가로 넘침은 렌더 전체를 막는 공통 게이트(S12)에 걸려
+                // 시험지가 아예 안 열린다. 그래서 가로가 들어가는 배율까지만 줄이고(글자는 10.8px 밑이 될 수 있음) 같은 LAYOUT_OVERFLOW로 보고한다.
+                const widthScale = Math.min(1, r.slot.width / fit.width);
+                const byWidth = widthScale < r.minScale - 1e-9;
+                fit = { ...fit, scale: byWidth ? widthScale : r.minScale, status: 'overflow', overflow: true, overflowReason: byWidth ? 'width' : 'height' };
                 slotNode.dataset.layoutOverflow = '1';
             } else delete slotNode.dataset.layoutOverflow;
             applyProfile(r.box, fit.profile);
@@ -306,7 +310,7 @@
         const evidence = audit(area);
         if (state) evidence.promoted = state.promoted.map(item => item.box.dataset.sourceRef || item.originalIndex);
         evidence.layoutOverflow = evidence.warnings.filter(w => w.code === 'LAYOUT_OVERFLOW');
-        evidence.layoutOverflow.forEach(w => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체에도 글자 ' + MIN_EFFECTIVE_FONT_PX + 'px로는 들어가지 않는 문항', w));
+        evidence.layoutOverflow.forEach(w => console.warn('[archive-layout] LAYOUT_OVERFLOW: 한 단 전체에도 글자 ' + MIN_EFFECTIVE_FONT_PX + 'px로는 들어가지 않는 문항(overflowReason은 fit 참고)', w));
         area.dataset.equalSlotAudit = JSON.stringify(evidence);
         if (!evidence.ok) throw failure('EQUAL_SLOT_AUDIT_FAILED', evidence);
         return evidence;
