@@ -162,6 +162,7 @@ window.questionBank = [
     "wide": false,
     "content": "일차부등식 $\\dfrac16x-\\dfrac{x-8}{2}\\leq\\dfrac{x+2}{3}$의 해를 수직선 위에 바르게 나타낸 것은?",
     "image": "assets/images/23_향림중_1학기_기말_중2_기출/q3-problem-visual-v2.svg",
+    "imageScale": 100,
     "imageSize": "tall",
     "choices": [],
     "answer": "③",
