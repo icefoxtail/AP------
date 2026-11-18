@@ -469,8 +469,6 @@ try {
   const secondClassAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, class_id: "class-race", student_ids: ["student-race"] });
   assert.equal(secondClassAssignment.body.saved, true);
   assert.equal(secondClassAssignment.body.assignment.archive_file, assignment.body.assignment.archive_file);
-  assert.equal(directDetail.body.paper.missing_assets, undefined, "an old embedded snapshot reads exactly as before");
-  assert.equal(assignment.body.missing_assets, undefined);
 
   // Key-reference snapshot (image paths kept, images listed as {path, sha256, bytes}): read, assign, display-only image check.
   {
@@ -498,29 +496,12 @@ try {
     const keyDetail = await request(`archive-saved-papers/${keyId}`);
     assert.equal(keyDetail.status, 200, JSON.stringify(keyDetail));
     assert.deepEqual(keyDetail.body.paper.snapshot.assets, assets);
-    assert.deepEqual([keyDetail.body.paper.missing_assets, keyDetail.body.paper.changed_assets], [[], []]);
     const keyBatchId = uuid();
     const keyAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, saved_paper_id: keyId, assignment_batch_id: keyBatchId });
     assert.equal(keyAssignment.body.saved, true, JSON.stringify(keyAssignment));
-    assert.deepEqual([keyAssignment.body.missing_assets, keyAssignment.body.changed_assets], [[], []]);
     const copied = JSON.parse(keyAssignment.body.assignment.mixed_payload_json);
     assert.deepEqual(copied.questions[0].image, keyQuestion.image, "assignment payload keeps the key; the screens resolve it to the public image address");
     assert.ok(!/data:image\//.test(keyAssignment.body.assignment.mixed_payload_json));
-    // A record that no longer matches the image bytes, and one for an image that is gone, are reported but never block.
-    const badAssets = [{ ...assets[0], sha256: "0".repeat(64) }, { path: "assets/images/__gone__/none.png", sha256: "1".repeat(64), bytes: 1 }];
-    const badJson = stableStringify({ ...stored, questions: [keyQuestion], assets: badAssets.sort((a, b) => (a.path < b.path ? -1 : 1)) });
-    const badId = uuid();
-    const badRow = { ...keyRow, id: badId, save_batch_id: uuid(), snapshot_json: badJson,
-      snapshot_hash: crypto.createHash("sha256").update(badJson).digest("hex"), save_request_hash: crypto.randomBytes(32).toString("hex") };
-    await db.prepare(`INSERT INTO archive_saved_papers (${columns.join(",")}) VALUES (${columns.map(() => "?").join(",")})`)
-      .bind(...columns.map((column) => badRow[column])).run();
-    const badDetail = await request(`archive-saved-papers/${badId}`);
-    assert.equal(badDetail.status, 200, JSON.stringify(badDetail));
-    assert.deepEqual(badDetail.body.paper.changed_assets, [assets[0].path]);
-    assert.deepEqual(badDetail.body.paper.missing_assets, ["assets/images/__gone__/none.png"]);
-    const badAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, saved_paper_id: badId, assignment_batch_id: uuid() });
-    assert.equal(badAssignment.body.saved, true, "a changed or missing image never blocks the assignment");
-    assert.deepEqual(badAssignment.body.changed_assets, [assets[0].path]);
     // A malformed asset record is rejected like any other snapshot defect.
     const malformedJson = stableStringify({ ...stored, questions: [keyQuestion], assets: [{ path: "not-an-image-path", sha256: "x", bytes: -1 }] });
     const malformedId = uuid();

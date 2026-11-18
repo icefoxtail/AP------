@@ -430,22 +430,3 @@ function validSnapshotAssets(assets) {
       new Set(assets.map((asset) => asset.path)).size === assets.length;
   } catch { return false; }
 }
-
-// Display fields only: an image that is gone or whose bytes differ from the record never blocks reading or assigning.
-export async function checkSavedPaperAssets(env, snapshot) {
-  if (!Array.isArray(snapshot?.assets)) return null;
-  const missing_assets = [], changed_assets = [];
-  let next = 0;
-  const run = async () => {
-    while (next < snapshot.assets.length) {
-      const asset = snapshot.assets[next++];
-      let bytes = null;
-      try { bytes = (await fetchSourceAsset(env, asset.path)).bytes; } catch { bytes = null; }
-      if (!bytes) { missing_assets.push(asset.path); continue; }
-      const digest = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)), (b) => b.toString(16).padStart(2, "0")).join("");
-      if (bytes.byteLength !== asset.bytes || digest !== asset.sha256) changed_assets.push(asset.path);
-    }
-  };
-  await Promise.all(Array.from({ length: Math.min(6, snapshot.assets.length) }, run));
-  return { missing_assets: missing_assets.sort(), changed_assets: changed_assets.sort() };
-}
