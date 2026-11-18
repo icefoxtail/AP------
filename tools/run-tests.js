@@ -133,6 +133,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-native-scope-fields.test.mjs']
   },
   {
+    label: 'tests/archive-question-binding.test.mjs',
+    args: ['--test', 'tests/archive-question-binding.test.mjs']
+  },
+  {
     label: 'tests/archive-source-delta.test.mjs',
     args: ['--test', 'tests/archive-source-delta.test.mjs']
   },
@@ -661,6 +665,14 @@ const requiredCommands = [
     // Exact public Git evidence and source views; no global data generation.
     args: ['--max-old-space-size=384', 'tests/archive-m3-e052-q5-complete-given.test.mjs'],
     timeout: 180000
+  },
+  {
+    label: 'tests/edition-ledger.test.mjs',
+    args: ['--test', 'tests/edition-ledger.test.mjs']
+  },
+  {
+    label: 'tests/recapture-approved-renders.test.mjs',
+    args: ['--test', 'tests/recapture-approved-renders.test.mjs']
   }
 ];
 
