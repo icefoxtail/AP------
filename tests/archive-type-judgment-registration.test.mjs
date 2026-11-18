@@ -8,7 +8,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { registerReviewedExamV2 } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -199,11 +199,32 @@ test("statuses other than an unapproved type are not overwritten (hold, adjudica
   }
 });
 
-test("rows with a receipt-backed approval and rows with a foundation HOLD are refused", t => {
-  const withApproval = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2" } } });
-  assert.throws(() => withApproval.run(withApproval.request([withApproval.item(1, { problemTypeKey: "PT_A" })])), /receipt-backed REVIEW2 approval/);
+test("a row with a receipt on its other fields takes a type while its type is still empty; a taxonomy HOLD row is refused", t => {
+  const withReceipt = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2" } } });
+  withReceipt.run(withReceipt.request([withReceipt.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+  assert.equal(withReceipt.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(withReceipt.rows()[0].metadataApprovalType, "REVIEW2", "the other fields' approval type is untouched");
+  // the same row with an already approved type is still final
+  const approved = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2", problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "approved_review2", template: "approved_review2" } } } });
+  assert.throws(() => approved.run(approved.request([approved.item(1, { problemTypeKey: "PT_A" })])), /type already approved/);
   const held = fixture(t, { rowMutations: { 1: { foundationTaxonomyStatus: "HOLD" } } });
   assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
+});
+
+test("receipt replay ignores the type fields a DIRECT_JUDGMENT added to a row whose receipt recorded no type, and nothing else", () => {
+  const recorded = { questionUid: "u", problemTypeKey: "", templateKey: "", standardUnitKey: "U1", metadataApprovalType: "REVIEW2",
+    fieldStatus: { standardUnit: "approved_review2", problemType: "manual_review_pending", template: "manual_review_pending" } };
+  const typed = { ...structuredClone(recorded), problemTypeKey: "PT_A", templateKey: "TPL_A",
+    fieldStatus: { ...recorded.fieldStatus, problemType: "approved_direct_judgment", template: "approved_direct_judgment" }, typeApproval: { approvalType: "DIRECT_JUDGMENT" } };
+  assert.equal(receiptRecordMatchesRow(recorded, recorded), true);
+  assert.equal(receiptRecordMatchesRow(typed, recorded), true);
+  assert.equal(receiptRecordMatchesRow({ ...typed, standardUnitKey: "U2" }, recorded), false, "any other drift still fails");
+  assert.equal(receiptRecordMatchesRow({ ...typed, fieldStatus: { ...typed.fieldStatus, standardUnit: "manual_review_pending" } }, recorded), false);
+  assert.equal(receiptRecordMatchesRow({ ...typed, typeApproval: { approvalType: "OTHER" } }, recorded), false, "only a DIRECT_JUDGMENT type is excused");
+  assert.equal(receiptRecordMatchesRow({ ...recorded, problemTypeKey: "PT_A" }, recorded), false, "a type without a DIRECT_JUDGMENT is drift");
+  const withOwnType = { ...recorded, problemTypeKey: "PT_B", fieldStatus: { ...recorded.fieldStatus, problemType: "approved_review2" } };
+  assert.equal(receiptRecordMatchesRow({ ...withOwnType, problemTypeKey: "PT_A", typeApproval: { approvalType: "DIRECT_JUDGMENT" } }, withOwnType), false, "a receipt's own type is never replaced");
+  assert.equal(receiptRecordMatchesRow(undefined, recorded), false);
 });
 
 test("registry checks stay strict: unknown or inactive PT, TPL of another PT, missing binding, wrong curriculum or course", t => {

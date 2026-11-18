@@ -203,8 +203,8 @@ export function registerTypeJudgment(ctx) {
     }
     // A held taxonomy row is not shown by the catalog, so a type registered on it could never be verified in the consumer.
     if (current.foundationTaxonomyStatus === "HOLD") failWith(`row has a foundation taxonomy HOLD; its type cannot be displayed: ${uid}`);
-    // Rows whose other fields carry a receipt-backed approval keep that receipt replayable; they use the full v2 path.
-    if (current.metadataApprovalType) failWith(`row carries a receipt-backed ${current.metadataApprovalType} approval; register its type through the full v2 path: ${uid}`);
+    // A receipt on the row's OTHER fields stays replayable: receiptRecordMatchesRow (reviewed-exam-registration-v2.mjs) leaves the type fields
+    // out of that comparison when the receipt recorded no type. A row whose type is already approved was refused above.
     const scope = patch.scope;
     if (!scope || !["2015", "2022"].includes(scope.curriculum) || !textOf(scope.standardCourse)) failWith(`scope.curriculum (2015|2022) and scope.standardCourse required: ${uid}`);
     const rowCurriculum = textOf(current.curriculum) || textOf(current.curriculumKey);

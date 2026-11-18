@@ -2124,6 +2124,25 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
     consumerSearchStatus: "NOT_RUN", browserStatus: "NOT_RUN" };
 }
 
+// A receipt's applied row is replayed against the current row byte for byte. A DIRECT_JUDGMENT (TYPE_ONLY) registration afterwards adds the type
+// fields and a typeApproval to a row whose receipt recorded NO type; those fields (and only those) are then left out of the comparison.
+// Anything else that differs, or a receipt that recorded a type of its own, still counts as drift.
+const TYPE_LANE_ROW_KEYS = ["problemTypeKey", "templateKey", "typeApproval"];
+const withoutTypeLane = row => {
+  const copy = structuredClone(row);
+  for (const key of TYPE_LANE_ROW_KEYS) delete copy[key];
+  if (copy.fieldStatus) { delete copy.fieldStatus.problemType; delete copy.fieldStatus.template; }
+  return copy;
+};
+export function receiptRecordMatchesRow(current, record) {
+  if (eq(current, record)) return true;
+  if (!current || !record || current.typeApproval?.approvalType !== DIRECT_JUDGMENT || record.typeApproval !== undefined) return false;
+  const blank = value => value === undefined || value === null || value === "";
+  const unapproved = status => !/^approved/i.test(String(status ?? ""));
+  if (!blank(record.problemTypeKey) || !blank(record.templateKey) || !unapproved(record.fieldStatus?.problemType) || !unapproved(record.fieldStatus?.template)) return false;
+  return eq(withoutTypeLane(current), withoutTypeLane(record));
+}
+
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null }) {
   if (projectionPhase !== null) requireProjectionPhase(projectionPhase, { root, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
@@ -2280,7 +2299,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         previous.appliedRecords.some(record => !targetUids.has(record.questionUid)) ||
         [...(previous.appliedIdentityRecords || []), ...previous.runtimeRecords].some(record => !targetUids.has(record.questionUid))))
       fail("partial receipt UID scope mismatch");
-    for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
+    for (const record of previous.appliedRecords) if (!receiptRecordMatchesRow(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentTables = replayLookup();
     const replaySourceReviewCache = new Map(), replaySourceReviewContext = new Map();
