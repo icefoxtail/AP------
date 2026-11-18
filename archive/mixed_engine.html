@@ -404,15 +404,15 @@
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
     <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
-    <script src="render-state-normalizer.js?v=20261118-figure-ratio-1"></script>
+    <script src="render-state-normalizer.js?v=20261118-auto-promote-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
     <script src="figure-size.js?v=20261118-figure-ratio-1"></script>
     <script src="common-fast-runtime.js?v=20261106-output-performance-2"></script>
-    <script src="equal-slot-engine.js?v=20261118-raster-aspect-1"></script>
-    <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-figure-ratio-1">
+    <script src="equal-slot-engine.js?v=20261118-auto-promote-1"></script>
+    <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-auto-promote-1">
     <link rel="stylesheet" href="figure-size.css?v=20261118-figure-ratio-1">
-    <script src="exam-render-executor.js?v=20261118-figure-ratio-1"></script>
+    <script src="exam-render-executor.js?v=20261118-auto-promote-1"></script>
     <script src="solution-render-executor.js?v=20261118-figure-ratio-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
@@ -1377,7 +1377,7 @@ async function recordMixedLayoutPromotionGate(area) {
         const ledgerBySource = new Map(ledger.entries.map(entry => [entry.sourceRef, entry]));
         const records = new Map(AppState.canonicalData.map(question => [
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
-            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: window.APRenderStateNormalizer.renderLayoutTag(question.layoutTag), wide: question.wide,
+            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: window.APRenderStateNormalizer.renderLayoutTag(question.layoutTag), wide: false,
                 measurements: ledgerBySource.get(`${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`) }
         ]));
         const observation = authority.observeLegacyDomLayout(area, {
@@ -2555,7 +2555,7 @@ function makePage(area, type, pNum) {
 async function renderExam(area, data) {
     const slotParams = new URLSearchParams(buildContext ? new URL(buildContext.input.url).search : window.location.search);
     if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && Number(AppState.qpp) === 4 && (!buildContext || !window.APExamRenderExecutor?.render || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
-    const examData = data.map(question => question && typeof question === 'object' ? { ...question, layoutTag: window.APRenderStateNormalizer.renderLayoutTag(question.layoutTag), __apExamSubjectiveSpacing: true } : question);
+    const examData = data.map(question => question && typeof question === 'object' ? { ...window.APRenderStateNormalizer.renderQuestionLayout(question), __apExamSubjectiveSpacing: true } : question);
     if (buildContext && new URLSearchParams(buildContext.input.url).get('executor') !== 'legacy') return APExamRenderExecutor.render({ area, data: examData, deps: mixedExecutorDeps() });
     const staging = (buildContext?.stagingHost || document.getElementById('staging')); staging.style.width = '83mm'; staging.innerHTML = '';
     let pNum = 1;
@@ -3160,7 +3160,7 @@ async function renderMixedBody() {
     }
     injectQrToLastExamPage(area);
     injectSubmitQrToLastExamPage(area);
-    await window.APEqualSlotEngine?.finalize(area);
+    await window.APEqualSlotEngine?.finalize(area, { afterRelayout: () => { injectQrToLastExamPage(area); injectSubmitQrToLastExamPage(area); } });
     await recordMixedLayoutPromotionGate(area);
     await recordMixedDualRun(area);
     if (buildContext) return;
