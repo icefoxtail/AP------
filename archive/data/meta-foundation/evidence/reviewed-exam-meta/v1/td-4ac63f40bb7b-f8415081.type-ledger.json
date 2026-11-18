@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4ac63f40bb7b-f8415081",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_중단원_고2_유형확인.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e81d88153ba683b55e79ce106c86482b187153aba4026c097b6668112e06c331",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "지수·로그 그래프의 평행이동을 적용하여 수평점근선y=−2,수직점근선x=2와 개형을 정한다.",
+      "note": "[그래프필요]는 답으로 그래프를 그리는 요청이며 입력 그림이 필요하지 않다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_96abe1931aaf0b55895161e4782bc03b37f38d0eadc0eb3c1f9861f15622bc87",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "step": "로그 진수를√5,√6으로 맞춰 증가성을 비교하고 지수 소문항은 같은밑의 감소성을 쓴다.",
+      "note": "지수·로그 대소비교 독립 소문항 혼합. 로그 분기를 대표로 선택.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_679126a3cc864eacd10c039a52f055fa2be1c75e71b1f771d06805fb976a6a37",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "각 함수의 증가·감소성을 확인하고 구간0,2의 양끝값을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad15d3e01a7de1e742cf82861d1fd595fc4c1da9885377cd618cee585974b9ba",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "step": "로그값을 정수2와 비교하고 근호 소문항은 세 값이0.2임을 직접 계산한다.",
+      "note": "근호값과 로그 대소비교 독립 소문항 혼합. 로그 분기를 대표로 선택.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_57f4c00081e830ed6014a1d3460cb5db047e94eeb6782635c0cb44ade07689d7",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "높이2를 log3x에 대입하여 x=9를 얻고 수선발의 같은 x좌표를 쓴다.",
+      "note": "[그래프필요] 표기가 있으나 본문 좌표관계로 확정 가능.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d35a78c3c2a5927d93925514bf93552337555c440140d52e808876bf97c50186",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
+      "step": "0.95^n≤1/2에 주어진 근사로그를 취하고 음수−0.02로 나누어 n≥15를 구한다.",
+      "note": "주어진 근사로그값 사용조건의 답15. 실제 로그값으로는 최소14년이라 정수경계를 바꾸는 정밀도 주의점.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_321f55ba1bf3f8a77de84c3136fab8342482f80bd6762c2187be13fe6c0e01b6",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": null,
+      "step": "거리20과 비율1/4에서 c=10을 구한 뒤 거리50의 비율1/32를 백분율로 바꾼다.",
+      "note": "새 TPL 제안: 로그 선형 비례모형의 변화 비율 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    }
+  ]
+}

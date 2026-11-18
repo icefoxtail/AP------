@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-5a3d48430c80-5b3d7210",
+  "examUid": "수와식_중2_유리수와순환소수_유형1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m2/수와식_중2_유리수와순환소수_유형1.js",
+  "expectedSourceBlobSha1": "2458e825e5d0c1adb51e49e6de34dd13c32b778d",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m2.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5a3d48430c80-5b3d7210.type-ledger.json",
+        "sha256": "6dcf3793b96024e1572c04b7b501b64d6b11551e2ed63298d52e3c770e59f0a3"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_bd3e0668a0116c4293c2f4633c85206b478cbb40ab8f581c81418b6bfa412c4d",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS"
+      },
+      "rationale": "나누는 지수는 빼고 거듭제곱은 곱한다. 넷째 식만 x^(5-1-2)=x²로 옳다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "a9db81da24d245369440b80fbdaddccf1564e3ff26d2f02466607c2944b35b69",
+        "contentFingerprint": "de68fb7c372f3365758c398a50b49bba1af0fe17b7ce7f070bd1a2f79eef3253"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5a3d48430c80-5b3d7210.type-ledger.json",
+          "sha256": "6dcf3793b96024e1572c04b7b501b64d6b11551e2ed63298d52e3c770e59f0a3"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_eb4754809d930821b196e5278c6d7a5c0ea29f61e8896b69c786a1bc99285991",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS"
+      },
+      "rationale": "둘째 식 계수는(1/3)³=1/27이므로 제시된1/9가 틀리다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "cd0a716e62a9e18dda6de2dcfc3ca0a7cde19fbafd61e6fbcfd2c11fb2a5ae46",
+        "contentFingerprint": "c72dbc15cda2a4a8d4ef7a849d09b6336666774aaa1942d7e8bcb9a7cec60fba"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5a3d48430c80-5b3d7210.type-ledger.json",
+          "sha256": "6dcf3793b96024e1572c04b7b501b64d6b11551e2ed63298d52e3c770e59f0a3"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5a10f604d6bb243fd45dffef28303f329e8b4797c9c1a2066db9ec8940c3b13b",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+        "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS"
+      },
+      "rationale": "분수의 분자분모 모두 세제곱하면 x^6/y³. 다른 선택지는 부호나 지수가 맞지 않는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2-1"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "e91ff998cfce5db38f7fec8299d91c92b8df746107ec9f77f4b44e076d1a768a",
+        "contentFingerprint": "10a7164c883c5906dcea0614e70045d2bbaa3953cf4c47931b0efddf3dd83387"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5a3d48430c80-5b3d7210.type-ledger.json",
+          "sha256": "6dcf3793b96024e1572c04b7b501b64d6b11551e2ed63298d52e3c770e59f0a3"
+        }
+      ]
+    }
+  ]
+}

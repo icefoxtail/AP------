@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-5a3d48430c80-5b3d7210",
+  "sourceArchiveFile": "types/middle/m2/수와식_중2_유리수와순환소수_유형1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bd3e0668a0116c4293c2f4633c85206b478cbb40ab8f581c81418b6bfa412c4d",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "나누는 지수는 빼고 거듭제곱은 곱한다. 넷째 식만 x^(5-1-2)=x²로 옳다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb4754809d930821b196e5278c6d7a5c0ea29f61e8896b69c786a1bc99285991",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "둘째 식 계수는(1/3)³=1/27이므로 제시된1/9가 틀리다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a10f604d6bb243fd45dffef28303f329e8b4797c9c1a2066db9ec8940c3b13b",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+      "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+      "step": "분수의 분자분모 모두 세제곱하면 x^6/y³. 다른 선택지는 부호나 지수가 맞지 않는다.",
+      "note": "검사: CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m2.jsonl"
+    }
+  ]
+}

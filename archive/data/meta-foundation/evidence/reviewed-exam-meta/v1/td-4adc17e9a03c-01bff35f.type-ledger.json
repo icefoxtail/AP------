@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4adc17e9a03c-01bff35f",
+  "sourceArchiveFile": "textbooks/동아출판_공통수학1/동아_공통수학1_나머지정리와인수분해_중단원연습_고1/동아_공통수학1_나머지정리와인수분해_중단원연습_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_21275f07305a3fe363634d43fde0eb5e6dc601a040b9661579bdf6d22f83aac2",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "양변을 전개해 x²·x·상수항 계수를 비교하여 미정계수를 정한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_52e6510936ea6aa98c956fe5afef312707613c3e3dcc6b42a9b78c3f102d2fac",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "각 제수의 영점 2와 −3/2를 원다항식에 대입해 나머지를 구한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc1c2e31292c3cbe37992439ee8725153d8b98b27bbd01b3d3c72f03e1b872a4",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "P(1)=3과 P(−1)=0에서 a+b=−2, a−b=−3을 연립한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c439614d887fb6e1911f59cf245d0c8559ec60267f64711716bf57ae0ebbf6f",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": null,
+      "step": "P(x)=(x²+2)(x−2)+ax+b에 0과 2를 대입해 b=4,a=−2를 구한 뒤 P(1)을 계산한다.",
+      "note": "필요 TPL: 나눗셈 항등식과 함수값 조건 — 몫·일차 나머지를 나타낸 항등식에 주어진 값을 대입해 나머지 계수를 구한다.; 도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1dd1cc55d89af73ac567a8f2e1c21d222a3ac2c2baba9423a262bc2388a54a21",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "공통 인수의 근 2와 −6에서 P(2)=10,P(−6)=−6을 얻어 구하는 일차 나머지를 결정한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_052638b6f7ccf1db1d6af3e301dafd23ddfdab18b192946ae35e39407913a3a8",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+      "step": "x−2=t라 두고 t=1과 t=−1에 해당하는 P(3),P(1)을 더해 짝수차 계수의 합을 구한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4e85042feeccbf953aa11c2a8252a779213b51e6d5a354a42b68ae10d9fdbcac",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "주어진 점화식에 x=2,3을 대입해 P(2)=0,P(3)=−7을 얻고 나머지 R(x)=−7x+14에서 R(−1)=21이다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d1ae19de8570b149a4457782f47a19436e91fed31e703f65b38fb86e35292565",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "완전제곱·완전세제곱·차의 제곱과 치환을 각각 적용해 각 식을 인수분해한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_708b51436c29368adf5fc138d912d931ab6cb5366138ee1fb521684ddc41911a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "주어진 삼차식을 (x−1)²(2x+3)으로 인수분해하여 각 상수를 비교한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5abb6985386266227fdfe4ee3d22cefc5392a50e6d3be1ded737989ce9981aa8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "x⁴−13x²+4=(x²−2)²−(3x)²로 바꾸어 제곱의 차 공식을 적용한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_01cb82316d3e3b226af61e17d1177a9b38fef708580882c3420dad8f43e95996",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "998³−2³=(998−2)(998²+2·998+4)로 인수분해하여 분모와 약분한다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_564aba4dcdbb2825486a77e43675618ead7f37ec7692740056d26374e02142b7",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "아래 식이 AB(x+2)²임을 이용해 이를 (x+2)²(2x+1)(x+1)로 분해하고 A+B를 구한다.",
+      "note": "그림 q12.png 직접 확인; 도구: INVALID_CANONICAL_SCOPE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1054f9662b5b808d04ae8703312c3fa808fa86924a9f4543595fa374513802d9",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "X=x²+5x로 놓으면 식이 X²−10X−56+k이므로 완전제곱 조건으로 k=81이다.",
+      "note": "도구: INVALID_CANONICAL_SCOPE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/동아출판_공통수학1.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a2ad486131d8-dc7ecef7",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_여러가지방정식과부등식_중단원마무리_고1/미래엔_공통수학1_여러가지방정식과부등식_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5758858fecbbfcdd9178083fac662d323dff09f34cc2bda708e62642d48e1820",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "step": "⑴ (x−3)(x+1)²=0, ⑵ (x²−5)(x²+1)=0으로 분해하여 복소수 범위에서 근을 구한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_44fe07ed5b52d81a37fb735a0b72cd0bbfea8937ea81b46098470270eeef86e4",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "⑴ x=y−4를 대입하고 ⑵ (2x−y)(x+2y)=0의 두 분기를 원 방정식과 연립한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b22d3be0f254a512fab50288be39b6fe7aacb6def6df815690f399283289dd64",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "각 일차부등식을 푼 뒤 공통 해구간을 취한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_92f4f1816f21760c0d962f1b81dbd48541a538477046d7252e89196ce00f46bd",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "step": "⑴ 절댓값을 두 바깥 구간으로 풀고 ⑵ 1,4를 경계로 거리합을 풀어 합집합을 구한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_79e4ff2c41ea8fe2e3760cb1866774a2294bcb4cbb17b642b67b818007f0a7d2",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "이차식을 (x+1)(x−9)와 −(x−2)(x−5)로 분해하여 부호구간을 구한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_780a1c22273f0bddf457e4ec205c4f46f3c5c8e2e99be62a950b1290ea814282",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "첫 해 x≤1 또는 x≥3과 둘째 해 −1/4<x<2의 교집합을 취한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_038e516fa1ea6484dd103e7a9acaa12743cf572ffbc65cec5874b4101ae7b662",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "step": "실계수이므로 켤레근 2+i도 근이며 근의 곱 5에서 나머지 근 1을 정해 계수를 복원한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7da0fe9b389e55133914f5ef719fd970d36ea51672d62aa748ae1c3ae0e8c10e",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "step": "그림에서 물 높이는 h−3, 반지름은 h이므로 h²(h−3)=50을 인수분해하여 양의 해 5를 얻는다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11173ebd1eda31120f6d97478689468745a798a0b6a93bcee1850854bec56585",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "x+y=4와 x²+y²=8에서 (x−y)²=0이므로 x=y=2를 각 일차식에 대입해 a=6,b=−3/2이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_54aa74aa24244947fc1fa6c7b0509a5c586b0573f41468cd4641aa5e5026798e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "step": "아래로 열린 이차식의 최댓값 (a−3)(a+2)가 0 이하이어야 하므로 범위를 푼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ab39a848360529a7ee0add8c8b95bfbb66d1eecc4a483b77c3fbff1f51de60c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "첫 부등식의 구간 [−1,5]에서 둘째 양수 구간이 (3,5]만 남도록 다른 근 a를 −1 이하에 둔다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_99a949423739b6eeb57fbaa519ef17e0ea360e33e0990a3a55601c10d72293e9",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "나머지 두 근의 곱은 −4, 합은 a+1이므로 제곱합 8에서 a=−1이고 −1 대입으로 b=−4이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_970b92aa822e949aa5d8f01592926ea23aa09aa1641f37dae81112b238f27da4",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": null,
+      "step": "삼각부등식 x+(x+1)>x+2와 둔각조건 (x+2)²>x²+(x+1)²의 교집합을 구한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인. 필요한 TPL: 삼각형 성립과 둔각 조건의 교집합 — 삼각부등식 및 최대변 제곱 비교를 결합하여 변의 매개변수 범위를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    }
+  ]
+}

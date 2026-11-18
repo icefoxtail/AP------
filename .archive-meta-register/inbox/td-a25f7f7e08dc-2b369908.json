@@ -1,0 +1,331 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-a25f7f7e08dc-2b369908",
+  "examUid": "25_제일고_1학기_중간_고2_확률과통계_유형확인",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/25_제일고_1학기_중간_고2_확률과통계_유형확인.js",
+  "expectedSourceBlobSha1": "841c83098425bda337e743c6a22f96171d7c3423",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+        "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_5bcb4d1b2ced97dc4e36668c4e01c472e5c7641723d3a2fb8c3447cfd453e0c2",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "서로 다른 학생5명이 각각3개 동아리를 선택하므로3⁵을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "18ff21f0aaee1a981f6831af36795cfedb708d60bfaa9b7dcfac80408aa936ec",
+        "contentFingerprint": "7322e67465835232fa49305dbb36e0c7cb1f5dda9bd9e1e9e623bd65bbe37e01"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e0d8d1a6933453b2347919d2d34c17f60c38aa6ccbee59dab518988a290cf670",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "교사 한 명을 고정하고 다른 교사를 맞은편에 놓은 뒤 남은6명을6!로 배열한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "e3257baad6afb0dba8137b7e374d0a62151948883349db5535aadb4a5cbfe48c",
+        "contentFingerprint": "63824ff1f59dcb793a317cdb72e0eca6d434201b19edff0026cb001e3670e24c"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f2b8865e552f87d267c7cc09351298c2b3175787b2ac70a9240184cb8d4dc59b",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "rationale": "x,y,z 지수합3의 비음정수해 C(5,2)=10에 a,b 두 선택을 곱한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "ec598d6ffc9a1afe2e2e91b0313531187be5ae1e76f5dcfa690c6c89b0cc44a7",
+        "contentFingerprint": "9fa088fe874fba7410d5748258db7cc6fcc08e9671b9a2aa79cf3d7e909dc033"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9e60142518c6e3505e654bb1fc2b5985f6a040584df257fb2a2156b83448fad0",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "남학생 원순열3! 후 네 틈에 여학생2명을4P2로 넣는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "8297f07acac32146177d99186ebf6efb9a651d540fa3fa7c44a03c894229a20a",
+        "contentFingerprint": "7cdec5f966a17be7e314f7d5f765928e8c087db92a97be44e9d61082aa893e24"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_240cca3323dfd674b799620c6a70570eefc74c8a16e99041e0ba7756625039df",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "숫자3 사용횟수를0,1,2,3으로 나누어 각각1,7,10,1개의 동일물 순열을 합한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "c9e703018c2fd282b3ddf411426d03528ddd9eab9394852753d1701efca790ac",
+        "contentFingerprint": "615640873e18f887a235e4add80cfd5372ade960468d1cdbdedbcc29d2d78ece"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_08adac736b8a9b895a6cc62a8b6720835f1f88b4912235a775d38481bd1ac4a9",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "중앙 홀수5가지와 주변8! 배열을 곱하고 정사각형4회전의 궤도 크기4로 나누어10·7!을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "64610a824a1ca366932cdbb900c4a1b84c48faba8349344c09c515dc9410bfa3",
+        "contentFingerprint": "f0e9894fdfaa8c859197ffa9ee87175e4b2e59cfacada2f4c62581eaa9a129be"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3ca2c4d7dfe1a49deeaef9dca917d18e413f069e65493e1b808c03b85890df4a",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "홀수 자리 개수를1 또는3으로 나누어4·3·2³+4·3³·2를 합한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5c09c9e7ab95178850385defd598d369f9d435e0f3c91a64818995ce869da783",
+        "contentFingerprint": "4189555c8e4b638af5274307755f7c67c2cde1aff3c7c26edd319bc808f575a8"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f6fcdd93acdc88af29995fffd0dbd60b762f3c50d766bb86f4c4361a4cbf9944",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "짝수3개 원순열2! 사이의 세 틈에 홀수3개를3!로 넣어12를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "58b30e06356d1468cf48b072160d527543004a601318ed27ac29276b2bb4fd42",
+        "contentFingerprint": "3ed9ee6cc50602832074ea7217c1fa96c8e7fd08c4da5ef1500c09f21b9b5ba5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9cf2f03139730ca49c48a1f8d664d058057e035d9c216d85fe13a691148a7ec9",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "1~3자리 개수39를 빼 네 자리11번째를 구하고 접두사11의9개 뒤 두 번째1212를 고른다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "1433cf292388852f4ea924243269ef15a569b29edfbbf8738a33cc6c35f055ee",
+        "contentFingerprint": "29ba6b2b17f01959065a585a8c0dddb55508ccdf83470b91cefc49ed608ff747"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_75ecc7ae644a1741b5123e35f0091dc4628ecb7087d23c0e99d8c4088f6345e2",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT"
+      },
+      "rationale": "등비합으로 P=(1+x)⁸−(1+x)를 만든 뒤 x³ 계수8C3을 읽는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "f37067598d06a9498996859bbf41011d084db490222c6c0c40a24828354a0c66",
+        "contentFingerprint": "2346d1df69506d6146b503092d7eea47334fbfdeb8db04ff30d2345d0942af2a"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7ded72a6bd8284ead1c93e64ec91c1f603a680227782252a5c027d26982afa04",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "점수합5인 홀수위치3가지에 각 추출숫자2종씩의2³을 곱한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "8cb6bb48cd976f1ab4334abdd48d7d38246ec2fe9a6058bf1aaf4790ab9cc253",
+        "contentFingerprint": "6747a13c18c0f0fee102f48b515e0b8db6fccbed6cb36fbf806ab2dfb696c1c8"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a25f7f7e08dc-2b369908.type-ledger.json",
+          "sha256": "a7bf8edece743575eefdb5db43be8c184922cc6b7c2bdef38e2960dbc4a9600f"
+        }
+      ]
+    }
+  ]
+}

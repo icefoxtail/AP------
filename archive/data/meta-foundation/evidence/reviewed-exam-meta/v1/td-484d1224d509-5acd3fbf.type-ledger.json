@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-484d1224d509-5acd3fbf",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_나머지정리와인수분해_중단원마무리_고1/미래엔_공통수학1_나머지정리와인수분해_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0a11f9fda59bef5be5ff87e453e8a868dd6e8d0827e24a89606172c7d74e506e",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "각 차수 계수를 비교하여 ⑴ a−2b=0,a−3=0,c−1=0과 ⑵ a=1,2a+b=2,a+b+c=−4를 푼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a1b124c8762d5b3cb6cb07a2290ab28f878ce537c0ef7a6c78d8636c2e09b502",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "일차 제수의 근 2와 −1/2를 f에 대입한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05b6f55ee76e6ae2f1e397d0bce4e3125aa02f210cdd87a219e673f55e086ba5",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": null,
+      "step": "인수정리 f(−2)=0에서 a+6=0이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인. 필요한 TPL: 인수정리의 영점·중복인수 조건 — 영점 대입 또는 중복인수 조건으로 계수와 인수를 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f1f97be26d6ebf345d36e696ab1434c799dc6db5ce9723aafae78df4b6c1f918",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "완전제곱·세제곱차·t=x²−x 치환 및 정수근 1,2를 이용하여 각각 인수분해한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ea1c586cbdc4f2b70598a5c9c897c7cdeddf48f7a31ea3a8246beba55cf3666",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "우변을 전개해 a=4,b=4,c=5를 구하고 곱한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_155b1bd5ec683c5a647e6ed29071bc0fbefc3d385ee15ad22b7ce12d857d642a",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "step": "나머지를 mx+n으로 두고 R(−1)=3,R(1/2)=3/2를 연립한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_adbdcd4d848f2f0d088f6d90e3a2c558b54bae336bd9cf9d6b11f776372f5f85",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "(x+1)(x+7)와 (x+3)(x+5)를 묶으면 (x²+8x+11)²−16이므로 k=16이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5aa78888505e507ab53293eae7fc13bc6c7717a08094ee8f71df5123d6e79989",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": null,
+      "step": "f(−1/2)=0에서 a=1을 얻고 2x+1로 나누어 인수분해한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인. 필요한 TPL: 인수정리의 영점·중복인수 조건 — 영점 대입 또는 중복인수 조건으로 계수와 인수를 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_420eccfeca841f99d404ca926fea3608b72f371bce9b751275e29063e09bb85b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "step": "97+3=100을 이용해 103³−3·100·3·103=100³+3³으로 변형한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_88be04cbef0040f5b0b9e630531d9b5e9ef1bf1f6b5c5edece242ee37c302739",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": null,
+      "step": "x=2+t로 놓고 상수항 2ⁿ(4+2a+b)=0, t항 2ⁿ(4+a)=2ⁿ를 비교한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인. 필요한 TPL: 인수정리의 영점·중복인수 조건 — 영점 대입 또는 중복인수 조건으로 계수와 인수를 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9d4e29f0d770e4ea9f84a96e0a9e7e7e6b7eb8abe17fd34eb2c4e483dd92b982",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "step": "좌변을 (a+c)(a²+c²−b²)로 인수분해하고 a+c>0에서 피타고라스 역을 적용한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    }
+  ]
+}

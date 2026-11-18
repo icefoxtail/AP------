@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-085a9e4a3f99-f6057430",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_익힘책_고2_유형확인.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ab3723c7e1e67553802f63d13d56e20208199aa8cc8402b8f497859733934c34",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+      "step": "l=rθ에 l=4π,r=6을 넣어 θ=2π/3을 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_abb6a020d1ce8b0d9d3b39ed2bfab7acc7ce3c403490d8d16fe361c57780cdd8",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+      "step": "sin²θ=1−16/25와 제3사분면의 음수 부호로 sinθ를 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ba28a85e310c80a205fd80744132edd9f5ada5f5ba9f2548fa34f07d680de07",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_099",
+      "step": "π/2+θ,π−θ,π+θ를 대칭 변환하여 −3sinθ로 합친다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e48ab45c0e5107db37054c72f9117aeb760689ae8920a7d1ad5a8e32c24e57b",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "step": "사인·코사인 주기2π/|b|, 탄젠트 주기π/|b|를 비교한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e1c199f244ae473ddc23fad59044baba618080268ab1592b33720f522b371bf6",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_095",
+      "step": "동경의 x축 대칭조건5θ=2nπ와 범위를 결합하여 n=1을 정한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_02a08102d2ff265a94b155187693b7ecc320ec60164d27b01043fbddd399c658",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+      "step": "두 근의 합−1/2를 제곱하고 sin²+cos²=1로 곱−3/8을 얻어 a를 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b80be1037544e9db6ebd577eac44475662ad9ee35bee1747b9e9869a90cbf24c",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": null,
+      "step": "π/4<1<π/2와 제1사분면 단조성 및 tan1>1을 이용해 cos1<sin1<tan1을 정한다.",
+      "note": "새 TPL 제안: 삼각함수 값의 대소 비교 검사: CANONICAL_UNIT_INVALID, TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1f686fdfe13ef5bc3f6e7b451f9a77dbaf81c4a4823a4eaebfa177e51734ffa6",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_101",
+      "step": "코사인 그래프의 대칭축 x=1을 기준으로 두 교점의 합2를 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a941f88a00d50eb1f4d17097481424898dae51d4b9e58a40e888f9f9ec58db19",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "step": "주기에서 b=2, 최대최소에서 a=3,c=1을 구한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_445708bb9e06314aa3ad840d72ff41404f01760303b56173c5459063848fa52e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": null,
+      "step": "t=cosx∈[−1,1]로 치환한 (t+1)²−1의 양끝 극값을 구한다.",
+      "note": "새 TPL 제안: 삼각함수 이차치환 극값 검사: CANONICAL_UNIT_INVALID, TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b7c3116898099cc148959231657f754da36aac06dc99a966c7e15792ffc99d88",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "step": "X=πt/6으로 치환하여 한 주기에서 sinX≥1/2의 구간을 되돌린다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dcd23a917a3e7a6840664c8a548d1821e4ddf0471b8acf5fe14fab32e7385853",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_101",
+      "step": "진폭에 따라 |x|≤3으로 제한하고 양수구간 교점 세 개와 기함수 대칭을 이용한다.",
+      "note": "정답7은 맞으나 해설 교점 분포 오류: (1,2)는 음의 사인과 양의 직선으로0개, (2,3)는2개. (0,1)1개로 합3개이다. 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_44c99d33454d81466e91f80d5c76afe36d81aec7032665902896a02f265a4006",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+      "step": "인수분해로 sinx<−1/2를 얻고 cosx<0의 구간과 교집합을 취한다.",
+      "note": " 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    }
+  ]
+}

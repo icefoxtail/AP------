@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a0bef215f6f1-c39ca645",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d6ed9993de2a634eea2ca72a295a5244e262c1a500b38560a3b88d28ec2abbc4",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+      "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+      "step": "근호를 유리지수로 바꿔 6/n+2/3=4/3을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3742eb071efeb601a4fece6f4eecb86e0a7612e7cbbf43ca90f247b9d5bd5b14",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+      "step": "a·a⁻¹=1과 세제곱 차 공식으로3³+3·3을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dbfe07ae71ec223705dc7d13874b7d892466a73752499d02156aac8c703f1c6e",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+      "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+      "step": "서로 다른 소수의 지수가 n/2,n/6,n/9이므로 분모 최소공배수18을 택한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_288618286ddf036a2d77e77aa16c851d5611dc6d66bc048fee1235eb174a23ce",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "templateKey": null,
+      "step": "반복축소 반지름 r^n에서 r²=1/4로 비율을 구하고 r⁵을 계산한다.",
+      "note": "새 TPL 제안: 일반 정비율 감소모형 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a271e004bd7b4698ee8d0500aa151585b86dcb94102ad079360cba8cb752817",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "로그 정의로 a²=3,b=27^(−1/3)을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_252b27fc2a3d09281b4f8b1275c2d1d96fcb11ffb11f1735c11f32988f4a7b9b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "templateKey": "TPL_H22A_01_COMMON_LOG_078",
+      "step": "−2.2091=0.7909−3으로 써 진수를6.18×10⁻³으로 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e220ba5a6c689c6aac18b44974af9efb798e8a926d119917e9df69637cb17377",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+      "step": "로그값인 두 근4,5를 정하고 밑변환으로5/4와 합9를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_41c4844546709c1aff033a79691a373cfda3b81a930e3914ceb5ead56f2e8705",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "step": "같은 높이의 두 x좌표 차가3으로 일정하므로 높이28을 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d48e2dd80df12f609c3c7819e2280c510e64691fc57dabd84eb146d451a5225e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "step": "t=3^x>0 치환 후 (t−4)²+a−16의 최솟값과 t=4를 이용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b17ecd6cbfeb687a84a907db7b5732ef5348d8d039f493d288979e7772d6880",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "A의 x좌표3을 지수식에, B의 y좌표3을 로그식에 넣어 d=b=8을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_464a52736ee01ffa068ba82ee5ab50c0c941a9b26febac43a255211073afd4bb",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+      "step": "밑3으로 통일한 x=2y=−3z=4에서 각 지수를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_49a10f2fa113e2090d402316fac26c6dab42a1e19c5f21c1a158a2fd5326d32d",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "step": "t=log_a b∈(3/2,2)로 두어1/t,t/2,2/t,t를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8d581e6bee0f64a1e20e5308981a30a13e6785451893647720d9a4cfbd042566",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_092",
+      "step": "A=[3,7]를 log2로 옮긴 구간에서 (t−2)²+k−4가 항상 양수일 조건을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    }
+  ]
+}
