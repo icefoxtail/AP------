@@ -1114,6 +1114,7 @@ window.questionBank = [
       "answer": "60분",
       "solution": "[키포인트] 그래프의 한 점을 이용해 두 사람의 정비례 관계식을 각각 구한다.\n학교까지의 거리는\n$6\\mathrm{km}=6000\\mathrm m$이다.\n\n진수의 그래프는 $(3,1200)$을 지나므로\n$1200=3a$에서 $a=400$,\n관계식은 $y=400x$이다.\n$6000=400x$에서 진수는 $15$분 후 도착한다.\n\n영서의 그래프는 $(3,240)$을 지나므로\n$240=3b$에서 $b=80$,\n관계식은 $y=80x$이다.\n$6000=80x$에서 영서는 $75$분 후 도착한다.\n\n따라서 영서는 진수보다\n$75-15=60$분 늦게 도착한다.",
       "image": "assets/images/23_금당중_2학기_기말_중1_기출/q21.png",
+      "imageScale": 70,
       "imageSize": "medium",
       "visualAssetStatus": "ready",
       "subUnitKey": "M1-04-GRAPH_RELATION",

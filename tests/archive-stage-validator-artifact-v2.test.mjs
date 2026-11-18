@@ -34,6 +34,11 @@ test('missing basic fields, bad choices type and blank R3 solution fail',()=>{
  const q=question();delete q.content;delete q.tags;delete q.layoutTag;delete q.wide;
  assert.equal(run([q]).ok,false);assert.equal(run([question({choices:{bad:true}})]).ok,false);assert.equal(run([question({solution:''})],{stage:'R3'}).ok,false);
 });
+test('new items without level pass; a present but wrong level still fails',()=>{
+ const q=question();delete q.level;
+ assert.equal(run([q]).ok,true,JSON.stringify(run([q])));
+ assert.equal(run([question({level:'최상'})]).ok,false);
+});
 test('invalid difficulty enums and non-null Meta placeholders fail',()=>{
  assert.equal(run([question({level:1})]).ok,false);
  for(const field of ['difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(run([question({[field]:'MADE_UP'})]).ok,false);

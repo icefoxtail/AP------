@@ -70,7 +70,7 @@ function main() {
   const ids = candidate.questionBank.map((question) => question.id);
   if (ids.some((id, index) => id !== index + 1)) throw new Error("question ids must be sequential from 1");
   if (!manifest.archiveRelativePath) throw new Error("manifest.archiveRelativePath is required");
-  const required = ["level", "category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "questionType", "layoutTag", "tags", "wide", "content", "choices", "answer", "solution", ...["subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]];
+  const required = ["category", "originalCategory", "standardCourse", "standardUnitKey", "standardUnit", "standardUnitOrder", "questionType", "layoutTag", "tags", "wide", "content", "choices", "answer", "solution", ...["subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"]];
   const nonEmptyRequired = ["content", "answer", "solution", "subUnitKey", "subUnit", "subUnitConfidence", "subUnitClassificationDepth"];
   const confidenceValues = new Set(["existing_preserved", "candidate_evidence", "category_or_cue_inferred", "rule_inferred"]);
   const depthValues = new Set(["complete_candidate", "complete_category", "complete_documented", "complete_rule"]);

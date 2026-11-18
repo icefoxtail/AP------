@@ -25,7 +25,7 @@ const DIFFICULTY_FIELDS = Object.freeze([
   'legacyLevelCompatibility',
 ]);
 
-const BASIC_FIELDS = ['id', 'level', 'category', 'originalCategory', 'questionType', 'layoutTag', 'tags', 'wide', 'content', 'choices', 'answer', 'solution'];
+const BASIC_FIELDS = ['id', 'category', 'originalCategory', 'questionType', 'layoutTag', 'tags', 'wide', 'content', 'choices', 'answer', 'solution'];
 const DIFFICULTY_ENUMS = { difficultyConfidence: ['high','medium','low','UNKNOWN'], difficultyBoundaryFlag: ['NONE','B12','B23','B34','B45','UNKNOWN'], legacyLevelCompatibility: ['NORMAL','BORDERLINE_REVIEW','BORDERLINE_ACCEPTABLE','STRONG_CONFLICT','UNKNOWN'] };
 const EXCLUDED_ANSWERS = new Set(['__EXCLUDED__', 'EXCLUDED_CANDIDATE']);
 const CIRCLED_PREFIX = /^\s*(?:①|②|③|④|⑤)\s*/;
@@ -349,8 +349,8 @@ function validateBasicSchema(question, qid, issues) {
   for (const field of ['category','originalCategory','layoutTag']) if (typeof question?.[field] !== 'string') issues.push('ARTIFACT_STRING_REQUIRED:'+field+':q'+qid);
   if (!Array.isArray(question?.tags) || question.tags.some(t=>!nonEmpty(t))) issues.push('ARTIFACT_TAGS_ARRAY_REQUIRED:q'+qid);
   if (typeof question?.wide !== 'boolean') issues.push('ARTIFACT_WIDE_BOOLEAN_REQUIRED:q'+qid);
-  // difficulty canonical v1.3: historical level labels are not numeric bucket values.
-  if (!['하','중','상'].includes(question?.level)) issues.push('ARTIFACT_LEGACY_LEVEL_INVALID:q'+qid);
+  // 2026-11-18: level(하/중/상) is optional for new items; when present it must still be 하/중/상. difficultyBucket (1-5) is canonical.
+  if (hasOwn(question,'level') && !['하','중','상'].includes(question?.level)) issues.push('ARTIFACT_LEGACY_LEVEL_INVALID:q'+qid);
 }
 
 function resolveInside(root, relative) {

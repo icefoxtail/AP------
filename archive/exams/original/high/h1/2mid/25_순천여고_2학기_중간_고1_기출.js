@@ -401,6 +401,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/25_순천여고_2학기_중간_고1_기출/q13.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "content": "좌표평면에서 각 좌표축에 평행하지 않은 직선 $l$이 있다. $l$ 밖의 한 점 $P(x_1,y_1)$에서 $l$에 내린 수선의 발을 $H(x_2,y_2)$라 할 때, 아래 과정의 $(가)$, $(나)$에 알맞은 것을 순서대로 적은 것은?",
     "choices": [

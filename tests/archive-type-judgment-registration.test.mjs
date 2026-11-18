@@ -10,6 +10,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
+import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CANON = "archive/data/meta-foundation/canonical";
@@ -83,7 +84,7 @@ function fixture(t, { rowMutations = {} } = {}) {
     return { questionUid: `uid${n}`, sourceOrdinal: n,
       before: { problemTypeKey: current.problemTypeKey || null, templateKey: current.templateKey || null },
       after, rationale: "해설의 결정적 단계: 도함수의 정의를 극한으로 바꾼다", judge: "dots",
-      scope: { curriculum: "2022", standardCourse: COURSE }, judgedFingerprints: fingerprints(q), evidenceRefs, ...over };
+      scope: { curriculum: "2022", standardCourse: COURSE }, textBindingFingerprint: textFingerprint(q), evidenceRefs, ...over };
   };
   const request = (items, over = {}) => ({ schemaVersion: "archive-reviewed-exam-meta-register-request-v2", requestId: "type-judgment-test", examUid: "exam1",
     sourceArchiveFile: SOURCE, expectedSourceBlobSha1: blob(text), expectedQuestionCount: 5, scope: "PARTIAL_UIDS", fieldScope: "TYPE_ONLY",
@@ -158,6 +159,16 @@ test("explicit hold counters are recomputed, row-level counters are not touched"
   assert.equal(after.counts.explicitProblemTypeHolds, after.records.filter(r => r.fieldStatus.problemType === "manual_review_pending").length);
   assert.equal(after.counts.explicitTemplateHolds, after.records.filter(r => r.fieldStatus.template === "manual_review_pending").length);
   assert.equal(after.counts.records, 5);
+});
+
+test("a type judgment without a template key replays and verifies (absent key is not drift)", t => {
+  const f = fixture(t);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
+  const meta = f.read(META);
+  delete meta.records[0].templateKey; // real rows without a template have no such key
+  f.put(META, meta);
+  f.run(req, { write: true });
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
 });
 
 test("a re-run is an idempotent replay and verifies; later drift of a registered type is detected", t => {
@@ -248,16 +259,13 @@ test("before must equal the current type values (empty forms are equivalent)", t
   assert.equal(f.run(f.request([f.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])).totalQuestions, 1);
 });
 
-test("the judgment is bound to the current source bytes and per-question fingerprints", t => {
+test("the judgment is bound to each question's stem and choices, not to the file blob", t => {
   const f = fixture(t);
   const ok = f.item(1, { problemTypeKey: "PT_A" });
-  assert.throws(() => f.run({ ...f.request([ok]), expectedSourceBlobSha1: "0".repeat(40) }), /source Git blob drift/);
-  const changed = f.text.replace("학생용 해설 1", "학생용 해설 1 수정");
-  f.put(`archive/exams/${SOURCE}`, changed);
-  assert.throws(() => f.run(f.request([ok])), /source Git blob drift/, "a source edit after the judgment is refused by the blob");
-  f.put(`archive/exams/${SOURCE}`, f.text);
-  assert.throws(() => f.run(f.request([{ ...ok, judgedFingerprints: { ...ok.judgedFingerprints, contentFingerprint: "1".repeat(64) } }])), /judged fingerprints differ/);
-  assert.throws(() => f.run(f.request([{ ...ok, judgedFingerprints: undefined }])), /judged fingerprints differ/);
+  // a wrong or absent file blob is not a reason to refuse; a wrong or absent text fingerprint is
+  assert.equal(f.run({ ...f.request([ok]), expectedSourceBlobSha1: "0".repeat(40) }).totalQuestions, 1);
+  assert.throws(() => f.run(f.request([{ ...ok, textBindingFingerprint: "1".repeat(64) }])), /stem or choices differ from the judged text/);
+  assert.throws(() => f.run(f.request([{ ...ok, textBindingFingerprint: undefined }])), /stem or choices differ from the judged text/);
 });
 
 test("stale and content-bound rows are tagged with their binding; their own fingerprints are never rewritten", t => {
@@ -270,6 +278,7 @@ test("stale and content-bound rows are tagged with their binding; their own fing
     assert.equal(rows[i].sourceFingerprint, rowsBefore[i].sourceFingerprint);
     assert.equal(rows[i].contentFingerprint, rowsBefore[i].contentFingerprint);
     assert.equal(rows[i].typeApproval.judgedContentFingerprint, fingerprints(f.questions[i]).contentFingerprint);
+    assert.equal(rows[i].typeApproval.textBindingFingerprint, textFingerprint(f.questions[i]));
   }
 });
 
@@ -388,7 +397,7 @@ test("dry run on the real repository data plans only the metadata file and the r
       evidenceRefs: [{ path: "docs/agents/metadata.md", sha256: hash(fs.readFileSync(approvalRef)) }] },
     items: [{ questionUid: wanted.questionUid, sourceOrdinal: wanted.sourceOrdinal, before: { problemTypeKey: wanted.problemTypeKey ?? null, templateKey: wanted.templateKey ?? null },
       after: { problemTypeKey: binding.problemTypeKey }, rationale: "실제 데이터 모의 실행용 근거 문장",
-      scope: { curriculum: wanted.curriculum || wanted.curriculumKey, standardCourse: wanted.standardCourse }, judgedFingerprints: fingerprints(q),
+      scope: { curriculum: wanted.curriculum || wanted.curriculumKey, standardCourse: wanted.standardCourse }, textBindingFingerprint: textFingerprint(q),
       evidenceRefs: [{ path: "docs/agents/metadata.md", sha256: hash(fs.readFileSync(approvalRef)) }] }] };
   const metaBefore = fs.readFileSync(path.join(repo, META));
   const result = registerReviewedExamV2({ root: repo, request });
@@ -487,4 +496,39 @@ test("pack changes that remove, replace, reorder or touch another field are refu
   for (const after of attempts) assert.throws(() => f.run(f.request([item], { registryChanges: [packChange(after)] })), /may only add values to a pack's curricula\/standardCourses/);
   const before = f.read(`${f.base}/pack.json`);
   assert.deepEqual(before, pack, "a refused request leaves the pack untouched");
+});
+
+// ---- the lane binds to stem + choices (textBindingFingerprint), not to the exam file blob ----
+function editSource(f, n, change) {
+  const bank = f.questions.map(q => ({ ...q }));
+  Object.assign(bank[n - 1], change);
+  f.put(`archive/exams/${SOURCE}`, `window.questions = ${JSON.stringify(bank)};
+`);
+}
+const withText = (f, items) => items.map(item => ({ ...item, textBindingFingerprint: textFingerprint(f.questions[item.sourceOrdinal - 1]) }));
+
+test("a request still registers after the exam file changed elsewhere (figure, solution, answer); the receipt records the actual file", t => {
+  const f = fixture(t);
+  const req = f.request(withText(f, [f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }), f.item(2, { problemTypeKey: "PT_A" })]));
+  editSource(f, 1, { solution: "다듬은 해설", image: "recut.png", answer: "2" }); // blob drift, same stem and choices
+  const result = f.run(req, { write: true });
+  assert.equal(result.status, "PASS");
+  assert.equal(f.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(f.rows()[0].typeApproval.textBindingFingerprint, textFingerprint(f.questions[0]));
+  const receipt = f.read(`archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${req.requestId}.json`);
+  assert.notEqual(receipt.sourceBlobSha1, req.expectedSourceBlobSha1, "the receipt records the file as it was registered");
+  editSource(f, 2, { solution: "또 고친 해설" }); // replay of a registered request is history: later file edits do not break it
+  assert.equal(f.run(req).replay, true);
+});
+
+test("a request is refused when a stem or the choices changed, or when an item has no text fingerprint; nothing is written", t => {
+  for (const change of [{ content: "다른 발문" }, { choices: ["가", "나"] }]) {
+    const f = fixture(t), before = f.bytes();
+    const req = f.request(withText(f, [f.item(1, { problemTypeKey: "PT_A" }), f.item(2, { problemTypeKey: "PT_A" })]));
+    editSource(f, 2, change);
+    assert.throws(() => f.run(req, { write: true }), /stem or choices differ from the judged text.*uid2/);
+    assert.deepEqual(f.bytes().meta, before.meta, "nothing written");
+  }
+  const f = fixture(t);
+  assert.throws(() => f.run(f.request([{ ...f.item(1, { problemTypeKey: "PT_A" }), textBindingFingerprint: undefined }]), { write: true }), /stem or choices differ from the judged text.*uid1/);
 });
