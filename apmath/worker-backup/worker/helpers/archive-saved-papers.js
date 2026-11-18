@@ -156,63 +156,69 @@ function bytesToBase64(bytes) {
   return btoa(binary);
 }
 
-async function embedSavedPaperAssets(env, questions) {
-  const cache = new Map();
+// Reads one source image (R2 first, Pages copy as the rollback path). Used to embed it (old format) and to check it (key refs).
+async function fetchSourceAsset(env, path) {
   const base = String(
     env.ARCHIVE_PUBLIC_BASE_URL || "https://icefoxtail.github.io/AP------/archive",
   ).replace(/\/+$/, "") + "/";
+  let response = null;
+  const r2Url = examImageR2Url(env, path);
+  if (r2Url) {
+    try { response = await fetch(r2Url); } catch { response = null; }
+    if (response && !response.ok) {
+      try { await response.body?.cancel(); } catch { /* body already closed */ }
+      response = null;
+    }
+  }
+  if (!response) {
+    // R2 unavailable (or EXAM_IMAGE_BASE_URL is ""): the Pages copy, which exists only after a rollback re-includes it.
+    const url = new URL(path, base);
+    response = env.ARCHIVE2_ASSETS
+      ? await env.ARCHIVE2_ASSETS.fetch(url)
+      : await fetch(url);
+  }
+  if (!response.ok) fail("문제지 이미지 파일을 저장할 수 없습니다.", 409);
+  const reader = response.body?.getReader();
+  let bytes;
+  if (reader) {
+    const chunks = [];
+    let size = 0;
+    try {
+      for (;;) {
+        const { done, value: chunk } = await reader.read();
+        if (done) break;
+        size += chunk.byteLength;
+        if (size > MAX_SAVED_PAPER_BYTES) {
+          await reader.cancel();
+          fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
+        }
+        chunks.push(chunk);
+      }
+    } finally {
+      reader.releaseLock();
+    }
+    bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) {
+      bytes.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+  } else {
+    bytes = new Uint8Array(await response.arrayBuffer());
+    if (bytes.byteLength > MAX_SAVED_PAPER_BYTES)
+      fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
+  }
+  return { bytes, response };
+}
+
+async function embedSavedPaperAssets(env, questions) {
+  const cache = new Map();
   async function inlineReference(value) {
     if (typeof value !== "string") return value;
     const path = sourceAssetPath(value);
     if (!path) return value;
     if (cache.has(path)) return cache.get(path);
-    let response = null;
-    const r2Url = examImageR2Url(env, path);
-    if (r2Url) {
-      try { response = await fetch(r2Url); } catch { response = null; }
-      if (response && !response.ok) {
-        try { await response.body?.cancel(); } catch { /* body already closed */ }
-        response = null;
-      }
-    }
-    if (!response) {
-      // R2 unavailable (or EXAM_IMAGE_BASE_URL is ""): the Pages copy, which exists only after a rollback re-includes it.
-      const url = new URL(path, base);
-      response = env.ARCHIVE2_ASSETS
-        ? await env.ARCHIVE2_ASSETS.fetch(url)
-        : await fetch(url);
-    }
-    if (!response.ok) fail("문제지 이미지 파일을 저장할 수 없습니다.", 409);
-    const reader = response.body?.getReader();
-    let bytes;
-    if (reader) {
-      const chunks = [];
-      let size = 0;
-      try {
-        for (;;) {
-          const { done, value: chunk } = await reader.read();
-          if (done) break;
-          size += chunk.byteLength;
-          if (size > MAX_SAVED_PAPER_BYTES) {
-            await reader.cancel();
-            fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
-          }
-          chunks.push(chunk);
-        }
-      } finally {
-        reader.releaseLock();
-      }
-      bytes = new Uint8Array(size);
-      let offset = 0;
-      for (const chunk of chunks) {
-        bytes.set(chunk, offset);
-        offset += chunk.byteLength;
-      }
-    } else {
-      bytes = new Uint8Array(await response.arrayBuffer());
-      if (bytes.byteLength > MAX_SAVED_PAPER_BYTES)
-        fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
-    }
+    const { bytes, response } = await fetchSourceAsset(env, path);
     const ext = path.split(".").at(-1).toLowerCase();
     const fallbackMime = ({ png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", svg: "image/svg+xml", webp: "image/webp", gif: "image/gif" })[ext];
     const declaredMime = String(response.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
@@ -400,6 +406,7 @@ export async function readAndVerifySavedSnapshot(row) {
     !isPlainObject(snapshot.meta) ||
     !Array.isArray(snapshot.bridgeRows) ||
     !isPlainObject(snapshot.selectionFilters) ||
+    (snapshot.assets !== undefined && !validSnapshotAssets(snapshot.assets)) ||
     snapshot.bridgeRows.length !== Number(row.question_count) ||
     snapshot.questions.length !== Number(row.question_count) ||
     ![2, 4, 6, 8].includes(Number(snapshot.meta.qpp)) ||
@@ -410,4 +417,16 @@ export async function readAndVerifySavedSnapshot(row) {
     (await sha256hex(stableStringify(snapshot))) !== row.snapshot_hash
   ) fail("저장한 시험지 snapshot 검증에 실패했습니다.", 409);
   return snapshot;
+}
+
+// Key-reference snapshots keep the exam image paths as they are and list every image they use as { path, sha256, bytes }.
+// Old snapshots have no `assets` list (their images are embedded) and are read exactly as before.
+const ASSET_SHA256 = /^[0-9a-f]{64}$/;
+function validSnapshotAssets(assets) {
+  try {
+    return Array.isArray(assets) &&
+      assets.every((asset) => isPlainObject(asset) && sourceAssetPath(asset.path) === asset.path &&
+        ASSET_SHA256.test(String(asset.sha256)) && Number.isInteger(asset.bytes) && asset.bytes >= 0) &&
+      new Set(assets.map((asset) => asset.path)).size === assets.length;
+  } catch { return false; }
 }
