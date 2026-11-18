@@ -415,7 +415,8 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   const report={schemaVersion:VERSION,mode:'prepare',registrationMode:registration,inputSha,status:'PREPARING',safeToPersist:false,registrationReady:false,
     sourceMutation:0,independentReviewClaim:false,lanes:[],changedPaths:[]};
   writeEvidence(work,report); // An interrupted retry cannot leave an earlier attempt's publishable report.
-  const next={schemaVersion:VERSION,lanes:{...old.lanes},blockedLanes:[]};
+  // A lane this run does not handle (--required-only) keeps its earlier cache entry and blocked mark.
+  const next={schemaVersion:VERSION,lanes:{...old.lanes},blockedLanes:(old.blockedLanes||[]).filter(id=>!lanes.some(lane=>lane.id===id))};
   const laneState=new Map();
   // A retry gets fresh native reports; an earlier attempt's PASS may never certify the new snapshot.
   const nativeWork=path.join(work,'native');fs.rmSync(nativeWork,{recursive:true,force:true});fs.mkdirSync(nativeWork,{recursive:true});
@@ -594,16 +595,19 @@ export function unrelatedRange({root=ROOT,base,head,lanes}={}) {
 }
 
 async function main() {
-  const args=process.argv.slice(2),options={};let check=false;
+  const args=process.argv.slice(2),options={};let check=false,requiredOnly=false;
   if(args[0]==='--unrelated-range') {
     const rootAt=args.indexOf('--root'),verdict=unrelatedRange({...(rootAt>0&&args[rootAt+1]?{root:path.resolve(args[rootAt+1])}:{}),base:args[1],head:args[2]});
     console.log(JSON.stringify(verdict));process.exitCode=verdict.unrelated?0:1;return;
   }
   for(let i=0;i<args.length;i++) {
     if(args[i]==='--check')check=true;
+    else if(args[i]==='--required-only')requiredOnly=true;
     else if(['--root','--work-dir'].includes(args[i])&&args[i+1])options[args[i]==='--root'?'root':'work']=args[++i];
     else throw Error('UNKNOWN_OR_VALUELESS_ARGUMENT:'+args[i]);
   }
+  // --required-only: prepare just the lanes publication needs (first save of a two-save run); the others stay needed for the full pass.
+  if(requiredOnly&&!check)options.lanes=nativeLanes(options.root?path.resolve(options.root):ROOT).filter(lane=>lane.required);
   const result=check?checkRegistration(options):await prepareRegistration(options);
   console.log(json(result));
   if(process.env.GITHUB_OUTPUT)fs.appendFileSync(process.env.GITHUB_OUTPUT,

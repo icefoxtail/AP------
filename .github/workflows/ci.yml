@@ -15,10 +15,11 @@ on:
         required: true
         type: string
 
-# Keep each actual event's check names and verdict; newer events never cancel it.
+# A newer push to the same pull request cancels that PR's older run (runner capacity: 20 concurrent jobs).
+# main and manual runs keep one group per run and are never cancelled, so every main commit keeps its verdict.
 concurrency:
-  group: ${{ format('ci-{0}-{1}', github.event_name, github.run_id) }}
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('ci-pr-{0}', github.event.pull_request.number) || format('ci-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   plan:

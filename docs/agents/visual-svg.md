@@ -33,7 +33,7 @@
 
 - 장부는 시험지 하나에 파일 하나다: `archive/tools/geometry-equation/production/exam-figure-ledger/<archive/exams/original 아래 경로>.json`(머리는 `_meta.json`). 옛 한 파일 `exam-figure-ledger.json`은 없앴다. 읽기·쓰기는 `ops/svg-m1/figure_ledger.py`·`figure-ledger.cjs`와 그것을 쓰는 도구(`ledger-upsert.py` 등)로만 하고 손으로 고치지 않는다.
 - 쓰기는 문항 단위다. 이미 PUBLISHED인 문항은 spec의 `published`·`exempt_override`·`demote`로 그 번호를 직접 넘길 때만 바뀐다. 일부 문항만 다시 게시해도 나머지 PUBLISHED는 그대로다. CLOSED는 모든 문항이 PUBLISHED/EXEMPT일 때만 저장된다.
-- 서로 다른 시험지의 그림 PR은 장부에서 충돌하지 않으므로 순서를 기다리지 않고 각자 CI 녹색이면 병합한다. 같은 시험지 파일이 충돌하면 main 판을 받고 그 시험지에 `ledger-upsert.py`를 다시 돌린다. 옛 한 파일을 고친 열린 PR은 `python archive/tools/geometry-equation/ops/svg-m1/figure_ledger.py port-ledger-change --base <갈라진 main 커밋> --head <브랜치>`로 옮긴다(PUBLISHED를 내리는 변경은 충돌로 멈춘다).
+- 서로 다른 시험지의 그림 PR은 장부에서 충돌하지 않으므로 순서를 기다리지 않고 각자 검수를 통과하면 병합한다(CI 녹색은 병합 조건이 아니다: common.md). 같은 시험지 파일이 충돌하면 main 판을 받고 그 시험지에 `ledger-upsert.py`를 다시 돌린다. 옛 한 파일을 고친 열린 PR은 `python archive/tools/geometry-equation/ops/svg-m1/figure_ledger.py port-ledger-change --base <갈라진 main 커밋> --head <브랜치>`로 옮긴다(PUBLISHED를 내리는 변경은 충돌로 멈춘다).
 - 전체 요약 `production/exam-figure-queue.md`는 게시 때 고치지 않고, 필요할 때 `figure_ledger.py queue`로 다시 만든다.
 - 이유: 한 파일 장부를 모든 그림 PR이 고쳐 서로 다른 시험지 PR도 하나씩만 병합됐고, 부분 게시가 기존 PUBLISHED를 OPEN으로 덮은 사고(22개 시험지 402문항, PR #1778로 복구)가 있었다.
 
@@ -111,7 +111,7 @@ Claude·GPT·Codex 어느 라인이든 기출·생성문항의 문제·해설 �
    - 다른 AI 인스턴스가 ops/svg-m1/briefs/review1.md로 그림과 publish.json을 검수해 PASS한 것만 게시한다.
    - 게시는 .tmp/svg-m1/pubflow.py로 한다(HANDOFF §00 "시험지 하나 처리 절차"). 이미 그림이 있는 문항을 교체할 때는 rows에 "replace": true를 넣는다.
    - 게시 뒤 더 쓰이지 않는 옛 그림은 정리한다. 커밋에는 운영물만 넣고, 증거와 렌더 출력은 넣지 않는다.
-   - 원본 시험지·공유 데이터 고정값 규칙(docs/agents/common.md)을 지킨다. 병합 전에 PR CI가 전부 녹색인지 확인한다.
+   - 원본 시험지·공유 데이터 고정값 규칙(docs/agents/common.md)을 지킨다. 병합 뒤 main CI에서 내 변경이 만든 실패를 고친다(CI 녹색은 병합 조건이 아니다: common.md).
 
 6. 브라우저 렌더를 돌릴 수 없는 라인
    - item.json, plan.json, publish.json 초안까지만 만들고, 렌더·검수·게시는 실행 가능한 라인에 넘긴다.

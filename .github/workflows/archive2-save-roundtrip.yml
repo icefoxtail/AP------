@@ -45,6 +45,12 @@ on:
       - '.github/workflows/archive2-save-roundtrip.yml'
   workflow_dispatch:
 
+# A newer push to the same pull request cancels that PR's older run (runner capacity: 20 concurrent jobs).
+# main and manual runs keep one group per run and are never cancelled, so every main commit keeps its verdict.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('archive2-save-roundtrip-pr-{0}', github.event.pull_request.number) || format('archive2-save-roundtrip-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-33aeb6d8bfd9-0cbbdf63",
+  "examUid": "23_팔마고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/23_팔마고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "faa3384c214b9c5e1e1df86e9de32b42c064b4e2",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-33aeb6d8bfd9-0cbbdf63.type-ledger.json",
+        "sha256": "35989bffeb5cdd5b3bd96588b4f0a12d3f1afe097d3337be4199eee1d7f26c36"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fdfafe9881a521b0ef0062acd8ad37c19f081ec8675eec10d298ef2fe2ebfea8",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+      },
+      "rationale": "파스칼 항등식으로 kC5=(k+1)C6-kC6을 합해 중간항을 소거하여12C6을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "348cc33f1940cfebbc421651205dd30e1a6ec50c7f9792e2fff13d9f6d372c8a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-33aeb6d8bfd9-0cbbdf63.type-ledger.json",
+          "sha256": "35989bffeb5cdd5b3bd96588b4f0a12d3f1afe097d3337be4199eee1d7f26c36"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_521f595a9ed08ecc0aa6663cb8db5cc1b5b8062810289ff18bb8de99b50c46ca",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "두 경로가 중앙선에 C 전에 함께 들어오면 먼저 만남을 이용해 적어도 한쪽이 C에서만 진입하는 경로10개를 포함배제하여10·20+20·10-10²=300을 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "dc3f3654b1784da7031d246d7095fe21dee2aa2546558255b321a6cc889d0b7b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-33aeb6d8bfd9-0cbbdf63.type-ledger.json",
+          "sha256": "35989bffeb5cdd5b3bd96588b4f0a12d3f1afe097d3337be4199eee1d7f26c36"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_665ddd37f576e0056078333eb0777c511351bfa0224268208dbf187f1eb11c13",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+      },
+      "rationale": "홀수행 이항계수의 대칭 절반합에서 상수항1을 빼2^(2n)-1=1023을 얻어 n=5를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "6c22bbcecd8a24085ec206575487dceb0edba5aeccb9628c245f348f04545e16",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-33aeb6d8bfd9-0cbbdf63.type-ledger.json",
+          "sha256": "35989bffeb5cdd5b3bd96588b4f0a12d3f1afe097d3337be4199eee1d7f26c36"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9bf16bc9930d62ee70677bfc1ea346d1665b579d797b26cdf1597956d3f5c83c",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING"
+      },
+      "rationale": "제약별 자유배정·일대일·엄격증가·비감소 함수수를 구하고 비감소 조건 아래 곱18인30개를252개로 나눠5/42를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "ef15d07a97aad5c21573732eb72e257a08f59ee23b4b226229b2fabf6aff31eb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-33aeb6d8bfd9-0cbbdf63.type-ledger.json",
+          "sha256": "35989bffeb5cdd5b3bd96588b4f0a12d3f1afe097d3337be4199eee1d7f26c36"
+        }
+      ]
+    }
+  ]
+}

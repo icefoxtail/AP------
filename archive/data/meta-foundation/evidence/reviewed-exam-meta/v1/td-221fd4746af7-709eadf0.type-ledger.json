@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-221fd4746af7-709eadf0",
+  "sourceArchiveFile": "textbooks/미래엔_공통수학1/미래엔_공통수학1_복소수와이차방정식_중단원마무리_고1/미래엔_공통수학1_복소수와이차방정식_중단원마무리_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_002a7d33dba8c086781e2e99dd297e464e22c178f6f70d7d9f34a5f47aa28494",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "실수부와 허수부를 각각 비교하여 두 일차 연립식을 푼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e05d04d5d51494c404b78691feb8935c54a1b9eca8123a6daeaaaa873e5612e",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "step": "켤레복소수는 실수부를 유지하고 허수부 부호만 바꾼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a24b4a7763857f260fcbf78b1cc591a003e3ac8696aa7d6930e6211b623048aa",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "성분별 사칙연산과 i²=−1, 분모의 켤레곱을 이용한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4e25437124902ced2ab4fa12a43780306415d02dbf4e116572eb134fa6f6f50f",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "step": "판별식이 각각 40,0,−47이므로 그 부호로 판정한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e1c7944b1f08888e676f96c055fbd7df747223b0c3cffdb6690d63b97df0e4b",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "근의 합 3, 곱 1/2로 제곱합·역수합·이동근 곱·비의 합을 표현한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_768a2a274967c621b18cb90f90ccd01b8ceaf28540f2e618c76bba8f3a58efcd",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "step": "주어진 식을 (α+β)(ᾱ+β̄)=|1−i|²로 묶는다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c4c4a7fdb501c99065939f93d311c55255cec5952dbaf8c89031336cce44f2cb",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "z=x+yi로 두고 2x+3y=7,x+2y=1을 풀어 x=11,y=−5이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ffa09b89a5731d75503cc86755478cea763781a1c499dad9c2d52b592be4215",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "음수의 제곱근을 i로 바꾸면 −3+6i−3i=−3+3i이므로 b/a=−1이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aa95b5f478dd0f581870a06d57c95044426225f8b269b1287f7ffea1d14a7d7f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "step": "판별식 4(3−k)<0에서 k>3이므로 최소 정수는 4이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f94915fc184c4ed768255868e94f7e1bcc9147eb10922507de41dda1d24a3e49",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "첫 근의 합 −a, 곱 −9가 둘째 근이므로 9a=27,−b=−a−9에서 a=3,b=12이다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7151473ab18dd81fa31c56086bd27f6b45b3ab214bdc3c1d6121a43214a53f07",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "합과 곱을 계수로 하는 이차방정식 t²−2t+4=0과 t²−6t−5=0을 푼다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bcd970bff3f9e6e41a9f6849b4b5162c26e1f126d3c92f30281ab3a3d1f6503e",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "z²=−i이므로 −i,−1,i,1,−i를 더한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bf16c51459b2adc9be95542988cd0b87fab744b12d4fccabfe6f3698d35c3e62",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "b를 잘못 읽은 식에서 곱 c/a=18/5, c를 잘못 읽은 식에서 합 −b/a=47/5를 보존하여 근을 복원한다.",
+      "note": "후보 도구: CANONICAL_UNIT_INVALID. ACTIVE 키 및 TPL 상위 직접 확인.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_공통수학1.jsonl"
+    }
+  ]
+}
