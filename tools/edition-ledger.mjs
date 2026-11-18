@@ -372,4 +372,4 @@ function main(argv) {
   return 0;
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) process.exit(main(process.argv));
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) process.exitCode = main(process.argv); // process.exit 는 파이프로 나가는 큰 stdout 을 잘라 먹는다(리눅스)
