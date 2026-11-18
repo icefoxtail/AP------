@@ -6,7 +6,7 @@
     const DEFAULT_DPI = 300;
     const DEFAULT_THRESHOLD = 220;
     const DEFAULT_INSTALLER_URL = 'https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/APMath-Print-Agent-Installer.zip';
-    const REQUIRED_AGENT_VERSION = '20260824.3';
+    const REQUIRED_AGENT_VERSION = '20261118.1';
     const encoder = new TextEncoder();
 
     function finitePositive(value, fallback) {
