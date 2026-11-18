@@ -217,6 +217,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "매초 같은 부피의 물을 넣을 때 그래프의 기울기가 클수록 그 높이에서 그릇의 단면적이 작다.\n처음에는 기울기가 일정하다가 마지막에 기울기가 더 커지므로, 아래쪽은 원기둥이고 위쪽은 더 좁은 목으로 된 ②가 알맞다.",
     "image": "assets/images/23_금당중_2학기_중간_중1_기출/q5.png",
+    "imageScale": 100,
     "imageSize": "tall",
     "visualAssetStatus": "ready",
     "subUnitKey": "M1-04-GRAPH_RELATION",

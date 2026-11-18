@@ -34,7 +34,7 @@ test("one writer retries the complete native transaction while Pages and compati
   const register = read(".github/workflows/archive-main-auto-meta.yml");
   const compatibility = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
   const pages = read(".github/workflows/archive-pages-release.yml");
-  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
+  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 2, 'required-lane save, then the full save');
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
   assert.doesNotMatch(register, /git push origin HEAD:main|--force|HEAD\^ HEAD/);
   for (const [name, text] of [["compatibility", compatibility], ["pages", pages]]) {

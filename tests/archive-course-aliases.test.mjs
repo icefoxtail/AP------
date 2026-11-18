@@ -81,7 +81,10 @@ test("relation: same, alias, successor and everything else", () => {
   assert.equal(a.relation("공통수학1", "공통수학2"), "");
   assert.equal(a.relation("미적분", "미적분I"), "", "2015 미적분 corresponds to 2022 미적분II, not 미적분I");
   assert.equal(a.relation("미적분", "미적분II"), "successor");
-  assert.equal(a.relation("중학 수학", "중1 수학"), "", "a course name without a grade is not guessed");
+  assert.equal(a.relation("중학교 수학", "중1 수학"), "", "a course name without a grade is not guessed");
+  // "중학 수학" has no grade in its own text, but every one of its 221 metadata rows lies under middle/m1 (counted 2026-11-18): listed with that evidence.
+  assert.equal(a.relation("중학 수학", "중1 수학"), "alias");
+  assert.equal(a.relation("중학 수학", "중2 수학"), "");
   assert.equal(a.relation("", "중1 수학"), "");
 });
 

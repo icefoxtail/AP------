@@ -438,6 +438,32 @@ test('4slot failure preserves the last index and receipts, while verified ordina
   assert.deepEqual(f.calls,['fourSlot'],'recovery does not rerun verified shared/Generated producers');
 });
 
+test('required lanes alone are enough to publish; the other lanes, their cache and blocked marks wait for the full pass',async t=>{
+  const f=fixture(t);await f.seedRegistered();
+  // A lane that failed earlier stays blocked through a required-only save.
+  write(f.root,'tools/4slot.cjs','// changed fixture builder\n');commit(f.root,'four slot builder change');
+  const failing=async ctx=>{if(ctx.lane.id==='fourSlot')throw Error('FOUR_SLOT_TECHNICAL_FAILURE');return f.execute(ctx);};
+  await prepareRegistration({...f.options,execute:failing});commit(f.root,'isolated four slot failure');
+  assert.ok(readJson(f.root,STATE).blockedLanes.includes('fourSlot'));
+  // New source plus a pending inbox request: every lane is needed.
+  write(f.root,source,'{"uid":"second_uid","asset":"'+asset+'"}\n');write(f.root,'inputs/review.json',{sourceSha256:hash(read(f.root,source))});
+  write(f.root,'inputs/inbox.json',{requestId:'second-request'});commit(f.root,'new source and pending request');f.calls.length=0;
+  const required=f.lanes.filter(lane=>lane.required);
+  const first=await prepareRegistration({...f.options,lanes:required});
+  assert.equal(first.publishable,true);assert.equal(first.safeToPersist,true);
+  assert.deepEqual(first.lanes.map(l=>l.id).filter(id=>!id.endsWith('Final')),['generated','shared']);
+  assert.ok(!f.calls.some(id=>['reviewed','semantic','fourSlot'].includes(id)),'no other lane runs in the first save');
+  assert.ok(readJson(f.root,STATE).blockedLanes.includes('fourSlot'),'a lane this save does not handle keeps its blocked mark');
+  assert.ok(fs.existsSync(path.join(f.root,'inputs/inbox.json')),'the pending request is untouched');
+  commit(f.root,'required lanes saved');
+  const midway=checkRegistration(f.options);
+  assert.equal(midway.publishable,true,'publication condition is met after the first save');
+  assert.equal(midway.needed,true);assert.deepEqual(midway.lanes.filter(l=>l.needed).map(l=>l.id).sort(),['fourSlot','reviewed','semantic']);
+  const full=await prepareRegistration(f.options);
+  assert.equal(full.publishable,true);assert.equal(full.needed,false);
+  assert.ok(f.calls.includes('reviewed')&&f.calls.includes('semantic')&&f.calls.includes('fourSlot'),'the full pass completes the remaining lanes');
+});
+
 test('native proof includes external canonical authority, consumer policy and core runtime dependencies',()=>{
   const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),lanes=nativeLanes(root);
   const shared=lanes.find(l=>l.id==='shared');

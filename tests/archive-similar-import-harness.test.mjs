@@ -14,7 +14,7 @@ import { buildCandidateSet } from '../archive/tools/similar-import/build-candida
 import { checkJudgments } from '../archive/tools/similar-import/check-judgment.mjs';
 import { applyJudgments } from '../archive/tools/similar-import/apply-judgment.mjs';
 import { buildReviewMarkdown } from '../archive/tools/similar-import/build-review-pack.mjs';
-import { gitBlobSha1, readJson, writeJson, stripWs, loadCrosswalkRecords, loadCourseGroups, loadTermDictionary } from '../archive/tools/similar-import/lib.mjs';
+import { gitBlobSha1, readJson, writeJson, stripWs, loadCrosswalkRecords, loadCourseGroups, loadTermDictionary, loadTaxonomy, loadGuideExample, itemFingerprint, readBank, DEFAULT_REPO_ROOT } from '../archive/tools/similar-import/lib.mjs';
 import { buildMd, hq1, hq2 } from './helpers/similar-md-fixture.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -46,17 +46,18 @@ const review0 = () => ({ reviewerSolvedAnswer: '', verdict: '', fixes: [], note:
 
 function goodJudgments(candDir) {
   const { unit, pt, tpl } = pick(candDir);
+  const fp = qid => { const c = readJson(path.join(candDir, `q${String(qid).padStart(2, '0')}.json`)); return itemFingerprint({ content: c.problem.content, choices: c.problem.choices, answer: c.reference.answer, solution: c.reference.solution }); };
   const j1 = {
-    qid: 1,
+    qid: 1, itemFingerprint: fp(1),
     solveSteps: ['양변에서 3 을 빼면 x=7-3 이다.', 'x=4 이므로 보기 ③ 4 가 답이다.'],
     solvedAnswer: '4', answerMatches: true, answerIssue: '',
-    figureNeed: 'NONE', figureEvidence: '',
+    figureNeed: 'NONE', figureEvidence: '', solutionFigureNeed: 'NONE', solutionFigureEvidence: '',
     standardUnitKey: unit.standardUnitKey, subUnitKey: unit.subUnits[0].subUnitKey, unitEvidence: '방정식 $x+3=7$',
     rpmRecordId: unit.rpm[0].id, rpmReason: 'x+3=7 에서 양변에서 3 을 빼는 한 단계를 쓴다.',
     problemTypeKey: pt ? pt.problemTypeKey : 'NONE', templateKey: tpl ? tpl.templateKey : 'NONE',
     typeReason: 'x+3=7 에서 x=4 를 구하는 결정적 단계는 양변에서 3 을 빼는 것이다.',
     newKeyProposal: pt ? null : { key: 'PT_LINEAR_EQUATION_SOLVE', label: '일차방정식 풀이', why: '일차방정식의 해를 구하는 문항을 모은다.' },
-    difficultyBucket: 1, difficultyConfidence: 'high', difficultyReason: 'x+3=7 을 푸는 한 단계 문항이다.', level: '하', format: '',
+    difficultyBucket: 1, difficultyConfidence: 'high', difficultyReason: 'x+3=7 을 푸는 한 단계 문항이다.', difficultyBoundaryFlag: 'NONE', format: '',
     slots: {
       given: [{ term: '방정식', src: 'stem', quote: '방정식 $x+3=7$' }],
       goal: [{ term: '해', src: 'stem', quote: '의 해는?' }],
@@ -66,16 +67,16 @@ function goodJudgments(candDir) {
     slotReasons: {}, how: 'x+3=7 을 직접 풀어 x=4 를 얻고 보기 ③ 과 대조했다.', review: review0(),
   };
   const j2 = {
-    qid: 2,
+    qid: 2, itemFingerprint: fp(2),
     solveSteps: ['2x=12 의 양변을 2 로 나눈다.', 'x=12/2=6 이다.'],
     solvedAnswer: '6', answerMatches: true, answerIssue: '',
-    figureNeed: 'NONE', figureEvidence: '',
+    figureNeed: 'NONE', figureEvidence: '', solutionFigureNeed: 'NONE', solutionFigureEvidence: '',
     standardUnitKey: unit.standardUnitKey, subUnitKey: unit.subUnits[0].subUnitKey, unitEvidence: '방정식 $2x=12$',
     rpmRecordId: unit.rpm[unit.rpm.length - 1].id, rpmReason: '2x=12 에서 12 를 2 로 나누는 풀이 단계에 해당한다.',
     problemTypeKey: 'NONE', templateKey: 'NONE',
     typeReason: '후보 유형 중 2x=12 처럼 계수로 나누어 12 에서 해를 구하는 것이 없어 NONE 으로 둔다.',
     newKeyProposal: { key: 'PT_LINEAR_EQUATION_SOLVE', label: '일차방정식 풀이', why: '일차방정식의 해를 구하는 문항을 모은다.' },
-    difficultyBucket: 2, difficultyConfidence: 'medium', difficultyReason: '12 를 2 로 나누어 x=6 을 얻는 서답형이라 2단계로 본다.', level: '중', format: '',
+    difficultyBucket: 2, difficultyConfidence: 'medium', difficultyReason: '12 를 2 로 나누어 x=6 을 얻는 서답형이라 2단계로 본다.', difficultyBoundaryFlag: 'B12', format: '',
     slots: {
       given: [{ term: '방정식', src: 'stem', quote: '방정식 $2x=12$' }],
       goal: [{ term: '해', src: 'stem', quote: '해를 구하시오' }],
@@ -130,6 +131,8 @@ test('build-candidates: 과목·교육과정으로 거른 후보, 원문 인용,
       assert.ok(dict.byName.has(stripWs(t.term)));
     }
     assert.equal(c.source.standardUnitKey, 'M2-01');
+    assert.equal('primaryMethod' in c.source || 'decisiveStep' in c.source, false, '풀기 전에 보는 source 구역에 풀이 요약이 없다');
+    assert.ok(c.reference.sourcePrimaryMethod && c.reference.sourceDecisiveStep);
     // 빈 판정 틀이 있고, 다시 돌려도 작성 중인 판정을 덮어쓰지 않는다
     const jf = path.join(ctx.judgmentDir, 'q01.json');
     assert.equal(readJson(jf).solveSteps.length, 0);
@@ -264,6 +267,7 @@ test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없�
     assert.equal(bank[1].problemTypeKey, '');
     assert.equal(bank[1].difficultyBucket, 2);
     assert.equal(bank[0].content, hq1.content, '수학 내용은 그대로');
+    for (const b of bank) assert.equal('level' in b, false, '하/중/상 칸은 산출물에 없다');
     // 키 순서는 변환기가 만든 본보기 순서를 따른다
     assert.equal(Object.keys(bank[0])[0], 'id');
     assert.ok(Object.keys(bank[0]).indexOf('rpmPrimaryRecordId') > Object.keys(bank[0]).indexOf('integrationPattern'));
@@ -278,6 +282,26 @@ test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없�
     assert.match(reg.items[0].reason, /DRAFT_SINGLE_MODEL/);
     assert.equal(reg.items[1].after.metaRationale.draftTier, 'SINGLE_MODEL_DRAFT');
     assert.match(reg.items[1].reason, /PROPOSAL/);
+    // 검수자가 손으로 붙이던 필수 필드를 도구가 만든다
+    for (const [i, it] of reg.items.entries()) {
+      assert.equal('level' in it.after, false);
+      assert.equal('levelBasis' in it.after, false);
+      assert.equal(it.after.difficultyBoundaryFlag, i === 0 ? 'NONE' : 'B12');
+      assert.equal(it.difficultyBoundaryFlag, it.after.difficultyBoundaryFlag);
+      assert.equal(it.after.visualNecessity.problem, 'EXEMPT');
+      assert.ok(it.after.visualNecessity.problemReason);
+      assert.equal(it.after.visualNecessity.solution, 'EXEMPT');
+      assert.ok(it.after.visualNecessity.solutionReason);
+      assert.equal(it.after.metaRationale.crossConcept, 'NONE: 원천 마크다운 값, 재판정 안 함');
+      assert.equal(it.after.metaRationale.integration, 'NONE: 원천 마크다운 값, 재판정 안 함');
+      assert.match(it.after.metaRationale.condition, /^NONE:/);
+      assert.equal(it.after.provenance.kind, 'SIMILAR_FROM_ORIGINAL');
+      assert.equal(it.after.provenance.sourceExam, STEM.replace('_유사', '_기출'));
+      assert.equal(it.after.provenance.sourceQid, i + 1);
+      assert.equal(it.after.provenance.createdAt, '2026-11-18');
+      assert.equal('generator' in it.after.provenance, false);
+      assert.equal('variationNote' in it.after.provenance, false);
+    }
     assert.deepEqual(reg.registryChanges, [], '새 키 제안은 registryChanges 로 만들지 않는다');
 
     const fs4 = readJson(path.join(out, `${STEM}.4slot.json`));
@@ -348,7 +372,8 @@ test('apply-judgment: --only 반영은 일부 문항만 바꾸고 영수증은 �
     assert.deepEqual(ap.appliedQids, [1]);
     const bank = loadBank(path.join(out, `${STEM}.js`));
     assert.equal(bank[0].difficultyBucket, 1);
-    assert.equal(bank[1].level, '중', '반영 대상이 아닌 문항은 변환기 값 그대로');
+    assert.equal(bank[1].difficultyBucket, 2, '반영 대상이 아닌 문항은 변환기 값 그대로');
+    assert.equal('level' in bank[0], false);
     const receipt = readJson(path.join(out, `${STEM}.review-receipt.json`));
     assert.equal(receipt.overallVerdict, 'PARTIAL');
     assert.equal(receipt.signOffStatus, 'PARTIAL_NOT_FOR_RELEASE');
@@ -383,6 +408,7 @@ test('검수 기록 점검: 풀이 답 불일치인데 PASS, 고친 값이 반�
     writeJudgments(ctx.judgmentDir, js);
     assert.ok(codesOf(check(ctx), 2).includes('REVIEW_FIX_NOT_APPLIED'));
     js[2].difficultyBucket = 3;
+    js[2].difficultyBoundaryFlag = 'B23';
     writeJudgments(ctx.judgmentDir, js);
     assert.deepEqual(codesOf(check(ctx), 2), []);
   } finally { ctx.cleanup(); }
@@ -433,5 +459,158 @@ test('CLI: check-judgment 은 실패 코드가 있으면 종료 1, 없으면 0 �
     const lines = fs.readFileSync(statusFile, 'utf8').trim().split('\n');
     assert.match(lines[0], /\tCONVERTED\t/);
     assert.match(lines.at(-1), /\tJUDGED\t/);
+  } finally { ctx.cleanup(); }
+});
+
+test('build-candidates: 문항 주 단원의 등록된 ACTIVE 유형이 교육과정과 상관없이 모두 후보에 들어간다 (누락 0)', () => {
+  const ctx = fresh();
+  try {
+    const c = readJson(path.join(ctx.candDir, 'q01.json'));
+    const members = new Set(loadCourseGroups(repoRoot).find(g => g.id === 'MIDDLE2').members);
+    const tax = loadTaxonomy(repoRoot);
+    const unitKeys = new Set([c.source.standardUnitKey]); // 문항의 주 단원은 등록부의 유형 전부를 보인다
+    assert.ok(unitKeys.has('M2-01'));
+    const have = new Set(c.units.flatMap(u => u.problemTypes.map(p => `${u.standardUnitKey}|${p.problemTypeKey}`)));
+    const missing = [];
+    for (const b of tax.bindings) {
+      if (b.status !== 'ACTIVE' || !b.problemTypeKey || !members.has(b.standardCourse) || !unitKeys.has(b.standardUnitKey)) continue;
+      if (tax.pts.get(b.problemTypeKey)?.status !== 'ACTIVE') continue;
+      if (!have.has(`${b.standardUnitKey}|${b.problemTypeKey}`)) missing.push(`${b.standardUnitKey}|${b.problemTypeKey}`);
+    }
+    assert.deepEqual(missing, []);
+    // 후보 TPL 은 모두 상위 PT 아래에 있다
+    for (const u of c.units) for (const p of u.problemTypes) for (const tp of p.templates) assert.equal(tax.tpls.get(tp.templateKey).parentProblemTypeKey, p.problemTypeKey);
+  } finally { ctx.cleanup(); }
+});
+
+test('build-candidates: 원본 기출이 있으면 같은 번호 문항의 PT/TPL 을 sourceExamHint 로 주고 그 키는 후보에도 있다', () => {
+  const work = fs.mkdtempSync(path.join(os.tmpdir(), 'sim-hint-'));
+  try {
+    const stem = '26_팔마중_2학기_중간_중2_유사';
+    const origRel = 'archive/exams/original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js';
+    if (!fs.existsSync(path.join(repoRoot, origRel))) return; // 원본이 저장소에 없으면 건너뛴다
+    const orig = readBank(path.join(repoRoot, origRel)).bank;
+    const md = buildMd({ stem, questions: [hq1, hq2], sourceDir: 'original/middle/m2/2mid' });
+    const mdPath = path.join(work, 'src.md');
+    fs.writeFileSync(mdPath, md);
+    const conv = convertSimilarExam({ mdContent: md, repoRoot, writeFiles: true, outDir: path.join(work, 'stage') });
+    assert.equal(conv.validation.valid, true, conv.validation.errors.join('\n'));
+    buildCandidateSet({ jsPath: path.join(work, 'stage', `${stem}.js`), outDir: work, mdPath, repoRoot });
+    for (const qid of [1, 2]) {
+      const c = readJson(path.join(work, 'candidates', `q0${qid}.json`));
+      const o = orig.find(x => x.id === qid);
+      if (!o.problemTypeKey) { assert.equal(c.sourceExamHint, null); continue; }
+      assert.equal(c.sourceExamHint.exam, origRel);
+      assert.equal(c.sourceExamHint.sourceQid, qid);
+      assert.equal(c.sourceExamHint.problemTypeKey, o.problemTypeKey);
+      const pt = c.units.flatMap(u => u.problemTypes).find(p => p.problemTypeKey === o.problemTypeKey);
+      assert.ok(pt, '힌트 유형은 후보 안에 있어야 한다');
+      if (c.sourceExamHint.templateKey) assert.ok(pt.templates.some(tp => tp.templateKey === c.sourceExamHint.templateKey));
+    }
+  } finally { fs.rmSync(work, { recursive: true, force: true }); }
+});
+
+test('build-candidates: 새 틀에는 값이 없고 하/중/상 칸이 없다 (문항 지문과 경계 칸만 있다)', () => {
+  const ctx = fresh();
+  try {
+    const j = readJson(path.join(ctx.judgmentDir, 'q01.json'));
+    assert.equal('level' in j, false);
+    assert.equal(j.difficultyBoundaryFlag, '');
+    assert.equal(j.problemTypeKey, '');
+    assert.equal(j.how, '');
+    assert.match(j.itemFingerprint, /^[0-9a-f]{16}$/);
+    assert.equal('level' in readJson(path.join(ctx.candDir, 'q01.json')).source, false);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 가이드 예시 글 그대로, 다른 문항의 틀, 지문이 바뀐 뒤의 판정은 STALE_OR_EXAMPLE', () => {
+  const ctx = fresh();
+  try {
+    const example = loadGuideExample();
+    assert.ok(example.how && example.typeReason);
+    const mutate = fn => { const js = goodJudgments(ctx.candDir); fn(js); writeJudgments(ctx.judgmentDir, js); return check(ctx); };
+    let r = mutate(js => { js[1].typeReason = example.typeReason; });
+    assert.ok(codesOf(r, 1).includes('STALE_OR_EXAMPLE'), '예시 글 그대로');
+    r = mutate(js => { js[1].itemFingerprint = js[2].itemFingerprint; });
+    assert.ok(codesOf(r, 1).includes('STALE_OR_EXAMPLE'), '다른 문항의 틀');
+    r = mutate(js => { delete js[2].itemFingerprint; });
+    assert.ok(codesOf(r, 2).includes('STALE_OR_EXAMPLE'), '지문 표시 없음');
+    r = mutate(() => {});
+    assert.deepEqual(r.items.flatMap(i => i.codes), []);
+    // 시험지 JS 의 문항이 바뀌면 같은 판정이라도 걸린다 (후보는 새로 만들고, 있는 판정 틀은 그대로 둔다)
+    const jsText = fs.readFileSync(ctx.jsPath, 'utf8');
+    fs.writeFileSync(ctx.jsPath, jsText.replace('방정식 $x+3=7$ 의 해는?', '방정식 $x+3=9$ 의 해는?'));
+    buildCandidateSet({ jsPath: ctx.jsPath, outDir: ctx.work, repoRoot });
+    r = check(ctx);
+    assert.ok(codesOf(r, 1).includes('STALE_OR_EXAMPLE'), '지문이 바뀐 뒤');
+    assert.ok(!codesOf(r, 2).includes('STALE_OR_EXAMPLE'));
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 경계 플래그는 목록 안의 값이고, Bxy 는 난이도가 x 또는 y 일 때만', () => {
+  const ctx = fresh();
+  try {
+    const mutate = fn => { const js = goodJudgments(ctx.candDir); fn(js); writeJudgments(ctx.judgmentDir, js); return check(ctx); };
+    let r = mutate(js => { js[1].difficultyBoundaryFlag = ''; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'));
+    r = mutate(js => { js[1].difficultyBoundaryFlag = 'B23'; }); // 난이도 1
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'));
+    r = mutate(js => { js[1].difficultyBoundaryFlag = 'B12'; });
+    assert.deepEqual(codesOf(r, 1), []);
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: SELF_CONTAINED 그림 판단과 Condition 칸은 판정 기록에서 근거 문장을 만든다', () => {
+  const ctx = fresh();
+  try {
+    const js = goodJudgments(ctx.candDir);
+    js[2].figureNeed = 'SELF_CONTAINED';
+    js[2].figureEvidence = '방정식 $2x=12$';
+    js[2].slots.condition = [{ term: '방정식', src: 'stem', quote: '방정식 $2x=12$' }];
+    js[2].slotReasons = { condition: '2x=12 가 해를 정한다' };
+    writeJudgments(ctx.judgmentDir, js);
+    const out = path.join(ctx.work, 'out');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet });
+    assert.equal(ap.written, true, JSON.stringify(ap.check?.items));
+    const reg = readJson(path.join(out, fs.readdirSync(out).find(f => /\.meta-q01-q02\.json$/.test(f))));
+    assert.match(reg.items[1].after.visualNecessity.problemReason, /방정식 \$2x=12\$/);
+    assert.match(reg.items[1].after.metaRationale.condition, /^NONE: .*방정식/);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 해설 그림 칸은 NONE|NEEDS_FIGURE 이고 NEEDS_FIGURE 는 해설 인용이 있어야 하며 시험지를 보류하지 않는다', () => {
+  const ctx = fresh();
+  try {
+    const mutate = fn => { const js = goodJudgments(ctx.candDir); fn(js); writeJudgments(ctx.judgmentDir, js); return check(ctx); };
+    let r = mutate(js => { js[1].solutionFigureNeed = ''; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'));
+    r = mutate(js => { js[1].solutionFigureNeed = 'NEEDS_FIGURE'; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'), '인용 없음');
+    r = mutate(js => { js[1].solutionFigureNeed = 'NEEDS_FIGURE'; js[1].solutionFigureEvidence = '해설에 없는 구절입니다'; });
+    assert.ok(codesOf(r, 1).includes('QUOTE_NOT_SUBSTRING'));
+    r = mutate(js => { js[1].solutionFigureNeed = 'NEEDS_FIGURE'; js[1].solutionFigureEvidence = '등식의 성질로 양변에서'; });
+    assert.deepEqual(codesOf(r, 1), []);
+    assert.equal(r.releasable, true);
+    const out = path.join(ctx.work, 'out');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet });
+    assert.equal(ap.written, true);
+    const reg = readJson(path.join(out, fs.readdirSync(out).find(f => /\.meta-q01-q02\.json$/.test(f))));
+    assert.equal(reg.items[0].after.visualNecessity.solution, 'REQUIRED');
+    assert.match(reg.items[0].after.visualNecessity.solutionReason, /등식의 성질로 양변에서/);
+    assert.equal(reg.items[1].after.visualNecessity.solution, 'EXEMPT');
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: provenance 는 변환기만 만든다 — 스테이지에 없으면 다시 변환하라며 실패하고 아무것도 쓰지 않는다', () => {
+  const ctx = fresh();
+  try {
+    writeJudgments(ctx.judgmentDir, goodJudgments(ctx.candDir));
+    const regFile = path.join(path.dirname(ctx.jsPath), fs.readdirSync(path.dirname(ctx.jsPath)).find(f => /\.meta-q01-q02\.json$/.test(f)));
+    const reg = readJson(regFile);
+    for (const it of reg.items) delete it.after.provenance;
+    writeJson(regFile, reg);
+    const out = path.join(ctx.work, 'out');
+    assert.throws(() => applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet }), /PROVENANCE_MISSING.*다시 변환/);
+    assert.equal(fs.existsSync(out), false);
   } finally { ctx.cleanup(); }
 });

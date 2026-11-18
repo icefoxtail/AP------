@@ -64,11 +64,13 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.match(register, /needs: classify\n    if: \$\{\{ !cancelled\(\) && github\.event_name != 'pull_request' && github\.ref == 'refs\/heads\/main' && needs\.classify\.outputs\.skip_register != 'true' \}\}/);
   assert.match(register, /permissions:\n      contents: write\n      actions: write/);
   assert.match(register, /group: archive-reviewed-exam-meta-register-main\n      cancel-in-progress: false/);
-  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
+  assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 2, 'required-lane save, then the full save');
+  assert.match(step(register, /^        id: persist_required$/m), /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --required-only --work-dir "\$WRITER_WORK_DIR"'/);
+  assert.match(step(register, /^        id: prepare_required$/m), /archive-registration-writer\.mjs --required-only --work-dir/);
   assert.match(register, /--paths-file "\$WRITER_WORK_DIR\/commit\.paths"/);
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
   assert.match(register, /--remote origin --branch main --max-attempts 2/);
-  assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 1);
+  assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 2);
   assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
   assert.match(register.split('    steps:')[0], /timeout-minutes: 345/);
   assert.match(step(register, /^        id: persist$/m), /timeout-minutes: 170/);
@@ -120,7 +122,7 @@ test('the publication handoff consumes only the push helper registered SHA and h
   assert.match(dispatch, /if: steps\.registered\.outputs\.publishable == 'true'/);
   assert.match(dispatch, /steps\.persist\.outputs\.result == 'PUSHED' \|\| github\.event_name != 'schedule'/,
     'unchanged periodic registration does not dispatch the same package again');
-  assert.equal((register.match(/gh workflow run archive-pages-release\.yml/g) || []).length, 1);
+  assert.equal((register.match(/gh workflow run archive-pages-release\.yml/g) || []).length, 2, 'after each of the two saves');
   assert.doesNotMatch(compatibility, /gh workflow run archive-pages-release\.yml/);
 });
 
@@ -183,7 +185,7 @@ test('classify hands only a push that needs no registration straight to Pages, o
   const nodeStub = [
     '#!/usr/bin/env bash',
     'if [[ "$1" == tools/ci/archive-registration-writer.mjs ]]; then',
-    '  mkdir -p "$4"; printf \'{"needed":%s}\' "$NEEDED" > "$4/report.json"; [[ "${WRITER_FAIL:-}" != 1 ]]; exit',
+    '  mkdir -p "$4"; printf \'{"needed":%s,"publishable":%s}\' "$NEEDED" "${PUBLISHABLE:-true}" > "$4/report.json"; [[ "${WRITER_FAIL:-}" != 1 ]]; exit',
     'fi',
     'exec "$REAL_NODE" "$@"', ''].join('\n');
   const run = (needed, extra = {}) => {
@@ -197,7 +199,12 @@ test('classify hands only a push that needs no registration straight to Pages, o
   assert.deepEqual(f.read('command-trace').trim().split('\n'),
     ['workflow', 'run', 'archive-pages-release.yml', '--ref', 'main', '-f', `registered_main_sha=${sha}`]);
   assert.equal(f.read('output'), 'dispatched=true\n');
-  for (const [needed, extra] of [['true', {}], ['false', { WRITER_FAIL: '1' }], ['false', { PUSH_SHA: 'main' }]]) {
+  // Required lanes current but other work pending: publish now, and keep the register job.
+  run('true');
+  assert.deepEqual(f.read('command-trace').trim().split('\n'),
+    ['workflow', 'run', 'archive-pages-release.yml', '--ref', 'main', '-f', `registered_main_sha=${sha}`]);
+  assert.equal(f.read('output'), '', 'the register job is not skipped while other lanes are needed');
+  for (const [needed, extra] of [['true', { PUBLISHABLE: 'false' }], ['false', { WRITER_FAIL: '1' }], ['false', { PUSH_SHA: 'main' }]]) {
     run(needed, extra);
     assert.equal(f.read('command-trace'), '', 'nothing was dispatched');
     assert.equal(f.read('output'), '', 'the register job is not skipped');

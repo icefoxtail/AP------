@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-012acf813ec4-da14ea82",
+  "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7e22ca89dcf5c2f0233abf9095940d2d5d076efe87f6082910c62bbd768a4354",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+      "step": "내접사각형 대각합으로 x118,y98을 얻어 차20도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_78a33cae31014035c5e0aa99cc93846f0fca67ff569bbf34ba23846194739bfe",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+      "step": "반지름 OA=OB로 OAB25도를 얻고 접선과 반지름의 직각에서 접현각65도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b9b31386833098c7560a0b26855bdd0ebdf84c2af06cecb69abe7271d24c5e4",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION",
+      "step": "평균과 산포도,분산과 표준편차를 구별하고 편차 절댓값은 평균에서 거리라는 의미를 적용하여 분산이 작으면 고른③을 고른다.",
+      "note": "필요 TPL: 대푯값과 산포도 정의 종합 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c3e82ef29bf06c634c8d39c104adaf4073eac2588ca6da76db5b96bd98de25c",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_CALCULATE",
+      "step": "세 그래프의 평균6과 분산1.6,0,8을 확인하여 그래프에서 최대 표준편차 집단을 찾을 수 없다는⑤를 배제한다.",
+      "note": "필요 TPL: 실제 그래프 자료의 분산 계산을 동반한 통계 진술 검증 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_96e32fa7c1227598b3c5ac89e77f636a1d7840843be2d850f7e3c7d779738442",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균4와 분산3에서 x+y8,x²+y²36을 얻고6,2를5,7로 교체한 새 평균5와 편차제곱합10에서 분산5/2를 구한다.",
+      "note": "새 PT 제안: 일부 자료 교체에 따른 분산 변화; 기존 자료의 평균과 분산으로 유지되는 변량의 합과 제곱합을 복원하고 교체 후 새 평균과 분산을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb593dc168657bd4004b71a013cc6fb891ea024edb086baac278bd2f8133a1aa",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "주어진 오른쪽 위 방향 양의상관에 맞게 에어컨 사용시간과 전기요금이 함께 증가하는⑤를 고른다.",
+      "note": "새 PT 제안: 상관관계의 방향과 유무 판정; 두 변량의 동반 증가·감소 경향을 산점도 또는 생활 맥락에서 읽어 양·음·무상관을 구별한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9bd539b51506f85921472f24f0f34497d9a9aae0e7163a61e7861cdcce06f7d0",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "국어와 영어가 모두60 이상인 점을 다섯 개 세어6명이라는④를 배제한다.",
+      "note": "새 PT 제안: 산점도의 조건별 점 개수와 비율; 산점도의 각 점을 두 변량의 부등식 조건으로 선별하여 개수 또는 전체 대비 비율을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8841ceb6028b6fcf41602ea8c47e951bdca0a0db0b04c7a9403cbc21a46eac8a",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "향상과 차이조건을 y-x≥2,평균조건을 x+y≥10으로 바꿔 동시에 만족하는4점을 세어4/30=2/15를 구한다.",
+      "note": "새 PT 제안: 산점도의 조건별 점 개수와 비율; 산점도의 각 점을 두 변량의 부등식 조건으로 선별하여 개수 또는 전체 대비 비율을 구한다. | 도구: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dc4d05c35672e98f47cc6ac910b797d468991116831c9909e58f4a962c4fb68a",
+      "sourceOrdinal": 23,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "정렬조건으로 b4,평균으로 a+c11,분산으로 (a-5)²+(c-5)²41을 세워 방정식 근1,10을 순서에 따라 배치한다.",
+      "note": "새 PT 제안: 분산 조건으로 미지 변량 결정; 평균으로 미지 변량 합을 세우고 분산으로 편차제곱합을 세워 미지 변량 또는 대칭식을 결정한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50222e845c0b28ee4387d603ce408c09c54f20f449858ccc06ceb40f92da699f",
+      "sourceOrdinal": 24,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "전체15명 중 상위60%인9명을 점수합 순으로 고르고 읽기점수 총합70을9로 나누어70/9를 구한다.",
+      "note": "새 PT 제안: 산점도의 조건부 평균; 산점도의 점을 주어진 점수·순위 조건으로 선별하고 선택된 점들의 한 변량 합을 개수로 나누어 평균을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

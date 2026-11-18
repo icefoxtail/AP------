@@ -3,6 +3,15 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## 난이도는 정수 1~5만 (2026-11-18 21시 KST부터 적용)
+
+- **적용 시점:** 2026-11-18 21:00 KST 이후 새로 만들거나 반입하는 모든 아카이브 문항(기출·유사·교과서·문제집·생성).
+- **규칙:** 난이도는 정수 `difficultyBucket` 1~5만 판정한다. 새 문항에는 `level`(하/중/상)을 쓰지 않는다. 검사기는 `level`이 없으면 통과하고, 있으면 하/중/상만 허용한다.
+- **기존 문항:** 그 전에 만들어진 문항의 `level`은 지우지 않고 그대로 두며, 하/중/상에서 정수로 환산하지 않는다.
+- **우선순위:** 봉인 문서(룰북 v2.6, difficultyBucket 운영규칙 v1.3 등)의 "level 3단계 유지" 조항보다 이 결정이 새 문항에 우선한다. 봉인 문서는 고치지 않는다. 현행 규칙 전체는 [RULEBOOK_CURRENT.md](../rules/RULEBOOK_CURRENT.md).
+- **이유:** 같은 것을 두 번 물어, 작성 모델이 같은 정수에 "중"과 "상"을 섞어 채웠다(두 칸이 어긋남).
+- **진행 중(각각 다른 PR):** 옛 `mixer.html`(상/중/하 필터)은 진입 링크를 숨기고, 등록기의 `level` 검사는 삭제한다.
+
 ## CURRENT — 메타 결속 지문 범위: 발문과 보기만 본다 (2026-11-18, 사용자 결정)
 
 - **결정:** 검수된 메타를 문항에 묶는 지문(결속)은 발문과 보기(선택지)만 본다. 해설·정답·그림·다른 메타가 바뀌어도 이미 한 판정은 유지하고, 발문·보기가 바뀌는 오류 수정 때만 다시 판정한다. 이유: 해설을 다듬거나 그림을 SVG로 교체하거나 이미지를 다시 자를 때마다 검수된 메타가 무효가 되어 자동 등록 대기가 수천 건 쌓였다. 발문은 처음 정해 두면 웬만해서 바뀌지 않는다.
@@ -21,6 +30,7 @@
 - **이 범위의 예외다.** 아래 "판정은 두 번, 서로 보지 않고 한다"와 "난이도 값은 고치지 않는다(추정해 바꾸지 않는다)" 조항, 그리고 추정 메타값 금지는 이 초안 등급 범위에서만 적용하지 않는다. 그 밖의 경로(검수 값으로 등록, 이미 두 번 판정한 값의 변경)는 그대로다.
 - **지키는 것:** 등록부에 실제로 있는 키만 쓴다 / 학년·과목이 맞는다 / 기계 검사는 그대로 통과해야 한다. 이미 승인된 값은 덮어쓰지 않는다(빈 칸만 채운다). 맞는 키가 없으면 가까운 키에 붙이거나 추정하지 않고 위 "확장 원칙"대로 정식 `registryChanges`로 새 키를 만든다. 이유: 초안이라도 존재하지 않는 키나 다른 학년 키가 들어가면 화면의 필터와 설명이 틀린다.
 - **초안 등급 표시와 승격:** 초안 값도 문제 선정·필터·화면에 그대로 쓴다. 초안 등급 표시는 얼마나 확인됐는지를 알려 주는 꼬리표이며 사용을 막는 조건이 아니다. 집계 보고에서만 검수 값과 구분해 센다. 초안 표시 필드는 표시 전용이며 선정 가능(selectable/usable) 판정에 넣지 않는다. 표시의 필드 이름·값은 후속 PR에서 정한다(이 문서는 이름을 확정하지 않는다). 두 번째 독립 판정(같은 종류의 모델을 따로 띄운 것도 독립으로 본다)과 일치하면 등급을 올린다. 승격은 선택이며 사용의 전제가 아니다. 두 번째 판정은 토큰 여유가 있을 때 돌린다.
+- **표시 이름(확정, 2026-11-18):** 요청의 승인 종류는 `DRAFT_SINGLE_MODEL`, 행의 칸별 상태는 `fieldStatus.<칸>` = `draft_single_model`이다. 이 둘 외에 새 상태값·필드·영수증 종류는 만들지 않는다(사전: `archive/data/meta-os/status-vocabulary.json`). 결속은 발문+보기 지문(`archive/question-binding.js` text-v1) 하나다.
 
 ## CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)
 
@@ -31,6 +41,7 @@
 - **도구는 확인용이지 문턱이 아니다.** 후보 조회 도구가 후보를 못 주거나(단원 연결 없음) 검사가 통과시키지 못해도 판정을 보류로 낮추지 않는다. 판정은 읽은 대로 적고 검사 결과는 따로 적는다. 보류는 문항·그림이 없거나 근거가 없어 판단 자체가 안 될 때만 쓴다.
 - **PT만 맞으면 PT만 먼저 채운다.** 맞는 TPL이 없으면 TPL은 새 키 제안으로 남긴다.
 - **새 키는 막지 않는다.** 비슷한 키가 이미 있는지 엄격히 가리느라 붙들지 않고, 만든 키마다 이름·정의·해당 문항을 남긴다. 뜻이 비슷한 유형은 나중에 묶음표로 하나로 본다(소단원 묶음표와 같은 방식, 키는 그대로 두고 묶음만 얹는다). 키·연결 표 파일 수정은 PR로만 올린다(`docs/agents/common.md` "공유 데이터 고정값").
+- **새 키의 생성 규칙과 도구 (NEW_KEY 묶음표 → 등록 요청):** 묶음표(`data/type-bundles-20261117`의 `new-pt-bundles.json`·`new-pt-assign.jsonl`·`new-tpl-bundles.json`·`new-tpl-assign.jsonl`)의 묶음 하나가 새 키 하나다. 키는 묶음 id에서 결정적으로 만든다: `NPT_<과정>_<이름>` → `PT_<과정>_<이름>`, `NTPL_<과정>_<이름>` → `TPL_<과정>_<이름>`(과정 접두는 묶음 id 안에 있다). 한 번 나간 키는 바꾸지 않고 같은 입력은 같은 키를 낸다. 이름(`canonicalLabelKo`)·정의는 묶음표의 한글 `nameKo`·`definition` 그대로다. `absorbInto`가 있는 묶음은 그 기존 키를 쓰고 키를 만들지 않으며, 만든 키가 이미 등록부에 있고 상위가 같으면 새로 만들지 않고 그 키를 쓴다. 변환기 `build-type-judgment-requests.mjs`에 `--bundles <git ref> [--bundles-only]`를 주면 NEW_KEY 줄(과 새 TPL이 필요한 PT-only 줄)이 위 키의 PICK 줄로 바뀌고, 쓰인 키마다 기존 추가 전용 `registryChanges`(problemTypes/templates/bindings, 필요하면 pack 범위 추가)가 가장 먼저 정렬되는 요청(`tc-…`)에 실린다. 새 상태값·필드·영수증 종류는 없다. 새 PT의 소유 pack은 묶음 문항 단원에 이미 바인딩이 가장 많은 pack(없으면 과정에 바인딩이 가장 많은 pack), 바인딩은 문항 자신의 단원·소단원(태그 마스터에 있는 것, 과정·교육과정마다 최대 3쌍)이다. `--replace-draft-types`를 주면 유형 칸에 임시값(빈 상태·`manual_review_pending`·`projection_unmaterialized`, 등록기가 이미 덮어쓰기를 받는 상태)이 있고 dots 값과 다른 문항은 별도 요청(`tr-…`, 빈 칸 등록보다 뒤에 정렬)으로 교체하고, 승인값·`r2e_adjudicated` 등은 유지하며 `TYPE_KEPT_DIFFERS_FROM_JUDGMENT`(기존·판정 값 포함)로 `--skipped-out` 목록에 남긴다. `--max-requests N`은 등록 순서대로 앞의 N개만 써서 한 묶음으로 올린다(다음 묶음은 앞 묶음이 등록된 main에서 같은 명령을 다시 돌린다). 구현 `archive/tools/meta-foundation/new-type-keys.mjs`, 테스트 `tests/archive-new-type-keys.test.mjs`. 이유: 새 키 판정 3천여 줄이 키가 없어 유형으로 고를 수 없었고, 같은 묶음이 항상 같은 키가 되어야 다시 생성해도 요청이 어긋나지 않는다.
 - **범위와 결과 위치:** 원본 기출·유사·교과서 문항의 유형 판정은 한 작업 줄이 전체를 맡는다. 결과표는 운반용 브랜치 `data/type-judgment-c-20261116`(중등)·`-d-`(고등)·`-t-`(교과서)의 `docs/plans/archive-one-route-upgrade/type-results-*/`에 문항당 한 줄로 쌓인다. 다른 줄이 같은 문항을 판정하기 전에 여기를 먼저 본다. 유사 문항이 원본과 풀이 유형이 같으면 원본의 판정을 이어 쓴다.
 - **규칙이 바뀌면 같은 날 이 문서를 고쳐 `main`에 올린다.** 이유: 2026-11-16 밤, 잠금 해제가 문서에 반영된 뒤에도 다른 작업 줄이 "공식 도구 결과만·두 판정 일치만"이라는 옛 문구로 유형 작업을 시작했다.
 - **유형만 등록하는 요청 (`approval.type: "DIRECT_JUDGMENT"`, 2026-11-17).** v2 요청 형식에 `scope: "PARTIAL_UIDS"`, `fieldScope: "TYPE_ONLY"`를 붙이고, 문항마다 `before`/`after`에 `problemTypeKey`·`templateKey`만 적는다(TPL이 없으면 PT만). 필수 증거: 문항별 `rationale`(결정적 풀이 단계 한 문장)·`judgedFingerprints`(판정 때 읽은 지문)·`scope`(과목·교육과정), 요청의 `approval.judge`·`decisionRef`(이 절의 제목)·`resultSource`(결과표 브랜치·커밋·파일)이고 `reviewPassCount`는 1이다. 등록기는 `problemTypeKey`·`templateKey`·`fieldStatus.problemType/template`(= `approved_direct_judgment`)·`typeApproval`만 쓰고, 단원·소단원·난이도·교차개념·조건·결합패턴·RPM 경로와 행 상태는 읽어 승인하지도 쓰지도 않는다(요청에 그 칸이 있으면 거부). 이미 승인된 유형은 덮어쓰지 않고 승인 전 값만 바꾼다. PT/TPL ACTIVE·TPL 상위·과목·교육과정별 ACTIVE 연결·`before` 일치·원본 blob 결속은 그대로 엄격하다. 새 키는 같은 요청의 `registryChanges`(추가 전용 problemTypes/templates/bindings)로 넣고, 같은 새 키를 쓰는 요청이 여럿이면 그 키를 만드는 요청 파일 이름이 먼저 정렬되게 한다. 영수증은 `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/<requestId>.json`(`fieldScope: "TYPE_ONLY"`)이다. 구현 `archive/tools/meta-foundation/register-type-judgment.mjs`, 테스트 `tests/archive-type-judgment-registration.test.mjs`. 이유: 기존 v2 요청은 단원·난이도·교차개념까지 한꺼번에 승인해서, 유형 판정이 끝난 문항도 다른 칸이 승인 전이면 요청이 되지 못했다.
@@ -111,7 +122,7 @@
 - 공용 대형 메타는 조회용이며 작업자는 시험지 소형 JSON/stage-local 패킷만 수정한다. 병합 후 등록·Consumer/Search parity는 Git 자동화/기술 소유 범위다. GPT 사후 FINAL QA의 종료는 [v2.0 카드](../../docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)대로 Git main/대상 blob 확인까지이며, PT/TPL 신규 검사 제외·후속 CI/Pages 수동 폴링 제외를 지킨다. 자동화 검증을 수행하지 않았으면 `PIPELINE_PASS`라고 주장하지 않는다.
 
 ## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
-- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·1~5 난이도(정수 difficultyBucket만, 새 문항에 `level` 없음: [난이도 절](#난이도는-정수-15만-2026-11-18-21시-kst부터-적용))·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
 
 ## CURRENT — 5단계 난이도(Gemini) 인박스 운반: 수리는 도구가, 작업 목록은 빈 파일만 (2026-11-11, 사용자 위임 결정)
 

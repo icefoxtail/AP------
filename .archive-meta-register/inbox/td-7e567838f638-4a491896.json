@@ -1,0 +1,449 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7e567838f638-4a491896",
+  "examUid": "비상_기하_공간좌표_중단원학습점검_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_공간좌표_중단원학습점검_고2/비상_기하_공간좌표_중단원학습점검_고2.js",
+  "expectedSourceBlobSha1": "cb63f2d279b379ef19b8fdccd105d07cdb617b41",
+  "expectedQuestionCount": 18,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+        "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_2d67f2efaaed37781e9ef2b007fbc8ac0ab3e452a9f3b8ab620588e0ca28190b",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "직육면체 그림에서 각 꼭짓점의 좌표축 방향 이동량과 0인 좌표 성분을 읽어 두 그림의 A·B·C를 결정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "371f61c2808b3cca62ed160f05830657a4c80927e79f5c272ec40d3a528e7907",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_724630ebaaf09076da440c58249e6ae7465fbb6b2fdd6ecee1af1e628380f09d",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "yz평면 대칭에서는 x 부호만 바꾸고 x축 정사영에서는 y=z=0으로 바꾼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "4442e26cd64888a22834352a91c3b2d3676ea740b62caece14505b113830cef6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d358f12159970d4d0feec1b53d0eba0251b10a318b8a320a2a3af563fb2793e2",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "각 좌표 성분에 (A+3B)/4와 (A+B)/2를 적용하여 두 선분의 내분점과 중점을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "a039ed921f4f794ded4e842ffd8b44ef2cc64b89331c8f3413ef743f22eb31e3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de6130d2c3f480cafd5da346afcc97cee514be6349cc746b793fc8b40ebdab62",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "중심·반지름을 구의 표준식에 넣고 일반식은 각 변수별 완전제곱으로 바꾸어 중심 (4,−2,1)과 반지름 3을 읽는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "3fcc10f3498ac11a45648c4c88ec8089bccca2b0b08028d88d6c276a8940bc63",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fe732c1ee7389c5ce1f94009a6da6bd2eefc82a5b6d4f52c1efdf6820d67d337",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "y축 대칭 A′=(−a,b,−2)와 zx평면 대칭 B′=(a−4,−2b−6,c)의 성분을 같게 놓아 a=2·b=c=−2를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "7c61567fdc1b180731fb023d9ac639c63b2647cc8030dba044f92fe7eb5a4928",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de54c419cb25d04cd092b3723f141799e4ae4145b49863a94138f4f9408fd69a",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "P=(0,0,c)로 두어 AP²=2+(c−3)²와 BP²=13+(c−4)²를 같게 놓고 c=9를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "7b3612b6750717bd51644cc32adba0dd5cf0d1d16bb0575f8c12af1414ddf569",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_00a837b0a6aad6bd8389087c49627dea4da055e0397a256e5b06a1cab119fc85",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "지도의 가로 5칸·세로 3칸을 500m·300m로 환산하고 고도차 200m를 더해 √(500²+300²+200²)를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "b6cb0cd3e9410d6994d65df02a5665c49f8b45955ca2dd43bae371e181bb3fd4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_21c611bd5948385d504f63d6fe26c42f3f70bfc678b5740be157aa4da961f348",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "A를 yz평면에 대칭한 A′=(−3,1,2)를 잡아 AP+BP≥A′B의 등호를 실현하고 A′B=√33을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "a7502e787eb4a782809e078823adb3dfbbb51af1e9413d97e0ec9bf81d8a154d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2cce6170d09fa6f83f462fd2ce0a0847a3245a41689f01cf7cc4f941749342e8",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "3:2 내분점의 y·z 성분에서 a=7·b=−5를 역산한 뒤 A와 B의 좌표 평균을 취한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "02191754b5db23c0649f24dc3a1c29ff5b652852aaac0405cea61736c07b4f35",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f402569914e4ab201a8201dbef7419356c91817d59e7a37271ac7e6f58ee2cc9",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "yz평면 위 내분점의 x=(−2m+5n)/(m+n)=0에서 서로소 비 m:n=5:2를 정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "40b4928e7a42b2236524684a3cb0927fed3923ae0ffcc16c314406d57f791a1c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c2f200ce13c2265788667238800f6709693dbc0ddee23564ed0d8660b50690c3",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "세 좌표평면 정사영 (3,−6,0)·(0,−6,9)·(3,0,9)의 좌표 평균으로 무게중심 (2,−4,6)을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "e6c132f4d03ec38c17fecc4e171d22ef18daede97f62100190c92ce4b8d7c90b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f6ae95d9725fd3f3978d1a01248901d2bb4db8149a8fb3ced682c6a2e6316299",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_COORDINATE"
+      },
+      "rationale": "평행사변형 대각선의 중점 일치 A+C=B+D를 성분별로 풀어 D=(−2,5,7)을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "c848748c4db62ae79ae39b634d1f4867fc27030d94e55d2643820e2544483f8a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cd038117c8156783fffa6b924ab00b05f5d5ffc25f64cb02e03a6d0a70f37b71",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "구의 중심 (2−3k,k,2)이 부피 이등분 평면 x=0 위에 놓여야 하므로 2−3k=0을 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "5e5c02a696c5e67b04e3fd9b16d4f513fc927798ea09dfebe1fd49785524f4f6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_79a50d6e88fe3f49388b673ea451b9bb9f2acfbc588a0a23099685d1a93f4f2f",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "완전제곱으로 중심 C=(2,−1,4)·반지름 5를 구한 뒤 접선과 반지름의 수직으로 PQ²=PC²−25=25를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "16c08dacfaf3edab8ff366b98e4dd01a6fbe2581f5dbdf820cdd6d5adb3cc0e7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_99fa160523d2fc192cf6c6076fa5a2defccb863a05551f7f3ebbc78d96e51d56",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "중심에서 z축까지 거리 5와 현의 절반 12로 직각삼각형을 구성하여 r²=5²+12²를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "4efbbcc3247fc66f2b6f7bd25b9c3be8ec5e5536dfb6240e31e724a6f7082aff",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_027ef5944d2e12bf374e97302fb94cf76e66da20611534f9d3a9ebbe9a741529",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "세 좌표평면에 접하는 구 중심을 (r,r,r)로 놓고 P를 대입하여 r²−4r+3=0의 두 양근 합 4를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "a7a7135d9669ea5b9d77f1207e2a6e91a84a98d0cf817eb32edd20bac25963a6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9f95769bd8b6993fdcf708a9d6b6ca48a2bb5c90ab756611ecb47e5ef2bfe008",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION"
+      },
+      "rationale": "R=(0,2,5)의 정사영 R′가 PQ 위에 있어 높이가 5임을 확인하고 밑변 3√2를 곱해 삼각형 넓이를 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "0ea4c1adf41b409a0c95e7bc7638d5d03bde112209606eec45132980d191245c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8dbaf878e9fca45c114cd2e73526f56fa3c606266d273dad63eb40fb40dad6e8",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "구 반지름 제곱 k²−1에서 중심의 평면거리 제곱 4·9를 각각 빼 단면 원 넓이비 (k²−5):(k²−10)=3:2를 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "a86c1942c9625ad83185034caa5a2d9d875cbbc0459f77679b546dcf1aeed44e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7e567838f638-4a491896.type-ledger.json",
+          "sha256": "fa9f23778c23d7711ad6417f68f80fb433cc3adae0a5b6e26d0d04777c47b8c0"
+        }
+      ]
+    }
+  ]
+}
