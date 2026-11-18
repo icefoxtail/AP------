@@ -159,7 +159,7 @@ export function registerTypeJudgment(ctx) {
     for (const record of previous.typeRecords) {
       const patch = patches.get(record.questionUid);
       const current = rows.find(row => row.questionUid === record.questionUid);
-      if (!patch || !current || !eq(typeSlice(current), record)) failWith(`registered type metadata drift: ${record.questionUid}`);
+      if (!patch || !current || !eq(JSON.parse(JSON.stringify(typeSlice(current))), record)) failWith(`registered type metadata drift: ${record.questionUid}`);
       checkTypeKeys(tables, { problemTypeKey: record.problemTypeKey, templateKey: textOf(record.templateKey), scope: record.typeApproval.scope }, h, aliases);
     }
     return { status: "PASS", requestId: req.requestId, totalQuestions: patches.size, ...scopeFields, fieldScope: FIELD_SCOPE_TYPE_ONLY, replay: true,
