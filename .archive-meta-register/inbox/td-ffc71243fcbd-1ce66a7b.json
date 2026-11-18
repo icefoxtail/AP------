@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-ffc71243fcbd-1ce66a7b",
+  "examUid": "24_연향중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "415acb4076df5da1c852b72c7534ab41141f36d1",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffc71243fcbd-1ce66a7b.type-ledger.json",
+        "sha256": "c4f6ec4ea7483dbb5917397671c48a018e19fc252d098cfcd44fa73c73e7cd6f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_9da60224de63e75d017892461250ba4a324d2fc267022173e70fc89770f4a75f",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES"
+      },
+      "rationale": "평행한 밑변 사이에서 ADB와 ADC의 넓이가 같아 공통AOD를 빼면 AOB=OCD=90−75를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "ed722197b04b1d1541d97e90af28a0cdf87274cd857dfc5ca4b9debb396ca529",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffc71243fcbd-1ce66a7b.type-ledger.json",
+          "sha256": "c4f6ec4ea7483dbb5917397671c48a018e19fc252d098cfcd44fa73c73e7cd6f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_adddde57b20b47317e783fa0120657234da8c0ec3f49cbba8b9a507a5807776c",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+      },
+      "rationale": "주어진 닮음의 대응각 A=BCD를 연결해180−2x=x/2를 세워 밑각72를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "f374a6003826c1031d0dd67d629c4130988402ad98a1ce7ee9e2a687ceb17046",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffc71243fcbd-1ce66a7b.type-ledger.json",
+          "sha256": "c4f6ec4ea7483dbb5917397671c48a018e19fc252d098cfcd44fa73c73e7cd6f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION"
+      },
+      "rationale": "직각과 평행선의 각으로 AOP∼CBA를 세워 AO:CB=5:8을 AP:CA에 옮긴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "500d97e4ef7214ae973f0e40ba7e9226dfc08c37c055a21447d9587e6fe1615c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffc71243fcbd-1ce66a7b.type-ledger.json",
+          "sha256": "c4f6ec4ea7483dbb5917397671c48a018e19fc252d098cfcd44fa73c73e7cd6f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+      },
+      "rationale": "중점연결선으로 MN=BC/2와 높이h/2를 얻어 MQN넓이가 평행사변형의1/8임을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "24024f0bbdc19f4779d5bbca2c14d564cad0936370981342d6f8e0bcd2992fe5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffc71243fcbd-1ce66a7b.type-ledger.json",
+          "sha256": "c4f6ec4ea7483dbb5917397671c48a018e19fc252d098cfcd44fa73c73e7cd6f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ec4315a58b66e1ebad91df2b293bc4368c9a198026fe07235d1c7051c557102b",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+      },
+      "rationale": "정사각형 대각선의 등길이·45도와 두 직각 관계로 OCQ≡OBP를 보이고 겹친 넓이를 OBC의9로 전이한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "620571bf98b09cee3effd6373c599b1edcdd906c3234dd4f3734224451768acf",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffc71243fcbd-1ce66a7b.type-ledger.json",
+          "sha256": "c4f6ec4ea7483dbb5917397671c48a018e19fc252d098cfcd44fa73c73e7cd6f"
+        }
+      ]
+    }
+  ]
+}
