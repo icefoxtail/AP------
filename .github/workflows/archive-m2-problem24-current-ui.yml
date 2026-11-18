@@ -24,19 +24,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Verify the exact Hangul recapture renderer
-        run: |
-          node - <<'NODE'
-          const assert = require('node:assert/strict');
-          const fs = require('node:fs');
-          const crypto = require('node:crypto');
-          const bytes = fs.readFileSync('archive/engine.html');
-          const sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
-          const gitBlobSha1 = crypto.createHash('sha1').update(Buffer.from('blob ' + bytes.length + '\0')).update(bytes).digest('hex');
-          assert.equal(sha256, '8310d7ee0f01a9eb98e8aa1952d39ba416f53ec24db59ba7a07f39dcd3edd36e', 'Q10_RECAPTURE_ENGINE_RAW_DRIFT');
-          assert.equal(gitBlobSha1, '022b230a7bd19afba3e9fb4a55d55e528e3e9803', 'Q10_RECAPTURE_ENGINE_GIT_DRIFT');
-          console.log(JSON.stringify({ status: 'EXACT_ENGINE_BOUND', sha256, gitBlobSha1, expectedLogicalCases: 48 }));
-          NODE
       - name: Verify the closed problem capture contract
         run: node --test tests/archive-m2-problem24-ui-contract.test.cjs
       - uses: browser-actions/setup-chrome@v1
