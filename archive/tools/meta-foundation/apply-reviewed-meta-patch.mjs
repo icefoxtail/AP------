@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
@@ -387,7 +388,7 @@ if (metadataMutationCount) {
   };
   delete metadata.digest;
   metadata.digest = sha256(JSON.stringify(metadata));
-  outputFiles.set("archive/data/question_metadata.json", jsonText(metadata));
+  outputFiles.set("archive/data/question_metadata.json", questionMetadataText(metadata));
 }
 
 const plannedPaths = [...outputFiles.keys()].filter((relative) => {

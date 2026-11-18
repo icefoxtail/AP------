@@ -397,6 +397,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
   {
+    label: 'tests/archive-question-metadata-format.test.mjs',
+    args: ['--test', 'tests/archive-question-metadata-format.test.mjs']
+  },
+  {
     label: 'tests/archive-reviewed-exam-registration-v2.test.mjs',
     args: ['--test', 'tests/archive-reviewed-exam-registration-v2.test.mjs'],
     timeout: 300000

@@ -28,6 +28,7 @@
 // Anything else (meta value change, stem/answer/choice/solution change, unapproved row, hash drift) is refused
 // before the first write and needs a normal re-review registration instead.
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -412,7 +413,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
     approval: req.approval, metadataRegistrationStatus: nativeParent ? "BASIC_PARENT_REGISTERED" : correction ? "BASIC_PARENT_CORRECTED" : "FINGERPRINT_REBOUND", metadataValuesChanged: correction,
     consumerSearchStatus: "NOT_RUN", totalRebound: applied.length, applied,
     ...(preservation ? { sourceReviewSchema: req.approval.sourceReview.schemaVersion, ...preservationCounts } : {}) };
-  const output = new Map([[META, json(metadata)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
+  const output = new Map([[META, questionMetadataText(metadata)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
   const changed = [...output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   if (write) {
     const backup = new Map();

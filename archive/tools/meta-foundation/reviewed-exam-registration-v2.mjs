@@ -1,4 +1,5 @@
 import { requireProjectionPhase, projectionInput } from './reviewed-projection-phase.mjs';
+import { questionMetadataText } from './question-metadata-format.mjs';
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -2899,7 +2900,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (Object.hasOwn(metadata.counts, "explicitProblemTypeHolds")) metadata.counts.explicitProblemTypeHolds = metadata.records.filter(r => r.fieldStatus?.problemType === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitTemplateHolds")) metadata.counts.explicitTemplateHolds = metadata.records.filter(r => r.fieldStatus?.template === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitDifficultyHolds")) metadata.counts.explicitDifficultyHolds = metadata.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
-  plan.output.set(META, json(metadata));
+  plan.output.set(META, questionMetadataText(metadata));
   if (identityChanged) {
     // Retain UID, source ordinal, lookups and unrelated identity records.
     const stableIdentity = { ...identity }; delete stableIdentity.generatedAt; delete stableIdentity.identityDigest;

@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -198,7 +199,7 @@ function registerReviewedCorrection({ root, request, source, sha, bank, doc, ids
   if (write && metadataChanged) {
     delete doc.digest;
     doc.digest = sha256(JSON.stringify(doc));
-    fs.writeFileSync(path.join(root, META), JSON.stringify(doc, null, 2) + "\n", "utf8");
+    fs.writeFileSync(path.join(root, META), questionMetadataText(doc), "utf8");
     wrote = true;
   }
   return { status: "PASS", mode: write ? "write-reviewed-correction" : "dry-run-reviewed-correction", requestId: gemini.requestId,
@@ -332,7 +333,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     // Preserve the shared sidecar digest convention (same as the pinpoint registrar).
     delete doc.digest;
     doc.digest = crypto.createHash("sha256").update(JSON.stringify(doc)).digest("hex");
-    fs.writeFileSync(path.join(root, META), JSON.stringify(doc, null, 2) + "\n", "utf8");
+    fs.writeFileSync(path.join(root, META), questionMetadataText(doc), "utf8");
   }
   return {
     status: "PASS", mode: verifyProjection ? "verify-projection" : write ? "write" : "dry-run",

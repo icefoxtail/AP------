@@ -2999,8 +2999,11 @@ test("partial UID dry-run and write preserve the omitted HOLD and source bytes",
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
   assert.equal(raw(META), before);
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
-  const holdBytes = JSON.stringify(f.hold, null, 2).replaceAll("\n", "\n    ");
-  assert.ok(before.includes(holdBytes) && raw(META).includes(holdBytes));
+  // The untouched hold row keeps its exact content; the written file uses the one-record-per-line form.
+  const heldRow = text => JSON.parse(text).records.find(r => r.questionUid === f.hold.questionUid);
+  assert.deepEqual(heldRow(before), f.hold);
+  assert.deepEqual(heldRow(raw(META)), f.hold);
+  assert.ok(raw(META).includes(`\n    ${JSON.stringify(f.hold)}`));
   assert.equal(raw(f.sourcePath), source);
   assert.deepEqual(f.read(f.receiptPath).appliedRecords.map(r => r.questionUid), ["uid1"]);
 });
