@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-e5e8c6be6ac5-a2298cb0",
+  "examUid": "25_연향중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/25_연향중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "c06e17693bdd8ad8dd6f91ccae362814da4625d7",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e5e8c6be6ac5-a2298cb0.type-ledger.json",
+        "sha256": "e71318d67ad91a94b3bee88ee6ac98ed93ab1b0093e2abd047019cb47588e3e7"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_020eec100424bc478eabae41c66b091d4bf1c17939e7a07be556532478e2f1b0",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION"
+      },
+      "rationale": "사인·탄젠트의 증가성과45도 값·1을 기준으로 크기를 정렬한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "601d24b22ca4df9e0e38f242850f1e2cb30672e995e814a7f1e61e53c820a1d5",
+        "contentFingerprint": "27bb814d4b4b4defe7c077394d7679d4e90dd6debb68adf89a4ca2fa1fd4d65c"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e5e8c6be6ac5-a2298cb0.type-ledger.json",
+          "sha256": "e71318d67ad91a94b3bee88ee6ac98ed93ab1b0093e2abd047019cb47588e3e7"
+        }
+      ]
+    }
+  ]
+}

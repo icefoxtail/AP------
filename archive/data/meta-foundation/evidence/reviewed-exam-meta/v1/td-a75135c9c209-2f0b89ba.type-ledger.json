@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a75135c9c209-2f0b89ba",
+  "sourceArchiveFile": "original/middle/m2/2final/23_금당중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_188f7b6b71535c9e2e6319471798a346cf026cda24a11e95b55954d3ce99aa21",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "식을 정리하여 y=ax+b,a≠0 조건에 맞는 y=x+1만 고른다.",
+      "note": " 새 TPL 제안: 식을 정리하여 y=ax+b,a≠0 조건에 맞는 y=x+1만 고른다. 정의: 식을 정리하여 y=ax+b,a≠0 조건에 맞는 y=x+1만 고른다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_797c5eef4cbaebf40a1508b55b07f234136e9404b14548ed3ec89b85ee2050c9",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": null,
+      "step": "감소하는 그래프에서 a<0,양의 y절편-b에서 b<0을 읽는다.",
+      "note": " 새 TPL 제안: 감소하는 그래프에서 a<0,양의 y절편-b에서 b<0을 읽는다. 정의: 감소하는 그래프에서 a<0,양의 y절편-b에서 b<0을 읽는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da63e7dc5a8c6a56e0d70c71cbe7db95a76610264fd5a9a5af5d8634de78fcca",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": null,
+      "step": "그래프 교점(1,-2)을 두 식에 대입하여 a1,b4를 구하고 차-3을 계산한다.",
+      "note": "원문의심: 본문·해설은 bx+y=2이나 이미지에는 bx-y=2로 표시되어 b값이 달라진다. 감소 그래프와 본문 기준 b4. 교점 대입 유형은 명확하다. 새 TPL 제안: 그래프 교점(1,-2)을 두 식에 대입하여 a1,b4를 구하고 차-3을 계산한다. 정의: 그래프 교점(1,-2)을 두 식에 대입하여 a1,b4를 구하고 차-3을 계산한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b15cd41dcca8-3c081139",
+  "sourceArchiveFile": "original/middle/m2/1final/26_팔마중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_79894fe0b8031aa1cefa11346ae63ced06708acd874da711b5c538479d3e8696",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "계수가 알려진 두 식에서 공통해(4,5)를 구하고 나머지 식에 대입하여 a=b=3을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c9ae4960920e45d62cf19ff8fa271e6fcd88aa022a3a528525fac8bafb130eba",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "각 대응에서 입력마다 출력이 하나인지 확인하여 x보다 작은 짝수의 개수 대응을 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 각 대응에서 입력마다 출력이 하나인지 확인하여 x보다 작은 짝수의 개수 대응을 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7da0ba7cf3c8c470167caf6f126f082c5855133537676496ee9b0f49a20b4061",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "정리한 식이 y=ax+b이고 a가0이 아닌 항목 y=-2x+3,y=x/2를 고른다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: 정리한 식이 y=ax+b이고 a가0이 아닌 항목 y=-2x+3,y=x/2를 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_170d1c6f1d2c566b2e81de4df9950abf99ec244cf12a0446923eb33afbccfa3e",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "y=2x-2를 위로4만큼 옮겨 y=2x+2를 얻고 기울기2·y절편2인①을 고른다.",
+      "note": "새 TPL 제안: 수직 평행이동 후 그래프 선택. 정의: y=2x-2를 위로4만큼 옮겨 y=2x+2를 얻고 기울기2·y절편2인①을 고른다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7df2a06f8682e574f1e2708816be7f9067cc9efb38086a8ccee7ee26b8a052d6",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": null,
+      "step": "제1·3·4사분면을 지나므로 기울기2a-1>0과 y절편4b-3<0을 적용하여 a>1/2,b<3/4를 구한다.",
+      "note": "새 TPL 제안: 지나는 사분면 조건의 두 매개변수 범위. 정의: 제1·3·4사분면을 지나므로 기울기2a-1>0과 y절편4b-3<0을 적용하여 a>1/2,b<3/4를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

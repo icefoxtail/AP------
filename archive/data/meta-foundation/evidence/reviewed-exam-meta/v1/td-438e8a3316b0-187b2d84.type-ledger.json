@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-438e8a3316b0-187b2d84",
+  "sourceArchiveFile": "original/high/h2/2mid/24_매산여고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9816c0fb4a427d8cdc65cc90775759d1c909f9163bd52db03c5118e042610c99",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_DIRECT_SUBSTITUTION",
+      "step": "분모가 3에서 2로 영이 아니므로 직접 대입하여 4/2=2를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05b25fe3bdbd064cfc5a0be0ece88fe7099bfa36dbe30caa3df9a83b95f98dfb",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "분자를 f(x)−f(2)−3(x−2)로 분리하여 차분몫 극한 f′(2)−3=−1을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4bc77eb4be9fba1f0138de8d1720c9ce2c515e5025079f6b2e9c75bc830c6024",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_STRUCTURAL_FUNCTION_DETERMINE",
+      "step": "다항식 차분 f(x+1)−f(x)가 주기 1이므로 상수여야 하여 f는 일차이고 도함수는 항상 3이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d1997db716dd3b22fb8c43a7582f0e75978287f8fdf6a164c4cfa5d5d558abf1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "templateKey": "TPL_MONOTONICITY_CONDITION",
+      "step": "도함수 3x²+2ax+2a가 전 실수에서 비음수이도록 판별식 a(a−6)≤0을 적용하여 자연수 6개를 센다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4f9a095dcdc5648c2fd889e111209644c9edea23c2c552bd7f684ace88dfb83",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+      "templateKey": "TPL_EXTREMA_VALUE_PARAMETER",
+      "step": "도함수 3(x+1)(x−3)의 부호 변화로 극대점 −1과 극소점 3을 정해 값 6과 −26을 대입한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b753f28cf857da947d0111e9b65b426b09f0147a65a543c12e9fed91f68acb84",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "step": "유리함수 분모 이차식이 전 실수에서 0이 아니려면 판별식 a²−8a<0이므로 0<a<8이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3fa30fe187867912d0a1de54b57a4352d80d705dc37f3d1bd6b2ab57b12616cd",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "step": "연속함수의 곱과 차는 연속임을 적용하고 g=0 반례로 곱에서 인수 연속성을 역추론하는 ㄷ을 부정한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0262eb7154cdc3f07b80aca22dee927df0fb86147f9f57e0c5c582ce7f78e0a1",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "두 극한에서 f2=1,f′2=5,g2=−1,g′2=4를 구하고 곱미분에 대입하여 6을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e79b9d16a517f6f738cd88aa91f027b17fe404f981fc248708f6af2b2685178c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE",
+      "step": "그림의 점프·제거불연속과 꺾임을 구분하고 수평구간 (2,3) 전체에서 도함수가 0이므로 영점이 두 개라는 진술을 부정한다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0d8e8b0a2b932cf8e1ce21e6b6424f16657c245ba11e46cc81a9729d191368e4",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+      "templateKey": "TPL_MVT_ROLLE_DIRECT",
+      "step": "평균값 정리의 c=2에서 도함수 0을 평균변화율과 맞추어 f(a)=f(0),a=3을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0105883805ae1786318fcf1c0c1802d327de254dbe5c5b1d168d035c18fcfe45",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_GRAPH_ANALYSIS",
+      "templateKey": "TPL_DERIVATIVE_GRAPH_QUALITATIVE_ANALYSIS",
+      "step": "도함수 그래프의 부호와 두 그래프 높이 차로 f의 감소 및 h의 극대·감소를 판정하면 ㄱ만 참이다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f13e7796741798fd4bfa17e9a3468e4a4178a6ccb773aa85134a5d22d077c9df",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "접선각에서 f′(a)=√3을 얻고 두 이동 차분몫의 계수 −2와 −3을 합쳐 −5√3을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fd708619d7e3394624afbbe5a2564d389f16f577aa8bbbcac8cb863f722d589b",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+      "templateKey": "TPL_MONOTONICITY_CONDITION",
+      "step": "증가에서 감소로 바뀌는 1을 도함수 영점으로 놓고 다른 영점≥2를 적용해 정수 A≤−5를 얻어 92+12A를 최대화한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b0aadeb49a934817827b9379411c1ecb8dc2baa0f0a888434f1fcc644711556e",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "극한 유한성으로 f(2)=3을 얻고 분모 인수비를 맞추어 f′(2)/3=4를 적용하여 a=0,b=−5를 정한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

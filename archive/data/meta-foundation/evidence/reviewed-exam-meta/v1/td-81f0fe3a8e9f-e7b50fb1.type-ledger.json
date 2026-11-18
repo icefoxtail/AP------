@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-81f0fe3a8e9f-e7b50fb1",
+  "sourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8510815903a7c2f219ebd70187837973c0e4ef5692a3892ef4573d71c1e822b8",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+      "step": "원주각은 같은 호 중심각의 절반이라는 정리를 적용해 두 배라는④를 거짓으로 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1a724726113e5957f34f94776d4c543b01ced59584d3b5e5ec2c18e58594582d",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+      "step": "같은 원에서 원주각과 호의 길이가 비례하므로 x:8=30:60에서 x4를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_608cb1a65899afb60195f59564e919e88776c5d47a02c55d962b073ffbfe805c",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CALCULATE_MEDIAN_AND_MODE_OF_DISCRETE_DATA",
+      "step": "원자료에서9가5회로 가장 많이 나타남을 세어 최빈값9를 고른다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f4a622b5774b8e38fed1707c72a2f1c3c6b57b07a6a8b54cd5a1868305b6e0a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "대푯값 및 산포도 정의를 검토하고 분산이 클수록 더 흩어진다는 성질과 반대인⑤를 고른다.",
+      "note": "필요 TPL: 대푯값·산포도 정의 진술 판정; 분산의 크기와 흩어짐의 방향 및 각 통계량 정의를 판별한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cc620b6af0023c0c2517380d242aafe03920832caec6cb54406a5586ff693f3a",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": null,
+      "step": "2배하고1을 뺀 평균19와 원분산2의4배인 분산8을 구해 차11을 얻는다.",
+      "note": "필요 TPL: 아핀 변환 평균·분산; 상수배와 평행이동이 함께 있는 변량의 통계량을 변환한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

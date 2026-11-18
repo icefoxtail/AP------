@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-0a471bd17ebe-e77d2f8b",
+  "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_523502e8e30f18c43b9c230f1fa62b3c4dabdd27a628eaf29d32d2a8598349ec",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": null,
+      "step": "줄기잎 자료16개에서8번째24와9번째26의 평균25를 중앙값으로, 세 번 나온34를 최빈값으로 정하여 차9를 구한다.",
+      "note": "필요 TPL: 짝수 개 자료의 중앙값과 최빈값 계산 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f6ca9e0b64b831c43ae6024fe78fbab07eef087bf941f0c67cef5b04a4d52e6",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "편차합0과 표준편차 정의를 검토하고 분산이 클수록 평균에서 널리 퍼진다는 성질로④를 배제한다.",
+      "note": "필요 TPL: 분산과 산포의 의미를 포함한 개념 진술 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_773c156d87b16cf01c9325adb7aa6a61c1ef6c4a174016f3403eac89ddad9bf7",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": null,
+      "step": "그래프에서 반응속도 자료8,10,2,6,4를 읽어 평균6에 대한 편차제곱합40/5=8임을 확인하여8/5라는②를 배제한다.",
+      "note": "필요 TPL: 실제 그래프 자료의 분산 계산을 동반한 통계 진술 검증 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}
