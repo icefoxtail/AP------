@@ -1,408 +1,276 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
-import { loadUnitOrders } from './archive-unit-order.mjs';
-import { questionUidForSource } from './meta-foundation/rpm-active-resolver.mjs';
+import {
+  DEFAULT_REPO_ROOT,
+  gitBlobSha1,
+  questionUidForSource,
+  loadMasters,
+  loadTaxonomy,
+  loadTermDictionary,
+  findBrokenStrings,
+  orderItem,
+  serializeBank,
+  CIRCLED,
+} from './similar-import/lib.mjs';
+
+export { gitBlobSha1 };
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const DEFAULT_REPO_ROOT = path.resolve(__dirname, '../..');
 
-export function gitBlobSha1(content) {
-  const buf = Buffer.isBuffer(content) ? content : Buffer.from(content, 'utf8');
-  const header = Buffer.from(`blob ${buf.length}\0`);
-  return crypto.createHash('sha1').update(Buffer.concat([header, buf])).digest('hex');
-}
+// ---------------------------------------------------------------------------
+// 이스케이프 벗기기 (구글 문서 마크다운 내보내기)
+// ---------------------------------------------------------------------------
+// 구글 문서는 본문(코드 블록 밖)에서 마크다운 특수문자 앞에 역슬래시를 붙이고, 역슬래시 자신은 \\ 로 내보낸다.
+// 그래서 한 겹만 벗기면 된다:  \$ -> $,  \= -> =,  \\overline -> \overline,  \\\\ -> \\
+const ESCAPABLE = '\\\\`*_{}\\[\\]()#+\\-.!$=<>|~';
+const UNESCAPE_RE = new RegExp(`\\\\([${ESCAPABLE}])`, 'g');
 
-/**
- * Unescapes Google Docs markdown export backslash escapes by one layer.
- * Specifically:
- * - \_ -> _
- * - \# -> #
- * - \[ -> [
- * - \] -> ]
- * - \- -> -
- * - \` -> `
- * - \* -> *
- * - \~ -> ~
- * - \+ -> +
- * - \. -> .
- * - \\ -> \ (e.g. \\overline -> \overline, \\\\ -> \\)
- */
 export function unescapeMarkdown(content) {
   if (typeof content !== 'string') return '';
-  // 1. Google Docs markdown export escapes punctuation
-  let res = content.replace(/\\([$#_~*`+=\-[\]()<>{}.|!])/g, '$1');
-  // 2. Google Docs escapes LaTeX command backslashes: \\frac -> \frac, \\overline -> \overline, etc.
-  // When a double backslash is followed by an alphabetic character, unescape to single backslash.
-  res = res.replace(/\\\\([a-zA-Z])/g, '\\$1');
-  return res;
+  return content.replace(UNESCAPE_RE, '$1');
 }
 
-/**
- * Loads master table data:
- * - Unit orders & labels from docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md
- * - SubUnit details from archive/data/master_tables/js_archive_tag_master.json
- */
+/** 코드 블록(JSON) 안에도 구글이 이스케이프를 붙였는지: 홀수 개의 역슬래시 뒤에 마크다운 문장부호가 오면 그렇다. */
+export function fenceIsMarkdownEscaped(body) {
+  return /(?<!\\)(?:\\\\)*\\[$_=+\-#<>[\]()~*`|!.]/.test(body);
+}
+
+/** 제어문자·수식 안 줄바꿈이 있으면 던진다. 조용히 고치지 않는다. */
+function assertNoBrokenText(value, label) {
+  const broken = findBrokenStrings(value);
+  if (broken.length) {
+    throw new Error(`${label}: LaTeX가 JSON 이스케이프로 깨졌습니다 (${broken.slice(0, 3).map(b => `${b.kind}@${b.path}`).join(', ')}). 원천에서 역슬래시를 \\\\ 로 써야 합니다.`);
+  }
+}
+
+/** JSON 블록을 한 번만 읽는다. 못 읽으면 던진다(고쳐 읽지 않는다). */
+export function parseJsonBlock(body, label = 'json') {
+  const text = fenceIsMarkdownEscaped(body) ? unescapeMarkdown(body) : body;
+  let value;
+  try {
+    value = JSON.parse(text);
+  } catch (err) {
+    throw new Error(`${label}: JSON을 읽을 수 없습니다 (${err.message})`);
+  }
+  assertNoBrokenText(value, label);
+  return value;
+}
+
+// ---------------------------------------------------------------------------
+// 마스터 표 / 레지스트리 (옛 이름 유지)
+// ---------------------------------------------------------------------------
 export function loadMasterTables(repoRoot = DEFAULT_REPO_ROOT) {
-  const unitOrderData = loadUnitOrders(repoRoot);
-  const tagMasterPath = path.resolve(repoRoot, 'archive/data/master_tables/js_archive_tag_master.json');
-  const tagMaster = JSON.parse(fs.readFileSync(tagMasterPath, 'utf8'));
-
-  const subUnits = new Map();
-  for (const row of tagMaster) {
-    if (row.key && (row.keyType === 'subUnitKey' || row.subUnitKey || row.keyType === 'conceptClusterKey')) {
-      subUnits.set(row.key, {
-        subUnitKey: row.key,
-        labelKo: row.labelKo || row.subUnit || '',
-        parentKey: row.parentKey || row.standardUnitKey || '',
-        standardUnitKey: row.standardUnitKey || '',
-      });
-    }
-  }
-
-  return {
-    unitOrders: unitOrderData.orders,
-    subUnits,
-  };
+  const m = loadMasters(repoRoot);
+  return { unitOrders: m.unitOrders, subUnits: m.subUnits };
 }
 
-/**
- * Loads compiled active taxonomy registry:
- * Returns sets of active problemTypeKeys and templateKeys.
- */
 export function loadTaxonomyRegistry(repoRoot = DEFAULT_REPO_ROOT) {
-  const taxPath = path.resolve(repoRoot, 'archive/data/meta-foundation/compiled/taxonomy_registry.json');
-  const taxonomy = JSON.parse(fs.readFileSync(taxPath, 'utf8'));
-
-  const activeProblemTypes = new Set();
-  const activeTemplates = new Set();
-
-  const ptRows = Array.isArray(taxonomy.problemTypes)
-    ? taxonomy.problemTypes
-    : Object.values(taxonomy.problemTypes || {});
-  for (const pt of ptRows) {
-    if (pt && pt.problemTypeKey) activeProblemTypes.add(pt.problemTypeKey);
-  }
-
-  const tplRows = Array.isArray(taxonomy.templates)
-    ? taxonomy.templates
-    : Object.values(taxonomy.templates || {});
-  for (const tpl of tplRows) {
-    if (tpl && tpl.templateKey) activeTemplates.add(tpl.templateKey);
-  }
-
-  return { activeProblemTypes, activeTemplates };
+  const t = loadTaxonomy(repoRoot);
+  return { activeProblemTypes: new Set(t.pts.keys()), activeTemplates: new Set(t.tpls.keys()) };
 }
 
-/**
- * Loads all crosswalk records from archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/
- */
-export function loadCrosswalkRecords(repoRoot = DEFAULT_REPO_ROOT) {
-  const cwDir = path.resolve(repoRoot, 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0');
-  const records = [];
-
-  if (fs.existsSync(cwDir)) {
-    const files = fs.readdirSync(cwDir).filter(f => f.endsWith('.json'));
-    for (const f of files) {
-      try {
-        const data = JSON.parse(fs.readFileSync(path.join(cwDir, f), 'utf8'));
-        const rows = Array.isArray(data.records)
-          ? data.records
-          : Array.isArray(data.rows)
-          ? data.rows
-          : [];
-        for (const r of rows) {
-          if (r && r.rpmPath && r.id) {
-            records.push(r);
-          }
-        }
-      } catch {
-        // ignore broken optional files
-      }
-    }
-  }
-
-  return records;
-}
-
-const CIRCLED_NUMS = ['①', '②', '③', '④', '⑤'];
-
-/**
- * Parses choices section:
- * Extracts ①~⑤ into 5 strings without the circled numbers.
- */
+// ---------------------------------------------------------------------------
+// 파싱
+// ---------------------------------------------------------------------------
+/** 객관식 보기 ①~⑤를 5개 문자열로. 5개가 순서대로 없으면 빈 배열. */
 export function parseChoices(raw) {
   const text = String(raw || '').trim();
-  if (!text || text === '없음' || text === 'None' || text === '-') {
-    return [];
-  }
-
-  const hasAllCircled = CIRCLED_NUMS.every(num => text.includes(num));
-  if (!hasAllCircled) {
-    return [];
-  }
-
-  const indices = CIRCLED_NUMS.map(num => text.indexOf(num));
-  // Verify strict ordering
-  for (let i = 0; i < indices.length - 1; i++) {
-    if (indices[i] >= indices[i + 1]) {
-      return [];
-    }
-  }
-
-  const choices = [];
-  for (let i = 0; i < CIRCLED_NUMS.length; i++) {
-    const start = indices[i] + CIRCLED_NUMS[i].length;
-    const end = i < CIRCLED_NUMS.length - 1 ? indices[i + 1] : text.length;
-    choices.push(text.slice(start, end).trim());
-  }
-
-  return choices;
+  if (!text || text === '없음' || text === 'None' || text === '-') return [];
+  if (!CIRCLED.every(n => text.includes(n))) return [];
+  const idx = CIRCLED.map(n => text.indexOf(n));
+  for (let i = 0; i < idx.length - 1; i++) if (idx[i] >= idx[i + 1]) return [];
+  return CIRCLED.map((n, i) => text.slice(idx[i] + n.length, i < 4 ? idx[i + 1] : text.length).trim());
 }
 
-/**
- * Formats user-facing examDisplayTitle from stem and exam info.
- */
 export function formatExamDisplayTitle(stem, exam = {}) {
   const m = stem.match(/^(\d{2})_([^_]+)_(\d학기)_(중간|기말|1차|2차)(?:_([^_]+))?(?:_유사.*)?$/);
   if (m) {
     const [, yy, school, sem, examName, rest] = m;
     const grade = exam.grade || (rest && (rest.startsWith('고') || rest.startsWith('중')) ? rest : '');
     const subject = rest && !rest.startsWith('고') && !rest.startsWith('중') ? ` ${rest}` : '';
-    const gradePart = grade ? ` ${grade}` : '';
-    return `${yy}년 ${school}${gradePart} ${sem} ${examName}${subject} 유사문제`;
+    return `${yy}년 ${school}${grade ? ` ${grade}` : ''} ${sem} ${examName}${subject} 유사문제`;
   }
-
   const parts = stem.split('_');
-  if (parts.length > 0 && /^\d{2}$/.test(parts[0])) {
-    parts[0] = parts[0] + '년';
-  }
+  if (parts.length > 0 && /^\d{2}$/.test(parts[0])) parts[0] += '년';
   let s = parts.join(' ');
   if (s.endsWith('유사')) s += '문제';
   return s;
 }
 
-/**
- * Parses the raw Markdown text into exam metadata and an array of raw question blocks.
- */
-export function safeJsonParse(jsonStr) {
-  try {
-    return JSON.parse(jsonStr);
-  } catch (firstErr) {
-    let repaired = jsonStr
-      .replace(/\\(bar|begin|beta)/g, '\\\\$1')
-      .replace(/\\(frac)/g, '\\\\$1')
-      .replace(/\\(times|text|tan|theta)/g, '\\\\$1')
-      .replace(/\\(quad|qquad)/g, '\\\\$1')
-      .replace(/\\(?!["\\/bfnrt]|u[0-9a-fA-F]{4})/g, '\\\\');
-    return JSON.parse(repaired);
+function splitFences(md) {
+  const parts = [];
+  const re = /```([A-Za-z0-9_:-]*)[ \t]*\n([\s\S]*?)\n```/g;
+  let last = 0;
+  let m;
+  while ((m = re.exec(md)) !== null) {
+    if (m.index > last) parts.push({ type: 'text', text: md.slice(last, m.index) });
+    parts.push({ type: 'fence', tag: m[1], body: m[2] });
+    last = m.index + m[0].length;
   }
+  if (last < md.length) parts.push({ type: 'text', text: md.slice(last) });
+  return parts;
+}
+
+const META_KEYS = ['sourceQid', 'standardUnitKey', 'variationType', 'subUnitKey'];
+
+function classifyFence(fence, label) {
+  // returns {kind:'plan'|'meta', value?, error?}
+  const tag = fence.tag || '';
+  let value;
+  try {
+    value = parseJsonBlock(fence.body, label);
+  } catch (err) {
+    const isMeta = tag === 'json:meta' || (!tag.includes('plan') && /"(?:sourceQid|standardUnitKey|variationType)"/.test(fence.body));
+    return { kind: isMeta ? 'meta' : 'plan', error: err.message };
+  }
+  if (tag === 'json:meta') return { kind: 'meta', value };
+  if (tag === 'json:plan') return { kind: 'plan', value };
+  if (value && typeof value === 'object' && !Array.isArray(value) && META_KEYS.some(k => k in value)) return { kind: 'meta', value };
+  return { kind: 'plan', value };
 }
 
 /**
- * Parses a similar exam markdown file into structured exam and question objects.
- * Supports both explicit code fence tags (```json:exam, ```json:meta, ```json:plan)
- * and generic/bare code fence tags produced by Google Docs markdown export (```).
+ * 일체형 마크다운을 읽어 시험지 정보와 문항 원자료로 나눈다.
+ * 본문(코드 블록 밖)은 한 겹 이스케이프를 벗기고, 코드 블록은 parseJsonBlock 으로 한 번만 읽는다.
  */
 export function parseSimilarMd(mdText) {
   const normalized = mdText.replace(/\r\n/g, '\n');
-
-  // 1. Extract exam json block
-  const examBlockMatch = normalized.match(/```(?:json:exam|json)?\s*\n([\s\S]*?)\n```/);
-  if (!examBlockMatch) {
-    throw new Error('MD_PARSE_ERROR: Missing ```json:exam``` block');
-  }
-
+  const parts = splitFences(normalized);
+  const examIdx = parts.findIndex(p => p.type === 'fence');
+  if (examIdx < 0) throw new Error('MD_PARSE_ERROR: 시험지 정보 JSON 블록이 없습니다');
   let exam;
   try {
-    exam = safeJsonParse(examBlockMatch[1]);
+    exam = parseJsonBlock(parts[examIdx].body, 'exam');
   } catch (err) {
-    throw new Error(`MD_PARSE_ERROR: Invalid json:exam block: ${err.message}`);
+    throw new Error(`MD_PARSE_ERROR: ${err.message}`);
   }
+  if (!exam || typeof exam !== 'object' || !exam.stem) throw new Error('MD_PARSE_ERROR: 시험지 정보에 stem 이 없습니다');
 
-  // 2. Split questions by '## Q'
-  const questionRegex = /\n## Q(\d+)\s*\n([\s\S]*?)(?=\n## Q\d+\s*\n|$)/g;
-  const rawQuestions = [];
-  let m;
-
-  // Search after exam block
-  const bodyText = normalized.slice(examBlockMatch.index + examBlockMatch[0].length);
-  const fullSearchText = '\n' + bodyText;
-
-  while ((m = questionRegex.exec(fullSearchText)) !== null) {
-    const qidNum = Number(m[1]);
-    const blockContent = m[2];
-    rawQuestions.push({ qidNum, blockContent });
+  const sections = [];
+  let cur = null;
+  for (const p of parts.slice(examIdx + 1)) {
+    if (p.type === 'text') {
+      const text = unescapeMarkdown(p.text);
+      const re = /^## Q(\d+)[ \t]*$/gm;
+      let last = 0;
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        if (cur) cur.text += text.slice(last, m.index);
+        cur = { qidNum: Number(m[1]), text: '', fences: [] };
+        sections.push(cur);
+        last = m.index + m[0].length;
+      }
+      if (cur) cur.text += text.slice(last);
+    } else if (cur) {
+      cur.fences.push(p);
+    }
   }
+  if (!sections.length) throw new Error('MD_PARSE_ERROR: 문항 블록(## QNN)이 없습니다');
 
-  if (rawQuestions.length === 0) {
-    throw new Error('MD_PARSE_ERROR: No question blocks (## QNN) found');
-  }
-
-  const questions = [];
-  for (const rq of rawQuestions) {
-    const { qidNum, blockContent } = rq;
-
-    // Header info: - 형식: ..., - 배점: ...
-    const formatMatch = blockContent.match(/^-\s*형식:\s*([^\n]+)/m);
-    const scoreMatch = blockContent.match(/^-\s*배점:\s*([0-9.]+)/m);
-
-    const rawFormat = formatMatch ? formatMatch[1].trim() : '객관식';
-    const score = scoreMatch ? Number(scoreMatch[1]) : 0;
-
-    // Subsections: 발문, 선지, 정답, 해설
-    const stemMatch = blockContent.match(/###\s*발문\s*\n([\s\S]*?)(?=\n###\s*선지|\n###\s*정답|\n```)/);
-    const choicesMatch = blockContent.match(/###\s*선지\s*\n([\s\S]*?)(?=\n###\s*정답|\n```)/);
-    const answerMatch = blockContent.match(/###\s*정답\s*\n([\s\S]*?)(?=\n###\s*해설|\n```)/);
-    const solutionMatch = blockContent.match(/###\s*해설\s*\n([\s\S]*?)(?=\n```|$)/);
-
-    const content = stemMatch ? stemMatch[1].trim() : '';
-    const rawChoices = choicesMatch ? choicesMatch[1].trim() : '';
-    const answer = answerMatch ? answerMatch[1].trim() : '';
-    const solution = solutionMatch ? solutionMatch[1].trim() : '';
-
-    // Code blocks: can be tagged (```json:plan, ```json:meta) or generic (```)
+  const questions = sections.map(sec => {
+    const { qidNum } = sec;
+    const label = `Q${qidNum}`;
+    const formatMatch = sec.text.match(/^-\s*형식:\s*([^\n]+)/m);
+    const scoreMatch = sec.text.match(/^-\s*배점:\s*([0-9.]+)/m);
+    const fields = {};
+    for (const chunk of sec.text.split(/^###\s*/m).slice(1)) {
+      const nl = chunk.indexOf('\n');
+      const name = (nl < 0 ? chunk : chunk.slice(0, nl)).trim();
+      fields[name] = (nl < 0 ? '' : chunk.slice(nl + 1)).trim();
+    }
     let plan = null;
     let meta = null;
-    const codeBlocks = [...blockContent.matchAll(/```(?:[a-zA-Z0-9_:-]+)?\s*\n([\s\S]*?)\n```/g)];
-    for (const cb of codeBlocks) {
-      const rawBlock = cb[1].trim();
-      if (rawBlock === 'NONE' || rawBlock === '"NONE"') {
-        continue;
-      }
-      try {
-        const parsed = safeJsonParse(rawBlock);
-        if (parsed.sourceQid !== undefined || parsed.standardUnitKey !== undefined || parsed.variationType !== undefined) {
-          meta = parsed;
-        } else {
-          plan = parsed;
-        }
-      } catch {
-        // Ignored
-      }
-    }
-
-    if (!meta) {
-      throw new Error(`MD_PARSE_ERROR: Question Q${qidNum} is missing valid meta block`);
-    }
-
-    const choices = parseChoices(rawChoices);
-
-    questions.push({
+    let metaError = null;
+    let planError = null;
+    sec.fences.forEach((fence, i) => {
+      const r = classifyFence(fence, `${label} 블록${i + 1}`);
+      if (r.kind === 'meta') {
+        if (r.error) metaError = r.error;
+        else meta = r.value;
+      } else if (r.error) planError = r.error;
+      else plan = r.value;
+    });
+    return {
       qidNum,
-      rawFormat,
-      score,
-      content,
-      choices,
-      answer,
-      solution,
+      rawFormat: formatMatch ? formatMatch[1].trim() : '',
+      score: scoreMatch ? Number(scoreMatch[1]) : null,
+      content: fields['발문'] ?? '',
+      rawChoices: fields['선지'] ?? '',
+      choices: parseChoices(fields['선지'] ?? ''),
+      answer: fields['정답'] ?? '',
+      solution: fields['해설'] ?? '',
       plan,
       meta,
-    });
-  }
-
+      metaError,
+      planError,
+    };
+  });
   return { exam, questions };
 }
 
-/**
- * Validates the converted exam artifact in accordance with section 7 rules.
- */
-export function validateConvertedExam({
-  exam,
-  questions,
-  questionBank,
-  metaRegisterDoc,
-  fourSlotDoc,
-  plans,
-  repoRoot = DEFAULT_REPO_ROOT,
-}) {
+// ---------------------------------------------------------------------------
+// 검증
+// ---------------------------------------------------------------------------
+function stripEnvironments(text) {
+  return String(text).replace(/\\begin\{([a-zA-Z*]+)\}[\s\S]*?\\end\{\1\}/g, ' ');
+}
+
+export function validateConvertedExam({ exam, questionBank, metaRegisterDoc, fourSlotDoc, plans, repoRoot = DEFAULT_REPO_ROOT }) {
   const errors = [];
   const warnings = [];
 
-  // 1. Question count and score check
-  if (questionBank.length !== exam.questionCount) {
-    errors.push(`QUESTION_COUNT_MISMATCH: expected ${exam.questionCount}, got ${questionBank.length}`);
-  }
+  if (questionBank.length !== exam.questionCount) errors.push(`QUESTION_COUNT_MISMATCH: expected ${exam.questionCount}, got ${questionBank.length}`);
+  const totalScore = questionBank.reduce((a, q) => a + (q.points || 0), 0);
+  if (Math.abs(totalScore - exam.totalScore) > 0.01) errors.push(`TOTAL_SCORE_MISMATCH: expected ${exam.totalScore}, got ${totalScore}`);
+  questionBank.forEach((q, i) => {
+    if (q.id !== i + 1) errors.push(`NON_SEQUENTIAL_ID: index ${i} has id ${q.id}, expected ${i + 1}`);
+  });
 
-  const totalScore = questionBank.reduce((acc, q) => acc + (q.points || q.score || 0), 0);
-  if (Math.abs(totalScore - exam.totalScore) > 0.01) {
-    errors.push(`TOTAL_SCORE_MISMATCH: expected ${exam.totalScore}, got ${totalScore}`);
-  }
-
-  // 2. Sequential IDs from 1
-  for (let i = 0; i < questionBank.length; i++) {
-    if (questionBank[i].id !== i + 1) {
-      errors.push(`NON_SEQUENTIAL_ID: index ${i} has id ${questionBank[i].id}, expected ${i + 1}`);
-    }
-  }
-
-  // 3. Choices & answers check
   for (const q of questionBank) {
     if (q.questionType === '객관식') {
-      if (!Array.isArray(q.choices) || q.choices.length !== 5) {
-        errors.push(`OBJECTIVE_CHOICES_INVALID: qid ${q.id} has ${q.choices?.length ?? 0} choices`);
-      }
-      if (!CIRCLED_NUMS.includes(q.answer)) {
-        errors.push(`OBJECTIVE_ANSWER_INVALID: qid ${q.id} answer "${q.answer}" is not ①~⑤`);
-      }
+      if (!Array.isArray(q.choices) || q.choices.length !== 5) errors.push(`OBJECTIVE_CHOICES_INVALID: qid ${q.id} has ${q.choices?.length ?? 0} choices`);
+      if (!CIRCLED.includes(q.answer)) errors.push(`OBJECTIVE_ANSWER_INVALID: qid ${q.id} answer "${q.answer}" is not ①~⑤`);
     } else {
-      if (Array.isArray(q.choices) && q.choices.length > 0) {
-        errors.push(`SUBJECTIVE_CHOICES_NOT_EMPTY: qid ${q.id} has choices for non-objective question`);
-      }
-      if (!q.answer || typeof q.answer !== 'string' || q.answer.trim() === '') {
-        errors.push(`SUBJECTIVE_ANSWER_EMPTY: qid ${q.id} has empty answer`);
-      }
+      if (Array.isArray(q.choices) && q.choices.length > 0) errors.push(`SUBJECTIVE_CHOICES_NOT_EMPTY: qid ${q.id}`);
+      if (!q.answer || String(q.answer).trim() === '') errors.push(`SUBJECTIVE_ANSWER_EMPTY: qid ${q.id}`);
     }
+    if (!q.content) errors.push(`CONTENT_EMPTY: qid ${q.id}`);
+    if (!q.solution) errors.push(`SOLUTION_EMPTY: qid ${q.id}`);
 
-    // 4. Latex dollar matching and escape residuals check
-    const textToCheck = `${q.content}\n${q.solution}\n${(q.choices || []).join('\n')}`;
-    const dollarCount = (textToCheck.match(/(?<!\\)\$/g) || []).length;
-    if (dollarCount % 2 !== 0) {
-      errors.push(`UNBALANCED_DOLLARS: qid ${q.id} has odd number of $ (${dollarCount})`);
-    }
-
-    if (/\\\(|\\\)/.test(textToCheck)) {
-      errors.push(`INVALID_PAREN_MATH_DELIMITER: qid ${q.id} contains \\( or \\)`);
-    }
-
-    // Check for obvious Google Docs markdown escape leftovers
-    if (/\\[_#[\]`~]/.test(textToCheck)) {
-      warnings.push(`POSSIBLE_ESCAPE_RESIDUAL: qid ${q.id} contains backslash-escaped punctuation`);
-    }
+    const text = [q.content, q.solution, q.answer, ...(q.choices || [])].join('\n');
+    const dollars = (text.match(/(?<!\\)\$/g) || []).length;
+    if (dollars % 2 !== 0) errors.push(`UNBALANCED_DOLLARS: qid ${q.id} has odd number of $ (${dollars})`);
+    if (/\\\(|\\\)/.test(text)) errors.push(`INVALID_PAREN_MATH_DELIMITER: qid ${q.id} contains \\( or \\)`);
+    if (/(?<!\\)\\[$_#=+<>~*`[\]]/.test(text)) errors.push(`ESCAPE_RESIDUAL: qid ${q.id} 이스케이프 찌꺼기(\\$ \\_ \\# \\= \\+ \\< \\> 등)가 남았습니다`);
+    // 환경(\begin..\end) 밖의 \\ 는 내용을 바꾸지 않고 경고만 한다.
+    const inlineBreaks = [q.content, q.solution, ...(q.choices || [])].filter(s => /\\\\/.test(stripEnvironments(s))).length;
+    if (inlineBreaks) warnings.push(`LATEX_BACKSLASH_PAIR_OUTSIDE_ENV: qid ${q.id} (${inlineBreaks}곳의 글, 내용은 그대로 둠)`);
   }
 
-  // 5. Registration doc checks
-  if (metaRegisterDoc.items.length !== questionBank.length) {
-    errors.push(`META_REGISTER_ITEM_COUNT_MISMATCH: expected ${questionBank.length}, got ${metaRegisterDoc.items.length}`);
+  for (const [name, doc] of [['questionBank', questionBank], ['metaRegister', metaRegisterDoc], ['fourSlot', fourSlotDoc], ['plans', plans?.map(p => p.content)]]) {
+    if (!doc) continue;
+    for (const b of findBrokenStrings(doc, name)) errors.push(`${b.kind}: ${b.path}`);
   }
 
-  const seenUids = new Set();
+  if (metaRegisterDoc.items.length !== questionBank.length) errors.push(`META_REGISTER_ITEM_COUNT_MISMATCH: expected ${questionBank.length}, got ${metaRegisterDoc.items.length}`);
+  const seen = new Set();
   for (const item of metaRegisterDoc.items) {
-    if (!item.questionUid) {
-      errors.push(`META_REGISTER_UID_MISSING: ordinal ${item.sourceOrdinal}`);
-    } else if (seenUids.has(item.questionUid)) {
-      errors.push(`DUPLICATE_QUESTION_UID: ${item.questionUid}`);
-    } else {
-      seenUids.add(item.questionUid);
-    }
+    if (!item.questionUid) errors.push(`META_REGISTER_UID_MISSING: ordinal ${item.sourceOrdinal}`);
+    else if (seen.has(item.questionUid)) errors.push(`DUPLICATE_QUESTION_UID: ${item.questionUid}`);
+    else seen.add(item.questionUid);
   }
 
-  // 6. Original exam comparison check
   if (exam.sourceArchiveFile) {
-    const origPath = path.resolve(repoRoot, 'archive/exams', exam.sourceArchiveFile);
-    if (fs.existsSync(origPath)) {
+    const orig = path.resolve(repoRoot, 'archive/exams', exam.sourceArchiveFile);
+    if (fs.existsSync(orig)) {
       try {
-        const origContent = fs.readFileSync(origPath, 'utf8');
-        const origCtx = { window: {} };
-        vm.createContext(origCtx);
-        new vm.Script(origContent).runInContext(origCtx);
-        const origBank = origCtx.window.questionBank || [];
-        if (origBank.length !== questionBank.length) {
-          warnings.push(`ORIGINAL_QUESTION_COUNT_DIFFERENCE: original has ${origBank.length}, similar has ${questionBank.length}`);
-        }
+        const ctx = { window: {} };
+        vm.createContext(ctx);
+        new vm.Script(fs.readFileSync(orig, 'utf8')).runInContext(ctx);
+        const n = (ctx.window.questionBank || []).length;
+        if (n !== questionBank.length) warnings.push(`ORIGINAL_QUESTION_COUNT_DIFFERENCE: original has ${n}, similar has ${questionBank.length}`);
       } catch (err) {
         warnings.push(`ORIGINAL_EVAL_FAILED: ${err.message}`);
       }
@@ -410,16 +278,20 @@ export function validateConvertedExam({
       warnings.push(`ORIGINAL_SOURCE_FILE_NOT_FOUND: ${exam.sourceArchiveFile}`);
     }
   }
-
-  return {
-    valid: errors.length === 0,
-    errors,
-    warnings,
-  };
+  return { valid: errors.length === 0, errors, warnings };
 }
 
+// ---------------------------------------------------------------------------
+// 변환
+// ---------------------------------------------------------------------------
+const TRACKED_FIELDS = ['level', 'standardCourse', 'curriculum', 'courseKey', 'standardUnitKey', 'subUnitKey', 'conceptClusterKey',
+  'difficultyBucket', 'problemTypeKey', 'templateKey', 'integrationPattern', 'sourceQid', 'variationType', 'difficultyConfidence'];
+
+const empty = v => v === undefined || v === null || v === '';
+
 /**
- * Main conversion routine for a single similar exam markdown file.
+ * 한 시험지를 변환한다. 변환기는 원천의 값을 "있으면 쓰고, 없으면 빈 채로" 옮긴다. 기본값을 만들어 넣지 않는다.
+ * 단원·RPM·유형·난이도·4칸의 최종 값은 문항별 판정 기록(similar-import)이 정한다.
  */
 export function convertSimilarExam({
   mdPath,
@@ -427,293 +299,173 @@ export function convertSimilarExam({
   repoRoot = DEFAULT_REPO_ROOT,
   writeFiles = true,
   outDir = null,
-  unescape = false,
+  allowUnreadableSourceMeta = false,
 }) {
-  const rawText = mdContent !== undefined
-    ? mdContent
-    : fs.readFileSync(mdPath, 'utf8');
+  const rawText = mdContent !== undefined ? mdContent : fs.readFileSync(mdPath, 'utf8');
+  const { exam, questions } = parseSimilarMd(rawText);
 
-  const processedText = unescape ? unescapeMarkdown(rawText) : rawText;
-
-  // 1. Parse markdown
-  const { exam, questions } = parseSimilarMd(processedText);
-
-  // 2. Load masters and registries
-  const masterTables = loadMasterTables(repoRoot);
+  const masters = loadMasters(repoRoot);
   const taxonomy = loadTaxonomyRegistry(repoRoot);
-  const crosswalkRecords = loadCrosswalkRecords(repoRoot);
+  const dictionary = loadTermDictionary(repoRoot);
 
   const stem = exam.stem;
   const examDisplayTitle = formatExamDisplayTitle(stem, exam);
-
-  // Destination directory
-  // exam.sourceArchiveFile e.g. "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js"
-  const relSourceDir = path.dirname(exam.sourceArchiveFile).replace(/^archive\/exams\//, '').replace(/^original\//, 'similar/');
-  const targetDir = outDir
-    ? path.resolve(outDir)
-    : path.resolve(repoRoot, 'archive/exams', relSourceDir);
+  const relSourceDir = path.dirname(exam.sourceArchiveFile || '').replace(/^archive\/exams\//, '').replace(/^original\//, 'similar/');
+  const targetDir = outDir ? path.resolve(outDir) : path.resolve(repoRoot, 'archive/exams', relSourceDir);
 
   const jsFileName = `${stem}.js`;
   const metaRegisterFileName = `${stem}.meta-q01-q${String(questions.length).padStart(2, '0')}.json`;
   const fourSlotFileName = `${stem}.4slot.json`;
   const plansSubdirName = `${stem}_plans`;
+  const targetSourceJsPath = path.join('archive/exams', relSourceDir, jsFileName).replaceAll('\\', '/');
 
+  const preErrors = [];
   const questionBank = [];
   const registerItems = [];
   const fourSlotItems = [];
   const plansToWrite = [];
-
-  let countRpmMatched = 0;
-  let countRpmUnmatched = 0;
+  const incomplete = {};
+  const incompleteByQid = {};
+  const sourceMetaUnreadable = [];
+  const figureMentions = [];
+  const unitHoldQids = [];
   let countPtTplMatched = 0;
   let countPtTplCleared = 0;
   let countNewKeyProposals = 0;
-  const missingMasterKeys = [];
-  const figureRequiredQuestions = [];
 
-  for (let idx = 0; idx < questions.length; idx++) {
-    const q = questions[idx];
+  questions.forEach((q, idx) => {
     const qid = idx + 1;
-    const meta = q.meta || {};
-
-    // Standard Unit & Order
-    const suKey = meta.standardUnitKey;
-    const unitOrderObj = masterTables.unitOrders.get(suKey);
-    if (!unitOrderObj) {
-      missingMasterKeys.push({ qid, key: suKey, type: 'standardUnitKey' });
+    if (q.qidNum !== qid) preErrors.push(`QID_SEQUENCE: ## Q${q.qidNum} 이(가) ${qid}번째 블록입니다`);
+    if (q.planError) preErrors.push(`PLAN_UNREADABLE: Q${qid}: ${q.planError}`);
+    if (q.score === null) preErrors.push(`SCORE_MISSING: Q${qid}`);
+    let meta = q.meta;
+    if (!meta) {
+      if (q.metaError && allowUnreadableSourceMeta) {
+        sourceMetaUnreadable.push({ qid, reason: q.metaError });
+        meta = {};
+      } else {
+        preErrors.push(`META_UNREADABLE: Q${qid}: ${q.metaError || '메타 블록이 없습니다'}`);
+        meta = {};
+      }
     }
-    const standardUnit = unitOrderObj ? unitOrderObj.label : (meta.standardUnit || '');
-    const standardUnitOrder = unitOrderObj ? unitOrderObj.order : (meta.standardUnitOrder ?? 999);
 
-    // SubUnit
-    const subUnitKey = meta.subUnitKey;
-    const subUnitObj = masterTables.subUnits.get(subUnitKey);
-    if (!subUnitObj) {
-      missingMasterKeys.push({ qid, key: subUnitKey, type: 'subUnitKey' });
-    }
-    const subUnit = subUnitObj ? subUnitObj.labelKo : (meta.subUnit || '');
-
+    const suKey = meta.standardUnitKey ?? '';
+    const unitRow = masters.unitOrders.get(suKey);
+    if (!unitRow) unitHoldQids.push({ qid, key: suKey || null, type: 'standardUnitKey' });
+    const subKey = meta.subUnitKey ?? '';
+    const subRow = masters.subUnits.get(subKey);
+    const standardUnit = unitRow ? unitRow.label : '';
+    const standardUnitOrder = unitRow ? unitRow.order : null;
+    const subUnit = subRow ? subRow.labelKo : '';
     const category = subUnit || standardUnit;
-    const originalCategory = category;
 
-    // Question type
-    let questionType = '객관식';
-    if (q.rawFormat.includes('서답형') || q.rawFormat.includes('단답') || q.rawFormat.includes('서술')) {
-      const isProofOrProcess = /풀이\s*과정|서술|과정을\s*쓰시오|증명/.test(q.content);
-      questionType = isProofOrProcess ? '서술형' : '단답형';
+    let questionType;
+    if (q.rawFormat.includes('객관식')) questionType = '객관식';
+    else if (/서답|단답|서술/.test(q.rawFormat)) questionType = /풀이\s*과정|서술|과정을\s*쓰시오|증명/.test(q.content) ? '서술형' : '단답형';
+    else {
+      preErrors.push(`FORMAT_UNKNOWN: Q${qid} 형식 "${q.rawFormat}"`);
+      questionType = '';
     }
 
-    // Tags
-    const tags = [questionType, subUnit].filter(Boolean);
-    if (/도형|그림|삼각형|사각형|원\b|부채꼴/.test(q.content) && !tags.includes('도형')) tags.push('도형');
-    if (/그래프/.test(q.content) && !tags.includes('그래프')) tags.push('그래프');
-    if (/\[표\]|표를\s*참고|다음\s*표/.test(q.content) && !tags.includes('표')) tags.push('표');
-
-    // Figure need check (Section 6)
-    const hasVisualMention = /그림|그래프|도형|표/.test(q.content);
-    const hasPlan = Boolean(q.plan && !q.plan.exempt && typeof q.plan === 'object');
-    if (hasVisualMention && !hasPlan) {
-      figureRequiredQuestions.push({
-        stem,
-        qid,
-        wording: q.content.slice(0, 80),
-        judgment: /길이|각도|점|그래프\s*를\s*보고|그림과\s*같이/.test(q.content)
-          ? '그림의 수치/형상을 읽어야 함'
-          : '글과 조건만으로 풀이 가능',
-      });
+    if (/그림|그래프|도형|표\b/.test(q.content)) {
+      const hasPlan = Boolean(q.plan && typeof q.plan === 'object' && !q.plan.exempt);
+      if (!hasPlan) figureMentions.push({ stem, qid, wording: q.content.slice(0, 80) });
     }
 
-    // Problem Type & Template Key check against active taxonomy
-    const candidatePt = meta.ptTplCandidate?.problemTypeKey || meta.problemTypeKey;
-    const candidateTpl = meta.ptTplCandidate?.templateKey || meta.templateKey;
+    const candPt = meta.ptTplCandidate?.problemTypeKey || meta.problemTypeKey || '';
+    const candTpl = meta.ptTplCandidate?.templateKey || meta.templateKey || '';
+    const problemTypeKey = candPt && taxonomy.activeProblemTypes.has(candPt) ? candPt : '';
+    const templateKey = candTpl && taxonomy.activeTemplates.has(candTpl) ? candTpl : '';
+    if (candPt || candTpl) (problemTypeKey || templateKey ? countPtTplMatched++ : countPtTplCleared++);
+    if (meta.newKeyProposal) countNewKeyProposals++;
 
-    let problemTypeKey = '';
-    let templateKey = '';
-
-    if (candidatePt && taxonomy.activeProblemTypes.has(candidatePt)) {
-      problemTypeKey = candidatePt;
-    }
-    if (candidateTpl && taxonomy.activeTemplates.has(candidateTpl)) {
-      templateKey = candidateTpl;
-    }
-
-    if (candidatePt || candidateTpl) {
-      if (problemTypeKey || templateKey) {
-        countPtTplMatched++;
-      } else {
-        countPtTplCleared++;
-      }
-    }
-
-    if (meta.newKeyProposal) {
-      countNewKeyProposals++;
-    }
-
-    // RPM Primary matching
-    let matchedRpmRow = null;
-    if (meta.rpm && meta.rpm.majorUnit && meta.rpm.midUnit && meta.rpm.l3 && meta.rpm.l4) {
-      const matches = crosswalkRecords.filter(r =>
-        r.rpmPath &&
-        r.rpmPath.majorUnit === meta.rpm.majorUnit &&
-        r.rpmPath.midUnit === meta.rpm.midUnit &&
-        r.rpmPath.l3 === meta.rpm.l3 &&
-        r.rpmPath.l4 === meta.rpm.l4
-      );
-      if (matches.length === 1) {
-        matchedRpmRow = matches[0];
-        countRpmMatched++;
-      } else {
-        countRpmUnmatched++;
-      }
-    } else {
-      countRpmUnmatched++;
-    }
-
-    // Plan reference
-    let problemPlanRef = undefined;
+    const hasPlan = Boolean(q.plan && typeof q.plan === 'object' && !q.plan.exempt);
+    let problemPlanRef;
     if (hasPlan) {
-      const planRelPath = path.join(
-        'archive/exams',
-        relSourceDir,
-        plansSubdirName,
-        `q${String(qid).padStart(2, '0')}-problem.plan.json`
-      ).replaceAll('\\', '/');
-
-      problemPlanRef = planRelPath;
-      plansToWrite.push({
-        fileName: `q${String(qid).padStart(2, '0')}-problem.plan.json`,
-        content: JSON.stringify(q.plan, null, 2),
-      });
+      const fileName = `q${String(qid).padStart(2, '0')}-problem.plan.json`;
+      problemPlanRef = path.join('archive/exams', relSourceDir, plansSubdirName, fileName).replaceAll('\\', '/');
+      plansToWrite.push({ fileName, content: JSON.stringify(q.plan, null, 2) });
     }
 
-    // Construct Question Bank Item (Strict field order matching canonical example)
+    const curriculum = meta.curriculum ?? exam.curriculum ?? '';
     const qItem = {
       id: qid,
-      level: meta.level || '중',
+      level: meta.level ?? '',
       category,
-      originalCategory,
-      standardCourse: meta.standardCourse || exam.grade || '',
-      curriculum: meta.curriculum || exam.curriculum || '2022',
-      curriculumKey: meta.curriculumKey || meta.curriculum || exam.curriculum || '2022',
-      courseKey: meta.courseKey || meta.standardCourse || exam.grade || '',
+      originalCategory: category,
+      standardCourse: meta.standardCourse ?? '',
+      curriculum,
+      curriculumKey: meta.curriculumKey ?? curriculum,
+      courseKey: meta.courseKey ?? '',
       standardUnitKey: suKey,
       standardUnit,
       standardUnitOrder,
-      subUnitKey,
+      subUnitKey: subKey,
       subUnit,
       subUnitConfidence: 'candidate_evidence',
       subUnitClassificationDepth: 'complete_candidate',
-      conceptClusterKey: meta.conceptClusterKey || '',
+      conceptClusterKey: meta.conceptClusterKey ?? '',
       questionType,
       layoutTag: 'grid',
-      tags,
+      tags: [questionType, subUnit].filter(Boolean),
       wide: false,
       content: q.content,
-      choices: q.choices || [],
+      choices: q.choices,
       answer: q.answer,
       solution: q.solution,
       score: q.score,
       points: q.score,
-      difficultyBucket: Number(meta.difficultyBucket || 1),
+      difficultyBucket: meta.difficultyBucket === undefined || meta.difficultyBucket === '' ? null : Number(meta.difficultyBucket),
       problemTypeKey,
       templateKey,
-      crossConceptKeys: meta.crossConceptKeys || [],
-      conditionKeys: meta.conditionKeys || [],
-      integrationPattern: meta.integrationPattern || 'NONE',
+      crossConceptKeys: meta.crossConceptKeys ?? [],
+      conditionKeys: meta.conditionKeys ?? [],
+      integrationPattern: meta.integrationPattern ?? '',
+      sourceQid: meta.sourceQid === undefined || meta.sourceQid === '' ? null : Number(meta.sourceQid),
+      variationType: meta.variationType ?? '',
     };
+    if (problemPlanRef) qItem.problemPlanRef = problemPlanRef;
+    questionBank.push(orderItem(qItem));
 
-    if (matchedRpmRow) {
-      qItem.rpmPrimaryL1 = matchedRpmRow.rpmPath.majorUnit;
-      qItem.rpmPrimaryL2 = matchedRpmRow.rpmPath.midUnit;
-      qItem.rpmPrimaryL3 = matchedRpmRow.rpmPath.l3;
-      qItem.rpmPrimaryL4 = matchedRpmRow.rpmPath.l4;
-      qItem.rpmPrimaryRecordId = matchedRpmRow.id;
-    }
+    const missing = TRACKED_FIELDS.filter(f => empty(f === 'difficultyConfidence' ? meta.difficultyConfidence : qItem[f]));
+    for (const f of missing) incomplete[f] = (incomplete[f] || 0) + 1;
+    if (missing.length) incompleteByQid[qid] = missing;
 
-    qItem.sourceQid = Number(meta.sourceQid || qid);
-    qItem.variationType = meta.variationType || 'STRICT_VARIANT';
+    const after = {};
+    for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder',
+      'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys',
+      'integrationPattern', 'level', 'difficultyBucket']) after[f] = qItem[f];
+    after.difficultyConfidence = meta.difficultyConfidence ?? '';
+    after.difficultyBoundaryFlag = meta.difficultyBoundaryFlag ?? '';
+    after.sourceQid = qItem.sourceQid;
+    after.variationType = qItem.variationType;
 
-    if (problemPlanRef) {
-      qItem.problemPlanRef = problemPlanRef;
-    }
-
-    questionBank.push(qItem);
-
-    // Register Request Item
-    const targetSourceJsPath = path.join('archive/exams', relSourceDir, jsFileName).replaceAll('\\', '/');
-    const questionUid = questionUidForSource(targetSourceJsPath, qid);
-
-    const afterBlock = {
-      standardCourse: qItem.standardCourse,
-      curriculum: qItem.curriculum,
-      curriculumKey: qItem.curriculumKey,
-      courseKey: qItem.courseKey,
-      standardUnitKey: qItem.standardUnitKey,
-      standardUnit: qItem.standardUnit,
-      standardUnitOrder: qItem.standardUnitOrder,
-      subUnitKey: qItem.subUnitKey,
-      subUnit: qItem.subUnit,
-      conceptClusterKey: qItem.conceptClusterKey,
-      problemTypeKey: qItem.problemTypeKey,
-      templateKey: qItem.templateKey,
-      crossConceptKeys: qItem.crossConceptKeys,
-      conditionKeys: qItem.conditionKeys,
-      integrationPattern: qItem.integrationPattern,
-      level: qItem.level,
-      difficultyBucket: qItem.difficultyBucket,
-      difficultyConfidence: meta.difficultyConfidence || 'high',
-      difficultyBoundaryFlag: meta.difficultyBoundaryFlag || 'NONE',
-    };
-
-    if (matchedRpmRow) {
-      afterBlock.rpmPrimaryL1 = qItem.rpmPrimaryL1;
-      afterBlock.rpmPrimaryL2 = qItem.rpmPrimaryL2;
-      afterBlock.rpmPrimaryL3 = qItem.rpmPrimaryL3;
-      afterBlock.rpmPrimaryL4 = qItem.rpmPrimaryL4;
-      afterBlock.rpmPrimaryRecordId = qItem.rpmPrimaryRecordId;
-    }
-
-    afterBlock.sourceQid = qItem.sourceQid;
-    afterBlock.variationType = qItem.variationType;
-
-    const regItem = {
-      questionUid,
+    registerItems.push({
+      questionUid: questionUidForSource(targetSourceJsPath, qid),
       sourceOrdinal: qid,
       sourceQid: qItem.sourceQid,
       before: null,
-      after: afterBlock,
-      primaryMethod: meta.primaryMethod || '',
-      decisiveStep: meta.decisiveStep || '',
-      difficultyConfidence: meta.difficultyConfidence || 'high',
-      difficultyBoundaryFlag: meta.difficultyBoundaryFlag || 'NONE',
-      difficultyReason: meta.difficultyReason || '',
-      ptTplCandidate: meta.ptTplCandidate || {
-        problemTypeKey: candidatePt || null,
-        templateKey: candidateTpl || null,
-      },
-      hold: meta.hold || '',
+      after,
+      primaryMethod: meta.primaryMethod ?? '',
+      decisiveStep: meta.decisiveStep ?? '',
+      difficultyConfidence: after.difficultyConfidence,
+      difficultyBoundaryFlag: after.difficultyBoundaryFlag,
+      difficultyReason: meta.difficultyReason ?? '',
+      ptTplCandidate: meta.ptTplCandidate ?? { problemTypeKey: candPt || null, templateKey: candTpl || null },
+      hold: meta.hold ?? '',
       reason: meta.hold
         ? `HOLD: ${meta.hold}`
         : meta.newKeyProposal
-        ? `PROPOSAL: ${JSON.stringify(meta.newKeyProposal)}`
-        : 'SOURCE CANDIDATE: converted from markdown',
-    };
+          ? `PROPOSAL: ${JSON.stringify(meta.newKeyProposal)}`
+          : 'SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)',
+    });
 
-    registerItems.push(regItem);
-
-    // 4Slot Item
     if (meta.item4slot) {
       const i4 = meta.item4slot;
-      const slots = i4.slots || (i4.given || i4.goal || i4.method || i4.condition ? {
-        given: i4.given || [],
-        goal: i4.goal || [],
-        method: i4.method || [],
-        condition: i4.condition || [],
-      } : { given: [], goal: [], method: [], condition: [] });
-
+      const slots = i4.slots || { given: i4.given || [], goal: i4.goal || [], method: i4.method || [], condition: i4.condition || [] };
       fourSlotItems.push({
         sourceOrdinal: qid,
-        format: i4.format || (questionType === '객관식' ? '단일 정답' : '단답'),
+        format: i4.format ?? '',
         slots,
         steps: i4.steps || [],
         scenarioNote: i4.scenarioNote || '',
@@ -721,24 +473,11 @@ export function convertSimilarExam({
         review: { status: 'UNREVIEWED' },
       });
     }
-  }
+  });
 
-  // Generate JS code
-  const jsLines = [
-    `window.examTitle = ${JSON.stringify(stem)};`,
-    `window.examDisplayTitle = ${JSON.stringify(examDisplayTitle)};`,
-    '',
-    'window.questionBank = [',
-    questionBank
-      .map(q => JSON.stringify(q, null, 2).split('\n').map(l => '  ' + l).join('\n'))
-      .join(',\n'),
-    '];\n',
-  ];
-  const jsContent = jsLines.join('\n').replace(/\r\n/g, '\n');
+  const jsContent = serializeBank(stem, examDisplayTitle, questionBank);
   const sourceBlobSha1 = gitBlobSha1(jsContent);
 
-  // Generate Register Request doc
-  const targetSourceJsPath = path.join('archive/exams', relSourceDir, jsFileName).replaceAll('\\', '/');
   const metaRegisterDoc = {
     schemaVersion: 'archive-reviewed-exam-meta-register-request-v2',
     requestId: `${stem}-candidate-v1`,
@@ -746,105 +485,56 @@ export function convertSimilarExam({
     sourceArchiveFile: targetSourceJsPath,
     expectedSourceBlobSha1: sourceBlobSha1,
     expectedQuestionCount: questionBank.length,
-    approval: {
-      type: 'CANDIDATE_CREATION_GATE',
-      metadataReviewed: false,
-      reviewStatus: 'review_required',
-      reviewPassCount: 0,
-      evidenceRefs: [],
-    },
+    approval: { type: 'CANDIDATE_CREATION_GATE', metadataReviewed: false, reviewStatus: 'review_required', reviewPassCount: 0, evidenceRefs: [] },
     registryChanges: [],
     items: registerItems,
   };
 
-  // Check 4Slot completeness
+  // 4칸은 용어만 있고 출처 인용이 없으면 만들지 않는다 (지어내서 채우지 않는다).
   let fourSlotDoc = null;
-  let isFourSlotComplete = true;
-  if (fourSlotItems.length === questionBank.length) {
+  let isFourSlotComplete = fourSlotItems.length === questionBank.length && fourSlotItems.length > 0;
+  if (isFourSlotComplete) {
     for (const item of fourSlotItems) {
-      const allSlots = [
-        ...(item.slots.given || []),
-        ...(item.slots.goal || []),
-        ...(item.slots.method || []),
-        ...(item.slots.condition || []),
-      ];
-      // Check if slot items have quote/src and are not empty
-      const hasQuotes = allSlots.length > 0 && allSlots.every(s => s && s.src && s.quote);
-      if (!hasQuotes || !item.format) {
-        isFourSlotComplete = false;
-        break;
-      }
+      const all = ['given', 'goal', 'method', 'condition'].flatMap(k => item.slots[k] || []);
+      if (!item.format || !all.length || !all.every(s => s && typeof s === 'object' && s.src && s.quote)) { isFourSlotComplete = false; break; }
     }
-  } else {
-    isFourSlotComplete = false;
   }
-
   if (isFourSlotComplete) {
     fourSlotDoc = {
       schemaVersion: 'archive-meta-4slot-v0',
-      sourceArchiveFile: targetSourceJsPath,
+      sourceArchiveFile: targetSourceJsPath.replace(/^archive\/exams\//, ''),
       sourceGitBlobSha: sourceBlobSha1,
-      dictionaryVersion: 'term-dict-v1.6-2026-11-04',
-      judgedBy: {
-        agent: 'similar-md-importer',
-        at: exam.generatedAt || new Date().toISOString().slice(0, 10),
-      },
+      dictionaryVersion: dictionary.version,
+      judgedBy: { agent: 'similar-md-importer', at: exam.generatedAt || '' },
       candidates: [],
-      selfCheck: {
-        note: '일체형 마크다운 변환 산출물(UNREVIEWED)',
-      },
+      selfCheck: { note: '일체형 마크다운 변환 산출물(UNREVIEWED)' },
       items: fourSlotItems,
     };
   }
 
-  // 3. Validation
-  const validation = validateConvertedExam({
-    exam,
-    questions,
-    questionBank,
-    metaRegisterDoc,
-    fourSlotDoc,
-    plans: plansToWrite,
-    repoRoot,
-  });
+  const validation = validateConvertedExam({ exam, questionBank, metaRegisterDoc, fourSlotDoc, plans: plansToWrite, repoRoot });
+  validation.errors.unshift(...preErrors);
+  validation.valid = validation.errors.length === 0;
 
-  if (missingMasterKeys.length > 0) {
-    validation.warnings.push(
-      `MISSING_MASTER_KEYS: ${missingMasterKeys.map(k => `Q${k.qid}:${k.type}=${k.key}`).join(', ')}`
-    );
-  }
+  const holdReasons = [];
+  if (unitHoldQids.length) holdReasons.push(`UNIT_KEY_MISSING_OR_UNKNOWN: ${unitHoldQids.map(k => `Q${k.qid}=${k.key}`).join(', ')}`);
+  if (sourceMetaUnreadable.length) holdReasons.push(`SOURCE_META_UNREADABLE: Q${sourceMetaUnreadable.map(s => s.qid).join(', Q')}`);
+  const examStatus = { releasable: holdReasons.length === 0, status: holdReasons.length ? '출고 보류' : '변환 완료', holdReasons };
 
-  // 4. Write files if valid and requested
   const writtenFiles = [];
   if (validation.valid && writeFiles) {
     fs.mkdirSync(targetDir, { recursive: true });
-
-    // 1. JS file
-    const jsPath = path.join(targetDir, jsFileName);
-    fs.writeFileSync(jsPath, jsContent, 'utf8');
-    writtenFiles.push(jsPath);
-
-    // 2. Meta register json
-    const metaPath = path.join(targetDir, metaRegisterFileName);
-    fs.writeFileSync(metaPath, JSON.stringify(metaRegisterDoc, null, 2) + '\n', 'utf8');
-    writtenFiles.push(metaPath);
-
-    // 3. 4Slot json (if complete)
-    if (fourSlotDoc) {
-      const fourSlotPath = path.join(targetDir, fourSlotFileName);
-      fs.writeFileSync(fourSlotPath, JSON.stringify(fourSlotDoc, null, 2) + '\n', 'utf8');
-      writtenFiles.push(fourSlotPath);
-    }
-
-    // 4. Plans
-    if (plansToWrite.length > 0) {
-      const plansDir = path.join(targetDir, plansSubdirName);
-      fs.mkdirSync(plansDir, { recursive: true });
-      for (const p of plansToWrite) {
-        const pPath = path.join(plansDir, p.fileName);
-        fs.writeFileSync(pPath, p.content + '\n', 'utf8');
-        writtenFiles.push(pPath);
-      }
+    const put = (name, text) => {
+      const p = path.join(targetDir, name);
+      fs.writeFileSync(p, text, 'utf8');
+      writtenFiles.push(p);
+    };
+    put(jsFileName, jsContent);
+    put(metaRegisterFileName, JSON.stringify(metaRegisterDoc, null, 2) + '\n');
+    if (fourSlotDoc) put(fourSlotFileName, JSON.stringify(fourSlotDoc, null, 2) + '\n');
+    if (plansToWrite.length) {
+      fs.mkdirSync(path.join(targetDir, plansSubdirName), { recursive: true });
+      for (const p of plansToWrite) put(path.join(plansSubdirName, p.fileName), p.content + '\n');
     }
   }
 
@@ -852,76 +542,52 @@ export function convertSimilarExam({
     stem,
     exam,
     questionCount: questionBank.length,
-    totalScore: questionBank.reduce((a, b) => a + (b.points || b.score || 0), 0),
+    totalScore: Math.round(questionBank.reduce((a, b) => a + (b.points || 0), 0) * 100) / 100,
     validation,
+    examStatus,
     writtenFiles,
     stats: {
-      countRpmMatched,
-      countRpmUnmatched,
+      incompleteFields: incomplete,
+      incompleteByQid,
+      sourceMetaUnreadable,
       countPtTplMatched,
       countPtTplCleared,
       countNewKeyProposals,
       isFourSlotComplete,
-      figureRequiredQuestions,
+      figureMentionsWithoutPlan: figureMentions,
     },
-    artifacts: {
-      jsContent,
-      metaRegisterDoc,
-      fourSlotDoc,
-      plansToWrite,
-    },
+    artifacts: { jsContent, metaRegisterDoc, fourSlotDoc, plansToWrite },
   };
 }
 
-// CLI entry point
+// CLI
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename)) {
   const args = process.argv.slice(2);
   let mdPath = null;
   let outDir = null;
-  let unescape = false;
   let dryRun = false;
-
+  let allow = false;
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--out-dir' && args[i + 1]) {
-      outDir = args[++i];
-    } else if (args[i] === '--unescape') {
-      unescape = true;
-    } else if (args[i] === '--dry-run') {
-      dryRun = true;
-    } else if (!args[i].startsWith('--') && !mdPath) {
-      mdPath = args[i];
-    }
+    if (args[i] === '--out-dir' && args[i + 1]) outDir = args[++i];
+    else if (args[i] === '--dry-run') dryRun = true;
+    else if (args[i] === '--allow-unreadable-source-meta') allow = true;
+    else if (!args[i].startsWith('--') && !mdPath) mdPath = args[i];
   }
-
   if (!mdPath) {
-    console.error('Usage: node similar-md-to-js.mjs <md-file> [--out-dir <dir>] [--unescape] [--dry-run]');
+    console.error('Usage: node similar-md-to-js.mjs <md-file> [--out-dir <dir>] [--dry-run] [--allow-unreadable-source-meta]');
     process.exit(1);
   }
-
   try {
-    const result = convertSimilarExam({
-      mdPath,
-      writeFiles: !dryRun,
-      outDir,
-      unescape,
-    });
-
-    console.log(`Converted: ${result.stem}`);
-    console.log(`  Questions: ${result.questionCount}, Total score: ${result.totalScore}`);
-    console.log(`  Validation: ${result.validation.valid ? 'PASS' : 'FAIL'}`);
-    if (result.validation.errors.length) {
-      console.error('  Errors:', result.validation.errors);
-    }
-    if (result.validation.warnings.length) {
-      console.warn('  Warnings:', result.validation.warnings);
-    }
-    if (result.writtenFiles.length) {
-      console.log('  Written files:');
-      for (const f of result.writtenFiles) console.log(`    - ${f}`);
-    }
-    if (!result.validation.valid) {
-      process.exit(2);
-    }
+    const r = convertSimilarExam({ mdPath, writeFiles: !dryRun, outDir, allowUnreadableSourceMeta: allow });
+    console.log(`Converted: ${r.stem}`);
+    console.log(`  Questions: ${r.questionCount}, Total score: ${r.totalScore}`);
+    console.log(`  Validation: ${r.validation.valid ? 'PASS' : 'FAIL'}   Status: ${r.examStatus.status}`);
+    if (r.examStatus.holdReasons.length) console.log('  Hold reasons:', r.examStatus.holdReasons);
+    if (Object.keys(r.stats.incompleteFields).length) console.log('  미완 칸(문항 수):', r.stats.incompleteFields);
+    if (r.validation.errors.length) console.error('  Errors:', r.validation.errors);
+    if (r.validation.warnings.length) console.warn('  Warnings:', r.validation.warnings);
+    for (const f of r.writtenFiles) console.log(`    - ${f}`);
+    if (!r.validation.valid) process.exit(2);
   } catch (err) {
     console.error(`ERROR: ${err.message}`);
     process.exit(1);

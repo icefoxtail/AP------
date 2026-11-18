@@ -10,334 +10,175 @@ import {
   unescapeMarkdown,
   parseChoices,
   parseSimilarMd,
+  parseJsonBlock,
   convertSimilarExam,
   gitBlobSha1,
 } from '../archive/tools/similar-md-to-js.mjs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const repoRoot = path.resolve(__dirname, '..');
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-test('unescapeMarkdown: unescapes Google Docs markdown backslash escapes by one layer', () => {
-  const escaped = [
-    '\\# 제목',
-    '\\_일체형',
-    '\\[3점\\]',
-    '\\- 형식: 객관식',
-    '\\`code\\`',
-    '$\\overline{AB}$',
-    '$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$',
-    '\\$x \\- y \\= 2\\$',
-  ].join('\n');
+import { googleEscape, buildMd, baseMeta, q1, q2 } from './helpers/similar-md-fixture.mjs';
 
-  const unescaped = unescapeMarkdown(escaped);
+function convertTo(md, extra = {}) {
+  const outDir = fs.mkdtempSync(path.join(os.tmpdir(), 'sim-md-'));
+  const result = convertSimilarExam({ mdContent: md, repoRoot, writeFiles: true, outDir, ...extra });
+  return { result, outDir };
+}
+const loadBank = file => {
+  const ctx = { window: {} };
+  vm.createContext(ctx);
+  new vm.Script(fs.readFileSync(file, 'utf8')).runInContext(ctx);
+  return JSON.parse(JSON.stringify(ctx.window.questionBank));
+};
 
-  assert.equal(unescaped, [
-    '# 제목',
-    '_일체형',
-    '[3점]',
-    '- 형식: 객관식',
-    '`code`',
-    '$\\overline{AB}$',
-    '$\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$',
-    '$x - y = 2$',
-  ].join('\n'));
+test('unescapeMarkdown: 구글 원형 입력(\\$ \\= \\+ \\_ \\\\frac)을 한 겹만 벗긴다', () => {
+  assert.equal(unescapeMarkdown('\\$x \\+ y \\= 2\\$ \\_a \\[3점\\] \\- \\# \\< \\>'), '$x + y = 2$ _a [3점] - # < >');
+  assert.equal(unescapeMarkdown('\\$\\\\frac{1}{2}\\$'), '$\\frac{1}{2}$');
+  assert.equal(unescapeMarkdown('\\$\\\\overline{AB}\\$'), '$\\overline{AB}$');
+  // 행렬 줄바꿈 \\ 는 구글에서 \\\\ 로 나온다
+  assert.equal(unescapeMarkdown('1\\&2\\\\\\\\3'), '1\\&2\\\\3');
+  // 이미 벗은 글은 건드리지 않는다 (\o 같은 명령은 그대로)
+  assert.equal(unescapeMarkdown('\\overline{AB}'), '\\overline{AB}');
+  assert.equal(googleEscape('$\\frac{1}{2}=x$'), '\\$\\\\frac\\{1\\}\\{2\\}\\=x\\$');
+  assert.equal(unescapeMarkdown(googleEscape('$a_1\\neq b+c-d$ [3점] (1). x<y|z!')), '$a_1\\neq b+c-d$ [3점] (1). x<y|z!');
 });
 
-test('parseChoices: correctly parses 5 choices and handles subjective/none', () => {
-  const rawMultiple = '① $x+1$ ② $x-1$ ③ $2x$ ④ $3x$ ⑤ $4x$';
-  const choices = parseChoices(rawMultiple);
-  assert.deepEqual(choices, ['$x+1$', '$x-1$', '$2x$', '$3x$', '$4x$']);
-
-  const multiline = `
-    ① $1$
-    ② $2$
-    ③ $3$
-    ④ $4$
-    ⑤ $5$
-  `;
-  assert.deepEqual(parseChoices(multiline), ['$1$', '$2$', '$3$', '$4$', '$5$']);
-
+test('parseChoices: 보기 5개, 서답형은 빈 배열', () => {
+  assert.deepEqual(parseChoices('① $x+1$ ② $x-1$ ③ $2x$ ④ $3x$ ⑤ $4x$'), ['$x+1$', '$x-1$', '$2x$', '$3x$', '$4x$']);
+  assert.deepEqual(parseChoices('\n① $1$\n② $2$\n③ $3$\n④ $4$\n⑤ $5$\n'), ['$1$', '$2$', '$3$', '$4$', '$5$']);
   assert.deepEqual(parseChoices('없음'), []);
   assert.deepEqual(parseChoices(''), []);
 });
 
-test('convertSimilarExam: converts a small sample with objective, subjective, and plan questions', () => {
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'sim-md-test-'));
+test('parseJsonBlock: 한 번만 읽고, 깨진 LaTeX는 고치지 않고 던진다', () => {
+  assert.deepEqual(parseJsonBlock('{"a": "$\\\\frac{1}{2}$"}'), { a: '$\\frac{1}{2}$' });
+  // 구글이 코드 블록 안까지 이스케이프한 경우: \$ 와 \\\\frac
+  assert.deepEqual(parseJsonBlock('{"a": "\\$\\\\\\\\frac{1}{2}\\$"}'), { a: '$\\frac{1}{2}$' });
+  // 역슬래시를 하나만 쓴 \frac \times \neq \beta 는 JSON 에서 폼피드·탭·줄바꿈·백스페이스로 둔갑하므로 실패해야 한다
+  for (const bad of ['{"a": "$\\frac{1}{2}$"}', '{"a": "$2\\times 3$"}', '{"a": "$a \\neq b$"}', '{"a": "$\\beta$"}', '{"a": "$\\alpha$"}']) {
+    assert.throws(() => parseJsonBlock(bad), /JSON|LaTeX/, bad);
+  }
+});
 
-  const sampleMd = `\`\`\`json:exam
-{
-  "stem": "99_테스트고_1학기_기말_고1_유사",
-  "sourceArchiveFile": "original/high/h1/1final/99_테스트고_1학기_기말_고1_기출.js",
-  "examFolder": "1final",
-  "grade": "고1",
-  "curriculum": "2022",
-  "questionCount": 3,
-  "totalScore": 10,
-  "generatedAt": "2026-11-18"
-}
-\`\`\`
+test('convertSimilarExam: 구글 원형 입력을 원문 그대로 복원하고 형식을 지킨다', () => {
+  const md = buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, q2] });
+  assert.ok(md.includes('\\$'), '입력이 구글 이스케이프 형태여야 한다');
+  const { result, outDir } = convertTo(md);
+  try {
+    assert.equal(result.validation.valid, true, result.validation.errors.join('\n'));
+    assert.equal(result.questionCount, 2);
+    assert.equal(result.totalScore, 10);
+    const bank = loadBank(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.js'));
+    assert.equal(bank.length, 2);
+    // 본문은 원문과 한 글자도 다르지 않아야 한다
+    assert.equal(bank[0].content, q1.content);
+    assert.equal(bank[0].solution, q1.solution);
+    assert.deepEqual(bank[0].choices, q1.choices);
+    assert.equal(bank[0].answer, '③');
+    assert.equal(bank[1].questionType, '단답형');
+    assert.deepEqual(bank[1].choices, []);
+    assert.equal(bank[0].layoutTag, 'grid');
+    assert.equal(bank[0].wide, false);
+    assert.equal(bank[0].problemPlanRef, undefined);
+    for (const q of bank) assert.doesNotMatch(JSON.stringify(q), /[\u0000-\u0009\u000b-\u001f]/);
 
-## Q01
-- 형식: 객관식
-- 배점: 3
-### 발문
-두 다항식의 연산 문제이다. $A+B$의 값을 구하면? [3점]
-### 선지
-① $x$ ② $2x$ ③ $3x$ ④ $4x$ ⑤ $5x$
-### 정답
-②
-### 해설
-$A$와 $B$를 더하면 다음과 같다.
-$$A+B = 2x$$
-따라서 정답은 ②이다.
-\`\`\`json:plan
-"NONE"
-\`\`\`
-\`\`\`json:meta
-{
-  "sourceQid": 1,
-  "variationType": "NUMERIC",
-  "standardCourse": "공통수학1",
-  "courseKey": "공통수학1",
-  "curriculum": "2022",
-  "standardUnitKey": "H22-C-09",
-  "subUnitKey": "H22-C-09-CORE",
-  "conceptClusterKey": "09-CORE",
-  "primaryMethod": "두 식을 직접 더한다.",
-  "decisiveStep": "$A+B=2x$",
-  "rpm": {
-    "majorUnit": "적분법",
-    "midUnit": "여러 가지 적분법",
-    "l3": "여러 함수의 부정적분",
-    "l4": "지수·로그함수"
-  },
-  "ptTplCandidate": {
-    "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
-    "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT",
-    "why": "행렬 기본 연산"
-  },
-  "crossConceptKeys": [],
-  "conditionKeys": [],
-  "integrationPattern": "NONE",
-  "difficultyBucket": 1,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
-  "difficultyReason": "기본 덧셈 연산 한 단계",
-  "level": "하",
-  "item4slot": {
-    "format": "단일 정답",
-    "slots": {
-      "given": [{ "term": "행렬", "src": "stem", "quote": "두 다항식의 연산 문제이다." }],
-      "goal": [{ "term": "값", "src": "stem", "quote": "A+B의 값을 구하면" }],
-      "method": [{ "term": "덧셈", "src": "solution", "quote": "더하면", "evidenceType": "NAMED" }],
-      "condition": []
-    }
-  },
-  "hold": ""
-}
-\`\`\`
+    // RPM 은 변환기가 정하지 않는다
+    assert.equal(Object.keys(bank[0]).some(k => k.startsWith('rpmPrimary')), false);
 
-## Q02
-- 형식: 서답형
-- 배점: 3
-### 발문
-이차방정식의 근을 구하시오.
-### 선지
-없음
-### 정답
-$x=3$
-### 해설
-인수분해하면 다음과 같다.
-$$(x-3)^2 = 0$$
-따라서 $x=3$이다.
-\`\`\`json:plan
-"NONE"
-\`\`\`
-\`\`\`json:meta
-{
-  "sourceQid": 2,
-  "variationType": "NUMERIC",
-  "standardCourse": "공통수학1",
-  "courseKey": "공통수학1",
-  "curriculum": "2022",
-  "standardUnitKey": "H22-C-09",
-  "subUnitKey": "H22-C-09-CORE",
-  "conceptClusterKey": "09-CORE",
-  "primaryMethod": "인수분해하여 중근을 구한다.",
-  "decisiveStep": "$x=3$",
-  "rpm": {
-    "majorUnit": "적분법",
-    "midUnit": "여러 가지 적분법",
-    "l3": "여러 함수의 부정적분",
-    "l4": "지수·로그함수"
-  },
-  "ptTplCandidate": {
-    "problemTypeKey": "PT_NON_EXISTENT_KEY_123",
-    "templateKey": "TPL_NON_EXISTENT_KEY_456",
-    "why": "사전에 없는 키 테스트"
-  },
-  "crossConceptKeys": [],
-  "conditionKeys": [],
-  "integrationPattern": "NONE",
-  "difficultyBucket": 2,
-  "difficultyConfidence": "high",
-  "difficultyBoundaryFlag": "NONE",
-  "difficultyReason": "인수분해 적용",
-  "level": "중",
-  "item4slot": {
-    "format": "단답",
-    "slots": {
-      "given": [{ "term": "이차방정식", "src": "stem", "quote": "이차방정식의" }],
-      "goal": [{ "term": "근", "src": "stem", "quote": "근을 구하시오" }],
-      "method": [{ "term": "인수분해", "src": "solution", "quote": "인수분해하면", "evidenceType": "NAMED" }],
-      "condition": []
-    }
-  },
-  "hold": ""
-}
-\`\`\`
+    const metaDoc = JSON.parse(fs.readFileSync(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.meta-q01-q02.json'), 'utf8'));
+    assert.equal(metaDoc.schemaVersion, 'archive-reviewed-exam-meta-register-request-v2');
+    assert.equal(metaDoc.expectedSourceBlobSha1, gitBlobSha1(fs.readFileSync(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.js'))));
+    assert.equal(metaDoc.approval.reviewStatus, 'review_required');
+    assert.equal(metaDoc.approval.reviewPassCount, 0);
+    assert.equal(new Set(metaDoc.items.map(i => i.questionUid)).size, 2);
+    assert.equal(result.examStatus.releasable, true);
+  } finally {
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
+});
 
-## Q03
-- 형식: 서답형
-- 배점: 4
-### 발문
-다음 그림을 보고 풀이 과정을 서술하시오.
-### 선지
-없음
-### 정답
-10
-### 해설
-피타고라스 정리에 의해 빗변의 길이를 구한다.
-풀이 과정: $6^2 + 8^2 = 100 = 10^2$이므로 답은 10이다.
-\`\`\`json:plan
-{
-  "type": "geometry",
-  "description": "직각삼각형 ABC",
-  "elements": []
-}
-\`\`\`
-\`\`\`json:meta
-{
-  "sourceQid": 3,
-  "variationType": "CONTEXT",
-  "standardCourse": "공통수학1",
-  "courseKey": "공통수학1",
-  "curriculum": "2022",
-  "standardUnitKey": "H22-C-09",
-  "subUnitKey": "H22-C-09-CORE",
-  "conceptClusterKey": "09-CORE",
-  "primaryMethod": "피타고라스 정리로 빗변을 구함",
-  "decisiveStep": "빗변은 10이다",
-  "rpm": {
-    "majorUnit": "적분법",
-    "midUnit": "여러 가지 적분법",
-    "l3": "여러 함수의 부정적분",
-    "l4": "지수·로그함수"
-  },
-  "ptTplCandidate": {
-    "problemTypeKey": null,
-    "templateKey": null,
-    "why": ""
-  },
-  "crossConceptKeys": [],
-  "conditionKeys": [],
-  "integrationPattern": "NONE",
-  "difficultyBucket": 3,
-  "difficultyConfidence": "medium",
-  "difficultyBoundaryFlag": "B23",
-  "difficultyReason": "서술형 풀이",
-  "level": "상",
-  "item4slot": {
-    "format": "서술",
-    "slots": {
-      "given": [{ "term": "직각삼각형", "src": "stem", "quote": "그림을 보고" }],
-      "goal": [{ "term": "값", "src": "stem", "quote": "서술하시오" }],
-      "method": [{ "term": "피타고라스 정리", "src": "solution", "quote": "피타고라스 정리에 의해", "evidenceType": "NAMED" }],
-      "condition": []
-    }
-  },
-  "hold": ""
-}
-\`\`\`
-`;
+test('convertSimilarExam: 없는 값에 기본값을 만들어 넣지 않고 미완 칸으로 센다', () => {
+  const bare = { ...q2, meta: { sourceQid: '2', standardUnitKey: 'M2-01', subUnitKey: 'M2-01-EXPONENT_LAW' } };
+  const { result, outDir } = convertTo(buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, bare] }));
+  try {
+    const bank = loadBank(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.js'));
+    const b = bank[1];
+    assert.equal(b.level, '');
+    assert.equal(b.difficultyBucket, null);
+    assert.equal(b.integrationPattern, '');
+    assert.equal(b.variationType, '');
+    assert.equal(b.standardCourse, '');
+    assert.equal(b.courseKey, '');
+    assert.ok(result.stats.incompleteFields.level >= 1);
+    assert.ok(result.stats.incompleteFields.difficultyBucket >= 1);
+    assert.ok(result.stats.incompleteByQid[2].includes('level'));
+    const reg = JSON.parse(fs.readFileSync(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.meta-q01-q02.json'), 'utf8'));
+    assert.equal(reg.items[1].after.difficultyConfidence, '');
+    assert.equal(reg.items[1].after.difficultyBoundaryFlag, '');
+  } finally {
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
+});
 
-  const result = convertSimilarExam({
-    mdContent: sampleMd,
-    repoRoot,
-    writeFiles: true,
-    outDir: tmpDir,
-  });
+test('convertSimilarExam: 단원 키가 null 이면 변환은 하되 출고 보류', () => {
+  const nullUnit = { ...q2, meta: baseMeta(2, { standardUnitKey: null, subUnitKey: null }) };
+  const { result, outDir } = convertTo(buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, nullUnit] }));
+  try {
+    assert.equal(result.validation.valid, true);
+    assert.equal(result.examStatus.releasable, false);
+    assert.equal(result.examStatus.status, '출고 보류');
+    assert.match(result.examStatus.holdReasons[0], /UNIT_KEY_MISSING/);
+    assert.equal(result.writtenFiles.length > 0, true);
+  } finally {
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
+});
 
-  assert.equal(result.stem, '99_테스트고_1학기_기말_고1_유사');
-  assert.equal(result.questionCount, 3);
-  assert.equal(result.totalScore, 10);
-  assert.equal(result.validation.valid, true);
+test('convertSimilarExam: 읽을 수 없는 원천 메타는 실패하고, 옵션을 줘야만 그 문항을 비운 채 진행한다', () => {
+  // 역슬래시 하나짜리 LaTeX (JSON 으로 읽을 수 없음)
+  const raw = '{"sourceQid": "2", "standardUnitKey": "M2-01", "primaryMethod": "$\\alpha + \\beta$"}';
+  const broken = { ...q2, metaRaw: raw };
+  const md = buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, broken] });
+  const strict = convertSimilarExam({ mdContent: md, repoRoot, writeFiles: false });
+  assert.equal(strict.validation.valid, false);
+  assert.ok(strict.validation.errors.some(e => e.startsWith('META_UNREADABLE: Q2')));
+  const lenient = convertSimilarExam({ mdContent: md, repoRoot, writeFiles: false, allowUnreadableSourceMeta: true });
+  assert.equal(lenient.validation.valid, true);
+  assert.deepEqual(lenient.stats.sourceMetaUnreadable.map(s => s.qid), [2]);
+  assert.match(lenient.examStatus.holdReasons.join(' '), /SOURCE_META_UNREADABLE/);
+  // 탭·폼피드로 둔갑하는 명령도 마찬가지
+  const tabbed = convertSimilarExam({ mdContent: buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, { ...q2, metaRaw: '{"sourceQid": "2", "decisiveStep": "$2\\times 3$"}' }] }), repoRoot, writeFiles: false });
+  assert.ok(tabbed.validation.errors.some(e => e.startsWith('META_UNREADABLE: Q2')));
+});
 
-  // Check generated JS
-  const jsFile = path.join(tmpDir, '99_테스트고_1학기_기말_고1_유사.js');
-  assert.equal(fs.existsSync(jsFile), true);
-  const jsContent = fs.readFileSync(jsFile, 'utf8');
+test('convertSimilarExam: 이스케이프 찌꺼기와 짝이 안 맞는 $ 는 실패, 환경 밖 \\\\ 는 경고만', () => {
+  const residue = { ...q2, solution: '$x = 6$ 이고 \\$ 5 이다 \\+ 4' };
+  // googleEscape 를 거치면 \\$ 가 되어 한 겹 벗겨도 \$ 가 남는다
+  const r1 = convertSimilarExam({ mdContent: buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, residue] }), repoRoot, writeFiles: false });
+  assert.ok(r1.validation.errors.some(e => e.startsWith('ESCAPE_RESIDUAL: qid 2')), r1.validation.errors.join('\n'));
 
-  // Verify JS executes and sets questionBank
-  const ctx = { window: {} };
-  vm.createContext(ctx);
-  new vm.Script(jsContent).runInContext(ctx);
+  const odd = { ...q2, solution: '$x = 6 이다.' };
+  const r2 = convertSimilarExam({ mdContent: buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, odd] }), repoRoot, writeFiles: false });
+  assert.ok(r2.validation.errors.some(e => e.startsWith('UNBALANCED_DOLLARS: qid 2')));
 
-  assert.equal(ctx.window.examTitle, '99_테스트고_1학기_기말_고1_유사');
-  assert.equal(Array.isArray(ctx.window.questionBank), true);
-  assert.equal(ctx.window.questionBank.length, 3);
+  const brk = { ...q2, solution: '$a = 1 \\\\ b = 2$ 이다.' };
+  const r3 = convertSimilarExam({ mdContent: buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, brk] }), repoRoot, writeFiles: false });
+  assert.equal(r3.validation.valid, true, r3.validation.errors.join('\n'));
+  assert.ok(r3.validation.warnings.some(w => w.startsWith('LATEX_BACKSLASH_PAIR_OUTSIDE_ENV: qid 2')));
+  assert.equal(r3.artifacts.jsContent.includes('a = 1 \\\\\\\\ b = 2'), true, '내용은 바꾸지 않는다');
+});
 
-  // Q1: objective
-  const q1 = ctx.window.questionBank[0];
-  assert.equal(q1.id, 1);
-  assert.equal(q1.questionType, '객관식');
-  assert.equal(q1.layoutTag, 'grid');
-  assert.equal(q1.wide, false);
-  assert.equal(q1.choices.length, 5);
-  assert.equal(q1.answer, '②');
-  assert.equal(q1.problemTypeKey, 'PT_H1_MATRIX_BASIC_OPERATION');
-  assert.equal(q1.templateKey, 'TPL_H1_MATRIX_BASIC_DIRECT');
-  assert.equal(q1.rpmPrimaryRecordId, 'H2-CALC-RPM-038');
-  assert.equal(q1.problemPlanRef, undefined);
-
-  // Q2: subjective 단답형, invalid PT/TPL cleared to ""
-  const q2 = ctx.window.questionBank[1];
-  assert.equal(q2.id, 2);
-  assert.equal(q2.questionType, '단답형');
-  assert.equal(q2.choices.length, 0);
-  assert.equal(q2.problemTypeKey, '');
-  assert.equal(q2.templateKey, '');
-
-  // Q3: subjective 서술형, plan exists
-  const q3 = ctx.window.questionBank[2];
-  assert.equal(q3.id, 3);
-  assert.equal(q3.questionType, '서술형');
-  assert.match(q3.problemPlanRef, /q03-problem\.plan\.json$/);
-
-  // Verify plan file exists
-  const planFile = path.join(tmpDir, '99_테스트고_1학기_기말_고1_유사_plans/q03-problem.plan.json');
-  assert.equal(fs.existsSync(planFile), true);
-
-  // Verify meta registration JSON
-  const metaFile = path.join(tmpDir, '99_테스트고_1학기_기말_고1_유사.meta-q01-q03.json');
-  assert.equal(fs.existsSync(metaFile), true);
-  const metaDoc = JSON.parse(fs.readFileSync(metaFile, 'utf8'));
-  assert.equal(metaDoc.schemaVersion, 'archive-reviewed-exam-meta-register-request-v2');
-  assert.equal(metaDoc.expectedQuestionCount, 3);
-  assert.equal(metaDoc.expectedSourceBlobSha1, gitBlobSha1(jsContent));
-  assert.equal(metaDoc.approval.type, 'CANDIDATE_CREATION_GATE');
-  assert.equal(metaDoc.approval.reviewPassCount, 0);
-
-  // Verify candidate PT/TPL preserved in metaDoc items
-  assert.equal(metaDoc.items[1].ptTplCandidate.problemTypeKey, 'PT_NON_EXISTENT_KEY_123');
-
-  // Verify 4slot JSON
-  const fourSlotFile = path.join(tmpDir, '99_테스트고_1학기_기말_고1_유사.4slot.json');
-  assert.equal(fs.existsSync(fourSlotFile), true);
-  const fourSlotDoc = JSON.parse(fs.readFileSync(fourSlotFile, 'utf8'));
-  assert.equal(fourSlotDoc.schemaVersion, 'archive-meta-4slot-v0');
-  assert.equal(fourSlotDoc.items.length, 3);
-
-  fs.rmSync(tmpDir, { recursive: true, force: true });
+test('parseSimilarMd: plan 객체가 있는 문항은 plan 파일과 problemPlanRef 를 만든다', () => {
+  const withPlan = { ...q2, plan: { type: 'geometry', description: '직각삼각형', elements: [] } };
+  const md = buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, withPlan] });
+  assert.equal(parseSimilarMd(md).questions[1].plan.type, 'geometry');
+  const { result, outDir } = convertTo(md);
+  try {
+    const bank = loadBank(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.js'));
+    assert.match(bank[1].problemPlanRef, /q02-problem\.plan\.json$/);
+    assert.equal(fs.existsSync(path.join(outDir, '99_테스트중_1학기_중간_중2_유사_plans/q02-problem.plan.json')), true);
+    assert.equal(result.validation.valid, true);
+  } finally {
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
 });
