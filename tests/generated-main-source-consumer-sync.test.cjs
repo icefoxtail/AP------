@@ -137,10 +137,12 @@ test('single writer owns complete source projection; Pages requires its exact ve
  assert.match(registration,/contents: read/);
  assert.doesNotMatch(registration,/^  push:/m,'main source registration belongs to the serialized writer');
  assert.doesNotMatch(registration,/contents:\s*write|pull-requests:\s*write|gh pr (?:create|merge)|git push/);
- const prepare=writerWorkflow.indexOf('node tools/ci/archive-registration-writer.mjs --work-dir');
- const persist=writerWorkflow.indexOf('node tools/ci/git-push-derived-with-retry.mjs');
- const persistedCheck=writerWorkflow.indexOf('node tools/ci/archive-registration-writer.mjs --check');
- const dispatch=writerWorkflow.indexOf('gh workflow run archive-pages-release.yml');
+ // The classify job (outside the lock) also runs --check and may dispatch; the order contract is the register job's.
+ const registerJob=writerWorkflow.slice(writerWorkflow.search(/^  register:/m));
+ const prepare=registerJob.indexOf('node tools/ci/archive-registration-writer.mjs --work-dir');
+ const persist=registerJob.indexOf('node tools/ci/git-push-derived-with-retry.mjs');
+ const persistedCheck=registerJob.indexOf('node tools/ci/archive-registration-writer.mjs --check');
+ const dispatch=registerJob.indexOf('gh workflow run archive-pages-release.yml');
  assert.ok(prepare>=0&&prepare<persist&&persist<persistedCheck&&persistedCheck<dispatch,
   'only the writer prepares, commits, verifies the persisted snapshot and then dispatches publication');
  assert.equal((writerWorkflow.match(/git-push-derived-with-retry\.mjs \\/g)||[]).length,1,'one controlled persistence path');

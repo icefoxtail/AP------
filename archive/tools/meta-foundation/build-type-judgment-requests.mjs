@@ -4,7 +4,7 @@
 //
 //   node archive/tools/meta-foundation/build-type-judgment-requests.mjs --results <git ref> [--results <git ref>...] \
 //        [--results-dir <local dir>] [--exams a.js,b.js | --exams-file <file>] [--limit N] [--out <repo root>] [--dry-run] [--summary-global] [--skipped-out <file>]
-//        [--allow-pack-scope-additions] [--include-receipt-rows] [--judged-base <git ref> | auto]
+//        [--allow-pack-scope-additions] [--include-receipt-rows] [--judged-base <git ref> | auto (default) | none]
 //        [--bundles <git ref> | --bundles-dir <dir>] [--bundles-only]   (new PT/TPL keys from the NEW_KEY bundle tables; implies --allow-pack-scope-additions)
 //
 // Without --out (or with --dry-run) nothing is written: only the summary is printed. With --out <dir> the request files go to
@@ -29,6 +29,7 @@ import { isLegacyPathFormulaUid } from "./reviewed-exam-registration-v2.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { loadCourseAliases, makeCourseAliases } from "./course-aliases.mjs";
 import { readBundleTables, prepareNewKeys } from "./new-type-keys.mjs";
+import { classifyMetaBinding, textFingerprint } from "./text-binding-lib.mjs";
 import { createRequire } from "node:module";
 // Text binding of a question (stem + choices; archive/question-binding.js, decision "메타 결속 지문 범위"): used to see whether the
 // question text changed since it was judged. The one definition lives in that module.
@@ -245,12 +246,15 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       // The result line's own question number must be this row's ordinal (a shifted table would put a type on the wrong question).
       if (row.no !== undefined && row.no !== null && Number(row.no) !== m.sourceOrdinal) { skip(row, "RESULT_NO_DIFFERS_FROM_SOURCE_ORDINAL", { ordinal: m.sourceOrdinal }); continue; }
       // The judgment was made on the exam as it stood at the judged base; a changed stem or choices need a new judgment.
+      // judgedQ: the question as the judge saw it when it can be found; otherwise (unverified, counted) the current one.
+      let judgedQ = q;
       if (ctx.judgedBank) {
         const old = ctx.judgedBank(row, file)?.[m.sourceOrdinal - 1];
         if (!old) stats.judgedBase.unverified++;
         else {
           stats.judgedBase.checked++;
           if (QuestionBinding.bindingSerialize(old) !== QuestionBinding.bindingSerialize(q)) { skip(row, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGMENT"); continue; }
+          judgedQ = old;
         }
       }
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
@@ -260,8 +264,9 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
           ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
       const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
-      const fp = sourceFingerprints(q);
-      items.push({ row, m, scope: picked.scope, fp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null });
+      const textFp = textFingerprint(judgedQ);
+      if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
+      items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null });
     }
     if (!items.length) continue;
     prepared.push({ file, bank, bytes, items });
@@ -303,10 +308,10 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         return { path: ctx.registry.packFiles.get(packId), before: structuredClone(before),
           after: { ...structuredClone(before), curricula: [...before.curricula, ...[...e.curricula].sort()], standardCourses: [...before.standardCourses, ...[...e.standardCourses].sort()] }, evidenceRefs: [ref] };
       }), ...(keyChanges?.registryChanges || []).map(change => ({ ...change, evidenceRefs: [ref] }))] } : {}),
-      items: items.map(({ row, m, scope, fp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
+      items: items.map(({ row, m, scope, textFp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
         before: { problemTypeKey: empty(m.problemTypeKey) ? "" : m.problemTypeKey, templateKey: empty(m.templateKey) ? "" : m.templateKey },
         after: { problemTypeKey: row.pt, ...(tplKey ? { templateKey: tplKey } : {}) },
-        rationale, scope, judgedFingerprints: fp, evidenceRefs: [ref] })) };
+        rationale, scope, textBindingFingerprint: textFp, evidenceRefs: [ref] })) };
     requests.push(request);
     files.set(`${INBOX_DIR}/${requestId}.json`, json(request));
   }
@@ -330,7 +335,7 @@ export function summarize({ requests, skipped, resultLines, commits = [], head =
 // the PT is an ACTIVE registered key, the TPL is ACTIVE with that PT as parent, and the row has no foundation taxonomy HOLD.
 // This replicates that gate (the real builder has no temporary-output mode); it is an estimate until the builder itself is run.
 export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
-  const out = { exams: 0, rows: 0, selectableBefore: 0, selectableAfter: 0, plannedRows: 0, plannedSelectable: 0, plannedHiddenStaleBinding: 0 };
+  const out = { exams: 0, rows: 0, selectableBefore: 0, selectableAfter: 0, plannedRows: 0, plannedSelectable: 0 };
   for (const file of examFiles) {
     let source; try { source = ctx.readBank(file); } catch { continue; }
     out.exams++;
@@ -338,15 +343,17 @@ export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
       const q = source.bank[m.sourceOrdinal - 1];
       if (!q) continue;
       out.rows++;
-      const bound = m.contentFingerprint === sourceFingerprints(q).contentFingerprint;
+      // Bound = the row's metadata is about today's stem+choices (the catalog rule). A planned type is bound by its own judgment, which the
+      // converter only emits for questions whose stem+choices still equal the judged text.
+      const bound = Boolean(classifyMetaBinding({ meta: m, question: q, assignmentFingerprint: sourceFingerprints(q).contentFingerprint, rebinds: ctx.rebinds ?? null }));
       // A TPL that fails its check is dropped by the catalog while the PT stays; the PT facet is what 유형 filter and the spread use.
-      const visible = (pt) => bound && m.foundationTaxonomyStatus !== "HOLD" && Boolean(text(pt)) && ctx.registry.pt.get(text(pt))?.status === "ACTIVE";
+      const visible = (pt, isBound) => isBound && m.foundationTaxonomyStatus !== "HOLD" && Boolean(text(pt)) && ctx.registry.pt.get(text(pt))?.status === "ACTIVE";
       const planned = plannedByUid.get(m.questionUid);
-      const before = visible(m.problemTypeKey);
+      const before = visible(m.problemTypeKey, bound);
       if (before) out.selectableBefore++;
-      const after = planned ? visible(planned.pt) : before;
+      const after = planned ? visible(planned.pt, true) : before;
       if (after) out.selectableAfter++;
-      if (planned) { out.plannedRows++; if (after) out.plannedSelectable++; else if (!bound) out.plannedHiddenStaleBinding++; }
+      if (planned) { out.plannedRows++; if (after) out.plannedSelectable++; }
     }
   }
   return out;
@@ -397,7 +404,7 @@ export function loadContext(root) {
 
 // ---------------------------------------------------------------- CLI
 export function parseCli(argv) {
-  const args = { results: [], resultsDir: [], exams: null, examsFile: null, limit: null, out: null, dryRun: false, summaryGlobal: false, skippedOut: null, root: here, allowPackAdditions: false, includeReceiptRows: false, judgedBase: null, bundles: null, bundlesDir: null, bundlesOnly: false,
+  const args = { results: [], resultsDir: [], exams: null, examsFile: null, limit: null, out: null, dryRun: false, summaryGlobal: false, skippedOut: null, root: here, allowPackAdditions: false, includeReceiptRows: false, judgedBase: "auto", bundles: null, bundlesDir: null, bundlesOnly: false,
     approvedBy: "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다." };
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
@@ -414,7 +421,7 @@ export function parseCli(argv) {
     else if (k === "--summary-global") args.summaryGlobal = true;
     else if (k === "--allow-pack-scope-additions") args.allowPackAdditions = true;
     else if (k === "--include-receipt-rows") args.includeReceiptRows = true;
-    else if (k === "--judged-base") args.judgedBase = value();
+    else if (k === "--judged-base") { const v = value(); args.judgedBase = v === "none" ? null : v; }
     else if (k === "--bundles") args.bundles = value();
     else if (k === "--bundles-dir") args.bundlesDir = value();
     else if (k === "--bundles-only") args.bundlesOnly = true;
@@ -447,7 +454,7 @@ export function run(args) {
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase,
     bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly };
   if (newKeys) summary.newKeys = { bundleTables: bundleOrigin, bundles: { pt: newKeys.stats.ptBundles, tpl: newKeys.stats.tplBundles }, lines: newKeys.stats.lines, ...built.stats.newKeys };
-  if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase;
+  if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
   summary.typeSelectable = { scope: "requested exams", estimate: "catalog metaHint gate replicated; builder not run", ...typeSelectable(planCtx, built.requests.map(r => r.sourceArchiveFile), planned) };
   if (args.summaryGlobal) summary.typeSelectableAllExams = { scope: "every exam in canonical metadata", ...typeSelectable(planCtx, [...ctx.rowsBySource.keys()].sort(), planned) };

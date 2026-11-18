@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import core from "../archive/archive2-core.js";
 import source from "../archive/archive2-source.js";
 import { blueprintInsertStatements } from "../apmath/worker-backup/worker/helpers/archive2-questions.js";
+import { stableStringify } from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const worker = path.join(root, "apmath/worker-backup/worker");
@@ -468,6 +469,48 @@ try {
   const secondClassAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, class_id: "class-race", student_ids: ["student-race"] });
   assert.equal(secondClassAssignment.body.saved, true);
   assert.equal(secondClassAssignment.body.assignment.archive_file, assignment.body.assignment.archive_file);
+
+  // Key-reference snapshot (image paths kept, images listed as {path, sha256, bytes}): read, assign, display-only image check.
+  {
+    const raw = directInput.papers[0].questions[0]; // as sent: paths, not data URLs
+    const stored = directDetail.body.paper.snapshot;
+    const keyQuestion = { ...stored.questions[0] };
+    for (const field of ["image", "solutionImage", "content", "question", "solution"])
+      if (typeof raw[field] === "string") keyQuestion[field] = raw[field];
+    const refs = [...new Set((JSON.stringify([keyQuestion.image, keyQuestion.solutionImage, keyQuestion.content, keyQuestion.question, keyQuestion.solution])
+      .match(/assets\/images\/[^"'\\)\s?#]+/g) || []))].sort();
+    assert.ok(refs.length >= 1, "fixture uses at least one exam image");
+    const assets = refs.map((ref) => {
+      const bytes = fs.readFileSync(path.join(root, "archive", ref));
+      return { path: ref, sha256: crypto.createHash("sha256").update(bytes).digest("hex"), bytes: bytes.length };
+    });
+    const keyJson = stableStringify({ ...stored, questions: [keyQuestion], assets });
+    assert.ok(!/data:image\//.test(keyJson), "key-reference snapshot embeds no image");
+    const parentRow = await db.prepare("SELECT * FROM archive_saved_papers WHERE id=?").bind(directId).first();
+    const keyId = uuid();
+    const keyRow = { ...parentRow, id: keyId, save_batch_id: uuid(), snapshot_json: keyJson,
+      snapshot_hash: crypto.createHash("sha256").update(keyJson).digest("hex"), save_request_hash: crypto.randomBytes(32).toString("hex") };
+    const columns = Object.keys(keyRow);
+    await db.prepare(`INSERT INTO archive_saved_papers (${columns.join(",")}) VALUES (${columns.map(() => "?").join(",")})`)
+      .bind(...columns.map((column) => keyRow[column])).run();
+    const keyDetail = await request(`archive-saved-papers/${keyId}`);
+    assert.equal(keyDetail.status, 200, JSON.stringify(keyDetail));
+    assert.deepEqual(keyDetail.body.paper.snapshot.assets, assets);
+    const keyBatchId = uuid();
+    const keyAssignment = await request("class-exam-assignments", "POST", { ...assignmentInput, saved_paper_id: keyId, assignment_batch_id: keyBatchId });
+    assert.equal(keyAssignment.body.saved, true, JSON.stringify(keyAssignment));
+    const copied = JSON.parse(keyAssignment.body.assignment.mixed_payload_json);
+    assert.deepEqual(copied.questions[0].image, keyQuestion.image, "assignment payload keeps the key; the screens resolve it to the public image address");
+    assert.ok(!/data:image\//.test(keyAssignment.body.assignment.mixed_payload_json));
+    // A malformed asset record is rejected like any other snapshot defect.
+    const malformedJson = stableStringify({ ...stored, questions: [keyQuestion], assets: [{ path: "not-an-image-path", sha256: "x", bytes: -1 }] });
+    const malformedId = uuid();
+    const malformedRow = { ...keyRow, id: malformedId, save_batch_id: uuid(), snapshot_json: malformedJson,
+      snapshot_hash: crypto.createHash("sha256").update(malformedJson).digest("hex"), save_request_hash: crypto.randomBytes(32).toString("hex") };
+    await db.prepare(`INSERT INTO archive_saved_papers (${columns.join(",")}) VALUES (${columns.map(() => "?").join(",")})`)
+      .bind(...columns.map((column) => malformedRow[column])).run();
+    assert.equal((await request(`archive-saved-papers/${malformedId}`)).status, 409);
+  }
   const priorBlueprintCount = Number((await db.prepare("SELECT COUNT(*) n FROM exam_blueprints WHERE archive_file=?").bind(assignment.body.assignment.archive_file).first()).n);
   assert.ok(priorBlueprintCount >= 1);
   const missingOtherClassWriteKey = crypto.createHash("sha256").update(JSON.stringify(["class-b", assignmentInput.exam_date, assignment.body.assignment.archive_file])).digest("hex");

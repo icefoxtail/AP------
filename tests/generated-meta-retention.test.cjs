@@ -52,6 +52,11 @@ test('missing Meta differs from explicit NONE and empty arrays',()=>{
   assert.notEqual(validateMeta(v).length,0,field);
  }
 });
+test('level is optional but a present level must be 하/중/상',()=>{
+ const {level,...noLevel}=meta;
+ assert.ok(!validateMeta(noLevel).includes('level:INVALID'));
+ assert.ok(validateMeta({...meta,level:'최상'}).includes('level:INVALID'));
+});
 test('1-5 difficulty, L4 provenance and mapping holds are enforced',()=>{
  for(const patch of [{difficultyBucket:0},{difficultyBucket:6},{difficultyBucket:'3'},
    {rpmL4Namespace:'INVALID'},{generatedL4RegistryRef:''},

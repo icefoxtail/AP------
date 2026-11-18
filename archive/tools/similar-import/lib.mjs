@@ -80,7 +80,7 @@ export function readBank(jsPath) {
 }
 
 export const ITEM_KEY_ORDER = [
-  'id', 'level', 'category', 'originalCategory', 'standardCourse', 'curriculum', 'curriculumKey', 'courseKey',
+  'id', 'category', 'originalCategory', 'standardCourse', 'curriculum', 'curriculumKey', 'courseKey',
   'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'subUnitConfidence',
   'subUnitClassificationDepth', 'conceptClusterKey', 'questionType', 'layoutTag', 'tags', 'wide', 'content',
   'choices', 'answer', 'solution', 'score', 'points', 'difficultyBucket', 'problemTypeKey', 'templateKey',
@@ -237,8 +237,11 @@ export function memberSet(courseGroups) {
   return new Set(courseGroups.flatMap(g => g.members));
 }
 
-/** 과목·교육과정 후보 표 (RPM 행, PT/TPL) */
-export function buildCourseTables({ repoRoot = DEFAULT_REPO_ROOT, courseGroups, curriculum, masters, crosswalk, taxonomy }) {
+/** 과목·교육과정 후보 표 (RPM 행, PT/TPL).
+ *  ptByUnitAny: 교육과정과 상관없이 같은 과목·같은 단원 키에 ACTIVE 로 묶인 유형 전부 (등록부 정본). 문항의 주 단원에 쓴다.
+ *  ptByUnit: 그중 이 시험의 교육과정에 묶인 것만 (다른 단원에 쓰는 좁은 목록).
+ *  extraPts: [{ problemTypeKey, standardUnitKey }] 원본 기출이 쓴 유형이 위에서 빠졌을 때 ptByUnitAny 에 더한다. */
+export function buildCourseTables({ repoRoot = DEFAULT_REPO_ROOT, courseGroups, curriculum, masters, crosswalk, taxonomy, extraPts = [] }) {
   const members = memberSet(courseGroups);
   const units = unitKeysForGroups(courseGroups, String(curriculum), masters.unitOrders);
   const unitKeys = new Set(units.map(u => u.key));
@@ -246,16 +249,24 @@ export function buildCourseTables({ repoRoot = DEFAULT_REPO_ROOT, courseGroups, 
     && (members.has(r.scope) || members.has(r.standardCourse)) && (!r.standardUnitKey || unitKeys.has(r.standardUnitKey)));
   const rpmById = new Map(rpmRows.map(r => [r.id, r]));
   const ptByUnit = new Map();
+  const ptByUnitAny = new Map();
   const ptAll = new Map();
+  const put = (map, unit, key, pt) => { if (!map.has(unit)) map.set(unit, new Map()); map.get(unit).set(key, pt); };
   for (const b of taxonomy.bindings) {
     if (b.status && b.status !== 'ACTIVE') continue;
-    if (String(b.curriculum) !== String(curriculum) || !members.has(b.standardCourse)) continue;
+    if (!members.has(b.standardCourse)) continue;
     if (!b.problemTypeKey || !unitKeys.has(b.standardUnitKey)) continue;
     const pt = taxonomy.pts.get(b.problemTypeKey);
     if (!pt) continue;
     ptAll.set(b.problemTypeKey, pt);
-    if (!ptByUnit.has(b.standardUnitKey)) ptByUnit.set(b.standardUnitKey, new Map());
-    ptByUnit.get(b.standardUnitKey).set(b.problemTypeKey, pt);
+    put(ptByUnitAny, b.standardUnitKey, b.problemTypeKey, pt);
+    if (String(b.curriculum) === String(curriculum)) put(ptByUnit, b.standardUnitKey, b.problemTypeKey, pt);
+  }
+  for (const e of extraPts) {
+    const pt = taxonomy.pts.get(e.problemTypeKey);
+    if (!pt || (pt.status && pt.status !== 'ACTIVE') || !unitKeys.has(e.standardUnitKey)) continue;
+    ptAll.set(e.problemTypeKey, pt);
+    put(ptByUnitAny, e.standardUnitKey, e.problemTypeKey, pt);
   }
   const tplByPt = new Map();
   for (const t of taxonomy.tpls.values()) {
@@ -263,8 +274,33 @@ export function buildCourseTables({ repoRoot = DEFAULT_REPO_ROOT, courseGroups, 
     if (!tplByPt.has(t.parentProblemTypeKey)) tplByPt.set(t.parentProblemTypeKey, []);
     tplByPt.get(t.parentProblemTypeKey).push(t);
   }
-  return { units, unitKeys, rpmRows, rpmById, ptByUnit, ptAll, tplByPt };
+  return { units, unitKeys, rpmRows, rpmById, ptByUnit, ptByUnitAny, ptAll, tplByPt };
 }
+
+// ---------- 원본 기출 · 문항 지문(fingerprint) · 가이드 예시 ----------
+/** 유사 시험지에 대응하는 원본 기출 파일의 저장소 경로(archive/exams/original/...)를 찾는다. 없으면 null.
+ *  우선순위: 원천 마크다운 머리글의 sourceArchiveFile > 유사 파일 위치 + 이름 규칙(_유사N -> _기출 / _수학). */
+export function findOriginalExamFile({ repoRoot = DEFAULT_REPO_ROOT, stem, targetSourceFile = null, mdSourceFile = null }) {
+  const exists = rel => fs.existsSync(path.join(repoRoot, rel));
+  const out = [];
+  if (mdSourceFile) out.push(mdSourceFile.startsWith('archive/') ? mdSourceFile : `archive/exams/${mdSourceFile}`);
+  const m = /^archive\/exams\/similar\/(.+)\/[^/]+$/.exec(String(targetSourceFile || '').replaceAll('\\', '/'));
+  if (m) for (const suf of ['_기출', '_수학', '']) out.push(`archive/exams/original/${m[1]}/${stem.replace(/_유사\d*$/, suf)}.js`);
+  return out.find(exists) || null;
+}
+/** 판정 틀을 만든 시점의 문항 지문. 이 값이 현재 JS 의 문항과 다르면 판정은 다른 문항(또는 옛 지문)의 것이다. */
+export function itemFingerprint(item) {
+  return gitBlobSha1(JSON.stringify([item.content ?? '', item.choices ?? [], item.answer ?? '', item.solution ?? ''])).slice(0, 16);
+}
+/** JUDGMENT_GUIDE.md 의 예시 판정(첫 json 블록). 예시 글을 그대로 낸 판정을 잡는 데 쓴다. */
+export function loadGuideExample() {
+  const guide = fs.readFileSync(path.join(__dirname, 'JUDGMENT_GUIDE.md'), 'utf8');
+  const m = /```json\r?\n([\s\S]*?)\r?\n```/.exec(guide);
+  return m ? JSON.parse(m[1]) : null;
+}
+
+/** 난이도 경계 플래그 (difficultyBucket 5단계 운영규칙): 두 단계 사이에서 애매하면 낮은 쪽을 고르고 그 경계를 적는다. */
+export const BOUNDARY_FLAGS = ['NONE', 'B12', 'B23', 'B34', 'B45', 'UNKNOWN'];
 
 // ---------- 그림 ----------
 export function itemHasImage(item) {

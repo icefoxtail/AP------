@@ -38,8 +38,8 @@
 3. **유사문항 작성 (STRICT_VARIANT)** — §3 원칙. 원본 1문항당 유사 1문항, 문항 번호·배점 동일. 배점 합 100.0.
 4. **그림이 필요한 문항**: `AUTHOR_GUIDE.md` 계약대로 plan을 쓰고 공식 렌더러 `render-plan.mjs`로 실제 렌더한다. 임의 SVG 수작업 금지. 그림이 필요 없으면 plan에 `EXEMPT` + 한 문장 사유.
 5. **저장 파일** (`archive/exams/similar/high/<g>/<term>/`)
-   - `<stem>_유사.js`: `window.examTitle`, `window.examDisplayTitle`, `window.questionBank`. 문항 필드는 형식 견본과 같게 한다(`id, level, category, standardCourse, curriculum, curriculumKey, courseKey, standardUnitKey, subUnitKey, conceptClusterKey, questionType, content, choices, answer, solution` 등).
-   - `<stem>_유사.meta-qNN-qMM.json`: `approval.reviewStatus = "review_required"`. 문항마다 `sourceQid, variationType, primaryMethod, decisiveStep, rpm(L1~L4), ptTplCandidate, crossConceptKeys, conditionKeys, integrationPattern, difficultyBucket, difficultyConfidence, difficultyBoundaryFlag, difficultyReason, level, item4slot, hold`.
+   - `<stem>_유사.js`: `window.examTitle`, `window.examDisplayTitle`, `window.questionBank`. 문항 필드는 형식 견본과 같게 한다(`id, category, standardCourse, curriculum, curriculumKey, courseKey, standardUnitKey, subUnitKey, conceptClusterKey, questionType, content, choices, answer, solution` 등).
+   - `<stem>_유사.meta-qNN-qMM.json`: `approval.reviewStatus = "review_required"`. 문항마다 `sourceQid, variationType, primaryMethod, decisiveStep, rpm(L1~L4), ptTplCandidate, crossConceptKeys, conditionKeys, integrationPattern, difficultyBucket, difficultyConfidence, difficultyBoundaryFlag, difficultyReason, item4slot, hold`(새 문항에 `level` 하/중/상은 쓰지 않는다. [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)).
    - `<stem>_유사_plans/qNN-problem.plan.json`, `qNN-solution.plan.json` (문항 수 × 2).
 6. **자체 점검** (§4) 후 `--phase=draft` 진단: `node tools/harness/verify_similar_exam.mjs <similarStem> --phase=draft`. 초안 PASS는 출고 승인이 아니다.
 7. **인계**
