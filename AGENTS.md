@@ -43,6 +43,7 @@
 
 | 작업 | 먼저 읽을 문서 |
 | --- | --- |
+| 현행 규칙 한 권 (우선 적용) | [docs/rules/RULEBOOK_CURRENT.md](docs/rules/RULEBOOK_CURRENT.md) |
 | 작업 지시서 작성·방법 검토 (모든 작업자 공통) | [공통 판단 계약](docs/agents/outcome-method-review.md) |
 | 시험지 제작·검수 (CREATE·R1·R2·R3, Codex·ROOT) | [docs/agents/exam-pipeline.md](docs/agents/exam-pipeline.md) |
 | 시험지 출고, `main` 운영병합 | [docs/agents/exam-release.md](docs/agents/exam-release.md) |
