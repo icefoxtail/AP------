@@ -1,0 +1,71 @@
+{
+  "qid": 15,
+  "itemFingerprint": "836492ecf3355e36",
+  "solveSteps": [
+    "6a^2b - 9ab^2 = 3ab(2a - 3b) 로 인수분해된다.",
+    "b, 2a - 3b, -(2a - 3b) = 3b - 2a, b(2a - 3b) = 2ab - 3b^2 는 모두 식의 인수이다.",
+    "a^2 - 3ab = a(a - 3b) 인데 a - 3b는 원래 식의 인수가 아니므로 인수가 아니다.",
+    "따라서 인수가 아닌 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "9ab^2$의 인수가 아닌 것은?",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmReason": "6a^2b - 9ab^2 = 3ab(2a - 3b)로 공통인수를 묶어 각 선지가 인수가 되는지 판별한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "typeReason": "공통인수 3ab를 묶어 3ab(2a - 3b)를 만든 뒤 인수가 아닌 것을 선별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "공통인수 3ab를 묶어 3ab(2a-3b)의 인수 여부를 직접 대조하는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "인수",
+        "quote": "9ab^2$의 인수가 아닌 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "공통인수",
+        "quote": "다항식을 공통인수로 묶어 인수분",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "quote": "통인수로 묶어 인수분해한 후, 그 인",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식",
+        "quote": "다항식을 공통인수로",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "6a^2b - 9ab^2 = 3ab(2a - 3b)에서 a^2 - 3ab = a(a - 3b)는 인수가 아님을 확인하여 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

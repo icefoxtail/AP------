@@ -1,0 +1,72 @@
+{
+  "qid": 2,
+  "itemFingerprint": "b578b32eef3714e7",
+  "solveSteps": [
+    "ㄱ: (sqrt(5/7))^2 = 5/7 (참)",
+    "ㄴ: sqrt((-2/3)^2) = |-2/3| = 2/3이므로 -2/3은 거짓이다.",
+    "ㄷ: -sqrt((-0.7)^2) = -|-0.7| = -0.7 (참)",
+    "ㄹ: (-sqrt(23))^2 = 23이므로 -23은 거짓이다.",
+    "따라서 옳은 것은 ㄱ, ㄷ이다. 답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "}=|a|$와 제곱근의 제곱 성질",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "-sqrt((-0.7)^2) = -0.7과 (-sqrt(23))^2 = 23 등 근호의 성질을 적용한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+  "typeReason": "sqrt(a^2) = |a| 및 (-sqrt(23))^2 = 23, -0.7 등 근호의 제곱 성질을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "근호 안 음수의 제곱과 -sqrt(23)의 제곱 등 4개 보기의 참·거짓을 판별하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "}=|a|$와 제곱근의 제곱 성질",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "quote": "근호의 성질 $\\sqrt{",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "근호",
+        "quote": "근호의 성질 $\\s",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "quote": "5}{7}$$ 양수 $a$에 대하",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "ㄱ의 5/7 참과 ㄷ의 -0.7 참, ㄹ의 23 거짓 등을 확인하여 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

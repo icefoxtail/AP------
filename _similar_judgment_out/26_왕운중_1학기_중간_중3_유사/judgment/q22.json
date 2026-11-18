@@ -1,0 +1,70 @@
+{
+  "qid": 22,
+  "itemFingerprint": "9add4417a1327b95",
+  "solveSteps": [
+    "직사각형 ACDF에서 CD=sqrt(2)이고 넓이가 sqrt(6)이므로 AC=sqrt(3)이다.",
+    "AE와 CD가 평행하므로 사각형 ACDE의 넓이는 (1/2)*(AE+CD)*AC = (1/2)*(2*sqrt(2)+sqrt(3))*sqrt(3) = sqrt(6) + 3/2 이다.",
+    "AE와 BD가 평행하므로 사각형 ABDE의 넓이는 (1/2)*(AE+BD)*AC = (1/2)*(3*sqrt(2)+sqrt(3))*sqrt(3) = (3*sqrt(6)+3)/2 이다.",
+    "두 사각형의 넓이의 비는 (2*sqrt(6)+3)/(3*sqrt(6)+3) 이며 분모를 유리화하면 (9+sqrt(6))/15 배이다."
+  ],
+  "solvedAnswer": "사각형 ACDE의 넓이: $\\sqrt{6}+\\dfrac{3}{2}$, 사각형 ABDE의 넓이: $\\dfrac{3\\sqrt{6}+3}{2}$, 배수: $\\dfrac{9+\\sqrt{6}}{15}$배",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 직사각형 $\\text{ACDF}$에서 $\\overline{\\text{CD}}=\\sqrt{2}$이고 직사각형 $\\text{ACDF}$의 넓이는 $\\sqrt{6}$이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "ACDF}$의 넓이는 $\\sqrt",
+  "rpmRecordId": "M3-RPM-012",
+  "rpmReason": "ABDE와 ACDE 사다리꼴 넓이의 비를 구한 뒤 합·차 꼴의 분모의 유리화를 적용하는 계산이다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+  "typeReason": "ACDE와 ABDE의 넓이 비를 구하고 분모의 유리화를 거쳐 15 분모의 기약분수로 나타내는 계산이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ACDF와 AC 길이를 구한 뒤 ACDE와 ABDE의 사다리꼴 넓이를 구하고 15 분모 유리화를 수행하는 3단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "quote": "그림과 같이 직사각형 $\\text{",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "ACDF}$의 넓이는 $\\sqrt",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "공식과 분모의 유리화를 차례로 적용",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평행",
+        "quote": "D}$는 서로 평행하다. 사각형",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "ACDF에서 높이 AC=sqrt(3)을 구하고 ACDE와 ABDE의 넓이를 각각 구한 뒤 분모를 유리화하여 15 분모의 배수를 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

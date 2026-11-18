@@ -1,0 +1,73 @@
+{
+  "qid": 5,
+  "itemFingerprint": "4f911975eb5d5acb",
+  "solveSteps": [
+    "① sqrt(7) < sqrt(5)는 7 > 5이므로 거짓이다.",
+    "② 4를 빼면 sqrt(3) < 1 인데 sqrt(3) > 1이므로 거짓이다.",
+    "③ 3을 빼면 -sqrt(7) > -sqrt(5) 에서 sqrt(7) < sqrt(5)가 되므로 거짓이다.",
+    "④ 2를 빼면 sqrt(6) < sqrt(5)는 6 > 5이므로 거짓이다.",
+    "⑤ 2 < 3이므로 sqrt(2) < sqrt(3), -sqrt(2) > -sqrt(3), 3 - sqrt(2) > 3 - sqrt(3) (참)",
+    "따라서 옳은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "다음 중 두 실수의 대소 관계가",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "3 - sqrt(2)와 3 - sqrt(3) 등 부등식 성질을 적용해 실수의 대소 관계를 판정한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+  "typeReason": "공통항 3이나 2를 소거하여 sqrt(2) < sqrt(3) 등 근호의 대소를 비교하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "공통항 3을 소거하고 음수 부호로 3 - sqrt(2) > 3 - sqrt(3)을 판정하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "quote": "다음 중 두 실수의 대소 관계가",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "관계",
+        "quote": "실수의 대소 관계가 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "대소비교",
+        "quote": "중 두 실수의 대소 관계가 옳은",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부등식",
+        "quote": "비교 성질과 부등식의 성질을 이용",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "sqrt(2) < sqrt(3)이므로 -sqrt(2) > -sqrt(3), 즉 3 - sqrt(2) > 3 - sqrt(3)이 참임을 확인하여 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

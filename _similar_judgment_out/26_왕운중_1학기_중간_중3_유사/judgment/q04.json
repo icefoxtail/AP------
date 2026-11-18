@@ -1,0 +1,73 @@
+{
+  "qid": 4,
+  "itemFingerprint": "416be28978e75fd5",
+  "solveSteps": [
+    "① sqrt(9) + sqrt(49) = 3 + 7 = 10 (옳음)",
+    "② sqrt(5) * sqrt(20) = sqrt(100) = 10 (옳음)",
+    "③ sqrt(6^2) / sqrt((-3)^2) = 6 / 3 = 2 (옳음)",
+    "④ sqrt((-5)^2) - sqrt(7^2) = 5 - 7 = -2 인데 선지는 2이므로 옳지 않다.",
+    "⑤ (-sqrt(3))^2 * (sqrt(5))^2 = 3 * 5 = 15 (옳음)",
+    "따라서 옳지 않은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "근호의 성질 $\\s",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmReason": "sqrt(5)*sqrt(20)=sqrt(100)=10, sqrt(49)=7, 3*5=15 등 근호 사칙연산을 검토한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "sqrt(49)와 sqrt(20) 등 근호의 곱셈과 제곱근 성질을 적용해 계산 오류를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "sqrt(49)=7, sqrt(5)*sqrt(20)=10 등 단순 근호 사칙계산을 확인하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "근호",
+        "quote": "근호의 성질 $\\s",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "quote": "근호의 성질 $\\sqrt{",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "quote": "근호의 곱셈·나눗셈 성질을 이용하",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "곱셈공식",
+        "quote": "|$와 근호의 곱셈·나눗셈 성질을",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "sqrt(9) + sqrt(49) = 10 등은 옳으나 sqrt((-5)^2) - sqrt(7^2) = 5 - 7 = -2인데 선지 ④는 2로 잘못 표기되었음을 확인하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}
