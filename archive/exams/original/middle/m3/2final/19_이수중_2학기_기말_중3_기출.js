@@ -528,7 +528,7 @@ window.questionBank = [
     "category": "원의 성질",
     "originalCategory": "원의 성질",
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "wide": false,
     "standardCourse": "중3 수학",
     "standardUnitKey": "M3-06",

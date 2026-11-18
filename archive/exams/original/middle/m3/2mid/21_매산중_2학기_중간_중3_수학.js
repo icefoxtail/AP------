@@ -1053,7 +1053,7 @@ window.examData = {
       "standardUnit": "삼각비",
       "standardUnitOrder": 5,
       "questionType": "서술형",
-      "layoutTag": "text",
+      "layoutTag": "fullwidth",
       "tags": [
         "삼각비",
         "삼각형의 넓이",
@@ -1099,7 +1099,7 @@ window.examData = {
       "standardUnit": "삼각비",
       "standardUnitOrder": 5,
       "questionType": "서술형",
-      "layoutTag": "grid",
+      "layoutTag": "fullwidth",
       "tags": [
         "삼각비",
         "서술형",

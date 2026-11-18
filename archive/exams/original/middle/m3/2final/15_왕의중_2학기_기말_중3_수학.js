@@ -80,6 +80,7 @@ window.examData = {
   },
     {
       "id": 3,
+      "layoutTag": "subjective-2up",
       "score": 4,
       "question": "<p>그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\angle x$의 삼각비에 대한 다음 설명 중 옳지 않은 것은?<br>(단, $0^\\circ < x < 90^\\circ$)</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q3-problem-visual-v2.svg\" alt=\"아래 왼쪽 B를 중심으로 하는 사분원이다. 사선은 B에서 호 위의 A를 거쳐 E까지 뻗는다. A와 E에서 가로선 BD에 내린 수선은 C와 D에서 만난다. 사선과 가로선의 각은 x이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -304,6 +305,7 @@ window.examData = {
   },
     {
       "id": 9,
+      "layoutTag": "subjective-2up",
       "score": 4,
       "question": "<p>보기의 각 원에 대한 성질로 바르지 않은 것은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q9-problem-visual-v2.svg\" alt=\"① 원 안의 현 AB와 수선 OM, ② 두 현에 내린 같은 길이의 수선 OM과 ON, ③ 현 AB를 보는 원주각과 중심각, ④ 원에 외접한 사각형의 네 접점, ⑤ 원 밖 P에서 그은 두 접선이 있다. 보기의 O는 원의 중심이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [
@@ -340,6 +342,7 @@ window.examData = {
   },
     {
       "id": 10,
+      "layoutTag": "subjective-2up",
       "score": 4,
       "question": "<p>보기의 각 원에 대한 성질로 바르지 않은 것은?</p><p><img src=\"assets/images/15_왕의중_2학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"① 지름 AB와 원 위의 P, ② 같은 길이의 두 호에 대한 각 P와 Q, ③ 원에 내접한 사각형, ④ A에서 원에 접하는 AT와 두 원주각, ⑤ 원에 내접한 사각형과 C의 바깥각이 있다. 보기의 O는 원의 중심이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
       "choices": [

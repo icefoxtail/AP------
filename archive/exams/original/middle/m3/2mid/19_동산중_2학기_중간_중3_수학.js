@@ -1382,7 +1382,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "source_figure",
+    "layoutTag": "subjective-2up",
     "tags": [
       "기출",
       "2019",
@@ -1470,7 +1470,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "source_figure",
+    "layoutTag": "subjective-2up",
     "tags": [
       "기출",
       "2019",

@@ -951,7 +951,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "삼각비",
@@ -1027,7 +1027,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "원의 성질",
@@ -1730,7 +1730,7 @@ window.questionBank = [
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "wide",
     "tags": [
       "서술형",
       "삼각비",
@@ -1821,7 +1821,7 @@ window.questionBank = [
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "subjective-2up",
+    "layoutTag": "fullwidth",
     "tags": [
       "서술형",
       "원의 성질",
