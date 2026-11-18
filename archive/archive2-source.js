@@ -4,26 +4,35 @@
     typeof module === "object" && module.exports
       ? require("./problem-bank-meta.js") : root.ProblemBankMeta,
     typeof module === "object" && module.exports
-      ? require("./exam-source-reader.js") : root.ExamSourceReader);
+      ? require("./exam-source-reader.js") : root.ExamSourceReader,
+    typeof module === "object" && module.exports
+      ? require("./archive2-error-detail.js") : root.Archive2ErrorDetail);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Source = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (core, problemBankMeta, examSourceReader) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (core, problemBankMeta, examSourceReader, errorDetail) {
   "use strict";
   const cache = new Map();
+  // 어느 파일의 몇 번 문항에서 막혔는지를 오류에 실어 화면이 그대로 말하게 한다(archive2-error-detail.js). 메시지는 바꾸지 않는다.
+  const mark = (error, detail) => (errorDetail ? errorDetail.annotate(error, detail) : error);
+  const fail = (message, detail) => mark(new Error(message), detail);
   function evaluate(source, file) {
     // Source files are repository-owned executable assets, each with its own lexical scope.
     const scope = {};
-    new Function(
-      "window",
-      "document",
-      source + "\n//# sourceURL=" + encodeURI(file),
-    )(scope, { baseURI: typeof document === "object" ? document.baseURI : "" });
+    try {
+      new Function(
+        "window",
+        "document",
+        source + "\n//# sourceURL=" + encodeURI(file),
+      )(scope, { baseURI: typeof document === "object" ? document.baseURI : "" });
+    } catch (error) {
+      throw mark(error, { file, code: "SOURCE_EVALUATE_FAILED" });
+    }
     // 문항 배열 찾기 규칙은 exam-source-reader.js 한 곳에 있다(원본 엔진·로더·도구 공통).
     if (!examSourceReader)
-      throw new Error("exam-source-reader.js가 먼저 로드되어야 합니다: " + file);
+      throw fail("exam-source-reader.js가 먼저 로드되어야 합니다: " + file, { file, code: "SOURCE_EVALUATE_FAILED" });
     const bank = examSourceReader.readQuestionArray(scope);
     if (!Array.isArray(bank))
-      throw new Error("문항 배열을 찾을 수 없습니다: " + file);
+      throw fail("문항 배열을 찾을 수 없습니다: " + file, { file, code: "SOURCE_BANK_MISSING" });
     return bank;
   }
   async function digest(value) {
@@ -68,7 +77,7 @@
       image: question.image,
     }));
   }
-  async function restoreGenerated(indexRow, shard, disabledUids = []) {
+  async function restoreGeneratedChecked(indexRow, shard, disabledUids = []) {
     if (!problemBankMeta) throw new Error("PROBLEM_BANK_META_UNAVAILABLE");
     if (!problemBankMeta.isGeneratedSelectable(indexRow, disabledUids))
       throw new Error("GENERATED_QUESTION_NOT_SELECTABLE");
@@ -144,9 +153,20 @@
       metaProjection,
     };
   }
+  // 유사 문항 복원 실패에도 어느 시험지의 몇 번 문항에서 만든 것인지 붙인다(코드형 문구는 상세에서 읽는다).
+  async function restoreGenerated(indexRow, shard, disabledUids = []) {
+    try {
+      return await restoreGeneratedChecked(indexRow, shard, disabledUids);
+    } catch (error) {
+      throw mark(error, {
+        file: indexRow?.sourceExamPath, questionNo: indexRow?.sourceQid, uid: indexRow?.uid,
+        code: String(error?.message || "").split(":")[0].match(/^[A-Z][A-Z0-9_]{3,}$/)?.[0] || "GENERATED_RESTORE_FAILED",
+      });
+    }
+  }
   async function load(file, sourceHash = "", options = {}) {
     if (!file || file.includes("..") || /^(?:[a-z]+:|\/)/i.test(file))
-      throw new Error("잘못된 source 경로");
+      throw fail("잘못된 source 경로", { file, code: "SOURCE_BAD_PATH" });
     options = options && typeof options === "object" ? options : {};
     const baseUrl = String(options.baseUrl || document.baseURI);
     const fetcher = typeof options.fetcher === "function" ? options.fetcher : (url) => fetch(url);
@@ -162,19 +182,21 @@
           if (sourceHash) url.searchParams.set("v", sourceHash);
           const response = await fetcher(url.toString());
           if (!response.ok)
-            throw new Error(`원본 로드 실패 (${response.status}): ${file}`);
+            throw fail(`원본 로드 실패 (${response.status}): ${file}`, { file, code: "SOURCE_FETCH_FAILED" });
           const source = await response.text();
           if (
             sourceHash &&
             (await digest(source.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n"))) !== sourceHash
           )
-            throw new Error(
+            throw fail(
               "원본 파일이 변경되었습니다. catalog를 새로고침하세요: " + file,
+              { file, code: "SOURCE_CHANGED" },
             );
           return evaluate(source, file);
         })().catch((error) => {
           cache.delete(key);
-          throw error;
+          // 네트워크 끊김처럼 위에서 이름 붙이지 못한 실패도 어느 파일인지는 알려 준다.
+          throw mark(error, { file, code: "SOURCE_FETCH_FAILED" });
         }),
       );
     return cache.get(key);
@@ -187,23 +209,35 @@
     for (const file of files) {
       const sourceHash = String(hashes.get(file) || "").trim();
       if (options.requireSourceHash && !/^[a-f0-9]{64}$/i.test(sourceHash))
-        throw new Error("문항 원본의 기대 SHA-256을 확인할 수 없습니다: " + file);
-      banks.set(file, await load(file, sourceHash, options));
+        throw fail("문항 원본의 기대 SHA-256을 확인할 수 없습니다: " + file, { file, code: "SOURCE_HASH_MISSING" });
+      try {
+        banks.set(file, await load(file, sourceHash, options));
+      } catch (error) {
+        // 파일을 못 읽으면 이 파일에서 가져오려던 문항 번호도 함께 알려 준다.
+        const wanted = records.filter((r) => r.sourceFile === file).map((r) => r.sourceQuestionNo ?? r.sourceOrdinal);
+        throw mark(error, { file, questionNo: wanted.length === 1 ? wanted[0] : "", code: "SOURCE_FETCH_FAILED" });
+      }
     }
-    return Promise.all(
-      records.map(async (record) => {
+    // 문항 하나가 막혀도 끝까지 확인해 막힌 문항을 모두 알린다(성공/실패 판정은 Promise.all과 같다: 하나라도 막히면 실패).
+    const restoreAll = errorDetail ? errorDetail.allOrReport : (promises) => Promise.all(promises);
+    return restoreAll(
+      records.map((record) => restoreRecord(record).catch((error) => {
+        throw mark(error, {
+          file: record.sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: record.questionUid,
+        });
+      })),
+    );
+    async function restoreRecord(record) {
         const question = banks.get(record.sourceFile)[record.sourceOrdinal - 1];
-        if (
-          !question ||
-          (await fingerprint(question)) !== record.sourceFingerprint
-        )
-          throw new Error("문항의 source fingerprint가 일치하지 않습니다.");
+        if (!question) throw fail("문항의 source fingerprint가 일치하지 않습니다.", { code: "QUESTION_NOT_FOUND" });
+        if ((await fingerprint(question)) !== record.sourceFingerprint)
+          throw fail("문항의 source fingerprint가 일치하지 않습니다.", { code: "QUESTION_CONTENT_CHANGED" });
         if (
           "qid_v1_" +
             (await digest(record.sourceFile + "#" + record.sourceOrdinal)) !==
           record.questionUid
         )
-          throw new Error("문항 UID/source가 일치하지 않습니다.");
+          throw fail("문항 UID/source가 일치하지 않습니다.", { code: "QUESTION_UID_MISMATCH" });
         // Content, answer, solution and all visual/layout fields stay byte-value equivalent.
         const result = {
           ...question,
@@ -272,14 +306,16 @@
             !optionalFields.has(field) &&
             !metaV2Sidecar
           )
-            throw new Error("source metadata 충돌: " + field);
+            throw fail("source metadata 충돌: " + field, {
+              code: "SOURCE_META_CONFLICT",
+              reason: "목록의 분류 정보(" + field + ")와 원본 파일의 분류 정보가 서로 다릅니다.",
+            });
           if (sourceAsserts && !recordAsserts && !optionalFields.has(field) && !metaV2Sidecar) continue;
           if (record[field] !== undefined) result[field] = record[field];
           else if (optionalFields.has(field)) delete result[field];
         }
         return result;
-      }),
-    );
+    }
   }
   return { evaluate, digest, fingerprint, generatedContentFingerprint, load, restore, restoreGenerated };
 });

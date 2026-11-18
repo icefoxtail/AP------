@@ -20,10 +20,11 @@
    제외가 실패하면 성공으로 표시하지 않는다(그동안 반 전체에게 보인다). 같은 (반, 출제일, MIXED:키)는 서버가 기존 건을 갱신하므로
    재전송해도 새 건이 생기지 않는다. 문항은 open({unit:{load}})이 준다. */
 (function (root, factory) {
-  const api = factory();
+  const api = factory(typeof module === "object" && module.exports
+    ? require("./archive2-error-detail.js") : root.Archive2ErrorDetail);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.Archive2Assign = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (errorDetail) {
   "use strict";
 
   const CONTRACT = "archive2-v1";
@@ -213,6 +214,15 @@
   const PDF_RETRY_MESSAGE = "PDF를 아직 준비하지 못했습니다. 잠시 뒤 PDF 다시 준비 버튼을 다시 눌러 주세요.";
   const GENERIC_FAILURE = "출제하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
   const warnRaw = (raw) => { try { if (raw) console.warn("[archive2-assign] server message:", raw); } catch { /* 콘솔이 없어도 된다 */ } };
+  // 실패한 건·준비 실패에 "어느 시험지(파일)가 왜"를 붙인다. 문구는 archive2-error-detail.js 한 곳에서 만든다.
+  // 화면 문구(message)는 그대로 두고, 접힌 상세(원문·파일·번호·코드)만 더한다.
+  const mark = (error, detail) => (errorDetail ? errorDetail.annotate(error, detail) : error);
+  const screenName = "출제 패널";
+  function describeFailure(error, detail, ctx = {}) {
+    if (!errorDetail || !error) return null;
+    const target = mark(typeof error === "object" ? error : new Error(text(error)), detail);
+    return errorDetail.describe(target, { screen: screenName, ...ctx });
+  }
   const KNOWN_MESSAGES = [
     [/고정 roster/, "이 반에 이미 보낸 출제와 학생 구성이 다릅니다. 출제 내역에서 먼저 확인해 주세요."],
     [/이미 배부된 시험/, "같은 날 이 반에 낸 시험지와 내용이 달라 출제할 수 없습니다. 출제 내역을 확인해 주세요."],
@@ -537,7 +547,7 @@
             if (!Array.isArray(questions) || !questions.length) throw Object.assign(new Error("unit empty"), { unitEmpty: true });
             return { questions, meta: loaded.meta && typeof loaded.meta === "object" ? loaded.meta : {} };
           })
-          .catch((error) => { paper.loading = null; throw error; });
+          .catch((error) => { paper.loading = null; throw mark(error, { code: "UNIT_LOAD_FAILED" }); });
       }
       return paper.loading;
     }
@@ -547,11 +557,16 @@
         paper.loading = Promise.resolve()
           .then(() => originalCtx.loadQuestions(paper))
           .then((questions) => {
-            if (!Array.isArray(questions) || !questions.length) throw Object.assign(new Error("source empty"), { sourceLoad: true });
-            if (questions.length !== paper.count) throw Object.assign(new Error("source count mismatch"), { sourceCount: true });
+            if (!Array.isArray(questions) || !questions.length)
+              throw mark(Object.assign(new Error("source empty"), { sourceLoad: true }), { code: "SOURCE_BANK_MISSING" });
+            if (questions.length !== paper.count)
+              throw mark(Object.assign(new Error("source count mismatch"), { sourceCount: true }), {
+                code: "SOURCE_COUNT_MISMATCH",
+                reason: `원본 파일의 문항 수(${questions.length}개)가 목록의 문항 수(${paper.count}개)와 다릅니다.`,
+              });
             return questions;
           })
-          .catch((error) => { paper.loading = null; throw error; });
+          .catch((error) => { paper.loading = null; throw mark(error, { file: paper.file, title: paper.title }); });
       }
       return paper.loading;
     }
@@ -837,7 +852,7 @@
         const batch = original || unit ? null : store.ensure(combo.paper.id, combo.cls.id, state.date);
         if (original || unit) store.touch(combo.paper.id, combo.cls.id, state.date);
         const job = {
-          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, kind: original ? "original" : unit ? "unit" : "saved",
+          key: combo.key, paperId: combo.paper.id, paperTitle: combo.paper.title, paperFile: combo.paper.file || "", kind: original ? "original" : unit ? "unit" : "saved",
           classId: combo.cls.id, className: combo.cls.name, studentIds: combo.studentIds.slice(),
           date: state.date, batchId: batch ? batch.id : "", status: "queued", attempts: 0,
           assignmentId: "", message: "", pdfError: "", pdfBusy: false, already: false, auth: false, rebuild: false,
@@ -925,6 +940,8 @@
       }
       job.status = info.kind;
       job.message = info.message;
+      // 서버가 보낸 원문·응답 상태를 시험지 이름과 함께 접힌 상세로 남긴다(화면 문구는 위 message 그대로).
+      job.detail = describeFailure(error, { file: job.paperFile, title: job.paperTitle });
       if (info.kind === "failed" || info.kind === "cancelled") store.mark(job.paperId, job.classId, job.date, "failed");
     }
     // 원본 출제가 문항 목록 기준 갱신(409)을 받았을 때만, 현재 배포된 기준으로 index_version만 바꾼 새 본문을 돌려준다(아니면 null).
@@ -1081,6 +1098,7 @@
       state.starting = true;
       state.working = true;
       state.startError = "";
+      state.startErrorDetail = null;
       const wantsUnit = current.combos.some((combo) => combo.paper.kind === "unit");
       const wantsOriginal = current.combos.some((combo) => combo.paper.kind === "original");
       if (!wantsUnit && !wantsOriginal) return Promise.resolve(run());
@@ -1096,6 +1114,7 @@
     async function prepareUnits(current) {
       const targets = papers.filter((paper) => paper.kind === "unit" && current.combos.some((combo) => combo.paper.id === paper.id));
       let message = "";
+      let messageDetail = null;
       for (const paper of targets) {
         try {
           if (typeof unitCtx.load !== "function") throw new Error("unit loader missing");
@@ -1108,7 +1127,9 @@
           paper.payloadCount = loaded.questions.length;
         } catch (error) {
           warnRaw(text(error?.message));
-          message = `「${paper.title}」 ${error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE}`;
+          // 어느 시험지 몇 번 문항이 막혔는지는 오류에 실려 온다(archive2-error-detail.js). 없으면 문제지 이름만 붙는다.
+          messageDetail = describeFailure(error, {}, { screen: `${screenName} · ${paper.title}`, headline: error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE });
+          message = `「${paper.title}」 ${messageDetail ? messageDetail.message : error?.unitEmpty ? UNIT_EMPTY_MESSAGE : UNIT_LOAD_MESSAGE}`;
           break;
         }
       }
@@ -1116,6 +1137,7 @@
       state.starting = false;
       state.working = false;
       state.startError = message;
+      state.startErrorDetail = messageDetail;
       emit();
       return false;
     }
@@ -1124,6 +1146,7 @@
     async function prepareOriginals() {
       const targets = papers.filter((paper) => paper.kind === "original");
       let message = "";
+      let messageDetail = null;
       if (!text(originalCtx.indexVersion) || typeof originalCtx.loadQuestions !== "function") message = SOURCE_CHANGED_MESSAGE;
       else {
         for (const paper of targets) {
@@ -1131,7 +1154,9 @@
             paper.questions = await loadOriginalQuestions(paper);
           } catch (error) {
             warnRaw(text(error?.message));
-            message = error?.sourceCount ? SOURCE_COUNT_MESSAGE : SOURCE_LOAD_MESSAGE;
+            const headline = error?.sourceCount ? SOURCE_COUNT_MESSAGE : SOURCE_LOAD_MESSAGE;
+            messageDetail = describeFailure(error, { file: paper.file, title: paper.title }, { screen: screenName, headline });
+            message = messageDetail ? messageDetail.message : headline;
             break;
           }
         }
@@ -1140,6 +1165,7 @@
       state.starting = false;
       state.working = false;
       state.startError = message;
+      state.startErrorDetail = messageDetail;
       emit();
       return false;
     }
@@ -1424,7 +1450,8 @@
     if (job.status === "ok-pdf") actions.push(`<button type="button" class="small" data-assign-action="pdf" data-key="${esc(job.key)}" data-focus="pdf-${esc(job.key)}"${job.pdfBusy ? " disabled" : ""}>${job.pdfBusy ? "PDF 준비 중…" : "PDF 다시 준비"}</button>`);
     const outputs = (job.status === "ok" || job.status === "ok-pdf") && job.assignmentId && model.state.outputLinks !== false
       ? `<span class="assign-result-outputs" role="group" aria-label="출력">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, name]) => `<button type="button" class="small" data-action="assignment-output-direct" data-assignment="${id}" data-mode="${mode}">${name}</button>`).join("")}</span>` : "";
-    return `<li class="assign-result is-${job.status}" data-job="${esc(job.key)}"><div class="assign-result-head"><strong>${esc(job.className)}</strong>${multi ? `<span class="assign-result-paper">${esc(job.paperTitle)}</span>` : ""}<span class="assign-result-count">${job.studentIds.length}명</span></div><p class="assign-result-state">${esc(label)}</p>${detail ? `<p class="assign-result-detail">${esc(detail)}</p>` : ""}${actions.length || outputs ? `<div class="assign-result-actions">${actions.join("")}${outputs}</div>` : ""}</li>`;
+    const rawDetail = errorDetail && job.detail && ["failed", "unknown", "cancelled"].includes(job.status) ? errorDetail.markup(job.detail) : "";
+    return `<li class="assign-result is-${job.status}" data-job="${esc(job.key)}"><div class="assign-result-head"><strong>${esc(job.className)}</strong>${multi ? `<span class="assign-result-paper">${esc(job.paperTitle)}</span>` : ""}<span class="assign-result-count">${job.studentIds.length}명</span></div><p class="assign-result-state">${esc(label)}</p>${detail ? `<p class="assign-result-detail">${esc(detail)}</p>` : ""}${rawDetail}${actions.length || outputs ? `<div class="assign-result-actions">${actions.join("")}${outputs}</div>` : ""}</li>`;
   }
   function resultsMarkup(model) {
     const { authLost } = model.state;
@@ -1453,7 +1480,8 @@
     if (phase === "select") {
       const plan = model.plan();
       const ready = model.canSubmit();
-      const startError = model.state.startError ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>` : "";
+      const startError = model.state.startError
+        ? `<p class="assign-auth" role="alert">${esc(model.state.startError)}</p>${errorDetail && model.state.startErrorDetail ? errorDetail.markup(model.state.startErrorDetail) : ""}` : "";
       const waiting = model.state.papers.some((paper) => paper.kind === "unit") ? "문제지를 준비하는 중…" : "시험지 원본을 확인하는 중…";
       const summary = model.state.starting ? `<p class="assign-summary" role="status">${waiting}</p>` : summaryMarkup(model, plan);
       return `${startError}${summary}<button type="button" class="primary assign-submit" data-assign-action="submit" data-focus="submit"${ready ? "" : " disabled"}>출제하기</button><p class="assign-fine">출제하면 학생에게 바로 과제가 갑니다.</p>`;

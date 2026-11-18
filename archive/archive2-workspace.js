@@ -679,10 +679,19 @@
   // Text for teachers: Korean messages are already written for them; anything else (a code, English) is replaced by
   // `fallback`. The original error keeps its `code`/`message` for diagnosis.
   const GENERIC_ERROR = "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
-  function teacherErrorMessage(error, fallback = GENERIC_ERROR) {
+  // The text for a teacher AND the folded detail come from one place, archive2-error-detail.js:
+  //   headline (one Korean sentence) + which exam/question failed (when the error knows) + the original text for the detail.
+  // Without that module the old rule applies: Korean as written, anything else replaced by `fallback`.
+  function describeError(error, fallback = GENERIC_ERROR, extra = {}) {
+    const detailApi = typeof window !== "undefined" ? window.Archive2ErrorDetail : null;
+    if (detailApi) return detailApi.describe(error, { fallback, screen: typeof screenLabel === "function" ? screenLabel() : "", ...extra });
     // Same rule as status(): a leading CODE: is dropped and the Korean reason behind it is kept.
     const text = String(typeof error === "string" ? error : error?.message || "").replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
-    return HANGUL.test(text) ? text : fallback;
+    const message = HANGUL.test(text) ? text : fallback;
+    return { headline: message, where: "", message, hasDetail: false };
+  }
+  function teacherErrorMessage(error, fallback = GENERIC_ERROR) {
+    return describeError(error, fallback).message;
   }
   // Errors also get a fixed, dismissible alert so a failure below the fold (or behind a dialog) is not missed.
   let errorToastEl = null;
@@ -690,7 +699,9 @@
   function hideErrorToast() {
     try { errorToastEl?.parentNode?.removeChild(errorToastEl); } catch {}
   }
-  function showErrorToast(message) {
+  // `info` is describeError()'s result: when it has a detail, the folded "상세 보기" block (original text, file, question
+  // number, code, copy button) goes under the sentence. Without a detail the box stays one line, as before.
+  function showErrorToast(message, info = null) {
     try {
       if (typeof document.createElement !== "function" || !document.body) return;
       if (!errorToastEl) {
@@ -699,16 +710,20 @@
         box.setAttribute("role", "alert");
         const text = document.createElement("p");
         text.className = "error-toast-text";
+        const detail = document.createElement("div");
+        detail.className = "error-toast-detail";
         const close = document.createElement("button");
         close.type = "button";
         close.className = "error-toast-close";
         close.setAttribute("aria-label", "오류 알림 닫기");
         close.textContent = "닫기";
         close.addEventListener("click", hideErrorToast);
-        box.append(text, close);
+        box.append(text, detail, close);
         errorToastEl = box;
       }
       errorToastEl.firstChild.textContent = message;
+      const detailSlot = errorToastEl.children[1];
+      if (detailSlot) detailSlot.innerHTML = info?.hasDetail && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
       // A modal <dialog> makes everything outside it inert, so the alert lives inside the open dialog when there is one.
       const host = document.querySelector("dialog[open]") || document.body;
       hideErrorToast();
@@ -722,19 +737,48 @@
       }
     } catch (e) { console.warn("[archive2] error alert unavailable:", e); }
   }
-  function status(message, error = false) {
+  // `cause` is the caught error: it carries the file / question number (error.apDetail) and the original text for the folded detail.
+  function status(message, error = false, cause = null) {
+    let info = null;
     if (error) {
-      // Last line of defence: a leading CODE: or a non-Korean (English) message never reaches the teacher as-is.
+      // Last line of defence: a leading CODE: or a non-Korean (English) message never reaches the teacher as-is
+      // (the original text moves to the folded detail and the console).
       const raw = String(message ?? "");
       const stripped = raw.replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
-      message = HANGUL.test(stripped) ? stripped
-        : "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+      // A Korean sentence the caller wrote itself stays the headline, even when the caught error adds the location.
+      // (When the caller just passed error.message along, describeError() decides, so the text is not said twice.)
+      const callerWrote = cause && HANGUL.test(stripped) && stripped !== String(cause.message ?? "").replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+      info = cause && typeof cause === "object"
+        ? describeError(cause, GENERIC_ERROR, callerWrote ? { headline: stripped } : {})
+        : describeError(raw, GENERIC_ERROR);
+      message = info.message;
       if (message !== raw) console.warn("[archive2] error text replaced for display:", raw);
     }
     $("status").textContent = message;
     $("status").classList.toggle("error", error);
-    if (error) showErrorToast(message);
+    if (error) showErrorToast(message, info);
     else hideErrorToast();
+  }
+  // The screen name that goes into the folded detail ("화면: 문제지 만들기"), so a pasted report says where it happened.
+  const SCREEN_LABELS = {
+    home: "홈", find: "기출 찾기", compose: "문제지 만들기", saved: "보관함", recent: "출제 내역", health: "점검",
+    "five-minute": "5분 테스트", "subunit-test": "소단원 테스트", "unit-test": "단원 테스트", "monthly-test": "월말 테스트",
+  };
+  function screenLabel() {
+    try { return SCREEN_LABELS[state.view] || String(state.view || ""); } catch { return ""; }
+  }
+  // Error text kept for places that store a message string (state.saveError, state.recentError): the folded detail
+  // is looked up by that same string when the screen is drawn again.
+  const errorInfoByMessage = new Map();
+  function rememberErrorInfo(message, cause, extra = {}) {
+    if (!message || !cause || typeof cause !== "object") return;
+    const info = describeError(cause, GENERIC_ERROR, extra);
+    if (info.hasDetail) errorInfoByMessage.set(String(message), info);
+    if (errorInfoByMessage.size > 20) errorInfoByMessage.delete(errorInfoByMessage.keys().next().value);
+  }
+  function errorDetailMarkup(message) {
+    const info = errorInfoByMessage.get(String(message || ""));
+    return info && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
   }
   function draft() {
     const keys = [
@@ -2829,7 +2873,7 @@
       status(`${label} · ${questionUids.length}문항 시험지를 열었습니다.`);
     } catch (error) {
       popup.close();
-      status(error.message || "시험지를 준비하지 못했습니다.", true);
+      status(error.message || "시험지를 준비하지 못했습니다.", true, error);
     } finally {
       quickState.busy = false;
       if (isQuickAssessmentView()) render();
@@ -3533,7 +3577,7 @@
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
       ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 작업 중인 문제지의 편집은 잠겨 있습니다. 위의 ‘저장 결과 확인’을 눌러 주세요. 출력과 작업 백업은 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
-        ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}</div>`
+        ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}${errorDetailMarkup(state.saveError)}</div>`
         : ""; // 저장했다는 안내는 위의 "마지막 저장본"이 이미 말한다(같은 문장을 두 곳에 쓰지 않는다).
     // 저장 결과를 모를 때는 위 복구 영역의 버튼(저장 결과 확인·출력·백업)만 쓴다.
     if (state.saveResultState === "RESULT_UNKNOWN") return `<div class="cz-finish" data-cz-finish>${savedResult}</div>`;
@@ -3736,7 +3780,7 @@
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
-    if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>`;
+    if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>${errorDetailMarkup(state.recentError)}`;
     const rows = History.filterAssignments(state.recentRows, {
       ...state.recentFilters, classId: state.recentClassId,
     });
@@ -3824,7 +3868,7 @@
         : teacherErrorMessage(error, "출제를 취소하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
       const slot = $("assignment-cancel-error");
       if (slot && $("modal")?.open) { slot.textContent = message; slot.hidden = false; }
-      else status(message, true);
+      else status(message, true, error);
       return false;
     } finally {
       assignmentCancelBusy = false;
@@ -3971,7 +4015,7 @@
       if (state.view !== "recent" || scheduledVersion !== state.recentLoadVersion) return false;
       return loadRecent().catch((error) => {
         if (isCurrentAuthorityError(error))
-          status(error.message || "출제 내역을 불러오지 못했습니다.", true);
+          status(error.message || "출제 내역을 불러오지 못했습니다.", true, error);
         return false;
       });
     }, 300);
@@ -4034,6 +4078,7 @@
     } catch (error) {
       if (!isCurrentRequest()) return false;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
+      rememberErrorInfo(state.recentError, error);
       state.recentAuth = isAuthError(error);
       if (state.recentAuth) showLoginNotice("recent");
       // The list shows this failure (or the login notice); callers must not raise a second alert for it.
@@ -4433,7 +4478,8 @@
             return;
           }
           hideErrorToast();
-          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "문제지를 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."))}</p><p><button type="button" class="primary" data-action="library-reload">다시 시도</button></p></section>`;
+          const failure = describeError(error, "문제지를 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(failure.message)}</p>${failure.hasDetail && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(failure) : ""}<p><button type="button" class="primary" data-action="library-reload">다시 시도</button></p></section>`;
         });
       return;
     }
@@ -4554,7 +4600,8 @@
       }
       const partRecords = records.slice(i, i + 50);
       const part = derivedBaseQuestions
-        ? await Promise.all(partRecords.map(async record => {
+        ? await (window.Archive2ErrorDetail?.allOrReport || ((promises) => Promise.all(promises)))(partRecords.map(async record => {
+          try {
             const frozen = derivedBaseByUid.get(record.questionUid);
             if (frozen) {
               const sourceFile = String(frozen.sourceArchiveFile || frozen.sourceFile || frozen._sourceFile || "");
@@ -4564,7 +4611,14 @@
               return structuredClone(frozen);
             }
             return (await Source.restore([record], state.catalog))[0];
-          }))
+          } catch (error) {
+            // Say which exam / question was behind it (Source.restore already did for its own errors).
+            throw window.Archive2ErrorDetail ? window.Archive2ErrorDetail.annotate(error, {
+              file: record.sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: record.questionUid,
+              code: "QUESTION_CONTENT_CHANGED",
+            }) : error;
+          }
+        }))
         : await Source.restore(partRecords, state.catalog);
       const partSignature = JSON.stringify([
           part.map((q) => q.questionUid),
@@ -4785,12 +4839,16 @@
           console.warn("[archive2] save rejected by canonical metadata check:", state.saveError);
           state.saveError = SAVE_PARITY_MESSAGE;
         }
+        // 서버 원문(영문 포함)은 화면 문구에서 빠지므로, 어느 문제지를 저장하다 난 일인지와 함께 접힌 상세로 남긴다.
+        window.Archive2ErrorDetail?.annotate(error, { title: state.header?.title });
+        rememberErrorInfo(state.saveError, error, { headline: state.saveError });
         save();
         status(
           keepUnknown
             ? "저장 결과를 확인하지 못했습니다. 중복 저장을 막기 위해 같은 저장 요청을 유지합니다. '저장 결과 확인'을 다시 눌러 주세요."
             : "시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.",
           true,
+          error,
         );
       }
     } finally {
@@ -4874,7 +4932,7 @@
               throw new Error("저장 결과를 확인할 때까지 문항을 바꿀 수 없습니다.");
             replace(i);
           } catch (error) {
-            status(error.message, true);
+            status(error.message, true, error);
           }
         });
       });
@@ -4886,7 +4944,7 @@
       if (host === $("preview-host") && token === state.previewToken) {
         host.setAttribute("aria-busy", "false");
         host.textContent = teacherErrorMessage(e);
-        status(e.message, true);
+        status(e.message, true, e);
       }
     }
   }
@@ -6282,7 +6340,7 @@
           "archive2-health.json",
         );
     } catch (e) {
-      if (isCurrentAuthorityError(e)) status(e.message, true);
+      if (isCurrentAuthorityError(e)) status(e.message, true, e);
     }
   });
   document.addEventListener("submit", (event) => {
@@ -6434,7 +6492,7 @@
         el.value = "";
       }
     } catch (e) {
-      status(e.message, true);
+      status(e.message, true, e);
     }
   });
   document.addEventListener("input", (event) => {
@@ -6658,7 +6716,7 @@
         if (loaded && selectedAssignmentId && state.view === "recent" &&
           state.recentSelectedAssignmentId === selectedAssignmentId)
           await assignmentStatus(selectedAssignmentId);
-      } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+      } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true, e); }
     }
     restoreCurrentHistoryScroll();
   });
@@ -6907,7 +6965,7 @@
       if (loaded && selectedAssignmentId && state.view === "recent" &&
         state.recentSelectedAssignmentId === selectedAssignmentId)
         await assignmentStatus(selectedAssignmentId);
-    } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+    } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true, e); }
   }
   // The catalog adds the exam lookup the recent rows use for grade/subject: normalize again (cheap).
   function refreshRecentRowsFromCatalog() {
