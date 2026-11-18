@@ -462,7 +462,7 @@ window.questionBank = [
       "삼각비 계산/적용"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\sin 55^\\circ\\approx0.82$, $\\cos 55^\\circ\\approx0.57$, $\\tan 55^\\circ\\approx1.43$일 때, $\\sin 55^\\circ-\\cos 55^\\circ+\\tan 55^\\circ$의 값을 구하면? (4점)<br><br><img src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q09.png\" alt=\"문제 9번 그림\" style=\"max-width: 320px;\">",
+    "content": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서 $\\sin 55^\\circ\\approx0.82$, $\\cos 55^\\circ\\approx0.57$, $\\tan 55^\\circ\\approx1.43$일 때, $\\sin 55^\\circ-\\cos 55^\\circ+\\tan 55^\\circ$의 값을 구하면? (4점)<br><br><img data-scale=\"85\" src=\"assets/images/22_풍덕중_2학기_중간_중3_수학/q09.png\" alt=\"문제 9번 그림\" style=\"max-width: 320px;\">",
     "choices": [
       "2.82",
       "2.16",

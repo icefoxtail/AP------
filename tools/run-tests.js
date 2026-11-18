@@ -127,6 +127,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-question-binding.test.mjs']
   },
   {
+    label: 'tests/archive-text-binding-rebinds.test.mjs',
+    args: ['--test', 'tests/archive-text-binding-rebinds.test.mjs']
+  },
+  {
     label: 'tests/archive-source-delta.test.mjs',
     args: ['--test', 'tests/archive-source-delta.test.mjs']
   },

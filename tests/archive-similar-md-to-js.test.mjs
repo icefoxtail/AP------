@@ -103,18 +103,35 @@ test('convertSimilarExam: 없는 값에 기본값을 만들어 넣지 않고 미
   try {
     const bank = loadBank(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.js'));
     const b = bank[1];
-    assert.equal(b.level, '');
+    assert.equal('level' in b, false, '하/중/상 칸은 만들지 않는다');
     assert.equal(b.difficultyBucket, null);
     assert.equal(b.integrationPattern, '');
     assert.equal(b.variationType, '');
     assert.equal(b.standardCourse, '');
     assert.equal(b.courseKey, '');
-    assert.ok(result.stats.incompleteFields.level >= 1);
     assert.ok(result.stats.incompleteFields.difficultyBucket >= 1);
-    assert.ok(result.stats.incompleteByQid[2].includes('level'));
     const reg = JSON.parse(fs.readFileSync(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.meta-q01-q02.json'), 'utf8'));
     assert.equal(reg.items[1].after.difficultyConfidence, '');
     assert.equal(reg.items[1].after.difficultyBoundaryFlag, '');
+  } finally {
+    fs.rmSync(outDir, { recursive: true, force: true });
+  }
+});
+
+test('convertSimilarExam: 원천에 하/중/상(level)이 있어도 옮기지 않고, 머리글 사실로 provenance 만 만든다', () => {
+  const { outDir } = convertTo(buildMd({ stem: '99_테스트중_1학기_중간_중2_유사', questions: [q1, q2] }));
+  try {
+    const stem = '99_테스트중_1학기_중간_중2_유사';
+    const bank = loadBank(path.join(outDir, `${stem}.js`));
+    for (const b of bank) assert.equal('level' in b, false);
+    const reg = JSON.parse(fs.readFileSync(path.join(outDir, `${stem}.meta-q01-q02.json`), 'utf8'));
+    for (const [i, it] of reg.items.entries()) {
+      assert.equal('level' in it.after, false);
+      assert.deepEqual(it.after.provenance, {
+        kind: 'SIMILAR_FROM_ORIGINAL', sourceExam: '99_테스트중_1학기_중간_중2_기출', sourceArchiveFile: 'archive/exams/original/middle/m2/1mid/99_테스트중_1학기_중간_중2_기출.js',
+        sourceQid: i + 1, variationType: 'NUMERIC', createdAt: '2026-11-18', createdAtSource: '변환 마크다운 헤더의 generatedAt',
+      });
+    }
   } finally {
     fs.rmSync(outDir, { recursive: true, force: true });
   }

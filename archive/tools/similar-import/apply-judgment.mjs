@@ -19,6 +19,27 @@ export { reviewState };
 
 const slotFormat = item => ({ 객관식: '단일 정답', 단답형: '단답', 서술형: '서술' }[item.questionType] || '단일 정답');
 
+/** 그림 판단 NONE/SELF_CONTAINED 는 문제 그림 EXEMPT 와 근거. NEEDS_FIGURE 는 쓰지 않는다(그림 파일이 없으면 시험지가 보류된다). */
+export function problemVisual(j) {
+  if (j.figureNeed === 'NONE') return { problem: 'EXEMPT', problemReason: '발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.' };
+  if (j.figureNeed === 'SELF_CONTAINED') return { problem: 'EXEMPT', problemReason: `그림을 가리키는 말(「${String(j.figureEvidence).trim()}」)이 있으나 글만으로 풀려 그림이 필요 없다.` };
+  return null;
+}
+/** 해설 그림 판단: NONE 은 불필요(EXEMPT), NEEDS_FIGURE 는 값만 기록한다(보류 없음). */
+export function solutionVisual(j) {
+  if (j.solutionFigureNeed === 'NONE') return { solution: 'EXEMPT', solutionReason: '해설이 글만으로 완결되어 그림 없이 따라갈 수 있다.' };
+  if (j.solutionFigureNeed === 'NEEDS_FIGURE') return { solution: 'REQUIRED', solutionReason: `해설을 따라가려면 그림이 필요하다(「${String(j.solutionFigureEvidence).trim()}」).` };
+  return null;
+}
+const SOURCE_MD_VALUE = '원천 마크다운 값, 재판정 안 함';
+/** Condition 키가 있으면 키와 4칸 condition 근거, 없으면 NONE 과 4칸 condition 에 적힌 것. */
+export function conditionRationale(j, conditionKeys) {
+  const terms = (j.slots?.condition || []).map(e => e.term);
+  const why = j.slotReasons?.condition || (terms.length ? `4칸 condition: ${terms.join(', ')}` : '');
+  if (Array.isArray(conditionKeys) && conditionKeys.length) return `${conditionKeys.join(', ')}: ${why || '4칸 condition 칸이 비어 있다.'}`;
+  return `NONE: 풀이에 쓰이는 별도 Condition 키가 없다${terms.length ? ` (4칸 condition 에는 ${terms.join(', ')} 이 있다)` : ''}.`;
+}
+
 export function buildReceipt({ stem, targetJsPath, targetMetaPath, blob, bank, judgments, date, reviewer, partialOf = null }) {
   const rows = [...judgments.entries()].sort((a, b) => a[0] - b[0]).map(([qid, j]) => {
     const item = bank.find(b => b.id === qid);
@@ -102,7 +123,6 @@ export function applyJudgments({
     const sub = masters.subUnits.get(j.subUnitKey);
     const next = {
       ...item,
-      level: j.level,
       category: sub.labelKo,
       originalCategory: sub.labelKo,
       standardUnitKey: unit.key,
@@ -118,7 +138,7 @@ export function applyJudgments({
       problemTypeKey: j.problemTypeKey === 'NONE' ? '' : j.problemTypeKey,
       templateKey: j.templateKey === 'NONE' ? '' : j.templateKey,
     };
-    for (const k of ['rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete next[k];
+    for (const k of ['level', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete next[k];
     if (j.rpmRecordId !== 'NONE') {
       const r = crosswalk.get(j.rpmRecordId);
       Object.assign(next, { rpmPrimaryL1: r.rpmPath.majorUnit, rpmPrimaryL2: r.rpmPath.midUnit, rpmPrimaryL3: r.rpmPath.l3, rpmPrimaryL4: r.rpmPath.l4, rpmPrimaryRecordId: r.id });
@@ -145,7 +165,8 @@ export function applyJudgments({
     const q = newBank.find(b => b.id === it.sourceOrdinal);
     const j = check.judgments.get(q.id);
     const after = { ...it.after };
-    for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'level', 'difficultyBucket']) after[f] = q[f];
+    for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'difficultyBucket']) after[f] = q[f];
+    delete after.level;
     for (const k of ['rpmPrimaryRecordIds', 'rpmPrimary', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete after[k];
     if (q.rpmPrimaryRecordId) {
       after.rpmPrimaryRecordIds = [q.rpmPrimaryRecordId];
@@ -153,6 +174,7 @@ export function applyJudgments({
       Object.assign(after, { rpmPrimaryL1: q.rpmPrimaryL1, rpmPrimaryL2: q.rpmPrimaryL2, rpmPrimaryL3: q.rpmPrimaryL3, rpmPrimaryL4: q.rpmPrimaryL4, rpmPrimaryRecordId: q.rpmPrimaryRecordId });
     }
     after.difficultyConfidence = j.difficultyConfidence;
+    after.difficultyBoundaryFlag = j.difficultyBoundaryFlag;
     after.difficultyBasis = j.difficultyReason;
     after.metaRationale = {
       draftTier: 'SINGLE_MODEL_DRAFT',
@@ -160,12 +182,24 @@ export function applyJudgments({
       curriculum: `${j.rpmRecordId}: ${j.rpmReason}`,
       problemType: j.typeReason,
       difficulty: j.difficultyReason,
+      condition: conditionRationale(j, after.conditionKeys),
     };
+    // 판정 기록에서 만들 수 있는 필수 메타. 근거가 없는 칸(visualNecessity.solution, provenance.generator, variationNote)은 비워 둔다.
+    after.visualNecessity = { ...(after.visualNecessity || {}), ...problemVisual(j), ...solutionVisual(j) };
+    // CrossConcept·Integration 은 변환기가 원천 마크다운에서 옮긴 값이다. 판정 대상이 아니므로 근거 문장만 고정 문구로 둔다.
+    if (after.integrationPattern) {
+      const keys = Array.isArray(after.crossConceptKeys) ? after.crossConceptKeys : [];
+      after.metaRationale.crossConcept = `${keys.length ? keys.join(', ') : 'NONE'}: ${SOURCE_MD_VALUE}`;
+      after.metaRationale.integration = `${after.integrationPattern}: ${SOURCE_MD_VALUE}`;
+    }
+    // provenance 는 변환기만 만든다. 없으면 옛 변환기로 만든 스테이지이므로 다시 변환하게 한다.
+    if (!after.provenance) throw new Error(`PROVENANCE_MISSING: Q${q.id} 스테이지 등록 요청에 provenance 가 없습니다 (md 머리글에 sourceArchiveFile 이 없거나 옛 변환 산출물). similar-md-to-js 로 다시 변환하세요.`);
     const proposal = j.newKeyProposal ? `; PROPOSAL: ${JSON.stringify(j.newKeyProposal)}` : '';
     return {
       ...it,
       after,
       difficultyConfidence: j.difficultyConfidence,
+      difficultyBoundaryFlag: j.difficultyBoundaryFlag,
       difficultyReason: j.difficultyReason,
       ptTplCandidate: { problemTypeKey: j.problemTypeKey === 'NONE' ? null : j.problemTypeKey, templateKey: j.templateKey === 'NONE' ? null : j.templateKey, why: j.typeReason },
       reason: `DRAFT_SINGLE_MODEL (${judge})${proposal}`,

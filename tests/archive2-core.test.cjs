@@ -161,7 +161,7 @@ test("one difficulty lane: an integer bucket passes for every caller unless a re
   const labelsOnly = {
     ...baseline, difficultyBucket: 3, difficultyConfidence: undefined,
     difficultyBoundaryFlag: undefined, legacyLevelCompatibility: undefined,
-    sourceStatus: "HOLD", metaBinding: "content", metadataConflicts: ["difficultyBucket"],
+    sourceStatus: "HOLD", metaBinding: "text", metadataConflicts: ["difficultyBucket"],
   };
   const opts = { useMode: "general" };
   const target = { difficultyBuckets: [3] };
@@ -173,7 +173,7 @@ test("one difficulty lane: an integer bucket passes for every caller unless a re
     assert.equal(core.rowMatches(labelsOnly, target, options), true);
     assert.equal(core.matches(labelsOnly, { difficultyBuckets: [2] }, options), false);
   }
-  assert.equal(core.difficultyEligible({ ...labelsOnly, sourceStatus: "VERIFIED", metaBinding: "exact" }), true);
+  assert.equal(core.difficultyEligible({ ...labelsOnly, sourceStatus: "VERIFIED", metaBinding: "text" }), true);
   // A recorded integer without any text binding is still usable (binding is a label).
   const unbound = { ...labelsOnly, metaBinding: "" };
   for (const options of [undefined, opts]) {

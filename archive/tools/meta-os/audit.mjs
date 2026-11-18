@@ -195,7 +195,7 @@ export function auditFields(records, dictionary) {
 //   subunitStrict  same, and the row carries a verified assignment (assignmentEvidence, i.e. the strict "basic" lane of
 //              build-archive2-catalog.mjs verifiedBasicAssignment: approved unit and subunit fields, evidence, reviewed parent)
 //   difficulty difficultyEligible(record, {useMode: "general"}) of archive/archive2-core.js: source VERIFIED or
-//              metaBinding "content", integer bucket 1..5, confidence high|medium|low, boundary NONE|B12|B23|B34|B45,
+//              metaBinding set, integer bucket 1..5, confidence high|medium|low, boundary NONE|B12|B23|B34|B45,
 //              compatibility NORMAL|BORDERLINE_ACCEPTABLE|STRONG_CONFLICT, no conflict on those four fields
 //   type (PT)  catalog problemTypeKey or metaHintPT is not empty (metaFacetsOf in archive2-core.js reads both)
 export const UTILIZATION_DEFINITIONS = {
@@ -232,7 +232,7 @@ const COMPAT = ["NORMAL", "BORDERLINE_ACCEPTABLE", "STRONG_CONFLICT"];
 const DIFFICULTY_CONFLICTS = ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility"];
 
 export function catalogDifficultyUsable(row) {
-  return (row.sourceStatus === "VERIFIED" || row.metaBinding === "content") &&
+  return (row.sourceStatus === "VERIFIED" || Boolean(row.metaBinding)) &&
     Number.isInteger(row.difficultyBucket) && row.difficultyBucket >= 1 && row.difficultyBucket <= 5 &&
     GENERAL_CONFIDENCE.includes(row.difficultyConfidence) &&
     BOUNDARY.includes(row.difficultyBoundaryFlag) &&

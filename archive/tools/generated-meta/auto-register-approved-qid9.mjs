@@ -696,7 +696,7 @@ const main=()=>{
     crossConceptRegistryRef:crossRegistry,conditionRegistryRef:conditionRegistry,
     sourceKind:'generated',
      integrationPattern:projectedIntegrationPattern,
-    difficultyBucket:ci.difficultyBucket,level:ci.level,problemTypeKey:pt,templateKey:tpl,
+    difficultyBucket:ci.difficultyBucket,...(ci.level!==undefined?{level:ci.level}:{}),problemTypeKey:pt,templateKey:tpl,
     ...(labels.length?{conditionEvidenceLabels:labels}:{}),
     ...(n===6&&slot==='B1'?{conditionRuleModifiers:['EVEN_INTEGER']}:{}),
     ...(missing.length?{crossConceptEvidenceLabels:missing}:{}),
@@ -745,7 +745,7 @@ const main=()=>{
       skipped++;continue;
      }
    const seed={
-    id:1,uid,level:ci.level,difficultyBucket:ci.difficultyBucket,
+    id:1,uid,...(ci.level!==undefined?{level:ci.level}:{}),difficultyBucket:ci.difficultyBucket,
     category,originalCategory:category,standardCourse:'공통수학2',standardUnitKey,
     standardUnit:category,standardUnitOrder:Number(standardUnitKey.slice(-2)),
     subUnitKey,subUnit:subLabel,subUnitConfidence:'candidate_evidence',

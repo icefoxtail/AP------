@@ -6,10 +6,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, readBank, readJson, writeJson, pad2, stripWs, CIRCLED, gitBlobSha1, parseCli, appendStatus, getPath,
-  loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage,
+  loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage, itemFingerprint, loadGuideExample, BOUNDARY_FLAGS,
 } from './lib.mjs';
 
 export const FIGURE_NEEDS = ['NONE', 'SELF_CONTAINED', 'NEEDS_FIGURE'];
+export const SOLUTION_FIGURE_NEEDS = ['NONE', 'NEEDS_FIGURE'];
 export const CODES_HOLD_CLASS = new Set(['FIGURE_MISSING']); // 판정은 맞지만 시험지를 내보낼 수 없는 사유
 export function reviewState(judgments, total) {
   const rows = [...judgments.entries()].map(([qid, j]) => ({ qid, ...(j.review || {}) }));
@@ -43,6 +44,8 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
   const { bank, text: jsText } = readBank(jsPath);
   const candDir = candidatesDir || path.join(path.dirname(judgmentDir), 'candidates');
   const dictionary = loadTermDictionary(repoRoot);
+  const example = loadGuideExample();
+  const exampleTexts = example ? [example.how, example.typeReason, example.rpmReason, example.difficultyReason, ...(example.solveSteps || [])].map(stripWs).filter(Boolean) : [];
   const examCodes = [];
   const examMeta = fs.existsSync(path.join(candDir, '_exam.json')) ? readJson(path.join(candDir, '_exam.json')) : null;
   if (!examMeta) examCodes.push({ code: 'FIELD_EMPTY', msg: `후보 폴더가 없습니다: ${candDir}`, severity: 'FAIL' });
@@ -70,6 +73,10 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     const texts = { stem: it.content, choices: (it.choices || []).join('\n'), solution: it.solution };
     const strippedTexts = Object.fromEntries(Object.entries(texts).map(([k, v]) => [k, stripWs(v)]));
     const itemTokens = itemTokenSet([it.content, ...(it.choices || []), it.solution, it.answer]);
+
+    // 0. 이 문항의 판정인가 (빈 틀을 만들 때의 문항 지문과 같고, 가이드 예시 글이 아니다)
+    if (j.itemFingerprint !== itemFingerprint(it)) add('STALE_OR_EXAMPLE', '판정 틀의 itemFingerprint 가 현재 문항과 다르거나 없습니다. 이 문항의 틀이 아니거나 문항이 바뀐 뒤입니다. build-candidates --force 로 틀을 다시 만들어 처음부터 쓰세요.');
+    else if ([j.how, j.typeReason, j.rpmReason, j.difficultyReason, ...(Array.isArray(j.solveSteps) ? j.solveSteps : [])].some(s => nonEmpty(s) && exampleTexts.includes(stripWs(s)))) add('STALE_OR_EXAMPLE', 'JUDGMENT_GUIDE.md 예시와 글자가 같은 문장이 있습니다. 예시를 베끼지 말고 이 문항을 읽고 쓰세요.');
 
     for (const b of findBrokenStrings(j)) if (b.kind === 'CTRL_CHAR') add('CTRL_CHAR', `${b.path} 에 깨진 제어문자(탭·폼피드·백스페이스 등)가 있습니다. 역슬래시를 \\\\ 로 쓰세요.`);
 
@@ -101,6 +108,13 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
       if (!nonEmpty(j.figureEvidence)) add('FIELD_EMPTY', 'figureEvidence(발문 인용)가 비었습니다');
       else if (!isQuote(j.figureEvidence, ['stem', 'choices'])) add('QUOTE_NOT_SUBSTRING', 'figureEvidence 가 발문·보기에 그대로 있지 않거나 4자 미만입니다');
       if (j.figureNeed === 'NEEDS_FIGURE' && !itemHasImage(it)) add('FIGURE_MISSING', `그림이 필요한 문항인데 image 가 없습니다${it.problemPlanRef ? ' (plan 은 있으나 아직 그림 파일 없음)' : ''}`);
+    }
+
+    // 3b. 해설 그림 (NEEDS_FIGURE 여도 보류하지 않는다 — 해설 그림은 나중에 그림 줄에서 만든다)
+    if (!SOLUTION_FIGURE_NEEDS.includes(j.solutionFigureNeed)) add('FIELD_EMPTY', `solutionFigureNeed 는 ${SOLUTION_FIGURE_NEEDS.join('|')} 중 하나여야 합니다`);
+    else if (j.solutionFigureNeed === 'NEEDS_FIGURE') {
+      if (!nonEmpty(j.solutionFigureEvidence)) add('FIELD_EMPTY', 'solutionFigureEvidence(해설 인용)가 비었습니다');
+      else if (!isQuote(j.solutionFigureEvidence, ['solution'])) add('QUOTE_NOT_SUBSTRING', 'solutionFigureEvidence 가 해설에 그대로 있지 않거나 4자 미만입니다');
     }
 
     // 4. 단원
@@ -139,7 +153,8 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     // 7. 난이도
     if (![1, 2, 3, 4, 5].includes(j.difficultyBucket)) add('FIELD_EMPTY', 'difficultyBucket 은 1~5 정수여야 합니다');
     if (!['high', 'medium', 'low'].includes(j.difficultyConfidence)) add('FIELD_EMPTY', 'difficultyConfidence 는 high|medium|low 여야 합니다');
-    if (!['하', '중', '상'].includes(j.level)) add('FIELD_EMPTY', 'level 은 하|중|상 이어야 합니다');
+    if (!BOUNDARY_FLAGS.includes(j.difficultyBoundaryFlag)) add('FIELD_EMPTY', `difficultyBoundaryFlag 는 ${BOUNDARY_FLAGS.join('|')} 중 하나여야 합니다`);
+    else if (/^B\d\d$/.test(j.difficultyBoundaryFlag) && ![Number(j.difficultyBoundaryFlag[1]), Number(j.difficultyBoundaryFlag[2])].includes(j.difficultyBucket)) add('FIELD_EMPTY', `difficultyBoundaryFlag ${j.difficultyBoundaryFlag} 는 difficultyBucket 이 ${j.difficultyBoundaryFlag[1]} 또는 ${j.difficultyBoundaryFlag[2]} 일 때만 쓸 수 있습니다`);
     if (!nonEmpty(j.difficultyReason)) add('FIELD_EMPTY', 'difficultyReason 이 비었습니다');
 
     // 8. 4칸
