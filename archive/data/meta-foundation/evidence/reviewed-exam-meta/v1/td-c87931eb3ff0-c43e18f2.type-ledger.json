@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c87931eb3ff0-c43e18f2",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학2/비상_공통수학2_선분의내분과직선_중단원학습점검_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_945f499ff7044fc798e57f96aa15fa007c9dbf7034df94800657d5b39b692a4c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_INTERNAL",
+      "step": "각 선분 방향에 맞춰 반대쪽 비를 곱한 내분점 좌표 공식을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2dfbc63925171a200d36dea37af90ebd10dde465d96eeac315d9f122b22682f2",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_POINT_SLOPE",
+      "step": "주어진 기울기 또는 두 점에서 계산한 기울기를 지나는 점의 점기울기식에 넣는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d37faf51014c980cc085be4e7c4c5ba15ad2a78464de49250c16d758312a583f",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_EQUATION_SLOPE",
+      "step": "평행인 경우 같은 기울기,수직인 경우 음의 역수를 정해 각 점기울기식을 세운다.",
+      "note": "새 TPL 제안: 평행·수직 직선 기본 구성 묶음: 여러 소문항에서 평행 또는 수직 조건으로 기울기를 정하고 점기울기식을 구성한다. / check-ledger: TPL_NOT_ACTIVE(null template; 선택 PT는 ACTIVE)",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_55f7ce10fe97d6405c018baae257a837ab7db0ee4e4d16641e77b3e640abd943",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+      "step": "점과 직선 사이 거리 공식에 (3,-1)과 법선 (5,-12)를 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1fb58f8b5107cef1da8c814379d60c75d80c83427d84a8de3f53363ab88a615f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_APPLICATION",
+      "step": "내분점 P와 중점 M의 좌표를 구한 뒤 두 점 거리 공식을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7d5a0e5e82753a3c2af4be08ad0969ad0e613006183b1dcd186359f8562f2980",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_AREA_POINT",
+      "step": "직선의 두 절편 4k,2k를 구해 좌표축 삼각형 넓이 4k²=100으로 계수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_513e0f3826c82a0b542eed7744e83e16deb1d59b3eb587c408fad71c542d5598",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "step": "세 좌표의 평균 G=(2,1)을 구하고 평행조건의 기울기3으로 직선을 세운다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3d80d3e0d5c0d97a2114103fd0e5805eab45bc1b6496da942c5a82ff59a2bef5",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "step": "내분점 P=(3,0)와 AB에 수직인 기울기 -1을 구해 목표 직선을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a30e9f320a4cd62ff071b001d765db21339e51992306ef606730a6ad22f8acb0",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_AREA_BISECTING_LINE",
+      "templateKey": "TPL_AREA_BISECT_TRIANGLE",
+      "step": "같은 높이의 두 삼각형 넓이가 같으려면 반대변의 중점을 지나야 하므로 O와 AB 중점을 연결한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_03ee302bc17ce8ee565e8d64e31a0fc333e13fa8138115bd0dc43058d7064235",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_CONDITION_PARAMETER",
+      "step": "평행 직선을 2x+3y+k=0으로 놓고 교점 (-1,2)와의 거리식을 √13에 맞춘다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a457a1d55d6897238ab1ec265a038bc63946edebd2f00a3ba6ad1a75f636a3e1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_GEOMETRY_RATIO",
+      "step": "닮은 삼각형 넓이비9:1에서 길이비3:1을 얻어 AB,AC의 1:2 내분점을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_699ec44ddd8b5e6cfedb23013e2ba5ec5046d8d0b8a27f993473aae663470737",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_POLYGON_DISTANCE",
+      "step": "꼭짓점 거리들을 비교해 최대를 정하고 각 변에 대한 수선의 발이 선분 안인지 확인하여 최소거리를 정한다.",
+      "note": "새 TPL 제안: 다각형 경계까지 거리 극값: 최대는 꼭짓점 거리로 비교하고 최소는 각 변 수선의 발의 선분 포함 여부와 끝점을 비교한다. / check-ledger: TPL_NOT_ACTIVE(null template; 선택 PT는 ACTIVE)",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    }
+  ]
+}

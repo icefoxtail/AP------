@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 26,
-  "templateCount": 53,
+  "problemTypeCount": 27,
+  "templateCount": 65,
   "problemTypes": [
     {
       "problemTypeKey": "PT_H22A_01_ROOT_REAL",
@@ -654,6 +654,32 @@
           "course": "대수",
           "semanticL3": "수학적 귀납법",
           "semanticL4": "등식 증명"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_ALGEBRA_SET",
+      "canonicalLabelKo": "집합",
+      "definition": "원소의 닫힘과 유한성 조건을 이용하여 집합을 구성하는 원소의 구조를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_e83566bb45c86696cbcd8a9f516e207f008fe7c1eede32d5a217c9740ce40fcf"
+      ],
+      "sourceUnits": [
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_ALGEBRA_SET",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
         }
       ]
     }
@@ -1930,6 +1956,352 @@
         "semanticL3": "수학적 귀납법",
         "semanticL4": "부등식·나눗셈 증명"
       }
+    },
+    {
+      "templateKey": "TPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+      "parentProblemTypeKey": "PT_H22A_01_COMMON_LOG",
+      "canonicalLabelKo": "상용로그값 대입",
+      "definition": "밑이 생략된 로그가 상용로그임을 이용해 알려진 로그값 또는 log10을 식에 대입한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_6c9e0c3e94c105917931d21943ff98190e41e3a4153bf13cfbacc9d6284c2f8d",
+        "qid_v1_e32f33b41ed6865af932169d451619ef47b508fa357f6807fa50bd8377c0e73d"
+      ],
+      "sourceUnits": [
+        "H15-M1-02",
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_01_ROOT_REAL_PRIME_EXPONENT",
+      "parentProblemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "canonicalLabelKo": "제곱 세제곱 동시조건",
+      "definition": "완전제곱과 완전세제곱이 되는 소인수 지수의 배수 조건을 동시에 만족시키는 수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_9468ce75e2fe5e49aae09a4bf96d5c4ec2a956c0c9879a543e3410a3bfc63e00",
+        "qid_v1_c0c30bac2bababf00d59f2710af85ef80f448c633bf2bbd4c1946b0d4a4e1a82"
+      ],
+      "sourceUnits": [
+        "H22-A-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_01_ROOT_REAL_PRIME_EXPONENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_04_TRIG_EQUATION_TRIG_MIN",
+      "parentProblemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "canonicalLabelKo": "삼각치환 이차식 최솟값",
+      "definition": "삼각함수 치환변수의 범위에서 이차식 최솟값을 구해 부호 조건을 제한한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_f4d4cdf0aa14d45f6b5004277ec2c4a578ea67ad255410ca62313bf6a3c6e312"
+      ],
+      "sourceUnits": [
+        "H22-A-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_04_TRIG_EQUATION_TRIG_MIN",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_QUADRATIC_TRIG",
+      "parentProblemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "canonicalLabelKo": "삼각함수 이차식 극값",
+      "definition": "각을 통일해 사인·코사인 변수로 치환하고 제한구간에서 이차식 극값과 대응각을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_445708bb9e06314aa3ad840d72ff41404f01760303b56173c5459063848fa52e",
+        "qid_v1_4e1f6e987b4a6ac81537e63f1ab762e6ffcf1dd20c307794d0a364b24bf80b35",
+        "qid_v1_d0e5dd703c68694ae264b22b5e58ad06ccda21d35c49cc8d909910ec86213a4e",
+        "qid_v1_e5c05ccdc7524258f54a27ee73289ca9411db131c7b75908617d14cac0eef20c"
+      ],
+      "sourceUnits": [
+        "H22-A-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_04_TRIG_PROPERTIES_QUADRATIC_TRIG",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_TRIG_COMPARE",
+      "parentProblemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "canonicalLabelKo": "삼각함수 단조성 비교",
+      "definition": "구간의 삼각함수 증감·기본 부등식으로 값을 비교하고 필요시 지수·로그 단조성에 적용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_24157f3a2f35e533d96a78905237a616df1ff6decf30807b2f534ae4a85a5682",
+        "qid_v1_301fd571294b0cb1c4381b10334a8c4da4d0e1a5a18ec5e81cd7e74614d55c9a",
+        "qid_v1_50faf9d4089872e3470c5922c010fb0537f47017d3f6bfe4c38967ef9548930b",
+        "qid_v1_b80be1037544e9db6ebd577eac44475662ad9ee35bee1747b9e9869a90cbf24c"
+      ],
+      "sourceUnits": [
+        "H22-A-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_04_TRIG_PROPERTIES_TRIG_COMPARE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_05_SINE_LAW_SHAPE",
+      "parentProblemTypeKey": "PT_H22A_05_SINE_LAW",
+      "canonicalLabelKo": "삼각형 판별",
+      "definition": "사인법칙으로 사인 관계를 변 길이 관계로 바꾸고 등차·중근·제곱합 조건에서 삼각형의 종류를 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_2e8b44b496b620c3a54ed62d3111837e0d07c94cf18e3611a7229f608aff4c5d",
+        "qid_v1_729216a626543f749b23d7c12ecda24f249a09bee26c0f880b5f559c1a2773b5",
+        "qid_v1_99e45f2997ea41a9f57e1dfba28381b58a96033d404cb21127779a76000ab6af",
+        "qid_v1_bfa6e00567de93cdce00fd5c482e25cc49add9811373789d3f3d2284d8ccfc2a"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_05_SINE_LAW_SHAPE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_05_TRIANGLE_AREA_CIRCUMRADIUS",
+      "parentProblemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+      "canonicalLabelKo": "넓이와 외접원 반지름",
+      "definition": "사인법칙과 삼각형 넓이 공식을 연결한 abc=4RΔ로 외접원 반지름 또는 변의 곱을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_d18acef8dcb15d2172209e0e02c09d820a720087e62e91a5e6770cb3cec19922"
+      ],
+      "sourceUnits": [
+        "H15-M1-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_05_TRIANGLE_AREA_CIRCUMRADIUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_05_TRIANGLE_AREA_INRADIUS",
+      "parentProblemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+      "canonicalLabelKo": "내접원 반지름",
+      "definition": "코사인법칙과 삼각형 넓이식으로 넓이를 구한 뒤 반둘레로 나누어 내접원 반지름을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_3cf53358990b393f48797ebc27c99d8d83d10f414ed6097de63bff4a780ddcbd",
+        "qid_v1_7ac249ad300cc046b3aaf0cf0bcec34ed90c1e185e1fec9c5e68ee2f0f4c42a9"
+      ],
+      "sourceUnits": [
+        "H22-A-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_05_TRIANGLE_AREA_INRADIUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_07_DIFFERENCE_SEQUENCE_PARTIAL_SUM",
+      "parentProblemTypeKey": "PT_H22A_07_DIFFERENCE_SEQUENCE",
+      "canonicalLabelKo": "부분합 차",
+      "definition": "첫항은 S1으로 따로 구하고 n≥2에서 Sn-S(n-1)로 일반항을 복원하여 항이나 구간합을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_2094aa94bb0244548e17ed0f9aa63339e7a00de72ee8bb1be9454edb2b36ade0",
+        "qid_v1_34c1f131c466e1a020b98f871c9c70cfe49fbc4931672e8859f22b7f53553d4e",
+        "qid_v1_5830d0a2043f4baf68e10b9e5899edfafbc7018837efc8dc7f2d4cea31e75c12",
+        "qid_v1_63e6cd212f7507e1e9e682425b69942d1a1b21726eff0091cac89160c0dcf04a",
+        "qid_v1_6fdbbbf9cc32a2475a2b7b8433b41bf0567d2a47990cc6257c562020c8f00f65",
+        "qid_v1_7eeb1bb39a654f89680172ad872956a68fbf018bf4ff01d536870f2fc887f98b",
+        "qid_v1_e0230ba7ac052ff18c345bfc34e3e09adf29f7aab8f6ebba28f54085fc0ae6f3",
+        "qid_v1_e070388a13993b878edc60a9f216224e6e31857d97cd57f22811425579b01eca",
+        "qid_v1_e987012a19262ea8c21ce768d861c86f3a483d6ced3fe32301736fb068bed060"
+      ],
+      "sourceUnits": [
+        "H15-M1-08",
+        "H15-M1-10"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_07_DIFFERENCE_SEQUENCE_PARTIAL_SUM",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_REACHABLE",
+      "parentProblemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+      "canonicalLabelKo": "귀납 전이 도달 지표",
+      "definition": "기초 명제에서 허용된 지표 변환을 반복하여 참임이 보장되는 지표를 찾는다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_df42f5b20ec33ab598512c27311ddfdbecf31a45f0c322767763daa5270cb532",
+        "qid_v1_f2175fa6ada8c1f860f635c67ae2ac008f5b664dbc0f9482d603f3283d8195a7"
+      ],
+      "sourceUnits": [
+        "H15-M1-11"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_08_MATHEMATICAL_INDUCTION_REACHABLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_BRANCH",
+      "parentProblemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "canonicalLabelKo": "분기와 주기",
+      "definition": "정수 여부·나머지에 따른 점화식을 추적하여 첫항·주기·부분합 조건을 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_864cff2909bab207e900d9afd09f8a77419e38d5c72fbe6a432cdaa0da89af39"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_08_RECURSIVE_SEQUENCE_BRANCH",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_H22A_08_RECURSIVE_SEQUENCE_SUM",
+      "parentProblemTypeKey": "PT_H22A_08_RECURSIVE_SEQUENCE",
+      "canonicalLabelKo": "점화식 합",
+      "definition": "점화식을 합하거나 자식항·인접항을 묶어 합의 반복 구조로 목표 합을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "ALGEBRA_2022",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_39c979ff93f03b73e262387ff9bc9cb33ee3e4d73d3ad08414a92a3762a3e1c5",
+        "qid_v1_815fe636a281af5544468712b3fea573c1cd4637695732c1f86a422113fdb2dd",
+        "qid_v1_9837145266323c3ebd8f79cd968ed9447115ef3e251e8dc72bdd108193b65e1e"
+      ],
+      "sourceUnits": [
+        "H15-M1-10",
+        "H15-M1-11"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_H22A_08_RECURSIVE_SEQUENCE_SUM",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "ownerPack": "ALGEBRA_2022"

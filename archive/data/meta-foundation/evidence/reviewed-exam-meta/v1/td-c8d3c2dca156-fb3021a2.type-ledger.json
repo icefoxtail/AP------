@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c8d3c2dca156-fb3021a2",
+  "sourceArchiveFile": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "두 할선각은 먼 호144도와 가까운 호36도의 차의 절반이므로 x=54도이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0a276f5894e6ce31198f1003708d4d22106c9878656370df9171afd4c2a241ae",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+      "step": "여덟 자료 가운데 두 값13의 평균으로 a=13을 구하고 최빈값11과13의 합 b=24를 빼 -11을 얻는다.",
+      "note": "필요 TPL: 짝수 자료 중앙값과 복수 최빈값 결합; 가운데 두 자료 평균과 최고도수인 모든 자료값을 계산하여 결합한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de15991d27fe79fbae983e4eec0dd36b58423e6f33ebcd64420862cb816441ff",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_DISPERSION_DEVIATION_PROPERTIES_RESTORE",
+      "step": "편차합0으로 2x²+x-3=0을 세워 정수근1을 고르고 평균74에 지민 편차2를 더한76과 정국 편차1의 합77을 구한다.",
+      "note": "필요 TPL: 편차 합으로 성적 복원; 편차합0에서 미지수를 결정한 뒤 평균에 편차를 더해 원자료를 복원한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f356e2d9ce1aea574b14dbdc938583cf7ffdf6d693e746af0babdafaf7c06322",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균3m을 빼 얻은 -2m,-m,0,m,2m의 제곱합10m²을5로 나누고 m>0에서 표준편차 √2m을 구한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fd5404eccb4d1b0708c1cb2f1809afbe9d89257c8d58a08d39a78d4b4f9a146e",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균7에서 a+b=9, 분산10에서 a²+b²=45를 얻고 (a+b)²=a²+b²+2ab로 ab=18을 구한다.",
+      "note": "새 PT 제안: 분산 조건으로 미지 변량 결정; 매개변수를 포함한 원자료의 평균과 편차 제곱합을 식으로 세워 주어진 분산에서 미지수를 결정한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1faaa4e7d60d063b5e0b9687655a1bdb29031ede1f021e57be7ef2d0a67842f3",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "1회횟수 x≥5인14점을 분모로 잡고 그중 y<7인7점을 세어 조건부 비율1/2를 구한다.",
+      "note": "새 PT 제안: 산점도의 조건별 점 개수와 비율; 산점도의 각 점을 두 변량의 부등식 조건으로 선별하여 개수 또는 조건을 만족하는 집단 대비 비율을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2f02a4d768cb89d678913711010fecc8d6784600146acbefa948e88188eb9cf8",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "기온-난방비와 같이 반대방향으로 변하는 위도-기온, 석유생산-가격, 고도-산소량인 ㄱㄴㅁ을 음의 상관으로 고른다.",
+      "note": "새 PT 제안: 상관관계의 방향과 유무 판정; 두 변량의 동반 증가·감소 경향을 산점도 또는 생활 맥락에서 읽어 양·음·무상관을 구별한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_40aa1327b3aeda600f2226057de38a1988b8382da15cd58d43abc7bfbdd79310",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+      "step": "원주각126도가 보는 큰 호252도를 전체에서 빼 작은 중심각108도를 얻고 접점 두 직각의 사각형에서 P=72도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_394ff29211c45f0ab889b9adf7c181abb4e8e16aefed7bdfb6e0efb97f35cdfa",
+      "sourceOrdinal": 24,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "여섯 자료 평균14를 빼 편차4,-5,2,4,-4,-1을 얻고 제곱합78을6으로 나누어 분산13을 구한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE, DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_23d51282f0586ab9f9e83cad07d8a0a004fa251c5bcec6f637e9338a78d64ac2",
+      "sourceOrdinal": 25,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "두 집단 평균이 모두0이므로 제곱합은3과9이고 합친6개 자료의 분산12/6=2에서 표준편차√2를 구한다.",
+      "note": "새 PT 제안: 여러 집단을 합친 자료의 분산; 각 집단의 자료 수·평균·분산에서 합과 제곱합을 구하여 합친 자료의 분산·표준편차를 계산한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

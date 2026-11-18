@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 8,
-  "templateCount": 14,
+  "templateCount": 18,
   "problemTypes": [
     {
       "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
@@ -392,6 +392,122 @@
       ],
       "supportingSourceQuestionRefs": [
         "21_순천고_1학기_중간_고2_수학I:q16"
+      ]
+    },
+    {
+      "templateKey": "TPL_RADIAN_SECTOR_GEOMETRY_COMPOSITE",
+      "parentProblemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "canonicalLabelKo": "도형 결합",
+      "definition": "접선·삼각형·원주각 관계로 반지름과 각을 정한 뒤 부채꼴이 포함된 영역의 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "TRIGONOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_2058ae022c8319b5710356b79ae216f2fc46610228016a7f82ebfe6d2cb1d025",
+        "qid_v1_218ad7bd835c6e0a0f920856f843e7d153579e9e8cdeb71b06557db44a634856",
+        "qid_v1_738b5111ae958806c3f614405ed9b9032fb4b842360291807d20cc55bfb03568",
+        "qid_v1_78d29f07f29a1600945accd08ad64fca74f365b633b41eaa2c7853ad57ca29d6",
+        "qid_v1_c33e4b54f2eb714acf2b8c7e2466f425951f1ab62157242b784c123699153757"
+      ],
+      "sourceUnits": [
+        "H15-M1-05",
+        "H22-A-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_RADIAN_SECTOR_GEOMETRY_COMPOSITE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_RADIAN_SECTOR_GEOMETRY_FORMULA",
+      "parentProblemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "canonicalLabelKo": "호와 넓이",
+      "definition": "호 길이 rθ와 넓이 r²θ/2를 이용하여 반지름·중심각·부채꼴 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "TRIGONOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_175a2fe7da3fa729e7c58a98c8cbd29f610ca27f0b30996ad83c92a9008c4b6a",
+        "qid_v1_5c385285f79a008c072906d46d0b384a9ad567bc2789a49fb72fb68e9abbd4cc",
+        "qid_v1_5e502418f2fe2bdbfb5925fd335ec652ecd6f015f95deb454bd3e0c4cea8016d",
+        "qid_v1_e0f76ba10dc02f0358a9e5011ad5f424f00b2537e82808c6460407a10940c53b"
+      ],
+      "sourceUnits": [
+        "H15-M1-05",
+        "H22-A-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_RADIAN_SECTOR_GEOMETRY_FORMULA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_COUNT",
+      "parentProblemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "canonicalLabelKo": "삼각식 근 개수",
+      "definition": "삼각함수 치역·주기와 수평선 교점 수를 이용해 방정식의 근 개수에 맞는 매개변수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "TRIGONOMETRY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_fa0c518475d67cc657dd157016d12993813d6027dcf862d0a095b70e2be4f472"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TRIGONOMETRIC_EQUATION_COUNT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TRIGONOMETRIC_RELATION_ANGLE_FORMULA",
+      "parentProblemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "canonicalLabelKo": "덧셈과 배각",
+      "definition": "사분면·도형 조건으로 삼각함숫값을 정하고 덧셈·차각·배각 공식을 적용하여 목표값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "TRIGONOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_7b1853e5a99727482e74573679693fb4e8f628e5265fdcc91809a3d87f622b60",
+        "qid_v1_e40fe340613e1f32d88dc11e0d9d7a512f75b263e40204df0b45ffdb9c66f1ed"
+      ],
+      "sourceUnits": [
+        "H15-M1-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TRIGONOMETRIC_RELATION_ANGLE_FORMULA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],

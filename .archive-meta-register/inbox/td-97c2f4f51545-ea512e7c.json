@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-97c2f4f51545-ea512e7c",
+  "examUid": "비상_기하_도형의방정식_중단원학습점검_고2",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_도형의방정식_중단원학습점검_고2/비상_기하_도형의방정식_중단원학습점검_고2.js",
+  "expectedSourceBlobSha1": "3921f9c69bf17ac34e7c84d47923445deee99776",
+  "expectedQuestionCount": 11,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+        "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_af52fa80f1766b28f272115ed343697a070d7132c4a57abe4bb7b675afc49045",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_EQUATION"
+      },
+      "rationale": "주어진 점 P와 법선 n에 n·(r−P)=0을 적용하고 평행한 평면은 법선을 공유함을 이용한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "8084863b24dda65b1933e296139e3de4566dd94b4048a54f47eecfe77b2e1df4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_745f62f04e2182bc2bd6915ef426e91cbefa3f6b6ea81242ea92862ba613585c",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "자기 내적을 거리 제곱으로 해석해 |p−c|=√5이므로 중심 (1,−3,2)·반지름 √5인 구임을 판별한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "e2de2709fea88d2d718efb0d2aa7426accdc9f0adb195907915ac1484ec0f508",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_82597075596cebaa73c2e4be469410ad954eed074ac1df8f5c742e2be3e0d682",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_LINE"
+      },
+      "rationale": "직선을 (−1,1,0)+t(2,−3,3)로 매개화해 z=0·y=0에서 t=0·1/3을 구하고 거리 √22/3을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "2d9c6487c14f210c7ca1b0b16414c8e19b441546d0e33c4f5c230220800ba26b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e57079a991588b48dd960d7ed7874c7cdbcf4d4d9bf0688441d47272d02f28af",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+        "templateKey": "TPL_GEO_PLANE_VECTOR_DOT_ZERO"
+      },
+      "rationale": "방향벡터 (3k,−5)와 (2k+1,k²)의 내적을 0으로 놓아 k(k+3)=0을 풀고 k=0을 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "529db5ca87c3e87300a99080db9d8aa714258e44639e9e9e36e5b440a482d394",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d99909bc06e83f55eaf93915fd1d7701787a59ed5dc1d57fb4a218614a624c98",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_EQUATION"
+      },
+      "rationale": "AH=(4,−2,−3)을 법선으로 삼고 H=(3,−2,−1)을 지나게 하여 평면식 4x−2y−3z−19=0을 쓴다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "ef03c588b4961d25b2bed327660bebd70acc354d438bcacbf2f62d150c3530aa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_92e8d4934b5e4beee8ac4f75af2180a2fdb30fc3daa3edbb8460e28374866bf8",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_PLANE_EQUATION"
+      },
+      "rationale": "OA·OB·OP를 좌표축으로 잡아 평면 x+y+2z−20=0을 세우고 원점과 평면 거리 20/√6을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "af90b80c87745614bcdc628cbf647aa3dbebe3637c8cb62f86fc3b1b8dc6186c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7333f2f7079cf2dd76d46059208c61aa3a71d3e3b3f97237baecaaffa6050234",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_LINE"
+      },
+      "rationale": "직선 (t+2,3t−1,t+2)을 두 평면에 대입해 t=2·3을 얻고 지름 √11에서 구의 부피를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "53238fbe922d1a2a27dbfafc315e6284b15e0428a8458184f0705a527245723e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_60186d3edcedadf9833dcd41e3915ff556bc9a924fac8a8df9790080ef070aea",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "TPL_GEO_SPACE_FIGURE_LINE_PLANE"
+      },
+      "rationale": "AB=(2,1,1)와 법선 (1,−1,2)의 내적으로 법선 방향 성분을 구하고 √(6−9/6)=3√2/2로 투영길이를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "426bbb2321514bf8d8a6b543832e77cb65604255125aff1bda249d0e0827e749",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_06a33781d9e1af9fe3a0d72847414267b3efbff6151505adaeadd0656b3a2234",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_GEO_SPHERE"
+      },
+      "rationale": "구 중심 (2,−3,−1)과 반지름 4를 읽고 평면까지 거리 √14를 구해 단면 반지름 √(16−14)를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "기하"
+      },
+      "textBindingFingerprint": "cc0078239f089e501f72cc132f91362585109111980a79b4c85954fe6ec13c0f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97c2f4f51545-ea512e7c.type-ledger.json",
+          "sha256": "72343affb52923383b947f00c5c984519a2e39113062575f412afc998220ace6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-91a493e47bb7-ecfb7ce5",
+  "sourceArchiveFile": "original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2f2ac96fae9f2cb915bcce3adf7fafaedecf67a475200f8b7041ec5c0e0680c0",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "직각삼각형에서 x²=25²-7²=576이므로 양의 길이24를 취한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d1579e2a5f8b941a2e2bc74f5089f0da9914e8835ab9340b6c406d6d330643b1",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "피타고라스로 나머지 직각변9를 얻고 두 직각변 반원 넓이 합에서 공통 원호 조각을 상쇄하여 초승달 넓이를 삼각형 넓이54로 바꾼다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_55e7aff607f07f9265ebf9224828dac40636463a5b097a6c6ba9488af97d58cf",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "작은 직각삼각형에서 AC²=17²-8²=225를 얻고 큰 삼각형에 AB²=15²+20²를 적용하여25를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6adb01f4664e9786530f89e8d36a86754c1dba2cf50dc6fae417498ef0c5902f",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "세 정사각형 넓이를 세 변의 제곱으로 보아 빗변 위 넓이35에서 다른 직각변 위 넓이20을 빼15를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5acb0df561671eb2a4f050a1b184c66b57292eeb42c9e3e92c614169518757ed",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+      "step": "가장 긴 변의 제곱을 나머지 두 제곱의 합과 비교하여1²+(4/3)²=(5/3)²인 첫 삼각형만 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3cde11625f9c7fc9aadb4e136a18cd26185afc36302ef7b3af0dfc6fc0a71147",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "서울 네 장소와 부산 세 장소 중 한 곳을 고르는 서로 겹치지 않는 선택을 합해4+3=7을 구한다.",
+      "note": "원문의심: 발문 말미 '서울 또는 부산 중에서 한가지'가 도시 자체 선택2가지로도 읽힌다. 해설은 세부 장소7가지 선택을 의도한다. 새 PT 제안: 배반인 선택의 합의 법칙. 서로 동시에 선택하지 않는 범주별 경우를 나누어 각 경우의 수를 더한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f8c9e64bb8ef6969258441d22088cabd385b69edd831a176d6e3906c10a305e4",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_ELIMINATION",
+      "step": "네 직각삼각형의 제곱식을 써서 a²-b²=BO²-DO²=7²-9²=-32로 공통 길이를 소거한다.",
+      "note": " 새 TPL 제안: 피타고라스 정리·역 및 도형 활용의 직접 풀이. 정의: 네 직각삼각형의 제곱식을 써서 a²-b²=BO²-DO²=7²-9²=-32로 공통 길이를 소거한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

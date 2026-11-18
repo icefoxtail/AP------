@@ -1,8 +1,8 @@
 {
   "schemaVersion": "meta-foundation-taxonomy-v1",
   "status": "ACTIVE",
-  "problemTypeCount": 6,
-  "templateCount": 13,
+  "problemTypeCount": 11,
+  "templateCount": 36,
   "problemTypes": [
     {
       "problemTypeKey": "PT_GEO_HYPERBOLA",
@@ -96,6 +96,207 @@
         "qid_v1_d07ff4ff3245375d2eb05db970627445c76be2fa860fc3bd23e9ad1a43f6b00e"
       ],
       "supportingItemCount": 4
+    },
+    {
+      "problemTypeKey": "PT_GEO_PLANE_EQUATION",
+      "canonicalLabelKo": "평면의 방정식",
+      "definition": "한 점과 법선벡터의 내적 관계로 평면식을 세우거나 점에서 평면까지의 거리를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_81ad6c42ee66dc492f0ba011a8f0a194665eb9b6068304e6426b021865efc44c",
+        "qid_v1_92e8d4934b5e4beee8ac4f75af2180a2fdb30fc3daa3edbb8460e28374866bf8",
+        "qid_v1_af52fa80f1766b28f272115ed343697a070d7132c4a57abe4bb7b675afc49045",
+        "qid_v1_d99909bc06e83f55eaf93915fd1d7701787a59ed5dc1d57fb4a218614a624c98",
+        "qid_v1_edd47599b0ea0910cb12fcc8bc976ffdf0caae87767f66ddd0a03a97ebf3460b"
+      ],
+      "sourceUnits": [
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_GEO_PLANE_EQUATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GEO_SPACE_COORDINATE",
+      "canonicalLabelKo": "공간좌표",
+      "definition": "공간의 세 좌표 성분과 거리·내분·대칭 관계를 이용해 점의 좌표 또는 거리를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 24,
+      "supportingQuestionUids": [
+        "qid_v1_00a837b0a6aad6bd8389087c49627dea4da055e0397a256e5b06a1cab119fc85",
+        "qid_v1_21c611bd5948385d504f63d6fe26c42f3f70bfc678b5740be157aa4da961f348",
+        "qid_v1_24094920c7be7fe651cb75a4daf493aa9085ed10e20c6cfb358acf1c392fb651",
+        "qid_v1_2cce6170d09fa6f83f462fd2ce0a0847a3245a41689f01cf7cc4f941749342e8",
+        "qid_v1_2d67f2efaaed37781e9ef2b007fbc8ac0ab3e452a9f3b8ab620588e0ca28190b",
+        "qid_v1_34601fcc07a7da4276e3df8e2ff8c5188b671596cb97e424040532bb51059597",
+        "qid_v1_6ed33d6b72196223d549bc8fbb049b29d233da79c3da58e7a21ee3e990a07692",
+        "qid_v1_724630ebaaf09076da440c58249e6ae7465fbb6b2fdd6ecee1af1e628380f09d",
+        "qid_v1_80519a39441ad3cfdb206c7234d4e206141d189ec8303be6ca72187a7e696078",
+        "qid_v1_9817a91c6dc2c3f04f0030e9ecbe6cbf8b1f7715acfa85aa1e1736b346a46405",
+        "qid_v1_9d26ba9e7aabc76a803355f16ff15686060664edf5902ebec73f5c1b88dc4fe8",
+        "qid_v1_9f429c7740f301fd24c31ad98574cfac1904550180f0303066e41340bcae27fc",
+        "qid_v1_a1dc34f0f275c2e82f0427dd6eae2a9c1789768c6eab3d2cbf255c5be4467853",
+        "qid_v1_ab4980aa22d7b26bd4ef314f4451287ad1991528caef9b4fdc1665452985d25f",
+        "qid_v1_c1f0ae8b8b729c0fa7ae69f5686c3a797a8179df0cfde615c89b2c56810b8e6c",
+        "qid_v1_c2f200ce13c2265788667238800f6709693dbc0ddee23564ed0d8660b50690c3",
+        "qid_v1_d358f12159970d4d0feec1b53d0eba0251b10a318b8a320a2a3af563fb2793e2",
+        "qid_v1_de54c419cb25d04cd092b3723f141799e4ae4145b49863a94138f4f9408fd69a",
+        "qid_v1_e3ed15840388a3cde2afb38638d374edd5f24b62474ff25359267915320f4dc0",
+        "qid_v1_ee1e7a70a5d9192101a6c4f0a83dcdb477de5b5a6ab7007199274f55e26ab9a5",
+        "qid_v1_f00cfa0cfb5682ff09e6769910f3264fc74c0a71fb3a28090aa20b6ba85dce08",
+        "qid_v1_f402569914e4ab201a8201dbef7419356c91817d59e7a37271ac7e6f58ee2cc9",
+        "qid_v1_f6ae95d9725fd3f3978d1a01248901d2bb4db8149a8fb3ced682c6a2e6316299",
+        "qid_v1_fe732c1ee7389c5ce1f94009a6da6bd2eefc82a5b6d4f52c1efdf6820d67d337"
+      ],
+      "sourceUnits": [
+        "H15-GV-09",
+        "H22-GE-04",
+        "H22-GE-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_GEO_SPACE_COORDINATE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GEO_SPACE_LINE",
+      "canonicalLabelKo": "공간직선",
+      "definition": "공간 직선을 매개변수로 나타내고 다른 직선 또는 평면의 식과 연립하여 교점을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_7333f2f7079cf2dd76d46059208c61aa3a71d3e3b3f97237baecaaffa6050234",
+        "qid_v1_82597075596cebaa73c2e4be469410ad954eed074ac1df8f5c742e2be3e0d682",
+        "qid_v1_e7dfcbfe8fd187fb9d9a6c0b071d40b86d470f190c5ee608e53fe5bb9d63cd0d"
+      ],
+      "sourceUnits": [
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_GEO_SPACE_LINE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GEO_SPHERE",
+      "canonicalLabelKo": "구",
+      "definition": "공간의 중심과 반지름을 바탕으로 구의 방정식·접촉·단면·거리 관계를 결정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 25,
+      "supportingQuestionUids": [
+        "qid_v1_027ef5944d2e12bf374e97302fb94cf76e66da20611534f9d3a9ebbe9a741529",
+        "qid_v1_0556663892534f55154f09752248f6ab60b8b5833d516112b2a272205a59435e",
+        "qid_v1_06a33781d9e1af9fe3a0d72847414267b3efbff6151505adaeadd0656b3a2234",
+        "qid_v1_1804516a43025b4b6a72a36ac993de4c47cc188d4426f230b4ee4a905151f422",
+        "qid_v1_180466e8571336e273269b276aec270e96610c4d57bd87dd29d04e74d08175b5",
+        "qid_v1_23df0ce2798605a33439f3493e5e21aa7b85a5cbc36fe24228e4ed7fb5aaef4e",
+        "qid_v1_26f31cb448ba2ce7e6d9776a075e438e60f6fcc27f3f26111f54527b88356220",
+        "qid_v1_3323e37181d9eb9c26538b4e5a87f6ea4d42fdb532d95e73f2b2576b33565a17",
+        "qid_v1_584058916b81ae36c8b30f67eb8a02caa74a7c768128e4cb9638dd67811e9a74",
+        "qid_v1_62cdf19784d667789540e90ab933d30d98661016a352b7a483a0e195e074ac87",
+        "qid_v1_67a3aeebcf82df4f5afc47b050ba79e9f492e70a63faf224c1441249b4b0cca2",
+        "qid_v1_6837a6039e9aad05809f43ed01d2a2b5a72c1d2160267ee98ccee0f7d71a2983",
+        "qid_v1_6db46ef9a9d2a51060a4c1cde523fb9de3ea0e9cd578824b9100679a4980fd68",
+        "qid_v1_745f62f04e2182bc2bd6915ef426e91cbefa3f6b6ea81242ea92862ba613585c",
+        "qid_v1_79a50d6e88fe3f49388b673ea451b9bb9f2acfbc588a0a23099685d1a93f4f2f",
+        "qid_v1_7b3d2da689a1e7b1901d4b78bbfff6e346e803662dd5a244476d03b420e1237d",
+        "qid_v1_8dbaf878e9fca45c114cd2e73526f56fa3c606266d273dad63eb40fb40dad6e8",
+        "qid_v1_99fa160523d2fc192cf6c6076fa5a2defccb863a05551f7f3ebbc78d96e51d56",
+        "qid_v1_9d9cc43ddb96828eac96c09c10cbefc70698c6e1468bfdd01099a12d8d582e09",
+        "qid_v1_a6d7050496dcbfaecf4c97d7f5476f63932448fcb3a5de9238431433ad30b1aa",
+        "qid_v1_b27dbb808266464c2ccf9a91c31aabd65250f05182dd2074ba3d7d47394de6c8",
+        "qid_v1_cd038117c8156783fffa6b924ab00b05f5d5ffc25f64cb02e03a6d0a70f37b71",
+        "qid_v1_cec12fc9d2d9f5dd0889860d26806975e637bdb9e62801441e594a67c5a873c1",
+        "qid_v1_d8c0a447ae047346b3f8ca8151092d685870f5634f5360a782b70d01cb06101b",
+        "qid_v1_de6130d2c3f480cafd5da346afcc97cee514be6349cc746b793fc8b40ebdab62"
+      ],
+      "sourceUnits": [
+        "H15-GV-09",
+        "H22-GE-04",
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_GEO_SPHERE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GEO_VECTOR",
+      "canonicalLabelKo": "벡터",
+      "definition": "평면과 공간의 벡터를 성분 또는 방향·크기로 나타내고 연산·내적·평행·수직 관계를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 13,
+      "supportingQuestionUids": [
+        "qid_v1_173b81674160e4b7dba776040c4255ea600cfb7c2fdb5c93ff7445f3606fab58",
+        "qid_v1_544d621ebfce5d038c0f5970b262a1823bdf2faf592b9bec703c31e0ef5cf7f7",
+        "qid_v1_58daf801befbfed1bd1820a0ba841f88fb5d92d1d1b8441c5d62fc3aa9245a3f",
+        "qid_v1_62d7b1e5a6734d0f3f4a96cbfd23aba9857bb841cc66e8ba14bd815e26e2da79",
+        "qid_v1_6e018cf021a3e64dd31605d96600865275b41e04875129d08923734b1473f32d",
+        "qid_v1_75f725a783785d9ff8fba1aff9c40ce0a4b0e1107bfd8111c6b24a40f095e8dc",
+        "qid_v1_778940fe52f371f7b8feceb554121575efdf6e7c26746a58438e9fd5976dfbd2",
+        "qid_v1_7c9426f3f65d55d573d15f5042e0a6d00e9e8b0b3dfa376e6648bf382c127790",
+        "qid_v1_9383b9cf9ba89f51f08b25ca0c761ed2d699d9e6bbe624d684f00114a1494968",
+        "qid_v1_9b5a7f68bd9ed8f2bcb167f87d0c22dffe99c3b045d3b18686bde026982d893c",
+        "qid_v1_aada4b62390ed8a0a6248a15686d42d4b67c61f66a8325aafe9279f73ea084f8",
+        "qid_v1_dda296947e361bac4e14324bed1fb9420c7049856cb45adcca176c598148b6c9",
+        "qid_v1_eb6bbe59505c31d1d2a15f6ec4ca763e71fb8959ff8b2293fc13f9de1bceb82f"
+      ],
+      "sourceUnits": [
+        "H22-GE-05",
+        "H22-GE-06",
+        "H22-GE-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_GEO_VECTOR",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "templates": [
@@ -284,6 +485,706 @@
         "qid_v1_d07ff4ff3245375d2eb05db970627445c76be2fa860fc3bd23e9ad1a43f6b00e"
       ],
       "supportingItemCount": 4
+    },
+    {
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "parentProblemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "canonicalLabelKo": "접선 조건",
+      "definition": "직선을 이차곡선에 대입해 판별식 영 조건을 적용하고 차수 소멸의 예외를 제외하여 접선을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_3bf481a990b2a2d69787536652128d1fcac7926488fdbd2d476de260d9c5e408",
+        "qid_v1_706a1ff6bb67e07e6179be469bfdf164a13e192e1f75e6954aac3fc19da86c84",
+        "qid_v1_8153be21b2c38ba84e03a7321705a6e3869552dcfd732b641a8909826dccf050",
+        "qid_v1_aeb4dd5df1197d3e4c110667c3aaffaeb1b8b6a1a78e4be94f2e533a1b0c019d"
+      ],
+      "sourceUnits": [
+        "H22-GE-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+      "parentProblemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "canonicalLabelKo": "기울기 지정 접선",
+      "definition": "평행·수직 조건으로 접선 기울기를 정하고 이차곡선의 기울기 지정 접선식으로 계수나 절편을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_18b99d9ef4e8c2caf04c16926cef03910ad40fe8e842ead9e40c14e87d98b034",
+        "qid_v1_48a62d57adea9b8168b02ac6a100281ff69950cc1354141ef34602f0f15c4c78",
+        "qid_v1_7c482e6fc9ff48e84fd7ba7c252926f757495002f3691862ffdac0d8ada3efe5",
+        "qid_v1_a6db099938d725222286026ad86d3f9156942aea3699a000b32ffe69080a1308"
+      ],
+      "sourceUnits": [
+        "H22-GE-01",
+        "H22-GE-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_CONIC_TANGENT_TANGENT_TYPES",
+      "parentProblemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "canonicalLabelKo": "이차곡선 접선식 적용",
+      "definition": "기울기 지정 접선과 접점 지정 접선의 공식을 조건에 맞게 적용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_22a99bfbe2c755e75bab1a863470cf0f09d4a8b8960c7e622d16bffae6898fa6",
+        "qid_v1_28f7d0122212ca3920d88496fe4c9311aad0be7539f7d5d67ab772d18be95068",
+        "qid_v1_a1e1810522af75e9148cf8621fe25eb8fa1459b40417bbebc835cedf5b0d0d75"
+      ],
+      "sourceUnits": [
+        "H22-GE-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_CONIC_TANGENT_TANGENT_TYPES",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_ELLIPSE_FOCAL",
+      "parentProblemTypeKey": "PT_GEO_ELLIPSE",
+      "canonicalLabelKo": "초점거리합",
+      "definition": "타원의 초점거리합을 대칭·둘레·내접 또는 좌표조건과 결합하여 식과 길이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 8,
+      "supportingQuestionUids": [
+        "qid_v1_05519625e6f86b47752dcf969ca40c90f9050cfd7f634f5ea0f1dd70d6e3285a",
+        "qid_v1_13c9fdeeedc0e0ef5c6699c3e3178b47ccfcb58dc9cb422edef084f7bcd885f6",
+        "qid_v1_3365081fba1218657ecfe468ada70b54f58efcd27ec6bb119ef6ea0c5a8ffcbd",
+        "qid_v1_45ee1aa81819ba277a6315bdf0d8f7d57678ba2dcfcc95ff93deafe0ccba4cbd",
+        "qid_v1_8db76866ef8b8ff5d5afe912c24f7c53e9ace3692101cf0260c97d8ba26dce02",
+        "qid_v1_e6e88e32968390b7b8e8ceb1a2626bf5e39d47ab3f2fa24803af182848c55a16",
+        "qid_v1_ea0d8d0b6ec4b2e6bf251ba562255dd644497b8dd5fe616b90667c6b532ca7aa",
+        "qid_v1_ef62c0ff75a8519fbb84ec3d235a258fa151013cd0b5ea7a999aab7ff1ebebbc"
+      ],
+      "sourceUnits": [
+        "H15-GV-02",
+        "H22-GE-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_ELLIPSE_FOCAL",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "canonicalLabelKo": "쌍곡선 초점거리차",
+      "definition": "가지에 따른 초점거리차의 부호를 정하고 둘레·거리합과 결합해 요구 거리를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_32055f8616fbed064dcfd0751e3949eee6bef3a461359c9e02680603fa056be5",
+        "qid_v1_8d191a87c5d3f96d39e549cbef4c181130fc3338fef4be65d57014787d536ee7",
+        "qid_v1_a79e10341dcc3f4bedba6d3402cf69fc463cbc7c41f1a8e8b259e4763d32d52a",
+        "qid_v1_aad505884b08b245d761bb639fa98c95dac149328025188dde4c4d470e2b70bb"
+      ],
+      "sourceUnits": [
+        "H22-GE-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_HYPERBOLA_FOCAL_DIFF",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "canonicalLabelKo": "초점 거리",
+      "definition": "쌍곡선 초점거리의 차를 둘레·직각·넓이·타원 조건과 결합하여 축·초점·좌표를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_04d8644bf2f7a7cd913c481c3a99265a3513dbd90b0a4b194dd0e3014b0d1488",
+        "qid_v1_b25cb688c246022c5f3e72378a0ca1901ed1242b13ac29b939ef5f124f9adff8",
+        "qid_v1_d13803976b3674ea227354c21aa89f5465a063526670f7964557578902bffd1a",
+        "qid_v1_ef2fd6f81b3771285d9503800122ad223cf6bfb2b6c2bfce3b6f59e152ee3842"
+      ],
+      "sourceUnits": [
+        "H22-GE-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_MODEL",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "canonicalLabelKo": "거리차 쌍곡선 모형",
+      "definition": "시간차 또는 거리차와 두 초점으로 쌍곡선의 계수를 정해 방정식과 점의 거리를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_03c3e7f56960bc2f17ad3a81bbd774711353ef5b6af60dd343f7186756b02a94",
+        "qid_v1_8395c46f0e4dc8c47bd46bfdb776e4ced55181c7f10c02ec1b3199c4be3cf67c",
+        "qid_v1_bc4cd61cd181f35ed7f1963b1ccaa261361c2a3222084cb4a0ed4a42539197c4"
+      ],
+      "sourceUnits": [
+        "H22-GE-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_HYPERBOLA_MODEL",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE",
+      "parentProblemTypeKey": "PT_GEO_HYPERBOLA",
+      "canonicalLabelKo": "쌍곡선 직각 초점삼각형",
+      "definition": "초점거리차의 제곱과 직각삼각형 제곱합을 비교하여 거리곱과 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_63f11d6b9606f57802cc38095e67c6fcd15a9918849a2450b9aa0b09ca249b1b",
+        "qid_v1_f84f4e254de07bfa4a65f813bdab6f90cf53ecbe0c36ede5d447554a065788af"
+      ],
+      "sourceUnits": [
+        "H22-GE-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_HYPERBOLA_RIGHT_TRIANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_ANGLE",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "벡터 각",
+      "definition": "방향벡터 또는 법선벡터의 내적을 크기의 곱으로 나누어 두 직선의 각 조건을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_6d33dff41f17792f4cfaff4208daabd100f8b080c6ffe837b39182d123861f9b",
+        "qid_v1_986ecdf5afa4f7abac8f74ec0e8c2f7ae6b1fffc4ee06ec596185ebe0cb98e99",
+        "qid_v1_e6e9737b9518e3e5a7bd46960730866de91c33fb739d62f1507d045a075d29fd"
+      ],
+      "sourceUnits": [
+        "H15-GV-06",
+        "H15-GV-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_ANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_DOT",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "내적 계산",
+      "definition": "두 벡터 크기와 사잇각 코사인을 곱하거나 차의 크기제곱을 전개하여 내적 관련 값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 8,
+      "supportingQuestionUids": [
+        "qid_v1_63f1cb1d3a5e3f3a0d95b041ba40fb85c1372754f7c666b2c1285d0e9aa8353a",
+        "qid_v1_684263006a742a32f08f5e9b7b84d7a5e841d252a6cc2519d9a9634a39ed8b21",
+        "qid_v1_7087af5c5b72c0620211b513a6e8d9a78721c4aee9554a266af5366d715df59b",
+        "qid_v1_9679a72b202fde989ff72540d6a985c2dfab30fc2cf5790b5c43819c0b61faac",
+        "qid_v1_9f94bf142e2be0b3ccaab3b506b1e6822f36ed8a91202a3a2ee5b3021d42f13a",
+        "qid_v1_a84c1ce57d0941f22d2c01d429a6cd35012405fe5928b8c5b452e92d405e4bef",
+        "qid_v1_b3faaa73f3cabc98e1327efa59c8ecbd4d902b6d3c874a132f69526e1d8d791e",
+        "qid_v1_f984434aae97d6e6abd5fc371c4693f7031abed6e2c1548ec9a17b671b554ada"
+      ],
+      "sourceUnits": [
+        "H15-GV-06",
+        "H22-GE-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_DOT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_DOT_ZERO",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "내적 영 수직 조건",
+      "definition": "두 비영벡터의 내적을 0으로 놓아 수직인 각 또는 매개변수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_138b1d2c2d19e16780cac2b72f94b76b98fddc0cf44ba3771148ece3a666d1c8",
+        "qid_v1_83e2fce69d4944538893be0859eb6eeef7610a7bbb5bc0682d3c338e0cd306c7",
+        "qid_v1_e57079a991588b48dd960d7ed7874c7cdbcf4d4d9bf0688441d47272d02f28af",
+        "qid_v1_fa4c223fa47c049efddce2a0ed597b18885deb061ec688964b2e3904ec6c137f"
+      ],
+      "sourceUnits": [
+        "H22-GE-07",
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_DOT_ZERO",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_EXTREMA",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "내적 최적화",
+      "definition": "벡터 내적이나 크기제곱을 삼각함수 또는 매개변수식으로 바꾸어 구간 최대·최소를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_02ebd33c7e837eae83a861a5ace8c1ca7ea9262b6b83f4042f1b5af9731a8a05",
+        "qid_v1_1337d40e9dab853d0da79f0c8bd27f4903c9b29804c17f9441eab022e4be208f",
+        "qid_v1_3025a125819beb5b14f4c963df22b3cfed118813c1fadcfd566ab2499c7041c4",
+        "qid_v1_fe0ce7892371027b0a327088a18c3e74f67e04e7b0eeb2169eddd26e40035e1c",
+        "qid_v1_ff81c55ab4130dba135a6b3ce3a3c33fe457f1addcb317b89fdc1e88e4261355"
+      ],
+      "sourceUnits": [
+        "H15-GV-06",
+        "H22-GE-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_EXTREMA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_LOCUS",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "내적 자취",
+      "definition": "내적 영 또는 내적 차 조건을 직각·수직이등분선으로 해석하여 원이나 중심의 자취를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_25c381da3d7dab6f17773808d57572f2604d85c5a36ac154b382eaa71bcd6567",
+        "qid_v1_2c400523c7fab971ce6f4390d6447d393c955c31519b74bb827ac9511abeec71",
+        "qid_v1_b306afc4f7507789a05deade5e95a38edc59b9b60235ca5ba22011a423cfb239",
+        "qid_v1_f050195802b069a0c01513e4e03879ba570d4439a715187ab2dbaea470b6d7e7"
+      ],
+      "sourceUnits": [
+        "H15-GV-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_LOCUS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_PARAMETER",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "벡터 조건",
+      "definition": "기저벡터의 내적 조건이나 평행·수직 성분 조건을 연립하여 미지 벡터를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_7b785283faa0cb202ddc0176272bc05cb8a4374da48b6914177681e0c1ce1e66",
+        "qid_v1_92bc2262b584caf601e57541f0fd097057ab077ae9c14de13a5c2afe20a1a197",
+        "qid_v1_acfff19ae2001f8494b7b143e3d77e7757fbda118817a7586c13d29ad33c6622"
+      ],
+      "sourceUnits": [
+        "H15-GV-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_PARAMETER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_PLANE_VECTOR_PROJECTION",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "정사영",
+      "definition": "단위방향벡터와의 내적으로 정사영의 차를 구하여 도형의 높이를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_0a4a6dc9517837e963ba1999a60fa477886182230295b0c69389b5f5e461ef9c",
+        "qid_v1_a2ee1c9509bbaa7e176cbf0e2d8ce8581c7c181b5e1fcc7170c5a6b2ca643617"
+      ],
+      "sourceUnits": [
+        "H15-GV-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_PLANE_VECTOR_PROJECTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_ANGLE",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "공간각",
+      "definition": "법선벡터 내적 또는 사면체 부피와 높이 관계를 이용하여 평면 사이 각이나 선과 평면의 각을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_02a616adc69425714f4818e850a771dbcf17b409c1c8b60bfb4a180a298b0448",
+        "qid_v1_4090d2cb4d46a141b71ab5b4509e9d08109cde96a1fb58114649029518c911ac",
+        "qid_v1_e52075812c27d6dac6525d6e3bdf78dea5944311b510ce2c5769a81fbac6d501"
+      ],
+      "sourceUnits": [
+        "H15-GV-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_ANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_DOT_ANGLE",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "방향벡터 법선으로 각",
+      "definition": "두 방향벡터 또는 평면 법선의 내적을 길이곱으로 나누어 사잇각을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_1839b411c8e29cd21c9d09ad0e0d78ce7b300a5f60f519fca188ef14471913e1",
+        "qid_v1_49d64d286c21178d6ac9621923bd88a6f4f2d3c74d5904a69a6aa882c7c319e6",
+        "qid_v1_5a52e2e877a9adc41195428a4a705d6e4603e9ee4bbac73a76761e4d391348ef"
+      ],
+      "sourceUnits": [
+        "H22-GE-03",
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_DOT_ANGLE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_LINE_PLANE",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "직선·평면 각",
+      "definition": "방향벡터와 평면 법선의 정규화 내적으로 법선 성분을 구하고 평면과의 각 또는 투영길이를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_60186d3edcedadf9833dcd41e3915ff556bc9a924fac8a8df9790080ef070aea",
+        "qid_v1_94fcc61274ac720f5ec7008a79839fbbbca10faeb27a8df9a368ca1ee0a61850"
+      ],
+      "sourceUnits": [
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_LINE_PLANE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_PERP_PLANE",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "평면 수직 증명",
+      "definition": "한 직선이 평면의 교차하는 두 직선에 수직임을 보여 그 평면 및 안의 직선과 수직임을 증명한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_7563a7833ee46e01610e72ecb110173ee00d7409989640a07d69883f4ace389e",
+        "qid_v1_96675781c6602d93b6e20762fb137696285ce783afd4e57348fc67c8f7e14526",
+        "qid_v1_df7c67ae659d4746b8b834a7856a8073ea02ac8b1153fe69a03bd015dfb765f7"
+      ],
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_PERP_PLANE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_PLANES",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "평면 결정과 중복 보정",
+      "definition": "평면을 결정하는 점·직선 조건을 적용하고 같은 평면의 중복을 보정하여 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_4242bdd35665f3e43a063d79f7585bbb5d3fdbf0a7dcd8ce9288092365045269",
+        "qid_v1_4fc69d5e9f7d4e4d52d439bc8206e1f1d75f211cd79926bb129564d9ba141087",
+        "qid_v1_a61bab451af9e20f9f6979c1c5e1b1fa26ff87520543e66fed3034d2943feeeb",
+        "qid_v1_c6cb8460d6e844060c0bbcdcc194c2d786c672a831ed911be0266c073e15ac0c"
+      ],
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_PLANES",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "정사영 넓이",
+      "definition": "단면 넓이에 두 평면 사이 각의 코사인을 곱하여 정사영 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_0187b9adc2dca0e74926bd1ff1bcc58699bce06dbd523aac67b52cd9b577e2b5",
+        "qid_v1_282534fbc2028653ec226b25b43461871c1537dffba81544c49e3c6cbf2468bf",
+        "qid_v1_49dd37699954da18f8a3f187e9f96b2181bf107fed29e4ab4c5b66a76f097411",
+        "qid_v1_546d2b8bf277477f0eb2c4e2849fce8da7592efa3beae711a13da56ecb1a54f0",
+        "qid_v1_5ab2e3a57c9704e6b74049e0133a599056c5df6a7463899e7204becd40330899",
+        "qid_v1_76dc62bf45519a194e4ec402107520ad2d92da4e9e53fbe5ad77a21a1fba6211",
+        "qid_v1_8a61e3c847b5bcb2dfcb8273ee03ae2db747e83c0472fc68def3ec4b3bb6e6ac",
+        "qid_v1_cf5ad3eb422005ea39530d8a38adc017a939c4aa108113d742009734c5b6139b",
+        "qid_v1_f23680a033d9fb4fe0572893c3e6c378f5ffd1f60a7acf3c300dbd36391741db"
+      ],
+      "sourceUnits": [
+        "H22-GE-03",
+        "H22-GE-04",
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_PROJECTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "평면 관계",
+      "definition": "평면 결정 조건과 직선·평면의 수직·평행 관계를 확인하거나 반례와 증명으로 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_3343d05d59d89f4c1c8fc67feac73fed8ce1e37ffba5164bccba856ef5d31301",
+        "qid_v1_623891a2ba085a8bbac73020d7ea305178ed52a96a7e4923719f67a4905e65df",
+        "qid_v1_d75d52aa21f9c2dfce58d2f160ffa1c09a08493490b37fe4427bcdbf011a4adf",
+        "qid_v1_d9d4071baee9566c670e0f4f10b339d43bc3d8e4b07cbe53ab1a123a2a155f29",
+        "qid_v1_fba7d8140d50663a239cd20d69d17c347ffb9c739785904f21d7ff1c036e66a5"
+      ],
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_RELATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_FIGURE_SKEW",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "공간 꼬인 직선 판정",
+      "definition": "평행하거나 만나는 직선 및 공면 직선을 제외하여 꼬인 위치의 직선을 고른다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_2aab7165a6c0ee8d0af50ed7ed69b592f18eb1adfd016b18a9146e305e2f70c9",
+        "qid_v1_990143eeebc7a9bd51b95b1451a46cdb3f710c86f17abbd5ed8937944ae00f23",
+        "qid_v1_990f958f7413c01ae3769d9f68bf231ba62a3a65b4337be7203fe0597ca75955"
+      ],
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_GEO_SPACE_FIGURE_SKEW",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ]
 }

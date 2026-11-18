@@ -1,0 +1,584 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-a377dfcb379c-0d1f56db",
+  "examUid": "17_매산중_1학기_중간_중1_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/1mid/17_매산중_1학기_중간_중1_수학.js",
+  "expectedSourceBlobSha1": "3cee19be7a4c1c993d299d4138729b8479c1140c",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+        "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fe0e079e4706fdfc402fb5de7b8cdd5a2a16206ed8332fab61c1888ab11decc7",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_PRIME_FACTORIZATION_JUDGMENT",
+        "templateKey": "TPL_M1_PRIME_FACTORIZATION_JUDGMENT_POWER"
+      },
+      "rationale": "같은 수5를 세 번 곱한 식은 5³이므로 밑과 지수를 뒤바꾼 진술을 찾는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "bcfa10f1fc1de30c38c46380deefabb10bf63e92d6c9ba92ee1b7a6efb665b0b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2604d7b4c505ac45d02f05f2a9344bb11acbcdb27ce5cb55e0e28486102e2e0b",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
+        "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE"
+      },
+      "rationale": "32=2⁵,125=5³으로 나타내 m=5,n=3의 차2를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "42fe564192ed2863ab8ed7fb0ceee55b4ef8da810d53f0c8e5bb7f26cadd56b4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e0ecc69a3db29ac7bf0188243fbcab46de0506683696c4d101bd6875988450aa",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DIVISOR_COUNT",
+        "templateKey": "TPL_DIVISOR_COUNT_EXPONENT"
+      },
+      "rationale": "약수 개수 공식으로 3(a+1)=15에서 a=4를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "2d97539951cdfefb594617b0305a094b279077b9650921f6c130f801c78e0859",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0ebe24b2f37a820655f7f5e9a80207b8bf4a66d7ac62a55e653444299aca5c94",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+        "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_PARAMETER_RECOVERY"
+      },
+      "rationale": "최소·최대 지수 조건에서 a=1,b=4,c=5를 정해 합10을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "ab39be7ecf301fd841051683a094d1466655623fde5fd7a9f52c7c776d6f0b71",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d6748c1c62c4e4e4aae4744fc1899cee9d4d1c0c0e1e10779df8bed27e76802d",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LCM_APPLICATION",
+        "templateKey": "TPL_LCM_APPLICATION_RANGE"
+      },
+      "rationale": "6과15의 공배수여야 하므로 1~100에서 30의 배수30,60,90을 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "3217d03103571b544355d153db30d2c396ecd57347385e7a941069946a8923ab",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f4d3f45be9bace91151cb1ec94ec4b18745f5b025dee23e72ca87ec25598bcf1",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LCM_APPLICATION",
+        "templateKey": "TPL_LCM_APPLICATION_REMAINDER"
+      },
+      "rationale": "학생수에서2를 뺀 수가 3,6,10의 공배수인 조건을 써 최소공배수30에2를 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "fcc9da4d3d57732e64fa71cc6ea2335ec8b0b14ed330e48909a2bde09896d042",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_771693fb827181cf5556ce2ccbfbe8daddb7af642138e81127ad306e8fa404ad",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_PROPERTY_JUDGMENT",
+        "templateKey": "TPL_M1_RATIONAL_PROPERTY_JUDGMENT_ABSOLUTE"
+      },
+      "rationale": "각 수의 분류와 절댓값을 검사해 |-6|=6이 가장 커 원점에서 가장 멂을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "1dfc379687e5fbae25dd16abcf70d935cb9f6e08e3c3a4db930ba9599f797306",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cbc808bfcd66db059095626d8e82e01dc3f669b1785c4fb888e6ab7fcd7ee9b7",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_CLASS"
+      },
+      "rationale": "B에서E까지3칸이6이므로 한 칸2를 구해 A=-4,D=2를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "1f3b2c87386ed3b13ad5f56b4dc24416ed4b7aedad819018a8b6fff8fe1905b8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_151734b1eba8334fe503de3e3d10c26f9a60ec3a2c6700d71c573c55b2644567",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_INTERVAL_INTEGER_COUNT",
+        "templateKey": "TPL_M1_RATIONAL_INTERVAL_INTEGER_COUNT_INTERVAL"
+      },
+      "rationale": "-5를 제외하고1을 포함하여 -4,-3,-2,-1,0,1의6개를 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "acba665397bad30194cde65dcfd25ea321059072b36e9d84e2ad7a6f59b9810b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4836216fcb729606e02561225a49a98f53db55a087052e2ccc98b93f81d806ba",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EXPRESSION_ORDER"
+      },
+      "rationale": "절댓값과 제곱값을 먼저 계산해 각 부등식을 비교하고 3>2를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "7774bc5e6fb66c2f12c56669bdaf5ac0a42befc140cadfd164c3604680ebef68",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_807d0c9eaf2cee96e3609d8e1822c430e360d1943db09d48a1f63292cf1eb6ed",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
+        "templateKey": "TPL_M1_SIGNED_CHANGE_MODEL_ACCUMULATE"
+      },
+      "rationale": "0에서 왼쪽2만큼 이동 후 오른쪽5만큼 이동한 최종위치3을 덧셈식으로 옮긴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "d39257e1499976f1fc95d43811b6a9244c0fdca380c97da5a6bec9ed2bb8b4a1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8dd11f1cdaeb40994595d6a4f16fb5542a2a626fb888723f79762bb464d5996f",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+        "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_LAWS"
+      },
+      "rationale": "순서를 유지하면서 두 항씩 괄호로 묶는 ㉡단계가 결합법칙임을 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "08f686822876ccccbce394c3185ec334f8d8e1c6bb1ba3cde4762ae1500a0fe4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c2dd6bcd31ca84992c71c37bbc7e617c874293ab57363d65c8994dc283f2ca2f",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
+        "templateKey": "TPL_M1_SIGNED_CHANGE_MODEL_ACCUMULATE"
+      },
+      "rationale": "시작점 -3에서 왼쪽으로2만큼 이동하므로 -3-2=-5를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "120cb3d6f5d13e82737c24b4286f78d71105858876727c4e242e0337ff5a5e31",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_db80602c2a733a5c22654857319cd441bc7b554a8230b34c147b1ed9377f3346",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+        "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EXPRESSION_ORDER"
+      },
+      "rationale": "각 값을9/4,81,13,0,-4로 계산해 가장 작은 -4를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "45d6a5809dccee08e1fd3c1b20fb334c560ee25b986ae1f268a8852e2d629390",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2a841942d1b594389e24314429ff539da83478eafba3cd1f685daddc75a260af",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SIGN_CONSTRAINT_DEDUCTION_FOR_RATIONALS"
+      },
+      "rationale": "양수와 음수의 곱만 항상 음수이고 나머지 식은 양수 또는 부호가 불확정임을 구분한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "f38ffcef2e7141c60e854b5d0ecf7d9b7fcece4f18582028d51bc62521e1f9c7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1d4797aaded0d33cc1b95828ece9f64f6fe4967760dcc560b323e1396cac9600",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_RECIPROCAL"
+      },
+      "rationale": "나누는 수 -4/3의 역수 -3/4를 곱하도록 바꾼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "99acaf57f6060855e191e88c588eccf89434ffc24b13274728f07c2f42baea2a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ae468a97527c9bbbc2e459abea14efbdff7bb698e92789e0450b950f2905d12f",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED"
+      },
+      "rationale": "괄호 안 -3/4+1/4=-1/2와 (-2)³=-8을 구한 뒤 나눗셈하여 -12를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "5efa05c25d9ccb0284e4586619c3447c865de2dbc164031c2022588dc754ea8f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9b9c2e542781840d71af3629a82ea5ad613067059ab306b14da6d579297469f5",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION"
+      },
+      "rationale": "곱셈과 나눗셈의 순서·괄호 범위를 확인하여 x÷(3y)=x/(3y)를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "a020ee5aa4ecd51a32ae201075f05a1e2433722dfebab9f8ff78b171d1fe54d0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cddb3a6ad3b935602aac4ef0ded186b31dc20f497a25ab3587b485dc45ec6a59",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_QUANTITY"
+      },
+      "rationale": "총가격5x를 낸 돈20000에서 빼 거스름돈을 식으로 나타낸다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "7d3ab921645ad005690ff6c43af855a6d5555396422250e8ceb3b217a09afee0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5f36539ce430fd12345050c88d0ba08b0b5f8a2568a4c705b26e72aeb8cd9170",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_PRODUCT_QUOTIENT"
+      },
+      "rationale": "공통인수50을 묶어 50(6.4-3.4)=150을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "65fe79458b556bd80e7c36654f7dc701e83a9459b52ed96795a87e7f9da19c7b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5b30fd3ce0e76896ca056689272cd4eeae1cc87c3ebfe60d5764df1a31bfba6f",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+        "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_RECIPROCAL"
+      },
+      "rationale": "각 수의 역수를 정해 곱하고 마지막은 -6/B=-6/7에서 B=7을 복원한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "d81f36e187bacf800be486b3ffeb2c8c1ea25eaba3a94ca2c46df800e188b00e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2dac9ee608178a2f9220b84b68f42cbf6559ffc08cefccef3aca64e7b1269d62",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+        "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_INTEGER"
+      },
+      "rationale": "각 분모가 분자의 양의 약수여야 함을 적용하고 마지막은63의 약수 중4n-3 꼴을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "0a8ff04eff2f7e641bb4bc523f0cfbedecdad2ea71e3cdd3c354412a0f33d969",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c7b9cac8b827c18eeb31e8d31ac94eac119d66b78d623bc21e8835c58a667c05",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_LITERAL_EXPRESSION_EVALUATION_CANCEL"
+      },
+      "rationale": "각 문자값을 대입하며 마지막 식은 홀수 차수 항 -1과 짝수 차수 항1을 짝지어 남은 -1을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "63a19cc6f43af3d35b957c2df15e9caeccc216ab2b5406bb29424f838e5490d2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a377dfcb379c-0d1f56db.type-ledger.json",
+          "sha256": "4e8f0e51f6ed395ed817231ba4dc83ab876afd65a3e93f6aaf8949fe5acb20dd"
+        }
+      ]
+    }
+  ]
+}

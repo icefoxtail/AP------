@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-885d72528292-59d2d922",
+  "examUid": "25_풍덕중_2학기_기말_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2final/25_풍덕중_2학기_기말_중1_기출.js",
+  "expectedSourceBlobSha1": "afa0d8e82b9ff6e64269217f0ad43e386a114dc3",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-885d72528292-59d2d922.type-ledger.json",
+        "sha256": "3a12955e9c21d45c90c657bdc2c9c910c2e86ea2cdf78f46909205ac960d4cb0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_28d7376166e6a937115c0df620e99642833540d909a2128b663c3430fd937a6d",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+        "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_READ"
+      },
+      "rationale": "20~22초 계급도수1만으로 정확히21초인 개별기록을 단정할 수 없음을 판단한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "7ac0347c92f2c8fd897d0767eaeaedf47f5d413b67611a24aee36817aeffbf67",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-885d72528292-59d2d922.type-ledger.json",
+          "sha256": "3a12955e9c21d45c90c657bdc2c9c910c2e86ea2cdf78f46909205ac960d4cb0"
+        }
+      ]
+    }
+  ]
+}

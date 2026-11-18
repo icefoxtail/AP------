@@ -540,6 +540,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-difficulty5-register.test.mjs']
   },
   {
+    // Single-model draft difficulty: ledger -> diff5 request converter and the lane's draft label; fixture-only.
+    label: 'tests/archive-draft-difficulty.test.mjs',
+    args: ['--test', 'tests/archive-draft-difficulty.test.mjs']
+  },
+  {
     // The register pass runs this only when a DIRECT_JUDGMENT (type-only) request is in the inbox; a PR that changes the lane needs it too.
     label: 'tests/archive-type-judgment-registration.test.mjs',
     args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
@@ -553,6 +558,11 @@ const requiredCommands = [
     // Course-name alias data (spelling groups and 2015/2022 successor groups) used by the type-judgment lane and its converter.
     label: 'tests/archive-course-aliases.test.mjs',
     args: ['--test', 'tests/archive-course-aliases.test.mjs']
+  },
+  {
+    // New PT/TPL keys generated from the dots bundle tables; fixture-only, deterministic key names.
+    label: 'tests/archive-new-type-keys.test.mjs',
+    args: ['--test', 'tests/archive-new-type-keys.test.mjs']
   },
   {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',

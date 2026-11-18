@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a72e62618947-cf45c035",
+  "sourceArchiveFile": "textbooks/비상교육_공통수학2/비상_공통수학2_도형의이동_중단원학습점검_고1.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_19b99d6325091e04cbbc30dc217ad0b36dd3d83f2885297ebc223cc5573330ba",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+      "templateKey": "TT_POINT_TRANSLATION_COORD",
+      "step": "이동 후 좌표 (5+a,-2)를 (7,b)와 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_50b4b4068ad32261cc464a3b17aa350e439bf0a3856c06a3af0dc5840e173a0a",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "step": "평행이동한 도형의 식은 원래 방정식의 x,y에 x-3,y+2를 대입하여 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7703802f2748578ba9b3ec8227829a5b4ee14633a82d9192560dc1465067065c",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_BASIC",
+      "step": "축·원점·y=x에 따른 부호변환과 좌표교환 규칙을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_70a4bbac77950c62df0dc757b24b06df729093085381b0d3c20c7f8c77b5d778",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_LINE_REFLECTION",
+      "templateKey": "TT_LINE_REFLECTION_EQUATION",
+      "step": "각 대칭의 역좌표를 직선식에 대입하여 대칭직선을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_57c5ae4c9af052a0ad2a15749092886422d9530edc1e2039c381e1a567ecdcf1",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+      "templateKey": "TT_LINE_TRANSLATION_EQUATION",
+      "step": "이동 후 직선 y=3x-3a+2에 점 (7,5)를 넣는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4db84fc234c755f587592f79177096524c67f80553368f26ab931c24ba8faea3",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_BISECTING_LINE",
+      "step": "두 원을 동시에 이등분하는 직선은 이동 전후 중심 (0,1),(3,7)을 잇는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f6d22c2bc0eba189d104e82aa20eb7d6c27fd4668ff79bdd65ea223a6aeb01c0",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_POINT",
+      "step": "A를 대칭해 B=(3,-2),이어 이동해 C=(5,a-2)를 얻고 AB와 BC의 기울기를 같게 둔다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ff9b6733bfa14bdd6178a921d09bedfef1940b09ab756cd64df8545e426164ee",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_BASIC",
+      "step": "직각의 대변 BC가 지름이므로 C는 B를 원점대칭한 점이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_815e8babd10eaf758d5f9aadbc3a9670f5c8aa3edb8841b1c337219ccb060ae1",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_MIXED",
+      "step": "직선과 원을 각각 대칭한 뒤 중심 (3,2)에서 대칭직선까지의 거리를 반지름2에 맞춘다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5b529d4b22e7cd46820b57bd4eb582886b4cb28342726722864cde0485436777",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_COMPOSITE",
+      "templateKey": "TT_COMPOSITE_LINE",
+      "step": "평행이동과 좌표교환으로 x-ay+2a-3=0을 얻고 공통 y절편 (0,4)를 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_03331487a656014d852651ad98e84f1429bddd077cf75b9bbd219d89021f7325",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_WITH_POSITION",
+      "step": "A를 y축대칭하여 A′Q 최소점을 원의 중심 방향에서 찾고 직선 A′B와 y축의 교점 P로 삼각형 넓이를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_공통수학2.jsonl"
+    }
+  ]
+}

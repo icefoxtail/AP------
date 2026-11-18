@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-08236ec4510a-c53027b2",
+  "requestSha256": "fe2498e1d54e8f5e5e0dfd3b62a9ee129cd0f17ea569fa61b4622f1a6dba9629",
+  "examUid": "25_매산여고_2학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+  "sourceBlobSha1": "4e2d3a30110f6f1f5af0d3fed321edc9d4188242",
+  "sourceRawSha256": "fa610ad864fd752d8a5985690a09c8a0c4fa29d0b532b80d5be2b492dbe27f46",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-08236ec4510a-c53027b2.type-ledger.json",
+        "sha256": "5d4d10fc22163c3c8f36bed1aebc3bf02de83132ae5678663976de848a1e4760"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_53860549d000513d6a7201b1a61990f5979f159f2801ded2a23d480c6f7cd4ec",
+      "sourceArchiveFile": "original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_AREA_POINT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-08236ec4510a-c53027b2",
+        "judge": "dots",
+        "rationale": "넓이에서 OA에 대한 B의 높이를 구하고 AB=OA인 조건으로 가능한 위치를 정한 뒤 같은 넓이식으로 요구 거리를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request",
+          "rowCourse": "공통수학2",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "747f56c1df2fb57a1f60117a9d2e56b14981661060d1596a67a228128a01a6a7",
+        "judgedContentFingerprint": "7cd3f75a3f3ced27a286529d4299c4d823c700334ac25c416191f727f295de52",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1fde87966329a4d390be4b3ecfca29cba12b3770e016eaf9068081f629cc3337",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-08236ec4510a-c53027b2.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+          "templateKey": "TPL_DISTANCE_AREA_APPLICATION",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

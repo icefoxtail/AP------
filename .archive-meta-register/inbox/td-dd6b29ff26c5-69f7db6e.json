@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-dd6b29ff26c5-69f7db6e",
+  "examUid": "25_매산고_2학기_기말_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2final/25_매산고_2학기_기말_고2_수학II.js",
+  "expectedSourceBlobSha1": "e9284b08323fda37dea29e82595c3b0557b4aa31",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+        "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e65506660ef8c153e7072a6cf366504e5abe5e4a4e16f7d48e39f095ec81ede8",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER"
+      },
+      "rationale": "극소 위치 1에서 도함수 0으로 a를 정하고 부호변화를 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "cc975ce4f6871c86550eeed4c19f2a5aeddaf3428ce90d672384ca5b52e8edf1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a39a831d32de23563762f39c5185f1fc7817cb751b8f5a1c1338f7397450e86a",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS"
+      },
+      "rationale": "위치를 두 번 미분해 시각 1의 속도와 가속도를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "22f52d4089098ac3fecae0fa6584766d002d0cd55cd517dfd58744025d72a884",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_62dfc8ec1f18a924e2c7305c8aff479bb301b042bac5d9d3a45db4b0aaf6e8e0",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA"
+      },
+      "rationale": "삼차식 극대 양수와 극소 음수 조건으로 세 실근 범위를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "7e1e9706791304585d7ccab891b8a3cabf5079dc3648b54f54b8c7f56c9645f1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_891fa8f27fa3842c03b44d20dde87b64965dcb52e5f336cf138a9667453db65e",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_CONDITION_MODEL_DETERMINATION"
+      },
+      "rationale": "두 교점 사이 곡선 차 넓이를 m의 식으로 적분해 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "db94cfeac28014df357047f6cd6594cde7d0b5c565053e1b42cc4cbf05a5f2bd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8b333251a48945101e2122a8400dccce37bb718825812cf7d842db98ce4f74a5",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_ROOT_COUNT_BY_EXTREMA"
+      },
+      "rationale": "홀함수 대칭으로 ±16의 교점 수가 같음을 이용해 극값 높이 16 조건을 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "efd549b8443769ec89bf62a9f37c8d7db8ab11974345ac7ec7e08ec7f712298f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e159615f4259f2db573c1af6d4a58bfff16246b61410a0e4d270c2c8baaf0fe7",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "templateKey": "TPL_GLOBAL_INEQUALITY_BY_DERIVATIVE"
+      },
+      "rationale": "자연수 n=2를 배제하고 n=3의 x≥1 단조성으로 항상 양수임을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "8e474d211685fcf979e906f2079a7218b050279367ec0098197b280877fbb943",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3eea082c3184180528a28cf73c670f1fe667ff9e25790ebab3e2a5248ff6e7a0",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT"
+      },
+      "rationale": "비상수 다항함수 차수와 짝함수의 양끝 거동으로 극값 존재 명제를 판별한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "a2c85f761a7a032619dd86759b4e7d32ae58d96c4e86dfefc60f79f3e341f43f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a7f5e38e68c8ef2693b8a1c3a60df692ab256241eaa251bae1d6f14723dbc1da",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT"
+      },
+      "rationale": "삼차함수 차수 조건과 도함수 판별식 양수로 두 극값 존재를 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "d1732df5b6a4249da928a1eb02a769a4f087106be3322c56621e27c1e180ee56",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_af68b8ccbfd1d281ae0d35f17321fea2691389982287ad8d4f367d87b3c53b2a",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "templateKey": "TPL_FUNCTION_DOMAIN_OPTIMIZATION"
+      },
+      "rationale": "안쪽 함수의 치역 [1,∞)를 구해 바깥 함수의 제한영역 최솟값을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "d04b74a98de196ba040de7a50ca4799924aa32babce490caf174504cf2553d4f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fd372b1b97731ebb08497e2d23972c6c42b3d3635c603a05e35779d247f54501",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_COMPOSITE_MODEL"
+      },
+      "rationale": "두 속도를 적분해 위치를 복원한 뒤 만남 조건 k=K(t)의 최댓값을 미분한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "b8832d06884973e93560f941d0f331fb5169edfc287a312c06c9ca0304efa4e6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4c282d7bd7158c0850cc2eb2db4554ffd7ab56de7eda3dbb19f58dda34086342",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER"
+      },
+      "rationale": "주어진 극대 위치와 값으로 계수를 정하고 다른 극솟값을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "8535aec3300e6a5bdabd790c8dd0d13232a0df2fbfbc41665bc5a7150587d03d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a7fa042bd0ec7f9865d732382b83bcecb56a7a3b2bfb75d916a4a1b3227adf83",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION"
+      },
+      "rationale": "적분식을 미분하고 기준점 2의 원식 및 미분식을 연립한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "64c3753ebd70febcc61acf4adbad42dfafd846fc04205ed559d13e55d34e5362",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ce405cea83cbea39666c7dfa8789d23b4c9caa0b675e8ec8d1f5c147f4cdb50b",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT"
+      },
+      "rationale": "조각 경계의 연속과 세 극값 구조로 단순근·이중근을 배정하여 극값 차와 근 간격 관계를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "5b291807e7f6169bb9481dd54e29f70c98fd67687342915c038db41197c07069",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3290a06b21c577d146e955bd07aba28b448996b01c813ea33a9da3542dcb15a6",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS"
+      },
+      "rationale": "속도 부호가 바뀌는 시각 1,2에서 위치를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "21d29b21b7e6065142fe578819e376b6035685032a5252844ed98ae07892c554",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_33e2d92c2e7ff4feffecd4bd0c99b7d02bee321a6b5cc8411d65def6b0a89bce",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_STRUCTURE_COUNT"
+      },
+      "rationale": "두 삼차함수의 극값 부재를 각 도함수 판별식 비양수로 바꾸어 계수 범위를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "69e7d0f8f4f5cc7c4ae5429cd91c0081df04a4a0f8f0c30943490125b0dd633c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_59f88a2ccc580ae95786a388218c0d69376719f7a9375e08b3ad480eff2dfc0d",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DERIVATIVE_TO_FUNCTION"
+      },
+      "rationale": "g'를 ((x-2)f)'로 인식해 적분하고 극소 및 최소 조건으로 함수와 상수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "6899aa9d7be181932703abbd49bc31b47737564ba39ab43ebe8dcc082cc2bfc1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd6b29ff26c5-69f7db6e.type-ledger.json",
+          "sha256": "fbb4fbe3d00c3440921223b21da11cbb929a2fd76fbdbc324b6fac4a40521dd0"
+        }
+      ]
+    }
+  ]
+}

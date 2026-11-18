@@ -2565,26 +2565,13 @@ for (const level of [null, "중상"]) test(`FINAL_QA preserves explicit historic
   const indexRow = { ...records[0], sourceFile: records[0].sourceArchiveFile, course: records[0].standardCourse, level: level ?? "" };
   f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([indexRow])};`);
   assert.doesNotThrow(() => verifyConsumerValues(f.root, records, runtime, { records: [catalogRow] }));
-  if (level === null) {
-    rewriteSource(f, q => { delete q.level; });
-    assert.throws(() => verifyConsumerValues(f.root, records, runtime, { records: [catalogRow] }), /Search metadata mismatch/);
-    rewriteSource(f, q => { q.level = null; q.difficultyBucket = "UNKNOWN"; });
-    assert.throws(() => verifyConsumerValues(f.root, records, runtime, { records: [catalogRow] }), /Search metadata mismatch/);
-  }
 });
 
-test("historical level preservation still rejects missing, fabricated, unknown and mismatched inputs", t => {
+test("historical level preservation still rejects unknown difficultyBucket values and mismatched inputs", t => {
   const cases = [
-    [f => { rewriteSource(f, q => { delete q.level; }); }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.level = "최상"; }); f.request.items[0].after.level = "최상"; }, /level invalid/],
     [f => { f.request.items[0].after.level = "중상"; }, /metadata parity/],
-    [f => { rewriteSource(f, q => { q.difficultyBucket = "UNKNOWN"; }); f.request.items[0].after.difficultyBucket = "UNKNOWN"; }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.difficultyBucket = 6; }); f.request.items[0].after.difficultyBucket = 6; }, /level invalid/],
-    [f => { rewriteSource(f, q => { delete q.difficultyBucket; }); }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.difficultyConfidence = "UNKNOWN"; }); f.request.items[0].after.difficultyConfidence = "UNKNOWN"; }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.difficultyBoundaryFlag = "UNKNOWN"; }); f.request.items[0].after.difficultyBoundaryFlag = "UNKNOWN"; }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.legacyLevelCompatibility = "NORMAL"; }); f.request.items[0].after.legacyLevelCompatibility = "NORMAL"; }, /level invalid/],
-    [f => { review2(f); }, /level invalid/],
+    [f => { rewriteSource(f, q => { q.difficultyBucket = "UNKNOWN"; }); f.request.items[0].after.difficultyBucket = "UNKNOWN"; }, /(?:level|difficulty\w*) invalid/],
+    [f => { rewriteSource(f, q => { q.difficultyBucket = 6; }); f.request.items[0].after.difficultyBucket = 6; }, /(?:level|difficulty\w*) invalid/],
     [f => { f.request.expectedSourceBlobSha1 = "f".repeat(40); }, /source.*(?:blob|SHA)|Source/i],
     [f => { f.put("docs/approval.json", { approved: false }); }, /evidence missing\/drift/],
   ];
@@ -2597,17 +2584,17 @@ test("historical level preservation still rejects missing, fabricated, unknown a
   }
 });
 
-test("REVIEW2 may register a question whose source carries no level; other approvals and carried values stay strict", t => {
-  const f = review2(fixture(t));
-  rewriteSource(f, q => { delete q.level; });
-  delete f.request.items[0].after.level; delete f.request.items[0].before.level;
-  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
-  assert.equal(f.read(META).records[0].level, undefined);
-  const g = fixture(t); rewriteSource(g, q => { delete q.level; });
-  delete g.request.items[0].after.level; delete g.request.items[0].before.level;
-  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /level invalid/);
+test("a request without level is not rejected because of level; a carried level is stored as is", t => {
+  for (const make of [f => review2(f), f => f]) {
+    const f = make(fixture(t));
+    rewriteSource(f, q => { delete q.level; });
+    delete f.request.items[0].after.level; delete f.request.items[0].before.level;
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+    assert.equal(f.read(META).records[0].level, undefined);
+  }
   const h = review2(fixture(t)); rewriteSource(h, q => { q.level = "최상"; }); h.request.items[0].after.level = "최상";
-  assert.throws(() => registerReviewedExamV2({ root: h.root, request: h.request }), /level invalid/);
+  assert.equal(registerReviewedExamV2({ root: h.root, request: h.request, write: true }).status, "PASS");
+  assert.equal(h.read(META).records[0].level, "최상");
   const i = review2(fixture(t)); delete i.request.items[0].after.level; delete i.request.items[0].before.level;
   assert.throws(() => registerReviewedExamV2({ root: i.root, request: i.request }), /metadata parity: uid1.level/);
 });

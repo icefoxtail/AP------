@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-abfcf0f7567c-3e5d818b",
+  "sourceArchiveFile": "original/middle/m3/2final/20_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bd09cd951ebfc04f98d262c2d40952e71bd6dd7d7734d117a9d2bdeb9c49ade5",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_REPRESENTATIVE",
+      "templateKey": null,
+      "step": "자료중심경향의대푯값인평균과산포도·변량·계급값을구별하여평균선택.",
+      "note": "새 PT 제안: 대푯값과 산포도 용어 구별. 정의: 평균·중앙값·최빈값처럼 자료를 대표하는 값과 분산·표준편차 등 흩어진 정도 및 자료 구성 용어를 정의로 구별한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_634c6f83971a786ab1989ef4524acccc78b4211718ce5f9cffc0951406328470",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+      "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_AFFINE",
+      "step": "x+y+z=3m을대입하여변환자료평균(x+y+z-3m)/(3a)=0.",
+      "note": "필요 TPL: 평행이동과 배율을 함께 적용한 평균: 각 변량에 같은 상수를 더하거나 빼고 같은 수로 나눈 자료의 평균을 원래 평균에서 변환한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ea4cd35bc2952d4793a5d1f77d59c2cac29a50543caa2862136901ca242147da",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_PARAMETER",
+      "step": "평균합에서a+b1,최빈값2와a<b로a-1,b2를복원하고일곱자료중앙값2.",
+      "note": "필요 TPL: 평균과 최빈값 조건으로 중앙값 복원: 자료의 합과 최빈값의 반복 조건으로 미지 변량을 결정한 뒤 정렬하여 중앙값을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fdfbca8fae540bf48874a0dbc7fc61ba4f19491f7e39c4e30aa83edd69adb8b1",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_REPRESENTATIVE",
+      "templateKey": null,
+      "step": "세집단점수합12·90+15·80+12·70을전체39명으로나누어80.",
+      "note": "새 PT 제안: 집단별 인원과 평균의 가중 평균. 정의: 서로 다른 집단의 인원수와 평균을 곱해 합계로 환산한 후 전체 인원으로 나누어 통합 평균을 구한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b15896ce344cd49498b2eba6483ee09615691dffe8440f34fb3a216c7267b855",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균으로합12,분산으로제곱합54를복원하여교차곱합(144-54)/2=45,평균15.",
+      "note": "새 PT 제안: 평균·분산으로 대칭식 계산. 정의: 평균과 분산에서 자료의 합과 제곱합을 복원하고 곱셈공식으로 두 변량 곱의 합 등 대칭식을 계산한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_00748d54b9b2b08f9ccb42963fa6c082473d75a20ed6a103bb1f96b271d16423",
+      "sourceOrdinal": 24,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "두집단평균·분산으로합20,24와제곱합208,306을복원하고통합평균11로분산514/4-121=15/2.",
+      "note": "새 PT 제안: 여러 집단의 평균과 분산 통합. 정의: 각 집단의 크기·평균·분산에서 합과 제곱합을 구한 뒤 전체 자료의 평균과 분산을 계산한다. 해당과목 ACTIVE 정의에 정확한 핵심전략 대응이 없다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

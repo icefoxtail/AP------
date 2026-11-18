@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b470051ae031-fe948670",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_이차곡선_대단원학습평가_고2/비상_기하_이차곡선_대단원학습평가_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e9425e1857cef76682767bbd8f5c5525f401ec12fac7bb68ef121c66aa29e9bf",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+      "step": "표준형 계수로 초점 F1=(−2,0)·F2=(0,1)을 읽어 두 점의 거리 √5를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a6639a0d3b58a22c0eba617131b9fb8a56a36168fbb865d5a020bab3deca86c",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+      "step": "B가 초점이므로 PB를 준선 x=−3까지 거리로 치환하고 A에서 준선으로 수평선분을 그어 최소합 7을 실현한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d83eb69dbd700938da018bbf2fcce7dfa2222862279b3d7bcfbcb2f42f99f93",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+      "step": "두 식을 x²=−8(y−1)·(y+3)²=−8(x−2)로 완전제곱하여 준선 y=3과 초점 (0,−3)을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_620d8d38cfb1260778ab9d8890588e373cfd3e3d75a2700c60beea8a201d5fbe",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+      "step": "초점거리 c=5와 단반축 b=4를 이용해 a²=b²+c²=41로 타원식을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dbbfa2f6080c9fc10b6355c0c40662d27d85dd9e67ebaa99cd94bb5aa021a17e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_ELLIPSE",
+      "templateKey": null,
+      "step": "A=(a,0)·B=(0,b)의 길이조건 a²+b²=25와 내분좌표 x=2a/5·y=3b/5에서 a·b를 소거한다.",
+      "note": "타원 자취 유도: 축 위 동점의 거리조건과 내분·성분 관계를 소거하여 타원 방정식을 얻는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8395c46f0e4dc8c47bd46bfdb776e4ced55181c7f10c02ec1b3199c4be3cf67c",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_MODEL",
+      "step": "전달 시간차 12초에 속력 1/3을 곱하여 거리차 2a=4를 얻고 c=8에서 b²=64−4를 구한다.",
+      "note": "쌍곡선 초점 거리차: 두 초점까지 거리의 차가 2a인 정의로 거리조건·방정식·관련 도형값을 구하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_63f11d6b9606f57802cc38095e67c6fcd15a9918849a2450b9aa0b09ca249b1b",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_RIGHT_TRIANGLE",
+      "step": "지름 FF′에 대한 원주각으로 두 초점거리 제곱합 100을 얻고 거리차 8의 제곱과 비교해 곱 18·넓이 9를 구한다.",
+      "note": "쌍곡선 초점 거리차: 두 초점까지 거리의 차가 2a인 정의로 거리조건·방정식·관련 도형값을 구하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ab6e95893ae97b92bf57c87b923f7c877789db4b2f1911be4e8f0ebef01bc24",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_STANDARD_EQUATION",
+      "step": "완전제곱으로 x²−(y−1)²=−a−1을 만들고 x방향 주축 조건으로 우변 양수 a<−1을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a6db099938d725222286026ad86d3f9156942aea3699a000b32ffe69080a1308",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_SLOPE_TANGENT",
+      "step": "기울기 3인 쌍곡선 접선의 절편 조건 5²=9a−2로 a=3을 구하고 초점간 거리 2√(3+2)를 계산한다.",
+      "note": "기울기 주어진 이차곡선 접선: 접선의 기울기·절편 관계 또는 연립 판별식 0으로 미지수를 결정하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_81273f1ce6ef9bbf1f3a94f2d545e6f82fd4e2ff07aa9039a029efe3bfaea4d0",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_PARABOLA",
+      "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+      "step": "포물선 준선 거리 PQ를 공유 초점 (2,0)까지 거리 PF로 바꾸면 AP+PF가 타원의 장축 길이 6이 된다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aad505884b08b245d761bb639fa98c95dac149328025188dde4c4d470e2b70bb",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DIFF",
+      "step": "오른쪽 가지에서 AC=AD+4·BC=BD+4이고 D가 AB 사이이므로 둘레는 2AB+8=20이다.",
+      "note": "쌍곡선 초점 거리차: 두 초점까지 거리의 차가 2a인 정의로 거리조건·방정식·관련 도형값을 구하는 TPL 필요. 검사: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_33a12de5f99a61a9a2988478c8ce448edbeb8be055dbd899061129050f8ec23c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+      "step": "외부점 (−2,0)을 접선 y=mx+6/m에 넣어 m=±√3과 접점 (2,±4√3)을 구해 수직 대각선의 곱으로 넓이를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a37ddbd3bb90bc47ea11390262cf86179a16625c49aa35ffdf7f5fabea3390f0",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+      "step": "쌍곡선 접선 기울기 −√2와 타원 접선 기울기 2√2b²/a²의 곱 −1에서 a²=4b²를 얻고 P의 타원 위 조건과 연립한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    }
+  ]
+}
