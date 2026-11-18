@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e2166dd7190c-7fe45d9d",
+  "sourceArchiveFile": "original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5e25689a66b2d91d2c13cd7371026d7427724025160433cba6924aed0e327749",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "step": "최솟값으로 b=2를 얻고 증가함수와 역함수의 교점이 y=x 위임을 써서 f(3)=3,a=−5, f(9/2)=4.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob에서 추출·렌더하여 직접 교차 확인.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dad69d14db34db31a969a108e198f536dc415158419062472a2761399027a98a",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "step": "그림에서 b=−1,c=2,a>0을 읽고 무리함수 x절편 4/a−1≥0으로 제3사분면 회피 조건0<a≤4를 얻어 합의 최대5.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인. 첨부 원본·해설 그림을 source blob에서 추출·렌더하여 직접 교차 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9846d5fa3d7dd8d6e25fb0f336383b298e7772148b370fd6273a811ebe2877d3",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "step": "t=−(x+2)>0로 두면 축까지 거리합은 t+1/t+3≥5이고 t=1에서 등호가 성립한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob에서 추출·렌더하여 직접 교차 확인.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}
