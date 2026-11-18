@@ -1,0 +1,65 @@
+{
+  "qid": 24,
+  "itemFingerprint": "587f674f7568843c",
+  "solveSteps": [
+    "(1) 꼭짓점이 (3, -4) 이므로 y = a(x - 3)^2 - 4 = ax^2 - 6ax + 9a - 4 이다.",
+    "따라서 b = -6a, c = 9a - 4 이다.",
+    "(2) 꼭짓점 (3, -4) 가 제4사분면에 있고 제3사분면을 지나지 않으려면 아래로 볼록해야 하므로 a > 0 이다.",
+    "또한 y절편 c >= 0 이어야 하므로 9a - 4 >= 0 에서 a >= 4/9 이다.",
+    "따라서 (1) b = -6a, c = 9a - 4, (2) a >= 4/9 이다."
+  ],
+  "solvedAnswer": "(1) $b = -6a$, $c = 9a - 4$ / (2) $a \\ge \\dfrac{4}{9}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = ax^2 ",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmReason": "꼭짓점 식 ax^2 - 6ax + 9a - 4 의 계수 관계와 제3사분면 미통과 조건 a >= 4/9 를 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
+  "typeReason": "꼭짓점과 y절편 9a - 4 >= 0 으로 제3사분면을 지나지 않을 ax 조건 범위를 구하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭짓점으로 b, c 를 a 로 나타내고 bx 식과 y절편으로 a >= 4/9 범위를 구하는 3단계 복합 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = "
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "사분면만을 지날 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준형",
+        "src": "solution",
+        "quote": "므로 표준형으로 ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "꼭짓점 전개식 ax^2 - 6ax + 9a - 4 로부터 b=-6a, c=9a-4 와 9a-4>=0 에서 a>=4/9 임을 서술하여 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,916 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/1final/26_삼산중_1학기_기말_중3_유사.js",
+  "sourceGitBlobSha": "835507893db4d1b89c7d2018366fc72724215004",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-md-importer",
+    "at": "2026-11-15"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "일체형 마크다운 변환 산출물(UNREVIEWED)"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "$x$에 대한 이차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x^2-2x-8=0$이므로 $x$에 대한 이차방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "등식",
+            "src": "solution",
+            "quote": "등호가 없으므로 방정식이 아니다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x(x-2)=8$을 정리해 $x^2-2x-8=0$이 됨을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "중근을 갖는 이차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "중근",
+            "src": "solution",
+            "quote": "(3x-1)^2 = 0 \\implies x=\\frac{1}{3}$ (중근)"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식은?"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$9x^2-6x+1=(3x-1)^2=0$으로 완전제곱식이 됨을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y$가 $x$에 대한 이차함수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "$y=x^2-4x$는 $x^2$의 계수가 $1 \\neq 0$이므로 이차함수"
+          }
+        ],
+        "method": [
+          {
+            "term": "일차함수",
+            "src": "solution",
+            "quote": "4x+4$이므로 일차함수"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "③에서 $x^2$이 소거됨을 확인하고 ①이 이차함수임을 판별한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = (x-2)^2 - 5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 좌표는 $(2, -5)$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "꼭짓점의 좌표는 $(p, q)$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x-2=0$인 $x=2$와 상수항 $-5$를 조합해 $(2, -5)$를 얻는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 $x = \\dfrac{3}{4}$ 또는 $x = 2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "식의값",
+            "src": "solution",
+            "quote": "a - b = -11 - 6 = -17"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "(4x - 3)(x - 2)"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$(4x-3)(x-2)=4x^2-11x+6$에서 $a=-11, b=6$을 얻는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "양수인 해를 $a$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "\\frac{1+3\\sqrt{7}}{3}"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "3x-1 = \\pm 2\\sqrt{7}"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "양수인 해"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$2\\sqrt{7}>1$이므로 $b=\\frac{1+2\\sqrt{7}}{3}$만 양수임을 판별한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 $x = \\dfrac{-3 \\pm \\sqrt{89}}{10}$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "-20k = 80 \\implies k = -4"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "근의 공식에 의해"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$9 - 20k = 89$ 일차방정식을 세워 $k=-4$를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = 3x^2$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "포물선",
+            "src": "solution",
+            "quote": "$y = x^2$의 그래프보다 폭이 좁다."
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "$|a|$의 값이 클수록 폭이 좁아진다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$|3|>|1|$이므로 $y=3x^2$의 폭이 $y=x^2$보다 좁음을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "대칭이동",
+            "src": "stem",
+            "quote": "$x$축에 대하여 대칭이동한 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "a = \\frac{1}{4}"
+          }
+        ],
+        "method": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "-1 = -4a"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=-ax^2$에 $(2, -1)$을 대입하여 $-1=-4a$를 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "위로 볼록한 이차함수의 개수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "m + n = 4 + 3 = 7"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "|a| > 3"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "음수 계수 $4$개와 $|a|>3$인 계수 $3$개를 중복 허용 조건에 맞게 각각 센다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동한 그래프가 점 $(4, 3)$을 지날 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "solution",
+            "quote": "3 = a - 2 \\implies a = 5"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "y = a(x-3)^2 - 2"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x$축 방향 $+3$ 이동 시 $(x-3)^2$이 됨에 주의해 $(4, 3)$을 대입한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "평행이동하면 $y = (x+2)^2 - 1$의 그래프와 일치"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "p + q = -3 + (-4) = -7"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 이동량이 평행이동량"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$(1, 3) \\to (-2, -1)$의 변화량 $p=-3, q=-4$를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "그래프의 꼭짓점이 $x$축 위에 있을 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "방정식",
+            "src": "solution",
+            "quote": "k - 12 = 0 \\implies k = 12"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "3(x-2)^2 + k - 12"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=3(x-2)^2+k-12$에서 $k-12=0$을 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "꼭짓점을 지나는 직선의 기울기가 $1$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "a + b = 5"
+          }
+        ],
+        "method": [
+          {
+            "term": "기울기",
+            "src": "solution",
+            "quote": "\\frac{3 - a}{b - 2} = 1"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$\\frac{3-a}{b-2}=1$을 정리해 미지수 개별 값 없이 $a+b=5$를 바로 얻는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = x^2 + ax + b$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "\\frac{1}{2} \\times 6 \\times 9 = 27"
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 $\\mathrm{B}(1, -9)$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=(x+2)(x-4)=(x-1)^2-9$에서 높이 $9$를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = -3x^2 + 12x - 5$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "a+p+q = -3+2+7 = 6"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 변형하면"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$-3 \\times (-4) = +12$가 괄호 밖으로 나올 때 부호 계산을 정확히 한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2 + 12x = 85$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "양수인 해는 $x =$"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식으로 만들기 위해"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "x > 0"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차항 계수 $12$의 절반 $6$을 제곱한 $36$을 더해 $121=11^2$을 얻는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "넓이의 합이 $174$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "변",
+            "src": "stem",
+            "quote": "가장 작은 정사각형의 한 변의 길이"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "3x^2 + 14x - 145 &= 0"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "x > 0"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$3x^2+14x-145=0$을 $(x-5)(3x+29)=0$으로 인수분해해 $x=5$를 선택한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2$, $y = bx^2$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "a + b = 3 + (-4) = -1"
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle\\mathrm{ABO}$의 넓이가 $3$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$\\mathrm{B}(1, a)$에서 $\\triangle\\mathrm{ABO}=3 \\implies a=3$, $\\overline{\\mathrm{CD}}=4 \\implies b=-4$를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y = ax^2 + bx + c$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "a + b + c = -9a > 0"
+          }
+        ],
+        "method": [
+          {
+            "term": "포물선",
+            "src": "solution",
+            "quote": "대칭축이 $x = 1$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "a < 0"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=a(x+2)(x-4)$에서 $b=-2a, c=-8a$와 $a<0$을 이용해 $a+b+c=-9a>0$임을 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서답형",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $6x^2 + 7x - 20 = 0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $4x^2 - 8x - 1 = 0$"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식을 이용하여"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "(2)에서 양변을 $4$로 나눈 뒤 양변에 $1$을 더해 $(x-1)^2=\\frac{5}{4}$을 만든다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서답형",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형 모양의 종이"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "상자의 부피가 $420$"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x^2 - 8x - 128 &= 0"
+          }
+        ],
+        "condition": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "x > 6"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$3(x-6)(x-2)=420$을 정리해 $(x-16)(x+8)=0$을 풀고 마지막에 $x+4=20$을 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "서답형",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수의 식을 구하고"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "-2x^2 + 8"
+          }
+        ],
+        "method": [
+          {
+            "term": "좌표",
+            "src": "solution",
+            "quote": "(-2, 0)$, $(2, 0)$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$(0, 8)$을 대입해 $a=-2$를 구하고 전개해 $y=-2x^2+8$을 얻는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "서답형",
+      "slots": {
+        "given": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "꼭짓점의 좌표가 $(3, -4)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "9a - 4 \\ge 0 \\implies a \\ge \\frac{4}{9}"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "a(x-3)^2 - 4"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "a > 0"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "원점을 지날 때($c=0$)도 제3사분면을 지나지 않으므로 등호를 포함해 $9a-4\\ge 0$으로 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}
