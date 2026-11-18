@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-08236ec4510a-c53027b2",
+  "examUid": "25_매산여고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "4e2d3a30110f6f1f5af0d3fed321edc9d4188242",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-08236ec4510a-c53027b2.type-ledger.json",
+        "sha256": "5d4d10fc22163c3c8f36bed1aebc3bf02de83132ae5678663976de848a1e4760"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_53860549d000513d6a7201b1a61990f5979f159f2801ded2a23d480c6f7cd4ec",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_POINT"
+      },
+      "rationale": "넓이에서 OA에 대한 B의 높이를 구하고 AB=OA인 조건으로 가능한 위치를 정한 뒤 같은 넓이식으로 요구 거리를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "747f56c1df2fb57a1f60117a9d2e56b14981661060d1596a67a228128a01a6a7",
+        "contentFingerprint": "7cd3f75a3f3ced27a286529d4299c4d823c700334ac25c416191f727f295de52"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-08236ec4510a-c53027b2.type-ledger.json",
+          "sha256": "5d4d10fc22163c3c8f36bed1aebc3bf02de83132ae5678663976de848a1e4760"
+        }
+      ]
+    }
+  ]
+}

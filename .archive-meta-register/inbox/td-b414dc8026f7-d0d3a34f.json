@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-b414dc8026f7-d0d3a34f",
+  "examUid": "25_팔마고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "a42fedfd90ab30920d3e20f915a59e1f019c0eda",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b414dc8026f7-d0d3a34f.type-ledger.json",
+        "sha256": "bfff554889cd73c2018c2ff9c02f31e509169007e6c12540cf20a923276b1734"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_598c05a9bffde6f128f43d521224fd55b193809cc544ca5684e2c9b8dba82c1e",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+        "templateKey": "TPL_DISTANCE_SUM_MIN"
+      },
+      "rationale": "두 근호를 PA와 PB로 해석하고 삼각부등식의 등호조건으로 AB=5를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "90b1bc043d7f02b46b907cb07d027248cbf1f18ed9eecfb9cce06f7af2de13b6",
+        "contentFingerprint": "a4cb0102d54a6e420599aca96543c22319c7dd66025f875d1be2fde4638e7f84"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b414dc8026f7-d0d3a34f.type-ledger.json",
+          "sha256": "bfff554889cd73c2018c2ff9c02f31e509169007e6c12540cf20a923276b1734"
+        }
+      ]
+    }
+  ]
+}

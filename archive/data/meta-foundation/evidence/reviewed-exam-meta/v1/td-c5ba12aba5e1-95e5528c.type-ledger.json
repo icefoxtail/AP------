@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c5ba12aba5e1-95e5528c",
+  "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f8dafb4d2d09d1b97c8d22891460c10d9bb0fb9365e5a7c6409c29aebf217f44",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "step": "동전 앞면 수의 이항평균·분산을 구한 뒤 변환 평균과 표준편차 조건을 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0b0ae247cc48b7048c2fcbcfd1725bf81b1dd3e2b15932cd6432fc3ab58586d8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "step": "확률총합으로 상수를 정하고 이차 적률로 분산을 구한 뒤 제곱배율을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be9acda0444a7e5bc8dd4b3bb39823406489df1da8b56f998455204f14b235e9",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "step": "확률질량의 망원합을 1로 두어 상수를 정하고 조건을 만족하는 값의 확률을 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a94b6858625fda613b01736b855cb871ac7936d52922da0ad5d163211543dc48",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "step": "두 삼각형의 넓이 합 1과 한쪽 확률 조건을 연립하여 밀도계수를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6a99bdd95f4c5f0a6d9bf7f25b8defb7fd5d46565c26609b0e62fdc928c072c0",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "step": "16개 무게 합의 정규분포에서 한 상자의 구간확률을 구한 뒤 두 상자 중 하나의 확률을 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c0a3389112dbed394f2a5927878e02a3204d883d7157bd3f289865123cd54ecb",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "step": "99퍼센트 신뢰구간 반폭에서 모표준편차를 역산하여 분산을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f16a84087496de5acecb1f25e8d411e601906952c8230549b3d83ab7c3b69fe0",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "step": "두 밀도함수의 대칭축을 이용한 전체 넓이 1 조건을 연립하고 지정 구간 넓이를 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d64d3500f5c71a425fbc8f0a9ae6dec9def257f2dcaf3454ca9b594868869a7",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "step": "세 추출값의 범위별 확률분포를 포함·제외로 구성한 뒤 평균과 이차 적률로 분산을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}
