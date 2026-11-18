@@ -257,7 +257,6 @@ window.examData = {
       "solutionImageCaption": "(x−3)²+(x+4)²=(x+5)²에서 x(x−8)=0이다. x−3은 양수이므로 x=8이고 정답은 ①이다.",
       "solutionImageAlt": "파란 빗변 AB와 주황 세로변 AC, 초록 밑변 BC를 구분했다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q8-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "오른쪽 그림의 $\\triangle\\mathrm{ABC}$가 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형이 되도록 하는 $x$의 값은?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q8-problem-visual-v2.svg\" alt=\"C에서 직각인 삼각형의 세 변은 AB=x+5, BC=x+4, AC=x−3이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -297,7 +296,6 @@ window.examData = {
       "solutionImageCaption": "OA²+AB²+BC²+CD²+DE²=4+4+16+36+64=124이므로 OE=2√31이다. 정답은 ②이다.",
       "solutionImageAlt": "직각삼각형을 네 가지 옅은 색으로 칠했다. 각 단계에서 얻은 빗변은 바로 다음 삼각형의 직각변이 된다. 마지막 빗변 OE를 굵은 파랑으로 그렸다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q9-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "다음 그림과 같이 직각삼각형을 이어 그릴 때, $\\overline{\\mathrm{OE}}$의 길이는?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q9-problem-visual-v2.svg\" alt=\"O에서 A, B, C, D, E를 차례로 잇는 삼각형 부채 모양이다. OA와 AB는 길이 2이고 BC, CD, DE는 차례로 4, 6, 8이다. A, B, C, D에 직각이 표시되어 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -337,7 +335,6 @@ window.examData = {
       "solutionImageCaption": "AQ=√(10²−6²)=8이고 PQ=8−6=2이다. 삼각형 ABQ의 넓이는 6×8÷2=24이다. 옳지 않은 것은 ③이다.",
       "solutionImageAlt": "한 모서리의 직각삼각형 ABQ를 옅은 파랑으로 칠하고 중앙 정사각형을 주황색으로 표시했다. AB=10, BQ=6이며 같은 길이 6 표시는 그대로 있다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q10-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 3,
       "question": "아래 그림의 $\\square\\mathrm{ABCD}$는 한 변의 길이가 10인 정사각형이고, $\\overline{\\mathrm{AP}}=\\overline{\\mathrm{BQ}}=\\overline{\\mathrm{CR}}=\\overline{\\mathrm{DS}}=6$일 때, 다음 중 옳지 않은 것은?(3점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q10-problem-visual-v2.svg\" alt=\"정사각형 ABCD의 안쪽에 P, Q, R, S가 놓인다. A-P-Q, B-Q-R, C-R-S, D-S-P는 각각 한 직선이다. 길이 6인 네 구간 AP, BQ, CR, DS에 같은 눈금을 썼다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -377,7 +374,6 @@ window.examData = {
       "solutionImageCaption": "높이 AD는 8+4=12 cm이고 사다리꼴 ABED의 넓이는 72 cm²이다. 16 cm²인 두 합동 삼각형을 빼면 40 cm²이다. 정답은 ①이다.",
       "solutionImageAlt": "두 합동 삼각형 ACB, DEC 바깥의 가운데 삼각형 BCE를 옅은 주황으로 칠했다. 서로 대응하는 두 같은 길이끼리 파랑과 초록 눈금을 썼다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q11-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "다음 그림에서 두 직각삼각형 $\\mathrm{ACB, DEC}$는 합동이고, 세 점 $\\mathrm{A, C, D}$는 한 직선 위에 있다. $\\overline{\\mathrm{AB}}=4\\,\\mathrm{cm}$, $\\overline{\\mathrm{DE}}=8\\,\\mathrm{cm}$일 때, $\\triangle\\mathrm{BCE}$의 넓이는?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q11-problem-visual-v2.svg\" alt=\"A, C, D는 왼쪽 수직선 위에 놓인다. 오른쪽 B와 E를 연결했다. 수평인 두 변 AB와 DE는 각각 4 cm, 8 cm이고 A와 D에서 직각이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -452,7 +448,6 @@ window.examData = {
       "solutionImageCaption": "AH=h라 두면 BH=h/√3, HC=h이다. h/√3+h=6에서 h=3(3−√3)이다. 넓이는 9(3−√3) cm²이고 정답은 ④이다.",
       "solutionImageAlt": "A에서 밑변으로 수선 AH를 내렸다. 직각삼각형 AHC에서 길이가 같은 AH와 CH를 주황색 같은 눈금으로 표시했다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q13-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 5,
       "question": "다음 그림과 같이 $\\angle\\mathrm{B}=60^\\circ$, $\\angle\\mathrm{C}=45^\\circ$인 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}}=6\\,\\mathrm{cm}$일 때, $\\triangle\\mathrm{ABC}$의 넓이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q13-problem-visual-v2.svg\" alt=\"밑변 BC는 6 cm이다. 삼각형의 밑변 왼쪽 B에서 60도, 오른쪽 C에서 45도를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -531,7 +526,6 @@ window.examData = {
       "solutionImageCaption": "C를 BD에 대칭이동하면 AP+PC=AP+PC′이다. A, P, C′가 한 직선일 때 최소이며 AC′=√(15²+8²)=17 cm이다. 정답은 ⑤이다.",
       "solutionImageAlt": "가로선에 대해 C와 대칭인 C′를 아래에 놓았다. 같은 주황 눈금으로 PC와 PC′를 표시한다. A에서 P를 지나 C′로 이어지는 주황 선이 가장 짧은 경로이다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q15-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "다음 그림과 같이 $\\mathrm{B, P, D}$가 이 순서로 한 직선 위에 있고, 점 $\\mathrm{P}$는 선분 $\\overline{\\mathrm{BD}}$ 위를 움직인다. 점 $\\mathrm{A, C}$는 직선 $\\mathrm{BD}$의 같은 쪽에 있으며, $\\overline{\\mathrm{AB}}\\perp\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{CD}}\\perp\\overline{\\mathrm{BD}}$, $\\overline{\\mathrm{AB}}=5\\,\\mathrm{cm}$, $\\overline{\\mathrm{CD}}=3\\,\\mathrm{cm}$, $\\overline{\\mathrm{BD}}=15\\,\\mathrm{cm}$일 때, $\\overline{\\mathrm{AP}}+\\overline{\\mathrm{PC}}$의 최솟값은?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q15-problem-visual-v2.svg\" alt=\"B, P, D는 가로선 위에 있고 A와 C는 가로선 위쪽에 있다. 수직선 AB와 CD에 각각 5 cm, 3 cm를 표시했다. BD는 15 cm이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -571,7 +565,6 @@ window.examData = {
       "solutionImageCaption": "BD=8 cm이다. EB=x일 때 EA=ED=12−x이므로 (12−x)²=x²+64에서 x=10/3이다. 넓이는 40/3 cm²이다. 정답은 ④이다.",
       "solutionImageAlt": "접는 선 위 E와 두 점 A, D를 연결했다. 접기 전 EA와 접은 후 ED는 주황색 같은 눈금이다. B, E, D가 이루는 직각삼각형을 옅게 칠했다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q16-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "오른쪽 그림은 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{BC}}=12\\,\\mathrm{cm}$인 직각 이등변삼각형 모양의 종이를 꼭짓점 $\\mathrm{A}$가 $\\overline{\\mathrm{BC}}$의 삼등분점 중 점 $\\mathrm{C}$에 가까운 점 $\\mathrm{D}$에 오도록 접은 것이다. 이때 $\\triangle\\mathrm{EBD}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q16-problem-visual-v2.svg\" alt=\"직각 꼭짓점 B를 기준으로 AB는 수직이고 BC는 수평이다. 점선을 따라 접기 전 삼각형이 보인다. A가 밑변 DC 쪽의 삼등분점 D로 옮겨졌고 접는 선은 EF이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -611,7 +604,6 @@ window.examData = {
       "solutionImageCaption": "윗면 직각삼각형에서 AB=3 cm이다. 두 옆면을 펴면 가로 7 cm, 세로 4 cm인 직사각형이다. BE를 지나는 직선 AF의 길이는 √65 cm이며 정답은 ②이다.",
       "solutionImageAlt": "삼각기둥의 두 옆면 ABED, BCEF를 하나의 직사각형으로 펼쳤다. 세로선 BE의 왼쪽이 너비 3 cm, 오른쪽이 너비 4 cm이고 높이는 4 cm이다. 주황선 AF가 BE를 가로지른다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q17-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "오른쪽 그림과 같이 $\\angle\\mathrm{ABC}=90^\\circ$인 삼각기둥이 있다. 점 $\\mathrm{A}$에서 출발하여 모서리 $\\mathrm{BE}$를 지나 점 $\\mathrm{F}$에 이르는 가장 짧은 거리는?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q17-problem-visual-v2.svg\" alt=\"삼각기둥 윗면 ABC에서 B에 직각 표시가 있다. AC는 5 cm이고 BC와 CF는 각각 4 cm이다. A에서 앞쪽 모서리 BE를 지나 F로 이어지는 예시 경로를 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -651,7 +643,6 @@ window.examData = {
       "solutionImageCaption": "h=AH라 두면 r²+h²=90, r²+(h−5)²=25이다. 두 식의 차로 h=9이고 r=3이다. 부피는 27π이며 정답은 ①이다.",
       "solutionImageAlt": "밑면 중심 H와 축 AH를 표시했다. 모선 AC와 반지름 OC가 구의 축에서 같은 가로거리 HC만큼 떨어진 C에 닿는다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q18-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 5,
       "question": "다음 그림과 같이 반지름의 길이가 5인 구에 모선의 길이가 $3\\sqrt{10}$인 원뿔이 내접할 때, 이 원뿔의 부피를 구하면?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q18-problem-visual-v2.svg\" alt=\"구의 위쪽 A는 원뿔의 꼭짓점이다. O는 구의 중심이고 반지름 AO는 5이다. 원뿔의 밑면 테두리 끝 B와 C를 구의 단면 위에 두었다. 모선 AC는 3√10이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -691,7 +682,6 @@ window.examData = {
       "solutionImageCaption": "CM=CN=4 cm이므로 BM=BN=4√5 cm이고 MN=4√2 cm이다. MN의 중점 K까지의 높이 BK는 6√2 cm이다. 넓이는 24 cm²이며 정답은 ③이다.",
       "solutionImageAlt": "중점 M과 N을 색으로 구분한 정육면체 그림이다. 보라색 삼각형 BMN에서 BM과 BN은 같은 길이이다. 아래 그림에는 B에서 MN의 중점 K로 내린 수선과 MN의 길이를 표시했다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q19-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 4,
       "question": "다음 그림과 같이 한 모서리의 길이가 $8\\,\\mathrm{cm}$인 정육면체 $\\overline{\\mathrm{CG}}, \\overline{\\mathrm{CD}}$의 중점을 각각 $\\mathrm{M, N}$이라고 할 때, $\\triangle\\mathrm{BMN}$의 넓이를 구하면?(4점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q19-problem-visual-v2.svg\" alt=\"정육면체 한 모서리는 8 cm이다. 앞쪽의 세로 모서리 CG의 중점은 M이고, 윗쪽 CD의 중점은 N이다. B, M, N을 잇는 삼각형이 보인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -731,7 +721,6 @@ window.examData = {
       "solutionImageCaption": "밑면 둘레 4π cm가 부채꼴의 호 길이이므로 중심각은 60°이다. OX=3 cm, XM′=3√3 cm, BX=9 cm이므로 BM′=6√3 cm이다. 정답은 ②이다.",
       "solutionImageAlt": "원뿔 옆면을 펼친 반지름 12 cm, 중심각 60도의 부채꼴이다. B와 다른 절단면의 중점 M′ 사이의 최단 경로가 주황 선이다. M′에서 OB에 내린 수선의 발은 X이다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q20-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 5,
       "question": "다음 그림과 같이 모선의 길이가 $12\\,\\mathrm{cm}$, 밑면의 반지름의 길이가 $2\\,\\mathrm{cm}$인 원뿔에서 점 $\\mathrm{M}$은 모선 $\\overline{\\mathrm{OB}}$의 중점이다. 점 $\\mathrm{B}$에서 꼭짓점 $\\mathrm{O}$를 지나지 않고 원뿔의 옆면을 정확히 한 바퀴 돌아 점 $\\mathrm{M}$에 이르는 경로 중 가장 짧은 길이는?(5점)<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q20-problem-label-gap.svg\" alt=\"원뿔의 꼭짓점 O에서 밑면 둘레의 B까지 길이는 12 cm이다. 밑면 중심 H에서 B까지의 반지름은 2 cm이다. M은 OB의 중점이다. 주황 경로는 B에서 출발해 옆면을 한 바퀴 돌아 M에 이른다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [
@@ -800,7 +789,6 @@ window.examData = {
       "solutionImageCaption": "ab=16, a²+b²=64이므로 (a+b)²=96이다. 따라서 a+b=4√6이다.",
       "solutionImageAlt": "a가 밑변, b가 높이이고 두 길이는 8인 빗변과 함께 직각삼각형을 이룬다. 파란색 면이 넓이 8인 부분이다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q22-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 6,
       "question": "[서술형 2] 다음 그림과 같은 직각삼각형 $\\mathrm{ABC}$의 넓이가 8일 때, $a+b$의 값을 구하시오. (단, 풀이 과정을 자세히 써라.) [6점]<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q22-problem-visual-v2.svg\" alt=\"직각삼각형의 빗변 AB는 8이다. C에서 만나는 가로변 BC와 세로변 AC에 각각 a와 b를 놓았다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
@@ -834,7 +822,6 @@ window.examData = {
       "solutionImageCaption": "삼각형 BFH의 넓이를 BF×FH÷2와 BH×FM÷2로 나타내면 FM=(3√2×6)/(3√6)=2√3 cm이다.",
       "solutionImageAlt": "직각삼각형 BFH를 정육면체에서 꺼내 그렸다. BF는 세로 모서리 3√2 cm, FH는 밑면 대각선 6 cm, BH는 공간 대각선 3√6 cm이다. F에서 BH에 이른 주황 수선의 발은 M이다.",
       "solutionImage": "assets/images/18_연향중_2학기_중간_중3_수학/q23-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "score": 7,
       "question": "[서술형 3] 다음 그림과 같이 한 모서리의 길이가 $3\\sqrt{2}\\,\\mathrm{cm}$인 정육면체의 한 꼭짓점 $\\mathrm{F}$에서 대각선 $\\overline{\\mathrm{BH}}$에 내린 수선의 발을 $\\mathrm{M}$이라 할 때, $\\overline{\\mathrm{FM}}$의 길이를 구하여라. (단, 풀이 과정을 자세히 써라.) [7점]<br><img src=\"assets/images/18_연향중_2학기_중간_중3_수학/q23-problem-visual-v2.svg\" alt=\"정육면체의 한 모서리는 3√2 cm이다. 윗면의 B와 반대쪽 밑면의 H를 잇는 공간 대각선을 그렸다. 꼭짓점 F에서 대각선에 내린 수선의 발은 M이다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
       "choices": [],
