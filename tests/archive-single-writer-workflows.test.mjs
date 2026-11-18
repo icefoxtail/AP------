@@ -67,7 +67,7 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.equal((register.match(/node tools\/ci\/git-push-derived-with-retry\.mjs/g) || []).length, 1);
   assert.match(register, /--paths-file "\$WRITER_WORK_DIR\/commit\.paths"/);
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
-  assert.match(register, /--remote origin --branch main --max-attempts 6/);
+  assert.match(register, /--remote origin --branch main --max-attempts 2/);
   assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 1);
   assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
   assert.match(register.split('    steps:')[0], /timeout-minutes: 345/);
