@@ -710,6 +710,37 @@ test('a failed verify that continues to its retry is recorded with its real exit
   assert.deepEqual(rows.map(r=>[r.stage,r.exitCode]),[['verify',1],['retry',0]]);
 });
 
+// A runner wall clock that steps backwards must never produce a negative step time, change the exit code or touch stdout.
+for(const name of ['archive-main-auto-meta-pass.sh','archive-four-slot-pass.sh']) {
+  test(`${name}: a wall clock stepping backwards records 0 with clockAdjusted, keeps the exit code and a clean stdout`,t=>{
+    if(!bashOk())return t.skip('bash is not available');
+    const script=lf(fs.readFileSync(scriptPath(name),'utf8'));
+    const start=script.indexOf('stage_log='),trapAt=script.indexOf("trap 'rc=$?; stage_end");
+    assert.ok(start>0&&trapAt>start);
+    const block=script.slice(start,script.indexOf('\n',trapAt));
+    const dir=fs.mkdtempSync(path.join(os.tmpdir(),'stage-clock-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+    const posix=p=>p.replace(/\\/g,'/'),bin=path.join(dir,'bin');fs.mkdirSync(bin);
+    // Fake date: every call returns 1s less than the previous one (counter kept in a file), whatever the arguments.
+    fs.writeFileSync(path.join(bin,'date'),'#!/usr/bin/env bash\nf="$FAKE_DATE_COUNTER"\nn=$(cat "$f" 2>/dev/null || echo 0)\nn=$((n+1))\necho "$n" > "$f"\necho $((9000000000 - n * 1000))\n',{mode:0o755});
+    const harness=`set -euo pipefail\nwork=${JSON.stringify(posix(dir))}\n${block}\nstage first\nstage second\necho STDOUT_PAYLOAD\n(exit 4)\nstage never\n`;
+    const run=spawnSync('bash',['-c',harness],{encoding:'utf8',env:{...process.env,PATH:posix(bin)+':'+process.env.PATH,FAKE_DATE_COUNTER:posix(path.join(dir,'counter'))}});
+    const probe=spawnSync('bash',['-c','date +%s%3N'],{encoding:'utf8',env:{...process.env,PATH:posix(bin)+':'+process.env.PATH,FAKE_DATE_COUNTER:posix(path.join(dir,'probe'))}});
+    if(!/^8\d{9}\d*\s*$/.test(probe.stdout))return t.skip('a fake date could not shadow the system date here');
+    assert.equal(run.status,4,'the failing command keeps its own exit code');
+    assert.equal(run.stdout,'STDOUT_PAYLOAD\n','stage output never reaches stdout');
+    assert.match(run.stderr,/\[stage-time\] second 0ms exit=4/);
+    const rows=fs.readFileSync(path.join(dir,'stage-times.jsonl'),'utf8').trim().split('\n').map(l=>JSON.parse(l));
+    assert.deepEqual(rows.map(r=>[r.stage,r.exitCode,r.durationMs,r.clockAdjusted]),[['first',0,0,true],['second',4,0,true]]);
+    assert.ok(rows.every(r=>Number.isInteger(r.durationMs)&&r.durationMs>=0));
+  });
+}
+test('readStageTimes shows a recorded negative time as 0, flags it, and leaves normal rows unchanged',t=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'stage-neg-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));
+  const file=path.join(dir,'s.jsonl');
+  fs.writeFileSync(file,'{"stage":"a","durationMs":-881,"exitCode":1}\n{"stage":"b","durationMs":0,"exitCode":0,"clockAdjusted":true}\n{"stage":"c","durationMs":1200,"exitCode":0}\n');
+  assert.deepEqual(readStageTimes(file),[{stage:'a',durationMs:0,exitCode:1,clockAdjusted:true},{stage:'b',durationMs:0,exitCode:0,clockAdjusted:true},{stage:'c',durationMs:1200,exitCode:0}]);
+});
+
 test('a malformed instrumentation object never makes the summary renderer throw',()=>{
   const bad=[{stages:5,autoMeta:{run:{},origin:{available:true}}},{staleMetaV2Payloads:{files:null}},{autoMeta:{run:{targets:1},attemptedByFile:{top:'x'},backlogAfterRun:{reasons:{top:null}}}},{commands:'x',stages:{}}];
   for(const instrumentation of bad) {
