@@ -20,6 +20,8 @@ export function makeCourseAliases(doc = null) {
     loaded: Boolean(doc),
     // The course (spelling) group id of a name, or "" when the name is in no group.
     groupOf: value => spelling.get(compact(value))?.id || "",
+    // The grade a course name belongs to (group.grade, e.g. "중2", "고1"), or "" when the name is in no group.
+    gradeOf: value => spelling.get(compact(value))?.grade || "",
     // "same": equal up to whitespace; "alias": another spelling of the same course; "successor": the same subject in the other
     // curriculum (2015 <-> 2022); "": no relation (different course or grade, or unknown).
     relation(a, b) {

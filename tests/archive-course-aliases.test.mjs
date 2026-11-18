@@ -22,7 +22,7 @@ test("every group names its evidence and a grade; no spelling belongs to two gro
   for (const group of doc.spellingGroups) {
     assert.ok(group.id && group.grade && group.members.length && group.evidence?.length, `incomplete group ${group.id}`);
     for (const member of group.members) {
-      assert.ok(!seen.has(compact(member)), `${member} is in ${seen.get(compact(member))} and ${group.id}`);
+      assert.ok(!seen.has(compact(member)) || seen.get(compact(member)) === group.id, `${member} is in ${seen.get(compact(member))} and ${group.id}`);
       seen.set(compact(member), group.id);
     }
   }

@@ -4,6 +4,7 @@
 //
 //   node archive/tools/meta-foundation/build-type-judgment-requests.mjs --results <git ref> [--results <git ref>...] \
 //        [--results-dir <local dir>] [--exams a.js,b.js | --exams-file <file>] [--limit N] [--out <repo root>] [--dry-run] [--summary-global] [--skipped-out <file>]
+//        [--allow-pack-scope-additions] [--include-receipt-rows] [--judged-base <git ref> | auto]
 //
 // Without --out (or with --dry-run) nothing is written: only the summary is printed. With --out <dir> the request files go to
 // <dir>/.archive-meta-register/inbox/ and their evidence ledgers to <dir>/archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/.
@@ -24,6 +25,11 @@ import { fileURLToPath } from "node:url";
 import { DIRECT_JUDGMENT, DECISION_DOCUMENT } from "./register-type-judgment.mjs";
 import { isLegacyPathFormulaUid } from "./reviewed-exam-registration-v2.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
+import { loadCourseAliases, makeCourseAliases } from "./course-aliases.mjs";
+import { createRequire } from "node:module";
+// Text binding of a question (stem + choices; archive/question-binding.js, decision "메타 결속 지문 범위"): used to see whether the
+// question text changed since it was judged. The one definition lives in that module.
+const QuestionBinding = createRequire(import.meta.url)("../../question-binding.js");
 
 export const REQUEST_SCHEMA = "archive-reviewed-exam-meta-register-request-v2";
 export const LEDGER_SCHEMA = "archive-type-direct-judgment-ledger-v1";
@@ -82,13 +88,13 @@ export function loadRegistry(root) {
   const read = rel => JSON.parse(fs.readFileSync(path.join(root, rel), "utf8"));
   const tax = read("archive/data/meta-foundation/compiled/taxonomy_registry.json");
   const bindings = read("archive/data/meta-foundation/compiled/curriculum_bindings.json").bindings.filter(b => b.status === "ACTIVE");
-  const packs = new Map();
+  const packs = new Map(), packFiles = new Map();
   const dir = path.join(root, "archive/data/meta-foundation/canonical/packs");
   for (const name of fs.readdirSync(dir).sort()) {
     const file = path.join(dir, name, "pack.json");
-    if (fs.existsSync(file)) { const p = JSON.parse(fs.readFileSync(file, "utf8")); packs.set(p.packId, p); }
+    if (fs.existsSync(file)) { const p = JSON.parse(fs.readFileSync(file, "utf8")); packs.set(p.packId, p); packFiles.set(p.packId, `archive/data/meta-foundation/canonical/packs/${name}/pack.json`); }
   }
-  return makeRegistry({ problemTypes: tax.problemTypes, templates: tax.templates, bindings, packs });
+  return { ...makeRegistry({ problemTypes: tax.problemTypes, templates: tax.templates, bindings, packs }), packFiles };
 }
 export function makeRegistry({ problemTypes, templates, bindings, packs }) {
   const bindingsByPt = new Map();
@@ -96,30 +102,6 @@ export function makeRegistry({ problemTypes, templates, bindings, packs }) {
   return { pt: new Map(problemTypes.map(p => [p.problemTypeKey, p])), tpl: new Map(templates.map(p => [p.templateKey, p])), bindingsByPt, packs };
 }
 
-const normCourse = s => String(s || "").normalize("NFC").replace(/\s+/g, "").replace(/Ⅰ/g, "I").replace(/Ⅱ/g, "II").replace(/中/g, "중");
-// Course spelling -> course family. Spellings of one course map to the same family; different courses never do.
-export function courseFamily(course) {
-  const n = normCourse(course);
-  if (!n) return "";
-  if (/^(중1|M1|중학교1학년|중학교수학1)/.test(n)) return "m1";
-  if (/^(중2|M2|중학교2학년|중학교수학2)/.test(n)) return "m2";
-  if (/^(중3|M3|중학교3학년|중학교수학3)/.test(n)) return "m3";
-  if (n === "중학수학") return "m?";
-  if (n === "수학(상)" || n === "수학_상") return "s-sang";
-  if (n === "수학(하)" || n === "수학_하") return "s-ha";
-  if (n === "공통수학1") return "c1";
-  if (n === "공통수학2") return "c2";
-  if (n === "공통수학") return "c?";
-  if (n === "대수") return "alg";
-  if (n === "수학I") return "s1";
-  if (n === "수학II") return "s2";
-  if (/^미적분(I|1)?$/.test(n)) return "calc";
-  if (n === "확률과통계") return "prob";
-  if (/^기하(와벡터)?$/.test(n)) return "geo";
-  return `?${n}`;
-}
-// Same subject in the 2015 and 2022 curricula (대수 = 수학I ...). Not accepted by the strict lane; reported separately.
-const SUCCESSOR_GROUP = { "s-sang": "h1", "s-ha": "h1", c1: "h1", c2: "h1", s1: "s1", alg: "s1", s2: "s2", calc: "s2", prob: "prob", geo: "geo", m1: "m1", m2: "m2", m3: "m3" };
 const pathGrade = file => /^(?:original|similar|types)\/(?:middle|high)\/([mh][123])\//.exec(file)?.[1] || "";
 const pathYear = file => { const m = /(?:^|\/)(\d{2})_/.exec(file); return m ? 2000 + Number(m[1]) : 0; };
 export function curriculumGuess(row) {
@@ -129,50 +111,59 @@ export function curriculumGuess(row) {
   const g = Number(pathGrade(row.sourceArchiveFile).slice(1) || 0), y = pathYear(row.sourceArchiveFile);
   return g && y ? (y - g + 1 >= 2025 ? "2022" : "2015") : "";
 }
-const isRealFamily = f => f && !f.startsWith("?") && !f.endsWith("?");
-function allowedFamilies(row) {
-  const f = courseFamily(row.standardCourse || row.courseKey);
-  if (isRealFamily(f)) return [f];
+// A row without a course of its own is placed by its exam folder; the grades come from the alias data's group grades.
+function pathGrades(row) {
   const g = pathGrade(row.sourceArchiveFile);
-  if (/^m[123]$/.test(g)) return [g];
-  if (g === "h1") return ["s-sang", "s-ha", "c1", "c2"];
-  if (g === "h2" || g === "h3") return ["s1", "s2", "alg", "calc", "prob", "geo"];
-  const book = /^textbooks\/[^_/]+_(.+?)\//.exec(row.sourceArchiveFile);
-  if (book && isRealFamily(courseFamily(book[1]))) return [courseFamily(book[1])];
-  if (f === "m?") return ["m1", "m2", "m3"];
-  if (f === "c?") return ["c1", "c2", "s-sang"];
+  if (g === "m1") return ["중1"];
+  if (g === "m2") return ["중2"];
+  if (g === "m3") return ["중3"];
+  if (g === "h1") return ["고1"];
+  if (g === "h2" || g === "h3") return ["고2", "고3"];
   return [];
 }
-// The strict lane needs: scope.curriculum equals the row's (when it has one), scope.standardCourse equals the row's course (when
-// it has one) and an ACTIVE binding of the PT in exactly that curriculum/course inside the owner pack's declared scope.
-export function chooseScope(registry, row, ptKey) {
+// The strict lane needs: scope.curriculum equals the row's (when it has one; not for a successor course), scope.standardCourse is
+// the row's course, another spelling of it or its successor (course-aliases.v1.json), and an ACTIVE binding of the PT in exactly that
+// curriculum/course inside the owner pack's declared scope. A pack that does not declare the binding's scope yet is widened by an
+// append-only pack change when `allowPackAdditions` is set (returned as `packAddition`); otherwise the row is skipped.
+export function chooseScope(registry, aliases, row, ptKey, { allowPackAdditions = false } = {}) {
   const all = registry.bindingsByPt.get(ptKey) || [];
   if (!all.length) return { skip: "SCOPE_PT_HAS_NO_BINDING" };
-  const fams = allowedFamilies(row);
-  if (!fams.length) return { skip: "SCOPE_ROW_COURSE_UNKNOWN" };
-  let inFamily = all.filter(b => fams.includes(courseFamily(b.standardCourse)));
-  let successor = false;
-  if (!inFamily.length) {
-    inFamily = all.filter(b => fams.some(f => SUCCESSOR_GROUP[f] && SUCCESSOR_GROUP[f] === SUCCESSOR_GROUP[courseFamily(b.standardCourse)]));
-    successor = inFamily.length > 0;
-    if (!successor) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
-  }
   const rowCur = text(row.curriculum) || text(row.curriculumKey), rowCourse = text(row.standardCourse) || text(row.courseKey);
-  let candidates = rowCur ? inFamily.filter(b => b.curriculum === rowCur) : inFamily;
-  if (!candidates.length) return { skip: successor ? "SCOPE_PT_BOUND_TO_OTHER_COURSE" : "SCOPE_CURRICULUM_MISMATCH" };
-  candidates = candidates.filter(b => {
-    const pack = registry.packs.get(b.ownerPack || registry.pt.get(b.problemTypeKey)?.ownerPack);
-    return pack && pack.curricula.includes(b.curriculum) && pack.standardCourses.includes(b.standardCourse);
-  });
-  if (!candidates.length) return { skip: "SCOPE_PACK_DOES_NOT_DECLARE_COURSE" };
-  if (successor) return { skip: "SCOPE_COURSE_SUCCESSOR_NEEDS_ALIAS" };
+  let pool, relation = "same";
   if (rowCourse) {
-    candidates = candidates.filter(b => compact(b.standardCourse) === compact(rowCourse));
-    if (!candidates.length) return { skip: "SCOPE_COURSE_SPELLING_NEEDS_ALIAS" };
+    const kinds = new Map(all.map(b => [b, aliases.relation(rowCourse, b.standardCourse)]));
+    pool = all.filter(b => ["same", "alias"].includes(kinds.get(b)));
+    if (pool.length) relation = pool.some(b => kinds.get(b) === "alias") && !pool.some(b => kinds.get(b) === "same") ? "alias" : "same";
+    else {
+      pool = all.filter(b => kinds.get(b) === "successor");
+      relation = "successor";
+      if (!pool.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
+    }
+  } else {
+    const grades = pathGrades(row);
+    if (!grades.length) return { skip: "SCOPE_ROW_COURSE_UNKNOWN" };
+    pool = all.filter(b => grades.includes(aliases.gradeOf(b.standardCourse)));
+    if (!pool.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
   }
+  // The row's curriculum is compared with the binding's, except for a successor course (it lives in the other curriculum).
+  let candidates = rowCur && relation !== "successor" ? pool.filter(b => b.curriculum === rowCur) : pool;
+  if (!candidates.length) return { skip: "SCOPE_CURRICULUM_MISMATCH" };
+  const declared = b => { const pack = registry.packs.get(b.ownerPack || registry.pt.get(b.problemTypeKey)?.ownerPack); return pack && pack.curricula.includes(b.curriculum) && pack.standardCourses.includes(b.standardCourse); };
+  let packAddition = null;
+  if (!candidates.some(declared)) {
+    if (!allowPackAdditions) return { skip: "SCOPE_PACK_DOES_NOT_DECLARE_COURSE" };
+  } else candidates = candidates.filter(declared);
   const guess = rowCur || curriculumGuess(row);
-  candidates.sort((a, b) => (Number(b.curriculum === guess) - Number(a.curriculum === guess)) || a.curriculum.localeCompare(b.curriculum) || a.standardCourse.localeCompare(b.standardCourse, "ko"));
-  return { scope: { curriculum: candidates[0].curriculum, standardCourse: candidates[0].standardCourse } };
+  candidates = candidates.slice().sort((a, b) => (Number(b.curriculum === guess) - Number(a.curriculum === guess)) || a.curriculum.localeCompare(b.curriculum) ||
+    a.standardCourse.localeCompare(b.standardCourse, "ko"));
+  const chosen = candidates[0];
+  if (!declared(chosen)) {
+    const packId = chosen.ownerPack || registry.pt.get(chosen.problemTypeKey)?.ownerPack, pack = registry.packs.get(packId);
+    if (!pack) return { skip: "SCOPE_OWNER_PACK_MISSING" };
+    packAddition = { packId, curricula: pack.curricula.includes(chosen.curriculum) ? [] : [chosen.curriculum],
+      standardCourses: pack.standardCourses.includes(chosen.standardCourse) ? [] : [chosen.standardCourse] };
+  }
+  return { scope: { curriculum: chosen.curriculum, standardCourse: chosen.standardCourse }, relation, ...(packAddition ? { packAddition } : {}) };
 }
 
 // ---------------------------------------------------------------- source helpers (same formulas as the registrar)
@@ -196,8 +187,9 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, now = null }) {
-  const skipped = [];
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false }) {
+  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
+  const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
   const wanted = exams ? new Set(exams.map(normalizeExam)) : null;
   const seen = new Set();
@@ -218,7 +210,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
   }
   let examList = [...candidates.keys()].sort();
   if (limit !== null) examList = examList.slice(0, limit);
-  const requests = [], files = new Map();
+  const requests = [], files = new Map(), prepared = [];
   for (const file of examList) {
     const entries = candidates.get(file).sort((a, b) => a.m.sourceOrdinal - b.m.sourceOrdinal);
     let source;
@@ -233,7 +225,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
       if (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl)) { skip(row, "TYPE_STATUS_NOT_OVERWRITABLE"); continue; }
       if (m.foundationTaxonomyStatus === "HOLD") { skip(row, "ROW_FOUNDATION_TAXONOMY_HOLD"); continue; }
-      if (m.metadataApprovalType) { skip(row, "ROW_HAS_APPROVAL_RECEIPT"); continue; }
+      if (m.metadataApprovalType && !includeReceiptRows) { skip(row, "ROW_HAS_APPROVAL_RECEIPT"); continue; }
       const pt = ctx.registry.pt.get(row.pt);
       if (!pt || pt.status !== "ACTIVE") { skip(row, "PT_NOT_ACTIVE_IN_REGISTRY"); continue; }
       const tplKey = text(row.tpl);
@@ -246,28 +238,53 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (rationale.length < 6 || /^(?:-|none|null|n\/a|tbd|todo|\?+)$/i.test(rationale)) { skip(row, "RATIONALE_MISSING"); continue; }
       const q = bank[m.sourceOrdinal - 1], id = ctx.identity.get(row.uid);
       if (!q) { skip(row, "SOURCE_QUESTION_MISSING"); continue; }
+      // The result line's own question number must be this row's ordinal (a shifted table would put a type on the wrong question).
+      if (row.no !== undefined && row.no !== null && Number(row.no) !== m.sourceOrdinal) { skip(row, "RESULT_NO_DIFFERS_FROM_SOURCE_ORDINAL", { ordinal: m.sourceOrdinal }); continue; }
+      // The judgment was made on the exam as it stood at the judged base; a changed stem or choices need a new judgment.
+      if (ctx.judgedBank) {
+        const old = ctx.judgedBank(row, file)?.[m.sourceOrdinal - 1];
+        if (!old) stats.judgedBase.unverified++;
+        else {
+          stats.judgedBase.checked++;
+          if (QuestionBinding.bindingSerialize(old) !== QuestionBinding.bindingSerialize(q)) { skip(row, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGMENT"); continue; }
+        }
+      }
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
       if (String(m.metadataRevision || "").startsWith("meta-foundation:") &&
           ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
-      const picked = chooseScope(ctx.registry, m, row.pt);
+      const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
       const fp = sourceFingerprints(q);
-      items.push({ row, m, scope: picked.scope, fp, rationale, tplKey });
+      items.push({ row, m, scope: picked.scope, fp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null });
     }
     if (!items.length) continue;
+    prepared.push({ file, bank, bytes, items });
+  }
+  // One pack change per pack carries every value the whole batch needs (a later request would see the already widened pack).
+  const additions = new Map();
+  for (const { items } of prepared) for (const { packAddition } of items) if (packAddition) {
+    const e = additions.get(packAddition.packId) || { curricula: new Set(), standardCourses: new Set() };
+    packAddition.curricula.forEach(v => e.curricula.add(v)); packAddition.standardCourses.forEach(v => e.standardCourses.add(v));
+    additions.set(packAddition.packId, e);
+  }
+  const carrierFile = additions.size ? prepared.find(p => p.items.some(i => i.packAddition))?.file : null;
+  for (const { file, bank, bytes, items } of prepared) {
     // Result source: the table file that holds most of this exam's judged lines (ties: path order).
     const bySource = new Map();
     for (const { row } of items) { const k = JSON.stringify(row._source); bySource.set(k, (bySource.get(k) || 0) + 1); }
     const best = [...bySource].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0][0];
     const resultSource = JSON.parse(best);
     const core = items.map(({ row, m }) => ({ uid: row.uid, o: m.sourceOrdinal, pt: row.pt, tpl: text(row.tpl), step: text(row.step) }));
-    const requestId = `td-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
+    // The carrier of the pack changes sorts before every other request ("tc" < "td"): the inbox is registered in name order.
+    const carrier = file === carrierFile;
+    const requestId = `${carrier ? "tc" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
     const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge: "dots", resultSource,
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
       rows: items.map(({ row, m }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
-        step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file })) };
+        step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file })),
+      ...(carrier ? { packScopeAdditions: [...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => ({ packId, curricula: [...e.curricula].sort(), standardCourses: [...e.standardCourses].sort() })) } : {}) };
     const ledgerText = json(ledger), ledgerPath = `${EVIDENCE_DIR}/${requestId}.type-ledger.json`;
     const ref = { path: ledgerPath, sha256: sha256(ledgerText) };
     files.set(ledgerPath, ledgerText);
@@ -275,6 +292,11 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       sourceArchiveFile: file, expectedSourceBlobSha1: ctx.blobOf(file, bytes), expectedQuestionCount: bank.length,
       approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge: "dots",
         decisionRef: { document: DECISION_DOCUMENT, section: DECISION_SECTION }, resultSource, evidenceRefs: [ref] },
+      ...(carrier ? { registryChanges: [...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => {
+        const before = ctx.registry.packs.get(packId);
+        return { path: ctx.registry.packFiles.get(packId), before: structuredClone(before),
+          after: { ...structuredClone(before), curricula: [...before.curricula, ...[...e.curricula].sort()], standardCourses: [...before.standardCourses, ...[...e.standardCourses].sort()] }, evidenceRefs: [ref] };
+      }) } : {}),
       items: items.map(({ row, m, scope, fp, rationale, tplKey }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal,
         before: { problemTypeKey: empty(m.problemTypeKey) ? "" : m.problemTypeKey, templateKey: empty(m.templateKey) ? "" : m.templateKey },
         after: { problemTypeKey: row.pt, ...(tplKey ? { templateKey: tplKey } : {}) },
@@ -282,7 +304,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     requests.push(request);
     files.set(`${INBOX_DIR}/${requestId}.json`, json(request));
   }
-  return { requests, files, skipped };
+  return { requests, files, skipped, stats };
 }
 
 export function summarize({ requests, skipped, resultLines, commits = [], head = null }) {
@@ -322,6 +344,28 @@ export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
   return out;
 }
 
+// ---------------------------------------------------------------- judged base (was the question text changed since it was judged?)
+// `ref` is a git ref, or "auto": the merge base of HEAD and the commit the result table was read from (the exam as the judge saw it).
+// An exam that cannot be read at the base is not a change: it is counted as unverified, the row stays.
+export function makeJudgedBank(root, ref) {
+  const baseOf = new Map(), banks = new Map();
+  return (row, file) => {
+    let base = ref;
+    if (ref === "auto") {
+      const commit = row._source?.commit;
+      if (!commit || /^0+$/.test(commit)) return null;
+      if (!baseOf.has(commit)) { try { baseOf.set(commit, git(root, "merge-base", "HEAD", commit).trim()); } catch { baseOf.set(commit, null); } }
+      base = baseOf.get(commit);
+      if (!base) return null;
+    }
+    const key = `${base}:${file}`;
+    if (!banks.has(key)) {
+      try { banks.set(key, loadBank(git(root, "show", `${base}:archive/exams/${file}`), file)); } catch { banks.set(key, null); }
+    }
+    return banks.get(key);
+  };
+}
+
 // ---------------------------------------------------------------- repository context
 export function loadContext(root) {
   root = fs.realpathSync(root);
@@ -334,7 +378,7 @@ export function loadContext(root) {
   const decisionDoc = fs.readFileSync(path.join(root, DECISION_DOCUMENT), "utf8");
   if (!decisionDoc.includes(DECISION_SECTION)) throw new Error(`DECISION_SECTION_MISSING:${DECISION_DOCUMENT}`);
   return { root, records: new Map(meta.records.map(r => [r.questionUid, r])), identity: new Map(identityDoc.records.map(r => [r.questionUid, r])), identityDoc,
-    rowsBySource, identityCountBySource, registry: loadRegistry(root),
+    rowsBySource, identityCountBySource, registry: loadRegistry(root), aliases: loadCourseAliases(root), judgedBank: null,
     readBank(file) {
       const rel = `archive/exams/${file}`;
       const bytes = fs.readFileSync(path.join(root, rel));
@@ -345,7 +389,7 @@ export function loadContext(root) {
 
 // ---------------------------------------------------------------- CLI
 export function parseCli(argv) {
-  const args = { results: [], resultsDir: [], exams: null, examsFile: null, limit: null, out: null, dryRun: false, summaryGlobal: false, skippedOut: null, root: here,
+  const args = { results: [], resultsDir: [], exams: null, examsFile: null, limit: null, out: null, dryRun: false, summaryGlobal: false, skippedOut: null, root: here, allowPackAdditions: false, includeReceiptRows: false, judgedBase: null,
     approvedBy: "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다." };
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
@@ -360,6 +404,9 @@ export function parseCli(argv) {
     else if (k === "--root") args.root = value();
     else if (k === "--dry-run") args.dryRun = true;
     else if (k === "--summary-global") args.summaryGlobal = true;
+    else if (k === "--allow-pack-scope-additions") args.allowPackAdditions = true;
+    else if (k === "--include-receipt-rows") args.includeReceiptRows = true;
+    else if (k === "--judged-base") args.judgedBase = value();
     else throw new Error(`INVALID_ARGUMENT:${k}`);
   }
   if (!args.results.length && !args.resultsDir.length) throw new Error("RESULTS_REQUIRED");
@@ -369,10 +416,14 @@ export function parseCli(argv) {
 export function run(args) {
   const ctx = loadContext(args.root);
   const { rows, commits } = readResultTables(ctx.root, [...args.results.map(ref => ({ ref })), ...args.resultsDir.map(dir => ({ dir }))]);
-  const built = planRequests({ ctx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy });
+  if (args.judgedBase) ctx.judgedBank = makeJudgedBank(ctx.root, args.judgedBase);
+  const built = planRequests({ ctx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy,
+    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows });
   let head = null;
   try { head = git(ctx.root, "rev-parse", "HEAD").trim(); } catch { /* not a git checkout */ }
   const summary = summarize({ requests: built.requests, skipped: built.skipped, resultLines: rows.length, commits, head });
+  summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase };
+  if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase;
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
   summary.typeSelectable = { scope: "requested exams", estimate: "catalog metaHint gate replicated; builder not run", ...typeSelectable(ctx, built.requests.map(r => r.sourceArchiveFile), planned) };
   if (args.summaryGlobal) summary.typeSelectableAllExams = { scope: "every exam in canonical metadata", ...typeSelectable(ctx, [...ctx.rowsBySource.keys()].sort(), planned) };

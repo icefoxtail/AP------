@@ -7,9 +7,10 @@ import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
 import {
-  planRequests, summarize, makeRegistry, chooseScope, courseFamily, sourceFingerprints, typeSelectable, parseCli, readResultTables,
+  planRequests, summarize, makeRegistry, chooseScope, sourceFingerprints, typeSelectable, parseCli, readResultTables,
   DECISION_SECTION, INBOX_DIR, EVIDENCE_DIR, REQUEST_SCHEMA
 } from "../archive/tools/meta-foundation/build-type-judgment-requests.mjs";
+import { makeCourseAliases } from "../archive/tools/meta-foundation/course-aliases.mjs";
 
 const EXAM = "original/middle/m1/1mid/24_가나중_1학기_중간_중1_기출.js";
 const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
@@ -76,7 +77,7 @@ test("rows that already hold a value, other decisions and refused rows are skipp
   assert.equal(summary.items, 1);
   assert.equal(summary.skippedLines, 6);
   assert.deepEqual(summary.skippedByReason, {
-    DECISION_HOLD: 1, DECISION_NEW_KEY_NOT_HANDLED: 1, ROW_HAS_APPROVAL_RECEIPT: 1, SCOPE_COURSE_SPELLING_NEEDS_ALIAS: 1, TYPE_ALREADY_PRESENT: 2 });
+    DECISION_HOLD: 1, DECISION_NEW_KEY_NOT_HANDLED: 1, ROW_HAS_APPROVAL_RECEIPT: 1, SCOPE_PT_BOUND_TO_OTHER_COURSE: 1, TYPE_ALREADY_PRESENT: 2 });
   assert.ok(skipped.every(s => s.uid && s.reason));
   // every line is accounted for: converted + skipped
   assert.equal(summary.items + summary.skippedLines, lines().length);
@@ -131,15 +132,103 @@ test("--exams and --limit select exams; unselected exams are not counted as skip
   assert.throws(() => parseCli(["--results", "r", "--bogus"]), /INVALID_ARGUMENT/);
 });
 
-test("scope follows the strict lane: row course must equal the binding course; no course/curriculum is invented across courses", () => {
-  assert.deepEqual(chooseScope(registry, { standardCourse: "중1 수학", sourceArchiveFile: EXAM }, "PT_A").scope, { curriculum: "2015", standardCourse: "중1 수학" });
-  assert.deepEqual(chooseScope(registry, { sourceArchiveFile: EXAM }, "PT_A").scope, { curriculum: "2015", standardCourse: "중1 수학" }); // no course: taken from the path family
-  assert.equal(chooseScope(registry, { standardCourse: "중1", sourceArchiveFile: EXAM }, "PT_A").skip, "SCOPE_COURSE_SPELLING_NEEDS_ALIAS");
-  assert.equal(chooseScope(registry, { standardCourse: "중1 수학", sourceArchiveFile: EXAM }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
-  assert.equal(chooseScope(registry, { curriculum: "2022", standardCourse: "중1 수학", sourceArchiveFile: EXAM }, "PT_A").skip, "SCOPE_CURRICULUM_MISMATCH");
-  assert.equal(chooseScope(registry, { standardCourse: "중1 수학" }, "PT_NONE").skip, "SCOPE_PT_HAS_NO_BINDING");
-  assert.equal(courseFamily("수학Ⅰ"), courseFamily("수학I"));
-  assert.notEqual(courseFamily("중2 수학"), courseFamily("중3 수학"));
+const aliasDoc = {
+  spellingGroups: [{ id: "M1", grade: "중1", members: ["중1 수학", "중1", "중1수학"], evidence: "fixture" }, { id: "M2", grade: "중2", members: ["중2 수학", "중2"], evidence: "fixture" },
+    { id: "HIGH_UP", grade: "", members: ["수학(상)", "수학_상"], evidence: "fixture" }, { id: "COMMON1", grade: "", members: ["공통수학1"], evidence: "fixture" }],
+  successorGroups: [{ id: "HIGH1", subject: "고1", curricula: { 2015: ["수학(상)"], 2022: ["공통수학1"] }, evidence: "fixture" }]
+};
+const aliases = makeCourseAliases(aliasDoc), strict = makeCourseAliases(null);
+
+test("scope follows the strict lane and the alias file: another spelling or the successor course is accepted, another grade or subject is not", () => {
+  const sc = (aliasSet, r, pt, opt) => chooseScope(registry, aliasSet, { sourceArchiveFile: EXAM, ...r }, pt, opt);
+  assert.deepEqual(sc(strict, { standardCourse: "중1 수학" }, "PT_A").scope, { curriculum: "2015", standardCourse: "중1 수학" });
+  assert.deepEqual(sc(aliases, {}, "PT_A").scope, { curriculum: "2015", standardCourse: "중1 수학" }); // no course: taken from the path grade
+  assert.equal(sc(strict, {}, "PT_A").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE"); // without alias data a grade cannot be told
+  assert.equal(sc(strict, { standardCourse: "중1" }, "PT_A").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  const spelled = sc(aliases, { standardCourse: "중1" }, "PT_A");
+  assert.deepEqual(spelled.scope, { curriculum: "2015", standardCourse: "중1 수학" });
+  assert.equal(spelled.relation, "alias");
+  assert.equal(sc(aliases, { standardCourse: "중2" }, "PT_A").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE"); // other grade is never mixed
+  assert.equal(sc(aliases, { standardCourse: "중1 수학" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  assert.equal(sc(aliases, { curriculum: "2022", standardCourse: "중1 수학" }, "PT_A").skip, "SCOPE_CURRICULUM_MISMATCH");
+  assert.equal(sc(aliases, { standardCourse: "중1 수학" }, "PT_NONE").skip, "SCOPE_PT_HAS_NO_BINDING");
+  // successor: the row is in the 2022 course, the PT is bound in the 2015 course of the same subject; the curriculum differs on purpose
+  const succ = sc(aliases, { curriculum: "2022", standardCourse: "공통수학1" }, "PT_HIGH");
+  assert.deepEqual(succ.scope, { curriculum: "2015", standardCourse: "수학(상)" });
+  assert.equal(succ.relation, "successor");
+  assert.equal(sc(strict, { curriculum: "2022", standardCourse: "공통수학1" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+});
+
+test("a pack that does not declare the binding course is skipped by default and widened append-only on request", () => {
+  const narrow = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }], templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }],
+    bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" }],
+    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중2 수학"] }]]) }), packFiles: new Map([["P1", "archive/data/meta-foundation/canonical/packs/p1/pack.json"]]) };
+  assert.equal(chooseScope(narrow, aliases, { standardCourse: "중1 수학" }, "PT_A").skip, "SCOPE_PACK_DOES_NOT_DECLARE_COURSE");
+  const picked = chooseScope(narrow, aliases, { standardCourse: "중1 수학" }, "PT_A", { allowPackAdditions: true });
+  assert.deepEqual(picked.packAddition, { packId: "P1", curricula: [], standardCourses: ["중1 수학"] });
+  // the first request in name order carries the pack change; dependents carry none
+  const EXAM2 = EXAM.replace("24_", "23_");
+  const recs2 = records.map(r => ({ ...r, questionUid: `x${r.sourceOrdinal}`, sourceArchiveFile: EXAM2 }));
+  const all = [...records, ...recs2];
+  const identity = new Map(all.map(r => [r.questionUid, { questionUid: r.questionUid, sourceArchiveFile: r.sourceArchiveFile, sourceOrdinal: r.sourceOrdinal }]));
+  const ctx = { records: new Map(all.map(r => [r.questionUid, r])), identity, identityDoc: { records: [...identity.values()] },
+    rowsBySource: new Map([[EXAM, records], [EXAM2, recs2]]), identityCountBySource: new Map([[EXAM, 7], [EXAM2, 7]]), registry: narrow, aliases,
+    readBank: () => ({ bank: JSON.parse(JSON.stringify(questions)), bytes }), blobOf: (file, b) => sha1(b) };
+  const rows = [line(1), line(1, { uid: "x1", exam: `archive/exams/${EXAM2}` })];
+  const { requests, skipped } = planRequests({ ctx, resultRows: rows, approvedBy: "x", allowPackAdditions: true });
+  assert.equal(requests.length, 2, JSON.stringify(skipped));
+  const carriers = requests.filter(r => r.requestId.startsWith("tc-")), dependents = requests.filter(r => r.requestId.startsWith("td-"));
+  assert.equal(carriers.length, 1);
+  assert.equal(dependents.length, 1);
+  assert.equal(dependents[0].registryChanges, undefined);
+  const change = carriers[0].registryChanges[0];
+  assert.equal(change.path, "archive/data/meta-foundation/canonical/packs/p1/pack.json");
+  assert.deepEqual(change.before, { curricula: ["2015"], standardCourses: ["중2 수학"] });
+  assert.deepEqual(change.after, { curricula: ["2015"], standardCourses: ["중2 수학", "중1 수학"] });
+  assert.ok([...requests].sort((a, b) => (a.requestId < b.requestId ? -1 : 1))[0] === carriers[0]); // registered first (inbox name order)
+  // without the option nothing is widened and nothing converts
+  assert.equal(planRequests({ ctx, resultRows: rows, approvedBy: "x" }).requests.length, 0);
+});
+
+test("rows with receipts on other fields are skipped by default and converted on request", () => {
+  const dflt = plan();
+  assert.equal(dflt.requests[0].items.some(i => i.questionUid === "uid7"), false);
+  const opt = plan({ includeReceiptRows: true });
+  assert.deepEqual(opt.requests[0].items.map(i => i.questionUid), ["uid1", "uid7"]);
+});
+
+test("a result line whose own question number differs from the row's source ordinal is skipped", () => {
+  const { requests, skipped } = planRequests({ ctx: makeCtx(), resultRows: [line(1, { no: 2 }), line(2, { no: 2, pt: "PT_A" })], approvedBy: "x" });
+  assert.equal(requests.length, 0);
+  assert.deepEqual(skipped.map(s => s.reason), ["RESULT_NO_DIFFERS_FROM_SOURCE_ORDINAL", "TYPE_ALREADY_PRESENT"]);
+});
+
+test("judged-base check: changed stem/choices skip the row, unchanged rows pass, an unreadable base is counted as unverified", () => {
+  const copy = () => JSON.parse(JSON.stringify(questions));
+  const changed = copy(); changed[0].content = "다른 지문";
+  const ctxFor = bank => makeCtx({ ctx: { judgedBank: () => bank } });
+  let r = planRequests({ ctx: ctxFor(changed), resultRows: [line(1)], approvedBy: "x" });
+  assert.equal(r.requests.length, 0);
+  assert.equal(r.skipped[0].reason, "STEM_OR_CHOICES_CHANGED_SINCE_JUDGMENT");
+  const choices = copy(); choices[0].choices = ["가", "나"];
+  assert.equal(planRequests({ ctx: ctxFor(choices), resultRows: [line(1)], approvedBy: "x" }).requests.length, 0);
+  r = planRequests({ ctx: ctxFor(copy()), resultRows: [line(1)], approvedBy: "x" });
+  assert.equal(r.requests.length, 1);
+  assert.deepEqual(r.stats.judgedBase, { checked: 1, unverified: 0 });
+  // solution/answer changes are not a change of the question text
+  const sol = copy(); sol[0].solution = "고친 해설"; sol[0].answer = "2";
+  assert.equal(planRequests({ ctx: ctxFor(sol), resultRows: [line(1)], approvedBy: "x" }).requests.length, 1);
+  r = planRequests({ ctx: ctxFor(null), resultRows: [line(1)], approvedBy: "x" });
+  assert.equal(r.requests.length, 1);
+  assert.deepEqual(r.stats.judgedBase, { checked: 0, unverified: 1 });
+});
+
+test("new options are parsed", () => {
+  const args = parseCli(["--results", "r", "--allow-pack-scope-additions", "--include-receipt-rows", "--judged-base", "auto"]);
+  assert.equal(args.allowPackAdditions, true);
+  assert.equal(args.includeReceiptRows, true);
+  assert.equal(args.judgedBase, "auto");
+  assert.throws(() => parseCli(["--results", "r", "--judged-base"]), /MISSING_VALUE/);
 });
 
 test("an exam whose row count differs from its source is skipped as a whole", () => {
