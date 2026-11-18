@@ -474,7 +474,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -535,7 +535,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -596,7 +596,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -655,7 +655,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "grid",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
