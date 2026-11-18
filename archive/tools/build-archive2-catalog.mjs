@@ -7,6 +7,7 @@ import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
+import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
@@ -111,7 +112,10 @@ const hintActiveTemplates = new Map(foundationTaxonomy.templates
   .filter((row) => row.status === "ACTIVE").map((row) => [row.templateKey, row]));
 const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
   ? "A" : /hold/i.test(String(value || "")) ? "H" : "P";
-const hintStats = { joined: 0, exact: 0, content: 0, changedContent: 0,
+// 메타 힌트를 보여 줄 근거는 하나: 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가(text-binding-lib.mjs classifyMetaBinding).
+// 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
+const textRebinds = loadRebinds(root);
+const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
   holdSkipped: 0 };
 function buildMetaHint(meta, binding) {
@@ -137,11 +141,11 @@ function buildMetaHint(meta, binding) {
     else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
     else tpl = tplKey;
   }
-  const l3 = l3Value && !l3Held ? l3Value : "";
+  const l3 = l3Value && !l3Held && binding !== "type" ? l3Value : "";
   const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
     /^approved(_|$)/i.test(String(status.standardUnit || ""));
   const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
-  const curriculum = approvedStandard && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
+  const curriculum = approvedStandard && binding !== "type" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
   const out = {};
   if (l3 || pt || tpl) {
     out.metaHintStatus = (l3 ? l3State : "-") + (pt ? ptState : "-") + (tpl ? tplState : "-");
@@ -471,15 +475,17 @@ for (const exam of exams) {
     // stem, choices and image the classification describes are byte-identical (assignment
     // fingerprint), so the recorded values still describe this question. Anything else is not
     // provably safe and stays out of meta-based filtering (the question itself stays usable).
-    let metaBinding = "";
+    // metaBinding: 이 행의 메타가 지금과 같은 발문+보기에 대한 것인가(있으면 "text", 없으면 비움). 판정은 text-binding-lib.mjs 한 곳.
+    // 유형 판정만 묶인 행("type")은 행의 나머지 값(L3·교육과정)을 힌트에서 뺀다(buildMetaHint).
+    let bindingKind = "";
     if (validJoin) {
       hintStats.joined++;
-      if (meta.contentFingerprint === assignmentFingerprint) {
-        metaBinding = meta.sourceFingerprint === fingerprint ? "exact" : "content";
-        hintStats[metaBinding]++;
-      } else hintStats.changedContent++;
+      bindingKind = classifyMetaBinding({ meta, question, assignmentFingerprint, rebinds: textRebinds });
+      if (bindingKind) hintStats[bindingKind]++;
+      else hintStats.unbound++;
     }
-    const metaHint = buildMetaHint(meta, metaBinding);
+    const metaBinding = bindingKind ? "text" : "";
+    const metaHint = buildMetaHint(meta, bindingKind);
     const record = {
       sourceFile: file,
       sourceOrdinal: ordinal,

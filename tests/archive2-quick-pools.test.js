@@ -83,7 +83,7 @@ test('quick pools use the one difficulty lane: any integer bucket 1–4 with int
   const noConfidence = record(2, { difficultyConfidence: undefined, difficultyBoundaryFlag: undefined, legacyLevelCompatibility: undefined });
   const holdUnbound = record(2, { sourceStatus: 'HOLD' });
   const borderlineReview = record(2, { legacyLevelCompatibility: 'BORDERLINE_REVIEW' });
-  const holdContentBound = record(2, { sourceStatus: 'HOLD', metaBinding: 'content' });
+  const holdContentBound = record(2, { sourceStatus: 'HOLD', metaBinding: 'text' });
   const conflict = record(2, { metadataConflicts: ['difficultyBucket'] });
   const labelOnly = record(null, { difficultyBucket: null, legacyLevel: '중' });
   const stringBucket = record('2');
