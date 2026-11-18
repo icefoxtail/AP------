@@ -1,18 +1,68 @@
 name: R2 Archive Assets Copy
 
+# Cloudflare R2 bills every write-class request (Class A). Keep this workflow cheap:
+#   * NEVER compare, list or copy the whole image folder -- user decision 2026-11-17, reason: Class A charges.
+#     Every rclone call below names its files explicitly (--files-from0) and uses --no-traverse.
+#   * Three modes, each an explicit file list (never "everything"):
+#       push                  upload ONLY the images that changed. Base = newest successful push or catch_up run, else
+#                             this push's own `before`; if neither can be diffed the job FAILS and uploads nothing.
+#       manual mode=catch_up  same base, same changed-image list, higher limit; for when pushes keep failing. Needs main.
+#       manual mode=folder    upload the git-tracked images of ONE exam folder (input `folder`, small limit).
+#   * A folder run does NOT advance the base: it would otherwise hide the images of an earlier failed push.
+#     The base lookup (--pick-base in tools/ci/r2-changed-images.sh) tells runs apart by event and by run-name below.
+#   * --no-update-modtime on every copy: a fresh checkout stamps new mtimes on every file; without this flag rclone
+#     refreshes the stored mtime of each "equal" object with a server-side copy (one Class A request per image).
+# Student site releases (archive-pages-release.yml, tools/ci/archive-pages-image-r2-gate.mjs) wait for the exact image
+# bytes on img.wangjiedu.com; they do not read this workflow's logs or conclusion.
+
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "folder = upload one exam folder; catch_up = upload every image changed since the last successful push/catch_up run"
+        required: true
+        type: choice
+        default: folder
+        options:
+          - folder
+          - catch_up
+      folder:
+        description: "Only for mode=folder (required then): exam image folder name under archive/assets/images/, one name, no slash, e.g. 25_풍덕중_2학기_기말_중3_기출"
+        required: false
+        type: string
   push:
     branches: [main]
     paths:
       - "archive/assets/images/**"
       - ".github/workflows/r2-archive-assets-copy.yml"
 
+# The run name carries the mode (never the folder text); the base lookup keys on "R2 image copy (catch_up)".
+run-name: "R2 image copy (${{ github.event_name == 'push' && 'push' || github.event.inputs.mode }})"
+
+# One run at a time, queued in order. cancel-in-progress stays false so a running upload is never cut off.
+# A newer push may replace a run that is still queued; that is safe because every run diffs against the last
+# SUCCESSFUL run (not against its own push `before`), so the newest run also covers the images of replaced or failed runs.
+concurrency:
+  group: r2-archive-assets-copy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   copy-archive-assets:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
+      # Safety limits: one run uploads at most this many images, otherwise it fails instead of uploading.
+      R2_MAX_IMAGES_PUSH: "2000"
+      R2_MAX_IMAGES_FOLDER: "500"
+      R2_MAX_IMAGES_CATCH_UP: "10000"
+      # Never name a variable RCLONE_<something>: rclone reads every RCLONE_<FLAG> environment variable as its own
+      # command-line flag (RCLONE_VERSION=v1.76.0 became `--version v1.76.0` and failed run 44099228641).
+      R2_RCLONE_VERSION: v1.76.0
+      R2_RCLONE_ZIP_SHA256: b00f00b3266c3764413afe599d3ec316f6f43b3e0ea8a0bc1d186d2133e46df7
       R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
       R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
@@ -22,6 +72,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            archive/assets/images
+            tools/ci
 
       - name: Check archive image folder
         id: archive_assets
@@ -55,12 +110,17 @@ jobs:
             fi
           done
 
-      - name: Install rclone
+      - name: Install rclone (pinned)
         if: steps.archive_assets.outputs.exists == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL https://rclone.org/install.sh | sudo bash
+          zip="rclone-${R2_RCLONE_VERSION}-linux-amd64.zip"
+          curl -fsSL "https://downloads.rclone.org/${R2_RCLONE_VERSION}/${zip}" -o "${RUNNER_TEMP}/${zip}"
+          echo "${R2_RCLONE_ZIP_SHA256}  ${RUNNER_TEMP}/${zip}" | sha256sum -c -
+          unzip -q -o "${RUNNER_TEMP}/${zip}" -d "${RUNNER_TEMP}/rclone-unpacked"
+          sudo install -m 0755 "${RUNNER_TEMP}/rclone-unpacked/rclone-${R2_RCLONE_VERSION}-linux-amd64/rclone" /usr/local/bin/rclone
+          rclone version | sed -n 1p
 
       - name: Configure Cloudflare R2 remote
         if: steps.archive_assets.outputs.exists == 'true'
@@ -76,26 +136,197 @@ jobs:
           secret_access_key = ${R2_SECRET_ACCESS_KEY}
           endpoint = https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com
           acl = private
+          no_check_bucket = true
           EOF
           chmod 600 ~/.config/rclone/rclone.conf
 
+      # Decides which images to upload. The result is always an explicit file list (never "everything").
+      #   push:                 (a) newest successful push/catch_up run .. HEAD  (folder runs are never a base)
+      #                         (b) else this push's `before` .. HEAD (reason line says images of earlier failed runs may be missing)
+      #                         (c) else FAIL: nothing is uploaded, nothing widens to a full comparison.
+      #   dispatch catch_up:    same base as (a) .. HEAD, higher limit; no base or no diff = FAIL (no fallback).
+      #   dispatch folder:      git-tracked images of the single folder named by the `folder` input.
+      # Inputs reach the shell only through env (MODE_INPUT, FOLDER_INPUT), never through ${{ }} inside the script.
+      - name: Plan upload (explicit image list)
+        id: plan
+        if: steps.archive_assets.outputs.exists == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODE_INPUT: ${{ github.event.inputs.mode }}
+          FOLDER_INPUT: ${{ github.event.inputs.folder }}
+          PUSH_BEFORE: ${{ github.event.before }}
+        run: |
+          # GitHub starts this shell as `bash -eo pipefail`; the plan inspects exit codes itself, so turn -e off here.
+          # Every other step keeps -e and pipefail: pipes that may close early (| head) must not be used there.
+          set +e
+          set -uo pipefail
+          list="${RUNNER_TEMP}/changed-images.z"
+          rm -f "$list" "${list}.part"
+          mode=""
+          reason=""
+          no_base_msg="어떤 이미지가 바뀌었는지 정하지 못해 올리지 않았음. 수동 실행 mode=folder로 폴더를 지정하거나, 원인을 고친 뒤 mode=catch_up으로 올릴 것. (Could not decide which images changed, so nothing was uploaded. Run manually with mode=folder and a folder, or fix the cause and run mode=catch_up.)"
+
+          fail_plan() {
+            line="R2 plan: mode=none images_to_check=0 ($1)"
+            echo "$line"
+            {
+              echo "$line"
+              echo ""
+              echo "$2"
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::$1"
+            exit 1
+          }
+
+          # pick_base: head_sha of the newest successful push or catch_up run (folder runs are skipped); empty if none in the last 30.
+          pick_base() {
+            gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/r2-archive-assets-copy.yml/runs?branch=main&status=success&per_page=30" 2>/dev/null \
+              | bash tools/ci/r2-changed-images.sh --pick-base 2>/dev/null
+          }
+          # diff_range <limit> <base>: exit 3 means "over the safety limit" and must not fall back.
+          diff_range() {
+            R2_MAX_IMAGES="$1" bash tools/ci/r2-changed-images.sh "$2" "$GITHUB_SHA" "$list"
+          }
+
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            if [ "${MODE_INPUT:-}" = "folder" ]; then
+              mode=folder
+              rc=0
+              R2_MAX_IMAGES="$R2_MAX_IMAGES_FOLDER" bash tools/ci/r2-changed-images.sh --folder "${FOLDER_INPUT:-}" "$list" || rc=$?
+              if [ "$rc" -eq 3 ]; then
+                fail_plan "folder has more than ${R2_MAX_IMAGES_FOLDER} images; nothing uploaded" \
+                  "The folder has more images than the manual limit (${R2_MAX_IMAGES_FOLDER}). Nothing was uploaded."
+              elif [ "$rc" -ne 0 ]; then
+                fail_plan "folder input empty, rejected or has no tracked images (exit ${rc}); nothing uploaded" \
+                  "mode=folder needs one folder name that exists under archive/assets/images/ (no slash, no '..'). Nothing was uploaded."
+              fi
+              reason="manual run: folder ${FOLDER_INPUT}; a folder run is never used as a base"
+            elif [ "${MODE_INPUT:-}" = "catch_up" ]; then
+              if [ "${GITHUB_REF:-}" != "refs/heads/main" ]; then
+                fail_plan "catch_up must run on main (ref ${GITHUB_REF:-none}); nothing uploaded" "Run mode=catch_up from the main branch."
+              fi
+              base="$(pick_base || true)"
+              if ! [[ "$base" =~ ^[0-9a-f]{40}$ ]]; then
+                fail_plan "could not decide which images changed (no successful push or catch_up run in the last 30); nothing uploaded" "$no_base_msg"
+              fi
+              rc=0
+              diff_range "$R2_MAX_IMAGES_CATCH_UP" "$base" || rc=$?
+              if [ "$rc" -eq 3 ]; then
+                fail_plan "more than ${R2_MAX_IMAGES_CATCH_UP} images changed; nothing uploaded" \
+                  "Too many changed images even for catch_up (limit ${R2_MAX_IMAGES_CATCH_UP}). Nothing was uploaded. Upload per exam folder with mode=folder."
+              elif [ "$rc" -ne 0 ]; then
+                fail_plan "could not decide which images changed (could not diff against ${base:0:12}); nothing uploaded" "$no_base_msg"
+              fi
+              mode=catch_up
+              reason="changed since last successful push/catch_up run ${base:0:12}"
+            else
+              fail_plan "unknown manual mode '${MODE_INPUT:-}'; nothing uploaded" "mode must be folder or catch_up."
+            fi
+          elif [ "${GITHUB_EVENT_NAME}" = "push" ]; then
+            too_many="Too many changed images for one automatic run (limit ${R2_MAX_IMAGES_PUSH}). Nothing was uploaded. 수동 실행 mode=catch_up으로 올릴 것 (run this workflow manually with mode=catch_up)."
+            base="$(pick_base || true)"
+            why=""
+            if [[ "$base" =~ ^[0-9a-f]{40}$ ]]; then
+              rc=0
+              diff_range "$R2_MAX_IMAGES_PUSH" "$base" || rc=$?
+              if [ "$rc" -eq 0 ]; then
+                mode=push
+                reason="changed since last successful run ${base:0:12}"
+              elif [ "$rc" -eq 3 ]; then
+                fail_plan "more than ${R2_MAX_IMAGES_PUSH} images changed; nothing uploaded" "$too_many"
+              else
+                rm -f "$list" "${list}.part"
+                why="could not diff against last successful run ${base:0:12}"
+              fi
+            else
+              why="no earlier successful run found"
+            fi
+            if [ -z "$mode" ]; then
+              before="${PUSH_BEFORE:-}"
+              if [[ "$before" =~ ^[0-9a-f]{40}$ ]] && [ "$before" != "0000000000000000000000000000000000000000" ]; then
+                rc=0
+                diff_range "$R2_MAX_IMAGES_PUSH" "$before" || rc=$?
+                if [ "$rc" -eq 0 ]; then
+                  mode=push
+                  reason="fallback to this push only (${why}); changed ${before:0:12}..${GITHUB_SHA:0:12}, images of earlier unsuccessful runs may be missing"
+                elif [ "$rc" -eq 3 ]; then
+                  fail_plan "more than ${R2_MAX_IMAGES_PUSH} images changed; nothing uploaded" "$too_many"
+                else
+                  rm -f "$list" "${list}.part"
+                  why="${why}; could not diff against push before ${before:0:12}"
+                fi
+              else
+                why="${why}; push has no usable before commit"
+              fi
+            fi
+            if [ -z "$mode" ]; then
+              fail_plan "could not decide which images changed (${why}); nothing uploaded" "$no_base_msg"
+            fi
+          else
+            fail_plan "unsupported event ${GITHUB_EVENT_NAME}; nothing uploaded" "Only push and workflow_dispatch are supported."
+          fi
+
+          count="$(tr -cd '\0' < "$list" | wc -c | tr -d ' ')"
+          echo "mode=${mode}" >> "$GITHUB_OUTPUT"
+          echo "count=${count}" >> "$GITHUB_OUTPUT"
+          echo "list=${list}" >> "$GITHUB_OUTPUT"
+          line="R2 plan: mode=${mode} images_to_check=${count} (${reason})"
+          echo "$line"
+          echo "$line" >> "$GITHUB_STEP_SUMMARY"
+          if [ "$count" -gt 0 ]; then
+            # head reads the file itself: a pipe into `head` would die with SIGPIPE (141) under pipefail on big lists.
+            head -z -n 20 "$list" | tr '\0' '\n' || true
+            if [ "$count" -gt 20 ]; then echo "... and $((count - 20)) more"; fi
+          fi
+
+      # No --progress: CI logs stay short. -v prints one line per changed object and the periodic stats line.
+      # The only upload command: it copies exactly the listed files (--files-from0) without listing the bucket
+      # (--no-traverse); there is no whole-folder variant.
       - name: Copy archive image assets
         if: steps.archive_assets.outputs.exists == 'true'
         shell: bash
+        env:
+          PLAN_MODE: ${{ steps.plan.outputs.mode }}
+          PLAN_COUNT: ${{ steps.plan.outputs.count }}
+          PLAN_LIST: ${{ steps.plan.outputs.list }}
         run: |
           set -euo pipefail
+          log="${RUNNER_TEMP}/rclone-copy.log"
+          if [ "$PLAN_MODE" != push ] && [ "$PLAN_MODE" != folder ] && [ "$PLAN_MODE" != catch_up ]; then
+            echo "Refusing to upload: unexpected plan mode '${PLAN_MODE}'." >&2
+            exit 1
+          fi
+          if [ "$PLAN_COUNT" -eq 0 ]; then
+            echo "No image to upload."
+            echo "R2 copy: mode=${PLAN_MODE} requested=0 uploaded=0 server_side_copies=0 mtime_updates=0" | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
           rclone copy archive/assets/images "r2-ap-assets:${R2_BUCKET}/exams/images" \
+            --files-from0 "$PLAN_LIST" \
+            --no-traverse \
+            --checksum \
+            --no-update-modtime \
             --transfers 16 \
-            --checkers 32 \
-            --fast-list \
-            --progress
+            --checkers 16 \
+            -v --stats 60s --stats-one-line 2>&1 | tee "$log"
+          uploaded="$(grep -c ': Copied (' "$log" || true)"
+          server_side="$(grep -c 'server-side copy' "$log" || true)"
+          mtime_updates="$(grep -ci 'modification time' "$log" || true)"
+          line="R2 copy: mode=${PLAN_MODE} requested=${PLAN_COUNT} uploaded=${uploaded} server_side_copies=${server_side} mtime_updates=${mtime_updates}"
+          echo "$line"
+          echo "$line" >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Verify uploaded prefixes
-        if: steps.archive_assets.outputs.exists == 'true'
+      # Read-back check of exactly the files this run was asked to upload (size + MD5 against R2).
+      - name: Verify uploaded images
+        if: steps.archive_assets.outputs.exists == 'true' && steps.plan.outputs.count != '0'
         shell: bash
+        env:
+          PLAN_LIST: ${{ steps.plan.outputs.list }}
         run: |
           set -euo pipefail
-          echo "Top exams/images prefixes:"
-          rclone lsf "r2-ap-assets:${R2_BUCKET}/exams/images" --dirs-only --max-depth 1 > /tmp/r2-prefixes.txt
-          head -50 /tmp/r2-prefixes.txt
-
+          rclone check archive/assets/images "r2-ap-assets:${R2_BUCKET}/exams/images" \
+            --files-from0 "$PLAN_LIST" \
+            --no-traverse \
+            --one-way \
+            --checkers 16

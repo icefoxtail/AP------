@@ -13,7 +13,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -125,7 +125,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -184,7 +184,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -243,7 +243,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -302,7 +302,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -351,7 +351,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -412,7 +412,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -474,7 +474,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -535,7 +535,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -596,7 +596,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -655,7 +655,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -1018,7 +1018,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -1079,7 +1079,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형",
       "표"
@@ -1186,7 +1186,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1233,7 +1233,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
@@ -1289,7 +1289,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"

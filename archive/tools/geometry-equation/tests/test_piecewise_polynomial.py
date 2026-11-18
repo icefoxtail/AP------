@@ -48,7 +48,8 @@ class Framing(unittest.TestCase):
         self.assertEqual(f['extrema'],[{'x':'1/2','y':'25/4','kind':'MAX'}])
         self.assertEqual([round(p['xValue'],9) for p in f['intersections'][0]['points']],[-5.140054945,-0.618033989,1.618033989,2.140054945])
         self.assertEqual([p['drawInterval'][1] for p in f['pieces']][:2],[-3.0,2.0])
-        self.assertTrue(g['equalUnits']);self.assertEqual(g['axisRatio'],1.0);self.assertEqual(g['plotCanvas']['width'],448)
+        self.assertTrue(g['equalUnits']);self.assertEqual(g['axisRatio'],2/3);self.assertEqual(g['plotCanvas']['width'],448)   # taller than 1:1.2 at one scale: drawn at y/x 2/3 from the start
+        self.assertEqual(fit_overview({**Q22,'axisFold':False})['graphPlan']['axisRatio'],1.0)
         # The outer arms run past the outermost crossings.
         self.assertLess(g['domain'][0],-5.15);self.assertGreater(g['domain'][1],2.15)
     def test_claims_fail_closed(self):

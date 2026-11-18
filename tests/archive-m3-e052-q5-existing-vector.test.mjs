@@ -19,6 +19,7 @@ import { registerReviewedExamV2 } from '../archive/tools/meta-foundation/reviewe
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = 'bc0af77466f92f32b2044c452e2f1418bbae4cf0';
 const OLD = 'archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/m3s2-audit-e052-native2-course-r2-20261116';
+const ENGINE = 'archive/engine.html';
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 const stable = x => JSON.stringify(x, (_, v) => v && typeof v === 'object' && !Array.isArray(v)
   ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
@@ -96,7 +97,9 @@ function setup(extra = false) {
   put(r, C.ID, serial({ schemaVersion: 'bounded-test-identity-v1', records: identities }));
   const rt = json(BASE, C.RUNTIME); rt.records = structuredClone(prior.runtimeRecords); put(r, C.RUNTIME, serial(rt));
   put(r, C.REQUEST_WITNESS, serial(req)); put(r, C.FILE, serial(C.descriptor()));
-  git(r, ['add', '--', C.REQUEST_WITNESS]); const tree = git(r, ['write-tree']).toString().trim();
+  // The tool authenticates the renderer at HEAD:archive/engine.html, so the same
+  // engine bytes copied into the working tree above must be in the HEAD tree too.
+  git(r, ['add', '--', C.REQUEST_WITNESS, ENGINE]); const tree = git(r, ['write-tree']).toString().trim();
   const commit = git(r, ['commit-tree', tree, '-m', 'Exact synthetic Git request witness']).toString().trim();
   fs.writeFileSync(path.join(r, '.git/HEAD'), commit + '\n');
   const issued = registerReviewedExamV2({ root: r, request: req, write: true }); assert.equal(issued.status, 'PASS');

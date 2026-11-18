@@ -103,7 +103,6 @@ window.examData = {
     },
     {
       "id": 8,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q8-solution.svg",
       "solutionImageAlt": "왼쪽은 A4 용지, 오른쪽은 반으로 자른 A5를 세워 놓은 것이다. A4와 A5 각각에서 긴 변과 짧은 변이 대응한다.",
       "solutionImageCaption": "닮음에서 (x+1)/2=2/((x+1)/2)이다. x=−1+2√2이며 정답은 ②이다.",
@@ -172,7 +171,6 @@ window.examData = {
     },
     {
       "id": 12,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q12-solution.svg",
       "solutionImageAlt": "주황 꼭짓점에서 세로축까지 가로로 1만큼 간다. 파란 세로축 교점의 높이가 2라는 조건을 짚었다.",
       "solutionImageCaption": "꼭짓점에서 p=−1이고 y절편에서 a=2이다. 따라서 a+p=1이며 정답은 ②이다.",
@@ -259,7 +257,6 @@ window.examData = {
     },
     {
       "id": 17,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q17-solution.svg",
       "solutionImageAlt": "같은 높이의 두 삼각형을 주황과 초록으로 칠했다. 보라 직선이 밑변과 만나는 D 양쪽에는 같은 초록 한 눈금이 있다.",
       "solutionImageCaption": "A=(−5,0), B=(1,0), C=(0,−5)이다. 중점 D=(−2,0)를 지나므로 m=−5/2, n=−5이고 합은 −15/2이다. 정답은 ⑤이다.",
@@ -278,7 +275,6 @@ window.examData = {
     },
     {
       "id": 18,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q18-solution.svg",
       "solutionImageAlt": "가로 눈금 −1/2에 대응하는 주황 점은 축 아래이고 2에 대응하는 초록 점은 위이다. 세로축을 만나는 점도 가로축 위이다.",
       "solutionImageCaption": "a<0, b>0, c>0이다. f(2)>0이고 4f(−1/2)=a−2b+4c<0이므로 ⑤가 옳지 않다.",
@@ -333,7 +329,6 @@ window.examData = {
     },
     {
       "id": 21,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q21-solution.svg",
       "solutionImageAlt": "위쪽에는 물받이를 보는 방향과 주황 단면을 표시했다. 아래에는 두 접힌 면을 펼친 모습이 있어 전체 폭 48 cm를 양쪽 x와 가운데 폭으로 나눠 읽을 수 있다.",
       "solutionImageCaption": "단면 넓이 x(48−2x)=288에서 (x−12)²=0이다. 0<x<24에 맞는 값은 12 cm이다.",
@@ -358,7 +353,6 @@ window.examData = {
     },
     {
       "id": 23,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_연향중_1학기_기말_중3_수학/q23-solution.svg",
       "solutionImageAlt": "위에서 직선 위의 점에 따라 직사각형 높이가 달라진다. 아래는 가로 길이에 따른 넓이 그래프이며 주황 꼭짓점에서 최대가 된다.",
       "solutionImageCaption": "넓이는 S=x(4−2x)=−2(x−1)²+2이다. 최대가 되는 점 P=(1,2)이다.",

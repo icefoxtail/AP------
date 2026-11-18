@@ -50,6 +50,7 @@
         };
     </script>
     <script>window.__AP_MATHJAX_SOURCE__='local';window.__AP_MATHJAX_READY__=new Promise(resolve=>{window.__AP_MATHJAX_RESOLVE__=resolve;});window.__AP_LOAD_MATHJAX_CDN__=failed=>{window.__AP_MATHJAX_SOURCE__='cdn-fallback';const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-chtml.js';script.onload=()=>window.__AP_MATHJAX_RESOLVE__?.(true);script.onerror=()=>window.__AP_MATHJAX_RESOLVE__?.(false);failed?.remove();document.head.appendChild(script);};</script>
+    <script src="mathjax-atomic-inline.js?v=20261117-atomic-inline-1"></script>
     <script id="MathJax-script" defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js" onload="window.__AP_MATHJAX_RESOLVE__?.(true)" onerror="window.__AP_LOAD_MATHJAX_CDN__?.(this)"></script>
     <script src="vendor/qrious/qrious.min.js"></script><!-- QRious v4.0.2, shared with the original engine. -->
     <!-- 페이지 전체 평탄화 인쇄용 로컬 번들. 외부 CDN 지연이 인쇄 준비를 막지 않도록 로컬 보관. -->
@@ -139,6 +140,12 @@
         /* [Box] Question Style */
         .q-box { flex: 1; padding: 10px 0; border-bottom: none; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
+        /* MathJax clips a stretchy bar's oversized spacer only with clip-path (paint), so the spacer still counts as scrollable
+           overflow and an overline/arrow can make a box a few px "wider" than its column. contain:paint clips the same edges
+           (left/right at the bar, 1em above/below via padding+negative margin, as MathJax's clip-path does) without a new
+           overflow:hidden/clip element. Applied only to a question the exam executor found clipped (data-ap-mjx-clip), never
+           globally: contain:paint on every bar changes Chrome's painted PDF pixels, so unflagged output stays as it was. */
+        [data-ap-mjx-clip] mjx-stretchy-h > mjx-ext { contain: paint; }
         /* Optional section headings (meta.sections, e.g. difficulty step). Absent => no element, no change. */
         .q-section { display: flex; align-items: baseline; gap: 8px; margin: 0 0 5px; padding: 1px 7px; border-left: 3px solid #1d4ed8; background: #eef2ff; color: #1e3a8a; font-size: 9pt; font-weight: 800; line-height: 1.35; break-after: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         .q-section-sub { color: #475569; font-size: 8.5pt; font-weight: 600; }
@@ -166,9 +173,12 @@
         .q-image-wrap.image-small  img { width: 50%; max-width: 50%; max-height: 95px; object-fit: contain; }
         .q-image-wrap.image-half   img { width: 65%; max-width: 65%; max-height: 125px; object-fit: contain; }
         .q-image-wrap.image-medium img { width: 80%; max-width: 80%; max-height: 150px; object-fit: contain; }
-        .q-image-wrap.image-large  img { width: 94%; max-width: 94%; max-height: 190px; object-fit: contain; }
-        .q-image-wrap.image-full   img { width: 100%; max-width: 100%; max-height: 240px; object-fit: contain; }
-        .q-image-wrap.image-tall   img { width: 100%; max-width: 100%; max-height: 320px; object-fit: contain; }
+        /* 2026-11-17 사용자 지시: 문제 그림 기본 상한은 large와 full 사이(폭 90%·높이 240px, 가운데 정렬). large·full(자동 분류 포함)은 이 상한이고, 세로로 긴 tall만 높이 280px(2026-11-17 사용자 결정, 폭 90% 유지).
+           데이터가 imageSizeOverride: "full"/"tall"로 명시한 그림만 아래 override 상한으로 키운다. */
+        .q-image-wrap.image-large img, .q-image-wrap.image-full img { width: 90%; max-width: 90%; max-height: 240px; object-fit: contain; }
+        .q-image-wrap.image-tall img { width: 90%; max-width: 90%; max-height: 280px; object-fit: contain; }
+        .q-image-wrap.image-override-full img { width: 100%; max-width: 100%; max-height: 240px; object-fit: contain; }
+        .q-image-wrap.image-override-tall img { width: 100%; max-width: 100%; max-height: 320px; object-fit: contain; }
 
         /* [v1.9] 보기(Choices) 시스템 */
         .choices { margin-top: 10px; font-size: 9pt; }
@@ -229,7 +239,24 @@
             text-align: left;
             vertical-align: top;
         }
-
+        /* normalizeViewBlocks가 .note-box 안의 ㄱ. ㄴ. 줄을 다시 .question-note-box로 감싸 상자 안에 상자가 생긴다. 안쪽 상자는 테두리 없이 안의 글로만 취급한다. */
+        .question-note-box .question-note-box, .question-note-box .note-box, .question-note-box .box,
+        .note-box .question-note-box, .note-box .note-box, .note-box .box,
+        .box .question-note-box, .box .note-box, .box .box {
+            display: block;
+            width: auto;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+        /* html2canvas (page-image print) drops the text nodes that sit directly in a block child div of an inline-block box,
+           so the Korean in a <조건>/<보기> box vanished from that print. prepareRasterPrint adds .ap-h2c-clone to html2canvas's
+           private clone only; screen and Chrome-PDF output keep the inline-block box above, pixel for pixel. */
+        .ap-h2c-clone .question-note-box,
+        .ap-h2c-clone .note-box,
+        .ap-h2c-clone .box { display: block; width: fit-content; }
         /* [Fit] Compression Classes */
         .fit-tight { font-size: 9.1pt !important; line-height: 1.45 !important; }
         .fit-tighter { font-size: 8.6pt !important; line-height: 1.35 !important; }
@@ -251,13 +278,17 @@
         .sol-image-wrap.image-small img { max-width: 48%; max-height: 105px; }
         .sol-image-wrap.image-medium img { max-width: 72%; max-height: 145px; }
         .sol-image-wrap.image-large img { max-width: 92%; max-height: 180px; }
-        .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
+        .sol-image-wrap.image-full img { max-width: 90%; max-height: 340px; }
         /* 2026-11-11 사용자 결정: 해설 SVG는 크기 등급(small/medium/large)과 무관하게 라벨이 읽히는 크기로 보인다.
            표시 폭 = 자연 폭 x 0.6(solution-render-executor.js가 쪽 나누기 전에 img 폭으로 지정), 칸 폭이 상한, 높이는 auto.
            아래 규칙은 그 스크립트가 못 돌아도 SVG가 105/145/180px 높이 상한에 눌리지 않게 하는 대비책이다(칸 폭까지, 높이 제한 없음).
            래스터(png/jpg)는 위의 기존 상한을 그대로 쓴다. layout-fullwidth(자체 640px 상한)는 건드리지 않는다.
            그림 엔진의 표시 크기 측정(data: SVG 포함)도 이 실제 CSS를 읽는다. */
-        .sol-image-wrap:is(.image-small, .image-medium, .image-large):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 100%; max-height: none; }
+        /* 2026-11-17 사용자 지시: 해설 그림이 너무 크다 -> SVG도 크기 등급과 무관하게 칸 폭 90%·높이 340px 이내, 가운데 정렬(높이 무제한 제거).
+           표시 폭은 위 스크립트가 자연 폭 x 0.6으로 정하고 이 상한이 누른다. 크기를 data가 solutionImageSizeOverride: "full"로 명시한 그림만 칸 폭 전체·높이 무제한. */
+        .sol-image-wrap:is(.image-small, .image-medium, .image-large, .image-full):not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]) { max-width: 90%; max-height: 340px; object-fit: contain; }
+        .sol-image-wrap.image-override-full:not(.layout-fullwidth) img:is([src$=".svg" i], [src*=".svg?" i], [src*=".svg#" i], [src^="data:image/svg+xml" i]),
+        .sol-image-wrap.image-override-full:not(.layout-fullwidth) img { max-width: 100%; max-height: none; }
         .sol-image-wrap.layout-fullwidth { width: 100%; }
         .sol-image-wrap.layout-fullwidth img { width: 100%; max-width: 100%; height: auto; max-height: none; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
@@ -372,15 +403,15 @@
     </script>
     <link rel="stylesheet" href="css/js-archive-theme-override.css">
     <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
-    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261116-mobile-figure-1">
+    <link rel="stylesheet" href="archive2-preview-mobile.css?v=20261117-figure-large-1">
     <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
     <script src="common-fast-runtime.js?v=20261106-output-performance-2"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
     <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261106-output-performance-1"></script>
-    <script src="solution-render-executor.js?v=20261111-svg-k-2"></script>
+    <script src="exam-render-executor.js?v=20261117-wide-fallback-2"></script>
+    <script src="solution-render-executor.js?v=20261117-cont-label-1"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261116-output-bar-1"></script>
@@ -2008,7 +2039,8 @@ function stripInlineImagesFromContent(content, hasImageField) {
 function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
-    const sizeClass = size ? ` image-${size}` : '';
+    const sizeOverride = ['full', 'tall'].includes(q.imageSizeOverride) ? q.imageSizeOverride : '';
+    const sizeClass = (size ? ` image-${size}` : '') + (sizeOverride ? ` image-override-${sizeOverride}` : '');
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
     const imageSrc = withArchiveAssetCacheBuster(q.image);
     // External (R2) exam images are requested in CORS mode (archive-asset-base.js): print code reads their pixels.
@@ -2041,6 +2073,7 @@ function escapeArchiveHtmlAttribute(value) {
 function renderSolutionImageHTML(q) {
     if (!q || !q.solutionImage) return '';
     const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
+    const solOverride = q.solutionImageSizeOverride === 'full' ? ' image-override-full' : '';
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.solutionImage, 'solutionImage', q, q.solutionImageAlt || '', '해설 그림') || q.solutionImageAlt || '해설 그림';
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
@@ -2048,7 +2081,7 @@ function renderSolutionImageHTML(q) {
     const layout = q.solutionImageLayout === 'fullwidth' ? ' layout-fullwidth' : '';
     const imageSrc = withArchiveAssetCacheBuster(q.solutionImage);
     const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
-    return `<span class="sol-image-wrap image-${size}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    return `<span class="sol-image-wrap image-${size}${solOverride}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -3214,7 +3247,8 @@ async function prepareRasterPrint() {
                 useCORS: true,
                 allowTaint: false,
                 imageTimeout: 10000,
-                logging: false
+                logging: false,
+                onclone: cloneDocument => { cloneDocument.documentElement.classList.add('ap-h2c-clone'); }
             });
             const blob = usePngFallback
                 ? await canvasToPngBlob(canvas)

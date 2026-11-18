@@ -1,0 +1,33 @@
+STALE notice (not a failure): 545 compact file(s) were made from an older exam text. Re-annotate when convenient (Review doc §7).
+  STALE archive/data/item-4slot/original/high/h1/1final/24_금당고_1학기_기말_고1_기출.4slot.json: exam blob changed since import
+  STALE archive/data/item-4slot/original/high/h1/1final/26_팔마고_1학기_기말_고1_기출.4slot.json: exam blob changed since import
+  STALE archive/data/item-4slot/original/high/h1/1mid/19_강남여고_1학기_중간_고1_기출.4slot.json: exam blob changed since import
+item-4slot-data: 2 defect(s)
+  FAIL archive/data/item-4slot/original/middle/m1/1final/19_금당중_1학기_기말_중1_수학.4slot.json: PARTIAL_4SLOT:CURRENT_SOURCE_BLOB_MISMATCH
+  FAIL archive/data/item-4slot/original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.4slot.json: PARTIAL_4SLOT:CURRENT_SOURCE_BLOB_MISMATCH
+  ... and 525 more
+node:assert:150
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: item-4slot data defects found
+
+2 !== 0
+
+    at Object.<anonymous> (/home/runner/work/AP------/AP------/tests/item-4slot-data.test.cjs:158:8)
+    at Module._compile (node:internal/modules/cjs/loader:1781:14)
+    at Object..js (node:internal/modules/cjs/loader:1913:10)
+    at Module.load (node:internal/modules/cjs/loader:1505:32)
+    at Function._load (node:internal/modules/cjs/loader:1309:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:171:5)
+    at node:internal/main/run_main_module:36:49 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 2,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

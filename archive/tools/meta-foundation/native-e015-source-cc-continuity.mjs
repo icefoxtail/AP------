@@ -7,6 +7,10 @@ import { execFileSync } from 'node:child_process';
 // The exact source worker appended one CC to Q10; the issued Q7/Q8 are intact.
 // The ordinary Native, current ACTIVE, retained-field and renderer validators
 // must still succeed. Only this synchronous replay can mint its private token.
+// Continuity chain: issued edition (pins.old) -> Q10 CC only (pins.current, from the
+// transport commit) -> layoutTag only (pins.restored, bound to the live HEAD tree).
+// The restored stage adds no approval: every non-layoutTag field of every question
+// must equal pins.current, so the fields the approval inspected are proven unchanged.
 const SOURCE = 'original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js';
 const SOURCE_PATH = `archive/exams/${SOURCE}`;
 const ISSUED_COMMIT = 'dfb0d368e1e57c0f481bef2f85f96e3ad7b52ed9';
@@ -24,6 +28,9 @@ const Q10_UID = 'qid_v1_944a8e2657646dc03aa3d569fe594e1bc8c08bdb9ec9009ba41f5642
 const pins = Object.freeze({
   old: { path: SOURCE_PATH, commit: ISSUED_COMMIT, git: '40fac8532d52c2b308708f6a0769005029bb7565', raw: 'b86fc1cbb7a69bdedc337675a834c9641344df0c7d2cd47a1bb953b6177cb2f4', bytes: 75142 },
   current: { path: SOURCE_PATH, commit: TRANSPORT_COMMIT, git: 'f14aefb3ab99ed6df2badef820a0878e97c6f488', raw: '217ec8b1b30a09080f0660244a64967e399d38bb79ad64cfcb8a9f1ef1b07d79', bytes: 75202 },
+  // No issuing commit: the restored edition is bound by exact blob, raw sha256 and bytes,
+  // and must be present in the live HEAD tree and working file (see assertLive).
+  restored: { path: SOURCE_PATH, commit: null, git: '68701f35d17f45248c6a61f5051b4706c1dea6a6', raw: 'd4393430d6564adabd65ee5c02906db25363e4715856a44fb94ac385c1b59459', bytes: 75117 },
   receipt: { path: RECEIPT_PATH, commit: ISSUED_COMMIT, git: '5ec0d73c6fd2bd84d8aceea2d515e9242f4f3e3a', raw: 'a9df73bb28871d2c90261be036470e7e365c719837fd5576bec1875cdfedd29e', bytes: 77976 },
   binding: { path: BINDING_PATH, commit: ISSUED_COMMIT, git: '1f37adda74d1b349317b96704d3dc51cd11ff655', raw: 'af038405d3556f385c9b8060b9c305dcaf9e2f74df23482eb963515e2e096968', bytes: 19966 },
   transport: { path: TRANSPORT_PATH, commit: TRANSPORT_COMMIT, git: '15de556bd9c1f3c9e1f24c5fcb8b2ee553a06314', raw: 'a421a330e89a68db893fcc86f67db6078fc5c4c135708d7b004d7cca2378b1f7', bytes: 1880 },
@@ -87,6 +94,20 @@ function parseBank(bytes) {
   if (end < 0 || !Array.isArray(bank) || bank.length !== 24 || bank.some(q => !q || Array.isArray(q) || typeof q !== 'object')) fail('BANK_24');
   return { bank, prefix: text.slice(0, start), suffix: text.slice(end) };
 }
+const withoutLayoutTag = ({ layoutTag, ...rest }) => rest;
+// The only allowed difference between the f14aefb3ab edition and the restored one is
+// the value of the per-question layoutTag key. Text outside the bank, question count
+// and order, and every other key and value of every question must be identical.
+function assertLayoutTagOnly(base, next) {
+  if (base.prefix !== next.prefix || base.suffix !== next.suffix || base.bank.length !== next.bank.length ||
+      base.bank.some((q, i) => !same(withoutLayoutTag(q), withoutLayoutTag(next.bank[i])) ||
+        Object.hasOwn(next.bank[i], 'layoutTag') && typeof next.bank[i].layoutTag !== 'string')) fail('LAYOUT_TAG_ONLY');
+}
+// Pure comparison only (no authority, no token): used by authenticate and by tests.
+export function assertE015LayoutTagOnlyEdition(baseBytes, nextBytes) {
+  assertLayoutTagOnly(parseBank(baseBytes), parseBank(nextBytes));
+  return true;
+}
 function select(rows, uid, ordinal) {
   if (!Array.isArray(rows) || rows.length !== 2 || new Set(rows.map(r => r.questionUid)).size !== 2 ||
       rows.some(r => !ITEMS.some(i => i.uid === r.questionUid && i.ordinal === r.sourceOrdinal) || r.sourceArchiveFile !== SOURCE)) fail('ISSUED_TWO_INVENTORY');
@@ -96,7 +117,7 @@ function select(rows, uid, ordinal) {
 }
 function assertLive(ctx) {
   if (fs.realpathSync(ctx.root) !== ctx.root || gitText(ctx.root, 'rev-parse', 'HEAD') !== ctx.head) fail('HEAD_CHANGED');
-  for (const ref of [pins.current, pins.receipt, pins.binding, pins.transport]) {
+  for (const ref of [ctx.livePin, pins.receipt, pins.binding, pins.transport]) {
     immutable(ctx.root, ref, ctx.head);
     checked(local(ctx.root, ref.path), ref);
   }
@@ -105,19 +126,24 @@ function authenticate(args) {
   const item = ITEMS.find(i => i.uid === args.identity?.questionUid && i.ordinal === args.ordinal && args.source === SOURCE);
   if (!item) return null;
   const n = args.nativeSource;
-  if (!n || n.blobSha1 !== pins.current.git) return null;
+  const livePin = n && [pins.current, pins.restored].find(p => p.git === n.blobSha1);
+  if (!livePin) return null;
   if (n.e015IssuedSourceContinuation || n.issuedRpmHistoryContext || n.issuedSolutionRpmHistoricalContext || n.issuedSolutionRpmHistoryContext) fail('EXCLUSIVE_CONTEXT');
   const root = fs.realpathSync(n.root), head = gitText(root, 'rev-parse', 'HEAD');
   if (!/^[a-f0-9]{40}$/.test(head)) fail('HEAD');
   for (const c of [ISSUED_COMMIT, TRANSPORT_COMMIT]) {
     try { git(root, 'merge-base', '--is-ancestor', c, head); } catch { fail('ISSUED_TRANSPORT_ANCESTRY'); }
   }
-  const raw = Object.fromEntries(Object.entries(pins).map(([k, ref]) => [k, immutable(root, ref)]));
+  const raw = Object.fromEntries(Object.entries(pins).filter(([k]) => k !== 'restored').map(([k, ref]) => [k, immutable(root, ref)]));
+  // The live edition must be pinned in this HEAD tree (and, in assertLive, on disk).
+  if (livePin === pins.restored) raw.restored = immutable(root, pins.restored, head);
   const receipt = JSON.parse(raw.receipt), binding = JSON.parse(raw.binding), transport = JSON.parse(raw.transport),
     manifest = JSON.parse(raw.manifest), proposal = JSON.parse(raw.proposal);
   const old = parseBank(raw.old), current = parseBank(raw.current);
-  checked(n.bytes, pins.current);
-  if (!same(n.bank, current.bank) || !same(args.question, current.bank[item.ordinal - 1]) ||
+  const live = livePin === pins.restored ? parseBank(raw.restored) : current;
+  if (live !== current) assertLayoutTagOnly(current, live);
+  checked(n.bytes, livePin);
+  if (!same(n.bank, live.bank) || !same(args.question, live.bank[item.ordinal - 1]) ||
       n.runtimeStatus !== 'ACTIVE' || !args.previous) fail('CURRENT_ARGUMENT');
   if (old.prefix !== current.prefix || old.suffix !== current.suffix || old.bank.some((q, i) => {
     if (i !== 9) return !same(q, current.bank[i]);
@@ -155,7 +181,7 @@ function authenticate(args) {
       hash(args.current) !== item.md || hash(args.identity) !== item.id || hash(n.runtimeRecord) !== item.runtime) fail('CURRENT_SELECTED_MD_ID_RUNTIME');
   if (!(n.identityByJoin instanceof Map)) fail('IDENTITY_JOIN');
   for (const i of ITEMS) if (!same(n.identityByJoin.get(`${SOURCE}#${i.ordinal}`), select(receipt.appliedIdentityRecords, i.uid, i.ordinal))) fail('PAIR_IDENTITY_JOIN');
-  const ctx = { root, head, item, oldBytes: raw.old, oldBank: old.bank, receipt, binding,
+  const ctx = { root, head, item, livePin, oldBytes: raw.old, oldBank: old.bank, receipt, binding,
     current: structuredClone(args.current), identity: structuredClone(args.identity), runtime: structuredClone(n.runtimeRecord) };
   assertLive(ctx);
   return ctx;

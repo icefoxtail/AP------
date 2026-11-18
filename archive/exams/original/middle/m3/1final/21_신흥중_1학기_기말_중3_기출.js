@@ -396,7 +396,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "다음 그림과 같이 한 변의 길이가 $x$인 정오각형의 한 대각선의 길이가 1일 때, $x$의 값은? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q9-problem-v2.svg\">",
     "choices": [
@@ -548,7 +548,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "다음 그림과 같이 원점을 꼭짓점으로 하고 점 $(3, -12)$를 지나는 그래프가 있다. 이 이차함수의 그래프와 $x$축에 서로 대칭인 그래프의 식은? [3점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q12-problem-v2.svg\">",
     "choices": [
@@ -603,7 +603,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "다음 그림과 같이 각 변이 좌표축과 평행한 정사각형 $\\mathrm{ABCD}$에서 점 $\\mathrm{A, C}$는 이차함수 $y=x^2$의 그래프 위의 점이고, 점 $\\mathrm{B}$는 이차함수 $y=9x^2$의 그래프 위의 점이다. $\\square\\mathrm{ABCD}$가 제1사분면 위에 있을 때, 점 $\\mathrm{D}$의 좌표는? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q13-problem-v2.svg\">",
     "choices": [
@@ -657,7 +657,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "다음 그림은 두 이차함수 $y=x^2$, $y=x^2+1$의 그래프이다. 색칠한 부분의 넓이는? [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q14-problem-v2.svg\">",
     "choices": [
@@ -867,7 +867,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "다음 그림과 같이 놀이기구의 레일의 모양은 포물선이다. $\\mathrm{O}$지점에서의 기둥의 높이는 $5\\text{ m}$이고, $\\mathrm{O}$지점에서 $4\\text{ m}$ 떨어진 곳의 기둥의 높이는 $7\\text{ m}$일 때, $\\mathrm{O}$지점에서 $8\\text{ m}$ 떨어진 곳의 기둥의 높이는? (단, 점 $\\mathrm{P}$는 포물선의 꼭짓점이다.) [5점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q18-problem-v2.svg\">",
     "choices": [
@@ -921,7 +921,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "이차함수 $y=ax^2+bx+c$의 그래프가 아래 그림과 같을 때, 다음 중 옳지 <u>않은</u> 것은? (단, $a, b, c$는 상수이다.) [4점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q19-problem-v2.svg\">",
     "choices": [
@@ -1026,7 +1026,7 @@ window.questionBank = [
     "standardUnit": "이차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "서술형 1. 다음 그림과 같이 모양과 크기가 같은 직사각형 모양의 타일 6개를 넓이가 $176\\text{ cm}^2$인 직사각형 모양의 공간에 빈틈없이 붙였더니 가로의 길이가 $2\\text{ cm}$인 직사각형 모양의 공간이 남았다. 이때 타일 한 개의 넓이를 구하시오. [8점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q21-problem-v2.svg\">",
     "choices": [],
@@ -1122,7 +1122,7 @@ window.questionBank = [
     "standardUnit": "이차함수와 그래프",
     "standardUnitOrder": 4,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "stack",
     "wide": false,
     "content": "서술형 3. 다음 그림과 같이 이차함수 $y=3x^2+6x+a$의 그래프의 꼭짓점을 $\\mathrm{C}$, $x$축과의 교점을 각각 $\\mathrm{A, B}$라고 할 때, $\\overline{\\mathrm{AB}}=4$이다. $\\triangle\\mathrm{ABC}$의 넓이를 구하시오. (단, $a$는 수이다.) [7점]<br><br><img src=\"assets/images/21_신흥중_1학기_기말_중3_기출/q23-problem-v2.svg\">",
     "choices": [],

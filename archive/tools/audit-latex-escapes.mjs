@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import examSourceReader from '../exam-source-reader.js';
 
 const COMMANDS = [
   'dfrac', 'frac', 'sqrt', 'left', 'right', 'overline', 'underline',
@@ -133,8 +134,7 @@ for (const file of files) {
     continue;
   }
 
-  const questions = context.window.questionBank || context.window.questions || [];
-  if (!Array.isArray(questions)) continue;
+  const questions = examSourceReader.readQuestionArray(context.window) || [];
   questionCount += questions.length;
 
   for (const question of questions) {

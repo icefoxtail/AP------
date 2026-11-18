@@ -379,7 +379,7 @@ window.questionBank = [
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식"
     ],
@@ -465,7 +465,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -514,7 +514,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -563,7 +563,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -612,7 +612,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -663,7 +663,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -712,7 +712,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -761,7 +761,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -810,7 +810,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -902,7 +902,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "객관식",
       "도형"
@@ -950,7 +950,7 @@ window.questionBank = [
     "standardUnit": "연립일차방정식",
     "standardUnitOrder": 3,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1030,7 +1030,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1073,7 +1073,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"

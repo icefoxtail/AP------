@@ -966,13 +966,19 @@ function specForFamily(plan,model,id){
         const point=required.find(other=>other.id===line.tangentAt);
         if(!point||!through.includes(line.tangentAt)||Math.abs(curveSlope(point.x)-m)>1e-9*Math.max(1,Math.abs(m)))throw Error('GRAPH_LINE_TANGENCY_FAIL:'+line.id);
       }
-      const lineId='line-'+line.id,labelId=lineId+'-equation',shared=header?.sharedLines.includes(line.id);if(!shared)lineLabels.push(labelId);
+      const lineId='line-'+line.id,labelId=lineId+'-equation',shared=header?.sharedLines.includes(line.id);
       objects.push({id:lineId,kind:'LINE',coefficients:[m,-1,q]});
       // A slope with a square root or several terms is bracketed before x; an intercept is appended as written (its own sign leads).
       const plainRational=/^-?\d+(?:\/\d+)?$/.test(line.slope);
       const slopeText=line.slope==='0'?'':line.slope==='1'?'x':line.slope==='-1'?'-x':plainRational?line.slope+'*x':'('+line.slope+')*x';
       const interceptText=line.intercept==='0'?(slopeText?'':'0'):line.intercept.startsWith('-')?line.intercept:(slopeText?'+':'')+line.intercept;
-      if(!shared)objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[(v[0]+v[1])/2,v[3]],priority:0});
+      if(!shared){
+        // The equation stands at the right end of its own line (a line label owned by its line: a free box beside it, else a leader to the line), not as a row of the header band.
+        const spanX=v[1]-v[0],spanY=v[3]-v[2],top=v[3]-spanY*.08,bottom=v[2]+spanY*.08;
+        let labelX=v[1]-spanX*.07,labelY=m*labelX+q+spanY*.07;
+        if(m!==0&&(labelY>top||labelY<bottom)){labelY=labelY>top?top:bottom;labelX=Math.min(Math.max((labelY-spanY*.07-q)/m,v[0]+spanX*.05),labelX);}
+        objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[labelX,labelY],priority:0,target:lineId,lineOwned:true,alternateAt:[],gaps:[8,6,10,20,32,48],collinearOwners:true,lineAt:'END'});
+      }
     }
     // The band rows (line equations first, then key point coordinates) extend the header band: two columns, 34 px rows; the canvas grows by as much.
     // Each line equation takes a whole row (it can be long); the key point coordinates follow in two columns, or one per row when any is long.
@@ -1000,7 +1006,7 @@ function specForFamily(plan,model,id){
     const firstRow=header?55:135;
     const rowCenters=bandRowCenters(pitches,firstRow);
     const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
-    return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),...(degree<=2||cubicBand?{topInset:canvas.topInset+bandExtra}:{}),...(p.equalUnits===true&&(p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(axisVariable!=='x'?{axisVariable}:{}),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(header?{}:{formula:[canvas.width/2,72]}),...bandCenters}}:cubicBand?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{formula:[canvas.width/2,72]}}:{}),...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{})},objects};
+    return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),...(degree<=2||cubicBand?{topInset:canvas.topInset+bandExtra}:{}),...(p.equalUnits===true&&(p.axisRatio??1)===1?{equalUnits:true}:{})},axes:p.axisFold?{x:true,y:true}:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(p.axisFold?{axisFold:p.axisFold}:{}),...(axisVariable!=='x'?{axisVariable}:{}),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(header?{}:{formula:[canvas.width/2,72]}),...bandCenters}}:cubicBand?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{formula:[canvas.width/2,72]}}:{}),...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{})},objects};
   }
   const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);for(const q of [...regionExtentPoints(plan,points),...traceJoinExtentPoints(plan,points),...textLabelExtentPoints(plan)]){xs.push(q[0]);ys.push(q[1]);}   // a region's arc can bulge past the displayed points, and so can a joined trace arc
   // callouts (E37): the pulled-out copies stand beside the main figure's box, inside the same frame ([] without planeMarks.callouts: nothing below changes)
@@ -1208,7 +1214,7 @@ function piecewisePolynomialSpec(plan,id){
   if(headerPx)objects.push({id:'formula',kind:'EQUATION_LABEL',text:headerText,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]});
   if(headerText===null&&functionName!==undefined){
     const x=v[0]+spanX*.16,row=anchorOnRows(features.pieces,x);
-    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'('+nameVariable+')',at:[x,clampY(evalCoefficients(row.coefficients,x)-spanY*.14)],math:true,priority:0});
+    objects.push({id:'main-curve-name',kind:'GRAPH_ANNOTATION',text:functionName+'('+nameVariable+')',at:[x,clampY(evalCoefficients(row.coefficients,x)-((p.axisFold||p.axisRatioReason)?Math.min(spanY*.14,32*spanY/plot.height):spanY*.14))],math:true,priority:0});   // below the curve: 14 % of the window; a folded or squeezed figure is tall, so there never more than 32 px
   }
   // A sample-value note the author writes for a parameter case (for example "a=2"), shown inside the plot instead of only in the caption.
   if(p.sampleNote!==undefined)objects.push({id:'sample-note',kind:'GRAPH_ANNOTATION',text:p.sampleNote,at:[v[0]+spanX*.10,v[3]-spanY*.10],math:true,priority:0});
@@ -1336,7 +1342,7 @@ function piecewisePolynomialSpec(plan,id){
   const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
   // A piecewise reference curve's own domain ends are drawn as hollow/filled dots by the engine (their own ids, never the function's).
   const referenceIntervalFeatures=refCurves.filter(curve=>curve.sourceInterval).map(curve=>({id:curve.id,...curve.sourceInterval}));
-  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{}),...(p.axisScale!==undefined?{declaredScale:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(headerPx?{formula:[canvas.width/2,72]}:{}),...bandCenters},...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{}),...(referenceIntervalFeatures.length?{referenceIntervalFeatures,referenceIntervalFeaturePolicy:{schemaVersion:'REFERENCE_INTERVAL_POLICY_v1',markerRadiusIntrinsicPx:4}}:{})},objects};
+  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{}),...(p.axisScale!==undefined?{declaredScale:true}:{})},axes:p.axisFold?{x:true,y:true}:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),...(p.axisFold?{axisFold:p.axisFold}:{}),formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(headerPx?{formula:[canvas.width/2,72]}:{}),...bandCenters},...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{}),...(referenceIntervalFeatures.length?{referenceIntervalFeatures,referenceIntervalFeaturePolicy:{schemaVersion:'REFERENCE_INTERVAL_POLICY_v1',markerRadiusIntrinsicPx:4}}:{})},objects};
 }
 
 // piecewise-discontinuous-spike-v1: one to six pieces of degree <= 2 on their own intervals with explicit OPEN/CLOSED ends, jumps and
