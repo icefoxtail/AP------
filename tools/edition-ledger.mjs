@@ -31,6 +31,7 @@ export class LedgerError extends Error {
 
 const SHA1 = /^[0-9a-f]{40}$/;
 const SHA256 = /^[0-9a-f]{64}$/;
+const FIELD_NAME = /^[A-Za-z][A-Za-z0-9_]*$/;
 const FINGERPRINT = /^[0-9a-f]{16,64}$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -107,6 +108,8 @@ function err(errors, code, message, row, index) {
 
 const isObj = value => value && typeof value === "object" && !Array.isArray(value);
 const isStr = value => typeof value === "string" && value.length > 0;
+// 필수 문자열 필드: 앞뒤 공백이 없고 trim 뒤에도 비지 않아야 한다(공백뿐인 값이 "있는 값"으로 통과하지 않게).
+const isCleanStr = value => typeof value === "string" && value.length > 0 && value.trim() === value;
 
 function exactKeys(errors, value, allowed, required, where, row, index) {
   for (const key of Object.keys(value)) {
@@ -124,7 +127,7 @@ function validDate(text) {
 }
 
 function validPath(text) {
-  return isStr(text) && !text.startsWith("/") && !text.includes("\\") && !text.split("/").some(part => part === ".." || part === "" || part === ".");
+  return isCleanStr(text) && !text.startsWith("/") && !text.includes("\\") && !text.split("/").some(part => part === ".." || part === "" || part === ".");
 }
 
 function validateBlob(errors, value, where, row, index, { sha256 = false } = {}) {
@@ -141,10 +144,10 @@ function validateRow(errors, row, index) {
   if (!KINDS.includes(row.kind)) return err(errors, "UNKNOWN_KIND", `unknown kind "${row.kind}"`, row, index);
   const kind = row.kind;
   exactKeys(errors, row, [...ENVELOPE_HEAD, ...BODY_KEYS[kind], ...ENVELOPE_TAIL], [...ENVELOPE_HEAD, ...BODY_KEYS[kind], "addedAt"], `row ${index}`, row, index);
-  if (!isStr(row.id)) err(errors, "BAD_FIELD", "id must be a non-empty string", row, index);
+  if (!isCleanStr(row.id)) err(errors, "BAD_FIELD", "id must be a non-empty string without surrounding whitespace", row, index);
   if (!validDate(row.addedAt ?? "")) err(errors, "BAD_FIELD", "addedAt must be a valid YYYY-MM-DD date", row, index);
   if (row.addedByPr !== undefined && (!Number.isInteger(row.addedByPr) || row.addedByPr <= 0)) err(errors, "BAD_FIELD", "addedByPr must be a positive integer", row, index);
-  if (row.note !== undefined && typeof row.note !== "string") err(errors, "BAD_FIELD", "note must be a string", row, index);
+  if (row.note !== undefined && !isCleanStr(row.note)) err(errors, "BAD_FIELD", "note, when present, must be a non-empty string without surrounding whitespace", row, index);
   if (!validPath(row.path)) err(errors, "BAD_FIELD", "path must be a repo-relative path with forward slashes", row, index);
 
   if (kind === "renderer") {
@@ -161,11 +164,12 @@ function validateRow(errors, row, index) {
       exactKeys(errors, evidence, NESTED_KEYS["renderer.evidence"], ["type", "ref"], "evidence", row, index);
       if (!EVIDENCE_TYPES.includes(evidence.type)) err(errors, "BAD_EVIDENCE_TYPE", `evidence.type must be one of ${EVIDENCE_TYPES.join("|")}`, row, index);
       if (!validPath(evidence.ref)) err(errors, "BAD_FIELD", "evidence.ref must be a repo-relative path", row, index);
-      if (evidence.type === "SCREEN_JUDGMENT" && !isStr(evidence.judgedBy)) err(errors, "MISSING_JUDGED_BY", "SCREEN_JUDGMENT requires evidence.judgedBy", row, index);
-      if (evidence.judgedBy !== undefined && !isStr(evidence.judgedBy)) err(errors, "BAD_FIELD", "evidence.judgedBy must be a non-empty string", row, index);
+      const blankJudge = typeof evidence.judgedBy !== "string" || evidence.judgedBy.trim() === "";
+      if (evidence.type === "SCREEN_JUDGMENT" && blankJudge) err(errors, "MISSING_JUDGED_BY", "SCREEN_JUDGMENT requires a non-blank evidence.judgedBy", row, index);
+      else if (evidence.judgedBy !== undefined && !isCleanStr(evidence.judgedBy)) err(errors, "BAD_FIELD", "evidence.judgedBy must be a non-empty string without surrounding whitespace", row, index);
     }
   } else {
-    if (!isStr(row.questionKey)) err(errors, "BAD_FIELD", "questionKey must be a non-empty string", row, index);
+    if (!isCleanStr(row.questionKey)) err(errors, "BAD_FIELD", "questionKey must be a non-empty string without surrounding whitespace", row, index);
     validateBlob(errors, row.sealed, "sealed", row, index);
     validateBlob(errors, row.edition, "edition", row, index);
     if (isObj(row.sealed) && isObj(row.edition) && row.sealed.gitBlobSha1 === row.edition.gitBlobSha1) {
@@ -184,9 +188,11 @@ function validateRow(errors, row, index) {
     if (!Array.isArray(fields) || fields.length === 0) err(errors, "BAD_FIELD", "changedFields must be a non-empty array", row, index);
     else {
       if (new Set(fields).size !== fields.length) err(errors, "BAD_FIELD", "changedFields must not repeat a name", row, index);
+      // 이 목록은 자기 신고이고 실질 방어선은 binding.fingerprint 대조(A3)이다. 여기서는 이름 형식과 결속 필드 이름(대소문자·전각 변형 포함)만 거른다.
+      const bindingLower = new Set(BINDING_FIELDS.map(field => field.toLowerCase()));
       for (const name of fields) {
-        if (typeof name !== "string" || !name) err(errors, "BAD_FIELD", "changedFields entries must be non-empty strings", row, index);
-        else if (!isOutsideBindingField(name)) {
+        if (typeof name !== "string" || !FIELD_NAME.test(name)) err(errors, "BAD_FIELD", `changedFields entry ${JSON.stringify(name)} must match ${FIELD_NAME}`, row, index);
+        else if (!isOutsideBindingField(name) || bindingLower.has(name.normalize("NFKC").toLowerCase())) {
           err(errors, "CHANGED_BINDING_FIELD", `changedFields has "${name}", a binding field (${BINDING_FIELDS.join("|")}); a stem or choice change needs a human re-judgment, not a ledger row`, row, index);
         }
       }
@@ -229,9 +235,13 @@ export function validateLedger(obj, opts = {}) {
 //            ROW_REORDERED(순서가 바뀜), ROW_INSERTED_IN_MIDDLE(base 행 사이에 새 행이 끼어듦)
 export function checkAppendOnly(baseObj, headObj) {
   const errors = [];
-  const baseRows = Array.isArray(baseObj?.rows) ? baseObj.rows : [];
-  const headRows = Array.isArray(headObj?.rows) ? headObj.rows : [];
-  const text = row => JSON.stringify(canonicalRow(row));
+  // 빈 배열로 취급하지 않는다: 모양이 틀린 장부끼리의 대조는 "통과"가 아니라 오류이다.
+  if (!isObj(baseObj) || !Array.isArray(baseObj.rows)) err(errors, "BASE_LEDGER_INVALID", "base ledger must be an object with a rows array");
+  if (!isObj(headObj) || !Array.isArray(headObj.rows)) err(errors, "HEAD_LEDGER_INVALID", "head ledger must be an object with a rows array");
+  if (errors.length) return { ok: false, errors };
+  const baseRows = baseObj.rows;
+  const headRows = headObj.rows;
+  const text = row => JSON.stringify(row); // 원문 그대로 비교(정규형이 아닌 변경도 수정으로 본다)
   const headById = new Map();
   headRows.forEach((row, index) => {
     if (isStr(row?.id) && !headById.has(row.id)) headById.set(row.id, { row, index });
@@ -305,7 +315,13 @@ export function checkAgainstGit({ headText, ref = "origin/main", runGit, ledgerP
     return { ok: false, base: null, errors };
   }
   const baseSpec = `${baseCommit}:${ledgerPath}`;
-  if (runGit(["cat-file", "-e", baseSpec]).status !== 0) {
+  // 새 파일 확정: ls-tree 가 성공하고 출력이 빌 때만. 명령 자체가 실패(나쁜 객체 등)하면 읽기 실패이지 "없음"이 아니다.
+  const listed = runGit(["ls-tree", "--name-only", baseCommit, "--", ledgerPath]);
+  if (listed.status !== 0) {
+    errors.push({ code: "BASE_READ_FAILED", message: `git ls-tree ${baseCommit} -- ${ledgerPath} failed: ${listed.stderr.trim()}`, rowId: null, index: null });
+    return { ok: false, base: { commit: baseCommit, ledger: "UNREADABLE" }, errors };
+  }
+  if (listed.stdout.trim() === "") {
     return { ok: errors.length === 0, base: { commit: baseCommit, ledger: "ABSENT_NEW_FILE" }, errors };
   }
   const shown = runGit(["show", baseSpec]);
@@ -319,6 +335,13 @@ export function checkAgainstGit({ headText, ref = "origin/main", runGit, ledgerP
   } catch (error) {
     errors.push({ code: "BASE_PARSE_FAILED", message: `base ledger is unreadable: ${error.message}`, rowId: null, index: null });
     return { ok: false, base: { commit: baseCommit, ledger: "UNREADABLE" }, errors };
+  }
+  const baseValidation = validateLedger(baseObj, { text: shown.stdout });
+  if (!baseValidation.ok) {
+    // 형식이 틀린 base 와는 대조하지 않는다. 사유가 한눈에 보이게 처음 몇 개만 붙인다.
+    const first = baseValidation.errors.slice(0, 3).map(error => `${error.code}${error.index !== null ? `@${error.index}` : ""}`).join(",");
+    errors.push({ code: "BASE_LEDGER_INVALID", message: `base ledger fails validation (${baseValidation.errors.length} problem(s): ${first})`, rowId: null, index: null });
+    return { ok: false, base: { commit: baseCommit, ledger: "INVALID" }, errors };
   }
   errors.push(...checkAppendOnly(baseObj, head).errors);
   return { ok: errors.length === 0, base: { commit: baseCommit, ledger: "PRESENT", rows: baseObj.rows?.length ?? 0 }, errors };

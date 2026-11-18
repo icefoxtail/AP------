@@ -5,6 +5,9 @@
 // 렌더러(engine.html 등)를 고치면 그 봉인이 낡는다. 이 도구는 어떤 기록이 어떤 시험지·문항을 승인했고, 봉인된 파일 중
 // 현재 코드와 달라진 것이 무엇인지 보여 준다. 기록은 수정하지 않는다. --capture(재촬영)는 A2에서 구현한다.
 //
+// 주의: --ref 는 봉인 파일의 "현재 blob" 비교(git ls-tree)에만 쓴다. 승인 기록 JSON과 PNG는 항상 작업 트리에서 읽는다
+// (출력의 recordsReadFrom 에 명시). 그래서 --ref 가 HEAD 와 다르면 기록이 그 ref 의 것이라는 뜻이 아니다.
+//
 // 기록의 형태가 제각각이라, 읽은 종류와 못 읽은 종류를 출력의 unparsed 로 남긴다(조용한 누락 없음).
 // 인식 규칙: JSON 안에 servedFiles 배열(최상위, 또는 두 단계 안쪽)이 있으면 읽는다. 없으면 unparsed.
 import { createHash } from "node:crypto";
@@ -152,6 +155,8 @@ export function buildList({ ref = "HEAD", full = false } = {}) {
     note: "read-only; approval records are never modified. unparsed lists JSON records mentioning servedFiles/screenshotArtifacts that this tool could not read as a UI approval proof.",
     ref,
     commit: commit.stdout.trim(),
+    blobsComparedAt: "ref (git ls-tree)",
+    recordsReadFrom: "working tree (not --ref)",
     summary: {
       candidateJsonFiles: candidates.length,
       parsedRecords: records.length,

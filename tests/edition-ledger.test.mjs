@@ -133,14 +133,15 @@ test("lookup: 조건에 맞는 행을 장부 순서대로 돌려준다", () => {
 
 test("git 대조(함수 단위): base 없음은 새 파일로 통과, base 를 못 풀면 명확한 오류", () => {
   const head = serializeLedger(ledger(rendererRow()));
-  const fake = ({ rev = 0, mb = 0, cat = 0, show = "" }) => args => {
+  const present = "docs/operations/edition-ledger/ledger-v1.json\n";
+  const fake = ({ rev = 0, mb = 0, ls = 0, lsOut = present, lsErr = "", show = "", showStatus = 0, showErr = "" }) => args => {
     if (args[0] === "rev-parse") return { status: rev, stdout: "", stderr: "" };
     if (args[0] === "merge-base") return { status: mb, stdout: mb ? "" : `${h40("9")}\n`, stderr: "" };
-    if (args[0] === "cat-file") return { status: cat, stdout: "", stderr: "" };
-    if (args[0] === "show") return { status: 0, stdout: show, stderr: "" };
+    if (args[0] === "ls-tree") return { status: ls, stdout: ls ? "" : lsOut, stderr: lsErr };
+    if (args[0] === "show") return { status: showStatus, stdout: show, stderr: showErr };
     throw new Error(`unexpected git call ${args.join(" ")}`);
   };
-  const newFile = checkAgainstGit({ headText: head, runGit: fake({ cat: 1 }) });
+  const newFile = checkAgainstGit({ headText: head, runGit: fake({ lsOut: "" }) });
   assert.equal(newFile.ok, true);
   assert.equal(newFile.base.ledger, "ABSENT_NEW_FILE");
   assert.deepEqual(codes(checkAgainstGit({ headText: head, runGit: fake({ rev: 1 }) })), ["BASE_REF_UNRESOLVED"]);
@@ -151,6 +152,94 @@ test("git 대조(함수 단위): base 없음은 새 파일로 통과, base 를 �
   assert.deepEqual(codes(removed), ["ROW_DELETED"]);
   assert.deepEqual(codes(checkAgainstGit({ headText: "{", runGit: fake({}) })), ["PARSE_JSON"]);
   assert.deepEqual(codes(checkAgainstGit({ headText: head, runGit: fake({ show: "not json" }) })), ["BASE_PARSE_FAILED"]);
+});
+
+test("git 대조: ls-tree/show 실패(status 128, bad object)는 새 파일이 아니라 BASE_READ_FAILED 이다", () => {
+  const head = serializeLedger(ledger(rendererRow()));
+  const fake = ({ ls = 0, showStatus = 0 }) => args => {
+    if (args[0] === "rev-parse") return { status: 0, stdout: "", stderr: "" };
+    if (args[0] === "merge-base") return { status: 0, stdout: `${h40("9")}\n`, stderr: "" };
+    if (args[0] === "ls-tree") return { status: ls, stdout: ls ? "" : "docs/operations/edition-ledger/ledger-v1.json\n", stderr: ls ? "fatal: bad object" : "" };
+    if (args[0] === "show") return { status: showStatus, stdout: "", stderr: showStatus ? "fatal: bad object" : "" };
+    throw new Error("unexpected git call");
+  };
+  const lsFail = checkAgainstGit({ headText: head, runGit: fake({ ls: 128 }) });
+  assert.equal(lsFail.ok, false);
+  assert.deepEqual(codes(lsFail), ["BASE_READ_FAILED"]);
+  assert.match(lsFail.errors[0].message, /bad object/);
+  const showFail = checkAgainstGit({ headText: head, runGit: fake({ showStatus: 128 }) });
+  assert.equal(showFail.ok, false);
+  assert.deepEqual(codes(showFail), ["BASE_READ_FAILED"]);
+});
+
+test("git 대조: 모양이 틀린 base 장부는 BASE_LEDGER_INVALID 로 실패한다(통과 금지)", () => {
+  const head = serializeLedger(ledger(rendererRow()));
+  const fakeShow = show => args => {
+    if (args[0] === "rev-parse") return { status: 0, stdout: "", stderr: "" };
+    if (args[0] === "merge-base") return { status: 0, stdout: `${h40("9")}\n`, stderr: "" };
+    if (args[0] === "ls-tree") return { status: 0, stdout: "docs/operations/edition-ledger/ledger-v1.json\n", stderr: "" };
+    return { status: 0, stdout: show, stderr: "" };
+  };
+  const badRow = serializeLedger(ledger(rendererRow({ evidence: { type: "SCREEN_JUDGMENT", ref: "docs/x.md" } })));
+  const nonCanonical = JSON.stringify(parseLedger(head));
+  for (const show of ["{}", '{"schemaVersion":1}', '{"schemaVersion":1,"rows":"x"}', "null", "[]", badRow, nonCanonical]) {
+    const result = checkAgainstGit({ headText: head, runGit: fakeShow(show) });
+    assert.equal(result.ok, false, show);
+    assert.ok(codes(result).includes("BASE_LEDGER_INVALID") || codes(result).includes("BASE_PARSE_FAILED"), `${show}: ${codes(result)}`);
+  }
+  assert.deepEqual(codes(checkAgainstGit({ headText: head, runGit: fakeShow("{}") })), ["BASE_LEDGER_INVALID"]);
+});
+
+test("checkAppendOnly: null 이거나 rows 가 배열이 아닌 장부는 빈 배열로 보지 않고 오류", () => {
+  const good = ledger(rendererRow());
+  for (const bad of [null, undefined, {}, { schemaVersion: 1 }, { rows: "x" }, { rows: {} }, []]) {
+    assert.deepEqual(codes(checkAppendOnly(bad, good)), ["BASE_LEDGER_INVALID"], JSON.stringify(bad));
+    assert.deepEqual(codes(checkAppendOnly(good, bad)), ["HEAD_LEDGER_INVALID"], JSON.stringify(bad));
+  }
+});
+
+test("공백뿐이거나 앞뒤 공백이 있는 필수 문자열 필드는 거절한다", () => {
+  for (const judgedBy of ["", "   ", "\t\n"]) {
+    const row = withId(rendererRow({ evidence: { type: "SCREEN_JUDGMENT", ref: "docs/x.md", judgedBy } }));
+    assert.ok(codes(validateLedger(ledger(row))).includes("MISSING_JUDGED_BY"), JSON.stringify(judgedBy));
+  }
+  const padded = withId(rendererRow({ evidence: { type: "SCREEN_JUDGMENT", ref: "docs/x.md", judgedBy: " control-room" } }));
+  assert.ok(codes(validateLedger(ledger(padded))).includes("BAD_FIELD"));
+  for (const ref of ["  ", " docs/x.md", "docs/x.md ", "docs/x.md\n"]) {
+    const row = withId(rendererRow({ evidence: { type: "PNG_BYTE_IDENTICAL", ref } }));
+    assert.ok(codes(validateLedger(ledger(row))).includes("BAD_FIELD"), `ref ${JSON.stringify(ref)}`);
+  }
+  for (const p of [" archive/engine.html", "archive/engine.html ", "   "]) {
+    assert.ok(codes(validateLedger(ledger(withId(rendererRow({ path: p }))))).includes("BAD_FIELD"), `path ${JSON.stringify(p)}`);
+  }
+  for (const key of ["", "  ", " q7", "q7 "]) {
+    assert.ok(codes(validateLedger(ledger(withId(sourceRow({ questionKey: key }))))).includes("BAD_FIELD"), `questionKey ${JSON.stringify(key)}`);
+  }
+  for (const note of ["", "   ", " note", "note "]) {
+    assert.ok(codes(validateLedger(ledger(withId(rendererRow({ note }))))).includes("BAD_FIELD"), `note ${JSON.stringify(note)}`);
+  }
+});
+
+test("changedFields: 이름 형식과 결속 필드의 대소문자·전각 변형을 거절하고 중복도 거절한다", () => {
+  // 영문 대소문자 변형은 형식에는 맞으므로 CHANGED_BINDING_FIELD 여야 한다.
+  for (const name of ["Content", "CHOICES", "Question", "STEM", "cOnTeNt"]) {
+    assert.ok(codes(validateLedger(ledger(withId(sourceRow({ changedFields: [name] }))))).includes("CHANGED_BINDING_FIELD"), name);
+  }
+  // 전각은 형식 규칙에서 BAD_FIELD 로 거절된다(어느 쪽이든 통과 금지).
+  for (const name of ["ｃｏｎｔｅｎｔ", "Ｃｈｏｉｃｅｓ"]) {
+    assert.equal(validateLedger(ledger(withId(sourceRow({ changedFields: [name] })))).ok, false, name);
+  }
+  for (const name of ["content ", " layoutTag", "layout Tag", "1abc", "", "a-b", "솔루션"]) {
+    assert.ok(codes(validateLedger(ledger(withId(sourceRow({ changedFields: [name] }))))).includes("BAD_FIELD"), JSON.stringify(name));
+  }
+  assert.ok(codes(validateLedger(ledger(withId(sourceRow({ changedFields: ["solution", "solution"] }))))).includes("BAD_FIELD"));
+  // 메타 필드 등 결속 밖 이름은 여전히 열려 있다.
+  assert.deepEqual(validateLedger(ledger(withId(sourceRow({ changedFields: ["layoutTag", "solution", "difficultyBucket", "image"] })))).errors, []);
+});
+
+test("checkAppendOnly: 정규형 밖의 키 변경(알 수 없는 키 추가)도 수정으로 본다", () => {
+  const a = rendererRow();
+  assert.deepEqual(codes(checkAppendOnly(ledger(a), ledger({ ...a, extra: 1 }))), ["ROW_MODIFIED"]);
 });
 
 test("저장소의 실제 장부 파일이 형식·정규형 검증을 통과한다", () => {
