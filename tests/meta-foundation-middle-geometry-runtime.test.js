@@ -260,6 +260,24 @@ function verifyHistoricalCohorts(index, remember = false) {
   assert.strictEqual(currentNativeReady + retainedBlocked, reviewedTransitions);
   return { unchanged, reviewedTransitions, currentNativeReady, retainedBlocked };
 }
+// Approval kinds an additional runtime row may carry besides FINAL_QA/REVIEW2 (handled by the
+// native reviewed-state path): an explicit set, anything else (unknown or empty) fails.
+// META_PIPELINE_AUDIT keeps its existing requirements. For MAIN_MERGE only check that the
+// runtime row and the canonical metadata agree on the approval type and the same question.
+// MAIN_MERGE의 상태·영수증 계약은 등록기(auto-register-merged-source.mjs)가 강제한다. 여기서 다시 조이지 않는다(2026-11-18 사용자 결정: 값이 있으면 쓴다, 막는 것은 실제 결함뿐).
+function assertAdditionalRowApproval(metadata, row) {
+  const uid = row.questionUid;
+  const type = metadata.metadataApprovalType;
+  assert(["META_PIPELINE_AUDIT", "MAIN_MERGE"].includes(type), "unsupported additional-row approval type " + type + ": " + uid);
+  if (type === "META_PIPELINE_AUDIT") {
+    assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", uid);
+    assert((metadata.approvalEvidence || []).some((file) => file.endsWith(".source-parity.json")), uid);
+    return;
+  }
+  assert.strictEqual(metadata.questionUid, uid);
+  assert.strictEqual(row.metadataApprovalType, type, uid);
+}
+
 const preservedCohorts = verifyHistoricalCohorts(activeRuntimeByUid, true);
 const currentReviewedRows = historical.cohorts["1.0.3"].map(([uid]) => activeRuntimeByUid.get(uid)[0]);
 const additionalReviewedRows = runtime.records.filter(row => !historicalByUid.has(row.questionUid))
@@ -271,11 +289,10 @@ for (const entry of [...currentReviewedRows, ...additionalReviewedRows]) {
   if (["FINAL_QA", "REVIEW2"].includes(metadata.metadataApprovalType) || issuedApprovals.has(row.questionUid)) {
     const input = nativeInput(metadata, row, entry);
     rememberReviewedState(input, assertReviewedState(input, row.questionUid));
+    assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", row.questionUid);
   } else {
-    assert.strictEqual(metadata.metadataApprovalType, "META_PIPELINE_AUDIT", row.questionUid);
-    assert(metadata.approvalEvidence.some((file) => file.endsWith(".source-parity.json")), row.questionUid);
+    assertAdditionalRowApproval(metadata, row);
   }
-  assert.strictEqual(metadata.metadataStatus, "approved_semantic_review", row.questionUid);
   assert.strictEqual(metadata.sourceArchiveFile, row.sourceArchiveFile, row.questionUid);
   assert.strictEqual(Number(metadata.sourceOrdinal), Number(row.sourceOrdinal), row.questionUid);
   assert.strictEqual(metadata.metadataRevision, row.metadataRevision, row.questionUid);
@@ -1081,7 +1098,7 @@ for (const row of runtime.records) {
     assert.strictEqual(row.defaultSelectable, false);
   } else {
     assert(["1.0.2", "1.0.3"].includes(row.metaFoundationPackVersion) ||
-      currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType === "META_PIPELINE_AUDIT" ||
+      ["META_PIPELINE_AUDIT", "MAIN_MERGE"].includes(currentQuestionMetadata.get(row.questionUid)?.metadataApprovalType) ||
       issuedApprovals.has(row.questionUid), row.questionUid);
     assert.strictEqual(row.l4Disposition, "ASSIGNED", row.questionUid);
     assert(activeTemplates.has(row.templateKey), row.templateKey);
