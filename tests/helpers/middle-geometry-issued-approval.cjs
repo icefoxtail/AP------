@@ -1157,7 +1157,8 @@ function createIssuedApprovalObserver(api) {
       assert.deepStrictEqual(assertLayoutTagOnlyEdition(baseBytes, actual), edition.layoutTagOnly.changes,
         label + ": exact layoutTag-only change inventory");
     }
-    return { commit: edition.commit, pins: edition.pins, changes, beforeBank, currentBank };
+    return { commit: edition.commit, pins: edition.pins, changes, beforeBank, currentBank,
+      selectedQ2Fields: edition.selectedQ2Fields };
   }
   function assertOriginalReceiptSourceEdition(root, profile, relative, issued, actual, label) {
     assert.strictEqual(relative, "archive/exams/" + profile.source, label + ": fixed original source path");

@@ -58,6 +58,21 @@ test("accepts the real current file: only layoutTag differs from the 2372 editio
   assert.deepStrictEqual(assertLayoutTagOnlyEdition(baseBytes, baseBytes), []);
 });
 
+test("cumulative inventory against the issued source and the net Q2 field set are pinned exactly", () => {
+  const issued = execFileSync("git", ["show", "f9e49a0e0c18f18c63f31d7547bd504f07a821c6:" + SOURCE],
+    { cwd: root, maxBuffer: 16 * 1024 * 1024 });
+  const issuedBank = JSON.parse(issued.toString("utf8").slice(issued.toString("utf8").indexOf("["),
+    issued.toString("utf8").lastIndexOf("]") + 1));
+  const changes = issuedBank.map((before, index) => {
+    const after = liveBank[index];
+    const fields = [...new Set([...Object.keys(before), ...Object.keys(after)])]
+      .filter(key => JSON.stringify(before[key]) !== JSON.stringify(after[key])).sort();
+    return fields.length ? { sourceOrdinal: index + 1, fields } : null;
+  }).filter(Boolean);
+  assert.deepStrictEqual(changes, SOURCE_EDITION_LAYOUT_TAG.changes);
+  assert.deepStrictEqual(changes.find(row => row.sourceOrdinal === 2).fields, SOURCE_EDITION_LAYOUT_TAG.selectedQ2Fields);
+});
+
 test("accepts any layoutTag string value change (and nothing else)", () => {
   const bytes = variant(bank => { bank[10].layoutTag = "fullwidth"; });
   assert.deepStrictEqual(assertLayoutTagOnlyEdition(liveBytes, bytes), [{ sourceOrdinal: 11, fields: ["layoutTag"] }]);
