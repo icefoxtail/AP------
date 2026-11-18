@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "cf05b1c38cff91c1",
+  "solveSteps": [
+    "a < b 일 때 각 선지의 부등식 성질 적용 결과를 확인한다.",
+    "양변에 4를 더하면 a + 4 < b + 4 로 참이다.",
+    "양변에서 3을 빼면 a - 3 < b - 3 으로 참이다.",
+    "양변에 양수 5를 곱하면 5a < 5b 로 참이다.",
+    "양변을 음수 -3으로 나누면 부등호 방향이 바뀌어 a/(-3) > b/(-3) 이어야 하므로 4번이 거짓이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "$a < b$일 때, 다음 중 옳지 ",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "부등식 a < b 의 양변에 사칙연산을 적용할 때 부등호 방향의 변화 성질을 묻는 행이다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+  "typeReason": "부등식 a < b 변형 시 음수 나눗셈에서 방향 역전을 확인하는 검증 절차 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수 -3 으로 나눌 때 부등호가 바뀐다는 기본 성질 하나를 즉시 묻는 1단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식의 양변에 음수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "등식의 양변에 음수를 곱하거나 양"
+      }
+    ],
+    "method": [
+      {
+        "term": "양수",
+        "src": "solution",
+        "quote": "양수 $5$를 곱하",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "a < b 의 양변을 음수 -3으로 나눌 때 부등호 방향이 바뀌어야 함을 근거로 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

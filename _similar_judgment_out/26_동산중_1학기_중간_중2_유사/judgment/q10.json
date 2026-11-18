@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "209943d9e4a6bc78",
+  "solveSteps": [
+    "계수는 계수끼리 나누면 24 / 6 = 4 이다.",
+    "문자는 지수법칙에 의해 x^{5-3} = x^2, y^{6-2} = y^4 이다.",
+    "따라서 18 이나 144 계수의 보기와 달리 올바른 식은 4x^2y^4 (①)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$24x^5y^6 \\div 6x^3y^2$을 간단히 한 식으로 옳은 것은?",
+  "rpmRecordId": "M2-RPM-128",
+  "rpmReason": "24x^5y^6 / (6x^3y^2) 의 계수와 지수를 나누어 4x^2y^4 를 구하는 단항식의 나눗셈 행이다 (18, 144 계수 배제).",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "단항식 나눗셈에서 24 / 6 = 4 와 지수차를 적용해 4x^2y^4 를 얻는 연산 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "24 / 6 = 4 및 x^{5-3}, y^{6-2} 공식을 바로 적용하는 1단계 기본 연산 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "단항식의 나눗셈에서 계수는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "계수와 각 문자를 나누어 계산하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "나눗셈",
+        "src": "solution",
+        "quote": "단항식의 나눗셈에서 계수는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "24 / 6 = 4 와 지수차를 적용해 4x^2y^4 가 맞음을 확인하고 18, 144 등을 배제하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "qid": 20,
+  "itemFingerprint": "23f6030f3a8ed998",
+  "solveSteps": [
+    "소수 -0.4 와 분수가 혼합된 일차부등식의 양변에 최소공배수 10을 곱한다.",
+    "2 - 5x > -4(x + 1) 전개하면 2 - 5x > -4x - 4 이다.",
+    "이항하여 정리하면 -x > -6 이므로 x < 6 이다.",
+    "만족하는 자연수 x 는 1, 2, 3, 4, 5 이다.",
+    "모든 자연수 x 의 합은 1 + 2 + 3 + 4 + 5 = 15 이므로 2번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $\\dfrac{1}{5} - \\df",
+  "rpmRecordId": "M2-RPM-139",
+  "rpmReason": "소수 -0.4 와 분수가 있는 부등식에 10을 곱해 풀고 해의 합 15를 구하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_NATURAL_ROOTS_SUM",
+  "templateKey": "TPL_M2_CALCULATE_SUM_OF_NATURAL_SOLUTIONS_TO_INEQUALITY",
+  "typeReason": "계수 0.4 와 분수가 있는 부등식을 풀어 자연수 해를 나열하고 합산 15를 구하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "소수 0.4 와 분수 혼합식을 양변에 10을 곱해 풀고 자연수 해를 구해 합산하는 3단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "src": "solution",
+        "quote": "분수와 소수가 혼합된 일차"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $x$의 값"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "최소공배수 $10$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "분수와 소수가 혼합"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "양변에 10을 곱해 x < 6 을 얻고 자연수 1~5 의 합 15 를 계산하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
