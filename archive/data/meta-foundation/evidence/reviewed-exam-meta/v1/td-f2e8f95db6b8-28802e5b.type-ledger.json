@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f2e8f95db6b8-28802e5b",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_금당중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d00b288e3dc14d3b215c47e8d0fe2435cfcff06800f90787ad529ca59877c164",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD",
+      "templateKey": "TPL_M2_SELECT_REQUIRED_OPERATION_FOR_VARIABLE_ELIMINATION",
+      "step": "2㉠+㉡에서는 y계수가0이 되고5㉠-3㉡에서는 x계수가0이 되므로 ②·④를 선택한다.",
+      "note": " 검사 오류: [{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aec888b00304d93d5f44cdd7643447dd1c6d28163972a189e7c5a6c0e96bc721",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "괄호를 정리한 x+y=1과 x=2y-8에서(-2,3)을 얻고 마지막 식에 대입해 -2k+4=0, k=2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa0418f0a78ecbbf6bc400e5395da7b67208fffd1ad2eda0c577d30f2f0115d5",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": null,
+      "step": "분모와 소수를 없애 -2x+3y=2,3x+2y=10을 얻고 가감법으로 x=y=2를 구해 곱4를 계산한다.",
+      "note": "새 TPL 제안: 분수·소수 계수 연립방정식과 해의 식 계산. 정의: 계수를 정수화해 공통해를 구한 뒤 곱 등 요구된 식을 평가한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4659bdc8f46c59bba7cf631bc5eb5ad05f13e20d8bdc0c929793776c657bb50e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "단가를 x,y로 두어5x+2y=10,2x+5y=8을 풀면 x=34/21,y=20/21이므로21(x+2y)=74이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bf02eb64a71acfb1aa328a07eb434234b4f89895fd58f47ce9128bfff9021b51",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "A=DEC와 공통 C로 ABC와 EDC의 AA 닮음에서 AC:EC=8:4=2:1, BC=12이므로 BE=8이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b087ce63cc17ddc63eeb25375ae60d8e34d75acb5ec2d33fd022ed402e474221",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "피타고라스 정리로 빗변5를 얻고 같은 삼각형 넓이3×4/2=5×AH/2를 비교해 AH=12/5를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1cb3ac2b2df5ba6073493ee60b4fb037873bdee8d19bd1b95a6aa03e47bd1219",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "DE가 BC에 평행하므로 AD/AB=AE/AC=6/9이고 AD=12×2/3=8이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7ba4e4364caa36a664d7f5d1c2a990b628c5b64d0e35dbff14f3dab09d283f9",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "각 중점연결선은 대응 원래 변의 절반이므로 중점삼각형 둘레는(8+12+10)/2=15이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_947212c2f30df03661aae75fb862dba4ae61b8a755875f586a23a9f98841e2bd",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "ME와 CD가 평행하고 M이 BC의 중점이므로 CD=8이고 중점 AN=NM의 넓이비에서 CN:ND=3:1을 얻어 CN=6이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_27bd8e28888abbddded366fbe2a8473aa63d9c247d3c05520386d58487455b43",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+      "step": "AB와 DC의 평행으로 BE:ED=21:28=3:4를 얻고 EF와 DC의 평행에서 EF/DC=BE/BD=3/7이므로 EF=12이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a8a2b16bcf5d105074a404a1616ba8c649b898c066d773fa63067ab021e6ac2",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_CONVERSE",
+      "step": "가장 긴 변의 제곱과 나머지 제곱합을 비교하면5²+12²=13²과12²+16²=20²인②·⑤만 직각삼각형이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_459f16c6ffa56ed87ed2bbc8abfe0197705f0c59f3e104291fff5c6684b78464",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_AREA_TRANSFER",
+      "step": "세 반원 넓이의 제곱비 관계에서 겹친 부분을 빼 색칠한 두 활꼴 합이 삼각형 넓이와 같고 AC=9이므로 넓이54이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_291009ffad3fbe060bc5b14ad63f65d0aef7554bf3da05e75d62907a3365222e",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "DF∥BE에서 AD/AB=AF/AE=4/7을 얻고 DE∥BC에서 AE/AC=4/7로 이어 AC=49/2,EC=21/2를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}
