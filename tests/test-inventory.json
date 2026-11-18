@@ -2362,11 +2362,6 @@
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
   },
   {
-   "match": "tests/archive-m2-problem24-ui-contract.test.cjs",
-   "reason": "pending",
-   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (archive-m2-problem24-current-ui.yml)."
-  },
-  {
    "match": "tests/archive-m204-second-pass-v1.test.mjs",
    "local": {
     "result": "fail",
@@ -5269,17 +5264,6 @@
    "detail": "지금 돌리면 실패 — ✖ B01+B02 student-first A1 83 frozen, A2 83 exact; 83 registered with approved q11 semantics (1.0837ms)"
   },
   {
-   "match": "tests/archive2-bokseong-b02-q11-semantic-consumer.test.cjs",
-   "local": {
-    "result": "fail",
-    "ms": 193,
-    "mode": "node --test",
-    "signature": "✖ q11 all nine released without legacy hold leakage (1.0029ms)"
-   },
-   "reason": "fails-now",
-   "detail": "지금 돌리면 실패 — ✖ q11 all nine released without legacy hold leakage (1.0029ms)"
-  },
-  {
    "match": "tests/archive2-bokseong-b04-b05-consumer.test.cjs",
    "local": {
     "result": "fail",
@@ -5289,17 +5273,6 @@
    },
    "reason": "fails-now",
    "detail": "지금 돌리면 실패 — ✖ B04 26 and B05 Q21 9 are uniquely registered, while Q22 10 HOLD never become selectable (1.1299ms)"
-  },
-  {
-   "match": "tests/archive2-bokseong-b05-q22-consumer.test.cjs",
-   "local": {
-    "result": "fail",
-    "ms": 202,
-    "mode": "node --test",
-    "signature": "✖ ten q22 registered; prior 273 unchanged and only two historical holds excluded (1.0136ms)"
-   },
-   "reason": "fails-now",
-   "detail": "지금 돌리면 실패 — ✖ ten q22 registered; prior 273 unchanged and only two historical holds excluded (1.0136ms)"
   },
   {
    "match": "tests/archive2-bokseong-b06-consumer.test.cjs",
