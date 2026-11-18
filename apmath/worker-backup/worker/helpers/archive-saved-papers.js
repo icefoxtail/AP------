@@ -329,7 +329,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
     const title = String(paper.meta.title || paper.meta.printHeaderOptions?.title || "").trim();
     if (!title || title.length > 150) fail("시험지 제목을 1~150자로 입력해 주세요.", 409);
     const qpp = Number(paper.meta.qpp || 4);
-    if (![4, 6, 8].includes(qpp)) fail("출력 쪽당 문항 수를 확인해 주세요.", 409);
+    if (![2, 4, 6, 8].includes(qpp)) fail("출력 쪽당 문항 수를 확인해 주세요.", 409);
     const meta = {
       ...paper.meta,
       title,
@@ -402,7 +402,7 @@ export async function readAndVerifySavedSnapshot(row) {
     !isPlainObject(snapshot.selectionFilters) ||
     snapshot.bridgeRows.length !== Number(row.question_count) ||
     snapshot.questions.length !== Number(row.question_count) ||
-    ![4, 6, 8].includes(Number(snapshot.meta.qpp)) ||
+    ![2, 4, 6, 8].includes(Number(snapshot.meta.qpp)) ||
     String(snapshot.meta.title || "") !== String(row.title || "") ||
     String(snapshot.meta.grade || "") !== String(row.grade || "") ||
     stableStringify(snapshot.meta.questionUids) !== stableStringify(snapshot.questions.map((question) => question.questionUid)) ||

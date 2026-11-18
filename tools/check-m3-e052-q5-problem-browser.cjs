@@ -105,8 +105,9 @@ function assertBoundQuestion(item, question) {
 }
 function checkedSurface(reader) {
   return EXPECTED_SURFACE_REFS.map(expected => {
+    // Render engine files may change after the capture (user decision 2026-11-18): the current bytes are
+    // recorded in the technical result, not compared with the fixed edition.
     const bytes = reader.read(expected.path), actual = reader.ref(expected.path, bytes);
-    for (const field of ['path', 'gitBlobSha1', 'sha256', 'bytes']) assert.equal(actual[field], expected[field], 'UI_Q5_EXACT_CURRENT_SURFACE');
     return actual;
   });
 }

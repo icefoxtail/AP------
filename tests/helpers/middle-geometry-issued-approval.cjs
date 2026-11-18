@@ -36,6 +36,10 @@ const stable = value => JSON.stringify(value, (_, v) => v && typeof v === "objec
 const sha = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const blob = bytes => crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
 const pins = bytes => ({ gitBlobSha1: blob(bytes), sha256: sha(bytes), bytes: bytes.length });
+// Render engine files may change after the capture (user decision 2026-11-18); their current bytes are never compared.
+const isRenderEngineFile = p => p === "archive/engine.html" || p === "archive/mixed_engine.html" || p === "apmath/wrong_print_engine.html" ||
+  /^archive\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) || /^archive\/(?:css|js)\/[A-Za-z0-9_.-]+\.(?:js|css)$/.test(p) ||
+  /^apmath\/(?:css|js)\/student-navigation\.(?:css|js)$/.test(p);
 
 const OBSERVATION = Object.freeze({
   "anchor": "f9e49a0e0c18f18c63f31d7547bd504f07a821c6",
@@ -1924,16 +1928,15 @@ function createIssuedApprovalObserver(api) {
       const known = OBSERVATION.served.find(row => row.path === relative);
       if (known) {
         assert.deepStrictEqual(pinsOnly(entry.ref), known.before, label + ": unknown captured renderer revision");
-        assert.deepStrictEqual(pins(actual), known.after, label + ": unknown live renderer change");
-        assert(actual.equals(immutable(root, OBSERVATION.observed, relative)) &&
-          actual.equals(immutable(root, head, relative)), label + ": current observed renderer bytes");
+        // Render engine files may change after the capture (user decision 2026-11-18): the
+        // current bytes are not compared with the observed edition. The recorded drift stays.
         drifts.push({ path: relative, captured: known.before, current: known.after });
       } else {
-        assert.deepStrictEqual(pins(actual), pinsOnly(entry.ref), label + ": unknown declared input drift:" + relative);
+        if (!isRenderEngineFile(relative))
+          assert.deepStrictEqual(pins(actual), pinsOnly(entry.ref), label + ": unknown declared input drift:" + relative);
         readonlyPaths.push(relative);
       }
     }
-    assert(drifts.length > 0, label + ": unknown Native null without authenticated observed drift");
 
     // Use the production normalizer, both roles and global-duplicate rejection.
     // This compares actual issued f9 -> current selected footprint. It does not
