@@ -75,25 +75,32 @@
       throw new Error("bindingPayload: 문항 객체가 아닙니다.");
     const rawStem = examSourceReader.readStemForBinding(question);
     if (!rawStem) throw new Error("bindingPayload: 발문(content·question·stem)이 모두 비어 있습니다.");
+    const stem = normalizeBindingText(rawStem);
     const payload = {
       v: VERSION,
-      stem: normalizeBindingText(rawStem),
+      stem,
       choices: Array.isArray(question.choices)
         ? question.choices.map((choice) => normalizeBindingText(choice).replace(CHOICE_MARK, ""))
         : null,
     };
+    // 발문이 그림뿐이라 정규화한 발문이 빈 문자열이면 그림이 곧 문제이므로 인라인 그림 태그가 든 발문(공백·줄바꿈만
+    // 정규화)과 image·images를 포함한다. 안 그러면 지문이 상수가 되어 문제가 통째로 바뀌어도 결속이 유지된다.
+    const stemIsMedia = stem === "";
+    if (stemIsMedia) payload.stemMedia = rawStem.normalize("NFC").replace(/\r\n?/g, "\n").replace(/\s+/g, " ").trim();
     // 보기가 그림 안에 든 문항은 그림이 곧 보기이므로 그림을 포함한다.
-    if (choicesAreImages(question)) {
+    if (stemIsMedia || choicesAreImages(question)) {
       payload.image = stable(question.image ?? null);
       payload.images = stable(question.images ?? null);
     }
     return payload;
   }
 
-  // 키 순서가 고정된 JSON 문자열(v, stem, choices, [image, images]).
+  // 키 순서가 고정된 JSON 문자열(v, stem, [stemMedia], choices, [image, images]).
   function bindingSerialize(question) {
     const payload = bindingPayload(question);
-    const ordered = { v: payload.v, stem: payload.stem, choices: payload.choices };
+    const ordered = { v: payload.v, stem: payload.stem };
+    if ("stemMedia" in payload) ordered.stemMedia = payload.stemMedia;
+    ordered.choices = payload.choices;
     if ("image" in payload) {
       ordered.image = payload.image;
       ordered.images = payload.images;

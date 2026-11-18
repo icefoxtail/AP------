@@ -177,3 +177,26 @@ const GOLDEN_HASHES = [
   '4f80008be4d65feef87eb2bdf78c18b93be58bb68b8ee83d166315465fba11c8',
   'd949b3d17937a406e258ed681015bf522a8cecdddcc17d9f5420a242e98482b9',
 ];
+
+test('발문이 그림뿐이면 그림이 곧 문제다: 그림 src·image 변경은 불일치, 해설 변경은 일치', async () => {
+  const q = { content: '<p><img src="a.png"></p>', choices: ['① 1', '② 2'], solution: '해설', image: 'a-fig.png' };
+  assert.equal(bindingPayload(q).stem, '');
+  assert.equal(bindingPayload(q).stemMedia, '<p><img src="a.png"></p>');
+  await differ(q, { ...q, content: '<p><img src="b.png"></p>' }, '인라인 그림 src');
+  await differ(q, { ...q, image: 'b-fig.png' }, 'image');
+  await differ(q, { ...q, images: ['x.png'] }, 'images');
+  await same(q, { ...q, solution: '완전히 다른 해설', answer: '②', level: '상' }, '해설·정답·메타');
+  await same({ ...q, content: '<p> <img src="a.png"> </p>' }, { ...q, content: '\n<p>  <img src="a.png">\r\n</p>  ' }, '공백·줄바꿈 차이');
+  await same(q, { ...q, content: '', question: '<p><img src="a.png"></p>' }, 'question 필드로 이동');
+  assert.equal(bindingSerialize(q),
+    '{"v":"text-v1","stem":"","stemMedia":"<p><img src=\\"a.png\\"></p>","choices":["1","2"],"image":"a-fig.png","images":null}');
+});
+
+test('발문에 글자가 한 자라도 있으면 기존 규칙대로 그림을 가린다', async () => {
+  const q = { content: '<p>그림을 보시오.</p><p><img src="a.png"></p>', choices: ['① 1', '② 2'], image: 'a-fig.png' };
+  const p = bindingPayload(q);
+  assert.equal(p.stem, '<p>그림을 보시오.</p>');
+  assert.ok(!('stemMedia' in p) && !('image' in p) && !('images' in p));
+  await same(q, { ...q, content: '<p>그림을 보시오.</p><p><img src="b.png"></p>', image: 'b-fig.png' });
+  await same({ content: '.', choices: null }, { content: '.<img src="a.png">', choices: null, image: 'z.png' });
+});
