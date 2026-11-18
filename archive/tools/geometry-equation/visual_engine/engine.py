@@ -15,6 +15,8 @@ from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
 OPEN_POINT_STROKE_WIDTH=1.8   # a hollow overlay point (markerState OPEN): the ring is heavier than a filled dot's 0.8 outline so it reads as a circle on a phone
 
+AXIS_FOLD_AXIS_GAP_PX=12.0   # a folded axis and the other axis never touch: the other one ends this far short (observer: axis_fold_audit)
+
 def _exact_float(text):
     """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
     try:return float(Fraction(text))
@@ -486,9 +488,30 @@ def prepare(spec):
         if axis_bounds is not None:
             if not isinstance(axis_bounds,list) or len(axis_bounds)!=4 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in axis_bounds):raise ValueError('INVALID_AXIS_BOUNDS')
             xmin,xmax,ymin,ymax=max(xmin,axis_bounds[0]),min(xmax,axis_bounds[1]),max(ymin,axis_bounds[2]),min(ymax,axis_bounds[3])
+        # (axis fold) an axis far from every feature stands on the window edge (displayFacts.axisFold, set by graph_framing), never through the empty gap to the origin
+        axis_fold=spec['displayFacts'].get('axisFold')
+        axis_at={'x':0,'y':0}
+        if axis_fold is not None:
+            if not isinstance(axis_fold,dict) or axis_fold.get('schemaVersion')!='AXIS_FOLD_v1' or set(axis_fold)-{'schemaVersion','x','y'}:raise ValueError('INVALID_AXIS_FOLD')
+            for axis,edges in (('x',('BOTTOM','TOP')),('y',('LEFT','RIGHT'))):
+                row=axis_fold.get(axis)
+                if row is None:continue
+                if not isinstance(row,dict) or set(row)!={'edge','at'} or row['edge'] not in edges or isinstance(row['at'],bool) or not isinstance(row['at'],(int,float)) or not math.isfinite(row['at']):raise ValueError('INVALID_AXIS_FOLD')
+                edge_value={'BOTTOM':ymin,'TOP':ymax,'LEFT':xmin,'RIGHT':xmax}[row['edge']]
+                if abs(row['at']-edge_value)>1e-6*max(1,abs(edge_value)):raise ValueError('AXIS_FOLD_NOT_ON_WINDOW_EDGE')
+                axis_at[axis]=edge_value
+        # The other axis stops AXIS_FOLD_AXIS_GAP_PX short of a folded axis, so their corner is not read as the origin (0,0).
+        x_from,x_to,y_from,y_to=xmin,xmax,ymin,ymax
+        if axis_fold is not None:
+            if 'x' in axis_fold:
+                if axis_fold['x']['edge']=='BOTTOM':y_from=ymin+AXIS_FOLD_AXIS_GAP_PX/vp.sy
+                else:y_to=ymax-AXIS_FOLD_AXIS_GAP_PX/vp.sy
+            if 'y' in axis_fold:
+                if axis_fold['y']['edge']=='LEFT':x_from=xmin+AXIS_FOLD_AXIS_GAP_PX/vp.sx
+                else:x_to=xmax-AXIS_FOLD_AXIS_GAP_PX/vp.sx
         axes=[]
-        if show_x:axes.append(('x-axis',(xmin,0),(xmax,0)))
-        if show_y:axes.append(('y-axis',(0,ymin),(0,ymax)))
+        if show_x:axes.append(('x-axis',(x_from,axis_at['x']),(x_to,axis_at['x'])))
+        if show_y:axes.append(('y-axis',(axis_at['y'],y_from),(axis_at['y'],y_to)))
         zero_pole=any(pole.get('boundary') and pole['x']=='0' for pole in (trig_interval_features or {}).get('poles',[]))
         for oid,a,b in axes:
             # An excluded tangent pole on x=0 shares the y-axis; the axis must leave its dashes visible.
@@ -533,8 +556,8 @@ def prepare(spec):
         axis_labels=[]
         axis_titles=spec['displayFacts'].get('axisTitles',{})
         if not isinstance(axis_titles,dict) or set(axis_titles)-{'x','y'} or any(not isinstance(v,str) or not v for v in axis_titles.values()):raise ValueError('INVALID_AXIS_TITLES')
-        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x'),axis_titles.get('x')))
-        if show_y:axis_labels.append(('axis-y',(0,ymax),'y',axis_titles.get('y')))
+        if show_x:axis_labels.append(('axis-x',(xmax,axis_at['x']),spec['displayFacts'].get('axisVariable','x'),axis_titles.get('x')))
+        if show_y:axis_labels.append(('axis-y',(axis_at['y'],ymax),'y',axis_titles.get('y')))
         for oid,at,text,title in axis_labels:
             # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
             if title is not None and axis_title_tex(title) is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'tex':axis_title_tex(title),'font':13,'priority':4,'allowSuppress':False,'math':True,'bindText':True})
@@ -569,7 +592,7 @@ def prepare(spec):
                 # A tick number exactly at a drawn graph reference point would repeat that point's x on the axis and collide with its label/marker:
                 # the reference point already carries the value, so the redundant tick is omitted.
                 if axis=='x' and any(abs(value-item)<=1e-12 for item in reference_positions):continue
-                at=(value,0) if axis=='x' else (0,value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
+                at=(value,axis_at['x']) if axis=='x' else (axis_at['y'],value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
                 display_token=str(int(value)) if float(value).is_integer() else f'{value:.10g}'
                 id_token=str(index) if index is not None else display_token
                 oid=f'tick-{axis}-{id_token}'

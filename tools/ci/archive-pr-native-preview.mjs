@@ -947,7 +947,8 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
       ...(rendererPreservation ? { rendererPreservation } : {}),
       ...(authorityCorrection ? { kind: 'native-authority-withdrawal' } : basicPreservation ? { basicPreservation, kind: basicPreservation.newBasicParent ? 'basic-parent-registration' : 'basic-approval-preservation' }
         : correction ? { kind: 'basic-parent-correction' } : request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY' ? { kind: 'identity-fingerprint-repair' }
-        : preservation || rendererPreservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type } : {}), source: { ...source, blobSha1 },
+        : preservation || rendererPreservation ? { kind: 'native-approval-preservation', preservedApprovalType: request.approval.type }
+        : request.approval?.type === 'DIRECT_JUDGMENT' ? { kind: 'direct-type-judgment' } : {}), source: { ...source, blobSha1 },
       evidence,
       receiptPath: `${RECEIPTS}${request.requestId}.json` });
   }
@@ -1003,6 +1004,9 @@ function resultScopeMatches(result, request) {
       (result.newMetadataApprovals !== 0 || result.withdrawnMetadataApprovals !== request.questionCount)) return false;
   if (request.kind === 'native-approval-preservation' &&
       (result.newMetadataApprovals !== 0 || result.preservedMetadataApprovals !== request.questionCount)) return false;
+  // Type-only registration: no new approval, and exactly the selected rows get a direct type judgment.
+  if (request.kind === 'direct-type-judgment' &&
+      (result.fieldScope !== 'TYPE_ONLY' || result.newMetadataApprovals !== 0 || result.typeApprovals !== request.questionCount)) return false;
   if (request.kind === 'basic-approval-preservation' &&
       (result.newMetadataApprovals !== 0 || result.advancedApprovals !== 0 || result.metadataValuesChanged !== false ||
         result.preservedMetadataApprovals !== request.questionCount || result.expectedQuestionCount !== request.sourceQuestionCount)) return false;
@@ -1088,7 +1092,8 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
     const identityOnly = request.registrationMode === 'IDENTITY_FINGERPRINT_ONLY';
     if (!resultScopeMatches(result, request) || result.replay !== true
         || result.consumerSearchStatus !== (request.kind === 'native-authority-withdrawal' ? 'AUTHORITY_WITHDRAWAL_VERIFIED' : identityOnly ? 'IDENTITY_BINDINGS_VERIFIED'
-          : request.kind === 'difficulty5-ratings' ? 'STATIC_DIFFICULTY_VALUES_VERIFIED' : 'STATIC_VALUES_VERIFIED')
+          : request.kind === 'difficulty5-ratings' ? 'STATIC_DIFFICULTY_VALUES_VERIFIED'
+          : request.kind === 'direct-type-judgment' ? 'TYPE_FIELDS_VERIFIED' : 'STATIC_VALUES_VERIFIED')
         || identityOnly && (result.consumerLanes?.identityBindings !== request.questionCount
           || result.consumerLanes?.newMetadataApprovals !== 0)) fail('PROJECTION_NOT_VERIFIED');
   }
@@ -1113,6 +1118,10 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
           || r.kind === 'native-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
             || exams[0].preservedMetadataApprovals !== r.questionCount || exams[0].approvalType !== r.preservedApprovalType
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
+          || r.kind === 'direct-type-judgment' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
+            || !['directTypeApprovals', 'typeNotDisplayed'].every(k => Number.isSafeInteger(exams[0][k]) && exams[0][k] >= 0)
+            || exams[0].directTypeApprovals + exams[0].typeNotDisplayed !== r.questionCount
+            || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
           || r.kind === 'basic-approval-preservation' && (exams[0].newMetadataApprovals !== 0 || exams[0].approvalCreated !== false
             || exams[0].advancedApprovals !== 0 || exams[0].preservedMetadataApprovals !== r.questionCount
             || exams[0].expectedQuestionCount !== r.sourceQuestionCount || exams[0].skippedUnchanged !== 0 || exams[0].changed !== r.questionCount)
@@ -1136,11 +1145,16 @@ export function verifyNativeRequests({ root, requests, run = nativeCommand }) {
   const newBasic = requests.filter(r => r.kind === 'basic-parent-registration');
   const newBasicParentApprovals = newBasic.length ? { requests: newBasic.length,
     newBasicParentApprovals: newBasic.reduce((sum, r) => sum + r.questionCount, 0), preservedMetadataApprovals: 0, advancedApprovals: 0 } : null;
+  // Type-only judgments: how many rows the catalog shows by type, and how many it does not (stale binding) are reported, not hidden.
+  const direct = requests.filter(r => r.kind === 'direct-type-judgment');
+  const directTypeJudgments = direct.length ? { requests: direct.length, newMetadataApprovals: 0,
+    directTypeApprovals: direct.reduce((sum, r) => sum + result.exams.find(e => e.file === r.path).directTypeApprovals, 0),
+    typeNotDisplayed: direct.reduce((sum, r) => sum + result.exams.find(e => e.file === r.path).typeNotDisplayed, 0) } : null;
   noUnexpectedMutation(root, before, new Set());
   return [{ id: 'native-projection', outcome: 'success' },
     { id: 'native-consumer', outcome: 'success', ...(difficultyOnly ? { difficultyOnly } : {}),
       ...(preservedNativeApprovals ? { preservedNativeApprovals } : {}), ...(preservedBasicApprovals ? { preservedBasicApprovals } : {}),
-      ...(newBasicParentApprovals ? { newBasicParentApprovals } : {}) }];
+      ...(newBasicParentApprovals ? { newBasicParentApprovals } : {}), ...(directTypeJudgments ? { directTypeJudgments } : {}) }];
 }
 
 export function nativeOutputManifest(root, plans) {

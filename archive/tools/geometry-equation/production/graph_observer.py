@@ -3543,6 +3543,7 @@ def _ov_final_window(viewport,plan=None):
     framed window that stops short of y=1, say) the drawing window is the plan's window widened by 8 % of the whole span on every side, the rule of visual_engine/viewport.py
     restated here from the plan. Every overlay line is cut by this window, not by the plan's own."""
     xmin,xmax,ymin,ymax=viewport
+    if plan is not None and isinstance(plan.get('axisFold'),dict):return list(viewport)   # a folded figure does not hold the origin: the window is the plan's own
     unit_points=((0.0,0.0),(1.0,0.0),(0.0,1.0))
     if plan is not None and 'axisScale' in plan:unit_points=((0.0,0.0),)   # (G18c) a declared axisScale frame is never widened for the unit points
     if all(xmin<x<xmax and ymin<y<ymax for x,y in unit_points):return list(viewport)
@@ -6019,6 +6020,12 @@ def _audit_family(plan,svg,transform,model=False):
     if plan.get('regions') or (plan.get('family')=='polynomial' and getattr(poly.domain,'is_AlgebraicField',False)):result['regions']=region_observations
     return result
 
+def axis_fold_positions(plan):
+    """(x of the y axis, y of the x axis) in model units: the origin lines, or the window edge for an axis the plan folded (plan['axisFold'], AXIS_FOLD_v1)."""
+    fold=plan.get('axisFold')
+    if not isinstance(fold,dict):return 0.0,0.0
+    return float((fold.get('y') or {}).get('at',0.0)),float((fold.get('x') or {}).get('at',0.0))
+
 AXIS_TITLE_OBSERVER_PATTERN=r'[가-힣A-Za-z0-9 ()·/.,%-]{1,10}'
 AXIS_TITLE_MAX_DISTANCE_PX=60.0
 
@@ -6064,7 +6071,8 @@ def axis_titles_audit(plan,svg,transform):
             elif node.get('data-label-kind')!='GRAPH_ANNOTATION' or node.get('data-text')!=text or node.get('data-tex') is not None or _ov_glyph_codes(node):errors.append('AXIS_TITLE_TEXT_MISMATCH:'+axis);continue
             box=_region_label_box(groups,label_id)
             if box is None:errors.append('AXIS_TITLE_BOX_UNREADABLE:'+axis);continue
-            end=(ox+xmax*sx,oy) if axis=='x' else (ox,oy-ymax*sy)
+            fold_x,fold_y=axis_fold_positions(plan)   # a folded axis stands on the window edge, so its title stands at the end of that edge line
+            end=(ox+xmax*sx,oy-fold_y*sy) if axis=='x' else (ox+fold_x*sx,oy-ymax*sy)
             if _ov_point_box_distance(end,box)>AXIS_TITLE_MAX_DISTANCE_PX:errors.append('AXIS_TITLE_NOT_AT_AXIS_END:'+axis)
     except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_TITLE_SOURCE_INVALID']}
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'titles':len(titles)}
@@ -6460,11 +6468,167 @@ def multi_curve_label_audit(plan,svg,transform):
             if own>reach or closer:errors.append('ASYMPTOTE_LABEL_DETACHED:'+label_id)
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
 
+def _own_slopes(plan):
+    """Independent copy of the slope inventory: every straight line or linear piece the plan draws (a number, nan when unreadable, None for a vertical overlay line)."""
+    out=[]
+    def add(text):
+        try:out.append(float(_pp_coeff(str(text))))
+        except Exception:out.append(math.nan)
+    for row in plan.get('referenceLines') or []:
+        if isinstance(row,dict):add(row['slope']) if 'slope' in row else out.append(0.0)
+    for row in plan.get('lines') or []:
+        if isinstance(row,dict) and 'slope' in row:add(row['slope'])
+    overlays=plan.get('overlays')
+    for row in (overlays.get('lines') if isinstance(overlays,dict) else None) or []:
+        if isinstance(row,dict):out.append(None) if 'x' in row else add(row.get('slope','nan'))
+    def pieces_of(rows):
+        for row in rows or []:
+            values=row.get('coefficients') if isinstance(row,dict) else None
+            if not isinstance(values,list) or not values:continue
+            degree=max([index for index,value in enumerate(values) if str(value) not in ('0','-0','0.0')] or [0])
+            if degree==0:out.append(0.0)
+            elif degree==1:add(values[1])
+    pieces_of(plan.get('pieces'))
+    for curve in plan.get('referenceCurves') or []:
+        if isinstance(curve,dict):pieces_of(curve.get('pieces'))
+    return out
+
+def axis_squeeze_audit(plan,svg,transform):
+    """An automatic squeeze (plan['axisRatioReason']=='TALL': a figure taller than 1:1.2 drawn at y/x 2/3 or 1/2) is refused when the figure only reads right at one scale: a slope of
+    +-1, two perpendicular slanted lines, an authored equalUnits, circles, angles or polygons. The slopes are re-read from the plan's own fields. None without the field."""
+    reason=plan.get('axisRatioReason')
+    if reason is None:return None
+    ratio=plan.get('axisRatio')
+    if reason not in ('TALL','FAILURE_SQUEEZE') or isinstance(ratio,bool) or not isinstance(ratio,(int,float)) or not .5-1e-12<=ratio<1:return {'status':'FAIL','errors':['AXIS_SQUEEZE_REASON_INVALID']}
+    if reason!='TALL':return {'status':'PASS','errors':[]}
+    errors=[]
+    overlays=plan.get('overlays')
+    if isinstance(overlays,dict) and set(overlays)&{'circles','circleRegions','rightAngles','angles','equalAngles','polygons'}:errors.append('AXIS_SQUEEZE_FORBIDDEN:ROUND_OR_ANGLE')
+    if plan.get('axisScale') is not None or plan.get('applicationAxes') is True:errors.append('AXIS_SQUEEZE_FORBIDDEN:OWN_SCALE')
+    slanted=[m for m in _own_slopes(plan) if m is not None and (math.isnan(m) or abs(m)>1e-12)]
+    if any(not math.isnan(m) and abs(abs(m)-1)<1e-9 for m in slanted):errors.append('AXIS_SQUEEZE_FORBIDDEN:SLOPE_ONE')
+    if any(not math.isnan(a) and not math.isnan(b) and abs(a*b+1)<1e-9 for index,a in enumerate(slanted) for b in slanted[index+1:]):errors.append('AXIS_SQUEEZE_FORBIDDEN:PERPENDICULAR')
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
+AXIS_FOLD_MIN_GAP_PX=12.0
+AXIS_FOLD_AXIS_GAP_MIN_PX=10.0   # the other axis stops 10 to 14 px (the engine draws 12) short of a folded axis
+AXIS_FOLD_AXIS_GAP_MAX_PX=14.0
+
+def axis_fold_audit(plan,svg,transform):
+    """A folded axis (plan['axisFold'], AXIS_FOLD_v1) is read back from the final SVG on its own: the fold is allowed for this figure, the axis stands on the window edge
+    that does not hold the origin, nothing drawn comes within 12 px of it (or lies beyond it), the tick marks left are real values inside the window and the folded
+    side carries no tick number and no O. A plan without axisFold is not touched (None)."""
+    fold=plan.get('axisFold')
+    if fold is None or fold is False:return None   # False is the author's own 'keep the origin'
+    errors=[]
+    try:
+        if not isinstance(fold,dict) or fold.get('schemaVersion')!='AXIS_FOLD_v1' or set(fold)-{'schemaVersion','x','y'} or not ({'x','y'}&set(fold)):return {'status':'FAIL','errors':['AXIS_FOLD_INVALID']}
+        xmin,xmax,ymin,ymax=plan['viewport']
+        # A figure whose axes carry meaning is never folded: the plan's own fields decide, not the producer's say-so.
+        if plan.get('axisScale') is not None or plan.get('applicationAxes') is True:errors.append('AXIS_FOLD_FORBIDDEN:SCALE')
+        if plan.get('regions'):errors.append('AXIS_FOLD_FORBIDDEN:REGIONS')
+        if any(isinstance(line,dict) and 'slope' in line for line in plan.get('referenceLines') or []):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')
+        if any(m is not None and (math.isnan(m) or abs(m)>1e-12) for m in _own_slopes({'referenceCurves':plan.get('referenceCurves')})):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')   # a slanted piece of a reference curve is a slanted line
+        overlays=plan.get('overlays')
+        if overlays:
+            if not isinstance(overlays,dict) or set(overlays)-{'points','lines','names'}:errors.append('AXIS_FOLD_FORBIDDEN:OVERLAYS')
+            else:
+                for entry in overlays.get('lines') or []:
+                    if not isinstance(entry,dict) or 'x' in entry:errors.append('AXIS_FOLD_FORBIDDEN:VERTICAL_LINE')   # nothing frames a vertical line but the origin
+                    elif str(entry.get('slope')) not in ('0','0.0'):errors.append('AXIS_FOLD_FORBIDDEN:SLANTED_LINE')
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        edges={'x':{'BOTTOM':ymin,'TOP':ymax},'y':{'LEFT':xmin,'RIGHT':xmax}}
+        # where each axis stands (model units); an unfolded axis keeps the origin line, which the window must then hold
+        at={'x':0.0,'y':0.0}
+        for axis in ('x','y'):
+            row=fold.get(axis)
+            if row is None:
+                low,high=(ymin,ymax) if axis=='x' else (xmin,xmax)
+                if not low<0<high:errors.append('AXIS_FOLD_ORIGIN_LINE_OUTSIDE:'+axis)   # an axis that is not folded must still be inside the window
+                continue
+            if not isinstance(row,dict) or set(row)!={'edge','at'} or row['edge'] not in edges[axis] or isinstance(row['at'],bool) or not isinstance(row['at'],(int,float)):errors.append('AXIS_FOLD_INVALID');continue
+            edge_value=edges[axis][row['edge']]
+            if abs(row['at']-edge_value)>1e-6*max(1,abs(edge_value)):errors.append('AXIS_FOLD_NOT_ON_WINDOW_EDGE:'+axis);continue
+            # the folded axis is folded because the window does not reach it: 0 lies beyond the edge it stands on
+            if (row['edge'] in ('BOTTOM','LEFT') and not edge_value>0) or (row['edge'] in ('TOP','RIGHT') and not edge_value<0):errors.append('AXIS_FOLD_NOT_NEEDED:'+axis);continue
+            at[axis]=edge_value
+        if errors:return {'status':'FAIL','errors':sorted(set(errors))}
+        left,right,top,bottom=ox+xmin*sx,ox+xmax*sx,oy-ymax*sy,oy-ymin*sy
+        folded_px={'x':oy-at['x']*sy,'y':ox+at['y']*sx}   # pixel row of the x axis, pixel column of the y axis
+        root=ET.fromstring(svg);tol=.6
+        def folded_gap(point):
+            """signed pixels from a drawn point to each folded axis: negative when it lies beyond it (in the folded part)."""
+            gaps=[]
+            if 'x' in fold:gaps.append(('x',(folded_px['x']-point[1]) if fold['x']['edge']=='BOTTOM' else (point[1]-folded_px['x'])))
+            if 'y' in fold:gaps.append(('y',(point[0]-folded_px['y']) if fold['y']['edge']=='LEFT' else (folded_px['y']-point[0])))
+            return gaps
+        for node in root.iter():
+            tag=node.tag.split('}')[-1];role=node.get('data-role');ident=node.get('id') or ''
+            if role=='axis':
+                try:a=(float(node.get('x1')),float(node.get('y1')));b=(float(node.get('x2')),float(node.get('y2')))
+                except (TypeError,ValueError):errors.append('AXIS_FOLD_AXIS_MISPLACED:'+str(node.get('data-axis')));continue
+                axis=node.get('data-axis')
+                # the other axis ends AXIS_FOLD_AXIS_GAP_MIN_PX..MAX short of a folded axis (never touching it: the corner would read as the origin); its far end is the window edge
+                if axis=='x':
+                    near_edge=fold.get('y',{}).get('edge');xs=sorted((a[0],b[0]));want_low,want_high=left,right
+                    if abs(a[1]-folded_px['x'])>tol or abs(b[1]-folded_px['x'])>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
+                    elif near_edge in ('LEFT','RIGHT'):
+                        gap=(xs[0]-folded_px['y']) if near_edge=='LEFT' else (folded_px['y']-xs[1]);far=abs(xs[1]-right) if near_edge=='LEFT' else abs(xs[0]-left)
+                        if gap<AXIS_FOLD_AXIS_GAP_MIN_PX:errors.append('AXIS_FOLD_AXES_TOUCH')
+                        elif gap>AXIS_FOLD_AXIS_GAP_MAX_PX or far>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
+                    elif abs(xs[0]-left)>tol or abs(xs[1]-right)>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:x')
+                elif axis=='y':
+                    near_edge=fold.get('x',{}).get('edge');ys=sorted((a[1],b[1]))
+                    if abs(a[0]-folded_px['y'])>tol or abs(b[0]-folded_px['y'])>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
+                    elif near_edge in ('BOTTOM','TOP'):
+                        gap=(folded_px['x']-ys[1]) if near_edge=='BOTTOM' else (ys[0]-folded_px['x']);far=abs(ys[0]-top) if near_edge=='BOTTOM' else abs(ys[1]-bottom)
+                        if gap<AXIS_FOLD_AXIS_GAP_MIN_PX:errors.append('AXIS_FOLD_AXES_TOUCH')
+                        elif gap>AXIS_FOLD_AXIS_GAP_MAX_PX or far>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
+                    elif abs(ys[0]-top)>tol or abs(ys[1]-bottom)>tol:errors.append('AXIS_FOLD_AXIS_MISPLACED:y')
+                continue
+            if role=='tick':
+                # a tick mark stands on its axis line (the window edge for a folded axis) at a real value inside the window
+                try:value=float(node.get('data-value'));axis=node.get('data-axis');a=(float(node.get('x1')),float(node.get('y1')))
+                except (TypeError,ValueError):errors.append('AXIS_FOLD_TICK_MISPLACED');continue
+                low,high=(xmin,xmax) if axis=='x' else (ymin,ymax)
+                want=(ox+value*sx,folded_px['x']) if axis=='x' else (folded_px['y'],oy-value*sy)
+                if not low<=value<=high or abs(a[0]-want[0])>tol or abs(a[1]-want[1])>tol:errors.append('AXIS_FOLD_TICK_MISPLACED:'+str(node.get('id')))
+                continue
+            points=[]
+            if tag=='polyline':
+                try:values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                except ValueError:continue
+                points=[(values[i],values[i+1],0.0) for i in range(0,len(values)-1,2)]
+            elif tag=='line':
+                try:points=[(float(node.get('x1')),float(node.get('y1')),0.0),(float(node.get('x2')),float(node.get('y2')),0.0)]
+                except (TypeError,ValueError):continue
+            elif tag=='circle':
+                try:points=[(float(node.get('cx')),float(node.get('cy')),float(node.get('r')))]
+                except (TypeError,ValueError):continue
+            for px,py,radius in points:
+                for axis,gap in folded_gap((px,py)):
+                    if gap-radius<AXIS_FOLD_MIN_GAP_PX:errors.append(('AXIS_FOLD_ELEMENT_IN_FOLD:' if gap<0 else 'AXIS_FOLD_TOO_CLOSE:')+(ident or tag));break
+        # labels: a box lies wholly on the feature side and 12 px clear of a folded axis; the title and tick numbers of that axis itself stand outside by design
+        if 'data-label-kind' in svg:
+            groups={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='g' and node.get('id') and node.get('data-label-kind')}
+            own={'x':('axis-x','tick-x-'),'y':('axis-y','tick-y-')}
+            for ident,node in groups.items():
+                box=_region_label_box(groups,ident)
+                if box is None:continue
+                if re.fullmatch(r'(origin|O)(-name|-label)?',ident) or node.get('data-text')=='O':errors.append('AXIS_FOLD_ORIGIN_LABEL:'+ident)
+                corners=[(box[0],box[1]),(box[0]+box[2],box[1]),(box[0],box[1]+box[3]),(box[0]+box[2],box[1]+box[3])]
+                for axis in ('x','y'):
+                    if axis not in fold or ident==own[axis][0] or ident.startswith(own[axis][1]):continue
+                    worst=min((gap for corner in corners for name,gap in folded_gap(corner) if name==axis),default=math.inf)
+                    if worst<AXIS_FOLD_MIN_GAP_PX:errors.append(('AXIS_FOLD_ELEMENT_IN_FOLD:' if worst<0 else 'AXIS_FOLD_TOO_CLOSE:')+ident)
+    except (KeyError,TypeError,ValueError,ET.ParseError):return {'status':'UNSUPPORTED','errors':['AXIS_FOLD_SOURCE_INVALID']}
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors))}
+
 def audit(plan,svg,transform,*,model=False):
     """The family audit plus the optional graph overlays and axis titles: the observer re-derives every overlay element from the raw overlays
     field and reads the same element ids back from the model and the final SVG."""
     result=_audit_family(plan,svg,transform,model=model)
-    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
+    parts=[part for part in (overlays_audit(plan,svg,transform) if plan.get('overlays') is not None else None,axis_titles_audit(plan,svg,transform),axis_fold_audit(plan,svg,transform),axis_squeeze_audit(plan,svg,transform),curve_color_audit(plan,svg,transform),curve_name_audit(plan,svg,transform),asymptote_label_audit(plan,svg,transform),vertical_asymptote_label_audit(plan,svg,transform),single_curve_label_audit(plan,svg,transform),multi_curve_label_audit(plan,svg,transform)) if part is not None]
     if not parts:return result
     errors=sorted(set([*(result.get('errors') or []),*(error for part in parts for error in (part.get('errors') or []))]))
     if result.get('status')=='UNSUPPORTED' or any(part.get('status')=='UNSUPPORTED' for part in parts):status='UNSUPPORTED'

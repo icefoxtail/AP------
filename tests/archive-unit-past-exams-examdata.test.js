@@ -6,15 +6,16 @@ const vm = require('node:vm');
 
 const archiveRoot = path.resolve(__dirname, '..', 'archive');
 const core = require(path.join(archiveRoot, 'unit-past-exams-core.js'));
+const examSourceReader = require(path.join(archiveRoot, 'exam-source-reader.js'));
 const uiSource = fs.readFileSync(path.join(archiveRoot, 'unit-past-exams.js'), 'utf8');
 
 // loadQuestionFile은 화면 내부 함수라 소스에서 그 구간만 잘라 가짜 loadScript와 함께 실행한다.
 // 가짜 loadScript는 exams/<경로>?v=... 요청을 파일 내용 실행으로 바꿔 준다(브라우저의 script 태그와 같다).
 function createLoader(sources) {
-  const start = uiSource.indexOf('function readSourceQuestionArray');
+  const start = uiSource.indexOf('function requireSourceReader');
   const end = uiSource.indexOf('async function restorePaperQuestions');
   assert.ok(start > 0 && end > start, 'loader section must exist');
-  const window = {};
+  const window = { ExamSourceReader: examSourceReader }; // 브라우저에서는 exam-source-reader.js가 먼저 로드한다
   const requested = [];
   const context = {
     window, core, state: { fileCache: new Map() }, Error, Array, Promise, Number, String, Object, Map,
@@ -82,10 +83,21 @@ test('실제 원본 22_연향중 2학기 중간 중3은 examData 형식이며 21
   assert.ok(data.every(question => Number.isFinite(Number(question.id)) && question.question), '문항 번호와 본문(question)이 있다');
 });
 
-test('같은 규칙이 mixer·Archive2Source에도 있다(원본 엔진과 같은 examData 순서)', () => {
-  const mixer = fs.readFileSync(path.join(archiveRoot, 'mixer.html'), 'utf8');
-  assert.match(mixer, /delete window\.examData;/);
-  assert.match(mixer, /examData\?\.questions \|\| examData\?\.problems/);
-  const sourceJs = fs.readFileSync(path.join(archiveRoot, 'archive2-source.js'), 'utf8');
-  assert.match(sourceJs, /examData\?\.questions \|\| examData\?\.problems/);
+test('mixer·Archive2Source도 같은 공용 읽기(exam-source-reader.js)를 쓴다', () => {
+  const read = name => fs.readFileSync(path.join(archiveRoot, name), 'utf8');
+  const mixer = read('mixer.html');
+  assert.match(mixer, /reader\.readQuestionArray\(window\)/);
+  assert.match(mixer, /<script src="exam-source-reader\.js\?v=[^"]+"><\/script>/);
+  assert.match(read('archive2-source.js'), /examSourceReader\.readQuestionArray\(scope\)/);
+  // 같은 규칙을 다시 인라인으로 적지 않는다.
+  for (const name of ['mixer.html', 'archive2-source.js', 'unit-past-exams.js']) {
+    assert.doesNotMatch(read(name), /examData\?\.questions \|\| examData\?\.problems|window\.questionBank \|\| window\.examData/, `${name}: 공용 읽기를 쓴다`);
+  }
+  // 공용 모듈을 쓰는 화면은 그 script를 먼저 로드한다(Archive2Source보다 앞).
+  for (const name of ['index.html', 'problem-bank-search.html', 'workspace.html', 'archive2-runtime-check.html']) {
+    const html = read(name);
+    const reader = html.indexOf('exam-source-reader.js'), source = html.indexOf('archive2-source.js');
+    assert.ok(reader > 0 && source > reader, `${name}: exam-source-reader.js가 archive2-source.js보다 먼저`);
+  }
+  assert.match(read('unit-past-exams.html'), /exam-source-reader\.js\?v=/, 'unit-past-exams.html: exam-source-reader.js 로드');
 });

@@ -2,7 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
+import { createRequire } from 'node:module';
 import { readScope } from './archive-ci-scope.mjs';
+
+// Known-failure signatures are judged by the same code as the full runner (tools/lib/known-failures.js).
+const { runCommand, formatKnownFailureSummary } = createRequire(import.meta.url)('../lib/known-failures.js');
 
 export const playgroundTests = [
   'catalog', 'hub-no-legacy', 'alg-sequence-plus', 'polyhedra-names',
@@ -157,7 +161,7 @@ export function commandsForScope(scope, availableCommands) {
   ];
 }
 
-export function runScopedTests({ root, scopeFile, availableCommands, run = spawnSync }) {
+export function runScopedTests({ root, scopeFile, availableCommands, run = spawnSync, knownFailures = [] }) {
   const scope = readScope(scopeFile, root);
   let commands = commandsForScope(scope, availableCommands);
   console.log(`CI scope: ${scope.mode}; ${scope.reason}. Excluded suites are NOT_APPLICABLE, not verified PASS.`);
@@ -178,11 +182,22 @@ export function runScopedTests({ root, scopeFile, availableCommands, run = spawn
     }
   }
   const failures = [];
+  const knownMatched = [];
   for (const original of commands) {
     const args = original.at(-1) === '--scope' ? [...original, path.resolve(scopeFile)] : original;
     const registered = availableCommands?.find(command => JSON.stringify(command.args) === JSON.stringify(original));
     const timeout = registered?.timeout || (scope.groups?.length ? 60000 : 180000);
-    const result = run(process.execPath, args, { cwd: root, stdio: 'inherit', timeout });
+    let result;
+    const files = original.includes('--check') ? [] : filesInCommand(original);
+    if (knownFailures.some(entry => files.includes(entry.file))) {
+      // Only commands that have a listed signature capture their output; every other command runs exactly as before.
+      const known = runCommand({ root, item: { args, timeout, files }, entries: knownFailures, spawn: run });
+      if (known.verdict.verdict === 'known') { knownMatched.push({ entries: known.verdict.reproduced }); continue; }
+      for (const problem of known.verdict.problems) console.error(`  KNOWN-FAIL mismatch: ${problem}`);
+      failures.push(original[0] === '--test' ? original[1] : original[0]);
+      continue;
+    }
+    result = run(process.execPath, args, { cwd: root, stdio: 'inherit', timeout });
     if (result.error) console.error(result.error.message);
     if (result.error || result.status !== 0) failures.push(original[0] === '--test' ? original[1] : original[0]);
     if (isPackageCommand(original)) {
@@ -190,7 +205,8 @@ export function runScopedTests({ root, scopeFile, availableCommands, run = spawn
       if (!packageShardsReady(root).ready) throw new Error('Scoped package preparation did not produce the indexed bytes');
     }
   }
-  console.log(`Selected scope ${scope.mode}: ${commands.length - failures.length} passed / ${failures.length} failed (${commands.length} executed commands).`);
+  console.log(`Selected scope ${scope.mode}: ${commands.length - failures.length - knownMatched.length} passed / ${failures.length} failed${knownMatched.length ? ` / ${knownMatched.length} KNOWN-FAIL` : ''} (${commands.length} executed commands).`);
+  for (const line of formatKnownFailureSummary(knownFailures, knownMatched)) console.log(line);
   if (failures.length) throw new Error('Scoped checks failed: ' + failures.join(', '));
   return true;
 }

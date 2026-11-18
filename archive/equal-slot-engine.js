@@ -284,18 +284,48 @@
         if (!evidence.ok) throw failure('EQUAL_SLOT_AUDIT_FAILED', evidence);
         return evidence;
     }
+    // html2canvas 1.x ignores CSS object-fit and stretches an <img> over its whole CSS box,
+    // so a square figure inside a wide max-height box printed squashed. In the private clone
+    // only, give every contain/scale-down image the box it really shows (padding centres the
+    // picture, html2canvas draws into the content box). The live page is never touched.
+    async function fixContainImages(cloneDocument, scope) {
+        const view = cloneDocument.defaultView;
+        const images = list(scope && scope.querySelectorAll ? scope : cloneDocument, 'img');
+        await Promise.all(images.map(image => image.complete && image.naturalWidth ? null
+            : (typeof image.decode === 'function' ? image.decode().catch(() => {}) : null)));
+        for (const image of images) {
+            const style = view.getComputedStyle(image);
+            if (style.objectFit !== 'contain' && style.objectFit !== 'scale-down') continue;
+            const boxW = image.offsetWidth, boxH = image.offsetHeight;
+            const natW = image.naturalWidth, natH = image.naturalHeight;
+            if (!(boxW > 0 && boxH > 0 && natW > 0 && natH > 0)) continue;
+            let ratio = Math.min(boxW / natW, boxH / natH);
+            if (style.objectFit === 'scale-down') ratio = Math.min(ratio, 1);
+            const shownW = natW * ratio, shownH = natH * ratio;
+            if (Math.abs(shownW - boxW) < 0.5 && Math.abs(shownH - boxH) < 0.5) continue;
+            const inner = image.style;
+            inner.boxSizing = 'border-box';
+            inner.width = `${boxW}px`;
+            inner.height = `${boxH}px`;
+            inner.minWidth = inner.minHeight = '0';
+            inner.maxWidth = inner.maxHeight = 'none';
+            inner.padding = `${(boxH - shownH) / 2}px ${(boxW - shownW) / 2}px`;
+            inner.objectFit = 'fill';
+        }
+    }
     function rasterizePage(page, options = {}) {
-        if (!page.matches(PAGE)) return root.html2canvas(page, options);
+        const equalSlot = page.matches(PAGE);
         // html2canvas 1.x ignores CSS zoom when drawing fonts. Its private clone
         // uses the equivalent paint transform; no paged-media fragmentation occurs
         // on canvas, and the live snapshot stays byte-for-byte untouched.
         return root.html2canvas(page, { ...options, async onclone(document, element) {
             await options.onclone?.(document, element);
-            for (const content of list(document, PAGE + ' .ap-slot-content')) {
+            if (equalSlot) for (const content of list(document, PAGE + ' .ap-slot-content')) {
                 const fit = JSON.parse(content.dataset.equalSlotFit);
                 content.style.zoom = '1';
                 content.style.transform = `translate(${fit.offsetX * fit.scale}px, ${fit.offsetY * fit.scale}px) scale(${fit.scale})`;
             }
+            await fixContainImages(document, element);
         } });
     }
     return Object.freeze({ VERSION, enabled, plan, selectFit, normalizeRect, render, finalize, audit, assertReady, rasterizePage });

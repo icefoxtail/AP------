@@ -8,7 +8,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { registerReviewedExamV2 } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -199,11 +199,32 @@ test("statuses other than an unapproved type are not overwritten (hold, adjudica
   }
 });
 
-test("rows with a receipt-backed approval and rows with a foundation HOLD are refused", t => {
-  const withApproval = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2" } } });
-  assert.throws(() => withApproval.run(withApproval.request([withApproval.item(1, { problemTypeKey: "PT_A" })])), /receipt-backed REVIEW2 approval/);
+test("a row with a receipt on its other fields takes a type while its type is still empty; a taxonomy HOLD row is refused", t => {
+  const withReceipt = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2" } } });
+  withReceipt.run(withReceipt.request([withReceipt.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+  assert.equal(withReceipt.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(withReceipt.rows()[0].metadataApprovalType, "REVIEW2", "the other fields' approval type is untouched");
+  // the same row with an already approved type is still final
+  const approved = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2", problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "approved_review2", template: "approved_review2" } } } });
+  assert.throws(() => approved.run(approved.request([approved.item(1, { problemTypeKey: "PT_A" })])), /type already approved/);
   const held = fixture(t, { rowMutations: { 1: { foundationTaxonomyStatus: "HOLD" } } });
   assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
+});
+
+test("receipt replay ignores the type fields a DIRECT_JUDGMENT added to a row whose receipt recorded no type, and nothing else", () => {
+  const recorded = { questionUid: "u", problemTypeKey: "", templateKey: "", standardUnitKey: "U1", metadataApprovalType: "REVIEW2",
+    fieldStatus: { standardUnit: "approved_review2", problemType: "manual_review_pending", template: "manual_review_pending" } };
+  const typed = { ...structuredClone(recorded), problemTypeKey: "PT_A", templateKey: "TPL_A",
+    fieldStatus: { ...recorded.fieldStatus, problemType: "approved_direct_judgment", template: "approved_direct_judgment" }, typeApproval: { approvalType: "DIRECT_JUDGMENT" } };
+  assert.equal(receiptRecordMatchesRow(recorded, recorded), true);
+  assert.equal(receiptRecordMatchesRow(typed, recorded), true);
+  assert.equal(receiptRecordMatchesRow({ ...typed, standardUnitKey: "U2" }, recorded), false, "any other drift still fails");
+  assert.equal(receiptRecordMatchesRow({ ...typed, fieldStatus: { ...typed.fieldStatus, standardUnit: "manual_review_pending" } }, recorded), false);
+  assert.equal(receiptRecordMatchesRow({ ...typed, typeApproval: { approvalType: "OTHER" } }, recorded), false, "only a DIRECT_JUDGMENT type is excused");
+  assert.equal(receiptRecordMatchesRow({ ...recorded, problemTypeKey: "PT_A" }, recorded), false, "a type without a DIRECT_JUDGMENT is drift");
+  const withOwnType = { ...recorded, problemTypeKey: "PT_B", fieldStatus: { ...recorded.fieldStatus, problemType: "approved_review2" } };
+  assert.equal(receiptRecordMatchesRow({ ...withOwnType, problemTypeKey: "PT_A", typeApproval: { approvalType: "DIRECT_JUDGMENT" } }, withOwnType), false, "a receipt's own type is never replaced");
+  assert.equal(receiptRecordMatchesRow(undefined, recorded), false);
 });
 
 test("registry checks stay strict: unknown or inactive PT, TPL of another PT, missing binding, wrong curriculum or course", t => {
@@ -376,4 +397,94 @@ test("dry run on the real repository data plans only the metadata file and the r
   assert.deepEqual(result.plannedPaths.sort(), [META, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/type-judgment-real-dry-run.json`].sort());
   assert.deepEqual(fs.readFileSync(path.join(repo, META)), metaBefore, "a dry run changes nothing");
   t.diagnostic(`dry run row: ${wanted.sourceArchiveFile}#${wanted.sourceOrdinal} -> ${binding.problemTypeKey} (${result.rowBindingCounts && JSON.stringify(result.rowBindingCounts)})`);
+});
+
+// ---- course aliases (archive/data/meta-foundation/course-aliases.v1.json) --------------------------------------------------------
+const ALIASES = "archive/data/meta-foundation/course-aliases.v1.json";
+const aliasDoc = {
+  schemaVersion: "course-aliases-v1",
+  spellingGroups: [{ id: "A", grade: "중1", members: [COURSE, "중1"], evidence: ["fixture"] }, { id: "B", grade: "고1", members: ["수학(상)"], evidence: ["fixture"] },
+    { id: "C", grade: "중2", members: ["중2 수학"], evidence: ["fixture"] }],
+  successorGroups: [{ id: "S", curricula: { "2015": ["수학(상)"], "2022": [COURSE] }, evidence: ["fixture"] }]
+};
+const typeRequest = f => f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
+
+test("a row whose course is another spelling of the binding course registers, and the relation is recorded", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  const row = f.rows()[0];
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.deepEqual(row.typeApproval.scope, { curriculum: "2022", standardCourse: COURSE, curriculumSource: "request", rowCourse: "중1", courseRelation: "alias" });
+  assert.equal(f.run(typeRequest(f), { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
+test("without the alias data the same spelling difference is refused (unchanged strict behaviour)", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중1 judged=중1 수학/);
+});
+
+test("another grade or subject is refused even with the alias data", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중2 수학" } } });
+  f.put(ALIASES, aliasDoc);
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중2 수학 judged=중1 수학/);
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "공통수학1" } } });
+  g.put(ALIASES, aliasDoc);
+  assert.throws(() => g.run(typeRequest(g)), /course mismatch/);
+});
+
+test("the same subject of the other curriculum is accepted only through a successor group, and the row curriculum may differ then", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "수학(상)", curriculum: "2015", curriculumKey: "2015" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=수학\(상\)/);
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  assert.equal(f.rows()[0].typeApproval.scope.courseRelation, "successor");
+  // an alias relation still compares the curriculum of the row
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "중1", curriculum: "2015" } } });
+  g.put(ALIASES, aliasDoc);
+  assert.throws(() => g.run(typeRequest(g)), /curriculum mismatch: uid1 row=2015 judged=2022/);
+});
+
+// ---- pack scope: values may be added, nothing else about a pack -----------------------------------------------------------------
+function packScopeFixture(t) {
+  // The row is a 2015 question; the only binding of PT_A is 2015 too, but the owner pack declares only 2022: the binding is out of scope.
+  const f = fixture(t, { rowMutations: { 1: { curriculum: "2015", curriculumKey: "2015" } } });
+  f.put("archive/data/meta-foundation/runtime/test-pack-v1.json", { packId: "TEST_PACK", packVersion: "1.0.0", runtimeVersion: "TEST_PACK@1.0.0/reviewed-exam-v2", counts: { records: 0 }, records: [] });
+  const bindings = f.read(`${f.base}/bindings.json`);
+  bindings.bindings.push({ curriculum: "2015", standardCourse: COURSE, standardUnitKey: "UNIT_X", subUnitKey: "SUB_X", problemTypeKey: "PT_A", status: "ACTIVE" });
+  f.put(`${f.base}/bindings.json`, bindings);
+  const pack = f.read(`${f.base}/pack.json`);
+  const packChange = after => ({ path: `${f.base}/pack.json`, before: pack, after, evidenceRefs: f.evidenceRefs });
+  const item = f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { scope: { curriculum: "2015", standardCourse: COURSE } });
+  return { f, pack, packChange, item };
+}
+
+test("a binding outside the owner pack's declared scope is refused until the same request widens the pack (values appended only)", t => {
+  const { f, pack, packChange, item } = packScopeFixture(t);
+  assert.throws(() => f.run(f.request([item])), /binding ownerPack scope missing: 2015\/중1 수학\/PT_A/);
+  const req = f.request([item], { registryChanges: [packChange({ ...pack, curricula: [...pack.curricula, "2015"] })] });
+  f.run(req, { write: true });
+  assert.deepEqual(f.read(`${f.base}/pack.json`).curricula, ["2022", "2015"]);
+  assert.equal(f.read(`${f.base}/pack.json`).packVersion, "1.0.1", "the planner bumps the pack version");
+  assert.equal(f.read("archive/data/meta-foundation/runtime/test-pack-v1.json").packVersion, "1.0.1");
+  assert.equal(f.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(f.run(req, { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+});
+
+test("pack changes that remove, replace, reorder or touch another field are refused", t => {
+  const { f, pack, packChange, item } = packScopeFixture(t);
+  const attempts = [
+    { ...pack, curricula: [] },
+    { ...pack, curricula: ["2015"] },
+    { ...pack, curricula: ["2015", "2022"] },
+    { ...pack, curricula: ["2022", "2022"] },
+    { ...pack, standardCourses: [COURSE, ""] },
+    { ...pack, curricula: [...pack.curricula, "2015"], canonicalStatus: "RETIRED" },
+    { ...pack, curricula: [...pack.curricula, "2015"], packVersion: "9.9.9" },
+    { ...pack, curricula: [...pack.curricula, "2015"], ownedStandardUnitDomains: ["X"] },
+    { ...pack }
+  ];
+  for (const after of attempts) assert.throws(() => f.run(f.request([item], { registryChanges: [packChange(after)] })), /may only add values to a pack's curricula\/standardCourses/);
+  const before = f.read(`${f.base}/pack.json`);
+  assert.deepEqual(before, pack, "a refused request leaves the pack untouched");
 });

@@ -28,14 +28,14 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(controls, /target\.origin === location\.origin/);
   assert.match(controls, /new URL\("\.\.\/apmath\/student\/", location\.href\)\.pathname/);
   assert.match(controls, /\[portalPath, portalPath \+ "index\.html"\]\.includes\(target\.pathname\)/);
-  assert.match(engine, /solution-render-executor\.js\?v=20261111-svg-k-2/);
-  assert.match(mixed, /solution-render-executor\.js\?v=20261111-svg-k-2/);
+  assert.match(engine, /solution-render-executor\.js\?v=20261118-figure-ratio-1/);
+  assert.match(mixed, /solution-render-executor\.js\?v=20261118-figure-ratio-1/);
   assert.match(engine, /outputUrl\.searchParams\.set\('outputRequestId', envelope\.outputRequestId\)/);
   assert.match(engine, /payload: \{ printHeaderOptions, outputEnvelope: runtimeEnvelope, outputUrl: outputUrl\.href \}/);
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261116-polish-1/);
+  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261118-error-detail-1/);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {

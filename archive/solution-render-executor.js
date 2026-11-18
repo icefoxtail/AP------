@@ -43,8 +43,14 @@
     const SOLUTION_SVG_SCALED_MIN_WIDTH = 384;
     const solutionSvgDisplayFactor = natural => (natural >= SOLUTION_SVG_SCALED_MIN_WIDTH ? SOLUTION_SVG_DISPLAY_K : 1);
     const SVG_SOURCE_PATTERN = /(?:\.svg(?:[?#]|$)|^data:image\/svg\+xml)/i;
+    // 2026-11-18: A4 쪽 배치에서는 해설 그림 크기를 figure-size.css(단 폭의 60%, 변수 --ap-fig-sol)가 정하므로 인라인 width를 넣지 않고
+    // 그림에 data 속성만 붙인다. 이 규칙이 없는 화면(휴대폰 읽기 배치, figure-size.js를 안 부르는 오답 엔진)은 아래 옛 계산(자연 폭 x 0.6)을 그대로 쓴다.
     function applySolutionSvgDisplayWidth(scope) {
         if (!scope?.querySelectorAll) return 0;
+        if (root.APFigureSize?.isActive?.()) {
+            root.APFigureSize.classify(scope);
+            return 0;
+        }
         const images = Array.from(scope.querySelectorAll('.sol-image-wrap:not(.layout-fullwidth) img'));
         if (scope.matches?.('.sol-image-wrap:not(.layout-fullwidth)')) images.push(...Array.from(scope.querySelectorAll('img')));
         let applied = 0;
@@ -56,6 +62,22 @@
             applied += 1;
         });
         return applied;
+    }
+
+    // A rescued continuation shell holds only the tail of a solution, so without a heading a student cannot tell which
+    // question it belongs to. Put "<number>. (이어짐)" at its top. Only shells created by the rescue path are labelled;
+    // ordinary continuation shells keep their original DOM.
+    function labelContinuationShell(shell, sourceBox, qNo, doc) {
+        if (!shell || !doc || typeof shell.querySelector !== 'function' || typeof shell.insertBefore !== 'function' || shell.querySelector('.sol-cont-label')) return shell;
+        const numNode = typeof sourceBox?.querySelector === 'function' ? sourceBox.querySelector('.q-num') : null;
+        const num = String(numNode?.textContent || '').trim().replace(/\.\s*$/, '') || (Number(qNo) > 0 ? String(qNo) : '');
+        if (!num) return shell;
+        const label = doc.createElement('div');
+        label.className = 'sol-cont-label';
+        label.style.cssText = 'font-size:8.5pt;font-weight:700;color:#555;margin:0 0 3px 0;line-height:1.4;';
+        label.textContent = `${num}. (이어짐)`;
+        shell.insertBefore(label, shell.firstChild);
+        return shell;
     }
 
     async function measureSolutionBatch(boxes, staging, deps, document) {
@@ -247,6 +269,8 @@
             let targetCol = cols[colIdx];
             targetCol.appendChild(shell);
             markSolutionPlacement(shell, false);
+            let primaryShell = true;
+            let rescued = false;
 
             for (let chunkIndex = 0; chunkIndex < preparedChunks.length; chunkIndex += 1) {
                 const chunk = preparedChunks[chunkIndex];
@@ -269,6 +293,9 @@
                         : [];
                     targetCol = advanceColumn();
                     shell = deps.makeLongSolutionShell(sourceBox, qNo, true);
+                    // Only after a rescue (below) are the following shells labelled too, so layouts that were
+                    // fine before keep their exact DOM.
+                    if (rescued) labelContinuationShell(shell, sourceBox, qNo, document);
                     exp = shell.querySelector('.sol-exp');
                     targetCol.appendChild(shell);
                     markSolutionPlacement(shell, true);
@@ -279,11 +306,39 @@
                     exp.appendChild(chunk);
                     if (deps.rendererMode() === 'legacy') await deps.raf();
                     else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                    primaryShell = false;
                 }
                 if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
                     deps.autoCompress(shell);
                     if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
                     else await deps.raf();
+                    // Rescue: the first shell carries the question reminder, figures and answer, so its only chunk
+                    // can still clip the column after compression (readiness: more than 3px). Hand that chunk to a
+                    // labelled continuation shell, but only when the header alone fits. Anything that fit before
+                    // (including after the compression above) is laid out exactly as it always was.
+                    if (primaryShell && exp.children.length === 1 && targetCol.scrollHeight > targetCol.clientHeight + 3) {
+                        exp.removeChild(chunk);
+                        if (deps.rendererMode() === 'legacy') await deps.raf();
+                        if (targetCol.scrollHeight <= targetCol.clientHeight + 2) {
+                            rescued = true;
+                            targetCol = advanceColumn();
+                            shell = labelContinuationShell(deps.makeLongSolutionShell(sourceBox, qNo, true), sourceBox, qNo, document);
+                            exp = shell.querySelector('.sol-exp');
+                            targetCol.appendChild(shell);
+                            markSolutionPlacement(shell, true);
+                            exp.appendChild(chunk);
+                            if (deps.rendererMode() === 'legacy') await deps.raf();
+                            else if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                            primaryShell = false;
+                            if (targetCol.scrollHeight > targetCol.clientHeight + 2) {
+                                deps.autoCompress(shell);
+                                if (deps.rendererMode() === 'batch') await yieldSolutionLayout();
+                                else await deps.raf();
+                            }
+                        } else {
+                            exp.appendChild(chunk);
+                        }
+                    }
                 }
             }
         };
@@ -336,7 +391,8 @@
             const box = document.createElement('div');
             box.className = 'q-box sol-box';
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
-            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' ? 'true' : 'false';
+            // 2026-11-18: 그림 크기 규칙을 쓰는 엔진(figure-size.js 로드)은 해설 그림을 쪽 전체 폭으로 놓지 않는다. 오답 엔진은 옛 동작.
+            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' && !root.APFigureSize ? 'true' : 'false';
             box.dataset.solutionHtml = solutionHtml;
             const sectionHtml = typeof deps.getSectionHeadingHtml === 'function' ? deps.getSectionHeadingHtml(q, i, 'box') : '';
             box.innerHTML = `${sectionHtml}<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;

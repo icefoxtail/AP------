@@ -50,7 +50,7 @@ on:
       baseline_sha:
         description: 'Exact baseline commit for the same-input Chrome comparison'
         type: string
-        default: '7611743a80b71488f63f281af4a225afece3d40a'
+        default: '7b2b09e062f17c2b39ddf148c530bb483601dab2'
         required: true
 
 permissions:
@@ -72,7 +72,7 @@ jobs:
           node-version: 22
       - name: Fetch the renderer baseline and qualification source snapshot
         env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7611743a80b71488f63f281af4a225afece3d40a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7b2b09e062f17c2b39ddf148c530bb483601dab2' }}
         run: |
           source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
           git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA" "$source_revision"
@@ -90,7 +90,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-performance-browser/node_modules
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7611743a80b71488f63f281af4a225afece3d40a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7b2b09e062f17c2b39ddf148c530bb483601dab2' }}
           ARCHIVE_PERFORMANCE_PROFILE_ONLY: '0'
           ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
           ARCHIVE_PERFORMANCE_REPEATS: '3'
@@ -172,7 +172,7 @@ jobs:
           node-version: 22
       - name: Fetch the renderer baseline and qualification source snapshot
         env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7611743a80b71488f63f281af4a225afece3d40a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7b2b09e062f17c2b39ddf148c530bb483601dab2' }}
         run: |
           source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
           git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA" "$source_revision"
@@ -192,7 +192,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-pdf-browser/node_modules
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7611743a80b71488f63f281af4a225afece3d40a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7b2b09e062f17c2b39ddf148c530bb483601dab2' }}
           ARCHIVE_PERFORMANCE_PDF_ONLY: '1'
           ARCHIVE_PERFORMANCE_REPEATS: '1'
           ARCHIVE_PERFORMANCE_REPORT_DIR: ${{ runner.temp }}/archive-output-pdf
@@ -318,7 +318,7 @@ jobs:
           node-version: 22
       - name: Fetch the renderer baseline and qualification source snapshot
         env:
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7611743a80b71488f63f281af4a225afece3d40a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7b2b09e062f17c2b39ddf148c530bb483601dab2' }}
         run: |
           source_revision=$(node -p "require('./tests/archive2-output-comparison-references.json').qualificationSourceRevision")
           git fetch --no-tags --depth=1 origin "$ARCHIVE_PERFORMANCE_BASE_SHA" "$source_revision"
@@ -335,7 +335,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-network-browser/node_modules
-          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7611743a80b71488f63f281af4a225afece3d40a' }}
+          ARCHIVE_PERFORMANCE_BASE_SHA: ${{ inputs.baseline_sha || '7b2b09e062f17c2b39ddf148c530bb483601dab2' }}
           ARCHIVE_PERFORMANCE_NETWORK_ONLY: '1'
           ARCHIVE_PERFORMANCE_NETWORK_FIXTURE: ${{ matrix.fixture }}
           ARCHIVE_PERFORMANCE_SKIP_PDF: '1'
@@ -363,7 +363,7 @@ jobs:
           persist-credentials: false
       - name: Fetch the original regression suite baseline
         env:
-          ARCHIVE_SOLUTION_BASE_SHA: '13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb'
+          ARCHIVE_SOLUTION_BASE_SHA: '5aa7dd8273761a12881efd87b967cb531295f391'
         run: git fetch --no-tags --depth=1 origin "$ARCHIVE_SOLUTION_BASE_SHA"
       - uses: actions/setup-node@v4
         with:
@@ -389,7 +389,7 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
           NODE_PATH: ${{ runner.temp }}/archive-solution-browser/node_modules
-          ARCHIVE_SOLUTION_BASE_SHA: '13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb'
+          ARCHIVE_SOLUTION_BASE_SHA: '5aa7dd8273761a12881efd87b967cb531295f391'
           ARCHIVE_SOLUTION_REPORT_DIR: ${{ runner.temp }}/archive-solution-loading-evidence
           ARCHIVE_SOLUTION_REPEATS: '2'
         run: node tests/archive2-solution-loading-browser.cjs

@@ -190,38 +190,33 @@
       };
     });
   }
-  // 원본 엔진(engine.html)과 같은 규칙: questions → questionBank → examData(배열 또는 .questions/.problems).
-  // window.examData = {...} 형식 원본은 questionBank 별칭 줄이 없다.
-  function readSourceQuestionArray() {
-    if (Array.isArray(window.questions)) return window.questions;
-    if (Array.isArray(window.questionBank)) return window.questionBank;
-    const examData = window.examData;
-    if (Array.isArray(examData)) return examData;
-    if (Array.isArray(examData?.questions)) return examData.questions;
-    if (Array.isArray(examData?.problems)) return examData.problems;
-    return null;
+  // 문항 배열 찾기 규칙(questions → questionBank → examData)은 exam-source-reader.js 한 곳에 있다.
+  function requireSourceReader() {
+    if (!window.ExamSourceReader) throw new Error('exam-source-reader.js를 불러오지 못했습니다. 새로고침해 다시 시도해 주세요.');
+    return window.ExamSourceReader;
   }
+  // 어느 시험지 몇 번 문항에서 막혔는지 오류에 실어 출제 패널이 그대로 말하게 한다(archive2-error-detail.js, 없어도 동작).
+  const markError = (error, detail) => (window.Archive2ErrorDetail ? window.Archive2ErrorDetail.annotate(error, detail) : error);
   function loadQuestionFile(sourceFile) {
     if (state.fileCache.has(sourceFile)) return state.fileCache.get(sourceFile);
     const promise = (async () => {
+      const reader = requireSourceReader();
       const candidates = core.getSourceFileCandidates(sourceFile);
       const failures = [];
       for (const candidate of candidates) {
-        delete window.questions;
-        delete window.questionBank;
-        delete window.examData;
+        for (const name of reader.SOURCE_GLOBALS) delete window[name];
         try {
           await loadScript(`exams/${candidate}?v=20260827b`);
         } catch (error) {
           failures.push(`${candidate}: ${error.message || error}`);
           continue;
         }
-        const data = readSourceQuestionArray();
+        const data = reader.readQuestionArray(window);
         if (Array.isArray(data)) return data.map(question => ({ ...question }));
         failures.push(`${candidate}: 문항 배열(questions/questionBank/examData) 없음`);
       }
       const attempted = failures.length > 1 ? ` 시도 경로: ${candidates.join(', ')}` : '';
-      throw new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.${attempted}`);
+      throw markError(new Error(`${sourceFile}에서 문항 배열을 찾지 못했습니다.${attempted}`), { file: sourceFile, code: 'SOURCE_BANK_MISSING' });
     })().catch(error => { state.fileCache.delete(sourceFile); throw error; });
     state.fileCache.set(sourceFile, promise);
     return promise;
@@ -237,7 +232,9 @@
       const questions = await loadQuestionFile(sourceFile);
       for (const record of records) {
         const original = questions.find(question => Number(question?.id) === Number(record.sourceQuestionNo));
-        if (!original) throw new Error(`${sourceFile}의 ${record.sourceQuestionNo}번 문항을 찾지 못했습니다.`);
+        if (!original) throw markError(new Error(`${sourceFile}의 ${record.sourceQuestionNo}번 문항을 찾지 못했습니다.`), {
+          file: sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: core.getQuestionUid(record), code: 'QUESTION_NOT_FOUND',
+        });
         restoredByIdentity.set(`${sourceFile}#${record.sourceQuestionNo}`, {
           ...original, _sourceFile: sourceFile, _sourceQuestionNo: record.sourceQuestionNo,
           _qKey: `${sourceFile}_${record.sourceQuestionNo}`, questionUid: core.getQuestionUid(record),

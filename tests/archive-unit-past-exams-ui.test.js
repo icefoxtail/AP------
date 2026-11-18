@@ -27,8 +27,8 @@ test('단원별 기출 페이지는 승인 메타데이터와 출력·출제 모
   assert.ok(html.indexOf('archive2-boot.js') < html.indexOf('meta-foundation-runtime.js'), 'the boot gate must exist before the metadata runtime starts fetching');
   assert.ok(html.indexOf('question-meta.js') < html.indexOf('meta-foundation-runtime.js'));
   assert.match(html, /archive2-core\.js\?v=20261111-one-lane-difficulty-1/);
-  assert.match(html, /unit-past-exams-core\.js\?v=20261116-unit-source-1/);
-  assert.match(html, /unit-past-exams\.js\?v=20261117-examdata-1/);
+  assert.match(html, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
+  assert.match(html, /unit-past-exams\.js\?v=20261118-error-detail-1/);
   // Every heavy script is deferred; only the asset base, the login rule and the menu run while the page is parsed.
   for (const script of html.match(/<script[^>]*src="[^"]+"[^>]*>/g)) {
     if (/archive-asset-base|archive2-session|archive2-navigation/.test(script)) assert.doesNotMatch(script, /defer/, script);

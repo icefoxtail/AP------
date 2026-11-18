@@ -351,6 +351,10 @@
         new URL("workspace.html?view=monthly-test", location.href).href,
     }),
   ]);
+  // 수업 양식: print forms that are not assessments. A static link (like the grade buttons), so it needs no catalog and no click code.
+  const HOME_FORMS = Object.freeze([
+    Object.freeze({ label: "빈 풀이노트 인쇄", note: "문제집 수업용 A4 풀이 양식", href: "note-sheet.html" }),
+  ]);
   function homeProductMarkup(product) {
     const attrs = `data-product-key="${esc(product.productKey)}" data-route-owner="${esc(product.routeOwner || "")}" data-availability="${String(product.availability)}"`;
     if (product.availability && typeof product.routeResolver === "function")
@@ -675,10 +679,19 @@
   // Text for teachers: Korean messages are already written for them; anything else (a code, English) is replaced by
   // `fallback`. The original error keeps its `code`/`message` for diagnosis.
   const GENERIC_ERROR = "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
-  function teacherErrorMessage(error, fallback = GENERIC_ERROR) {
+  // The text for a teacher AND the folded detail come from one place, archive2-error-detail.js:
+  //   headline (one Korean sentence) + which exam/question failed (when the error knows) + the original text for the detail.
+  // Without that module the old rule applies: Korean as written, anything else replaced by `fallback`.
+  function describeError(error, fallback = GENERIC_ERROR, extra = {}) {
+    const detailApi = typeof window !== "undefined" ? window.Archive2ErrorDetail : null;
+    if (detailApi) return detailApi.describe(error, { fallback, screen: typeof screenLabel === "function" ? screenLabel() : "", ...extra });
     // Same rule as status(): a leading CODE: is dropped and the Korean reason behind it is kept.
     const text = String(typeof error === "string" ? error : error?.message || "").replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
-    return HANGUL.test(text) ? text : fallback;
+    const message = HANGUL.test(text) ? text : fallback;
+    return { headline: message, where: "", message, hasDetail: false };
+  }
+  function teacherErrorMessage(error, fallback = GENERIC_ERROR) {
+    return describeError(error, fallback).message;
   }
   // Errors also get a fixed, dismissible alert so a failure below the fold (or behind a dialog) is not missed.
   let errorToastEl = null;
@@ -686,7 +699,9 @@
   function hideErrorToast() {
     try { errorToastEl?.parentNode?.removeChild(errorToastEl); } catch {}
   }
-  function showErrorToast(message) {
+  // `info` is describeError()'s result: when it has a detail, the folded "상세 보기" block (original text, file, question
+  // number, code, copy button) goes under the sentence. Without a detail the box stays one line, as before.
+  function showErrorToast(message, info = null) {
     try {
       if (typeof document.createElement !== "function" || !document.body) return;
       if (!errorToastEl) {
@@ -695,16 +710,20 @@
         box.setAttribute("role", "alert");
         const text = document.createElement("p");
         text.className = "error-toast-text";
+        const detail = document.createElement("div");
+        detail.className = "error-toast-detail";
         const close = document.createElement("button");
         close.type = "button";
         close.className = "error-toast-close";
         close.setAttribute("aria-label", "오류 알림 닫기");
         close.textContent = "닫기";
         close.addEventListener("click", hideErrorToast);
-        box.append(text, close);
+        box.append(text, detail, close);
         errorToastEl = box;
       }
       errorToastEl.firstChild.textContent = message;
+      const detailSlot = errorToastEl.children[1];
+      if (detailSlot) detailSlot.innerHTML = info?.hasDetail && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
       // A modal <dialog> makes everything outside it inert, so the alert lives inside the open dialog when there is one.
       const host = document.querySelector("dialog[open]") || document.body;
       hideErrorToast();
@@ -718,19 +737,48 @@
       }
     } catch (e) { console.warn("[archive2] error alert unavailable:", e); }
   }
-  function status(message, error = false) {
+  // `cause` is the caught error: it carries the file / question number (error.apDetail) and the original text for the folded detail.
+  function status(message, error = false, cause = null) {
+    let info = null;
     if (error) {
-      // Last line of defence: a leading CODE: or a non-Korean (English) message never reaches the teacher as-is.
+      // Last line of defence: a leading CODE: or a non-Korean (English) message never reaches the teacher as-is
+      // (the original text moves to the folded detail and the console).
       const raw = String(message ?? "");
       const stripped = raw.replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
-      message = HANGUL.test(stripped) ? stripped
-        : "작업을 처리하지 못했습니다. 다시 시도하고, 계속되면 관리자에게 알려 주세요.";
+      // A Korean sentence the caller wrote itself stays the headline, even when the caught error adds the location.
+      // (When the caller just passed error.message along, describeError() decides, so the text is not said twice.)
+      const callerWrote = cause && HANGUL.test(stripped) && stripped !== String(cause.message ?? "").replace(/^[A-Z][A-Z0-9_]{3,}:\s*/, "");
+      info = cause && typeof cause === "object"
+        ? describeError(cause, GENERIC_ERROR, callerWrote ? { headline: stripped } : {})
+        : describeError(raw, GENERIC_ERROR);
+      message = info.message;
       if (message !== raw) console.warn("[archive2] error text replaced for display:", raw);
     }
     $("status").textContent = message;
     $("status").classList.toggle("error", error);
-    if (error) showErrorToast(message);
+    if (error) showErrorToast(message, info);
     else hideErrorToast();
+  }
+  // The screen name that goes into the folded detail ("화면: 문제지 만들기"), so a pasted report says where it happened.
+  const SCREEN_LABELS = {
+    home: "홈", find: "기출 찾기", compose: "문제지 만들기", saved: "보관함", recent: "출제 내역", health: "점검",
+    "five-minute": "5분 테스트", "subunit-test": "소단원 테스트", "unit-test": "단원 테스트", "monthly-test": "월말 테스트",
+  };
+  function screenLabel() {
+    try { return SCREEN_LABELS[state.view] || String(state.view || ""); } catch { return ""; }
+  }
+  // Error text kept for places that store a message string (state.saveError, state.recentError): the folded detail
+  // is looked up by that same string when the screen is drawn again.
+  const errorInfoByMessage = new Map();
+  function rememberErrorInfo(message, cause, extra = {}) {
+    if (!message || !cause || typeof cause !== "object") return;
+    const info = describeError(cause, GENERIC_ERROR, extra);
+    if (info.hasDetail) errorInfoByMessage.set(String(message), info);
+    if (errorInfoByMessage.size > 20) errorInfoByMessage.delete(errorInfoByMessage.keys().next().value);
+  }
+  function errorDetailMarkup(message) {
+    const info = errorInfoByMessage.get(String(message || ""));
+    return info && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
   }
   function draft() {
     const keys = [
@@ -2310,6 +2358,24 @@
   // 학교 기출·유사문제 줄·홈의 `출제`(source-issue)도 같은 패널로 낸다(2026-11-11). 옛 iframe(openOriginalIssue)은
   // 주소에 assign=legacy가 있거나 패널 스크립트가 없을 때만 쓴다. 본문 만들기·재전송·이력은 archive2-assign.js(원본 항목).
   // 원본 문항은 옛 iframe이 부모에게서 받던 것과 같은 방법(Source.load(file, sourceHash))으로 받고, 해시는 그대로 검증된다.
+  // 사이트가 새로 배포되면 서버의 기준 버전(index_version)이 이 화면이 읽은 것과 달라져 출제가 409로 거절된다.
+  // 패널이 그 거절을 받았을 때 현재 배포된 기준 버전만 가볍게 다시 읽는다: 목록 전체를 다시 만들지 않고, 로더(loadInputBundle)와 같은
+  // 검사(매니페스트 형식·resolver 버전·projectionVersion 재계산)를 거친다. 화면의 목록·catalog는 바꾸지 않는다.
+  async function fetchCurrentProjectionVersion() {
+    const Canon = window.Archive2Canonical;
+    if (!Canon?.computeProjectionVersion) throw new Error("canonical loader unavailable");
+    const response = await fetch(new URL("data/archive2-canonical-input-manifest.json", document.baseURI).toString(), { cache: "no-cache" });
+    if (!response.ok) throw new Error("canonical manifest unavailable (" + response.status + ")");
+    const manifest = JSON.parse(await response.text());
+    if (
+      manifest?.schemaVersion !== "archive2-canonical-input-manifest-v1" ||
+      manifest.resolverVersion !== Canon.RESOLVER_VERSION ||
+      !Array.isArray(manifest.files)
+    ) throw new Error("canonical manifest version mismatch");
+    const version = await Canon.computeProjectionVersion(manifest.files);
+    if (version !== manifest.projectionVersion) throw new Error("canonical manifest digest mismatch");
+    return version;
+  }
   function openOriginalAssign(exam) {
     const Assign = window.Archive2Assign;
     if (!Assign?.open || state.assignLegacy || Assign.useLegacy(location.search)) return openOriginalIssue(exam, "targets");
@@ -2327,7 +2393,7 @@
         kind: "original", file: exam.file, title: O.displayTitle(exam), identityTitle: exam.identityTitle || exam.file.split("/").pop().replace(/\.js$/, ""),
         grade: exam.grade, subject: exam.subject, count: exam.qCount, sourceHash, settings,
       }],
-      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash) },
+      original: { indexVersion: state.catalog.indexVersion, loadQuestions: (item) => Source.load(item.file, item.sourceHash), refreshIndexVersion: fetchCurrentProjectionVersion },
       request: assignRequest,
       opener: document.activeElement,
     });
@@ -2807,7 +2873,7 @@
       status(`${label} · ${questionUids.length}문항 시험지를 열었습니다.`);
     } catch (error) {
       popup.close();
-      status(error.message || "시험지를 준비하지 못했습니다.", true);
+      status(error.message || "시험지를 준비하지 못했습니다.", true, error);
     } finally {
       quickState.busy = false;
       if (isQuickAssessmentView()) render();
@@ -3076,6 +3142,10 @@
         <section class="home-quick" aria-labelledby="home-quick-title">
           <h2 id="home-quick-title">빠른 평가</h2>
           <div class="home-quick-list">${products.map(productMarkup).join("")}</div>
+        </section>
+        <section class="home-forms" aria-labelledby="home-forms-title">
+          <h2 id="home-forms-title">수업 양식</h2>
+          <ul class="home-form-list">${HOME_FORMS.map((form) => `<li><a class="home-form-link" href="${esc(form.href)}"><span class="home-form-text"><strong>${esc(form.label)}</strong><span class="home-form-note">${esc(form.note)}</span></span><span class="home-quick-open">열기</span></a></li>`).join("")}</ul>
         </section>
       </div>
     </div>`;
@@ -3507,14 +3577,11 @@
     const savedResult = state.saveResultState === "RESULT_UNKNOWN"
       ? '<div class="callout danger" role="status" aria-live="polite">저장 응답을 확인하지 못했습니다. 작업 중인 문제지의 편집은 잠겨 있습니다. 위의 ‘저장 결과 확인’을 눌러 주세요. 출력과 작업 백업은 사용할 수 있습니다.</div>'
       : state.saveError && saveResultCurrent
-        ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}</div>`
+        ? `<div class="callout danger" role="alert">저장하지 못했습니다. 편집한 문제지는 유지됩니다.<br>${esc(teacherErrorMessage(state.saveError))}${errorDetailMarkup(state.saveError)}</div>`
         : ""; // 저장했다는 안내는 위의 "마지막 저장본"이 이미 말한다(같은 문장을 두 곳에 쓰지 않는다).
-    const saveStaleNotice = state.indexVersion !== state.catalog.indexVersion
-      ? '<div class="callout">문항 목록 버전이 달라 서버가 저장 시 각 문항 내용과 출제 범위를 다시 확인합니다.</div>'
-      : "";
     // 저장 결과를 모를 때는 위 복구 영역의 버튼(저장 결과 확인·출력·백업)만 쓴다.
     if (state.saveResultState === "RESULT_UNKNOWN") return `<div class="cz-finish" data-cz-finish>${savedResult}</div>`;
-    return `<div class="cz-finish" data-cz-finish>${saveStaleNotice}${savedResult}<div class="cz-actions" role="group" aria-label="마무리">${buttons.print}${buttons.save}${buttons.assign}<details class="cz-more cz-finish-more"><summary>더보기</summary><div class="cz-more-menu">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div></details></div></div>`;
+    return `<div class="cz-finish" data-cz-finish>${savedResult}<div class="cz-actions" role="group" aria-label="마무리">${buttons.print}${buttons.save}${buttons.assign}<details class="cz-more cz-finish-more"><summary>더보기</summary><div class="cz-more-menu">${button("backup", "작업 백업 다운로드", 'class="small"')}${button("import", "백업 불러오기", 'class="small"')}</div></details></div></div>`;
   }
   // 예전 오른쪽 패널(요약 + 마무리). 화면은 요약과 마무리를 따로 놓지만 함수명은 유지한다.
   function renderInspector() {
@@ -3713,7 +3780,7 @@
   }
   function recentAssignmentMarkup() {
     if (state.recentLoading) return '<p class="muted history-result-state">출제 내역을 불러오는 중…</p>';
-    if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>`;
+    if (state.recentError) return `<p class="error history-result-state" role="alert">${esc(teacherErrorMessage(state.recentError))} ${button("recent-retry", "다시 시도", 'class="small"')}</p>${errorDetailMarkup(state.recentError)}`;
     const rows = History.filterAssignments(state.recentRows, {
       ...state.recentFilters, classId: state.recentClassId,
     });
@@ -3801,7 +3868,7 @@
         : teacherErrorMessage(error, "출제를 취소하지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
       const slot = $("assignment-cancel-error");
       if (slot && $("modal")?.open) { slot.textContent = message; slot.hidden = false; }
-      else status(message, true);
+      else status(message, true, error);
       return false;
     } finally {
       assignmentCancelBusy = false;
@@ -3948,7 +4015,7 @@
       if (state.view !== "recent" || scheduledVersion !== state.recentLoadVersion) return false;
       return loadRecent().catch((error) => {
         if (isCurrentAuthorityError(error))
-          status(error.message || "출제 내역을 불러오지 못했습니다.", true);
+          status(error.message || "출제 내역을 불러오지 못했습니다.", true, error);
         return false;
       });
     }, 300);
@@ -4011,6 +4078,7 @@
     } catch (error) {
       if (!isCurrentRequest()) return false;
       state.recentError = error.message || "출제 내역을 불러오지 못했습니다.";
+      rememberErrorInfo(state.recentError, error);
       state.recentAuth = isAuthError(error);
       if (state.recentAuth) showLoginNotice("recent");
       // The list shows this failure (or the login notice); callers must not raise a second alert for it.
@@ -4410,7 +4478,8 @@
             return;
           }
           hideErrorToast();
-          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(teacherErrorMessage(error, "문제지를 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."))}</p><p><button type="button" class="primary" data-action="library-reload">다시 시도</button></p></section>`;
+          const failure = describeError(error, "문제지를 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요.");
+          $("content").innerHTML = `<section class="panel">${window.Archive2Navigation?.libraryTabs?.("saved") || ""}<h1>보관함</h1><p class="callout danger" role="alert">${esc(failure.message)}</p>${failure.hasDetail && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(failure) : ""}<p><button type="button" class="primary" data-action="library-reload">다시 시도</button></p></section>`;
         });
       return;
     }
@@ -4531,7 +4600,8 @@
       }
       const partRecords = records.slice(i, i + 50);
       const part = derivedBaseQuestions
-        ? await Promise.all(partRecords.map(async record => {
+        ? await (window.Archive2ErrorDetail?.allOrReport || ((promises) => Promise.all(promises)))(partRecords.map(async record => {
+          try {
             const frozen = derivedBaseByUid.get(record.questionUid);
             if (frozen) {
               const sourceFile = String(frozen.sourceArchiveFile || frozen.sourceFile || frozen._sourceFile || "");
@@ -4541,7 +4611,14 @@
               return structuredClone(frozen);
             }
             return (await Source.restore([record], state.catalog))[0];
-          }))
+          } catch (error) {
+            // Say which exam / question was behind it (Source.restore already did for its own errors).
+            throw window.Archive2ErrorDetail ? window.Archive2ErrorDetail.annotate(error, {
+              file: record.sourceFile, questionNo: record.sourceQuestionNo, ordinal: record.sourceOrdinal, uid: record.questionUid,
+              code: "QUESTION_CONTENT_CHANGED",
+            }) : error;
+          }
+        }))
         : await Source.restore(partRecords, state.catalog);
       const partSignature = JSON.stringify([
           part.map((q) => q.questionUid),
@@ -4653,15 +4730,21 @@
         throw new Error("저장 전에 안내를 확인해 주세요.");
       }
       const papers = await prepare();
-      const filters = compactSaveFilters(request(true).filters);
-      const saveIndexVersion = state.indexVersion || state.catalog?.indexVersion || "";
+      // 전송 사본: 저장본에서 온(수정본의) 문항은 서버가 내장해 둔 그림(data: URL)을 원래 경로로 되돌려 보낸다(화면용 문항은 그대로).
+      const wireQuestions = await Promise.all(papers.map((paper) => saveWireQuestionsFor(paper)));
+      const filters = saveRequestFilters(request(true).filters);
+      // 보내는 값은 "이 화면이 문항을 대조한 목록의 버전"이다: prepare()가 문항마다 지금 카탈로그(state.catalog)와 지문(fingerprint)을
+      // 대조해 만들므로 그 카탈로그의 버전이 맞고, 초안을 만든 때의 값(state.indexVersion)은 옛 값일 수 있어 보내지 않는다.
+      // 서버가 이미 더 새 버전으로 앞서간 것을 한 번 확인했다면(아래 자동 재전송) 이 화면에서는 그 값을 계속 쓴다.
+      let saveIndexVersion = savedIndexVersionFor(state.catalog?.indexVersion || "");
       if (!saveIndexVersion) throw new Error("현재 문항 목록 버전을 확인할 수 없습니다.");
-      const signature = JSON.stringify({
-        indexVersion: saveIndexVersion,
+      const signatureFor = (version) => JSON.stringify({
+        indexVersion: version,
         filters,
         includeExtended: state.includeExtended === true,
         papers: papers.map((paper) => ({ part_index: paper.index, questions: paper.questions, meta: paper.meta })),
       });
+      const signature = signatureFor(saveIndexVersion);
       if (recoveringUnknown && state.saveSignature !== signature)
         throw new Error("저장 결과를 확인하는 중에 작업 내용이 바뀌었습니다. 원래 내용으로 되돌린 뒤 '저장 결과 확인'을 다시 눌러 주세요.");
       if (!recoveringUnknown && (state.saveSignature !== signature || !state.saveBatchId)) {
@@ -4677,16 +4760,17 @@
       state.saveResultState = "SAVING";
       save();
       status("시험지 문항과 출제 범위를 서버에서 확인하고 저장하고 있습니다.");
-      const payload = {
+      // 한 요청에는 버전 값이 하나만 들어간다: index_version과 papers[].meta.indexVersion이 같다.
+      const payloadFor = (version) => ({
         schema_version: "archive-saved-paper-v1",
         save_batch_id: state.saveBatchId,
-        index_version: saveIndexVersion,
+        index_version: version,
         selection_filters: filters,
         include_extended: state.includeExtended === true,
-        papers: papers.map((paper) => ({
+        papers: papers.map((paper, paperIndex) => ({
           part_index: paper.index,
-          questions: paper.questions,
-          meta: paper.meta,
+          questions: wireQuestions[paperIndex].map(saveWireQuestion),
+          meta: { ...paper.meta, indexVersion: version },
           ...(state.derivationSource ? {
             lineage: {
               parent_kind: state.derivationSource.parentKind,
@@ -4697,9 +4781,29 @@
             },
           } : {}),
         })),
-      };
+      });
       requestStarted = true;
-      const data = await api("/archive-saved-papers", payload);
+      let data;
+      try {
+        data = await api("/archive-saved-papers", payloadFor(saveIndexVersion));
+      } catch (first) {
+        // 서버가 "분류 기준 갱신"(409)으로 거절한 경우: 서버는 저장 전에 거절하므로 만들어진 건이 없다. 현재 배포된 기준 버전만 다시 읽어
+        // 한 번만 다시 보낸다(원본 출제의 자동 재전송과 같은 방식, 무한 반복 없음). 서버가 문항·메타를 새 기준으로 다시 검증하므로
+        // 문항은 그대로 보낸다: 분류가 실제로 바뀌었다면 서버가 다시 거절하고 교사는 새로고침 안내를 받는다.
+        // 저장 결과를 확인하던 중(RESULT_UNKNOWN 복구)에는 같은 요청을 유지해야 하므로 자동으로 바꿔 보내지 않는다.
+        if (recoveringUnknown || Number(first?.status) !== 409 || !SAVE_STALE_VERSION.test(String(first?.data?.error || first?.message || ""))) throw first;
+        let fresh = "";
+        try { fresh = String(await fetchCurrentProjectionVersion() || ""); } catch (refreshError) { console.warn("[archive2] could not read the current projection version:", refreshError?.message); }
+        if (!fresh || fresh === saveIndexVersion) throw first;
+        status("문항 목록이 새로 갱신되어 다시 확인하고 있습니다.");
+        saveIndexVersion = fresh;
+        savedIndexVersionCache = { catalog: state.catalog?.indexVersion || "", version: fresh };
+        // 값이 바뀌면 요청 내용이 달라지므로(서버의 요청 해시에 index_version이 들어간다) 새 batch id로 보낸다. 첫 요청은 저장 전에 거절됐다.
+        state.saveSignature = signatureFor(saveIndexVersion);
+        state.saveBatchId = crypto.randomUUID();
+        save();
+        data = await api("/archive-saved-papers", payloadFor(saveIndexVersion));
+      }
       setConfirmed(data, papers.length, attemptedWorkSignature);
     } catch (error) {
       let recovered = false;
@@ -4726,12 +4830,25 @@
         state.saveResultState = keepUnknown ? "RESULT_UNKNOWN" : "FAILED";
         state.saveMessage = "";
         state.saveError = error.message || "저장 요청에 실패했습니다.";
+        if (SAVE_STALE_VERSION.test(String(error?.data?.error || error?.message || "")) && Number(error?.status) === 409) {
+          console.warn("[archive2] save rejected: classification version is stale:", state.saveError);
+          state.saveError = SAVE_STALE_MESSAGE;
+        }
+        // 서버가 분류 자료(정본 메타)가 다르다고 거절한 경우: 영어 원문은 화면에 내지 않고 콘솔에만 남긴다.
+        if (SAVE_PARITY_MISMATCH.test(state.saveError)) {
+          console.warn("[archive2] save rejected by canonical metadata check:", state.saveError);
+          state.saveError = SAVE_PARITY_MESSAGE;
+        }
+        // 서버 원문(영문 포함)은 화면 문구에서 빠지므로, 어느 문제지를 저장하다 난 일인지와 함께 접힌 상세로 남긴다.
+        window.Archive2ErrorDetail?.annotate(error, { title: state.header?.title });
+        rememberErrorInfo(state.saveError, error, { headline: state.saveError });
         save();
         status(
           keepUnknown
             ? "저장 결과를 확인하지 못했습니다. 중복 저장을 막기 위해 같은 저장 요청을 유지합니다. '저장 결과 확인'을 다시 눌러 주세요."
             : "시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.",
           true,
+          error,
         );
       }
     } finally {
@@ -4815,7 +4932,7 @@
               throw new Error("저장 결과를 확인할 때까지 문항을 바꿀 수 없습니다.");
             replace(i);
           } catch (error) {
-            status(error.message, true);
+            status(error.message, true, error);
           }
         });
       });
@@ -4827,10 +4944,88 @@
       if (host === $("preview-host") && token === state.previewToken) {
         host.setAttribute("aria-busy", "false");
         host.textContent = teacherErrorMessage(e);
-        status(e.message, true);
+        status(e.message, true, e);
       }
     }
   }
+  // 전송 본문만 서버 계약에 맞춘다(화면·미리보기·인쇄에 쓰는 문항 객체는 그대로 둔다). Source.restore는 카탈로그 값이 비어 있으면
+  // 출력용으로 원본 JS의 값을 남기지만, 서버는 정본(카탈로그) 값과 한 글자라도 다르면(빈 문자열 포함) 409로 거절한다.
+  // 그래서 보내는 사본의 정본 메타 필드(C.META_FIELDS)를 브라우저 카탈로그 레코드 값 그대로 맞춘다: 값이 비어 있으면 빈 값 그대로,
+  // 필드가 없으면 사본에서도 뺀다. 카탈로그 레코드가 없는 문항은 손대지 않는다. 필드를 통째로 빼지 않으므로 서버 검사는 그대로 살아 있다.
+  // 수정본(state.derivationSource)의 문항은 prepare()가 저장 당시의 스냅샷 문항을 그대로 쓴다(저장본을 현재 문항으로 바꾸지 않기 위해).
+  // 스냅샷에는 서버가 저장 때 내장한 그림(data: URL)이 들어 있어, 그대로 다시 보내면 서버가 content·choices·image로 다시 계산하는 지문이
+  // 카탈로그와 어긋나 409("assignment fingerprint가 일치하지 않습니다")가 된다. 그래서 전송 사본에서만, 그 문항의 원본 파일에서 복원한
+  // 같은 UID 문항(저장 당시 지문 = 지금 카탈로그 지문임은 prepare()가 이미 확인했다)의 그림 자리를 원래 경로로 되돌린다.
+  // 그림 자리를 빼고 본문이 한 글자라도 다르면(스냅샷이 바뀌었거나 원본이 달라졌으면) 조용히 보내지 않고 막는다. 서버 검사는 그대로다.
+  // 같은 경로의 그림 파일이 저장 뒤 교정됐다면 서버가 지금 파일을 다시 내장하므로 수정본에는 교정된 그림이 들어간다(알려진 한계).
+  const SAVE_EMBEDDED_FIELDS = ["content", "question", "solution", "image", "solutionImage"];
+  const SAVE_DATA_URL = /data:image\/[a-z0-9.+-]+;base64,[A-Za-z0-9+/=]*/gi;
+  const SAVE_HTML_IMAGE_REF = /(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi;
+  const SAVE_IMAGE_MARK = "\u0000IMG\u0000";
+  // 서버(archive-saved-papers.js sourceAssetPath)가 내장하는 참조인가: 시험지 그림 경로이고 data/blob/http가 아니다.
+  const saveEmbeddableRef = (value) => {
+    const raw = String(value ?? "").trim().replace(/\\/g, "/");
+    return Boolean(raw) && !/^(?:data:|blob:|https?:)/i.test(raw) && raw.split(/[?#]/, 1)[0].toLowerCase().includes("assets/images/");
+  };
+  // 저장본 값에서 내장 그림을 빼고 원본 값에서 시험지 그림 참조를 뺀 것이 같을 때만 원본 값을 돌려준다(아니면 null).
+  function saveOriginalIfOnlyImagesDiffer(field, frozenValue, originalValue) {
+    if (typeof frozenValue !== "string" || typeof originalValue !== "string") return null;
+    if (field === "image" || field === "solutionImage")
+      return /^data:image\//i.test(frozenValue) && saveEmbeddableRef(originalValue) ? originalValue : null;
+    const left = frozenValue.replace(SAVE_DATA_URL, SAVE_IMAGE_MARK);
+    const right = originalValue.replace(SAVE_HTML_IMAGE_REF, (match, srcPrefix, quote, srcRef, urlQuote, urlRef, urlSuffix) => {
+      const ref = srcRef || urlRef;
+      if (!saveEmbeddableRef(ref)) return match;
+      return srcRef ? `${srcPrefix}${quote}${SAVE_IMAGE_MARK}${quote}` : `url(${urlQuote}${SAVE_IMAGE_MARK}${urlSuffix}`;
+    });
+    return left === right ? originalValue : null;
+  }
+  async function saveWireQuestionsFor(paper) {
+    const base = new Set((state.derivedBaseQuestions || []).map((question) => question.questionUid));
+    return Promise.all(paper.questions.map(async (question) => {
+      const embedded = SAVE_EMBEDDED_FIELDS.filter((field) => typeof question[field] === "string" && /data:image\//i.test(question[field]));
+      if (!state.derivationSource || !embedded.length || !base.has(question.questionUid)) return question;
+      const record = state.byUid.get(question.questionUid);
+      const original = record ? (await Source.restore([record], state.catalog))[0] : null;
+      const copy = { ...question };
+      for (const field of embedded) {
+        const value = original ? saveOriginalIfOnlyImagesDiffer(field, question[field], original[field]) : null;
+        if (value === null)
+          throw new Error("원본 문항이 바뀌어, 저장 당시 내용 그대로는 저장할 수 없습니다. 새로고침한 뒤 수정본을 다시 열어 주세요.");
+        copy[field] = value;
+      }
+      return copy;
+    }));
+  }
+  function saveWireQuestion(question) {
+    const record = state.byUid.get(question?.questionUid);
+    if (!record) return question;
+    const copy = { ...question };
+    for (const field of C.META_FIELDS) {
+      if (record[field] === undefined) delete copy[field];
+      else copy[field] = record[field];
+    }
+    return copy;
+  }
+  // 찾기 화면의 선택(시험지 종류 material, 시험지 file, similarOnly)은 문제지 만들기로 넘어올 때 state.filters에 같이 복사된다.
+  // 서버는 이 키들을 허용하지 않는다(409 "허용되지 않은 출제 조건"). 문항을 뽑는 데는 쓰이지 않으므로 저장 요청에서만 뺀다.
+  const SAVE_FINDER_ONLY_FILTER_KEYS = ["material", "file", "similarOnly"];
+  function saveRequestFilters(filters) {
+    const next = { ...filters };
+    for (const key of SAVE_FINDER_ONLY_FILTER_KEYS) delete next[key];
+    return compactSaveFilters(next);
+  }
+  // 서버의 기준 버전이 이 화면의 목록보다 앞선 것을 이미 한 번 확인했다면 그 값을 저장에 계속 쓴다(같은 목록 버전일 때만).
+  let savedIndexVersionCache = { catalog: "", version: "" };
+  function savedIndexVersionFor(catalogVersion) {
+    return savedIndexVersionCache.catalog === catalogVersion && savedIndexVersionCache.version
+      ? savedIndexVersionCache.version
+      : catalogVersion;
+  }
+  const SAVE_STALE_VERSION = /분류 기준이 갱신/;
+  const SAVE_STALE_MESSAGE = "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.";
+  const SAVE_PARITY_MISMATCH = /canonical metadata parity mismatch/i;
+  const SAVE_PARITY_MESSAGE = "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.";
   // The saved-paper endpoint rejects selection filters above 200 KB. A unified unit can hold
   // thousands of UIDs, so when the filters would not fit, record only the UIDs the papers use
   // (the server still replays every saved question against them).
@@ -6145,7 +6340,7 @@
           "archive2-health.json",
         );
     } catch (e) {
-      if (isCurrentAuthorityError(e)) status(e.message, true);
+      if (isCurrentAuthorityError(e)) status(e.message, true, e);
     }
   });
   document.addEventListener("submit", (event) => {
@@ -6297,7 +6492,7 @@
         el.value = "";
       }
     } catch (e) {
-      status(e.message, true);
+      status(e.message, true, e);
     }
   });
   document.addEventListener("input", (event) => {
@@ -6521,7 +6716,7 @@
         if (loaded && selectedAssignmentId && state.view === "recent" &&
           state.recentSelectedAssignmentId === selectedAssignmentId)
           await assignmentStatus(selectedAssignmentId);
-      } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+      } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true, e); }
     }
     restoreCurrentHistoryScroll();
   });
@@ -6770,7 +6965,7 @@
       if (loaded && selectedAssignmentId && state.view === "recent" &&
         state.recentSelectedAssignmentId === selectedAssignmentId)
         await assignmentStatus(selectedAssignmentId);
-    } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true); }
+    } catch (e) { if (isCurrentAuthorityError(e)) status(e.message, true, e); }
   }
   // The catalog adds the exam lookup the recent rows use for grade/subject: normalize again (cheap).
   function refreshRecentRowsFromCatalog() {

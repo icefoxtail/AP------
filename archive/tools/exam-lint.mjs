@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
+import examSourceReader from '../exam-source-reader.js';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const archiveDir = path.resolve(scriptDir, '..');
@@ -282,9 +283,9 @@ for (const file of files) {
   }
 
   if (!sandbox.window.examTitle) entry.warn.push('examTitle 없음');
-  const bank = sandbox.window.questionBank;
+  const bank = examSourceReader.readQuestionArray(sandbox.window);
   if (!Array.isArray(bank) || bank.length === 0) {
-    entry.fail.push('questionBank 없음/비어있음');
+    entry.fail.push('문항 배열(questions/questionBank/examData) 없음/비어있음');
     continue;
   }
   entry.count = bank.length;
@@ -319,7 +320,9 @@ for (const file of files) {
       entry.fail.push(`${tag}: H15 수학II production에 legacy APPLICATION_OF_CALCULUS 세부단원 태그가 남아 있음`);
     }
 
-    if (!q.content || !q.content.trim()) entry.fail.push(`${tag}: content 비어있음`);
+    // 발문은 content 또는(중등 일부 원본) question 필드. 어느 쪽이든 비면 결함이다.
+    const body = examSourceReader.readQuestionBody(q);
+    if (!body || !body.trim()) entry.fail.push(`${tag}: content 비어있음`);
     if (!q.answer || !String(q.answer).trim()) entry.fail.push(`${tag}: answer 비어있음`);
     if (!q.solution || !q.solution.trim()) entry.fail.push(`${tag}: solution 비어있음`);
 
@@ -384,7 +387,7 @@ for (const file of files) {
     // 케일리-해밀턴/헤론/로피탈은 현행 고교 교육과정에 없어 학년 무관 FAIL.
     // 시그마(∑)·극형식/복소평면·미적분은 중·고1 범위 밖(고2 대수/미적분).
     // "…는 사용하지 않는다"류 안내문은 오탐이므로 제외.
-    const solc = sol + ' ' + (q.content || '');
+    const solc = sol + ' ' + (body || '');
     const isMid = /\/middle\//.test(rel), isG1 = /\/h1\//.test(rel);
     const guard = /사용하지 ?않|쓰지 ?않|범위(를)? ?벗어/.test(solc);
     const oc = [];
@@ -397,7 +400,7 @@ for (const file of files) {
     if (oc.length) entry.fail.push(`${tag}: 교육과정 외 풀이 — ${oc.join(', ')} (${isG1 ? '고1' : isMid ? '중' : '상위학년'})`);
 
     // --- 표기 오염 / 렌더 블로커 ---
-    const texts = [['content', q.content], ['solution', q.solution],
+    const texts = [['content', body], ['solution', q.solution],
       ...(hasCh ? q.choices.map((c, i) => [`choice${i + 1}`, c]) : [])];
     for (const [name, t] of texts) {
       if (typeof t !== 'string') continue;

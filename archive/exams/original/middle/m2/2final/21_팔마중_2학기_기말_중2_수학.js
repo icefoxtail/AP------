@@ -17,7 +17,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -81,7 +81,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -145,7 +145,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -209,7 +209,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -265,7 +265,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -331,7 +331,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -397,7 +397,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -464,7 +464,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -528,7 +528,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -594,7 +594,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -1161,7 +1161,7 @@ window.examData = {
     "standardUnit": "확률",
     "standardUnitOrder": 11,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -1279,7 +1279,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1338,7 +1338,7 @@ window.examData = {
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1399,7 +1399,7 @@ window.examData = {
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 9,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "도형"
@@ -1458,7 +1458,7 @@ window.examData = {
     "standardUnit": "확률",
     "standardUnitOrder": 11,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "그래프"

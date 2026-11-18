@@ -7,8 +7,8 @@
     const VERSION = 'archive-candidate-v2';
     const MODE_MAP = Object.freeze({ exam: 'exam', sol: 'solution', ans: 'answer' });
     const CANONICAL_TO_APP_MODE = Object.freeze({ exam: 'exam', solution: 'sol', answer: 'ans' });
-    const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageAlt', 'imageSize', 'choicesEmbeddedInImage', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageLayout', 'solutionReminderImagePolicy', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid', 'reviewSourceRef']);
-    const CANONICAL_FIELDS = Object.freeze(['sourceRef', 'displayNo', 'content', 'choices', 'answer', 'solution', 'image', 'imageSize', 'choicesEmbeddedInImage', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageLayout', 'solutionReminderImagePolicy', 'layoutTag', 'choiceColumns', 'wide']);
+    const RENDER_FIELDS = Object.freeze(['id', 'content', 'question', 'choices', 'answer', 'solution', 'explanation', 'sol', 'image', 'imageAlt', 'imageSize', 'imageSizeOverride', 'imageScale', 'choicesEmbeddedInImage', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageSizeOverride', 'solutionImageScale', 'solutionImageLayout', 'solutionReminderImagePolicy', 'layoutTag', 'choiceColumns', 'wide', 'sourceArchiveFile', 'source_archive_file', 'sourceOrdinal', 'sourceQuestionOrdinal', 'source_question_ordinal', 'questionUid', 'sourceQuestionUid', 'source_question_uid', 'reviewSourceRef']);
+    const CANONICAL_FIELDS = Object.freeze(['sourceRef', 'displayNo', 'content', 'choices', 'answer', 'solution', 'image', 'imageSize', 'imageSizeOverride', 'choicesEmbeddedInImage', 'solutionImage', 'solutionImageAlt', 'solutionImageCaption', 'solutionImageSize', 'solutionImageSizeOverride', 'solutionImageLayout', 'solutionReminderImagePolicy', 'layoutTag', 'choiceColumns', 'wide']);
     const ownedImmutableValues = new WeakSet();
     const serializedValues = new WeakMap();
 
@@ -62,6 +62,14 @@
         return serializedValues.get(immutable);
     }
 
+    // 2026-11-18 사용자 결정: 배치는 "기본 칸"과 "한 단 전체(subjective-2up)" 둘뿐이다. 시험지 데이터에 남은 전폭 표시(layoutTag fullwidth 등)는
+    // 데이터를 고치지 않고 렌더용 사본에서만 한 단 전체로 읽는다. 전폭을 가리키는 값의 판정은 layout-authority.js의 정규식과 같다.
+    // 불리언 필드 wide:true는 이번에 건드리지 않는다(균등 칸 갈래 판정이 걸려 있어 따로 처리).
+    const FULL_WIDTH_LAYOUT_TAG = /(?:^|[-_])full(?:width)?(?:$|[-_])|wide/i;
+    function renderLayoutTag(tag) {
+        return typeof tag === 'string' && FULL_WIDTH_LAYOUT_TAG.test(tag) ? 'subjective-2up' : tag;
+    }
+
     function canonicalRenderData(canonical, raw) {
         if (!Array.isArray(canonical) || !Array.isArray(raw) || canonical.length !== raw.length) throw new Error('INVALID_CANONICAL_RENDER_DATA');
         return copy(canonical.map((question, index) => ({
@@ -99,5 +107,5 @@
         return semanticDigest({ ...semantic, source });
     }
 
-    return Object.freeze({ VERSION, MODE_MAP, CANONICAL_TO_APP_MODE, RENDER_FIELDS, CANONICAL_FIELDS, copy, project, assertImmutable, semanticDigest, canonicalRenderData, createCandidate, computeSnapshotKey });
+    return Object.freeze({ VERSION, MODE_MAP, CANONICAL_TO_APP_MODE, RENDER_FIELDS, CANONICAL_FIELDS, copy, project, assertImmutable, semanticDigest, canonicalRenderData, createCandidate, computeSnapshotKey, renderLayoutTag });
 }));

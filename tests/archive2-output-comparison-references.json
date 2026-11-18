@@ -1,9 +1,9 @@
 {
   "schema": "ARCHIVE_OUTPUT_CORRECTNESS_REFERENCES_V1",
   "performanceBase": "8a6a71af2317060dacd877a7a7af86d347dc06e6",
-  "performanceReference": "7611743a80b71488f63f281af4a225afece3d40a",
+  "performanceReference": "7b2b09e062f17c2b39ddf148c530bb483601dab2",
   "originalBase": "f446e62a29f90d6d30a76b295e5c226f5ead72d2",
-  "originalReference": "13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb",
+  "originalReference": "5aa7dd8273761a12881efd87b967cb531295f391",
   "corrections": [
     "Shared reminder-image width constraint moved unchanged from original engine",
     "Existing 15s solution-image budget also used for cold exam-image preparation",
@@ -12,12 +12,19 @@
     "<p> rendered as a line block without default margins (ed48384c2d)",
     "Solution SVG display rule (2026-11-11 user decision): an .svg solution figure is shown at naturalWidth x 0.6 (1:1 below 384px wide), capped at the column, regardless of its size class; raster keeps the class caps. Changes solution block heights and therefore solution page counts on purpose (branches review-reference/output-20261111-solution-svg-size-performance and -original)",
     "Existing Nanum Myeongjo stylesheet import precedes the ordinary snapshot CSS rule. This fixes the ignored font import and changes original-renderer typography intentionally; the prior reference receives only the same adjacent-line order correction, with all performance code and source data preserved.",
-    "Correctness-only direct child of b9d77f8a: exchange the same two existing CSS lines to load the intended Nanum font, and preserve the already validated output URL in the immutable render candidate. Only archive/engine.html and archive/screen-runtime-adapter.js change; benchmark optimizations, source data, fixtures, and tolerances remain unchanged."
+    "Correctness-only direct child of b9d77f8a: exchange the same two existing CSS lines to load the intended Nanum font, and preserve the already validated output URL in the immutable render candidate. Only archive/engine.html and archive/screen-runtime-adapter.js change; benchmark optimizations, source data, fixtures, and tolerances remain unchanged.",
+    "Intended renderer changes of 2026-11-17/18 (e841eb07f2 (verified Hangul math renderer), #2398 c75eacd1f8 (mixed oversize wide fallback), #2397 5d57b0020d (line-break formatting) and #2399 ba8e6e641d (figure default large)): each reference is the previous reference plus only the renderer files of these changes (per-file three-way merges, no performance code, source data, fixture or tolerance change). They intentionally change original/mixed/solution output: Hangul-in-math markup, oversize-question fallback pagination, atomic short inline formulas, note-box layout and the default figure size caps. Both references move together; see docs/operations/archive-output-baseline-move-20261118/record.json"
   ],
   "qualificationSourceRevision": "0367c4b985da40f6d76eac3442e6b38906c58863",
   "sourceDataChanged": false,
   "historicalUncorrectedEvidenceRun": "42161431317",
   "previousPerformanceReferences": [
+    {
+      "sha": "7611743a80b71488f63f281af4a225afece3d40a",
+      "replaced": "2026-11-18",
+      "replacement": "7b2b09e062f17c2b39ddf148c530bb483601dab2",
+      "reason": "Intended renderer changes e841eb07f2 (Hangul math markup, images24 mathMarkupHash), #2398 c75eacd1f8 (oversize wide fallback), #2397 5d57b0020d (line-break formatting) and #2399 ba8e6e641d (figure default large) change output geometry and page counts on purpose. New performance reference = this commit plus only the renderer files of these changes; benchmark optimizations, source data, fixtures and tolerances unchanged. The original-renderer reference moved the same way: 13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb -> 5aa7dd8273761a12881efd87b967cb531295f391."
+    },
     {
       "sha": "b9d77f8a32e245f29c672de100178bb1ebf4c617",
       "replaced": "2026-11-15",
@@ -36,6 +43,12 @@
     }
   ],
   "previousOriginalReferences": [
+    {
+      "sha": "13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb",
+      "replaced": "2026-11-18",
+      "replacement": "5aa7dd8273761a12881efd87b967cb531295f391",
+      "reason": "Intended renderer changes e841eb07f2, #2398 c75eacd1f8, #2397 5d57b0020d and #2399 ba8e6e641d (same set as the performance reference) change solution block heights and page counts on purpose. New original reference = this commit plus only the renderer files of these changes; no performance code, source data, fixture or tolerance change."
+    },
     {
       "sha": "9efb9633b19b966b0611a10bc352172f217c2dcd",
       "replaced": "2026-11-15",
