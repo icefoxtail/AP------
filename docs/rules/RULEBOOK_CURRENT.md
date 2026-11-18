@@ -33,6 +33,7 @@
 - 시험지 이미지는 `archive/assets/images/<시험지키>/`에 둔다. 시험지 폴더 안이나 저장소 최상위에 두면 R2로 올라가지 않아 학생 화면에서 그림이 깨진다. 기존 그림을 바꿀 때는 새 파일 이름을 쓰거나 `?v=` 값을 올린다. 이유: 해설 그림 199개가 이렇게 빠졌고, 같은 이름이면 옛 그림이 캐시에서 보인다. → [exam-pipeline.md](../agents/exam-pipeline.md)
 - 원본 기출은 `engine.html?data=exams/<file>&mode=exam|sol|ans`로 바로 열리게 유지한다. 원본 전체를 브라우저 저장소에 복사해야 열리는 구조로 되돌리지 않는다. 이유: 클릭 반응과 저장소 오류에 강해야 한다. → [archive2-code.md](../agents/archive2-code.md)
 - 해설·정답 열람은 잠그지 않는다(2026-11-10). 이유: 공부용으로 받은 학생이 풀다가 바로 확인하는 경우가 있다. → [archive2-code.md](../agents/archive2-code.md)
+- 원본 JS의 명백한 기계적 손상(깨진 태그, 잘린 문자열, 제어 문자 등)은 묻지 않고 먼저 복구하고 병합 때 보고한다. 이유: 뻔한 손상을 묻느라 학생 화면의 깨짐이 오래 남았다(사용자 결정).
 
 ## 3. 메타
 
@@ -54,6 +55,8 @@
 - **해설 그림은 풀이 과정의 값을 넣고, 정답이 그림에 보여도 반려하지 않는다. 정답·새 보조선을 숨기는 규칙은 문제 그림에만 적용한다**(2026-11-17). 이유: 학생 화면은 정답을 해설 그림보다 먼저 보여 주므로 숨겨도 막는 것이 없고 그림만 빈약해진다. → [visual-svg.md](../agents/visual-svg.md)
 - 그림은 저장소의 SVG 엔진으로 만들고 손으로 SVG를 쓰지 않는다. 작성 규칙은 AUTHOR_GUIDE가 정본이다. 이유: 엔진 출력만 관측기가 식·라벨·눈금을 다시 대조한다. → [AUTHOR_GUIDE](../../archive/tools/geometry-equation/production/AUTHOR_GUIDE.md), [visual-svg.md](../agents/visual-svg.md)
 - 그림 판정은 학생 기준이다. 라벨은 대상 곁에 두고(떠 있으면 지시선), 같은 각·길이는 같은 색으로 묶고, y=x 대칭·정사각형·기울기가 중요하면 가로·세로 눈금을 같게 한다(`equalUnits`). 합동·닮음 해설은 문제 배치 그림과 대응 도형을 떼어 펼친 그림을 함께 보인다. 이유: 눈금 비 차이로 y=x가 가파르게 그려진 그림이 두 단계 검수를 통과한 일이 있다. → [visual-svg.md](../agents/visual-svg.md)
+- 그림 안의 분수는 좌표·띠·공식 어디서든 세로분수로 쓰고 빗금 분수를 쓰지 않는다. 작아져도 양보하지 않는다. 이유: 학생이 교과서에서 보는 모양과 같아야 읽힌다(사용자 결정).
+- 닮은 도형을 떼어 그릴 때는 실제 닮음비대로 크기를 달리 그린다(2026-11-11). 이유: 같은 크기로 그리면 닮음이 합동처럼 보인다.
 - 색은 관계를 구분하는 데만 쓰고, 선 모양·직접 라벨·경계선으로도 구분되게 한다. 그림과 보기 바탕은 흰색이 기본이다. 이유: 색을 구분하기 어려워도 읽혀야 한다. → [visual-svg.md](../agents/visual-svg.md)
 - 최상위 `<svg>`에 `viewBox`와 같은 비율의 `width`·`height`를 넣는다. 이유: `viewBox`만 있으면 래스터 인쇄에서 그림이 크게 잘린 글자 하나로 나온다. → [exam-pipeline.md](../agents/exam-pipeline.md)
 - 그림을 예외로 빼거나 쪽수를 이유로 생략하지 않는다. 엔진이 못 그리면 지시선·plan 구조 변경을 먼저 시도하고, 그래도 안 되면 `UNSUPPORTED`로 두고 빠진 기능을 적는다(2026-11-11). 이유: 해설이 몇 쪽이든 그림을 빼지 않는 것이 학생에게 좋다. → [visual-svg.md](../agents/visual-svg.md), [archive2-code.md](../agents/archive2-code.md)
@@ -83,12 +86,14 @@
 - 수정은 서브에이전트가 하고 검수는 수정자와 다른 인스턴스가 한다. 위치를 아는 20줄 안팎의 작은 수정은 메인이 직접 하고 관련 테스트와 diff만 확인한다(2026-11-18). 검수는 바뀐 부분과 관련 테스트만 다시 돌린다. 이유: 작은 수정에 지시서·검수 왕복을 붙이면 수정보다 토큰이 몇 배 든다. → [CLAUDE.md](../../CLAUDE.md), [token-efficiency.md](../agents/token-efficiency.md)
 - 작업 지시서에는 최종 결과, 고정 요구·금지, 읽을 정본, 성공 기준을 쓰고 끝이 열린 "전체 측정"은 쓰지 않는다. 이유: 완료 증거가 분명해야 작업자가 멈출 곳을 안다. → [outcome-method-review.md](../agents/outcome-method-review.md), [token-efficiency.md](../agents/token-efficiency.md)
 - **유사시험지 반입**은 변환 → 후보·빈 틀 생성 → 작성자 판정 → `check-judgment` → 검수 묶음 → 다른 실행의 검수자 판정 → `apply-judgment` → 병합 순서다. 작성자는 풀어 본 뒤에 저장 정답을 보고, 검수자도 먼저 풀어서 적는다. 수학 내용은 고치지 않고 정답이 다르면 `answerMatches:false`로 보고해 시험지를 보류한다. 이유: 도구가 형식을 잡고 모델은 판단만 하며, 저장 정답을 베낀 영수증은 거짓이 된다. → [JUDGMENT_GUIDE](../../archive/tools/similar-import/JUDGMENT_GUIDE.md)
+- 유사시험지 반입의 작성자 판정은 Gemini(안티그래비티), 최종 검수·수정은 Sonnet이 맡고, 검수가 끝난 시험지만 병합한다. 처리 순서는 최근 연도부터 내림차순이다(2026-11-18). 이유: 작성 모델 산출물을 바로 운영에 넣는 것은 위험하고, 최근 시험지가 먼저 쓰인다.
 - GPT 예약 라인(MASTER/CREATE/R1/R2/R3, 유사 라인)은 공용 README와 정확히 한 역할 파일을 실제 본문으로 읽고 만든다. 문서를 고쳐도 기존 예약이 바뀌지는 않는다. 이유: 예약 prompt는 별도로 읽어 확인해야 한다. → [gpt-reservation.md](../agents/gpt-reservation.md), [README_CURRENT](02_PIPELINES/gpt-reservation/README_CURRENT.md)
 
 ## 7. 병합·배포·Git
 
 - **검수를 통과한 변경은 CI 결과와 관계없이 병합한다. CI 수리는 병합이 끝난 뒤 관제 세션이 모아서 한다**(2026-11-17). 병합 전에 바뀐 부분의 관련 테스트는 직접 돌리고, 실패는 수리 목록에 적는다. 이유: CI 수리를 기다리며 검수 통과 변경이 하루 가까이 멈췄다. → [common.md](../agents/common.md), [MAIN_FIRST](../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)
 - 병합은 묶을 수 있으면 묶는다. main 병합마다 단일 writer가 등록을 돌리고, 밀린 등록은 정시 실행이 소화한다. 작업자에게 등록 JSON 작성을 다시 요구하지 않는다. 이유: 병합마다 밀린 전체를 훑느라 한 건이 12~17분 걸렸다. → [CLAUDE.md](../../CLAUDE.md), [자동 등록](../architecture/Archive_Main_Merge_Auto_Metadata_CURRENT.md)
+- 자료 묶음의 등록 실행이 도는 동안에는 병합을 멈추고, 준비된 PR은 실행이 시작되기 전에 한 묶음으로 넣는다(2026-11-18). 이유: 몇 분마다 병합해 등록기가 매번 다시 만들었고 배포가 몇 시간 밀렸다.
 - 보호 규칙 우회, 강제 push, 다른 사람 브랜치 이력 재작성을 하지 않는다. 충돌은 병합으로 푼다. 이유: 이력 손상은 되돌릴 수 없다. → [AGENTS.md](../../AGENTS.md)
 - 병합과 배포는 따로 기록한다. `GIT_MAIN_MERGED`는 CI·Pages·학생 배포 성공을 뜻하지 않는다. 학생 Pages 배포는 릴리스 게이트를 통과해야 하고 실패하면 기존 사이트가 유지된다. 이유: 병합 성공을 배포 성공으로 읽으면 학생 화면 오류를 놓친다. → [MAIN_FIRST](../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)
 - 공유 데이터 고정값 절차를 지킨다: 봉인 레지스트리를 손으로 넓히지 않고, `CROSSWALK_DIGEST_NOT_SEALED`가 나오면 검사를 끄지 않고 공식 도구를 `--write`로 다시 돌려 봉인한다. 이유: 서로 다른 세션의 정상 작업이 main CI와 학생 배포를 두 번 막았다. → [common.md](../agents/common.md)
