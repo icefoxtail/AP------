@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-366861d94a0c-fcf129c8",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_향림중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ff65d5d8bc6424dbca4e1b65ac6a99059c39e2d5f02183f00c6a3d0bf6f56dbb",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+      "step": "초기3톤에 분당0.3톤씩 더하여30톤이 되므로3+0.3t=30을 세워 t=90분을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_84801cec4c8b77959db38b5753e9cae739958aef0da64b2095ee9db64bb6b920",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+      "templateKey": null,
+      "step": "두 식을 연립하면 y=1,x=2이고 좌표(2,1)의 표시점은 B이다.",
+      "note": "새 TPL 제안: 연립해 좌표를 그래프의 표시점과 대응. 기존 TPL은 좌표합 목표만 수용. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_63c0908f41680d48a7e7501a85e90bfbb8dac2751e7340e0025313e084eb4402",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+      "step": "이등변삼각형 꼭지각 이등분선이 밑변도 이등분하여 BD=10/2=5이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_08000ae7454e062b2210412f12f3accba2e9353621e0beacaee3e1e75389a207",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+      "step": "꼭지각76도에서 밑각52도를 얻고 AD∥BC의 엇각으로 DAC=52도이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_21c7eb29cbe6be44f3123d723245b692cd113ac1cf381bc4266a259d34e3a8f8",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+      "step": "각 이등분선의 점P에서 내린 수선으로 RHA 합동과 등거리PC=PD는 성립하지만 서로 다른 꼭짓점의 각 OPC와 POD는 일반적으로 같지 않다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11fb97d733aa6cdda5e45ade3ab95c5f25a563021562e75e0c1a252e03ae0cd1",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+      "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+      "step": "밑변중점M을 잇는 AM은 꼭지각 이등분선이며 양쪽 수선의 직각삼각형이 합동이므로 AD=AE=12-4=8,합16이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f27c6580bf6c0e70e73ee3a115c0089c2c31c370824eaa37ea0cfbfe2766cfe",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "step": "반지름의 등거리로 AOC=108도,BOC=112도,AOB=140도를 구한 뒤 OAB=20도를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_aa3817a7415824131cc15cfba245b0cae4ce9f0df2cbd2e4f6428047c83754c6",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+      "step": "외심 반지름OA=OC와 C의60도로 AOC가 정삼각형이므로3r=18,r=6,원둘레12π이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a128f16ac561a6c75d9c73014a15cd521deedefebf54ef8cd9dfba73c4596dda",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "step": "내심에서 두 변까지의 거리 ID=IE와 공통빗변IB로 IDB와 IEB가 RHS 합동임을 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e99f18c612e5173857a5a170023e18c13426d3fae686a27be75f3541cb72d69",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "step": "내심의 이등분각으로2x+2×30+2×25=180을 세워 x=35도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e9b2bd98c6fe4a4280606f5877427fa963ca6f95b74440ac05004bf112aa898c",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "평행사변형 대변·대각·이웃각 성질은 성립하지만 두 대각선의 길이가 같다는 조건은 일반적으로 성립하지 않아④이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_690fd1045c3a7cd2da706f114daa752158a33534a02f245be04df11c92477af1",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "한 쌍의 대변이 평행하고 같아 평행사변형이며 이웃변 같음과 대각선 등길이가 마름모·직사각형을 동시에 만들어 정사각형이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f1473c191ceaaa86984612468f6b15562fe8f25280f97fa5b40cec7693124d9c",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_INCENTER",
+      "step": "내심에서 세 변까지 높이가3으로 같아 세 삼각형 넓이합은3×둘레40/2=60이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b81d5ac864223213346b312a2049a33e98e3423c6cd8fb53f37c2f83a90fb009",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTOR_SEGMENT",
+      "templateKey": "TPL_MG_CALCULATE_OVERLAPPING_SEGMENT_FROM_TWO_BISECTORS",
+      "step": "각 이등분과 평행선의 엇각으로 BF=AB=6,CE=CD=6을 얻어 겹친 EF=6+6-10=2이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}
