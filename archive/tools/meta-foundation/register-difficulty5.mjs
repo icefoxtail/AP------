@@ -5,6 +5,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { verifyPreservedAuditDifficulty } from "./native-audit-preservation.mjs";
+import { textFingerprint } from "./text-binding-lib.mjs";
 
 // Registers Gemini's already-decided 5-level difficulty (req_diff5_*.json) into the canonical
 // question metadata. No re-judging: Gemini's `after` value is written as-is, subject only to
@@ -264,6 +265,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     if (item.questionUid !== rec.questionUid || item.questionUid !== idr.questionUid ||
         ordinalByUid.get(item.questionUid) !== n) fail("ordinal/questionUid mismatch #" + n);
     if (n < 1 || n > bank.length) fail("ordinal outside question bank #" + n);
+    // A request that carries the stem+choices fingerprint the grade was judged on (draft requests do) is bound to exactly that text:
+    // a changed stem or choices means the grade belongs to another problem. Answer/solution/figure edits do not change it (text-v1).
+    // An item without the field is judged as before (older requests, other approval types).
+    if (Object.hasOwn(item, "textBindingFingerprint") && textFingerprint(bank[n - 1]) !== item.textBindingFingerprint)
+      fail("stem or choices changed since judged (textBindingFingerprint) #" + n);
     if (verifyProjection) {
       const q = bank[n - 1];
       if (q?.id !== undefined && q.id !== n) {

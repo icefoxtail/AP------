@@ -129,3 +129,51 @@ test("the request is deterministic and the judged text check ignores figure tags
   assert.notEqual(judgedStemChoicesSha256({ ...bank[0], choices: ["1", "2", "3", "4", "6"] }), judgedStemChoicesSha256(bank[0]));
   assert.equal(sha256("x").length, 64);
 });
+
+// The request carries the stem+choices fingerprint (text-v1) the grade was judged on; the lane refuses a question whose stem or choices
+// changed since, in dry-run, write and projection verification alike, and ignores edits to answer/solution/figure.
+function withChangedSource(x, request, mutate) {
+  const changed = structuredClone(bank); mutate(changed);
+  const text = "window.questionBank = " + JSON.stringify(changed, null, 2) + ";\n";
+  fs.writeFileSync(path.join(x.root, "archive/exams", SOURCE), text);
+  const bytes = Buffer.from(text);
+  const latestBlobSha = crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+  return { ...request, gemini: { ...request.gemini, latestBlobSha } };
+}
+const threePaths = (x, request) => [() => registerDifficulty5({ root: x.root, request }),
+  () => registerDifficulty5({ root: x.root, request, write: true }), () => registerDifficulty5({ root: x.root, request, verifyProjection: true })];
+
+test("a changed stem since judgment refuses the request in dry-run, write and verification, and writes nothing", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  const changed = withChangedSource(x, request, b => { b[0].content = "다음 중 옳은 것은? $x^2=9$"; });
+  const before = fs.readFileSync(path.join(x.root, "archive/data/question_metadata.json"), "utf8");
+  for (const run of threePaths(x, changed)) assert.throws(run, /stem or choices changed since judged \(textBindingFingerprint\) #1/);
+  assert.equal(fs.readFileSync(path.join(x.root, "archive/data/question_metadata.json"), "utf8"), before);
+});
+
+test("changed choices since judgment refuse the request", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  const changed = withChangedSource(x, request, b => { b[0].choices = ["1", "2", "3", "4", "6"]; });
+  for (const run of threePaths(x, changed)) assert.throws(run, /stem or choices changed since judged \(textBindingFingerprint\) #1/);
+});
+
+test("an answer, solution or figure edit since judgment does not refuse the request", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  const changed = withChangedSource(x, request, b => { b[0].answer = 3; b[0].solution = "새 해설"; b[0].image = "fig.png"; b[1].solution = "해설만 추가"; });
+  assert.equal(registerDifficulty5({ root: x.root, request: changed }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, write: true }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, verifyProjection: true }).summary.VERIFIED, 2);
+});
+
+test("an item without textBindingFingerprint keeps the previous behaviour even when the stem changed", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  for (const item of request.gemini.items) delete item.textBindingFingerprint;
+  const changed = withChangedSource(x, request, b => { b[0].content = "전혀 다른 문제"; });
+  assert.equal(registerDifficulty5({ root: x.root, request: changed }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, write: true }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, verifyProjection: true }).summary.VERIFIED, 2);
+});
