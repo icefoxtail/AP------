@@ -128,17 +128,19 @@
     <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20261009.1" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="layout-materializer.js?v=20261117-cont-label-1"></script>
-    <script src="solution-render-executor.js?v=20261117-cont-label-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="solution-render-executor.js?v=20261118-figure-ratio-1" onerror="console.warn('[solution-render-executor] shared solution renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="answer-render-executor.js?v=20261029-sections-1" onerror="console.warn('[answer-render-executor] shared answer renderer 로드 실패 — legacy renderer 유지')"></script>
     <script src="equal-slot-engine.js?v=20261029-mjx-ext-1"></script>
-    <link rel="stylesheet" href="equal-slot-engine.css?v=20260915.1">
-    <script src="exam-render-executor.js?v=20261117-wide-fallback-2" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
-    <script src="render-state-normalizer.js?v=20261112-student-svg-1"></script>
+    <link rel="stylesheet" href="equal-slot-engine.css?v=20261118-figure-ratio-1">
+    <link rel="stylesheet" href="figure-size.css?v=20261118-figure-ratio-1">
+    <script src="exam-render-executor.js?v=20261118-figure-ratio-1" onerror="console.warn('[exam-render-executor] shared exam renderer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-state-normalizer.js?v=20261118-figure-ratio-1"></script>
     <script src="side-effect-ledger.js?v=20260911.5"></script>
     <script src="screen-runtime.js?v=20261106-output-performance-2"></script>
     <script src="snapshot-contract.js?v=20260923.1"></script>
     <script src="review-preview-bridge.js?v=20260915.2"></script>
     <script src="question-image-readiness.js?v=20261106-output-performance-1"></script>
+    <script src="figure-size.js?v=20261118-figure-ratio-1"></script>
     <script src="screen-runtime-adapter.js?v=20261116-polish-1"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <link rel="stylesheet" href="archive2-output-bar.css?v=20261116-polish-3">
@@ -1646,7 +1648,7 @@ async function recordArchiveLayoutPromotionGate(area, ctx = null) {
         const ledgerBySource = new Map(ledger.entries.map(entry => [entry.sourceRef, entry]));
         const records = new Map(AppState.canonicalData.map(question => [
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
-            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: question.layoutTag, wide: question.wide,
+            { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo, layoutTag: window.APRenderStateNormalizer.renderLayoutTag(question.layoutTag), wide: question.wide,
                 measurements: ledgerBySource.get(`${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`) }
         ]));
         const observation = authority.observeLegacyDomLayout(area, {
@@ -1701,8 +1703,9 @@ async function recordArchiveSolutionLayoutPromotionGate(area, ctx = null) {
         const records = new Map(AppState.canonicalData.map(question => [
             `${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`,
             { sectionId, sourceRef: question.sourceRef, displayNo: question.displayNo,
-                layoutTag: question.solutionImageLayout === 'fullwidth' ? 'fullwidth' : 'solution',
-                wide: question.solutionImageLayout === 'fullwidth' }
+                // 2026-11-18: 해설 그림을 쪽 전체 폭으로 놓지 않는다(해설도 2단 안에서만). solutionImageLayout은 배치에 영향을 주지 않는다.
+                layoutTag: 'solution',
+                wide: false }
         ]));
         const blockBySource = new Map(AppState.canonicalData.map((question, index) => [`${question.sourceRef.sourceArchiveFile}#${question.sourceRef.sourceQuestionUid}`, ledger.blocks[index]]));
         const resolveBlockId = (sourceRef, occurrence) => {
@@ -2462,11 +2465,14 @@ function renderQuestionImageHTML(q, renderState) {
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeOverride = ['full', 'tall'].includes(q.imageSizeOverride) ? q.imageSizeOverride : '';
     const sizeClass = (size ? ` image-${size}` : '') + (sizeOverride ? ` image-override-${sizeOverride}` : '');
+    // 그림 크기 규칙(figure-size.css): 옛 등급 클래스는 휴대폰 읽기 배치에서만 쓰이고, A4 쪽 배치는 단 폭 비율 하나다. imageScale(30~100)은 그림 하나 덮어쓰기.
+    const figureScale = window.APFigureSize?.parseScale(q.imageScale);
+    const scaleAttr = figureScale == null ? '' : ` data-scale="${figureScale}"`;
     const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
     const imageSrc = withArchiveAssetCacheBuster(q.image, renderState);
     // External (R2) exam images are requested in CORS mode (archive-asset-base.js): print code reads their pixels.
     const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors}${scaleAttr} alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
 }
 
 function withArchiveAssetCacheBuster(src, renderState) {
@@ -2503,9 +2509,11 @@ function renderSolutionImageHTML(q, renderState) {
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
     const layout = q.solutionImageLayout === 'fullwidth' ? ' layout-fullwidth' : '';
+    const figureScale = window.APFigureSize?.parseScale(q.solutionImageScale);
+    const scaleAttr = figureScale == null ? '' : ` data-scale="${figureScale}"`;
     const imageSrc = withArchiveAssetCacheBuster(q.solutionImage, renderState);
     const cors = typeof examImageCrossOriginAttr === 'function' ? examImageCrossOriginAttr(imageSrc) : '';
-    return `<span class="sol-image-wrap image-${size}${solOverride}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
+    return `<span class="sol-image-wrap image-${size}${solOverride}${layout}"><img src="${escapeArchiveHtmlAttribute(imageSrc)}"${cors}${scaleAttr} alt="${escapeArchiveHtmlAttribute(alt)}">${caption}</span>`;
 }
 
 const AUTO_IMAGE_SIZE_CLASSES = ['image-small', 'image-half', 'image-medium', 'image-large', 'image-full', 'image-tall'];
@@ -2579,6 +2587,8 @@ async function applyAutoImageSizeClasses(root, timeoutMs = 1200, signal) {
         }
         wrap.classList.add(autoImageSizeClassFor(img));
     }));
+    // 그림 크기 규칙: 그림이 모두 불러와진 지금, 배치 측정 전에 가로로 긴 그림·묶음 그림·배율 덮어쓰기를 한 번에 표시한다.
+    window.APFigureSize?.classify(root);
 }
 
 
@@ -2592,6 +2602,7 @@ async function renderExamLegacy(area, data, ctx = null) {
     let pNum = 1;
     const items = data.map((q, i) => {
         const box = document.createElement('div'); box.className = 'q-box'; box.dataset.sourceRef = getArchiveQuestionSourceRef(q, i);
+        if (window.APFigureSize?.choicesAreFigure(q)) box.dataset.apFigBundle = '1';
         const hasImageField = !!q.image;
         const rawContent = stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
         const formattedContent = sanitizeProtectedSegments(
@@ -2854,7 +2865,7 @@ async function renderExam(area, data, ctx = null) {
     if (slotParams.get('equalSlots') === '1' && slotParams.get('slotEngine') !== 'legacy' && Number((ctx?.buildState || AppState).qpp) === 4 && (!window.APExamRenderExecutor?.render || !window.APEqualSlotEngine)) throw Object.assign(new Error('EQUAL_SLOT_ENGINE_UNAVAILABLE'), { code: 'EQUAL_SLOT_ENGINE_UNAVAILABLE' });
     const requestedAuthority = new URLSearchParams(ctx ? new URL(ctx.candidate.environment.url).search : window.location.search).get('examAuthority');
     const authority = requestedAuthority || 'shared';
-    data = data.map(question => question && typeof question === 'object' ? { ...question, __apExamSubjectiveSpacing: true } : question);
+    data = data.map(question => question && typeof question === 'object' ? { ...question, layoutTag: window.APRenderStateNormalizer.renderLayoutTag(question.layoutTag), __apExamSubjectiveSpacing: true } : question);
     if (authority === 'legacy') return renderExamLegacy(area, data, ctx);
     if (authority !== 'shared') throw new Error(`UNKNOWN_EXAM_AUTHORITY:${authority}`);
     if (!window.APExamRenderExecutor?.render) return renderExamLegacy(area, data, ctx);

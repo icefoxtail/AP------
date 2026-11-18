@@ -179,6 +179,8 @@
             const box = document.createElement('div');
             box.className = 'q-box';
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
+            // 그림 크기 규칙(figure-size.js): 보기가 그림 안에 든 문항은 그림을 줄이지 않는다. 오답 엔진은 이 모듈을 불러오지 않아 영향이 없다.
+            if (root.APFigureSize?.choicesAreFigure(q)) box.dataset.apFigBundle = '1';
             const hasImageField = !!q.image;
             const rawContent = deps.stripInlineImagesFromContent(q.content || q.question || '', hasImageField);
             const formattedContent = deps.sanitizeProtectedSegments(

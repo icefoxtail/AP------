@@ -14,6 +14,14 @@
 .ap-slot-content[data-equal-slot-profile~="compact"] .choices { margin-top: 5px; gap: 2px 8px; }
 .ap-slot-content[data-equal-slot-profile~="compact"] .choice-item { line-height: 1.4; }
 .ap-slot-content[data-equal-slot-profile~="choices"] .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 3px 8px; }
+/* images 프로파일(칸이 모자랄 때 그림을 더 줄이는 마지막 수단).
+   2026-11-18: A4 쪽 배치는 figure-size.css의 비율 규칙을 쓰므로 px로 자르지 않고 그 비율에 0.8을 곱한다(--ap-fig-k). 묶음 그림은 줄이지 않는다.
+   휴대폰 읽기 배치(<=640px 화면)는 옛 규칙(78%·150px)을 그대로 쓴다. */
+@media screen and (max-width: 640px) {
 .ap-slot-content[data-equal-slot-profile~="images"] .q-image-wrap img,
 .ap-slot-content[data-equal-slot-profile~="images"] .q-content img { max-width: 78%; max-height: 150px; object-fit: contain; }
+}
+@media not screen and (max-width: 640px) {
+.ap-slot-content[data-equal-slot-profile~="images"] :is(.q-image-wrap, .q-content) :is(img, svg):not([data-ap-fig="bundle"]):not([data-ap-fig="scaled"]) { --ap-fig-k: 0.8; }
+}
 @media print { .page.ap-equal-slot-page { height: 296.5mm !important; overflow: visible !important; } }

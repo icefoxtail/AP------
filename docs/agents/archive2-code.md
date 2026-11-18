@@ -30,7 +30,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - 해설 상자가 83mm 반폭 칸을 가로로 넘쳐도 **자동으로 전폭 승격하지 않는다.** 먼저 `sol-fit-narrow`(줄바꿈·인라인 고정폭 이미지/표를 칸 폭에 맞춤)와 글자 단계 축소(`data-sol-fit` 1~4)로 칸 안에서 해결한다(`archive/layout-materializer.js` `fitSolutionToNarrowColumn`). 잘라 숨기는 `overflow:hidden`은 쓰지 않는다. 이유: 사용자 PC에서 4번 해설 하나가 2px 넘쳤다고 판정되어 그 쪽 전체가 1단이 되고 쪽 수가 늘었다(강남여고 고1 공통수학2).
 - 어떤 수단으로도 안 맞을 때만 마지막 수단으로 그 상자를 전폭 승격하고 `[archive-solution]` 경고를 남긴다. 완전히 없애지 않는 이유: 인라인 `max-width:400px` 이미지가 있는 시험(강남여고 고2 대수, 순천여고 고1 공통수학2)에서 승격이 없으면 가로 넘침 게이트(S12)가 렌더 전체를 막아 해설지가 안 열린다.
-- 명시적 전폭(`solutionImageLayout:'fullwidth'`)은 그대로 유지한다.
+- 명시적 전폭(`solutionImageLayout:'fullwidth'`)은 2026-11-18부터 배치에 쓰지 않는다(아래 "그림 크기는 단 폭 비율 하나").
 
 ## 문항 하나가 칸에 안 맞아도 시험지 전체를 막지 않는다 (2026-11-17)
 
@@ -47,17 +47,29 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 ## 해설 SVG는 라벨 크기 기준으로 표시 (2026-11-11 사용자 결정)
 
+> 2026-11-18: A4 쪽 배치에서는 아래 계산(자연 폭 x 0.6, 칸 90%·340px)을 "그림 크기는 단 폭 비율 하나" 절의 규칙(해설 그림 60%)이 대체한다. 아래 계산은 휴대폰 읽기 배치와 오답 엔진에서만 쓰인다.
+
 - 해설 그림이 `.svg`이면 저장된 `solutionImageSize`(small·medium·large·full)와 무관하게 **표시 폭 = 자연 폭 × k(k=0.6), 칸 폭이 상한, 높이 auto**로 보인다(자연 폭이 384 미만인 옛 수제 SVG는 1:1로 그려졌으므로 ×1, 칸 폭 상한만 적용. 상수 `SOLUTION_SVG_SCALED_MIN_WIDTH`). 스크립트는 `solution-render-executor.js`의 `applySolutionSvgDisplayWidth`이고, 해설 그림이 모두 불러와진 뒤 쪽 나누기 전에 `img` 폭을 정한다(추가 요청 없음). CSS(`engine.html`·`mixed_engine.html`·`apmath/wrong_print_engine.html`)에는 스크립트가 못 돌 때도 SVG가 105·145·180px 높이 상한에 눌리지 않게 하는 대비 규칙이 있다. 래스터(png/jpg)는 기존 상한(48%·105px / 72%·145px / 92%·180px)을 그대로 쓰고 `layout-fullwidth`(640px 상한)도 그대로다. 휴대폰(640px 이하)은 읽기 모드 CSS가 그대로 칸 폭으로 푼다. 저장된 크기 등급과 시험지 파일은 바꾸지 않는다.
 - 이유: 라벨 글자가 화면에서 약 12 CSS px이어야 학생이 읽는다. 그림 엔진의 라벨 기본 글자는 20 SVG 단위이므로 20 × 0.6 = 12px이다. 게시된 medium 그림은 145px 상한에 눌려 라벨이 6~7px이었다(표본 40개 중 39개가 11px 미만). 그림이 화면에서 차지하는 크기는 **캔버스 크기**가 정하므로, 단순한 그림은 작은 캔버스로 그린다.
 - 해설 그림이 문항 머리(번호·문제·정답)와 첫 해설 조각과 함께 한 칸에 들어가지 않으면, 그림을 머리에서 떼어 **해설 마지막 조각 뒤**로 옮겨 다음 칸·쪽으로 흘린다(`layout-materializer.js`의 `moveSolutionImageToTail`, 문항당 1회). 그래도 넘치면 기존처럼 `MEASURED_SOLUTION_CHUNK_EXCEEDS_PAGE`로 실패한다. 이유: 그림이 머리에 묶여 있어 긴 문제+큰 그림 문항이 쪽 나눔에 실패했고, 그 때문에 해설 그림을 게시에서 빼야 했다(2026-11-11 사용자 지적: 해설이 몇 쪽이든 그림을 빼지 않는다).
 - 인쇄도 같은 A4 화면을 쓰므로 쪽 나누기가 함께 바뀐다(그림이 큰 시험은 쪽이 늘 수 있다). 사용자가 쪽 수보다 해설 가독성이 먼저라고 정했다. 화면 전용 CSS로 인쇄만 되돌리려 하지 않는다: 쪽 나누기는 화면에서 `scrollHeight`로 정하고 래스터·네이티브 인쇄가 그 화면을 찍는다.
 - 그림 엔진은 이 실제 페이지로 크기 등급별 표시 크기를 재서 글자 크기를 정한다(`measureArchiveDisplayEnvelope`, `record-visual-browser-evidence.mjs`의 측정은 같은 `applySolutionSvgDisplayWidth`를 불러 쓴다). 새 규칙에서는 모든 등급이 같은 크기로 재져 요청 등급이 기본 글자 크기를 바꾸지 않는다. k·상한을 바꾸면 엔진 측정과 `tests/archive-solution-image.test.js`·`tests/archive-solution-svg-size.test.cjs`를 함께 확인한다.
 
-## 그림 기본 크기는 large와 full 사이 (2026-11-17 사용자 지시)
+## 그림 크기는 단 폭 비율 하나 (2026-11-18 사용자 결정, 2026-11-17의 large·full 규칙을 대체)
 
-- 문제 그림 `.q-image-wrap`의 `image-large`·`image-full`(자동 분류가 붙인 것 포함)은 폭 90%·높이 240px, `image-tall`만 폭 90%·높이 280px(2026-11-17 사용자 결정), 모두 가운데 정렬이다. 해설 그림 `.sol-image-wrap`은 SVG 포함 모든 등급이 칸 폭 90%·높이 340px 이내(휴대폰은 `archive2-preview-mobile.css`에서 92%·340px)이다. 위 "해설 SVG는 라벨 크기 기준" 절의 폭 계산(자연 폭 x 0.6)은 그대로이고, 칸 폭·높이 상한이 그 위에서 누른다. 높이 무제한 해설 그림은 없앴다.
-- 크게 보여야 하는 그림만 데이터 필드로 허용한다: 문제 `imageSizeOverride`(`full`=폭 100%·240px, `tall`=폭 100%·320px), 해설 `solutionImageSizeOverride`(`full`=칸 폭 전체·높이 무제한). 클래스 `image-override-full|tall`로 렌더하며, 이 필드는 `print-contract.js`·`render-authority.js`·`render-state-normalizer.js`를 지나간다. 기존 데이터의 `imageSize`·`solutionImageSize` 값은 바꾸지 않았다(원본 JS 해시 고정값). 명시적 `solutionImageLayout: "fullwidth"`는 특별한 경우로 그대로 둔다.
-- 이유: 그림이 단 폭을 꽉 채우고 높이 제한이 없거나(`tall` 320px·해설 `full`) 커서 시험지가 읽기 불편했다.
+- 적용 범위는 **A4 쪽 배치** = PC 화면의 쪽 보기 + 인쇄 + PDF다. 인쇄는 화면에서 만든 쪽 DOM을 그대로 찍으므로 `@media print`가 아니라 "휴대폰이 아닌 모든 곳"(`@media not screen and (max-width: 640px)`)에 건다. **휴대폰 읽기 배치(<=640px 화면)는 옛 규칙(`engine.html`·`mixed_engine.html`의 등급 CSS, `archive2-preview-mobile.css`)이 그대로**다(학생이 확대해서 봄). 이유: 학생은 문제지를 거의 A4로 뽑아 푸는데 그림이 한 단 폭의 90%로 칸을 채워 풀이 쓸 자리가 없었고, 크기 규칙이 등급 클래스·인라인 max-width·선택지(규칙 없음)·해설 SVG x0.6·균등 칸 78%/150px로 흩어져 서로 다퉜다.
+- 값과 규칙은 `archive/figure-size.css`(변수 `--ap-col-w` 83.65mm, `--ap-fig-q` 0.55, `--ap-fig-sol` 0.6, `--ap-fig-wide-w` 0.88, `--ap-fig-wide-h` 0.3)에 있고 숫자 하나만 바꾸면 된다. 규칙은 `@layer ap-figure-size`의 `!important`라서 해설 칸 맞춤(`sol-fit-narrow`)·인라인 `style="max-width:Npx"`·옛 등급보다 이긴다. 문제 그림(필드 그림, 본문 인라인 img·svg, 해설지의 문제 다시보기 그림)은 폭·높이 모두 단 폭의 55% 이하, 해설 그림(필드, 해설 본문 인라인)은 60% 이하다. 가로로 긴 그림(자연 폭:높이 >= 2:1)은 폭 88%·높이 30% 이하다. **묶음 그림은 줄이지 않고 단 폭 전체까지**: 선택지 안 그림, 한 문항 본문에 그림 2개 이상, 보기가 전부 비었거나 번호 기호뿐인데 그림이 있는 문항, `choicesEmbeddedInImage === true`. 작성자가 정한 width가 있는 묶음 그림은 그 크기를 그대로 둔다.
+- 그림 하나 덮어쓰기: 문항 필드 `imageScale`·`solutionImageScale`(단 폭 대비 %, 30~100), 본문 인라인 `<img data-scale="70">`. 범위 밖·숫자 아님은 무시하고, 있으면 위 기본값·가로로 긴 규칙·묶음 규칙보다 우선한다. 두 필드는 `render-state-normalizer.js`의 `RENDER_FIELDS`를 지난다.
+- 가로로 긴지·묶음인지·배율은 CSS가 알 수 없어서 `archive/figure-size.js`(`APFigureSize.classify`)가 그림이 모두 불러와진 뒤 쪽 배치 측정 전에 한 번 `data-ap-fig`(wide|bundle|scaled)를 붙인다(`applyAutoImageSizeClasses`와 `applySolutionSvgDisplayWidth`가 부른다). 값은 이 파일에 쓰지 않는다. 보기가 그림인 문항은 박스를 만들 때 `data-ap-fig-bundle`을 붙인다.
+- **옛 등급은 A4에서 크기에 영향이 없다**: `imageSize`·`imageSizeOverride`·`solutionImageSize`·`solutionImageSizeOverride`·`solutionImageLayout`는 데이터와 클래스는 그대로이고(휴대폰 규칙이 읽는다) 이 규칙이 읽지 않는다. 해설 SVG의 자연 폭 x0.6 인라인 width도 이 규칙이 켜진 화면에서는 넣지 않는다(`APFigureSize.isActive()`가 CSS 변수 `--ap-fig-sol` 유무로 판정, 휴대폰·오답 엔진은 옛 계산). 해설은 2단 안에서만 놓이고 `solutionImageLayout: "fullwidth"`로 쪽 전체 폭을 쓰지 않는다(`solution-render-executor.js`는 `APFigureSize`가 있을 때 무시, 오답 엔진은 옛 동작). 해설 칸 맞춤이 끝내 안 될 때의 마지막 수단 전폭 승격(위 "해설지 반폭 칸 넘침 처리")은 그대로다.
+- **html2canvas(기본 인쇄 경로)는 `object-fit`을 지원하지 않고 그림을 CSS 상자 크기대로 늘려 그린다.** 그래서 폭과 높이 상한을 함께 걸고 object-fit으로 맞추는 방식을 쓰지 않는다. 줄일 그림은 `width:auto; height:auto` + `max-width`·`max-height`만 걸어 그림 상자 자체가 그림 비율을 지킨다(표본에서 상자 폭÷높이가 자연 비율과 ±2% 이내).
+- 칸이 넘칠 때 `fitQuestionBox`가 붙이는 `img-fit-*`는 같은 비율에 0.85·0.7·0.55를 곱하는 변수(`--ap-fig-k`)로 바뀌었고, 균등 칸 엔진의 `images` 프로파일(옛 78%·150px)은 0.8을 곱한다(묶음 그림 제외). "단 폭"은 한 칸 안쪽 폭 83.65mm 상수로 둔다(측정용 staging과 최종 칸이 같은 크기를 쓰게). 전폭 칸에서도 같은 값이다.
+- 오답 엔진(`apmath/wrong_print_engine.html`)과 편집기(`internal-review-engine.js`)의 크기 선택지, `generated-bank.html`은 이번 범위가 아니다.
+
+## 전폭 배치 표시는 한 단 전체로 읽는다 (2026-11-18 사용자 결정)
+
+- 배치는 "기본 칸"과 "한 단 전체(`subjective-2up`)" 둘뿐이다. 시험지 데이터에 남은 `"layoutTag": "fullwidth"`(와 layout-authority 정규식이 전폭으로 잡는 `full`·`full-width`·`wide` 값)는 **데이터를 고치지 않고** 문제 모드 렌더용 사본에서만 `subjective-2up`으로 읽는다(`APRenderStateNormalizer.renderLayoutTag`, `engine.html`·`mixed_engine.html`의 `renderExam` 입구와 배치 기록). 이유: 승인 기록에 묶여 시험지 파일을 고칠 수 없는 문항이 많고(77개 파일 408문항), 전폭 문항은 쪽 하나를 통째로 차지했다.
+- 아직 그대로인 것: 불리언 `wide: true`(균등 칸 갈래 판정이 걸려 있어 자동 승격과 함께 다음에 처리), `subjective-4up`, 해설 쪽의 전폭 승격(맞춤 실패 마지막 수단).
 
 ## 연도는 항상 최신부터 (2026-11-10 사용자 결정)
 
