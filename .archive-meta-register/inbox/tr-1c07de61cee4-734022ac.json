@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-1c07de61cee4-734022ac",
+  "examUid": "21_신흥중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_신흥중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "8729956acdadfd7a7aa48b80e76b07549a13294e",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-1c07de61cee4-734022ac.type-ledger.json",
+        "sha256": "ccdaec764fe9d37d0b39bd2d9f2650243910df7eb970b6eb001d8b1c26efef8a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b01f72d8909716a91ba833b9b017aa01d18dac8cbf1ea6e822aa97313058d02b",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD"
+      },
+      "rationale": "동일중심거리의두현AC=BC이므로밑각각65도,나머지각50도이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "69f705fbb7be55a759c33aeda9aa20ad2d96bf8842f8a64f976d9ba2759cf641",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-1c07de61cee4-734022ac.type-ledger.json",
+          "sha256": "ccdaec764fe9d37d0b39bd2d9f2650243910df7eb970b6eb001d8b1c26efef8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2ff852c063217321cd0d939d865a751ecc95f52a3c274a7f5d39fea9db1b6b9a",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO",
+        "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION"
+      },
+      "rationale": "BM=BN=2√5,삼각형차감넓이6을두변사인넓이식10sinx와같게놓아sinx=3/5이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "8b69d802223f1de4a2cf3a251a5666ab0a73e7aee02edbe799149d54021ef52c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-1c07de61cee4-734022ac.type-ledger.json",
+          "sha256": "ccdaec764fe9d37d0b39bd2d9f2650243910df7eb970b6eb001d8b1c26efef8a"
+        }
+      ]
+    }
+  ]
+}

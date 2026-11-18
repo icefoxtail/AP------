@@ -1,0 +1,271 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-f6f90b67b814-a1bbff50",
+  "examUid": "19_동산중_1학기_기말_중1_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사.js",
+  "expectedSourceBlobSha1": "169931bdb1c071f891f37137fb264f221b515a2b",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+        "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1c6b1ecb71bb23a22d6c6daff464831d6fc4c11afb96a341f42beb161c193cde",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYNOMIAL"
+      },
+      "rationale": "각 항에 부호를 포함해 -4x가 올바른 일차항임을 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "108a611ebadeb064e6996657a867447d15b2f175ded1c4d0a562a66a8adaa603",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c8503173b626e33d738ee1dd2ab379702f8e5c24ed070e34354621e4bdbd084d",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_TERM_COEFFICIENT_AUDIT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYNOMIAL"
+      },
+      "rationale": "이차항·일차항 계수와 상수항 -2,5,-7을 읽어 결합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "07d84925255a8fa37e656cbbe37f526881a1a9fd7a1cc62c052fdd0b3368388a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3b4c93ef8ef5db248ad70ae6e01a8eddaf0925370781b837610adec41e4191ff",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_EVALUATION",
+        "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_EVALUATION_CORE"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+        "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE"
+      },
+      "rationale": "각 식을 분모로 나눈 뒤 빼는 식의 부호를 바꾸어 x-1로 정리한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "d998a76ffdc256752a977be775355bf093d5952676b78c5e353ca59dc98844e1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2998177e9592a240dcd7358338e3877764bdb927e2531128ed4561f3c1cb32ff",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_TRANSFORMATION_AUDIT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_IDENTITY"
+      },
+      "rationale": "양변을 전개하여 모든 x에서 계수가 같은 등식만 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "dd804864faf33184d19d0031cc28cd562f7265d68becf064da0ff4b430752305",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f386031378de7c5495978c987e2bc1bf77959f9e52ab0916645dc6ae84ff8a05",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_READ"
+      },
+      "rationale": "속력 그래프가 수평에서 감소로 바뀌는 시각10초를 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "ad05a32d9fcbfed7c1615a587be76190d6a34c953410233cc219f2003b34460c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_07584f5b713e2041a116152e163288d3e3489afee2a034f84784c12907d8eba6",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_GRAPH_SIGN_QUADRANTS"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+        "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_PROPORTION"
+      },
+      "rationale": "비례상수가 음수인 정비례·반비례 그래프가 제2사분면을 지남을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "ad5b2ff0050ce72f4478ccb50f91c22ed969eb9cbeee6d92971ef14878ff9e71",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9545a03d93561a45f5cbb5b1c43f4846ac691e8d9e919ca354a5fc54085a6324",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT_TABLE_COMPLETION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE"
+      },
+      "rationale": "거리24와 속력.8을 이용해 .8x=24를 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "196c4eada0be0bcaf5ea66b7afb0239157efa01f533c1c3b8dbdaf34204ab423",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_18a58ca5aa2ed1a21bfb802db3f79bec4f13f55724c076206541ceaaf9c2863e",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_TIME_SERIES_FACT_AUDIT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_READ"
+      },
+      "rationale": "기온 그래프가 우상향하는 구간6시부터14시를 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "1731762e2d04206663f60096626a049a40096d6c7e801665f5b77cf223704a52",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a6f2f8547aa8f5ea2fb6c79156eab486a7d9bc881ae2d8181293ce4e839a585a",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT"
+      },
+      "rationale": "그림의 점(2,-4)를 y=ax에 대입해 a=-2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "f307cead1f161d3fbc072d5ddcf217be4c5730d7abf2de8e6928a58d0b5e20cb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_38bc52e945dbb174fd663ee812efcc70fe6081a6a613c86ab14c47baf8f367c8",
+      "sourceOrdinal": 25,
+      "before": {
+        "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+        "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH"
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+        "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION"
+      },
+      "rationale": "그림의(60,2)에서 반비례상수120을 정하고 대응값을 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "714c1563498e6f23373accdc7e9443736edaa74ef4e354f6d5a34ff748c233b3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f6f90b67b814-a1bbff50.type-ledger.json",
+          "sha256": "e5b9fab3071569d73bba522ed17e4f7a0804aee60b52e717d355861f6b764f58"
+        }
+      ]
+    }
+  ]
+}

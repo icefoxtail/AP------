@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-5b926cc6966c-9197d5d5",
+  "sourceArchiveFile": "original/high/h1/1mid/22_팔마고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1bb0b5ef26e2b5305bab521834785558460615be3387516e67d8c99257f475d8",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "step": "실수부와 허수부를 각각 같게 놓아 실수 x와 y를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2c0df9c80e4fbba0c9d0bed62a9dca25c38a6ee6766cd106635e3101b438e8b6",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_RESTORE",
+      "step": "서로 다른 세 영점과 최고차항 계수로 삼차다항식을 세 일차인수의 곱으로 정한다.",
+      "note": " 새 TPL 제안: 서로 다른 세 영점과 최고차항 계수로 삼차다항식을 세 일차인수의 곱으로 정한다. 정의: 서로 다른 세 영점과 최고차항 계수로 삼차다항식을 세 일차인수의 곱으로 정한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be4ba685f89324e336e3d700c2046c07d08e8acfac3b5f396ed886808c2df8e4",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_AUDIT",
+      "step": "음수의 제곱근을 i로 바꾸어 곱과 몫에서 제곱근 결합이 부호를 바꾸는 단계를 찾는다.",
+      "note": "TPL 제안: 음수의 제곱근 곱·몫에서 부호를 구분하는 복소수 연산. 새 TPL 제안: 음수의 제곱근을 i로 바꾸어 곱과 몫에서 제곱근 결합이 부호를 바꾸는 단계를 찾는다. 정의: 음수의 제곱근을 i로 바꾸어 곱과 몫에서 제곱근 결합이 부호를 바꾸는 단계를 찾는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_74c3d3df79febb512c889af06021dc1bd9f9e41f80855a93b41cdbe09120af60",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "근이 만족하는 방정식으로 분모의 제곱항을 낮추고 근의 합과 곱으로 통분식을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1cabdf2eb028f8df11eae1a6c416688555989965e0585d23793b13ee979b872d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "공통부분 x²+6x+6을 중심으로 합차공식을 두 번 적용해 인수분해한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7a085ab28b6b1b24878eefa496d8a58b737c9bf8ae9dd18e93a611c16689b368",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "x축과의 교점을 나타내는 이차방정식의 판별식을 0 이상으로 놓는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de4d5d3a41ec300aba02edb23bce513b64a1b293167374c6e6dbf3ba7a2c939e",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": null,
+      "step": "공통인수를 약분한 뒤 x-2로 나눈 나머지 24를 이용하여 x-2를 양의 약수로 제한한다.",
+      "note": "TPL 제안: 다항식의 정수값 배수 조건을 상수 나머지의 약수 조건으로 환원한다. 새 TPL 제안: 공통인수를 약분한 뒤 x-2로 나눈 나머지 24를 이용하여 x-2를 양의 약수로 제한한다. 정의: 공통인수를 약분한 뒤 x-2로 나눈 나머지 24를 이용하여 x-2를 양의 약수로 제한한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_088eb7ad4712837042a74b461937817d9a535efad60c9e88cb151a812ec0407f",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "step": "x²⁰-1에서 x-1을 인수로 뽑고 남은 합을 다시 x-1로 나눈 나머지 20을 이용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_61d50ec0339dd52bac28ae7dc2a2dd2135294349daf5798bc37ddce934734cba",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "차분 항등식의 계수를 비교해 이차함수를 결정한 후 제한구간의 꼭짓점과 끝값을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ea7b6b3a0cfb65a5aa94744bf3474beeaffdeb82a9f98aa5975733791bdd396",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "근의 합과 곱으로 목표식을 m의 완전제곱식으로 바꾸고 교점 조건의 범위 안에서 최소화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

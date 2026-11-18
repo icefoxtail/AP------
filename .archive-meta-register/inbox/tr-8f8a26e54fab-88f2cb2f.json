@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-8f8a26e54fab-88f2cb2f",
+  "examUid": "19_매산여고_1학기_기말_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "380a031ed92731b4ca4c75696765d1e81bc579a4",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+        "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_c5fecec7bd0ec9b3cadc056c55afc7cdb705f7c3e049f4b12bec5bd6dd26a62c",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_BASIC_FUNCTION_TYPE_COUNT"
+      },
+      "rationale": "정의역 세 원소의 함수값을 각각5가지로 선택하여 5³=125이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e3b4b8e202f01258f3831838141ef7c734aa28b4acd49599055c8b1d6ecbf0ef",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7f15961cde35eb5eaf09e6df10beb68b612c37707eb55abaabe078b2299fc46b",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+        "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "각 교집합 확률과 주변확률의 곱을 비교하면 A,C만1/6=1/2×1/3이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "979a2fbfba24ea12bd559a7bd71aa7c9d626973b0df16292ad77dab03f9ac12c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b00c5c0305bbedbe05964bd9e22b5d15bb3f09b7286d269199dd8b23fe7bc72c",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "rationale": "색 개수구성21개 중 노랑0인6개를 빼15/21=5/7이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3cc9d16311befbe9cca05fe37ec798d51fde6a9e78195cf4c35bfb327ee317a3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6b8e22a18387f70ea2c13737d239fce7f4e76a0c5e132d92c1fba5cf03002705",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "선택상자별 노랑2개 확률을 상자선택확률1/2씩 가중합하여4/15이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "6b231f90cc6ccc89be380b2eb1a04265b2dbf9343bbb726150cbf60533d15bf5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5fb67718efbae6048e090fd42aa1aacc9c0dd310a6cd239b12cebc1dd93922f4",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+        "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "A확률1/2,B확률1/4,교집합1/8에서 곱조건을 확인하여 독립이고 ㄱㄴㄹ이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e0a22f8715b9f7ffa194e1d1cc2de43f6eff1cf63a6a1691baa1371ff1ce329d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d103120767b3cef6c6da98fffb9c28a4adc839f1ad069f60e1de76aa22da38ee",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+        "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "독립 교집합1/12를 양쪽 확률에서 각각 빼고 배반합을 취해5/12이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "d2c5a2ebf34f5f353ef4e5a6ddfdd283d8b176db7647bc7bcba81fe4e712abe5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f6da789607176421cb6a3bac6e6131a9dcdb8bdb95566f8ff507ac08ddf7125a",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "공색 다름4/7이면3회중2회 성공2/9, 같음3/7이면2회성공1/9를 가중합해11/63이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "2e9be5a6999009986c1d94ad169f7334537579dd29aa47f131b9f4e462ba7a48",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-8f8a26e54fab-88f2cb2f.type-ledger.json",
+          "sha256": "1391a6b31942877f9d54cb137bcdd8e32092474969cb3c8f18ddc55ef223c7ea"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-4a04ebead4d6-4cdef059",
+  "examUid": "20_매산여고_2학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/20_매산여고_2학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "5b054466d7fe4a8e0423bbbdba1a465d10a0461b",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4a04ebead4d6-4cdef059.type-ledger.json",
+        "sha256": "475db498b2b3c9950cbed0d776ffd2652e987910bab14ab6d95622b856eb3010"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_27b933841f8005e6ddd1f3d8af91e58e7665617624f17b3feb8ef72848bcd469",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "평균을 빼고 표준편차로 나눈 변수의 평균 0·표준편차 1로 T의 평균과 표준편차를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f2d396d17aee94ca8b05b358a0128f1570059cc0714ed8a18593577a2d838e35",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4a04ebead4d6-4cdef059.type-ledger.json",
+          "sha256": "475db498b2b3c9950cbed0d776ffd2652e987910bab14ab6d95622b856eb3010"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b21b9cb6e4567ce0aa84d306714c654b71a1b2ec8714dfd12fe4ae0e147c83f0",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM"
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "Y=10X-2.21로 분포를 -1,0,1로 옮겨 확률을 정하고 분산의 100배 변환을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "401244c54564b9123612122cd2d6635ee7a0577c8a6698d657d312eec268f419",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4a04ebead4d6-4cdef059.type-ledger.json",
+          "sha256": "475db498b2b3c9950cbed0d776ffd2652e987910bab14ab6d95622b856eb3010"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_700097aa62f6813653b673ba6eab531a1099a432939d4e1fb6ba24093e7a3315",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "비복원 두 추출이 모두 홀수일 조건부확률의 곱을 구하고 1에서 뺀다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "70ba31d02fa0843b5813f0d7f354e088f074f293e17a9dc822bd99e74b97d267",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4a04ebead4d6-4cdef059.type-ledger.json",
+          "sha256": "475db498b2b3c9950cbed0d776ffd2652e987910bab14ab6d95622b856eb3010"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1cd1f7b2c47b283336bb69fa7fb81258a923230a97b7dbc86faaa60fe0556161",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO"
+      },
+      "rationale": "실제 공을 구별한 전체 5P4와 숫자 비감소 순서 8개를 세어 등확률 비율을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "62531a58277b75b64ca626c9afc830bd400887e5dde6c16be8eb4143b6dbb038",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-4a04ebead4d6-4cdef059.type-ledger.json",
+          "sha256": "475db498b2b3c9950cbed0d776ffd2652e987910bab14ab6d95622b856eb3010"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-10eef6db4c40-0cb8cda1",
+  "sourceArchiveFile": "original/high/h1/2mid/19_복성고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_573693d97612e1ef62db72e51a56b26b4cf7a40e0f0feb6a3bbf6cfbc4762f37",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_INTERSECTION_CARDINALITY_DIRECT",
+      "step": "두 집합에 공통으로 들어가는 원소 1과 3을 찾아 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b96ec6227aa70c33149ff021aef7be459ae0713323dee36859dc2dde3d37f55e",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+      "step": "유한 전체집합 중 부등식을 만족하는 원소를 직접 열거해 진리집합을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d6dae8b3938c58e2f5bd99403d8d97bd67cb050d9d6ac3c46d7254209cd19ba",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "step": "f⁻¹(2)를 f(x)=2를 만족하는 입력값으로 바꾸어 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ab8fcc5118a703e2dd246b36c60f8392ead0e8ffcccda5b127ab0a9b1090d54",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_OPERATION_LAW",
+      "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+      "step": "집합 포함관계가 주는 합·교집합·여집합 관계를 적용하고 마지막 식에 반례를 든다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_93a11b3807eec1bd02a1da671f17163c61037e0be6669f4f1472bd0e8bfc331c",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_GRAPH_MAPPING",
+      "step": "합성 역함수를 두 번의 역상 찾기로 바꾸어 그림의 대응을 거꾸로 추적한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1795a9f4bb0ceb29487b60662d2c42e20e608e3a2b324b9d5ff80769ae894289",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_EXTREMUM",
+      "templateKey": "TPL_INTERSECTION_RANGE",
+      "step": "교집합은 작은 집합 크기 이하이고 합집합이 전체 30명을 넘지 않는 조건으로 하한을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_854a11d75a76403287e415f41597352cefbdb75b627f0ce58d9066ba489e1698",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FINITE_BIJECTION",
+      "templateKey": "TPL_MULTIPLE_BIJECTIONS_DEDUCTION",
+      "step": "두 일대일대응의 유일한 원상과 교차 합성값으로 남은 함수값을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_da5832a5a9a13fd6ec4037ddbfa2b9818e06b3ef5c503b76cd2ef087d5dff12a",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_CONJUGATION",
+      "step": "f와 g를 순서대로 적용하고 최종 값의 역상을 가지의 정의역 안에서 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab2b0620eef9642c0fb207ff4e8382c8b521bf03c70eb551deceb6ac2f4e9973",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_CONSTRUCTION",
+      "templateKey": "TPL_RECONSTRUCT_FROM_REGIONS",
+      "step": "대칭차에 없는 원소 2가 교집합에 있어야 함으로 계수 후보를 만들고 실제 대칭차를 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e906a583ce8b3a5d3e8f0fac7bf062e920bcf9965bfc8cdd5c313ca7ee8a401c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EQUATION",
+      "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+      "step": "바깥 함수의 역상을 구한 다음 안쪽 함수의 치역에 있는 값만 남겨 원상 방정식을 푼다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1c58b6d08e3e142e0231dc5e0aa4cb785efc0bfda3f0d373b1e24dbf66e81265",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_TRANSFORM",
+      "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_TRUTH_JUDGMENT",
+      "step": "각 명제의 전제와 결론을 뒤집고 제곱·절댓값 성질 또는 반례로 진릿값을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a272ed94d416ff3e17b7aae43cc78cfbe5600cf802af5b0547cc6c00f2ee50e4",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "조각 치역의 중복을 없애는 계수를 정하고 f(x)=f⁻¹(x)를 f(f(x))=x로 바꾸어 구간별로 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_660398b877d60edf1d5a06e0e710a552881beaa407e75e77984cadf28f688690",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM",
+      "step": "목표 근호 합을 제곱해 고정된 합과 곱으로 나타내고 두 양수가 같을 때의 곱 상한을 적용한다.",
+      "note": "TASK-15 표본 재검토: 묻는 값은 근호의 합이지만 u=5x, v=2y로 놓으면 u+v=8이고 (√u+√v)^2=8+2√(uv)이다. 목표식은 uv에 대해 증가하므로 고정된 합에서 uv≤16을 적용하는 것이 결정 단계이며, u=v=4에서 등호가 성립해 최댓값 4를 얻는다. 따라서 고정된 합의 양수 곱을 최대로 만드는 TPL_AMGM_PRODUCT_EXTREMUM을 유지한다(합을 곱으로 환원한 근거).",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c93e82634df53ea76a7fa9601062007df05fe66d4a643d6b9a734a12bb3df033",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "합성함수와 그 역함수를 일차식으로 써 기울기는 같고 절편은 달라야 하는 무해 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

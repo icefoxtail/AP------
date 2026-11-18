@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-d362b9305b77-ab4d390a",
+  "sourceArchiveFile": "original/high/h1/1final/21_효천고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fa6c9c402af9ba61691b4882434bf8d94997eb14025e705a07a1d7d78ba7ca67",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "일차식 x-1로 나눈 나머지를 P(1)로 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eb1f88af8fbecef4059369effbe87dab643db8c35dfb506b254f3ca6d2c3dee0",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "step": "절댓값의 부호가 바뀌는 두 점에서 구간을 나누어 해를 합친 뒤 정수 개수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b0445a97107495e7760ef6936b2b3e63f4f888613469799f3d46b7cdfdb9228b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "켤레복소수 제곱합의 허수항을 소거해 (7x-1)(x+1)<0인 구간을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e66454992f798fa246779fce724b7cb03ead3c887516083bfcb5f74a1b6f8691",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_TRANSFORM",
+      "step": "원래 삼차방정식에 1/x를 대입하고 x³을 곱하여 역수들을 근으로 하는 방정식을 얻는다.",
+      "note": "TPL 제안: 고차방정식의 역수근 방정식 구성; 차수 감소가 아닌 역수 대입으로 계수를 뒤집는 유형. 새 TPL 제안: 원래 삼차방정식에 1/x를 대입하고 x³을 곱하여 역수들을 근으로 하는 방정식을 얻는다. 정의: 원래 삼차방정식에 1/x를 대입하고 x³을 곱하여 역수들을 근으로 하는 방정식을 얻는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a3da82cab872c78b72c6cd32e6030ab563126c73296006c391ae7814725f5f4a",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_CIRCUMCIRCLE",
+      "step": "세 꼭짓점에서 등거리라는 외심 조건으로 두 외심의 x좌표를 구해 축까지 거리의 합을 계산한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_712403fe9d9608532d9808aa8f5de73fa2c9a5d3763637d8f8942111d91b59f1",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_GEOMETRY_RATIO",
+      "step": "그림에서 이등변삼각형 중선과 각의 이등분선 정리를 이용해 교점과 분할비를 구하여 각 보기를 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_546a81a85975975378b146a1023e4f8cf49ee4982a1bc1aaf54205702ed5f581",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TWO_CIRCLES",
+      "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LINE",
+      "step": "AP=AB를 두 번째 원으로 바꾸고 원 방정식을 빼 공통현 BP를 얻어 P좌표와 k를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bbcf70361dd8144893fb5c65808ee10cf721971715c42189c17921dcc4892754",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "삼차방정식 근의 합과 곱에 피타고라스 관계를 결합해 빗변을 정하고 근의 두 개씩 곱의 합을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

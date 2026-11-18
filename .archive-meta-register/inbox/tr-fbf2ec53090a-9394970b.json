@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-fbf2ec53090a-9394970b",
+  "examUid": "22_팔마고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "c4fb6ad72269b1bf6f67af8bd47d2f1436aae213",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+        "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f20a46a457349fe33c70588c8ef8778388f9b01368167ece09565afc9572f7d2",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "양끝 a를 고정하고 가운데 중복 b,c 순열을 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "9ddcf029214c0584078a03265cee5e1fa4b16646bfb7c1b38a4a40b81fd7d232",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b7b52ef1addf5d8987c05b2be222469f5753d8995c9081d72286e6834ab439c8",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "AB를 묶은 원순열에서 CD도 이웃하는 원순열을 뺀다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "be9c923032397e87f61dc8bb445c3ae556f38dd5edd613ddf0680857479ae476",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5fcc569fff1d065fc3fb07f01637bd3967f33ff0d3c90372bfa8f766042391ff",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "전체 정수해에서 a와 c가 각각 하한 이상인 여사건을 뺀다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "55501fe35b7ca555704761e9d175dd5893f7dd8bb2dfad8dedaa362806262d1a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de406f53a2209fbea7cc72ab9ff36dad664038005f9a89bdf8638cb81a946ab8",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER"
+      },
+      "rationale": "비감소 함수값 네 종류에서 내부 누락값과 반복값을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "da08ce24b15896e512e34d18bb7731992373529f278630213aa33c76f8dc5ef5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0e34caa7fd1b3006be5bf0f4dc72607efe688f040fdaebe0f6478f25eec9bf2a",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "판매처별 반품확률을 가중해 역조건 비율 방정식을 세운다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "518d34a901856335e9065a6e46711c644bb0adeaaf72fc960492f87dd861725d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a8a655c86594cc9b3c5c122aa9a4be193e2e0474094cde3aca664f164d6be90f",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "rationale": "양의 정수해 전체에서 등차 조건을 만족하는 해를 뺀다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "70cd446008ba2fba51c368a41a43e28fe134b52f75d9032f706ef0daf85a0381",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7cb43f20433ca11efdef2f63f7017ea809c314352c0a21ea00185f8c544803db",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "짝수 일의 자리별로 자리수 합 18인 반복배정을 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "547695448373d7199cb19377ccdca744c64ded8e4463abb95cd8ca2d2985eb57",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_95288674c83130dadf98f4f5d744a4be07a5f635295eb59542ec0704389dc2eb",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "같은 방향 이동의 순열에서 연속 네 이동 묶음 조건을 포함배제로 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e442ddd434f9af968c04d6b7dde228804935bcf523c48b5a885edec5e8399065",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-fbf2ec53090a-9394970b.type-ledger.json",
+          "sha256": "8329d7f6e828581cf7ba2e0719e767fc92f7eeae4884ad1c7621226e759b7b04"
+        }
+      ]
+    }
+  ]
+}

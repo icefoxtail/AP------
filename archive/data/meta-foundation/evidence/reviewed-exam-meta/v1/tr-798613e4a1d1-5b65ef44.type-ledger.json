@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-798613e4a1d1-5b65ef44",
+  "sourceArchiveFile": "original/high/h1/1final/21_팔마고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1a61bfe0308923ce8c8bb2716941e36c7a8edb99a9275838a0b73dababf06536",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "step": "삼차식을 인수분해하여 허근의 합·곱을 구한 뒤 i의 주기로 값을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3540346c4a7235deacbb2f008c0201449326205a24541552bde1a6a721cfe649",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_BRANCH_COMMON_ROOT",
+      "step": "첫 식을 (x+3y)(x-y)=0으로 나누어 각 가지를 둘째 식에 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f818f7665b1a36934e053711d86eb17bd873138da1a0b616c437c178519b3eaf",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_GEOMETRY_RATIO",
+      "step": "각의 이등분선 정리로 BD:DC=13:5를 정하고 내분점 좌표를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d56fcbaee10b00c48f273c97801fd5ff2d86866ba3ce214baa69c29183994d04",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "step": "x+y와 xy를 k로 나타내고 x,y를 근으로 하는 이차방정식 판별식≥0을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f06c7a87b68406ba0227fe452f21c74abd88edfbef753a670f910e615b18f71",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "두 일차부등식을 따로 풀어 공통 범위의 정수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de2dd35ceaa0e4298ab5ccab638a97b673b5a75f39d7300e77ad4f8d10c3a1a0",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "step": "두 직선의 교점을 먼저 구하고 그 점과 (2,-1)을 잇는 직선을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d9e022297f75463223f0f9c1248947faa919b8aee628d38e95e94def3fdf4f5a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PERPENDICULAR_FOOT_ALTITUDE",
+      "templateKey": "TPL_TRIANGLE_ORTHOCENTER",
+      "step": "두 대변에 수직인 높이의 직선식을 세워 그 교점을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6ffc5aef14e2713a656a0f613eb9a4fc1fe71cc467657e9c813db78da9ec4a3e",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "지름으로 중심·반지름을 정한 뒤 직선까지 거리<반지름 조건으로 정수 k를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_83aaa053c90f8745bcb348ae4067e19490915f0fc61748d0bdcfe9d317b558f8",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": null,
+      "step": "점 좌표의 이동 규칙과 직선식의 역치환을 보기마다 적용해 불일치를 찾는다.",
+      "note": "새 TPL 제안: 기본 이동 규칙 판별. 정의: 점과 직선의 평행·대칭이동 결과를 각각 좌표 대응과 역치환으로 확인한다. 새 TPL 제안: 점 좌표의 이동 규칙과 직선식의 역치환을 보기마다 적용해 불일치를 찾는다. 정의: 점 좌표의 이동 규칙과 직선식의 역치환을 보기마다 적용해 불일치를 찾는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_71a5ac8bc3c9582de5cd94190917ee98d4b2708f3c65860bca4dc6d24d01de18",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_WITH_POSITION",
+      "step": "A를 y=x에 반사하고 반사점과 B를 잇는 선분의 대칭축 교점으로 최적 P를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e51ca8dc60c24f52474a367657664498451e6fb87ad096e6eba13eb1706069f",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_GEOMETRY",
+      "step": "두 부분 넓이의 합을 2x(x+6)/3으로 나타내 주어진 범위를 이차부등식으로 푼다.",
+      "note": " 새 TPL 제안: 두 부분 넓이의 합을 2x(x+6)/3으로 나타내 주어진 범위를 이차부등식으로 푼다. 정의: 두 부분 넓이의 합을 2x(x+6)/3으로 나타내 주어진 범위를 이차부등식으로 푼다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

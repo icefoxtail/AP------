@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-ac166eb2dd4b-9660dedd",
+  "examUid": "19_팔마고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/19_팔마고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "1034050da0d4bd68202537a27379abdf0d547c7b",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+        "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6b5c7f8a5b934f247f887712970bfe283965cb4282832a8b4cf28cc25c49439e",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_SUBSET_JUDGMENT",
+        "templateKey": "TPL_SUBSET_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+        "templateKey": "TPL_NESTED_SET_RELATION"
+      },
+      "rationale": "집합 자체인 원소와 부분집합을 구별하여 a,b의 소속을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "a5bee546dd2539f74a1bae52392a556c2104dfa82e9c043169291d1e783a1793",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_272f4e2ea8ea1cdc0809e5d52f2c14ad0c67b3d590f6760a8d152b08726311c9",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_PROPOSITION_DIRECT_SUBSTITUTION_PARAMETER"
+      },
+      "rationale": "역명제가 주는 Q⊆P에서 16과 a+1이 모두 P에 들어가도록 a 후보를 걸러낸다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "ac1865534b8682fa7325850027e7fbc6282b8fa1709b485384d79a5fb361a554",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_aaef63c9cbf8fc8e4dea156743eb9a075bd77be7a576f021af09e954f8301ca2",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE"
+      },
+      "after": {
+        "problemTypeKey": "PT_LOGIC_CHAIN",
+        "templateKey": "TPL_IMPLICATION_CHAIN"
+      },
+      "rationale": "첫 명제의 대우 q→¬p를 두 번째 r→q와 이어 r→¬p를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "d8ef506081661f8d96cb11d0f321a196252dffe8c871a9bc66c6899e8ca71297",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_807c696e1db904358a209c2929ba7dfd655440224156b58bc7971fe0c7de3a16",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_EQUATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_BISECTING_LINE"
+      },
+      "rationale": "평행이동한 직선의 식에 원의 넓이를 이등분하는 중심 통과 조건을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "cd926e3bca4d2437a637f4cbb1ffec99a7cb29122ec6120c1e2fd6210aabfff9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e8edae432789cda03fad3be5e817f60b1a86580414fe187d9bf854fb83adf5d7",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM"
+      },
+      "after": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM"
+      },
+      "rationale": "a>0을 확인하고 식을 t+9/t-10으로 바꾸어 산술기하평균 하한과 등호 조건을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "44fa8d90a323985762590799b3161a3b347bf07ebd9b494dd3d1ed3e18eacb52",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0fd5199d99352151df50b1e2f89ff5658a55d1e27993abe514d79818c134d3d3",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_SET_RELATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT"
+      },
+      "rationale": "q→p의 성립을 확인하고 p→q에는 서로 다른 두 집합의 반례를 든다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "709273b066a0ef6280b010d919e54204cb8f31572ed45fdbe5fbf9feb447a3c2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_95424cbe9d6a391911144a68f09dbf1cfcfedaa98590bc5ee25c0aa8c11fc59b",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_AT_POINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_LINE_POSITION"
+      },
+      "rationale": "접선 ax+by=9와 다른 원의 중심 사이 거리가 반지름보다 작도록 제한한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "a3f57a02f79392226bd23dd7891c12cdb2f84c1aded57ce9f3adf3c44bb7dc88",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a60e282e7998479087230096b3a336aab75b7fca9b04e10e36e352aecfd0d752",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_LINE_DISTANCE_EXTREMUM",
+        "templateKey": "TPL_DISTANCE_EXTREMUM_SINGLE_POINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE"
+      },
+      "rationale": "고정 밑변의 삼각형 넓이를 최대화하려면 원 위 점이 밑변 직선에서 가장 멀어야 함을 쓴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "730e702000ec67d04549255b7afd2f3763f0c62b2e2e79a2c433ea2887f45970",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f7185d3f597c212d133b50a31ce1208f38c4b09c099e49dc675a99ee47f6b957",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_WITH_POSITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE"
+      },
+      "rationale": "고정점을 x축에 반사하여 꺾인 경로를 직선거리로 만들고 반사점에서 원까지의 최소거리를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "3aa44605bf45f44a71a57d853aac7eb92919de714581f4a6c320bf72b35ff527",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3f9b2a26fe11639a62da8d095488b6add3cf7389e45c33710debbfadbc87c849",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_POINT_MAPPING"
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_RELATION"
+      },
+      "rationale": "그림의 대응 꼭짓점으로 새 좌표와 옛 좌표 관계를 구해 원래 방정식에 역치환한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "95d21c98256da2477b2e2c7cd1ac1d5ee793399d0aa50dc3a845b708319078d9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_334124637d09851371206ef5b7e5e18ea94ec7d4d3561474d9b8f20ddd4b5df8",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER"
+      },
+      "rationale": "항상 존재하는 근으로 b를 고정하고 나머지 이차식의 실근이 허용된 두 값에만 속하도록 한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "1cab8768a85a2abcf809bb95017132334ca8ccb208d680a51665dab46c8ae410",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_94e61842a904e31705387f8a557a1ba7b4b23ed3fc6a333757ef3e8b30a5e0db",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION"
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT"
+      },
+      "rationale": "첫 명제로 A의 후보를 정하고 각 A와 교집합이 비지 않는 B를 여사건으로 센다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "4ac08218115d7656f8c072d6ddcfb8e09f970d0cc067c41717ead5f9d8ec11fa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-ac166eb2dd4b-9660dedd.type-ledger.json",
+          "sha256": "835c69a88e1480bd339008d4bd2fc146c094cee8a6305e3db393ca884f5298b6"
+        }
+      ]
+    }
+  ]
+}

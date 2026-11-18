@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-b3986f082d2c-2727df10",
+  "examUid": "22_연향중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_연향중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "ec97d1cd81579907f2862593f98446a36adbffbf",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-b3986f082d2c-2727df10.type-ledger.json",
+        "sha256": "fb7b3412d74c4a2be209d458efc053251310c0a9e7ec92c4237651cc2fe193a0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_dd9a8716d8e508a14d9fc160c9dbe94aa1f0c8bba0e9484f1364c830b9f8aeca",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "이등변 밑각75에서 끼인각30을 구해 넓이=8·8·sin30/2를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "737172d6c0b44137e387d26b01a2b4bc67269f4284ef1b4b73e77b211790b242",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-b3986f082d2c-2727df10.type-ledger.json",
+          "sha256": "fb7b3412d74c4a2be209d458efc053251310c0a9e7ec92c4237651cc2fe193a0"
+        }
+      ]
+    }
+  ]
+}

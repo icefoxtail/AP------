@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-c8a177c239b3-b1e301f0",
+  "examUid": "22_복성고_2학기_중간_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/22_복성고_2학기_중간_고2_수학II.js",
+  "expectedSourceBlobSha1": "52710cd3a2e0fd6d3014111edc21ac96eb71a1c8",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c8a177c239b3-b1e301f0.type-ledger.json",
+        "sha256": "c4bc9e4a399cc72ad45fe62da8198182a501030c9d7a4c20680fa6a2a52d5c97"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a9bd0086a58ecdd8bc03e733bb59a7cdaa706dfb0a5c58455bf19b15b95e0450",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+        "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+        "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF"
+      },
+      "rationale": "각 함수의 원점 연속성을 살피고 절댓값의 좌우 미분계수 1과 -1을 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "0829b36038cf8c5b7a8925583209dd9bb25540679eb2e105f23de52a9d7b89b8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c8a177c239b3-b1e301f0.type-ledger.json",
+          "sha256": "c4bc9e4a399cc72ad45fe62da8198182a501030c9d7a4c20680fa6a2a52d5c97"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5c6dd3230e3fc1be2171425b8e4b13f41c5efb2da3ac5ba12ff5fb9cd58c6b23",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+        "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER"
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+        "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM"
+      },
+      "rationale": "유한 극한으로 f(1)=3을 얻고 나머지 차분몫을 f'(1)로 읽어 계수를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "207cda6cc82ea1aa80470e6dd666ff7286808f3a36467ecef6663f78fac9c2d4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c8a177c239b3-b1e301f0.type-ledger.json",
+          "sha256": "c4bc9e4a399cc72ad45fe62da8198182a501030c9d7a4c20680fa6a2a52d5c97"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_85fd8067e997f44b8b7ffd270a129ae6681eefac4b5f3bfc600be1455be12f67",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+        "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+        "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY"
+      },
+      "rationale": "차분몫 정의로 도함수를 구하고 두 곡선이 공통 접점을 지나며 기울기가 같다는 조건을 연립한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "ec6a83c691c534e1a10c74c8d3e64aff5021fd2dd1e9ee8555d97e3d55d3075d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-c8a177c239b3-b1e301f0.type-ledger.json",
+          "sha256": "c4bc9e4a399cc72ad45fe62da8198182a501030c9d7a4c20680fa6a2a52d5c97"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-bcc2c5f1e240-4057226e",
+  "sourceArchiveFile": "original/high/h2/2mid/19_팔마고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6f4d466541c051fa0a6f454326045467145cadb500a40dba5d57bd1e80cd9e0f",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "분자 영점 조건으로 f(3)을 정하고 x+2 인수를 분리해 f'(3)을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1a8d847c2eac6dcc290061ca4de041b7124ee26df78cc7d003d32076314f797e",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "step": "곱함수의 실제 함수값을 먼저 확인하고 차분몫에서 x+1을 소거해 미분계수 존재를 판정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_79a6871044c63837df604769333d433c4b28e65cf1d27be79a3d7174e8abd71d",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_DERIVATIVE_RELATION_FUNCTION_DETERMINE",
+      "step": "함수방정식에 증가량 h를 넣어 f'(x)=f'(0)+3x를 도출하고 주어진 도함수값을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-3825b4034e7d-19e69a0f",
+  "sourceArchiveFile": "original/high/h2/2final/22_복성고_2학기_기말_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_87da4bb9f79eaae7d1a416b5be4a51f3849607b60c3325f757c8348af24ce5ac",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "step": "외부점을 지나는 접선 조건으로 두 접점을 정해 삼각형의 밑변과 높이를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c4d18696d79256e5cf8d0db4bc4bc044614fb39766cef24717a922f8aacbc783",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+      "step": "이동 적분구간을 미분해 g'=f(x+1)-f(x)의 부호 변화로 최솟값을 정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a08680a516e5a8a8857c3b5b0dc0189cd309a7b448df71bebdc7896acd386b6f",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+      "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_ANALYSIS",
+      "step": "F'=f의 영점에서 부호가 바뀌는 횟수를 삼차식의 극값 높이로 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9b6195e25da4f67df66a8c5bcce21048505a2fad40a07486520ebb1c4858083c",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "step": "접선과 함수 차의 중근 구조로 함수식을 복원하고 극점 좌표 차로 직사각형 넓이를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

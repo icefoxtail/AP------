@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-7e0a1428bae0-17e8b8bb",
+  "sourceArchiveFile": "original/high/h1/1mid/21_제일고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_9612fd0c350a94e73470f61615d070d20a3b6690b0f85f84cad82ac26e413f68",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "step": "앞의 두 인수를 x³-1로 묶고 곱에서 x³항을 만드는 항만 추출한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c5216bae8b1c563c5995b2292213781cb341947f8d60497943a4ef7353b997ea",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "z=u+vi를 대입해 실수부·허수부 상등식 두 개를 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_431bcd2f35971f9c6405c2c514e5081ecd3510282187ea32eab7a575b444fab6",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+      "step": "모든 k에서 중근인 판별식 항등식으로 a를 정하고 별도 실근 판별식 범위에서 b를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3120abda6a00ca17f7eed717ff014f7695f93dcd75579b6cca6290d71efdc391",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "step": "주어진 x절편을 대입해 계수를 정한 뒤 인수분해하여 다른 x절편을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4d004315009396829248c4e9672389528ca20480e30ffda6e73ab29cca2d4d86",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
+      "step": "제곱근 곱의 음수 부호에서 a,b가 모두 음수임을 판단하고 각 근호를 실수항과 i배 항으로 나눈다.",
+      "note": "TPL 제안: 음수 제곱근 연산의 부호 판정; 곱·몫 관계에서 실수의 부호를 추론하고 허수부분을 계산한다. 새 TPL 제안: 제곱근 곱의 음수 부호에서 a,b가 모두 음수임을 판단하고 각 근호를 실수항과 i배 항으로 나눈다. 정의: 제곱근 곱의 음수 부호에서 a,b가 모두 음수임을 판단하고 각 근호를 실수항과 i배 항으로 나눈다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b586244801e555867ca3a6f26840abd496d3a04ed9d1c0662e42c68e2a14c868",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_GLOBAL_PARAMETER",
+      "step": "포물선과 직선의 함수값 차를 완전제곱식으로 바꾸어 최솟값이 양수인 조건을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

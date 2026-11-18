@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0da2fbdd7c60-fafec6c5",
+  "sourceArchiveFile": "original/middle/m3/2mid/20_신흥중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_00980fc68da2a87e382d4ae87bf56cfd7b07d87cdbed493fe161df1ba411403e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_BASIC_FORM",
+      "templateKey": "TPL_M3_DETERMINE_EQUATION_FROM_GRAPH_POINT",
+      "step": "점(2,-8)을대입하여a=-2를얻고x=-1의값b=-2를더하여-4이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e2e82628ae8ad0b2ed72e6718b90d19af1a8d8145f3d78f5af7ba1fe4972211",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_POINT",
+      "step": "상수항변화-3+k=1을풀어k=4이다.",
+      "note": "필요 TPL: 수직이동량 역산. 정의: 상수항변화-3+k=1을풀어k=4이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_225559aa3ab34f1701a3e9ae920ae70e02a584baba1244c0ae350f0931b9424a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_FORMULA",
+      "step": "x를x+3으로치환하고5를더하여y=-(x+3)²+5이다.",
+      "note": "필요 TPL: 주어진 수평수직 이동으로 식 작성. 정의: x를x+3으로치환하고5를더하여y=-(x+3)²+5이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8b3144b57ae0d883a10a088a65f3ff51760916b008256ee9ac97723d9afff472",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+      "step": "y=a(x+1)²+4에y절편2를넣어a=-2,전개계수-2,-4,2의곱16이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_31cfd0b819a9763ce5ae2285b96bd9bd09ee99ea36b299c210ae351d5047d226",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+      "templateKey": "TPL_M3_TRANSLATION_FORMULA",
+      "step": "y=2(x+1)²을오른쪽3만큼이동하여2(x-2)²에x=3을대입해2이다.",
+      "note": "필요 TPL: 수평이동후 함숫값. 정의: y=2(x+1)²을오른쪽3만큼이동하여2(x-2)²에x=3을대입해2이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_65e3a5806d63880ce623eefee66bdee9f22c446703e15aa17bd7431578fe7819",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+      "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT",
+      "step": "폭조건과최댓값조건으로a=-1/2,꼭짓점(1,2)를얻어전개계수곱-3/4이다.",
+      "note": "필요 TPL: 폭과 꼭짓점으로 일반형 복원. 정의: 폭조건과최댓값조건으로a=-1/2,꼭짓점(1,2)를얻어전개계수곱-3/4이다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

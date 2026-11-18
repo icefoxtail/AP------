@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-c8a177c239b3-b1e301f0",
+  "sourceArchiveFile": "original/high/h2/2mid/22_복성고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a9bd0086a58ecdd8bc03e733bb59a7cdaa706dfb0a5c58455bf19b15b95e0450",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONT_DIFF_DEFINITION_PROOF",
+      "step": "각 함수의 원점 연속성을 살피고 절댓값의 좌우 미분계수 1과 -1을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5c6dd3230e3fc1be2171425b8e4b13f41c5efb2da3ac5ba12ff5fb9cd58c6b23",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "유한 극한으로 f(1)=3을 얻고 나머지 차분몫을 f'(1)로 읽어 계수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_85fd8067e997f44b8b7ffd270a129ae6681eefac4b5f3bfc600be1455be12f67",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENCY_RELATION_GEOMETRY",
+      "step": "차분몫 정의로 도함수를 구하고 두 곡선이 공통 접점을 지나며 기울기가 같다는 조건을 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

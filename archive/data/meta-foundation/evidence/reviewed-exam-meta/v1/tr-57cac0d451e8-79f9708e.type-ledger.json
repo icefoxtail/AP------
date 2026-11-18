@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-57cac0d451e8-79f9708e",
+  "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4008e61044ac2f0efd9c2b74150fe3c2a764a75fe701a1ff5d68f300acae82a6",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
+      "step": "제곱근과 제곱의 순서를 구별하여 각 값을 계산하고 최댓값 12를 고른다.",
+      "note": "도구: TPL_NOT_ACTIVE | 필요 TPL 제안: 근호와 제곱 순서를 구별한 수치 계산 — 제곱근을 제곱하는 식과 제곱한 수의 양의 제곱근을 구하는 식을 구별하여 값을 계산하고 합이나 대소를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_69c16fe4dc3b7f8074f5d0959f34d8028f1f2b430ebfb89e6586029b335a8aa8",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+      "step": "양수끼리 제곱해 비교하여 √15<4와 √7+1<4의 참을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6c3170e2eb92ab9c89773ea1d382d916e4b9dba1e20112bb2f1b25c71416b99f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+      "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+      "step": "그림의 BD=2√2, BE=2√5를 원점 중심으로 수직선에 옮겨 P와 Q의 좌표 합을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa748a372b64539412add946410c76eb1cfaecbf301662bfa73e8ae982787846",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "step": "근호의 나눗셈 법칙 √18/√2=√9=3으로 옳은 계산을 판별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc9f5a6aa380a70e905452e192d5d7d5833c816ecb8fa0aca78b4c9d1166ae8b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_REPRESENTATION",
+      "step": "√240=4√15=4√3√5로 분해하여 4ab로 나타낸다.",
+      "note": "도구: TPL_NOT_ACTIVE | 필요 TPL 제안: 정수 근호의 제곱인수 분리와 문자 표현 — 근호 안 정수를 완전제곱 인수와 주어진 근호들의 곱으로 분해하여 정수계수와 문자 곱으로 나타낸다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e2e6e06f4a49d7850724759ed82242c798d6e528d5407614ed1272c3ca027a6",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+      "step": "그림과 발문의 두 대각선 길이로 마름모 넓이를 나타내 3√30=√3x를 풀어 x=3√10을 얻는다.",
+      "note": "도구: TPL_NOT_ACTIVE | 필요 TPL 제안: 도형의 넓이 관계에서 근호 미지수 계산 — 삼각형·사각형의 넓이 관계를 근호식의 등식으로 세우고 근호의 곱·나눗셈과 제곱으로 길이의 미지수를 구한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e773da4f9617e7184c787524dca466650aa0c682daec135ad413a5f9eb4a6c5",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_COEFFICIENT",
+      "step": "2x²+7x−15=(2x−3)(x+5)로 인수분해하고 a+b=8을 구한다.",
+      "note": "도구: TPL_NOT_ACTIVE | 필요 TPL 제안: 이차식의 인수와 상수 매개변수 복원 — 이차식을 두 일차식의 곱으로 인수분해하고 각 인수의 상수항과 계수를 비교하여 매개변수와 그 결합값을 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4d9296c049aec9669a4b95b082a0a040b138b9f7e8518bafacb7952132e72ad9",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+      "step": "곱이 −24인 정수쌍의 합 ±23,±10,±5,±2를 열거하여 불가능한 값 8을 찾는다.",
+      "note": "도구: TPL_NOT_ACTIVE | 필요 TPL 제안: 정수 인수쌍의 합으로 일차항 계수 후보 탐색 — 상수항을 곱으로 갖는 정수 인수쌍을 열거하고 그 합이 일차항 계수임을 이용해 가능한 값과 불가능한 값을 판별한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5304887c27d43c96f4092a77ecf6451d443d9577d6a219c1a01fddb3ab6064d6",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+      "step": "주어진 다항식을 각각 인수분해하여 공통인수 x+3을 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f026b332d0dd8a0fd7e90397af3ea54994e807728302fba5e1c890fcd8ad76b",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
+      "step": "3<√(2n−1)≤5를 제곱하여 5<n≤13으로 바꿔 자연수 여덟 개를 센다.",
+      "note": "도구: TPL_NOT_ACTIVE | 필요 TPL 제안: 제곱근 부등식의 제곱 변환과 자연수 개수 — 양수인 경계를 제곱하여 근호 부등식을 일차 범위로 바꾸고 경계 포함 여부에 따라 자연수 해를 센다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    }
+  ]
+}

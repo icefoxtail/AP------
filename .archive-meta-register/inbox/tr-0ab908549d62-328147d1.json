@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-0ab908549d62-328147d1",
+  "examUid": "22_복성고_2학기_기말_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2final/22_복성고_2학기_기말_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "c0305dec222b8629dd74c9712e10283190f3e180",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+        "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_aa6b8776c53d2ee6c4ec2ebbf233d6f5b428c73cbca527272714c6263c9b439e",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_POPULATION_MEAN_ESTIMATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE"
+      },
+      "rationale": "신뢰구간 길이에 공통인 2σ를 제외하고 z/√n을 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "5916d3c0568e3bdc3dfae92f962b083519f808928bafb2fed8d50aa017097619",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+          "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9b5c4d927817bcca81292858150bd5e3acdc3d3f4864bb78fb13e3599bd69202",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION"
+      },
+      "rationale": "합격점 60을 z=0.8로 표준화해 꼬리확률에 전체 인원 1000을 곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "fe67c37f806cc00592805312f9e577a6ecff7c0edf784229a46f986132a2641f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+          "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fa87dc5588412aaa09976c7d8e67ed38802ed309fbcb4aa34e908c44289c6653",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_POPULATION_MEAN_ESTIMATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE"
+      },
+      "rationale": "신뢰구간 길이의 비를 임계값 비 3/2와 표본크기 제곱근의 역비 1/8의 곱으로 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e0b6abbd44aff1ccbcd530a2648987822341dba8842dc70577c368fe2524bfc0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+          "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3a35786b37b58adb13c916717230458e2bb102dc9d532c017f7ba0208240686b",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_MONOTONE_FUNCTION_COUNT"
+      },
+      "rationale": "비내림차순 세 함수값은 중복조합 35개, 엄격한 대소조건의 두 함수값은 조합 10개로 곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "26ba4cf1363fb042f3eaca0227c97be45ecc1b6879be4dab041a7433008cb0e5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+          "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8859220b3206b83cb3fd89fb62aad851585562ab011db5dedd0a9615971b2e78",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE"
+      },
+      "rationale": "옮긴 공의 색으로 B의 흰 공 관측을 분기하고 관측 확률 23/56으로 흰 공 이동 결합확률 8/56을 나눈다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "e1c7023f26bf4d4daf7974c2693e0a5b71a28265fbc5bf8eea4db3ccdec3be9f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+          "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d11689472728818905baebc1e1e324e6dde14f90662e3d31ed98385569ddc57a",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+      },
+      "after": {
+        "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+        "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT"
+      },
+      "rationale": "서로 다른 타석 성공확률을 유지하고 두 안타 또는 세 안타인 배타적 경우의 독립 곱확률을 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "f2baeb25dc3ac6e8557ede61710fbc9338f963ddc9cbef7246ba6609bbe974cf",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-0ab908549d62-328147d1.type-ledger.json",
+          "sha256": "349a8e22120531557f14384fa71d932b959e9d2a5d77565830f1b2eaaf944774"
+        }
+      ]
+    }
+  ]
+}

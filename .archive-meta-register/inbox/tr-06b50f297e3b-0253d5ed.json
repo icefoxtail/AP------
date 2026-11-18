@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-06b50f297e3b-0253d5ed",
+  "examUid": "26_순천여고_1학기_기말_고1_유사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사.js",
+  "expectedSourceBlobSha1": "6fc75ac80c7e5e8fc071534f8b666e2b7149afa8",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+        "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_66e473d2443f4dc3b74cfc356717b363bd2318332fd7e9c59ea84f29dbd09607",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+        "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE"
+      },
+      "rationale": "조합의 팩토리얼 정의를 대입하여 약분하고 값을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "9ebf164d2d3cbea2fbc0ad53cdb39f79c86975d45ab3e77f02f565bfd3b94d49",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4e77b7858b065d998e8964569ed9a2b2a38074e0e0e6beb69e156ab6096019d8",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+        "templateKey": "TPL_H1_MATRIX_BASIC_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_MULTIPLICATION_DIMENSION"
+      },
+      "rationale": "앞 행렬의 열 수와 뒤 행렬의 행 수가 같은지 비교해 곱의 정의 가능성을 판단한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "0250027301e6777171adf953620f66addad4d38bde8438640bf3768edea22073",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bd799ae86a64a97964c2a2438d3c1cd4879441a7edf3c07bb4dceaece3152b32",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT"
+      },
+      "rationale": "x절편을 두 근으로 보고 근의 곱에서 b를, 근의 합에서 a를 정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "a0709b094e270ee82bda26eb0f784965fc5973e20ee8cda57ef27d4df6d7d8f4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9931ee2abbdb2f9a366f705f5b924d5a5a6056018cf387f0ac5cdc7ab65dd985",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+        "templateKey": "TPL_H1_MATRIX_EQUATION_STRUCTURAL"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT"
+      },
+      "rationale": "기본 열벡터와의 곱에서 A의 두 열을 읽고 주어진 벡터와의 곱을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "a69697451b8a472492bfbc898b7d17fdb4bfee0e5d21f99362ae2cee528b4aac",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9a6c13fad43bbd22cf72a3e0c912f88ff1e5327082053b0dbf8e40e37eef24c9",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+        "templateKey": "TPL_H1_MATRIX_POWER_PERIOD"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+        "templateKey": "TPL_H1_MATRIX_POWER_IDENTITY_SHEAR_POWER"
+      },
+      "rationale": "대각성분 1과 한 비대각성분을 가진 행렬의 거듭제곱에서 비대각성분이 n배임을 유도한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "fe62c033a0bfa4bb172a0fee3ecd1917341cdaee6f639316a53b55bf99a2c935",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f467d3354d5911a33ce1d09e01e36e59a1b15ac197643a7dc26f674c33f4ff71",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+        "templateKey": "TPL_H1_COUNTING_DIRECT_CASE"
+      },
+      "rationale": "상대 순서가 고정된 자음의 자리만 선택한 뒤 남은 모음 두 개를 배열한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "9a75f440e6774417ed6cc06cf761ff054748c31c9fdfd91b98a13ebfb0bdab0d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_69a7c386fba313ccdaa4ca4943100c4c09267722de7b5d84967f21eb6a92d585",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+        "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT"
+      },
+      "rationale": "행렬제곱의 성분합을 구하고 두 근의 합과 곱으로 치환해 k를 결정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "4dea7f3ffd0f5c9c997474d098a8684fd85be66051919d81677b4bd47bd64cb6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_29f42ec3c268b140731674e450bc2b77084708515b175d69e7ccd1b234135307",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION"
+      },
+      "rationale": "첫 자리의 0을 제외하고 자릿수별 팩토리얼 묶음을 빼가며 지정 순위의 수를 복원한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "18c9b9d75db72329bcaae545fab76e7f9449f9bce8cc58dc1b1dbb03cb4ac880",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c6fc0cc37d77f7fae2f63d24ec83130fb4a960ffbf494c565a47d204c242c639",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+        "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE"
+      },
+      "rationale": "그래프가 x축과 만나지 않는 판별식 음수 조건을 두 눈의 차 제한으로 바꾸어 센다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "60cfbd626fca6ab795f8398c1ba785e303519bcea557e2f9ada195817c9f1fc6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b5fa911bcb14cb51a34825c088f5b5d860525e5268c38ee4633d51f56e174239",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL"
+      },
+      "rationale": "실근 조건으로 매개변수 범위를 얻고 근의 제곱합을 그 범위에서의 이차식으로 최소화한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "f4c6771087f075b85d3cb9c030eb6edfd2b9c1f9d32eb6d1f9414891ea27b13c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-06b50f297e3b-0253d5ed.type-ledger.json",
+          "sha256": "502c52d49dd4e32a608c2d0a425ae674ff7aa7fd266d6b8b78b55a6e9e538c58"
+        }
+      ]
+    }
+  ]
+}

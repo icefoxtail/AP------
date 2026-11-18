@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-f74b380c7096-baf1f9e7",
+  "examUid": "20_효천고_1학기_기말_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1final/20_효천고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "09ce59490cfab8d66867a5cc2440081c70856578",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f74b380c7096-baf1f9e7.type-ledger.json",
+        "sha256": "744bdc5808eca8ad2f12e7829f8f59b80151d0f21dc1756ad1621b8b30cc4655"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_96706fbe02f5db8b995641ebe0e429e59145e01ac771fb9ad3b9dbe198c5ecac",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION"
+      },
+      "rationale": "제수 x-1의 근 1을 대입하여 P(1)=0을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "4c2f537da7effdf65970fd294780fb148a96d190ba056686c141cee741a18662",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f74b380c7096-baf1f9e7.type-ledger.json",
+          "sha256": "744bdc5808eca8ad2f12e7829f8f59b80151d0f21dc1756ad1621b8b30cc4655"
+        }
+      ]
+    }
+  ]
+}

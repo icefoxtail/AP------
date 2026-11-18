@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-95eb793f4d8c-f665779a",
+  "examUid": "20_순천여고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/20_순천여고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "315ce97fb4db13e093dea2202f935c54334b9920",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-95eb793f4d8c-f665779a.type-ledger.json",
+        "sha256": "74cbbac865af4c184479e37496ef279e5f8db456fb575489cdc0444fb87451fe"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_20b950fc462ee740376876547569ac0eb86a3040c5f572a9b0600a5bdc752599",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+      },
+      "rationale": "꼭짓점의 위치와 최솟값으로 완전제곱식의 계수를 결정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "4a3a80622b4d86f7fc026259c217a3c0a96ab70b4ce2d29db8ff017d5e93d1c1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-95eb793f4d8c-f665779a.type-ledger.json",
+          "sha256": "74cbbac865af4c184479e37496ef279e5f8db456fb575489cdc0444fb87451fe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_51e7d4327c6ddce5c0d70eaa2a6477c20d771443928d4179d650b3be7f1980db",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE"
+      },
+      "rationale": "실근 1을 인수로 뽑은 이차식에서 두 허근의 합과 곱을 얻어 세제곱합을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "b7e3b2157796d89e41525202467f42db1d293441d29246affebf960a46457113",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-95eb793f4d8c-f665779a.type-ledger.json",
+          "sha256": "74cbbac865af4c184479e37496ef279e5f8db456fb575489cdc0444fb87451fe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c9e02de19a138a6b766733fd77c0ac387cf73e40b322a7980ad50953e304f3f8",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND"
+      },
+      "rationale": "조건을 대입한 식을 y⁴+2y²-1로 정리하고 비음수 항이 동시에 0인 경우 최솟값을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "66ba11866497855fe555bdc70d4e64a9efb7bdc2d044a0d4aaf6bf9d6ce8bf08",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-95eb793f4d8c-f665779a.type-ledger.json",
+          "sha256": "74cbbac865af4c184479e37496ef279e5f8db456fb575489cdc0444fb87451fe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b8b7862808618fc86dfb6aaf027a7ca93957a2292fc1f683ee50ed64a6f8014c",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+        "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX"
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY"
+      },
+      "rationale": "삼각형 넓이로 두 x절편 사이 거리를 구하고 대칭축으로 각각의 절편과 함수식을 복원한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "609dddc754bd301cfededcee5db05933aacb015105909b6983a418f030815239",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-95eb793f4d8c-f665779a.type-ledger.json",
+          "sha256": "74cbbac865af4c184479e37496ef279e5f8db456fb575489cdc0444fb87451fe"
+        }
+      ]
+    }
+  ]
+}

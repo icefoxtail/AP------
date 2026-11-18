@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-653644415a7c-454edc78",
+  "examUid": "21_신흥중_2학기_기말_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2final/21_신흥중_2학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "48af1a5fb3feb12c0ba4adb2e74b939a3cf5121e",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-653644415a7c-454edc78.type-ledger.json",
+        "sha256": "d2facf7bef2dd204c86c3923b1ebc072ccb02a7fbcdbef1e1b7ffb7f3a69a686"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6c676ab2dbf66fb9a8178de6c67883b23ceac6156fa033ab94da19f3fcf65d8f",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH"
+      },
+      "rationale": "합동으로 두 빗변 AC=CE와 사이각90도를 얻어 빗변제곱6제곱+8제곱100의 절반50을 넓이로 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "f3fd227b514e43d38cbd9d57a2ce56ea7da066ade9601cec41688045baba0a62",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-653644415a7c-454edc78.type-ledger.json",
+          "sha256": "d2facf7bef2dd204c86c3923b1ebc072ccb02a7fbcdbef1e1b7ffb7f3a69a686"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8fc002950b5f6174b586682bb31ed651a2c8bc1f3d5e2d32dba9027443221b0e",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_CENTROID"
+      },
+      "rationale": "무게중심과 내심이 밑변평행선 위에 있으므로 r=h/3을 얻어 내심넓이식에서 BC=15를 구하고 평행단면2/3배를 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "074e966e214cf60a7454b43661c8f7195daaa1333653474d07ced83a8d1cbdb8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-653644415a7c-454edc78.type-ledger.json",
+          "sha256": "d2facf7bef2dd204c86c3923b1ebc072ccb02a7fbcdbef1e1b7ffb7f3a69a686"
+        }
+      ]
+    }
+  ]
+}

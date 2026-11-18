@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-bd7ea741f00b-4965fdd1",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_왕운중_2학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2a8b0f6b7a066d01a94770a4b378295e1b6e135a52eab61969da3adfa63b0861",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+      "step": "①은 두쌍 대변 등길이,⑤는 두 엇각의 같음으로 두쌍 대변평행이므로 평행사변형이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9a9d8f0854ea6bee7cc8a2a8e0b73afbf0d1feb21632d68d1c1896dc112ebd8c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MG_PARALLELOGRAM_ANGLE_BISECTORS_RECTANGLE",
+      "templateKey": "TPL_MG_EVALUATE_RECTANGLE_FORMED_BY_PARALLELOGRAM_BISECTORS",
+      "step": "이웃내각의 합180으로 이등분선이 수직이어서 EFGH는 직사각형이지만 대각선 수직은 보장되지 않아④이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

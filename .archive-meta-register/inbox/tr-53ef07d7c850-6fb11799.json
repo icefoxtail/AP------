@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-53ef07d7c850-6fb11799",
+  "examUid": "22_매산고_2학기_기말_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js",
+  "expectedSourceBlobSha1": "8142605df32ecdfad9208d01b24c47fdb6dbcc3a",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+        "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_877701c8a692b9ce69987b13d0e24122c453259db283681c9ae45e134d00ec57",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DERIVATIVE_TO_FUNCTION"
+      },
+      "rationale": "그래프의 두 영점과 꼭짓점으로 도함수를 정하고 적분한 함수값 차를 이용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "19a1f79dfa3a8844f9126a9908b9b62241a045bf3b68a9755a831bc898ce2474",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1127b88a031b55238ad15867fd74a0b47b89c40c34425fd6b3736992b63edbe3",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_DIRECT"
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "templateKey": "TPL_MONOTONICITY_CONDITION"
+      },
+      "rationale": "도함수 이차식이 전 실수에서 비음수이도록 판별식 조건을 세운다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "5a720ca2248b3d6fef0bce670fe140b096f7deaa1a16009c070270077039640d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_58e09945bca239bf7b174df26dc2ac8c1e536dcdbe7b756c00348cd5fc27ac3b",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM"
+      },
+      "rationale": "0부터 5까지 정적분을 단위 구간별 주어진 값의 합으로 분할한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "4d357c429d3dc4fb34bbc6b5c91342be176f9a7b6ebfb61d37f673296505f69c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e89606117a34f94f2dee023181135de0597f04273e4e11633a41bab62e3c2e2f",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM"
+      },
+      "after": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "templateKey": "TPL_AREA_FROM_INTEGRAL_DATA"
+      },
+      "rationale": "평행이동 관계로 목표 구간의 정적분을 복원하고 단조성으로 함수가 양수임을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "00e5a2718eb3ed0977f1323bf7f7d43198d3a60be9d2cb30bfb0b91d21073bfc",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_97ddc783298d5b287ee740d3b814f0831910043789647adaea774111de9eec0d",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_DEFINED_FUNCTION_DIFFERENTIATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM"
+      },
+      "rationale": "상한과 하한이 같은 x=a에서 적분이 0인 성질로 a(a-4)=0을 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "e8e2b993465eca143b334aa83a202e0865d85c0309d4927f6c661f010ebb1860",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_de602e60bec5f6993516b8024bedefc3dd25804099f6342f7cfec3282bc478c4",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_DIFFERENTIATE_INTEGRAL_RELATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION"
+      },
+      "rationale": "상수 A=∫|f|를 두고 영점으로 절댓값 적분을 분할해 A의 방정식을 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "40e29c6c6ed6c123e671bd9287e4b88c8bd57047327eb115f42936f294b11240",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4c45b74ab90590187dd47cdec9e4bb1970dd36000a8173fd56bbd76640f995ee",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_VELOCITY_TO_POSITION_DISTANCE"
+      },
+      "after": {
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "templateKey": "TPL_MOTION_CONDITION_PARAMETER"
+      },
+      "rationale": "속도 차를 적분한 위치 차가 두 양의 근을 갖도록 삼차식의 극값을 매개변수로 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "c00ef2140878b1b277f79d0e7d0c745e5f71fb3b9da2d98bf1d87a457730d1c0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a920f65872a3603415bbfb24a7625345838852384e09e9da11a03333a200c2bd",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_INVERSE_FUNCTION_INTEGRATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_PROPERTY_TRANSFORM"
+      },
+      "rationale": "역함수 존재를 도함수 부호로 확인하고 역함수 적분을 원함수 넓이로 변환한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "0263df579a567502ba0faa7a5d5451bca50eab8df51d6e8bc46ad79db2b3a358",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d7fe72d7cf96db936365bce56aa996323392d8eec823f48682ecc305ed997f6b",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "templateKey": "TPL_EXTREMA_VALUE_PARAMETER"
+      },
+      "after": {
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+        "templateKey": "TPL_NONDIFFERENTIABILITY_STRUCTURE"
+      },
+      "rationale": "절댓값의 미분불가능점 개수가 바뀌는 높이로 도함수의 단순근·중근 위치를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "76226bf5e5c1267cfcf90e32d6098da2fc5d91a4038fd7258537a30529ee5f11",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_82f1b17660171ebb1e6fdc8b1f9b8f23763c578cb53089edc4dc9c087755db66",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "templateKey": "TPL_DEFINITE_EVALUATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "templateKey": "TPL_INTEGRAL_VALUE_SYSTEM_FUNCTION_DETERMINATION"
+      },
+      "rationale": "근으로 인수분해한 이차식의 정적분 조건을 풀어 계수를 복원한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "a277c71f2480ec42a9301a8b94ab1d64411bbf248863e7c202224895626cd384",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f3b9b9f18be7c5bdcb8085066a7dd50242182290d394a8919e44eb94be97caa1",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_MOTION_EVENT_ANALYSIS"
+      },
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "templateKey": "TPL_DERIVATIVE_MOTION_GEOMETRIC_RATE"
+      },
+      "rationale": "닮음으로 물의 반지름을 높이와 연결하여 V(t)를 세우고 시간 미분으로 부피 변화율을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학II"
+      },
+      "textBindingFingerprint": "dbcd198880d74807c8c2a18746287d9eaacced3cc35d0a81b01b3c692cadf52e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-53ef07d7c850-6fb11799.type-ledger.json",
+          "sha256": "055e514ea401284cff58f0f76b06a1947d97e84301b1c85be4c82ea06c6cfb00"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-37febd310314-92c66fda",
+  "examUid": "20_금당중_2학기_기말_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2final/20_금당중_2학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "2dab2f8d025083e303faf177bb2d4098f4b7ad1a",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-37febd310314-92c66fda.type-ledger.json",
+        "sha256": "8c507b9947e71dc692007332220b3e82661dfedd333e68b84903ec3ee9d17323"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_e508d239885fcbaa6aea9aca83486cb7411ce21d4c25c947e3b9005528237d39",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_CENTROID"
+      },
+      "rationale": "연속 두 무게중심의 높이비1/9와 밑변BD의비1/2를 곱해 목표넓이를 전체90의1/18인5로 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "bb9d1d18dd4384a151e988b7a363dca9b2fa23aea0dfabcf493146828f6fd075",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-37febd310314-92c66fda.type-ledger.json",
+          "sha256": "8c507b9947e71dc692007332220b3e82661dfedd333e68b84903ec3ee9d17323"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PROBABILITY"
+      },
+      "rationale": "독립 가정 아래 A만성공5/6×1/8과 B만성공1/6×7/8을 더해 정확히하나 성공확률1/4를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a6b20a4b62017fced862e2f561fea88ea19f009495dbe4daacb148c61655b7b6",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-37febd310314-92c66fda.type-ledger.json",
+          "sha256": "8c507b9947e71dc692007332220b3e82661dfedd333e68b84903ec3ee9d17323"
+        }
+      ]
+    }
+  ]
+}

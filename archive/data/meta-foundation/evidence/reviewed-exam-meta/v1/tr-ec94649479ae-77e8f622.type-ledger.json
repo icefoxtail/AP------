@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-ec94649479ae-77e8f622",
+  "sourceArchiveFile": "original/high/h2/2mid/22_복성고_2학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e8d0aa10ebe9332959bd5be2042700ea9b755d3b1eaadb7975f6fbaa7c7bfa7e",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "step": "호두과자 무게 구간을 평균 300·표준편차 5로 표준화하여 z=-1부터 2까지 면적을 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dd303f30421d3b36e7ed3277d27a67015a06969109747897b4c97af4fa6913b3",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "step": "두 정규누적확률을 표준화하여 경계 a/2와 b를 일치시킨다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

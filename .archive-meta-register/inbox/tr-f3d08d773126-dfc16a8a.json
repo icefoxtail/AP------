@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tr-f3d08d773126-dfc16a8a",
+  "examUid": "22_향림중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/22_향림중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "3066db3d794c0f03b5e389e7d8c33b06d5932d68",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f3d08d773126-dfc16a8a.type-ledger.json",
+        "sha256": "0e74cca94b40bac6e6f700440fba07970361ff9193b6060cdff190c457c62ed8"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a60bcab59572c2a5b49567354a4307ddabf304267272dbb1192de2f9036f5a4e",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "PT_RADICAL_EXPRESSION",
+        "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY"
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_VALUE"
+      },
+      "rationale": "분모를 유리화하여 x-y=√5-2를 얻고 합차공식과 대입으로 목표식 값을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "47201ebd856b8cd1ccb5526443bb7001d83a70aebee3f1fbac89ecf8331bfb2e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f3d08d773126-dfc16a8a.type-ledger.json",
+          "sha256": "0e74cca94b40bac6e6f700440fba07970361ff9193b6060cdff190c457c62ed8"
+        }
+      ]
+    }
+  ]
+}
