@@ -1,0 +1,437 @@
+// 유사 시험지 가져오기 하네스: 후보 뽑기 → 판정 검사 → 검수 묶음 → 반영. 합성 2문항 시험지로 본다.
+// 특정 RPM id·PT 키·개수를 고정하지 않는다 (후보에서 그때그때 고른다).
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import vm from 'node:vm';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+import { convertSimilarExam } from '../archive/tools/similar-md-to-js.mjs';
+import { buildCandidateSet } from '../archive/tools/similar-import/build-candidates.mjs';
+import { checkJudgments } from '../archive/tools/similar-import/check-judgment.mjs';
+import { applyJudgments } from '../archive/tools/similar-import/apply-judgment.mjs';
+import { buildReviewMarkdown } from '../archive/tools/similar-import/build-review-pack.mjs';
+import { gitBlobSha1, readJson, writeJson, stripWs, loadCrosswalkRecords, loadCourseGroups, loadTermDictionary } from '../archive/tools/similar-import/lib.mjs';
+import { buildMd, hq1, hq2 } from './helpers/similar-md-fixture.mjs';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const STEM = '99_하네스시험_1학기_중간_중2_유사';
+const quiet = () => {};
+
+function fresh() {
+  const work = fs.mkdtempSync(path.join(os.tmpdir(), 'sim-harness-'));
+  const md = buildMd({ stem: STEM, questions: [hq1, hq2] });
+  const mdPath = path.join(work, 'src.md');
+  fs.writeFileSync(mdPath, md);
+  const conv = convertSimilarExam({ mdContent: md, repoRoot, writeFiles: true, outDir: path.join(work, 'stage') });
+  assert.equal(conv.validation.valid, true, conv.validation.errors.join('\n'));
+  const jsPath = path.join(work, 'stage', `${STEM}.js`);
+  const cand = buildCandidateSet({ jsPath, outDir: work, mdPath, repoRoot });
+  return { work, mdPath, jsPath, cand, judgmentDir: path.join(work, 'judgment'), candDir: path.join(work, 'candidates'), cleanup: () => fs.rmSync(work, { recursive: true, force: true }) };
+}
+
+function pick(candDir) {
+  const c = readJson(path.join(candDir, 'q01.json'));
+  const unit = c.units.find(u => u.rpm.length && u.subUnits.length);
+  assert.ok(unit, '후보 단원이 있어야 한다');
+  const ptUnit = c.units.find(u => u.problemTypes.length);
+  const pt = ptUnit?.problemTypes[0];
+  return { unit, pt, tpl: pt?.templates[0] };
+}
+
+const review0 = () => ({ reviewerSolvedAnswer: '', verdict: '', fixes: [], note: '' });
+
+function goodJudgments(candDir) {
+  const { unit, pt, tpl } = pick(candDir);
+  const j1 = {
+    qid: 1,
+    solveSteps: ['양변에서 3 을 빼면 x=7-3 이다.', 'x=4 이므로 보기 ③ 4 가 답이다.'],
+    solvedAnswer: '4', answerMatches: true, answerIssue: '',
+    figureNeed: 'NONE', figureEvidence: '',
+    standardUnitKey: unit.standardUnitKey, subUnitKey: unit.subUnits[0].subUnitKey, unitEvidence: '방정식 $x+3=7$',
+    rpmRecordId: unit.rpm[0].id, rpmReason: 'x+3=7 에서 양변에서 3 을 빼는 한 단계를 쓴다.',
+    problemTypeKey: pt ? pt.problemTypeKey : 'NONE', templateKey: tpl ? tpl.templateKey : 'NONE',
+    typeReason: 'x+3=7 에서 x=4 를 구하는 결정적 단계는 양변에서 3 을 빼는 것이다.',
+    newKeyProposal: pt ? null : { key: 'PT_LINEAR_EQUATION_SOLVE', label: '일차방정식 풀이', why: '일차방정식의 해를 구하는 문항을 모은다.' },
+    difficultyBucket: 1, difficultyConfidence: 'high', difficultyReason: 'x+3=7 을 푸는 한 단계 문항이다.', level: '하', format: '',
+    slots: {
+      given: [{ term: '방정식', src: 'stem', quote: '방정식 $x+3=7$' }],
+      goal: [{ term: '해', src: 'stem', quote: '의 해는?' }],
+      method: [{ term: '등식의성질', src: 'solution', quote: '등식의 성질로 양변에서', evidenceType: 'NAMED' }],
+      condition: [],
+    },
+    slotReasons: {}, how: 'x+3=7 을 직접 풀어 x=4 를 얻고 보기 ③ 과 대조했다.', review: review0(),
+  };
+  const j2 = {
+    qid: 2,
+    solveSteps: ['2x=12 의 양변을 2 로 나눈다.', 'x=12/2=6 이다.'],
+    solvedAnswer: '6', answerMatches: true, answerIssue: '',
+    figureNeed: 'NONE', figureEvidence: '',
+    standardUnitKey: unit.standardUnitKey, subUnitKey: unit.subUnits[0].subUnitKey, unitEvidence: '방정식 $2x=12$',
+    rpmRecordId: unit.rpm[unit.rpm.length - 1].id, rpmReason: '2x=12 에서 12 를 2 로 나누는 풀이 단계에 해당한다.',
+    problemTypeKey: 'NONE', templateKey: 'NONE',
+    typeReason: '후보 유형 중 2x=12 처럼 계수로 나누어 12 에서 해를 구하는 것이 없어 NONE 으로 둔다.',
+    newKeyProposal: { key: 'PT_LINEAR_EQUATION_SOLVE', label: '일차방정식 풀이', why: '일차방정식의 해를 구하는 문항을 모은다.' },
+    difficultyBucket: 2, difficultyConfidence: 'medium', difficultyReason: '12 를 2 로 나누어 x=6 을 얻는 서답형이라 2단계로 본다.', level: '중', format: '',
+    slots: {
+      given: [{ term: '방정식', src: 'stem', quote: '방정식 $2x=12$' }],
+      goal: [{ term: '해', src: 'stem', quote: '해를 구하시오' }],
+      method: [{ term: '등식의성질', src: 'solution', quote: '등식의 성질로 양변을', evidenceType: 'NAMED' }],
+      condition: [],
+    },
+    slotReasons: {}, how: '2x=12 를 직접 풀어 x=6 을 얻고 저장 정답 6 과 같음을 확인했다. 12 를 2 로 나눈다.', review: review0(),
+  };
+  return { 1: j1, 2: j2 };
+}
+const writeJudgments = (dir, js) => { for (const j of Object.values(js)) writeJson(path.join(dir, `q${String(j.qid).padStart(2, '0')}.json`), j); };
+const withReview = (js, patch = {}) => {
+  const out = JSON.parse(JSON.stringify(js));
+  out[1].review = { reviewerSolvedAnswer: '③', verdict: 'PASS', fixes: [], note: '직접 풀어 확인' };
+  out[2].review = { reviewerSolvedAnswer: '6', verdict: 'PASS', fixes: [], note: '직접 풀어 확인' };
+  for (const [q, r] of Object.entries(patch)) out[q].review = { ...out[q].review, ...r };
+  return out;
+};
+const codesOf = (r, qid) => r.items.find(x => x.qid === qid).codes.map(c => c.code);
+const check = (ctx, only = null) => checkJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, only, repoRoot });
+const loadBank = file => {
+  const c = { window: {} };
+  vm.createContext(c);
+  new vm.Script(fs.readFileSync(file, 'utf8')).runInContext(c);
+  return JSON.parse(JSON.stringify(c.window.questionBank));
+};
+
+test('build-candidates: 과목·교육과정으로 거른 후보, 원문 인용, 빈 판정 틀', () => {
+  const ctx = fresh();
+  try {
+    assert.deepEqual(ctx.cand.courses, ['MIDDLE2']);
+    const c = readJson(path.join(ctx.candDir, 'q01.json'));
+    assert.deepEqual(Object.keys(c).slice(0, 5), ['qid', 'questionType', 'course', 'curriculum', 'problem']);
+    assert.equal(c.reference.answer, '③');
+    assert.ok(c.units.length > 0);
+    // RPM 후보는 모두 같은 교육과정·같은 과목의 행이어야 한다
+    const members = new Set(loadCourseGroups(repoRoot).find(g => g.id === 'MIDDLE2').members);
+    const rows = new Map(loadCrosswalkRecords(repoRoot).map(r => [r.id, r]));
+    for (const u of c.units) for (const r of u.rpm) {
+      const row = rows.get(r.id);
+      assert.equal(String(row.curriculum), '2022');
+      assert.ok(members.has(row.scope) || members.has(row.standardCourse));
+      assert.equal(row.standardUnitKey, u.standardUnitKey);
+    }
+    for (const u of c.units) assert.ok(u.standardUnitKey.startsWith('M2-'));
+    // 사전 용어 인용은 원문에 그대로 있다
+    const dict = loadTermDictionary(repoRoot);
+    assert.ok(c.termCandidates.some(t => t.term === '방정식'));
+    for (const t of c.termCandidates) {
+      const text = { stem: c.problem.content, choices: c.problem.choices.join('\n'), solution: c.reference.solution }[t.src];
+      assert.ok(stripWs(text).includes(stripWs(t.quote)), `${t.term}: ${t.quote}`);
+      assert.ok(dict.byName.has(stripWs(t.term)));
+    }
+    assert.equal(c.source.standardUnitKey, 'M2-01');
+    // 빈 판정 틀이 있고, 다시 돌려도 작성 중인 판정을 덮어쓰지 않는다
+    const jf = path.join(ctx.judgmentDir, 'q01.json');
+    assert.equal(readJson(jf).solveSteps.length, 0);
+    writeJson(jf, { ...readJson(jf), how: '작성 중' });
+    const again = buildCandidateSet({ jsPath: ctx.jsPath, outDir: ctx.work, repoRoot });
+    assert.deepEqual(again.keptExistingJudgments, [1, 2]);
+    assert.equal(readJson(jf).how, '작성 중');
+    assert.equal(readJson(path.join(ctx.judgmentDir, 'q02.json')).qid, 2);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 빈 틀은 문항마다 실패하고 채운 판정은 통과한다', () => {
+  const ctx = fresh();
+  try {
+    const empty = check(ctx);
+    assert.equal(empty.anyCode, true);
+    assert.ok(codesOf(empty, 1).includes('FIELD_EMPTY'));
+    assert.ok(codesOf(empty, 1).includes('SOLVE_TOO_SHORT'));
+    writeJudgments(ctx.judgmentDir, goodJudgments(ctx.candDir));
+    const ok = check(ctx);
+    assert.deepEqual(ok.items.flatMap(i => i.codes), [], JSON.stringify(ok.items));
+    assert.equal(ok.releasable, true);
+    assert.equal(ok.summary.pass, 2);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 일부러 틀리게 채운 5종이 각각 해당 코드로 걸린다', () => {
+  const ctx = fresh();
+  try {
+    const mutate = fn => { const js = goodJudgments(ctx.candDir); fn(js); writeJudgments(ctx.judgmentDir, js); return check(ctx); };
+
+    let r = mutate(js => { js[1].slots.given[0].quote = '방정식 $x+3=8$'; });
+    assert.ok(codesOf(r, 1).includes('QUOTE_NOT_SUBSTRING'), '인용 조작');
+
+    r = mutate(js => { js[1].solvedAnswer = '5'; });
+    assert.ok(codesOf(r, 1).includes('ANSWER_MISMATCH'), '답 불일치(answerMatches 는 true 그대로)');
+    r = mutate(js => { js[1].solvedAnswer = '③'; js[2].solvedAnswer = '$6$'; });
+    assert.deepEqual(r.items.flatMap(i => i.codes), [], '번호·값·$ 표기 차이는 허용');
+
+    r = mutate(js => { js[1].rpmRecordId = 'ZZ-RPM-9999'; });
+    assert.ok(codesOf(r, 1).includes('KEY_NOT_IN_CANDIDATES'), '후보 밖 키');
+    r = mutate(js => { js[1].standardUnitKey = 'M3-01'; });
+    assert.ok(codesOf(r, 1).includes('KEY_NOT_IN_CANDIDATES'), '다른 과목 단원');
+
+    r = mutate(js => { js[2].how = js[1].how; js[2].difficultyReason = js[1].difficultyReason; });
+    assert.ok(codesOf(r, 2).includes('REASON_DUPLICATE'), '문장 복사');
+    assert.ok(codesOf(r, 1).includes('REASON_DUPLICATE'));
+
+    r = mutate(js => { js[1].standardUnitKey = ''; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'), '빈 칸');
+
+    // 그 밖의 코드
+    r = mutate(js => { js[1].how = '정말 열심히 읽고 신중하게 판정했습니다 아주 자세하게요'; });
+    assert.ok(codesOf(r, 1).includes('REASON_NO_ITEM_TOKEN'));
+    r = mutate(js => { js[1].solveSteps = ['x=4 이다.']; });
+    assert.ok(codesOf(r, 1).includes('SOLVE_TOO_SHORT'));
+    r = mutate(js => { js[1].slots.given[0].term = '없는용어xyz'; });
+    assert.ok(codesOf(r, 1).includes('TERM_NOT_IN_DICT'));
+    r = mutate(js => { js[1].slots.given.push({ term: '방정식', src: 'stem', quote: '방정식 $x+3=7$' }); });
+    assert.ok(codesOf(r, 1).includes('TERM_DUPLICATE_IN_SLOT'));
+    r = mutate(js => { js[1].how = 'x=4 \t 를 구했다 탭이 섞였다 x+3=7'; });
+    assert.ok(codesOf(r, 1).includes('CTRL_CHAR'));
+    r = mutate(js => { js[1].slots.method[0].evidenceType = 'IMPLIED'; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'), 'IMPLIED 는 justification 필요');
+    r = mutate(js => { js[1].problemTypeKey = 'NONE'; js[1].templateKey = 'NONE'; js[1].newKeyProposal = null; });
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'), 'PT NONE 이면 newKeyProposal 필요');
+    // 시험지 전체가 같은 값
+    const js = goodJudgments(ctx.candDir);
+    assert.equal(check(ctx).examCodes.length, 0);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: answerMatches=false 는 answerIssue 가 있어야 하고 시험지는 보류(FAIL 이 아님)', () => {
+  const ctx = fresh();
+  try {
+    const js = goodJudgments(ctx.candDir);
+    js[1].solvedAnswer = '5'; js[1].answerMatches = false;
+    writeJudgments(ctx.judgmentDir, js);
+    let r = check(ctx);
+    assert.ok(codesOf(r, 1).includes('FIELD_EMPTY'));
+    js[1].answerIssue = 'x+3=7 이면 x=4 인데 저장 정답은 보기 ④ 5 이다.';
+    writeJudgments(ctx.judgmentDir, js);
+    r = check(ctx);
+    assert.deepEqual(codesOf(r, 1), ['ANSWER_MISMATCH']);
+    assert.equal(r.items[0].verdict, 'HOLD');
+    assert.equal(r.releasable, false);
+  } finally { ctx.cleanup(); }
+});
+
+test('FIGURE_MISSING: NEEDS_FIGURE 인데 image 가 없으면 시험지를 내보내지 않고 HOLD.md 에 적는다', () => {
+  const ctx = fresh();
+  try {
+    const js = goodJudgments(ctx.candDir);
+    js[2].figureNeed = 'NEEDS_FIGURE';
+    js[2].figureEvidence = '방정식 $2x=12$';
+    writeJudgments(ctx.judgmentDir, js);
+    const r = check(ctx);
+    assert.deepEqual(codesOf(r, 2), ['FIGURE_MISSING']);
+    const out = path.join(ctx.work, 'out');
+    const holdFile = path.join(ctx.work, 'HOLD.md');
+    const statusFile = path.join(ctx.work, 'STATUS.tsv');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, holdFile, statusFile, repoRoot, log: quiet });
+    assert.equal(ap.written, false);
+    assert.equal(ap.exitCode, 3);
+    assert.equal(fs.existsSync(out), false, '그 문항만 빼지 않고 시험지 전체를 내보내지 않는다');
+    assert.match(fs.readFileSync(holdFile, 'utf8'), /FIGURE_MISSING/);
+    assert.match(fs.readFileSync(statusFile, 'utf8'), /\tHOLD\t/);
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없음. 본보기 형식과 해시가 맞는다', () => {
+  const ctx = fresh();
+  try {
+    writeJudgments(ctx.judgmentDir, goodJudgments(ctx.candDir));
+    const out = path.join(ctx.work, 'out');
+    const statusFile = path.join(ctx.work, 'STATUS.tsv');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, statusFile, repoRoot, log: quiet });
+    assert.equal(ap.written, true);
+    assert.equal(ap.receipt, false);
+    assert.equal(ap.reviewStatus, 'review_required');
+    assert.equal(fs.existsSync(path.join(out, `${STEM}.review-receipt.json`)), false);
+
+    const jsFile = path.join(out, `${STEM}.js`);
+    const bank = loadBank(jsFile);
+    const j = goodJudgments(ctx.candDir);
+    assert.equal(bank[0].standardUnitKey, j[1].standardUnitKey);
+    assert.equal(bank[0].subUnitKey, j[1].subUnitKey);
+    assert.equal(bank[0].category, bank[0].subUnit);
+    assert.deepEqual(bank[0].tags, ['객관식', bank[0].subUnit]);
+    assert.equal(bank[0].rpmPrimaryRecordId, j[1].rpmRecordId);
+    assert.ok(bank[0].rpmPrimaryL1 && bank[0].rpmPrimaryL4);
+    assert.equal(bank[1].problemTypeKey, '');
+    assert.equal(bank[1].difficultyBucket, 2);
+    assert.equal(bank[0].content, hq1.content, '수학 내용은 그대로');
+    // 키 순서는 변환기가 만든 본보기 순서를 따른다
+    assert.equal(Object.keys(bank[0])[0], 'id');
+    assert.ok(Object.keys(bank[0]).indexOf('rpmPrimaryRecordId') > Object.keys(bank[0]).indexOf('integrationPattern'));
+
+    const metaFile = fs.readdirSync(out).find(f => /\.meta-q01-q02\.json$/.test(f));
+    const reg = readJson(path.join(out, metaFile));
+    assert.equal(reg.expectedSourceBlobSha1, gitBlobSha1(fs.readFileSync(jsFile)));
+    assert.equal(reg.expectedSourceBlobSha1, execFileSync('git', ['hash-object', jsFile]).toString().trim());
+    assert.equal(reg.approval.reviewStatus, 'review_required');
+    assert.equal(reg.approval.reviewPassCount, 0);
+    assert.equal(new Set(reg.items.map(i => i.questionUid)).size, 2);
+    assert.match(reg.items[0].reason, /DRAFT_SINGLE_MODEL/);
+    assert.equal(reg.items[1].after.metaRationale.draftTier, 'SINGLE_MODEL_DRAFT');
+    assert.match(reg.items[1].reason, /PROPOSAL/);
+    assert.deepEqual(reg.registryChanges, [], '새 키 제안은 registryChanges 로 만들지 않는다');
+
+    const fs4 = readJson(path.join(out, `${STEM}.4slot.json`));
+    assert.equal(fs4.schemaVersion, 'archive-meta-4slot-v0');
+    assert.equal(fs4.sourceGitBlobSha, reg.expectedSourceBlobSha1);
+    assert.equal(fs4.dictionaryVersion, loadTermDictionary(repoRoot).version);
+    assert.equal(fs4.items.length, 2);
+    assert.equal(fs4.items[0].format, '단일 정답');
+    assert.equal(fs4.items[1].format, '단답');
+    assert.equal(fs4.items[0].review.status, 'UNREVIEWED');
+    assert.match(fs.readFileSync(statusFile, 'utf8'), /\tJUDGED\t/);
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: 모든 문항에 검수 기록이 있고 HOLD 0이면 영수증을 만들고 reviewStatus 를 올린다', () => {
+  const ctx = fresh();
+  try {
+    writeJudgments(ctx.judgmentDir, withReview(goodJudgments(ctx.candDir)));
+    const out = path.join(ctx.work, 'out');
+    const statusFile = path.join(ctx.work, 'STATUS.tsv');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, statusFile, reviewer: 'tester', repoRoot, log: quiet });
+    assert.equal(ap.written, true);
+    assert.equal(ap.receipt, true);
+    assert.equal(ap.reviewStatus, 'independent_review_passed');
+    const receipt = readJson(path.join(out, `${STEM}.review-receipt.json`));
+    assert.equal(receipt.schemaVersion, 'archive-independent-exam-review-receipt-v1');
+    assert.equal(receipt.overallVerdict, 'PASS');
+    assert.equal(receipt.blindFirstPass.totalSolved, 2);
+    assert.equal(receipt.blindFirstPass.answerMismatches, 0);
+    assert.equal(receipt.questionsReview.length, 2);
+    assert.equal(receipt.candidateGitBlobSha1, gitBlobSha1(fs.readFileSync(path.join(out, `${STEM}.js`))));
+    const reg = readJson(path.join(out, fs.readdirSync(out).find(f => /\.meta-q01-q02\.json$/.test(f))));
+    assert.equal(reg.approval.reviewStatus, 'independent_review_passed');
+    assert.equal(reg.approval.reviewPassCount, 1);
+    const lines = fs.readFileSync(statusFile, 'utf8').trim().split('\n');
+    assert.match(lines.at(-1), /\tREADY\t/);
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: HOLD 1건 / 검수 누락 / 풀이 답 비어 있음이면 영수증을 만들지 않는다 (가짜 통과 금지)', () => {
+  const cases = [
+    ['HOLD 1건', js => withReview(js, { 2: { verdict: 'HOLD', note: '정답 근거가 의심스러움' } })],
+    ['검수 기록 없음 1문항', js => { const o = withReview(js); o[2].review.verdict = ''; return o; }],
+    ['검수자 풀이 답이 빈 문항', js => withReview(js, { 2: { reviewerSolvedAnswer: '' } })],
+  ];
+  for (const [name, make] of cases) {
+    const ctx = fresh();
+    try {
+      writeJudgments(ctx.judgmentDir, make(goodJudgments(ctx.candDir)));
+      const out = path.join(ctx.work, 'out');
+      const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, statusFile: path.join(ctx.work, 's.tsv'), repoRoot, log: quiet });
+      assert.equal(ap.written, true, name);
+      assert.equal(ap.receipt, false, name);
+      assert.equal(ap.reviewStatus, 'review_required', name);
+      assert.equal(fs.existsSync(path.join(out, `${STEM}.review-receipt.json`)), false, name);
+      assert.match(fs.readFileSync(path.join(ctx.work, 's.tsv'), 'utf8'), /\tJUDGED\t/, name);
+    } finally { ctx.cleanup(); }
+  }
+});
+
+test('apply-judgment: --only 반영은 일부 문항만 바꾸고 영수증은 출고 근거가 아닌 PARTIAL 표시', () => {
+  const ctx = fresh();
+  try {
+    writeJudgments(ctx.judgmentDir, withReview(goodJudgments(ctx.candDir)));
+    const out = path.join(ctx.work, 'out');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, only: [1], partialReceipt: true, repoRoot, log: quiet });
+    assert.equal(ap.partial, true);
+    assert.deepEqual(ap.appliedQids, [1]);
+    const bank = loadBank(path.join(out, `${STEM}.js`));
+    assert.equal(bank[0].difficultyBucket, 1);
+    assert.equal(bank[1].level, '중', '반영 대상이 아닌 문항은 변환기 값 그대로');
+    const receipt = readJson(path.join(out, `${STEM}.review-receipt.json`));
+    assert.equal(receipt.overallVerdict, 'PARTIAL');
+    assert.equal(receipt.signOffStatus, 'PARTIAL_NOT_FOR_RELEASE');
+    assert.equal(ap.reviewStatus, 'review_required');
+  } finally { ctx.cleanup(); }
+});
+
+test('apply-judgment: 검사에 실패하면 아무것도 쓰지 않는다', () => {
+  const ctx = fresh();
+  try {
+    const js = goodJudgments(ctx.candDir);
+    js[1].rpmRecordId = 'ZZ-RPM-9999';
+    writeJudgments(ctx.judgmentDir, js);
+    const out = path.join(ctx.work, 'out');
+    const ap = applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet });
+    assert.equal(ap.written, false);
+    assert.equal(ap.exitCode, 1);
+    assert.equal(fs.existsSync(out), false);
+  } finally { ctx.cleanup(); }
+});
+
+test('검수 기록 점검: 풀이 답 불일치인데 PASS, 고친 값이 반영되지 않은 FIXED 는 코드가 난다', () => {
+  const ctx = fresh();
+  try {
+    let js = withReview(goodJudgments(ctx.candDir), { 1: { reviewerSolvedAnswer: '④' } });
+    writeJudgments(ctx.judgmentDir, js);
+    assert.ok(codesOf(check(ctx), 1).includes('REVIEW_ANSWER_MISMATCH'));
+    js = withReview(goodJudgments(ctx.candDir), { 1: { verdict: 'HOLD', reviewerSolvedAnswer: '④', note: '정답이 의심스럽다' } });
+    writeJudgments(ctx.judgmentDir, js);
+    assert.deepEqual(codesOf(check(ctx), 1), [], 'HOLD 이면 불일치를 그대로 기록할 수 있다');
+    js = withReview(goodJudgments(ctx.candDir), { 2: { verdict: 'FIXED', fixes: [{ field: 'difficultyBucket', from: 2, to: 3, why: '단계가 더 많다' }] } });
+    writeJudgments(ctx.judgmentDir, js);
+    assert.ok(codesOf(check(ctx), 2).includes('REVIEW_FIX_NOT_APPLIED'));
+    js[2].difficultyBucket = 3;
+    writeJudgments(ctx.judgmentDir, js);
+    assert.deepEqual(codesOf(check(ctx), 2), []);
+  } finally { ctx.cleanup(); }
+});
+
+test('build-review-pack: 먼저 볼 문항을 자동으로 뽑고 원천→판정을 표시한다', () => {
+  const ctx = fresh();
+  try {
+    const js = goodJudgments(ctx.candDir);
+    js[1].solveSteps = ['양변에서 3 을 뺀다.', '풀이를 끝낸다.']; // 정답 값 4 가 풀이에 없음
+    js[2].figureNeed = 'NEEDS_FIGURE';
+    js[2].figureEvidence = '방정식 $2x=12$';
+    js[2].difficultyConfidence = 'low';
+    js[2].typeReason = '12 로 나눈다';                                  // 20자 미만
+    writeJudgments(ctx.judgmentDir, js);
+    const r = buildReviewMarkdown({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, repoRoot });
+    const top = r.markdown.split('## Q1')[0];
+    assert.match(top, /먼저 볼 문항/);
+    assert.match(top, /\*\*Q1\*\*: .*풀이 과정에 정답 값이 등장하지 않음/);
+    const q2line = top.split('\n').find(l => l.startsWith('- **Q2**'));
+    assert.match(q2line, /NEEDS_FIGURE/);
+    assert.match(q2line, /이유가 20자 미만/);
+    assert.match(q2line, /난이도 경계/);
+    assert.match(q2line, /새 키 제안/);
+    assert.match(r.markdown, /원천→판정/);
+    assert.match(r.markdown, /저장 정답\*\* ③/);
+    assert.match(r.markdown, /reviewerSolvedAnswer/);
+    assert.match(r.status, /^(CONVERTED|JUDGED)/);
+    // 검수가 끝나면 단계가 REVIEWED 로 보인다
+    const clean = withReview(goodJudgments(ctx.candDir));
+    writeJudgments(ctx.judgmentDir, clean);
+    assert.match(buildReviewMarkdown({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, repoRoot }).status, /^REVIEWED/);
+  } finally { ctx.cleanup(); }
+});
+
+test('CLI: check-judgment 은 실패 코드가 있으면 종료 1, 없으면 0 이고 단계를 STATUS.tsv 에 남긴다', () => {
+  const ctx = fresh();
+  try {
+    const cli = path.join(repoRoot, 'archive/tools/similar-import/check-judgment.mjs');
+    const statusFile = path.join(ctx.work, 'STATUS.tsv');
+    const bad = spawnSync(process.execPath, [cli, ctx.jsPath, ctx.judgmentDir, '--status-file', statusFile], { encoding: 'utf8' });
+    assert.equal(bad.status, 1);
+    assert.match(bad.stdout, /FIELD_EMPTY/);
+    writeJudgments(ctx.judgmentDir, goodJudgments(ctx.candDir));
+    const good = spawnSync(process.execPath, [cli, ctx.jsPath, ctx.judgmentDir, '--status-file', statusFile], { encoding: 'utf8' });
+    assert.equal(good.status, 0, good.stdout + good.stderr);
+    assert.match(good.stdout, /출고 가능/);
+    const lines = fs.readFileSync(statusFile, 'utf8').trim().split('\n');
+    assert.match(lines[0], /\tCONVERTED\t/);
+    assert.match(lines.at(-1), /\tJUDGED\t/);
+  } finally { ctx.cleanup(); }
+});
