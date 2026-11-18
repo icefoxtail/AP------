@@ -78,21 +78,44 @@
         };
         const newSlotPage = () => ({
             placements: [],
-            occupied: Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false))
+            occupied: Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false)),
+            cursor: 0
         });
+        // Reading-order slot assignment: a page is read column by column (left column top to bottom, then
+        // the right one), so a slot may only be taken AFTER the last one placed. A question that spans a
+        // whole column (subjective-2up) starts a fresh column and leaves the rest of the current column
+        // empty; a later question never back-fills a gap above it. Numbers always read in ascending order.
         const findSlot = (pageData, span, colSpan = 1) => {
-            for (let row = 0; row <= rowCount - span; row += 1) {
-                for (let col = 0; col <= slotColumnCount - colSpan; col += 1) {
-                    let fits = true;
-                    for (let offset = 0; offset < span && fits; offset += 1) {
-                        for (let c = 0; c < colSpan; c += 1) {
-                            if (pageData.occupied[row + offset][col + c]) { fits = false; break; }
-                        }
+            for (let position = pageData.cursor; position < rowCount * slotColumnCount; position += 1) {
+                const col = Math.floor(position / rowCount);
+                const row = position % rowCount;
+                if (row + span > rowCount) { position += rowCount - row - 1; continue; }
+                // A full-width row cell (fallback ladder) can only start from the first column.
+                if (colSpan > 1 && col !== 0) return null;
+                if (col + colSpan > slotColumnCount) continue;
+                let fits = true;
+                for (let offset = 0; offset < span && fits; offset += 1) {
+                    for (let c = 0; c < colSpan; c += 1) {
+                        if (pageData.occupied[row + offset][col + c]) { fits = false; break; }
                     }
-                    if (fits) return { row, col, span, colSpan };
                 }
+                if (fits) return { row, col, span, colSpan };
             }
             return null;
+        };
+        const commitSlot = (pageData, placement) => {
+            for (let offset = 0; offset < placement.span; offset += 1) {
+                for (let c = 0; c < placement.colSpan; c += 1) pageData.occupied[placement.row + offset][placement.col + c] = true;
+            }
+            // The cells beside a full-width row that sit above it would be read after the cells below it
+            // in the first column, so they stay empty.
+            if (placement.colSpan > 1) {
+                for (let row = 0; row < placement.row; row += 1) {
+                    for (let c = placement.col + 1; c < slotColumnCount; c += 1) pageData.occupied[row][c] = true;
+                }
+            }
+            pageData.cursor = placement.col * rowCount + placement.row + placement.span;
+            pageData.placements.push(placement);
         };
         const slotPages = [];
         let slotPage = newSlotPage();
@@ -111,28 +134,11 @@
             const span = Math.min(rowCount, Math.max(spanFor(item), step?.span || 1));
             const colSpan = step?.row && slotColumnCount > 1 ? 2 : 1;
             let placement = findSlot(slotPage, span, colSpan);
-            if (!placement && span === rowCount && colSpan === 1) {
-                const usedSpan = slotPage.placements.reduce((sum, entry) => sum + entry.span, 0);
-                if (usedSpan <= rowCount && slotPage.placements.every(entry => (entry.colSpan || 1) === 1)) {
-                    slotPage.occupied = Array.from({ length: rowCount }, () => Array(slotColumnCount).fill(false));
-                    let packedRow = 0;
-                    slotPage.placements.forEach(entry => {
-                        entry.row = packedRow;
-                        entry.col = 0;
-                        for (let offset = 0; offset < entry.span; offset += 1) slotPage.occupied[packedRow + offset][0] = true;
-                        packedRow += entry.span;
-                    });
-                    placement = findSlot(slotPage, span, colSpan);
-                }
-            }
             if (!placement) {
                 flushSlotPage();
                 placement = findSlot(slotPage, span, colSpan);
             }
-            for (let offset = 0; offset < span; offset += 1) {
-                for (let c = 0; c < colSpan; c += 1) slotPage.occupied[placement.row + offset][placement.col + c] = true;
-            }
-            slotPage.placements.push({ item, ...placement });
+            commitSlot(slotPage, { item, ...placement });
         }
         flushSlotPage();
         return slotPages;
