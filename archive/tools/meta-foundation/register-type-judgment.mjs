@@ -23,6 +23,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { loadCourseAliases } from "./course-aliases.mjs";
+import { TEXT_BINDING_VERSION, textFingerprint } from "./text-binding-lib.mjs";
 
 export const DIRECT_JUDGMENT = "DIRECT_JUDGMENT";
 export const FIELD_SCOPE_TYPE_ONLY = "TYPE_ONLY";
@@ -218,6 +219,7 @@ export function registerTypeJudgment(ctx) {
     // Source binding: the judgment was made on the current question text; the row's own fingerprints are tagged, not rewritten.
     const fp = h.sourceFingerprints(q), judged = patch.judgedFingerprints;
     if (judged?.sourceFingerprint !== fp.sourceFingerprint || judged?.contentFingerprint !== fp.contentFingerprint) failWith(`judged fingerprints differ from the current source: ${uid}`);
+    const judgedText = textFingerprint(q);
     const rowBinding = current.contentFingerprint !== fp.contentFingerprint ? "stale" : current.sourceFingerprint === fp.sourceFingerprint ? "exact" : "content";
     bindingCounts[rowBinding]++;
     const embedded = { problemTypeKey: q.problemTypeKey ?? null, templateKey: q.templateKey ?? null };
@@ -233,6 +235,9 @@ export function registerTypeJudgment(ctx) {
       scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
         ...(courseRelation === "alias" || courseRelation === "successor" ? { rowCourse, courseRelation } : {}) },
       judgedSourceFingerprint: fp.sourceFingerprint, judgedContentFingerprint: fp.contentFingerprint, rowBinding,
+      // 판정이 본 발문·보기의 지문(text-v1). 이후 해설·정답·그림이 바뀌어도 발문·보기가 같으면 이 판정이 유효하다는 근거다
+      // (docs/agents/metadata.md "메타 결속 지문 범위"). 발문이 비어 지문을 만들 수 없는 문항은 필드를 쓰지 않는다.
+      ...(judgedText ? { judgedTextFingerprint: judgedText, textBindingVersion: TEXT_BINDING_VERSION } : {}),
       resultSource: req.approval.resultSource, decisionRef: req.approval.decisionRef, receipt: receiptPath,
       ...(hasEmbedded ? { examEmbeddedType: { ...embedded, matchesRegistered: embedded.problemTypeKey === problemTypeKey && (empty(embedded.templateKey) || embedded.templateKey === templateKey) } } : {}),
       priorType: { problemTypeKey: current.problemTypeKey ?? null, templateKey: current.templateKey ?? null,

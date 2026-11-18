@@ -523,8 +523,9 @@ function checkRow(consumer, unit, row) {
 }
 
 // Direct type judgment: the official registrar replay proves the registered type fields; the consumer must then show them as
-// approved facets. A row whose stored fingerprints no longer match the current question text (binding "stale") has its type
-// recorded but is not displayed by the catalog by design; that is reported, not failed (the row needs its own fingerprint rebind).
+// approved facets. A row whose stored fingerprints no longer match the current question (binding "stale") is displayed only when its
+// stem and choices are provably unchanged ("text": rebind record, "type": this judgment's own text/content fingerprint, see
+// docs/agents/metadata.md "메타 결속 지문 범위"); otherwise its type is recorded but not displayed by design, reported, not failed.
 function checkTypeRow(consumer, unit, row) {
   const key = `${normalizeFile(unit.sourceFile)}#${Number(row.ordinal)}`;
   const resolved = consumer.resolvedBySource.get(key);
@@ -534,7 +535,7 @@ function checkTypeRow(consumer, unit, row) {
   const typeConflicts = (resolved.metadataConflicts || []).filter(field => ["problemTypeKey", "templateKey", "foundationTaxonomy"].includes(field));
   if (typeConflicts.length) return { ...out, reason: "METADATA_CONFLICT", detail: typeConflicts.join(",") };
   if (!consumer.pageByUid.get(resolved.questionUid)) return { ...out, reason: "NOT_IN_PROBLEM_BANK_INDEX" };
-  if (!["exact", "content"].includes(resolved.metaBinding)) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
+  if (!["exact", "content", "text", "type"].includes(resolved.metaBinding)) return { ...out, typeNotDisplayed: resolved.metaBinding || "stale" };
   const status = String(resolved.metaHintStatus || "");
   const mismatches = [];
   if (!same(resolved.metaHintPT, row.expect.problemTypeKey)) mismatches.push(`problemTypeKey: request ${JSON.stringify(row.expect.problemTypeKey)} != consumer ${JSON.stringify(resolved.metaHintPT ?? null)}`);
@@ -835,7 +836,7 @@ export function renderSummary(result) {
   for (const e of result.exams.filter(e => e.kind === "native-authority-withdrawal"))
     lines.push(`  Unsupported approvals withdrawn: ${e.withdrawnMetadataApprovals ?? 0}; explicit authority holds: ${e.authorityHolds ?? 0}; new approvals: 0.`);
   for (const e of result.exams.filter(e => e.kind === "direct-type-judgment"))
-    lines.push(`  Direct type judgments shown as approved facets: ${e.directTypeApprovals ?? 0}; recorded but not shown until the row fingerprint is rebound: ${e.typeNotDisplayed ?? 0}; unit/difficulty/other approvals: 0.`);
+    lines.push(`  Direct type judgments shown as approved facets: ${e.directTypeApprovals ?? 0}; recorded but not shown (stem or choices changed since the row was registered): ${e.typeNotDisplayed ?? 0}; unit/difficulty/other approvals: 0.`);
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

@@ -10,6 +10,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
+import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CANON = "archive/data/meta-foundation/canonical";
@@ -270,6 +271,9 @@ test("stale and content-bound rows are tagged with their binding; their own fing
     assert.equal(rows[i].sourceFingerprint, rowsBefore[i].sourceFingerprint);
     assert.equal(rows[i].contentFingerprint, rowsBefore[i].contentFingerprint);
     assert.equal(rows[i].typeApproval.judgedContentFingerprint, fingerprints(f.questions[i]).contentFingerprint);
+    // 판정이 본 발문·보기의 text-v1 지문도 저장한다(이후 git 없이 발문·보기 동일 여부를 비교하기 위해).
+    assert.equal(rows[i].typeApproval.judgedTextFingerprint, textFingerprint(f.questions[i]));
+    assert.equal(rows[i].typeApproval.textBindingVersion, "text-v1");
   }
 });
 

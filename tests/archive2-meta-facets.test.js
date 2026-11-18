@@ -8,6 +8,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { pathToFileURL } = require('node:url');
 const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
 const Unified = require('../archive/archive2-unified-units.js');
@@ -45,7 +46,8 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
   const registry = taxonomy();
   const activePt = new Map(registry.problemTypes.filter(row => row.status === 'ACTIVE').map(row => [row.problemTypeKey, row]));
   const activeTpl = new Map(registry.templates.filter(row => row.status === 'ACTIVE').map(row => [row.templateKey, row]));
-  const stats = { hint: 0, pt: 0, tpl: 0, l3: 0, exact: 0, content: 0, unbound: 0 };
+  const stats = { hint: 0, pt: 0, tpl: 0, l3: 0, exact: 0, content: 0, text: 0, type: 0, unbound: 0 };
+  const textBound = [];
   for (const row of data.records) {
     const source = byUid.get(row.questionUid);
     assert.ok(source, row.questionUid);
@@ -53,7 +55,13 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
     // binding: exact bytes, or only the answer/solution changed (content fingerprint equal)
     const contentEqual = source.contentFingerprint === row.assignmentFingerprint;
     const exact = source.sourceFingerprint === row.sourceFingerprint && contentEqual;
-    assert.equal(row.metaBinding || '', exact ? 'exact' : contentEqual ? 'content' : '', row.questionUid);
+    // Rows whose stored fingerprints differ may still be bound by the stem/choices fingerprint (text-v1): "text" (rebind record) or
+    // "type" (a type judgment bound to the current stem/choices). Both are re-derived below with the same library the builder uses.
+    if (exact || contentEqual) assert.equal(row.metaBinding || '', exact ? 'exact' : 'content', row.questionUid);
+    else {
+      assert.ok(['', 'text', 'type'].includes(row.metaBinding || ''), row.questionUid + ' unexpected binding ' + row.metaBinding);
+      if (row.metaBinding) textBound.push(row);
+    }
     if (!row.metaBinding) {
       assert.equal(hasHint, false, 'unbound rows carry no hint: ' + row.questionUid);
       // Check every unbound record, including newly restored SOURCE_ONLY bodies.
@@ -90,11 +98,31 @@ test('the catalog lane exposes only content-bound, registry-labelled concept/typ
       assert.equal(code[0], status(source.fieldStatus?.concept), row.questionUid + ' L3 status');
     } else assert.equal(code[0], '-');
   }
+  // Every text/type binding must be re-derivable: the stem/choices fingerprint of the current question is covered by a rebind record or by
+  // the row's own type judgment, and a type-only binding never carries the row's concept or curriculum.
+  if (textBound.length) {
+    const lib = await import(pathToFileURL(path.join(root, 'archive/tools/meta-foundation/text-binding-lib.mjs')).href);
+    const rebinds = lib.loadRebinds(root);
+    const banks = new Map();
+    for (const row of textBound) {
+      if (!banks.has(row.sourceFile)) {
+        const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
+        vm.createContext(scope);
+        vm.runInContext(read('exams/' + row.sourceFile).replace(/^﻿/, '').replace(/\r\n/g, '\n'), scope, { timeout: 5000 });
+        banks.set(row.sourceFile, require('../archive/exam-source-reader.js').readQuestionArray(scope.window));
+      }
+      const question = banks.get(row.sourceFile)[row.sourceOrdinal - 1];
+      const source = byUid.get(row.questionUid);
+      assert.equal(lib.classifyMetaBinding({ meta: source, question, fingerprint: lib.sourceFingerprint(question),
+        assignmentFingerprint: lib.contentFingerprint(question), rebinds }), row.metaBinding, row.questionUid + ' binding is not re-derivable');
+      if (row.metaBinding === 'type') assert.ok(!row.metaHintL3 && !row.metaHintCurriculum, 'type-only binding carries no row-level values: ' + row.questionUid);
+    }
+  }
   // measured on the production catalog (before: 549 PT / 546 TPL / 197 L3 reachable, 195 filterable)
   assert.ok(stats.pt >= 7900 && stats.tpl >= 7600 && stats.l3 >= 5400, JSON.stringify(stats));
   // Restoration can legitimately reveal more stale, unverified assignments. The
   // integrity contract above covers all of them; their growing count is not a cap.
-  assert.ok(stats.content >= 4700 && stats.unbound >= 800, JSON.stringify(stats));
+  assert.ok(stats.content >= 4700 && stats.unbound >= 500, JSON.stringify(stats));
 });
 
 test('the lane never changes the canonical resolution or the strict approval metric', async () => {
@@ -182,7 +210,7 @@ test('records whose approval only lags the answer/solution bytes are usable and 
     assert.equal(core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok, false, 'strict approval is untouched');
   }
   const unbound = data.records.filter(row => !row.metaBinding && row.sourceStatus === 'HOLD');
-  assert.ok(unbound.length >= 800);
+  assert.ok(unbound.length >= 500);
   for (const row of unbound.slice(0, 200)) {
     assert.equal(core.metaFacetsOf(row), null);
     assert.equal(core.generalUseEligibility(row).ok, true, 'the question itself stays usable');

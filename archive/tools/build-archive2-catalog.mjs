@@ -7,6 +7,7 @@ import core from "../archive2-core.js";
 import { materializePackageShards } from "./materialize-archive-package-shards.mjs";
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
+import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
@@ -111,7 +112,12 @@ const hintActiveTemplates = new Map(foundationTaxonomy.templates
   .filter((row) => row.status === "ACTIVE").map((row) => [row.templateKey, row]));
 const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
   ? "A" : /hold/i.test(String(value || "")) ? "H" : "P";
-const hintStats = { joined: 0, exact: 0, content: 0, changedContent: 0,
+// 발문·보기 결속(text-v1, 결정: docs/agents/metadata.md "메타 결속 지문 범위"). 행의 내용 지문이 현재와 다르면(해설·정답·그림이 바뀜)
+// 지금까지는 힌트를 숨겼다. 발문·보기가 그대로라는 근거가 있으면 보여 준다: ① 재결속 기록(등록 당시 지문이 가리키던 문항의 발문·보기가
+// 지금과 같음, 추가 전용 데이터 파일) ② 유형 판정이 저장한 text-v1 지문 또는 판정 당시의 내용 지문이 현재와 같음. 기존 지문이 일치하는 행은
+// 이전과 똑같이 동작하고, 일치하지 않는 행만 이 길을 탄다. git 이력은 보지 않는다.
+const textRebinds = loadRebinds(root);
+const hintStats = { joined: 0, exact: 0, content: 0, text: 0, type: 0, changedContent: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
   holdSkipped: 0 };
 function buildMetaHint(meta, binding) {
@@ -137,11 +143,11 @@ function buildMetaHint(meta, binding) {
     else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
     else tpl = tplKey;
   }
-  const l3 = l3Value && !l3Held ? l3Value : "";
+  const l3 = l3Value && !l3Held && binding !== "type" ? l3Value : "";
   const approvedStandard = String(meta.metadataStatus || "").startsWith("approved_") &&
     /^approved(_|$)/i.test(String(status.standardUnit || ""));
   const recordedCurriculum = String(meta.curriculumKey || meta.curriculum || "").trim();
-  const curriculum = approvedStandard && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
+  const curriculum = approvedStandard && binding !== "type" && ["2015", "2022"].includes(recordedCurriculum) ? recordedCurriculum : "";
   const out = {};
   if (l3 || pt || tpl) {
     out.metaHintStatus = (l3 ? l3State : "-") + (pt ? ptState : "-") + (tpl ? tplState : "-");
@@ -477,7 +483,13 @@ for (const exam of exams) {
       if (meta.contentFingerprint === assignmentFingerprint) {
         metaBinding = meta.sourceFingerprint === fingerprint ? "exact" : "content";
         hintStats[metaBinding]++;
-      } else hintStats.changedContent++;
+      } else {
+        // 근거가 있으면 "text"(행 전체) 또는 "type"(유형 판정만) — 판정 규칙은 text-binding-lib.mjs classifyMetaBinding 한 곳.
+        // "type"이면 행의 나머지 값(L3·교육과정)은 옛 본문 기준이라 힌트에서 뺀다(buildMetaHint).
+        metaBinding = classifyMetaBinding({ meta, question, fingerprint, assignmentFingerprint, rebinds: textRebinds });
+        if (metaBinding) hintStats[metaBinding]++;
+        else hintStats.changedContent++;
+      }
     }
     const metaHint = buildMetaHint(meta, metaBinding);
     const record = {
