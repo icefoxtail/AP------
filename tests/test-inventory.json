@@ -21,19 +21,6 @@
    ]
   },
   {
-   "job": ".github/workflows/apmath-g7-visual-shorts.yml",
-   "match": [
-    "apmath/playground/next/tools/g7-short-*.test.mjs",
-    "apmath/playground/next/tools/lessons.g7-*.test.mjs"
-   ]
-  },
-  {
-   "job": ".github/workflows/archive-m2-problem24-current-ui.yml",
-   "match": [
-    "tests/archive-m2-problem24-ui-contract.test.cjs"
-   ]
-  },
-  {
    "job": ".github/workflows/archive-output-performance.yml",
    "match": [
     "tests/archive-exam-render-executor-slot-layout.test.cjs",
@@ -42,8 +29,6 @@
     "tests/archive-output-metadata-loader.test.cjs",
     "tests/archive-render-feedback.test.cjs",
     "tests/archive-solution-loading.test.cjs",
-    "tests/archive2-output-qualification-fixtures.test.cjs",
-    "tests/archive2-output-release-qualification.test.cjs",
     "tests/archive2-output-visibility-observation.test.cjs",
     "tests/archive2-pdf-readiness.test.cjs"
    ]
@@ -82,8 +67,7 @@
    "match": [
     "tests/archive-font-invalidation.test.cjs",
     "tests/archive-render-feedback.test.cjs",
-    "tests/archive-solution-loading.test.cjs",
-    "tests/archive2-output-strict-gate.test.cjs"
+    "tests/archive-solution-loading.test.cjs"
    ]
   },
   {
@@ -146,12 +130,6 @@
    ]
   },
   {
-   "job": ".github/workflows/geometry-publication-tests.yml",
-   "match": [
-    "archive/tools/geometry-equation/tests/*.test.mjs"
-   ]
-  },
-  {
    "job": ".github/workflows/harness-entry-gate.yml",
    "match": [
     "tools/harness/task-entry.test.mjs"
@@ -197,23 +175,6 @@
    "match": [
     "apmath/playground/next/tools/middle-initial-release-context.test.mjs",
     "apmath/playground/next/tools/middle-initial-served-source.test.mjs"
-   ]
-  },
-  {
-   "job": ".github/workflows/middle-smoke-axis-experiment.yml",
-   "match": [
-    "apmath/playground/next/tools/local-axis-origin-visibility.test.mjs",
-    "apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs",
-    "apmath/playground/next/tools/scene-smoke-orchestration.test.mjs",
-    "apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs"
-   ]
-  },
-  {
-   "job": ".github/workflows/middle-smoke-semantic-experiment.yml",
-   "match": [
-    "apmath/playground/next/tools/middle-initial-figure-contracts.test.mjs",
-    "apmath/playground/next/tools/scene-smoke-measurement-gate.test.mjs",
-    "apmath/playground/next/tools/scene-smoke-semantic-calibration.test.mjs"
    ]
   },
   {
@@ -607,6 +568,966 @@
    },
    "reason": "pending",
    "detail": "조사 대기 — 어느 잡에서도 돌지 않음."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/absolute-value-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/application-axes.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/archive-cancel-recovery.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/archive-inverse-observation-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/archive-source-scope.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/author-guide.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/axis-overlap-segment.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-accessible-names.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-axis-titles.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-caption-fit.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-columns.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-header.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-linear-panels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-multicurve-panels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/composite-point-name-groups.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-archive-capture-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-candidate-svg-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-ops-a.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-parameters-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-spike.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-traces.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-v1-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/construction-v1-operations.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/container-fill.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/coordinate-plane-marks.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/crowded-labels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/cubic-quartic-archive-publication.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/cubic-repeated-roots.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/decimal-string-observer.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/display-envelope.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/duplicate-key-point.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/ellipse-figure.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/encoding-adjudication.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/engine-close-labels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/error-guidance.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/exact-radical-cubic-regions.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/exponential-logarithmic-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/fact-display-map-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/font-unify-ext-g.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/function-families-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-axis-scale-names.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-circles-g6b.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-circles-g6c.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-g12.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-g13a.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-g5b.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-hide-labels-g18a.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-logb-callout.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curve-logarithmic.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curve-oblique-rational-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curve-source-domain.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curve-tall-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curves-g18a.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-multi-curves.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-overlays.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-point-markers.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-reference-line-labels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-region-leader-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-regions.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/graph-window-lattice.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/hidden-curve-label.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/hidden-point-coordinates.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/lattice-path.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/layout-repair-binder.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/line-label-at.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/line-label-irrational.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/line-label-text.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/linked-exp-log-detail.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/log-exp-bases.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/native-solution-overlay.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-constructions.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-decimal-ends.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-figure.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-marks-notation.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-row-labels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-spans-notes.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-surd-ends.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/number-line-symbols.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/offline-archive-runtime.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/p1-boundaries.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/parallel-marks-on-lines.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/past-exam-visual-adapter.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-absolute-value-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-cubic-quartic-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-exponential-logarithmic-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-irrational-coefficients.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-piecewise-affine-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-piecewise-discontinuous-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-piecewise-polynomial-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-piecewise-slanted-line.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-rational-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-sqrt-affine-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/phase4-trigonometric-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/piecewise-affine-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-angle-labels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-angle-two-colors.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-arc-color.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-callout.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-color-groups-c1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-dimensions.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-e32.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-label-emphasis.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-line-colors-k.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-marks.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-panels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-radical-g.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-scalar-and-hidden-points.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-straight-angles.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-text-labels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-trace-join.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-unnamed-points.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/plane-vectors.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/point-display-names.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/polynomial-coordinate-band.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/polynomial-notation.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/primitive-observer.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/problem-figure-presentation.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/production-contract.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/production-runner.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/provider-payload-contract.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/publication-layout.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/quadrants.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/quadratic-inequality-chain.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/qualification.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/rational-asymptote-only.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/rational-inverse-proportion-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/rational-linear-over-linear-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/rational-regions-render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/reference-curves.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/region-fill.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/render-attempt-log.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/render-plan.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/repair-budget-replay.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/repair-budget.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/request-adapter-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/set-diagram-counts.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/set-diagram-panels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/set-diagram-room.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/set-diagram-script-digits.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/set-diagram.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/set-mapping-panels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/solid-figure.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/solid-segment-color-view.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/solid-tetra-parallel-sections.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/source-authority-registration.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/source-inventory-compare-v1.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/source-policy.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/source-schematic-figure.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/sqrt-affine-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/sqrt-affine-general-spec.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-dice-rect.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-dice-tree.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-dot-marks.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-dot-plot.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-legend-titles.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-normal.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-panels.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-scatter-lines.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-scatter-regions.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-slots.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-sum-groups.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-tree-colors.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-tree-compact.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-tree-label-search.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-tree-single-child.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart-unknown-classes.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stat-chart.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/stem-leaf-class-color.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/string-question-id.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/tick-gap-by-ink-full.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/tick-label-under-segment.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/trigonometric-abs-domain-ticks-lines.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/trigonometric-archive.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/trigonometric-axis-crossing-pair.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/trigonometric-general.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/trigonometric-interval.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/two-piecewise.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/typography-glyph-stroke.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/typography-spike.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/verification-replay-invalidation.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/verify-code-ready.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/verify-rendered-layout.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/verify-visual-engine-static.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/visible-region-markers.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/worker-cancel-recovery.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/worker-error-recovery.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/worker-malformed-recovery.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
+  },
+  {
+   "match": "archive/tools/geometry-equation/tests/worker-timeout.test.mjs",
+   "reason": "pending",
+   "detail": "조사 대기 — 담당 워크플로가 삭제되어 어느 잡에서도 돌지 않음 (geometry-publication-tests.yml)."
   },
   {
    "match": "archive/tools/gpt2-remote-closeout.test.mjs",
@@ -4340,17 +5261,6 @@
    "detail": "지금 돌리면 실패 — ✖ B01+B02 student-first A1 83 frozen, A2 83 exact; 83 registered with approved q11 semantics (1.0837ms)"
   },
   {
-   "match": "tests/archive2-bokseong-b02-q11-semantic-consumer.test.cjs",
-   "local": {
-    "result": "fail",
-    "ms": 193,
-    "mode": "node --test",
-    "signature": "✖ q11 all nine released without legacy hold leakage (1.0029ms)"
-   },
-   "reason": "fails-now",
-   "detail": "지금 돌리면 실패 — ✖ q11 all nine released without legacy hold leakage (1.0029ms)"
-  },
-  {
    "match": "tests/archive2-bokseong-b04-b05-consumer.test.cjs",
    "local": {
     "result": "fail",
@@ -4360,17 +5270,6 @@
    },
    "reason": "fails-now",
    "detail": "지금 돌리면 실패 — ✖ B04 26 and B05 Q21 9 are uniquely registered, while Q22 10 HOLD never become selectable (1.1299ms)"
-  },
-  {
-   "match": "tests/archive2-bokseong-b05-q22-consumer.test.cjs",
-   "local": {
-    "result": "fail",
-    "ms": 202,
-    "mode": "node --test",
-    "signature": "✖ ten q22 registered; prior 273 unchanged and only two historical holds excluded (1.0136ms)"
-   },
-   "reason": "fails-now",
-   "detail": "지금 돌리면 실패 — ✖ ten q22 registered; prior 273 unchanged and only two historical holds excluded (1.0136ms)"
   },
   {
    "match": "tests/archive2-bokseong-b06-consumer.test.cjs",

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-31b06616a22c-d414e9f8",
+  "sourceArchiveFile": "original/middle/m2/1final/24_왕운중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ad5c958e485ec33fb0a434c411e795ccec0ba1101b77b1268d523bdc5cae08b9",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "y=3x를 아래로2 옮긴 식 y=3x-2에서 a=3,b=-2와 합1을 구한다.",
+      "note": "새 TPL 제안: 수직 평행이동 후 일차함수 식의 계수 계산. 정의: y=3x를 아래로2 옮긴 식 y=3x-2에서 a=3,b=-2와 합1을 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4be933103819a00cb1f88fa847872a8e541b46c98370e1bcd5df3fd3743c950f",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "자연수보다 작은 홀수는 x=4에 y=1,3이 대응하므로 함수가 아님을 판별한다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 자연수보다 작은 홀수는 x=4에 y=1,3이 대응하므로 함수가 아님을 판별한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6ab0e8867588a464e1ac7d0fdc5b8d6d42309e3d23b0db67bc91e4c9ae7f61a6",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "y=ax+b,a≠0 꼴에 맞는 y=2x+3만 고르고 상수함수와 반비례를 제외한다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: y=ax+b,a≠0 꼴에 맞는 y=2x+3만 고르고 상수함수와 반비례를 제외한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ad902ebd18b9253735ffa92e6b951c6bb8f6ffcdb3a8459765f85e6036878aaf",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+      "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+      "step": "x=2와 평행한 수직선은 x좌표가 일정하므로 (-2,3)을 지나는 x=-2를 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a9aa161ae892ae9b2354bac1f6a4c4e04d87f6ee62cd27c4934ef65ae9bb2c10",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "이동한 식 y=-3x/2+k+3에 (4,2)를 대입하여 k=5를 구한다.",
+      "note": "새 TPL 제안: 수직 평행이동과 지나는 점으로 원래 절편 결정. 정의: 이동한 식 y=-3x/2+k+3에 (4,2)를 대입하여 k=5를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

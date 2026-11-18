@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-fba979e80357-2fc058de",
+  "examUid": "23_매산고_1학기_기말_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/23_매산고_1학기_기말_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "492063f34131afaf1ff335a28f23c33cfb0a0ac8",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+        "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_06de81f5f35d6242f9b28644ee83b275de690a143d4ca07ca92125a2706cd3d0",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION"
+      },
+      "rationale": "표본평균 평균m=15와 표준오차3/√n=1/3을 이용하여 n81,m+n96.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "246ff10dde9d9c02d8cd4211a8e85222b2c801e2e67c4a2e7397a5e0d3312a8c",
+        "contentFingerprint": "f81346c1b30ea41f987eba5ccb53bcae9295ecf586ec7851de8bcb072e42397d"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ea30c72f66805d0198517478647f07bfdd010a0fd51201dd9e8abf94038cbcf1",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "rationale": "2를 제외한 두 눈25쌍 중 합4,8,12인 여섯 쌍을 골라6/25.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "689623383b96b72b722c15c34099e81a27647b313e4b50f24e8b5a87b8994dd7",
+        "contentFingerprint": "09e2bb6402f69b4fec4d9ccf8f5004bdc61c231e2226bb9c69069538e7d15a25"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6c0e9f7ab6491f4256a041602a3fa23a5e801224cc78621bfccb01b632e27505",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "두 이항분산25/6과 n/4를 비교하여 n<50/3,최대16.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "69eb08417ca96b34e0519dc5a4a4c066b12f95dbacd574bb2db73acb2fcf841c",
+        "contentFingerprint": "a9d7d1fa645e0b0345e8b8b6e5e8585e35c65ed826b49c0bf88f602e1e62d588"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_51a3973878fc4c4e24b0e2be6b9aa28d78610414660c65018dc1747d1009ae24",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION"
+      },
+      "rationale": "독립 표본25개의 합은 평균1400,표준편차75이므로 표준구간−1~2확률0.8185.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "0002314af5150cc9a9ea7338a633131e750bcfeb693c84670ed99573e83673de",
+        "contentFingerprint": "70a15d65649a4355fb48b125e602ab911f91e58209dbdbf7a6f35834a27c7589"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_630b0146be87981bbc14ab0c5ce27fdaa44f0f670d9244c9b98db6e3520daf50",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY"
+      },
+      "rationale": "증감+1,0,−1의 확률1/4,1/2,1/4에서 음수로 내려가지 않는 복귀경로를 세고 마지막−1을 곱하면 n4에서7/128.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "6a0815580d666334a807a908d32b00360a0b99bd0e69b021b4ae975a6ef8ffbc",
+        "contentFingerprint": "c49443346dbc07672671572ce5a740d649e12639928ad659fa69753d774e6c98"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7977a1168ea73c003fd9170a04ba2f97b4f1135245640beab512028486195c97",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION"
+      },
+      "rationale": "성공횟수K~B(39,1/3)로 점직선거리X=108−2K를 나타내고 분산4·26/3=104/3,p+q107.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "3b93145852e07d1ee912273a818a6e3c5e6c7377db31f766a42f69669fbf4275",
+        "contentFingerprint": "a697d3189b2d416fec3e3d54daafbd2b4955796ba5520f2536b831db29e4b3f5"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5706771c421e4d4f94719863e3b1cab7ad9604c63c98c74dad0c5f0f9a9babb3",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "rationale": "점수4+H가 짝수인 H0,2,4의8배열 중3의 배수는 H2의6배열이므로3/4.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "42fcfb78b8fe76ee2669b9c001c261c6db8afbd378d0e5585b68e2316b14a997",
+        "contentFingerprint": "dfcc5db7f3eeebf10963e9f41a6328599ca0af3a90ae4044c7cb37182ea5c06f"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_485668a5c8db1fac16f913fab72721df26a1ccc9a5bbc51d6f32932ce9e001d6",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS"
+      },
+      "rationale": "이차식 항상비음수 판별식조건으로 k2~5,성공확률2/3에서 평균84로 n126,분산28을 빼98.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "9d2f22096bae60a49645aeddfe67decb162d72a5f3048d9029c60a3fe9282c79",
+        "contentFingerprint": "68b683b0f63ace14f394c2a1e0cf4b6f0feae8b3adb6bec77d4fa9f512170f83"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a15f4b29f8acbb1d77be91b6e24235d90b998b5fab0ab4c4b22008106ac0fd58",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION"
+      },
+      "rationale": "표의 상측2표준편차확률0.02로 B(10000,0.02)의 평균200·표준편차14를 얻어 같은 꼬리경계228.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "5615e2d9027209b48ddc374b04b6c238a5f4a7827b5cf1a83ab367e388b96b8e",
+        "contentFingerprint": "b6d3ea6a821b20b54c54e834ed423787e66081b0b42997f89d09a3a174eab0c8"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6688bda07097a12007599df55f60dd9faee60e9fa7b3158421e0cff49fd62be9",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT"
+      },
+      "rationale": "b−a≥3인56조합으로 조건공간을 정하고 c−a≥8인16조합을 나누어2/7,p+q9.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "judgedFingerprints": {
+        "sourceFingerprint": "7d3aa9ab37e502ddc50db7f60693cd942fee358ef39a2362e7d2ac46a3ef7a4c",
+        "contentFingerprint": "4536bb9daa0c6ba58e1bf730054a47a9f2b4a8793cfd1ef04540190fcd25d2f7"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-fba979e80357-2fc058de.type-ledger.json",
+          "sha256": "aca969e3e8cb21a28893a781eb70a05d2534020f6bc252073bf148d87bd01970"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-17e1a44cae7f-9b23c5b4",
+  "sourceArchiveFile": "original/middle/m2/1final/25_왕운중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d73b6181bdac2f62cf648cdbad1abef84ac4b77a7a2b3fe0a6fe41719ada24bb",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "step": "소수와 분수 계수를 없애3x+y=20,2x-3y=-5를 풀어(5,5)를 얻고2a-b=5를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8599eef554e954c99d2f8419dd0bfa76be96099c7eb6f2207330439a00d2084c",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "미정계수 없는 식2x+y=5,x+y=3으로 공통해(2,1)를 구하고 나머지 식에 대입해 a=4,b=2,합6을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b20b8e96af6712af0ab2ac191b1a1db3ec482b94cdb53833a157e33e2d54d24e",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "자연수 x보다 작은 자연수는 한 x에 여러 y가 대응할 수 있어 함수가 아닌⑤를 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 자연수 x보다 작은 자연수는 한 x에 여러 y가 대응할 수 있어 함수가 아닌⑤를 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7ed802fa2d1bbd9c70f64bec51fe98cc48dc03a9fbe22bb85427cb8406516306",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "y=ax+b,a≠0에 맞는 ㄱㄴ을 고르고 반비례,수직선x=5,이차식을 제외한다.",
+      "note": "새 TPL 제안: 식의 형태로 일차함수 여부 판별. 정의: y=ax+b,a≠0에 맞는 ㄱㄴ을 고르고 반비례,수직선x=5,이차식을 제외한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_594a94974ad128fef949b5ad8e5b88adf7658172b79e76e4cbabaa9f40b8f101",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "y=x 그래프의 모든 y좌표에3을 더해 y=x+3을 구한다.",
+      "note": "새 TPL 제안: 수직 평행이동 후 일차함수 식 계산. 정의: y=x 그래프의 모든 y좌표에3을 더해 y=x+3을 구한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bd44ee9f450e57d5ad4a0a0c10c2bd249b3765ae3fff0acbe833479dcf080776",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "두 평행한 직선의 절편 차2-(-1)=3으로 수직 이동량을 구한다.",
+      "note": "새 TPL 제안: 두 평행한 직선의 절편 차로 이동량 계산. 정의: 두 평행한 직선의 절편 차2-(-1)=3으로 수직 이동량을 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ec069c580d6edb710b9159548abefbbf995ed2d1859f22ae6b23155f6f79605a",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기·평행·공통절편과 대입값을 검토하여 x=2일 때 y=-5이므로(2,5)를 지난다는④를 거른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}
