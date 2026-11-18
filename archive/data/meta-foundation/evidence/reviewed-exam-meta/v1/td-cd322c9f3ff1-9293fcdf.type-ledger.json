@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-cd322c9f3ff1-9293fcdf",
+  "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
+      "sourceOrdinal": 11,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_FIGURE_AREA",
+      "templateKey": null,
+      "step": "넓이12√3=8×AH/2를 풀어 높이3√3을 구한다.",
+      "note": "새 PT 제안: 삼각형 넓이 공식의 직접 역산. 주어진 삼각형 넓이와 밑변으로 수직 높이를 직접 역산. 삼각비나 다항식 나눗셈은 필요하지 않다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

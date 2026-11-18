@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-9f4ff79ce356-746222cf",
+  "examUid": "25_매산고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/25_매산고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "2160603be8bf9f6d439e4e355b5f6be6e0f23d4b",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+        "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_848064a6f96108197632cfb085c359164f519252abcf38e953bd29fdcc7baae3",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION"
+      },
+      "rationale": "중복순열 4³과 중복조합 C(7,2)를 더하여 64+21=85.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "7b0b68abb374442c15fbc091fa537a6a32e290f265d4f6e46aa7fc0c02c1af19",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+          "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4259109a2dccde0564fcb440ac36a7ae24a2e9738c762f790721b7bbe665e541",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "서로소인 두 사건이 전사건을 이루므로 P(B)=1−2/3=1/3.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "37dcec1db2c866c4719b87f416a3e63e4c886c78e830d9c3169bf35858dbf27e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+          "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_782850966aa7e68888ffa67088d76ba2f1dfc4be62c2ac01c7701bf8a9b29b0a",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION"
+      },
+      "rationale": "3 또는5의 배수 개수는25+15−5=35이므로 확률35/75=7/15.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3307ea52bee968344a58306b9114f32e58ac8348a0cf2430a5098fc928c953ab",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+          "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f80811a77e0a75c8857db00f0947db38c23dafa3179304df20ad5db7ce25583f",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "밑면6색 선택 후 인접면 색이 다른 오각 순환 색칠1020개를 회전5로 나누어6·1020/5=1224.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "9e1b6d4b4aa2427c192b0d58f4b574a3089a9edd8517abf7a298cf56f46605e5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+          "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a2722f0dc54fc2b1cf18401a613064a538289e1d5380f5cf007ee750a107058e",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT"
+      },
+      "rationale": "가운데 네 함수값 합2의 배열68개와 합−2의 대칭68개에 양끝 자유값25개를 곱해3400.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "2943e8fc841a9cbe4c4ce005aea60db567f45e12fc4d5ab95672188137c58699",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+          "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ece303a03ea776172139909697da1984ee94305ece8b5fd03659c785266aaf2b",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "전체6⁴에서3인수 없음256과2인수 지수합3미만621을 빼고 교집합104를 더해523.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1d7e294323ac408ece493a280fa2ac13f47de31e2b5f45e9e28268d3cddf3f64",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9f4ff79ce356-746222cf.type-ledger.json",
+          "sha256": "1b99a645230e17f7386c4cedd42a14489ce401d80029135f84e72cd0e8af2597"
+        }
+      ]
+    }
+  ]
+}

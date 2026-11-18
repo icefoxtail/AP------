@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-c7a76d89ed1a-27f91753",
+  "examUid": "25_순천여고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/25_순천여고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "a06f2546b00e532ce78bcd5d746b5de2990503e3",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+        "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1084447a34cefe6a8b70b56f73808f6261ed7af817c9cf087a692d77e05f56e6",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "정삼각형 회전중복3을 나눈 전체6!/3에서 남자 같은 변의3·2!·4!/3을 빼면192이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3785d1ded4dbb6258013905dcfbb34fdb7e7bb7e403b42873bf05bae86187fc3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_37bf59a6fb3428b127092be87995a38450447225db1c4e68df79c5582659b2cc",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION"
+      },
+      "rationale": "n이2개 중복이므로8!/2!=4·7!에서 k=4이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "4d022c2f2ab4e601918db14ab9ec1982547b083a4d543dba7934612678ee8458",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_341c44e047cfd7307c9369271db78f7dc29c23a0300ec3253faa6f6acfe27643",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "전체3⁴에서 연속2를 갖는 경우21을 빼면60이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "284dae0266d4c6ce9f5f20be5e78b63455120e4d20458e73bb5866283604992f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_31417c1f99a1d4d62f0f337fd4b91e52454a849bf62bcac1214a3e816869662c",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY"
+      },
+      "rationale": "파스칼 항등식을 연쇄 적용하여₃C₀+₄C₁+…+₇C₄=₈C₄를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1b1f5d223049e2d81969721ccc680fed9db50b342ad7981959a5a7a6a609cde2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b4fa613e3bbb5ce7574487bc6b17c0ec405750190f0ec09a87f3419b07912256",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER"
+      },
+      "rationale": "(30+1)^17 전개에서30² 이상 항은90배수여서1+17·30=511의 나머지61만 남는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "ccdafa97cc1c49f97862a78946afadded1d864c33a5707746af49a1c30a07675",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_940f24b66f4b31e4d594671bff86b6d02dc63f0bec9657da213b97592e1c3b6b",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH"
+      },
+      "rationale": "끊어진 변을 제외한 최단경로 누적값은 B에서62, P에서5이며 P→B6가지이므로62−5·6=32이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "da192097cd1ef1c741e65ebc54dbeee035fdac2d0c33f43e9a59b5fa937e4bc1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2ee8923f6aaef67c47cd2ca4d2373e461d3e64e5930bfb51763e5419e5eb9782",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT"
+      },
+      "rationale": "8의 원상1개를7가지로 택한 뒤 나머지 원상 개수 제한에 따라 다항계수 합41+156을 곱해1379이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3482576ad1a76463fca79570bd7ad954978ec45d2b1264847cea2a012a0aeaab",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4435d6ecc8d1af0f83234bb79bda880452bd5db6ea9ea7361d92b2396034a0d4",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT"
+      },
+      "rationale": "각 원소를 A전용,B전용,교집합 세 영역에 배정한3⁵에서 교집합 없는2⁵를 빼면211이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "4b5db21435fd9033a3dcc57462dcb64a10f75ec91cf1f049bec56251f7a698c0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2a80882181e7ce82df562058ca42f250b7ac3eb8afcae6a45bc56f9f85b0521b",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "회전동일 원배열에서 같은학년 이웃·맞은편을 제외해 학년배치와 학년별 순열을 세면144이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "9fac56b59b773f9e7be0bd232eeb4a6f82f81ec6bdcf91bbe97e8c2fb136dfde",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0088a4661314e8e80d615d8d4673008dc12ae4b5f3841367d56a108793801836",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_CIRCULAR_PERMUTATION"
+      },
+      "rationale": "사용색₆C₅와 밑면색5를 고른 뒤 옆면4색 원순열3!을 곱해180이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "1b41a29e457b658f9842534d2b16fd0d6bff1df3df5d160259bd539037fb4585",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_301fdc6fb6b9bf6be0a60682f58dc7e4cdedd111f80bf2e0011173bcef0b0e89",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT"
+      },
+      "rationale": "끝 두자리4배수 중0포함3개는4!,0미포함4개는3·3!로 앞자리 제약을 적용하여144이다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "65bebf70b6479db6c3a72098903781994a87c23144a17e9b4eb0f9c5dc88cd92",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c7a76d89ed1a-27f91753.type-ledger.json",
+          "sha256": "4925e8ae451c5e0fd761ab24a8c6dee4999553091573037e562a987a1a4c04af"
+        }
+      ]
+    }
+  ]
+}

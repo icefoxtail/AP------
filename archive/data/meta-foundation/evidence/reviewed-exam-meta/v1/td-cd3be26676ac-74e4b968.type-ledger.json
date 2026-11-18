@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-cd3be26676ac-74e4b968",
+  "sourceArchiveFile": "original/middle/m3/2final/24_왕운중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e2bce161f96df13c9ef4fb435d7f88f7680778276768923b01777bb3fd33fd30",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+      "step": "등접선에서 AD+BC=AB+CD를 얻고 높이h=CD와 AD=h-3을 사다리꼴 넓이에 넣어 h12,AD9를 결정하여②를 배제한다.",
+      "note": "필요 TPL: 접원사다리꼴의 변과 넓이; 등접선의 대변합과 사다리꼴 넓이 조건을 연립한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f599a5d89806b8af4a9c75d86796780f2ea4c743f3d5ea36c73ac09b4053141f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "step": "직각삼각형 AOD에서 접선AD12를 구하고 BD=BF,CE=CF로 삼각형 둘레=AD+AE=24를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb65f3b1266c6388b744ccac96822d133e15eb686280425ccb823c83e00d9887",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_COMPARE",
+      "step": "우수함은 최대평균79인C,고름은 최소표준편차2인A로 구별하여③을 고른다.",
+      "note": "필요 TPL: 집단별 평균·표준편차 해석 | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f92f434404a218c1ff23e59ae8cc6c0eff90e8aa0a53a0e2e53fe543dfb34d01",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+      "templateKey": "TPL_M3_FIND_UNKNOWN_DEVIATION_AND_STANDARD_DEVIATION_DESCRIPTIVE",
+      "step": "편차합0에서 누락편차2를 얻고 편차제곱합90/5=18의 제곱근3√2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}
