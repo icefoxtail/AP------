@@ -149,13 +149,6 @@ export function examImageR2Url(env, assetPath) {
   return new URL(`${base}/exams/images/${parts.map(encodeURIComponent).join("/")}`);
 }
 
-function bytesToBase64(bytes) {
-  let binary = "";
-  for (let i = 0; i < bytes.length; i += 0x8000)
-    binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-  return btoa(binary);
-}
-
 // Reads one source image (R2 first, Pages copy as the rollback path). Used to embed it (old format) and to check it (key refs).
 async function fetchSourceAsset(env, path) {
   const base = String(
@@ -211,45 +204,27 @@ async function fetchSourceAsset(env, path) {
   return { bytes, response };
 }
 
-async function embedSavedPaperAssets(env, questions) {
-  const cache = new Map();
-  async function inlineReference(value) {
-    if (typeof value !== "string") return value;
-    const path = sourceAssetPath(value);
-    if (!path) return value;
-    if (cache.has(path)) return cache.get(path);
-    const { bytes, response } = await fetchSourceAsset(env, path);
-    const ext = path.split(".").at(-1).toLowerCase();
-    const fallbackMime = ({ png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", svg: "image/svg+xml", webp: "image/webp", gif: "image/gif" })[ext];
-    const declaredMime = String(response.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
-    const mime = declaredMime.startsWith("image/") ? declaredMime : fallbackMime;
-    if (!mime) fail("지원하지 않는 문제지 이미지 형식입니다.", 409);
-    const dataUrl = `data:${mime};base64,${bytesToBase64(bytes)}`;
-    cache.set(path, dataUrl);
-    return dataUrl;
+const HTML_IMAGE_REF = /(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi;
+function questionAssetPaths(question) {
+  const refs = [question.image, question.solutionImage];
+  for (const field of ["content", "question", "solution"])
+    if (typeof question[field] === "string") for (const match of question[field].matchAll(HTML_IMAGE_REF)) refs.push(match[3] || match[5]);
+  return refs.filter((ref) => typeof ref === "string").map(sourceAssetPath).filter(Boolean);
+}
+
+async function sha256Bytes(bytes) {
+  return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+// The saved paper keeps the exam image PATH in its text and records each image as { path, sha256, bytes } (a later asset
+// replacement is then detectable). One list per paper. An image that cannot be read stops the whole save: no partial paper.
+async function recordSavedPaperAssets(env, papers) {
+  const known = new Map();
+  for (const path of new Set(papers.flatMap((paper) => paper.questions.flatMap(questionAssetPaths)))) {
+    const { bytes } = await fetchSourceAsset(env, path);
+    known.set(path, { path, sha256: await sha256Bytes(bytes), bytes: bytes.byteLength });
   }
-  async function inlineHtmlImages(value) {
-    if (typeof value !== "string" || !/(?:src\s*=|url\s*\()/i.test(value)) return value;
-    const matches = [...value.matchAll(/(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi)];
-    if (!matches.length) return value;
-    let outputText = "";
-    let cursor = 0;
-    for (const match of matches) {
-      const ref = match[3] || match[5];
-      const rewritten = await inlineReference(ref);
-      outputText += value.slice(cursor, match.index);
-      if (match[3]) outputText += `${match[1]}${match[2]}${rewritten}${match[2]}`;
-      else outputText += `url(${match[4]}${rewritten}${match[6]}`;
-      cursor = match.index + match[0].length;
-    }
-    return outputText + value.slice(cursor);
-  }
-  for (const question of questions) {
-    if (typeof question.image === "string") question.image = await inlineReference(question.image);
-    if (typeof question.solutionImage === "string") question.solutionImage = await inlineReference(question.solutionImage);
-    for (const field of ["content", "question", "solution"])
-      if (typeof question[field] === "string") question[field] = await inlineHtmlImages(question[field]);
-  }
+  return papers.map((paper) => [...new Set(paper.questions.flatMap(questionAssetPaths))].sort().map((path) => known.get(path)));
 }
 
 export async function prepareSavedPaperBatch(env, input, metadataAuthority = null) {
@@ -324,10 +299,8 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
       };
     }
   }
-  // Keep the exact image bytes inside the immutable snapshot. Source asset
-  // paths are stable filenames, so saving only the URL would allow a later
-  // asset replacement to silently change an already saved paper.
-  await embedSavedPaperAssets(env, input.papers.flatMap((paper) => paper.questions));
+  // Images stay as paths in the text; their sha256 and size are recorded in the snapshot (see recordSavedPaperAssets).
+  const assetsByPaper = await recordSavedPaperAssets(env, input.papers);
 
   for (let i = 0; i < input.papers.length; i++) {
     const paper = input.papers[i];
@@ -360,6 +333,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
       meta,
       bridgeRows,
       selectionFilters,
+      assets: assetsByPaper[i],
       verifiedAt: new Date().toISOString(),
     };
     const snapshotJson = stableStringify(snapshot);

@@ -54,6 +54,8 @@ for (const grade of GRADES) {
     assert.equal(rows.length, wire.posts[0].papers.length, "every volume was stored once");
     const bytes = rows[0].bytes;
     t.diagnostic(`${grade}: ${sentUids.length} questions, snapshot ${bytes} bytes of ${MAX_SAVED_PAPER_BYTES} (${((bytes / MAX_SAVED_PAPER_BYTES) * 100).toFixed(0)}%); units ${sample.labels.join(" / ")}`);
+    const stored = JSON.parse((await server.db.prepare("SELECT snapshot_json FROM archive_saved_papers WHERE id=?").bind(paperId).first()).snapshot_json);
+    assert.ok(!/data:image\//.test(JSON.stringify(stored.questions)) && Array.isArray(stored.assets), `${grade}: images are kept as paths and listed with sha256 and size, not embedded`);
     assert.ok(bytes <= MAX_SAVED_PAPER_BYTES * 0.85, `${grade}: sample uses ${bytes} bytes, too close to the server limit ${MAX_SAVED_PAPER_BYTES} - choose a lighter sample`);
 
     // c. read back through the route the screen uses; the Worker verifies the snapshot hash while reading
