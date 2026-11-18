@@ -1028,7 +1028,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/22_풍덕중_2학기_기말_중3_기출/q23.png",
-    "imageScale": 70,
+    "imageScale": 85,
     "content": "[서술형 2]\\n다음은 어느 지역의 5일 동안의 정오 기온의 편차이다.",
     "choices": [],
     "answer": "(1) $3$  (2) $\\sqrt{6}$",
