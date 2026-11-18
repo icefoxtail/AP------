@@ -1,0 +1,758 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-a39b8d50e8f1-aaf730ca",
+  "requestSha256": "5f2a678b1ce5bc60354bda3c62e8c458f726dfa20c51af5205b3d10ba30c8d91",
+  "examUid": "25_금당고_2학기_기말_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+  "sourceBlobSha1": "517e497c6717d1de4d090678aec1935fd43e7216",
+  "sourceRawSha256": "222a3968952600b280dd5d92ad0f063f8030fa70ab34355d32a51539bc19671a",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.type-ledger.json",
+        "sha256": "ae6a73d991adb4995ad64ddb49866eb8cc1c7a4433b5823f31a80cd9249d61de"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 16,
+  "registryChanges": [],
+  "typeApprovals": 16,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 11,
+    "stale": 5
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_3eab80bc82f20a32cd26b0f677109cd2978aa116ffe43e5c820b77ac50a36bc3",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_EVENT_INDEPENDENCE",
+      "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "독립성으로 교집합 확률을 두 사건 확률의 곱으로 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f94f0437833890044a9869838f215d25d358568b62bc442b0c05703fd7e4ea47",
+        "judgedContentFingerprint": "7518fc2c779278ce2cb48d077de228c1cb808c863b5b0dc01eec053684fc001f",
+        "rowBinding": "content",
+        "textBindingFingerprint": "6a83fcb36c52ee1115833dbd8a6e460db81d3929546dc656e5e6df1359491bdf",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ad01847c3c5228ceac7c84fa83e3fe65b6d01e817d9829a57b6ae3b912e55f55",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "확률분포표의 각 값과 확률의 곱을 더하여 평균을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "62aa30546d10d2be6fe99d5114a7e464835aabe4dafc2cbd17f83744a9bb1e1d",
+        "judgedContentFingerprint": "d3da1a2dc792a116c39f79601b87edf5c45f87ed283cce5be8063caf78944c32",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "9604b637aedf25dea03f3610c79f76e10641bfeaf441545318ae73eb4e4eb66a",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0adca20ae4490c48bcbbb124235ed7c49b03887f8d470e825f70a5db374f1714",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "변환 분산에서 양수 a를 정하고 변환 평균에서 b를 역산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "91b332d94a2521c857a913dca9873516da5c1e16e8ccf99245517c0c9e029a52",
+        "judgedContentFingerprint": "948cc5f40e373a6318e8e3729bb6c578597fdf1cde4f67efeddf311e84c0c141",
+        "rowBinding": "content",
+        "textBindingFingerprint": "2d1bad335d4a9b6e1f3e0140ee7756d41f315948beafcd8a1f9663291cf5ed70",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4960507f0553533652311a1fa8f27658acbc9f83ed3ba7e3c0442bba1bc0c4b7",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "분할표의 누락 인원을 복원하고 이용경험 있는 학생을 조건 표본공간으로 삼는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "76e81335f68e943df1027e6b3605921f7140104f8462511315c755db7b2b5e2f",
+        "judgedContentFingerprint": "b5cd563979940ebf1ca5652504d9b52773294254ca9ec1fae627c698d288c71f",
+        "rowBinding": "content",
+        "textBindingFingerprint": "bf94dd89647c8d27bda6796396307b57045074c5d8ea4c4faea9b42d24a1daf5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1ea9f0c53e23726bfa9acd96fa9eced7843430393363f0f9e829a47d463d443a",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "전체 사다리꼴 넓이를 1로 두어 높이를 정하고 제외할 작은 삼각형 넓이를 뺀다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1bb80b76aaa7bdcd5b43655351b3f95b29b120012a0c3a25073d8e598210be51",
+        "judgedContentFingerprint": "90c24dc959ce861331fcc2904e542d416d0614c76f21cf78ae6a0cd7f41c6c95",
+        "rowBinding": "content",
+        "textBindingFingerprint": "f54f718830ddd1c60d08df794074cd9aebb4ecda5635761b2920ba7c213338ee",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ea357b7c991fb391058257e5fc13a08e8fac90fc7c9ad5a9a5c696d0264385d7",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "99퍼센트 신뢰구간 길이 상한을 표본크기의 하한으로 바꾼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "e74be2def9764aa40d815430fa7e86cdfafbc1ee2b6502b110060c5484205fba",
+        "judgedContentFingerprint": "77a010c3a88d6784691c9d7c4acb4334cba759897ac2d002518a8a7b78e92079",
+        "rowBinding": "content",
+        "textBindingFingerprint": "c8b5a6c425b9a7f6226abac7da2cd14b5d04b4ca1b9cf90c5d9087ec8d1d44d0",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8993f7ee3a90266efebeeec9c3e2bcb3bb8b66e7f56969f942b5308264410ed7",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "공장별 생산·불량 분기확률을 합한 전체 불량확률로 B 공장 분기를 나눈다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a46a4e2e15ed79e6e77f61813f31ae4a7f72d19d0bffb652954bf8685ceb7fff",
+        "judgedContentFingerprint": "b591e096add9b456664c611ce88d984406e0f798df0c7ce396f41c1406007b36",
+        "rowBinding": "content",
+        "textBindingFingerprint": "beab9a6beb0664f85c93b78f108aa8d493c95c9916a77909fda35f62d79406e4",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_bfc83476435d91768f6edfeac488ca1166584eecfd645d554c64095e02bcc336",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "상위 16퍼센트 꼬리확률에 맞는 정규 분위수를 점수로 환산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "321653c33d06d24c93adb073973294dfb909828a455a138ca2e2533f6070a723",
+        "judgedContentFingerprint": "e0bbdb53e0abc9b2e5034898a8a7c985acaf25c3a7214727442d0f34593c6166",
+        "rowBinding": "content",
+        "textBindingFingerprint": "fe64ed6e8ecf35b9d3435ab217f3a4445029a646a284d2e58a0fdc2e2eb4f188",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_bf1f63cd94dbdac93b4c288cec4cce1a32d4f5ce3245f9d2039c535a4b69b6b7",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "한 상자의 정규분포에서 불량확률을 구하고 다수 상자 불량개수 이항분포를 정규근사한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1601662210038c0c5a954d7a685487dfc55459c83bd5a1b0134e76baf695bbda",
+        "judgedContentFingerprint": "f8721614f7cfad366f5cfacb9bc04b4643bb5d2dd81ed15f002b342e3b9d604f",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "9a3e8f3f0714696f26ebd4d4a330b1a40c6dcfa5a441718062711783841f545b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d78cb8622f31f8a6996d6c44345d1e743e88d6bbaacf73f2c24326e8280f3ca5",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "각 상자 표본평균의 표준오차로 정가판매 확률을 구하고 독립 두 확률을 곱한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7129e9228df1b68e614053f5bc951e76875a99b5de162db538ee0a64681a38b9",
+        "judgedContentFingerprint": "97c4061ec00ed54312e779e51758c7613bee01e75fc878aa2e2051e127045841",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "eb04baf0d906274b960ac1ae5b24b0f8245d9769aceb31fc64f549fdb02314e5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_18eee9ea5d70cb8904c453483c948ba9b4b71f43323b6c738778ec4bdd0df502",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "가운데 공을 고정해 총점의 균등분포를 구성하고 제곱평균에서 평균제곱을 뺀다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "3264094c274bedac332cd9e0d4ed09e24d907a941022eabd00818bb0624efbcc",
+        "judgedContentFingerprint": "5e084ae1b5bb17de28e910e986f153e5f71c48604189bd80eca4e57649129d22",
+        "rowBinding": "content",
+        "textBindingFingerprint": "0c424c315e39c9da335e04a743d221176307f60967408bf01e4adb0a0012d96c",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6cf67d5668ca19dc166e33991b43a38ac8c8f1c39aee01ff5a14b46796ceca13",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "같은 표준편차의 밀도 높이와 꼬리확률 대칭을 이용해 두 평균과 표준편차를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b6e431e62a8e03a38b4bd352f84fd60f518707d96e6bd14e0de0fecedc4383de",
+        "judgedContentFingerprint": "93f492c4724448eb14bc61baf162cd962a6ca248b758e000290e2ac656408afb",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "477f402393cf3839b2c325ea213d84102ba6847d30be44204f481bef18f4403c",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2bea817689676be2b8ace9fcae3f74bdd6c608444dd08b889d8a1cc0554888b5",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "도착점 조건을 소수 눈 세 번이라는 성공횟수 조건으로 바꿔 독립시행 확률을 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1bd0d137824a391b7afe00654e42a32d5b5093b239896c6a5d294ee29313e881",
+        "judgedContentFingerprint": "6a8d248e0b5b915ea28fa46d65d9faaa0cd44546c7a1402b99269dab1cd951c3",
+        "rowBinding": "content",
+        "textBindingFingerprint": "a2634fc5d3c87550f99fa22b1f605af764d5d8b6bcb60bc9f628ac060d7b2312",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1b6b9d2d2c9b7bac6542e78780cd2ea29a402530192fc47685a835a631a9c10c",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_VARIANCE_STANDARD_DEVIATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "조합으로 남학생 수의 분포를 구성하여 평균·이차 적률·분산·표준편차를 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "64522362ff988c7be2981bcb3038ff58d959f1ec4c51cf1692d92ffdcbf90d20",
+        "judgedContentFingerprint": "976cff5c6c0ab31c4cd797b32ffa8959e347af4327c1c6b628bd38a3752d371c",
+        "rowBinding": "content",
+        "textBindingFingerprint": "10c639a2bc393697e7e532e20a7d91e24bde2248c9fe639290b16801668ca2c1",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_115fb96beb8658a0b76afc8ef96efcf5ea2130c3439c368f9ee79d56425d87e1",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "모변수와 표본평균의 꼬리확률 대칭으로 평균·표본크기를 정하고 신뢰구간으로 모표준편차를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7c9d71542759151d55b2f6df89ff410f46bb667161e28981e112ec6cd75fdfee",
+        "judgedContentFingerprint": "056ac47039b6a22b70c55f8bc4948e47c3f41354b71cb9cc1a4ea91bda676d84",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "a8b6a74ea7becd95becf59e8ae6c677039efe5fe7de6d8b20d9b3dc420437ed3",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_84ce255b764b2a23c19e27d090618fc2b058e232430f56ba950622932f22ad52",
+      "sourceArchiveFile": "original/high/h2/2final/25_금당고_2학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a39b8d50e8f1-aaf730ca",
+        "judge": "dots",
+        "rationale": "교환 후 색 구성 조건을 두 추출 검은 공 수의 차로 바꿔 조건사건과 검은 공만 교환한 경우의 비를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "4bbdcd8125695231d5f929e112f39c5415f7baa5a1496d94c5a8dc62362ca7c3",
+        "judgedContentFingerprint": "54d70f3f855a1ada6fe21142297c5e5044c4f5cb8725281f99a4cca777a7bbf6",
+        "rowBinding": "content",
+        "textBindingFingerprint": "3928296b155334f3b004a8f9300cdefe4c61d4787d8f9f7266a9231c0a78523b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a39b8d50e8f1-aaf730ca.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 16,
+  "expectedQuestionCount": 20
+}

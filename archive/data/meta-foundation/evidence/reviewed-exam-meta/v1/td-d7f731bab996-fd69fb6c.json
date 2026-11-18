@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-d7f731bab996-fd69fb6c",
+  "requestSha256": "389ee2e58648643e9706e62afe4d09331c99b326f4620cc65ce2f22a772fd7ec",
+  "examUid": "22_강남여고_1학기_기말_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1final/22_강남여고_1학기_기말_고1_기출.js",
+  "sourceBlobSha1": "655d2b66c0b1d48fa46e02f5e7e07725ec58444e",
+  "sourceRawSha256": "d23de010749fa4c67b243801d89cbf7c083e09413156e625e8b6916c701bfa9f",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d7f731bab996-fd69fb6c.type-ledger.json",
+        "sha256": "d10e237a05e8797db943ab77c27dbdfb38b11399eb4cb888137664ad64d54cf8"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c0dbf316a20d4927719fae8a2026c7b8bd7f887d56a2b4996501cd190b7a7c6c",
+      "sourceArchiveFile": "original/high/h1/1final/22_강남여고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PERP_BISECTOR",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-d7f731bab996-fd69fb6c",
+        "judge": "dots",
+        "rationale": "두 중심 (1,2),(3,1)의 수직이등분선은 y=2x−5/2이므로 ab=−5.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "2efebe6fd8f6585afe5d5ed8b930627aee42c8ba6ad4fd24b6c977e4c5e05df4",
+        "judgedContentFingerprint": "4a2b77eeb5c05712096eb2afa6541f0af629dbe216339bd115f7720497ec3ae9",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "4c722d5c11453c4477f108b80c69eb078d30bf6aa4f27f849ace999bde2918c5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d7f731bab996-fd69fb6c.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}
