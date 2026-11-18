@@ -1,0 +1,69 @@
+{
+  "qid": 23,
+  "itemFingerprint": "78546a1e77c73670",
+  "solveSteps": [
+    "빨대와 수직인 실이 60도를 이루므로 수평선과 이루는 올려본각은 90 - 60 = 30도 이다.",
+    "눈높이 위 나무 높이는 12*tan(30도) = 12*(sqrt(3)/3) = 4*sqrt(3) 이다.",
+    "측정자의 눈높이 1.5 m를 더하면 나무의 높이는 (1.5 + 4*sqrt(3)) m 이다."
+  ],
+  "solvedAnswer": "$(1.5 + 4\\sqrt{3})\\text{ m}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림과 같이 측정자의 눈높이는 $1.5\\text{ m}$, 측정자와 나무 사이의 거리는 $12\\text{ m}$이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "나무 사이의 거리는 $12\\te",
+  "rpmRecordId": "M3-RPM-064",
+  "rpmReason": "clinometer에서 60도 각을 이용해 30도 앙각을 찾고 거리 12와 눈높이 1.5로 높이를 구하는 앙각 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "clinometer로 측정한 60도 각과 거리 12로부터 실생활 나무의 높이를 구하는 삼각비 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "clinometer 60도에서 30도 올려본각을 유도하고 거리 12와 눈높이 1.5를 결합하는 기본 응용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "quote": "나무 사이의 거리는 $12\\te",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "올려본각",
+        "quote": "물체를 올려본각 또는 내려본각",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "점) (올바른 삼각비를 이용하는 과",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "내려본각",
+        "quote": "올려본각 또는 내려본각의 크기를 측정",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "실이 이루는 각 60도에서 올려본각 30도를 찾고 거리 12와 눈높이 1.5로부터 나무 높이 (1.5+4*sqrt(3)) m를 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

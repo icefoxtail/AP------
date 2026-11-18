@@ -1,0 +1,70 @@
+{
+  "qid": 15,
+  "itemFingerprint": "902480a7c287dc5c",
+  "solveSteps": [
+    "직각삼각형 OAB에서 OB = 13, sin(AOB) = 5/13 이므로 AB = 5, OA = 12 이다.",
+    "A의 좌표는 (12*cos(AOB), 12*sin(AOB)) = (12*(12/13), 12*(5/13)) = (144/13, 60/13) 이다.",
+    "OB가 삼각형 OAC의 넓이를 이등분하므로 B(13, 0)은 선분 AC의 중점이다.",
+    "따라서 C의 좌표는 (2*13 - 144/13, 2*0 - 60/13) = (194/13, -60/13) 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림의 $\\triangle\\text{OAC}$에서 $\\angle\\text{A} = 90^\\circ$, $\\overline{\\text{OB}} = 13$, $\\sin\\angle\\text{AOB} = \\frac{5}{13}$이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "{OAC}$의 넓이를 이등분할 때",
+  "rpmRecordId": "M3-RPM-060",
+  "rpmReason": "OB=13과 sin(AOB)=5/13으로부터 직각삼각형 OAB의 각과 길이를 이용해 점 C의 좌표 194, 60을 구한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "삼각형 OAC에서 OB=13과 삼각비를 이용해 점 A의 좌표를 구하고 넓이 이등분 조건으로 점 C의 좌표를 구하는 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "OB=13 삼각비 계산과 점 A의 좌표 144/13, 넓이 이등분에 따른 중점 공식을 결합하는 심화 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부분",
+        "quote": "$x$축 양의 부분 위의 점이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "quote": "xt{C}$의 좌표는? (5점)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "quote": "}$의 넓이를 이등분할 때, 점 $",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "{OAC}$의 넓이를 이등분할 때",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "삼각비로 A(144/13, 60/13)을 구하고 B(13,0)이 AC의 중점임을 이용해 C(194/13, -60/13)을 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

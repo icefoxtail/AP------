@@ -1,0 +1,70 @@
+{
+  "qid": 14,
+  "itemFingerprint": "de2a61ffc724c45f",
+  "solveSteps": [
+    "접었을 때 PC = PA = 13 이고 직각삼각형 PDC에서 DC = 5 이므로 PD = 12, AD = 25 이다.",
+    "접은 각에 의해 각 APQ = 각 CPQ = x 이고, 접는 선 PQ는 대각선 AC의 수직이등분선이다.",
+    "직각삼각형 ADC에서 대각선 AC = sqrt(5^2 + 25^2) = 5*sqrt(26) 이다.",
+    "직각삼각형 ADC의 각 CAD에 대해 x = 90도 - 각 CAD 이므로 sin x = cos(각 CAD) = AD / AC = 25 / (5*sqrt(26)) = 5*sqrt(26)/26 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "직사각형 모양의 색종이",
+  "rpmRecordId": "M3-RPM-065",
+  "rpmReason": "직사각형에서 AB=5, AP=13으로 접은 도형에 보조선을 그어 접은 각의 삼각비 sin x를 구한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "색종이를 접은 각 CPQ=x의 성질과 대각선 AC의 수직이등분선을 결합하여 삼각비를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직사각형 접기에서 AP=13, AD=25를 찾고 접는 선의 각 관계와 대각선 길이를 결합하는 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "quote": "직사각형 모양의 색종이",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사각형",
+        "quote": "직사각형 모양의 색종이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "cm}$이다. 직각삼각형 $\\text{",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "quote": "}}$에 내린 수선의 발을 $\\t",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "접은 변의 길이 AP=13에서 AD=25를 구하고 대각선 AC=5*sqrt(26)와 여각 관계를 이용해 sin x = 5*sqrt(26)/26을 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

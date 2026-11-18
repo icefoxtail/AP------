@@ -1,0 +1,69 @@
+{
+  "qid": 8,
+  "itemFingerprint": "4cb2b7f8e68ce9ca",
+  "solveSteps": [
+    "사분원에서 점 B에서 x축에 내린 수선의 발을 C라 하면 OB = 1 이다.",
+    "직각삼각형 OBC에서 a + b = 90도 이므로 cos a도 = sin b도, sin a도 = cos b도 이다.",
+    "따라서 점 B의 좌표는 (cos a도, sin a도) = (sin b도, cos b도) 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "반지름의 길이가 $1$인 사분원을 좌표평면 위에 나타낼 때, $\\angle\\text{AOB} = a^\\circ$, $\\angle\\text{OBC} = b^\\circ$에 대하여",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "이가 $1$인 사분원을 좌표평면 위",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmReason": "직각삼각형 OBC에서 a+b=90도 관계를 이용해 점 B의 좌표를 나타내는 삼각비의 관계이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "typeReason": "사분원과 좌표평면에서 각 AOB와 각 OBC로부터 좌표를 삼각비로 유도하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "OB=1인 사분원에서 각 AOB와 OBC의 90도 여각 관계를 적용하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "quote": "반지름의 길이가 $1",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "quote": "$인 사분원을 좌표평면 위에 나타",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "사분원",
+        "quote": "이가 $1$인 사분원을 좌표평면 위",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "quote": "반지름의 길이가 $1$인 사",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "사분원 위 점 B에 대해 직각삼각형 OBC의 각 a+b=90도 여각 성질을 이용해 B(sin b, cos b)를 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
