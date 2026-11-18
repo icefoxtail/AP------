@@ -289,6 +289,12 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 한 쪽 안의 읽는 순서(왼쪽 단 위→아래, 오른쪽 단 위→아래)는 항상 문항 번호 오름차순이다. 칸 배정은 **열 우선·단조 증가**: 마지막에 놓은 칸 뒤만 쓰고, 한 단 전체를 쓰는 `subjective-2up`은 통째로 빈 단의 맨 위에만 놓는다(현재 단에 문항이 있으면 다음 단, 오른쪽 단도 못 쓰면 다음 쪽). 뒤 문항은 앞의 빈 칸을 채우지 않으므로 빈 자리와 쪽 수 증가는 감수한다. 코드는 두 벌이고 같은 규칙이다: `archive/layout-authority.js` `planLegacyProductionLayout`의 `findSlot`(원본 열기 쪽 배치 계획)과 `archive/exam-render-executor.js` `buildSlotPages`의 `findSlot`/`commitSlot`(문제지 만들기·단원별 기출·서버 PDF). 특수 칸이 없는 쪽의 번호순 ceil(n/2) 균등 분할은 그대로다. 회귀 테스트: `tests/exam-layout-reading-order.test.js`.
 - 이유: 일반 문항 사이에 서술형이 끼면 행 우선 배정이 서술형 아래 빈 칸을 뒤 문항으로 채워 21→23→22로 읽혔다(동산중 1학기 중간 중3 6쪽 등). 사용자: "그냥 번호 순대로 가게", "쪽수는 전혀 고려 대상이 아니야". `subjective-4up`(데이터 0건)은 쪽당 6·8문항에서 배치가 달라질 수 있다(번호순은 유지).
 
+## 시험지 문자열 처리는 공용 파일 하나 (2026-11-18, 렌더러 모듈화 첫 조각)
+
+- `engine.html`(원본 시험지)과 `mixed_engine.html`(문제지 만들기·단원별 기출)이 같은 이름의 문자열 함수를 따로 복사해 두어, 한쪽만 고친 사고가 쌓여 같은 문항이 화면마다 다르게 나왔다(보기 값이 틀리게 나옴, `$<br>$` 글자 노출, 발문 중간 [보기] 상자, 표 안 `<보기>` 소실). 이제 `wrapLatex`·`normalizeSolutionLineBreaks`·`extractChoice`·`stripChoicePrefix`·`detectChoiceRenderMode`·`renderChoicesHTML`·`protectRenderSegments`·`normalizeViewBlocks`·`formatGridAnswer`(와 이들이 부르는 `normalizeHangulStatementBreaks`·`normalizeConditionMarkerBreaks`)는 `archive/render-text.js`(`APRenderText`) 한 곳에만 있고, 두 HTML에는 같은 이름의 한 줄 위임만 남는다. 이 함수를 고칠 때는 `render-text.js`만 고친다. DOM·window·MathJax에 닿는 코드를 넣지 않는다(표 엔진만 `globalThis.ApTableEngine`을 호출 시점에 읽고, 보기 변환은 `renderChoicesHTML(q, { formatChoice })` 훅으로 받는다).
+- `wrapLatex`는 engine 방식(표·`question-table-wrap`을 통째로 보호, 리터럴 `\n`은 TeX 명령이 아님)에 mixed가 지켜 오던 것을 더했다: 보호한 블록 안에서도 한글 `<이름표>`와 수식 안 `<`·`>`는 글자로, `$` 없는 TeX 명령은 수식으로 바꾼다(`repairStructuralBlock`). 그리고 수식 밖 TeX 명령 바로 뒤의 `__HTMLTAG_n__` 표지를 하위 첨자로 먹지 않는다(`wrapBareLatex`).
+- 회귀 테스트: `tests/archive-render-text-shared.test.js`(사고별 실제 문항 표본 + 두 HTML에 본문 복사가 없는지 구조 검사). 오답 엔진(`apmath/wrong_print_engine.html`)은 아직 자기 복사본을 가진다.
+
 ## 렌더 엔진 파일을 바이트·해시로 고정하는 검사 금지 (2026-11-18 사용자 결정)
 
 - 렌더 엔진 파일(`archive/engine.html`, `mixed_engine.html`, `apmath/wrong_print_engine.html`, 이들이 싣는 `archive/*.js|css`·`archive/css|js/`·학생 내비 CSS/JS)의 현재 바이트·git blob·sha256·줄수·크기를 고정 상수와 비교해 다르면 실패하는 검사를 만들지 않는다. 승인 기록(영수증·픽스처)은 "그 판본으로 승인했다"는 과거 기록으로 두고 기록 안의 해시는 그 시점 git 객체와만 대조한다. 현재 엔진이 그 판본과 같아야 한다는 요구는 두지 않는다. 대신 문항 수, 렌더 준비 완료, 수식 오류 0, 넘침 없음 같은 결함 조건을 검사한다. 글꼴·벤더 라이브러리·원본 시험지·그림 자산의 바이트 고정은 이 규칙의 대상이 아니다.
