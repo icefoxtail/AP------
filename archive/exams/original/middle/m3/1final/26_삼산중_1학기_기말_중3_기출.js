@@ -664,6 +664,7 @@ window.questionBank = [
     "answer": "$20$",
     "solution": "처음 종이의 가로를 $x$로 두고 상자의 세 변을 나타낸다.\n처음 세로는 $x+5$, 접은 상자의 높이는 2, 밑면은 $x-4$와 $x+1$이다. $2(x-4)(x+1)=352$에서 $x^2-3x-180=0$, $(x-15)(x+12)=0$이다.\n길이는 양수이므로 $x=15$, 처음 세로는 $20$이다.",
     "image": "assets/images/26_삼산중_1학기_기말_중3_기출/q22.png",
+    "imageScale": 85,
     "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
     "subUnit": "이차방정식의 활용",
     "subUnitConfidence": "candidate_evidence",

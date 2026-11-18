@@ -529,6 +529,7 @@ window.questionBank = [
     ],
     "wide": false,
     "image": "assets/images/22_효천고_2학기_중간_고2_수학II/q16.png",
+    "imageScale": 100,
     "content": "다항함수 $f(x)$는 극솟값과 최솟값이 모두 존재하고 그 값이 일치한다. 다음 중 함수 $y=f'(x)$의 그래프가 될 수 있는 것은? (정답 2개) [4.5점]",
     "solutionImage": "assets/images/22_효천고_2학기_중간_고2_수학II/q16-solution.svg",
     "solutionImageAlt": "도함수 후보 중 극솟값과 최솟값이 일치할 수 있는 ①과 ④의 부호 변화를 비교한 해설 도식",

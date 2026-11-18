@@ -284,7 +284,7 @@ export function validateConvertedExam({ exam, questionBank, metaRegisterDoc, fou
 // ---------------------------------------------------------------------------
 // 변환
 // ---------------------------------------------------------------------------
-const TRACKED_FIELDS = ['level', 'standardCourse', 'curriculum', 'courseKey', 'standardUnitKey', 'subUnitKey', 'conceptClusterKey',
+const TRACKED_FIELDS = ['standardCourse', 'curriculum', 'courseKey', 'standardUnitKey', 'subUnitKey', 'conceptClusterKey',
   'difficultyBucket', 'problemTypeKey', 'templateKey', 'integrationPattern', 'sourceQid', 'variationType', 'difficultyConfidence'];
 
 const empty = v => v === undefined || v === null || v === '';
@@ -390,7 +390,6 @@ export function convertSimilarExam({
     const curriculum = meta.curriculum ?? exam.curriculum ?? '';
     const qItem = {
       id: qid,
-      level: meta.level ?? '',
       category,
       originalCategory: category,
       standardCourse: meta.standardCourse ?? '',
@@ -434,11 +433,22 @@ export function convertSimilarExam({
     const after = {};
     for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder',
       'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys',
-      'integrationPattern', 'level', 'difficultyBucket']) after[f] = qItem[f];
+      'integrationPattern', 'difficultyBucket']) after[f] = qItem[f];
     after.difficultyConfidence = meta.difficultyConfidence ?? '';
     after.difficultyBoundaryFlag = meta.difficultyBoundaryFlag ?? '';
     after.sourceQid = qItem.sourceQid;
     after.variationType = qItem.variationType;
+    // 원천 마크다운 머리글이 알려 주는 사실만 옮긴다 (generator·variationNote 는 근거가 없으면 만들지 않는다).
+    if (exam.sourceArchiveFile) {
+      after.provenance = {
+        kind: 'SIMILAR_FROM_ORIGINAL',
+        sourceExam: path.basename(exam.sourceArchiveFile, '.js'),
+        sourceArchiveFile: exam.sourceArchiveFile.startsWith('archive/') ? exam.sourceArchiveFile : `archive/exams/${exam.sourceArchiveFile}`,
+        sourceQid: qItem.sourceQid,
+        variationType: qItem.variationType,
+        ...(exam.generatedAt ? { createdAt: String(exam.generatedAt).slice(0, 10), createdAtSource: '변환 마크다운 헤더의 generatedAt' } : {}),
+      };
+    }
 
     registerItems.push({
       questionUid: questionUidForSource(targetSourceJsPath, qid),
