@@ -564,6 +564,11 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-type-judgment-registration.test.mjs']
   },
   {
+    // Converter from the carrier branch result tables to DIRECT_JUDGMENT requests; fixture-only, runs when the tool changes.
+    label: 'tests/archive-type-direct-converter.test.mjs',
+    args: ['--test', 'tests/archive-type-direct-converter.test.mjs']
+  },
+  {
     label: 'tests/archive-difficulty5-missing-list.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-missing-list.test.mjs']
   },
