@@ -48,7 +48,7 @@ function loadBank(text, name) {
 }
 
 // 파일의 모든 버전(최신 먼저)을 {commit, blob, bank}로 읽는다. follow: 이름이 바뀐 파일의 이전 이름 이력도 따라간다.
-function fileVersions(root, rel, { follow }) {
+export function fileVersions(root, rel, { follow }) {
   const gitPath = EXAMS + rel;
   let out;
   try {
@@ -85,7 +85,7 @@ function fileVersions(root, rel, { follow }) {
 // 앵커 하나(uid, 지문 fp, 지문 종류 family)에 대한 판정.
 // RESOLVED: 그 지문과 일치하는 모든 과거 버전의 발문·보기가 지금과 같다. TEXT_CHANGED: 하나도 같지 않다(발문·보기가 실제로 바뀜).
 // AMBIGUOUS: 일부만 같다. NO_HISTORY: 그 지문과 일치하는 과거 버전을 못 찾음(확인 불가).
-function resolveAnchor(versions, ordinal, family, fp, currentText) {
+export function resolveAnchor(versions, ordinal, family, fp, currentText) {
   const fingerprint = FAMILY_FP[family];
   const matched = versions.filter((v) => v.bank?.[ordinal - 1] && fingerprint(v.bank[ordinal - 1]) === fp);
   if (!matched.length) return { status: "NO_HISTORY" };
@@ -101,7 +101,7 @@ function currentBankOf(root, rel) {
 // 현재 정본에서 앵커를 모은다. 현재 지문과 같은 앵커는 기존 동작으로 충분하므로 history를 보지 않는다.
 // 예외: typeApproval이 판정한 내용 지문이 현재와 같은데 판정 때 text-v1 지문을 저장하지 않았다면, 이후 그림이 바뀌어도 유효하도록
 // 지금의 text-v1을 "current" 근거로 미리 남긴다(git 불필요).
-function collect(root) {
+export function collect(root) {
   const metadata = readJson(root, META), identity = readJson(root, IDENTITY);
   const idByJoin = new Map(identity.records.map((r) => [r.sourceArchiveFile + "#" + r.sourceOrdinal, r]));
   const byFile = new Map();
@@ -245,8 +245,13 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
   }
   if (serialize(doc) !== fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")) errors.push("file is not in canonical serialization");
   if (against) {
-    let base = null;
-    try { base = JSON.parse(git(root, ["show", against + ":" + REBINDS_PATH])); } catch { /* 기준 ref에 파일이 없으면 모두 새 항목이다. */ }
+    let base = null, baseResolves = true;
+    try { git(root, ["rev-parse", "--verify", "--quiet", against + "^{commit}"]); } catch { baseResolves = false; }
+    // 기준 ref를 못 풀면(얕은 체크아웃 등) 통과로 치지 않고 따로 표시한다: 호출자는 이를 "건너뜀"과 "실패"로 구분해 보여 줘야 한다.
+    if (!baseResolves) errors.push("BASE_UNAVAILABLE:" + against);
+    else {
+      try { base = JSON.parse(git(root, ["show", against + ":" + REBINDS_PATH])); } catch { /* 기준 ref에 파일이 없으면 모두 새 항목이다. */ }
+    }
     if (base) {
       const baseText = base.entries.map((e) => JSON.stringify(e));
       const ours = doc.entries.map((e) => JSON.stringify(e));

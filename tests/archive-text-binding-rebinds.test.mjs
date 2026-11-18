@@ -201,3 +201,17 @@ test("the committed rebinds file, when present, is well-formed and unique per (u
   const check = run(repo, "--check");
   assert.equal(check.status, 0, check.out);
 });
+
+// 추가 전용: 이 변경이 기준 브랜치의 기존 항목을 고치거나 지우지 않았는가. 기준 ref를 풀 수 없는 얕은 체크아웃에서는 실패가 아니라
+// 눈에 띄는 "건너뜀"으로 표시한다(조용한 통과와 구분).
+test("the committed rebinds file only appends to the base branch's file", (t) => {
+  const base = process.env.GITHUB_BASE_REF ? "origin/" + process.env.GITHUB_BASE_REF : "origin/main";
+  const result = run(repo, "--check", "--against", base);
+  const out = JSON.parse(result.out);
+  if (out.errors.some((e) => e.startsWith("BASE_UNAVAILABLE:"))) {
+    console.log(`# NOT_RUN append-only check: base ${base} is not available in this checkout (shallow clone?)`);
+    t.skip(`append-only check NOT_RUN: ${base} unavailable`);
+    return;
+  }
+  assert.equal(result.status, 0, result.out);
+});
