@@ -13,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -109,7 +109,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -157,7 +157,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -298,7 +298,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -342,7 +342,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -620,7 +620,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [],
     "wide": false,
     "content": "하윤이는 오늘 주말 데이트에 다음 그림과 같이 상의 3벌과 하의 2벌 중에서 옷을 입으려 한다. 이 때, 상의와 하의를 한 벌씩 짝 지어 입을 수 있는 경우의 수를 구하면?",
@@ -745,7 +745,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형",
       "확률"
@@ -930,7 +930,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "그래프",
@@ -978,7 +978,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"
