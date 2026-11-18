@@ -43,8 +43,14 @@
     const SOLUTION_SVG_SCALED_MIN_WIDTH = 384;
     const solutionSvgDisplayFactor = natural => (natural >= SOLUTION_SVG_SCALED_MIN_WIDTH ? SOLUTION_SVG_DISPLAY_K : 1);
     const SVG_SOURCE_PATTERN = /(?:\.svg(?:[?#]|$)|^data:image\/svg\+xml)/i;
+    // 2026-11-18: A4 쪽 배치에서는 해설 그림 크기를 figure-size.css(단 폭의 60%, 변수 --ap-fig-sol)가 정하므로 인라인 width를 넣지 않고
+    // 그림에 data 속성만 붙인다. 이 규칙이 없는 화면(휴대폰 읽기 배치, figure-size.js를 안 부르는 오답 엔진)은 아래 옛 계산(자연 폭 x 0.6)을 그대로 쓴다.
     function applySolutionSvgDisplayWidth(scope) {
         if (!scope?.querySelectorAll) return 0;
+        if (root.APFigureSize?.isActive?.()) {
+            root.APFigureSize.classify(scope);
+            return 0;
+        }
         const images = Array.from(scope.querySelectorAll('.sol-image-wrap:not(.layout-fullwidth) img'));
         if (scope.matches?.('.sol-image-wrap:not(.layout-fullwidth)')) images.push(...Array.from(scope.querySelectorAll('img')));
         let applied = 0;
@@ -385,7 +391,8 @@
             const box = document.createElement('div');
             box.className = 'q-box sol-box';
             box.dataset.sourceRef = deps.getArchiveQuestionSourceRef(q, i);
-            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' ? 'true' : 'false';
+            // 2026-11-18: 그림 크기 규칙을 쓰는 엔진(figure-size.js 로드)은 해설 그림을 쪽 전체 폭으로 놓지 않는다. 오답 엔진은 옛 동작.
+            box.dataset.solutionFullWidth = q.solutionImageLayout === 'fullwidth' && !root.APFigureSize ? 'true' : 'false';
             box.dataset.solutionHtml = solutionHtml;
             const sectionHtml = typeof deps.getSectionHeadingHtml === 'function' ? deps.getSectionHeadingHtml(q, i, 'box') : '';
             box.innerHTML = `${sectionHtml}<div class="q-num">${i + 1}.</div><div data-semantic-content="1" style="margin-bottom:8px;color:#555;font-size:8.5pt;">${reminderContent}</div><div class="sol-meta"><div class="sol-ans">[정답] ${deps.wrapLatex(q.answer ?? '-')}</div>${solutionImageHtml}<div class="sol-exp">${solutionHtml}</div></div>`;
