@@ -272,6 +272,44 @@ function assertLayoutTagOnlyEdition(baseBytes, nextBytes) {
   return changes;
 }
 
+// Table of layoutTag-only source editions, keyed by source path. A row adds no approval and
+// no authority: it only lets an issued source whose bank differs from the issued (anchor)
+// edition in per-question layoutTag string values stay a known, exactly inventoried edition.
+// assertObservedSourceEdition enforces, for every row: the issued anchor bytes equal the row's
+// base edition; the current file and HEAD bytes equal the row's new edition, whose commit is an
+// ancestor of HEAD and a descendant of the base commit; the question count matches; and
+// assertLayoutTagOnlyEdition (read from git, never the working tree) returns exactly `changes`.
+// To admit a new file add ONE layoutTagEditionRow(...) below (base = the issued anchor edition).
+function layoutTagEditionRow({ path: sourcePath, questionCount, base, commit, pins: editionPins, ordinals }) {
+  const changes = ordinals.map(sourceOrdinal => ({ sourceOrdinal, fields: ["layoutTag"] }));
+  return Object.freeze({
+    path: sourcePath, questionCount,
+    edition: Object.freeze({ commit, pins: Object.freeze(editionPins), changes,
+      layoutTagOnly: Object.freeze({ base: Object.freeze({ commit: base.commit, pins: Object.freeze(base.pins) }), changes }) })
+  });
+}
+const LAYOUT_TAG_EDITION_TABLE = Object.freeze([
+  // 24_연향중 (PR #2415, #2425): its base is the 2372 edition, so the cumulative inventory
+  // against the issued source (`changes`) differs from the layoutTag-only delta.
+  Object.freeze({ path: OBSERVATION.source.path, questionCount: 23, edition: SOURCE_EDITION_LAYOUT_TAG }),
+  // 24_매산중 2학기 중간 (PR #2421): base is the issued anchor edition f14aefb3ab (introduced by
+  // 57db4027cb); Q1-14, 16-20, 24 fullwidth -> grid and Q21-23 fullwidth -> subjective-2up.
+  layoutTagEditionRow({
+    path: "archive/exams/original/middle/m2/2mid/24_매산중_2학기_중간_중2_수학.js",
+    questionCount: 24,
+    base: { commit: "57db4027cbc9b8723cf7bff1e0ce664cb5feaf14", pins: {
+      "bytes": 75202,
+      "sha256": "217ec8b1b30a09080f0660244a64967e399d38bb79ad64cfcb8a9f1ef1b07d79",
+      "gitBlobSha1": "f14aefb3ab99ed6df2badef820a0878e97c6f488" } },
+    commit: "f778e07d5243d85a16bf5d3f7a694bd1434dff1f",
+    pins: {
+      "bytes": 75117,
+      "sha256": "d4393430d6564adabd65ee5c02906db25363e4715856a44fb94ac385c1b59459",
+      "gitBlobSha1": "68701f35d17f45248c6a61f5051b4706c1dea6a6" },
+    ordinals: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+  })
+]);
+
 const RHS_ONLY = Object.freeze({
   "schemaVersion": "EXACT_E017_Q2_ISSUED_RHS_SOURCE_BLOCK",
   "questionUid": "qid_v1_3f70e51fcbb651f7504dcf0e38089c9f103e4a361cb99d3b8ec9d3c0e9547bc9",
@@ -1125,22 +1163,31 @@ function createIssuedApprovalObserver(api) {
     authenticatedRefs.add(key);
   }
   function assertObservedSourceEdition(root, relative, issued, actual, label) {
-    assert.strictEqual(relative, OBSERVATION.source.path, label + ": unknown source change");
-    assert.deepStrictEqual(pins(issued), OBSERVATION.source.before, label + ": known source before");
+    const isObserved = relative === OBSERVATION.source.path;
+    const tableRows = LAYOUT_TAG_EDITION_TABLE.filter(row => row.path === relative);
+    assert(isObserved || tableRows.length > 0, label + ": unknown source change");
+    // The observed 24_연향중 editions keep their fixed issued "before"; a table-only path must be
+    // the row's own base edition, so its cumulative inventory against the issued source is the row's delta.
+    if (isObserved) assert.deepStrictEqual(pins(issued), OBSERVATION.source.before, label + ": known source before");
+    else for (const row of tableRows)
+      assert.deepStrictEqual(pins(issued), row.edition.layoutTagOnly.base.pins, label + ": known source before");
     const editions = [
-      { commit: OBSERVATION.observed, pins: OBSERVATION.source.after,
-        changes: [{ sourceOrdinal: SOURCE_ONLY.changedSourceOrdinal, fields: SOURCE_ONLY.changedSourceFields }] },
-      SOURCE_EDITION_2372,
-      SOURCE_EDITION_LAYOUT_TAG
+      ...isObserved ? [
+        { commit: OBSERVATION.observed, pins: OBSERVATION.source.after,
+          changes: [{ sourceOrdinal: SOURCE_ONLY.changedSourceOrdinal, fields: SOURCE_ONLY.changedSourceFields }] },
+        SOURCE_EDITION_2372
+      ] : [],
+      ...tableRows.map(row => row.edition)
     ];
     const edition = single(editions, value => same(value.pins, pins(actual)), label + ": unobserved source edition");
+    const questionCount = tableRows.find(row => row.edition === edition)?.questionCount ?? SOURCE_ONLY.expectedQuestionCount;
     const head = ancestor(root, edition.commit);
     assert(actual.equals(immutable(root, edition.commit, relative)) && actual.equals(immutable(root, head, relative)),
       label + ": exact observed source and current HEAD bytes");
     const beforeBank = api.loadBank(issued.toString("utf8"), relative);
     const currentBank = api.loadBank(actual.toString("utf8"), relative);
-    assert.strictEqual(beforeBank.length, SOURCE_ONLY.expectedQuestionCount, label);
-    assert.strictEqual(currentBank.length, SOURCE_ONLY.expectedQuestionCount, label);
+    assert.strictEqual(beforeBank.length, questionCount, label);
+    assert.strictEqual(currentBank.length, questionCount, label);
     const changes = beforeBank.map((before, index) => {
       const after = currentBank[index];
       if (same(before, after)) return null;
@@ -1955,4 +2002,4 @@ function createIssuedApprovalObserver(api) {
 module.exports = { createIssuedApprovalObserver, readOriginalNativeSource, assertOriginalNativeSourceBytes,
   readRhsOriginalNativeSource, assertRhsOriginalNativeSourceBytes,
   readOriginalReceiptSource, assertOriginalReceiptSourceBytes, assertM2E006TypedProfile,
-  assertLayoutTagOnlyEdition, SOURCE_EDITION_2372, SOURCE_EDITION_LAYOUT_TAG };
+  assertLayoutTagOnlyEdition, SOURCE_EDITION_2372, SOURCE_EDITION_LAYOUT_TAG, LAYOUT_TAG_EDITION_TABLE };
