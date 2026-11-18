@@ -33,10 +33,13 @@ function readRef(ref){
   const b=immutable.get(key);assert.equal(b.length,ref.bytes);assert.equal(hash(b),ref.sha256);assert.equal(blob(b),ref.gitBlobSha1);
   return b;
 }
+// 현재 파일이 캡처 당시 바이트와 같으면 그대로 쓴다. 시험지·그림·글꼴이 그 뒤 정상 수정되어 달라졌으면 실패시키지 않고
+// 캡처 당시 바이트를 검증기에 넘겨 검증 논리만 계속 시험한다(2026-11-18 사용자 결정: 계속 바뀌는 원본의 현재 값을 과거 기록과
+// 비교해 실패시키지 않는다). 검증기 자신의 현재 바이트 대조(CURRENT_REF_BYTES)는 운영 도구 코드라 이 테스트에서 건드리지 않는다.
 function liveRef(ref){
   const b=fs.readFileSync(safeFile(ref.path));
-  assert.equal(b.length,ref.bytes,'live bytes');assert.equal(hash(b),ref.sha256,'live raw');assert.equal(blob(b),ref.gitBlobSha1,'live Git');
-  return b;
+  if(b.length===ref.bytes&&hash(b)===ref.sha256&&blob(b)===ref.gitBlobSha1)return b;
+  return readRef(ref);
 }
 function currentFile(p){
   assert.ok([MD,ID,SVG].includes(p),'only exact generated data paths');

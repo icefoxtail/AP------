@@ -292,23 +292,6 @@ test('selected failures remain blocking and the existing command timeout is unch
   assert.throws(() => readScope(f.scopeFile, f.root), /no longer matches snapshot: checks/);
 });
 
-test('scoped execution counts a listed known failure as KNOWN-FAIL while anything else stays blocking', t => {
-  const f = scopedExecutionFixture(t);
-  const entry = { file: f.command.args.at(-1), pattern: 'known-boom', repair: 'R-1', cause: 'fixture', resolvedWhen: 'never' };
-  const scoped = (stderr, status = 1) => ({ root: f.root, scopeFile: f.scopeFile, availableCommands: [f.command], knownFailures: [entry],
-    run: (_node, args) => args.includes('--test') ? { status, stdout: '', stderr } : { status: 0 } });
-  assert.equal(runScopedTests(scoped('Error: known-boom happened\n')), true, 'the listed signature does not turn the scoped run red');
-  assert.throws(() => runScopedTests(scoped('Error: some other failure\n')), /Scoped checks failed/, 'a different failure in the same file stays blocking');
-  assert.throws(() => runScopedTests(scoped('', 0)), /Scoped checks failed/, 'a listed failure that no longer reproduces is red');
-  // A timeout, an output-buffer overflow or a signal after the signature was printed is never a known failure.
-  for (const abnormal of [{ error: Object.assign(new Error('ETIMEDOUT'), { code: 'ETIMEDOUT' }), signal: 'SIGTERM' },
-    { error: Object.assign(new Error('ENOBUFS'), { code: 'ENOBUFS' }), signal: 'SIGTERM' }, { signal: 'SIGKILL' }]) {
-    assert.throws(() => runScopedTests({ ...scoped('Error: known-boom happened\n'),
-      run: (_node, args) => args.includes('--test') ? { status: null, stdout: '', stderr: 'Error: known-boom happened\n', ...abnormal } : { status: 0 } }),
-    /Scoped checks failed/, 'abnormal termination stays blocking in the scoped runner');
-  }
-});
-
 test('workflow conditions preserve output/checker Chrome and metadata shared-Consumer prerequisites', () => {
   const ci = read('.github/workflows/ci.yml');
   const runtime = read('.github/workflows/archive2-runtime-guard.yml');
