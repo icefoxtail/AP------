@@ -4,8 +4,8 @@
     "family": "piecewise-discontinuous",
     "layout": "STACKED",
     "xWindow": [
-      -1,
-      3
+      -5,
+      7
     ],
     "pieces": [
       {
@@ -47,27 +47,31 @@
             ]
           }
         ],
-        "jumpValues": []
-      }
-    ],
-    "limitArrows": [
-      {
-        "curve": "f",
-        "at": "0",
-        "side": "LEFT",
-        "toY": "-1"
-      },
-      {
-        "curve": "f",
-        "at": "0",
-        "side": "RIGHT",
-        "toY": "1"
+        "jumpValues": [],
+        "axisTickValues": {
+          "x": [
+            "1"
+          ],
+          "y": [
+            "2"
+          ]
+        },
+        "requiredPoints": [
+          {
+            "id": "V",
+            "x": "1",
+            "y": "1"
+          }
+        ]
       }
     ],
     "requiredPoints": [],
     "axisTickValues": {
       "x": [],
-      "y": []
+      "y": [
+        "-1",
+        "1"
+      ]
     }
   },
   "caption": "예: a=2일 때의 그림이다. 위는 y=f(x)로 입력 0에서만 좌극한 -1, 우극한 1로 불연속이다. 아래는 y=g(x)=x²-2x+2로 x축 위에 있어 g(x)=0인 점이 없으므로 f(g(x))는 모든 x에서 연속이다. 이는 판별식 a²-4a<0, 즉 0<a<4일 때이며 정수 a는 1, 2, 3의 3개이다. 따라서 답은 ③이다.",
@@ -86,5 +90,5 @@
   "newVisualInformation": [
     "f는 입력 0에서만 불연속이고 a=2일 때 g는 x축과 만나지 않아 g(x)=0인 점이 없다."
   ],
-  "accessibilityDescription": "위쪽에 x=0에서 끊어지는 f의 그래프, 아래쪽에 x축 위에 놓인 포물선 g를 나란히 그리고 f의 x=0 좌우극한을 화살표로 표시한 그림이다."
+  "accessibilityDescription": "위쪽에 x=0에서 끊어지는 f의 그래프(왼쪽은 닫힌 점, 오른쪽은 빈 점), 아래쪽에 x축 위에 놓인 포물선 g를 나란히 그린 그림이다."
 }

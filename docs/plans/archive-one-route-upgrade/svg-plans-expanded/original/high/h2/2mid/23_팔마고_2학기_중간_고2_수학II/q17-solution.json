@@ -48,48 +48,30 @@
         "y": "258+53*sqrt(23)"
       }
     ],
-    "exactCoordinates": {
-      "E": [
-        "-5+2*sqrt(57)/3",
-        "258-304*sqrt(57)/9"
-      ],
-      "F": [
-        "-5-2*sqrt(57)/3",
-        "258+304*sqrt(57)/9"
-      ],
-      "A": [
-        "-5+sqrt(23)",
-        "258-53*sqrt(23)"
-      ],
-      "B": [
-        "-5-sqrt(23)",
-        "258+53*sqrt(23)"
-      ]
-    },
     "axisTickValues": {
       "x": [],
       "y": []
     },
-    "referenceLines": [
-      {
-        "id": "l",
-        "slope": "-7",
-        "intercept": "223-46*sqrt(23)",
-        "intersectionX": [
-          "-5+sqrt(23)",
-          "-5-2*sqrt(23)"
-        ]
-      },
-      {
-        "id": "m",
-        "slope": "-7",
-        "intercept": "223+46*sqrt(23)",
-        "intersectionX": [
-          "-5-sqrt(23)",
-          "-5+2*sqrt(23)"
-        ]
-      }
-    ]
+    "axisScale": {
+      "x": 32,
+      "y": 1
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-7",
+          "intercept": "223-46*sqrt(23)",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "-7",
+          "intercept": "223+46*sqrt(23)",
+          "label": "m"
+        }
+      ]
+    }
   },
   "caption": "f′(x)=3x²+2ax-1이고 두 점 A, B의 x좌표 α, β에서 f′(α)=f′(β)이면 3(α+β)+2a=0이므로 a=15이다. α, β는 x²+10x+2=0의 두 근(-5±√23)이므로 m=3α²+30α-1=-7이다. 그림은 y=x³+15x²-x+3에서 기울기가 같은 -7인 두 접선 l, m이 A, B에서 접하는 모습이다. 따라서 a+m=15-7=8이고 답은 ⑤이다.",
   "sourceConditions": [

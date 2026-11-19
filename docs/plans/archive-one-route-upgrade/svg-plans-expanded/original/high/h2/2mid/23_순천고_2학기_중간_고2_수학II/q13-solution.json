@@ -1,96 +1,155 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "0",
+          "3/2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -2,
+      3
+    ],
     "viewport": [
       -2,
       3,
       -12,
       26
     ],
-    "curves": [
+    "requiredPoints": [
       {
-        "id": "P",
-        "kind": "Y_OF_X",
+        "id": "A",
+        "x": "2",
+        "y": "-4"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "14"
+      },
+      {
+        "id": "M",
+        "x": "0",
+        "y": "-2"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "-3/2"
+      },
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "5"
+      },
+      {
+        "id": "R",
+        "x": "0",
+        "y": "23/2"
+      },
+      {
+        "id": "S",
+        "x": "1",
+        "y": "12"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "-4"
+      ],
+      "B": [
+        "-1",
+        "14"
+      ],
+      "M": [
+        "0",
+        "-2"
+      ],
+      "N": [
+        "1",
+        "-3/2"
+      ],
+      "V": [
+        "-1",
+        "5"
+      ],
+      "R": [
+        "0",
+        "23/2"
+      ],
+      "S": [
+        "1",
+        "12"
+      ]
+    },
+    "coordinateBand": {
+      "hide": [
+        "M",
+        "N",
+        "V",
+        "R",
+        "S"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "p",
+        "name": "p",
         "coefficients": [
           "4",
           "-2",
           "-1"
         ],
-        "domain": [
-          "-2",
-          "3"
-        ],
-        "label": "포물선",
-        "color": "BLUE"
+        "intersectionX": [
+          "2",
+          "-3/2"
+        ]
       },
       {
-        "id": "L",
-        "kind": "LINE",
-        "coefficients": [
-          "8",
-          "-6"
+        "id": "q",
+        "name": "q",
+        "pieces": [
+          {
+            "coefficients": [
+              "23/2",
+              "0",
+              "3/2",
+              "-1"
+            ]
+          }
         ],
-        "domain": [
-          "-2",
-          "3"
-        ],
-        "label": "접선 y=-6x+8"
-      },
-      {
-        "id": "C1",
-        "kind": "Y_OF_X",
-        "coefficients": [
-          "-2",
-          "0",
-          "3/2",
-          "-1"
-        ],
-        "domain": [
-          "-2",
-          "3"
-        ],
-        "label": "k=-2"
-      },
-      {
-        "id": "C2",
-        "kind": "Y_OF_X",
-        "coefficients": [
-          "23/2",
-          "0",
-          "3/2",
-          "-1"
-        ],
-        "domain": [
-          "-2",
-          "3"
-        ],
-        "label": "k=23/2",
-        "color": "WARM"
+        "intersectionX": []
       }
     ],
-    "axisTickValues": {
-      "x": [],
-      "y": []
-    },
-    "overlays": {
-      "points": [
-        {
-          "id": "A",
-          "x": "2",
-          "y": "-4",
-          "coordinates": true
-        },
-        {
-          "id": "B",
-          "x": "-1",
-          "y": "14",
-          "coordinates": true
-        }
-      ]
-    }
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "-6",
+        "intercept": "8",
+        "intersectionX": [
+          "2",
+          "-5/2"
+        ]
+      }
+    ]
   },
-  "caption": "포물선 위의 점 A(2,-4)에서 접선의 기울기는 -6이고 접선은 y=-6x+8이다. 삼차곡선의 도함수 -3x²+3x가 -6이 되는 접점은 x=2, -1이다. x=2이면 곡선이 A를 지나 k=-2이고, x=-1이면 B(-1,14)를 지나 k=23/2이다. 두 곡선이 모두 접선에 접하며 k의 곱은 -23이다. 따라서 답은 ②이다.",
+  "caption": "포물선 p: y=-x²-2x+4 위의 점 A(2,-4)에서 접선의 기울기는 -6이고 접선은 직선 l: y=-6x+8이다. 삼차곡선 y=-x³+3/2x²+k의 도함수 -3x²+3x가 -6이 되는 접점은 x=2, -1이다. x=2이면 곡선이 A를 지나 k=-2이고(곡선 f), x=-1이면 B(-1,14)를 지나 k=23/2이다(곡선 q). 두 곡선이 모두 접선에 접하며 k의 곱은 -23이다. 따라서 답은 ②이다.",
   "sourceConditions": [
     {
       "id": "source",

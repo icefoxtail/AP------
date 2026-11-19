@@ -4,8 +4,8 @@
     "family": "piecewise-discontinuous",
     "layout": "STACKED",
     "xWindow": [
-      -4,
-      4
+      -6,
+      6
     ],
     "pieces": [
       {
@@ -14,7 +14,7 @@
           "-1"
         ],
         "domain": [
-          -4,
+          -3,
           1
         ],
         "end": "OPEN"
@@ -26,7 +26,7 @@
         ],
         "domain": [
           1,
-          4
+          3
         ],
         "start": "CLOSED"
       }
@@ -41,7 +41,7 @@
               "-2"
             ],
             "domain": [
-              -4,
+              -3,
               -2
             ],
             "end": "CLOSED"
@@ -66,12 +66,19 @@
             ],
             "domain": [
               2,
-              4
+              3
             ],
             "start": "CLOSED"
           }
         ],
-        "jumpValues": []
+        "jumpValues": [],
+        "requiredPoints": [
+          {
+            "id": "V",
+            "x": "0",
+            "y": "1"
+          }
+        ]
       }
     ],
     "limitArrows": [
