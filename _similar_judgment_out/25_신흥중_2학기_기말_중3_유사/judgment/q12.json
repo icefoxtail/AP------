@@ -1,0 +1,77 @@
+{
+  "qid": 12,
+  "itemFingerprint": "1446cd1ef17c86ec",
+  "solveSteps": [
+    "1) ① 6, 10, 8, 7, 5, 8, 7의 합은 51이므로 평균은 51/7이며 6이 아니다.",
+    "2) ② 자료 2, 3, 5, 4, 6, 8, 40에서 40은 극단적으로 큰 값이므로 평균은 중심 경향을 왜곡하며 중앙값이 더 적절하다. (참)",
+    "3) ③ 5, 2, 1, 8, 4, 3, 7을 크기순으로 나열하면 1, 2, 3, 4, 5, 7, 8이므로 중앙값은 4이다.",
+    "4) ④ 2, 3, 3, 4, 5, 6, 4에서 3과 4가 각 2회씩 나타나므로 최빈값은 3과 4이다.",
+    "5) ⑤ 짝수 개 자료의 중앙값은 두 수의 평균이므로 실제 존재하지 않는 값이 될 수 있다.",
+    "6) 따라서 옳은 설명은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "다음 중 대푯값에 대한 설명으로 옳은 것은? [4점]",
+  "rpmRecordId": "M3-RPM-082",
+  "rpmReason": "극단값 40이 포함된 자료에서 평균보다 중앙값이 대푯값으로 적절함을 포함해 대푯값의 정의와 성질을 판별하는 M3-RPM-082 문제이다.",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "NONE",
+  "typeReason": "극단값 40에 따른 중앙값과 평균의 대표성 비교 및 최빈값, 평균 계산 타당성을 검증하는 PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "대푯값",
+        "src": "stem",
+        "quote": "다음 중 대푯값에 대한 설명으로 옳은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "진술",
+        "src": "stem",
+        "quote": "설명으로 옳은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "중앙값",
+        "src": "choices",
+        "quote": "대푯값으로는 평균보다 중앙값이 더 적절하다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평균",
+        "src": "choices",
+        "quote": "대푯값으로는 평균보다 중앙값이 더 적절하다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "대푯값에 대한 일반 진술 조건이다.",
+    "goal": "옳은 설명을 선택하는 목표이다.",
+    "method": "극단값이 존재할 때 중앙값의 적합성을 평가하는 방법이다.",
+    "condition": "평균과 중앙값의 대푯값 비교 조건이다."
+  },
+  "how": "자료에 극단값 40이 있을 때 평균보다 중앙값이 자료를 더 잘 대표하므로 보기 ②가 참임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "대푯값 3종의 정의와 극단값 40의 영향을 바탕으로 5개 보기의 참·거짓을 판별하는 2단계 문항이다."
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 17,
+  "itemFingerprint": "22501d9fe19fe58c",
+  "solveSteps": [
+    "1) A모둠 학생 수를 a, B모둠 학생 수를 b라 하자.",
+    "2) 전체 학생의 수학 성적 총합은 모둠별 점수 총합과 같으므로 80a + 72b = 75(a + b)이다.",
+    "3) 전개하여 정리하면 80a + 72b = 75a + 75b에서 5a = 3b이다.",
+    "4) 따라서 a/b = 3/5이므로 a : b = 3 : 5이다.",
+    "5) 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "A, B 두 모둠 전체의 수학 성적의 평균은 $75$점이다. A모둠의 수학 성적의 평균이 $80$점이고, B모둠의 수학 성적의 평균이 $72$점일 때, A모둠과 B모둠의 학생 수의 비는? [4점]",
+  "rpmRecordId": "M3-RPM-086-S2P-6754",
+  "rpmReason": "두 모둠의 평균 80점, 72점과 전체 평균 75점의 총점 가중평균 등식 80a + 72b = 75(a+b)에서 학생 수 비 a:b = 3:5를 구하는 M3-RPM-086-S2P-6754 문제이다.",
+  "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+  "templateKey": "NONE",
+  "typeReason": "전체 집단 평균 75점과 부분 집단 평균 80점, 72점의 선형 관계로부터 학생 수 비 3:5를 도출하는 PT_M3_LINEAR_TRANSFORMATION_STATISTICS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평균",
+        "src": "stem",
+        "quote": "전체의 수학 성적의 평균은 $75$점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "비",
+        "src": "stem",
+        "quote": "A모둠과 B모둠의 학생 수의 비는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "80a + 72b &= 75(a + b)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평균",
+        "src": "stem",
+        "quote": "수학 성적의 평균이 $80$점이고, B모둠의 수학 성적의 평균이 $72$점일 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "전체 평균 75점, A모둠 평균 80점, B모둠 평균 72점 조건이다.",
+    "goal": "두 모둠의 학생 수의 비 a:b를 구하는 목표이다.",
+    "method": "모둠별 인원수의 가중평균 총합 일치 방정식을 세우는 방법이다.",
+    "condition": "A모둠 80점, B모둠 72점의 평균 조건이다."
+  },
+  "how": "80a + 72b = 75(a + b)에서 5a = 3b이므로 학생 수의 비 a : b = 3 : 5임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "가중평균 관계식 80a + 72b = 75(a+b)를 세우고 5a = 3b를 풀어 비 3:5를 구하는 2단계 문항이다."
+}

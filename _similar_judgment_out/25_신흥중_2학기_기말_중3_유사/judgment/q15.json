@@ -1,0 +1,78 @@
+{
+  "qid": 15,
+  "itemFingerprint": "452f44c4e6119f65",
+  "solveSteps": [
+    "1) 디자인 평균 = (7+5+3+5+5)/5 = 25/5 = 5, 가격 평균 = 25/5 = 5, 내구성 평균 = (9+7+1+5+3)/5 = 25/5 = 5로 모두 5점이다. (① 참)",
+    "2) 가격은 모든 변량이 5로 편차가 0이므로 표준편차는 0점이다. (② 참)",
+    "3) 디자인의 편차는 2, 0, -2, 0, 0이므로 분산은 (4 + 4)/5 = 1.6이다. (③ 참)",
+    "4) 모든 자료에서 편차의 총합은 0이므로 내구성의 편차 합도 0점이다. (④ 참)",
+    "5) 내구성의 편차는 4, 2, -4, 0, -2이므로 분산은 (16 + 4 + 16 + 0 + 4)/5 = 40/5 = 8이다.",
+    "6) 따라서 표준편차가 가장 큰 항목은 분산이 8인 내구성이므로 ⑤는 옳지 않다.",
+    "7) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "어느 제품의 디자인, 가격, 내구성에 대하여 고객 $5$명이 평가한 점수가 다음과 같다.\n\n- 디자인: $7, 5, 3, 5, 5$ (점)  \n- 가격: $5, 5, 5, 5, 5$ (점)  \n- 내구성: $9, 7, 1, 5, 3$ (점) 이에 대한 설명으로 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M3-RPM-086-S2P-6754",
+  "rpmReason": "세 항목의 평균 5점과 디자인 분산 1.6, 내구성 분산 8을 계산하여 표준편차가 가장 큰 항목이 내구성임을 판별하는 M3-RPM-086-S2P-6754 문제이다.",
+  "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+  "templateKey": "TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS",
+  "typeReason": "세 집단의 평균 5점과 분산 1.6 및 8을 산출하여 산포도를 비교하는 TPL_M3_COMPARE_VARIANCE_OF_TWO_DATA_SETS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "solution",
+        "quote": "각 항목의 점수 자료를 분석한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "진술",
+        "src": "stem",
+        "quote": "이에 대한 설명으로 옳지 않은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준편차",
+        "src": "choices",
+        "quote": "세 항목 중 만족도의 표준편차가 가장 큰 항목은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평균",
+        "src": "choices",
+        "quote": "세 항목에 대한 만족도의 평균은 모두 $5$점이다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "디자인, 가격, 내구성의 세 집단 평가 점수 자료 조건이다.",
+    "goal": "옳지 않은 설명을 찾는 목표이다.",
+    "method": "각 집단의 분산과 표준편차를 계산하여 비교하는 방법이다.",
+    "condition": "세 항목의 평균이 5로 같다는 조건이다."
+  },
+  "how": "세 항목의 평균은 모두 5점이며 분산은 디자인 1.6, 내구성 8이므로 표준편차가 가장 큰 것은 내구성임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "세 항목의 평균 5와 분산 1.6, 8을 각각 계산하여 표준편차를 비교하는 2단계 문항이다."
+}

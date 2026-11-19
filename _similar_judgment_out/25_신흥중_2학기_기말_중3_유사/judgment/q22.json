@@ -1,0 +1,77 @@
+{
+  "qid": 22,
+  "itemFingerprint": "0bb448e5c8db6f11",
+  "solveSteps": [
+    "1) 직각삼각형 ABH에서 피타고라스 정리로 AH = sqrt(5^2 - 3^2) = 4이다.",
+    "2) 직각삼각형 ACH에서 피타고라스 정리로 CH = sqrt((4*sqrt(2))^2 - 4^2) = 4이다.",
+    "3) AH = CH = 4이므로 삼각형 ACH는 직각이등변삼각형이며 각 ACB = 45도이다.",
+    "4) 원주각 성질에 의해 각 AQB = 각 ACB = 45도이다.",
+    "5) 지름 AQ에 대한 원주각 각 ABQ = 90도이므로 직각이등변삼각형 ABQ에서 AQ = sqrt(2) * AB = 5*sqrt(2)이다.",
+    "6) 반지름 R = 5*sqrt(2) / 2이므로 원의 넓이는 pi * R^2 = pi * (50 / 4) = (25/2)*pi이다."
+  ],
+  "solvedAnswer": "$\\dfrac{25}{2}\\pi$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림에서 선분 $\\overline{AQ}$는 원 $O$의 지름이고, $\\overline{AH} \\perp \\overline{BC}$이다. $\\overline{AB} = 5$, $\\overline{AC} = 4\\sqrt{2}$, $\\overline{BH} = 3$일 때, 원 $O$의 넓이를 구하고, 그 과정을 서술하시오. [6점]",
+  "rpmRecordId": "M3-RPM-076",
+  "rpmReason": "피타고라스 정리로 AH = CH = 4를 구해 각 ACB = 45도를 얻고 반원 원주각 성질을 결합해 지름 AQ = 5*sqrt(2)와 넓이 25/2*pi를 구하는 M3-RPM-076 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "피타고라스 정리로 높이 4와 원주각 45도를 유도하고 지름 직각삼각형에서 지름 5*sqrt(2)와 원 넓이 25/2*pi를 계산하는 TPL_CIRCLE_ANGLE_COMPOSITE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지름",
+        "src": "stem",
+        "quote": "선분 $\\overline{AQ}$는 원 $O$의 지름이고,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "원 $O$의 넓이를 구하고, 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "직각삼각형 $ABH$에서 피타고라스 정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "src": "solution",
+        "quote": "$\\triangle ABH$와 $\\triangle ACH$는 모두 직각삼각형이다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "지름 AQ, 수선 AH perp BC, 변의 길이 5, 4*sqrt(2), 3 조건이다.",
+    "goal": "원 O의 넓이를 구하는 목표이다.",
+    "method": "피타고라스 정리와 원주각 성질로 지름의 길이를 구하는 방법이다.",
+    "condition": "수선에 의해 생기는 직각삼각형 조건이다."
+  },
+  "how": "피타고라스 정리로 AH = CH = 4에서 각 ACB = 45도를 얻고 지름 AQ에 대한 직각삼각형에서 지름 5*sqrt(2)를 유도해 넓이 25/2*pi임을 서술하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "피타고라스 정리로 각도 45도를 복원하고 반원 원주각 성질로 지름 5*sqrt(2)를 구해 넓이 25/2*pi를 도출하는 3단계 복합 서술형 문항이다."
+}

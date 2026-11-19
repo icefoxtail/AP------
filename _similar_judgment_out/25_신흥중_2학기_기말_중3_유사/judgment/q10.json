@@ -1,0 +1,77 @@
+{
+  "qid": 10,
+  "itemFingerprint": "d3df5327fc06c5de",
+  "solveSteps": [
+    "1) 오각형 ABCDE에서 각 A = 100도가 바라보는 호 BCDE는 2 * 100도 = 200도이다.",
+    "2) 각 D = 115도가 바라보는 호 CBAE는 2 * 115도 = 230도이다.",
+    "3) 두 호의 합은 200도 + 230도 = 430도이며, 이는 원 전체 둘레 360도에 호 BC가 중복 포함된 것이다.",
+    "4) 따라서 호 BC = 430도 - 360도 = 70도이다.",
+    "5) 중심각 x = 각 BOC는 호 BC의 중심각이므로 70도이다.",
+    "6) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림과 같이 원 $O$에 내접하는 오각형 $ABCDE$에서 $\\angle A = 100^\\circ$, $\\angle D = 115^\\circ$일 때, 중심각 $\\angle x = \\angle BOC$의 크기는? [4점]",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmReason": "원주각 100도와 115도로부터 두 호의 합 430도를 구하고 원 전체 360도를 제외하여 호 BC의 중심각 x = 70도를 구하는 M3-RPM-075 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "내접오각형의 원주각 100도, 115도에 대응하는 호의 중복 덧셈 430도에서 360도를 빼어 중심각 x = 70도를 도출하는 TPL_CIRCLE_ANGLE_COMPOSITE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "원 $O$에 내접하는 오각형 $ABCDE$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "중심각 $\\angle x = \\angle BOC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "크기는 원주각의 $2$배이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "\\angle A = 100^\\circ$, $\\angle D = 115^\\circ$일 때"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O에 내접하는 오각형 ABCDE 조건이다.",
+    "goal": "중심각 x = 각 BOC의 크기를 구하는 목표이다.",
+    "method": "원주각과 호의 2배 관계 및 호의 겹침 덧셈을 적용하는 방법이다.",
+    "condition": "두 내각 A = 100도, D = 115도 조건이다."
+  },
+  "how": "원주각 100도, 115도로부터 호의 합 200 + 230 = 430도를 얻고 360도를 제외하여 호 BC의 중심각 x = 70도임을 확인해 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "원주각 2배로 호의 크기 200도와 230도를 합산하고 원 둘레 360도와의 차이로 중심각 70도를 구하는 2단계 문항이다."
+}
