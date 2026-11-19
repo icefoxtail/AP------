@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-bc05a1059456-6f9f5e04",
+  "requestSha256": "b8f66e6452bb6ecb28baeadd914abbf985e90bfc683ea7b64598da8d79637b60",
+  "examUid": "25_풍덕중_2학기_기말_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+  "sourceBlobSha1": "b367c602baa57051b7f487022413d2bd17cd31f8",
+  "sourceRawSha256": "73099d1e815717ba13c006ae3712a23648a0bcc2636e2099de1eb91f82309ce5",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc05a1059456-6f9f5e04.type-ledger.json",
+        "sha256": "d8af2dd83c4f1a62a8274990803944d1ca6d200cea4d4c750bcd4ea400d4b42d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_9a02140aebead8a4e34189501185db6e34e14af70f41d8da33fb1f45879e6ea9",
+      "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-bc05a1059456-6f9f5e04",
+        "judge": "dots",
+        "rationale": "첫 중앙값16으로 a≥16,둘째 평균9로 a+b24를 얻고 홀수자료 중앙값8이 실제 변량 b여야 하므로 b8,a16과 차8을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "8c1419c9087ef5f1818f562857b36575c67b26a819f664df4ee7755314e5deb0",
+        "judgedContentFingerprint": "016031f158d064aae74318d326e073d789cf2a73297e90fa495fdb22eb4109ca",
+        "rowBinding": "content",
+        "textBindingFingerprint": "9b6d91e8300568737413091f964d48c5802278e634424439c57760ef30914717",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc05a1059456-6f9f5e04.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

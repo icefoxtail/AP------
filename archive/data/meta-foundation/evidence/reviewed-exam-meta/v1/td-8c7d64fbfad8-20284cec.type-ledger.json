@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8c7d64fbfad8-20284cec",
+  "sourceArchiveFile": "original/high/h3/1mid/26_팔마고_1학기_중간_고3_미적분2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d71faf834fa66c1a6f80a6020fb2fa5c1237bf13730f0435e10dd309e8069a74",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "step": "유한한 무한대 극한을 위해 이차항 a=0을 강제하고 남은 최고차항비 b/2=1에서 b=2를 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f6fdb7de2145830bd6b670db6393e8615090796674a7fd1059070d21cdeac795",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_OPERATION_LAWS",
+      "step": "첫 조건으로 a_n→3을 얻고 분자분모를 n으로 나누어 (5a_n/n+2)/(a_n(a_n+1))의 극한 1/6을 구한다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bd29d021c29ed6d5639008a43871f2f3fb80204304510dda42cc84eb62e338e8",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "step": "그림의 직각삼각형에서 대각선 방향 (4/5,−3/5)와 BE 방향 (√3/2,1/2)를 얻어 내적으로 끼인각 코사인 (4√3−3)/10을 구한다.",
+      "note": "문항 직접 판독·독립 풀이. 필수 원본 그림 Git blob 추출 후 시각 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_38c44e82c285f79b90aa23c3add0115936076ca6a6b7c38c1567ff8be34474ef",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_VALUE_CALC_DOMINANCE",
+      "step": "밑의 크기에 따라 x=−1/2에서는 거듭제곱항이 0으로 가고 x=1에서는 상수 1/4, x=2에서는 최고거듭제곱으로 나누어 1/2를 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요. PT만 적용. 제안 세부명: 등비 거듭제곱 극한의 밑별 분기. |x|<1, x=1, |x|>1의 수렴 구조를 나눠 극한함수 값을 계산한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_988bdf229b71db6139f78bee6ac71733b3b5556e232b73e5df49a841d465f9cb",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+      "step": "홀수합으로 S_n=n³을 얻고 a_n=S_n−S_(n−1)=3n²−3n+1의 최고차항을 n²과 비교하여 3을 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_99a7ff435aec9952485e0dd4aabcead765df1041a3f6586240097132ae795737",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "step": "(a_n−3n)²<1을 n²로 나누어 a_n/n→3을 압축하고 근호식을 n으로 정규화하여 n/b_n→2와 목표극한 6을 얻는다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11a362fc1e83041fdf952bf44c2efd13abf7964087036ef16418cc82aabd074d",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "e의 정의에서 ln(1+u)/u→1을 적용하고 교점 좌표 √ln(1+t),√ln(1+5t)로 넓이를 구해 정규화하면 5(√5−1)/2이다.",
+      "note": "문항 직접 판독·독립 풀이. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h3-original.jsonl"
+    }
+  ]
+}

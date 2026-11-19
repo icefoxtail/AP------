@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6445bbf9048d-f058838b",
+  "sourceArchiveFile": "original/high/h1/2mid/22_복성고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_be146eb99917c3f05f9ee2f5a02a9ce23517da6375cd28fca1df6306caf0440c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_DEFINITION",
+      "templateKey": "TPL_SET_IDENTIFY",
+      "step": "원소가 되는 기준이 명확한 ㄱ과 ㄷ만 집합으로 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8cd63d36801f8e8310e19d13644946ba3b5e3cc2a27fb80f40a79e8393b2df1",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_IDENTIFICATION",
+      "step": "식을 정리했을 때 분모에 x가 남는 ②와 ④를 다항함수가 아닌 유리함수로 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3797d9d5d5120a0e3befce5fe40d9302153abbec5492f59533f944f8d0fbfb61",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "y=-1/(4x)는 x=0에서 정의되지 않으므로 정의역이 실수 전체라는 설명을 배제한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3cf5838640cef4ffc32ac30c3af9462328c5f653fc6f039231b4f0120b4ecdb5",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "step": "결합법칙으로 h∘g에 f(3)=6을 넣어 6/2-1=2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dd2d24c0afcbe8792125e660c55c206116ad98bc81d168d7d021dcdeaaa947ca",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA",
+      "step": "g∘(f∘g)의 역함수∘g를 f의 역함수∘g로 줄이고 그림의 g(c)=d 및 f(e)=d에서 e를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ebf7fe78aab7edc3a3f02fa74d780cd252fb1e4f8ed2eb3a9f7caab25fbf2700",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "step": "증가함수와 역함수의 교점은 y=x 위이므로 3x²+6x+2=x의 두 근으로 거리를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9065dd265e9a47534e5c2182a66017e90becc5935f223e821ecab55a2d33df35",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_CONSTRUCTION",
+      "templateKey": "TPL_RECONSTRUCT_FROM_REGIONS",
+      "step": "A-B=[-3,2]와 A∪B=R의 끝점 포함 조건을 함께 적용해 a=-3,b=2를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ac9f53fd3f1b9362ea5092ba1bc5f2acfbca5eda565a4cb072a1cb6c2826b15e",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER",
+      "step": "p의 진리집합 [a+1,a+2]가 q의 진리집합 (0,4)에 포함되도록 양 끝점을 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_03687c62b3dfe8bc238a6f47b7cc54f0c01f24f934ebd65d5315426578425a62",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "그래프에서 1→4→3→1의 주기3을 읽어 50회와 100회 합성값을 결정한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_32109754691674334afd04529aa930b6836787a1f21bf337ae71205f2b5f94ff",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EQUALITY",
+      "templateKey": "TPL_EQUAL_FUNCTION_DOMAIN_SELECTION",
+      "step": "두 함수식을 같게 놓은 방정식의 해 {1,-2}에서 공집합 아닌 정의역을 골라 세 가지를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_71dc6f6a58b21c7767575dcbac3311aa26fe23befc5316aa21f316ed97af26ed",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "두 교점의 x좌표 합8과 곱k 및 삼각형 넓이 4배의 근 차=26을 결합해 k를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

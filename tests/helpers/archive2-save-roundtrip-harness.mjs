@@ -38,6 +38,15 @@ function localFile(baseDir, relative) {
 export const MAX_SAVED_PAPER_BYTES = Number(
   /MAX_SAVED_PAPER_BYTES\s*=\s*([\d_]+)/.exec(fs.readFileSync(path.join(worker, "helpers/archive-saved-papers.js"), "utf8"))[1].replace(/_/g, ""));
 
+// The condition keys the saved-paper route accepts in selection_filters (any other key is answered 409), read from the Worker source.
+export function workerFilterKeys() {
+  const body = /const FILTER_KEYS = new Set\(\[([\s\S]*?)\]\)/.exec(fs.readFileSync(path.join(worker, "helpers/archive-saved-papers.js"), "utf8"));
+  if (!body) throw new Error("the Worker no longer declares FILTER_KEYS");
+  const keys = new Set([...body[1].matchAll(/"([^"]+)"/g)].map((match) => match[1]));
+  if (!keys.has("grade") || !keys.has("primaryPaths") || !keys.has("scopeQuestionUids")) throw new Error("the parsed Worker key list is not the real one");
+  return keys;
+}
+
 // ---------------------------------------------------------------- Worker
 export async function createWorker() {
   const { Miniflare } = requireWorker("miniflare");
@@ -134,6 +143,8 @@ export function createWorkspace(workerHandle) {
   };
   const uuids = seededUuids();
   const wire = { posts: [], beforePost: null, log: [] };
+  // The screen registers its click/change handlers with document.addEventListener; keep them so a sample can press the real buttons.
+  const events = new Map();
   const sourceForScreen = {
     ...archiveSource,
     restore: (records, cat, options = {}) => archiveSource.restore(records, cat, {
@@ -151,7 +162,8 @@ export function createWorkspace(workerHandle) {
     document: {
       baseURI: BASE + "workspace.html", getElementById: node, querySelector: () => null, querySelectorAll: () => [],
       createElement: () => ({ setAttribute() {}, append() {}, addEventListener() {}, classList: { add() {} } }),
-      body: { dataset: {}, appendChild() {} }, addEventListener() {},
+      body: { dataset: {}, appendChild() {} },
+      addEventListener: (name, callback) => { if (!events.has(name)) events.set(name, []); events.get(name).push(callback); },
     },
     addEventListener() {},
     fetch: async (url, init = {}) => {
@@ -197,7 +209,11 @@ export function createWorkspace(workerHandle) {
     catalog, byUid: new Map(catalog.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r])),
     finderIndex: core.buildFinderIndex(catalog), metaIndex: [], metaIndexSource: null, useMode: "general", indexVersion: catalog.indexVersion, ackWarnings: true,
   });
-  return { ws, wire, seedMode: uuids.seedMode };
+  // click(dataset): a screen button press (e.g. { action: "compose-grade", grade: "고1" }); change(filter, value): a compose select/checkbox change.
+  // Both run the screen's own document handlers, so the state afterwards is what a teacher's press leaves behind.
+  const click = async (dataset) => { for (const callback of events.get("click") || []) await callback({ target: { closest: () => ({ dataset }) } }); };
+  const change = async (filter, value) => { for (const callback of events.get("change") || []) await callback({ target: { dataset: { group: "compose", filter }, value } }); };
+  return { ws, wire, seedMode: uuids.seedMode, click, change };
 }
 
 // ---------------------------------------------------------------- Sample choice (rule-based, data-driven)

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-2ebe42a315ac-25e8eb2b",
+  "requestSha256": "83705356c89a69e5a4918778f5d4ed5023cabdbdeaa533b84a4a10780c4ebd81",
+  "examUid": "21_왕운중_2학기_기말_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+  "sourceBlobSha1": "e0b92aca8281a34f69104a9f34ea55ec1c704540",
+  "sourceRawSha256": "bcc8c216e1bc47afe9154ea428eb044b61c0c714eee7de5f64db60fc52b99a23",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ebe42a315ac-25e8eb2b.type-ledger.json",
+        "sha256": "593e7db619c3c2a8b05c03fedcaa8356bf270e58b1bb6e3ae623c6f99b6aae39"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_df0d572b86b671ec55d9b1a01bcfc8e698cacb59cd1c80fca3b3a8c0006ad495",
+      "sourceArchiveFile": "original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2ebe42a315ac-25e8eb2b",
+        "judge": "dots",
+        "rationale": "이등변 높이√(45-36)=3, 중심거리 R-3과 반현6의 식R²=(R-3)²+36으로 R15/2.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "faa0d6f1cdadaba525fc14aaa7650a791daf8606afa73cc665326709f46728fb",
+        "judgedContentFingerprint": "bf6b94a0708f04753b54586185a5becc2f09a5840e09a70eeacb281dcba8a3e9",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "3406e8658612e7fa88e88627825dfec84b8512c330d5d4bbec64ca00b6bc5475",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ebe42a315ac-25e8eb2b.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+          "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}
