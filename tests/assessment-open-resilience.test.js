@@ -45,14 +45,14 @@ function boot({ storage, session = null, fetchImpl, openMode = 'ok' }) {
   const document = {
     getElementById: () => node(), querySelector: () => node(), querySelectorAll: () => [],
     createElement: () => { const el = node(); notices.push(el); return el; },
-    body: node(), title: '',
+    body: node(), title: '', addEventListener() {},
   };
   if (session) storage.map.set('APMATH_SESSION', JSON.stringify(session));
   const sandbox = {
     document, localStorage: storage, history: { replaceState() {} }, console: { ...console, warn() {}, error() {}, log() {} },
     URL, URLSearchParams, Date, JSON, Math, Promise, setTimeout, clearTimeout, encodeURIComponent, decodeURIComponent, escape, unescape, btoa: (s) => Buffer.from(s, 'binary').toString('base64'), atob: (s) => Buffer.from(s, 'base64').toString('binary'),
     fetch: fetchImpl || (async () => { throw new TypeError('Failed to fetch'); }),
-    alert() {},
+    alert() {}, addEventListener() {},
   };
   sandbox.window = sandbox;
   sandbox.location = { search: '', hash: '', href: 'https://example.test/archive/assessment/assessment-mvp.html', pathname: '/archive/assessment/assessment-mvp.html' };

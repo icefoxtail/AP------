@@ -18,7 +18,9 @@
    (index.html registerIndexClassExamAssignment)과 같은 본문(MIXED:<snapshotKey> + mixed_payload_json)을 헤더 없이 보낸다(unitBodyFor).
    이 경로는 받는 사람을 항상 반 전체로 기록하므로, 학생을 일부만 고른 반은 POST 성공 뒤 exclude-students로 고르지 않은 학생을 뺀다.
    제외가 실패하면 성공으로 표시하지 않는다(그동안 반 전체에게 보인다). 같은 (반, 출제일, MIXED:키)는 서버가 기존 건을 갱신하므로
-   재전송해도 새 건이 생기지 않는다. 문항은 open({unit:{load}})이 준다. */
+   재전송해도 새 건이 생기지 않는다. 문항은 open({unit:{load}})이 준다.
+   시험지 보관함(assessment-mvp.html, 2026-11-19)도 이 종류로 낸다. 평가팩 항목은 packId·packHash를 더 싣고, 본문에 pack_id·pack_hash가 붙는다.
+   open({jobActions(job) → [{action,label}]})는 결과 줄에 호출한 화면이 처리하는 단추(data-host-action)를 더 붙인다(출제가 안 된 반의 QR 없는 시험지 열기). */
 (function (root, factory) {
   const api = factory(typeof module === "object" && module.exports
     ? require("./archive2-error-detail.js") : root.Archive2ErrorDetail);
@@ -357,6 +359,9 @@
       count,
       partIndex: Number.isInteger(Number(row.partIndex)) ? Number(row.partIndex) : 0,
       partCount,
+      // 평가팩(시험지 보관함)만 둔다: 서버가 같은 반·같은 날 같은 팩을 같은 건으로 알아보고 학생 제출·분석을 팩에 묶는 pack_id/pack_hash.
+      ...(text(row.packId) ? { packId: text(row.packId) } : {}),
+      ...(text(row.packHash) ? { packHash: text(row.packHash) } : {}),
     };
   }
   // 최근 출제 목록(recent-summary)에서 원본 시험(saved_paper_id 없음, archive_file = exams/<파일>)과
@@ -833,6 +838,9 @@
         grade_label: cls.grade || paper.grade || "",
         assignment_batch_id: `batch_archive_${fileTag}_${gradeTag}_${stamp}`,
         target_scope: scope,
+        // 평가팩 항목만(시험지 보관함): 옛 보관함 모달이 보내던 pack_id·pack_hash. 없는 항목의 본문은 그대로다.
+        ...(paper.packId ? { pack_id: paper.packId } : {}),
+        ...(paper.packHash ? { pack_hash: paper.packHash } : {}),
       });
     }
     // 고르지 않은 학생 = 명단 − 선택. 반 전체를 골랐으면 비어 있고 제외 요청은 나가지 않는다.
@@ -1448,6 +1456,13 @@
     if (job.status === "exclude-failed") actions.push(`<button type="button" class="small" data-assign-action="exclude-retry" data-key="${esc(job.key)}" data-focus="exclude-${esc(job.key)}">다시 빼기</button>`);
     if (job.status === "cancelled" && !job.noReissue) actions.push(`<button type="button" class="small" data-assign-action="reissue" data-key="${esc(job.key)}" data-focus="reissue-${esc(job.key)}">새로 출제</button>`);
     if (job.status === "ok-pdf") actions.push(`<button type="button" class="small" data-assign-action="pdf" data-key="${esc(job.key)}" data-focus="pdf-${esc(job.key)}"${job.pdfBusy ? " disabled" : ""}>${job.pdfBusy ? "PDF 준비 중…" : "PDF 다시 준비"}</button>`);
+    // 호출한 화면이 결과 줄에 더 붙일 단추(open({jobActions})): 지금은 시험지 보관함의 '출제가 안 된 반의 시험지를 QR 없이 열기'뿐이다.
+    // 패널은 라벨·동작 이름만 받아 data-host-action으로 그리고, 눌림은 호출한 화면이 처리한다(패널은 읽지 않는다).
+    if (typeof model.state.jobActions === "function") {
+      let extra = [];
+      try { extra = model.state.jobActions(job) || []; } catch { extra = []; }
+      for (const item of extra) if (item && item.action && item.label) actions.push(`<button type="button" class="small" data-host-action="${esc(item.action)}" data-key="${esc(job.key)}">${esc(item.label)}</button>`);
+    }
     const outputs = (job.status === "ok" || job.status === "ok-pdf") && job.assignmentId && model.state.outputLinks !== false
       ? `<span class="assign-result-outputs" role="group" aria-label="출력">${[["exam", "시험지"], ["sol", "해설"], ["ans", "정답"]].map(([mode, name]) => `<button type="button" class="small" data-action="assignment-output-direct" data-assignment="${id}" data-mode="${mode}">${name}</button>`).join("")}</span>` : "";
     const rawDetail = errorDetail && job.detail && ["failed", "unknown", "cancelled"].includes(job.status) ? errorDetail.markup(job.detail) : "";
@@ -1550,6 +1565,7 @@
     });
     if (!model.state.papers.length) throw new Error(options.items ? "출제할 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요." : "출제할 저장한 시험지를 확인할 수 없습니다. 목록으로 돌아가 다시 선택해 주세요.");
     model.state.outputLinks = options.outputLinks !== false;
+    model.state.jobActions = typeof options.jobActions === "function" ? options.jobActions : null;
     const opener = options.opener || doc.activeElement || null;
 
     const dialog = doc.createElement("dialog");
