@@ -873,9 +873,13 @@
         const value = a === "compose-grade" ? b.dataset.grade : b.dataset.subject;
         let next = value ?? "";
         if (a === "compose-subject" && value) {
-          // 과목이 둘뿐인 학년(고1)은 두 단추를 따로 켜고 끈다. 둘 다 눌린 상태(과목 값 없음)에서 하나를 누르면 그 과목만,
-          // 한 과목만 눌린 상태에서 다른 쪽(또는 같은 쪽)을 누르면 둘 다(전체)로 돌아간다.
-          if (Unified.subjectsForGrade(state.filters.grade).length === 2 && state.filters.semanticSubject) next = "";
+          // 과목이 둘뿐인 학년(고1)은 각 단추가 자기 과목만 켜고 끈다. 둘 다 켜진 상태(과목 값 없음)에서 한 단추를 누르면 그 과목이 꺼져
+          // 다른 과목만 남고, 한 과목만 켜진 상태에서 다른 단추를 누르면 둘 다 켜진다. 마지막 하나는 끌 수 없다(누르면 아무 일도 없다).
+          const values = Unified.subjectsForGrade(state.filters.grade).map((subject) => subject.value);
+          if (values.length === 2) {
+            const current = state.filters.semanticSubject || "";
+            next = !current ? values.find((v) => v !== value) : current === value ? current : "";
+          }
         }
         if (String(state.filters[filter] || "") === String(next)) return;
         changeComposeFilter(filter, next);

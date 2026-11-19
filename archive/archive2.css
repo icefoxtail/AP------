@@ -3893,6 +3893,10 @@ body[data-archive-view="compose"] .cz {
   border-radius: 0;
   padding: 0 8px;
 }
+/* 둘 다 눌려 검게 칠해져도 단추가 둘로 읽히게 사이에 밝은 선을 둔다. */
+.cz-seg button + button {
+  border-left: 2px solid var(--surface);
+}
 .cz-chips {
   display: flex;
   flex-wrap: wrap;
