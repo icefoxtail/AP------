@@ -99,3 +99,36 @@
 | 23 | NOT_NEEDED | BENEFICIAL |  해설: 수직선에 x의 범위와 4 - x/3의 범위를 나란히 표시하면 부등호가 뒤집히는 과정이 한눈에 들어온다. |
 
 - 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE 1건. 게시한 그림 0개.
+
+## 25_매산중_1학기_중간_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업에서 그림을 만들지 않았다. 아래는 일괄 작업용 판정이고 JS에는 그림 참조가 없다(깨진 참조 없음). 고친 내용: 19번 보기를 1, 3, 6, 9, 11로 다시 구성(원래 1, 2, 3, -1, -5로 크기순이 아니었음, 정답 ①=1 그대로), 5·6번 해설의 집합 기호·중괄호 삭제, 해설 24개를 판서형으로 정리(`\implies` 삭제). 모든 문항의 정답 값은 직접 확인했고 틀린 정답은 없었다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | TABLE | 해설: 갈 때·대출·올 때 시간과 총 한도를 표로 정리하면 식 세우기가 쉬움(표 엔진 영역) |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | BENEFICIAL | BENEFICIAL | 문제: 사각뿔의 밑면 18과 24, 높이 h의 위치를 그림으로 보여 주면 상황 파악이 빠르다. 해설: 밑넓이와 높이의 관계를 사각뿔 그림에 표시하면 부피 식 세우기가 쉬워진다. |
+| 23 | NOT_NEEDED | NOT_NEEDED |  |
+| 24 | NOT_NEEDED | NOT_NEEDED |  |
+
+- 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 1개. TABLE 1건. 게시한 그림 0개.
