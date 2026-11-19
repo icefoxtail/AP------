@@ -250,7 +250,11 @@ window.questionBank = [
       "sourceRawSha256": "26D1545C7ECD7A3ADA4E93E124CE429C4A90E3A96BFD3D10BAF5C5AAB5B1B0A1",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_금당고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "ED9A20E7789CE4A1D22B53B7D32BD906030D543AE0BAD91EECF59BCBA40BA518"
-    }
+    },
+    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 아들이 앉는 점 A와 그 양옆의 점 B와 점 F, 나머지 점 C, D, E가 구분되어 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 아들의 자리를 점 A로 고정하면 회전이 없어진다. 아들의 양옆인 점 B와 점 F에 부모가 앉는 방법은 2!=2가지이고 남은 점 C, D, E에 딸 세 명이 앉는 방법은 3!=6가지이다. 따라서 2×6=12이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -663,9 +667,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "선분 $AB$의 길이를 1로 두고 $P,Q$의 위치를 각각 $x,y\\in[0,1]$로 나타낸다.\n모든 $(x,y)$는 단위정사각형 안에 있으므로 전체 경우의 넓이는 1이다.\n조건 $\\overline{PQ}\\le1/3$은 $|x-y|\\le1/3$이다. 이 조건을 만족하지 않는 영역은 정사각형의 두 모서리에 생기는 직각삼각형 두 개이고, 각 변의 길이는 $\\frac{2}{3}$이다.\n따라서 원하는 확률은 $1-2\\cdot\\frac12(\\frac23)^2=1-\\frac49=\\frac59$이다. 정답은 ①이다.",
-    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q11-solution.svg",
-    "solutionImageAlt": "단위 정사각형에서 |x−y|≤1/3인 대각 띠와 제외되는 두 모서리 삼각형",
-    "solutionImageCaption": "두 제외 삼각형의 넓이는 각각 1/2×(2/3)²이므로 조건 영역의 넓이는 5/9이다.",
+    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 정사각형이 있고 왼쪽 위 모서리와 오른쪽 아래 모서리에서 두 개의 대각선 방향 선분이 각각 직각삼각형을 잘라 내는 그림이다.",
+    "solutionImageCaption": "선분 AB의 길이를 1로 두고 두 점의 위치를 x, y라 하면 모든 경우는 한 변이 1인 정사각형이다. 그림은 한 변을 3으로 늘려 그린 것이며 점 H와 F를 잇는 선분은 y=x+1/3, 점 B와 D를 잇는 선분은 y=x−1/3에 해당한다. PQ≤1/3은 |x−y|≤1/3이므로 두 선분 사이의 띠이고, 조건에 맞지 않는 곳은 모서리의 두 직각삼각형이다. 각 삼각형의 직각을 낀 변이 2/3이어서 넓이가 (1/2)(2/3)의 제곱=2/9이고 확률은 1−2×2/9=5/9이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full",
     "primaryMethod": "두 점의 위치를 단위정사각형에서 나타내고 대각선 바깥의 두 삼각형을 뺀다.",
     "decisiveStep": "전체 면적 1에서 $|x-y|>1/3$인 두 삼각형의 넓이 $2\\cdot(1/2)(2/3)^2=4/9$를 빼면 $5/9$이다.",
@@ -802,9 +806,9 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "원에 내접하는 삼각형이 직각삼각형이면 그 직각을 마주 보는 변은 지름이다. 반대로 한 변이 지름이면 그 변을 보는 원주각은 직각이다.\n같은 간격의 8개 점에는 서로 마주 보는 지름이 4개 있다. 지름 하나를 택한 뒤, 나머지 6개 점 중 하나를 세 번째 꼭짓점으로 고르면 직각삼각형 하나가 정해진다.\n따라서 직각삼각형은 $4\\cdot6=24$개이다. 전체 삼각형은 ${}_8C_3=56$개이므로 구하는 확률은 $\\frac{24}{56}=\\frac{3}{7}$이다. 정답은 ①이다.",
-    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q13-solution.svg",
-    "solutionImageAlt": "같은 간격으로 놓인 원주 8점의 네 지름과 직각삼각형 선택 구조",
-    "solutionImageCaption": "네 지름마다 나머지 여섯 점을 세 번째 꼭짓점으로 고를 수 있어 확률은 24/56=3/7이다.",
+    "solutionImage": "assets/images/18_금당고_1학기_중간_고2_확률과통계/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 여덟 개의 점이 팔각형 꼭짓점으로 놓여 있고 서로 마주 보는 점끼리 이어진 네 개의 지름이 가운데에서 만나는 그림이다.",
+    "solutionImageCaption": "원 위에 같은 간격으로 놓인 8개의 점을 팔각형 꼭짓점으로 나타내고 서로 마주 보는 두 점을 이은 지름 4개를 그렸다. 원에 내접하는 삼각형이 직각삼각형이면 직각의 대변이 지름이다. 지름 하나를 고르고 나머지 6개의 점 중 하나를 세 번째 꼭짓점으로 고르면 직각삼각형이 정해지므로 4×6=24개이다. 전체 삼각형은 8C3=56개이므로 확률은 24/56=3/7이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full",
     "primaryMethod": "원주각의 정리로 직각삼각형의 빗변이 지름이어야 함을 이용해 유리한 삼각형을 센다.",
     "decisiveStep": "지름이 되는 점의 쌍은 4쌍이고 나머지 점 6개 중 하나를 고르면 직각삼각형이므로 $4\\cdot6/{}_8C_3=24/56=3/7$이다.",
