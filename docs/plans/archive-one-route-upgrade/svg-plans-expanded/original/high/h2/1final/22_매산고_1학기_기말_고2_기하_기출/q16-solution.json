@@ -1,0 +1,152 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 4,
+      "names": "EFGHABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "A",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "E",
+              "H"
+            ]
+          }
+        },
+        {
+          "id": "T",
+          "at": {
+            "footOnLine": {
+              "from": "N",
+              "line": [
+                "E",
+                "G"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "M",
+      "to": "E",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "N",
+      "to": "T",
+      "style": "DASHED",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "T",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "M",
+      "to": "N",
+      "label": "4"
+    },
+    {
+      "from": "N",
+      "to": "T",
+      "label": "\\sqrt{2}"
+    },
+    {
+      "from": "M",
+      "to": "T",
+      "label": "3\\sqrt{2}"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "M",
+        "E",
+        "G"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "E"
+        ]
+      },
+      {
+        "at": "T",
+        "refs": [
+          "N",
+          "G"
+        ]
+      }
+    ],
+    "angles": [
+      {
+        "refs": [
+          "M",
+          "T",
+          "N"
+        ],
+        "arcs": 1,
+        "label": "\\theta"
+      }
+    ]
+  },
+  "caption": "밑면 EFGH를 z=0으로 두고 E(0, 0, 0), G(4, 4, 0), M(0, 2, 4)로 잡으면 M에서 밑면에 내린 수선의 발은 N(0, 2, 0)(EH의 중점)이다. N에서 EG에 내린 수선의 발을 T라 하면 NT=√2이고 MN=4이므로 MT=√18=3√2이다. 두 평면 MEG, EFGH의 교선 EG에 수직인 MT, NT가 이루는 각 θ에서 cosθ=NT/MT=√2/(3√2)=1/3이다. 따라서 30cosθ=10이다.",
+  "accessibilityDescription": "정육면체의 밑면 EFGH와 모서리 AD의 중점 M이 있고 삼각형 MEG가 색칠되어 있다. M에서 밑면으로 내린 수선의 발 N, N에서 EG로 내린 수선의 발 T와 직각 표시, 각 θ, 길이 4, √2, 3√2가 표시되어 있다.",
+  "newVisualInformation": [
+    "EG에 수직인 TN, TM이 이루는 각 θ=∠MTN과 직각삼각형 MNT의 변 4, √2, 3√2를 보여 cosθ=1/3을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "단답형1. 한 모서리의 길이가 $4$인 정육면체 $ABCD-EFGH$가 있다. 선분 $AD$의 중점이 $M$이고 평면 $MEG$와 평면 $EFGH$가 이루는 각을 $\\theta$라 할 때, $30\\cos\\theta$의 값을 구하여라. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

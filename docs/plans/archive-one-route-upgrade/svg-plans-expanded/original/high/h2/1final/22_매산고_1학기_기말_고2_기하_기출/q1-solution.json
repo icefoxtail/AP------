@@ -1,0 +1,117 @@
+{
+  "capability": "solid-figure-v1",
+  "solidCaption": {
+    "text": "xy평면에 대한 대칭"
+  },
+  "space": {
+    "points": [
+      {
+        "id": "O",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "H",
+        "at": [
+          3,
+          2,
+          0
+        ]
+      },
+      {
+        "id": "P",
+        "at": [
+          3,
+          2,
+          -4
+        ]
+      },
+      {
+        "id": "Q",
+        "at": [
+          3,
+          2,
+          4
+        ]
+      },
+      {
+        "id": "K",
+        "at": [
+          3,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "O",
+        "extent": {
+          "center": [
+            1.5,
+            1,
+            0
+          ],
+          "u": [
+            3.6,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            2.6,
+            0
+          ]
+        }
+      }
+    ],
+    "segments": [
+      {
+        "from": "P",
+        "to": "Q",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "O",
+        "to": "H",
+        "style": "AUTO"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "H",
+        "refs": [
+          "P",
+          "K"
+        ]
+      }
+    ]
+  },
+  "caption": "점 P(3, 2, −4)에서 xy평면(평면 α)에 내린 수선의 발은 H(3, 2, 0)이다. xy평면에 대하여 대칭인 점 Q는 H에서 P의 반대쪽으로 같은 거리(4)인 점이므로 x, y좌표는 그대로이고 z좌표의 부호만 바뀌어 Q(3, 2, 4)이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "수평인 평면 α 위의 점 H에서 아래로 내려간 점 P와 위로 올라간 점 Q가 한 수직선 위에 있고, 선분 PQ가 평면 α를 H에서 직각으로 지난다.",
+  "newVisualInformation": [
+    "P와 Q가 평면 α 위의 점 H에서 같은 거리에 있고 PQ가 α에 수직임을 보여 z좌표의 부호만 바뀜을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $P(3,2,-4)$에 대하여 $xy$평면에 대하여 대칭인 점의 좌표를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

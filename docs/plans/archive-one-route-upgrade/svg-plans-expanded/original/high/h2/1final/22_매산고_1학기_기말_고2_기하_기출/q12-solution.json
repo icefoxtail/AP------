@@ -1,0 +1,91 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "64",
+      "minor": "25"
+    },
+    "majorAxis": "Y"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "end": "MAJOR_POS"
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "end": "MINOR_POS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "-5/2*sqrt(2)",
+      "branch": "NEG"
+    },
+    {
+      "id": "S",
+      "kind": "OPPOSITE",
+      "of": "P"
+    },
+    {
+      "id": "N",
+      "kind": "POINT",
+      "x": "-5*sqrt(2)",
+      "y": "0",
+      "coordinates": true
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "ab",
+      "slope": "-8/5",
+      "intercept": "8"
+    },
+    {
+      "id": "t1",
+      "slope": "-8/5",
+      "intercept": "-8*sqrt(2)",
+      "tangent": true
+    },
+    {
+      "id": "t2",
+      "slope": "-8/5",
+      "intercept": "8*sqrt(2)",
+      "tangent": true,
+      "dashed": true
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "A",
+        "B",
+        "P"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "밑변 AB가 고정되므로 삼각형 ABP의 넓이는 P에서 직선 AB까지의 거리가 클 때 최대이다. 직선 AB는 8x+5y=40이고, AB와 평행한 두 접선 중 AB에서 더 먼 접선의 접점이 P(−5/√2, −8/√2)이다(점 S는 P와 대칭인 다른 접점). 접선 xx₀/25+yy₀/64=1에서 y=0이면 x=25/x₀=−5√2이므로 접선은 x축과 N(−5√2, 0)에서 만난다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "세로로 긴 타원과 위쪽 꼭짓점 A, 오른쪽 꼭짓점 B를 잇는 직선, 이 직선과 평행한 두 접선이 있다. 왼쪽 아래 접점 P와 삼각형 ABP가 색칠되어 있고 접선이 x축과 만나는 점 N의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 AB와 평행한 두 접선 중 먼 쪽의 접점 P, 삼각형 ABP, 접선의 x절편 N(−5√2, 0)을 보여 접선의 x절편을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "타원 $\\dfrac{x^2}{25}+\\dfrac{y^2}{64}=1$의 꼭짓점 $A(0,8),B(5,0)$와 타원 위의 점 $P$에 대하여 삼각형 $ABP$의 넓이가 최대일 때, 점 $P$에서의 접선의 $x$절편을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

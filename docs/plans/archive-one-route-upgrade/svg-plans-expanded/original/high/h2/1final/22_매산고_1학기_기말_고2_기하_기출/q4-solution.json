@@ -1,0 +1,53 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16/25",
+    "bSquared": "16",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1,
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=5x"
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-5x"
+    }
+  ],
+  "caption": "쌍곡선 x²/a²−y²/16=1의 점근선은 y=±(4/a)x이다. 한 점근선의 기울기가 5이면 4/a=5이므로 a=4/5이다. 그림은 a=4/5일 때의 쌍곡선과 두 점근선 y=±5x, 꼭짓점 V(4/5, 0)이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "좌우로 갈라진 쌍곡선이 아주 가파른 두 점선 점근선 사이에 있다. 오른쪽 가지의 꼭짓점 V의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "점근선의 기울기 ±5와 꼭짓점 V(4/5, 0)을 보여 4/a=5에서 a=4/5를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{16}=1$의 점근선 중 하나의 기울기가 $5$일 때, 양수 $a$의 값은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

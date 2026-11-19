@@ -1,0 +1,164 @@
+{
+  "capability": "solid-figure-v1",
+  "solidCaption": {
+    "text": "수직인 두 평면 α, β"
+  },
+  "space": {
+    "points": [
+      {
+        "id": "P",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "A",
+        "at": [
+          1,
+          0,
+          "sqrt(3)"
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "L",
+        "at": [
+          2.2,
+          0,
+          0
+        ],
+        "hideName": true,
+        "hideDot": true
+      }
+    ],
+    "planes": [
+      {
+        "id": "alpha",
+        "name": "\\alpha",
+        "normal": [
+          0,
+          1,
+          0
+        ],
+        "point": "P",
+        "extent": {
+          "center": [
+            1,
+            0,
+            0.9
+          ],
+          "u": [
+            1.7,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            0,
+            1.9
+          ]
+        }
+      },
+      {
+        "id": "beta",
+        "name": "\\beta",
+        "normal": [
+          0,
+          0,
+          1
+        ],
+        "point": "P",
+        "extent": {
+          "center": [
+            1,
+            0.5,
+            0
+          ],
+          "u": [
+            1.7,
+            0,
+            0
+          ],
+          "v": [
+            0,
+            1.3,
+            0
+          ]
+        }
+      }
+    ],
+    "lines": [
+      {
+        "id": "l",
+        "name": "l",
+        "through": [
+          "P",
+          "L"
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "P",
+        "to": "A",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "P",
+        "to": "B",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "ACCENT"
+      }
+    ]
+  },
+  "marks": {
+    "angles": [
+      {
+        "refs": [
+          "L",
+          "P",
+          "A"
+        ],
+        "arcs": 1,
+        "label": "60^\\circ"
+      },
+      {
+        "refs": [
+          "L",
+          "P",
+          "B"
+        ],
+        "arcs": 1,
+        "label": "45^\\circ"
+      }
+    ]
+  },
+  "caption": "교선 l을 x축으로, α를 xz평면, β를 xy평면으로 잡으면 P(0, 0, 0)이고 PA가 l과 60°이므로 A(1, 0, √3), PB가 l과 45°이므로 B(1, 1, 0)로 둘 수 있다(한 예). PA×PB를 계산하면 평면 PAB의 법선은 (−√3, √3, 1)에 평행하고 β의 법선은 (0, 0, 1)이다. 따라서 cosθ=1/√7이고 cos²θ=1/7이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "서로 수직인 두 평면 α와 β가 직선 l에서 만난다. l 위의 점 P에서 α 위의 점 A와 β 위의 점 B로 가는 선분이 있고, l과 PA 사이에 60도, l과 PB 사이에 45도 각이 표시되어 있다.",
+  "newVisualInformation": [
+    "수직인 두 평면과 교선 l 위의 점 P, A, B를 보여 60°, 45° 조건과 평면 PAB의 법선을 구하는 좌표 배치를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같이 두 점 $A,B$는 각각 서로 수직인 두 평면 $\\alpha,\\beta$ 위에 있고, 점 $P$는 두 평면 $\\alpha,\\beta$의 교선 $l$ 위에 있다. 직선 $l$과 두 직선 $PA,PB$가 이루는 각의 크기가 각각 $60^\\circ,45^\\circ$일 때, 평면 $PBA$와 평면 $\\beta$가 이루는 각의 크기를 $\\theta$라 하자. 이때 $\\cos^2\\theta$의 값을 구하면? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

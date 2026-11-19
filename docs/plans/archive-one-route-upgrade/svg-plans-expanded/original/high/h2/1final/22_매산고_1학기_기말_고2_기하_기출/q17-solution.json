@@ -1,0 +1,93 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "1",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "ON_CONIC",
+      "x": "5",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "ON_CONIC",
+      "x": "6",
+      "branch": "POS"
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "A",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "H'",
+      "kind": "FOOT",
+      "from": "B",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "6"
+    },
+    {
+      "id": "sBF",
+      "from": "B",
+      "to": "F",
+      "label": "7"
+    },
+    {
+      "id": "sAH",
+      "from": "A",
+      "to": "H",
+      "label": "6"
+    },
+    {
+      "id": "sBH",
+      "from": "B",
+      "to": "H'",
+      "label": "7"
+    }
+  ],
+  "caption": "y²=4x의 초점은 F(1, 0), 준선은 x=−1이다. A, B의 x좌표를 m, n이라 하면 AF=m+1, BF=n+1이고 무게중심의 x좌표 (m+n+1)/3=4에서 m+n=11이다. AF×BF=mn+12이므로 합이 11인 두 자연수(2 이상) 중 가장 가까운 m=5, n=6일 때 최대이다. 그림은 이 경우로 AF=6, BF=7이다. 따라서 최댓값은 6×7=42이다.",
+  "accessibilityDescription": "오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선 l이 있다. 곡선 위의 점 A, B에서 F와 준선으로 가는 선분이 있고 길이 6과 7이 표시되어 있다.",
+  "newVisualInformation": [
+    "x좌표가 5, 6인 두 점 A, B에서 초점까지의 거리 6, 7이 준선까지의 거리와 같음을 보여 AF×BF=42를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "단답형2. 초점이 $F$인 포물선 $y^2=4x$ 위에 서로 다른 두 점 $A,B$가 있다. 두 점 $A,B$의 $x$좌표는 $1$보다 큰 자연수이고 삼각형 $AFB$의 무게중심의 $x$좌표가 $4$일 때, $\\overline{AF}\\times\\overline{BF}$의 최댓값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 4,
+      "names": "ABCD",
+      "points": [
+        {
+          "id": "M",
+          "at": {
+            "midpoint": [
+              "C",
+              "D"
+            ]
+          }
+        },
+        {
+          "id": "N",
+          "at": {
+            "midpoint": [
+              "A",
+              "B"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "M",
+      "style": "AUTO",
+      "role": "ACCENT"
+    },
+    {
+      "from": "C",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "style": "AUTO",
+      "role": "REF"
+    }
+  ],
+  "dims": [
+    {
+      "from": "C",
+      "to": "N",
+      "label": "2\\sqrt{3}"
+    },
+    {
+      "from": "M",
+      "to": "N",
+      "label": "2\\sqrt{2}"
+    }
+  ],
+  "highlights": [
+    {
+      "polygon": [
+        "A",
+        "B",
+        "M"
+      ]
+    }
+  ],
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "N",
+        "refs": [
+          "C",
+          "A"
+        ]
+      },
+      {
+        "at": "N",
+        "refs": [
+          "M",
+          "A"
+        ]
+      }
+    ]
+  },
+  "caption": "정사면체에서 CD⊥평면 ABM이므로 점 C의 평면 ABM 위 정사영은 CD의 중점 M이고, 삼각형 ABC의 정사영은 삼각형 ABM이다. AB의 중점을 N이라 하면 CN=AM=2√3이고 MN=√(12−4)=2√2이다. 정사영의 넓이는 (1/2)×AB×MN=(1/2)×4×2√2=4√2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "정사면체 ABCD에서 모서리 CD의 중점 M, 모서리 AB의 중점 N이 있고 삼각형 ABM이 색칠되어 있다. 선분 CN과 MN은 AB에 수직이며 직각 표시와 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "C의 정사영이 M임을 이용해 정사영 삼각형 ABM과 AB의 중점 N, CN, MN의 직각 관계를 보여 넓이 4√2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 한 모서리의 길이가 $4$인 정사면체 $ABCD$에서 모서리 $CD$의 중점을 $M$이라고 할 때, 삼각형 $ABC$의 평면 $ABM$ 위로의 정사영의 넓이를 구하면? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
