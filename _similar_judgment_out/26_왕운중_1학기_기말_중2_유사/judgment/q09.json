@@ -1,0 +1,64 @@
+{
+  "qid": 9,
+  "itemFingerprint": "b6281c2c062de965",
+  "solveSteps": [
+    "1. 함수는 x의 각 값에 대하여 y의 값이 오직 하나씩 대응해야 한다.",
+    "2. ① x보다 작은 짝수의 개수, ② 4로 나눈 나머지, ③ 정삼각형 둘레 y = 3x, ④ 800원 연필 가격 y = 800x 는 모두 x에 대해 y가 오직 하나로 정해지므로 함수이다.",
+    "3. ⑤ 자연수 x의 약수 y는 x=6일 때 y=1, 2, 3, 6 등으로 y의 값이 하나로 정해지지 않는다.",
+    "4. 따라서 함수가 아닌 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "다음 중 $y$가 $x$의 함수가 아닌 것은?",
+  "rpmRecordId": "M2-RPM-165",
+  "rpmReason": "800원 연필 가격 y=800x 등 여러 대응 관계에서 함수인 것과 함수가 아닌 것을 구분하는 일차함수 판별 문항이다.",
+  "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+  "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_FUNCTION",
+  "typeReason": "800원 연필 등 여러 수량 관계에서 자연수 x의 약수 y는 y값이 유일하게 결정되지 않음을 찾아 함수가 아님을 판별하는 문제이므로 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "함수의 정의를 800원 연필 및 약수 관계에 바로 적용하여 판단하는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "choices",
+        "quote": "자연수 $x$의 약수 $y$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "$y$가 $x$의 함수가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "약수",
+        "src": "solution",
+        "quote": "x = 6$일 때 약수 $y$는 $1, 2, 3, 6$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "800원 가격이나 정삼각형 둘레와 달리 자연수 x의 약수 y는 x=6일 때 y값이 여러 개이므로 함수가 아님을 확인하여 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

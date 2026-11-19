@@ -1,0 +1,65 @@
+{
+  "qid": 15,
+  "itemFingerprint": "815685db449aa662",
+  "solveSteps": [
+    "1. 일차함수 y = bx - a 가 제1, 2, 4사분면을 지나므로 그래프는 오른쪽 아래로 향하고 y절편이 양수이다.",
+    "2. 따라서 기울기 b < 0 이고 y절편 -a > 0 에서 a < 0 이다.",
+    "3. 새 일차함수 y = abx + (a + b) 에서 ab 는 두 음수의 곱이므로 기울기 ab > 0 이다.",
+    "4. y절편 a + b 는 두 음수의 합이므로 a + b < 0 이다.",
+    "5. 기울기가 양수이고 y절편이 음수인 직선은 제1, 3, 4사분면을 지나고 제2사분면을 지나지 않는다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = bx - a$의 그래프가 제$1, 2, 4$사분면을 지날 때, 일차함수 $y = abx + (a + b)$의 그래프가 지나지 않는 사분면을 구하면?",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "y = bx - a 의 지나는 사분면 조건으로 기울기와 절편의 부호를 판단하여 새 직선 y = abx + (a+b) 의 사분면을 결정하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M2_LINEAR_FUNCTION_QUADRANT_CONDITION_AVOID",
+  "typeReason": "일차함수 y = bx - a 의 사분면 조건에서 부호를 유추하고 y = abx + (a+b) 가 지나지 않는 사분면을 판별하는 문제이므로 PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "bx - a 에서 a < 0, b < 0 을 유도하고 abx + (a+b) 의 부호로부터 지나지 않는 사분면을 추론하는 3단계 종합 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 제$1, 2, 4$사분면을 지날 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = abx + (a + b)$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "즉, 기울기 $b < 0$이고 $y$절편",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = bx - a 로부터 a < 0, b < 0 을 유도하고 y = abx + (a+b) 의 기울기 양수, y절편 음수로부터 제2사분면을 지나지 않음을 확인해 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

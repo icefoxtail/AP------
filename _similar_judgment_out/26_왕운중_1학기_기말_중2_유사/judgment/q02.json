@@ -1,0 +1,80 @@
+{
+  "qid": 2,
+  "itemFingerprint": "3824e9a03e339541",
+  "solveSteps": [
+    "1. 일차방정식 x + 2y = 11 에서 x, y 가 자연수이므로 y=1부터 차례로 대입한다.",
+    "2. y=1일 때 x=9 (x-y=8), y=2일 때 x=7 (x-y=5), y=3일 때 x=5 (x-y=2), y=4일 때 x=3 (x-y=-1), y=5일 때 x=1 (x-y=-4) 이다.",
+    "3. y >= 6 이면 x <= -1 이 되어 자연수가 아니므로 가능한 x-y의 값은 8, 5, 2, -1, -4 이다.",
+    "4. 보기 중 -3 은 이 값들에 포함되지 않는다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "일차방정식 $x + 2y = 11$을 만족시키는 자연수 $x, y$에 대하여",
+  "rpmRecordId": "M2-RPM-150",
+  "rpmReason": "일차방정식 x + 2y = 11 을 만족시키는 자연수 순서쌍 해를 구하여 식의 값을 검증하는 문항이다.",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "방정식 x + 2y = 11 의 자연수 해 순서쌍을 나열하고 x-y 가 될 수 없는 값을 고르는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x + 2y = 11 에서 y 에 자연수를 대입해 순서쌍을 조사하는 전형적인 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "을 만족시키는 자연수 $x, y$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $x + 2y"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$부터 차례로 대입하면 $y =",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "방정식 x + 2y = 11 의 자연수 해에서 x-y 의 가능한 값이 8, 5, 2, -1, -4 임을 확인하여 -3 은 될 수 없으므로 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "figureEvidenceQuote": "일차방정식 $x + 2y = 11$을 만족시키는 자연수 $x, y$에 대하여 $x - y$의 값이 될 수 없는 것을 고르면?",
+  "curriculumSubjectKey": "MIDDLE2",
+  "rpmRecordKey": "M2-RPM-150",
+  "difficulty": 2,
+  "mathTerms": [
+    {
+      "term": "일차방정식",
+      "quote": "일차방정식 $x + 2y = 11$을"
+    },
+    {
+      "term": "자연수",
+      "quote": "만족시키는 자연수 $x, y$에"
+    }
+  ],
+  "problemTextQuote": "자연수 $x, y$에 대하여 $x - y$의 값이 될 수 없는",
+  "solutionTextQuote": "$x, y$가 자연수이므로 $y$에 $1$부터 차례로 대입하면"
+}

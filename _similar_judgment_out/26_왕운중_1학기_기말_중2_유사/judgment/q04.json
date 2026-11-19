@@ -1,0 +1,80 @@
+{
+  "qid": 4,
+  "itemFingerprint": "55f50103d1173845",
+  "solveSteps": [
+    "1. 연립방정식 3x + y = 7, 2x - y = 3 에서 두 식을 더하면 5x = 10 이므로 x = 2 이다.",
+    "2. y = 7 - 3(2) = 1 이므로 m = 2, n = 1 이다.",
+    "3. mx + ny = 7, nx - my = 1 에 m=2, n=1 을 대입하면 2x + y = 7, x - 2y = 1 이다.",
+    "4. 첫째 식에 2를 곱해 더하면 5x = 15 에서 x = 3 이고, y = 7 - 2(3) = 1 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} 3x + y = 7 \\ 2x - y = 3 \\end{cases}$의 해가 $x = m,\\ y = n$일 때",
+  "rpmRecordId": "M2-RPM-148",
+  "rpmReason": "가감법으로 5x = 10 및 5x = 15 를 풀어 연립일차방정식의 해를 차례로 구하는 가감법 풀이 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "연립방정식 cases 3x+y=7, 2x-y=3 의 해로 계수 mx, ny 를 정하고 새 연립방정식을 푸는 연립일차방정식 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "가감법으로 5x = 10 을 풀고 다시 5x = 15 를 푸는 표준 2단계 연립방정식 풀이 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "의 해를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "두 번째 연립방정식에 대입하면 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "첫 연립방정식에서 5x=10 으로 x=2, y=1 을 얻어 m=2, n=1 을 구하고, mx+ny=7 에 대입해 5x=15 로부터 x=3, y=1 을 구해 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "figureEvidenceQuote": "연립방정식 $\\begin{cases} 3x + y = 7 \\ 2x - y = 3 \\end{cases}$의 해가 $x = m,\\ y = n$일 때, 연립방정식 $\\begin{cases} mx + ny = 7 \\ nx - my = 1 \\end{cases}$의 해를 구하면?",
+  "curriculumSubjectKey": "MIDDLE2",
+  "rpmRecordKey": "M2-RPM-148",
+  "difficulty": 2,
+  "mathTerms": [
+    {
+      "term": "연립방정식",
+      "quote": "연립방정식 $\\begin{cases} 3x + y = 7"
+    },
+    {
+      "term": "해",
+      "quote": "의 해가 $x = m,\\ y = n$일 때"
+    }
+  ],
+  "problemTextQuote": "해를 구하면?",
+  "solutionTextQuote": "첫째 식에 $2$를 곱하여 둘째 식과 더하면"
+}

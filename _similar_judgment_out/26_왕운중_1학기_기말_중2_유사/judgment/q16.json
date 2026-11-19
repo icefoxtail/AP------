@@ -1,0 +1,65 @@
+{
+  "qid": 16,
+  "itemFingerprint": "1e6cf15dedfae529",
+  "solveSteps": [
+    "1. 5분마다 4%씩 감소하므로 1분마다 4/5%씩 감소한다.",
+    "2. x분 후의 배터리 잔량을 y%라 하면 y = 100 - (4/5)x 이다.",
+    "3. 완전히 방전될 때는 y = 0 이므로 100 - (4/5)x = 0 에서 (4/5)x = 100 이므로 x = 125(분) 이다.",
+    "4. 125분 = 2시간 5분 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "어떤 스마트폰 배터리가 $5$분마다 $4\\%$씩 감소한다고 하자.",
+  "rpmRecordId": "M2-RPM-164",
+  "rpmReason": "배터리 감소율 4% 조건으로 식 y = 100 - 4/5x 를 세워 y=0 일 때의 시간 125분(2시간 5분)을 구하는 함숫값 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "배터리 잔량 관계를 일차함수 y = 100 - 4/5x 로 모델링하여 완전히 방전되는 125분을 구하는 일차함수 활용 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "5분마다 4% 감소에서 125분을 계산해 2시간 5분을 구하는 2단계 기본 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "$4\\%$씩 감소한다고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "solution",
+        "quote": "x$분 후의 배터리 잔량을 $y\\%$라 하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "100 - \\frac{4}{5}x = 0",
+        "evidenceType": "IMPLIED",
+        "justification": "잔량이 0이 되는 일차방정식을 풀어 125분을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "5분마다 4% 감소에서 y = 100 - 4/5x 를 세우고 y=0 일 때 125분 = 2시간 5분 후임을 구해 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

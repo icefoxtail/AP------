@@ -1,0 +1,66 @@
+{
+  "qid": 24,
+  "itemFingerprint": "239eaed3751920e3",
+  "solveSteps": [
+    "1. 세 일차방정식을 y 에 관해 정리하면 y = x + 3, y = -2x - 6, y = ax + 4 이다.",
+    "2. 세 직선이 삼각형을 이루지 않는 경우는 두 직선이 평행하거나 세 직선이 한 점에서 만나는 경우이다.",
+    "3. 두 직선이 평행한 경우: y = ax + 4 가 y = x + 3 과 평행하면 a = 1 이고, y = -2x - 6 과 평행하면 a = -2 이다.",
+    "4. 세 직선이 한 점에서 만나는 경우: y = x + 3 과 y = -2x - 6 의 교점을 구하면 x + 3 = -2x - 6 에서 3x = -9 이므로 x = -3, y = 0 이다.",
+    "5. 교점 (-3, 0) 을 ax - y + 4 = 0 에 대입하면 -3a + 4 = 0 에서 3a = 4 이므로 a = 4/3 이다.",
+    "6. 따라서 구하는 수 a 의 값은 -2, 1, 4/3 이다."
+  ],
+  "solvedAnswer": "$a = -2,\\ 1,\\ \\frac{4}{3}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "세 일차방정식 $-x + y - 3 = 0$, $2x + y + 6 = 0$, $ax - y + 4 = 0$의 그래프가 삼각형을 이루지 않도록",
+  "rpmRecordId": "M2-RPM-175",
+  "rpmReason": "ax - y + 4 = 0 이 다른 두 직선과 평행할 조건 a=1, -2 와 교점 (-3, 0) 지나는 조건 a=4/3 를 구하는 위치 관계 문항이다.",
+  "problemTypeKey": "PT_LINE_INTERSECTION_CONDITION",
+  "templateKey": "TPL_LINE_INTERSECTION_CONDITION_TRIANGLE_AVOID",
+  "typeReason": "직선 ax - y + 4 = 0 이 삼각형을 이루지 않도록 평행 조건과 교점 조건을 나누어 a = -2, 1, 4/3 를 구하는 직선의 교점과 위치 조건 유형이므로 PT_LINE_INTERSECTION_CONDITION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax - y + 4 = 0 의 평행 조건(a=1, -2)과 두 직선 교점 (-3, 0) 을 지나는 조건(a=4/3)을 빠짐없이 분석해야 하는 3단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "세 일차방정식 $-x + y - 3 = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "그래프가 삼각형을 이루지 않도록 하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "다른 두 직선 중 하나와 평행할 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직선 ax - y + 4 = 0 이 평행할 조건 a=1, -2 와 두 직선 교점 (-3, 0) 을 지날 조건 3a=4 로부터 a = -2, 1, 4/3 를 도출하여 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

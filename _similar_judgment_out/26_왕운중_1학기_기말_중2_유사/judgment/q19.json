@@ -1,0 +1,63 @@
+{
+  "qid": 19,
+  "itemFingerprint": "9cfeb088acc0a070",
+  "solveSteps": [
+    "1. y축에 평행한 직선 위의 모든 점은 x좌표가 서로 같다.",
+    "2. 두 점 (3a, a + 2) 와 (-a + 12, 7) 의 x좌표가 같아야 하므로 3a = -a + 12 이다.",
+    "3. 4a = 12 에서 a = 3 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "두 점 $(3a,\\ a + 2)$, $(-a + 12,\\ 7)$을 지나는 직선이 $y$축에 평행할 때, $a$의 값은?",
+  "rpmRecordId": "M2-RPM-173",
+  "rpmReason": "두 점 (3a, a+2) 와 (-a+12, 7) 을 지나는 직선이 y축에 평행할 때 3a = -a + 12 로 a 를 구하는 평행선 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS",
+  "templateKey": "TPL_M2_FIND_VERTICAL_LINE_EQUATION_FROM_POINT",
+  "typeReason": "y축에 평행한 직선은 두 점의 x좌표가 같아야 하므로 3a = -a + 12 에서 4a = 12 를 푸는 y축 평행 직선 유형이므로 PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "3a = -a + 12 에서 4a = 12 로 a = 3 을 바로 구하는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "7)$을 지나는 직선이 $y$축에 평행할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "y$축에 평행한 직선은 $x$좌표가 모두 같으므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "직선이 $y$축에 평행할 때, $a$의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y축에 평행한 직선은 x좌표가 같으므로 3a = -a + 12 에서 4a = 12 로 a = 3 을 얻어 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
