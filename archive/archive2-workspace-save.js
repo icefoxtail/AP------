@@ -12,7 +12,7 @@
   let
     $, META_FACET_FILTERS, QuickTree, SAVED_PAPER_UUID, api, assessmentSelectionOptions, button,
     clearUidRoute, composeSubjectLabel, esc, finalGate, frozenPaperCache, originalSettingsForExam,
-    ownHistoryContext, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
+    ownHistoryContext, planRows, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
     rememberCurrentHistoryEntry, render, renderControls, renderMobileActions, replaceUrlState, request,
     review, routeUrl, saveWorkSignature, savedPaperIds, scopeOptions, seal, selectedScopePaths,
     selectedScopeQuestionUids, showDialog, state, storageKey, teacherSessionOk, unifiedIndex, unique,
@@ -21,7 +21,7 @@
     ({
       $, META_FACET_FILTERS, QuickTree, SAVED_PAPER_UUID, api, assessmentSelectionOptions, button,
       clearUidRoute, composeSubjectLabel, esc, finalGate, frozenPaperCache, originalSettingsForExam,
-      ownHistoryContext, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
+      ownHistoryContext, planRows, pool, prepare, reconcileFinderSchool, reconcileUnifiedFilters, refreshHistory,
       rememberCurrentHistoryEntry, render, renderControls, renderMobileActions, replaceUrlState, request,
       review, routeUrl, saveWorkSignature, savedPaperIds, scopeOptions, seal, selectedScopePaths,
       selectedScopeQuestionUids, showDialog, state, storageKey, teacherSessionOk, unifiedIndex, unique,
@@ -136,6 +136,41 @@
     const info = errorInfoByMessage.get(String(message || ""));
     return info && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
   }
+  // rows[].scopeQuestionUids = 그 행의 범위 안 문항 uid 전체(초안 크기의 큰 몫). 읽는 곳은 (1) 선정을 바꿀 때의 범위 검사(C.review, rowMatches),
+  // (2) 저장 요청의 selection_filters(request(true)), (3) 서버가 저장 문항을 그 범위로 다시 맞춰 보는 검사다. 현재 단원 목록(planRows)이
+  // 만들었고 선정 문항은 언제나 그 안에 있으므로, 단원 목록으로 다시 만들 수 있는 행은 목록을 빼고 저장한다(행에 scopeUidsOmitted 표시).
+  // 열 때 현재 카탈로그의 planRows() 목록 + 그 행에서 뽑은 문항으로 채운다(applyDraft). 단원 목록으로 못 만드는 범위(uid 경로로 고른 범위,
+  // 저장 시험지 수정본, 학교별 기출로 고른 시험, 행이 현재 범위·분배와 안 맞는 경우)는 지금처럼 목록을 그대로 저장한다.
+  function rowsRebuildableFromScopes() {
+    if (state.uidRoute || state.derivationSource || state.urlUids?.length || state.sources.length || !state.scopes.length) return false;
+    if (!Array.isArray(state.rows) || !state.rows.length) return false;
+    const pooled = state.distribution === "pool";
+    return state.rows.every((row) => row && typeof row === "object" && Array.isArray(row.scopeQuestionUids) &&
+      (pooled ? row.id === "pool" : row.id !== "pool" && state.scopes.includes(row.id)));
+  }
+  function draftRows() {
+    if (!rowsRebuildableFromScopes()) return state.rows;
+    return state.rows.map(({ scopeQuestionUids, ...rest }) => ({ ...rest, scopeUidsOmitted: true }));
+  }
+  // 열 때 위 표시가 있는 행의 목록을 채운다: 현재 단원 목록으로 다시 만든 목록(저장 당시와 같은 함수)에 그 행에서 뽑힌 문항을 합친다.
+  // 합치므로 선정 문항은 항상 범위 안에 남고(서버의 범위 검사 통과), 카탈로그가 바뀌었으면 새 목록을 따른다.
+  function rebuildOmittedRowScopeUids() {
+    if (!state.rows.some((row) => row && row.scopeUidsOmitted === true)) return;
+    const fresh = new Map(planRows().map((row) => [row.id, row.scopeQuestionUids || []]));
+    const picked = new Map();
+    for (const record of state.selected) {
+      if (!picked.has(record.rowId)) picked.set(record.rowId, []);
+      picked.get(record.rowId).push(record.questionUid);
+    }
+    state.rows = state.rows.map((row) => {
+      if (!row || row.scopeUidsOmitted !== true) return row;
+      const { scopeUidsOmitted, ...rest } = row;
+      const list = [...(fresh.get(row.id) || [])];
+      const have = new Set(list);
+      for (const uid of picked.get(row.id) || []) if (!have.has(uid)) { have.add(uid); list.push(uid); }
+      return { ...rest, scopeQuestionUids: list };
+    });
+  }
   function draft() {
     const keys = [
       "draftId",
@@ -182,6 +217,7 @@
       indexVersion: state.indexVersion,
       updatedAt: new Date().toISOString(),
       ...Object.fromEntries(keys.map((k) => [k, state[k]])),
+      rows: draftRows(),
       scopeSourcePaths: selectedScopePaths(),
       selected: state.selected.map((r) => ({
         questionUid: r.questionUid,
@@ -276,7 +312,8 @@
         (row.count === undefined || isFiniteNumber(row.count)) &&
         (row.difficultyBuckets === undefined || isBuckets(row.difficultyBuckets)) &&
         (row.paths === undefined || isStrArr(row.paths)) &&
-        (row.scopeQuestionUids === undefined || isStrArr(row.scopeQuestionUids))),
+        (row.scopeQuestionUids === undefined || isStrArr(row.scopeQuestionUids)) &&
+        (row.scopeUidsOmitted === undefined || row.scopeUidsOmitted === true)),
       round: (v) => isInt(v, 1, 999),
       rounds: (v) => Array.isArray(v) && v.length <= 999 && v.every((round) => isObj(round) &&
         isStrArr(round.questionUids) && (round.roundNo === undefined || isInt(round.roundNo, 1, 999))),
@@ -514,6 +551,7 @@
       ...state.byUid.get(r.questionUid),
       rowId: r.rowId,
     }));
+    rebuildOmittedRowScopeUids();
     state.receipts = state.receipts.map((r) => {
       const partIndex = Number.isInteger(r.partIndex)
         ? r.partIndex

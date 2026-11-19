@@ -41,7 +41,7 @@ function runPlan({ root, plan }) {
 
 // These complete suites exceed the old 60-second child limit.
 // Keep a finite per-command limit in both the full and scoped runners.
-const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' ? 180000
+const jsTestTimeout = file => file === 'archive2-compose-scope.test.js' || file === 'archive2-draft-rows.test.js' ? 180000
   : file === 'meta-foundation-middle-geometry-runtime.test.js' ? 300000 : 60000;
 
 // Keep the SVG semantic regression outside the legacy CommonJS-only glob.
