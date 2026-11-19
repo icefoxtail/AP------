@@ -1,6 +1,6 @@
 {
   "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-  "requestId": "td-ea05e5d9efe3-8d65d13d",
+  "requestId": "td-ea05e5d9efe3-ef9501eb",
   "examUid": "23_여천고_1학기_중간_고1_기출",
   "scope": "PARTIAL_UIDS",
   "fieldScope": "TYPE_ONLY",
@@ -12,20 +12,20 @@
     "metadataReviewed": true,
     "reviewPassCount": 1,
     "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
-    "judge": "claude-sonnet-5.5",
+    "judge": "dots",
     "decisionRef": {
       "document": "docs/agents/metadata.md",
       "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
     },
     "resultSource": {
-      "branch": "data/type-judgment-r-20261120",
-      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
-      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
     },
     "evidenceRefs": [
       {
-        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ea05e5d9efe3-8d65d13d.type-ledger.json",
-        "sha256": "488d2f40ab223cf6b4c7589d3d181af450a5c4526455399e961905a2b037fd44"
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ea05e5d9efe3-ef9501eb.type-ledger.json",
+        "sha256": "87c9b3ca1482012cc2032e16bb5f76ce5f7f02c7dd6627383a14c8601cca9ff2"
       }
     ]
   },
@@ -38,10 +38,10 @@
         "templateKey": ""
       },
       "after": {
-        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-        "templateKey": "TPL_H1_FACTORIZATION_STANDARD"
+        "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+        "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE"
       },
-      "rationale": "f(x)가 (x-1)로 나누어떨어지므로 인수정리 f(1)=0으로 a를 정하고 g(x)의 계수 합을 구한다. [시험지에 적힌 유형을 등록. 새 판정(claude-sonnet-5.5): PT_H1_FACTOR_THEOREM]",
+      "rationale": "인수정리 f(1)=0으로 a=3을 구하고 x-1로 나눈 몫 g에 1을 대입한다.",
       "scope": {
         "curriculum": "2015",
         "standardCourse": "수학(상)"
@@ -49,8 +49,8 @@
       "textBindingFingerprint": "de2e0c1ef71e2a0152f90d011aa7f84a33f6b8063c5c29263483fe01d86cbfcf",
       "evidenceRefs": [
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ea05e5d9efe3-8d65d13d.type-ledger.json",
-          "sha256": "488d2f40ab223cf6b4c7589d3d181af450a5c4526455399e961905a2b037fd44"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ea05e5d9efe3-ef9501eb.type-ledger.json",
+          "sha256": "87c9b3ca1482012cc2032e16bb5f76ce5f7f02c7dd6627383a14c8601cca9ff2"
         }
       ]
     }

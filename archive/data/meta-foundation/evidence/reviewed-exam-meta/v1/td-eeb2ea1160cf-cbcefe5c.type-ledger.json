@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-eeb2ea1160cf-cbcefe5c",
+  "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cc2a12e5f1bcb5aeda938edd3ffdfa7ebdadd0396bed0f332ee5fa620d316eda",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "도수가중 총합120/20으로 평균6을 구하고 도수가중 편차제곱합112를20으로 나누어28/5를 구한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

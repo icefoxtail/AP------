@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-0517e7ff8fa5-48d3e45f",
+  "examUid": "25_동산중_2학기_중간_중1_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+  "expectedSourceBlobSha1": "a984b1302f3595b09284378987a3127d14e2a52a",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0517e7ff8fa5-48d3e45f.type-ledger.json",
+        "sha256": "86bd4325800a015985e2e70b3bbe06e04f75b9aed2f81803ba6ace3184960b6a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cf49e4d1f9459afcd0cbf913119e66ebba1d55f05b21fce5277c7a12b0fe5bc4",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_RATIONAL_CLASS"
+      },
+      "rationale": "-3부터 -2까지 삼등분한 첫 눈금은 -8/3임을 읽고 다른 네 점의 분수좌표와 비교한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "12292188f3a557d2db6d68b11f53c6c144ae20f0b0a3211134849959b6458fb0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0517e7ff8fa5-48d3e45f.type-ledger.json",
+          "sha256": "86bd4325800a015985e2e70b3bbe06e04f75b9aed2f81803ba6ace3184960b6a"
+        }
+      ]
+    }
+  ]
+}

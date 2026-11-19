@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-bc67dc6c0538-1a82dc32",
+  "examUid": "23_순여중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "f5ef767821a0ca8dff0c57c03a5d743faab53d8b",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-1a82dc32.type-ledger.json",
+        "sha256": "57a42fd2a8938405a728c6e9746ead8c20280e4b4e56c60e95fab681b273f8d4"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_76615834f3cec761eeb5bac803803dbe93d485bb21092de4d34e20014102fd0a",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT"
+      },
+      "rationale": "치수의 평균96, 중앙값95, 최빈값95를 구하고 등급자료의 평균 및 중앙값의 유일성을 검토하여③을 고른다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "f2e175a3e6782eafd29c24b21b55547d66241de890db92c4617162fea4041dd8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-1a82dc32.type-ledger.json",
+          "sha256": "57a42fd2a8938405a728c6e9746ead8c20280e4b4e56c60e95fab681b273f8d4"
+        }
+      ]
+    }
+  ]
+}
