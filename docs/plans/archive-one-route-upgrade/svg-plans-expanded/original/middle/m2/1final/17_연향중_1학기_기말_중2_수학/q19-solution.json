@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "1<a≤3/2",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3/2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "3x−2<2(x+a)에서 x<2a+2이고 4x+1≥5에서 x≥1이다. 정수 x가 1, 2, 3, 4의 4개이려면 4<2a+2≤5이어야 한다. 이를 풀면 1<a≤3/2이다. 수직선에서 1은 속이 빈 점, 3/2은 찬 점이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "수직선 위에 1과 3/2 사이의 구간이 있고 1은 속이 빈 점, 3/2은 찬 점이다.",
+  "newVisualInformation": [
+    "정수 해가 1부터 4까지 4개일 조건 4<2a+2≤5에서 1<a≤3/2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>19. 연립부등식 $\\begin{cases} 3x-2 < 2(x+a) \\\\ 4x+1 \\ge 5 \\end{cases}$를 만족하는 정수 $x$의 개수가 4개일 때, 상수 $a$의 값의 범위를 구하면? [4.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
