@@ -354,3 +354,28 @@ test("reach: a key of a grade at or below the exam's grade is chosen; a key abov
   // without alias data nothing is reached
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_LOW", makeCourseAliases(null)).skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });
+
+test("a type written in the exam file: a dots judgment is registered as judged; another judge's judgment yields to a valid in-scope embedded type, and stands when the embedded type is dead or out of scope", () => {
+  const b = (problemTypeKey, curriculum, standardCourse, ownerPack) => ({ problemTypeKey, curriculum, standardCourse, ownerPack, status: "ACTIVE" });
+  const reg = makeRegistry({
+    problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" },
+      { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
+    templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }],
+    bindings: [b("PT_A", "2015", "중1 수학", "P1"), b("PT_B", "2015", "중1 수학", "P1"), b("PT_OFF", "2015", "중1 수학", "P1"), b("PT_HIGH", "2015", "수학(상)", "P2")],
+    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중1 수학"] }], ["P2", { curricula: ["2015"], standardCourses: ["수학(상)"] }]])
+  });
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_B", "TPL_B"], 3: ["PT_OFF", ""], 4: ["PT_HIGH", ""], 5: ["PT_A", "TPL_A"] };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n));
+  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
+  const ctx = makeCtx({ records: recs, ctx: { registry: reg, readBank } });
+  const sonnet = { judge: "claude-sonnet-5.5" };
+  const { requests, stats } = planRequests({ ctx, resultRows: [line(1), line(2, sonnet), line(3, sonnet), line(4, sonnet), line(5, sonnet)], approvedBy: "테스트 결정" });
+  const items = requests.flatMap(r => r.items), after = Object.fromEntries(items.map(i => [i.questionUid, i.after]));
+  assert.deepEqual(after.uid1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "a dots judgment is registered as judged, the embedded value only differs");
+  assert.deepEqual(after.uid2, { problemTypeKey: "PT_B", templateKey: "TPL_B" }, "a non-dots judgment yields to a valid in-scope embedded type");
+  assert.match(items.find(i => i.questionUid === "uid2").rationale, /새 판정\(claude-sonnet-5\.5\): PT_A\/TPL_A/, "the new judgment stays on record in the rationale");
+  assert.deepEqual(after.uid3, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "a dead embedded key does not win");
+  assert.deepEqual(after.uid4, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded key outside the exam's course does not win");
+  assert.deepEqual(after.uid5, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded type equal to the judgment changes nothing");
+  assert.deepEqual(stats.embeddedDiffers, { registeredDots: 1, registeredEmbedded: 1, registeredJudgment: { EMBEDDED_PT_NOT_ACTIVE: 1, EMBEDDED_OUT_OF_COURSE_SCOPE: 1 } });
+});
