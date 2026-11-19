@@ -80,9 +80,32 @@
   const examSemester = (record) => { const axis = text(record?.examAxis); return /^1-/.test(axis) ? "1" : /^2-(mid|final)/.test(axis) ? "2" : ""; };
   // A question that may fill a short step of a product with fillFrom: a 유형 / 유사 source (never an original, textbook or generated one).
   const isFillSource = (record, product) => Boolean(product?.fillFrom) && product.fillFrom.some((prefix) => text(record?.sourceFile).startsWith(prefix));
-  // The semester of a fill question: a similar set keeps its exam's semester; a 유형 file has none (it follows its unit). A question with a
-  // semester must match the chosen one; "" (1·2학기) takes every semester.
-  const fillSemesterOk = (record, semester) => !semester || !examSemester(record) || examSemester(record) === semester;
+  // 학기 단추 = 그 학기의 과목·단원 범위 (2026-11-20 사용자 결정), 그 학기에 치른 시험지가 아니다. "학교마다 2학기 책인데 1학기에 나가는 경우"도 있고
+  // 대수(수학I)는 기출이 1학기 시험지에 몰려 있다. 그래서 단원이 있는 문항은 시험지 학기를 보지 않는다:
+  //   고1·고2·고3: 학기로 거르지 않는다(과목 전체가 풀. 고1은 화면이 학기 단추와 과목 단추를 짝지어 준다: 1학기 = 공통수학1, 2학기 = 공통수학2).
+  //   중등: 그 문항의 대단원이 속한 교재(courseKey M1-1 / M1-2 ...)의 학기.
+  // 단원이 없는 문항(미분류)만 지금처럼 시험지 학기를 따른다(lenient: 학기 없는 출처도 통과).
+  const unitSemesterCache = new Map();
+  function middleUnitSemester(grade, unitKey) {
+    const key = grade + "|" + unitKey;
+    if (!unitSemesterCache.has(key)) {
+      const row = Unified.unitsForGrade(grade).find((unit) => unit.key === unitKey);
+      unitSemesterCache.set(key, /-([12])$/.exec(text(row?.courseKey))?.[1] || "");
+    }
+    return unitSemesterCache.get(key);
+  }
+  function semesterAllows(entry, record, semester, lenient) {
+    if (!semester) return true;
+    if (!entry.unclassified && entry.unitKey) {
+      if (/^고/.test(entry.grade)) return true;
+      const unitSemester = /^중/.test(entry.grade) ? middleUnitSemester(entry.grade, entry.unitKey) : "";
+      if (unitSemester) return unitSemester === semester;
+    }
+    const exam = examSemester(record);
+    return lenient ? !exam || exam === semester : exam === semester;
+  }
+  // Does the semester button change the pool of this grade? Only the middle grades cut by semester (2026-11-20).
+  const semesterCutsPool = (grade) => /^중/.test(grade);
   // Is a chosen question still allowed in this product (the pools are cached per catalog load; checked again before printing).
   function stillUsable(record, product) {
     const merge = Boolean(product?.mergeTop), expected = merge ? Math.min(record.difficultyBucket, 4) : record.difficultyBucket;
@@ -101,7 +124,7 @@
   // screen names, orders and groups units the same way (2026-11-16: no more 2015 "이전 분류" cards,
   // no duplicated or English sub-unit names; the 2015 legacy keys fold into the tree's 중단원).
   // options.product: a product with originalOnly/mergeTop (진단평가) builds its own pools; options.semester ("1" | "2") keeps one
-  // semester's exams. Without a product the pools are the common ones every other product shares.
+  // semester's scope (see semesterAllows). Without a product the pools are the common ones every other product shares.
   function buildPools(index, options = {}) {
     const difficultyMode = options.difficultyMode === "eligible" ? "eligible" : "recorded";
     const only = options.product?.originalOnly ? options.product : null;
@@ -117,14 +140,14 @@
         const record = entry.record;
         if (only && !isOriginalExam(record)) {
           // A 유형 / 유사 question waits here; it joins a unit only when that unit has original questions (see below).
-          if (isFillSource(record, only) && fillSemesterOk(record, options.semester) && entry.subject) {
+          if (isFillSource(record, only) && semesterAllows(entry, record, options.semester, true) && entry.subject) {
             const bucket = usableBucket(record, difficultyMode, Boolean(only.mergeTop));
             const uid = text(record.questionUid);
             if (bucket && uid) fillRows.push({ key: Unified.scopeKey(grade, entry.subject, entry.unclassified ? "" : entry.unitKey), bucket, record, uid });
           }
           continue;
         }
-        if (only && options.semester && examSemester(record) !== options.semester) continue;
+        if (only && options.semester && !semesterAllows(entry, record, options.semester, false)) continue;
         const first = !countedRecords.has(record);
         if (first) { countedRecords.add(record); pools.stats.records++; }
         const bucket = usableBucket(record, difficultyMode, Boolean(only?.mergeTop));
@@ -414,7 +437,7 @@
   return {
     PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS,
     isQuickView: (view) => VIEWS.includes(view),
-    usableBucket, isOriginalExam, isFillSource, examSemester, stillUsable, orderByStep, fillText, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
+    usableBucket, isOriginalExam, isFillSource, examSemester, semesterCutsPool, stillUsable, orderByStep, fillText, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
     buildScopes, wrapRecord, pickableGroups, selectNodes, unitNoun, shortReason,
     shortageText, presetMix,
   };
