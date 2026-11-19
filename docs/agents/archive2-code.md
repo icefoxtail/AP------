@@ -385,3 +385,9 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 키는 한 글자도 바꾸지 않는다: 팩 `id`, MIXED 키 `assessment_<팩번호>_<문항구성해시>`, localStorage `mixedQuestions_/mixedMeta_assessment_…`. 구역은 닫힌 채로 시작하고 열 때만 공용 코드와 팩 자료 파일 2개를 받는다(첫 화면 요청 0). 구역은 작업공간 상태에 값을 더하지 않고(상태는 `archive2-quick-packs.js` 안), `archive2-workspace-compose.js renderQuick`이 `Archive2QuickPacks.markup()`을 끼워 넣는다.
 - 탭은 중간·기말평가·모의고사뿐이다(사용자 결정 2026-11-19): 단원평가는 즉석 조립과 겹치고, 진단평가는 즉석 조립 상품으로 따로 만든다. 팩 자료 파일에서는 지우지 않는다(옛 보관함 화면과 이미 나간 출제·학생 복습이 packId로 연다). 목록은 팩 수·문항 구성을 고정하지 않고 자료에서 읽는다.
 - 테스트: `tests/archive2-quick-packs.test.js`(구역·공용 코드), `tests/assessment-assign-panel.test.js`·`tests/assessment-open-resilience.test.js`(공용 코드를 보관함 스크립트와 함께 vm에서 실행).
+
+## 원본 시험지·해설·정답 열기는 승인 메타 sidecar를 기다리지 않는다 (2026-11-20, 선생님 속도 실측 1순위)
+
+- 실측(이 PC, 캐시 없는 새 프로필): 시험지 하나 열기가 `data/question_metadata.json`(압축 전 87.6MB, gzip 15.3MB)을 받고 해석한 뒤에야 첫 문항을 그렸다(전송 17.7MB 중 15.3MB, 20Mbps로 약 7초). 그림 그리는 데는 이 메타를 읽지 않는다: `render-authority.js` 등에 `_archiveMetadata`·`standardUnitKey` 사용이 없고, 채워지는 `standardUnitKey` 등은 반 출제 등록(`submitQr=1` / `osqr=1`)이 서버로 보내는 값뿐이다.
+- `engine.html`은 등록 주소일 때만 `question-meta.js`를 불러온다(`<script id="engine-metadata-gate">`, 같은 자리에서 `document.write`라 순서·`await window.__ARCHIVE_METADATA_READY__`는 그대로). 평소 열기(`engine.html?data=exams/<file>&mode=exam|sol|ans`)는 sidecar 요청이 없다. 이유: 믹스 리더(`output-metadata-loader.js`)가 이미 같은 규칙이다. 테스트: `tests/archive-engine-original-metadata-on-demand.test.js`.
+- 이 규칙을 되돌리지 않는다. 등록 주소에 새 이름이 생기면 위 게이트의 조건에 함께 넣는다.
