@@ -1,0 +1,59 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CONE",
+      "radius": 3,
+      "height": 3
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 3
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "a"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "3b"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom",
+      "label": "2b"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "a"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 원뿔 / 오른쪽 원기둥"
+  },
+  "caption": "두 입체를 같은 배율로 나란히 그렸다(길이의 비율은 모양만 나타낸 예시이다). 원뿔의 부피는 (1/3)π×a²×3b=πa²b이고, 원기둥의 부피는 π×(2b)²×a=4πab²이다. 두 부피의 비는 πa²b÷4πab²=a/(4b)이다. 따라서 원뿔의 부피는 원기둥의 a/(4b)배이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반지름 $a$, 높이 $3b$인 원뿔의 부피는 반지름 $2b$, 높이 $a$인 원기둥 부피의 몇 배인지 구하고 그 과정을 서술하시오.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원뿔 (1/3)π a²(3b)=πa²b, 원기둥 π(2b)²a=4πab², 비는 a/(4b)",
+      "mappedTo": "dims"
+    }
+  ],
+  "newVisualInformation": [
+    "원뿔의 반지름 a, 높이 3b와 원기둥의 반지름 2b, 높이 a를 나란히 놓고 두 부피를 비교"
+  ],
+  "accessibilityDescription": "왼쪽에 원뿔, 오른쪽에 원기둥이 같은 배율로 나란히 놓여 있고 원뿔은 반지름과 높이, 원기둥도 반지름과 높이에 길이 문자가 적혀 있다."
+}
