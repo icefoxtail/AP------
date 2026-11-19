@@ -686,3 +686,35 @@
 | 25 | NOT_NEEDED | 게시(기존 연결) | 해설: b가 1부터 6일 때 b + 2의 약수인 a를 표로 정리하면 15가지를 누락 없이 확인할 수 있다 |
 
 - 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 23_연향중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q1[보기], q2[보기], q3[보기], q4[보기], q5[보기], q6[보기], q7[보기], q8[보기], q9[보기], q10[보기], q11[보기], q12[보기], q13[보기], q14[보기], q15[보기], q16[보기], q17[보기], q18[보기], q19[보기], q23[발문]. 해설 16개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
