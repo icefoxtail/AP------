@@ -1,0 +1,344 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Cp",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Ap",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Dp",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "Cp",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D",
+    "Cp",
+    "Ap",
+    "Dp",
+    "H"
+  ],
+  "hiddenPointNames": [
+    "A",
+    "D"
+  ],
+  "hiddenPointStyle": "NONE",
+  "pointNames": {
+    "Cp": "C'",
+    "Ap": "A'",
+    "Dp": "D'"
+  },
+  "displaySegments": [
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBAp",
+      "refs": [
+        "B",
+        "Ap"
+      ]
+    },
+    {
+      "id": "sApDp",
+      "refs": [
+        "Ap",
+        "Dp"
+      ]
+    },
+    {
+      "id": "sDpCp",
+      "refs": [
+        "Dp",
+        "Cp"
+      ]
+    },
+    {
+      "id": "sCpB",
+      "refs": [
+        "Cp",
+        "B"
+      ]
+    },
+    {
+      "id": "sHCp",
+      "refs": [
+        "H",
+        "Cp"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "Cp",
+        "H",
+        "O"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aT",
+        "refs": [
+          "C",
+          "B",
+          "Cp"
+        ],
+        "value": 60,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "예: θ=60°일 때의 회전을 그린다. BC를 B를 중심으로 시계방향으로 θ만큼 회전하면 C′=(2+sinθ, cosθ)이고 H=(2+sinθ, 0)이다. OH=2+sinθ, C′H=cosθ이므로 f(θ)=1/2(2+sinθ)cosθ이고 f′(π/3)=−(1+2√3)/4이다. 따라서 a+b+c=1+2+4=7이고 답은 ③이다.",
+  "accessibilityDescription": "좌표평면에 B를 중심으로 시계방향으로 60° 회전한 정사각형 B A′ D′ C′이 있고, 변 BC가 회전 전 위치로 점선으로 표시되어 있다. C′에서 x축에 내린 수선의 발 H까지의 수직선과 O에서 H까지의 길이 표시가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 좌표평면 위의 두 점 $A(1,0)$, $B(2,0)$을 이은 선분을 한 변으로 하는 정사각형 $ABCD$를 꼭짓점 $B$를 중심으로 시계방향으로 $\\theta$만큼 회전시켰다. 점 $C$가 이동한 점을 $C'$이라 하고, 점 $C'$에서 $x$축으로 내린 수선의 발을 $H$라 하자. $0\\le\\theta\\le\\dfrac\\pi2$에서 $\\triangle OHC'$의 넓이를 함수 $f(\\theta)$로 정의할 때, $f'\\left(\\dfrac\\pi3\\right)=-\\dfrac{a+b\\sqrt3}{c}$이다. $a+b+c$의 값은? (단, $a,b,c$는 서로소인 자연수이다.) [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "B를 중심으로 60° 회전한 정사각형과 회전 전 변 BC를 점선으로 함께 보이고, C′에서 x축에 내린 수선의 발 H, OH와 C′H의 길이를 표시한다."
+  ]
+}

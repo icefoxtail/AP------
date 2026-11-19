@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "240"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A3",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "A2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c2",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "c3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "A2",
+    "B2",
+    "C2",
+    "A3"
+  ],
+  "hiddenPointNames": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "A2",
+    "B2",
+    "C2",
+    "A3"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sA2B2",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "sB2C2",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "sC2A2",
+      "refs": [
+        "C2",
+        "A2"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 440
+  },
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rgS1",
+        "fill": "LIGHT",
+        "label": "S_1",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "A2",
+              "steps": [
+                {
+                  "to": "A2",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "rgS2",
+        "fill": "MEDIUM",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "polygon": [
+              "A2",
+              "B2",
+              "C2"
+            ]
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "A3",
+              "steps": [
+                {
+                  "to": "A3",
+                  "arc": {
+                    "center": "O",
+                    "side": "FULL"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "(1) 원의 반지름은 4, 2, 1, …이므로 둘레의 합은 8π+4π+2π+…=16π이다. (2) S₁=12√3−4π, S₂=3√3−π이고 각 단계의 넓이는 앞 단계의 1/4이므로 S₁+S₂+…=(12√3−4π)/(1−1/4)=(48√3−16π)/3이다. 따라서 답은 (1) 16π, (2) (48√3−16π)/3이다.",
+  "accessibilityDescription": "공통 중심을 가진 반지름 4, 2, 1인 세 원이 있고, 가장 큰 원과 둘째 원에 각각 내접하는 정삼각형이 겹쳐 그려져 있다. 큰 삼각형과 둘째 원 사이의 영역이 S₁, 작은 삼각형과 가장 작은 원 사이의 영역이 S₂로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 2] 다음 그림과 같이 반지름의 길이가 $4$인 원 $C_1$에 내접하는 정삼각형을 그리고 이 정삼각형의 내접원을 $C_2$라 하자. 또, 원 $C_2$에 내접하는 정삼각형을 그리고 이 정삼각형의 내접원을 $C_3$라 하자. 이와 같은 과정을 한 없이 반복할 때, (1) 원 $C_1,C_2,C_3,\\ldots$의 둘레의 길이의 합을 구하고, 그 과정을 서술하시오. [3점] (2) 정삼각형 내부에서 원 $C_2$를 제외한 부분의 넓이를 $S_1$, 원 $C_2$에 내접하는 정삼각형 내부에서 원 $C_3$를 제외한 부분의 넓이를 $S_2$라 할 때, $S_1+S_2+S_3+\\cdots$의 값을 구하고, 그 과정을 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 4, 2, 1인 세 동심원과 각각에 내접하는 정삼각형을 겹쳐 그리고, S₁과 S₂ 영역을 회색으로 칠해 등비급수의 구조를 보인다."
+  ]
+}
