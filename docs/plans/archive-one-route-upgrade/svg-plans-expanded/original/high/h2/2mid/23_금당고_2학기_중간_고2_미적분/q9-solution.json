@@ -1,58 +1,24 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "exponential-affine-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "exponential-affine",
+    "coefficients": [
+      "2",
+      "1",
+      "0"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      1.4
+    ],
     "viewport": [
       -3,
       2,
       -1,
       8
-    ],
-    "curves": [
-      {
-        "id": "f1",
-        "kind": "LINE",
-        "coefficients": [
-          "2",
-          "2"
-        ],
-        "domain": [
-          "-3",
-          "0"
-        ],
-        "color": "BLUE",
-        "label": "f"
-      },
-      {
-        "id": "f2",
-        "kind": "EXPONENTIAL",
-        "coefficients": [
-          "2",
-          "1",
-          "0"
-        ],
-        "domain": [
-          "0",
-          "7/5"
-        ],
-        "color": "BLUE",
-        "label": "f"
-      },
-      {
-        "id": "t",
-        "kind": "LINE",
-        "coefficients": [
-          "2",
-          "2"
-        ],
-        "domain": [
-          "0",
-          "2"
-        ],
-        "color": "WARM",
-        "style": "DASHED",
-        "label": "y=2x+2"
-      }
     ],
     "axisTickValues": {
       "x": [],
@@ -62,14 +28,21 @@
       "points": [
         {
           "id": "P",
-          "x": "0",
-          "y": "2",
+          "curveX": "0",
           "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "t",
+          "slope": "2",
+          "intercept": "2",
+          "label": "y=2x+2"
         }
       ]
     }
   },
-  "caption": "x=0에서 연속이므로 e의 b제곱이 2이므로 b=ln2이다. 미분가능하려면 좌미분계수 a와 우미분계수 e의 b제곱=2가 같아야 하므로 a=2이다. 그림은 왼쪽 직선 y=2x+2와 오른쪽 곡선 y=2eˣ가 P(0,2)에서 이어지고, 점선인 접선 y=2x+2가 P에서 두 조각에 함께 접함을 보인다. ab=2ln2이므로 답은 ①이다.",
+  "caption": "x=0에서 연속이므로 e의 b제곱이 2이므로 b=ln2이다. 미분가능하려면 좌미분계수 a와 우미분계수 e의 b제곱=2가 같아야 하므로 a=2이다. 그림은 x≥0의 곡선 y=2eˣ(=f(x))와 점 P(0,2)를 지나는 직선 y=2x+2를 보인다. x<0에서는 f가 이 직선이고, 직선은 P에서 곡선에 접하므로 두 조각이 P에서 매끄럽게 이어진다. ab=2ln2이므로 답은 ①이다.",
   "sourceConditions": [
     {
       "id": "source",

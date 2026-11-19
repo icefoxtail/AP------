@@ -116,6 +116,28 @@
         "args": {},
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k1",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k2",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A2"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
@@ -223,29 +245,10 @@
         "factRole": "CONCLUSION",
         "shapes": [
           {
-            "sector": {
+            "segment": {
               "center": "O",
               "from": "A1",
-              "to": "C1",
-              "side": "MINOR"
-            }
-          }
-        ],
-        "holes": [
-          {
-            "loop": {
-              "start": "O",
-              "steps": [
-                {
-                  "to": "A1"
-                },
-                {
-                  "to": "C1"
-                },
-                {
-                  "to": "O"
-                }
-              ]
+              "to": "C1"
             }
           }
         ]
@@ -257,32 +260,33 @@
         "factRole": "CONCLUSION",
         "shapes": [
           {
-            "sector": {
+            "segment": {
               "center": "O",
               "from": "A2",
-              "to": "C2",
-              "side": "MINOR"
-            }
-          }
-        ],
-        "holes": [
-          {
-            "loop": {
-              "start": "O",
-              "steps": [
-                {
-                  "to": "A2"
-                },
-                {
-                  "to": "C2"
-                },
-                {
-                  "to": "O"
-                }
-              ]
+              "to": "C2"
             }
           }
         ]
+      }
+    ],
+    "arcs": [
+      {
+        "id": "arc1",
+        "circle": "k1",
+        "center": "O",
+        "from": "A1",
+        "to": "C1",
+        "side": "MINOR",
+        "highlight": false
+      },
+      {
+        "id": "arc2",
+        "circle": "k2",
+        "center": "O",
+        "from": "A2",
+        "to": "C2",
+        "side": "MINOR",
+        "highlight": false
       }
     ]
   },
