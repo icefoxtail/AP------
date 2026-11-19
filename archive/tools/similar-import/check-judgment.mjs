@@ -9,6 +9,7 @@ import {
   loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage, itemFingerprint, loadGuideExample, BOUNDARY_FLAGS,
   buildAllSelections, selectionAccepts,
 } from './lib.mjs';
+import { analyzeChoiceOrder, answerDistribution, formatDistribution, leakWarnings } from './choice-order-lib.mjs'; // 기준: docs/agents/similar-choices.md
 
 export const FIGURE_NEEDS = ['NONE', 'SELF_CONTAINED', 'NEEDS_FIGURE'];
 export const SOLUTION_FIGURE_NEEDS = ['NONE', 'NEEDS_FIGURE'];
@@ -245,6 +246,20 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     if (rpms.size === 1 && diffs.size === 1 && [...rpms][0] && [...diffs][0]) examCodes.push({ code: 'ALL_SAME', msg: `전 문항이 같은 rpm(${[...rpms][0]})과 같은 난이도(${[...diffs][0]})입니다`, severity: 'FAIL' });
   }
 
+  // 보기 크기순·정답 번호 분포·생김새 누설 (기준과 이유: docs/agents/similar-choices.md). 새 반입 시험지에만 적용된다.
+  const warnings = [];
+  for (const it of bank) {
+    const row = items.find(x => x.qid === it.id);
+    const a = analyzeChoiceOrder(it);
+    if (row && (a.status === 'A' || a.status === 'B')) row.codes.push({ code: 'CHOICE_ORDER', msg: `수 보기가 크기순이 아닙니다(${a.status === 'A' ? '혼자 어긋난 보기가 정답' : '순서 어긋남'}): ${JSON.stringify(it.choices)} 정답 ${it.answer}. 정답 자리를 정하고 오답 값을 그 주위로 크기순으로 지으세요.`, severity: 'FAIL' });
+    if (row && a.dup) row.codes.push({ code: 'CHOICE_DUPLICATE', msg: '같은 값의 보기가 있습니다', severity: 'FAIL' });
+    for (const w of leakWarnings(it)) warnings.push({ qid: it.id, code: w });
+  }
+  if (!only) {
+    const dist = answerDistribution(bank);
+    if (dist.skewed) examCodes.push({ code: 'ANSWER_DISTRIBUTION', msg: `정답 번호 분포가 기준에 걸립니다: ${dist.reasons.join('; ')} (${formatDistribution(dist)}; 열 ${dist.sequence}). 정답 번호는 스크립트로 뽑은 목표 배열을 따르세요.`, severity: 'FAIL' });
+  }
+
   for (const row of items) {
     row.verdict = !row.codes.length ? 'PASS' : row.codes.some(c => c.severity === 'FAIL') ? 'FAIL' : 'HOLD';
   }
@@ -257,6 +272,7 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     items,
     examCodes,
     judgments,
+    warnings,
     summary: { total: items.length, pass: passCount, fail: items.filter(r => r.verdict === 'FAIL').length, hold: items.filter(r => r.verdict === 'HOLD').length, byCode: holdReasons },
     releasable: !anyCode && items.length === bank.length,
     anyCode,
@@ -271,6 +287,11 @@ export function printReport(r, out = console.log) {
     for (const c of row.codes) out(`   ${c.code}${c.severity === 'HOLD' ? ' (보류)' : ''}: ${c.msg}`);
   }
   for (const c of r.examCodes) out(`시험지 ${c.code}: ${c.msg}`);
+  if (r.warnings && r.warnings.length) {
+    const by = {};
+    for (const w of r.warnings) (by[w.code] ||= []).push('Q' + w.qid);
+    for (const [code, qs] of Object.entries(by)) out(`경고 ${code} (${qs.length}건, 거절 아님): ${qs.join(', ')} — 정답만 꼴이 다른지 읽어 보세요`);
+  }
   const s = r.summary;
   out(`\n요약: ${s.total}문항 중 PASS ${s.pass}, FAIL ${s.fail}, 보류 ${s.hold}`);
   if (Object.keys(s.byCode).length) out(`코드별: ${Object.entries(s.byCode).map(([k, v]) => `${k} ${v}`).join(', ')}`);
