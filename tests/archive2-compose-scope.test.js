@@ -576,7 +576,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261119-pair-type-spread-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-quick-pools.js', '20261117-middle-parent-1'],
+    ['archive2-quick-pools.js', '20261119-diagnostic-1'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261117-middle-parent-1'],
@@ -586,10 +586,10 @@ test('all changed browser scripts use new cache versions', () => {
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261119-verified-rename-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261119-restore-last-1/);
+  assert.match(html, /archive2\.css\?v=20261119-diagnostic-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
-  assert.match(html, /archive2-navigation\.js\?v=20261116-standalone-1/);
+  assert.match(html, /archive2-navigation\.js\?v=20261119-diagnostic-1/);
 });
 
 test('Finder, Recent, and Saved Paper view state survives route changes and reload URLs', () => {
