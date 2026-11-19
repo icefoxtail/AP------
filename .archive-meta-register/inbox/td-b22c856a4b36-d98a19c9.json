@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-b22c856a4b36-d98a19c9",
+  "examUid": "23_연향중_2학기_기말_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
+  "expectedSourceBlobSha1": "a0aaefbea3f6c695d515dbdb873c1e1f3304d5c7",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b22c856a4b36-d98a19c9.type-ledger.json",
+        "sha256": "92fd992a8a907d144205da3e8ab1b647b53a878403eec490a95455f2b9753f5f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_0bc9573b04338d7b754d869c3495557d2f1be22a1f6cd591fd62d664be7e00e0",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT"
+      },
+      "rationale": "MATHEMATICS의 글자 중 모음 A,E,A,I를 직접 세어 경우의 수 4를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "cfd1439347b9ada3f08d6ce45450e09180c6e9c03283338dc95e313ac1fffbdb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b22c856a4b36-d98a19c9.type-ledger.json",
+          "sha256": "92fd992a8a907d144205da3e8ab1b647b53a878403eec490a95455f2b9753f5f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e38bfcb031c3c4a87c59d5dcfb37ae0dc4ac19f0457de568969e8bbae2e3dda5",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+        "templateKey": "TPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT"
+      },
+      "rationale": "이웃 영역은 다른 색이어야 하므로 B4가지, D3가지, A2가지, C2가지 선택을 차례로 곱해 48을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "5a1f5143b5d793d1122c507870509bac35544b163f56634a026ed383bd9762e0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-b22c856a4b36-d98a19c9.type-ledger.json",
+          "sha256": "92fd992a8a907d144205da3e8ab1b647b53a878403eec490a95455f2b9753f5f"
+        }
+      ]
+    }
+  ]
+}

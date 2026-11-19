@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-382fe9bf4b16-0a37012e",
+  "examUid": "23_풍덕중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "1a471a2cbe7cdc8d3fa533375d64a60dfbcc4d96",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-382fe9bf4b16-0a37012e.type-ledger.json",
+        "sha256": "19d0ad9233522b708550a6daabbfa436fa69552ee78970ae2eb3e296659a4dd0"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_4c448984f5649cfa8a322344ad6bc032b77f77d592daf720e26bac0c798ffd8c",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE"
+      },
+      "rationale": "이등변삼각형에서 중심각150도를 얻고 삼각비 높이3으로 삼각형 넓이9를 구하여 부채꼴 넓이15π에서 뺀다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "422c6d591f25c61f53fc8f1f60f424468b42b5041daeda0716287dcb5bbb98fd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-382fe9bf4b16-0a37012e.type-ledger.json",
+          "sha256": "19d0ad9233522b708550a6daabbfa436fa69552ee78970ae2eb3e296659a4dd0"
+        }
+      ]
+    }
+  ]
+}

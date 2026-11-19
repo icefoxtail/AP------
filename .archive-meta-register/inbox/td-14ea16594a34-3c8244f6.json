@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-14ea16594a34-3c8244f6",
+  "examUid": "24_연향중_2학기_기말_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2final/24_연향중_2학기_기말_중1_기출.js",
+  "expectedSourceBlobSha1": "9ceac04a9af4607a1fb0bf625b72c26c6330a03d",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-14ea16594a34-3c8244f6.type-ledger.json",
+        "sha256": "cd29359524d9b5486b80be7376657a4901746f00a10d9ae6769448ddbf18b22b"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_687ce5362087736e16f97dc38772d92ad95affd965b566237a494a69f3c6b993",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+        "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PAIR_COUNT"
+      },
+      "rationale": "각 학생의 악수 상대5명에8을 곱하고 중복2로 나누어20번을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "86ad88a39f7845780c517e776aa61419ad26adf8ebea726c7f5e22633ef5147d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-14ea16594a34-3c8244f6.type-ledger.json",
+          "sha256": "cd29359524d9b5486b80be7376657a4901746f00a10d9ae6769448ddbf18b22b"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-dfc400878a07-e1bedf73",
+  "examUid": "24_순천여고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/24_순천여고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "41af0dea3bd9d3947a454aed738f01d44b0de8ff",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dfc400878a07-e1bedf73.type-ledger.json",
+        "sha256": "e6563d9e8fa0e3b1d8966627c95a6ca59d044e6661c951225ded26004a95355d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_bed844a2bdfd3b1fb82e6d95dcfc37f0c0ffc6be8bd3fb2527f9bb8ee9733f24",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION"
+      },
+      "rationale": "중복조합, 조합, 순열, 중복순열의 값을 각각 계산해 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "0014a2990a6565d511ee0755c2b26d221f3db46abc963fbcc8e0ecbcdb834019",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dfc400878a07-e1bedf73.type-ledger.json",
+          "sha256": "e6563d9e8fa0e3b1d8966627c95a6ca59d044e6661c951225ded26004a95355d"
+        }
+      ]
+    }
+  ]
+}

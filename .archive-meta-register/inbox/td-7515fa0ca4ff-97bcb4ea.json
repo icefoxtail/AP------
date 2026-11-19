@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-7515fa0ca4ff-97bcb4ea",
+  "examUid": "21_금당고_1학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "e726e9bd47eddefa0cdb20efe96bd2611f3f5b18",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7515fa0ca4ff-97bcb4ea.type-ledger.json",
+        "sha256": "cbd7646e5637e4ac22e743a7c265d8ed51bf2e7457b90b2e956fbee69e857e97"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7ebd727acf9c9d4782f21be78335957ba42733808b0ffee2e1e06542d6120399",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION"
+      },
+      "rationale": "중복조합 2H10을 조합으로 바꾸고 중복순열 2^2를 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "3dbf6d70136652a2097bd2bf158ff03e32a83c0c0362c233fb7536c54af4c7ac",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7515fa0ca4ff-97bcb4ea.type-ledger.json",
+          "sha256": "cbd7646e5637e4ac22e743a7c265d8ed51bf2e7457b90b2e956fbee69e857e97"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_86523be2fe68b95d3e89dca3078d6d8ce1fe0987b311fb4066e9db31ddc9cc6e",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT"
+      },
+      "rationale": "기명 투표는 3^5의 중복순열로, 무기명 투표는 득표수 분배로 세어 합한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "확률과 통계"
+      },
+      "textBindingFingerprint": "bc6f98d125b09969cb4de797d6041e215b449afb1a00b61fd563af4569d40b48",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7515fa0ca4ff-97bcb4ea.type-ledger.json",
+          "sha256": "cbd7646e5637e4ac22e743a7c265d8ed51bf2e7457b90b2e956fbee69e857e97"
+        }
+      ]
+    }
+  ]
+}

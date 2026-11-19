@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2b29cefa4972-1d964ca6",
+  "examUid": "21_매산중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_매산중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "b5a7aab451a466feedd80f18a2b799f9aa02bc26",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2b29cefa4972-1d964ca6.type-ledger.json",
+        "sha256": "593496245dd2e092a8727ff86eb9576eaacc2935a5cdfae3306cfa28b400af46"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_0b49cedc58d2019b9342692ff9a79f3df5e011e030380cb7ad943332349a36a5",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE"
+      },
+      "rationale": "직각삼각형의 넓이와 반둘레로 내접원 반지름 2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "d0bcff73321f6bd25d73377204efc8a137b3d9a184898194a0391afbb02ee75e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2b29cefa4972-1d964ca6.type-ledger.json",
+          "sha256": "593496245dd2e092a8727ff86eb9576eaacc2935a5cdfae3306cfa28b400af46"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c2da6ff9f6d0a733f73edb7e4504f371e2b16811bfeb8095b9167f0651d38455",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE"
+      },
+      "rationale": "직각삼각형의 내접원 접점 길이 관계로 반지름 2와 접점 사이 길이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "2156ff8742df027d0eb1e5f1aa27c2aaa7b7670fe2ec4794da7c408b77e08ed0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2b29cefa4972-1d964ca6.type-ledger.json",
+          "sha256": "593496245dd2e092a8727ff86eb9576eaacc2935a5cdfae3306cfa28b400af46"
+        }
+      ]
+    }
+  ]
+}
