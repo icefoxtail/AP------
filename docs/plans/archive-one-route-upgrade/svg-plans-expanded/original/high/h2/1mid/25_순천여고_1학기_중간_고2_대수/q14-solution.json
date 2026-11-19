@@ -1,0 +1,131 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      2,
+      -1,
+      6
+    ],
+    "curves": [
+      {
+        "id": "r1",
+        "kind": "EXPONENTIAL",
+        "base": "4",
+        "coefficients": [
+          "-1",
+          "1",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "r2",
+        "kind": "EXPONENTIAL",
+        "base": "4",
+        "coefficients": [
+          "1",
+          "1",
+          "-4"
+        ],
+        "domain": [
+          "1",
+          "3/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l1",
+        "kind": "EXPONENTIAL",
+        "base": "4",
+        "coefficients": [
+          "-1",
+          "-1",
+          "4"
+        ],
+        "domain": [
+          "-1",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l2",
+        "kind": "EXPONENTIAL",
+        "base": "4",
+        "coefficients": [
+          "1",
+          "-1",
+          "-4"
+        ],
+        "domain": [
+          "-3/2",
+          "-1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "k",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 y축에 대하여 대칭이고 x=±1에서 0, x=0에서 3인 W자 모양이다. x=0에서 f의 값은 극대인 3이다. 직선 y=k가 극대점 P(0, 3)을 지날 때만 y축 양쪽에 교점이 하나씩 더 생겨 세 점에서 만난다. 이 그림은 k=3인 경우이다. 따라서 k=3이고 답은 ③이다.",
+  "accessibilityDescription": "y축에 대칭인 W자 모양의 파란 그래프 f와 가로 점선 y=k가 있다. 점 A, B는 x축 위에, 점 P는 y축 위의 가운데 봉우리에 있고 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "W자 그래프의 극대점 P(0, 3)과 x절편 A, B를 표시하고 y=3이 세 점에서 만남을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x) = \\begin{cases} |4^x - 4| & (x \\ge 0) \\\\ |4^{-x} - 4| & (x < 0) \\end{cases}$ 와 직선 $y=k$ ($k$는 실수)\\n에 대하여 방정식 $f(x)=k$이 서로 다른 세 실근을 가질\\n때, $k$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

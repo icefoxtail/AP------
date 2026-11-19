@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "10",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      10
+    ],
+    "viewport": [
+      -1,
+      11,
+      -3,
+      30
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "r",
+      "y": "S"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5",
+        "y": "25"
+      }
+    ]
+  },
+  "caption": "S는 반지름 r에 따른 부채꼴의 넓이이다. 둘레가 20이면 호의 길이는 20−2r이므로 S=(1/2)r(20−2r)=−(r−5)²+25이다. 그래프의 꼭짓점 V(5, 25)에서 최대이므로 a=25이고, 이때 호의 길이는 10이어서 중심각 b=10/5=2이다. 따라서 a+b=27이고 답은 ⑤이다.",
+  "accessibilityDescription": "r가 0에서 10 사이일 때 위로 볼록한 포물선 S가 그려져 있고 꼭짓점 V의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "부채꼴 넓이 S(r)의 그래프와 최고점 V(5, 25)를 보여 최대 넓이 a=25와 r=5를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둘레의 길이가 $20$인 부채꼴 중에서 그 넓이가 최대인 부채\\n꼴의 넓이를 $a$, 넓이가 최대인 부채꼴의 중심각의 크기를\\n$b$라고 할 때, $a+b$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -4,
+      5,
+      -8,
+      16
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "D"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "1/2",
+        "y": "-25/4"
+      }
+    ]
+  },
+  "caption": "t=log₂k로 두면 판별식은 D/4=t²−t−6이고 이 그래프가 D≥0이 되는 부분을 본다. 그래프는 t축과 A(−2, 0), B(3, 0)에서 만나므로 t≤−2 또는 t≥3일 때 D≥0이다. t=log₂k이므로 k≤1/4 또는 k≥8이고, 진수 조건 k>0과 합치면 0<k≤1/4 또는 k≥8이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 그려져 있고 가로축과 만나는 두 점 A, B와 꼭짓점 V의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "t=log₂k로 둔 이차식의 그래프에서 t축과의 교점 −2, 3을 표시해 D가 0 이상인 t의 범위를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차방정식 $x^2 - x\\log_2 k^2 + \\log_2 k + 6 = 0$이 실근을 갖도록\\n하는 실수 $k$의 범위는? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
