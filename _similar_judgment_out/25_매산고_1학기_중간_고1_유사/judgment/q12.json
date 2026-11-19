@@ -1,0 +1,72 @@
+{
+  "qid": 12,
+  "itemFingerprint": "c513fe2cfdad06e1",
+  "solveSteps": [
+    "조건 (가) $f(-1) = f(5)$에서 대칭축은 $x = \\dfrac{-1 + 5}{2} = 2$이다.",
+    "$f(x) = -x^2 + ax + b$의 축이 $x = \\dfrac{a}{2}$이므로 $\\dfrac{a}{2} = 2 \\implies a = 4$이다.",
+    "조건 (나) 최댓값 $f(2) = -(2)^2 + 4(2) + b = 4 + b = 9 \\implies b = 5$이다.",
+    "구간 $[a, b] = [4, 5]$에서 $x \\ge 4$는 축 $x = 2$의 오른쪽이므로 $f(x)$는 감소한다.",
+    "최댓값: $f(4) = -(4)^2 + 4(4) + 5 = 5$, 최솟값: $f(5) = -(5)^2 + 4(5) + 5 = 0$.",
+    "두 값의 차는 $5 - 0 = 5$이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "구간 $[a, b]$에서 함수 $f(x)$의 최댓값과 최솟값의 차는?",
+  "rpmRecordId": "H1-RPM-170",
+  "rpmReason": "이차함수 $-x^2 + ax + b$의 축 $x=2$와 최댓값 9로 계수를 구한 후 제한 구간에서 차 5를 구하는 H1-RPM-170에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "$-x^2 + ax + b$에서 대칭축과 꼭짓점으로 계수를 정하고 구간 $[a, b]$에서 최댓값과 최솟값의 차를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$-x^2 + ax + b$의 대칭성에서 $a=4, b=5$를 결정하고 구간 $[4, 5]$에서 감소성을 따져 차 5를 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x) = -x^2 + ax + b$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값의 차는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "이차함수 그래프의 대칭축은"
+      }
+    ],
+    "condition": [
+      {
+        "term": "구간",
+        "src": "stem",
+        "quote": "구간 $[a, b]$에서 함수 $f(x)$의"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$-x^2 + ax + b$의 축 $x=a/2=2$에서 $a=4, b=5$를 얻고 구간 $[4,5]$에서 $f(4)-f(5)=5-0=5$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

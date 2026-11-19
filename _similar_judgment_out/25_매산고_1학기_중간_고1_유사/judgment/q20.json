@@ -1,0 +1,73 @@
+{
+  "qid": 20,
+  "itemFingerprint": "097810741503dee2",
+  "solveSteps": [
+    "이차함수와 직선을 연립한다: $ax^2 + (b - 6m)x + (c - 3m^2 - 2m) = 0$.",
+    "항상 접하므로 판별식 $D = 0$이다.",
+    "$D = (b - 6m)^2 - 4a(c - 3m^2 - 2m) = (36 + 12a)m^2 + (8a - 12b)m + (b^2 - 4ac) = 0$.",
+    "실수 $m$에 대한 항등식이므로:",
+    "1) $36 + 12a = 0 \\implies a = -3$",
+    "2) $8(-3) - 12b = 0 \\implies -12b = 24 \\implies b = -2$",
+    "3) $(-2)^2 - 4(-3)c = 0 \\implies 4 + 12c = 0 \\implies c = -\\dfrac{1}{3}$."
+  ],
+  "solvedAnswer": "$a = -3$, $b = -2$, $c = -\\dfrac{1}{3}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "직선 $y = 6mx + 3m^2 + 2m$이 실수 $m$의 값에 관계없이 항상 접할 때",
+  "rpmRecordId": "H1-RPM-169",
+  "rpmReason": "접선 판별식 $D=(36 + 12a)m^2 + \\dots = 0$이 $m$의 항등식이 되는 조건에서 $a=-3, b=-2, c=-\\frac{1}{3}$을 구하는 H1-RPM-169에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "이차함수와 $6mx + 3m^2 + 2m$ 직선의 접선 판별식을 $m$의 항등식으로 해석하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "접선 판별식 $(36 + 12a)m^2 = 0$ 등 $m$에 대해 내림차순 정리하여 세 계수를 모두 결정하는 서술형 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = ax^2 + bx + c$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b, c$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "접함",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "관계없이 항상 접할 때"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $m$의 값에 관계없이"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "연립 판별식 $D = (36 + 12a)m^2 + (8a - 12b)m + (b^2 - 4ac) = 0$의 항등식 조건에서 $a=-3, b=-2, c=-1/3$으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

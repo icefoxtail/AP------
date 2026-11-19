@@ -1,0 +1,67 @@
+{
+  "qid": 6,
+  "itemFingerprint": "4cffdd4527e92839",
+  "solveSteps": [
+    "음수의 제곱근 성질을 이용하여 각 항을 정리한다.",
+    "$\\sqrt{-9}\\sqrt{-16} = 3i \\times 4i = 12i^2 = -12$",
+    "$\\dfrac{\\sqrt{-12}}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}i}{\\sqrt{3}} = 2i$",
+    "$\\dfrac{\\sqrt{-48}}{\\sqrt{-3}} = \\dfrac{4\\sqrt{3}i}{\\sqrt{3}i} = 4$",
+    "$\\dfrac{\\sqrt{24}}{\\sqrt{-6}} = \\dfrac{2\\sqrt{6}}{\\sqrt{6}i} = -2i$",
+    "좌변: $-12 + 2i - 4 - (-2i) = -16 + 4i = a + bi$이므로 $a = -16, b = 4$이다.",
+    "따라서 $a^2 + b^2 = (-16)^2 + 4^2 = 256 + 16 = 272$이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "두 실수 $a, b$에 대하여 $a^2 + b^2$의 값은? (단, $i = \\sqrt{-1}$)",
+  "rpmRecordId": "H1-RPM-156",
+  "rpmReason": "음수의 제곱근 계산 규칙을 적용하여 $a + bi = -16 + 4i$를 구하는 H1-RPM-156에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_OPERATION_NEGATIVE_ROOT",
+  "typeReason": "음수의 제곱근 성질을 이용하여 $a + bi$ 꼴로 정리하고 $a^2 + b^2 = 272$를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "네 항의 음수 제곱근을 각각 실수화·계산하여 $a + bi$에서 $a^2 + b^2 = 272$를 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a, b$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "주어진 식에 대입하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "허수단위",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "허수단위 $i$를 사용하여 정리하면"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "음수의 제곱근으로 좌변을 $-16 + 4i = a + bi$로 정리하여 $a^2 + b^2 = 272$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

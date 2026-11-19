@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "4d81349cab2dc669",
+  "solveSteps": [
+    "$-x^2 + m = 2x \\implies x^2 + 2x - m = 0$이다.",
+    "두 교점의 $x$좌표 $\\alpha, \\beta$에 대해 $\\alpha + \\beta = -2$, $\\alpha\\beta = -m$이다.",
+    "$\\mathrm{A}(\\alpha, 2\\alpha), \\mathrm{B}(\\beta, 2\\beta)$이므로 두 삼각형의 넓이의 합은 $\\frac{1}{2}|\\alpha||2\\alpha| + \\frac{1}{2}|\\beta||2\\beta| = \\alpha^2 + \\beta^2 = 24$이다.",
+    "곱셈공식 변형에서 $\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = 4 + 2m = 24$이다.",
+    "따라서 $2m = 20 \\implies m = 10$이다."
+  ],
+  "solvedAnswer": "$10$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = -x^2 + m$의 그래프와 직선 $y = 2x$가",
+  "rpmRecordId": "H1-RPM-168",
+  "rpmReason": "이차함수와 직선의 교점으로 이루어지는 삼각형 넓이 합 24에서 $m=10$을 구하는 H1-RPM-168에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "교점 좌표와 직각삼각형 넓이의 합 24를 근과 계수의 관계로 연결하여 $m=10$을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직교 수선의 발에 의한 삼각형 넓이 합 $\\alpha^2+\\beta^2=24$에서 $4+2m=24$로 $m=10$을 유도하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = -x^2 + m$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "이때 상수 $m$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "두 삼각형의 넓이의 합은"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "$x$축에 내린 수선의 발을 각각"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$x^2 + 2x - m = 0$에서 넓이합 $\\alpha^2 + \\beta^2 = (-2)^2 - 2(-m) = 4 + 2m = 24$로부터 $m = 10$으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

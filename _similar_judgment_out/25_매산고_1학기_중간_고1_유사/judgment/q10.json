@@ -1,0 +1,71 @@
+{
+  "qid": 10,
+  "itemFingerprint": "4ef00fe3eacfe7dd",
+  "solveSteps": [
+    "이차함수와 직선을 연립한다: $x^2 - 6x = -2x + k \\implies x^2 - 4x - k = 0$.",
+    "두 교점의 $x$좌표를 $\\alpha, \\beta$라 하면 근과 계수의 관계에서 $\\alpha + \\beta = 4$, $\\alpha\\beta = -k$이다.",
+    "$g(k) = \\alpha\\beta = -k$이고, $f(k) = (\\alpha - \\beta)^2 = (\\alpha + \\beta)^2 - 4\\alpha\\beta = 16 + 4k$이다.",
+    "${g(k)}^2 = f(0) \\times f(5) \\implies (-k)^2 = 16 \\times (16 + 20) = 16 \\times 36 = 576$.",
+    "$k > 0$이므로 $k = 24$이다. (③번)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = x^2 - 6x$의 그래프와 직선 $y = -2x + k$가",
+  "rpmRecordId": "H1-RPM-168",
+  "rpmReason": "포물선과 직선의 교점의 $x$좌표에 대한 근과 계수의 관계 및 $k=24$를 다루는 H1-RPM-168에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "이차함수와 직선의 교점 좌표의 차의 제곱과 곱의 관계식으로 $f(5)$와 $k=24$를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "연립방정식의 근과 계수의 관계, 곱셈공식 변형, $k^2 = 576$ 풀이로 24를 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = x^2 - 6x$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "만족시키는 양의 실수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "두 교점의 $x$좌표의 차의 제곱을"
+      }
+    ],
+    "condition": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "$y = x^2 - 6x$의 그래프와 직선"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$x^2 - 4x - k = 0$에서 $f(k) = 16 + 4k, g(k) = -k$로 $k^2 = 16 \\times 36 = 576$에서 $k=24$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

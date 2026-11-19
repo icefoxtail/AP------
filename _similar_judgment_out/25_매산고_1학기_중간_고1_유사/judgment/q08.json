@@ -1,0 +1,71 @@
+{
+  "qid": 8,
+  "itemFingerprint": "b1512ea5504b6868",
+  "solveSteps": [
+    "$f(x) = -x^2 + 2ax - 5 = -(x - a)^2 + a^2 - 5$이므로 위로 볼록하고 축은 $x = a$이다.",
+    "$a = 1$: 축 $x = 1 \\in [0, 4]$이므로 $g(1) = f(1) = -1 + 2 - 5 = -4$.",
+    "$a = 3$: 축 $x = 3 \\in [0, 4]$이므로 $g(3) = f(3) = -9 + 6(3) - 5 = 4$.",
+    "$a = 5$: 축 $x = 5 > 4$이므로 $[0, 4]$에서 증가함수이고 $g(5) = f(4) = -16 + 40 - 5 = 19$.",
+    "따라서 $g(1) + g(3) + g(5) = -4 + 4 + 19 = 19$이다. (④번)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "이차함수 $f(x) = -x^2 + 2ax - 5$의 최댓값을 $g(a)$라",
+  "rpmRecordId": "H1-RPM-170",
+  "rpmReason": "제한된 구간에서 축의 위치에 따른 이차함수 $f(x) = -x^2 + 2ax - 5$의 최댓값 19를 구하는 H1-RPM-170에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "제한 구간 $[0, 4]$에서 축 $x=a$의 위치에 따른 최댓값을 구해 합 19를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "축의 위치에 따른 경우를 나누어 $g(1)=-4, g(3)=4, g(5)=19$를 각각 구해야 하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x) = -x^2 + 2ax - 5$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 $g(a)$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "위로 볼록하고 대칭축은 $x = a$이다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "구간",
+        "src": "solution",
+        "quote": "축 $x = 1$이 구간 $[0, 4]$에 속하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$-x^2 + 2ax - 5$의 축 $x=a$에 대해 $a=1, 3, 5$별 최댓값을 구해 합 19로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
