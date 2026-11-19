@@ -44,6 +44,21 @@ export function aggregate({ results, shardsResult }) {
       if (count > 1) problems.push(`shard ${index}/${total} reported ${count} times`);
     }
   }
+  // Every shard must have run the same kind of run (full registry or a CI scope).
+  const modes = new Set(results.map(result => result.mode));
+  if (modes.size > 1) problems.push(`shards disagree on the run mode: ${[...modes].map(String).join(', ')}`);
+  // A full run must cover the whole registry exactly: all shards agree on its size and their shares add up to it.
+  // (A zero-test shard of a full run, or a shard that silently ran less, can no longer look green.)
+  // A scoped run is not compared: a shard may legitimately get no test, and package preparation repeats per shard.
+  if (modes.size === 1 && modes.has('full')) {
+    const fullTotals = new Set(results.map(result => result.fullTotal));
+    const covered = results.reduce((n, result) => n + Number(result.total || 0), 0);
+    if (fullTotals.size !== 1 || !Number.isInteger([...fullTotals][0])) problems.push(`shards disagree on the full test count: ${[...fullTotals].map(String).join(', ')}`);
+    else if (covered !== [...fullTotals][0]) problems.push(`the shards ran ${covered} test command(s) but the full registry has ${[...fullTotals][0]}`);
+    for (const result of results) {
+      if (!(Number(result.total) > 0)) problems.push(`shard ${result.shard}/${result.of} ran no test command in a full run`);
+    }
+  }
   const sorted = [...results].sort((a, b) => a.shard - b.shard);
   const sum = key => sorted.reduce((n, result) => n + (Array.isArray(result[key]) ? result[key].length : 0), 0);
   const passed = sorted.reduce((n, result) => n + Number(result.passed || 0), 0);

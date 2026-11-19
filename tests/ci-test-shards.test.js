@@ -103,7 +103,7 @@ test('a scoped run is shared out too: tests are disjoint, syntax checks and pack
 
 test('aggregate: all shards green is PASS and sums the counts in the usual format', async () => {
   const { aggregate } = await import('../tools/ci/aggregate-test-shards.mjs');
-  const result = (index, passed, extra = {}) => ({ schema: 'archive-test-shard-result-v1', shard: index, of: 3, mode: 'full', passed, failed: [], knownFailed: [], fixedKnown: [], total: passed, durationsMs: { a: 1500 }, ...extra });
+  const result = (index, passed, extra = {}) => ({ schema: 'archive-test-shard-result-v1', shard: index, of: 3, mode: 'full', fullTotal: 21, passed, failed: [], knownFailed: [], fixedKnown: [], total: passed, durationsMs: { a: 1500 }, ...extra });
   const outcome = aggregate({ results: [result(2, 10), result(1, 7), result(3, 4)], shardsResult: 'success' });
   assert.equal(outcome.ok, true, outcome.problems.join('; '));
   assert.equal(outcome.verdict, 'PASS 21 / FAIL 0 / QUARANTINED-FAIL 0 (total 21)');
@@ -113,7 +113,7 @@ test('aggregate: all shards green is PASS and sums the counts in the usual forma
 
 test('aggregate: a failed, missing, duplicated, mismatched, cancelled or skipped shard is never a pass', async () => {
   const { aggregate } = await import('../tools/ci/aggregate-test-shards.mjs');
-  const good = (index, extra = {}) => ({ schema: 'archive-test-shard-result-v1', shard: index, of: 3, passed: 5, failed: [], knownFailed: [], total: 5, durationsMs: {}, ...extra });
+  const good = (index, extra = {}) => ({ schema: 'archive-test-shard-result-v1', shard: index, of: 3, mode: 'full', fullTotal: 15, passed: 5, failed: [], knownFailed: [], total: 5, durationsMs: {}, ...extra });
   const all = [good(1), good(2), good(3)];
   const failedShard = aggregate({ results: [good(1), good(2, { passed: 4, failed: ['broken.test.js'], total: 5 }), good(3)], shardsResult: 'failure' });
   assert.equal(failedShard.ok, false);
@@ -130,6 +130,37 @@ test('aggregate: a failed, missing, duplicated, mismatched, cancelled or skipped
   }
 });
 
+test('aggregate: a full run must cover the whole registry; a scoped run is not compared', async () => {
+  const { aggregate } = await import('../tools/ci/aggregate-test-shards.mjs');
+  const shardResult = (index, total, extra = {}) => ({ schema: 'archive-test-shard-result-v1', shard: index, of: 3, mode: 'full', fullTotal: 30, passed: total, failed: [], knownFailed: [], total, durationsMs: {}, ...extra });
+  const ok = aggregate({ results: [shardResult(1, 10), shardResult(2, 10), shardResult(3, 10)], shardsResult: 'success' });
+  assert.equal(ok.ok, true, ok.problems.join('; '));
+  // one shard ran nothing but "passed"
+  const empty = aggregate({ results: [shardResult(1, 15), shardResult(2, 15), shardResult(3, 0)], shardsResult: 'success' });
+  assert.equal(empty.ok, false);
+  assert.ok(empty.problems.some(problem => /ran no test command/.test(problem)), empty.problems.join('; '));
+  // the shares add up to less than the registry
+  const short = aggregate({ results: [shardResult(1, 10), shardResult(2, 10), shardResult(3, 9)], shardsResult: 'success' });
+  assert.equal(short.ok, false);
+  assert.ok(short.problems.some(problem => /ran 29 test command\(s\) but the full registry has 30/.test(problem)), short.problems.join('; '));
+  // the shards were not looking at the same registry
+  const disagree = aggregate({ results: [shardResult(1, 10), shardResult(2, 10), shardResult(3, 10, { fullTotal: 31 })], shardsResult: 'success' });
+  assert.equal(disagree.ok, false);
+  assert.ok(disagree.problems.some(problem => /disagree on the full test count/.test(problem)), disagree.problems.join('; '));
+  // a full result without a usable fullTotal cannot be trusted
+  assert.equal(aggregate({ results: [1, 2, 3].map(index => shardResult(index, 10, { fullTotal: undefined })), shardsResult: 'success' }).ok, false);
+  // mixed run modes
+  const mixed = aggregate({ results: [shardResult(1, 10), shardResult(2, 10), shardResult(3, 10, { mode: 'scoped' })], shardsResult: 'success' });
+  assert.equal(mixed.ok, false);
+  assert.ok(mixed.problems.some(problem => /disagree on the run mode/.test(problem)), mixed.problems.join('; '));
+  // scoped run: a shard with no test is normal, and package preparation repeated per shard may make the sum exceed the selection
+  const scoped = (index, total) => shardResult(index, total, { mode: 'scoped', fullTotal: 4 });
+  const scopedOk = aggregate({ results: [scoped(1, 4), scoped(2, 0), scoped(3, 0)], shardsResult: 'success' });
+  assert.equal(scopedOk.ok, true, scopedOk.problems.join('; '));
+  const scopedMore = aggregate({ results: [scoped(1, 3), scoped(2, 3), scoped(3, 3)], shardsResult: 'success' });
+  assert.equal(scopedMore.ok, true, scopedMore.problems.join('; '));
+});
+
 test('aggregate: reads result files from downloaded artifact folders and ignores other json', async () => {
   const { readShardResults, aggregate } = await import('../tools/ci/aggregate-test-shards.mjs');
   const dir = fs.mkdtempSync(path.join(require('node:os').tmpdir(), 'shard-results-'));
@@ -137,7 +168,7 @@ test('aggregate: reads result files from downloaded artifact folders and ignores
     for (const index of [1, 2]) {
       fs.mkdirSync(path.join(dir, `test-shard-${index}`));
       fs.writeFileSync(path.join(dir, `test-shard-${index}`, 'test-shard-result.json'),
-        JSON.stringify({ schema: 'archive-test-shard-result-v1', shard: index, of: 2, passed: 3, failed: [], knownFailed: [], total: 3, durationsMs: {} }));
+        JSON.stringify({ schema: 'archive-test-shard-result-v1', shard: index, of: 2, mode: 'full', fullTotal: 6, passed: 3, failed: [], knownFailed: [], total: 3, durationsMs: {} }));
     }
     fs.writeFileSync(path.join(dir, 'unrelated.json'), '{"a":1}');
     fs.writeFileSync(path.join(dir, 'broken.json'), '{');
@@ -182,7 +213,7 @@ test('ci.yml: the `test` check keeps its name, aggregates every shard, and shard
   assert.deepEqual(list, list.map((_, i) => i + 1), 'shards are 1..n');
   assert.ok(shards.includes(`name: test (shard \${{ matrix.shard }}/${list.length})`), 'visible shard count matches the matrix');
   assert.match(shards, /--shard "\$\{\{ matrix\.shard \}\}\/\$\{\{ strategy\.job-total \}\}"/);
-  assert.match(shards, /name: test-shard-\$\{\{ matrix\.shard \}\}/);
+  assert.match(shards, /name: test-shard-\$\{\{ matrix\.shard \}\}[\s\S]*?overwrite: true/, 're-running a failed shard may upload its result again');
   assert.match(shards, /ARCHIVE_TEST_SHARD_RESULT: /);
   assert.equal((ci.match(/\n  test:\n/g) || []).length, 1, 'exactly one job is named test');
 });

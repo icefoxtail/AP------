@@ -184,7 +184,7 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `needed=${needed}\n`);
           NODE
 
-      - name: Prepare and verify PR registration data once
+      - name: Prepare and verify PR registration data (once per shard)
         if: github.event_name == 'pull_request' && steps.registration_scope.outputs.needed == 'true'
         id: registration_proof
         run: node tools/ci/archive-pr-registration-proof.mjs produce --proof-file "$RUNNER_TEMP/archive-pr-registration-proof/proof.json"
@@ -296,3 +296,5 @@ jobs:
           path: ${{ runner.temp }}/test-shard-result.json
           if-no-files-found: warn
           retention-days: 7
+          # "Re-run failed jobs" uploads this name again in the same run; without this the upload would be refused.
+          overwrite: true
