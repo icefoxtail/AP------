@@ -209,8 +209,8 @@ export function registerTypeJudgment(ctx) {
       if (/^approved/i.test(status)) failWith(`type already approved: ${uid}.${field}=${status}`);
       if (!OVERWRITABLE_STATUS.has(status)) failWith(`type field status is not overwritable: ${uid}.${field}=${status}`);
     }
-    // A held taxonomy row is not shown by the catalog, so a type registered on it could never be verified in the consumer.
-    if (current.foundationTaxonomyStatus === "HOLD") failWith(`row has a foundation taxonomy HOLD; its type cannot be displayed: ${uid}`);
+    // A row-level taxonomy HOLD is not a reason to refuse (2026-11-20, "값이 있으면 보인다"): the catalog shows a judged type on a held row too;
+    // the hold stays on the row's other fields (L4, difficulty, source issue) and this lane never touches them.
     // A receipt on the row's OTHER fields stays replayable: receiptRecordMatchesRow (reviewed-exam-registration-v2.mjs) leaves the type fields
     // out of that comparison when the receipt recorded no type. A row whose type is already approved was refused above.
     const scope = patch.scope;
