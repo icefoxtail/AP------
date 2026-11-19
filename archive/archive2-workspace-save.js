@@ -141,8 +141,12 @@
   // 만들었고 선정 문항은 언제나 그 안에 있으므로, 단원 목록으로 다시 만들 수 있는 행은 목록을 빼고 저장한다(행에 scopeUidsOmitted 표시).
   // 열 때 현재 카탈로그의 planRows() 목록 + 그 행에서 뽑은 문항으로 채운다(applyDraft). 단원 목록으로 못 만드는 범위(uid 경로로 고른 범위,
   // 저장 시험지 수정본, 학교별 기출로 고른 시험, 행이 현재 범위·분배와 안 맞는 경우)는 지금처럼 목록을 그대로 저장한다.
+  // 열 때 그 범위 키를 못 만드는 경우도 목록을 그대로 저장한다: 고등 소단원 묶음 키(대단원키~묶음키)는 묶음표를 비동기로 읽은 뒤에야 만들어지고,
+  // 조건을 바꾸고 다시 만들지 않은 문제지(composeStale)는 저장된 목록이 지금 조건의 계산과 다르다.
   function rowsRebuildableFromScopes() {
     if (state.uidRoute || state.derivationSource || state.urlUids?.length || state.sources.length || !state.scopes.length) return false;
+    if (state.composeStale) return false;
+    if (!/^중[123]$/.test(state.filters.grade || "") && state.scopes.some((key) => String(key).includes("~"))) return false;
     if (!Array.isArray(state.rows) || !state.rows.length) return false;
     const pooled = state.distribution === "pool";
     return state.rows.every((row) => row && typeof row === "object" && Array.isArray(row.scopeQuestionUids) &&
@@ -157,6 +161,9 @@
   function rebuildOmittedRowScopeUids() {
     if (!state.rows.some((row) => row && row.scopeUidsOmitted === true)) return;
     const fresh = new Map(planRows().map((row) => [row.id, row.scopeQuestionUids || []]));
+    // 묶음표를 아직 못 읽은 채 소단원 묶음 키가 있으면 합친 목록(pool)은 그 묶음의 문항이 빠진 채로 만들어지므로 쓰지 않는다.
+    const childScopesPending = !/^중[123]$/.test(state.filters.grade || "") && Boolean(QuickTree?.loadGroups) && !QuickTree.groupsLoaded?.() &&
+      state.scopes.some((key) => String(key).includes("~"));
     const picked = new Map();
     for (const record of state.selected) {
       if (!picked.has(record.rowId)) picked.set(record.rowId, []);
@@ -165,7 +172,10 @@
     state.rows = state.rows.map((row) => {
       if (!row || row.scopeUidsOmitted !== true) return row;
       const { scopeUidsOmitted, ...rest } = row;
-      const list = [...(fresh.get(row.id) || [])];
+      // 지금 단원 목록에서 그 행을 못 만들면(예: 고등 소단원 묶음표를 아직 못 읽음) 선정 문항만으로 좁히지 않고 목록 없이 둔다.
+      // 목록 없는 행은 저장 요청이 경로 조건으로 범위를 다시 계산한다(더 넓다).
+      if (!fresh.has(row.id) || (row.id === "pool" && childScopesPending)) return rest;
+      const list = [...fresh.get(row.id)];
       const have = new Set(list);
       for (const uid of picked.get(row.id) || []) if (!have.has(uid)) { have.add(uid); list.push(uid); }
       return { ...rest, scopeQuestionUids: list };
