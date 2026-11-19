@@ -1,0 +1,57 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "9bb4216f6cb63996",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "샌드위치 1개 가격을 x원, 주스 1개 가격을 y원이라 하자.",
+    "3x + 3y = 13500 -> x + y = 4500 이다.",
+    "5x + 4y = 20500 에 x = 4500 - y 를 대입한다.",
+    "5(4500 - y) + 4y = 20500 -> 22500 - y = 20500 -> y = 2000 이다.",
+    "따라서 주스 1개의 가격은 2000원이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "분식집에서 현아는 샌드위치",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+  "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+  "newKeyProposal": null,
+  "typeReason": "수량과 총 금액 13500, 20500 을 연립방정식으로 세워 단가 2000 을 구하는 활용 유형이다.",
+  "rpmRecordId": "M2-RPM-039",
+  "rpmReason": "물건의 개수와 가격 20000 에 관한 연립방정식을 세워 주스 1개의 가격 2000 원을 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "13500 원과 20500 원의 두 상황 식을 세워 연립해 단가 2000 원을 계산한다.",
+  "how": "3x + 3y = 13500 과 5x + 4y = 20500 을 세우고 x + y = 4500 을 대입하여 주스 가격 y = 2000 원을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "위치",
+        "src": "stem",
+        "quote": "서 현아는 샌드위치 $3$개와 주"
+      }
+    ],
+    "goal": [
+      {
+        "term": "위치",
+        "src": "solution",
+        "quote": "샌드위치 $1$개의 가"
+      }
+    ],
+    "method": [
+      {
+        "term": "샌드위치정리",
+        "src": "stem",
+        "quote": "집에서 현아는 샌드위치 $3$개와 주",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

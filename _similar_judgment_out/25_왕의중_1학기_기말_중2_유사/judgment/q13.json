@@ -1,0 +1,63 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "5fb5ef641f69ced9",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "y = 2x + a 의 x절편은 -a/2, y절편 C는 (0, a) 이다.",
+    "y = -1/2 x + b 의 x절편은 2b, y절편 D는 (0, b) 이다.",
+    "AO : OB = 1 : 2 에서 -a/2 : (-2b) = 1 : 2 -> -a = -2b -> a = 2b 이다.",
+    "CD = b - a = 3 이므로 b - 2b = 3 -> b = -3, a = -6 이다.",
+    "따라서 a + b = -6 + (-3) = -9 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 일차함수 $y = 2x",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "선분 AO, OB 의 비와 선분 CD 의 길이 조건으로 두 일차함수의 상수 a, b를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-048",
+  "rpmReason": "선분 CD 와 AO, OB 의 길이 조건을 좌표로 표현하여 계수 a, b 를 결정한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "선분 AO, OB 비와 선분 CD 의 차 조건으로부터 a, b 를 연립하여 구한다.",
+  "how": "AO:OB = 1:2 에서 a = 2b, CD = b - a = 3 에서 b = -3, a = -6 및 합 -9 를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "두 일차함수 $y = 2x + a$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "두 일차함수 $y = 2x + a$"
+      }
+    ],
+    "method": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "$y = 2x + a$의 $x$절편을 $A$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원점",
+        "src": "stem",
+        "quote": "원점 $O$에 대하여"
+      }
+    ]
+  }
+}

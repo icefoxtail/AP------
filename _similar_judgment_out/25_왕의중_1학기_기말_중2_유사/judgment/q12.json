@@ -1,0 +1,61 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "289baef8331a5282",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "일차함수 y = ax - 2 에서 기울기는 (y의 값의 증가량) / (x의 값의 증가량) 이다.",
+    "x가 4만큼 증가할 때 y가 8만큼 감소하므로 기울기 a = -8 / 4 = -2 이다.",
+    "따라서 ax 의 계수는 a = -2 이므로 정답은 ②번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y = ax -",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "x의 증가량과 y의 증가량으로부터 일차함수 y = ax - 2 의 기울기 a를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-048",
+  "rpmReason": "기울기의 정의인 y 증가량/x 증가량으로 y = ax - 2 의 기울기를 계산한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기의 정의를 직접 적용하여 y = ax - 2 에서 a = -8/4 = -2 로 바로 계산된다.",
+  "how": "x 증가량 4, y 증가량 -8 로부터 y = ax - 2 의 기울기 a = -8/4 = -2 를 산출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax - 2$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax - 2$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기 $a = \\frac{-8}{4} = -2$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "x$의 값이 $4$만큼 증가할 때"
+      }
+    ]
+  }
+}

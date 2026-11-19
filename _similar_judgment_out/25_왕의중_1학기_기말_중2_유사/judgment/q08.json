@@ -1,0 +1,63 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "c27e6e7b33bb22b9",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "벽돌의 짧은 변을 x, 긴 변을 y라 하자.",
+    "위쪽 가로 3y 와 아래쪽 가로 6x 가 같으므로 y = 2x 이다.",
+    "둘레 2(6x + x + y) = 90 이므로 7x + y = 45 이다.",
+    "y = 2x 를 대입하면 9x = 45 -> x = 5, y = 10 이다.",
+    "따라서 벽돌 1장의 넓이는 5 * 10 = 50 cm^2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "모양과 크기가 같은 직사각형",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직사각형 벽돌을 이어붙인 둘레 90 cm 와 변의 길이 관계를 연립방정식으로 세워 넓이를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-044",
+  "rpmReason": "둘레 90 cm 인 도형 조건을 이용한 연립방정식을 세워 변의 길이를 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "가로 일치 조건 y = 2x 와 둘레 90 cm 식을 연립하여 변 길이를 구한다.",
+  "how": "3y = 6x 및 둘레 식 7x + y = 45 로부터 x = 5, y = 10 을 구하고 넓이 50 cm^2 을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 벽돌 $9$장을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "벽돌 $1$장의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$y = 2x$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "둘레의 길이가 $90\\text{ cm}$인"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "51909a5f6925462a",
+  "solvedAnswer": "-1",
+  "solveSteps": [
+    "y = ax - 6 의 y절편은 -6 이다.",
+    "x절편은 0 = ax - 6 -> x = 6/a 이다.",
+    "a < 0 이므로 x절편은 음수 6/a 이며 밑변 길이는 -6/a 이다.",
+    "둘러싸인 삼각형의 넓이는 1/2 * (-6/a) * 6 = 18 이다.",
+    "-18/a = 18 -> a = -1 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서답형 1] 일차함수 $y",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차함수 y = ax - 6 의 그래프와 좌표축으로 둘러싸인 넓이가 18 일 때 계수 a를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-058",
+  "rpmReason": "y = ax - 6 에서 절편으로 둘러싸인 넓이 18 로부터 a = -1 을 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "y = ax - 6 의 x절편 6/a 와 y절편 -6 으로 둘러싸인 넓이 18 을 푼다.",
+  "how": "y = ax - 6 의 x절편 6/a 와 y절편 -6 의 삼각형 넓이가 18 임에서 a = -1 을 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax - 6$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "도형의 넓이가 $18$일 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "x$절편은 $\\frac{6}{a}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "삼각형의 밑변의 길이는"
+      }
+    ]
+  }
+}
