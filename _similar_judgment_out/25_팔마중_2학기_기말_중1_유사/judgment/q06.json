@@ -1,0 +1,63 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "8a35935933ea895b",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "밑면 반원의 지름이 8 cm 이므로 반지름 r = 4 cm 이다.",
+    "두 밑면의 넓이 합은 pi * 4^2 = 16pi cm^2 이다.",
+    "옆면의 직사각형 넓이는 8 * 10 = 80 cm^2 이다.",
+    "옆면의 곡면 넓이는 (pi * 4) * 10 = 40pi cm^2 이다.",
+    "겉넓이는 80 + 16pi + 40pi = (80 + 56pi) cm^2 이다. 정답은 ①번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "밑면인 반원의 지름의 길이가",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "반원기둥의 두 밑면과 평면 및 곡면 옆면을 더하여 겉넓이 80 + 56pi 를 계산하는 유형이다.",
+  "rpmRecordId": "M1-RPM-214",
+  "rpmReason": "원기둥 절반의 밑넓이 16pi 와 직사각형 80, 곡면 40pi 를 더해 56pi 를 도출한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "밑넓이와 높이 10 cm 의 평면 80, 곡면 40pi 를 각각 나누어 합산한다.",
+  "how": "밑면 16pi 와 직사각형 80, 곡면 40pi 를 더해 (80 + 56pi) cm^2 을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "반원",
+        "src": "stem",
+        "quote": "밑면인 반원의 지름의 길이가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "반원기둥의 겉넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "원기둥",
+        "src": "stem",
+        "quote": "반원기둥의 겉넓이는?",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "기둥의 높이가 $10\\rm\\,cm$인"
+      }
+    ]
+  }
+}

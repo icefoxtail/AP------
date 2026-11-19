@@ -1,0 +1,63 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "ae9a98813c1892e2",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "지름 AB = 24 cm 이므로 반지름 r = 12 cm 이다.",
+    "삼각형 ABC 에서 AC = BC, 각 ACB = 60도 이므로 정삼각형이다.",
+    "각 A = 각 B = 60도 이다.",
+    "각 AOD = 60도, 각 EOB = 60도 이므로 부채꼴 DOE 의 중심각은 180 - 60 - 60 = 60도 이다.",
+    "부채꼴 DOE 의 넓이는 pi * 12^2 * (60/360) = 144pi / 6 = 24pi cm^2 이다. 정답은 ⑤번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "지름의 길이가 $24\\rm\\",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "반원과 정삼각형의 각 관계로부터 중심각 60도 부채꼴의 넓이 24pi 를 계산하는 유형이다.",
+  "rpmRecordId": "M1-RPM-206",
+  "rpmReason": "지름 24 cm 와 중심각 60 도로 부채꼴 DOE 넓이 24pi 를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 조건으로 중심각 60 도를 찾고 부채꼴 넓이 24pi 를 계산한다.",
+  "how": "중심각 60도와 반지름 12 cm 로부터 부채꼴 DOE 넓이 24pi cm^2 을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "인 이등변삼각형 $ABC$를 그렸을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "부채꼴 $DOE$의 넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "반원",
+        "src": "stem",
+        "quote": "지름의 길이가 $24\\rm\\,cm$인 반원에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "부채꼴 $DOE$의 넓이는?"
+      }
+    ]
+  }
+}

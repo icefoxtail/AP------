@@ -1,0 +1,63 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "41d33a7b0304a6d4",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "호의 길이와 중심각의 크기는 정비례한다.",
+    "2 cm 에 30도 이므로 중심각 120도에 대한 호의 길이는 x : 2 = 120 : 30 -> x = 8 cm 이다.",
+    "호의 길이 5 cm 에 대한 중심각 y는 5 : 2 = y : 30 -> 2y = 150 -> y = 75 도 이다.",
+    "x + y = 8 + 75 = 83 이다.",
+    "따라서 정답은 ②번 83 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "같은 원에서 호의 길이는 중",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "원과 부채꼴에서 호의 길이와 중심각 30, 120 도의 정비례 관계로 x=8, y=75, 합 83 을 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-201",
+  "rpmReason": "호의 길이와 중심각 30 도의 비례 관계를 세워 x와 y를 결정하고 83 을 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "중심각 120 도에 대한 호 x=8 과 호 5cm 에 대한 중심각 y=75 를 구하고 83 을 더한다.",
+  "how": "x : 2 = 120 : 30 에서 x=8, 5 : 2 = y : 30 에서 y=75 로부터 x+y=83 을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "호에 대한 중심각의 크기가 $30^\\circ$일"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "호의 길이를 $x\\rm\\,cm$,"
+      }
+    ],
+    "method": [
+      {
+        "term": "정비례",
+        "src": "stem",
+        "quote": "중심각의 크기에 정비례한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "중심각의 크기에 정비례한다"
+      }
+    ]
+  }
+}
