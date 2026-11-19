@@ -686,3 +686,50 @@ test('the tests above shared one catalog and none of them changed it', () => {
   harness();
   assert.equal(catalogDigest(sharedCatalog), sharedCatalogDigest);
 });
+
+// 고1 과목 단추: 문제지를 만들기 전에 고른 단원은 새 과목 범위 안에 있으면 남고, 범위 밖이 된 것만 알림과 함께 빠진다.
+// 이유: 단원만 고른 상태에서 과목 단추를 바꾸면 고른 단원이 안내 없이 전부 사라졌다(2026-11-20 검수).
+function h1UnitsBySubject(w) {
+  w.state.filters = { grade: '고1', semanticSubject: '' };
+  const bySubject = value => w.scopeOptions().filter(scope => !scope.unclassified && scope.count > 0 && scope.key.split(':')[2] === value);
+  const first = bySubject('COMMON_MATH_1'), second = bySubject('COMMON_MATH_2');
+  assert.ok(first.length >= 2 && second.length >= 1, 'the test catalog lists units of both 고1 subjects');
+  return { first, second };
+}
+
+test('고1 과목 단추: 새 과목 범위 안에 있는 단원 선택은 남는다(둘 다 켜진 상태에서 한 과목을 눌러도, 다시 둘 다 켜도)', async () => {
+  const { w, click } = harness();
+  const { first } = h1UnitsBySubject(w);
+  w.state.scopes = [first[0].key, first[1].key];
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1');
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, first[1].key], '공통수학1 단원은 공통수학1만 켠 뒤에도 남는다');
+  assert.equal(w.state.scopeNotice, '', '뺀 것이 없으면 알리지 않는다');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
+  assert.equal(w.state.filters.semanticSubject, '', '둘 다 켜짐');
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, first[1].key], '둘 다 켜도 고른 단원은 그대로');
+  assert.equal(w.state.scopeNotice, '');
+});
+
+test('고1 과목 단추: 범위 밖이 된 단원만 빼고, 뺀 개수를 기존 안내 자리(scopeNotice)로 알린다', async () => {
+  const { w, click } = harness();
+  const { first, second } = h1UnitsBySubject(w);
+  w.state.scopes = [first[0].key, first[1].key, second[0].key];
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, first[1].key], '공통수학2 단원만 범위 밖이라 빠진다');
+  assert.match(w.state.scopeNotice, /공통수학2 단원 1개는 .*범위 밖.*해제/);
+});
+
+test('고2 과목 칩·학년 버튼 전환은 지금처럼 단원 선택을 모두 비운다(알림 없음)', async () => {
+  const { w, click } = harness();
+  w.state.filters = { grade: '고2', semanticSubject: '' };
+  const units = w.scopeOptions().filter(scope => !scope.unclassified && scope.count > 0);
+  assert.ok(units.length > 0, 'a 고2 unit exists');
+  w.state.scopes = [units[0].key];
+  await click({ action: 'compose-subject', subject: units[0].key.split(':')[2] });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [], '고2 전환은 기존 동작대로 비운다');
+  assert.equal(w.state.scopeNotice, '');
+  w.state.scopes = [h1UnitsBySubject(w).first[0].key];
+  await click({ action: 'compose-grade', grade: '중3' });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), []);
+});
