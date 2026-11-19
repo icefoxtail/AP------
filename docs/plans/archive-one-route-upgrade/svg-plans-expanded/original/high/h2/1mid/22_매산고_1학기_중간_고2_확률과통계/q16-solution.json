@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "0.3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "0.2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "0.1",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "0.4",
+        "in": []
+      }
+    ],
+    "shade": "B"
+  },
+  "caption": "드모르간 법칙으로 P(A의 여사건∪B의 여사건)=1−P(A∩B)=0.8이므로 P(A∩B)=0.2이다. 그림은 A만 0.3, 겹침 0.2, B만 0.1, 바깥 0.4이고 색칠한 B는 겹침 0.2와 B만 0.1을 합친 것이다. 따라서 P(B)=0.2+0.1=0.3이고 답은 ②이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B가 겹친 벤다이어그램이며 영역마다 확률이 적혀 있고 B 전체가 색칠되어 있다.",
+  "newVisualInformation": [
+    "B가 A와 겹치는 부분 0.2와 A 밖의 부분 0.1로 나뉘어 P(B)=0.3임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A, B$에 대하여<br>$$P(A^c \\cap B) = 0.1,\\quad P(A^c \\cup B^c) = 0.8,\\quad P(A) = 0.5$$<br>일 때, $P(B)$는?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
