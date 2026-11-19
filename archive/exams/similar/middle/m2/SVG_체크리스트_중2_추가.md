@@ -164,3 +164,36 @@
 | 23 | BENEFICIAL | BENEFICIAL | 문제: 해가 x ≥ -1임을 보여 주는 수직선 그림이 함께 있으면 경계값 비교의 상황이 분명해진다. 해설: 경계값 -1을 칠한 수직선과 x ≥ (b+3)/(5+a)를 나란히 두면 두 식을 같게 놓는 이유가 바로 보인다. |
 
 - 문제그림 REQUIRED 0개, BENEFICIAL 3개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE 1건. 게시한 그림 0개.
+
+## 24_왕운중_1학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업에서 그림을 만들지 않았다. 아래는 일괄 작업용 판정이고 JS에는 그림 참조가 없다(깨진 참조 없음). 고친 내용: 16번 보기를 -12, 12, 18, 24, 48(정답 ②=12 그대로)로 다시 구성(원래 6, 12, 18, -12, -6 뒤섞임), 해설 24개를 판서형으로 정리(`\implies` 삭제). 모든 문항의 정답 값은 직접 확인했고 틀린 정답은 없었다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | NOT_NEEDED | BENEFICIAL |  해설: 좌표평면에 x절편 6과 y절편 3을 표시한 직선을 함께 보여 주면 절편의 뜻이 분명해진다. |
+| 7 | NOT_NEEDED | BENEFICIAL |  해설: 해 x<-1을 수직선에 -1 경계와 열린 점으로 표시하면 범위 확인이 쉬워진다. |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | BENEFICIAL | NOT_NEEDED | 문제: 가로를 세로보다 4센티미터 길게 표시한 직사각형 그림이 있으면 변 사이 관계를 바로 잡을 수 있다. |
+| 11 | BENEFICIAL | BENEFICIAL | 문제: 좌표평면에 두 절편을 표시한 직선이 있으면 기울기의 의미를 눈으로 확인할 수 있다. 해설: 두 점을 찍고 세로 변화 6, 가로 변화 3을 표시한 기울기 그림이 계산을 시각적으로 뒷받침한다. |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | BENEFICIAL | NOT_NEEDED | 문제: 좌표평면에 세로선 x=1과 점 (-3, 5)를 표시하면 평행한 세로선이 왜 x=-3인지 바로 보인다. |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | BENEFICIAL |  해설: a<0, b<0인 직선을 좌표평면에 그려 지나지 않는 사분면을 표시하면 부호 판정 결과를 눈으로 확인할 수 있다. |
+| 18 | NOT_NEEDED | TABLE | 해설: 형과 동생의 속력·만난 시간·이동 거리를 표로 정리하면 계산 순서가 쉬움(표 엔진 영역) |
+| 19 | NOT_NEEDED | BENEFICIAL |  해설: 수직선에 a/3의 위치와 자연수 1, 2, 3의 포함 여부를 표시하면 경계 판단이 쉬워진다. |
+| 20 | BENEFICIAL | BENEFICIAL | 문제: 네 직선이 만드는 직사각형과 기울기가 변하는 직선 y=ax-1을 함께 그리면 교점 조건을 이해하기 쉽다. 해설: 직사각형, 꼭짓점 (5,3)과 (1,7)을 지나는 경계 직선, 중심 (3,5)를 지나는 a=2 직선을 그린 그림이 ㄴ과 ㄷ 판단을 뒷받침한다. |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | BENEFICIAL |  해설: 평행이동 전후 두 직선과 점 (6,3)을 좌표평면에 표시하면 k가 결정되는 모습이 분명해진다. |
+| 23 | NOT_NEEDED | BENEFICIAL |  해설: 두 점을 찍고 가로 5, 세로 10인 기울기 삼각형을 그리면 기울기 2를 눈으로 확인할 수 있다. |
+| 24 | NOT_NEEDED | TABLE | 해설: 24명·25명에서 개인 총액과 단체 총액을 나란히 적은 비교표가 결론을 분명히 함(표 엔진 영역) |
+
+- 문제그림 REQUIRED 0개, BENEFICIAL 4개. 해설그림 REQUIRED 0개, BENEFICIAL 8개. TABLE 2건. 게시한 그림 0개.
