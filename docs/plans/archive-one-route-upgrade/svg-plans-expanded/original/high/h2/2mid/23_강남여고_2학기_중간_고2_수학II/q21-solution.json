@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-21",
+          "-4",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "21",
+          "4",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-21",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "x": "7",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-5",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "7",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "25"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "0"
+      ],
+      "B": [
+        "7",
+        "0"
+      ],
+      "C": [
+        "2",
+        "25"
+      ]
+    }
+  },
+  "caption": "예: k=3일 때 y=|f(x)|=|(x-7)(x+3)|의 그래프이다. 근 -k=-3과 7에서는 좌우 미분계수의 부호가 반대라 곱이 음수이므로 A(-3,0), B(7,0)이 집합 A에 속한다. 두 근 사이의 꼭짓점 C(2,25)에서는 미분계수가 0이라 곱이 0이므로 역시 속한다. 2∈A이므로 (7-k)/2=2에서 k=3이고 A={-3,2,7}, 합은 6이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "21. $k$가 양의 상수일 때, 함수 $f(x)=(x-7)(x+k)$에 대하여 집합 $A$가 다음과 같다. $2 \\in A$일 때, 집합 $A$의 모든 원소의 합은? (단, $a$는 실수) [4.5점]\n<다음>\n$$A = \\left\\{ a \\;\\middle|\\; \\lim_{h \\to 0+} \\frac{|f(a+h)|-|f(a)|}{h} \\times \\lim_{h \\to 0-} \\frac{|f(a+h)|-|f(a)|}{h} \\le 0 \\right\\}$$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "꺾이는 두 점 A, B와 미분계수가 0인 꼭짓점 C를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "|f(x)|의 그래프에서 꺾이는 점 A(-3,0), B(7,0)과 미분계수가 0인 꼭짓점 C(2,25)이다."
+  ],
+  "accessibilityDescription": "절댓값을 씌운 이차함수의 그래프로 x축 위의 두 점 A, B에서 뾰족하게 꺾이고 가운데 꼭짓점 C가 표시되어 있다."
+}

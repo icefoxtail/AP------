@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": []
+  },
+  "caption": "판별식 D=16a(a-1)이므로 f(a)는 a<0과 a>1에서 2, a=0과 a=1에서 1, 0<a<1에서 0이다. (가) a→1+에서 f(a)=2이고 a-2→-1+에서 f(a-2)=2이므로 합은 4로 참이다. (나) a=1에서 좌극한 0, 우극한 2, f(1)=1이므로 곱이 연속이려면 g(1)=0이어야 해 거짓이다. (다) f(a)=2a는 a=1을 요구하나 a=1에서 f=1이므로 실근이 없어 참이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 이차방정식 $x^2-4ax+4a=0$의 서로 다른 실근의 개수를 $f(a)$라 할 때, 다음 보기 중 옳은 것만을 있는 대로 고른 것은? (단, $a$는 실수이다.) [4점]\n<보기>\n(가) $\\lim_{a \\to 1+} \\{f(a)+f(a-2)\\} = 4$\n(나) 연속함수 $g(a)$에 대하여 함수 $f(a)g(a)$가 $a=1$에서 연속이면 $g(1)=1$이다.\n(다) 방정식 $f(a)-2a=0$의 서로 다른 실근의 개수는 $0$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(a)의 계단 그래프에서 a=0, 1의 좌우극한과 함숫값을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f(a)는 a<0, a>1에서 2, 0<a<1에서 0이고 a=0, 1에서 1이다."
+  ],
+  "accessibilityDescription": "a=0과 a=1에서 값이 바뀌는 계단 모양 그래프이며 두 경계에서 높이 1인 점이 따로 표시되어 있다."
+}
