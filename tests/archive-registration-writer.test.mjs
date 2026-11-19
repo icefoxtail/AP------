@@ -6,8 +6,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
 import {recordRejection} from '../tools/ci/register-reviewed-meta-requests.mjs';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,inputFingerprint,fingerprint,fourSlotDerivedInputs,TYPE_ONLY_EVIDENCE,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -1036,4 +1037,157 @@ test('an applied request leaves the inbox without a refusal record and is not a 
   const result=await prepareRegistration(f.options);
   assert.equal(result.safeToPersist,true);
   assert.equal(git(f.root,'diff','--cached','--name-only','--','.archive-meta-register/inbox').split('\n').length,2);
+});
+
+// ---- the 4slot lane starts for what 4칸 reads, not for a request that only changes problem types ----
+// Measured on the 214-request type batch (run 44541622795): the lane re-ran for 364 s and re-stamped 25 cache keys, 0 of 17,954 records.
+const realRepoRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const metaFile='archive/data/question_metadata.json',runtimeRoot='archive/data/meta-foundation/runtime/';
+const evidenceRoot='archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/';
+const quid=n=>'qid_v1_'+String(n).padStart(64,'0');
+const cohortDoc=n=>`.archive-meta-register/4slot-existing-vector-continuity/${quid(n)}.json`;
+const typeReceipt='td-0123456789ab-01234567',typeLedger='tc-0123456789ab-89abcdef.type-ledger';
+const seedFourSlotFiles=()=>({
+  'archive/exams/a.js':'// exam a v1\n','archive/data/item-4slot/a.4slot.json':{items:[]},'archive/data/question_identity_map.json':{records:[]},
+  [cohortDoc(1)]:{questionUid:quid(1)},
+  [metaFile]:{records:[{questionUid:quid(1),problemType:'PT-A',templateId:'TPL-A'},{questionUid:quid(2),problemType:'PT-B',templateId:'TPL-B'}]},
+  [runtimeRoot+'pack-v1.json']:{status:'REGISTERED',packId:'pack-v1',records:[{questionUid:quid(1),pt:'PT-A'},{questionUid:quid(2),pt:'PT-B'}]},
+  [runtimeRoot+'runtime-bridge-receipt.json']:{schemaVersion:'bridge-v1',checked:{}},
+  [evidenceRoot+'sealed.json']:{approval:'immutable'}
+});
+function fourSlotWorld(files) {
+  const blobs=new Map(),state={files:{...files}};
+  const rowsNow=()=>Object.entries(state.files).sort(([a],[b])=>a<b?-1:1).map(([rel,value])=>{
+    const text=typeof value==='string'?value:JSON.stringify(value),blob=hash(text).slice(0,40);blobs.set(blob,text);return {path:rel,mode:'100644',blob};
+  });
+  const readBlob=blob=>{if(!blobs.has(blob))throw Error('NO_SUCH_BLOB');return Buffer.from(blobs.get(blob));};
+  const lane=nativeLanes(realRepoRoot,{readBlob}).find(l=>l.id==='fourSlot');
+  return {state,lane,print:()=>inputFingerprint(rowsNow(),lane),set:(rel,value)=>{state.files[rel]=value;},drop:rel=>{delete state.files[rel];}};
+}
+const copyOf=value=>JSON.parse(JSON.stringify(value));
+
+test('fourSlot: a request that only changes problem types leaves the lane fingerprint alone',()=>{
+  const w=fourSlotWorld(seedFourSlotFiles()),base=w.print();
+  const meta=copyOf(w.state.files[metaFile]),pack=copyOf(w.state.files[runtimeRoot+'pack-v1.json']);
+  // what registering 214 type requests does: type receipts and ledgers, PT/TPL of questions no cohort carries, their runtime rows, the bridge receipt
+  w.set(evidenceRoot+typeReceipt+'.json',{fieldScope:'TYPE_ONLY'});w.set(evidenceRoot+typeLedger+'.json',{rows:[]});
+  w.set(evidenceRoot+'tr-0123456789ab-fedcba98.json',{fieldScope:'TYPE_ONLY'});
+  assert.equal(w.print(),base,'type receipts and ledgers are not 4칸 inputs');
+  meta.records[1].problemType='PT-NEW';meta.records[1].templateId='TPL-NEW';meta.records.push({questionUid:quid(3),problemType:'PT-C'});w.set(metaFile,meta);
+  assert.equal(w.print(),base,'PT/TPL of a question outside the 4slot cohorts is not read');
+  pack.records[1].pt='PT-NEW';pack.records.push({questionUid:quid(3),pt:'PT-C'});w.set(runtimeRoot+'pack-v1.json',pack);
+  assert.equal(w.print(),base,'runtime rows of non-cohort questions are not read');
+  w.set(runtimeRoot+'runtime-bridge-receipt.json',{schemaVersion:'bridge-v2',checked:{'a.js':'sha'}});
+  assert.equal(w.print(),base,'the runtime bridge receipt is a version stamp');
+});
+
+test('fourSlot: everything 4칸 does read still starts the lane',()=>{
+  const cases={
+    'exam source':w=>w.set('archive/exams/a.js','// exam a v2\n'),
+    'new exam source':w=>w.set('archive/exams/b.js','// exam b\n'),
+    '4slot dictionary file':w=>w.set('archive/data/item-4slot/a.4slot.json',{items:[{uid:'x'}]}),
+    'identity map':w=>w.set('archive/data/question_identity_map.json',{records:[{questionUid:quid(1)}]}),
+    '4slot registration doc added':w=>w.set('.archive-meta-register/4slot-m1s2-problem-renderer-continuity/'+quid(5)+'.json',{questionUid:quid(5)}),
+    '4slot registration doc changed':w=>w.set(cohortDoc(1),{questionUid:quid(1),witness:'updated'}),
+    '4slot registration doc removed':w=>w.drop(cohortDoc(1)),
+    'a doc directory the old inputs did not list':w=>w.set('.archive-meta-register/4slot-m3-e052-q5-complete-given/'+quid(6)+'.json',{questionUid:quid(6)}),
+    'builder script':w=>w.set('tools/4slot/build-4slot-runtime.cjs','// builder v2\n'),
+    // the cohort checks validate their rows against the active registry, so a type batch that adds registry keys (registryChanges) still starts the lane
+    'meta registry canonical file':w=>w.set('archive/data/meta-foundation/canonical/registry_index.json',{keys:1}),
+    'meta registry compiled file':w=>w.set('archive/data/meta-foundation/compiled/taxonomy_registry.json',{keys:1}),
+    'cohort question metadata row':w=>{const m=copyOf(w.state.files[metaFile]);m.records[0].problemType='PT-CHANGED';w.set(metaFile,m);},
+    'cohort question runtime row':w=>{const p=copyOf(w.state.files[runtimeRoot+'pack-v1.json']);p.records[0].pt='PT-CHANGED';w.set(runtimeRoot+'pack-v1.json',p);},
+    'cohort question row deleted from metadata':w=>{const m=copyOf(w.state.files[metaFile]);m.records.shift();w.set(metaFile,m);},
+    'runtime pack status':w=>w.set(runtimeRoot+'pack-v1.json',{...w.state.files[runtimeRoot+'pack-v1.json'],status:'QUARANTINED'}),
+    'runtime pack added':w=>w.set(runtimeRoot+'pack-v2.json',{status:'REGISTERED',packId:'pack-v2',records:[]}),
+    'a full (not type-only) reviewed-exam receipt':w=>w.set(evidenceRoot+'full-receipt.json',{fieldScope:'FULL'}),
+    'a named reviewed-exam receipt changed':w=>w.set(evidenceRoot+'sealed.json',{approval:'changed'}),
+    'a type receipt that does not follow the type naming':w=>w.set(evidenceRoot+'td-short.json',{fieldScope:'TYPE_ONLY'}),
+    'a bad metadata file':w=>w.set(metaFile,'{not json')
+  };
+  for(const [name,change] of Object.entries(cases)) {
+    const w=fourSlotWorld(seedFourSlotFiles()),base=w.print();change(w);
+    assert.notEqual(w.print(),base,name+' must start the 4slot lane');
+  }
+});
+
+test('fourSlot: sharded metadata is read like the single file, and an unreadable row starts the lane',()=>{
+  const files=seedFourSlotFiles(),single=files[metaFile];delete files[metaFile];
+  const shard='archive/data/question-metadata/v1/shard-01.json';
+  files[shard]=single.records;files['archive/data/question-metadata/v1/_head.json']={shards:1};
+  const w=fourSlotWorld(files),base=w.print();
+  w.set('archive/data/question-metadata/v1/shard-02.json',[{questionUid:quid(2),problemType:'PT-NEW'},{questionUid:quid(3),problemType:'PT-C'}]);
+  assert.equal(w.print(),base,'a type change in a shard without cohort questions is not read');
+  w.set(shard,[{...single.records[0],problemType:'PT-CHANGED'},single.records[1]]);
+  assert.notEqual(w.print(),base,'a cohort row inside a shard is read');
+  const broken=fourSlotWorld(seedFourSlotFiles()),good=broken.print();
+  broken.set(metaFile,'{broken');const first=broken.print();
+  assert.notEqual(first,good);assert.equal(broken.print(),first,'an unreadable dependency is stable until it is repaired, and different from any verified one');
+});
+
+test('fourSlot lane declares what 4칸 reads: no whole-file path for metadata, runtime packs or reviewed-exam evidence',()=>{
+  const lane=nativeLanes(realRepoRoot).find(l=>l.id==='fourSlot');
+  assert.equal(typeof lane.derivedInputs,'function');
+  for(const dropped of [metaFile,runtimeRoot,'archive/data/meta-foundation/evidence/reviewed-exam-meta/','archive/data/question-metadata/v1/'])
+    assert.ok(!lane.inputs.includes(dropped),dropped+' is digested through derivedInputs');
+  for(const kept of ['archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/','.archive-meta-register/4slot-*','.archive-meta-register/4slot-renderer-continuity/','tools/4slot/'])
+    assert.ok(lane.inputs.includes(kept)||lane.inputs.some(p=>p.endsWith('/')&&kept.startsWith(p)),kept+' stays an input');
+  for(const other of nativeLanes(realRepoRoot).filter(l=>l.id!=='fourSlot'))assert.equal(other.derivedInputs,undefined,other.id+' keeps its path-only fingerprint');
+  const rows=[{path:'archive/exams/a.js',mode:'100644',blob:'a'.repeat(40)}],plain={inputs:['archive/exams/']};
+  assert.equal(inputFingerprint(rows,plain),hash(JSON.stringify({patterns:plain.inputs,parameters:{},files:fingerprint(rows,plain.inputs)},null,2)+'\n'),'a lane without derivedInputs keeps its stored digest form');
+  assert.equal(matches('.archive-meta-register/4slot-m3-e052-q5-complete-given/x.json',lane.inputs),true);
+});
+
+test('fourSlot: a type-only registration commit is not needed for the lane, a cohort row change is',async t=>{
+  const f=fixture(t);
+  const readBlob=blob=>execFileSync('git',['cat-file','blob',blob],{cwd:f.root,maxBuffer:1<<28,stdio:['ignore','pipe','pipe']});
+  const native=nativeLanes(realRepoRoot,{readBlob}).find(l=>l.id==='fourSlot'),lane=f.lanes.find(l=>l.id==='fourSlot');
+  lane.inputs=[...native.inputs,'out/identity.json'];lane.derivedInputs=native.derivedInputs;
+  for(const [rel,value] of Object.entries(seedFourSlotFiles()))if(!rel.startsWith('archive/exams/')&&rel!=='archive/data/item-4slot/a.4slot.json')write(f.root,rel,value);
+  commit(f.root,'4slot cohort and metadata seed');await f.seedRegistered();
+  const options=f.options;assert.equal(checkRegistration(options).needed,false);
+  // a type-only batch: a receipt with its ledger, and the PT/TPL of questions no cohort carries
+  const meta=readJson(f.root,metaFile);meta.records[1].problemType='PT-NEW';write(f.root,metaFile,meta);
+  const pack=readJson(f.root,runtimeRoot+'pack-v1.json');pack.records[1].pt='PT-NEW';write(f.root,runtimeRoot+'pack-v1.json',pack);
+  write(f.root,evidenceRoot+typeReceipt+'.json',{fieldScope:'TYPE_ONLY'});write(f.root,evidenceRoot+typeLedger+'.json',{rows:[]});
+  commit(f.root,'type-only request');
+  const typeOnly=checkRegistration(options);
+  assert.equal(typeOnly.lanes.find(l=>l.id==='fourSlot').needed,false);assert.equal(typeOnly.needed,false);
+  f.calls.length=0;assert.equal((await prepareRegistration(options)).status,'NO_OP');assert.ok(!f.calls.includes('fourSlot'));
+  // the same pass with a cohort row changed
+  const cohort=readJson(f.root,metaFile);cohort.records[0].problemType='PT-CHANGED';write(f.root,metaFile,cohort);commit(f.root,'cohort row');
+  const checked=checkRegistration(options);
+  assert.equal(checked.lanes.find(l=>l.id==='fourSlot').needed,true);
+  f.calls.length=0;await prepareRegistration(options);assert.ok(f.calls.includes('fourSlot'),'a cohort question change still runs the lane');
+});
+
+test('every reviewed-exam file the 4slot digest skips is a TYPE_ONLY receipt or the type ledger of one',()=>{
+  const dir=path.join(realRepoRoot,evidenceRoot),names=fs.readdirSync(dir).filter(name=>TYPE_ONLY_EVIDENCE.test(evidenceRoot+name));
+  assert.ok(names.length>0);
+  const bad=[];
+  for(const name of names) {
+    const data=JSON.parse(fs.readFileSync(path.join(dir,name),'utf8'));
+    // a ledger can exist before its request is registered, so it is recognised by its own schema, not by a companion receipt
+    if(name.endsWith('.type-ledger.json')) {if(data.schemaVersion!=='archive-type-direct-judgment-ledger-v1')bad.push(name);}
+    else if(data.fieldScope!=='TYPE_ONLY')bad.push(name);
+  }
+  assert.deepEqual(bad.slice(0,10),[],'a skipped receipt that is not TYPE_ONLY would hide a real 4칸 input');
+});
+
+test('fourSlot: what the cohort modules observe is a lane input or one of the digested metadata sources',t=>{
+  // The existing-vector, m1s2, m3s2 and m3-e052 modules (the renderer module hashes about 2,700 tool files and takes a minute, so it is left out).
+  const require=createRequire(import.meta.url),builder=require('../tools/4slot/build-4slot-runtime.cjs');
+  const walk=d=>!fs.existsSync(d)?[]:fs.readdirSync(d,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name,'en')).flatMap(e=>{const p=path.join(d,e.name);return e.isDirectory()?walk(p):[p];});
+  const lane=nativeLanes(realRepoRoot).find(l=>l.id==='fourSlot');
+  // docs/operations holds immutable UI proof files that the q5 module hashes; they were not lane inputs before this change either.
+  const digested=p=>p===metaFile||p.startsWith(runtimeRoot)||p.startsWith('archive/data/meta-foundation/evidence/reviewed-exam-meta/');
+  const known=/^docs\/operations\//;
+  const uncovered=new Set();
+  for(const name of ['existing-registered-vector-continuity','m1s2-problem-renderer-continuity','m3s2-layout-continuity','m3-e052-q5-complete-given-continuity']) {
+    const map=require('../tools/4slot/'+name+'.cjs').collect(realRepoRoot,{safe:builder.safe,walk,sha:hash});
+    for(const [,list] of map)for(const entry of list)for(const [p] of entry.digests||[])
+      if(!matches(p,lane.inputs)&&!digested(p)&&!known.test(p))uncovered.add(name+': '+p);
+  }
+  assert.deepEqual([...uncovered].slice(0,10),[]);
+  void t;
 });

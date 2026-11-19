@@ -43,7 +43,67 @@ export function fingerprint(rows, patterns) {
   return sha(rows.filter(r=>r.path!==STATE&&matches(r.path,patterns)).sort((a,b)=>a.path<b.path?-1:a.path>b.path?1:0)
     .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join(''));
 }
-const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs)}));
+// A lane may also name `derivedInputs(rows)`: a digest of dependencies that a path pattern cannot express (a few rows of a big file).
+// It joins the fingerprint only when the lane has one, so the fingerprint of every other lane keeps its form.
+export const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs),
+  ...(typeof lane.derivedInputs==='function'?{derived:safeDerived(lane,rows)}:{})}));
+// If the dependency cannot be read the digest is unreadable-and-unique-per-message, which differs from any stored one: the lane runs.
+function safeDerived(lane,rows) {
+  try { return lane.derivedInputs(rows); } catch(error) { return 'UNREADABLE:'+String(error.message||error).split('\n')[0]; }
+}
+
+// ---- the 4slot lane's dependence on registered metadata ----
+// The 4slot builder (tools/4slot/build-4slot-runtime.cjs) reads question_metadata.json, the Meta Foundation runtime packs and reviewed-exam-meta
+// evidence only through its continuity cohorts (existing-vector, renderer, m1s2, m3s2, m3-e052): they compare the rows of their own questions
+// (and the receipts they name) with what was issued. Every other exam's 4칸 comes from the exam source, the 4칸 file, the dictionary and the
+// identity map, never from a problem type (PT/TPL). So a request that only changes types (receipt kind TYPE_ONLY) must not start the lane, and
+// a change to any cohort question or named receipt must. Measured on the 214-request type batch (2026-11-19): the lane re-ran for 364 s and
+// changed 25 inputHash cache keys and the inputDigest of item-4slot-index.json, and 0 of 17,954 records.
+// The Meta Foundation canonical/compiled registry stays a path input: the cohort checks validate their rows against the active registry, so a
+// batch whose requests add registry keys (registryChanges) still starts the lane. Narrowing that to the registry entries the cohort rows use
+// needs the 4slot cohort owners; it is not guessed here.
+const FOUR_SLOT_META='archive/data/question_metadata.json';
+const FOUR_SLOT_META_SHARDS='archive/data/question-metadata/v1/';
+const FOUR_SLOT_RUNTIME='archive/data/meta-foundation/runtime/';
+const FOUR_SLOT_EVIDENCE='archive/data/meta-foundation/evidence/reviewed-exam-meta/';
+// requestId prefixes td- (direct), tc- (carrier) and tr- (replacing a draft type), made by build-type-judgment-requests.mjs; each receipt is
+// fieldScope TYPE_ONLY (tests/archive-registration-writer.test.mjs checks every such file), next to it the request's type ledger.
+export const TYPE_ONLY_EVIDENCE=/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/t[cdr]-[0-9a-f]{12}-[0-9a-f]{8}(?:\.type-ledger)?\.json$/;
+const FOUR_SLOT_COHORT_FILES=/^(?:\.archive-meta-register\/4slot-|tools\/4slot\/[^/]+\.(?:cjs|mjs|js)$)/;
+const QUESTION_UID=/qid_v1_[0-9a-f]{64}/g;
+export const FOUR_SLOT_DERIVED_VERSION='archive-four-slot-cohort-inputs-v1';
+const smallText=new Map(),heavyMemo=new Map();
+const memoHeavy=(key,make)=>{
+  if(heavyMemo.has(key))return heavyMemo.get(key);
+  const value=make();heavyMemo.set(key,value);
+  while(heavyMemo.size>8)heavyMemo.delete(heavyMemo.keys().next().value);
+  return value;
+};
+export function fourSlotDerivedInputs(rows, readBlob) {
+  const textOf=blob=>Buffer.from(readBlob(blob)).toString('utf8');
+  const uids=new Set();
+  for(const row of rows)if(FOUR_SLOT_COHORT_FILES.test(row.path)) {
+    if(!smallText.has(row.blob))smallText.set(row.blob,textOf(row.blob));
+    for(const m of smallText.get(row.blob).matchAll(QUESTION_UID))uids.add(m[0]);
+  }
+  const wanted=[...uids].sort(),scope=sha(wanted.join('\n'));
+  // [uid, row JSON] of the cohort questions inside one parsed file, first appearance wins
+  const cohortRows=records=>(records||[]).filter(record=>uids.has(record?.questionUid)).map(record=>[record.questionUid,JSON.stringify(record)]);
+  const rowFor=new Map(),keep=pairs=>{for(const [uid,text] of pairs)if(!rowFor.has(uid))rowFor.set(uid,text);};
+  const meta=rows.find(row=>row.path===FOUR_SLOT_META);
+  if(meta)keep(memoHeavy(`meta|${meta.blob}|${scope}`,()=>cohortRows(JSON.parse(textOf(meta.blob)).records)));
+  else for(const row of rows)if(row.path.startsWith(FOUR_SLOT_META_SHARDS)&&row.path.endsWith('.json')&&!row.path.endsWith('/_head.json'))
+    keep(memoHeavy(`shard|${row.blob}|${scope}`,()=>cohortRows(JSON.parse(textOf(row.blob)))));
+  const runtime=rows.filter(row=>row.path.startsWith(FOUR_SLOT_RUNTIME)&&row.path.endsWith('.json')&&row.path!==FOUR_SLOT_RUNTIME+'runtime-bridge-receipt.json')
+    .sort((a,b)=>a.path<b.path?-1:1).map(row=>memoHeavy(`runtime|${row.path}|${row.blob}|${scope}`,()=>{
+      const data=JSON.parse(textOf(row.blob));
+      return {path:row.path,status:data.status??null,packId:data.packId??null,rows:cohortRows(data.records).map(([,text])=>text)};
+    }));
+  const evidence=rows.filter(row=>row.path.startsWith(FOUR_SLOT_EVIDENCE)&&!TYPE_ONLY_EVIDENCE.test(row.path))
+    .sort((a,b)=>a.path<b.path?-1:1).map(row=>`${row.path}\0${row.mode}\0${row.blob}`);
+  return sha(json({version:FOUR_SLOT_DERIVED_VERSION,cohortUids:wanted,
+    metadataRows:wanted.map(uid=>rowFor.get(uid)??null),runtime,evidence}));
+}
 // Refusal/pending records are named like their request, so .gitignore (for example `*textbook*`) can match them.
 // Those two directories alone are listed without the ignore rules; every other ignored file stays unlisted.
 const RECORD_DIRS=['.archive-meta-register/rejected/','.archive-meta-register/pending-supplement/'];
@@ -80,7 +140,8 @@ function rollbackStaged(root, allowed) {
   }
 }
 
-export function nativeLanes(root) {
+const gitBlob=(root,blob)=>execFileSync('git',['cat-file','blob',blob],{cwd:root,maxBuffer:1<<30,stdio:['ignore','pipe','pipe']});
+export function nativeLanes(root,{readBlob=blob=>gitBlob(root,blob)}={}) {
   const config=read(root,'.archive-meta-register/auto/config.json',{});
   const parentRetry=canonicalParentRetryRequests(root)[0]||null;
   const shared=specs(root,'tools/ci/archive-pages-registration.paths');
@@ -171,15 +232,15 @@ export function nativeLanes(root) {
         cmd('node','archive/tools/build-archive2-extension-keys.mjs')]},
     {id:'fourSlot',inputs:[...BOUNDED_RENDERER_UI_INPUTS,'archive/exams/','archive/data/question_identity_map.json','archive/data/item-4slot/',
       '.archive-meta-register/4slot-existing-vector-continuity/',
-      '.archive-meta-register/4slot-renderer-continuity/','archive/data/question_metadata.json',
-      'archive/data/meta-foundation/evidence/reviewed-exam-meta/','.archive-meta-register/evidence/',
+      '.archive-meta-register/4slot-renderer-continuity/','.archive-meta-register/4slot-*','.archive-meta-register/evidence/',
       'archive/data/meta-foundation/canonical/','archive/data/meta-foundation/compiled/','archive/tools/meta-foundation/',
-      'archive/data/meta-foundation/runtime/',
       'archive/assets/','docs/architecture/4slot/','archive/item-4slot.js','tools/4slot/',
       'tools/ci/archive-four-slot-pass.sh','tools/ci/archive-registration-writer.mjs','tools/ci/archive-registration-whitespace.mjs','.archive-meta-register/auto/config.json'],
       // Preserve the existing independent 4slot failure policy; failed output is rolled back and
       // retryable, while validated ordinary exam publication can continue with the prior index.
-      outputs:fourSlot,required:false,enabled:config.fourSlotEnabled!==false,
+      // question_metadata.json, the Meta Foundation runtime packs and the reviewed-exam-meta evidence are not listed as paths: the lane depends on
+      // them only through its continuity cohorts, so derivedInputs() digests exactly those (fourSlotDerivedInputs above).
+      outputs:fourSlot,required:false,enabled:config.fourSlotEnabled!==false,derivedInputs:rows=>fourSlotDerivedInputs(rows,readBlob),
       commands:[cmd('bash','tools/ci/archive-four-slot-pass.sh')]}
   ];
 }
