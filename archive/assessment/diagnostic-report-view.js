@@ -250,14 +250,32 @@
     seq.forEach((s, i) => { cum += s.status === "correct" ? 1 : 0; pts.push([x(i + 1), y(cum), s]); });
     let s = "";
     let i0 = 0;
-    let stripe = 0;
+    // 단계 띠: 단계마다 같은 바탕색(어려울수록 짙게). 띠마다 글자를 찍지 않는다 — 문항이 단계 순서로 정렬돼 있지 않으면 띠가 잘게 여러 번 바뀌어
+    // 글자끼리 겹치기 때문이다. 단계 이름은 그래프 아래 범례 한 줄이, x축은 문항 번호 눈금이 맡는다.
+    const bandsSeen = new Set();
     while (i0 < n) {
       let i1 = i0;
       while (i1 + 1 < n && bandOf(seq[i1 + 1]) === bandOf(seq[i0])) i1++;
       const x0 = x(i0), x1 = x(i1 + 1);
-      s += `<rect x="${x0.toFixed(1)}" y="${T}" width="${(x1 - x0).toFixed(1)}" height="${H - T - B}" fill="${stripe++ % 2 ? "var(--paper)" : "var(--wash)"}"/><text x="${((x0 + x1) / 2).toFixed(1)}" y="${H - 10}" text-anchor="middle">${bandName[bandOf(seq[i0])]}</text>`;
+      const band = bandOf(seq[i0]);
+      bandsSeen.add(band);
+      s += `<rect class="bd bd${band}" x="${x0.toFixed(1)}" y="${T}" width="${(x1 - x0).toFixed(1)}" height="${H - T - B}"/>`;
       i0 = i1 + 1;
     }
+    // x축 눈금: 문항 번호. 눈금 사이가 항상 MIN_GAP 이상이라 문항 수와 단계 순서가 어떻든 글자가 닿지 않는다.
+    const MIN_GAP = 34;
+    const unit = (W - L - R) / Math.max(n, 1);
+    const tickNos = [];
+    for (const c of [1, Math.ceil(n / 4), Math.ceil(n / 2), Math.ceil(3 * n / 4), n]) {
+      const no = Math.min(Math.max(c, 1), n);
+      const last = tickNos[tickNos.length - 1];
+      if (last === undefined || (no > last && (no - last) * unit >= MIN_GAP)) tickNos.push(no);
+    }
+    if (n > 0 && tickNos[tickNos.length - 1] !== n) {
+      if (tickNos.length > 1 && (n - tickNos[tickNos.length - 1]) * unit < MIN_GAP) tickNos.pop();
+      tickNos.push(n);
+    }
+    for (const no of tickNos) s += `<text x="${x(no).toFixed(1)}" y="${H - 10}" text-anchor="middle">${no}번</text>`;
     const ticks = [...new Set([0, Math.round(n / 3), Math.round(2 * n / 3), n])];
     for (const v of ticks) s += `<line x1="${L}" x2="${W - R}" y1="${y(v).toFixed(1)}" y2="${y(v).toFixed(1)}" stroke="var(--rule)" stroke-width="1"/><text x="${L - 6}" y="${(y(v) + 3.5).toFixed(1)}" text-anchor="end">${v}</text>`;
     s += `<line x1="${x(0).toFixed(1)}" y1="${y(0).toFixed(1)}" x2="${x(n).toFixed(1)}" y2="${y(n).toFixed(1)}" stroke="var(--ink3)" stroke-width="1.2" stroke-dasharray="3 4"/><text x="${(x(n) + 6).toFixed(1)}" y="${(y(n) + 3.5).toFixed(1)}">전부 정답</text>`;
@@ -269,7 +287,9 @@
     });
     const e = pts[n];
     s += `<text x="${(e[0] + 6).toFixed(1)}" y="${(e[1] + 4).toFixed(1)}" style="fill:var(--ink);font-weight:700;font-size:11px">${cum}문항</text>`;
-    const svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="문항 번호에 따른 누적 정답 수">${s}</svg>`;
+    const chart = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="문항 번호에 따른 누적 정답 수">${s}</svg>`;
+    const legend = `<div class="legend band-legend">${["1", "2", "3", "45", "none"].filter((k) => bandsSeen.has(k)).map((k) => `<span><i class="sw bd${k}"></i>${bandName[k]}</span>`).join("")}</div>`;
+    const svg = chart + legend;
     const firstMiss = seq.find((q) => q.status === "wrong");
     let cap;
     if (!firstMiss) cap = "모든 문항을 맞혀 파란 선이 점선과 겹칩니다.";

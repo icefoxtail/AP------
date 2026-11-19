@@ -260,6 +260,22 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.ok(/2단계\(기본\)까지는 안정적으로/.test(mid.summary) && /3단계\(응용\)에서는 10문항 중 6문항/.test(mid.summary), '중: 3단계에서 정답이 줄기 시작');
   assert.ok(/2단계\(기본\)에서는 5문항 중 0문항/.test(low.summary) && /1단계\(기초\)까지는 안정적으로/.test(low.summary), '하: 2단계부터 보완');
   assert.ok(!/(잘못|부족|못합니다|실패)/.test(flat(hi) + flat(mid) + flat(low)), '학생·학부모를 깎아내리는 말을 쓰지 않는다');
+
+  // 꺾은선 x축: 띠마다 글자를 찍지 않고 문항 번호 눈금 + 범례 한 줄. 단계가 번갈아 나오는 최악의 순서에서도 눈금 글자가 서로 닿지 않는다.
+  for (const count of [1, 2, 3, 5, 7, 10, 12, 20, 24, 30, 50, 80, 100]) {
+    for (const pattern of ['alternate', 'sorted', 'reverse']) {
+      const levelOf = (no) => (pattern === 'alternate' ? (no % 2 ? 1 : 4) : pattern === 'sorted' ? Math.min(5, 1 + Math.floor((no - 1) * 5 / count)) : Math.max(1, 5 - Math.floor((no - 1) * 5 / count)));
+      const qs = Array.from({ length: count }, (_, k) => ({ no: k + 1, questionUid: 'qid_v1_' + (k + 1), unit: unitNames[k % 4], unitOrder: (k % 4) + 1, difficulty: levelOf(k + 1), problemTypeKey: 'PT_' + (k % 8) }));
+      const resp = Object.fromEntries(qs.map((q, i) => [q.no, i % 3 === 2 ? 'X' : 'O']));
+      const out = View.render(computeDiagnosticReport({ questions: qs, responses: resp, labelOf }));
+      const texts = [...out.line.matchAll(/<text x="([\d.]+)"[^>]*>([^<]*)<\/text>/g)].map((m) => ({ x: Number(m[1]), t: m[2] }));
+      const ticks = texts.filter((m) => /^\d+번$/.test(m.t));
+      assert.ok(ticks.length >= 1 && ticks[ticks.length - 1].t === count + '번' && ticks[0].t === '1번', `x축 눈금은 1번부터 ${count}번까지 (${pattern})`);
+      for (let i = 1; i < ticks.length; i++) assert.ok(ticks[i].x - ticks[i - 1].x >= 33, `눈금 글자끼리 닿지 않는다: ${count}문항 ${pattern} ${ticks[i - 1].t}/${ticks[i].t}`);
+      assert.ok(!texts.some((m) => /단계/.test(m.t)), '그래프 안에는 단계 글자를 찍지 않는다(범례 한 줄이 맡는다)');
+      assert.strictEqual((out.line.match(/class="legend band-legend"/g) || []).length, 1, '단계 범례는 그래프 아래 한 줄');
+    }
+  }
   assert.ok(mid.plan.includes('다시 세우기') && mid.plan.includes('확인 평가') && /1~2주차/.test(mid.plan));
   assert.strictEqual(hi.wrongLayout, 'single');
   assert.strictEqual(mid.wrongLayout, 'single');
