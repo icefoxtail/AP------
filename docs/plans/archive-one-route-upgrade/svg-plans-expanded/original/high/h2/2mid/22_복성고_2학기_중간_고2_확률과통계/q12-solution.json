@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2/5",
+          "-2/5"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2/5",
+          "2/5"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      -1,
+      4,
+      -0.15,
+      1
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": [
+        "4/5"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "2/5"
+      },
+      {
+        "id": "M",
+        "x": "1",
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "4/5"
+      }
+    ],
+    "regions": [
+      {
+        "id": "left",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT"
+      },
+      {
+        "id": "right",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "3",
+        "fill": "MEDIUM"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 3
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  },
+  "caption": "f(x)=k|x−1|은 x=1에서 꺾이는 V자 모양이다. 왼쪽 삼각형은 밑변 1, 높이 k로 넓이 k/2이고 오른쪽 삼각형은 밑변 2, 높이 2k로 넓이 2k이다. 합 5k/2=1에서 k=2/5이다. 그림은 이 값으로 그렸다. P(0<X<1)은 왼쪽 삼각형의 넓이이므로 k/2=1/5이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "x=1에서 꺾이는 V자 모양의 확률밀도함수 그래프이며 왼쪽 삼각형과 오른쪽 삼각형이 다른 농도로 칠해져 있다.",
+  "newVisualInformation": [
+    "왼쪽 삼각형 k/2와 오른쪽 삼각형 2k의 넓이 합이 1이 되는 k=2/5와 왼쪽 삼각형 넓이 1/5가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 연속확률변수 $X$의 확률밀도함수가 $f(x)=k|x-1|$ ($0 \\le x \\le 3$)일 때, $P(0 < X < 1)$를 구하시오. [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

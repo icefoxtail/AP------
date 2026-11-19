@@ -1,0 +1,87 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "X 는 a 미만"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "X",
+              "mean": "0",
+              "sd": "2",
+              "meanLine": true
+            }
+          ],
+          "ticks": [
+            {
+              "x": "0"
+            },
+            {
+              "x": "2",
+              "text": "a"
+            }
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "2",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "Y 는 b+3 미만"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "3",
+              "sd": "1",
+              "meanLine": true
+            }
+          ],
+          "ticks": [
+            {
+              "x": "3"
+            },
+            {
+              "x": "4",
+              "text": "b+3"
+            }
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "4",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "X는 N(0, 2²)이므로 P(X<a)=P(Z<a/2)이다. Y는 N(3, 1²)이므로 P(Y<b+3)=P(Z<b)이다. 누적확률이 같으면 표준점수가 같으므로 a/2=b이고 a=2b이다. 그림은 b=1, a=2인 예이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 0에서 a 미만이, 오른쪽 곡선은 평균 3에서 b+3 미만이 칠해져 있다.",
+  "newVisualInformation": [
+    "두 분포에서 같은 누적확률이 같은 표준점수로 대응하여 a/2=b가 되는 관계가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 확률변수 $X$와 $Y$는 각각 정규분포 $N(0, 2^2)$과 $N(3, 1^2)$을 따른다. 실수 $a, b$에 대하여 두 확률 $P(X < a)$와 $P(Y < b+3)$이 같을 때, $a$와 $b$의 관계식을 구하시오. [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
