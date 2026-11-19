@@ -1,0 +1,64 @@
+{
+  "qid": 3,
+  "itemFingerprint": "45fd684c5b0cf841",
+  "solveSteps": [
+    "주어진 식을 정리하면 $-A + 3B - (-2A + 4B) = -A + 3B + 2A - 4B = A - B$이다.",
+    "$A = 2x^2 + 4xy - y^2$, $B = 2x^2 + xy - y^2$를 대입한다.",
+    "$A - B = (2x^2 + 4xy - y^2) - (2x^2 + xy - y^2) = 3xy$이다.",
+    "따라서 정답은 ⑤번이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-01",
+  "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "두 다항식 $A = 2x^2 + 4xy - y^2$, $B = 2x^2 + xy - y^2$에 대하여",
+  "rpmRecordId": "H1-RPM-135",
+  "rpmReason": "다항식의 동류항 정리와 뺄셈으로 $3xy$를 구하는 H1-RPM-135에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "다항식의 식을 먼저 간단히 한 뒤 대입하여 $3xy$를 구하는 연산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다항식의 기본 사칙연산과 동류항 정리를 통해 $3xy$를 구하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $A = 2x"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$A, B$를 대입하면 $$A -"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "먼저 간단히 정리하면 $$-A"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "식 $-A + 3B - (-2A + 4B) = A - B$로 정리한 후 $A, B$를 대입해 $3xy$를 구해 ⑤번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

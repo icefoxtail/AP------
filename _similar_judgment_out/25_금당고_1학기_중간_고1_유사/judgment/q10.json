@@ -1,0 +1,70 @@
+{
+  "qid": 10,
+  "itemFingerprint": "12010aa7df027106",
+  "solveSteps": [
+    "$\\frac{a + 2i}{2 + i}$의 분모와 분자에 켤레복소수 $2 - i$를 곱한다.",
+    "$\\frac{(a + 2i)(2 - i)}{(2 + i)(2 - i)} = \\frac{2a - ai + 4i + 2}{5} = \\frac{2a + 2}{5} + \\frac{4 - a}{5}i$이다.",
+    "실수부분과 허수부분의 합은 $\\frac{2a + 2 + 4 - a}{5} = \\frac{a + 6}{5} = 3$이다.",
+    "$a + 6 = 15 \\implies a = 9$이다.",
+    "따라서 정답은 ④번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "실수부분과 허수부분의 합이 $3$일 때, 실수 $a$의 값은?",
+  "rpmRecordId": "H1-RPM-156",
+  "rpmReason": "분모의 실수화 후 $a + 6 = 15$에서 $a = 9$를 구하고 보기 10 등과 비교하는 H1-RPM-156에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "분모의 실수화를 통해 성분별 연산으로 $a+6=15$를 푸는 복소수 연산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모의 실수화와 실수부·허수부의 합 $a+6=15$에서 $a=9$를 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "실수부분",
+        "src": "stem",
+        "quote": "+ i}$의 실수부분과 허수부분의"
+      },
+      {
+        "term": "허수부분",
+        "src": "stem",
+        "quote": "의 실수부분과 허수부분의 합이 $3$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "+ i}$의 실수부분과 허수부분"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "분모의 켤레복소수 $2 - i$"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "분모의 실수화로 허수부의 $ai$를 정리하여 $a + 6 = 15$에서 $a = 9$를 구해 ④번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

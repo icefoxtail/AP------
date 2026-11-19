@@ -1,0 +1,70 @@
+{
+  "qid": 8,
+  "itemFingerprint": "6d654fae55f97f62",
+  "solveSteps": [
+    "다항식 $f(x) = (2x^4 - x^3 + 3x^2 + x - 2)(3x + 2)$라 하자.",
+    "모든 항의 계수의 합은 $f(1) = (2 - 1 + 3 + 1 - 2)(3 + 2) = 3 \\times 5 = 15$이다.",
+    "상수항은 $f(0) = (-2)(2) = -4$이다.",
+    "상수항을 제외한 모든 항의 계수의 합은 $f(1) - f(0) = 15 - (-4) = 19$이다.",
+    "따라서 정답은 ②번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "상수항을 제외한 모든 항의 계수의 합은?",
+  "rpmRecordId": "H1-RPM-140",
+  "rpmReason": "다항식에 $x = 1, 0$을 대입하여 계수합과 상수항의 차 19를 구하는 H1-RPM-140에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "다항식에 $x=1, 0$을 대입하여 특정 계수합 19를 구하는 항등식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "모든 항의 계수의 합 $f(1) = 15$에서 상수항 $f(0) = -4$를 빼서 19를 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $(2x^4"
+      },
+      {
+        "term": "상수항",
+        "src": "stem",
+        "quote": "개하였을 때, 상수항을 제외한 모든"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "한 모든 항의 계수의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "주어진 다항식을 $f(x)"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$f(1) = 15$, $f(0) = -4$에서 $f(1) - f(0) = 19$를 계산하여 ②번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "qid": 4,
+  "itemFingerprint": "471e5a4b59fc902e",
+  "solveSteps": [
+    "$(5 - 2i) - (-4i)$를 계산한다.",
+    "괄호를 풀면 $5 - 2i + 4i$이다.",
+    "허수부분끼리 묶으면 $5 + (-2 + 4)i = 5 + 2i$이다.",
+    "따라서 정답은 ②번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "$(5 - 2i) - (-4i)$를 계산한 값은?",
+  "rpmRecordId": "H1-RPM-156",
+  "rpmReason": "복소수의 기본 뺄셈으로 $5 + 2i$를 구하는 H1-RPM-156에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "복소수의 실수부와 허수부를 각각 계산하여 $5 + 2i$를 구하는 성분별 연산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "복소수의 덧셈과 뺄셈 기본 계산으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "계산한 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "evidenceType": "IMPLIED",
+        "justification": "복소수의 뺄셈과 덧셈 성분 연산을 수행하였다.",
+        "src": "solution",
+        "quote": "5 - 2i + 4i = 5 + (-2 + 4)i"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$(5 - 2i) - (-4i) = 5 + 2i$로 허수부분을 묶어 계산하여 ②번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

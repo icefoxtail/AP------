@@ -1,0 +1,65 @@
+{
+  "qid": 18,
+  "itemFingerprint": "37061ba4c67d8d23",
+  "solveSteps": [
+    "$z_1 = \\frac{\\sqrt{2}}{1 + i} = \\frac{1 - i}{\\sqrt{2}}$이므로 $z_1^2 = -i, z_1^4 = -1, z_1^8 = 1$이다.",
+    "$z_2 = \\frac{1 + \\sqrt{3}i}{2}$이므로 $z_2^3 = -1, z_2^6 = 1$이다.",
+    "$z_1^n = -z_2^n$이 되려면 양변의 실수 여부가 같아야 한다.",
+    "$n = 12$일 때 $z_1^{12} = z_1^8 z_1^4 = -1$이고 $z_2^{12} = 1$이므로 $z_1^{12} + z_2^{12} = -1 + 1 = 0$이다.",
+    "따라서 자연수 $n$의 최솟값은 12이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "\\left(\\dfrac{\\sqrt{2}}{1 + i}\\right)^n + \\left(\\dfrac{1 + \\sqrt{3}i}{2}\\right)^n = 0",
+  "rpmRecordId": "H1-RPM-158",
+  "rpmReason": "두 복소수 거듭제곱의 주기 8과 6의 공통 성질로 최소 자연수 12를 구하는 H1-RPM-158에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+  "typeReason": "단위근의 주기를 이용하여 거듭제곱의 합이 0이 되는 최소 지수 12를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 복소수의 거듭제곱 주기성을 분석하여 $z_1^n = -z_2^n$이 되는 최소 $n = 12$를 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "을 만족시키는 자연수 $n$의 최솟"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "자연수 $n$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "두 복소수를 각각 $z_1 ="
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$z_1^8 = 1, z_1^4 = -1$과 $z_2^6 = 1, z_2^3 = -1$에서 $n = 12$일 때 $z_1^{12} + z_2^{12} = -1 + 1 = 0$으로 ⑤번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
