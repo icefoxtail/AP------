@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      14,
+      -9,
+      9
+    ],
+    "curves": [
+      {
+        "id": "l",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "8",
+        "coefficients": [
+          "-1",
+          "-1",
+          "8"
+        ],
+        "domain": [
+          "4",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "r",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "8",
+        "coefficients": [
+          "-1",
+          "1",
+          "8"
+        ],
+        "domain": [
+          "8",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "5",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "11",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "x": "8",
+          "y": "7",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "AB",
+          "from": "A",
+          "to": "B",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "a=8일 때의 그래프 f이다. f(x)=−2의 |x−a|제곱에 a를 더한 값이고 x=8에서 최대인 꼭짓점 V(8, 7)을 갖는다. x축과의 교점은 A(5, 0), B(11, 0)로 a∓log₂a에서 AB=2log₂a=6이므로 a=8이다. p=8, q=7이므로 p+q=15이고 답은 ④이다.",
+  "accessibilityDescription": "x=8에서 가장 높은 위로 볼록한 산 모양의 파란 곡선 f가 있고, 꼭짓점 V와 가로축과 만나는 두 점 A, B의 좌표가 표시되어 있다. A와 B는 점선으로 이어져 있다.",
+  "newVisualInformation": [
+    "꼭짓점 V(8, 7)과 x축과의 교점 A(5, 0), B(11, 0)를 보여 AB=6에서 a=8, 최댓값 q=7을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x) = -2^{|x-a|} + a$의 그래프가 $x$축과 두 점 $\\mathrm{A, B}$에서 만나고 $\\overline{\\mathrm{AB}} = 6$이다. 함수 $f(x)$가 $x=p$에서 최댓값 $q$를 가질 때, $p+q$의 값은? (단, $a$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

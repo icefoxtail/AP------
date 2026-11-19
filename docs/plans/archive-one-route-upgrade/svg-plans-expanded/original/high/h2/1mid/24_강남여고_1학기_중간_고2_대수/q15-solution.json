@@ -1,0 +1,66 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1/12",
+    "coefficients": [
+      "4",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "12"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      12
+    ],
+    "viewport": [
+      -0.5,
+      12.5,
+      -0.5,
+      5
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "2",
+        "intersectionCount": 2
+      }
+    ],
+    "keyPoints": true,
+    "axisTickValues": {
+      "x": [
+        "2",
+        "6",
+        "10",
+        "12"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
+    }
+  },
+  "caption": "f(x)=4sin(πx/12)의 그래프는 0시에 0, 6시에 최댓값 4, 12시에 0이다. 유속이 2 이상인 구간은 직선 y=2 위쪽으로, 교점은 x=2와 x=10이다. 따라서 발전이 가능한 시간은 10−2=8시간이고 답은 ④이다.",
+  "accessibilityDescription": "0시부터 12시까지 올라갔다 내려오는 사인 곡선과 가로선 y=2가 두 점에서 만나고, 교점의 시각이 가로축 눈금으로 표시되어 있다.",
+  "newVisualInformation": [
+    "유속 곡선과 기준선 y=2의 교점 x=2, 10을 보여 발전 가능 구간 2≤x≤10의 길이 8시간을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "조류 발전은 빠른 유속을 이용하여 전기를 생산하는 방식으로 어느 조류 발전기는 유속이 $2\\,\\text{m/s}$ 이상일 때 발전이 가능하다고 한다. 이 조류 발전기가 설치된 어느 지역에서 시각이 $x$시 일 때, 유속을 $f(x)\\,\\text{m/s}$라고 하면\n$$f(x) = 4\\sin\\frac{\\pi}{12}x \\quad (0 \\le x \\le 12)$$\n라고 한다. $0$시부터 $12$시까지 조류 발전이 가능한 시간은 몇 시간 동안인가?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

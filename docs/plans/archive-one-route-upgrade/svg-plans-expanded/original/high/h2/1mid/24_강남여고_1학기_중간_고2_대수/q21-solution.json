@@ -1,0 +1,66 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "4",
+      "2",
+      "6"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6.3
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      0,
+      11
+    ],
+    "referenceLines": [
+      {
+        "id": "t",
+        "y": "3",
+        "intersectionCount": 4,
+        "color": "BLUE"
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickPiStep": "1/2",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2",
+        "3",
+        "6",
+        "10"
+      ]
+    }
+  },
+  "caption": "a=4, b=6일 때의 y=a sin2x+b의 그래프이다. 중심선은 y=b=6이고 최솟값은 b−a=2, 최댓값은 a+b=10이다. 예: 직선 y=3은 −a+b≤t<b인 값이어서 한 주기에 네 점에서 만나고 x좌표의 합은 5π이다. t=a+b=10이면 두 점에서 3π/2이고 g(t)가 최소가 되므로 a+b=10이다. g(2)+g(3)=15π/2에서 b−a=2이므로 a=4, b=6이고 ab=24이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "0에서 2π까지 한 주기의 사인 곡선이 중심선 y=6 위아래로 오르내리며, 가로선 y=3이 곡선과 네 점에서 만난다. 세로축에는 최솟값과 최댓값 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "y=4sin2x+6의 한 주기에서 최솟값 2, 중심선 6, 최댓값 10과 직선 y=3의 교점 네 개의 대칭 배치를 보여 g(t)의 값을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 양수 $a, b$에 대하여 $0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = a\\sin 2x + b$가 있다. $-a+b \\le t \\le a+b$인 실수 $t$에 대하여 함수 $y=f(x)$의 그래프와 직선 $y=t$가 만나는 서로 다른 모든 점의 $x$좌표의 합을 $g(t)$라 하자. 함수 $g(t)$가 다음 조건을 만족시킬 때, $ab$의 값은?\n\n<조건>\n(가) $g(2) + g(3) = \\frac{15}{2}\\pi$\n(나) 함수 $g(t)$는 $t=10$일 때, 최솟값을 갖는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

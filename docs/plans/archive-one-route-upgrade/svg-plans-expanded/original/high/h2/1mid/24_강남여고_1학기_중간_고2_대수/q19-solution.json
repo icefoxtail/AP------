@@ -1,0 +1,101 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -12,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "1/16",
+        "coefficients": [
+          "-1",
+          "1",
+          "-4"
+        ],
+        "domain": [
+          "-3/4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "1/16",
+        "coefficients": [
+          "1",
+          "1",
+          "4"
+        ],
+        "domain": [
+          "-3/4",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "4",
+        "-4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "up",
+          "slope": "0",
+          "intercept": "4"
+        },
+        {
+          "id": "dn",
+          "slope": "0",
+          "intercept": "-4"
+        }
+      ],
+      "segments": [
+        {
+          "id": "PQ",
+          "from": "P",
+          "to": "Q",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "a=1/16일 때의 그림이다. f는 f(x)=−aˣ+log₂a, g는 g(x)=aˣ−log₂a의 그래프이다. 0<a<1이면 log₂a<0이고 aˣ>0이므로 두 곡선은 만나지 않는다. 두 점근선 y=log₂a=−4와 y=−log₂a=4 사이의 거리는 8이므로 log₂a=−4이고 a=1/16이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "서로 만나지 않는 두 지수 곡선이 가로 점근선 y=4와 y=−4를 향해 있다. 위쪽 곡선 g는 점근선 y=4 위쪽에서, 아래쪽 곡선 f는 점근선 y=−4 아래쪽에서 오른쪽으로 갈수록 가까워진다. y축 위의 두 점 P, Q가 점선으로 이어져 있다.",
+  "newVisualInformation": [
+    "두 곡선이 만나지 않는 모습과 점근선 y=4, y=−4, 두 점근선 사이의 거리 8을 점 P(0, 4), Q(0, −4)로 보여 a=1/16을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x) = -a^x + \\log_2 a$, $g(x) = a^x - \\log_2 a$에 대하여 다음 조건을 만족시킬 때, 양수 $a$의 값은? (단, $a \\ne 1$)\n\n<조건>\n(가) 두 곡선 $y=f(x)$, $y=g(x)$는 만나지 않는다.\n(나) 두 곡선 $y=f(x)$, $y=g(x)$의 두 점근선 사이의 거리는 $8$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
