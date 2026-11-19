@@ -1884,7 +1884,15 @@
             "metaFoundationPackId", "metaFoundationPackVersion", "foundationTaxonomyStatus",
             "taxonomyStatus", "difficultyBucket", "difficultyConfidence",
             "difficultyBoundaryFlag", "legacyLevelCompatibility", "reviewStatus",
-          ]) if (matchingOverlay[field] !== undefined) record[field] = matchingOverlay[field];
+          ]) {
+            // The receipt's value wins when it has one. A receipt that records the field as empty/UNKNOWN (e.g. difficultyBucket: null) must not
+            // erase a value the question already shows; the existing value stays.
+            const fromReceipt = matchingOverlay[field];
+            if (fromReceipt === undefined) continue;
+            const blank = (value) => value === null || value === "" || value === "UNKNOWN" || (Array.isArray(value) && !value.length);
+            if (blank(fromReceipt) && !blank(record[field])) continue;
+            record[field] = fromReceipt;
+          }
           const registrationApprovalType = candidate.assignmentEvidence?.reviewEvidence?.approvalType;
           if (["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(registrationApprovalType)) {
             record.level = matchingOverlay.level || matchingOverlay.legacyLevel;

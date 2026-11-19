@@ -73,3 +73,45 @@ test('changing the whole-file bytes of an exam does not unregister its rows (a r
     baseline.records.filter(row => row.reviewedExamRegistration).map(row => row.questionUid).sort(),
   );
 });
+
+// A registration receipt can record a field as empty/UNKNOWN (an exam registered with `difficultyBucket: null`). That must never erase a value the question
+// already shows (the catalog row's own value stays), while a receipt that has a real value still wins. Structural, no operating counts: the fixture gives a
+// registered row a catalog difficulty of 3 and checks that the resolved row keeps 3.
+test('a registration overlay with an empty field never erases an existing value, a real receipt value still wins', () => {
+  const core = require('../archive/archive2-core.js');
+  const resolveWith = (mutate) => {
+    const bundle = productionBundle();
+    // Plain rows instead of the packed form, so a row's catalog value can be set directly.
+    const plain = { ...core.Canonical.decodeCatalog(bundle.resources['data/archive2-catalog.json']) };
+    delete plain.encoding;
+    bundle.resources['data/archive2-catalog.json'] = plain;
+    mutate(bundle);
+    return core.Canonical.resolveCatalog({ versionBundle: bundle });
+  };
+  const overlayRow = (bundle, uid) => {
+    for (const resource of Object.values(bundle.resources)) {
+      if (!resource || !Array.isArray(resource.records)) continue;
+      const hit = resource.records.find(row => row && row.questionUid === uid && Object.hasOwn(row, 'difficultyBucket'));
+      if (hit) return hit;
+    }
+    return null;
+  };
+  const probe = productionBundle();
+  const baseline = core.Canonical.resolveCatalog({ versionBundle: probe });
+  const registered = baseline.records.filter(row => row.reviewedExamRegistration);
+  const blankReceipt = registered.filter(row => [null, '', 'UNKNOWN'].includes(overlayRow(probe, row.questionUid)?.difficultyBucket)).slice(0, 3);
+  const realReceipt = registered.filter(row => Number(overlayRow(probe, row.questionUid)?.difficultyBucket) >= 1).slice(0, 3);
+  assert.ok(blankReceipt.length > 0 && realReceipt.length > 0, 'registered rows with a blank and with a real receipt difficulty exist');
+  const resolved = resolveWith((bundle) => {
+    const catalogRows = new Map(bundle.resources['data/archive2-catalog.json'].records.map(row => [row.questionUid, row]));
+    for (const row of blankReceipt) catalogRows.get(row.questionUid).difficultyBucket = 3;
+  });
+  const find = (rows, uid) => rows.records.find(row => row.questionUid === uid);
+  for (const row of blankReceipt) {
+    assert.ok(find(resolved, row.questionUid).reviewedExamRegistration, 'still registered');
+    assert.equal(find(resolved, row.questionUid).difficultyBucket, 3, 'a blank receipt difficulty keeps the existing 3');
+  }
+  for (const row of realReceipt) {
+    assert.equal(find(resolved, row.questionUid).difficultyBucket, overlayRow(probe, row.questionUid).difficultyBucket, 'a real receipt value wins');
+  }
+});
