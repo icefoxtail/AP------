@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 한 배치의 예이다. A는 지휘자 자리이고 양옆 자리 B와 F에 제1바이올린과 제2바이올린이 앉는다. 지휘자를 고정하면 양옆 자리에 두 바이올린을 앉히는 방법은 2!=2가지이다. 나머지 세 연주자는 남은 세 자리 C, D, E에 3!=6가지로 앉는다. 따라서 2×6=12이므로 답은 ①이다.",
+  "accessibilityDescription": "여섯 자리가 육각형 꼭짓점으로 놓인 원탁 그림이며 자리 A의 양옆에 자리 B와 F가 있고 나머지 세 자리 C, D, E가 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "클라리넷 5중주는 클라리넷, 제1바이올린, 제2바이올린, 비올라, 첼로로 구성된 연주 형태이다. 클라리넷 5중주 공연 연습을 하기 위하여 지휘자 1명과 연주자 5명이 원형으로 앉을 때, 지휘자의 양옆에 바이올린 연주자 2명이 앉는 경우의 수는? (단, 회전하여 일치하는 것은 같은 것으로 본다.) (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "abstract",
+      "condition": "원탁·원형 배열을 도형의 꼭짓점으로 옮긴 배치 예시이며 좌표와 길이는 원문 조건이 아니다.",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "지휘자 자리 A와 양옆 자리 B, F, 나머지 세 자리가 구분되어 2!×3! 구조가 보인다."
+  ]
+}
