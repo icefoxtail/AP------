@@ -424,6 +424,10 @@ const requiredCommands = [
     args: ['--test', 'tests/ci-pr-run-cancel.test.mjs']
   },
   {
+    label: 'tests/archive2-save-roundtrip-source-only-pr.test.mjs',
+    args: ['--test', 'tests/archive2-save-roundtrip-source-only-pr.test.mjs']
+  },
+  {
     label: 'tests/archive-ci-scope.test.mjs',
     args: ['--test', 'tests/archive-ci-scope.test.mjs']
   },
