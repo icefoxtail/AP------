@@ -1,0 +1,372 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ic",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "ic"
+  ],
+  "displayLines": [],
+  "caption": "내접원의 중심을 I, 접점을 D, E, F라 하자. ID=IE=IF=r이고 접선은 반지름에 수직이므로 사각형 IECF는 한 변이 r인 정사각형이어서 EC=FC=r이다. 따라서 BE=BC−EC=8−r이다. △IAD≡△IAF(RHS 합동)이므로 AD=AF=6−r이고, 같은 방법으로 BD=BE=8−r이다. AB=AD+BD이므로 10=(6−r)+(8−r)이고 14−2r=10에서 r=2이다.",
+  "accessibilityDescription": "꼭짓점 C에서 직각인 직각삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 세 접점으로 수직인 선분이 그어져 있다. 반지름 r, 접선의 길이 6−r, 8−r이 각 선분에 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형 내접원의 접선 길이 AD=AF=6−r, BD=BE=8−r과 빗변 10=(6−r)+(8−r)로 r=2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 1. 다음은 직각삼각형의 내접원의 반지름을 구하는 과정이다. 빈 칸에 기호와 수식을 적절히 사용하여 설명하시오. (6점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/s01.png\" alt=\"직각삼각형 ABC의 세 변의 길이가 6cm, 8cm, 10cm이고 내접원 반지름 r와 접점 D, E, F가 표시된 그림\" /></p><div style=\"border: 1px solid #000; padding: 12px; margin: 10px 0;\">내접원의 반지름의 길이를 $r\\text{ cm}$라고 하자.<br/>$\\overline{\\text{EC}} = \\overline{\\text{FC}} = r\\text{ cm}$이므로<br/>$\\overline{\\text{AF}} = 6 - r\\text{ cm}$, $\\overline{\\text{BE}} = $ ( &nbsp;&nbsp;&nbsp;&nbsp; (1) &nbsp;&nbsp;&nbsp;&nbsp; )$\\text{ cm}$<br/>한편, $\\overline{\\text{ID}} = \\overline{\\text{IE}} = \\overline{\\text{IF}}$이므로 위 그림과 같이 $\\overline{\\text{IA}}$와 $\\overline{\\text{IB}}$를 각각 그으면<br/>$\\triangle\\text{IBE} \\equiv \\triangle\\text{IBD} (\\text{RHS 합동})$, $\\triangle\\text{IAD} \\equiv \\triangle\\text{IAF} ($ ( &nbsp;&nbsp;&nbsp;&nbsp; (2) &nbsp;&nbsp;&nbsp;&nbsp; ) $\\text{합동})$<br/>따라서, $\\overline{\\text{AD}} = 6 - r\\text{ cm}$, $\\overline{\\text{BD}} = $ ( &nbsp;&nbsp;&nbsp;&nbsp; (3) &nbsp;&nbsp;&nbsp;&nbsp; )$\\text{ cm}$이다.<br/>$\\overline{\\text{AB}} = \\overline{\\text{AD}} + \\overline{\\text{BD}}$를 $r$를 이용한 식으로 나타내면<br/>( &nbsp;&nbsp;&nbsp;&nbsp; (4) &nbsp;&nbsp;&nbsp;&nbsp; )와 같이 나타낼 수 있다.<br/>이를 풀면 $r = $ ( &nbsp;&nbsp;&nbsp;&nbsp; (5) &nbsp;&nbsp;&nbsp;&nbsp; )$\\text{ cm}$이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "I",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "IE",
+        "IF",
+        "ID"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "FA",
+        "DA"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "EB",
+        "BD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vIE",
+        "ownerSegment": "IE",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vIF",
+        "ownerSegment": "IF",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vFA",
+        "ownerSegment": "FA",
+        "text": "6−r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vDA",
+        "ownerSegment": "DA",
+        "text": "6−r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vEB",
+        "ownerSegment": "EB",
+        "text": "8−r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "8−r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vFC",
+        "ownerSegment": "FC",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

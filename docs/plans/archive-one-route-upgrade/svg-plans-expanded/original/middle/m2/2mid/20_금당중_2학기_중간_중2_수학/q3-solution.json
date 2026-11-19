@@ -1,0 +1,213 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "△ABD와 △ACD에서 ∠BAD=∠CAD(AD는 ∠A의 이등분선), 선분 AD는 공통, ∠ADB=∠ADC이다. 한 변의 길이와 그 양 끝 각의 크기가 각각 같으므로 ASA 합동이고, 대응변인 AB=AC가 성립한다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "삼각형 ABC의 꼭짓점 A에서 변 BC 위의 점 D로 각의 이등분선 AD가 그어져 있고 점 D에 직각 표시가 있으며 A에서 이등분된 두 각에 같은 표시, B와 C의 각에도 같은 표시가 있다.",
+  "newVisualInformation": [
+    "공통변 AD와 양 끝 각 ∠BAD=∠CAD, ∠ADB=∠ADC가 같아 △ABD≡△ACD(ASA)"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>3. 아래 그림은 컴퓨터 프로그램을 이용하여 $\\angle\\text{B} = \\angle\\text{C}$인 $\\triangle\\text{ABC}$를 그려서 $\\overline{\\text{AB}}$와 $\\overline{\\text{AC}}$의 길이를 각각 측정하여 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인지 확인해 보는 그림이다.</p><div style=\"border: 1px solid #000; padding: 8px 12px; margin: 8px 0;\">두 내각의 크기가 같은 삼각형은 이등변삼각형임을 확인하기 위해 아래 그림의 삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 변 $\\text{BC}$의 교점을 $\\text{D}$라고 하면, $\\angle\\text{ADB} = \\angle\\text{ADC}$이 된다. 이를 이용하여 두 삼각형 $\\triangle\\text{ABD}$, $\\triangle\\text{ACD}$가 ( &nbsp;&nbsp;&nbsp;&nbsp; )합동이 되므로 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$이다. 빈칸에 가장 알맞은 것은? (4점)</div><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q03.png\" alt=\"기하 소프트웨어 화면에서 각 B와 각 C의 크기가 같은 삼각형 ABC와 각 A의 이등분선 선분 AD가 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      }
+    ]
+  }
+}

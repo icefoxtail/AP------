@@ -1,0 +1,346 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "E",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "FB",
+      "refs": [
+        "F",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "EO",
+      "refs": [
+        "E",
+        "O"
+      ]
+    },
+    {
+      "id": "OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "평행사변형의 두 대각선은 서로를 이등분하므로 OA=OC이다. AD∥BC이므로 엇각이 같아 ∠EAO=∠FCO(α)이고 ∠AEO=∠CFO(β)이며, 맞꼭지각이므로 ∠AOE=∠COF이다. 따라서 △OAE≡△OCF(ASA 합동)이고 AE=CF이다. ③의 ∠AEO=∠FCO는 대응하는 엇각이 아니므로 옳지 않다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "평행사변형 ABCD의 두 대각선이 점 O에서 만나고 O를 지나는 직선이 변 AD와 점 E, 변 BC와 점 F에서 만난다. 엇각끼리 같은 표시, 맞꼭지각에 같은 표시가 있고 OA와 OC에 같은 눈금이 있다.",
+  "newVisualInformation": [
+    "대각선의 교점 O에서 맞꼭지각과 엇각이 같아 △OAE≡△OCF(ASA)이고 ∠AEO의 대응각은 ∠CFO"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>16. 아래 그림은 컴퓨터 프로그램을 이용하여 평행사변형 $\\text{ABCD}$의 두 대각선의 교점 $\\text{O}$를 지나는 직선이 평행사변형 $\\text{ABCD}$의 변과 만나는 점을 각각 $\\text{E, F}$라고 하였을 때, $\\overline{\\text{OE}}$와 $\\overline{\\text{OF}}$의 길이가 같음을 보여주고 있다. 다음 중 옳지 않은 것은? (5점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q16.png\" alt=\"기하 소프트웨어 화면에서 평행사변형 ABCD의 두 대각선의 교점 O를 지나는 직선과 변의 교점 E, F 및 각 선분의 측정값이 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AO",
+        "OC"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "EO",
+        "OF"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "AE",
+        "CF"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "E",
+          "A",
+          "O"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "F",
+          "C",
+          "O"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "E",
+          "O"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "C",
+          "F",
+          "O"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "A",
+          "O",
+          "E"
+        ],
+        "label": "γ",
+        "style": "ARC",
+        "equalGroup": 3,
+        "arcs": 3
+      },
+      {
+        "id": "a5",
+        "refs": [
+          "C",
+          "O",
+          "F"
+        ],
+        "label": "γ",
+        "style": "ARC",
+        "equalGroup": 3,
+        "arcs": 3
+      }
+    ]
+  }
+}

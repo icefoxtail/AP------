@@ -1,0 +1,202 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc"
+  ],
+  "displayLines": [],
+  "caption": "∠A=90°이므로 꼭짓점 A의 대변 BC=15cm가 빗변이다. 직각삼각형의 외심은 빗변의 중점이므로 외접원의 지름이 빗변 BC=15cm이다. 따라서 반지름은 15/2=7.5cm이다. 답은 ③이다.",
+  "accessibilityDescription": "꼭짓점 A에서 직각인 직각삼각형 ABC와 그 외접원이 있고 외심 O가 빗변 BC의 중점에 있으며 AB 9, CA 12, 빗변의 절반인 BO와 OC에 15/2가 적혀 있다.",
+  "newVisualInformation": [
+    "직각삼각형의 외심이 빗변의 중점이므로 외접원의 지름이 빗변 15, 반지름 15/2=7.5"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>13. $\\angle\\text{A} = 90^\\circ$이고, $\\overline{\\text{AB}} = 9\\text{ cm}$, $\\overline{\\text{BC}} = 15\\text{ cm}$, $\\overline{\\text{AC}} = 12\\text{ cm}$인 $\\triangle\\text{ABC}$의 세 꼭짓점을 지나는 원이 아래 그림과 같을 때, 이 원의 반지름의 길이는? (4점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q13.png\" alt=\"각 A가 90도이고 세 변의 길이가 9cm, 12cm, 15cm인 직각삼각형 ABC의 외접원이 그려진 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "BO",
+        "OC"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBO",
+        "ownerSegment": "BO",
+        "text": "15/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vOC",
+        "ownerSegment": "OC",
+        "text": "15/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

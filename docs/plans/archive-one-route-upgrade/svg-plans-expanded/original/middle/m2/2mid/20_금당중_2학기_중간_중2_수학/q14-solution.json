@@ -1,0 +1,210 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "126"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "54"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: 두 각의 비 7:3에 맞춘 평행사변형이다(변의 길이는 모양만 나타낸다). 이웃한 두 각의 합이 180°이므로 ∠DAB=180°×7/10=126°, ∠ADC=180°×3/10=54°이다. 마주 보는 대각은 같으므로 ∠x=∠ADC=54°, ∠y=∠DAB=126°이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 꼭짓점 A의 각 126°, 꼭짓점 D의 각 54°, 꼭짓점 B의 각 x=54°, 꼭짓점 C의 각 y=126°가 표시되어 있고 마주 보는 변에 같은 눈금이 있다.",
+  "newVisualInformation": [
+    "이웃한 각의 비 7:3에서 126°와 54°를 구하고 대각이 같아 x=54°, y=126°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 아래 그림의 평행사변형 $\\text{ABCD}$에서 $\\angle\\text{DAB}$와 $\\angle\\text{ADC}$의 크기의 비가 $7 : 3$일 때, $\\angle x$와 $\\angle y$의 크기를 각각 구하면? (4점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q14.png\" alt=\"평행사변형 ABCD에서 각 DAB와 각 ADC의 비가 7대 3일 때 각 x와 각 y가 표시된 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "DA",
+        "BC"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "AB",
+        "CD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "label": "126°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "D",
+          "C"
+        ],
+        "label": "54°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "x=54°",
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "y=126°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

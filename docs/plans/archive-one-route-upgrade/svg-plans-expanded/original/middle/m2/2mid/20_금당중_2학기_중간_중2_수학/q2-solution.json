@@ -1,0 +1,360 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "Q",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "Q"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hE",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "F",
+          "lCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "C",
+          "hE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hD",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "E",
+          "lCB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "F",
+          "hD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hA",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "D",
+          "lCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "E",
+          "hA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "hB",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "A",
+          "lCB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "D",
+          "hB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "∠C=x라 하자. EF=FC이므로 ∠FEC=x이고 외각 ∠EFD=2x이다. DE=EF이므로 ∠EDF=2x이고 외각 ∠AED=x+2x=3x이다. AD=DE이므로 ∠DAE=3x이고 외각 ∠ADB=x+3x=4x이다. AB=AD이므로 ∠B=4x이고 AC=BC이므로 ∠A=4x이다. 세 각의 합에서 4x+4x+x=180°이므로 x=20°이고 ∠B=4×20°=80°이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "이등변삼각형 ABC의 변 BC 위에 점 D, F, 변 CA 위에 점 E가 있고 선분 AD, DE, EF가 그어져 있으며 길이가 같은 다섯 선분 AB, AD, DE, EF, FC에 같은 눈금이 있다. 각 C의 x, 각 EFD의 2x, 각 AED의 3x, 각 ADB의 4x, 각 B의 4x가 표시되어 있다.",
+  "newVisualInformation": [
+    "같은 길이의 선분을 따라 외각을 더해 가며 x→2x→3x→4x로 커지는 각과 9x=180°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>2. 다음 그림과 같이 $\\overline{\\text{AC}} = \\overline{\\text{BC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\overline{\\text{AB}} = \\overline{\\text{AD}} = \\overline{\\text{DE}} = \\overline{\\text{EF}} = \\overline{\\text{FC}}$일 때, $\\angle\\text{B}$의 크기는? (4점)</p><p><img src=\"assets/images/20_금당중_2학기_중간_중2_수학/q02.png\" alt=\"선분 AC와 BC의 길이가 같은 이등변삼각형 ABC 내부에 선분 AB, AD, DE, EF, FC의 길이가 모두 같도록 점 D, E, F가 차례로 이어진 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "AD",
+        "DE",
+        "EF",
+        "FC"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "label": "x",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "E",
+          "F",
+          "D"
+        ],
+        "label": "2x",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "E",
+          "D"
+        ],
+        "label": "3x",
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "A",
+          "D",
+          "B"
+        ],
+        "label": "4x",
+        "style": "ARC"
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "A",
+          "B",
+          "D"
+        ],
+        "label": "∠B=4x",
+        "style": "ARC"
+      }
+    ]
+  }
+}
