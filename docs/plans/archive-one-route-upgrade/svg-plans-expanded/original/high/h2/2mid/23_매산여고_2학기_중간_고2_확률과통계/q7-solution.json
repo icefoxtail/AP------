@@ -1,0 +1,79 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "0",
+        "sd": "1",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-3",
+        "text": "m-3σ"
+      },
+      {
+        "x": "-2",
+        "text": "m-2σ"
+      },
+      {
+        "x": "0",
+        "text": "m"
+      },
+      {
+        "x": "2",
+        "text": "m+2σ"
+      },
+      {
+        "x": "3",
+        "text": "m+3σ"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-3",
+        "to": "-2",
+        "color": "BLUE"
+      },
+      {
+        "from": "-2",
+        "to": "2",
+        "color": "GREEN"
+      },
+      {
+        "from": "2",
+        "to": "3",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "a-b"
+      },
+      {
+        "shade": 1,
+        "text": "2b-a"
+      },
+      {
+        "shade": 2,
+        "text": "a-b"
+      }
+    ]
+  },
+  "caption": "전체 구간 [m−3σ, m+3σ]의 확률이 a이고 [m−2σ, m+3σ]가 b이므로 왼쪽 파란 부분은 a−b이다. 평균에 대한 대칭으로 오른쪽 파란 부분도 a−b이다. 따라서 가운데 초록 부분 P(m−2σ≤X≤m+2σ)는 b−(a−b)=2b−a이다. 답은 ①이다.",
+  "accessibilityDescription": "평균 m을 중심으로 한 정규분포 곡선이며 m−3σ, m−2σ, m, m+2σ, m+3σ의 위치가 표시되고 양쪽 끝 구간은 같은 색, 가운데 구간은 다른 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "양쪽 끝 구간이 대칭으로 같은 넓이 a−b이고 가운데 구간이 2b−a임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정규분포 $N(m,\\sigma^2)$을 따르는 확률변수 $X$에 대하여 $P(m-3\\sigma\\le X\\le m+3\\sigma)=a$, $P(m-2\\sigma\\le X\\le m+3\\sigma)=b$라 할 때, $P(m-2\\sigma\\le X\\le m+2\\sigma)$를 $a$, $b$를 사용하여 나타낸 것은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
