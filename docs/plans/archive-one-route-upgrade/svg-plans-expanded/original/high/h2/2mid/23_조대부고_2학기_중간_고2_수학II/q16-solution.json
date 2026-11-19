@@ -1,0 +1,137 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -2,
+      3
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          1,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "-1"
+            ],
+            "domain": [
+              -2,
+              1
+            ],
+            "end": "CLOSED"
+          },
+          {
+            "coefficients": [
+              "1"
+            ],
+            "domain": [
+              1,
+              3
+            ],
+            "start": "OPEN"
+          }
+        ],
+        "jumpValues": []
+      }
+    ],
+    "limitArrows": [
+      {
+        "curve": "f",
+        "at": "0",
+        "side": "LEFT",
+        "toY": "0"
+      },
+      {
+        "curve": "f",
+        "at": "0",
+        "side": "RIGHT",
+        "toY": "-1"
+      },
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "1"
+      },
+      {
+        "curve": "g",
+        "at": "1",
+        "side": "LEFT",
+        "toY": "-1"
+      },
+      {
+        "curve": "g",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "1"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    }
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 식을 갖는 예시 그래프를 그렸다. 위는 y=f(x), 아래는 y=g(x)이다. x=0에서 f의 좌극한 0, 우극한 -1이고 g는 둘 다 0이라 h=fg의 극한은 0(ㄱ 참)이다. 왼쪽 h=-x², 오른쪽 h=-x²+x라 좌미분계수 0, 우미분계수 1이 달라 ㄴ도 참이다. x=1에서 h의 좌극한 0, 우극한 1, h(1)=0이라 합이 1이므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $y=f(x),y=g(x)$의 그래프가 그림과 같다. 함수 $h(x)=f(x)g(x)$에 대하여 보기에서 옳은 것만을 있는 대로 고른 것은? [4.1점]<br><div class=\"question-note-box\"><div class=\"note-title\">&lt;보기&gt;</div>ㄱ. $\\displaystyle\\lim_{x\\to0}h(x)=0$<br>ㄴ. 함수 $h(x)$는 $x=0$에서 미분 불가능하다.<br>ㄷ. $\\displaystyle\\lim_{x\\to1-}h(x)+\\lim_{x\\to1+}h(x)+h(1)=0$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f의 x=0, 1의 점프와 g의 x=1에서의 점프를 읽어 곱 h의 좌우값을 구한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f는 x=0에서 0에서 -1로, g는 x=1에서 -1에서 1로 뛰어 h=fg의 좌우 미분계수가 0과 1이 된다."
+  ],
+  "accessibilityDescription": "위쪽에 x=0과 x=1에서 끊어지는 f의 그래프, 아래쪽에 x=1에서 끊어지는 g의 그래프를 나란히 그리고 좌우극한을 화살표로 표시한 그림이다."
+}

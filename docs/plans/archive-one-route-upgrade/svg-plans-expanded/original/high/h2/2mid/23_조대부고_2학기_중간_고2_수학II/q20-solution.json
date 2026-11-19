@@ -1,0 +1,40 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "f′(x)≥0이 항상 성립하는 a의 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6-sqrt(42)",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6+sqrt(42)",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "일대일이려면 최고차항의 계수가 양수인 삼차함수가 증가해야 하므로 f′(x)=6x²+2ax+(2a+1)≥0이 모든 x에서 성립해야 한다. 판별식 D/4=a²-12a-6≤0에서 6-√42≤a≤6+√42이고 수직선에서 양 끝은 채워진 점이다. 6-√42는 -1과 0 사이, 6+√42는 12와 13 사이이므로 정수 a는 0부터 12까지 13개이다. 따라서 구하는 개수는 13이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "치역과 공역이 같은 함수 $f(x)$가 있다. $f(x)=2x^3+ax^2+(2a+1)x+17$이다. 임의의 실수 $x_1,x_2$에 대하여 $f(x_1)=f(x_2)$이면 $x_1=x_2$를 만족할 때 정수 $a$의 개수를 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "판별식 조건으로 얻은 a의 범위 6-√42≤a≤6+√42를 수직선에 닫힌 구간으로 보인다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a의 범위가 6-√42 이상 6+√42 이하이고 그 안의 정수가 0부터 12까지 13개이다."
+  ],
+  "accessibilityDescription": "수직선 위에 6-√42와 6+√42를 끝으로 하고 양 끝이 채워진 점인 구간이 표시되어 있다."
+}

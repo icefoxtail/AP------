@@ -1,0 +1,121 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "sqrt(3)"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "viewport": [
+      -0.5,
+      3,
+      -0.5,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "sampleNote": "t=1",
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "sqrt(3)",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "3/2",
+          "y": "sqrt(3)/2",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "2",
+          "y": "2*sqrt(3)/3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "ab",
+          "slope": "-sqrt(3)",
+          "intercept": "2*sqrt(3)",
+          "label": "AB"
+        },
+        {
+          "id": "cd",
+          "slope": "sqrt(3)/3",
+          "intercept": "0",
+          "label": "CD"
+        },
+        {
+          "id": "vx",
+          "x": "2"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "C",
+          "from": [
+            "B",
+            "D"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "예: t=1일 때의 그림이다. A(1,√3), B(2,0)이고 선분 AB의 중점은 C(3/2,√3/2)이다. C에서 AB에 수직인 직선 CD(기울기 1/√3)가 직선 x=2와 만나는 점 D(2,2√3/3)이다. 일반적으로 CD=f(t)=t/√3이고 (t²-9)/(f(t)-√3)=√3(t+3)이므로 t→3에서 극한은 6√3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직선 $y=\\sqrt{3}x$ 위의 점 $A(t,\\sqrt{3}t)\\,(t\\gt0)$과 $x$축 위의 점 $B(2t,0)$이 있다. 선분 $AB$의 중점을 $C$라 하고, 점 $C$를 지나고 선분 $AB$에 수직인 직선이 직선 $x=2t$와 만나는 점을 $D$라 하자. 선분 $CD$의 길이를 $f(t)$라 할 때, $\\displaystyle\\lim_{t\\to3}\\dfrac{t^2-9}{f(t)-\\sqrt{3}}$의 값을 구하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1의 예에서 중점 C, 수선 CD, 직선 x=2와의 교점 D를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1의 예에서 선분 AB의 중점 C와 수선 CD가 직선 x=2와 만나는 점 D(2,2√3/3)이다."
+  ],
+  "accessibilityDescription": "원점을 지나는 직선 위의 점 A, x축 위의 점 B, 선분 AB의 중점 C, 점 C에서 AB에 수직인 직선과 수직선 x=2가 만나는 점 D를 나타낸 그림이며 직각 표시가 있다."
+}

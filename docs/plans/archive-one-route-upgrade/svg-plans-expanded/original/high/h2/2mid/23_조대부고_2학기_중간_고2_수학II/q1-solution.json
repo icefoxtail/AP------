@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          -3,
+          -2
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "1"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 값을 갖는 예시 그래프를 그렸다. x=-2의 오른쪽에서 열린 점 A(-2,1)로 다가가므로 우극한은 1이고, x=0의 왼쪽에서 열린 점 C(0,1)로 다가가므로 좌극한은 1이다. x=-1에서는 양쪽 모두 점 B(-1,0)으로 다가가 극한은 0이다. 합은 1+1+0=2이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같을 때, $\\displaystyle\\lim_{x\\to-2+}f(x)+\\lim_{x\\to0-}f(x)+\\lim_{x\\to-1}f(x)$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x→-2+의 극한 1(점 A), x→0-의 극한 1(점 C), x→-1의 극한 0(점 B)을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x→-2+에서 1, x→0-에서 1, x→-1에서 0으로 가는 극한을 점 A, C, B로 읽는다."
+  ],
+  "accessibilityDescription": "x=-2와 x=0에서 끊어지고 x=-1에서 두 직선 조각이 만나는 조각 그래프이며 세 점 A, B, C의 좌표가 표시되어 있다."
+}
