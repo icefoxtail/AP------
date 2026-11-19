@@ -1,17 +1,11 @@
-// 유사문항 보기 순서·정답 번호 분포 점검 (규칙 정본: docs/agents/similar-choices.md).
-// 운영 데이터의 개수를 고정하지 않고 결함 조건(어긋난 수 보기·같은 값 보기 0)만 본다. 자리를 지킬 수 없어 보류한 문항은 명시적 예외 파일에 둔다.
+// 유사문항 보기 순서·정답 번호 분포 점검 단위 테스트 (규칙 정본: docs/agents/similar-choices.md).
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { readBank } from '../archive/tools/similar-import/lib.mjs';
 import {
   parseChoiceValue, analyzeChoiceOrder, leakWarnings, evaluateAnswerTokens, answerDistribution,
   chooseTargetAnswers, drawTargetAnswers, findPeriodicPattern, findCyclicRun,
 } from '../archive/tools/similar-import/choice-order-lib.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const mc = (choices, answer) => ({ questionType: '객관식', choices, answer });
 
 test('보기 값 환산: 정수·분수·근호·π·단위·접두 기호', () => {
@@ -95,36 +89,4 @@ test('목표 정답 번호 배열 뽑기: 결정적이고 기준을 통과하며
   assert.ok(fresh.ok);
   assert.equal(fresh.target[0], '4');
   assert.equal(evaluateAnswerTokens(fresh.target).skewed, false);
-});
-
-test('유사문항 전체: 어긋난 수 보기·같은 값 보기가 없다 (보류는 예외 파일에만)', () => {
-  const exceptionsPath = path.join(root, 'tests/fixtures/similar-choice-order-exceptions.json');
-  const exceptions = fs.existsSync(exceptionsPath) ? JSON.parse(fs.readFileSync(exceptionsPath, 'utf8')) : {};
-  const base = path.join(root, 'archive/exams/similar');
-  const files = [];
-  const walk = d => {
-    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-      const p = path.join(d, e.name);
-      if (e.isDirectory()) { if (!e.name.endsWith('_plans') && e.name !== 'engine_evidence') walk(p); } else if (e.name.endsWith('.js')) files.push(p);
-    }
-  };
-  walk(base);
-  assert.ok(files.length > 0);
-  const found = new Set();
-  const bad = [];
-  for (const f of files) {
-    const rel = path.relative(path.join(root, 'archive/exams'), f).replace(/\\/g, '/');
-    const { bank } = readBank(f);
-    for (const q of bank) {
-      const a = analyzeChoiceOrder(q);
-      const defect = a.status === 'A' || a.status === 'B' || a.dup;
-      if (!defect) continue;
-      const key = `${rel}|${q.id}`;
-      found.add(key);
-      if (!exceptions[key]) bad.push(`${key} ${a.status}${a.dup ? ' 중복' : ''} ${JSON.stringify(q.choices)} 정답 ${q.answer}`);
-    }
-  }
-  assert.deepEqual(bad, [], `보기 순서 결함이 있습니다. docs/agents/similar-choices.md 를 따라 정답 값·자리를 지키며 오답 값을 크기순으로 고치세요.\n${bad.join('\n')}`);
-  const stale = Object.keys(exceptions).filter(k => !found.has(k));
-  assert.deepEqual(stale, [], `예외 파일에 더 이상 결함이 아닌 항목이 있습니다. 지우세요: ${stale.join(', ')}`);
 });

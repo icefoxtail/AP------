@@ -426,9 +426,9 @@ window.questionBank = [
     tags: ["유리함수", "함수의 뜻과 그래프"],
     wide: false,
     content: "함수 $h(t)=\\dfrac{1}{3-\\dfrac{2}{1-\\dfrac{1}{t}}}$라 하자. 분모를 $0$으로 만들지 않는 모든 실수 $x$에 대하여 $h(x+2)=\\dfrac{ax+b}{x-1}$일 때, 실수 $a,b$에 대하여 $a+b$의 값은?",
-    choices: ["$1$", "$2$", "$3$", "$4$", "$5$"],
-    answer: "②",
-    solution: "[키포인트] 먼저 $t=x+2$를 $h$에 대입한 뒤, 가장 안쪽 분수부터 차례로 정리한다.\n조건 정리: $h(x+2)=\\dfrac{1}{3-\\dfrac{2}{1-\\dfrac1{x+2}}}$이다.\n풀이 방향: 중첩분수를 하나의 유리식으로 만든 뒤 계수를 비교한다.\n정석 풀이:\n1. $1-\\dfrac1{x+2}=\\dfrac{x+1}{x+2}$이다.\n2. 따라서 $\\dfrac{2}{1-\\dfrac1{x+2}}=\\dfrac{2(x+2)}{x+1}$이다.\n3. $3-\\dfrac{2(x+2)}{x+1}=\\dfrac{x-1}{x+1}$이므로 $h(x+2)=\\dfrac{x+1}{x-1}$이다.\n4. 따라서 $a=1$, $b=1$이고 $a+b=2$이다.\n따라서 정답은 ②이다.",
+    choices: ["$6$", "$5$", "$4$", "$3$", "$2$"],
+    answer: "⑤",
+    solution: "[키포인트] 먼저 $t=x+2$를 $h$에 대입한 뒤, 가장 안쪽 분수부터 차례로 정리한다.\n조건 정리: $h(x+2)=\\dfrac{1}{3-\\dfrac{2}{1-\\dfrac1{x+2}}}$이다.\n풀이 방향: 중첩분수를 하나의 유리식으로 만든 뒤 계수를 비교한다.\n정석 풀이:\n1. $1-\\dfrac1{x+2}=\\dfrac{x+1}{x+2}$이다.\n2. 따라서 $\\dfrac{2}{1-\\dfrac1{x+2}}=\\dfrac{2(x+2)}{x+1}$이다.\n3. $3-\\dfrac{2(x+2)}{x+1}=\\dfrac{x-1}{x+1}$이므로 $h(x+2)=\\dfrac{x+1}{x-1}$이다.\n4. 따라서 $a=1$, $b=1$이고 $a+b=2$이다.\n따라서 정답은 ⑤이다.",
     reviewStatus: "reviewed_pass",
     solutionStatus: "reviewed_pass",
     imageStatus: "none"

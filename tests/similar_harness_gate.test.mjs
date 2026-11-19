@@ -5,6 +5,7 @@ import os from 'node:os';
 import { after, describe, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { verifySimilarExam } from '../tools/harness/verify_similar_exam.mjs';
+import { evaluateAnswerTokens } from '../archive/tools/similar-import/choice-order-lib.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TEST_SCRATCH = fs.mkdtempSync(path.join(os.tmpdir(), 'similar-harness-'));
@@ -15,7 +16,9 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사' });
     assert.equal(res.ok, true, `Expected PASS, got errors: ${res.errors.join('; ')}`);
     assert.equal(res.totalScore, 100.0);
-    assert.deepEqual(res.mcDistribution, { '①': 4, '②': 4, '③': 4, '④': 4, '⑤': 4 });
+    // 2026-11-19: 정답 칸 균등 개수 고정 대신 정본(docs/agents/similar-choices.md) 분포 기준을 통과하는지만 본다.
+    assert.equal(res.errors.some(e => e.includes('MCQ answer distribution')), false);
+    assert.ok(Object.values(res.mcDistribution).every(n => n >= 1), 'every answer number appears at least once');
   });
 
   test('Baseline: 19_금당중_1학기_기말_중1_유사 passes all automated gates', () => {
@@ -40,29 +43,26 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     }
   });
 
-  test('Fault Injection: Dynamic MCQ count (e.g. 19 or 21 MCQs) slot imbalance is blocked', () => {
+  test('Fault Injection: skewed answer-number distribution is blocked', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
-    // Change Q1 answer from ③ to ②, making distribution {①:4, ②:5, ③:3, ④:4, ⑤:4}
-    const mutatedJs = origJs.replace('"answer": "③"', '"answer": "②"');
-    
-    const tmpJs = path.join(TEST_SCRATCH, 'mutated_slot_imbalance.js');
+    // 모든 객관식 정답을 ③으로 바꿔 한 번호 쏠림(30% 초과·3연속)을 만든다.
+    const mutatedJs = origJs.replace(/"answer": "[①②③④⑤]"/g, '"answer": "③"');
+
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_slot_skew.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
       assert.equal(res.ok, false);
-      assert.ok(res.errors.some(e => e.includes('MCQ slot balance violated')), 'Must catch slot balance violation');
+      assert.ok(res.errors.some(e => e.includes('MCQ answer distribution')), 'Must catch answer distribution violation');
     } finally {
       if (fs.existsSync(tmpJs)) fs.unlinkSync(tmpJs);
     }
   });
 
-  test('Dynamic Invariant: Any arbitrary MCQ count M must satisfy spread(max - min) <= 1', () => {
-    // Test logic directly: 17 MCQs -> {①:4, ②:4, ③:3, ④:3, ⑤:3} is valid (spread=1)
-    // 17 MCQs -> {①:5, ②:3, ③:3, ④:3, ⑤:3} is invalid (spread=2)
-    const valid17 = [4, 4, 3, 3, 3];
-    assert.ok(Math.max(...valid17) - Math.min(...valid17) <= 1, 'Balanced 17 MCQs must have spread <= 1');
-    const invalid17 = [5, 3, 3, 3, 3];
-    assert.ok(Math.max(...invalid17) - Math.min(...invalid17) > 1, 'Imbalanced 17 MCQs must be detected');
+  test('Dynamic Invariant: repeated or skewed answer sequences are defects, scattered ones are not', () => {
+    // 정본 기준: docs/agents/similar-choices.md (기준 값을 여기에 다시 적지 않고 판정 모듈의 결과만 본다)
+    assert.equal(evaluateAnswerTokens('3 4 1 2 5 3 4 1 2 5'.split(' ')).skewed, true, 'repeated order must be detected');
+    assert.equal(evaluateAnswerTokens('3 1 5 2 4 1 3 5 4 2 1 5 1 2 3 2 3 4 4 5'.split(' ')).skewed, false);
   });
 
   test('Fault Injection: Unescaped math in choice is blocked', () => {

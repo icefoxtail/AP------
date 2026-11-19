@@ -134,10 +134,10 @@ window.questionBank = [
     "wide": false,
     "content": "세 집합 $A=\\{4,a+1\\}$, $B=\\{4,9\\}$, $C=\\{a,9\\}$가 있다. 양의 정수 $a$에 대하여 $A=B$일 때, $n(A\\cup C)$의 값은?",
     "choices": [
-      "1",
-      "2",
-      "4",
+      "7",
+      "6",
       "5",
+      "4",
       "3"
     ],
     "answer": "⑤",
@@ -677,14 +677,14 @@ window.questionBank = [
     "wide": false,
     "content": "두 실수 $x,y$에 대한 명제 ‘$4x+y\\ge k$이면 $x\\ge2$ 또는 $y\\ge1$이다.’가 참이 되도록 하는 정수 $k$ 중 $0\\le k\\le12$인 것의 개수는?",
     "choices": [
-      "4",
-      "5",
-      "6",
-      "7",
-      "8"
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
     ],
-    "answer": "①",
-    "solution": "[키포인트] 조건명제의 결론이 거짓인 범위에서 전제가 참인 반례가 없어야 한다.\n정석 풀이:\n1. 결론 '$x\\ge2$ 또는 $y\\ge1$'이 거짓이려면 $x<2$, $y<1$이어야 한다.\n2. 이때 $4x+y<4\\cdot2+1=9$이므로 $k\\ge9$이면 전제 '$4x+y\\ge k$'는 성립할 수 없다.\n3. 반대로 $k<9$이면 $x=2-\\varepsilon$, $y=1-\\varepsilon$ ($0<\\varepsilon\\le\\dfrac{9-k}{5}$)로 놓을 수 있다. 이때 $x<2$, $y<1$이지만 $4x+y=9-5\\varepsilon\\ge k$이므로 반례가 된다.\n4. 따라서 필요한 조건은 $k\\ge9$이고, $0\\le k\\le12$인 정수 중 가능한 것은 $9,10,11,12$의 네 개이다.\n따라서 정답은 ①이다.",
+    "answer": "⑤",
+    "solution": "[키포인트] 조건명제의 결론이 거짓인 범위에서 전제가 참인 반례가 없어야 한다.\n정석 풀이:\n1. 결론 '$x\\ge2$ 또는 $y\\ge1$'이 거짓이려면 $x<2$, $y<1$이어야 한다.\n2. 이때 $4x+y<4\\cdot2+1=9$이므로 $k\\ge9$이면 전제 '$4x+y\\ge k$'는 성립할 수 없다.\n3. 반대로 $k<9$이면 $x=2-\\varepsilon$, $y=1-\\varepsilon$ ($0<\\varepsilon\\le\\dfrac{9-k}{5}$)로 놓을 수 있다. 이때 $x<2$, $y<1$이지만 $4x+y=9-5\\varepsilon\\ge k$이므로 반례가 된다.\n4. 따라서 필요한 조건은 $k\\ge9$이고, $0\\le k\\le12$인 정수 중 가능한 것은 $9,10,11,12$의 네 개이다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
