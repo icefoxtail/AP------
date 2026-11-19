@@ -77,7 +77,7 @@ jobs:
       # after the merge. So on a pull request the checkout's own build generates them (temporary, never committed) and the same
       # computation as --package-only runs inside that build (a broken exam JS still stops it). main and manual runs keep
       # --package-only, which also requires the registered files to match their inputs.
-      - name: Generate the ignored package shards (pull request: build from sources)
+      - name: Generate the ignored package shards (pull request, build from sources)
         if: github.event_name == 'pull_request'
         run: node archive/tools/build-archive2-catalog.mjs
       - name: Generate the ignored package shards (registered files must match)

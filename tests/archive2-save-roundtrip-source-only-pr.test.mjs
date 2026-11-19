@@ -31,6 +31,13 @@ test('pull request builds the package shards from sources, main and manual runs 
   assert.match(rest, /run: node archive\/tools\/build-archive2-catalog\.mjs --package-only\n?$/);
 });
 
+test('step names stay valid plain YAML scalars (a ": " inside one makes the whole workflow invalid and no job starts)', () => {
+  for (const line of workflow.split('\n')) {
+    const match = /^\s*(?:- )?name: (.*)$/.exec(line);
+    if (match) assert.ok(!/: /.test(match[1]) && !/ #/.test(match[1]), `invalid plain scalar: ${line.trim()}`);
+  }
+});
+
 test('the build step still runs before the save round trip test, and the test is unchanged', () => {
   const all = steps(workflow);
   const lastBuild = all.map((s, i) => (/build-archive2-catalog\.mjs/.test(s) ? i : -1)).filter(i => i >= 0).pop();
