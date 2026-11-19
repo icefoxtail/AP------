@@ -1,0 +1,71 @@
+{
+  "qid": "16",
+  "itemFingerprint": "0534746c7836e141",
+  "solveSteps": [
+    "① 한 자루에 800원인 볼펜 x자루의 가격: 800x원, 5000원 이상이므로 800x >= 5000 (옳음).",
+    "② 길이가 x cm인 테이프에서 15 cm를 3번 잘라내면 45 cm를 사용하므로 남은 길이는 x - 45 cm, 120 cm보다 짧으므로 x - 45 < 120 (옳음).",
+    "③ 밑면의 넓이가 15, 높이가 x인 사각뿔의 부피: (1/3) * 15 * x = 5x, 60 미만이므로 5x < 60 (옳음).",
+    "④ 무게가 1200 g인 상자에 한 개에 800 g인 배 x개를 넣으면 전체 무게는 1200 + 800x g이다.",
+    "15 kg = 15000 g보다 무겁지 않으므로 1200 + 800x <= 15000이어야 하는데, 보기는 1200 + 5 + 4000 < 15000으로 잘못 나타냈다 (옳지 않음).",
+    "따라서 옳지 않은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "다음 문장을 부등식으로 나타낸 것 중 옳지 않",
+  "rpmRecordId": "M2-RPM-024",
+  "rpmReason": "문장의 수량 관계를 부등호로 나타내어 1200 + 800x <= 15000 등의 부등식을 세우는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "일상생활의 수량 관계 1200 g, 800 g을 부등식으로 표현하여 바른 식을 고르는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 보기의 실생활 문장을 1200 등의 부등식으로 번역하여 오류를 찾는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "다음 문장을 부등식으로 나타낸 것"
+      }
+    ],
+    "goal": [
+      {
+        "term": "관계",
+        "src": "solution",
+        "quote": "문장의 수량 관계를 부등호 및"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "를 부등호 및 사칙연산 기호로 옳게",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "사용하고 남은 길이: } x -"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 실생활 문장 조건들을 확인한다.",
+    "goal": "부등식으로 잘못 나타낸 보기를 찾는다.",
+    "method": "수량 관계를 곱셈과 덧셈, 부등호로 표현한다.",
+    "condition": "단위 일치 및 이상/이하/미만 조건을 검토한다."
+  },
+  "how": "④에서 전체 무게는 1200 + 800x <= 15000이어야 하므로 잘못된 ④를 정답으로 판정하였다."
+}

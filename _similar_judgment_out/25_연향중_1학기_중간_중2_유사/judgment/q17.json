@@ -1,0 +1,70 @@
+{
+  "qid": "17",
+  "itemFingerprint": "f54846a581df825c",
+  "solveSteps": [
+    "일차부등식 2 - 0.5x <= 0.5의 양변에 10을 곱한다.",
+    "20 - 5x <= 5가 된다.",
+    "상수항 20을 우변으로 이항하면 -5x <= 5 - 20 = -15이다.",
+    "양변을 음수 -5로 나누면 부등호의 방향이 바뀌어 x >= 3이 된다.",
+    "따라서 해 중에서 가장 작은 정수는 3이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $2 - 0.5x \\le 0.5$를",
+  "rpmRecordId": "M2-RPM-021",
+  "rpmReason": "소수 계수 0.5가 있는 일차부등식의 양변에 10을 곱해 정리하고 최소 정수 3을 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "소수 계수 0.5가 포함된 일차부등식을 풀고 해의 조건에 맞는 가장 작은 정수를 찾는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "양변에 10을 곱해 0.5 계수를 정수로 고쳐 풀고 최소 정수를 찾는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식 $2 - 0."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "서 가장 작은 정수는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "$을 우변으로 이항한다. $$ -",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "src": "solution",
+        "quote": "소수 계수를 정수로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "소수 계수를 포함한 일차부등식을 확인한다.",
+    "goal": "부등식을 만족하는 가장 작은 정수를 구한다.",
+    "method": "10을 곱해 정수 계수로 바꾼 뒤 이항하여 푼다.",
+    "condition": "음수로 나눌 때 부등호 방향이 바뀜에 유의한다."
+  },
+  "how": "2 - 0.5x <= 0.5에 10을 곱해 -5x <= -15, 즉 x >= 3을 얻어 최소 정수 3인 ③으로 판정하였다."
+}

@@ -1,0 +1,70 @@
+{
+  "qid": "21",
+  "itemFingerprint": "9710ccdf77d7ae95",
+  "solveSteps": [
+    "주어진 거듭제곱 식을 aligned 형태로 정리한다.",
+    "(1) 3^2 + 3^2 + 3^2 = 3 * 3^2 = 3^3이고, A = 3^3 + 3^3 + 3^3 = 3 * 3^3 = 3^4이다.",
+    "B = 3^3 * 3^3 * 3^3 = 3^(3+3+3) = 3^9이다.",
+    "따라서 A = 3^4, B = 3^9이다.",
+    "(2) B / A = 3^9 / 3^4 = 3^(9-4) = 3^5이다."
+  ],
+  "solvedAnswer": "(1) $A = 3^4, B = 3^9$  (2) $3^5$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$A = 3^3 + 3^3 + 3^3$, $B",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "거듭제곱의 덧셈을 곱셈으로 고치고 거듭제곱의 곱셈·나눗셈 지수법칙을 적용하는 aligned 문제이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "거듭제곱의 덧셈과 곱셈의 차이를 구분하여 aligned 지수법칙으로 값을 표현하는 서술형 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "거듭제곱의 덧셈을 밑과 지수로 변환하고 aligned 나눗셈 지수법칙을 순서대로 서술하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "지수법칙",
+        "src": "stem",
+        "quote": "풀이 과정에 지수법칙을 적용한 과정"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "stem",
+        "quote": "각각 $3$의 거듭제곱을 사용하여 나"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "은 거듭제곱의 나눗셈 지수법칙을 적",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "제곱의 덧셈을 곱셈으로 바꾸고 밑"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "A와 B의 거듭제곱 덧셈 및 곱셈 식을 확인한다.",
+    "goal": "A, B를 3의 거듭제곱으로 나타내고 B / A를 계산한다.",
+    "method": "거듭제곱 덧셈을 곱으로 바꾸고 지수법칙 곱셈·나눗셈을 적용한다.",
+    "condition": "서술형 풀이 과정을 단계별로 제시한다."
+  },
+  "how": "aligned 지수법칙을 적용하여 (1) $A = 3^4, B = 3^9$ 및 (2) $3^5$로 판정하였다."
+}

@@ -1,0 +1,71 @@
+{
+  "qid": "23",
+  "itemFingerprint": "83cbb8e6912f5956",
+  "solveSteps": [
+    "일차부등식 5x - 3 <= -ax + b의 x항을 좌변으로, 상수항을 우변으로 이항한다.",
+    "(5 + a)x <= b + 3이 된다.",
+    "조건에서 a < -5이므로 5 + a < 0이다.",
+    "음수 5 + a로 양변을 나누면 부등호의 방향이 바뀌어 x >= (b + 3) / (5 + a)가 된다.",
+    "수직선 위의 해가 x >= -1이므로 (b + 3) / (5 + a) = -1이다.",
+    "b + 3 = -(5 + a) = -5 - a이므로 a + b = -8이다."
+  ],
+  "solvedAnswer": "-8",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 ($x \\ge -1$)로 해가 명시되어 있어 그림 불필요",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 수식으로 증명되어 그림 불필요",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $5x - 3 \\le -ax + b",
+  "rpmRecordId": "M2-RPM-023",
+  "rpmReason": "미지수 a, b가 포함된 부등식에서 음수 ax 계수로 나누어 해를 일치시키고 a+b를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "미지수 계수가 있는 일차부등식 ax 해의 경계값을 수직선 조건과 일치시켜 a+b를 구하는 서술형 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax 계수의 부호를 판정하여 부등호 방향을 바꾸고 경계값을 비교하는 서술형 고난도 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식 $5x - 3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a, b$는 상수이고 $a <"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "$을 우변으로 이항하여 $a +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "5 + a$는 음수이다. 양변을"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "문자 계수가 포함된 일차부등식을 확인한다.",
+    "goal": "수직선 해와 비교하여 a + b의 값을 구한다.",
+    "method": "x항과 상수항을 이항한 뒤 5 + a로 나눈다.",
+    "condition": "a < -5 조건에서 5 + a가 음수임을 고려해 부등호 방향을 바꾼다."
+  },
+  "how": "5x - 3 <= -ax + b에서 5+a < 0이므로 부등호가 바뀌어 경계값 (b+3)/(5+a) = -1로부터 a+b = -8로 판정하였다."
+}
