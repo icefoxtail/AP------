@@ -309,7 +309,13 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   const js = fs.readFileSync(path.join(dir, 'diagnostic-report.js'), 'utf8');
   const view = fs.readFileSync(path.join(dir, 'diagnostic-report-view.js'), 'utf8');
   assert.strictEqual((html.match(/<section class="sheet"/g) || []).length, 2, 'A4 두 쪽');
-  assert.ok(html.includes('<base href="../">'), '자료 읽기 길이 archive/ 기준이라 base가 필요하다');
+  // 이 파일의 src·href는 모두 파일 위치(assessment/) 기준이다(배포 검사도 그렇게 푼다). base 태그는 쓰지 않고, archive/ 기준으로 data/…를 읽는 자료 층을 위해
+  // document.baseURI만 한 칸 위로 맞춘다.
+  assert.ok(!/<base\b/i.test(html), 'base 태그를 쓰지 않는다');
+  assert.ok(html.includes('Object.defineProperty(document, "baseURI", { value: new URL("../", location.href).href })'), '자료 읽기 길의 기준 주소는 archive/');
+  assert.ok(html.indexOf('defineProperty(document, "baseURI"') < html.indexOf('archive2-boot.js'), '기준 주소를 맞추는 줄이 자료 층 스크립트보다 먼저');
+  assert.ok(!/id="inOrg"|id="inMemo"|<textarea/.test(html) && /ORG_NAME = "AP 수학학원"/.test(js), '학원명은 상수 한 곳, 선생님 의견은 입력 없이 빈칸');
+  assert.ok(!/inOrg|inMemo/.test(js), '학원명·의견 입력을 읽지 않는다');
   assert.ok(/@page\s*\{\s*size:\s*A4;\s*margin:\s*0/.test(css) && /break-after:\s*page/.test(css) && /height:\s*296mm/.test(css), '인쇄 쪽 나눔 고정');
   assert.ok(/@container \(max-width: 640px\)/.test(css), '휴대폰 폭 규칙은 컨테이너 기준(쪽 맞춤 측정과 같은 배치)');
   assert.ok(/print-color-adjust:\s*exact/.test(css));
@@ -323,8 +329,14 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   for (const name of ['diagnostic-report.html', 'diagnostic-report.css', 'diagnostic-report.js', 'diagnostic-report-view.js']) {
     assert.ok(manifest.files.includes('archive/assessment/' + name), name + ' 배포 목록에 있어야 한다');
   }
-  // html이 부르는 같은 폴더 파일이 모두 있다
-  for (const m of html.matchAll(/(?:src|href)="(assessment\/[^"?]+)/g)) assert.ok(fs.existsSync(path.join(root, 'archive', m[1])), m[1]);
+  // html이 부르는 로컬 스크립트·스타일(같은 폴더, ../ 위 폴더)이 파일 위치 기준으로 모두 있다
+  let localRefs = 0;
+  for (const m of html.matchAll(/<(?:script|link)\b[^>]*?\b(?:src|href)="([^"#?]+)/gi)) {
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(m[1])) continue;
+    assert.ok(fs.existsSync(path.join(dir, m[1])), m[1]);
+    localRefs++;
+  }
+  assert.ok(localRefs >= 12, '로컬 스크립트·스타일 12개 이상');
 }
 
 console.log('diagnostic-report-data tests passed');

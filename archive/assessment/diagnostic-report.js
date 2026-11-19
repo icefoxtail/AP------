@@ -5,7 +5,7 @@
   // 선생님이 누르는 문항별 O/X. 계산은 DiagnosticReportData, 문구·그림은 DiagnosticReportView가 맡고
   // 이 파일은 읽어 오기·입력 칸·그리기·쪽 맞춤·인쇄만 한다.
   //
-  // 저장하지 않는다: 학생 이름·O/X·메모는 서버·localStorage·sessionStorage·URL·document.title 어디에도 남기지 않는다.
+  // 저장하지 않는다: 학생 이름·O/X는 서버·localStorage·sessionStorage·URL·document.title 어디에도 남기지 않는다.
   // 새로고침하면 사라지는 것이 맞다. 문항 UID는 시험지 식별값이며 학생 정보가 아니다.
   const $ = (id) => document.getElementById(id);
   const Data = window.DiagnosticReportData;
@@ -13,6 +13,8 @@
   const esc = View.esc;
   const A4_FIT_PX = 1112; // 296mm(약 1118px)에서 여유 6px
   const MAX_UIDS = 100;
+  // 결과지 머리에 찍는 학원명. 입력·설정 없이 이 상수 한 곳에서만 정한다(2026-11-20 사용자 확정).
+  const ORG_NAME = "AP 수학학원";
 
   const state = { questions: [], responses: Object.create(null), labelOf: null, labelNote: "", grade: "", unitCount: 0, report: null };
 
@@ -112,7 +114,6 @@
   function renderTexts() {
     const name = $("inName").value.trim();
     const grade = $("inGrade").value.trim();
-    const org = $("inOrg").value.trim();
     const date = fmtDate($("inDate").value);
     const testDate = fmtDate($("inTestDate").value);
     const n = state.questions.length;
@@ -121,9 +122,8 @@
     $("wScope").textContent = `${state.grade ? state.grade + " 수학 " : "수학 "}${state.unitCount}개 단원`;
     $("wTest").textContent = `${testDate ? testDate + " · " : ""}${n}문항`;
     $("title").textContent = state.grade ? `${state.grade} 과정 종합 진단` : "수학 종합 진단";
-    $("orgLine").innerHTML = `${esc(org)}${org && date ? "<br>" : ""}${date ? "상담일 " + esc(date) : ""}`;
+    $("orgLine").innerHTML = `${esc(ORG_NAME)}<br>${date ? "상담일 " + esc(date) : ""}`;
     $("orgLine2").textContent = [name, state.grade ? `${state.grade} 과정 종합 진단` : "종합 진단"].filter(Boolean).join(" · ");
-    $("memo").textContent = $("inMemo").value;
   }
 
   // ---- 쪽 맞춤: A4 폭(794px)으로 따로 재서, 한 쪽에 들어가는 가장 여유 있는 단계를 고른다 ----
@@ -226,7 +226,7 @@
       state.responses = Object.create(null);
       recompute();
     });
-    for (const id of ["inName", "inGrade", "inOrg", "inDate", "inTestDate", "inMemo"]) {
+    for (const id of ["inName", "inGrade", "inDate", "inTestDate"]) {
       $(id).addEventListener("input", () => {
         if (!state.report) return;
         renderTexts();
