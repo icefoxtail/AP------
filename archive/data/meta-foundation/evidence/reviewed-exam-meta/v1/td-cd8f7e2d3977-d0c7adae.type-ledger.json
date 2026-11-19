@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-cd8f7e2d3977-d0c7adae",
+  "sourceArchiveFile": "original/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_042eabff67303fde477db2f647db166b71a15ab9503f46dec796b57b352f2326",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "step": "삼차식을 (2x-3)(2x-1)(2x+1)로 인수분해해 실근의 구간을 판정한다.",
+      "note": "사잇값 정리도 가능하나 제공된 해설의 결정적 단계는 직접 인수분해이다.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

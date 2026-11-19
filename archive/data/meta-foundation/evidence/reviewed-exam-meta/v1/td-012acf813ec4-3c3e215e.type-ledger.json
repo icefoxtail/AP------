@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-012acf813ec4-3c3e215e",
+  "sourceArchiveFile": "original/middle/m3/2final/25_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8b5dec845030d47a40f86f68959fa85eef95fea02cd589f7056e65a2f925967d",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "step": "평균9,중앙값5,동률최빈값2와3을 확인하고 짝수 중앙값의 가능성과 극단값30의 영향을 검토해⑤를 고른다.",
+      "note": "cross_grade_key: 중1 대푯값 정의 진술 판정 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_70b3cb575c4fb247abaf2f2b4bdb207b692b1b510c19423bd130ffa9d90caa07",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "첫 중앙값조건5≤a≤11과 둘째 a≥8을 교차하여8,9,10,11의 네 자연수를 센다.",
+      "note": "cross_grade_key: 중1 중앙값 조건 복원 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_11ad3389bc04164aa75121e299247470e23a087f9090c6b58ead723311c0905a",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEAN",
+      "step": "두 집단의 총점72a+66b와 전체평균68(a+b)를 같게 놓아4a=2b에서 인원비1:2를 구한다.",
+      "note": "cross_grade_key: 중1 평균 조건 활용; 필요 TPL: 가중평균에서 집단 크기 비 역산 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

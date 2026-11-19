@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-e54cf01fce16-30d7cb94",
+  "examUid": "24_연향중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "800ed2e40184b8cf4d60341cdf0f70753fac2667",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-30d7cb94.type-ledger.json",
+        "sha256": "cabf500e01638b5c0a8cc843230cdef5048a96cd8af1c1796f880947d2595b2a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f50a5fd904ccd1a3ba4ed6d5b4caf469d5ef1064a10f1bcd07f03b9e98ceaf91",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "최소20,최빈27 두 명을 놓고 평균25의 총합100에서 나머지26을 복원하여 중앙값26.5를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "c7210b20f583bbe3309c33f35cedf8ee58a524038925f95f7b433bc3a7fc3046",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-30d7cb94.type-ledger.json",
+          "sha256": "cabf500e01638b5c0a8cc843230cdef5048a96cd8af1c1796f880947d2595b2a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9d24dcd6a040a4bbc8c8e9fe04d261fd599d4f95d7d22e2f44d37176581ded46",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "첫 중앙값8로 a≤8,둘째 중앙값12로 b12를 얻어 평균b-2=10에서 a7을 복원해 합19를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "7e624e8fd15d10d57c5735f7fa71815ac5c8332e0d7dfec17d4c4a5967e3b011",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e54cf01fce16-30d7cb94.type-ledger.json",
+          "sha256": "cabf500e01638b5c0a8cc843230cdef5048a96cd8af1c1796f880947d2595b2a"
+        }
+      ]
+    }
+  ]
+}

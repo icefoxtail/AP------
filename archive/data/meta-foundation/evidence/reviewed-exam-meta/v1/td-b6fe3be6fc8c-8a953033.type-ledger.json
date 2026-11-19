@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b6fe3be6fc8c-8a953033",
+  "sourceArchiveFile": "original/middle/m3/2final/15_신흥중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "step": "접선과 반지름의 직각에서 (r+1)²=r²+9로 r=4를 구하고 삼각형 넓이6.",
+      "note": "필요 TPL: 접선 직각삼각형의 반지름 결정: 접선 길이와 외부점까지 거리를 반지름으로 나타내어 제곱 관계 방정식으로 반지름과 넓이를 구한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "step": "내접·외접 중심거리로 두 직각삼각형을 세워 x²=48r 및 x²=576-48r,작은반지름6.",
+      "note": "필요 TPL: 접하는 원의 중심거리 연립: 두 원의 내접·외접 거리와 수선을 이용해 피타고라스 식 두 개를 세워 반지름을 결정한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "step": "현의 중점M에서 PM=6,AM=2이며 두 직각삼각형 제곱식 차로 PB²=32,30도 높이를 적용해 넓이4√2.",
+      "note": "필요 TPL: 접선과 현의 수선으로 길이 소거: 동일 반지름이 포함된 두 피타고라스 식을 빼 접선 길이를 구하고 삼각비로 넓이를 계산한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

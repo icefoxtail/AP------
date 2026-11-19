@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-388206f35ff0-e9a8888d",
+  "sourceArchiveFile": "original/middle/m3/2final/16_신흥중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_98254ca4e48810015fa935f5adc121379ea82507740d508f1705b98e398e9894",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "step": "두 사분원에 내접하는 중심거리10-r와 밑변중점거리5,높이r로 (10-r)²=25+r²,r15/4.",
+      "note": "필요 TPL: 접하는 원의 중심거리 방정식: 원의 내접 중심거리와 접선까지 수선 길이를 반지름으로 나타내어 피타고라스 방정식으로 반지름을 구한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

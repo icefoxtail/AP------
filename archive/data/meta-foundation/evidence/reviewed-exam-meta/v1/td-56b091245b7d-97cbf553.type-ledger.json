@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-56b091245b7d-97cbf553",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_91c913fad9da531db08233134cbd239687a0621d38b662760355f67bf352ad74",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+      "templateKey": "TPL_MOVE_FOLDING_REFLECTION_REFLECTION_EXISTING",
+      "step": "접는 선EF가 원래EC와 반사된EA의 각120도를 이등분하므로 FEC=60도이고 평행선으로 EFD=120도이다.",
+      "note": "새 TPL 제안: 직사각형 접기에서 접는 선의 각이등분과 평행선으로 하나의 목표각 계산. ACTIVE 대칭이동 PT로 직접 선택. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

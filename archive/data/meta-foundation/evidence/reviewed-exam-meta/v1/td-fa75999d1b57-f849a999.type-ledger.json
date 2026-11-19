@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-fa75999d1b57-f849a999",
+  "sourceArchiveFile": "original/middle/m3/2final/19_연향중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_19c8e87f1f3d5f77ccebbf891b03ad3bf9ae5d1e9f3c694a0a26943963dace8f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "반지름10과 중심거리6에서 반현8,같은현CD16과 높이6으로 넓이48.",
+      "note": "OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_456ad8e0973274b9e4d0efe0b7d4b5e5a55df61497878e812b93aff04876f7f1",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+      "templateKey": null,
+      "step": "중심 O에서 두 현 BC, AC에 내린 수선의 길이가 같으므로 BC=AC임을 얻고, 이등변삼각형 ABC의 두 밑각이 같음을 이용해 x=40°를 계산한다.",
+      "note": "딥시크(opencode-go/deepseek-v4.1-flash) 채움 + Sonnet 검수 1회(수정; 딥시크값 PT_CIRCLE_LINE_RELATION/TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD) — type-redo 2026-11-19",
+      "figure": false,
+      "check": "DS_SONNET_REVIEWED",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-20261119.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e2a9a3fb66f464ab39736fe5d2343108ac2933b610aae0510b2808ad9bf0df0",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "step": "접선등길이로 CD13과 두높이차5를 얻어 지름√(169-25)=12,반지름6.",
+      "note": "OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e139761a3219a8d493129b08d4d26866eae617586f605ec72cffc586886d563",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "step": "현중점수선의 중심거리r-20과 반현40으로 r²=(r-20)²+40²,반지름50과지름100.",
+      "note": "필요 TPL: 현의 높이로 원의 반지름 구하기: 반지름을 미지수로 두고 현의 반길이와 중심에서 현까지 거리의 피타고라스 식을 세워 반지름을 결정한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

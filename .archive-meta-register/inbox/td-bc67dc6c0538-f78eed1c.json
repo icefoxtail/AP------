@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-bc67dc6c0538-f78eed1c",
+  "examUid": "23_순여중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "f5ef767821a0ca8dff0c57c03a5d743faab53d8b",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-f78eed1c.type-ledger.json",
+        "sha256": "9bb6008dccd22b6dd280c665afa3e56ab60c562a303ee62c0175e1d60ac87885"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7bad7d26ae7de8294530f64677fd12b3d9500a2f1f202d3582047e0a3918bb76",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "최빈값7이 되려면 x7임을 정하고 정렬한 가운데 두 값6과7의 평균6.5를 중앙값으로 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "87291c633be0873df474bb260c82bc66f1ee7172fb8b462b959e79bb930f89d8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-f78eed1c.type-ledger.json",
+          "sha256": "9bb6008dccd22b6dd280c665afa3e56ab60c562a303ee62c0175e1d60ac87885"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_63713dcdb9b9bacfcad44be13ddcbc613c2db86ec2f43dea60f69e65a93abb92",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "두 번째 평균10에서 a+b19를 얻어 보기의 a7,b12를 고르고 첫째 중앙값8과 둘째 중앙값12를 정렬로 검증한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "32dc3801d4652b4b341d660770e1bcb62845ef9a6399f13a30e775013b5d3471",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-f78eed1c.type-ledger.json",
+          "sha256": "9bb6008dccd22b6dd280c665afa3e56ab60c562a303ee62c0175e1d60ac87885"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6adc36febc326c1cc8bbb80f972e03bf1d15f953074a5bd78aa38f48ae72cfdb",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "최빈값18의 두 사람과15,9를 고정하고 평균14.8의 총합74에서 남은14를 복원하여 정렬 후 중앙값15를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "7307c44c3af3f47837db07676609debb9d19d1d29ec624292b73df8b3fb97822",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-f78eed1c.type-ledger.json",
+          "sha256": "9bb6008dccd22b6dd280c665afa3e56ab60c562a303ee62c0175e1d60ac87885"
+        }
+      ]
+    }
+  ]
+}

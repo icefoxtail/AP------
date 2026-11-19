@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-60cac2541fbb-64c6ba47",
+  "examUid": "23_동산중_1학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_동산중_1학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "50fbf457f2be2402f14317423bec3d1cd07c0592",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-60cac2541fbb-64c6ba47.type-ledger.json",
+        "sha256": "1eb95f34ef09bfee7da0964633dd57ca52c65e6afc138cc7a673db5fd60f8cbd"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ddc90ba52a4fef9441cf65495e964df02180b2a04e41994adfcfbdfaad8b66ee",
+      "sourceOrdinal": 25,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+        "templateKey": "TPL_SPECIAL_QUADRILATERALS"
+      },
+      "rationale": "세정사각형의동일변을써JE=2b-a,HG=|2a-3b|로남는직사각형넓이.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "7cf5e55a9cc50d500fb4108fa1f258af6bf6a54b0802a474178053a9228e39e9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-60cac2541fbb-64c6ba47.type-ledger.json",
+          "sha256": "1eb95f34ef09bfee7da0964633dd57ca52c65e6afc138cc7a673db5fd60f8cbd"
+        }
+      ]
+    }
+  ]
+}

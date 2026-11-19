@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f4f014fa53d7-ed392fbd",
+  "sourceArchiveFile": "original/high/h1/1mid/20_금당고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_be2df714e7a1a205d2da818b4eeb4ac80beadc857dd6c72778073be7a0c2144e",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+      "step": "실수근호정의와비영조건으로x,y,z양수, x≤y에서절댓값과√제곱을부호에맞게풀어−y−2z.",
+      "note": "경로는고1이나내용은중3제곱근의부호성질. ACTIVE정의일치,scope오류없는후보밖선택.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

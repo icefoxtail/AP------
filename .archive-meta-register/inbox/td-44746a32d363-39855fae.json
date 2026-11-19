@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-44746a32d363-39855fae",
+  "examUid": "23_왕운중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/23_왕운중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "d14eb5592171718fe8655ab8fe8ef710cc2946e6",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-44746a32d363-39855fae.type-ledger.json",
+        "sha256": "0efda871d4e209c2086e637b69673a52eaadff02bcc00028d663b55930acc0ee"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_bc1b038b63d37c296c6e496f81fe14592683c4b461dda66845ebb01e06397246",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC"
+      },
+      "rationale": "AB=OB와 반지름 OB=OC에서 밑각을 연결하면 중심각 BOD:COE=1:3이므로 호CE는12π의3배36π이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "693c15d5fdc88bd6998a189678850efdd33f4fbc7570449a50bb4d482fd156a1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-44746a32d363-39855fae.type-ledger.json",
+          "sha256": "0efda871d4e209c2086e637b69673a52eaadff02bcc00028d663b55930acc0ee"
+        }
+      ]
+    }
+  ]
+}

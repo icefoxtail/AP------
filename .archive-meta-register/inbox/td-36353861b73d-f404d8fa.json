@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-36353861b73d-f404d8fa",
+  "examUid": "비상_대수_삼각함수_중단원_고2_유형심화",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_중단원_고2_유형심화.js",
+  "expectedSourceBlobSha1": "65ebde811d545f13c3ec8830ac57b766648218c0",
+  "expectedQuestionCount": 18,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-36353861b73d-f404d8fa.type-ledger.json",
+        "sha256": "38ec83ebb81a937c8b37572425bae01b19318e7158be48a18db8a139b048cb45"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1f1776cc9a34b079c9aa356d606a3151c1660b4562bdfa2429832963c3ebb869",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+        "templateKey": "TPL_TANGENT_CONSTRUCTION"
+      },
+      "rationale": "접점π/4에서 tanx의 도함수sec²x=2를 접선 기울기k로 둔다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I"
+      },
+      "textBindingFingerprint": "fac188092c97a92015da4449f0285f6ec2ce893f5129b29e9bd05659d0abc3e2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-36353861b73d-f404d8fa.type-ledger.json",
+          "sha256": "38ec83ebb81a937c8b37572425bae01b19318e7158be48a18db8a139b048cb45"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2ebe42a315ac-25e8eb2b",
+  "examUid": "21_왕운중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/21_왕운중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "e0b92aca8281a34f69104a9f34ea55ec1c704540",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ebe42a315ac-25e8eb2b.type-ledger.json",
+        "sha256": "593e7db619c3c2a8b05c03fedcaa8356bf270e58b1bb6e3ae623c6f99b6aae39"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_df0d572b86b671ec55d9b1a01bcfc8e698cacb59cd1c80fca3b3a8c0006ad495",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH"
+      },
+      "rationale": "이등변 높이√(45-36)=3, 중심거리 R-3과 반현6의 식R²=(R-3)²+36으로 R15/2.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "3406e8658612e7fa88e88627825dfec84b8512c330d5d4bbec64ca00b6bc5475",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2ebe42a315ac-25e8eb2b.type-ledger.json",
+          "sha256": "593e7db619c3c2a8b05c03fedcaa8356bf270e58b1bb6e3ae623c6f99b6aae39"
+        }
+      ]
+    }
+  ]
+}

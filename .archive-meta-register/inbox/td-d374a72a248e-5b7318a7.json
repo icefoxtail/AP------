@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-d374a72a248e-5b7318a7",
+  "examUid": "22_팔마고_1학기_중간_고2_수학I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_수학I.js",
+  "expectedSourceBlobSha1": "307aea00e7db79e1216cdf2d04d71baf013e3a97",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+        "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_1762efe73d005a8c8e5cf277c5719dd20a0bec932b81f033db7256a2e4829355",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+        "templateKey": "TPL_H22A_01_LOG_DEFINITION_073"
+      },
+      "rationale": "지수와 로그의 역관계로 2^(log₂3)=3, 이어3^(log₃8)=8을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "69cb8983576688dc965e6a07062c3f5845e16bb2ad7091d4d900f73cd34a8d05",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fc0a90610007480f0fa2778591346959ec30858c4d83720914b8b147d984cc1b",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPONENT_CALCULATION",
+        "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION"
+      },
+      "rationale": "중첩근을 유리수 지수로 바꾸어 a^(1/4)=a^((1+k/3)/6)의 지수를 비교하면 k=3/2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "280f136fdaf6820227ed872ea7cf2393a20943d3e031007bf30b79350ba7d5d4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_65a43b1aeef4b3007a8c23b303392a58bab7360f72007dc57a9fb39b75a10d6d",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+        "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT"
+      },
+      "rationale": "2^(-9/n)이 자연수일 조건 -9/n이 양의 정수임을 사용하여 n=-1,-3,-9의 합-13을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "aae37d087439056d28a5c40bf77c34d3dd93e9af11dcf11ec2543100c5fcf2f7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_469febb30074f41cfd276380f1d44a97411d2e1ade81c9291ad67573c266b7f0",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+        "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_SYMMETRIC"
+      },
+      "rationale": "로그근의 합5와 곱3을 밑변환식 3(x²+y²)/(xy)에 넣어19를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "7f2c5339f9652e4148b577d798d984eb2ca3a42c7f2ac1bef3d213e7cba5a442",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5b8dc15d0e05e9c3ac8b954762e18d36b191adfbd0e25d9cc19c3643ca7b8d1a",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_APPLICATION",
+        "templateKey": "TPL_LOG_APPLICATION_GROWTH"
+      },
+      "rationale": "기억량 조건을(t+1)^0.3≥4로 바꾸고 상용로그로 log(t+1)≥2를 얻어 최소99개월을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "93e2c0cabbc7e8d6a449622d8885a2a4e2ff58e9f2431df5420f44511dd00be5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c53c74a975c567e8bc42a622af8cda51f7b2166653c7c02d0cf06c42ce493611",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+        "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO"
+      },
+      "rationale": "tanθ의 이차식 근4,-2 중 제2사분면 부호로 -2를 고르고 제곱합으로 sin=2/√5,cos=-1/√5를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "99acb4cd8aea6a8580c050807576ac42ab80e5c21ce520cc11612f26da7864c1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bf774b72ea765ea86fbdf292277086d16cc79a081ec773c0e647f66143450441",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LOG_APPLICATION",
+        "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE"
+      },
+      "rationale": "로그의 일대일성으로1/c=3/b+2/a를 얻고 공통지수의 로그를 소거하여 logk=3log3+2log2, k=108을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "068538094a34d098275fab5768a467a03dd9c1da488f9632852dca045615f823",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_06d42ec650e91d5c4123b0b1d378f00e1fa40ca03b1bbe2d77534e37d03e0785",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+        "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY"
+      },
+      "rationale": "한 주기에서 f(x)+f(x+1)=2인 넓이 상보성을 이용해 기본넓이2를 얻고 세로축척1,1/3,1/9,1/27로 합산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "80fbf19d30d744028f49648ba72cd6797af6d2777e7eb4af101b88edc04c1a3e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8cabca164bf5838aae2cdfcd3f3ef55c28be4f2a13430c4763b53052de5d2663",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+        "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION"
+      },
+      "rationale": "축대칭으로 cosβ=cosα, tanγ=tanα임을 얻어 곱을 sinα=2/3으로 환원한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "e1fe52f066816f99173cb262fc8da06340347260f260956a77b4566810c57f2c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_55ace0d8f8f1ff14dbbc7d05d43dba04e8e0381e72ac7e04b7e303b3605f2391",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+        "templateKey": "TPL_SECTOR_FIXED_PERIMETER_MAX_AREA"
+      },
+      "rationale": "둘레조건2r+rθ=12로 넓이를9-(r-3)²로 바꿔 r=3,θ=2에서 최대넓이를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "45fadb9de66b68545c01b50d0570782e7541eec425e69dcd0a8751a6201cd841",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d374a72a248e-5b7318a7.type-ledger.json",
+          "sha256": "83073dce4a1cba8a1756b69235998f7d9b521491d21caef89c0cecc9f87460e6"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e5fbc3db85d1-a0ef0d1f",
+  "sourceArchiveFile": "similar/high/h1/1mid/25_강남여고_1학기_중간_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2fb3a728a1de0adf740988a2fd9a58f9ab9a6720be57ce22f21ffabfeaf54bea",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_VOLUME_SUM",
+      "step": "중앙정육면체와여섯팔부분으로분할하여x³+3x²(y−x)=x²(3y−2x).",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인. 경로는 고1이나 결정 단계는 중1 합성입체 부피 합이므로 내용 기준 ACTIVE 정의 선택. 후보 밖 직접 정의·부모 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c1db9bd3c3c8ec1c0d423d1de1aa4b0e763e1c828d59186fd60daa1162bb98a9",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+      "templateKey": "TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS",
+      "step": "통분후계수비교c=2,b+c=0,a+b+2c=5에서a=3,b=−2,합3.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 단답형인데 answer가③으로 저장됨. 본문·해설의 수치답은3이며 유형판정에 영향 없음.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1mid.jsonl"
+    }
+  ]
+}

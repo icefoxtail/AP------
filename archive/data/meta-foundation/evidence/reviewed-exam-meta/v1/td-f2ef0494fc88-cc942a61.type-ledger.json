@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f2ef0494fc88-cc942a61",
+  "sourceArchiveFile": "original/high/h1/1final/22_매산여고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d9885bdc11cc47e9d64b808b432e6a7da8012b933eb129c72741e0aa6e24e495",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_PARALLEL_PERP_COMBINED",
+      "step": "수직 조건에서 a=−2/3, 평행 조건에서 a=−2를 얻고 일치하는 a=1을 제외하여 합−8/3.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_70725d551ff7bbf6dd5e028142232af1e79168f2705922f2d497faa2825cb5e4",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "step": "중심 거리 |k+15|/√26<√26에서 −41<k<11.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1738829299924a7c3fe53e5d9dd702f0a65db6f8d510c61562b4d3a718b0a0d6",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_QUANTITY",
+      "step": "의자 수 c, 회원 n에 n=4c+5와 5(c−4)<n≤5(c−3), n≤85를 결합하면 c=20,n=85.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. PT만 일치. 해설은 마지막 사용 의자까지 가득 찬 n=5(c−3)을 바로 가정하지만 일반적인 남는 의자 조건을 부등식으로 해석해도 상한85와 결합한 답은 동일. 도구 오류: TPL_NOT_ACTIVE 제안 TPL명: 남는 좌석과 인원 상한의 정수 조건. 정의: 인원과 좌석 수의 관계를 등식·부등식으로 세우고 정수성 및 인원 상한으로 유일한 해를 결정.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e5280d8692a3eec21e0dead754ff5232ae1d52fe147ac2410866b5a5c2bd948",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_CONDITION_PARAMETER",
+      "step": "두 직선까지 거리의 같음에서 4x+3y−11=±(3x−4y−2)를 풀고 양의 기울기인 7x−y−13=0을 선택한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cce16d8aa467bc8af8b6b4631605bddd005926ff2e9ad7ee63b7cf13e84f92b5",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+      "step": "t=x²로 치환하여 t=a−2,2a+3의 양수·영·음수 여부를 세면 실근1~3개인 정수a는−1,0,1,2.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_71d05e32eabed288ad875d3e21a6173ef89fb53459854e8b1b0f8c7a246dd2bc",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_DISTANCE_EXTREMUM",
+      "templateKey": "TPL_DISTANCE_EXTREMUM_SINGLE_POINT",
+      "step": "거리제곱 9(k+1)²/(5k²+4k+1)≤18의 등호는 k=−1/3이므로 최대거리와 곱은−√2.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_666303d649b235ebbd05ac8e4635f32c4abe4d9176a69137eaf26725e22e6641",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT",
+      "step": "접선 절편 b=3을 구한 뒤 두 축과 직선의 접함 거리조건을 중심 부호별로 풀면 최소 r=3/(2+√2), p+2q=0.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a9b979189be16e949d8e9863c2d787d7e15af57172fe809228111768278e6c98",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+      "step": "무게중심의 AB까지 거리는 P의 거리의1/3이므로 중심 거리24/√10에 반지름3을 더해3으로 나누면1+4√10/5.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_18db492f53a0281248aef319a6e48dc72b503d70793dd0d960fb2cd89ce42d7d",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+      "step": "첫 부등식의 정수5개 a−2부터a+2를 둘째 부등식이 모두 포함해야 하므로 a−1의 부호별 끝점조건을 풀면 a=1,2.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 원본·해설 그림을 source blob으로 직접 열람하여 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

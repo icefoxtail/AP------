@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f6a6026cf464-d59df5e7",
+  "sourceArchiveFile": "original/high/h2/1final/19_순천여고_1학기_기말_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-redo-ds-20261119",
+    "commit": "88048e99a89d03f62a267a7273b878c81dd62746",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-20261119.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_19a64c5a2170bf27a052066059073cef7a6e27bfa17f633b03a529d6dcd7178d",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+      "templateKey": null,
+      "step": "C>90°일 때 수선의 발 H가 C 바깥에 놓이는 것을 이용해 cos(180°−C)=−cos C로 두고 a=BC=BH−CH=c cos B+b cos C가 됨을 확인하는 단계",
+      "note": "딥시크(opencode-go/deepseek-v4.1-flash) 채움 + Sonnet 검수 1회(수정; 딥시크값 PT_TRIGONOMETRIC_DEFINITION/-) — type-redo 2026-11-19",
+      "figure": false,
+      "check": "DS_SONNET_REVIEWED",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-20261119.jsonl"
+    }
+  ]
+}

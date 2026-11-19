@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-9029144df9cd-816bc5b3",
+  "examUid": "23_충무고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "ad93321fbd2e3436f1d539af542ce6f1d276bd9c",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9029144df9cd-816bc5b3.type-ledger.json",
+        "sha256": "3682954f825000fb31161de88dea91a68c57578f77de5b118cb062cc6eb2784d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_59947016d930a96a30ae1d5641f09e3a38a8ec8a8ace9994ea84bb20bb864736",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TRIANGLE_CENTERS",
+        "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC"
+      },
+      "rationale": "내접원 반지름과 반둘레로 BC=3√2와 높이 10/3을 구한 뒤 평행선의 닮음비 7/10을 제곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "dd32aae282db0058f3b420d844747a6f1a439baf65bb32c66d3397bae147a4f7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9029144df9cd-816bc5b3.type-ledger.json",
+          "sha256": "3682954f825000fb31161de88dea91a68c57578f77de5b118cb062cc6eb2784d"
+        }
+      ]
+    }
+  ]
+}

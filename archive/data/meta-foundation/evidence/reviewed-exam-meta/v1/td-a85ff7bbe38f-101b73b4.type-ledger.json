@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a85ff7bbe38f-101b73b4",
+  "sourceArchiveFile": "original/high/h1/2final/24_강남여고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_b1ecca715af06e02aafef2bb1201fe49f12732eea4930798f222bb8004532f56",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_IDENTIFICATION",
+      "step": "다항식의 비로 나타낼 수 있는지 확인해 문자가 근호 안에 있는 식을 제외한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc867be63c41606401b45c304421ff35cb086b5e27f9de90c909dd59530eb1e2",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "step": "근호 안 2x-4≥0과 음의 제곱근 부호로 정의역·치역을 정한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4b7783b72eaa873cb30cc866f1f65072e3fd7e230adda0ff31ce6e14b8c5917e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "step": "3+1/(x-2) 표준형으로 변형해 수직·수평 점근선을 읽는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4ef90fba11c249cf136cbf5f23f869e6d0f196f4eae980d0abb609b9d749108b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "x를 x-2로 바꾸고 함수값에 1을 더해 평행이동식을 만든다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab0c9ec3c48b69a7702650a99e6aaf6c3090661b379d0a70dcf90ec8830fa190",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "step": "x를 유리화한 뒤 √x=t로 치환하고 두 분수를 통분해 2(x+1)/(x-1)을 계산한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dcee119b89b692ec482a23ce24cf3ba876c66276e1a23ab7893b9fc2e1598e44",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "f³=I를 계산하고 1662가 3의 배수임을 이용해 원래 입력으로 돌아간다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_34b44884347051cf12fece2f41074f33a77b42133a1a8a57f811a8b40518e7ee",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "증가함수의 왼쪽 끝에서 m=4를 구하고 오른쪽 끝 최댓값12로 a를 정한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_be1a3a88a92ef1f91294fa6783881109478ef52140a1c9b7f198523e79a1dceb",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "step": "두 곡선을 x=y²-5,y²로 써 수평폭5가 일정한 영역을 직사각형 넓이로 바꾼다.",
+      "note": "원문 의심: 그림의 왼쪽 곡선 라벨은 √(x-5)처럼 보이나 위치·본문·해설은 √(x+5)와 일치함; 본문 기준 판정.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a355f4e778a261ea85f43b6ac014cf8fd935a347e4eb2edd799a8c37d21c8cb",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "step": "역함수 합성식 양변에 원함수를 역순으로 적용해 a=g(f(2)),b=f(g(2))를 계산한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4687891178dea50764a0f04fa9b3fc7507e66f6ba5cd492bac747abe828b95fa",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "step": "제3사분면이 생기도록 y절편 2-k/3<0을 요구해 최소 정수 k=7을 얻는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1aeabf3ae53dcd416e9b14d0a826bbd8fb8686c7b206f47cbf17e1a449102f9e",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+      "step": "무리함수 그림의 시작점·지나는 점에서 계수를 정한 뒤 유리함수 두 점근선을 구한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8eee447b3ac6-fc108f49",
+  "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_dab4ece8021bd06d04e371287ac5e0056130407abdcd9de786c529334bd78683",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_SELECT",
+      "step": "극단값100 때문에 중앙값을 적절한 대표값으로 고르고 정렬한 가운데 두 값8과11의 평균9.5를 구한다.",
+      "note": "cross_grade_key: 중1 대푯값 해석 적용; 필요 TPL: 극단값에 따른 대푯값 선택과 계산 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_98e148d9c35a68ab03c434440cb581926ff7f21592852e2b4d7cd0d4aa980170",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "step": "평균과 중앙값은 유일하지만 최빈값은 동률이면 둘 이상이라는 정의로 모든 대표값이 한 값이라는②를 배제한다.",
+      "note": "cross_grade_key: 중1 대푯값 정의 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

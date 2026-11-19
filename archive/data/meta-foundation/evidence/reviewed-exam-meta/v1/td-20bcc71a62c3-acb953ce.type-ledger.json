@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-20bcc71a62c3-acb953ce",
+  "sourceArchiveFile": "original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8fa64d9fd46dda4c43ef757bc2c902148daf2dc6d3a8829e95f0c3ac95b06985",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "step": "코사인법칙으로 현CD를 구한 뒤 중심에서 현 중점까지 거리와 반지름의 차로 높이를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a16bd66f0353618442c20b9c052cbcec2f63bc951b2f8462941b5fe57d70a5fb",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_CONTACT_CHORD_LENGTH",
+      "step": "접선의 수직성과 두 접점 현의 중점 관계로 직각삼각형 닮음을 적용해 AB를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c1d3d0ac153fdf9bb3ef82dce25f1e770890a5e3b0d519659c0d66597b1c6e48",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+      "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+      "step": "두 직선 위 P(1,2),Q(1,-3)의 거리를 구하고 코사인법칙으로 둔각을 결정한다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

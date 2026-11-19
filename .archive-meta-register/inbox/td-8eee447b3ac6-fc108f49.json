@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-8eee447b3ac6-fc108f49",
+  "examUid": "23_풍덕중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/23_풍덕중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "9ebb58b3b1b491a6077bec02178d8a148bed9ee2",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8eee447b3ac6-fc108f49.type-ledger.json",
+        "sha256": "c2e50a2e5cb6435acf3f1fb33d86bf8b620a55efd85d282e1c2989b197e84102"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_dab4ece8021bd06d04e371287ac5e0056130407abdcd9de786c529334bd78683",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_SELECT"
+      },
+      "rationale": "극단값100 때문에 중앙값을 적절한 대표값으로 고르고 정렬한 가운데 두 값8과11의 평균9.5를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "9040376bc442c4a4c6057b041f14a4e3febec0a0842d7ffab8ad6896ddd73f92",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8eee447b3ac6-fc108f49.type-ledger.json",
+          "sha256": "c2e50a2e5cb6435acf3f1fb33d86bf8b620a55efd85d282e1c2989b197e84102"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_98e148d9c35a68ab03c434440cb581926ff7f21592852e2b4d7cd0d4aa980170",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT"
+      },
+      "rationale": "평균과 중앙값은 유일하지만 최빈값은 동률이면 둘 이상이라는 정의로 모든 대표값이 한 값이라는②를 배제한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "205f362126de2e4c2b1e9444940eb250024e21c44ef03d22cccc48b9cd84ff47",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8eee447b3ac6-fc108f49.type-ledger.json",
+          "sha256": "c2e50a2e5cb6435acf3f1fb33d86bf8b620a55efd85d282e1c2989b197e84102"
+        }
+      ]
+    }
+  ]
+}

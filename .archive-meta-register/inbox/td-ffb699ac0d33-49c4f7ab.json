@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-ffb699ac0d33-49c4f7ab",
+  "examUid": "이차방정식_중3_유형_3월모의고사",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m3/이차방정식_중3_유형_3월모의고사.js",
+  "expectedSourceBlobSha1": "cc3e82597ba60579a75272889739ed0628654335",
+  "expectedQuestionCount": 4,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffb699ac0d33-49c4f7ab.type-ledger.json",
+        "sha256": "ffbc01672cc9b822dd97e50e1a26b11c4469b9ebf81fdd33d6b7471c2d0e25f5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d8dda75a98e2cb59ec7a1a2419ed01f18f283c1d3c1819005d97d132d24c87f0",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_ROOT"
+      },
+      "rationale": "주어진 근 x=3을 대입해 9-6a+5a=0에서 a=9를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "68035ac66cc8bbda7314f5416357d69bdcf894eb1bfea36889fe5607259c9f1b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffb699ac0d33-49c4f7ab.type-ledger.json",
+          "sha256": "ffbc01672cc9b822dd97e50e1a26b11c4469b9ebf81fdd33d6b7471c2d0e25f5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a94ca452f18ed5ee463577d709fcacd1e3697e5e6753d2304c6e603edc9531c2",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+        "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT"
+      },
+      "rationale": "x=a±3√3으로 풀어 작은 근이 양수인 a>√27에서 최소 자연수6을 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "61a38abd1f6c93e1b7998bbc9a9a7f53b3e73c4316c7ebfa16679522ee52be4c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffb699ac0d33-49c4f7ab.type-ledger.json",
+          "sha256": "ffbc01672cc9b822dd97e50e1a26b11c4469b9ebf81fdd33d6b7471c2d0e25f5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_01b0bc1a508291450f52eed0e633ed44dcddd702a2272358827120085ed5d8d6",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_ROOT_FORMULA"
+      },
+      "rationale": "근의 공식으로 (3±√13)/2를 얻고 양수인 (3+√13)/2를 택한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "4aee7a417139e62c8395980f42d9bf2bf47917ce743cd3e385ade57a331321fd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffb699ac0d33-49c4f7ab.type-ledger.json",
+          "sha256": "ffbc01672cc9b822dd97e50e1a26b11c4469b9ebf81fdd33d6b7471c2d0e25f5"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_adc6da68583e928e15808008fde2875a2208de1891dce89cce6a2be70302e0c9",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION"
+      },
+      "rationale": "공통근 -c를 대입해 a=c+27/c,b=c-18/c. c가 27,18의 공약수이고 b>0인 조건에서 c=9,a=12,b=7을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "6bab51cde779ae1a055d32da564eed142b36178eb390057ca0ea88e8dbc9344b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ffb699ac0d33-49c4f7ab.type-ledger.json",
+          "sha256": "ffbc01672cc9b822dd97e50e1a26b11c4469b9ebf81fdd33d6b7471c2d0e25f5"
+        }
+      ]
+    }
+  ]
+}

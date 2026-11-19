@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-cd8f7e2d3977-d0c7adae",
+  "examUid": "26_순천여고_2학기_중간_고2_미적분I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I.js",
+  "expectedSourceBlobSha1": "81aeccd915a48789e63c62934fe4b7c0be6485b5",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8f7e2d3977-d0c7adae.type-ledger.json",
+        "sha256": "5f3136994e7502e3b1756705c384d2af6bcd5ac4ec41422b68e0424ecb443377"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_042eabff67303fde477db2f647db166b71a15ab9503f46dec796b57b352f2326",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+        "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT"
+      },
+      "rationale": "삼차식을 (2x-3)(2x-1)(2x+1)로 인수분해해 실근의 구간을 판정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "1546b33a9a9a35e9d3d06253d91836f05022a64c1acfa468a046311770555636",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8f7e2d3977-d0c7adae.type-ledger.json",
+          "sha256": "5f3136994e7502e3b1756705c384d2af6bcd5ac4ec41422b68e0424ecb443377"
+        }
+      ]
+    }
+  ]
+}

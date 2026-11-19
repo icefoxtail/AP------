@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-bd32791d9116-46bc87be",
+  "sourceArchiveFile": "original/high/h1/2final/21_팔마고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_989c1678a9b5692921dcc5797751b36818fb2e40561fa723098bd2550972d44c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_RATIONAL_EXPRESSION_IDENTITY",
+      "templateKey": "TPL_H1_PARTIAL_FRACTION_UNDETERMINED_COEFFICIENTS",
+      "step": "부분분수 우변을 통분하고 분자의 x계수를 비교해 a+b=3을 얻는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b64eca1f09dd5c0ed4a157e2fb3169aff9ed82f82eab474e0d75326053fb23d2",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_IRRATIONAL_EXPRESSION_REAL_CONDITION",
+      "templateKey": "TPL_H1_RADICAL_QUOTIENT_REAL_DOMAIN",
+      "step": "각 근호의 비음수 조건과 분모의 양수 조건을 연립해 0≤x≤1/2를 얻는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "유리함수를 -3+5/(x+1)로 바꿔 점근선·대칭축·이동·사분면 보기를 검증한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3485b41a0a1c7de8306936e49b6d5b8f8715299c7108c5b809ac46b898d6c0d6",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "무리함수의 방향·정의역·치역을 이용해 평행이동과 역함수 정의역 보기까지 판정한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d3dbe11372883afdee62637cb41b0cf395ec4312bc072fadc96287283b5fb8d2",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "역함수를 2+7/(x-3)로 구한 뒤 원함수와 점근선 위치를 비교해 이동량을 정한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_193d36325a80b264e646e1699a243a363cf6ebd4d82bb08265a9bd53b7b484eb",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "step": "원과 두 함수가 y=x 대칭으로 대응하므로 두 현의 기울기가 서로 역수임을 이용한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0fd39837e338093f56bd7115ee5c1c93506f29ad9ab56ad6a00a3630ba4e17be",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_MONOTONE_FUNCTION_COUNT",
+      "step": "f(3)=6을 기준으로 큰 값 두 개와 작은 값 두 개를 택하면 감소 순서가 결정된다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_17e53e3d927b322d527cad6523dc01f8913ab32524449337402a28afaa7f14d6",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+      "step": "유리함수 점근선·절편에서 a<0,b>0,c<0을 읽어 무리함수 전체가 제4사분면임을 얻는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_87b2f4abff17e0bf08726902af7ac65b4f0b8809a746f587fc67fa7f2d7483e8",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "감소함수의 왼쪽 끝 최댓값에서 a=4를 구하고 오른쪽 끝에서 m=-5를 계산한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_32b0adb0c4c0e31c3ae9cf9e73385f80ea7e0c872932903870dac9c76d3e0bb0",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "t=√(4x-8)≥0 치환 뒤 이차방정식이 유효근을 정확히 하나 갖는 경우를 나눈다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ceb348a6f12ae1d9be955be79600f816ef84c5d6516c83b35a9d80134ed20448",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+      "step": "부등식을 a≤-2/[x(x+1)]≤b로 바꿔 [1,3]의 최대·최소로 계수 경계를 구한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}

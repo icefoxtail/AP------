@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-53aff254cb42-e292878b",
+  "sourceArchiveFile": "original/high/h2/1mid/23_순천고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f630ed055e46b9512c4c9cac4fce9e94a6bb556df366530de10c05f552c821ba",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "짝수 근호의 주값과 홀수 근호의 부호를 반영해 중첩 근호를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f8a74aa179b1a315c44c634a22eebc6e8c3e666cfc48af79b33a3d095a3c29ab",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+      "templateKey": "TPL_LOG_PROPERTY_JUDGMENT",
+      "step": "제곱을 진수로 한 로그와 두 배 로그의 정의역 차이를 반영해 함수항등식을 검증한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0830278549e5b0ae48291b7867e5c7df4493b2ee88ee63f7eb81ea69fd01e3fa",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+      "templateKey": "TPL_RADIAN_DEGREE_QUADRANT_JUDGMENT",
+      "step": "일반각에서 한 바퀴의 정수배를 제거해 양의 기준각 위치로 사분면을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e13caf8b153aa0fd7a1f6df4249eac40add27144cfbcee9c1721594af6ce158",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+      "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+      "step": "180도=π 라디안 관계로 각 선택지의 도·라디안 등가성을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e54df204ad401169afedbaacdf8daaa4a9e7a3947354b43b5d7ecda83ebfa07f",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT",
+      "step": "-a가 양수임을 이용해 근호와 거듭제곱의 상쇄 및 부호를 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_537f8be103010c491340ffe430cdf95db3e4197b04d43a13c176f3a6044b1c0d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+      "step": "서로 역수인 거듭제곱의 합을 치환해 근호 안을 차의 제곱으로 만들고 양수 조건으로 근호를 벗긴다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a6917b512f869de7936ba9cb9854ce39d9253a67330f35245b39a97917879be",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+      "step": "주어진 역수 제곱합을 완전제곱 영으로 만들어 코사인 제곱을 정하고 삼각 항등식으로 목표식을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e206417d709be22fd7a520e35509e2a8b8a3e82248a0451f5c0a2c066b3e5541",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "step": "접선 직각삼각형에서 사인을 원점거리의 역수로 바꾸어 원 위 최단·최장 거리를 구하고 극값의 곱을 합산한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_05477f339dc0c6cf55564a90ee3bcb73fcc7fecc212f1c521f67db0991aa2622",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_072",
+      "step": "중첩 근호를 같은 양수 밑의 유리수 지수로 나타내 밑이1이 아니므로 지수끼리 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e7db2ad152b3383b213b63fe9edcb0b5c715244234144055cac9bbc93e8eda6f",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+      "step": "삼각함수 제곱합에 코시부등식을 적용해 상한을 구하고 쌍곡선 위 대칭점에서 등호가 실현됨을 확인한다.",
+      "note": "필요 TPL: 삼각함수 합의 상한과 도형상 등호점; 제곱합 항등식으로 합의 최대를 구하고 주어진 도형에 등호각의 점이 존재함을 확인한다. 검사: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

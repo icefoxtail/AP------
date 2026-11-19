@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-70889b3f0a0e-f3a2bdf8",
+  "sourceArchiveFile": "original/high/h1/1final/22_효천고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_853f97f1d1a228604bba22ec8bcb4265f6b963dbcf1d8c119942ae009d02ec1f",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_DIRECT",
+      "step": "세 꼭짓점의 좌표를 평균하여 무게중심 (2,1)을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a7096dd597d4f8bedbfee78025591ab7c178945a20c7bfcc3808f424fa220464",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+      "step": "점 (-1,4)와 직선 사이 거리를 |2(-1)-4+1|/√5로 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f7263d8d6c439be133acc3e7a61c0d958d8dbd517b16cb09c0273d4bad83011d",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_AREA_DIRECT",
+      "step": "원점과 두 점의 좌표로 삼각형 넓이 |2·3-4·5|/2를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_79fb1dd04f41a18af0e3c1d33e8b5985449da22b8d2e5e45295f66d850532864",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "templateKey": null,
+      "step": "BC의 중점을 원점으로 두고 AB²+AC²에서 교차항을 소거하여 중선 정리를 증명한다.",
+      "note": "TPL 제안: 좌표를 이용한 중선 정리 증명. 한 변의 중점을 원점으로 정하여 두 거리 제곱의 합을 정리하는 유형.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6e4e1716bf7d009fe715f2f5edc64e9730953cff525ec51d43a4aedbcda6e4b8",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "templateKey": "TPL_FIGURE_RHOMBUS",
+      "step": "마름모의 두 대각선 중점 일치와 이웃한 변 길이 같음을 연립하여 a,b를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d425447272c7777167fe1c399a777820c0bedd9a103c92dcf915f6743534f805",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+      "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+      "step": "A−C=(√5−√3)/10>0이고 B−A=√5−√3>0이므로 C<A<B.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 경로는 고1이나 문항 내용은 중3 실수 대소 비교에 해당하여 해당 ACTIVE 정의로 판정. PT만 일치하며 근호 선형결합의 차를 정리하는 골격과 직접 맞는 템플릿 없음. 도구 오류: TPL_NOT_ACTIVE 제안 TPL명: 근호 선형결합의 차로 대소 비교. 정의: 여러 근호 선형결합의 차를 공통 근호 차의 상수배로 정리하고 부호로 순서를 결정.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7386fa1c3cd3db04e7647f722fc91010cb0efd928050ce9a4a8cb9ba1d0e0c88",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_EQUATION",
+      "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT",
+      "step": "두 축에 접하는 중심을 (r,r)로 두고 세 번째 직선까지 거리 |14r-9|/10=r을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2ca1866bb5552cc0e17d3bb5d4a296169d806fd4bdc90fed1d5527b242e2e055",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_FAMILY_COMMON_POINT",
+      "templateKey": "TPL_LINE_FAMILY_COMMON_POINT_APPLICATION",
+      "step": "k의 계수와 상수항을 각각 0으로 놓아 공통점 (6,-5)를 구하고 개별 직선과 거리 조건을 판별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0aaf7b07e325554d90511974b098ef3ed54be960c248a2a0356f9d96bdd05092",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_INTERSECTION_COUNT",
+      "step": "절댓값 그래프의 두 반직선을 나누어 중심과 직선의 거리 및 접점 위치로 교점 두 개 조건을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b39f0a8ac3502cbac634c8279d31f9208a44e27725f2fb781c73291711a1821e",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_BOTH",
+      "step": "1:2 내분점과 외분점의 좌표를 각각 구한 뒤 두 점 사이 거리를 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f12f6bbec57f051576fc6141470a1e343f7526adba2eb7b050486e276463121b",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT",
+      "step": "외부점을 지나는 직선을 기울기로 나타내고 중심과 직선의 거리가 반지름이라는 식을 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ce32a03689e86abad1b07aba904d15a27cb05e499a4e5629a967eee11be2724b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_DISTANCE_SQSUM_MIN",
+      "step": "출발 시간 차이에 따라 시간 구간을 나누어 두 동점 사이 거리의 제곱을 이차식으로 최소화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

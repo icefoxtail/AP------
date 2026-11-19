@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-d03ebfb69176-ef61af31",
+  "examUid": "19_서울봉원중_1학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_서울봉원중_1학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "3163a84d4edcdf76f72758e3db50be87a1bc335e",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d03ebfb69176-ef61af31.type-ledger.json",
+        "sha256": "c1582423c3c143c47978f5e55814c64bc8cdbe9c8acef33133f9cff51ad9d374"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_d0ed1be2097509124da9fe419806b1e975d7d84fd34dbaad872ce6291f6531df",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "모눈의 가로2 세로1을 읽어 피타고라스로 빗변 제곱근5를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "b8879446bd42211406d00649f9786b07ad22555810f2c03d974f27cfd5698f7d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d03ebfb69176-ef61af31.type-ledger.json",
+          "sha256": "c1582423c3c143c47978f5e55814c64bc8cdbe9c8acef33133f9cff51ad9d374"
+        }
+      ]
+    }
+  ]
+}

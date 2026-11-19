@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-fe651cccd470-bced8faa",
+  "sourceArchiveFile": "original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_48dd5d50cc3aee6da1d09dcd93be4ad8c9ae0494ef8cfc69a68020fd9cc4886f",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT",
+      "step": "치수의 평균96, 중앙값95, 최빈값95를 구하고 등급자료의 평균 및 중앙값의 유일성을 검토하여③을 고른다.",
+      "note": "cross_grade_key: 중1 대푯값 정의 적용; 필요 TPL: 원자료 대푯값 계산과 정의 진술 혼합 판정 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_45257cffb36517366f4e136faecae5e93db50fa9cd316d08ee003aa4f4243221",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "최빈값7이 되려면 x7임을 정하고 정렬한 가운데 두 값6과7의 평균6.5를 중앙값으로 얻는다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f916bacc9de695e9961ec4fd0c033636a435dd079786b6a564aa665ed4a2efcf",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "두 번째 평균10에서 a+b19를 얻어 보기의 a7,b12를 고르고 첫째 중앙값8과 둘째 중앙값12를 정렬로 검증한다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_34d667ec4aa1c5b356f3d4f22f16143c3b8f0f8b1bf31363d7595271e93b2dab",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "최빈값18의 두 사람과15,9를 고정하고 평균14.8의 총합74에서 남은14를 복원하여 정렬 후 중앙값15를 얻는다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

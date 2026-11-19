@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-7b38cacaa1a6-bb269e37",
+  "sourceArchiveFile": "original/middle/m3/1mid/25_연향중_1학기_중간_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5a64f122a5e141686c1a58e745484d9b1ee9495ddb5ea04af8e85a63199c3c93",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "2ab가 제곱수인 주사위 순서쌍6개를 세고 전체36으로 나눔.",
+      "note": "OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "불필요",
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6a9c6ed3e77bce12533297ba78b96a6c24f6899a3cbd7c63c59ab5dd11e1746b",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "step": "m+n=a,mn=b의 주사위 경우를 열거하고 m=n을 제외하여5/36.",
+      "note": "원문 인수분해의 계수범위는 명시되지 않았으나 해설은 양의 정수 일차인수 조건을 적용한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "불필요",
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    }
+  ]
+}

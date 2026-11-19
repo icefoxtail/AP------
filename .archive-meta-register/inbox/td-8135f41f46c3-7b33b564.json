@@ -1,0 +1,586 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-8135f41f46c3-7b33b564",
+  "examUid": "25_순천고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/25_순천고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "82b9af14da498cbdaf1180f81d1073311e9c3e88",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+        "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_06c4ccd262e51806e2cbd6dc843b7068d31faad428b8c323be389b16163a434a",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_CARDINALITY",
+        "templateKey": "TPL_SET_CARDINALITY_DIRECT"
+      },
+      "rationale": "15의 양의 약수 1,3,5,15를 나열하여 원소 수를 센다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "1aea8362de3b19269d1e2e6fa6d266a918c3156a73740f169da1076a2f2893ec",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e6181ac52dd831df2af9cb34a7324071d323490519af7fdcf2dbd7538c66414f",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_JUDGMENT",
+        "templateKey": "TPL_SUBSET_DIRECT"
+      },
+      "rationale": "부분집합의 각 원소가 원래 집합에 속해야 함을 적용하여 공집합을 원소로 가지는 집합을 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "a40f1e34a1d4e733425d4008dd400e2088c508532d15e1496fd9a1b08bf549e8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5c7924ec484023756476346e630e597d80792da3909443c92b7f847a757f77b8",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+        "templateKey": "TPL_FIGURE_PARALLELOGRAM"
+      },
+      "rationale": "평행사변형의 두 대각선 중점이 같다는 좌표식을 세워 C의 좌표를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "1941ae9887983c584364caa06277f1aab753b396f2e6ee2d45db9688c72ca7b1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_9a56136a607c731a97d6ede9fd1a9f6c8ae49667944088e4c134a8b0ab881e88",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION",
+        "templateKey": "TPL_OPERATION_WITH_PARAMETER"
+      },
+      "rationale": "교집합에 4가 있어야 하므로 a-3=4를 풀고 확정된 두 집합의 차집합 원소 합을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "f2eacace12eb8cf239b5b731f396f6672d5ee615575510e964d8223fc36593d1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_45b3224c257310f2d92e77c503439c1dc9adf4179531145462d6083724c2ce63",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_PROPER_OR_NONEMPTY_SUBSET_COUNT"
+      },
+      "rationale": "8의 약수 네 개로 이루어진 집합의 부분집합 2^4개 중 자기 자신 하나를 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "eae86e8bad3bc3240cbe583fa40233055eb4f48fa0aa5b9ce3d5cff1a067b3ab",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_dc0832816147053810b78020d1911f239a3e853c711c77c1c1fd268e77e11075",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_DISTANCE_PARALLEL_LINES"
+      },
+      "rationale": "평행선 사이의 거리 |k-3|/√2를 4√2와 같게 놓고 두 k의 값을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "f2c86ef00532257cb52f972bff09e03ba6cbe50acfe278611dbba3fbc43d4aad",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3648d9c122d0d70723bf7e277aa9871d706388a77bafb408200d455170210ed3",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_LINE_POSITION"
+      },
+      "rationale": "중심에서 직선까지의 거리 30/13보다 반지름이 커야 한다는 조건에서 최소 자연수를 찾는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "bdbfc363fd016af21ad071831696227bfa9106cfa13d72e1d08b017b5497f28a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c5307b8fed7affeb71c56ab4b4bc2eeaaf50266ee932e5e5e15b22a415583489",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_RELATION"
+      },
+      "rationale": "수직 조건으로 기울기 -2를 정하고 이동한 직선이 x축 위 교점 (2,0)을 지나는 조건을 적용한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "4f7b5a4b06efdb1bd1f5e943963f5b39002ba1cf6f16169fc5a39f16ecd5c130",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b68d6c26fe635dd7eae64416319cbbc8f9f0c7e1b45e0358fa7fe479c9c3d536",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_AXIS_TANGENT"
+      },
+      "rationale": "두 축에 접하는 중심을 (±r,±r)로 놓고 주어진 점을 지나는 조건에서 양의 반지름만 남긴다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "1c20ecd3b009e4b7a13ca487d752f7fc2db47ae8d77fbb17c09babb5996924b5",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c09b25f13242b61ebc2723d92c51066e85c6eca69f32a08a509a6657229a7ff7",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "rationale": "중심에서 직선까지의 거리 √2와 반지름 √3을 이용하여 현의 길이 2√(3-2)를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "a18b0ec41ba0b2f9868595e244bc294a6a610e4fab97ad7ed9932cd9fcd98c30",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b53c193fa771dbc1f8e2795db5d5051a58b5a80cee6d76f244ecf98bc455c655",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_REGION_EXPRESSION",
+        "templateKey": "TPL_VENN_TO_EXPRESSION"
+      },
+      "rationale": "그림의 색칠 영역이 A에서 B와 C의 공통부분을 제외한 영역임을 읽고 드모르간 법칙으로 선택지와 대응시킨다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "b16f1903f506535b281df1ced63764c1dcd1da795c4fec33eae68c57b03e6525",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_90a565124789a4cb8d86a22e59ed80f741d6a20d8c6749671a7495e9e09d2c64",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_DISTANCE_EXTREMUM",
+        "templateKey": "TPL_DISTANCE_EXTREMUM_SINGLE_POINT"
+      },
+      "rationale": "거리의 제곱 (k+3)^2/[2(k^2+1)]의 최댓값을 완전제곱식으로 구하여 등호 조건의 직선을 정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "82a63b96edd3995d695eeca1d6954398bc5911b2f0de93540f38fad9e420d56e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b0cb9e0784e50f64dd6e7d2ed90061bb5862763888eb4a8195678b6694219dd3",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT"
+      },
+      "rationale": "차집합을 여집합과 교집합으로 바꾸고 드모르간 법칙을 적용하여 각 집합식의 항등성을 판정한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "d63ee3361be9ab84ff1dfd64f98441ad448e6b0b21b468c8d6c0ce887e3acc33",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4ec539662e4fd6a5248f6a88a507a30cddd13407b89914638feb8a5f79042568",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_INCLUSION",
+        "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE"
+      },
+      "rationale": "배수집합의 포함관계를 n이 10의 배수이면서 20의 약수라는 조건으로 바꾼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "c2941727083ca71fbf9e69cd806a8c0f7a3dbfd3346c1b9c5993920cac4c32d8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b596e6fc663f4e636aac3ae332a01595b9546546605e0c2fd2bcf8cf87027788",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY"
+      },
+      "rationale": "이동한 중심의 x축 및 y=x까지 거리가 반지름 1과 같도록 하고 가능한 이동량 합을 비교한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "9bda2af26ef9b23424ac3b1de76e2fec7eb27bc4b98f95183aa55030e1b4eb4f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_23f4af059bbca60a0b3642be2ad39a54294055d7d9c3c00e05a3672697b11a1f",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_TWO_CIRCLES",
+        "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH"
+      },
+      "rationale": "직각삼각형의 빗변을 지름으로 하는 외접원을 구하고 같은 반지름인 두 원의 공통현 반길이를 피타고라스로 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "0fc1f6e69e0d8b2449a87a36bac6a4b05dce29009466aa1f7f98d981917c27d7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_aa540d4ef32bf9713370813b8f91a668fd53f3a0be8af855a7065e5c4c0280ca",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE"
+      },
+      "rationale": "접점의 원 위 조건과 반지름·접선의 수직 조건을 결합해 접점현의 방정식 x=18/5를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "f450187bc12b512516d7bec380f6cd51377ba1bb15a9dd651327a427606864cd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1dabe83aa237d38105a50d85ba70401feff7690514776d0934586ddd0856128c",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION"
+      },
+      "rationale": "BC 중점의 좌표로 A를 무게중심 식에서 나타내고 BC 직선식을 이용하여 높이의 거리식 분자를 21로 정리한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "d0606c7b148f4ffac0b420c1461a1c1dcbf2101427779ce98d2b3d86ad5f94b1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1da8ffcbefa5371c4036906957d7b0659d02fcadc18ccfb3417c11d853e1866b",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_RELATION"
+      },
+      "rationale": "교점을 (t,mt)로 놓아 생기는 이차방정식의 두 근의 곱에 1+m²을 곱하여 거리 곱을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "4725ef644a5ebfbe7c0f6b64c528b58b4b05821a78bff8672bb2ba1f78d34de2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3758b76262c6626e1b98e04b4516ddc118ce20e435b5e70867111338b7897775",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN"
+      },
+      "rationale": "A∩B⊂X⊂A에서 고정 네 원소 외 네 원소를 자유 선택한 뒤 X=A인 경우 하나를 제외한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "49f5907f0a8264ca23dcd951fff61e34e0385f148173f0d8e129e8db376b4b05",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_db280730011cd877038d0b583e33f21ab9ddfb4cf39274b67e37ade011609c02",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PERPENDICULAR_FOOT_ALTITUDE",
+        "templateKey": "TPL_PERPENDICULAR_FOOT_COORDINATE"
+      },
+      "rationale": "A를 지나고 주어진 직선에 수직인 직선을 세워 두 직선의 교점인 수선의 발과 거리를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "9e7c845eb88d4c9291122eb669ef93693fe715f6e9a11c34332e4b2a6512f864",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_77c0363b0366560b3bab7a9a326963df170f692ed7313aee4432ffdc9a3e774d",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_FROM_EXTERNAL_POINT"
+      },
+      "rationale": "수직 접선인 y축을 별도로 확인하고 나머지 직선 mx-y+6=0에 중심과 직선 거리=반지름 조건을 적용한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "4c65e89fb205af4bdd32c75d0b854cdff17cd178f29de70b9014bd121a5ae267",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4bd9669574cd05c78f23ec5d886997168c51d703a876f701b7e22864b7a2818e",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_EXTREMUM",
+        "templateKey": "TPL_UNION_RANGE"
+      },
+      "rationale": "교집합의 원소 수 x에 대하여 43-2x≤31와 x≤18을 세우고 합집합 43-x의 최댓값과 최솟값을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "ded0784db23cfa906f1d535543dd41def2e3ce39e70ba0716aeb5e8fe4dbade4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8135f41f46c3-7b33b564.type-ledger.json",
+          "sha256": "248bbe27436664c28efa580e6da96247d500793e7f5a4ba6ad14f2e2c43a5e26"
+        }
+      ]
+    }
+  ]
+}

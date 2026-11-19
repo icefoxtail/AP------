@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-60cac2541fbb-64c6ba47",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_동산중_1학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ddc90ba52a4fef9441cf65495e964df02180b2a04e41994adfcfbdfaad8b66ee",
+      "sourceOrdinal": 25,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+      "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+      "step": "세정사각형의동일변을써JE=2b-a,HG=|2a-3b|로남는직사각형넓이.",
+      "note": "필요 TPL: 인접 정사각형의 잔여 직사각형: 정사각형의 같은변과 전체길이 차로 잔여변을 대수표현하고 위치에따른 절댓값을 반영한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    }
+  ]
+}

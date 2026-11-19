@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-81f0fe3a8e9f-431fafe7",
+  "sourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6c3fecc3e8dd557fc45ca1f3ae75564ed98ba25e2fac86ae389c2dbf31d6073d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "x의 위치에 따라 중앙값6,x,8을 구별하고 평균(30+x)/5와 같게 두어 자연수 조건을 만족하는 x10을 얻는다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a97e78f8ef847cb397290241195e2917663d026c3d43b88b50b16ced4bc0cec",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "중앙값78 조건으로 x≥80, 평균78이하로 x≤86을 얻어 가능한 자연수7개를 센다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-0b40eb67fe28-458574d3",
+  "examUid": "항등식과나머지정리_고1_유형",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h1/항등식과나머지정리_고1_유형.js",
+  "expectedSourceBlobSha1": "89e56920f9a4708e5d5dd8a3284def8793b3fa75",
+  "expectedQuestionCount": 32,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-458574d3.type-ledger.json",
+        "sha256": "b96a1f0ee246f835ed7b40a44f601e1b1a4d409a86d59e054f6d3d2c2fc9f6e8"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_47a6e74d12b9c8014e824745b832f9284e7b2691e7bce832cec16c4f8c405a75",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC"
+      },
+      "rationale": "xy=1을 얻고 x⁴+y⁴=(x²+y²)²−2x²y²로 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "30410c943b6a8a8d03fbac3c7cb52c33ec95f35cae53c8c755a8882c2cf11030",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0b40eb67fe28-458574d3.type-ledger.json",
+          "sha256": "b96a1f0ee246f835ed7b40a44f601e1b1a4d409a86d59e054f6d3d2c2fc9f6e8"
+        }
+      ]
+    }
+  ]
+}

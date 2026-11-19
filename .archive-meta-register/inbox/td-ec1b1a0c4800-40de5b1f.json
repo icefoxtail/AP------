@@ -1,0 +1,394 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-ec1b1a0c4800-40de5b1f",
+  "examUid": "24_금당고_1학기_기말_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1final/24_금당고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "5efa100608ddf711d53a4a931a30d62e14e43c91",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+        "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b881efa3810542722e03fdcf95308ba3c923ccbcb2bd43409b58c15d36f21321",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "rationale": "좌표 차4,3의 제곱합에 제곱근을 취하여 거리5를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "a9d09af829f5ec20293ee21bd724a543be11e363e36bc8136efcb77e21ef9075",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_dd2734a38a9c5e9e0a7d0384d347f2225036b1d943dff887e678cc480b6f7f8c",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_MIDPOINT",
+        "templateKey": "TPL_MIDPOINT_DIRECT"
+      },
+      "rationale": "끝점의 각 좌표를 평균내 중점 (4,1)을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "69204060d7e079814dd4f2a8c1cd1102cdee2dff0683891aae77469e3e9a3fe3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1cbe49434b9940e25ff46f1b899351030e32d2940087bb42dd89258eef0d272b",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_POINT_SLOPE"
+      },
+      "rationale": "기울기4인 직선에 (3,2)를 대입하여 k=-10을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "0c0dd1436298a179e9d021d71fec42d3f66498925b492493d941e1ad9baa8650",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0553a031f15788ebe1cf52a852a250136cb0a5953bed9c188aa3d2ed3300db1e",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT"
+      },
+      "rationale": "거리 공식에 점(2,3)과 직선 계수를 넣어 |6-12+1|/5=1을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "4f6d5ca2b9cd327bb6c9ff3441f9f14645b2dd34e08a568aa8b0a09843a35d47",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_516ef0831fac985880e8fca908192a00251f67ada8d150c1cd8c902d681715bb",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER"
+      },
+      "rationale": "수직인 두 기울기의 곱 3m=-1에서 m=-1/3을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "26d3f20700cf08f526df45f899a4743c61ae5a1d7c9aac8cb44e32548b304797",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a96464c484b79b6d6f6589aa350bed63020bdd0bad560ceb2c4234355222ed93",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CENTER_RADIUS"
+      },
+      "rationale": "표준형에서 중심(-4,2),반지름2를 읽어 합0을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "bed96cc6a6a2908e61505e978e4f90df5733b106bab599eff53de98dfde62e0d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4df64f48a5f3916e3f23cc5ade33aabd33a1435b1a1c5d3985ad40767d5fd3db",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_CONTACT_CHORD_LINE"
+      },
+      "rationale": "원 위의 접점 (s,t)에서의 접선 sx+ty=5가 (4,3)을 지남에서 4s+3t=5를 얻고, 두 접점이 모두 이 직선 위에 있으므로 직선 PQ를 4x+3y=5로 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "cf1d565770758e525664698494f5cf48bf1e079e84a4584add8f59f1efd166a9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_37e097d41e54a934fbf42204fdb49c20564080760bf877527275e2fcce2af2c8",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_FAMILY_COMMON_POINT",
+        "templateKey": "TPL_LINE_FAMILY_COMMON_POINT_APPLICATION"
+      },
+      "rationale": "k의 계수와 상수부분을 각각0으로 놓아 정점(-5,2)을 구한 뒤 다른 점을 잇는 직선의 절편 넓이를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "d5360ec3e2d806f917e66087ead35f033026d6776b736afb3ecd1e4a33800452",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5228c3e4bed7588c882ca01d6ae3b35500df60c852d511ec880dc8f4889dd3f2",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "rationale": "그림의 교점에서 그래프 높이를 비교해 h>f의 (-2,4)와 f>g의 (-∞,-1)∪(4,∞)를 교차시킨다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "4940547bcb5064bb2840b3176e1bd9ba26024c3a3154cef3836af2ff1294bf8a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e41484cdad947be34d5a927fb542c94210e5791c67cb341e16eaf1214a3aad4b",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_ANGLE_BISECTOR",
+        "templateKey": "TPL_ANGLE_BISECTOR_EQUATION"
+      },
+      "rationale": "정규화 분모가 같은 두 직선식을 ±로 같게 놓고 두 이등분선 중 기울기2인 것을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "21c7276867953d659a9a0d13e4fec1e11e137b92ba70733f93abcf503c2401cd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e8d5bf3deb8315e4a75465f99447f1f442c4bedc73ee0e6b36db03a91688f5c6",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+        "templateKey": "TPL_DISTANCE_SQSUM_MIN"
+      },
+      "rationale": "P=(t,0)으로 두어 AP²+CP²=2(t-3/2)²+7/2의 최소를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "9f4949c984f7e661f6ead5ad9653a345900e50c0b7274d29b599dd65c2448248",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7f471dca9eb79f227aabb6e68a422340e21064621381db73135650b12734e269",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_AXIS_TANGENT"
+      },
+      "rationale": "중심의 직선 조건 k=3h+6과 축 접촉 조건 |h|=3 또는 |k|=3을 결합한 세 중심에서 계수합을 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "5388a02676d8eeb8ce8de6af2898f16bcf4a3ba6e0894cecf1501044787fb4f7",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_85abaf7a8cfe86f50017afdf7e70198d8f1690c6d075a515886b64480d75c8a3",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_POINT"
+      },
+      "rationale": "C의 열린 선분 양 끝에서 넓이의 극한을 구해 1/2≤(2-a)(2a+5)/2와 (2-a)(2a+7)/2≤5/2를 동시에 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "cca3cd42601fa0bf61a69d8782d87d2c7b412bb1a0be26e727bd434d46ffe618",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7019ac88dc8af81221200d5736572716bbbb8eeeb556d09c81ab3ffdbb611898",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_DISTANCE_RELATION"
+      },
+      "rationale": "A=(-t,0),B=(t,0),C=(u,v),G=(u/3,v/3)로 거리 제곱을 전개하고 항등식의 두 계수를 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "a5c43535badcbc84a82597a745b82a365de35dc8cbee8b9c86fd81b962c02090",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8455d8a2b8d8141932437e9cbadd67b6743e281258c0af1cc7f8d959baf22ddd",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_DIAMETER_ENDPOINTS"
+      },
+      "rationale": "둘레 이등분에서 두 포물선 교점을 지름 양 끝으로 놓고 중점·수직선 절편 조건으로 a+b와 ab를 구해 지름 제곱을 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "011b5d3336eac88edc46504951c72945cdb2e5b784d0917897f2b83d0698b3eb",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-ec1b1a0c4800-40de5b1f.type-ledger.json",
+          "sha256": "7b0d9d006f9805e2c84968e4bcb9991b74947247c6bb2072a1a93fa9473fb703"
+        }
+      ]
+    }
+  ]
+}

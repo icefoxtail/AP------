@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-99d763061640-9205323e",
+  "sourceArchiveFile": "original/high/h1/2final/23_강남여고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f119f4d90e9329f0703a2ffda38d6e0c79edb5e8cfe8f36c1c323b8bd2aa0be0",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+      "step": "f(-1)=-1을 먼저 구하고 그 값을 g에 대입한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "시작점 (2,3)을 기준으로 정의역·치역·평행이동량과 사분면을 확인한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4822837199f860c331e80415d9734696c7e83dd6fe5693c9cfb21dfa3f36c5e4",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+      "templateKey": "TPL_RATIONAL_EXPRESSION_SIMPLIFY",
+      "step": "연비의 공통값 t로 x,y,z를 표현해 마지막 분자를 7t로 정리한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d34c8250ad9178a8315778eca1b00556e5767a8b47ad6d9c8f1d349e1ca702f0",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "step": "g∘f=-12x+8의 역함수를 구하고 f(2)부터 차례로 합성한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_db28f55845c24a2a882107fe5ffb9c15c5c5398a6fda2f095bff8c8e4ac549be",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EQUATION",
+      "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+      "step": "그래프에서 f의 출력 1에 도달하는 입력을 찾고 그 입력의 원상을 한 번 더 추적한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76063236bd0b62d78a1e69d8ae1db044e615e063199c6491fe391e5a0bc95102",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_ABSOLUTE_VALUE_INJECTIVITY",
+      "step": "절댓값 경계 왼쪽 기울기 1-2a가 양수가 되어 두 치역이 겹치지 않게 한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_31d9d86ab8993be1b43826b2b87c07ea48456188fc6bbe7e2f0a6e77c0b24200",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FINITE_BIJECTION",
+      "templateKey": "TPL_FINITE_BIJECTION_INVERSE_DEDUCTION",
+      "step": "g=f⁻¹를 이용해 두 자기역대응 조건을 만들고 일대일대응의 남은 값을 채운다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b1cfe70fd50496138f07c95127e8f6f6ce5954282af8d6cc22cd332aa0e6bf34",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "f³=I인 주기로 두 합성지수를 줄여 P=(f(a),f(a))를 그림에서 찾는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c7d7042859b5d2b3297a38c0f3e1e0a5c421e41732c9afa4fa2d42cf230d684",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_IRRATIONAL_LINE_INTERSECTION",
+      "templateKey": "TPL_H1_IRRATIONAL_CURVE_LINE_TANGENCY_PARAMETER",
+      "step": "직선과 무리함수의 교점 이차식의 판별식을 0으로 두고 접점 좌표와 넓이 조건을 결합한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_761473ef6050092868c30307a128f5cbd7953e1f825763ae69658f05fbdb14e3",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "step": "평행이동된 두 유리함수 사이 수평폭 2와 두 수평선의 높이 차로 넓이를 계산한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b8519b483ee1c29f5b7a13e0e38dabefcb16067317b22af15356c5e762dc49d3",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "step": "교점 t=√(3x-3)≥0에서 a=3(t-1)/(t²+3)을 얻고 제곱식으로 상하한을 구한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}

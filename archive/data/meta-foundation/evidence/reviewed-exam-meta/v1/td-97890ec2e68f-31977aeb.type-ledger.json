@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-97890ec2e68f-31977aeb",
+  "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
+      "step": "교점(0,4),(0,−4),(2,2)를 얻어 y축 위 밑변8과 높이2로 넓이8을 구한다.",
+      "note": "새 TPL 제안: 직선 교점으로 좌표 삼각형 넓이. 교점 좌표차를 밑변과 높이로 사용한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    }
+  ]
+}

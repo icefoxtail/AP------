@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-0a471bd17ebe-1cef28dd",
+  "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_919b6be1662970b6dc14eced5091bdf760d97a39d4b63f41247d11550d18dd65",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "평균8의 총합64에서 누락값12를 복원하고 정렬하여 가운데7,8의 평균7.5를 얻는다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4490f377ce8daba62e7001106cba3fa31912fafced4e91c2f68c938ed0a7af86",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+      "step": "대부분1~5인 자료에 극단값33이 있어 평균6.75가 끌려가는 반면 중앙값3.5는 영향을 덜 받음을 비교하여①을 고른다.",
+      "note": "cross_grade_key: 중1 평균의 극단값 민감도 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3e407e59611ede535b710ae7745493d1f7234e52a73a905cf7df9cd50019b386",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "짝수자료 중앙값15에서 가운데14와a가 필요함을 정하고 (14+a)/2=15에서 a16을 구해 위치조건을 확인한다.",
+      "note": "cross_grade_key: 중1 중앙값 조건 복원 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f9f36239de48866cbd5b2f5f496bb8a17d75b7880becad771713478ed70fe725",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CENTRAL_VALUES",
+      "step": "10개 자료의 총합140으로 평균14를 구하고 정렬한 가운데8,9의 평균8.5를 중앙값으로 얻는다.",
+      "note": "cross_grade_key: 중1 대푯값 직접 계산; 필요 TPL: 평균과 짝수자료 중앙값의 동시 계산 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

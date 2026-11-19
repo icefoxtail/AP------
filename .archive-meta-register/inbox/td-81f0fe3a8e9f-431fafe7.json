@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-81f0fe3a8e9f-431fafe7",
+  "examUid": "23_연향중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/23_연향중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "0608f69391491add12c6b3c66840f9c9e5a8d2bc",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-81f0fe3a8e9f-431fafe7.type-ledger.json",
+        "sha256": "5142cef48be48d22e1176f1b4d4cbe77978551e9d6c7bfcbf4b7f1de44590b0c"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6c3fecc3e8dd557fc45ca1f3ae75564ed98ba25e2fac86ae389c2dbf31d6073d",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "x의 위치에 따라 중앙값6,x,8을 구별하고 평균(30+x)/5와 같게 두어 자연수 조건을 만족하는 x10을 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "b73847a6bcb90d8005f0fb4eba2878d88ccd1ac029b8ae0551f2823bc5857a09",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-81f0fe3a8e9f-431fafe7.type-ledger.json",
+          "sha256": "5142cef48be48d22e1176f1b4d4cbe77978551e9d6c7bfcbf4b7f1de44590b0c"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_5a97e78f8ef847cb397290241195e2917663d026c3d43b88b50b16ced4bc0cec",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "중앙값78 조건으로 x≥80, 평균78이하로 x≤86을 얻어 가능한 자연수7개를 센다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "27f9ef36f3f7522a2a2c8d41bdb1eb213a467d29cbb3bb85b3aa97bf171ce468",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-81f0fe3a8e9f-431fafe7.type-ledger.json",
+          "sha256": "5142cef48be48d22e1176f1b4d4cbe77978551e9d6c7bfcbf4b7f1de44590b0c"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c8d3c2dca156-39101a3e",
+  "sourceArchiveFile": "original/middle/m3/2final/22_팔마중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3b9a97d0e38425c4541d273565037cbc08aec89d1fff820378d3e4fa73e96aa0",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "전체 독서량은 평균13×5=65이고 알려진 네 값 합50을 빼 B의15권을 복원한다.",
+      "note": "cross_grade_key: 중1 평균 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_741af29b3f3afac08a4e0f005d05f23d8d4adf439f3bbb2cef272de3252289fd",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEAN",
+      "step": "원래 합 a+b+c=27을 새 자료합 2(a+b+c)-3=51로 변환해 평균17을 얻는다.",
+      "note": "cross_grade_key: 중1 평균 정의 적용. 필요 TPL: 서로 다른 상수 이동을 포함한 자료 평균; 전체합의 변화를 계산해 새 자료 수로 나눈다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07414851ca558cfe09e6605f7d5b3eb9d416ae4b39d280809e09a71884704599",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_DATASET_CLAIM_COMPARISON",
+      "step": "A,B의 중앙값은5.5, 최빈값5로 같고 평균은6과6.5이므로 B의 중앙값과 최빈값이 같다는④만 틀리다.",
+      "note": "cross_grade_key: 중1 두 자료의 대푯값 비교 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9c3fbb238f1f12984ea17b1497973cd36d48e7d52461783bc4bfe6d2f59237c2",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "첫 중앙값7과 a<b로 a=7을 강제한 뒤 둘째 중앙값에서 (9+b)/2=10을 풀어 b=11, ab=77을 구한다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e488ebe1a519fac3552c9e3dbe1f1912fa1f2ad152a857734edd660aaf303c70",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "평균6에서 a+b=16을 얻어 a-b=2와 연립하면 a=9,b=7이므로 빈도가 두 번인7이 최빈값이다.",
+      "note": "cross_grade_key: 중1 평균 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

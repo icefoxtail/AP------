@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-aa3d35e0a03e-6eaa17c8",
+  "sourceArchiveFile": "original/high/h2/1final/20_매산여고_1학기_기말_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_49fddd581cbf3371129cc83ad2723ac84a87ca6593a9b78fb8071ba25f8bef5e",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "step": "일반항 n²+1에2와7을 각각 대입해5+50=55.",
+      "note": "검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3d46b9c9b8052dc8866e146a39326a3c2d027febd378edb9f3a71cfa35b2ba14",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": null,
+      "step": "주기2를 일곱 번 제거해44/3을2/3으로 바꾼 뒤 cos(π/3)=1/2.",
+      "note": "필요 TPL: 주기함수의 기본구간 환원. 정의: 주기조건으로 입력을 기본구간으로 옮겨 주어진 조각식에서 함숫값을 계산한다. 검사: CANONICAL_UNIT_INVALID,CANONICAL_SCOPE_INCOMPLETE,TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    }
+  ]
+}

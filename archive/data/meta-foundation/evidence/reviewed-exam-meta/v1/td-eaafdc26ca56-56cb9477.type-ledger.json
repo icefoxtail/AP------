@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-eaafdc26ca56-56cb9477",
+  "sourceArchiveFile": "original/middle/m3/2final/17_신흥중_2학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_18d1d72a82c0aa8b3fa36b7f795cefb1d08fbdfbe91fb05bc7f9d4aa328b124c",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CIRCLE_CHORD",
+      "templateKey": null,
+      "step": "중심 O에서 두 현 AB, AC까지의 거리 ON, OM이 같으므로 AB=AC임을 이용해 ∠B=55°와 ∠A=70°를 구한 뒤, 사각형 ANOM의 내각의 합으로 ∠MON=110°를 계산한다.",
+      "note": "딥시크(opencode-go/deepseek-v4.1-flash) 채움 + Sonnet 검수 1회(수정; 딥시크값 PT_CIRCLE_LINE_RELATION/TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD) — type-redo 2026-11-19",
+      "figure": false,
+      "check": "DS_SONNET_REVIEWED",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-20261119.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_695a4f7ba271112e7c6b9646d4d740eaa405ba0255d91b2b518012577388fa97",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "step": "큰원접선등길이로 AF16-x,BF=x를 세워 x²+64=(16-x)²에서6,작은내접반지름(8+6-10)/2=2.",
+      "note": "필요 TPL: 내접원 접선 길이와 피타고라스 방정식: 직각삼각형의 접선 길이를 미지수로 놓고 반지름을 더한 두 변의 제곱 관계를 풀어 조건에 맞는 길이를 결정한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "문제 및 가용 해설 그림 직접 확인",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

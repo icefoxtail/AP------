@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-108f4abfe5d5-215ae434",
+  "sourceArchiveFile": "original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4479f1f43c5538247ed92940d0ae06a8392d048297e0b90847832b95463b8c91",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_POINT_REFLECTION",
+      "templateKey": "TT_POINT_REFLECTION_GENERAL_LINE",
+      "step": "두 점을 잇는 선의 수직 조건과 중점의 대칭축 소속 조건을 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2d59d02bd284a6b41a2a00caa6e99cb80586f2dcf824646b9ea06c39470aa3fa",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_MIXED_INEQUALITY_EXTREMUM",
+      "step": "x-1과 그 역수에 산술기하평균을 적용하고 x+2y에는 코시 부등식을 적용해 두 극값을 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8d919556ac89cd7624bd00541df458ab788cefabb07a22467c2a13f8a8585709",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_ONE_LINE",
+      "step": "B를 y=x에 대칭시켜 꺾인 길이를 AB′의 직선거리13으로 최소화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e23435de0af12e0e4c26581fd91fed4b85ff7a4c88f16a82d8f5fa25f6842deb",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_SURJECTIVITY_CONDITION",
+      "step": "두 조각의 치역이 실수 전체를 덮되 겹쳐야 하므로 a<1,b>3을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ace3375efb626838705068b1ff085e0c6913d8bc428411349e802302f4077bb",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+      "step": "180의 약수18개 중 3,4를 포함하고9를 제외하도록 고정한 뒤 나머지15개를 자유 선택한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_253ad9678cefbbd5d07405cee3abe433e49bf3c54e0d1a66f25edd086104eee8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+      "step": "P⊆[a,∞) 및 [b,∞)⊆P의 열린 끝점5를 확인해 최대 a=-2와 최소 b=6을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2c8ac109a3d6930343cdcc9d5458780d5ff6ad7d7ad1ede6e24e2e4f50789824",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "1→2→3→4→1의 순환주기4로 두 합성 지수를 줄인다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_60baecb986db78663bd13f4c64c1e1568414cd115ca76f913715eeec4daba4c1",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "step": "분배법칙으로 12 또는15의 배수집합으로 바꾸고 중복인60의 배수를 빼서 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dfd3fd6b5ff1e71492e419ce7f02cbe01dd14715372a2465c787b80d01d25a3f",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": null,
+      "step": "5로 나눈 나머지별로 7의 배수를 묶고 각 나머지에서 하나씩 대표를 선택해 1×1×2×1×2를 계산한다.",
+      "note": "필요 TPL 이름: 잉여류별 일대일대응 정의역 선택. 정의: 고정된 함수가 일대일대응이 되도록 각 함수값의 원상집합에서 원소 하나씩 골라 정의역의 개수를 센다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fb18ac89afb8eccbc121a59e0131b335984680336ed5930176c563f88f1a6b6d",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+      "templateKey": "TT_EQUATION_GRAPH_MAPPING",
+      "step": "원래 좌표(u,v)와 새 좌표의 관계(x,y)=(v-1,u)를 따라 축을 교환한 뒤 왼쪽으로1 이동한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6511f98c2f1ee3bc6d16ef0468b86b38838661d094eb34253d64569b80d47f40",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_EXTREMUM",
+      "templateKey": "TPL_INTERSECTION_RANGE",
+      "step": "교집합은25 이하이고 합집합57-x는50 이하이므로 7≤x≤25를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_198a1d7ec1674624332146977eda36350272911dd8e42be7a99a264fc73c5ac7",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_CONSTRUCTION",
+      "templateKey": "TPL_SET_EQUATION_SOLUTION",
+      "step": "제곱집합과의 공통 최소 원소가1임을 먼저 정하고 공통원소9 및 합집합 원소합을 보정한 제곱합식으로 나머지를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_95a0ce8732d5e3615d5773cedd3030d0a18969a7f9384a11e2a0371bc2cbbb01",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+      "step": "양변이 양수임을 확인하고 제곱의 차 a²/4가 양수임을 보인다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1ead054f3ec5beae01b856e48e15efa33a3b80d723e977b324392042353bae27",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTRADICTION_PROOF",
+      "templateKey": "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION",
+      "step": "3의 배수 성질을 대우로 증명한 뒤 √3의 기약분수 가정에서 분자와 분모 모두3의 배수가 되는 모순을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

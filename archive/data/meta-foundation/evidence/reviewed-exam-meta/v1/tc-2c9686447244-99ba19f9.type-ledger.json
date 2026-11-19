@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tc-2c9686447244-99ba19f9",
+  "sourceArchiveFile": "original/high/h1/1final/21_강남여고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_912ba2fc6d150762b556d9880d85444a8990a70aaf28c626bb310c6bc8d2df68",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+      "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL",
+      "step": "그림의 절편 곱으로 b=−24, 대칭축 −5로 a=10을 얻어 (x+12)(x−2)<0의 정수해는 13개.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인. 첨부 해설 SVG와 원문 그림을 source blob 렌더로 직접 교차 확인.",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ecdbe5c98a5901a8211306b8898c680c110fb8f5aa880e7d196c0c69d02d5171",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_PERP_BISECTOR",
+      "step": "두 원 중심을 이은 선분의 중점 (0,3)과 수직 기울기 −1로 대칭축 y=−x+3을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 해설 SVG와 원문 그림을 source blob 렌더로 직접 교차 확인.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ],
+  "packScopeAdditions": []
+}

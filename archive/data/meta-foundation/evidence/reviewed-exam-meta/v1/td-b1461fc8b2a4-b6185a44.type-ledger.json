@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b1461fc8b2a4-b6185a44",
+  "sourceArchiveFile": "original/high/h2/1mid/22_금당고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_cebf6ba6a8ea64163518392f4e123c9b821f61d30b0d5c4c3257677c61b263af",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+      "step": "음의 지수에서 밑을 역수로 바꿔(3/2)²=9/4를 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c430a1b2e6769f8d03b79e004db6c22e78337e0fa47002726aec351354f73563",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "1/16=2^(-4)이므로 로그와 지수의 관계에서 log₂(1/16)=-4를 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d2db56a027de1ee595e3dbbde8df436e468809184dbf254f4254ef78e90d8cfc",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "9를3²으로 바꾸고 분자·분모의 공통인자1+3⁷을 소거하여 √(3⁷/3⁵)=3을 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fe2b771bc6fc0f3ac4f83c3d8dac5b7917f3908f075f19d916495e1743afcc03",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+      "step": "원뿔 겉넓이 공식 πr²+πrl에 반지름2와 모선8을 넣어4π+16π=20π를 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 고2 시험지이지만 결정단계는 기본 원뿔 겉넓이 공식이며 해당 ACTIVE 정의를 직접 확인함. 도구 오류: CANONICAL_UNIT_INVALID, CANONICAL_SCOPE_INCOMPLETE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1e0597aa8256782d3f2ea02c3d65aad4d2b146585ca115533463bd247d61a7b8",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+      "step": "(sin-cos)²=1/4에서 sincos=3/8을 얻고 tan+1/tan=1/(sincos)=8/3으로 바꾼다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_12e0dc1483d20b0283fda6c39320b2c7b2ed428b345217cc381450d118125d77",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
+      "step": "m=n⁶/144가 자연수일 소인수 조건으로6|n을 얻고 증가성에 따라 최소n=6,m=324에서 합330을 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 필요한 TPL 제안명: 지수식 정수조건의 최소값. 정의: 분모 소인수 지수가 분자를 나누도록 밑을 제한하고 최소허용 정수에서 목적식 최소화. 구별 단서: 정수해 개수가 아닌 최소 m+n. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_343a765d47f3adc25df3f6b8dcc9585a3c4992230a925df2acb1e08e6a64e04c",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "step": "공통 로그값t로 2^t=2b,3^t=2a+5b,6^t=(2a+b)²를 얻어 연립 소거하면 a/b=3/2이고 목표로그3이다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c053ccf8fc858264c8fbd8c0df81a1d61d04030968bae78869f15e5ecedd34a6",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_INTEGER_POWER",
+      "step": "로그차 정수 조건을 n/k=2^j로 바꿔 같은 홀수부분끼리 묶고 유일원소인25<d≤50의 홀수12개를 센다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 필요한 TPL 제안명: 로그차 정수의 거듭제곱 동치류. 정의: 로그차가 정수인 자연수들을 동일 밑의 거듭제곱 비로 묶어 각 부류의 크기를 구한다. 구별 단서: 로그값 정수 후보 자체가 아니라 비율 동치류 원소수. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8aa9cbb196e22b8e1f181a21a74b23a012fd11c45e0e9f3486b830c100a8bf44",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+      "step": "지름의 원주각으로 직각을 확인하고 닮음 AP²=AB·AH와 넓이비 PH=AP·PB/AB로 수선을 구하여 넓이2^(7/6)3^-2를 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 고2 지수 표기가 있으나 넓이를 결정하는 단계는 직각삼각형 닮음이다. 관련 ACTIVE 정의 직접확인. 필수 원본 그림은 없고 발문이 도형을 완전히 지정하므로 보조 SVG 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-629a1dc7c0cc-2664b843",
+  "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_eec6272a15b3c5232fca58d5de2d69d8876c244516d2e3822744102221605bca",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_VALUE_CALC_STANDARD",
+      "step": "지수를 3x로 맞추어 자연상수 e의 정의극한으로 환원한다.",
+      "note": "필요 TPL: 자연상수 e의 정의와 지수·로그 기본극한. 정의: e의 정의극한 또는 지수·로그의 기준극한으로 변형하여 극한값을 구한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_22b3dcbc1351b7b707304537a1ef8b1e4f05aa53cbdb657917f332b28e0efd6e",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "step": "지수함수와 로그함수의 곱의 미분법으로 도함수값을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de2a22f01cb70e8d85fce598fe8fd60c389af9a1e30b48fd8a69f97aaec8a63a",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "step": "삼각함수 두 인수의 곱을 미분하고 지정각을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab4d4a2ab789f990b5060c5db253db0f67e79fe74cd1647f9748cb5565bcc253",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+      "templateKey": "TPL_DIFFERENTIABILITY_POINT_CONDITION",
+      "step": "경계의 연속조건과 좌우미분계수 일치를 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_34bf352b7c13b121beaf7d7e75ddb7864289e0dd1eb096a7ab9e027705d9056a",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_RELATION_ANGLE_FORMULA",
+      "step": "사분면 부호로 두 각의 삼각함수를 정한 뒤 코사인 차각공식을 적용한다.",
+      "note": "필요 TPL: 삼각함수 덧셈정리. 정의: 두 각의 삼각함수값으로 합차각의 삼각함수값을 덧셈공식으로 계산한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d18653f1d06239ac53e6d38f945164b182bed1e037c8cc20b6cf5381432f11bd",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_FINITE_CONDITION_PARAMETER",
+      "step": "유한극한의 분자영점으로 a를 정하고 삼각·지수 기본극한으로 b를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c4736e11755b34e67545f01c72f0aad66ecab4b92ea70aa395e59f1e36343f3",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "step": "로그함수의 대칭 차분극한을 도함수값으로 환원한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ea352c26eec57b3a68ba465f6c5e0adf2bf3caf3a6da14445ab81b1cf8912c56",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "원의 접점 법선과 두 거리 일치로 중심좌표식을 만든 뒤 극한을 구한다.",
+      "note": "자연수 매개변수이나 결정적 단계가 원의 기하조건을 좌표식으로 만드는 것이므로 이 유형을 택했다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d64eb9f36afa28f29900a3ff3f4fbb06c6c7ad8142470efcb41da3cd4af4b087",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "step": "삼각비로 길이와 내접원반지름을 나타낸 뒤 각의 기본극한을 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73e535e2761c052f47c7fb68b4e6b9b3308b968ee524adbc4d27b68b58c72990",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "step": "발산인자 상쇄로 f(1)=0을 얻고 차분극한에서 계수 a를 결정한다.",
+      "note": "f가 양의 입력에서만 정의되어 f′(x-1)은 x>1에만 존재한다. 의도된 오른쪽 접근에서는 해설 계산이 성립한다.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

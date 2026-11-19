@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-9805f8aa6049-74314e37",
+  "sourceArchiveFile": "textbooks/비상교육_대수/비상_대수_지수함수와로그함수_중단원학습점검_고2/비상_대수_지수함수와로그함수_중단원학습점검_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_96aefa8296c1e25ec71ce803cd898770dadd8c6d9c9bfd62cdf2f4111a7290af",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "step": "-3<x<0에서 감소하는 로그함수의 하한은 x→0일 때 k-1이므로 k≥1이다.",
+      "note": "필요 TPL: 로그함수의 사분면 회피 조건.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_대수.jsonl"
+    }
+  ]
+}

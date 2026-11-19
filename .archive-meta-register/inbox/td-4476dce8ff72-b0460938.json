@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-4476dce8ff72-b0460938",
+  "examUid": "23_매산고_2학기_중간_고2_수학II",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/23_매산고_2학기_중간_고2_수학II.js",
+  "expectedSourceBlobSha1": "52d0588ef2b41cd48a00e3afa56ad968fec650ca",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4476dce8ff72-b0460938.type-ledger.json",
+        "sha256": "67f79493583ff41aa069d90da8bde4b0c028bd1ce8288a71729500c2fd8373f5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_4ea7e02bac58bcebec04096185e899781ece5f2e8ec79bcb31f5f7eb3c777c15",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE"
+      },
+      "rationale": "연속가지선택으로 바깥직선·안쪽±x²를 정하고 고정교점−1 외 양의포물선 접촉판별식 k²+4k−4=0에서 최소−2+2√2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "bf71a31273e9f03021fcdd48a436316cea70ba36f9f762945e2e0429f8d678a8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-4476dce8ff72-b0460938.type-ledger.json",
+          "sha256": "67f79493583ff41aa069d90da8bde4b0c028bd1ce8288a71729500c2fd8373f5"
+        }
+      ]
+    }
+  ]
+}
