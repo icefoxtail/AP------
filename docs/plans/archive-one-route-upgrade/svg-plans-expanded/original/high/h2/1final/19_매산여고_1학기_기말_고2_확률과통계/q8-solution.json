@@ -1,0 +1,67 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "상자 A",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "노란 공 2개",
+              "p": "1/3"
+            },
+            {
+              "label": "그 외",
+              "p": "2/3"
+            }
+          ]
+        },
+        {
+          "label": "상자 B",
+          "p": "1/2",
+          "children": [
+            {
+              "label": "노란 공 2개",
+              "p": "1/5"
+            },
+            {
+              "label": "그 외",
+              "p": "4/5"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "highlightPaths": [
+      {
+        "path": [
+          "상자 A",
+          "노란 공 2개"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "상자 B",
+          "노란 공 2개"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "상자를 고를 확률은 각각 1/2이다. A에서 노란 공 2개를 꺼낼 확률은 6C2÷10C2=1/3이고 B에서는 3C2÷6C2=1/5이다. 노란 공 2개가 나오는 두 경로의 확률은 1/2×1/3=1/6(파랑)과 1/2×1/5=1/10(주황)이고 합은 4/15이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "상자 A와 B로 갈라지고 각각 노란 공 2개가 나오는 경우와 그 외로 이어지는 확률이 적힌 수형도이며 노란 공 2개가 나오는 두 경로가 서로 다른 색으로 표시되어 있다.",
+  "newVisualInformation": [
+    "노란 공 2개가 나오는 두 경로의 확률 1/6과 1/10이 보여 합 4/15가 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$A$상자에는 파란 공 4개, 노란 공 6개가 들어 있고, $B$상자에는 파란 공 3개, 노란 공 3개가 들어 있다. 두 상자 $A, B$중 임의로 하나를 택하여 임의로 2개의 공을 동시에 꺼냈더니 나온 공이 모두 노란 공일 확률은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

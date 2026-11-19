@@ -1,0 +1,50 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "A와 B에 모두 속함",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "B에만 속함",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "어느 쪽에도 속하지 않음",
+        "in": []
+      }
+    ],
+    "shade": "A",
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A⊂B이므로 전체집합의 각 원소가 갈 수 있는 곳은 세 가지이다. 그림의 안쪽(A와 B에 모두 속함), 바깥 고리(B에만 속함), B 밖(어느 쪽에도 속하지 않음)이다. A에만 속하는 경우는 A⊂B에 어긋나 없다. 원소 5개가 각각 3가지 중 하나를 고르므로 경우의 수는 3의 5제곱이고 답은 ①이다.",
+  "accessibilityDescription": "전체집합 안에서 집합 A가 집합 B 안에 포함된 벤다이어그램이며 세 영역에 각각의 이름이 적혀 있고 A가 색칠되어 있다.",
+  "newVisualInformation": [
+    "A⊂B에서 원소가 갈 수 있는 세 영역이 구분되어 원소마다 3가지, 5개이면 3의 5제곱임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{a, b, c, d, e\\}$의 두 부분집합 $A, B$가 $A \\subset B$를 만족시키도록 두 집합 $A, B$를 정하는 모든 경우의 수는? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
