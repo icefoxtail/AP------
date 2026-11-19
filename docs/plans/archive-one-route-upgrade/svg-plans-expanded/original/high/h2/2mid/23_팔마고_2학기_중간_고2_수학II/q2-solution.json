@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-2"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "Q",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "3"
+      ],
+      "Q": [
+        "0",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=-1의 왼쪽에서 y는 1에 가까워지고(열린 점), f(-1)=3(닫힌 점 P)이며 오른쪽에서는 3에서 시작해 내려와 x=0의 왼쪽에서 1에 가까워진다(열린 점). f(0)=2(닫힌 점 Q)이고 오른쪽에서는 2에서 시작해 내려온다. x→-1+이면 x+1→0+이므로 f(x+1)의 극한은 f의 x=0 우극한 2이고, x→1+이면 -x→-1-이므로 f(-x)의 극한은 f의 x=-1 좌극한 1이다. 따라서 합은 3이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같다.<br>$\\lim_{x\\to-1+}f(x+1)+\\lim_{x\\to1+}f(-x)$의 값은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-1, x=0에서의 좌극한(열린 점), 우극한, 함숫값(닫힌 점)을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1과 x=0에서 좌극한 1, 함숫값 f(-1)=3, f(0)=2, 우극한을 열린 점과 닫힌 점으로 보인다."
+  ],
+  "accessibilityDescription": "x=-1과 x=0에서 열린 점과 닫힌 점으로 끊어지며 오른쪽 아래로 내려가는 세 조각의 그래프이다."
+}
