@@ -1724,8 +1724,7 @@ for (const [name, mutate, error] of [
   ["inactive template", f => { f.request.registryChanges.find(c => c.path.endsWith("taxonomy.json")).after.templates[0].status = "RETIRED"; }, /inactive\/missing TPL/],
   ["invalid parent", f => { f.request.registryChanges.find(c => c.path.endsWith("taxonomy.json")).after.templates[0].parentProblemTypeKey = "PT_MISSING"; }, /TPL parent missing/],
   ["binding missing", f => { f.request.registryChanges.find(c => c.path.endsWith("bindings.json")).after.bindings = []; }, /binding missing/],
-  ["wrong source value", f => { f.request.items[0].after.difficultyBucket = 4; }, /source\/approved metadata parity/],
-  ["protected student field", f => { f.request.items[0].after.solution = "rewrite"; }, /unapproved field/]
+  ["wrong source value", f => { f.request.items[0].after.difficultyBucket = 4; }, /source\/approved metadata parity/]
 ]) test(`reject ${name} before any write`, t => {
   const f = fixture(t); const original = fs.readFileSync(path.join(f.root, META));
   mutate(f);
@@ -6514,4 +6513,74 @@ test("source rebind keeps catalog identity provenance on the runtime record and 
   const plain = sourceRebindFixture(t);
   assert.equal(registerReviewedExamV2({ root: plain.root, request: plain.request, write: true }).status, "PASS");
   for (const key of keys) assert.equal(Object.hasOwn(plain.read(runtimeFile).records[0], key), false, key);
+});
+
+// Meta slim PR 0: the registrar takes the judged values only; copies/auxiliary fields are neither required nor stored.
+test("minimal request without copy or auxiliary fields registers", t => {
+  const f = fixture(t);
+  for (const k of ["rpmSemanticStatus", "rpmL3", "rpmL4"]) { delete f.request.items[0].after[k]; delete f.request.items[0].before[k]; }
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  assert.equal(result.reportTags, undefined);
+  const row = f.read(META).records[0];
+  assert.equal(row.problemTypeKey, "PT_NEW");
+  assert.equal(row.difficultyBucket, 3);
+  assert.equal(row.rpmL3, undefined);
+});
+
+test("a field outside the value contract is not stored and is reported instead of rejected", t => {
+  const f = fixture(t);
+  Object.assign(f.request.items[0].after, { solution: "rewrite", rpmPrimaryL3: "copy", difficultyBasis: "why" });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "UNSTORED_FIELDS", fields: ["solution", "rpmPrimaryL3", "difficultyBasis"] }]);
+  const row = f.read(META).records[0];
+  for (const k of ["solution", "rpmPrimaryL3", "difficultyBasis"]) assert.equal(Object.hasOwn(row, k), false, k);
+  assert.equal(row.problemTypeKey, "PT_NEW");
+  assert.equal(fs.readFileSync(path.join(f.root, "archive/exams/fixture/exam.js"), "utf8").includes("rewrite"), false);
+  // The same in-memory request can be replayed: the registrar must not have rewritten it.
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+function recordIdFixture(t, { fixtureRowId = "FIXTURE-RPM-1", keepL = {} } = {}) {
+  const f = fixture(t);
+  const rpmPath = { majorUnit: "정본 RPM 대단원", midUnit: "정본 RPM 중단원", l3: "정본 RPM 개념", l4: "정본 RPM 유형" };
+  const item = f.request.items[0];
+  for (const k of ["rpmSemanticStatus", "rpmL3", "rpmL4"]) { delete item.after[k]; delete item.before[k]; }
+  item.before.rpmPrimaryRecordId = null; item.after.rpmPrimaryRecordId = "FIXTURE-RPM-1";
+  for (const [k, v] of Object.entries(keepL)) { item.before[k] = null; item.after[k] = v; }
+  const masterPath = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
+  f.put(masterPath, { schemaVersion: "js-archive-taxonomy-rpm-primary-v1.0", authorityStatus: "LOCKED", records: [] });
+  f.put("archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json", { schemaVersion: "rpm-primary-active-crosswalk-v1", status: "ACTIVE_REFERENCE",
+    rpmAuthority: { source: masterPath }, records: [{ id: fixtureRowId, curriculum: "2022", scope: "중1 수학", rpmPath }] });
+  return { f, rpmPath };
+}
+
+test("rpmPrimaryRecordId fills empty rpmL1~L4 from its crosswalk row", t => {
+  const { f, rpmPath } = recordIdFixture(t);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.rpmPrimaryRecordId, "FIXTURE-RPM-1");
+  assert.deepEqual([row.rpmL1, row.rpmL2, row.rpmL3, row.rpmL4], [rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4]);
+  assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "RPM_FILLED_FROM_RECORD_ID", rpmPrimaryRecordId: "FIXTURE-RPM-1", fields: ["rpmL1", "rpmL2", "rpmL3", "rpmL4"] }]);
+  assert.equal(row.L3, "새 유형", "plain L1~L4 display fields come from PT/TPL, not from the RPM fill");
+});
+
+test("rpmPrimaryRecordId never overwrites an existing rpmL value and reports a difference", t => {
+  const { f } = recordIdFixture(t, { keepL: { rpmL3: "작성자가 쓴 개념", rpmL4: "정본 RPM 유형" } });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.rpmL3, "작성자가 쓴 개념");
+  assert.equal(row.rpmL4, "정본 RPM 유형");
+  assert.equal(row.rpmL1, "정본 RPM 대단원");
+  assert.deepEqual(result.reportTags.map(tag => [tag.kind, tag.fields]), [["RPM_FILLED_FROM_RECORD_ID", ["rpmL1", "rpmL2"]], ["RPM_DIFFERS_FROM_CROSSWALK", ["rpmL3"]]]);
+});
+
+test("rpmPrimaryRecordId absent from the crosswalk leaves rpmL1~L4 empty and is reported", t => {
+  const { f } = recordIdFixture(t, { fixtureRowId: "OTHER-RPM-9" });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.rpmPrimaryRecordId, "FIXTURE-RPM-1");
+  for (const k of ["rpmL1", "rpmL2", "rpmL3", "rpmL4"]) assert.equal(Object.hasOwn(row, k), false, k);
+  assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "RPM_RECORD_ID_NOT_IN_CROSSWALK", rpmPrimaryRecordId: "FIXTURE-RPM-1" }]);
 });
