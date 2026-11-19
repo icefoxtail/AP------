@@ -1,0 +1,54 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "subset": [
+      "A",
+      "B"
+    ],
+    "elements": [
+      {
+        "text": "1/6",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "1/2",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1/3",
+        "in": []
+      }
+    ],
+    "shade": "A∪B^c"
+  },
+  "caption": "A와 B의 여사건의 공통부분이 공집합이므로 A⊂B이고 A∪B=B이다. P(B)=2/3, P(A)=5/6−2/3=1/6, B의 여사건의 확률은 1/3이다. A와 B의 여사건는 서로 배반이므로 P(A∪(B의 여사건))=1/6+1/3=1/2이다. 그림은 A 안쪽 1/6, B 안에서 A 밖 1/2, B 밖 1/3이며 색칠한 부분이 A∪(B의 여사건)이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A,B$에 대하여 $A$와 $A^c\\cup B^c$이 서로 배반사건이고, $P(A\\cup B)=\\dfrac{2}{3}$, $P(A)+P(B)=\\dfrac{5}{6}$일 때, $P(A\\cup B^c)$의 값은? (단, $A^c$은 $A$의 여사건이다.) [5.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "A와 A^c∪B^c이 서로 배반이면 A⊂B",
+      "mappedTo": "diagram.subset"
+    }
+  ],
+  "newVisualInformation": [
+    "A⊂B 포함 관계와 세 영역의 확률 1/6, 1/2, 1/3을 보이고 A∪B^c를 색칠해 A와 B^c가 겹치지 않음을 보인다."
+  ],
+  "accessibilityDescription": "전체집합 안에 집합 A가 집합 B 안에 포함된 벤다이어그램이며 세 영역에 확률이 적혀 있고 A와 B 바깥이 색칠되어 있다."
+}

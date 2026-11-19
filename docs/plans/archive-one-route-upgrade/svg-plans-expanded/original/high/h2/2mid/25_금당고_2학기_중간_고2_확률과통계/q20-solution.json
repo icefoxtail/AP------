@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "X"
+      },
+      {
+        "id": "Y"
+      }
+    ],
+    "elements": [
+      {
+        "text": "4",
+        "in": [
+          "X"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "X",
+          "Y"
+        ]
+      },
+      {
+        "text": "28",
+        "in": [
+          "Y"
+        ]
+      },
+      {
+        "text": "92",
+        "in": []
+      }
+    ],
+    "shade": "(X∪Y)^c"
+  },
+  "caption": "짝수 개의 원소를 갖는 부분집합 C는 모두 128개이다. X는 A와 만나지 않는 C의 모임으로 8개, Y는 B와 만나지 않는 C의 모임으로 32개이고, 둘 다인 X∩Y는 4개이다. 그림은 X만 4개, 둘 다 4개, Y만 28개, 바깥 92개이며 색칠한 바깥이 조건 (나)를 만족하는 경우이다. 128−8−32+4=92이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $U=\\{1,2,3,4,5,6,7,8\\}$의 세 부분집합 $A=\\{2,4,6,8\\}$, $B=\\{3,6\\}$, $C$에 대하여 다음 조건을 만족시키는 집합 $C$의 개수를 풀이과정과 함께 상세하게 서술하시오.\n(가) 집합 $C$의 원소의 개수는 짝수이다.\n(나) $A\\cap C\\ne\\varnothing$, $B\\cap C\\ne\\varnothing$ [8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "c1",
+      "condition": "짝수 크기 C 중 A와 만나지 않는 경우 X, B와 만나지 않는 경우 Y",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "짝수 크기 부분집합 128개를 X, Y 두 모임의 포함배제로 나누어 바깥 92개가 답임을 보인다."
+  ],
+  "accessibilityDescription": "전체집합 안에 두 집합 X, Y가 겹친 벤다이어그램이며 영역마다 개수가 적혀 있고 X와 Y 바깥이 색칠되어 있다."
+}
