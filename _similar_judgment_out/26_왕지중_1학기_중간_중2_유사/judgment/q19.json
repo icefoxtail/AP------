@@ -1,0 +1,71 @@
+{
+  "qid": 19,
+  "itemFingerprint": "8e252eeeeb15493c",
+  "solveSteps": [
+    "거리 x km라 하면 갈 때 걸린 시간은 x/8 시간이다.",
+    "반환점 휴식 시간은 15분 = 15/60 = 1/4 시간이고, 올 때 시간은 x/6 시간이다.",
+    "총 소요 시간이 2시간 이내이므로 x/8 + 1/4 + x/6 <= 2이다.",
+    "x/8 + x/6 <= 7/4에서 양변에 24를 곱하면 3x + 4x <= 42이므로 7x <= 42에서 x <= 6.0 km이다.",
+    "따라서 최대 6.0 km 떨어진 곳까지 갈 수 있다. 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "수현이는 출발점에서 최대 몇 $\\text{km}$ 떨어진 곳까지 갔다 올 수 있는가?",
+  "rpmRecordId": "M2-RPM-144",
+  "rpmReason": "시속 8km, 6km 및 휴식 시간 15분을 고려하여 총 2시간 이내의 시간 제한 부등식을 푼다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+  "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+  "typeReason": "왕복 이동과 휴식 시간 15분을 포함하여 시간 제한 2시간 이내의 왕복 거리를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "15분을 시간 단위로 변환하고 왕복 시간에 대한 일차부등식을 세워 최대 6.0km를 구하는 3단계 활용 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "시점",
+        "quote": "갈 때는 시속 $8,\\text{km}$로 달리고, 반환점에서 $15$분 동안 휴식을 취한 후,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "quote": "수현이는 출발점에서 최대 몇 $\\text{km}$ 떨어진 곳까지 갔다 올 수 있는가?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차부등식",
+        "quote": "총 소요 시간이 $2$시간 이내이어야 하므로 다음과 같은 일차부등식을 세울 수 있다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최소공배수",
+        "quote": "양변에 분모의 최소공배수 $24$를 곱하여 정리하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "15분 휴식을 1/4시간으로 변환하고 x/8 + 1/4 + x/6 <= 2를 풀어 최대 6.0km를 구하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

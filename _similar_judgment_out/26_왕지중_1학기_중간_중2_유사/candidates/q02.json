@@ -1,0 +1,1231 @@
+{
+  "qid": 2,
+  "questionType": "객관식",
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022",
+  "problem": {
+    "content": "다음 중 유한소수로 나타낼 수 없는 것은? [4점]",
+    "choices": [
+      "$\\dfrac{3}{20}$",
+      "$\\dfrac{7}{40}$",
+      "$\\dfrac{9}{75}$",
+      "$\\dfrac{5}{18}$",
+      "$\\dfrac{42}{2^2 \\times 3 \\times 7}$"
+    ],
+    "points": 4
+  },
+  "reference": {
+    "answer": "④",
+    "solution": "분수를 기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이고, 그 외의 소인수가 있으면 유한소수로 나타낼 수 없다. 각 선지를 기약분수로 나타내어 분모의 소인수를 확인하면 다음과 같다. ① $\\frac{3}{20} = \\frac{3}{2^2 \\times 5}$ (분모 소인수가 $2, 5$뿐이므로 유한소수) ② $\\frac{7}{40} = \\frac{7}{2^3 \\times 5}$ (분모 소인수가 $2, 5$뿐이므로 유한소수) ③ $\\frac{9}{75} = \\frac{3}{25} = \\frac{3}{5^2}$ (분모 소인수가 $5$뿐이므로 유한소수) ④ $\\frac{5}{18} = \\frac{5}{2 \\times 3^2}$ (기약분수 분모에 소인수 $3$이 있으므로 유한소수로 나타낼 수 없음) ⑤ $\\frac{42}{2^2 \\times 3 \\times 7} = \\frac{42}{42 \\times 2} = \\frac{1}{2}$ (유한소수) 따라서 유한소수로 나타낼 수 없는 것은 ④이다.",
+    "sourcePrimaryMethod": "각 분수를 기약분수로 고치고 분모를 소인수분해하여 2, 5 이외의 소인수를 찾는다.",
+    "sourceDecisiveStep": "5/18 = 5/(2·3^2)에서 소인수 3의 존재로 유한소수 불가를 도출한다."
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "M2-01",
+    "subUnitKey": "M2-01-REPEATING_DECIMAL",
+    "rpmPath": {
+      "majorUnit": "유리수와 순환소수",
+      "midUnit": "유리수와 순환소수",
+      "l3": "유한소수와 무한소수",
+      "l4": "유한소수 판별"
+    },
+    "problemTypeKey": "PT_M2_FINITE_DECIMAL_IDENTIFICATION",
+    "templateKey": "TPL_FINITE_DECIMAL_PRIME_FACTORS",
+    "difficultyBucket": 1,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "분수",
+        "기약분수"
+      ],
+      "goal": [
+        "유한소수"
+      ],
+      "method": [
+        "소인수분해",
+        "약분"
+      ],
+      "condition": [
+        "소수"
+      ]
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "M2-01",
+      "label": "수와 식",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "label": "지수법칙"
+        },
+        {
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "label": "다항식의 계산"
+        },
+        {
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "label": "유리수와 순환소수"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-119",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 유한소수 판별",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-120",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 분모의 소인수 조건",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-121",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환마디와 표현",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-122",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환소수를 분수로",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-123",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유리수와 소수 표현 > 분수를 소수로",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-124",
+          "path": "유리수와 순환소수 > 유리수와 순환소수 > 유리수와 소수 표현 > 조건을 만족하는 유리수",
+          "subUnitKey": "M2-01-REPEATING_DECIMAL",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-125",
+          "path": "식의 계산 > 단항식의 계산 > 지수법칙 > 거듭제곱의 곱·몫",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-126",
+          "path": "식의 계산 > 단항식의 계산 > 지수법칙 > 거듭제곱의 거듭제곱",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-127",
+          "path": "식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 단항식의 곱셈",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-128",
+          "path": "식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 단항식의 나눗셈",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-129",
+          "path": "식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 혼합 계산",
+          "subUnitKey": "M2-01-EXPONENT_LAW",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-130",
+          "path": "식의 계산 > 다항식의 계산 > 다항식의 덧셈과 뺄셈 > 동류항 정리",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-131",
+          "path": "식의 계산 > 다항식의 계산 > 다항식의 덧셈과 뺄셈 > 괄호가 있는 계산",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-132",
+          "path": "식의 계산 > 다항식의 계산 > 단항식과 다항식의 곱셈·나눗셈 > 분배법칙",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-133",
+          "path": "식의 계산 > 다항식의 계산 > 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-134",
+          "path": "식의 계산 > 다항식의 계산 > 식의 값과 활용 > 식의 값",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-135",
+          "path": "식의 계산 > 다항식의 계산 > 식의 값과 활용 > 조건식 활용",
+          "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+          "label": "단항식 곱셈·나눗셈의 옳고 그름 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+              "label": "지수법칙 적용 단항식 계산 검증 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_CYLINDER_VOLUME_RATIO",
+          "label": "직사각형 회전체 두 부피의 비",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_VOLUME_RATIO_OF_TWO_REVOLVED_CYLINDERS_DESCRIPTIVE",
+              "label": "회전축에 따른 원기둥 부피비 계산 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+          "label": "잘못 더한 다항식의 바른 계산 복원",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+              "label": "오연산 되돌림 다항식 복원 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_DIVISION_GEOMETRIC_AREA",
+          "label": "다항식 넓이에서 삼각형 높이 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_FIND_TRIANGLE_HEIGHT_FROM_POLYNOMIAL_AREA",
+              "label": "다항식 나눗셈으로 높이 결정 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_M2_POLYNOMIAL_GEOMETRIC_FOLDING_AREA",
+          "label": "접힌 삼각형의 넓이 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_CALCULATE_FOLDED_TRIANGLE_AREA_WITH_VARIABLES",
+              "label": "접기 합동을 이용한 삼각형 넓이 절차"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-02",
+      "label": "일차부등식",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "label": "일차부등식"
+        },
+        {
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "label": "일차부등식의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-136",
+          "path": "일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-137",
+          "path": "일차부등식 > 일차부등식 > 부등식의 성질 > 수직선으로 해 표현",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-138",
+          "path": "일차부등식 > 일차부등식 > 일차부등식의 풀이 > 기본형",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-139",
+          "path": "일차부등식 > 일차부등식 > 일차부등식의 풀이 > 괄호·분수·소수가 있는 부등식",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-140",
+          "path": "일차부등식 > 일차부등식 > 해의 조건 > 정수해 개수",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-141",
+          "path": "일차부등식 > 일차부등식 > 해의 조건 > 계수 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-142",
+          "path": "일차부등식 > 일차부등식의 활용 > 수량 관계 > 이상·이하 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-143",
+          "path": "일차부등식 > 일차부등식의 활용 > 수량 관계 > 최소·최대 정수",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-144",
+          "path": "일차부등식 > 일차부등식의 활용 > 거리·속력·시간 > 시간 제한",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-145",
+          "path": "일차부등식 > 일차부등식의 활용 > 거리·속력·시간 > 거리 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-146",
+          "path": "일차부등식 > 일차부등식의 활용 > 비율·가격·도형 > 할인·이익",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-147",
+          "path": "일차부등식 > 일차부등식의 활용 > 비율·가격·도형 > 도형의 길이·넓이 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-136-INEQUALITY-PROPERTIES-34C2",
+          "path": "일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "M2-RPM-141-ALL-SOLUTIONS-SIGN-34C2",
+          "path": "일차부등식 > 일차부등식 > 해의 조건 > 계수 조건",
+          "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+          "label": "부등식 성질 적용의 옳고 그름 판별",
+          "templates": [
+            {
+              "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+              "label": "부등식 변형 성질 검증 절차"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+          "label": "일차·연립부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+              "label": "연립부등식의 공통 구간"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+              "label": "정수 개수·매개변수 조건"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_ALL_SOLUTIONS_SIGN",
+              "label": "일차부등식의 전체 해 부호 조건"
+            },
+            {
+              "templateKey": "TPL_H1_LINEAR_INEQUALITY_LEAST_INTEGER_SOLUTION",
+              "label": "일차부등식의 가장 작은 정수해"
+            },
+            {
+              "templateKey": "TPL_H1_INDEPENDENT_INEQUALITIES_LEAST_INTEGER_SUM",
+              "label": "독립된 부등식의 최소 정수해 합"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-03",
+      "label": "연립일차방정식",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "label": "연립일차방정식"
+        },
+        {
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "label": "연립일차방정식의 활용"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-148",
+          "path": "연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 가감법",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-149",
+          "path": "연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 대입법",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-150",
+          "path": "연립일차방정식 > 연립일차방정식 > 해와 계수 > 해가 주어진 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-151",
+          "path": "연립일차방정식 > 연립일차방정식 > 해와 계수 > 계수 결정",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-152",
+          "path": "연립일차방정식 > 연립일차방정식 > 복잡한 꼴의 연립방정식 > 괄호가 있는 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-153",
+          "path": "연립일차방정식 > 연립일차방정식 > 복잡한 꼴의 연립방정식 > 분수·소수가 있는 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-154",
+          "path": "연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 해가 없거나 무수히 많은 경우",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-155",
+          "path": "연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 계수 조건으로 해의 상태 판단",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-156",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 두 수 관계",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-157",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 개수·가격",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-158",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 속력·시간·거리 > 마주가기·따라가기",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-159",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 속력·시간·거리 > 강물·기차",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-160",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 농도·비율 > 농도 혼합",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-161",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 농도·비율 > 증감률",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-162",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 도형 활용 > 도형 조건을 이용한 연립방정식",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-163",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 일의 양 > 일의 양과 작업률",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-157-SWAPPED-QUANTITIES-34C2",
+          "path": "연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 개수·가격",
+          "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H1_EQUATION_APPLICATION",
+          "label": "방정식의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_H1_EQUATION_KNOWN_WEIGHTS_SWAPPED_QUANTITIES",
+              "label": "알려진 단위량과 수량 교환 차이의 연립식"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-04",
+      "label": "일차함수와 그래프",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "label": "일차함수의 뜻과 그래프"
+        },
+        {
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "label": "일차함수와 일차방정식의 관계"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-164",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 뜻 > 함숫값",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-165",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 뜻 > 일차함수 판별",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-166",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 기울기·절편",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-167",
+          "path": "일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 그래프 그리기",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-168",
+          "path": "일차함수 > 일차함수와 그 그래프 > 그래프의 성질 > 일차함수 그래프의 평행·일치",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-169",
+          "path": "일차함수 > 일차함수와 그 그래프 > 그래프의 성질 > 증가·감소",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-170",
+          "path": "일차함수 > 일차함수와 그 그래프 > 식 구하기 > 두 점으로 식 구하기",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-171",
+          "path": "일차함수 > 일차함수와 그 그래프 > 식 구하기 > 기울기와 한 점으로 식 구하기",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-172",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 방정식과 그래프 > 일차방정식의 그래프",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-173",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 방정식과 그래프 > x축·y축에 평행한 직선",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-174",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 교점과 연립방정식",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-175",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 두 직선의 평행·일치",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-176",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 넓이",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-177",
+          "path": "일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정",
+          "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    },
+    {
+      "standardUnitKey": "M2-05",
+      "label": "도형의 성질",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "label": "사각형의 성질"
+        },
+        {
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "label": "삼각형의 성질"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-178",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형 > 밑각과 꼭짓각",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-179",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 이등변삼각형 > 이등변삼각형 판정",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-180",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHS",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-181",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 직각삼각형의 합동 > RHA",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-182",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 각의 이등분선 > 각의 이등분선 성질",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-183",
+          "path": "삼각형의 성질 > 삼각형의 성질 > 각의 이등분선 > 거리 관계",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-184",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 수직이등분선과 외심",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-185",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외심 > 외심의 위치·각",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-186",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 각의 이등분선과 내심",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-187",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 내심 > 내심과 거리",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-188",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 반지름·각 계산",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-189",
+          "path": "삼각형의 성질 > 삼각형의 외심과 내심 > 외접원·내접원 활용 > 외심·내심을 이용한 복합도형",
+          "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-190",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 성질 > 변·각의 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-191",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 성질 > 평행사변형의 대각선 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-192",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 판정 > 변·각 조건",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-193",
+          "path": "사각형의 성질 > 평행사변형 > 평행사변형의 판정 > 대각선 조건",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-194",
+          "path": "사각형의 성질 > 평행사변형 > 넓이와 활용 > 평행선과 넓이",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-195",
+          "path": "사각형의 성질 > 평행사변형 > 넓이와 활용 > 분할도형",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-196",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 직사각형·마름모·정사각형 > 각 사각형의 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-197",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 직사각형·마름모·정사각형 > 특수 사각형의 대각선 성질",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-198",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사다리꼴 > 등변사다리꼴",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-199",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사다리꼴 > 중점 연결",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-200",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사각형의 포함 관계 > 조건으로 사각형 판정",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-201",
+          "path": "사각형의 성질 > 여러 가지 사각형 > 사각형의 포함 관계 > 성질 비교",
+          "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+          "label": "이등변삼각형의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+              "label": "이등변삼각형의 밑각"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_CONVERSE",
+              "label": "이등변삼각형의 판정"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+              "label": "이등변삼각형의 꼭지각 이등분선"
+            },
+            {
+              "templateKey": "TPL_ISOSCELES_PROPERTY_STATEMENT_JUDGMENT",
+              "label": "이등변삼각형 성질의 적용 대상 진술 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_CENTERS",
+          "label": "삼각형의 외심·내심",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+              "label": "외심과 내심의 관계"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+              "label": "삼각형 중심의 성질"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+              "label": "삼각형의 외심"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_INCENTER",
+              "label": "삼각형의 내심"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+          "label": "직각삼각형의 합동",
+          "templates": [
+            {
+              "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+              "label": "빗변과 한 예각이 같은 직각삼각형의 합동"
+            },
+            {
+              "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+              "label": "빗변과 한 변이 같은 직각삼각형의 합동"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-06",
+      "label": "도형의 닮음",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "label": "평행선 사이의 선분의 길이의 비"
+        },
+        {
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "label": "도형의 닮음"
+        },
+        {
+          "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+          "label": "평행선 사이의 선분의 길이의 비"
+        },
+        {
+          "subUnitKey": "M2-06-SIMILAR_FIGURES",
+          "label": "닮은 도형의 성질과 겉넓이·부피의 비"
+        },
+        {
+          "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+          "label": "삼각형의 닮음 조건과 대응변의 길이"
+        },
+        {
+          "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+          "label": "삼각형의 무게중심의 성질"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-202",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 닮음비",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-203",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮은 도형 > 대응변·대응각",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-204",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > AA",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-205",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > SAS",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-206",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 삼각형의 닮음 > SSS",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-207",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 길이",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-208",
+          "path": "도형의 닮음과 피타고라스 정리 > 도형의 닮음 > 닮음의 활용 > 넓이·부피 비",
+          "subUnitKey": "M2-06-SIMILAR_FIGURE",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-209",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 기본 비례",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-210",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 삼각형과 평행선 > 평행선 판정",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-211",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 평행선 사이 선분비 > 여러 평행선",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-212",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 평행선 사이 선분비 > 사다리꼴",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-213",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 미지 길이",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-214",
+          "path": "도형의 닮음과 피타고라스 정리 > 평행선 사이의 선분의 길이의 비 > 비례 활용 > 선분비를 이용한 복합도형",
+          "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-215",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 중선과 무게중심 > 2:1 비",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-216",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 중선과 무게중심 > 좌표·길이",
+          "subUnitKey": "",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-217",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 넓이 분할",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-218",
+          "path": "도형의 닮음과 피타고라스 정리 > 삼각형의 무게중심 > 넓이와 무게중심 > 무게중심을 이용한 복합도형",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_SIMILAR_FIGURES",
+          "label": "닮은 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+              "label": "닮은 도형의 넓이·부피비"
+            },
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+              "label": "도형의 닮음비"
+            },
+            {
+              "templateKey": "TPL_SIMILAR_FIGURES_CORRESPONDENCE_STATEMENT_JUDGMENT",
+              "label": "닮은 도형의 대응변·대응각 진술 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+          "label": "삼각형의 닮음",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+              "label": "삼각형 닮음의 활용"
+            },
+            {
+              "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+              "label": "삼각형의 닮음 조건"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "M2-07",
+      "label": "피타고라스 정리",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "label": "피타고라스 정리의 활용"
+        },
+        {
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "label": "피타고라스 정리"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-219",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리 > 직각삼각형의 변 길이",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-220",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리 > 피타고라스 수",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-221",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리의 역 > 직각삼각형 판정",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-222",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 피타고라스 정리의 역 > 삼각형의 각 판정",
+          "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-223",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 도형에의 활용 > 평면도형 길이",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-224",
+          "path": "도형의 닮음과 피타고라스 정리 > 피타고라스 정리 > 도형에의 활용 > 입체도형 거리",
+          "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": []
+    },
+    {
+      "standardUnitKey": "M2-08",
+      "label": "확률",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "label": "확률의 뜻과 성질"
+        },
+        {
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "label": "경우의 수와 확률"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "M2-RPM-225",
+          "path": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 단계별 선택",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-226",
+          "path": "확률 > 경우의 수 > 합의 법칙과 곱의 법칙 > 중복 없이 세기",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-227",
+          "path": "확률 > 경우의 수 > 배열과 선택 > 순서가 있는 경우",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-228",
+          "path": "확률 > 경우의 수 > 배열과 선택 > 순서가 없는 경우",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-229",
+          "path": "확률 > 경우의 수 > 도형·경로 > 최단경로",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-230",
+          "path": "확률 > 경우의 수 > 도형·경로 > 도형의 개수",
+          "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "M2-RPM-231",
+          "path": "확률 > 확률 > 확률의 뜻 > 동등가능한 경우",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-232",
+          "path": "확률 > 확률 > 확률의 뜻 > 확률 계산",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-233",
+          "path": "확률 > 확률 > 확률의 성질 > 여사건",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-234",
+          "path": "확률 > 확률 > 확률의 성질 > 사건의 합",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-235",
+          "path": "확률 > 확률 > 확률의 활용 > 경우를 나누어 구하는 확률",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "M2-RPM-236",
+          "path": "확률 > 확률 > 확률의 활용 > 연속 시행",
+          "subUnitKey": "M2-08-PROBABILITY_BASIC",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": []
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "유한소수",
+      "matchedAs": "유한소수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "다음 중 유한소수로 나타낼 수"
+    },
+    {
+      "term": "소수",
+      "matchedAs": "소수",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "다음 중 유한소수로 나타낼 수"
+    },
+    {
+      "term": "기약분수",
+      "matchedAs": "기약분수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "분수를 기약분수로 나타내었을"
+    },
+    {
+      "term": "유한소수",
+      "matchedAs": "유한소수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$5$뿐이면 유한소수이고, 그 외의"
+    },
+    {
+      "term": "소인수",
+      "matchedAs": "소인수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "을 때 분모의 소인수가 $2$ 또는"
+    },
+    {
+      "term": "논리합",
+      "matchedAs": "또는",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "인수가 $2$ 또는 $5$뿐이면"
+    },
+    {
+      "term": "분모",
+      "matchedAs": "분모",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "나타내었을 때 분모의 소인수가 $"
+    },
+    {
+      "term": "분수",
+      "matchedAs": "분수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "분수를 기약분수로"
+    },
+    {
+      "term": "소수",
+      "matchedAs": "소수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "5$뿐이면 유한소수이고, 그 외의"
+    },
+    {
+      "term": "약분",
+      "matchedAs": "약분",
+      "kind": "방법",
+      "src": "solution",
+      "quote": "분수를 기약분수로 나타내었을"
+    },
+    {
+      "term": "인수",
+      "matchedAs": "인수",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "때 분모의 소인수가 $2$ 또는"
+    }
+  ],
+  "figure": {
+    "cueWords": [],
+    "hasPlan": true,
+    "problemPlanRef": "archive/exams/similar/middle/m2/1mid/26_왕지중_1학기_중간_중2_유사_plans/q02-problem.plan.json",
+    "hasImage": false,
+    "sourcePlan": {
+      "plan": true
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": null,
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

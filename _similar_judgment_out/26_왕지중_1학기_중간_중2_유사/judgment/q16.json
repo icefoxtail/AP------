@@ -1,0 +1,70 @@
+{
+  "qid": 16,
+  "itemFingerprint": "f9d87a92b9a076be",
+  "solveSteps": [
+    "양변에 분모의 최소공배수인 12를 곱한다.",
+    "12 * (x/4 + 2/3) < 12 * (5/3)에서 3x + 8 < 20이다.",
+    "8을 이항하면 3x < 12이다.",
+    "양변을 3으로 나누면 x < 4이다. 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $\\dfrac{x}{4} + \\dfrac{2}{3} < \\dfrac{5}{3}$의 해로 옳은 것은?",
+  "rpmRecordId": "M2-RPM-139",
+  "rpmReason": "분모의 최소공배수 12를 곱하여 3x + 8 < 20을 푸는 분수 계수 부등식이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+  "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+  "typeReason": "12를 곱하여 3x + 8 < 20으로 변형하고 해 x < 4를 구하는 일차부등식 풀이 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "12를 곱하여 3x + 8 < 20을 푸는 단순 분수 계수 일차부등식 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "quote": "일차부등식 $\\dfrac{x}{4} + \\dfrac{2}{3} < \\dfrac{5}{3}$의 해로 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차부등식",
+        "quote": "일차부등식 $\\dfrac{x}{4} + \\dfrac{2}{3} < \\dfrac{5}{3}$의 해로 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "quote": "분모의 최소공배수인 $12$를 부등식의 양변에 곱하여 분모를 없앤다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부등식",
+        "quote": "괄호를 풀어 전개하면 $$ 3x + 8 < 20 $$",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "분모의 최소공배수 12를 양변에 곱해 3x + 8 < 20에서 x < 4를 얻어 정답 ③을 선택하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

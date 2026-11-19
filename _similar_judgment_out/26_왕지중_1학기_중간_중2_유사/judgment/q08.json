@@ -1,0 +1,72 @@
+{
+  "qid": 8,
+  "itemFingerprint": "b9a805fa43e48a94",
+  "solveSteps": [
+    "① 3x^2 y * 4xy^3 = 12x^3 y^4 (옳음)",
+    "② 12a^5 b^4 / (3/2 a^2 b) = 12a^5 b^4 * 2 / (3a^2 b) = 8a^3 b^3이므로 8a^7 b^5는 틀렸다.",
+    "③ 15x^3 y^2 / 5xy = 3x^2 y (옳음)",
+    "④ (4x - 2y) + (x - 3y) = 5x - 5y (옳음)",
+    "⑤ (2x^2 - 4x + 3) - (3x^2 - x + 2) = -x^2 - 3x + 1 (옳음)",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "다음 중 계산 결과가 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-129",
+  "rpmReason": "선지의 단항식 곱셈 12x^3y^4과 나눗셈 등의 혼합 계산 결과를 판별한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "12x^3y^4 등 단항식의 곱셈과 나눗셈 연산의 옳고 그름을 평가하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "12x^3y^4과 같은 단항식 연산 법칙을 직접 적용하여 오류를 찾는 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식의나눗셈",
+        "quote": "$12a^5b^4 \\div \\dfrac{3}{2}a^2b = 8a^7b^5$",
+        "src": "choices"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수",
+        "quote": "다음 중 계산 결과가 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "역수",
+        "quote": "역수를 곱하여 계산하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "지수",
+        "quote": "나눗셈에서 지수를 빼지 않고 더하였으므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "선지 12a^5b^4의 나눗셈에서 지수를 빼지 않고 더한 오류를 찾아 정답 ②를 선택하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
