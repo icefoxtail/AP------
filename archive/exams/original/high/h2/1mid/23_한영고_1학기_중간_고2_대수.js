@@ -298,7 +298,7 @@ window.questionBank = [
     "solutionImageCaption": "graph_compare",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
-    "content": "함수 $y=f(x)$와 직선 $y=g(x)$의 그래프를 바탕으로, 부등식 $2^{-f(x)} < 0.5^{g(x)}$ 의 해를 구하시오. [4.3점]",
+    "content": "삼차함수 $y=f(x)$와 직선 $y=g(x)$의 그래프가 다음과 같을 때, 부등식 $2^{-f(x)} < 0.5^{g(x)}$ 의 해는? [4.3점]",
     "choices": [
       "$x < -3$ 또는 $x > 2$",
       "$-3 < x < -1$",
@@ -326,6 +326,7 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
+    "image": "assets/images/23_한영고_1학기_중간_고2_대수/q9.png",
     "solution": "<b>[Logical Anchor]</b> 밑을 $2$로 통일하여 지수의 크기 관계를 그래프 상의 위치 관계로 해석함.\\n$i) 밑의 통일$\\n$2^{-f(x)} < (2^{-1})^{g(x)} \\implies 2^{-f(x)} < 2^{-g(x)}$\\n$ii) 지수 비교$\\n밑 $2 > 1$ 이므로 부등호 방향이 유지됨.\\n$-f(x) < -g(x) \\implies f(x) > g(x)$\\n$iii) 그래프 해석$\\n곡선 $y=f(x)$가 직선 $y=g(x)$보다 위쪽에 있는 $x$의 범위를 찾음.\\n그래프의 교점이 $-3, -1, 2$ 이고 해당 조건을 만족하는 구간은\\n$\\implies -3 < x < -1  또는  x > 2$\\n$\\therefore$ ④",
     "level": "중",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
