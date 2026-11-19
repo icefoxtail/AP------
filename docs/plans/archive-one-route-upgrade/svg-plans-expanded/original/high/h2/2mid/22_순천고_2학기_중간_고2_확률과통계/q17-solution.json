@@ -1,0 +1,34 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 4,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "B": [
+        4,
+        3
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "counts": true
+  },
+  "caption": "A에서 B까지 오른쪽 R 4번, 위쪽 U 3번이므로 전체 경로는 7!/(4!3!)=35가지이다. 그림은 각 교차점까지의 경로 수이다. 방향을 바꾼 횟수가 1번이면 R와 U 묶음이 2개로 2가지, 3번이면 묶음이 4개로 2×3×2=12가지, 5번이면 묶음이 6개로 2×3×1=6가지이다. 합 20/35=4/7이므로 p+q=11이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "가로 4칸 세로 3칸의 도로망이며 A와 B가 표시되고 A에서 각 교차점까지의 경로 수가 적혀 있고 B에 35가 적혀 있다.",
+  "newVisualInformation": [
+    "전체 경로 수 35와 교차점별 경로 수가 보여 방향 전환 횟수별로 경로를 나누어 센 합 20이 전체의 몇 분의 몇인지 비교할 수 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 아래 그림과 같이 직사각형 모양으로 연결된 도로망이 있다. 이 도로망을 따라 A지점에서 출발하여 B지점까지 최단 거리로 가는 경로 중에서 임의로 한 경로를 택할 때, 택한 경로에서 진행 방향을 바꾼 횟수를 확률변수 $X$라 하자. $P(X=1)+P(X=3)+P(X=5)=\\frac{q}{p}$일 때, $p+q$의 값을 구하면? (단, $p$와 $q$는 서로소인 자연수이다.) [4.9점]\n\n<img src=\"assets/images/22_순천고_2학기_중간_고2_확률과통계/q17.png\" style=\"max-width:300px; display:block; margin:10px auto;\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

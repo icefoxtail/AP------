@@ -1,0 +1,86 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "X 는 13 이하"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "X",
+              "mean": "10",
+              "sd": "6",
+              "meanLine": true
+            }
+          ],
+          "ticks": [
+            {
+              "x": "10"
+            },
+            {
+              "x": "13"
+            }
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "13",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "Y 는 k 이상"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "28",
+              "sd": "6",
+              "meanLine": true
+            }
+          ],
+          "ticks": [
+            {
+              "x": "28"
+            },
+            {
+              "x": "25",
+              "text": "k"
+            }
+          ],
+          "shades": [
+            {
+              "from": "25",
+              "to": null,
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "X의 13은 z=(13−10)/6=0.5이므로 P(X≤13)=P(Z≤0.5)이다. 정규분포의 대칭성으로 P(Z≤0.5)=P(Z≥−0.5)이므로 Y의 k는 z=−0.5이다. (k−28)/6=−0.5에서 k=25이다. 그림의 두 곡선은 평균을 기준으로 거울 대칭인 꼬리 넓이를 보인다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 10에서 13 이하가, 오른쪽 곡선은 평균 28에서 k 이상이 칠해져 있다.",
+  "newVisualInformation": [
+    "두 분포의 평균에서 같은 표준점수만큼 반대 방향에 있는 꼬리의 넓이가 같음이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "7. 두 확률변수 $X, Y$가 각각 정규분포 $N(10, 6^2)$, $N(28, 6^2)$을 따를 때, $P(X \\le 13) = P(Y \\ge k)$이다. 이때 상수 $k$의 값을 구하면? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

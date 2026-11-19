@@ -1,0 +1,62 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-3",
+        "text": "m-3σ"
+      },
+      {
+        "x": "0",
+        "text": "m"
+      },
+      {
+        "x": "3",
+        "text": "m+3σ"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-3",
+        "to": "0",
+        "color": "BLUE"
+      },
+      {
+        "from": "0",
+        "to": "3",
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.4987"
+      },
+      {
+        "shade": 1,
+        "text": "0.4987"
+      }
+    ]
+  },
+  "caption": "Z=(X−m)/σ로 표준화하면 |X−m|≤3σ는 −3≤Z≤3이다. 표준정규분포는 0을 중심으로 대칭이므로 −3부터 0까지와 0부터 3까지의 넓이가 같고 각각 0.4987이다. 따라서 P=2×0.4987=0.9974이다. 답은 ④이다.",
+  "accessibilityDescription": "평균 m에 대응하는 중심 0의 정규분포 곡선이며 m−3σ, m, m+3σ의 위치가 표시되고 중심의 왼쪽과 오른쪽이 다른 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "m을 중심으로 양쪽 3σ 이내가 대칭인 두 부분 0.4987씩으로 나뉨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 확률변수 $X$가 정규분포 $N(m, \\sigma^2)$을 따를 때, 표준정규분포표를 이용하여 $P(|X-m| \\le 3\\sigma)$를 구하면? [4.4점]\n\n| $z$ | $P(0 \\le Z \\le z)$ |\n| :---: | :---: |\n| 1.0 | 0.3413 |\n| 2.0 | 0.4772 |\n| 3.0 | 0.4987 |",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
