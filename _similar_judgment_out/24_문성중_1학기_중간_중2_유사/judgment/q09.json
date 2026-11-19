@@ -1,0 +1,55 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "2f6b95553b3b220e",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$A = 2^{x-1} = \\frac{2^x}{2}$에서 $2^x = 2A$이다. aligned",
+    "$8^x = (2^3)^x = (2^x)^3 = (2A)^3 = 8A^3$이다. aligned",
+    "따라서 정답은 ⑤이다. aligned"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$A = 2^{x-1}$일",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수법칙을 이용하여 8^x을 A에 관한 식으로 변형하는 유형이다. aligned",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "밑이 8인 거듭제곱을 밑이 2인 식으로 바꾸어 나타낸다. aligned",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "2^x = 2A로 바꾼 뒤 8^x에 대입하여 식을 정리하는 문항이다. aligned",
+  "how": "2^x = 2A로 나타내고 8^x = (2^x)^3에 대입하여 8A^3을 구했다. aligned",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "stem",
+        "quote": "$A = 2^{x-1}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수",
+        "src": "stem",
+        "quote": "$8^{x}$을 $A$에 관한 식으로 나타내면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "여기에 $2^x = 2A$를 대입한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

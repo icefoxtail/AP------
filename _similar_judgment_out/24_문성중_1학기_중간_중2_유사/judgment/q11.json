@@ -1,0 +1,56 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "b1740a5028054966",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$(x^3 y^2)^4 = x^{12} y^8$이고 $(x^5 y^3)^2 = x^{10} y^6$이다. 36",
+    "$x^{12} y^8 \\times x^{10} y^6 = x^{12+10} y^{8+6} = x^{22} y^{14}$이다. 36",
+    "$a = 22, b = 14$이므로 $a+b = 22+14 = 36$이다. 36",
+    "따라서 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x^{3}y^{2})^{",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수법칙을 적용하여 거듭제곱의 곱셈에서 a+b=36을 구하는 유형이다. 36",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "지수법칙의 곱셈과 거듭제곱을 계산하여 합 36을 구한다. 36",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "지수법칙을 차례로 적용하여 지수의 합 36을 계산하는 표준 문항이다. 36",
+  "how": "지수법칙으로 전개하여 x^22 y^14를 얻고 a=22, b=14의 합 36을 구했다. 36",
+  "slots": {
+    "given": [
+      {
+        "term": "지수법칙",
+        "src": "stem",
+        "quote": "$(x^{3}y^{2})^{4} \\times (x^{5}y^{3})^{2} = x^{a}y^{b}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 적용하여 거듭제곱을 먼저 전개한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

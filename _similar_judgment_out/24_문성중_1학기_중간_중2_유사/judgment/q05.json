@@ -1,0 +1,63 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "26fb760030ccc35b",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$0.\\dot{a}\\dot{b} + 0.\\dot{b}\\dot{a} = \\frac{10a+b}{99} + \\frac{10b+a}{99} = \\frac{11(a+b)}{99} = \\frac{a+b}{9}$이다. 99",
+    "$\\frac{a+b}{9} = 0.\\dot{7} = \\frac{7}{9}$에서 $a+b=7$이다. 99",
+    "$a, b$가 소수이고 $a>b$이므로 $a=5, b=2$이다. 99",
+    "$0.\\dot{a}-0.\\dot{b} = 0.\\dot{5}-0.\\dot{2} = \\frac{5}{9}-\\frac{2}{9} = \\frac{3}{9} = 0.\\dot{3}$이다. 99",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 순환소수 $0.\\dot{",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분모 99를 이용하여 순환소수의 합과 차를 계산하는 유형이다. 99",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "분모 99를 이용한 분수 변환으로 미지수를 결정하고 계산한다. 99",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순환소수를 분모 99인 분수로 고쳐 소수 조건과 연립해 푸는 응용 문항이다. 99",
+  "how": "분모 99로 식을 세워 a+b=7에서 소수 a=5, b=2를 찾아 차를 순환소수로 구했다. 99",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "두 순환소수 $0.\\dot{a}\\dot{b}$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "$0.\\dot{a}-0.\\dot{b}$의 값을 순환소수로 나타낸 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "두 순환소수를 분수로 나타내어",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "단, $a, b$는 한 자리의 자연수이고"
+      }
+    ]
+  }
+}

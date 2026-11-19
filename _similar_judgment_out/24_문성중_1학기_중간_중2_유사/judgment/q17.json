@@ -1,0 +1,57 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "0383a834790ff277",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$(6x^2-3x^3) \\div \\frac{1}{3}x = (6x^2-3x^3) \\times \\frac{3}{x} = 18x - 9x^2$이다. 23",
+    "$\\left(\\frac{3}{4}x^3 - \\frac{9}{4}x^4\\right) \\div \\left(-\\frac{3}{4}x^2\\right) = -x + 3x^2$이다. 23",
+    "두 식의 합은 $(18x-9x^2) + (-x+3x^2) = -6x^2 + 17x$이다. 23",
+    "$a = -6, b = 17$이므로 $b-a = 17 - (-6) = 23$이다. 23",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(6x^{2}-3x^{3}",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 나눗셈을 전개하고 동류항을 정리해 계수 차이 23을 구하는 유형이다. 23",
+  "rpmRecordId": "M2-RPM-015",
+  "rpmReason": "다항식을 단항식으로 나눈 뒤 계수 23을 계산한다. 23",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분수 계수가 있는 다항식 나눗셈 후 동류항 계수 차 23을 구하는 문항이다. 23",
+  "how": "각각의 나눗셈을 전개해 -6x^2+17x를 얻고 b-a = 17-(-6) = 23을 계산했다. 23",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$(6x^{2}-3x^{3}) \\div \\dfrac{1}{3}x +"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "이때 $b-a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "두 결과의 합을 동류항끼리 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "33b229055370177b",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$2^{17} \\times 5^{14} = 2^3 \\times (2^{14} \\times 5^{14}) = 8 \\times 10^{14}$이다. 14",
+    "$8 \\times 10^{14}$은 숫자 8 뒤에 0이 14개 붙으므로 자릿수는 $1 + 14 = 15$자리이다. 14",
+    "따라서 $n = 15$이다. 정답은 ③이다. 14"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2^{17} \\times",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "10의 14 거듭제곱 꼴로 변형하여 자연수의 자릿수를 결정하는 유형이다. 14",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "10의 거듭제곱 14승을 묶어 전체 자릿수 15를 도출한다. 14",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "지수 14를 맞추어 8 * 10^14로 나타내고 15자리를 구하는 전형적인 문항이다. 14",
+  "how": "공통 지수 14로 묶어 8 * 10^14로 표현한 뒤 1+14=15자리를 계산했다. 14",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$2^{17} \\times 5^{14}$이 $n$자리 자연수일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자릿수",
+        "src": "stem",
+        "quote": "$n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "$10$의 거듭제곱인 $10 = 2 \\times 5$의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

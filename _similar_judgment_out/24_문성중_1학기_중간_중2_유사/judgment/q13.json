@@ -1,0 +1,56 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "505468872ff96019",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$(-2x^2 y)^3 = -8x^6 y^3$, $(xy^3)^2 = x^2 y^6$이다. 12",
+    "나눗셈을 곱셈으로 고치면 $\\times \\left(-\\frac{3}{2x^5 y^4}\\right)$이다. 12",
+    "$(-8x^6 y^3) \\times (x^2 y^6) \\times \\left(-\\frac{3}{2x^5 y^4}\\right) = (-8) \\times \\left(-\\frac{3}{2}\\right) \\times x^{8-5} y^{9-4} = 12x^3 y^5$이다. 12",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(-2x^{2}y)^{3}",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단항식의 거듭제곱과 역수 곱셈을 통해 12x^3 y^5을 계산하는 유형이다. 12",
+  "rpmRecordId": "M2-RPM-011",
+  "rpmReason": "단항식 혼합 계산으로 계수 12와 문자 지수를 산출한다. 12",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "단항식의 거듭제곱과 부호, 역수 곱셈을 정확히 처리해 12를 구하는 문항이다. 12",
+  "how": "거듭제곱을 전개하고 역수를 곱해 계수 12와 차수 x^3 y^5을 구했다. 12",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "src": "stem",
+        "quote": "$(-2x^{2}y)^{3} \\times (xy^{3})^{2} \\div \\left(-\\dfrac{2}{3}x^{5}y^{4}\\right)$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "단항식",
+        "src": "stem",
+        "quote": "$(-2x^{2}y)^{3} \\times (xy^{3})^{2} \\div \\left(-\\dfrac{2}{3}x^{5}y^{4}\\right)$을 계산하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "역수",
+        "src": "solution",
+        "quote": "나눗셈은 역수를 곱하는 곱셈으로 바꾼다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

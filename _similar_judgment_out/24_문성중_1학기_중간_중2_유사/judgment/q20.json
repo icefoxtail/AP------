@@ -1,0 +1,63 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "fe811ce297ad2502",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$-7 \\le x \\le 3$이고 $a < 0$이므로 각 변에 a를 곱하면 $3a \\le ax \\le -7a$이다. ax aligned",
+    "$\\frac{1}{2} + 3a \\le \\frac{1}{2} + ax \\le \\frac{1}{2} - 7a$이다. ax aligned",
+    "최댓값: $\\frac{1}{2} - 7a = 4 \\implies -7a = \\frac{7}{2} \\implies a = -\\frac{1}{2}$이다. ax aligned",
+    "최솟값: $b = \\frac{1}{2} + 3\\left(-\\frac{1}{2}\\right) = -1$이다. ax aligned",
+    "$a - b = -\\frac{1}{2} - (-1) = \\frac{1}{2}$이다. 따라서 정답은 ③이다. ax aligned"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-7 \\le x \\le 3",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "범위 -7 <= x <= 3에서 음수 a를 곱한 식 ax의 최댓값과 최솟값을 구하는 유형이다. ax aligned",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "부등식의 각 변에 음수를 곱해 최댓값 4를 만족하는 ax의 a를 찾는다. ax aligned",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수 조건 a<0에서 ax의 부등호 반전과 최댓값 4를 연립하여 a-b를 구하는 응용 문항이다. ax aligned",
+  "how": "a<0일 때 ax의 부등호 방향을 바꾸어 최댓값 식 1/2-7a=4에서 a=-1/2, b=-1을 구해 a-b=1/2을 얻었다. ax aligned",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "$-7 \\le x \\le 3$일 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "상수 $a, b$에 대하여 $a-b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "최댓값 조건을 이용하여 $a$를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "$a < 0$일 때, 상수 $a, b$에 대하여"
+      }
+    ]
+  }
+}

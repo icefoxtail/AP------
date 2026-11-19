@@ -1,0 +1,55 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "5576ef99f6d05962",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$2^{n+3} + 2^{n+2} + 2^{n+1} = 2^n(2^3 + 2^2 + 2^1) = 2^n(8+4+2) = 2^n \\times 14$이다. 224",
+    "$2^n \\times 14 = 224 \\implies 2^n = \\frac{224}{14} = 16 = 2^4$이다. 224",
+    "따라서 $n = 4$이다. 정답은 ③이다. 224"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2^{n+3} + 2^{n",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "거듭제곱의 합을 공통인수로 묶어 224를 만족하는 n을 구하는 유형이다. 224",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "지수 합식을 정리하여 224와의 비를 계산한다. 224",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공통인수 2^n으로 묶어 224/14 = 16을 유도해야 하는 지수 응용 문항이다. 224",
+  "how": "2^n으로 묶어 계수 14를 분리한 후 224/14=16=2^4에서 n=4를 구했다. 224",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "$2^{n+3} + 2^{n+2} + 2^{n+1} = 224$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통인수",
+        "src": "solution",
+        "quote": "좌변의 공통인수 $2^n$을 묶어 식을 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

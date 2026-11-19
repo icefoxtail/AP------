@@ -1,0 +1,63 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "8ac7e4ab6de99ea7",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$(x^a y^b z^c)^d = x^{ad} y^{bd} z^{cd} = x^{36} y^{48} z^{60}$에서 $ad=36, bd=48, cd=60$이다. 144",
+    "$a+b+c = \\frac{36+48+60}{d} = \\frac{144}{d}$가 최소가 되려면 d는 36, 48, 60의 최대공약수이어야 한다. 144",
+    "$\\gcd(36, 48, 60) = 12$이므로 $d=12$이다. 144",
+    "$a = 3, b = 4, c = 5$이므로 $a+b+c = 3+4+5 = 12$이다. 144",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "네 자연수 $a, b, c,",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수 관계식 144/d에서 최대공약수를 이용해 최솟값을 구하는 유형이다. 144",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "지수 거듭제곱 식 144/d의 최대공약수 조건을 분석한다. 144",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "지수법칙과 최대공약수를 연계하여 144/d의 최솟값을 찾는 심화 문항이다. 144",
+  "how": "ad=36, bd=48, cd=60에서 d의 최댓값 12를 구하고 144/12 = 12를 계산했다. 144",
+  "slots": {
+    "given": [
+      {
+        "term": "지수법칙",
+        "src": "stem",
+        "quote": "$(x^{a}y^{b}z^{c})^{d} = x^{36}y^{48}z^{60}$이 성립할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$a+b+c$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "최대공약수",
+        "src": "solution",
+        "quote": "$d$는 $36, 48, 60$의 최대공약수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "네 자연수 $a, b, c, d$에 대하여"
+      }
+    ]
+  }
+}
