@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "5"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "-7"
+        ]
+      },
+      {
+        "coefficients": [
+          "-7",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "x": "1",
+        "y": "-4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "-2"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "3"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "-4"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "-2"
+      ],
+      "B": [
+        "0",
+        "3"
+      ],
+      "C": [
+        "1",
+        "-4"
+      ],
+      "D": [
+        "2",
+        "-1"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "예: 네 점 A(-1,-2), B(0,3), C(1,-4), D(2,-1)을 꺾은선으로 이은 연속함수와 직선 y=x를 그렸다. A는 직선 아래, B는 위, C와 D는 아래에 있어 f(x)-x의 부호가 -, +, -, -로 바뀐다. 곡선이 직선을 (-1,0)과 (0,1)에서 한 번씩 만나고 (1,2)에서는 만나지 않으므로 이 예의 실근은 정확히 2개이다. 중간값 정리로 적어도 2개가 보장되므로 최소 개수는 2이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 양수인 다항함수 $f(x)$에 대하여 $f(-1)=-2$, $f(0)=3$, $f(1)=-4$, $f(2)=-1$일 때, 구간 $[-1, 2]$에서 방정식 $f(x)=x$의 실근의 최소 개수를 구하면? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "네 점을 잇는 곡선이 직선 y=x를 부호가 바뀌는 두 구간 (-1,0), (0,1)에서 만남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "네 점을 잇는 연속함수가 직선 y=x를 두 구간 (-1,0), (0,1)에서만 만나는 예를 보인다."
+  ],
+  "accessibilityDescription": "점 A에서 가파르게 올라 점 B에서 꼭대기에 이르고 점 C까지 내려갔다 점 D로 올라가는 꺾은선과 원점을 지나는 오르는 직선이 두 번 교차하는 그래프이다."
+}

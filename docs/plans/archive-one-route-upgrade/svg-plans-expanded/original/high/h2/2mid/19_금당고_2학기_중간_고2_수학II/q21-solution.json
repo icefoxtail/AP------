@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "12",
+          "-12",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-0.5",
+        "4.5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "12"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "0",
+        "12"
+      ],
+      "V": [
+        "2",
+        "0"
+      ]
+    }
+  },
+  "caption": "x=2에서 f(x)g(x)=2g(x)/(x-2)의 극한이 유한하려면 g(2)=0이고, 함숫값 f(2)g(2)=0과 같으려면 g′(2)=0이어야 한다. 그러면 g는 x=2에서 x축에 접하는 포물선이다. 그림은 g(x)=3(x-2)²이고 꼭짓점 V(2,0)이 x축 위에 있으며 P(0,12)를 지난다. 따라서 g(x)=3(x-2)²이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x) = \\begin{cases} \\frac{2}{x-2} & (x \\neq 2) \\\\ 1 & (x=2) \\end{cases}$와 이차함수 $g(x)$가 다음 두 조건을 만족시킨다.<br>(가) $g(0) = 12$<br>(나) 함수 $f(x)g(x)$는 모든 실수에서 연속이다.<br>이때 이차함수 $g(x)$를 $x$에 관한 식으로 나타내시오. [8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=2에서 x축에 접하고 점 P(0,12)를 지나는 포물선 g를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "g가 꼭짓점 V(2,0)에서 x축에 접하고 y축 위의 점 P(0,12)를 지나는 포물선임을 보인다."
+  ],
+  "accessibilityDescription": "세로축 위의 높은 점 P에서 시작해 내려가 가로축 위의 꼭짓점 V에서 닿았다가 다시 올라가는 아래로 볼록한 포물선 그래프이다."
+}

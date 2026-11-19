@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-8",
+          "5/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-0.3",
+        "2.4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "R",
+        "x": "6/5",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "0"
+      ],
+      "R": [
+        "6/5",
+        "0"
+      ],
+      "B": [
+        "2",
+        "0"
+      ]
+    }
+  },
+  "caption": "예: f(x)=x(x-2)(5x/2-3)일 때를 그렸다. f(0)=f(2)=0이고 f′(0)=6, f′(2)=4가 모두 양수이다. 0 바로 오른쪽에서 f는 양수이고 2 바로 왼쪽에서 f는 음수이므로 연속성에 의해 구간 안에 적어도 한 근이 더 있다. 그림은 A(0,0), R(6/5,0), B(2,0)에서 x축을 지난다. 따라서 근은 최소 3개이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$에 대하여 $\\lim_{x \\to 0} \\frac{f(x)}{x}=6$, $\\lim_{x \\to 2} \\frac{f(x)}{x-2}=4$일 때, 구간 $[0, 2]$에서 방정식 $f(x)=0$의 실근의 최소 개수는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(0)=f(2)=0이고 두 끝에서 기울기가 양수이면 사이에 근이 하나 더 있음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A(0,0), B(2,0)에서 기울기가 양수이고 사이의 점 R(6/5,0)에서 x축을 한 번 더 지남을 보인다."
+  ],
+  "accessibilityDescription": "원점 A에서 가로축을 지나 올라간 뒤 점 R에서 가로축을 지나 내려가고 다시 올라 오른쪽의 점 B에서 가로축을 지나는 삼차곡선 그래프이다."
+}

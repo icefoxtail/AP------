@@ -1,0 +1,105 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "8/9",
+          "2/9",
+          "-1/9"
+        ],
+        "domain": [
+          -2,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1/2",
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1/2",
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          4,
+          5
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "4",
+        "y": "-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). x=1에서 왼쪽 곡선이 닫힌 점 (1,1)에 닿고 오른쪽 선분은 열린 점 (1,-1)에서 시작해 불연속이다. x=2에서 왼쪽 기울기 2와 오른쪽 수평 선분의 기울기 0이 달라 꺾인다. x=3에서 수평 선분이 내려가는 곡선으로 이어져 기울기가 달라 꺾인다. x=4에서는 곡선에 빈 점이 있고 닫힌 점 (4,-1)이 함숫값이라 불연속이다. 정의역의 양 끝 -2, 5는 세지 않으므로 미분불가능한 점은 1, 2, 3, 4의 4개이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "구간 $(-2, 5)$에서 정의된 함수 $y=f(x)$의 그래프가 다음 그림과 같을 때, 함수 $f(x)$의 미분가능하지 않은 점의 개수는? [5.0점]<br><br><img src=\"assets/images/19_금당고_2학기_중간_고2_수학II/q17.png\" class=\"exam-img\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 점프, x=2, 3의 꺾임, x=4의 열린 점과 따로 있는 닫힌 점을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1의 점프, x=2와 x=3의 꺾임, x=4의 열린 점과 닫힌 점 (4,-1)의 어긋남을 보인다."
+  ],
+  "accessibilityDescription": "위로 볼록한 곡선이 x=1에서 닫힌 점으로 끝나고 아래쪽 열린 점에서 오르는 선분이 시작해 x=2에서 수평으로 꺾이며, x=3에서 내려가는 곡선으로 꺾이고 x=4에서는 곡선의 열린 점과 따로 찍힌 닫힌 점이 있는 그래프이다."
+}
