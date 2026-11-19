@@ -1,0 +1,85 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 5,
+      "rows": 4
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        2,
+        2
+      ],
+      "R": [
+        3,
+        3
+      ],
+      "B": [
+        5,
+        4
+      ]
+    },
+    "viaPoints": [
+      "P"
+    ],
+    "forbidden": [
+      [
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    ],
+    "counts": "segments"
+  },
+  "caption": "P를 지나므로 A에서 P까지는 오른쪽 2칸, 위쪽 2칸이어서 4C2=6가지이다. P에서 B까지는 오른쪽 3칸, 위쪽 2칸이어서 5C2=10가지이고, 이 중 R을 지나는 경로는 P에서 R까지 2가지와 R에서 B까지 3가지의 곱 6가지이다. R을 막은 그림에서 P에서 B까지는 10−6=4가지이다. 따라서 6×4=24가지이고 답은 ③이다.",
+  "accessibilityDescription": "가로 5칸 세로 4칸의 도로망이며 A, P, R, B가 표시되고 R이 막혀 있으며 A에서 P, P에서 B 구간의 경로 수가 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "R을 막아 P에서 B까지 10가지 중 R을 지나는 6가지를 뺀 4가지가 보이고 A에서 P의 6가지와 곱해 24가지가 됨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같은 도로망에서 $\\mathrm{P}$를 지나지만 $\\mathrm{R}$을 지나지 않는 $\\mathrm{A}$에서 $\\mathrm{B}$로 가는 최단거리의 경우의 수를 구하시오 [4점]<br><div class=\"exam-img-box\"><img src=\"assets/images/21_효천고_1학기_중간_고2_확률과통계/q09.png\" class=\"exam-img\" alt=\"9번 원본 문제 그림\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

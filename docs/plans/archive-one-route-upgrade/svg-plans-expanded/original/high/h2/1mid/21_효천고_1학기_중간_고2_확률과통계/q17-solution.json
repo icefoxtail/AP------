@@ -1,0 +1,58 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "X"
+      }
+    ],
+    "elements": [
+      {
+        "text": "A에 속함",
+        "in": [
+          "A",
+          "B",
+          "X"
+        ]
+      },
+      {
+        "text": "B에는 속하고 A에는 속하지 않음",
+        "in": [
+          "B",
+          "X"
+        ]
+      },
+      {
+        "text": "B에 속하지 않음",
+        "in": [
+          "X"
+        ]
+      }
+    ],
+    "shade": "A",
+    "subset": [
+      "A",
+      "B",
+      "X"
+    ]
+  },
+  "caption": "A⊂B⊂X이므로 X의 각 원소가 갈 수 있는 곳은 세 가지이다. 그림의 안쪽(A에 속함), 가운데 고리(B에는 속하고 A에는 속하지 않음), 바깥 고리(B에 속하지 않음)이다. 원소 6개가 각각 3가지 중 하나를 고르므로 순서쌍 A, B의 개수는 3의 6제곱=729이고 답은 ②이다.",
+  "accessibilityDescription": "전체집합 X 안에서 집합 A가 집합 B 안에, B가 X 안에 차례로 포함된 벤다이어그램이며 세 영역에 각각의 이름이 적혀 있고 A가 색칠되어 있다.",
+  "newVisualInformation": [
+    "A⊂B⊂X에서 원소가 갈 수 있는 세 영역이 구분되어 원소마다 3가지, 6개이면 3의 6제곱임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원소의 개수가 6개인 집합 $X$ 에 대하여 집합 $A, B$ 는 집합 $X$ 의 부분집합이라고 할 때, $A \\subset B \\subset X$ 를 만족시키는 집합 $A, B$ 의 개수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
