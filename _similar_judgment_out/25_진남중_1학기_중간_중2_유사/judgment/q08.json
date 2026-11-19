@@ -1,0 +1,51 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "6d1c22cbb9de9696",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "(2^6)^4 / (2^Box)^3 = 2^12 에 지수법칙을 aligned 적용한다.",
+    "좌변은 2^24 / 2^(3*Box) = 2^(24 - 3*Box) 이다.",
+    "2^(24 - 3*Box) = 2^12 이므로 24 - 3*Box = 12 이다.",
+    "3*Box = 12 -> Box = 4 이다.",
+    "따라서 알맞은 수는 ⑤번 4 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(2^6)^4 \\div (",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "거듭제곱의 곱과 나눗셈에서 지수법칙을 aligned 적용해 24 - 3*Box = 12 를 만족하는 수를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "지수 나눗셈 법칙으로 aligned 정리하여 지수 차가 12 가 되는 조건을 푼다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱 24 에서 3*Box 를 뺀 결과가 12 임을 aligned 방정식으로 계산한다.",
+  "how": "24 - 3*Box = 12 로부터 Box = 4 임을 aligned 도출했다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "거듭제곱의 거듭제곱 및"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "및 같은 밑의 나눗셈 법칙을 적용한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

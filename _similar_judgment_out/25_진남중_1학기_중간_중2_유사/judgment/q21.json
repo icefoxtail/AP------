@@ -1,0 +1,63 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "856aefffc4b8eae2",
+  "solvedAnswer": "(1) $\\dfrac{11}{6}$  (2) 102",
+  "solveSteps": [
+    "(1) x = 1.8333... 라 두면 100x = 183.3333..., 10x = 18.3333... 이다.",
+    "두 식을 변끼리 빼면 90x = 165 이므로 x = 165/90 = 11/6 이다.",
+    "(2) (11/6) * A 가 자연수가 되려면 A는 분모 6의 배수이어야 한다.",
+    "세 자리 자연수 중 가장 작은 6의 배수는 6 * 17 = 102 이다.",
+    "따라서 (1) 11/6, (2) 102 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "순환소수 $1.8\\dot{3",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수 1.8dot{3} 을 10의 거듭제곱을 이용해 기약분수 11/6 으로 나타내고 가장 작은 세 자리 자연수 102 를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "100x - 10x = 165 로 기약분수 11/6 을 구하고 6의 배수 중 세 자리 최소 102 를 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순환소수 변환 과정 서술과 6의 배수 조건으로 최소 세 자리 자연수 102 를 차례로 해결한다.",
+  "how": "100x - 10x = 165 로부터 x = 11/6 을 구하고 6 * 17 = 102 임을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수 $1.8\\dot{3}$에 자연수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "기약분수",
+        "src": "stem",
+        "quote": "기약분수로 나타내는 과정을 서술하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "10의 거듭제곱 방정식으로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $A$를 곱하면 자연수가"
+      }
+    ]
+  }
+}

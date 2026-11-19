@@ -1,0 +1,63 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "84ea5591d1937135",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "(6x^2 - 3x^3) / (x/3) = (6x^2 - 3x^3) * (3/x) = 18x - 9x^2 이다.",
+    "(3/4 x^3 - 9/4 x^4) / (-x^2/4) = (3/4 x^3 - 9/4 x^4) * (-4/x^2) = -3x + 9x^2 이다.",
+    "두 식을 더하면 (18x - 9x^2) + (-3x + 9x^2) = 15x 이다.",
+    "x^2의 계수 a = 0, x의 계수 b = 15 이므로 b - a = 15 - 0 = 15 이다.",
+    "따라서 정답은 ②번 15 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(6x^2 - 3x^3)",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식을 단항식으로 나눈 두 식을 aligned 전개하여 동류항 정리 후 계수 차 15 를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-015",
+  "rpmReason": "다항식을 단항식으로 나누어 18x - 9x^2 및 -3x + 9x^2 를 aligned 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 번의 나눗셈을 역수의 곱으로 aligned 전개하고 계수 a=0, b=15 에서 15 를 구한다.",
+  "how": "각각 단항식으로 나눈 뒤 더하여 15x 를 얻고 계수 차 b - a = 15 를 aligned 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "x^2$의 계수는 $a$, $x$의 계수는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "두 다항식을 역수의 곱셈을"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "동류항을 정리한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "각각 단항식으로 나눈 뒤"
+      }
+    ]
+  }
+}

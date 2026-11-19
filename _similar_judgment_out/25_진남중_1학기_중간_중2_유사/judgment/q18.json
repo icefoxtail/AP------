@@ -1,0 +1,65 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "81f34eec1f5848c0",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "x = 2 를 각 부등식에 aligned 대입하여 참과 거짓을 판정한다.",
+    "① 3(2) - 2 > 4(2) -> 4 > 8 (거짓)",
+    "② 2(2) >= 5(2) -> 4 >= 10 (거짓)",
+    "③ 4(2) < 2 - 1 -> 8 < 1 (거짓)",
+    "④ 7 <= 2(2) + 1 -> 7 <= 5 (거짓)",
+    "⑤ 3(2) - 1 < 4(2) -> 5 < 8 (참)",
+    "따라서 x = 2 를 해로 갖는 부등식은 ⑤번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 부등식 중에서 $x =",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "부등식에 x = 2 를 aligned 대입하여 5 < 8 참 거짓을 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "부등식의 해의 뜻에 따라 x = 2 대입 시 10 미만 범위에서 성립 여부를 판정한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x = 2 를 보기에 직접 aligned 대입하여 5 < 8 이 참임을 확인한다.",
+  "how": "각 부등식에 x = 2 를 aligned 대입하여 ⑤의 5 < 8 만 참임을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "다음 부등식 중에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식은 ⑤이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "각 부등식에 대입하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "참과 거짓을 판정한다"
+      }
+    ]
+  }
+}
