@@ -1,0 +1,118 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1.3,
+      2.2
+    ],
+    "viewport": [
+      -1.3,
+      2.2,
+      -2,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "N",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "-2/3",
+        "y": "4/27"
+      },
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "N": [
+        "-1",
+        "0"
+      ],
+      "O": [
+        "0",
+        "0"
+      ],
+      "E": [
+        "-2/3",
+        "4/27"
+      ],
+      "Q": [
+        "1",
+        "2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "1",
+          "-2",
+          "1"
+        ],
+        "intersectionX": [
+          "0",
+          "1/3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "G",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f(0)=0이고 f′(0)=0이므로 f는 원점에서 x축에 접하고, 첫 극한이 양수 p이려면 f(-p)=0이다. 따라서 f(x)=x²(x+p)이고 g(x)=f(x-p)이며 극한 조건에서 p=1이다. 그림은 p=1일 때의 f(x)=x²(x+1)과 오른쪽으로 1만큼 평행이동한 g(x)=x(x-1)²이다. g(2)=f(1)=2이므로 점 Q(1,2)가 점 G(2,2)로 옮겨진다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $y=f(x)$의 그래프를 $x$축 방향으로 $p$만큼 평행이동시킨 함수를 $y=g(x)$라 하자.\n$$\\lim_{x\\to 0}\\frac{f(x)}{xg(x)}=p, \\quad \\lim_{x\\to p}\\frac{g(x)}{(x-p)f(x)}=0$$\n일 때, $g(2)$의 값은? (단, $p>0$이다.) [5.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "p=1일 때 f가 원점에서 접하고 -1에서 x축을 지나며, g가 f를 오른쪽으로 1만큼 옮긴 것이고 g(2)=f(1)=2임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "p=1에서 f=x²(x+1)과 이를 오른쪽으로 1만큼 옮긴 g=x(x-1)², 그리고 g(2)=f(1)=2를 보인다."
+  ],
+  "accessibilityDescription": "원점에서 x축에 접하고 -1에서 x축을 지나는 삼차곡선 f와, 이를 오른쪽으로 평행이동한 삼차곡선 g가 함께 그려져 있고 f 위의 점 Q와 g 위의 점 G가 같은 높이에 표시되어 있다."
+}

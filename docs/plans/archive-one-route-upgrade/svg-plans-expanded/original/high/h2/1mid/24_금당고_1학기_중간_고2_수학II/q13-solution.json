@@ -1,0 +1,180 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "8",
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "0",
+          "-12",
+          "-8"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "0",
+          "-15",
+          "10"
+        ]
+      },
+      {
+        "coefficients": [
+          "21",
+          "-48",
+          "36",
+          "-8"
+        ]
+      },
+      {
+        "coefficients": [
+          "-135",
+          "180",
+          "-75",
+          "10"
+        ]
+      },
+      {
+        "coefficients": [
+          "81",
+          "-72",
+          "21",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "x": "2",
+        "y": "5"
+      },
+      {
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "M1",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "N1",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "M2",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "N2",
+        "x": "2",
+        "y": "5"
+      },
+      {
+        "id": "M3",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "M1": [
+        "-1",
+        "2"
+      ],
+      "N1": [
+        "0",
+        "6"
+      ],
+      "M2": [
+        "1",
+        "1"
+      ],
+      "N2": [
+        "2",
+        "5"
+      ],
+      "M3": [
+        "3",
+        "0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "-5/6",
+          "intercept": "13/3",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "예: 해설의 개수에 맞춘 그래프를 그렸다. 평균값 정리의 c는 양 끝점 A(-2,f(-2)), B(4,f(4))를 잇는 할선 l의 기울기(그림에서는 -5/6)와 접선의 기울기가 같은 점이다. 할선이 내려가므로 그래프가 내려가는 구간에서 센다. 첫 내려가는 구간(A에서 M1까지)에서 1개, 두 봉우리 N1, N2 뒤의 내려가는 구간(N1에서 M2까지, N2에서 M3까지)에서 각각 2개이다. 따라서 1+2+2=5개이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $y=f(x)$의 그래프가 다음과 같을 때, 닫힌구간 $[-2, 4]$에서 평균값 정리를 만족시키는 상수 $c$의 개수는? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝점을 잇는 할선과 평행한 접선이 그래프가 내려가는 세 구간에서 1개, 2개, 2개 생김을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점 A, B를 잇는 할선 l과 그래프가 내려가는 세 구간(A에서 M1, N1에서 M2, N2에서 M3)을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 끝 점 A에서 내려와 오르내림을 반복하며 오른쪽 끝 점 B에 이르는 곡선과, 두 끝점 A, B를 잇는 오른쪽 아래로 향하는 직선 l을 나타낸 그래프이다."
+}
