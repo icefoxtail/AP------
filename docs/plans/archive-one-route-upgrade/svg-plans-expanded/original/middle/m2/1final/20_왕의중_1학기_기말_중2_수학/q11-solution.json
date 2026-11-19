@@ -1,0 +1,60 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "3",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "해"
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "자연수",
+        "points": [
+          {
+            "id": "P0",
+            "value": "1",
+            "hideName": true
+          },
+          {
+            "id": "P1",
+            "value": "2",
+            "hideName": true
+          },
+          {
+            "id": "P2",
+            "value": "3",
+            "hideName": true
+          },
+          {
+            "id": "P3",
+            "value": "4",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "양변에 6을 곱하면 3x−5≤4이므로 3x≤9에서 x≤3이다. 수직선의 해집합 안에 있는 자연수는 1, 2, 3이고 4는 해가 아니다. 따라서 합은 1+2+3=6이고 답은 ③이다.",
+  "newVisualInformation": [
+    "해집합 x≤3 안의 자연수 1, 2, 3과 바깥의 4"
+  ],
+  "accessibilityDescription": "수직선에 3을 포함해 왼쪽으로 뻗는 해집합이 칠해져 있고 자연수 1, 2, 3은 해 안의 점으로, 4는 바깥의 ×로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 일차부등식 $\\dfrac{x}{2}-\\dfrac{5}{6} \\le \\dfrac{2}{3}$를 만족시키는 자연수 $x$의 값들의 합은? [3점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "개수"
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "아이스",
+        "points": [
+          {
+            "id": "P0",
+            "value": "5",
+            "hideName": true
+          },
+          {
+            "id": "P1",
+            "value": "6",
+            "hideName": true
+          },
+          {
+            "id": "P2",
+            "value": "7",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "아이스크림을 x개 사면 사탕은 10−x개이므로 300(10−x)+500x≤4200이다. 정리하면 3000+200x≤4200이고 200x≤1200에서 x≤6이다. 수직선에서 6을 포함해 왼쪽이 가능한 개수이고 7은 해가 아니다. 따라서 최대 6개이고 답은 ③이다.",
+  "newVisualInformation": [
+    "300(10−x)+500x≤4200의 해 x≤6에서 아이스크림 최대 6개"
+  ],
+  "accessibilityDescription": "수직선에 6을 포함해 왼쪽으로 뻗는 해집합이 칠해져 있고 5와 6은 해 안의 점으로, 7은 바깥의 ×로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>13. 한 개에 300원인 사탕과 한 개에 500원인 아이스크림을 합하여 10개를 사려고 한다. 총 가격이 4200원 이하가 될 때, 아이스크림을 살 수 있는 최대 개수는? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

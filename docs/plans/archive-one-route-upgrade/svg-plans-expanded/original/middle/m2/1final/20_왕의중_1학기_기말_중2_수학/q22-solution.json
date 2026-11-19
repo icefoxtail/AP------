@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "3"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "-1/3",
+                "add": "2"
+              },
+              "state": "OPEN"
+            }
+          }
+        ],
+        "label": "해"
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "자연수",
+        "points": [
+          {
+            "id": "P0",
+            "value": "1",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "2(x+3)−a>5x를 정리하면 6−a>3x이므로 x<(6−a)/3이다. 자연수 해가 없으려면 가장 작은 자연수 1이 해에 들어가지 않아야 하므로 (6−a)/3≤1이어야 한다. 이는 6−a≤3, 즉 a≥3이다. 그림은 경계를 a=3으로 둔 모습으로 x<1이어서 1이 ×로 제외된다. 따라서 a≥3이다.",
+  "newVisualInformation": [
+    "자연수 해가 없으려면 경계 (6−a)/3이 1 이하여야 하며 a=3에서 x<1"
+  ],
+  "accessibilityDescription": "수직선에 1을 포함하지 않고 왼쪽으로 뻗는 해집합이 칠해져 있고 자연수 1은 바깥의 ×로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형2. 일차부등식 $2(x+3)-a > 5x$를 만족하는 자연수 $x$의 값이 존재하지 않을 때, 수 $a$의 값의 범위를 구하시오. [5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

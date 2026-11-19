@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-5",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=3x−5",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=3x+5",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 일차함수의 그래프가 평행하려면 기울기는 같고 y절편은 달라야 한다. y=3x−5의 기울기는 3이고 y절편은 −5이다. ② y=3x+5는 기울기가 3으로 같고 y절편이 5로 달라 평행하다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "기울기 3이 같고 y절편 −5, 5가 다른 평행한 두 직선"
+  ],
+  "accessibilityDescription": "기울기가 같은 두 직선이 평행하게 있고 y축과 만나는 점 (0,−5)와 (0,5)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 다음 중 일차함수 $y=3x-5$의 그래프와 평행한 것은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
