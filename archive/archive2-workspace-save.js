@@ -183,7 +183,6 @@
       updatedAt: new Date().toISOString(),
       ...Object.fromEntries(keys.map((k) => [k, state[k]])),
       scopeSourcePaths: selectedScopePaths(),
-      scopeQuestionUids: selectedScopeQuestionUids(),
       selected: state.selected.map((r) => ({
         questionUid: r.questionUid,
         rowId: r.rowId,
@@ -200,6 +199,14 @@
       return [];
     }
   }
+  // 초안의 최상위 scopeQuestionUids(범위 안 문항 uid 전체 목록)는 쓰기만 하고 읽는 곳이 없다: applyDraft가 복원 대상에서 빼고
+  // 현재 카탈로그로 범위를 다시 구한다. 초안 크기의 큰 몫이라 새 초안에는 넣지 않고, 이미 저장된 초안도 배열을 다시 쓸 때 이 키만 뺀다
+  // (다른 필드는 그대로, 열 수 있는 정보는 줄지 않는다). 옛 초안·작업 백업 파일에 이 키가 있어도 열린다(검증에서 선택 항목).
+  function withoutUnreadDraftFields(record) {
+    if (!record || typeof record !== "object" || Array.isArray(record) || !("scopeQuestionUids" in record)) return record;
+    const { scopeQuestionUids, ...rest } = record;
+    return rest;
+  }
   function save() {
     if (
       !state.catalog ||
@@ -208,13 +215,14 @@
       return;
     const record = draft();
     try {
+      // 새 초안과 기존 초안 모두 위 정리를 거쳐 쓴다. 공간이 모자라 쓰지 못하면 아무것도 지우지 않고(기존 초안은 그대로) 안내만 한다.
       localStorage.setItem(
         storageKey(),
         JSON.stringify(
           [
             record,
             ...drafts().filter((d) => d.draftId !== record.draftId),
-          ].slice(0, 20),
+          ].slice(0, 20).map(withoutUnreadDraftFields),
         ),
       );
     } catch {
@@ -1045,7 +1053,10 @@
       setConfirmed(data, papers.length, attemptedWorkSignature);
     } catch (error) {
       let recovered = false;
-      if (requestStarted && (!error.status || error.status >= 500)) {
+      // 로그인 정보가 없어 요청이 나가기 전에 난 실패(requestNotSent)는 결과를 모르는 것이 아니다: 서버에 아무것도 가지 않았으므로
+      // 확인할 것이 없고 중복 저장 걱정도 없다. 요청이 나간 뒤의 끊김·시간 초과·5xx만 아래에서 RESULT_UNKNOWN으로 둔다.
+      const notSent = error?.requestNotSent === true && !recoveringUnknown;
+      if (requestStarted && !notSent && (!error.status || error.status >= 500)) {
         try {
           const result = await resolveBatch();
           if (result.saved) {
@@ -1060,7 +1071,7 @@
         const responseStatus = Number(error.status);
         const definiteHttpFailure = requestStarted &&
           Number.isInteger(responseStatus) && responseStatus >= 400 && responseStatus < 500;
-        const keepUnknown = !definiteHttpFailure && (
+        const keepUnknown = !definiteHttpFailure && !notSent && (
           (recoveringUnknown && !recoveryConfirmedAbsent) ||
           (!requestStarted && recoveringUnknown) ||
           (requestStarted && (!error.status || responseStatus >= 500))
@@ -1173,6 +1184,7 @@
   // 서버 원문(영어 포함)은 여기에 넣지 않고 접힌 상세에만 남는다. 요청·재시도 동작은 이 표와 무관하다(문구만 고른다).
   // 네트워크 끊김·시간 초과·서버 오류(5xx)는 거절이 아니라 "결과를 모름"이라 표가 아닌 저장 결과 확인 흐름(RESULT_UNKNOWN)이 안내한다.
   const SAVE_FAILURE_TEXT = {
+    loginMissing: "로그인이 필요합니다. 로그인한 뒤 저장해 주세요. 작업은 초안에 남아 있습니다.",
     loginExpired: "로그인이 만료됐습니다. 다시 로그인한 뒤 저장해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
     tooLarge: "문제지가 너무 커서 저장하지 못했습니다. 권을 나누거나 문항 수를 줄여서 다시 저장해 주세요.",
     staleCatalog: "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.",
@@ -1184,6 +1196,8 @@
   function saveFailureMessage(error) {
     const code = Number(error?.status);
     const serverText = String(error?.data?.error || error?.message || "");
+    // 요청이 나가기 전(로그인 정보 없음)에 난 실패. 요청이 나간 뒤의 실패에는 이 표시가 없다.
+    if (error?.requestNotSent === true) return SAVE_FAILURE_TEXT.loginMissing;
     if (code === 401 || code === 403) return SAVE_FAILURE_TEXT.loginExpired;
     if (code === 413) return SAVE_FAILURE_TEXT.tooLarge;
     if (code === 409 && SAVE_STALE_VERSION.test(serverText)) return SAVE_FAILURE_TEXT.staleCatalog;

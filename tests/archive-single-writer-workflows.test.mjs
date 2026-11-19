@@ -69,7 +69,11 @@ test('only the serialized main registration job persists shared outputs, using o
   assert.match(step(register, /^        id: prepare_required$/m), /archive-registration-writer\.mjs --required-only --work-dir/);
   assert.match(register, /--paths-file "\$WRITER_WORK_DIR\/commit\.paths"/);
   assert.match(register, /--regenerate 'node tools\/ci\/archive-registration-writer\.mjs --work-dir "\$WRITER_WORK_DIR"'/);
-  assert.match(register, /--remote origin --branch main --max-attempts 2/);
+  assert.equal((register.match(/--remote origin --branch main --max-attempts 4/g) || []).length, 2, 'both saves retry up to 4 times (a regeneration outlasts the merge interval on busy days)');
+  // RETRY_EXHAUSTED pushed nothing: queue one more run right away rather than waiting for the next push or the hourly cron.
+  const requeue = step(register, /^      - name: Queue another registration run when main kept moving$/m);
+  assert.match(requeue, /if: always\(\) && \(steps\.persist_required\.outputs\.result == 'RETRY_EXHAUSTED' \|\| steps\.persist\.outputs\.result == 'RETRY_EXHAUSTED'\)/);
+  assert.match(requeue, /gh workflow run archive-main-auto-meta\.yml --ref main/);
   assert.equal((register.match(/--race-fetch-scope all-heads/g) || []).length, 2);
   assert.doesNotMatch(job(writer, 'test'), /--race-fetch-scope/);
   assert.match(register.split('    steps:')[0], /timeout-minutes: 345/);

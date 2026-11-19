@@ -161,7 +161,9 @@
   const META_FACET_FILTERS = C.META_FACET_KEYS || [];
   const hasMetaFacetFilter = (filters) => META_FACET_FILTERS.some((key) => filters?.[key]);
   function withoutMetaFacets(filters) {
-    if (!hasMetaFacetFilter(filters)) return filters;
+    // Also when the keys exist with empty values (a grade/subject button clears them to ""): the saved-paper server rejects an unknown key
+    // (409) whatever its value, so the key itself must not travel.
+    if (!filters || !META_FACET_FILTERS.some((key) => Object.hasOwn(filters, key))) return filters;
     const stripped = { ...filters };
     for (const key of META_FACET_FILTERS) delete stripped[key];
     return stripped;
@@ -537,13 +539,22 @@
       : route === "/archive-saved-papers" ? 90000 : 0;
     const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
     const perform = async () => {
-      const result = await fetch(base + route, {
-        method,
-        headers: {
+      // headers() throws when there is no login. That happens before fetch(), so nothing was sent: the error is marked
+      // (requestNotSent) so a caller can tell "the request never left" from "sent, answer unknown" (network cut, timeout).
+      let requestHeaders;
+      try {
+        requestHeaders = {
           ...headers(),
           ...(body ? { "Content-Type": "application/json" } : {}),
           ...(options.headers || {}),
-        },
+        };
+      } catch (error) {
+        if (error && typeof error === "object") error.requestNotSent = true;
+        throw error;
+      }
+      const result = await fetch(base + route, {
+        method,
+        headers: requestHeaders,
         ...(body ? { body: JSON.stringify(body) } : {}),
         ...(controller ? { signal: controller.signal } : {}),
       });

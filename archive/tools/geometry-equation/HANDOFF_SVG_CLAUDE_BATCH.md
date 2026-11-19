@@ -90,7 +90,7 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 - 엔진 렌더 실패는 UNSUPPORTED로 두고 `ENGINE_GAPS*.md`에 사유를 적는다. 다른 시험지 결과가 섞이면 questionUid로 잡는다.
 
 ## 9. 함정 모음 (겪은 것)
-- composite-panels·number-line·solid 출력은 이제 엔진이 루트 role=img·title·desc를 쓴다(a11y.sh 불필요). 엔진 이전에 렌더한 그림은 다시 렌더하거나 a11y.sh로 보완한다. 빠뜨리면 CI "Archive2 runtime contract" 실패.
+- composite-panels·number-line·solid 출력은 이제 엔진이 루트 role=img·title·desc를 쓴다(a11y.sh 불필요). 엔진 이전에 렌더한 그림은 다시 렌더하거나 a11y.sh로 보완한다. 빠뜨리면 CI "Archive2 runtime guard" 잡의 "Verify original routes, response budgets, and storage failures" 단계(옛 "Archive2 runtime contract" 잡) 실패.
 - y=x·기울기 ±1 직선·원이 있는 단일 rational/sqrt-affine 그래프는 `equalUnits:true`.
 - 좌표 라벨은 점의 `coordinates:true`. callout 글자에 쉼표가 있으면 얇은 TEXT 글꼴.
 - 라벨 혼잡은 지시선·라벨 위치 옵션이 먼저. 라벨을 지우지 않는다.
