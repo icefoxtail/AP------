@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const navigation = require('../archive/archive2-navigation.js');
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
 const labelsOf = (html, sectionPattern) =>
@@ -68,13 +69,13 @@ test('quick assessment views keep 빠른 평가 current on PC and phone, and 만
 test('the three tool addresses are hidden from the menus but still open by address', () => {
   // The health screen is still a workspace route and a menu-less view, and the two pages still exist.
   assert.equal(navigation.currentView('workspace'), 'home');
-  const route = read('archive2-workspace.js').match(/state\.view = \[([^\]]*)\]\.includes\(p\.get\("view"\)\)/);
+  const route = readWorkspace().match(/state\.view = \[([^\]]*)\]\.includes\(p\.get\("view"\)\)/);
   assert.ok(route && /"health"/.test(route[1]), 'workspace still routes ?view=health');
   assert.equal(navigation.currentKey('workspace'), 'home');
   for (const name of ['index.html', 'problem-bank-search.html', 'workspace.html'])
     assert.ok(fs.existsSync(path.join(__dirname, '../archive', name)), name);
-  assert.match(read('archive2-workspace.js'), /view === "health"|\["find", "compose", "health"\]/);
-  const shown = read('archive2-workspace.js');
+  assert.match(readWorkspace(), /view === "health"|\["find", "compose", "health"\]/);
+  const shown = readWorkspace();
   assert.doesNotMatch(shown, /href="problem-bank-search\.html"|href="index\.html\?legacy=1"|기존 아카이브/);
   assert.match(shown, /data-boot-wait="failed"[^`]*다시 시도/);
 });

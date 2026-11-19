@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 function app() {
   let resolve;
@@ -15,11 +16,7 @@ function app() {
   });
   const host = element(), nodes = { 'preview-host': host };
   const window = { Archive2Core: {}, Archive2Output: {}, addEventListener() {}, deferred };
-  const source = fs.readFileSync(require.resolve('../archive/archive2-workspace.js'), 'utf8');
-  vm.runInNewContext(source.slice(0, source.lastIndexOf('  (async () => {')) +
-    `prepare = () => window.deferred;
-     outputUrl = async () => ({ href: 'engine.html', envelope: { ownerId: 'owner', outputRequestId: 'request' } });
-     window.previewTest = { updatePreview }; })();`, {
+  loadWorkspace({
     window, crypto, console, setTimeout: () => 0, clearTimeout() {},
     URLSearchParams, location: { search: '' },
     MutationObserver: class { observe() {} disconnect() {} },
@@ -27,7 +24,9 @@ function app() {
       getElementById: id => nodes[id] ||= element(), addEventListener() {},
       createElement(tag) { const node = element(); if (tag === 'iframe') { node.contentDocument = doc; node.contentWindow = {}; } return node; },
     },
-  });
+  }, `prepare = () => window.deferred;
+     outputUrl = async () => ({ href: 'engine.html', envelope: { ownerId: 'owner', outputRequestId: 'request' } });
+     window.previewTest = { updatePreview };`);
   return { update: window.previewTest.updatePreview, host, resolve };
 }
 

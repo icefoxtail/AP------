@@ -1,6 +1,7 @@
 const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { test } = require("node:test");
+const { readWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 
 const read = (path) => readFileSync(path, "utf8");
 const controls = read("archive/archive2-reader-controls.js");
@@ -8,7 +9,7 @@ const css = read("archive/archive2-reader-controls.css");
 const engine = read("archive/engine.html");
 const mixed = read("archive/mixed_engine.html");
 const library = read("archive/archive2-library.js");
-const workspace = read("archive/archive2-workspace.js");
+const workspace = readWorkspace();
 const fastRuntime = read("archive/common-fast-runtime.js");
 const browserSmoke = read("tests/fixtures/archive2-output-browser-smoke.html");
 const workspaceHtml = read("archive/workspace.html");
@@ -35,7 +36,7 @@ test("standalone readers expose only the compact mobile back/mode/more controls"
   assert.match(read("archive/screen-runtime-adapter.js"), /history\[method\]\(null, '', ctx\.intent\?\.payload\?\.outputUrl \|\| ctx\.candidate\.environment\.url\)/);
   assert.match(mixed, /common-fast-runtime\.js\?v=20261106-output-performance-2/);
   assert.match(workspaceHtml, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(workspaceHtml, /archive2-workspace\.js\?v=20261118-error-detail-1/);
+  assertWorkspaceScriptVersions(assert);
 });
 
 test("preview stays embedded and mode actions do not reset an iframe", () => {

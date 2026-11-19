@@ -7,6 +7,7 @@ const crypto = require('node:crypto');
 const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
 const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
+const { readWorkspace, loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -50,14 +51,11 @@ function harness(data = structuredClone(catalog)) {
     Archive2Source: archiveSource,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {setRender: fn => { render = fn; }, state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.byUid = new Map(data.records.map(row => [row.questionUid, row]));
@@ -578,15 +576,15 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261119-pair-type-spread-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261118-error-detail-1'],
     ['archive2-quick-pools.js', '20261117-middle-parent-1'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261117-middle-parent-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
+  assertWorkspaceScriptVersions(assert);
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
-  assert.match(html, /archive2-source\.js\?v=20261118-error-detail-1/);
+  assert.match(html, /archive2-source\.js\?v=20261119-source-parallel-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
   assert.match(html, /archive2\.css\?v=20261117-home-forms-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
@@ -1631,7 +1629,7 @@ test('기준 갱신이 아닌 409·413은 자동으로 다시 보내지 않는�
 });
 
 test('낡은 초안 버전은 저장 버튼 옆에 개발자식 안내를 내지 않는다', () => {
-  assert.doesNotMatch(read('archive2-workspace.js'), /문항 목록 버전이 달라/);
+  assert.doesNotMatch(readWorkspace(), /문항 목록 버전이 달라/);
 });
 
 // ---- 수정본 재저장: 저장본에 서버가 내장한 그림(data: URL)은 전송 사본에서만 원래 경로로 되돌린다 (수리 목록 34) ----

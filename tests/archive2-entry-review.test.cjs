@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const path = require('node:path');
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 const output = require('../archive/archive2-output.js');
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 test('default entry preserves navigation/session handoff; legacy and native assignment handoffs stay put', () => {
   for (const source of ['https://example.test/archive/', 'https://example.test/archive/index', 'https://example.test/archive/index.html']) {
@@ -59,7 +60,7 @@ test('render-only review retains QR choice while assignment writes remain disabl
   }
 });
 test('workspace consumes the common subject projection for Finder, Compose, metadata and assignment payloads', () => {
-  const workspace = read('archive2-workspace.js');
+  const workspace = readWorkspace();
   assert.match(workspace, /C\.hasSubjectProjection\?\.\(filters\.grade\)/);
   assert.match(workspace, /C\.subjectProjectionOptions\(filters\.grade\)/);
   assert.match(workspace, /if \(C\.hasSubjectProjection\?\.\(state\.find\.grade\)\)/);
@@ -69,7 +70,7 @@ test('workspace consumes the common subject projection for Finder, Compose, meta
 });
 
 test('scope, replacement and draft restore keep the shared projection gate on the existing paths', () => {
-  const workspace = read('archive2-workspace.js');
+  const workspace = readWorkspace();
   assert.match(workspace, /function pool\(\)\s*\{[\s\S]*?const scopes = selectedScopeOptions\(\)/);
   assert.match(workspace, /const uids = scopes\.length \? new Set\(scopes\.flatMap\(scope => scope\.scopeQuestionUids\)\) : null/);
   assert.match(workspace, /uids\.has\(r\.questionUid\)/);
