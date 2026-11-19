@@ -886,13 +886,18 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
     // 개편안에서 삭제한(removed) 반의 원래 운영 반도 함께 닫는다. 안 그러면 삭제한 반이 운영에 그대로 남는다.
     const removedClasses = await listRemovedClasses(env, versionId);
     const removedSourceClassIds = removedClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean);
+    // 졸업 대상(중3 → excluded) 반은 개편안에 반이 없으므로, 적용하면 원래 운영 반도 함께 닫는다(사용자 결정 2026-11-19).
+    // 안 닫으면 새학기 시간표에 지난 학년 중3 반이 학생과 함께 그대로 남는다. 학생 자체(재원 상태)는 건드리지 않는다.
+    const graduatedClasses = (await listVersionClasses(env, versionId)).filter(row =>
+      String(row.status || '').trim().toLowerCase() === 'excluded' && String(row.excluded_reason || '') === 'middle_school_graduation');
+    const graduatedSourceClassIds = graduatedClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean);
     const unassignedCountRow = await env.DB.prepare(`
       SELECT COUNT(*) AS count FROM timetable_version_student_assignments
       WHERE version_id = ? AND COALESCE(excluded_reason, '') = ?
     `).bind(versionId, UNASSIGNED_REASON).first();
     const unassignedStudentCount = Number(unassignedCountRow?.count || 0);
 
-    const sourceClassIds = Array.from(new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).concat(removedSourceClassIds).filter(Boolean)));
+    const sourceClassIds = Array.from(new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).concat(removedSourceClassIds, graduatedSourceClassIds).filter(Boolean)));
     if (sourceClassIds.length) {
       const sourceClassMarkers = sourceClassIds.map(() => '?').join(',');
       statements.push(env.DB.prepare(`UPDATE classes SET is_active = 0 WHERE id IN (${sourceClassMarkers})`).bind(...sourceClassIds));
@@ -1023,7 +1028,7 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       INSERT INTO timetable_version_apply_logs
         (id, academy_id, version_id, status, started_at, finished_at, summary_json, created_at)
       VALUES (?, 'apmath', ?, 'success', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, CURRENT_TIMESTAMP)
-    `).bind(makeId('tval'), versionId, JSON.stringify({ class_count: appliedClassByVersionClassId.size, assignment_count: appliedAssignments.length, slot_count: slots.length, removed_class_count: removedClasses.length, unassigned_student_count: unassignedStudentCount })));
+    `).bind(makeId('tval'), versionId, JSON.stringify({ class_count: appliedClassByVersionClassId.size, assignment_count: appliedAssignments.length, slot_count: slots.length, removed_class_count: removedClasses.length, graduated_class_count: graduatedClasses.length, unassigned_student_count: unassignedStudentCount })));
 
     if (!statements.length) return jsonResponse({ success: false, error: 'no statements to apply' }, 400);
     await env.DB.batch(statements);
@@ -1035,6 +1040,7 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       activated_student_assignment_count: appliedAssignments.length,
       copied_slot_count: slots.length,
       removed_class_count: removedClasses.length,
+      graduated_class_count: graduatedClasses.length,
       unassigned_student_count: unassignedStudentCount
     });
   } catch (error) {
@@ -1987,6 +1993,7 @@ async function autoApplyScheduledVersion(env, versionId, today) {
     summary.class_count = Number(body.activated_class_count || 0);
     summary.student_count = Number(body.activated_student_assignment_count || 0);
     summary.removed_class_count = Number(body.removed_class_count || 0);
+    summary.graduated_class_count = Number(body.graduated_class_count || 0);
     summary.unassigned_student_count = Number(body.unassigned_student_count || 0);
     await writeAutoApplyLog(env, version, 'auto_success', summary);
     return { version_id: versionId, success: true, ...summary };
@@ -2130,7 +2137,9 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
     return jsonResponse({
       success: true,
       timetable_version: await withAutoApplyArmed(env, version),
-      timetable_version_classes: versionClasses,
+      // 자동 갱신이 반을 추가(운영에서 새로 연 반)하거나 삭제 처리(운영에서 닫힌 반)할 수 있으므로 갱신 뒤에 다시 읽는다.
+      // 갱신 전에 읽은 목록을 내려 주면 "새 반 추가" 알림은 뜨는데 표에는 그 반이 다시 열 때까지 안 보인다.
+      timetable_version_classes: await listVersionClasses(env, id),
       timetable_classes: renderableVersionClasses.map(versionClassCompatClassRow),
       timetable_version_slots: await listSlots(env, id, null, { renderableOnly: true }),
       timetable_version_student_assignments: await listStudentAssignments(env, id, null, { renderableOnly: true }),

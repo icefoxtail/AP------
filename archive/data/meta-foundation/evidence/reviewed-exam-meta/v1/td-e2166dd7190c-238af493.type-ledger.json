@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e2166dd7190c-238af493",
+  "sourceArchiveFile": "original/high/h1/2final/25_효천고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_269585ccc51fc515c013b870fa576bd923fdb5b33fbb6b846057c112cfe035db",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+      "step": "각 보기에서 두 방향의 함의를 증명하거나 반례를 들어 필요조건만 성립하는 쌍을 고른다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d83a696ac6a5d52d69395290fe96d3414c14596211f1d89663169b2435a5bf07",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_RELATION_FUNCTION",
+      "step": "세 인수의 부호와 반례로 각 조건의 필요·충분 관계를 판정하고 정의된 N값을 더한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de040ad6dbae88a03058776a1c86a6fadba7a42d841088168dabe40abd4f8f24",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_EQUATION_GRAPH",
+      "step": "삼중 합성의 목표값3/2에서 원상을 세 번 추적하며 치역 밖10/3을 제외한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_963a324fa9609c2ee69227752a7c7abdbecac49739ec0716b47e2f07b30d86ae",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+      "step": "식을 f(x)[f(x)-f⁻¹(x)]=0으로 인수분해하고 원함수·역함수 구간별 해를 모은다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}
