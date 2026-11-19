@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-53ebda1884b0-10dff170",
+  "sourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-r-20261120",
+    "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f0b1687cdcb0870e2e6b3196232a3b75f6a101cf71fcabe94125b1ea25d769e6",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+      "templateKey": null,
+      "step": "(2x-4)(x+5)=0은 영인자 성질로, (x-4)^2=16은 제곱근으로 풀어 해를 모두 더한다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    }
+  ]
+}

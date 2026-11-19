@@ -73,7 +73,15 @@ jobs:
       - name: Install Worker test dependencies
         run: npm ci --prefix apmath/worker-backup/worker --no-audit --no-fund
       # The mixed verification shards are build output (gitignored); the Worker reads them to verify every saved question.
-      - name: Generate the ignored package shards
+      # A pull request carries only sources (original exam JS, meta): the registered generated files are written by the registrar
+      # after the merge. So on a pull request the checkout's own build generates them (temporary, never committed) and the same
+      # computation as --package-only runs inside that build (a broken exam JS still stops it). main and manual runs keep
+      # --package-only, which also requires the registered files to match their inputs.
+      - name: Generate the ignored package shards (pull request, build from sources)
+        if: github.event_name == 'pull_request'
+        run: node archive/tools/build-archive2-catalog.mjs
+      - name: Generate the ignored package shards (registered files must match)
+        if: github.event_name != 'pull_request'
         run: node archive/tools/build-archive2-catalog.mjs --package-only
       - name: Save a paper, read it back, save again, open as revision, assign
         run: node --test tests/archive2-save-roundtrip.e2e.mjs
