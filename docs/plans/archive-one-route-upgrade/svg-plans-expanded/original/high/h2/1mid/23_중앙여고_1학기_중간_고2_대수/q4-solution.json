@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -2,
+      4,
+      -1,
+      6
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "h"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "1",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "양변에 밑이 2인 로그를 취하고 t=log₂x로 두면 t²−2t−log₂k≥0이 모든 실수 t에서 성립해야 한다. h는 그 이차식의 경계 예 k=1/2일 때 h(t)=t²−2t+1의 그래프로 꼭짓점 V(1, 0)에서 t축에 접한다. 포물선이 t축 아래로 내려가지 않으려면 t축과 만나지 않거나 접해야 하므로 D/4=1+log₂k≤0이다. 따라서 0<k≤1/2이고 답은 ①이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선이 가로축에 꼭짓점 V에서 접해 있고, V의 좌표가 표시되어 있다. 포물선의 나머지 부분은 모두 가로축 위쪽에 있다.",
+  "newVisualInformation": [
+    "이차식 h(t)의 그래프가 t축에 접하는 경계 상황 V(1, 0)을 보여 판별식 D≤0일 때 항상 0 이상임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x > 0$에서 부등식 $x^{\\log_2 x} \\ge kx^2$이 항상 성립하도록 하는 양수 $k$의 범위는? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
