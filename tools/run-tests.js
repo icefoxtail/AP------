@@ -404,6 +404,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-reviewed-apply-bridge.test.mjs']
   },
   {
+    label: 'tests/archive-progress-metadata-shard-witness.test.mjs',
+    args: ['--test', 'tests/archive-progress-metadata-shard-witness.test.mjs']
+  },
+  {
     label: 'tests/archive-question-metadata-format.test.mjs',
     args: ['--test', 'tests/archive-question-metadata-format.test.mjs']
   },
