@@ -358,3 +358,35 @@
 | 23 | REQUIRED | BENEFICIAL | 문제: 점 O-프라임이 AB와 AI 사이에 있는지 AI와 AO 사이에 있는지가 답을 가르므로 그림으로 위치를 고정해야 한다. / 해설: 각 BAO = 2y와 각 BAO-프라임 = 4y - 90도의 관계를 각 표시로 보여 주면 계산이 명확해진다. |
 
 - 문제그림 REQUIRED/BENEFICIAL 11개: 8, 9, 10, 12, 13, 15, 19, 20, 21, 22, 23. 해설그림 REQUIRED/BENEFICIAL 11개: 8, 9, 10, 12, 13, 15, 19, 20, 21, 22, 23.
+
+## 25_왕운중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q3[보기/정답①→②], q4[보기/정답③→①], q6[보기/정답②→①], q7[보기/정답①→⑤], q8[보기/정답⑤→②], q10[보기], q11[보기/정답①→③], q12[보기], q16[보기], q18[보기/정답③→①], q19[발문], q20[발문], q21[발문], q22[발문], q23[발문]. 해설 22개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | BENEFICIAL | BENEFICIAL | 문제: 원뿔 그림에 밑넓이 S와 높이 4x를 표시하면 어느 값이 밑넓이인지 바로 보인다 / 해설: 부피 공식에 값을 대입하는 장면을 원뿔 그림과 함께 보여 주면 이해가 빠르다 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | BENEFICIAL | BENEFICIAL | 문제: 학생이 해를 수직선에 직접 나타내야 하므로 빈 수직선 틀을 제시하면 답안 작성과 채점이 분명해진다. / 해설: -3에 채운 점을 찍고 오른쪽 화살표를 그린 수직선 그림을 넣으면 말 설명보다 정확히 전달된다. |
+
+- 문제그림 REQUIRED/BENEFICIAL 2개: 14, 23. 해설그림 REQUIRED/BENEFICIAL 2개: 14, 23.
