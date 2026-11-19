@@ -1,0 +1,57 @@
+{
+  "qid": 17,
+  "itemFingerprint": "522802b3bd475c25",
+  "solveSteps": [
+    "$f(x) = 0 \\implies |x - a| = \\log_2 a \\implies AB = 2\\log_2 a = 8 \\implies a = 16$이다. 16",
+    "$f(x) = -2^{|x - 16|} + 16$의 최댓값은 $x = 16$일 때 $q = 15$이다. 16",
+    "따라서 $p = 16, q = 15$이고 $p + q = 31$이다. 16"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+  "unitEvidence": "최댓값 $q$를 가질 때, ",
+  "rpmRecordId": "H2-M1-RPM-019",
+  "rpmReason": "지수함수의 최대·최소와 그래프 16 관련 RPM 문항입니다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+  "typeReason": "지수함수 매개변수 a=16을 결정하고 함수의 최댓값을 구하는 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "절댓값 지수함수의 x절편 거리로 16을 찾고 최댓값을 구하는 문제입니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값 $q$를 가질 때, $p + "
+      }
+    ],
+    "method": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "16$  \n한편 $|x - 16| \\",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "선분 길이 조건으로 a=16을 구하고 지수함수의 최댓값과 결합해 31을 구했습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

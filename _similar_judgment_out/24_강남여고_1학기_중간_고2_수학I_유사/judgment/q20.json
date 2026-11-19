@@ -1,0 +1,57 @@
+{
+  "qid": 20,
+  "itemFingerprint": "1afb8314cfe1dacc",
+  "solveSteps": [
+    "$x$절편들을 오름차순 나열하면 $x_3 = \\pi/2, x_7 = 3\\pi/2$이다. 4.5",
+    "구간 $[\\pi/2, 3\\pi/2]$에서 $\\dfrac{2}{3}x \\in [\\pi/3, \\pi]$이다. 4.5",
+    "$\\cos$은 이 구간에서 감소하므로 $a = \\pi/2, b = 3\\pi/2$이고 $a + b = 2\\pi$이다. 4.5"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M1-06",
+  "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "최댓값을 갖고 $x = b$",
+  "rpmRecordId": "H2-M1-RPM-042",
+  "rpmReason": "4.5점 삼각함수의 절편과 최대·최소 RPM 문항입니다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+  "typeReason": "4.5점 구간 끝점에서 삼각함수의 최댓값·최솟값을 구하는 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "4.5점 수준으로 절편 규칙성과 합성 삼각함수의 최대·최소를 결합했습니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 갖고 $x = b$에서 최솟"
+      }
+    ],
+    "method": [
+      {
+        "term": "코사인",
+        "src": "solution",
+        "quote": "cos\\dfrac{\\pi}{3} = ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "4.5점 배점 문항으로 절편들을 나열하여 구간을 구하고 코사인 극값을 판정했습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

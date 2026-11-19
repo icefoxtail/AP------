@@ -1,0 +1,58 @@
+{
+  "qid": 16,
+  "itemFingerprint": "8b54a778b94f3f3f",
+  "solveSteps": [
+    "밑이 $1/3 < 1$이므로 $0 < |f(x)| < |g(x)|$이다. 54",
+    "진수 조건: $x \\neq \\pm 6, -3$이다. 54",
+    "$f(x)^2 < g(x)^2 \\implies (x^2 - 6x - 54)(x^2 + 6x - 18) < 0$이다. 54",
+    "해 구간 내에서 진수 조건을 제외한 정수 $x$는 총 10개이다. 54"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+  "unitEvidence": "부등식  \n$$\\log_{\\",
+  "rpmRecordId": "H2-M1-RPM-025",
+  "rpmReason": "로그부등식의 해 구간과 정수 해 개수 54 관련 RPM 문항입니다.",
+  "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+  "templateKey": "TPL_LOG_FUNCTION_INEQUALITY_RANGE",
+  "typeReason": "로그함수의 단조성과 54가 든 부등식 구간을 교집합하는 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "절댓값과 54가 포함된 이차부등식 및 진수 조건을 모두 따져야 합니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "부등식  \n$$\\log_{\\frac{"
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "54 = 0$  \n근은 $x = 3 ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "로그부등식을 다항식 부등식으로 변환하고 54가 든 이차식을 풀어 정수 개수를 셌습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

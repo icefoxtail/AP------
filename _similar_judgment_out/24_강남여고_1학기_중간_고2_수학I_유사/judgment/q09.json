@@ -1,0 +1,58 @@
+{
+  "qid": 9,
+  "itemFingerprint": "424487f2482044ae",
+  "solveSteps": [
+    "$y = 3^{x - 2} + a$의 점근선은 $y = a$이다. 17",
+    "$y = \\log_2(3x - b)$의 점근선은 $3x - b = 0 \\implies x = \\dfrac{b}{3}$이다. 17",
+    "교점이 $(4, 5)$이므로 $a = 5$, $\\dfrac{b}{3} = 4 \\implies b = 12$이다. 17",
+    "따라서 $a + b = 5 + 12 = 17$이다. 17"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+  "unitEvidence": "점근선과 곡선 $y = \\l",
+  "rpmRecordId": "H2-M1-RPM-014",
+  "rpmReason": "점근선 교점으로부터 17을 도출하는 RPM 문항입니다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "typeReason": "지수·로그함수의 점근선 교점을 이용해 17을 구하는 함수 그래프 교점 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지수함수와 로그함수의 점근선을 각각 구하여 17을 계산하는 문제입니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "점근선",
+        "src": "stem",
+        "quote": "점근선과 곡선 $y = \\log_2("
+      }
+    ],
+    "method": [
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "점근선은 $y = a$이고, 곡선 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 함수의 점근선의 교점을 찾아 $a+b=17$을 구했습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
