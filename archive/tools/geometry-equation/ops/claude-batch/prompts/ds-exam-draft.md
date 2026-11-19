@@ -45,7 +45,7 @@ SVG를 글로 읽기: node .tmp/work/ds-svgtext.cjs <svg 파일> — viewBox, �
 [구현 규칙]
  1) 시험지 JS에서 문항 원문·정답·해설·기존 그림(solutionImage*)을 읽는다(문항별로 필요한 필드만).
  2) FIGURE·REPLACE 문항은 <OUT>/qNN/ 에 item.json, plan.json, publish.json, figure.png 를 둔다. item.json 은 {"sourcePath": 시험지 JS 저장소 상대경로, "ordinal": 문항 id} 형식이다(통과 사례의 qNN/item.json 과 같게). 렌더는 --out <OUT>/qNN/out 으로 한다(최종 성공본이 out/에 있게). EXEMPT·KEEP_EXISTING·CONTENT 문항은 qNN 폴더를 만들지 않는다. **렌더가 끝내 안 되어 UNSUPPORTED 후보가 된 문항은 마지막 item.json·plan.json 과 render-N.log 를 qNN/ 에 남긴다**(Sonnet가 이어서 고친다).
- 3) publish.json: {"alt": 그림 설명(정답은 있어도 없어도 됨), "caption": 풀이 요약 2~4문장 + 끝에 "정답은 …이다."(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}. alt·caption은 한국어 평문($…$ LaTeX·영어 문장 금지)이고 수식·변수는 기호로 쓴다. **alt는 그림을 보지 못한 네가 쓰는 것이므로 plan.json에 넣은 대상(점·선·곡선·구간·색)만 설명하고, plan에 없는 것을 지어내지 않는다.**
+ 3) publish.json: {"alt": 그림 설명(정답은 있어도 없어도 됨), "caption": 풀이 요약 2~4문장 + 끝에 "정답은 …이다."(예시 값이면 "예:"로 시작), "size": 렌더 결과 out/figure-result.json의 sizeClass와 같은 값}. alt·caption은 한국어 평문($…$ LaTeX·영어 문장 금지)이고 수식·변수는 기호로 쓴다. **alt는 초안이므로 plan.json에 넣은 대상(점·선·곡선·구간·색)만 설명하고, plan에 없는 것을 지어내지 않는다.**
  4) <OUT>/TABLE.md — 전 문항 한 줄씩, 정확히 이 형식(다른 판정어·누락 문항 금지, 파서가 `^| Q?(\d+) | ([A-Z_]+)`로 읽는다):
       | 문항 | 판정 | 이유 |
       |---|---|---|
