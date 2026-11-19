@@ -1,0 +1,69 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          1,
+          4
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "-1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "-1"
+      ]
+    }
+  },
+  "caption": "x<1에서 f(x)=-x+3이므로 x→1-에서 열린 점 (1,2)로 가까워져 a=2이다. x≥1에서 f(x)=x-2이므로 x→1+에서 닫힌 점 P(1,-1)에서 시작해 b=-1이다. 따라서 10a+b=20-1=19이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1. 함수 $f(x)=\\begin{cases} x-2 & (x \\ge 1) \\\\ -x+3 & (x < 1) \\end{cases}$에서 $\\lim_{x \\to 1-} f(x)=a$, $\\lim_{x \\to 1+} f(x)=b$라고 할 때, $10a+b$의 값을 구하시오. [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1에서 좌극한 2(열린 점)와 우극한 -1(닫힌 점 P)을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 왼쪽 직선이 열린 점 (1,2)로, 오른쪽 직선이 닫힌 점 P(1,-1)에서 시작해 끊어짐을 보인다."
+  ],
+  "accessibilityDescription": "x=1에서 끊어지는 두 직선 조각의 그래프이고, 왼쪽 직선은 열린 점에서 끝나며 오른쪽 직선은 아래쪽 닫힌 점 P에서 시작한다."
+}

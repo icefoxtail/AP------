@@ -1,0 +1,99 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2/9",
+          "4/3",
+          "1/3",
+          "-2/9"
+        ]
+      },
+      {
+        "coefficients": [
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "id": "G",
+        "x": "1",
+        "y": "11/9"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "-1"
+      ],
+      "B": [
+        "2",
+        "2"
+      ],
+      "G": [
+        "1",
+        "11/9"
+      ]
+    }
+  },
+  "caption": "g가 미분가능하려면 x=-1, 2에서 값과 기울기가 맞아야 하므로 f(-1)=-1, f′(-1)=0, f(2)=2, f′(2)=0이다. 이를 풀면 f(x)=-(2/9)x³+(1/3)x²+(4/3)x-2/9이다. 그림은 높이 -1의 수평선이 A(-1,-1)에서 삼차 조각으로 부드럽게 올라가 B(2,2)에서 높이 2의 수평선으로 이어지는 모습이고, 점 G(1,11/9)가 g(1)=11/9이다. a+b=9+11=20이므로 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 삼차함수 $f(x)$에 대하여 실수 전체의 집합에서 미분가능한 함수 $g(x)$를\n$$g(x)=\\begin{cases} 2 & (x \\ge 2) \\\\ f(x) & (-1 < x < 2) \\\\ -1 & (x \\le -1) \\end{cases}$$\n이라 할 때, $g(1)$의 값은 $\\frac{b}{a}$이다. $a+b$의 값으로 옳은 것은? ($a, b$는 서로소) [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "A(-1,-1), B(2,2)에서 기울기 0으로 부드럽게 이어지는 삼차 조각과 g(1)=11/9인 점 G를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "수평선과 삼차 조각이 A, B에서 기울기 0으로 부드럽게 이어지는 g와 g(1)=11/9인 점 G를 보인다."
+  ],
+  "accessibilityDescription": "낮은 수평선이 점 A에서 부드럽게 S자 모양으로 올라가 점 B에서 높은 수평선으로 이어지는 그래프이고 S자 부분 위에 점 G가 표시되어 있다."
+}

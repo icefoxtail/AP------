@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "O": [
+        "0",
+        "0"
+      ]
+    }
+  },
+  "caption": "f(x)=√(x²)=|x|의 그래프이다. 원점 O에서 끊기지 않으므로 x=0에서 연속이지만, 왼쪽 기울기 -1과 오른쪽 기울기 1이 달라 뾰족한 꼭짓점이라 미분가능하지 않다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 다음 중 $x=0$에서 연속이지만 미분가능하지 않은 함수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y=|x|가 원점에서 연속이지만 꺾여 미분가능하지 않음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "y=|x|가 원점 O에서 끊기지 않지만 기울기 -1에서 1로 꺾이는 뾰족한 꼭짓점임을 보인다."
+  ],
+  "accessibilityDescription": "원점에서 뾰족하게 꺾이는 V자 모양의 그래프이다."
+}

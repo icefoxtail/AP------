@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      0,
+      26
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "3/4",
+        "y": "31/8"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "7",
+          "intercept": "-7",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "f(2)=7, f(3)=14이므로 x가 2에서 3까지 변할 때의 평균변화율은 (14-7)/(3-2)=7이다. 그림의 직선 l은 두 점 A(2,7), B(3,14)를 지나며 기울기가 평균변화율 7이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 함수 $f(x)=2x^2-3x+5$에서 $x$의 값이 $2$에서 $3$까지 변할 때의 평균변화율을 구한 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "두 점 A(2,7), B(3,14)를 잇는 직선의 기울기가 평균변화율 7임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점 A(2,7), B(3,14)를 잇는 직선 l의 기울기가 평균변화율 7임을 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 두 점 A, B를 지나는 가파른 직선 l이 그려진 그래프이다."
+}

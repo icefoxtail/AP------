@@ -1,0 +1,125 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -1,
+      0.5
+    ],
+    "curves": [
+      {
+        "id": "l1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/4",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "-2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "m1",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1"
+        ],
+        "denominator": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "m2",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1"
+        ],
+        "denominator": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "r1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/4",
+          "0"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-2",
+          "y": "-1/4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "-1/4",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "-1/2",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "3",
+          "y": "-1/4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "|x|<2에서 f(x)=-1/(2+|x|)이고 x→±2에서 극한은 -1/4이다. |x|≥2에서 ax+b가 x=2, -2에서 모두 -1/4이어야 하므로 a=0, b=-1/4이다. 그림은 가운데 부분 -1/(2+|x|)이 A(-2,-1/4), B(2,-1/4)에서 수평선 y=-1/4와 이어지는 모습이고 D(3,-1/4)가 f(3)이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "17. 함수 $f(x)=\\begin{cases} ax+b & (|x| \\ge 2) \\\\ \\frac{|x|-2}{|x^2-4|} & (|x| < 2) \\end{cases}$가 모든 실수 $x$에서 연속일 때, $f(3)$의 값을 구하시오. [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "가운데 곡선이 x=±2에서 수평선 y=-1/4와 이어지고 f(3)=-1/4임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "가운데 부분이 x=±2에서 높이 -1/4로 수평선과 이어지고 f(3)=-1/4인 점 D를 보인다."
+  ],
+  "accessibilityDescription": "가운데가 아래로 움푹 들어간 곡선이 양 끝 A, B에서 높이가 같은 두 수평선과 이어진 그래프이고 오른쪽 수평선 위에 점 D가 표시되어 있다."
+}
