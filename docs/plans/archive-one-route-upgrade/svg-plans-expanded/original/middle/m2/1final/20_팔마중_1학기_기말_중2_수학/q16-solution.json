@@ -1,0 +1,67 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "variable": "x",
+    "parameter": {
+      "name": "a",
+      "value": "8"
+    },
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "param": {
+                "mul": "1/2",
+                "add": "-3/2"
+              },
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "label": "해"
+      },
+      {
+        "kind": "POINTS",
+        "within": 1,
+        "label": "기약",
+        "points": [
+          {
+            "id": "P0",
+            "value": "1/2",
+            "hideName": true
+          },
+          {
+            "id": "P1",
+            "value": "3/2",
+            "hideName": true
+          },
+          {
+            "id": "P2",
+            "value": "5/2",
+            "hideName": true
+          },
+          {
+            "id": "P3",
+            "value": "7/2",
+            "hideName": true
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "3−2x≤a−4x를 정리하면 2x≤a−3이므로 x≤(a−3)/2이다. 분모가 2인 양의 기약분수 1/2, 3/2, 5/2, 7/2, … 중 정확히 3개(1/2, 3/2, 5/2)가 해이려면 5/2≤(a−3)/2<7/2이어야 한다. 각 변에 2를 곱해 3을 더하면 8≤a<10이다. 그림은 경계를 a=8로 둔 모습으로 5/2는 해이고 7/2는 제외된다. 따라서 답은 ③이다.",
+  "newVisualInformation": [
+    "해집합 x≤(a−3)/2에 분모가 2인 기약분수 1/2, 3/2, 5/2만 들어가도록 하는 a의 범위 8≤a<10"
+  ],
+  "accessibilityDescription": "수직선에 5/2를 포함해 왼쪽으로 뻗는 해집합이 칠해져 있고 1/2, 3/2, 5/2는 해 안의 점으로, 7/2는 바깥의 ×로 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>16. 양의 유리수 $x$에 관한 일차부등식 $3-2x \\le a-4x$를 만족시키는 분모가 2인 기약분수 $x$가 3개일 때, $a$의 값의 범위를 구하면? (5점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

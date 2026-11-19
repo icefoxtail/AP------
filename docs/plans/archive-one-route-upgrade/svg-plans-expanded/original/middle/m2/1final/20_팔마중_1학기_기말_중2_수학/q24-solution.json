@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "200"
+        ],
+        "domain": [
+          "0",
+          "30"
+        ],
+        "label": "자전거(분속 200m)",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3000",
+          "100"
+        ],
+        "domain": [
+          "30",
+          "60"
+        ],
+        "label": "달리기(분속 100m)",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "30",
+        "60"
+      ],
+      "y": [
+        "6000",
+        "9000"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "x": "30",
+          "y": "6000",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "60",
+          "y": "9000",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(m)"
+    }
+  },
+  "caption": "자전거로 간 거리를 x m, 달려서 간 거리를 y m라 하면 x+y=9000이고 걸린 시간이 x/200+y/100=60분이다. 둘째 식에 200을 곱하면 x+2y=12000이므로 y=3000, x=6000이다. 그림은 처음 30분 동안 분속 200m로 6000m를 가 점 A(30,6000)에 이르고, 다음 30분 동안 분속 100m로 3000m를 달려 점 B(60,9000)에 도착하는 거리와 시간의 그래프이다. 따라서 자전거로 간 거리는 6000m(6km)이다.",
+  "newVisualInformation": [
+    "자전거로 30분에 6000m, 달려서 30분에 3000m를 이동해 60분에 9000m에 도착하는 거리-시간 그래프"
+  ],
+  "accessibilityDescription": "가로축이 시간(분), 세로축이 거리(m)인 좌표평면에서 원점에서 점 A(30,6000)까지 가파른 선분, 점 A에서 점 B(60,9000)까지 더 완만한 선분이 이어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 3] 평주가 집에서 $9\\text{ km}$ 떨어진 도서실에 가는 데 자전거를 타고 분속 $200\\text{ m}$로 일정하게 가다가 분속 $100\\text{ m}$로 일정하게 달려서 1시간이 걸렸다. 평주가 분속 $200\\text{ m}$로 이동한 거리를 구하여라. (단위까지 정확히 작성하시오.) (6점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

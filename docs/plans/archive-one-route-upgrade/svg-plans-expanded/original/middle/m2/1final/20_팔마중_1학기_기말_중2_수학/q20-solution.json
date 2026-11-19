@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-2/3"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "x+ay=3 (a=3/2)",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-2/3"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "x/3+y/2=1",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x/3+y/2=1의 양변에 6을 곱하면 2x+3y=6이고 양변을 2로 나누면 x+(3/2)y=3이다. 해가 무수히 많으려면 두 직선이 일치해야 하므로 x+ay=3과 계수가 같아야 하고 a=3/2이다. 이때 두 직선은 점 (3,0), (0,2)를 지나는 같은 직선이다. 따라서 답은 ③이다.",
+  "newVisualInformation": [
+    "해가 무수히 많으면 두 직선이 일치하므로 계수가 같아 a=3/2"
+  ],
+  "accessibilityDescription": "두 직선이 완전히 겹쳐 하나의 직선으로 보이며 x절편 (3,0)과 y절편 (0,2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 연립방정식 $\\begin{cases} x+ay = 3 \\\\ \\dfrac{x}{3}+\\dfrac{y}{2} = 1 \\end{cases}$의 해가 무수히 많을 때, 수 $a$의 값을 구하면? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
