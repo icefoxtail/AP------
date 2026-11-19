@@ -1,0 +1,63 @@
+{
+  "qid": 4,
+  "itemFingerprint": "2348633ca497b030",
+  "solveSteps": [
+    "둔각삼각형 ABC에서 점 A 반대쪽 각 BOC = 156^\\circ이므로 2 * 각 BAC = 360^\\circ - 156^\\circ = 204^\\circ에서 각 BAC = 102^\\circ이다.",
+    "각 ACB = 180^\\circ - 102^\\circ - 45^\\circ = 33^\\circ이다.",
+    "직각삼각형 ADC의 외심 O'은 빗변 AC의 중점이므로 O'C = O'D(1번 참)이고 O'O = O'A(3, 4번 참)이다.",
+    "각 AOB = 2 * 각 ACB = 66^\\circ이므로 각 BAO = 57^\\circ, 각 DAO = 57^\\circ - 45^\\circ = 12^\\circ(2번 참)이다.",
+    "5번: 각 DCO' = 각 ACB = 33^\\circ이지 38^\\circ가 아니므로 거짓이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "둔각삼각형 $ABC$의 외심 $O$가 변 $BC$에 대하여 꼭짓점 $A$의 반대쪽에 있고",
+  "rpmRecordId": "M2-RPM-185",
+  "rpmReason": "둔각삼각형 ABC의 외심 O와 직각삼각형 ADC의 외심 O'의 위치 및 각 BOC = 156도 조건을 분석하는 외심의 위치·각 유형이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "typeReason": "둔각삼각형 ABC의 외심 각 BOC = 156도와 직각삼각형 외심이 빗변의 중점임을 이용하여 보기의 각과 선분 관계를 감사하는 삼각형 외심 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "둔각삼각형 외심 O의 위치관계와 직각삼각형 외심 O'의 성질 및 다단계 각 추적(각 ACB = 33도)을 종합해야 하므로 난이도 4이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "둔각삼각형 $ABC$의 외심 $O$가 변 $BC$에 대하여 꼭짓점 $A$의 반대쪽에 있고"
+      },
+      {
+        "term": "수선의발",
+        "src": "stem",
+        "quote": "꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $D$, $\\triangle ADC$의 외심을 $O'$이라고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "외심",
+        "src": "choices",
+        "quote": "점 $O'$은 $\\triangle AOC$의 외심이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "외심",
+        "src": "solution",
+        "quote": "직각삼각형 $ADC$의 외심 $O'$은 빗변 $AC$의 중점이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "직각삼각형의 외심 위치(빗변의 중점)와 외심의 각 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "외심 O에서 각 BAC = 102도, 각 ACB = 33도를 구하고 직각삼각형 ADC의 외심 O'에 대해 각 DCO' = 33도임을 확인하여 5번이 거짓임을 판정하였다."
+}

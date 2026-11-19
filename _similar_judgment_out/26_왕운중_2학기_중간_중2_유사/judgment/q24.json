@@ -1,0 +1,58 @@
+{
+  "qid": 24,
+  "itemFingerprint": "13f33ed32b39886c",
+  "solveSteps": [
+    "밑변 BC = 10 cm, 높이 8 cm인 평행사변형 ABCD의 전체 넓이는 10 * 8 = 80 cm^2이다.",
+    "두 대각선이 서로를 이등분하므로 네 삼각형 ABO, CBO, CDO, DAO의 넓이는 각각 80 / 4 = 20 cm^2이다.",
+    "M은 AO의 중점이므로 삼각형 ABM의 넓이는 20 / 2 = 10 cm^2이다.",
+    "N은 CO의 중점이므로 삼각형 CBN의 넓이는 20 / 2 = 10 cm^2이다.",
+    "따라서 두 삼각형 넓이의 합은 10 + 10 = 20 cm^2이다."
+  ],
+  "solvedAnswer": "$20\\text{ cm}^2$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "밑변 $\\overline{BC}$의 길이가 $10\\text{ cm}$이고 높이가 $8\\text{ cm}$인 평행사변형 $ABCD$의 두 대각선의 교점을 $O$라 하자.",
+  "rpmRecordId": "M2-RPM-195",
+  "rpmReason": "평행사변형 ABCD의 대각선 교점 O와 중점 M, N으로 분할되는 삼각형 ABM, CBN의 넓이 합 20 cm^2를 구하는 분할도형 넓이 유형이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "typeReason": "평행사변형 ABCD의 대각선에 의한 4등분과 선분 AO, CO의 중점 분할 성질을 결합하여 삼각형 넓이의 합을 산출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행사변형 전체 넓이 80 cm^2에서 대각선 4분할과 중점 2분할을 거쳐 넓이 20 cm^2를 구하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "밑변 $\\overline{BC}$의 길이가 $10\\text{ cm}$이고 높이가 $8\\text{ cm}$인 평행사변형 $ABCD$의 두 대각선의 교점을 $O$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "$\\triangle ABM$과 $\\triangle CBN$의 넓이의 합을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "두 대각선은 서로 다른 것을 이등분하므로 네 삼각형 $AOB$, $BOC$, $COD$, $DOA$의 넓이는 모두 같다.",
+        "evidenceType": "IMPLIED",
+        "justification": "평행사변형 대각선에 의한 4등분 및 중점 넓이 반분 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "평행사변형 ABCD의 넓이 80 cm^2에서 대각선 4등분 삼각형 ABO, CBO가 각각 20 cm^2이고 중점 M, N에 의해 각 10 cm^2이므로 합이 20 cm^2임을 서술형으로 판정하였다."
+}

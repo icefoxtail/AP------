@@ -1,0 +1,58 @@
+{
+  "qid": 8,
+  "itemFingerprint": "71dcbf93afaecb64",
+  "solveSteps": [
+    "내심 I에서 각 BIC = 90도 + 각 A / 2 = 112도이므로 각 A = 44도이다.",
+    "이등변삼각형 ABC에서 밑각 ABC = (180도 - 44도) / 2 = 68도이다.",
+    "내심선 BI에 의해 각 IBC = 68도 / 2 = 34도이다.",
+    "외심 O에서 중심각 BOC = 2 * 44도 = 88도이고 이등변삼각형 OBC에서 각 OBC = (180도 - 88도) / 2 = 46도이다.",
+    "따라서 각 OBI = 각 OBC - 각 IBC = 46도 - 34도 = 12도이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\overline{AB} = \\overline{AC}$인 예각이등변삼각형 $ABC$의 외심을 $O$, 내심을 $I$라고 하자.",
+  "rpmRecordId": "M2-RPM-188",
+  "rpmReason": "이등변삼각형 ABC에서 내심 각 BIC = 112도로부터 꼭지각 44도를 구하고 외심 O와 결합하여 각 OBI = 12도를 구하는 유형이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+  "typeReason": "이등변삼각형 ABC의 내심 I와 외심 O의 각 성질을 동시에 활용하여 각 OBI의 크기를 계산하는 외심·내심 복합 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내심 공식으로 꼭지각을 구하고 외심 이등변삼각형 밑각과 내심 각의 이등분선 밑각의 차 12도를 계산하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB} = \\overline{AC}$인 예각이등변삼각형 $ABC$의 외심을 $O$, 내심을 $I$라고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle OBI$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "src": "solution",
+        "quote": "점 $I$는 내심이므로 $112^\\circ = 90^\\circ + \\dfrac{1}{2}\\angle A \\implies \\dfrac{1}{2}\\angle A = 22^\\circ \\implies \\angle A = 44^\\circ$",
+        "evidenceType": "IMPLIED",
+        "justification": "내심 공식으로 꼭지각을 구하고 외심 이등변삼각형과의 차이 계산"
+      }
+    ],
+    "condition": []
+  },
+  "how": "각 BIC = 112도에서 각 A = 44도를 구한 뒤 외심각에서 각 OBC = 46도, 내심선에서 각 IBC = 34도를 빼어 각 OBI = 12도임을 판정하였다."
+}

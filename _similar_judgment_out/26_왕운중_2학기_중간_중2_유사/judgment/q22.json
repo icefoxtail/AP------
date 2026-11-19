@@ -1,0 +1,57 @@
+{
+  "qid": 22,
+  "itemFingerprint": "cd020efb4a78b32e",
+  "solveSteps": [
+    "삼각형 ABC의 둘레는 AB + BC + CA = 10 + 17 + 9 = 36이다.",
+    "내접원의 반지름을 r이라 하면 삼각형 ABC의 넓이는 (1/2) * r * (10 + 17 + 9) = 18r이다.",
+    "넓이가 36이므로 18r = 36에서 r = 2이다.",
+    "따라서 내접원의 넓이는 \\pi * 2^2 = 4\\pi이다."
+  ],
+  "solvedAnswer": "$4\\pi$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\overline{AB} = 10$, $\\overline{BC} = 17$, $\\overline{CA} = 9$이고 넓이가 $36$인 $\\triangle ABC$의 내심을 $I$라고 할 때",
+  "rpmRecordId": "M2-RPM-188",
+  "rpmReason": "변 AB = 10, BC = 17, CA = 9와 넓이 36으로부터 내접원 반지름 r = 2를 구하고 넓이 4\\pi를 계산하는 내접원 활용 유형이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_INCIRCLE",
+  "typeReason": "삼각형 ABC의 세 변의 길이와 넓이 36을 내접원 반지름 공식 S = (1/2)r(a+b+c)에 대입하여 내접원의 넓이를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형 ABC 둘레 36과 넓이 36으로부터 반지름 r = 2를 찾고 원의 넓이 4\\pi를 산출하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "$\\overline{AB} = 10$, $\\overline{BC} = 17$, $\\overline{CA} = 9$이고 넓이가 $36$인 $\\triangle ABC$의 내심을 $I$라고 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내접원",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 내접원의 넓이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "내접원의 반지름의 길이를 $r$이라 하면 내심 $I$에서 세 변까지의 거리는 모두 $r$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "내접원 반지름과 삼각형 둘레를 이용한 넓이 공식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "삼각형 ABC의 둘레 36과 넓이 36에서 18r = 36으로 반지름 r = 2를 구한 뒤 내접원의 넓이가 4\\pi임을 판정하였다."
+}

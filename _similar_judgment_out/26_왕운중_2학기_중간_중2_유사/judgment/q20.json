@@ -1,0 +1,57 @@
+{
+  "qid": 20,
+  "itemFingerprint": "65762c686536df2a",
+  "solveSteps": [
+    "삼각형 ABC와 DEF의 닮음비는 대응변 AB : DE = 6 : 10 = 3 : 5이다.",
+    "닮은 도형의 넓이의 비는 닮음비의 제곱의 비이므로 3^2 : 5^2 = 9 : 25이다.",
+    "삼각형 DEF의 넓이가 75 cm^2이므로 삼각형 ABC의 넓이는 75 * (9 / 25) = 27 cm^2이다.",
+    "따라서 정답은 ⑤ 27 cm^2이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURES",
+  "unitEvidence": "$\\triangle ABC \\sim \\triangle DEF$이고 $\\overline{AB} = 6\\text{ cm}$, $\\overline{DE} = 10\\text{ cm}$이다.",
+  "rpmRecordId": "M2-RPM-208",
+  "rpmReason": "대응변 AB = 6 cm, DE = 10 cm의 닮음비로부터 넓이의 비 9:25를 세워 넓이 27 cm^2를 구하는 닮음 넓이비 유형이다.",
+  "problemTypeKey": "PT_SIMILAR_FIGURES",
+  "templateKey": "TPL_SIMILAR_FIGURES_AREA_VOLUME",
+  "typeReason": "닮은 삼각형 ABC, DEF의 대응변으로 닮음비 3:5를 구하고 넓이비 9:25를 적용해 삼각형 ABC의 넓이를 산출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대응변 길이비 3:5를 제곱하여 넓이비 9:25를 유도하고 75 cm^2에 비례배분하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "닮음",
+        "src": "stem",
+        "quote": "$\\triangle ABC \\sim \\triangle DEF$이고 $\\overline{AB} = 6\\text{ cm}$, $\\overline{DE} = 10\\text{ cm}$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle DEF$의 넓이가 $75\\text{ cm}^2$일 때, $\\triangle ABC$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "넓이의 비는 $3^2 : 5^2 = 9 : 25$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "닮은 도형의 넓이비는 닮음비의 제곱의 비임을 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "대응변 AB와 DE의 비 6:10 = 3:5에서 넓이비 9:25를 유도하여 삼각형 DEF 넓이 75 cm^2로부터 삼각형 ABC 넓이 27 cm^2임을 판정하였다."
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 3,
+  "itemFingerprint": "cb17a6dc7f8853ff",
+  "solveSteps": [
+    "삼각형 ABC에서 각 C = 180^\\circ - (64^\\circ + 52^\\circ) = 64^\\circ이다.",
+    "점 I가 내심이므로 x = 각 AIB = 90^\\circ + (64^\\circ / 2) = 122^\\circ이다.",
+    "외심 O에 대해 각 EOD = 124^\\circ이므로 이등변삼각형 ODE에서 각 OED = (180 - 124)/2 = 28^\\circ이다.",
+    "각 DEF = 28^\\circ + 24^\\circ = 52^\\circ이므로 각 DOF = 2 * 52^\\circ = 104^\\circ이다.",
+    "이등변삼각형 ODF에서 y = 각 OFD = (180 - 104)/2 = 38^\\circ이다.",
+    "따라서 x + y = 122^\\circ + 38^\\circ = 160^\\circ이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "점 $I$는 $\\triangle ABC$의 내심이고",
+  "rpmRecordId": "M2-RPM-188",
+  "rpmReason": "내심 I에서의 각 AIB = 122도와 외심 O에서의 각 OFD = 38도를 계산하여 합 160도를 구하는 외심·내심 각 계산 유형이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+  "typeReason": "삼각형 ABC의 내심 공식과 예각삼각형 DEF의 외심 중심각 성질을 결합하여 각의 합 x + y = 160도를 도출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내심에 의한 각 x = 122도 계산과 외심 이등변삼각형에 의한 각 y = 38도 계산을 연계하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$는 $\\triangle ABC$의 내심이고 $\\angle A = 64^\\circ$, $\\angle B = 52^\\circ$일 때"
+      },
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "또 점 $O$는 예각삼각형 $DEF$의 외심이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "이때 $x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "외심",
+        "src": "solution",
+        "quote": "점 $I$는 내심이므로 $x = \\angle AIB = 90^\\circ + \\dfrac{1}{2}\\angle C = 90^\\circ + 32^\\circ = 122^\\circ$",
+        "evidenceType": "IMPLIED",
+        "justification": "내심과 외심의 중심각 공식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "내심 공식으로 각 AIB = 122도를 구하고 외심 이등변삼각형 각 추적으로 각 OFD = 38도를 구하여 합 160도임을 판정하였다."
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 11,
+  "itemFingerprint": "6c03bc746321444d",
+  "solveSteps": [
+    "평행사변형 ABCD에서 두 쌍의 대변의 길이는 각각 같다.",
+    "AB = CD이므로 2x - 1 = 9에서 2x = 10, x = 5이다.",
+    "AD = BC이므로 y + 3 = 11에서 y = 8이다.",
+    "따라서 x + y = 5 + 8 = 13이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "평행사변형 $ABCD$에서 $\\overline{AB} = 2x - 1$, $\\overline{CD} = 9$, $\\overline{BC} = y + 3$, $\\overline{AD} = 11$일 때",
+  "rpmRecordId": "M2-RPM-190",
+  "rpmReason": "평행사변형 ABCD의 대변 AB = CD와 AD = 11, BC = y + 3으로부터 x, y를 구하는 평행사변형 변의 성질 유형이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "typeReason": "평행사변형 ABCD의 두 쌍의 대변의 길이가 각각 같음을 이용하여 AB, CD와 AD, BC 식을 풀어 x + y를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행사변형의 대변 AB = CD와 AD = 11을 일차방정식으로 바로 해결하는 기본 계산이므로 난이도 1이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 $\\overline{AB} = 2x - 1$, $\\overline{CD} = 9$, $\\overline{BC} = y + 3$, $\\overline{AD} = 11$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "평행사변형의 두 쌍의 대변의 길이는 각각 같으므로",
+        "evidenceType": "IMPLIED",
+        "justification": "평행사변형 대변의 길이가 같다는 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "평행사변형 ABCD에서 대변의 길이가 같음을 이용하여 2x - 1 = 9에서 x = 5, y + 3 = 11에서 y = 8을 구해 x + y = 13으로 판정하였다."
+}

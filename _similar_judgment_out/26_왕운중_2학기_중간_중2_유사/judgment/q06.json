@@ -1,0 +1,58 @@
+{
+  "qid": 6,
+  "itemFingerprint": "856b10b31d162bdd",
+  "solveSteps": [
+    "이등변삼각형 ABC에서 꼭짓각 A의 이등분선 AD는 밑변 BC를 수직이등분한다. 따라서 BC는 AD에 수직이고 BD = CD = BC/2이다.",
+    "점 P가 선분 AD 위의 점일 때 삼각형 ABP와 ACP는 SAS 합동이므로 BP = CP이고 각 ABP = 각 ACP이다.",
+    "1번 AP = PD는 점 P의 위치에 따라 다르므로 항상 성립하지 않는다.",
+    "5번 BC = 2 BD이므로 BC = BD/2라는 보기는 거짓이다.",
+    "따라서 옳지 않은 것은 ①, ⑤이다."
+  ],
+  "solvedAnswer": "①, ⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$라고 하자.",
+  "rpmRecordId": "M2-RPM-178",
+  "rpmReason": "이등변삼각형 ABC의 꼭짓각 이등분선 AD와 선분 BC, BD의 수직이등분 성질을 판별하는 밑각과 꼭짓각 유형이다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_VERTEX_BISECTOR",
+  "typeReason": "이등변삼각형 ABC에서 꼭짓각 이등분선 AD가 밑변 BC를 수직이등분하는 성질과 선분 AP, BP의 관계를 점검하는 꼭지각 이등분선 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭짓각 이등분선에 의한 밑변 수직이등분 및 선분 BP = CP 성질을 확인하여 틀린 보기 1, 5번을 가려내므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 $\\angle A$의 이등분선과 변 $BC$의 교점을 $D$라고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등변삼각형",
+        "src": "choices",
+        "quote": "$\\overline{BC} \\perp \\overline{AD}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직이등분선",
+        "src": "solution",
+        "quote": "이등변삼각형 $ABC$에서 꼭짓각 $A$의 이등분선 $AD$는 밑변 $BC$의 수직이등분선이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "이등변삼각형 꼭지각의 이등분선 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "이등변삼각형 ABC에서 꼭짓각 이등분선 AD가 밑변을 수직이등분함을 확인하여 성립하지 않는 1번과 5번을 정답으로 판정하였다."
+}

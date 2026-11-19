@@ -1,0 +1,58 @@
+{
+  "qid": 10,
+  "itemFingerprint": "16016d9e2a28c978",
+  "solveSteps": [
+    "DE와 BC가 평행하고 BI가 각 B의 이등분선이므로 엇각에 의해 각 DIB = 각 DBI이다. 따라서 삼각형 DBI는 DB = DI = 5인 이등변삼각형이다.",
+    "마찬가지로 CI가 각 C의 이등분선이므로 엇각에 의해 삼각형 EIC는 EC = IE = 7인 이등변삼각형이다.",
+    "AB = AD + DB = 9 + 5 = 14이다.",
+    "AC = AE + EC = 11 + 7 = 18이다.",
+    "따라서 AB + AC = 14 + 18 = 32이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 변 $AB$, 변 $AC$와 만나는 점을 각각 $D$, $E$라고 하자.",
+  "rpmRecordId": "M2-RPM-186",
+  "rpmReason": "내심 I를 지나는 평행선 DE와 변 AB, AC에서 이등변삼각형 성질로 AB + AC = 32를 구하는 내심 유형이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_INCENTER",
+  "typeReason": "삼각형 ABC 내심을 지나는 평행선과 각의 이등분선이 만드는 이등변삼각형 성질로 변 AB, AC의 길이를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행선과 각의 이등분선에 의해 DB = 5, EC = 7임을 찾아 AB + AC = 32를 산출하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 내심 $I$를 지나고 변 $BC$에 평행한 직선이 변 $AB$, 변 $AC$와 만나는 점을 각각 $D$, $E$라고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "내심",
+        "src": "solution",
+        "quote": "$\\overline{DE} \\parallel \\overline{BC}$이고 $\\overline{BI}$가 $\\angle B$의 이등분선이므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "따라서 $\\triangle DBI$는 이등변삼각형이므로 $\\overline{DB} = \\overline{DI} = 5$",
+        "evidenceType": "IMPLIED",
+        "justification": "평행선과 각의 이등분선으로 만들어지는 이등변삼각형 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "내심 I를 지나는 평행선에서 이등변삼각형 DBI와 ECI를 찾아 DB = 5, EC = 7로 두고 AB + AC = 32임을 판정하였다."
+}
