@@ -1,0 +1,58 @@
+{
+  "qid": 20,
+  "itemFingerprint": "0d54e036dddc2326",
+  "solveSteps": [
+    "염소가 움직이는 영역은 울타리 바깥에서 3개의 부채꼴로 aligned 나뉜다.",
+    "1) 꼭짓점 A 중심 중심각 270도, 반지름 7 m 부채꼴: (3/4) * \\pi * 7^2 = (147/4)\\pi m^2.",
+    "2) 가로 5 m 모서리를 돈 부채꼴: 중심각 90도, 반지름 7 - 5 = 2 m: (1/4) * \\pi * 2^2 = \\pi m^2 = (4/4)\\pi m^2.",
+    "3) 세로 4 m 모서리를 돈 부채꼴: 중심각 90도, 반지름 7 - 4 = 3 m: (1/4) * \\pi * 3^2 = (9/4)\\pi m^2.",
+    "전체 넓이는 (147 + 4 + 9)/4 * \\pi = (160/4)\\pi = 40\\pi m^2이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "unitEvidence": "가로의 길이가 $5\\text{ m}$, 세로의 길이가 $4\\text{ m}$인 직사각형 모양의 울타리의 한 꼭짓점 $A$에 길이가 $7\\text{ m}$인 끈으로 염소를 묶어 놓았다.",
+  "rpmRecordId": "M1-RPM-203",
+  "rpmReason": "직사각형 울타리 꼭짓점 A에서 7 m 끈으로 형성되는 세 부채꼴(중심각 270도, 90도, 90도)의 넓이 합 40\\pi를 구하는 부채꼴 넓이 유형이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "typeReason": "직사각형 모서리를 회전하며 반지름이 7 m, 2 m, 3 m로 변화하는 세 부채꼴의 넓이를 aligned 합산하는 부채꼴 측정 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "장애물 모서리를 도는 끈의 길이 변화(7 m -> 2 m, 3 m)와 부채꼴 3개의 넓이(147/4\\pi 등)를 각각 계산하여 합산하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "가로의 길이가 $5\\text{ m}$, 세로의 길이가 $4\\text{ m}$인 직사각형 모양의 울타리의 한 꼭짓점 $A$에 길이가 $7\\text{ m}$인 끈으로 염소를 묶어 놓았다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "염소가 울타리 밖에서 최대한 움직일 수 있는 영역의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심각",
+        "src": "solution",
+        "quote": "염소가 움직일 수 있는 영역은 직사각형 울타리 바깥에서 세 개의 부채꼴 영역으로 나뉜다.",
+        "evidenceType": "IMPLIED",
+        "justification": "각 꼭짓점을 중심으로 하는 부채꼴 분할 및 넓이 계산 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "직사각형 밖에서 반지름 7 m(270도), 2 m(90도), 3 m(90도)인 3개 부채꼴의 넓이를 합산하여 40\\pi m^2임을 판정하였다."
+}

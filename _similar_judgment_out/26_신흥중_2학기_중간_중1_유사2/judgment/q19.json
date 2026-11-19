@@ -1,0 +1,58 @@
+{
+  "qid": 19,
+  "itemFingerprint": "09a9e52ffe080da5",
+  "solveSteps": [
+    "교차점 X에 대하여 사각형과 삼각형의 내각의 합 관계를 aligned 설정한다.",
+    "각 B + 각 C + 각 D = 360도 - t도 (단, t도 = 각 BXD = 각 AXE)이다.",
+    "삼각형 AXF와 EXF에서 각 AFE = 30도이므로 각 A + 각 E = t도 - 30도이다.",
+    "따라서 다섯 각의 합은 (t - 30) + (360 - t) = 360 - 30 = 330도이다.",
+    "따라서 정답은 ③ 330도이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "별 모양 교차 다각형에서 $\\angle AFE = 30^\\circ$일 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "별 모양 교차 다각형에서 $\\angle AFE = 30^\\circ$일 때",
+  "rpmRecordId": "M1-RPM-198",
+  "rpmReason": "별 모양 다각형에서 각 AFE = 30도를 활용해 내각의 합 330도를 aligned 계산하는 다각형 각 유형이다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_ANGLE_SUM",
+  "typeReason": "별 모양 교차 다각형에서 맞꼭지각과 삼각형 내각 관계를 aligned 추적하여 다섯 꼭짓점 각의 합 330도를 구하는 다각형 각의 합 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다각형의 꼭짓점 각들을 맞꼭지각 t와 삼각형 외각 관계로 소거하여 330도를 도출하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다각형",
+        "src": "stem",
+        "quote": "별 모양 교차 다각형에서 $\\angle AFE = 30^\\circ$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다각형",
+        "src": "stem",
+        "quote": "$\\angle A + \\angle B + \\angle C + \\angle D + \\angle E$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "다각형",
+        "src": "solution",
+        "quote": "교차점 $X$에 대하여 사각형과 삼각형의 내각합 관계를 설정한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "교차점 맞꼭지각을 매개로 한 다각형 내각합 소거법 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "별 모양 교차 다각형에서 교차점 맞꼭지각 t를 매개로 각 AFE = 30도를 결합하여 360 - 30 = 330도임을 판정하였다."
+}

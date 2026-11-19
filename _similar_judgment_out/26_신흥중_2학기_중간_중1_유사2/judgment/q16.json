@@ -1,0 +1,58 @@
+{
+  "qid": 16,
+  "itemFingerprint": "9509c63d202600c8",
+  "solveSteps": [
+    "지름 BC = 12 cm에서 반원의 반지름은 r = 6 cm이다.",
+    "이등변삼각형 ABC에서 꼭지각 A = 60도이므로 삼각형 ABC는 정삼각형이며 각 B = 각 C = 60도이다.",
+    "OB = OD = 6 cm이므로 삼각형 OBD는 정삼각형으로 각 BOD = 60도이고, 마찬가지로 각 COE = 60도이다.",
+    "부채꼴 DOE의 중심각은 180도 - (60도 + 60도) = 60도이다.",
+    "따라서 부채꼴 DOE의 넓이는 \\pi \\times 6^2 \\times (60/360) = 6\\pi\\text{ cm}^2이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "unitEvidence": "지름의 길이가 $12\\text{ cm}$인 반원에서 지름 $BC$를 밑변으로 하는 이등변삼각형 $ABC$를 그렸을 때",
+  "rpmRecordId": "M1-RPM-203",
+  "rpmReason": "반지름 6 cm인 반원과 정삼각형 ABC의 각 60도로부터 부채꼴 DOE의 넓이 6\\pi cm^2를 구하는 부채꼴 넓이 유형이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "typeReason": "지름 12 cm 반원에서 정삼각형의 꼭지각 60도와 이등변삼각형 성질로 중심각을 찾아 부채꼴 DOE의 넓이를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 ABC가 정삼각형임을 보이고 부채꼴 DOE의 중심각 60도와 넓이 공식을 연계하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "반원",
+        "src": "stem",
+        "quote": "지름의 길이가 $12\\text{ cm}$인 반원에서 지름 $BC$를 밑변으로 하는 이등변삼각형 $ABC$를 그렸을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "부채꼴 $DOE$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "$\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이고 $\\angle A = 60^\\circ$이므로 밑각은",
+        "evidenceType": "IMPLIED",
+        "justification": "이등변삼각형과 정삼각형의 각 성질을 이용한 중심각 도출"
+      }
+    ],
+    "condition": []
+  },
+  "how": "반지름 6 cm와 삼각형 ABC의 각 60도로부터 부채꼴 DOE의 중심각이 60도임을 찾아 넓이 6\\pi cm^2로 판정하였다."
+}

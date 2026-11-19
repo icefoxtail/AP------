@@ -1,0 +1,57 @@
+{
+  "qid": 8,
+  "itemFingerprint": "82573b4af6ae0ed0",
+  "solveSteps": [
+    "정육면체의 전체 모서리 개수는 12개이다. (aligned 구조)",
+    "한 모서리와 양 끝점에서 수직으로 만나는 모서리는 4개이므로 a = 4이다.",
+    "평행한 모서리는 3개, 자기 자신 1개이므로 꼬인 위치에 있는 모서리는 b = 12 - (1 + 4 + 3) = 4이다.",
+    "따라서 a + b = 4 + 4 = 8이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "unitEvidence": "정육면체에서 한 모서리와 수직으로 만나는 모서리의 개수를 $a$",
+  "rpmRecordId": "M1-RPM-181",
+  "rpmReason": "정육면체의 12개 모서리 사이의 수직 및 꼬인 위치 관계를 aligned 단계로 분석하는 공간 위치관계 유형이다.",
+  "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+  "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+  "typeReason": "정육면체에서 기준 모서리에 대한 수직 모서리와 꼬인 위치 모서리의 개수를 aligned 분류로 산출하는 공간 직선 위치관계 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정육면체 12개 모서리의 공간적 위치관계를 수직, 평행, 꼬인 위치로 체계적으로 분류하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정육면체",
+        "src": "stem",
+        "quote": "정육면체에서 한 모서리와 수직으로 만나는 모서리의 개수를 $a$, 꼬인 위치에 있는 모서리의 개수를 $b$라 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼬인위치",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼬인위치",
+        "src": "solution",
+        "quote": "공간에서 두 직선이 만나지도 않고 평행하지도 않은 위치가 꼬인 위치이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "공간에서 꼬인 위치의 정의를 통한 개수 여사건 산출"
+      }
+    ],
+    "condition": []
+  },
+  "how": "정육면체 총 12개 모서리에서 수직으로 만나는 모서리 4개와 꼬인 위치 모서리 4개를 aligned 분류하여 합이 8임을 판정하였다."
+}

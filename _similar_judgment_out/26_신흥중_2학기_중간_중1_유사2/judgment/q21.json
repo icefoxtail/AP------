@@ -1,0 +1,57 @@
+{
+  "qid": 21,
+  "itemFingerprint": "9cabbd42180fde4b",
+  "solveSteps": [
+    "AB : BC = 3 : 4이므로 양수 k에 대해 AB = 3k, BC = 4k라 둘 수 있다. (aligned 구조)",
+    "점 M은 AB의 중점이므로 MB = 1.5k이고, 점 N은 BC의 중점이므로 BN = 2k이다.",
+    "A - M - B - N - C 순서이므로 선분 MN = MB + BN = 1.5k + 2k = 3.5k = 7k/2이다.",
+    "따라서 선분의 길이의 비 MN : BC = (7k/2) : 4k = 7 : 8이다."
+  ],
+  "solvedAnswer": "$7 : 8$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "한 직선 위에 세 점 $A, B, C$가 이 순서대로 놓여 있다.",
+  "rpmRecordId": "M1-RPM-174",
+  "rpmReason": "한 직선 위 선분 AB, BC의 비와 중점 M, N을 이용하여 MN : BC = 7 : 8을 aligned 산출하는 중점 분할 유형이다.",
+  "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+  "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+  "typeReason": "선분비 3:4와 중점 조건을 문자로 놓아 MB, BN을 구하고 MN : BC를 aligned 계산하는 선분 분할·중점 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "선분 AB, BC의 비율과 두 중점 길이를 미지수 k로 표현하여 선분 MN과의 자연수 비 7:8로 정리하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "한 직선 위에 세 점 $A, B, C$가 이 순서대로 놓여 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분의 길이의 비 $\\overline{MN} : \\overline{BC}$를 가장 간단한 자연수의 비로 나타내고"
+      }
+    ],
+    "method": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "선분 $\\overline{AB}$의 중점을 $M$, 선분 $\\overline{BC}$의 중점을 $N$이라 할 때",
+        "evidenceType": "IMPLIED",
+        "justification": "중점을 통한 선분 분할 및 비례식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "선분 AB, BC를 3k, 4k로 두고 중점 MB = 1.5k, BN = 2k의 합 MN = 3.5k로부터 MN : BC = 7 : 8임을 서술형으로 판정하였다."
+}

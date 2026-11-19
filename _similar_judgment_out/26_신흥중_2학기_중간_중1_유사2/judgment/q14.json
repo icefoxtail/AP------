@@ -1,0 +1,57 @@
+{
+  "qid": 14,
+  "itemFingerprint": "9acaf0861511e3a5",
+  "solveSteps": [
+    "정다각형의 모든 외각의 크기의 합은 360^\\circ이다.",
+    "한 외각의 크기가 36^\\circ이므로 변의 개수 n = 360 / 36 = 10이다. (정십각형)",
+    "10각형의 내각의 크기의 합은 (10 - 2) * 180^\\circ = 8 * 180^\\circ = 1440^\\circ이다.",
+    "따라서 정답은 ③ 1440^\\circ이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "한 외각의 크기가 $36^\\circ$인 정다각형의 내각의 크기의 합은?",
+  "rpmRecordId": "M1-RPM-199",
+  "rpmReason": "외각의 합 360도와 한 외각 36도로부터 변의 수 10을 구하고 내각의 합 1440도를 계산하는 정다각형 각 유형이다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+  "typeReason": "한 외각 36도로 정십각형임을 찾고 aligned 공식 (n-2)*180도에 대입하여 내각의 합 1440도를 산출하는 정다각형 각 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외각의 성질로 변의 수 10을 구한 뒤 내각의 총합 공식으로 1440도를 구하는 2단계 계산이므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "외각",
+        "src": "stem",
+        "quote": "한 외각의 크기가 $36^\\circ$인 정다각형의 내각의 크기의 합은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내각",
+        "src": "stem",
+        "quote": "내각의 크기의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정다각형",
+        "src": "solution",
+        "quote": "정다각형의 외각의 크기의 합은 $360^\\circ$이므로 이 정다각형의 변의 개수 $n$은",
+        "evidenceType": "IMPLIED",
+        "justification": "외각의 총합 360도로 정다각형 변의 개수 도출"
+      }
+    ],
+    "condition": []
+  },
+  "how": "외각의 합 360도를 한 외각 36도로 나누어 정십각형임을 확인한 후 (10-2)*180도 = 1440도임을 판정하였다."
+}

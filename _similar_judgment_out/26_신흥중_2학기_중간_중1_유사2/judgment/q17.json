@@ -1,0 +1,58 @@
+{
+  "qid": 17,
+  "itemFingerprint": "20f2e4643a57d30a",
+  "solveSteps": [
+    "공간에서 한 평면 P에 평행한 두 직선은 평행, 교차, 꼬인 위치가 모두 가능하므로 1번은 거짓이다. (aligned 분석)",
+    "한 직선에 수직인 두 직선도 공간에서는 꼬인 위치 등이 가능하므로 2번은 거짓이다.",
+    "한 평면에 수직인 서로 다른 두 평면은 직교하거나 만날 수 있으므로 3번은 거짓이다.",
+    "한 평면 P에 수직인 서로 다른 두 직선 l, m은 항상 평행하므로 4번은 참이다.",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "unitEvidence": "공간에서 서로 다른 세 직선 $l, m, n$과 서로 다른 두 평면 $P, Q$에 대한 설명 중 옳은 것은?",
+  "rpmRecordId": "M1-RPM-181",
+  "rpmReason": "공간에서 직선과 평면의 수직, 평행 관계에 대한 명제를 aligned 반례 검토로 판정하는 공간 위치관계 유형이다.",
+  "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
+  "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LINE_PLANE_CLAIM_AUDIT",
+  "typeReason": "공간에서 세 직선과 두 평면의 위치관계 명제들을 aligned 반례와 기하 정리로 감사하는 공간 직선·평면 위치관계 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공간도형에서 꼬인 위치 및 평면과 직선의 다양한 공간적 배치 반례를 aligned 입체적으로 따져야 하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "공간에서 서로 다른 세 직선 $l, m, n$과 서로 다른 두 평면 $P, Q$에 대한 설명 중 옳은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평면",
+        "src": "choices",
+        "quote": "한 평면 $P$에 수직인 서로 다른 두 직선 $l, m$은 항상 평행하다."
+      }
+    ],
+    "method": [
+      {
+        "term": "수직",
+        "src": "solution",
+        "quote": "공간에서 직선과 평면의 위치 관계를 검토한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "공간에서 평면과 직선의 수직성 및 평행 판정 정리 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "공간에서 한 평면에 수직인 서로 다른 두 직선은 항상 평행하다는 정리를 aligned 반례들과 대조하여 4번으로 판정하였다."
+}

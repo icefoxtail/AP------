@@ -1,0 +1,58 @@
+{
+  "qid": 18,
+  "itemFingerprint": "7fd9af9a4a3acdce",
+  "solveSteps": [
+    "정삼각형 ABC, CDE에서 CA = CB, CD = CE이고 각 ACD = 각 BCE이므로 삼각형 ACD와 BCE는 SAS 합동이다.",
+    "따라서 각 ADC = 각 BEC이다.",
+    "삼각형 BCD와 BCE에서 각 BDC + 각 BEC = 360도 - 각 DBE(70도) - 각 DCE(60도) = 230도이다.",
+    "각 BEC = 각 ADC이므로 각 BDC + 각 ADC = 230도이다.",
+    "점 D 둘레의 각의 합 360도에서 230도를 빼면 각 ADB = 360도 - 230도 = 130도이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "평면 위에 꼭짓점 $C$를 공유하는 두 정삼각형 $ABC$와 $CDE$가 놓여 있다.",
+  "rpmRecordId": "M1-RPM-192",
+  "rpmReason": "두 정삼각형 ABC, CDE의 꼭짓점 공유 배치에서 각 DBE = 70도를 이용하여 각 ADB = 130도를 구하는 SAS 합동 유형이다.",
+  "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+  "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE",
+  "typeReason": "꼭짓점을 공유하는 두 정삼각형 ABC, CDE의 SAS 합동으로 대응각을 이동시켜 각 ADB를 산출하는 대응 관계 적용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 정삼각형의 회전 배치에서 SAS 합동을 도출하고 70도 조건을 점 D 둘레 각으로 추적하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정삼각형",
+        "src": "stem",
+        "quote": "평면 위에 꼭짓점 $C$를 공유하는 두 정삼각형 $ABC$와 $CDE$가 놓여 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "(\\text{SAS}\\text{ 합동})"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "따라서 $\\angle ADC = \\angle BEC$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "합동인 삼각형의 대응각 일치 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "두 정삼각형 ABC와 CDE의 SAS 합동으로부터 대응각을 옮겨 각 DBE = 70도와 점 D 둘레 각의 합으로 각 ADB = 130도임을 판정하였다."
+}

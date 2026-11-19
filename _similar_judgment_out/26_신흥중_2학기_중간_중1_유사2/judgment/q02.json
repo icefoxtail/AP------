@@ -1,0 +1,57 @@
+{
+  "qid": 2,
+  "itemFingerprint": "4529d4490456d3ed",
+  "solveSteps": [
+    "두 직선 l과 m이 평행하므로 동위각의 크기는 서로 같다.",
+    "\\angle x는 위쪽 직선 l과의 교각 70^\\circ와 40^\\circ의 합의 동위각이므로 \\angle x = 70^\\circ + 40^\\circ = 110^\\circ이다.",
+    "\\angle y는 다른 횡단선에서 40^\\circ의 이웃각이므로 \\angle y = 180^\\circ - 40^\\circ = 140^\\circ이다.",
+    "따라서 \\angle y - \\angle x = 140^\\circ - 110^\\circ = 30^\\circ이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "두 직선 $l$과 $m$이 서로 평행하다.",
+  "rpmRecordId": "M1-RPM-177",
+  "rpmReason": "평행한 두 직선 l, m에서 동위각 성질과 평각의 이웃각을 이용해 각 70도, 40도로부터 각 x, y를 구하는 110, 140 동위각·엇각 유형이다.",
+  "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
+  "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_POSITIONAL_ANGLE_SUM",
+  "typeReason": "평행선에서 동위각의 성질을 적용하여 70도와 40도의 합인 110도와 보각 140도를 계산해 차이 30도를 구하는 동위각·엇각 위치 판정 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "동위각의 합 110도와 평각에서의 보각 140도 계산 두 단계를 거쳐 차이 30도를 계산하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "두 직선 $l$과 $m$이 서로 평행하다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "이때 $\\angle y - \\angle x$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동위각",
+        "src": "solution",
+        "quote": "두 직선 $l$과 $m$이 평행하므로 동위각의 크기는 서로 같다.",
+        "evidenceType": "IMPLIED",
+        "justification": "평행선에서의 동위각 크기 일치 성질 활용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "평행선 조건에서 각 x = 70 + 40 = 110도와 각 y = 180 - 40 = 140도를 구한 후 차이 30도를 판정하였다."
+}

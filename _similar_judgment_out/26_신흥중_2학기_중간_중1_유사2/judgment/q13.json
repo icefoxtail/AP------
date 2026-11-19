@@ -1,0 +1,58 @@
+{
+  "qid": 13,
+  "itemFingerprint": "68f101643826f578",
+  "solveSteps": [
+    "정육각형의 한 내각의 크기는 (6-2)*180도 / 6 = 720도 / 6 = 120도이다. (aligned 계산)",
+    "따라서 각 a = 120도이므로 각 a = 108도라는 보기 1번은 옳지 않다.",
+    "정팔각형의 한 내각은 (8-2)*180도 / 8 = 135도이므로 각 b = 135도이다.",
+    "정육각형 외각 c = 360/6 = 60도, 정팔각형 외각 d = 360/8 = 45도이다.",
+    "따라서 옳지 않은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "정육각형의 한 내각의 크기를 $\\angle a$, 정팔각형의 한 내각의 크기를 $\\angle b$",
+  "rpmRecordId": "M1-RPM-199",
+  "rpmReason": "정육각형과 정팔각형의 내각, 외각 135도, 60도, 45도를 구하고 108도와의 불일치를 확인하는 정다각형 각 계산 유형이다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+  "typeReason": "정육각형과 정팔각형의 내각과 외각 공식 180도, 720도 등을 aligned 적용하여 각 a, b, c, d의 진위를 검토하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정다각형의 한 내각과 외각 공식을 각각 적용하여 120도, 135도, 60도, 45도를 확인하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정다각형",
+        "src": "solution",
+        "quote": "정다각형의 내각과 외각의 크기를 각각 계산한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "내각",
+        "src": "stem",
+        "quote": "정육각형의 한 내각의 크기를 $\\angle a$, 정팔각형의 한 내각의 크기를 $\\angle b$"
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "stem",
+        "quote": "정육각형의 한 외각의 크기를 $\\angle c$, 정팔각형의 한 외각의 크기를 $\\angle d$라 할 때",
+        "evidenceType": "IMPLIED",
+        "justification": "정다각형의 외각 공식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "정육각형의 한 내각이 120도임을 aligned 공식으로 계산하여 108도로 잘못 제시된 1번을 정답으로 판정하였다."
+}
