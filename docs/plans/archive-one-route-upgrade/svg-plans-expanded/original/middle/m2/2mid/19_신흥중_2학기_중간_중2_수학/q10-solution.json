@@ -1,0 +1,335 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sub",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ic",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc",
+    "ic"
+  ],
+  "displayLines": [],
+  "caption": "예: 해설의 값에 맞춘 그림이다(두 직각변의 합이 8이다). 직각삼각형의 외심 O는 빗변의 중점이므로 빗변 AB=2×3=6cm이다. 내접원의 반지름이 1이므로 AF=AD, BD=BE, CE=CF=1이다. 두 직각변의 길이의 합은 AC+BC=AB+2r=6+2=8cm이고 세 변의 길이의 합은 6+8=14cm이다. 넓이는 (1/2)×r×(세 변의 합)=(1/2)×1×14=7cm²이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "꼭짓점 C에서 직각인 직각삼각형 ABC의 외접원과 내접원이 그려져 있고 외접원의 중심은 빗변 AB의 중점이다. 내심에서 세 접점으로 선분이 그어져 있고 내접원의 반지름 r=1이 적혀 있으며 삼각형 안이 칠해져 넓이 7이 적혀 있다.",
+  "newVisualInformation": [
+    "외접원 반지름 3에서 빗변 6, 내접원 반지름 1에서 두 직각변의 합 8이므로 넓이 (1/2)×1×14=7"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 다음 그림에서 원 $\\mathrm{O}$, $\\mathrm{I}$는 각각 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 외접원, 내접원이다. 세 점 $\\mathrm{D},\\ \\mathrm{E},\\ \\mathrm{F}$는 $\\triangle\\mathrm{ABC}$의 내접원의 접점이고, 원 $\\mathrm{O},\\ \\mathrm{I}$의 반지름의 길이가 각각 $3\\text{cm},\\ 1\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 넓이는? (5점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q10.png\" alt=\"각 C가 90도인 직각삼각형 ABC의 외접원 반지름이 3cm, 내접원 반지름이 1cm일 때 직각삼각형 ABC의 넓이를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vID",
+        "ownerSegment": "ID",
+        "text": "r=1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "7",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

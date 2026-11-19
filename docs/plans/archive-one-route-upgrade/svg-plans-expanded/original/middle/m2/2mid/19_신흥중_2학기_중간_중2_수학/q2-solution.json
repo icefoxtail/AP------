@@ -1,0 +1,282 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bc",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pc",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "C",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lu",
+          "pc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pm",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pm",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "점 D가 AB의 수직이등분선 위에 있으므로 DA=DB이고 △DAB는 이등변삼각형이어서 ∠DAB=∠B이다. AD가 ∠A를 이등분하므로 ∠DAB=∠DAC이다. 따라서 ∠B=∠DAB=∠DAC이고 세 각의 합 ∠B+∠A+90°=180°에서 ∠B+2∠B=90°이므로 ∠B=30°이다. 답은 ③이다.",
+  "accessibilityDescription": "꼭짓점 C에서 직각인 직각삼각형 ABC의 변 BC 위에 점 D가 있고 선분 AD가 그어져 있다. DA와 DB에 같은 눈금이 있고 꼭짓점 B의 각, 각 DAB, 각 DAC에 같은 크기 30°가 표시되어 있다.",
+  "newVisualInformation": [
+    "DA=DB로 ∠DAB=∠B이고 AD가 ∠A를 이등분하여 세 각이 30°로 같아짐"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>2. 다음 그림과 같이 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}$의 수직이등분선이 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{D}$라고 하자. $\\overline{\\mathrm{AD}}$가 $\\angle\\mathrm{A}$의 이등분선이 될 때, $\\angle\\mathrm{B}$의 크기는? (4점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q02.png\" alt=\"각 C가 90도인 직각삼각형 ABC에서 빗변 AB의 수직이등분선이 변 BC와 만나는 점 D가 각 A의 이등분선 위에 놓일 때 각 B의 크기를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AD",
+        "DB"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "∠B=30°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "B"
+        ],
+        "label": "30°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "label": "30°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ]
+  }
+}

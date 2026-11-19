@@ -1,0 +1,305 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBE",
+          "lCD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "lBE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "직선 BE와 직선 CD의 교점을 G라 하면 △ABE≡△DGE(ASA 합동)이어서 DG=AB=4cm이고 BE=GE이다. 그러면 CG=CD+DG=8cm이고 D는 CG의 중점이다. △CFG는 ∠F=90°인 직각삼각형이고 D가 빗변 CG의 중점이므로 DF=DC=DG=4cm이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 변 AD의 중점 E를 지나는 직선 BE가 변 CD의 연장선과 점 G에서 만나고 C에서 BE로 수선 CF가 내려져 있다. F에 직각 표시가 있고 D에서 F로 선분이 그어져 있으며 CD, DG, DF에 같은 눈금이 있고 AB 4, BC 6, DF 4가 적혀 있다.",
+  "newVisualInformation": [
+    "ASA 합동으로 D가 CG의 중점이고 직각삼각형 CFG의 빗변의 중점 D에서 DF=DC=4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 다음 그림과 같이 $\\overline{\\mathrm{AB}}=4\\text{cm}$, $\\overline{\\mathrm{BC}}=6\\text{cm}$인 평행사변형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}$의 중점을 $\\mathrm{E}$, 점 $\\mathrm{C}$에서 $\\overline{\\mathrm{BE}}$에 내린 수선의 발을 $\\mathrm{F}$라 하자. 이때, $\\overline{\\mathrm{DF}}$의 길이는? (5점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q14.png\" alt=\"변 AB가 4cm, BC가 6cm인 평행사변형 ABCD에서 AD의 중점 E와 BE에 내린 수선의 발 F에 대해 선분 DF의 길이를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "C",
+        "F",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AE",
+        "ED"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "BE",
+        "EG"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "CD",
+        "DG",
+        "DF"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDF",
+        "ownerSegment": "DF",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

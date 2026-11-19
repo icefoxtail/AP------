@@ -1,0 +1,236 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ic",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "IP",
+      "refs": [
+        "I",
+        "P"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "ic"
+  ],
+  "displayLines": [],
+  "caption": "직각삼각형 ABC의 넓이는 (1/2)×8×6=24cm²이다. 내접원의 반지름을 r이라 하면 직각삼각형에서 r=(6+8−10)/2=2cm이고(넓이로 구해도 24=(1/2)×r×(10+8+6)에서 r=2) 내접원의 넓이는 π×2²=4πcm²이다. 따라서 색칠한 부분(삼각형에서 내접원을 뺀 부분)의 넓이는 (24−4π)cm²이다. 답은 ④이다.",
+  "accessibilityDescription": "꼭짓점 C에서 직각인 직각삼각형 ABC와 세 변에 접하는 내접원이 있고 AB 10, BC 8, CA 6이 적혀 있으며 내심 I에서 변 BC의 접점 P까지 반지름 r=2가 적혀 있고 삼각형 안이 칠해져 넓이 24가 적혀 있다.",
+  "newVisualInformation": [
+    "삼각형의 넓이 24와 내접원의 반지름 r=2의 원 넓이 4π를 빼서 색칠한 부분 24−4π"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 다음 그림에서 점 $\\mathrm{I}$는 $\\angle\\mathrm{C}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 내심이다. $\\overline{\\mathrm{AB}}=10\\text{cm}$, $\\overline{\\mathrm{BC}}=8\\text{cm}$, $\\overline{\\mathrm{CA}}=6\\text{cm}$일 때, 색칠한 부분의 넓이는? (4점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q08.png\" alt=\"세 변의 길이가 10cm, 8cm, 6cm이고 각 C가 90도인 직각삼각형 ABC의 내접원 I를 제외한 색칠한 부분의 넓이를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vIP",
+        "ownerSegment": "IP",
+        "text": "r=2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "24",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

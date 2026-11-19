@@ -1,0 +1,256 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "1",
+                "denominator": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "455"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "40",
+            "denominator": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "40",
+            "denominator": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "F",
+    "C",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: AD∥BC, AB∥DF인 그림이다. □ABFD는 평행사변형이므로 DF=AB=6이다. AD∥BC에서 △ADE∽△CFE(AA 닮음)이므로 DE:EF=AE:CE=4:5이다. DE+EF=6이므로 DE=6×4/9=8/3이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "평행한 변 AD와 BC 사이에 사다리꼴이 있고 점 A에서 평행하게 내린 AB와 DF가 평행사변형 ABFD를 만든다. 대각선 AC와 DF가 점 E에서 만나고 AB 6, AE 4, EC 5가 적혀 있다.",
+  "newVisualInformation": [
+    "평행사변형으로 DF=6이고 △ADE∽△CFE의 DE:EF=AE:CE=4:5에서 DE=8/3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 다음 그림에서 $\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}}$, $\\overline{\\mathrm{AB}}\\parallel\\overline{\\mathrm{DF}}$이다. $\\overline{\\mathrm{AB}}=6$, $\\overline{\\mathrm{AE}}=4$, $\\overline{\\mathrm{EC}}=5$일 때 $\\overline{\\mathrm{DE}}$의 길이는? (4점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q20.png\" alt=\"선분 AD와 BC가 평행하고 AB와 DF가 평행할 때 선분 AB가 6, AE가 4, EC가 5일 때 선분 DE의 길이를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAE",
+        "ownerSegment": "AE",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vEC",
+        "ownerSegment": "EC",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

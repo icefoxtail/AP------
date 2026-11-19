@@ -1,0 +1,173 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "15"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: AC=4cm, AB=8cm로 그린 그림이다. AC=b라 하면 AB=2b이고 BD=3DA에서 AD=(1/4)AB=b/2이다. △ADC와 △ACB에서 ∠A는 공통이고 AD:AC=(b/2):b=1:2, AC:AB=b:2b=1:2이므로 △ADC∽△ACB(SAS 닮음)이다. 닮음비가 1:2이므로 CD:BC=1:2에서 CD=(1/2)×8=4cm이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AB 위에 점 D가 있고 선분 CD가 그어져 있다. 변 BC에 8, 선분 CD에 4가 적혀 있고 AD는 AB의 4분의 1이다.",
+  "newVisualInformation": [
+    "AD:AC=AC:AB=1:2와 공통각 A로 △ADC∽△ACB이고 CD:BC=1:2에서 CD=4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>17. 다음 그림의 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{AB}}=2\\overline{\\mathrm{AC}}$이고 $\\overline{\\mathrm{BD}}=3\\overline{\\mathrm{DA}}$이다. $\\overline{\\mathrm{BC}}=8\\text{cm}$일 때, $\\overline{\\mathrm{CD}}$의 길이는? (4점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q17.png\" alt=\"삼각형 ABC에서 선분 AB는 2AC이고 선분 BD는 3DA이며 변 BC가 8cm일 때 선분 CD의 길이를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "8",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "△EBC는 EB=BC=EC인 정삼각형이므로 ∠EBC=60°이다. 정사각형의 한 각이 90°이므로 (1) ∠y=∠ABE=90°−60°=30°이다. (2) BA=BC=BE이므로 △ABE는 이등변삼각형이고 ∠x=∠AEB=(180°−30°)/2=75°이다. 따라서 ∠y=30°, ∠x=75°이다.",
+  "accessibilityDescription": "정사각형 ABCD의 안쪽에 점 E가 있고 삼각형 EBC가 정삼각형이며 E에서 A와 D로 선분이 그어져 있다. 각 EBC 60°, 각 ABE y=30°, 각 AEB x=75°가 표시되어 있고 EB, BC, EC에 같은 눈금이 있다.",
+  "newVisualInformation": [
+    "정삼각형 EBC의 60°로 ∠y=30°이고 BA=BE인 이등변삼각형 ABE에서 ∠x=75°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 1. 다음 그림과 같은 정사각형 $\\mathrm{ABCD}$의 내부의 한 점 $\\mathrm{E}$에 대하여 $\\overline{\\mathrm{EB}}=\\overline{\\mathrm{BC}}=\\overline{\\mathrm{EC}}$일 때, 다음 물음에 답하시오. (6점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/s01.png\" alt=\"정사각형 ABCD 내부의 점 E에 대하여 선분 EB는 BC는 EC일 때 각 y와 각 x의 크기를 단계별로 구하는 기하 도형\" /></p><p>(1) $\\angle y$의 크기를 구하시오. (풀이과정과 답) (3점)</p><p>(2) $\\angle x$의 크기를 구하시오. (풀이과정과 답) (3점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "EB",
+        "BC",
+        "EC",
+        "BA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "label": "60°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "label": "y=30°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "E",
+          "B"
+        ],
+        "label": "x=75°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "label": "75°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ]
+  }
+}

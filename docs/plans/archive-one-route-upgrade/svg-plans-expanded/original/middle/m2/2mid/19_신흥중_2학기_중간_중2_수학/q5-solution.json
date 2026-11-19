@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "MIDPOINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pm",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "M",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pn",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "N",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pm",
+          "pn"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M",
+    "N",
+    "L",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AM",
+      "refs": [
+        "A",
+        "M"
+      ]
+    },
+    {
+      "id": "MB",
+      "refs": [
+        "M",
+        "B"
+      ]
+    },
+    {
+      "id": "BN",
+      "refs": [
+        "B",
+        "N"
+      ]
+    },
+    {
+      "id": "NC",
+      "refs": [
+        "N",
+        "C"
+      ]
+    },
+    {
+      "id": "CL",
+      "refs": [
+        "C",
+        "L"
+      ]
+    },
+    {
+      "id": "LA",
+      "refs": [
+        "L",
+        "A"
+      ]
+    },
+    {
+      "id": "OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "ON",
+      "refs": [
+        "O",
+        "N"
+      ]
+    },
+    {
+      "id": "OL",
+      "refs": [
+        "O",
+        "L"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "외심 O는 세 변의 수직이등분선의 교점이므로 M, N, L은 각 변의 중점이고 AM=BM이다(②). 외심에서 세 꼭짓점까지의 거리는 같아 OA=OB=OC이다(①). △OBN≡△OCN(RHS 합동, ④)이고 △OAL≡△OCL에서 ∠OAL=∠OCL(③)이다. 그러나 외심에서 각 변까지의 거리 OM, ON은 일반적으로 같지 않으므로 ⑤는 옳지 않다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "삼각형 ABC의 세 변의 중점 M, N, L에서 수선이 세워져 점 O에서 만나고 O에서 세 중점과 세 꼭짓점으로 선분이 그어져 있다. 중점에 직각 표시가 있고 O에서 세 꼭짓점으로의 선분에 같은 눈금이 있다.",
+  "newVisualInformation": [
+    "외심에서 꼭짓점까지의 거리 OA=OB=OC는 같지만 변까지의 거리 OM, ON은 같지 않음"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>5. 다음 그림에서 점 $\\mathrm{O}$가 $\\triangle\\mathrm{ABC}$의 외심일 때, 다음 중에서 옳지 않은 것은? (3점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q05.png\" alt=\"삼각형 ABC의 세 변의 수직이등분선의 교점인 외심 O와 각 변의 수선의 발 L, M, N이 표시된 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "O",
+        "M",
+        "A"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "O",
+        "N",
+        "B"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "O",
+        "L",
+        "A"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "OA",
+        "OB",
+        "OC"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "AM",
+        "MB"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "BN",
+        "NC"
+      ]
+    },
+    {
+      "id": "eq3",
+      "count": 4,
+      "segments": [
+        "CL",
+        "LA"
+      ]
+    }
+  ]
+}

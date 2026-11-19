@@ -1,0 +1,252 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "9",
+            "denominator": "2"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "5",
+                "denominator": "2"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "7"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "C",
+    "E",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "EB",
+      "refs": [
+        "E",
+        "B"
+      ]
+    },
+    {
+      "id": "BA",
+      "refs": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "(1) △ABC와 △EDC에서 ∠A=∠DEC이고 ∠C는 공통이므로 두 각이 각각 같아 △ABC∽△EDC(AA 닮음)이다. (2) 대응변의 비에서 CA:CE=CB:CD이고 CA=2+6=8cm이므로 8:4=CB:6에서 CB=12cm이다. 따라서 BE=BC−EC=12−4=8cm이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AC 위에 점 D, 변 BC 위에 점 E가 있고 선분 DE가 그어져 있다. 꼭짓점 A의 각과 각 DEC에 같은 표시가 있고 AD 2, DC 6, CE 4, EB 8이 적혀 있다.",
+  "newVisualInformation": [
+    "AA 닮음 △ABC∽△EDC에서 CB=12이므로 BE=12−4=8"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 3. 다음 그림과 같이 $\\triangle\\mathrm{ABC}$에서 $\\angle\\mathrm{A}=\\angle\\mathrm{DEC}$이고 $\\overline{\\mathrm{AD}}=2\\text{cm}$, $\\overline{\\mathrm{DC}}=6\\text{cm}$, $\\overline{\\mathrm{EC}}=4\\text{cm}$일 때, 다음 물음에 답하시오. (6점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/s03.png\" alt=\"삼각형 ABC에서 각 A는 각 DEC이고 선분 AD가 2cm, DC가 6cm, EC가 4cm일 때 두 닮음인 삼각형 기호 표시와 선분 BE의 길이를 구하는 기하 도형\" /></p><p>(1) 서로 닮음인 두 삼각형을 찾아 닮음조건을 설명하고, 기호 $\\sim$를 사용하여 나타내시오. (풀이과정과 답) (4점)</p><p>(2) $\\overline{\\mathrm{BE}}$의 길이를 구하시오. (풀이과정과 답) (2점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "E",
+          "C"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vDC",
+        "ownerSegment": "DC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vEB",
+        "ownerSegment": "EB",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

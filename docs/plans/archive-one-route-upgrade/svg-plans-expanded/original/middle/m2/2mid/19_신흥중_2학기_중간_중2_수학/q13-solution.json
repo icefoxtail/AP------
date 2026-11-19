@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lbu",
+          "lac"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "정사각형에서 AB=AD, AE는 공통, ∠BAE=∠DAE=45°이므로 △ABE≡△ADE(SAS 합동)이고 ∠EDA=∠EBA이다. △ABE에서 외각 ∠BEC=∠BAE+∠EBA이므로 65°=45°+∠EBA에서 ∠EBA=20°이다. 따라서 ∠EDA=20°이고 답은 ②이다.",
+  "accessibilityDescription": "정사각형 ABCD의 대각선 AC 위에 점 E가 있고 B와 D에서 E로 선분이 그어져 있다. 각 BEC 65°, 꼭짓점 A의 각 45°, 각 EBA와 각 EDA에 같은 크기 20°가 표시되어 있다.",
+  "newVisualInformation": [
+    "SAS 합동으로 ∠EDA=∠EBA이고 외각의 성질 65°=45°+∠EBA로 20°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>13. 다음 정사각형 $\\mathrm{ABCD}$에서 대각선 $\\mathrm{AC}$ 위의 한 점 $\\mathrm{E}$에 대하여 $\\angle\\mathrm{BEC}=65^\\circ$일 때, $\\angle\\mathrm{EDA}$의 크기는? (4점)</p><p><img src=\"assets/images/19_신흥중_2학기_중간_중2_수학/q13.png\" alt=\"정사각형 ABCD의 대각선 AC 위의 점 E에 대하여 각 BEC가 65도일 때 각 EDA의 크기를 구하는 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "E",
+          "C"
+        ],
+        "label": "65°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "label": "45°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "E",
+          "B",
+          "A"
+        ],
+        "label": "20°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "E",
+          "D",
+          "A"
+        ],
+        "label": "∠EDA=20°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ]
+  }
+}
