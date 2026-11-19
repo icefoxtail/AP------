@@ -198,7 +198,8 @@
     deriveStartFromItems(pending.items, pending);
   }
   // A small window (mixed_engine) asks this page, which holds the catalog, to open the dialog.
-  window.addEventListener("message", (event) => {
+  // (A named handler, not an inline one: tests/archive2-assignment-handoff.test.cjs cuts the main script's message listener out by its opening text.)
+  function onDeriveRequest(event) {
     const data = event.data;
     if (!data || data.type !== "archive2-derive-request" || event.origin !== location.origin) return;
     if (!Array.isArray(data.items) || !data.items.length || data.items.length > MAX_BASE) return;
@@ -206,7 +207,8 @@
     const items = data.items.map((item) => ({ uid: text(item?.uid), file: text(item?.file), ordinal: Number(item?.ordinal) || 0, no: text(item?.no) }));
     try { window.focus(); } catch {}
     deriveStartFromItems(items, { title: text(data.title).slice(0, 80), note: data.assignment ? "출제한 시험지의 유형·난이도는 지금 자료 기준입니다." : "" });
-  });
+  }
+  window.addEventListener("message", onDeriveRequest);
   // 출제 내역 row: the assignment's own paper (the server replays what was issued).
   async function startFromAssignment(assignmentId) {
     const id = text(assignmentId);
