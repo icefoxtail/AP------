@@ -1,0 +1,27 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "highlight": {
+      "expr": "a+b",
+      "in": [
+        5,
+        7
+      ]
+    }
+  },
+  "caption": "크기가 다른 두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표에서 합이 5 또는 7인 칸을 칠했다. 합이 5인 칸은 (1, 4), (2, 3), (3, 2), (4, 1)의 4칸이고 합이 7인 칸은 (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1)의 6칸이다. 두 경우는 겹치지 않으므로 4+6=10이고 답은 ①이다.",
+  "accessibilityDescription": "두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표이며 합이 5인 대각선 네 칸과 합이 7인 대각선 여섯 칸이 칠해져 있다.",
+  "newVisualInformation": [
+    "합이 5인 대각선과 7인 대각선이 구분되어 4칸과 6칸의 합 10이 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "크기가 서로 다른 두 개의 주사위를 동시에 던질 때, 나오는 눈의 수의 합이 5 또는 7인 경우의 수를 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

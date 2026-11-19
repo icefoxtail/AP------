@@ -1,0 +1,39 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 5,
+      "rows": 4
+    },
+    "points": {
+      "P": [
+        0,
+        0
+      ],
+      "R": [
+        3,
+        2
+      ],
+      "Q": [
+        5,
+        4
+      ]
+    },
+    "viaPoints": [
+      "R"
+    ],
+    "counts": "segments"
+  },
+  "caption": "P에서 R까지는 오른쪽 3칸, 위쪽 2칸이므로 5C2=10가지이다. R에서 Q까지는 오른쪽 2칸, 위쪽 2칸이므로 4C2=6가지이다. R을 반드시 지나므로 곱의 법칙으로 10×6=60가지이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로 5칸 세로 4칸의 도로망이며 P, R, Q가 표시되고 P에서 R, R에서 Q 구간의 경로 수가 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "R을 경계로 나눈 두 구간의 경로 수 10과 6이 보여 곱의 법칙으로 60이 됨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같은 도로망이 있다. 지점 $\\mathrm{P}$에서 지점 $\\mathrm{R}$를 거쳐 지점 $\\mathrm{Q}$까지 가는 최단 경로의 수는? [4점]<br><img src=\"assets/images/18_효천고_1학기_중간_고2_확률과통계/q07.png\" class=\"question-img\" alt=\"문제 7 그림\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
