@@ -1,0 +1,57 @@
+{
+  "qid": 23,
+  "itemFingerprint": "7f20addd9a105d67",
+  "solveSteps": [
+    "조건 (나)에서 $z = \\dfrac{3xy}{3x - y} \\implies \\dfrac{1}{z} = \\dfrac{3}{y} - \\dfrac{1}{x}$이다. 27",
+    "조건 (가)를 $k$로 두면 $5 = k^{1/x}, 3 = k^{1/y}, a = k^{1/z}$이다. 27",
+    "$a = k^{1/z} = k^{3/y - 1/x} = 3^3 / 5 = 27/5 \\implies a^3 = 27/5$ (or $a = 27/5$). 27"
+  ],
+  "solvedAnswer": "$\\dfrac{27}{5}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+  "unitEvidence": "서술형)] [7점]\n네 양수",
+  "rpmRecordId": "H2-M1-RPM-010",
+  "rpmReason": "로그의 성질과 밑변환 27 관련 RPM 문항입니다.",
+  "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+  "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
+  "typeReason": "주어진 로그값과 지수식의 결합으로 27 관련 값을 결정하는 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지수식과 복합 로그식을 밑변환하여 27 관련 값을 이끌어내는 난이도 3 문제입니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "로그",
+        "src": "stem",
+        "quote": "서술형)] [7점]\n네 양수 $x, "
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "27}{5}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "로그의 성질로 지수 역수 관계식을 유도하고 27/5를 구했습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
