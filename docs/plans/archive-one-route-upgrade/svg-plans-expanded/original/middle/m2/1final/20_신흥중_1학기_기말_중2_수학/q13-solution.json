@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "10",
+          "-2"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "label": "y=10−2x",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "2x+y=10을 y=10−2x로 고쳐 자연수 x=1, 2, 3, 4를 대입하면 y=8, 6, 4, 2이다. x=5이면 y=0이어서 자연수가 아니다. 직선 위에서 x, y가 모두 자연수인 점은 (1,8), (2,6), (3,4), (4,2)의 4개이다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "직선 y=10−2x 위의 격자점 중 x, y가 모두 자연수인 네 점"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 내려가는 직선 위에 x좌표와 y좌표가 모두 자연수인 네 점 (1,8), (2,6), (3,4), (4,2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>13. 일차방정식 $2x+y=10$을 만족시키는 자연수 $x$와 $y$의 순서쌍 $(x, y)$의 개수는? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

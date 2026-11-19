@@ -1,0 +1,90 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 3,
+        "depth": 2
+      },
+      "height": 3,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PYRAMID",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            1,
+            4
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "...."
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "2ab"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b1",
+        "#b2"
+      ],
+      "label": "2b²"
+    },
+    {
+      "solid": "s1",
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "2a"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "h"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 직육면체 / 오른쪽 삼각뿔"
+  },
+  "caption": "예: 부피가 같은 직육면체와 삼각뿔이다(길이의 비율은 모양만 나타낸 것이다). 직육면체의 부피는 2ab×2b²×2a=8a²b³이다. 삼각뿔의 밑넓이는 (1/2)×3ab×4b=6ab²이므로 부피는 (1/3)×6ab²×h=2ab²h이다. 두 부피가 같으므로 2ab²h=8a²b³에서 h=4ab이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 다음 그림과 같이 부피가 같은 직육면체와 삼각뿔이 있다. 이 때, 삼각뿔의 높이는? (5점)</p><p><img src=\"assets/images/20_신흥중_1학기_기말_중2_수학/q10.png\" alt=\"부피가 같은 직육면체와 삼각뿔 입체도형\" class=\"question-image\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직육면체 8a²b³, 삼각뿔 (1/3)×6ab²×h",
+      "mappedTo": "dims"
+    }
+  ],
+  "newVisualInformation": [
+    "직육면체의 세 모서리 2ab, 2b², 2a와 삼각뿔의 밑변 3ab, 높이 4b로 두 부피를 세워 h=4ab"
+  ],
+  "accessibilityDescription": "직육면체와 삼각뿔이 나란히 놓여 있고 직육면체의 세 모서리에 2ab, 2b², 2a가, 삼각뿔의 높이에 h가 적혀 있다."
+}
