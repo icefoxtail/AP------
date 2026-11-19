@@ -390,3 +390,36 @@
 | 23 | BENEFICIAL | BENEFICIAL | 문제: 학생이 해를 수직선에 직접 나타내야 하므로 빈 수직선 틀을 제시하면 답안 작성과 채점이 분명해진다. / 해설: -3에 채운 점을 찍고 오른쪽 화살표를 그린 수직선 그림을 넣으면 말 설명보다 정확히 전달된다. |
 
 - 문제그림 REQUIRED/BENEFICIAL 2개: 14, 23. 해설그림 REQUIRED/BENEFICIAL 2개: 14, 23.
+
+## 25_삼산중_1학기_중간_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q5[보기], q14[발문], q19[발문], q20[발문], q21[발문], q22[발문], q23[발문], q24[발문]. 해설 24개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | TABLE | 해설: 주어진 소수, 순환마디, 바른 표기, 판정을 네 열 표로 정리하면 점 위치 비교가 한눈에 들어온다. |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | BENEFICIAL | BENEFICIAL | 문제: 수직선에 b < 22/7(약 3.14)을 3과 4 사이로 표시하면 최대 개수가 3개임이 바로 보인다 / 해설: 케이크 3개 값 21,000원, 포장 3,000원, 합계 24,000원, 잔돈 1,000원을 표로 정리하면 계산 흐름이 분명해진다 |
+| 17 | BENEFICIAL | BENEFICIAL | 문제: 수직선에 -1의 열린 점과 왼쪽 화살표를 그리면 경계값을 포함하지 않는다는 조건이 한눈에 보인다. / 해설: 마지막에 해 x < -1을 수직선으로 표시하면 경계값 비교가 분명해진다. |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | BENEFICIAL | NOT_NEEDED | 문제: 판에 ⓐ~ⓕ를 배치한 그림에 민수가 고른 -x + 3y 칸도 함께 표시하면 판에서 골랐다는 조건과 배열이 분명해진다. |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | BENEFICIAL | NOT_NEEDED | 문제: 직사각형(가로 4a^2b, 세로 3ab)과 사다리꼴(윗변 2a, 아랫변 6a, 높이 h)에 길이를 표시한 그림이 있으면 대응이 분명해진다. |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 4개: 16, 17, 20, 22. 해설그림 REQUIRED/BENEFICIAL 2개: 16, 17.
