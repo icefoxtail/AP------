@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-f69421888485-982a0daa",
+  "examUid": "19_금당중_1학기_중간_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1mid/19_금당중_1학기_중간_중3_기출.js",
+  "expectedSourceBlobSha1": "83b7b62ea1bd34e66748b7759fab5b66422fe662",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f69421888485-982a0daa.type-ledger.json",
+        "sha256": "9aaeb149b3a96b56010e6e044ded9983970a7b49afde8480e74ed7204d884721"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a6785ce308de7d8bc353d2509e651f00d751645133960a2f4d7b74e1f123a399",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH"
+      },
+      "rationale": "정팔각형 분할 넓이: 직각이등변삼각형 빗변으로 직각변을 구하고 외접 정사각형에서 네 모서리 넓이를 뺀다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "87f986a4e5edc01da6680debdf15c8457137419c37ef8c47f184cc56763bca0b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f69421888485-982a0daa.type-ledger.json",
+          "sha256": "9aaeb149b3a96b56010e6e044ded9983970a7b49afde8480e74ed7204d884721"
+        }
+      ]
+    }
+  ]
+}

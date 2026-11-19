@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-73489dea361e-e38afa80",
+  "sourceArchiveFile": "original/middle/m3/2mid/19_이수중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d70b424b3fb8cfc2853d84e1573c2fb34a90f206edaf458556473af09f6ca95d",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+      "step": "정렬한8개값의가운데23,26의평균24.5가중앙값이다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_090b479c36d9d7e93341e28ddb9d1bae040c7aa989b5b42fdaf68ca94131f3bf",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_COORD_DISTANCE_DIRECT",
+      "step": "두좌표의가로차3과세로차4를직각변으로하여거리5이다.",
+      "note": "필요 TPL: 두좌표 사이 거리. 정의: 두좌표의가로차3과세로차4를직각변으로하여거리5이다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_61e0646edb4ced6c7d0d3f1d7df57367146f16f907d0a1fe9f58715ba247c8dd",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "step": "30도맞은편은빗변의절반5이고다른직각변5√3이므로합5(√3+1)이다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_182cef870cd50471c758d2958b27b8759a32af9b7db2d079aa3c859cec4a10c7",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_ONE_LINE",
+      "step": "B를도로에반사하여가로8,세로6의직선거리10을최소로얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-d6e73ce29cd4-b4a00253",
+  "examUid": "26_팔마고_1학기_기말_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1final/26_팔마고_1학기_기말_고2_대수.js",
+  "expectedSourceBlobSha1": "1ce82c18d831e1233038fa1edae067e0135a0bb9",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d6e73ce29cd4-b4a00253.type-ledger.json",
+        "sha256": "6b0929cdaaaeff3aadf2be69556d188c18aa688bbe100e22551cc5cf3f98754f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b30ac10289467f6efbd3115e17826ccb7fc3252d9d53e48dcb67149db8a47f5d",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_RELATION"
+      },
+      "rationale": "원과 평행선의 교점 좌표를 차례로 결정해 Q,D를 찾고 두 삼각형의 높이와 밑변을 계산한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "e38a69af6d09b6d4059d8ddafe71e8dbe3d0b79531fe5b15ae3f445508e0bb9a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-d6e73ce29cd4-b4a00253.type-ledger.json",
+          "sha256": "6b0929cdaaaeff3aadf2be69556d188c18aa688bbe100e22551cc5cf3f98754f"
+        }
+      ]
+    }
+  ]
+}

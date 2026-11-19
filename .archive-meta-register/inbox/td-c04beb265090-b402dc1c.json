@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-c04beb265090-b402dc1c",
+  "examUid": "25_풍덕중_1학기_기말_중3_기출c",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/25_풍덕중_1학기_기말_중3_기출c.js",
+  "expectedSourceBlobSha1": "5e9aab29072f2af15703825408bc4578f4e2b03c",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c04beb265090-b402dc1c.type-ledger.json",
+        "sha256": "c50ed2c306effb6e1bf4b9528f585e29e26f71ea5630a8a3cda0bd38f562c819"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_43f4c9b342dbd44d7bff54708482dbdcc75f386335ae208c5e9060dcd9933930",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "최장변2x+3을 빗변으로 세 변의 제곱 관계를 세워 x>1인 근을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "61ffc19e357fa1198bc7a92ddf35a749b4e6ab48722c86ff7dc8a9cddea256f3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c04beb265090-b402dc1c.type-ledger.json",
+          "sha256": "c50ed2c306effb6e1bf4b9528f585e29e26f71ea5630a8a3cda0bd38f562c819"
+        }
+      ]
+    }
+  ]
+}

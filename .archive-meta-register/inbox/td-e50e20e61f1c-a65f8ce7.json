@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-e50e20e61f1c-a65f8ce7",
+  "examUid": "23_향림중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/23_향림중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "11f44558a270ddf40f8ad278cd2536484516d0c9",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e50e20e61f1c-a65f8ce7.type-ledger.json",
+        "sha256": "c3b4850b00ce16053203d5e06503632c6a3d53f16c8b124fed14096742e6a72f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_b2ed2a988f278e046cbc19577c43a1fd58629a99bed91a3f3b8647455af95794",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "평균1로 a+b4,정렬의 중앙값1과 a<b로 a1,b3을 얻어 차2를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "af18cddf85ee317171b64be9c44356c603eeea1e18482321ffcf40c4a53d1705",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e50e20e61f1c-a65f8ce7.type-ledger.json",
+          "sha256": "c3b4850b00ce16053203d5e06503632c6a3d53f16c8b124fed14096742e6a72f"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d1f64021d47896fb1ea2a90839bb1474102c26e09753f925e8d51e8141545074",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION"
+      },
+      "rationale": "이미 두 번 있는2보다 최빈값6이 많아야 하므로 미지수 중 두 개를6으로 정하고 가운데 두 값 평균5에서 나머지4를 얻어 합16을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "9f8fb3381cb0e438cf0c88479fc4c742762543f443fd0d239a69d89e55d7121a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-e50e20e61f1c-a65f8ce7.type-ledger.json",
+          "sha256": "c3b4850b00ce16053203d5e06503632c6a3d53f16c8b124fed14096742e6a72f"
+        }
+      ]
+    }
+  ]
+}

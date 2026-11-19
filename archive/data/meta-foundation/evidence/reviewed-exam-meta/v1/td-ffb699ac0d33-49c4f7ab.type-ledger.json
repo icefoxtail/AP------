@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ffb699ac0d33-49c4f7ab",
+  "sourceArchiveFile": "types/middle/m3/이차방정식_중3_유형_3월모의고사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d8dda75a98e2cb59ec7a1a2419ed01f18f283c1d3c1819005d97d132d24c87f0",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+      "templateKey": null,
+      "step": "주어진 근 x=3을 대입해 9-6a+5a=0에서 a=9를 구한다.",
+      "note": "제안: 주어진 이차방정식의 근으로 계수 결정. 정의: 알려진 근을 대입하여 미정계수를 정한다. 기존 근 식값·분수식 정리와 다름.",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a94ca452f18ed5ee463577d709fcacd1e3697e5e6753d2304c6e603edc9531c2",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+      "templateKey": "TPL_M3_SOLVE_QUADRATIC_VIA_COMPLETED_SQUARE_ROOT",
+      "step": "x=a±3√3으로 풀어 작은 근이 양수인 a>√27에서 최소 자연수6을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_01b0bc1a508291450f52eed0e633ed44dcddd702a2272358827120085ed5d8d6",
+      "sourceOrdinal": 3,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_ROOT_FORMULA",
+      "templateKey": null,
+      "step": "근의 공식으로 (3±√13)/2를 얻고 양수인 (3+√13)/2를 택한다.",
+      "note": "제안: 이차방정식 근의 공식 직접 계산. 정의: 일반형의 계수로 두 근을 계산하고 부호조건에 맞는 근을 선택한다.",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_adc6da68583e928e15808008fde2875a2208de1891dce89cce6a2be70302e0c9",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+      "step": "공통근 -c를 대입해 a=c+27/c,b=c-18/c. c가 27,18의 공약수이고 b>0인 조건에서 c=9,a=12,b=7을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "NOT_RUN",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    }
+  ]
+}

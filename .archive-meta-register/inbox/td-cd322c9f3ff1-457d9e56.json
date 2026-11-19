@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-cd322c9f3ff1-457d9e56",
+  "examUid": "25_왕운중_2학기_중간_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
+  "expectedSourceBlobSha1": "d0e6e5295c989c10642c545c100c1350cfc03eb5",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd322c9f3ff1-457d9e56.type-ledger.json",
+        "sha256": "8c60c59b55d0edf2e0706ee88b2d1d24dc6b0eeb63b8f39f28cea4d02979b954"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_9ad76dfea4ad1b70be3eef74afcce9beef5f032f0db3fc039c6e15e14ccee4cc",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+        "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE"
+      },
+      "rationale": "공통변OM과 반지름OA=OB를 근거로 RHS인지 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a57c8abe5e89fb6e5fec831f3e59c735b4679ce245ecccc7c743c7a22b1d5235",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd322c9f3ff1-457d9e56.type-ledger.json",
+          "sha256": "8c60c59b55d0edf2e0706ee88b2d1d24dc6b0eeb63b8f39f28cea4d02979b954"
+        }
+      ]
+    }
+  ]
+}

@@ -425,11 +425,15 @@ test("dry run on the real repository data plans only the metadata file and the r
     const bound = JSON.parse(fs.readFileSync(path.join(repo, `${dir}/bindings.json`), "utf8")).bindings.filter(b => b.status === "ACTIVE");
     for (const b of bound) if (!bindings.has(`${b.curriculum}|${b.standardCourse}`)) bindings.set(`${b.curriculum}|${b.standardCourse}`, b);
   }
-  const wanted = meta.records.find(r => !r.problemTypeKey && !r.metadataApprovalType && r.metadataStatus === "registration_pending_semantic_review" &&
-    r.fieldStatus?.problemType === "manual_review_pending" && r.fieldStatus?.template === "manual_review_pending" &&
-    (r.curriculum || r.curriculumKey) && bindings.has(`${r.curriculum || r.curriculumKey}|${r.standardCourse}`) &&
-    !String(r.foundationTaxonomyStatus || "").startsWith("HOLD"));
-  assert.ok(wanted, "the real data has a pending, typeless row of a bound course");
+  const boundTypeless = r => !r.problemTypeKey && !r.metadataApprovalType && (r.curriculum || r.curriculumKey) &&
+    bindings.has(`${r.curriculum || r.curriculumKey}|${r.standardCourse}`) && !String(r.foundationTaxonomyStatus || "").startsWith("HOLD");
+  // Prefer the original sample (pending semantic review, both type fields pending). The registrations of the type data batches
+  // consume such rows, so fall back to any other typeless, receipt-less row of a bound course (the lane fills an empty type field
+  // whatever its status tag says). With no such row left there is nothing to dry-run on the real data: skip, never relax the assertions below.
+  const wanted = meta.records.find(r => boundTypeless(r) && r.metadataStatus === "registration_pending_semantic_review" &&
+    r.fieldStatus?.problemType === "manual_review_pending" && r.fieldStatus?.template === "manual_review_pending") ||
+    meta.records.find(boundTypeless);
+  if (!wanted) { t.skip("the real data has no typeless, receipt-less row of a bound course left (the type data batches filled them); the lane is covered by the fixture tests above"); return; }
   const binding = bindings.get(`${wanted.curriculum || wanted.curriculumKey}|${wanted.standardCourse}`);
   const bytes = fs.readFileSync(path.join(repo, "archive/exams", wanted.sourceArchiveFile));
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };

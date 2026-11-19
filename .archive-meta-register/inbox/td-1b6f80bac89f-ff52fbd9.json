@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-1b6f80bac89f-ff52fbd9",
+  "examUid": "18_동산중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/18_동산중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "70fe54594249c347581666f23c947efa71987809",
+  "expectedQuestionCount": 26,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1b6f80bac89f-ff52fbd9.type-ledger.json",
+        "sha256": "a950af40a25af003fb920966503c2b99838400cfd05829ef1b974b12b76953c5"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6f2ff874acc211b15280f3db00c7664b4953848909080b6ef7ea92a493f5bc80",
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+      },
+      "rationale": "대응변 비 1/(x-1)=x/1을 세워 x>1인 이차방정식 해를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "b64a5d4f5282a7a11c86ce463f9423b80ef47f0282df313b9a011ae206ffc776",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1b6f80bac89f-ff52fbd9.type-ledger.json",
+          "sha256": "a950af40a25af003fb920966503c2b99838400cfd05829ef1b974b12b76953c5"
+        }
+      ]
+    }
+  ]
+}
