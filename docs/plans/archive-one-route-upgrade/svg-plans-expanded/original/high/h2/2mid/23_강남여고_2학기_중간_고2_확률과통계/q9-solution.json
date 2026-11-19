@@ -1,0 +1,51 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "갑 빨강",
+          "p": "3/8",
+          "children": [
+            {
+              "label": "을 빨강",
+              "p": "2/7"
+            },
+            {
+              "label": "을 파랑",
+              "p": "5/7"
+            }
+          ]
+        },
+        {
+          "label": "갑 파랑",
+          "p": "5/8",
+          "children": [
+            {
+              "label": "을 빨강",
+              "p": "3/7"
+            },
+            {
+              "label": "을 파랑",
+              "p": "4/7"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true
+  },
+  "caption": "갑이 먼저 빨간 공을 꺼내면 남은 7개 중 빨간 공이 2개, 파란 공을 꺼내면 빨간 공이 3개이다. 을이 빨간 공을 꺼내는 두 경로의 확률은 3/8×2/7=6/56과 5/8×3/7=15/56이고 합은 21/56=3/8이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "갑이 빨간 공과 파란 공으로 갈라지고 각각 을이 빨간 공과 파란 공을 꺼내는 확률이 적힌 수형도이다.",
+  "newVisualInformation": [
+    "을이 빨간 공을 꺼내는 두 경로의 확률 6/56과 15/56이 보여 합 3/8을 구하는 구조가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "파란 공 5개, 빨간 공 3개가 들어 있는 주머니에서 갑과 을이 순서대로 공을 임의로 하나씩 꺼낼 때, 을이 빨간 공을 꺼낼 확률은? (단, 꺼낸 공은 다시 넣지 않는다.) [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
