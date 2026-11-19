@@ -1,0 +1,71 @@
+{
+  "qid": 13,
+  "itemFingerprint": "1245d3cb1df830b4",
+  "solveSteps": [
+    "회전축 수직 단면이 반지름 4cm 인 원이고, 축 포함 단면이 가로 8, 세로 9 인 직사각형이다 (부피 144).",
+    "이 회전체는 밑면의 반지름이 4cm, 높이가 9cm 인 원기둥이다.",
+    "원기둥의 부피 V = pi * r^2 * h = pi * 4^2 * 9 = 16pi * 9 = 144pi cm^3.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "어떤 회전체를 회전축에 수직인 평면으로 자른 단면은 항상 반지름의 길이가 $4\\rm\\,cm$인 원이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "항상 반지름의 길이가 $4\\rm\\",
+  "rpmRecordId": "M1-RPM-214",
+  "rpmReason": "단면 정보를 통해 원기둥임을 추론하고 부피를 계산하는 M1-RPM-214 기둥의 겉넓이와 부피 > 원기둥에 해당한다 (값 144, 16).",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+  "typeReason": "단면의 기하학적 특성으로부터 원기둥의 반지름과 높이를 복원하여 기본 부피 공식에 대입하는 유형이다 (값 144, 16).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "단면으로부터 원기둥의 반지름 4와 높이 9를 파악하여 부피 공식에 대입하는 난이도 2 문항이다 (값 144, 16).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "회전체",
+        "src": "stem",
+        "quote": "어떤 회전체를 회전축에 수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "m\\,cm$인 직사각형이다. 이 회전"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "단면은 항상 반지름의 길이가 $4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "포함관계",
+        "src": "stem",
+        "quote": "고, 회전축을 포함하는 평면으로 자른"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "단면으로부터 밑면 반지름 4, 높이 9 인 원기둥임을 확인하고 $\\pi \\times 4^2 \\times 9 = 144\\pi\\rm\\,cm^3$ 로 판정했다 (값 144).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "단면의 성질로부터 입체도형을 특정하고 부피를 계산하므로 M1-07 입체도형의 성질에 속한다."
+}

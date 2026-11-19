@@ -1,0 +1,73 @@
+{
+  "qid": 22,
+  "itemFingerprint": "2d49534b432f3a58",
+  "solveSteps": [
+    "$\\wideparen{AC} = 15\\rm\\,cm$ 에 대한 중심각 $\\angle AOC = 60^\\circ$ 이므로 원 전체 둘레 $C = 15 \\times (360/60) = 90\\rm\\,cm$ 이다 (선분 AB, CD, DO, DP).",
+    "$\\triangle ODP$ 에서 $\\overline{DO} = \\overline{DP}$ 이므로 $\\angle P = \\angle DOP = \\theta$ 라 두면 점 D 의 외각 $\\angle CDO = 2\\theta$.",
+    "$\\overline{OC} = \\overline{OD}$ 이므로 $\\angle OCD = 2\\theta$. $\\triangle OCP$ 외각 $\\angle AOC = 3\\theta = 60^\\circ \\implies \\theta = 20^\\circ$.",
+    "호 $\\wideparen{BD}$ 중심각 $\\angle BOD = 20^\\circ \\implies \\wideparen{BD} = 90 \\times (20/360) = 5\\rm\\,cm$.",
+    "호 $\\wideparen{CD}$ 중심각 $\\angle COD = 180^\\circ - 40^\\circ - 40^\\circ = 100^\\circ \\implies \\wideparen{CD} = 90 \\times (100/360) = 25\\rm\\,cm$.",
+    "따라서 정답은 $\\wideparen{BD} = 5\\rm\\,cm,\\ \\wideparen{CD} = 25\\rm\\,cm$ 이다."
+  ],
+  "solvedAnswer": "$\\wideparen{BD} = 5\\rm\\,cm,\\ \\wideparen{CD} = 25\\rm\\,cm$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서·논술형 2] 다음 그림과 같이 원 $O$의 지름 $\\overline{AB}$의 연장선과 현 $\\overline{CD}$의 연장선의 교점을 $P$라 하자.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "n{CD}$의 길이를 각각 구하고",
+  "rpmRecordId": "M1-RPM-201",
+  "rpmReason": "중심각의 크기와 호의 길이의 정비례 관계를 복합 기하에 적용하는 M1-RPM-201 원과 부채꼴의 기본 > 중심각·호·현에 해당한다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "typeReason": "이등변삼각형의 성질과 삼각형의 외각 정리를 연쇄 적용하여 중심각을 구하고 호의 길이를 비례식으로 계산하는 서술형 유형이다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "보조선과 외각 성질로 $\\theta = 20^\\circ$ 를 유도하고 두 호의 중심각 $20^\\circ, 100^\\circ$ 로 각각의 길이를 구해야 하는 고난도 서술형 문항이다 (선분 AB, CD, DO, DP, 각 AOC 60).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지름",
+        "src": "stem",
+        "quote": "원 $O$의 지름 $\\overl"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "n{CD}$의 길이를 각각 구하고"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "e{DP}$인 이등변삼각형이므로   $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "$의 연장선의 교점을 $P$라 하"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "외각 정리 $3\\theta = 60^\\circ$ 로부터 $\\theta=20^\\circ$ 를 구하여 호 BD=5cm, 호 CD=25cm 로 정답을 판정했다 (선분 AB, CD).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "원의 중심각과 호의 길이의 정비례 관계 및 외각 성질을 이용한 각 계산을 다루므로 M1-06 평면도형의 성질에 속한다."
+}

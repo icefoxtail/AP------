@@ -1,0 +1,71 @@
+{
+  "qid": 11,
+  "itemFingerprint": "8f17dad33c661e96",
+  "solveSteps": [
+    "칠각뿔대의 꼭짓점 개수 a = 7 * 2 = 14개이다 (합 44 및 46 비교).",
+    "정이십면체의 모서리 개수 b = 30개이다.",
+    "a + b = 14 + 30 = 44 이다.",
+    "따라서 정답은 ① ($)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "칠각뿔대의 꼭짓점의 개수는 $a$개이다. 정이십면체의 모서리의 개수는 $b$개이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "box\">• 칠각뿔대의 꼭짓점의 개",
+  "rpmRecordId": "M1-RPM-207",
+  "rpmReason": "다면체의 꼭짓점과 모서리 개수 공식을 적용하는 M1-RPM-207 다면체 > 면·모서리·꼭짓점에 해당한다 (값 44, 46).",
+  "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+  "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+  "typeReason": "각뿔대와 정다면체의 구성요소(꼭짓점, 모서리) 개수를 각각 구하여 합을 구하는 유형이다 (값 44, 46).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "n각뿔대 꼭짓점 $2n$ 과 정이십면체 모서리 30개를 바로 떠올려 더하는 기본 난이도 2 문항이다 (값 44, 46).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "각뿔대",
+        "src": "stem",
+        "quote": "box\">• 칠각뿔대의 꼭짓점의 개"
+      }
+    ],
+    "goal": [
+      {
+        "term": "모서리",
+        "src": "stem",
+        "quote": "정이십면체의 모서리의 개수는 $b"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "• 칠각뿔대의 꼭짓점의 개수는 $a",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "다음 두 조건을 모두 만족시"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "칠각뿔대 꼭짓점 14개와 정이십면체 모서리 30개를 더해 $a+b=44$ 로 정답을 판정했다 (값 44).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "각뿔대와 정다면체의 꼭짓점, 모서리의 개수를 구하므로 M1-07 입체도형의 성질에 속한다."
+}

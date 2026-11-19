@@ -1,0 +1,72 @@
+{
+  "qid": 21,
+  "itemFingerprint": "79bb5a51dc9e408e",
+  "solveSteps": [
+    "n각형의 한 꼭짓점에서 그을 수 있는 대각선 수 $a = n - 3$ 이다 (합 27, 32, 16).",
+    "이 대각선들에 의해 나뉘는 삼각형의 수 $b = n - 2$ 이다.",
+    "$a + b = (n - 3) + (n - 2) = 2n - 5 = 27 \\implies 2n = 32 \\implies n = 16$.",
+    "십육각형의 내각의 크기의 합 $= (16 - 2) \\times 180^\\circ = 14 \\times 180^\\circ = 2520^\\circ$.",
+    "따라서 정답은 $2520^\\circ$ 이다."
+  ],
+  "solvedAnswer": "$2520^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "[서·논술형 1] 한 꼭짓점에서 그을 수 있는 대각선의 개수가 $a$이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "술형 1] 한 꼭짓점에서 그을 수",
+  "rpmRecordId": "M1-RPM-194",
+  "rpmReason": "대각선과 삼각형 분할 조건으로 변의 수를 결정하고 내각의 합을 구하는 M1-RPM-194 다각형의 내각과 외각 > 내각의 합에 해당한다 (값 27, 32, 16, 2520).",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PARTITION_TO_DIAGONALS",
+  "typeReason": "한 꼭짓점 대각선 수와 분할 삼각형 수 공식 $n-3, n-2$ 를 연립해 다각형을 특정하고 내각의 합을 구하는 서술형 유형이다 (값 27, 32, 16, 2520).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다각형의 기본 공식 2개를 연립하여 $n=16$ 을 구하고 내각의 합 공식에 대입하는 2단계 서술형 문항이다 (값 27, 32, 16, 2520).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "술형 1] 한 꼭짓점에서 그을 수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내각",
+        "src": "stem",
+        "quote": "이 다각형의 내각의 크기의 합을"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "그을 수 있는 대각선의 개수가 $a",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "나뉘어 생기는 삼각형의 개수가 $b"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$a=n-3, b=n-2$ 에서 $2n-5=27 \\implies n=16$ 을 구하고 내각의 합 $(16-2) \\times 180^\\circ = 2520^\\circ$ 로 판정했다 (값 27).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "대각선 개수 공식과 다각형 분할 삼각형 수, 내각의 합 공식을 다루므로 M1-06 평면도형의 성질에 속한다."
+}

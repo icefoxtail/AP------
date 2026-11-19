@@ -1,0 +1,74 @@
+{
+  "qid": 4,
+  "itemFingerprint": "2f5de384c390ec1b",
+  "solveSteps": [
+    "원과 부채꼴의 기본 정의와 성질을 검토한다 (보기 3점).",
+    "① 두 점을 지나는 직선은 할선이다 (거짓).",
+    "② 중심각은 두 반지름이 이루는 각이다 (거짓).",
+    "③ 두 반지름과 호로 둘러싸인 도형은 부채꼴이다 (거짓).",
+    "④ 원의 중심을 지나는 현이 지름이며 가장 긴 현이다 (참).",
+    "⑤ 현의 길이는 중심각에 정비례하지 않는다 (거짓).",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "원과 부채꼴에 대한 설명 중 옳은 것은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "원과 부채꼴에 대한 설명",
+  "rpmRecordId": "M1-RPM-201",
+  "rpmReason": "원과 부채꼴의 중심각, 호, 현의 정의와 비례 관계를 묻는 M1-RPM-201 원과 부채꼴의 기본 > 중심각·호·현에 해당한다 (배점 3점).",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT",
+  "typeReason": "원과 부채꼴의 정의 진술(현, 활꼴, 중심각, 지름, 정비례)을 종합적으로 판정하는 유형이다 (배점 3점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "원과 부채꼴 단원의 기본 개념 정의를 정확히 알고 있는지 판정하는 난이도 2 문항이다 (배점 3점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "원과 부채꼴에 대한 설명"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지름",
+        "src": "solution",
+        "quote": "중심각은 두 반지름이 이루는 각이"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "중심각은 두 반지름이 이루는 각이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "용어와 기본 성질을 검토한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "원의 가장 긴 현은 지름이라는 ④의 진술이 참임을 확인하여 정답으로 판정했다 (배점 3점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "원, 부채꼴, 현, 활꼴의 정의와 기본 용어 성질을 다루므로 M1-06 평면도형의 성질에 속한다."
+}
