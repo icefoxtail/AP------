@@ -37,14 +37,15 @@
 
 ## 3. 메타
 
+- **새 문항의 작성자는 최소 한 벌만 고른다:** `curriculum`, `standardUnitKey`·`subUnitKey`, `rpmPrimaryRecordId`, PT·TPL, `difficultyBucket`, CrossConcept·Condition·Integration, 4칸(별도 파일). RPM 글자 `rpmL1~L4`는 등록기가 번호에서 채우고, 읽는 곳 없는 사본(`rpmPrimaryL1~L4`, `rpmPrimary{}`, `curriculumKey`, 맨 `L1~L4` 등)은 요청에도 원본 JS에도 쓰지 않는다. 기존 값은 지우지 않고 그대로 읽는다(2026-11-19). 이유: 같은 것을 여러 칸에 쓰면 칸끼리 어긋난다(하/중/상 사고). → [metadata.md](../agents/metadata.md)
 - **난이도는 정수 `difficultyBucket` 1~5만 판정한다. 새 문항에 `level`(하/중/상)을 쓰지 않는다.** 이전 문항의 `level`은 지우지 않고 보존하며 하/중/상에서 정수로 환산하지 않는다(2026-11-18 21시 KST부터). 이유: 같은 것을 두 번 물어 작성 모델이 같은 정수에 "중"과 "상"을 섞어 채웠다. → [metadata.md](../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)
 - 난이도는 정의·공식을 바로 쓰면 1이고, 줄 수·서술형·배점·계산량은 올리는 이유가 아니다. 애매하면 낮게 잡고 경계 플래그로 표시한다. 이유: 1차 표본에서 어긋난 문항 대부분이 높게 잡은 쪽이었다. → [metadata.md](../agents/metadata.md)
 - 단원·소단원 키는 마스터테이블에 실제 있는 것만 쓴다. `RAW-`·`UNMAPPED-`·`PROPOSED-` 키를 정식 분류로 쓰지 않는다. 소단원 묶음표는 표시·선택용이고 키는 바꾸지 않는다. 이유: 없는 키는 화면의 필터와 설명을 틀리게 만든다. → [메타 필수 요건 §2](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)
-- RPM Primary L1~L4는 해당 학년 교육과정 안에서 학생이 재현할 최종 풀이로 판정한다. CrossConcept·Condition으로 Primary를 대체하지 않는다. 이유: 교육과정 밖 해법으로 정당화한 분류는 학생 해설과 어긋난다. → [Resolver](../architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)
+- RPM Primary는 해당 학년 교육과정 안에서 학생이 재현할 최종 풀이로 레코드 번호 하나를 고른다. 경로에서 번호를 거꾸로 찾거나 번호에서 TPL을 계산하지 않고, CrossConcept·Condition으로 Primary를 대체하지 않는다. 이유: 한 경로가 번호 여럿에 걸리고, 교육과정 밖 해법은 학생 해설과 어긋난다. → [Resolver](../architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md)
 - **유형(PT·TPL) 키는 문항·해설의 결정 단계를 읽은 직접 판정이 정본이다. "공식 Resolver 결과만"이라는 제한은 없다**(2026-11-16·17). 지킬 것은 근거 문장, 키가 ACTIVE, TPL의 상위가 고른 PT, 세 가지다. 이유: 유형은 계속 늘어나는 분류라 한 판정기에 묶을 수 없고 유형 칸이 대부분 비어 있었다. → [metadata.md](../agents/metadata.md)
 - 맞는 키가 없으면 가까운 키에 억지로 붙이지 않고 정식 `registryChanges`로 새 키를 만든다. 이름·정의는 같은 형태 문항이 재사용할 수 있게 일반화하고, 다음 문항이 같은 형태면 그 키를 재사용한다(2026-11-02). 이유: 문항과 모순되는 키는 학생 화면의 유형 설명을 틀리게 하고, 키가 늘어나는 것을 막는다. → [metadata.md](../agents/metadata.md)
 - PT는 개념 단어 하나, TPL은 그 안에서 묻는 것 한 단어로 짓는다. 조건·상황·절차는 Condition·CrossConcept에 적는다(2026-11-17). 이유: 이름에 절차를 넣은 새 PT 제안 3,196줄이 서로 다른 이름 707개로 갈렸다. → [metadata.md](../agents/metadata.md)
-- 상태는 문턱이 아니라 꼬리표다. 값이 있으면 쓰고 막는 것은 실제 결함(없는 키, 학년·과목 불일치, 발문·보기가 바뀐 문항)뿐이다. 비어 있는 메타는 모델 하나로 채워 초안(`DRAFT_SINGLE_MODEL`)으로 표시하고 승인된 값은 덮어쓰지 않는다(2026-11-18). 이유: 등록 대기 약 13,000건을 두 번 독립 판정으로는 감당할 수 없다. → [metadata.md](../agents/metadata.md), [Meta OS](../architecture/JS_Archive_Meta_OS_CURRENT.md)
+- 상태는 문턱이 아니라 꼬리표다. 값이 있으면 쓰고 막는 것은 실제 결함(없는 키, 학년·과목 불일치, 발문·보기가 바뀐 문항)뿐이다. 비어 있는 메타는 모델 하나로 채워 초안(`DRAFT_SINGLE_MODEL`)으로 표시하고 승인된 값은 덮어쓰지 않는다(2026-11-18). 이유: 등록 대기 약 13,000건. → [metadata.md](../agents/metadata.md), [Meta OS](../architecture/JS_Archive_Meta_OS_CURRENT.md)
 - 새로 만들거나 고치는 문항은 JS, 확장 메타, 4칸, 작성·검토 기록을 함께 인계한다. 4칸은 발문과 해설을 읽고 판정하며 PT/TPL 키나 라벨로 치환하지 않는다. 이유: JS만 받고 메타·기록을 놓치지 않기 위해서다. → [메타 필수 요건](../architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md), [4칸 계약](../architecture/JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md)
 - 공유 크로스워크(`archive/data/meta-foundation/crosswalks`)는 행을 추가만 하고, 생성문항 Meta는 공식 도구로만 등록하며 해시 필드를 손으로 고치지 않는다. 이유: 한 행 추가가 승인 생성문항 약 171건의 해시를 어긋나게 했다. → [common.md](../agents/common.md)
 

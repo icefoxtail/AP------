@@ -1027,6 +1027,22 @@ test('ordinary difficulty keeps the official CRLF binding but rejects any other 
   assert.throws(() => selectPendingNativeRequests({ root: f.root, headSha: f.git('rev-parse', 'HEAD') }), /SOURCE_NOT_FIXED/);
 });
 
+test('draft difficulty with a text fingerprint on every item does not bind the whole-file blob; any other request still does', t => {
+  const asDraft = (withFingerprint) => request => {
+    ordinaryDifficultyRequest(request);
+    request.approvalType = 'DRAFT_SINGLE_MODEL'; request.judge = 'draft-model';
+    request.gemini.items.forEach((item, i) => { if (withFingerprint || i) item.textBindingFingerprint = 'a'.repeat(64); });
+  };
+  const drift = (f, expectFixed) => {
+    f.write(SOURCE, fs.readFileSync(path.join(f.root, SOURCE), 'utf8').replace('id', 'changedField'));
+    f.git('add', '--', SOURCE); f.git('commit', '-qm', 'source change after the request');
+    const run = () => selectPendingNativeRequests({ root: f.root, headSha: f.git('rev-parse', 'HEAD') });
+    if (expectFixed) assert.equal(run().length, 1); else assert.throws(run, /SOURCE_NOT_FIXED/);
+  };
+  drift(fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: asDraft(true) }), true);
+  drift(fixture(t, { difficultyOnly: true, otherOwner: false, mutateRequest: asDraft(false) }), false);
+});
+
 test('ordinary difficulty rejects partial registrar success, wrong modes and foreign output mutations', t => {
   for (const phase of ['dry-run', 'write', 'projection']) for (const mutate of [
     r => ({ ...r, mode: 'dry-run-reviewed-correction' }),

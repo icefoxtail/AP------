@@ -249,9 +249,8 @@ export function memberSet(courseGroups) {
 }
 
 /** 과목·교육과정 후보 표 (RPM 행, PT/TPL).
- *  ptByUnitAny: 교육과정과 상관없이 같은 과목·같은 단원 키에 ACTIVE 로 묶인 유형 전부 (등록부 정본). 문항의 주 단원에 쓴다.
- *  ptByUnit: 그중 이 시험의 교육과정에 묶인 것만 (다른 단원에 쓰는 좁은 목록).
- *  extraPts: [{ problemTypeKey, standardUnitKey }] 원본 기출이 쓴 유형이 위에서 빠졌을 때 ptByUnitAny 에 더한다. */
+ *  ptByUnit: 교육과정과 상관없이 같은 과목·같은 단원 키에 ACTIVE 로 묶인 유형 전부 (등록부 정본). 단원을 좁혀 보여 주지 않는다.
+ *  extraPts: [{ problemTypeKey, standardUnitKey }] 원본 기출이 쓴 유형이 위에서 빠졌을 때 ptByUnit 에 더한다. */
 export function buildCourseTables({ repoRoot = DEFAULT_REPO_ROOT, courseGroups, curriculum, masters, crosswalk, taxonomy, extraPts = [] }) {
   const members = memberSet(courseGroups);
   const units = unitKeysForGroups(courseGroups, String(curriculum), masters.unitOrders);
@@ -260,32 +259,108 @@ export function buildCourseTables({ repoRoot = DEFAULT_REPO_ROOT, courseGroups, 
     && (members.has(r.scope) || members.has(r.standardCourse)) && (!r.standardUnitKey || unitKeys.has(r.standardUnitKey)));
   const rpmById = new Map(rpmRows.map(r => [r.id, r]));
   const ptByUnit = new Map();
-  const ptByUnitAny = new Map();
   const ptAll = new Map();
-  const put = (map, unit, key, pt) => { if (!map.has(unit)) map.set(unit, new Map()); map.get(unit).set(key, pt); };
+  const put = (unit, key, pt) => { if (!ptByUnit.has(unit)) ptByUnit.set(unit, new Map()); ptByUnit.get(unit).set(key, pt); };
   for (const b of taxonomy.bindings) {
     if (b.status && b.status !== 'ACTIVE') continue;
     if (!members.has(b.standardCourse)) continue;
     if (!b.problemTypeKey || !unitKeys.has(b.standardUnitKey)) continue;
     const pt = taxonomy.pts.get(b.problemTypeKey);
-    if (!pt) continue;
+    if (!pt || (pt.status && pt.status !== 'ACTIVE')) continue;
     ptAll.set(b.problemTypeKey, pt);
-    put(ptByUnitAny, b.standardUnitKey, b.problemTypeKey, pt);
-    if (String(b.curriculum) === String(curriculum)) put(ptByUnit, b.standardUnitKey, b.problemTypeKey, pt);
+    put(b.standardUnitKey, b.problemTypeKey, pt);
   }
   for (const e of extraPts) {
     const pt = taxonomy.pts.get(e.problemTypeKey);
     if (!pt || (pt.status && pt.status !== 'ACTIVE') || !unitKeys.has(e.standardUnitKey)) continue;
     ptAll.set(e.problemTypeKey, pt);
-    put(ptByUnitAny, e.standardUnitKey, e.problemTypeKey, pt);
+    put(e.standardUnitKey, e.problemTypeKey, pt);
   }
   const tplByPt = new Map();
   for (const t of taxonomy.tpls.values()) {
-    if (!ptAll.has(t.parentProblemTypeKey)) continue;
+    if (!ptAll.has(t.parentProblemTypeKey) || (t.status && t.status !== 'ACTIVE')) continue;
     if (!tplByPt.has(t.parentProblemTypeKey)) tplByPt.set(t.parentProblemTypeKey, []);
     tplByPt.get(t.parentProblemTypeKey).push(t);
   }
-  return { units, unitKeys, rpmRows, rpmById, ptByUnit, ptByUnitAny, ptAll, tplByPt };
+  return { units, unitKeys, rpmRows, rpmById, ptByUnit, ptAll, tplByPt };
+}
+
+// ---------- 선택표 (학교급·학년·과목별 메타 선택 문서의 자료) ----------
+export const GRADE_ORDER = ['중1', '중2', '중3', '고1', '고2', '고3'];
+
+/** 과목 묶음 하나의 선택표 자료. 단원 -> 소단원 · RPM 행 · 유형(PT -> TPL). 등록부(ACTIVE)에서 그때그때 만든다.
+ *  교육과정은 가르지 않는다 (중학 단원 키는 2015·2022 가 같다). RPM 행에는 교육과정을 적는다. */
+export function buildGroupSelection({ group, masters, crosswalk, taxonomy, repoRoot = DEFAULT_REPO_ROOT }) {
+  const units = new Map();
+  for (const curriculum of Object.keys(COURSE_UNIT_PREFIXES[group.id] || {})) {
+    const t = buildCourseTables({ repoRoot, courseGroups: [group], curriculum, masters, crosswalk, taxonomy });
+    for (const u of t.units) {
+      if (!units.has(u.key)) {
+        const pts = [...(t.ptByUnit.get(u.key) || new Map()).values()].sort((a, b) => a.problemTypeKey.localeCompare(b.problemTypeKey));
+        units.set(u.key, {
+          standardUnitKey: u.key,
+          label: u.label,
+          order: u.order,
+          subUnits: (masters.subUnitsByUnit.get(u.key) || []).map(s => ({ subUnitKey: s.subUnitKey, label: s.labelKo })),
+          rpm: [],
+          problemTypes: pts.map(p => ({
+            problemTypeKey: p.problemTypeKey,
+            label: p.canonicalLabelKo,
+            definition: String(p.definition || '').replace(/\s+/g, ' ').trim(),
+            templates: (t.tplByPt.get(p.problemTypeKey) || []).map(x => ({ templateKey: x.templateKey, label: x.canonicalLabelKo })).sort((a, b) => a.templateKey.localeCompare(b.templateKey)),
+          })),
+        });
+      }
+      units.get(u.key).rpm.push(...t.rpmRows.filter(r => r.standardUnitKey === u.key).map(r => ({
+        id: r.id,
+        curriculum: String(r.curriculum),
+        path: [r.rpmPath.majorUnit, r.rpmPath.midUnit, r.rpmPath.l3, r.rpmPath.l4].join(' > '),
+        subUnitKey: r.subUnitKey || '',
+        mappingStatus: r.mappingStatus || '',
+      })));
+    }
+  }
+  return { id: group.id, grade: group.grade, members: group.members, units: [...units.values()].sort((a, b) => a.order - b.order || a.standardUnitKey.localeCompare(b.standardUnitKey)) };
+}
+
+/** 선택표 자료 전체: id -> buildGroupSelection 결과 (등록부에 단원이 하나도 없는 묶음은 뺀다). */
+export function buildAllSelections(repoRoot = DEFAULT_REPO_ROOT, { masters = loadMasters(repoRoot), crosswalk = loadCrosswalkRecords(repoRoot), taxonomy = loadTaxonomy(repoRoot) } = {}) {
+  const out = new Map();
+  for (const group of loadCourseGroups(repoRoot)) {
+    const sel = buildGroupSelection({ group, masters, crosswalk, taxonomy, repoRoot });
+    if (sel.units.length) out.set(group.id, sel);
+  }
+  return out;
+}
+
+/** 이 묶음의 시험지가 쓸 수 있는 아래 학년 묶음: 학년이 같거나 낮은 다른 묶음 (키의 학년이 시험지 학년 이하이면 받는 규칙, meta-foundation reach). */
+export function lowerGroupIds(selection, all) {
+  const rank = g => GRADE_ORDER.indexOf(g);
+  return [...all.values()].filter(o => o.id !== selection.id && rank(o.grade) >= 0 && rank(o.grade) <= rank(selection.grade))
+    .sort((a, b) => rank(a.grade) - rank(b.grade) || a.id.localeCompare(b.id)).map(o => o.id);
+}
+
+/** 묶음 안 모든 단원의 유형을 키 하나에 한 번씩 (단원 구분 없이). */
+export function groupPts(selection) {
+  const m = new Map();
+  for (const u of selection.units) for (const p of u.problemTypes) if (!m.has(p.problemTypeKey)) m.set(p.problemTypeKey, p);
+  return [...m.values()].sort((a, b) => a.problemTypeKey.localeCompare(b.problemTypeKey));
+}
+
+/** 시험지 과목 묶음(들)이 선택표에서 쓸 수 있는 유형·템플릿: Map<PT 키, Set<TPL 키>>. 자기 묶음과 아래 학년 묶음의 것. */
+export function selectionAccepts(courseIds, all) {
+  const out = new Map();
+  for (const id of courseIds || []) {
+    const sel = all.get(id);
+    if (!sel) continue;
+    for (const g of [sel, ...lowerGroupIds(sel, all).map(x => all.get(x))]) {
+      for (const p of groupPts(g)) {
+        if (!out.has(p.problemTypeKey)) out.set(p.problemTypeKey, new Set());
+        for (const t of p.templates) out.get(p.problemTypeKey).add(t.templateKey);
+      }
+    }
+  }
+  return out;
 }
 
 // ---------- 원본 기출 · 문항 지문(fingerprint) · 가이드 예시 ----------

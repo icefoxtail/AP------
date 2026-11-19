@@ -738,7 +738,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
+    "content": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. 이웃한 두 원은 서로 접한다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
     "choices": [
       "40",
       "42",
