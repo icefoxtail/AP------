@@ -1673,7 +1673,7 @@
   }
   function composeSourceNote() {
     if (state.uidRoute && !state.uidRoute.error)
-      return `<p class="cz-entry" data-cz-entry="uid">검색에서 고른 ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
+      return `<p class="cz-entry" data-cz-entry="uid">${state.derive ? "시험지를 다시 만들어 고른" : "검색에서 고른"} ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
     if (state.sources.length)
       return `<p class="cz-entry" data-cz-entry="sources">학교별 기출에서 고른 시험 ${state.sources.length}개 안에서 문항을 뽑습니다.</p>`;
     return "";

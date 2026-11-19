@@ -1594,7 +1594,7 @@
       `${esc([record.year, record.school].filter(Boolean).join(" "))} ${esc(record.sourceQuestionNo ?? record.sourceOrdinal)}번`).join(" · ");
     const rest = route.records.length > 8 ? ` 외 ${route.records.length - 8}문항` : "";
     const scope = route.scopes[0];
-    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">검색에서 선택한 ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
+    return `<div class="resultbar"><h2>단원</h2></div><div class="callout" role="status" data-uid-route="accepted">${state.derive ? "시험지를 다시 만들어 고른" : "검색에서 선택한"} ${route.records.length}문항으로 범위가 고정되었습니다. ${names}${rest}<p>${clear}</p></div>
       <div class="scope-list"><div class="scope-group"><div class="scope-item"><label class="check"><input type="checkbox" data-scope="${esc(scope.key)}" ${scopeIsSelected(scope) ? "checked" : ""} ${state.sealed ? "disabled" : ""}>${esc(scope.label)}</label><small>${scope.count}문항</small></div></div></div>`;
   }
   function applySourceRoute() {
