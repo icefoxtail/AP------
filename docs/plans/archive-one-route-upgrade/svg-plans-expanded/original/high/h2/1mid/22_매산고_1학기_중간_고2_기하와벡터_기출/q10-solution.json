@@ -1,0 +1,52 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "3",
+    "bSquared": "2",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "-3/5*sqrt(10)",
+      "sign": "NEG"
+    }
+  ],
+  "lines": [
+    {
+      "id": "k3",
+      "slope": "2",
+      "intercept": "3",
+      "label": "y=2x+3"
+    },
+    {
+      "id": "tg",
+      "slope": "2",
+      "intercept": "sqrt(10)",
+      "tangent": true,
+      "dashed": true
+    }
+  ],
+  "caption": "2x²−3y²=6은 x²/3−y²/2=1이다. 직선 y=2x+k를 대입하면 10x²+12kx+3k²+6=0이고 만나지 않으려면 판별식 24k²−240<0, 즉 k²<10이다. 그림의 점선은 k=√10일 때 접하는 경계 직선이고 접점은 T이며, 실선은 k=3으로 쌍곡선과 만나지 않는다. 정수 k는 −3부터 3까지이므로 가장 큰 정수는 3이고 답은 ①이다.",
+  "accessibilityDescription": "좌우로 갈라진 쌍곡선과 기울기 2인 두 직선이 있다. 점선은 쌍곡선의 왼쪽 가지에 접점 T에서 닿고, 실선은 쌍곡선과 만나지 않는다.",
+  "newVisualInformation": [
+    "기울기 2인 직선이 쌍곡선에 접하는 경계(k=√10)와 만나지 않는 직선(k=3)을 보여 k²<10의 의미를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $2x^2-3y^2=6$과 직선 $y=2x+k$가 만나지 않도록 하는 정수 $k$값들 중 가장 큰 정수를 구하면? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

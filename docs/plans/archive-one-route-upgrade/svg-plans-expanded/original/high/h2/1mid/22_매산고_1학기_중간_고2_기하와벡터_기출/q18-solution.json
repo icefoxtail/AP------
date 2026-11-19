@@ -1,0 +1,82 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "16",
+      "minor": "4"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "sqrt(3)",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "OPPOSITE",
+      "of": "P"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "segments": [
+    {
+      "id": "s1",
+      "from": "P",
+      "to": "F'"
+    },
+    {
+      "id": "s2",
+      "from": "F'",
+      "to": "Q"
+    },
+    {
+      "id": "s3",
+      "from": "P",
+      "to": "Q",
+      "label": "5"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "t1",
+      "points": [
+        "P",
+        "F'",
+        "Q"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "타원에서 PF+PF′=2a=8이고 PQ가 중심 O를 지나므로 Q는 P와 O에 대하여 대칭이어서 F′Q=PF이다. 따라서 PF′+F′Q=8이고 삼각형 PF′Q의 둘레 13에서 PQ=13−8=5이다. O가 PQ의 중점이므로 OP=5/2이다. 따라서 답은 5/2이다.",
+  "accessibilityDescription": "가로로 긴 타원과 두 초점 F, F′가 있다. 원점을 지나는 지름의 양 끝점 P, Q와 F′를 잇는 삼각형이 색칠되어 있고 PQ의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "중심 O를 지나는 현 PQ와 F′Q=PF의 대칭을 보여 삼각형 PF′Q의 둘레가 8+PQ임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;단답형3&gt;<br>두 초점이 $F,F'$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$이 있다. 타원 위의 두 점 $P,Q$에 대하여 직선 $PQ$가 원점 $O$를 지나고 삼각형 $PF'Q$의 둘레의 길이가 $13$일 때, 선분 $OP$의 길이는? (단, 점 $P$는 제1사분면 위의 점이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

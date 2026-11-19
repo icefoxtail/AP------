@@ -1,0 +1,57 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "21",
+    "transverse": "Y"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1,
+      "coordinates": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOV",
+      "from": "O",
+      "to": "V",
+      "label": "2"
+    },
+    {
+      "id": "sOF",
+      "from": "O",
+      "to": "F",
+      "label": "5"
+    }
+  ],
+  "caption": "x²/a²−y²/b²=−1은 y²/b²−x²/a²=1이므로 주축이 y축이고 주축의 길이가 4에서 b=2이다. 초점 F(0, 5)에서 c=5이고 꼭짓점은 V(0, 2)이다. 쌍곡선에서 c²=a²+b²이므로 25=a²+4에서 a²=21이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "위아래로 갈라진 쌍곡선과 위쪽 가지의 꼭짓점 V, 초점 F가 y축 위에 있다. 원점에서 V, F까지의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "세로 주축 쌍곡선의 꼭짓점 V(0, 2)와 초점 F(0, 5)를 보여 b=2, c=5에서 a²=21을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=-1$의 한 초점의 좌표가 $(0,5)$이고 주축의 길이가 $4$일 때, 실수 $a^2$의 값을 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

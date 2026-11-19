@@ -1,0 +1,53 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "4",
+    "bSquared": "16",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1,
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=2x"
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-2x"
+    }
+  ],
+  "caption": "x²/4−y²/16=1에서 a=2, b=4이고 가로 주축 쌍곡선의 점근선은 y=±(b/a)x이다. 따라서 점근선은 y=±2x(점선)이고 꼭짓점은 V(2, 0)이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "좌우로 갈라진 쌍곡선과 두 점선 점근선 y=2x, y=−2x가 원점에서 만나고 오른쪽 꼭짓점 V의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "쌍곡선과 두 점근선 y=±2x를 함께 보여 점근선의 기울기 b/a=2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $\\dfrac{x^2}{4}-\\dfrac{y^2}{16}=1$의 점근선의 방정식을 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

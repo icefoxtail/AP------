@@ -1,0 +1,58 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "2",
+      "-1"
+    ],
+    "aSquared": "4",
+    "bSquared": "3",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "C",
+      "kind": "POINT",
+      "x": "2",
+      "y": "-1",
+      "coordinates": true
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "V",
+      "kind": "VERTEX",
+      "side": 1
+    }
+  ],
+  "segments": [
+    {
+      "id": "sGF",
+      "from": "F'",
+      "to": "F",
+      "dashed": true,
+      "label": "2√7"
+    }
+  ],
+  "caption": "3x²−12x−4y²−8y−4=0을 정리하면 (x−2)²/4−(y+1)²/3=1이다. 중심은 C(2, −1)이고 a²=4, b²=3이므로 c²=a²+b²=7, c=√7이다. 두 초점 F, F′는 중심에서 좌우로 √7씩 떨어져 있고 그 사이의 거리는 2c=2√7이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "오른쪽 위로 옮겨진 좌우로 갈라진 쌍곡선과 중심 C, 두 초점 F, F′, 오른쪽 꼭짓점 V가 있다. 두 초점 사이의 점선 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행이동한 쌍곡선의 중심 C(2, −1)와 두 초점 사이의 거리 2√7을 보여 c=√7을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $3x^2-12x-4y^2-8y-4=0$의 두 초점 사이의 거리를 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

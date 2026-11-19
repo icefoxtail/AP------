@@ -1,0 +1,306 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "8"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "6"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "add",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "4"
+              },
+              {
+                "kind": "expression",
+                "op": "mul",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "2"
+                  },
+                  {
+                    "kind": "expression",
+                    "op": "sqrt",
+                    "args": [
+                      {
+                        "kind": "integer",
+                        "value": "2"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "Q",
+    "O",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "BQ",
+      "refs": [
+        "B",
+        "Q"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "K"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ad",
+        "ownerSegment": "DA",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "B를 원점으로 C(6, 0), D(6, 8), A(0, 8)로 놓으면 Q(6, 8/5)이고 a=CD−BQ=(−6, 32/5)이므로 |a|=2√481/5이다. CD를 지름으로 하는 원의 중심은 O(6, 4), 반지름은 4이고 BO=2√13이므로 |b|=|BP|의 최댓값은 BO+4=2√13+4이다(그림의 P는 원 위의 한 예). a+b=QD+CP이고 CP는 중심 (0, 4), 반지름 4인 원 위에 있으므로 |a+b|의 최댓값은 32/5+4+4=72/5이다. 따라서 답은 (1) 2√481/5, (2) 2√13+4, (3) 72/5이다.",
+  "accessibilityDescription": "직사각형 ABCD와 변 CD를 지름으로 하는 원이 있다. B에서 변 CD 위의 점 Q와 원 위의 점 P로 가는 점선이 있고 변의 길이 6과 8이 표시되어 있다.",
+  "newVisualInformation": [
+    "직사각형 ABCD와 지름이 CD인 원, 내분점 Q, 원 위의 점 P와 점선 BQ, BP를 보여 벡터 a, b의 크기를 구하는 좌표 배치를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형2&gt;<br>선분 $CD$를 $1:4$로 내분하는 점을 $Q$, 직사각형 $ABCD$의 두 변 $AD=6, AB=8$, $\\overrightarrow{CD}-\\overrightarrow{BQ}=\\vec a$라 하자. 선분 $CD$를 지름으로 하고 중심이 $O$인 원 위를 움직이는 점 $P$에 대하여 $\\overrightarrow{BP}=\\vec b$라 할 때, 다음 물음에 답하시오.\n(1) $|\\vec a|$의 값을 구하시오. [2점]\n(2) $|\\vec b|$의 최댓값을 구하시오. [3점]\n(3) $|\\vec a+\\vec b|$의 최댓값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

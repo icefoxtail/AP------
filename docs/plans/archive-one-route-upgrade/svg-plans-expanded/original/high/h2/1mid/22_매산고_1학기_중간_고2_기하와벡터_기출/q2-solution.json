@@ -1,0 +1,85 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "16",
+      "minor": "7"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "end": "MINOR_POS"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOF",
+      "from": "O",
+      "to": "F",
+      "label": "3"
+    },
+    {
+      "id": "sOB",
+      "from": "O",
+      "to": "B",
+      "label": "√7"
+    },
+    {
+      "id": "sBF",
+      "from": "B",
+      "to": "F",
+      "label": "4"
+    },
+    {
+      "id": "sGF",
+      "from": "F'",
+      "to": "F",
+      "dashed": true,
+      "label": "6"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "O",
+        "F",
+        "B"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "x²/16+y²/7=1에서 a²=16, b²=7이고 c²=a²−b²=9이므로 c=3이다. 직각삼각형 OFB에서 OF=3, OB=√7, BF=a=4이다. 두 초점 F(3, 0), F′(−3, 0) 사이의 거리는 2c=6이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로로 긴 타원과 두 초점 F, F′, 위쪽 꼭짓점 B가 있다. 원점 O, F, B를 이은 직각삼각형이 색칠되어 있고 점선 FF′와 세 변의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "직각삼각형 OFB의 세 변 3, √7, 4로 c²=a²−b²를 보여 FF′=2c=6을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{7}=1$에 대하여 두 초점 사이의 거리를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

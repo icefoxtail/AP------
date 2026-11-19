@@ -1,0 +1,75 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "-4",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "POINT",
+      "x": "3",
+      "y": "-4",
+      "coordinates": true
+    },
+    {
+      "id": "S",
+      "kind": "ON_CONIC",
+      "x": "-9",
+      "branch": "NEG",
+      "coordinates": true
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "-1",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "N",
+      "kind": "POINT",
+      "x": "9",
+      "y": "0",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "tangent": true,
+      "at": "S"
+    },
+    {
+      "id": "t2",
+      "tangent": true,
+      "at": "T",
+      "dashed": true
+    }
+  ],
+  "caption": "y²=−16x에서 p=−4이고 접선은 ty=x−4t²이다. 점 P(3, −4)를 지나므로 4t²−4t−3=0에서 t=3/2 또는 −1/2이다. 기울기 1/t가 양수인 t=3/2의 접선(실선)은 접점 S(−9, −12)에서 닿고 기울기 2/3이다. 다른 접선(점선)은 접점 T(−1, 4)에서 닿고 기울기 −2이다. 양의 기울기 접선의 x절편은 4t²=9이므로 N(9, 0)이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽으로 열린 포물선과 곡선 밖의 점 P가 있다. P에서 곡선에 그은 두 접선이 아래쪽 접점 S와 위쪽 접점 T에서 닿고, 실선 접선이 x축과 만나는 점 N의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "점 P(3, −4)에서 포물선에 그은 두 접선과 접점 S, T, 양의 기울기 접선의 x절편 N(9, 0)을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $(3,-4)$에서 포물선 $y^2=-16x$에 그은 접선 중 기울기가 양수인 접선의 $x$절편을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
