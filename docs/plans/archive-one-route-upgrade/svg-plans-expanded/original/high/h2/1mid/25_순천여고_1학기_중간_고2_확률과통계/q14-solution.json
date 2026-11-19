@@ -1,0 +1,70 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 6,
+      "rows": 3
+    },
+    "points": {
+      "A": [
+        0,
+        3
+      ],
+      "B": [
+        6,
+        0
+      ],
+      "P": [
+        4,
+        2
+      ]
+    },
+    "from": "A",
+    "to": "B",
+    "forbidden": [
+      [
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      [
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    ],
+    "counts": true
+  },
+  "caption": "끊어진 도로를 뺀 도로망에서 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다. 한 교차점의 수는 왼쪽과 위쪽 교차점의 수를 더한 값이고, 끊어진 길 쪽은 더하지 않는다. B에 62, P에 5가 적힌다. P를 지나는 경로는 5×6=30가지이므로 P를 지나지 않는 경로는 62−30=32가지이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "도로망의 각 교차점 위에 A에서 오는 최단 경로의 수와 끊어진 세 도로, P와 B의 위치가 표시된 그림이다.",
+  "newVisualInformation": [
+    "끊어진 도로 세 곳을 뺀 교차점별 누적 경로 수(B에 62, P에 5)가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래의 그림과 같은 도로망이 있다. A지점에서 출발하여 B지점까지 최단거리로 갈 때, P지점을 거치지 않고 가는 경우의 수는? (단, 끊어진 도로는 통행할 수 없다.) [4.4점]<br><img src=\"assets/images/25_순천여고_1학기_중간_고2_확률과통계/q14-problem-v2.svg\" alt=\"A, B, P가 표시된 도로망\" style=\"display:block; margin:10px auto; width:300px; max-width:100%; height:auto;\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
