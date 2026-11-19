@@ -10,7 +10,15 @@
     ],
     "phasePi": "0",
     "sourceDomain": {
-      "kind": "ALL_REALS_WITH_TAN_POLES"
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
     },
     "domain": [
       0,
@@ -22,24 +30,23 @@
       -3,
       3
     ],
-    "referenceLines": [
-      {
-        "id": "h",
-        "y": "sqrt(3)/3",
-        "intersectionCount": 2
-      }
-    ],
     "axisTickPi": true,
     "axisTickValues": {
       "x": [
         "1/6",
         "1/2",
         "7/6",
-        "3/2",
-        "2"
+        "3/2"
       ],
-      "y": [
-        "sqrt(3)/3"
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "sqrt(3)/3"
+        }
       ]
     }
   },
