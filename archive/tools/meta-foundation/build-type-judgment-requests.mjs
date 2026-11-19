@@ -145,14 +145,18 @@ export function chooseScope(registry, aliases, row, ptKey, { allowPackAdditions 
   };
   if (rowCourse) {
     const kinds = new Map(all.map(b => [b, aliases.relation(rowCourse, b.standardCourse)]));
-    pool = all.filter(b => ["same", "alias"].includes(kinds.get(b)));
-    if (pool.length) relation = pool.some(b => kinds.get(b) === "alias") && !pool.some(b => kinds.get(b) === "same") ? "alias" : "same";
-    else {
-      pool = all.filter(b => kinds.get(b) === "successor");
-      relation = "successor";
-      if (!pool.length) { pool = reachPool(rowCourse); relation = "reach"; }
-      if (!pool.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
-    }
+    // Relations are tried in order (same/alias, successor, reach); a relation whose bindings all belong to another curriculum than the row's
+    // (e.g. a 2015 row that carries the 2022 course name) does not end the search: the next relation can still name the row's own curriculum.
+    const sameKinds = all.filter(b => ["same", "alias"].includes(kinds.get(b)));
+    const attempts = [
+      [sameKinds, sameKinds.some(b => kinds.get(b) === "alias") && !sameKinds.some(b => kinds.get(b) === "same") ? "alias" : "same"],
+      [all.filter(b => kinds.get(b) === "successor"), "successor"],
+      // reach is only for courses that stand in no other relation (the registrar tries same/alias/successor first and never reaches then)
+      [reachPool(rowCourse).filter(b => !kinds.get(b)), "reach"],
+    ].filter(([p]) => p.length);
+    if (!attempts.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
+    const fit = attempts.find(([p, rel]) => !rowCur || ["successor", "reach"].includes(rel) || p.some(b => b.curriculum === rowCur)) || attempts[0];
+    [pool, relation] = fit;
   } else {
     const grades = pathGrades(row);
     if (!grades.length) return { skip: "SCOPE_ROW_COURSE_UNKNOWN" };
@@ -202,8 +206,8 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false }) {
-  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, excludeUids = null }) {
+  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 }, embeddedDiffers: { registeredDots: 0, registeredEmbedded: 0, registeredJudgment: {} } };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
   const wanted = exams ? new Set(exams.map(normalizeExam)) : null;
@@ -218,6 +222,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if (row.decision !== "PICK") { skip(row, "DECISION_UNKNOWN"); continue; }
     const m = ctx.records.get(row.uid);
     if (!m) { skip(row, "ROW_NOT_IN_CANONICAL_METADATA"); continue; }
+    if (excludeUids?.has(row.uid)) { skip(row, "ALREADY_IN_OTHER_REQUEST"); continue; } // --exclude-uids: a question another pending request already carries
     if (normalizeExam(row.exam) !== normalizeExam(m.sourceArchiveFile)) { skip(row, "ROW_EXAM_DIFFERS_FROM_CANONICAL"); continue; }
     const file = normalizeExam(m.sourceArchiveFile);
     if (wanted && !wanted.has(file)) continue; // outside the requested exams: not a skip, not counted
@@ -236,7 +241,28 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if (examRows.length !== bank.length) { for (const { row } of entries) skip(row, "EXAM_ROW_COUNT_DIFFERS_FROM_SOURCE"); continue; }
     if ((ctx.identityCountBySource.get(file) || 0) !== bank.length) { for (const { row } of entries) skip(row, "EXAM_IDENTITY_COUNT_DIFFERS_FROM_SOURCE"); continue; }
     const items = [];
-    for (const { row, m } of entries) {
+    for (let { row, m } of entries) {
+      // 시험지 JS에 적힌 유형과 판정이 다를 때(2026-11-20 관제 결정): dots 판정은 그대로 등록(사용자 원칙), dots가 아닌 판정(Sonnet 등)은 적힌 유형이
+      // 등록부 ACTIVE 키이고 TPL 부모가 맞고 그 시험지 과정 범위 안이면 적힌 유형을 등록하고 새 판정은 근거 문장에만 남긴다. 아니면 새 판정을 등록한다.
+      // 등록기는 적힌 값과 등록 값의 차이를 typeApproval.examEmbeddedType에 기록할 뿐 거절하지 않는다.
+      let embKind = null;
+      const emb = bank[m.sourceOrdinal - 1], embPt = text(emb?.problemTypeKey), embTpl = text(emb?.templateKey);
+      if (embPt && (embPt !== row.pt || (embTpl && embTpl !== text(row.tpl)))) {
+        if ((row.judge || "dots") === "dots") embKind = "dots";
+        else {
+          const ep = ctx.registry.pt.get(embPt), et = embTpl ? ctx.registry.tpl.get(embTpl) : null;
+          let why = "";
+          if (!ep || ep.status !== "ACTIVE") why = "EMBEDDED_PT_NOT_ACTIVE";
+          else if (embTpl && (!et || et.status !== "ACTIVE")) why = "EMBEDDED_TPL_NOT_ACTIVE";
+          else if (embTpl && et.parentProblemTypeKey !== embPt) why = "EMBEDDED_TPL_PARENT_DIFFERS";
+          else { const fit = chooseScope(ctx.registry, aliases, m, embPt, { allowPackAdditions: false }); if (fit.skip || fit.packAddition || fit.relation === "reach") why = "EMBEDDED_OUT_OF_COURSE_SCOPE"; }
+          if (why) embKind = why;
+          else {
+            embKind = "embedded";
+            row = { ...row, pt: embPt, tpl: embTpl || null, step: text(row.step) + " [시험지에 적힌 유형을 등록. 새 판정(" + row.judge + "): " + row.pt + (text(row.tpl) ? "/" + text(row.tpl) : "") + "]" };
+          }
+        }
+      }
       // A status is a tag on a value: a field with no value has nothing to protect, whatever its tag says (approved_* on an empty field is fillable).
       const status = { pt: empty(m.problemTypeKey) ? "" : String(m.fieldStatus?.problemType ?? ""), tpl: empty(m.templateKey) ? "" : String(m.fieldStatus?.template ?? "") };
       let replace = false;
@@ -285,12 +311,16 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
+      // 시험지 JS에 적힌 유형이 등록할 값과 다르면 카탈로그가 meta-foundation 행에서 그 둘을 충돌(metadataConflicts)로 세고 소비자 검증이 거절한다
+      // (verify-changed-uid-consumer-approval METADATA_CONFLICT; 등록기도 같은 이유로 거절). 이런 문항은 요청에 넣지 않고 사유를 세어 남긴다.
+      // 적힌 유형을 바꾸려면 시험지 JS를 고치는 별도 절차가 필요하다. 위 규칙으로 적힌 유형이 등록 값이 된 문항은 같아서 통과한다.
       if (String(m.metadataRevision || "").startsWith("meta-foundation:") &&
           ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
       const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
       if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
+      if (embKind) { const ed = stats.embeddedDiffers; if (embKind === "dots") ed.registeredDots++; else if (embKind === "embedded") ed.registeredEmbedded++; else ed.registeredJudgment[embKind] = (ed.registeredJudgment[embKind] || 0) + 1; }
       items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null, replace });
     }
     // Replacements of draft values never share a request with the blank-field registrations (they are held back as the last batch).
@@ -320,7 +350,10 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     // The carrier of the pack changes sorts before every other request ("tc" < "td"): the inbox is registered in name order.
     const carrier = file === carrierFile && !replacing;
     const requestId = `${carrier ? "tc" : replacing ? "tr" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
-    const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge: "dots", resultSource,
+    // The judge named on a result line (default dots); a request whose lines name different judges is recorded as "mixed".
+    const judges = [...new Set(items.map(({ row }) => text(row.judge) || "dots"))];
+    const judge = judges.length === 1 ? judges[0] : "mixed";
+    const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge, resultSource,
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
       rows: items.map(({ row, m }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
         step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file })),
@@ -330,7 +363,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     files.set(ledgerPath, ledgerText);
     const request = { schemaVersion: REQUEST_SCHEMA, requestId, examUid: path.posix.basename(file, ".js"), scope: "PARTIAL_UIDS", fieldScope: "TYPE_ONLY",
       sourceArchiveFile: file, expectedSourceBlobSha1: ctx.blobOf(file, bytes), expectedQuestionCount: bank.length,
-      approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge: "dots",
+      approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge,
         decisionRef: { document: DECISION_DOCUMENT, section: DECISION_SECTION }, resultSource, evidenceRefs: [ref] },
       ...(carrier ? { registryChanges: [...[...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => {
         const before = ctx.registry.packs.get(packId);
@@ -456,6 +489,7 @@ export function parseCli(argv) {
     else if (k === "--bundles-only") args.bundlesOnly = true;
     else if (k === "--owner-pack") { const [b, pack] = value().split("="); if (!b || !pack) throw new Error("INVALID_OWNER_PACK"); (args.ownerPackByBundle ||= new Map()).set(b, pack); }
     else if (k === "--replace-draft-types") args.replaceDraft = true;
+    else if (k === "--exclude-uids") args.excludeUidsFile = value();
     else if (k === "--max-requests") { args.maxRequests = Number(value()); if (!Number.isInteger(args.maxRequests) || args.maxRequests < 1) throw new Error("INVALID_MAX_REQUESTS"); }
     else throw new Error(`INVALID_ARGUMENT:${k}`);
   }
@@ -479,7 +513,8 @@ export function run(args) {
     args.allowPackAdditions = true;
   }
   const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy,
-    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft });
+    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft,
+    excludeUids: args.excludeUidsFile ? new Set(fs.readFileSync(args.excludeUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null });
   // One batch = the first N requests in registration (file name) order; the rest are left for the next run on a main that holds this batch.
   if (args.maxRequests) {
     const keep = new Set(built.requests.map(r => r.requestId).sort().slice(0, args.maxRequests));
@@ -492,6 +527,7 @@ export function run(args) {
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase,
     bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly, replaceDraftTypes: args.replaceDraft, maxRequests: args.maxRequests };
   if (newKeys) summary.newKeys = { bundleTables: bundleOrigin, bundles: { pt: newKeys.stats.ptBundles, tpl: newKeys.stats.tplBundles }, lines: newKeys.stats.lines, ...built.stats.newKeys };
+  summary.embeddedDiffers = built.stats.embeddedDiffers;
   if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
   summary.typeSelectable = { scope: "requested exams", estimate: "catalog metaHint gate replicated; builder not run", ...typeSelectable(planCtx, built.requests.map(r => r.sourceArchiveFile), planned) };

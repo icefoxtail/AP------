@@ -396,3 +396,9 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 문제지 만들기로 넘길 때는 새 길을 만들지 않고 이미 있는 "고른 문항 UID 목록" 범위(`?uid=` 경로, `applyUidRoute`)를 쓴다. 서버가 같은 목록으로 `selection_filters`를 재검증하므로 새 조건 키가 없다(`tests/archive2-draft-rows.test.js` "다시 뽑은 문제지 → 실제 저장 요청 범위 → 서버 재현 통과": Worker 소스의 FILTER_KEYS를 읽고 `core.matches`·`generalUseEligibility`로 재현). 넘기기 전에 만들던 문제지는 저장하고 작업 화면을 새로 연다.
 - 초안에는 `derive`({baseUids, typeMode, level, source, publisher, seed, exclude, resultUids, 요약 문구})를 같이 저장한다. 다시 열면 같은 문항과 같은 안내가 보이고, "다시 뽑기"는 새 seed에 앞서 준 문항(`exclude`+`resultUids`)을 빼고 뽑는다. 선택 문항이 `resultUids`와 달라지면(문항 교체 등) 안내는 숨긴다. 이유: 고친 문제지를 "다시 만든 그대로"라고 말하면 틀린 안내가 된다.
 - 대응 과목(대수↔수학I 등)은 `archive2-derive.js`가 통합 단원 층으로 한 묶음으로 보고, 학기는 과목 문항을 거르지 않는다(#2594와 같은 규칙).
+
+## 원본 시험지·해설·정답 열기는 승인 메타 sidecar를 기다리지 않는다 (2026-11-20, 선생님 속도 실측 1순위)
+
+- 실측(이 PC, 캐시 없는 새 프로필): 시험지 하나 열기가 `data/question_metadata.json`(압축 전 87.6MB, gzip 15.3MB)을 받고 해석한 뒤에야 첫 문항을 그렸다(전송 17.7MB 중 15.3MB, 20Mbps로 약 7초). 그림 그리는 데는 이 메타를 읽지 않는다: `render-authority.js` 등에 `_archiveMetadata`·`standardUnitKey` 사용이 없고, 채워지는 `standardUnitKey` 등은 반 출제 등록(`submitQr=1` / `osqr=1`)이 서버로 보내는 값뿐이다.
+- `engine.html`은 등록 주소일 때만 `question-meta.js`를 불러온다(`<script id="engine-metadata-gate">`, 같은 자리에서 `document.write`라 순서·`await window.__ARCHIVE_METADATA_READY__`는 그대로). 평소 열기(`engine.html?data=exams/<file>&mode=exam|sol|ans`)는 sidecar 요청이 없다. 이유: 믹스 리더(`output-metadata-loader.js`)가 이미 같은 규칙이다. 테스트: `tests/archive-engine-original-metadata-on-demand.test.js`.
+- 이 규칙을 되돌리지 않는다. 등록 주소에 새 이름이 생기면 위 게이트의 조건에 함께 넣는다.

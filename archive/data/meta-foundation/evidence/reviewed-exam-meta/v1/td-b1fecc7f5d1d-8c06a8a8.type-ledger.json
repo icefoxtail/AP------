@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b1fecc7f5d1d-8c06a8a8",
+  "sourceArchiveFile": "original/high/h2/1mid/23_부영여고_1학기_중간_고2_대수.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-r-20261120",
+    "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d27c3375c27d4da3983ae203c21adc7bdbe9a3af7bfb82863df6762a2709a6c5",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": null,
+      "step": "코사인 그래프의 진폭, 주기, 평행이동을 읽어 a,b,c를 정한다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4a0989e98b9de25a07a18748dece778b860a5652678016924a3a921928949331",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+      "templateKey": null,
+      "step": "sin x=t로 치환해 이차식으로 만들고 t의 범위에서 k의 범위를 구한다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    }
+  ]
+}
