@@ -1,0 +1,53 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-0.5",
+        "text": "a"
+      },
+      {
+        "x": "0",
+        "text": "20"
+      },
+      {
+        "x": "1.5",
+        "text": "23"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-0.5",
+        "to": "1.5",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.6247"
+      }
+    ]
+  },
+  "caption": "X는 N(20, 4)이므로 평균 20, 표준편차 2이다. 23은 z=1.5이고 P(Z≤1.5)=0.9332이다. 색칠한 구간의 넓이가 0.6247이면 경계 a의 왼쪽 넓이가 0.9332−0.6247=0.3085이고 P(Z≤−0.5)=0.3085이므로 a는 z=−0.5이다. a=20−0.5×2=19이고 답은 ④이다.",
+  "accessibilityDescription": "평균 20에 대응하는 중심 0의 표준정규분포 곡선이며 a와 23에 해당하는 z=−0.5, 1.5 위치가 표시되고 그 사이가 칠해져 있다.",
+  "newVisualInformation": [
+    "구간이 z=−0.5부터 1.5까지이고 넓이가 0.6247이 되는 경계 a가 z=−0.5임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 확률변수 $X$가 정규분포 $N(20, 4)$을 따를 때, $P(a \\le X \\le 23)=0.6247$를 만족하는 상수 $a$의 값은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
