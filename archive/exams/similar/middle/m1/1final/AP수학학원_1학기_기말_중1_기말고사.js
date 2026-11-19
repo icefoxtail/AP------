@@ -23,7 +23,7 @@ window.questionBank = [
       "$z \\div 3 = 3z$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 곱셈 기호는 생략하고 숫자를 문자 앞에 쓰며, 거듭제곱은 지수를 사용하여 나타낸다.\n조건 정리: 각 보기의 기호 생략 규칙을 확인한다.\n풀이 과정:\n① $(-2) \\times a = -2a$이다.\n② $b \\times c = bc$이다.\n③ $x \\times x \\times x = x^3$으로 올바른 표현이다.\n④ $(y+2) \\times 3 = 3(y+2)$이다.\n⑤ $z \\div 3 = \\frac{z}{3}$이다.\n결론: 따라서 정답은 ③이다.",
+    "solution": "[키포인트] 곱셈 기호는 생략하고 숫자를 문자 앞에 쓰며, 거듭제곱은 지수를 사용하여 나타낸다.\n조건 정리: 각 보기의 기호 생략 규칙을 확인한다.\n풀이 과정:\n① $(-2) \\times a = -2a$이다.\n② 문자의 곱은 알파벳 순서로 쓰는 약속에 따라 $b \\times c = bc$이다($cb$는 약속에 어긋난다).\n③ $x \\times x \\times x = x^3$으로 올바른 표현이다.\n④ $(y+2) \\times 3 = 3(y+2)$이다.\n⑤ $z \\div 3 = \\frac{z}{3}$이다.\n결론: 따라서 정답은 ③이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
