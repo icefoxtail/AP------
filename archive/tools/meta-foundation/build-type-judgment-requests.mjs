@@ -145,14 +145,18 @@ export function chooseScope(registry, aliases, row, ptKey, { allowPackAdditions 
   };
   if (rowCourse) {
     const kinds = new Map(all.map(b => [b, aliases.relation(rowCourse, b.standardCourse)]));
-    pool = all.filter(b => ["same", "alias"].includes(kinds.get(b)));
-    if (pool.length) relation = pool.some(b => kinds.get(b) === "alias") && !pool.some(b => kinds.get(b) === "same") ? "alias" : "same";
-    else {
-      pool = all.filter(b => kinds.get(b) === "successor");
-      relation = "successor";
-      if (!pool.length) { pool = reachPool(rowCourse); relation = "reach"; }
-      if (!pool.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
-    }
+    // Relations are tried in order (same/alias, successor, reach); a relation whose bindings all belong to another curriculum than the row's
+    // (e.g. a 2015 row that carries the 2022 course name) does not end the search: the next relation can still name the row's own curriculum.
+    const sameKinds = all.filter(b => ["same", "alias"].includes(kinds.get(b)));
+    const attempts = [
+      [sameKinds, sameKinds.some(b => kinds.get(b) === "alias") && !sameKinds.some(b => kinds.get(b) === "same") ? "alias" : "same"],
+      [all.filter(b => kinds.get(b) === "successor"), "successor"],
+      // reach is only for courses that stand in no other relation (the registrar tries same/alias/successor first and never reaches then)
+      [reachPool(rowCourse).filter(b => !kinds.get(b)), "reach"],
+    ].filter(([p]) => p.length);
+    if (!attempts.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
+    const fit = attempts.find(([p, rel]) => !rowCur || ["successor", "reach"].includes(rel) || p.some(b => b.curriculum === rowCur)) || attempts[0];
+    [pool, relation] = fit;
   } else {
     const grades = pathGrades(row);
     if (!grades.length) return { skip: "SCOPE_ROW_COURSE_UNKNOWN" };
@@ -202,7 +206,7 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false }) {
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, excludeUids = null }) {
   const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
@@ -218,6 +222,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if (row.decision !== "PICK") { skip(row, "DECISION_UNKNOWN"); continue; }
     const m = ctx.records.get(row.uid);
     if (!m) { skip(row, "ROW_NOT_IN_CANONICAL_METADATA"); continue; }
+    if (excludeUids?.has(row.uid)) { skip(row, "ALREADY_IN_OTHER_REQUEST"); continue; } // --exclude-uids: a question another pending request already carries
     if (normalizeExam(row.exam) !== normalizeExam(m.sourceArchiveFile)) { skip(row, "ROW_EXAM_DIFFERS_FROM_CANONICAL"); continue; }
     const file = normalizeExam(m.sourceArchiveFile);
     if (wanted && !wanted.has(file)) continue; // outside the requested exams: not a skip, not counted
@@ -285,8 +290,8 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
-      if (String(m.metadataRevision || "").startsWith("meta-foundation:") &&
-          ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
+      // A type written into the exam file by its author is not a reason to refuse the direct judgment (the judgment is the canonical value, 2026-11-17;
+      // the registrar records the embedded value and whether it matches in typeApproval.examEmbeddedType).
       const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
@@ -320,7 +325,10 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     // The carrier of the pack changes sorts before every other request ("tc" < "td"): the inbox is registered in name order.
     const carrier = file === carrierFile && !replacing;
     const requestId = `${carrier ? "tc" : replacing ? "tr" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
-    const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge: "dots", resultSource,
+    // The judge named on a result line (default dots); a request whose lines name different judges is recorded as "mixed".
+    const judges = [...new Set(items.map(({ row }) => text(row.judge) || "dots"))];
+    const judge = judges.length === 1 ? judges[0] : "mixed";
+    const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge, resultSource,
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
       rows: items.map(({ row, m }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
         step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file })),
@@ -330,7 +338,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     files.set(ledgerPath, ledgerText);
     const request = { schemaVersion: REQUEST_SCHEMA, requestId, examUid: path.posix.basename(file, ".js"), scope: "PARTIAL_UIDS", fieldScope: "TYPE_ONLY",
       sourceArchiveFile: file, expectedSourceBlobSha1: ctx.blobOf(file, bytes), expectedQuestionCount: bank.length,
-      approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge: "dots",
+      approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge,
         decisionRef: { document: DECISION_DOCUMENT, section: DECISION_SECTION }, resultSource, evidenceRefs: [ref] },
       ...(carrier ? { registryChanges: [...[...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => {
         const before = ctx.registry.packs.get(packId);
@@ -455,6 +463,7 @@ export function parseCli(argv) {
     else if (k === "--bundles-dir") args.bundlesDir = value();
     else if (k === "--bundles-only") args.bundlesOnly = true;
     else if (k === "--replace-draft-types") args.replaceDraft = true;
+    else if (k === "--exclude-uids") args.excludeUidsFile = value();
     else if (k === "--max-requests") { args.maxRequests = Number(value()); if (!Number.isInteger(args.maxRequests) || args.maxRequests < 1) throw new Error("INVALID_MAX_REQUESTS"); }
     else throw new Error(`INVALID_ARGUMENT:${k}`);
   }
@@ -478,7 +487,8 @@ export function run(args) {
     args.allowPackAdditions = true;
   }
   const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy,
-    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft });
+    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft,
+    excludeUids: args.excludeUidsFile ? new Set(fs.readFileSync(args.excludeUidsFile, "utf8").split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith("#"))) : null });
   // One batch = the first N requests in registration (file name) order; the rest are left for the next run on a main that holds this batch.
   if (args.maxRequests) {
     const keep = new Set(built.requests.map(r => r.requestId).sort().slice(0, args.maxRequests));

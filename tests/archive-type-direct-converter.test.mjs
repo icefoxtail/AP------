@@ -160,6 +160,27 @@ test("scope follows the strict lane and the alias file: another spelling or the 
   assert.equal(sc(strict, { curriculum: "2022", standardCourse: "공통수학1" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });
 
+test("a row that carries the other curriculum's course name falls back to the successor course instead of being refused", () => {
+  const reg = makeRegistry({ problemTypes: [{ problemTypeKey: "PT_X", status: "ACTIVE", ownerPack: "P2" }], templates: [],
+    bindings: [{ problemTypeKey: "PT_X", curriculum: "2022", standardCourse: "공통수학1", ownerPack: "P2", status: "ACTIVE" },
+      { problemTypeKey: "PT_X", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
+    packs: new Map([["P2", { curricula: ["2015", "2022"], standardCourses: ["공통수학1", "수학(상)"] }]]) });
+  // 2015 row named with the 2022 course: the same-course binding is 2022 only, the successor 수학(상) exists in 2015
+  const r = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2015", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(r.scope, { curriculum: "2015", standardCourse: "수학(상)" });
+  assert.equal(r.relation, "successor");
+  // the same-course binding still wins when it exists in the row's curriculum
+  const own = chooseScope(reg, aliases, { sourceArchiveFile: EXAM, curriculum: "2022", standardCourse: "공통수학1" }, "PT_X");
+  assert.deepEqual(own.scope, { curriculum: "2022", standardCourse: "공통수학1" });
+});
+
+test("--exclude-uids leaves a question that another pending request already carries out of the new requests", () => {
+  const { requests, skipped } = plan({ excludeUids: new Set(["uid1"]) });
+  assert.equal(requests[0].items.some(i => i.questionUid === "uid1"), false);
+  assert.ok(skipped.some(s => s.uid === "uid1" && s.reason === "ALREADY_IN_OTHER_REQUEST"));
+  assert.equal(parseCli(["--results", "r", "--exclude-uids", "f.txt"]).excludeUidsFile, "f.txt");
+});
+
 test("a pack that does not declare the binding course is skipped by default and widened append-only on request", () => {
   const narrow = { ...makeRegistry({ problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }], templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }],
     bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" }],
