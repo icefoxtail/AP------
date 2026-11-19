@@ -376,3 +376,14 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 키는 한 글자도 바꾸지 않는다: 팩 `id`, MIXED 키 `assessment_<팩번호>_<문항구성해시>`, localStorage `mixedQuestions_/mixedMeta_assessment_…`. 구역은 닫힌 채로 시작하고 열 때만 공용 코드와 팩 자료 파일 2개를 받는다(첫 화면 요청 0). 구역은 작업공간 상태에 값을 더하지 않고(상태는 `archive2-quick-packs.js` 안), `archive2-workspace-compose.js renderQuick`이 `Archive2QuickPacks.markup()`을 끼워 넣는다.
 - 탭은 중간·기말평가·모의고사뿐이다(사용자 결정 2026-11-19): 단원평가는 즉석 조립과 겹치고, 진단평가는 즉석 조립 상품으로 따로 만든다. 팩 자료 파일에서는 지우지 않는다(옛 보관함 화면과 이미 나간 출제·학생 복습이 packId로 연다). 목록은 팩 수·문항 구성을 고정하지 않고 자료에서 읽는다.
 - 테스트: `tests/archive2-quick-packs.test.js`(구역·공용 코드), `tests/assessment-assign-panel.test.js`·`tests/assessment-open-resilience.test.js`(공용 코드를 보관함 스크립트와 함께 vm에서 실행).
+
+## 기준 시험지로 다시 만들기: 화면 연결 (2026-11-20, PR1)
+
+- 화면 코드는 `archive/archive2-workspace-derive.js`(작업 화면 여덟째 파일, recent 뒤·main 앞), 선정은 `archive2-derive.js`(순수 함수), 출력 창의 단추는 `archive/archive2-derive-entry.js`다. 이유: 선정 규칙을 화면과 섞으면 진단평가·빠른 평가가 같이 쓰지 못한다.
+- 진입 셋: (1) 출력 창(`mixed_engine.html`, 빠른 평가 결과·출제 내역에서 연 작은 창)의 "이 시험지로 다시 만들기"(PC는 도구줄, 휴대폰은 ⋯ 메뉴) (2) 출제 내역 줄의 "다시 만들기"(서버가 돌려주는 출제 당시 시험지의 UID로) (3) 문제지 만들기 결과 요약의 "다시 뽑기". 출력 창에는 카탈로그가 없어서 문항 식별자(UID·원본 파일·번호, 문제 내용은 아님)만 `postMessage`로 이 창을 연 작업 화면에 보내고, 작업 화면이 대화 상자를 연다. 응답이 없으면(작업 화면이 닫힘) `workspace.html?derive=<uid>…`를 새 창으로 연다. 이유: 작은 창에서 카탈로그를 다시 받으면 분 단위로 걸린다.
+- 선택은 유형(같은/다른) · 난이도(기본/응용/심화) · 어디서 뽑을지(전체/학교 기출/유사/교과서(출판사)/교재). 결과는 단 이름 문구(`같은 세부 유형 15 · 같은 유형 6 …`, `기준보다 쉬움 n · 같음 n · 어려움 n`)와 모자람·완화 안내로 보여 주고 막지 않는다. 내부 키는 화면에 내지 않는다.
+- 빈 문항(정답 없음·해설 없음): 카탈로그에는 값이 없으므로 뽑은 문항을 `Source.restore`로 원본에서 확인해 빈 것을 `exclude`에 더하고 다시 뽑는다(최대 5회). 그래도 비면 학생에게 주지 않고 빼며 안내한다. 한 번 빈 것으로 본 UID는 같은 카탈로그에서 다시 확인하지 않는다.
+- UID가 없는 옛 출제본: 원본 파일 + 문항 순번(없으면 번호)으로 카탈로그에서 UID를 되찾는다. 하나도 못 찾으면 "옛 형식 출제본이라 다시 뽑기를 지원하지 않습니다"를 보이고 대화 상자는 열지 않는다.
+- 문제지 만들기로 넘길 때는 새 길을 만들지 않고 이미 있는 "고른 문항 UID 목록" 범위(`?uid=` 경로, `applyUidRoute`)를 쓴다. 서버가 같은 목록으로 `selection_filters`를 재검증하므로 새 조건 키가 없다(`tests/archive2-draft-rows.test.js` "다시 뽑은 문제지 → 실제 저장 요청 범위 → 서버 재현 통과": Worker 소스의 FILTER_KEYS를 읽고 `core.matches`·`generalUseEligibility`로 재현). 넘기기 전에 만들던 문제지는 저장하고 작업 화면을 새로 연다.
+- 초안에는 `derive`({baseUids, typeMode, level, source, publisher, seed, exclude, resultUids, 요약 문구})를 같이 저장한다. 다시 열면 같은 문항과 같은 안내가 보이고, "다시 뽑기"는 새 seed에 앞서 준 문항(`exclude`+`resultUids`)을 빼고 뽑는다. 선택 문항이 `resultUids`와 달라지면(문항 교체 등) 안내는 숨긴다. 이유: 고친 문제지를 "다시 만든 그대로"라고 말하면 틀린 안내가 된다.
+- 대응 과목(대수↔수학I 등)은 `archive2-derive.js`가 통합 단원 층으로 한 묶음으로 보고, 학기는 과목 문항을 거르지 않는다(#2594와 같은 규칙).
