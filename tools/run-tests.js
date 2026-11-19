@@ -248,6 +248,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-preview-feedback.test.cjs']
   },
   {
+    label: 'tests/archive2-preview-stable.test.cjs',
+    args: ['--test', 'tests/archive2-preview-stable.test.cjs']
+  },
+  {
     label: 'tests/archive2-output-memory-bridge.test.cjs',
     args: ['--test', 'tests/archive2-output-memory-bridge.test.cjs']
   },

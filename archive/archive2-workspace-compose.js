@@ -1234,17 +1234,75 @@
     return `<p class="visually-hidden" role="status" aria-live="polite" data-cz-announce>${esc(state.composeAnnounce)}</p><div class="intro cz-intro"><div><h1>${esc(state.title)} <span class="badge">${esc(state.round)}차</span></h1><p class="muted">${state.derivationSource ? "저장한 시험지에서 만든 새 문제지입니다. 원래 시험지는 그대로 보존됩니다." : ""}</p></div><div class="actions"><button type="button" class="phone-quick-link" data-view="five-minute">빠른 평가</button>${button("new-draft", "새 작업")}</div></div>
     <div class="cz${state.selected.length ? " has-result" : ""}"><section class="cz-conditions" aria-label="문제지 조건" data-cz-conditions ${unknown ? "inert" : ""}>${renderConditions()}</section><section class="cz-result" aria-label="만들어진 문제지" data-cz-result>${renderResult(r)}</section></div>${renderMobileActions(r)}`;
   }
+  // 준비(prepare)가 만드는 문제지가 달라지는 입력 전부: 문항 순서(UID), 머리글, 문항 수/쪽, 회차, QR, 파생 원본.
+  // 미리보기 서명(preview part)도 이 값에서 출발한다.
+  function prepareSignature() {
+    return JSON.stringify([
+      state.selected.map((r) => r.questionUid),
+      state.header,
+      state.qpp,
+      state.round,
+      state.includeQr,
+      state.derivationSource,
+    ]);
+  }
+  // 진행 중인 준비 하나: 같은 서명으로 겹쳐 부르면 이 Promise를 같이 기다린다(복원은 한 번만 돈다).
+  // 서명이 바뀌면 새 준비가 이 자리를 차지하고, 늦게 끝난 옛 준비는 결과를 버린다(buildPrepared 끝의 서명 대조).
+  let prepareFlight = null;
   async function prepare() {
-    const records = state.selected,
-      signature = JSON.stringify([
-        records.map((r) => r.questionUid),
-        state.header,
-        state.qpp,
-        state.round,
-        state.includeQr,
-        state.derivationSource,
-      ]);
+    const signature = prepareSignature();
     if (state.prepared.signature === signature) return state.prepared;
+    if (prepareFlight?.signature === signature) return prepareFlight.promise;
+    const flight = { signature, promise: null };
+    flight.promise = buildPrepared(signature).finally(() => {
+      if (prepareFlight === flight) prepareFlight = null;
+    });
+    prepareFlight = flight;
+    return flight.promise;
+  }
+  // 문항 하나를 바꿔도 나머지 49문항은 다시 복원하지 않는다. 다만 재사용 전에 복원이 확인하던 것(원본 파일 SHA,
+  // 문항 지문·정답·해설·그림 해시, UID)을 같은 기준으로 다시 확인하고, 하나라도 어긋나면 그 문항은 Source.restore가
+  // 처음부터 복원·검증한다(재사용은 검증을 건너뛰는 길이 아니다).
+  async function stillRestorable(prior, record) {
+    try {
+      const file = record.sourceFile,
+        ordinal = record.sourceOrdinal;
+      if (
+        prior.questionUid !== record.questionUid ||
+        prior._sourceFile !== file ||
+        prior.sourceOrdinal !== ordinal ||
+        prior.sourceFingerprint !== record.sourceFingerprint
+      ) return false;
+      const sourceHash = String(new Map(state.catalog.sourceHashes).get(file) || "").trim();
+      const original = (await Source.load(file, sourceHash))[ordinal - 1];
+      if (!original) return false;
+      if ((await Source.fingerprint(original)) !== record.sourceFingerprint) return false;
+      if ((await Source.fingerprint(prior)) !== record.sourceFingerprint) return false;
+      return "qid_v1_" + (await Source.digest(file + "#" + ordinal)) === record.questionUid;
+    } catch {
+      return false;
+    }
+  }
+  async function restoreChanged(partRecords, reusable) {
+    if (!reusable.size) return Source.restore(partRecords, state.catalog);
+    const kept = await Promise.all(partRecords.map(async (record) => {
+      const prior = reusable.get(record.questionUid);
+      return prior && (await stillRestorable(prior, record)) ? prior : null;
+    }));
+    const missing = partRecords.filter((_, i) => !kept[i]);
+    const restored = missing.length ? await Source.restore(missing, state.catalog) : [];
+    let next = 0;
+    return partRecords.map((_, i) => kept[i] || restored[next++]);
+  }
+  async function buildPrepared(signature) {
+    const records = state.selected;
+    // 직전에 준비한 문제지의 복원 결과(같은 카탈로그 판, 학생에게 출제 전 문제지만)를 UID로 재사용 후보에 올린다.
+    const reusable = new Map();
+    if (state.prepared.indexVersion && state.prepared.indexVersion === state.catalog?.indexVersion)
+      for (const paper of state.prepared)
+        if (!paper.assignmentId)
+          for (const question of paper.questions || [])
+            if (question?.questionUid) reusable.set(question.questionUid, question);
     const prepared = [];
     const derivedBaseQuestions = await ensureDerivedBaseQuestions();
     const derivedBaseByUid = new Map((derivedBaseQuestions || []).map(question => [question.questionUid, question]));
@@ -1298,7 +1356,7 @@
             }) : error;
           }
         }))
-        : await Source.restore(partRecords, state.catalog);
+        : await restoreChanged(partRecords, reusable);
       const partSignature = JSON.stringify([
           part.map((q) => q.questionUid),
           state.header,
@@ -1334,19 +1392,10 @@
       };
       prepared.push({ key, index, questions: part, meta });
     }
-    if (
-      signature !==
-      JSON.stringify([
-        state.selected.map((r) => r.questionUid),
-        state.header,
-        state.qpp,
-        state.round,
-        state.includeQr,
-        state.derivationSource,
-      ])
-    )
+    if (signature !== prepareSignature())
       throw new Error("편집 내용이 변경되었습니다. 다시 시도하세요.");
     prepared.signature = signature;
+    prepared.indexVersion = state.catalog?.indexVersion;
     state.prepared = prepared;
     return prepared;
   }
@@ -1490,7 +1539,7 @@
     state.pins = state.pins.map((uid) =>
       uid === before.questionUid ? after.questionUid : uid,
     );
-    state.prepared = [];
+    // state.prepared를 비우지 않는다: 다음 prepare()가 바뀐 문항만 복원하고 나머지는 확인 뒤 재사용한다.
     state.ackWarnings = false;
     save();
     $("modal").close();
@@ -1632,6 +1681,7 @@
     renderConditions,
     renderCompose,
     prepare,
+    prepareSignature,
     generate,
     focusComposeResult,
     replace,

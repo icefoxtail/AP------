@@ -40,7 +40,7 @@
     scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
     state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
     updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-    workspaceEligibility;
+    workspaceEligibility, setContentKeepingPreview;
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
@@ -63,7 +63,7 @@
       scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
       state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
       updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-      workspaceEligibility
+      workspaceEligibility, setContentKeepingPreview
     } = WS.api);
   });
   // function declarations are hoisted: export them now so the other parts (and this file's own load-time code) see them
@@ -269,7 +269,7 @@
     document.body.dataset.archiveView = state.view;
     window.Archive2Navigation?.sync?.(state.view);
     const quickFocus = isQuickAssessmentView() ? quickFocusKey() : null;
-    $("content").innerHTML =
+    setContentKeepingPreview(
       state.view === "home"
         ? renderHome()
         : isQuickAssessmentView()
@@ -280,7 +280,7 @@
             ? renderRecent()
             : state.view === "health"
               ? renderHealth()
-              : renderCompose();
+              : renderCompose());
     if (state.view === "compose") {
       const focusTarget = [...document.querySelectorAll('[data-group="compose"][data-filter], [data-scope]')]
         .find((el) => focusedFilter ? el.dataset.filter === focusedFilter : focusedScope && el.dataset.scope === focusedScope)
@@ -918,7 +918,7 @@
           state.pins = state.pins.map((uid) =>
             uid === change.after.questionUid ? change.before.questionUid : uid,
           );
-        state.prepared = [];
+        // state.prepared는 그대로 둔다: 되돌린 문항 하나만 다시 복원하고 나머지는 확인 뒤 재사용한다(replaceWith와 같다).
         scheduleSave();
         render();
       } else if (a === "output-mode") {
