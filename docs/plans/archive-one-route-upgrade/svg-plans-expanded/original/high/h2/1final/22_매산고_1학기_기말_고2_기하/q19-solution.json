@@ -1,0 +1,103 @@
+{
+  "capability": "solid-figure-v1",
+  "solidCaption": {
+    "text": "사면체 ABCD"
+  },
+  "space": {
+    "points": [
+      {
+        "id": "A",
+        "at": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "D",
+        "at": [
+          0,
+          0,
+          8
+        ]
+      },
+      {
+        "id": "B",
+        "at": [
+          "2*sqrt(3)",
+          0,
+          2
+        ]
+      },
+      {
+        "id": "C",
+        "at": [
+          "sqrt(3)",
+          3,
+          2
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "A",
+        "to": "C",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "A",
+        "to": "D",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "B",
+        "to": "D",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "C",
+        "to": "D",
+        "style": "AUTO",
+        "role": "ACCENT"
+      },
+      {
+        "from": "B",
+        "to": "C",
+        "style": "AUTO",
+        "role": "ACCENT"
+      }
+    ]
+  },
+  "marks": {
+    "rightAngles": [
+      {
+        "at": "B",
+        "refs": [
+          "A",
+          "D"
+        ]
+      }
+    ]
+  },
+  "caption": "△ABD는 B에서 직각이므로 BD²=8²−4²=48, BD=CD=4√3이다. AD를 축으로 두고 A에서 AD 방향으로 B의 정사영 길이가 (16+64−48)/16=2이므로 축에서 B, C까지의 거리는 2√3이고, 평면 ABD와 ACD가 이루는 각이 60°이므로 BC=2√3이다. 사면체의 부피는 8√3, △DBC의 넓이는 3√15이다. 3V=AD×[△DBC]×sinθ에서 sinθ=1/√5이고 θ는 예각이므로 cosθ=2√5/5이다. 따라서 답은 2√5/5이다.",
+  "accessibilityDescription": "세로로 선 선분 AD를 축으로 한 사면체 ABCD가 있다. B와 C는 같은 높이의 축 둘레에 있고 B에는 직각 표시가 있다.",
+  "newVisualInformation": [
+    "AD를 축으로 B, C가 같은 높이에서 60°를 이루는 사면체 ABCD와 B의 직각 ∠ABD를 보여 부피와 △DBC의 넓이 계산을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 사면체 $\\mathrm{ABCD}$에 대하여 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}=4, \\overline{\\mathrm{AD}}=8, \\overline{\\mathrm{BD}}=\\overline{\\mathrm{CD}}, \\angle\\mathrm{ABD}=90^\\circ$이고 평면 $\\mathrm{ABD}$와 평면 $\\mathrm{ACD}$가 이루는 각이 $60^\\circ$이다. 직선 $\\mathrm{AD}$와 평면 $\\mathrm{DBC}$이 이루는 각을 $\\theta$라 할 때, $\\cos\\theta$의 값을 구하시오. [10점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_기말_고2_기하/q19-problem-v2.svg\" style=\"display:block; margin:8px auto; width:290px; max-width:100%; height:auto; max-height:205px; object-fit:contain\" alt=\"사면체 ABCD와 주어진 모서리 길이\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

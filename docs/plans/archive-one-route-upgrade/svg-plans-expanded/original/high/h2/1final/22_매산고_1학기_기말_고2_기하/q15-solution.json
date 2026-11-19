@@ -1,0 +1,191 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "BX",
+      "refs": [
+        "B",
+        "X"
+      ]
+    },
+    {
+      "id": "AX",
+      "refs": [
+        "A",
+        "X"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "oa",
+        "ownerSegment": "OA",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ob",
+        "ownerSegment": "OB",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bx",
+        "ownerSegment": "BX",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ax",
+        "ownerSegment": "AX",
+        "text": "√31",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "th",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "60°",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "OA=u, OB=v로 두면 |u|=|v|=1이고 u·v=1/2이다. x=ku+lv로 놓고 x·u=3, x·v=6을 풀면 k=0, l=6이므로 x=6v이다. 점 X는 반직선 OB 위에서 OX=6인 점이고 BX=5이다. 점선 AX의 길이는 |u−x|=|u−6v|이고 |u−6v|²=1+36−6=31이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "원점 O에서 길이 1인 OA와 OB가 60°를 이루고, OB의 연장선 위에 OX=6인 점 X가 있다. A와 X를 점선이 잇고 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "x=6OB인 점 X와 점선 AX를 보여 |OA−x|가 A와 X 사이의 거리 √31임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼각형 $\\mathrm{OAB}$는 한 변의 길이가 1인 정삼각형이고 점 $\\mathrm{X}$에 대한 위치벡터 $\\vec{x}$에 대하여 $\\vec{x} \\cdot \\vec{\\mathrm{OA}}=3$, $\\vec{x} \\cdot \\vec{\\mathrm{OB}}=6$일 때, $|\\vec{\\mathrm{OA}}-\\vec{x}|$의 값을 구하면? (단, $k, l$은 실수이다.) [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

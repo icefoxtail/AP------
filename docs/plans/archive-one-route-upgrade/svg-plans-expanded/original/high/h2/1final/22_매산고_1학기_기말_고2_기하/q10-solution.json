@@ -1,0 +1,155 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "H"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "C",
+    "H",
+    "X"
+  ],
+  "displaySegments": [
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "HX",
+      "refs": [
+        "H",
+        "X"
+      ]
+    },
+    {
+      "id": "CX",
+      "refs": [
+        "C",
+        "X"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "C",
+        "H",
+        "X"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "d",
+        "ownerSegment": "CH",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r",
+        "ownerSegment": "HX",
+        "text": "√2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "R",
+        "ownerSegment": "CX",
+        "text": "√11",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "지름의 양 끝점의 중점이 구의 중심 C(4, 3, 1)이고 반지름의 제곱은 (1/4)(2²+2²+6²)=11이다. 그림은 구의 중심 C에서 xz평면에 내린 수선의 발 H와 단면원 위의 한 점 X를 지나는 직각삼각형이다. CH=3은 중심에서 xz평면(y=0)까지의 거리이고 CX=√11은 구의 반지름이므로 단면원의 반지름은 HX=√(11−9)=√2이다. 단면의 넓이는 2π이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "H에서 직각을 이루는 직각삼각형 CHX가 있다. 세로 변 CH는 3, 가로 변 HX는 √2, 빗변 CX는 √11이고 직각 표시가 있다.",
+  "newVisualInformation": [
+    "중심에서 평면까지의 거리 3, 구의 반지름 √11, 단면원의 반지름 √2의 직각삼각형 관계를 보여 단면의 넓이 2π를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 점 $(3, 2, 4)$, $(5, 4, -2)$를 지름의 양 끝 점으로 하는 구가 $xz$평면과 만나서 생기는 도형의 넓이를 구하면? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
