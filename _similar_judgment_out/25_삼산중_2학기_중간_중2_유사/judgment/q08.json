@@ -1,0 +1,76 @@
+{
+  "qid": 8,
+  "itemFingerprint": "8c71dfcce8c4aeee",
+  "solveSteps": [
+    "1) ㄱ: AB = BC = 6 cm, CD = DA = 8 cm는 이웃한 두 쌍의 변이 같은 연꼴이므로 평행사변형이 아니다.",
+    "2) ㄴ: AD // BC와 각 OAD = 각 ODA는 등변사다리꼴일 수 있으므로 평행사변형임을 보장하지 못한다.",
+    "3) ㄷ: 각 ABD = 각 BDC에서 AB // CD이고 각 ACB = 각 DAC에서 AD // BC이므로 두 쌍의 대변이 평행하여 평행사변형이다.",
+    "4) ㄹ: 각 ABC + 각 BCD = 180도에서 동측내각의 합이 180도이므로 AB // CD이고, AB = CD이므로 한 쌍의 대변이 평행하고 그 길이가 같아 평행사변형이다.",
+    "5) 따라서 평행사변형인 것은 ㄷ, ㄹ인 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "다음 <보기> 중에서 사각형 $ABCD$가 평행사변형인 것만을 있는 대로 고른 것은? (단, 점 $O$는 두 대각선의 교점이다.) 〈보기〉 ㄱ. $\\overline{AB} = \\overline{BC} = 6\\text{ cm},\\ \\overline{CD} = \\overline{DA} = 8\\text{ cm}$ ㄴ. $\\overline{AD} \\parallel \\overline{BC},\\ \\angle OAD = \\angle ODA$ ㄷ. $\\angle ABD = \\angle BDC,\\ \\angle ACB = \\angle DAC$ ㄹ. $\\overline{AB} = \\overline{CD},\\ \\angle ABC + \\angle BCD = 180^\\circ$",
+  "rpmRecordId": "M2-RPM-074",
+  "rpmReason": "사각형 ABCD에서 엇각 조건으로 두 쌍의 대변 평행 ㄷ과 한 쌍 대변 평행 및 길이 조건 ㄹ을 통해 평행사변형을 판정하는 M2-RPM-074 문제이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "사각형 ABCD가 평행사변형이 되는 조건 5가지를 대조하여 ㄷ과 ㄹ의 유효성을 검증하는 PT_QUADRILATERAL_PROPERTIES 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "사각형 ABCD가 평행사변형이 되는 판정 조건(두 쌍 대변 평행, 한 쌍 평행 및 상등)을 각각의 보기에서 선별하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "보기> 중에서 사각형 $ABCD$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "$ABCD$가 평행사변형인 것만을 있는"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "$O$는 두 대각선의 교점이다.)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "두 대각선의 교점이다.) 〈보기"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 사각형 ABCD와 대각선 교점 O 조건이다.",
+    "goal": "평행사변형이 되는 보기를 선별하는 목표이다.",
+    "method": "평행사변형 판정 조건을 대각선 및 변, 각과 대조하는 방법이다.",
+    "condition": "대각선의 교점 O 조건이다."
+  },
+  "how": "사각형 ABCD에서 ㄷ은 두 쌍 대변 평행, ㄹ은 한 쌍 대변 평행 및 상등으로 평행사변형이 됨을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 1,
+  "itemFingerprint": "c956d5638aaa83cc",
+  "solveSteps": [
+    "1) 점 I는 삼각형 ABC의 내심이므로 CI는 각 C를 이등분하여 각 C = 2 * 23도 = 46도이다.",
+    "2) 각 B = 180도 - (70도 + 46도) = 64도이다.",
+    "3) 점 I에서 BI는 각 B를 이등분하므로 각 IBD = 64도 / 2 = 32도이다.",
+    "4) 내심 I에서 세 변까지의 거리는 반지름으로 모두 같으므로 ID = 5 cm와 동일하게 변 AB에 이르는 거리도 5 cm이다.",
+    "5) 따라서 32도, 5 cm인 ③이 정답이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "점 $I$가 $\\triangle ABC$의 내심이고 $\\angle A = 70^\\circ$, $\\angle ICB = 23^\\circ$이다. 점 $I$에서 변 $BC$에 내린 수선의 발을 $D$라 할 때 $\\overline{ID} = 5\\text{ cm}$이다. $\\angle IBD$의 크기와 점 $I$에서 변 $AB$에 이르는 거리를 바르게 짝지은 것은?",
+  "rpmRecordId": "M2-RPM-067",
+  "rpmReason": "내심 I에서 각의 이등분선 성질로 각 IBD = 32도를 구하고 변 ID = 5 cm에서 거리를 구하는 M2-RPM-067 문제이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "typeReason": "삼각형의 내심 I의 각 이등분 성질과 세 변에 이르는 거리 5 cm가 같음을 활용하는 PT_TRIANGLE_CENTERS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "내심 I의 각 이등분선 각도 계산과 내접원 반지름 거리 5 cm를 동시에 확인하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "e ABC$의 내심이고 $\\ang"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "B$에 이르는 거리를 바르게 짝지"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "gle C$를 이등분하여 $\\ang",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "BC$에 내린 수선의 발을 $D$"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "점 I가 삼각형 ABC의 내심이라는 조건이다.",
+    "goal": "점 I에서 변 AB에 이르는 거리와 각의 크기를 짝짓는 목표이다.",
+    "method": "내심의 각 이등분선 성질을 이용해 각을 계산하는 방법이다.",
+    "condition": "변 BC에 내린 수선의 발 D 조건이다."
+  },
+  "how": "내심 I에서 각 C = 46도, 각 B = 64도이므로 각 IBD = 32도이고 변까지의 거리 ID = 5 cm임을 확인하여 정답 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

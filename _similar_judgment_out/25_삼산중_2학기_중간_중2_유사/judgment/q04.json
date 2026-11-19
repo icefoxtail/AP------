@@ -1,0 +1,77 @@
+{
+  "qid": 4,
+  "itemFingerprint": "6c668b85b46ccb5f",
+  "solveSteps": [
+    "1) 직각이등변삼각형 ABC에서 AB = AC이고 각 BAC = 90도이다.",
+    "2) 직선 l에 내린 수선의 발 D, E에 대해 각 ADB = 각 CEA = 90도이다.",
+    "3) 각 DAB + 각 EAC = 90도이고 직각삼각형 ABD에서 각 DAB + 각 ABD = 90도이므로 각 ABD = 각 EAC이다.",
+    "4) 직각삼각형 ABD와 CAE는 빗변 AB = AC이고 한 예각 각 ABD = 각 EAC이므로 RHA 합동이다.",
+    "5) 따라서 AD = CE = 6 cm, AE = BD = 5 cm이므로 DE = DA + AE = 6 + 5 = 11 cm이다.",
+    "6) 합동 조건 RHA, 11 cm인 ②가 정답이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\angle A = 90^\\circ$인 직각이등변삼각형 $ABC$($\\overline{AB} = \\overline{AC}$)에서 꼭짓점 $A$를 지나고 변 $BC$와 만나지 않는 직선 $l$을 긋고, 두 점 $B$, $C$에서 직선 $l$에 내린 수선의 발을 각각 $D$, $E$라 하자. $\\overline{BD} = 5\\text{ cm}$, $\\overline{CE} = 6\\text{ cm}$일 때, $\\triangle ABD \\equiv \\triangle CAE$의 합동 조건과 $\\overline{DE}$의 길이를 바르게 짝지은 것은?",
+  "rpmRecordId": "M2-RPM-071",
+  "rpmReason": "직각이등변삼각형의 꼭짓점을 지나는 직선과 수선으로 만들어진 두 직각삼각형의 RHA 합동과 변의 합 DE = 6 + 5 = 11 cm를 구하는 M2-RPM-071 문제이다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "NONE",
+  "typeReason": "직각이등변삼각형에서 각의 합 90도 관계를 통해 직각삼각형의 RHA 합동과 선분 DE = 11 cm를 계산하는 PT_RIGHT_TRIANGLE_CONGRUENCE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직각이등변삼각형에서 꼭짓각 90도 분할을 이용해 RHA 합동을 유도하고 DE = 6 + 5 = 11 cm를 구하는 표준 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각이등변삼각형",
+        "src": "stem",
+        "quote": "\\circ$인 직각이등변삼각형 $ABC$($"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "e{DE}$의 길이를 바르게 짝지"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$인 직각이등변삼각형 $ABC$($",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "AC}$)에서 꼭짓점 $A$를 지나"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "각 A = 90도인 직각이등변삼각형 ABC 조건이다.",
+    "goal": "합동 조건 RHA와 선분 DE의 길이를 짝짓는 목표이다.",
+    "method": "직각삼각형의 RHA 합동 조건을 적용하는 방법이다.",
+    "condition": "꼭짓점 A를 지나는 직선 l에 내린 수선 조건이다."
+  },
+  "how": "직각삼각형 ABD와 CAE가 RHA 합동임을 보이고 AD = 6, AE = 5에서 DE = 11 cm임을 도출하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

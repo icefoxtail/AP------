@@ -1,0 +1,75 @@
+{
+  "qid": 17,
+  "itemFingerprint": "059f93cf91f996b1",
+  "solveSteps": [
+    "1) 첫 번째 사람이 이기는 경우는 (가위, 보), (바위, 가위), (보, 바위)의 3가지이다.",
+    "2) 첫 번째 사람이 비기는 경우는 (가위, 가위), (바위, 바위), (보, 보)의 3가지이다.",
+    "3) 첫 번째 사람이 지지 않는 경우는 이기거나 비기는 경우이므로 3 + 3 = 6가지이다.",
+    "4) 따라서 정답은 6인 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "unitEvidence": "두 사람이 가위바위보를 한 번 할 때, 첫 번째 사람이 지지 않는 경우의 수는?",
+  "rpmRecordId": "M2-RPM-107",
+  "rpmReason": "가위바위보에서 첫 번째 사람이 이기는 3가지와 비기는 3가지를 합하여 지지 않는 경우의 수 6을 구하는 M2-RPM-107 문제이다.",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "NONE",
+  "typeReason": "첫 번째 사람이 지지 않는 사건을 이기는 경우 3가지와 비기는 경우 3가지로 나누어 합 6을 구하는 PT_M2_BASIC_COUNTING_CASE_SPLIT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "가위바위보에서 이기는 3가지와 비기는 3가지를 직접 세어 더하는 기본적인 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사건",
+        "candidate": true,
+        "parent": "개수",
+        "note": "가위바위보 시행",
+        "src": "stem",
+        "quote": "가위바위보를 한 번 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "않는 경우의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "candidate": true,
+        "parent": "경우분류",
+        "note": "이기는 경우와 비기는 경우 분류",
+        "src": "solution",
+        "quote": "이기는 경우는 (가위, 보)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {
+    "given": "두 사람이 가위바위보를 한 번 하는 시행 조건이다.",
+    "goal": "첫 번째 사람이 지지 않는 경우의 수를 구하는 목표이다.",
+    "method": "이기는 경우와 비기는 경우로 분류하는 방법이다.",
+    "condition": "추가 조건 없음."
+  },
+  "how": "이기는 3가지와 비기는 3가지를 합하여 3 + 3 = 6가지임을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

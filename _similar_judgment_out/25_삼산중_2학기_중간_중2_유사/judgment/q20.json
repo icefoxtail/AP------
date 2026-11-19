@@ -1,0 +1,78 @@
+{
+  "qid": 20,
+  "itemFingerprint": "d5865fc994b9a7c4",
+  "solveSteps": [
+    "1) 집에서 학교를 거쳐 도서관으로 가는 경우: 집->학교 3가지, 학교->도서관 4가지이므로 3 * 4 = 12가지이다.",
+    "2) 집에서 도서관으로 바로 가는 경우: 3가지이다.",
+    "3) 두 경우는 동시에 일어날 수 없으므로 합의 법칙에 의해 전체 경우의 수는 12 + 3 = 15가지이다.",
+    "4) 따라서 정답은 15가지인 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "unitEvidence": "집에서 학교까지 가는 길은 $3$가지, 학교에서 도서관까지 가는 길은 $4$가지, 집에서 학교를 거치지 않고 도서관으로 바로 가는 길은 $3$가지가 있다. 집에서 출발하여 도서관으로 가는 모든 경우의 수는? (단, 같은 지점을 두 번 이상 지나지 않는다.)",
+  "rpmRecordId": "M2-RPM-111",
+  "rpmReason": "경로 문제에서 학교를 거치는 경우 3 * 4 = 12와 바로 가는 경우 3가지를 합하여 전체 15가지를 구하는 M2-RPM-111 문제이다.",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "NONE",
+  "typeReason": "경유 경로의 곱의 법칙 12가지와 직통 경로 3가지를 합의 법칙으로 분류하여 15가지를 도출하는 PT_M2_BASIC_COUNTING_CASE_SPLIT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "곱의 법칙 3 * 4 = 12와 합의 법칙 12 + 3 = 15를 결합하여 경로의 수를 계산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "두 번 이상 지나지 않는다.)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "서관으로 가는 모든 경우의 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합의법칙",
+        "candidate": true,
+        "parent": "합의법칙",
+        "note": "경유 경로와 직통 경로의 합",
+        "src": "solution",
+        "quote": "전체 경우의 수는 $12 + 3",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "점",
+        "src": "stem",
+        "quote": "단, 같은 지점을 두 번"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "집, 학교, 도서관 사이의 도로 경로 수 조건이다.",
+    "goal": "도서관으로 가는 모든 경우의 수를 구하는 목표이다.",
+    "method": "동시에 일어날 수 없는 두 경로를 합의 법칙으로 더하는 방법이다.",
+    "condition": "같은 지점을 두 번 지나지 않는다는 조건이다."
+  },
+  "how": "학교 경유 3 * 4 = 12가지와 직통 3가지를 더해 12 + 3 = 15가지임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
