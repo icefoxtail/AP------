@@ -1,0 +1,77 @@
+{
+  "qid": 12,
+  "itemFingerprint": "3661a353685a2570",
+  "solveSteps": [
+    "1) 직각삼각형 ABC에서 각 A = 90도, 각 B = 30도이므로 각 C = 60도이다.",
+    "2) BC = AC / sin 30도 = 5 / (1/2) = 10 m이다. (⑤ 옳음)",
+    "3) 직각삼각형 ACD에서 AD = AC * sin 60도, CD = AC * cos 60도이다. (①, ② 옳음)",
+    "4) 직각삼각형 ABD에서 BD = AB * cos 30도이다. (③ 옳음)",
+    "5) 직각삼각형 ACD에서 tan 60도 = AD / CD이므로 CD = AD / tan 60도이다. 따라서 ④는 옳지 않다.",
+    "6) 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "다음 그림과 같이 $\\angle A=90^\\circ$, $\\angle B=30^\\circ$, $AC=5,\\mathrm{m}$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 $BC$에 내린 수선의 발을 $D$라 할 때, 옳지 않은 것은?",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmReason": "직각삼각형 ABC와 ACD에서 sin, cos, tan를 변의 비로 표현하여 tan 60도 = AD/CD로부터 CD = AD/tan 60도임을 검증하는 M3-RPM-055 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "typeReason": "직각삼각형 ACD에서 각 C = 60도의 탄젠트 정의 tan 60도 = AD/CD와의 불일치를 식별하는 TPL_TRIG_RATIO_BASIC_RELATION 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$의 꼭짓점 $A$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "진술",
+        "src": "stem",
+        "quote": "옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "탄젠트",
+        "src": "solution",
+        "quote": "직각삼각형 $ACD$에서 $\\tan 60^\\circ = \\dfrac{AD}{CD}$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "꼭짓점 $A$에서 $BC$에 내린 수선의 발을 $D$라 할 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "각 A = 90도, 각 B = 30도, AC = 5 m인 직각삼각형 ABC 조건이다.",
+    "goal": "옳지 않은 삼각비 등식을 찾는 목표이다.",
+    "method": "직각삼각형 ACD에서 탄젠트의 정의를 적용하는 방법이다.",
+    "condition": "꼭짓점 A에서 내린 수선 AD 조건이다."
+  },
+  "how": "직각삼각형 ACD에서 tan 60도 = AD / CD이므로 CD = AD / tan 60도이어야 하므로 보기 ④가 옳지 않음을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "직각삼각형 내에서 30도와 60도 각에 대한 삼각비 기본 관계식을 점검하는 1단계 문항이다."
+}

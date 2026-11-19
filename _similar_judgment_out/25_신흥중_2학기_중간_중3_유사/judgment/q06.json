@@ -1,0 +1,75 @@
+{
+  "qid": 6,
+  "itemFingerprint": "e7a2cd7201a8a91c",
+  "solveSteps": [
+    "1) 직각삼각형 ABC에서 BC = AB * cos 30도 = 12 * (sqrt(3)/2) = 6*sqrt(3) cm이다.",
+    "2) 직각삼각형 BCD에서 BD = BC * cos 30도 = 6*sqrt(3) * (sqrt(3)/2) = 9 cm이다.",
+    "3) 직각삼각형 BDE에서 BE = BD * cos 30도 = 9 * (sqrt(3)/2) = (9*sqrt(3)/2) cm이다.",
+    "4) 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같은 직각삼각형 $ABC$에서 $AB \\perp CD$, $BC \\perp DE$이고, $AB=12,\\mathrm{cm}$, $\\angle ABC=30^\\circ$일 때, $BE$의 길이는?",
+  "rpmRecordId": "M3-RPM-059",
+  "rpmReason": "직각삼각형 ABC, BCD, BDE에서 cos 30도를 연쇄적으로 곱해 AB = 12 cm로부터 BE = 9*sqrt(3)/2 cm를 구하는 M3-RPM-059 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+  "typeReason": "연속된 수선의 발에 의해 형성된 직각삼각형에서 cos 30도를 연쇄 적용하여 선분 BE = 9*sqrt(3)/2 cm를 구하는 TPL_TRIG_APPLICATION_CHAINED_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "다음 그림과 같은 직각삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$BE$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "코사인",
+        "src": "solution",
+        "quote": "BC = AB\\cos 30^\\circ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수직",
+        "src": "stem",
+        "quote": "$AB \\perp CD$, $BC \\perp DE$이고,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "직각삼각형 ABC 및 수선 조건이다.",
+    "goal": "선분 BE의 길이를 구하는 목표이다.",
+    "method": "각각의 직각삼각형에서 코사인 30도를 연쇄 적용하는 방법이다.",
+    "condition": "AB perp CD, BC perp DE의 수직 조건이다."
+  },
+  "how": "직각삼각형 ABC에서 BC = 6*sqrt(3), BCD에서 BD = 9, BDE에서 BE = 9*sqrt(3)/2 cm임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "세 직각삼각형에서 cos 30도를 3회 연속 적용하여 변의 길이 9*sqrt(3)/2를 계산하는 2단계 문항이다."
+}

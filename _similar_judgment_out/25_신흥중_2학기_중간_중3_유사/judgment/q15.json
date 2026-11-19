@@ -1,0 +1,76 @@
+{
+  "qid": 15,
+  "itemFingerprint": "ef37a95758b03265",
+  "solveSteps": [
+    "1) 원 O의 반지름을 r이라 하면 OA = OC = r이고 OM = r - 4이다.",
+    "2) AB perp OC이므로 직각삼각형 OMA에서 피타고라스 정리에 의해 r^2 = (r - 4)^2 + 8^2이다.",
+    "3) r^2 = r^2 - 8r + 16 + 64에서 8r = 80이므로 r = 10이다.",
+    "4) 따라서 OA = 10 cm이다.",
+    "5) 따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "다음 그림에서 $AB \\perp OC$이고 교점이 $M$일 때, $AM=8,\\mathrm{cm}$, $CM=4,\\mathrm{cm}$이면 $OA$의 길이는?",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmReason": "반지름 r에 대해 직각삼각형 OMA에서 r^2 = (r-4)^2 + 8^2의 피타고라스 방정식을 풀어 OA = 10 cm를 구하는 M3-RPM-067 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "typeReason": "원 중심과 현의 수직 관계에서 반지름 r과 피타고라스 정리 r^2 = (r-4)^2 + 64를 연립해 OA = 10 cm를 도출하는 TM_CIRCLE_CHORD_LENGTH 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "solution",
+        "quote": "직각삼각형 $OMA$에서 피타고라스 정리에 의해"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$OA$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "직각삼각형 $OMA$에서 피타고라스 정리에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수직",
+        "src": "stem",
+        "quote": "$AB \\perp OC$이고 교점이 $M$일 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "현 AB perp 반지름 OC, AM = 8 cm, CM = 4 cm 조건이다.",
+    "goal": "선분 OA(반지름)의 길이를 구하는 목표이다.",
+    "method": "직각삼각형 OMA에서 피타고라스 정리를 적용하는 방법이다.",
+    "condition": "현과 반지름의 수직 교차 조건이다."
+  },
+  "how": "반지름 r에 대해 직각삼각형 OMA에서 r^2 = (r - 4)^2 + 8^2을 풀어 8r = 80에서 r = OA = 10 cm임을 확인하여 정답 ③로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "반지름 r을 미지수로 두어 직각삼각형 OMA에서 r^2 = (r-4)^2 + 64의 방정식을 세우고 r = 10을 도출하는 2단계 문항이다."
+}

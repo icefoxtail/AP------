@@ -1,0 +1,76 @@
+{
+  "qid": 5,
+  "itemFingerprint": "8c002539a36244b8",
+  "solveSteps": [
+    "1) 한 모서리가 6 cm인 정사면체 ABCD의 밑면 BCD는 한 변이 6 cm인 정삼각형이다.",
+    "2) 변 BC의 중점을 M이라 하면 높이 DM = sqrt(6^2 - 3^2) = 3*sqrt(3) cm이다.",
+    "3) 점 H는 무게중심이므로 DH = (2/3) * DM = (2/3) * 3*sqrt(3) = 2*sqrt(3) cm이다.",
+    "4) AH perp 밑면이므로 직각삼각형 ADH에서 cos x = DH / AD = 2*sqrt(3) / 6 = sqrt(3)/3이다.",
+    "5) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 한 모서리의 길이가 $6,\\mathrm{cm}$인 정사면체 $ABCD$의 꼭짓점 $A$에서 밑면 $BCD$에 내린 수선의 발 $H$는 $\\triangle BCD$의 무게중심이다. $\\angle ADH=x^\\circ$라 할 때, $\\cos x^\\circ$의 값은?",
+  "rpmRecordId": "M3-RPM-059",
+  "rpmReason": "모서리 6 cm인 정사면체에서 무게중심 DH = 2*sqrt(3) cm를 구하고 직각삼각형 ADH에서 cos x = sqrt(3)/3을 구하는 M3-RPM-059 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "정사면체 ABCD 꼭짓점 A에서 내린 수선과 밑면 BCD의 무게중심 H가 이루는 직각삼각형 ADH에서 cos x = sqrt(3)/3을 구하는 TPL_TRIG_APPLICATION_DIRECT_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정사면체",
+        "src": "stem",
+        "quote": "한 모서리의 길이가 $6,\\mathrm{cm}$인 정사면체 $ABCD$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "코사인",
+        "src": "stem",
+        "quote": "$\\cos x^\\circ$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "무게중심",
+        "src": "stem",
+        "quote": "내린 수선의 발 $H$는 $\\triangle BCD$의 무게중심이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "한 모서리의 길이가 $6,\\mathrm{cm}$인"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "한 모서리 6 cm인 정사면체 ABCD 조건이다.",
+    "goal": "cos x도의 값을 구하는 목표이다.",
+    "method": "밑면 무게중심 2:1 내분으로 선분 DH의 길이를 구하는 방법이다.",
+    "condition": "모서리 길이 6 cm 조건이다."
+  },
+  "how": "밑면 정삼각형의 높이 3*sqrt(3)과 무게중심 DH = 2*sqrt(3)에서 cos x = (2*sqrt(3))/6 = sqrt(3)/3임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "정삼각형 높이 3*sqrt(3)과 무게중심 2:1 내분으로 DH = 2*sqrt(3)을 구하고 빗변 6으로 코사인 sqrt(3)/3을 구하는 2단계 문항이다."
+}
