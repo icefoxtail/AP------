@@ -344,7 +344,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "hand_solved_book_numbered",
-    "solution": "$\\dfrac59(59-32)=\\dfrac59\\times27$\n$=15$\n따라서 ②",
+    "solution": "$\\dfrac59(59-32)=\\dfrac59\\times27$\n$=15$ ℃\n따라서 ② 15 ℃",
     "solutionStatus": "written_compact_v1",
     "reviewStatus": "content_filled_from_md",
     "level": "하",
@@ -1256,7 +1256,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음과 같이 아래의 이웃하는 두 칸의 식을 더한 것이 바로 위의 칸의 식이 되는 규칙이 있다. 물음에 답하시오. |  | $-x+8$ |  |\n| $6x-1$ | | $2x-3$ |\n| $A$ | | $B$ |\n\n⑴ 다항식 $A$를 구하시오.\n⑵ 다항식 $B$를 구하시오.",
+    "content": "다음과 같이 아래의 이웃하는 두 칸의 식을 더한 것이 바로 위의 칸의 식이 되는 규칙이 있다. 물음에 답하시오.\n\n⑴ 다항식 $A$를 구하시오.\n⑵ 다항식 $B$를 구하시오.",
     "choices": [],
     "answer": "⑴ -7x+9 ⑵ 15x-13",
     "answerStatus": "hand_solved_book_numbered",
