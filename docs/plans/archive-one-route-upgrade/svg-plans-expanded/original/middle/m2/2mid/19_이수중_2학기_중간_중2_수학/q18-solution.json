@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "11"
+              }
+            ]
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "F",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "∠B의 이등분선과 AD∥BC에서 ∠AEB=∠EBC=∠ABE이므로 AE=AB=6cm이고 ED=12−6=6cm이다. 같은 방법으로 ∠D의 이등분선에서 CF=CD=6cm이고 BF=6cm이다. BF∥ED이고 BF=ED=6cm이므로 □EBFD는 평행사변형이다. □ABCD의 높이는 60÷12=5cm이므로 □EBFD=6×5=30cm²이다. 답은 ②이다.",
+  "accessibilityDescription": "평행사변형 ABCD에서 각 B의 이등분선이 변 AD와 점 E에서, 각 D의 이등분선이 변 BC와 점 F에서 만나고 사각형 EBFD가 칠해져 넓이 30이 적혀 있다. AB, AE, ED, DC, CF, FB에 같은 눈금이 있고 AB에 6, BC에 12가 적혀 있다.",
+  "newVisualInformation": [
+    "이등분선으로 AE=ED=CF=BF=6이어서 □EBFD가 평행사변형이고 높이 5에서 넓이 6×5=30"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 아래 그림과 같은 평행사변형에서 $\\angle \\text{B}, \\angle \\text{D}$의 이등분선이 $\\overline{\\text{AD}}, \\overline{\\text{BC}}$와 만나는 점을 $\\text{E, F}$라고 하자. $\\overline{\\text{AB}}=6\\text{cm}, \\overline{\\text{BC}}=12\\text{cm}$이고 $\\square \\text{ABCD} = 60\\text{cm}^2$일 때, $\\square \\text{EBFD}$의 넓이는? [4점]</p><p><img src=\"assets/images/19_이수중_2학기_중간_중2_수학/q18.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "AE",
+        "ED",
+        "DC",
+        "CF",
+        "FB"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "30",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "E",
+              "B",
+              "F",
+              "D"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "12",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 12
+      }
+    ]
+  }
+}
