@@ -587,3 +587,36 @@
 | 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
 
 - 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 22_풍덕중_2학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q9[보기], q12[보기], q14[보기/정답④→②], q19[보기]. 해설 10개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | TABLE | 해설: 두 식의 자연수 순서쌍을 한 표에 나란히 두면 공통해 확인이 더 빠르다. |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | BENEFICIAL | 해설: 그래프를 함께 그리면 사분면과 절편, 평행 관계를 한눈에 확인할 수 있다. |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | BENEFICIAL | NOT_NEEDED | 문제: 좌표평면에 세 점을 표시하면 축에 평행한 관계가 바로 보인다. 좌표가 주어져 없어도 풀린다. |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | BENEFICIAL | NOT_NEEDED | 문제: 도로망과 A, P, B의 위치, 공사 구간을 그림으로 보여 주면 상황 파악이 빨라진다. |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | BENEFICIAL | 해설: 남은 두 경기의 갈래를 나무 그림으로 그리면 3/4이 나오는 과정이 한눈에 보인다. |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | BENEFICIAL | 해설: 집에서 도서관까지 2.2 km, 도서관에서 학교까지 1.2 km로 나눈 선분 그림을 넣으면 검산이 쉽다. |
+
+- 문제그림 REQUIRED/BENEFICIAL 2개: 8, 14. 해설그림 REQUIRED/BENEFICIAL 3개: 6, 21, 24.
