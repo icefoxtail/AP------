@@ -237,3 +237,19 @@ test('a Korean sentence the caller wrote stays the headline when the caught erro
   h.status('시험지를 준비하지 못했습니다.', true, error);
   assert.match(toastOf(h.body).firstChild.textContent, /^시험지를 준비하지 못했습니다. — .*4번 문항/);
 });
+
+test('로그인이 없거나 만료돼 막힌 오류(요청 전 로그인 없음, 401)에는 "선생님 로그인" 단추가 붙고, 403과 일반 오류에는 붙지 않는다', () => {
+  const h = load();
+  const loginOf = () => toastOf(h.body).children.find(child => child.className.includes('error-toast-login'));
+  h.status('시험지를 저장하지 못했습니다. 로그인이 필요합니다.', true, Object.assign(new Error('x'), { requestNotSent: true }));
+  assert.equal(loginOf().hidden, false, '요청 전 로그인 없음');
+  assert.equal(loginOf().textContent, '선생님 로그인');
+  assert.equal(loginOf().href, '../apmath/', '보관함·출제 패널의 로그인 안내와 같은 길(APMS 로그인)');
+  assert.equal(loginOf().target, '_blank', '새 탭이라 이 화면의 초안이 그대로 남는다');
+  h.status('시험지를 저장하지 못했습니다. 로그인이 만료됐습니다.', true, Object.assign(new Error('x'), { status: 401 }));
+  assert.equal(loginOf().hidden, false, '401');
+  h.status('시험지를 저장하지 못했습니다. 권한이 없습니다.', true, Object.assign(new Error('x'), { status: 403 }));
+  assert.equal(loginOf().hidden, true, '403은 권한 없음이라 로그인 단추가 없다');
+  h.status('시험지를 저장하지 못했습니다.', true);
+  assert.equal(loginOf().hidden, true, '일반 오류');
+});

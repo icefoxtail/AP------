@@ -118,7 +118,7 @@
     <script src="exam-display-title.js?v=20261116-polish-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
-    <script src="render-text.js?v=20261118-render-text-1"></script>
+    <script src="render-text.js?v=20261120-render-text-2"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -1996,6 +1996,8 @@ function splitSubjectiveHeadingSource(source) {
 
 function formatQuestionContent(html, q) {
     if (!html) return '';
+    // 본문 앞에 박힌 원래 문항 번호("15. …")는 q-num과 겹치므로 렌더 사본에서만 뗀다(공용 규칙: render-text.js).
+    html = APRenderText.stripLeadingQuestionNumber(html, q);
     if (q?.__apExamSubjectiveSpacing === true) {
         const split = splitSubjectiveHeadingSource(html);
         if (split) {

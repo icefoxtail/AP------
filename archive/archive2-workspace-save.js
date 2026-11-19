@@ -52,12 +52,14 @@
   // Errors also get a fixed, dismissible alert so a failure below the fold (or behind a dialog) is not missed.
   let errorToastEl = null;
   let errorToastCloseHooked = false;
+  let errorToastLoginEl = null;
   function hideErrorToast() {
     try { errorToastEl?.parentNode?.removeChild(errorToastEl); } catch {}
   }
   // `info` is describeError()'s result: when it has a detail, the folded "상세 보기" block (original text, file, question
   // number, code, copy button) goes under the sentence. Without a detail the box stays one line, as before.
-  function showErrorToast(message, info = null) {
+  // options.login: 로그인이 없거나 만료돼 막힌 경우. 보관함·출제 패널의 로그인 안내와 같은 "선생님 로그인" 단추(새 탭)를 함께 보인다.
+  function showErrorToast(message, info = null, options = {}) {
     try {
       if (typeof document.createElement !== "function" || !document.body) return;
       if (!errorToastEl) {
@@ -68,16 +70,25 @@
         text.className = "error-toast-text";
         const detail = document.createElement("div");
         detail.className = "error-toast-detail";
+        const login = document.createElement("a");
+        login.className = "button-like primary error-toast-login";
+        login.href = "../apmath/";
+        login.target = "_blank";
+        login.rel = "noopener";
+        login.textContent = "선생님 로그인";
+        login.hidden = true;
+        errorToastLoginEl = login;
         const close = document.createElement("button");
         close.type = "button";
         close.className = "error-toast-close";
         close.setAttribute("aria-label", "오류 알림 닫기");
         close.textContent = "닫기";
         close.addEventListener("click", hideErrorToast);
-        box.append(text, detail, close);
+        box.append(text, detail, login, close);
         errorToastEl = box;
       }
       errorToastEl.firstChild.textContent = message;
+      if (errorToastLoginEl) errorToastLoginEl.hidden = !options.login;
       const detailSlot = errorToastEl.children[1];
       if (detailSlot) detailSlot.innerHTML = info?.hasDetail && window.Archive2ErrorDetail ? window.Archive2ErrorDetail.markup(info) : "";
       // A modal <dialog> makes everything outside it inert, so the alert lives inside the open dialog when there is one.
@@ -112,7 +123,9 @@
     }
     $("status").textContent = message;
     $("status").classList.toggle("error", error);
-    if (error) showErrorToast(message, info);
+    // 요청이 나가기 전 로그인 없음(requestNotSent)과 401(로그인 만료)에는 로그인 단추를 붙인다. 403(권한 없음)에는 붙이지 않는다.
+    const needsLogin = Boolean(cause && typeof cause === "object" && (cause.requestNotSent === true || Number(cause.status) === 401));
+    if (error) showErrorToast(message, info, { login: needsLogin });
     else hideErrorToast();
   }
   // The screen name that goes into the folded detail ("화면: 문제지 만들기"), so a pasted report says where it happened.
@@ -1242,6 +1255,7 @@
   const SAVE_FAILURE_TEXT = {
     loginMissing: "로그인이 필요합니다. 로그인한 뒤 저장해 주세요. 작업은 초안에 남아 있습니다.",
     loginExpired: "로그인이 만료됐습니다. 다시 로그인한 뒤 저장해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
+    forbidden: "이 계정에는 시험지를 저장할 권한이 없습니다. 관리자에게 확인해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
     tooLarge: "문제지가 너무 커서 저장하지 못했습니다. 권을 나누거나 문항 수를 줄여서 다시 저장해 주세요.",
     staleCatalog: "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.",
     metaMismatch: "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.",
@@ -1254,7 +1268,8 @@
     const serverText = String(error?.data?.error || error?.message || "");
     // 요청이 나가기 전(로그인 정보 없음)에 난 실패. 요청이 나간 뒤의 실패에는 이 표시가 없다.
     if (error?.requestNotSent === true) return SAVE_FAILURE_TEXT.loginMissing;
-    if (code === 401 || code === 403) return SAVE_FAILURE_TEXT.loginExpired;
+    if (code === 401) return SAVE_FAILURE_TEXT.loginExpired;
+    if (code === 403) return SAVE_FAILURE_TEXT.forbidden;
     if (code === 413) return SAVE_FAILURE_TEXT.tooLarge;
     if (code === 409 && SAVE_STALE_VERSION.test(serverText)) return SAVE_FAILURE_TEXT.staleCatalog;
     if (SAVE_PARITY_MISMATCH.test(String(error?.message || ""))) return SAVE_FAILURE_TEXT.metaMismatch;

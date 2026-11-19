@@ -2476,6 +2476,16 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
   padding: 10px 0;
   overflow-wrap: anywhere;
 }
+.error-toast-login {
+  flex: none;
+  align-self: flex-start;
+  min-height: 44px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.error-toast-login[hidden] {
+  display: none;
+}
 .error-toast-close {
   flex: none;
   min-width: 44px;
