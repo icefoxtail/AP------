@@ -1,0 +1,71 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1"
+      },
+      {
+        "x": "0"
+      },
+      {
+        "x": "1"
+      },
+      {
+        "x": "2"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-1",
+        "to": "0",
+        "color": "BLUE"
+      },
+      {
+        "from": "0",
+        "to": "1",
+        "color": "BLUE"
+      },
+      {
+        "from": "1",
+        "to": null,
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "a-b"
+      },
+      {
+        "shade": 1,
+        "text": "a-b"
+      },
+      {
+        "shade": 2,
+        "text": "구하는 값"
+      }
+    ]
+  },
+  "caption": "a는 −1부터 2까지의 넓이이고 b는 0부터 2까지의 넓이이므로 −1부터 0까지의 넓이는 a−b이다. 0을 중심으로 한 대칭성으로 0부터 1까지의 넓이도 a−b이다. 오른쪽 절반 1/2에서 이 넓이를 빼면 P(Z≥1)=1/2−a+b이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "표준정규분포 곡선이며 −1, 0, 1, 2의 위치가 표시되고 −1부터 0까지와 0부터 1까지가 같은 색으로, 1의 오른쪽이 다른 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "−1부터 0까지와 0부터 1까지의 넓이가 대칭으로 같은 a−b이고 구하는 오른쪽 꼬리가 1/2에서 이를 뺀 값임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 표준정규분포 $\\mathrm{N}(0, 1)$을 따르는 확률변수 $Z$에 대하여 $\\mathrm{P}(-1 \\le Z \\le 2)=a$, $\\mathrm{P}(0 \\le Z \\le 2)=b$라고 할 때, $\\mathrm{P}(Z \\ge 1)$를 $a$, $b$를 이용하여 나타낸 것은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
