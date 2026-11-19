@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "integerPoints": true
+      }
+    ],
+    "variable": "n"
+  },
+  "caption": "예: a=1, b=4인 경우의 그림이다. b<2ⁿa≤16b는 log₂(b/a)<n≤log₂(b/a)+4이므로 길이 4인 반열린 구간에 정수가 연속 네 개 들어간다. 합이 18이면 정수해는 3, 4, 5, 6이므로 2≤log₂(b/a)<3, 즉 4≤b/a<8이다. a+b가 최소이려면 a=1일 때 b=4이다. 따라서 답은 a=1, b=4이다.",
+  "accessibilityDescription": "수직선 위에 2보다 크고 6 이하인 구간이 표시되어 있고 구간 안의 정수 3, 4, 5, 6에 점이 찍혀 있다.",
+  "newVisualInformation": [
+    "log₂(b/a)<n≤log₂(b/a)+4의 정수해가 3, 4, 5, 6이 되는 예(구간 2<n≤6)를 수직선에 보여 4≤b/a<8을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 자연수 $a, b$ 에 대하여 부등식 $b < 2^{n} \\times a \\le 16b$ 를 만족하는 모든 정수 $n$ 의 합이 18일 때, $a+b$가 최소가 되도록 하는 $a, b$의 값을 구하시오. [7.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      15,
+      0,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "107/100",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "14"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "two",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "15"
+        ],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "10",
+        "11"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "10",
+          "y": "197/100",
+          "coordinates": false
+        },
+        {
+          "id": "Q",
+          "x": "11",
+          "y": "211/100",
+          "coordinates": false
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(n)=1.07ⁿ의 그래프이고 현재의 2배는 점선 y=2이다. 10년 후 P는 약 1.97로 2보다 작고 11년 후 Q는 약 2.11로 2보다 크다. 식으로는 n·log1.07≥log2, 0.03n≥0.3010에서 n≥10.03…이므로 최소 11년이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "오른쪽으로 올라가는 파란 지수 곡선 f와 가로 점선 y=2가 있다. 점선과 곡선이 만나는 곳 근처에서 10년 후의 점 P는 점선 아래, 11년 후의 점 Q는 점선 위에 표시되어 있다.",
+  "newVisualInformation": [
+    "매년 7% 증가하는 곡선이 y=2와 만나는 위치를 보여 n=10(약 1.97)은 부족하고 n=11(약 2.11)부터 2배 이상임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "미세 먼지 농도가 매년 7%씩 증가할 때, 현재의 2배 이상이 되는 것은 최소 몇 년 후인가? (단, $\\log 2 = 0.3010, \\log 1.07 = 0.03$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

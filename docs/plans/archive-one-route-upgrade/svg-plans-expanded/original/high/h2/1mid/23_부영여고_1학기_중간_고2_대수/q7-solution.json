@@ -1,0 +1,115 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      2,
+      -3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "odd",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-13/10",
+          "13/10"
+        ],
+        "color": "BLUE",
+        "label": "n 홀수"
+      },
+      {
+        "id": "even",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-5/4",
+          "5/4"
+        ],
+        "color": "WARM",
+        "label": "n 짝수"
+      },
+      {
+        "id": "pos",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "style": "DASHED",
+        "color": "GREEN",
+        "label": "y=a"
+      },
+      {
+        "id": "neg",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "style": "DASHED",
+        "color": "GREEN",
+        "label": "y=-a"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-1",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "-1",
+          "y": "-1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=xⁿ의 그래프와 직선 y=a의 교점이 a의 n제곱근 중 실수인 것을 나타낸다(그림은 n=3과 n=4, a=1과 a=−1인 예). n이 홀수이면 양수 a, 음수 a 모두 교점이 1개씩이므로 ㄱ은 거짓이고 ㄴ은 참이다. n이 짝수이면 양수 a에서 교점이 2개(±)이므로 ㄷ은 참이고, 음수 a에서는 교점이 없으므로 ㄹ은 참이다. 따라서 옳은 것은 ㄴ, ㄷ, ㄹ이고 답은 ④이다.",
+  "accessibilityDescription": "원점을 지나며 오른쪽 위로 올라가는 홀수 차수 곡선과 y축에 대칭인 U자 모양의 짝수 차수 곡선, 가로 점선 y=a와 y=−a가 있다. 교점 P, Q, R의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "홀수 차수 곡선은 y=a, y=−a와 한 점씩, 짝수 차수 곡선은 y=a와 두 점, y=−a와 만나지 않음을 보여 n제곱근의 실수 개수를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$n$ 이 2 이상의 자연수일 때, 보기 중 옳은 것만을 있는 대로 고른 것은? <div style='border:1px solid #000; padding:10px;'>ㄱ. $n$이 홀수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}, -\\sqrt[n]{a}$이다.<br>ㄴ. $n$이 홀수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\sqrt[n]{a}$이다.<br>ㄷ. $n$이 짝수일 때, 양의 실수 $a$의 $n$제곱근 중에서 실수인 것은 $\\pm\\sqrt[n]{a}$이다.<br>ㄹ. $n$이 짝수일 때, 음의 실수 $a$의 $n$제곱근 중에서 실수는 존재하지 않는다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

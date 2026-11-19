@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-7",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "7"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      1,
+      7
+    ],
+    "viewport": [
+      0,
+      8,
+      -2,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "7"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "h"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "9"
+      }
+    ]
+  },
+  "caption": "h는 진수 h(x)=(x−1)(7−x)=−(x−4)²+9의 그래프이고 진수 조건 h(x)>0에서 정의역은 1<x<7이다. h의 최댓값은 꼭짓점 V(4, 9)의 9이므로 y=log₃h의 최댓값은 log₃9=2이고 치역은 y≤2이다. 정의역은 1≤x≤7이 아니고 최댓값은 4가 아니다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "1과 7 사이에서 위로 볼록한 포물선이 그려져 있고 꼭짓점 V의 좌표가 표시되어 있다. 양 끝은 가로축 위의 열린 점이다.",
+  "newVisualInformation": [
+    "진수 h(x)의 구간 1<x<7과 최댓값 9인 꼭짓점 V(4, 9)를 보여 로그함수의 정의역과 최댓값 2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y = \\log_{3}(x-1) + \\log_{3}(7-x)$ 에 대한 설명으로 옳은 것은? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

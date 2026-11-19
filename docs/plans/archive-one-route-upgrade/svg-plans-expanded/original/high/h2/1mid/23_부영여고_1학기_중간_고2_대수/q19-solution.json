@@ -1,0 +1,67 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "ratePi": "1",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.3,
+      4.4,
+      -0.2,
+      1.3
+    ],
+    "referenceLines": [
+      {
+        "id": "g",
+        "slope": "1/4",
+        "intercept": "0",
+        "intersectionCount": 8
+      }
+    ],
+    "keyPoints": true,
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "y=|sin πx|의 그래프와 직선 y=x/4의 교점이 근이다. x≥0이어야 하고 x=4에서 직선은 1이어서 해가 없으므로 0≤x<4만 본다. x=0에서 1개, 0<x<1에서 1개, 그리고 봉우리 [1, 2], [2, 3], [3, 4]에서 각각 2개씩 만나 모두 1+1+2×3=8개이다. 따라서 답은 8이다.",
+  "accessibilityDescription": "0에서 4까지 연달아 이어진 사인 봉우리 모양의 곡선과 원점에서 올라가는 직선이 있다. 첫 봉우리에서는 원점 말고 한 번, 나머지 세 봉우리에서는 두 번씩 곡선과 직선이 만난다.",
+  "newVisualInformation": [
+    "절댓값 사인의 네 봉우리와 직선 y=x/4의 교점을 봉우리별로 세어 서로 다른 실근 8개를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 방정식 $|\\sin(\\pi x)| = \\frac{1}{4}x$ 의 서로 다른 실근의 개수를 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

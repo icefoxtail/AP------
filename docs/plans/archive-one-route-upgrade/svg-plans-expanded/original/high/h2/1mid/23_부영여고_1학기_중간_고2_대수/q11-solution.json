@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      9,
+      -7,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "3",
+        "coefficients": [
+          "-1",
+          "1",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "5",
+        "coefficients": [
+          "1",
+          "-1",
+          "8"
+        ],
+        "domain": [
+          "4",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2",
+        "8"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "y2",
+          "slope": "0",
+          "intercept": "2"
+        },
+        {
+          "id": "y8",
+          "slope": "0",
+          "intercept": "8"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=2−2ˣ⁻³, g는 g(x)=8+3⁵⁻ˣ이다. f는 항상 2보다 작고 점근선이 y=2이며, g는 항상 8보다 크고 점근선이 y=8이다. 모든 실수 x에 대하여 f(x)<n<g(x)이려면 2≤n≤8이어야 하므로 정수 n은 2, 3, …, 8의 7개이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가로 점근선 y=2 아래로 내려가는 파란 곡선 f와 가로 점근선 y=8 위로 올라가는 주황 곡선 g가 있고 두 점근선이 가로선으로 표시되어 있다.",
+  "newVisualInformation": [
+    "f의 점근선 y=2와 g의 점근선 y=8을 가로선으로 보여 정수 n의 범위 2≤n≤8을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $y=\\log_2(2-x)+3, y=\\log_{\\frac{1}{3}}(x-8)+5$ 의 역함수를 각각 $f(x), g(x)$ 라 하자. 모든 실수 $x$ 에 대하여 $f(x) < n < g(x)$ 를 만족시키는 정수 $n$ 의 개수는? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
