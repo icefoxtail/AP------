@@ -1,0 +1,71 @@
+{
+  "qid": "11",
+  "itemFingerprint": "1e85b813737730e1",
+  "solveSteps": [
+    "① \\sqrt{64} = 8이고, 8의 세제곱근은 방정식 x^3 = 8의 근이므로 복소수 범위에서 3개이며, 실수인 것은 2이다. 4라 하였으므로 옳지 않다.",
+    "② a < 0일 때 (\\sqrt[3]{-a})^3 = -a이다 (참).",
+    "③ n이 짝수이고 a > 0일 때 x^n = a의 실근은 \\pm\\sqrt[n]{a}로 2개이다 (참).",
+    "④ (-3)^2 = 9의 제곱근은 \\pm 3이다 (참).",
+    "⑤ n이 홀수일 때 -5의 n제곱근 중 실수인 것은 -\\sqrt[n]{5}이다 (참).",
+    "따라서 옳지 않은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "다음 중 옳지 않은 것은? ",
+  "rpmRecordId": "H2-M1-RPM-068",
+  "rpmReason": "64의 근호값과 세제곱근의 정의 및 실근 개수를 종합 검토하는 4.2점 문제이다.",
+  "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+  "templateKey": "NONE",
+  "typeReason": "거듭제곱근의 참·거짓 명제에서 64의 제곱근과 세제곱근 정의를 판별하는 4.2점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "64의 근호가 8임을 간과하지 않고 8의 세제곱근이 2임을 짚어내는 4.2점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "8$의 세제곱근은 방정식 $x^"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "8$의 세제곱근은 방정식 $x^3"
+      }
+    ],
+    "method": [
+      {
+        "term": "실수",
+        "src": "solution",
+        "quote": "개이며 실수인 것은 $2$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "8$의 세제곱근은 방정식 $x^"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "거듭제곱근에 대한 5개의 명제를 확인한다.",
+    "goal": "옳지 않은 명제를 고른다.",
+    "method": "x^n = a 방정식의 복소수 근과 실근 개수를 확인한다.",
+    "condition": "근호 값과 거듭제곱근의 표현을 엄밀히 구별한다."
+  },
+  "how": "$\\sqrt{64} = 8$의 실수 세제곱근은 2인데 4라 한 ①이 옳지 않으므로 4.2점 정답 ①로 판정하였다."
+}

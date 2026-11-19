@@ -1,0 +1,69 @@
+{
+  "qid": "14",
+  "itemFingerprint": "67c0d49ff309d86b",
+  "solveSteps": [
+    "theta 가 제1사분면 각일 때 tan theta > 0 (배점 4.3점).",
+    "2 tan theta + 1/(8 tan theta) 에 산술기하평균 적용.",
+    "2 tan theta + 1/(8 tan theta) >= 2 sqrt(2/8) = 1.",
+    "역수의 합은 최솟값이 1 이므로 주어진 식의 최댓값은 1이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "$0 < \\theta < \\dfrac",
+  "rpmRecordId": "H2-M1-RPM-098",
+  "rpmReason": "tan와 cos의 관계식을 이용해 식을 2sin\\theta cos\\theta로 고치고 최댓값 1을 구하는 4.3점 문제이다.",
+  "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "삼각함수의 상제관계와 배각 형태에서 최댓값 1을 도출하는 4.3점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "tan = sin/cos 대입 후 2sin cos의 최댓값이 1임을 판정하는 4.3점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "탄젠트",
+        "src": "stem",
+        "quote": "일 때, $2\\tan\\theta\\c"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "theta$의 최댓값은? (4.3점"
+      }
+    ],
+    "method": [
+      {
+        "term": "산술평균",
+        "src": "solution",
+        "quote": "> 0$이므로 산술평균과 기하평균의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "기하평균",
+        "src": "solution",
+        "quote": "로 산술평균과 기하평균의 관계에 의하"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "삼각함수 곱 식과 각의 범위를 확인한다.",
+    "goal": "식의 최댓값을 구한다.",
+    "method": "tan = sin/cos로 바꾸어 2sin cos 형태로 단순화한다.",
+    "condition": "0 < theta < pi/2 범위를 고려한다."
+  },
+  "how": "$2\\tan\\theta\\cos^2\\theta = 2\\sin\\theta\\cos\\theta = \\sin 2\\theta$의 최댓값이 1이므로 4.3점 ⑤로 판정하였다."
+}

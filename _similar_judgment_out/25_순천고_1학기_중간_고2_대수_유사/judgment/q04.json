@@ -1,0 +1,72 @@
+{
+  "qid": "04",
+  "itemFingerprint": "243257bb29495e4c",
+  "solveSteps": [
+    "각 동경이 속하는 사분면을 일반각으로 조사한다.",
+    "150^\\circ: 90^\\circ < 150^\\circ < 180^\\circ이므로 제2사분면이다.",
+    "-5\\pi/4 = -225^\\circ: -360^\\circ + 135^\\circ이므로 제2사분면이다.",
+    "690^\\circ = 360^\\circ + 330^\\circ: 270^\\circ < 330^\\circ < 360^\\circ이므로 제4사분면이다.",
+    "17\\pi/6 = 2\\pi + 5\\pi/6 = 360^\\circ + 150^\\circ이므로 제2사분면이다.",
+    "-600^\\circ = -720^\\circ + 120^\\circ이므로 제2사분면이다.",
+    "따라서 나머지 넷과 다른 하나는 제4사분면에 속하는 690^\\circ(③)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "다음 각을 나타내는 동경이 속하는 사",
+  "rpmRecordId": "H2-M1-RPM-095",
+  "rpmReason": "일반각을 360 배수로 정리하여 690 각이 속하는 사분면을 판정하는 3.3점 문제이다.",
+  "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+  "templateKey": "NONE",
+  "typeReason": "동경의 회전수를 제외한 150, 690 일반각의 위치로부터 사분면을 판별하는 3.3점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다섯 개의 각을 360으로 나눈 나머지로 환산해 690 사분면을 비교하는 3.3점 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "동경이 속하는 사분면이 나머지 넷과"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "하는 사분면이 나머지 넷과 다른 하"
+      }
+    ],
+    "method": [
+      {
+        "term": "일반각",
+        "src": "stem",
+        "quote": "각을 나타내는 동경이 속하는 사분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "solution",
+        "quote": "c$이므로 제2사분면의 각이다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "다섯 개의 각과 사분면 조건을 확인한다.",
+    "goal": "사분면이 다른 하나를 찾는다.",
+    "method": "360도 및 2pi 주기를 빼서 기본각을 구한다.",
+    "condition": "각 사분면의 각도 범위를 검토한다."
+  },
+  "how": "$690^\\circ = 360^\\circ + 330^\\circ$로 제4사분면이고 나머지는 제2사분면이므로 3.3점의 ③으로 판정하였다."
+}

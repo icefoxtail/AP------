@@ -1,0 +1,70 @@
+{
+  "qid": "22",
+  "itemFingerprint": "0012fc853adfe96d",
+  "solveSteps": [
+    "a_1 < a_2 < ... < a_{10}이라 하자.",
+    "모든 i = 2, ..., 10에 대하여 a_i / a_1 \\in S이고 a_1 >= 2이므로 1 <= a_i / a_1 < a_i이다.",
+    "따라서 a_1은 집합 S의 가장 작은 원소이고, a_2 / a_1 < a_3 / a_1 < ... < a_{10} / a_1은 S에서 a_{10}을 제외한 9개의 원소와 일치한다.",
+    "a_2 / a_1 = a_1 => a_2 = a_1^2, a_3 / a_1 = a_2 => a_3 = a_1^3, ..., a_{10} = a_1^{10}이다.",
+    "따라서 log_{a_1} a_k = k이므로 구하는 값은 2 + 3 + ... + 10 = (10 * 11)/2 - 1 = 54이다."
+  ],
+  "solvedAnswer": "54",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "$1$이 아닌 서로 다른 $10$개의",
+  "rpmRecordId": "H2-M1-RPM-075",
+  "rpmReason": "원소의 비 조건으로부터 등비수열 a_k = a_1^k를 규명하고 10 로그 합 54를 구하는 6점 문제이다.",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "집합의 연산 닫힘 조건에서 각 원소를 밑 a_1의 거듭제곱으로 나타내어 54 합을 도출하는 6점 서술형 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "a_i / a_1 구조를 추론해 2부터 10까지의 합 54를 유도하는 6점 고난도 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "의 자연수들의 집합   $$S ="
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$10$개의 자연수들의 집합"
+      }
+    ],
+    "method": [
+      {
+        "term": "원소",
+        "src": "solution",
+        "quote": "의 가장 작은 원소이다.   또한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "<조건> 모든 $i = 2,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "10개의 원소로 이루어진 집합 조건을 확인한다.",
+    "goal": "로그들의 합을 구한다.",
+    "method": "크기 순서대로 a_k = a_1^k임을 귀납적으로 증명한다.",
+    "condition": "a_{10}을 제외한 원소들이 1대1 매칭됨을 이용한다."
+  },
+  "how": "$a_k = a_1^k$로부터 $\\sum_{k=2}^{10} k = 54$임을 유도하여 6점 서술형 정답 54로 판정하였다."
+}

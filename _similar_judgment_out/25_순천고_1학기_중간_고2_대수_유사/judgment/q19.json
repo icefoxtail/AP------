@@ -1,0 +1,73 @@
+{
+  "qid": "19",
+  "itemFingerprint": "4057b1f987c2abf6",
+  "solveSteps": [
+    "(1) t = 2^x + 2^{-x}라 두면 t >= 2이다.",
+    "4^x + 4^{-x} = t^2 - 2이므로 방정식은 t^2 - kt + 5 = 0이다.",
+    "t >= 2에서 실근을 갖지 않으려면 f(t) = t^2 - kt + 5에서 축 k/2 <= 2이고 f(2) = 9 - 2k > 0이어야 하므로 k <= 4이다.",
+    "따라서 자연수 k는 1, 2, 3, 4이다.",
+    "(2) x^2 - 2(2^k - 1)x + 2(2^k + 7) <= 0의 실근이 존재하려면 D/4 >= 0이어야 한다.",
+    "D/4 = (2^k - 1)^2 - 2(2^k + 7) = (2^k)^2 - 4(2^k) - 13 >= 0이다.",
+    "2^k = u (u > 0)에서 u >= 2 + \\sqrt{17} \\approx 6.12이므로 2^k >= 7, 즉 k >= 3이다.",
+    "공통 자연수 k는 3, 4이므로 합은 3 + 4 = 7이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-02",
+  "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+  "unitEvidence": "방정식 $(4^x + 4^{-x}) ",
+  "rpmRecordId": "H2-M1-RPM-083",
+  "rpmReason": "치환 t >= 2의 근의 분리와 판별식을 결합하여 자연수 k의 합 7을 구하는 4.8점 문제이다.",
+  "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "지수방정식의 t >= 2 실근 조건과 이차부등식 판별식 20 범위를 융합하는 4.8점 고난도 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "t >= 2 근의 조건과 D/4 >= 0을 모두 풀어 k = 3, 4를 만족함을 유도하는 4.8점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $(4^x + 4^{-"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "키는 자연수 $k$의 합은? ("
+      }
+    ],
+    "method": [
+      {
+        "term": "이차부등식",
+        "src": "stem",
+        "quote": "<조건> 이차부등식 $x^2 ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "이 실근을 갖지 않고, 아래 <"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "지수방정식과 이차부등식 조건을 확인한다.",
+    "goal": "만족하는 자연수 k의 합을 구한다.",
+    "method": "산술기하로 t >= 2를 잡고 근의 위치를 판별한다.",
+    "condition": "이차부등식의 판별식이 0 이상인 k의 범위를 교집합한다."
+  },
+  "how": "$k \\le 4$와 $k \\ge 3$의 공통 자연수 $k = 3, 4$의 합이 7이므로 4.8점의 정답 ⑤로 판정하였다."
+}
