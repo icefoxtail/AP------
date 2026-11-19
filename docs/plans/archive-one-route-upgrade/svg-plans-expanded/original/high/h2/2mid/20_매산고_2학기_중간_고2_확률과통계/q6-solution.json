@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1/3",
+          "-1/18"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1,
+      7,
+      -0.05,
+      0.42
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "6"
+      ],
+      "y": [
+        "1/6",
+        "1/3"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "1/3"
+      },
+      {
+        "id": "M",
+        "x": "3",
+        "y": "1/6"
+      },
+      {
+        "id": "B",
+        "x": "6",
+        "y": "0"
+      }
+    ],
+    "regions": [
+      {
+        "id": "part",
+        "upper": "f",
+        "lower": "axis",
+        "from": "3",
+        "to": "6",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 2
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  },
+  "caption": "f(x)=1/3−x/18은 x=0에서 1/3, x=6에서 0으로 내려가는 직선이다. P(3≤X≤6)은 색칠한 오른쪽 삼각형의 넓이이다. 밑변은 6−3=3이고 높이는 f(3)=1/6이므로 넓이는 (1/2)×3×(1/6)=1/4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "오른쪽 아래로 내려가는 선분 모양의 확률밀도함수 그래프이며 x=3부터 x=6까지 아래쪽이 삼각형으로 칠해져 있다.",
+  "newVisualInformation": [
+    "색칠한 구간이 밑변 3, 높이 1/6인 직각삼각형임이 보여 넓이 1/4이 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 연속확률변수 $X$의 확률밀도함수가\n$$f(x)=\\frac{1}{3}-\\frac{1}{18}x \\quad (\\text{단}, 0 \\le x \\le 6)$$\n일 때, $P(3 \\le X \\le 6)$의 값을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

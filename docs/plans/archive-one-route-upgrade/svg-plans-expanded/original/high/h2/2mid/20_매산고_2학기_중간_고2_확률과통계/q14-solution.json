@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      -0.5,
+      2.5,
+      -0.1,
+      1.2
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1/2",
+        "1"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "1"
+      },
+      {
+        "id": "M",
+        "x": "1",
+        "y": "1/2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "regions": [
+      {
+        "id": "tail",
+        "upper": "f",
+        "lower": "axis",
+        "from": "1",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 2
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "B"
+      ]
+    }
+  },
+  "caption": "전체 넓이가 1이므로 (1+(2m+1))/2×2=1에서 m=−1/2이고 f(x)=1−x/2이다. 그림은 이 값으로 그렸다. g(t)=P(t≤X≤2)는 밑변 2−t, 높이 (2−t)/2인 삼각형이므로 g(t)=(2−t)²/4이다. f(k)=2g(k)에서 2−k=(2−k)²이므로 k=1이고 색칠한 구간 [1, 2]의 넓이는 g(1)=1/4이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "오른쪽 아래로 내려가는 선분 모양의 확률밀도함수 그래프이며 x=1부터 x=2까지 아래쪽이 삼각형으로 칠해져 있다.",
+  "newVisualInformation": [
+    "f(x)=1−x/2에서 k=1일 때 오른쪽 꼬리가 밑변 1, 높이 1/2인 직각삼각형이어서 넓이 1/4이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 확률변수 $X$가 갖는 값의 범위는 $0 \\le X \\le 2$이고 $X$의 확률밀도함수가 $f(x)=mx+1$이다. $0 \\le t \\le 2$에서 정의된 함수 $g(t)$가 $g(t)=P(t \\le X \\le 2)$이고 $f(k)=2g(k)$를 만족할 때, $P(k \\le X \\le 2)$의 값은? (단, $m$은 상수이고, $0 < k < 2$이다.) [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
