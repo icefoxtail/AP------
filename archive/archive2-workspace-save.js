@@ -118,7 +118,7 @@
   // The screen name that goes into the folded detail ("화면: 문제지 만들기"), so a pasted report says where it happened.
   const SCREEN_LABELS = {
     home: "홈", find: "기출 찾기", compose: "문제지 만들기", saved: "보관함", recent: "출제 내역", health: "점검",
-    "five-minute": "5분 테스트", "subunit-test": "소단원 테스트", "unit-test": "단원 테스트", "monthly-test": "월말 테스트",
+    "five-minute": "5분 테스트", "subunit-test": "소단원 테스트", "unit-test": "단원 테스트", "monthly-test": "월말 테스트", diagnostic: "진단평가",
   };
   function screenLabel() {
     try { return SCREEN_LABELS[state.view] || String(state.view || ""); } catch { return ""; }
