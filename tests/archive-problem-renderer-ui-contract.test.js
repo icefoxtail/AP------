@@ -721,20 +721,27 @@ test('Git reader rejects local drift, untracked bytes, symlinks and event mismat
   fs.writeFileSync(path.join(root, 'a.txt'), 'changed'); assert.throws(() => reader.read('a.txt'), /UI_CHECKOUT_BYTES_DRIFT/);
 });
 
-test('workflow requires the six-case job without modifying the existing solution browser gate', () => {
+test('workflow requires the six-case check without modifying the existing solution browser gate', () => {
+  // The runtime contract, six-case reviewed problem UI and 50-question solution checks run as steps of one job
+  // (one checkout, one runner wait). Each keeps its step name, its scope condition and its own limits.
   const workflow = fs.readFileSync(path.join(__dirname, '..', checker.WORKFLOW_PATH), 'utf8');
-  assert.match(workflow, /reviewed-problem-renderers:\s*\n\s*name: Archive2 reviewed problem UI \(6 cases\)/);
-  const job = workflow.slice(workflow.indexOf('  reviewed-problem-renderers:'));
-  assert.match(job, /timeout-minutes: 8/);
-  assert.match(job, /ref: \$\{\{ github.sha \}\}/);
-  assert.match(job, /node --test tests\/archive-problem-renderer-ui-contract.test.js/);
+  assert.match(workflow, /\n  runtime-guard:\n    name: Archive2 runtime guard\n/);
+  assert(!workflow.includes('reviewed-problem-renderers:'), 'the six-case check is a step of the single runtime-guard job');
+  const job = workflow.slice(workflow.indexOf('  runtime-guard:'));
+  assert.match(job, /\n    timeout-minutes: 25\n/);
+  assert.match(job, /ref: \$\{\{ github.sha \}\}\n\s+fetch-depth: 0/);
+  assert.match(job, /name: Verify the closed problem UI evidence contract\n\s+id: ui_contract\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outcome == 'success' \}\}\n\s+run: node --test tests\/archive-problem-renderer-ui-contract.test.js/);
+  assert.match(job, /name: Require all six views for exact source, asset or checker changes\n\s+id: plan\n/);
   assert.match(job, /playwright@1\.62\.1/);
-  assert.match(job, /CHROME_BIN: \$\{\{ steps.chrome.outputs.chrome-path \}\}/);
-  assert.match(job, /if: steps.plan.outputs.required == 'true'/);
-  assert(!job.includes('continue-on-error'));
+  const six = /- name: Verify all three reviewed problems in desktop and mobile exam mode\n([\s\S]*?)\n      # ---/.exec(job)?.[1] || '';
+  assert.match(six, /if: \$\{\{ !cancelled\(\) && steps\.plan\.outputs\.required == 'true' \}\}/);
+  assert.match(six, /timeout-minutes: 5/);
+  assert.match(six, /CHROME_BIN: \$\{\{ steps.chrome.outputs.chrome-path \}\}/);
+  assert.match(six, /node tools\/check-reviewed-problem-renderer-browser.cjs --output/);
+  assert(!workflow.includes('continue-on-error'));
   assert.match(job, /technical-proof.json/);
   assert.match(job, /\*-desktop-tile-\*.png/);
   assert.match(job, /\*-mobile-tile-\*.png/);
   assert(!job.includes('/*-desktop.png') && !job.includes('/*-mobile.png'), 'v2 uploads original tiles without a single-shot alias');
-  assert.match(workflow, /name: Archive2 50-question solution Chrome[\s\S]*?timeout-minutes: 12/);
+  assert.match(job, /name: Compare 50 real solutions and verify asset failures in actual Chrome\n\s+id: solution_50\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.solution_browser == 'true' \}\}\n\s+timeout-minutes: 8/);
 });

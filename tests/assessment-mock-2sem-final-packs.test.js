@@ -56,7 +56,11 @@ data.packs.forEach((pack, index) => {
     seenKeys.set(q._qKey, tag);
     assert(String(q.answer ?? '').trim() !== '', `${where}: 정답이 비어 있습니다.`);
     assert(String(q.content ?? '').trim() !== '', `${where}: 발문이 비어 있습니다.`);
-    if (q.questionType === '객관식') assert(Array.isArray(q.choices) && q.choices.length >= 4, `${where}: 객관식 보기가 부족합니다.`);
+    if (q.questionType === '객관식') {
+      // 보기가 그림 안에 든 문항은 choices가 빈 배열이다(그림 + 답 ①~⑤ 꼴일 때만 허용: archive/figure-size.js emptyChoicesAreFigure).
+      const choicesInFigure = Array.isArray(q.choices) && q.choices.length === 0 && (q.image || /<img\b/i.test(String(q.content))) && /^\s*[①-⑤](?:\s*[,，、]?\s*[①-⑤])*\s*$/.test(String(q.answer));
+      assert(choicesInFigure || (Array.isArray(q.choices) && q.choices.length >= 4), `${where}: 객관식 보기가 부족합니다.`);
+    }
     assert(allowedUnits.has(q.standardUnitKey), `${where}: 범위 밖 단원입니다: ${q.standardUnitKey}`);
     assert(Number(q._sourceYear) >= 22 && Number(q._sourceYear) <= 25, `${where}: 쓸 수 없는 연도입니다: ${q._sourceYear}`);
     assert(q.l3Disposition !== 'HOLD' && q.l4Disposition !== 'HOLD' && !q.itemHold, `${where}: 보류 표시가 있는 문항입니다.`);

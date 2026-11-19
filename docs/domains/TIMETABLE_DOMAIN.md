@@ -24,6 +24,23 @@
 
 운영 시간표는 `classes`, `class_time_slots`를 사용하고, draft/version은 `timetable-versions`와 version tables를 사용한다. conflict scan은 route에서 class/time overlap을 계산해 conflict logs/preview를 반환한다.
 
+### C-1. 새학기 개편안 명단 규칙 (2026-11)
+
+이유: 개편안을 며칠에 걸쳐 짜는 동안에도 신입·퇴원이 계속 생기는데, 개편안은 만들 때 운영 명단을 한 번 복사할 뿐이라 낡은 명단으로 적용하면 신입이 어느 반에도 못 들어가고 퇴원생이 되살아났다. DB 스키마는 바꾸지 않고 기존 컬럼에 값만 추가했다(운영 D1 마이그레이션은 수동이라 배포 즉시 깨질 수 있음).
+
+- **반 상태 `removed`** (`timetable_version_classes.status`): 개편안에서 삭제한 반. 운영 반에서 온 반은 행과 슬롯을 남기고 `removed`로만 표시한다(되살리기 가능). 초안에서 새로 만든 반(`source_class_id` 없음)은 행과 슬롯을 지운다. 화면·적용·충돌 확인의 "렌더 가능 반"에서는 `excluded`·`graduating_excluded`와 함께 제외한다. 삭제된 반의 학생은 미배정으로 간다.
+- **미배정 `excluded_reason='unassigned'`** (`timetable_version_student_assignments`): `class_id`·`version_class_id`는 표식값 `__unassigned__`. `UNIQUE(version_id, student_id)` 때문에 반이 없는 학생도 행을 유지한다. 렌더 목록에는 섞이지 않고 응답 `timetable_version_unassigned_students`로 따로 내려간다. 반에 넣으면(`students/assign`) 정상 배정으로 돌아온다. 적용 시 미배정 학생은 어느 새 반에도 넣지 않고 운영 수강 기록은 기존 로직대로 종료한다(적용을 막지 않음, 응답에 `unassigned_student_count`).
+- **현재 명단 자동 갱신(roster sync)**: 개편안(draft/scheduled)을 열 때마다(`GET timetable-versions/{id}`) 서버가 현재 운영 명단과 맞춘다. 멱등이며 순수 함수 `computeRosterDiff`가 계산한다. 퇴원·제적 학생은 개편안에서 빼고, 신입·재등록 학생은 현재 운영 반에 대응하는 개편안 반에(없으면 미배정에) 넣고, 운영에서 반을 옮긴 학생은 **원장이 손대지 않은 경우만**(`memo.note`가 최초 복사/sync 그대로이고 원래 소속 반에 그대로 있을 때) 새 반을 따라간다. 원장이 옮긴 학생·미배정으로 뺀 학생(미배정 행이 있으면 "개편안에 있는 학생")·삭제한 반은 되돌리지 않는다. 그래서 학생 배정/미배정 저장 때 `memo.note`를 `draft student reassigned`/`draft student unassigned`로 바꾼다.
+- **운영에서 새로 연 반 가져오기**: 개편안을 만든 뒤 운영에 새로 생긴 활성 반(어떤 개편안 반과도 `source_class_id`가 안 맞는 반)은 sync 때 처음 초안을 만들 때와 같은 규칙(학년 승급 이름, 졸업 대상은 excluded, 현재 `class_time_slots` 복사)으로 반과 슬롯을 가져오고, 그 반 학생은 미배정이 아니라 그 반에 넣는다(손대지 않은 학생은 새 반으로 따라간다). 이유: 안 가져오면 그 반 학생이 개편안의 옛 배치로 되살아나거나 적용에서 빠진다. 원장이 삭제한(`removed`) 반은 source 행이 남아 있어 다시 가져오지 않고, 운영에서 비활성화된 반은 가져오지 않는다. 가져오지 않은 새 운영 반이 있으면 `activate`도 막는다.
+- **운영에서 닫힌 반**: 개편안을 만든 뒤 운영에서 닫힌(`is_active=0`) 반이 개편안에 남아 있으면 적용 때 활성 반으로 되살아나므로, sync가 그 개편안 반을 `removed`로 바꾸고(남은 학생은 미배정, 운영 반을 옮긴 손대지 않은 학생은 그 반으로 따라감) 알림에 알린다. 원장이 되살린 반은 `timetable_version_classes.memo`의 `restored_by_director`로 구분해 다음 sync가 다시 지우지 않는다. 닫힌 반이 남아 있으면 `activate`도 막는다.
+- **반 id 길이(세대 이음)**: 적용 때 만드는 운영 반 id(`makeAppliedClassId`)와 개편안 반 id(`makeSourceVersionClassId`)는 입력이 길면(개편안 반 id 입력 각 80자, 운영 반 id 120자 초과) 전체 입력의 64비트 해시로 만든 고정 길이 id를 쓴다. 이유: 적용할 때마다 id가 이전 id를 품고 길어져, 앞부분만 자르면 3세대부터 서로 다른 반이 같은 id가 되어 `INSERT OR IGNORE`가 반을 조용히 버리고 적용이 영구히 막혔다. 짧은 입력(이미 저장된 기존 초안)은 예전과 같은 값이라 슬롯·배정이 가리키는 id가 그대로다.
+- **적용 예약과 자동 적용**: `scheduled`는 "적용 예약됨"이다(편집 가능, 배치·적용일 수정 가능). 예약은 적용일이 한국 시간 오늘보다 뒤일 때만 된다(당일 0:05 cron은 이미 지났으므로 오늘 이전·당일은 즉시 적용). 예약 상태에서 적용일을 오늘 이전으로 바꾸는 것도 막는다(다음 cron이 몰래 적용하는 것을 방지). 매일 한국 시간 0시 5분 cron(`5 15 * * *`)이 `status='scheduled'`이고 `effective_from` ≤ 한국 시간 오늘인 개편안을 찾아 명단 sync를 먼저 실행한 뒤 기존 `activate`로 적용한다. **`draft`는 날짜가 지나도 자동 적용하지 않는다**(기본 적용일이 다음 해 1월 1일이라 짜다 만 개편안이 올라가는 사고를 막기 위해). 미배정 학생이 있어도 자동 적용은 진행한다(그날 모든 선생님이 옛 시간표를 보는 것이 더 큰 문제). 결과는 `timetable_version_apply_logs`에 `auto_success`/`auto_failed`로 남기고(`summary_json`: 반 수·학생 수·미배정 이름·sync로 바뀐 것), 원장이 시간표를 열면 `GET timetable-versions/auto-apply-latest`로 가장 최근 결과를 한 번 띠로 보여 준다(닫으면 로그 id를 브라우저에 기억). 상태가 `active`가 되면 조회에서 빠지므로 cron이 두 번 돌거나 원장이 먼저 적용해도 중복 적용이 없다. 실패하면 적용이 한 번의 batch라 중간 상태가 없고 status는 `scheduled`로 남아 **다음 날 cron이 다시 시도한다**(일시 장애는 재시도로 해결되고, 원인이 계속되면 매일 실패 로그와 띠로 알려 주므로 원장이 직접 적용할 수 있다). cron 작업은 `Promise.allSettled`로 월별 보관·메모 자동 완료와 서로 영향이 없다.
+- **자동 적용 대상은 새 [적용 예약] 흐름으로 예약된 개편안뿐**: 예약 PATCH가 성공하면 `timetable_version_apply_logs`에 `schedule_requested`(적용일·예약한 사람) 표식을, 취소하면 `schedule_cancelled`를 남긴다. cron은 가장 최근 표식이 `schedule_requested`이고 그 적용일이 현재 `effective_from`과 같을 때만 적용한다(예약 뒤 적용일을 바꾸면 새 날짜로 표식을 다시 남김). 이유: 운영 DB에 예전 API로 `scheduled`가 된 채 남은 옛 개편안이 있으면 배포 후 첫 cron이 원장 모르게 적용하기 때문이다. 표식 없는 `scheduled`는 건너뛰고, 화면에는 draft와 같이 "적용 예정일이 지났습니다" 띠로 안내한다(응답의 `auto_apply_armed`).
+- **적용 차단**: `activate`는 적용 직전에 같은 비교를 다시 해서 신입 누락·퇴원생 포함·반 이동 미반영이 있으면 409 `roster_mismatch`와 차이 내용을 돌려주고 적용하지 않는다(안전장치).
+- **적용 시 삭제한 반**: `removed` 반의 원래 운영 반도 `is_active=0`, `class_students`·`teacher_classes` 삭제 대상에 넣는다. 안 넣으면 삭제한 반이 운영에 그대로 남는다. 졸업(중3) `excluded` 반은 기존대로 운영에 그대로 둔다(개편안에도 없고 적용 때 닫지도 않음).
+- **새로 만들기**: `POST timetable-versions/{id}/restart`는 대상 초안을 `cancelled`로 바꾸고 같은 학년도·적용일·제목의 새 초안을 현재 운영 데이터에서 만든다. 반의 요일·시간은 직전 버전 슬롯이 아니라 현재 운영 `class_time_slots`에서, 학생은 퇴원·제적을 뺀 현재 `class_students`에서 복사한다(`create-next-draft`도 같음).
+- 한 학생이 운영에서 두 반 이상 들으면 개편안에는 한 반만 저장된다. 화면 상단에 "두 반 수강 n명" 안내만 띄운다.
+
 ## D. 회귀 위험
 
 - draft 작업이 운영 class row를 덮어쓰는 것

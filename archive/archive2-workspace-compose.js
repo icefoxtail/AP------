@@ -528,13 +528,16 @@
       : isSourceRoutedGeneralRange()
         ? { ...state.filters, courseKey: "" }
         : state.filters;
+    const filters = {
+      ...withoutMetaFacets(routedFilters),
+      sourceFiles: state.sources,
+      primaryPaths: paths,
+      scopeQuestionUids,
+    };
+    // The grade/subject buttons leave the unified-only 교육과정 filter as "" in state.filters; the saved-paper server rejects any key it does not know (409).
+    if (!filters.originalCurriculum) delete filters.originalCurriculum;
     return {
-      filters: {
-        ...withoutMetaFacets(routedFilters),
-        sourceFiles: state.sources,
-        primaryPaths: paths,
-        scopeQuestionUids,
-      },
+      filters,
       rows,
       pins: state.selected
         .filter((r) => state.pins.includes(r.questionUid))
