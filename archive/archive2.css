@@ -4888,3 +4888,25 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   min-width: 76px;
   background: var(--chip);
 }
+
+/* 이 시험지로 다시 만들기 (작은 창 + 문제지 만들기 안내) */
+.derive-dialog .derive-base { margin: 0 0 8px; }
+.derive-dialog .derive-note { margin: 0 0 8px; font-size: 13px; }
+.derive-dialog .derive-group { border: 0; margin: 14px 0 0; padding: 0; min-width: 0; }
+.derive-dialog legend { font-weight: 700; padding: 0; margin-bottom: 6px; }
+.derive-dialog .derive-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.derive-dialog .derive-choice { display: flex; gap: 8px; align-items: flex-start; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+.derive-dialog .derive-choice:has(input:checked) { border-color: var(--ink); background: var(--selected); }
+.derive-dialog .derive-choice small { display: block; color: var(--muted); font-size: 12px; line-height: 1.4; margin-top: 2px; }
+.derive-dialog .derive-source { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.derive-dialog .derive-source label { display: grid; gap: 4px; font-size: 13px; }
+.derive-dialog .derive-total { margin: 10px 0 2px; }
+.derive-dialog .derive-level { margin: 0 0 8px; color: var(--ink-2); font-size: 13px; }
+.derive-dialog .derive-notes { margin: 8px 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; line-height: 1.6; }
+.derive-dialog .derive-list { margin: 10px 0; font-size: 13px; }
+.derive-dialog .derive-list ol { margin: 6px 0 0; padding-left: 22px; max-height: 220px; overflow: auto; }
+.derive-dialog .derive-list li { margin: 2px 0; }
+.derive-dialog .derive-meta { color: var(--muted); }
+.derive-dialog .derive-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.derive-compose-note p { margin: 4px 0 0; }
+.derive-compose-note ul { margin: 4px 0 0; padding-left: 18px; }

@@ -40,7 +40,8 @@
     scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
     state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
     updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult;
+    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
+    deriveAction, openDeriveFromUrl;
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
@@ -63,7 +64,8 @@
       scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
       state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
       updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult
+      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult,
+      deriveAction, openDeriveFromUrl
     } = WS.api);
   });
   // function declarations are hoisted: export them now so the other parts (and this file's own load-time code) see them
@@ -462,6 +464,10 @@
       // Local output, work backup, closing a dialog and sheet toggles never touch the save identity.
       if (state.saveResultState === "RESULT_UNKNOWN" && !UNKNOWN_RESULT_ALLOWED_ACTIONS.has(a)) {
         status("저장 결과를 확인할 때까지 작업 중인 문제지의 편집을 잠급니다. 출력과 작업 백업은 사용할 수 있습니다.", true);
+        return;
+      }
+      if (a === "assignment-derive" || /^derive-/.test(a || "")) {
+        await deriveAction(a, b);
         return;
       }
       if (a === "assignment-status") {
@@ -1743,6 +1749,7 @@
       Boot?.finish?.(false);
       replayDeferredClick();
       scheduleIndexWarmUp();
+      openDeriveFromUrl();
       const previous = drafts();
       restoreCurrentHistoryScroll();
       if (state.view === "compose" && state.editSavedPaperId) {
