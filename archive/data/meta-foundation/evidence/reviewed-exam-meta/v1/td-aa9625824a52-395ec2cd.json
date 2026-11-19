@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-aa9625824a52-395ec2cd",
+  "requestSha256": "198880eedfcbca80e59b70d9aefb2bd506da98d95488722e4657dec760f1eeb7",
+  "examUid": "22_복성고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/22_복성고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "b464b2e487854ecc4f4a832d0849d8f2b1fca738",
+  "sourceRawSha256": "5551f80bbe4dc9bef8bf5fdef686ce191550041d8772115d253bd3959f3c244a",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa9625824a52-395ec2cd.type-ledger.json",
+        "sha256": "0adb23d2d843506c434cd8e65a6d0517fd7c5c87d93ff2d06ce1f9fbd60458b0"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_ca9ca75ede3115e38adccdbc4c0f87d34c9d33680ca4308d39fb85cea906ab25",
+      "sourceArchiveFile": "original/high/h1/1mid/22_복성고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aa9625824a52-395ec2cd",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "좌표평면 도형에 대한 보기 각각의 참거짓을 내분·외분·원의 방정식 성질로 판단한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "fa1f2dbef41862f5808487a2a1a8f3ae8bc64fd5b12928ad99531d6e1cf53df6",
+        "judgedContentFingerprint": "7623a7752aa23ed42c1c37b5160fc767c03208dd4055e4d600286e9ae9efad5f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "70156d44a3a607ea42d5b9c66d31ad8d5a1564e43a2193b9e6f727976c0ea11d",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aa9625824a52-395ec2cd.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}
