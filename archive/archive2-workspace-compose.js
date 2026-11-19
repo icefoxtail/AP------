@@ -1097,9 +1097,9 @@
         .filter(candidate => !reserved.has(candidate.questionUid));
     };
     // unit x step cells of the picks (originals and reserve apart), for the second form of an A·B pair.
-    const cellPicks = () => {
+    const cellPicks = (list = picks) => {
       const map = new Map();
-      for (const record of picks) {
+      for (const record of list) {
         const at = cellOf.get(record.questionUid);
         if (!at) continue;
         const key = keyOf(at.u, at.step), cell = map.get(key) || map.set(key, { u: at.u, step: at.step, orig: [], fill: [] }).get(key);
@@ -1113,11 +1113,15 @@
   // The second form (B) of an A·B pair: the same unit x step cells with the same number of questions as A, none of A's questions.
   // A cell takes unused originals first; a cell that has none left (a short step: A took them all) takes unused 유형/유사 questions
   // of the same cell instead; only a cell with neither takes A's own question again, and that is counted as overlap.
+  // options.finalA: the records A really holds (an empty question of the plan may have been replaced); options.knownBlank: uids found empty
+  // (no answer or no solution) while A was made - they are never candidates for B.
   function diagnosticMirror(units, plan, options = {}) {
     const familyOf = options.familyOf || (() => "");
     const typeOf = SELECTION_TYPE;
-    const first = new Set(plan.selected.map(record => record.questionUid));
-    const cellsA = [...plan.cellPicks().values()].sort((a, b) => a.step - b.step || a.u - b.u);
+    const blank = options.knownBlank || new Set();
+    const finalA = options.finalA || plan.selected;
+    const first = new Set(finalA.map(record => record.questionUid));
+    const cellsA = [...plan.cellPicks(finalA).values()].sort((a, b) => a.step - b.step || a.u - b.u);
     const chosen = new Set(), picks = [], typeUse = new Map(), sourceUse = new Map();
     const unique = list => recencyShuffle([...new Map((list || []).map(record => [record.questionUid, record])).values()]);
     const choose = (rows, count, allowed = () => true) => {
@@ -1137,7 +1141,7 @@
       }
       return got;
     };
-    const unused = rows => unique(rows).filter(record => !first.has(record.questionUid));
+    const unused = rows => unique(rows).filter(record => !first.has(record.questionUid) && !blank.has(record.questionUid));
     const lack = new Map();
     const keyOf = cell => `${cell.u}|${cell.step}`;
     for (const cell of cellsA) {
@@ -1177,26 +1181,39 @@
   // Each restore is a source request, so the tries are capped: a few per empty question and a small total for the whole paper.
   // Past a cap the paper is "not enough questions" (same message), instead of the student waiting for hundreds of requests.
   const BLANK_TRIES_PER_QUESTION = 8, BLANK_TRIES_TOTAL = 40;
-  async function replaceBlankQuestions(units, selected, questions, plan) {
+  // options.knownBlank: a Set shared by the papers of one A·B pair - every question found empty is added, and is never tried again.
+  // options.lastResort(record, taken): already restored { record, question } pairs of the same step (the other form's questions) that
+  // may stand in when no other candidate is left; the B form uses A's, so a short pool costs an overlap, not the whole paper.
+  async function replaceBlankQuestions(units, selected, questions, plan, options = {}) {
     const records = selected.slice(), restored = questions.slice();
+    const blank = options.knownBlank || new Set();
     const taken = new Set(records.map(record => record.questionUid)), rejected = new Set();
     let replaced = 0, totalTries = 0;
     for (let i = 0; i < records.length; i++) {
       if (!isBlankQuestion(restored[i])) continue;
+      blank.add(records[i].questionUid);
       const spares = plan.sparesFor(records[i]);
       let done = false, tries = 0;
       for (const candidate of spares) {
-        if (taken.has(candidate.questionUid) || rejected.has(candidate.questionUid)) continue;
+        if (taken.has(candidate.questionUid) || rejected.has(candidate.questionUid) || blank.has(candidate.questionUid)) continue;
         if (tries >= BLANK_TRIES_PER_QUESTION || totalTries >= BLANK_TRIES_TOTAL) break;
         tries++; totalTries++;
         let question;
         try { [question] = await Source.restore([candidate], state.catalog); } catch (error) { rejected.add(candidate.questionUid); continue; }
-        if (isBlankQuestion(question)) { rejected.add(candidate.questionUid); continue; }
+        if (isBlankQuestion(question)) { rejected.add(candidate.questionUid); blank.add(candidate.questionUid); continue; }
         taken.add(candidate.questionUid);
         records[i] = candidate; restored[i] = question; replaced++; done = true;
         break;
       }
-      if (!done) throw new Error("정답·해설이 있는 문항이 모자라 시험지를 만들 수 없습니다. 학기를 1·2학기로 바꾸거나 난이도를 바꿔 보세요.");
+      if (!done && options.lastResort) {
+        const pair = options.lastResort(records[i], taken).find((item) => !taken.has(item.record.questionUid) && !isBlankQuestion(item.question));
+        if (pair) { taken.add(pair.record.questionUid); records[i] = pair.record; restored[i] = pair.question; replaced++; done = true; }
+      }
+      if (!done) {
+        const error = new Error("정답·해설이 있는 문항이 모자라 시험지를 만들 수 없습니다. 학기를 1·2학기로 바꾸거나 난이도를 바꿔 보세요.");
+        error.code = "BLANK_SHORT";
+        throw error;
+      }
     }
     const byUid = new Map(records.map((record, i) => [record.questionUid, restored[i]]));
     const ordered = Quick.orderByStep(units, records);
@@ -1230,9 +1247,10 @@
     const presetPairs = product.presets[preset];
     const twoForms = diagnostic && quickState.twoForms;
     const familyOf = diagnostic ? C.familyResolver(state.catalog.records) : () => "";
-    const reserved = new Set();
-    let plan = null, planB = null;
-    const pick = () => diagnostic ? (plan = diagnosticSelection(units, presetPairs, product.count, { familyOf, reserved, pair: twoForms })).selected
+    // Every question found empty (no answer / no solution) while A or B is made; shared, so B never tries what A already found empty.
+    const knownBlank = new Set();
+    let plan = null;
+    const pick = () => diagnostic ? (plan = diagnosticSelection(units, presetPairs, product.count, { familyOf, pair: twoForms })).selected
       : product.combine || state.view === "unit-test"
       ? balancedQuickSelection(units, presetPairs)
       : presetPairs.flatMap(([bucket, count]) => recencyShuffle([...new Map(
@@ -1249,20 +1267,9 @@
       status("같은 문항이 중복되어 시험지를 열 수 없습니다.", true);
       return;
     }
-    // A·B pair: B has the same unit x step cells as A and none of A's questions (a cell with no other question may overlap).
-    let selectedB = null;
-    if (twoForms) {
-      planB = diagnosticMirror(units, plan, { familyOf });
-      selectedB = Quick.orderByStep(units, planB.selected);
-      if (selectedB.length < product.count || !complete(selectedB)) {
-        status(`${label}: A·B형 두 벌을 만들 문항이 모자랍니다. A·B형 선택을 끄고 한 벌로 열어 보세요.`, true);
-        return;
-      }
-      for (const record of selectedB) reserved.add(record.questionUid);
-    }
     // The pools are cached per catalog load; every chosen question is checked against the
     // current usage and difficulty conditions before it is printed.
-    if (selected.concat(selectedB || []).some(record => !Quick.stillUsable(record, product))) {
+    if (selected.some(record => !Quick.stillUsable(record, product))) {
       V.quickPoolCache = { index: null, meta: null, metaByUid: null, pools: null };
       status("문항 상태가 바뀌어 목록을 다시 확인합니다. 다시 선택하세요.", true);
       render();
@@ -1278,9 +1285,9 @@
     quickState.formB = null;
     status("선택한 문항의 원본을 확인하고 있습니다.");
     render();
-    const makeForm = async (list, formPlan, suffix) => {
+    const makeForm = async (list, formPlan, suffix, blankOptions = {}) => {
       let questions = await Source.restore(list, state.catalog), replaced = 0, chosen = list;
-      if (diagnostic) ({ selected: chosen, questions, replaced } = await replaceBlankQuestions(units, list, questions, formPlan));
+      if (diagnostic) ({ selected: chosen, questions, replaced } = await replaceBlankQuestions(units, list, questions, formPlan, { knownBlank, ...blankOptions }));
       const questionUids = chosen.map(record => record.questionUid);
       const title = `${product.title} · ${label}${suffix ? ` · ${suffix}` : ""}`;
       const meta = {
@@ -1295,14 +1302,35 @@
         sourceKind: "archive2-compose", sourceId: crypto.randomUUID(), mode: "exam",
         questionCount: product.count, questionUids, meta, questions,
       });
-      return { url: O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true }), chosen, replaced };
+      return { url: O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true }), chosen, questions, replaced };
     };
     // "4~5단계 2문항은 유형 1문항 · 유사 1문항으로 채웠습니다": what the reserve questions of the paper really are.
-    const fillSummary = chosen => {
+    // Each paper tells its own numbers ("A형은 ... B형은 ...").
+    const fillSummary = (chosen, who = "") => {
       const kinds = { types: 0, similar: 0 };
       for (const record of chosen) { const kind = String(record.sourceFile || "").split("/")[0]; if (kind in kinds) kinds[kind]++; }
       const parts = [kinds.types ? `유형 ${kinds.types}문항` : "", kinds.similar ? `유사 ${kinds.similar}문항` : ""].filter(Boolean);
-      return parts.length ? ` 원본 기출이 모자란 단계는 ${parts.join(" · ")}으로 채웠습니다.` : "";
+      return parts.length ? ` ${who}원본 기출이 모자란 단계는 ${parts.join(" · ")}으로 채웠습니다.` : "";
+    };
+    // B: the same unit x step cells as A (A's final paper) and none of A's questions; empty questions are never candidates. A cell with
+    // no other question takes one of A's again (counted). A failure here leaves A's window open and says so.
+    const makeFormB = async (formA) => {
+      const planB = diagnosticMirror(units, plan, { familyOf, finalA: formA.chosen, knownBlank });
+      const listB = Quick.orderByStep(units, planB.selected);
+      if (listB.length < product.count || !complete(listB)) {
+        const error = new Error("문항이 모자랍니다.");
+        error.code = "B_SHORT";
+        throw error;
+      }
+      if (listB.some(record => !Quick.stillUsable(record, product))) {
+        const error = new Error("문항 상태가 바뀌었습니다.");
+        error.code = "B_CHANGED";
+        throw error;
+      }
+      const stepOf = record => Math.min(record.difficultyBucket, 4);
+      const pairs = formA.chosen.map((record, i) => ({ record, question: formA.questions[i] }));
+      const formB = await makeForm(listB, planB, "B형", { lastResort: record => pairs.filter(pair => stepOf(pair.record) === stepOf(record)) });
+      return { ...formB, shared: formB.chosen.filter(record => planB.exclude.has(record.questionUid) || formA.chosen.some(own => own.questionUid === record.questionUid)).length };
     };
     try {
       const formA = await makeForm(selected, plan, twoForms ? "A형" : "");
@@ -1310,18 +1338,27 @@
       let message = `${label} · ${formA.chosen.length}문항 시험지${twoForms ? " A형" : ""}를 열었습니다.${fillSummary(formA.chosen)}`;
       const replacedBlank = formA.replaced;
       let replacedAll = replacedBlank;
+      let failedB = "";
       if (twoForms) {
-        // B must not take what A finally holds (a replaced blank question may differ from the plan).
-        for (const record of formA.chosen) planB.exclude.add(record.questionUid);
-        const formB = await makeForm(selectedB, planB, "B형");
-        replacedAll += formB.replaced;
-        const shared = formB.chosen.filter(record => planB.exclude.has(record.questionUid)).length;
-        if (popupB) popupB.location.replace(formB.url.href);
-        else quickState.formB = { url: formB.url.href, title: `${label} B형` };
-        message = `${label} · A·B형 두 벌(각 ${formA.chosen.length}문항)을 ${popupB ? "열었습니다" : "만들었습니다. B형은 아래 \"B형 열기\" 단추로 여세요"}.${fillSummary(formA.chosen)}`
-          + (shared ? ` A·B형이 같은 문항 ${shared}개를 함께 씁니다(해당 단원·단계에 다른 문항이 모자람).` : " A·B형에 겹치는 문항은 없습니다.");
+        try {
+          const formB = await makeFormB(formA);
+          replacedAll += formB.replaced;
+          if (popupB) popupB.location.replace(formB.url.href);
+          else quickState.formB = { url: formB.url.href, title: `${label} B형` };
+          message = `${label} · A·B형 두 벌(각 ${formA.chosen.length}문항)을 ${popupB ? "열었습니다" : "만들었습니다. B형은 아래 \"B형 열기\" 단추로 여세요"}.`
+            + `${fillSummary(formA.chosen, "A형은 ")}${fillSummary(formB.chosen, "B형은 ")}`
+            + (formB.shared ? ` A·B형이 같은 문항 ${formB.shared}개를 함께 씁니다(해당 단원·단계에 다른 문항이 모자람).` : " A·B형에 겹치는 문항은 없습니다.");
+        } catch (error) {
+          // B alone failed: A stays open. Only the B window is closed.
+          popupB?.close();
+          quickState.formB = null;
+          const reason = error.code === "BLANK_SHORT" || error.code === "B_SHORT" ? "정답·해설이 있는 문항이 모자랍니다" : error.code === "B_CHANGED" ? "문항 상태가 바뀌었습니다" : "원본 문항을 불러오지 못했습니다";
+          failedB = `B형은 만들지 못했습니다(${reason}). A형은 그대로 열려 있습니다. A·B형 선택을 끄면 한 벌로 다시 만들 수 있습니다.`;
+          message = `${label} · ${formA.chosen.length}문항 시험지 A형을 열었습니다.${fillSummary(formA.chosen)}`;
+          console.warn("[archive2] B paper failed:", error);
+        }
       }
-      status(`${message}${replacedAll ? ` (정답·해설이 없는 ${replacedAll}문항은 같은 단계의 다른 문항으로 바꿨습니다.)` : ""}`);
+      status(`${message}${replacedAll ? ` (정답·해설이 없는 ${replacedAll}문항은 같은 단계의 다른 문항으로 바꿨습니다.)` : ""}${failedB ? " " + failedB : ""}`, Boolean(failedB));
     } catch (error) {
       popup.close();
       popupB?.close();
