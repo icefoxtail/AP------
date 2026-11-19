@@ -1,0 +1,57 @@
+{
+  "qid": 24,
+  "itemFingerprint": "ec68e57a30e4c974",
+  "solveSteps": [
+    "1. 직사각형 ABCD의 긴 변 x와 짧은 변 sqrt(10)에 대해 이등분한 직사각형의 두 변은 sqrt(10)과 x/2이다. 닮음비 x/sqrt(10) = sqrt(10)/(x/2)에서 x^2/2 = 10, x^2 = 20이므로 x = sqrt(20) = 2*sqrt(5)이다.",
+    "2. 사다리꼴 ABJK의 윗변은 sqrt(10), 아랫변은 sqrt(10)/4, 높이는 3*sqrt(5)/2이다.",
+    "3. 윗변 + 아랫변 = sqrt(10) + sqrt(10)/4 = 5*sqrt(10)/4이다.",
+    "4. 넓이는 1/2 * (5*sqrt(10)/4) * (3*sqrt(5)/2) = 15*sqrt(50)/16 = (15 * 5*sqrt(2))/16 = 75*sqrt(2)/16이다. 따라서 정답은 (1) 2*sqrt(5), (2) 75*sqrt(2)/16이다."
+  ],
+  "solvedAnswer": "(1) 2\\sqrt{5} (2) \\frac{75\\sqrt{2}}{16}",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "가로의 길이가 $x(x > \\sqrt{10})$, 세로의 길이가 $\\sqrt{10}$인 직사각형 $\\mathrm{ABCD}$가 있다.",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmReason": "직사각형 ABCD의 닮음비 x/sqrt(10) = sqrt(10)/(x/2)에서 x=2*sqrt(5)를 구하고 사다리꼴 ABJK 넓이 75*sqrt(2)/16을 계산하는 M3-RPM-007 레코드입니다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+  "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+  "typeReason": "직사각형 닮음비 x^2=20에서 x=2*sqrt(5)를 구하고 사다리꼴 넓이 공식 1/2*(5*sqrt(10)/4)*(3*sqrt(5)/2) = 75*sqrt(2)/16을 계산하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "닮음비 비례식으로 x=2*sqrt(5)를 구하고 사다리꼴 ABJK의 넓이 75*sqrt(2)/16을 계산하는 3단계 심화 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "가로의 길이가 $x(x > \\sqrt{10})$, 세로의 길이가 $\\sqrt{10}$인 직사각형 $\\mathrm{ABCD}$가 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "사다리꼴 $\\mathrm{ABJK}$의 넓이를 구하시오. [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "사다리꼴의 넓이 공식에 대입하여 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "사다리꼴 넓이 공식 및 근호 곱셈 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "닮음비 x/sqrt(10) = sqrt(10)/(x/2)에서 x^2=20, x=2*sqrt(5)를 구하고 사다리꼴 넓이 1/2*(5*sqrt(10)/4)*(3*sqrt(5)/2) = 75*sqrt(2)/16으로 판정했습니다."
+}

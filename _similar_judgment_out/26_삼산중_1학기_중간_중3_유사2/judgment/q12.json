@@ -1,0 +1,57 @@
+{
+  "qid": 12,
+  "itemFingerprint": "9cfc16045921b561",
+  "solveSteps": [
+    "1. -sqrt(98) = -7*sqrt(2)이므로 -7*sqrt(2)*(sqrt(3)/7 - sqrt(2)) = -sqrt(6) + 14 = 14 - sqrt(6)이다.",
+    "2. sqrt(54) / sqrt(2) * sqrt(32) = sqrt(27) * sqrt(32) = 3*sqrt(3) * 4*sqrt(2) = 12*sqrt(6)이다.",
+    "3. 두 식을 결합하면 (14 - sqrt(6)) - 12*sqrt(6) = 14 - 13*sqrt(6)이다.",
+    "4. a = 14, b = -13이므로 a + b = 14 - 13 = 1이다. 따라서 정답은 2번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "$-\\sqrt{98}\\left(\\frac{\\sqrt{3}}{7} - \\sqrt{2}\\right) - \\sqrt{54} \\div \\sqrt{2} \\times \\sqrt{32} = a + b\\sqrt{6}$",
+  "rpmRecordId": "M3-RPM-014",
+  "rpmReason": "근호의 분배법칙과 사칙연산 혼합 계산으로 sqrt(98), sqrt(54), sqrt(32)를 정리하여 a=14, b=-13을 구하는 M3-RPM-014 레코드입니다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "-7*sqrt(2)*(sqrt(3)/7-sqrt(2)) - 12*sqrt(6) = 14-13*sqrt(6)으로 정리하여 a+b=1을 구하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "sqrt(98)=7*sqrt(2), sqrt(54)=3*sqrt(6), sqrt(32)=4*sqrt(2)를 전개 및 혼합 연산하여 a=14, b=-13을 구하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$a + b$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "근호의 분배법칙과 사칙연산의 혼합 계산을 순서대로 진행하여",
+        "evidenceType": "IMPLIED",
+        "justification": "근호 분배법칙 및 사칙연산 혼합 계산"
+      }
+    ],
+    "condition": []
+  },
+  "how": "첫째 항에서 14-sqrt(6), 둘째 항에서 12*sqrt(6)을 얻어 14-13*sqrt(6) = a+b*sqrt(6)에서 a=14, b=-13으로 a+b=1인 2번으로 판정했습니다."
+}

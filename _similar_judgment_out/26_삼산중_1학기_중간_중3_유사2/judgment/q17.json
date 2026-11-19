@@ -1,0 +1,62 @@
+{
+  "qid": 17,
+  "itemFingerprint": "404c7e846c05cc13",
+  "solveSteps": [
+    "1. 한 변이 2x인 정사각형 사진이 가로로 3장이므로 가로 길이는 2x * 3 = 6x, 세로로 2장이므로 세로 길이는 2x * 2 = 4x이다.",
+    "2. 좌우 여백 각각 3을 더한 전체 가로는 6x + 3 + 3 = 6x + 6이다. 상하 여백 각각 2를 더한 전체 세로는 4x + 2 + 2 = 4x + 4이다.",
+    "3. 전체 포스터의 넓이는 (6x + 6)(4x + 4) = 24x^2 + 24x + 24x + 24 = 24x^2 + 48x + 24이다.",
+    "4. 따라서 정답은 2번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "unitEvidence": "포스터 전체의 넓이를 나타내는 다항식은? [4점]",
+  "rpmRecordId": "M3-RPM-020",
+  "rpmReason": "가로 6x+6, 세로 4x+4의 직사각형 포스터 넓이 24x^2 + 48x + 24를 구하는 M3-RPM-020 레코드입니다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+  "typeReason": "직사각형 가로 6x+6과 세로 4x+4를 곱하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사진 배열 가로 6x, 세로 4x에 여백을 더하여 (6x+6)(4x+4) = 24x^2+48x+24를 전개하는 2단계 기하 활용 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "한 변의 길이가 $2x$인 정사각형 모양의 사진 $6$장을"
+      },
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 전시 포스터를 제작하려고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "포스터 전체의 넓이를 나타내는 다항식은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "여백을 더하여 전체 직사각형의 변의 길이를 구한 뒤 다항식의 곱셈을 수행한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "직사각형 넓이 다항식 전개"
+      }
+    ],
+    "condition": []
+  },
+  "how": "전체 가로 6x+6과 전체 세로 4x+4의 곱 (6x+6)(4x+4) = 24x^2+48x+24를 계산하여 2번으로 판정했습니다."
+}

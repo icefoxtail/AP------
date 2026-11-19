@@ -1,0 +1,57 @@
+{
+  "qid": 2,
+  "itemFingerprint": "f7295cbce722094c",
+  "solveSteps": [
+    "1. 1번은 (sqrt(7))^2 = 7 != 49, 3번은 sqrt((-9)^2) = 9 != -9로 거짓이다.",
+    "2. 2번은 sqrt(0.004) * sqrt(10) = sqrt(0.04) = 0.2이므로 참이다.",
+    "3. 4번은 sqrt(169) - (-sqrt(5))^2 = 13 - 5 = 8 != 6이고, 5번은 0.04 * 50 = 2 != 5이므로 거짓이다.",
+    "4. 따라서 계산 결과가 옳은 것은 2번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "다음 중 계산 결과가 옳은 것은? [3점]",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmReason": "근호의 곱셈 성질 sqrt(0.004) * sqrt(10) = sqrt(0.04) = 0.2를 계산하는 M3-RPM-007 레코드입니다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "근호의 곱셈과 제곱근 성질 sqrt(0.004) * sqrt(10) = 0.2 등의 기본 계산 연산 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "sqrt(0.004) * sqrt(10) = 0.2 등 근호의 기본 곱셈 및 성질을 단일 단계로 계산하는 1단계 난이도 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "제곱근의 기본 성질 $\\sqrt{a^2}=|a|$ 및 곱셈 성질"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 중 계산 결과가 옳은 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "곱셈 성질 $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$를 적용하여 각 선지를 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "근호 곱셈 법칙 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "2번 선지에서 sqrt(0.004) * sqrt(10) = sqrt(0.04) = 0.2가 성립함을 계산하여 2번을 정답으로 판정했습니다."
+}

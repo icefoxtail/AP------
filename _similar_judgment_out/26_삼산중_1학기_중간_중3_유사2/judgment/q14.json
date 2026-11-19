@@ -1,0 +1,57 @@
+{
+  "qid": 14,
+  "itemFingerprint": "4fac445fe69115f1",
+  "solveSteps": [
+    "1. 식 (3a - 4b)(4a + 3b)를 분배법칙으로 전개하면 3a(4a + 3b) - 4b(4a + 3b) = 12a^2 + 9ab - 16ab - 12b^2이다.",
+    "2. 동류항을 정리하면 12a^2 + (9 - 16)ab - 12b^2 = 12a^2 - 7ab - 12b^2이다.",
+    "3. 따라서 ab의 계수는 -7이다.",
+    "4. 따라서 정답은 4번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "unitEvidence": "다항식 $(3a - 4b)(4a + 3b)$를 전개했을 때, $ab$의 계수는? [3점]",
+  "rpmRecordId": "M3-RPM-017",
+  "rpmReason": "두 일차식 (3a - 4b)(4a + 3b)의 곱셈 전개와 ab 계수 계산을 다루는 M3-RPM-017 레코드입니다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+  "typeReason": "다항식 (3a - 4b)(4a + 3b)를 전개하여 9ab - 16ab = -7ab의 계수를 추출하는 TPL_M3_POLY_EXPANSION_COEFFICIENT 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 일차식의 곱을 분배법칙으로 전개하여 ab 계수 -7을 1단계로 구하는 기본 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $(3a - 4b)(4a + 3b)$를 전개했을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$ab$의 계수는? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "다항식의 곱셈에서 분배법칙을 적용하여 전개하고 동류항을 정리한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "분배법칙 적용 곱셈 전개"
+      }
+    ],
+    "condition": []
+  },
+  "how": "(3a - 4b)(4a + 3b)를 전개하여 12a^2 - 7ab - 12b^2을 얻고 ab의 계수가 -7임을 확인하여 4번으로 판정했습니다."
+}

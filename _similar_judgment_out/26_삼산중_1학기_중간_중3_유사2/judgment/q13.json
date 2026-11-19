@@ -1,0 +1,62 @@
+{
+  "qid": 13,
+  "itemFingerprint": "dd85c39e107cb15f",
+  "solveSteps": [
+    "1. 직각삼각형 2개의 둘레 합은 2*(8 + 4 + 4*sqrt(5)) = 24 + 8*sqrt(5)이다.",
+    "2. 이등변삼각형 2개의 둘레 합은 2*(4 + 2*sqrt(5) + 2*sqrt(5)) = 8 + 8*sqrt(5)이다.",
+    "3. 네 조각의 둘레 총합은 (24 + 8*sqrt(5)) + (8 + 8*sqrt(5)) = 32 + 16*sqrt(5)이다.",
+    "4. 맞닿은 내부 선분의 길이 합이 8 + 4*sqrt(5)이므로 바깥 둘레는 32 + 16*sqrt(5) - 2*(8 + 4*sqrt(5)) = 16 + 8*sqrt(5)이다. 따라서 정답은 3번이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "가로의 길이가 $8$, 세로의 길이가 $4$인 직사각형을 잘라 빗변의 길이가 $4\\sqrt{5}$이고",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmReason": "직각삼각형과 이등변삼각형 둘레 총합 32+16*sqrt(5)에서 내부 선분 2(8+4*sqrt(5))를 빼는 M3-RPM-009 레코드입니다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+  "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+  "typeReason": "도형 조각의 둘레 총합 32+16*sqrt(5)에서 맞닿은 길이의 2배 16+8*sqrt(5)를 빼서 바깥 둘레 16+8*sqrt(5)를 구하는 TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "네 조각의 둘레 총합 32+16*sqrt(5)를 구하고 내부 선분의 2배를 빼는 기하 논리를 결합한 3단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "가로의 길이가 $8$, 세로의 길이가 $4$인 직사각형을 잘라"
+      },
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "합동인 직각삼각형 $2$조각과"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "이때 완성된 다각형의 바깥 둘레의 길이는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "각 조각의 전체 둘레의 합에서 맞닿아 내부로 들어간 선분 길이의 $2$배를 뺀 값과 같음을 이용한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "둘레 총합에서 겹친 선분의 2배를 감산"
+      }
+    ],
+    "condition": []
+  },
+  "how": "네 조각 둘레 총합 (24+8*sqrt(5))+(8+8*sqrt(5))=32+16*sqrt(5)에서 내부 선분 2(8+4*sqrt(5))=16+8*sqrt(5)를 빼서 16+8*sqrt(5)인 3번으로 판정했습니다."
+}

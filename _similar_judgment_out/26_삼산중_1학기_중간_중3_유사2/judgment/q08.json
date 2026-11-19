@@ -1,0 +1,58 @@
+{
+  "qid": 8,
+  "itemFingerprint": "9b1d084e7acf4082",
+  "solveSteps": [
+    "1. 1번은 (sqrt(7)-sqrt(5))/sqrt(5) = (sqrt(35)-5)/5 != (sqrt(7)-5)/5로 거짓이다.",
+    "2. 2번은 sqrt(24) + 3*sqrt(6) - sqrt(54) = 2*sqrt(6) + 3*sqrt(6) - 3*sqrt(6) = 2*sqrt(6) != 4*sqrt(6)로 거짓이다.",
+    "3. 3번은 5*sqrt(2) + 3*sqrt(7) - 2*sqrt(2) + 4*sqrt(7) = 3*sqrt(2) + 7*sqrt(7)로 참이다.",
+    "4. 4번은 1/sqrt(10) * (sqrt(5)/2 + sqrt(2)) = sqrt(2)/4 + sqrt(5)/5 != sqrt(2)/4 + 1로 거짓이다.",
+    "5. 5번은 sqrt(12)*(sqrt(7)/sqrt(3)+sqrt(3)) - 3*sqrt(7) = 2*sqrt(7)+6 - 3*sqrt(7) = 6 - sqrt(7) != 6 + sqrt(7)로 거짓이다. 따라서 옳은 것은 3번이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "다음 중 제곱근의 계산 결과로 옳은 것은? [3점]",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmReason": "sqrt(24) + 3*sqrt(6) - sqrt(54) 등 근호의 덧셈과 뺄셈 및 동류근호 계산을 다루는 M3-RPM-009 레코드입니다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "sqrt(24)+3*sqrt(6)-sqrt(54) 및 5*sqrt(2)-2*sqrt(2)=3*sqrt(2), 3*sqrt(7)+4*sqrt(7)=7*sqrt(7)의 동류근호 연산 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "sqrt(24)와 sqrt(54)를 간단히 하고 동류근호의 덧셈과 뺄셈을 1단계로 계산하는 기본 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "src": "stem",
+        "quote": "다음 중 제곱근의 계산 결과로 옳은 것은? [3점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 중 제곱근의 계산 결과로 옳은 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "근호의 분배법칙, 유리화, 동류근호 덧셈·뺄셈을",
+        "evidenceType": "IMPLIED",
+        "justification": "동류근호 덧셈 뺄셈 수행"
+      }
+    ],
+    "condition": []
+  },
+  "how": "sqrt(24)+3*sqrt(6)-sqrt(54) = 2*sqrt(6) != 4*sqrt(6) 등을 검토하고 3번 선지 5*sqrt(2)+3*sqrt(7)-2*sqrt(2)+4*sqrt(7) = 3*sqrt(2)+7*sqrt(7)이 참임을 확인하여 3번으로 판정했습니다."
+}

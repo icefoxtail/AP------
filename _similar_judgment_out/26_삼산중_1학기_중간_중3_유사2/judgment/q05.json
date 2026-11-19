@@ -1,0 +1,62 @@
+{
+  "qid": 5,
+  "itemFingerprint": "55834fac1a353ef3",
+  "solveSteps": [
+    "1. 정사각형 ABCD의 가로와 세로가 3이므로 피타고라스 정리에 의해 대각선 BD = sqrt(3^2 + 3^2) = 3*sqrt(2)이다. BP = BD = 3*sqrt(2).",
+    "2. 직사각형 ABFE의 가로는 3+3=6, 세로는 3이므로 대각선 BE = sqrt(6^2 + 3^2) = sqrt(45) = 3*sqrt(5)이다. BQ = BE = 3*sqrt(5).",
+    "3. P와 Q는 점 B의 같은 방향에 위치하므로 PQ = BQ - BP = 3*sqrt(5) - 3*sqrt(2)이다.",
+    "4. 따라서 정답은 5번이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "한 변의 길이가 $3$인 두 정사각형 $\\mathrm{ABCD}$와 $\\mathrm{DCFE}$가 한 변을 공유하며 나란히 놓여 있다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+  "unitEvidence": "수직선 위의 점 $\\mathrm{B}$를 기준으로",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmReason": "정사각형 ABCD의 대각선 BD, BE를 회전하여 수직선 위 점 PQ 길이를 구하는 M3-RPM-005 레코드입니다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+  "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+  "typeReason": "정사각형 ABCD의 대각선 BD=3*sqrt(2), BE=3*sqrt(5)를 반지름으로 원호를 회전하여 수직선 위 PQ 거리를 구하는 TPL_M3_NUMBER_LINE_SQUARE_ROTATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "한 변이 3인 두 정사각형 ABCD에서 대각선 BD, BE 길이를 피타고라스 정리로 구하고 PQ 거리를 구하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "한 변의 길이가 $3$인 두 정사각형 $\\mathrm{ABCD}$와 $\\mathrm{DCFE}$가 한 변을 공유하며 나란히 놓여 있다."
+      },
+      {
+        "term": "수직선",
+        "src": "stem",
+        "quote": "수직선 위의 점 $\\mathrm{B}$를 기준으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "선분 $\\mathrm{PQ}$의 길이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "피타고라스 정리를 이용해 구한 후 두 점 사이의 거리를 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "대각선 길이 계산에 피타고라스 정리 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "정사각형 ABCD의 대각선 BD = 3*sqrt(2)와 직사각형의 대각선 BE = sqrt(6^2+3^2) = 3*sqrt(5)를 구하고 PQ = 3*sqrt(5)-3*sqrt(2)를 계산하여 5번으로 판정했습니다."
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 9,
+  "itemFingerprint": "59a3bb919fc67623",
+  "solveSteps": [
+    "1. sqrt(48000) = sqrt(1600 * 30) = sqrt(40^2 * 30) = 40*sqrt(30)이므로 A = 40이다.",
+    "2. sqrt(0.6)/sqrt(50) = sqrt(0.6/50) = sqrt(1.2/100) = sqrt(1.2)/10이므로 B = 1/10이다.",
+    "3. 따라서 A * B = 40 * (1/10) = 4이다.",
+    "4. 따라서 정답은 4번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "$\\sqrt{48000}$은 $\\sqrt{30}$의 $A$배이고, $\\frac{\\sqrt{0.6}}{\\sqrt{50}}$은 $\\sqrt{1.2}$의 $B$배일 때, $A \\times B$의 값은? [4점]",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmReason": "근호 밖으로 제곱수를 꺼내어 48000 = 1600 * 30에서 A=40, B=1/10을 구하는 M3-RPM-007 레코드입니다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "근호 변형을 통해 A=40, B=1/10을 구하고 곱 A * B = 4를 계산하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "sqrt(48000)=40*sqrt(30)과 sqrt(0.6/50)=sqrt(1.2)/10으로 A=40, B=1/10을 구한 뒤 곱을 계산하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "근호",
+        "src": "solution",
+        "quote": "근호 안의 수의 거듭제곱 인수를 근호 밖으로 꺼내는 성질을 이용하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$A \\times B$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "$A \\times B$의 값을 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "근호 변형 및 곱셈 연산"
+      }
+    ],
+    "condition": []
+  },
+  "how": "sqrt(48000)=40*sqrt(30)에서 A=40, sqrt(0.6/50)=sqrt(1.2)/10에서 B=1/10을 구하여 A * B = 40 * (1/10) = 4인 4번으로 판정했습니다."
+}

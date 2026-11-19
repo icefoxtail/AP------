@@ -1,0 +1,57 @@
+{
+  "qid": 1,
+  "itemFingerprint": "a5dd467a7856f5c9",
+  "solveSteps": [
+    "1. 실수는 수직선 위의 점과 일대일 대응하므로 1번 명제 '모든 실수는 각각 수직선 위의 한 점에 대응한다'는 참이다.",
+    "2. 2번은 sqrt(4)=2와 같이 근호를 써도 유리수가 될 수 있어 거짓이고, 3번은 순환소수가 유리수이므로 거짓이다.",
+    "3. 4번은 0의 제곱근이 0 하나 존재하므로 거짓이고, 5번은 실수가 유리수와 무리수로 이루어지므로 거짓이다.",
+    "4. 따라서 옳은 설명은 1번이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "모든 실수는 각각 수직선 위의 한 점에 대응한다.",
+  "rpmRecordId": "M3-RPM-003",
+  "rpmReason": "실수 체계와 무리수, 유리수, 순환소수, 0의 제곱근 등 실수의 기본 성질을 판별하는 M3-RPM-003 레코드에 해당합니다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+  "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+  "typeReason": "수직선과 실수의 대응 및 유리수, 무리수, 0의 제곱근에 관한 명제의 진위를 가리는 TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "실수와 수직선, 0의 제곱근 등 기본 정의 1단계를 판별하는 기본 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "choices",
+        "quote": "모든 실수는 각각 수직선 위의 한 점에 대응한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 보기 중 옳은 설명은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "분류",
+        "src": "solution",
+        "quote": "실수와 수직선의 성질 및 수의 체계를 분석한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "실수와 유리수, 무리수 분류 체계 분석"
+      }
+    ],
+    "condition": []
+  },
+  "how": "보기의 1번부터 5번까지 명제를 검토하여 실수가 수직선에 1대1 대응함을 확인하고 0의 제곱근이 0임을 감안하여 1번을 정답으로 판정했습니다."
+}
