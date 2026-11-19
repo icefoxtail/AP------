@@ -36,7 +36,7 @@
         "args": {
           "dx": {
             "kind": "integer",
-            "value": "10"
+            "value": "7"
           },
           "dy": {
             "kind": "integer",
@@ -47,213 +47,242 @@
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "U",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "B",
-          "C"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "50"
-          },
-          "turn": "CCW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "V",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "C",
-          "B"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "60"
-          },
-          "turn": "CW"
-        },
-        "outputType": "POINT",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "bu",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "B",
-          "U"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "cv",
-        "op": "LINE_THROUGH",
-        "inputs": [
-          "C",
-          "V"
-        ],
-        "args": {},
-        "outputType": "LINE",
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
         "id": "A",
-        "op": "LINE_INTERSECTION",
+        "op": "TRANSLATE_POINT",
         "inputs": [
-          "bu",
-          "cv"
+          "B"
         ],
-        "args": {},
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "47",
+            "denominator": "7"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "7"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "110"
+                  }
+                ]
+              }
+            ]
+          }
+        },
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "W",
-        "op": "POLAR_POINT",
+        "id": "bA",
+        "op": "ANGLE_BISECTOR",
         "inputs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
           "B",
           "C"
         ],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "20"
-          },
-          "turn": "CCW"
+          "mode": "INTERNAL"
         },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bA",
+          "bB"
+        ],
+        "args": {},
         "outputType": "POINT",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "X",
-        "op": "POLAR_POINT",
+        "id": "ab",
+        "op": "LINE_THROUGH",
         "inputs": [
-          "C",
+          "A",
           "B"
         ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "1"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "20"
-          },
-          "turn": "CW"
-        },
-        "outputType": "POINT",
+        "args": {},
+        "outputType": "LINE",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "bw",
+        "id": "bc",
         "op": "LINE_THROUGH",
         "inputs": [
           "B",
-          "W"
+          "C"
         ],
         "args": {},
         "outputType": "LINE",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "cx",
+        "id": "ca",
         "op": "LINE_THROUGH",
         "inputs": [
           "C",
-          "X"
+          "A"
         ],
         "args": {},
         "outputType": "LINE",
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "O",
-        "op": "LINE_INTERSECTION",
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
         "inputs": [
-          "bw",
-          "cx"
+          "I",
+          "ab"
         ],
         "args": {},
         "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "bc"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "ca"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "inc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "I",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
         "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   },
   "displayPoints": [
-    "A",
     "B",
     "C",
-    "O"
+    "A",
+    "I",
+    "D",
+    "E",
+    "F"
   ],
   "displaySegments": [
     {
-      "id": "AB",
+      "id": "AD",
       "refs": [
         "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
         "B"
       ]
     },
     {
-      "id": "BC",
+      "id": "BE",
       "refs": [
         "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
         "C"
       ]
     },
     {
-      "id": "CA",
+      "id": "CF",
       "refs": [
         "C",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "refs": [
+        "F",
         "A"
       ]
     },
     {
-      "id": "OA",
+      "id": "ID",
       "refs": [
-        "O",
-        "A"
+        "I",
+        "D"
       ]
     },
     {
-      "id": "OB",
+      "id": "IE",
       "refs": [
-        "O",
-        "B"
+        "I",
+        "E"
       ]
     },
     {
-      "id": "OC",
+      "id": "IF",
       "refs": [
-        "O",
-        "C"
+        "I",
+        "F"
       ]
     }
   ],
-  "displayCircles": [],
+  "displayCircles": [
+    "inc"
+  ],
   "displayLines": [],
-  "caption": "예: ∠OAB=30°, ∠OCA=40°인 삼각형으로 그렸다. 외심이므로 OA=OB=OC이고 △OAB, △OBC, △OCA는 모두 이등변삼각형이다. ∠OBA=∠OAB=30°, ∠OAC=∠OCA=40°이고 ∠OBC=∠OCB=x이다. 삼각형의 세 각의 합에서 2×(30°+40°+x)=180°이므로 x=20°이다. 따라서 ∠OBC=20°이고 답은 ②이다.",
-  "accessibilityDescription": "삼각형 ABC의 안쪽에 외심 O가 있고 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있다. 이등변삼각형의 밑각 30°, 40°, x=20°가 같은 표시와 함께 표시되어 있다.",
+  "caption": "한 점에서 원에 그은 두 접선의 길이는 같으므로 AD=AF=4, BD=BE=5이고 CE=CF=x라 하자. 삼각형의 둘레가 22이므로 2(4+5+x)=22에서 4+5+x=11이고 x=2이다. 따라서 EC=2cm이고 답은 ④이다.",
+  "accessibilityDescription": "삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 접점으로 수직인 선분이 그어져 있다. AD와 AF에 4, DB와 BE에 5, EC와 CF에 2가 적혀 있다.",
   "newVisualInformation": [
-    "외심에서 세 이등변삼각형의 밑각 30°, 40°, x의 합이 90°이므로 x=20°"
+    "접선의 길이 AD=AF=4, BD=BE=5와 둘레 22에서 CE=CF=2"
   ],
   "sourceConditions": [
     {
@@ -267,90 +296,95 @@
       "mappedTo": "mathPlan"
     }
   ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "I",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "F",
+        "C"
+      ]
+    }
+  ],
   "equalLengths": [
     {
       "id": "eq0",
       "count": 1,
       "segments": [
-        "OA",
-        "OB",
-        "OC"
+        "AD",
+        "FA"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "DB",
+        "BE"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "EC",
+        "CF"
       ]
     }
   ],
   "planeMarks": {
-    "angles": [
+    "expressionLabels": [
       {
-        "id": "a0",
-        "refs": [
-          "O",
-          "A",
-          "B"
-        ],
-        "label": "30°",
-        "style": "ARC",
-        "equalGroup": 1,
-        "arcs": 1
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "4",
+        "factRole": "GIVEN"
       },
       {
-        "id": "a1",
-        "refs": [
-          "A",
-          "B",
-          "O"
-        ],
-        "label": "30°",
-        "style": "ARC",
-        "equalGroup": 1,
-        "arcs": 1
+        "id": "vDB",
+        "ownerSegment": "DB",
+        "text": "5",
+        "factRole": "GIVEN"
       },
       {
-        "id": "a2",
-        "refs": [
-          "O",
-          "A",
-          "C"
-        ],
-        "label": "40°",
-        "style": "ARC",
-        "equalGroup": 2,
-        "arcs": 2
+        "id": "vFA",
+        "ownerSegment": "FA",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "a3",
-        "refs": [
-          "O",
-          "C",
-          "A"
-        ],
-        "label": "40°",
-        "style": "ARC",
-        "equalGroup": 2,
-        "arcs": 2
+        "id": "vBE",
+        "ownerSegment": "BE",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "a4",
-        "refs": [
-          "O",
-          "B",
-          "C"
-        ],
-        "label": "x=20°",
-        "style": "ARC",
-        "equalGroup": 3,
-        "arcs": 3
+        "id": "vEC",
+        "ownerSegment": "EC",
+        "text": "x=2",
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
-        "id": "a5",
-        "refs": [
-          "O",
-          "C",
-          "B"
-        ],
-        "label": "20°",
-        "style": "ARC",
-        "equalGroup": 3,
-        "arcs": 3
+        "id": "vCF",
+        "ownerSegment": "CF",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
       }
     ]
   }
