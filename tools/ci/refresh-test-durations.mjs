@@ -19,9 +19,10 @@ export function buildDurations(results, previous = {}) {
     }
   }
   const values = Object.values(seconds).sort((a, b) => a - b);
-  const median = values.length ? values[Math.floor(values.length / 2)] : previous.defaultSeconds || 5;
+  // The mean (not the median) is the default for a test the file has not seen: a new test is more likely heavy than trivial.
+  const fallback = values.length ? Math.round(values.reduce((n, v) => n + v, 0) / values.length * 10) / 10 : previous.defaultSeconds || 5;
   const sorted = Object.fromEntries(Object.entries(seconds).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)));
-  return { schema: 'archive-test-durations-v1', note: previous.note, defaultSeconds: Math.max(0.5, median), seconds: sorted };
+  return { schema: 'archive-test-durations-v1', note: previous.note, defaultSeconds: Math.max(0.5, fallback), seconds: sorted };
 }
 
 function main() {
