@@ -1,51 +1,45 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
-        "coefficients": [
-          "0",
-          "0"
-        ],
-        "domain": [
-          "0",
-          "1"
-        ],
-        "label": "OA",
-        "color": "BLUE"
-      },
-      {
-        "id": "f1",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "0",
-          "0"
-        ],
-        "domain": [
-          "0",
-          "6"
-        ],
-        "label": "OB",
-        "color": "WARM"
-      },
-      {
-        "id": "f2",
-        "kind": "LINE",
         "coefficients": [
           "6",
           "-6"
-        ],
-        "domain": [
-          "0",
-          "1"
-        ],
-        "label": "AB",
-        "color": "GREEN"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      1
+    ],
+    "viewport": [
+      -0.5,
+      1.6,
+      -0.8,
+      7
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisScale": {
+      "x": 5,
+      "y": 1
+    },
     "overlays": {
       "points": [
         {
@@ -65,6 +59,18 @@
           "x": "0",
           "y": "6",
           "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "oa",
+          "from": "O",
+          "to": "A"
+        },
+        {
+          "id": "ob",
+          "from": "O",
+          "to": "B"
         }
       ]
     }

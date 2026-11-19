@@ -30,58 +30,6 @@
         ],
         "label": "a=2",
         "color": "WARM"
-      },
-      {
-        "id": "f2",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "2",
-          "0"
-        ],
-        "domain": [
-          "1",
-          "3"
-        ],
-        "color": "GREEN"
-      },
-      {
-        "id": "f3",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "4",
-          "0"
-        ],
-        "domain": [
-          "1",
-          "3"
-        ],
-        "color": "GREEN"
-      },
-      {
-        "id": "f4",
-        "kind": "LINE",
-        "coefficients": [
-          "1",
-          "0"
-        ],
-        "domain": [
-          "2",
-          "4"
-        ],
-        "color": "GREEN"
-      },
-      {
-        "id": "f5",
-        "kind": "LINE",
-        "coefficients": [
-          "3",
-          "0"
-        ],
-        "domain": [
-          "2",
-          "4"
-        ],
-        "color": "GREEN"
       }
     ],
     "overlays": {
@@ -95,8 +43,7 @@
         {
           "id": "B",
           "x": "2",
-          "y": "1",
-          "coordinates": true
+          "y": "1"
         },
         {
           "id": "C",
@@ -107,14 +54,35 @@
         {
           "id": "D",
           "x": "4",
-          "y": "3",
-          "coordinates": true
+          "y": "3"
         },
         {
           "id": "P",
           "x": "0",
           "y": "-1",
           "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "ab",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "id": "bc",
+          "from": "B",
+          "to": "C"
+        },
+        {
+          "id": "cd",
+          "from": "C",
+          "to": "D"
+        },
+        {
+          "id": "da",
+          "from": "D",
+          "to": "A"
         }
       ]
     }
