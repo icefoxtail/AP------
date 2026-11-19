@@ -1,0 +1,66 @@
+{
+  "qid": 16,
+  "itemFingerprint": "00e595129a844e79",
+  "solveSteps": [
+    "1) (x^a y^b)^c = x^(ac) y^(bc) = x^18 y^30",
+    "2) ac = 18, bc = 30",
+    "3) c는 18과 30의 공약수이다. 18과 30의 최대공약수는 6이다.",
+    "4) c != 1이므로 가능한 c는 2, 3, 6이다.",
+    "5) c의 최댓값은 6이므로 가장 큰 자연수 c가 9라는 ②는 옳지 않다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "세 자연수 $a, b, c$에 대하여 등식 $(x^a y^b)^c = x^{18}y^{30}$이 성립할 때, 다음 중 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-126",
+  "rpmReason": "등식 $(x^a y^b)^c = x^{18}y^{30}$에서 $ac = 18, bc = 30$을 만족하는 $c$는 18과 30의 최대공약수 6 이하이어야 함을 파악하는 거듭제곱의 거듭제곱 문항이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "지수법칙 $(x^a y^b)^c = x^{ac}y^{bc} = x^{18}y^{30}$에서 $c$가 $18$과 $30$의 최대공약수 6임을 분석하는 지수법칙 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지수법칙으로 $ac = 18, bc = 30$을 얻고 $18$과 $30$의 최대공약수가 6임을 적용하여 $c$의 최댓값을 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 자연수 $a, b, c$에 대하여 등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "공약수",
+        "src": "choices",
+        "quote": "$c$는 $18$과 $30$의 공약수이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙에 의해 좌변을 전개하면 $$ (x^a y^b)^c = x^{ac} y^{bc} $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$(x^a y^b)^c = x^{18}y^{30} \\implies ac = 18, bc = 30$에서 $c$는 18과 30의 공약수이고 최대공약수는 6이므로 $c$의 최댓값이 9라는 ②를 정답으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "qid": 8,
+  "itemFingerprint": "fc8f32c685661c3b",
+  "solveSteps": [
+    "ㄱ. 무한소수 중 파이와 같이 순환하지 않는 무한소수도 있으므로 거짓이다.",
+    "ㄴ. 기약분수 분모에 2, 5 이외의 소인수가 있으면 순환소수로 나타낼 수 있으므로 참이다.",
+    "ㄷ. 모든 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다. (참)",
+    "ㄹ. 유한소수는 모두 분모가 10의 거듭제곱인 유리수이므로 거짓이다.",
+    "ㅁ. 순환소수가 아닌 무한소수는 무리수이므로 유리수가 아니다. (거짓)",
+    "따라서 옳은 것은 ㄴ, ㄷ이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은?",
+  "rpmRecordId": "M2-RPM-124",
+  "rpmReason": "유한소수는 분모가 10의 거듭제곱인 분수로 표현되는 등 유한소수, 순환소수, 무한소수와 유리수의 포함 관계를 통해 보기 ㄴ, ㄷ의 참 거짓을 판별하는 조건을 만족하는 유리수 문항이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분모가 10의 거듭제곱인 유한소수와 기약분수 분모 소인수 조건 등 유리수와 소수의 성질을 종합 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모가 10의 거듭제곱인 유한소수의 성질과 보기 ㄴ, ㄷ이 참임을 개념 정의로 확인하는 기본 문항으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "ㄱ. 무한소수는 모두 순환소수이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "ㄷ. 모든 순환소수는 분수로 나타낼 수 있으므로 유리수이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "stem",
+        "quote": "ㄴ. 기약분수로 나타내었을 때 분모에 $2$ 또는 $5$ 이외의 소인수가 있는 분수는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "유한소수는 분모가 10의 거듭제곱인 유리수이고, ㄴ과 ㄷ이 참이므로 ㄴ, ㄷ인 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

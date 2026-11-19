@@ -1,0 +1,67 @@
+{
+  "qid": 2,
+  "itemFingerprint": "e4a99a0008303625",
+  "solveSteps": [
+    "소수 2.481481481...은 소수점 아래 481이 반복되는 순환소수이다.",
+    "① 일정한 배열이 반복되므로 순환소수이다. (참)",
+    "② 순환마디는 소수점 아래에서 반복되는 숫자이므로 481이다. 정수 부분 2는 포함되지 않는다. (거짓)",
+    "③ 2.4(dot)81(dot)로 나타낼 수 있다. (참)",
+    "④ 순환소수는 분수로 나타낼 수 있으므로 유리수이다. (참)",
+    "⑤ 숫자가 끝없이 이어지므로 무한소수이다. (참)",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "소수 $2.481481481\\cdots$에 대한 설명 중 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-121",
+  "rpmReason": "소수 $2.481481481\\cdots$의 순환마디가 481임을 확인하여 선지 248의 오류를 판별하는 순환마디와 표현 문항이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수 $2.481481481\\cdots$의 순환마디 및 유리수 성질을 점검하는 순환소수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수 $2.481481481\\cdots$의 순환마디가 소수점 아래 481임을 식별하는 기본 정의 확인 문제로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "소수 $2.481481481\\cdots$에 대한 설명 중"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환마디",
+        "src": "choices",
+        "quote": "순환마디는 $248$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "순환소수의 순환마디는 소수점 아래에서 일정하게 되풀이되는 숫자 묶음이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$2.481481481\\cdots$에서 순환마디는 정수부를 제외한 481이므로 순환마디가 248이라는 ②를 정답으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

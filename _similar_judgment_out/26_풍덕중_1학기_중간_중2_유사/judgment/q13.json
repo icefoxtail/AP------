@@ -1,0 +1,68 @@
+{
+  "qid": 13,
+  "itemFingerprint": "b3c21587dd06fb25",
+  "solveSteps": [
+    "1) 첫 번째 분수 나눗셈: (6x^2 - 12xy^2) / (3x) = 2x - 4y^2",
+    "2) 두 번째 분수 나눗셈: (3x^2 y + 12xy^3) / (3xy) = x + 4y^2",
+    "3) 두 식의 차: (2x - 4y^2) - (x + 4y^2) = x - 8y^2",
+    "4) x = 3, y = 1/2 대입: 3 - 8 * (1/2)^2 = 3 - 8 * (1/4) = 3 - 2 = 1",
+    "따라서 구하는 식의 값은 1이므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "$x = 3$, $y = \\dfrac{1}{2}$일 때, $\\dfrac{6x^2 - 12xy^2}{3x} - \\dfrac{3x^2y + 12xy^3}{3xy}$의 값은?",
+  "rpmRecordId": "M2-RPM-134",
+  "rpmReason": "식 $\\frac{6x^2 - 12xy^2}{3x} - \\frac{3x^2y + 12xy^3}{3xy}$의 나눗셈을 정리한 $x - 8y^2$에 $x = 3, y = \\frac{1}{2}$을 대입하여 1을 구하는 식의 값 문항이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "다항식 $\\frac{6x^2 - 12xy^2}{3x} - \\frac{3x^2y + 12xy^3}{3xy}$을 단항식으로 나눈 뒤 식을 정리하여 $x = 3, y = \\frac{1}{2}$의 식의 값을 계산하는 다항식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분수식 $\\frac{6x^2 - 12xy^2}{3x} - \\frac{3x^2y + 12xy^3}{3xy}$을 단항식으로 나누어 $x - 8y^2$으로 정리한 후 $x = 3, y = \\frac{1}{2}$을 대입하는 2단계 절차이므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "주어진 식의 각 항을 먼저 단항식으로 나누어 간단히 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "간단히 정리된 식에 $x = 3, y = \\frac{1}{2}$을 대입:",
+        "evidenceType": "IMPLIED",
+        "justification": "대입을 통한 식의 값 도출"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "간단히 정리된 식에 $x = 3, y = \\frac{1}{2}$을 대입:",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$\\frac{6x^2 - 12xy^2}{3x} - \\frac{3x^2y + 12xy^3}{3xy} = (2x - 4y^2) - (x + 4y^2) = x - 8y^2$에 $x = 3, y = 1/2$을 대입하여 $3 - 8(1/4) = 1$을 얻어 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

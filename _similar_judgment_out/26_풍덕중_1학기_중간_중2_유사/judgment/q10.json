@@ -1,0 +1,69 @@
+{
+  "qid": 10,
+  "itemFingerprint": "5854b1ef274c63e7",
+  "solveSteps": [
+    "ㄱ. x^4 * y^3 * x = x^5 y^3 != x^4 y^3 (거짓)",
+    "ㄴ. a^9 / a^3 = a^(9-3) = a^6 != a^3 (거짓)",
+    "ㄷ. (-3a^2b)^3 = -27a^6b^3 != 27a^6b^3 (거짓)",
+    "ㄹ. 2^4 + 2^4 = 2 * 2^4 = 2^5 (참)",
+    "ㅁ. (x^3)^4 * x^3 / (x^5)^2 = x^(12+3-10) = x^5 (참)",
+    "따라서 옳은 것은 ㄹ, ㅁ이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? [4점]",
+  "rpmRecordId": "M2-RPM-125",
+  "rpmReason": "보기 ㄷ $(-3a^2b)^3 = -27a^6b^3$ 및 ㅁ $x^{12+3-10} = x^5$의 지수 연산 성립을 확인하는 거듭제곱의 곱·몫 문항이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "지수법칙을 적용하여 보기의 거듭제곱 식 ㄹ $2^4 + 2^4 = 2^5$ 및 ㅁ $x^{12+3-10} = x^5$의 옳고 그름을 검증하는 지수법칙 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기본 지수법칙 공식들을 적용하여 ㄹ $2^4 + 2^4 = 2^5$과 ㅁ $x^{12+3-10} = x^5$의 참 여부를 확인하는 기본 문항으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 적용하여 <보기>의 각 식을 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 적용하여 <보기>의 각 식을 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "옳은 식 선별 결과 도출"
+      }
+    ],
+    "method": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "$(-3a^2b)^3 = (-3)^3 \\times (a^2)^3 \\times b^3 = -27a^6b^3 \\ne 27a^6b^3$ (부호 오류, 거짓)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ㄹ ($2 \\times 2^4 = 2^5$)과 ㅁ ($x^{12+3-10} = x^5$)이 성립하므로 ㄹ, ㅁ인 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

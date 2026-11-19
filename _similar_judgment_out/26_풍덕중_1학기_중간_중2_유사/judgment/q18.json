@@ -1,0 +1,66 @@
+{
+  "qid": 18,
+  "itemFingerprint": "75c5ffd84dc88879",
+  "solveSteps": [
+    "① a < b 양변에 -1/4를 곱하고 2를 더하면 -a/4 + 2 > -b/4 + 2 (>)",
+    "② a < b 양변에 -3을 곱하고 5를 더하면 5 - 3a > 5 - 3b (>)",
+    "③ a < b 양변에 양수 3을 곱하고 4를 빼면 -4 + 3a < -4 + 3b (<)",
+    "④ a < b 양변에 -1을 곱하고 6을 더하면 -a + 6 > -b + 6 (>)",
+    "⑤ a < b 양변에 -5를 곱하면 -5a > -5b (>)",
+    "따라서 부등호 방향이 <로 다른 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "$a < b$일 때, 다음 중 $\\bigcirc$ 안에 들어갈 부등호의 방향이 나머지와 다른 것은?",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "부등식 $a < b$의 양변에 음수를 곱하면 부등호 방향이 반대로 바뀌고 양수를 곱하면 유지됨을 통해 ③ $-4 + 3a < -4 + 3b$를 찾는 부등식의 성질 문항이다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "NONE",
+  "typeReason": "부등식 $a < b$의 양변에 수를 곱하고 더할 때 부등호 방향의 변화를 판별하여 ③ $-4 + 3a < -4 + 3b$를 가려내는 부등식 성질 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "선지 중 유일하게 양수 3이 곱해진 ③ $-4 + 3a < -4 + 3b$만 부등호 방향이 그대로 유지됨을 확인하는 기본 문제로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "부등호의 방향이 나머지와 다른 것은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "부등호의 방향이 나머지와 다른 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "양수",
+        "src": "solution",
+        "quote": "양변에 양수 $3$을 곱하면 부등호 방향이 바뀌지 않으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "①, ②, ④, ⑤는 음수가 곱해져 $>$로 바뀌지만 ③은 양수 3이 곱해져 $<$로 유지되므로 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

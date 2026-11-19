@@ -1,0 +1,64 @@
+{
+  "qid": 3,
+  "itemFingerprint": "136338037078d254",
+  "solveSteps": [
+    "분수 73/11을 소수로 나타내기 위해 직접 나눗셈을 한다.",
+    "73 / 11 = 6.636363...",
+    "소수점 아래에서 숫자 6, 3이 차례로 반복되므로 순환마디는 63이다.",
+    "따라서 바른 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{73}{11}$을 소수로 나타낼 때, 순환마디는?",
+  "rpmRecordId": "M2-RPM-121",
+  "rpmReason": "분수 $\\frac{73}{11}$을 소수로 변환한 $6.636363\\cdots$에서 순환마디 63을 구하는 순환마디와 표현 문항이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분수 $\\frac{73}{11}$의 나눗셈을 통해 순환소수의 순환마디 63을 구하는 순환소수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분수 $\\frac{73}{11}$을 직접 나누어 $6.6363\\cdots$를 얻고 순환마디 63을 확인하는 기본 계산으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{73}{11}$을 소수로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환마디",
+        "src": "stem",
+        "quote": "나타낼 때, 순환마디는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "소수",
+        "src": "solution",
+        "quote": "분자 $73$을 분모 $11$로 직접 나누어 소수로 나타낸다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$73 \\div 11 = 6.636363\\cdots$로부터 소수점 아래 반복되는 마디가 63임을 도출하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

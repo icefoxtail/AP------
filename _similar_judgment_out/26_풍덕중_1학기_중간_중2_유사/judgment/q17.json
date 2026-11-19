@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "7069e0f56d37ef46",
+  "solveSteps": [
+    "'어떤 수 x에서 4를 뺀 것': (x - 4)",
+    "'그것의 2배': 2(x - 4)",
+    "'x보다 크지 않다'는 'x 이하(<=)'이다.",
+    "따라서 부등식으로 나타내면 2(x - 4) <= x이다.",
+    "그러므로 옳은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "다음을 부등식으로 바르게 나타낸 것은? [4점]",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "'어떤 수 $x$에서 4를 뺀 것의 2배는 $x$보다 크지 않다'를 부등식 $2(x - 4) \\le x$로 나타내는 부등식의 성질 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "수량 관계 문장을 부등호 기호와 괄호를 사용하여 $2(x - 4) \\le x$로 식을 세우는 일차부등식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "'크지 않다'가 $\\le$임을 알고 $2(x - 4) \\le x$로 나타내는 기본 문장제 모델링으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "다음을 부등식으로 바르게 나타낸 것은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "다음을 부등식으로 바르게 나타낸 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "크지 않다'를 부등식으로 나타내면 $$ 2(x - 4) \\le x $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$x$에서 4를 뺀 식의 2배 $2(x - 4)$가 $x$ 이하이므로 $2(x - 4) \\le x$인 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
