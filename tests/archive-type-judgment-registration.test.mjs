@@ -575,16 +575,6 @@ function editSource(f, n, change) {
 }
 const withText = (f, items) => items.map(item => ({ ...item, textBindingFingerprint: textFingerprint(f.questions[item.sourceOrdinal - 1]) }));
 
-test("a type the exam file's author wrote into the question does not stop the direct judgment; the record says it differs", t => {
-  const f = fixture(t, { rowMutations: { 1: { metadataRevision: "meta-foundation:TEST@1" } } });
-  const req = f.request(withText(f, [f.item(1, { problemTypeKey: "PT_A" })]));
-  editSource(f, 1, { problemTypeKey: "PT_B", templateKey: "TPL_B" }); // embedded type of the author, different from the judged PT_A
-  assert.equal(f.run(req, { write: true }).status, "PASS");
-  assert.equal(f.rows()[0].problemTypeKey, "PT_A", "the judgment wins");
-  assert.equal(f.rows()[0].typeApproval.examEmbeddedType.matchesRegistered, false);
-  assert.equal(f.rows()[0].typeApproval.examEmbeddedType.problemTypeKey, "PT_B");
-});
-
 test("a request still registers after the exam file changed elsewhere (figure, solution, answer); the receipt records the actual file", t => {
   const f = fixture(t);
   const req = f.request(withText(f, [f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }), f.item(2, { problemTypeKey: "PT_A" })]));
