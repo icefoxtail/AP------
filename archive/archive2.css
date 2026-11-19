@@ -1786,7 +1786,7 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
 }
 .qk-seg {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border: 1.5px solid var(--ink);
   border-radius: var(--radius-pill);
   overflow: hidden;
@@ -2227,6 +2227,173 @@ body[data-archive-view="compose"] .compose-detail > summary .badge {
   }
   .qk-big {
     font-size: 36px;
+  }
+}
+
+/* ---- 빠른 평가 안의 "준비된 평가지" (archive2-quick-packs.js), 2026-11-19 ------------------------------------------------
+   닫힌 채로 시작하는 구역. 열면 종류 탭(.qk-seg 재사용), 검색·학년, 평가지 카드 격자. 색은 토큰만 쓴다. */
+.qk-packs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.qk-packs-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+.qk-packs-head p {
+  margin: 4px 0 0;
+}
+.qk-packs-toggle {
+  min-height: 44px;
+  padding: 0 20px;
+  font-weight: 700;
+}
+.qk-packs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.qk-packs-body[hidden] {
+  display: none;
+}
+.qk-packs-tabs {
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+.qk-packs-filter {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 10px;
+}
+.qk-packs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.qk-packs-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.qk-packs-field input,
+.qk-packs-field select {
+  width: 100%;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.qk-packs-count,
+.qk-packs-state {
+  margin: 0;
+}
+.qk-pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.qk-pack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+.qk-pack-meta,
+.qk-pack-mix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.qk-pack-badge {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--chip);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+.qk-pack-badge.is-grade {
+  background: var(--ink);
+  color: var(--surface);
+}
+.qk-pack-badge[data-grade="중1"] { background: var(--grade-m1); }
+.qk-pack-badge[data-grade="중2"] { background: var(--grade-m2); }
+.qk-pack-badge[data-grade="중3"] { background: var(--grade-m3); }
+.qk-pack-badge[data-grade="고1"] { background: var(--grade-h1); }
+.qk-pack-badge[data-grade="고2"] { background: var(--grade-h2); }
+.qk-pack-badge[data-grade="고3"] { background: var(--grade-h3); }
+.qk-pack-dx {
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 700;
+}
+.qk-pack-dx.is-low { background: var(--good-bg); color: var(--good); }
+.qk-pack-dx.is-mid { background: var(--warn-bg); color: var(--warn); }
+.qk-pack-dx.is-high { background: var(--danger-bg); color: var(--danger); }
+.qk-pack-title {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.qk-pack-scope,
+.qk-pack-skill {
+  margin: 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.qk-pack-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.qk-pack-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.qk-pack-btn:hover {
+  background: var(--chip);
+}
+.qk-pack-btn.is-primary {
+  background: var(--ink);
+  color: var(--surface);
+}
+.qk-pack-btn.is-primary:hover {
+  background: var(--ink-hover);
+}
+@media (max-width: 600px) {
+  .qk-packs-filter {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .qk-pack-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .qk-packs-tabs .qk-seg-btn {
+    font-size: 13px;
   }
 }
 

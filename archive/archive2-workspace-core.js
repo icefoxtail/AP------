@@ -482,8 +482,8 @@
   // without changing the compose draft or its selection controls.
   const Quick = window.Archive2QuickPools;
   const QuickTree = window.Archive2UnitTree;
-  const quickState = { grade: "", subject: "", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
-    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard" } };
+  const quickState = { grade: "", subject: "", semester: "1", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
+    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard", diagnostic: "standard" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";
   const isQuickAssessmentView = () => Boolean(Quick?.isQuickView(state.view));
@@ -638,7 +638,7 @@
   function unifiedPrimaryMarkup(filters) {
     // 학년은 학년 색 버튼(학교별 기출·단원별 기출과 같은 구성요소), 과목은 2과목이면 2칸 전환·그 이상이면 칩이다.
     const subjects = Unified.subjectsForGrade(filters.grade);
-    const locked = state.sealed || state.receipts.length > 0 ? "disabled" : "";
+    const locked = state.sealed || state.derivationSource || state.receipts.length > 0 ? "disabled" : "";
     const pressed = (value) => `aria-pressed="${String(filters.semanticSubject || "") === String(value)}"`;
     const subjectButton = ({ value, label }) =>
       button("compose-subject", esc(label), `type="button" data-subject="${esc(value)}" ${pressed(value)} ${locked}`);
