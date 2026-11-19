@@ -482,13 +482,27 @@ test("without the alias data the same spelling difference is refused (unchanged 
   assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중1 judged=중1 수학/);
 });
 
-test("another grade or subject is refused even with the alias data", t => {
-  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중2 수학" } } });
+test("a key of a higher grade than the row's course is refused even with the alias data", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중1" } } });
   f.put(ALIASES, aliasDoc);
-  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중2 수학 judged=중1 수학/);
-  const g = fixture(t, { rowMutations: { 1: { standardCourse: "공통수학1" } } });
-  g.put(ALIASES, aliasDoc);
-  assert.throws(() => g.run(typeRequest(g)), /course mismatch/);
+  const higher = f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { scope: { curriculum: "2022", standardCourse: "중2 수학" } })]);
+  assert.throws(() => f.run(higher), /course mismatch: uid1 row=중1 judged=중2 수학/);
+});
+
+test("a key of a lower grade than the row's course registers as reach, the relation is recorded, and the row curriculum is not compared", t => {
+  const f = fixture(t, { rowMutations: { 1: { standardCourse: "중2 수학", curriculum: "2015" } } });
+  assert.throws(() => f.run(typeRequest(f)), /course mismatch: uid1 row=중2 수학 judged=중1 수학/, "without the alias data a grade cannot be told");
+  f.put(ALIASES, aliasDoc);
+  f.run(typeRequest(f), { write: true });
+  const row = f.rows()[0];
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.deepEqual(row.typeApproval.scope, { curriculum: "2022", standardCourse: COURSE, curriculumSource: "row", rowCourse: "중2 수학", courseRelation: "reach" });
+  assert.equal(f.run(typeRequest(f), { verifyProjection: true }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED", "the receipt replays");
+  // a wrongly filed higher row course lifts the ceiling, it does not refuse the key
+  const g = fixture(t, { rowMutations: { 1: { standardCourse: "수학(상)" } } });
+  g.put(ALIASES, { ...aliasDoc, successorGroups: [] });
+  g.run(typeRequest(g), { write: true });
+  assert.equal(g.rows()[0].typeApproval.scope.courseRelation, "reach");
 });
 
 test("the same subject of the other curriculum is accepted only through a successor group, and the row curriculum may differ then", t => {
