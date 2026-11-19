@@ -344,3 +344,12 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - `archive/index.html`의 "믹서 출제" 버튼은 "문제지 만들기"(`workspace.html?view=compose`)로 바꿨고, 리포트센터(`apmath/js/report-center.js`)의 "믹서 열기" 버튼과 MIXED 출제물의 열기 링크(믹서 주소)는 없앴다. `mixer.html`·`mixer-selector.js`는 다른 화면이 모듈을 쓰고 저장된 주소로 열 수 있어 지우지 않았다.
 - 이유: 아카이브 난이도는 정수 1~5만 쓰는데, 옛 믹서는 상/중/하 필터를 쓰는 유일한 화면이다. 고치지 않고 입구를 숨기며(옛 화면 제거 계획과 같은 방향), 같은 기능은 문제지 만들기가 제공한다.
+
+## 진단평가 결과표 화면 (2026-11-20, 첫 상담용 A4 2쪽)
+
+- `archive/assessment/diagnostic-report.html`(+ `diagnostic-report.js`·`diagnostic-report-view.js`·`diagnostic-report.css`)는 진단평가 결과지다. 계산은 `diagnostic-report-data.js`(순수 집계)가, 문구·그림 문자열은 `diagnostic-report-view.js`(순수, DOM 없음)가, 읽어 오기·입력 칸·쪽 맞춤·인쇄는 `diagnostic-report.js`가 맡는다. 시안과 같은 구성: 1쪽 총평·단계·흐름·단원·단원×단계, 2쪽 유형·틀린 문항·다음 4주 수업 계획·선생님 의견.
+- 입력은 주소의 `?uids=문항UID,문항UID,…`(시험지 식별값, 순서 = 문항 번호)와 선생님이 누르는 문항별 O/X다. 이유: 진단평가를 만드는 화면이 `questionUids`를 이미 갖고 있고, 만든 시험지의 출력 봉투(IndexedDB)는 30분이면 사라져 다시 여는 길로 못 쓴다. 문항의 단원·단계·유형은 교사 작업공간과 같은 자료 층(`applyArchiveMetaFoundationCatalog` → `Archive2UnifiedUnits`·`Archive2Core.metaFacetsOf`·`createLabelOf`)에서 읽는다. 자료 읽기 길이 `archive/` 기준 상대 주소라 html에 `<base href="../">`가 있고, 이 파일의 주소는 모두 `archive/` 기준으로 쓴다.
+- **저장하지 않는다**: 학생 이름·O/X·메모는 서버·localStorage·sessionStorage·URL·`document.title` 어디에도 남기지 않는다. 새로고침하면 사라지는 것이 맞다(이유: 학생 정보를 아카이브가 보관하지 않는다). 문항을 모두 입력하기 전에는 결과표를 그리지 않는다(일부만 계산한 결과지가 학부모에게 나가지 않게).
+- 작은 표본: 문항 3개 미만인 칸(단계·단원·단원×단계·유형)은 판정 문구·색 없이 맞은 수/문항 수만 쓴다. 단원 강약은 약한 단원 문항 수로 환산해 2문항 이상 차이일 때만 말한다. 이름 없는 유형은 "유형 미분류"로 묶고 키 글자(PT·TPL)·UID는 화면·인쇄물에 내지 않는다. 문구는 평가가 아니라 "학원이 이렇게 진행한다" 톤이다.
+- A4 2쪽은 쪽 맞춤으로 고정한다: 인쇄 폭(794px)에서 따로 높이를 재 `data-fit` 0~3 중 한 쪽에 들어가는 가장 여유 있는 단계를 고르고, 유형 표는 10행(나머지는 한 줄 요약), 틀린 문항은 8개 넘으면 두 열로 둔다. 휴대폰 규칙은 `@media`가 아니라 `@container`(폭 640 이하)라 화면 폭과 상관없이 측정·인쇄가 같은 배치다. 색만으로 구분하지 않는다(O/X 채움·테두리, 단원×단계 농도·빗금·숫자, 판단 글자 태그).
+- 진단평가 시험지를 만든 화면(빠른 평가)에서 이 화면을 여는 단추는 후속이다: `diagnostic-report.html?uids=` 뒤에 `questionUids`를 쉼표로 이어 붙이면 된다.

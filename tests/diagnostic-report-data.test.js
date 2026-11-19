@@ -233,4 +233,98 @@ for (const input of [undefined, null, {}, { questions: [], responses: [] }, { qu
   assert.strictEqual(checkConsistency(r).ok, false);
 }
 
+// 12. 화면 층(diagnostic-report-view.js): 가상 응답 상·중·하 3벌, 작은 표본·문구·내부 용어·쪽 구성
+const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report-view.js'));
+{
+  const unitNames = ['소인수분해', '정수와 유리수', '문자와 식', '좌표평면과 그래프'];
+  const lv = (no) => (no <= 5 ? 1 : no <= 10 ? 2 : no <= 20 ? 3 : no <= 22 ? 4 : 5);
+  const viewQuestions = (unitOf) => Array.from({ length: 24 }, (_, k) => {
+    const no = k + 1;
+    const u = unitOf ? unitOf(no) : unitNames[k % 4];
+    return { no, questionUid: 'qid_v1_' + no, unit: u, unitOrder: unitNames.indexOf(u) + 1, difficulty: lv(no), problemTypeKey: 'PT_' + (k % 8) };
+  });
+  const labelOf = (key) => ({ PT_0: '정수의 대소 비교', PT_1: '절댓값', PT_2: '식의 값', PT_3: '방정식의 해', PT_4: '일차식의 계산', PT_5: '사분면' })[key] || '';
+  const respond = (wrongNos) => Object.fromEntries(Array.from({ length: 24 }, (_, i) => [i + 1, wrongNos.includes(i + 1) ? 'X' : 'O']));
+  const run = (wrong, qs) => View.render(computeDiagnosticReport({ questions: qs || viewQuestions(), responses: respond(wrong), labelOf }));
+  const flat = (out) => [out.donut, out.donutBig, out.summary, out.facts, out.levels, out.line, out.lineCap, out.units, out.unitCap, out.heat, out.types, out.wrong, out.plan].join('\n');
+
+  const hi = run([24]);
+  const mid = run([8, 13, 15, 17, 20, 22, 23, 24]);
+  const low = run(Array.from({ length: 19 }, (_, i) => i + 6));
+  for (const out of [hi, mid, low]) {
+    assert.ok(out.vm.report.consistency.ok);
+    assert.ok(!/PT_|TPL_|bucket|UID|qid_|undefined|NaN|null/i.test(flat(out)), '내부 용어·키·빈 값이 화면에 나오면 안 된다');
+    assert.ok(out.types.includes('유형 미분류'), '이름 없는 유형은 유형 미분류로 묶는다');
+  }
+  assert.ok(/4~5단계\(심화\)까지 모두 안정적으로/.test(hi.summary), '상: 모든 단계 안정');
+  assert.ok(/2단계\(기본\)까지는 안정적으로/.test(mid.summary) && /3단계\(응용\)에서는 10문항 중 6문항/.test(mid.summary), '중: 3단계에서 정답이 줄기 시작');
+  assert.ok(/2단계\(기본\)에서는 5문항 중 0문항/.test(low.summary) && /1단계\(기초\)까지는 안정적으로/.test(low.summary), '하: 2단계부터 보완');
+  assert.ok(!/(잘못|부족|못합니다|실패)/.test(flat(hi) + flat(mid) + flat(low)), '학생·학부모를 깎아내리는 말을 쓰지 않는다');
+  assert.ok(mid.plan.includes('다시 세우기') && mid.plan.includes('확인 평가') && /1~2주차/.test(mid.plan));
+  assert.strictEqual(hi.wrongLayout, 'single');
+  assert.strictEqual(mid.wrongLayout, 'single');
+  assert.strictEqual(low.wrongLayout, 'double');
+  assert.ok(low.wrong.includes('two-tables'));
+  assert.ok(!/class="tag/.test(hi.heat), '단원×단계 칸에는 태그가 없고 숫자와 농도만 쓴다');
+
+  // 작은 표본: 3문항 미만 칸은 판정 문구·색 없이 맞은 수/문항 수만
+  const small = run([1, 24], viewQuestions((no) => (no >= 23 ? '통계' : unitNames[no % 4])));
+  const statsBar = small.units.split('<div class="bar">').find((s) => s.includes('통계'));
+  assert.ok(statsBar && statsBar.includes('meter none') && !/\d+%/.test(statsBar), '2문항 단원은 퍼센트·색 막대 없이 맞은 수/문항 수만');
+  assert.ok(/h0">1 \/ 2<|h0">2 \/ 2</.test(small.heat), '2문항 칸은 h0(판정 없음)');
+  const shortLevels = run([1], viewQuestions().filter((q) => q.no > 3).map((q, i) => ({ ...q, no: i + 1 })));
+  assert.ok(shortLevels.levels.includes('문항이 적어 판정하지 않습니다'), '3문항 미만 단계는 판정하지 않는다');
+  // 유형 판단: 3문항 미만은 맞은 수/문항 수만, 3문항 이상은 글자 태그
+  assert.strictEqual(View.typeVerdict({ n: 2, ok: 2, wrong: 0 }), null);
+  assert.strictEqual(View.typeVerdict({ n: 3, ok: 3, wrong: 0 }).label, '안정');
+  assert.strictEqual(View.typeVerdict({ n: 3, ok: 0, wrong: 3 }).label, '보완 권장');
+  assert.strictEqual(View.typeVerdict({ n: 4, ok: 2, wrong: 2 }).label, '다시 확인');
+
+  // 단원 강약: 차이가 2문항 이상일 때만
+  const U = (name, ok, n) => ({ name, ok, n, r: ok / n });
+  assert.ok(View.unitJudgement([U('가', 6, 6), U('나', 3, 6)]), '3문항 차이는 판정');
+  assert.ok(View.unitJudgement([U('가', 6, 6), U('나', 4, 6)]), '2문항 차이는 판정');
+  assert.strictEqual(View.unitJudgement([U('가', 5, 6), U('나', 4, 6)]), null, '1문항 차이는 판정하지 않는다');
+  assert.strictEqual(View.unitJudgement([U('가', 6, 6), U('나', 1, 2)]), null, '3문항 미만 단원은 비교하지 않는다');
+
+  // 글 이스케이프, 유형 표 상한
+  const evil = run([2], viewQuestions((no) => (no % 2 ? '<b>x</b>' : '정수와 유리수')));
+  assert.ok(!evil.units.includes('<b>x</b>') && evil.units.includes('&lt;b&gt;x&lt;/b&gt;'));
+  const manyTypes = View.render(computeDiagnosticReport({
+    questions: viewQuestions().map((q) => ({ ...q, problemTypeKey: 'PT_U' + q.no })), responses: respond([3, 9]), labelOf: (key) => '유형 ' + key.slice(4),
+  }));
+  assert.strictEqual((manyTypes.types.match(/<tr/g) || []).length, 1 + View.TYPE_ROWS_MAX + 1, '유형 표는 머리줄 + 상한 + 나머지 한 줄');
+  assert.ok(manyTypes.types.includes('class="rest"'));
+  assert.ok(manyTypes.typeRowsHidden > 0);
+  // 틀린 문항 없음
+  const perfect = run([]);
+  assert.ok(perfect.wrong.includes('틀린 문항이 없습니다') && perfect.wrongN === '0문항');
+}
+
+// 13. 화면 파일: 두 쪽 구성·인쇄 규칙·저장하지 않음·배포 목록
+{
+  const dir = path.join(root, 'archive', 'assessment');
+  const html = fs.readFileSync(path.join(dir, 'diagnostic-report.html'), 'utf8');
+  const css = fs.readFileSync(path.join(dir, 'diagnostic-report.css'), 'utf8');
+  const js = fs.readFileSync(path.join(dir, 'diagnostic-report.js'), 'utf8');
+  const view = fs.readFileSync(path.join(dir, 'diagnostic-report-view.js'), 'utf8');
+  assert.strictEqual((html.match(/<section class="sheet"/g) || []).length, 2, 'A4 두 쪽');
+  assert.ok(html.includes('<base href="../">'), '자료 읽기 길이 archive/ 기준이라 base가 필요하다');
+  assert.ok(/@page\s*\{\s*size:\s*A4;\s*margin:\s*0/.test(css) && /break-after:\s*page/.test(css) && /height:\s*296mm/.test(css), '인쇄 쪽 나눔 고정');
+  assert.ok(/@container \(max-width: 640px\)/.test(css), '휴대폰 폭 규칙은 컨테이너 기준(쪽 맞춤 측정과 같은 배치)');
+  assert.ok(/print-color-adjust:\s*exact/.test(css));
+  for (const file of [js, view].map((s) => s.replace(/\/\/.*$/gm, ''))) {
+    assert.ok(!/localStorage|sessionStorage|indexedDB|document\.cookie|history\.(push|replace)State|sendBeacon|XMLHttpRequest|location\.(search|hash)\s*=/.test(file), '이름·O/X는 어디에도 저장하지 않는다');
+  }
+  assert.strictEqual((js.match(/fetch\(/g) || []).length, 1, 'fetch는 data 자료 읽기 한 곳뿐');
+  assert.ok(!/document\.title\s*=/.test(js), '제목에 학생 이름을 넣지 않는다');
+  assert.ok(!/\b(PT_|TPL_|bucket|UID)\b/.test(html.replace(/<script[\s\S]*?<\/script>/g, '')), '화면 문구에 내부 용어가 없다');
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools', 'archive-pages-release-manifest.json'), 'utf8'));
+  for (const name of ['diagnostic-report.html', 'diagnostic-report.css', 'diagnostic-report.js', 'diagnostic-report-view.js']) {
+    assert.ok(manifest.files.includes('archive/assessment/' + name), name + ' 배포 목록에 있어야 한다');
+  }
+  // html이 부르는 같은 폴더 파일이 모두 있다
+  for (const m of html.matchAll(/(?:src|href)="(assessment\/[^"?]+)/g)) assert.ok(fs.existsSync(path.join(root, 'archive', m[1])), m[1]);
+}
+
 console.log('diagnostic-report-data tests passed');
