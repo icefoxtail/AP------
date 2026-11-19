@@ -1413,10 +1413,22 @@ function buildTimetableDraftApplySummaryHtml() {
     var removedHtml = removed.length
         ? '<div>삭제한 반 ' + removed.length + '개: ' + apEscapeHtml(formatTimetableNameList(removed.map(function(row) { return row.name_snapshot || row.source_name || ''; }), 8)) + ' (운영에서도 닫힙니다)</div>'
         : '';
+    // 졸업 대상(중3) 반은 개편안에 없고, 적용하면 운영에서도 닫힌다. 적용 전에 어떤 반이 닫히는지 보여 준다.
+    var graduated = (ui.selectedTimetableVersionClasses || []).filter(function(row) {
+        return String(row && row.status || '').toLowerCase() === 'excluded' && String(row.excluded_reason || '') === 'middle_school_graduation';
+    });
+    var graduatedHtml = graduated.length
+        ? '<div>졸업 반 ' + graduated.length + '개: ' + apEscapeHtml(formatTimetableNameList(graduated.map(function(row) {
+            // 교사마다 같은 이름(중3A)의 반이 있어 담당을 붙여 구분한다.
+            var teacherName = String(row.teacher_name_snapshot || '').trim();
+            return (row.source_name || row.name_snapshot || '') + (teacherName ? '(' + teacherName + ')' : '');
+        }), 8)) + ' (운영에서 닫히고 학생은 반 없이 남습니다)</div>'
+        : '';
     return '' +
         '<div style="display:flex; flex-direction:column; gap:4px; padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:13px; font-weight:700; color:var(--text); line-height:1.5;">' +
             '<div>반 ' + classCount + '개 · 학생 ' + studentCount + '명' + (newCount ? ' · 신규 등록 ' + newCount + '명' : '') + '</div>' +
             removedHtml +
+            graduatedHtml +
         '</div>' +
         rosterNoticeHtml +
         unassignedHtml;
