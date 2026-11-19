@@ -586,7 +586,7 @@ test('all changed browser scripts use new cache versions', () => {
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261119-verified-rename-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261120-h1-subjects-3/);
+  assert.match(html, /archive2\.css\?v=20261120-h1-subjects-5/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261119-diagnostic-1/);
@@ -1524,11 +1524,11 @@ test('저장이 정본 메타 불일치(409)로 거절되면 화면에는 안내
 // ---- 저장 실패 문구: 거절 이유마다 다른 문구, 할 일 포함, 서버 원문·내부 용어 비노출 ----
 // 화면은 archive2-error-detail.js가 있을 때 문구를 만든다(워크스페이스 페이지가 함께 올린다). 하네스에도 올려 실제 경로로 본다.
 const withErrorDetail = harness => { harness.ctx.Archive2ErrorDetail = require('../archive/archive2-error-detail.js'); return harness; };
-test('저장 실패 문구는 이유(로그인 만료·너무 큼·분류 기준 갱신·분류 자료 불일치)마다 다르고 할 일이 들어 있다', async t => {
+test('저장 실패 문구는 이유(로그인 만료·권한 없음·너무 큼·분류 기준 갱신·분류 자료 불일치)마다 다르고 할 일이 들어 있다', async t => {
   t.mock.method(console, 'warn', () => {});
   const cases = [
     { status: 401, raw: 'Unauthorized', todo: /다시 로그인/, keeps: /초안에 남아 있습니다/ },
-    { status: 403, raw: 'Forbidden: teacher only', todo: /다시 로그인/, keeps: /초안에 남아 있습니다/ },
+    { status: 403, raw: 'Forbidden: teacher only', todo: /관리자에게 확인/, keeps: /초안에 남아 있습니다/ },
     { status: 413, raw: 'Payload too large: 1500000 bytes', todo: /나누거나 문항 수를 줄여/ },
     { status: 409, raw: '분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.', todo: /새로고침/, stale: true },
     { status: 409, raw: 'canonical metadata parity mismatch: courseKey', todo: /새로고침/ },
@@ -1553,10 +1553,10 @@ test('저장 실패 문구는 이유(로그인 만료·너무 큼·분류 기준
     assert.ok(posts <= 2, label + ': no extra retries beyond the existing stale-version resend');
     seen.set(label, shown);
   }
-  // 401과 403은 같은 안내, 나머지는 서로 다른 문구.
-  assert.equal(seen.get('401 Unauthorized'), seen.get('403 Forbidden: teacher only'));
+  // 401(로그인 만료)과 403(권한 없음)은 서로 다른 문구, 나머지도 모두 서로 다른 문구.
+  assert.notEqual(seen.get('401 Unauthorized'), seen.get('403 Forbidden: teacher only'));
   const distinct = new Set([...seen.values()]);
-  assert.equal(distinct.size, 4, [...distinct].join(' | '));
+  assert.equal(distinct.size, 5, [...distinct].join(' | '));
 });
 
 test('저장 실패의 서버 원문은 접힌 상세에만 있고, 표에 없는 거절은 일반 문구에 코드가 붙는다', async t => {
@@ -1661,6 +1661,16 @@ test('401 응답은 로그인 만료 문구, 요청 전 로그인 없음은 로�
   await missing.w.savePapers();
   assert.match(missing.w.state.saveError, /로그인이 필요합니다/);
   assert.notEqual(expired.w.state.saveError, missing.w.state.saveError);
+});
+
+test('403 응답은 로그인 만료가 아니라 권한 없음 문구를 낸다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const forbidden = withErrorDetail(configureSaveHarness(t));
+  captureSavePost(forbidden.ctx, () => ({ ok: false, status: 403, json: async () => ({ success: false, error: 'Forbidden' }) }));
+  await forbidden.w.savePapers();
+  assert.equal(forbidden.w.state.saveResultState, 'FAILED');
+  assert.match(forbidden.w.state.saveError, /권한이 없습니다/);
+  assert.doesNotMatch(forbidden.w.state.saveError, /로그인/);
 });
 
 test('api()는 로그인 없이 막힌 요청에만 requestNotSent를 달고, 서버·네트워크 오류에는 달지 않는다', async t => {

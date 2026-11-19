@@ -454,6 +454,7 @@ export function parseCli(argv) {
     else if (k === "--bundles") args.bundles = value();
     else if (k === "--bundles-dir") args.bundlesDir = value();
     else if (k === "--bundles-only") args.bundlesOnly = true;
+    else if (k === "--owner-pack") { const [b, pack] = value().split("="); if (!b || !pack) throw new Error("INVALID_OWNER_PACK"); (args.ownerPackByBundle ||= new Map()).set(b, pack); }
     else if (k === "--replace-draft-types") args.replaceDraft = true;
     else if (k === "--max-requests") { args.maxRequests = Number(value()); if (!Number.isInteger(args.maxRequests) || args.maxRequests < 1) throw new Error("INVALID_MAX_REQUESTS"); }
     else throw new Error(`INVALID_ARGUMENT:${k}`);
@@ -472,7 +473,7 @@ export function run(args) {
   if (args.bundles || args.bundlesDir) {
     const tables = readBundleTables(ctx.root, args.bundles ? { ref: args.bundles } : { dir: path.resolve(args.bundlesDir) });
     bundleOrigin = tables.origin;
-    newKeys = prepareNewKeys({ ctx, tables, resultRows, env: { curriculumGuess, pathGrade }, opts: { bundlesOnly: args.bundlesOnly } });
+    newKeys = prepareNewKeys({ ctx, tables, resultRows, env: { curriculumGuess, pathGrade }, opts: { bundlesOnly: args.bundlesOnly, ownerPackByBundle: args.ownerPackByBundle } });
     planCtx = { ...newKeys.ctx, newKeys: { finalize: newKeys.finalize } };
     rows = newKeys.rows;
     args.allowPackAdditions = true;
