@@ -1,0 +1,103 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "2",
+          "-1/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      5.5
+    ],
+    "viewport": [
+      -0.5,
+      5.5,
+      -0.5,
+      7
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "5",
+        "6"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "예시 곡선",
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "la",
+          "slope": "14/5",
+          "intercept": "0",
+          "label": "A"
+        },
+        {
+          "id": "lb",
+          "slope": "29/20",
+          "intercept": "0",
+          "label": "B"
+        },
+        {
+          "id": "lc",
+          "slope": "1",
+          "intercept": "9/5",
+          "label": "C"
+        }
+      ]
+    }
+  },
+  "caption": "예: 증가하며 위로 볼록한 곡선 위에서 P(a,f(a))=(1,14/5), Q(b,f(b))=(4,29/5)로 그린 그림이다. A는 원점과 P를 잇는 직선 A의 기울기 14/5, B는 원점과 Q를 잇는 직선 B의 기울기 29/20, C는 현 PQ인 직선 C의 기울기 1이다. 기울기는 A>B>C 순서이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 아래 그림과 같을 때, $A=\\dfrac{f(a)}a$, $B=\\dfrac{f(b)}b$, $C=\\dfrac{f(b)-f(a)}{b-a}$의 대소 관계를 바르게 나타낸 것은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원점과 P, Q를 잇는 직선 A, B와 현 PQ인 직선 C의 기울기를 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 A, B, C의 기울기가 14/5, 29/20, 1로 A>B>C이다."
+  ],
+  "accessibilityDescription": "증가하며 위로 볼록한 곡선과 원점에서 곡선 위의 두 점 P, Q를 지나는 두 직선, 두 점을 잇는 현 직선을 나타낸 그래프이다."
+}

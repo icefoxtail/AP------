@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          2
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "1",
+        "4"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "Q",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "P",
+        "x": "2",
+        "y": "4"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "s",
+          "slope": "3",
+          "intercept": "-2",
+          "label": "y=3x-2"
+        }
+      ]
+    }
+  },
+  "caption": "f(2)=4이고 x<2에서 f(x)=x이므로 x가 2에서 2-h까지 변할 때 평균변화율은 (f(2-h)-f(2))/(-h)=(2-h-4)/(-h)=1+2/h이다. 이 값이 3이면 h=1이다. 그림에서 h=1일 때 점 Q(1,1)과 P(2,4)를 잇는 할선 y=3x-2의 기울기가 3이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}x^2&(x\\ge2)\\\\x&(x\\lt 2)\\end{cases}$에서 $x$의 값이 $2$에서 $2-h$까지 변할 때의 평균변화율이 $3$일 때, 상수 $h$의 값은? [3.8점]\n(단, $h\\gt 0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "h=1일 때 두 점 Q(1,1), P(2,4)를 잇는 할선의 기울기 3을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "h=1일 때 Q(1,1)과 P(2,4)를 잇는 할선의 기울기가 3이다."
+  ],
+  "accessibilityDescription": "x=2에서 끊어지는 직선 조각과 포물선 조각의 그래프이며 두 점 Q, P를 잇는 할선이 그려져 있다."
+}

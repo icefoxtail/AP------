@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-6",
+          "16",
+          "-7",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -3,
+      3.5
+    ],
+    "viewport": [
+      -3,
+      3.5,
+      -40,
+      30
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "-6"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "-2"
+      },
+      {
+        "id": "D",
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "-6"
+      ],
+      "B": [
+        "1",
+        "2"
+      ],
+      "C": [
+        "2",
+        "-2"
+      ],
+      "D": [
+        "3",
+        "6"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: a=0, b=1, c=2, d=3일 때 P(x)=F(x)+F′(x)=x⁴-2x³-7x²+16x-6의 그래프이다. P(a), P(b), P(c), P(d)의 부호가 -, +, -, +로 바뀌므로 점 A, B, C, D 사이의 구간 (a,b), (b,c), (c,d)에 각각 근이 있고 x→-∞에서 P가 양수라 (-∞,a)에도 근이 있다. 4차식이라 근은 4개뿐이므로 (d,∞)에는 근이 없다. 따라서 ㄱ, ㄴ, ㄷ이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "네 실수 $a,b,c,d$에 대하여 $a\\lt b\\lt c\\lt d$일 때, 방정식\n\n$(x-a)(x-b)(x-c)(x-d)+(x-a)(x-b)(x-c)+(x-a)(x-b)(x-d)+(x-a)(x-c)(x-d)+(x-b)(x-c)(x-d)=0$\n\n의 실근이 존재하는 구간인 것만을 보기에서 있는 대로 고른 것은? [4.3점]\n\nㄱ. $(-\\infty,a)$　ㄴ. $(a,b)$　ㄷ. $(b,c)$　ㄹ. $(d,\\infty)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "예시에서 P의 부호가 점 A, B, C, D에서 -, +, -, +로 바뀌는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "예시 4차 곡선이 점 A, B, C, D에서 부호가 번갈아 바뀌며 x축과 (-∞,a), (a,b), (b,c), (c,d)에서 만난다."
+  ],
+  "accessibilityDescription": "네 번 x축을 가로지르는 4차 곡선의 그래프이며 네 점 A, B, C, D의 좌표가 표시되어 있다."
+}

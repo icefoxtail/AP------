@@ -1,0 +1,130 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -4,
+      4
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          -4,
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          1,
+          4
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "-2",
+              "-2"
+            ],
+            "domain": [
+              -4,
+              -2
+            ],
+            "end": "CLOSED"
+          },
+          {
+            "coefficients": [
+              "1",
+              "0",
+              "-1"
+            ],
+            "domain": [
+              -2,
+              2
+            ],
+            "start": "OPEN",
+            "end": "OPEN"
+          },
+          {
+            "coefficients": [
+              "-2",
+              "2"
+            ],
+            "domain": [
+              2,
+              4
+            ],
+            "start": "CLOSED"
+          }
+        ],
+        "jumpValues": []
+      }
+    ],
+    "limitArrows": [
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "2"
+      },
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "LEFT",
+        "toY": "-2"
+      },
+      {
+        "curve": "g",
+        "at": "2",
+        "side": "RIGHT",
+        "toY": "2"
+      },
+      {
+        "curve": "g",
+        "at": "-2",
+        "side": "RIGHT",
+        "toY": "-3"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "1",
+        "2"
+      ],
+      "y": []
+    }
+  },
+  "caption": "위는 y=f(x), 아래는 y=g(x)이다. x→1+에서 f(x)=x+1은 2의 오른쪽에서 2로 가므로 |f|≥2인 식 g=2|x|-2를 따라 g(f(x))→2이다. x→1-에서 f(x)=-x-1은 -2의 오른쪽에서 -2로 가므로 |f|<2인 식 g=-x²+1을 따라 g(f(x))→-3이다. 합은 2-3=-1이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=\\begin{cases}x+1&(x\\ge1)\\\\-x-1&(x\\lt 1)\\end{cases}$, $g(x)=\\begin{cases}2|x|-2&(|x|\\ge2)\\\\-x^2+1&(|x|\\lt 2)\\end{cases}$에 대하여 $\\displaystyle\\lim_{x\\to1+}g(f(x))+\\lim_{x\\to1-}g(f(x))$의 값은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "안쪽 함수 f가 2와 -2에 오른쪽에서 다가갈 때 g의 어느 식을 쓰는지 화살표로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x→1+에서 f는 2로, x→1-에서 f는 -2로 오른쪽에서 다가가며 g는 각각 2, -3으로 간다."
+  ],
+  "accessibilityDescription": "위쪽에 x=1에서 끊어지는 f의 그래프, 아래쪽에 x=-2와 x=2에서 끊어지는 g의 그래프를 나란히 그리고 극한을 화살표로 표시한 그림이다."
+}
