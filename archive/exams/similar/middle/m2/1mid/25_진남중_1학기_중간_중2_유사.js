@@ -33,7 +33,7 @@ window.questionBank = [
       "875"
     ],
     "answer": "②",
-    "solution": "분모를 $10$의 거듭제곱인 $10^3 = 1000$으로 만들기 위해 분모와 분자에 $5^2 = 25$를 곱한다. $$ \\frac{7}{2^3 \\times 5} = \\frac{7 \\times 5^2}{2^3 \\times 5 \\times 5^2} = \\frac{7 \\times 25}{2^3 \\times 5^3} = \\frac{175}{1000} = 0.175 $$ 따라서 각 빈칸의 값은 다음과 같다. $$ A = 175, \\quad B = 1000, \\quad C = 0.175 $$ 구하는 식의 값을 계산한다. $$ \\begin{aligned} A + B \\times C &= 175 + 1000 \\times 0.175 \\ &= 175 + 175 \\ &= 350 \\end{aligned} $$ 그러므로 정답은 ②이다.",
+    "solution": "분모를 $10$의 거듭제곱으로 만들기 위해 분모와 분자에 $5^2$을 곱하여 유한소수로 나타낸다.\n$$\n\\begin{aligned}\n\\dfrac{7}{2^3 \\times 5} &= \\dfrac{7 \\times 5^2}{2^3 \\times 5 \\times 5^2} \\\\\n&= \\dfrac{175}{2^3 \\times 5^3} \\\\\n&= \\dfrac{175}{1000} \\\\\n&= 0.175\n\\end{aligned}\n$$\n주어진 식과 비교하여 빈칸의 값을 차례로 읽는다.\n$$A = 175, \\quad B = 1000, \\quad C = 0.175$$\n구하는 식의 값을 계산한다.\n$$\n\\begin{aligned}\nA + B \\times C &= 175 + 1000 \\times 0.175 \\\\\n&= 175 + 175 \\\\\n&= 350\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -70,7 +70,7 @@ window.questionBank = [
       "$\\dfrac{21}{2^2 \\times 3^2 \\times 5}$"
     ],
     "answer": "⑤",
-    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$ 이외의 소인수를 가지면 순환소수이다. $$ \\begin{aligned} \\text{① } & \\frac{7}{35} = \\frac{1}{5} \\implies \\text{분모 소인수 } 5 \\text{ (유한소수)} \\ \\text{② } & \\frac{27}{180} = \\frac{3}{20} = \\frac{3}{2^2 \\times 5} \\implies \\text{분모 소인수 } 2, 5 \\text{ (유한소수)} \\ \\text{③ } & \\frac{63}{2^2 \\times 3^2 \\times 5^2} = \\frac{7 \\times 9}{2^2 \\times 9 \\times 5^2} = \\frac{7}{2^2 \\times 5^2} \\implies \\text{분모 소인수 } 2, 5 \\text{ (유한소수)} \\ \\text{④ } & \\frac{42}{2^3 \\times 3 \\times 7} = \\frac{42}{2^3 \\times 21} = \\frac{2}{2^3} = \\frac{1}{2^2} \\implies \\text{분모 소인수 } 2 \\text{ (유한소수)} \\ \\text{⑤ } & \\frac{21}{2^2 \\times 3^2 \\times 5} = \\frac{3 \\times 7}{2^2 \\times 9 \\times 5} = \\frac{7}{2^2 \\times 3 \\times 5} \\implies \\text{분모에 } 3\\text{이 남아 순환소수} \\end{aligned} $$ 따라서 순환소수로만 나타낼 수 있는 것은 ⑤이다.",
+    "solution": "각 분수를 기약분수로 고쳐 분모의 소인수를 확인하고, $2$와 $5$ 이외의 소인수가 남는지로 판정한다.\n①의 분수를 약분하면\n$$\\dfrac{7}{35} = \\dfrac{1}{5}$$\n분모의 소인수가 $5$뿐이므로 유한소수이다.\n②의 분수를 약분하면\n$$\n\\begin{aligned}\n\\dfrac{27}{180} &= \\dfrac{3}{20} \\\\\n&= \\dfrac{3}{2^2 \\times 5}\n\\end{aligned}\n$$\n분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.\n③의 분수를 약분하면\n$$\n\\begin{aligned}\n\\dfrac{63}{2^2 \\times 3^2 \\times 5^2} &= \\dfrac{7 \\times 3^2}{2^2 \\times 3^2 \\times 5^2} \\\\\n&= \\dfrac{7}{2^2 \\times 5^2}\n\\end{aligned}\n$$\n분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.\n④의 분수를 약분하면\n$$\n\\begin{aligned}\n\\dfrac{42}{2^3 \\times 3 \\times 7} &= \\dfrac{42}{2^3 \\times 21} \\\\\n&= \\dfrac{2}{2^3} \\\\\n&= \\dfrac{1}{2^2}\n\\end{aligned}\n$$\n분모의 소인수가 $2$뿐이므로 유한소수이다.\n⑤의 분자를 약분하면\n$$\n\\begin{aligned}\n\\dfrac{21}{2^2 \\times 3^2 \\times 5} &= \\dfrac{3 \\times 7}{2^2 \\times 3^2 \\times 5} \\\\\n&= \\dfrac{7}{2^2 \\times 3 \\times 5}\n\\end{aligned}\n$$\n분모에 소인수 $3$이 남으므로 순환소수이다.\n따라서 정답은 ⑤이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -107,7 +107,7 @@ window.questionBank = [
       "$0.5\\dot{8} < 0.58$"
     ],
     "answer": "①",
-    "solution": "순환소수를 소수 전개 꼴로 펼쳐서 소수점 아래 자릿수를 순서대로 비교한다. $$ \\begin{aligned} \\text{① } & 0.72 = 0.720000\\dots, \\quad 0.\\dot{7} = 0.777777\\dots \\ & 0.72 < 0.777\\dots \\text{이므로 옳은 표현이다. (참)} \\ \\text{② } & 0.40 = 0.400000\\dots, \\quad 0.\\dot{4}0\\dot{0} = 0.400400\\dots \\ & 0.4000\\dots < 0.4004\\dots \\text{이므로 } 0.40 < 0.\\dot{4}0\\dot{0} \\text{ (거짓)} \\ \\text{③ } & 5.32\\dot{3} = 5.323333\\dots, \\quad 5.\\dot{3}\\dot{2} = 5.323232\\dots \\ & 5.3233\\dots > 5.3232\\dots \\text{이므로 } 5.32\\dot{3} > 5.\\dot{3}\\dot{2} \\text{ (거짓)} \\ \\text{④ } & 0.234 = 0.234000\\dots, \\quad 0.2\\dot{3}\\dot{4} = 0.234343\\dots \\ & 0.2340\\dots < 0.2343\\dots \\text{이므로 } 0.234 < 0.2\\dot{3}\\dot{4} \\text{ (거짓)} \\ \\text{⑤ } & 0.5\\dot{8} = 0.588888\\dots, \\quad 0.58 = 0.580000\\dots \\ & 0.5888\\dots > 0.5800\\dots \\text{이므로 } 0.5\\dot{8} > 0.58 \\text{ (거짓)} \\end{aligned} $$ 따라서 대소관계를 바르게 나타낸 것은 ①이다.",
+    "solution": "각 보기의 두 수를 소수로 펼쳐 소수점 아래 자리를 차례로 비교한다.\n①의 두 수를 펼치면\n$$0.72 = 0.72000\\cdots, \\quad 0.\\dot{7} = 0.77777\\cdots$$\n$0.7200\\cdots < 0.7777\\cdots$이므로 ①은 옳다.\n②의 두 수를 펼치면\n$$0.40 = 0.40000\\cdots, \\quad 0.\\dot{4}0\\dot{0} = 0.400400\\cdots$$\n$0.4000\\cdots < 0.4004\\cdots$이므로 ②는 옳지 않다.\n③의 두 수를 펼치면\n$$5.32\\dot{3} = 5.32333\\cdots, \\quad 5.\\dot{3}\\dot{2} = 5.32323\\cdots$$\n$5.3233\\cdots > 5.3232\\cdots$이므로 ③은 옳지 않다.\n④의 두 수를 펼치면\n$$0.234 = 0.23400\\cdots, \\quad 0.2\\dot{3}\\dot{4} = 0.23434\\cdots$$\n$0.2340\\cdots < 0.2343\\cdots$이므로 ④는 옳지 않다.\n⑤의 두 수를 펼치면\n$$0.5\\dot{8} = 0.58888\\cdots, \\quad 0.58 = 0.58000\\cdots$$\n$0.5888\\cdots > 0.5800\\cdots$이므로 ⑤는 옳지 않다.\n따라서 정답은 ①이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -144,7 +144,7 @@ window.questionBank = [
       "49"
     ],
     "answer": "④",
-    "solution": "분수를 순환소수로 변환하여 순환마디의 주기를 파악한다. 1단계: $25 \\div 11$을 계산한다. $$ \\frac{25}{11} = 2.272727\\cdots = 2.\\dot{2}\\dot{7} $$ 순환마디는 $27$로 길이는 $2$이다. 소수점 아래 홀수 번째 자리의 숫자는 $2$이고, 짝수 번째 자리의 숫자는 $7$이다. 2단계: $26$번째와 $27$번째 숫자를 각각 구한다.\n$26$은 짝수이므로 소수점 아래 $26$번째 자리의 숫자는 $7$이다.\n$27$은 홀수이므로 소수점 아래 $27$번째 자리의 숫자는 $2$이다. 3단계: 두 숫자의 곱을 계산한다. $$ 7 \\times 2 = 14 $$ 따라서 정답은 ④이다.",
+    "solution": "$\\dfrac{25}{11}$을 순환소수로 나타내어 순환마디를 찾고, $26$번째와 $27$번째 자리의 숫자를 구해 곱한다.\n$$25 \\div 11 = 2.272727\\cdots = 2.\\dot{2}\\dot{7}$$\n순환마디는 $27$이고 길이는 $2$이다.\n소수점 아래 홀수 번째 자리의 숫자는 $2$, 짝수 번째 자리의 숫자는 $7$이다.\n$26$은 짝수이므로 소수점 아래 $26$번째 자리의 숫자는 $7$이다.\n$27$은 홀수이므로 소수점 아래 $27$번째 자리의 숫자는 $2$이다.\n두 숫자의 곱을 계산하면\n$$7 \\times 2 = 14$$\n따라서 정답은 ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -181,7 +181,7 @@ window.questionBank = [
       "$0.\\dot{5}$"
     ],
     "answer": "③",
-    "solution": "순환소수를 분수로 나타내어 $a + b$를 결정하고 소수 조건을 적용한다. 1단계: 두 순환소수의 합을 분수로 나타낸다. $$ 0.\\dot{a}\\dot{b} = \\frac{10a + b}{99}, \\quad 0.\\dot{b}\\dot{a} = \\frac{10b + a}{99} $$ 두 수의 합은 다음과 같다. $$ \\frac{10a + b}{99} + \\frac{10b + a}{99} = \\frac{11a + 11b}{99} = \\frac{11(a + b)}{99} = \\frac{a + b}{9} $$ 우변의 값 $0.\\dot{7} = \\dfrac{7}{9}$이므로 $$ \\frac{a + b}{9} = \\frac{7}{9} \\implies a + b = 7 $$ 2단계: 소수 조건 $a, b \\in {2, 3, 5, 7}$ 및 $a > b$를 적용한다. 합이 $7$이 되는 두 소수의 쌍은 $5 + 2 = 7$뿐이다. $a > b$이므로 $$ a = 5, \\quad b = 2 $$ 3단계: $0.\\dot{a} - 0.\\dot{b}$의 값을 구한다. $$ \\begin{aligned} 0.\\dot{a} - 0.\\dot{b} &= 0.\\dot{5} - 0.\\dot{2} \\ &= \\frac{5}{9} - \\frac{2}{9} = \\frac{3}{9} \\ &= 0.\\dot{3} \\end{aligned} $$ 따라서 정답은 ③이다.",
+    "solution": "두 순환소수를 분수로 고쳐 $a + b$를 구하고, 소수 조건과 $a > b$로 $a$, $b$를 정한다.\n$$0.\\dot{a}\\dot{b} = \\dfrac{10a + b}{99}, \\quad 0.\\dot{b}\\dot{a} = \\dfrac{10b + a}{99}$$\n두 수의 합을 계산하면\n$$\n\\begin{aligned}\n\\dfrac{10a + b}{99} + \\dfrac{10b + a}{99} &= \\dfrac{11a + 11b}{99} \\\\\n&= \\dfrac{11(a + b)}{99} \\\\\n&= \\dfrac{a + b}{9}\n\\end{aligned}\n$$\n$0.\\dot{7} = \\dfrac{7}{9}$이므로\n$$\\dfrac{a + b}{9} = \\dfrac{7}{9}$$\n$$a + b = 7$$\n$a$, $b$는 $2, 3, 5, 7$ 중 하나이고 $a > b$이다.\n합이 $7$이 되는 두 수는 $5$와 $2$뿐이므로\n$$a = 5, \\quad b = 2$$\n구하는 값을 계산하면\n$$\n\\begin{aligned}\n0.\\dot{a} - 0.\\dot{b} &= 0.\\dot{5} - 0.\\dot{2} \\\\\n&= \\dfrac{5}{9} - \\dfrac{2}{9} \\\\\n&= \\dfrac{3}{9} \\\\\n&= 0.\\dot{3}\n\\end{aligned}\n$$\n따라서 정답은 ③이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -218,7 +218,7 @@ window.questionBank = [
       "$0.45\\dot{4}$"
     ],
     "answer": "②",
-    "solution": "두 학생이 각각 바르게 본 부분(분자 또는 분모)을 추출하여 원래의 기약분수를 복원한다. 1단계: 준우의 결과를 기약분수로 나타내어 바른 분자를 찾는다. $$ 0.41\\dot{6} = \\frac{416 - 41}{900} = \\frac{375}{900} = \\frac{5}{12} $$ 준우는 분모를 잘못 보았으므로 원래의 분자는 $5$이다. 2단계: 하은이의 결과를 기약분수로 나타내어 바른 분모를 찾는다. $$ 0.\\dot{2}\\dot{7} = \\frac{27}{99} = \\frac{3}{11} $$ 하은이는 분자를 잘못 보았으므로 원래의 분모는 $11$이다. 3단계: 처음 기약분수를 복원하고 소수로 나타낸다. 처음 기약분수는 $\\dfrac{5}{11}$이다. $$ 5 \\div 11 = 0.454545\\cdots = 0.\\dot{4}\\dot{5} $$ 따라서 정답은 ②이다.",
+    "solution": "두 학생이 바르게 본 부분에서 원래 기약분수의 분자와 분모를 하나씩 찾아 복원한다.\n준우의 결과를 분수로 고치면\n$$\n\\begin{aligned}\n0.41\\dot{6} &= \\dfrac{416 - 41}{900} \\\\\n&= \\dfrac{375}{900} \\\\\n&= \\dfrac{5}{12}\n\\end{aligned}\n$$\n준우는 분모를 잘못 보았으므로 바른 분자는 $5$이다.\n하은이의 결과를 분수로 고치면\n$$\n\\begin{aligned}\n0.\\dot{2}\\dot{7} &= \\dfrac{27}{99} \\\\\n&= \\dfrac{3}{11}\n\\end{aligned}\n$$\n하은이는 분자를 잘못 보았으므로 바른 분모는 $11$이다.\n처음 기약분수는 $\\dfrac{5}{11}$이고, 이를 소수로 나타내면\n$$\n\\begin{aligned}\n5 \\div 11 &= 0.454545\\cdots \\\\\n&= 0.\\dot{4}\\dot{5}\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -246,7 +246,7 @@ window.questionBank = [
       "RATIONAL_DECIMAL_DEFINITION_AUDIT"
     ],
     "wide": false,
-    "content": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? [4점]\n<보기> ㄱ. 모든 순환소수는 분수로 나타낼 수 있으므로 유리수이다. ㄴ. 유리수를 소수로 나타내면 유한소수 또는 순환소수가 된다. ㄷ. 분모에 $2$나 $5$ 이외의 소인수가 있는 모든 분수는 순환소수이다.",
+    "content": "다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? [4점]\n<보기>\nㄱ. 모든 순환소수는 분수로 나타낼 수 있으므로 유리수이다.\nㄴ. 유리수를 소수로 나타내면 유한소수 또는 순환소수가 된다.\nㄷ. 분모에 $2$나 $5$ 이외의 소인수가 있는 모든 분수는 순환소수이다.",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄷ",
@@ -255,7 +255,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "①",
-    "solution": "유리수와 순환소수의 정의 및 성질을 검토한다. $$ \\begin{aligned} \\text{ㄱ: } & \\text{모든 순환소수는 } 10\\text{의 거듭제곱을 이용하여 정수 분수 } \\frac{a}{b} \\text{ ($b \\ne 0$) 꼴로 나타낼 수 있으므로 유리수이다. (참)} \\ \\text{ㄴ: } & \\text{정수가 아닌 유리수를 소수로 나타내면 분모의 소인수에 따라 유한소수 또는 순환소수로 반드시 나타난다. (참)} \\ \\text{ㄷ: } & \\text{분수가 기약분수라는 조건이 없으면, 분모에 } 2, 5 \\text{ 이외의 소인수(예: } 3\\text{)가 있더라도 } \\ & \\frac{21}{30} = \\frac{7}{10} = 0.7\\text{처럼 분자와 약분되어 유한소수가 될 수 있다. 따라서 거짓이다.} \\end{aligned} $$ 따라서 옳은 것은 ㄱ, ㄴ이므로 정답은 ①이다.",
+    "solution": "<보기>의 세 문장이 참인지 거짓인지 하나씩 판정한다.\nㄱ. 모든 순환소수는 $10$의 거듭제곱을 이용하여 $\\dfrac{a}{b}$ ($b \\ne 0$) 꼴의 분수로 나타낼 수 있으므로 유리수이다. 따라서 ㄱ은 참이다.\nㄴ. 정수가 아닌 유리수를 소수로 나타내면 분모의 소인수에 따라 유한소수 또는 순환소수로 반드시 나타나므로 ㄴ은 참이다.\nㄷ. 기약분수라는 조건이 없으면 분모에 $2$, $5$ 이외의 소인수가 있어도 약분되어 유한소수가 될 수 있다.\n$$\n\\begin{aligned}\n\\dfrac{21}{30} &= \\dfrac{7}{10} \\\\\n&= 0.7\n\\end{aligned}\n$$\n유한소수가 되는 예가 있으므로 ㄷ은 거짓이다.\n옳은 것은 ㄱ, ㄴ이다.\n따라서 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -285,14 +285,14 @@ window.questionBank = [
     "wide": false,
     "content": "$(2^6)^4 \\div (2^\\Box)^3 = 2^{12}$일 때, $\\Box$ 안에 알맞은 수는? [3점]",
     "choices": [
-      "1",
-      "2",
-      "3",
+      "8",
+      "7",
+      "6",
       "5",
       "4"
     ],
     "answer": "⑤",
-    "solution": "거듭제곱의 거듭제곱 및 같은 밑의 나눗셈 법칙을 적용한다. 빈칸을 $x$라 하면 $$ (2^6)^4 = 2^{6 \\times 4} = 2^{24}, \\quad (2^x)^3 = 2^{3x} $$ 나눗셈을 계산하면 $$ 2^{24} \\div 2^{3x} = 2^{24 - 3x} $$ 우변이 $2^{12}$이므로 지수끼리 비교한다. $$ \\begin{aligned} 24 - 3x &= 12 \\ 3x &= 24 - 12 \\ 3x &= 12 \\ x &= 4 \\end{aligned} $$ 따라서 $\\Box$ 안에 알맞은 수는 $4$이므로 정답은 ⑤이다.",
+    "solution": "빈칸을 $x$라 하고 지수법칙으로 양변을 정리하여 지수를 비교한다.\n$$\n\\begin{aligned}\n(2^6)^4 &= 2^{6 \\times 4} \\\\\n&= 2^{24}\n\\end{aligned}\n$$\n$$(2^x)^3 = 2^{3x}$$\n나눗셈을 계산하면\n$$2^{24} \\div 2^{3x} = 2^{24 - 3x}$$\n우변이 $2^{12}$이므로 지수를 비교한다.\n$$24 - 3x = 12$$\n$24$를 우변으로 이항하면\n$$3x = 24 - 12$$\n$$3x = 12$$\n$$x = 4$$\n$\\Box$ 안에 알맞은 수는 $4$이다.\n따라서 정답은 ⑤이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -329,7 +329,7 @@ window.questionBank = [
       "$16a^2$"
     ],
     "answer": "③",
-    "solution": "$a = 2^{x-1}$에서 $2^x$를 $a$에 대한 식으로 먼저 나타낸다. 1단계: $2^{x-1}$을 분해한다. $$ a = 2^{x-1} = \\frac{2^x}{2} $$ 양변에 $2$를 곱하면 $$ 2^x = 2a $$ 2단계: $4^x$을 $2^x$의 거듭제곱으로 나타낸다. $$ 4^x = (2^2)^x = (2^x)^2 $$ 3단계: $2^x = 2a$를 대입한다. $$ 4^x = (2a)^2 = 4a^2 $$ 따라서 정답은 ③이다.",
+    "solution": "$a = 2^{x-1}$을 변형하여 $2^x$를 $a$로 나타낸 뒤 $4^x$에 대입한다.\n$$\n\\begin{aligned}\na &= 2^{x-1} \\\\\n&= \\dfrac{2^x}{2}\n\\end{aligned}\n$$\n양변에 $2$를 곱한다.\n$$2^x = 2a$$\n$4^x$을 $2^x$의 거듭제곱으로 바꾼다.\n$$\n\\begin{aligned}\n4^x &= (2^2)^x \\\\\n&= (2^x)^2\n\\end{aligned}\n$$\n$2^x = 2a$를 대입한다.\n$$\n\\begin{aligned}\n4^x &= (2a)^2 \\\\\n&= 4a^2\n\\end{aligned}\n$$\n따라서 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -366,7 +366,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "④",
-    "solution": "공통인수를 묶어 좌변을 간단히 정리한 후 지수방정식을 푼다. 1단계: 좌변의 각 항에서 공통인수 $2^{n+1}$을 묶는다. $$ \\begin{aligned} 2^{n+3} + 2^{n+2} + 2^{n+1} &= 2^{n+1} \\times 2^2 + 2^{n+1} \\times 2^1 + 2^{n+1} \\times 1 \\ &= 2^{n+1}(2^2 + 2 + 1) \\ &= 2^{n+1}(4 + 2 + 1) \\ &= 7 \\times 2^{n+1} \\end{aligned} $$ 2단계: 우변 $224$와 같다고 놓고 방정식을 푼다. $$ 7 \\times 2^{n+1} = 224 $$ 양변을 $7$로 나눈다. $$ 2^{n+1} = \\frac{224}{7} = 32 $$ 3단계: $32$를 밑이 $2$인 거듭제곱으로 나타낸다. $$ 32 = 2^5 $$ 따라서 밑이 같으므로 지수끼리 비교한다. $$ n + 1 = 5 \\implies n = 4 $$ 그러므로 정답은 ④이다.",
+    "solution": "좌변을 공통인수 $2^{n+1}$로 묶어 정리한 뒤 지수를 비교하여 $n$을 구한다.\n$$\n\\begin{aligned}\n2^{n+3} + 2^{n+2} + 2^{n+1} &= 2^{n+1} \\times 2^2 + 2^{n+1} \\times 2 + 2^{n+1} \\times 1 \\\\\n&= 2^{n+1}(4 + 2 + 1) \\\\\n&= 7 \\times 2^{n+1}\n\\end{aligned}\n$$\n주어진 식은 다음과 같다.\n$$7 \\times 2^{n+1} = 224$$\n양변을 $7$로 나눈다.\n$$\n\\begin{aligned}\n2^{n+1} &= \\dfrac{224}{7} \\\\\n&= 32\n\\end{aligned}\n$$\n$32$를 밑이 $2$인 거듭제곱으로 나타낸다.\n$$32 = 2^5$$\n밑이 같으므로 지수를 비교한다.\n$$n + 1 = 5$$\n$$n = 4$$\n따라서 정답은 ④이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -403,7 +403,7 @@ window.questionBank = [
       "31"
     ],
     "answer": "①",
-    "solution": "지수법칙의 거듭제곱의 곱셈 및 거듭제곱의 거듭제곱을 적용한다. 1단계: 각 괄호의 거듭제곱을 분배한다. $$ (x^3 y^2)^3 = (x^3)^3 (y^2)^3 = x^{3 \\times 3} y^{2 \\times 3} = x^9 y^6 $$ $$ (x^2 y^4)^2 = (x^2)^2 (y^4)^2 = x^{2 \\times 2} y^{4 \\times 2} = x^4 y^8 $$ 2단계: 두 단항식을 곱한다. $$ x^9 y^6 \\times x^4 y^8 = x^{9 + 4} y^{6 + 8} = x^{13} y^{14} $$ 3단계: 우변 $x^a y^b$와 지수를 비교한다. $$ a = 13, \\quad b = 14 $$ 따라서 $a + b$의 값은 다음과 같다. $$ a + b = 13 + 14 = 27 $$ 그러므로 정답은 ①이다.",
+    "solution": "거듭제곱의 곱셈과 거듭제곱의 거듭제곱 법칙으로 좌변을 정리하여 $a, b$를 구한다.\n$$(x^3 y^2)^3 = x^9 y^6$$\n$$(x^2 y^4)^2 = x^4 y^8$$\n두 단항식을 곱한다.\n$$\n\\begin{aligned}\nx^9 y^6 \\times x^4 y^8 &= x^{9 + 4} y^{6 + 8} \\\\\n&= x^{13} y^{14}\n\\end{aligned}\n$$\n우변 $x^a y^b$와 지수를 비교한다.\n$$a = 13, \\quad b = 14$$\n$$\n\\begin{aligned}\na + b &= 13 + 14 \\\\\n&= 27\n\\end{aligned}\n$$\n따라서 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -440,7 +440,7 @@ window.questionBank = [
       "12"
     ],
     "answer": "③",
-    "solution": "지수법칙을 적용하여 지수 등식을 세우고 최대공약수를 이용한다. 1단계: 좌변을 전개한다. $$ (x^a y^b z^c)^d = x^{ad} y^{bd} z^{cd} $$ 우변 $x^{36} y^{24} z^{48}$과 각 문자의 지수를 비교한다. $$ ad = 36, \\quad bd = 24, \\quad cd = 48 $$ $a, b, c, d$가 모두 자연수이므로 $d$는 $36, 24, 48$의 공약수이어야 한다. 2단계: $a + b + c$를 $d$로 표현한다. $$ a = \\frac{36}{d}, \\quad b = \\frac{24}{d}, \\quad c = \\frac{48}{d} $$ $$ a + b + c = \\frac{36 + 24 + 48}{d} = \\frac{108}{d} $$ 3단계: $a + b + c$의 최솟값을 구하려면 분모 $d$가 최대이어야 한다. 따라서 $d$는 $36, 24, 48$의 최대공약수이어야 한다. $$ \\gcd(36, 24, 48) = 12 $$ $d = 12$일 때 $a, b, c$의 값은 $$ a = \\frac{36}{12} = 3, \\quad b = \\frac{24}{12} = 2, \\quad c = \\frac{48}{12} = 4 $$ 따라서 $a + b + c$의 최솟값은 다음과 같다. $$ a + b + c = 3 + 2 + 4 = 9 $$ 그러므로 정답은 ③이다.",
+    "solution": "지수법칙으로 지수 등식을 세운 뒤 $d$가 36, 24, 48의 공약수임을 이용하여 $a + b + c$의 최솟값을 구한다.\n$$(x^a y^b z^c)^d = x^{ad} y^{bd} z^{cd}$$\n우변 $x^{36} y^{24} z^{48}$과 지수를 비교한다.\n$$ad = 36, \\quad bd = 24, \\quad cd = 48$$\n$a, b, c, d$가 모두 자연수이므로 $d$는 36, 24, 48의 공약수이다.\n$$a = \\dfrac{36}{d}, \\quad b = \\dfrac{24}{d}, \\quad c = \\dfrac{48}{d}$$\n$$\n\\begin{aligned}\na + b + c &= \\dfrac{36}{d} + \\dfrac{24}{d} + \\dfrac{48}{d} \\\\\n&= \\dfrac{108}{d}\n\\end{aligned}\n$$\n$a + b + c$가 최소가 되려면 분모 $d$가 최대이어야 한다.\n따라서 $d$는 36, 24, 48의 최대공약수이다.\n$$d = 12$$\n$$a = \\dfrac{36}{12}, \\quad b = \\dfrac{24}{12}, \\quad c = \\dfrac{48}{12}$$\n$$a = 3, \\quad b = 2, \\quad c = 4$$\n$$\n\\begin{aligned}\na + b + c &= 3 + 2 + 4 \\\\\n&= 9\n\\end{aligned}\n$$\n따라서 정답은 ③이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -477,7 +477,7 @@ window.questionBank = [
       "$15x^5y^9$"
     ],
     "answer": "②",
-    "solution": "거듭제곱을 먼저 전개한 후 계수와 각 문자의 지수를 차례대로 계산한다. 1단계: 각 괄호의 거듭제곱을 계산한다. $$ (3xy^2)^2 = 3^2 x^2 (y^2)^2 = 9x^2y^4 $$ $$ (-x^3y)^2 = (-1)^2 (x^3)^2 y^2 = x^6y^2 $$ 2단계: 세 단항식을 곱한다. $$ 9x^2y^4 \\times x^6y^2 \\times \\frac{5y^3}{3x^4} = \\frac{9 \\times 5 \\times x^{2+6} y^{4+2+3}}{3x^4} = \\frac{45x^8y^9}{3x^4} $$ 3단계: 분모의 $3x^4$로 약분한다. $$ \\frac{45}{3} \\times x^{8-4} y^9 = 15x^4y^9 $$ 따라서 정답은 ②이다.",
+    "solution": "각 괄호의 거듭제곱을 먼저 계산한 뒤 계수와 문자별 지수를 정리한다.\n$$(3xy^2)^2 = 9x^2y^4$$\n$$(-x^3y)^2 = x^6y^2$$\n세 단항식을 곱한다.\n$$\n\\begin{aligned}\n9x^2y^4 \\times x^6y^2 \\times \\dfrac{5y^3}{3x^4} &= \\dfrac{9 \\times 5 \\times x^{2+6} y^{4+2+3}}{3x^4} \\\\\n&= \\dfrac{45x^8y^9}{3x^4} \\\\\n&= 15x^4y^9\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -514,7 +514,7 @@ window.questionBank = [
       "$2ab^2$"
     ],
     "answer": "⑤",
-    "solution": "직육면체의 부피 $V = (\\text{밑넓이}) \\times (\\text{높이})$ 공식을 이용한다. 1단계: 밑면인 정사각형의 넓이를 구한다. 한 변의 길이가 $3a^2b$이므로 $$ (\\text{밑넓이}) = (3a^2b)^2 = 3^2 (a^2)^2 b^2 = 9a^4b^2 $$ 2단계: 높이를 $h$라 하고 부피 공식을 세운다. $$ 9a^4b^2 \\times h = 18a^5b^4 $$ 3단계: 단항식의 나눗셈으로 높이 $h$를 계산한다. $$ \\begin{aligned} h &= \\frac{18a^5b^4}{9a^4b^2} \\ &= \\left(\\frac{18}{9}\\right) a^{5-4} b^{4-2} \\ &= 2ab^2 \\end{aligned} $$ 따라서 직육면체의 높이는 $2ab^2$이므로 정답은 ⑤이다.",
+    "solution": "직육면체의 부피가 (밑넓이) $\\times$ (높이)임을 이용하여 높이를 구한다.\n밑면인 정사각형의 넓이를 구한다.\n$$(3a^2b)^2 = 9a^4b^2$$\n높이를 $h$라 하면 부피는 다음과 같다.\n$$9a^4b^2 \\times h = 18a^5b^4$$\n양변을 $9a^4b^2$으로 나눈다.\n$$\n\\begin{aligned}\nh &= \\dfrac{18a^5b^4}{9a^4b^2} \\\\\n&= 2ab^2\n\\end{aligned}\n$$\n따라서 높이는 $2ab^2$이므로 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -551,7 +551,7 @@ window.questionBank = [
       "17"
     ],
     "answer": "④",
-    "solution": "$2$와 $5$의 지수 중 작은 쪽인 $15$에 맞춰 $10$의 거듭제곱으로 묶는다. 1단계: 식을 변형한다. $$ \\begin{aligned} 2^{18} \\times 5^{15} &= 2^{3 + 15} \\times 5^{15} \\ &= 2^3 \\times (2 \\times 5)^{15} \\ &= 8 \\times 10^{15} \\end{aligned} $$ 2단계: $8 \\times 10^{15}$의 자릿수를 구한다. 한 자리 수 $8$ 뒤에 $0$이 $15$개 이어지므로 전체 자릿수는 다음과 같다. $$ n = 1 + 15 = 16 $$ 따라서 $n = 16$이므로 정답은 ④이다.",
+    "solution": "$2$와 $5$의 지수 중 작은 쪽인 $15$에 맞추어 $10$의 거듭제곱으로 묶는다.\n$$\n\\begin{aligned}\n2^{18} \\times 5^{15} &= 2^3 \\times (2 \\times 5)^{15} \\\\\n&= 8 \\times 10^{15}\n\\end{aligned}\n$$\n$8$은 한 자리 수이고 $10^{15}$은 $0$이 $15$개 붙는 수이므로 자릿수는 다음과 같다.\n$$\n\\begin{aligned}\nn &= 1 + 15 \\\\\n&= 16\n\\end{aligned}\n$$\n따라서 정답은 ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -588,7 +588,7 @@ window.questionBank = [
       "$-x + 5y - 4$"
     ],
     "answer": "③",
-    "solution": "잘못된 뺄셈 식으로부터 어떤 식 $A$를 먼저 구한 후 원래의 덧셈을 수행한다. 1단계: 어떤 식 $A$를 구한다. $$ (3x + 2y - 1) - A = 4x - y + 2 $$ $$ \\begin{aligned} A &= (3x + 2y - 1) - (4x - y + 2) \\ &= 3x + 2y - 1 - 4x + y - 2 \\ &= -x + 3y - 3 \\end{aligned} $$ 2단계: 바르게 계산한 식을 구한다. 원래 계산은 $3x + 2y - 1$에 $A$를 더하는 것이므로 $$ \\begin{aligned} (3x + 2y - 1) + A &= (3x + 2y - 1) + (-x + 3y - 3) \\ &= (3 - 1)x + (2 + 3)y + (-1 - 3) \\ &= 2x + 5y - 4 \\end{aligned} $$ 따라서 바르게 계산한 식은 $2x + 5y - 4$이므로 정답은 ③이다.",
+    "solution": "잘못 계산한 뺄셈식에서 $A$를 먼저 구한 뒤 원래의 덧셈을 계산한다.\n$$(3x + 2y - 1) - A = 4x - y + 2$$\n$$\n\\begin{aligned}\nA &= (3x + 2y - 1) - (4x - y + 2) \\\\\n&= 3x + 2y - 1 - 4x + y - 2 \\\\\n&= -x + 3y - 3\n\\end{aligned}\n$$\n원래 계산은 $3x + 2y - 1$에 $A$를 더하는 것이다.\n$$\n\\begin{aligned}\n(3x + 2y - 1) + A &= (3x + 2y - 1) + (-x + 3y - 3) \\\\\n&= 2x + 5y - 4\n\\end{aligned}\n$$\n따라서 바르게 계산한 식은 $2x + 5y - 4$이므로 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -618,14 +618,14 @@ window.questionBank = [
     "wide": false,
     "content": "$(6x^2 - 3x^3) \\div \\left(\\dfrac{1}{3}x\\right) + \\left(\\dfrac{3}{4}x^3 - \\dfrac{9}{4}x^4\\right) \\div \\left(-\\dfrac{1}{4}x^2\\right)$을 계산하였을 때, $x^2$의 계수는 $a$, $x$의 계수는 $b$이다. 이때 $b - a$의 값은? [4점]",
     "choices": [
-      "12",
+      "-15",
       "15",
       "18",
-      "-15",
-      "0"
+      "27",
+      "39"
     ],
     "answer": "②",
-    "solution": "두 다항식을 역수의 곱셈을 이용하여 각각 단항식으로 나눈 뒤 동류항을 정리한다. 1단계: 첫 번째 식을 계산한다. $$ \\begin{aligned} (6x^2 - 3x^3) \\div \\left(\\frac{1}{3}x\\right) &= (6x^2 - 3x^3) \\times \\frac{3}{x} \\ &= 6x^2 \\times \\frac{3}{x} - 3x^3 \\times \\frac{3}{x} \\ &= 18x - 9x^2 \\end{aligned} $$ 2단계: 두 번째 식을 계산한다. $$ \\begin{aligned} \\left(\\frac{3}{4}x^3 - \\frac{9}{4}x^4\\right) \\div \\left(-\\frac{1}{4}x^2\\right) &= \\left(\\frac{3}{4}x^3 - \\frac{9}{4}x^4\\right) \\times \\left(-\\frac{4}{x^2}\\right) \\ &= \\frac{3}{4}x^3 \\times \\left(-\\frac{4}{x^2}\\right) - \\frac{9}{4}x^4 \\times \\left(-\\frac{4}{x^2}\\right) \\ &= -3x + 9x^2 \\end{aligned} $$ 3단계: 두 식을 더한다. $$ (18x - 9x^2) + (-3x + 9x^2) = (-9 + 9)x^2 + (18 - 3)x = 15x $$ 4단계: 계수를 읽고 $b - a$를 계산한다. $x^2$의 계수 $a = 0$, $x$의 계수 $b = 15$이다. $$ b - a = 15 - 0 = 15 $$ 따라서 정답은 ②이다.",
+    "solution": "두 나눗셈을 각각 역수의 곱셈으로 바꾸어 전개한 뒤 $x^2$의 계수 $a$와 $x$의 계수 $b$를 찾는다.\n나누는 식의 역수를 곱한다.\n$$\n\\begin{aligned}\n(6x^2 - 3x^3) \\div \\left(\\dfrac{1}{3}x\\right) &= (6x^2 - 3x^3) \\times \\dfrac{3}{x} \\\\\n&= 6x^2 \\times \\dfrac{3}{x} - 3x^3 \\times \\dfrac{3}{x} \\\\\n&= 18x - 9x^2\n\\end{aligned}\n$$\n두 번째 식도 같은 방법으로 계산한다.\n$$\n\\begin{aligned}\n\\left(\\dfrac{3}{4}x^3 - \\dfrac{9}{4}x^4\\right) \\div \\left(-\\dfrac{1}{4}x^2\\right) &= \\left(\\dfrac{3}{4}x^3 - \\dfrac{9}{4}x^4\\right) \\times \\left(-\\dfrac{4}{x^2}\\right) \\\\\n&= \\dfrac{3}{4}x^3 \\times \\left(-\\dfrac{4}{x^2}\\right) - \\dfrac{9}{4}x^4 \\times \\left(-\\dfrac{4}{x^2}\\right) \\\\\n&= -3x + 9x^2\n\\end{aligned}\n$$\n두 식을 더한다.\n$$\n\\begin{aligned}\n(18x - 9x^2) + (-3x + 9x^2) &= (-9 + 9)x^2 + (18 - 3)x \\\\\n&= 15x\n\\end{aligned}\n$$\n정리한 식에 $x^2$의 항이 없으므로 $a = 0$이고, $x$의 계수는 $b = 15$이다.\n$b - a$를 계산한다.\n$$\n\\begin{aligned}\nb - a &= 15 - 0 \\\\\n&= 15\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -662,7 +662,7 @@ window.questionBank = [
       "$3x - 1 < 4x$"
     ],
     "answer": "⑤",
-    "solution": "$x = 2$를 각 부등식에 대입하여 참과 거짓을 판정한다. $$ \\begin{aligned} \\text{① } & 3(2) - 2 > 4(2) \\implies 6 - 2 > 8 \\implies 4 > 8 \\text{ (거짓)} \\ \\text{② } & 2(2) \\ge 5(2) \\implies 4 \\ge 10 \\text{ (거짓)} \\ \\text{③ } & 4(2) < 2 - 1 \\implies 8 < 1 \\text{ (거짓)} \\ \\text{④ } & 7 \\le 2(2) + 1 \\implies 7 \\le 5 \\text{ (거짓)} \\ \\text{⑤ } & 3(2) - 1 < 4(2) \\implies 6 - 1 < 8 \\implies 5 < 8 \\text{ (참)} \\end{aligned} $$ 따라서 $x = 2$를 해로 갖는 부등식은 ⑤이다.",
+    "solution": "$x = 2$를 다섯 부등식에 각각 대입하여 참과 거짓을 판정한다.\n① $x = 2$를 대입하면 $4 > 8$이므로 거짓이다.\n② $x = 2$를 대입하면 $4 \\ge 10$이므로 거짓이다.\n③ $x = 2$를 대입하면 $8 < 1$이므로 거짓이다.\n④ $x = 2$를 대입하면 $7 \\le 5$이므로 거짓이다.\n⑤ $x = 2$를 대입하면 $5 < 8$이므로 참이다.\n따라서 정답은 ⑤이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -699,7 +699,7 @@ window.questionBank = [
       "$4 + \\dfrac{a}{2} \\ \\Box \\ 4 + \\dfrac{b}{2}$"
     ],
     "answer": "①",
-    "solution": "$a - 2 \\le b - 2$의 양변에 $2$를 더하면 $a \\le b$이다. 각 식에서 부등호 방향의 변화를 확인한다. $$ \\begin{aligned} \\text{① } & a \\le b\\text{의 양변에 음수 } -1\\text{을 곱하면 } -a \\ge -b, \\quad 6\\text{을 더하면 } 6 - a \\ge 6 - b \\implies \\Box = \\ge \\ \\text{② } & a \\le b\\text{의 양변에 } 5\\text{를 더하면 } a + 5 \\le b + 5 \\implies \\Box = \\le \\ \\text{③ } & a \\le b\\text{의 양변에 양수 } 3\\text{을 곱하고 } 2\\text{를 더하면 } 3a + 2 \\le 3b + 2 \\implies \\Box = \\le \\ \\text{④ } & a - (-3) = a + 3, \\quad b - (-3) = b + 3 \\implies a + 3 \\le b + 3 \\implies \\Box = \\le \\ \\text{⑤ } & a \\le b\\text{의 양변을 양수 } 2\\text{로 나누고 } 4\\text{를 더하면 } 4 + \\frac{a}{2} \\le 4 + \\frac{b}{2} \\implies \\Box = \\le \\end{aligned} $$ ②, ③, ④, ⑤의 부등호 방향은 모두 $\\le$이지만, ①만 음수를 곱하여 부등호 방향이 $\\ge$로 바뀐다. 따라서 나머지 넷과 다른 하나는 ①이다.",
+    "solution": "$a - 2 \\le b - 2$에서 $a \\le b$를 얻은 뒤, 보기마다 부등호의 방향이 어떻게 되는지 확인한다.\n$$\n\\begin{aligned}\na - 2 &\\le b - 2 \\\\\na &\\le b\n\\end{aligned}\n$$\n① 양변에 음수 $-1$을 곱하면 방향이 바뀌므로 $6 - a \\ge 6 - b$이다.\n② 양변에 $5$를 더해도 방향이 그대로이므로 $a + 5 \\le b + 5$이다.\n③ 양변에 양수 $3$을 곱하고 $2$를 더해도 방향이 그대로이므로 $3a + 2 \\le 3b + 2$이다.\n④ $a - (-3) = a + 3$이고 $b - (-3) = b + 3$이므로 $a + 3 \\le b + 3$이다.\n⑤ 양변을 양수 $2$로 나누고 $4$를 더해도 방향이 그대로이므로 $4 + \\dfrac{a}{2} \\le 4 + \\dfrac{b}{2}$이다.\n방향이 $\\ge$인 것은 ①뿐이고 ②, ③, ④, ⑤는 모두 $\\le$이다.\n따라서 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -736,7 +736,7 @@ window.questionBank = [
       "$\\dfrac{7}{4}$"
     ],
     "answer": "④",
-    "solution": "$a < 0$일 때 일차식의 단조감소 성질을 이용하여 $a$와 $b$를 구한다. 1단계: $a < 0$이므로 $-5 \\le x \\le 3$의 각 변에 $a$를 곱하면 부등호의 방향이 반대로 바뀐다. $$ 3a \\le ax \\le -5a $$ 각 변에 $\\dfrac{1}{4}$을 더한다. $$ \\frac{1}{4} + 3a \\le \\frac{1}{4} + ax \\le \\frac{1}{4} - 5a $$ 2단계: 최댓값 조건을 이용하여 $a$를 구한다. 최댓값은 $x = -5$일 때인 $\\dfrac{1}{4} - 5a$이다. 문제에서 최댓값이 $4$이므로 $$ \\begin{aligned} \\frac{1}{4} - 5a &= 4 \\ -5a &= 4 - \\frac{1}{4} = \\frac{15}{4} \\ a &= -\\frac{15}{4} \\times \\frac{1}{5} = -\\frac{3}{4} \\end{aligned} $$ $a = -\\dfrac{3}{4} < 0$이므로 조건을 만족한다.\n3단계: 최솟값 $b$를 구한다. 최솟값은 $x = 3$일 때인 $\\dfrac{1}{4} + 3a$이다. $$ b = \\frac{1}{4} + 3\\left(-\\frac{3}{4}\\right) = \\frac{1}{4} - \\frac{9}{4} = -\\frac{8}{4} = -2 $$ 4단계: $a - b$의 값을 계산한다. $$ a - b = -\\frac{3}{4} - (-2) = -\\frac{3}{4} + 2 = \\frac{5}{4} $$ 따라서 정답은 ④이다.",
+    "solution": "$a < 0$이므로 $x$가 커질수록 $\\dfrac{1}{4} + ax$의 값이 작아지는 성질을 이용하여 $a$와 $b$를 구하고 $a - b$를 계산한다.\n$-5 \\le x \\le 3$의 각 변에 음수 $a$를 곱하면 부등호의 방향이 바뀐다.\n$$\n3a \\le ax \\le -5a\n$$\n각 변에 $\\dfrac{1}{4}$을 더한다.\n$$\n\\dfrac{1}{4} + 3a \\le \\dfrac{1}{4} + ax \\le \\dfrac{1}{4} - 5a\n$$\n따라서 $x = -5$일 때 최댓값 $\\dfrac{1}{4} - 5a$를, $x = 3$일 때 최솟값 $\\dfrac{1}{4} + 3a$를 갖는다.\n최댓값이 $4$이므로\n$$\n\\begin{aligned}\n\\dfrac{1}{4} - 5a &= 4 \\\\\n-5a &= 4 - \\dfrac{1}{4} \\\\\n-5a &= \\dfrac{15}{4} \\\\\na &= -\\dfrac{3}{4}\n\\end{aligned}\n$$\n최솟값 $b$는 $x = 3$일 때의 값이다.\n$$\n\\begin{aligned}\nb &= \\dfrac{1}{4} + 3\\left(-\\dfrac{3}{4}\\right) \\\\\n&= \\dfrac{1}{4} - \\dfrac{9}{4} \\\\\n&= -2\n\\end{aligned}\n$$\n$a - b$를 계산한다.\n$$\n\\begin{aligned}\na - b &= -\\dfrac{3}{4} - (-2) \\\\\n&= -\\dfrac{3}{4} + 2 \\\\\n&= \\dfrac{5}{4}\n\\end{aligned}\n$$\n따라서 정답은 ④이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -767,7 +767,7 @@ window.questionBank = [
     "content": "순환소수 $1.8\\dot{3}$에 자연수 $A$를 곱하면 자연수가 된다. 다음 물음에 답하시오. [7점]\n(1) 순환소수를 $x$로 놓고 기약분수로 나타내는 과정을 서술하시오. [4점] (2) $A$의 값 중 가장 작은 세 자리의 자연수를 구하시오. [3점]",
     "choices": [],
     "answer": "(1) $\\dfrac{11}{6}$  (2) 102",
-    "solution": "순환소수를 10의 거듭제곱 방정식으로 기약분수로 변환하고 배수 조건을 적용한다.\n(1) [4점] $x = 1.8333\\dots$라 두자. 소수점 아래 순환마디의 시작과 끝 위치에 맞춰 $100$과 $10$을 양변에 곱한다. $$ 100x = 183.3333\\dots \\quad \\cdots\\text{ ㉠} $$ $$ 10x = 18.3333\\dots \\quad \\cdots\\text{ ㉡} $$ [1.5점] ㉠에서 ㉡을 변끼리 빼면 $$ \\begin{aligned} 100x - 10x &= 183 - 18 \\ 90x &= 165 \\ x &= \\frac{165}{90} \\end{aligned} $$ [1.5점] 분모와 분자를 최대공약수인 $15$로 약분하여 기약분수로 나타낸다. $$ x = \\frac{165 \\div 15}{90 \\div 15} = \\frac{11}{6} $$ 따라서 기약분수는 $\\dfrac{11}{6}$이다. [1점]\n(2) [3점] $\\dfrac{11}{6} \\times A$가 자연수가 되려면, 분모 $6$이 $A$와 완전히 약분되어야 하므로 $A$는 $6$의 배수이어야 한다. [1.5점] 세 자리 자연수는 $100$ 이상 $999$ 이하이므로 $$ 100 \\div 6 = 16.666\\dots $$ 따라서 $A$는 $6 \\times 17$부터 세 자리 자연수가 된다. $$ A = 6 \\times 17 = 102 $$ 그러므로 $A$의 값 중 가장 작은 세 자리의 자연수는 $102$이다. [1.5점]\n따라서 (1) $\\dfrac{11}{6}$, (2) 102이다.",
+    "solution": "$1.8\\dot{3}$을 $x$로 놓고 $100x$와 $10x$의 차를 이용하여 기약분수로 고친 뒤, 그 분모를 약분하는 가장 작은 세 자리 자연수 $A$를 구한다.\n(1) 순환소수를 $x$로 놓고 기약분수로 나타낸다.\n$$\nx = 1.8333\\cdots\n$$\n순환마디의 시작과 끝에 맞춰 양변에 $100$과 $10$을 곱한다.\n$$\n100x = 183.3333\\cdots\n$$\n$$\n10x = 18.3333\\cdots\n$$\n두 식을 변끼리 뺀다.\n$$\n\\begin{aligned}\n100x - 10x &= 183 - 18 \\\\\n90x &= 165 \\\\\nx &= \\dfrac{165}{90}\n\\end{aligned}\n$$\n분모와 분자를 최대공약수 $15$로 약분한다.\n$$\n\\begin{aligned}\nx &= \\dfrac{165 \\div 15}{90 \\div 15} \\\\\n&= \\dfrac{11}{6}\n\\end{aligned}\n$$\n기약분수는 $\\dfrac{11}{6}$이다. [4점]\n(2) $\\dfrac{11}{6} \\times A$가 자연수가 되려면 분모 $6$이 $A$와 약분되어야 하므로 $A$는 $6$의 배수이다.\n세 자리 자연수는 $100$ 이상 $999$ 이하이다.\n$$\n100 \\div 6 = 16.666\\cdots\n$$\n$A$는 $6 \\times 17$부터 세 자리 자연수가 된다.\n$$\n\\begin{aligned}\nA &= 6 \\times 17 \\\\\n&= 102\n\\end{aligned}\n$$\n$A$의 값 중 가장 작은 세 자리 자연수는 $102$이다. [3점]\n따라서 (1)은 $\\dfrac{11}{6}$, (2)는 $102$이다.",
     "points": 7,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -798,7 +798,7 @@ window.questionBank = [
     "content": "$\\left(\\dfrac{2x^3}{y^a}\\right)^b = \\dfrac{8x^c}{y^{12}}$일 때, 상수 $a, b, c$에 대하여 $a + b - c$의 값을 구하는 과정을 서술하시오. (단, $a, b, c$는 자연수) [6점]",
     "choices": [],
     "answer": "-2",
-    "solution": "좌변의 식에 거듭제곱의 분배 및 곱셈 지수법칙을 적용하여 우변과 계수 및 지수를 비교한다.\n1단계: 좌변의 괄호를 전개한다. $$ \\left(\\frac{2x^3}{y^a}\\right)^b = \\frac{2^b (x^3)^b}{(y^a)^b} = \\frac{2^b x^{3b}}{y^{ab}} \\quad [2\\text{점}] $$\n2단계: 우변 $\\dfrac{8x^c}{y^{12}}$과 계수 및 각 문자의 지수를 비교한다.\n계수 비교: $$2^b = 8 = 2^3 \\implies b = 3 \\quad [1.5\\text{점}]$$\n$x$의 지수 비교: $$c = 3b = 3 \\times 3 = 9 \\quad [1\\text{점}]$$\n$y$의 지수 비교: $$ab = 12 \\implies 3a = 12 \\implies a = 4 \\quad [1\\text{점}]$$\n3단계: $a + b - c$의 값을 계산한다. $$ a + b - c = 4 + 3 - 9 = 7 - 9 = -2 \\quad [0.5\\text{점}] $$\n따라서 $a + b - c$의 값은 $-2$이다.",
+    "solution": "좌변을 전개하여 우변과 계수와 지수를 비교한 뒤 $a + b - c$의 값을 구한다.\n$$\n\\left(\\dfrac{2x^3}{y^a}\\right)^b = \\dfrac{2^b x^{3b}}{y^{ab}}\n$$\n계수를 비교한다.\n$$\n\\begin{aligned}\n2^b &= 8 \\\\\n&= 2^3\n\\end{aligned}\n$$\n밑이 같으므로 지수가 같다.\n$$\nb = 3\n$$\n$x$의 지수를 비교한다.\n$$\n\\begin{aligned}\nc &= 3b \\\\\n&= 3 \\times 3 \\\\\n&= 9\n\\end{aligned}\n$$\n$y$의 지수를 비교한다.\n$$\nab = 12\n$$\n$b = 3$을 대입한다.\n$$\n3a = 12\n$$\n$$\na = 4\n$$\n$a + b - c$를 계산한다.\n$$\n\\begin{aligned}\na + b - c &= 4 + 3 - 9 \\\\\n&= 7 - 9 \\\\\n&= -2\n\\end{aligned}\n$$\n따라서 $a + b - c$의 값은 $-2$이다. [6점]",
     "points": 6,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -829,7 +829,7 @@ window.questionBank = [
     "content": "$-2 \\le x \\le 4$일 때, $a \\le 4 - \\dfrac{1}{3}x \\le b$이다. 이때 $9ab$의 값을 구하는 과정을 서술하시오. (단, $a, b$는 상수) [7점]",
     "choices": [],
     "answer": "112",
-    "solution": "부등식의 성질을 적용하여 식의 범위를 차례대로 유도하고 곱을 구한다.\n1단계: 주어진 부등식 $-2 \\le x \\le 4$의 각 변에 $-\\dfrac{1}{3}$을 곱한다. 음수를 곱하므로 부등호의 방향이 반대로 바뀐다. $$ -\\frac{1}{3} \\times 4 \\le -\\frac{1}{3}x \\le -\\frac{1}{3} \\times (-2) $$ $$ -\\frac{4}{3} \\le -\\frac{1}{3}x \\le \\frac{2}{3} \\quad [3\\text{점}] $$\n2단계: 각 변에 $4$를 더한다. $$ 4 - \\frac{4}{3} \\le 4 - \\frac{1}{3}x \\le 4 + \\frac{2}{3} $$ 통분하여 계산하면 $$ \\frac{8}{3} \\le 4 - \\frac{1}{3}x \\le \\frac{14}{3} \\quad [2\\text{점}] $$ 따라서 $a = \\dfrac{8}{3}, b = \\dfrac{14}{3}$이다. [1점]\n3단계: $9ab$의 값을 계산한다. $$ \\begin{aligned} 9ab &= 9 \\times \\frac{8}{3} \\times \\frac{14}{3} \\ &= 9 \\times \\frac{8 \\times 14}{9} \\ &= 8 \\times 14 \\ &= 112 \\quad [1\\text{점}] \\end{aligned} $$\n따라서 $9ab$의 값은 $112$이다.",
+    "solution": "각 변에 $-\\dfrac{1}{3}$을 곱하고 $4$를 더하여 $a$와 $b$를 구한 뒤 $9ab$를 계산한다.\n$-2 \\le x \\le 4$의 각 변에 음수 $-\\dfrac{1}{3}$을 곱하면 부등호의 방향이 바뀐다.\n$$\n-\\dfrac{1}{3} \\times 4 \\le -\\dfrac{1}{3}x \\le -\\dfrac{1}{3} \\times (-2)\n$$\n$$\n-\\dfrac{4}{3} \\le -\\dfrac{1}{3}x \\le \\dfrac{2}{3}\n$$\n각 변에 $4$를 더한다.\n$$\n4 - \\dfrac{4}{3} \\le 4 - \\dfrac{1}{3}x \\le 4 + \\dfrac{2}{3}\n$$\n통분하여 계산한다.\n$$\n\\dfrac{8}{3} \\le 4 - \\dfrac{1}{3}x \\le \\dfrac{14}{3}\n$$\n따라서 $a = \\dfrac{8}{3}$, $b = \\dfrac{14}{3}$이다.\n$9ab$를 계산한다.\n$$\n\\begin{aligned}\n9ab &= 9 \\times \\dfrac{8}{3} \\times \\dfrac{14}{3} \\\\\n&= 9 \\times \\dfrac{8 \\times 14}{9} \\\\\n&= 8 \\times 14 \\\\\n&= 112\n\\end{aligned}\n$$\n따라서 $9ab$의 값은 $112$이다. [7점]",
     "points": 7,
     "curriculum": "2015",
     "curriculumKey": "2015",
