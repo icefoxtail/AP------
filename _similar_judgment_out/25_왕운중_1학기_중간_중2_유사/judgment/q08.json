@@ -1,0 +1,59 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "ee9506910dfd8a7d",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "2/37 = 0.054054054... 이므로 순환마디는 0, 5, 4 (길이 3)이다.",
+    "f(1) = 0, f(3) = 4, f(5) = 5, f(7) = 0, f(9) = 4, f(11) = 5 ...",
+    "홀수 번째 자릿수들의 수열은 0, 4, 5 가 주기 3으로 반복된다.",
+    "1부터 201까지의 홀수는 총 101개이다. 101 = 3 * 33 + 2",
+    "한 주기 합은 0 + 4 + 5 = 9 이므로 33 * 9 = 297 이다.",
+    "남은 2개는 첫째(0)와 둘째(4)이므로 297 + 0 + 4 = 301 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\dfrac{2}{37}$",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환마디의 규칙성을 이용해 홀수 자리 수의 총합 301 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-003",
+  "rpmReason": "2/37 의 순환마디 주기성을 분석하여 홀수 항 합 301 을 계산한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "홀수 번째 항들의 주기적 나열 규칙을 찾고 101개 항의 합 301 을 계산해야 한다.",
+  "how": "주기 3의 합 9가 33번 반복되고 0, 4가 더해져 297+4=301을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "$\\dfrac{2}{37}$를 소수로 나타내었을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "규칙",
+        "src": "solution",
+        "quote": "홀수 번째 자릿수의 규칙성을 찾아",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "method": [
+      {
+        "term": "반복",
+        "src": "solution",
+        "quote": "반복된다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "ec3b8cad47391ef1",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "② 4a^4 b^6 / (-2a^2 b) / (-2ab)^2",
+    "= -2a^2 b^5 / (4a^2 b^2) = - (b^3 / 2)",
+    "우변의 b^3 / (2a) 와 부호와 분모의 a 유무가 다르므로 옳지 않다.",
+    "따라서 옳지 않은 것은 ②번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중에서 옳지 않은 것을",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단항식의 나눗셈에서 ab 거듭제곱 전개와 부호 계산을 검증하는 유형이다.",
+  "rpmRecordId": "M2-RPM-011",
+  "rpmReason": "(-2ab)^2 전개 및 연속 나눗셈의 역수 곱셈을 수행한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱 (-2ab)^2 의 부호와 계수 약분을 꼼꼼히 확인해야 한다.",
+  "how": "2번 보기에서 (-2ab)^2 나눗셈의 부호와 문자 a의 소거 오류를 찾아냈다. ab",
+  "slots": {
+    "given": [
+      {
+        "term": "비교",
+        "src": "solution",
+        "quote": "우변과 비교한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부호",
+        "src": "stem",
+        "quote": "다음 중에서 옳지 않은 것을 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "분모",
+        "src": "solution",
+        "quote": "각 선지의 좌변을 계산하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

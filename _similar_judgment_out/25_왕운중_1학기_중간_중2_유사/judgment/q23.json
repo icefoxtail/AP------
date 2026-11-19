@@ -1,0 +1,56 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "b798f0e78658f954",
+  "solvedAnswer": "$x \\ge -3$ (경계값 $-3$을 포함하여 오른쪽 방향)",
+  "solveSteps": [
+    "2x + 3 >= -x - 6 에서 x항을 좌변으로, 상수항을 우변으로 이항한다.",
+    "aligned 이항 절차에 따라 2x + x >= -6 - 3, 즉 3x >= -9 이다.",
+    "양변을 3으로 나누면 x >= -3 이다.",
+    "수직선 위에 나타내면 -3의 위치에 검은 점(경계값 포함)을 찍고 오른쪽 방향으로 화살표를 그린다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차부등식 $2x + 3 \\",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "일차부등식을 이항하여 풀고 aligned 해를 수직선 위에 나타내는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-019",
+  "rpmReason": "일차부등식의 해 x >= -3 을 구하고 aligned 수직선 위에 표현한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차부등식 이항 풀이와 aligned 수직선 경계값 포함 화살표 표현을 서술해야 한다.",
+  "how": "이항하여 x >= -3을 구하고 수직선에 -3 포함 오른쪽 화살표로 나타내었다. aligned",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식 $2x + 3 \\ge -x - 6$을 풀고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수직선",
+        "src": "stem",
+        "quote": "그 해를 수직선 위에 나타내는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "1단계: [부등식 해 구하는 과정]",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

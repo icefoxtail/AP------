@@ -1,0 +1,56 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "2e3c5bde4d7c3cae",
+  "solvedAnswer": "$-7x^2 + 7x - 6$",
+  "solveSteps": [
+    "A + (2x^2 - 3x + 4) = -3x^2 + x + 2",
+    "A = (-3x^2 + x + 2) - (2x^2 - 3x + 4) = -5x^2 + 4x - 2 이다.",
+    "바르게 계산한 식은 A - (2x^2 - 3x + 4) 이므로",
+    "aligned 전개에 따라 (-5x^2 + 4x - 2) - (2x^2 - 3x + 4) = -7x^2 + 7x - 6 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어떤 식 $A$에서 $2x^",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+  "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+  "newKeyProposal": null,
+  "typeReason": "잘못 더한 다항식으로부터 aligned 역연산으로 바른 계산을 복원하는 서술형 유형이다.",
+  "rpmRecordId": "M2-RPM-012",
+  "rpmReason": "어떤 식 A를 구하고 aligned 원래의 뺄셈 연산을 바르게 수행한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "식 A를 구한 뒤 다시 괄호를 풀어 동류항 aligned 정리를 해야 한다.",
+  "how": "잘못 더한 결과에서 빼어 A를 구하고 다시 빼서 바른 식 -7x^2+7x-6을 도출하였다. aligned",
+  "slots": {
+    "given": [
+      {
+        "term": "어떤",
+        "src": "stem",
+        "quote": "어떤 식 $A$에서 $2x^2 - 3x + 4$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "옳게 계산한 식을 구하는 풀이 과정과"
+      }
+    ],
+    "method": [
+      {
+        "term": "등식",
+        "src": "solution",
+        "quote": "등식의 성질을 이용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

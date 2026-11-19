@@ -1,0 +1,58 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "812fd88a4d91eb39",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "① 0.dot{4}dot{5} = 45/99 = 5/11 (참)",
+    "② 0.dot{8} = 8/9 != 4/5",
+    "③ 0.3dot{6} = (36 - 3)/90 = 33/90 = 11/30 != 36/99",
+    "④ 0.21dot{5} = (215 - 21)/900 = 194/900 != 215/900",
+    "⑤ 1.2dot{3} = (123 - 12)/90 = 111/90 != 123/90",
+    "따라서 옳은 것은 ①번 5/11 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 순환소수를 분수로 옳게",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수 공식을 적용해 기약분수 5/11 로 바르게 변환된 식을 찾는 유형이다.",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "순환마디 공식 45/99 = 5/11 을 적용하여 분수로 바꾼다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "각 보기의 순환소수 분수 변환 공식을 검산하면 5/11 이 바로 나온다.",
+  "how": "0.dot{4}dot{5} = 45/99 = 5/11 로 옳게 변환된 1번을 선택하였다. 11",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "다음 순환소수를 분수로 옳게"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "옳게 나타낸 것을 고르면? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "공식",
+        "src": "solution",
+        "quote": "공식에 따라 분수로 변환하여 비교",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

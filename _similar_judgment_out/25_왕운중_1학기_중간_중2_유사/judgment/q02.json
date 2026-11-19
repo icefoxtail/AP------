@@ -1,0 +1,58 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "4a0bd7185db35f99",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "순환마디의 양 끝 숫자 위에 점을 찍어 나타낸다.",
+    "① 0.777... = 0.dot{7} (참)",
+    "② 1.3535... = 1.dot{3}dot{5} (참)",
+    "③ 0.62424... = 0.6dot{2}dot{4} (참)",
+    "④ 3.152152... = 3.dot{1}5dot{2} (참)",
+    "⑤ 2.484848... 은 순환마디가 48 이므로 2.dot{4}dot{8} 로 나타내어야 한다 (2.4dot{8} 은 거짓)."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중에서 순환소수의 순환",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수 2.4 848... 의 순환마디 표기법의 옳고 그름을 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-003",
+  "rpmReason": "2.4 848... 과 같은 순환소수의 순환마디 표기 규칙을 적용한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순환마디 표기에서 2.4 dot{8} 이 잘못되었음을 바로 식별할 수 있다.",
+  "how": "2.484848... 의 순환마디가 48인데 4 위에 점이 빠진 5번을 선택하였다. 2.4",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "다음 중에서 순환소수의 순환마디를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환마디",
+        "src": "stem",
+        "quote": "간단히 나타낸 것으로 옳지 않은 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "규칙",
+        "src": "solution",
+        "quote": "숫자 위에만 점을 찍어 표기하는 규칙",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
