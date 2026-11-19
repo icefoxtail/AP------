@@ -54,11 +54,27 @@ function safeDerived(lane,rows) {
 
 // ---- the 4slot lane's dependence on registered metadata ----
 // The 4slot builder (tools/4slot/build-4slot-runtime.cjs) reads question_metadata.json, the Meta Foundation runtime packs and reviewed-exam-meta
-// evidence only through its continuity cohorts (existing-vector, renderer, m1s2, m3s2, m3-e052): they compare the rows of their own questions
-// (and the receipts they name) with what was issued. Every other exam's 4칸 comes from the exam source, the 4칸 file, the dictionary and the
-// identity map, never from a problem type (PT/TPL). So a request that only changes types (receipt kind TYPE_ONLY) must not start the lane, and
-// a change to any cohort question or named receipt must. Measured on the 214-request type batch (2026-11-19): the lane re-ran for 364 s and
+// evidence only through its continuity modules. Every other exam's 4칸 comes from the exam source, the 4칸 file, the dictionary and the
+// identity map, never from a problem type (PT/TPL). So a request that only changes types (receipt kind TYPE_ONLY) of exams no module reads must not
+// start the lane, and a change to anything a module reads must. Measured on the 214-request type batch (2026-11-19): the lane re-ran for 364 s and
 // changed 25 inputHash cache keys and the inputDigest of item-4slot-index.json, and 0 of 17,954 records.
+//
+// What each module reads (rows of question_metadata.json / runtime packs), and what the fingerprint holds for it:
+//   module                                                         rows it reads                                         in the fingerprint
+//   existing-registered-vector-continuity (+ -ui, -svg7-ui)        its own questions, by uid                              rows of the uids named in its docs/tools
+//   existing-registered-vector-svg7-derived-continuity             WHOLE bank of 3 exams (75 rows, every field) and the   every row of an exam the tool names, and the
+//                                                                  global row count (28,890 pinned)                       total row count
+//   registered-renderer-continuity (.cjs, .mjs worker)             its own questions, by uid; runtime row + status/pack   uid rows, runtime rows of those uids
+//   m1s2-problem-renderer-continuity (+ -ui)                       its 7 questions (uids written as 'qid_v1_'+hash)       hash-token match, so the split is read too
+//   m3s2-layout-continuity, m3-e052-q5-complete-given-continuity   one question each (+ q5: its runtime pack row)           uid / exam match
+//   original-source-error-hold                                     one exam source and its bank                           exam match
+//   renderer-registration-hold -> metadata-registration-hold ->    only for a compact file that claims it                 a compact file with such a claim (none today)
+//     verify-hold-metadata-replay.mjs                              (registrationHold.metadataTransportEvidence)          makes the digest whole-file, as before
+//   partial-submission, rebind-*, validate/import-4slot, ...       no metadata or runtime row                             nothing
+// A "named" question is found by text, not by a list kept here: every 64-hex token (a uid written whole or as 'qid_v1_'+hash) in the 4slot
+// registration docs and tools/4slot/*. A whole bank is named by the two tools that compare banks (WHOLE_BANK_TOOLS): every '<name>.js' in them that is
+// the source file name of a metadata row. Exams that only a doc or a by-uid module mentions are not whole banks: those modules read their own rows.
+// tests/archive-registration-writer.test.mjs runs the modules' own readers and checks every row they read is one of these rows.
 // The Meta Foundation canonical/compiled registry stays a path input: the cohort checks validate their rows against the active registry, so a
 // batch whose requests add registry keys (registryChanges) still starts the lane. Narrowing that to the registry entries the cohort rows use
 // needs the 4slot cohort owners; it is not guessed here.
@@ -66,43 +82,94 @@ const FOUR_SLOT_META='archive/data/question_metadata.json';
 const FOUR_SLOT_META_SHARDS='archive/data/question-metadata/v1/';
 const FOUR_SLOT_RUNTIME='archive/data/meta-foundation/runtime/';
 const FOUR_SLOT_EVIDENCE='archive/data/meta-foundation/evidence/reviewed-exam-meta/';
+const FOUR_SLOT_COMPACT='archive/data/item-4slot/';
 // requestId prefixes td- (direct), tc- (carrier) and tr- (replacing a draft type), made by build-type-judgment-requests.mjs; each receipt is
 // fieldScope TYPE_ONLY (tests/archive-registration-writer.test.mjs checks every such file), next to it the request's type ledger.
 export const TYPE_ONLY_EVIDENCE=/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/t[cdr]-[0-9a-f]{12}-[0-9a-f]{8}(?:\.type-ledger)?\.json$/;
 const FOUR_SLOT_COHORT_FILES=/^(?:\.archive-meta-register\/4slot-|tools\/4slot\/[^/]+\.(?:cjs|mjs|js)$)/;
-const QUESTION_UID=/qid_v1_[0-9a-f]{64}/g;
-export const FOUR_SLOT_DERIVED_VERSION='archive-four-slot-cohort-inputs-v1';
-const smallText=new Map(),heavyMemo=new Map();
+// The only tools/4slot files that read every metadata row of an exam (the 75-row, every-field comparison of three m2s1 banks).
+export const WHOLE_BANK_TOOLS=new Set(['existing-registered-vector-svg7-derived-continuity.cjs','existing-registered-vector-svg7-ui.cjs']);
+const HEX64=/[0-9a-f]{64}/g;
+const SOURCE_NAME=/[^\s"'`\\/<>:,;()[\]{}]+\.js\b/g;
+// A compact 4칸 file that claims a metadata continuation sends the builder to verify-hold-metadata-replay.mjs, which reads rows no text names.
+const METADATA_CLAIM=/metadataTransportEvidence|metadataContinuity/;
+export const FOUR_SLOT_DERIVED_VERSION='archive-four-slot-cohort-inputs-v3';
+const smallText=new Map(),claimFlag=new Map(),heavyMemo=new Map();
 const memoHeavy=(key,make)=>{
   if(heavyMemo.has(key))return heavyMemo.get(key);
   const value=make();heavyMemo.set(key,value);
   while(heavyMemo.size>8)heavyMemo.delete(heavyMemo.keys().next().value);
   return value;
 };
-export function fourSlotDerivedInputs(rows, readBlob) {
-  const textOf=blob=>Buffer.from(readBlob(blob)).toString('utf8');
-  const uids=new Set();
-  for(const row of rows)if(FOUR_SLOT_COHORT_FILES.test(row.path)) {
-    if(!smallText.has(row.blob))smallText.set(row.blob,textOf(row.blob));
-    for(const m of smallText.get(row.blob).matchAll(QUESTION_UID))uids.add(m[0]);
+const baseName=file=>String(file||'').split('/').pop();
+// `git cat-file --batch`: many blobs in one process. Returns Map(blob -> Buffer).
+export function readBlobsBatch(root, blobs) {
+  const out=new Map();if(!blobs.length)return out;
+  const buffer=execFileSync('git',['cat-file','--batch'],{cwd:root,input:blobs.join('\n')+'\n',maxBuffer:1<<30,stdio:['pipe','pipe','pipe']});
+  let at=0;
+  for(const blob of blobs) {
+    const eol=buffer.indexOf(10,at),header=buffer.toString('latin1',at,eol).split(' ');
+    if(header[1]!=='blob')throw Error('GIT_BLOB_UNREADABLE:'+blob);
+    const size=Number(header[2]);out.set(blob,buffer.subarray(eol+1,eol+1+size));at=eol+1+size+1;
   }
-  const wanted=[...uids].sort(),scope=sha(wanted.join('\n'));
-  // [uid, row JSON] of the cohort questions inside one parsed file, first appearance wins
-  const cohortRows=records=>(records||[]).filter(record=>uids.has(record?.questionUid)).map(record=>[record.questionUid,JSON.stringify(record)]);
-  const rowFor=new Map(),keep=pairs=>{for(const [uid,text] of pairs)if(!rowFor.has(uid))rowFor.set(uid,text);};
+  return out;
+}
+function loadTexts(blobs, readBlob, readBlobs, cache) {
+  const missing=[...new Set(blobs)].filter(blob=>!cache.has(blob));
+  if(missing.length) {
+    const got=readBlobs?readBlobs(missing):new Map(missing.map(blob=>[blob,readBlob(blob)]));
+    for(const blob of missing)cache.set(blob,Buffer.from(got.get(blob)).toString('utf8'));
+  }
+}
+// The questions and exam files the 4slot modules name, and the metadata/runtime rows that belong to them.
+export function fourSlotCohort(rows, readBlob, readBlobs) {
+  const files=rows.filter(row=>FOUR_SLOT_COHORT_FILES.test(row.path));
+  loadTexts(files.map(row=>row.blob),readBlob,readBlobs,smallText);
+  const hex=new Set(),names=new Set();
+  for(const row of files) {
+    const text=smallText.get(row.blob);
+    for(const m of text.matchAll(HEX64))hex.add(m[0]);
+    if(WHOLE_BANK_TOOLS.has(baseName(row.path)))for(const m of text.matchAll(SOURCE_NAME))names.add(m[0]);
+  }
+  const scope=sha([...hex].sort().join('\n')+'\u0001'+[...names].sort().join('\n'));
+  const uidIn=uid=>typeof uid==='string'&&uid.startsWith('qid_v1_')&&hex.has(uid.slice(7));
+  const named=record=>uidIn(record?.questionUid)||names.has(baseName(record?.sourceArchiveFile));
+  const picked=records=>{const list=records||[];return {count:list.length,rows:list.filter(named).map(record=>[record.questionUid,JSON.stringify(record)])};};
+  const metadata=new Map();let total=0;
   const meta=rows.find(row=>row.path===FOUR_SLOT_META);
-  if(meta)keep(memoHeavy(`meta|${meta.blob}|${scope}`,()=>cohortRows(JSON.parse(textOf(meta.blob)).records)));
-  else for(const row of rows)if(row.path.startsWith(FOUR_SLOT_META_SHARDS)&&row.path.endsWith('.json')&&!row.path.endsWith('/_head.json'))
-    keep(memoHeavy(`shard|${row.blob}|${scope}`,()=>cohortRows(JSON.parse(textOf(row.blob)))));
+  const metaSources=meta?[meta]:rows.filter(row=>row.path.startsWith(FOUR_SLOT_META_SHARDS)&&row.path.endsWith('.json')&&!row.path.endsWith('/_head.json'));
+  for(const row of metaSources) {
+    const got=memoHeavy(`meta|${row.blob}|${scope}`,()=>{const data=JSON.parse(Buffer.from(readBlob(row.blob)).toString('utf8'));return picked(meta?data.records:data);});
+    total+=got.count;for(const [uid,text] of got.rows)if(!metadata.has(uid))metadata.set(uid,text);
+  }
+  const uids=new Set([...metadata.keys()]);
+  for(const h of hex)uids.add('qid_v1_'+h);
+  const uidScope=sha([...uids].sort().join('\n'));
   const runtime=rows.filter(row=>row.path.startsWith(FOUR_SLOT_RUNTIME)&&row.path.endsWith('.json')&&row.path!==FOUR_SLOT_RUNTIME+'runtime-bridge-receipt.json')
-    .sort((a,b)=>a.path<b.path?-1:1).map(row=>memoHeavy(`runtime|${row.path}|${row.blob}|${scope}`,()=>{
-      const data=JSON.parse(textOf(row.blob));
-      return {path:row.path,status:data.status??null,packId:data.packId??null,rows:cohortRows(data.records).map(([,text])=>text)};
+    .sort((a,b)=>a.path<b.path?-1:1).map(row=>memoHeavy(`runtime|${row.path}|${row.blob}|${scope}|${uidScope}`,()=>{
+      const data=JSON.parse(Buffer.from(readBlob(row.blob)).toString('utf8'));
+      const chosen=(data.records||[]).filter(record=>uids.has(record?.questionUid)||named(record));
+      return {path:row.path,status:data.status??null,packId:data.packId??null,rows:chosen.map(record=>JSON.stringify(record))};
     }));
+  // compact 4칸 files: a metadata claim is the one thing that makes the builder read rows no text names
+  const compact=rows.filter(row=>row.path.startsWith(FOUR_SLOT_COMPACT)&&row.path.endsWith('.json'));
+  const unseen=compact.filter(row=>!claimFlag.has(row.blob));
+  if(unseen.length) {
+    const texts=new Map();loadTexts(unseen.map(row=>row.blob),readBlob,readBlobs,texts);
+    for(const row of unseen)claimFlag.set(row.blob,METADATA_CLAIM.test(texts.get(row.blob)));
+  }
+  const claimed=compact.some(row=>claimFlag.get(row.blob));
+  return {hex,names,uids,metadata,metadataTotal:total,runtime,claimed,metaSources,runtimeFiles:rows.filter(row=>row.path.startsWith(FOUR_SLOT_RUNTIME)&&row.path.endsWith('.json'))};
+}
+export function fourSlotDerivedInputs(rows, readBlob, readBlobs) {
+  const cohort=fourSlotCohort(rows,readBlob,readBlobs);
   const evidence=rows.filter(row=>row.path.startsWith(FOUR_SLOT_EVIDENCE)&&!TYPE_ONLY_EVIDENCE.test(row.path))
     .sort((a,b)=>a.path<b.path?-1:1).map(row=>`${row.path}\0${row.mode}\0${row.blob}`);
-  return sha(json({version:FOUR_SLOT_DERIVED_VERSION,cohortUids:wanted,
-    metadataRows:wanted.map(uid=>rowFor.get(uid)??null),runtime,evidence}));
+  // Fail closed: with a metadata claim in play the lane depends on metadata and runtime as a whole, exactly like the old whole-file inputs.
+  const whole=cohort.claimed?[...cohort.metaSources,...cohort.runtimeFiles].sort((a,b)=>a.path<b.path?-1:1).map(row=>`${row.path}\0${row.mode}\0${row.blob}`):null;
+  const uids=[...cohort.uids].sort();
+  return sha(json({version:FOUR_SLOT_DERIVED_VERSION,cohortUids:uids,metadataTotal:cohort.metadataTotal,
+    metadataRows:[...cohort.metadata.entries()].sort(([a],[b])=>a<b?-1:1).map(([,text])=>text),runtime:cohort.runtime,evidence,whole}));
 }
 // Refusal/pending records are named like their request, so .gitignore (for example `*textbook*`) can match them.
 // Those two directories alone are listed without the ignore rules; every other ignored file stays unlisted.
@@ -141,7 +208,7 @@ function rollbackStaged(root, allowed) {
 }
 
 const gitBlob=(root,blob)=>execFileSync('git',['cat-file','blob',blob],{cwd:root,maxBuffer:1<<30,stdio:['ignore','pipe','pipe']});
-export function nativeLanes(root,{readBlob=blob=>gitBlob(root,blob)}={}) {
+export function nativeLanes(root,{readBlob=blob=>gitBlob(root,blob),readBlobs=blobs=>readBlobsBatch(root,blobs)}={}) {
   const config=read(root,'.archive-meta-register/auto/config.json',{});
   const parentRetry=canonicalParentRetryRequests(root)[0]||null;
   const shared=specs(root,'tools/ci/archive-pages-registration.paths');
@@ -240,7 +307,7 @@ export function nativeLanes(root,{readBlob=blob=>gitBlob(root,blob)}={}) {
       // retryable, while validated ordinary exam publication can continue with the prior index.
       // question_metadata.json, the Meta Foundation runtime packs and the reviewed-exam-meta evidence are not listed as paths: the lane depends on
       // them only through its continuity cohorts, so derivedInputs() digests exactly those (fourSlotDerivedInputs above).
-      outputs:fourSlot,required:false,enabled:config.fourSlotEnabled!==false,derivedInputs:rows=>fourSlotDerivedInputs(rows,readBlob),
+      outputs:fourSlot,required:false,enabled:config.fourSlotEnabled!==false,derivedInputs:rows=>fourSlotDerivedInputs(rows,readBlob,readBlobs),
       commands:[cmd('bash','tools/ci/archive-four-slot-pass.sh')]}
   ];
 }

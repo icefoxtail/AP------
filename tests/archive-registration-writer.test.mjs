@@ -8,7 +8,7 @@ import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 import {recordRejection} from '../tools/ci/register-reviewed-meta-requests.mjs';
-import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,inputFingerprint,fingerprint,fourSlotDerivedInputs,TYPE_ONLY_EVIDENCE,STATE} from '../tools/ci/archive-registration-writer.mjs';
+import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,inputFingerprint,fingerprint,fourSlotDerivedInputs,fourSlotCohort,readBlobsBatch,TYPE_ONLY_EVIDENCE,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
 // replaced by small deterministic writers; their existing suites and real Actions remain separate evidence.
@@ -1050,7 +1050,8 @@ const typeReceipt='td-0123456789ab-01234567',typeLedger='tc-0123456789ab-89abcde
 const seedFourSlotFiles=()=>({
   'archive/exams/a.js':'// exam a v1\n','archive/data/item-4slot/a.4slot.json':{items:[]},'archive/data/question_identity_map.json':{records:[]},
   [cohortDoc(1)]:{questionUid:quid(1)},
-  [metaFile]:{records:[{questionUid:quid(1),problemType:'PT-A',templateId:'TPL-A'},{questionUid:quid(2),problemType:'PT-B',templateId:'TPL-B'}]},
+  [metaFile]:{records:[{questionUid:quid(1),problemType:'PT-A',templateId:'TPL-A'},{questionUid:quid(2),problemType:'PT-B',templateId:'TPL-B'},
+    {questionUid:quid(3),sourceArchiveFile:'original/middle/m1/other-exam.js',problemType:'PT-C'}]},
   [runtimeRoot+'pack-v1.json']:{status:'REGISTERED',packId:'pack-v1',records:[{questionUid:quid(1),pt:'PT-A'},{questionUid:quid(2),pt:'PT-B'}]},
   [runtimeRoot+'runtime-bridge-receipt.json']:{schemaVersion:'bridge-v1',checked:{}},
   [evidenceRoot+'sealed.json']:{approval:'immutable'}
@@ -1061,8 +1062,8 @@ function fourSlotWorld(files) {
     const text=typeof value==='string'?value:JSON.stringify(value),blob=hash(text).slice(0,40);blobs.set(blob,text);return {path:rel,mode:'100644',blob};
   });
   const readBlob=blob=>{if(!blobs.has(blob))throw Error('NO_SUCH_BLOB');return Buffer.from(blobs.get(blob));};
-  const lane=nativeLanes(realRepoRoot,{readBlob}).find(l=>l.id==='fourSlot');
-  return {state,lane,print:()=>inputFingerprint(rowsNow(),lane),set:(rel,value)=>{state.files[rel]=value;},drop:rel=>{delete state.files[rel];}};
+  const lane=nativeLanes(realRepoRoot,{readBlob,readBlobs:list=>new Map(list.map(blob=>[blob,readBlob(blob)]))}).find(l=>l.id==='fourSlot');
+  return {state,lane,rows:rowsNow,readBlob,print:()=>inputFingerprint(rowsNow(),lane),set:(rel,value)=>{state.files[rel]=value;},drop:rel=>{delete state.files[rel];}};
 }
 const copyOf=value=>JSON.parse(JSON.stringify(value));
 
@@ -1073,7 +1074,7 @@ test('fourSlot: a request that only changes problem types leaves the lane finger
   w.set(evidenceRoot+typeReceipt+'.json',{fieldScope:'TYPE_ONLY'});w.set(evidenceRoot+typeLedger+'.json',{rows:[]});
   w.set(evidenceRoot+'tr-0123456789ab-fedcba98.json',{fieldScope:'TYPE_ONLY'});
   assert.equal(w.print(),base,'type receipts and ledgers are not 4칸 inputs');
-  meta.records[1].problemType='PT-NEW';meta.records[1].templateId='TPL-NEW';meta.records.push({questionUid:quid(3),problemType:'PT-C'});w.set(metaFile,meta);
+  meta.records[1].problemType='PT-NEW';meta.records[1].templateId='TPL-NEW';meta.records[2].problemType='PT-NEW';w.set(metaFile,meta);
   assert.equal(w.print(),base,'PT/TPL of a question outside the 4slot cohorts is not read');
   pack.records[1].pt='PT-NEW';pack.records.push({questionUid:quid(3),pt:'PT-C'});w.set(runtimeRoot+'pack-v1.json',pack);
   assert.equal(w.print(),base,'runtime rows of non-cohort questions are not read');
@@ -1113,12 +1114,12 @@ test('fourSlot: everything 4칸 does read still starts the lane',()=>{
 
 test('fourSlot: sharded metadata is read like the single file, and an unreadable row starts the lane',()=>{
   const files=seedFourSlotFiles(),single=files[metaFile];delete files[metaFile];
-  const shard='archive/data/question-metadata/v1/shard-01.json';
-  files[shard]=single.records;files['archive/data/question-metadata/v1/_head.json']={shards:1};
+  const shard='archive/data/question-metadata/v1/shard-01.json',shard2='archive/data/question-metadata/v1/shard-02.json';
+  files[shard]=single.records.slice(0,1);files[shard2]=single.records.slice(1);files['archive/data/question-metadata/v1/_head.json']={shards:2};
   const w=fourSlotWorld(files),base=w.print();
-  w.set('archive/data/question-metadata/v1/shard-02.json',[{questionUid:quid(2),problemType:'PT-NEW'},{questionUid:quid(3),problemType:'PT-C'}]);
+  w.set(shard2,[{...single.records[1],problemType:'PT-NEW'},{...single.records[2],problemType:'PT-NEW'}]);
   assert.equal(w.print(),base,'a type change in a shard without cohort questions is not read');
-  w.set(shard,[{...single.records[0],problemType:'PT-CHANGED'},single.records[1]]);
+  w.set(shard,[{...single.records[0],problemType:'PT-CHANGED'}]);
   assert.notEqual(w.print(),base,'a cohort row inside a shard is read');
   const broken=fourSlotWorld(seedFourSlotFiles()),good=broken.print();
   broken.set(metaFile,'{broken');const first=broken.print();
@@ -1141,7 +1142,7 @@ test('fourSlot lane declares what 4칸 reads: no whole-file path for metadata, r
 test('fourSlot: a type-only registration commit is not needed for the lane, a cohort row change is',async t=>{
   const f=fixture(t);
   const readBlob=blob=>execFileSync('git',['cat-file','blob',blob],{cwd:f.root,maxBuffer:1<<28,stdio:['ignore','pipe','pipe']});
-  const native=nativeLanes(realRepoRoot,{readBlob}).find(l=>l.id==='fourSlot'),lane=f.lanes.find(l=>l.id==='fourSlot');
+  const native=nativeLanes(realRepoRoot,{readBlob,readBlobs:blobs=>readBlobsBatch(f.root,blobs)}).find(l=>l.id==='fourSlot'),lane=f.lanes.find(l=>l.id==='fourSlot');
   lane.inputs=[...native.inputs,'out/identity.json'];lane.derivedInputs=native.derivedInputs;
   for(const [rel,value] of Object.entries(seedFourSlotFiles()))if(!rel.startsWith('archive/exams/')&&rel!=='archive/data/item-4slot/a.4slot.json')write(f.root,rel,value);
   commit(f.root,'4slot cohort and metadata seed');await f.seedRegistered();
@@ -1174,20 +1175,120 @@ test('every reviewed-exam file the 4slot digest skips is a TYPE_ONLY receipt or 
   assert.deepEqual(bad.slice(0,10),[],'a skipped receipt that is not TYPE_ONLY would hide a real 4칸 input');
 });
 
-test('fourSlot: what the cohort modules observe is a lane input or one of the digested metadata sources',t=>{
-  // The existing-vector, m1s2, m3s2 and m3-e052 modules (the renderer module hashes about 2,700 tool files and takes a minute, so it is left out).
+// ---- row level: what the 4칸 modules read is what the fingerprint holds ----
+const worldWithTool=(toolText,extra={},toolName='cohort-fixture.cjs')=>fourSlotWorld({
+  ...seedFourSlotFiles(),['tools/4slot/'+toolName]:toolText,
+  [metaFile]:{records:[
+    {questionUid:quid(1),problemType:'PT-A'},
+    {questionUid:quid(2),sourceArchiveFile:'original/middle/m2/1final/bank-x.js',sourceOrdinal:1,difficultyBucket:2,standardUnit:'U1',problemType:'PT-B'},
+    {questionUid:quid(4),sourceArchiveFile:'original/middle/m2/1final/bank-x.js',sourceOrdinal:2,difficultyBucket:3,standardUnit:'U1',problemType:'PT-B'},
+    {questionUid:quid(5),sourceArchiveFile:'original/middle/m2/1final/bank-x.js',sourceOrdinal:3,difficultyBucket:3,standardUnit:'U2',problemType:'PT-B'},
+    {questionUid:quid(6),sourceArchiveFile:'original/middle/m1/other-exam.js',sourceOrdinal:1,difficultyBucket:3,standardUnit:'U9',problemType:'PT-C'},
+    {questionUid:quid(7),sourceArchiveFile:'original/middle/m1/other-exam.js',sourceOrdinal:2,difficultyBucket:1,standardUnit:'U9',problemType:'PT-C'}]},
+  ...extra});
+const editRow=(w,uid,patch)=>{const m=copyOf(w.state.files[metaFile]);Object.assign(m.records.find(r=>r.questionUid===uid),patch);w.set(metaFile,m);};
+
+test('fourSlot: a module that reads a whole exam bank puts every row of that bank into the fingerprint, not just the uids written in its text',()=>{
+  // like existing-registered-vector-svg7-derived-continuity: the bank is named once, its rows (75 of them, every field) are compared with the capture
+  const w=worldWithTool("const BANKS=new Map([['original/middle/m2/1final/bank-x.js',3]]);",{},'existing-registered-vector-svg7-derived-continuity.cjs'),base=w.print();
+  for(const [uid,patch,what] of [[quid(4),{difficultyBucket:5},'difficulty of a row no text names'],[quid(5),{standardUnit:'U3'},'unit of a row no text names'],
+    [quid(2),{problemType:'PT-NEW'},'a problem type inside the bank']]) {
+    const m=fourSlotWorld(copyOf(w.state.files));editRow(m,uid,patch);
+    assert.notEqual(m.print(),base,what+' changes what the module compares, so the lane must run');
+  }
+  const outside=fourSlotWorld(copyOf(w.state.files));editRow(outside,quid(6),{difficultyBucket:5,standardUnit:'U8',problemType:'PT-NEW'});
+  assert.equal(outside.print(),base,'a row of an exam no module names stays out');
+  const grown=fourSlotWorld(copyOf(w.state.files)),m=copyOf(grown.state.files[metaFile]);m.records.push({questionUid:quid(8),problemType:'PT-C'});grown.set(metaFile,m);
+  assert.notEqual(grown.print(),base,'the module also pins the global row count');
+});
+
+test('fourSlot: an exam that only a doc or a by-uid module mentions is not a whole bank, so its other rows stay out',()=>{
+  // the registration docs and uid-level modules (renderer, vector, m1s2, m3s2, q5) name the exam of their one question and read that one row
+  const w=worldWithTool("const NOTE='see original/middle/m2/1final/bank-x.js';",{['.archive-meta-register/4slot-renderer-continuity/'+quid(2)+'.json']:{questionUid:quid(2),sourceArchiveFile:'original/middle/m2/1final/bank-x.js'}}),base=w.print();
+  editRow(w,quid(4),{difficultyBucket:5,standardUnit:'U3',problemType:'PT-NEW'});
+  assert.equal(w.print(),base,'a row of the same exam that the module does not read is not in the fingerprint');
+  editRow(w,quid(2),{difficultyBucket:5});
+  assert.notEqual(w.print(),base,'the row the doc names is');
+});
+
+test('fourSlot: a uid written in pieces is found, and a metadata claim in a compact file makes the digest whole-file again',()=>{
+  // m1s2-problem-renderer-continuity writes 'qid_v1_'+hash
+  const split=worldWithTool("const UIDS=['"+'0'.repeat(63)+"6'].map(x=>'qid_v1_'+x);"),base=split.print();
+  editRow(split,quid(6),{standardUnit:'U8'});
+  assert.notEqual(split.print(),base,'the piecewise uid is read by its hash');
+  const plain=worldWithTool('// nothing named here');const clean=plain.print();editRow(plain,quid(6),{standardUnit:'U8'});
+  assert.equal(plain.print(),clean,'without a claim an unnamed row is not read');
+  // verify-hold-metadata-replay.mjs reads rows no text names; it runs only for a compact file with this claim
+  const claimed=worldWithTool('// nothing named here',{'archive/data/item-4slot/original/x.4slot.json':{items:[{registrationHold:{metadataTransportEvidence:{path:'docs/x.json'}}}]}});
+  const before=claimed.print();editRow(claimed,quid(6),{standardUnit:'U8'});
+  assert.notEqual(claimed.print(),before,'with a claim any metadata row can matter');
+  const runtimeSide=worldWithTool('// nothing named here',{'archive/data/item-4slot/original/x.4slot.json':{evidence:{nativeHoldReview:{metadataContinuity:{}}}}});
+  const rb=runtimeSide.print(),pack=copyOf(runtimeSide.state.files[runtimeRoot+'pack-v1.json']);pack.records[1].pt='PT-NEW';runtimeSide.set(runtimeRoot+'pack-v1.json',pack);
+  assert.notEqual(runtimeSide.print(),rb,'and any runtime row');
+});
+
+// The 13 files in tools/4slot that name question_metadata, a runtime pack or reviewed-exam evidence. A new reader fails this test until its
+// scope is added to the table in archive-registration-writer.mjs and to the observation test below.
+const FOUR_SLOT_DATA_READERS=['existing-registered-vector-continuity.cjs','existing-registered-vector-svg7-derived-continuity.cjs','existing-registered-vector-svg7-ui.cjs',
+  'import-4slot.cjs','m1s2-problem-renderer-continuity.cjs','m1s2-problem-renderer-ui.cjs','m3-e052-q5-complete-given-continuity.cjs','m3-e052-q5-complete-given-continuity.mjs',
+  'm3s2-layout-continuity.cjs','original-source-error-hold.cjs','registered-renderer-continuity.cjs','registered-renderer-continuity.mjs','verify-hold-metadata-replay.mjs'];
+test('fourSlot: no tools/4slot file reads metadata, runtime or reviewed-exam rows without being in the reviewed table',()=>{
+  const dir=path.join(realRepoRoot,'tools','4slot');
+  const readers=fs.readdirSync(dir).filter(name=>/\.(?:cjs|mjs|js)$/.test(name)&&/question_metadata|meta-foundation\/runtime|reviewed-exam-meta|question-metadata\/v1/.test(fs.readFileSync(path.join(dir,name),'utf8'))).sort();
+  assert.deepEqual(readers,[...FOUR_SLOT_DATA_READERS].sort(),'a new or renamed reader needs its scope reviewed (see the table in archive-registration-writer.mjs)');
+});
+
+function realMetadataRecords() {
+  const single=path.join(realRepoRoot,metaFile);
+  if(fs.existsSync(single))return JSON.parse(fs.readFileSync(single,'utf8')).records;
+  const shardDir=path.join(realRepoRoot,'archive/data/question-metadata/v1');
+  return fs.readdirSync(shardDir).filter(n=>n.endsWith('.json')&&n!=='_head.json').flatMap(n=>JSON.parse(fs.readFileSync(path.join(shardDir,n),'utf8')));
+}
+test('fourSlot: every metadata row the 4칸 modules actually read is a row of the fingerprint, and changing one of them changes it',{timeout:600000},t=>{
   const require=createRequire(import.meta.url),builder=require('../tools/4slot/build-4slot-runtime.cjs');
   const walk=d=>!fs.existsSync(d)?[]:fs.readdirSync(d,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name,'en')).flatMap(e=>{const p=path.join(d,e.name);return e.isDirectory()?walk(p):[p];});
-  const lane=nativeLanes(realRepoRoot).find(l=>l.id==='fourSlot');
-  // docs/operations holds immutable UI proof files that the q5 module hashes; they were not lane inputs before this change either.
-  const digested=p=>p===metaFile||p.startsWith(runtimeRoot)||p.startsWith('archive/data/meta-foundation/evidence/reviewed-exam-meta/');
-  const known=/^docs\/operations\//;
-  const uncovered=new Set();
-  for(const name of ['existing-registered-vector-continuity','m1s2-problem-renderer-continuity','m3s2-layout-continuity','m3-e052-q5-complete-given-continuity']) {
-    const map=require('../tools/4slot/'+name+'.cjs').collect(realRepoRoot,{safe:builder.safe,walk,sha:hash});
-    for(const [,list] of map)for(const entry of list)for(const [p] of entry.digests||[])
-      if(!matches(p,lane.inputs)&&!digested(p)&&!known.test(p))uncovered.add(name+': '+p);
+  const gitBlob=blob=>execFileSync('git',['cat-file','blob',blob],{cwd:realRepoRoot,maxBuffer:1<<30,stdio:['ignore','pipe','pipe']});
+  const rows=execFileSync('git',['ls-files','--stage','-z'],{cwd:realRepoRoot,encoding:'utf8',maxBuffer:1<<28}).split('\0').filter(Boolean).map(r=>{const m=/^(\d+) ([0-9a-f]{40}) \d\t([\s\S]+)$/.exec(r);return {path:m[3],mode:m[1],blob:m[2]};});
+  const cohort=fourSlotCohort(rows,gitBlob,list=>readBlobsBatch(realRepoRoot,list));
+  const covered=(uid,why)=>{assert.ok(cohort.uids.has(uid),`${why}: ${uid} is not among the fingerprint's questions`);};
+  // 1. the questions and exams the modules export or collect (the renderer module hashes about 2,700 tool files and takes a minute, so its documents are read directly)
+  const m1=require('../tools/4slot/m1s2-problem-renderer-continuity.cjs'),m3=require('../tools/4slot/m3s2-layout-continuity.cjs'),q5=require('../tools/4slot/m3-e052-q5-complete-given-continuity.cjs'),
+    hold=require('../tools/4slot/original-source-error-hold.cjs');
+  for(const s of m1.SUBJECTS)covered(s.questionUid,'m1s2 subject');
+  for(const [name,mod] of [['m3s2',m3],['q5',q5],['original-source-error-hold',hold]])covered(mod.UID,name+' question');
+  const records=realMetadataRecords(),byUid=new Map(records.map(r=>[r.questionUid,r]));
+  // these read their own row (original-source-error-hold: the row of UID, found by uid or by exam+ordinal), compared whole with what was issued
+  for(const [name,mod] of [['m3s2',m3],['q5',q5],['original-source-error-hold',hold]]) {
+    const own=byUid.get(mod.UID);
+    assert.ok(own&&own.sourceArchiveFile===mod.SOURCE&&own.sourceOrdinal===mod.ORDINAL,name+': its question is a metadata row at its exam and ordinal');
+    assert.equal(cohort.metadata.get(mod.UID),JSON.stringify(own),name+': the row it compares is in the fingerprint');
   }
-  assert.deepEqual([...uncovered].slice(0,10),[]);
+  for(const name of ['existing-registered-vector-continuity','m1s2-problem-renderer-continuity','m3s2-layout-continuity','m3-e052-q5-complete-given-continuity'])
+    for(const [,list] of require('../tools/4slot/'+name+'.cjs').collect(realRepoRoot,{safe:builder.safe,walk,sha:hash}))
+      for(const entry of list){covered(entry.questionUid,name+' entry');assert.equal(cohort.metadata.get(entry.questionUid),JSON.stringify(byUid.get(entry.questionUid)),name+': the row it compares is in the fingerprint');}
+  for(const file of rows.filter(r=>/^\.archive-meta-register\/4slot-[^/]+\/[^/]+\.json$/.test(r.path))) {
+    const doc=JSON.parse(gitBlob(file.blob).toString('utf8'));
+    if(typeof doc.questionUid==='string')covered(doc.questionUid,file.path);
+  }
+  // 2. the whole-bank reader: its 75 rows, every field, are the rows it compares
+  const svg7=require('../tools/4slot/existing-registered-vector-svg7-derived-continuity.cjs');
+  const projected=svg7.projectTableRows(fs.existsSync(path.join(realRepoRoot,metaFile))?fs.readFileSync(path.join(realRepoRoot,metaFile)):Buffer.from(JSON.stringify({schemaVersion:'archive-question-metadata-v1',records})),'archive-question-metadata-v1');
+  assert.equal(projected.rows.length,75);
+  for(const row of projected.rows)assert.equal(cohort.metadata.get(row.questionUid),JSON.stringify(row),'svg7 whole-bank row '+row.questionUid);
+  assert.equal(cohort.metadataTotal,records.length,'the global row count is part of the fingerprint');
+  // 3. negative: a difficulty / unit change inside that bank, in a row no text names, must change the fingerprint
+  const named=new Set([...cohort.hex].map(h=>'qid_v1_'+h)),victim=projected.rows.find(r=>!named.has(r.questionUid));
+  assert.ok(victim,'the bank has rows that no text names, which is what this guards');
+  const base=fourSlotDerivedInputs(rows,gitBlob,list=>readBlobsBatch(realRepoRoot,list));
+  const sources=rows.filter(r=>r.path===metaFile||(r.path.startsWith('archive/data/question-metadata/v1/')&&r.path.endsWith('.json')&&!r.path.endsWith('/_head.json')));
+  let target,text;
+  for(const s of sources) {
+    const doc=JSON.parse(gitBlob(s.blob).toString('utf8')),list=Array.isArray(doc)?doc:doc.records,i=list.findIndex(r=>r.questionUid===victim.questionUid);
+    if(i>=0){list[i]={...list[i],difficultyBucket:(list[i].difficultyBucket%5)+1,standardUnit:'changed-unit'};target=s;text=JSON.stringify(doc);break;}
+  }
+  assert.ok(target,'the victim row is in a metadata file');
+  const blob=hash(text).slice(0,40);
+  const changed=fourSlotDerivedInputs(rows.map(r=>r===target?{...r,blob}:r),b=>b===blob?Buffer.from(text):gitBlob(b),list=>new Map(list.map(b=>[b,b===blob?Buffer.from(text):gitBlob(b)])));
+  assert.notEqual(changed,base,'changing difficulty and unit of a whole-bank row no text names changes the fingerprint');
   void t;
 });
