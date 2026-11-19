@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-5ea36c7e706f-679f855c",
+  "examUid": "22_풍덕중_1학기_중간_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+  "expectedSourceBlobSha1": "377d242e1733cf882c789ace0abfd242f58686a5",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5ea36c7e706f-679f855c.type-ledger.json",
+        "sha256": "562490acbfc1eeffbb7cc2e94806078b9673978e800e34f9fe0d3e2f1daa94d2"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ac3f132f419933a4d76431085ae93c414928e28f6c5a3ecb66112e1dcdeb3ce2",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION"
+      },
+      "rationale": "완전제곱과 합차공식의 항을 대응해 빈칸12,36,6.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "62b441d7e3c840bef248a47ec6d0edad23932e5341581d86336f3a527798ed15",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-5ea36c7e706f-679f855c.type-ledger.json",
+          "sha256": "562490acbfc1eeffbb7cc2e94806078b9673978e800e34f9fe0d3e2f1daa94d2"
+        }
+      ]
+    }
+  ]
+}
