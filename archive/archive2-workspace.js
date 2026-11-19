@@ -637,6 +637,11 @@
         await openQuickAssessment("all");
       } else if (a === "quick-open-selected") {
         await openQuickAssessment([...quickState.bundle]);
+      } else if (a === "quick-open-b") {
+        // The second window of an A·B pair cannot open with the same click everywhere; this click opens it.
+        const formB = quickState.formB;
+        if (formB?.url && window.open(formB.url, "_blank")) { quickState.formB = null; status(`${formB.title}를 열었습니다.`); render(); }
+        else status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true);
       } else if (a === "quick-grade") {
         quickState.grade = b.dataset.grade || "";
         quickState.subject = "";
@@ -1036,6 +1041,12 @@
         render();
         return;
       }
+      if (isQuickAssessmentView() && el.dataset.quickTwoForms !== undefined) {
+        quickState.twoForms = Boolean(el.checked);
+        quickState.formB = null;
+        render();
+        return;
+      }
       if (isQuickAssessmentView() && el.dataset.quickBundle) {
         if (el.checked) quickState.bundle.add(el.dataset.quickBundle);
         else quickState.bundle.delete(el.dataset.quickBundle);
@@ -1199,9 +1210,7 @@
       el.type === "checkbox" ? el.checked : el.value;
     if (el.dataset.header === "title") {
       state.title = el.value;
-      const heading = document.querySelector(".intro h1");
-      if (heading?.firstChild)
-        heading.firstChild.textContent = state.title + " ";
+      syncComposeHeading();
     }
     state.prepared = [];
     scheduleSave();
@@ -1214,6 +1223,11 @@
     if (target?.matches?.("[data-cz-output]")) state.outputSettingsOpen = Boolean(target.open);
     else if (target?.matches?.("[data-scope-group]")) state.scopeGroupOpen[target.dataset.scopeGroup] = Boolean(target.open);
   }, true);
+  // 제목을 바꾸면 화면 맨 위 제목도 바로 새 이름을 보여 준다(출력 설정의 제목 칸과 머리글 칸 모두).
+  function syncComposeHeading() {
+    const heading = document.querySelector(".intro h1");
+    if (heading?.firstChild) heading.firstChild.textContent = state.title + " ";
+  }
   function changeOutput(el) {
     if (state.busy) return;
     if (
@@ -1237,6 +1251,7 @@
         includeQr: s.includeQr,
       });
       state.title = s.header.title;
+      syncComposeHeading();
       state.prepared = [];
       scheduleSave();
       refreshComposeSaveContinuity();
