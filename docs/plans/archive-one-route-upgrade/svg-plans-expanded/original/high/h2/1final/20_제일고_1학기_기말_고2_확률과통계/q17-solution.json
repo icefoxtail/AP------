@@ -1,0 +1,105 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄴ: A가 B 안에 있고 독립이면 B가 전체"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "P(A)",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "1−P(A)",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "0",
+              "in": []
+            }
+          ],
+          "shade": "A",
+          "subset": [
+            "A",
+            "B"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ의 반례: 서로 배반"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1/4",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "0",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "1/2",
+              "in": [
+                "B"
+              ]
+            },
+            {
+              "text": "1/4",
+              "in": []
+            }
+          ],
+          "shade": "A∩B"
+        }
+      }
+    }
+  ],
+  "caption": "ㄱ은 P(A)=P(A∩B)+P(A∩B의 여사건), P(B)=P(A∩B)+P(B∩A의 여사건)에서 두 차집합의 확률이 같으면 P(A)=P(B)이므로 참이다. ㄴ은 왼쪽 그림이다. A가 B 안에 있고 독립이면 P(A)=P(A)P(B)에서 P(B)=1이므로 B 밖(0)에는 원소가 없어 B가 표본공간 전체이고 A∪B=S이다(참). ㄷ은 오른쪽 그림의 반례로, 서로 배반이면 P(A|B)=P(B|A)=0이지만 P(A)=1/4, P(B)=1/2로 다르다(거짓). 따라서 ㄱ, ㄴ만 옳고 답은 ②이다.",
+  "accessibilityDescription": "벤다이어그램 두 개가 나란히 있다. 왼쪽은 A가 B 안에 포함되고 B 밖이 0이며 A가 색칠되어 있고, 오른쪽은 A와 B가 겹치지 않고 겹침이 0으로 적혀 있다.",
+  "newVisualInformation": [
+    "A가 B 안에 있고 독립이면 B가 전체가 되는 경우와 배반이면서 확률이 서로 다른 반례가 두 그림으로 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "유한 등확률 표본공간 $S$에서 공사건이 아닌 두 사건 $A, B$에 대하여 다음 보기 중 옳은 것만을 있는 대로 고른 것은? [4.7점]<br><br><div class=\"exam-box\">&lt;보기&gt;<br>ㄱ. $P(A \\cap B^c)=P(B \\cap A^c)$이면 $P(A)=P(B)$이다.<br>ㄴ. $A \\subset B$이고 $A, B$가 서로 독립이면 $A \\cup B = S$이다.<br>ㄷ. $P(A|B)=P(B|A)$이면 $P(A)=P(B)$이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

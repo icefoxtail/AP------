@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1/9",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "0",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "2/3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "2/9",
+        "in": []
+      }
+    ],
+    "shade": "(A∪B)^c"
+  },
+  "caption": "B와 C가 독립이므로 B의 여사건과 C도 독립이어서 1/12=P(B의 여사건)×1/4에서 P(B의 여사건)=1/3, P(B)=2/3이다. A와 B가 배반이어서 그림의 겹침은 0이고, 색칠한 바깥이 A의 여사건과 B의 여사건의 교집합 2/9이다. 따라서 P(A)=1−2/3−2/9=1/9이고 답은 ②이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B의 벤다이어그램이며 A에 1/9, 겹침에 0, B에 2/3, 바깥에 2/9가 적혀 있고 바깥이 색칠되어 있다.",
+  "newVisualInformation": [
+    "A와 B가 겹치지 않고 바깥 2/9와 B의 2/3가 보여 P(A)=1−2/3−2/9의 근거가 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 사건 $A, B, C$에 대하여 $A, B$는 서로 배반이고, $B, C$는 서로 독립 일 때, $P(A^c \\cap B^c)=\\frac{2}{9}$, $P(B^c \\cap C)=\\frac{1}{12}$, $P(C)=\\frac{1}{4}$이다. $P(A)$를 구하면? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
