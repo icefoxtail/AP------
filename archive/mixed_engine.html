@@ -873,9 +873,17 @@ function loadScriptOnce(src) {
 async function loadAssessmentPackFallback(packId) {
     const id = String(packId || '').trim();
     if (!id) return null;
-    await loadScriptOnce('assessment/assessment-packs-1sem.generated.js');
-    const packs = window.APMATH_ASSESSMENT_PACKS_1SEM?.packs || [];
-    const pack = packs.find(item => String(item?.id || '') === id);
+    // 평가팩 자료 파일들: 1학기 팩 → 2학기 기말 모의고사 팩 순으로 찾는다. 파일이 없으면 다음 파일로 넘어간다.
+    const sources = [
+        ['assessment/assessment-packs-1sem.generated.js', () => window.APMATH_ASSESSMENT_PACKS_1SEM],
+        ['assessment/assessment-packs-2sem-final-mock.generated.js', () => window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL]
+    ];
+    let pack = null;
+    for (const [src, getData] of sources) {
+        try { await loadScriptOnce(src); } catch (error) { continue; }
+        pack = (getData()?.packs || []).find(item => String(item?.id || '') === id) || null;
+        if (pack) break;
+    }
     if (!pack || !Array.isArray(pack.questions) || !pack.questions.length) return null;
     return {
         questions: pack.questions.map(question => ({ ...question })),
