@@ -1,0 +1,51 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "희석 당첨",
+          "p": "1/4",
+          "children": [
+            {
+              "label": "금석 당첨",
+              "p": "4/19"
+            },
+            {
+              "label": "금석 꽝",
+              "p": "15/19"
+            }
+          ]
+        },
+        {
+          "label": "희석 꽝",
+          "p": "3/4",
+          "children": [
+            {
+              "label": "금석 당첨",
+              "p": "5/19"
+            },
+            {
+              "label": "금석 꽝",
+              "p": "14/19"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true
+  },
+  "caption": "제비를 다시 넣지 않으므로 첫 번째 결과에 따라 두 번째 확률이 달라진다. P(A)=5/20=1/4이다(ㄱ 참). 둘 다 당첨인 경로는 1/4×4/19=1/19이다(ㄴ 참). 희석이 꽝이고 금석이 당첨인 경로는 3/4×5/19=15/76이다(ㄷ 참). 세 진술이 모두 옳아 답은 ⑤이다.",
+  "accessibilityDescription": "희석이의 당첨과 꽝으로 갈라지고 각각 금석이의 당첨과 꽝으로 이어지는 확률이 적힌 수형도이다.",
+  "newVisualInformation": [
+    "첫 결과에 따라 두 번째 확률이 4/19, 5/19로 달라지고 세 진술의 경로 확률이 모두 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5개의 당첨 제비를 포함하여 20개의 제비가 들어 있는 상자에서 희석이와 금석이가 차례로 제비를 1개씩 임의로 뽑는다고 한다. (단, 한 번 뽑은 제비는 다시 넣지 않음.)<br>다음 &lt;보기&gt;에서 옳은 것을 모두 고르면? [3.6점]<br><br><div class=\"exam-box\">&lt;보기&gt;<br>희석이와 금석이가 당첨 제비를 뽑는 사건을 각각 $A$, $B$라고 할 때,<br>ㄱ. $P(A)=\\frac{1}{4}$이다.<br>ㄴ. $P(A \\cap B)=\\frac{1}{19}$이다.<br>ㄷ. $P(A^c \\cap B)=\\frac{15}{76}$이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
