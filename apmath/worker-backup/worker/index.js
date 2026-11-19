@@ -8,7 +8,7 @@
 import { handleEnrollments } from './routes/enrollments.js';
 import { handleClassTimeSlots } from './routes/class-time-slots.js';
 import { handleTimetableConflicts } from './routes/timetable-conflicts.js';
-import { handleTimetableVersions } from './routes/timetable-versions.js';
+import { handleTimetableVersions, runScheduledTimetableActivation } from './routes/timetable-versions.js';
 import { handleTimetableMonths, saveCurrentMonthTimetableArchive } from './routes/timetable-months.js';
 import { handleFoundationSync } from './routes/foundation-sync.js';
 import { handleBillingFoundation } from './routes/billing-foundation.js';
@@ -3211,6 +3211,13 @@ export default {
     if (cron !== '5 15 * * *') {
       tasks.push(saveCurrentMonthTimetableArchive(env, scheduledAt)
         .then(result => console.log('[timetable-months] scheduled archive', result))
+      );
+    }
+    // 매일 KST 0:05: 적용일이 된 "적용 예약(scheduled)" 개편안을 운영 시간표에 반영한다. draft는 건드리지 않는다.
+    // 다른 예약 작업과는 Promise.allSettled로 분리되어 서로의 성공·실패에 영향이 없다.
+    if (cron === '5 15 * * *' || !cron) {
+      tasks.push(runScheduledTimetableActivation(env, scheduledAt)
+        .then(result => console.log('[timetable-versions] scheduled activation', result))
       );
     }
     const task = Promise.allSettled(tasks).then(results => {
