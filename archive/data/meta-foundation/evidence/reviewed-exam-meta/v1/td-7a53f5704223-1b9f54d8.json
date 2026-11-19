@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-7a53f5704223-1b9f54d8",
+  "requestSha256": "71709decb9f780f36495d46a10f1b0b8bee56c062cdad6742a89c294de33a232",
+  "examUid": "24_왕운중_1학기_중간_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_왕운중_1학기_중간_중3_기출.js",
+  "sourceBlobSha1": "770fbb38672fa3d1b8227eab8ea6ff08d51d9f14",
+  "sourceRawSha256": "ecd952f3d7408bcb3c29efcef40ac4c8beae868c6949ce89a8ec4c473ec60468",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7a53f5704223-1b9f54d8.type-ledger.json",
+        "sha256": "caba019e6548d48e3ebf2fe17fdad9c57cd0d768eaf5fb1166829ee7abf36150"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e3537abbbeb0833c79c551caf0030f6f256b702fc2335307b3f78522395c9568",
+      "sourceArchiveFile": "original/middle/m3/1mid/24_왕운중_1학기_중간_중3_기출.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-7a53f5704223-1b9f54d8",
+        "judge": "dots",
+        "rationale": "계수 비교로 빗변5,밑변1을 얻은 뒤 높이√24와 삼각형 넓이를 계산.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "53348f792e8b6c7fe0502ec17fec4271cba10df4ac0448d70a7d6d6e0d1980d6",
+        "judgedContentFingerprint": "d302b07186fb1f30779633e1118bd50080739826f60fa2662320f1bc88f663ef",
+        "rowBinding": "content",
+        "textBindingFingerprint": "47c0e94801b69602fce8901c86398eb51ab192786c0366b7e7c5aaccdc187231",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-7a53f5704223-1b9f54d8.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

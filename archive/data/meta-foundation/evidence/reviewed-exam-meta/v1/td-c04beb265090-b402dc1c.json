@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-c04beb265090-b402dc1c",
+  "requestSha256": "4c59fde6c36e87bd62113eb3bb4c7ab393287608ab9266ac3a9c5281ea35460e",
+  "examUid": "25_풍덕중_1학기_기말_중3_기출c",
+  "sourceArchiveFile": "original/middle/m3/1final/25_풍덕중_1학기_기말_중3_기출c.js",
+  "sourceBlobSha1": "5e9aab29072f2af15703825408bc4578f4e2b03c",
+  "sourceRawSha256": "5393c68e9dd74895ffcbdb2c13d030e21a86c5f7b02c7227839b57114ff8cdab",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c04beb265090-b402dc1c.type-ledger.json",
+        "sha256": "c50ed2c306effb6e1bf4b9528f585e29e26f71ea5630a8a3cda0bd38f562c819"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_43f4c9b342dbd44d7bff54708482dbdcc75f386335ae208c5e9060dcd9933930",
+      "sourceArchiveFile": "original/middle/m3/1final/25_풍덕중_1학기_기말_중3_기출c.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-c04beb265090-b402dc1c",
+        "judge": "dots",
+        "rationale": "최장변2x+3을 빗변으로 세 변의 제곱 관계를 세워 x>1인 근을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "b69cd94ccef012ff81c942f94c25845511d5eaa71816bd71ca400b966a97a427",
+        "judgedContentFingerprint": "72160c27036b24fe3d6496afc52a06a3d460abe831321f1bc39ca0eb99a883a0",
+        "rowBinding": "content",
+        "textBindingFingerprint": "61ffc19e357fa1198bc7a92ddf35a749b4e6ab48722c86ff7dc8a9cddea256f3",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-c04beb265090-b402dc1c.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}
