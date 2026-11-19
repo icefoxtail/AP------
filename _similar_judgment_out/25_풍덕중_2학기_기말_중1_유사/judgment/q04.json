@@ -1,0 +1,59 @@
+{
+  "qid": 4,
+  "itemFingerprint": "4cec399f39cf8890",
+  "solveSteps": [
+    "각기둥의 전개도에서 옆면은 하나의 큰 직사각형 4으로 펼쳐진다.",
+    "옆면의 세로의 길이는 각기둥의 높이 4와 같다.",
+    "옆면의 가로의 길이는 밑면의 둘레의 길이와 일치한다.",
+    "한 변의 길이와 같다고 한 ④는 옳지 않다. 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "각기둥의 겉넓이와 전개도에 대한 설명 중",
+  "rpmRecordId": "M1-RPM-212",
+  "rpmEvidence": "기둥의 겉넓이와 전개도의 성질을 확인한다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+  "typeReason": "각기둥의 겉넓이와 전개도 상의 치수 관계 진술을 검토하는 4 유형이다.",
+  "rpmReason": "기둥의 겉넓이와 전개도 치수 성질을 판별하는 4 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "각기둥 전개도의 구조와 겉넓이 개념을 확인하는 표준적인 4 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "전개도",
+        "quote": "각기둥의 겉넓이와 전개도에 대한 설명 중",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "quote": "설명 중 옳지 않은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "겉넓이",
+        "quote": "기둥의 겉넓이와 전개도의 성질을 확인한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "겉넓이",
+        "quote": "기둥의 겉넓이는 두 밑면의 넓이와 옆면의 넓이를",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "각기둥 전개도에서 옆면의 가로 길이가 밑면의 둘레 길이와 같아야 함을 4 검토했다."
+}

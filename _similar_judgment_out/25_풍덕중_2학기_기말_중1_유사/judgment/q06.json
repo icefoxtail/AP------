@@ -1,0 +1,59 @@
+{
+  "qid": 6,
+  "itemFingerprint": "0bb23675ea34aed7",
+  "solveSteps": [
+    "밑면의 반지름 3 cm, 높이 7 cm로 같은 원뿔의 부피는 원기둥 부피의 1/3이다.",
+    "원뿔의 부피 = (1/3) * pi * 3^2 * 7 = (1/3) * pi * 9 * 7 = 21*pi cm^3.",
+    "원뿔에 채운 모래를 원기둥에 부었으므로 모래의 부피는 원뿔의 부피인 21*pi cm^3이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "원뿔 모양의 그릇에 모래를 가득 채워",
+  "rpmRecordId": "M1-RPM-215",
+  "rpmEvidence": "원뿔의 부피는 밑면의 넓이와 높이가 같은 원기둥 부피의",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+  "typeReason": "원뿔과 원기둥의 부피 비율 관계를 이용하여 채워진 모래 부피 cm를 구하는 유형이다.",
+  "rpmReason": "뿔의 기본 부피 cm 공식을 적용하여 계산하는 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "원뿔의 부피 공식을 직접 대입하여 21pi cm^3를 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "원뿔",
+        "quote": "원뿔 모양의 그릇에 모래를 가득 채워",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부피",
+        "quote": "이 원뿔의 부피는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원뿔",
+        "quote": "원뿔의 부피는 밑면의 넓이와 높이가 같은 원기둥 부피의",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부피",
+        "quote": "원기둥의 부피 $V_{\\text{원기둥}}$은",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "밑면 반지름 3 cm, 높이 7 cm 원뿔의 부피 (1/3)*pi*3^2*7=21pi cm^3를 aligned 계산했다."
+}

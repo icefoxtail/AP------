@@ -1,0 +1,59 @@
+{
+  "qid": 15,
+  "itemFingerprint": "840fbc46c06ee5e4",
+  "solveSteps": [
+    "계급의 크기는 140 - 120 = 20 cm 이다.",
+    "도수가 가장 큰 계급은 도수가 10명인 140 cm 이상 160 cm 미만 계급이다.",
+    "⑤의 진술을 확인하여 옳지 않은 설명을 고른다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "다음 도수분포표는 어느 학급 학생 $25$명의",
+  "rpmRecordId": "M1-RPM-229",
+  "rpmEvidence": "도수분포표의 기본 성질을 검토한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "NONE",
+  "typeReason": "도수분포표에서 계급의 크기와 최대 도수 계급을 읽어내는 25 유형이다.",
+  "rpmReason": "도수분포표의 기본 항목과 도수 분포를 해석하는 25 RPM 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "도수분포표를 직접 읽어 참·거짓을 판별하는 25 기본 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포표",
+        "quote": "다음 도수분포표는 어느 학급 학생 $25$명의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계급",
+        "quote": "다음 설명 중 옳지 않은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "도수분포표",
+        "quote": "도수분포표의 기본 성질을 검토한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도수",
+        "quote": "도수가 가장 큰 계급은",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "도수분포표에서 최대 도수 10명이 140~160 cm 계급에 속함을 25 확인했다."
+}

@@ -1,0 +1,59 @@
+{
+  "qid": 10,
+  "itemFingerprint": "4bf8c97db931db4c",
+  "solveSteps": [
+    "원뿔 모양 고깔모자는 밑면이 뚫려 있으므로 겉넓이는 옆넓이(부채꼴의 넓이)와 같다.",
+    "원뿔의 옆넓이 공식 S = pi * r * l 에 r = 6 cm, l = 15 cm 를 대입한다.",
+    "S = pi * 6 * 15 = 90*pi cm^2 이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "밑면의 반지름의 길이가 $6\\rm\\,cm$이고",
+  "rpmRecordId": "M1-RPM-214",
+  "rpmEvidence": "고깔모자는 밑면이 뚫려 있으므로 부채꼴 모양의 옆넓이만",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+  "typeReason": "밑면이 뚫린 원뿔의 옆넓이 cm 공식을 적용하는 전개도 측정 유형이다.",
+  "rpmReason": "원뿔의 전개도 부채꼴 넓이 cm 공식을 이용한 뿔의 겉넓이 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "옆넓이 공식 pi*r*l에 대입하여 90pi cm^2를 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "원뿔",
+        "quote": "밑면의 반지름의 길이가 $6\\rm\\,cm$이고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "quote": "이 고깔모자의 겉넓이(옆넓이)는? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원뿔",
+        "quote": "고깔모자는 밑면이 뚫려 있으므로 부채꼴 모양의 옆넓이만",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "겉넓이",
+        "quote": "원뿔의 옆넓이 $S$는 밑면의 반지름 $r$와",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "밑면 반지름 6 cm, 모선 15 cm인 원뿔의 옆넓이 pi*6*15=90pi cm^2를 aligned 계산했다."
+}
