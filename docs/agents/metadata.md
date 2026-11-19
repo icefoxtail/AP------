@@ -3,6 +3,17 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## CURRENT — 새 문항 메타는 최소 한 벌 (2026-11-19, 사용자 승인)
+
+- **작성자가 고르는 것:** `curriculum`(2015/2022), `standardUnitKey`·`subUnitKey`, `rpmPrimaryRecordId`(단수), `problemTypeKey`·`templateKey`, `difficultyBucket`(정수 1~5), `crossConceptKeys`·`conditionKeys`·`integrationPattern`, 4칸(`item-4slot/**` 별도 파일). 식별자와 결속 지문(발문+보기)은 기계가 만든다.
+- **도구가 채우는 것:** `rpmL1~rpmL4`는 등록기가 번호의 크로스워크 행에서 채운다(아래 "등록기 최소 한 벌"). 단원·소단원 라벨·순서는 키에서 정해지는 값이므로 마스터 글자를 바꾸지 않는다(하네스가 채우고, 하네스가 없는 라인은 마스터 글자를 그대로 옮긴다).
+- **쓰지 않는 것(요청에도 원본 JS에도):** `rpmPrimaryL1~L4`, `rpmPrimary{}`, `rpmPrimaryRecordIds`, `curriculumKey`(=`curriculum`), 맨 `L1~L4`, `ptTplCandidate`, `difficultyBasis`·`levelBasis`, `level`. `originalCategory`는 원본 기출에 적힌 글자만 적고 새 유사·생성 문항은 비운다. 원본 JS에 `level`·`L3` 같은 사본을 쓰면 파생 라벨과 달라 등록기 parity 검사로 거부된다.
+- **아직 남은 관문(쓰지 않으면 문제없음):** CI 후보 검사(`tools/ci/archive-reviewed-source-candidate.mjs`)는 허용 목록 밖 필드를 아직 `UNKNOWN_METADATA_FIELD`로 거부한다. 스테이지 검증기는 난이도 보조 3칸(`difficultyConfidence`·`difficultyBoundaryFlag`·`legacyLevelCompatibility`)을 아직 요구하므로 이 셋은 계속 적는다.
+- **허용 목록 안 필드를 `after`에 새로 넣을 때는 `before`에 `null`을 같이 쓴다**(CAS 규칙 그대로).
+- **금지:** 경로→번호 역산, 번호→TPL 계산, 소단원→L1·L2 계산. 맨 `L1~L4`는 RPM 값과 PT·TPL 라벨이 섞인 칸이므로 기존 값을 비교해 지우거나 옮기지 않는다.
+- **받는 쪽과 기존 값은 그대로다.** 화면·빌더·등록기는 옛 이름으로 들어온 값도 계속 받고, 기존 문항 값은 지우지 않는다.
+- 이유: 같은 값을 여러 칸에 쓰게 하면 칸끼리 어긋난다(2026-11-18 하/중/상 사고). 줄이는 것은 쓰게 하는 것이지 받는 것이 아니다.
+
 ## 난이도는 정수 1~5만 (2026-11-18 21시 KST부터 적용)
 
 - **적용 시점:** 2026-11-18 21:00 KST 이후 새로 만들거나 반입하는 모든 아카이브 문항(기출·유사·교과서·문제집·생성).
@@ -19,6 +30,7 @@
 - **발문 안의 그림 태그는 지문에서 가린다.** `<img>`·`<svg>`·`<figure>`·`<picture>`를 지우고 빈 `<p></p>`를 지운다. 모든 `<…>`를 지우지 않는다(수식의 `a<b`가 사라져 발문 수정이 가려진다). 보기 앞의 ①~⑩ 기호 한 개는 지문에서 빼되 `1)`·`(1)`·`1.` 같은 번호는 지우지 않는다(`1.5`가 깨진다). 공백·줄바꿈·`<br>` 차이는 같게 본다. 이유: 중등 시험지는 그림이 발문 문자열 안에 들어 있어서 그림 교체가 곧 발문 변경으로 보였다.
 - **보기가 그림 안에 든 문항(`choicesEmbeddedInImage`)은 그림이 곧 보기이므로 `image`·`images`를 지문에 포함한다.** 이유: 이 문항은 그림을 바꾸면 보기가 바뀐다.
 - **예외 — 그림이 곧 문제·보기인 곳은 그림도 결속에 들어간다:** ① 발문이 그림뿐인 문항(그림 태그를 지우면 글자가 남지 않음) ② 보기 칸이 그림뿐인 문항 ③ 보기가 전부 비었거나 기호(①~⑤ 등)뿐이고 문항에 그림이 있는 경우 ④ `choicesEmbeddedInImage` 문항. 이때는 그림 경로(`image`·`images`, 발문·보기 안 그림 태그의 주소)가 지문에 포함되어, 그림을 바꾸면 재판정 대상이 된다. 서술형(`choices: []`)은 ③에 해당하지 않는다(보기가 없는 것이지 그림이 보기인 것이 아니다). 이유: 그림을 빼면 학생이 보는 문제·보기가 남지 않는 문항에서 그림 교체가 조용히 통과하면 승인된 것과 다른 문제가 나간다(구현: `archive/question-binding.js`, 지문 버전 `text-v1`).
+- **승인된 교정 재결속 (2026-11-19):** `entries`(동결)는 "발문·보기가 같다"만 담으므로, 승인된 교정 커밋·PR이 발문·보기를 정식으로 고친 행(공백·표기 `format`, 내용 교정 `content`, 발문·보기는 같고 그림만 바뀐 `figure`)은 같은 파일의 별도 구역 `revisions`(추가 전용)에 남긴다. 항목은 옛 지문 `fp`, 옛 text `from`, 현재 text, 교정 커밋 40자 `commits`, `prs`를 싣고, 도구는 `build-text-binding-rebinds.mjs --revisions <승인목록.tsv> [--write-revisions]`(승인 판단은 사람·관제가 하고 도구는 git 이력으로 옛 지문·옛 text를 기계 확인한 것만 기록)이다. 소비자(`classifyMetaBinding`)는 옛 지문이 행이 들고 있던 값이고 text가 현재 text-v1과 같을 때만 "row"로 인정하므로, 이후 발문·보기가 또 바뀌면 효력이 저절로 사라진다. `--check --against <ref>`는 `entries`는 한 글자도 같게, `revisions`는 기존 항목이 그대로 앞에 있게(추가만) 요구한다. `content` 교정 행의 유형·난이도 판정은 옛 발문 기준이므로 교정 뒤 다시 볼 대상이다(별도 검토 라인). 이유: 정식 교정된 문항이 카탈로그에서 source_release로 빠져 화면·출제에서 사라지는 것을, 동결된 옛 기록을 건드리거나 새 장부를 만들지 않고 막기 위해서다.
 - **적용 범위는 메타 결속뿐이다.** 저장한 문제지·출제본의 무결성 지문과 4칸의 출처 지문은 이 결정과 별개이고 지금 그대로다. 기존 영수증·identity 기록·메타 행·런타임은 고치지 않고, 소급 적용은 "재결속 장부"를 새 파일로 추가하는 방식으로 한다. 이유: 승인 기록은 사후에 고쳐 쓰지 않는다.
 - **이 문서는 결정의 기록이다.** 구현은 후속 PR로 단계별로 들어온다(텍스트 지문 모듈 `archive/question-binding.js` → 재결속 장부 → 등록기 → 카탈로그). 그 전까지 등록기·카탈로그의 동작은 바뀌지 않았다.
 - **구현 상태 (2026-11-18):** ① 텍스트 지문 모듈 `archive/question-binding.js`. ② **카탈로그**(`build-archive2-catalog.mjs`, 판정은 `archive/tools/meta-foundation/text-binding-lib.mjs`의 `classifyMetaBinding` 한 곳): `metaBinding`은 값 하나("text" 또는 빔) — "이 행의 메타가 지금과 같은 발문+보기에 대한 것인가"다. 근거는 행의 내용 지문 일치, 동결된 재결속 기록, 유형 판정 자신의 지문(`typeApproval.textBindingFingerprint`)이고, 유형 판정만 근거일 때는 PT/TPL만 내고 L3·교육과정은 뺀다. 화면 반영은 등록 스냅숏(카탈로그 재생성)이 돈 뒤다. ③ **재결속 기록** `archive/data/meta-foundation/text-binding-rebinds.v1.json`은 옛 기록(영수증·identity)용으로 git 이력에서 1회 계산한 결과이며 **동결**되어 더 자라지 않는다(도구 `build-text-binding-rebinds.mjs`: `--write`는 파일이 있으면 거절, `--check --against <ref>`는 기준 ref와 같아야 통과). 발문·보기가 바뀐 문항과 이력에서 못 찾은 문항은 기록하지 않는다. ④ 새 유형 판정은 `typeApproval.textBindingFingerprint`(text-v1)를 직접 싣는다. 자동 등록 레인(`auto-register-merged-source.mjs`)은 이 변경 범위 밖이다(접힌 `metaBinding`에 맞춘 verify 한 줄만 바꿨다). ⑤ 카탈로그의 `sourceStatus`·기본 배정(`verifiedBasicAssignment`)·표시 투영(`createSourceBoundDisplayProjection`의 `textBound`)도 같은 기준을 쓴다: 행 결속(`classifyMetaBinding`이 "row")이 확인된 행은 해설·정답·그림이 바뀌어도 통과하고, 유형 판정만 묶인 행("type")·결속 없는 행은 이전처럼 걸린다. 이유: 해설만 고친 문항이 문제지 만들기 기본 선택에서 사라지지 않게 하기 위해서다.
@@ -31,6 +43,7 @@
 - **지키는 것:** 등록부에 실제로 있는 키만 쓴다 / 학년·과목이 맞는다 / 기계 검사는 그대로 통과해야 한다. 이미 승인된 값은 덮어쓰지 않는다(빈 칸만 채운다). 맞는 키가 없으면 가까운 키에 붙이거나 추정하지 않고 위 "확장 원칙"대로 정식 `registryChanges`로 새 키를 만든다. 이유: 초안이라도 존재하지 않는 키나 다른 학년 키가 들어가면 화면의 필터와 설명이 틀린다.
 - **초안 등급 표시와 승격:** 초안 값도 문제 선정·필터·화면에 그대로 쓴다. 초안 등급 표시는 얼마나 확인됐는지를 알려 주는 꼬리표이며 사용을 막는 조건이 아니다. 집계 보고에서만 검수 값과 구분해 센다. 초안 표시 필드는 표시 전용이며 선정 가능(selectable/usable) 판정에 넣지 않는다. 표시의 필드 이름·값은 후속 PR에서 정한다(이 문서는 이름을 확정하지 않는다). 두 번째 독립 판정(같은 종류의 모델을 따로 띄운 것도 독립으로 본다)과 일치하면 등급을 올린다. 승격은 선택이며 사용의 전제가 아니다. 두 번째 판정은 토큰 여유가 있을 때 돌린다.
 - **표시 이름(확정, 2026-11-18):** 요청의 승인 종류는 `DRAFT_SINGLE_MODEL`, 행의 칸별 상태는 `fieldStatus.<칸>` = `draft_single_model`이다. 이 둘 외에 새 상태값·필드·영수증 종류는 만들지 않는다(사전: `archive/data/meta-os/status-vocabulary.json`). 결속은 발문+보기 지문(`archive/question-binding.js` text-v1) 하나다.
+- **난이도 초안 요청의 결속(2026-11-19):** 요청 항목마다 판정 당시 발문+보기 지문 `textBindingFingerprint`가 실려 있고, 난이도 등록기는 이것을 현재 문항의 text-v1 지문과 대조해 다르면 그 요청을 거절한다(dry-run·write·verify-projection 동일; 해설·정답·그림 수정은 지문이 같아 통과). 요청의 **모든 항목**에 이 지문이 실려 있는 `DRAFT_SINGLE_MODEL` 요청은 시험지 파일 전체 blob(`latestBlobSha`) 비교를 하지 않는다(`isTextBoundDraft`, 등록기·PR 미리 검증·소비자 게이트가 같은 판정). 이유: 같은 시험지의 다른 문항 해설·그림이 고쳐졌다는 이유로 요청 전체가 거절되던 것을 없애고, 막는 것을 "발문·보기가 바뀐 문항"이라는 실제 결함으로 좁히기 위해서다. 다른 승인 종류나 지문 없는 항목이 섞인 요청은 파일 blob 비교가 그대로다.
 
 ## CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)
 
@@ -106,7 +119,7 @@
 
 ## CURRENT — 유사시험지 RPM Primary 경로(rpmPrimaryPath) 등록 (2026-11-02)
 
-- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다.
+- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다. (2026-11-19) 이제 등록기가 `rpmPrimaryRecordId`를 저장하고 빈 `rpmL1~L4`를 그 번호에서 채우므로, 새 문항은 위 "최소 한 벌"대로 번호만 쓴다.
 - 이미 등록된 시험지에 경로만 추가: `python3 tools/main_merge_master.py --exam <시험지> --rpm-path-delta --apply` → `.archive-meta-register/inbox/rpmpath-<시험지>.json`(FINAL_QA, 다른 승인 값 변경 없음, 기존 `targetParentRef` 유지, 경로를 못 정한 문항은 빈 패치). 이유: 같은 requestId로 다시 등록하면 "requestId reused with different content"로 거부된다.
 
 - 등록기 최소 한 벌(2026-11-19): 작성자는 키·`rpmPrimaryRecordId`·난이도 정수 같은 판정 값만 요청에 넣는다. 사본·보조 필드(`rpmPrimaryL1~L4`, `difficultyBasis` 등 `reviewed-meta-value-fields.mjs` 목록 밖)를 안 써도 등록되고, 써도 거부하지 않는다. 저장하지 않고 영수증·결과의 `reportTags`(`UNSTORED_FIELDS`)에 이름만 남긴다. `rpmPrimaryRecordId`가 있고 `rpmL1~L4`가 비어 있으면 등록기가 크로스워크 그 번호의 행에서 채운다(이미 있는 값은 덮지 않고 다르면 `RPM_DIFFERS_FROM_CROSSWALK`만 보고, 번호가 크로스워크에 없으면 비워 두고 `RPM_RECORD_ID_NOT_IN_CROSSWALK`로 보고). 운영 뒤쪽 검사(consumer-verify)도 같은 원칙이라 저장되지 않는 필드와 번호 자체는 소비자 값 비교에서 뺀다. 이유: 사본을 손으로 쓰다 어긋나 요청이 거부되는 일을 없애고, 글자는 도구가 채우게 하기 위해서다.

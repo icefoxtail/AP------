@@ -5,6 +5,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { verifyPreservedAuditDifficulty } from "./native-audit-preservation.mjs";
+import { textFingerprint } from "./text-binding-lib.mjs";
 
 // Registers Gemini's already-decided 5-level difficulty (req_diff5_*.json) into the canonical
 // question metadata. No re-judging: Gemini's `after` value is written as-is, subject only to
@@ -48,6 +49,16 @@ export function bindDifficulty5Source(sourceBytes, expectedSha) {
     if (blobSha(lfBytes) === expectedSha) { bytes = lfBytes; sha = expectedSha; }
   }
   return { bytes, sha };
+}
+
+// A draft request whose every item carries the stem+choices fingerprint (textBindingFingerprint, text-v1) is bound per question, so the
+// whole-file Git blob (latestBlobSha) is not compared: another question's solution or figure being edited must not refuse the request.
+// Any other request (another approvalType, a reviewed correction, an item without the fingerprint) keeps the whole-file blob binding.
+// The registrar, the PR preview and the consumer gate all use this one predicate.
+export function isTextBoundDraft(request) {
+  const items = request?.gemini?.items;
+  return request?.approvalType === DRAFT_SINGLE_MODEL && !request.reviewedCorrection && Array.isArray(items) && items.length > 0 &&
+    items.every(item => typeof item?.textBindingFingerprint === "string" && /^[a-f0-9]{64}$/.test(item.textBindingFingerprint));
 }
 
 // 1 = 하, 2·3 = 중, 4·5 = 상
@@ -232,7 +243,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   const sourcePath = path.join(root, "archive/exams", source);
   if (!fs.existsSync(sourcePath)) fail("source exam file not found: " + source);
   const { bytes: sourceBytes, sha } = bindDifficulty5Source(fs.readFileSync(sourcePath), g.latestBlobSha);
-  if (sha !== g.latestBlobSha) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
+  if (sha !== g.latestBlobSha && !isTextBoundDraft(request)) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
 
   const doc = read(root, META);
   const ids = read(root, IDENTITY);
@@ -264,6 +275,11 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
     if (item.questionUid !== rec.questionUid || item.questionUid !== idr.questionUid ||
         ordinalByUid.get(item.questionUid) !== n) fail("ordinal/questionUid mismatch #" + n);
     if (n < 1 || n > bank.length) fail("ordinal outside question bank #" + n);
+    // A request that carries the stem+choices fingerprint the grade was judged on (draft requests do) is bound to exactly that text:
+    // a changed stem or choices means the grade belongs to another problem. Answer/solution/figure edits do not change it (text-v1).
+    // An item without the field is judged as before (older requests, other approval types).
+    if (Object.hasOwn(item, "textBindingFingerprint") && textFingerprint(bank[n - 1]) !== item.textBindingFingerprint)
+      fail("stem or choices changed since judged (textBindingFingerprint) #" + n);
     if (verifyProjection) {
       const q = bank[n - 1];
       if (q?.id !== undefined && q.id !== n) {
