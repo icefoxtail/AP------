@@ -132,3 +132,35 @@
 | 24 | NOT_NEEDED | NOT_NEEDED |  |
 
 - 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 1개. TABLE 1건. 게시한 그림 0개.
+
+## 25_연향중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 마무리 작업에서 그림을 만들지 않았다. 아래는 일괄 작업용 판정이고 JS에는 그림 참조가 없다(깨진 참조 없음). 고친 내용: 4번 보기를 크기순(1, 3, 4, 6, 8, 정답 ④=6 그대로)으로 정리, 12번 보기 ④가 ①과 같은 값이던 것을 `\dfrac{32}{y} - \dfrac{16}{x}`로 교체(정답 ③ 그대로), 15번 <보기> ㄱ~ㅁ를 줄로 나눔, 5번 해설의 집합 기호·중괄호 삭제, 해설 23개를 판서형으로 정리(`\implies` 삭제). 모든 문항의 정답 값은 직접 확인했고 틀린 정답은 없었다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | BENEFICIAL | NOT_NEEDED | 문제: 두 원기둥의 반지름이 2배, 높이가 1/3이라는 관계를 그림으로 보여 주면 비율을 세우기 쉽다. |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | BENEFICIAL |  해설: x ≥ 3을 수직선에 3을 포함한 오른쪽 화살표로 그려 주면 '가장 작은 정수 3'의 의미가 즉시 보인다. |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | BENEFICIAL | TABLE | 문제: 같은 길을 올라갔다 내려오는 왕복 구조와 편도 거리 x를 그리면 식 세우기 쉬움. 해설: 올라감·휴식·내려옴의 속력·거리·시간을 표로 정리하면 합 비교가 쉬움(표 엔진 영역) |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | BENEFICIAL | BENEFICIAL | 문제: 해가 x ≥ -1임을 보여 주는 수직선 그림이 함께 있으면 경계값 비교의 상황이 분명해진다. 해설: 경계값 -1을 칠한 수직선과 x ≥ (b+3)/(5+a)를 나란히 두면 두 식을 같게 놓는 이유가 바로 보인다. |
+
+- 문제그림 REQUIRED 0개, BENEFICIAL 3개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE 1건. 게시한 그림 0개.
