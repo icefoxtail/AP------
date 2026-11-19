@@ -303,6 +303,10 @@ export function registerRequests(opt, { log = console.log } = {}) {
   }
   attachMainRegistryVersionDependencies(opt,registryRequests,registryContext);
   const registryDependencies=nativeRegistryDependencies(registryRequests);
+  // The batch's metadata is written even when something in the loop throws: a request already applied has its receipt on disk, and a
+  // refused or crashed in-process request has already had its rows put back (register-type-batch.mjs begin()/undo), so what is flushed
+  // is exactly the applied requests - never a receipt without its metadata.
+  try {
   for (const requestArg of requestOrder) {
     const requestAbs = path.resolve(root, requestArg), rel = posix(path.relative(root, requestAbs)), name = path.basename(requestAbs);
     if (!fs.existsSync(requestAbs)) { rejected.push({ request: rel, name, error: "request file not found", exitCode: null }); continue; }
@@ -348,7 +352,7 @@ export function registerRequests(opt, { log = console.log } = {}) {
     recordRejection(opt, requestAbs, { error, exitCode: run.status }, { log });
     rejected.push({ request: rel, name, error, exitCode: run.status });
   }
-  batch?.flush();
+  } finally { batch?.flush(); }
   return { applied, rejected, pendingSupplement, dirtied };
 }
 

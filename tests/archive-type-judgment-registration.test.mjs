@@ -687,3 +687,18 @@ test("the isolator runs plain type judgments in one process: same applied/reject
     assert.equal(fs.existsSync(path.join(batched.root, inbox, `${name}.json`)), false, "a refused request leaves the inbox");
   }
 });
+
+test("an exception in the isolator loop still writes the metadata of the requests already applied (no receipt without its metadata), and nothing of the refused one", async t => {
+  const inbox = ".archive-meta-register/inbox";
+  const crashed = fixture(t), alone = fixture(t);
+  const [r1, r2] = batchRequests(crashed);
+  const names = [r1, r2].map((req, i) => { const rel = `${inbox}/0${i + 1}-${req.requestId}.json`; crashed.put(rel, req); return rel; });
+  // R2 is refused after it edited row 3; recording the refusal then throws (the rejected dir's parent is a file), i.e. the loop dies mid-run.
+  crashed.put("blocker", "not a directory");
+  const options = { root: crashed.root, registrar: "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs", rejectedDir: "blocker/rejected",
+    guardPathsFile: "tools/ci/missing.paths", stage: "registrar", requests: names, typeBatchRuntime: await loadTypeBatchRuntime() };
+  assert.throws(() => registerRequests(options, { log() {} }));
+  alone.run(batchRequests(alone)[0], { write: true });
+  assert.deepEqual(crashed.bytes().meta, alone.bytes().meta, "R1's rows are on disk, R2's edit of row 3 is not");
+  assert.equal(fs.existsSync(path.join(crashed.root, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${r1.requestId}.json`)), true);
+});
