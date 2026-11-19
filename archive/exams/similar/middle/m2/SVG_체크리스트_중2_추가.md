@@ -67,3 +67,35 @@
 | 24 | NOT_NEEDED | TABLE |  해설: 사진관 A와 B의 1장당 요금·배송비·총비용을 두 줄짜리 표로 정리하면 비교가 쉬워진다. |
 
 - 문제그림 REQUIRED 0개, BENEFICIAL 2개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE 1건. 게시한 그림 0개.
+
+## 25_진남중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 마무리 작업에서 그림을 만들지 않았다. 아래는 일괄 작업용 판정이고 JS에는 그림 참조가 없다(깨진 참조 없음). 고친 내용: 7번 <보기> ㄱ·ㄴ·ㄷ를 줄로 나눔, 8번 보기를 8, 7, 6, 5, 4(내림차순, 정답 ⑤=4 그대로)로 다시 구성(원래 1, 2, 3, 5, 4로 정답만 순서가 어긋나 있었음), 17번 보기를 -15, 15, 18, 27, 39(정답 ②=15 그대로, 오답은 a-b 부호 실수 -15 등)로 다시 구성(원래 12, 15, 18, -15, 0 뒤섞임), 5번 해설의 집합 기호(중괄호) 삭제, 2·3·7번 해설의 보기별 줄 복원(행 구분 누락), 해설 23개를 판서형으로 정리(`\implies` 삭제). 모든 문항의 정답 값은 직접 확인했고 틀린 정답은 없었다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | NOT_NEEDED | TABLE |  해설: 준우·하은의 결과, 기약분수, 바른 분자·분모를 표로 정리하면 대응이 분명해진다. |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | BENEFICIAL | BENEFICIAL | 문제: 밑면 한 변 3a²b, 높이 h를 표시한 직육면체 그림이 있으면 부피 관계를 잡기 쉽다. 해설: 밑넓이와 높이를 표시한 직육면체 스케치를 곁들이면 식 세우는 과정이 빨리 이해된다. |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | NOT_NEEDED | 두 끝점의 값 계산이라 글로 충분 |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED | 지수 비교 식 풀이라 글로 충분 |
+| 23 | NOT_NEEDED | BENEFICIAL |  해설: 수직선에 x의 범위와 4 - x/3의 범위를 나란히 표시하면 부등호가 뒤집히는 과정이 한눈에 들어온다. |
+
+- 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE 1건. 게시한 그림 0개.
