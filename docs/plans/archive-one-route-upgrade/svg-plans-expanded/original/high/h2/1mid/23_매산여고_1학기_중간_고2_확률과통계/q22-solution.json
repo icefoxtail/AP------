@@ -1,0 +1,62 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "④",
+        "in": [
+          "A",
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "③",
+        "in": [
+          "B",
+          "C"
+        ]
+      },
+      {
+        "text": "②",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "①",
+        "in": []
+      }
+    ],
+    "shade": "A",
+    "subset": [
+      "A",
+      "B",
+      "C"
+    ]
+  },
+  "caption": "S₁⊂S₂⊂S₃이므로 그림의 A는 S₁, B는 S₂, C는 S₃에 해당하고 안쪽에서 바깥으로 포함된다. 전체집합의 원소 하나는 ① S₃ 밖, ② S₃에는 있고 S₂ 밖, ③ S₂에는 있고 S₁ 밖, ④ S₁ 안의 네 영역 중 하나에만 들어간다. 원소가 10개이고 각각 4가지이므로 순서삼중항의 수는 4¹⁰=1048576이다.",
+  "accessibilityDescription": "전체집합 안에서 세 집합이 차례로 안쪽에 포함된 벤다이어그램이며 가장 안쪽 집합이 색칠되어 있고 네 영역에 번호 ①부터 ④가 적혀 있다.",
+  "newVisualInformation": [
+    "S₁⊂S₂⊂S₃의 네 영역이 번호로 구분되어 각 원소가 네 곳 중 하나를 고르는 구조가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U = \\{x \\mid x\\text{는 } 10 \\text{ 이하의 자연수}\\}$의 세 부분집합 $S_1, S_2, S_3$이 $S_1 \\subset S_2 \\subset S_3$을 만족시킨다. 집합 $S_1, S_2, S_3$의 모든 $(S_1, S_2, S_3)$의 개수를 구하는 과정을 서술하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
