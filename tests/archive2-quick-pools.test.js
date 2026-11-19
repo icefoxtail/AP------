@@ -910,6 +910,32 @@ test('diagnostic: when a step has no question with answer and solution left the 
   assert.match(h.nodes.get('status').textContent, /정답·해설이 있는 문항이 모자라/);
 });
 
+test('diagnostic: replacing empty questions stops after a small number of source requests and ends in the "모자람" message', async () => {
+  // every question of step 1 and 3 comes back empty while hundreds of candidates exist: the old loop restored them all one by one
+  const data = diagnosticCatalog([200, 200, 200, 200, 0]);
+  const blank = new Set(data.records.filter(rec => rec.difficultyBucket === 1 || rec.difficultyBucket === 3).map(rec => rec.questionUid));
+  const inner = okRestore(rec => blank.has(rec.questionUid));
+  let calls = 0;
+  const h = harness(data, { restore: async records => { calls += records.length; return inner(records); } });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 0, 'nothing is published when the cap is reached');
+  assert.match(h.nodes.get('status').textContent, /정답·해설이 있는 문항이 모자라[\s\S]*학기를 1·2학기로 바꾸거나 난이도를 바꿔 보세요/);
+  // the paper restore itself is 24 questions; the replacement tries on top of it stay small (cap 40 in total)
+  assert.ok(calls <= 24 + 40, 'source requests stay capped: ' + calls);
+});
+
+test('diagnostic: the bottom bar of a semester paper says the semester, not the whole subject', () => {
+  const data = diagnosticCatalog([8, 8, 14, 10, 0]);
+  const h = harness(data, { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  assert.match(h.w.renderQuick(), /class="qk-bar-count">24문항 · 공통수학1 1학기 전체</);
+});
+
 test('diagnostic on the real catalog: 기초 / 기본 / 심화 print the preset steps in order from original exams, every chosen unit has its minimum', async () => {
   const data = await catalog();
   const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));

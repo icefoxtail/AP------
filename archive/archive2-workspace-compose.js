@@ -785,7 +785,7 @@
         const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(wholeName)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
           ${selectedUnits.length ? reason(verdictSel) : reason(verdictAll)}`;
         result = info(product.title, product.count, lines, actions);
-        bar = { text: selectedUnits.length ? `${product.count}문항 · ${selectedUnits.length}개 ${noun}` : `${product.count}문항 · 과목 전체`,
+        bar = { text: selectedUnits.length ? `${product.count}문항 · ${selectedUnits.length}개 ${noun}` : `${product.count}문항 · ${diagnostic ? `${wholeName} 전체` : "과목 전체"}`,
           action: selectedUnits.length ? "quick-open-selected" : "quick-open-all",
           disabled: busy || (selectedUnits.length ? !verdictSel.ok : !verdictAll.ok) };
       } else {
@@ -1010,16 +1010,21 @@
     !(String(question.solution ?? "").trim() || String(question.solutionImage ?? "").trim());
   // Replaces each empty restored question by the next not-picked question of the same step (its own unit first), restoring one
   // candidate at a time. The set of steps never changes. Returns the final order (by step, then unit) and how many were replaced.
+  // Each restore is a source request, so the tries are capped: a few per empty question and a small total for the whole paper.
+  // Past a cap the paper is "not enough questions" (same message), instead of the student waiting for hundreds of requests.
+  const BLANK_TRIES_PER_QUESTION = 8, BLANK_TRIES_TOTAL = 40;
   async function replaceBlankQuestions(units, selected, questions, plan) {
     const records = selected.slice(), restored = questions.slice();
     const taken = new Set(records.map(record => record.questionUid)), rejected = new Set();
-    let replaced = 0;
+    let replaced = 0, totalTries = 0;
     for (let i = 0; i < records.length; i++) {
       if (!isBlankQuestion(restored[i])) continue;
       const spares = plan.sparesFor(records[i]);
-      let done = false;
+      let done = false, tries = 0;
       for (const candidate of spares) {
         if (taken.has(candidate.questionUid) || rejected.has(candidate.questionUid)) continue;
+        if (tries >= BLANK_TRIES_PER_QUESTION || totalTries >= BLANK_TRIES_TOTAL) break;
+        tries++; totalTries++;
         let question;
         try { [question] = await Source.restore([candidate], state.catalog); } catch (error) { rejected.add(candidate.questionUid); continue; }
         if (isBlankQuestion(question)) { rejected.add(candidate.questionUid); continue; }
@@ -1027,7 +1032,7 @@
         records[i] = candidate; restored[i] = question; replaced++; done = true;
         break;
       }
-      if (!done) throw new Error("정답·해설이 있는 문항이 모자라 시험지를 만들 수 없습니다. 범위를 넓혀 보세요.");
+      if (!done) throw new Error("정답·해설이 있는 문항이 모자라 시험지를 만들 수 없습니다. 학기를 1·2학기로 바꾸거나 난이도를 바꿔 보세요.");
     }
     const byUid = new Map(records.map((record, i) => [record.questionUid, restored[i]]));
     const ordered = Quick.orderByStep(units, records);
