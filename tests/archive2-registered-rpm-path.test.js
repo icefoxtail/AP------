@@ -39,3 +39,37 @@ test('every registered row whose overlay records rpmPrimaryPath shows exactly th
   }
   assert.ok(checked >= 70, `registered rows with rpmPrimaryPath checked: ${checked}`);
 });
+
+// A registration receipt used to be tied to the whole exam file (its sourceRawSha256 had to equal the current file hash), so one edited choice, explanation
+// or figure unregistered every question of the exam. It is bound per row now (the row's stem and choices); the file bytes are not a gate.
+function productionBundle() {
+  const archiveDir = path.resolve(__dirname, '../archive');
+  const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, 'data/archive2-canonical-input-manifest.json'), 'utf8'));
+  const resources = {}, files = {};
+  for (const row of manifest.files) {
+    const bytes = Buffer.from(fs.readFileSync(path.resolve(archiveDir, row.path), 'utf8').replace(/^﻿/, '').replace(/\r\n/g, '\n'));
+    if (row.path.endsWith('.json')) resources[row.path] = JSON.parse(bytes.toString('utf8'));
+    files[row.path] = { sha256: row.sha256 };
+  }
+  return { manifest, projectionVersion: manifest.projectionVersion, files, resources };
+}
+
+test('changing the whole-file bytes of an exam does not unregister its rows (a row is dropped only when its stem or choices changed without a reviewed rebind, see archive2-canonical-projection)', () => {
+  const core = require('../archive/archive2-core.js');
+  const bundle = productionBundle();
+  const baseline = core.Canonical.resolveCatalog({ versionBundle: bundle });
+  const registeredFiles = new Set(baseline.records.filter(row => row.reviewedExamRegistration).map(row => row.sourceFile));
+  assert.ok(registeredFiles.size > 0);
+  const countRegistered = data => data.records.filter(row => row.reviewedExamRegistration).length;
+  // Every registered exam file now has other bytes (any edit of any row, explanation or figure changes the file hash), and no raw-byte entry matches.
+  const packed = bundle.resources['data/archive2-catalog.json'];
+  const other = (sha) => (sha[0] === '0' ? '1' : '0') + sha.slice(1);
+  packed.sourceHashes = packed.sourceHashes.map(([file, sha]) => [file, registeredFiles.has(file) ? other(sha) : sha]);
+  packed.sourceRawHashes = [];
+  const edited = core.Canonical.resolveCatalog({ versionBundle: bundle });
+  assert.equal(countRegistered(edited), countRegistered(baseline), 'registered rows must not depend on the whole-file hash');
+  assert.deepEqual(
+    edited.records.filter(row => row.reviewedExamRegistration).map(row => row.questionUid).sort(),
+    baseline.records.filter(row => row.reviewedExamRegistration).map(row => row.questionUid).sort(),
+  );
+});
