@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "a",
+        "kind": "RATIONAL",
+        "numerator": [
+          "12"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "y=12/x"
+      },
+      {
+        "id": "b",
+        "kind": "RATIONAL",
+        "numerator": [
+          "12"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "-1"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "4/3"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=(4/3)x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "3",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점 (3,b)가 y=12/x 위에 있으므로 b=12/3=4이다. 또 y=ax 위에 있으므로 4=3a에서 a=4/3이다. 따라서 ab=(4/3)×4=16/3이고 답은 ④이다. 그림은 두 그래프가 점 P(3,4)에서 만나는 모습이다.",
+  "accessibilityDescription": "제1사분면과 제3사분면에 걸친 두 갈래의 반비례 곡선과 원점을 지나는 직선이 있고 직선과 곡선이 점 P(3,4)에서 만나며 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 그래프의 교점 P(3,4)에서 b=4, a=4/3이므로 ab=16/3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 반비례 관계 $y=\\frac{12}{x}$의 그래프와 정비례 관계 $y=ax$의 그래프이다. 두 그래프가 모두 점 $(3, b)$를 지날 때, $ab$의 값은? [5점]<br>(단, $a$는 수이다.)<br><img src=\"assets/images/19_연향중_1학기_기말_중1_수학/q19.png\" alt=\"q19\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "a",
+        "kind": "RATIONAL",
+        "numerator": [
+          "16"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "16"
+        ],
+        "color": "BLUE",
+        "label": "y=16/x"
+      },
+      {
+        "id": "b",
+        "kind": "RATIONAL",
+        "numerator": [
+          "16"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-16",
+          "-1"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "16",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "4",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "8",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "16",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P5",
+          "x": "-1",
+          "y": "-16",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P6",
+          "x": "-2",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P7",
+          "x": "-4",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P8",
+          "x": "-8",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P9",
+          "x": "-16",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "xy=16이므로 x가 16의 약수이어야 y도 정수이다. x=±1, ±2, ±4, ±8, ±16이고 이때 y=±16, ±8, ±4, ±2, ±1이다. 따라서 x좌표와 y좌표가 모두 정수인 점은 (1,16), (2,8), (4,4), (8,2), (16,1)과 그 반대 부호의 다섯 점으로 모두 10개이다. 답은 ③이다.",
+  "accessibilityDescription": "제1사분면과 제3사분면에 걸친 두 갈래의 곡선이 있고 각 곡선 위에 x좌표와 y좌표가 모두 정수인 점 다섯 개씩이 표시되어 있다.",
+  "newVisualInformation": [
+    "xy=16의 정수점 (±1,±16), (±2,±8), (±4,±4), (±8,±2), (±16,±1)의 10개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반비례 관계 $y=\\frac{16}{x}$의 그래프 위에 있는 점 $(x, y)$ 중 $x$좌표와 $y$좌표가 모두 정수인 점의 개수는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
