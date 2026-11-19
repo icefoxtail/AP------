@@ -202,7 +202,7 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 // ---------------------------------------------------------------- planning
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
-export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false }) {
+export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, judge = "dots", allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, approveSameDraft = false }) {
   const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
@@ -246,7 +246,9 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         const present = !empty(m.problemTypeKey) || !empty(m.templateKey);
         if (!replaceDraft || !present) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
         const same = (m.problemTypeKey ?? "") === row.pt && (empty(row.tpl) || (m.templateKey ?? "") === row.tpl);
-        if (same) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
+        // approveSameDraft: a draft value (e.g. mirrored from the exam source by the registration sync) that equals the judgment is registered
+        // as the direct judgment too (the lane only records status + rationale; the value is unchanged).
+        if (same && !approveSameDraft) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
         if (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl)) {
           skip(row, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT", { existing: { pt: m.problemTypeKey ?? "", tpl: m.templateKey ?? "", ptStatus: status.pt, tplStatus: status.tpl, approval: m.metadataApprovalType ?? "", revision: m.metadataRevision ?? "" }, judged: { pt: row.pt, tpl: text(row.tpl) } });
           continue;
@@ -320,7 +322,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     // The carrier of the pack changes sorts before every other request ("tc" < "td"): the inbox is registered in name order.
     const carrier = file === carrierFile && !replacing;
     const requestId = `${carrier ? "tc" : replacing ? "tr" : "td"}-${sha1(file).slice(0, 12)}-${sha256(JSON.stringify(core)).slice(0, 8)}`;
-    const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge: "dots", resultSource,
+    const ledger = { schemaVersion: LEDGER_SCHEMA, requestId, sourceArchiveFile: file, judge, resultSource,
       rule: "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
       rows: items.map(({ row, m }) => ({ questionUid: row.uid, sourceOrdinal: m.sourceOrdinal, decision: row._decision ?? row.decision, problemTypeKey: row.pt, templateKey: text(row.tpl) || null,
         step: row.step ?? null, note: row.note ?? null, figure: row.figure ?? null, check: row.check ?? null, resultFile: row._source.file })),
@@ -330,7 +332,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     files.set(ledgerPath, ledgerText);
     const request = { schemaVersion: REQUEST_SCHEMA, requestId, examUid: path.posix.basename(file, ".js"), scope: "PARTIAL_UIDS", fieldScope: "TYPE_ONLY",
       sourceArchiveFile: file, expectedSourceBlobSha1: ctx.blobOf(file, bytes), expectedQuestionCount: bank.length,
-      approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge: "dots",
+      approval: { type: DIRECT_JUDGMENT, metadataReviewed: true, reviewPassCount: 1, approvedBy, judge,
         decisionRef: { document: DECISION_DOCUMENT, section: DECISION_SECTION }, resultSource, evidenceRefs: [ref] },
       ...(carrier ? { registryChanges: [...[...additions].sort((a, b) => (a[0] < b[0] ? -1 : 1)).map(([packId, e]) => {
         const before = ctx.registry.packs.get(packId);
@@ -451,6 +453,9 @@ export function parseCli(argv) {
     else if (k === "--allow-pack-scope-additions") args.allowPackAdditions = true;
     else if (k === "--include-receipt-rows") args.includeReceiptRows = true;
     else if (k === "--judged-base") { const v = value(); args.judgedBase = v === "none" ? null : v; }
+    else if (k === "--approve-same-draft") { args.approveSameDraft = true; args.replaceDraft = true; }
+    else if (k === "--judge") args.judge = value();
+    else if (k === "--approved-by") args.approvedBy = value();
     else if (k === "--bundles") args.bundles = value();
     else if (k === "--bundles-dir") args.bundlesDir = value();
     else if (k === "--bundles-only") args.bundlesOnly = true;
@@ -477,8 +482,8 @@ export function run(args) {
     rows = newKeys.rows;
     args.allowPackAdditions = true;
   }
-  const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy,
-    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft });
+  const built = planRequests({ ctx: planCtx, resultRows: rows, exams: args.exams, limit: args.limit, approvedBy: args.approvedBy, judge: args.judge || "dots",
+    allowPackAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, replaceDraft: args.replaceDraft, approveSameDraft: Boolean(args.approveSameDraft) });
   // One batch = the first N requests in registration (file name) order; the rest are left for the next run on a main that holds this batch.
   if (args.maxRequests) {
     const keep = new Set(built.requests.map(r => r.requestId).sort().slice(0, args.maxRequests));
