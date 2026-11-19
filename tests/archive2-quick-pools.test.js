@@ -1236,9 +1236,11 @@ test('diagnostic 고1: the semester button and the subject button never disagree
   await h.click({ action: 'quick-semester', semester: '2' });
   assert.equal(h.w.quickState.subject, 'COMMON_MATH_2', 'the 2학기 button picks the 공통수학2 units');
   assert.equal(h.w.quickState.semester, '2');
+  assert.equal(h.w.routeUrl().searchParams.get('qsubject'), 'COMMON_MATH_2', 'the address follows the subject the semester button picked');
   await h.click({ action: 'quick-subject', subject: 'COMMON_MATH_1' });
   h.w.renderQuick();
   assert.equal(h.w.quickState.semester, '1', 'the subject button sets the semester');
+  assert.equal(h.w.routeUrl().searchParams.get('qsubject'), 'COMMON_MATH_1', 'and the address');
   await h.click({ action: 'quick-semester', semester: '' });
   assert.equal(h.w.quickState.subject, 'COMMON_MATH_1', '1·2학기 keeps the subject');
   h.w.renderQuick();

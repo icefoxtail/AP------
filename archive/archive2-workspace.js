@@ -653,7 +653,8 @@
       } else if (a === "quick-semester") {
         quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
         // 고1: the semester button is the subject's semester (1학기 = 공통수학1, 2학기 = 공통수학2); the subject follows it.
-        if (quickState.grade === "고1" && quickState.semester) quickState.subject = "COMMON_MATH_" + quickState.semester;
+        // The address follows (a reload keeps what the teacher picked); the subject button's click already updates it the same way.
+        if (quickState.grade === "고1" && quickState.semester) { quickState.subject = "COMMON_MATH_" + quickState.semester; replaceUrlState(); }
         quickState.bundle.clear();
         quickState.pick = "";
         quickState.shortOpen = false;
