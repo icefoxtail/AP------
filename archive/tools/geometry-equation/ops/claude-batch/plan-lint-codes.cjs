@@ -95,7 +95,7 @@ rule(/^MULTI_CURVE_LABEL_INVALID$/, c => { // graph_framing.py:4539(패턴) 4584
   const bad = typeof label === 'string' ? uniq([...label].filter(ch => !/[0-9A-Za-z=+\-*/().^ ]/.test(ch))) : [];
   const why = typeof label === 'string' ? (label.length > 40 ? `40자를 넘는다(${label.length}자)` : bad.length ? `쓸 수 없는 글자 ${bad.map(q).join(' ')}가 있다` : '형식이 맞지 않는다') : '문자열이 아니다';
   return { reason: `곡선 ${c.arg}의 label ${q(label)} 는 ${why}. 곡선 label 은 영문·숫자와 = + - * / ( ) . ^ 공백만, 40자 이내다(한글·−·²·³·₃·<·> 불가).`,
-    fix: 'ASCII 식으로 쓰거나(y=4x-6, y=x^3, log_3(9x)) label 을 지우고(엔진이 식을 쓴다) 기울기·범위 같은 설명은 caption 에 쓴다.' };
+    fix: 'ASCII 식으로 쓰거나(y=4x-6, y=x^3; 밑을 아래첨자로 쓴 log₃ 은 ASCII 로 못 쓴다) 쓸 수 없으면 label 을 지우고(엔진이 식을 쓴다) 기울기·범위 같은 설명은 caption 에 쓴다.' };
 });
 rule(/^MULTI_CURVE_COEFFICIENT_INVALID$/, c => { // graph_framing.py:4700-4763
   const cv = curveOf(c.plan, c.arg), n = cv && Array.isArray(cv.coefficients) ? cv.coefficients.length : null;

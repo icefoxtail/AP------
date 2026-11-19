@@ -302,7 +302,7 @@ async function lintPlanAll(plan, ctx) {
   }
   if (!problems.length) return ok;
   const first = problems.find(p => p.status === 'FAIL') || problems[0];
-  const slim = p => ({ status: p.status, stage: p.stage, code: p.code, reason: p.reason, fix: p.fix });
+  const slim = p => ({ status: p.status, stage: p.stage, code: p.code, reason: p.reason, fix: p.fix, ...(p.detail ? { detail: p.detail } : {}), ...(p.unknownKeys ? { unknownKeys: p.unknownKeys } : {}) });
   return problems.length > 1 ? { ...first, problems: problems.map(slim) } : first;
 }
 
@@ -349,5 +349,13 @@ async function main() {
   process.exit(bad ? 1 : 0);
 }
 
-module.exports = { lintFiles, lintPlan, collectPlanFiles, labelOf, _internal: { makeEngine, loadMods, Host, reserveCurveBranches } };
+// plan 객체를 메모리에서 반복해서 검사하는 검사기(plan-autofix 가 쓴다). close() 를 꼭 부른다.
+async function createLinter(opts = {}) {
+  const E = makeEngine(path.resolve(opts.engine || DEFAULT_REPO));
+  await loadMods(E);
+  const host = new Host(E), ctx = { E, host, deep: !opts.shallow, typeset: null };
+  return { lint: plan => lintPlanAll(plan, ctx), close: () => host.close() };
+}
+
+module.exports = { createLinter, lintFiles, lintPlan, collectPlanFiles, labelOf, _internal: { makeEngine, loadMods, Host, reserveCurveBranches } };
 if (require.main === module) main().catch(e => { console.error(e); process.exit(2); });
