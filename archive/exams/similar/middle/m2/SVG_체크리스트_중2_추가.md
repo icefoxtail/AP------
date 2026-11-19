@@ -197,3 +197,35 @@
 | 24 | NOT_NEEDED | TABLE | 해설: 24명·25명에서 개인 총액과 단체 총액을 나란히 적은 비교표가 결론을 분명히 함(표 엔진 영역) |
 
 - 문제그림 REQUIRED 0개, BENEFICIAL 4개. 해설그림 REQUIRED 0개, BENEFICIAL 8개. TABLE 2건. 게시한 그림 0개.
+
+## 24_연향중_1학기_기말_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 마무리 작업에서 그림을 만들지 않았다. 아래는 일괄 작업용 판정이고 JS에는 그림 참조가 없다(깨진 참조 없음). 고친 내용: 정답 번호 배분: 정답열이 12453 되풀이(순환)라 목표열 12343224351255354411로 바꾸고 보기를 새로 구성(바뀐 문항 q2·q3·q4·q6·q9·q10·q12·q13·q16·q17·q19·q20, 정답 값은 모두 그대로). 보기 q2·q12는 크기순으로 정리, q16·q20은 문장 보기의 순서를 옮기고 해설의 보기별 줄도 새 순서에 맞춤, q19는 정답만 음수로 드러나지 않게 -1, -3, -5, -7, -9 내림차순. 서술형 21~23번 소문항 끝을 "…구하는 과정을 서술하시오."로 통일, 해설을 판서형으로 정리(`\implies` 삭제; 검수·판서는 DeepSeek 한도로 18~23번 해설은 직접 정리). 모든 문항의 정답 값은 직접 확인했고 틀린 정답은 없었다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | BENEFICIAL | BENEFICIAL | 문제: 같은 타일을 가로 2장, 세로 3장, 가로 1장과 세로 2장으로 붙인 배열 그림이 있으면 2x, 3y, x + 2y의 대응과 '차'의 방향이 한눈에 잡힌다. 해설: 두 조건을 그림에서 2x - 3y와 x + 2y로 표시한 뒤 x = 10, y = 4, 넓이 40으로 잇는 도식이 계산 과정을 짧게 만든다. |
+| 7 | NOT_NEEDED | TABLE | 해설: 분속 120m·80m 구간의 속력·시간·거리를 표로 정리하면 식 세우기가 쉬움(표 엔진 영역) |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | BENEFICIAL |  해설: 평행이동한 직선과 x축 교점을 좌표평면에 표시하면 이동 방향과 절편을 한눈에 확인할 수 있다. |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | REQUIRED | BENEFICIAL | 문제: 직사각형 ABCD, 변 BC 위를 움직이는 점 P, 사다리꼴 APCD가 차지하는 영역을 표시한 그림이 있어야 배치를 정확히 이해할 수 있다. 해설: 직사각형에서 삼각형 ABP를 빼면 사다리꼴 APCD가 된다는 것을 그림으로 보여 주면 넓이 식의 근거가 분명해진다. |
+| 16 | NOT_NEEDED | BENEFICIAL |  해설: 좌표평면에 직선을 그려 지나는 사분면을 표시하면 ③의 참거짓 판단이 빨라진다. |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | BENEFICIAL | BENEFICIAL | 문제: 두 직선과 x축이 만드는 삼각형의 위치와 밑변·높이를 눈으로 확인하면 이해가 빠르다. 해설: 교점 (2, 2)와 x절편 4, -2를 표시한 좌표평면 그림을 함께 보이면 넓이 계산 근거가 분명해진다. |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | BENEFICIAL | BENEFICIAL | 문제: 기울기·절편의 부호에 따른 직선 개형을 스케치해 보면 사분면 판단이 쉽고 확실해진다. 해설: 기울기 양수, y절편 음수인 직선을 원래 직선과 나란히 그려 주면 ③ 판단이 즉시 확인된다. |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | BENEFICIAL |  해설: 두 직선 y = -8x+48과 y = -2x+30을 같은 좌표평면에 그려 교점 (3, 24)를 표시하면 (3)의 의미가 한눈에 들어온다. |
+
+- 문제그림 REQUIRED 1개, BENEFICIAL 3개. 해설그림 REQUIRED 0개, BENEFICIAL 7개. TABLE 1건. 게시한 그림 0개.
