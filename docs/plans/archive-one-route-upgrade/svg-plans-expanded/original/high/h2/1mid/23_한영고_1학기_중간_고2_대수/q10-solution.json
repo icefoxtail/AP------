@@ -91,27 +91,6 @@
         "factRole": "GIVEN"
       },
       {
-        "id": "P",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "O",
-          "X"
-        ],
-        "args": {
-          "length": {
-            "kind": "integer",
-            "value": "4"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "247.5"
-          },
-          "turn": "CCW"
-        },
-        "outputType": "POINT",
-        "factRole": "GIVEN"
-      },
-      {
         "id": "C",
         "op": "CIRCLE_CENTER_RADIUS",
         "inputs": [
@@ -177,7 +156,8 @@
         "labelKind": "MATH",
         "arcs": 1,
         "ring": 1,
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "side": "OUTER"
       },
       {
         "id": "a2",
@@ -191,7 +171,8 @@
         "labelKind": "MATH",
         "arcs": 1,
         "ring": 2,
-        "factRole": "DERIVED_INTERMEDIATE"
+        "factRole": "DERIVED_INTERMEDIATE",
+        "side": "OUTER"
       }
     ],
     "regions": [

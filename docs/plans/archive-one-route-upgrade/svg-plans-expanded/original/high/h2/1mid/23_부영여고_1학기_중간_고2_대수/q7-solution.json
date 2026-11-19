@@ -1,109 +1,87 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -1.5,
+      1.5
+    ],
     "viewport": [
       -2,
       2,
-      -3,
-      3
+      -2,
+      2
     ],
-    "curves": [
+    "requiredPoints": [
       {
-        "id": "odd",
-        "kind": "Y_OF_X",
-        "coefficients": [
-          "0",
-          "0",
-          "0",
-          "1"
-        ],
-        "domain": [
-          "-13/10",
-          "13/10"
-        ],
-        "color": "BLUE",
-        "label": "n 홀수"
+        "id": "O",
+        "x": "0",
+        "y": "0"
       },
       {
-        "id": "even",
-        "kind": "Y_OF_X",
-        "coefficients": [
-          "0",
-          "0",
-          "0",
-          "0",
-          "1"
-        ],
-        "domain": [
-          "-5/4",
-          "5/4"
-        ],
-        "color": "WARM",
-        "label": "n 짝수"
+        "id": "P",
+        "x": "1",
+        "y": "1"
       },
       {
-        "id": "pos",
-        "kind": "LINE",
-        "coefficients": [
-          "1",
-          "0"
-        ],
-        "domain": [
-          "-2",
-          "2"
-        ],
-        "style": "DASHED",
-        "color": "GREEN",
-        "label": "y=a"
-      },
-      {
-        "id": "neg",
-        "kind": "LINE",
-        "coefficients": [
-          "-1",
-          "0"
-        ],
-        "domain": [
-          "-2",
-          "2"
-        ],
-        "style": "DASHED",
-        "color": "GREEN",
-        "label": "y=-a"
+        "id": "R",
+        "x": "-1",
+        "y": "-1"
       }
     ],
     "axisTickValues": {
       "x": [],
       "y": []
     },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "intersectionX": [
+          "0",
+          "1"
+        ]
+      }
+    ],
     "overlays": {
-      "points": [
+      "lines": [
         {
-          "id": "P",
-          "x": "1",
-          "y": "1",
-          "coordinates": true
+          "id": "u",
+          "slope": "0",
+          "intercept": "1"
         },
         {
-          "id": "Q",
-          "x": "-1",
-          "y": "1",
-          "coordinates": true
-        },
-        {
-          "id": "R",
-          "x": "-1",
-          "y": "-1",
-          "coordinates": true
+          "id": "d",
+          "slope": "0",
+          "intercept": "-1"
         }
       ]
     }
   },
-  "caption": "y=xⁿ의 그래프와 직선 y=a의 교점이 a의 n제곱근 중 실수인 것을 나타낸다(그림은 n=3과 n=4, a=1과 a=−1인 예). n이 홀수이면 양수 a, 음수 a 모두 교점이 1개씩이므로 ㄱ은 거짓이고 ㄴ은 참이다. n이 짝수이면 양수 a에서 교점이 2개(±)이므로 ㄷ은 참이고, 음수 a에서는 교점이 없으므로 ㄹ은 참이다. 따라서 옳은 것은 ㄴ, ㄷ, ㄹ이고 답은 ④이다.",
-  "accessibilityDescription": "원점을 지나며 오른쪽 위로 올라가는 홀수 차수 곡선과 y축에 대칭인 U자 모양의 짝수 차수 곡선, 가로 점선 y=a와 y=−a가 있다. 교점 P, Q, R의 좌표가 표시되어 있다.",
+  "caption": "그림은 n이 홀수인 예 f(x)=x³(n=3)과 n이 짝수인 예 g(x)=x²(n=2)의 그래프, 그리고 직선 y=1(a=1), y=−1(a=−1)이다. a의 n제곱근 중 실수인 것은 y=xⁿ과 y=a의 교점의 x좌표이다. n이 홀수이면 양수 a, 음수 a 모두 교점이 1개씩이므로 ㄱ은 거짓이고 ㄴ은 참이다. n이 짝수이면 양수 a에서 교점이 2개(±)이므로 ㄷ은 참이고, 음수 a에서는 교점이 없으므로 ㄹ은 참이다. 따라서 옳은 것은 ㄴ, ㄷ, ㄹ이고 답은 ④이다.",
+  "accessibilityDescription": "원점을 지나는 삼차 곡선 f와 이차 곡선 g가 있고, 가로선 y=1과 y=−1이 그려져 있다. y=1은 f와 g를 지나고 y=−1은 f만 지난다.",
   "newVisualInformation": [
-    "홀수 차수 곡선은 y=a, y=−a와 한 점씩, 짝수 차수 곡선은 y=a와 두 점, y=−a와 만나지 않음을 보여 n제곱근의 실수 개수를 읽게 한다."
+    "홀수 거듭제곱 f(x)=x³과 짝수 거듭제곱 g(x)=x²를 직선 y=1, y=−1과 비교해 실수인 n제곱근의 개수(홀수 1개, 짝수 양수 2개·음수 0개)를 읽게 한다."
   ],
   "sourceConditions": [
     {

@@ -111,22 +111,14 @@
       },
       {
         "id": "M",
-        "op": "SOURCE_POINT",
-        "inputs": [],
-        "args": {
-          "coordinates": [
-            {
-              "kind": "integer",
-              "value": "2"
-            },
-            {
-              "kind": "integer",
-              "value": "0"
-            }
-          ]
-        },
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "O"
+        ],
+        "args": {},
         "outputType": "POINT",
-        "factRole": "GIVEN"
+        "factRole": "DERIVED_INTERMEDIATE"
       },
       {
         "id": "C1",
@@ -277,9 +269,6 @@
     "width": 640,
     "height": 420
   },
-  "hiddenPointNames": [
-    "X"
-  ],
   "rightAngles": [
     {
       "id": "rP",
@@ -300,7 +289,7 @@
           "P"
         ],
         "value": 30,
-        "label": "30°",
+        "label": "30",
         "arcs": 1,
         "style": "ARC"
       }
