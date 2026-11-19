@@ -2130,7 +2130,9 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
     return jsonResponse({
       success: true,
       timetable_version: await withAutoApplyArmed(env, version),
-      timetable_version_classes: versionClasses,
+      // 자동 갱신이 반을 추가(운영에서 새로 연 반)하거나 삭제 처리(운영에서 닫힌 반)할 수 있으므로 갱신 뒤에 다시 읽는다.
+      // 갱신 전에 읽은 목록을 내려 주면 "새 반 추가" 알림은 뜨는데 표에는 그 반이 다시 열 때까지 안 보인다.
+      timetable_version_classes: await listVersionClasses(env, id),
       timetable_classes: renderableVersionClasses.map(versionClassCompatClassRow),
       timetable_version_slots: await listSlots(env, id, null, { renderableOnly: true }),
       timetable_version_student_assignments: await listStudentAssignments(env, id, null, { renderableOnly: true }),

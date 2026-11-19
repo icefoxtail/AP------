@@ -234,6 +234,9 @@ function buildDb() {
   assert.strictEqual(sync.added.find(x => x.student_id === 's10').class_name, vcOf('c5').name_snapshot);
   assert.deepStrictEqual(sync.added_classes.map(c => c.name), [vcOf('c5').name_snapshot]);
   assert.strictEqual(vcOf('c5').status, 'draft');
+  // 같은 응답의 반 목록에 방금 가져온 반이 들어 있어야 화면이 다시 열지 않고도 그 반을 그린다.
+  assert.ok(opened.body.timetable_version_classes.some(c => c.source_class_id === 'c5'), '자동 갱신으로 가져온 반은 같은 응답의 반 목록에 있어야 한다');
+  assert.ok(opened.body.timetable_classes.some(c => c.source_class_id === 'c5'));
   assert.deepStrictEqual(all('SELECT start_time FROM timetable_version_slots WHERE version_id = ? AND version_class_id = ?', vid, vcOf('c5').id).map(r => r.start_time), ['16:00'], '새 반의 슬롯도 현재 운영 슬롯에서 복사');
   assert.deepStrictEqual(sync.removed.map(x => x.student_id), ['s2']);
   assert.deepStrictEqual(sync.moved.map(x => x.student_id), ['s3']);
