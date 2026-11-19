@@ -164,9 +164,9 @@ export function applyJudgments({
     const q = newBank.find(b => b.id === it.sourceOrdinal);
     const j = check.judgments.get(q.id);
     const after = { ...it.after };
-    for (const f of ['standardCourse', 'curriculum', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'difficultyBucket']) after[f] = q[f];
+    for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'difficultyBucket']) after[f] = q[f];
     delete after.level;
-    for (const k of ['curriculumKey', 'difficultyBasis', 'rpmPrimaryRecordIds', 'rpmPrimary', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete after[k];
+    for (const k of ['difficultyBasis', 'rpmPrimaryRecordIds', 'rpmPrimary', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete after[k];
     if (q.rpmPrimaryRecordId) after.rpmPrimaryRecordId = q.rpmPrimaryRecordId;
     after.difficultyConfidence = j.difficultyConfidence;
     after.difficultyBoundaryFlag = j.difficultyBoundaryFlag;

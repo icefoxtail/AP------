@@ -339,6 +339,9 @@ test('a field outside the value contract is not rejected; its name is reported i
   const result = await buildSourceMetadataCandidate(f.opts);
   assert.ok(result.unstoredFields.includes('userWrapper'));
   assert.equal(result.unstoredFields.includes('courseKey'), false, 'a stored field is not reported as unstored');
+  // a later call in the same process does not inherit the earlier call's names
+  const g = fixture(t);
+  assert.deepEqual((await buildSourceMetadataCandidate(g.opts)).unstoredFields, []);
 });
 
 test('parent labels are newly authored only from exact current public parent records', t => {

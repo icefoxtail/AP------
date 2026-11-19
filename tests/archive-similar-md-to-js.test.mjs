@@ -85,7 +85,7 @@ test('convertSimilarExam: 구글 원형 입력을 원문 그대로 복원하고 
     // RPM 은 변환기가 정하지 않는다
     assert.equal(Object.keys(bank[0]).some(k => k.startsWith('rpmPrimary')), false);
     // 같은 값을 여러 칸에 쓰지 않는다
-    assert.equal(Object.keys(bank[0]).some(k => ['originalCategory', 'curriculumKey'].includes(k)), false);
+    assert.equal(Object.keys(bank[0]).some(k => k === 'originalCategory'), false);
 
     const metaDoc = JSON.parse(fs.readFileSync(path.join(outDir, '99_테스트중_1학기_중간_중2_유사.meta-q01-q02.json'), 'utf8'));
     assert.equal(metaDoc.schemaVersion, 'archive-reviewed-exam-meta-register-request-v2');
@@ -95,7 +95,6 @@ test('convertSimilarExam: 구글 원형 입력을 원문 그대로 복원하고 
     assert.equal(new Set(metaDoc.items.map(i => i.questionUid)).size, 2);
     for (const it of metaDoc.items) {
       for (const k of ['primaryMethod', 'decisiveStep', 'ptTplCandidate']) assert.equal(k in it, false, `항목 위 사본 ${k} 를 쓰지 않는다`);
-      assert.equal('curriculumKey' in it.after, false);
     }
     assert.equal(result.examStatus.releasable, true);
   } finally {

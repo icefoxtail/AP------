@@ -396,6 +396,7 @@ export function convertSimilarExam({
       category,
       standardCourse: meta.standardCourse ?? '',
       curriculum,
+      curriculumKey: meta.curriculumKey ?? curriculum,
       courseKey: meta.courseKey ?? '',
       standardUnitKey: suKey,
       standardUnit,
@@ -432,7 +433,7 @@ export function convertSimilarExam({
     if (missing.length) incompleteByQid[qid] = missing;
 
     const after = {};
-    for (const f of ['standardCourse', 'curriculum', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder',
+    for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder',
       'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'crossConceptKeys', 'conditionKeys',
       'integrationPattern', 'difficultyBucket']) after[f] = qItem[f];
     after.difficultyConfidence = meta.difficultyConfidence ?? '';

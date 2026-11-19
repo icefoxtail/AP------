@@ -288,7 +288,7 @@ test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없�
       assert.equal('levelBasis' in it.after, false);
       assert.equal(it.after.difficultyBoundaryFlag, i === 0 ? 'NONE' : 'B12');
       for (const k of ['difficultyConfidence', 'difficultyBoundaryFlag', 'difficultyReason', 'ptTplCandidate']) assert.equal(k in it, false, `항목 위 사본 ${k} 를 쓰지 않는다`);
-      for (const k of ['curriculumKey', 'difficultyBasis', 'rpmPrimary', 'rpmPrimaryRecordIds', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4']) assert.equal(k in it.after, false, `after 사본 ${k} 를 쓰지 않는다`);
+      for (const k of ['difficultyBasis', 'rpmPrimary', 'rpmPrimaryRecordIds', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4']) assert.equal(k in it.after, false, `after 사본 ${k} 를 쓰지 않는다`);
       assert.equal(it.after.rpmPrimaryRecordId, j[i + 1].rpmRecordId);
       assert.equal(it.after.visualNecessity.problem, 'EXEMPT');
       assert.ok(it.after.visualNecessity.problemReason);

@@ -808,6 +808,7 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
 
 /** Inspects immutable Git objects only. No code from the input branch is loaded. */
 export function inspectSourceMetadataCandidate({ repoRoot, inputCommit, eventRef }) {
+  UNSTORED_FIELDS.clear();
   requireThat(typeof repoRoot === 'string' && fs.existsSync(repoRoot), 'REPOSITORY_REQUIRED');
   const root = fs.realpathSync(repoRoot);
   requireThat(SHA1.test(inputCommit || ''), 'INPUT_COMMIT_REQUIRED');
