@@ -444,17 +444,17 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형의 세 변의 길이가 각각 $5\\,\\mathrm{cm}$, $x\\,\\mathrm{cm}$, $11\\,\\mathrm{cm}$이고, $11\\,\\mathrm{cm}$가 가장 긴 변일 때, $x$의 값으로 가능한 것은? [4점]",
     "choices": [
+      "$4$",
+      "$5$",
       "$6$",
-      "$7$",
       "$8$",
-      "$9$",
-      "$10$"
+      "$12$"
     ],
-    "answer": "③",
+    "answer": "④",
     "points": 4,
     "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
     "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
-    "solution": "[키포인트] 삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 반드시 작아야 한다.\n문제에서 가장 긴 변의 길이가 $11\\,\\mathrm{cm}$이므로,\n$11 < 5 + x$\n즉 $x > 6$이어야 한다.\n또한 $11\\,\\mathrm{cm}$가 가장 긴 변이므로 $x \\le 11$이어야 한다.\n따라서 $x$의 범위는 $6 < x \\le 11$이다.\n보기 중 이 범위를 만족하는 값은 $8$뿐이다.\n- $4, 5, 6$은 $x \\le 6$이므로 두 변의 합이 $11$ 이하가 되어 삼각형이 만들어지지 않는다.\n- $12$는 가장 긴 변이 $11$이라는 조건에 모순된다.\n따라서 정답은 ③이다.",
+    "solution": "[키포인트] 삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 반드시 작아야 한다.\n문제에서 가장 긴 변의 길이가 $11\\,\\mathrm{cm}$이므로,\n$11 < 5 + x$\n즉 $x > 6$이어야 한다.\n또한 $11\\,\\mathrm{cm}$가 가장 긴 변이므로 $x \\le 11$이어야 한다.\n따라서 $x$의 범위는 $6 < x \\le 11$이다.\n보기 중 이 범위를 만족하는 값은 $8$뿐이다.\n- $4, 5, 6$은 $x \\le 6$이므로 두 변의 합이 $11$ 이하가 되어 삼각형이 만들어지지 않는다.\n- $12$는 가장 긴 변이 $11$이라는 조건에 모순된다.\n따라서 정답은 ④이다.",
     "image": null,
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
