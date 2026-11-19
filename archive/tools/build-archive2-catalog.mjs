@@ -8,6 +8,7 @@ import { materializePackageShards } from "./materialize-archive-package-shards.m
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
@@ -429,17 +430,8 @@ for (const exam of exams) {
       if (!foundationScoped && !reviewedLegacySimilar && foundationProjectionFields.has(field)) continue;
       const sourceValue = question[field],
         value = validJoin ? meta[field] : undefined;
-      if (
-        sourceValue !== undefined &&
-        sourceValue !== null &&
-        String(sourceValue).trim() !== "" &&
-        value !== undefined &&
-        JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar &&
-        // 유형(PT/TPL)은 등록된 판정이 시험지 JS에 적힌 값보다 우선한다(2026-11-20, 사용자: 있으면 보이고 쉽게 등록). 적힌 값과 다른 것은 충돌이 아니다.
-        // 적힌 값은 typeApproval.examEmbeddedType에 기록으로 남는다. 다른 필드의 충돌 판정은 그대로다.
-        field !== "problemTypeKey" && field !== "templateKey"
-      )
+      // 유형(PT/TPL)은 시험지 JS에 적힌 값과 달라도 충돌이 아니다(metadata-conflict-field.mjs). 다른 필드의 충돌 판정은 그대로다.
+      if (isMetadataConflict(field, sourceValue, value, { metaV2Sidecar }))
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
     }

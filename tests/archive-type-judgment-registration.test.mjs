@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
 import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
+import { isMetadataConflict } from "../archive/tools/metadata-conflict-field.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CANON = "archive/data/meta-foundation/canonical";
@@ -615,4 +616,19 @@ test("a request is refused when a stem or the choices changed, or when an item h
   }
   const f = fixture(t);
   assert.throws(() => f.run(f.request([{ ...f.item(1, { problemTypeKey: "PT_A" }), textBindingFingerprint: undefined }]), { write: true }), /stem or choices differ from the judged text.*uid1/);
+});
+
+test("catalog conflict rule: the two type fields never count as a conflict, every other field keeps the old rule", () => {
+  // 유형 두 필드: 시험지 JS에 적힌 값과 행 값이 달라도 충돌이 아니다(등록 판정 유무와 무관, 값은 행 그대로 보인다).
+  assert.equal(isMetadataConflict("problemTypeKey", "PT_A", "PT_B"), false);
+  assert.equal(isMetadataConflict("templateKey", "TPL_A", "TPL_B"), false);
+  // 다른 필드: 둘 다 값이 있고 다르면 충돌.
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상"), true);
+  assert.equal(isMetadataConflict("reviewStatus", "reviewed_pass", "review_required"), true);
+  // 같거나, 시험지 쪽이 비었거나, 행 쪽 값이 없거나, 사이드카 행이면 충돌이 아니다.
+  assert.equal(isMetadataConflict("difficultyBucket", "상", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", null, "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", undefined), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상", { metaV2Sidecar: true }), false);
 });
