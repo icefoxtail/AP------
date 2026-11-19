@@ -234,6 +234,9 @@ function buildDb() {
   assert.strictEqual(sync.added.find(x => x.student_id === 's10').class_name, vcOf('c5').name_snapshot);
   assert.deepStrictEqual(sync.added_classes.map(c => c.name), [vcOf('c5').name_snapshot]);
   assert.strictEqual(vcOf('c5').status, 'draft');
+  // 같은 응답의 반 목록에 방금 가져온 반이 들어 있어야 화면이 다시 열지 않고도 그 반을 그린다.
+  assert.ok(opened.body.timetable_version_classes.some(c => c.source_class_id === 'c5'), '자동 갱신으로 가져온 반은 같은 응답의 반 목록에 있어야 한다');
+  assert.ok(opened.body.timetable_classes.some(c => c.source_class_id === 'c5'));
   assert.deepStrictEqual(all('SELECT start_time FROM timetable_version_slots WHERE version_id = ? AND version_class_id = ?', vid, vcOf('c5').id).map(r => r.start_time), ['16:00'], '새 반의 슬롯도 현재 운영 슬롯에서 복사');
   assert.deepStrictEqual(sync.removed.map(x => x.student_id), ['s2']);
   assert.deepStrictEqual(sync.moved.map(x => x.student_id), ['s3']);
@@ -304,7 +307,10 @@ function buildDb() {
   assert.strictEqual(get("SELECT status FROM timetable_versions WHERE id = ?", vid).status, 'active');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c4'").is_active, 0, '삭제한 반의 원래 운영 반이 비활성화된다');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c1'").is_active, 0);
-  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c3'").is_active, 1, '졸업(excluded) 반은 기존대로 운영에 그대로 둔다');
+  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c3'").is_active, 0, '졸업(excluded) 반은 적용하면 운영에서도 닫힌다');
+  assert.strictEqual(get("SELECT COUNT(*) AS n FROM class_students WHERE class_id = 'c3'").n, 0, '닫힌 졸업 반에는 반배정이 남지 않는다');
+  assert.strictEqual(activated.body.graduated_class_count, 1);
+  assert.strictEqual(get("SELECT status FROM students WHERE id = 's5'").status, '재원', '졸업 반 학생의 재원 상태는 건드리지 않는다');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c5'").is_active, 0, '가져온 새 운영 반은 적용되어 원래 운영 반은 닫힌다');
   assert.strictEqual(get("SELECT COUNT(*) AS n FROM class_students WHERE class_id = 'c4'").n, 0);
   const applied = all(`SELECT cs.student_id, c.name FROM class_students cs JOIN classes c ON c.id = cs.class_id WHERE c.promotion_version_id = ?`, vid);
