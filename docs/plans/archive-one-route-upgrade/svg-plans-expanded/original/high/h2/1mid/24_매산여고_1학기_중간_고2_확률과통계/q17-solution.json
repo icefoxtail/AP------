@@ -1,0 +1,33 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 8,
+    "cell": "PAIR",
+    "highlight": {
+      "expr": "a-b",
+      "in": [
+        -7,
+        -6,
+        -5,
+        -4,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "caption": "8등분한 원판의 두 수를 차례로 (a, b)로 놓은 8×8 표에서 두 수의 차가 4 이상인 칸을 칠했다. 차가 4, 5, 6, 7인 칸은 각각 8, 6, 4, 2칸이므로 모두 20칸이다. 전체 64칸 중 확률은 20/64=5/16이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "화살을 두 번 쏜 결과 (a, b)를 가로세로로 놓은 8×8 표이며 두 수의 차가 4 이상인 칸이 대각선에서 먼 두 모서리 쪽에 칠해져 있다.",
+  "newVisualInformation": [
+    "차가 4 이상인 20칸이 대각선에서 먼 두 모서리에 몰려 한눈에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 8등분한 원판의 각 영역에 1부터 8까지의 자연수가 각각 하나씩 적혀 있다. 이 원판을 회전시킨 후 화살을 2번 쏘았을 때, 화살이 꽂힌 영역에 적힌 두 수의 차가 3보다 클 확률을 구하면? (단, 화살은 반드시 원판 내부에 꽂히며, 경계선에 꽂히지 않는다.) [4.3점]<p><img src=\"assets/images/24_매산여고_1학기_중간_고2_확률과통계/q17.png\" class=\"question-img\" alt=\"문제 17 그림\"></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
