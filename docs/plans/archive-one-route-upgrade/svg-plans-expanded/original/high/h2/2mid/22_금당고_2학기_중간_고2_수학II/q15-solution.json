@@ -1,0 +1,229 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lA",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "2"
+              }
+            ]
+          },
+          "b": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "expression",
+              "op": "mul",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "3"
+                },
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sBD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [
+    "lA"
+  ],
+  "rightAngles": [
+    {
+      "id": "rC",
+      "refs": [
+        "A",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "caption": "예: t=4일 때를 그린다. A(4,4√2), B(8,0)이고 AB의 중점은 C(6,2√2)이다. AB의 기울기가 -√2이므로 C를 지나 AB에 수직인 직선의 기울기는 1/√2이고, 직선 x=8과 만나는 점은 D(8,3√2)이다. 이때 f(4)=CD=√6이다. 일반적으로 CD=(√6/4)t이므로 극한은 (t²-16)/((√6/4)(t-4))에서 t→4일 때 32/√6=(16/3)√6이다. 따라서 m+n=19이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 직선 $y=\\sqrt{2}x$ 위의 점 $\\mathrm{A}(t, \\sqrt{2}t)(t > 0)$과 $x$축 위의 점 $\\mathrm{B}(2t, 0)$이 있다. 선분 $\\mathrm{AB}$의 중점을 $\\mathrm{C}$라 하고, 점 $\\mathrm{C}$를 지나고 선분 $\\mathrm{AB}$에 수직인 직선이 직선 $x=2t$와 만나는 점을 $\\mathrm{D}$라 하자. 선분 $\\mathrm{CD}$의 길이를 $f(t)$라 할 때,\n$$\\lim_{t \\to 4} \\frac{t^2-16}{f(t)-\\sqrt{6}} = \\frac{m}{n}\\sqrt{6}\\text{이다. } m+n\\text{의 값을 구하면?} [4.8점]\n(\\text{단, } m, n\\text{ 은 서로소인 자연수이다.})\n<img src=\"assets/images/22_금당고_2학기_중간_고2_수학II/q15.png\" alt=\"22_금당고_2학기_중간_고2_수학II Q15\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=4일 때 직선 y=√2x 위의 A, x축 위의 B, 중점 C, 수선과 x=8의 교점 D와 선분 CD를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=4인 예에서 점 A, B, 중점 C, AB에 수직인 CD가 x=2t와 만나는 점 D, 길이 CD=√6을 보인다."
+  ],
+  "accessibilityDescription": "원점을 지나는 기울기가 양수인 직선 위의 점 A와 x축 위의 점 B를 잇는 선분과, 그 중점 C에서 선분에 수직으로 그어진 선분 CD, B에서 D로 이어진 세로 선분이 그려져 있고 C에 직각 표시가 있다."
+}
