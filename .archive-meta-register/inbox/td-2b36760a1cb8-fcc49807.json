@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2b36760a1cb8-fcc49807",
+  "examUid": "19_팔마고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/19_팔마고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "981031846d579888d61d1ac98e14ed74fa5d86ba",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2b36760a1cb8-fcc49807.type-ledger.json",
+        "sha256": "a74ee62ec31fe939a39920ad6a096cd2ee28f7bf9b1c2d739e4fc669968e3e53"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_5138adccff0b921af2ae91e278118cc42d4ab8ad3b1db2ea58f20745c9992402",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC"
+      },
+      "rationale": "x−2/x=2에서x+2/x=2√3,양의세제곱대칭합과제곱합을변형하면전체16√3. 해설의x²=2x+2반복환원으로도16x−16이된다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "9d91d09b9bef5b98e1f9051e9a65c6ce878f9ad6c1df7978798ac50aa0fcca9d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2b36760a1cb8-fcc49807.type-ledger.json",
+          "sha256": "a74ee62ec31fe939a39920ad6a096cd2ee28f7bf9b1c2d739e4fc669968e3e53"
+        }
+      ]
+    }
+  ]
+}

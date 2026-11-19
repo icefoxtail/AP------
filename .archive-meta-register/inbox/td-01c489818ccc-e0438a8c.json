@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-01c489818ccc-e0438a8c",
+  "examUid": "이차방정식_중3_이차방정식의활용문해력_유형",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/middle/m3/이차방정식_중3_이차방정식의활용문해력_유형.js",
+  "expectedSourceBlobSha1": "bbeed01848c6c72474bdb6981a9dc1d766cf7612",
+  "expectedQuestionCount": 16,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-01c489818ccc-e0438a8c.type-ledger.json",
+        "sha256": "31ff4b4e9eaa7955d6dd9b8c5c68639225389f324315adf4a8177f871496db1e"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f52664e10dc36692c209117c15b3251e690bcaa240b2b5aaff6fdcad0b66270d",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+        "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY"
+      },
+      "rationale": "처음 줄수와 의자수를 x로 두면 (x-4)(x+3)=x²-36. 이차항이 소거되어 -x-12=-36에서 x=24.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "a0d35a665586913387f84f6426f754d9ad3d74cc55dafd55e594b349c57902b1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-01c489818ccc-e0438a8c.type-ledger.json",
+          "sha256": "31ff4b4e9eaa7955d6dd9b8c5c68639225389f324315adf4a8177f871496db1e"
+        }
+      ]
+    }
+  ]
+}

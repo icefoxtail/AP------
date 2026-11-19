@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-3d28566b11db-afac149c",
+  "examUid": "25_팔마고_1학기_기말_고1_유사1",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "similar/high/h1/1final/25_팔마고_1학기_기말_고1_유사1.js",
+  "expectedSourceBlobSha1": "9f531f2192df3824606e33daf63114c6ecf8f27e",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3d28566b11db-afac149c.type-ledger.json",
+        "sha256": "49b99a31cd0f45bc5111fbaf0d19d48cb8e01bc819262765d4ff1fd1e03f3d28"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cad74121fb31872063f7b66afbd61f2516d7f17f61da066d2ac19cecbfe1d59c",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+        "templateKey": "TPL_H1_INEQUALITY_APPLICATION_GEOMETRY"
+      },
+      "rationale": "최장변이10또는x인경우예각조건을적용하면6<x<√164,정수7~12의6개.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "0240a32956a9212babbb3407330d5799a198eb18a4c53e47a686e953006743aa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3d28566b11db-afac149c.type-ledger.json",
+          "sha256": "49b99a31cd0f45bc5111fbaf0d19d48cb8e01bc819262765d4ff1fd1e03f3d28"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "tc-2c9686447244-99ba19f9",
+  "examUid": "21_강남여고_1학기_기말_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1final/21_강남여고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "9cdb95597e1a2be112619e801bfe62fb36028930",
+  "expectedQuestionCount": 27,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+        "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_LIMIT_VALUE_CALC_DOMINANCE"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_LIMIT_VALUE_CALC_DOMINANCE",
+        "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "canonicalLabelKo": "지배항",
+        "definition": "거듭제곱 밑의 크기 또는 수열 최고차항으로 정규화하여 무한대 극한을 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_38c44e82c285f79b90aa23c3add0115936076ca6a6b7c38c1567ff8be34474ef"
+        ],
+        "sourceUnits": [
+          "H15-CALC-01"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_LIMIT_VALUE_CALC_DOMINANCE",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_LIMIT_VALUE_CALC_STANDARD"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_LIMIT_VALUE_CALC_STANDARD",
+        "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "canonicalLabelKo": "기본 극한",
+        "definition": "지수·로그·삼각함수의 입력을 치환하여 표준 기본극한으로 환원한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_8666446c0d0c6e6087720875d3069ac95e3d23e4376424ffa6e3457782df0ecd",
+          "qid_v1_eec6272a15b3c5232fca58d5de2d69d8876c244516d2e3822744102221605bca"
+        ],
+        "sourceUnits": [
+          "H15-CALC-03",
+          "H15-CALC-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_LIMIT_VALUE_CALC_STANDARD",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_LINE_EQUATION_DIRECTION"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+        "parentProblemTypeKey": "PT_LINE_EQUATION",
+        "canonicalLabelKo": "점과 방향벡터 직선식",
+        "definition": "주어진 점과 방향벡터로 직선의 매개식 또는 일반식을 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "GEOMETRY_EQUATIONS",
+        "supportingItemCount": 2,
+        "supportingQuestionUids": [
+          "qid_v1_dd7ce575b8a6593b9dd3c2c90d648cf46bc26afbc2cacb60fd675c43ae162edc",
+          "qid_v1_feb1fd3a0f89caafaf0cfd5f51d8c50023232be7b11dbc5ae07b811988e6d294"
+        ],
+        "sourceUnits": [
+          "H22-GE-08"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_LINE_EQUATION_DIRECTION",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT",
+        "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+        "canonicalLabelKo": "통계량 검토",
+        "definition": "실제 자료의 평균·중앙값·최빈값을 계산하고 정의와 자료 해석에 관한 진술을 판정한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 4,
+        "supportingQuestionUids": [
+          "qid_v1_39cb0d1e17060301282f41e27e6aac0036301fc6df71ac49709da5c864b41250",
+          "qid_v1_48dd5d50cc3aee6da1d09dcd93be4ad8c9ae0494ef8cfc69a68020fd9cc4886f",
+          "qid_v1_9adc52d7f443d11d4b2804b7585f76b55f81711e9b9d182539ee0e723f76665c",
+          "qid_v1_e1cf9a97232565aac869ad514848c7d0e4fd515ee1feddd8b7a382180d8e9ee9"
+        ],
+        "sourceUnits": [
+          "M3-07"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_M1_CENTRAL_TENDENCY_AUDIT",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
+        "parentProblemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+        "canonicalLabelKo": "직선 교점 넓이",
+        "definition": "중2 시험지에서 직선들의 교점과 절편을 구하고 좌표차를 밑변·높이로 삼각형 넓이를 계산한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE1",
+        "supportingItemCount": 3,
+        "supportingQuestionUids": [
+          "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
+          "qid_v1_1e86fe684aa9067c7eddbc36fb97d94976245e41e50eedb231e3e6421de897a7",
+          "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520"
+        ],
+        "sourceUnits": [
+          "M2-04"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle-geometry/taxonomy.json",
+      "collection": "templates",
+      "match": {
+        "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH"
+      },
+      "before": null,
+      "after": {
+        "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+        "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "canonicalLabelKo": "반지름과 현",
+        "definition": "반지름·접선·현의 수직 관계로 직각삼각형을 만들고 제곱식 방정식으로 반지름·길이·넓이를 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "MIDDLE_GEOMETRY",
+        "supportingItemCount": 9,
+        "supportingQuestionUids": [
+          "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+          "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+          "qid_v1_2e139761a3219a8d493129b08d4d26866eae617586f605ec72cffc586886d563",
+          "qid_v1_695a4f7ba271112e7c6b9646d4d740eaa405ba0255d91b2b518012577388fa97",
+          "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+          "qid_v1_98254ca4e48810015fa935f5adc121379ea82507740d508f1705b98e398e9894",
+          "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+          "qid_v1_df0d572b86b671ec55d9b1a01bcfc8e698cacb59cd1c80fca3b3a8c0006ad495",
+          "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28"
+        ],
+        "sourceUnits": [
+          "M3-06"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "questionUid": "qid_v1_912ba2fc6d150762b556d9880d85444a8990a70aaf28c626bb310c6bc8d2df68",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_INEQUALITY",
+        "templateKey": "TPL_H1_QUADRATIC_INEQUALITY_SIGN_INTERVAL"
+      },
+      "rationale": "그림의 절편 곱으로 b=−24, 대칭축 −5로 a=10을 얻어 (x+12)(x−2)<0의 정수해는 13개.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "26e3579db7126f01d9ac50de5b5ded743ba816564f9dfe2aff079fa0800fbb41",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ecdbe5c98a5901a8211306b8898c680c110fb8f5aa880e7d196c0c69d02d5171",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR"
+      },
+      "rationale": "두 원 중심을 이은 선분의 중점 (0,3)과 수직 기울기 −1로 대칭축 y=−x+3을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "b8074ca3fbe4961ed6fefc9aedebb531a2e29ca8e4f983297b4f1b0e6f805b70",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-2c9686447244-99ba19f9.type-ledger.json",
+          "sha256": "d2abd4164b6a84eb0774f5a70eb45c3bc57d2e78d08c3916186c98b528e35b95"
+        }
+      ]
+    }
+  ]
+}

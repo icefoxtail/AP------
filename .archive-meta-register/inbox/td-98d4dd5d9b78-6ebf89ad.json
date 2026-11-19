@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-98d4dd5d9b78-6ebf89ad",
+  "examUid": "22_풍덕중_1학기_기말_중3_기출c",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/22_풍덕중_1학기_기말_중3_기출c.js",
+  "expectedSourceBlobSha1": "fde440eb4c4fa43c8c24c2a83b6610fd5d62c218",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-98d4dd5d9b78-6ebf89ad.type-ledger.json",
+        "sha256": "bcf4c94d3a9577f75ca73ce151a6a9f43d88ce6a31ec24c7eed43979aa37edb4"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_15d848666f50cf46fb84567e68d22fc794b9da09c7dddd22de565067409cb8f3",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "외곽 변을 t,12-t로 나눈 직각삼각형에 제곱관계 t²+(12-t)²=100을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "6936e4e15d73a1f44250b72f22b1e10e14ce7d3f02cc2936e0f0caed94f7c993",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-98d4dd5d9b78-6ebf89ad.type-ledger.json",
+          "sha256": "bcf4c94d3a9577f75ca73ce151a6a9f43d88ce6a31ec24c7eed43979aa37edb4"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4437075a390b56ecb0ac720b0c952ea0bc03e8bc192664f73cf678f1bc7dbc9e",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+      },
+      "rationale": "직사각형 대응변비 2:x=(2+x):2를 세워 양수 길이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "9eda8b15b4d70cd09ac8a43af6fe7cc0401de4a38a2b339ea314ec3eca6eb8ea",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-98d4dd5d9b78-6ebf89ad.type-ledger.json",
+          "sha256": "bcf4c94d3a9577f75ca73ce151a6a9f43d88ce6a31ec24c7eed43979aa37edb4"
+        }
+      ]
+    }
+  ]
+}
