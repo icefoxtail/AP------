@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-3ea9e800ca31-250b7688",
+  "examUid": "23_한영고_1학기_중간_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/23_한영고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "05dc98d3f26d0f18ffdb12b6b749c4e6923a17fe",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3ea9e800ca31-250b7688.type-ledger.json",
+        "sha256": "13a2f172639c78a627734483f657513ef918143995ec8e8a58a20147f79a4056"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_54d98659b7f906ba8994ef5e842733614c1abedfea6cf5a3360df9de922f573e",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY"
+      },
+      "rationale": "밑을 2로 통일해 지수의 크기 관계를 두 그래프의 위치 관계로 바꾼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "대수"
+      },
+      "textBindingFingerprint": "76369f973eecba5755fdba8a87272360593f28567b6800f160d181673e85e7a1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3ea9e800ca31-250b7688.type-ledger.json",
+          "sha256": "13a2f172639c78a627734483f657513ef918143995ec8e8a58a20147f79a4056"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-122f9c501dac-34f4219e",
+  "examUid": "20_매산고_1학기_중간_고2_수학I",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js",
+  "expectedSourceBlobSha1": "44004e7ff48823ef125513e259216727fc66f685",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-122f9c501dac-34f4219e.type-ledger.json",
+        "sha256": "ebfa4f29cd489984b0282395f1d00d36369f343344abca90515bb55d5177c6d1"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_fa0842d1fe2b81c8b59f6f875db8d2e9ba5a093a39e3fefc8cb3686a707ab116",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_EXPONENT_CALCULATION"
+      },
+      "rationale": "근호를 소인수의 유리수 지수로 바꾸어 지수를 비교해 a,b를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학I"
+      },
+      "textBindingFingerprint": "e29251ff23ab0858ffd0a8764582a96fabb443809ae6b38307621c9e2b721d70",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-122f9c501dac-34f4219e.type-ledger.json",
+          "sha256": "ebfa4f29cd489984b0282395f1d00d36369f343344abca90515bb55d5177c6d1"
+        }
+      ]
+    }
+  ]
+}

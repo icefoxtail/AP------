@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-53ebda1884b0-10dff170",
+  "examUid": "24_왕운중_1학기_기말_중3_기출c",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/24_왕운중_1학기_기말_중3_기출c.js",
+  "expectedSourceBlobSha1": "bd911c6ff6f074c80dd4e2f7b0dd95e6bc351880",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-53ebda1884b0-10dff170.type-ledger.json",
+        "sha256": "9c63a38f30858efa530f24372b3d9ddea7a19725376289bfe72550721ea30f58"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_f0b1687cdcb0870e2e6b3196232a3b75f6a101cf71fcabe94125b1ea25d769e6",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT"
+      },
+      "rationale": "(2x-4)(x+5)=0은 영인자 성질로, (x-4)^2=16은 제곱근으로 풀어 해를 모두 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "1842ffcd37dd11f4b43c9084af502d9ec5068a423b45c96ee640f8d6f77ad45f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-53ebda1884b0-10dff170.type-ledger.json",
+          "sha256": "9c63a38f30858efa530f24372b3d9ddea7a19725376289bfe72550721ea30f58"
+        }
+      ]
+    }
+  ]
+}

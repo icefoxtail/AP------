@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-8c9a828dfae9-d58cdd2e",
+  "sourceArchiveFile": "original/high/h2/1mid/20_매산여고_1학기_중간_고2_수학I.js",
+  "judge": "claude-sonnet-5.5",
+  "resultSource": {
+    "branch": "data/type-judgment-r-20261120",
+    "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bdbf7fbbc7add1359fa102c437b7d918e7134c30ec0514b2e99b0e6b117c618d",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "templateKey": null,
+      "step": "진수 조건 x>-1을 확인하며 로그방정식 f(3x+6)=2f(x)를 푼다.",
+      "note": "Claude(Sonnet 5.5) 직접 판독 재판정 2026-11-20: 문항 발문·보기·해설을 읽고 문항의 실제 과정에서 쓰는 등록부 키로 판정",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    }
+  ]
+}
