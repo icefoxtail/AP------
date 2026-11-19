@@ -6,7 +6,8 @@
 //   node archive/tools/geometry-equation/production/render-plan.mjs --manifest <packetDir> --out <outDir> [--packet-dir <dir>]
 //     (<packetDir>.manifest.json lists items[{dir,sourcePath,ordinal,...}]; each plan is <packetDir>/<dir>/plan.json)
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';import {fileURLToPath,pathToFileURL} from 'node:url';
-import {pythonWorker} from './worker.mjs';
+import {pythonWorker,closeWorkers} from './worker.mjs';
+import {enableBrowserReuse,closeSharedBrowser} from '../visual-browser-runtime.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
 import {isPlaneFigure} from './plane-marks.mjs';
@@ -469,7 +470,12 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir,forceSize
 
 const line=(r,name)=>JSON.stringify({item:name,status:r.status,stage:r.stage,detail:typeof r.detail==='string'?r.detail.slice(0,160):r.detail,fallback:Array.isArray(r.fallback)?r.fallback.map(f=>f.to).join('>'):undefined,code:r.code,hint:r.hint?.[0]?r.hint[0].slice(0,160):undefined,fix:r.fix?.length?true:undefined});
 
+// One command run keeps one Chrome and one python host alive across its items (GEOMETRY_BROWSER_REUSE=0 / GEOMETRY_WORKER_REUSE=0 turn that off); both close when the run ends.
 async function main(argv){
+  enableBrowserReuse();
+  try{return await runMain(argv);}finally{await closeSharedBrowser();closeWorkers();}
+}
+async function runMain(argv){
   const args={};
   for(let i=0;i<argv.length;i++){if(argv[i].startsWith('--'))args[argv[i].slice(2)]=argv[++i];}
   if(!args.out||!(args.manifest||(args.item&&args.plan))){

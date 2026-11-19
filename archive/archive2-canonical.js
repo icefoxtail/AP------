@@ -1584,7 +1584,10 @@
           !text(receipt.approval.approvedBy) || receipt.approval.type === "REVIEW2" && receipt.approval.reviewPassCount !== 2 ||
           !Array.isArray(receipt.appliedRecords) || receipt.totalQuestions !== receipt.appliedRecords.length ||
           new Set(receipt.appliedRecords.map(r => r.questionUid)).size !== receipt.totalQuestions ||
-          !SHA256.test(text(receipt.sourceRawSha256)) || text(receipt.sourceRawSha256) !== sourceRawShaByFile.get(normalizeFile(receipt.sourceArchiveFile))) continue;
+          !SHA256.test(text(receipt.sourceRawSha256))) continue;
+      // The receipt used to be tied to the WHOLE exam file (sourceRawSha256 == current file hash), so editing one choice, one explanation or one figure
+      // dropped the registered metadata of every question in the file. The binding is per row now: a row keeps its registration while the stem and choices
+      // it was registered for are still the current ones (see the row check below); a stem/choices edit needs a reviewed rebind (text-binding-rebinds ledger).
       for (const accepted of receipt.appliedRecords) {
         const uid = text(accepted.questionUid), source = sourceRecords.get(uid), meta = source?.metadataAssignmentEvidence;
         const overlays = (overlaysByUid.get(uid) || []).filter(row => normalizeFile(row.sourceArchiveFile) === normalizeFile(receipt.sourceArchiveFile) && Number(row.sourceOrdinal) === Number(accepted.sourceOrdinal));
@@ -1609,7 +1612,12 @@
           !Object.values(meta?.fieldStatus || {}).includes("manual_review_pending");
         if (!source || overlays.length !== 1 || normalizeFile(source.sourceFile) !== normalizeFile(receipt.sourceArchiveFile) ||
             Number(source.sourceOrdinal) !== Number(accepted.sourceOrdinal) || meta?.metadataRevision !== accepted.metadataRevision ||
-            meta?.sourceFingerprint !== accepted.sourceFingerprint || source.assignmentFingerprint !== accepted.contentFingerprint ||
+            meta?.sourceFingerprint !== accepted.sourceFingerprint ||
+            // Row binding: the current content fingerprint is the registered one, or the catalog builder confirmed (classifyMetaBinding "row": same
+            // stem+choices by content fingerprint or by a reviewed rebind) that the metadata row registered under this receipt still describes the
+            // current question (sourceStatus VERIFIED). Without either, the row is not accepted.
+            (source.assignmentFingerprint !== accepted.contentFingerprint &&
+              !(source.sourceStatus === "VERIFIED" && meta?.assignmentFingerprint === accepted.contentFingerprint)) ||
             (accepted.reviewStatus !== "reviewed_pass" && !auditedMetadataOnly) || !text(meta?.metadataStatus).startsWith("approved_") ||
             !approvedFieldStatus(meta?.fieldStatus?.standardUnit) || !approvedFieldStatus(meta?.fieldStatus?.subUnit) ||
             !(meta?.evidenceRefs || []).includes("archive/" + path)) continue;
@@ -1630,7 +1638,9 @@
           reviewEvidence: { status: "PASS", reference: path, sha256: receiptSha, approvalType: receipt.approval.type, reviewedSourceFingerprint: accepted.sourceFingerprint } };
         canonicalAuthority.assignmentsByUid[uid] = [assignment];
         canonicalAuthority.advancedAssignmentsByUid[uid] = [assignment];
+        // The issued parent-display scope stays bound to the exact whole-file bytes (a newly issued preservation receipt is needed after any file edit).
         if (ISSUED_PARENT_DISPLAY_SCOPE[uid] && receipt.approval.type === "FINAL_QA" &&
+            text(receipt.sourceRawSha256) === sourceRawShaByFile.get(normalizeFile(receipt.sourceArchiveFile)) &&
             overlay.metadataRevision === accepted.metadataRevision && overlay.metadataApprovalType === "FINAL_QA" &&
             overlay.metadataApprovalType === accepted.metadataApprovalType && overlay.metadataStatus === accepted.metadataStatus &&
             Array.isArray(accepted.approvalEvidence) && accepted.approvalEvidence.length > 0 &&
@@ -1874,7 +1884,15 @@
             "metaFoundationPackId", "metaFoundationPackVersion", "foundationTaxonomyStatus",
             "taxonomyStatus", "difficultyBucket", "difficultyConfidence",
             "difficultyBoundaryFlag", "legacyLevelCompatibility", "reviewStatus",
-          ]) if (matchingOverlay[field] !== undefined) record[field] = matchingOverlay[field];
+          ]) {
+            // The receipt's value wins when it has one. A receipt that records the field as empty/UNKNOWN (e.g. difficultyBucket: null) must not
+            // erase a value the question already shows; the existing value stays.
+            const fromReceipt = matchingOverlay[field];
+            if (fromReceipt === undefined) continue;
+            const blank = (value) => value === null || value === "" || value === "UNKNOWN" || (Array.isArray(value) && !value.length);
+            if (blank(fromReceipt) && !blank(record[field])) continue;
+            record[field] = fromReceipt;
+          }
           const registrationApprovalType = candidate.assignmentEvidence?.reviewEvidence?.approvalType;
           if (["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(registrationApprovalType)) {
             record.level = matchingOverlay.level || matchingOverlay.legacyLevel;
