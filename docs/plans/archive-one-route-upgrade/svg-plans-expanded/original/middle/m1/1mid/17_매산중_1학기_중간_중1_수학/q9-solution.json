@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "−5<a≤1",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-5",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "−5<a≤1에서 −5는 속이 빈 점이어서 포함되지 않고 1은 찬 점이어서 포함된다. 이 구간에 속하는 정수는 −4, −3, −2, −1, 0, 1이므로 모두 6개이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "수직선 위에 −5와 1 사이의 구간이 있고 −5는 속이 빈 점, 1은 찬 점이다.",
+  "newVisualInformation": [
+    "구간 (−5, 1]에 속하는 정수는 −4부터 1까지 6개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-5 < a \\le 1$을 만족시키는 정수 $a$의 개수는? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
