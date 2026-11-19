@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "label": "x+2y=0",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "8"
+        ],
+        "label": "x+2y=8",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "x+2y=0은 y=−(1/2)x이다. y축의 방향으로 4만큼 평행이동하면 직선 전체가 위로 4만큼 올라가므로 y=−(1/2)x+4이다. 식을 정리하면 x+2y=8이다. y절편은 0에서 4로 바뀌고 기울기 −1/2은 그대로이다.",
+  "newVisualInformation": [
+    "직선을 위로 4만큼 옮기면 y절편이 0에서 4가 되어 y=−(1/2)x+4"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 두 직선이 평행하게 그려져 있고 원점을 지나는 직선과 y절편이 4인 직선이 각각 식과 함께 있으며 y축 위의 두 점 (0,0), (0,4)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 일차방정식 $x+2y=0$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 직선의 방정식은? (3점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

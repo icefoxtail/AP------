@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "ax+by+c=0",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x+b",
+        "color": "WARM",
+        "style": "DASHED"
+      },
+      {
+        "id": "f2",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "ax+b=0",
+        "color": "GREEN",
+        "style": "DASHED"
+      },
+      {
+        "id": "f3",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "ay+c=0",
+        "color": "ROSE",
+        "style": "DASHED"
+      },
+      {
+        "id": "f4",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=cx",
+        "color": "VIOLET",
+        "style": "DASHED"
+      }
+    ]
+  },
+  "caption": "예: a=1, b=−1, c=1로 그렸다. ①은 y=−(a/b)x−c/b로 기울기와 y절편이 모두 양수이고 x절편이 음수이므로 제1, 2, 3사분면을 지난다. ②는 기울기 1, y절편 b<0이라 제1, 3, 4사분면을, ③은 x=−b/a>0인 수직선이라 제1, 4사분면을, ④는 y=−c/a<0인 수평선이라 제3, 4사분면을, ⑤는 원점을 지나는 기울기 c>0인 직선이라 제1, 3사분면을 지난다. 따라서 제2사분면을 지나는 것은 ①이다.",
+  "newVisualInformation": [
+    "예시 값 a=1, b=−1, c=1에서 제2사분면을 지나는 직선은 ax+by+c=0뿐"
+  ],
+  "accessibilityDescription": "다섯 개의 직선이 같은 좌표평면에 그려져 있다. 실선 하나는 제2사분면을 지나고 점선 네 개는 각각 제1, 3, 4사분면 또는 제1, 4사분면 등만 지나며 각 직선 옆에 식이 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>22. $a>0$, $b<0$, $c>0$일 때, 다음 직선의 방정식 중 제 2사분면을 지나는 것은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

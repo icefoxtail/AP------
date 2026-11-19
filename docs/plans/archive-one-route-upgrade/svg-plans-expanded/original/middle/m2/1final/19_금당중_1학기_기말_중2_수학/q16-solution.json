@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=−x+4",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "7"
+        ],
+        "label": "y=−x+6",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "평행한 두 직선은 기울기가 같으므로 구하는 직선의 기울기는 −1이고 y=−x+b로 놓는다. 점 (2,4)를 지나므로 4=−2+b에서 b=6이다. 따라서 y=−x+6이다. 이 직선은 y=−x+4와 기울기가 같고 y절편이 달라 평행하다.",
+  "newVisualInformation": [
+    "기울기 −1이고 점 (2,4)를 지나는 직선의 y절편이 6이어서 y=−x+6"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 평행한 두 직선이 그려져 있고 위쪽 직선 위에 점 P(2,4)가 표시되어 있다. 아래쪽은 y절편 4, 위쪽은 y절편 6이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>16. 일차함수 $y=-x+4$의 그래프와 평행하고, 점 $(2, 4)$를 지나는 직선을 그래프로 하는 일차함수의 식은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

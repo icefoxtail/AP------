@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "3/4"
+        ],
+        "domain": [
+          "0",
+          "120"
+        ],
+        "label": "A: y=3x/4+6",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "4/5"
+        ],
+        "domain": [
+          "0",
+          "120"
+        ],
+        "label": "B: y=4x/5+1",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "100",
+          "y": "81",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x(분)",
+      "y": "y"
+    }
+  },
+  "caption": "A는 (0,6), (8,12)를 지나므로 기울기가 3/4이고 y=(3/4)x+6이다. B는 (0,1), (5,5)를 지나므로 기울기가 4/5이고 y=(4/5)x+1이다. 만날 때 위치가 같으므로 (3/4)x+6=(4/5)x+1에서 15x+120=16x+20이고 x=100이다. 이때 두 식의 y값은 모두 81이므로 점 P(100,81)에서 만난다. 따라서 100분 후에 만난다.",
+  "newVisualInformation": [
+    "두 직선 y=(3/4)x+6, y=(4/5)x+1의 교점 P(100,81)에서 만나는 시각 100분"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 두 직선이 있고 y절편이 6인 A의 기울기가 작고 y절편이 1인 B의 기울기가 커서 x=100 근처에서 점 P(100,81)에서 만나며 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>21. 다음 그림은 수직선 위를 일정한 속력으로 움직이는 두 물체 A와 B의 시간에 따른 위치를 나타낸 것이다. 두 물체 A와 B가 움직이기 시작한 지 $x$분 후의 위치를 $y$라고 할 때, 두 물체 A와 B는 움직이기 시작한 지 몇 분 후에 만나는가? (4점)</p><p><img src=\"assets/images/19_금당중_1학기_기말_중2_수학/q21.png\" alt=\"두 물체 A, B의 시간에 따른 위치를 나타낸 모눈종이 위 일차함수 그래프\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

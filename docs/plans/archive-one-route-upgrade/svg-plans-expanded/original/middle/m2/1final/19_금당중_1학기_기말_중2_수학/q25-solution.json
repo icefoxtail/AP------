@@ -1,0 +1,128 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "x=1",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=2",
+        "color": "WARM"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "1/2"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=x/2+3/2",
+        "color": "GREEN"
+      },
+      {
+        "id": "f3",
+        "kind": "LINE",
+        "coefficients": [
+          "5/2",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "label": "y=−x/2+5/2",
+        "color": "ROSE"
+      },
+      {
+        "id": "f4",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-1/2",
+          "2"
+        ],
+        "label": "y=2x",
+        "color": "VIOLET"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-1",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "-1",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "직사각형의 네 꼭짓점은 (−1,1), (3,1), (3,3), (−1,3)이고 두 대각선의 교점 (1,2)가 중심이다. 직사각형을 중심 둘레로 180° 회전하면 원래 도형과 겹치므로 중심을 지나는 직선은 넓이를 이등분한다. 따라서 중심 (1,2)를 지나는 직선 x=1, y=2, y=(1/2)x+3/2, y=−(1/2)x+5/2, y=2x가 답이다.",
+  "newVisualInformation": [
+    "직사각형의 중심 (1,2)를 지나는 직선은 모두 넓이를 이등분함"
+  ],
+  "accessibilityDescription": "직사각형의 네 꼭짓점과 두 대각선의 교점인 중심 P(1,2)가 표시되어 있고 P를 지나는 다섯 개의 직선(수직선, 수평선, 두 대각선, 원점을 지나는 직선)이 서로 다른 색으로 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>(서술형3) 아래 그림과 같은 직사각형의 넓이를 이등분하는 직선의 방정식을 5개 구하시오. (10점, 각 2점)</p><p><img data-scale=\"85\" src=\"assets/images/19_금당중_1학기_기말_중2_수학/s03.png\" alt=\"좌표평면 위에 주어진 직사각형의 넓이를 이등분하는 직선 문제 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

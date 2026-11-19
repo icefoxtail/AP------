@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=3x−6",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=−3x−6",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y=3x−6은 기울기 3, y절편 −6, x절편 2이다. 원점을 지나지 않고 제1, 3, 4사분면을 지나며 오른쪽 위를 향한다. y=−3x−6은 기울기가 −3으로 달라 점 (0,−6)에서 만난다. 기울기가 3이므로 x의 값이 2 증가하면 y의 값은 6 증가한다. 따라서 옳은 것은 ⑤이다.",
+  "newVisualInformation": [
+    "기울기 3인 직선에서 x가 2 증가하면 y가 6 증가하고 y=−3x−6과는 (0,−6)에서 만남"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 실선 직선과 오른쪽 아래로 향하는 점선 직선이 y축 위의 점 (0,−6)에서 만나고 실선 직선이 x축과 (2,0)에서 만나며 점 (3,3)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>13. 일차함수 $y=3x-6$의 그래프에 대한 다음 설명 중 옳은 것은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

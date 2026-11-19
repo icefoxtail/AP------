@@ -1,0 +1,48 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "1/10"
+        ],
+        "domain": [
+          "0",
+          "1300"
+        ],
+        "label": "y=1+x/10",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1269",
+          "y": "1279/10",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x(m)",
+      "y": "y"
+    }
+  },
+  "caption": "수심 x m에서의 압력을 y기압이라 하면 10m 내려갈 때마다 1기압씩 높아지므로 1m당 1/10기압씩 높아지고 해수면에서 1기압이므로 y=1+x/10이다. x=1269를 대입하면 y=1+126.9=127.9이다. 따라서 압력은 127.9기압이다.",
+  "newVisualInformation": [
+    "일차함수 y=1+x/10에서 x=1269이면 y=127.9"
+  ],
+  "accessibilityDescription": "원점 근처 y절편 1에서 시작해 오른쪽 위로 천천히 올라가는 직선이 있고 x=1269인 점 P(1269, 127.9)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>17. 해수면에서 공기가 누르는 압력을 1기압이라고 하는데, 바다에서는 보통 물속으로 $10\\text{m}$ 내려갈 때마다 압력이 1기압씩 일정하게 높아진다고 한다. 수심이 $1269\\text{m}$인 지점의 압력은 몇 기압인가? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
