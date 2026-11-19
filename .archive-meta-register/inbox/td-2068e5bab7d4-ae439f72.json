@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-2068e5bab7d4-ae439f72",
+  "examUid": "25_제일고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "fb4fafb2bd856d78658a723be055005c817bb508",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-s-20261120",
+      "commit": "aaa16404c181a9f0997ff006064b65edccd5b3bd",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-s/stale-keys-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2068e5bab7d4-ae439f72.type-ledger.json",
+        "sha256": "4c3f3f53d85bfd03d0adf2414461c1c3d22a1a9fafbd0b342def981615730600"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_09bfacb32b07821bfd945af7e4853b52586e19d1fc823d83a993c6ac62115915",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "내분점",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_INTERNAL"
+      },
+      "rationale": "A(1,3), B(3,6)의 거리 √13을 구하고 2:1 내분점 공식으로 P(7/3,5)를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "6212904810e590757a074d4ecb72492c2df749aa4c365e3a44e74d4ae39b3491",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2068e5bab7d4-ae439f72.type-ledger.json",
+          "sha256": "4c3f3f53d85bfd03d0adf2414461c1c3d22a1a9fafbd0b342def981615730600"
+        }
+      ]
+    }
+  ]
+}

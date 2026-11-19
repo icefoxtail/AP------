@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-cd2831e21c24-fb92725c",
+  "examUid": "26_팔마중_1학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/26_팔마중_1학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "06f0cc09b64f6794235fa3cfc4909f73eafcc3d9",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd2831e21c24-fb92725c.type-ledger.json",
+        "sha256": "a66b070d4137be50e74c1b6187d61fb1ced6bb9c89cb59d5121cce619850f69b"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_6ac75fbfe3412c97569e46a24ac0edd8f53ca8de7382d3a2fd0f6728ab097c4e",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "QUADRATIC_EQUATION_DISCRIMINANT",
+        "templateKey": "QUADRATIC_EQUATION_DISCRIMINANT"
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+        "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT"
+      },
+      "rationale": "상수항4k+1=9 조건으로 k2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3-1"
+      },
+      "textBindingFingerprint": "9faba93177a467f8c39a51515c17df90febe6a95a63d14c2e9428c00cd027572",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd2831e21c24-fb92725c.type-ledger.json",
+          "sha256": "a66b070d4137be50e74c1b6187d61fb1ced6bb9c89cb59d5121cce619850f69b"
+        }
+      ]
+    }
+  ]
+}
