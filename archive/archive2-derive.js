@@ -20,7 +20,11 @@
   //    CrossConcept·Condition은 칸이 아니라 같은 칸 안 동점 깨기 가산점이다.
   //  * 시험지 층 = 난이도 예산: 결과의 단계 분포가 목표(same = 기준, up-some = 절반쯤 +1, up-one = 전부 +1, 5는 5)와
   //    맞게 한다. 세부 유형이 맞으면 ±1을 허용하되 전체에서 상쇄되도록 누적 편차를 본다.
-  //  * 필수 경계: 기준 문항들이 놓인 (학년·과목·교육과정)과 그 안에서 기준이 덮는 대단원 집합 밖은 어느 단에서도 금지.
+  //  * 필수 경계: 기준 문항들이 놓인 (학년·통합 과목)과 그 안에서 기준이 덮는 통합 대단원 집합 밖은 어느 단에서도 금지.
+  //    교육과정(2015/2022)은 경계가 아니다: 통합 단원 층(archive2-unified-units.js)이 같은 과목·같은 단원으로 놓는 문항은
+  //    교육과정이 달라도 후보다(수학I(2015)와 대수(2022), 수학(상)(하)와 공통수학1·2 등).
+  //  * 정답·해설이 빈 문항은 기본 후보에서 뺀다(빠른 평가 진단평가의 빈 문항 기준과 같음). 카탈로그에는 값이 없어
+  //    호출하는 쪽이 buildDeriveIndex의 isBlank(record)를 넘기고, includeBlank로만 포함할 수 있다.
   //  * 제외: 기준 문항 자체와 exclude(앞서 뽑은 것·반이 받은 문항)만. 기준 문항의 유사 사본은 제외하지 않는다.
   //  * 읽는 필드는 정본 필드뿐: questionUid, sourceFile, contentType, problemTypeKey, templateKey, metaHintPT, metaHintTPL,
   //    difficultyBucket, L4, conceptClusterKey, subUnitKey, crossConceptKeys, conditionKeys, 그리고 통합 단원 층이 내는 배치.
@@ -105,6 +109,7 @@
       ? opts.eligible
       : (record) => Boolean(Core && Core.difficultyEligible && Core.difficultyEligible(record));
     const manifest = opts.manifest || null;
+    const isBlank = typeof opts.isBlank === "function" ? opts.isBlank : null;
     const byUid = new Map();
     const pools = new Map();
     const poolOf = (ck) => {
@@ -129,7 +134,9 @@
         uid,
         record,
         file: text(record.sourceFile),
-        ck: entry ? `${text(entry.grade)}|${text(entry.subject)}|${text(entry.originalCurriculum)}` : "",
+        // 묶음 키 = (학년, 통합 과목). 교육과정(originalCurriculum)은 키가 아니다(보고용으로만 cand.curr에 둔다).
+        ck: entry ? `${text(entry.grade)}|${text(entry.subject)}` : "",
+        curr: entry ? text(entry.originalCurriculum) : "",
         unit: entry && !entry.unclassified ? text(entry.unitKey) : "",
         sub: text(record.subUnitKey),
         tpl: strictTpl || text(record.metaHintTPL),
@@ -143,8 +150,10 @@
         srcKind: src.kind,
         publisher: src.publisher,
         eligible: false,
+        blank: false,
       };
       cand.eligible = Boolean(cand.ck && bucket !== null && eligible(record));
+      if (isBlank && cand.eligible) cand.blank = Boolean(isBlank(record));
       byUid.set(uid, cand);
       if (!cand.eligible) continue;
       const pool = poolOf(cand.ck);
@@ -155,7 +164,7 @@
       put(pool.sub, cand.sub, cand);
       put(pool.unit, cand.unit || "\u0000none", cand);
     }
-    return { version: VERSION, byUid, pools, size: byUid.size };
+    return { version: VERSION, byUid, pools, size: byUid.size, blankKnown: Boolean(isBlank) };
   }
 
   // ---- 난이도 목표 ----
@@ -182,7 +191,7 @@
     const level = LEVEL_MODES.includes(opts.level) ? opts.level : "same";
     const exclude = new Set();
     for (const uid of opts.exclude instanceof Set ? opts.exclude : list(opts.exclude)) exclude.add(text(uid));
-    return { typeMode, level, sources: opts.sources, exclude, seed: opts.seed == null ? "derive" : String(opts.seed) };
+    return { typeMode, level, sources: opts.sources, includeBlank: opts.includeBlank === true, exclude, seed: opts.seed == null ? "derive" : String(opts.seed) };
   }
   const uidOfItem = (item) => (typeof item === "string" ? text(item) : text(item && (item.questionUid || item.uid)));
 
@@ -199,7 +208,7 @@
     const resolved = bases.filter(Boolean);
     const blocked = new Set([...opts.exclude, ...baseUids.filter(Boolean)]);
 
-    // 경계: (학년·과목·교육과정) → 기준이 덮는 대단원 집합("" = 단원 미분류)
+    // 경계: (학년·통합 과목) → 기준이 덮는 대단원 집합("" = 단원 미분류)
     const boundary = new Map();
     for (const base of resolved) {
       if (!boundary.has(base.ck)) boundary.set(base.ck, new Set());
@@ -277,7 +286,7 @@
 
     // 한 기준 문항에 대해 사다리를 내려가며 고른다.
     const pickFor = (base, target, dev) => {
-      const common = (cand) => inBoundary(cand) && allowSource(cand);
+      const common = (cand) => inBoundary(cand) && allowSource(cand) && (opts.includeBlank || !cand.blank);
       const ladders = different
         ? [
           { rungs: ["subunit", "unit"], relaxed: false, ok: (c) => !conflictStrict(c) },
@@ -359,7 +368,12 @@
     let relaxed = 0;
     let filled = 0;
     let templateMatch = 0;
+    let templateFormalMatch = 0;
+    let templateDen = 0;
     let typeMatch = 0;
+    let typeDen = 0;
+    let noTypeInfo = 0;
+    let resolvedBase = 0;
     let unitMatch = 0;
     let levelMatch = 0;
     let levelKnown = 0;
@@ -367,14 +381,28 @@
     const pickHist = {};
     bases.forEach((base, i) => {
       const found = picks[i];
+      if (base) {
+        resolvedBase += 1;
+        if (!base.tpl && !base.pt) noTypeInfo += 1;
+      }
       if (!base || !found) return;
       filled += 1;
       counts[found.rung] += 1;
       if (found.hintOnly) hintOnly += 1;
       if (found.relaxed && opts.typeMode === "different") relaxed += 1;
       const cand = found.cand;
-      if (base.tpl && cand.tpl === base.tpl) templateMatch += 1;
-      if (base.pt && cand.pt === base.pt) typeMatch += 1;
+      // 유형 정보(세부 유형 TPL, 유형 PT)가 없는 기준 문항은 해당 일치율의 분모에서 뺀다.
+      if (base.tpl) {
+        templateDen += 1;
+        if (cand.tpl === base.tpl) {
+          templateMatch += 1;
+          if (base.tplFormal && cand.tplFormal) templateFormalMatch += 1;
+        }
+      }
+      if (base.pt) {
+        typeDen += 1;
+        if (cand.pt === base.pt) typeMatch += 1;
+      }
       if (cand.unit === base.unit) unitMatch += 1;
       if (base.bucket === null) difficulty.unknown += 1;
       else {
@@ -395,7 +423,7 @@
     rungRows.push({ label: RUNG_LABEL.unit, count: counts.subunit + counts.unit });
     if (counts.none) rungRows.push({ label: RUNG_LABEL.none, count: counts.none });
     const notes = [];
-    if (opts.typeMode === "different" && relaxed) notes.push(`다른 유형이 모자라 ${relaxed}문항은 같은 유형을 허용했습니다.`);
+    if (opts.typeMode === "different" && relaxed) notes.push(`다른 유형이 모자라 ${relaxed}문항은 시험지 안 다른 문항과 유형이 겹치는 것을 허용했습니다(그 문항 자신의 유형은 피했습니다).`);
     if (counts.none) notes.push(`같은 단원에 후보가 없어 ${counts.none}문항은 시험 범위 안 다른 단원에서 뽑았습니다.`);
     if (filled < baseCount) notes.push(`후보가 부족해 ${baseCount - filled}문항은 채우지 못했습니다.`);
     if (extra && extra.unresolved) notes.push(`기준 문항 ${extra.unresolved}개를 자료에서 찾지 못했습니다.`);
@@ -417,8 +445,11 @@
       hintOnly,
       relaxed,
       match: {
-        template: rate(templateMatch, filled),
-        type: rate(typeMatch, filled),
+        templateFormal: rate(templateFormalMatch, templateDen),
+        template: rate(templateMatch, templateDen),
+        type: rate(typeMatch, typeDen),
+        hintRate: rate(hintOnly, filled),
+        noTypeInfoRate: rate(noTypeInfo, resolvedBase),
         unit: rate(unitMatch, filled),
         level: rate(levelMatch, levelKnown),
         levelDistribution: known ? 1 - histGap / (2 * known) : null,
@@ -429,8 +460,17 @@
     };
   }
 
+  // 빈 문항(정답 없음, 또는 해설·해설 그림이 모두 없음). 빠른 진단평가의 빈 문항 제외와 같은 기준.
+  function isBlankQuestion(question) {
+    const q = question || {};
+    const answer = text(q.answer);
+    const solution = text(q.solution !== undefined ? q.solution : q.explanation);
+    const solutionImage = text(q.solutionImage !== undefined ? q.solutionImage : q.solutionImg);
+    return !answer || (!solution && !solutionImage);
+  }
+
   return Object.freeze({
     VERSION, LADDER, RUNGS, RUNG_LABEL, LEVEL_MODES, TYPE_MODES, WORKBOOK_PUBLISHERS,
-    buildDeriveIndex, deriveFromPaper, sourceKindOf, sourcePredicate, publisherOf, levelTargets,
+    buildDeriveIndex, deriveFromPaper, isBlankQuestion, sourceKindOf, sourcePredicate, publisherOf, levelTargets,
   });
 });

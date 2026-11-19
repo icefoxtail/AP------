@@ -7,9 +7,10 @@ const path = require('node:path');
 const { performance } = require('node:perf_hooks');
 const D = require('../archive/archive2-derive.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { createBlankChecker } = require('../archive/tools/derive-blank-check.cjs');
 
 // ---- 합성 픽스처 ----
-// row: { uid, file, tpl, pt, hTpl, hPt, l4, sub, unit, b, grade, subject, curr, cc, cond, type }
+// row: { uid, file, tpl, pt, hTpl, hPt, l4, sub, unit, b, grade, subject, curr, cc, cond, type, blank }
 function fixture(rows) {
   const records = [];
   const unified = { byRecord: new Map(), byUid: new Map() };
@@ -33,7 +34,8 @@ function fixture(rows) {
     unified.byRecord.set(record, entry);
     unified.byUid.set(row.uid, entry);
   }
-  return { records, index: D.buildDeriveIndex(records, { unified, eligible: () => true }) };
+  const blankUids = new Set(rows.filter((row) => row.blank).map((row) => row.uid));
+  return { records, index: D.buildDeriveIndex(records, { unified, eligible: () => true, isBlank: (record) => blankUids.has(record.questionUid) }) };
 }
 const base = (uid, extra) => ({ uid, tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1', unit: 'U1', b: 2, file: `original/high/h1/base_${uid}.js`, ...extra });
 const pick = (out, i = 0) => out.perItem[i];
@@ -135,11 +137,10 @@ test('난이도 프리셋: same / up-some / up-one (5는 5)', () => {
   assert.deepEqual(D.levelTargets([{ bucket: 5, uid: 'a' }], 'up-one', 's'), [5]);
 });
 
-test('필수 경계: 다른 교육과정·과목·시험 범위 밖 문항은 어느 단에서도 금지', () => {
+test('필수 경계: 다른 학년·과목·시험 범위 밖 문항은 어느 단에서도 금지', () => {
   const rows = [
     base('b1'),
     { uid: 'otherUnit', b: 2, unit: 'U9', tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1' },
-    { uid: 'otherCurr', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1', curr: '2015' },
     { uid: 'otherSubject', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1', subject: 'GEO' },
     { uid: 'otherGrade', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1', grade: '고2' },
   ];
@@ -148,6 +149,35 @@ test('필수 경계: 다른 교육과정·과목·시험 범위 밖 문항은 �
   assert.equal(pick(out).pickedUid, null);
   assert.equal(out.summary.shortfall, 1);
   assert.ok(out.summary.notes.some((n) => /채우지 못했습니다/.test(n)));
+});
+
+test('교육과정(2015/2022)은 경계가 아니다: 같은 학년·과목·단원이면 둘 다 후보다', () => {
+  const rows = [
+    base('b1', { curr: '2022' }),
+    { uid: 'c2015', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1', curr: '2015' },
+    { uid: 'c2022', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', l4: 'L1', sub: 'S1', curr: '2022' },
+  ];
+  const { index } = fixture(rows);
+  const picked = new Set();
+  for (const seed of ['1', '2', '3', '4', '5', '6', '7', '8']) picked.add(pick(D.deriveFromPaper(['b1'], { seed }, index)).pickedUid);
+  assert.ok(picked.has('c2015') && picked.has('c2022'), [...picked].join());
+  const rev = fixture([base('b1', { curr: '2015' }), { uid: 'c2022', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', curr: '2022' }]);
+  assert.equal(pick(D.deriveFromPaper(['b1'], {}, rev.index)).pickedUid, 'c2022', '2015 기준 시험지에서 2022 문항도 뽑힌다');
+});
+
+test('빈 문항(정답·해설 없음)은 기본 후보에서 빠지고, includeBlank로 넣을 수 있다', () => {
+  const rows = [base('b1'), { uid: 'blank', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1', blank: true }, { uid: 'ok', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1' }];
+  const { index } = fixture(rows);
+  assert.equal(index.blankKnown, true);
+  for (const seed of ['1', '2', '3', '4', '5', '6']) assert.equal(pick(D.deriveFromPaper(['b1'], { seed }, index)).pickedUid, 'ok');
+  const onlyBlank = fixture([rows[0], rows[1]]).index;
+  assert.equal(pick(D.deriveFromPaper(['b1'], {}, onlyBlank)).pickedUid, null, '빈 문항뿐이면 채우지 않는다');
+  assert.equal(pick(D.deriveFromPaper(['b1'], { includeBlank: true }, onlyBlank)).pickedUid, 'blank');
+  assert.equal(D.isBlankQuestion({ answer: '3', solution: '풀이' }), false);
+  assert.equal(D.isBlankQuestion({ answer: '3', solution: '', solutionImage: 'a.png' }), false);
+  assert.equal(D.isBlankQuestion({ answer: '3', solution: '  ' }), true);
+  assert.equal(D.isBlankQuestion({ answer: '', solution: '풀이' }), true);
+  assert.equal(D.isBlankQuestion({}), true);
 });
 
 test('제외: 기준 문항 자체와 exclude는 뽑지 않고, 기준 문항의 유사 사본은 쓴다', () => {
@@ -181,7 +211,7 @@ test('다른 유형 모드: 기준의 세부 유형을 피하고, 모자라면 �
   assert.equal(pick(only).pickedUid, 'same', '다른 유형이 없으면 막지 않는다');
   assert.equal(pick(only).relaxed, true);
   assert.equal(only.summary.relaxed, 1);
-  assert.ok(only.summary.notes.some((n) => /같은 유형을 허용/.test(n)));
+  assert.ok(only.summary.notes.some((n) => /시험지 안 다른 문항과 유형이 겹치는 것을 허용/.test(n)));
   // 세부 유형이 없는 기준은 유형(PT)을 피한다
   const noTpl = [base('b1', { tpl: '' }), { uid: 'samePt', b: 2, unit: 'U1', pt: 'P1' }, { uid: 'otherPt', b: 2, unit: 'U1', pt: 'P2' }];
   assert.equal(pick(D.deriveFromPaper(['b1'], { typeMode: 'different' }, fixture(noTpl).index)).pickedUid, 'otherPt');
@@ -263,8 +293,31 @@ test('summary: 화면 문구에 내부 키 이름이 없고, 일치율·난이�
   assert.equal(s.text, '같은 세부 유형 1');
   assert.equal(s.levelText, '기준보다 쉬움 0 · 같음 0 · 어려움 1');
   assert.ok(!/(PT_|TPL_|T_SECRET|template|rung|bucket|uid)/i.test(`${s.text} ${s.levelText} ${s.notes.join(' ')} ${s.rungRows.map((r) => r.label).join(' ')}`));
-  assert.deepEqual(s.match, { template: 1, type: 1, unit: 1, level: 1, levelDistribution: 0 });
+  assert.deepEqual(s.match, { templateFormal: 1, template: 1, type: 1, hintRate: 0, noTypeInfoRate: 0, unit: 1, level: 1, levelDistribution: 0 });
   assert.deepEqual(s.rungRows.map((r) => r.label), ['같은 세부 유형', '같은 유형', '같은 개념', '같은 단원']);
+});
+
+test('일치율: 정식/힌트를 나누고, 유형 정보 없는 기준 문항은 분모에서 빼 비율로 따로 낸다', () => {
+  const rows = [
+    base('b1'),
+    base('b2', { tpl: '', pt: '', hTpl: 'H1', hPt: 'HP1', l4: 'L2', sub: 'S2' }),
+    base('b3', { tpl: '', pt: '', l4: 'L3', sub: 'S3' }),
+    { uid: 'c1', b: 2, unit: 'U1', tpl: 'T1', pt: 'P1' },
+    { uid: 'c2', b: 2, unit: 'U1', hTpl: 'H1', hPt: 'HP1', l4: 'L2', sub: 'S2' },
+    { uid: 'c3', b: 2, unit: 'U1', l4: 'L3', sub: 'S3' },
+  ];
+  const { index } = fixture(rows);
+  const out = D.deriveFromPaper(['b1', 'b2', 'b3'], { seed: 'm' }, index);
+  const m = out.summary.match;
+  assert.equal(out.summary.filled, 3);
+  assert.equal(m.template, 1, '(b) 정식+힌트: 유형 정보 있는 2문항 모두 일치');
+  assert.equal(m.templateFormal, 0.5, '(a) 정식만: 2문항 중 정식 일치 1');
+  assert.equal(m.type, 1);
+  assert.ok(Math.abs(m.hintRate - 1 / 3) < 1e-9, '(e) 힌트로 고른 비율');
+  assert.ok(Math.abs(m.noTypeInfoRate - 1 / 3) < 1e-9, '(f) 유형 정보 없는 기준 문항 1/3');
+  const none = D.deriveFromPaper(['b3'], {}, index);
+  assert.equal(none.summary.match.template, null, '분모 0이면 null');
+  assert.equal(none.summary.match.noTypeInfoRate, 1);
 });
 
 test('기준 문항을 자료에서 못 찾으면 만들지 않고 이유를 알린다', () => {
@@ -279,8 +332,9 @@ const realCatalog = () => (catalogPromise ||= (async () => {
   const { data } = await productionCatalog();
   const manifest = JSON.parse(fs.readFileSync(path.join(__dirname, '../archive/data/textbook-source-manifest-v1.json'), 'utf8'));
   const t0 = performance.now();
-  const index = D.buildDeriveIndex(data.records, { projectionPolicy: data.projectionPolicy, manifest });
-  return { data, manifest, index, indexMs: performance.now() - t0 };
+  const blankChecker = createBlankChecker({ root: path.join(__dirname, '../archive/exams') });
+  const index = D.buildDeriveIndex(data.records, { projectionPolicy: data.projectionPolicy, manifest, isBlank: blankChecker.isBlank });
+  return { data, manifest, index, indexMs: performance.now() - t0, blankChecker };
 })());
 
 test('실카탈로그: 교과서 폴더의 출판사 판정이 기존 폴더 표와 같다', async () => {
@@ -332,6 +386,40 @@ test('실카탈로그: 교과서 단원 기준 → 교과서만 출처로 뽑는
   const pub = rows[0].sourceFile.split('/')[1].split('_')[0];
   const onePub = D.deriveFromPaper(rows.map((r) => r.questionUid), { sources: { kind: 'textbook', publisher: pub }, seed: 'tb' }, index);
   for (const item of onePub.items) assert.equal(D.publisherOf(item.sourceFile, manifest), pub);
+});
+
+test('실카탈로그: 빈 문항(정답·해설 없음)은 기본 후보에서 빠진다', async () => {
+  const { data, index, blankChecker } = await realCatalog();
+  assert.ok(blankChecker.stats.checked > 0);
+  assert.equal(blankChecker.stats.unreadable, 0, '원문을 못 읽어 빈 문항 판정을 못 한 기록 없음');
+  const blankUids = new Set([...index.byUid.values()].filter((c) => c.blank).map((c) => c.uid));
+  assert.ok(blankUids.size > 0);
+  const byFile = new Map();
+  for (const record of data.records) if (/^textbooks\//.test(record.sourceFile)) (byFile.get(record.sourceFile) || byFile.set(record.sourceFile, []).get(record.sourceFile)).push(record);
+  const rows = [...byFile.values()].filter((list) => list.length >= 8).sort((a, b) => b.length - a.length)[0];
+  for (const sources of ['textbook', 'all']) {
+    const out = D.deriveFromPaper(rows.map((r) => r.questionUid), { sources, seed: 'blank' }, index);
+    assert.ok(out.items.length > 0);
+    for (const item of out.items) assert.ok(!blankUids.has(item.questionUid), 'blank 후보가 뽑히지 않는다');
+  }
+});
+
+test('실카탈로그: 한 (학년|과목)에 2015·2022 문항이 함께 있고, 그 시험지는 두 교육과정을 섞어 뽑는다', async () => {
+  const { data, index } = await realCatalog();
+  const byFile = new Map();
+  for (const record of data.records) if (/^original\//.test(record.sourceFile)) (byFile.get(record.sourceFile) || byFile.set(record.sourceFile, []).get(record.sourceFile)).push(record);
+  let mixed = 0;
+  for (const [ck, pool] of index.pools) {
+    const currs = new Set(pool.all.map((c) => c.curr).filter(Boolean));
+    if (!(currs.has('2015') && currs.has('2022'))) continue;
+    const paper = [...byFile.values()].find((rows) => rows.length >= 15 && index.byUid.get(rows[0].questionUid)?.ck === ck);
+    if (!paper) continue;
+    const out = D.deriveFromPaper(paper.map((r) => r.questionUid), { sources: 'all', level: 'same', seed: 'cur' }, index);
+    assert.ok(out.items.every((r) => index.byUid.get(r.questionUid).ck === ck), '같은 (학년|과목) 안');
+    const seen = new Set(out.items.map((r) => index.byUid.get(r.questionUid).curr));
+    if (seen.has('2015') && seen.has('2022')) mixed += 1;
+  }
+  assert.ok(mixed >= 1, '2015·2022 문항이 한 시험지에 섞여 뽑힌다');
 });
 
 test('실카탈로그: 시험지 한 벌 선정은 색인 뒤 빠르다', async () => {
