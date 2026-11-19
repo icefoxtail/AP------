@@ -1,0 +1,126 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "y=f(x)"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "-2",
+                "1"
+              ],
+              "domain": [
+                -1,
+                1
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "-2",
+                "1"
+              ],
+              "domain": [
+                1,
+                3
+              ],
+              "start": "OPEN",
+              "end": "CLOSED"
+            }
+          ],
+          "jumpValues": [
+            {
+              "x": "1",
+              "y": "2"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "1"
+            ],
+            "y": [
+              "-1",
+              "2"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "y=g(x)"
+      },
+      "plan": {
+        "capability": "piecewise-discontinuous-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-discontinuous",
+          "pieces": [
+            {
+              "coefficients": [
+                "3",
+                "-1"
+              ],
+              "domain": [
+                -1,
+                1
+              ],
+              "start": "CLOSED",
+              "end": "OPEN"
+            },
+            {
+              "coefficients": [
+                "3",
+                "-1"
+              ],
+              "domain": [
+                1,
+                3
+              ],
+              "start": "OPEN",
+              "end": "CLOSED"
+            }
+          ],
+          "jumpValues": [
+            {
+              "x": "1",
+              "y": "-1"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "1"
+            ],
+            "y": [
+              "-1",
+              "2"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "예: 해설이 읽은 값에 맞춘 두 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). f는 x→1에서 열린 점 (1,-1)로 가까워지지만 닫힌 점은 f(1)=2이고, g는 x→1에서 열린 점 (1,2)로 가까워지지만 닫힌 점은 g(1)=-1이다. 합의 극한은 -1+2=1이라 ㄱ은 참이다. 차는 극한 -3이 함수값 3과 달라 ㄴ은 거짓이고, 곱은 극한 -2가 함수값 -2와 같아 ㄷ은 참이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 x=1에서 열린 점으로 끝나는 직선과 위쪽에 따로 찍힌 닫힌 점이, 둘째 패널에는 x=1에서 열린 점으로 끝나는 직선과 아래쪽에 따로 찍힌 닫힌 점이 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 다음 <보기> 중 옳은 것을 모두 고르면? [5.1점]\n<img src=\"assets/images/21_효천고_2학기_중간_고2_수학II/q09.png\" alt=\"21_효천고_2학기_중간_고2_수학II Q09\" />\n\n<보기>\nㄱ. $\\lim_{x \\to 1} \\{f(x)+g(x)\\} = 1$\nㄴ. 함수 $f(x)-g(x)$는 $x=1$에서 연속이다.\nㄷ. 함수 $f(x)g(x)$는 $x=1$에서 연속이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: x=1에서 f, g의 열린 점(극한)과 닫힌 점(함숫값)을 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 f의 극한 -1과 함숫값 2, g의 극한 2와 함숫값 -1이 서로 다름을 보인다."
+  ]
+}

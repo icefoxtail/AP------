@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2"
+        },
+        {
+          "id": "B",
+          "curveX": "2"
+        },
+        {
+          "id": "S",
+          "curveX": "-2*sqrt(3)/3"
+        },
+        {
+          "id": "T",
+          "curveX": "2*sqrt(3)/3"
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "1",
+          "intercept": "0",
+          "label": "AB"
+        },
+        {
+          "id": "t1",
+          "slope": "1",
+          "intercept": "16*sqrt(3)/9",
+          "label": "t1"
+        },
+        {
+          "id": "t2",
+          "slope": "1",
+          "intercept": "-16*sqrt(3)/9",
+          "label": "t2"
+        }
+      ]
+    }
+  },
+  "caption": "예: 양 끝점이 A(-2,-2), B(2,2)이고 한 번 올랐다 내려갔다 다시 오르는 곡선을 그렸다(원본 그림은 이미지 파일이라 직접 볼 수 없다). 할선 AB의 기울기는 양수이고, 이 직선과 평행한 접선은 첫 극대점 앞의 상승 구간 접점 S와 마지막 극소점 뒤의 상승 구간 접점 T에서 생긴다. 중간 하강 구간에서는 접선의 기울기가 음수라 평행하지 않다. 따라서 c는 2개이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 다음 그림은 미분가능한 함수 $y=f(x)$의 그래프이다. 닫힌구간 $[a, b]$에서 평균값정리를 만족시키는 상수 $c$의 값은 몇 개인가? (단, $a < c < b$) [4.4점]\n<img src=\"assets/images/21_효천고_2학기_중간_고2_수학II/q15.png\" alt=\"21_효천고_2학기_중간_고2_수학II Q15\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 AB와 평행한 접선 t1, t2가 두 상승 구간의 접점 S, T에서 생김을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점을 잇는 할선 AB와 평행한 두 접선 t1, t2가 상승 구간의 접점 S, T에서 생김을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 끝 점 A에서 올라 정점에 이른 뒤 내려가고 다시 올라 오른쪽 끝 점 B에 이르는 곡선과 A, B를 잇는 할선, 그리고 할선과 평행하게 곡선의 점 S와 점 T에 접하는 두 직선이 있는 그래프이다."
+}

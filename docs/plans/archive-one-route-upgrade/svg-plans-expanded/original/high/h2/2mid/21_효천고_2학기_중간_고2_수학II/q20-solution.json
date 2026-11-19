@@ -1,0 +1,59 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -3,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "f는 x<0에서 x+1(x=0에서 열린 점 (0,1))이고 x≥0에서 x²-2x(x=0에서 닫힌 점 (0,0))이라 x=0에서 좌극한 1, 우극한 0으로 끊어진다. f의 영점은 x=-1, 0, 2이다. [1] f(x)f(x-k)가 x=k에서 연속이려면 f(k)=0이어야 하고, k=0은 제외되어 k=-1, 2이므로 a=1이다. [2] f(f(x))는 안쪽 f의 값이 0을 가로지르는 x=-1, 2와 안쪽 f가 끊어지는 x=0에서 불연속이라 b=-1+0+2=1이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 함수 $f(x) = \\begin{cases} x+1 & (x < 0) \\\\ x^2 - 2x & (x \\ge 0) \\end{cases}$ 에 대하여\n함수 $f(x)f(x-k)$가 $x=k$에서 연속이 되도록 하는 모든 상수 $k$의 값의 합을 $a$, $y=f(f(x))$가 불연속인 점의 $x$좌표의 합을 $b$라 할 때, $a, b$의 값을 구하시오. [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f의 x=0에서의 열린 점과 닫힌 점, 영점 x=-1, 0, 2를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f가 x=0에서 열린 점 (0,1)과 닫힌 점 (0,0)으로 끊어지고 영점이 x=-1, 0, 2임을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽의 오르는 직선이 x=0에서 열린 점으로 끝나고 원점의 닫힌 점에서 아래로 볼록한 곡선이 시작해 내려갔다 다시 오르는 그래프이다."
+}

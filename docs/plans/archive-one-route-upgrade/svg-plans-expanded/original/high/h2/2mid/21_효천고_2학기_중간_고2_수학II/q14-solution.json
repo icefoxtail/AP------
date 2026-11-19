@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -4,
+      10
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "3",
+          "intercept": "3",
+          "label": "l1"
+        },
+        {
+          "id": "l2",
+          "slope": "3",
+          "intercept": "-1",
+          "label": "l2"
+        }
+      ]
+    }
+  },
+  "caption": "y′=3x²=3에서 접점의 x좌표는 -1, 1이다. 접점 P(-1,0)에서의 접선은 l1: y=3x+3, 접점 Q(1,2)에서의 접선은 l2: y=3x-1이고 두 직선은 기울기가 같아 평행하다. 두 평행선 3x-y+3=0, 3x-y-1=0 사이의 거리는 |3-(-1)|/√10=4/√10=2√10/5이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 곡선 $y=x^3+1$에 접하고 기울기가 $3$인 접선은 두 개가 있다. 이 두 접선 사이의 거리는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기울기 3인 두 접선 l1, l2와 접점 P(-1,0), Q(1,2)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 3인 두 접선 y=3x+3, y=3x-1과 접점 P(-1,0), Q(1,2)를 보여 두 평행선의 간격을 읽게 한다."
+  ],
+  "accessibilityDescription": "한 번 올랐다 내려갔다 다시 오르는 삼차곡선과 서로 평행한 두 직선이 있고, 두 직선이 곡선의 점 P와 점 Q에서 각각 접하는 그래프이다."
+}

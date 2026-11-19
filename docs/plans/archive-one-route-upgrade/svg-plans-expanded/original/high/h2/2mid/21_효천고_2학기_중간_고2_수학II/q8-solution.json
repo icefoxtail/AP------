@@ -1,0 +1,53 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      12
+    ],
+    "viewport": [
+      -0.5,
+      12.5,
+      -0.5,
+      5.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": 8,
+        "y": 4
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "8",
+        "4"
+      ]
+    }
+  },
+  "caption": "예: x=8일 때를 그린다. P(8,4)이고 수선의 발은 Q(8,0)이므로 OQ=8, OP=√(64+16)=4√5이다. 일반적으로 OQ=x, OP=√(x²+2x)이고 차 OP-OQ=2x/(√(x²+2x)+x)=2/(√(1+2/x)+1)이다. x가 커질수록 이 값은 1에 가까워진다. 예에서는 4√5-8로 약 0.94이다. 따라서 극한은 1이고 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8. 다음 그림과 같이 함수 $y=\\sqrt{2x}$의 그래프 위의 동점 $\\mathrm{P}(x, \\sqrt{2x})$에서 $x$축에 내린 수선의 발을 $\\mathrm{Q}$라 할 때, $\\lim_{x \\to \\infty} \\{\\overline{\\mathrm{OP}} - \\overline{\\mathrm{OQ}}\\}$의 값은? (단, $\\mathrm{O}$는 원점이다.) [5.2점]\n<img src=\"assets/images/21_효천고_2학기_중간_고2_수학II/q08.png\" alt=\"21_효천고_2학기_중간_고2_수학II Q08\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=8인 예에서 곡선 위의 점 P(8,4)와 x축 위의 수선의 발 Q(8,0)의 위치 관계를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 y=√(2x) 위의 점 P(8,4)의 위치와 좌표를 보여 OP, OQ의 길이를 계산하게 한다."
+  ],
+  "accessibilityDescription": "원점에서 시작해 오른쪽 위로 완만하게 오르는 제곱근 곡선 위에 점 P가 표시된 그래프이다."
+}
