@@ -350,7 +350,7 @@ test('real catalog: pools are built once, fast, from recorded difficulty and wit
 });
 
 function harness(data, { quick = true, restore } = {}) {
-  const events = new Map(), nodes = new Map(), opened = [];
+  const events = new Map(), nodes = new Map(), opened = [], popups = [];
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, {
       innerHTML: '', textContent: '', dataset: {}, hidden: false,
@@ -390,6 +390,7 @@ function harness(data, { quick = true, restore } = {}) {
   ctx.window = ctx;
   ctx.window.open = () => {
     const popup = { document: { body: {} }, location: { replace: href => opened.push(href) }, close() { popup.closed = true; } };
+    popups.push(popup);
     return popup;
   };
   loadWorkspace(ctx, `
@@ -409,7 +410,7 @@ function harness(data, { quick = true, restore } = {}) {
     for (const callback of events.get('click') || []) await callback({ target });
   };
   const change = async (el) => { for (const callback of events.get('change') || []) await callback({ target: el }); };
-  return { w, ctx, nodes, click, change, published, opened, node };
+  return { w, ctx, nodes, click, change, published, opened, popups, node };
 }
 
 test('middle balanced selection uses exact current L2 even without a recorded subunit row', () => {
@@ -1200,6 +1201,90 @@ test('diagnostic on the real catalog: 중1 1학기 기본 is built by fill once 
   } finally {
     if (previous === undefined) delete globalThis.Archive2Similar; else globalThis.Archive2Similar = previous;
   }
+});
+
+// ---- A·B form: empty questions and a failing B never take the A paper away (2026-11-20 review of the first A·B version) ---------------------
+const stableHash = uid => [...uid].reduce((sum, ch) => (sum * 31 + ch.charCodeAt(0)) >>> 0, 7);
+const publishedRows = (h, byUid) => h.published.map(item => Array.from(item.questionUids, id => byUid.get(id)));
+
+test('diagnostic A·B: every question of B is also checked against the A paper — a pool whose other questions are all empty gives an overlap, not a failure', async () => {
+  const data = fillCatalog([20, 20, 40, 4, 0], 12);
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const inner = okRestore();
+  let aUids = null;
+  // A (the first paper) restores fine; afterwards every question that is not on A comes back without answer and solution
+  const restore = async records => {
+    if (!aUids) { aUids = new Set(records.map(rec => rec.questionUid)); return inner(records); }
+    return okRestore(rec => !aUids.has(rec.questionUid))(records);
+  };
+  const h = harness(data, { restore });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  h.w.quickState.twoForms = true;
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 2, 'both papers are made');
+  const [a, b] = h.published;
+  assert.equal(b.questionUids.length, 24);
+  assert.equal(new Set(b.questionUids).size, 24);
+  assert.ok(b.questionUids.every(id => a.questionUids.includes(id)), 'no empty question is printed: B uses A\'s own questions of the step');
+  const stepsA = a.questionUids.map(id => byUid.get(id).difficultyBucket), stepsB = b.questionUids.map(id => byUid.get(id).difficultyBucket);
+  assert.deepEqual(countBy(stepsB.map(step => Math.min(step, 4)), [1, 2, 3, 4]), countBy(stepsA.map(step => Math.min(step, 4)), [1, 2, 3, 4]));
+  assert.match(h.nodes.get('status').textContent, /A·B형이 같은 문항 \d+개를 함께 씁니다/);
+  assert.equal(h.popups.some(popup => popup.closed), false, 'no window was closed');
+});
+
+test('diagnostic A·B: when B cannot be made at all, the A window stays, only the B window closes, and the status says "B형"', async () => {
+  const data = fillCatalog([20, 20, 40, 4, 0], 12);
+  let batches = 0;
+  const restore = async records => {
+    if (records.length >= 20 && ++batches === 2) throw new Error('SOURCE_FETCH_FAILED: network');
+    return okRestore()(records);
+  };
+  const h = harness(data, { restore });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  h.w.quickState.twoForms = true;
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 1, 'A is published');
+  assert.equal(h.opened.length, 1, 'A window got its paper');
+  assert.equal(h.popups[0].closed, undefined, 'the A window stays open');
+  assert.equal(h.popups[1].closed, true, 'only the B window is closed');
+  const text = h.nodes.get('status').textContent;
+  assert.match(text, /B형은 만들지 못했습니다/);
+  assert.match(text, /A형은 그대로 열려 있습니다/);
+  assert.doesNotMatch(text, /SOURCE_FETCH_FAILED|fingerprint|UID|catalog/i, 'no internal terms');
+  assert.equal(h.w.quickState.formB, null);
+});
+
+for (const [grade, semester, subject] of [['중2', '1', ''], ['고2', '2', 'ALGEBRA']]) test(`diagnostic on the real catalog: ${grade} ${semester}학기 A·B with empty questions in the 4~5단계 gives two papers, or an A paper that stays with B failing; no empty question either way`, async () => {
+  const data = await catalog();
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  // about half of the questions of the 4~5단계 come back without answer / solution
+  const emptyOne = rec => rec.difficultyBucket >= 4 && stableHash(rec.questionUid) % 2 === 0;
+  const h = harness(data, { restore: okRestore(emptyOne) });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = grade;
+  if (subject) h.w.quickState.subject = subject;
+  h.w.quickState.semester = semester;
+  h.w.quickState.twoForms = true;
+  h.w.renderQuick();
+  await h.w.openQuickAssessment('all');
+  const rows = publishedRows(h, byUid);
+  assert.ok(rows.length >= 1, 'the A paper is always made');
+  for (const paper of rows) {
+    assert.equal(paper.length, 24);
+    assert.equal(paper.some(emptyOne), false, 'no empty question is printed');
+    const steps = paper.map(rec => rec.difficultyBucket);
+    assert.deepEqual(steps, [...steps].sort((a, b) => a - b));
+  }
+  assert.equal(h.popups[0].closed, undefined, 'the A window stays open');
+  const text = h.nodes.get('status').textContent;
+  if (rows.length === 2) {
+    assert.equal(rows[0].filter(rec => rows[1].includes(rec)).length, Number((/같은 문항 (\d+)개/.exec(text) || [0, 0])[1]), 'the told overlap is the real one');
+    assert.deepEqual(countBy(rows[1].map(rec => Math.min(rec.difficultyBucket, 4)), [1, 2, 3, 4]), countBy(rows[0].map(rec => Math.min(rec.difficultyBucket, 4)), [1, 2, 3, 4]));
+  } else assert.match(text, /B형은 만들지 못했습니다/);
 });
 
 test('diagnostic on the real catalog: 기초 / 기본 / 심화 print the preset steps in order from original exams, every chosen unit has its minimum', async () => {
