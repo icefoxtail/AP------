@@ -1,0 +1,75 @@
+{
+  "qid": "01",
+  "itemFingerprint": "ee355694e480b232",
+  "solveSteps": [
+    "① 4x - 3y - 7 = 0으로 미지수가 2개인 일차방정식이다.",
+    "② 등호가 없으므로 방정식이 아니다.",
+    "③ x^2 항이 있어 이차방정식이다.",
+    "④ 3x + 3 = 3x - 2에서 x가 소거되므로 일차방정식이 아니다.",
+    "⑤ 2x + 3y = 35이므로 미지수가 2개인 일차방정식이다."
+  ],
+  "solvedAnswer": "①, ⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "다음 중에서 미지수가 $2$개인 일차방정식인 것을 모두 고르면?",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "미지수가 2개인 일차방정식의 정의를 만족하는 식 $4x - 3y = 7$ 및 바퀴 수 35 관계식을 선별하는 문제이다.",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "미지수 $x, y$ 2개와 총합 35 등의 일차식 조건으로 구성된 일차방정식을 판별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "미지수가 2개인 일차방정식의 기본 정의를 확인하여 $4x - 3y = 7$ 및 총합 35 관계식을 판별하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "다음 중에서 미지수가 $2$개인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "가 $2$개인 일차방정식인 것을 모두"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "등호가 없어 방정식이 아니다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "관계",
+        "src": "choices",
+        "quote": "$y$ 사이의 관계식"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "미지수가 2개라는 조건을 식 $4x - 3y = 7$에서 확인한다.",
+    "goal": "일차방정식에 해당하는 식을 찾는다.",
+    "method": "등호 유무와 차수를 판별하여 방정식을 가려낸다.",
+    "condition": "자전거와 세발자전거 바퀴 수 관계식을 확인한다."
+  },
+  "how": "각 보기의 식을 정리하여 $4x - 3y = 7$과 바퀴 수 합 35인 $2x + 3y = 35$가 미지수가 2개인 일차방정식임을 확인해 ①, ⑤로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

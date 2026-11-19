@@ -1,0 +1,75 @@
+{
+  "qid": "16",
+  "itemFingerprint": "2c4d8536e087961f",
+  "solveSteps": [
+    "y = ax + 3의 그래프가 y = 5x - 4와 평행하므로 기울기가 같다.",
+    "따라서 a = 5이다.",
+    "y = 5x + 3이 점 (k, 13)을 지나므로 대입하면 13 = 5k + 3이다.",
+    "5k = 10이므로 k = 2이다.",
+    "따라서 a - k = 5 - 2 = 3이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = ax + 3$의 그래프는 일",
+  "rpmRecordId": "M2-RPM-050",
+  "rpmReason": "평행 조건으로 y = ax + 3에서 a = 5를 얻고 점 (k, 13) 대입으로 k = 2를 구하여 a - k = 3을 계산하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+  "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+  "typeReason": "평행 조건에서 식 y = ax + 3의 계수를 결정하고 지나는 점 (k, 13)으로 좌표를 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 일차함수의 평행 조건에서 a를 구하고 점 (k, 13)을 대입하여 k를 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax + 3$의 그래프는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "(단, $a$는 상수)"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "그래프와 평행하고 점 $(k, 13)$을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "일차함수 $y = ax + 3$의 그래프는"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "평행한 두 일차함수의 식을 파악한다.",
+    "goal": "a - k의 값을 계산한다.",
+    "method": "평행 조건으로 기울기를 구하고 점을 대입한다.",
+    "condition": "점 (k, 13)을 지난다는 조건을 쓴다."
+  },
+  "how": "평행 조건에서 $a = 5$를 구하고 점 $(k, 13)$ 대입으로 $k = 2$를 얻어 $a - k = 3$으로 정답 ④로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

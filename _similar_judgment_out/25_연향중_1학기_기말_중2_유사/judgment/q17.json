@@ -1,0 +1,75 @@
+{
+  "qid": "17",
+  "itemFingerprint": "eb35aab70d3d87e3",
+  "solveSteps": [
+    "ab < 0이므로 a와 b는 서로 다른 부호이다.",
+    "a - b > 0이므로 a > b이다.",
+    "따라서 a > 0이고 b < 0이다.",
+    "일차함수 y = ax + b에서 기울기 a는 양수이고 y절편 b는 음수이다.",
+    "오른쪽 위로 향하고 y절편이 음수이므로 제1, 3, 4사분면을 지난다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "$ab < 0,\\ a - b > 0$일 때, ",
+  "rpmRecordId": "M2-RPM-049",
+  "rpmReason": "부호 조건 ab < 0에서 기울기와 절편 부호를 판단하여 y = ax + b의 지나는 사분면을 결정하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_CONDITIONS_MATCHING",
+  "templateKey": "TPL_M2_SELECT_FUNCTION_MATCHING_SLOPE_AND_INTERCEPT_CONDITIONS",
+  "typeReason": "부호 조건 ab < 0에 따른 y = ax + b 그래프의 개형과 사분면 통과 여부를 판단하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ab < 0과 차의 부호로 y = ax + b의 기울기 및 y절편의 부호를 판정하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "다음 중 일차함수 $y = ax + b$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 지나는 사분면을 모두 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "그래프는 기울기가 양수이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "기울기가 양수이고 $y$절편이 음수이므로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "a, b의 곱과 차의 부호 조건을 확인한다.",
+    "goal": "그래프가 지나는 사분면을 고른다.",
+    "method": "기울기와 y절편의 부호를 분석하여 개형을 그린다.",
+    "condition": "ab < 0 조건으로 부호가 반대임을 이용한다."
+  },
+  "how": "$ab < 0, a - b > 0$에서 $a > 0, b < 0$이므로 $y = ax + b$는 제1, 3, 4사분면을 지남을 확인해 ②로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}
