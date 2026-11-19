@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=−x+a (a=7)",
+        "color": "BLUE",
+        "style": "DASHED"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          "-1",
+          "6"
+        ],
+        "label": "y=−x+a−4",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "2",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "7",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y=−x+a를 y축의 방향으로 −4만큼 평행이동하면 y=−x+a−4이다. 이 직선이 점 (2,1)을 지나므로 1=−2+a−4에서 a=7이다. 그림은 a=7일 때 점선인 원래 직선 y=−x+7과 아래로 4만큼 내린 실선 y=−x+3이 점 (2,1)을 지나는 모습이다. 따라서 a=7이다.",
+  "newVisualInformation": [
+    "원래 직선 y=−x+7을 4만큼 내린 y=−x+3이 점 (2,1)을 지나 a=7"
+  ],
+  "accessibilityDescription": "점선인 직선과 아래로 평행이동한 실선 직선이 평행하게 있고 실선이 점 (2,1)을 지나며 y절편 (0,7)과 (0,3)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 3] 일차함수 $y=-x+a$의 그래프를 $y$축의 방향으로 $-4$만큼 평행이동하면 점 $(2, 1)$를 지나는 직선이 된다. 이때 $a$의 값을 구하여라. (6점)<br>&lt;풀이과정&gt; (4점)<br>&lt;답&gt; (2점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

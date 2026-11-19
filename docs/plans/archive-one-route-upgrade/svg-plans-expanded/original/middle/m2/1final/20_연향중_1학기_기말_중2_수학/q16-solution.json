@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=3x",
+        "color": "BLUE",
+        "style": "DASHED"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=3x−2",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y=3x의 그래프를 y축의 방향으로 −2만큼 평행이동하면 y=3x−2이다. 기울기는 그대로 3이고 y절편이 −2가 되므로 a=3, b=−2이다. 따라서 ab=3×(−2)=−6이고 답은 ⑤이다.",
+  "newVisualInformation": [
+    "직선 y=3x를 y축 방향으로 −2만큼 내린 y=3x−2의 y절편 −2"
+  ],
+  "accessibilityDescription": "점선인 직선 y=3x와 그것을 아래로 평행이동한 실선 직선 y=3x−2가 평행하게 있고 y축과 만나는 점 (0,0)과 (0,−2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>16. 일차함수 $y=3x$의 그래프를 $y$축의 방향으로 $-2$만큼 평행이동하면 일차함수 $y=ax+b$의 그래프와 일치한다. 이때 $ab$의 값은? (단, $a, b$는 수) (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

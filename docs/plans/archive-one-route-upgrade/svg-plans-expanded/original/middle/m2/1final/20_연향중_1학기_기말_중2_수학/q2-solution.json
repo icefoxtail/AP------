@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "2x+y=7",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "7",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "3",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "각 순서쌍을 2x+y=7에 대입한다. (0,7), (1,5), (2,3), (3,1)은 좌변이 7이 되어 직선 위에 놓이지만 (4,0)은 2×4+0=8≠7이어서 직선 위에 있지 않다. 따라서 답은 ⑤이다.",
+  "newVisualInformation": [
+    "직선 2x+y=7 위의 네 점과 직선 밖의 점 (4,0)"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 내려가는 직선 위에 네 점 (0,7), (1,5), (2,3), (3,1)이 있고 점 (4,0)은 직선에서 벗어나 x축 위에 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>2. 일차방정식 $2x+y=7$를 참이 되게 하는 $x, y$의 순서쌍이 아닌 것은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

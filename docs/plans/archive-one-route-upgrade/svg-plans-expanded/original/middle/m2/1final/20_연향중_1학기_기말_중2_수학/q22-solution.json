@@ -1,0 +1,75 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "label": "걷기(시속 3km)",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "6"
+        ],
+        "domain": [
+          "2",
+          "5/2"
+        ],
+        "label": "뛰기(시속 6km)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "x": "2",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5/2",
+          "y": "9",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(시간)",
+      "y": "거리(km)"
+    }
+  },
+  "caption": "걸어간 거리를 x km, 뛰어간 거리를 y km라 하면 x+y=9이고 걸린 시간이 x/3+y/6=5/2시간(2시간 30분)이다. 풀면 x=6, y=3이다. 그림은 처음 2시간 동안 시속 3km로 6km를 걸어 점 A(2,6)에 이르고, 다음 0.5시간 동안 시속 6km로 3km를 뛰어 점 B(5/2,9)에 도착하는 거리와 시간의 그래프이다. 따라서 걸은 거리는 6km, 뛴 거리는 3km이다.",
+  "newVisualInformation": [
+    "걸은 6km(2시간)와 뛴 3km(0.5시간)가 이어져 2시간 30분에 9km를 한 바퀴 도는 거리-시간 그래프"
+  ],
+  "accessibilityDescription": "가로축이 시간, 세로축이 거리인 좌표평면에서 원점에서 점 A(2,6)까지 완만한 선분, 점 A에서 점 B(5/2,9)까지 더 가파른 선분이 이어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 2] 준서가 둘레의 길이가 $9\\text{km}$인 호수의 산책로를 따라 시속 $3\\text{km}$로 걷다가 시속 $6\\text{km}$로 뛰었더니 호수를 한 바퀴 도는 데 $2$시간 $30$분이 걸렸다. 준서가 걸어간 거리와 뛰어간 거리를 각각 구하여라. (8점)<br>(1) 걸어간 거리를 $x\\text{km}$, 뛰어간 거리를 $y\\text{km}$라 할 때, $x, y$에 대한 연립방정식을 세워라. (3점)<br>(2) 연립방정식의 해를 구하여라. (3점)<br>&lt;풀이과정&gt;<br>&lt;해&gt; $x=\\underline{\\qquad}$, $y=\\underline{\\qquad}$<br>(3) 걸어간 거리와 뛰어간 거리를 각각 구하여라. (2점) (반드시 단위쓰기)<br>① 걸어간 거리는 $\\underline{\\qquad}$,<br>② 뛰어간 거리는 $\\underline{\\qquad}$ 이다.</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

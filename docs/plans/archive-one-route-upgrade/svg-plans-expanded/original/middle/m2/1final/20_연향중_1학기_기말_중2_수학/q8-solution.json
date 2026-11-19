@@ -1,0 +1,129 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "MAPPING",
+    "columns": [
+      {
+        "id": "X",
+        "name": "x",
+        "elements": [
+          "2",
+          "3"
+        ]
+      },
+      {
+        "id": "Y",
+        "name": "y",
+        "elements": [
+          "3",
+          "5",
+          "7",
+          "9",
+          "11"
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 0
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 0
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 1
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 2
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 3
+        },
+        "style": "SOLID"
+      },
+      {
+        "from": {
+          "column": 0,
+          "element": 1
+        },
+        "to": {
+          "column": 1,
+          "element": 4
+        },
+        "style": "SOLID"
+      }
+    ]
+  },
+  "caption": "함수는 x의 각 값에 y의 값이 오직 하나씩 정해져야 한다. ④ 자연수 x보다 큰 홀수 y는 x=2일 때 3, 5, 7, 9, …로, x=3일 때 5, 7, 9, 11, …로 여러 개가 대응하므로 함수가 아니다. 나머지는 y=500x, 약수의 개수, y=36/x, y=20/x처럼 y가 하나로 정해진다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "x=2, x=3 하나에 y가 여러 개 대응하는 ④의 대응 화살표"
+  ],
+  "accessibilityDescription": "대응도에서 x가 2일 때 3, 5, 7, 9로, 3일 때 5, 7, 9, 11로 여러 개의 화살표가 나간다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 다음 중 $y$가 $x$의 함수가 아닌 것은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
