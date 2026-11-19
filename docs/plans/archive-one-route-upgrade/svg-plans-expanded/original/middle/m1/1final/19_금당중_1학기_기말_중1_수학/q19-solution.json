@@ -1,23 +1,59 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "0",
           "-1"
-        ],
-        "domain": [
-          "-4",
-          "4"
-        ],
-        "label": "y=−x",
-        "color": "BLUE"
+        ]
       }
-    ]
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4,
+      4
+    ],
+    "viewport": [
+      -5.44,
+      5.44,
+      -5.44,
+      5.44
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
   },
   "caption": "y=x, y=(5/2)x, y=(1/x), y=11/x는 모두 x, y의 부호가 같아 제1사분면과 제3사분면을 지난다. y=−x는 x와 y의 부호가 반대여서 제2사분면과 제4사분면만 지나고 제3사분면을 지나지 않는다. 따라서 답은 ④이다.",
   "newVisualInformation": [

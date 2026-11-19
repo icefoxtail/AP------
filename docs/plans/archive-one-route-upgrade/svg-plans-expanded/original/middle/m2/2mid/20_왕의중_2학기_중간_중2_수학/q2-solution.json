@@ -1,35 +1,101 @@
 {
-  "capability": "multi-curve-figure-v1",
-  "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
       {
-        "id": "f0",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "2",
-          "0"
-        ],
-        "domain": [
-          "-2",
-          "4"
-        ],
-        "label": "x=2",
-        "color": "BLUE"
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lV",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    ],
-    "overlays": {
-      "points": [
-        {
-          "id": "P0",
-          "x": "2",
-          "y": "1",
-          "coordinates": true,
-          "unnamed": true
-        }
-      ]
-    }
+    ]
   },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "displaySegments": [],
+  "displayLines": [
+    "lV"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "hiddenPointNames": [
+    "X",
+    "P"
+  ],
   "caption": "그래프가 y축에 평행하려면 y의 계수 b=0이어야 하고 식은 ax−2=0, 즉 x=2/a이다. 점 (2,1)을 지나므로 x=2이고 2/a=2에서 a=1이다. 따라서 a−b=1−0=1이고 답은 ③이다.",
   "newVisualInformation": [
     "y축에 평행한 직선 x=2가 점 (2,1)을 지나므로 b=0, a=1"

@@ -1,34 +1,49 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f",
-        "kind": "Y_OF_X",
         "coefficients": [
           "-4",
           "6",
           "-1"
-        ],
-        "domain": [
-          "0",
-          "6"
-        ],
-        "color": "BLUE",
-        "label": "y=−(x−3)²+5"
+        ]
       }
     ],
-    "overlays": {
-      "points": [
-        {
-          "id": "V",
-          "x": "3",
-          "y": "5",
-          "coordinates": true
-        }
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
       ]
-    }
+    },
+    "domain": [
+      0,
+      6
+    ],
+    "viewport": [
+      -1.5,
+      7.5,
+      -6,
+      6.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "3",
+        "y": "5"
+      }
+    ]
   },
   "caption": "y=−x²+2ax+b−7을 완전제곱식으로 고치면 y=−(x−a)²+a²+b−7이다. x²의 계수가 음수이므로 꼭짓점 (a, a²+b−7)에서 최댓값을 갖는다. x=3에서 최댓값 5이므로 a=3이고 a²+b−7=5에서 9+b−7=5이므로 b=3이다. 따라서 a+b=6이고 답은 ②이다. 그림은 꼭짓점이 V(3,5)인 위로 볼록한 포물선이다.",
   "accessibilityDescription": "위로 볼록한 포물선이 있고 꼭짓점 V(3,5)가 가장 높은 점으로 표시되어 있으며 좌표가 적혀 있다.",

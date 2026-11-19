@@ -1,39 +1,106 @@
 {
-  "capability": "multi-curve-figure-v1",
-  "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
       {
-        "id": "f0",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "3",
-          "0"
-        ],
-        "domain": [
-          "-3",
-          "3"
-        ],
-        "label": "x=3",
-        "color": "BLUE"
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lV",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
       }
-    ],
-    "overlays": {
-      "points": [
-        {
-          "id": "P",
-          "x": "3",
-          "y": "0",
-          "coordinates": true
-        }
-      ]
-    }
+    ]
   },
+  "displayPoints": [
+    "O",
+    "X",
+    "P"
+  ],
+  "displaySegments": [],
+  "displayLines": [
+    "lV"
+  ],
+  "displayCircles": [],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "hiddenPointNames": [
+    "X",
+    "P"
+  ],
   "caption": "y축에 평행한 직선은 x좌표가 일정한 직선이다. 점 (3,0)을 지나므로 x좌표가 항상 3이다. 따라서 직선의 방정식은 x=3이고 답은 ②이다.",
   "newVisualInformation": [
     "y축에 평행한 직선은 x좌표가 일정하므로 x=3"
   ],
-  "accessibilityDescription": "y축과 평행한 수직 직선이 x=3의 위치에 그려져 있고 x축 위의 점 P(3,0)이 표시되어 있다.",
+  "accessibilityDescription": "y축과 평행한 수직 직선이 x=3의 위치에 그려져 있고 x축 위의 점 (3,0)이 표시되어 있다.",
   "sourceConditions": [
     {
       "id": "source",
