@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "a",
+        "kind": "RATIONAL",
+        "numerator": [
+          "20"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "10"
+        ],
+        "color": "BLUE",
+        "label": "y=20/x"
+      },
+      {
+        "id": "b",
+        "kind": "RATIONAL",
+        "numerator": [
+          "20"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-10",
+          "-2"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "4/5"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=(4/5)x"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점 (5,4)가 y=ax 위에 있으므로 4=5a에서 a=4/5이다. 또 y=b/x 위에 있으므로 b=5×4=20이다. 따라서 ab=(4/5)×20=16이다. 그림은 두 그래프가 점 P(5,4)에서 만나는 모습이다.",
+  "accessibilityDescription": "원점을 지나는 직선과 제1사분면과 제3사분면에 걸친 두 갈래의 곡선이 점 P(5,4)에서 만나고 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "교점 (5,4)에서 a=4/5, b=20이므로 ab=16"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $y=ax$의 그래프와 $y=\\frac{b}{x}$의 그래프가 점 $(5, 4)$에서 만날 때, $ab$의 값을 구하여라. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

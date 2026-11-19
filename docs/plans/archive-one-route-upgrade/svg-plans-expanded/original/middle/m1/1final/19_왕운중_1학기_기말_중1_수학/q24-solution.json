@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "label": "OA",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "label": "OB",
+        "color": "WARM"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-6"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "label": "AB",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "6",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점 A가 x축 위의 점이므로 y좌표가 0이다. (3/2)a−1=0에서 a=2/3이고 A(1,0)이다. 점 B가 y축 위의 점이므로 x좌표가 0이다. 2−b=0에서 b=2이고 B(0,6)이다. 삼각형 OAB는 직각삼각형이므로 넓이는 (1/2)×1×6=3이다.",
+  "newVisualInformation": [
+    "A(1,0), B(0,6)으로 이루어진 직각삼각형 OAB의 넓이 3"
+  ],
+  "accessibilityDescription": "원점 O와 x축 위의 점 A(1,0), y축 위의 점 B(0,6)를 꼭짓점으로 하는 직각삼각형이 그려져 있고 세 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 4] 좌표평면 위의 두 점 $A\\left(a+\\frac{1}{3}, \\frac{3}{2}a-1\\right)$, $B(2-b, b+4)$는 각각 $x$축, $y$축 위의 점이다. 이때, $a$, $b$를 구하고 원점을 포함한 세 점 O, A, B를 꼭짓점으로 하는 삼각형 OAB의 넓이를 구하여라. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

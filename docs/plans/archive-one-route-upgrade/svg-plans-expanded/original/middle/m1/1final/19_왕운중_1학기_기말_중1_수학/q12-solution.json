@@ -1,0 +1,230 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "마름모의 두 대각선은 서로 수직이고 서로를 이등분한다. 한 대각선의 길이가 a이면 반은 a/2, 다른 대각선이 b이면 반은 b/2이다. 마름모는 합동인 네 직각삼각형으로 나뉘고 한 삼각형의 넓이는 (1/2)×(a/2)×(b/2)이다. 따라서 마름모의 넓이는 4×(1/2)×(a/2)×(b/2)=ab/2이고 답은 ③이다.",
+  "accessibilityDescription": "마름모 ABCD의 두 대각선이 점 O에서 수직으로 만나고 O에 직각 표시가 있다. 네 변에 같은 눈금이 있고 AO에 a/2, BO에 b/2가 적혀 있다.",
+  "newVisualInformation": [
+    "대각선이 마름모를 합동인 네 직각삼각형으로 나누어 넓이는 4×(1/2)×(a/2)×(b/2)=ab/2"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림은 두 대각선의 길이가 각각 $a$, $b$인 마름모이다. 마름모의 넓이를 문자 $a$, $b$를 사용한 식으로 나타낸 것은? [4점]<br><img src=\"assets/images/19_왕운중_1학기_기말_중1_수학/q12.png\" alt=\"q12\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "BC",
+        "CD",
+        "DA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAO",
+        "ownerSegment": "AO",
+        "text": "a/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBO",
+        "ownerSegment": "BO",
+        "text": "b/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

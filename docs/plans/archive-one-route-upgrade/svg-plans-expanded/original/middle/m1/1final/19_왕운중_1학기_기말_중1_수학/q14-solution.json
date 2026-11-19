@@ -1,0 +1,71 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "a",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1/2",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "y=−6/x"
+      },
+      {
+        "id": "b",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-6"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "-1/2"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "-2",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "그래프가 점 (1,−6)을 지나므로 a=1×(−6)=−6이고 관계식은 y=−6/x이다. x=−2를 대입하면 b=−6/(−2)=3이다. 따라서 a+b=−6+3=−3이고 답은 ③이다.",
+  "accessibilityDescription": "제2사분면과 제4사분면에 걸친 두 갈래의 곡선이 있고 곡선 위에 점 (1,−6)과 점 (−2,3)이 표시되어 있다.",
+  "newVisualInformation": [
+    "점 (1,−6)에서 a=−6이고 x=−2이면 b=3이므로 a+b=−3"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$y=\\frac{a}{x}$의 그래프가 두 점 $(1, -6)$와 $(-2, b)$를 지날 때, $a+b$의 값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
