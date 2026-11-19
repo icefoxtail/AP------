@@ -237,12 +237,13 @@ function workerFilterKeys() {
   assert.ok(keys.has('grade') && keys.has('scopeQuestionUids'), 'the parsed Worker key list is the real one');
   return keys;
 }
-const sourceWith = blank => ({ restore: async records => records.map(r => ({ questionUid: r.questionUid, answer: blank.has(r.questionUid) ? '' : '1', solution: blank.has(r.questionUid) ? '' : '해설' })) });
-function deriveHarness(blank = new Set(), basePaper = null) {
-  const paper = basePaper || generated({ pick: 3, count: 12 }).w;
+// the originals are read through Source.restore: every call is counted (picking must not make one)
+const countingSource = calls => ({ restore: async records => { calls.push(records.map(r => r.questionUid)); return records.map(r => ({ questionUid: r.questionUid, answer: '1', solution: '해설' })); } });
+function deriveHarness(calls = []) {
+  const paper = generated({ pick: 3, count: 12 }).w;
   const baseRecords = plain(paper.state.selected);
   const baseUids = baseRecords.map(r => r.questionUid);
-  const h = harness(base, { Archive2Derive: Derive, Archive2Source: sourceWith(blank) });
+  const h = harness(base, { Archive2Derive: Derive, Archive2Source: countingSource(calls) });
   const api = h.ctx.Archive2Workspace.api, V = h.ctx.Archive2Workspace.v;
   const body = () => h.ctx.document.getElementById('modal-body').innerHTML;
   return { ...h, api, V, baseUids, baseRecords, body, paper };
@@ -294,18 +295,20 @@ test('다시 뽑은 문제지 → 문제지 만들기 → 실제 저장 요청 �
   assert.ok(again && again.items.every(r => !before.has(r.questionUid) && !baseUids.includes(r.questionUid)), 'the new result leaves out the earlier one and the base');
 });
 
-test('정답·해설이 빈 문항은 기본으로 빠지고 기억된다', async () => {
-  const probe = deriveHarness();
-  startDerive(probe);
-  await probe.api.deriveAction('derive-run', {});
-  const first = probe.V.derive.dlg.result.items.map(r => r.questionUid)[0];
-  assert.ok(first, 'the probe derived something');
-  const H = deriveHarness(new Set([first]), probe.paper);
+test('뽑는 단계에서는 원본 시험 파일을 열지 않고 바로 결과를 보인다(원본은 고른 문항을 열 때만)', async () => {
+  const calls = [];
+  const H = deriveHarness(calls);
   startDerive(H);
-  H.V.derive.dlg.seed = probe.V.derive.dlg.seed;
-  await H.api.deriveAction('derive-run', {});
-  assert.equal(H.V.derive.dlg.result.items.some(r => r.questionUid === first), false, 'the empty question is not given');
-  assert.ok(H.V.derive.blank.has(first), 'and it is remembered as empty');
+  for (const [typeMode, level] of [['same', 'same'], ['same', 'up-one'], ['different', 'same'], ['different', 'up-one']]) {
+    H.V.derive.dlg.typeMode = typeMode;
+    H.V.derive.dlg.level = level;
+    H.V.derive.dlg.result = null;
+    await H.api.deriveAction('derive-run', {});
+    assert.ok(H.V.derive.dlg.result.items.length > 0, typeMode + '/' + level + ' gives a result');
+  }
+  await H.api.deriveAction('derive-compose', {});
+  assert.deepEqual(calls, [], 'no source file was requested while picking or handing over to 문제지 만들기');
+  assert.doesNotMatch(H.body(), /비어 있는 문항/, 'no empty-question notice');
 });
 
 test('UID가 없는 옛 출제본은 원본 파일·순번으로 되찾고, 못 찾으면 지원하지 않는다고 알린다', () => {

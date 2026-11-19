@@ -33,11 +33,10 @@
   });
   const SOURCE_NAME = Object.freeze({ all: "전체", school: "학교 기출", similar: "유사", textbook: "교과서", workbook: "교재" });
   const KIND_NAME = Object.freeze({ school: "학교 기출", similar: "유사", textbook: "교과서", workbook: "교재" });
-  const MAX_BLANK_ROUNDS = 5;
   const OLD_FORMAT_MESSAGE = "옛 형식 출제본이라 다시 뽑기를 지원하지 않습니다.";
   const MAX_BASE = 400;
-  // dlg: the open dialog's choices and result. restored/blank/checked live as long as the catalog does (a question found empty stays empty).
-  V.derive = { dlg: null, index: null, indexFor: null, unifiedFor: null, publishers: null, restored: new Map(), blank: new Set(), checked: new Set(), pending: null, busy: false, fileIndex: null };
+  // dlg: the open dialog's choices and result.
+  V.derive = { dlg: null, index: null, indexFor: null, unifiedFor: null, publishers: null, pending: null, busy: false, fileIndex: null };
 
   const text = (value) => (value == null ? "" : String(value)).trim();
 
@@ -56,7 +55,6 @@
       V2.unifiedFor = unified;
       V2.publishers = null;
       V2.fileIndex = null;
-      V2.restored.clear(); V2.blank.clear(); V2.checked.clear();
     }
     return V2.index;
   }
@@ -312,30 +310,6 @@
     if (dlg.source === "textbook") return dlg.publisher ? { kind: "textbook", publisher: dlg.publisher } : "textbook";
     return dlg.source === "all" ? "all" : dlg.source;
   }
-  // The questions found empty (no answer / no solution) are unknown until the source is restored, so: pick, restore the picks,
-  // leave the empty ones out and pick again. A few rounds; what is still empty after that is dropped and said so.
-  async function restoreChecked(records) {
-    const V2 = V.derive;
-    const fresh = records.filter((record) => !V2.checked.has(record.questionUid));
-    if (!fresh.length) return;
-    const D = Derive();
-    const mark = (record, question) => {
-      V2.checked.add(record.questionUid);
-      if (!question || D.isBlankQuestion(question)) V2.blank.add(record.questionUid);
-      else V2.restored.set(record.questionUid, question);
-    };
-    try {
-      const questions = await Source.restore(fresh, state.catalog);
-      fresh.forEach((record, i) => mark(record, questions[i]));
-    } catch {
-      // One bad source file must not drop the others: ask one by one; a question that cannot be restored is left out.
-      await Promise.all(fresh.map(async (record) => {
-        let question = null;
-        try { [question] = await Source.restore([record], state.catalog); } catch { question = null; }
-        mark(record, question);
-      }));
-    }
-  }
   async function runDerive() {
     const dlg = V.derive.dlg;
     const D = Derive();
@@ -345,28 +319,15 @@
     dlg.error = "";
     renderDialog();
     try {
-      let out = null, droppedBlank = 0;
-      const pickOptions = () => ({
+      // Picking reads the catalog only: no source exam file is requested here (the originals are read when the paper is opened).
+      const out = D.deriveFromPaper(dlg.baseUids, {
         typeMode: dlg.typeMode, level: dlg.level, sources: sourceSpec(dlg), seed: dlg.seed,
-        exclude: [...dlg.exclude, ...V.derive.blank],
-      });
-      for (let round = 0; round < MAX_BLANK_ROUNDS; round++) {
-        out = D.deriveFromPaper(dlg.baseUids, pickOptions(), index);
-        await restoreChecked(out.items);
-        if (!out.items.some((record) => V.derive.blank.has(record.questionUid))) break;
-      }
-      // Anything still empty after the rounds is not given to students.
-      const keep = out.items.filter((record) => !V.derive.blank.has(record.questionUid));
-      if (keep.length !== out.items.length) {
-        droppedBlank = out.items.length - keep.length;
-        const keepSet = new Set(keep.map((record) => record.questionUid));
-        out = { ...out, items: keep, perItem: out.perItem.map((item) => keepSet.has(item.pickedUid) ? item : { ...item, pickedUid: null, rung: "none" }) };
-      }
+        exclude: dlg.exclude, includeBlank: true,
+      }, index);
       const notes = [...(out.summary.notes || [])];
       if (dlg.typeMode === "same" && out.summary.counts && out.items.length &&
           out.summary.counts.type + out.summary.counts.concept + out.summary.counts.subunit + out.summary.counts.unit + out.summary.counts.none > 0)
         notes.unshift("같은 세부 유형이 모자란 자리는 한 단계씩 넓혀(같은 유형 → 같은 개념 → 같은 단원) 채웠습니다.");
-      if (droppedBlank) notes.push(`정답·해설이 비어 있는 문항 ${droppedBlank}개는 대신할 후보가 없어 뺐습니다.`);
       out.notes = notes;
       dlg.result = out;
     } catch (error) {
@@ -403,8 +364,8 @@
     (async () => {
       try {
         const records = dlg.result.items;
-        await restoreChecked(records);
-        const questions = records.map((record) => V.derive.restored.get(record.questionUid));
+        // The only place the originals are read: the questions of the paper being opened.
+        const questions = await Source.restore(records, state.catalog);
         if (questions.some((q) => !q)) throw new Error("원본 문항을 불러오지 못했습니다. 다시 뽑아 주세요.");
         const questionUids = records.map((record) => record.questionUid);
         const { grade, subject } = gradeSubjectOf(records);
