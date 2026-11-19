@@ -456,3 +456,36 @@
 | 24 | NOT_NEEDED | BENEFICIAL | 해설: 직선 y=3x+6과 두 점 (-4,-6), (-6,-12)를 표시하면 좌표가 뒤바뀐 두 점의 위치를 확인하기 쉽다. |
 
 - 문제그림 REQUIRED/BENEFICIAL 3개: 7, 9, 15. 해설그림 REQUIRED/BENEFICIAL 3개: 7, 9, 24.
+
+## 26_동산중_1학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q22[발문], q23[발문], q24[발문]. 해설 16개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | BENEFICIAL | 해설: 평행이동 전후 두 직선을 한 좌표평면에 그리면 아래로 5만큼 내려간 결과가 한눈에 보인다. |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | BENEFICIAL | 해설: 직선을 그려 x절편 2, y절편 6, 지나는 사분면을 표시하면 ①③④⑤의 거짓 판정이 빨라진다. |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | BENEFICIAL | 해설: 같은 좌표평면에 y = ax + b(a > 0, b > 0)와 y = -(b/a)x + b를 그리고, 뒤 직선이 지나지 않는 제3사분면을 표시. |
+| 11 | REQUIRED | REQUIRED | 문제: 직사각형 ABCD(AB = 8, BC = 20)와 변 BC 위의 점 P, BP = 2x, 사다리꼴 APCD를 표시한 그림. / 해설: 직사각형에서 사다리꼴 APCD를 색칠하고, 빼는 삼각형 ABP(밑변 2x, 높이 8)를 함께 표시. |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | BENEFICIAL | 해설: 직선 2x + y = 6 위에 (1, 4), (2, 2)를 찍고, 실수 범위의 해가 직선 전체임을 보여 주는 좌표평면. |
+| 14 | NOT_NEEDED | BENEFICIAL | 해설: 절편 (3, 0), (0, 2)와 기울기 -2/3를 표시하고 제1·2·4사분면 통과를 보여 주는 좌표평면. |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | BENEFICIAL | BENEFICIAL | 문제: 두 직선과 x축이 만드는 삼각형의 위치를 좌표평면에 그려 주면 밑변과 높이를 빨리 찾을 수 있다(식만으로도 풀린다) / 해설: x절편 (-6, 0), (4, 0)과 교점 (2, 4)를 표시한 좌표평면 그림이 있으면 밑변 10과 높이 4가 한눈에 보인다 |
+
+- 문제그림 REQUIRED/BENEFICIAL 2개: 11, 24. 해설그림 REQUIRED/BENEFICIAL 7개: 4, 6, 10, 11, 13, 14, 24.
