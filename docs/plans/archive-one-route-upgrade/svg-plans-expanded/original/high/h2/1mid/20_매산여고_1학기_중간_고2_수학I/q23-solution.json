@@ -1,0 +1,75 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1",
+          "3"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      1
+    ],
+    "viewport": [
+      -0.2,
+      1.2,
+      0,
+      3.5
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "V",
+        "x": "1/6",
+        "y": "11/12"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "3"
+      }
+    ]
+  },
+  "caption": "t=sin²x로 두면 0≤x≤π/2에서 0≤t≤1이다. y=t³+(1−t)³+2t=3t²−t+1=3(t−1/6)²+11/12이다. 그래프는 꼭짓점 V(1/6, 11/12)에서 최소이고 구간의 끝 A(0, 1), B(1, 3) 중 B에서 최대이다. 따라서 m=11/12, M=3이고 M+m=47/12이다.",
+  "accessibilityDescription": "0에서 1까지의 구간에서 아래로 볼록한 포물선이 그려져 있고, 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다. 오른쪽 끝이 가장 높다.",
+  "newVisualInformation": [
+    "치환한 이차식의 구간 [0, 1]에서 최저점 V(1/6, 11/12)와 최고점 B(1, 3)를 보여 M+m=47/12를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식5 (서술형)] $0 \\le x \\le \\frac{\\pi}{2}$일 때, $y=\\sin^6 x + \\cos^6 x + 2\\sin^2 x$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$의 값을 구하는 과정과 답을 자세히 서술하시오. [7점] (부분점수 있음.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

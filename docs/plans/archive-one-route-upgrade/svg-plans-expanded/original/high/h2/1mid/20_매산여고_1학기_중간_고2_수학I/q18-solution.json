@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      1.5,
+      0,
+      2.5
+    ],
+    "curves": [
+      {
+        "id": "d",
+        "kind": "EXPONENTIAL",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "0<a<1"
+      },
+      {
+        "id": "u",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "WARM",
+        "label": "a>1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "1/2",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "t=f(x)로 두면 f는 y축에 대칭이고 0≤t≤1이므로 g(−x)=g(x)이어서 ㄱ은 참이다. 그림은 y=aᵗ을 0≤t≤1에서 본 예(파란 곡선은 a=1/2, 주황 곡선은 a=2)이다. 0<a<1이면 감소하므로 t=1일 때 최솟값 Q(1, a)에서 g의 최솟값은 a이고 ㄴ은 참이다. a>1이면 증가하므로 t=1일 때 최댓값은 R(1, a)이고 1이 아니므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "t가 0에서 1 사이에서 점 P(0, 1)에서 시작해 내려가는 파란 지수 곡선과 올라가는 주황 지수 곡선이 있다. t=1에서 두 곡선의 끝점 Q, R의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "g=aᵗ의 t=f(x)∈[0, 1]에서 0<a<1일 때 최솟값 a, a>1일 때 최댓값 a를 보여 ㄴ, ㄷ을 판정하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 함수 $y=f(x)\\,(-2 \\le x \\le 2)$의 그래프가 다음과 같을 때, 함수 $g(x)=a^{f(x)}\\,(a>0, a \\neq 1)$에 대하여 옳은 것만을 <보기>에서 모두 고르면? [4.3점]\n<div class=\"problem-box\">\n<b>&lt;보기&gt;</b><br>\nㄱ. $g(-x)=g(x)$<br>\nㄴ. $0 \\lt a \\lt 1$일 때, 함수 $y=g(x)$의 최솟값은 $a$이다.<br>\nㄷ. $a > 1$일 때, 함수 $y=g(x)$의 최댓값은 $1$이다.\n</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
