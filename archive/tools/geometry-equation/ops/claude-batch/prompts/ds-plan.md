@@ -42,5 +42,18 @@ construction-spike-v1(좌표·작도·원·삼각형·단위원, mathPlan·plane
 - 평면도형의 segmentColors·parallels·equalLengths·rightAngles는 planeMarks 안에 쓴다(밖에 쓰면 조용히 무시된다).
 - y=x·기울기 ±1 직선·원이 있는 단일 유리·무리함수 그래프는 graphPlan.equalUnits:true.
 
+[자주 걸리는 렌더 실패와 바른 쓰는 법 — 고2 수학II plan 121개 중 65개가 실패했다(통과 46%). 아래는 실제 실패 원인이다]
+- **불연속 조각함수의 requiredPoints**(`PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:<id>`, 구간별 다항은 `PIECEWISE_POLY_REQUIRED_POINT_OUTSIDE_SOURCE_DOMAIN:<id>`; 불연속 plan 34개 중 4개만 통과한 가장 큰 원인). **열린 끝(빈 점)이나 극한값 점을 requiredPoints에 쓰면 실패한다.** 빈 점·채운 끝점·고립점은 엔진이 조각 끝 상태(OPEN/CLOSED)와 `jumpValues`로 직접 그린다("Endpoint dots are computed by the engine: never list them"). requiredPoints에는 **함수값이 실제로 있는 점**(닫힌 끝, 조각 안쪽의 절편·꼭짓점, jumpValues 고립점)만 쓴다. 극한값은 `limitArrows:[{"at":"1","side":"LEFT","toY":"6"}]`로 보이고 좌표 글은 caption에 쓴다.
+  실패: pieces `{"domain":[-2,1],"end":"OPEN"}`(그 끝의 극한 6)에 requiredPoints `{"id":"A","x":"1","y":"6"}`. 바름: 점 A를 빼고 limitArrows를 쓴다. 점 A가 필요하면 그 x에서 한쪽 끝을 CLOSED로 하거나 jumpValues `{"x":"1","y":"6"}`를 쓴 경우만이다.
+- 같은 x에서 양쪽이 모두 OPEN이면 `jumpValues`로 함숫값을 반드시 쓴다(없으면 `PIECEWISE_DISCONTINUITY_UNDECLARED:<n>`; referenceCurves[0]의 `jumpValues`도 같다). 함숫값이 없는 구멍은 이 capability로 못 그리니 값을 지어내지 말고 UNSUPPORTED로 쓴다.
+- 이차 조각의 꼭짓점이 그 조각 안쪽이면 requiredPoints에 넣는다(`PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_IN_REQUIRED_POINTS`; 둘째 함수는 `referenceCurves[0].requiredPoints`). domain·계수·xWindow에 소수(3.5)를 쓰지 말고 `"7/2"`로 쓴다(`PIECEWISE_DISCONTINUOUS_PIECE_INVALID`로 보이는 원인).
+- **STACKED 두 패널은 패널마다 읽을 값이 있어야 한다**(`PUBLICATION_TEXT_NOT_READY`: 눈금·좌표·식이 하나도 없는 패널). 위 패널 `axisTickValues`와 `referenceCurves[0].axisTickValues` 양쪽에 눈금(`{"x":["3"],"y":["2"]}`)이나 requiredPoints를 둔다.
+- **글 칸은 ASCII만 받는다.** overlays 직선 `label`(`OVERLAY_LABEL_INVALID:<id>`)과 multi-curve 곡선 `label`(`MULTI_CURVE_LABEL_INVALID:<id>`)은 `0-9 A-Z a-z = + - * / ( ) . ^ 공백` 40자 이내다. 한글("기울기 4", "접선", "시속 100"), ′, ², ≤, <, >, √는 안 된다(`"x<-1"`·`"y=g′(x)"`·`"y=4+3/x+5/x²"` 실패 → `"y=4+3/x+5/x^2"`). 직선은 `"t"`·`"l"`·`"y=3x+5"`처럼 쓰거나 `label`을 생략한다(엔진이 식을 쓴다). 식인 label은 그 직선과 같은 식이어야 한다. 기울기·구간·조건 같은 설명은 caption에 쓴다.
+- **`sampleNote`는 영문·숫자와 `= + - * / ( ) .`·공백만, 32자 이내**(`PIECEWISE_POLY_SAMPLE_NOTE_INVALID`). 한글("예시 곡선"), √, ², ^는 안 된다. `"k=-2+2√2"` → `"k=-2+2*sqrt(2)"`. 식(`f(x)=x²-4x+5`)은 caption에 쓰고 sampleNote는 생략한다.
+- **수직선 행 `label`은 6자 이내 한 줄**(`NUMBER_LINE_ROW_LABEL_INVALID`; `< > & " \ $`와 제어 문자도 안 된다). `"f′의 두 근 2, -a가 …"` 같은 문장은 caption에 쓰고 행에는 `"a"`·`"범위"`만 쓴다.
+- **multi-curve `DUPLICATE_SEMANTIC_LABEL`**: 한 함수를 조각(H1, H2, H3…)으로 나눠 그리거나 점근선(y=1 등)이 같은 RATIONAL 곡선을 여럿 그리면 식·점근선 글이 중복된다. 한 곡선만 글을 두고 나머지는 `"hideLabels":["formula","asymptotes"]`를 쓴다. 직선 라벨 `y=4`와 같은 값의 `axisTickValues`는 같이 쓰지 않는다.
+- **`LAYOUT_INVENTORY_INCOMPLETE`(좌표·sampleNote 글 자리 없음)**: `coordinates:true`인 overlays 점은 한 그림에 **3개 이하**로 쓴다(4개인 plan은 4개 중 0개 통과). 직선 라벨·sampleNote·점 이름이 많으면 더 줄이고, 핵심 점만 좌표를 쓰고 나머지는 `coordinates`를 빼서 caption에 값을 쓴다. 점이 `axisTickValues` 눈금 위에 있으면 그 눈금을 뺀다(점 Z(-2,0)와 눈금 -2가 충돌한 예).
+- **근호 좌표 점**: requiredPoints의 `x`,`y`에 정확한 문자열(`"(2-sqrt(13))/3"`)만 쓰고 같은 id를 `exactCoordinates`에 또 쓰지 않는다(`PIECEWISE_POLY_EXACT_COORDINATES_CONFLICT`). 정수·분수 좌표 점만 `exactCoordinates`를 쓴다.
+
 [끝내기 전 점검 — 문항마다]
 본보기와 같은 구조·필드 이름인가 / capability가 위 목록에 있는가 / caption·accessibilityDescription 규칙을 지켰는가 / newVisualInformation이 있는가 / 표지 `=== Q<번호> ===`와 JSON이 문항마다 있는가 / 판정이 FIGURE가 아니면 why가 구체적인가.
