@@ -1,0 +1,56 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "20730ab4a2c5c36c",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "외접원의 반지름을 R 이라 하면 OA = OB = R 이다.",
+    "삼각형 OAB의 둘레가 25 cm 이므로 R + R + 11 = 25 이다.",
+    "2R = 14 이므로 R = 7 cm 이다.",
+    "따라서 외접원의 넓이는 pi * 7^2 = 49 pi cm^2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "점 $O$는 $\\triang",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "newKeyProposal": null,
+  "typeReason": "둘레 25 cm 로부터 외접원의 반지름을 구하고 외접원의 넓이를 계산하는 유형이다.",
+  "rpmRecordId": "M2-RPM-068",
+  "rpmReason": "외심 둘레 공식 2R + 11 = 25 로부터 반지름 7을 찾아 원의 넓이를 구한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "둘레 25 에서 2R = 14, R = 7 을 얻어 넓이 49pi 를 바로 계산할 수 있다.",
+  "how": "둘레 25에서 반지름 R=7을 구하고 넓이 pi*7^2 = 49pi를 도출하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "점 $O$는 $\\triangle ABC$의 외심이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "외접",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 외접원의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "외접원의 반지름의 길이를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

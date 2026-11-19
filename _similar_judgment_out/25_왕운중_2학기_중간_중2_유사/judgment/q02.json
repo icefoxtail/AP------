@@ -1,0 +1,57 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "df9f494b75e552cd",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "x - ay + b = 0 을 y에 대해 풀면 y = 1/a x + b/a 이다.",
+    "그래프가 오른쪽 위로 향하므로 기울기 1/a > 0 에서 a > 0 이다.",
+    "y축과 음의 부분에서 만나므로 y절편 b/a < 0 이다.",
+    "a > 0 이므로 b < 0 이어야 한다.",
+    "따라서 a > 0, b < 0 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차방정식 $x - ay +",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "TPL_LINE_TWO_POINTS",
+  "newKeyProposal": null,
+  "typeReason": "일차방정식 x - ay + b = 0 의 기울기와 y절편의 부호로부터 상수 a, b 의 부호를 결정하는 유형이다.",
+  "rpmRecordId": "M2-RPM-054",
+  "rpmReason": "식 x - ay + b = 0 을 표준형으로 고쳐 그래프 성질을 분석한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "방정식 x - ay + b = 0 에서 기울기와 절편의 부호 부등식을 세워 a, b를 구해야 한다.",
+  "how": "기울기 1/a > 0 에서 a>0을 얻고 절편 b/a < 0 에서 b<0임을 도출하였다. ay",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $x - ay + b = 0$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부호",
+        "src": "stem",
+        "quote": "상수 $a$, $b$의 부호로 옳은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "오른쪽 위로 향하므로 기울기",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

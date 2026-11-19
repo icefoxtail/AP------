@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "dde4d4156aa56a72",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "직사각형의 두 대각선은 길이가 같고(AC = BD) 서로 다른 것을 이등분한다 (AO = BO = CO = DO).",
+    "따라서 ㄴ, ㄷ, ㄹ이 참이다.",
+    "대각선의 수직(ㄱ)과 이웃 변 상등(ㅂ), 이웃 삼각형 COB 합동(ㅁ)은 마름모나 정사각형의 성질로 거짓이다.",
+    "따라서 옳은 것은 ㄴ, ㄷ, ㄹ이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 $ABCD$의 두",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "newKeyProposal": null,
+  "typeReason": "직사각형 대각선의 성질과 이웃 삼각형 COB 등의 합동 진위를 선별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-079",
+  "rpmReason": "직사각형 대각선의 길이 상등과 이등분 성질을 확인하여 참인 보기를 고른다. COB",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직사각형 대각선의 성질인 ㄴ, ㄷ, ㄹ을 정확히 식별할 수 있다. COB",
+  "how": "직사각형 대각선 길이가 같고 서로 이등분하는 성질 ㄴ, ㄷ, ㄹ을 골랐다. COB",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$의 두 대각선의 교점을 $O$라고 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "<보기> 중 옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "서로 다른 것을 이등분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

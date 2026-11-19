@@ -1,0 +1,55 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "cce95590f26bc1b2",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "① AB // DC, ② 각 BCA = 각 DAC, ③ 삼각형 ABC 합동 삼각형 CDA 이다.",
+    "각 A = 각 BAC + 각 CAD = 각 DCA + 각 ACB = 각 C 이다.",
+    "④의 자리에는 각 BAC + 각 CAD 가 들어가야 하므로 각 B = 각 C 는 적절하지 않다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 평행사변형 $ABCD",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "대각선에 의한 엇각 DCA 과 평행사변형 성질 증명 빈칸의 적절성을 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmReason": "평행사변형 대변과 대각 상등 증명 과정에서 엇각 DCA 의 논리적 전개를 검토한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "각 A의 분할각 합이 들어가야 할 4번 자리에 각 B = 각 C가 적힌 오류를 찾아낸다. DCA",
+  "how": "각 A를 두 각의 합으로 나타내어야 할 자리에 각 B=각 C가 들어간 4번이 잘못되었음을 확인하였다. DCA",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "다음은 평행사변형 $ABCD$의 두 쌍의 대변의 길이는 각각 같고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "괄호 ①~⑤에 들어갈 기호로 적절하지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "들어가야 하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

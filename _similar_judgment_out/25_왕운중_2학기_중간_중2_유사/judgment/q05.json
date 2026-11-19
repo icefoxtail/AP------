@@ -1,0 +1,56 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "0c03308b3c5fedc0",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "3x - y - 7 = 0 과 x + y - 5 = 0 을 변끼리 더한다.",
+    "4x - 12 = 0 이므로 x = 3 이다.",
+    "x = 3 을 두 번째 식에 대입하면 3 + y - 5 = 0 에서 y = 2 이다.",
+    "따라서 x = 3, y = 2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "newKeyProposal": null,
+  "typeReason": "연립방정식 cases 형태의 3x - y - 7 = 0 의 해이자 두 직선의 교점을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-056",
+  "rpmReason": "가감법으로 y를 소거하여 cases 연립방정식 3x 식의 해 x=3, y=2 를 구한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 식을 더해 4x = 12 에서 x = 3, y = 2 를 쉽게 구할 수 있다. 3x",
+  "how": "두 식을 가감하여 x = 3을 얻고 대입하여 y = 2를 구하였다. cases",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 3x - y - 7 = 0 \\ x + y - 5 = 0 \\end{cases}$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "의 해는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

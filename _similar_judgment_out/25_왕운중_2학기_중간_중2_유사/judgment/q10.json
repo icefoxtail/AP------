@@ -1,0 +1,55 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "cce13059d3321915",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "외심 O에서 OA = OB = OC 이므로 각 BCO = 28도, 각 OAC = 47도, 각 ABO = x도이다.",
+    "삼각형 ABC의 세 내각의 합은 180도이므로 2(x + 28 + 47) = 180 이다.",
+    "x + 75 = 90 이므로 x = 15 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "예각삼각형 $ABC$의 외심",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 외심에서 각 꼭짓점에 이르는 거리가 같음을 이용해 각 28도 등에서 x를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-065",
+  "rpmReason": "외심에서 세 꼭짓점을 잇는 이등변삼각형 각의 합 28+47+x=90 을 적용한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x + 28 + 47 = 90 공식으로 x = 15 를 간단히 산출할 수 있다.",
+  "how": "외심의 각 관계 x + 28 + 47 = 90 으로부터 x = 15를 계산하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "예각삼각형 $ABC$의 외심을 $O$라 하자"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$x$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "solution",
+        "quote": "세 내각의 합은 $180^\\circ$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
