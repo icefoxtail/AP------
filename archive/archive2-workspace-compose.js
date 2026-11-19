@@ -810,7 +810,7 @@
           <section class="qk-block qk-scope"><h2 class="qk-h">${esc(noun)}</h2>${list}</section>
         </div>
         <aside class="qk-result" aria-label="만들어질 평가">${result}</aside>
-      </div>${barMarkup}</div>`;
+      </div>${window.Archive2QuickPacks?.markup?.() || ""}${barMarkup}</div>`;
   }
   function fiveMinuteShuffle(rows) {
     const result = rows.slice();
