@@ -307,7 +307,10 @@ function buildDb() {
   assert.strictEqual(get("SELECT status FROM timetable_versions WHERE id = ?", vid).status, 'active');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c4'").is_active, 0, '삭제한 반의 원래 운영 반이 비활성화된다');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c1'").is_active, 0);
-  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c3'").is_active, 1, '졸업(excluded) 반은 기존대로 운영에 그대로 둔다');
+  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c3'").is_active, 0, '졸업(excluded) 반은 적용하면 운영에서도 닫힌다');
+  assert.strictEqual(get("SELECT COUNT(*) AS n FROM class_students WHERE class_id = 'c3'").n, 0, '닫힌 졸업 반에는 반배정이 남지 않는다');
+  assert.strictEqual(activated.body.graduated_class_count, 1);
+  assert.strictEqual(get("SELECT status FROM students WHERE id = 's5'").status, '재원', '졸업 반 학생의 재원 상태는 건드리지 않는다');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c5'").is_active, 0, '가져온 새 운영 반은 적용되어 원래 운영 반은 닫힌다');
   assert.strictEqual(get("SELECT COUNT(*) AS n FROM class_students WHERE class_id = 'c4'").n, 0);
   const applied = all(`SELECT cs.student_id, c.name FROM class_students cs JOIN classes c ON c.id = cs.class_id WHERE c.promotion_version_id = ?`, vid);
