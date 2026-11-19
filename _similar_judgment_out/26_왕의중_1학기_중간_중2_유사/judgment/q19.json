@@ -1,0 +1,71 @@
+{
+  "qid": 19,
+  "itemFingerprint": "14224f4670fa5e70",
+  "solveSteps": [
+    "편도 거리를 d km라 하자.",
+    "갈 때 시간 d/12, 휴식 시간 15/60 = 1/4 시간, 올 때 시간 d/8 이다.",
+    "총 시간 한도: 1시간 40분 = 5/3 시간 이다.",
+    "d/12 + 1/4 + d/8 <= 5/3 에서 양변에 24를 곱하면 2d + 6 + 3d <= 40 이다.",
+    "5d <= 34 에서 d <= 34/5 = 6.8 km 이다. 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "가 출발점에서 최대 몇 $\\tex",
+  "rpmRecordId": "M2-RPM-144",
+  "rpmReason": "왕복 속력 12 km, 8 km와 휴식 15분, 총 40분 한도 조건으로 부등식 5d<=34를 세운다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+  "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+  "typeReason": "왕복 이동과 휴식 시간 40분 제한 조건에서 최대 이동 거리 6.8 km를 구하는 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "휴식 시간을 포함한 왕복 시간 부등식을 세우고 24를 곱해 최대 거리 6.8 km를 도출하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "시점",
+        "quote": "때, 지훈이가 출발점에서 최대 몇",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "quote": "가 출발점에서 최대 몇 $\\tex",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "quote": "양변에 분모의 최소공배수인 $24$를",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차부등식",
+        "quote": "$$ 2단계: 일차부등식을 세운다. $",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "갈 때 d/12, 휴식 1/4, 올 때 d/8의 합이 5/3시간 이하임을 세워 5d<=34에서 최대 6.8 km를 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

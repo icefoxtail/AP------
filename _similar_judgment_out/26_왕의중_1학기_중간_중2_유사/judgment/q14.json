@@ -1,0 +1,60 @@
+{
+  "qid": 14,
+  "itemFingerprint": "5db942e81398b257",
+  "solveSteps": [
+    "1번: 3x - 2 > -2x + 3 에 x = 0 을 대입하면 -2 > 3 으로 거짓이므로 0은 해가 아니다.",
+    "2번: -3x + 1 > 4 에 x = -2 대입하면 7 > 4 (참)",
+    "3번: 2x + 3 >= 7 에 x = 3 대입하면 9 >= 7 (참)",
+    "4번: x/3 - 1 > x/4 에 x = 15 대입하면 4 > 3.75 (참)",
+    "5번: 3(x - 1) <= 2x + 1 에 x = 4 대입하면 9 <= 9 (참)",
+    "따라서 해가 아닌 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "수가 주어진 일차부등식의 해가 아닌",
+  "rpmRecordId": "M2-RPM-138",
+  "rpmReason": "각 선지의 일차부등식에 주어진 수 15 및 3.75 등을 대입하여 해가 되는지 판별한다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_SOLVING",
+  "templateKey": "TPL_M2_SOLVE_FRACTIONAL_DECIMAL_INEQUALITY_CHECK",
+  "typeReason": "일차부등식의 해 여부를 수 15 대입(3.75 비교)을 통해 검증하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식에 직접 수를 대입하여 4 > 3.75 등 참·거짓을 확인하는 기본 판별 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "일차부등식",
+        "quote": "수가 주어진 일차부등식의 해가 아닌",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "quote": "가 주어진 일차부등식의 해가 아닌",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "선지 1번에 x=0을 대입하여 -2 > 3이 성립하지 않음을 확인하고 15 대입 선지와 비교 검증했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
