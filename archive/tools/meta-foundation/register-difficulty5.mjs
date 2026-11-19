@@ -51,6 +51,16 @@ export function bindDifficulty5Source(sourceBytes, expectedSha) {
   return { bytes, sha };
 }
 
+// A draft request whose every item carries the stem+choices fingerprint (textBindingFingerprint, text-v1) is bound per question, so the
+// whole-file Git blob (latestBlobSha) is not compared: another question's solution or figure being edited must not refuse the request.
+// Any other request (another approvalType, a reviewed correction, an item without the fingerprint) keeps the whole-file blob binding.
+// The registrar, the PR preview and the consumer gate all use this one predicate.
+export function isTextBoundDraft(request) {
+  const items = request?.gemini?.items;
+  return request?.approvalType === DRAFT_SINGLE_MODEL && !request.reviewedCorrection && Array.isArray(items) && items.length > 0 &&
+    items.every(item => typeof item?.textBindingFingerprint === "string" && /^[a-f0-9]{64}$/.test(item.textBindingFingerprint));
+}
+
 // 1 = 하, 2·3 = 중, 4·5 = 상
 const bucketLevel = n => (n === 1 ? 0 : n <= 3 ? 1 : 2);
 
@@ -233,7 +243,7 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
   const sourcePath = path.join(root, "archive/exams", source);
   if (!fs.existsSync(sourcePath)) fail("source exam file not found: " + source);
   const { bytes: sourceBytes, sha } = bindDifficulty5Source(fs.readFileSync(sourcePath), g.latestBlobSha);
-  if (sha !== g.latestBlobSha) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
+  if (sha !== g.latestBlobSha && !isTextBoundDraft(request)) fail("source Git blob drift (expected " + g.latestBlobSha + ", actual " + sha + ")");
 
   const doc = read(root, META);
   const ids = read(root, IDENTITY);
