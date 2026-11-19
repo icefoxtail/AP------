@@ -262,3 +262,36 @@
 | 23 | NOT_NEEDED | TABLE | 해설: b의 값에 따른 (m, n)과 a의 값, 채택 여부를 표로 정리하면 전수 조사 결과가 분명해진다. |
 
 - 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE(표 엔진 영역) 2건. 게시한 그림 0개.
+
+## 25_신흥중_1학기_중간_중3_유사 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다). 11번은 정육각형을 대각선으로 자른 조각을 이어 붙인 배열이 그림에만 있던 문항으로, 발문 끝에 그림 자리표시 잔여 글자(`b a b a b b → b b b a b a`)가 남아 있어 지웠다. 이 문항은 그림 없이는 조각 배열을 알 수 없어 문제 그림·해설 그림 모두 REQUIRED이며 그림이 생기기 전에는 학생 화면에서 완결되지 않는다. 고친 내용: 서술형 21·22·24번 끝을 "…구하는 과정을 서술하시오."로 맞췄고, 해설 24개를 판서형으로 정리했으며 19번 해설의 사라지던 중괄호와 `\implies`를 고쳤다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 41325123454134225135). 수 보기(1·9·11·16·18번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장·식 보기(2·4·12·15·17·19번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다. 본 해설은 DeepSeek 한도 이후 Sonnet이 작성했다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | TABLE | 해설: ㄱ부터 ㅁ까지 각 수를 유리수와 무리수로 나눈 두 칸 표로 정리하면 분류가 한눈에 들어온다. |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | REQUIRED | REQUIRED | 문제: 정육각형에 자르는 대각선을 표시한 그림과 네 조각을 다시 붙인 새 도형의 배열 그림이 함께 있어야 둘레를 셀 수 있다. / 해설: 새 도형의 바깥 둘레가 짧은 대각선 2개와 한 변 4개로 이루어짐을 표시한 도형 그림이 있어야 2a+4b 계산 근거가 보인다. |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | TABLE | 해설: a = 3, 6, 9, 12, 15에 대한 b와 a + b를 표로 정리하면 범위 탈락까지 한눈에 확인된다. |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | NOT_NEEDED |  |
+| 21 | NOT_NEEDED | TABLE | 해설: k 값에 따른 x와 72/x의 값을 표로 정리하면 후보 검토가 한눈에 들어온다. |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | NOT_NEEDED |  |
+| 24 | NOT_NEEDED | TABLE | 해설: (a, c), (b, d), A를 행으로 묶은 표로 정리하면 여섯 경우와 중복 제거가 한눈에 보인다. |
+
+- 문제그림 REQUIRED 1개, BENEFICIAL 0개. 해설그림 REQUIRED 1개, BENEFICIAL 0개. TABLE(표 엔진 영역) 4건. 게시한 그림 0개.
