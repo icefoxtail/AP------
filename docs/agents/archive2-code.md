@@ -355,3 +355,10 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - `archive/index.html`의 "믹서 출제" 버튼은 "문제지 만들기"(`workspace.html?view=compose`)로 바꿨고, 리포트센터(`apmath/js/report-center.js`)의 "믹서 열기" 버튼과 MIXED 출제물의 열기 링크(믹서 주소)는 없앴다. `mixer.html`·`mixer-selector.js`는 다른 화면이 모듈을 쓰고 저장된 주소로 열 수 있어 지우지 않았다.
 - 이유: 아카이브 난이도는 정수 1~5만 쓰는데, 옛 믹서는 상/중/하 필터를 쓰는 유일한 화면이다. 고치지 않고 입구를 숨기며(옛 화면 제거 계획과 같은 방향), 같은 기능은 문제지 만들기가 제공한다.
+
+## 평가팩 공용 코드와 빠른 평가 "준비된 평가지" (2026-11-19)
+
+- 시험지 보관함(`archive/assessment/assessment-mvp.html`)과 빠른 평가의 "준비된 평가지" 구역(`archive/archive2-quick-packs.js`, 전역 `Archive2QuickPacks`)이 **`archive/assessment/assessment-pack-core.js`(전역 `AssessmentPackCore`) 하나**를 같이 쓴다. 이유: 둘 다 "준비된 문항으로 평가 한 장을 뽑아 출제"하는 같은 일이라, 팩 → MIXED 키·`pack_id`·`pack_hash`·출제 패널 항목·엔진 주소·평가 전달 자료 정리를 두 벌로 두면 한쪽만 고쳐져 출제 건이 갈라진다.
+- 키는 한 글자도 바꾸지 않는다: 팩 `id`, MIXED 키 `assessment_<팩번호>_<문항구성해시>`, localStorage `mixedQuestions_/mixedMeta_assessment_…`. 구역은 닫힌 채로 시작하고 열 때만 공용 코드와 팩 자료 파일 2개를 받는다(첫 화면 요청 0). 구역은 작업공간 상태에 값을 더하지 않고(상태는 `archive2-quick-packs.js` 안), `archive2-workspace-compose.js renderQuick`이 `Archive2QuickPacks.markup()`을 끼워 넣는다.
+- 탭은 중간·기말평가·모의고사뿐이다(사용자 결정 2026-11-19): 단원평가는 즉석 조립과 겹치고, 진단평가는 즉석 조립 상품으로 따로 만든다. 팩 자료 파일에서는 지우지 않는다(옛 보관함 화면과 이미 나간 출제·학생 복습이 packId로 연다). 목록은 팩 수·문항 구성을 고정하지 않고 자료에서 읽는다.
+- 테스트: `tests/archive2-quick-packs.test.js`(구역·공용 코드), `tests/assessment-assign-panel.test.js`·`tests/assessment-open-resilience.test.js`(공용 코드를 보관함 스크립트와 함께 vm에서 실행).
