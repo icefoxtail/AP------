@@ -93,9 +93,6 @@ jobs:
       - name: Install Worker dependencies
         run: npm ci --prefix apmath/worker-backup/worker --no-audit --no-fund
 
-      - name: Assemble question metadata (git holds its shards)
-        run: if [ -d archive/data/question-metadata/v1 ]; then node archive/tools/meta-foundation/question-metadata-format.mjs assemble; fi
-
       - name: Worker test gate (syntax + miniflare/workerd runtime and unit tests)
         timeout-minutes: 15
         run: bash tools/ci/apms-worker-test-gate.sh

@@ -120,6 +120,13 @@ export function writeMetadataText(root, text) {
   syncMetadataShards(root);
 }
 
+// For finished one-off campaign tools that write archive/data/question_metadata.json directly: with shards the file is an ignored
+// assembly, so such a write would be silently lost from the commit. Stop with one line instead (a loud stop beats a silent loss).
+export function refuseDirectMetadataWrite(root, toolName) {
+  if (hasShards(root))
+    throw new Error(`${toolName} writes archive/data/question_metadata.json directly and does not write the shards back ("조각으로 되쓰지 않는 도구"); use a shard-aware registrar (writeMetadataText/syncMetadataShards in question-metadata-format.mjs)`);
+}
+
 // shards -> assembled file (the command to run in a fresh working folder). Returns true when the file was (re)written.
 export function assembleMetadataFile(root) {
   if (!hasShards(root)) throw new Error(`no shard folder: ${SHARD_DIR}`);

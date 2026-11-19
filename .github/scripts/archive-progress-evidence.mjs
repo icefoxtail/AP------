@@ -34,7 +34,10 @@ const registryFiles=['archive/db.js','archive/question-index.js','archive/questi
  'archive/data/archive2-canonical-input-manifest.json','archive/data/archive2-canonical-projection-policy.json',
  'archive/data/archive2-item-review-overrides.json','archive/data/basic-scope-parent-links.json',
  ...git('ls-files','--','archive/data/meta-foundation/runtime').split('\n').filter(Boolean)];
-const registry=digest(registryFiles.map(f=>f+' '+(git('ls-tree','HEAD','--',f).match(/blob ([a-f0-9]{40})/)?.[1]||'MISSING')));
+// Git holds the question metadata as per-exam shards (the one file is an ignored assembly): each shard's blob is a witness row,
+// exactly like the deployed-site side derives them from the shipped assembled file (archive-progress-site-snapshot.py).
+const shardRows=git('ls-tree','-r','-z','HEAD','--','archive/data/question-metadata/v1').split('\0').map(row=>/^[0-7]{6} blob ([a-f0-9]{40})\t(.+)$/.exec(row)).filter(m=>m&&!m[2].endsWith('/_head.json')).map(m=>m[2]+' '+m[1]);
+const registry=digest([...registryFiles.map(f=>f+' '+(git('ls-tree','HEAD','--',f).match(/blob ([a-f0-9]{40})/)?.[1]||'MISSING')),...shardRows]);
 fs.mkdirSync(target,{recursive:true});
 const out=path.join(target,'progress-evidence-'+id+'-'+attempt+'.json');
 fs.writeFileSync(out,JSON.stringify({schema:2,run_id:id,run_attempt:attempt,sourceSha,registry,exams,
