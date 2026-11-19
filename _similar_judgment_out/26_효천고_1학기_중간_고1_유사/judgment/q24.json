@@ -1,0 +1,71 @@
+{
+  "qid": 24,
+  "itemFingerprint": "f4e8cd26109f7b93",
+  "solveSteps": [
+    "$f(x) = x^4 + ax^3 - 7x^2 - x + b$가 $x - 1, x - 2$를 인수로 가지므로 $f(1) = a + b - 7 = 0 \\implies a + b = 7$이다.",
+    "$f(2) = 16 + 8a - 28 - 2 + b = 0 \\implies 8a + b = 14$이다.",
+    "연립하면 $7a = 7 \\implies a = 1, b = 6$이다.",
+    "$f(x) = x^4 + x^3 - 7x^2 - x + 6 = (x - 1)(x - 2)(x^2 + 4x + 3) = (x - 1)(x - 2)(x + 1)(x + 3)$이다.",
+    "$g(x) - h(x) = 2$이므로 $g(x) = x + 3, h(x) = x + 1$이다.",
+    "$f(0) = 6, g(1) = 4, h(6) = 7$이므로 $\\frac{g(a)h(b)}{f(0)} = \\frac{4 \\times 7}{6} = \\frac{14}{3}$이다."
+  ],
+  "solvedAnswer": "$\\dfrac{14}{3}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "$f(x) = x^4 + ax^3 - 7x^2 - x + b$가 $x - 1$, $x - 2$",
+  "rpmRecordId": "H1-RPM-145",
+  "rpmReason": "$f(1)=0, f(2)=0$에서 $a=1, b=6$을 구하고 $14/3$을 계산하는 H1-RPM-145에 해당한다.",
+  "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+  "templateKey": "TPL_H1_FACTOR_THEOREM_FACTOR",
+  "typeReason": "인수정리로 $a, b$를 정하고 다항식을 완전히 인수분해하여 $14/3$을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "인수정리로 미정계수를 정한 뒤 몫의 인수분해와 조건 $g(x)-h(x)=2$를 해석하여 14/3을 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "SHORT",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x) ="
+      },
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a, b$는 상수이고, $g(x"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차식",
+        "src": "stem",
+        "quote": "h(x)$는 일차식이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "수로 가지므로 인수정리에 의하여 $f"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$f(1)=0, f(2)=0$으로 $a=1, b=6$을 구하고 인수분해하여 $g(x)=x+3, h(x)=x+1$에서 $14/3$으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

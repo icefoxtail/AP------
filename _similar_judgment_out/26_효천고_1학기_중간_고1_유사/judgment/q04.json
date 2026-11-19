@@ -1,0 +1,71 @@
+{
+  "qid": 4,
+  "itemFingerprint": "824474471ba74dbc",
+  "solveSteps": [
+    "계수가 유리수인 삼차방정식 $ax^3 + bx^2 + cx + 4 = 0$의 한 근이 $1 + \\sqrt{3}$이므로 켤레근 $1 - \\sqrt{3}$도 근이다.",
+    "세 근은 $2, 1 + \\sqrt{3}, 1 - \\sqrt{3}$이다.",
+    "세 근의 곱: $2(1 + \\sqrt{3})(1 - \\sqrt{3}) = 2(1 - 3) = -4 = -\\frac{4}{a} \\implies a = 1$.",
+    "세 근의 합: $2 + 1 + \\sqrt{3} + 1 - \\sqrt{3} = 4 = -\\frac{b}{a} \\implies b = -4$.",
+    "두 근끼리의 곱의 합: $2(2) + (1 - 3) = 2 = \\frac{c}{a} \\implies c = 2$.",
+    "따라서 $a - b + c = 1 - (-4) + 2 = 7$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-06",
+  "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+  "unitEvidence": "삼차방정식 $ax^3 + bx^2 + cx + 4 = 0$",
+  "rpmRecordId": "H1-RPM-176",
+  "rpmReason": "삼차방정식 $ax^3 + bx^2 + cx + 4 = 0$에서 무리수 켤레근 조건을 활용하는 H1-RPM-176에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_DEGREE_EQUATION_ROOT",
+  "typeReason": "삼차방정식 $ax^3 + bx^2 + cx + 4 = 0$의 무리수 켤레근과 근과 계수의 관계를 이용하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "삼차방정식 $ax^3 + bx^2 + cx + 4 = 0$의 켤레근과 근과 계수의 관계를 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $ax^3 +"
+      },
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "3}$일 때, 유리수 $a, b,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "관계",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "근과 계수의 관계를 적용하면"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "삼차방정식 $ax^3 + bx^2 + cx + 4 = 0$의 세 근에 대해 근과 계수의 관계를 적용하여 $a - b + c = 7$로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

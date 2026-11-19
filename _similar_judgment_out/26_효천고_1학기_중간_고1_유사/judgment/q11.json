@@ -1,0 +1,70 @@
+{
+  "qid": 11,
+  "itemFingerprint": "fb5f4fcc0fecfceb",
+  "solveSteps": [
+    "$(x^2 - 2x)(x^2 - 4x + 3) = x(x - 2)(x - 1)(x - 3) = (x^2 - 3x)(x^2 - 3x + 2) = 24$이다.",
+    "$x^2 - 3x = t$로 치환하면 $t(t + 2) = 24 \\implies t^2 + 2t - 24 = 0 \\implies (t + 6)(t - 4) = 0$이다.",
+    "$t = 4$일 때 $x^2 - 3x - 4 = 0$의 판별식은 $D = 9 + 16 > 0$이므로 실근을 갖는다.",
+    "$t = -6$일 때 $x^2 - 3x + 6 = 0$의 판별식은 $D = 9 - 24 = -15 < 0$이므로 허근 $\\omega$를 갖는다.",
+    "따라서 $\\omega^2 - 3\\omega + 6 = 0 \\implies \\omega^2 - 3\\omega = -6$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-06",
+  "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+  "unitEvidence": "사차방정식 $(x^2 - 2x)(x^2 - 4x + 3) = 24$",
+  "rpmRecordId": "H1-RPM-173",
+  "rpmReason": "사차방정식 $= 24$를 치환하여 해결하는 H1-RPM-173에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "공통부분을 치환하여 이차방정식 $= 24$로 해결하는 고차방정식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "사차방정식 $= 24$에서 공통부분을 묶어 치환하고 허근 조건을 판정하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "사차방정식 $(x^2 -"
+      },
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "24$의 한 허근을 $\\omeg"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "3\\omega$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "x = t$로 치환하면 $$t(t"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "식 $= 24$를 $x^2 - 3x = t$로 치환하여 $(t+6)(t-4)=0$에서 허근 조건으로 $\\omega^2 - 3\\omega = -6$을 얻어 ④번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

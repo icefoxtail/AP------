@@ -1,0 +1,70 @@
+{
+  "qid": 18,
+  "itemFingerprint": "27b0815c55ebd14c",
+  "solveSteps": [
+    "$f(x) = (x - 2)(x - a)$에서 $f(5) = (3)(5 - a) = 15 - 3a$이므로 ㄱ은 참이다.",
+    "꼭짓점 $\\mathrm{P}(\\frac{a+2}{2}, -\\frac{(a-2)^2}{4})$이고 $\\mathrm{B}(a, 0)$이므로 직선 $\\mathrm{PB}$의 기울기는 $m = \\frac{a - 2}{2}$이다.",
+    "직선 $\\mathrm{AQ}$는 $y = m(x - 2)$이고 $f(x)$와 연립하면 $x - a = m \\implies x = m + a$이다. ㄴ은 거짓이다.",
+    "$\\triangle \\mathrm{BQR}$의 넓이는 $\\frac{1}{2} \\times m \\times 3m^2 = \\frac{3}{2}m^3 = 12 \\implies m^3 = 8 \\implies m = 2$이다. ㄷ은 참이다.",
+    "따라서 옳은 것은 ㄱ, ㄷ의 ④번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "직선 $\\mathrm{PB}$의 기울기를 $m$이라 할 때",
+  "rpmRecordId": "H1-RPM-168",
+  "rpmReason": "직선 $\\mathrm{PB}$와 포물선의 교점을 해석하여 삼각형 넓이를 계산하는 H1-RPM-168에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "직선 $\\mathrm{PB}$에 평행한 직선과 포물선의 교점 및 삼각형 넓이를 다루는 기하 결합 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직선 $\\mathrm{PB}$의 기울기 $m$과 교점 $\\mathrm{Q}$, 삼각형 $\\mathrm{BQR}$의 넓이 조건을 연계하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "수가 $1$인 이차함수 $y = f("
+      },
+      {
+        "term": "기울기",
+        "src": "stem",
+        "quote": "m{PB}$의 기울기를 $m$이라"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "{BQR}$의 넓이가 $12$일"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "{4}$이므로 꼭짓점 $\\mathr"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직선 $\\mathrm{PB}$의 기울기와 교점 $\\mathrm{Q}$의 좌표를 구해 ㄱ과 ㄷ이 참임을 확인하여 ④번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

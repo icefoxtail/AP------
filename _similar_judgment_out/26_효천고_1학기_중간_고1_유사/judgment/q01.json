@@ -1,0 +1,58 @@
+{
+  "qid": 1,
+  "itemFingerprint": "81b07eac5b56632f",
+  "solveSteps": [
+    "곱셈공식 변형식 $x^3 - y^3 = (x - y)^3 + 3xy(x - y)$를 이용한다.",
+    "주어진 조건 $x - y = 2$, $xy = 3$을 대입한다.",
+    "$x^3 - y^3 = 2^3 + 3(3)(2) = 8 + 18 = 26$이다.",
+    "따라서 정답은 ④번 26이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-01",
+  "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "곱셈 공식의 변형 $x^3 - y^3",
+  "rpmRecordId": "H1-RPM-136",
+  "rpmReason": "$xy = 3$ 조건을 곱셈공식에 적용하는 H1-RPM-136에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "$xy = 3$과 $x - y = 2$를 이용해 $x^3 - y^3 = 26$을 구하는 곱셈공식 변형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$xy = 3$을 공식에 바로 대입하여 26을 얻는 기본 문항으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "y^3$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "곱셈 공식의 변형"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$xy = 3$을 곱셈공식 변형식에 대입하여 $8 + 18 = 26$으로 계산하여 ④번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

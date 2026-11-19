@@ -1,0 +1,72 @@
+{
+  "qid": 14,
+  "itemFingerprint": "e27d5b005648edf5",
+  "solveSteps": [
+    "$z = x + yi$라 하면 실계수 이차방정식 $x^2 - ax + 4 = 0$의 한 근이 $z - 2 = (x - 2) + yi$이다.",
+    "두 근의 곱이 4이므로 $y = 0$ 또는 $(x - 2)^2 + y^2 = 4$이다.",
+    "마찬가지로 $z - 2i = x + (y - 2)i$가 $x^2 - bx + 4 = 0$의 근이므로 $y = 2$ 또는 $x^2 + (y - 2)^2 = 4$이다.",
+    "$z \\neq 0$이므로 동시 만족하는 해는 $(x, y) = (2, 2)$, 즉 $z = 2 + 2i$이다.",
+    "조건 (가)에서 $z - 2 = 2i$이므로 두 근은 $\\pm 2i$에서 $a = 0$이다.",
+    "조건 (나)에서 $z - 2i = 2$이므로 $(x - 2)^2 = 0$에서 $b = 4$이다.",
+    "따라서 $a + b = 4$이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+  "unitEvidence": "z - 2$는 이차방정식 $x^2 - ax + 4 = 0$의 한 근이다",
+  "rpmRecordId": "H1-RPM-164",
+  "rpmReason": "실계수 이차방정식 $x^2 - ax + 4 = 0$의 허근 조건을 다루는 H1-RPM-164에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "typeReason": "이차방정식 $x^2 - ax + 4 = 0$과 $x^2 - bx + 4 = 0$의 복소수 근 조건을 결합하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$x^2 - ax + 4 = 0$과 $x^2 - bx + 4 = 0$의 실계수 근 조건을 분기 해석하는 고난도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$0$이 아닌 복소수 $z$에 대하"
+      },
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "z - 2$는 이차방정식 $x^2 -"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "solution",
+        "quote": "따라서 구하는 값은 $a + b"
+      }
+    ],
+    "method": [
+      {
+        "term": "순서쌍",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "에 만족시키는 순서쌍 $(x, y)"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$x^2 - ax + 4 = 0$과 $x^2 - bx + 4 = 0$에서 $z = 2 + 2i$를 구해 $a = 0, b = 4$로 $a + b = 4$로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
