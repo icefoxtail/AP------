@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      2,
+      -3,
+      11
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "p",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "y=x²+3x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": []
+    }
+  },
+  "caption": "x=3에서 분자가 0이어야 하므로 a=-1이고 f(x)=x+2, b=5이다. 그래서 f(-1)+f(3)=1+5=6이라 ㄱ은 거짓이다. (x+1)f(x)=(x+1)(x+2)는 닫힌구간 [-2,2]에서 연속이라 최댓값과 최솟값이 있어 ㄴ은 참이다. 그림에서 포물선 y=x²+3x는 x=-2에서 직선 f보다 아래, x=2에서 위에 있어 구간 안에서 직선과 만나므로 x²+3x-f(x)=0이 근을 갖는다(ㄷ 참). 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 전체의 집합에서 연속인 함수\n$$f(x)=\\begin{cases} \\frac{x^2+ax-6}{x-3} & (x \\ne 3) \\\\ b & (x=3) \\end{cases}$$\n에 대하여 <보기>에서 옳은 것만을 있는 대로 고른 것은? (단, $a, b$는 상수이다.) [4.7점]\n<보기>\nㄱ. $f(-1)+f(3)=7$\nㄴ. 함수 $(x+1)f(x)$는 닫힌구간 $[-2, 2]$에서 반드시 최댓값과 최솟값을 갖는다.\nㄷ. 방정식 $x^2+3x-f(x)=0$은 열린구간 $(-2, 2)$에서 적어도 하나의 실근을 갖는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "포물선 y=x²+3x가 구간 양 끝에서 직선 f 아래와 위에 있어 구간 안에서 직선과 만남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 y=x²+3x가 x=-2에서 직선 f 아래, x=2에서 위에 있어 구간 안에서 만남을 보인다."
+  ],
+  "accessibilityDescription": "오르는 직선과 아래로 볼록한 포물선이 있고, 왼쪽 끝에서는 포물선이 직선 아래에, 오른쪽 끝에서는 직선 위에 있어 구간 안에서 한 번 교차하는 그래프이다."
+}

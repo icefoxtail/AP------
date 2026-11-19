@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -5,
+          -3
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          -3,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          1,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-3",
+        "y": "2"
+      },
+      {
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "1"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "caption": "가로축이 t, 세로축이 교점의 개수 g(t)이다. t<-3에서 1개, t=-3에서 2개(닫힌 점), -3<t<1에서 3개, t=1에서 2개(닫힌 점), t>1에서 1개이다. -3의 오른쪽 극한 3, 1의 오른쪽 극한 1이므로 a=3+1=4이고 g의 불연속점은 t=-3, 1의 2개라 b=2이다. 따라서 a+b=6이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "실수 $t$에 대하여 함수\n$$f(x)=\\begin{cases} -x^2+2x & (x < 3) \\\\ x^2-4x & (x \\ge 3) \\end{cases}$$\n의 그래프와 직선 $y=t$가 만나는 점의 개수를 $g(t)$라 할 때, 다음 <보기>의 $a, b$에 대하여 $a+b$의 값은? (단, $a, b$는 상수이다.) [4.9점]\n<보기>\nㄱ. $\\lim_{t \\to -3^+} g(t) + \\lim_{t \\to 1^+} g(t) = a$\nㄴ. 함수 $g(t)$의 불연속점의 개수는 $b$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "교점 개수 g(t)의 계단 그래프에서 t=-3, 1의 오른쪽 극한 3, 1과 불연속점 2개를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=-3, 1에서 g(t)가 끊어지고 두 점에 닫힌 점(교점 2개)이 따로 있음을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽의 낮은 수평선, 가운데의 높은 수평선, 오른쪽의 낮은 수평선이 계단 모양으로 이어지고 두 경계에는 중간 높이의 닫힌 점이 하나씩 있는 그래프이다."
+}

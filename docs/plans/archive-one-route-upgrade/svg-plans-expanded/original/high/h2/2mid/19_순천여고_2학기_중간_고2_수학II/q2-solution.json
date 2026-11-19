@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "3",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). x=1에서 좌극한 1, 우극한 2로 다르고, x=2에서 좌극한 2, 우극한 1로 달라 극한이 없는 점은 2개이다(a=2). x=3에서는 양쪽 모두 0으로 가까워져 극한은 있지만 닫힌 점 f(3)=1이 따로 있어 불연속이다. 불연속인 점은 x=1, 2, 3의 3개이다(b=3). 따라서 a+b=5이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "열린구간 $(0, 4)$에서 정의된 함수 $y=f(x)$의 그래프가 오른쪽 그림과 같다. 함수 $f(x)$의 극한값이 존재하지 않는 점의 개수를 $a$, 불연속인 점의 개수를 $b$라 할 때, $a+b$의 값을 구하면? [4.0점]\n<img src=\"assets/images/19_순천여고_2학기_중간_고2_수학II/q02.png\" alt=\"19_순천여고_2학기_중간_고2_수학II Q02\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1, 2의 좌우극한 불일치와 x=3의 극한 0과 닫힌 점 1의 불일치를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1, 2에서 좌우극한이 다르고 x=3에서 극한 0과 따로 있는 닫힌 점 (3,1)이 어긋남을 보인다."
+  ],
+  "accessibilityDescription": "x=1과 x=2에서 수평선과 선분이 끊어지고, x=3에서는 양쪽 선분이 가로축의 한 점으로 모이는데 위쪽에 닫힌 점이 따로 찍혀 있는 그래프이다."
+}
