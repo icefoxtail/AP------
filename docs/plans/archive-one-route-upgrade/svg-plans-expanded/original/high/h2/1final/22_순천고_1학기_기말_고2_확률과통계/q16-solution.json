@@ -1,0 +1,40 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 4,
+      "rows": 2
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        3,
+        2
+      ],
+      "B": [
+        4,
+        2
+      ]
+    },
+    "viaPoints": [
+      "P"
+    ],
+    "counts": "segments",
+    "hideTargetCount": false
+  },
+  "caption": "A에서 B까지는 오른쪽 4칸, 위쪽 2칸이다. 여섯 번에 끝나는 경로는 6C2=15가지이고 그중 P=(3, 2)를 지나는 경로는 A에서 P까지 10가지이다(P에서 B까지는 1가지). 일곱 번에 끝나는 경우까지 확률을 계산하면 P를 지날 조건부확률은 5/7이므로 p+q=12이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로 4칸 세로 2칸의 격자이며 A, P, B가 표시되고 A에서 P, P에서 B 구간의 경로 수가 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "P를 경계로 나눈 두 구간의 경로 수 10과 1이 보여 P를 지나는 경로가 10가지임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 점 A에서 시작하여 주사위를 던져 다음 규칙에 따라 점 B까지 이동하면 끝나는 게임이 있다.<p><img src=\"assets/images/22_순천고_1학기_기말_고2_확률과통계/q16.png\" class=\"question-img\" alt=\"문제 16 그림\"></p><div class=\"box-content\">(규칙 1) 짝수가 나오면 오른쪽으로 한 칸 이동한다.<br>(규칙 2) 홀수가 나오면 위쪽으로 한 칸 이동한다.<br>(규칙 3) 이동할 수 없으면 다시 주사위를 던진다.<br>(규칙 4) 점 B에 도착하면 게임은 끝난다.</div>주사위를 던진 횟수가 7회 이하로 게임이 끝났을 때, P지점을 통과했을 확률은 $\\dfrac{q}{p}$이다. $p+q$의 값을 구하면? (단, $p$와 $q$는 서로소인 자연수이다.) [5.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
