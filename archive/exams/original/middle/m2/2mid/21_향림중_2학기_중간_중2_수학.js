@@ -756,7 +756,7 @@ window.questionBank = [
   {
     "id": 14,
     "score": 3,
-    "question": "<p>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14.png\" /></p>",
+    "question": "<p>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</p><p><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"AB와 AC가 같은 이등변삼각형 ABC. 각 B는 68°이고 변 BC의 길이는 8 cm이다. 점 A에서 BC 위의 점 D까지 각 A의 이등분선이 그어져 있다.\" style=\"display:block;width:min(100%,280px);height:auto;margin:0 auto;\"></p>",
     "choices": [
       "22",
       "26",
@@ -764,9 +764,9 @@ window.questionBank = [
       "32",
       "36"
     ],
-    "answer": "",
-    "solution": "",
-    "content": "<div>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14.png\" /></div>"
+    "answer": "②",
+    "solution": "$AB=AC$인 이등변삼각형에서 $\\angle A$의 이등분선 $AD$는 $BC$를 수직이등분한다.\n$BD=\\frac{8}{2}=4$이므로 $x=4$이다.\n$\\triangle ABD$에서 $\\angle ADB=90^\\circ$, $\\angle B=68^\\circ$이므로 $\\angle BAD=22^\\circ$, 즉 $y=22$이다.\n따라서 $x+y=26$",
+    "content": "<div>14. 오른쪽 그림과 같이 $\\overline{\\text{AB}} = \\overline{\\text{AC}}$인 이등변삼각형 $\\text{ABC}$에서 $\\angle\\text{A}$의 이등분선과 $\\overline{\\text{BC}}$의 교점이 $\\text{D}$이다. $\\overline{\\text{BD}}$의 길이를 $x\\text{ cm}$, $\\angle\\text{BAD}$의 크기를 $y^\\circ$라 할 때, $x + y$의 값을 구하면? [3점]</div><div><img src=\"assets/images/21_향림중_2학기_중간_중2_수학/q14-problem-visual-v2.svg\" alt=\"AB와 AC가 같은 이등변삼각형 ABC. 각 B는 68°이고 변 BC의 길이는 8 cm이다. 점 A에서 BC 위의 점 D까지 각 A의 이등분선이 그어져 있다.\" style=\"display:block;width:min(100%,280px);height:auto;margin:0 auto;\"></div>"
   },
   {
     "id": 15,

@@ -89,6 +89,7 @@ const FIELD_ALIAS = { curriculum: "curriculumKey" };
 const nfc = value => typeof value === "string" ? value.normalize("NFC") : value;
 const same = (a, b) => isDeepStrictEqual(nfc(a) ?? null, nfc(b) ?? null);
 const own = (o, k) => Boolean(o) && typeof o === "object" && Object.hasOwn(o, k);
+const isInlinePlaceholder = value => value === null || value === undefined || value === "" || value === "UNKNOWN";
 const normalizeFile = value => String(value || "").normalize("NFC").replace(/\\/g, "/").replace(/^\.?\/?archive\/exams\//, "").replace(/^\.?\/?exams\//, "").replace(/^\/+/, "");
 
 class UnitError extends Error { constructor(reason, detail) { super(detail || reason); this.reason = reason; this.detail = detail || ""; } }
@@ -391,7 +392,11 @@ function verifiedDifficultyRows(root, unit, consumer) {
   const proof = registerDifficulty5({ root, request: unit.request, write: false, verifyProjection: true });
   if (proof.status !== "PASS" || !["verify-projection", "verify-reviewed-correction"].includes(proof.mode) ||
       proof.requestId !== unit.request.gemini.requestId || proof.sourceArchiveFile !== unit.sourceFile ||
-      proof.sourceBlobSha !== unit.expectedBlob || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
+      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
+      (proof.sourceBlobSha !== unit.expectedBlob && !unit.textBoundDraft) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
       proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
       proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
       proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||
@@ -412,11 +417,13 @@ function verifiedDifficultyRows(root, unit, consumer) {
     const matches = consumer.difficultyMetadataByUid.get(row.uid) || [], meta = matches[0];
     if (!checked || checked.decision !== "VERIFIED" || matches.length !== 1 ||
         meta.sourceArchiveFile !== unit.sourceFile || meta.sourceOrdinal !== row.ordinal ||
-        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) && same(meta[field], checked.after[field])))
+        // The registrar writes legacyLevelCompatibility only for a row that still has a legacy level; a request without a level
+        // carries three fields. Every field the registrar reports is compared; the three core fields are always required.
+        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) ? same(meta[field], checked.after[field]) : field === "legacyLevelCompatibility"))
       throw Error(`official difficulty metadata/UID mismatch: ${row.uid}`);
     const source = bank[row.ordinal - 1];
     if (!source) throw Error(`difficulty source ordinal missing: ${row.uid}`);
-    const values = Object.fromEntries(DIFFICULTY_FIELDS.map(field => [field, checked.after[field] ?? null]));
+    const values = Object.fromEntries(DIFFICULTY_FIELDS.filter(field => own(checked.after, field)).map(field => [field, checked.after[field] ?? null]));
     const semanticPending = !meta.metadataApprovalType &&
       ["registration_only_pending_review", "registration_pending_semantic_review"].includes(meta.metadataStatus) &&
       // A direct type judgment (type fields only) is not a semantic review of the row: its other fields stay pending.
@@ -425,7 +432,7 @@ function verifiedDifficultyRows(root, unit, consumer) {
     return { ...row, difficultyProjection: { values, binding: checked.consumerBinding, semanticPending,
       ordinaryNormalization: proof.mode === "verify-projection" && !unit.request.reviewedCorrection,
       currentTags: { tagConfidence: meta.tagConfidence, tagStatus: meta.tagStatus },
-      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", "legacyLevelCompatibility"].map(field => [field, source[field] ?? null])) } };
+      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", ...DIFFICULTY_FIELDS].map(field => [field, source[field] ?? null])) } };
   });
 }
 
@@ -450,9 +457,12 @@ function checkRow(consumer, unit, row) {
     // Some auxiliary D5 fields are not exposed by the page. Their exact current
     // metadata equivalence is already proven above; any exposed canonical value
     // must agree too, while the bucket still takes the real page/query path below.
-    const mismatched = DIFFICULTY_FIELDS.filter(field => own(resolved, field) && !same(resolved[field], difficulty.values[field]));
+    const mismatched = DIFFICULTY_FIELDS.filter(field => own(difficulty.values, field) && own(resolved, field) && !same(resolved[field], difficulty.values[field]));
     if (mismatched.length) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty tuple != canonical consumer: " + mismatched.join(",") };
   }
+  // The fields this request changes: what the difficulty registrar reported, or the two type fields of a type-only request.
+  // A typed (reviewed) correction keeps the strict rule: every conflict blocks.
+  const requestFields = difficulty?.ordinaryNormalization ? Object.keys(difficulty.values) : unit.kind === "direct-type-judgment" ? ["problemTypeKey", "templateKey"] : null;
   const blockingConflicts = (resolved.metadataConflicts || []).filter(field => {
     if (unit.approvalType === "REVIEW2" && (field === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(field))) return false;
     let reason = null;
@@ -464,8 +474,16 @@ function checkRow(consumer, unit, row) {
         same(resolved[field], difficulty.values[field]) && difficulty.sourceAnnotations[field] !== null &&
         !same(difficulty.sourceAnnotations[field], difficulty.values[field]))
       reason = "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION";
+    // A difficulty or direct type request blocks only on the fields it changes. An older disagreement between the exam file's own
+    // inline value and the registered value in a field this request does not touch was not made by this request and is not removed
+    // by refusing it: it stays visible as an advisory. Other request kinds keep refusing every conflict.
+    if (!reason && requestFields && field !== "foundationTaxonomy" && !requestFields.includes(field)) reason = "NOT_CHANGED_BY_THIS_REQUEST";
+    // In a field the difficulty request registers, an inline placeholder (empty, null or UNKNOWN) is not a value that disagrees.
+    // A real inline value (1..5 or a legacy word) that differs from the registered value is still refused.
+    if (!reason && difficulty?.ordinaryNormalization && DIFFICULTY_FIELDS.includes(field) && isInlinePlaceholder(difficulty.sourceAnnotations[field]))
+      reason = "INLINE_PLACEHOLDER_REPLACED";
     if (!reason) return true;
-    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty.sourceAnnotations[field],
+    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty?.sourceAnnotations?.[field] ?? null,
       canonicalValue: resolved[field], semanticApproval: false });
     return false;
   });
