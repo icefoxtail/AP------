@@ -132,26 +132,29 @@ test('한 화면: 왼쪽은 조건(학년·과목·단원·단계·문항 수·�
   assert.doesNotMatch(right, /data-action="print"|data-action="save-paper"/);
 });
 
-test('고1 과목 두 단추: 처음에는 둘 다 켜져 있고(전체), 각 단추는 자기 과목만 켜고 끈다(마지막 하나는 끌 수 없음)', async () => {
+test('고1 과목 두 단추: 처음에는 둘 다 켜져 있고(전체), 누른 과목이 남으며, 다른 단추로 둘 다 켜고, 마지막 하나는 끌 수 없다', async () => {
   const { w, click } = harness();
   w.state.filters = { grade: '고1', semanticSubject: '' };
   const pressedOf = () => ['COMMON_MATH_1', 'COMMON_MATH_2'].map(subject =>
     new RegExp(`data-subject="${subject}" aria-pressed="true"`).test(w.filterMarkup(w.state.filters, 'compose', 'primary')));
   assert.deepEqual(pressedOf(), [true, true], '과목을 따로 고르지 않은 전체는 두 단추가 모두 눌린 상태');
-  // 각 단추는 자기 과목만 켜고 끈다.
+  // 처음 화면에서 한 단추를 누르면 그 과목이 결과에 남는다(누른 과목이 빠지면 결함).
   await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
-  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '둘 다 켜진 상태에서 공통수학1을 누르면 공통수학1이 꺼져 공통수학2만 남는다');
-  assert.deepEqual(pressedOf(), [false, true]);
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '둘 다 켜진 처음 화면에서 공통수학1을 누르면 공통수학1이 남는다');
+  assert.deepEqual(pressedOf(), [true, false]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '마지막 하나는 끌 수 없다: 누르면 아무 일도 없다');
+  assert.deepEqual(pressedOf(), [true, false]);
   await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
-  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '마지막 하나는 끌 수 없다: 누르면 아무 일도 없다');
-  assert.deepEqual(pressedOf(), [false, true]);
-  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
-  assert.equal(w.state.filters.semanticSubject, '', '공통수학2만 켜진 상태에서 공통수학1을 누르면 둘 다 켜진다(1년 전체)');
+  assert.equal(w.state.filters.semanticSubject, '', '공통수학1만 켜진 상태에서 공통수학2를 누르면 둘 다 켜진다(1년 전체)');
   assert.deepEqual(pressedOf(), [true, true]);
   await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
-  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '둘 다 켜진 상태에서 공통수학2를 누르면 공통수학1만 남는다');
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '둘 다 켜진 상태에서 공통수학2를 누르면 공통수학2만 남는다');
+  assert.deepEqual(pressedOf(), [false, true]);
   await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
-  assert.equal(w.state.filters.semanticSubject, '', '공통수학1만 켜진 상태에서 공통수학2를 누르면 둘 다 켜진다');
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '공통수학2만 켜진 상태에서 그 단추를 다시 눌러도 그대로다');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, '', '공통수학2만 켜진 상태에서 공통수학1을 누르면 둘 다 켜진다');
   // 둘 다 켠 상태의 단원 목록은 두 과목 묶음을 모두 담는다.
   const groups = new Set(w.scopeOptions().map(scope => scope.L1));
   assert.ok(groups.size >= 2, '전체는 두 과목 묶음');
@@ -169,7 +172,7 @@ test('고2·고3 여러 과목은 칩, 학년 버튼은 학년을 바꾸고 단�
   assert.equal(w.state.filters.grade, '고1');
   assert.deepEqual(plain(w.state.scopes), [], 'changing the grade clears the unit choice like the old select');
   await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
-  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1', '둘 다 켜진 고1에서 공통수학2를 누르면 공통수학2가 꺼진다');
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2', '둘 다 켜진 고1에서 공통수학2를 누르면 공통수학2가 남는다');
 });
 
 test('모자라도 막지 않는다: 버튼은 눌리고, 있는 만큼만 넣고, 어디가 얼마나 모자랐는지 알리며, 검증이 막지 않는다', () => {

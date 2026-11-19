@@ -244,15 +244,46 @@ for (const grade of ["중3", "고2"]) {
   });
 }
 
+// After a subject button press the listed units, the built paper and the saved paper must all be in that subject (not the opposite one).
+// subjects: the subjects the pressed buttons leave on; the scope keys read u:<view>:<subject>:<unit>, and each stored question is looked up in the
+// unified index, which knows the subject of every question.
+function assertOnlySubjects(session, saved, subjects, label) {
+  const { ws } = session;
+  const listed = ws.scopeOptions().map((scope) => String(scope.key).split(":")[2]);
+  assert.ok(listed.length > 0, `${label}: the pressed buttons list no unit`);
+  // With both buttons on the list also shows the "no subject" group (key part "-", questions the unit table cannot place); one button on never does.
+  const extra = subjects.length > 1 ? ["-"] : [];
+  assert.deepEqual([...new Set(listed)].filter((subject) => !subjects.includes(subject) && !extra.includes(subject)), [], `${label}: the unit list holds a subject whose button is off`);
+  assert.deepEqual(subjects.filter((subject) => !listed.includes(subject)), [], `${label}: a pressed subject lists no unit`);
+  assert.ok(ws.state.scopes.length > 0 && ws.state.scopes.every((key) => subjects.includes(String(key).split(":")[2])), `${label}: the built paper's units are outside the pressed subjects`);
+  const index = ws.unifiedIndex();
+  const storedSubjects = saved.paper.snapshot.questions.map((q) => index.byUid.get(q.questionUid)?.subject);
+  assert.ok(storedSubjects.length > 0, `${label}: the saved paper holds no question`);
+  assert.deepEqual([...new Set(storedSubjects)].filter((subject) => !subjects.includes(subject)), [], `${label}: the saved paper holds a question outside the pressed subjects`);
+}
+
+// On the first screen both subject buttons are on, so pressing one leaves that subject only; the paper built and saved afterwards is in it.
 for (const subject of ["COMMON_MATH_1", "COMMON_MATH_2"]) {
   test(`${subject} subject button, then build and save`, async () => {
     const session = createWorkspace(server);
     await session.click({ action: "compose-subject", subject });
-    assert.equal(session.ws.state.filters.semanticSubject, subject, "the button changed the subject");
+    assert.equal(session.ws.state.filters.semanticSubject, subject, "the button left the pressed subject on");
     await buildAfterPresses(session.ws, session.seedMode, `subject button ${subject}`);
-    await saveAfterPresses(session, `subject button ${subject}`);
+    const saved = await saveAfterPresses(session, `subject button ${subject}`);
+    assertOnlySubjects(session, saved, [subject], `subject button ${subject}`);
   });
 }
+
+// Both subjects on (the first one pressed, then the other): the paper may use units of either, and it saves.
+test("both subject buttons on, then build and save", async () => {
+  const session = createWorkspace(server);
+  await session.click({ action: "compose-subject", subject: "COMMON_MATH_1" });
+  await session.click({ action: "compose-subject", subject: "COMMON_MATH_2" });
+  assert.equal(session.ws.state.filters.semanticSubject, "", "the second subject was added: both are on");
+  await buildAfterPresses(session.ws, session.seedMode, "both subject buttons");
+  const saved = await saveAfterPresses(session, "both subject buttons");
+  assertOnlySubjects(session, saved, ["COMMON_MATH_1", "COMMON_MATH_2"], "both subject buttons");
+});
 
 test("grade button, subject button, then a difficulty-step button, then build and save", async () => {
   const session = createWorkspace(server);
