@@ -1045,7 +1045,10 @@
       setConfirmed(data, papers.length, attemptedWorkSignature);
     } catch (error) {
       let recovered = false;
-      if (requestStarted && (!error.status || error.status >= 500)) {
+      // 로그인 정보가 없어 요청이 나가기 전에 난 실패(requestNotSent)는 결과를 모르는 것이 아니다: 서버에 아무것도 가지 않았으므로
+      // 확인할 것이 없고 중복 저장 걱정도 없다. 요청이 나간 뒤의 끊김·시간 초과·5xx만 아래에서 RESULT_UNKNOWN으로 둔다.
+      const notSent = error?.requestNotSent === true && !recoveringUnknown;
+      if (requestStarted && !notSent && (!error.status || error.status >= 500)) {
         try {
           const result = await resolveBatch();
           if (result.saved) {
@@ -1060,7 +1063,7 @@
         const responseStatus = Number(error.status);
         const definiteHttpFailure = requestStarted &&
           Number.isInteger(responseStatus) && responseStatus >= 400 && responseStatus < 500;
-        const keepUnknown = !definiteHttpFailure && (
+        const keepUnknown = !definiteHttpFailure && !notSent && (
           (recoveringUnknown && !recoveryConfirmedAbsent) ||
           (!requestStarted && recoveringUnknown) ||
           (requestStarted && (!error.status || responseStatus >= 500))
@@ -1173,6 +1176,7 @@
   // 서버 원문(영어 포함)은 여기에 넣지 않고 접힌 상세에만 남는다. 요청·재시도 동작은 이 표와 무관하다(문구만 고른다).
   // 네트워크 끊김·시간 초과·서버 오류(5xx)는 거절이 아니라 "결과를 모름"이라 표가 아닌 저장 결과 확인 흐름(RESULT_UNKNOWN)이 안내한다.
   const SAVE_FAILURE_TEXT = {
+    loginMissing: "로그인이 필요합니다. 로그인한 뒤 저장해 주세요. 작업은 초안에 남아 있습니다.",
     loginExpired: "로그인이 만료됐습니다. 다시 로그인한 뒤 저장해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
     tooLarge: "문제지가 너무 커서 저장하지 못했습니다. 권을 나누거나 문항 수를 줄여서 다시 저장해 주세요.",
     staleCatalog: "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.",
@@ -1184,6 +1188,8 @@
   function saveFailureMessage(error) {
     const code = Number(error?.status);
     const serverText = String(error?.data?.error || error?.message || "");
+    // 요청이 나가기 전(로그인 정보 없음)에 난 실패. 요청이 나간 뒤의 실패에는 이 표시가 없다.
+    if (error?.requestNotSent === true) return SAVE_FAILURE_TEXT.loginMissing;
     if (code === 401 || code === 403) return SAVE_FAILURE_TEXT.loginExpired;
     if (code === 413) return SAVE_FAILURE_TEXT.tooLarge;
     if (code === 409 && SAVE_STALE_VERSION.test(serverText)) return SAVE_FAILURE_TEXT.staleCatalog;
