@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1/3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "0",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "5/12",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1/4",
+        "in": []
+      }
+    ],
+    "shade": "B"
+  },
+  "caption": "A와 B가 서로 배반이므로 그림의 겹침은 0이다. A의 여사건과 B의 여사건의 교집합인 바깥이 1/4이므로 P(A∪B)=1−1/4=3/4이다. 합집합이 A와 B로만 이루어지므로 P(B)=3/4−1/3=5/12이고 이것이 색칠한 B이다. 따라서 12P(B)=5이고 답은 ⑤이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B의 벤다이어그램이며 A에 1/3, 겹침에 0, B에 5/12, 바깥에 1/4이 적혀 있고 B가 색칠되어 있다.",
+  "newVisualInformation": [
+    "A와 B가 겹치지 않고 바깥 1/4이 보여 P(B)=3/4−1/3=5/12의 근거가 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 배반인 두 사건 $A, B$에 대하여 $P(A) = \\frac{1}{3}$, $P(A^c \\cap B^c) = \\frac{1}{4}$일 때, $12P(B)$의 값을 구하면? (단, $A^c$는 $A$의 여사건이다.) (4.2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
