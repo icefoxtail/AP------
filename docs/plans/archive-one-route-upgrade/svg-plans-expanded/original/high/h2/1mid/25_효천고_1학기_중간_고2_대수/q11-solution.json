@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      0,
+      12
+    ],
+    "curves": [
+      {
+        "id": "l",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "-1",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "r",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "3"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "k",
+        "kind": "LINE",
+        "coefficients": [
+          "7/2",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "6"
+        ],
+        "style": "DASHED",
+        "color": "WARM",
+        "label": "y=k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "4"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "V",
+          "x": "2",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=2의 |x−2|제곱에 3을 더한 그래프이다. |x−2|≥0이므로 f의 값은 x=2에서 가장 작은 4이고 꼭짓점 V(2, 4)가 최저점이다. 예: 점선 y=k는 k=7/2인 경우로 그래프 아래에 있어 만나지 않는다. 직선이 그래프와 만나지 않으려면 k<4이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "x=2에서 가장 낮은 V자 모양의 지수 곡선 f가 있고, 꼭짓점 V의 좌표가 표시되어 있다. 점선 y=k는 곡선 아래를 지나 곡선과 만나지 않는다.",
+  "newVisualInformation": [
+    "최저점 V(2, 4)와 그 아래를 지나는 직선 y=k를 보여 k<4일 때 만나지 않음을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=2^{|x-2|}+3$의 그래프와 직선 $y=k$가 만나지 않을 때, 실수 $k$의 값의 범위로 옳은 것은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

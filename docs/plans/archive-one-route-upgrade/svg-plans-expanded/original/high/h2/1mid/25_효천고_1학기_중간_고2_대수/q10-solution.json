@@ -1,0 +1,82 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      3,
+      0,
+      9
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "-1",
+          "6"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "2",
+          "5",
+          "3"
+        ],
+        "domain": [
+          "-1",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "2"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-1",
+          "y": "8",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=2⁻ˣ+6의 그래프로 x가 커질수록 감소하므로 −1≤x≤2에서 A(−1, 8)이 최고점이고 a=8이다. g는 g(x)=log₃(2x+5)+3의 그래프로 증가하므로 B(2, 5)가 최고점이고 b=5이다. 따라서 a+b=13이고 답은 ③이다.",
+  "accessibilityDescription": "구간 −1 이상 2 이하에서 내려가는 파란 곡선 f와 올라가는 주황 곡선 g가 있고, f의 왼쪽 끝 점 A와 g의 오른쪽 끝 점 B의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "구간 양 끝에서 감소하는 f는 왼쪽 끝 A(−1, 8), 증가하는 g는 오른쪽 끝 B(2, 5)가 최고점임을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x\\mid -1\\le x\\le 2\\}$일 때, 두 함수<br>$y=2^{-x}+6$의 최댓값을 $a$, $y=\\log_3(2x+5)+3$의 최댓값을 $b$라고 하자. $a+b$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

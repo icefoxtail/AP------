@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -1,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "1",
+        "coefficients": [
+          "1",
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "7/3",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "slope": "0",
+          "intercept": "2"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=3ˣ⁻¹+2의 그래프이다. 점근선이 y=2이고 y절편이 P(0, 7/3)인 증가하는 지수곡선이다. f(0)=1/3+2=7/3이므로 ③의 식과 일치한다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "가로 점근선 y=2 위쪽에서 오른쪽으로 올라가는 지수 곡선 f가 있고, y축과 만나는 점 P의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "점근선 y=2와 y절편 P(0, 7/3)를 표시해 y=3ˣ⁻¹+2가 조건과 맞음을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그래프의 식으로 옳은 것은? [3.5점]<br><br><div style=\"text-align:center;\"><img src=\"assets/images/25_효천고_1학기_중간_고2_대수/q05-problem-readable-v2.svg\" alt=\"수평점근선과 y절편이 주어진 증가 그래프\" style=\"width:300px;max-width:100%;height:auto;\"></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

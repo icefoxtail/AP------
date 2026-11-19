@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "11",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "4",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT"
+      }
+    ]
+  },
+  "caption": "위 줄은 log₃(x−2)<2에서 얻은 2<x<11이고, 가운데 줄은 두 번째 부등식에서 얻은 x≥4이다. 아래 줄은 공통 범위 4≤x<11이다. 삼각방정식 2cos²x−cosx−1=0의 해는 0≤x<2π에서 0, 2π/3(약 2.09), 4π/3(약 4.19)이고 이 중 4≤x<11에 속하는 것은 4π/3뿐이다. 따라서 답은 4π/3이다.",
+  "accessibilityDescription": "같은 수직선 위에 세 줄이 있다. 첫 줄은 2와 11 사이의 열린 구간, 둘째 줄은 4 이상의 반직선, 셋째 줄은 4 이상 11 미만의 공통 구간이다.",
+  "newVisualInformation": [
+    "두 부등식의 해를 겹쳐 공통 범위 4≤x<11을 구하고 삼각방정식의 해 약 2.09, 4.19 중 어느 값이 들어가는지 비교하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서술형 1. [5점]<br><br>두 부등식 $\\log_3(x-2)<2$과 $\\left(\\frac{1}{8}\\right)^x\\le\\left(\\frac{1}{4}\\right)^{x+2}$과 방정식 $2\\cos^2x-\\cos x-1=0$을 동시에 만족하는 $x$값을 구하는 과정을 서술하시오. (단, $0\\le x<2\\pi$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

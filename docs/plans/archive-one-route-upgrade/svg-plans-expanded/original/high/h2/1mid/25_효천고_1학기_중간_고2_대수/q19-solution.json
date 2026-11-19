@@ -1,0 +1,94 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      8,
+      -2,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "10",
+        "coefficients": [
+          "1",
+          "1",
+          "-2301/1000",
+          "0"
+        ],
+        "domain": [
+          "2401/1000",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "10",
+        "shiftX": "-1",
+        "coefficients": [
+          "1",
+          "1",
+          "3301/1000"
+        ],
+        "domain": [
+          "-2",
+          "-1/2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "2301/500",
+          "-1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=−x+2k"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "4301/1000",
+          "y": "301/1000",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "-699/1000",
+          "y": "5301/1000",
+          "coordinates": false
+        }
+      ]
+    }
+  },
+  "caption": "k≈2.301일 때의 그림이다. f는 f(x)=log(x−k), g는 g(x)=10ˣ⁺¹+k+1의 그래프이고 직선 y=−x+2k와 만나는 점이 각각 A, B이다. AB=5√2이고 기울기가 −1이므로 두 점의 x좌표의 차는 5이다. 대칭성으로 A(k+2, k−2), B(k−3, k+3)이 되고 A가 f 위의 점이므로 k−2=log 2=0.3010이다. 따라서 k=2.3010이고 답은 ②이다.",
+  "accessibilityDescription": "오른쪽 점근선 근처에서 올라가는 파란 로그 곡선 f와 왼쪽에서 올라오는 주황 지수 곡선 g, 오른쪽 아래로 내려가는 초록 직선이 있다. 직선과 f의 교점 A, 직선과 g의 교점 B가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=−x+2k와 f, g의 교점 A, B의 위치를 한 그림에 보여 x좌표의 차 5와 A(k+2, k−2), B(k−3, k+3)의 관계를 따라가게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "상수 $k(k > 0)$에 대하여 직선 $y = -x + 2k$가 두 함수 $f(x) = \\log(x - k)$, $g(x) = 10^{x+1} + k + 1$의 그래프와 만나는 점을 각각 A, B라 하자. $\\overline{AB} = 5\\sqrt{2}$일 때, $k$의 값은?<br><br><div style='text-align:center;'>\n<img src=\"assets/images/25_효천고_1학기_중간_고2_대수/q19-audit-rework.svg\" style=\"width:100%;max-width:570px;height:auto\" alt=\"문제 그림\"></div><br>(단, $\\log 2 = 0.3010$)<br>[5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

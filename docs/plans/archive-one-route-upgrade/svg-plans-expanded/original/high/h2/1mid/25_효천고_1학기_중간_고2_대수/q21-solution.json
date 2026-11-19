@@ -1,0 +1,65 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "2",
+    "coefficients": [
+      "-1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -0.3,
+      4.3,
+      -1.4,
+      1.4
+    ],
+    "referenceLines": [
+      {
+        "id": "m",
+        "y": "-1",
+        "intersectionCount": 5,
+        "endCrossing": true
+      }
+    ],
+    "keyPoints": true,
+    "axisTickValues": {
+      "x": [
+        "2",
+        "4"
+      ],
+      "y": [
+        "1",
+        "-1"
+      ]
+    }
+  },
+  "caption": "예: a=2인 y=−cos(aπx)의 그림이다. 0≤x≤4에서 그래프는 x=2에 대하여 좌우 대칭이고 y=−a+b=−1인 점선과는 x=0, 1, 2, 3, 4의 5개(홀수 개)에서 만난다. 일반적으로 a가 짝수일 때 이 조건이 성립한다. 뒤의 조건에서 근의 합이 56이면 근의 개수는 28개이고 2a=28에서 a=14, b=a−1=13이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "0에서 4 사이에서 여러 번 오르내리는 코사인 모양 곡선과 가로 점선 y=−1이 있다. 곡선의 가장 낮은 점들이 점선에 닿아 있다.",
+  "newVisualInformation": [
+    "y=−cos(aπx)가 x=2에 대칭이고 최저점마다 직선 y=−a+b=−1과 닿아 교점이 홀수 개가 되는 모습을 예 a=2로 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "재학이는 다음 문제를 주어진 시간 안에 해결하지 못하고 답안을 제출하였다. 재학이의 미완성된 풀이를 이용하여 다음 문제의 값을 옳게 구한 것은? [5점]\n\n문제)\n세 함수 $f(x) = \\cos \\pi x$, $g(x) = \\sin \\pi x$, $h(x) = ax + b$가 다음 조건을 만족시킨다. 홀수인 자연수 $b$의 값은? (단, $a$는 자연수)\n\n가. $0 \\le x \\le 4$일 때, 방정식 $(f \\circ h)(x) = (h \\circ g)\\left(\\frac{3}{2}\\right)$의 서로 다른 실근의 개수는 홀수이다.\n나. $0 \\le x \\le 4$일 때, 방정식 $(f \\circ h)(x) = (h \\circ g)(t)$의 서로 다른 모든 실근의 합이 56이 되도록 하는 실수 $t$가 존재한다.\n\n재학이의 풀이 과정)\n$(f \\circ h)(x) = \\cos(a \\pi x + b \\pi)$이고 $b$가 홀수이므로 $(f \\circ h)(x) = -\\cos a \\pi x$이다.\n$(h \\circ g)\\left(\\frac{3}{2}\\right) = -a + b$이므로 서로 다른 실근의 개수가 홀수가 되기 위해서는 $-a + b = -1$이 되어야 한다.\n즉 $b = a - 1$이다.\n\n<div style='text-align:center;'>\n<svg width='250' height='180' viewBox='0 0 250 180' xmlns='http://www.w3.org/2000/svg'>\n  <defs>\n    <marker id='arrowhead' markerWidth='10' markerHeight='7' refX='0' refY='3.5' orient='auto'>\n      <polygon points='0 0, 10 3.5, 0 7' fill='black' />\n    </marker>\n  </defs>\n  <line x1='40' y1='160' x2='40' y2='20' stroke='black' stroke-width='1.5' marker-end='url(#arrowhead)' />\n  <line x1='20' y1='90' x2='230' y2='90' stroke='black' stroke-width='1.5' marker-end='url(#arrowhead)' />\n  <line x1='40' y1='50' x2='220' y2='50' stroke='black' stroke-width='1' stroke-dasharray='4 2' />\n  <line x1='40' y1='130' x2='220' y2='130' stroke='black' stroke-width='1' stroke-dasharray='4 2' />\n  <polyline points='40.0,130.0 42.4,127.1 44.8,118.7 47.3,106.0 49.7,90.5 52.1,74.7 54.5,60.7 57.0,50.7 59.4,46.4 61.8,48.2 64.2,56.1 66.7,68.7 69.1,84.1 71.5,99.9 73.9,114.1 76.4,124.4 78.8,129.6 81.2,128.9 83.6,122.7 86.1,113.2' fill='none' stroke='black' stroke-width='1.2' />\n  <polyline points='180.0,50.0 184.0,65.0 188.0,100.0 192.0,122.0 196.0,128.5 200.0,130.0' fill='none' stroke='black' stroke-width='1.2' />\n  <text x='130' y='105' font-size='14' text-anchor='middle'>...</text>\n  <text x='35' y='25' font-size='11' text-anchor='end' font-style='italic'>y</text>\n  <text x='235' y='105' font-size='11' text-anchor='start' font-style='italic'>x</text>\n  <text x='35' y='54' font-size='10' text-anchor='end'>1</text>\n  <text x='35' y='134' font-size='10' text-anchor='end'>-a+b</text>\n  <rect x='192' y='92' width='16' height='12' fill='white' />\n  <text x='200' y='102' font-size='10' text-anchor='middle'>4</text>\n</svg>\n</div>\n\n$0 \\le x \\le 4$일 때, 방정식 $(f \\circ h)(x) = -\\cos a \\pi x$는 주기 $\\frac{2}{a}$에 맞춰 $2a$번 반복되고, $x = 2$에 대하여 대칭이므로 대칭인 해들의 합은 4를 만족한다.\n방정식 $(f \\circ h)(x) = (h \\circ g)(t)$의 서로 다른 모든 실근의 합이 56이 되도록 하는 실수 $t$가 존재한다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
