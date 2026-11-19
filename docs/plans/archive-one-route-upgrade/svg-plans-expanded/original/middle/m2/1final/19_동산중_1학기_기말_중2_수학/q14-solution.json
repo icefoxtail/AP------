@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=−x/2+2",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "label": "y=−x/2",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-4",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "직선은 x절편 4, y절편 2이므로 기울기는 (0−2)/(4−0)=−1/2이다. 따라서 기울기가 −2라는 ③이 옳지 않다. 그래프는 y=−(1/2)x를 y축으로 2만큼 평행이동한 직선이고 점 (−4,4)를 지난다. 답은 ③이다.",
+  "newVisualInformation": [
+    "두 절편 (4,0), (0,2)에서 기울기는 −1/2이어서 −2가 아님"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선이 x축과 (4,0)에서, y축과 (0,2)에서 만나고 점 (−4,4)를 지난다. 원점을 지나는 점선 직선이 평행하게 함께 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 다음 오른쪽 그래프에 대한 설명으로 옳지 않은 것을 고르면? (4점)</p><p><img src=\"assets/images/19_동산중_1학기_기말_중2_수학/q14.png\" alt=\"x절편이 4이고 y절편이 2인 오른쪽 아래로 향하는 직선 그래프\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

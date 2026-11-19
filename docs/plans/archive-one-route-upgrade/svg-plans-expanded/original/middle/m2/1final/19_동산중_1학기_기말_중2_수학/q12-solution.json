@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=2x+1",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=2x−1",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y=2x+1을 y축의 방향으로 −2만큼 평행이동하면 직선 전체가 아래로 2만큼 내려가므로 y=2x+1−2=2x−1이다. y절편이 1에서 −1로 바뀌고 기울기 2는 그대로이다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "직선을 아래로 2만큼 옮기면 y절편이 1에서 −1이 되어 y=2x−1"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 두 직선이 평행하게 그려져 있고 위쪽은 y절편 1인 y=2x+1, 아래쪽은 y절편 −1인 y=2x−1이며 y축 위의 두 점이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 일차함수 $y=2x+1$을 $y$축으로 -2만큼 평행이동한 일차함수 식을 고르면? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

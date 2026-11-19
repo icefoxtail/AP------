@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=2x−4",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true
+        },
+        {
+          "id": "P2",
+          "x": "3",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "OB=2OA이고 A는 양의 x축 위, B는 음의 y축 위의 점이므로 OA=k, OB=2k라 하면 A(k,0), B(0,−2k)이다. 기울기는 a=(0−(−2k))/(k−0)=2이고 b=−2k이다. 점 (3,2)를 지나므로 2=6−2k에서 k=2이고 b=−4이다. 따라서 a+b=2+(−4)=−2이고 답은 ①이다.",
+  "newVisualInformation": [
+    "OA=2, OB=4에서 a=2, b=−4이므로 a+b=−2"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 직선이 x축 위의 점 A(2,0)와 y축 아래쪽의 점 B(0,−4)를 지나고 OB가 OA의 2배이며 점 (3,2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 오른쪽 그림은 일차함수 $y=ax+b$의 그래프이다. $\\overline{OB}$의 길이가 $\\overline{OA}$의 길이의 2배이고, 일차함수가 $(3, 2)$를 지날 때 $a+b$의 값을 고르면? (4점)</p><p><img src=\"assets/images/19_동산중_1학기_기말_중2_수학/q15.png\" alt=\"양의 x축 위 점 A와 음의 y축 위 점 B를 지나는 직선 그래프\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
