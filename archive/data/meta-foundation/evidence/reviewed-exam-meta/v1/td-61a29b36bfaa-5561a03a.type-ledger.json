@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-61a29b36bfaa-5561a03a",
+  "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8d9f4abdddb4ac2a9440dd3848f50b2ec6ec2701c89d52a8581e2606b1276b1e",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "step": "닮은 직사각형 대응변 비1/x=x/(1-x)를 세워 양의 길이를 구한다.",
+      "note": " ACTIVE 정의 직접 확인; 원래 도구 후보 밖. 도구 오류: CANONICAL_UNIT_INVALID; --units inline에서도 유효 단원 없음. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: CANONICAL_SCOPE_INCOMPLETE, CUE_NOT_IN_SOURCE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    }
+  ]
+}

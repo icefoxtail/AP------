@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-bc63aca9f8dc-c0d1e766",
+  "sourceArchiveFile": "original/high/h2/1mid/23_매산고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2a6e2d8c3c32551f84c84dbe9cfbd646f9ba302c8c83a3a564badb93a3ef7ed7",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "같은 밑의 지수식 곱을 지수의 합으로 바꾸어 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5676c7db73de1b4fd5f71b5f83e98e6b4d404317980e5b0e4d34a1fa28c47cd4",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "밑을 몇 제곱해야 진수가 되는지 로그의 정의로 값을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_89bb356b1ef269c05a37a052fd79e8d8c886d07fd6907b74ce7c01cbd6427a6c",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+      "step": "사인과 코사인의 부호를 y와 x좌표의 부호로 해석해 사분면을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1dc22a93d5c6e370f53c9dc73305c3c361ce1ca614d1a258390df4ab7e12641b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+      "step": "연속하는 로그의 진수와 다음 밑을 밑변환으로 소거하여 하나의 로그값으로 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_09e34c323b0adc792d3db1be61bcc8a307d062e2323448c31f8d56465e748c21",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+      "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+      "step": "사인 코사인 합을 제곱하고 제곱합 항등식을 빼 곱을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4dafc8ffcbb0c5feb9e763fad8b7c904df47542a5bf13b6b7720a9f9f6980e7b",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+      "step": "로그값을 자연수로 치환하여 n의 거듭제곱을 소수 거듭제곱으로 표현하고 지수의 정수 합동조건을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5414e6f6f5d90e18bc67e4e548f54ea110501dbda7e4e6ab30781c48a52411f2",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+      "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+      "step": "밑변환과 로그의 몫 법칙으로 절댓값 부등식을 만들고 진수 조건에서 제외되는 자연수를 걸러낸다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_73665dcf9eb8ef61f96dd59fa3807947d5892ed6ec314d81699875464e51e554",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+      "step": "짝수 거듭제곱 방정식의 두 실근을 양수·음수로 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_71a23e240e7beb547d4383ad9ac48e4a55be9f5edb5d8cc41673350a8c04b57e",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+      "step": "밑변환으로 로그값과 역수의 방정식을 한 변수 이차방정식으로 환원하고 두 해를 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1662d05fe77bd46b8d2eb6d06fba2d444e6ceb9132249f49cc6dfd1f1bf3e156",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "이등변삼각형의 중선과 거리조건에서 로그곡선 위 점의 좌표를 구하고 진수·밑 조건으로 방향을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4ac88e690c4ef3fdf03254cf3eaa37d785820d2e285c0e35d2f8f2fd58b49db8",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS",
+      "step": "사인 영점과 코사인 -1의 공통해를 각각 등차적인 각들로 열거하고 범위 내 개수의 관계를 나머지별로 판단한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

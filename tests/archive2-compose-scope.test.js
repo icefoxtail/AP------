@@ -572,7 +572,7 @@ test('cross-grade sources without an approved canonical projection remain exclud
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
-    ['archive2-canonical.js', '20261104-source-meta-approval-1'],
+    ['archive2-canonical.js', '20261119-receipt-row-binding-1'],
     ['archive2-core.js', '20261119-pair-type-spread-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
@@ -584,7 +584,7 @@ test('all changed browser scripts use new cache versions', () => {
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assertWorkspaceScriptVersions(assert);
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
-  assert.match(html, /archive2-source\.js\?v=20261119-source-parallel-1/);
+  assert.match(html, /archive2-source\.js\?v=20261119-verified-rename-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
   assert.match(html, /archive2\.css\?v=20261120-diagnostic-2/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-45d45c4517d0-cb89ae74",
+  "sourceArchiveFile": "original/high/h2/1mid/23_팔마고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2428a9ab0d18f5a32d2bed6ac1e09fb841485266dc6b9f656cb5fcd8d13f6786",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "괄호 전체 세제곱을1/8·4=1/2로 먼저 계산하여1/8÷1/2=1/4를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b4447f75a53d195007c72bd17e49edeb0a43d2e70a5a7428374637be7d0de8ad",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+      "step": "t=2^a에서 t²=5를 이용해(t-t⁻¹)/(t+t⁻¹)=(5-1)/(5+1)=2/3으로 환원한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f687d89b2dbb59355204fb973cbb8455d45563f43548009348189762d8421dd4",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_APPLICATION_SCALE",
+      "step": "log160=2.2에서 비례상수k=0.5를 구하고 log16=1.2를 대입하여 감각세기0.6을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요한 TPL 제안명: 로그 비례 감각모형. 정의: 한 입력·출력쌍으로 로그비례 상수를 구한 뒤 다른 입력의 출력을 계산. 구별 단서: 성장기간이나 연립미지수 아닌 자극 로그비례. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_361cf6ab7fe5064ebdd3ec70270242112cf7bfb4d70a5ea033a7243eadef2f7b",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+      "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+      "step": "음각과 주기로 각 함숫값을 -1/2,1/2,1로 환원하여 합1을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3d4a42b28ab5c0a914a3ae70b1790125a6341be9d6c2d022aae7de998d781cfe",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+      "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
+      "step": "역함수 g(x)=2^x-1을 구하고 t=2^x>0로 치환한(t-5)(t+9)=0에서 양근5를 골라 g(β)=4를 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_12d20c47bbc67b7e514e7699ddf3f9c6807400b76c6afbcb0198ee8747ed2323",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+      "templateKey": "TPL_COTERMINAL_ANGLES_SYMMETRY_SYSTEM",
+      "step": "부호로 제3사분면을 정하고 y축대칭3θ≡π-θ(mod2π)에서 최소θ=5π/4를 골라 sincos=1/2를 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab7afff766461f802c50779d969451260e0f751356275fe067ca814d83504a18",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+      "step": "공통근과 밑변환으로 u=log₃m,v=log₃n의 곱192를 얻고 양수 AM-GM으로 최소합16√3을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. 필요한 TPL 제안명: 로그변수 고정곱의 최소합. 정의: 로그 관계를 양수 두 변수 고정곱으로 바꾼 뒤 산술기하평균과 등호조건으로 최소합 계산. 구별 단서: 함수 끝점이 아닌 고정곱의 등호 최적화. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4a351ae210c1852949b6a769da8f03190d3fef35d67f7cf42e48a1d733bd115b",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "step": "로그정의역 t<9와 절댓값 방정식3^-x=t±4의 두양수해 조건 t>4를 교차하여 정수5~8의 합26을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_395d49fab08ad39aa80c0c041b7cc27afb0ad252969f580f0ffe70bb092939ae",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+      "step": "θ=π/20에서 여각인 사인제곱항을 네쌍으로 묶고 가운데1/2와 마지막1을 더해2k=11을 구한다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

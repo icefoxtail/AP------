@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-d374a72a248e-5b7318a7",
+  "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1762efe73d005a8c8e5cf277c5719dd20a0bec932b81f033db7256a2e4829355",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+      "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+      "step": "지수와 로그의 역관계로 2^(log₂3)=3, 이어3^(log₃8)=8을 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc0a90610007480f0fa2778591346959ec30858c4d83720914b8b147d984cc1b",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "중첩근을 유리수 지수로 바꾸어 a^(1/4)=a^((1+k/3)/6)의 지수를 비교하면 k=3/2이다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_65a43b1aeef4b3007a8c23b303392a58bab7360f72007dc57a9fb39b75a10d6d",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+      "step": "2^(-9/n)이 자연수일 조건 -9/n이 양의 정수임을 사용하여 n=-1,-3,-9의 합-13을 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_469febb30074f41cfd276380f1d44a97411d2e1ade81c9291ad67573c266b7f0",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_SYMMETRIC",
+      "step": "로그근의 합5와 곱3을 밑변환식 3(x²+y²)/(xy)에 넣어19를 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 필요한 TPL 제안명: 두 로그근의 대칭식 밑변환. 정의: 이차방정식의 로그근 합·곱으로 교차밑 로그의 유리대칭식을 계산. 구별 단서: 중근이 아닌 서로 다른 로그근. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5b8dc15d0e05e9c3ac8b954762e18d36b191adfbd0e25d9cc19c3643ca7b8d1a",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_APPLICATION_GROWTH",
+      "step": "기억량 조건을(t+1)^0.3≥4로 바꾸고 상용로그로 log(t+1)≥2를 얻어 최소99개월을 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결. 필요한 TPL 제안명: 멱함수 기억감쇠 도달시간. 정의: 시간의 거듭제곱 역비례 모형에 로그를 취하여 목표 이하가 되는 시간을 계산. 구별 단서: 미지수가 지수가 아닌 밑의 시간. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c53c74a975c567e8bc42a622af8cda51f7b2166653c7c02d0cf06c42ce493611",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+      "step": "tanθ의 이차식 근4,-2 중 제2사분면 부호로 -2를 고르고 제곱합으로 sin=2/√5,cos=-1/√5를 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bf774b72ea765ea86fbdf292277086d16cc79a081ec773c0e647f66143450441",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "step": "로그의 일대일성으로1/c=3/b+2/a를 얻고 공통지수의 로그를 소거하여 logk=3log3+2log2, k=108을 구한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_06d42ec650e91d5c4123b0b1d378f00e1fa40ca03b1bbe2d77534e37d03e0785",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+      "step": "한 주기에서 f(x)+f(x+1)=2인 넓이 상보성을 이용해 기본넓이2를 얻고 세로축척1,1/3,1/9,1/27로 합산한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8cabca164bf5838aae2cdfcd3f3ef55c28be4f2a13430c4763b53052de5d2663",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+      "step": "축대칭으로 cosβ=cosα, tanγ=tanα임을 얻어 곱을 sinα=2/3으로 환원한다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_55ace0d8f8f1ff14dbbc7d05d43dba04e8e0381e72ac7e04b7e303b3605f2391",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_SECTOR_FIXED_PERIMETER_MAX_AREA",
+      "step": "둘레조건2r+rθ=12로 넓이를9-(r-3)²로 바꿔 r=3,θ=2에서 최대넓이를 얻는다.",
+      "note": "문항·해설 직접 판독. 텍스트로 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

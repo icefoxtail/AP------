@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ac341dab171e-f01e5045",
+  "sourceArchiveFile": "original/middle/m3/2final/22_신흥중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fd24ec3d7ff3ff05d22f2e730fff0473aaccfbfe1a0340aa45b7fd58a1626922",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_SELECT",
+      "step": "자료합 150에서 평균 15, 가운데 두 값 8에서 중앙값 8, 같은 최대 빈도의 5·7·8·11을 구한 뒤 극단값 78에 덜 민감한 중앙값을 택한다.",
+      "note": "cross_grade_key: 중1 대푯값 정의 적용. 필요 TPL: 극단값이 있는 자료의 적절한 대푯값 선택; 평균의 민감도와 최빈값의 다중성을 비교해 중앙값을 선택한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

@@ -254,8 +254,8 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         replace = true;
       }
       if (!OVERWRITABLE_STATUS.has(status.pt) || !OVERWRITABLE_STATUS.has(status.tpl)) { skip(row, "TYPE_STATUS_NOT_OVERWRITABLE"); continue; }
-      if (m.foundationTaxonomyStatus === "HOLD") { skip(row, "ROW_FOUNDATION_TAXONOMY_HOLD"); continue; }
-      if (m.metadataApprovalType && !includeReceiptRows) { skip(row, "ROW_HAS_APPROVAL_RECEIPT"); continue; }
+      // 값이 있으면 보인다(2026-11-20): 행 HOLD와 승인 영수증(metadataApprovalType)은 유형 판정을 거르는 이유가 아니다. 이 길은 유형 두 칸만 쓰고
+      // 다른 칸과 영수증은 건드리지 않는다(등록기 register-type-judgment.mjs). --include-receipt-rows는 예전 호출을 위해 받기만 한다.
       const pt = ctx.registry.pt.get(row.pt);
       if (!pt || pt.status !== "ACTIVE") { skip(row, "PT_NOT_ACTIVE_IN_REGISTRY"); continue; }
       const tplKey = text(row.tpl);
@@ -361,7 +361,7 @@ export function summarize({ requests, skipped, resultLines, commits = [], head =
 // ---------------------------------------------------------------- "selectable by type" metric (mirrors the catalog's metaHint gate)
 // The catalog (build-archive2-catalog.mjs buildMetaHint) exposes a recorded PT/TPL to 문제지 만들기 (archive2-core.js metaFacetsOf: type filter and
 // the same-type spread) only when the row is bound to the question's CURRENT stem+choices+image (row.contentFingerprint equals the source's),
-// the PT is an ACTIVE registered key, the TPL is ACTIVE with that PT as parent, and the row has no foundation taxonomy HOLD.
+// the PT is an ACTIVE registered key, the TPL is ACTIVE with that PT as parent, (a row-level taxonomy HOLD no longer hides it).
 // This replicates that gate (the real builder has no temporary-output mode); it is an estimate until the builder itself is run.
 export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
   const out = { exams: 0, rows: 0, selectableBefore: 0, selectableAfter: 0, plannedRows: 0, plannedSelectable: 0 };
@@ -376,7 +376,7 @@ export function typeSelectable(ctx, examFiles, plannedByUid = new Map()) {
       // converter only emits for questions whose stem+choices still equal the judged text.
       const bound = Boolean(classifyMetaBinding({ meta: m, question: q, assignmentFingerprint: sourceFingerprints(q).contentFingerprint, rebinds: ctx.rebinds ?? null }));
       // A TPL that fails its check is dropped by the catalog while the PT stays; the PT facet is what 유형 filter and the spread use.
-      const visible = (pt, isBound) => isBound && m.foundationTaxonomyStatus !== "HOLD" && Boolean(text(pt)) && ctx.registry.pt.get(text(pt))?.status === "ACTIVE";
+      const visible = (pt, isBound) => isBound && Boolean(text(pt)) && ctx.registry.pt.get(text(pt))?.status === "ACTIVE";
       const planned = plannedByUid.get(m.questionUid);
       const before = visible(m.problemTypeKey, bound);
       if (before) out.selectableBefore++;
