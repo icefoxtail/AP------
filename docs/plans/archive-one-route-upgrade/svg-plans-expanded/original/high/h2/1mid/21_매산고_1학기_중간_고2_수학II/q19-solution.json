@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-12",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "12",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "0",
+        "6"
+      ]
+    }
+  },
+  "caption": "x>0에서 |2tx|=2|t|x이므로 f의 꼭짓점의 x좌표 6+|t|가 양수라서 g(t)=t²+12|t|+6이다. 그림은 g의 그래프이고 t=0의 점 P(0,6)에서 왼쪽 기울기 -12, 오른쪽 기울기 12로 뾰족하게 꺾인다. 그래서 h(t)=(t²-a)g(t)의 t=0에서 좌우 미분계수는 12a, -12a이고 같으려면 a=0이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 실수 $t$에 대하여 정의역이 양의 실수인 함수 $f(x)=-x^2+12x+|2tx|-30$의 최댓값을 $g(t)$라 하자. $h(t)=(t^2-a)g(t)$가 모든 실수 $t$에서 미분가능하도록 하는 상수 $a$의 값을 구하는 과정을 서술하시오. [10.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "g가 t=0의 점 P(0,6)에서 좌우 기울기 -12, 12로 뾰족하게 꺾임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "g(t)=t²+12|t|+6이 P(0,6)에서 좌우 기울기 -12, 12로 뾰족하게 꺾임을 보인다."
+  ],
+  "accessibilityDescription": "가운데 점 P에서 뾰족하게 꺾이는 좌우 대칭의 그래프로, P에서 가장 낮고 양쪽으로 갈수록 가파르게 올라간다."
+}

@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "Q",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "Q": [
+        "-1",
+        "0"
+      ],
+      "P": [
+        "1",
+        "0"
+      ]
+    }
+  },
+  "caption": "y=|x²-1|의 그래프는 W 모양이고 Q(-1,0), P(1,0)에서 뾰족하게 꺾인다. x=1에서 함숫값 0과 좌우극한이 모두 0이라 연속이다. 왼쪽 미분계수는 -2, 오른쪽 미분계수는 2로 서로 달라 P에서 미분가능하지 않다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $x=1$에서 연속이지만 미분가능하지 않은 함수는? (단, $[x]$는 $x$보다 크지 않은 최대의 정수이다.) [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "W 모양 그래프의 뾰족점 P(1,0)에서 좌우 기울기 -2, 2가 다름을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "y=|x²-1|이 P(1,0)에서 연속이지만 좌우 기울기가 -2, 2로 달라 뾰족하게 꺾임을 보인다."
+  ],
+  "accessibilityDescription": "가로축 위의 두 점 Q, P에서 뾰족하게 닿고 가운데가 위로 솟은 W 모양의 그래프이다."
+}
