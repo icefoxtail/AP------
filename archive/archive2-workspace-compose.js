@@ -13,7 +13,7 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, META_FACET_FILTERS, Quick, QuickTree, activeAssessmentRecipe, activeAssessmentRecipeUids,
-    advancedOptions, api, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
+    advancedOptions, api, deriveNoteMarkup, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
     composeUnitLabel, context, displayTemplate, drafts, ensureDerivedBaseQuestions, ensureMetaIndex, esc,
     filterMarkup, frozenPaperCache, hasMetaFacetFilter, isAssessmentRecipeMode, isQuickAssessmentView,
     isSourceRoutedGeneralRange, lockedIndex, metaFacetLabel, omitUnifiedFilters, options, ownHistoryContext,
@@ -26,7 +26,7 @@
   WS.links.push(() => {
     ({
       $, META_FACET_FILTERS, Quick, QuickTree, activeAssessmentRecipe, activeAssessmentRecipeUids,
-      advancedOptions, api, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
+      advancedOptions, api, deriveNoteMarkup, assessmentSelectionOptions, button, composeMetaMatches, composeSubjectLabel,
       composeUnitLabel, context, displayTemplate, drafts, ensureDerivedBaseQuestions, ensureMetaIndex, esc,
       filterMarkup, frozenPaperCache, hasMetaFacetFilter, isAssessmentRecipeMode, isQuickAssessmentView,
       isSourceRoutedGeneralRange, lockedIndex, metaFacetLabel, omitUnifiedFilters, options,
@@ -1662,6 +1662,7 @@
       <div class="cz-count"><span class="cz-big">${state.selected.length}문항</span><span class="cz-parts">${parts}권</span></div>
       <p class="cz-mix">${unitText}</p><p class="cz-mix">${stepText}</p>
       ${shortage}
+      ${deriveNoteMarkup()}
       <div class="cz-facts"><div class="summary-line"><span>회차</span><strong>${esc(state.round)}차</strong></div><div class="summary-line"><span>선택 범위</span><strong>${state.derivationSource ? "원본 유지" : `${selectedScopeOptions().length}개`}</strong></div><div class="summary-line"><span>고정 문항</span><strong>${state.pins.length}개</strong></div><div class="summary-line"><span>이전 회차 사용</span><strong>${unique(state.rounds.flatMap((round) => round.questionUids)).length}문항</strong></div>
       ${typeCoverageLine()}
       ${state.selected.length ? `<div class="summary-line" data-year-distribution><span>출제 연도</span><strong>${yearDistribution(state.selected).map((item) => `${esc(item.label)} ${item.count}문항`).join(" · ")}</strong></div>` : ""}</div>
@@ -1674,7 +1675,7 @@
   }
   function composeSourceNote() {
     if (state.uidRoute && !state.uidRoute.error)
-      return `<p class="cz-entry" data-cz-entry="uid">검색에서 고른 ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
+      return `<p class="cz-entry" data-cz-entry="uid">${state.derive ? "시험지를 다시 만들어 고른" : "검색에서 고른"} ${state.uidRoute.records.length}문항으로 범위가 고정되어 있습니다.</p>`;
     if (state.sources.length)
       return `<p class="cz-entry" data-cz-entry="sources">학교별 기출에서 고른 시험 ${state.sources.length}개 안에서 문항을 뽑습니다.</p>`;
     return "";
