@@ -12,11 +12,11 @@
   // names defined in other parts; WS.link() fills them in before the first call
   let
     $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
-    routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility;
+    render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility;
   WS.links.push(() => {
     ({
       $, api, applyUidRoute, button, esc, generate, rememberCurrentHistoryEntry, replaceUrlState, resetWorkingDraft,
-      routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility
+      render, routeUrl, save, showDialog, state, status, teacherErrorMessage, unifiedIndex, workspaceEligibility
     } = WS.api);
   });
   const Derive = () => window.Archive2Derive;
@@ -36,7 +36,7 @@
   const OLD_FORMAT_MESSAGE = "옛 형식 출제본이라 다시 뽑기를 지원하지 않습니다.";
   const MAX_BASE = 400;
   // dlg: the open dialog's choices and result.
-  V.derive = { dlg: null, index: null, indexFor: null, unifiedFor: null, publishers: null, pending: null, busy: false, fileIndex: null };
+  V.derive = { dlg: null, index: null, indexFor: null, unifiedFor: null, publishers: null, pending: null, busy: false, fileIndex: null, restored: new Map() };
 
   const text = (value) => (value == null ? "" : String(value)).trim();
 
@@ -55,6 +55,7 @@
       V2.unifiedFor = unified;
       V2.publishers = null;
       V2.fileIndex = null;
+      V2.restored.clear();
     }
     return V2.index;
   }
@@ -286,7 +287,7 @@
     const dlg = V.derive.dlg;
     if (!dlg) return;
     const body = V.derive.busy
-      ? `<p class="derive-base"><strong>${esc(baseTitleOf(dlg))}</strong> · 기준 ${dlg.baseUids.length}문항</p><p class="muted" role="status" aria-busy="true">문항을 고르고 원본의 정답·해설을 확인하고 있습니다…</p>`
+      ? `<p class="derive-base"><strong>${esc(baseTitleOf(dlg))}</strong> · 기준 ${dlg.baseUids.length}문항</p><p class="muted" role="status" aria-busy="true">문항을 준비하고 있습니다…</p>`
       : dlg.result ? resultMarkup(dlg) : optionsMarkup(dlg);
     showDialog("이 시험지로 다시 만들기", `<div class="derive-dialog">${body}</div>`);
   }
@@ -324,7 +325,10 @@
         typeMode: dlg.typeMode, level: dlg.level, sources: sourceSpec(dlg), seed: dlg.seed,
         exclude: dlg.exclude, includeBlank: true,
       }, index);
-      const notes = [...(out.summary.notes || [])];
+      // The screen tells only what the teacher can act on: the "정식/참고용 유형" split stays an internal measure.
+      const notes = (out.summary.notes || []).filter((note) => !/확정 전/.test(note) && !/^다른 유형이 모자라/.test(note));
+      if (dlg.typeMode === "different" && out.summary.relaxed > 0)
+        notes.unshift(`다른 유형 문항이 모자라 ${out.summary.relaxed}문항은 이 시험지의 다른 문항과 유형이 겹칩니다.`);
       if (dlg.typeMode === "same" && out.summary.counts && out.items.length &&
           out.summary.counts.type + out.summary.counts.concept + out.summary.counts.subunit + out.summary.counts.unit + out.summary.counts.none > 0)
         notes.unshift("같은 세부 유형이 모자란 자리는 한 단계씩 넓혀(같은 유형 → 같은 개념 → 같은 단원) 채웠습니다.");
@@ -354,6 +358,20 @@
     const subject = entry && Unified?.subjectByValue ? Unified.subjectByValue(entry.grade, entry.subject)?.label || "" : "";
     return { grade: entry?.grade || "", subject };
   }
+  // 시험지 순서: 객관식 먼저, 서술형 뒤. 각 묶음 안은 기준 시험지의 자리 순서(= 뽑은 순서) 그대로. 객관식인지는 원본 문항으로만 알 수 있어
+  // (카탈로그에는 없다) 시험지로 만들 때 고른 문항만 읽어 정한다. 뽑는 단계는 원본을 열지 않는다.
+  const isObjective = (q) => Boolean(q) && ((Array.isArray(q.choices) && q.choices.length > 0) || /^[①②③④⑤]$/.test(text(q.answer)));
+  async function restoreForPaper(records) {
+    const need = records.filter((record) => !V.derive.restored.has(record.questionUid));
+    if (!need.length) return;
+    const questions = await Source.restore(need, state.catalog);
+    need.forEach((record, i) => { if (questions[i]) V.derive.restored.set(record.questionUid, questions[i]); });
+  }
+  function paperOrder(records) {
+    const objective = [], other = [];
+    for (const record of records) (isObjective(V.derive.restored.get(record.questionUid)) ? objective : other).push(record);
+    return [...objective, ...other];
+  }
   // The window is opened here, before the first await, while the click is still a user gesture.
   function openPopup() {
     const dlg = V.derive.dlg;
@@ -363,9 +381,10 @@
     popup.document.body.textContent = "시험지를 준비하고 있습니다.";
     (async () => {
       try {
-        const records = dlg.result.items;
-        // The only place the originals are read: the questions of the paper being opened.
-        const questions = await Source.restore(records, state.catalog);
+        // The only place the originals are read for a window: the questions of the paper being opened.
+        await restoreForPaper(dlg.result.items);
+        const records = paperOrder(dlg.result.items);
+        const questions = records.map((record) => V.derive.restored.get(record.questionUid));
         if (questions.some((q) => !q)) throw new Error("원본 문항을 불러오지 못했습니다. 다시 뽑아 주세요.");
         const questionUids = records.map((record) => record.questionUid);
         const { grade, subject } = gradeSubjectOf(records);
@@ -397,11 +416,17 @@
   }
 
   // ---- 문제지 만들기로 넘기기: 고른 문항 UID 목록이 범위(검색에서 고른 문항과 같은 길)이고, 서버가 같은 목록으로 다시 확인한다 ----
-  function toCompose() {
+  async function toCompose() {
     const dlg = V.derive.dlg;
     if (!dlg?.result?.items.length || V.derive.busy) return;
     if (state.saveResultState === "RESULT_UNKNOWN") { setError("현재 저장 결과를 먼저 확인한 뒤 이어서 진행하세요."); return; }
     const uids = dlg.result.items.map((record) => record.questionUid);
+    // 객관식 먼저·서술형 뒤로 정렬하려고 이 문항들의 원본만 읽는다. 못 읽으면 뽑은 순서 그대로 두고 막지 않는다.
+    let ordered = dlg.result.items;
+    V.derive.busy = true;
+    renderDialog();
+    try { await restoreForPaper(ordered); ordered = paperOrder(ordered); } catch (error) { console.warn("[archive2] derive order skipped:", error); }
+    finally { V.derive.busy = false; }
     const info = {
       baseUids: [...dlg.baseUids], baseTitle: dlg.baseTitle.slice(0, 120), typeMode: dlg.typeMode, level: dlg.level, source: dlg.source, publisher: dlg.publisher,
       seed: dlg.seed, exclude: [...dlg.exclude].slice(-4000), resultUids: uids,
@@ -414,13 +439,20 @@
     state.editSavedPaperId = "";
     state.urlUids = uids;
     applyUidRoute();
-    if (state.uidRoute?.error) { setError(state.uidRoute.error); return; }
+    if (state.uidRoute?.error) { renderDialog(); setError(state.uidRoute.error); return; }
     state.derive = info;
     state.title = `${baseTitleOf(dlg)} 다시 만들기`.slice(0, 80);
     state.header = { ...state.header, title: state.title };
     if ($("modal")?.open) $("modal").close();
     history.pushState({ archive2ScrollY: 0 }, "", routeUrl());
     generate(false);
+    const rank = new Map(ordered.map((record, i) => [record.questionUid, i]));
+    if (state.selected.length) {
+      state.selected = [...state.selected].sort((a, b) => (rank.get(a.questionUid) ?? 1e9) - (rank.get(b.questionUid) ?? 1e9));
+      state.previewIndex = 0;
+      save();
+      render();
+    }
     status(state.selected.length === uids.length
       ? `다시 만든 ${uids.length}문항으로 문제지를 만들었습니다.`
       : `다시 만든 ${uids.length}문항 중 ${state.selected.length}문항이 문제지에 들어갔습니다.`);

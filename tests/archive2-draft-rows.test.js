@@ -238,12 +238,15 @@ function workerFilterKeys() {
   return keys;
 }
 // the originals are read through Source.restore: every call is counted (picking must not make one)
-const countingSource = calls => ({ restore: async records => { calls.push(records.map(r => r.questionUid)); return records.map(r => ({ questionUid: r.questionUid, answer: '1', solution: '해설' })); } });
-function deriveHarness(calls = []) {
+// subjective(uid) decides which questions come back without choices (서술형)
+const countingSource = (calls, subjective = () => false) => ({ restore: async records => { calls.push(records.map(r => r.questionUid)); return records.map(r => subjective(r.questionUid)
+  ? { questionUid: r.questionUid, answer: '24', solution: '해설' }
+  : { questionUid: r.questionUid, answer: '①', choices: ['1', '2', '3', '4', '5'], solution: '해설' }); } });
+function deriveHarness(calls = [], subjective) {
   const paper = generated({ pick: 3, count: 12 }).w;
   const baseRecords = plain(paper.state.selected);
   const baseUids = baseRecords.map(r => r.questionUid);
-  const h = harness(base, { Archive2Derive: Derive, Archive2Source: countingSource(calls) });
+  const h = harness(base, { Archive2Derive: Derive, Archive2Source: countingSource(calls, subjective) });
   const api = h.ctx.Archive2Workspace.api, V = h.ctx.Archive2Workspace.v;
   const body = () => h.ctx.document.getElementById('modal-body').innerHTML;
   return { ...h, api, V, baseUids, baseRecords, body, paper };
@@ -295,7 +298,7 @@ test('다시 뽑은 문제지 → 문제지 만들기 → 실제 저장 요청 �
   assert.ok(again && again.items.every(r => !before.has(r.questionUid) && !baseUids.includes(r.questionUid)), 'the new result leaves out the earlier one and the base');
 });
 
-test('뽑는 단계에서는 원본 시험 파일을 열지 않고 바로 결과를 보인다(원본은 고른 문항을 열 때만)', async () => {
+test('뽑는 단계에서는 원본 시험 파일을 열지 않고 바로 결과를 보인다(원본은 시험지로 만들 때 고른 문항만)', async () => {
   const calls = [];
   const H = deriveHarness(calls);
   startDerive(H);
@@ -305,10 +308,33 @@ test('뽑는 단계에서는 원본 시험 파일을 열지 않고 바로 결과
     H.V.derive.dlg.result = null;
     await H.api.deriveAction('derive-run', {});
     assert.ok(H.V.derive.dlg.result.items.length > 0, typeMode + '/' + level + ' gives a result');
+    assert.doesNotMatch(H.body(), /확정 전|참고용|겹치는 것을 허용|비어 있는 문항/, 'only notes a teacher can act on');
   }
+  assert.deepEqual(calls, [], 'no source file was requested while picking');
+  const chosen = H.V.derive.dlg.result.items.map(r => r.questionUid);
   await H.api.deriveAction('derive-compose', {});
-  assert.deepEqual(calls, [], 'no source file was requested while picking or handing over to 문제지 만들기');
-  assert.doesNotMatch(H.body(), /비어 있는 문항/, 'no empty-question notice');
+  assert.deepEqual(calls.flat().sort(), [...chosen].sort(), 'only the chosen questions are read, when the paper is made');
+});
+
+test('시험지 순서: 객관식 먼저·서술형 뒤, 각 묶음 안은 뽑은(기준) 순서 그대로', async () => {
+  const probe = deriveHarness();
+  startDerive(probe);
+  await probe.api.deriveAction('derive-run', {});
+  const picked = probe.V.derive.dlg.result.items.map(r => r.questionUid);
+  assert.ok(picked.length >= 6);
+  const subjective = new Set(picked.filter((uid, i) => i % 3 === 0)); // first one is subjective on purpose
+  assert.ok(subjective.has(picked[0]));
+  const H = deriveHarness([], uid => subjective.has(uid));
+  H.api.deriveStartFromItems(probe.baseUids.map(uid => ({ uid })), { title: 'x' });
+  H.V.derive.dlg.seed = probe.V.derive.dlg.seed;
+  await H.api.deriveAction('derive-run', {});
+  const order = H.V.derive.dlg.result.items.map(r => r.questionUid);
+  assert.deepEqual(order, picked, 'the same seed picks the same questions');
+  await H.api.deriveAction('derive-compose', {});
+  const paper = plain(H.w.state.selected).map(r => r.questionUid);
+  const expected = [...order.filter(uid => !subjective.has(uid)), ...order.filter(uid => subjective.has(uid))].filter(uid => paper.includes(uid));
+  assert.deepEqual(paper, expected, 'objective first, then 서술형, each group in the picked order');
+  assert.equal(subjective.has(paper[0]), false, 'question 1 is a multiple-choice question');
 });
 
 test('UID가 없는 옛 출제본은 원본 파일·순번으로 되찾고, 못 찾으면 지원하지 않는다고 알린다', () => {
