@@ -1157,7 +1157,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 수직선에서 점 M은 두 점 A, B로부터 같은 거리에 있는 점이고, 점 N은 두 점 A, B 사이를 3:5로 나누는 점이다. 두 점 M, N이 나타내는 수를 각각 a, b라 할 때, $a\\times b$의 값을 구하시오. $$A \\quad N \\quad M \\quad B$$\n$$-\\frac{5}{2} \\qquad\\qquad\\qquad \\frac{11}{6}$$",
+    "content": "다음 수직선에서 점 M은 두 점 A, B로부터 같은 거리에 있는 점이고, 점 N은 두 점 A, B 사이를 3:5로 나누는 점이다. 두 점 M, N이 나타내는 수를 각각 a, b라 할 때, $a\\times b$의 값을 구하시오.",
     "choices": [],
     "answer": "7/24",
     "answerStatus": "hand_solved_book_numbered",
