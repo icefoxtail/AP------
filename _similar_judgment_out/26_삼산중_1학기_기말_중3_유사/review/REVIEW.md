@@ -5,38 +5,28 @@
 - 검수 기록: 입력된 verdict 0/24, HOLD 0, 풀이 답 비어 있음 24문항
 - 그림 판단 분포: NONE 19, SELF_CONTAINED 3, NEEDS_FIGURE 2
 - 난이도 분포: 1단계 5, 2단계 15, 3단계 4
-- 유형 NONE 20문항, 새 키 제안 20문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
-- **Q1**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_IDENTIFICATION
-- **Q2**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_IDENTIFICATION
-- **Q3**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_IDENTIFICATION
-- **Q4**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_VERTEX_COORDINATES
-- **Q5**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_COEFFICIENTS_FROM_ROOTS
-- **Q7**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_QUADRATIC_FORMULA_PARAMETER
-- **Q8**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_BASIC_GRAPH_PROPERTIES
-- **Q9**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_AXIS_REFLECTION_POINT
-- **Q10**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_CONVEXITY_AND_WIDTH_COUNT
-- **Q11**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_TRANSLATION_POINT_SUBSTITUTION
-- **Q12**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_TRANSLATION_AMOUNT
-- **Q13**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_VERTEX_ON_AXIS
-- **Q14**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_VERTICES_LINE_SLOPE
-- **Q15**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_TRIANGLE_AREA_VERTEX_AND_X_INTERCEPTS
-- **Q16**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_STANDARD_FORM_TRANSFORMATION
-- **Q17**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_GEOMETRIC_COMPLETING_SQUARE_FILL_IN
-- **Q18**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRIC_AREA
-- **Q19**: 원천 값과 다른 칸 3개 (소단원, RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_SYMMETRIC_POINTS_AND_RATIO
+- **Q1**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q5**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q7**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q8**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q9**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q10**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q13**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q17**: 원천 값과 다른 칸 3개 (소단원, RPM, 난이도)
+- **Q18**: 원천 값과 다른 칸 2개 (RPM, 난이도)
+- **Q19**: 원천 값과 다른 칸 3개 (소단원, RPM, PT)
 - **Q20**: 검사 코드: FIGURE_MISSING / NEEDS_FIGURE (image 없음 -> 시험지 보류)
-- **Q21**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_FACTORIZATION_AND_COMPLETING_SQUARE_SOLVING
-- **Q22**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM_BOX_VOLUME
+- **Q22**: 원천 값과 다른 칸 2개 (RPM, 난이도)
 - **Q23**: 검사 코드: FIGURE_MISSING / NEEDS_FIGURE (image 없음 -> 시험지 보류)
 - **Q24**: 원천 값과 다른 칸 2개 (RPM, 난이도)
 
 ---
 ## Q1 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_IDENTIFICATION
 
 **발문**
 
@@ -63,9 +53,8 @@
 - 근거 인용: 「이차방정식은? [3점]」
 **RPM** M3-RPM-029 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 이차방정식 판별] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 뜻 > 이차방정식 찾기 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 이차방정식 판별**
 - 이유: 식 x(x-2)=8 을 전개 정리하여 이차방정식 여부를 판별하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → PT_M3_QUADRATIC_EQUATION**
 - 이유: 이차방정식의 기본 정의에 따라 식 x(x-2)=8 을 판별하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_IDENTIFICATION` (이차방정식 판별) — 등호가 있고 최고차항이 이차항인 식을 고르는 이차방정식 정의의 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 이차방정식의 뜻에 따라 x(x-2)=8 의 이차항 생존 여부를 즉시 확인하는 1단계 문항이다.
 
@@ -87,9 +76,8 @@
 
 ---
 
-## Q2 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_IDENTIFICATION
+## Q2 — 객관식 3점
+
 
 **발문**
 
@@ -116,9 +104,8 @@
 - 근거 인용: 「중근을 갖는 이차방정식은? 」
 **RPM** M3-RPM-034 [이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 중근을 가질 조건 → 이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식**
 - 이유: 1번 식 x^2 - 16 = 0 과 달리 완전제곱식 (3x-1)^2 = 0 으로 중근을 갖는 식을 찾는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT / TPL=NONE (원천과 같음)
 - 이유: 16 이 있는 합차식 등과 비교해 완전제곱식 중근 식을 판별하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT_IDENTIFICATION` (중근을 갖는 이차방정식 판별) — 주어진 이차방정식 중 좌변이 완전제곱식이 되어 중근을 갖는 식을 판별하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 1번 x^2 - 16 과 달리 9x^2 - 6x + 1 이 (3x-1)^2 임을 즉시 확인하는 1단계 문항이다.
 
@@ -140,9 +127,8 @@
 
 ---
 
-## Q3 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_IDENTIFICATION
+## Q3 — 객관식 3점
+
 
 **발문**
 
@@ -169,9 +155,8 @@
 - 근거 인용: 「이차함수인 것은? [3점]」
 **RPM** M3-RPM-043 [이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 이차함수 판별] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 이차함수 찾기 → 이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 이차함수 판별**
 - 이유: 거리 km 와 둘레 cm 등의 일차 관계와 달리 y = x^2 - 4x 가 이차함수임을 판별하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_DEFINITION → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_DEFINITION / TPL=NONE (원천과 같음)
 - 이유: 시속 x km 거리식 등과 비교하여 이차함수 식을 고르는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_IDENTIFICATION` (이차함수 판별) — 수식 및 실생활 관계식에서 y = ax^2 + bx + c (a != 0) 꼴인 이차함수를 식별하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 시속 x km 와 둘레 y cm 의 일차식과 달리 y = x^2 - 4x 가 이차함수임을 바로 확인하는 1단계 문항이다.
 
@@ -193,9 +178,8 @@
 
 ---
 
-## Q4 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_VERTEX_COORDINATES
+## Q4 — 객관식 3점
+
 
 **발문**
 
@@ -220,9 +204,8 @@
 - 근거 인용: 「꼭짓점의 좌표는? [3점]」
 **RPM** M3-RPM-050 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=a(x-p)^2+q의 그래프 > 꼭짓점의 좌표 구하기 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축**
 - 이유: 표준형 y = (x - 2)^2 - 5 에서 꼭짓점 (2, -5) 좌표를 읽어내는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM / TPL=NONE (원천과 같음)
 - 이유: 표준형 y = (x-p)^2 + q 에서 꼭짓점 좌표를 구하는 기본 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_VERTEX_COORDINATES` (이차함수의 꼭짓점의 좌표) — 표준형 y = a(x-p)^2 + q 꼴의 식에서 꼭짓점 좌표 (p, q)를 곧바로 구하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: y = (x - 2)^2 - 5 의 식에서 p = 2, q = -5 를 바로 읽는 1단계 기본 문항이다.
 
@@ -246,7 +229,6 @@ $y = a(x-p)^2 + q$의 꼭짓점의 좌표는 $(p, q)$이므로 $y = (x-2)^2 - 5$
 
 ## Q5 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_COEFFICIENTS_FROM_ROOTS
 
 **발문**
 
@@ -272,9 +254,8 @@ $y = a(x-p)^2 + q$의 꼭짓점의 좌표는 $(p, q)$이므로 $y = (x-2)^2 - 5$
 - 근거 인용: 「이차방정식 $4x^2 + a」
 **RPM** M3-RPM-031 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 활용 > 두 근이 주어질 때 이차방정식 구하기 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정**
 - 이유: 해가 주어진 식에서 ax 계수를 전개하여 a = -11 과 a - b = -17 을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → NONE**
+**유형** PT=PT_M3_ROOT_COEFFICIENT / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → PT_M3_ROOT_COEFFICIENT**
 - 이유: 두 근을 이용하여 ax 항의 계수 a=-11 을 결정하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_COEFFICIENTS_FROM_ROOTS` (두 근이 주어진 이차방정식의 계수 결정) — 두 근과 최고차항 계수가 주어졌을 때 인수형으로 식을 세워 미지의 계수를 결정하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 인수분해 형태로 식을 작성해 4x^2 - 11x + 6 을 전개하고 a - b = -17 을 계산하는 2단계 문항이다.
 
@@ -348,7 +329,6 @@ $9x^2 - 7 = 0 \implies x^2 = \frac{7}{9} \implies x = \pm\frac{\sqrt{7}}{3}$이�
 
 ## Q7 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_QUADRATIC_FORMULA_PARAMETER
 
 **발문**
 
@@ -374,9 +354,8 @@ $9x^2 - 7 = 0 \implies x^2 = \frac{7}{9} \implies x = \pm\frac{\sqrt{7}}{3}$이�
 - 근거 인용: 「이차방정식 $5x^2 + 3」
 **RPM** M3-RPM-035 [이차방정식 > 이차방정식의 풀이 > 근의 공식 > 근의 공식] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 이차방정식의 근의 공식 → 이차방정식 > 이차방정식의 풀이 > 근의 공식 > 근의 공식**
 - 이유: 근의 공식으로 근호 안의 식 9 - 20k = 89 를 비교하여 상수 k 를 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_DISCRIMINANT → NONE**
+**유형** PT=PT_M3_ROOT_FORMULA / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_DISCRIMINANT → PT_M3_ROOT_FORMULA**
 - 이유: 근의 공식으로 유도된 식과 89 를 비교해 미지수 k 를 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_QUADRATIC_FORMULA_PARAMETER` (근의 공식을 이용한 미지수 계수 결정) — 근의 공식으로 구한 해와 주어진 해를 비교하여 근호 안의 식으로부터 미지의 상수를 결정하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 근의 공식을 적용해 9 - 20k = 89 일차방정식을 세우고 푸는 2단계 문항이다.
 
@@ -400,7 +379,6 @@ $9x^2 - 7 = 0 \implies x^2 = \frac{7}{9} \implies x = \pm\frac{\sqrt{7}}{3}$이�
 
 ## Q8 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_BASIC_GRAPH_PROPERTIES
 
 **발문**
 
@@ -427,9 +405,8 @@ $9x^2 - 7 = 0 \implies x^2 = \frac{7}{9} \implies x = \pm\frac{\sqrt{7}}{3}$이�
 - 근거 인용: 「이차함수 $y = 3x^2$」
 **RPM** M3-RPM-045 [이차함수 > 이차함수와 그 그래프 > y=ax²의 그래프 > 그래프의 모양] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=ax^2의 그래프 > 이차함수 y=ax^2의 그래프의 성질 → 이차함수 > 이차함수와 그 그래프 > y=ax²의 그래프 > 그래프의 모양**
 - 이유: y = ax^2 그래프에서 꼭짓점, 폭, 대칭성 등 그래프 모양과 성질을 점검하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_PROPERTIES / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM → PT_M3_QUADRATIC_FUNCTION_PROPERTIES**
 - 이유: 기본형 y = ax^2 의 기하학적 성질을 선지별로 판별하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_BASIC_GRAPH_PROPERTIES` (y=ax²의 그래프 성질 판별) — 이차함수 y=ax^2의 꼭짓점, 축, 볼록 방향, 절댓값에 따른 폭, 대칭성 등 핵심 성질을 판별하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: y = ax^2 에서 계수 절댓값이 클수록 폭이 좁아짐을 즉시 확인하는 1단계 문항이다.
 
@@ -453,7 +430,6 @@ $y = ax^2$의 그래프는 $|a|$의 값이 클수록 폭이 좁아진다. $|3| >
 
 ## Q9 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_AXIS_REFLECTION_POINT
 
 **발문**
 
@@ -479,9 +455,8 @@ $y = ax^2$의 그래프는 $|a|$의 값이 클수록 폭이 좁아진다. $|3| >
 - 근거 인용: 「대칭이동한 그래프가 점 $(」
 **RPM** M3-RPM-047 [이차함수 > 이차함수와 그 그래프 > 그래프와 식 > 점의 좌표] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=ax^2의 그래프 > x축 대칭과 그래프 위의 점 → 이차함수 > 이차함수와 그 그래프 > 그래프와 식 > 점의 좌표**
 - 이유: y = ax^2 의 x축 대칭이동 식 y = -ax^2 에 점 (2, -1) 을 대입해 a 를 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_TRANSLATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM → PT_M3_QUADRATIC_FUNCTION_TRANSLATION**
 - 이유: 대칭이동 식 y = -ax^2 에 지나는 점 좌표를 대입하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_AXIS_REFLECTION_POINT` (x축 대칭이동한 이차함수 식과 지나는 점) — y=ax^2을 x축 대칭이동한 식에 점의 좌표를 대입하여 미지의 계수를 결정하는 대표 기본 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 대칭이동 식 y = -ax^2 을 작성하고 점을 대입해 -4a = -1 을 푸는 2단계 문항이다.
 
@@ -505,7 +480,6 @@ $y = ax^2$을 $x$축에 대하여 대칭이동한 그래프의 식은 $y = -ax^2
 
 ## Q10 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_CONVEXITY_AND_WIDTH_COUNT
 
 **발문**
 
@@ -537,9 +511,8 @@ $y = ax^2$을 $x$축에 대하여 대칭이동한 그래프의 식은 $y = -ax^2
 - 근거 인용: 「이차함수의 개수를 $m$, 」
 **RPM** M3-RPM-045 [이차함수 > 이차함수와 그 그래프 > y=ax²의 그래프 > 그래프의 모양] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=ax^2의 그래프 > 그래프의 모양과 폭 → 이차함수 > 이차함수와 그 그래프 > y=ax²의 그래프 > 그래프의 모양**
 - 이유: 이차항 계수 a 의 부호(위로 볼록 m=4)와 절댓값(|a|>3 폭 n=3)으로 개수 합 7을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_PROPERTIES / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_BASIC_FORM → PT_M3_QUADRATIC_FUNCTION_PROPERTIES**
 - 이유: 위로 볼록 개수 m과 폭 조건 개수 n을 세어 m + n = 7 을 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_CONVEXITY_AND_WIDTH_COUNT` (이차함수의 볼록 방향과 폭 조건 개수) — 계수의 부호와 절댓값으로 그래프 모양과 폭 조건을 만족하는 이차함수의 개수를 구하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 음수 계수 개수 m = 4 와 |a| > 3 개수 n = 3 을 각각 구하여 합산 7 을 내는 2단계 문항이다.
 
@@ -561,9 +534,8 @@ $y = ax^2$을 $x$축에 대하여 대칭이동한 그래프의 식은 $y = -ax^2
 
 ---
 
-## Q11 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_TRANSLATION_POINT_SUBSTITUTION
+## Q11 — 객관식 4점
+
 
 **발문**
 
@@ -589,9 +561,8 @@ $y = ax^2$을 $x$축에 대하여 대칭이동한 그래프의 식은 $y = -ax^2
 - 근거 인용: 「이차함수 $y = ax^2$」
 **RPM** M3-RPM-049 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 평행이동] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=a(x-p)^2+q의 그래프 > 평행이동과 그래프 위의 점 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 평행이동**
 - 이유: y = ax^2 의 평행이동 식 y = a(x-3)^2 - 2 에 점 (4, 3) 을 대입해 a 를 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_TRANSLATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_TRANSLATION / TPL=NONE (원천과 같음)
 - 이유: 평행이동한 y = ax^2 식에 점 (4, 3) 을 대입하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_TRANSLATION_POINT_SUBSTITUTION` (평행이동한 이차함수 식과 지나는 점) — y=ax^2의 평행이동 표준형 식에 점의 좌표를 대입하여 미지의 계수를 결정하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: y = ax^2 의 평행이동 식을 세우고 점을 대입해 3 = a - 2 를 푸는 2단계 문항이다.
 
@@ -613,9 +584,8 @@ $y = ax^2$을 $x$축에 대하여 대칭이동한 그래프의 식은 $y = -ax^2
 
 ---
 
-## Q12 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_TRANSLATION_AMOUNT
+## Q12 — 객관식 4점
+
 
 **발문**
 
@@ -641,9 +611,8 @@ $y = ax^2$을 $x$축에 대하여 대칭이동한 그래프의 식은 $y = -ax^2
 - 근거 인용: 「이차함수 $y = (x-1)」
 **RPM** M3-RPM-049 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 평행이동] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=a(x-p)^2+q의 그래프 > 평행이동량 구하기 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 평행이동**
 - 이유: 두 표준형 식의 꼭짓점 (1, 3) 과 (-2, -1) 을 비교해 평행이동량 p, q 와 합 -7 을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_TRANSLATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_TRANSLATION / TPL=NONE (원천과 같음)
 - 이유: 두 포물선의 꼭짓점 이동량 p=-3, q=-4 로부터 합을 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_TRANSLATION_AMOUNT` (두 이차함수 그래프의 평행이동량 결정) — 두 포물선의 꼭짓점 좌표로부터 x축, y축 방향의 평행이동량을 결정하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 두 꼭짓점 (1, 3) 과 (-2, -1) 의 변화량을 각각 계산해 p+q = -7 을 내는 2단계 문항이다.
 
@@ -667,7 +636,6 @@ $y=(x-1)^2+3$의 꼭짓점은 $(1, 3)$이고, $y=(x+2)^2-1$의 꼭짓점은 $(-2
 
 ## Q13 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_VERTEX_ON_AXIS
 
 **발문**
 
@@ -693,9 +661,8 @@ $y=(x-1)^2+3$의 꼭짓점은 $(1, 3)$이고, $y=(x+2)^2-1$의 꼭짓점은 $(-2
 - 근거 인용: 「이차함수 $y = 3x^2 」
 **RPM** M3-RPM-050 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축] **원천→판정: 이차함수 > 이차함수 y=ax^2+bx+c의 그래프 > 이차함수 y=ax^2+bx+c의 그래프 > 꼭짓점이 x축 위에 있을 조건 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축**
 - 이유: 식 3(x - 2)^2 + k - 12 의 꼭짓점이 x축 위에 있는 조건 k - 12 = 0 으로 k = 12 를 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_PROPERTIES → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_PROPERTIES → PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM**
 - 이유: 꼭짓점이 x축 위에 있을 조건 k - 12 = 0 을 적용하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_VERTEX_ON_AXIS` (꼭짓점이 축 위에 있는 이차함수 계수 결정) — 일반형을 표준형으로 고쳐 꼭짓점의 y좌표가 0임을 이용하여 상수를 구하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 일반형 3x^2 - 12x + k 를 표준형으로 변형하고 k - 12 = 0 을 푸는 2단계 문항이다.
 
@@ -717,9 +684,8 @@ $y=(x-1)^2+3$의 꼭짓점은 $(1, 3)$이고, $y=(x+2)^2-1$의 꼭짓점은 $(-2
 
 ---
 
-## Q14 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_VERTICES_LINE_SLOPE
+## Q14 — 객관식 4점
+
 
 **발문**
 
@@ -745,9 +711,8 @@ $y=(x-1)^2+3$의 꼭짓점은 $(1, 3)$이고, $y=(x+2)^2-1$의 꼭짓점은 $(-2
 - 근거 인용: 「이차함수 $y = -\dfr」
 **RPM** M3-RPM-050 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=a(x-p)^2+q의 그래프 > 꼭짓점과 직선의 기울기 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 꼭짓점형 > 꼭짓점·축**
 - 이유: 두 꼭짓점 (2, a) 와 (b, 3) 의 기울기 식으로부터 합 a + b = 5 를 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM / TPL=NONE (원천과 같음)
 - 이유: 두 포물선의 꼭짓점을 지나는 직선 기울기를 활용해 a + b = 5 를 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_VERTICES_LINE_SLOPE` (두 꼭짓점을 지나는 직선의 기울기 활용) — 두 포물선의 꼭짓점 좌표를 구하고 두 점 사이의 직선 기울기 공식을 적용하여 미지수의 합을 구하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 두 꼭짓점 (2, a), (b, 3) 을 구하고 기울기 1 식을 세워 a + b = 5 를 도출하는 2단계 문항이다.
 
@@ -769,9 +734,8 @@ $y=(x-1)^2+3$의 꼭짓점은 $(1, 3)$이고, $y=(x+2)^2-1$의 꼭짓점은 $(-2
 
 ---
 
-## Q15 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_TRIANGLE_AREA_VERTEX_AND_X_INTERCEPTS
+## Q15 — 객관식 4점
+
 
 **발문**
 
@@ -797,9 +761,8 @@ $y=(x-1)^2+3$의 꼭짓점은 $(1, 3)$이고, $y=(x+2)^2-1$의 꼭짓점은 $(-2
 - 근거 인용: 「이차함수 $y = x^2 +」
 **RPM** M3-RPM-054 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 그래프와 계수 > 조건으로 식 구하기] **원천→판정: 이차함수 > 이차함수 y=ax^2+bx+c의 그래프 > 이차함수의 식 구하기 > 그래프와 도형의 넓이 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 그래프와 계수 > 조건으로 식 구하기**
 - 이유: x절편으로 식을 세워 꼭짓점 B(1, -9) 를 구하고 삼각형 ABC 의 넓이 27 을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY / TPL=NONE (원천과 같음)
 - 이유: 두 x절편과 꼭짓점으로 삼각형 ABC 의 넓이 27 을 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_TRIANGLE_AREA_VERTEX_AND_X_INTERCEPTS` (꼭짓점과 두 x절편으로 이루어진 삼각형의 넓이) — 두 x절편 사이 거리를 밑변으로 하고 꼭짓점 높이를 이용하여 삼각형 ABC의 넓이를 구하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x절편으로 표준형 식을 세워 꼭짓점을 구하고 삼각형 ABC 의 넓이 27 을 계산하는 2단계 문항이다.
 
@@ -821,9 +784,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 
 ---
 
-## Q16 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_STANDARD_FORM_TRANSFORMATION
+## Q16 — 객관식 4점
+
 
 **발문**
 
@@ -849,9 +811,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 - 근거 인용: 「이차함수 $y = -3x^2」
 **RPM** M3-RPM-051 [이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 일반형 > 완전제곱식 변형] **원천→판정: 이차함수 > 이차함수 y=ax^2+bx+c의 그래프 > 이차함수 y=ax^2+bx+c의 그래프 > 일반형을 표준형으로 고치기 → 이차함수 > 이차함수 y=ax²+bx+c의 그래프 > 일반형 > 완전제곱식 변형**
 - 이유: 식 -3x^2 + 12x - 5 를 완전제곱식 표준형으로 변형하여 합을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM / TPL=NONE (원천과 같음)
 - 이유: 일반형 식의 12x 항을 묶어 표준형으로 변형하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_STANDARD_FORM_TRANSFORMATION` (이차함수 일반형을 표준형으로 변형) — 일반형 식을 완전제곱식 표준형으로 변형하고 미지수의 관계를 계산하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: -3x^2 + 12x - 5 에서 계수를 묶어 완전제곱식으로 변형하고 합 6을 내는 2단계 문항이다.
 
@@ -874,8 +835,7 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 ---
 
 ## Q17 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_GEOMETRIC_COMPLETING_SQUARE_FILL_IN
+- ⚠ 원천 값과 다른 칸 3개 (소단원, RPM, 난이도)
 
 **발문**
 
@@ -903,9 +863,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 - 근거 인용: 「이차방정식 $x^2 + 12」
 **RPM** M3-RPM-034 [이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 완전제곱식을 이용한 이차방정식의 풀이 → 이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식**
 - 이유: 식 x^2 + 12x = 85 에 36 을 더해 (x+6)^2 = 121 로 완전제곱식을 구성하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD / TPL=NONE (원천과 같음)
 - 이유: 식 x^2 + 12x = 85 에 필요한 넓이 36 과 해 5 를 채우는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_GEOMETRIC_COMPLETING_SQUARE_FILL_IN` (도형을 이용한 완전제곱식 변형 빈칸 추론) — 도형 넓이 모델을 활용해 이차방정식을 완전제곱식으로 변형하는 빈칸을 채우는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: x^2 + 12x = 85 에서 36 을 더해 121 을 얻고 양수 해 5 를 산출하는 2단계 문항이다.
 
@@ -928,8 +887,7 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 ---
 
 ## Q18 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRIC_AREA
+- ⚠ 원천 값과 다른 칸 2개 (RPM, 난이도)
 
 **발문**
 
@@ -955,9 +913,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 - 근거 인용: 「넓이의 합이 $174$이고,」
 **RPM** M3-RPM-039 [이차방정식 > 이차방정식의 활용 > 도형 > 길이·넓이] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 활용 > 도형에 대한 이차방정식의 활용 → 이차방정식 > 이차방정식의 활용 > 도형 > 길이·넓이**
 - 이유: 정사각형들의 넓이의 합 174 에 관한 이차방정식을 세워 길이를 구하는 활용 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM / TPL=NONE (원천과 같음)
 - 이유: 세 정사각형 넓이 합 174 로부터 이차방정식을 푸는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRIC_AREA` (도형의 넓이에 대한 이차방정식 활용) — 정사각형 변의 길이를 미지수로 놓고 넓이의 합에 대한 이차방정식을 세워 해결하는 대표 활용 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 세 변의 제곱 합이 174 임을 세워 3x^2 + 14x - 145 = 0 을 풀고 x=5 를 구하는 2단계 문항이다.
 
@@ -981,7 +938,6 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 
 ## Q19 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (소단원, RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_SYMMETRIC_POINTS_AND_RATIO
 
 **발문**
 
@@ -1007,9 +963,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 - 근거 인용: 「이차함수 $y = ax^2$」
 **RPM** M3-RPM-047 [이차함수 > 이차함수와 그 그래프 > 그래프와 식 > 점의 좌표] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수 y=ax^2의 그래프 > 이차함수의 그래프와 도형 → 이차함수 > 이차함수와 그 그래프 > 그래프와 식 > 점의 좌표**
 - 이유: y = ax^2 과 bx^2 그래프 위의 점 A, B, C 좌표를 구하고 비를 활용해 합을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION_PROPERTIES / TPL=NONE **원천→판정: PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY → PT_M3_QUADRATIC_FUNCTION_PROPERTIES**
 - 이유: 포물선 대칭성과 선분 BD, CD 비로 y = ax^2 계수를 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_SYMMETRIC_POINTS_AND_RATIO` (포물선의 대칭성과 선분 비를 이용한 계수 결정) — 포물선의 대칭성으로 삼각형 넓이를 통해 a를 구하고 선분 비로부터 b를 구하는 대표 도형 융합 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 대칭성으로 밑변 AB = 2 와 a = 3 을 구하고 선분 비 BD:CD 로 b = -4 를 도출하는 3단계 문항이다.
 
@@ -1082,9 +1037,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 
 ---
 
-## Q21 — 서술형 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_FACTORIZATION_AND_COMPLETING_SQUARE_SOLVING
+## Q21 — 서술형 5점
+
 
 **발문**
 
@@ -1113,9 +1067,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 - 근거 인용: 「인수분해를 이용하여 이차방정」
 **RPM** M3-RPM-034 [이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 인수분해와 완전제곱식을 이용한 풀이 → 이차방정식 > 이차방정식의 풀이 > 제곱근·완전제곱식을 이용한 풀이 > 완전제곱식**
 - 이유: 식 6x^2 + 7x - 20 = 0 과 완전제곱식 변형을 각각 풀이하여 해를 구하는 서술형 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD / TPL=NONE (원천과 같음)
 - 이유: 상수 -20 이 포함된 인수분해와 완전제곱식을 각각 서술하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_FACTORIZATION_AND_COMPLETING_SQUARE_SOLVING` (인수분해와 완전제곱식을 이용한 이차방정식 풀이 서술) — 인수분해 풀이와 완전제곱식 변형 풀이 두 과정을 단계별로 서술하는 대표 서술형 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 상수 -20 인수분해와 완전제곱식 5/4 유도 과정을 각각 서술하는 2단계 문항이다.
 
@@ -1140,8 +1093,7 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 ---
 
 ## Q22 — 서술형 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM_BOX_VOLUME
+- ⚠ 원천 값과 다른 칸 2개 (RPM, 난이도)
 
 **발문**
 
@@ -1166,9 +1118,8 @@ $x$절편이 $-2, 4$이고 $x^2$의 계수가 $1$이므로 $\quad y = (x+2)(x-4)
 - 근거 인용: 「직사각형 모양의 종이에서 네」
 **RPM** M3-RPM-039 [이차방정식 > 이차방정식의 활용 > 도형 > 길이·넓이] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 활용 > 도형에 대한 이차방정식의 활용 → 이차방정식 > 이차방정식의 활용 > 도형 > 길이·넓이**
 - 이유: 잘라낸 상자의 부피 420 에 관한 이차방정식을 세워 처음 세로 길이 20 을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM / TPL=NONE (원천과 같음)
 - 이유: 상자 부피 420 으로부터 이차방정식을 세워 직사각형 종이 길이를 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM_BOX_VOLUME` (상자의 부피에 대한 이차방정식 활용) — 귀퉁이를 잘라 만든 상자의 부피에 대한 이차방정식을 세워 종이의 길이를 구하는 대표 서술형 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 2 → 3**
 - 이유: 부피 420 식을 세우고 128 인수분해 후 처음 세로 길이 20 을 구하는 3단계 서술형 문항이다.
 

@@ -21,14 +21,10 @@
   "unitEvidence": "다음 중 순환소수를 분수로 나타",
   "rpmRecordId": "M2-RPM-122",
   "rpmReason": "0.5[8] = 53/90, 0.[35] = 35/99, 0.23[4] = 211/900 공식을 적용해 분수 변환을 확인한다.",
-  "problemTypeKey": "NONE",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
   "templateKey": "NONE",
   "typeReason": "순환소수 0.[35]와 0.23[4] 등을 99, 90, 900 등의 분모를 갖는 분수로 고쳐 오류를 찾는 유형이다.",
-  "newKeyProposal": {
-    "key": "PT_M2_REPEATING_DECIMAL_CONVERSION_AUDIT",
-    "label": "순환소수의 분수 변환 진술 판별",
-    "why": "순환소수를 분수로 나타내는 공식을 적용하여 잘못 변환된 선지를 선별하는 문제이다."
-  },
+  "newKeyProposal": null,
   "difficultyBucket": 1,
   "difficultyConfidence": "high",
   "difficultyReason": "순환마디 공식으로 0.23[4]의 분모가 900이어야 함을 211/990과 비교해 즉시 찾는 기본 문항이다.",

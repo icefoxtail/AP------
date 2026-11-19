@@ -5,7 +5,7 @@
 - 검수 기록: 입력된 verdict 0/24, HOLD 0, 풀이 답 비어 있음 24문항
 - 그림 판단 분포: NONE 23, SELF_CONTAINED 1
 - 난이도 분포: 1단계 11, 2단계 9, 3단계 4
-- 유형 NONE 2문항, 새 키 제안 2문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
@@ -20,7 +20,7 @@
 - **Q9**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 - **Q10**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 - **Q11**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
-- **Q12**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL) / 새 키 제안 PT_M2_LINEAR_EQUATION_IN_TWO_VARIABLES
+- **Q12**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q13**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q14**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q15**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
@@ -31,7 +31,7 @@
 - **Q20**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 - **Q21**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q22**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
-- **Q23**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL) / 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_AGE
+- **Q23**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q24**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 ---
@@ -700,7 +700,6 @@ $$
 
 ## Q12 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M2_LINEAR_EQUATION_IN_TWO_VARIABLES
 
 **발문**
 
@@ -725,9 +724,8 @@ $$
 - 근거 인용: 「다음 중 미지수가 $2$개인 일차방정식인 것은?」
 **RPM** NONE  **원천→판정: 연립일차방정식 > 연립일차방정식 > 미지수가 2개인 일차방정식 > 미지수가 2개인 일차방정식의 뜻 → NONE**
 - 이유: 미지수가 2개인 일차방정식 ax + by = c 의 뜻과 판별에 해당하는 독립 행이 M2-03 RPM 에 없어 NONE 으로 둔다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_EQ_DEFINITION → NONE** **원천→판정: TPL_TWO_VARIABLE_LINEAR_EQUATION_JUDGMENT → NONE**
+**유형** PT=PT_M2_TWO_VARIABLE_LINEAR_EQUATION / TPL=NONE **원천→판정: PT_M2_LINEAR_EQ_DEFINITION → PT_M2_TWO_VARIABLE_LINEAR_EQUATION** **원천→판정: TPL_TWO_VARIABLE_LINEAR_EQUATION_JUDGMENT → NONE**
 - 이유: 식 3x - 5y = 7 이 미지수 2개인 ax + by = c 형태를 만족하는지 확인하는 판정 단계이다.
-- 새 키 제안: `PT_M2_LINEAR_EQUATION_IN_TWO_VARIABLES` (미지수가 2개인 일차방정식) — 미지수가 2개인 일차방정식 ax + by = c 꼴인지 판별하는 기본 개념 문항에 맞는 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 동류항 정리 후 ax + by = c 일차식 조건 충족 여부를 바로 파악하는 1단계 개념 문항이다.
 
@@ -1454,7 +1452,6 @@ $$
 
 ## Q23 — 서술형 7점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_AGE
 
 **발문**
 
@@ -1479,9 +1476,8 @@ $$
 - 근거 인용: 「현재 형과 동생의 나이의 차는 $6$살이고」
 **RPM** M2-RPM-156 [연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 두 수 관계] **원천→판정: 연립일차방정식 > 연립일차방정식의 활용 > 실생활에 대한 문제 > 나이에 대한 문제 → 연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 두 수 관계**
 - 이유: 형 나이 13 과 동생 나이 7 의 차와 배수 관계를 연립방정식으로 세워 푸는 두 수 관계 활용 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_AGE_WORD_PROBLEM → NONE** **원천→판정: TPL_AGE_DIFFERENCE_AND_FUTURE_RATIO → NONE**
+**유형** PT=PT_M2_LINEAR_SYSTEM / TPL=NONE **원천→판정: PT_M2_AGE_WORD_PROBLEM → PT_M2_LINEAR_SYSTEM** **원천→판정: TPL_AGE_DIFFERENCE_AND_FUTURE_RATIO → NONE**
 - 이유: 현재 나이 차 6 과 4년 후 17, 11 살 관계식을 세워 형 13 살, 동생 7 살을 구하는 나이 활용 단계이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_AGE` (나이 문제) — 현재와 미래 나이 관계를 연립일차방정식으로 세워 푸는 나이 활용 유형이 후보에 없어 제안한다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 현재와 미래 나이의 관계식을 세워 연립하고 형 13 살, 동생 7 살을 구하는 2단계 서술형 문항이다.
 

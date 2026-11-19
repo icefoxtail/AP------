@@ -5,37 +5,37 @@
 - 검수 기록: 입력된 verdict 0/23, HOLD 0, 풀이 답 비어 있음 23문항
 - 그림 판단 분포: NONE 21, SELF_CONTAINED 2
 - 난이도 분포: 1단계 9, 2단계 10, 3단계 4
-- 유형 NONE 4문항, 새 키 제안 4문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
-- **Q1**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q2**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q3**: 원천 값과 다른 칸 2개 (TPL, 난이도)
-- **Q4**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- **Q5**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- **Q6**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- **Q7**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도) / 풀이 과정에 정답 값이 등장하지 않음
-- **Q8**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q9**: 원천 값과 다른 칸 3개 (소단원, PT, TPL)
-- **Q10**: 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
-- **Q11**: 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도) / 새 키 제안 PT_M3_SQUARE_ROOT_ESTIMATION_FROM_SQUARE_TABLE
-- **Q12**: 원천 값과 다른 칸 3개 (소단원, PT, TPL) / 새 키 제안 PT_M3_SQUARE_ROOT_PAPER_SIZE_SCALING_RATIO
-- **Q13**: 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도) / 새 키 제안 PT_M3_LATTICE_POINTS_IN_TRIANGLE_WITH_IRRATIONAL_SLOPES
-- **Q14**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q15**: 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
-- **Q16**: 원천 값과 다른 칸 3개 (소단원, PT, TPL)
-- **Q17**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q18**: 원천 값과 다른 칸 3개 (소단원, PT, TPL) / 새 키 제안 PT_M3_POLYNOMIAL_EXPANSION_FACTORIZATION_STUDENT_AUDIT
-- **Q19**: 원천 값과 다른 칸 4개 (단원, 소단원, PT, TPL)
-- **Q20**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q21**: 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
-- **Q22**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- **Q23**: 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
+- **Q1**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q2**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q3**: 원천 값과 다른 칸 3개 (RPM, TPL, 난이도)
+- **Q4**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
+- **Q5**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
+- **Q6**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
+- **Q7**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도) / 풀이 과정에 정답 값이 등장하지 않음
+- **Q8**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q9**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
+- **Q10**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
+- **Q11**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
+- **Q12**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
+- **Q13**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
+- **Q14**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q15**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
+- **Q16**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
+- **Q17**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q18**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
+- **Q19**: 원천 값과 다른 칸 5개 (단원, 소단원, RPM, PT, TPL)
+- **Q20**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q21**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
+- **Q22**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
+- **Q23**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 ---
 ## Q1 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 
 **발문**
 
@@ -59,7 +59,7 @@
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) (원천과 같음)
 - 근거 인용: 「다음 중 나머지 넷과 값이 다」
-**RPM** M3-RPM-001 [실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 뜻]
+**RPM** M3-RPM-001 [실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 뜻] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 제곱근의 뜻과 표현 → 실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 뜻**
 - 이유: 제곱근 25는 5이고, 25의 제곱근은 +-5임을 구별하여 다른 하나를 찾는다.
 **유형** PT=PT_M3_SQUARE_ROOT_PROPERTY / TPL=TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT **원천→판정: PT_M3_SQUARE_ROOT_EXPRESSION_CHECK → PT_M3_SQUARE_ROOT_PROPERTY** **원천→판정: TPL_M3_SQUARE_ROOT_TERMINOLOGY_AUDIT → TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT**
 - 이유: 제곱근 25와 25의 제곱근 등 제곱근의 뜻과 기호 표현의 차이를 판별하는 유형이다.
@@ -89,7 +89,7 @@
 ---
 
 ## Q2 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 
 **발문**
 
@@ -115,7 +115,7 @@
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) (원천과 같음)
 - 근거 인용: 「}=|a|$와 제곱근의 제곱 성질」
-**RPM** M3-RPM-002 [실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질]
+**RPM** M3-RPM-002 [실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 근호를 포함한 식의 계산 성질 → 실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질**
 - 이유: -sqrt((-0.7)^2) = -0.7과 (-sqrt(23))^2 = 23 등 근호의 성질을 적용한다.
 **유형** PT=PT_M3_SQUARE_ROOT_PROPERTY / TPL=TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT **원천→판정: PT_M3_SQUARE_ROOT_PROPERTIES_EVAL → PT_M3_SQUARE_ROOT_PROPERTY** **원천→판정: TPL_M3_SQUARE_ROOT_TRUE_FALSE_SET → TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT**
 - 이유: sqrt(a^2) = |a| 및 (-sqrt(23))^2 = 23, -0.7 등 근호의 제곱 성질을 판별하는 유형이다.
@@ -151,7 +151,7 @@
 ---
 
 ## Q3 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, TPL, 난이도)
 
 **발문**
 
@@ -176,7 +176,7 @@
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) (원천과 같음)
 - 근거 인용: 「실수의 체계(유리수와 무리수, 소」
-**RPM** M3-RPM-003 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 무리수 판별]
+**RPM** M3-RPM-003 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 무리수 판별] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 → 실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 무리수 판별**
 - 이유: 순환소수 0.333...과 무리수, 실수의 분류 체계 개념을 확인한다.
 **유형** PT=PT_M3_REAL_NUMBER_CLASSIFICATION / TPL=TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT (원천과 같음) **원천→판정: TPL_M3_NUMBER_SYSTEM_PROPOSITION → TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT**
 - 이유: 실수는 유리수와 무리수로 구성되며 0.333... 등 무한소수의 분류를 판별하는 유형이다.
@@ -206,7 +206,7 @@
 ---
 
 ## Q4 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -231,7 +231,7 @@
 
 **단원** M3-01(실수와 그 계산) / M3-01-REAL_NUMBER_OPERATIONS(근호를 포함한 식의 계산) (원천과 같음) (원천과 같음)
 - 근거 인용: 「근호의 성질 $\s」
-**RPM** M3-RPM-007 [실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱]
+**RPM** M3-RPM-007 [실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈, 덧셈과 뺄셈 → 실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱**
 - 이유: sqrt(5)*sqrt(20)=sqrt(100)=10, sqrt(49)=7, 3*5=15 등 근호 사칙연산을 검토한다.
 **유형** PT=PT_M3_RADICAL_CALCULATION / TPL=TPL_M3_RADICAL_MIXED_OPERATION **원천→판정: PT_M3_RADICAL_CALCULATION_AUDIT → PT_M3_RADICAL_CALCULATION** **원천→판정: TPL_M3_ARITHMETIC_ERROR_FINDING → TPL_M3_RADICAL_MIXED_OPERATION**
 - 이유: sqrt(49)와 sqrt(20) 등 근호의 곱셈과 제곱근 성질을 적용해 계산 오류를 찾는 유형이다.
@@ -269,7 +269,7 @@
 ---
 
 ## Q5 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -294,7 +294,7 @@
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) (원천과 같음)
 - 근거 인용: 「다음 중 두 실수의 대소 관계가」
-**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소]
+**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 실수의 대소 관계 → 실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소**
 - 이유: 3 - sqrt(2)와 3 - sqrt(3) 등 부등식 성질을 적용해 실수의 대소 관계를 판정한다.
 **유형** PT=PT_M3_REAL_NUMBER_COMPARISON / TPL=TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION **원천→판정: PT_M3_REAL_NUMBER_INEQUALITY → PT_M3_REAL_NUMBER_COMPARISON** **원천→판정: TPL_M3_RADICAL_ORDER_COMPARISON → TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION**
 - 이유: 공통항 3이나 2를 소거하여 sqrt(2) < sqrt(3) 등 근호의 대소를 비교하는 유형이다.
@@ -332,7 +332,7 @@
 ---
 
 ## Q6 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -355,7 +355,7 @@ $\sqrt{3} \times \sqrt{a} \times \sqrt{2} \times \sqrt{18} \times \sqrt{3a} = 36
 
 **단원** M3-01(실수와 그 계산) / M3-01-REAL_NUMBER_OPERATIONS(근호를 포함한 식의 계산) (원천과 같음) (원천과 같음)
 - 근거 인용: 「36$일 때, 양수 $a$의 값을」
-**RPM** M3-RPM-007 [실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱]
+**RPM** M3-RPM-007 [실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 제곱근의 곱셈과 나눗셈 → 실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 곱셈과 나눗셈 > 근호의 곱**
 - 이유: 근호 곱셈 공식으로 sqrt(3*a*2*18*3a) = sqrt(324a^2) = 18a = 36에서 a = 2를 구한다.
 **유형** PT=PT_M3_RADICAL_CALCULATION / TPL=TPL_M3_RADICAL_MIXED_OPERATION **원천→판정: PT_M3_RADICAL_MULTIPLE_PRODUCT → PT_M3_RADICAL_CALCULATION** **원천→판정: TPL_M3_RADICAL_EQUATION_UNKNOWN_SOLVE → TPL_M3_RADICAL_MIXED_OPERATION**
 - 이유: 근호의 곱셈 성질을 이용해 좌변을 324a^2의 제곱근인 18a = 36으로 정리하여 a를 구하는 유형이다.
@@ -389,7 +389,7 @@ $\sqrt{3} \times \sqrt{a} \times \sqrt{2} \times \sqrt{18} \times \sqrt{3a} = 36
 ---
 
 ## Q7 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 - ⚠ 풀이 과정에 정답 값이 등장하지 않음
 
 **발문**
@@ -421,7 +421,7 @@ $\sqrt{3} \times \sqrt{a} \times \sqrt{2} \times \sqrt{18} \times \sqrt{3a} = 36
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) (원천과 같음)
 - 근거 인용: 「수직선 위에 한 변의 길이가」
-**RPM** M3-RPM-005 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 무리수의 위치]
+**RPM** M3-RPM-005 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 무리수의 위치] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 실수와 수직선 → 실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 무리수의 위치**
 - 이유: 대각선 길이 sqrt(2)와 기준점 -1에서 왼쪽으로 내린 무리수 좌표 -1 - sqrt(2)의 위치를 결정한다.
 **유형** PT=PT_M3_REAL_NUMBER_LINE / TPL=NONE **원천→판정: PT_M3_NUMBER_LINE_MAPPING → PT_M3_REAL_NUMBER_LINE** **원천→판정: TPL_M3_SQUARE_DIAGONAL_ROTATION → NONE**
 - 이유: 정사각형의 대각선 길이를 이용해 수직선 위에 기준점 -1에서 내린 무리수 대응점 B를 찾는 유형이다.
@@ -461,7 +461,7 @@ $\sqrt{3} \times \sqrt{a} \times \sqrt{2} \times \sqrt{18} \times \sqrt{3a} = 36
 ---
 
 ## Q8 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 
 **발문**
 
@@ -484,7 +484,7 @@ $(\sqrt{54} - 3\sqrt{10}) \div \sqrt{2} - \sqrt{3}(\sqrt{15} - 4) = a\sqrt{3} + 
 
 **단원** M3-01(실수와 그 계산) / M3-01-REAL_NUMBER_OPERATIONS(근호를 포함한 식의 계산) (원천과 같음) (원천과 같음)
 - 근거 인용: 「$a, b$는 유리수) [4점]」
-**RPM** M3-RPM-010 [실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 덧셈과 뺄셈 > 분배법칙]
+**RPM** M3-RPM-010 [실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 덧셈과 뺄셈 > 분배법칙] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 근호를 포함한 복잡한 식의 계산 → 실수와 그 연산 > 근호를 포함한 식의 계산 > 근호의 덧셈과 뺄셈 > 분배법칙**
 - 이유: sqrt(54)와 sqrt(10)의 나눗셈 및 분배법칙 sqrt(3)*sqrt(15)=sqrt(45)로 동류근호를 정리한다.
 **유형** PT=PT_M3_RADICAL_CALCULATION / TPL=TPL_M3_RADICAL_MIXED_OPERATION **원천→판정: PT_M3_RADICAL_EXPANSION_COEFF_COMPARE → PT_M3_RADICAL_CALCULATION** **원천→판정: TPL_M3_RADICAL_MIXED_SIMPLIFICATION → TPL_M3_RADICAL_MIXED_OPERATION**
 - 이유: sqrt(54) - 3*sqrt(10)의 나눗셈과 sqrt(15)의 분배법칙을 전개하여 a+b = 1을 구하는 혼합 계산 유형이다.
@@ -518,7 +518,7 @@ $(\sqrt{54} - 3\sqrt{10}) \div \sqrt{2} - \sqrt{3}(\sqrt{15} - 4) = a\sqrt{3} + 
 ---
 
 ## Q9 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (소단원, PT, TPL)
+- ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 
 **발문**
 
@@ -541,7 +541,7 @@ $(\sqrt{54} - 3\sqrt{10}) \div \sqrt{2} - \sqrt{3}(\sqrt{15} - 4) = a\sqrt{3} + 
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) **원천→판정: M3-01-REAL_NUMBER_OPERATIONS → M3-01-SQUARE_ROOT_REAL_NUMBER**
 - 근거 인용: 「어떤 자연수 $x$의 양의」
-**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소]
+**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 제곱근의 대소 관계와 부등식 → 실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소**
 - 이유: 100 < sqrt(x) < 102를 제곱하여 10000 < x < 10404 범위 안의 자연수 개수 403을 구한다.
 **유형** PT=PT_M3_REAL_NUMBER_COMPARISON / TPL=TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION **원천→판정: PT_M3_SQUARE_ROOT_INEQUALITY_COUNT → PT_M3_REAL_NUMBER_COMPARISON** **원천→판정: TPL_M3_BOUNDED_RADICAL_COUNT → TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION**
 - 이유: 제곱근의 부등식 100 < sqrt(x) < 102를 양변 제곱으로 변환해 자연수 개수를 세는 대소 판정 유형이다.
@@ -573,7 +573,7 @@ $(\sqrt{54} - 3\sqrt{10}) \div \sqrt{2} - \sqrt{3}(\sqrt{15} - 4) = a\sqrt{3} + 
 ---
 
 ## Q10 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -599,7 +599,7 @@ $\sqrt{x}$ 이하의 자연수의 개수를 $N(x)$라고 하자. <보기>의 조
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) **원천→판정: M3-01-REAL_NUMBER_OPERATIONS → M3-01-SQUARE_ROOT_REAL_NUMBER**
 - 근거 인용: 「rt{x}$의 소수부분이 $0.5$보」
-**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소]
+**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 무리수의 정수 부분과 소수 부분 → 실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소**
 - 이유: 정수부분 6으로 36 <= x < 49와 소수부분 sqrt(x) > 6.5에서 x > 42.25의 공통 범위를 구한다.
 **유형** PT=PT_M3_REAL_NUMBER_COMPARISON / TPL=TPL_M3_INTEGER_DECIMAL_PART_EVALUATION **원천→판정: PT_M3_DECIMAL_PART_COUNTING → PT_M3_REAL_NUMBER_COMPARISON** **원천→판정: TPL_M3_RADICAL_STEP_FUNCTION_CONDITIONS → TPL_M3_INTEGER_DECIMAL_PART_EVALUATION**
 - 이유: N(x) = 6과 소수부분 0.5 초과 조건으로부터 42.25 < x < 49를 유도해 개수 6을 구하는 유형이다.
@@ -633,8 +633,7 @@ $N(x)$의 정의는 $\sqrt{x}$의 정수부분이 $6$임을 의미함을 파악�
 ---
 
 ## Q11 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M3_SQUARE_ROOT_ESTIMATION_FROM_SQUARE_TABLE
+- ⚠ 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -671,11 +670,10 @@ $N(x)$의 정의는 $\sqrt{x}$의 정수부분이 $6$임을 의미함을 파악�
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) **원천→판정: M3-01-REAL_NUMBER_OPERATIONS → M3-01-SQUARE_ROOT_REAL_NUMBER**
 - 근거 인용: 「표는 주어진 자연수 $n$에 대하」
-**RPM** M3-RPM-006 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값]
+**RPM** M3-RPM-006 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 제곱근의 값과 제곱근표 → 실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값**
 - 이유: 187^2 = 34969와 591^2 = 349281 등 표의 제곱수를 10000으로 나누어 sqrt(3.5), sqrt(35)의 둘째 자리를 추정한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_TABLE_APPROXIMATION → NONE** **원천→판정: TPL_M3_SQUARE_TABLE_INTERPOLATION → NONE**
+**유형** PT=PT_M3_SQUARE_ROOT_TABLE / TPL=NONE **원천→판정: PT_M3_TABLE_APPROXIMATION → PT_M3_SQUARE_ROOT_TABLE** **원천→판정: TPL_M3_SQUARE_TABLE_INTERPOLATION → NONE**
 - 이유: 표의 187^2 = 34969, 591^2 = 349281을 활용해 sqrt(3.5)의 a = 7과 sqrt(35)의 b = 1을 구하는 근삿값 유형이다.
-- 새 키 제안: `PT_M3_SQUARE_ROOT_ESTIMATION_FROM_SQUARE_TABLE` (제곱수 표를 이용한 제곱근의 자릿수 추정) — 자연수 제곱값 표를 100 또는 10000의 배수로 소수점 이동하여 제곱근의 소수점 아래 둘째 자리 숫자를 구하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 표에서 35000 부근의 187과 350000 부근의 591을 각각 찾아 둘째 자리 a=7, b=1을 결정하는 문항이다.
 
@@ -704,8 +702,7 @@ $N(x)$의 정의는 $\sqrt{x}$의 정수부분이 $6$임을 의미함을 파악�
 ---
 
 ## Q12 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (소단원, PT, TPL)
-- ⚠ 새 키 제안 PT_M3_SQUARE_ROOT_PAPER_SIZE_SCALING_RATIO
+- ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 
 **발문**
 
@@ -731,11 +728,10 @@ $N(x)$의 정의는 $\sqrt{x}$의 정수부분이 $6$임을 의미함을 파악�
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) **원천→판정: M3-01-REAL_NUMBER_OPERATIONS → M3-01-SQUARE_ROOT_REAL_NUMBER**
 - 근거 인용: 「보여. 영철: 넓이가 A4 용지의」
-**RPM** M3-RPM-006 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값]
+**RPM** M3-RPM-006 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 제곱근의 실생활 활용 → 실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값**
 - 이유: A3와 B4의 넓이비 4/3의 제곱근 2*sqrt(3)/3에 sqrt(3)=1.732를 대입하여 약 115.5%를 계산한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_SIMILARITY_SCALE_PERCENT → NONE** **원천→판정: TPL_M3_REAL_LIFE_PAPER_RATIO → NONE**
+**유형** PT=PT_M3_SQUARE_ROOT_APPLICATION / TPL=NONE **원천→판정: PT_M3_SIMILARITY_SCALE_PERCENT → PT_M3_SQUARE_ROOT_APPLICATION** **원천→판정: TPL_M3_REAL_LIFE_PAPER_RATIO → NONE**
 - 이유: A4, A3, B4 용지의 넓이비 1.5배와 닮음비 공식으로부터 배율 115.5%를 근삿값 계산하는 실생활 활용 유형이다.
-- 새 키 제안: `PT_M3_SQUARE_ROOT_PAPER_SIZE_SCALING_RATIO` (용지 규격의 닮음비와 제곱근 근삿값 계산) — 용지의 넓이 비로부터 길이 비율을 제곱근으로 구하고 루트2, 루트3의 근삿값을 대입해 확대 배율을 계산하는 문제이다.
 **난이도** 3 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: B4와 A3의 넓이비 4/3에서 길이비 2/sqrt(3)을 도출하고 1.732로 나눗셈하여 115.5%를 구하는 응용 문항이다.
 
@@ -766,8 +762,7 @@ $N(x)$의 정의는 $\sqrt{x}$의 정수부분이 $6$임을 의미함을 파악�
 ---
 
 ## Q13 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M3_LATTICE_POINTS_IN_TRIANGLE_WITH_IRRATIONAL_SLOPES
+- ⚠ 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -793,11 +788,10 @@ $\sqrt{3}x - y - 6 = 0$, $\sqrt{3}x + y - 6 = 0$, $y$축으로 둘러싸인 삼�
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) **원천→판정: M3-01-REAL_NUMBER_OPERATIONS → M3-01-SQUARE_ROOT_REAL_NUMBER**
 - 근거 인용: 「으로 둘러싸인 삼각형 내부에 있으면」
-**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소]
+**RPM** M3-RPM-004 [실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 무리수의 대소와 좌표평면 활용 → 실수와 그 연산 > 제곱근과 실수 > 무리수와 실수 > 실수의 대소**
 - 이유: 교점 x = 2*sqrt(3) = sqrt(12) 범위 내에서 x = 1, 2, 3에 따른 정수 y의 개수 9+5+1 = 15를 구한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_TRIANGLE_LATTICE_COUNT → NONE** **원천→판정: TPL_M3_RADICAL_LINE_INTERIOR_POINTS → NONE**
+**유형** PT=PT_M3_REAL_NUMBER_COMPARISON / TPL=NONE **원천→판정: PT_M3_TRIANGLE_LATTICE_COUNT → PT_M3_REAL_NUMBER_COMPARISON** **원천→판정: TPL_M3_RADICAL_LINE_INTERIOR_POINTS → NONE**
 - 이유: 무리수 기울기 직선으로 둘러싸인 삼각형 영역에서 부등식을 만족하는 정수 좌표점 15개를 세는 격자점 유형이다.
-- 새 키 제안: `PT_M3_LATTICE_POINTS_IN_TRIANGLE_WITH_IRRATIONAL_SLOPES` (무리수 기울기 직선으로 둘러싸인 영역의 정수 격자점 개수) — 무리수 기울기를 가진 직선과 y축으로 둘러싸인 삼각형 내부에서 각 정수 x에 대응하는 정수 y의 개수를 합산하는 문제이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 4 → 3**
 - 이유: 교점 x = 2*sqrt(3) = sqrt(12)에서 x = 1, 2, 3의 각 구간별 정수 y 개수 9, 5, 1을 합산하는 심화 문항이다.
 
@@ -832,7 +826,7 @@ $\sqrt{3}x - y - 6 = 0$, $\sqrt{3}x + y - 6 = 0$, $y$축으로 둘러싸인 삼�
 ---
 
 ## Q14 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 
 **발문**
 
@@ -857,7 +851,7 @@ $\sqrt{3}x - y - 6 = 0$, $\sqrt{3}x + y - 6 = 0$, $y$축으로 둘러싸인 삼�
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-POLYNOMIAL_MULTIPLICATION(다항식의 곱셈) (원천과 같음) (원천과 같음)
 - 근거 인용: 「다음 중 전개 또는 계산 결과가」
-**RPM** M3-RPM-015 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 합·차의 제곱]
+**RPM** M3-RPM-015 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 합·차의 제곱] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈 공식 → 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식 > 합·차의 제곱**
 - 이유: (-sqrt(3) + 1)^2 = 4 - 2*sqrt(3)과 (2x-1)(3x-4)=6x^2-11x+4 등 곱셈공식을 검증한다.
 **유형** PT=PT_M3_POLY_MULTIPLICATION / TPL=TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT **원천→판정: PT_M3_MULTIPLICATION_FORMULA_CHECK → PT_M3_POLY_MULTIPLICATION** **원천→판정: TPL_M3_POLYNOMIAL_EXPANSION_AUDIT → TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT**
 - 이유: (x-3)(x+4) = x^2+x-12 및 (-sqrt(3)+1)^2 = 4-2*sqrt(3) 등 곱셈공식 전개 결과를 판별하는 유형이다.
@@ -895,7 +889,7 @@ $\sqrt{3}x - y - 6 = 0$, $\sqrt{3}x + y - 6 = 0$, $y$축으로 둘러싸인 삼�
 ---
 
 ## Q15 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -918,7 +912,7 @@ $\sqrt{3}x - y - 6 = 0$, $\sqrt{3}x + y - 6 = 0$, $y$축으로 둘러싸인 삼�
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-FACTORIZATION(인수분해) (원천과 같음) **원천→판정: M3-02-POLYNOMIAL_MULTIPLICATION → M3-02-FACTORIZATION**
 - 근거 인용: 「9ab^2$의 인수가 아닌 것은?」
-**RPM** M3-RPM-021 [다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기]
+**RPM** M3-RPM-021 [다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 뜻과 공통인수 → 다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기**
 - 이유: 6a^2b - 9ab^2 = 3ab(2a - 3b)로 공통인수를 묶어 각 선지가 인수가 되는지 판별한다.
 **유형** PT=PT_M3_POLY_FACTORIZATION / TPL=TPL_M3_COMMON_FACTOR_IDENTIFICATION **원천→판정: PT_M3_FACTOR_IDENTIFICATION → PT_M3_POLY_FACTORIZATION** **원천→판정: TPL_M3_POLYNOMIAL_FACTOR_SELECTION → TPL_M3_COMMON_FACTOR_IDENTIFICATION**
 - 이유: 공통인수 3ab를 묶어 3ab(2a - 3b)를 만든 뒤 인수가 아닌 것을 선별하는 유형이다.
@@ -950,7 +944,7 @@ $\sqrt{3}x - y - 6 = 0$, $\sqrt{3}x + y - 6 = 0$, $y$축으로 둘러싸인 삼�
 ---
 
 ## Q16 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (소단원, PT, TPL)
+- ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 
 **발문**
 
@@ -973,7 +967,7 @@ $4x^2 + (m+3)xy + 25y^2$이 완전제곱식이 될 때, 가능한 모든 수 $m$
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-FACTORIZATION(인수분해) (원천과 같음) **원천→판정: M3-02-POLYNOMIAL_MULTIPLICATION → M3-02-FACTORIZATION**
 - 근거 인용: 「25y^2$이 완전제곱식이 될 때, 가」
-**RPM** M3-RPM-023 [다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식 > 제곱식]
+**RPM** M3-RPM-023 [다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식 > 제곱식] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 인수분해 > 완전제곱식 만들기 → 다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식 > 제곱식**
 - 이유: 4x^2 + (m+3)xy + 25y^2에서 가운데 항 +-20xy로부터 m = 17, -23을 구한다.
 **유형** PT=PT_M3_POLY_FACTORIZATION / TPL=TPL_M3_PERFECT_SQUARE_CONDITION **원천→판정: PT_M3_PERFECT_SQUARE_COEFF_SOLVE → PT_M3_POLY_FACTORIZATION** **원천→판정: TPL_M3_TRINOMIAL_MIDDLE_TERM_UNKNOWN → TPL_M3_PERFECT_SQUARE_CONDITION**
 - 이유: 4x^2과 25y^2의 양 끝 항으로부터 가운데 xy의 계수 m+3 = +-20을 결정하는 완전제곱식 계수 유형이다.
@@ -1009,7 +1003,7 @@ $4x^2 + (m+3)xy + 25y^2$이 완전제곱식이 될 때, 가능한 모든 수 $m$
 ---
 
 ## Q17 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 
 **발문**
 
@@ -1034,7 +1028,7 @@ $4x^2 + (m+3)xy + 25y^2$이 완전제곱식이 될 때, 가능한 모든 수 $m$
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-POLYNOMIAL_MULTIPLICATION(다항식의 곱셈) (원천과 같음) (원천과 같음)
 - 근거 인용: 「곱셈 공식 $(a+」
-**RPM** M3-RPM-018 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 수의 계산]
+**RPM** M3-RPM-018 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 수의 계산] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈 공식을 이용한 수의 계산 → 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 수의 계산**
 - 이유: 합차공식과 완전제곱식을 적용해 35*65=2275, 51^2=2601 등을 계산해 최댓값을 찾는다.
 **유형** PT=PT_M3_POLY_MULTIPLICATION / TPL=TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT **원천→판정: PT_M3_NUMERICAL_COMPUTATION_FORMULA → PT_M3_POLY_MULTIPLICATION** **원천→판정: TPL_M3_MAXIMUM_VALUE_FORMULA_COMPARISON → TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT**
 - 이유: 합차공식과 인수분해 공식을 활용해 51^2 = 2601 등 수의 계산 결과를 비교하는 유형이다.
@@ -1072,8 +1066,7 @@ $4x^2 + (m+3)xy + 25y^2$이 완전제곱식이 될 때, 가능한 모든 수 $m$
 ---
 
 ## Q18 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (소단원, PT, TPL)
-- ⚠ 새 키 제안 PT_M3_POLYNOMIAL_EXPANSION_FACTORIZATION_STUDENT_AUDIT
+- ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 
 **발문**
 
@@ -1104,11 +1097,10 @@ $4x^2 + (m+3)xy + 25y^2$이 완전제곱식이 될 때, 가능한 모든 수 $m$
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-FACTORIZATION(인수분해) (원천과 같음) **원천→판정: M3-02-POLYNOMIAL_MULTIPLICATION → M3-02-FACTORIZATION**
 - 근거 인용: 「36y^2$이 완전제곱식이 되도록 하는」
-**RPM** M3-RPM-021 [다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기]
+**RPM** M3-RPM-021 [다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 다항식의 곱셈과 인수분해 종합 > 오개념 판별과 바른 계산 → 다항식의 곱셈과 인수분해 > 인수분해 > 공통인수 > 공통인수 묶기**
 - 이유: 8a^2b - 4ab^2 = 4ab(2a - b) 공통인수 묶기와 x^2 + kxy + 36y^2 완전제곱식을 점검한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_CONCEPT_MISCONCEPTION_AUDIT → NONE** **원천→판정: TPL_M3_STUDENT_DIALOGUE_ERROR_FINDING → NONE**
+**유형** PT=PT_M3_POLY_FACTORIZATION / TPL=NONE **원천→판정: PT_M3_CONCEPT_MISCONCEPTION_AUDIT → PT_M3_POLY_FACTORIZATION** **원천→판정: TPL_M3_STUDENT_DIALOGUE_ERROR_FINDING → NONE**
 - 이유: 식 x^2 + kxy + 36y^2 및 8a^2b - 4ab^2 등 곱셈공식과 인수분해의 학생 풀이 오류를 판별하는 유형이다.
-- 새 키 제안: `PT_M3_POLYNOMIAL_EXPANSION_FACTORIZATION_STUDENT_AUDIT` (다항식의 전개와 인수분해 풀이 오류 찾기) — 완전제곱식 조건, 곱셈공식 전개, 공통인수 묶기 등 학생들의 풀이 과정 중 참·거짓을 판별하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: k = +-12 부호, 전개 공식, 인수분해 정의 등 5명의 풀이 논리를 점검하는 문항이다.
 
@@ -1143,7 +1135,7 @@ $4x^2 + (m+3)xy + 25y^2$이 완전제곱식이 될 때, 가능한 모든 수 $m$
 ---
 
 ## Q19 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (단원, 소단원, PT, TPL)
+- ⚠ 원천 값과 다른 칸 5개 (단원, 소단원, RPM, PT, TPL)
 
 **발문**
 
@@ -1166,7 +1158,7 @@ $x = \dfrac{1}{\sqrt{5} + 2}$, $y = \dfrac{1}{\sqrt{5} - 2}$일 때, $(x-y)^2$�
 
 **단원** M3-01(실수와 그 계산) / M3-01-REAL_NUMBER_OPERATIONS(근호를 포함한 식의 계산) **원천→판정: M3-02 → M3-01** **원천→판정: M3-02-POLYNOMIAL_MULTIPLICATION → M3-01-REAL_NUMBER_OPERATIONS**
 - 근거 인용: 「분모의 유리화를 통해 $x,」
-**RPM** M3-RPM-012 [실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화]
+**RPM** M3-RPM-012 [실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈 공식을 이용한 식의 값 구하기 → 실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화**
 - 이유: 분모를 유리화하여 x = sqrt(5) - 2, y = sqrt(5) + 2를 얻고 (x-y)^2 = 16을 계산한다.
 **유형** PT=PT_M3_RADICAL_CALCULATION / TPL=TPL_M3_RADICAL_RATIONALIZATION **원천→판정: PT_M3_CONJUGATE_RATIONALIZE_SUBTRACTION → PT_M3_RADICAL_CALCULATION** **원천→판정: TPL_M3_SYMMETRIC_EXPRESSION_VALUE → TPL_M3_RADICAL_RATIONALIZATION**
 - 이유: 합차공식으로 분모를 유리화한 후 두 수의 차의 제곱 (x-y)^2 = 16을 구하는 유형이다.
@@ -1200,7 +1192,7 @@ $x = \dfrac{1}{\sqrt{5} + 2}$, $y = \dfrac{1}{\sqrt{5} - 2}$일 때, $(x-y)^2$�
 ---
 
 ## Q20 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
+- ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 
 **발문**
 
@@ -1223,7 +1215,7 @@ $x = \dfrac{1}{\sqrt{5} + 2}$, $y = \dfrac{1}{\sqrt{5} - 2}$일 때, $(x-y)^2$�
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-POLYNOMIAL_MULTIPLICATION(다항식의 곱셈) (원천과 같음) (원천과 같음)
 - 근거 인용: 「$x+6$인 정사각형 모양의 색종이」
-**RPM** M3-RPM-020 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 도형 활용]
+**RPM** M3-RPM-020 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 도형 활용] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식의 도형 활용 → 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 도형 활용**
 - 이유: (x+6)^2 - (x-6)^2을 합차공식으로 인수분해하여 (2x) * 12 = 24x를 구한다.
 **유형** PT=PT_M3_POLY_MULTIPLICATION / TPL=TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING **원천→판정: PT_M3_GEOMETRIC_DIFFERENCE_OF_SQUARES → PT_M3_POLY_MULTIPLICATION** **원천→판정: TPL_M3_SQUARE_REMOVAL_AREA → TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING**
 - 이유: 정사각형 넓이의 차 (x+6)^2 - (x-6)^2을 곱셈공식으로 전개 및 인수분해해 24x를 모델링하는 유형이다.
@@ -1257,7 +1249,7 @@ $x = \dfrac{1}{\sqrt{5} + 2}$, $y = \dfrac{1}{\sqrt{5} - 2}$일 때, $(x-y)^2$�
 ---
 
 ## Q21 — 단답형 7점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -1282,7 +1274,7 @@ $\sqrt{80\times x}$가 자연수가 되도록 하는 자연수 $x$의 값 중 �
 
 **단원** M3-01(실수와 그 계산) / M3-01-SQUARE_ROOT_REAL_NUMBER(제곱근과 실수) (원천과 같음) **원천→판정: M3-01-REAL_NUMBER_OPERATIONS → M3-01-SQUARE_ROOT_REAL_NUMBER**
 - 근거 인용: 「es x}$가 자연수가 되도록 하는」
-**RPM** M3-RPM-002 [실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질]
+**RPM** M3-RPM-002 [실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 제곱근이 자연수가 될 조건 → 실수와 그 연산 > 제곱근과 실수 > 제곱근 > 제곱근의 성질**
 - 이유: 80 소인수분해를 통해 근호 안의 수가 제곱수가 되도록 하는 제곱근의 성질이다.
 **유형** PT=PT_M3_SQUARE_ROOT_PROPERTY / TPL=TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION **원천→판정: PT_M3_RADICAL_TO_NATURAL_NUMBER → PT_M3_SQUARE_ROOT_PROPERTY** **원천→판정: TPL_M3_PRIME_FACTORIZATION_SQUARE_COUNT → TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION**
 - 이유: sqrt(80x)가 자연수가 되도록 하는 조건과 80 관련 수의 범위를 판별하는 유형이다.
@@ -1322,7 +1314,7 @@ $\sqrt{80x}$가 자연수가 되려면 근호 안의 수 $80x$가 어떤 자연�
 ---
 
 ## Q22 — 단답형 6점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -1346,7 +1338,7 @@ $\sqrt{80x}$가 자연수가 되려면 근호 안의 수 $80x$가 어떤 자연�
 
 **단원** M3-01(실수와 그 계산) / M3-01-REAL_NUMBER_OPERATIONS(근호를 포함한 식의 계산) (원천과 같음) (원천과 같음)
 - 근거 인용: 「ACDF}$의 넓이는 $\sqrt」
-**RPM** M3-RPM-012 [실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화]
+**RPM** M3-RPM-012 [실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 도형에서의 제곱근의 계산 활용 → 실수와 그 연산 > 근호를 포함한 식의 계산 > 분모의 유리화 > 합·차 꼴의 유리화**
 - 이유: ABDE와 ACDE 사다리꼴 넓이의 비를 구한 뒤 합·차 꼴의 분모의 유리화를 적용하는 계산이다.
 **유형** PT=PT_M3_RADICAL_CALCULATION / TPL=TPL_M3_RADICAL_RATIONALIZATION **원천→판정: PT_M3_GEOMETRIC_RADICAL_RATIO → PT_M3_RADICAL_CALCULATION** **원천→판정: TPL_M3_TRAPEZOID_RADICAL_AREA_FRACTION → TPL_M3_RADICAL_RATIONALIZATION**
 - 이유: ACDE와 ABDE의 넓이 비를 구하고 분모의 유리화를 거쳐 15 분모의 기약분수로 나타내는 계산이다.
@@ -1382,7 +1374,7 @@ $\sqrt{80x}$가 자연수가 되려면 근호 안의 수 $80x$가 어떤 자연�
 ---
 
 ## Q23 — 단답형 7점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 4개 (소단원, PT, TPL, 난이도)
+- ⚠ 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 
 **발문**
 
@@ -1409,7 +1401,7 @@ $\sqrt{80x}$가 자연수가 되려면 근호 안의 수 $80x$가 어떤 자연�
 
 **단원** M3-02(다항식의 곱셈과 인수분해) / M3-02-FACTORIZATION(인수분해) (원천과 같음) **원천→판정: M3-02-POLYNOMIAL_MULTIPLICATION → M3-02-FACTORIZATION**
 - 근거 인용: 「- 민준: 인수분해를 먼저 한 후」
-**RPM** M3-RPM-027 [다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 활용 > 인수분해를 이용한 식의 값]
+**RPM** M3-RPM-027 [다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 활용 > 인수분해를 이용한 식의 값] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 인수분해 > 인수분해 공식을 이용한 식의 값 구하기 → 다항식의 곱셈과 인수분해 > 인수분해 > 인수분해의 활용 > 인수분해를 이용한 식의 값**
 - 이유: a^2-8a+15 식에 대해 인수분해를 이용한 식의 값을 구하는 문항이다.
 **유형** PT=PT_M3_POLY_FACTORIZATION / TPL=TPL_M3_FACTORIZATION_FORMULA_APPLICATION **원천→판정: PT_M3_DUAL_METHOD_ALGEBRAIC_VALUE → PT_M3_POLY_FACTORIZATION** **원천→판정: TPL_M3_FACTOR_AND_PERFECT_SQUARE_EVAL → TPL_M3_FACTORIZATION_FORMULA_APPLICATION**
 - 이유: a^2-8a+15 식을 인수분해 공식과 변형을 이용하여 식의 값을 구하는 유형이다.

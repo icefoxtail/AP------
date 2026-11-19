@@ -5,21 +5,20 @@
 - 검수 기록: 입력된 verdict 0/23, HOLD 0, 풀이 답 비어 있음 23문항
 - 그림 판단 분포: NONE 16, NEEDS_FIGURE 5, SELF_CONTAINED 2
 - 난이도 분포: 1단계 5, 2단계 14, 3단계 4
-- 유형 NONE 11문항, 새 키 제안 11문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
-- **Q1**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_IDENTIFICATION
-- **Q2**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_FACTORIZATION_SOLVE
-- **Q3**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_ONE_ROOT_GIVEN_OTHER_ROOT
+- **Q1**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q2**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q3**: 원천 값과 다른 칸 2개 (RPM, PT)
 - **Q4**: 원천 값과 다른 칸 2개 (RPM, 난이도)
-- **Q5**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_QUADRATIC_FORMULA_PARAMETER
-- **Q6**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_SOLVING_ERROR_ANALYSIS
-- **Q7**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_ROOT_DIFFERENCE_SQUARE_ROOT
-- **Q8**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_AND_INEQUALITY_SIMULTANEOUS_CONDITION
-- **Q9**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_ROOTS_BETWEEN_INTEGERS
-- **Q10**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_NATURAL_NUMBER_ROOTS_CONDITION
-- **Q11**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M3_QUADRATIC_FUNCTION_EVALUATION
+- **Q5**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q6**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q8**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
+- **Q9**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
+- **Q10**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
+- **Q11**: 원천 값과 다른 칸 2개 (RPM, PT)
 - **Q12**: 원천 값과 다른 칸 2개 (RPM, PT) / 풀이 과정에 정답 값이 등장하지 않음
 - **Q14**: 검사 코드: FIGURE_MISSING / NEEDS_FIGURE (image 없음 -> 시험지 보류)
 - **Q15**: 검사 코드: FIGURE_MISSING / NEEDS_FIGURE (image 없음 -> 시험지 보류)
@@ -27,12 +26,11 @@
 - **Q18**: 검사 코드: FIGURE_MISSING / NEEDS_FIGURE (image 없음 -> 시험지 보류)
 - **Q19**: 원천 값과 다른 칸 2개 (RPM, 난이도)
 - **Q20**: 검사 코드: FIGURE_MISSING / NEEDS_FIGURE (image 없음 -> 시험지 보류) / 원천 값과 다른 칸 4개 (소단원, RPM, PT, 난이도)
-- **Q23**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M3_QUADRATIC_EQUATION_GEOMETRIC_CONSTRUCTION_SOLVING
+- **Q23**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
 
 ---
 ## Q1 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_IDENTIFICATION
 
 **발문**
 
@@ -60,9 +58,8 @@
 - 근거 인용: 「$x$에 대한 이차방정식으로 옳은 것만」
 **RPM** M3-RPM-029 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 이차방정식 판별] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 뜻 > 이차방정식 찾기 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 이차방정식 판별**
 - 이유: 식 3x^2과 9x^2 등 한쪽으로 정리해 ax^2 + bx + c = 0 꼴인지 판별한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → PT_M3_QUADRATIC_EQUATION**
 - 이유: 주어진 보기의 식을 정리하여 2차식 = 0 꼴인 이차방정식을 선별하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_IDENTIFICATION` (이차방정식 판별) — 등식의 모든 항을 이항하여 정리했을 때 최고차수가 2차인 이차방정식을 판별하는 문제이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 전개 후 이항하여 2차식 = 0인지와 등식 여부를 1단계로 확인하는 기본 문항이다.
 
@@ -86,7 +83,6 @@
 
 ## Q2 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_FACTORIZATION_SOLVE
 
 **발문**
 
@@ -111,9 +107,8 @@
 - 근거 인용: 「이차방정식 $x^2 -」
 **RPM** M3-RPM-032 [이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 이차방정식의 풀이 → 이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해**
 - 이유: 상수항 12의 두 수 곱과 합 -7을 이용하여 인수분해로 해를 구한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT → PT_M3_QUADRATIC_EQUATION**
 - 이유: 상수항 12를 -3과 -4의 곱으로 인수분해하여 이차방정식의 해를 구하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_FACTORIZATION_SOLVE` (인수분해를 이용한 이차방정식의 풀이) — 이차방정식을 일차식의 곱으로 인수분해하여 영인자 성질로 두 해를 구하는 기본 문제이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 상수항 12의 약수를 이용해 (x-3)(x-4)=0으로 1단계 인수분해하는 기본 문항이다.
 
@@ -137,7 +132,6 @@ $x^2 - 7x + 12 = (x-3)(x-4) = 0$ 따라서 $x = 3$ 또는 $x = 4$이다.
 
 ## Q3 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_ONE_ROOT_GIVEN_OTHER_ROOT
 
 **발문**
 
@@ -163,9 +157,8 @@ $x^2 - 7x + 12 = (x-3)(x-4) = 0$ 따라서 $x = 3$ 또는 $x = 4$이다.
 - 근거 인용: 「= -2$를 대입하면 $3(-2」
 **RPM** M3-RPM-031 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 한 근이 주어질 때 다른 한 근 구하기 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정**
 - 이유: 근 -2를 대입해 12 - 14 + k = 0에서 k를 구하고 다른 한 근을 찾는다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION → NONE**
+**유형** PT=PT_M3_QUADRATIC_ROOT / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION → PT_M3_QUADRATIC_ROOT**
 - 이유: 한 근을 대입해 12 - 14 + k = 0에서 상수 k를 구한 후 인수분해하여 다른 한 근을 구하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_ONE_ROOT_GIVEN_OTHER_ROOT` (한 근이 주어진 이차방정식에서 다른 한 근 구하기) — 주어진 한 근을 대입하여 미정계수를 구하고 방정식을 풀어 다른 한 근을 결정하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x=-2를 대입해 12 - 14 + k = 0에서 k=2를 얻고 인수분해로 -1/3을 구하는 2단계 계산이다.
 
@@ -239,7 +232,6 @@ $x = -2$를 대입하면 $3(-2)^2 + 7(-2) + k = 0 \implies 12 - 14 + k = 0 \impl
 
 ## Q5 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_QUADRATIC_FORMULA_PARAMETER
 
 **발문**
 
@@ -265,9 +257,8 @@ $x = -2$를 대입하면 $3(-2)^2 + 7(-2) + k = 0 \implies 12 - 14 + k = 0 \impl
 - 근거 인용: 「근의 공식에 의해 $x」
 **RPM** M3-RPM-035 [이차방정식 > 이차방정식의 풀이 > 근의 공식 > 근의 공식] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 이차방정식의 근의 공식 → 이차방정식 > 이차방정식의 풀이 > 근의 공식 > 근의 공식**
 - 이유: 근의 공식에서 25 - 12k = 73을 세우고 -12k = 48에서 k를 구한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_DISCRIMINANT → NONE**
+**유형** PT=PT_M3_ROOT_FORMULA / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_DISCRIMINANT → PT_M3_ROOT_FORMULA**
 - 이유: 근의 공식을 적용하여 근호 안의 식 25 - 12k = 73을 비교하여 미지수 k를 구하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_QUADRATIC_FORMULA_PARAMETER` (근의 공식 형태와 비교하여 미지수 구하기) — 근의 공식으로 구한 근호 안의 판별식 부분과 주어진 해를 비교하여 미지의 계수를 결정하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 근의 공식을 적용해 25 - 12k = 73에서 -12k = 48, k = -4를 구하는 2단계 계산이다.
 
@@ -291,7 +282,6 @@ $x = -2$를 대입하면 $3(-2)^2 + 7(-2) + k = 0 \implies 12 - 14 + k = 0 \impl
 
 ## Q6 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_SOLVING_ERROR_ANALYSIS
 
 **발문**
 
@@ -318,9 +308,8 @@ $x = -2$를 대입하면 $3(-2)^2 + 7(-2) + k = 0 \implies 12 - 14 + k = 0 \impl
 - 근거 인용: 「민준, 서연의 이차방정식 풀이 과정이다」
 **RPM** M3-RPM-032 [이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 이차방정식 풀이의 오류 찾기 → 이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해**
 - 이유: 근의 공식 판별식 값 44 계산 오류와 완전제곱식 등 2차방정식의 풀이 과정을 검토한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION → PT_M3_QUADRATIC_EQUATION**
 - 이유: 근의 공식에서 근호 안의 값 44를 잘못 계산한 것 등 풀이 과정의 오류를 분석하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_SOLVING_ERROR_ANALYSIS` (이차방정식 풀이 과정 오류 찾기) — 근의 공식 적용, 완전제곱식 이용, 양변 나누기 등 학생들의 풀이 과정 중 오류를 판별하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 근의 공식에서 44 대신 다른 값을 쓴 부호 오류 및 0으로 나누는 오류를 점검하는 문항이다.
 
@@ -344,9 +333,8 @@ $x = -2$를 대입하면 $3(-2)^2 + 7(-2) + k = 0 \implies 12 - 14 + k = 0 \impl
 
 ---
 
-## Q7 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_ROOT_DIFFERENCE_SQUARE_ROOT
+## Q7 — 객관식 4점
+
 
 **발문**
 
@@ -371,9 +359,8 @@ $x = -2$를 대입하면 $3(-2)^2 + 7(-2) + k = 0 \implies 12 - 14 + k = 0 \impl
 - 근거 인용: 「이차방정식 $5(x+2)」
 **RPM** M3-RPM-031 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 제곱근을 이용한 이차방정식의 풀이 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정**
 - 이유: 5(x+2)^2 = a 꼴을 제곱근을 이용하여 x = -2 +- sqrt(a/5)로 푼다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD / TPL=NONE (원천과 같음)
 - 이유: 식 5(x+2)^2 = a에서 제곱근을 이용하여 해를 구하고 두 근의 차가 2임을 이용하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_ROOT_DIFFERENCE_SQUARE_ROOT` (제곱근을 이용한 이차방정식의 해와 두 근의 차) — a(x+p)^2 = q 형태의 해를 제곱근으로 나타내고 두 근의 차 조건을 이용해 상수를 구하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 제곱근을 이용해 해를 나타내고 차 공식을 바로 적용하는 2단계 연산 문항이다.
 
@@ -397,7 +384,6 @@ $(x+2)^2 = \frac{a}{5}$에서 $x = -2 \pm \sqrt{\frac{a}{5}}$이다. 두 근의 
 
 ## Q8 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_AND_INEQUALITY_SIMULTANEOUS_CONDITION
 
 **발문**
 
@@ -423,9 +409,8 @@ $(x+2)^2 = \frac{a}{5}$에서 $x = -2 \pm \sqrt{\frac{a}{5}}$이다. 두 근의 
 - 근거 인용: 「k + 1$과 이차방정식 $x^2 -」
 **RPM** M3-RPM-030 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해의 확인] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 이차방정식과 일차부등식 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해의 확인**
 - 이유: x^2 - 3x - 10 = 0을 인수분해하여 두 해를 구하고 부등식 조건 k <= 13을 적용한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_ROOT / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION → PT_M3_QUADRATIC_ROOT**
 - 이유: 식 x^2 - 3x - 10 = 0의 해 중 특정 해만 일차부등식을 만족하도록 경계값 13을 결정하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_AND_INEQUALITY_SIMULTANEOUS_CONDITION` (이차방정식의 해와 부등식의 연립 조건) — 이차방정식의 해 중 특정 해만 일차부등식을 만족하도록 하는 상수의 범위를 구하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 이차방정식 x^2 - 3x - 10 = 0의 해를 구하고 부등식 만족 여부로 k의 범위를 정하는 문항이다.
 
@@ -449,7 +434,6 @@ $x^2 - 3x - 10 = (x+2)(x-5) = 0$이므로 이차방정식의 해는 $x = -2$ 또
 
 ## Q9 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_ROOTS_BETWEEN_INTEGERS
 
 **발문**
 
@@ -475,9 +459,8 @@ $x^2 - 3x - 10 = (x+2)(x-5) = 0$이므로 이차방정식의 해는 $x = -2$ 또
 - 근거 인용: 「이차방정식 $x^2 -」
 **RPM** M3-RPM-032 [이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 근의 공식과 무리수 근의 어림 → 이차방정식 > 이차방정식의 풀이 > 인수분해를 이용한 풀이 > 기본 인수분해**
 - 이유: 식 x^2 - 11 = -(x+2)^2를 정리하여 2차방정식을 근의 공식으로 푼 뒤 무리수 근의 범위를 구한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_ROOT_ISOLATION → PT_M3_QUADRATIC_EQUATION**
 - 이유: 식 x^2 - 11 = -(x+2)^2의 근을 구하여 두 근 사이의 정수의 개수를 세는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_ROOTS_BETWEEN_INTEGERS` (이차방정식의 두 근 사이의 정수의 개수) — 근의 공식으로 구한 무리수 해의 범위를 추정하여 두 근 사이에 존재하는 정수의 개수를 구하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 식 x^2 - 11 정리 후 근의 공식과 제곱근 근삿값으로 정수 개수를 판별하는 문항이다.
 
@@ -501,7 +484,6 @@ $x^2 - 3x - 10 = (x+2)(x-5) = 0$이므로 이차방정식의 해는 $x = -2$ 또
 
 ## Q10 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_NATURAL_NUMBER_ROOTS_CONDITION
 
 **발문**
 
@@ -526,9 +508,8 @@ $x^2 - 3x - 10 = (x+2)(x-5) = 0$이므로 이차방정식의 해는 $x = -2$ 또
 - 근거 인용: 「이차방정식 $2(x-5)」
 **RPM** M3-RPM-031 [이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 이차방정식의 해가 유리수·자연수가 될 조건 → 이차방정식 > 이차방정식의 풀이 > 이차방정식과 해 > 해가 주어진 이차방정식의 계수 결정**
 - 이유: 2(x-5)^2 = k+1에서 제곱근을 취해 자연수 해 조건 t=4일 때 k=31 등을 구한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → PT_M3_QUADRATIC_EQUATION**
 - 이유: 식 2(x-5)^2 = k+1의 해가 서로 다른 두 자연수가 되도록 k의 합 56을 구하는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_NATURAL_NUMBER_ROOTS_CONDITION` (이차방정식이 자연수 해를 가질 조건) — 완전제곱식 꼴의 이차방정식의 해가 서로 다른 두 자연수가 되도록 하는 상수 조건 및 그 합을 구하는 문제이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 4 → 3**
 - 이유: 자연수 해 조건 및 5-t >= 1 범위를 고려해 k = 1, 7, 17, 31의 합 56을 구하는 문항이다.
 
@@ -552,7 +533,6 @@ $(x-5)^2 = \frac{k+1}{2}$에서 $x = 5 \pm \sqrt{\frac{k+1}{2}}$이다. $t = \sq
 
 ## Q11 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_FUNCTION_EVALUATION
 
 **발문**
 
@@ -576,9 +556,8 @@ $(x-5)^2 = \frac{k+1}{2}$에서 $x = 5 \pm \sqrt{\frac{k+1}{2}}$이다. $t = \sq
 - 근거 인용: 「이차함수 $f(x) =」
 **RPM** M3-RPM-044 [이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 함숫값] **원천→판정: 이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 이차함수의 함숫값 → 이차함수 > 이차함수와 그 그래프 > 이차함수의 뜻 > 함숫값**
 - 이유: f(-1) = 10 과 f(2) = 13 을 대입 계산하여 차 10 - 13 = -3을 구한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_FUNCTION_VALUE → NONE**
+**유형** PT=PT_M3_QUADRATIC_FUNCTION / TPL=NONE **원천→판정: PT_FUNCTION_VALUE → PT_M3_QUADRATIC_FUNCTION**
 - 이유: 이차함수 식에 값을 대입해 f(-1)=10과 f(2)=13의 차를 구하는 함숫값 계산 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_FUNCTION_EVALUATION` (이차함수의 함숫값 계산) — 이차함수의 식에 x값을 대입하여 구한 두 함숫값의 차를 계산하는 문제이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x = -1과 2를 대입해 f(-1)=10, f(2)=13을 구하는 단순 1단계 대입 연산 문항이다.
 
@@ -1153,7 +1132,6 @@ $y = -(x^2 + 4x + 4 - 4) + 21 = -(x+2)^2 + 25$이므로 꼭짓점은 $\mathrm{A}
 
 ## Q23 — 서술형 7점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M3_QUADRATIC_EQUATION_GEOMETRIC_CONSTRUCTION_SOLVING
 
 **발문**
 
@@ -1180,9 +1158,8 @@ $y = -(x^2 + 4x + 4 - 4) + 21 = -(x+2)^2 + 25$이므로 꼭짓점은 $\mathrm{A}
 - 근거 인용: 「0$) 꼴의 이차방정식의 양수인 해를」
 **RPM** M3-RPM-040 [이차방정식 > 이차방정식의 활용 > 도형 > 피타고라스와 결합] **원천→판정: 이차방정식 > 이차방정식 > 이차방정식의 풀이 > 도형을 이용한 이차방정식의 해법 → 이차방정식 > 이차방정식의 활용 > 도형 > 피타고라스와 결합**
 - 이유: 선분 AB, AC, BC로 이루어진 직각삼각형 ABC(각 A = 90도)에 피타고라스 정리를 적용해 x^2 + px = q의 해를 유도한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → NONE**
+**유형** PT=PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM / TPL=NONE **원천→판정: PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD → PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM**
 - 이유: 기하적 작도와 직각삼각형 ABC 피타고라스 정리를 통해 이차방정식 x^2 + px = q의 양의 근을 찾는 유형이다.
-- 새 키 제안: `PT_M3_QUADRATIC_EQUATION_GEOMETRIC_CONSTRUCTION_SOLVING` (도형을 이용한 이차방정식의 해법) — 피타고라스 정리와 원의 기하학적 작도를 이용하여 이차방정식의 양의 근을 유도하는 문제이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 4 → 3**
 - 이유: 선분 AB, AC, BC와 각 A = 90도 직각삼각형의 피타고라스 정리로 x^2 + px = q 식을 유도하고 근을 구하는 종합 문항이다.
 

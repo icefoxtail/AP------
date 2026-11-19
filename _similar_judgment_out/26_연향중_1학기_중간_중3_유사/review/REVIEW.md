@@ -5,7 +5,7 @@
 - 검수 기록: 입력된 verdict 0/23, HOLD 0, 풀이 답 비어 있음 23문항
 - 그림 판단 분포: NONE 23
 - 난이도 분포: 1단계 8, 2단계 15
-- 유형 NONE 3문항, 새 키 제안 3문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
@@ -14,9 +14,9 @@
 - **Q3**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q4**: 원천 값과 다른 칸 5개 (소단원, RPM, PT, TPL, 난이도)
 - **Q5**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
-- **Q6**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL) / 새 키 제안 PT_M3_REAL_NUMBER_AND_NUMBER_LINE_TRUE_FALSE
+- **Q6**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q7**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
-- **Q8**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL) / 새 키 제안 PT_M3_SQUARE_ROOT_TABLE_APPROXIMATION
+- **Q8**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q9**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q10**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q11**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
@@ -24,7 +24,7 @@
 - **Q13**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q14**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q15**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
-- **Q16**: 원천 값과 다른 칸 3개 (RPM, PT, TPL) / 새 키 제안 PT_M3_SYMMETRIC_EXPRESSION_VALUE_BY_RATIONALIZATION
+- **Q16**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q17**: 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
 - **Q18**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q19**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
@@ -322,7 +322,6 @@
 
 ## Q6 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M3_REAL_NUMBER_AND_NUMBER_LINE_TRUE_FALSE
 
 **발문**
 
@@ -348,9 +347,8 @@
 - 근거 인용: 「실수와 수직선의 관계 및」
 **RPM** M3-RPM-005 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 무리수의 위치] **원천→판정: 수와 연산 > 실수와 그 연산 > 제곱근과 실수 > 실수와 수직선 → 실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 무리수의 위치**
 - 이유: 실수의 수직선 대응 및 루트 25와 같은 유리수 반례를 들어 명제를 판정한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_REAL_PROPERTIES_TRUTH_VALUE → NONE** **원천→판정: TPL_M3_REAL_NUMBER_AXIOMS_EVALUATION → NONE**
+**유형** PT=PT_M3_REAL_NUMBERS / TPL=NONE **원천→판정: PT_M3_REAL_PROPERTIES_TRUTH_VALUE → PT_M3_REAL_NUMBERS** **원천→판정: TPL_M3_REAL_NUMBER_AXIOMS_EVALUATION → NONE**
 - 이유: 실수의 수직선 대응과 루트 25와 같은 근호가 있는 유리수의 반례 등 명제의 참 거짓을 판별하는 유형이다.
-- 새 키 제안: `PT_M3_REAL_NUMBER_AND_NUMBER_LINE_TRUE_FALSE` (실수와 수직선 및 유리수 무리수 명제의 참 거짓 판별) — 실수의 수직선 일대일 대응과 무리수, 유리수의 성질에 관한 명제의 참 거짓을 판별하는 문제이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 실수의 수직선 일대일 대응과 루트 25=5 반례를 이용해 1단계로 참 거짓을 판별하는 기본 문항이다.
 
@@ -433,7 +431,6 @@
 
 ## Q8 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 4개 (소단원, RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M3_SQUARE_ROOT_TABLE_APPROXIMATION
 
 **발문**
 
@@ -459,9 +456,8 @@ $\sqrt{5.24} = 2.289$, $\sqrt{52.4} = 7.239$ 일 때, $\sqrt{524} = a$, $\sqrt{0
 - 근거 인용: 「근호 안의 수에 $100$ 또는」
 **RPM** M3-RPM-006 [실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값] **원천→판정: 수와 연산 > 실수와 그 연산 > 근호를 포함한 식의 계산 > 제곱근표를 이용한 값 구하기 → 실수와 그 연산 > 제곱근과 실수 > 수직선과 제곱근 > 근삿값**
 - 이유: 5.24와 52.4의 제곱근표 근삿값에 100의 거듭제곱을 곱하여 a와 b를 계산한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_SQUARE_ROOT_TABLE_INTERPOLATION → NONE** **원천→판정: TPL_M3_DECIMAL_SHIFT_APPROXIMATION → NONE**
+**유형** PT=PT_M3_SQUARE_ROOT_TABLE / TPL=NONE **원천→판정: PT_M3_SQUARE_ROOT_TABLE_INTERPOLATION → PT_M3_SQUARE_ROOT_TABLE** **원천→판정: TPL_M3_DECIMAL_SHIFT_APPROXIMATION → NONE**
 - 이유: 100의 거듭제곱을 이용하여 5.24와 52.4의 근삿값으로부터 524와 0.524의 값을 구하는 유형이다.
-- 새 키 제안: `PT_M3_SQUARE_ROOT_TABLE_APPROXIMATION` (제곱근표의 값을 이용한 제곱근의 근삿값 계산) — 100의 거듭제곱을 곱하거나 나누어 주어진 제곱근의 근삿값을 이용하여 미지의 제곱근 값을 구하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 524를 10*sqrt(5.24)=22.89로, 100b를 10*sqrt(52.4)=72.39로 바꾸어 더하는 2단계 계산이다.
 
@@ -886,7 +882,6 @@ $a > 0$, $b > 0$, $c > 0$이고 $abc = 64$일 때, $$a\sqrt{\frac{18bc}{a}} - b\
 
 ## Q16 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M3_SYMMETRIC_EXPRESSION_VALUE_BY_RATIONALIZATION
 
 **발문**
 
@@ -912,9 +907,8 @@ $x = \frac{1}{\sqrt{7} + \sqrt{6}}$, $y = \frac{1}{\sqrt{7} - \sqrt{6}}$ 일 때
 - 근거 인용: 「후 곱셈공식의 변형을 이용하여 식」
 **RPM** M3-RPM-019 [다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 식의 값] **원천→판정: 문자와 식 > 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 변형 → 다항식의 곱셈과 인수분해 > 다항식의 곱셈 > 곱셈공식의 활용 > 곱셈공식을 이용한 식의 값**
 - 이유: 유리화한 x, y의 합과 곱 xy=1을 구하고 곱셈공식 변형으로 28 - 2 = 26을 계산한다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M3_SYMMETRIC_EXPRESSION_EVALUATION → NONE** **원천→판정: TPL_M3_CONJUGATE_RADICAL_SUM_OF_SQUARES → NONE**
+**유형** PT=PT_M3_POLY_MULTIPLICATION / TPL=NONE **원천→판정: PT_M3_SYMMETRIC_EXPRESSION_EVALUATION → PT_M3_POLY_MULTIPLICATION** **원천→판정: TPL_M3_CONJUGATE_RADICAL_SUM_OF_SQUARES → NONE**
 - 이유: 분모를 유리화한 후 합과 곱 xy를 구하고 곱셈공식의 변형으로 28-2=26을 계산하는 유형이다.
-- 새 키 제안: `PT_M3_SYMMETRIC_EXPRESSION_VALUE_BY_RATIONALIZATION` (분모의 유리화와 곱셈공식 변형을 이용한 식의 값) — 무리수로 주어진 x, y의 분모를 유리화하여 합과 곱을 구하고 곱셈공식의 변형으로 식의 값을 계산하는 문제이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 유리화하여 x+y와 xy=1을 구한 후 28-2=26을 계산하는 2단계 문항이다.
 

@@ -5,36 +5,22 @@
 - 검수 기록: 입력된 verdict 0/23, HOLD 0, 풀이 답 비어 있음 23문항
 - 그림 판단 분포: NONE 23
 - 난이도 분포: 1단계 9, 2단계 10, 3단계 3, 4단계 1
-- 유형 NONE 22문항, 새 키 제안 22문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
-- **Q1**: 새 키 제안 PT_M2_LINEAR_EQUATION_TWO_VARIABLES_NATURAL_SOLUTIONS
-- **Q2**: 새 키 제안 PT_M2_LINEAR_FUNCTION_COEFFICIENT_FROM_FUNCTION_VALUE
-- **Q3**: 새 키 제안 PT_M2_LINEAR_FUNCTION_SLOPE_FROM_INCREMENTS
-- **Q4**: 새 키 제안 PT_M2_LINEAR_EQUATION_PARALLEL_TO_AXIS
-- **Q5**: 새 키 제안 PT_M2_LINEAR_FUNCTION_DIRECTION_AND_SLOPE_SIGN
-- **Q6**: 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_SOLVE_ADDITION_SUBTRACTION
-- **Q7**: 새 키 제안 PT_M2_FUNCTION_DEFINITION_AND_DISCRIMINATION
-- **Q8**: 원천 값과 다른 칸 2개 (PT, 난이도) / 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_PARALLEL_NO_SOLUTION
-- **Q9**: 원천 값과 다른 칸 2개 (PT, 난이도) / 새 키 제안 PT_M2_LINEAR_FUNCTION_PARALLEL_FIND_UNKNOWN_COORDINATE
-- **Q10**: 새 키 제안 PT_M2_LINEAR_FUNCTION_INTERSECTION_COORDINATES
-- **Q12**: 새 키 제안 PT_M2_LINEAR_FUNCTION_SLOPE_FROM_INTERCEPTS_OF_TWO_FUNCTIONS
-- **Q13**: 원천 값과 다른 칸 2개 (RPM, PT) / 새 키 제안 PT_M2_LINEAR_FUNCTION_TRANSLATION_AND_POINT_COORDINATE
-- **Q14**: 새 키 제안 PT_M2_LINEAR_FUNCTION_EQUATION_FROM_TWO_POINTS_AND_VALUE
-- **Q15**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도) / 새 키 제안 PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE_ALTITUDE
-- **Q16**: 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_VARIABLE_RATIO_COEFFICIENT
-- **Q17**: 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_TICKET_PRICE_AND_HEADCOUNT
-- **Q18**: 원천 값과 다른 칸 2개 (PT, 난이도) / 새 키 제안 PT_M2_LINEAR_EQUATION_GRAPH_BOUNDED_TRIANGLE_AREA
-- **Q19**: 원천 값과 다른 칸 2개 (RPM, 난이도) / 새 키 제안 PT_M2_LINEAR_FUNCTION_INTERSECTING_LINE_SEGMENT_SLOPE_RANGE / 난이도 경계 (confidence=high, 원천 경계 B23)
-- **Q20**: 원천 값과 다른 칸 2개 (RPM, 난이도) / 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_INFINITELY_MANY_SOLUTIONS_PARAMETERS / 난이도 경계 (confidence=high, 원천 경계 B23)
-- **Q21**: 원천 값과 다른 칸 2개 (PT, 난이도) / 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_DESCRIPTIVE
-- **Q22**: 새 키 제안 PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_LINEAR_DECAY
-- **Q23**: 원천 값과 다른 칸 2개 (PT, 난이도) / 새 키 제안 PT_M2_LINEAR_EQUATIONS_GRAPH_BOUNDED_TRIANGLE_UNKNOWN_PARAMETERS
+- **Q8**: 원천 값과 다른 칸 2개 (PT, 난이도)
+- **Q9**: 원천 값과 다른 칸 2개 (PT, 난이도)
+- **Q13**: 원천 값과 다른 칸 2개 (RPM, PT)
+- **Q15**: 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
+- **Q18**: 원천 값과 다른 칸 2개 (PT, 난이도)
+- **Q19**: 원천 값과 다른 칸 2개 (RPM, 난이도) / 난이도 경계 (confidence=high, 원천 경계 B23)
+- **Q20**: 원천 값과 다른 칸 2개 (RPM, 난이도) / 난이도 경계 (confidence=high, 원천 경계 B23)
+- **Q23**: 원천 값과 다른 칸 2개 (PT, 난이도)
 
 ---
-## Q1 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_EQUATION_TWO_VARIABLES_NATURAL_SOLUTIONS
+## Q1 — 객관식 3점
+
 
 **발문**
 
@@ -59,9 +45,8 @@ $x, y$의 값이 자연수일 때, 일차방정식 $x + 4y = 7$의 해는?
 - 근거 인용: 「자연수일 때, 일차방정식 $x + 4y」
 **RPM** M2-RPM-149 [연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 대입법] **원천→판정: 연립일차방정식 > 연립일차방정식 > 해와 계수 > 해가 주어진 연립방정식 → 연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 대입법**
 - 이유: x + 4y = 7 식에서 미지수 y에 자연수 값을 대입하여 x의 값을 구하는 풀이 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_M2_TWO_VARIABLE_LINEAR_EQUATION / TPL=NONE
 - 이유: 자연수 조건에서 일차방정식 x + 4y = 7 의 순서쌍 해 x = 3, y = 1 을 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_EQUATION_TWO_VARIABLES_NATURAL_SOLUTIONS` (미지수가 2개인 일차방정식의 자연수 해) — 미지수가 2개인 일차방정식에서 자연수 또는 정수 해를 직접 대입하여 결정하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x + 4y = 7 식에 y = 1 대입으로 x = 3 을 바로 구할 수 있는 기본 난이도 1 문항이다.
 
@@ -85,8 +70,8 @@ $y = 2$일 때 $x + 8 = 7 \implies x = -1$ (자연수가 아님)
 
 ---
 
-## Q2 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_COEFFICIENT_FROM_FUNCTION_VALUE
+## Q2 — 객관식 3점
+
 
 **발문**
 
@@ -111,9 +96,8 @@ $y = 2$일 때 $x + 8 = 7 \implies x = -1$ (자연수가 아님)
 - 근거 인용: 「함수 $f(x) = ax + 9$」
 **RPM** M2-RPM-164 [일차함수 > 일차함수와 그 그래프 > 일차함수의 뜻 > 함숫값] (원천과 같음)
 - 이유: f(x) = ax + 9 식에서 함숫값 f(3) = 3 을 이용하여 미정계수 a를 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_FUNCTION_VALUE → NONE**
+**유형** PT=PT_FUNCTION_VALUE / TPL=NONE (원천과 같음)
 - 이유: f(x) = ax + 9 꼴의 일차함수에서 함숫값 조건으로 계수를 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_COEFFICIENT_FROM_FUNCTION_VALUE` (함숫값을 이용한 일차함수의 미정계수 구하기) — 일차함수 식에 특정 x 값의 함숫값을 대입하여 미지의 계수를 결정하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: f(x) = ax + 9 식에 단순 대입하여 3a + 9 = 3 을 푸는 기본 계산 난이도 1 문항이다.
 
@@ -137,8 +121,8 @@ $\therefore a = -2$
 
 ---
 
-## Q3 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_SLOPE_FROM_INCREMENTS
+## Q3 — 객관식 3점
+
 
 **발문**
 
@@ -163,9 +147,8 @@ $\therefore a = -2$
 - 근거 인용: 「다음 일차함수의 그래프 중」
 **RPM** M2-RPM-166 [일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 기울기·절편] (원천과 같음)
 - 이유: x 증가량 4와 y 감소량 12 로부터 기울기 -3 을 결정하여 일차함수를 찾는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_FUNCTION_GRAPH_PROPERTIES / TPL=NONE
 - 이유: x, y 증가량 조건(12 감소 등)으로 기울기를 구하고 해당하는 일차함수 식을 찾는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_SLOPE_FROM_INCREMENTS` (x, y의 증가량으로 기울기와 일차함수 식 찾기) — 변수 x의 증가량과 y의 증가량(감소량)의 비로 기울기를 계산하여 일차함수를 구하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 12 감소와 4 증가의 비를 취해 기울기 -3을 즉시 식별하는 기본 난이도 1 문항이다.
 
@@ -188,8 +171,8 @@ $\therefore a = -2$
 
 ---
 
-## Q4 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_EQUATION_PARALLEL_TO_AXIS
+## Q4 — 객관식 3점
+
 
 **발문**
 
@@ -213,9 +196,8 @@ $\therefore a = -2$
 - 근거 인용: 「평행한 직선을 그래프로 갖는 방정식은?」
 **RPM** M2-RPM-173 [일차함수 > 일차함수와 일차방정식의 관계 > 방정식과 그래프 > x축·y축에 평행한 직선] (원천과 같음)
 - 이유: 점 (3, 0)을 지나고 y축에 평행한 직선의 방정식 x = 3 을 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS → NONE**
+**유형** PT=PT_LINE_EQUATION / TPL=NONE **원천→판정: PT_M2_LINEAR_EQUATION_PARALLEL_TO_Y_AXIS → PT_LINE_EQUATION**
 - 이유: 주어진 점 (3, 0)을 지나며 축(y축)에 평행한 직선의 방정식을 결정하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_EQUATION_PARALLEL_TO_AXIS` (좌표축에 평행 또는 수직인 직선의 방정식) — 좌표평면에서 한 점을 지나고 x축 또는 y축에 평행한 직선의 방정식을 구하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 점 (3, 0)과 y축 평행 조건에서 x = 3 을 바로 도출하는 정의 수준의 난이도 1 문항이다.
 
@@ -237,8 +219,8 @@ $\therefore a = -2$
 
 ---
 
-## Q5 — 객관식 3점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_DIRECTION_AND_SLOPE_SIGN
+## Q5 — 객관식 3점
+
 
 **발문**
 
@@ -271,9 +253,8 @@ $\therefore a = -2$
 - 근거 인용: 「일차함수의 그래프가 오른쪽 아래를」
 **RPM** M2-RPM-169 [일차함수 > 일차함수와 그 그래프 > 그래프의 성질 > 증가·감소] (원천과 같음)
 - 이유: 일차함수 ax + b 에서 기울기 음수 조건을 이용하여 오른쪽 아래로 향하는 그래프를 선별하는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_FUNCTION_GRAPH_PROPERTIES / TPL=NONE
 - 이유: 일차함수 ax 식의 기울기 부호에 따른 그래프의 방향(오른쪽 아래 향함)을 판별하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_DIRECTION_AND_SLOPE_SIGN` (일차함수의 기울기 부호와 그래프의 방향) — 일차함수 y = ax + b에서 기울기 a의 부호에 따라 그래프가 오른쪽 위 또는 아래로 향함을 이해하는 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 일차함수 ax + b 각 보기의 기울기 부호를 확인하여 바로 답을 찾는 난이도 1 문항이다.
 
@@ -300,8 +281,8 @@ $\therefore a = -2$
 
 ---
 
-## Q6 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_SOLVE_ADDITION_SUBTRACTION
+## Q6 — 객관식 4점
+
 
 **발문**
 
@@ -326,9 +307,8 @@ $\therefore a = -2$
 - 근거 인용: 「연립방정식 $\begin」
 **RPM** M2-RPM-148 [연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 가감법] (원천과 같음)
 - 이유: 3x + 2y = 18 과 3x - y = 9 의 x 계수가 같으므로 변끼리 빼어 소거하는 가감법 풀이 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD → NONE**
+**유형** PT=PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD / TPL=NONE (원천과 같음)
 - 이유: 3x + 2y = 18 꼴의 연립방정식을 가감법으로 풀어 해 a, b의 합을 구하는 기본 유형이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_SOLVE_ADDITION_SUBTRACTION` (가감법을 이용한 연립방정식의 풀이) — 두 일차방정식의 계수를 맞추거나 같은 계수를 변끼리 더하거나 빼어 해를 구하는 기본 풀이 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 3x 계수가 3으로 이미 같아 18 과 9 의 차이로 바로 y를 구하는 난이도 1 문항이다.
 
@@ -353,8 +333,8 @@ $y = 3$을 ㉡에 대입하면 $3x - 3 = 9 \implies 3x = 12 \implies x = 4$
 
 ---
 
-## Q7 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_FUNCTION_DEFINITION_AND_DISCRIMINATION
+## Q7 — 객관식 4점
+
 
 **발문**
 
@@ -386,9 +366,8 @@ $y = 3$을 ㉡에 대입하면 $3x - 3 = 9 \implies 3x = 12 \implies x = 4$
 - 근거 인용: 「$가 $x$의 함수인 것을 있는」
 **RPM** M2-RPM-165 [일차함수 > 일차함수와 그 그래프 > 일차함수의 뜻 > 일차함수 판별] (원천과 같음)
 - 이유: 정사각형 둘레 y = 4x 및 1000원 공책 가격 y = 1000x 등의 관계에서 함수의 정의를 판별하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION → NONE**
+**유형** PT=PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION / TPL=NONE (원천과 같음)
 - 이유: 1000원짜리 공책 가격 등 여러 실생활 및 수학적 관계에서 함수 여부를 판별하는 유형이다.
-- 새 키 제안: `PT_M2_FUNCTION_DEFINITION_AND_DISCRIMINATION` (함수의 정의와 판별) — 두 변수 x, y 사이에서 x의 각 값에 y가 오직 하나 대응하는지 함수의 뜻을 판별하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 1000원 공책 등 보기마다 함수의 정의(오직 하나의 대응)를 직접 확인하는 기본 난이도 1 문항이다.
 
@@ -416,7 +395,6 @@ $y = 3$을 ㉡에 대입하면 $3x - 3 = 9 \implies 3x = 12 \implies x = 4$
 
 ## Q8 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, 난이도)
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_PARALLEL_NO_SOLUTION
 
 **발문**
 
@@ -442,9 +420,8 @@ $y = 3$을 ㉡에 대입하면 $3x - 3 = 9 \implies 3x = 12 \implies x = 4$
 - 근거 인용: 「두 일차방정식 $ax - 3」
 **RPM** M2-RPM-175 [일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 두 직선의 평행·일치] (원천과 같음)
 - 이유: ax - 3y = 6 식과 -6x + 2y = 5 에서 교점이 없도록 계수 비 2a = 18 을 푸는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION → NONE**
+**유형** PT=PT_LINE_RELATION / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION → PT_LINE_RELATION**
 - 이유: ax - 3y = 6 과 같이 두 일차방정식의 교점이 존재하지 않을(평행할) 미정계수를 구하는 유형이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_PARALLEL_NO_SOLUTION` (연립일차방정식의 그래프의 교점이 없을 때의 미정계수 결정) — 두 일차방정식의 그래프가 평행하여 교점이 없을 조건을 계수의 비로 해결하는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 1 → 2**
 - 이유: ax 항과 -6x 항의 계수 비 2a = 18 과 상수항 불일치를 함께 확인하는 난이도 2 문항이다.
 
@@ -470,7 +447,6 @@ $\frac{a}{-6} = -\frac{3}{2} \implies 2a = 18 \implies a = 9$
 
 ## Q9 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, 난이도)
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_PARALLEL_FIND_UNKNOWN_COORDINATE
 
 **발문**
 
@@ -495,9 +471,8 @@ $\frac{a}{-6} = -\frac{3}{2} \implies 2a = 18 \implies a = 9$
 - 근거 인용: 「지나는 직선이 일차함수 $y = \f」
 **RPM** M2-RPM-168 [일차함수 > 일차함수와 그 그래프 > 그래프의 성질 > 일차함수 그래프의 평행·일치] (원천과 같음)
 - 이유: 두 점을 지나는 직선의 기울기와 일차함수 평행 조건에서 미지수 k = 8 을 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION → NONE**
+**유형** PT=PT_LINE_RELATION / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION → PT_LINE_RELATION**
 - 이유: 두 점을 지나는 직선이 일차함수 그래프와 평행할 때 미지수 k 의 값을 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_PARALLEL_FIND_UNKNOWN_COORDINATE` (일차함수와 평행한 직선 위의 미지 좌표 구하기) — 두 점으로 구한 기울기와 주어진 일차함수의 기울기가 같음을 이용하여 좌표 속 미지수를 구하는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 1 → 2**
 - 이유: 두 점의 x 증가량 4 와 k - 2 의 비를 3/2 과 비교하여 k = 8 을 얻는 난이도 2 문항이다.
 
@@ -521,8 +496,8 @@ $\frac{k - 2}{4} = \frac{3}{2} \implies k - 2 = 6 \implies k = 8$
 
 ---
 
-## Q10 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_INTERSECTION_COORDINATES
+## Q10 — 객관식 4점
+
 
 **발문**
 
@@ -548,9 +523,8 @@ $\frac{k - 2}{4} = \frac{3}{2} \implies k - 2 = 6 \implies k = 8$
 - 근거 인용: 「두 일차함수 $y = x」
 **RPM** M2-RPM-174 [일차함수 > 일차함수와 일차방정식의 관계 > 두 직선의 관계 > 교점과 연립방정식] (원천과 같음)
 - 이유: 두 일차함수의 식을 연립하여 교점의 좌표 a, b를 구하고 합 a + b = 0 을 계산하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION → NONE**
+**유형** PT=PT_FUNCTION_GRAPH_INTERSECTION / TPL=NONE **원천→판정: PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION → PT_FUNCTION_GRAPH_INTERSECTION**
 - 이유: 두 일차함수 식을 연립하여 교점의 좌표 (a, b)를 구하고 a + b 를 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_INTERSECTION_COORDINATES` (두 일차함수의 그래프의 교점의 좌표 구하기) — 두 일차함수의 그래프의 교점이 연립일차방정식의 해임을 이용하여 좌표 (a, b)를 구하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x - 6 = -2x + 3 연립으로 3x = 9 를 풀어 a = 3, b = -3, 합 0 을 구하는 난이도 1 문항이다.
 
@@ -632,8 +606,8 @@ $\therefore a + b = -3 + (-1) = -4$
 
 ---
 
-## Q12 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_SLOPE_FROM_INTERCEPTS_OF_TWO_FUNCTIONS
+## Q12 — 객관식 4점
+
 
 **발문**
 
@@ -658,9 +632,8 @@ $\therefore a + b = -3 + (-1) = -4$
 - 근거 인용: 「일차함수 $y = \f」
 **RPM** M2-RPM-166 [일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 기울기·절편] (원천과 같음)
 - 이유: x절편 (6, 0)과 y절편 (0, 3)을 각각 구하여 두 점 사이의 기울기를 계산하는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_FUNCTION_GRAPH_PROPERTIES / TPL=NONE
 - 이유: 두 일차함수의 x절편과 y절편으로 결정되는 두 점을 지나는 일차함수의 기울기를 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_SLOPE_FROM_INTERCEPTS_OF_TWO_FUNCTIONS` (두 일차함수의 절편으로 만들어진 두 점의 기울기 구하기) — 서로 다른 두 일차함수의 x절편과 y절편으로 두 점의 좌표를 구하고 그 두 점을 지나는 직선의 기울기를 구하는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x절편 6 과 y절편 3 을 각각 구한 뒤 기울기 공식으로 -1/2 을 계산하는 난이도 2 문항이다.
 
@@ -686,7 +659,6 @@ $y = 4x + 3$의 $y$절편은 $3$이므로 점 $(0, 3)$을 지난다.
 
 ## Q13 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, PT)
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_TRANSLATION_AND_POINT_COORDINATE
 
 **발문**
 
@@ -711,9 +683,8 @@ $y = 4x + 3$의 $y$절편은 $3$이므로 점 $(0, 3)$을 지난다.
 - 근거 인용: 「함수 $y = \f」
 **RPM** M2-RPM-167 [일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 그래프 그리기] **원천→판정: 일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 기울기·절편 → 일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 그래프 그리기**
 - 이유: y축 방향 6 평행이동한 식 y = 2/3 x + 4 에 점 (k, 2)를 대입하여 미지수 k를 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION → NONE**
+**유형** PT=PT_FUNCTION_GRAPH_PROPERTIES / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION → PT_FUNCTION_GRAPH_PROPERTIES**
 - 이유: 일차함수를 y축 방향으로 평행이동한 후 지나는 점 (k, 2)의 미지수를 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_TRANSLATION_AND_POINT_COORDINATE` (일차함수의 평행이동과 지나는 점의 미지수 구하기) — 일차함수 그래프의 y축 평행이동 식을 작성하고 주어진 점의 좌표를 대입하여 미정계수를 구하는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: y축 평행이동 6 을 더해 2/3 x + 4 식을 얻고 2 를 대입해 k = -3 을 구하는 난이도 1 문항이다.
 
@@ -738,8 +709,8 @@ $2 = \frac{2}{3}k + 4 \implies \frac{2}{3}k = -2 \implies k = -3$
 
 ---
 
-## Q14 — 객관식 4점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_EQUATION_FROM_TWO_POINTS_AND_VALUE
+## Q14 — 객관식 4점
+
 
 **발문**
 
@@ -764,9 +735,8 @@ $2 = \frac{2}{3}k + 4 \implies \frac{2}{3}k = -2 \implies k = -3$
 - 근거 인용: 「일차함수 $y = f(」
 **RPM** M2-RPM-170 [일차함수 > 일차함수와 그 그래프 > 식 구하기 > 두 점으로 식 구하기] (원천과 같음)
 - 이유: 두 점 (2, 5), (5, 7)로 기울기와 y절편 11/3 을 구해 함숫값 13/3 을 계산하는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_LINE_EQUATION / TPL=NONE
 - 이유: 두 점을 지나는 일차함수 식(y절편 11/3)을 결정하고 특정 함숫값 13/3 을 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_EQUATION_FROM_TWO_POINTS_AND_VALUE` (두 점이 주어진 일차함수의 식 구하기와 함숫값 계산) — 좌표평면의 두 점을 이용하여 일차함수 식을 세운 후 다른 x 값에서의 함숫값을 계산하는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 두 점의 기울기와 절편 11/3 을 차례로 구하여 13/3 을 도출하는 난이도 2 문항이다.
 
@@ -792,7 +762,6 @@ $f(x) = \frac{2}{3}x + b$에 $(2, 5)$를 대입하면 $5 = \frac{4}{3} + b \impl
 
 ## Q15 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, 난이도)
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE_ALTITUDE
 
 **발문**
 
@@ -817,9 +786,8 @@ $f(x) = \frac{2}{3}x + b$에 $(2, 5)$를 대입하면 $5 = \frac{4}{3} + b \impl
 - 근거 인용: 「높이가 $1\tex」
 **RPM** M2-RPM-177 [일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정] **원천→판정: 일차함수 > 일차함수와 그 그래프 > 식 구하기 > 기울기와 한 점으로 식 구하기 → 일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정**
 - 이유: 지면 기온 20 과 1 km 당 기온 하강 규칙으로 일차함수 y = 20 - 6x 를 세워 9.2 도를 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE → NONE**
+**유형** PT=PT_M2_FUNCTION / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE → PT_M2_FUNCTION**
 - 이유: 높이에 따른 기온 변화 관계식을 세우고 1.8 km 에서의 기온 9.2 도를 구하는 일차함수 활용 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE_ALTITUDE` (일차함수의 활용 (고도에 따른 기온 변화)) — 고도가 올라감에 따라 일정하게 온도가 내려가는 실생활 상황을 일차함수 식으로 모델링하는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 1 → 2**
 - 이유: 20 - 6x 식을 세우고 1.8 을 대입해 20 - 10.8 = 9.2 를 계산하는 전형적인 난이도 2 문항이다.
 
@@ -844,8 +812,8 @@ $x = 1.8$을 대입하면 $y = 20 - 6 \times 1.8 = 20 - 10.8 = 9.2$
 
 ---
 
-## Q16 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_VARIABLE_RATIO_COEFFICIENT
+## Q16 — 객관식 5점
+
 
 **발문**
 
@@ -870,9 +838,8 @@ $x = 1.8$을 대입하면 $y = 20 - 6 \times 1.8 = 20 - 10.8 = 9.2$
 - 근거 인용: 「연립방정식 $\begin」
 **RPM** M2-RPM-151 [연립일차방정식 > 연립일차방정식 > 해와 계수 > 계수 결정] (원천과 같음)
 - 이유: 비례 조건 x:y = 3:2 와 4x - 3y = 18 에서 x, y를 구한 뒤 a = 21 을 결정하는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_M2_LINEAR_SYSTEM / TPL=NONE
 - 이유: 두 미지수의 비가 주어진 연립방정식에서 미지수 값을 구하고 계수 a = 21 을 결정하는 유형이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_VARIABLE_RATIO_COEFFICIENT` (미지수의 비가 주어진 연립일차방정식의 미정계수 결정) — 두 미지수 x, y의 비례 관계식을 연립방정식에 대입하여 해를 구하고 미정계수를 찾는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x = 3k, y = 2k 대입으로 18 로부터 k = 3 을 구해 a = 21 을 얻는 난이도 2 문항이다.
 
@@ -897,8 +864,8 @@ $a = x + 2y = 9 + 2 \times 6 = 21$
 
 ---
 
-## Q17 — 객관식 5점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_TICKET_PRICE_AND_HEADCOUNT
+## Q17 — 객관식 5점
+
 
 **발문**
 
@@ -923,9 +890,8 @@ $a = x + 2y = 9 + 2 \times 6 = 21$
 - 근거 인용: 「학생 $25$명이 체험 학습을 가기」
 **RPM** M2-RPM-157 [연립일차방정식 > 연립일차방정식의 활용 > 수와 개수 > 개수·가격] (원천과 같음)
 - 이유: 총인원 25 명과 교통카드 요금 800 원 조건을 연립하여 학생 수의 차 7 을 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST → NONE**
+**유형** PT=PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST / TPL=NONE (원천과 같음)
 - 이유: 총인원 25 명과 단가 800 원, 1100 원 총액 조건에서 각 인원을 구하고 그 차를 묻는 활용 유형이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_TICKET_PRICE_AND_HEADCOUNT` (연립방정식의 활용 (단가와 총액으로 수량 차이 구하기)) — 두 종류의 요금과 총액, 전체 인원이 주어졌을 때 각 인원을 구하고 두 인원의 차를 계산하는 실생활 활용 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 합이 25 이고 800x + 1100y = 22700 식을 세워 풀어 차 7 을 구하는 전형적인 난이도 2 문항이다.
 
@@ -953,7 +919,6 @@ $\begin{cases} x + y = 25 \ 800x + 1100y = 22700 \end{cases}$
 
 ## Q18 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, 난이도)
-- ⚠ 새 키 제안 PT_M2_LINEAR_EQUATION_GRAPH_BOUNDED_TRIANGLE_AREA
 
 **발문**
 
@@ -979,9 +944,8 @@ $\begin{cases} x + y = 25 \ 800x + 1100y = 22700 \end{cases}$
 - 근거 인용: 「세 일차방정식 $y = -2」
 **RPM** M2-RPM-176 [일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 넓이] (원천과 같음)
 - 이유: y = -2x + 15 등의 세 직선의 교점을 구해 밑변 10 과 높이 4 로 삼각형 넓이 20 을 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA → NONE**
+**유형** PT=PT_FUNCTION_GRAPH_GEOMETRY / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA → PT_FUNCTION_GRAPH_GEOMETRY**
 - 이유: 세 일차방정식 y = -2x + 15 등의 그래프로 둘러싸인 삼각형의 넓이 20 을 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_EQUATION_GRAPH_BOUNDED_TRIANGLE_AREA` (세 일차방정식의 그래프로 둘러싸인 도형의 넓이) — 세 직선의 교점을 각각 구하여 삼각형의 밑변과 높이를 찾고 넓이를 계산하는 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 2 → 3**
 - 이유: 15 가 포함된 세 식의 세 교점 좌표를 모두 구하고 밑변과 높이를 계산해 20 을 도출하는 난이도 3 문항이다.
 
@@ -1008,7 +972,6 @@ $x = 2$와 $y = -2x + 15$의 교점은 $(2, 11)$, $x = 2$와 $y = \frac{1}{2}x$�
 
 ## Q19 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, 난이도)
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_INTERSECTING_LINE_SEGMENT_SLOPE_RANGE
 - ⚠ 난이도 경계 (confidence=high, 원천 경계 B23)
 
 **발문**
@@ -1035,9 +998,8 @@ $x = 2$와 $y = -2x + 15$의 교점은 $(2, 11)$, $x = 2$와 $y = \frac{1}{2}x$�
 - 근거 인용: 「일차함수 $y = ax」
 **RPM** M2-RPM-171 [일차함수 > 일차함수와 그 그래프 > 식 구하기 > 기울기와 한 점으로 식 구하기] **원천→판정: 일차함수 > 일차함수와 그 그래프 > 일차함수의 그래프 > 기울기·절편 → 일차함수 > 일차함수와 그 그래프 > 식 구하기 > 기울기와 한 점으로 식 구하기**
 - 이유: ax + 2 그래프가 A(2, 18)과 B(4, 10)을 지나는 경계 기울기를 구해 2 <= a <= 8 을 찾는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_FUNCTION_GRAPH_PROPERTIES / TPL=NONE
 - 이유: ax + 2 가 두 점을 이은 선분 AB와 만날 때 기울기 a의 범위를 구하는 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_INTERSECTING_LINE_SEGMENT_SLOPE_RANGE` (일차함수 그래프가 선분과 만날 때의 기울기 범위) — 정점을 지나는 일차함수가 선분의 양 끝점을 지날 때의 기울기를 경계값으로 하여 만나는 범위를 구하는 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 2 → 3**
 - 이유: ax + 2 식에 두 끝점 A(2, 18)과 B를 대입하여 기울기 범위를 구하고 개수를 세는 난이도 3 문항이다.
 
@@ -1064,7 +1026,6 @@ $y = ax + 2$가 점 $B(4, 10)$을 지날 때 $10 = 4a + 2 \implies a = 2$
 
 ## Q20 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (RPM, 난이도)
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_INFINITELY_MANY_SOLUTIONS_PARAMETERS
 - ⚠ 난이도 경계 (confidence=high, 원천 경계 B23)
 
 **발문**
@@ -1092,9 +1053,8 @@ $y = ax + 2$가 점 $B(4, 10)$을 지날 때 $10 = 4a + 2 \implies a = 2$
 - 근거 인용: 「b$에 대하여 연립방정식 $\begin」
 **RPM** M2-RPM-154 [연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 해가 없거나 무수히 많은 경우] **원천→판정: 연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 계수 조건으로 해의 상태 판단 → 연립일차방정식 > 연립일차방정식 > 해가 특수한 연립방정식 > 해가 없거나 무수히 많은 경우**
 - 이유: 3ax - y 식과 (10 - 2b)x 식의 계수가 일치할 조건을 세워 a = 3, b = 14, 합 17 을 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION / TPL=NONE
 - 이유: ax 항과 b 항을 포함한 연립방정식의 해가 무수히 많을 때 미정계수 합 17 을 구하는 유형이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_INFINITELY_MANY_SOLUTIONS_PARAMETERS` (연립방정식의 해가 무수히 많을 조건으로 미정계수 구하기) — 두 일차방정식의 계수비와 상수항비가 모두 같아 일치할 조건으로 미정계수를 연립하여 구하는 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) **원천→판정: 2 → 3**
 - 이유: ax 식을 일치시켜 a와 b에 관한 연립방정식을 다시 풀어 17 을 얻는 난이도 3 문항이다.
 
@@ -1122,9 +1082,8 @@ $\therefore a + b = 3 + 14 = 17$
 
 ---
 
-## Q21 — 서술형 5점  ⚠ 먼저 볼 문항
-- ⚠ 원천 값과 다른 칸 2개 (PT, 난이도)
-- ⚠ 새 키 제안 PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_DESCRIPTIVE
+## Q21 — 서술형 5점
+
 
 **발문**
 
@@ -1149,9 +1108,8 @@ $\therefore a + b = 3 + 14 = 17$
 - 근거 인용: 「[서술형 1] 연립방정식 $\begin」
 **RPM** M2-RPM-148 [연립일차방정식 > 연립일차방정식 > 연립방정식의 풀이 > 가감법] (원천과 같음)
 - 이유: 4x - 3y = 10 과 5x - 2y = 16 의 계수를 6으로 맞춰 소거하는 가감법 서술 풀이 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD → NONE**
+**유형** PT=PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_METHOD / TPL=NONE (원천과 같음)
 - 이유: 10 과 16 을 우변으로 갖는 연립일차방정식을 가감법으로 서술하여 푸는 유형이다.
-- 새 키 제안: `PT_M2_SYSTEM_OF_EQUATIONS_ADDITION_SUBTRACTION_DESCRIPTIVE` (연립일차방정식의 가감법 서술형 풀이) — 주어진 연립일차방정식의 풀이 과정을 가감법을 이용하여 체계적으로 서술하는 문항 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 1 → 2**
 - 이유: 10 과 16 에 각각 2와 3을 곱해 y를 소거하고 x = 4, y = 2 를 구하는 표준 난이도 2 서술형 문항이다.
 
@@ -1178,8 +1136,8 @@ $x = 4$를 ㉠에 대입하면 $16 - 3y = 10 \implies -3y = -6 \implies y = 2$
 
 ---
 
-## Q22 — 서술형 7점  ⚠ 먼저 볼 문항
-- ⚠ 새 키 제안 PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_LINEAR_DECAY
+## Q22 — 서술형 7점
+
 
 **발문**
 
@@ -1206,9 +1164,8 @@ $x = 4$를 ㉠에 대입하면 $16 - 3y = 10 \implies -3y = -6 \implies y = 2$
 - 근거 인용: 「풀이 과정을 일차함수의 식을 활용하」
 **RPM** M2-RPM-177 [일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정] **원천→판정: 일차함수 > 일차함수와 그 그래프 > 식 구하기 > 두 점으로 식 구하기 → 일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 조건에 따른 식 결정**
 - 이유: 15일 후 420 mL 및 25일 후 400 mL 로부터 일차함수 식 y = -2x + 450 을 세우고 150일 후를 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE
+**유형** PT=PT_M2_FUNCTION / TPL=NONE
 - 이유: 두 시점의 용량 420 mL, 400 mL 로 일차함수 식을 작성하고 목표치 150 mL 가 되는 날을 구하는 활용 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_LINEAR_DECAY` (일차함수의 활용 (일정하게 감소하는 양의 식과 값 구하기)) — 일정한 속력으로 감소하는 실생활 상황에서 두 점을 이용해 일차함수 식을 작성하고 특정 값에 도달하는 시간을 구하는 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 420 과 400 으로 기울기 -2 와 절편 450 을 구해 150 대입으로 답을 얻는 난이도 2 문항이다.
 
@@ -1238,7 +1195,6 @@ $2x = 300 \implies x = 150$
 
 ## Q23 — 서술형 8점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, 난이도)
-- ⚠ 새 키 제안 PT_M2_LINEAR_EQUATIONS_GRAPH_BOUNDED_TRIANGLE_UNKNOWN_PARAMETERS
 
 **발문**
 
@@ -1268,9 +1224,8 @@ $2x = 300 \implies x = 150$
 - 근거 인용: 「세 일차방정식 $(a + 3)x + 5y - b = 0」
 **RPM** M2-RPM-176 [일차함수 > 일차함수와 일차방정식의 관계 > 그래프 활용 > 넓이] (원천과 같음)
 - 이유: 세 직선의 교점으로 이루어진 삼각형의 밑변 AB = 15 와 넓이 180 으로 a = 5, b = 115 를 구하는 단계이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA → NONE**
+**유형** PT=PT_FUNCTION_GRAPH_GEOMETRY / TPL=NONE **원천→판정: PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA → PT_FUNCTION_GRAPH_GEOMETRY**
 - 이유: 세 일차방정식으로 둘러싸인 삼각형의 넓이 180 조건으로 선분 AB 와 미정계수 a, b = 115 를 구하는 고난도 서술형 유형이다.
-- 새 키 제안: `PT_M2_LINEAR_EQUATIONS_GRAPH_BOUNDED_TRIANGLE_UNKNOWN_PARAMETERS` (세 일차방정식의 그래프로 둘러싸인 삼각형의 넓이와 미정계수) — 직선의 기울기와 정점 조건, 둘러싸인 삼각형의 넓이를 복합적으로 활용하여 선분의 길이와 미정계수를 단계적으로 구하는 유형이다.
 **난이도** 4 (confidence=high, 경계=NONE) **원천→판정: 3 → 4**
 - 이유: 기울기로 AB = 15 를 유도하고 넓이 180 에서 a = 5 와 b = 115 를 도출하는 복합 단계 난이도 4 서술형 문항이다.
 

@@ -20,14 +20,10 @@
   "unitEvidence": "{420}$은 유한소수로 나타낼 수",
   "rpmRecordId": "M2-RPM-120",
   "rpmReason": "420 = 2^2*3*5*7에서 50 < x < 100 조건으로 유한소수가 되는 x = 84, y = 5, 합 89를 구한다.",
-  "problemTypeKey": "NONE",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
   "templateKey": "NONE",
   "typeReason": "분수 x/420이 유한소수 1/y가 되도록 분모 420의 소인수와 범위 50 < x < 100에서 x+y = 89를 구하는 유형이다.",
-  "newKeyProposal": {
-    "key": "PT_M2_FINITE_DECIMAL_FRACTION_UNKNOWN_SOLVING",
-    "label": "유한소수 조건과 기약분수 단위분수 미지수 구하기",
-    "why": "분수 x/420이 유한소수 및 기약분수 1/y가 되는 조건을 분석하여 x, y의 값을 구하는 서술형 문제이다."
-  },
+  "newKeyProposal": null,
   "difficultyBucket": 3,
   "difficultyConfidence": "high",
   "difficultyReason": "420 소인수분해 후 범위 50 < x < 100 안에서 y의 소인수 조건으로 x = 84, y = 5를 찾아 89를 서술하는 심화 문항이다.",

@@ -5,36 +5,35 @@
 - 검수 기록: 입력된 verdict 0/24, HOLD 0, 풀이 답 비어 있음 24문항
 - 그림 판단 분포: NONE 24
 - 난이도 분포: 1단계 11, 2단계 10, 3단계 3
-- 유형 NONE 17문항, 새 키 제안 17문항
+- 유형 NONE 0문항, 새 키 제안 0문항
 - 검수 방법: `JUDGMENT_GUIDE.md` 의 "검수자용" 절. 고치면 `judgment/qNN.json` 의 값을 직접 고치고 `review.fixes` 에 같은 내용을 적는다.
 
 ## 먼저 볼 문항
-- **Q1**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_FINITE_AND_INFINITE_DECIMALS
-- **Q2**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_FRACTION_TO_DECIMAL_CONVERSION
-- **Q3**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_REPEATING_DECIMAL_PERIOD
-- **Q4**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_REPEATING_DECIMAL_NOTATION
-- **Q5**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_PRIME_FACTORS_OF_DENOMINATOR
-- **Q6**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도) / 새 키 제안 PT_M2_REPEATING_DECIMAL_DIGIT_SUM
-- **Q7**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_REPEATING_DECIMAL_TO_FRACTION_EQUATION
+- **Q1**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q2**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q3**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q4**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q5**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q6**: 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
+- **Q7**: 원천 값과 다른 칸 2개 (PT, TPL)
 - **Q8**: 원천 값과 다른 칸 2개 (PT, TPL)
 - **Q9**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q11**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_POLYNOMIAL_ADDITION_AND_SUBTRACTION
+- **Q11**: 원천 값과 다른 칸 2개 (PT, TPL)
 - **Q12**: 원천 값과 다른 칸 2개 (RPM, TPL)
-- **Q13**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도) / 새 키 제안 PT_M2_POLYNOMIAL_DIVISION_BY_MONOMIAL
-- **Q14**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도) / 새 키 제안 PT_M2_POLYNOMIAL_EXP_AND_SUBSTITUTION
-- **Q15**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_EXPRESS_SENTENCE_AS_INEQUALITY
-- **Q16**: 원천 값과 다른 칸 3개 (RPM, PT, TPL) / 새 키 제안 PT_M2_INEQUALITY_SOLUTION_TEST
+- **Q13**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- **Q14**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- **Q15**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q16**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
 - **Q18**: 원천 값과 다른 칸 2개 (PT, TPL)
-- **Q19**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_LINEAR_INEQUALITY_NUMBER_LINE_REPRESENTATION
-- **Q21**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도) / 새 키 제안 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_PROFIT_DISCOUNT
-- **Q22**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도) / 새 키 제안 PT_M2_FINITE_DECIMAL_MULTIPLIER_CONDITION
-- **Q23**: 원천 값과 다른 칸 3개 (RPM, PT, TPL) / 새 키 제안 PT_M2_POLYNOMIAL_GEOMETRIC_VOLUME_EQUALITY
-- **Q24**: 원천 값과 다른 칸 2개 (PT, TPL) / 새 키 제안 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SERVICE_COST_COMPARISON
+- **Q19**: 원천 값과 다른 칸 2개 (PT, TPL)
+- **Q21**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- **Q22**: 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
+- **Q23**: 원천 값과 다른 칸 3개 (RPM, PT, TPL)
+- **Q24**: 원천 값과 다른 칸 2개 (PT, TPL)
 
 ---
 ## Q1 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_FINITE_AND_INFINITE_DECIMALS
 
 **발문**
 
@@ -59,9 +58,8 @@
 - 근거 인용: 「다음 중 무한소수인 것은?」
 **RPM** M2-RPM-119 [유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 유한소수 판별] (원천과 같음)
 - 이유: 0.6, 2.48 등과 0.555... 를 비교하여 유한소수와 무한소수를 구분하는 유한소수 판별 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_DECIMAL_CLASSIFICATION_BASIC → NONE** **원천→판정: TPL_FINITE_INFINITE_DECIMAL_IDENTIFICATION → NONE**
+**유형** PT=PT_M2_FINITE_DECIMAL / TPL=NONE **원천→판정: PT_M2_DECIMAL_CLASSIFICATION_BASIC → PT_M2_FINITE_DECIMAL** **원천→판정: TPL_FINITE_INFINITE_DECIMAL_IDENTIFICATION → NONE**
 - 이유: 0.555... 와 5.125 등의 보기를 보고 무한소수를 직접 고르는 판정 단계이다.
-- 새 키 제안: `PT_M2_FINITE_AND_INFINITE_DECIMALS` (유한소수와 무한소수) — 0.555... 처럼 끝없이 이어지는 무한소수를 판별하는 기본 개념 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 0.555... 가 무한소수임을 정의에 의해 바로 확인하는 1단계 기본 개념 문항이다.
 
@@ -85,7 +83,6 @@
 
 ## Q2 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_FRACTION_TO_DECIMAL_CONVERSION
 
 **발문**
 
@@ -113,9 +110,8 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 - 근거 인용: 「정수가 아닌 유리수는 나눗셈을 하여 소수로 나타낼 수 있다.」
 **RPM** M2-RPM-123 [유리수와 순환소수 > 유리수와 순환소수 > 유리수와 소수 표현 > 분수를 소수로] (원천과 같음)
 - 이유: 분수 5/6 을 5 ÷ 6 나눗셈으로 소수 0.8333... 으로 변환하는 분수를 소수로 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_FRACTION_TO_DECIMAL_DIVISION → NONE** **원천→판정: TPL_FRACTION_DIVISION_MATCHING → NONE**
+**유형** PT=PT_M2_FINITE_DECIMAL / TPL=NONE **원천→판정: PT_M2_FRACTION_TO_DECIMAL_DIVISION → PT_M2_FINITE_DECIMAL** **원천→판정: TPL_FRACTION_DIVISION_MATCHING → NONE**
 - 이유: 분수 5/6 을 나눗셈 식과 순환소수 0.8333... 으로 나타내는 기본 개념 단계이다.
-- 새 키 제안: `PT_M2_FRACTION_TO_DECIMAL_CONVERSION` (분수를 소수로 나타내기) — 분수를 나눗셈으로 계산하여 0.8333... 형태의 소수로 바꾸는 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 분수 5/6 의 나눗셈 5 ÷ 6 = 0.8333... 을 바로 적용하는 1단계 기본 연산 문항이다.
 
@@ -139,7 +135,6 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 
 ## Q3 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_REPEATING_DECIMAL_PERIOD
 
 **발문**
 
@@ -163,9 +158,8 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 - 근거 인용: 「순환소수 $0.353535\cdots$의 순환마디는?」
 **RPM** M2-RPM-121 [유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환마디와 표현] (원천과 같음)
 - 이유: 순환소수 0.353535... 에서 반복되는 마디 35 를 식별하는 순환마디와 표현 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_REPEATING_PERIOD_BASIC → NONE** **원천→판정: TPL_REPEATING_PERIOD_EXTRACTION → NONE**
+**유형** PT=PT_M2_REPEATING_DECIMAL / TPL=NONE **원천→판정: PT_M2_REPEATING_PERIOD_BASIC → PT_M2_REPEATING_DECIMAL** **원천→판정: TPL_REPEATING_PERIOD_EXTRACTION → NONE**
 - 이유: 순환소수 0.353535... 의 반복 구간 35 를 직접 구하는 순환마디 판정 단계이다.
-- 새 키 제안: `PT_M2_REPEATING_DECIMAL_PERIOD` (순환마디) — 0.353535... 에서 되풀이되는 순환마디 35 를 찾는 기본 개념 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 0.353535... 에서 반복되는 35 를 보고 즉시 답을 찾는 1단계 기본 문항이다.
 
@@ -189,7 +183,6 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 
 ## Q4 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_REPEATING_DECIMAL_NOTATION
 
 **발문**
 
@@ -213,9 +206,8 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 - 근거 인용: 「순환소수 $0.8222\cdots$를 순환마디에 점을 찍어 간단히 나타낸 것으로 옳은 것은?」
 **RPM** M2-RPM-121 [유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환마디와 표현] (원천과 같음)
 - 이유: 0.8222... 의 순환마디 2 위에 점을 찍어 0.8\dot{2} 로 나타내는 순환마디와 표현 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_NOTATION → NONE** **원천→판정: TPL_REPEATING_DOT_NOTATION → NONE**
+**유형** PT=PT_M2_REPEATING_DECIMAL / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_NOTATION → PT_M2_REPEATING_DECIMAL** **원천→판정: TPL_REPEATING_DOT_NOTATION → NONE**
 - 이유: 0.8222... 의 비순환 자리 8 과 순환 자리 2 를 구분하여 점을 찍는 표현 단계이다.
-- 새 키 제안: `PT_M2_REPEATING_DECIMAL_NOTATION` (순환소수의 표현) — 0.8222... 와 같이 순환마디 위에 점을 찍어 간단히 나타내는 표현 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 0.8222... 의 순환마디 2 위에 점을 찍는 규칙을 바로 적용하는 1단계 기본 문항이다.
 
@@ -239,7 +231,6 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 
 ## Q5 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_PRIME_FACTORS_OF_DENOMINATOR
 
 **발문**
 
@@ -264,9 +255,8 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 - 근거 인용: 「다음 분수 중 순환소수로만 나타낼 수 있는 것은?」
 **RPM** M2-RPM-120 [유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 분모의 소인수 조건] (원천과 같음)
 - 이유: 7/20, 33/88 등과 39 / (2^3 * 7) 의 분모 소인수를 조사하는 분모의 소인수 조건 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_CONDITIONS → NONE** **원천→판정: TPL_FINITE_DECIMAL_PRIME_FACTORS → NONE**
+**유형** PT=PT_M2_FINITE_DECIMAL / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_CONDITIONS → PT_M2_FINITE_DECIMAL** **원천→판정: TPL_FINITE_DECIMAL_PRIME_FACTORS → NONE**
 - 이유: 약분하여 39 / (2^3 * 7) 의 분모에 소인수 7 이 남는 것을 확인해 순환소수를 판별하는 단계이다.
-- 새 키 제안: `PT_M2_PRIME_FACTORS_OF_DENOMINATOR` (분모의 소인수와 순환소수 판별) — 7/20, 33/88, 39 / (2^3 * 7) 등 분모의 소인수에 2, 5 이외의 수가 남는지로 순환소수를 판별하는 유형이 없어 제안한다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 5개 보기를 기약분수로 약분하고 39 / (2^3 * 7) 등 분모 소인수를 각각 점검하는 2단계 문항이다.
 
@@ -290,7 +280,6 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 
 ## Q6 — 객관식 4.5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 4개 (RPM, PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M2_REPEATING_DECIMAL_DIGIT_SUM
 
 **발문**
 
@@ -315,9 +304,8 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 - 근거 인용: 「순환소수 $2.5\dot{3}8\dot{1}$의 소수점 아래 첫 번째 자리의 숫자부터」
 **RPM** M2-RPM-121 [유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환마디와 표현] **원천→판정: 유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 소수점 아래 n번째 자리의 숫자 → 유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환마디와 표현**
 - 이유: 2.5\dot{3}8\dot{1} 에서 24 개의 숫자가 순환마디 12 씩 8회 반복되어 96 이 되는 순환마디와 표현 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_DIGIT_SUM → NONE** **원천→판정: TPL_REPEATING_DECIMAL_PERIODIC_SUM → NONE**
+**유형** PT=PT_M2_REPEATING_DECIMAL / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_DIGIT_SUM → PT_M2_REPEATING_DECIMAL** **원천→판정: TPL_REPEATING_DECIMAL_PERIODIC_SUM → NONE**
 - 이유: 비순환 5 와 24 개의 순환마디 합 96 을 더해 101 을 구하는 자릿수 합 단계이다.
-- 새 키 제안: `PT_M2_REPEATING_DECIMAL_DIGIT_SUM` (순환소수의 자릿수 합) — 25 번째 자리까지의 순환 주기 합 96 에 5를 더해 총합 101 을 구하는 유형이 후보에 없어 제안한다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 비순환 자리 분리 후 24 개 숫자의 주기 8회 합 96 을 계산해 101 을 구하는 4.5점 배점의 2단계 문항이다.
 
@@ -344,7 +332,6 @@ $\dfrac{5}{6} = (\quad\text{㉠}\quad) = (\quad\text{㉡}\quad)$
 
 ## Q7 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_REPEATING_DECIMAL_TO_FRACTION_EQUATION
 
 **발문**
 
@@ -386,9 +373,8 @@ $$\boxed{\text{㉢}}x = \boxed{\text{㉣}}, \quad x = \boxed{\text{㉤}}$$
 - 근거 인용: 「다음은 순환소수 $0.2\dot{5}\dot{4}$를 분수로 나타내는 과정이다.」
 **RPM** M2-RPM-122 [유리수와 순환소수 > 유리수와 순환소수 > 순환소수 > 순환소수를 분수로] (원천과 같음)
 - 이유: 1000x - 10x = 252 를 이용해 x = 14/55 분수로 나타내는 순환소수를 분수로 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_CONVERSION_PROOF → NONE** **원천→판정: TPL_REPEATING_DECIMAL_TO_FRACTION_STEPS → NONE**
+**유형** PT=PT_M2_REPEATING_DECIMAL / TPL=NONE **원천→판정: PT_M2_REPEATING_DECIMAL_CONVERSION_PROOF → PT_M2_REPEATING_DECIMAL** **원천→판정: TPL_REPEATING_DECIMAL_TO_FRACTION_STEPS → NONE**
 - 이유: 1000 과 10 을 곱해 990x = 252 에서 x = 14/55 를 얻는 빈칸 완성 단계이다.
-- 새 키 제안: `PT_M2_REPEATING_DECIMAL_TO_FRACTION_EQUATION` (10의 거듭제곱을 이용한 순환소수의 분수 변환) — 1000x - 10x = 252 에서 x = 14/55 를 구하는 분수 변환 과정 유형이 후보에 없어 제안한다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 1000 과 10 의 거듭제곱을 정하고 990x = 252 에서 14/55 로 약분하는 2단계 문항이다.
 
@@ -562,7 +548,6 @@ $24x^5y^6 \div 6x^3y^2$을 간단히 한 식으로 옳은 것은? [4점]
 
 ## Q11 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_POLYNOMIAL_ADDITION_AND_SUBTRACTION
 
 **발문**
 
@@ -587,9 +572,8 @@ $(4a + 3b) + (2a + 7b)$를 계산한 식으로 옳은 것은? [3점]
 - 근거 인용: 「$(4a + 3b) + (2a + 7b)$를 계산한 식으로 옳은 것은?」
 **RPM** M2-RPM-130 [식의 계산 > 다항식의 계산 > 다항식의 덧셈과 뺄셈 > 동류항 정리] (원천과 같음)
 - 이유: 동류항끼리 모아 6a + 10b 로 정리하는 동류항 정리 행이다 (16ab, 21 계수 배제).
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_POLYNOMIAL_ADDITION → NONE** **원천→판정: TPL_POLYNOMIAL_ADDITION_DIRECT → NONE**
+**유형** PT=PT_M2_POLYNOMIAL / TPL=NONE **원천→판정: PT_M2_POLYNOMIAL_ADDITION → PT_M2_POLYNOMIAL** **원천→판정: TPL_POLYNOMIAL_ADDITION_DIRECT → NONE**
 - 이유: 동류항 계수를 더해 6a + 10b 를 산출하는 다항식 덧셈 단계이다.
-- 새 키 제안: `PT_M2_POLYNOMIAL_ADDITION_AND_SUBTRACTION` (다항식의 덧셈과 뺄셈) — 동류항끼리 묶어 6a + 10b 와 같이 계산하는 다항식 덧셈 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 동류항 계수합 (4+2)a + (3+7)b = 6a + 10b 를 바로 적용하는 1단계 기본 연산 문항이다.
 
@@ -662,7 +646,6 @@ $(4a + 3b) + (2a + 7b)$를 계산한 식으로 옳은 것은? [3점]
 
 ## Q13 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M2_POLYNOMIAL_DIVISION_BY_MONOMIAL
 
 **발문**
 
@@ -687,9 +670,8 @@ $-\dfrac{8a^2b - 12ab^2}{4ab}$를 계산한 식으로 옳은 것은? [4점]
 - 근거 인용: 「$-\dfrac{8a^2b - 12ab^2}{4ab}$를 계산한 식으로 옳은 것은?」
 **RPM** M2-RPM-133 [식의 계산 > 다항식의 계산 > 단항식과 다항식의 곱셈·나눗셈 > 다항식을 단항식으로 나누기] (원천과 같음)
 - 이유: 다항식 8a^2b - 12ab^2 을 단항식 4ab 로 나누고 부호를 처리하는 다항식을 단항식으로 나누기 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_POLYNOMIAL_DIVISION_DIRECT → NONE** **원천→판정: TPL_POLYNOMIAL_DIVISION_EXPANSION → NONE**
+**유형** PT=PT_M2_POLYNOMIAL / TPL=NONE **원천→판정: PT_M2_POLYNOMIAL_DIVISION_DIRECT → PT_M2_POLYNOMIAL** **원천→판정: TPL_POLYNOMIAL_DIVISION_EXPANSION → NONE**
 - 이유: 4ab 나눗셈 후 -(2a - 3b) = -2a + 3b 로 부호를 반전하는 단계이다 (12 계수 처리).
-- 새 키 제안: `PT_M2_POLYNOMIAL_DIVISION_BY_MONOMIAL` (다항식을 단항식으로 나누기) — 다항식을 분모 단항식 4ab 로 나누고 음수 부호를 분배하는 유형이 후보에 없어 제안한다.
 **난이도** 1 (confidence=high, 경계=NONE) **원천→판정: 2 → 1**
 - 이유: 4ab 나눗셈 2a - 3b 에 음수 부호를 분배하여 -2a + 3b 를 산출하는 1단계 기본 연산 문항이다.
 
@@ -713,7 +695,6 @@ $-\dfrac{8a^2b - 12ab^2}{4ab}$를 계산한 식으로 옳은 것은? [4점]
 
 ## Q14 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M2_POLYNOMIAL_EXP_AND_SUBSTITUTION
 
 **발문**
 
@@ -741,9 +722,8 @@ $$12xy(x-2) - (8x^2y^2 + 6xy^2) \div \dfrac{2}{3}y$$
 - 근거 인용: 「다음 식의 값은? [5점]」
 **RPM** M2-RPM-134 [식의 계산 > 다항식의 계산 > 식의 값과 활용 > 식의 값] (원천과 같음)
 - 이유: 식 12xy(x-2)의 전개 후 동류항을 -33xy로 정리하고 식의 값을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_POLYNOMIAL_EVALUATION → NONE** **원천→판정: TPL_SIMPLIFY_THEN_EVALUATE → NONE**
+**유형** PT=PT_M2_POLYNOMIAL / TPL=NONE **원천→판정: PT_M2_POLYNOMIAL_EVALUATION → PT_M2_POLYNOMIAL** **원천→판정: TPL_SIMPLIFY_THEN_EVALUATE → NONE**
 - 이유: 다항식 12xy와 단항식 나눗셈 혼합 계산 후 분수 값을 대입하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_POLYNOMIAL_EXP_AND_SUBSTITUTION` (다항식의 전개와 식의 값) — 다항식의 사칙연산 혼합 계산식을 정리한 뒤 문자에 분수 값을 대입하여 식의 값을 구하는 대표 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 다항식 12xy의 전개와 역수 곱셈 후 대입하는 전형적인 2단계 계산 문항이다.
 
@@ -767,7 +747,6 @@ $$12xy(x-2) - (8x^2y^2 + 6xy^2) \div \dfrac{2}{3}y$$
 
 ## Q15 — 객관식 3점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_EXPRESS_SENTENCE_AS_INEQUALITY
 
 **발문**
 
@@ -795,9 +774,8 @@ $$12xy(x-2) - (8x^2y^2 + 6xy^2) \div \dfrac{2}{3}y$$
 - 근거 인용: 「다음 문장을 부등식으로 나타낸 것으로 옳은 것은? [3점]」
 **RPM** M2-RPM-136 [일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질] (원천과 같음)
 - 이유: 부등식의 기본 뜻에 따라 문장 2x - 3 < 9를 세우는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_INEQUALITY_EXPRESSION_MODELING → NONE** **원천→판정: TPL_STATEMENT_TO_INEQUALITY → NONE**
+**유형** PT=PT_M2_LINEAR_INEQUALITY / TPL=NONE **원천→판정: PT_M2_INEQUALITY_EXPRESSION_MODELING → PT_M2_LINEAR_INEQUALITY** **원천→판정: TPL_STATEMENT_TO_INEQUALITY → NONE**
 - 이유: 문장을 읽고 부등식 2x - 3 < 9로 나타내는 기초 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_EXPRESS_SENTENCE_AS_INEQUALITY` (문장을 부등식으로 나타내기) — 실생활이나 문장으로 주어진 수량 관계를 부등호와 문자를 사용하여 부등식으로 나타내는 기본 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 어떤 수 x의 2배에서 3을 뺀 값 2x - 3 < 9를 곧바로 기호화하는 1단계 기본 문항이다.
 
@@ -825,7 +803,6 @@ $$12xy(x-2) - (8x^2y^2 + 6xy^2) \div \dfrac{2}{3}y$$
 
 ## Q16 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M2_INEQUALITY_SOLUTION_TEST
 
 **발문**
 
@@ -852,9 +829,8 @@ $x = 2$를 해로 갖는 부등식은? [4점]
 - 근거 인용: 「$x = 2$를 해로 갖는 부등식은?」
 **RPM** M2-RPM-136 [일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질] **원천→판정: 일차부등식 > 일차부등식 > 일차부등식의 풀이 > 기본형 → 일차부등식 > 일차부등식 > 부등식의 성질 > 부등식의 성질**
 - 이유: 부등식의 기본 뜻에 따라 x = 2 를 대입하여 참 거짓을 판별하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_INEQUALITY_ROOT_VERIFICATION → NONE** **원천→판정: TPL_SUBSTITUTE_ROOT_INEQUALITY → NONE**
+**유형** PT=PT_M2_LINEAR_INEQUALITY / TPL=NONE **원천→판정: PT_M2_INEQUALITY_ROOT_VERIFICATION → PT_M2_LINEAR_INEQUALITY** **원천→판정: TPL_SUBSTITUTE_ROOT_INEQUALITY → NONE**
 - 이유: 부등식에 x = 2 를 대입해 해가 되는지 확인하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_INEQUALITY_SOLUTION_TEST` (부등식의 해 판별) — 주어진 미지수의 값을 부등식에 대입하여 참이 되는지 확인하는 대표 기초 유형이다.
 **난이도** 1 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: x = 2 를 각 선지에 단순 대입하여 부등호 성립을 점검하는 1단계 기본 문항이다.
 
@@ -990,7 +966,6 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 
 ## Q19 — 객관식 4점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_LINEAR_INEQUALITY_NUMBER_LINE_REPRESENTATION
 
 **발문**
 
@@ -1016,9 +991,8 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 - 근거 인용: 「일차부등식 $4x + 9 \ge 7x - 3$」
 **RPM** M2-RPM-137 [일차부등식 > 일차부등식 > 부등식의 성질 > 수직선으로 해 표현] (원천과 같음)
 - 이유: 일차부등식을 풀어 -3x >= -12 로부터 x <= 4 를 구하고 수직선으로 해를 표현하는 행이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_INEQUALITY_SOLVING_GRAPH → NONE** **원천→판정: TPL_SOLVE_AND_GRAPH_NUMBER_LINE → NONE**
+**유형** PT=PT_M2_LINEAR_INEQUALITY / TPL=NONE **원천→판정: PT_M2_INEQUALITY_SOLVING_GRAPH → PT_M2_LINEAR_INEQUALITY** **원천→판정: TPL_SOLVE_AND_GRAPH_NUMBER_LINE → NONE**
 - 이유: 부등식에서 -12 를 얻고 해를 수직선 위에 표현하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_LINEAR_INEQUALITY_NUMBER_LINE_REPRESENTATION` (일차부등식의 해와 수직선 표현) — 일차부등식을 풀어 얻은 해의 범위를 수직선의 경계점 및 방향으로 나타내는 대표 기본 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 이항하여 -3x >= -12 를 풀고 수직선 경계와 방향을 읽는 2단계 문항이다.
 
@@ -1092,7 +1066,6 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 
 ## Q21 — 객관식 5점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_PROFIT_DISCOUNT
 
 **발문**
 
@@ -1120,9 +1093,8 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 - 근거 인용: 「일차부등식으로 옳은 것은? [5점] 」
 **RPM** M2-RPM-146 [일차부등식 > 일차부등식의 활용 > 비율·가격·도형 > 할인·이익] (원천과 같음)
 - 이유: 원가 12000 과 할인율 15% 에 따른 이익이 2400 이상인 일차부등식을 세우는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_INEQUALITY_WORD_PROBLEM_PROFIT → NONE** **원천→판정: TPL_COST_PROFIT_MODELING → NONE**
+**유형** PT=PT_M2_LINEAR_INEQUALITY / TPL=NONE **원천→판정: PT_M2_INEQUALITY_WORD_PROBLEM_PROFIT → PT_M2_LINEAR_INEQUALITY** **원천→판정: TPL_COST_PROFIT_MODELING → NONE**
 - 이유: 정가 x 에 0.85 를 곱하고 12000 을 뺀 이익 부등식을 세우는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_PROFIT_DISCOUNT` (원가와 정가 할인 이익 부등식 활용) — 원가, 정가, 할인율, 목표 이익의 관계를 파악하여 일차부등식을 세우고 범위를 구하는 대표 활용 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 판매 가격 0.85x 와 원가 12000 차이가 2400 이상임을 부등식으로 표현하는 2단계 문항이다.
 
@@ -1151,7 +1123,6 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 
 ## Q22 — 서술형 6점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (PT, TPL, 난이도)
-- ⚠ 새 키 제안 PT_M2_FINITE_DECIMAL_MULTIPLIER_CONDITION
 
 **발문**
 
@@ -1178,9 +1149,8 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 - 근거 인용: 「유한소수로 나타내려고 한다.」
 **RPM** M2-RPM-120 [유리수와 순환소수 > 유리수와 순환소수 > 유한소수와 무한소수 > 분모의 소인수 조건] (원천과 같음)
 - 이유: 기약분수 7/30 과 5/26 의 분모 소인수 조건을 분석하여 자연수 A=78 을 구하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_ESSAY_COMMON_MULTIPLIER_FINITE → NONE** **원천→판정: TPL_LCM_MULTIPLIER_FOR_TWO_FRACTIONS → NONE**
+**유형** PT=PT_M2_FINITE_DECIMAL / TPL=NONE **원천→판정: PT_M2_ESSAY_COMMON_MULTIPLIER_FINITE → PT_M2_FINITE_DECIMAL** **원천→판정: TPL_LCM_MULTIPLIER_FOR_TWO_FRACTIONS → NONE**
 - 이유: 분수 14/60 에 A 를 곱해 유한소수가 되는 최소공배수 39 의 배수 78 을 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_FINITE_DECIMAL_MULTIPLIER_CONDITION` (유한소수가 되도록 하는 자연수 곱하기) — 분모의 소인수를 제거하여 유한소수가 되게 하는 자연수의 배수 및 공배수 조건을 구하는 대표 서술형 유형이다.
 **난이도** 2 (confidence=high, 경계=NONE) **원천→판정: 3 → 2**
 - 이유: 기약분수 7/30 및 5/26 의 소인수 3과 13의 공배수 39의 2배인 78을 산출하는 2단계 서술형 문항이다.
 
@@ -1211,7 +1181,6 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 
 ## Q23 — 서술형 7점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 3개 (RPM, PT, TPL)
-- ⚠ 새 키 제안 PT_M2_POLYNOMIAL_GEOMETRIC_VOLUME_EQUALITY
 
 **발문**
 
@@ -1241,9 +1210,8 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 - 근거 인용: 「부피를 구하는 과정을 서술하시오.」
 **RPM** M2-RPM-135 [식의 계산 > 다항식의 계산 > 식의 값과 활용 > 조건식 활용] **원천→판정: 식의 계산 > 단항식의 계산 > 단항식의 곱셈과 나눗셈 > 혼합 계산 → 식의 계산 > 다항식의 계산 > 식의 값과 활용 > 조건식 활용**
 - 이유: 원기둥 부피 V 와 원뿔 부피를 식 3pi*a^2*h 로 세워 조건식을 활용하는 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_ESSAY_CYLINDER_CONE_VOLUME → NONE** **원천→판정: TPL_VOLUME_CONSERVATION_ALGEBRAIC → NONE**
+**유형** PT=PT_M2_POLYNOMIAL / TPL=NONE **원천→판정: PT_M2_ESSAY_CYLINDER_CONE_VOLUME → PT_M2_POLYNOMIAL** **원천→판정: TPL_VOLUME_CONSERVATION_ALGEBRAIC → NONE**
 - 이유: 원기둥 부피와 원뿔 부피가 같음을 이용해 다항식 나눗셈으로 h 를 구하는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_POLYNOMIAL_GEOMETRIC_VOLUME_EQUALITY` (도형의 부피와 다항식의 계산) — 원기둥과 원뿔의 부피 공식을 다항식으로 표현하고 부피 보존 등식을 통해 미지수를 구하는 서술형 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 원기둥 부피 3a^3 - 6a^2b 계산과 원뿔 부피 공식 연립 나눗셈으로 h 를 구하는 3단계 서술형 문항이다.
 
@@ -1269,7 +1237,6 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 
 ## Q24 — 서술형 7점  ⚠ 먼저 볼 문항
 - ⚠ 원천 값과 다른 칸 2개 (PT, TPL)
-- ⚠ 새 키 제안 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SERVICE_COST_COMPARISON
 
 **발문**
 
@@ -1302,9 +1269,8 @@ $$\begin{matrix} 2x + 7 < 5x - 2 \\ \downarrow \text{㉠} \\ 2x - 5x < -2 - 7 \\
 - 근거 인용: 「일차부등식을 세워서 해결해야 함.) 」
 **RPM** M2-RPM-146 [일차부등식 > 일차부등식의 활용 > 비율·가격·도형 > 할인·이익] (원천과 같음)
 - 이유: 사진관 이용 비용 250x 와 150x + 3000 을 비교하여 31 장 이상을 구하는 가격 활용 문항이다.
-**유형** PT=NONE / TPL=NONE **원천→판정: PT_M2_INEQUALITY_WORD_PROBLEM_SERVICE → NONE** **원천→판정: TPL_COST_COMPARISON_SERVICE_CHARGE → NONE**
+**유형** PT=PT_M2_LINEAR_INEQUALITY / TPL=NONE **원천→판정: PT_M2_INEQUALITY_WORD_PROBLEM_SERVICE → PT_M2_LINEAR_INEQUALITY** **원천→판정: TPL_COST_COMPARISON_SERVICE_CHARGE → NONE**
 - 이유: 단가 250 과 150, 배송비 3000 의 금액 비교 부등식을 세우는 유형으로 후보에 적합한 PT가 없다.
-- 새 키 제안: `PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SERVICE_COST_COMPARISON` (두 업체의 서비스 이용 금액 비교 부등식 활용) — 기본료와 건당 요금이 다른 두 업체의 이용 금액을 일차부등식으로 세워 더 유리한 최소 수량을 구하는 대표 활용 유형이다.
 **난이도** 3 (confidence=high, 경계=NONE) (원천과 같음)
 - 이유: 비용 식 250x 와 150x + 3000 을 세워 100x > 3000 을 풀고 자연수 최소 31 을 구하는 3단계 서술형 문항이다.
 
