@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "3"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-1",
+        "3"
+      ],
+      "V": [
+        "1",
+        "-1"
+      ],
+      "B": [
+        "3",
+        "3"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l",
+          "slope": "0",
+          "intercept": "3",
+          "label": "AB"
+        },
+        {
+          "id": "t",
+          "slope": "0",
+          "intercept": "-1",
+          "label": "t"
+        }
+      ]
+    }
+  },
+  "caption": "롤의 정리가 성립하려면 양 끝 높이가 같아야 하므로 f(-1)=1+a와 f(3)=9-3a가 같아 a=2이다. 그림은 f(x)=x²-2x이고 양 끝점 A(-1,3), B(3,3)의 높이가 같아 AB가 수평이다. 구간 안의 꼭짓점 V(1,-1)에서 접선 t가 수평이므로 c=1이다. 따라서 a+c=3이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x)=x^2-ax$에 대하여 닫힌 구간 $[-1, 3]$에서 롤의 정리를 만족시키는 실수의 값이 $c$일 때, $a+c$의 값을 구하시오. (단, $a, c$는 상수) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝 A, B의 높이가 같고 꼭짓점 V(1,-1)에서 접선이 수평임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "양 끝점 A(-1,3), B(3,3)의 높이가 같고 꼭짓점 V(1,-1)에서 접선이 수평임을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 끝 점 A에서 내려가 꼭짓점 V에서 가장 낮고 오른쪽 끝 점 B로 올라가는 포물선과, A와 B를 잇는 수평선, V에서 접하는 수평선이 그려진 그래프이다."
+}
