@@ -27,9 +27,9 @@ window.questionBank = [
     "content": "분수 $\\dfrac{7}{54}$을 순환소수로 나타내었을 때, 순환마디를 구하면? [3점]",
     "choices": [
       "$296$",
-      "$962$",
       "$629$",
-      "$129$",
+      "$962$",
+      "$1296$",
       "$2962$"
     ],
     "answer": "①",
@@ -70,7 +70,7 @@ window.questionBank = [
       "$0.12\\dot{5}$"
     ],
     "answer": "②",
-    "solution": "$x$에 $10$의 거듭제곱을 곱하여 소수점 아래 순환마디의 숫자 배열을 완전히 일치시켜 뺀다.\n$1000x - 10x$를 이용한다는 것은 다음과 같은 구조를 갖는다.\n- $1000x$: 소수점 아래 셋째 자리까지 순환마디가 끝나므로 소수점을 오른쪽으로 $3$자리 이동시킨다.\n- $10x$: 소수점 아래 첫째 자리는 순환하지 않으므로 소수점을 오른쪽으로 $1$자리 이동시켜 순환마디 바로 앞에 맞춘다.\n따라서 소수점 아래 첫째 자리는 비순환이고, 둘째와 셋째 자리가 순환마디인 $0.a\\dot{b}\\dot{c}$ 꼴이어야 한다.\n$$\n\\begin{aligned}\n\\text{① } & x = 2.\\dot{3}\\dot{7} \\implies 100x - x \\\\\n\\text{② } & x = 0.5\\dot{2}\\dot{8} \\implies 1000x = 528.2828\\dots, \\quad 10x = 5.2828\\dots \\implies 1000x - 10x \\text{ (참)} \\\\\n\\text{③ } & x = 1.\\dot{4}1\\dot{6} \\implies 1000x - x \\\\\n\\text{④ } & x = 3.4\\dot{7} \\implies 100x - 10x \\\\\n\\text{⑤ } & x = 0.12\\dot{5} \\implies 1000x - 100x\n\\end{aligned}\n$$\n그러므로 가장 편리한 식은 ②이다.",
+    "solution": "각 보기에서 순환하는 부분의 자릿수를 살펴 $1000x-10x$를 이용하는 것이 알맞은 경우를 찾는다.\n$1000x$는 소수점을 오른쪽으로 $3$자리, $10x$는 $1$자리 옮긴 식이므로 두 식의 소수점 아래 숫자가 같아지려면 첫째 자리는 순환하지 않고 둘째, 셋째 자리가 순환마디여야 한다.\n① $2.\\dot{3}\\dot{7}$은 첫째 자리부터 순환하므로 $100x-x$를 이용한다.\n② $0.5\\dot{2}\\dot{8}$은 첫째 자리 $5$가 순환하지 않고 둘째, 셋째 자리 $28$이 순환마디이므로 $1000x-10x$를 이용한다.\n$$\n\\begin{aligned}\nx &= 0.52828\\cdots \\\\\n10x &= 5.2828\\cdots \\\\\n1000x &= 528.2828\\cdots \\\\\n1000x - 10x &= 523\n\\end{aligned}\n$$\n③ $1.\\dot{4}1\\dot{6}$은 첫째 자리부터 순환하므로 $1000x-x$를 이용한다.\n④ $3.4\\dot{7}$은 첫째 자리 $4$가 순환하지 않고 둘째 자리 $7$만 순환하므로 $100x-10x$를 이용한다.\n⑤ $0.12\\dot{5}$는 첫째, 둘째 자리 $12$가 순환하지 않고 셋째 자리 $5$만 순환하므로 $1000x-100x$를 이용한다.\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -107,7 +107,7 @@ window.questionBank = [
       "$4$개"
     ],
     "answer": "④",
-    "solution": "기약분수로 약분한 후 분모를 소인수분해했을 때, $2$ 또는 $5$ 이외의 소인수가 남아 있으면 순환소수이다.\n$$\n\\begin{aligned}\n\\text{1) } & \\frac{21}{70} = \\frac{3}{10} = \\frac{3}{2 \\times 5} \\implies \\text{분모 소인수 } 2, 5 \\implies \\text{유한소수} \\\\\n\\text{2) } & \\frac{14}{2 \\times 3^2 \\times 7} = \\frac{14}{14 \\times 3^2} = \\frac{1}{3^2} \\implies \\text{분모에 소인수 } 3\\text{이 남으므로 순환소수 (1)} \\\\\n\\text{3) } & \\frac{35}{2^2 \\times 5^2 \\times 7} = \\frac{35}{2^2 \\times 25 \\times 7} = \\frac{5 \\times 7}{2^2 \\times 5^2 \\times 7} = \\frac{1}{2^2 \\times 5} \\implies \\text{분모 소인수 } 2, 5 \\implies \\text{유한소수} \\\\\n\\text{4) } & \\frac{15}{2^3 \\times 3 \\times 11} = \\frac{3 \\times 5}{2^3 \\times 3 \\times 11} = \\frac{5}{2^3 \\times 11} \\implies \\text{분모에 소인수 } 11\\text{이 남으므로 순환소수 (2)} \\\\\n\\text{5) } & \\frac{20}{75} = \\frac{4}{15} = \\frac{4}{3 \\times 5} \\implies \\text{분모에 소인수 } 3\\text{이 남으므로 순환소수 (3)}\n\\end{aligned}\n$$\n따라서 순환소수로 나타낼 수 있는 분수는 $3$개이다.\n그러므로 정답은 ④이다.",
+    "solution": "각 분수를 기약분수로 약분한 뒤 분모의 소인수를 확인하여 순환소수가 되는 분수의 개수를 센다.\n기약분수의 분모에 $2$ 또는 $5$ 이외의 소인수가 남아 있으면 그 분수는 순환소수이다.\n1) $\\dfrac{21}{70}$을 약분하면\n$$\n\\begin{aligned}\n\\dfrac{21}{70} &= \\dfrac{3}{10} \\\\\n&= \\dfrac{3}{2 \\times 5}\n\\end{aligned}\n$$\n분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.\n2) $\\dfrac{14}{2 \\times 3^2 \\times 7}$을 약분하면\n$$\n\\begin{aligned}\n\\dfrac{14}{2 \\times 3^2 \\times 7} &= \\dfrac{2 \\times 7}{2 \\times 3^2 \\times 7} \\\\\n&= \\dfrac{1}{3^2}\n\\end{aligned}\n$$\n분모에 소인수 $3$이 남으므로 순환소수이다.\n3) $\\dfrac{35}{2^2 \\times 5^2 \\times 7}$을 약분하면\n$$\n\\begin{aligned}\n\\dfrac{35}{2^2 \\times 5^2 \\times 7} &= \\dfrac{5 \\times 7}{2^2 \\times 5^2 \\times 7} \\\\\n&= \\dfrac{1}{2^2 \\times 5}\n\\end{aligned}\n$$\n분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.\n4) $\\dfrac{15}{2^3 \\times 3 \\times 11}$을 약분하면\n$$\n\\begin{aligned}\n\\dfrac{15}{2^3 \\times 3 \\times 11} &= \\dfrac{3 \\times 5}{2^3 \\times 3 \\times 11} \\\\\n&= \\dfrac{5}{2^3 \\times 11}\n\\end{aligned}\n$$\n분모에 소인수 $11$이 남으므로 순환소수이다.\n5) $\\dfrac{20}{75}$를 약분하면\n$$\n\\begin{aligned}\n\\dfrac{20}{75} &= \\dfrac{4}{15} \\\\\n&= \\dfrac{4}{3 \\times 5}\n\\end{aligned}\n$$\n분모에 소인수 $3$이 남으므로 순환소수이다.\n순환소수가 되는 분수는 2), 4), 5)의 $3$개이다.\n따라서 정답은 ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -174,14 +174,14 @@ window.questionBank = [
     "wide": false,
     "content": "분수 $\\dfrac{2}{7}$를 소수로 나타낼 때, 소수점 아래 40번째 숫자를 $a$, 60번째 숫자를 $b$라 하자. 이때 $a+b$의 값은? [4점]",
     "choices": [
+      "$5$",
       "$7$",
       "$9$",
       "$11$",
-      "$13$",
       "$15$"
     ],
-    "answer": "③",
-    "solution": "분수 $\\dfrac{2}{7}$를 나눗셈하여 순환소수로 나타낸다.\n$$\n2 \\div 7 = 0.285714285714\\dots = 0.\\dot{2}8571\\dot{4}\n$$\n순환마디는 $285714$로 숫자의 개수는 $6$개이다.\n1단계: 소수점 아래 $40$번째 숫자 $a$를 구한다.\n$40$을 순환마디의 길이 $6$으로 나눈 나머지를 계산한다.\n$$\n40 = 6 \\times 6 + 4\n$$\n나머지가 $4$이므로 $a$는 순환마디 $285714$의 $4$번째 숫자인 $7$이다.\n$$\na = 7\n$$\n2단계: 소수점 아래 $60$번째 숫자 $b$를 구한다.\n$60$을 순환마디의 길이 $6$으로 나눈 나머지를 계산한다.\n$$\n60 = 6 \\times 10 + 0\n$$\n나누어떨어지므로 $b$는 순환마디 $285714$의 마지막($6$번째) 숫자인 $4$이다.\n$$\nb = 4\n$$\n3단계: $a+b$의 값을 계산한다.\n$$\na + b = 7 + 4 = 11\n$$\n그러므로 정답은 ③이다.",
+    "answer": "④",
+    "solution": "분수 $\\dfrac{2}{7}$를 나눗셈하여 순환소수로 나타낸다.\n$$\n2 \\div 7 = 0.285714285714\\dots = 0.\\dot{2}8571\\dot{4}\n$$\n순환마디는 $285714$로 숫자의 개수는 $6$개이다.\n1단계: 소수점 아래 $40$번째 숫자 $a$를 구한다.\n$40$을 순환마디의 길이 $6$으로 나눈 나머지를 계산한다.\n$$\n40 = 6 \\times 6 + 4\n$$\n나머지가 $4$이므로 $a$는 순환마디 $285714$의 $4$번째 숫자인 $7$이다.\n$$\na = 7\n$$\n2단계: 소수점 아래 $60$번째 숫자 $b$를 구한다.\n$60$을 순환마디의 길이 $6$으로 나눈 나머지를 계산한다.\n$$\n60 = 6 \\times 10 + 0\n$$\n나누어떨어지므로 $b$는 순환마디 $285714$의 마지막($6$번째) 숫자인 $4$이다.\n$$\nb = 4\n$$\n3단계: $a+b$의 값을 계산한다.\n$$\na + b = 7 + 4 = 11\n$$\n그러므로 정답은 ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -211,14 +211,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 계산이 옳은 것은? [4점]",
     "choices": [
-      "$\\left(a^{4}\\right)^{3} = a^{12}$",
       "$a^{3} \\times a^{5} = a^{15}$",
       "$a^{8} \\div a^{4} = a^{2}$",
+      "$\\left(a^{4}\\right)^{3} = a^{12}$",
       "$a^{6} \\div a^{6} = 0$",
       "$\\left(2a^{2}b\\right)^{3} = 6a^{6}b^{3}$"
     ],
-    "answer": "①",
-    "solution": "지수법칙을 각 선지에 적용하여 계산 결과를 검증한다.\n$$\n\\begin{aligned}\n\\text{① } & (a^4)^3 = a^{4 \\times 3} = a^{12} \\text{ (참)} \\\\\n\\text{② } & a^3 \\times a^5 = a^{3+5} = a^8 \\ne a^{15} \\text{ (거짓)} \\\\\n\\text{③ } & a^8 \\div a^4 = a^{8-4} = a^4 \\ne a^2 \\text{ (거짓)} \\\\\n\\text{④ } & a^6 \\div a^6 = 1 \\ne 0 \\text{ (거짓)} \\\\\n\\text{⑤ } & (2a^2 b)^3 = 2^3 \\times (a^2)^3 \\times b^3 = 8a^6 b^3 \\ne 6a^6 b^3 \\text{ (거짓)}\n\\end{aligned}\n$$\n따라서 옳은 것은 ①이다.",
+    "answer": "③",
+    "solution": "지수법칙을 보기 ①부터 ⑤까지 차례로 적용하여 계산이 옳은 것을 찾는다.\n① 밑이 같은 두 거듭제곱의 곱은 지수를 더한다.\n$$\n\\begin{aligned}\na^{3} \\times a^{5} &= a^{3+5} \\\\\n&= a^{8}\n\\end{aligned}\n$$\n$a^{15}$가 아니므로 옳지 않다.\n② 밑이 같은 두 거듭제곱의 나눗셈은 지수를 뺀다.\n$$\n\\begin{aligned}\na^{8} \\div a^{4} &= a^{8-4} \\\\\n&= a^{4}\n\\end{aligned}\n$$\n$a^{2}$이 아니므로 옳지 않다.\n③ 거듭제곱을 다시 거듭제곱하면 지수를 곱한다.\n$$\n\\begin{aligned}\n\\left(a^{4}\\right)^{3} &= a^{4 \\times 3} \\\\\n&= a^{12}\n\\end{aligned}\n$$\n주어진 식과 같으므로 옳다.\n④ 밑과 지수가 같은 두 거듭제곱을 나누면 그 값은 $1$이다.\n$$\na^{6} \\div a^{6} = 1\n$$\n$0$이 아니므로 옳지 않다.\n⑤ 곱의 거듭제곱은 각 인수를 거듭제곱한다.\n$$\n\\begin{aligned}\n\\left(2a^{2}b\\right)^{3} &= 2^{3} \\times \\left(a^{2}\\right)^{3} \\times b^{3} \\\\\n&= 8a^{6}b^{3}\n\\end{aligned}\n$$\n$6a^{6}b^{3}$이 아니므로 옳지 않다.\n따라서 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -249,13 +249,13 @@ window.questionBank = [
     "content": "$A = 4x^{3}y^{2} \\times (-2xy^{2})^{2}$, $B = 18x^{4}y^{5} \\div \\dfrac{9}{4}x^{2}y$ 일 때, $A \\div B$를 계산하면? [4점]",
     "choices": [
       "$2x^{2}y^{3}$",
-      "$2x^{3}y^{2}$",
       "$4x^{3}y^{2}$",
       "$8x^{3}y^{2}$",
-      "$2x^{7}y^{10}$"
+      "$2x^{7}y^{10}$",
+      "$2x^{3}y^{2}$"
     ],
-    "answer": "②",
-    "solution": "1단계: 식 $A$를 간단히 계산한다.\n$$\n(-2xy^2)^2 = (-2)^2 \\times x^2 \\times (y^2)^2 = 4x^2 y^4\n$$\n$$\n\\begin{aligned}\nA &= 4x^3 y^2 \\times 4x^2 y^4 \\\\\n&= (4 \\times 4) \\times x^{3+2} y^{2+4} \\\\\n&= 16x^5 y^6\n\\end{aligned}\n$$\n2단계: 식 $B$를 역수 곱셈으로 간단히 계산한다.\n$$\n\\begin{aligned}\nB &= 18x^4 y^5 \\div \\frac{9}{4}x^2 y \\\\\n&= 18x^4 y^5 \\times \\frac{4}{9x^2 y} \\\\\n&= \\left(18 \\times \\frac{4}{9}\\right) x^{4-2} y^{5-1} \\\\\n&= 8x^2 y^4\n\\end{aligned}\n$$\n3단계: $A \\div B$를 계산한다.\n$$\n\\begin{aligned}\nA \\div B &= \\frac{16x^5 y^6}{8x^2 y^4} \\\\\n&= \\left(\\frac{16}{8}\\right) x^{5-2} y^{6-4} \\\\\n&= 2x^3 y^2\n\\end{aligned}\n$$\n그러므로 정답은 ②이다.",
+    "answer": "⑤",
+    "solution": "$A$와 $B$를 각각 단항식의 곱셈과 나눗셈으로 간단히 한 뒤 $A \\div B$를 계산한다.\n먼저 $(-2xy^{2})^{2}$을 계산한다.\n$$\n\\begin{aligned}\n(-2xy^{2})^{2} &= (-2)^{2} \\times x^{2} \\times \\left(y^{2}\\right)^{2} \\\\\n&= 4x^{2}y^{4}\n\\end{aligned}\n$$\n$A$를 계산한다.\n$$\n\\begin{aligned}\nA &= 4x^{3}y^{2} \\times 4x^{2}y^{4} \\\\\n&= (4 \\times 4) \\times x^{3+2}y^{2+4} \\\\\n&= 16x^{5}y^{6}\n\\end{aligned}\n$$\n$B$는 나눗셈을 역수의 곱셈으로 고쳐 계산한다.\n$$\n\\begin{aligned}\nB &= 18x^{4}y^{5} \\div \\dfrac{9}{4}x^{2}y \\\\\n&= 18x^{4}y^{5} \\times \\dfrac{4}{9x^{2}y} \\\\\n&= \\left(18 \\times \\dfrac{4}{9}\\right) \\times x^{4-2}y^{5-1} \\\\\n&= 8x^{2}y^{4}\n\\end{aligned}\n$$\n$A \\div B$를 계산한다.\n$$\n\\begin{aligned}\nA \\div B &= \\dfrac{16x^{5}y^{6}}{8x^{2}y^{4}} \\\\\n&= \\dfrac{16}{8} \\times x^{5-2}y^{6-4} \\\\\n&= 2x^{3}y^{2}\n\\end{aligned}\n$$\n따라서 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -329,7 +329,7 @@ window.questionBank = [
       "$a=4, b=12$"
     ],
     "answer": "⑤",
-    "solution": "좌변을 소인수 $2$와 $3$의 거듭제곱으로 나타낸다.\n$$\n8 = 2^3 \\implies \\left(\\frac{8}{3}\\right)^a = \\left(\\frac{2^3}{3}\\right)^a = \\frac{(2^3)^a}{3^a} = \\frac{2^{3a}}{3^a}\n$$\n우변의 분모 $81$을 소인수분해한다.\n$$\n81 = 3^4\n$$\n따라서 주어진 등식은 다음과 같다.\n$$\n\\frac{2^{3a}}{3^a} = \\frac{2^b}{3^4}\n$$\n분모의 지수를 비교하면\n$$\na = 4\n$$\n분자의 지수를 비교하면\n$$\nb = 3a = 3 \\times 4 = 12\n$$\n따라서 $a = 4, b = 12$이다.\n그러므로 정답은 ⑤이다.",
+    "solution": "양변을 소인수 $2$와 $3$의 거듭제곱으로 나타낸 뒤 분모와 분자의 지수를 각각 비교한다.\n$$8 = 2^3$$\n$$\n\\begin{aligned}\n\\left(\\dfrac{8}{3}\\right)^a &= \\left(\\dfrac{2^3}{3}\\right)^a \\\\\n&= \\dfrac{2^{3a}}{3^a}\n\\end{aligned}\n$$\n$$81 = 3^4$$\n$$\\dfrac{2^{3a}}{3^a} = \\dfrac{2^b}{3^4}$$\n분모의 지수를 비교하면\n$$a = 4$$\n분자의 지수를 비교하면\n$$\n\\begin{aligned}\nb &= 3a \\\\\n&= 3 \\times 4 \\\\\n&= 12\n\\end{aligned}\n$$\n구하는 값은 $a=4$, $b=12$이다.\n따라서 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -366,7 +366,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "③",
-    "solution": "좌변을 지수법칙을 이용하여 정리한다.\n1단계: $(-2x)^2$을 거듭제곱한다.\n$$\n(-2x)^2 = (-2)^2 \\times x^2 = 4x^2\n$$\n2단계: 곱셈과 나눗셈을 순서대로 계산한다.\n$$\n\\begin{aligned}\n3x^A \\times 4x^2 \\div 4x^3 &= 12x^{A+2} \\div 4x^3 \\\\\n&= \\left(\\frac{12}{4}\\right) x^{A+2-3} \\\\\n&= 3x^{A-1}\n\\end{aligned}\n$$\n3단계: 우변 $Bx^6$과 계수 및 지수를 비교한다.\n$$\n\\begin{aligned}\nB &= 3 \\\\\nA - 1 &= 6 \\implies A = 7\n\\end{aligned}\n$$\n4단계: $A+B$의 값을 계산한다.\n$$\nA + B = 7 + 3 = 10\n$$\n그러므로 정답은 ③이다.",
+    "solution": "좌변을 지수법칙으로 정리하여 $Bx^6$의 계수와 지수를 각각 비교한다.\n$$\n\\begin{aligned}\n(-2x)^2 &= (-2)^2 \\times x^2 \\\\\n&= 4x^2\n\\end{aligned}\n$$\n$$\n\\begin{aligned}\n3x^A \\times (-2x)^2 \\div 4x^3 &= 3x^A \\times 4x^2 \\div 4x^3 \\\\\n&= 12x^{A+2} \\div 4x^3 \\\\\n&= 3x^{A-1}\n\\end{aligned}\n$$\n좌변이 $Bx^6$과 같으므로 계수와 지수를 비교한다.\n$$B = 3$$\n$$A - 1 = 6$$\n$$A = 7$$\n$$\n\\begin{aligned}\nA + B &= 7 + 3 \\\\\n&= 10\n\\end{aligned}\n$$\n따라서 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -396,14 +396,14 @@ window.questionBank = [
     "wide": false,
     "content": "$\\{4y + 3(2x-1)\\} - 4\\{x - (3y+2)\\}$ 를 간단히 하였을 때, 상수항을 포함한 모든 계수의 합은? [4점]",
     "choices": [
+      "$13$",
+      "$18$",
       "$23$",
       "$25$",
-      "$27$",
-      "$29$",
-      "$31$"
+      "$27$"
     ],
-    "answer": "①",
-    "solution": "소괄호와 중괄호를 순서대로 풀어 동류항끼리 정리한다.\n1단계: 첫 번째 중괄호 안의 식을 전개한다.\n$$\n\\begin{aligned}\n\\{4y + 3(2x-1)\\} &= 4y + 6x - 3 \\\\\n&= 6x + 4y - 3\n\\end{aligned}\n$$\n2단계: 두 번째 중괄호 안의 식을 전개한다.\n$$\n\\begin{aligned}\nx - (3y+2) &= x - 3y - 2 \\\\\n-4\\{x - 3y - 2\\} &= -4x + 12y + 8\n\\end{aligned}\n$$\n3단계: 전체 식을 동류항끼리 정리한다.\n$$\n\\begin{aligned}\n(6x + 4y - 3) + (-4x + 12y + 8) &= (6-4)x + (4+12)y + (-3+8) \\\\\n&= 2x + 16y + 5\n\\end{aligned}\n$$\n4단계: 상수항을 포함한 모든 계수의 합을 구한다.\n$x$의 계수: $2$\n$y$의 계수: $16$\n상수항: $5$\n$$\n2 + 16 + 5 = 23\n$$\n그러므로 정답은 ①이다.",
+    "answer": "③",
+    "solution": "소괄호와 중괄호를 순서대로 풀어 동류항끼리 정리한다.\n1단계: 첫 번째 중괄호 안의 식을 전개한다.\n$$\n\\begin{aligned}\n\\{4y + 3(2x-1)\\} &= 4y + 6x - 3 \\\\\n&= 6x + 4y - 3\n\\end{aligned}\n$$\n2단계: 두 번째 중괄호 안의 식을 전개한다.\n$$\n\\begin{aligned}\nx - (3y+2) &= x - 3y - 2 \\\\\n-4\\{x - 3y - 2\\} &= -4x + 12y + 8\n\\end{aligned}\n$$\n3단계: 전체 식을 동류항끼리 정리한다.\n$$\n\\begin{aligned}\n(6x + 4y - 3) + (-4x + 12y + 8) &= (6-4)x + (4+12)y + (-3+8) \\\\\n&= 2x + 16y + 5\n\\end{aligned}\n$$\n4단계: 상수항을 포함한 모든 계수의 합을 구한다.\n$x$의 계수: $2$\n$y$의 계수: $16$\n상수항: $5$\n$$\n2 + 16 + 5 = 23\n$$\n그러므로 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -433,14 +433,14 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 식에 $-3x^{2}+2x-5$를 더해야 할 것을 잘못하여 빼었더니 $5x^{2}-4x+3$이 되었다. 바르게 계산한 식은? [4점]",
     "choices": [
-      "$-x^{2}+4x-7$",
       "$-x^{2}-7$",
+      "$-x^{2}+4x-7$",
       "$2x^{2}-2x-2$",
       "$-x^{2}+7$",
       "$8x^{2}-6x+8$"
     ],
-    "answer": "②",
-    "solution": "잘못 계산한 등식으로부터 어떤 식 $A$를 구한다.\n$$\nA - (-3x^2 + 2x - 5) = 5x^2 - 4x + 3\n$$\n양변에 $(-3x^2 + 2x - 5)$를 더한다.\n$$\n\\begin{aligned}\nA &= (5x^2 - 4x + 3) + (-3x^2 + 2x - 5) \\\\\n&= (5-3)x^2 + (-4+2)x + (3-5) \\\\\n&= 2x^2 - 2x - 2\n\\end{aligned}\n$$\n바르게 계산한 식은 원래 식 $A$에 $(-3x^2 + 2x - 5)$를 더한 값이므로 계산한다.\n$$\n\\begin{aligned}\nA + (-3x^2 + 2x - 5) &= (2x^2 - 2x - 2) + (-3x^2 + 2x - 5) \\\\\n&= (2-3)x^2 + (-2+2)x + (-2-5) \\\\\n&= -x^2 + 0x - 7 \\\\\n&= -x^2 - 7\n\\end{aligned}\n$$\n그러므로 정답은 ②이다.",
+    "answer": "①",
+    "solution": "잘못 계산한 등식에서 처음 식 $A$를 구한 뒤, $A$에 $-3x^{2}+2x-5$를 더한 식을 구한다.\n더해야 할 $-3x^{2}+2x-5$를 잘못하여 빼었더니 $5x^{2}-4x+3$이 되었다.\n$$\nA - \\left(-3x^{2}+2x-5\\right) = 5x^{2}-4x+3\n$$\n양변에 $-3x^{2}+2x-5$를 더한다.\n$$\n\\begin{aligned}\nA &= \\left(5x^{2}-4x+3\\right) + \\left(-3x^{2}+2x-5\\right) \\\\\n&= (5-3)x^{2} + (-4+2)x + (3-5) \\\\\n&= 2x^{2}-2x-2\n\\end{aligned}\n$$\n바르게 계산한 식은 $A$에 $-3x^{2}+2x-5$를 더한 것이다.\n$$\n\\begin{aligned}\nA + \\left(-3x^{2}+2x-5\\right) &= \\left(2x^{2}-2x-2\\right) + \\left(-3x^{2}+2x-5\\right) \\\\\n&= (2-3)x^{2} + (-2+2)x + (-2-5) \\\\\n&= -x^{2}-7\n\\end{aligned}\n$$\n따라서 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -470,14 +470,14 @@ window.questionBank = [
     "wide": false,
     "content": "$x = 5, y = \\dfrac{4}{3}$ 일 때, 식 $6x - \\{5y + (8x^{2}-4xy) \\div 2x\\}$ 의 값은? [4점]",
     "choices": [
-      "$2$",
       "$4$",
-      "$5$",
       "$6$",
-      "$8$"
+      "$10$",
+      "$12$",
+      "$14$"
     ],
-    "answer": "④",
-    "solution": "1단계: 소괄호 안의 다항식을 단항식으로 나눈다.\n$$\n\\begin{aligned}\n(8x^2 - 4xy) \\div 2x &= \\frac{8x^2}{2x} - \\frac{4xy}{2x} \\\\\n&= 4x - 2y\n\\end{aligned}\n$$\n2단계: 중괄호 안의 식을 정리한다.\n$$\n5y + (4x - 2y) = 4x + 3y\n$$\n3단계: 전체 식을 간단히 정리한다.\n$$\n\\begin{aligned}\n6x - (4x + 3y) &= 6x - 4x - 3y \\\\\n&= 2x - 3y\n\\end{aligned}\n$$\n4단계: $x = 5, y = \\dfrac{4}{3}$를 대입하여 식의 값을 구한다.\n$$\n\\begin{aligned}\n2x - 3y &= 2(5) - 3\\left(\\frac{4}{3}\\right) \\\\\n&= 10 - 4 \\\\\n&= 6\n\\end{aligned}\n$$\n그러므로 정답은 ④이다.",
+    "answer": "②",
+    "solution": "1단계: 소괄호 안의 다항식을 단항식으로 나눈다.\n$$\n\\begin{aligned}\n(8x^2 - 4xy) \\div 2x &= \\frac{8x^2}{2x} - \\frac{4xy}{2x} \\\\\n&= 4x - 2y\n\\end{aligned}\n$$\n2단계: 중괄호 안의 식을 정리한다.\n$$\n5y + (4x - 2y) = 4x + 3y\n$$\n3단계: 전체 식을 간단히 정리한다.\n$$\n\\begin{aligned}\n6x - (4x + 3y) &= 6x - 4x - 3y \\\\\n&= 2x - 3y\n\\end{aligned}\n$$\n4단계: $x = 5, y = \\dfrac{4}{3}$를 대입하여 식의 값을 구한다.\n$$\n\\begin{aligned}\n2x - 3y &= 2(5) - 3\\left(\\frac{4}{3}\\right) \\\\\n&= 10 - 4 \\\\\n&= 6\n\\end{aligned}\n$$\n그러므로 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -551,7 +551,7 @@ window.questionBank = [
       "$a \\div (-5) > b \\div (-5) \\implies a \\;\\square\\; b$"
     ],
     "answer": "③",
-    "solution": "부등식의 성질을 이용하여 각 선지에서 $a$와 $b$의 대소 관계를 구한다.\n$$\n\\begin{aligned}\n\\text{① } & a+4 < b+4 \\implies a < b \\quad (<) \\\\\n\\text{② } & 3a-2 < 3b-2 \\implies 3a < 3b \\implies a < b \\quad (<) \\\\\n\\text{③ } & 5-2a < 5-2b \\implies -2a < -2b \\implies a > b \\quad (>) \\\\\n\\text{④ } & \\frac{a}{3}+1 < \\frac{b}{3}+1 \\implies \\frac{a}{3} < \\frac{b}{3} \\implies a < b \\quad (<) \\\\\n\\text{⑤ } & -\\frac{a}{5} > -\\frac{b}{5} \\implies a < b \\quad (<)\n\\end{aligned}\n$$\n선지 ①, ②, ④, ⑤는 모두 $a < b$이지만, ③은 $a > b$이다.\n따라서 부등호의 방향이 나머지 넷과 다른 하나는 ③이다.",
+    "solution": "각 보기에서 부등식의 성질을 이용하여 $a$와 $b$의 대소 관계를 구하고 마지막 부등호의 방향을 비교한다.\n① 양변에서 $4$를 빼면\n$$\n\\begin{aligned}\na + 4 &< b + 4 \\\\\na &< b\n\\end{aligned}\n$$\n부등호의 방향은 $<$이다.\n② 양변에 $2$를 더한 뒤 $3$으로 나누면\n$$\n\\begin{aligned}\n3a - 2 &< 3b - 2 \\\\\n3a &< 3b \\\\\na &< b\n\\end{aligned}\n$$\n부등호의 방향은 $<$이다.\n③ 양변에서 $5$를 빼고 음수 $-2$로 나누면 부등호의 방향이 바뀐다.\n$$\n\\begin{aligned}\n5 - 2a &< 5 - 2b \\\\\n-2a &< -2b \\\\\na &> b\n\\end{aligned}\n$$\n부등호의 방향은 $>$이다.\n④ 양변에서 $1$을 빼고 $3$을 곱하면\n$$\n\\begin{aligned}\n\\dfrac{a}{3} + 1 &< \\dfrac{b}{3} + 1 \\\\\n\\dfrac{a}{3} &< \\dfrac{b}{3} \\\\\na &< b\n\\end{aligned}\n$$\n부등호의 방향은 $<$이다.\n⑤ 나누기를 분수로 고친 뒤 양변에 $-5$를 곱하면 부등호의 방향이 바뀐다.\n$$\n\\begin{aligned}\na \\div (-5) &> b \\div (-5) \\\\\n-\\dfrac{a}{5} &> -\\dfrac{b}{5} \\\\\na &< b\n\\end{aligned}\n$$\n부등호의 방향은 $<$이다.\n①, ②, ④, ⑤는 $<$이고 ③만 $>$이다.\n따라서 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -582,10 +582,10 @@ window.questionBank = [
     "content": "일차부등식 $3x-5 \\le 10-2x$ 를 만족시키는 자연수 $x$의 개수는? [4점]",
     "choices": [
       "$3$개",
-      "$2$개",
       "$4$개",
       "$5$개",
-      "$1$개"
+      "$10$개",
+      "$15$개"
     ],
     "answer": "①",
     "solution": "주어진 일차부등식을 푼다.\n$$\n\\begin{aligned}\n3x - 5 &\\le 10 - 2x \\\\\n3x + 2x &\\le 10 + 5 \\\\\n5x &\\le 15 \\\\\nx &\\le 3\n\\end{aligned}\n$$\n$x \\le 3$을 만족시키는 자연수 $x$는 $1, 2, 3$의 $3$개이다.\n그러므로 정답은 ①이다.",
@@ -618,14 +618,14 @@ window.questionBank = [
     "wide": false,
     "content": "일차부등식 $2x-a > 5x+1$ 의 해가 $x < -3$ 일 때, 상수 $a$의 값은? [4점]",
     "choices": [
-      "$6$",
-      "$8$",
-      "$10$",
+      "$-10$",
       "$-8$",
-      "$-10$"
+      "$2$",
+      "$8$",
+      "$10$"
     ],
-    "answer": "②",
-    "solution": "주어진 일차부등식을 $x$에 대하여 푼다.\n$$\n\\begin{aligned}\n2x - a &> 5x + 1 \\\\\n2x - 5x &> a + 1 \\\\\n-3x &> a + 1\n\\end{aligned}\n$$\n양변을 음수 $-3$으로 나누면 부등호의 방향이 바뀐다.\n$$\nx < -\\frac{a+1}{3}\n$$\n이 부등식의 해가 $x < -3$과 같으므로 경곗값을 비교한다.\n$$\n\\begin{aligned}\n-\\frac{a+1}{3} &= -3 \\\\\na + 1 &= 9 \\\\\na &= 8\n\\end{aligned}\n$$\n그러므로 정답은 ②이다.",
+    "answer": "④",
+    "solution": "주어진 일차부등식을 $x$에 대하여 푼다.\n$$\n\\begin{aligned}\n2x - a &> 5x + 1 \\\\\n2x - 5x &> a + 1 \\\\\n-3x &> a + 1\n\\end{aligned}\n$$\n양변을 음수 $-3$으로 나누면 부등호의 방향이 바뀐다.\n$$\nx < -\\frac{a+1}{3}\n$$\n이 부등식의 해가 $x < -3$과 같으므로 경곗값을 비교한다.\n$$\n\\begin{aligned}\n-\\frac{a+1}{3} &= -3 \\\\\na + 1 &= 9 \\\\\na &= 8\n\\end{aligned}\n$$\n그러므로 정답은 ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -656,13 +656,13 @@ window.questionBank = [
     "content": "일차부등식 $x-4 \\le -3x+4a$ 의 해 중 가장 큰 정수가 $-1$ 일 때, 상수 $a$의 값의 범위는? [5점]",
     "choices": [
       "$-2 < a \\le -1$",
+      "$-2 \\le a < -1$",
       "$-2 \\le a \\le -1$",
       "$-1 \\le a < 0$",
-      "$-2 \\le a < -1$",
       "$0 \\le a < 1$"
     ],
-    "answer": "④",
-    "solution": "1단계: 주어진 부등식을 $x$에 대하여 푼다.\n$$\n\\begin{aligned}\nx - 4 &\\le -3x + 4a \\\\\nx + 3x &\\le 4a + 4 \\\\\n4x &\\le 4a + 4 \\\\\nx &\\le a + 1\n\\end{aligned}\n$$\n2단계: 가장 큰 정수해가 $-1$이 되는 조건을 수직선 위에서 파악한다.\n$x \\le a+1$을 만족시키는 정수 중 최댓값이 $-1$이 되려면,\n$-1$은 해에 포함되어야 하고, $-1$보다 큰 정수인 $0$은 해에 포함되지 않아야 한다.\n$$\n-1 \\le a+1 < 0\n$$\n3단계: 각 변에서 $1$을 빼어 $a$의 범위를 구한다.\n$$\n-2 \\le a < -1\n$$\n그러므로 정답은 ④이다.",
+    "answer": "②",
+    "solution": "주어진 부등식을 $x$에 대하여 푼 뒤, 가장 큰 정수해가 $-1$이 되는 $a$의 범위를 구한다.\n주어진 부등식은\n$$\n\\begin{aligned}\nx-4 &\\le -3x+4a \\\\\nx+3x &\\le 4a+4 \\\\\n4x &\\le 4a+4 \\\\\nx &\\le a+1\n\\end{aligned}\n$$\n가장 큰 정수해가 $-1$이려면 $-1$은 해에 포함되고 $0$은 해에 포함되지 않아야 한다.\n$-1$이 해에 포함되려면\n$$\n-1 \\le a+1\n$$\n$0$이 해에 포함되지 않으려면\n$$\na+1 < 0\n$$\n두 조건을 함께 쓰면\n$$\n-1 \\le a+1 < 0\n$$\n각 변에서 $1$을 빼면\n$$\n\\begin{aligned}\n-1-1 &\\le a+1-1 < 0-1 \\\\\n-2 &\\le a < -1\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -692,14 +692,14 @@ window.questionBank = [
     "wide": false,
     "content": "일차부등식 $\\dfrac{2x+1}{4} < 0.75 + \\dfrac{1}{3}x$ 를 만족시키는 가장 큰 정수 $x$의 값은? [4점]",
     "choices": [
-      "$-2$",
-      "$-1$",
-      "$0$",
-      "$1$",
-      "$2$"
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
     ],
-    "answer": "⑤",
-    "solution": "1단계: 소수 $0.75$를 분수로 고친다.\n$$\n0.75 = \\frac{75}{100} = \\frac{3}{4}\n$$\n따라서 부등식은 다음과 같다.\n$$\n\\frac{2x+1}{4} < \\frac{3}{4} + \\frac{1}{3}x\n$$\n2단계: 분모의 최소공배수인 $12$를 양변에 곱하여 계수를 정수로 만든다.\n$$\n\\begin{aligned}\n12 \\times \\left(\\frac{2x+1}{4}\\right) &< 12 \\times \\left(\\frac{3}{4} + \\frac{1}{3}x\\right) \\\\\n3(2x+1) &< 3 \\times 3 + 4x \\\\\n6x + 3 &< 9 + 4x\n\\end{aligned}\n$$\n3단계: 이항하여 부등식을 푼다.\n$$\n\\begin{aligned}\n6x - 4x &< 9 - 3 \\\\\n2x &< 6 \\\\\nx &< 3\n\\end{aligned}\n$$\n4단계: $x < 3$을 만족시키는 가장 큰 정수를 구한다.\n$3$보다 작은 정수 $\\dots, 0, 1, 2$ 중 가장 큰 정수는 $2$이다.\n그러므로 정답은 ⑤이다.",
+    "answer": "①",
+    "solution": "1단계: 소수 $0.75$를 분수로 고친다.\n$$\n0.75 = \\frac{75}{100} = \\frac{3}{4}\n$$\n따라서 부등식은 다음과 같다.\n$$\n\\frac{2x+1}{4} < \\frac{3}{4} + \\frac{1}{3}x\n$$\n2단계: 분모의 최소공배수인 $12$를 양변에 곱하여 계수를 정수로 만든다.\n$$\n\\begin{aligned}\n12 \\times \\left(\\frac{2x+1}{4}\\right) &< 12 \\times \\left(\\frac{3}{4} + \\frac{1}{3}x\\right) \\\\\n3(2x+1) &< 3 \\times 3 + 4x \\\\\n6x + 3 &< 9 + 4x\n\\end{aligned}\n$$\n3단계: 이항하여 부등식을 푼다.\n$$\n\\begin{aligned}\n6x - 4x &< 9 - 3 \\\\\n2x &< 6 \\\\\nx &< 3\n\\end{aligned}\n$$\n4단계: $x < 3$을 만족시키는 가장 큰 정수를 구한다.\n$3$보다 작은 정수 $\\dots, 0, 1, 2$ 중 가장 큰 정수는 $2$이다.\n그러므로 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -729,14 +729,14 @@ window.questionBank = [
     "wide": false,
     "content": "기차역에서 기차 출발 시각까지 $1$시간 $20$분의 여유가 있다. 상점에 가서 물건을 사는 데 $20$분이 걸리고, 시속 $3\\,\\mathrm{km}$로 걸어서 다녀오려고 한다. 역에서 최대 몇 $\\mathrm{km}$ 떨어진 상점까지 다녀올 수 있는가? [5점]",
     "choices": [
-      "$1.2\\,\\mathrm{km}$",
-      "$1.4\\,\\mathrm{km}$",
+      "$1.0\\,\\mathrm{km}$",
       "$1.5\\,\\mathrm{km}$",
-      "$1.8\\,\\mathrm{km}$",
-      "$2.0\\,\\mathrm{km}$"
+      "$2.0\\,\\mathrm{km}$",
+      "$3.0\\,\\mathrm{km}$",
+      "$4.0\\,\\mathrm{km}$"
     ],
-    "answer": "③",
-    "solution": "1단계: 순수하게 걷는 데 사용할 수 있는 시간을 계산한다.\n전체 여유 시간은 $1$시간 $20$분이고 물건 사는 데 $20$분이 걸리므로\n$$\n1\\text{시간 } 20\\text{분} - 20\\text{분} = 1\\text{시간}\n$$\n2단계: 역에서 상점까지의 거리를 $x\\,\\mathrm{km}$라 하고 부등식을 세운다.\n시속 $3\\,\\mathrm{km}$로 갈 때 걸리는 시간은 $\\dfrac{x}{3}$시간이고, 올 때 걸리는 시간도 $\\dfrac{x}{3}$시간이다.\n왕복 걸린 시간의 합이 $1$시간 이하이어야 하므로\n$$\n\\frac{x}{3} + \\frac{x}{3} \\le 1\n$$\n3단계: 부등식을 푼다.\n$$\n\\begin{aligned}\n\\frac{2x}{3} &\\le 1 \\\\\n2x &\\le 3 \\\\\nx &\\le \\frac{3}{2} = 1.5\n\\end{aligned}\n$$\n따라서 최대 $1.5\\,\\mathrm{km}$ 떨어진 상점까지 다녀올 수 있다.\n그러므로 정답은 ③이다.",
+    "answer": "②",
+    "solution": "1단계: 순수하게 걷는 데 사용할 수 있는 시간을 계산한다.\n전체 여유 시간은 $1$시간 $20$분이고 물건 사는 데 $20$분이 걸리므로\n$$\n1\\text{시간 } 20\\text{분} - 20\\text{분} = 1\\text{시간}\n$$\n2단계: 역에서 상점까지의 거리를 $x\\,\\mathrm{km}$라 하고 부등식을 세운다.\n시속 $3\\,\\mathrm{km}$로 갈 때 걸리는 시간은 $\\dfrac{x}{3}$시간이고, 올 때 걸리는 시간도 $\\dfrac{x}{3}$시간이다.\n왕복 걸린 시간의 합이 $1$시간 이하이어야 하므로\n$$\n\\frac{x}{3} + \\frac{x}{3} \\le 1\n$$\n3단계: 부등식을 푼다.\n$$\n\\begin{aligned}\n\\frac{2x}{3} &\\le 1 \\\\\n2x &\\le 3 \\\\\nx &\\le \\frac{3}{2} = 1.5\n\\end{aligned}\n$$\n따라서 최대 $1.5\\,\\mathrm{km}$ 떨어진 상점까지 다녀올 수 있다.\n그러므로 정답은 ②이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -764,7 +764,7 @@ window.questionBank = [
       "GEOMETRIC_VOLUME_RATIO_MONOMIAL"
     ],
     "wide": false,
-    "content": "[서술형 1번] 밑면의 반지름의 길이가 $2a$, 높이가 $3b$인 원뿔의 부피는 밑면의 반지름의 길이가 $3b$, 높이가 $2a$인 원기둥의 부피의 몇 배인지 구하고 그 과정을 서술하시오. [6점]",
+    "content": "[서술형 1]\n[서술형 1번] 밑면의 반지름의 길이가 $2a$, 높이가 $3b$인 원뿔의 부피는 밑면의 반지름의 길이가 $3b$, 높이가 $2a$인 원기둥의 부피의 몇 배인지 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$\\dfrac{2a}{9b}$배",
     "solution": "1단계: 밑면의 반지름의 길이가 $2a$, 높이가 $3b$인 원뿔의 부피 $V_1$을 구한다.\n$$\n\\begin{aligned}\nV_1 &= \\frac{1}{3} \\times \\pi \\times (2a)^2 \\times 3b \\\\\n&= \\frac{1}{3} \\times \\pi \\times 4a^2 \\times 3b \\\\\n&= 4\\pi a^2 b\n\\end{aligned}\n$$\n2단계: 밑면의 반지름의 길이가 $3b$, 높이가 $2a$인 원기둥의 부피 $V_2$를 구한다.\n$$\n\\begin{aligned}\nV_2 &= \\pi \\times (3b)^2 \\times 2a \\\\\n&= \\pi \\times 9b^2 \\times 2a \\\\\n&= 18\\pi ab^2\n\\end{aligned}\n$$\n3단계: 원뿔의 부피가 원기둥 부피의 몇 배인지 비율 $\\dfrac{V_1}{V_2}$를 구한다.\n$$\n\\begin{aligned}\n\\frac{V_1}{V_2} &= \\frac{4\\pi a^2 b}{18\\pi ab^2} \\\\\n&= \\frac{4}{18} \\times \\frac{a^2}{a} \\times \\frac{b}{b^2} \\\\\n&= \\frac{2a}{9b}\n\\end{aligned}\n$$\n따라서 원뿔의 부피는 원기둥 부피의 $\\dfrac{2a}{9b}$배이다.",
@@ -795,7 +795,7 @@ window.questionBank = [
       "EQUIVALENT_INEQUALITIES_PARAMETER_SOLVE"
     ],
     "wide": false,
-    "content": "[서술형 2번] 두 일차부등식 $4x-3 \\le 2x+5$ 와 $2x-a \\ge 4(x-3)+2$ 의 해가 서로 같을 때, 상수 $a$의 값을 구하는 과정을 서술하시오. [7점]",
+    "content": "[서술형 2]\n[서술형 2번] 두 일차부등식 $4x-3 \\le 2x+5$ 와 $2x-a \\ge 4(x-3)+2$ 의 해가 서로 같을 때, 상수 $a$의 값을 구하는 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$2$",
     "solution": "1단계: 첫 번째 일차부등식을 푼다.\n$$\n\\begin{aligned}\n4x - 3 &\\le 2x + 5 \\\\\n4x - 2x &\\le 5 + 3 \\\\\n2x &\\le 8 \\\\\nx &\\le 4\n\\end{aligned}\n$$\n2단계: 두 번째 일차부등식을 괄호를 풀어 정리한다.\n$$\n\\begin{aligned}\n2x - a &\\ge 4(x-3) + 2 \\\\\n2x - a &\\ge 4x - 12 + 2 \\\\\n2x - a &\\ge 4x - 10 \\\\\n2x - 4x &\\ge a - 10 \\\\\n-2x &\\ge a - 10\n\\end{aligned}\n$$\n양변을 음수 $-2$로 나누면 부등호의 방향이 바뀐다.\n$$\nx \\le \\frac{-(a-10)}{2} = \\frac{10-a}{2}\n$$\n3단계: 두 부등식의 해가 서로 같으므로 경곗값을 비교하여 방정식을 세운다.\n$$\n\\begin{aligned}\n\\frac{10-a}{2} &= 4 \\\\\n10 - a &= 8 \\\\\na &= 2\n\\end{aligned}\n$$\n따라서 구하는 상수 $a$의 값은 $2$이다.",
@@ -826,7 +826,7 @@ window.questionBank = [
       "INEQUALITY_ADMISSION_FEE_MAX_PEOPLE"
     ],
     "wide": false,
-    "content": "[서술형 3번] 어느 체험 학습장의 입장료는 어른이 $1200$원, 어린이가 $800$원이다. 어른과 어린이를 합하여 모두 $30$명이 입장하려고 할 때, 총 입장료가 $28000$원 이하가 되게 하려면 어른은 최대 몇 명까지 입장할 수 있는지 구하는 과정을 서술하시오. [7점]",
+    "content": "[서술형 3]\n[서술형 3번] 어느 체험 학습장의 입장료는 어른이 $1200$원, 어린이가 $800$원이다. 어른과 어린이를 합하여 모두 $30$명이 입장하려고 할 때, 총 입장료가 $28000$원 이하가 되게 하려면 어른은 최대 몇 명까지 입장할 수 있는지 구하는 과정을 서술하시오. [7점]",
     "choices": [],
     "answer": "$10$명",
     "solution": "1단계: 미지수를 정한다.\n입장하는 어른의 수를 $x$명이라 하면, 전체 인원이 $30$명이므로 어린이의 수는 $(30 - x)$명이다. (단, $x$는 $0 \\le x \\le 30$인 정수)\n2단계: 총 입장료에 대한 부등식을 세운다.\n$$\n1200x + 800(30 - x) \\le 28000\n$$\n3단계: 부등식을 푼다.\n양변을 $100$으로 나눈다.\n$$\n12x + 8(30 - x) \\le 280\n$$\n괄호를 풀어 전개한다.\n$$\n\\begin{aligned}\n12x + 240 - 8x &\\le 280 \\\\\n4x + 240 &\\le 280 \\\\\n4x &\\le 280 - 240 \\\\\n4x &\\le 40 \\\\\nx &\\le 10\n\\end{aligned}\n$$\n4단계: 문제의 조건에 맞는 답을 구한다.\n$x \\le 10$이므로 어른은 최대 $10$명까지 입장할 수 있다.",
