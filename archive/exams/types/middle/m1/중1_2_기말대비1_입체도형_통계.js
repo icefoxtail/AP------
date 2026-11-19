@@ -192,8 +192,6 @@ window.questionBank = [
     "choices": [],
     "answer": "원뿔, ㄴ",
     "solution": "회전체의 이름은 원뿔이고, 모선은 ㄴ이다.",
-    "image": "assets/images/중1_2_기말대비1_입체도형_통계/q5-problem-visual.svg",
-    "imageAlt": "원뿔 모양의 회전체. 꼭짓점에서 밑면의 중심까지 점선(ㄱ), 꼭짓점에서 밑면의 둘레 위의 점까지 선분(ㄴ), 밑면의 중심에서 둘레 위의 점까지 점선(ㄷ)이 있다.",
     "type": "단답형",
     "source": "[중1-2] 기말대비1.pdf",
     "grade": "중1",
