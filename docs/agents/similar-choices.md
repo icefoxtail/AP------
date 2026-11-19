@@ -47,6 +47,7 @@
 ## 도구와 결속
 
 - 결함 판정과 목표 배열 뽑기는 저장소 `archive/tools/similar-import/`의 모듈 한 곳에 둔다. 생성 쪽과 반입 검사가 같은 함수를 쓴다. 이유: 기준이 두 군데에서 따로 굴러가면 만든 시험지가 반입에서 거절된다.
+- 모듈 `archive/tools/similar-import/choice-order-lib.mjs`(판정 `analyzeChoiceOrder`·`answerDistribution`·`leakWarnings`, 목표 배열 `chooseTargetAnswers`·`drawTargetAnswers`). 실행: 판정 `node archive/tools/similar-import/choice-order-check.mjs judge <시험지.js|폴더>`, 목표 배열 `node archive/tools/similar-import/choice-order-check.mjs target <시험지.js> [--lock 3,7]`(새 시험지는 `target --count N --seed <이름>`). 반입 검사는 `check-judgment.mjs`가 같은 모듈을 쓴다.
 - 반입 검사는 수 보기 크기순과 정답 번호 분포 결함을 거절하고, 생김새 누설(규칙 4)은 경고로 띄운다. 이유: 꼴 판정은 오탐이 있어(정답만 정수인 것이 자연스러운 문항 등) 사람이 읽고 정한다.
 - 보기를 고치면 발문+보기 지문이 바뀐다. 바뀐 문항 목록(파일, 문항 번호, questionUid)을 PR에 적고 같은 작업 안에서 결속을 마무리한다([metadata.md](metadata.md) "메타 결속 지문 범위"). 유형·난이도 판정은 보기가 확정된 뒤에 한다.
 - PR 본문에는 바뀐 문항 목록과 시험지별 정답 번호 열(전 → 후)을 적는다.
