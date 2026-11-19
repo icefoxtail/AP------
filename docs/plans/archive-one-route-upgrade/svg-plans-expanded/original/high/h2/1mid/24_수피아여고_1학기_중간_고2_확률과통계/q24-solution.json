@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "8",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "4",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "16",
+        "in": []
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "방정식은 (3x−n)(5x−n)=0이므로 근은 n/3, n/5이다. 정수해가 있으려면 n이 3의 배수(A) 또는 5의 배수(B)이어야 한다. 1부터 30까지에서 A는 10개, B는 6개이고 15의 배수 15, 30의 2개가 겹친다. 그림은 A만 8, 둘 다 2, B만 4, 바깥 16이다. n(A∪B)=10+6−2=14이므로 확률은 14/30=7/15이다.",
+  "accessibilityDescription": "전체집합 안에서 3의 배수 A와 5의 배수 B가 겹친 벤다이어그램이며 영역마다 개수가 적혀 있고 A 또는 B에 해당하는 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "겹치는 15, 30의 2개와 영역별 개수가 보여 14개를 중복 없이 셈을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$n$이 30 이하의 자연수일 때, $x$에 대한 이차방정식 $15x^2-8nx+n^2=0$의 정수해가 존재할 확률을 구하는 풀이 과정과 답을 쓰시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

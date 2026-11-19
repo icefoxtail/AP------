@@ -1,0 +1,94 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "앞",
+          "children": [
+            {
+              "label": "앞",
+              "children": [
+                {
+                  "label": "앞"
+                },
+                {
+                  "label": "뒤"
+                }
+              ]
+            },
+            {
+              "label": "뒤",
+              "children": [
+                {
+                  "label": "앞"
+                },
+                {
+                  "label": "뒤"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "뒤",
+          "children": [
+            {
+              "label": "앞",
+              "children": [
+                {
+                  "label": "앞"
+                },
+                {
+                  "label": "뒤"
+                }
+              ]
+            },
+            {
+              "label": "뒤",
+              "children": [
+                {
+                  "label": "앞"
+                },
+                {
+                  "label": "뒤"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "highlightPaths": [
+      {
+        "path": [
+          "앞",
+          "앞",
+          "앞"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "path": [
+          "뒤",
+          "뒤",
+          "뒤"
+        ],
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "세 동전의 앞뒤를 차례로 나열한 수형도이다. 모든 경우는 2×2×2=8가지이고, 모두 같은 면이 나오는 경우는 앞앞앞(파랑)과 뒤뒤뒤(주황)의 2가지이다. 따라서 확률은 2/8=1/4이고 답은 ②이다.",
+  "accessibilityDescription": "첫째, 둘째, 셋째 동전의 앞면과 뒷면으로 갈라지는 수형도이며 모두 앞인 경로와 모두 뒤인 경로가 서로 다른 색으로 표시되어 있다.",
+  "newVisualInformation": [
+    "8가지 결과와 모두 같은 면인 두 경우가 한눈에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "서로 다른 세 개의 동전을 동시에 던지는 시행에서 모두 같은 면이 나올 확률을 구하면? [2.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
