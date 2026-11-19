@@ -42,6 +42,10 @@ if (cmd === 'prep') {
   try { const t = JSON.parse(fs.readFileSync(path.join(out, 'triage.json'), 'utf8')); rows = Array.isArray(t) ? t : t.items; if (!Array.isArray(rows)) throw new Error('items 배열이 없다'); }
   catch (e) { problems.push('triage.json 을 읽을 수 없다: ' + e.message); rows = []; }
   const want = new Set(ids.map(String)), got = new Set();
+  // 옛 형식 시험지는 id가 "Q01" 같은 문자열이다. DeepSeek이 1처럼 숫자로 답하면 같은 번호의 id로 맞춘다.
+  const byNum = {};
+  for (const k of want) { const m = /^[A-Za-z]*0*(\d+)$/.exec(k); if (m) byNum[m[1]] = byNum[m[1]] === undefined ? k : null; }
+  for (const r of rows) { const k = String(r.ord); if (!want.has(k)) { const m = /^[A-Za-z]*0*(\d+)$/.exec(k); if (m && byNum[m[1]]) r.ord = byNum[m[1]]; } }
   for (const r of rows) {
     const k = String(r.ord);
     if (!want.has(k)) { problems.push(`시험지에 없는(또는 이미 판정된) 번호: ${r.ord}`); continue; }
