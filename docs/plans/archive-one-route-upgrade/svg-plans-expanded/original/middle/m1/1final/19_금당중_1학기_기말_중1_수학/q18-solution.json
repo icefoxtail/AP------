@@ -1,58 +1,83 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "0",
           "1/2"
-        ],
-        "domain": [
-          "-10",
-          "6"
-        ],
-        "label": "y=x/2",
-        "color": "BLUE"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-10",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -10,
+      6
+    ],
+    "viewport": [
+      -12.88,
+      8.88,
+      -6.44,
+      4.44
+    ],
+    "axisTickValues": {
+      "x": [
+        "4",
+        "6",
+        "-4",
+        "-10",
+        "3"
+      ],
+      "y": [
+        "2",
+        "3",
+        "-2",
+        "-5",
+        "1"
+      ]
+    },
     "overlays": {
       "points": [
         {
           "id": "P0",
           "x": "4",
           "y": "2",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P1",
           "x": "6",
           "y": "3",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P2",
           "x": "-4",
           "y": "-2",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P3",
           "x": "-10",
           "y": "-5",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P",
           "x": "3",
-          "y": "1",
-          "coordinates": true
+          "y": "1"
         }
       ]
     }

@@ -1,23 +1,45 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "1",
           "1/10"
-        ],
-        "domain": [
-          "0",
-          "1300"
-        ],
-        "label": "y=1+x/10",
-        "color": "BLUE"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "1300"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      1300
+    ],
+    "viewport": [
+      -234,
+      1534,
+      -23.58,
+      154.58
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x(m)",
+      "y": "y"
+    },
     "overlays": {
       "points": [
         {
@@ -27,10 +49,6 @@
           "coordinates": true
         }
       ]
-    },
-    "axisTitles": {
-      "x": "x(m)",
-      "y": "y"
     }
   },
   "caption": "수심 x m에서의 압력을 y기압이라 하면 10m 내려갈 때마다 1기압씩 높아지므로 1m당 1/10기압씩 높아지고 해수면에서 1기압이므로 y=1+x/10이다. x=1269를 대입하면 y=1+126.9=127.9이다. 따라서 압력은 127.9기압이다.",
