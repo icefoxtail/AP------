@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "−10/3<a≤5/4",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-10/3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "5/4",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "−10/3은 약 −3.33이고 5/4는 1.25이다. 수직선에서 −10/3은 속이 빈 점, 5/4는 찬 점이다. 이 구간에 속하는 정수는 −3, −2, −1, 0, 1이므로 모두 5개이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "수직선 위에 −10/3과 5/4 사이의 구간이 있고 −10/3은 속이 빈 점, 5/4는 찬 점이다.",
+  "newVisualInformation": [
+    "구간 (−10/3, 5/4]에 속하는 정수는 −3, −2, −1, 0, 1의 5개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-\\dfrac{10}{3} < a \\le \\dfrac{5}{4}$ 사이의 정수의 개수는? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
