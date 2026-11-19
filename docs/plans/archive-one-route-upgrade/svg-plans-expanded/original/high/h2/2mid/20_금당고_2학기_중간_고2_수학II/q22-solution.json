@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.4,
+      1.6
+    ],
+    "viewport": [
+      -0.8,
+      2.8,
+      -1,
+      2.6
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "P",
+          "curveX": "15/16"
+        },
+        {
+          "id": "Q",
+          "x": "375/256",
+          "y": "0"
+        },
+        {
+          "id": "R",
+          "x": "0",
+          "y": "285/256"
+        },
+        {
+          "id": "Y",
+          "x": "0",
+          "y": "-225/256"
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "15/8",
+          "intercept": "-225/256",
+          "label": "l"
+        }
+      ],
+      "circles": [
+        {
+          "id": "K1",
+          "center": [
+            "375/256",
+            "153/256"
+          ],
+          "radiusSquared": "23409/65536"
+        },
+        {
+          "id": "K2",
+          "center": [
+            "255/512",
+            "285/256"
+          ],
+          "radiusSquared": "65025/262144"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O",
+    "P": "P",
+    "Q": "Q",
+    "R": "R",
+    "Y": "Y"
+  },
+  "caption": "예: a=15/16일 때를 그린다. 접선 l의 기울기는 2a=15/8이고 y축과 Y(0,-225/256)에서 만난다. x축에 접하고 P에서 l에 접하는 원은 중심 (375/256,153/256)에서 x축과 Q(375/256,0)에서 만나고, y축에 접하고 P에서 l에 접하는 원은 중심 (255/512,285/256)에서 y축과 R(0,285/256)에서 만난다. D=√(4a²+1)라 두면 OQ=(a/2)(1+D), YR=aD이고 비는 (1/2)(1+1/D)이다. a→∞에서 k=1/2이므로 50k=25이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 그림과 같이 양수 $a$에 대하여 곡선 $y=x^2$ 위의 점 $\\mathrm{P}_a(a, a^2)$에서의 접선을 $l_a$이라 하고, 직선 $l_a$이 $y$축과 만나는 점을 $Y_a$이라 하자. $x$축에 접하고 점 $\\mathrm{P}_a$에서 직선 $l_a$에 접하는 원을 $C_a$, $y$축에 접하고 점 $\\mathrm{P}_a$에서 직선 $l_a$에 접하는 원을 $C_a'$이라 할 때, 원 $C_a$과 $x$축과의 교점을 $Q_a$, 원 $C_a'$과 $y$축과의 교점을 $R_a$이라 하자. $\\lim_{a \\to \\infty} \\frac{\\overline{OQ_a}}{\\overline{Y_a R_a}} = k$라 할 때, $50k$의 값을 구하시오. (단, $\\mathrm{O}$는 원점이고, 점 $Q_a$의 $x$좌표와 점 $R_a$의 $y$좌표는 양수이다.) [10.0점]\n<img src=\"assets/images/20_금당고_2학기_중간_고2_수학II/q22.png\" alt=\"20_금당고_2학기_중간_고2_수학II Q22\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=15/16에서 접선 l, P에서 l에 접하고 x축 또는 y축에 접하는 두 원과 점 Q, R, Y를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=15/16인 예에서 접선 l과 P에서 l에 접하는 두 원, x축 접점 Q, y축 접점 R, 접선의 y절편 Y를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 점 P에서 접하는 직선 l이 있고, P를 지나 l에 접하는 두 원 중 하나는 가로축에, 다른 하나는 세로축에 접하며 각각 점 Q와 점 R에서 닿고 l이 세로축 아래쪽의 점 Y에서 만나는 그래프이다."
+}
