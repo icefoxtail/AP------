@@ -209,7 +209,7 @@
           "B",
           "C"
         ],
-        "label": "60°",
+        "label": "60",
         "style": "ARC"
       },
       {
@@ -219,7 +219,7 @@
           "C",
           "D"
         ],
-        "label": "60°",
+        "label": "60",
         "style": "ARC"
       }
     ],
@@ -232,15 +232,20 @@
       },
       {
         "id": "vAD",
-        "ownerSegment": "AD",
+        "ownerSegment": "DA",
         "text": "2",
         "factRole": "GIVEN"
-      },
+      }
+    ],
+    "dimensions": [
       {
-        "id": "vBC",
-        "ownerSegment": "BC",
-        "text": "4",
-        "factRole": "DERIVED_INTERMEDIATE"
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "4",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 4
       }
     ]
   }
