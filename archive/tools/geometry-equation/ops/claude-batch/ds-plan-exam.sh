@@ -1,13 +1,14 @@
 #!/bin/bash
 # usage: [DS_TIMEOUT=7200] [DS_CWD_BASE=…] [NO_PUSH=1] ds-plan-exam.sh <시험지 JS 저장소 상대경로>
-# 시험지 하나의 "plan 대기" 문항(장부 OPEN_LAYOUT "plan 대기…" − 이미 plan/판정이 있는 문항)을 DeepSeek(opencode-go/deepseek-v4.1-flash)이 plan으로 쓰고
-# 엔진 렌더(ARCHIVE_BOUND)와 PNG 확인까지 하게 한다(지시문 prompts/ds-plan.md). 끝나면 기계 검증(ds-plan-lib.cjs validate):
-#   문항마다 plan 파일+렌더 ARCHIVE_BOUND+PNG, 또는 판정(UNSUPPORTED/EXEMPT/CONTENT)+사유, caption/alt 언어 계약, JSON 읽힘, 예상 밖 변경 없음.
+# 시험지 하나의 "plan 대기" 문항(장부 OPEN_LAYOUT "plan 대기…" − 이미 plan/판정이 있는 문항)을 DeepSeek(opencode-go/deepseek-v4.1-flash)이 plan으로 **글로만** 쓰게 한다
+# (지시문 prompts/ds-plan.md; 사용자 지시 2026-11-19: 문항마다 렌더·PNG 확인은 너무 느리다. 렌더는 나중에 공장이 일괄로 하고 실패분은 수리로 넘긴다).
+# 끝나면 기계 검증(ds-plan-lib.cjs validate): 문항마다 plan 파일(JSON·capability·필수 최상위 필드·caption/alt 언어 계약·같은 capability 본보기에 없는 필드 없음)
+#   또는 판정(UNSUPPORTED/EXEMPT/CONTENT)+사유, 예상 밖 변경 없음.
 # 못 통과한 문항이 있으면 그 문항만 1회 다시 시킨다. 그래도 못 통과한 문항은 plan 파일을 치우고(백업) 장부 그대로 plan 대기로 남긴다.
 # 통과한 문항이 하나라도 있으면 그 시험지 plan 폴더만 git add·commit 하고 data/svg-plans-20261117 로 push 한다(NO_PUSH=1 이면 commit 만).
-# 마지막 줄: "ds-plan <이름> status=<OK|PARTIAL|NOTHING|FAIL|LIMIT|BUSY> targets=N ok=N bound=N unsupported=N exempt=N content=N bad=N calls=N secs=N [sha=…]"
+# 마지막 줄: "ds-plan <이름> status=<OK|PARTIAL|NOTHING|FAIL|LIMIT|BUSY> targets=N ok=N plans=N unsupported=N exempt=N content=N bad=N calls=N secs=N [sha=…]"
 #   종료코드 0=OK/PARTIAL/NOTHING, 1=FAIL, 3=OpenCode 한도(통과한 문항은 이미 커밋), 4=BUSY(다른 ds-plan 실행 중)
-# DeepSeek 은 한 번에 하나만 연다(.tmp/work/ds-plan.lock). 렌더 슬롯은 공장과 공유한다(RENDER_LOCK_DIR 기본 공장 폴더, 없으면 이 저장소의 .tmp/work).
+# DeepSeek 은 한 번에 하나만 연다(.tmp/work/ds-plan.lock). 
 # 실행 방식은 ds-triage-exam.sh 와 같다: 저장소 밖 빈 cwd, 지시는 표준입력(UTF-8), 시작(init)에서 150초 안에 출력이 없으면 그 실행만 종료하고 최대 3번 재시도.
 JS=$1
 [ -n "$JS" ] || { echo "usage: ds-plan-exam.sh <시험지 JS 저장소 상대경로>" >&2; exit 2; }
@@ -16,8 +17,7 @@ R=$(cd "$HERE" && git rev-parse --show-toplevel) || exit 2
 cd "$R" || exit 2
 [ -f "$JS" ] || { echo "ERROR: 시험지 JS가 없다(저장소 루트 기준): $JS" >&2; exit 2; }
 command -v opencode >/dev/null 2>&1 || { echo "ERROR: opencode 가 PATH 에 없다." >&2; exit 2; }
-[ -f .tmp/work/render.mjs ] && [ -f .tmp/svg-m1/svg2png.cjs ] || { echo "ERROR: .tmp/work 또는 .tmp/svg-m1 이 없다. README.md '새 PC 준비' 1~3을 먼저 한다(restore.sh)." >&2; exit 2; }
-[ -d .tmp/apmath-visual-engine/dependencies/node_modules ] || [ -n "${GEOMETRY_NODE_MODULES:-}" ] || echo "WARN: 렌더 의존성(.tmp/apmath-visual-engine/dependencies)이 없다. GEOMETRY_NODE_MODULES 를 지정하거나 junction 을 만든다." >&2
+[ -f .tmp/svg-m1/guide/guide-core.md ] || { echo "ERROR: .tmp/svg-m1 가이드가 없다. README.md '새 PC 준비' 2번을 먼저 한다." >&2; exit 2; }
 R_WIN=$(pwd -W 2>/dev/null || pwd)
 REL=${JS#archive/exams/original/}; REL=${REL%.js}
 NAME=$(basename "$JS" .js)
@@ -28,16 +28,14 @@ LIB="node $HERE/ds-plan-lib.cjs"
 DS_MODEL=${DS_MODEL:-opencode-go/deepseek-v4.1-flash}
 TO=${DS_TIMEOUT:-7200}
 CWD_BASE=${DS_CWD_BASE:-C:/Users/USER/ds-svg-cwd}
-FACTORY_LOCKS=C:/Users/USER/Desktop/AP------/.claude/worktrees/agent-afa4a32718edfb280/.tmp/work
-if [ -z "${RENDER_LOCK_DIR:-}" ] && [ -d "$FACTORY_LOCKS" ]; then export RENDER_LOCK_DIR=$FACTORY_LOCKS; fi
 mkdir -p "$CWD_BASE" .tmp/work
 T0=$(date +%s); CALLS=0; SHA=""
-cnt(){ node -e "const f=process.argv[1],k=process.argv[2];let n=0;try{for(const x of JSON.parse(require('fs').readFileSync(f,'utf8')).ok){const r=JSON.parse(require('fs').readFileSync(require('path').join(process.argv[3],'q'+x,'result.json'),'utf8'));if(k==='FIGURE'?r.decision==='FIGURE':r.decision===k)n++}}catch{}console.log(n)" "$OUT/validate.json" "$1" "$OUT"; }
+cnt(){ node -e "try{const d=JSON.parse(require('fs').readFileSync('$OUT/validate.json','utf8')).decisions;console.log(Object.values(d).filter(x=>x==='$1').length)}catch{console.log(0)}"; }
 fin(){ local ok=0 bad=0 br=0 un=0 ex=0 ct=0
   if [ -f "$OUT/validate.json" ]; then
     ok=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$OUT/validate.json','utf8')).ok.length)"); bad=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$OUT/validate.json','utf8')).bad.length)")
     br=$(cnt FIGURE); un=$(cnt UNSUPPORTED); ex=$(cnt EXEMPT); ct=$(cnt CONTENT); fi
-  echo "ds-plan $NAME status=$1 targets=${TARGETS:-0} ok=$ok bound=$br unsupported=$un exempt=$ex content=$ct bad=$bad calls=$CALLS secs=$(( $(date +%s)-T0 ))${SHA:+ sha=$SHA}"
+  echo "ds-plan $NAME status=$1 targets=${TARGETS:-0} ok=$ok plans=$br unsupported=$un exempt=$ex content=$ct bad=$bad calls=$CALLS secs=$(( $(date +%s)-T0 ))${SHA:+ sha=$SHA}"
   rmdir .tmp/work/ds-plan.lock 2>/dev/null; exit "$2"; }
 
 # 동시에 하나만(DeepSeek 인스턴스 1개). 죽은 실행의 잠금은 PID 로 판별해 치운다.
@@ -91,7 +89,7 @@ call_ds ""; RC=$?
 $LIB validate "$JS" "$OUT" > "$OUT/validate1.txt" 2>&1; VRC=$?
 if [ $VRC -ne 0 ] && [ $LIMIT = 0 ]; then
   BADN=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$OUT/validate.json','utf8')).bad.map(b=>'Q'+b.no).join(', '))")
-  call_ds "[재시도] 직전 실행에서 아래 문제로 검증을 통과하지 못한 문항만 다시 한다($BADN). 통과한 문항의 파일은 건드리지 않는다. 각 문항을 고쳐 렌더·PNG 확인 후 result.json 까지 다시 쓴다(plan을 고쳤으면 반드시 다시 렌더). 해결 못 하면 그 문항은 규칙대로 UNSUPPORTED 로 두고 오류 코드와 시도를 쓴다.
+  call_ds "[재시도] 직전 실행에서 아래 문제로 검증을 통과하지 못한 문항만 다시 한다($BADN). 통과한 문항의 파일은 건드리지 않는다. 각 문항의 plan(또는 result.json)을 고쳐 다시 쓴다. 렌더하지 않는다. 같은 capability 의 본보기 plan 을 다시 찾아 필드 이름을 맞춘다. 엔진이 지원하지 않는 형태라고 확실할 때만 UNSUPPORTED 로 둔다.
 $(cat "$OUT/validate1.txt")"
   RC=$?; [ $RC -ne 0 ] && limit_hit && LIMIT=1
   $LIB validate "$JS" "$OUT" > "$OUT/validate2.txt" 2>&1; VRC=$?
@@ -108,7 +106,7 @@ if [ -z "$OKS" ]; then [ $LIMIT = 1 ] && fin2 LIMIT 3; fin2 FAIL 1; fi
 BADCNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$OUT/validate.json','utf8')).bad.length)")
 git add -A -- "$PLANDIR" || fin2 FAIL 1
 if git diff --cached --quiet -- "$PLANDIR"; then fin2 FAIL 1; fi
-git commit -q -m "docs(svg-plans): ds-plan $NAME plan 대기 $TARGETS문항 중 통과 $(echo $OKS | wc -w)문항 (DeepSeek 초안, 기계 검증 통과)" -- "$PLANDIR" || fin2 FAIL 1
+git commit -q -m "docs(svg-plans): ds-plan $NAME plan 대기 $TARGETS문항 중 통과 $(echo $OKS | wc -w)문항 (DeepSeek 글로만 작성, 렌더는 공장 일괄)" -- "$PLANDIR" || fin2 FAIL 1
 SHA=$(git rev-parse --short HEAD)
 if [ "${NO_PUSH:-0}" != 1 ]; then
   if ! git push -q origin "$BRANCH" 2>"$OUT/push.log"; then

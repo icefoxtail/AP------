@@ -5,7 +5,8 @@
 //                                                        source-revision.json 을 쓰고, 예상 밖의 변경을 되돌린다. 통과 문항 번호를 출력한다.
 //   node ds-plan-lib.cjs report   <시험지 JS> <outdir>   통과 문항 결과 표(문항 | 결과 | 설명 | PNG 경로)를 출력한다.
 // 문항 번호 no = 시험지 문항 배열의 1부터 센 자리(공장 build.cjs 와 같다). 렌더에 넘기는 ordinal = 배열에 숫자가 아닌 id가 있으면 그 id, 아니면 no.
-// DeepSeek 이 쓰는 것: <PLANDIR>/q<no>-solution.json(FIGURE만), <OUT>/q<no>/{item.json,result.json,out/,fig.png}. _decisions.jsonl 은 이 도구가 쓴다.
+// 글로만 쓴다(2026-11-19 사용자 지시): 렌더·PNG 확인은 하지 않는다(나중에 공장이 일괄 렌더하고 실패분은 수리로 넘긴다).
+// DeepSeek 이 쓰는 것: <PLANDIR>/q<no>-solution.json(FIGURE), <OUT>/q<no>/result.json(FIGURE 가 아닌 문항만). _decisions.jsonl 은 이 도구가 쓴다.
 const fs = require('fs'), path = require('path'), vm = require('vm'), cp = require('child_process');
 const LEDGER = 'archive/tools/geometry-equation/production/exam-figure-ledger/';
 const PLAN_BASE = 'docs/plans/archive-one-route-upgrade/svg-plans-expanded/';
@@ -67,6 +68,7 @@ if (cmd === 'prep') {
 
 const pend = readJson(pendingPath).rows;
 const hasKorean = s => /[가-힣]/.test(s);
+const CONTAINERS = ['graphPlan', 'chart', 'numberLine', 'mathPlan', 'planeMarks', 'solids', 'ellipse', 'setDiagram'];
 
 function checkLanguage(text, surface) {
   const { validateSvgStudentLanguage } = require(path.resolve('archive/tools/svg-language-contract.cjs'));
@@ -79,27 +81,29 @@ function checkLanguage(text, surface) {
   return r.errors.filter(e => e.surface === surface || !e.surface && !String(e.code).startsWith('SVG_ACCESSIBILITY_DESCRIPTION')).map(e => e.code + (e.token ? ':' + e.token : ''));
 }
 
-function validateOne(r) {
-  const problems = [], d = path.join(out, 'q' + r.no);
-  const pf = planDir + planFile(r.no);
-  let res = null;
-  try { res = readJson(path.join(d, 'result.json')); } catch (e) { return ['result.json 을 읽을 수 없다: ' + e.message]; }
-  if (!DECISIONS.includes(res.decision)) problems.push(`decision 값이 정해진 것이 아니다(${res.decision})`);
-  if (typeof res.why !== 'string' || res.why.trim().length < 12 || !hasKorean(res.why)) problems.push('why 가 비었거나 너무 짧다(구체적인 한국어 사유 필요)');
-  if (res.decision !== 'FIGURE') {
-    if (fs.existsSync(pf)) problems.push(`${planFile(r.no)} 가 plan 폴더에 남아 있다(UNSUPPORTED/EXEMPT/CONTENT 는 plan 폴더에 파일을 두지 않는다. 마지막 시도는 ${d}/last-plan.json 으로 옮긴다)`);
-    if (res.decision === 'UNSUPPORTED') {
-      if (typeof res.errorCode !== 'string' || !res.errorCode.trim()) problems.push('UNSUPPORTED 는 errorCode 가 필요하다');
-      if (typeof res.attempts !== 'string' || res.attempts.trim().length < 10) problems.push('UNSUPPORTED 는 attempts(시도한 방법)가 필요하다');
-    }
-    return problems;
-  }
-  // FIGURE
-  if (!fs.existsSync(pf)) { problems.push(`${planFile(r.no)} 가 plan 폴더에 없다`); return problems; }
+// 같은 capability 로 이미 있는 plan 들이 쓴 필드(최상위, 그리고 형태 본문 한 단계 아래)의 합집합. 한 번도 쓰인 적 없는 필드는 지어낸 것으로 본다.
+let knownCache = null;
+function knownFields() {
+  if (knownCache) return knownCache;
+  const by = {}; const base = PLAN_BASE + 'original/';
+  const walk = d => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = d + '/' + e.name;
+    if (e.isDirectory()) { if ((p + '/') !== planDir) walk(p); } else if (/^q\d+-solution(-\d+)?\.json$/.test(e.name)) {
+      try { const j = readJson(p); const c = j.capability; if (typeof c !== 'string') continue;
+        const o = by[c] || (by[c] = { n: 0, top: new Set(), sub: {} }); o.n++;
+        for (const k of Object.keys(j)) { o.top.add(k);
+          if (CONTAINERS.includes(k) && j[k] && typeof j[k] === 'object' && !Array.isArray(j[k])) { const s = o.sub[k] || (o.sub[k] = new Set()); for (const kk of Object.keys(j[k])) s.add(kk); } }
+      } catch {} } } };
+  walk(base.replace(/\/$/, ''));
+  return (knownCache = by);
+}
+
+function problemsOfPlan(r) {
+  const problems = [], pf = planDir + planFile(r.no);
   let plan = null;
-  try { plan = readJson(pf); } catch (e) { problems.push('plan JSON 을 읽을 수 없다: ' + e.message); return problems; }
+  try { plan = readJson(pf); } catch (e) { return ['plan JSON 을 읽을 수 없다: ' + e.message]; }
   const raw = fs.readFileSync(pf, 'utf8');
   if (/�|\?\?/.test(raw)) problems.push('plan 에 깨진 글자(? 또는 U+FFFD)가 있다');
+  if (!plan || typeof plan !== 'object' || Array.isArray(plan)) return ['plan 최상위가 객체가 아니다'];
   if (typeof plan.capability !== 'string' || !plan.capability) problems.push('plan.capability 가 없다');
   for (const k of ['caption', 'accessibilityDescription']) {
     if (typeof plan[k] !== 'string' || !plan[k].trim()) { problems.push(`plan.${k} 가 없다`); continue; }
@@ -108,33 +112,57 @@ function validateOne(r) {
     if (errs.length) problems.push(`plan.${k} 가 언어 계약을 통과하지 못한다: ${errs.join(', ')}`);
   }
   if (!Array.isArray(plan.sourceConditions) || !plan.sourceConditions.length) problems.push('plan.sourceConditions 가 없다(본보기 플랜처럼 source 조건 필요)');
-  // 렌더 결과
-  const fr = path.join(d, 'out', 'figure-result.json'), svgf = path.join(d, 'out', 'figure-solution.svg');
-  let fres = null;
-  try { fres = readJson(fr); } catch { problems.push('렌더 결과 out/figure-result.json 이 없다(렌더하지 않았다)'); }
-  if (fres) {
-    if (fres.status !== 'ARCHIVE_BOUND') problems.push(`렌더 status 가 ARCHIVE_BOUND 가 아니다(${fres.status})`);
-    if (fs.statSync(pf).mtimeMs > fs.statSync(fr).mtimeMs + 2000) problems.push('plan 이 마지막 렌더보다 나중에 바뀌었다(고친 plan 을 다시 렌더하지 않았다)');
+  else if (!plan.sourceConditions.some(c => c && c.mappedTo === 'PRESERVED_ARCHIVE_BANK')) problems.push('plan.sourceConditions 에 mappedTo PRESERVED_ARCHIVE_BANK 항목(문제 원문)이 없다');
+  if (!Array.isArray(plan.newVisualInformation) || !plan.newVisualInformation.length) problems.push('plan.newVisualInformation 이 없다');
+  // 지어낸 필드 검사(같은 capability 의 기존 plan 3개 이상이 있을 때만)
+  if (typeof plan.capability === 'string') {
+    const known = knownFields()[plan.capability];
+    if (!known) problems.push(`capability "${plan.capability}" 로 쓴 기존 plan 이 없다(이름이 틀렸거나 새 형태다. 가이드의 정확한 이름을 확인하고, 엔진이 지원하지 않는 것이 확실하면 UNSUPPORTED)`);
+    else if (known.n >= 3) {
+      const bad = Object.keys(plan).filter(k => !known.top.has(k));
+      if (bad.length) problems.push(`본보기에 없는 최상위 필드: ${bad.join(', ')} (같은 capability 의 기존 plan ${known.n}개에서 쓰인 적 없다. 필드를 지어내지 않는다)`);
+      for (const k of CONTAINERS) if (plan[k] && typeof plan[k] === 'object' && !Array.isArray(plan[k]) && known.sub[k]) {
+        const b2 = Object.keys(plan[k]).filter(kk => !known.sub[k].has(kk));
+        if (b2.length) problems.push(`본보기에 없는 ${k} 하위 필드: ${b2.join(', ')}`); }
+    }
   }
-  if (!fs.existsSync(svgf)) problems.push('out/figure-solution.svg 가 없다');
-  else {
-    const { validateSvgStudentLanguage } = require(path.resolve('archive/tools/svg-language-contract.cjs'));
-    // 합성 그림 등은 접근성 title/desc 를 게시 단계에서 붙이므로 그 항목은 제외하고 글자(영어·입력용 표기·축척)만 본다.
-    const v = validateSvgStudentLanguage(fs.readFileSync(svgf, 'utf8'));
-    const errs = v.errors.filter(e => !String(e.code).startsWith('SVG_ACCESSIBILITY_'));
-    if (errs.length) problems.push('렌더된 SVG 글자가 언어 계약을 통과하지 못한다: ' + errs.slice(0, 4).map(e => e.code + (e.token ? ':' + e.token : '')).join(', '));
+  return problems;
+}
+
+// 문항 하나의 결과를 읽는다. FIGURE 는 plan 파일이 곧 판정이다(result.json 이 있으면 why 만 가져온다).
+function resultOf(r) {
+  const pf = planDir + planFile(r.no);
+  let res = null; try { res = readJson(path.join(out, 'q' + r.no, 'result.json')); } catch {}
+  if (fs.existsSync(pf) && (!res || res.decision === 'FIGURE')) {
+    let why = res && typeof res.why === 'string' ? res.why : '';
+    if (!why) { try { why = String(readJson(pf).caption || '').split(/(?<=[.다])\s/)[0]; } catch {} }
+    return { decision: 'FIGURE', why };
   }
-  try { const it = readJson(path.join(d, 'item.json'));
-    if (it.sourcePath !== src || String(it.ordinal) !== String(r.ordinal)) problems.push(`item.json 이 이 문항과 다르다(sourcePath/ordinal 은 ${src} / ${JSON.stringify(r.ordinal)})`);
-  } catch { problems.push('item.json 이 없다'); }
-  if (!fs.existsSync(path.join(d, 'fig.png'))) problems.push('fig.png 를 만들지 않았다(PNG 를 만들어 직접 봐야 한다)');
+  return res;
+}
+
+function validateOne(r) {
+  const problems = [], pf = planDir + planFile(r.no);
+  const res = resultOf(r);
+  if (!res) return [`plan 파일(${planFile(r.no)})도 result.json 도 없다(문항을 처리하지 않았다)`];
+  if (!DECISIONS.includes(res.decision)) return [`decision 값이 정해진 것이 아니다(${res.decision})`];
+  if (res.decision === 'FIGURE') {
+    if (!fs.existsSync(pf)) return [`FIGURE 인데 ${planFile(r.no)} 가 plan 폴더에 없다`];
+    return problemsOfPlan(r);
+  }
+  if (typeof res.why !== 'string' || res.why.trim().length < 12 || !hasKorean(res.why)) problems.push('why 가 비었거나 너무 짧다(구체적인 한국어 사유 필요)');
+  if (fs.existsSync(pf)) problems.push(`${planFile(r.no)} 가 plan 폴더에 남아 있는데 판정은 ${res.decision} 이다(plan 을 쓰지 않았다면 파일을 지우고, plan 을 썼다면 result.json 을 지운다)`);
+  if (res.decision === 'UNSUPPORTED') {
+    if (typeof res.errorCode !== 'string' || !res.errorCode.trim()) problems.push('UNSUPPORTED 는 errorCode(지원하지 않는다고 본 근거)가 필요하다');
+    if (typeof res.attempts !== 'string' || res.attempts.trim().length < 10) problems.push('UNSUPPORTED 는 attempts(찾아 본 방법)가 필요하다');
+  }
   return problems;
 }
 
 if (cmd === 'validate') {
-  const ok = [], bad = [];
-  for (const r of pend) { const p = validateOne(r); (p.length ? bad : ok).push(p.length ? { no: r.no, problems: p } : r.no); }
-  fs.writeFileSync(path.join(out, 'validate.json'), JSON.stringify({ ok, bad }, null, 1));
+  const ok = [], bad = [], decisions = {};
+  for (const r of pend) { const p = validateOne(r); if (p.length) bad.push({ no: r.no, problems: p }); else { ok.push(r.no); decisions[r.no] = resultOf(r).decision; } }
+  fs.writeFileSync(path.join(out, 'validate.json'), JSON.stringify({ ok, bad, decisions }, null, 1));
   for (const b of bad) for (const p of b.problems) console.log(`Q${b.no}: ${p}`);
   console.log(`VALIDATE ok=${ok.length} bad=${bad.length} of ${pend.length}`);
   process.exit(bad.length ? 1 : 0);
@@ -142,11 +170,10 @@ if (cmd === 'validate') {
 
 if (cmd === 'finalize' || cmd === 'report') {
   const v = readJson(path.join(out, 'validate.json'));
-  const results = n => readJson(path.join(out, 'q' + n, 'result.json'));
   if (cmd === 'report') {
-    for (const n of v.ok) { const r = results(n);
-      const png = r.decision === 'FIGURE' ? path.resolve(out, 'q' + n, 'fig.png') : '';
-      console.log(`Q${n} | ${r.decision === 'FIGURE' ? 'ARCHIVE_BOUND' : r.decision} | ${String(r.why).replace(/\s+/g, ' ').slice(0, 160)} | ${png}`); }
+    for (const n of v.ok) { const r = resultOf(pend.find(x => x.no === n));
+      let cap = ''; if (r.decision === 'FIGURE') { try { cap = ' [' + readJson(planDir + planFile(n)).capability + ']'; } catch {} }
+      console.log(`Q${n} | ${r.decision === 'FIGURE' ? 'PLAN(렌더 NOT_RUN)' : r.decision}${cap} | ${String(r.why).replace(/\s+/g, ' ').slice(0, 160)}`); }
     process.exit(0);
   }
   // 1) 못 통과한 문항의 plan 파일은 백업하고 plan 폴더에서 치운다(장부는 그대로 plan 대기)
@@ -158,12 +185,13 @@ if (cmd === 'finalize' || cmd === 'report') {
     fs.mkdirSync(planDir, { recursive: true });
     const rows = readDecisions();
     for (const n of v.ok) {
-      const r = results(n); let why = String(r.why).trim();
-      if (r.decision === 'UNSUPPORTED') why += ` [오류 코드: ${r.errorCode}; 시도: ${String(r.attempts).trim()}]`;
+      const r = resultOf(pend.find(x => x.no === n)); let why = String(r.why).trim();
+      const res = (() => { try { return readJson(path.join(out, 'q' + n, 'result.json')); } catch { return {}; } })();
+      if (r.decision === 'UNSUPPORTED') why += ` [근거: ${res.errorCode}; 찾아 본 방법: ${String(res.attempts).trim()}]`;
       const row = { exam: src, no: n, decision: r.decision, plans: r.decision === 'FIGURE' ? [planFile(n)] : [],
-        capability: r.decision === 'FIGURE' ? readJson(planDir + planFile(n)).capability : (r.capability ?? null), why,
-        render: r.decision === 'FIGURE' ? 'ARCHIVE_BOUND' : 'NOT_RUN',
-        note: `ds-plan 2026-11-19 (DeepSeek 초안, 기계 검증 통과)${r.decision === 'FIGURE' ? '; PNG 직접 확인 ' + (r.pngViewed ? '함' : '미확인') : ''}` };
+        capability: r.decision === 'FIGURE' ? readJson(planDir + planFile(n)).capability : null, why,
+        render: 'NOT_RUN',
+        note: 'ds-plan 2026-11-19 (DeepSeek 글로만 작성, 렌더 미확인: 공장 일괄 렌더 대기; 구조·언어 계약 기계 검증 통과)' };
       const i = rows.findIndex(x => x.no === n); if (i >= 0) rows[i] = row; else rows.push(row);
     }
     rows.sort((a, b) => a.no - b.no);
