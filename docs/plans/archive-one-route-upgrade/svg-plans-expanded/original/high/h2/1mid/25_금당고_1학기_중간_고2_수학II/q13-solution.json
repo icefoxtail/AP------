@@ -1,0 +1,109 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-5",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-4"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "2"
+      },
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "E",
+        "x": "-sqrt(15)/3",
+        "y": "10*sqrt(15)/9"
+      },
+      {
+        "id": "F",
+        "x": "sqrt(15)/3",
+        "y": "-10*sqrt(15)/9"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "-4"
+      ],
+      "B": [
+        "-2",
+        "2"
+      ],
+      "P": [
+        "-1",
+        "4"
+      ],
+      "E": [
+        "-sqrt(15)/3",
+        "10*sqrt(15)/9"
+      ],
+      "F": [
+        "sqrt(15)/3",
+        "-10*sqrt(15)/9"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "-2",
+        "intercept": "-2",
+        "intersectionX": [
+          "-2",
+          "1"
+        ]
+      }
+    ]
+  },
+  "caption": "A(1,-4)에서의 접선은 y=-2x-2이고 곡선과 다시 만나는 점은 B(-2,2)이다. 점 P(x,x³-5x)에 대해 삼각형 PAB의 넓이는 (3/2)(x-1)²(x+2)이고 -2≤x≤1이다. (x-1)²(x+2)의 도함수 3(x-1)(x+1)에서 x=-1일 때 최대 4이므로 그림의 P(-1,4)에서 넓이가 최대 (3/2)·4=6이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 곡선 $y=x^3-5x$ 위의 점 $\\mathrm{A}(1, -4)$에서의 접선이 이 곡선과 다시 만나는 점을 $\\mathrm{B}$라 하고, 곡선 위의 점 $\\mathrm{P}$가 두 점 $\\mathrm{A}, \\mathrm{B}$ 사이를 움직일 때, 삼각형 $\\mathrm{PAB}$의 넓이의 최댓값은? [5.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접선 y=-2x-2와 곡선의 다른 교점 B(-2,2), 넓이가 최대인 점 P(-1,4)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접선과 곡선의 교점 B(-2,2)와 호 AB 위에서 넓이가 최대가 되는 점 P(-1,4)를 보인다."
+  ],
+  "accessibilityDescription": "삼차곡선과 점 A에서의 접선이 곡선과 다시 만나는 점 B, 두 점 사이의 곡선 위의 점 P를 나타낸 그래프이다."
+}

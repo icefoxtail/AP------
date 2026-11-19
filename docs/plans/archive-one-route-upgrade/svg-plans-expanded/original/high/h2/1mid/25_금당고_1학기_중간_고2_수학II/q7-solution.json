@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      4
+    ],
+    "viewport": [
+      -1,
+      4,
+      -5,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "1/2",
+        "y": "11/4"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "tan",
+          "slope": "3",
+          "intercept": "-1",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=x²-x+3의 도함수는 2x-1이고 기울기가 3이려면 2x-1=3에서 x=2이다. f(2)=5이므로 접점은 T(2,5)이고 접선은 y-5=3(x-2), 즉 y=3x-1이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^2-x+3$에 접하고 기울기가 $3$인 접선의 방정식은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기울기 3인 접선이 접점 T(2,5)에서 곡선에 접함을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 3인 접선 y=3x-1과 접점 T(2,5)를 곡선과 함께 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 점 T에서 접하는 기울기가 양수인 직선 l을 나타낸 그래프이다."
+}

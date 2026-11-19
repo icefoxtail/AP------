@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-16",
+          "20",
+          "-8",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "10/3",
+        "y": "-32/27"
+      },
+      {
+        "id": "P",
+        "x": "6",
+        "y": "32"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "2",
+        "0"
+      ],
+      "B": [
+        "4",
+        "0"
+      ],
+      "E": [
+        "10/3",
+        "-32/27"
+      ],
+      "P": [
+        "6",
+        "32"
+      ]
+    }
+  },
+  "caption": "g가 x=2에서 연속이려면 f(2)=0이고 f가 x=2를 중근으로 가져야 하며, g(4)=0에서 f(4)=0이다. 따라서 f(x)=(x-2)²(x-4)이다. 그래프는 A(2,0)에서 x축에 접하고 B(4,0)에서 x축을 가로지르며 그림의 P(6,32)가 f(6)=16·2=32이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 전체의 집합에서 정의된 함수 $g(x)$가 모든 실수 $x$에 대하여\n$$(x-2)g(x) = |f(x)|$$\n를 만족시킨다. 함수 $g(x)$가 $x=2$에서 연속이고 $g(4)=0$일 때, $f(6)$의 값은? [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f=(x-2)²(x-4)가 x=2에서 접하고 x=4에서 지나는 것과 f(6)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f가 A(2,0)에서 x축에 접하고 B(4,0)을 지나며 P(6,32)를 지나는 것을 보인다."
+  ],
+  "accessibilityDescription": "삼차곡선이 점 A에서 x축에 접하고 점 B에서 x축을 지나며 오른쪽 위로 점 P까지 뻗는 그래프이다."
+}

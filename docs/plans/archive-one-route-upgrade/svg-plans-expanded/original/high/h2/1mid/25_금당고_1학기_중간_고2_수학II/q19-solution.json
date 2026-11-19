@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.7,
+      0.7
+    ],
+    "viewport": [
+      -0.7,
+      0.7,
+      -0.7,
+      0.7
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "sqrt(6)/6",
+        "y": "sqrt(6)/18"
+      },
+      {
+        "id": "U",
+        "x": "-sqrt(6)/6",
+        "y": "-sqrt(6)/18"
+      }
+    ],
+    "exactCoordinates": {
+      "T": [
+        "sqrt(6)/6",
+        "sqrt(6)/18"
+      ],
+      "U": [
+        "-sqrt(6)/6",
+        "-sqrt(6)/18"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1",
+        "intercept": "-sqrt(6)/9",
+        "intersectionX": [
+          "sqrt(6)/6",
+          "-sqrt(6)/3"
+        ]
+      },
+      {
+        "id": "m",
+        "slope": "1",
+        "intercept": "sqrt(6)/9",
+        "intersectionX": [
+          "-sqrt(6)/6",
+          "sqrt(6)/3"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "sqrt(6)/9",
+          "y": "0"
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "sqrt(6)/9"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "T": "T",
+    "U": "U",
+    "A": "A",
+    "B": "B"
+  },
+  "caption": "접점의 x좌표를 t라 하면 접선은 y=6t²x-4t³이다. 점 A(a,0)을 지나는 접선에서 t=3a/2이고, 점 B(0,a)를 지나는 접선의 접점의 x좌표는 평행 조건 6t²=6s²에서 -t이다. 그러면 a=4t³과 a=2t/3에서 t²=1/6이다. 그림의 두 접선 l, m은 기울기가 1로 평행하고 각각 T(√6/6, √6/18)와 U(-√6/6, -√6/18)에서 y=2x³에 접하며 x축, y축과 A(a,0), B(0,a)에서 만난다. 9a=6t=√6이므로 답은 √6이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서·논술형 2] 양수 $a$에 대하여 점 $(a, 0)$에서 곡선 $y=2x^3$에 그은 접선과 점 $(0, a)$에서 곡선 $y=2x^3$에 그은 접선이 서로 평행할 때, $9a$의 값을 구하는 과정을 서술하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "점 A(a,0)와 B(0,a)를 지나는 두 접선이 기울기 1로 평행하고 접점 T, U가 원점 대칭임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "평행한 두 접선 l, m의 접점 T, U(원점 대칭)와 접선이 두 축과 만나는 점 A, B를 보인다."
+  ],
+  "accessibilityDescription": "원점을 지나는 삼차곡선과 기울기가 같은 두 접선이 접점 T, U에서 접하고, 두 접선이 x축과 y축에서 각각 점 A, B와 만나는 그래프이다."
+}
