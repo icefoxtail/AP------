@@ -1,0 +1,55 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "y",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "가)에서 √(x+1)/√(x−2)=−√((x+1)/(x−2))가 성립하려면 x−2<0이고 x+1≥0이어야 하므로 −1≤x<2이다. 정수 x는 −1, 0, 1이므로 m=3이다. 나)에서 √(1−y)√(y−2)=−√(−y²+3y−2)가 성립하려면 1−y≤0이고 y−2≤0이어야 하므로 1≤y≤2이다. 정수 y는 1, 2이므로 n=2이다. 수직선의 위 줄은 x의 범위, 아래 줄은 y의 범위이다. 따라서 m+n=5이고 답은 ④이다.",
+  "accessibilityDescription": "같은 수직선 위에 두 줄이 있다. 위 줄은 −1에서 2까지의 구간으로 −1은 찬 점, 2는 속이 빈 점이고 아래 줄은 1에서 2까지의 구간으로 두 끝점이 모두 찬 점이다.",
+  "newVisualInformation": [
+    "x의 범위 −1≤x<2의 정수 3개와 y의 범위 1≤y≤2의 정수 2개로 m+n=5"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "가) $\\dfrac{\\sqrt{x+1}}{\\sqrt{x-2}}=-\\sqrt{\\dfrac{x+1}{x-2}}$.\n나) $\\sqrt{1-y}\\sqrt{y-2}=-\\sqrt{-y^2+3y-2}$일 때, 가)와 나)를 만족하는 정수 $x$, $y$의 개수를 각각 $m$, $n$이라 할 때 $m+n$의 값은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
