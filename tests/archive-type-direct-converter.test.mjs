@@ -61,7 +61,7 @@ test("PICK line of an empty-type row becomes one DIRECT_JUDGMENT request item wi
   assert.equal(r.sourceArchiveFile, EXAM);
   assert.equal(r.expectedQuestionCount, questions.length);
   assert.equal(r.expectedSourceBlobSha1, sha1(bytes));
-  assert.deepEqual(r.items.map(i => i.questionUid), ["uid1"]);
+  assert.deepEqual(r.items.map(i => i.questionUid), ["uid1", "uid7"]);
   const item = r.items[0];
   assert.deepEqual(item.before, { problemTypeKey: "", templateKey: "" });
   assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
@@ -75,10 +75,10 @@ test("PICK line of an empty-type row becomes one DIRECT_JUDGMENT request item wi
 test("rows that already hold a value, other decisions and refused rows are skipped with a counted reason", () => {
   const { requests, skipped } = plan();
   const summary = summarize({ requests, skipped, resultLines: lines().length });
-  assert.equal(summary.items, 1);
-  assert.equal(summary.skippedLines, 6);
+  assert.equal(summary.items, 2);
+  assert.equal(summary.skippedLines, 5);
   assert.deepEqual(summary.skippedByReason, {
-    DECISION_HOLD: 1, DECISION_NEW_KEY_NOT_HANDLED: 1, ROW_HAS_APPROVAL_RECEIPT: 1, SCOPE_PT_BOUND_TO_OTHER_COURSE: 1, TYPE_ALREADY_PRESENT: 2 });
+    DECISION_HOLD: 1, DECISION_NEW_KEY_NOT_HANDLED: 1, SCOPE_PT_BOUND_TO_OTHER_COURSE: 1, TYPE_ALREADY_PRESENT: 2 });
   assert.ok(skipped.every(s => s.uid && s.reason));
   // every line is accounted for: converted + skipped
   assert.equal(summary.items + summary.skippedLines, lines().length);
@@ -213,9 +213,9 @@ test("a status tag does not block a blank field: approved_semantic_review with n
   assert.equal(rep.skipped[0].reason, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT");
 });
 
-test("rows with receipts on other fields are skipped by default and converted on request", () => {
+test("rows with receipts on other fields are converted by default (the flag is accepted but no longer needed)", () => {
   const dflt = plan();
-  assert.equal(dflt.requests[0].items.some(i => i.questionUid === "uid7"), false);
+  assert.deepEqual(dflt.requests[0].items.map(i => i.questionUid), ["uid1", "uid7"]);
   const opt = plan({ includeReceiptRows: true });
   assert.deepEqual(opt.requests[0].items.map(i => i.questionUid), ["uid1", "uid7"]);
 });

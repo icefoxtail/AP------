@@ -70,8 +70,8 @@ function shortUnitCatalog() {
 }
 
 test('the four products keep their sizes and difficulty mixes', () => {
-  assert.deepEqual(Quick.VIEWS, ['five-minute', 'subunit-test', 'unit-test', 'monthly-test']);
-  assert.deepEqual(Object.values(Quick.PRODUCTS).map(product => product.count), [4, 12, 20, 24]);
+  assert.deepEqual(Quick.VIEWS, ['five-minute', 'subunit-test', 'unit-test', 'monthly-test', 'diagnostic']);
+  assert.deepEqual(Object.values(Quick.PRODUCTS).map(product => product.count), [4, 12, 20, 24, 24]);
   for (const product of Object.values(Quick.PRODUCTS))
     for (const preset of Object.values(product.presets))
       assert.equal(preset.reduce((sum, [, count]) => sum + count, 0), product.count, product.title);
@@ -349,7 +349,7 @@ test('real catalog: pools are built once, fast, from recorded difficulty and wit
   assert.deepEqual(subjects.map(subject => subject.label), ['공통수학1', '공통수학2']);
 });
 
-function harness(data, { quick = true } = {}) {
+function harness(data, { quick = true, restore } = {}) {
   const events = new Map(), nodes = new Map(), opened = [];
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, {
@@ -385,7 +385,7 @@ function harness(data, { quick = true } = {}) {
     },
     Archive2Papers: require('../archive/archive2-papers.js'),
     Archive2History: require('../archive/archive2-history.js'),
-    Archive2Source: { ...archiveSource, restore: async records => records.map(rec => ({ questionUid: rec.questionUid })) },
+    Archive2Source: { ...archiveSource, restore: restore || (async records => records.map(rec => ({ questionUid: rec.questionUid }))) },
   });
   ctx.window = ctx;
   ctx.window.open = () => {
@@ -394,7 +394,7 @@ function harness(data, { quick = true } = {}) {
   };
   loadWorkspace(ctx, `
     globalThis.workspaceTest = {state, render, renderQuick, quickState, routeUrl, readUrl, openQuickAssessment,
-      balancedQuickSelection, setQuickPoolCache: cache => { quickPoolCache = cache; }};
+      balancedQuickSelection, diagnosticSelection, setQuickPoolCache: cache => { quickPoolCache = cache; }};
   `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -747,5 +747,267 @@ test('quick-assessment URL state stays out of the Finder and 출제 내역', asy
   for (const view of ['recent', 'find']) {
     h.w.state.view = view;
     assert.equal(h.w.routeUrl().searchParams.has('grade'), false);
+  }
+});
+
+// ---- 진단평가 (2026-11-19): 24 questions from original past exams, 3 presets, printed from the lowest step up ------------------
+// A restored question that has an answer and a solution; blank(uid) makes one of them empty.
+const okRestore = (blank = () => false) => async records => records.map(rec => ({
+  questionUid: rec.questionUid, answer: blank(rec) ? '' : '①', solution: blank(rec) ? '' : '풀이',
+}));
+function diagnosticCatalog(counts, extra = () => ({})) {
+  const records = [1, 2, 3, 4, 5].flatMap(step => many(step, counts[step - 1] || 0)).map((rec, i) => ({
+    ...rec, sourceGrade: '고1', effectiveBrowseGrade: '고1', subject: '공통수학1', standardCourse: '공통수학1',
+    sourceFile: 'original/high/h1/1mid/diag-' + (i % 5) + '.js', examAxis: '1-mid', year: 2026 - (i % 3), ...extra(rec, i),
+  }));
+  return { indexVersion: 'quick-diagnostic-fixture-' + counts.join('-'), records };
+}
+const stepsOf = (uids, byUid) => Array.from(uids, id => byUid.get(id).difficultyBucket);
+const countBy = (values, list) => list.map(value => values.filter(item => item === value).length);
+
+test('diagnostic product: three presets of 24, 기본 is the default, the 4~5단계 slot is named', () => {
+  const product = Quick.PRODUCTS.diagnostic;
+  assert.equal(product.count, 24);
+  assert.deepEqual(product.order, ['basic', 'standard', 'advanced']);
+  assert.deepEqual(product.presets.basic, [[1, 5], [2, 5], [3, 10], [4, 4]]);
+  assert.deepEqual(product.presets.standard, [[1, 3], [2, 5], [3, 10], [4, 6]]);
+  assert.deepEqual(product.presets.advanced, [[1, 2], [2, 4], [3, 10], [4, 8]]);
+  for (const preset of Object.values(product.presets)) assert.equal(preset.reduce((sum, [, count]) => sum + count, 0), 24);
+  assert.equal(product.combine, true);
+  assert.equal(product.originalOnly, true);
+  assert.equal(Quick.presetMix(product, 'standard'), '1단계 3문항 · 2단계 5문항 · 3단계 10문항 · 4~5단계 6문항');
+  assert.equal(harness(diagnosticCatalog([1, 1, 1, 1, 1])).w.quickState.presets.diagnostic, 'standard');
+});
+
+test('diagnostic pools: original exams only, 5단계 folded into the 4~5단계 slot, one semester on request; the other products keep their pools', () => {
+  const mk = (bucket, sourceFile, examAxis) => entry(record(bucket, { sourceFile, examAxis }));
+  const rows = [mk(4, 'original/high/h1/1mid/a.js', '1-mid'), mk(5, 'original/high/h1/1final/b.js', '1-final'), mk(2, 'original/high/h1/2mid/c.js', '2-mid'),
+    mk(2, 'similar/high/h1/d.js', '1-mid'), mk(3, 'textbooks/x/e.js', 'other'), mk(1, 'types/high/f.js', 'other')];
+  const index = indexOf(rows);
+  const common = Quick.buildPools(index), diagnostic = Quick.buildPools(index, { product: Quick.PRODUCTS.diagnostic });
+  const only = (pools) => pools.units['고1'].COMMON_MATH_1.flatMap(unit => Quick.BUCKETS.flatMap(bucket => unit.buckets[bucket]));
+  assert.equal(only(common).length, 5, 'common pools: 5단계 stays out, similar / textbook / type sources stay in');
+  assert.ok(only(common).every(rec => rec.difficultyBucket <= 4));
+  const picked = only(diagnostic);
+  assert.deepEqual(picked.map(rec => rec.sourceFile.split('/')[0]).sort(), ['original', 'original', 'original']);
+  assert.deepEqual(picked.map(rec => rec.difficultyBucket).sort(), [2, 4, 5]);
+  const unit = diagnostic.units['고1'].COMMON_MATH_1[0];
+  assert.deepEqual(unit.counts, { 1: 0, 2: 1, 3: 0, 4: 2 }, '4단계 and 5단계 share one slot');
+  const first = Quick.buildPools(index, { product: Quick.PRODUCTS.diagnostic, semester: '1' });
+  assert.deepEqual(only(first).map(rec => rec.examAxis).sort(), ['1-final', '1-mid']);
+  assert.equal(Quick.stillUsable(rows[1].record, Quick.PRODUCTS.diagnostic), true);
+  assert.equal(Quick.stillUsable(rows[1].record, Quick.PRODUCTS['monthly-test']), false, 'a 5단계 question is still not usable elsewhere');
+  assert.equal(Quick.stillUsable(rows[3].record, Quick.PRODUCTS.diagnostic), false, 'a similar-source question is not usable in 진단평가');
+});
+
+test('diagnostic selection: exact steps, every unit above its minimum, units take turns, a repeated type only costs a penalty', () => {
+  const h = harness(diagnosticCatalog([1, 1, 1, 1, 1]));
+  const node = (key, order, perStep, extra = () => ({})) => {
+    const buckets = { 1: [], 2: [], 3: [], 4: [] };
+    for (const [step, count] of Object.entries(perStep)) for (let i = 0; i < count; i++) buckets[step].push({ ...record(Number(step)), year: 2026, ...extra(Number(step), i) });
+    return { key, order, label: key, grade: '고1', buckets };
+  };
+  const units = [node('u1', 1, { 1: 6, 2: 6, 3: 12, 4: 6 }), node('u2', 2, { 1: 6, 2: 6, 3: 12, 4: 6 }), node('u3', 3, { 1: 0, 2: 2, 3: 12, 4: 0 }),
+    node('u4', 4, { 1: 6, 2: 6, 3: 3, 4: 6 }), node('u5', 5, { 1: 6, 2: 6, 3: 12, 4: 6 }), node('u6', 6, { 1: 2, 2: 2, 3: 2, 4: 2 })];
+  for (const preset of Object.values(Quick.PRODUCTS.diagnostic.presets)) {
+    const { selected, unitMinimum } = h.w.diagnosticSelection(units, preset, 24);
+    assert.equal(unitMinimum, 3, 'min(floor(24 / 6 units), 3)');
+    assert.equal(selected.length, 24);
+    assert.equal(new Set(selected.map(rec => rec.questionUid)).size, 24);
+    assert.deepEqual(countBy(Array.from(selected, rec => rec.difficultyBucket), [1, 2, 3, 4]), preset.map(([, count]) => count));
+    for (const unit of units) {
+      const mine = Array.from(Object.values(unit.buckets).flat(), rec => rec.questionUid), have = selected.filter(rec => mine.includes(rec.questionUid)).length;
+      assert.ok(have >= Math.min(3, mine.length), unit.key + ' has ' + have);
+    }
+  }
+  // a unit that has no question of a step is skipped for that step, not filled from another step
+  const one = h.w.diagnosticSelection(units, Quick.PRODUCTS.diagnostic.presets.standard, 24).selected;
+  assert.ok(!one.some(rec => units[2].buckets[1].includes(rec)));
+  // type: a unit with two types in a step shows both before repeating one (soft preference)
+  const typed = [node('t1', 1, { 3: 10 }, (step, i) => ({ problemTypeKey: i < 5 ? 'PT_A' : 'PT_B' })), node('t2', 2, { 1: 10, 2: 10, 4: 10 })];
+  const mixed = h.w.diagnosticSelection(typed, [[3, 4]], 4).selected;
+  assert.deepEqual(Array.from(mixed, rec => rec.problemTypeKey).sort(), ['PT_A', 'PT_A', 'PT_B', 'PT_B']);
+  // untyped questions stay in the pool
+  const untyped = [node('x1', 1, { 3: 5 })];
+  assert.equal(h.w.diagnosticSelection(untyped, [[3, 5]], 5).selected.length, 5);
+});
+
+test('diagnostic: a short 4~5단계 is announced with its numbers, 기초 still prints, nothing is filled from another step', async () => {
+  const data = diagnosticCatalog([8, 8, 14, 4, 0]);
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const h = harness(data, { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  const html = h.w.renderQuick();
+  assert.match(html, /<h1>진단평가<\/h1>/);
+  assert.match(html, /id="five-minute-level"/, 'the three presets use the shared difficulty slider');
+  assert.match(html, /4~5단계 6문항 필요 · 4문항 가능/);
+  assert.match(html, /class="qk-bar"[\s\S]*qk-bar-main" disabled/);
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 0, '기본 needs 6 in the 4~5단계 slot and the pool has 4');
+  h.w.quickState.presets.diagnostic = 'basic';
+  assert.doesNotMatch(h.w.renderQuick(), /필요 · \d+문항 가능/);
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 1);
+  const { questionUids, meta } = h.published[0];
+  assert.match(meta.title, /^진단평가 · 공통수학1 1학기 전체$/);
+  const steps = stepsOf(questionUids, byUid);
+  assert.deepEqual(steps, [...steps].sort((a, b) => a - b), 'printed from the lowest step up');
+  assert.deepEqual(countBy(steps, [1, 2, 3, 4]), [5, 5, 10, 4]);
+});
+
+test('diagnostic: another semester, a similar source and a 5단계 question are handled by the pool, 5단계 fills the top slot', async () => {
+  const data = diagnosticCatalog([6, 6, 12, 3, 5], (rec, i) => (i % 7 === 0 ? { examAxis: '2-mid' } : i % 11 === 0 ? { sourceFile: 'similar/high/h1/1mid/s.js' } : {}));
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const h = harness(data, { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  h.w.quickState.presets.diagnostic = 'advanced';
+  await h.w.openQuickAssessment('all');
+  const ids = h.published.length ? h.published[0].questionUids : [];
+  for (const id of ids) {
+    assert.equal(byUid.get(id).examAxis, '1-mid', 'only the chosen semester');
+    assert.ok(byUid.get(id).sourceFile.startsWith('original/'), 'only original exams');
+  }
+  if (h.published.length) {
+    const steps = stepsOf(ids, byUid);
+    assert.deepEqual(steps, [...steps].sort((a, b) => a - b));
+    assert.equal(steps.filter(step => step >= 4).length, 8);
+  } else assert.match(h.w.renderQuick(), /필요 · \d+문항 가능/);
+});
+
+test('diagnostic: a restored question without answer or solution is replaced inside the same step, never from another step', async () => {
+  const data = diagnosticCatalog([8, 8, 20, 10, 0]);
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  // the newest-year questions of steps 1 and 3 come back empty; recency picks them first, so replacements are needed
+  const empty = new Set(data.records.filter(rec => (rec.difficultyBucket === 1 || rec.difficultyBucket === 3) && rec.year === 2026).map(rec => rec.questionUid));
+  const h = harness(data, { restore: okRestore(rec => empty.has(rec.questionUid)) });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 1);
+  const { questionUids } = h.published[0];
+  assert.equal(new Set(questionUids).size, 24);
+  assert.ok(questionUids.every(id => !empty.has(id)), 'no empty question is printed');
+  const steps = stepsOf(questionUids, byUid);
+  assert.deepEqual(steps, [...steps].sort((a, b) => a - b));
+  assert.deepEqual(countBy(steps, [1, 2, 3, 4]), [3, 5, 10, 6], 'the step counts of 기본 are kept');
+  assert.match(h.nodes.get('status').textContent, /정답·해설이 없는 \d+문항은 같은 단계의 다른 문항으로 바꿨습니다/);
+});
+
+test('diagnostic: when a step has no question with answer and solution left the paper is refused, nothing is published', async () => {
+  const data = diagnosticCatalog([3, 8, 14, 6, 0]);
+  const stepOne = new Set(data.records.filter(rec => rec.difficultyBucket === 1).map(rec => rec.questionUid));
+  const h = harness(data, { restore: okRestore(rec => stepOne.has(rec.questionUid)) });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 0);
+  assert.match(h.nodes.get('status').textContent, /정답·해설이 있는 문항이 모자라/);
+});
+
+test('diagnostic: replacing empty questions stops after a small number of source requests and ends in the "모자람" message', async () => {
+  // every question of step 1 and 3 comes back empty while hundreds of candidates exist: the old loop restored them all one by one
+  const data = diagnosticCatalog([200, 200, 200, 200, 0]);
+  const blank = new Set(data.records.filter(rec => rec.difficultyBucket === 1 || rec.difficultyBucket === 3).map(rec => rec.questionUid));
+  const inner = okRestore(rec => blank.has(rec.questionUid));
+  let calls = 0;
+  const h = harness(data, { restore: async records => { calls += records.length; return inner(records); } });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 0, 'nothing is published when the cap is reached');
+  assert.match(h.nodes.get('status').textContent, /정답·해설이 있는 문항이 모자라[\s\S]*학기를 1·2학기로 바꾸거나 난이도를 바꿔 보세요/);
+  // the paper restore itself is 24 questions; the replacement tries on top of it stay small (cap 40 in total)
+  assert.ok(calls <= 24 + 40, 'source requests stay capped: ' + calls);
+});
+
+test('diagnostic: the bottom bar of a semester paper says the semester, not the whole subject', () => {
+  const data = diagnosticCatalog([8, 8, 14, 10, 0]);
+  const h = harness(data, { restore: okRestore() });
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  assert.match(h.w.renderQuick(), /class="qk-bar-count">24문항 · 공통수학1 1학기 전체</);
+});
+
+test('diagnostic on the real catalog: 기초 / 기본 / 심화 print the preset steps in order from original exams, every chosen unit has its minimum', async () => {
+  const data = await catalog();
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  let printed = 0, announced = 0;
+  for (const [grade, semester] of [['중1', '2'], ['중3', '1'], ['고1', '1']]) {
+    const h = harness(data, { restore: okRestore() });
+    h.w.state.view = 'diagnostic';
+    h.w.quickState.grade = grade;
+    h.w.quickState.semester = semester;
+    h.w.renderQuick();
+    const subject = h.w.quickState.subject;
+    const pools = Quick.buildPools(index, { product: Quick.PRODUCTS.diagnostic, semester });
+    const units = pools.units[grade][subject].filter(unit => unit.total > 0);
+    for (const presetName of ['basic', 'standard', 'advanced']) {
+      h.w.quickState.presets.diagnostic = presetName;
+      const html = h.w.renderQuick();
+      const verdict = Quick.evaluate(pools.units[grade][subject], Quick.PRODUCTS.diagnostic, presetName);
+      const before = h.published.length;
+      await h.w.openQuickAssessment('all');
+      const preset = Quick.PRODUCTS.diagnostic.presets[presetName];
+      if (!verdict.ok) {
+        announced++;
+        assert.equal(h.published.length, before, grade + ' ' + presetName);
+        assert.match(html, /\d(?:~5)?단계 \d+문항 필요 · \d+문항 가능/, grade + ' ' + presetName);
+        continue;
+      }
+      printed++;
+      assert.equal(h.published.length, before + 1, grade + ' ' + presetName);
+      const { questionUids } = h.published[before];
+      assert.equal(new Set(questionUids).size, 24, grade + ' ' + presetName);
+      const rows = Array.from(questionUids, id => byUid.get(id));
+      assert.ok(rows.every(rec => rec.sourceFile.startsWith('original/')), 'original exams only');
+      assert.ok(rows.every(rec => Quick.examSemester(rec) === semester), 'the chosen semester');
+      const steps = rows.map(rec => rec.difficultyBucket);
+      assert.deepEqual(steps, [...steps].sort((a, b) => a - b), grade + ' ' + presetName + ' step order');
+      assert.deepEqual(countBy(steps.map(step => Math.min(step, 4)), [1, 2, 3, 4]), preset.map(([, count]) => count), grade + ' ' + presetName);
+      const minimum = Math.min(Math.floor(24 / units.length), 3);
+      for (const unit of units) {
+        const mine = new Set(Quick.BUCKETS.flatMap(bucket => unit.buckets[bucket]).map(rec => rec.questionUid));
+        const have = questionUids.filter(id => mine.has(id)).length;
+        assert.ok(have >= Math.min(minimum, mine.size), grade + ' ' + presetName + ' ' + unit.label + ' has ' + have);
+      }
+      for (let i = 1; i < rows.length; i++) assert.ok(rows[i].difficultyBucket > rows[i - 1].difficultyBucket ||
+        unitOrderOf(units, rows[i]) >= unitOrderOf(units, rows[i - 1]), 'unit order inside a step');
+    }
+  }
+  assert.equal(printed + announced, 9);
+  assert.ok(printed > 0);
+});
+function unitOrderOf(units, record) {
+  for (const unit of units) if (Quick.BUCKETS.some(bucket => unit.buckets[bucket].includes(record))) return unit.order;
+  return Infinity;
+}
+
+test('the four older products print from the lowest step up, in unit order inside a step, and still use the common pools', async () => {
+  const data = await catalog();
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  for (const view of ['monthly-test', 'unit-test']) {
+    const h = harness(data);
+    h.w.state.view = view;
+    h.w.quickState.grade = '고1';
+    h.w.quickState.subject = 'COMMON_MATH_1';
+    const html = h.w.renderQuick();
+    if (view === 'unit-test') {
+      const key = html.match(/data-action="quick-pick" data-unit-key="([^"]+)"/)[1];
+      await h.click({ action: 'quick-pick', unitKey: key });
+      await h.click({ action: 'quick-open-pick' });
+    } else await h.w.openQuickAssessment('all');
+    assert.equal(h.published.length, 1, view);
+    const steps = stepsOf(h.published[0].questionUids, byUid);
+    assert.deepEqual(steps, [...steps].sort((a, b) => a - b), view);
+    assert.ok(steps.every(step => step <= 4), view + ' never uses 5단계');
   }
 });
