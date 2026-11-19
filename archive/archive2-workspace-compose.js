@@ -697,7 +697,8 @@
     "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
     "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
     "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
-    diagnostic: () => "첫 상담용 24문항입니다. 실제 학교 기출을 쓰고(모자란 단계만 유형·유사 문항으로 채움), 쉬운 단계부터 차례로 나옵니다. 학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다.",
+    diagnostic: (grade) => `첫 상담용 24문항입니다. 실제 학교 기출을 쓰고(모자란 단계만 유형·유사 문항으로 채움), 쉬운 단계부터 차례로 나옵니다. ${/^고[23]$/.test(grade)
+      ? "과목을 고르고, 단원을 고르지 않으면 과목 전체에서 냅니다." : "학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다."}`,
   };
   // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
   function quickRowMarkup(item, product, picked, busy) {

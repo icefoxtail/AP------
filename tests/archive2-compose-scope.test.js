@@ -576,7 +576,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-core.js', '20261119-pair-type-spread-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-quick-pools.js', '20261120-diagnostic-3'],
+    ['archive2-quick-pools.js', '20261120-diagnostic-4'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261117-middle-parent-1'],

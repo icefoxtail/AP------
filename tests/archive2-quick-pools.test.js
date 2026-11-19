@@ -876,7 +876,7 @@ test('diagnostic: another semester, a similar source and a 5단계 question are 
   await h.w.openQuickAssessment('all');
   const ids = h.published.length ? h.published[0].questionUids : [];
   for (const id of ids) {
-    assert.equal(byUid.get(id).examAxis, '1-mid', 'only the chosen semester');
+    assert.ok(['1-mid', '2-mid'].includes(byUid.get(id).examAxis), 'a 고1 paper is not cut by the exam semester (the subject decides)');
     assert.ok(byUid.get(id).sourceFile.startsWith('original/'), 'only original exams');
   }
   if (h.published.length) {
@@ -1197,7 +1197,7 @@ test('diagnostic on the real catalog: 고3 미적분Ⅱ 기본 (22 originals) is
 });
 
 // ---- 학기 단추 = 그 학기의 과목·단원 범위 (2026-11-20): 시험지 학기로 풀을 자르지 않는다 ----------------------------------------------
-test('diagnostic semester is the scope of the subject / unit, not the exam: 고2 is not cut, 중등 follows the unit book, unclassified follows the exam', () => {
+test('diagnostic semester is the scope of the subject / unit, not the exam: 고2 is not cut (unit or not), 중등 follows the unit book, only a 중등 unclassified question follows its exam', () => {
   const diag = Quick.PRODUCTS.diagnostic;
   const pick = (pools, grade, subject) => (pools.units[grade][subject] || []).flatMap(unit => Quick.BUCKETS.flatMap(bucket => unit.buckets[bucket]));
   // 고2 대수: three classified questions of different exam semesters, plus unclassified ones that keep following their exam
@@ -1206,18 +1206,22 @@ test('diagnostic semester is the scope of the subject / unit, not the exam: 고2
   const unclassified = axis => high(axis, { unclassified: true, unitKey: '', unitLabel: '단원 미분류', unitOrder: 9999 });
   const indexHigh = indexOf([high('1-mid'), high('1-final'), high('2-final'), unclassified('1-mid'), unclassified('2-mid')]);
   const axes = semester => Array.from(pick(Quick.buildPools(indexHigh, { product: diag, semester }), '고2', 'ALGEBRA'), rec => rec.examAxis).sort();
-  assert.deepEqual(axes('1'), ['1-final', '1-mid', '1-mid', '2-final'], '1학기: every classified question + the unclassified 1학기 exam one');
-  assert.deepEqual(axes('2'), ['1-final', '1-mid', '2-final', '2-mid'], '2학기: the 1학기-exam classified questions are candidates too');
-  assert.equal(axes('').length, 5);
+  // the subject decides, classified or not: the three semester buttons give the same pool
+  assert.deepEqual(axes('1'), ['1-final', '1-mid', '1-mid', '2-final', '2-mid']);
+  assert.deepEqual(axes('2'), axes('1'));
+  assert.deepEqual(axes(''), axes('1'));
   // 중1: RPM22-M1-L1-01 is a 1학기 book unit, RPM22-M1-L1-06 a 2학기 one; the semester of the exam does not matter
   const middle = (unitKey, axis) => middleEntry(record(3, { sourceFile: 'original/middle/m1/x.js', examAxis: axis, sourceGrade: '중1', effectiveBrowseGrade: '중1' }),
     middleParent('x', 1), { unitKey, unitLabel: unitKey });
-  const indexMiddle = indexOf([middle('RPM22-M1-L1-01', '2-mid'), middle('RPM22-M1-L1-01', '1-mid'), middle('RPM22-M1-L1-06', '1-final'), middle('RPM22-M1-L1-06', '2-final')]);
+  const unclassifiedMiddle = axis => middleEntry(record(3, { sourceFile: 'original/middle/m1/x.js', examAxis: axis, sourceGrade: '중1', effectiveBrowseGrade: '중1' }),
+    middleParent('x', 1), { unclassified: true, unitKey: '', unitLabel: '단원 미분류', unitOrder: 9999 });
+  const indexMiddle = indexOf([middle('RPM22-M1-L1-01', '2-mid'), middle('RPM22-M1-L1-01', '1-mid'), middle('RPM22-M1-L1-06', '1-final'), middle('RPM22-M1-L1-06', '2-final'),
+    unclassifiedMiddle('1-mid')]);
   const unitsOf = semester => Array.from(pick(Quick.buildPools(indexMiddle, { product: diag, semester }), '중1', middleSubject),
     rec => indexMiddle.byUid.get(rec.questionUid).unitKey).sort();
-  assert.deepEqual(unitsOf('1'), ['RPM22-M1-L1-01', 'RPM22-M1-L1-01'], 'a 1학기-book unit printed on a 2학기 exam is a 1학기 question');
+  assert.deepEqual(unitsOf('1'), ['', 'RPM22-M1-L1-01', 'RPM22-M1-L1-01'], 'a 1학기-book unit printed on a 2학기 exam is a 1학기 question; the unclassified 1학기-exam one follows its exam');
   assert.deepEqual(unitsOf('2'), ['RPM22-M1-L1-06', 'RPM22-M1-L1-06']);
-  assert.equal(unitsOf('').length, 4);
+  assert.equal(unitsOf('').length, 5);
   assert.equal(Quick.semesterCutsPool('중1'), true);
   assert.equal(Quick.semesterCutsPool('고1'), false);
 });

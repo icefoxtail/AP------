@@ -84,7 +84,8 @@
   // 대수(수학I)는 기출이 1학기 시험지에 몰려 있다. 그래서 단원이 있는 문항은 시험지 학기를 보지 않는다:
   //   고1·고2·고3: 학기로 거르지 않는다(과목 전체가 풀. 고1은 화면이 학기 단추와 과목 단추를 짝지어 준다: 1학기 = 공통수학1, 2학기 = 공통수학2).
   //   중등: 그 문항의 대단원이 속한 교재(courseKey M1-1 / M1-2 ...)의 학기.
-  // 단원이 없는 문항(미분류)만 지금처럼 시험지 학기를 따른다(lenient: 학기 없는 출처도 통과).
+  // 과목이 정해진 문항(풀에 들어온 문항은 모두 과목이 있다)은 단원이 없어도 시험지 학기로 거르지 않는다 (고1·고2·고3, 사용자 결정 "과목이 우선").
+  // 시험지 학기를 따르는 것은 과목 구분이 없는 중등의 단원 미분류 문항뿐이다(lenient: 학기 없는 출처도 통과).
   const unitSemesterCache = new Map();
   function middleUnitSemester(grade, unitKey) {
     const key = grade + "|" + unitKey;
@@ -96,8 +97,8 @@
   }
   function semesterAllows(entry, record, semester, lenient) {
     if (!semester) return true;
+    if (/^고/.test(entry.grade)) return true;
     if (!entry.unclassified && entry.unitKey) {
-      if (/^고/.test(entry.grade)) return true;
       const unitSemester = /^중/.test(entry.grade) ? middleUnitSemester(entry.grade, entry.unitKey) : "";
       if (unitSemester) return unitSemester === semester;
     }
