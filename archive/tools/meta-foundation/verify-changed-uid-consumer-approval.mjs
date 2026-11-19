@@ -392,7 +392,11 @@ function verifiedDifficultyRows(root, unit, consumer) {
   const proof = registerDifficulty5({ root, request: unit.request, write: false, verifyProjection: true });
   if (proof.status !== "PASS" || !["verify-projection", "verify-reviewed-correction"].includes(proof.mode) ||
       proof.requestId !== unit.request.gemini.requestId || proof.sourceArchiveFile !== unit.sourceFile ||
-      proof.sourceBlobSha !== unit.expectedBlob || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
+      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
+      // A text-bound draft (every item carries the stem+choices fingerprint) is bound per question, so another question's edit changing the
+      // whole-file blob is not a mismatch; the registrar's own per-item fingerprint check already ran above. Anything else keeps the blob check.
+      (proof.sourceBlobSha !== unit.expectedBlob && !unit.textBoundDraft) || proof.summary?.written !== false || proof.summary?.changedFields !== 0 ||
       proof.summary?.VERIFIED !== unit.rows.length || proof.summary?.total !== unit.rows.length ||
       proof.summary?.APPLY !== 0 || proof.summary?.CONFLICT !== 0 || proof.summary?.SKIP_INVALID !== 0 ||
       proof.ptTpl !== "UNTOUCHED_NOT_IN_SCOPE" || !Array.isArray(proof.items) || proof.items.length !== unit.rows.length ||

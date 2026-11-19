@@ -10,7 +10,8 @@ import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tool
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import canonical from "../archive/archive2-canonical.js";
 import vm from "node:vm";
-import { registerDifficulty5, computeLegacyCompat } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { registerDifficulty5, computeLegacyCompat, DRAFT_SINGLE_MODEL } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -683,6 +684,36 @@ test("ordinary difficulty request: an inline placeholder in a registered field i
     const out = f.check(); assert.equal(out.status, "FAIL", field + "=" + inlineValue);
     assert.equal(out.failures[0].reason, "METADATA_CONFLICT"); assert.equal(out.failures[0].detail, field);
     assert.deepEqual(out.metadataConflictAdvisories, []);
+  }
+});
+
+// A text-bound draft (approvalType DRAFT_SINGLE_MODEL, every item carries the stem+choices fingerprint) is bound per question: another
+// question's solution being edited changes the whole-file blob, which the consumer gate must not treat as a mismatch. A request that is not
+// a text-bound draft keeps the whole-file blob binding.
+function draftFixture(t, { draft = true, fingerprint = true } = {}) {
+  const f = levelLessFixture(t), base = JSON.parse(fs.readFileSync(f.file, "utf8")), item = base.gemini.items[0];
+  const file = path.join(f.root, f.entry.sourcePath), context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(file, "utf8"), context);
+  if (fingerprint) item.textBindingFingerprint = textFingerprint(context.window.questionBank[f.entry.sourceOrdinal - 1]);
+  const request = draft ? { ...base, approvalType: DRAFT_SINGLE_MODEL, judge: "opencode-go/deepseek-v4.1-flash" } : base;
+  f.put("difficulty.json", JSON.stringify(request));
+  // another question's solution is edited after the request was generated: the file blob no longer matches latestBlobSha
+  const other = f.entry.sourceOrdinal === 1 ? 1 : 0;
+  fs.appendFileSync(file, `\n;window.questionBank[${other}].solution = "다른 문항 해설 한 글자 수정";\n`);
+  return f;
+}
+
+test("text-bound draft: another question's solution edit (file blob differs) still passes the consumer gate", t => {
+  const f = draftFixture(t), out = f.check();
+  assert.equal(out.status, "PASS", JSON.stringify(out.failures));
+  assert.equal(out.exams[0].officialDifficultyTuplesVerified, 1); assert.equal(out.exams[0].semanticApproval, false);
+});
+
+test("not a text-bound draft (ordinary request or an item without the fingerprint) with a changed file blob is refused as before", t => {
+  for (const options of [{ draft: false }, { fingerprint: false }]) {
+    const out = draftFixture(t, options).check();
+    assert.equal(out.status, "FAIL", JSON.stringify(options)); assert.equal(out.counts.passed, 0);
+    assert.equal(out.failures[0].reason, "SOURCE_BLOB_MISMATCH");
   }
 });
 
