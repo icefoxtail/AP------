@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "2",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      2,
+      6
+    ],
+    "viewport": [
+      1,
+      6.5,
+      -1,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "h"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "1"
+      },
+      {
+        "id": "V",
+        "x": "3",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "t=2ˣ+2⁻ˣ로 두면 산술기하평균에 의해 t≥2이고 방정식은 t²−kt+9=0이다. 그림은 경계인 k=6일 때 h(t)=t²−6t+9로 t≥2에서 꼭짓점 V(3, 0)에서 t축에 닿는다. k<6이면 t≥2에서 h가 항상 양수이므로 실근이 없고 k=6이면 t=3에서 0이 되어 실근이 있다. 따라서 k<6이고 답은 ③이다.",
+  "accessibilityDescription": "2 이상의 구간에서 아래로 볼록한 포물선이 그려져 있고 왼쪽 끝 A와 꼭짓점 V의 좌표가 표시되어 있다. 꼭짓점이 가로축에 닿는다.",
+  "newVisualInformation": [
+    "t≥2에서 h(t)=t²−kt+9의 경계 k=6일 때 꼭짓점 V(3, 0)이 t축에 닿는 모습을 보여 k<6의 의미를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $(4^x+4^{-x})-k(2^x+2^{-x})+11=0$이 실근을 갖지 않도록 하는 실수 $k$의 값의 범위는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

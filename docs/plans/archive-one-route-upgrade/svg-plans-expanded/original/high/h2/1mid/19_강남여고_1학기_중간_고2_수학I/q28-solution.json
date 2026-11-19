@@ -1,0 +1,271 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Y",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "15",
+            "denominator": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "Q",
+    "A",
+    "B",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "OQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "OY",
+      "refs": [
+        "O",
+        "Y"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "OP",
+      "refs": [
+        "O",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 520
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "rQ",
+      "refs": [
+        "P",
+        "Q",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc",
+        "circle": "K",
+        "center": "O",
+        "from": "Q",
+        "to": "Y",
+        "side": "MINOR"
+      }
+    ],
+    "angles": [
+      {
+        "id": "th",
+        "refs": [
+          "Q",
+          "O",
+          "A"
+        ],
+        "value": 36.87,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pq",
+        "ownerSegment": "PQ",
+        "text": "15/4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "oq",
+        "ownerSegment": "OQ",
+        "text": "5",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "예: r=5, sinθ=3/5인 경우의 그림이다. A는 호 위의 점, B는 A에서 OQ에 내린 수선의 발, P는 O에서 A를 지나는 반직선과 Q에서의 수선이 만나는 점이다. AB=r sinθ=3이고 PQ=r tanθ=15/4이므로 AB/PQ=sinθ/tanθ=cosθ=4/5이다. 일반적으로 sinθ=a이면 cosθ=√(1−a²)이므로 AB/PQ=√(1−a²)이다.",
+  "accessibilityDescription": "중심 O에서 반지름 5인 사분원의 호가 그려져 있다. 호 위의 점 A에서 밑변으로 내린 수선의 발 B, 반지름 끝 Q에서 세운 수직선 위의 점 P, 선분 OP(점선)와 각 θ, 직각 표시가 있다.",
+  "newVisualInformation": [
+    "사분원에서 AB=r sinθ, PQ=r tanθ를 직각삼각형 OAB, OPQ로 보여 AB/PQ=cosθ를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 오른쪽 그림은 반지름의 길이가 $r$인 사분원이다. $\\sin\\theta=a$라 할 때, $\\frac{\\overline{\\mathrm{AB}}}{\\overline{\\mathrm{PQ}}}$를 $a$의 식으로 나타내면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      6,
+      -4,
+      12
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "-1",
+        "coefficients": [
+          "1",
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "4",
+          "y": "6",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "a1",
+          "slope": "0",
+          "intercept": "-2"
+        },
+        {
+          "id": "a2",
+          "slope": "0",
+          "intercept": "3"
+        }
+      ]
+    }
+  },
+  "caption": "f는 y=3ˣ⁺¹−2, g는 y=(1/27)·3ˣ+3=3ˣ⁻³+3의 그래프이다. f를 x축으로 p, y축으로 q만큼 옮기면 y=3⁽ˣ⁻ᵖ⁾⁺¹−2+q이다. 지수부에서 x−p+1=x−3이므로 p=4이고 상수항에서 −2+q=3이므로 q=5이다. 그림에서 점 P(0, 1)이 Q(4, 6)으로 옮겨지고 점근선 y=−2가 y=3으로 옮겨진다. 따라서 p+q=9이고 답은 ④이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f와 더 오른쪽 위에 놓인 주황 지수 곡선 g, 두 가로 점근선이 있다. 대응하는 점 P와 Q의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행이동 전후의 곡선 f, g와 대응점 P(0, 1), Q(4, 6), 점근선 y=−2, y=3을 보여 p=4, q=5를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=3^{x+1}-2$의 그래프를 $x$축의 방향으로 $p$만큼, $y$축의 방향으로 $q$만큼 평행이동하였더니 함수 $y=\\frac{1}{27}\\times 3^x+3$의 그래프가 되었다. $p+q$의 값은? [2.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

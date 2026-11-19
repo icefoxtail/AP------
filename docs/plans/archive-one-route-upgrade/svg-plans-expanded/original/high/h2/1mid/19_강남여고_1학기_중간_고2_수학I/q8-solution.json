@@ -1,0 +1,88 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      8,
+      -7,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "-39/10",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "4",
+          "2"
+        ],
+        "domain": [
+          "-39/10",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-4"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-3",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "-3",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "x": "-4"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=log(1/2)(x+4)−2의 그래프이고 g는 f를 x축에 대하여 대칭이동한 y=log₂(x+4)+2이다. f의 정의역은 x>−4, 점근선은 x=−4이며 f는 점 P(−3, −2)를 지난다. g 위의 대응점은 Q(−3, 2)이다. f는 밑이 1/2이므로 감소함수이고 log₂x를 평행이동한 그래프는 증가하므로 ⑤는 옳지 않다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "세로 점근선 x=−4 오른쪽에서 내려가는 파란 곡선 f와 올라가는 주황 곡선 g가 있다. 두 곡선은 가로축에 대칭이고 x=−3에서의 점 P, Q의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "감소하는 f와 x축 대칭인 증가하는 g, 점근선 x=−4, 점 P(−3, −2)를 보여 ①~④의 참과 ⑤가 틀린 이유를 확인하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 함수 $y=\\log_{\\frac{1}{2}}(x+4)-2$에 대한 설명으로 옳지 않은 것은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

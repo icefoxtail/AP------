@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "a",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "0",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      },
+      {
+        "kind": "SET",
+        "label": "b",
+        "color": "WARM",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "a²<a에서 0<a<1이다. b<b²에서 b<0 또는 b>1인데 a<b이고 a>0이므로 b>1이다. 수직선의 위 줄은 a의 범위, 아래 줄은 b의 범위이다. 따라서 (가) a>0은 참이다. (나)는 0<a<1에서 a의 1/a제곱이 (1/a)의 a제곱보다 작아 거짓이고 (다)도 0<a/b<a<1에서 첫 부등식이 성립하지 않아 거짓이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "같은 수직선 위에 두 줄이 있다. 위 줄은 0과 1 사이의 열린 구간, 아래 줄은 1보다 큰 반직선이다.",
+  "newVisualInformation": [
+    "조건 a²<a<b<b²에서 a의 범위 0<a<1과 b의 범위 b>1을 수직선에 나타낸다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 실수 $a$, $b$가 $a^2 < a < b < b^2$을 만족시킬 때, 보기에서 옳은 것만을 있는 대로 고른 것은? [3.5점]\n<보기>\n(가) $a > 0$\n(나) $a^{\\frac{1}{a}} > \\left(\\frac{1}{a}\\right)^a$\n(다) $\\frac{a}{b} > \\left(\\frac{a}{b}\\right)^a > \\left(\\frac{a}{b}\\right)^{\\frac{a}{b}}$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-4",
+          "2"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "63/50"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      1.26
+    ],
+    "viewport": [
+      -0.2,
+      1.5,
+      -0.3,
+      2.4
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "h"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "0"
+      }
+    ]
+  },
+  "caption": "t=log₃x로 두면 1≤x≤4에서 0≤t≤log₃4(약 1.26)이다. f(x)는 3의 h제곱 꼴이고 지수는 h(t)=2(t−1)²이다. h는 꼭짓점 V(1, 0)에서 최소이고 왼쪽 끝 A(0, 2)에서 최대이다. 따라서 m=3⁰=1, M=3²=9이고 M−m=8이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "0에서 약 1.26까지의 구간에서 아래로 볼록한 포물선이 그려져 있고 왼쪽 끝 A와 꼭짓점 V의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "지수 h(t)=2(t−1)²의 구간 그래프에서 최저점 V(1, 0)과 최고점 A(0, 2)를 보여 m=1, M=9를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역 $\\{x|1 \\le x \\le 4\\}$인 함수\n$$f(x) = 9 \\times x^{-4+\\log_3 x^2}$$\n의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M-m$의 값을 구하면? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

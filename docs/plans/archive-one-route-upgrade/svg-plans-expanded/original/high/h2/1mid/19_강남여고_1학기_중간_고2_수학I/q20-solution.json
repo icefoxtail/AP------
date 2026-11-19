@@ -1,0 +1,133 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "sin2x와 y=k"
+      },
+      "plan": {
+        "capability": "trigonometric-spike-v1",
+        "graphPlan": {
+          "family": "trigonometric",
+          "function": "SIN",
+          "coefficients": [
+            "1",
+            "2",
+            "0"
+          ],
+          "phasePi": "0",
+          "sourceDomain": {
+            "kind": "INTERVAL_PI",
+            "rangePi": [
+              "0",
+              "1/2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "domain": [
+            0,
+            1.6
+          ],
+          "viewport": [
+            -0.2,
+            1.8,
+            -1.3,
+            1.3
+          ],
+          "referenceLines": [
+            {
+              "id": "k",
+              "y": "1/2",
+              "intersectionCount": 2
+            }
+          ],
+          "keyPoints": true,
+          "axisTickPi": true,
+          "axisTickValues": {
+            "x": [
+              "1/12",
+              "5/12",
+              "1/2"
+            ],
+            "y": [
+              "1/2"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "sin4x와 y=-k"
+      },
+      "plan": {
+        "capability": "trigonometric-spike-v1",
+        "graphPlan": {
+          "family": "trigonometric",
+          "function": "SIN",
+          "coefficients": [
+            "1",
+            "4",
+            "0"
+          ],
+          "phasePi": "0",
+          "sourceDomain": {
+            "kind": "INTERVAL_PI",
+            "rangePi": [
+              "0",
+              "1/2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "domain": [
+            0,
+            1.6
+          ],
+          "viewport": [
+            -0.2,
+            1.8,
+            -1.3,
+            1.3
+          ],
+          "referenceLines": [
+            {
+              "id": "k",
+              "y": "-1/2",
+              "intersectionCount": 2
+            }
+          ],
+          "keyPoints": true,
+          "axisTickPi": true,
+          "axisTickValues": {
+            "x": [
+              "7/24",
+              "11/24",
+              "1/2"
+            ],
+            "y": [
+              "-1/2"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "예: k=1/2일 때의 두 그림이다. y=sin2x는 x=π/4에 대하여 대칭이므로 y=k와 만나는 두 점의 x좌표의 합은 a+b=π/2이다(그림의 π/12, 5π/12). y=sin4x와 y=−k가 만나는 두 점은 각 4x가 π와 2π 사이에서 서로 대칭이어서 4c+4d=3π이므로 c+d=3π/4이다(그림의 7π/24, 11π/24). 따라서 a+b+c+d=5π/4이고 cos(5π/4)=−√2/2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "0에서 π/2까지 한 번 올라갔다 내려오는 사인 곡선과 두 번 오르내리는 사인 곡선이 두 그림으로 나뉘어 있다. 각 그림에서 가로선이 곡선과 두 점에서 만나고 교점의 x좌표가 눈금으로 표시되어 있다.",
+  "newVisualInformation": [
+    "y=sin2x와 y=k, y=sin4x와 y=−k의 교점이 각각 대칭이어서 a+b=π/2, c+d=3π/4임을 두 그림으로 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\le x \\le \\frac{\\pi}{2}$에서 함수 $y=\\sin 2x$의 그래프와 $y=k$가 만나는 두 점의 $x$좌표를 각각 $a$, $b(a<b)$라 하고, 함수 $y=\\sin 4x$의 그래프와 직선 $y=-k$가 만나는 두 점의 $x$좌표를 각각 $c$, $d(c<d)$라 하자. $\\cos(a+b+c+d)$의 값은? (단, $0<k<1$) [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      8,
+      -5,
+      70
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "16",
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LINE",
+        "coefficients": [
+          "28",
+          "-4"
+        ],
+        "domain": [
+          "-4",
+          "7"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "4",
+        "6",
+        "7"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "36",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "6",
+          "y": "4",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "d",
+          "x": "7"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=(x−4)², g는 g(x)=4(7−x)의 그래프이다. 정의역은 x<7, x≠4이다. 로그부등식은 (x−4)²>4(7−x)로 바뀌고 f가 g보다 위에 있는 곳이 해이다. 두 그래프는 P(−2, 36), Q(6, 4)에서 만나므로 x<−2 또는 x>6이고, 정의역과 함께 보면 x<−2 또는 6<x<7이다. 정수 중 가장 큰 값은 −3이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "아래로 볼록한 파란 포물선 f와 오른쪽 아래로 내려가는 주황 직선 g가 두 점 P, Q에서 만나고, 세로선 x=7이 있다. 두 교점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "포물선 f와 직선 g의 두 교점 P(−2, 36), Q(6, 4)와 정의역 경계 x=7을 보여 해 x<−2 또는 6<x<7을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "부등식 $\\log_2(x-4)^2 > 2+\\log_2(7-x)$를 만족시키는 정수 $x$의 최댓값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

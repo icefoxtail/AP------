@@ -1,0 +1,59 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "3",
+      "1/2",
+      "-1"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -3.2,
+      9.5
+    ],
+    "viewport": [
+      -3.6,
+      10,
+      -4.7,
+      2.7
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": [
+        "2",
+        "-1",
+        "-4"
+      ]
+    }
+  },
+  "caption": "그래프의 최댓값은 2, 최솟값은 −4이므로 진폭 a=3, 중간값 c=−1이다. 최솟값을 갖는 x가 −π와 3π이므로 주기는 4π이고 2π/b=4π에서 b=1/2이다. 따라서 y=3sin(x/2)−1이고 a+2b+3c=3+1−3=1이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "−π에서 3π까지 한 주기의 사인 곡선이 중심선 y=−1 위아래로 오르내리며 양 끝에서 가장 낮고 가운데에서 가장 높다. 세로축에 2, −1, −4 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "최댓값 2, 최솟값 −4, 최솟값의 x좌표 −π와 3π를 표시해 a=3, c=−1, b=1/2을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=a\\sin bx+c$의 그래프가 다음 그림과 같을 때 상수 $a$, $b$, $c$에 대하여 $a+2b+3c$값을 구하면? [3점] (단, $a>0$, $b>0$)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

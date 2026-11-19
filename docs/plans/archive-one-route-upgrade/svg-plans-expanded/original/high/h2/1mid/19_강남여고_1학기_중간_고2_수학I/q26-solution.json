@@ -1,0 +1,222 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "180"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "90"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "135"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "K",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "O",
+    "P1",
+    "P2",
+    "P3"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BP1",
+      "refs": [
+        "B",
+        "P1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BP2",
+      "refs": [
+        "B",
+        "P2"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "BP3",
+      "refs": [
+        "B",
+        "P3"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "K"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 420
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "예: n=2인 경우의 그림으로 반원의 호를 4등분하는 점 P1, P2, P3이다. 반지름은 1이고 B에서 k번째 점까지의 중심각은 kπ/(2n)이므로 현의 길이는 2sin(kπ/4n)이다. 그 제곱은 4sin²(kπ/4n)이고 k와 2n−k의 두 각은 서로 여각이어서 sin² 합이 1이다. 이런 쌍이 n−1개이고 가운데 항은 1/2이므로 합은 4n−2이다. 4n−2≥50에서 n≥13이므로 최솟값은 13이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "지름 AB가 2인 원과 지름의 중점 O가 있다. 원 위의 점 P1, P2, P3과 B를 잇는 점선 세 개가 있다.",
+  "newVisualInformation": [
+    "반원의 호를 등분하는 점 P1, P2, P3과 B에서의 현을 보여 보각끼리 짝지으면 제곱사인의 합이 1이 됨을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림과 같이 길이가 2인 선분 $\\mathrm{AB}$를 지름으로 하는 반원 $\\mathrm{AB}$의 호를 $2n$등분한 점을 각각 $\\mathrm{P}_1, \\mathrm{P}_2, \\mathrm{P}_3, \\cdots, \\mathrm{P}_{2n-1}$할 때,\n$${\\overline{\\mathrm{BP}_1}}^2 + {\\overline{\\mathrm{BP}_2}}^2 + \\cdots + {\\overline{\\mathrm{BP}_{2n-1}}}^2 \\ge 50$$\n을 만족시키는 자연수 $n$의 최솟값을 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

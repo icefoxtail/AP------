@@ -1,0 +1,39 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "u",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "3/2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "3",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "integerPoints": true,
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "u"
+  },
+  "caption": "10<x<100에서 1<log x<2이다. log x²=2log x, log√x=(1/2)log x이므로 두 값의 차는 u=(3/2)log x이다. u의 범위는 3/2<u<3이고 수직선에서 이 구간 안의 정수는 2뿐이다. u=2에서 log x=4/3이므로 x=10의 4/3제곱이다. 따라서 답은 x=10의 4/3제곱이다.",
+  "accessibilityDescription": "수직선 위에 3/2보다 크고 3보다 작은 구간이 표시되어 있고 구간 안의 정수 2에 점이 찍혀 있다.",
+  "newVisualInformation": [
+    "두 로그의 차 u=(3/2)log x의 범위 3/2<u<3과 구간 안의 정수 2를 수직선에 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] $10 < x < 100$ 이고 $\\log x^2$와 $\\log\\sqrt{x}$의 차가 정수일 때, $x$의 값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1/3",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "0",
+          "y": "1/3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "1585/1000",
+          "y": "1",
+          "coordinates": false
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=2ˣ/3, g는 g(x)=2ˣ−2의 그래프이다. y축과 만나는 점은 A(0, 1/3), B(0, −1)이다. 2ˣ/3=2ˣ−2에서 2ˣ=3, 즉 x=log₂3이고 y=1이므로 C(log₂3, 1)(약 1.585)이다. AB=4/3이고 C에서 y축까지의 거리가 log₂3이므로 넓이는 a=(1/2)(4/3)log₂3=(2/3)log₂3이다. 따라서 2의 a제곱은 3의 2/3제곱이고 답은 ②이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f와 주황 지수 곡선 g가 점 C에서 만나고, 두 곡선이 y축과 만나는 점 A, B가 있다. 세 점을 이은 삼각형 ABC가 색칠되어 있다.",
+  "newVisualInformation": [
+    "두 곡선과 y축의 교점 A(0, 1/3), B(0, −1), 두 곡선의 교점 C(log₂3, 1)와 삼각형 ABC를 보여 넓이의 밑변 4/3과 높이 log₂3을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 두 함수 $f(x)=\\frac{2^x}{3}$, $g(x)=2^x-2$의 그래프가 $y$축과 만나는 점을 각각 $\\mathrm{A}$, $\\mathrm{B}$라 하고, 두 곡선 $y=f(x)$, $y=g(x)$가 만나는 점을 $\\mathrm{C}$라 할 때, 삼각형 $\\mathrm{ABC}$의 넓이를 $a$라 할 때, $2^a$의 값을 구하면? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
