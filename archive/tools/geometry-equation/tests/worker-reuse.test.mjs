@@ -21,6 +21,17 @@ test('persistent host results equal one-process-per-request results and one host
   assert.equal(stats.live,1);assert.equal(stats.served,payloads.length);
 });
 
+test('the host puts mpmath precision back to the fresh-process default after a request',async()=>{
+  const {execFileSync}=await import('node:child_process');
+  const {dependencyRoot}=await import('../production/dependencies.mjs');
+  const path=await import('node:path');
+  const {fileURLToPath}=await import('node:url');
+  const production=fileURLToPath(new URL('../production/',import.meta.url));
+  const code='import sys\nsys.path.insert(0,sys.argv[1])\nimport mpmath,worker_host\nmpmath.mp.dps=40\nworker_host.reset_mpmath()\nprint(mpmath.mp.dps)\n';
+  const out=execFileSync(process.env.GEOMETRY_PYTHON||'python',['-X','utf8','-c',code,production],{env:{...process.env,PYTHONPATH:path.join(dependencyRoot,'python')}}).toString().trim();
+  assert.equal(out,'15');
+});
+
 test('a timeout or cancellation ends that host and the next request gets a fresh one',async()=>{
   await withReuse('1',async()=>{
     closeWorkers();

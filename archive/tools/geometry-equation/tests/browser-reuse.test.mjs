@@ -18,7 +18,9 @@ test('handles share one Chrome launch and close independently',async()=>{
     const pageB=await b.newPage();
     assert.equal(await pageB.evaluate(()=>1+1),2);
     const c=await launchBrowser();assert.equal(browserLaunchCount()-before,1);
-    await b.close();await c.close();
+    const context=await b.newContext();const pageC=await context.newPage();
+    await b.close();assert.equal(pageC.isClosed(),true); // a context opened through the handle ends with it
+    await c.close();
   }finally{await closeSharedBrowser();}
   const after=await launchBrowser(); // reuse is off again: a plain, separate Chrome
   assert.equal(browserLaunchCount()-before,2);

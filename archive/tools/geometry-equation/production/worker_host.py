@@ -16,7 +16,18 @@ import runpy
 import sys
 
 
+MPMATH_DEFAULT_DPS = 15  # what a fresh python process starts with
+
+
+def reset_mpmath():
+    """Some scripts raise mpmath.mp.dps and never put it back; a fresh process would start every request at 15 digits."""
+    module = sys.modules.get('mpmath')
+    if module is not None:
+        module.mp.dps = MPMATH_DEFAULT_DPS
+
+
 def run(script, raw):
+    reset_mpmath()
     out, err = io.StringIO(), io.StringIO()
     old = sys.stdin, sys.stdout, sys.stderr
     stdin = io.TextIOWrapper(io.BytesIO(raw), encoding='utf-8')
@@ -42,6 +53,7 @@ def run(script, raw):
         code = 1
     finally:
         sys.stdin, sys.stdout, sys.stderr = old
+        reset_mpmath()
     return code, out.getvalue(), err.getvalue()
 
 

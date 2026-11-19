@@ -44,12 +44,13 @@ export const browserLaunchCount=()=>ownLaunches;
 export function enableBrowserReuse(){if(process.env.GEOMETRY_BROWSER_REUSE!=='0')reuseBrowser=true;}
 export async function closeSharedBrowser(){reuseBrowser=false;const pending=sharedBrowser;sharedBrowser=null;if(!pending)return;try{await (await pending).close();}catch{}}
 function browserHandle(real){
-  const pages=new Set();let closed=false;
+  const pages=new Set();let closed=false;// pages and contexts this handle opened
   const own=async(open)=>{const page=await open();pages.add(page);page.once('close',()=>pages.delete(page));return page;};
   return new Proxy(real,{get(target,prop){
     if(prop==='close')return async()=>{if(closed)return;closed=true;await Promise.allSettled([...pages].map(page=>page.close()));};
     if(prop==='isConnected')return()=>!closed&&target.isConnected();
     if(prop==='newPage')return(...args)=>own(()=>target.newPage(...args));
+    if(prop==='newContext')return(...args)=>own(()=>target.newContext(...args));
     const value=Reflect.get(target,prop,target);
     return typeof value==='function'?value.bind(target):value;
   }});
