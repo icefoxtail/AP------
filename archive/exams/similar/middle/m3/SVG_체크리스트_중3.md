@@ -295,3 +295,36 @@
 | 24 | NOT_NEEDED | TABLE | 해설: (a, c), (b, d), A를 행으로 묶은 표로 정리하면 여섯 경우와 중복 제거가 한눈에 보인다. |
 
 - 문제그림 REQUIRED 1개, BENEFICIAL 0개. 해설그림 REQUIRED 1개, BENEFICIAL 0개. TABLE(표 엔진 영역) 4건. 게시한 그림 0개.
+
+## 25_금당중_1학기_중간_중3_유사 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다). 5번은 발문이 "다음 그림은 모눈종이 위에 …"로 시작하는데 그림이 없고 자리표시 잔여 글자(`A B C P Q -1 0 1 2 3`)만 남아 있어 잔여 글자를 지웠고, 점 좌표와 변의 길이는 글로 주어져 풀이는 가능하나 문제 그림 REQUIRED로 둔다. 고친 내용: 서술형 22번 끝을 "…구하는 과정을 서술하시오."로 맞췄고, 해설 24개를 판서형으로 정리했다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 15232121154334552344). 수 보기(3·4·5·9·11·12·16·20번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장 보기(2번)·식 보기(8번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다. 이 시험지의 오답 짓기와 판서형 해설은 DeepSeek 한도 이후 Sonnet이 작성했다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | REQUIRED | BENEFICIAL | 문제: 모눈종이 위 직각삼각형 ABC와 A를 중심으로 AC를 반지름으로 하는 원호, 수직선 위의 P·Q 위치가 그림으로 제시되어야 발문의 '다음 그림'이 성립한다. / 해설: 수직선에 A(1), P(1+루트5), Q(1-루트5)를 표시한 그림이 있으면 P-Q가 지름 2루트5임이 한눈에 확인된다. |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | TABLE | 해설: x의 구간, f(x) 값, 해당 x의 개수, 구간 합을 네 열 표로 정리하면 독해 부담이 크게 줄어든다. |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 -3과 1/2, x의 위치를 표시하고 두 절댓값 식의 부호를 함께 적으면 부호 판정이 한눈에 보인다. |
+| 20 | NOT_NEEDED | NOT_NEEDED |  |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | BENEFICIAL | NOT_NEEDED | 문제: 한 변이 x, y인 두 정사각형을 나란히 그리고 둘레 4x, 4y와 넓이 x^2, y^2를 표시하면 문제 상황이 분명해진다. |
+| 24 | NOT_NEEDED | NOT_NEEDED |  |
+
+- 문제그림 REQUIRED 1개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE(표 엔진 영역) 1건. 게시한 그림 0개.
