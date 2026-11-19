@@ -1,0 +1,66 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "6",
+        "-2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "-2"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 값(좌극한 6, f(0)=우극한=-2)을 갖는 예시 그래프를 그렸다. x=0에서 {f(x)-a}²의 좌극한은 (6-a)², 함숫값은 (-2-a)²이므로 연속이려면 (6-a)²=(-2-a)²이다. 이를 정리하면 8(4-2a)=0이므로 a=2이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같다. 함수 $\\{f(x)-a\\}^2$이 $x=0$에서 연속일 때, 상수 $a$의 값은? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0에서 좌극한 6과 함숫값 -2의 차이를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0에서 f의 좌극한은 6이고 f(0)과 우극한은 -2이다."
+  ],
+  "accessibilityDescription": "x=0에서 끊어지는 두 직선 조각의 그래프이며 왼쪽 조각은 열린 점 A에서, 오른쪽 조각은 닫힌 점 B에서 끝난다."
+}

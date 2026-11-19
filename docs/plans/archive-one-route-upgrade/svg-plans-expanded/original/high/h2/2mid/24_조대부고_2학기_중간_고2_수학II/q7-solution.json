@@ -1,0 +1,124 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "layout": "STACKED",
+    "xWindow": [
+      -2,
+      2
+    ],
+    "pieces": [
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "-1"
+            ],
+            "domain": [
+              -2,
+              1
+            ],
+            "end": "OPEN"
+          },
+          {
+            "coefficients": [
+              "1"
+            ],
+            "domain": [
+              1,
+              2
+            ],
+            "start": "CLOSED"
+          }
+        ],
+        "jumpValues": []
+      }
+    ],
+    "limitArrows": [
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "LEFT",
+        "toY": "1"
+      },
+      {
+        "curve": "f",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "-1"
+      },
+      {
+        "curve": "g",
+        "at": "1",
+        "side": "LEFT",
+        "toY": "-1"
+      },
+      {
+        "curve": "g",
+        "at": "1",
+        "side": "RIGHT",
+        "toY": "1"
+      }
+    ],
+    "requiredPoints": [],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": []
+    }
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 값을 갖는 예시 그래프를 그렸다. 위는 y=f(x), 아래는 y=g(x)이다. x=1에서 f의 좌극한은 1, 우극한은 -1이고 g의 좌극한은 -1, 우극한은 1이다. ㄱ은 곱의 좌극한 1×(-1)=-1, 우극한 (-1)×1=-1이므로 참이다. ㄴ은 f-g의 좌극한이 2, 우극한과 함숫값이 -2라 연속이 아니므로 거짓이다. ㄷ은 x=-1에서 곱의 좌극한 -1, 우극한 1이 달라 거짓이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)$, $g(x)$의 그래프가 다음 그림과 같을 때, 옳은 것만을 보기에서 있는 대로 고른 것은? [3.5점]<br><div class=\"note-box\">ㄱ. $\\displaystyle\\lim_{x\\to1}f(x)g(x)=-1$<br>ㄴ. 함수 $f(x)-g(x)$는 $x=1$에서 연속이다.<br>ㄷ. $\\displaystyle\\lim_{x\\to-1}f(x)g(x)=f(-1)$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1에서 f, g의 좌우극한과 x=-1에서 f의 좌우극한을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 f는 1에서 -1로, g는 -1에서 1로 값이 바뀌고 x=-1에서 f는 1에서 -1로 바뀌며 g는 -1로 일정하다."
+  ],
+  "accessibilityDescription": "위쪽에 f의 조각 그래프, 아래쪽에 g의 조각 그래프를 나란히 그리고 x=1 근처의 좌우극한을 화살표로 표시한 그림이다."
+}
