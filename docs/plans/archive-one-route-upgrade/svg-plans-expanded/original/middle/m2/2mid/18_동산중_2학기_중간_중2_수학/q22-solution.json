@@ -1,0 +1,83 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "40",
+          "1/4"
+        ],
+        "domain": [
+          "0",
+          "90"
+        ],
+        "label": "y=x/4+40",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "40",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "10",
+          "y": "85/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "20",
+          "y": "45",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "30",
+          "y": "95/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "40",
+          "y": "50",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "80",
+          "y": "60",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x(회)",
+      "y": "y"
+    }
+  },
+  "caption": "표에서 x가 10 늘 때마다 y가 2.5씩 늘므로 (y값의 증가량)/(x값의 증가량)=2.5/10=1/4이다. x=0일 때 y=40이므로 y=(1/4)x+40이다. y=60이면 (1/4)x+40=60에서 x=80이므로 80회 울었을 때 60°F이다. 그림은 표의 다섯 점과 y=60인 점 P(80,60)를 나타낸다.",
+  "newVisualInformation": [
+    "다섯 점이 한 직선 y=x/4+40 위에 있고 y=60이면 x=80"
+  ],
+  "accessibilityDescription": "y절편 40에서 시작해 오른쪽 위로 완만하게 올라가는 직선 위에 표의 다섯 점이 있고 x=80, y=60인 점 P가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>【 서술형 1 】 다음은 지혜가 쓴 과학일지이다.<br><br><b>귀뚜라미 온도계</b><table border=\"1\" style=\"border-collapse: collapse; text-align: center; margin: 10px auto; width: 90%;\"><tr><th></th><th>1차 측정</th><th>2차 측정</th><th>3차 측정</th><th>4차 측정</th><th>5차 측정</th></tr><tr><td>1분 동안의 귀뚜라미 울음소리(회)</td><td>0</td><td>10</td><td>20</td><td>30</td><td>40</td></tr><tr><td>화씨온도($^\\circ\\text{F}$)</td><td>40</td><td>42.5</td><td>45</td><td>47.5</td><td>50</td></tr><tr><td>지혜의 의견</td><td colspan=\"5\" style=\"text-align: left; padding: 6px;\">귀뚜라미가 기온이 올라갈수록 더 빨리 울음소리를 내는 것으로 보아 온도와 귀뚜라미 울음소리에는 어떤 관계가 있는 것으로 보인다. 어떤 규칙이 있는지 그 규칙을 찾아 봐야겠다.</td></tr></table><br>※ 1897년 미국의 과학자 아모스돌베어는 \"귀뚜라미 온도계\"라는 제목의 논문에서 귀뚜라미가 1분 동안 울음소리를 낸 횟수와 화씨온도 사이의 관계는 일차 함수가 된다고 발표하였다.<br><br>지혜가 쓴 과학일지를 이용하여 귀뚜라미가 1분 동안 울음소리를 낸 횟수와 화씨온도($^\\circ\\text{F}$) 사이에 어떤 관계가 있는지 알아보려 한다. 다음 물음에 답하여라. (6점)<br><br>(1) 1분 동안 귀뚜라미가 울음소리를 낸 횟수를 $x$, 화씨온도($^\\circ\\text{F}$)를 $y$라 할 때, 위의 표에서 $\\dfrac{(y\\text{값의 증가량})}{(x\\text{값의 증가량})}$을 구하여라. (1점)<br>(2) $x=0$일 때, $y$의 값을 찾아라. (1점)<br>(3) (1), (2)를 이용하여 1분 동안 귀뚜라미가 울음소리를 낸 횟수와 화씨온도($^\\circ\\text{F}$) 사이의 관계를 함수로 나타내어라. (2점)<br>(4) $60^\\circ\\text{F}$일 때, 귀뚜라미가 1분 동안 울음소리를 낸 횟수를 구하여라. (2점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

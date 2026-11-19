@@ -1,0 +1,45 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=ax−b",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "예: a=1, b=2로 그렸다. y−ax+b=0은 y=ax−b이다. 그래프가 오른쪽 위로 향하므로 기울기 a>0이고 y축의 음의 부분과 만나므로 y절편 −b<0에서 b>0이다. 따라서 a>0, b>0이고 답은 ④이다.",
+  "newVisualInformation": [
+    "오른쪽 위로 향하므로 a>0이고 y절편 −b<0이므로 b>0"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 직선이 y축의 음의 부분 점 (0,−2)에서 만나고 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>일차방정식 $y-ax+b=0$의 그래프가 다음 그림과 같을 때, $a$, $b$의 부호는?<br><img src=\"assets/images/18_동산중_2학기_중간_중2_수학/q03.png\" alt=\"오른쪽 위로 향하고 음의 y절편을 갖는 일차방정식 y-ax+b=0의 직선 그래프\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
