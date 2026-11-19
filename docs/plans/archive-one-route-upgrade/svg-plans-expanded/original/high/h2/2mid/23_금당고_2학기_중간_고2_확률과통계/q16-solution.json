@@ -1,0 +1,61 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "6, 7",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "1~5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "1~5",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1~5",
+        "in": [
+          "C"
+        ]
+      },
+      {
+        "text": "8",
+        "in": []
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "6과 7은 A와 B에 모두 속하고 8은 세 집합 밖에 있다. 원소 1부터 5는 각각 A만, B만, C만 중 정확히 한 곳에 속하므로 3⁵=243가지이다. 이 중 C가 공집합이 되는 2⁵=32가지와 A=B가 되는 1가지를 빼면 243−32−1=210이다. 따라서 구하는 값은 210이다.",
+  "accessibilityDescription": "전체집합 안에서 세 집합 A, B, C가 겹친 벤다이어그램이며 A와 B의 겹침에 6, 7이 적혀 있고 세 집합 바깥에 8이 적혀 있으며 A만, B만, C만 영역에 1~5가 적혀 있다.",
+  "newVisualInformation": [
+    "6, 7은 A∩B에, 8은 바깥에 고정되고 1~5가 세 영역 중 하나씩 고르는 구조가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $U=\\{x\\mid x$는 $8$ 이하의 자연수$\\}$의 공집합이 아닌 서로 다른 세 부분집합 $A,B,C$가 다음 두 조건을 만족시킨다.<div class=\"note-box\">(가) $A\\cap B=\\{6,7\\}$, $(A\\cup B)\\cap C=\\varnothing$<br>(나) $(A\\cup B\\cup C)^c=\\{8\\}$</div>세 집합 $A,B,C$로 이루어진 순서삼중쌍 $(A,B,C)$의 개수는? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
