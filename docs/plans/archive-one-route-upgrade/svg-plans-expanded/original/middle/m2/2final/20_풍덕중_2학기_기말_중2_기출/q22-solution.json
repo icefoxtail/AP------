@@ -1,0 +1,77 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "90",
+          "-3"
+        ],
+        "domain": [
+          "0",
+          "30"
+        ],
+        "label": "y=90−3x",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "30",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "30"
+        ],
+        "label": "y=30",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "20",
+          "y": "30",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "90",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "30",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "처음 높이가 90m이고 매초 3m씩 줄어들므로 x초 후의 높이는 y=90−3x이다. 높이 30m에 도착하는 때는 직선과 y=30의 교점 P이므로 30=90−3x에서 3x=60, x=20이다. 따라서 출발한 지 20초 후이다.",
+  "newVisualInformation": [
+    "높이 직선 y=90−3x가 수평선 y=30과 만나는 점 P(20,30)에서 x=20"
+  ],
+  "accessibilityDescription": "가로축이 시간, 세로축이 높이인 좌표평면에서 y절편 90에서 시작해 내려오는 직선이 x축과 30에서 만나고 수평선 y=30과 만나는 점 P(20,30)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형 1&gt; 지상으로부터 $90\\text{ m}$ 높이에서 출발하여 초속 $3\\text{ m}$로 내려오는 어떤 승강기가 있다. 이 승강기가 출발한 지 $x$초 후의 지상으로부터의 높이를 $y\\text{ m}$라고 할 때, 다음 물음에 답하시오.\n(1) $y$를 $x$에 대한 식으로 나타내시오. (서술형) [2점]\n(2) 승강기가 지상으로부터 $30\\text{ m}$ 높이에 도착하는 것은 출발한 지 몇 초 후인지 구하시오. (서술형) [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

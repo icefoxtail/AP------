@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "2x+y−2=0",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "x−y−4=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "2x+y−2=0은 y=−2x+2이고 x절편 1, y절편 2이다. x−y−4=0은 y=x−4이고 x절편 4, y절편 −4이다. 두 식의 y값이 같은 −2x+2=x−4에서 x=2, y=−2이므로 교점은 P(2,−2)이다. 두 직선과 y축으로 둘러싸인 삼각형의 밑변은 y축 위의 2와 −4 사이인 6이고 높이는 교점의 x좌표 2이므로 넓이는 (1/2)×6×2=6이다.",
+  "newVisualInformation": [
+    "두 직선의 절편 (1,0), (0,2), (4,0), (0,−4)와 교점 P(2,−2), y축과 둘러싼 삼각형"
+  ],
+  "accessibilityDescription": "두 직선이 좌표평면에 그려져 있고 하나는 오른쪽 아래로, 다른 하나는 오른쪽 위로 향하며 각 직선의 x절편과 y절편, 교점 P(2,−2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "&lt;서술형 2&gt; 두 일차방정식 $2x+y-2=0$과 $x-y-4=0$에 대하여 다음 물음에 답하시오.\n(1) 두 일차방정식의 $x$, $y$절편을 포함한 개략적인 그래프를 그리시오. (서술형) [2점]\n(2) 두 일차방정식의 교점의 좌표를 구하시오. (서술형) [2점]\n(3) 두 일차방정식 그래프와 $y$축과 둘러싸인 도형의 넓이를 구하시오. (서술형) [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

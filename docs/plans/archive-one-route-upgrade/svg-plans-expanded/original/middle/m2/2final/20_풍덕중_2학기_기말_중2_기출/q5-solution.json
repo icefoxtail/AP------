@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=3x−3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "y=3x−1",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "그림의 직선은 (0,−3)과 (1,0)을 지나므로 기울기가 (0−(−3))/(1−0)=3이다. y=(k/2)x−1은 기울기 k/2이고, 평행하려면 기울기가 같아야 하므로 k/2=3, 즉 k=6이다. 이때 y=3x−1이 그림의 직선과 평행하다. 따라서 답은 ⑤이다.",
+  "newVisualInformation": [
+    "그림의 직선 y=3x−3과 평행한 y=(k/2)x−1은 기울기가 같은 y=3x−1이므로 k=6"
+  ],
+  "accessibilityDescription": "서로 평행한 두 직선이 있고 파란 직선은 점 (0,−3)과 (1,0)을 지나며 주황 직선은 y축과 (0,−1)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차함수 $y=\\frac{k}{2}x-1$의 그래프가 오른쪽 그림의 그래프와 평행할 때, $k$의 값은? (단, $k$는 수) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

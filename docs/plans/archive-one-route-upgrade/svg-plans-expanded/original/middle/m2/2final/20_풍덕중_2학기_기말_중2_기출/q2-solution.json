@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "label": "y=−2x",
+        "color": "BLUE",
+        "style": "DASHED"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "label": "y=−2x+3",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=−2x의 그래프를 y축 방향으로 3만큼 평행이동하면 함숫값에 3을 더한 y=−2x+3이다. 각 점의 좌표를 대입하면 점 (2,−1)에서 −2×2+3=−1이 되어 점 P가 이동한 직선 위에 있다. 나머지 점은 식을 만족하지 않는다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "원래 직선 y=−2x를 y축 방향으로 3만큼 올린 직선 y=−2x+3과 그 위의 점 P(2,−1)"
+  ],
+  "accessibilityDescription": "점선인 직선과 위로 평행이동한 실선 직선이 평행하게 그려져 있고 실선 위에 점 P(2,−1)과 y축과 만나는 점 Q(0,3)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 일차함수 $y=-2x$의 그래프에서 $y$축의 방향으로 3만큼 평행이동한 그래프 위에 있는 점은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
