@@ -217,10 +217,19 @@ test("BASIC rejects a source release that is not confirmed, and a confirmed stem
   assert.equal(core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok, false);
   assert.equal(core.difficultyEligible(record), false);
   assert.equal(core.advancedEligible(record), false);
-  // The server accepts general use (identity + source reference) and gates the approved scope by assignment; a HOLD row has no assignment, so no
-  // approved scope can select it. The server-side rejection of "valid taxonomy + unapproved release" is no longer constructible from real rows.
   assert.equal(core.Canonical.validateBasicAssignment(record, catalog.canonicalAuthority).ok, false);
   assert.equal(core.Canonical.validateAdvancedAssignment(record, catalog.canonicalAuthority).ok, false);
+  // Server side: the HOLD row has no assignment of its own, so ask for an approved scope that belongs to an assigned question of the same grade
+  // (preferably from the same exam). The server must not carry the HOLD row in that approved scope.
+  const scopeOwner = catalog.records.find(row => row.automatic && row.sourceFile === record.sourceFile) ||
+    catalog.records.find(row => row.automatic && row.effectiveBrowseGrade === record.effectiveBrowseGrade);
+  assert.ok(scopeOwner, "an assigned question gives the approved scope to request");
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [materialize(record)], input({
+      grade: scopeOwner.effectiveBrowseGrade, primaryPaths: [core.pathKey(scopeOwner, 4)],
+    })),
+    "승인된 문항·출제 범위와 일치하지 않습니다.",
+  );
 });
 
 test("Worker bridge rows follow registered UID identity after a same-grade source-path repair", async () => {
