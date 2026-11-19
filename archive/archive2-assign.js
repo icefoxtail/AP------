@@ -594,8 +594,9 @@
       } catch (error) {
         if (seq !== loadSeq) return false;
         const status = Number(error?.status) || 0;
-        state.phase = status === 401 || status === 403 ? "login" : "error";
-        state.error = state.phase === "login" ? "" : friendlyLoadError(error);
+        // 401만 로그인 안내다. 403은 권한 없음이라 다시 로그인해도 풀리지 않으므로 권한 문구를 낸다.
+        state.phase = status === 401 ? "login" : "error";
+        state.error = state.phase === "login" ? "" : status === 403 ? friendlyMessage(error, 403) : friendlyLoadError(error);
         emit();
         return false;
       }
