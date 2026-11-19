@@ -1,0 +1,93 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -1,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "12/5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "349/210",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "color": "WARM",
+        "label": "기울기 1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-37/30",
+          "y": "3/7",
+          "coordinates": false
+        },
+        {
+          "id": "B",
+          "x": "53/30",
+          "y": "24/7",
+          "coordinates": false
+        },
+        {
+          "id": "R",
+          "x": "53/30",
+          "y": "3/7",
+          "coordinates": false
+        }
+      ],
+      "polygons": [
+        {
+          "id": "t",
+          "points": [
+            "A",
+            "R",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "직선의 기울기가 1이므로 두 점 A, B의 x좌표의 차와 y좌표의 차가 같다. 그림의 직각이등변삼각형 ARB에서 AR=RB=β−α이고 AB=√2(β−α)=3√2이므로 β−α=3이다. 2의 β제곱−2의 α제곱=3에서 7·2의 α제곱=3이므로 2의 α제곱=3/7, 곧 α=(log3−log7)/log2=−37/30(약 −1.23)이다. β=α+3=53/30이고 α+β=16/30=8/15이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선과 기울기 1인 주황 직선이 두 점 A, B에서 만난다. A에서 오른쪽으로, B에서 아래로 내린 선이 만나는 점 R과 함께 직각삼각형 ARB가 색칠되어 있다.",
+  "newVisualInformation": [
+    "지수 곡선과 기울기 1인 직선의 두 교점 A, B와 직각이등변삼각형 ARB를 보여 가로·세로 차가 같음을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형2] 함수 $y=2^x$의 그래프와 기울기가 1인 직선이 두 점에서 만날 때, 만나는 두 점을 각각 $\\mathrm{A}(\\alpha, 2^\\alpha)$, $\\mathrm{B}(\\beta, 2^\\beta)$라 하자. $\\overline{\\mathrm{AB}}=3\\sqrt{2}$일 때, $\\alpha+\\beta$의 값을 구하시오. (단, $\\log 2=0.30$, $\\log 3=0.48$, $\\log 7=0.85$로 계산한다.) [5점]<br><br><img src=\"assets/images/19_매산고_1학기_중간_고2_수학I/q17.png\" class=\"question-img\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

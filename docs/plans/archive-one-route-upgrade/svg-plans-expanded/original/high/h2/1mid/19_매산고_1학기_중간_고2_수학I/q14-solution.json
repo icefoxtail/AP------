@@ -1,0 +1,130 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "진수 x²+4x+7"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -6,
+            2,
+            -1,
+            12
+          ],
+          "curves": [
+            {
+              "id": "u",
+              "kind": "Y_OF_X",
+              "coefficients": [
+                "7",
+                "4",
+                "1"
+              ],
+              "domain": [
+                "-5",
+                "1"
+              ],
+              "color": "BLUE",
+              "label": "진수"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "-2"
+            ],
+            "y": [
+              "3"
+            ]
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "V",
+                "x": "-2",
+                "y": "3",
+                "coordinates": true
+              }
+            ],
+            "lines": [
+              {
+                "id": "m",
+                "slope": "0",
+                "intercept": "3"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "밑이 1/3인 로그"
+      },
+      "plan": {
+        "capability": "multi-curve-figure-v1",
+        "graphPlan": {
+          "family": "multi-curve",
+          "viewport": [
+            -1,
+            8,
+            -3,
+            3
+          ],
+          "curves": [
+            {
+              "id": "l",
+              "kind": "LOGARITHMIC",
+              "base": "1/3",
+              "coefficients": [
+                "1",
+                "1",
+                "0",
+                "0"
+              ],
+              "domain": [
+                "1/5",
+                "7"
+              ],
+              "color": "WARM",
+              "label": "로그"
+            }
+          ],
+          "axisTickValues": {
+            "x": [
+              "3"
+            ],
+            "y": [
+              "-1"
+            ]
+          },
+          "overlays": {
+            "points": [
+              {
+                "id": "M",
+                "x": "3",
+                "y": "-1",
+                "coordinates": true
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "진수 x²+4x+7=(x+2)²+3은 항상 3 이상이어서 정의역은 실수 전체이다(ㄱ 참). 왼쪽 포물선은 x=−2까지 감소하다가 증가한다. 오른쪽 로그는 밑이 1/3이어서 진수가 작을수록 값이 크다. 따라서 f는 x=−2에서 최댓값 f(−2)=−1을 갖고 그 앞에서는 증가, 뒤에서는 감소하므로 감소함수가 아니다(ㄴ 거짓, ㄷ 참). 따라서 답은 ③이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선과 내려가는 로그 곡선이 두 그림으로 나뉘어 있다. 왼쪽 꼭짓점 V와 오른쪽 점 M의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "진수의 최솟값 V(−2, 3)과 밑이 1/3인 로그의 값 −1(점 M)을 보여 f의 최댓값 −1과 단조성이 바뀌는 x=−2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\log_{\\frac{1}{3}}(x^2+4x+7)$에 대하여 옳은 것만을 <보기>에서 있는 대로 고른 것은? [4.9점]<br><br><b><보기></b><br>ㄱ. 정의역은 실수 전체이다.<br>ㄴ. 함수 $f(x)$는 감소함수이다.<br>ㄷ. $f(x)$의 최댓값은 $-1$이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
