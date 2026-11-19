@@ -1,71 +1,96 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "40",
           "1/4"
-        ],
-        "domain": [
-          "0",
-          "90"
-        ],
-        "label": "y=x/4+40",
-        "color": "BLUE"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "90"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      90
+    ],
+    "viewport": [
+      -16.2,
+      106.2,
+      -11.25,
+      73.75
+    ],
+    "axisTickValues": {
+      "x": [
+        "10",
+        "20",
+        "30",
+        "40",
+        "80"
+      ],
+      "y": [
+        "40",
+        "85/2",
+        "45",
+        "95/2",
+        "50",
+        "60"
+      ]
+    },
+    "axisTitles": {
+      "x": "x(회)",
+      "y": "y"
+    },
     "overlays": {
       "points": [
         {
           "id": "P0",
           "x": "0",
           "y": "40",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P1",
           "x": "10",
           "y": "85/2",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P2",
           "x": "20",
           "y": "45",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P3",
           "x": "30",
           "y": "95/2",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P4",
           "x": "40",
           "y": "50",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P",
           "x": "80",
-          "y": "60",
-          "coordinates": true
+          "y": "60"
         }
       ]
-    },
-    "axisTitles": {
-      "x": "x(회)",
-      "y": "y"
     }
   },
   "caption": "표에서 x가 10 늘 때마다 y가 2.5씩 늘므로 (y값의 증가량)/(x값의 증가량)=2.5/10=1/4이다. x=0일 때 y=40이므로 y=(1/4)x+40이다. y=60이면 (1/4)x+40=60에서 x=80이므로 80회 울었을 때 60°F이다. 그림은 표의 다섯 점과 y=60인 점 P(80,60)를 나타낸다.",
