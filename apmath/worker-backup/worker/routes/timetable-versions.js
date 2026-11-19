@@ -5,6 +5,21 @@ import { isTimeOverlap, overlapRange, uniqSortedPair } from '../helpers/time.js'
 
 const EDITABLE_STATUSES = new Set(['draft', 'scheduled']);
 const PATCHABLE_STATUSES = new Set(['draft', 'scheduled', 'cancelled']);
+// 초안에서 반이 없는 학생(미배정)을 저장하는 표식. 스키마를 바꾸지 않고 기존 행·컬럼만 쓴다.
+const UNASSIGNED_CLASS_ID = '__unassigned__';
+const UNASSIGNED_REASON = 'unassigned';
+// 반 상태: removed = 개편안에서 삭제한 반(운영 반에서 온 것). excluded 계열은 졸업 반 처리.
+const NON_RENDERABLE_CLASS_STATUSES = ['excluded', 'graduating_excluded', 'removed'];
+const NON_RENDERABLE_SQL_LIST = NON_RENDERABLE_CLASS_STATUSES.map(v => `'${v}'`).join(', ');
+// 원장이 손대지 않은 학생 배치의 memo.note 값. 운영 반 이동을 따라갈지 판정하는 데 쓴다.
+const COPY_NOTE = 'copied from active class_students';
+const SYNC_NOTE = 'roster sync';
+const UNTOUCHED_NOTES = new Set([COPY_NOTE, SYNC_NOTE]);
+const WITHDRAWN_STUDENT_STATUSES = ['퇴원', '제적', 'inactive', 'archived', 'withdrawn', 'left'];
+
+export function isWithdrawnStudentStatus(value) {
+  return WITHDRAWN_STUDENT_STATUSES.includes(String(value || '').trim().toLowerCase());
+}
 
 function forbidden() {
   return jsonResponse({ success: false, error: 'Forbidden' }, 403);
@@ -55,7 +70,7 @@ async function listVersionClasses(env, versionId, options = {}) {
     params.push(String(options.classId), String(options.classId));
   }
   if (options.renderableOnly) {
-    where.push("COALESCE(status, 'draft') NOT IN ('excluded', 'graduating_excluded')");
+    where.push(`COALESCE(status, 'draft') NOT IN (${NON_RENDERABLE_SQL_LIST})`);
   }
   const res = await env.DB.prepare(`
     SELECT *
@@ -74,7 +89,7 @@ async function listSlots(env, versionId, classId = null, options = {}) {
     params.push(String(classId), String(classId), String(classId));
   }
   if (options.renderableOnly) {
-    where.push("(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))");
+    where.push(`(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN (${NON_RENDERABLE_SQL_LIST}))`);
   }
   const res = await env.DB.prepare(`
     SELECT tvs.*
@@ -99,7 +114,7 @@ async function listStudentAssignments(env, versionId, classId = null, options = 
     }
   }
   if (options.renderableOnly) {
-    where.push("(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))");
+    where.push(`(tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN (${NON_RENDERABLE_SQL_LIST}))`);
     where.push("COALESCE(a.excluded_reason, '') = ''");
   }
   const res = await env.DB.prepare(`
@@ -283,7 +298,7 @@ function getVersionClassCompatClassId(versionClass = {}) {
 
 function isRenderableVersionClass(row = {}) {
   const status = String(row.status || 'draft').trim().toLowerCase();
-  return status !== 'excluded' && status !== 'graduating_excluded';
+  return !NON_RENDERABLE_CLASS_STATUSES.includes(status);
 }
 
 async function getVersionClassByAnyId(env, versionId, classId) {
@@ -387,6 +402,15 @@ async function ensureVersionAssignmentsMapped(env, version) {
     const sourceClassId = String(row.source_class_id || row.class_id || '').trim();
     const versionClass = map.get(sourceClassId);
     if (!versionClass) continue;
+    if (String(versionClass.status || '').trim().toLowerCase() === 'removed') {
+      const moved = await env.DB.prepare(`
+        UPDATE timetable_version_student_assignments
+        SET class_id = ?, version_class_id = ?, excluded_reason = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+      `).bind(UNASSIGNED_CLASS_ID, UNASSIGNED_CLASS_ID, UNASSIGNED_REASON, row.id).run();
+      updated += Number(moved.meta?.changes || 0);
+      continue;
+    }
     const memoInfo = safeParseMemoJson(row.memo, 'ensureVersionAssignmentsMapped memo');
     const sourceGrade = row.source_grade || memoInfo.source_grade || versionClass.source_grade || null;
     const nextGrade = row.next_grade || memoInfo.next_grade || versionClass.next_grade || null;
@@ -417,15 +441,19 @@ async function copyClassStudentsToVersion(env, version) {
       cs.class_id,
       cs.student_id,
       s.name AS student_name,
+      s.status AS student_status,
       s.grade AS student_grade,
       c.grade AS class_grade,
       c.name AS class_name
     FROM class_students cs
     JOIN students s ON s.id = cs.student_id
     LEFT JOIN classes c ON c.id = cs.class_id
+    ORDER BY cs.class_id ASC, cs.student_id ASC
   `).all();
   let copied = 0;
   for (const row of (res.results || [])) {
+    // 퇴원·제적 학생은 새 개편안에 복사하지 않는다.
+    if (isWithdrawnStudentStatus(row.student_status)) continue;
     const sourceClassId = String(row.class_id || '').trim();
     const versionClass = map.get(sourceClassId);
     if (!versionClass || !isRenderableVersionClass(versionClass)) continue;
@@ -445,7 +473,7 @@ async function copyClassStudentsToVersion(env, version) {
       sourceClassId,
       sourceGrade,
       nextGrade,
-      buildDraftStudentAssignmentMemo(sourceGrade, nextGrade, 'copied from active class_students', row.student_name || '')
+      buildDraftStudentAssignmentMemo(sourceGrade, nextGrade, COPY_NOTE, row.student_name || '')
     ).run();
     copied += Number(result.meta?.changes || 0);
   }
@@ -613,7 +641,7 @@ async function assignDraftStudent(env, versionId, body) {
   const memo = buildDraftStudentAssignmentMemo(
     memoInfo.source_grade || sourceGrade,
     memoInfo.next_grade || nextGrade,
-    memoInfo.note || body.memo || 'draft student reassigned',
+    body.memo || 'draft student reassigned',
     memoInfo.student_name_snapshot || studentName || ''
   );
   const id = makeId('tvsa');
@@ -647,7 +675,7 @@ async function assignDraftStudent(env, versionId, body) {
     source_class_id: sourceClassId || null,
     target_class_id: compatClassId,
     version_class_id: versionClass.id,
-    timetable_version_student_assignments: await listStudentAssignments(env, versionId, null, { renderableOnly: true })
+    ...(await buildDraftListsPayload(env, versionId))
   });
 }
 
@@ -822,7 +850,16 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       if (matchedTeacher?.id) teacherClassRows.push({ teacher_id: matchedTeacher.id, class_id: appliedClassId });
     }
 
-    const sourceClassIds = Array.from(new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean)));
+    // 개편안에서 삭제한(removed) 반의 원래 운영 반도 함께 닫는다. 안 그러면 삭제한 반이 운영에 그대로 남는다.
+    const removedClasses = await listRemovedClasses(env, versionId);
+    const removedSourceClassIds = removedClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean);
+    const unassignedCountRow = await env.DB.prepare(`
+      SELECT COUNT(*) AS count FROM timetable_version_student_assignments
+      WHERE version_id = ? AND COALESCE(excluded_reason, '') = ?
+    `).bind(versionId, UNASSIGNED_REASON).first();
+    const unassignedStudentCount = Number(unassignedCountRow?.count || 0);
+
+    const sourceClassIds = Array.from(new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).concat(removedSourceClassIds).filter(Boolean)));
     if (sourceClassIds.length) {
       const sourceClassMarkers = sourceClassIds.map(() => '?').join(',');
       statements.push(env.DB.prepare(`UPDATE classes SET is_active = 0 WHERE id IN (${sourceClassMarkers})`).bind(...sourceClassIds));
@@ -898,7 +935,7 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       if (!tempId) existingStudentIds.push(realStudentId);
     }
 
-    const sourceClassIdSet = new Set(versionClasses.map(row => String(row.source_class_id || '').trim()).filter(Boolean));
+    const sourceClassIdSet = new Set(sourceClassIds);
     const oldSourceStudentIds = Array.from(new Set((oldClassRows.results || [])
       .filter(row => sourceClassIdSet.has(String(row.class_id || '').trim()))
       .map(row => String(row.student_id || '').trim())
@@ -953,7 +990,7 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       INSERT INTO timetable_version_apply_logs
         (id, academy_id, version_id, status, started_at, finished_at, summary_json, created_at)
       VALUES (?, 'apmath', ?, 'success', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, CURRENT_TIMESTAMP)
-    `).bind(makeId('tval'), versionId, JSON.stringify({ class_count: appliedClassByVersionClassId.size, assignment_count: appliedAssignments.length, slot_count: slots.length })));
+    `).bind(makeId('tval'), versionId, JSON.stringify({ class_count: appliedClassByVersionClassId.size, assignment_count: appliedAssignments.length, slot_count: slots.length, removed_class_count: removedClasses.length, unassigned_student_count: unassignedStudentCount })));
 
     if (!statements.length) return jsonResponse({ success: false, error: 'no statements to apply' }, 400);
     await env.DB.batch(statements);
@@ -963,7 +1000,9 @@ async function activateVersionClassBased(env, versionId, teacher, version) {
       timetable_version: await getVersion(env, versionId),
       activated_class_count: appliedClassByVersionClassId.size,
       activated_student_assignment_count: appliedAssignments.length,
-      copied_slot_count: slots.length
+      copied_slot_count: slots.length,
+      removed_class_count: removedClasses.length,
+      unassigned_student_count: unassignedStudentCount
     });
   } catch (error) {
     console.error('[activateVersionClassBased] failed:', error);
@@ -997,6 +1036,17 @@ async function activateVersion(env, versionId, teacher) {
   const version = checked.version;
   const versionClassCount = await env.DB.prepare('SELECT COUNT(*) AS count FROM timetable_version_classes WHERE version_id = ?').bind(versionId).first();
   if (Number(versionClassCount?.count || 0) > 0) {
+    // 안전장치: 초안이 현재 운영 명단과 다르면 적용하지 않는다.
+    // (신입이 어느 반에도 못 들어가거나 퇴원생이 되살아나는 일을 막는다. 미배정 학생은 막지 않는다.)
+    const diff = await loadRosterDiff(env, version);
+    if (!diff.in_sync) {
+      return jsonResponse({
+        success: false,
+        error: 'roster_mismatch',
+        message: '개편안의 명단이 현재 운영 명단과 다릅니다. 먼저 현재 명단과 맞춰 주세요.',
+        roster_diff: diff
+      }, 409);
+    }
     return activateVersionClassBased(env, versionId, teacher, version);
   }
   const [slotRows, assignmentRows, activeVersion, oldClassRows] = await Promise.all([
@@ -1122,45 +1172,6 @@ async function copyClassTimeSlotsToVersion(env, versionId) {
   return Number(countRow?.count || 0);
 }
 
-async function copyVersionSlots(env, sourceVersionId, targetVersionId) {
-  const targetVersion = await getVersion(env, targetVersionId) || { id: targetVersionId, status: 'draft' };
-  const versionClasses = await ensureVersionClassesSeeded(env, targetVersion);
-  const map = mapSourceClassToVersionClass(versionClasses);
-  const sourceSlots = await env.DB.prepare(`
-    SELECT *
-    FROM timetable_version_slots
-    WHERE version_id = ?
-    ORDER BY day_of_week ASC, start_time ASC, class_id ASC
-  `).bind(sourceVersionId).all();
-
-  const statements = [];
-  let copied = 0;
-  for (const slot of (sourceSlots.results || [])) {
-    const sourceClassId = String(slot.source_class_id || slot.class_id || '').trim();
-    const versionClass = map.get(sourceClassId);
-    if (!versionClass || !isRenderableVersionClass(versionClass)) continue;
-    statements.push(env.DB.prepare(`
-      INSERT INTO timetable_version_slots
-        (id, version_id, class_id, version_class_id, source_class_id, day_of_week, start_time, end_time, room_name, memo)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `).bind(
-      makeId('tvs'),
-      targetVersionId,
-      getVersionClassCompatClassId(versionClass),
-      versionClass.id,
-      sourceClassId,
-      slot.day_of_week,
-      slot.start_time,
-      slot.end_time,
-      slot.room_name || null,
-      slot.memo || null
-    ));
-    copied += 1;
-  }
-  if (statements.length) await env.DB.batch(statements);
-  return copied;
-}
-
 async function ensureActiveVersion(env, teacher, body = {}) {
   const existing = await env.DB.prepare("SELECT * FROM timetable_versions WHERE status = 'active' ORDER BY created_at DESC LIMIT 1").first();
   if (existing) return { created: false, timetable_version: existing, copied_slots: 0 };
@@ -1225,7 +1236,7 @@ async function scanPreview(env, versionId) {
       FROM timetable_version_slots tvs
       LEFT JOIN timetable_version_classes tvc ON tvc.id = tvs.version_class_id
       WHERE tvs.version_id = ?
-        AND (tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))
+        AND (tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded', 'removed'))
       ORDER BY tvs.day_of_week, tvs.start_time
     `).bind(versionId).all(),
     env.DB.prepare(`
@@ -1233,7 +1244,7 @@ async function scanPreview(env, versionId) {
       FROM timetable_version_student_assignments a
       LEFT JOIN timetable_version_classes tvc ON tvc.id = a.version_class_id
       WHERE a.version_id = ?
-        AND (tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded'))
+        AND (tvc.id IS NULL OR COALESCE(tvc.status, 'draft') NOT IN ('excluded', 'graduating_excluded', 'removed'))
         AND COALESCE(a.excluded_reason, '') = ''
     `).bind(versionId).all(),
     env.DB.prepare('SELECT id, source_class_id, teacher_name_snapshot FROM timetable_version_classes WHERE version_id = ?').bind(versionId).all()
@@ -1309,6 +1320,486 @@ async function scanPreview(env, versionId) {
   return { conflicts, counts };
 }
 
+// ───────────────────────── 현재 명단과 맞추기 (roster) ─────────────────────────
+// 초안은 만든 시점의 운영 명단을 복사해 두므로 시간이 지나면 낡는다.
+// computeRosterDiff는 DB 호출 없이 "초안"과 "현재 운영"을 비교하는 순수 함수이고,
+// roster-diff(조회)·roster-sync(반영)·activate(적용 전 차단)가 모두 이 결과 하나를 쓴다.
+function rosterKey(value) {
+  return String(value ?? '').trim();
+}
+
+function rosterClassLabel(vc) {
+  return rosterKey(vc?.name_snapshot || vc?.source_name || vc?.id);
+}
+
+function compareRosterNames(a, b) {
+  return String(a.student_name || '').localeCompare(String(b.student_name || ''), 'ko') || String(a.student_id).localeCompare(String(b.student_id));
+}
+
+function isGraduationExcludedStatus(vc) {
+  const status = rosterKey(vc?.status || 'draft').toLowerCase();
+  return status === 'excluded' || status === 'graduating_excluded';
+}
+
+export function isUntouchedDraftAssignment(row = {}, vcBySource = new Map()) {
+  if (rosterKey(row.temp_student_id)) return false;
+  if (rosterKey(row.excluded_reason)) return false;
+  const note = safeParseMemoJson(row.memo, 'roster untouched memo').note;
+  if (!UNTOUCHED_NOTES.has(String(note || ''))) return false;
+  const sourceVc = vcBySource.get(rosterKey(row.source_class_id));
+  // 원장이 다른 반으로 옮겼다면 version_class_id가 원래 소속 반과 달라진다.
+  return !!sourceVc && rosterKey(sourceVc.id) === rosterKey(row.version_class_id);
+}
+
+export function computeRosterDiff({ versionClasses = [], assignments = [], memberships = [], students = [] } = {}) {
+  const vcById = new Map();
+  const vcBySource = new Map();
+  for (const vc of versionClasses) {
+    vcById.set(rosterKey(vc.id), vc);
+    const src = rosterKey(vc.source_class_id);
+    if (src && !vcBySource.has(src)) vcBySource.set(src, vc);
+  }
+  const studentMap = new Map(students.map(st => [rosterKey(st.id), st]));
+  const assignmentByStudent = new Map();
+  for (const row of assignments) {
+    if (rosterKey(row.temp_student_id)) continue;
+    const sid = rosterKey(row.student_id);
+    if (sid) assignmentByStudent.set(sid, row);
+  }
+
+  // (2) 초안에 있는데 지금은 퇴원·제적(또는 학생 기록 자체가 없는) 학생
+  const withdrawn = [];
+  for (const [sid, row] of assignmentByStudent.entries()) {
+    const st = studentMap.get(sid);
+    const gone = !st;
+    if (!gone && !isWithdrawnStudentStatus(st.status)) continue;
+    const vc = vcById.get(rosterKey(row.version_class_id));
+    withdrawn.push({
+      student_id: sid,
+      student_name: rosterKey(st?.name || row.student_name_snapshot) || sid,
+      status: gone ? 'missing' : rosterKey(st.status),
+      class_name: vc ? rosterClassLabel(vc) : '미배정',
+      version_class_id: rosterKey(row.version_class_id) || null
+    });
+  }
+
+  const membershipsByStudent = new Map();
+  for (const m of memberships) {
+    const sid = rosterKey(m.student_id);
+    if (!sid) continue;
+    if (!membershipsByStudent.has(sid)) membershipsByStudent.set(sid, []);
+    membershipsByStudent.get(sid).push(m);
+  }
+
+  const newcomers = [];
+  const moves = [];
+  const multiClass = [];
+  for (const [sid, list] of membershipsByStudent.entries()) {
+    const st = studentMap.get(sid);
+    if (!st || isWithdrawnStudentStatus(st.status)) continue;
+    const seen = new Set();
+    const mapped = [];
+    for (const m of list) {
+      const cid = rosterKey(m.class_id);
+      if (!cid || seen.has(cid)) continue;
+      seen.add(cid);
+      mapped.push({ cid, name: rosterKey(m.class_name), vc: vcBySource.get(cid) || null });
+    }
+    // 졸업(중3) 반만 듣는 학생은 개편안에 일부러 없는 것이므로 누락으로 보지 않는다.
+    const candidates = mapped.filter(x => !(x.vc && isGraduationExcludedStatus(x.vc)));
+    if (!candidates.length) continue;
+    const renderableMapped = candidates.filter(x => x.vc && isRenderableVersionClass(x.vc));
+
+    // (3) 두 반 이상 수강: 초안은 학생당 반 하나만 저장하므로 알려 주기만 한다.
+    const countable = candidates.filter(x => !x.vc || isRenderableVersionClass(x.vc));
+    if (countable.length >= 2) {
+      multiClass.push({ student_id: sid, student_name: rosterKey(st.name) || sid, class_names: countable.map(x => x.name) });
+    }
+
+    const row = assignmentByStudent.get(sid);
+    if (!row) {
+      // (1) 운영에는 재원인데 초안에는 없는 학생(신입·재등록). 미배정 행이 있으면 "초안에 있는 학생"이므로 여기 오지 않는다.
+      const target = renderableMapped[0] || null;
+      newcomers.push({
+        student_id: sid,
+        student_name: rosterKey(st.name) || sid,
+        grade: rosterKey(st.grade),
+        ops_class_id: (target || candidates[0]).cid,
+        ops_class_names: candidates.map(x => x.name),
+        target_version_class_id: target ? rosterKey(target.vc.id) : null,
+        target_class_name: target ? rosterClassLabel(target.vc) : null
+      });
+      continue;
+    }
+    // 운영에서 반을 옮겼고 원장이 초안에서 손대지 않은 학생만 새 반을 따라간다.
+    if (isUntouchedDraftAssignment(row, vcBySource) && renderableMapped.length) {
+      const currentId = rosterKey(row.version_class_id);
+      if (!renderableMapped.some(x => rosterKey(x.vc.id) === currentId)) {
+        const to = renderableMapped[0];
+        const from = vcById.get(currentId);
+        moves.push({
+          student_id: sid,
+          student_name: rosterKey(st.name) || sid,
+          from_version_class_id: currentId,
+          from_class_name: from ? rosterClassLabel(from) : '',
+          to_version_class_id: rosterKey(to.vc.id),
+          to_class_name: rosterClassLabel(to.vc),
+          ops_class_id: to.cid
+        });
+      }
+    }
+  }
+  newcomers.sort(compareRosterNames);
+  withdrawn.sort(compareRosterNames);
+  moves.sort(compareRosterNames);
+  multiClass.sort(compareRosterNames);
+  return {
+    newcomers,
+    withdrawn,
+    moves,
+    multi_class: multiClass,
+    in_sync: !newcomers.length && !withdrawn.length && !moves.length
+  };
+}
+
+async function loadRosterInputs(env, version) {
+  await ensureVersionClassesSeeded(env, version);
+  await ensureVersionAssignmentsMapped(env, version);
+  const [versionClasses, assignRes, memberRes, studentRes] = await Promise.all([
+    listVersionClasses(env, version.id),
+    env.DB.prepare('SELECT * FROM timetable_version_student_assignments WHERE version_id = ?').bind(version.id).all(),
+    env.DB.prepare(`
+      SELECT cs.class_id, cs.student_id, c.name AS class_name
+      FROM class_students cs
+      JOIN classes c ON c.id = cs.class_id
+      WHERE COALESCE(c.is_active, 1) != 0
+      ORDER BY cs.class_id ASC, cs.student_id ASC
+    `).all(),
+    env.DB.prepare('SELECT id, name, status, grade FROM students').all()
+  ]);
+  return {
+    versionClasses,
+    assignments: assignRes.results || [],
+    memberships: memberRes.results || [],
+    students: studentRes.results || []
+  };
+}
+
+function summarizeRosterSync(diff) {
+  const added = diff.newcomers.map(n => ({
+    student_id: n.student_id,
+    student_name: n.student_name,
+    class_name: n.target_class_name,
+    unassigned: !n.target_version_class_id,
+    ops_class_names: n.ops_class_names
+  }));
+  const removed = diff.withdrawn.map(w => ({ student_id: w.student_id, student_name: w.student_name, status: w.status, class_name: w.class_name }));
+  const moved = diff.moves.map(m => ({ student_id: m.student_id, student_name: m.student_name, from_class_name: m.from_class_name, to_class_name: m.to_class_name }));
+  return { added, removed, moved, changed: added.length + removed.length + moved.length };
+}
+
+function buildRosterSyncStatements(env, versionId, diff, inputs) {
+  const vcById = new Map(inputs.versionClasses.map(vc => [rosterKey(vc.id), vc]));
+  const studentMap = new Map(inputs.students.map(st => [rosterKey(st.id), st]));
+  const statements = [];
+
+  for (const w of diff.withdrawn) {
+    statements.push(env.DB.prepare(`
+      DELETE FROM timetable_version_student_assignments
+      WHERE version_id = ? AND student_id = ? AND (temp_student_id IS NULL OR temp_student_id = '')
+    `).bind(versionId, w.student_id));
+  }
+
+  for (const n of diff.newcomers) {
+    const st = studentMap.get(n.student_id) || {};
+    const vc = n.target_version_class_id ? vcById.get(n.target_version_class_id) : null;
+    const sourceGrade = normalizeGradeLabel((vc && vc.source_grade) || st.grade || '');
+    const nextGrade = normalizeGradeLabel((vc && vc.next_grade) || getNextSemesterGrade(sourceGrade));
+    const classId = vc ? getVersionClassCompatClassId(vc) : UNASSIGNED_CLASS_ID;
+    statements.push(env.DB.prepare(`
+      INSERT OR IGNORE INTO timetable_version_student_assignments
+        (id, version_id, class_id, version_class_id, student_id, student_name_snapshot, source_class_id, source_grade, next_grade, excluded_reason, memo, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `).bind(
+      makeId('tvsa'),
+      versionId,
+      classId,
+      vc ? vc.id : UNASSIGNED_CLASS_ID,
+      n.student_id,
+      n.student_name || null,
+      n.ops_class_id || null,
+      sourceGrade || null,
+      nextGrade || null,
+      vc ? null : UNASSIGNED_REASON,
+      buildDraftStudentAssignmentMemo(sourceGrade, nextGrade, SYNC_NOTE, n.student_name || '')
+    ));
+  }
+
+  for (const m of diff.moves) {
+    const vc = vcById.get(m.to_version_class_id);
+    if (!vc) continue;
+    statements.push(env.DB.prepare(`
+      UPDATE timetable_version_student_assignments
+      SET class_id = ?, version_class_id = ?, source_class_id = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE version_id = ? AND student_id = ? AND (temp_student_id IS NULL OR temp_student_id = '')
+    `).bind(getVersionClassCompatClassId(vc), vc.id, m.ops_class_id, versionId, m.student_id));
+  }
+  return statements;
+}
+
+async function loadRosterDiff(env, version) {
+  return computeRosterDiff(await loadRosterInputs(env, version));
+}
+
+// 여러 번 실행해도 결과가 같다(멱등): 두 번째부터는 바꿀 것이 없다.
+async function syncDraftRoster(env, version) {
+  const inputs = await loadRosterInputs(env, version);
+  const diff = computeRosterDiff(inputs);
+  const statements = buildRosterSyncStatements(env, version.id, diff, inputs);
+  if (statements.length) await env.DB.batch(statements);
+  return { roster_sync: summarizeRosterSync(diff), roster_multi_class: diff.multi_class };
+}
+
+// ───────────────────────── 미배정 · 반 삭제/복원 · 반 수정 ─────────────────────────
+async function listUnassignedStudents(env, versionId) {
+  const res = await env.DB.prepare(`
+    SELECT *
+    FROM timetable_version_student_assignments
+    WHERE version_id = ? AND COALESCE(excluded_reason, '') = ? AND version_class_id = ?
+    ORDER BY student_name_snapshot ASC, student_id ASC
+  `).bind(versionId, UNASSIGNED_REASON, UNASSIGNED_CLASS_ID).all();
+  return res.results || [];
+}
+
+async function listRemovedClasses(env, versionId) {
+  const rows = await listVersionClasses(env, versionId);
+  return rows.filter(row => String(row.status || '').trim().toLowerCase() === 'removed');
+}
+
+async function buildDraftListsPayload(env, versionId) {
+  return {
+    timetable_version_student_assignments: await listStudentAssignments(env, versionId, null, { renderableOnly: true }),
+    timetable_version_unassigned_students: await listUnassignedStudents(env, versionId),
+    timetable_version_removed_classes: await listRemovedClasses(env, versionId)
+  };
+}
+
+async function unassignDraftStudent(env, versionId, body) {
+  const checked = await assertEditableVersion(env, versionId);
+  if (checked.error) return checked.error;
+  const studentId = String(body.student_id || body.studentId || body.temp_student_id || body.tempStudentId || '').trim();
+  if (!studentId) return jsonResponse({ success: false, error: 'student_id required' }, 400);
+  const row = await env.DB.prepare(`
+    SELECT * FROM timetable_version_student_assignments
+    WHERE version_id = ? AND (student_id = ? OR temp_student_id = ?)
+    LIMIT 1
+  `).bind(versionId, studentId, studentId).first();
+  if (!row) return jsonResponse({ success: false, error: 'student not in draft' }, 404);
+  const memo = JSON.stringify({ ...safeParseMemoJson(row.memo, 'unassignDraftStudent memo'), note: 'draft student unassigned' });
+  await env.DB.prepare(`
+    UPDATE timetable_version_student_assignments
+    SET class_id = ?, version_class_id = ?, excluded_reason = ?, memo = ?, updated_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `).bind(UNASSIGNED_CLASS_ID, UNASSIGNED_CLASS_ID, UNASSIGNED_REASON, memo, row.id).run();
+  return jsonResponse({ success: true, version_id: versionId, student_id: studentId, ...(await buildDraftListsPayload(env, versionId)) });
+}
+
+async function removeDraftClass(env, versionId, body) {
+  const checked = await assertEditableVersion(env, versionId);
+  if (checked.error) return checked.error;
+  await ensureVersionClassesSeeded(env, checked.version);
+  const classId = String(body.class_id || body.classId || body.version_class_id || body.versionClassId || '').trim();
+  if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
+  const versionClass = await getVersionClassByAnyId(env, versionId, classId);
+  if (!versionClass || !isRenderableVersionClass(versionClass)) return jsonResponse({ success: false, error: 'draft class not found' }, 404);
+
+  const countRow = await env.DB.prepare(`
+    SELECT COUNT(*) AS count FROM timetable_version_student_assignments WHERE version_id = ? AND version_class_id = ?
+  `).bind(versionId, versionClass.id).first();
+  const statements = [
+    env.DB.prepare(`
+      UPDATE timetable_version_student_assignments
+      SET class_id = ?, version_class_id = ?, excluded_reason = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE version_id = ? AND version_class_id = ?
+    `).bind(UNASSIGNED_CLASS_ID, UNASSIGNED_CLASS_ID, UNASSIGNED_REASON, versionId, versionClass.id)
+  ];
+  const brandNew = !String(versionClass.source_class_id || '').trim();
+  if (brandNew) {
+    // 초안에서 새로 만든 반은 운영에 원본이 없으므로 행과 슬롯을 지운다.
+    statements.push(env.DB.prepare('DELETE FROM timetable_version_slots WHERE version_id = ? AND (version_class_id = ? OR class_id = ?)').bind(versionId, versionClass.id, versionClass.id));
+    statements.push(env.DB.prepare('DELETE FROM timetable_version_classes WHERE id = ? AND version_id = ?').bind(versionClass.id, versionId));
+  } else {
+    // 운영 반에서 온 반은 removed로 두어야 적용 때 원래 운영 반을 닫을 수 있다.
+    statements.push(env.DB.prepare("UPDATE timetable_version_classes SET status = 'removed', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND version_id = ?").bind(versionClass.id, versionId));
+  }
+  await env.DB.batch(statements);
+  return jsonResponse({
+    success: true,
+    version_id: versionId,
+    class_id: getVersionClassCompatClassId(versionClass),
+    version_class_id: versionClass.id,
+    deleted: brandNew,
+    unassigned_count: Number(countRow?.count || 0),
+    ...(await buildDraftListsPayload(env, versionId))
+  });
+}
+
+async function restoreDraftClass(env, versionId, body) {
+  const checked = await assertEditableVersion(env, versionId);
+  if (checked.error) return checked.error;
+  const classId = String(body.class_id || body.classId || body.version_class_id || body.versionClassId || '').trim();
+  if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
+  const versionClass = await getVersionClassByAnyId(env, versionId, classId);
+  if (!versionClass || String(versionClass.status || '').trim().toLowerCase() !== 'removed') {
+    return jsonResponse({ success: false, error: 'removed class not found' }, 404);
+  }
+  const restoredStatus = Number(versionClass.is_new || 0) === 1 ? 'new' : 'draft';
+  await env.DB.prepare('UPDATE timetable_version_classes SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?').bind(restoredStatus, versionClass.id).run();
+  const restored = await env.DB.prepare('SELECT * FROM timetable_version_classes WHERE id = ?').bind(versionClass.id).first();
+  return jsonResponse({
+    success: true,
+    version_id: versionId,
+    timetable_version_class: restored,
+    class: versionClassCompatClassRow(restored),
+    timetable_version_slots: await listSlots(env, versionId, restored.id),
+    ...(await buildDraftListsPayload(env, versionId))
+  });
+}
+
+async function updateDraftClass(env, versionId, body) {
+  const checked = await assertEditableVersion(env, versionId);
+  if (checked.error) return checked.error;
+  const classId = String(body.class_id || body.classId || body.version_class_id || body.versionClassId || '').trim();
+  if (!classId) return jsonResponse({ success: false, error: 'class_id required' }, 400);
+  const versionClass = await getVersionClassByAnyId(env, versionId, classId);
+  if (!versionClass || !isRenderableVersionClass(versionClass)) return jsonResponse({ success: false, error: 'draft class not found' }, 404);
+
+  const has = key => Object.prototype.hasOwnProperty.call(body, key) && body[key] !== undefined;
+  const sets = [];
+  const params = [];
+  if (has('name')) {
+    const name = String(body.name || '').trim();
+    if (!name) return jsonResponse({ success: false, error: 'name required' }, 400);
+    sets.push('name_snapshot = ?');
+    params.push(name);
+  }
+  if (has('grade')) {
+    const grade = normalizeTimetableGrade(body.grade);
+    // 화면과 적용은 next_grade를 먼저 쓴다. 초안에서 새로 만든 반은 원본 학년이 없으므로 같이 맞춘다.
+    sets.push('next_grade = ?');
+    params.push(grade || null);
+    if (!String(versionClass.source_class_id || '').trim()) {
+      sets.push('grade_snapshot = ?');
+      params.push(grade || null);
+    }
+  }
+  if (has('teacher_name') || has('teacherName')) {
+    sets.push('teacher_name_snapshot = ?');
+    params.push(String(body.teacher_name ?? body.teacherName ?? '').trim() || null);
+  }
+  if (has('subject')) {
+    sets.push('subject_snapshot = ?');
+    params.push(String(body.subject || '').trim() || null);
+  }
+  if (has('textbook')) {
+    const memo = safeParseMemoJson(versionClass.memo, 'updateDraftClass memo');
+    const textbook = String(body.textbook || '').trim();
+    if (textbook) memo.textbook = textbook; else delete memo.textbook;
+    sets.push('memo = ?');
+    params.push(Object.keys(memo).length ? JSON.stringify(memo) : null);
+  }
+  if (!sets.length) return jsonResponse({ success: false, error: 'nothing to update' }, 400);
+  sets.push('updated_at = CURRENT_TIMESTAMP');
+  await env.DB.prepare(`UPDATE timetable_version_classes SET ${sets.join(', ')} WHERE id = ?`).bind(...params, versionClass.id).run();
+  const saved = await env.DB.prepare('SELECT * FROM timetable_version_classes WHERE id = ?').bind(versionClass.id).first();
+  return jsonResponse({
+    success: true,
+    version_id: versionId,
+    timetable_version_class: saved,
+    class: versionClassCompatClassRow(saved)
+  });
+}
+
+// ───────────────────────── 새 초안 만들기 (운영 기준) ─────────────────────────
+// 반의 요일·시간은 직전 버전 슬롯이 아니라 "현재 운영 class_time_slots"에서 복사한다.
+// 운영에서 직접 고친 시간이 초안에 반영되려면 이쪽이 맞다.
+async function copyOperationalSlotsToVersion(env, version) {
+  const versionClasses = await ensureVersionClassesSeeded(env, version);
+  const map = mapSourceClassToVersionClass(versionClasses);
+  const res = await env.DB.prepare('SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC, class_id ASC').all();
+  const statements = [];
+  for (const slot of (res.results || [])) {
+    const sourceClassId = String(slot.class_id || '').trim();
+    const versionClass = map.get(sourceClassId);
+    if (!versionClass || !isRenderableVersionClass(versionClass)) continue;
+    statements.push(env.DB.prepare(`
+      INSERT INTO timetable_version_slots
+        (id, version_id, class_id, version_class_id, source_class_id, day_of_week, start_time, end_time, room_name, memo)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(
+      makeId('tvs'),
+      version.id,
+      getVersionClassCompatClassId(versionClass),
+      versionClass.id,
+      sourceClassId,
+      slot.day_of_week,
+      slot.start_time,
+      slot.end_time,
+      slot.room_name || null,
+      slot.memo || null
+    ));
+  }
+  if (statements.length) await env.DB.batch(statements);
+  return statements.length;
+}
+
+async function seedDraftFromOperations(env, versionId) {
+  const createdVersion = await getVersion(env, versionId);
+  const versionClasses = await ensureVersionClassesSeeded(env, createdVersion);
+  const copiedSlots = await copyOperationalSlotsToVersion(env, createdVersion);
+  const copiedStudentAssignments = await copyClassStudentsToVersion(env, createdVersion);
+  return {
+    success: true,
+    timetable_version: await getVersion(env, versionId),
+    timetable_version_classes: await listVersionClasses(env, versionId),
+    timetable_classes: versionClasses.filter(isRenderableVersionClass).map(versionClassCompatClassRow),
+    copied_version_classes: versionClasses.length,
+    copied_slots: copiedSlots,
+    copied_student_assignments: copiedStudentAssignments
+  };
+}
+
+async function findLineageSourceVersion(env, teacher) {
+  let sourceVersion = await env.DB.prepare("SELECT * FROM timetable_versions WHERE status = 'active' ORDER BY created_at DESC LIMIT 1").first();
+  if (!sourceVersion) {
+    const ensured = await ensureActiveVersion(env, teacher, { school_year: currentSchoolYear() });
+    sourceVersion = ensured.timetable_version;
+  }
+  return sourceVersion;
+}
+
+async function restartDraftVersion(env, teacher, id) {
+  const old = await getVersion(env, id);
+  if (!old) return jsonResponse({ success: false, error: 'Not found' }, 404);
+  if (!EDITABLE_STATUSES.has(String(old.status || ''))) {
+    return jsonResponse({ success: false, error: 'only draft or scheduled version can be restarted' }, 400);
+  }
+  const sourceVersion = (old.source_version_id && await getVersion(env, old.source_version_id)) || await findLineageSourceVersion(env, teacher);
+  const versionId = makeId('ttv');
+  const nowIso = new Date().toISOString();
+  // 이전 초안 취소와 새 초안 생성은 한 번에: 중간에 끊겨도 초안이 둘 다 열려 있거나 둘 다 없는 상태가 되지 않는다.
+  await env.DB.batch([
+    env.DB.prepare("UPDATE timetable_versions SET status = 'cancelled', cancelled_at = ?, updated_at = ? WHERE id = ?").bind(nowIso, nowIso, id),
+    env.DB.prepare(`
+      INSERT INTO timetable_versions
+        (id, school_year, title, status, source_version_id, effective_from, effective_to, created_by, memo)
+      VALUES (?, ?, ?, 'draft', ?, ?, ?, ?, ?)
+    `).bind(versionId, old.school_year, old.title, sourceVersion?.id || old.source_version_id || null, old.effective_from || null, old.effective_to || null, teacher?.id || null, old.memo || null)
+  ]);
+  const seeded = await seedDraftFromOperations(env, versionId);
+  return jsonResponse({ ...seeded, restarted_from_version_id: id });
+}
+
 export async function handleTimetableVersions(request, env, teacher, path, url, body = {}) {
   if (!isAdminUser(teacher)) return forbidden();
 
@@ -1382,19 +1873,7 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
       teacher?.id || null,
       body.memo || null
     ).run();
-    const createdVersion = await getVersion(env, versionId);
-    const versionClasses = await ensureVersionClassesSeeded(env, createdVersion);
-    const copiedSlots = await copyVersionSlots(env, sourceVersion.id, versionId);
-    const copiedStudentAssignments = await copyClassStudentsToVersion(env, createdVersion);
-    return jsonResponse({
-      success: true,
-      timetable_version: await getVersion(env, versionId),
-      timetable_version_classes: await listVersionClasses(env, versionId),
-      timetable_classes: versionClasses.filter(isRenderableVersionClass).map(versionClassCompatClassRow),
-      copied_version_classes: versionClasses.length,
-      copied_slots: copiedSlots,
-      copied_student_assignments: copiedStudentAssignments
-    });
+    return jsonResponse(await seedDraftFromOperations(env, versionId));
   }
 
   if (method === 'GET' && id && !action) {
@@ -1404,6 +1883,16 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
     const repairedSlots = await ensureVersionSlotsMapped(env, version);
     const repairedAssignments = await ensureVersionAssignmentsMapped(env, version);
     const repairedStudentAssignments = await ensureDraftStudentAssignmentsSeeded(env, version);
+    // 개편안은 며칠에 걸쳐 짜므로 열 때마다 현재 운영 명단으로 자동 갱신한다(멱등). 실패해도 화면은 열린다.
+    let rosterResult = { roster_sync: { added: [], removed: [], moved: [], changed: 0 }, roster_multi_class: [] };
+    if (EDITABLE_STATUSES.has(String(version.status || ''))) {
+      try {
+        rosterResult = await syncDraftRoster(env, version);
+      } catch (error) {
+        console.error('[timetable-versions GET] roster sync skipped:', error);
+        rosterResult.roster_sync.error = true;
+      }
+    }
     const renderableVersionClasses = (await listVersionClasses(env, id, { renderableOnly: true }));
     return jsonResponse({
       success: true,
@@ -1412,6 +1901,9 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
       timetable_classes: renderableVersionClasses.map(versionClassCompatClassRow),
       timetable_version_slots: await listSlots(env, id, null, { renderableOnly: true }),
       timetable_version_student_assignments: await listStudentAssignments(env, id, null, { renderableOnly: true }),
+      timetable_version_unassigned_students: await listUnassignedStudents(env, id),
+      timetable_version_removed_classes: await listRemovedClasses(env, id),
+      ...rosterResult,
       repaired_version_slots: repairedSlots,
       repaired_version_assignments: repairedAssignments,
       repaired_student_assignments: repairedStudentAssignments
@@ -1489,6 +1981,38 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
 
   if (method === 'POST' && id && action === 'students' && subAction === 'draft-create') {
     return createDraftStudent(env, id, body);
+  }
+
+  if (method === 'POST' && id && action === 'students' && subAction === 'unassign') {
+    return unassignDraftStudent(env, id, body);
+  }
+
+  if (method === 'POST' && id && action === 'classes' && subAction === 'remove') {
+    return removeDraftClass(env, id, body);
+  }
+
+  if (method === 'POST' && id && action === 'classes' && subAction === 'restore') {
+    return restoreDraftClass(env, id, body);
+  }
+
+  if (method === 'POST' && id && action === 'classes' && subAction === 'update') {
+    return updateDraftClass(env, id, body);
+  }
+
+  if (method === 'POST' && id && action === 'restart') {
+    return restartDraftVersion(env, teacher, id);
+  }
+
+  if (method === 'GET' && id && action === 'roster-diff') {
+    const version = await getVersion(env, id);
+    if (!version) return jsonResponse({ success: false, error: 'Not found' }, 404);
+    return jsonResponse({ success: true, version_id: id, roster_diff: await loadRosterDiff(env, version) });
+  }
+
+  if (method === 'POST' && id && action === 'roster-sync') {
+    const checked = await assertEditableVersion(env, id);
+    if (checked.error) return checked.error;
+    return jsonResponse({ success: true, version_id: id, ...(await syncDraftRoster(env, checked.version)) });
   }
 
   if (method === 'POST' && id && action === 'activate') {

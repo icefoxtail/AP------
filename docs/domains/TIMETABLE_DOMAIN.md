@@ -24,6 +24,18 @@
 
 운영 시간표는 `classes`, `class_time_slots`를 사용하고, draft/version은 `timetable-versions`와 version tables를 사용한다. conflict scan은 route에서 class/time overlap을 계산해 conflict logs/preview를 반환한다.
 
+### C-1. 새학기 개편안 명단 규칙 (2026-11)
+
+이유: 개편안을 며칠에 걸쳐 짜는 동안에도 신입·퇴원이 계속 생기는데, 개편안은 만들 때 운영 명단을 한 번 복사할 뿐이라 낡은 명단으로 적용하면 신입이 어느 반에도 못 들어가고 퇴원생이 되살아났다. DB 스키마는 바꾸지 않고 기존 컬럼에 값만 추가했다(운영 D1 마이그레이션은 수동이라 배포 즉시 깨질 수 있음).
+
+- **반 상태 `removed`** (`timetable_version_classes.status`): 개편안에서 삭제한 반. 운영 반에서 온 반은 행과 슬롯을 남기고 `removed`로만 표시한다(되살리기 가능). 초안에서 새로 만든 반(`source_class_id` 없음)은 행과 슬롯을 지운다. 화면·적용·충돌 확인의 "렌더 가능 반"에서는 `excluded`·`graduating_excluded`와 함께 제외한다. 삭제된 반의 학생은 미배정으로 간다.
+- **미배정 `excluded_reason='unassigned'`** (`timetable_version_student_assignments`): `class_id`·`version_class_id`는 표식값 `__unassigned__`. `UNIQUE(version_id, student_id)` 때문에 반이 없는 학생도 행을 유지한다. 렌더 목록에는 섞이지 않고 응답 `timetable_version_unassigned_students`로 따로 내려간다. 반에 넣으면(`students/assign`) 정상 배정으로 돌아온다. 적용 시 미배정 학생은 어느 새 반에도 넣지 않고 운영 수강 기록은 기존 로직대로 종료한다(적용을 막지 않음, 응답에 `unassigned_student_count`).
+- **현재 명단 자동 갱신(roster sync)**: 개편안(draft/scheduled)을 열 때마다(`GET timetable-versions/{id}`) 서버가 현재 운영 명단과 맞춘다. 멱등이며 순수 함수 `computeRosterDiff`가 계산한다. 퇴원·제적 학생은 개편안에서 빼고, 신입·재등록 학생은 현재 운영 반에 대응하는 개편안 반에(없으면 미배정에) 넣고, 운영에서 반을 옮긴 학생은 **원장이 손대지 않은 경우만**(`memo.note`가 최초 복사/sync 그대로이고 원래 소속 반에 그대로 있을 때) 새 반을 따라간다. 원장이 옮긴 학생·미배정으로 뺀 학생(미배정 행이 있으면 "개편안에 있는 학생")·삭제한 반은 되돌리지 않는다. 그래서 학생 배정/미배정 저장 때 `memo.note`를 `draft student reassigned`/`draft student unassigned`로 바꾼다.
+- **적용 차단**: `activate`는 적용 직전에 같은 비교를 다시 해서 신입 누락·퇴원생 포함·반 이동 미반영이 있으면 409 `roster_mismatch`와 차이 내용을 돌려주고 적용하지 않는다(안전장치).
+- **적용 시 삭제한 반**: `removed` 반의 원래 운영 반도 `is_active=0`, `class_students`·`teacher_classes` 삭제 대상에 넣는다. 안 넣으면 삭제한 반이 운영에 그대로 남는다. 졸업(중3) `excluded` 반은 기존대로 운영에 그대로 둔다(개편안에도 없고 적용 때 닫지도 않음).
+- **새로 만들기**: `POST timetable-versions/{id}/restart`는 대상 초안을 `cancelled`로 바꾸고 같은 학년도·적용일·제목의 새 초안을 현재 운영 데이터에서 만든다. 반의 요일·시간은 직전 버전 슬롯이 아니라 현재 운영 `class_time_slots`에서, 학생은 퇴원·제적을 뺀 현재 `class_students`에서 복사한다(`create-next-draft`도 같음).
+- 한 학생이 운영에서 두 반 이상 들으면 개편안에는 한 반만 저장된다. 화면 상단에 "두 반 수강 n명" 안내만 띄운다.
+
 ## D. 회귀 위험
 
 - draft 작업이 운영 class row를 덮어쓰는 것
