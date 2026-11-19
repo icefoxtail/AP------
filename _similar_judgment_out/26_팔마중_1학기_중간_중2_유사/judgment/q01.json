@@ -1,0 +1,68 @@
+{
+  "qid": 1,
+  "itemFingerprint": "2a0d6e6f0464d6c1",
+  "solveSteps": [
+    "순환소수의 순환마디의 양 끝 숫자 위에만 점을 찍어 나타낸다.",
+    "① 0.252525...의 순환마디는 25이므로 0.2(dot)5(dot)이다. (옳음)",
+    "② 1.4666...의 순환마디는 6이므로 1.46(dot)이다. (옳음)",
+    "③ 0.285714285714...의 순환마디는 285714이므로 0.2(dot)85714(dot)이다. (옳음)",
+    "④ 5.919191...의 순환마디는 91이므로 5.9(dot)1(dot)로 나타내어야 한다. 5.9(dot)19(dot)는 옳지 않다.",
+    "⑤ 3.333...의 순환마디는 3이므로 3.3(dot)이다. (옳음)",
+    "따라서 옳지 않은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 중 순환소수의 표현이 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-121",
+  "rpmReason": "5.919191...의 순환마디가 91임을 파악하여 5.9(dot)1(dot)로 올바르게 표현되었는지 판별하는 순환마디와 표현 문항이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수 5.919191...의 순환마디 표기 오류 5.9(dot)19(dot)를 식별하는 순환소수 표현 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수 5.919191...의 순환마디 점 찍기 규칙을 직접 점검하는 기본 문제로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "다음 중 순환소수의 표현이 옳지 않은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수의 표현이 옳지 않은 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "순환마디의 양 끝 숫자 위에만 점을 찍어야 한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "순환마디 양 끝에만 점을 찍는 순환소수 표기법 적용"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "5.919191...의 순환마디는 91이므로 5.9(dot)1(dot)로 써야 하며 5.9(dot)19(dot)는 틀렸으므로 ④를 정답으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

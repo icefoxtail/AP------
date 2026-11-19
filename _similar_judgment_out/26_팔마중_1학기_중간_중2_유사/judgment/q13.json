@@ -1,0 +1,67 @@
+{
+  "qid": 13,
+  "itemFingerprint": "d9a37a4b2c03aa5f",
+  "solveSteps": [
+    "ㄱ. 4x + 7 = 3은 등호로 연결된 일차방정식이다.",
+    "ㄴ. -3(x + 1) <= 5 - 3x 에서 -3 <= 5로 일차항이 소거된다.",
+    "ㄷ. 8x + 3 >= 2 - 2x 에서 10x + 1 >= 0이므로 일차부등식이다.",
+    "ㄹ. 3x^3 + 4x < 3x(1 + x^2) 에서 3x^3이 소거되어 x < 0이므로 일차부등식이다.",
+    "ㅁ. -x^2 + 3x > 4 + 3x 에서 -x^2 - 4 > 0으로 이차부등식이다.",
+    "따라서 일차부등식인 것은 ㄷ, ㄹ이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "다음 <보기> 중 일차부등식인 것만을 있는 대로 고른 것은?",
+  "rpmRecordId": "M2-RPM-138",
+  "rpmReason": "식 ㄷ을 정리하면 $10x + 1 \\ge 0$으로 일차부등식이 되는 등 식을 이항 정리하여 일차부등식인지 판별하는 기본형 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+  "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+  "typeReason": "식 ㄷ의 $10x + 1 \\ge 0$과 같이 식을 정리하여 일차부등식인 것을 선별하는 일차부등식 판별 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "보기 ㄷ을 정리하면 $10x + 1 \\ge 0$이 되고 ㄹ도 일차식만 남으므로 정의에 따라 일차부등식을 선별하는 기본 문항으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "다음 <보기> 중 일차부등식인 것만을 있는 대로 고른 것은? [3점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식인 것만을 있는 대로 고른 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식의 모든 항을 좌변으로 이항하여 정리했을 때",
+        "evidenceType": "IMPLIED",
+        "justification": "좌변으로 이항하여 일차식 꼴 확인"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ㄷ을 정리한 $10x + 1 \\ge 0$과 ㄹ의 $x < 0$이 일차부등식이므로 ㄷ, ㄹ인 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

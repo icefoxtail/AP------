@@ -1,0 +1,66 @@
+{
+  "qid": 19,
+  "itemFingerprint": "78a12b42733e7610",
+  "solveSteps": [
+    "1) 외국인들 사이의 악수: 프랑스-독일 3*4=12, 프랑스-영국 3*6=18, 독일-영국 4*6=24 => 12 + 18 + 24 = 54회",
+    "2) 한국인과 외국인 사이의 악수: 13 * x = 13x회",
+    "3) 총 악수 횟수 부등식: 54 + 13x > 110",
+    "4) 13x > 56 => x > 56/13 = 4.307...",
+    "5) x는 자연수이므로 가장 작은 값은 5이다.",
+    "따라서 한국인은 최소 5명 이상이므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "모든 사람이 나눈 총 악수 횟수가 $110$회를 넘었다고 할 때, 한국인은 최소 몇 명 이상이었는가?",
+  "rpmRecordId": "M2-RPM-143",
+  "rpmReason": "외국인 간 악수 횟수 $54$회와 한국인 악수 $13x$의 총합 $54 + 13x > 110$에서 최소 자연수 $x = 5$를 구하는 최소·최대 정수 활용 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "국적별 악수 횟수 조건으로부터 일차부등식 $54 + 13x > 110$을 세워 정수해 $x = 5$를 구하는 일차부등식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "서로 다른 국적 간 악수 횟수 $54$회를 조합 계산하고 $54 + 13x > 110$을 세워 $x > 4.307...$에서 최소 자연수 5를 판별하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "나눈 총 악수 횟수가 $110$회를 넘었다고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "한국인은 최소 몇 명 이상이었는가? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차부등식",
+        "src": "solution",
+        "quote": "를 넘었으므로 일차부등식을 세우면 $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외국인 악수 $12+18+24=54$회와 한국인 악수 $13x$의 합 $54 + 13x > 110 \\implies 13x > 56 \\implies x > 4.307$이므로 최소 5명인 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

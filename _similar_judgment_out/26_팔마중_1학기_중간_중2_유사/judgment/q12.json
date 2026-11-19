@@ -1,0 +1,66 @@
+{
+  "qid": 12,
+  "itemFingerprint": "ad46532996609ba6",
+  "solveSteps": [
+    "1) 곱셈 계산: (3x + 4y) * x = 3x^2 + 4xy",
+    "2) 나눗셈 계산: (4x^3y - 12xy^2) / (2xy) = 2x^2 - 6y",
+    "3) 두 식의 합: (3x^2 + 4xy) + (2x^2 - 6y) = 5x^2 + 4xy - 6y",
+    "따라서 옳은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "$(3x + 4y) \\times x + (4x^3y - 12xy^2) \\div 2xy$를 계산한 식은?",
+  "rpmRecordId": "M2-RPM-133",
+  "rpmReason": "$(4x^3y - 12xy^2) \\div 2xy$와 같이 다항식을 단항식으로 나누고 단항식의 곱셈과 더하는 계산 문항이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식과 다항식의 곱셈 $(3x + 4y) \\times x$ 및 나눗셈 $(4x^3y - 12xy^2) \\div 2xy$를 정리하는 다항식 연산 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "단항식과 다항식의 곱셈 $(3x + 4y) \\times x$과 나눗셈 $(4x^3y - 12xy^2) \\div 2xy$ 공식을 직접 적용하는 기본 계산으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "단항식과 다항식의 곱셈과 나눗셈을 각각 계산하여 더한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "단항식과 다항식의 곱셈과 나눗셈을 각각 계산하여 더한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "단항식과 다항식의 연산 결과 도출"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "단항식과 다항식의 곱셈과 나눗셈을 각각 계산하여 더한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$(3x + 4y) \\times x = 3x^2 + 4xy$와 $(4x^3y - 12xy^2) \\div 2xy = 2x^2 - 6y$를 더해 $5x^2 + 4xy - 6y$를 도출하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
