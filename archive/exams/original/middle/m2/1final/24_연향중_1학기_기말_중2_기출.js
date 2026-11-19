@@ -681,6 +681,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "일차함수\n\n$y=ax-b$\n\n의 그래프가 제1, 제2, 제3사분면을 지나므로\n\n$a>0$이고\n\n$-b>0$이다.\n\n따라서\n\n$b<0$이다.\n\n새 함수\n\n$y=\\dfrac bax-ab$\n\n의 기울기는\n\n$\\dfrac ba<0$이고,\n\n$y$절편은\n\n$-ab>0$이다.\n\n따라서 오른쪽 아래로 향하고 $y$축의 양의 부분에서 만나는 그래프이다.\n\n이에 해당하는 것은 ⑤이다.\n\n따라서 정답은 ⑤이다.",
     "image": "assets/images/24_연향중_1학기_기말_중2_기출/q20-problem-visual-v2.svg",
+    "imageScale": 100,
     "imageSize": "tall",
     "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
     "subUnit": "일차함수의 뜻과 그래프",

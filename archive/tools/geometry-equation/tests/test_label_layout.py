@@ -77,8 +77,13 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual((placed['labels'][0]['box']['width'],placed['labels'][0]['box']['height']),(80,30))
         variant=label('owner-panel',(60,50),'(1,2)',kind='COORDINATE_LABEL',target='A',directions=(),gaps=(),panelText='A: (1,2)',panelPrefix='A: ')
         owner=[{'id':'A','kind':'point','geometry':(60,50,2)}]
-        with self.assertRaisesRegex(ValueError,'BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:owner-panel'):
-            layout([variant],owner,safe,panel,measurements={'owner-panel':(40,20)},require_measurements=True)
+        # a point's coordinate label never goes to the side panel in its unmeasured panel variant: it stays beside its point or on a leader from it (no worker error)
+        placed_variant=layout([variant],owner,safe,panel,measurements={'owner-panel':(40,20)},require_measurements=True)
+        self.assertTrue(all(row['placement']!='SIDE_PANEL' for row in placed_variant['labels']))
+        # any other label kind with an unmeasured panel variant is still refused
+        other=label('eq-panel',(60,50),'(1,2)',kind='EQUATION_LABEL',directions=(),gaps=(),panelText='A: (1,2)',panelPrefix='A: ')
+        with self.assertRaisesRegex(ValueError,'BROWSER_PANEL_VARIANT_MEASUREMENT_REQUIRED:eq-panel'):
+            layout([other],[],safe,panel,measurements={'eq-panel':(40,20)},require_measurements=True)
     def test_generic_graph_annotation_keeps_strict_side_panel_behavior(self):
         annotation=label('curve-note',(60,50),'f(x)',kind='GRAPH_ANNOTATION',directions=(),gaps=(),panelText='f(x)')
         placed=layout([annotation],[],Box(0,0,120,100),Box(0,0,120,100),measurements={'curve-note':(40,16)},require_measurements=True)
@@ -97,7 +102,9 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(accepted['labels'][0]['placement'],'AUTO_W')
         coordinate=label('A-coordinate',(20,50),'(1,2)',kind='COORDINATE_LABEL',target='A',directions=('E',),gaps=(12,))
         rejected_coordinate=layout([coordinate],points,safe,measurements={'A-coordinate':(30,10)},require_measurements=True)
-        self.assertEqual(rejected_coordinate['unresolved'],['A-coordinate'])
+        # the box right of A is nearer B: it is refused, and the label stands on a side nearer A than B (never unresolved while a free place beside its point exists)
+        placed_box=Box(**rejected_coordinate['labels'][0]['box'])
+        self.assertLessEqual(box_point_distance(placed_box,(20,50)),box_point_distance(placed_box,(72,50)))
         coordinate_west={**coordinate,'directions':('W',)}
         accepted_coordinate=layout([coordinate_west],points,safe,measurements={'A-coordinate':(30,10)},require_measurements=True)
         self.assertEqual(accepted_coordinate['status'],'PASS')
@@ -137,8 +144,10 @@ class LayoutTests(unittest.TestCase):
         self.assertIn('data-role="leader"',owner_label_leader_svg(result['leaders'][0],result,lambda value:value))
         # A line between the point and every near box blocks each leader: no leaderless near relocation is accepted.
         wall=[{'id':'wall','kind':'line','geometry':[(110,60),(110,140)]}]
+        # (the label then stands on the point's own side of the wall, near its point, instead of staying unresolved)
         blocked=layout([item()],[point]+wall,Box(0,0,300,200),measurements={'A-coordinate':(30,10)},require_measurements=True)
-        self.assertEqual((blocked['unresolved'],blocked['leaders']),(['A-coordinate'],[]))
+        self.assertEqual(blocked['unresolved'],[])
+        self.assertLess(Box(**blocked['labels'][0]['box']).right,110)
         # Below 20 px no leader is drawn.
         free=layout([item()],[point],Box(0,0,300,200),measurements={'A-coordinate':(30,10)},require_measurements=True)
         self.assertEqual((free['labels'][0]['placement'],free['leaders']),('AUTO_E',[]))

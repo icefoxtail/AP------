@@ -738,7 +738,7 @@ window.questionBank = [
       "(x-y+z)(x+y+z)",
       "(x-y+z)(x+y-z)"
     ],
-    "answer": "⑤",
+    "answer": "③",
     "category": "인수분해",
     "originalCategory": "인수분해",
     "standardCourse": "중3 수학",
@@ -834,7 +834,7 @@ window.questionBank = [
     "id": 24,
     "content": "$AB=PB, CD=CQ$일 때 점 P에 대응하는 수, Q에 대응하는 수, $PQ$의 길이를 구하여라. [7점]",
     "choices": [],
-    "answer": "p=2-\\sqrt{5}, q=5+\\sqrt{5}, PQ=3+2\\sqrt{5}",
+    "answer": "p=-2-\\sqrt{5}, q=4+\\sqrt{10}, PQ=6+\\sqrt{5}+\\sqrt{10}",
     "category": "제곱근과 실수",
     "originalCategory": "제곱근과 실수",
     "standardCourse": "중3 수학",
@@ -854,7 +854,7 @@ window.questionBank = [
       "응용"
     ],
     "wide": false,
-    "solution": "대각선 $\\sqrt{5}$. $p=2-\\sqrt{5}, q=5+\\sqrt{5}$. $PQ = q-p = (5+\\sqrt{5})-(2-\\sqrt{5}) = 3+2\\sqrt{5}$",
+    "solution": "$\\overline{AB}=\\sqrt{2^2+1^2}=\\sqrt{5}$, $\\overline{CD}=\\sqrt{3^2+1^2}=\\sqrt{10}$이다. $B$에 대응하는 수가 $-2$이고 $AB=PB$이므로 $p=-2-\\sqrt{5}$, $C$에 대응하는 수가 $4$이고 $CD=CQ$이므로 $q=4+\\sqrt{10}$이다. $PQ=q-p=(4+\\sqrt{10})-(-2-\\sqrt{5})=6+\\sqrt{5}+\\sqrt{10}$",
     "level": "중",
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",

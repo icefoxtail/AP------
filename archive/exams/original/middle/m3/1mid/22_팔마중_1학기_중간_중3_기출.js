@@ -435,16 +435,16 @@ window.questionBank = [
       "$(a+b)(a-b)=a^2+b^2$",
       "$(x+a)(x+b)=x^2+(a+b)x+ab$"
     ],
-    "answer": "3",
-    "solution": "그림은 한 변의 길이가 $a$인 정사각형에서 가로와 세로로 각각 $b$만큼 뺀 정사각형의 넓이를 설명한다.\n따라서 $(a-b)^2=a^2-2ab+b^2$\n\\therefore 3",
+    "answer": "2",
+    "solution": "그림은 가로 $a+b$, 세로 $a-b$인 직사각형을 대각선으로 잘라 다시 배열하여, 한 변의 길이가 $a$인 정사각형에서 한 변의 길이가 $b$인 정사각형을 뺀 도형으로 만든 것이다.\n따라서 $(a+b)(a-b)=a^2-b^2$\n\\therefore 2",
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
     "subUnitConfidence": "existing_preserved",
     "subUnitClassificationDepth": "complete_documented",
-    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q13-solution.svg",
-    "solutionImageAlt": "해설 그림: 한 변이 a인 정사각형을 남는 파란 (a−b)² 정사각형, 같은 주황 띠 두 개, 초록 b² 모서리로 분할한 관계 모식도이다. 도식의 비례는 예시이다.",
-    "solutionImageCaption": "두 띠의 넓이는 각각 b(a−b)이다. 따라서 (a−b)²=a²−2ab+b²이다. 정답은 ③이다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/22_팔마중_1학기_중간_중3_기출/q13-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에는 가로가 a+b, 세로가 a−b인 직사각형이, 오른쪽에는 한 변이 a인 정사각형에서 한 변이 b인 정사각형을 뺀 모양이 그려져 있다. 변마다 a, b, a−b가 적혀 있고, 오른쪽 작은 정사각형의 두 변은 점선이며, 직각 표시가 있다.",
+    "solutionImageCaption": "왼쪽 직사각형은 가로a+b,세로a−b이므로 넓이(a+b)(a−b)이다. 같은 절단선으로 나눈 두 조각을 재배열하면 오른쪽처럼 한 변a의 정사각형에서 한 변b의 점선 정사각형을 뺀 도형이 된다. 두 도형은 같은 단위로 그렸고 조각을 뒤집어 옮길 뿐 넓이는 그대로다. 따라서(a+b)(a−b)=a²−b². 정답②. 배치에는a=5,b=2의 비율을 예시로 사용했으며 일반식은모든a>b>0에서성립한다.",
+    "solutionImageSize": "full",
   },
   {
     "id": 14,

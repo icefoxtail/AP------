@@ -30,7 +30,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: ‘중앙’이라고 적힌 칸에 7, ‘둘레’라고 적힌 칸에 R이 들어 있고, 이어서 5×4×3×2×1이 적힌 다섯 개의 칸이 나란히 놓여 있다.",
+    "solutionImageCaption": "가운데에 칠할 색은 7가지이고, 둘레의 기준색 R을 회전으로 고정하면 남은 둘레 자리는 5!가지이다. 경우의 수는 7×5!=840이므로 답은 ⑤ 840이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -290,7 +294,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 점에서 A(3/5), B(2/5)로 갈라지고, A에서는 오분류 1/50·정분류 49/50, B에서는 오분류 3/100·정분류 97/100으로 이어지는 수형도가 그려져 있다. 오른쪽에 3/5×1/50=3/250 같은 경로의 곱이 나란히 적혀 있다.",
+    "solutionImageCaption": "전체 오분류 확률은 3/5×1/50+2/5×3/100=3/125이고 그중 A 농장 몫은 3/250이다. 조건부확률은 (3/250)/(3/125)=1/2이므로 답은 ① 1/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -544,7 +552,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변의 길이가 1인 정사각형 ABCD가 그려져 있고, 꼭짓점 A에서 B 쪽으로 가는 화살표에 1/3, A에서 D 쪽으로 가는 화살표에 2/3이 적혀 있다.",
+    "solutionImageCaption": "3의 배수인 눈 3, 6이 나오면 1/3의 확률로 반시계 방향, 나머지 눈이면 2/3의 확률로 시계 방향으로 한 칸씩 움직인다. 네 번 움직여 A로 돌아오려면 반시계 횟수가 0, 2, 4이므로 (1/3)⁴+₄C₂(1/3)²(2/3)²+(2/3)⁴=41/81이다. 따라서 답은 ⑤ 41/81이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -657,7 +669,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 놓인 두 선분이 그려져 있다. 위 선분 AB의 중점 M과 아래 선분 PQ의 중점 N에 각각 30이 적혀 있고, 오른쪽 반쪽 MB에는 7.84, NQ에는 10.32가 적혀 있다.",
+    "solutionImageCaption": "95% 신뢰구간의 중심 30과 반길이 7.84에서 표준오차는 7.84÷1.96=4이다. 99%에서는 반길이가 2.58×4=10.32이므로 구간은 19.68≤m≤40.32이고 답은 19.68≤m≤40.32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -683,6 +699,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-ESTIMATION_BASIC",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 한 점에서 두 갈래로 갈라져 상자 A와 상자 B에 이르고, A에서는 1, 2로, B에서는 3, 4, 5로 다시 갈라지는 나무 그림이다. 각 갈래 옆에 1/2, 1/3의 확률이 적혀 있고 오른쪽에 각 숫자에 이르는 확률 1/4, 1/6이 곱셈으로 표시되어 있다.",
+    "solutionImageCaption": "상자를 먼저 고른 뒤 공을 고르는 한 번의 시행을 나누어 각 숫자의 확률을 구한다.",
+    "solutionImageSize": "full"
   }
 ];

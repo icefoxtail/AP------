@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-a5503ea2f4b8-be722a2b",
+  "sourceArchiveFile": "original/high/h1/1final/21_복성고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_fd01d0c9806ae277118f63f27cacc1efde82595674fee2a867ab08913954a6a8",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "step": "인수 x−1을 제외한 이차식의 두 허근 합 −2, 곱 2를 써서 (α²+β²)/(αβ)=(4−4)/2=0.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2f045a7a06bddc9a8d8a4f002d7abdbf110f762b34835369922591d08f69f371",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_BOTH",
+      "step": "내분점 P=(−1,1), 외분점 Q=(−7,13)을 구하면 PQ=√180=6√5.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 해설 SVG와 원문 그림을 source blob 렌더로 직접 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fb89b247cb1bdce4db54fd204ddcdc5e898c792ea728a2e9cf9e741c788a4020",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_APPLICATION",
+      "step": "B=(0,0),C=(1,0),A=(u,v)로 놓으면 외분점 E=(−2,0), F=(2u,2v)이므로 밑변 3배와 높이 2배로 넓이비 6.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결. 첨부 해설 SVG와 원문 그림을 source blob 렌더로 직접 교차 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

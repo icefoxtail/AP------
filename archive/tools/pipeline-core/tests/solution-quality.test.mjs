@@ -73,6 +73,17 @@ test('high difficulty and constructed response exemptions are rejected', () => {
   } finally { f.cleanup(); }
 });
 
+test('without level, difficultyBucket 4-5 still requires highLevelEnhanced; bucket 3 does not', () => {
+  const f = fixture();
+  try {
+    const c = structuredClone(f.records.get('solution').payload.solutionQuality);
+    c.checks.highLevelEnhanced.status = 'NOT_APPLICABLE';
+    const base = { solution: '교집합의 상한과 하한을 계산한다.', choices: [] };
+    assert.ok(validateSolutionQuality(c, { ...base, difficultyBucket: 4 }).errors.includes('SOLUTION_QUALITY_EXEMPTION_FORBIDDEN:highLevelEnhanced'));
+    assert.ok(!validateSolutionQuality(c, { ...base, difficultyBucket: 3 }).errors.includes('SOLUTION_QUALITY_EXEMPTION_FORBIDDEN:highLevelEnhanced'));
+  } finally { f.cleanup(); }
+});
+
 test('difficulty, type and choices invalidate solution review projection', () => {
   const q = { content: '문항', choices: ['1', '2'], solution: '해설', answer: '1', level: '중' };
   for (const patch of [{ level: '상' }, { questionType: '서술형' }, { choices: ['2', '1'] }]) assert.notEqual(axisInputSha(q, 'SOLUTION'), axisInputSha({ ...q, ...patch }, 'SOLUTION'));

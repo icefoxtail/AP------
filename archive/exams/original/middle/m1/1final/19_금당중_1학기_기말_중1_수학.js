@@ -249,7 +249,7 @@ window.examData = {
       "number": 15,
       "type": "CHOICE",
       "score": 4,
-      "question": "점 $(2a, a+3)$이 $x$축 위의 점이고, 점 $(2b-4, b+1)$이 $y$축 위의 점일 때, $a-b$의 값을 구하면? [4점]",
+      "question": "점 $(2a, a+3)$이 $x$축 위의 점이고, 점 $(2b-4, b+1)$이 $y$축 위의 점일 때, $a+b$의 값을 구하면? [4점]",
       "choices": [
         "2",
         "4",

@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T10:45:00+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_수학II.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)=\\begin{cases}x^2+k&(x\\lt2)\\\\3k-x&(x\\ge2)\\end{cases}$가 $x=2$에서 연속일 때, 닫힌구간 $[0,4]$에서 함수 $f(x)$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M+m$의 값은? (단, $k$는 상수이다.) [4.2점]”에서 k=3이면 x²+3은 3에서 7까지 증가하고 9−x는 7에서 5까지 감소하므로 M+m=7+3=10이다."
+    },
+    {
+      "ordinal": 12,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_CONTINUITY_AND_EXTREMA_AUDIT"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_RESTRICTED_INTERVAL"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $y=f(x)$의 그래프가 그림과 같다.\n\n정수 전체의 집합의 세 부분집합 $A,B,C$를\n$A=\\{a\\mid \\lim_{x\\to a}f(x)$의 값이 존재, $-1\\lt a\\lt6\\}$,\n$B=\\{b\\mid \\lim_{x\\to b}\\{f(x)-f(b)\\}=0,\\ -1\\lt b\\lt6\\}$,\n$C=\\{c\\mid \\lim_{x\\to c}\\dfrac{f(x)-f(c)}{x-c}$의 값 존재, $-1\\lt c\\lt6\\}$\n이라 하자. 집합 $A$의 원소의 개수를 $m$, 집합 $B$의 원소의 개수를 $n$, 집합 $C$의 원소의 개수를 $l$이라 할 때, $m+n+l$의 값은? [4.3점]”에서 A={0,1,2,4,5}, B={0,2,4,5}, C={0,5}이므로 m+n+l=5+4+2=11이다."
+    },
+    {
+      "ordinal": 13,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l4": "정의로 미분계수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “다항함수 $f(x)$에 대하여 $f(3)=3$, $f'(3)=2$일 때, $\\lim_{x\\to3}\\dfrac{\\{f(x)\\}^2-x^2}{x-3}$의 값은? [4.5점]”에서 (f(x)−x)/(x−3)의 극한은 f′(3)−1=1이고 f(x)+x→6이므로 전체 극한은 6이다."
+    },
+    {
+      "ordinal": 14,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l4": "구간별 함수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “두 함수 $f(x)=\\begin{cases}-x+3&(x\\lt 3)\\\\5&(x\\ge3)\\end{cases}$, $g(x)=x^2-ax+b$에 대하여 $\\dfrac{g(x)}{f(x)}$가 구간 $(-\\infty,\\infty)$에서 연속일 때, 두 상수 $a,b$에 대하여 $a+b$의 값은? [4.5점]”에서 유한한 좌극한으로 g(3)=0이고 연속성으로 g′(3)=0이므로 g(x)=(x−3)², a+b=6+9=15이다."
+    },
+    {
+      "ordinal": 15,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "midUnit": "함수의 극한",
+        "l3": "극한의 성질"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)=\\begin{cases}x^2+x&(x\\ge2)\\\\4&(x=1)\\\\x^2-x&(x\\lt2,\\ x\\ne1)\\end{cases}$와 이차함수 $g(x)$가 다음 조건을 만족시킬 때, $g(1)$의 값은? [4.5점]<br><div class=\"note-box\">(가) $\\lim_{x\\to0}\\dfrac{g(x)}{f(x+1)}=3$<br>(나) $\\lim_{x\\to1+}f(x+1)g(x)=\\lim_{x\\to-1+}f(1-x)g(x)$</div>”에서 두 번째 조건은 6g(1)=2g(−1)이므로 6(A+3)=2(A−3)에서 A=−6, g(1)=−3이다."
+    },
+    {
+      "ordinal": 16,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_CUBIC_POLYNOMIAL_COEFFICIENTS_RECOVERY"
+      ],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “삼차함수 $f(x)$가 다음 조건을 만족시킨다.<br><div class=\"note-box\">(가) 모든 실수 $x$에 대하여 $f(x)+f(-x)=0$이다.<br>(나) 곡선 $y=f(x)$ 위의 점 $(1,3)$에서의 접선의 기울기는 $1$이다.</div><br>곡선 $y=f(x)$ 위의 점 $(2,f(2))$에서의 접선의 방정식이 $y=mx+n$일 때, $n-m$의 값은? [4.6점]”에서 f(x)=−x³+4x이므로 f(2)=0, f′(2)=−8이고 접선 y=−8x+16에서 n−m=24이다."
+    },
+    {
+      "ordinal": 17,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_MEAN_VALUE_THEOREM_FORMULA"
+      ],
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "rpmPath": {
+        "midUnit": "도함수의 활용(1)",
+        "l3": "평균값 정리 기초",
+        "l4": "기울기 조건"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “닫힌구간 $[-1,3]$에서 연속이고, 열린구간 $(-1,3)$에서 미분가능하며 다음 조건을 만족시키는 모든 함수 $f(x)$에 대하여 $f(3)$의 최댓값을 $M$, 최솟값을 $m$이라 하자. $M-m$의 값은? [4.7점]<br><div class=\"note-box\">(가) $f(-1)=2$<br>(나) $-1\\lt c\\lt3$인 모든 실수 $c$에 대하여 $0\\le f'(c)\\le4$이다.</div>”에서 0≤(f(3)−2)/4≤4에서 2≤f(3)≤18이고 상수함수와 기울기 4인 직선이 양 끝값을 이루므로 M−m=16이다."
+    },
+    {
+      "ordinal": 18,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_TANGENT_LINE_SLOPE_AT_POINT"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “그림과 같이 곡선 $y=x^3-3x^2+27$ 위의 점 중에서 제1사분면에 있는 점의 좌표를 $(a,b)$이라 하자. $\\dfrac ba$가 최솟값을 가질 때, 상수 $a,b$에 대하여 $b-a$의 값은? [4.8점]”에서 2a³−3a²−27=(a−3)(2a²+3a+9)=0에서 a=3, b=27이고 f(x)−9x=(x−3)²(x+3)≥0이므로 b−a=24이다."
+    },
+    {
+      "ordinal": 19,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_CURVE_GRAPH"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “실수 $t$에 대하여 함수 $f(x)=|x(x-2)|(x-t)$가 $x=a$에서 미분가능하지 않은 모든 실수 $a$의 개수를 $g(t)$라 하자. 보기에서 옳은 것만을 있는 대로 고른 것은? [5점]<br><div class=\"note-box\">ㄱ. $g(0)=0$<br>ㄴ. $\\lim_{t\\to2}g(t)=1$<br>ㄷ. 함수 $g(t)$가 불연속인 점은 $2$개이다.</div>”에서 g(0)=g(2)=1이고 그 밖에서는 g(t)=2이므로 ㄱ과 ㄴ은 틀리고 불연속점이 두 개인 ㄷ만 옳다."
+    },
+    {
+      "ordinal": 2,
+      "chosenFrom": "pass2",
+      "conditionKeys": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_POSITIVE"
+      ],
+      "rpmPath": {
+        "l3": "극한의 성질",
+        "l4": "대수적 계산"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)$가 모든 양의 실수 $x$에 대하여 $\\dfrac{4x-3}{x}\\lt f(x)\\lt\\dfrac{4x^2+3x+5}{x^2}$을 만족시킬 때, 극한값 $\\lim_{x\\to\\infty}f(x)$는? [3.6점]”에서 x가 무한히 커질 때 양쪽 식이 모두 4로 수렴하므로 그 사이의 f(x)도 4로 수렴한다."
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_DERIVATIVE_DEFINITION_LIMIT"
+      ],
+      "rpmPath": {
+        "l3": "극한의 성질",
+        "l4": "미정계수"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “[서술형 1] 다항함수 $f(x)$가 $\\lim_{x\\to\\infty}\\dfrac{x^2}{f(x)-x^3}=\\dfrac14$, $\\lim_{x\\to1}\\dfrac{f(x)}{x-1}=7$을 만족시킬 때, 함수 $f(x)$와 $f(-1)$의 값을 구하시오. [4점]”에서 c+d=−5와 11+c=7에서 c=−4,d=−1이므로 f(x)=x³+4x²−4x−1, f(−1)=6이다."
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_DERIVATIVE_DEFINITION_LIMIT"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “[서술형 2] 두 다항함수 $f(x)$, $g(x)$가 $\\lim_{x\\to1}\\dfrac{f(x)-1}{x-1}=3$, $\\lim_{x\\to1}\\dfrac{g(x)+2}{x-1}=2$를 만족시킬 때, 함수 $y=f(x)\\{f(x)-g(x)\\}$의 $x=1$에서의 미분계수를 구하시오. [5점]”에서 곱의 미분으로 x=1에서 3·(1+2)+1·(3−2)=10을 얻는다."
+    },
+    {
+      "ordinal": 22,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_DERIVATIVE_DEFINITION_LIMIT"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “[서술형 3] 함수 $f(x)=|x-2|$에 대하여 함수 $xf(x)$의 $x=2$에서의 연속성과 미분가능성을 조사하시오. (연속의 정의와 미분계수의 정의를 이용하여 서술하시오.) [5점]”에서 F(2)=0이고 함수의 극한도 0이어서 연속이지만 차분몫의 좌극한은 −2, 우극한은 2여서 미분가능하지 않다."
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DERIVATIVE_RULE"
+      ],
+      "rpmPath": {
+        "l4": "접선의 방정식"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “삼차함수 $f(x)=x^3+x^2-4x-1$의 그래프 위의 점 $(-2,3)$에서의 접선의 기울기는? [3.8점]”에서 f′(x)=3x²+2x−4이므로 접선의 기울기는 f′(−2)=12−4−4=4이다."
+    },
+    {
+      "ordinal": 6,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_QUOTIENT_SCALING"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “함수 $f(x)=(3x^2+1)(x-3)$에 대하여 $\\lim_{h\\to0}\\dfrac{f(1-2h)-f(1)}h$의 값은? [4점]”에서 f(x)=3x³−9x²+x−3에서 f′(1)=−8이므로 극한은 (−2)(−8)=16이다."
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "연속의 뜻",
+        "l4": "한 점에서의 연속"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “$x\\gt 0$인 모든 실수에서 연속인 함수 $f(x)$가 $(\\sqrt x-2)f(x)=x^2-3x-4$를 만족시킬 때, $f(4)$의 값은? [4점]”에서 f(x)=(x+1)(√x+2)이므로 4에서의 연속성으로 f(4)=5·4=20이다."
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "pass2",
+      "crossConceptKeys": [
+        "CC_CUBIC_POLYNOMIAL_COEFFICIENTS_RECOVERY"
+      ],
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “다항함수 $f(x)=x^3+ax^2+bx+2$에 대하여 $\\lim_{x\\to3}\\dfrac{f(x-2)-6}{x-3}=5$일 때, $ab$의 값은? [4.1점]”에서 a+b=3, 2a+b=2를 풀면 a=−1, b=4이므로 ab=−4이다."
+    },
+    {
+      "ordinal": 9,
+      "chosenFrom": "pass2",
+      "rpmPath": {
+        "l3": "극한의 성질",
+        "l4": "대수적 계산"
+      },
+      "choiceTableUsed": "H2-수학II.json",
+      "resolutionReason": "문항의 “두 함수 $f(x)$, $g(x)$가 $\\lim_{x\\to\\infty}f(x)=\\infty$, $\\lim_{x\\to\\infty}\\{3f(x)-g(x)\\}=5$를 만족시킬 때, $\\lim_{x\\to\\infty}\\dfrac{f(x)+3g(x)}{2g(x)-f(x)}$의 값은? [4.1점]”에서 g(x)/f(x)→3이므로 비의 극한은 (1+3·3)/(2·3−1)=2이다."
+    }
+  ]
+}

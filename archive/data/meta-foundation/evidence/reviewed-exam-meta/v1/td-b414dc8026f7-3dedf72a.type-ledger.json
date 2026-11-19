@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-b414dc8026f7-3dedf72a",
+  "sourceArchiveFile": "original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_010f8f1faae3e08bd5b215e9c6d482b88c2c5da7ba1db2fac725c869ec7e7a0e",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": null,
+      "step": "엄격부등식 절댓값(x)>2의 여조건은 경계를 포함한 절댓값(x)≤2임을 판정한다.",
+      "note": "정의: 양화사가 없는 조건을 부정하여 원래 조건이 거짓인 모든 경우를 정확히 표현한다. 구별: ACTIVE 모든·어떤 명제와 부정은 양화사가 포함된 명제에 한정되고 명제 판정은 진릿값 판단이므로 단순 조건의 부정 자체와 다르다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_598c05a9bffde6f128f43d521224fd55b193809cc544ca5684e2c9b8dba82c1e",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_DISTANCE_SUM_MIN",
+      "step": "두 근호를 PA와 PB로 해석하고 삼각부등식의 등호조건으로 AB=5를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

@@ -303,7 +303,7 @@ window.questionBank = [
       "125°"
     ],
     "image": "",
-    "answer": "④ 115°",
+    "answer": "③ 115°",
     "solution": "중심각 AOB=60°, BOC=70°이므로 B를 포함하지 않는 호 AC의 중심각은 360−60−70=230°. 원주각 ∠ABC=230/2=115°이다.",
     "displayNo": "0128",
     "questionNo": 128,
@@ -1143,7 +1143,7 @@ window.questionBank = [
       "대표문제 다시 풀기"
     ],
     "wide": false,
-    "content": "원뿔 모양의 물탱크에 물 54 L를 부었더니 물탱크 높이의 3/4이 되었다. 물탱크에 물을 가득 채우려면 물을 얼마나 더 부어야 하는지 구하시오.\n(단, 물탱크의 두께는 생각하지 않는다.)",
+    "content": "원뿔 모양의 물탱크에 물 54 L를 부었더니 물탱크 높이의 3/4이 되었다. 물탱크에 물을 가득 채우려면 물을 얼마나 더 부어야 하는지 구하시오.\n(단, 물탱크의 두께는 생각하지 않으며, 원뿔의 꼭짓점이 아래쪽이다.)",
     "choices": [],
     "image": "",
     "answer": "74 L",
@@ -1809,7 +1809,7 @@ window.questionBank = [
       "대표문제 다시 풀기"
     ],
     "wide": false,
-    "content": "△ABC에서 AH⊥BC이다. AC=17 cm, AH=8 cm, BC=21 cm일 때, AB의 길이를 구하시오.",
+    "content": "△ABC에서 AH⊥BC이고 점 H는 선분 BC 위에 있다. AC=17 cm, AH=8 cm, BC=21 cm일 때, AB의 길이를 구하시오.",
     "choices": [],
     "image": "",
     "answer": "10 cm",
@@ -1876,8 +1876,8 @@ window.questionBank = [
     "content": "한 변의 길이가 17 cm인 정사각형 ABCD의 각 변 위에 AE=BF=CG=DH=5 cm가 되도록 점 E, F, G, H를 잡았을 때, □EFGH의 넓이를 구하시오.",
     "choices": [],
     "image": "",
-    "answer": "239 cm²",
-    "solution": "정사각형 넓이 17²에서 네 모서리 직각삼각형 넓이 4·(5·5/2)=50을 빼면 239 cm².",
+    "answer": "169 cm²",
+    "solution": "정사각형 넓이 17²=289에서 네 모서리 직각삼각형(직각을 낀 두 변 5 cm, 12 cm)의 넓이 4·(5·12/2)=120을 빼면 169 cm².",
     "displayNo": "0723",
     "questionNo": 723,
     "sourceQuestionNo": 723,
@@ -2454,7 +2454,7 @@ window.questionBank = [
       "대표문제 다시 풀기"
     ],
     "wide": false,
-    "content": "어떤 자격시험에서 민호가 합격할 확률은 $\\frac{2}{3}$이고, 윤지가 합격할 확률은 $\\frac{4}{7}$이다. 민호와 윤지 중 적어도 한 명은 합격할 확률을 구하시오.",
+    "content": "어떤 자격시험에서 민호가 합격할 확률은 $\\frac{2}{3}$이고, 윤지가 합격할 확률은 $\\frac{4}{7}$이다. 민호와 윤지 중 적어도 한 명은 합격할 확률을 구하시오.\n(단, 두 사람의 합격 여부는 서로 영향을 주지 않는다.)",
     "choices": [],
     "image": "",
     "answer": "6/7",

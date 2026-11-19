@@ -256,14 +256,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 복소수에 대한 설명으로 옳은 것은? [4.0점]",
     "choices": [
-      "$i$는 제곱하면 $-1$이다.",
+      "$i$는 제곱하면 $1$이다.",
       "실수는 복소수가 아니다.",
       "$7i$의 허수 부분은 $7$이다.",
       "$4+3i$는 $4$보다 큰 수이다.",
-      "$a \\n eq 0, b=0$이면 $a+bi$는 허수이다."
+      "$a \\ne 0, b=0$이면 $a+bi$는 허수이다."
     ],
     "answer": "③",
-    "solution": "복소수의 체계 및 성질 검증\\n② 실수는 복소수의 부분집합 (거짓)\\n③ 복소수 $a+bi$에서 허수 부분은 $b$이므로 $7i$의 허수 부분은 $7$ (참)\\n④ 허수는 대소 관계 판별 불가 (거짓)\\n⑤ $b=0$이면 실수 (거짓)\\n(참고: ①도 참인 명제이나, 단일 정답 원형에 맞추어 명백한 ③을 정답 처리)\\n$\\therefore ③$",
+    "solution": "복소수의 체계 및 성질 검증\\n① $i^2=1$이 아니라 $i^2=-1$ (거짓)\\n② 실수는 복소수의 부분집합 (거짓)\\n③ 복소수 $a+bi$에서 허수 부분은 $b$이므로 $7i$의 허수 부분은 $7$ (참)\\n④ 허수는 대소 관계 판별 불가 (거짓)\\n⑤ $b=0$이면 실수 (거짓)\\n$\\therefore ③$",
     "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -345,7 +345,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_유사/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫째 줄의 근 −3, 6을 각각 왼쪽으로 2만큼 옮기면 둘째 줄의 근 −5, 4가 된다. 두 근의 곱은 따로 계산한다.",
+    "solutionImageCaption": "첫째 줄의 근 −3, 6을 각각 왼쪽으로 2만큼 옮기면 둘째 줄의 근 −5, 4가 된다. 두 근의 곱은 따로 계산한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -538,10 +542,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "[서술형 3] 복소수 $z=(2x^2+11x-6)+(x^2-36)i$ 에 대하여 $\\bar{z}=z$를 만족시키는 0이 아닌 실수 $x$의 값을 구하시오. [5점]",
+    "content": "[서술형 3] 복소수 $z=(2x^2+11x-6)+(x^2-36)i$ 에 대하여 $\\bar{z}=z$이고 $z\\ne0$을 만족시키는 실수 $x$의 값을 구하시오. [5점]",
     "choices": [],
-    "answer": "⑥",
-    "solution": "복소수가 실수일 조건 적용\\n$\\bar{z}=z$를 만족하려면 $z$는 실수이어야 하므로 허수부분이 $0$\\n$x^2-36=0 \\implies (x-6)(x+6)=0 \\implies x=6$ 또는 $x=-6$\\n$x=-6$일 때 $Re(z)=2(36)+11(-6)-6=72-66-6=0$ 이 되어 $z=0$ (조건 위배)\\n$x=6$일 때 $Re(z)=2(36)+11(6)-6=72+66-6=132 \\n eq 0$\\n$\\therefore 6$",
+    "answer": "6",
+    "solution": "복소수가 실수일 조건 적용\\n$\\bar{z}=z$를 만족하려면 $z$는 실수이어야 하므로 허수부분이 $0$\\n$x^2-36=0 \\implies (x-6)(x+6)=0 \\implies x=6$ 또는 $x=-6$\\n$x=-6$일 때 $Re(z)=2(36)+11(-6)-6=72-66-6=0$ 이 되어 $z=0$ (조건 위배)\\n$x=6$일 때 $Re(z)=2(36)+11(6)-6=72+66-6=132 \\ne 0$\\n$\\therefore 6$",
     "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
     "subUnit": "복소수의 뜻과 표현",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -567,6 +571,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_제일고_1학기_중간_고1_유사/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 [−3, 2] 안에 대칭축의 위치 T=1이 있다. 왼쪽 끝점 L은 축에서 4, 오른쪽 끝점 R은 1만큼 떨어져 있다. 따라서 최솟값은 a−1, 최댓값은 a+15이다.",
+    "solutionImageCaption": "구간 [−3, 2] 안에 대칭축의 위치 T=1이 있다. 왼쪽 끝점 L은 축에서 4, 오른쪽 끝점 R은 1만큼 떨어져 있다. 따라서 최솟값은 a−1, 최댓값은 a+15이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -4,16 +4,17 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const navigation = require('../archive/archive2-navigation.js');
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
 const labelsOf = (html, sectionPattern) =>
   [...(html.match(sectionPattern) || [''])[0].matchAll(/<span class="archive-nav-label">([^<]*)<\/span>/g)].map(match => match[1]);
 
-test('unit papers are a primary task in both surfaces and keep legacy escape available', () => {
+test('unit papers are a primary task in both surfaces and no legacy/tool links are shown to teachers', () => {
   for (const mode of ['workspace', 'unit']) {
     const html = navigation.markup(mode);
     assert.match(html, /href="unit-past-exams.html\?ready=1"/);
-    assert.match(html, /href="index.html\?legacy=1">아카이브 1.0/);
+    assert.doesNotMatch(html, /legacy=1|아카이브 1\.0|자료 점검|view=health|data-view="health"|problem-bank-search|유형·개념으로|archive-navigation-tools/);
     assert.equal((html.match(/<span class="archive-nav-label">단원별 기출<\/span><\/a>/g) || []).length, 1, 'PC menu entry');
     assert.equal((html.match(/<span class="archive-nav-label">단원별<\/span><\/a>/g) || []).length, 1, 'phone menu entry');
   }
@@ -22,13 +23,13 @@ test('unit papers are a primary task in both surfaces and keep legacy escape ava
   assert.match(navigation.markup('unit'), /href="workspace.html\?view=compose"/);
 });
 
-test('PC menu has six entries in order and the phone menu has five', () => {
+test('PC menu has six entries in order and the phone menu has six short ones including 빠른평가', () => {
   for (const mode of ['workspace', 'unit']) {
     const html = navigation.markup(mode);
     assert.deepEqual(labelsOf(html, /<nav class="archive-navigation-tasks"[\s\S]*?<\/nav>/),
       ['홈', '학교별 기출', '단원별 기출', '문제지 만들기', '빠른 평가', '보관함 · 출제 내역']);
     assert.deepEqual(labelsOf(html, /<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/),
-      ['홈', '학교별', '단원별', '만들기', '보관함']);
+      ['홈', '학교별', '단원별', '만들기', '빠른평가', '보관함']);
   }
 });
 
@@ -49,12 +50,34 @@ test('saved and recent screens both mark the one 보관함 · 출제 내역 entr
   assert.match(navigation.libraryTabs('recent'), /data-view="saved" aria-pressed="false">보관함[\s\S]*data-view="recent" aria-pressed="true">출제 내역/);
 });
 
-test('quick assessment views keep 빠른 평가 (PC) and 만들기 (phone) current', () => {
+test('quick assessment views keep 빠른 평가 current on PC and phone, and 만들기 only for compose', () => {
   for (const view of ['five-minute', 'subunit-test', 'unit-test', 'monthly-test']) {
     assert.ok(navigation.matches('quick', view));
-    assert.ok(navigation.matches('make', view));
+    assert.equal(navigation.matches('make', view), false);
     assert.equal(navigation.matches('compose', view), false);
+    const html = navigation.markup('workspace', { view });
+    const tabs = html.match(/<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/)[0];
+    const current = [...tabs.matchAll(/<button[^>]*aria-current="page"[^>]*>[\s\S]*?<span class="archive-nav-label">([^<]*)<\/span>/g)];
+    assert.deepEqual(current.map(match => match[1]), ['빠른평가'], view);
+    assert.match(tabs, /data-view="five-minute" data-nav-key="quick"/);
   }
+  assert.ok(navigation.matches('make', 'compose'));
+  const unitTabs = navigation.markup('unit').match(/<nav class="archive-mobile-tabs"[\s\S]*?<\/nav>/)[0];
+  assert.match(unitTabs, /href="workspace.html\?view=five-minute" data-nav-key="quick"/);
+});
+
+test('the three tool addresses are hidden from the menus but still open by address', () => {
+  // The health screen is still a workspace route and a menu-less view, and the two pages still exist.
+  assert.equal(navigation.currentView('workspace'), 'home');
+  const route = readWorkspace().match(/state\.view = \[([^\]]*)\]\.includes\(p\.get\("view"\)\)/);
+  assert.ok(route && /"health"/.test(route[1]), 'workspace still routes ?view=health');
+  assert.equal(navigation.currentKey('workspace'), 'home');
+  for (const name of ['index.html', 'problem-bank-search.html', 'workspace.html'])
+    assert.ok(fs.existsSync(path.join(__dirname, '../archive', name)), name);
+  assert.match(readWorkspace(), /view === "health"|\["find", "compose", "health"\]/);
+  const shown = readWorkspace();
+  assert.doesNotMatch(shown, /href="problem-bank-search\.html"|href="index\.html\?legacy=1"|기존 아카이브/);
+  assert.match(shown, /data-boot-wait="failed"[^`]*다시 시도/);
 });
 
 test('a body title equal to the phone top bar title is marked so it can be hidden', () => {
@@ -129,23 +152,33 @@ test('단원별 기출 and the menu share one teacher rule instead of two copies
     workspaceHtml.indexOf('defer src="archive2-session.js') < workspaceHtml.indexOf('defer src="archive2-navigation.js'),
   'workspace: deferred scripts run in order, the rule before the menu');
   const unitHtml = read('unit-past-exams.html');
-  // The unit page starts itself with an inline init() call, before deferred scripts run, so the rule is not deferred.
-  assert.match(unitHtml, /<script src="archive2-session\.js\?v=[\w-]+"><\/script>/);
-  assert.ok(unitHtml.indexOf('archive2-session.js') < unitHtml.indexOf('unit-past-exams.js'), 'rule before the page init');
+  // The unit page is parsed first and started on DOMContentLoaded (after its deferred scripts), so the menu and the rule it
+  // reads are small blocking scripts placed right after the menu host: the menu is in the first painted frame.
+  assert.match(unitHtml, /<script src="archive2-session\.js\?v=[\w-]+"><\/script>\s*<script src="archive2-navigation\.js\?v=[\w-]+"><\/script>/);
+  assert.ok(unitHtml.indexOf('<header data-archive-navigation="unit"') < unitHtml.indexOf('archive2-session.js'), 'menu host before the menu scripts');
+  assert.match(unitHtml, /<script defer src="unit-past-exams\.js/, 'the page runtime is deferred, so it runs after the menu and never blocks the first frame');
+  assert.match(unitHtml, /DOMContentLoaded[\s\S]{0,160}UnitPastExams\.init\(\)/);
 });
 
-test('shared navigation mounts only on the ready shelf, leaving the legacy builder intact', () => {
-  for (const ready of [false, true]) {
-    let removed = false, attached = false;
-    const host = { dataset: { archiveNavigation: 'unit' }, hidden: true, remove: () => removed = true };
+test('shared navigation mounts on the unit page whether or not the address says ready, and is never hidden or removed', () => {
+  for (const search of ['', '?ready=1', '?grade=h1&unit=H22-C2-01']) {
+    let removed = false;
+    const attached = [];
+    const host = { dataset: { archiveNavigation: 'unit' }, hidden: true, remove: () => { removed = true; } };
     vm.runInNewContext(read('archive2-navigation.js'), {
-      document: {querySelector: () => host, body: {classList: {add: () => attached = true}}},
-      URLSearchParams, location: {search: ready ? '?ready=1' : ''},
+      document: { querySelector: () => host, body: { classList: { add: name => attached.push(name) } } },
+      URLSearchParams, location: { search },
     });
-    assert.equal(removed, !ready);
-    assert.equal(attached, ready);
-    if (ready) assert.equal(host.hidden, false);
+    assert.equal(removed, false, search);
+    assert.deepEqual(attached.slice(0, 2), ['archive2-shell', 'archive2-unit-surface'], search);
+    assert.equal(host.hidden, false, search);
+    assert.match(host.innerHTML, /<a href="unit-past-exams\.html\?ready=1" data-nav-key="unit" aria-current="page" class="active"/, search);
   }
+  // The first frame is already the new frame: the static page carries the shell classes, so nothing is restyled when the menu mounts.
+  const html = read('unit-past-exams.html');
+  assert.match(html, /<body class="unit-page archive2-shell archive2-unit-surface">/);
+  assert.doesNotMatch(html, /data-archive-navigation="unit"[^>]*hidden/);
+  assert.doesNotMatch(html, /unit-stepper|unit-back|fa-solid|font-awesome/i);
 });
 
 test('native unit assignment embeds without changing assignment APIs and cannot close during a save', () => {
@@ -166,4 +199,19 @@ test('native unit assignment embeds without changing assignment APIs and cannot 
   window.closeModal(); assert.equal(closeCount,1);
   assert.equal(messages[0].message.type,'archive2-original-close');
   assert.equal(messages[0].origin,'https://archive.test');
+});
+
+test('standalone pages in a sub folder keep the menu working: base prefix, chosen current entry and custom phone title', () => {
+  const html = navigation.markup('standalone', { view: 'saved', title: '시험지 보관함', base: '../' });
+  assert.match(html, /href="\.\.\/workspace\.html\?view=home"/, 'brand');
+  assert.match(html, /href="\.\.\/unit-past-exams\.html\?ready=1" data-nav-key="unit"/);
+  assert.match(html, /href="\.\.\/workspace\.html\?view=saved" data-nav-key="library" aria-current="page" class="active"/);
+  assert.equal((html.match(/aria-current="page"/g) || []).length, 2, 'one current entry in the PC menu and one in the phone menu');
+  assert.match(html, /<span class="archive-mobile-title">시험지 보관함<\/span>/);
+  assert.match(html, /href="\.\.\/\.\.\/apmath\/"/, 'login link reaches AP Math OS from archive/assessment/');
+  assert.doesNotMatch(html, /href="workspace\.html|href="unit-past-exams\.html/, 'no un-prefixed links');
+  const quick = navigation.markup('standalone', { view: 'five-minute', title: '모의고사' });
+  assert.match(quick, /href="workspace\.html\?view=five-minute" data-nav-key="quick" aria-current="page" class="active"/);
+  assert.match(quick, /href="\.\.\/apmath\/"/);
+  assert.equal(navigation.markup('standalone', { view: 'saved' }).includes('archive-mobile-title">보관함<'), true, 'default title still comes from the view');
 });

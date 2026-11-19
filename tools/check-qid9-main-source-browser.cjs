@@ -46,7 +46,7 @@ async function main(){
   await evaluate(`(()=>{document.querySelector('#manual-section').open=true;const x=document.querySelector('#generated-search');x.value=${JSON.stringify(sampleUid)};x.dispatchEvent(new Event('input',{bubbles:true}));return true})()`);
   await wait(`document.querySelectorAll('#generated-results article').length===1&&document.querySelector('#generated-results article')?.innerText.includes(${JSON.stringify(sampleUid)})`,'exact UID search');
   const search=await evaluate("(()=>({text:document.querySelector('#generated-results article').innerText,summary:document.querySelector('#generated-search-summary').innerText}))()");
-  if(!search.text.includes(school)||!search.text.includes(sampleUid)||!search.text.includes('기술 상태: READY'))throw Error('Search result not operational '+JSON.stringify(search));
+  if(!search.text.includes(school)||!search.text.includes(sampleUid)||!search.text.includes('사용 상태: 사용 가능'))throw Error('Search result not operational '+JSON.stringify(search));
   await evaluate("document.querySelector('#generated-results article button').click()");await wait(`document.querySelector('#generated-preview')?.innerText.includes(${JSON.stringify(sampleUid)})`,'problem preview');
   const problem=await evaluate("(()=>({choices:document.querySelectorAll('#generated-preview .choice').length,math:document.querySelectorAll('#generated-preview mjx-container').length,solutionButton:!!document.querySelector('#generated-preview .solution-preview')}))()");
   if(problem.choices!==expectedChoiceCount||!problem.solutionButton)throw Error('Problem choices/solution controls missing '+JSON.stringify({...problem,expectedChoiceCount}));

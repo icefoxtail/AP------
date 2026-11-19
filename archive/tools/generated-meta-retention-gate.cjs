@@ -51,7 +51,7 @@ function validateMeta(meta){
  if(!nonempty(meta.integrationPattern))issues.push('integrationPattern:MISSING');
  if(!Number.isInteger(meta.difficultyBucket)||meta.difficultyBucket<1||meta.difficultyBucket>5)
   issues.push('difficultyBucket:INVALID_1_TO_5');
- if(!['하','중','상'].includes(meta.level))issues.push('level:INVALID');
+ if(meta.level!==undefined&&!['하','중','상'].includes(meta.level))issues.push('level:INVALID');
  for(const field of ['problemTypeKey','templateKey']){
   if(nonempty(meta[field]))continue;
   if(meta[field]!==null||!nonempty(meta.metaDebt?.[field]))

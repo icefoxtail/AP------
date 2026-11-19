@@ -1,0 +1,409 @@
+{
+  "schemaVersion": "m3-existing-renderer-two-actual-scoped-result-binding-v1",
+  "taskId": "6f1f6242-0d6b-4090-8647-a9b38b4cb731",
+  "owner": "GPT_M3S2_RELEASE_26FC42390A50",
+  "decision": "ACCEPT_ACTUAL_PRIVATE_SCOPE_45_EXISTING_AUTHORITY_TWO_MAIN_PAGES_PENDING",
+  "method": "Read and hash the completed actual report, compare actual commit gate/workflow whole bytes with the frozen candidate, and bind metadata results. No new execution or source/UI review.",
+  "candidateManifest": {
+    "gitBlobSha1": "934983d2fe280947843a3869cd5d6232db9076f0",
+    "sha256": "1be8b7efbff6312302bdba7c3c40d029eaf04b379f20cdc35ff07388258d12b2",
+    "bytes": 26831
+  },
+  "actualReport": {
+    "gitBlobSha1": "a07991c5b8dbeb30f3d18dad79ed857fed1d539e",
+    "sha256": "40326a0d83720fb344145e6c804e65f5707655d345ab5cfb58a181054c59ccf1",
+    "bytes": 219012,
+    "reportedGitBlobSha1": "a07991c5b8dbeb30f3d18dad79ed857fed1d539e"
+  },
+  "execution": {
+    "eventName": "push",
+    "repository": "icefoxtail/AP------",
+    "ref": "refs/heads/ops/m3-existing-renderer-two-26fc-20261117",
+    "checkoutCommit": "e7b64d55ba201bdad67ec7ae441fb7ce125d1227",
+    "eventCommit": "e7b64d55ba201bdad67ec7ae441fb7ce125d1227",
+    "runId": "44030942433",
+    "runAttempt": 1,
+    "job": "m3-existing-renderer-two",
+    "integrationAncestor": "2c06ec048d62b96ea446d2136cd264c17ae57f0c",
+    "reviewCommit": "c54f303dd84a78e7111cb0b4d095f78d503e65ea",
+    "nativeReviewCommit": "c17c09a24eb356e4eaf17e4f5bc43c9844cf7427",
+    "jobId": "133862456691",
+    "jobConclusion": "SUCCESS",
+    "jobConclusionBasis": "Root completed job observation; report completed status directly read"
+  },
+  "actualCodeWholeComparison": [
+    {
+      "path": "tools/4slot/check-m3-existing-renderer-two-scoped.cjs",
+      "gitBlobSha1": "e1b9f9ae5236ee5705bca4b8ab648ccda65bf004",
+      "sha256": "1159ab9a42a429dd3233c88f335650c8f518812ffb27b025683821f8ea272175",
+      "bytes": 53953,
+      "actualCommit": "e7b64d55ba201bdad67ec7ae441fb7ce125d1227",
+      "candidateWholeBytesEqual": true
+    },
+    {
+      "path": ".github/workflows/m3-existing-renderer-two-registration.yml",
+      "gitBlobSha1": "f9ba912ea76a7c6e3d731f8db903d4603445fd45",
+      "sha256": "16b77abeeca8dc7c30dfef77ade559b061175e3b17564bdc4200f6a7941eac2c",
+      "bytes": 1650,
+      "actualCommit": "e7b64d55ba201bdad67ec7ae441fb7ce125d1227",
+      "candidateWholeBytesEqual": true
+    }
+  ],
+  "sidecars": [
+    {
+      "path": ".archive-meta-register/4slot-renderer-continuity/qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974.json",
+      "gitBlobSha1": "cf085289fd13f82cc357ba62f0a094c84fa79bd3",
+      "sha256": "0d38f5a69c81bff7385e6b5735232bfe0587d93cdabea6fb87f4e46171c8f723",
+      "bytes": 1903,
+      "candidateWholeBytesEqual": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-renderer-continuity/qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04.json",
+      "gitBlobSha1": "053eeb61874aeb4a7620f2ffc3917ff4d5696b37",
+      "sha256": "2ffe51858d27fdbf1baf56068df0342dc037d1899e1f2467336e765456056e59",
+      "bytes": 1896,
+      "candidateWholeBytesEqual": true
+    }
+  ],
+  "gateRequiredExistingCodePins": [
+    {
+      "path": "tools/4slot/registered-renderer-continuity.mjs",
+      "gitBlobSha1": "4ced47a9e712cc4b4def9d35d36f7a90f77a8482",
+      "sha256": "b3f447bc44e1283b942eb2f70f778c32ceab667370ed1be2966687bbf573f3e8",
+      "bytes": 8030
+    },
+    {
+      "path": "tools/4slot/registered-renderer-continuity.cjs",
+      "gitBlobSha1": "636508c172e4c2016cd285384d09b467920f4836",
+      "sha256": "482b14918edf02eba8b794bbb350829b5ffc30f2fc89df23c0d360318dc27076",
+      "bytes": 2728
+    },
+    {
+      "path": "tools/4slot/build-4slot-runtime.cjs",
+      "gitBlobSha1": "9fb98cdddc54bd5474ccf81b68d589617396de1c",
+      "sha256": "1a84c4543209fb842065093fa05aa35c02fb2216e3fb6482745c91f3dc435873",
+      "bytes": 41001
+    },
+    {
+      "path": "archive/item-4slot.js",
+      "gitBlobSha1": "249e0af23b6a011d1247399ef487a635222e1e27",
+      "sha256": "0845bd881541a0b3f8faaf709b12274d09f29805bc36870bc245d12f4bfdab7d",
+      "bytes": 8639
+    },
+    {
+      "path": "archive/tools/meta-foundation/native-reviewed-renderer-reuse.mjs",
+      "gitBlobSha1": "2a92763df7777114ed403b0fc9e5ca5481171daa",
+      "sha256": "83de1798ec68b90d29271a9bfd7a175eb19e57fd7c93e03d35c6992666a09336",
+      "bytes": 12520
+    },
+    {
+      "path": "archive/tools/meta-foundation/reviewed-current-renderer-continuity.mjs",
+      "gitBlobSha1": "73a5b83ae2411dcafc58bf3103d31937f7ef6ceb",
+      "sha256": "98c416216dc754a1b5d144a81741adf2ccba62c487f1d4c7fadba0a107332c83",
+      "bytes": 47223
+    },
+    {
+      "path": "tools/4slot/exam-items.cjs",
+      "gitBlobSha1": "debef5587df86821c04e543afb72a72b2e0fc1e4",
+      "sha256": "60e348829239772dfb916763835d2e21659ecd8eb2ba96e2621867352a935cf2",
+      "bytes": 2234
+    }
+  ],
+  "selectedStoredAuthority": [
+    {
+      "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+      "sourceOrdinal": 10,
+      "metadataWholeSha256": "4a2fecdd4446e4a73ffdfd4d38ce90e43c78c4ad429dcc03265e5a1f3bb1d2d7",
+      "identityWholeSha256": "c32b9dbe04381903c39cf941a412d76806a924bc662073bf5f0244c067c9ca7d",
+      "runtimeWholeSha256": "46b82d4fa1d4488832b01becfdb12c53f77b7793b9b6c624128bb6b72103033f",
+      "runtimePath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "packId": "MIDDLE_GEOMETRY",
+      "packVersion": "1.0.8",
+      "metadataApprovalType": "FINAL_QA",
+      "metadataStatus": "approved_semantic_review",
+      "wholeIssuedEquality": true
+    },
+    {
+      "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+      "sourceOrdinal": 19,
+      "metadataWholeSha256": "28f75951e7a81da89a1bf6743daf5d7fdead74c7120d17f118cf7f6d4873248a",
+      "identityWholeSha256": "7141df080e4058f00e35775977b7dc72a0074c50d037b91c697a435a8c606661",
+      "runtimeWholeSha256": "cb13a68accf5e0300ae104b2a419f5f4e32ceaf2758c2646a77865c19d9af18c",
+      "runtimePath": "archive/data/meta-foundation/runtime/middle-geometry-v1.json",
+      "packId": "MIDDLE_GEOMETRY",
+      "packVersion": "1.0.8",
+      "metadataApprovalType": "FINAL_QA",
+      "metadataStatus": "approved_semantic_review",
+      "wholeIssuedEquality": true
+    }
+  ],
+  "authorityObservations": [
+    {
+      "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+      "sourceOrdinal": 10,
+      "exitCode": 0,
+      "stdoutSha256": "490fba304e15f00a1e2227ca7fa6621a4c77243073627a376665a5ca6fdd2df2",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null,
+      "status": "PASS",
+      "sourceBinding": "REGISTERED_RENDERER_CONTINUITY",
+      "originalNativeRendererRequired": true,
+      "existingIssuedAuthority": true,
+      "newNativeApprovals": 0,
+      "newFourSlotApprovals": 0
+    },
+    {
+      "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+      "sourceOrdinal": 19,
+      "exitCode": 0,
+      "stdoutSha256": "9b509a1930826d8bc68a0b4bd69037ddee4dc8837216e896375afaf958f640ee",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "error": null,
+      "status": "PASS",
+      "sourceBinding": "REGISTERED_RENDERER_CONTINUITY",
+      "originalNativeRendererRequired": true,
+      "existingIssuedAuthority": true,
+      "newNativeApprovals": 0,
+      "newFourSlotApprovals": 0
+    }
+  ],
+  "state": {
+    "sourceQuestionCount": 45,
+    "selectedQuestionCount": 2,
+    "outsideQuestionCount": 43,
+    "actualBeforeCounts": {
+      "files": 2,
+      "items": 45,
+      "registered": 42,
+      "pending": 3,
+      "withCandidates": 0,
+      "identityFingerprintHistorical": 0
+    },
+    "privateAfterCounts": {
+      "files": 2,
+      "items": 45,
+      "registered": 44,
+      "pending": 1,
+      "withCandidates": 0,
+      "identityFingerprintHistorical": 0
+    },
+    "selectedBefore": [
+      {
+        "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+        "sourceOrdinal": 10,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "STALE_STUDENT_PAYLOAD",
+            "sha256": "9507f8e0757a2842fdd21d05c09536ec156cad8111d547f08f645e5bc5eed9de"
+          }
+        ]
+      },
+      {
+        "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+        "sourceOrdinal": 19,
+        "registered": false,
+        "recordSha256": null,
+        "pending": [
+          {
+            "code": "STALE_STUDENT_PAYLOAD",
+            "sha256": "9507f8e0757a2842fdd21d05c09536ec156cad8111d547f08f645e5bc5eed9de"
+          }
+        ]
+      }
+    ],
+    "selectedAfter": [
+      {
+        "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+        "sourceOrdinal": 10,
+        "registered": true,
+        "recordSha256": "cd45b2d625f3e0d32a062d73272c6a1063d6d24301dbaf6fc6d22059dc39730b",
+        "pending": []
+      },
+      {
+        "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+        "sourceOrdinal": 19,
+        "registered": true,
+        "recordSha256": "6a4493bf9a7ae08560b72ec2645c1d1d6402ada9751f4d988f49b4293ddf554f",
+        "pending": []
+      }
+    ],
+    "outsideWholeStateSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856",
+    "finalOutsideCheck": {
+      "phase": "NEW_SIDECAR_DELETION",
+      "expectedSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856",
+      "observedSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856",
+      "changed": []
+    }
+  },
+  "consumer": {
+    "selected": 2,
+    "queries": 18,
+    "officialScopeVerified": 44,
+    "status": "PASS_WITH_SUPPLEMENTS",
+    "pendingPreserved": 1,
+    "outsideWholeStateSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856"
+  },
+  "cold": {
+    "changed": false,
+    "revalidatedFiles": 2,
+    "reusedFiles": 0,
+    "counts": {
+      "files": 2,
+      "items": 45,
+      "registered": 44,
+      "pending": 1,
+      "withCandidates": 0,
+      "identityFingerprintHistorical": 0
+    },
+    "indexSha256": "b397ad0483af47e41b1e452068d474ddf334ce3781c6b0e216804088286e6bff"
+  },
+  "negativeResults": {
+    "independentReviewDeletion": {
+      "path": ".archive-meta-register/evidence/m3s2-current99-extra2-renderer-20261115/independent-review.json",
+      "selectedRegistered": 0,
+      "selectedRejected": 2,
+      "selected": [
+        {
+          "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+          "sourceOrdinal": 10,
+          "registered": false,
+          "recordSha256": null,
+          "pending": [
+            {
+              "code": "REGISTERED_RENDERER_CONTINUITY_INVALID",
+              "sha256": "27c23b533ca2ce68c92e9d177fde5566fa29b0de3f544514d6a7c03affced9b4"
+            }
+          ]
+        },
+        {
+          "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+          "sourceOrdinal": 19,
+          "registered": false,
+          "recordSha256": null,
+          "pending": [
+            {
+              "code": "REGISTERED_RENDERER_CONTINUITY_INVALID",
+              "sha256": "27c23b533ca2ce68c92e9d177fde5566fa29b0de3f544514d6a7c03affced9b4"
+            }
+          ]
+        }
+      ],
+      "outsideWholeStateSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856"
+    },
+    "compactItemBindingTamper": {
+      "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+      "registered": false,
+      "otherSelectedWholeUnchanged": true,
+      "pending": [
+        {
+          "code": "REGISTERED_RENDERER_CONTINUITY_INVALID",
+          "sha256": "c6bd84e5c1153922b6345a6c63652c58a09aadc38c2e30b3caeaa99f74986822"
+        }
+      ],
+      "compactBytesChanged": false,
+      "outsideWholeStateSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856"
+    },
+    "newSidecarDeletion": {
+      "selectedRegistered": 0,
+      "selectedRejected": 2,
+      "counts": {
+        "files": 2,
+        "items": 45,
+        "registered": 42,
+        "pending": 3,
+        "withCandidates": 0,
+        "identityFingerprintHistorical": 0
+      },
+      "selected": [
+        {
+          "questionUid": "qid_v1_b5db7dbd9bc79ba91bf5eca74ef301800fc9e8e049da8a90e58cd590cdc55974",
+          "sourceOrdinal": 10,
+          "registered": false,
+          "recordSha256": null,
+          "pending": [
+            {
+              "code": "STALE_STUDENT_PAYLOAD",
+              "sha256": "9507f8e0757a2842fdd21d05c09536ec156cad8111d547f08f645e5bc5eed9de"
+            }
+          ]
+        },
+        {
+          "questionUid": "qid_v1_0712df7eb36d8470adaa336d489d7fc15bf448252cf9259bbf3769060a235f04",
+          "sourceOrdinal": 19,
+          "registered": false,
+          "recordSha256": null,
+          "pending": [
+            {
+              "code": "STALE_STUDENT_PAYLOAD",
+              "sha256": "9507f8e0757a2842fdd21d05c09536ec156cad8111d547f08f645e5bc5eed9de"
+            }
+          ]
+        }
+      ],
+      "outsideWholeStateSha256": "4a4b7968a83f3c7e5697c5fbc17383fba2ab5ff73f485447224e86c4c32b1856",
+      "deletionFailClosed": true
+    }
+  },
+  "inputPreservation": {
+    "currentFileCount": 423,
+    "immutableRefCount": 251,
+    "opaqueHistoricalObjectCount": 101,
+    "privateNonderivedFilesUnchanged": 422,
+    "sharedWritableHardlinks": 0,
+    "otherQuestionSourceBanksRead": 0,
+    "rootTrackedRepositoryWrites": 0,
+    "remoteRefWrites": 0,
+    "currentManifestJsonSha256": "0b24cba9fad7e560c5127feaf40d7aa59c2d8677994ddcc061431f632111b5aa",
+    "immutableManifestJsonSha256": "8985bae961516112ecb904bb9c9671c7ec1b88c84456243b517949a66aa92351",
+    "authoringGlobalDataComparison": [
+      {
+        "path": "archive/data/question_metadata.json",
+        "authoringGitBlobSha1": "ba94f96cdb46566ed589e1fde03453223576e046",
+        "currentGitBlobSha1": "b0f9f54ccc3ecb4b5a62d4fe835671d93bb276d2",
+        "wholeFileEqual": false,
+        "interpretation": "Current HEAD bytes are authenticated; selected whole rows are independently required below."
+      },
+      {
+        "path": "archive/data/question_identity_map.json",
+        "authoringGitBlobSha1": "002a0a23ba507454a3b2cf3c62f3711519879b7b",
+        "currentGitBlobSha1": "4a7890a5d683e7f11e568b2a7d250069716caee6",
+        "wholeFileEqual": false,
+        "interpretation": "Current HEAD bytes are authenticated; selected whole rows are independently required below."
+      },
+      {
+        "path": "archive/data/item-4slot-index.json",
+        "authoringGitBlobSha1": "10ac903273bac37da0298b1b40101975bcc6902e",
+        "currentGitBlobSha1": "278bdc2631a3f8681cc74f726986857c9455ec58",
+        "wholeFileEqual": false,
+        "interpretation": "Current HEAD bytes are authenticated; selected whole rows are independently required below."
+      },
+      {
+        "path": "archive/data/svg-accessibility-index.js",
+        "authoringGitBlobSha1": "20f6bffe2a1a4d20bc23fba01545a8cbf9742b25",
+        "currentGitBlobSha1": "4ab4552f94efa1bbb2ff126bac708bd2a7cd595f",
+        "wholeFileEqual": false,
+        "interpretation": "Current HEAD bytes are authenticated; selected whole rows are independently required below."
+      }
+    ],
+    "globalDataEqualityNotAssumed": true,
+    "selectedIssuedWholeEqualityRequired": true
+  },
+  "limitations": {
+    "actualMainRegistration": "NOT_PERFORMED",
+    "actualPagesVerification": "NOT_PERFORMED",
+    "newNativeApprovals": 0,
+    "newFourSlotVectors": 0,
+    "newMathematicalQa": 0,
+    "newSemanticApprovals": 0,
+    "sourceWrites": 0,
+    "trackedCheckoutWrites": 0,
+    "remoteRefWrites": 0,
+    "ChromeRuns": 0,
+    "reviewerExecutions": 0,
+    "globalBuilderRun": false,
+    "oldConsumerOrWholeGlobalDataPassInferred": false
+  },
+  "nextAction": "Root may integrate these exact two sidecars after fresh selected input and code CAS, then run the authorized main writer and Pages verification. The private gate does not claim main registration or public availability."
+}

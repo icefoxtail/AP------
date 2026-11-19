@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-bb88920a2af3-c3b6adcb",
+  "sourceArchiveFile": "similar/middle/m1/1mid/19_왕운중_1학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_432de9423993d7f35edccbfe8687980287f308810b0a42cd0b05e6bb17be0202",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_ABSOLUTE",
+      "step": "부호를 없앤 절댓값5.5,4.8,6.2,17/3,5를 비교해-6.2를 선택한다.",
+      "note": "새 TPL 제안: 유리수·절댓값의 극값 선택: 부호와 절댓값의 순서를 비교해 극값을 선택하고 요구 연산을 수행한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3de652a5724956db63045edc5b6c162cd0ea8c5a6434009b65d9d4a9b4a703d4",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_COPRIME_TEST_AND_COUNT",
+      "templateKey": "TPL_M1_COPRIME_TEST_AND_COUNT_TEST",
+      "step": "각 쌍의 공통 소인수를 조사해14와33의 최대공약수만1임을 확인한다.",
+      "note": "새 TPL 제안: 여러 수 쌍의 서로소 판별: 각 쌍의 공통 소인수 유무로 최대공약수1인 쌍을 고른다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a049b294db1b4b908396da9502a7db084d94f14054d10f2082e9d53c2454c7a6",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
+      "step": "공약수는두수의 공통소인수2,3만 가질 수 있어7을 포함한⑤를 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6288065523eda6f5c032f063528c01f3aeca91c27b9d5d8896ee093a8f29fa85",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_CORE",
+      "step": "18의 배수는2와3²를 인수로 포함해야 하므로3지수가1인③을 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fc467f329b0ba98f5eb79eccd938931eb8de071f198dea72633e68d18028b6e7",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_NUMBER_ORDER",
+      "step": "부호와 크기를 비교해최대3,최소-7/2를 정하고 합-1/2를 구한다.",
+      "note": "새 TPL 제안: 유리수·절댓값의 극값 선택: 부호와 절댓값의 순서를 비교해 극값을 선택하고 요구 연산을 수행한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_417046dd6d5e8420c27c4ba9f1a5dd573a6b1161ec47ddf52bb639e8d0b5d92a",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RECOVER_VALUE_BY_INVERSE_OPERATION",
+      "templateKey": "TPL_M1_RECOVER_VALUE_BY_INVERSE_OPERATION_RECIPROCAL_RELATION",
+      "step": "두 역수-8/3과5/8을 곱해-5/3을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e3de43c0baf75e6514cd1e01657118a06da244abec00dad915b24c134a6786d",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_MIXED_ORDER",
+      "step": "거듭제곱과괄호를 먼저 계산하고-7을-7/8로 나누어8-4=4를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_77a57f08ff266a1e754de3b8816256bd5ce31b5e637af21c21192e560d6fa91e",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_INTERVAL_INTEGER_COUNT",
+      "templateKey": "TPL_M1_RATIONAL_INTERVAL_INTEGER_COUNT_INTERVAL",
+      "step": "두 경계를13/3과11/2로 계산한 뒤사이 정수5만을 센다.",
+      "note": "새 TPL 제안: 유리수 경계 구간 정수 개수: 양쪽 경계와 등호 포함 여부로 범위 안 정수를 나열해 센다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    }
+  ]
+}

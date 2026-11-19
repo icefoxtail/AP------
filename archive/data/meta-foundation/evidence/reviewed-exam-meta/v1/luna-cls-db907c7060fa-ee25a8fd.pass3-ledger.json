@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T23:59:24+09:00",
+  "sourceArchiveFile": "similar/high/h1/1final/25_팔마고_1학기_기말_고1_유사2.js",
+  "items": [
+    {
+      "ordinal": 10,
+      "chosenFrom": "pass1",
+      "resolutionReason": "삼각형 조건 x−2>0과 (x−2)+x>x+2에서 x>4이고 둔각 조건 (x+2)²>x²+(x−2)²에서 x<8이므로 정수 x=5,6,7의 합은 18이다.",
+      "choiceTableUsed": "H1-공통수학2.json",
+      "rpmPath": {
+        "majorUnit": "",
+        "midUnit": "",
+        "l3": "",
+        "l4": ""
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "NONE",
+      "hold": {
+        "rpmPath.majorUnit": "공통수학2 선택지에 삼각형 부등식 또는 도형의 종류 판별에 맞는 단원이 없음",
+        "rpmPath.midUnit": "표에 삼각형의 성립 조건을 분류하는 중단원 없음",
+        "rpmPath.l3": "표에 삼각형 조건과 둔각 조건 결합 유형 없음",
+        "rpmPath.l4": "표에 가장 긴 변 제곱을 이용한 둔각 판정 경로 없음"
+      }
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "절댓값 식은 x≤−2에서 −3x, −2≤x≤1에서 4−x, x≥1에서 3x이고 자연수 a=7,8,9일 때 정수해가 각각 5개여서 합은 24다.",
+      "choiceTableUsed": "H1-공통수학1.json",
+      "rpmPath": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 부등식",
+        "l3": "부등식의 활용",
+        "l4": "계수 조건"
+      },
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_PIECEWISE_FUNCTION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER",
+        "COND_NATURAL"
+      ],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

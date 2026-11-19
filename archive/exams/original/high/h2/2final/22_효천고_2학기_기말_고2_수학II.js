@@ -218,7 +218,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q4.png",
-    "imageAlt": "속도 그래프의 0,1,2,3초 구간과 v=-2,2 표시"
+    "imageAlt": "속도 그래프의 0,1,2,3초 구간과 v=-2,2 표시",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 시각 t축과 속도 v(t)축 위에 그래프가 그려져 있고, 0부터 1까지와 1부터 2까지는 t축 아래 영역 A, B, 2부터 3까지는 t축 위 영역 C로 표시되어 있으며 점 (1,−2)가 찍혀 있다.",
+    "solutionImageCaption": "각 구간의 넓이가 밑변 1인 삼각형으로 0부터 1까지 1, 1부터 2까지 1, 2부터 3까지 1이므로 이동거리는 1+1+1=3이다. 따라서 답은 ③ 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -444,7 +448,11 @@ window.questionBank = [
     "rpmL3": "정적분과 함수",
     "rpmL4": "상한이 변수인 적분",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 도함수 f′(x)의 그래프가 아래로 볼록한 포물선으로 그려져 있고, x축과 만나는 (−1,0), (3,0)과 꼭짓점 (1,−12)이 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=3x²−6x−9=3(x+1)(x−3)이라 x=−1에서 극대 f(−1)=5, x=3에서 극소 f(3)=−27이다. 두 극값의 합은 5−27=−22이므로 답은 ② −22이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -564,7 +572,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q10.png",
-    "imageAlt": "네 포물선으로 둘러싸인 대칭 영역"
+    "imageAlt": "네 포물선으로 둘러싸인 대칭 영역",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 열린 포물선과 좌우로 열린 포물선 네 개가 둥근 영역을 이루고, 그 영역을 직선 y=x와 y=−x가 지나가며, x축과 y축에 −1과 1이 표시되어 있다.",
+    "solutionImageCaption": "바깥 경계가 y=2−x², x=2−y², y=x²−2, x=y²−2인 네 포물선이고 좌표축에 대칭이므로 제1사분면 넓이의 네 배이다. 0부터 1까지의 5/3과 1부터 2까지의 2/3을 더한 7/3의 네 배인 28/3이므로 답은 ⑤ 28/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -847,7 +859,11 @@ window.questionBank = [
     "rpmL3": "정적분의 성질",
     "rpmL4": "대칭성",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2를 지나는 세로 점선을 중심으로 삼차곡선이 점대칭 모양으로 그려져 있고, 중심의 왼쪽과 오른쪽에 극점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "f(2−x)=−f(2+x)는 x=2에 대한 점대칭이므로 f(x)=(x−2)³+b(x−2)로 두면 f(1)=0에서 b=−1이다. 대칭 구간에서 ∫₀⁴f(x)dx=0이므로 ∫₀⁴(ax−6)dx=8a−24=0에서 a=3이고 답은 ③ 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -1027,7 +1043,7 @@ window.questionBank = [
     "id": 19,
     "questionNumber": 19,
     "questionType": "객관식",
-    "content": "19. 삼차함수 $f(x)$와 이차함수 $g(x)$에 대하여 양의 실수 $\\alpha, \\beta$와 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같다. 두 함수로 둘러싸인 부분의 넓이를 각각 $S_1$, $S_2$ ($S_1 < S_2$)라고 하고 $h(x) = \\int_0^x (f(t)-g(t))dt$ 라고 할 때, <보기>에서 옳은 것의 개수는? [5.0점]\n(단, $y=f(x)$의 그래프는 $x$축에 접하며 두 함수 $y=f(x)$, $y=g(x)$ 모두 원점을 지난다.)\n\n<보기>\nㄱ. $y=h(x)$는 4차 함수이며, 최고차항의 계수는 양수이다.\nㄴ. $y=h(x)$는 $x=\\alpha, x=\\beta$에서만 극값을 가진다.\nㄷ. $S_1+S_2 = 2h(\\alpha)-h(\\beta)$\nㄹ. $f'(\\frac{\\alpha+\\beta}{2}) + f(\\frac{\\alpha+\\beta}{2}) = 0$\nㅁ. $h(x)$의 최솟값은 $S_2-S_1$이다.",
+    "content": "19. 삼차함수 $f(x)$와 일차함수 $g(x)$에 대하여 양의 실수 $\\alpha, \\beta$와 두 함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같다. 두 함수로 둘러싸인 부분의 넓이를 각각 $S_1$, $S_2$ ($S_1 < S_2$)라고 하고 $h(x) = \\int_0^x (f(t)-g(t))dt$ 라고 할 때, <보기>에서 옳은 것의 개수는? [5.0점]\n(단, $y=f(x)$의 그래프는 $x$축에 접하며 두 함수 $y=f(x)$, $y=g(x)$ 모두 원점을 지난다.)\n\n<보기>\nㄱ. $y=h(x)$는 4차 함수이며, 최고차항의 계수는 양수이다.\nㄴ. $y=h(x)$는 $x=\\alpha, x=\\beta$에서만 극값을 가진다.\nㄷ. $S_1+S_2 = 2h(\\alpha)-h(\\beta)$\nㄹ. $f'(\\frac{\\alpha+\\beta}{2}) + f(\\frac{\\alpha+\\beta}{2}) = 0$\nㅁ. $h(x)$의 최솟값은 $S_2-S_1$이다.",
     "choices": [
       "$1$개",
       "$2$개",
@@ -1038,8 +1054,8 @@ window.questionBank = [
     "images": [
       "q19.png"
     ],
-    "answer": "②",
-    "solution": "$h'(x)=f(x)-g(x)$이므로 $h$의 증감은 두 그래프의 위아래 관계로 결정한다.\n그림에서 $f-g$는 $x=0,\\alpha,\\beta$에서 0이고, $0<x<\\alpha$에서는 양수, $\\alpha<x<\\beta$에서는 음수, $x>\\beta$에서는 양수다. 왼쪽 구간에서는 음수다.\nㄱ. $f-g$는 최고차항 계수가 양수인 삼차함수이므로 적분한 $h$는 최고차항 계수가 양수인 사차함수다. 참.\nㄴ. $h'$의 부호는 $x=0$에서도 음수에서 양수로 바뀌므로 $x=0$에서도 극솟값을 갖는다. 따라서 $\\alpha,\\beta$에서만이라는 말은 거짓.\nㄷ. $h(0)=0$, $h(\\alpha)=\\int_0^\\alpha(f-g)dx=S_1$이고 $h(\\beta)=S_1-S_2$이다. 따라서 $2h(\\alpha)-h(\\beta)=2S_1-(S_1-S_2)=S_1+S_2$로 참.\nㄹ. 이 식은 그래프 조건만으로 성립하지 않는다. 반례로 $f(x)=x(x-2)^2$, $g(x)=x^2$를 잡으면 교점은 $0,1,4$이고 $f$는 $x=2$에서 $x$축에 접한다. 이때 $\\alpha=1$, $\\beta=4$, $m=\\frac52$에 대해 $f'(m)+f(m)=\\frac{11}{4}+\\frac58=\\frac{27}{8}\\ne0$이다. 따라서 거짓이다.\nㅁ. $S_2>S_1$이므로 $h(\\beta)=S_1-S_2<0$인데 제시한 $S_2-S_1>0$과 다르다. 거짓.\n참인 것은 ㄱ, ㄷ 두 개이므로 정답은 ②이다.\n\n[다른 보기 확인]\n① ㄷ도 참이므로 1개가 아니다.\n③ ㄴ은 x=0의 극값을 놓친 진술이다.\n④ ㄹ의 등식은 그래프 정보만으로 보장되지 않는다.\n⑤ ㅁ은 최소값의 부호를 반대로 적었다.",
+    "answer": "③",
+    "solution": "$h'(x)=f(x)-g(x)$이므로 $h$의 증감은 두 그래프의 위아래 관계로 결정한다.\n그림에서 $f-g$는 $x=0,\\alpha,\\beta$에서 0이고, $0<x<\\alpha$에서는 양수, $\\alpha<x<\\beta$에서는 음수, $x>\\beta$에서는 양수다. 왼쪽 구간에서는 음수다.\nㄱ. $f-g$는 최고차항 계수가 양수인 삼차함수이므로 적분한 $h$는 최고차항 계수가 양수인 사차함수다. 참.\nㄴ. $h'$의 부호는 $x=0$에서도 음수에서 양수로 바뀌므로 $x=0$에서도 극솟값을 갖는다. 따라서 $\\alpha,\\beta$에서만이라는 말은 거짓.\nㄷ. $h(0)=0$, $h(\\alpha)=\\int_0^\\alpha(f-g)dx=S_1$이고 $h(\\beta)=S_1-S_2$이다. 따라서 $2h(\\alpha)-h(\\beta)=2S_1-(S_1-S_2)=S_1+S_2$로 참.\nㄹ. $f$의 그래프가 $x$축에 접하므로 $f(x)=kx(x-p)^2$ ($k>0$), $g(x)=cx$로 놓을 수 있다. $f(x)-g(x)=x\\{k(x-p)^2-c\\}$의 근은 $0,\\ p\\pm\\sqrt{c/k}$이므로 $\\alpha+\\beta=2p$, 즉 $\\frac{\\alpha+\\beta}{2}=p$이다. $f(p)=0$, $f'(p)=0$이므로 $f'(p)+f(p)=0$. 참.\nㅁ. $S_2>S_1$이므로 $h(\\beta)=S_1-S_2<0$인데 제시한 $S_2-S_1>0$과 다르다. 거짓.\n참인 것은 ㄱ, ㄷ, ㄹ 세 개이므로 정답은 ③이다.\n\n[다른 보기 확인]\n① ㄱ, ㄷ, ㄹ이 참이므로 1개가 아니다.\n② ㄱ, ㄷ만 참으로 보고 ㄹ을 놓친 경우이다.\n④ ㄴ은 x=0의 극값을 놓친 진술이므로 거짓이다.\n⑤ ㅁ은 최소값의 부호를 반대로 적었으므로 거짓이다.",
     "level": "상",
     "category": "정적분과 함수",
     "originalCategory": "정적분과 함수",
@@ -1142,7 +1158,11 @@ window.questionBank = [
     "rpmL3": "넓이",
     "rpmL4": "곡선과 x축",
     "rpmSemanticStatus": "FINAL",
-    "semanticSourceScope": "RPM_H15_M2"
+    "semanticSourceScope": "RPM_H15_M2",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선이 x축과 두 점에서 만나고, x축 아래의 두 영역 L, R과 x축 위의 영역 P가 나뉘어 표시되어 있으며, 대칭축 x=2가 점선으로 그려져 있다.",
+    "solutionImageCaption": "조건 (가)에서 f(t)=f(2a−t)라 대칭축이 x=a이고 f(x)=(x−a)²−d²이다. 절댓값 적분과 보통 적분의 차 4/3=4d³/3에서 d=1, L³/3−L=6에서 L=3이라 a=2, k=1이고, ∫₁⁵|f(x)|dx=4/3+20/3=8이므로 답은 ④ 8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -1249,7 +1269,11 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q22.png",
-    "imageAlt": "포물선과 직선 사이의 넓이 및 x=k"
+    "imageAlt": "포물선과 직선 사이의 넓이 및 x=k",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선 y=f(x)−g(x)가 (0,0)과 (6,0)에서 x축과 만나고, 꼭짓점 (3,9)에서 x축에 내린 점선이 넓이를 이등분한다. 그 사이의 영역 S가 옅게 칠해져 있다.",
+    "solutionImageCaption": "교점이 x=0, 6이고 0<x<6에서 f(x)−g(x)=6x−x²>0이므로 전체 넓이는 ∫₀⁶(6x−x²)dx=36이다. ∫₀ᵏ(6x−x²)dx=18에서 k³−9k²+54=0, (k−3)(k²−6k−18)=0이고 0<k<6인 해는 k=3이므로 답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1355,6 +1379,10 @@ window.questionBank = [
     "rpmSemanticStatus": "FINAL",
     "semanticSourceScope": "RPM_H15_M2",
     "image": "assets/images/22_효천고_2학기_기말_고2_수학II/q24.png",
-    "imageAlt": "이차함수 f′의 두 영점 -3,a와 음의 최고차항"
+    "imageAlt": "이차함수 f′의 두 영점 -3,a와 음의 최고차항",
+    "solutionImage": "assets/images/22_효천고_2학기_기말_고2_수학II/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선이 x축과 x=−3, x=−1에서 만나고, 두 영점 사이의 영역 L과 −1부터 0까지의 영역 R에 각각 8이 적혀 있다.",
+    "solutionImageCaption": "f′(x)=k(x+3)(x−a)에서 −3부터 a까지의 적분값 8과 −a부터 0까지 적분한 절댓값 8이 같아 (a+3)³=a²(a+9)이므로 a=−1, k=−6이다. 연속 조건에서 f(−3)=−16이라 C=−16이고 x≥−1에서 g(x)=−f(x)−16이므로 ∫₋₁²(f+g)dx=∫₋₁²(−16)dx=−48, 답은 −48이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-60cac2541fbb-832339ce",
+  "sourceArchiveFile": "original/middle/m3/1mid/23_동산중_1학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6077e0eefcb84837694c7c2b0221ff8ee8887189ae0a168add1ac97ec33cf548",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_REPRESENTATION",
+      "step": "0.28=7/25로바꾸어√7/5의계수를읽는다.",
+      "note": "필요 TPL: 소수 근호의 계수 정리: 소수를분수로바꾸고 제곱인수를 밖으로 꺼내계수를 결정한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e17ddf1bdd23d62f18ba62507639eece2425bd3dee92a55d19a3852951072f8",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "step": "x=√2를대입해근호곱·동류근호를합산.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_92ad8b7fa0db2df00502ea17e315948c48ec70d6888ee080f3e4b0dc99bb6bf6",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+      "step": "양수계수를근호안으로넣어√5ab+√20ab에곱5대입.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b61f14c599c3eb2fcc4e150520c87edc71549f3b1f275b0fff21bd4adc669f2d",
+      "sourceOrdinal": 16,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_IRRATIONAL",
+      "templateKey": null,
+      "step": "전개식a-28+(7-2a)√2의무리수계수를0으로놓는다.",
+      "note": "새 PT 제안: 근호식이 유리수가 되는 계수 조건. 정의: 유리수 계수의 근호식을 유리수 부분과 무리수 부분으로 분리하여 무리수항 계수가0이라는 조건으로 미정계수를 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, PT_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4064598d75c938c5ef24700749f8dc13271b0516e24a000f5e2acc5212e38c2",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+      "templateKey": "TPL_M3_RADICAL_VALUE",
+      "step": "켤레유리화로x=5-2√6을구해이차식에대입·전개하여9.",
+      "note": "필요 TPL: 켤레 유리화 후 대입 계산: 이항근호분모를 켤레로유리화하고 주어진다항식에 대입해근호항을정리한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    }
+  ]
+}

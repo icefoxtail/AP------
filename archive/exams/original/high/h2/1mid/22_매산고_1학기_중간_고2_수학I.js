@@ -94,7 +94,7 @@ window.questionBank = [
   {
     "id": 3,
     "questionType": "객관식",
-    "content": "함수 $f(x)=3^x$와 $f(x)$의 역함수인 $g(x)$의 그래프가 그림과 같다.<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q03.png\" class=\"exam-img\"></div><br>$f(2)+g(9)$의 값은? [3.9점]",
+    "content": "함수 $f(x)=3^x$와 $f(x)$의 역함수인 $g(x)$의 그래프가 그림과 같다.<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q03.png\" class=\"exam-img\" alt=\"증가하는 지수함수 f와 그 역함수 g의 그래프가 직선 y=x를 기준으로 서로 대칭이다. 안내선은 f의 x=1일 때 높이 3을 표시한다.\" data-archive-mobile-figure=\"true\"></div><br>$f(2)+g(9)$의 값은? [3.9점]",
     "choices": [
       "8",
       "9",
@@ -370,7 +370,7 @@ window.questionBank = [
   {
     "id": 9,
     "questionType": "객관식",
-    "content": "이차함수 $y=f(x)$의 그래프와 일차함수 $y=g(x)$의 그래프가 그림과 같을 때, 부등식 $\\left(\\frac{1}{3}\\right)^{-f(x)g(x)} \\le 9^{2g(x)}$을 만족시키는 모든 자연수 $x$ 값의 합은? [4.4점]<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q09.png\" class=\"exam-img\"></div>",
+    "content": "이차함수 $y=f(x)$의 그래프와 일차함수 $y=g(x)$의 그래프가 그림과 같을 때, 부등식 $\\left(\\frac{1}{3}\\right)^{-f(x)g(x)} \\le 9^{2g(x)}$을 만족시키는 모든 자연수 $x$ 값의 합은? [4.4점]<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q09.png\" class=\"exam-img\" alt=\"아래로 열린 포물선 f와 감소하는 직선 g가 있다. 포물선은 높이 4의 안내선과 x=4,6에서 만나고, 직선은 가로축과 x=5에서 만난다.\" data-archive-mobile-figure=\"true\"></div>",
     "choices": [
       "19",
       "20",
@@ -415,9 +415,9 @@ window.questionBank = [
     "questionUid": "qid_v1_7a93a0760c9e4b0f9de6b8f2ea243da973f025be568bbbab998e27822a5cba68",
     "sourceQid": 9,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q09-solution.svg",
-    "solutionImageAlt": "9번 풀이의 결정적 그래프·구간·도형 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "원본 문제 조건과 계산된 풀이 관계를 시각화한 보조 자료",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 실수 해 x≤4 또는 5≤x≤6을 파란 구간으로 나타내고, 영점 4·5·6과 그 안에 있는 자연수 해의 점들을 세 줄의 수직선으로 표시한다.",
+    "solutionImageCaption": "지수 부등식을 부호곱 조건으로 바꾸어 실수 해와 자연수 해를 나타냈다. 자연수 해는 1, 2, 3, 4, 5, 6이므로 합은 21이고 정답은 ③이다.",
     "solutionImageSize": "full"
   },
   {
@@ -470,7 +470,7 @@ window.questionBank = [
   {
     "id": 11,
     "questionType": "객관식",
-    "content": "함수 $y=a\\sin bx - c$의 그래프가 그림과 같을 때, 상수 $a+b+c$의 값은? (단, $a>0, b>0, c>0$) [4.6점]<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q11.png\" class=\"exam-img\"></div>",
+    "content": "함수 $y=a\\sin bx - c$의 그래프가 그림과 같을 때, 상수 $a+b+c$의 값은? (단, $a>0, b>0, c>0$) [4.6점]<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q11.png\" class=\"exam-img\" alt=\"사인곡선의 가장 높은 위치는 y=0, 가장 낮은 위치는 y=−2이고 중심선은 y=−1이다. 중심선을 아래에서 위로 지나는 x좌표는 −2π/3, 0, 2π/3이다.\" data-archive-mobile-figure=\"true\"></div>",
     "choices": [
       "1",
       "2",
@@ -558,9 +558,9 @@ window.questionBank = [
     "questionUid": "qid_v1_e7623d097cd0f6b5e53c9e4319182af376eee9f655300d85f30f844f65a177f6",
     "sourceQid": 12,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q12-solution.svg",
-    "solutionImageAlt": "12번 풀이의 결정적 그래프·구간·도형 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "원본 문제 조건과 계산된 풀이 관계를 시각화한 보조 자료",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: u=x/π로 정규화한 수직선에 A=[1/3,5/3], B=[0,1/4]∪[5/4,2), 그리고 공통 구간 [5/4,5/3]을 표시한다. 2는 열린 끝이고 공통 구간의 양 끝은 닫혀 있다.",
+    "solutionImageCaption": "공통 구간은 5π/4≤x≤5π/3이므로 α=5π/4, β=5π/3이다. 따라서 αβ=25π²/12이고 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -615,7 +615,7 @@ window.questionBank = [
   {
     "id": 14,
     "questionType": "객관식",
-    "content": "아래 그림과 같이 두 변 $\\mathrm{AB, CD}$가 서로 평행한 사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=6, \\overline{\\mathrm{CD}}=4$이다. 사다리꼴 $\\mathrm{ABCD}$의 두 대각선이 만나는 점을 점 $\\mathrm{P}$라 할 때, $\\overline{\\mathrm{AP}}=\\log_a b, \\overline{\\mathrm{BP}}=\\log_c b$이고 $\\overline{\\mathrm{BP}}:\\overline{\\mathrm{CP}}=2:1$이다. $\\log_a c + k\\log_c a > 6$이 되도록 하는 정수 $k$의 최솟값은? (단, $a, c$는 1이 아닌 양수이다.) [4.8점]<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q14.png\" class=\"exam-img\"></div>",
+    "content": "아래 그림과 같이 두 변 $\\mathrm{AB, CD}$가 서로 평행한 사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=6, \\overline{\\mathrm{CD}}=4$이다. 사다리꼴 $\\mathrm{ABCD}$의 두 대각선이 만나는 점을 점 $\\mathrm{P}$라 할 때, $\\overline{\\mathrm{AP}}=\\log_a b, \\overline{\\mathrm{BP}}=\\log_c b$이고 $\\overline{\\mathrm{BP}}:\\overline{\\mathrm{CP}}=2:1$이다. $\\log_a c + k\\log_c a > 6$이 되도록 하는 정수 $k$의 최솟값은? (단, $a, c$는 1이 아닌 양수이다.) [4.8점]<br><div class=\"exam-img-box\"><img src=\"assets/images/22_매산고_1학기_중간_고2_수학I/q14.png\" class=\"exam-img\" alt=\"사다리꼴 ABCD에서 아래쪽 밑변 AB의 길이는 6, 평행한 위쪽 밑변 CD의 길이는 4이다. 대각선 AC와 BD의 교점이 P이다.\" data-archive-mobile-figure=\"true\"></div>",
     "choices": [
       "1",
       "2",
@@ -660,9 +660,9 @@ window.questionBank = [
     "questionUid": "qid_v1_755aec680c5f446b7fb57e454c5b45d42f04047f64ecf3f42fd2d035efb0f123",
     "sourceQid": 14,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q14-solution.svg",
-    "solutionImageAlt": "14번 풀이의 결정적 그래프·구간·도형 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "원본 문제 조건과 계산된 풀이 관계를 시각화한 보조 자료",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: AB와 CD가 평행한 사다리꼴 ABCD에서 밑변 AB=6, CD=4와 대각선 AC, BD의 교점 P를 표시한다. AP:PC=3:2, BP:CP=2:1의 관계를 함께 적었다.",
+    "solutionImageCaption": "AB∥CD이므로 △APB∼△CPD이고 AP:PC=3:2이다. BP:CP=2:1에서 BP/AP=4/3이므로 log_c a=4/3, log_a c=3/4이다. 따라서 가장 작은 정수 k는 4이고 정답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -715,9 +715,9 @@ window.questionBank = [
     "questionUid": "qid_v1_b9189da5ce49491d9a8e92b5edff758741f824f0e07e2de78ab00c7ca7db6fbf",
     "sourceQid": 15,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q15-solution.svg",
-    "solutionImageAlt": "15번 풀이의 결정적 그래프·구간·도형 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "원본 문제 조건과 계산된 풀이 관계를 시각화한 보조 자료",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 단위정사각형에서 파란색 증가곡선 h(x)=2^x−1과 주황색 역함수 h⁻¹(x)=log₂(x+1), 그리고 y=x 점선이 표시된다. x=1과 y=1 경계가 정사각형을 이루고 두 곡선 아래 넓이는 서로 보완되어 합이 1이다.",
+    "solutionImageCaption": "한 주기의 그래프와 x축 사이 넓이를 구한다. 0≤x≤1에서 h(x)=2^x−1이고, 1<x≤2에서는 u=2−x로 치환하면 h⁻¹(u)=log₂(u+1)이다. 역함수 그래프는 y=x에 대칭이므로 단위정사각형에서 두 곡선 아래 넓이의 합은 1이다. 길이 2인 주기가 두 번 반복되므로 n≥0일 때 전체 넓이는 2(2n+1), n≤−1일 때는 −2(2n+1)이다. 넓이가 42가 되려면 n=10 또는 n=−11이고, 두 정수의 곱 K=−110이다. 따라서 |K|/10=11, 정답은 ①이다.",
     "solutionImageSize": "full"
   },
   {
@@ -840,9 +840,9 @@ window.questionBank = [
     "questionUid": "qid_v1_4f595f3dabe33f7697c1a891c6dde572880f109e3c1df4ed4d304d1285c805e6",
     "sourceQid": 18,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q18-solution.svg",
-    "solutionImageAlt": "18번 풀이의 결정적 그래프·구간·도형 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "원본 문제 조건과 계산된 풀이 관계를 시각화한 보조 자료",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q18-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 수직선의 왼쪽 열린 끝은 θ=0, 오른쪽 열린 끝은 θ=π/2이고, 가운데 채운 점은 θ=π/4이다. 가운데에서 같은 거리 d만큼 떨어진 두 눈금이 각각 θₙ과 θ₁₆₋ₙ이며, 가운데에서 두 눈금까지의 구간에 각각 d를 나타내는 괄호가 있어 두 거리가 같음을 보인다.",
+    "solutionImageCaption": "θ=πx/8로 두면 0≤θ<2π이고, t>0에서 g(t)−f(t)=32a/π (0<a<π/2)이므로 이 차는 0과 16 사이에서 변한다. 양의 정수 n마다 aₙ=sin(nπ/32)이고, n과 16−n의 항을 짝지으면 sin²의 합이 1이며 가운데 n=8의 값은 1/2이다. 일곱 쌍과 가운데항으로 S=15/2이고 8S=60이다. 따라서 (1) m=15, (2) 8S=60이다.",
     "solutionImageSize": "full"
   },
   {
@@ -927,9 +927,9 @@ window.questionBank = [
     "questionUid": "qid_v1_5546de92fbb1a66b01488b09d4c4f3714cd1a923d03584330a0e62bb49ffaf1f",
     "sourceQid": 20,
     "provenance": "GOOGLE_DRIVE_SOURCE_ONLY_JS",
-    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution.svg",
-    "solutionImageAlt": "20번 풀이의 결정적 그래프·구간·도형 관계를 나타낸 해설 그림",
-    "solutionImageCaption": "원본 문제 조건과 계산된 풀이 관계를 시각화한 보조 자료",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_수학I/q20-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 직선 y=x가 있고, A(−t, t)와 B(t, −t)가 원점에 대하여 서로 대칭인 위치에 있다. C(β, β)는 직선 y=x 위에서 원점의 음수 쪽에 있으며 −t<β<0이다.",
+    "solutionImageCaption": "g와 g⁻¹의 그래프는 직선 y=x에 대하여 대칭이므로 교점은 (−t, t), (t, −t)와 y=x 위의 고정점 (β, β)이고 −t<β<0이다. 예: t=3/5, β=−1/2의 위치로 그린 개략도이며 α=−t이다. 6|g(1/α)·g(1/α²)|=56이다.",
     "solutionImageSize": "full"
   }
 ];

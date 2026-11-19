@@ -15,7 +15,7 @@ internal static class Program
 {
     private const int DefaultPort = 43191;
     private const string DefaultPrinter = "SINDOH N500 Series PCL";
-    private const string AgentVersion = "20260824.3";
+    private const string AgentVersion = "20261118.1";
     private const string UpdateSourceUrl = "https://raw.githubusercontent.com/icefoxtail/AP------/main/tools/native-print-agent/Program.cs";
     private const long MaxBodyBytes = 256L * 1024L * 1024L;
     private static int updateStarted;
@@ -509,15 +509,30 @@ internal static class GdiPrinter
         {
             target = new RectangleF(0, 0, printable.Width, printable.Height);
         }
+        // Keep the page bitmap's own aspect ratio. Stretching it over the
+        // driver's imageable area squashes circles whenever that area's ratio
+        // differs from the bitmap's (driver margins, non-A4 paper). Uses pixel
+        // counts, not HorizontalResolution. Centered both ways so duplex fronts
+        // and backs stay aligned.
+        var scale = Math.Min(target.Width / image.Width, target.Height / image.Height);
+        var drawWidth = image.Width * scale;
+        var drawHeight = image.Height * scale;
+        var drawRect = new RectangleF(
+            target.Left + (target.Width - drawWidth) / 2f,
+            target.Top + (target.Height - drawHeight) / 2f,
+            drawWidth,
+            drawHeight);
         if (logBounds)
         {
-            Console.WriteLine("GDI bounds: page=" + e.PageBounds + ", printable=" + printable + ", clip=" + clip + ", target=" + target);
+            Console.WriteLine("GDI bounds: page=" + e.PageBounds + ", printable=" + printable + ", clip=" + clip + ", target=" + target +
+                ", image=" + image.Width + "x" + image.Height + "px, draw=" + drawRect +
+                ", scaleX=" + (drawWidth / image.Width).ToString("0.######") + ", scaleY=" + (drawHeight / image.Height).ToString("0.######"));
         }
         var graphics = e.Graphics;
         graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
         graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
         graphics.CompositingQuality = CompositingQuality.HighQuality;
-        graphics.DrawImage(image, target);
+        graphics.DrawImage(image, drawRect);
     }
 }
 

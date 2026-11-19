@@ -2,122 +2,151 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Archive 2.0 | 모의고사 만들기</title>
+<title>모의고사 만들기 · JS 아카이브</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="archive2-tokens.css?v=20261110-shell-1">
+<link rel="stylesheet" href="archive2-standalone.css?v=20261116-polish-1">
+<link rel="stylesheet" href="archive2-navigation.css?v=20261116-menu-tools-1">
 <style>
-:root{font-family:"Pretendard","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;color:#172f4e;background:#f4f7fb}
-*{box-sizing:border-box}body{margin:0}button{cursor:pointer;font:inherit}
-header{background:#162d4c;color:white}
-.header-inner{max-width:1180px;margin:auto;padding:18px 26px;display:flex;align-items:center;justify-content:space-between}
-header a{color:#fff;text-decoration:none;font-size:18px;font-weight:800}header span{color:#b9cce2;font-size:12px}
-main{max-width:1180px;margin:0 auto;padding:42px 26px 90px}
-h1,h2,p{margin:0}h1{font-size:31px;letter-spacing:-1px}h2{font-size:20px;letter-spacing:-.5px}
-.subtitle{margin-top:10px;font-size:15px;color:#617996;line-height:1.5}
-.section{margin-top:24px;background:#fff;border:1px solid #dce5ef;border-radius:17px;padding:27px 30px}
-.section-head{display:flex;align-items:center;gap:11px;margin-bottom:22px}
-.step{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:#e9f1fb;color:#1c538c;font-size:13px;font-weight:800}
-.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:13px}
-.exam-card{display:flex;flex-direction:column;gap:11px;min-height:112px;padding:19px 22px;text-align:left;border:1.5px solid #d7e1ed;border-radius:12px;background:#fcfdff;color:#1d3a5b}
-.exam-card strong{font-size:18px;line-height:1.4}.exam-card small{font-size:13px;color:#647c98}
-.exam-card[aria-pressed="true"]{border-color:#2873c5;background:#eaf3ff;box-shadow:inset 0 0 0 1px #2873c5}
-.exam-card:hover{border-color:#2873c5}
+/* 모의고사 page: only what is specific to this page. Frame, buttons and fields come from archive2-standalone.css. */
+.section{margin-top:20px;padding:24px 28px;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--surface)}
+.section-head{display:flex;align-items:center;gap:12px;margin:0 0 20px}
+.section-head h2{margin:0;font-size:19px;font-weight:700;letter-spacing:-.02em}
+.step{flex:0 0 auto;min-width:32px;height:32px;padding:0 8px;display:inline-grid;place-items:center;border-radius:16px;background:var(--ink);color:#fff;font-size:13px;font-weight:700}
+.intro .sa-lead{max-width:760px}
 .summary{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.summary-copy{line-height:1.6;color:#607892;font-size:15px}
-.summary-copy strong{font-size:17px;color:#173d68}
-.primary{padding:14px 24px;border:1px solid #1768ba;border-radius:11px;color:#fff;background:#1768ba;font-size:16px;font-weight:800;white-space:nowrap;min-height:50px}
-.primary:disabled{opacity:.48;cursor:not-allowed}
-.primary:hover:not(:disabled){background:#0d559e}
-#message{margin-top:16px;min-height:23px;font-size:13px;color:#5a7190}
+.summary-copy{margin:0;color:var(--ink-2);font-size:15px;line-height:1.6}
+.summary-copy strong,.summary strong{color:var(--ink);font-size:16px}
+button.primary{min-height:50px;padding:0 24px;font-size:16px;white-space:nowrap}
+#message{margin-top:16px;min-height:23px;font-size:14px;color:var(--ink-2)}
 #paper{display:none}
+
+/* Exam cards (choose a source exam / a generated question) */
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:12px}
+.exam-card{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-height:112px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--surface);color:var(--ink);text-align:left;font-weight:400}
+.exam-card strong{font-size:17px;line-height:1.4;font-weight:700}
+.exam-card small{font-size:13px;color:var(--ink-2);line-height:1.5;font-weight:400}
+.exam-card:hover:not(:disabled){background:var(--chip)}
+.exam-card[aria-pressed="true"],.exam-card[aria-pressed="true"]:hover:not(:disabled){border:2px solid var(--ink);padding:17px 19px;background:var(--selected);color:var(--ink)}
+.generated-question-card{min-height:142px}
+.generated-question-card small{overflow-wrap:anywhere}
+.technical-error{margin:0;color:var(--danger);font-size:13px}
+
+/* Question content shown on screen and in print (kept as before) */
 .paper-question{margin:0 0 26px;break-inside:avoid;page-break-inside:avoid;font-size:15px;line-height:1.75;white-space:pre-wrap}
-.paper-question .paper-number{font-weight:800;font-size:16px;margin:0 0 6px}
+.paper-question .paper-number{font-weight:700;font-size:16px;margin:0 0 6px}
 .paper-question .stem{white-space:pre-wrap}
 .paper-question .choice{padding:5px 0}
 .question-table-wrap{max-width:100%;overflow-x:auto;margin:10px 0}
 .question-table{border-collapse:collapse;white-space:normal;font-size:13px}
-.question-table th,.question-table td{border:1px solid #a5b2c0;text-align:center;padding:4px 8px}
+.question-table th,.question-table td{border:1px solid var(--control-line);text-align:center;padding:4px 8px}
 img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain;margin:12px 0}
 .q-image-wrap{width:100%;break-inside:avoid;page-break-inside:avoid}
 .q-image-wrap.image-small img.math-figure{width:50%;max-width:50%;max-height:95px;margin-left:auto;margin-right:auto}
 .q-image-wrap.image-half img.math-figure{width:65%;max-width:65%;max-height:125px;margin-left:auto;margin-right:auto}
 .q-image-wrap.image-medium img.math-figure{width:80%;max-width:80%;max-height:150px;margin-left:auto;margin-right:auto}
-.q-image-wrap.image-large img.math-figure{width:94%;max-width:94%;max-height:190px;margin-left:auto;margin-right:auto}
-.q-image-wrap.image-full img.math-figure{width:100%;max-width:100%;max-height:240px;margin-left:auto;margin-right:auto}
-.q-image-wrap.image-tall img.math-figure{width:100%;max-width:100%;max-height:320px;margin-left:auto;margin-right:auto}
-.answer{margin:12px 0;border-top:1px solid #dce4ec;padding:12px 0;white-space:pre-wrap}
-.generated-question-search{display:grid;gap:10px}
-.generated-question-search input{width:100%;min-height:46px;padding:10px 12px;border:1px solid #cbd8e6;border-radius:9px;font:inherit;color:#173d68}
-.generated-search-summary{margin:8px 0;color:#607892;font-size:14px;line-height:1.5}
-.generated-question-card{min-height:142px}
+/* 2026-11-17: large·full·tall 기본 상한은 폭 90%·높이 240px(가운데). imageSizeOverride "full"/"tall"로 명시한 문항만 크게. */
+.q-image-wrap.image-large img.math-figure,.q-image-wrap.image-full img.math-figure{width:90%;max-width:90%;max-height:240px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-tall img.math-figure{width:90%;max-width:90%;max-height:280px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-override-full img.math-figure{width:100%;max-width:100%;max-height:240px;margin-left:auto;margin-right:auto}
+.q-image-wrap.image-override-tall img.math-figure{width:100%;max-width:100%;max-height:320px;margin-left:auto;margin-right:auto}
+.answer{margin:12px 0;border-top:1px solid var(--line);padding:12px 0;white-space:pre-wrap}
+
+/* Search + manual picking */
+.generated-question-search{display:grid;gap:8px}
+.generated-question-search label{font-size:14px;font-weight:700;color:var(--ink-2)}
+.generated-question-search input{width:100%}
+.generated-search-summary{margin:12px 0;color:var(--ink-2);font-size:14px;line-height:1.5}
 .generated-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
-.generated-actions button{border:1px solid #b8c7d8;border-radius:8px;padding:8px 12px;background:#fff;color:#173d68;font-weight:700;min-height:40px}
-.generated-actions button.primary{color:#fff;background:#1768ba;border-color:#1768ba}
-.generated-actions button.solution-preview{border-color:#7d94ad;color:#244765}
-.generated-actions button:disabled{opacity:.48;cursor:not-allowed}
-.generated-preview{margin-top:16px;padding:18px;border:1px solid #dce5ef;border-radius:12px;background:#fff}
+.generated-actions button{padding:0 16px;font-size:14px}
+.generated-preview{margin-top:16px;padding:18px;border:2px solid var(--ink);border-radius:var(--radius-panel);background:var(--surface)}
 .generated-preview[hidden]{display:none}
 .generated-selection{display:grid;gap:8px;margin:10px 0 16px}
-.generated-selection-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;border:1px solid #dce5ef;border-radius:8px}
-.generated-selection-row button{border:1px solid #b8c7d8;border-radius:8px;padding:7px 10px;background:#fff;color:#173d68}
+.generated-selection-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 8px 8px 14px;border:1px solid var(--line);border-radius:var(--radius-field);background:var(--surface);overflow-wrap:anywhere}
+.generated-selection-row button{flex:0 0 auto;font-size:14px}
+
+/* Conditions */
 .workflow-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.workflow-field{display:grid;gap:7px;color:#365473;font-size:14px;font-weight:700}
-.workflow-field select,.quota-field input{width:100%;min-height:45px;padding:9px 11px;border:1px solid #cbd8e6;border-radius:9px;background:#fff;color:#173d68;font:inherit}
-.source-selection{margin-top:16px;padding:14px 16px;border-radius:10px;background:#f3f7fc;color:#345777;line-height:1.6}
-.source-selection strong{display:block;color:#173d68;font-size:18px}
-.coverage-detail{margin-top:5px;color:#647c98;font-size:13px}
-.coverage-missing{margin-top:5px;color:#7a4b23;font-size:13px}
-.purpose-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
-.purpose-card{display:flex;align-items:flex-start;gap:12px;padding:16px;border:1px solid #d7e1ed;border-radius:12px;background:#fcfdff;cursor:pointer}
-.purpose-card:has(input:checked){border-color:#2873c5;background:#eaf3ff;box-shadow:inset 0 0 0 1px #2873c5}
-.purpose-card input{width:18px;height:18px;margin:3px 0 0;accent-color:#1768ba;flex:0 0 auto}
-.purpose-code{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#e9f1fb;color:#1c538c;font-weight:800}
-.purpose-copy{display:grid;gap:5px}.purpose-copy strong{font-size:16px}.purpose-copy small{color:#617996;line-height:1.5}
-#purpose-difficulty-note{margin-top:13px;padding:11px 14px;border-radius:9px;background:#f5f8fc;color:#516d8a;font-size:14px}
-.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:17px}
-.mode-card{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid #d7e1ed;border-radius:10px;color:#284968;cursor:pointer}
-.mode-card:has(input:checked){border-color:#2873c5;background:#eaf3ff}
-.mode-card input{accent-color:#1768ba}
-.mode-settings{margin-top:14px;padding:15px;border:1px solid #e0e8f1;border-radius:11px;background:#fbfcfe}
+.workflow-field{display:grid;gap:6px;color:var(--ink-2);font-size:14px;font-weight:700}
+.workflow-field select,.quota-field input{width:100%}
+.source-selection{margin-top:16px;padding:14px 16px;border-radius:var(--radius-field);background:var(--chip);color:var(--ink-2);line-height:1.6}
+.source-selection strong{display:block;color:var(--ink);font-size:17px}
+.coverage-detail{margin-top:6px;color:var(--ink-2);font-size:13px}
+.coverage-missing{margin-top:6px;color:var(--warn);font-size:13px}
+.purpose-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.purpose-card{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:16px;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--surface);cursor:pointer}
+.purpose-card:hover{background:var(--chip)}
+.purpose-card:has(input:checked){border:2px solid var(--ink);padding:15px;background:var(--selected)}
+.purpose-card input{flex:0 0 auto;width:20px;height:20px;margin:2px 0 0}
+.purpose-code{flex:0 0 auto;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--ink);color:#fff;font-size:14px;font-weight:700}
+.purpose-copy{display:grid;gap:4px}
+.purpose-copy strong{font-size:16px}
+.purpose-copy small{color:var(--ink-2);line-height:1.5}
+#purpose-difficulty-note{margin:14px 0 0;padding:10px 14px;border-radius:var(--radius-field);background:var(--chip);color:var(--ink-2);font-size:14px}
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:16px}
+.mode-card{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid var(--line);border-radius:var(--radius-card);color:var(--ink);font-weight:700;cursor:pointer}
+.mode-card:hover{background:var(--chip)}
+.mode-card:has(input:checked){border:2px solid var(--ink);padding:9px 13px;background:var(--selected)}
+.mode-card input{width:20px;height:20px;margin:0}
+.mode-settings{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--chip)}
 .mode-settings[hidden]{display:none}
-.mode-settings p{margin-bottom:11px;color:#617996;font-size:13px;line-height:1.5}
-.quota-grid{display:grid;grid-template-columns:repeat(5,minmax(85px,1fr));gap:9px}
-.quota-field{display:grid;gap:6px;color:#365473;font-size:13px;font-weight:700}
-.ready-summary{margin-top:16px;min-height:25px;color:#385a7d;font-size:14px;line-height:1.6}
-.ready-summary[data-state="error"]{color:#9e3f31}
+.mode-settings p{margin:0 0 12px;color:var(--ink-2);font-size:14px;line-height:1.5}
+.quota-grid{display:grid;grid-template-columns:repeat(5,minmax(85px,1fr));gap:10px}
+.quota-field{display:grid;gap:6px;color:var(--ink-2);font-size:14px;font-weight:700}
+.ready-summary{margin:16px 0 0;min-height:25px;color:var(--ink);font-size:14px;line-height:1.6}
+.ready-summary[data-state="error"]{color:var(--danger)}
+
+/* Result */
 .result-section .section-head{margin-bottom:14px}
-.result-summary{padding:13px 15px;border-radius:10px;background:#f1f6fc;color:#294c70;line-height:1.6}
-.result-summary strong{font-size:17px;color:#173d68}
-.stale-note{margin-top:9px;padding:10px 13px;border-radius:9px;background:#fff4e5;color:#89551d;font-size:13px;line-height:1.5}
+.result-summary{padding:14px 16px;border-radius:var(--radius-field);background:var(--chip);color:var(--ink);line-height:1.6}
+.result-summary strong{font-size:17px}
+.stale-note{margin:10px 0 0;padding:10px 14px;border:1px solid var(--warn);border-radius:var(--radius-field);background:var(--warn-bg);color:var(--warn);font-size:14px;line-height:1.5}
 .stale-note[hidden]{display:none}
-.mock-questions{display:grid;gap:13px;margin-top:16px}
-.mock-question{padding:17px;border:1px solid #dce5ef;border-radius:12px;background:#fff}
+.mock-questions{display:grid;gap:12px;margin-top:16px}
+.mock-question{padding:16px;border:1px solid var(--line);border-radius:var(--radius-card);background:var(--surface)}
 .mock-question-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.mock-question-meta{display:flex;flex-wrap:wrap;gap:7px;align-items:center;color:#536f8e;font-size:13px}
-.mock-question-meta strong{color:#1c4f83;font-size:15px}
-.mock-question-tools{display:flex;gap:7px;flex-wrap:wrap}
-.mock-question-tools button,.mock-toolbar button{min-height:38px;padding:7px 11px;border:1px solid #b8c7d8;border-radius:8px;background:#fff;color:#173d68;font-weight:700}
-.mock-question-tools button[aria-pressed="true"]{border-color:#1768ba;background:#eaf3ff;color:#145c9e}
-.mock-question-tools button:disabled,.mock-toolbar button:disabled{opacity:.48;cursor:not-allowed}
-.mock-question-body{margin-top:14px;border-top:1px solid #eef2f6;padding-top:13px;line-height:1.7}
+.mock-question-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--ink-2);font-size:14px}
+.mock-question-meta strong{color:var(--ink);font-size:16px}
+.mock-question-tools{display:flex;gap:8px;flex-wrap:wrap}
+.mock-question-tools button{padding:0 14px;font-size:14px}
+.mock-question-body{margin-top:14px;border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
 .mock-question-body .stem{white-space:pre-wrap}
-.mock-toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.mock-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .mock-toolbar .primary{margin-top:0}
-.legacy-section>summary,.manual-section>summary{cursor:pointer;font-weight:800;font-size:17px;color:#21476f}
-.legacy-section .section-head{margin:18px 0 14px}
-.legacy-summary{margin:0 0 16px;color:#617996;line-height:1.55}
+
+/* Folded sections */
+.legacy-section>summary,.manual-section>summary{display:flex;align-items:center;min-height:44px;cursor:pointer;font-weight:700;font-size:17px;list-style:none}
+.legacy-section>summary::-webkit-details-marker,.manual-section>summary::-webkit-details-marker{display:none}
+.legacy-section>summary::after,.manual-section>summary::after{content:"";width:8px;height:8px;margin-left:auto;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg);flex:0 0 auto}
+.legacy-section[open]>summary::after,.manual-section[open]>summary::after{transform:rotate(-135deg)}
+.legacy-section .section-head,.manual-section .section-head{margin:16px 0 14px}
+.legacy-summary{margin:0 0 16px;color:var(--ink-2);line-height:1.55}
 .section-spacer{margin-top:20px}
-.notice-box{padding:17px;border:1px dashed #bdcde0;border-radius:10px;background:#f8fafd;color:#617996;line-height:1.6}
+.notice-box{padding:16px;border:1px dashed var(--control-line);border-radius:var(--radius-field);background:var(--chip);color:var(--ink-2);line-height:1.6}
+
+@media(max-width:960px){
+ .purpose-grid{grid-template-columns:1fr}
+}
 @media(max-width:660px){
- .header-inner{padding:15px 18px}main{padding:25px 15px 70px}h1{font-size:26px}
- .section{padding:20px 18px;margin-top:17px}.exam-grid{grid-template-columns:1fr}
- .summary{display:block}.primary{margin-top:20px;width:100%}
- .purpose-grid{grid-template-columns:1fr}.quota-grid{grid-template-columns:repeat(3,minmax(75px,1fr))}
- .mock-question-head{display:block}.mock-question-tools{margin-top:10px}
+ .section{padding:20px 16px;margin-top:16px}
+ .exam-grid{grid-template-columns:1fr}
+ .summary{display:block}
+ button.primary{margin-top:16px;width:100%}
+ .mock-toolbar .primary{margin-top:0;width:auto;flex:1 1 100%}
+ .quota-grid{grid-template-columns:repeat(3,minmax(75px,1fr))}
+ .mock-question-head{display:block}
+ .mock-question-tools{margin-top:10px}
+ .generated-selection-row{align-items:flex-start;flex-direction:column;padding:12px 14px}
 }
 @media print{
  @page{size:A4;margin:16mm 15mm}
- body{background:#fff}header,.intro,.section,#message{display:none!important}
- main{max-width:none;margin:0;padding:0}#paper{display:block!important}
- #paper h1{font-size:19px;text-align:center;margin-bottom:25px}
+ body{background:#fff}
+ header,.intro,.section,#message{display:none!important}
+ body main.sa-main{max-width:none;margin:0;padding:0}
+ #paper{display:block!important}
+ #paper h1{font-size:19px;text-align:center;margin-bottom:25px;font-family:inherit}
  .paper-question{page-break-inside:avoid}
 }
 </style>
@@ -125,19 +154,25 @@ img.math-figure{display:block;max-width:100%;max-height:410px;object-fit:contain
 var AP_VENDOR_BASE=new URL('vendor/',document.baseURI).href;
 window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP_VENDOR_BASE+'mathjax-tex-font'},load:['[tex]/boldsymbol']},tex:{inlineMath:[['$','$']],displayMath:[['$$','$$']],packages:{'[+]':['ams','boldsymbol']}},output:{font:'mathjax-tex',displayOverflow:'linebreak',linebreaks:{inline:true,width:'100%',lineleading:.2}},options:{enableMenu:false},startup:{typeset:false}};
 </script>
+<script src="mathjax-atomic-inline.js?v=20261117-atomic-inline-1"></script>
 <script defer src="vendor/mathjax-tex-font/tex-mml-chtml-mathjax-tex.js"></script>
 <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
 <script src="problem-bank-meta.js?v=20261029-s14-1"></script>
+<script src="exam-display-title.js?v=20261116-polish-1"></script>
+<script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
 <script src="generated-mock-selection.js?v=20261030-s9-1"></script>
 <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
 <link rel="stylesheet" href="css/ap-table.css?v=20261109-ap-table-1">
 </head>
-<body>
-<header><div class="header-inner"><a href="workspace.html">Archive 2.0</a><span>모의고사 만들기</span></div></header>
-<main>
-<div class="intro"><h1>모의고사 만들기</h1><p class="subtitle">기준 시험지를 고른 뒤 학습 목적과 난이도를 정하고, 문항을 확인해 한 회분을 구성합니다.</p></div>
+<body class="archive2-standalone archive2-shell">
+<header data-archive-navigation="standalone" data-archive-view="five-minute" data-archive-title="모의고사 만들기" class="archive-navigation"></header>
+<!-- 메뉴는 작은 스크립트라 첫 화면 전에 붙인다. 로그인 판정(session)이 먼저다. -->
+<script src="archive2-session.js?v=20261110-library-2"></script>
+<script src="archive2-navigation.js?v=20261116-standalone-1"></script>
+<main class="sa-main">
+<div class="intro sa-head"><div><h1>모의고사 만들기</h1><p class="subtitle sa-lead">기준 시험지를 고른 뒤 학습 목적과 난이도를 정하고, 문항을 확인해 한 회분을 구성합니다.</p></div></div>
 <section class="section" aria-labelledby="source-heading">
 <div class="section-head"><span class="step">01</span><h2 id="source-heading">기준 시험지 선택</h2></div>
 <div class="workflow-grid">
@@ -211,14 +246,14 @@ window.MathJax={loader:{paths:{mathjax:AP_VENDOR_BASE+'mathjax','mathjax-tex':AP
 <div class="section-head"><span class="step">기존</span><h2 id="print-heading">모의고사 출력</h2></div>
 <p class="legacy-summary">A/B/C 학습 목적 후보가 연결되지 않은 기존 학교 시험지는 이 경로에서 선택·출력할 수 있습니다.</p>
 <div id="exam-cards" class="exam-grid">시험지 목록을 불러오는 중입니다.</div>
-<div class="summary section-spacer"><div id="selection-summary" class="summary-copy">출력할 시험지를 선택해 주세요.</div><button id="print" type="button" class="primary" disabled>기존 방식으로 출력 →</button></div>
+<div class="summary section-spacer"><div id="selection-summary" class="summary-copy">출력할 시험지를 선택해 주세요.</div><button id="print" type="button" class="primary" disabled>기존 방식으로 출력</button></div>
 </details>
 <details id="manual-section" class="section manual-section">
 <summary id="generated-search-heading">생성 문항 직접 검색·선택</summary>
 <div class="section-head"><span class="step">선택</span><h2>문제은행에서 직접 고르기</h2></div>
-<p class="summary-copy">메인 source JS에서 사용 가능한 Generated 문항을 검색·선택합니다. 검수 상태는 문항별 기록으로 표시하고, 정답과 해설은 문제 보기 화면에 표시하지 않습니다.</p>
+<p class="summary-copy">아카이브에 등록된 생성 문항을 검색해 직접 고릅니다. 검수 여부는 문항마다 표시하고, 정답과 해설은 문제 보기 화면에 나오지 않습니다.</p>
 <div class="generated-question-search">
-<label for="generated-search">학교명, 학년, 과목, 단원, 원본 문항 번호 또는 UID</label>
+<label for="generated-search">학교명, 학년, 과목, 단원, 원본 문항 번호 또는 문항 코드</label>
 <input id="generated-search" type="search" autocomplete="off" placeholder="예: 팔마고, 원의 방정식, q10">
 </div>
 <p id="generated-search-summary" class="generated-search-summary" role="status" aria-live="polite">생성문제를 불러오는 중입니다.</p>
@@ -248,7 +283,15 @@ const UNIT_LABELS=Object.freeze({});
 let rows=[],selectableRows=[],searchableRows=[],sourcePurposeRows=[],userDisabledUids=new Set(),examChoice=null,sourceExamChoice=null,busy=false,generatedBusy=false,generatedPreviewToken=0,mockBusy=false,mockItems=[],mockPreviewToken=0,generatedConfigKey=null,generatedConfigSnapshot=null,indexReady=false;
 const selectedGenerated=new Map();
 const $=id=>document.getElementById(id),positions="①②③④⑤",cache=new Map();
-const status=message=>$("message").textContent=message;
+const status=message=>{$("message").textContent=message;};
+// 실패 문구: 일반 문구 + (어느 시험지 몇 번 문항인지) + 접힌 상세. 문구는 archive2-error-detail.js 한 곳에서 만든다.
+function failStatus(prefix,error){
+ const detailApi=window.Archive2ErrorDetail;
+ const info=detailApi&&error&&typeof error==="object"?detailApi.describe(error,{headline:prefix,screen:"모의고사 만들기"}):null;
+ const line=info&&info.where?info.message:prefix+": "+((error&&error.message)||"오류");
+ const host=$("message");
+ if(info&&info.hasDetail)host.innerHTML=detailApi.esc(line)+detailApi.markup(info);else host.textContent=line;
+}
 const unique=items=>new Set(items).size===items.length;
 const mockSelection=window.GeneratedMockSelection;
 // Six reviewed Palma B05/B06 historical source UIDs are preserved, not reissued.
@@ -300,7 +343,21 @@ async function typesetPaper(panel){
   if(previousStyle===null)panel.removeAttribute("style");else panel.setAttribute("style",previousStyle);
  }
 }
+// 어느 시험지의 원본 몇 번을 바탕으로 만든 유사 문항에서 막혔는지 오류에 싣는다. 한글 문구는 그대로 이유가 된다.
 async function questionFor(row){
+ try{return await questionForChecked(row);}
+ catch(error){
+  const detailApi=window.Archive2ErrorDetail;
+  if(!detailApi||!error||typeof error!=="object")throw error;
+  const message=String(error.message||"");
+  throw detailApi.annotate(error,{
+   file:row&&row.sourceExamPath,title:row&&row.sourceExamPath?detailApi.fileLabel(row.sourceExamPath)+" 유사 문항":"",
+   questionNo:row&&row.sourceQid,uid:row&&(row.uid||row.questionUid),code:"GENERATED_QUESTION_UNAVAILABLE",
+   reason:/[가-힣]/.test(message)?message:"유사 문항 자료를 불러오지 못했습니다.",
+  });
+ }
+}
+async function questionForChecked(row){
  if(row?.technicalStatus==="ERROR")throw Error("문항 기술 오류: "+(row.technicalIssues||[]).join(" · "));
  if(!isSelectable(row))throw Error("사용자가 비활성화했거나 사용할 수 없는 문항입니다.");
  if(!cache.has(row.shard)){
@@ -309,7 +366,7 @@ async function questionFor(row){
  const data=await cache.get(row.shard);
  if(data.schemaVersion!=="ALIVE_GENERATED_CONSUMER_SHARD_V1"||!Array.isArray(data.records))throw Error("문항 등록 스키마 오류");
  const matches=data.records.filter(r=>r.generatedUid===row.uid&&r.localOrdinal===row.localOrdinal);
- if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices))throw Error("문항 UID/보기 결속 오류");
+ if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices))throw Error("문항 정보와 보기가 맞지 않습니다");
  const question=matches[0].question;
  const answerPositions=objectiveAnswerPositions(question.answer);
  const textChoices=question.choices.length===5&&question.choices.every(choice=>typeof choice==="string"&&choice.trim()!=="");
@@ -323,7 +380,8 @@ function figure(parent,q){
  if(!q.image)return;
  if(!validProblemImagePath(q.image))throw Error("문제 이미지 경로 오류");
  const size=["small","half","medium","large","full","tall"].includes(q.imageSize)?q.imageSize:"";
- const wrap=document.createElement("div");wrap.className="q-image-wrap"+(size?" image-"+size:"");
+ const wrap=document.createElement("div");const sizeOverride=["full","tall"].includes(q.imageSizeOverride)?q.imageSizeOverride:"";
+ wrap.className="q-image-wrap"+(size?" image-"+size:"")+(sizeOverride?" image-override-"+sizeOverride:"");
  const img=document.createElement("img");img.src=window.resolveExamImageUrl?resolveExamImageUrl(q.image):q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";wrap.appendChild(img);parent.appendChild(wrap);
 
 }
@@ -460,7 +518,7 @@ function renderSourceSelection(){
  const pool=sourcePurposeRows=purposeVariantRows(exam),covered=coveredQids(pool),missing=qidsOutside(covered,exam.count);
  $("source-exam-title").textContent=examTitle(exam);
  $("source-coverage").textContent="기준 시험지 "+exam.count+"문항 · 목적별 유사문항 준비 "+covered.length+"/"+exam.count+"개 원본 문항";
- $("source-missing-qids").textContent=missing.length?"유사문항이 아직 준비되지 않은 원본 문항: "+missing.map(qid=>"q"+qid).join(", "):"모든 원본 문항에 유사문항이 준비되어 있습니다.";
+ $("source-missing-qids").textContent=missing.length?"유사문항이 아직 준비되지 않은 원본 문항: "+missing.map(qid=>qid+"번").join(", "):"모든 원본 문항에 유사문항이 준비되어 있습니다.";
  const ready=exam.strategy==="purpose-variants"&&pool.length>0;
  $("builder-controls").hidden=!ready;$("builder-unavailable").hidden=ready;
  $("builder-unavailable").textContent=exam.strategy==="legacy"?"선택한 시험지에는 A/B/C 학습 목적별 후보가 연결되지 않았습니다. 아래 ‘기존 시험지 바로 출력’에서 사용할 수 있습니다.":"이 시험지에는 아직 출제할 수 있는 승인 유사문항이 없습니다.";
@@ -516,7 +574,7 @@ function updateSelection(){
  const el=$("selection-summary");el.replaceChildren();
  if(!examChoice){el.textContent="출력할 시험지를 선택해 주세요.";return;}
  text(el,examTitle(examChoice),"strong");
- text(el,examChoice.count+"개 원본 QID에서 등록된 Generated 문항을 하나씩 선택합니다.","div");
+ text(el,examChoice.count+"개 원본 문항마다 등록된 생성 문항을 하나씩 고릅니다.","div");
 }
 function currentMockConfig(){
  const mode=["random","specified","mixed"].find(value=>$("difficulty-mode-"+value).checked)||"random";
@@ -594,7 +652,7 @@ function updateBuilderReadiness(){
  if(!result.ok){host.dataset.state="error";host.textContent=errorMessage(result);syncMockActions(false);return result;}
  host.dataset.state="ready";
  host.textContent="현재 조건으로 "+result.items.length+"문항 구성 가능 · 원본 문항 "+result.coveredCount+"/"+exam.count+"개 사용 예정";
- if(result.missingSourceQids.length)host.textContent+=" · 이번 조건에서 빠지는 원본 번호: "+result.missingSourceQids.map(qid=>"q"+qid).join(", ");
+ if(result.missingSourceQids.length)host.textContent+=" · 이번 조건에서 빠지는 원본 번호: "+result.missingSourceQids.map(qid=>qid+"번").join(", ");
  syncMockActions(result.items.length>0);
  return result;
 }
@@ -606,7 +664,7 @@ function renderMockSummary(result){
  text($("mock-result-summary"),configDescription(generatedConfigSnapshot||currentMockConfig()),"div");
  text($("mock-result-summary")," · 기준 시험지 "+exam.count+"문항 중 원본 번호 "+result.coveredCount+"개를 사용합니다.","div");
  const missing=result.missingSourceQids||[];
- $("mock-missing-qids").textContent=missing.length?"이번 구성에 포함되지 않은 원본 문항: "+missing.map(qid=>"q"+qid).join(", "):"이번 구성에 모든 원본 문항이 포함되어 있습니다.";
+ $("mock-missing-qids").textContent=missing.length?"이번 구성에 포함되지 않은 원본 문항: "+missing.map(qid=>qid+"번").join(", "):"이번 구성에 모든 원본 문항이 포함되어 있습니다.";
 }
 function renderMockQuestions(){
  const host=$("mock-questions");host.replaceChildren();
@@ -616,7 +674,7 @@ function renderMockQuestions(){
   card.dataset.purpose=purpose||"";card.dataset.difficulty=bucket===null?"unknown":String(bucket);
   const head=document.createElement("div");head.className="mock-question-head";
   const meta=document.createElement("div");meta.className="mock-question-meta";
-  text(meta,"원본 q"+row.sourceQid,"strong");
+  text(meta,"원본 "+row.sourceQid+"번","strong");
   const purposeInfo=mockSelection.PURPOSES.find(value=>value.key===purpose);
   text(meta,purpose?purpose+" · "+purposeInfo.label:"학습 목적 정보 없음");
   text(meta,bucket===null?"난이도 정보 없음":"난이도 "+bucket);
@@ -634,7 +692,8 @@ function renderMockQuestions(){
  syncMockQuestionTools();
 }
 async function loadMockQuestions(token){
- const questions=await Promise.all(mockItems.map(item=>questionFor(item.row)));
+ const settle=window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises));
+ const questions=await settle(mockItems.map(item=>questionFor(item.row)));
  if(token!==mockPreviewToken)return;
  for(let index=0;index<mockItems.length;index++)mockItems[index].question=questions[index];
  renderMockQuestions();await math();
@@ -649,7 +708,7 @@ async function generateMock(){
  mockItems=result.items.map(item=>({...item,question:null}));
  renderMockSummary(result);renderMockQuestions();status(result.items.length+"개 승인 문항의 문제 미리보기를 불러옵니다.");
  try{await loadMockQuestions(token);if(token===mockPreviewToken){$("regenerate-unlocked").disabled=false;$("print-mock").disabled=false;status("문항을 확인한 뒤 고정하거나 교체할 수 있습니다.");}}
- catch(error){if(token===mockPreviewToken){mockItems=[];$("mock-questions").replaceChildren();renderMockSummary(null);status("문항을 불러오지 못했습니다: "+(error.message||"오류"));}}
+ catch(error){if(token===mockPreviewToken){mockItems=[];$("mock-questions").replaceChildren();renderMockSummary(null);failStatus("문항을 불러오지 못했습니다",error);}}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(Boolean(result.ok));}
 }
 async function replaceMockQuestion(index){
@@ -660,9 +719,9 @@ async function replaceMockQuestion(index){
  if(!result.ok){status(errorMessage(result));return;}
  const token=mockPreviewToken,sourceSha=sourceExamChoice?.sha;
  mockBusy=true;setBuilderBusy(true);$("print-mock").disabled=true;$("regenerate-unlocked").disabled=true;
- status("원본 q"+current.row.sourceQid+"의 대체 후보를 불러옵니다.");
- try{const question=await questionFor(result.row);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)return;mockItems[index]={...current,row:result.row,question};renderMockQuestions();await math();status("원본 q"+result.row.sourceQid+" 문항을 교체했습니다.");}
- catch(error){status("문항을 교체하지 못했습니다: "+(error.message||"오류"));}
+ status("원본 "+current.row.sourceQid+"번의 대체 후보를 불러옵니다.");
+ try{const question=await questionFor(result.row);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)return;mockItems[index]={...current,row:result.row,question};renderMockQuestions();await math();status("원본 "+result.row.sourceQid+"번 문항을 교체했습니다.");}
+ catch(error){failStatus("문항을 교체하지 못했습니다",error);}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
 async function regenerateUnlocked(){
@@ -673,8 +732,8 @@ async function regenerateUnlocked(){
  mockBusy=true;setBuilderBusy(true);$("generate-mock").disabled=true;$("regenerate-unlocked").disabled=true;$("print-mock").disabled=true;
  mockItems=result.items.map(item=>({...item,question:null}));
  renderMockQuestions();renderMockSummary(result);status("고정하지 않은 문항을 다시 구성하고 있습니다.");
- try{await loadMockQuestions(token);if(token===mockPreviewToken)status(result.unchangedSourceQids.length?"대체 후보가 없는 "+result.unchangedSourceQids.map(qid=>"q"+qid).join(", ")+" 문항은 유지했습니다.":"고정 문항을 유지하고 나머지 문항을 다시 구성했습니다.");}
- catch(error){if(token===mockPreviewToken)status("문항을 다시 불러오지 못했습니다: "+(error.message||"오류"));}
+ try{await loadMockQuestions(token);if(token===mockPreviewToken)status(result.unchangedSourceQids.length?"대체 후보가 없는 "+result.unchangedSourceQids.map(qid=>qid+"번").join(", ")+" 문항은 유지했습니다.":"고정 문항을 유지하고 나머지 문항을 다시 구성했습니다.");}
+ catch(error){if(token===mockPreviewToken)failStatus("문항을 다시 불러오지 못했습니다",error);}
  finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
 async function printMock(){return openMockOutput("exam");}
@@ -683,12 +742,12 @@ async function openMockOutput(mode){
  if(!["exam","ans","sol"].includes(mode)||mockBusy||!mockItems.length)return;
  if(generatedConfigKey!==mockConfigKey()){status("출제 조건이 변경되었습니다. 새 조건으로 다시 생성해 주세요.");updateBuilderReadiness();return;}
  const chosen=mockItems.map(item=>item.row),questionUids=chosen.map(row=>row.uid),sourceQids=chosen.map(row=>row.sourceQid),sourceSha=sourceExamChoice?.sha,token=mockPreviewToken;
- if(!unique(questionUids)||!unique(sourceQids)||chosen.some(row=>!isSelectable(row)||!belongsToSourceExam(row))){status("선택한 문항 승인 상태, 기준 시험지 결속 또는 원본 번호 중복을 확인하지 못했습니다.");return;}
+ if(!unique(questionUids)||!unique(sourceQids)||chosen.some(row=>!isSelectable(row)||!belongsToSourceExam(row))){status("선택한 문항의 승인 상태, 기준 시험지와의 일치 여부 또는 원본 번호 중복을 확인하지 못했습니다.");return;}
  const popup=window.open("about:blank","_blank");
  if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
- let envelope=null;mockBusy=true;setBuilderBusy(true);renderTeacherMockControls();status(mode==="exam"?"믹서 엔진에서 모의고사 시험지를 준비합니다.":mode==="ans"?"교사용 정답표를 준비합니다.":"교사용 해설지를 준비합니다.");
+ let envelope=null;mockBusy=true;setBuilderBusy(true);renderTeacherMockControls();status(mode==="exam"?"모의고사 시험지를 준비합니다.":mode==="ans"?"교사용 정답표를 준비합니다.":"교사용 해설지를 준비합니다.");
  try{
-  const loaded=await Promise.all(chosen.map(questionFor));
+  const loaded=await (window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises)))(chosen.map(row=>questionFor(row)));
   if(popup.closed)return;
   if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
   if(mode!=="exam"&&!isTeacherSession())throw Error("교사 로그인을 확인한 뒤 다시 시도해 주세요.");
@@ -703,11 +762,11 @@ async function openMockOutput(mode){
   if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)throw Error("현재 모의고사 구성이 바뀌었습니다. 다시 생성해 주세요.");
   const url=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:mode==="exam"});
   popup.location.href=url.href;
-  status(mode==="exam"?"믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.":mode==="ans"?"교사용 정답표를 열었습니다.":"교사용 해설지를 열었습니다.");
+  status(mode==="exam"?"모의고사 출력 미리보기를 열었습니다.":mode==="ans"?"교사용 정답표를 열었습니다.":"교사용 해설지를 열었습니다.");
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
-  status("교사용 자료를 열지 못했습니다: "+(error.message||"오류"));
+  failStatus("교사용 자료를 열지 못했습니다",error);
  }finally{mockBusy=false;setBuilderBusy(false);if(token!==mockPreviewToken||sourceSha!==sourceExamChoice?.sha)updateBuilderReadiness();else syncMockActions(true);}
 }
 function bindMockBuilder(){
@@ -744,22 +803,35 @@ function generatedSearchText(row){
  return [row.school,row.year,row.grade,row.subject,row.l1,row.l2Label,unitName(row),row.l2,"q"+row.sourceQid,row.sourceQid,row.uid]
   .filter(value=>value!==undefined&&value!==null).join(" ").normalize("NFC").toLocaleLowerCase("ko-KR");
 }
+// Review/technical states are stored as codes; the teacher reads plain words.
+function reviewLabel(code){
+ const value=String(code||"");
+ if(!value||value==="NOT_REVIEWED")return "검수 전";
+ if(value==="REVIEW_PASS"||/^USER_DIRECTED_/.test(value))return "검수 완료";
+ return "검수 진행 중";
+}
+function technicalLabel(code){
+ const value=String(code||"");
+ if(value==="READY")return "사용 가능";
+ if(value==="ERROR")return "오류";
+ return "확인 필요";
+}
 function renderGeneratedSearch(){
  const host=$("generated-results"),input=$("generated-search"),summary=$("generated-search-summary");
  if(!host||!input||!summary)return;
  const query=String(input.value||"").trim().normalize("NFC").toLocaleLowerCase("ko-KR");
  host.replaceChildren();
- if(!query){summary.textContent=selectableRows.length+"개 메인 등록 문항 중 검색어를 입력해 주세요.";return;}
+ if(!query){summary.textContent=selectableRows.length+"개 등록 문항 중 검색어를 입력해 주세요.";return;}
  const terms=query.split(/\s+/).filter(Boolean);
  const matches=searchableRows.filter(item=>terms.every(term=>item.searchText.includes(term))).slice(0,50);
- summary.textContent=matches.length+"개 표시 (최대 50개) · 검색 대상 "+selectableRows.length+"개 메인 등록 문항";
+ summary.textContent=matches.length+"개 표시 (최대 50개) · 검색 대상 "+selectableRows.length+"개 등록 문항";
  if(!matches.length){text(host,"검색 조건에 맞는 생성문제가 없습니다.","p");return;}
  for(const item of matches){
   const row=item.row,card=document.createElement("article");card.className="exam-card generated-question-card";
   text(card,generatedTitle(row),"strong");
-  text(card,"원본 문항 q"+row.sourceQid+" · "+row.uid,"small");
+  text(card,"원본 문항 "+row.sourceQid+"번 · 문항 코드 "+row.uid,"small");
   const provenance=document.createElement("small");
-  provenance.textContent="검수 상태: "+String(row.reviewStatus||"기록 없음")+" · 기술 상태: "+String(row.technicalStatus||"확인 필요");
+  provenance.textContent="검수: "+reviewLabel(row.reviewStatus)+" · 사용 상태: "+technicalLabel(row.technicalStatus);
   card.appendChild(provenance);
   if(row.technicalStatus==="ERROR")text(card,(row.technicalIssues||[]).join(" · "),"p","technical-error");
   const actions=document.createElement("div");actions.className="generated-actions";
@@ -772,7 +844,7 @@ async function openGeneratedPreview(row){
  const host=$("generated-preview"),token=++generatedPreviewToken;host.hidden=false;host.replaceChildren();text(host,"문항을 불러오는 중입니다.","p");
  try{
   const q=await questionFor(row);if(token!==generatedPreviewToken)return;host.replaceChildren();text(host,generatedTitle(row),"h3");
-  text(host,"원본 문항 q"+row.sourceQid+" · "+row.uid,"p");
+  text(host,"원본 문항 "+row.sourceQid+"번 · 문항 코드 "+row.uid,"p");
   const body=document.createElement("section");body.className="paper-question";questionStem(body,q.content);figure(body,q);
   if(Array.isArray(q.choices))q.choices.forEach((choice,i)=>text(body,positions[i]+" "+choice,"div","choice"));
   host.appendChild(body);
@@ -807,7 +879,7 @@ async function openGeneratedSolution(row){
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
-  status("해설 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+  failStatus("해설 미리보기를 열지 못했습니다",error);
  }
 }
 function addGeneratedQuestion(row){
@@ -822,7 +894,7 @@ function renderGeneratedSelection(){
  summary.textContent=selected.length?selected.length+"개 문항이 선택되었습니다.":"선택된 문항이 없습니다.";
  for(const row of selected){
   const item=document.createElement("div");item.className="generated-selection-row";
-  text(item,generatedTitle(row)+" · 원본 q"+row.sourceQid+" · "+row.uid,"span");
+  text(item,generatedTitle(row)+" · 원본 "+row.sourceQid+"번 · 문항 코드 "+row.uid,"span");
   const remove=document.createElement("button");remove.type="button";remove.textContent="제거";remove.addEventListener("click",()=>{selectedGenerated.delete(row.uid);renderGeneratedSelection();renderGeneratedSearch();});item.appendChild(remove);list.appendChild(item);
  }
  print.disabled=!selected.length||generatedBusy;clear.disabled=!selected.length||generatedBusy;
@@ -834,7 +906,7 @@ async function printGeneratedSelection(){
   if(!unique(selected.map(row=>row.uid))||selected.some(row=>!isSelectable(row)))throw Error("선택 문항의 기술 상태 또는 사용자 비활성화 상태를 확인하지 못했습니다.");
   popup=window.open("about:blank","_blank");if(!popup)throw Error("팝업을 허용한 뒤 선택 문항 미리보기를 여세요.");
   status("선택한 "+selected.length+"개 문항을 준비하고 있습니다.");
-  const questions=await Promise.all(selected.map(questionFor));
+  const questions=await (window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises)))(selected.map(row=>questionFor(row)));
   if(popup.closed)throw Error("미리보기 창이 닫혔습니다.");
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("문항 출력 미리보기 엔진을 불러오지 못했습니다.");
@@ -848,7 +920,7 @@ async function printGeneratedSelection(){
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(popup&&!popup.closed)popup.close();}catch{}
-  status("선택 문항 미리보기를 열지 못했습니다: "+(error.message||"오류"));
+  failStatus("선택 문항 미리보기를 열지 못했습니다",error);
  }
  finally{generatedBusy=false;renderGeneratedSelection();updateSelection();}
 }
@@ -858,22 +930,22 @@ async function printExam(){
  if(pool.length<e.count){status("해당 시험지의 문항 수가 부족합니다.");return;}
  const popup=window.open("about:blank","_blank");
  if(!popup){status("팝업을 허용한 뒤 출력 미리보기를 열어 주세요.");return;}
- let envelope=null;busy=true;updateSelection();status("믹서 엔진에서 모의고사 "+e.count+"문항을 준비합니다.");
+ let envelope=null;busy=true;updateSelection();status("모의고사 "+e.count+"문항을 준비합니다.");
  try{
   const chosen=chooseVariants(pool,e.count),questionUids=chosen.map(row=>row.uid);
-  if(chosen.length!==e.count||!unique(questionUids))throw Error("문항 수 또는 UID 구성 오류");
-  const questions=await Promise.all(chosen.map(questionFor));
+  if(chosen.length!==e.count||!unique(questionUids))throw Error("문항 수 또는 문항 구성 오류");
+  const questions=await (window.Archive2ErrorDetail?window.Archive2ErrorDetail.allOrReport:(promises=>Promise.all(promises)))(chosen.map(row=>questionFor(row)));
   if(popup.closed)return;
   const output=window.Archive2Output;
   if(!output?.publishOutputEnvelope||!output?.outputEnvelopeUrl)throw Error("출력 엔진을 불러오지 못했습니다.");
   envelope=await output.publishOutputEnvelope({sourceKind:"generated-mock",sourceId:"generated-mock-"+e.sha,mode:"exam",questionCount:questions.length,questionUids,meta:{title:examTitle(e)+" 모의고사",qpp:4,questionUids},questions});
   if(popup.closed){await output.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);return;}
   popup.location.href=output.outputEnvelopeUrl("mixed_engine.html",location.href,envelope,{preview:true}).href;
-  status("믹서 엔진에서 모의고사 출력 미리보기를 열었습니다.");
+  status("모의고사 출력 미리보기를 열었습니다.");
  }catch(error){
   if(envelope)try{await window.Archive2Output?.createOutputStore().cleanup(envelope.ownerId,envelope.outputRequestId);}catch{}
   try{if(!popup.closed)popup.close();}catch{}
-  status("출력을 준비하지 못했습니다: "+error.message);
+  failStatus("출력을 준비하지 못했습니다",error);
  }finally{busy=false;updateSelection();}
 }
 $("print").addEventListener("click",printExam);

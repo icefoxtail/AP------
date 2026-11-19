@@ -162,6 +162,24 @@ test('registration writes identical approved Meta and byte-bound evidence to all
   } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
 });
 
+test('re-registering with a Meta that has no level keeps the existing level in every projection', () => {
+  const f = fixture();
+  try {
+    const meta = structuredClone(f.meta); delete meta.level;
+    const evidenceBytes = Buffer.from(JSON.stringify({ schemaVersion: 'GENERATED_META_REVIEW_EVIDENCE_V1', items: [{ uid: f.question.uid, reviewStatus: 'REVIEW_PASS', metaFinalSha256: metaSha256(meta) }] }, null, 2) + String.fromCharCode(10));
+    fs.writeFileSync(path.join(f.root, f.rel.evidence), evidenceBytes);
+    const result = registerApprovedGeneratedMeta({ ...f.args, meta, reviewEvidence: { ...f.args.reviewEvidence, sha256: sha256Bytes(evidenceBytes) } });
+    assert.equal(result.status, 'REGISTERED');
+    const source = { window: {} };
+    vm.runInNewContext(fs.readFileSync(path.join(f.root, f.rel.sourceShard), 'utf8'), source);
+    const consumer = JSON.parse(fs.readFileSync(path.join(f.root, f.rel.consumerShard), 'utf8')).records[0];
+    const index = JSON.parse(fs.readFileSync(path.join(f.root, f.rel.consumerIndex), 'utf8')).records[0];
+    assert.equal(source.window.questionBank[0].level, f.question.level);
+    assert.equal(consumer.question.level, f.question.level);
+    assert.equal(index.level === undefined || index.level === f.question.level, true);
+  } finally { fs.rmSync(f.root, { recursive: true, force: true }); }
+});
+
 test('registration rejects source CAS drift before changing any target', () => {
   const f = fixture();
   try {

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-c9431f3629a8-bbb23efa",
+  "sourceArchiveFile": "original/high/h1/1final/20_순천여고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_56e37a4d36d9c627db08289a5627f7dfe9133f7dee9f6fe9f9d89fc36f3ac7ac",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE",
+      "templateKey": "TPL_DISTANCE_UNKNOWN",
+      "step": "수직선 두 점 거리 |a+1|=3을 두 경우로 나누어 좌표를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b174ab6a87c7a58e505d1c6499ddde8e8d82ada5bcafe699046ce5244debfb0",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
+      "step": "두 평행선 상수항 차의 절댓값을 법선계수 길이로 나눈다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_305f5e2d338dcf6973c073d3646c6d402706370fc82b0a279fa21c20d066c414",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_CENTROID",
+      "templateKey": "TPL_CENTROID_REVERSE",
+      "step": "주어진 무게중심에서 두 꼭짓점 좌표 합을 구해 중점 좌표를 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fa34d0d26a1bfda5f3df8e4fcc8206305dda96e7956c54aefa1ce15ee6275272",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_MULTI_CONDITION",
+      "step": "두 그래프의 차가 양수인 구간 끝점을 근으로 놓고 계수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_481872efecfc320e35d3a4450ab5cef951400899f1d1e516485dfd72645c56f3",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_SECTION",
+      "templateKey": "TPL_SECTION_APPLICATION",
+      "step": "외분점의 높이를 분할비로 나타내 삼각형 넓이 조건을 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ea58b3ab46b11527a242e50891c389499c16555f43ee90399a209fd9d1e5f451",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "열린 구간에서 이차식의 상한을 양 끝점 극한으로 비교하여 항상 음수인 정수 계수를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_95ff3928e21d832638b73cf436e447ed2b4278ffada5d4de500dcbcf3f23f8cd",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_GIVEN_SLOPE",
+      "step": "2x-y=t의 직선이 원에 접하는 최대 절편을 중심과 직선 거리로 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_856c28a485d6d948dccc247170c9852c64033daaf06f2c1b143558d3a0f6263e",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE",
+      "step": "밑변 직선에서 원 중심까지 거리와 반지름의 합을 최대 높이로 사용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6153e64295fde66b35569148e48321537b1a34d8f56943bb8427b44ac69c718f",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "나머지정리로 f(2)=-1과 f(-1)=2를 세워 미정계수를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5d061d40c7b8652980d07f9b4934a03e982fc0ad1de82556c1f714bf23a2dc9a",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_AREA_BISECTING_LINE",
+      "templateKey": "TPL_AREA_BISECT_TRIANGLE",
+      "step": "접선 두 개로 삼각형을 정한 뒤 이등분 넓이 조건으로 맞은편 변의 교점을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

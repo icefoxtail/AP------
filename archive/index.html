@@ -1571,7 +1571,7 @@
         <button type="button" class="fb-original-toggle" id="originalArchiveToggle" onclick="toggleOriginalArchiveVisibility()">
             <i class="fa-solid fa-lock"></i><span>기출 보기 OFF</span>
         </button>
-        <button class="fb-mixer" onclick="location.href=buildArchiveInternalUrl('mixer.html')">믹서 출제</button>
+        <button class="fb-mixer" onclick="location.href='workspace.html?view=compose'">문제지 만들기</button>
     </div>
 </div>
 
@@ -2306,7 +2306,7 @@ function onFilterChange() {
 
     if (type === '단원별 기출') {
         const unitPastGrade = ({ '고2': 'h2', '고1': 'h1', '중3': 'm3', '중2': 'm2', '중1': 'm1' })[selectedGrade] || 'h1';
-        window.location.href = buildArchiveInternalUrl(`unit-past-exams.html?grade=${unitPastGrade}`);
+        window.location.href = buildArchiveInternalUrl(`unit-past-exams.html?ready=1&grade=${unitPastGrade}`);
         return;
     }
 
@@ -3488,13 +3488,13 @@ function renderAssignTargetProgressView() {
         const className = st.row.name || '이름 없는 반';
         const assignmentId = String(p.assignmentId || '');
         const outputActions = assignmentSaved
-            ? `<div class="actions" role="group" aria-label="${escapeModalText(className)} Assignment ${escapeModalText(assignmentId)} 출력">${[['exam','시험'],['sol','해설'],['ans','정답']].map(([mode,label]) => `<button type="button" class="modal-btn-cancel" onclick="archiveBoardDirectOutput('${escapeModalText(assignmentId)}','${mode}')">${label}</button>`).join('')}</div>`
+            ? `<div class="actions" role="group" aria-label="${escapeModalText(className)} 출제 번호 ${escapeModalText(assignmentId)} 출력">${[['exam','시험'],['sol','해설'],['ans','정답']].map(([mode,label]) => `<button type="button" class="modal-btn-cancel" onclick="archiveBoardDirectOutput('${escapeModalText(assignmentId)}','${mode}')">${label}</button>`).join('')}</div>`
             : '';
         return `<div class="assign-progress-row ${p.status}">
             <span class="icon">${icon}</span>
             <div style="flex:1 1 auto; min-width:0;">
-                <span>${escapeModalText(className)}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : pdfPending ? ' — Assignment 저장 완료 · PDF 준비 필요' : ''}</span>
-                ${assignmentSaved ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">Assignment ID · ${escapeModalText(assignmentId)}</small>` : ''}
+                <span>${escapeModalText(className)}${p.status === 'error' ? ' — ' + escapeModalText(p.error || '처리 실패') : pdfPending ? ' — 출제 저장 완료 · PDF 준비 필요' : ''}</span>
+                ${assignmentSaved ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">출제 번호 · ${escapeModalText(assignmentId)}</small>` : ''}
                 ${pdfPending && p.pdfError ? `<small style="display:block; margin-top:4px; color:var(--text-sub);">${escapeModalText(p.pdfError)}</small>` : ''}
                 ${pdfPending && p.pdfRetrying ? '<small style="display:block; margin-top:4px; color:var(--text-sub);">PDF를 다시 준비하고 있습니다.</small>' : ''}
                 ${outputActions}
@@ -3516,7 +3516,7 @@ function renderAssignTargetProgressView() {
                 ${rowsHtml}
             </div>
             <div class="assign-target-foot">
-                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '저장에 실패한 반만 배포를 다시 시도할 수 있습니다.' : anyPdfPending ? 'Assignment 저장이 완료되었습니다. 아래 action은 해당 Assignment의 PDF만 다시 준비합니다.' : 'Assignment 저장이 완료되었습니다.')}</div>
+                <div class="assign-summary-text">${anyPending ? '처리 중입니다...' : (anyError ? '저장에 실패한 반만 배포를 다시 시도할 수 있습니다.' : anyPdfPending ? '출제가 저장되었습니다. 아래 버튼은 이 출제의 PDF만 다시 준비합니다.' : '출제가 저장되었습니다.')}</div>
                 <div class="assign-foot-btns">
                     ${(!anyPending && anyError) ? '<button class="modal-btn-primary" onclick="assignTargetRetryFailed()">실패한 반만 재시도</button>' : ''}
                     ${(!anyPending && !anyError) ? '<button class="modal-btn-primary" onclick="closeModal()">닫기</button>' : ''}
@@ -3822,9 +3822,12 @@ window.onload = function () {
 </script>
 <script src="mixer-selector.js?v=20261009-meta1"></script>
 <script src="rpm-middle-toc.js?v=20261115-m1-dongsan-current-1"></script>
-<script src="archive2-core.js?v=20261111-one-lane-difficulty-1"></script>
+<script src="archive2-core.js?v=20261119-pair-type-spread-1"></script>
 <script src="archive2-history.js?v=20261110-teacher-copy-1"></script>
-<script src="archive2-source.js?v=20261029-source-meta-conflict-1"></script>
+<script src="exam-source-reader.js?v=20261118-body-1"></script>
+<script src="exam-display-title.js?v=20261116-polish-1"></script>
+<script src="archive2-error-detail.js?v=20261118-error-detail-1"></script>
+<script src="archive2-source.js?v=20261119-source-parallel-1"></script>
 <script src="archive2-output-contract.js?v=20261002-output-envelope-v3"></script>
 <script src="archive2-output.js?v=20261010-sol-qpp1-atomicmath-2"></script>
 <script src="archive2-entry.js?v=20261110-review-a-1"></script>

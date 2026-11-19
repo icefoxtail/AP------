@@ -47,8 +47,8 @@ window.examData = {
       "questionNumber": 3,
       "number": 3,
       "questionType": "객관식",
-      "question": "3. 다음 이차함수 그래프의 식은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png\" alt=\"원점을 꼭짓점으로 하고 위로 볼록하며 점 (3, -4)를 지나는 포물선 그래프\"></div>",
-      "content": "3. 다음 이차함수 그래프의 식은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png\" alt=\"원점을 꼭짓점으로 하고 위로 볼록하며 점 (3, -4)를 지나는 포물선 그래프\"></div>",
+      "question": "3. 다음 이차함수 그래프의 식은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png\" alt=\"원점을 꼭짓점으로 하고 아래로 볼록하며 점 (3, 4)를 지나는 포물선 그래프\"></div>",
+      "content": "3. 다음 이차함수 그래프의 식은? [3.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png\" alt=\"원점을 꼭짓점으로 하고 아래로 볼록하며 점 (3, 4)를 지나는 포물선 그래프\"></div>",
       "choices": [
         "① $y=12x^2$",
         "② $y=\\dfrac{3}{4}x^2$",
@@ -59,8 +59,8 @@ window.examData = {
       "images": [
         "assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png"
       ],
-      "answer": "③",
-      "solution": "[원문 조건 및 구할 대상]\n- 조건: 원점을 꼭짓점으로 하고 점 $(3, -4)$를 지나는 포물선\n- 구할 대상: 이차함수 그래프의 식\n\n[핵심 발상 및 공식]\n- 꼭짓점이 원점 $(0, 0)$인 포물선의 식은 $y=ax^2\\,(a\\ne 0)$입니다.\n- 포물선이 지나는 한 점 $(3, -4)$의 좌표를 대입하여 상수 $a$의 값을 구합니다.\n\n[연속 등식과 세부 계산]\n- 식 $y=ax^2$에 $x=3, y=-4$를 대입합니다:\n  $$-4 = a \\times 3^2 = 9a$$\n- 양변을 $9$로 나눕니다:\n  $$a = -\\dfrac{4}{9}$$\n- 따라서 구하는 포물선의 식은 다음과 같습니다:\n  $$y = -\\dfrac{4}{9}x^2$$\n\n[선지 검토]\n- 위로 볼록하므로 $a<0$이어야 하며, $a=-\\dfrac{4}{9}$인 선지는 ③입니다.\n\n[최종 결론]\n따라서 정답은 ③입니다.",
+      "answer": "④",
+      "solution": "[원문 조건 및 구할 대상]\n- 조건: 원점을 꼭짓점으로 하고 아래로 볼록하며 점 $(3, 4)$를 지나는 포물선\n- 구할 대상: 이차함수 그래프의 식\n\n[핵심 발상 및 공식]\n- 꼭짓점이 원점 $(0, 0)$인 포물선의 식은 $y=ax^2\\,(a\\ne 0)$입니다.\n- 포물선이 지나는 한 점 $(3, 4)$의 좌표를 대입하여 상수 $a$의 값을 구합니다.\n\n[연속 등식과 세부 계산]\n- 식 $y=ax^2$에 $x=3, y=4$를 대입합니다:\n  $$4 = a \\times 3^2 = 9a$$\n- 양변을 $9$로 나눕니다:\n  $$a = \\dfrac{4}{9}$$\n- 따라서 구하는 포물선의 식은 다음과 같습니다:\n  $$y = \\dfrac{4}{9}x^2$$\n\n[선지 검토]\n- 아래로 볼록하므로 $a>0$이어야 하며, $a=\\dfrac{4}{9}$인 선지는 ④입니다.\n\n[최종 결론]\n따라서 정답은 ④입니다.",
       "score": 3.0,
       "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q03.png"
     },
@@ -129,8 +129,8 @@ window.examData = {
       "questionNumber": 7,
       "number": 7,
       "questionType": "객관식",
-      "question": "7. 다음 그래프의 식이 $y=a(x-p)^2+q$ 라고 할 때, $a+p+q$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q07.png\" alt=\"꼭짓점의 좌표가 (2, -1)이고 점 (0, 3)을 지나며 아래로 볼록한 포물선 그래프\"></div>",
-      "content": "7. 다음 그래프의 식이 $y=a(x-p)^2+q$ 라고 할 때, $a+p+q$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q07.png\" alt=\"꼭짓점의 좌표가 (2, -1)이고 점 (0, 3)을 지나며 아래로 볼록한 포물선 그래프\"></div>",
+      "question": "7. 다음 그래프의 식이 $y=a(x-p)^2+q$ 라고 할 때, $a+p+q$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q07.png\" alt=\"꼭짓점의 좌표가 (-1, 6)이고 점 (0, 3)을 지나며 위로 볼록한 포물선 그래프\"></div>",
+      "content": "7. 다음 그래프의 식이 $y=a(x-p)^2+q$ 라고 할 때, $a+p+q$의 값은? [4.0점]\n<div class=\"exam-image-container\"><img src=\"assets/images/17_경북대도중_1학기_기말_중3_수학/q07.png\" alt=\"꼭짓점의 좌표가 (-1, 6)이고 점 (0, 3)을 지나며 위로 볼록한 포물선 그래프\"></div>",
       "choices": [
         "① 2",
         "② -2",
@@ -142,7 +142,7 @@ window.examData = {
         "assets/images/17_경북대도중_1학기_기말_중3_수학/q07.png"
       ],
       "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n- 조건: 주어진 포물선의 꼭짓점 좌표 $(2, -1)$ 및 $y$절편 $(0, 3)$\n- 구할 대상: $y=a(x-p)^2+q$에서 $a+p+q$의 값\n\n[핵심 발상 및 공식]\n- 꼭짓점이 $(p, q)$이므로 $p=2, q=-1$입니다.\n- 식 $y=a(x-2)^2-1$에 점 $(0, 3)$을 대입하여 $a$를 구합니다.\n\n[연속 등식과 세부 계산]\n- 점 $(0, 3)$ 대입:\n  $$3 = a(0-2)^2 - 1 = 4a - 1$$\n  $$4a = 4 \\implies a = 1$$\n- 따라서 $a=1, p=2, q=-1$입니다.\n- 합을 구합니다:\n  $$a+p+q = 1 + 2 + (-1) = 2$$\n\n[선지 검토]\n- 계산 결과 $2$이므로 선지 ①과 일치합니다.\n\n[최종 결론]\n따라서 정답은 ①입니다.",
+      "solution": "[원문 조건 및 구할 대상]\n- 조건: 주어진 포물선의 꼭짓점 좌표 $(-1, 6)$ 및 $y$절편 $(0, 3)$\n- 구할 대상: $y=a(x-p)^2+q$에서 $a+p+q$의 값\n\n[핵심 발상 및 공식]\n- 꼭짓점이 $(p, q)$이므로 $p=-1, q=6$입니다.\n- 식 $y=a(x+1)^2+6$에 점 $(0, 3)$을 대입하여 $a$를 구합니다.\n\n[연속 등식과 세부 계산]\n- 점 $(0, 3)$ 대입:\n  $$3 = a(0+1)^2 + 6 = a + 6$$\n  $$a = -3$$\n- 따라서 $a=-3, p=-1, q=6$입니다.\n- 합을 구합니다:\n  $$a+p+q = -3 + (-1) + 6 = 2$$\n\n[선지 검토]\n- 계산 결과 $2$이므로 선지 ①과 일치합니다.\n\n[최종 결론]\n따라서 정답은 ①입니다.",
       "score": 4.0,
       "image": "assets/images/17_경북대도중_1학기_기말_중3_수학/q07.png"
     },
@@ -232,7 +232,6 @@ window.examData = {
       "solutionImageCaption": "오른쪽 x절편은 3이다. y=0에 x=3을 대입하면 9a+3b+c=0이므로 정답은 ②이다.",
       "solutionImageAlt": "파란 포물선은 아래로 열리고 꼭짓점은 y축 오른쪽에 있다. 오른쪽 x절편의 눈금은 3이다. y절편은 x축 위에 있다.",
       "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q12-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "imageSize": "large",
       "imageAlt": "파란 포물선은 아래로 열리고 꼭짓점은 y축 오른쪽에 있다. 오른쪽 x절편의 눈금은 3이다. y절편은 x축 위에 있다.",
       "questionNumber": 12,
@@ -259,7 +258,6 @@ window.examData = {
       "solutionImageCaption": "OB의 길이는 2이고 여기에 대응하는 높이는 꼭짓점 A의 x좌표 4이다. 넓이는 2×4÷2=4이고 정답은 ①이다.",
       "solutionImageAlt": "아래로 열린 곡선에서 꼭짓점 A와 세로축을 지나는 점 B를 찾는다. A와 B, 원점 O를 이은 안쪽 삼각형을 칠했다. A에서 y축으로 수평선을 그어 삼각형의 높이를 표시했다.",
       "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q13-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "imageSize": "large",
       "imageAlt": "아래로 열린 곡선에서 꼭짓점 A와 세로축을 지나는 점 B를 찾는다. A와 B, 원점 O를 이은 안쪽 삼각형을 칠했다.",
       "questionNumber": 13,
@@ -326,7 +324,6 @@ window.examData = {
       "solutionImageCaption": "PQ=t²/2−t+2=(t−1)²/2+3/2이다. t=1에서 최솟값 3/2이고 정답은 ③이다.",
       "solutionImageAlt": "파란 포물선은 위로 열리고 y축을 2에서 지난다. 주황 점선 직선은 원점을 지난다. 포물선의 P와 직선의 Q는 같은 세로선에 놓인다.",
       "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q16-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "imageSize": "large",
       "imageAlt": "파란 포물선은 위로 열리고 y축을 2에서 지난다. 주황 점선 직선은 원점을 지난다. 포물선의 P와 직선의 Q는 같은 세로선에 놓인다.",
       "questionNumber": 16,
@@ -373,7 +370,6 @@ window.examData = {
       "solutionImageCaption": "1반의 중앙값은 3점이고, 2반과 3반은 4점이다. 2반의 가장 높은 도수는 4점에서 나온다. 옳은 것은 ㄴ이므로 정답은 ②이다.",
       "solutionImageAlt": "가로축은 점수, 세로축은 사람 수이다. 1반은 파란 실선과 원, 2반은 주황 점선과 네모, 3반은 초록 짧은 점선과 세모로 표시했다. 세 반의 각 점수에 관한 도수를 한 좌표평면에 나타냈다. 2반의 주황 꺾은선은 4점에서 도수가 가장 크다.",
       "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q18-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "imageSize": "large",
       "imageAlt": "가로축은 점수, 세로축은 사람 수이다. 1반은 파란 실선과 원, 2반은 주황 점선과 네모, 3반은 초록 짧은 점선과 세모로 표시했다. 세 반의 각 점수에 관한 도수를 한 좌표평면에 나타냈다.",
       "questionNumber": 18,
@@ -496,7 +492,6 @@ window.examData = {
       "solutionImageCaption": "오른쪽 x좌표가 2+d이면 둘레는 2(2d+4−d²)=10−2(d−1)²이다. 최대 둘레는 10이고, 그때 D의 좌표는 (3,3)이다.",
       "solutionImageAlt": "아래로 열린 포물선 위에 A와 D, 가로축 위에 B와 C가 있다. 네 점을 이은 연두색 사각형의 가로변과 세로변은 좌표축에 평행하다.",
       "solutionImage": "assets/images/17_경북대도중_1학기_기말_중3_수학/q24-solution-visual-v2.svg",
-      "layoutTag": "fullwidth",
       "imageSize": "large",
       "imageAlt": "아래로 열린 포물선 위에 A와 D, 가로축 위에 B와 C가 있다. 네 점을 이은 연두색 사각형의 가로변과 세로변은 좌표축에 평행하다.",
       "questionNumber": 24,

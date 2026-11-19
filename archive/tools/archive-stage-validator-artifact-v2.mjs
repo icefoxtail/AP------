@@ -9,8 +9,8 @@ import { validateMetaValidatorReceipt, validateResolverEvidence } from './meta-f
 export const QUALITY_CONTRACT_V2 = 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006';
 
 const META_FIELDS = Object.freeze([
-  'standardCourse', 'standardUnitKey', 'standardUnit', 'standardUnitOrder',
-  'subUnitKey', 'subUnit', 'subUnitConfidence', 'subUnitClassificationDepth',
+  'standardCourse', 'standardUnitKey', 'standardUnit',
+  'subUnitKey', 'subUnit', 'subUnitClassificationDepth',
   'problemTypeKey',
   'templateKey',
   'crossConceptKeys',
@@ -25,7 +25,8 @@ const DIFFICULTY_FIELDS = Object.freeze([
   'legacyLevelCompatibility',
 ]);
 
-const BASIC_FIELDS = ['id', 'level', 'category', 'originalCategory', 'questionType', 'layoutTag', 'tags', 'wide', 'content', 'choices', 'answer', 'solution'];
+// category/originalCategory/tags/standardUnitOrder/subUnitConfidence are copies or display helpers: checked only when present (2026-11 meta slim).
+const BASIC_FIELDS = ['id', 'questionType', 'layoutTag', 'wide', 'content', 'choices', 'answer', 'solution'];
 const DIFFICULTY_ENUMS = { difficultyConfidence: ['high','medium','low','UNKNOWN'], difficultyBoundaryFlag: ['NONE','B12','B23','B34','B45','UNKNOWN'], legacyLevelCompatibility: ['NORMAL','BORDERLINE_REVIEW','BORDERLINE_ACCEPTABLE','STRONG_CONFLICT','UNKNOWN'] };
 const EXCLUDED_ANSWERS = new Set(['__EXCLUDED__', 'EXCLUDED_CANDIDATE']);
 const CIRCLED_PREFIX = /^\s*(?:①|②|③|④|⑤)\s*/;
@@ -142,10 +143,10 @@ function validateMeta(question, row, qid, repoRoot, h15GeometryAuthority, issues
   const debtFields = new Set(array(row?.metaDebtFields).map(String));
   const allowedNullSubUnit = validateRpmOnlyNullSubUnitProjection(question, row, qid, repoRoot, issues);
   validateH15GeometrySubUnitProjection(question, qid, h15GeometryAuthority, issues);
-  for (const field of ['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','subUnitConfidence','subUnitClassificationDepth']) {
+  for (const field of ['standardCourse','standardUnitKey','standardUnit','subUnitKey','subUnit','subUnitClassificationDepth']) {
     if (hasOwn(question, field) && !nonEmpty(question[field]) && !(field === 'subUnitKey' && question[field] === null && allowedNullSubUnit)) issues.push('ARTIFACT_META_VALUE_REQUIRED:'+field+':q'+qid);
   }
-  if (!Number.isInteger(question.standardUnitOrder) || question.standardUnitOrder < 0) issues.push('ARTIFACT_META_ORDER_INVALID:q'+qid);
+  if (hasOwn(question, 'standardUnitOrder') && (!Number.isInteger(question.standardUnitOrder) || question.standardUnitOrder < 0)) issues.push('ARTIFACT_META_ORDER_INVALID:q'+qid);
   for (const field of META_FIELDS) {
     if (!hasOwn(question, field)) {
       issues.push('ARTIFACT_META_FIELD_REQUIRED:' + field + ':q' + qid);
@@ -346,11 +347,11 @@ function validateBasicSchema(question, qid, issues) {
   for (const field of BASIC_FIELDS) if (!hasOwn(question,field)) issues.push('ARTIFACT_BASIC_FIELD_REQUIRED:'+field+':q'+qid);
   for (const field of ['content','solution','questionType']) if (!nonEmpty(question?.[field])) issues.push('ARTIFACT_VALUE_REQUIRED:'+field+':q'+qid);
   if (!(nonEmpty(question?.answer) || (typeof question?.answer==='number' && Number.isFinite(question.answer)))) issues.push('ARTIFACT_ANSWER_REQUIRED:q'+qid);
-  for (const field of ['category','originalCategory','layoutTag']) if (typeof question?.[field] !== 'string') issues.push('ARTIFACT_STRING_REQUIRED:'+field+':q'+qid);
-  if (!Array.isArray(question?.tags) || question.tags.some(t=>!nonEmpty(t))) issues.push('ARTIFACT_TAGS_ARRAY_REQUIRED:q'+qid);
+  for (const field of ['category','originalCategory','layoutTag']) if ((field === 'layoutTag' || hasOwn(question, field)) && typeof question?.[field] !== 'string') issues.push('ARTIFACT_STRING_REQUIRED:'+field+':q'+qid);
+  if (hasOwn(question, 'tags') && (!Array.isArray(question.tags) || question.tags.some(t=>!nonEmpty(t)))) issues.push('ARTIFACT_TAGS_ARRAY_REQUIRED:q'+qid);
   if (typeof question?.wide !== 'boolean') issues.push('ARTIFACT_WIDE_BOOLEAN_REQUIRED:q'+qid);
-  // difficulty canonical v1.3: historical level labels are not numeric bucket values.
-  if (!['하','중','상'].includes(question?.level)) issues.push('ARTIFACT_LEGACY_LEVEL_INVALID:q'+qid);
+  // 2026-11-18: level(하/중/상) is optional for new items; when present it must still be 하/중/상. difficultyBucket (1-5) is canonical.
+  if (hasOwn(question,'level') && !['하','중','상'].includes(question?.level)) issues.push('ARTIFACT_LEGACY_LEVEL_INVALID:q'+qid);
 }
 
 function resolveInside(root, relative) {

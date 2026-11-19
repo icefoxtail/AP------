@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-0a471bd17ebe-f9515080",
+  "sourceArchiveFile": "original/middle/m3/2final/25_금당중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_523502e8e30f18c43b9c230f1fa62b3c4dabdd27a628eaf29d32d2a8598349ec",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+      "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+      "step": "줄기잎 자료16개에서8번째24와9번째26의 평균25를 중앙값으로, 세 번 나온34를 최빈값으로 정하여 차9를 구한다.",
+      "note": "필요 TPL: 짝수 개 자료의 중앙값과 최빈값 계산 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8e728a7c737d0b1224dd70910204b7b41f2cff76baf3810fc861b8ec0f4100e8",
+      "sourceOrdinal": 14,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "8개 자료의 평균56/8=7을 구하고 변량5의 편차5-7=-2를 얻는다.",
+      "note": "새 PT 제안: 원자료에서 특정 변량의 편차 계산; 주어진 원자료의 평균을 계산하고 지정된 변량에서 평균을 빼 편차를 구한다. | 도구: CUE_NOT_IN_SOURCE, PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f6ca9e0b64b831c43ae6024fe78fbab07eef087bf941f0c67cef5b04a4d52e6",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION",
+      "step": "편차합0과 표준편차 정의를 검토하고 분산이 클수록 평균에서 널리 퍼진다는 성질로④를 배제한다.",
+      "note": "필요 TPL: 분산과 산포의 의미를 포함한 개념 진술 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_773c156d87b16cf01c9325adb7aa6a61c1ef6c4a174016f3403eac89ddad9bf7",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+      "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_CALCULATE",
+      "step": "그래프에서 반응속도 자료8,10,2,6,4를 읽어 평균6에 대한 편차제곱합40/5=8임을 확인하여8/5라는②를 배제한다.",
+      "note": "필요 TPL: 실제 그래프 자료의 분산 계산을 동반한 통계 진술 검증 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0bff84730bfa584139049ea52c4c76555081d3795a870f1102c100b3be0ea753",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "점수별 도수를 곱해 평균3을 구하고 도수가중 편차제곱합22를12로 나누어 분산11/6을 구한다.",
+      "note": "새 PT 제안: 원자료의 분산·표준편차 직접 계산; 개별 변량의 평균을 구한 뒤 편차 제곱합을 자료 수로 나누고 제곱근을 취한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_19ad6b2648447796a2189d4c7b831df4ccc388e1dfaa847d08c8507d438a0cd9",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "평균6으로 x+y7을 얻고 분산8로 x²+y²25를 구한 뒤 합의 제곱 관계로 xy12를 구한다.",
+      "note": "새 PT 제안: 분산 조건으로 미지 변량 결정; 평균으로 미지 변량 합을 세우고 분산으로 편차제곱합을 세워 미지 변량 또는 대칭식을 결정한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_21a4d3a0893d43b44b275b39530dfd6353a6379371cd8581b0b3eeb8423b9181",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "D는 왼쪽 위여서 과학이 수학보다 높고 B보다 위에 있음을 읽어 반대로 서술한②를 배제한다.",
+      "note": "새 PT 제안: 산점도 좌표와 진술 판정; 산점도의 점 위치와 두 축의 뜻을 읽어 개별 변량 비교와 전체 경향 진술을 검증한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d1842da393d94c3c51b3ed646e47e0d0233a93157dac44d0e0b6c33f0643dd23",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+      "templateKey": null,
+      "step": "국어60점 이상6명 중 영어80점 이상3명을 세어 조건부 비율1/2를 얻고1/3이라는⑤를 배제한다.",
+      "note": "새 PT 제안: 산점도의 조건별 점 개수와 비율; 산점도의 각 점을 두 변량의 부등식 조건으로 선별하여 개수 또는 전체 대비 비율을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7d6f033859cf8bda81b737421e98488efea5ca28ba40048044e856e7416933c7",
+      "sourceOrdinal": 24,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "templateKey": null,
+      "step": "기존3개 총합18과 평균6에 대한 제곱편차합12를 복원하고 새3개 총합18,제곱편차합14를 더하여 평균6과 분산26/6=13/3을 구한다.",
+      "note": "새 PT 제안: 여러 집단을 합친 자료의 분산; 집단별 자료 수와 평균·분산에서 합과 제곱편차 합을 복원하여 합친 자료의 평균과 분산을 구한다. | 도구: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

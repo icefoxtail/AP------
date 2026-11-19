@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-f83e6fa2d601-e362eb84",
+  "sourceArchiveFile": "original/middle/m2/1final/23_순천여중_1학기_기말_중2_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_375b6c02e129e1cc564d40bbec744dade24c8d3f76131b42d5a41090e5895c39",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "그림과 금액으로 3x+y=7500,x+y=3500을 세워 빼면 2x=4000이므로 샌드위치 단가 2000원을 구한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d2a2a1ee253058dc7c376053edee87e1442fe0968780d3bd032fe9b16d5c31da",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "계수 없는 두 식 x-y=-1,2x-y=-4로 공통해 (-3,-2)를 구하고 a=-3,b=-1 및 합 -4를 계산한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_26e4eff7f9eb1234999fa1f95db29243544618ec4d915e1d193b19d9673d1b08",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "한 입력에 하나의 출력이 정해지는지 확인하여 본인의 특정 나이 생일에 키가 정해지는 ④를 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 한 입력에 하나의 출력이 정해지는지 확인하여 본인의 특정 나이 생일에 키가 정해지는 ④를 고른다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_712f3a1e7c5600d1b419417cb4730217be39dc9d66f26716fde30bf64c142ca5",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기 -3/4와 절편 3으로 진술을 대조하고 x=4에서 y=0이므로 (4,-3)를 지난다는 ①을 거른다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_59bf7f86a435593d75a109dbb3eef08f895b555a5bf9072de1fb10462fdc1db5",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": null,
+      "step": "수직 이동 후 y=-(2/3)x+4에 y=0을 넣어 x절편 6을 구한다.",
+      "note": "새 TPL 제안: 수직 이동한 직선의 x절편 계산. 정의: 수직 이동 후 y=-(2/3)x+4에 y=0을 넣어 x절편 6을 구한다. 원문 정답·해설 공란; 발문·보기 직접 풀이. 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"},{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6519361d211b0ae772c5254b2fdae373a08c0f7fe14e6dd2a94c108f0de548ae",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+      "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+      "step": "두 점의 기울기 (a-1)/(-9)를 평행한 직선의 기울기 2/3과 같게 두어 a=-5를 구한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d6b9e6896d6ee2404559b1e149460635eff82eb460bd1d59dfa3be74304afa92",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+      "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+      "step": "첫 식에 15,둘째 식에 10을 곱해 3x-5y=2,3x-4y=1을 풀어 x=y=-1 및 합 -2를 구한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_274245bb7bffa3295089464656df226d6a687118cf2a7ff41ce7e8c6da2fb083",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_DIGITS",
+      "templateKey": "TPL_M2_FIND_THREE_DIGIT_NUMBER_FROM_DIGIT_RELATIONS",
+      "step": "백의 자리 x,일의 자리 y에 대해 x+y=7,99(y-x)=297을 세워 x=2,y=5,십의 자리 7인 수 275를 구한다.",
+      "note": " 원문 정답·해설 공란; 발문·보기 직접 풀이. 도구 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"}] 검사 오류: [{\"code\":\"CANONICAL_UNIT_INVALID\"},{\"code\":\"CANONICAL_SCOPE_INCOMPLETE\"},{\"code\":\"CUE_NOT_IN_SOURCE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

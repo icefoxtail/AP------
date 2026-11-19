@@ -14,6 +14,7 @@ const m1Problem = require('./m1s2-problem-renderer-continuity.cjs');
 const m3Layout = require('./m3s2-layout-continuity.cjs');
 const q5CompleteGiven = require('./m3-e052-q5-complete-given-continuity.cjs');
 const { sourceNumber, sourceIdentityNumber } = require('./exam-items.cjs');
+const { item4SlotIndexText } = require('./item-4slot-index-format.cjs');
 const ROOT = path.resolve(__dirname, '../..');
 const INPUT = 'archive/data/item-4slot/';
 const OUTPUT = 'archive/data/item-4slot-index.json';
@@ -27,7 +28,7 @@ const blob = value => crypto.createHash('sha1').update(Buffer.concat([Buffer.fro
 const payloadHash = q => sha(stable(Object.fromEntries(STUDENT.map(k => [k, q[k] ?? null]))));
 // Same identity fingerprint contract as sync-question-identity-map-v1.mjs (not a new UID formula).
 const identityHash = q => sha(JSON.stringify({content:q.content??null, choices:Array.isArray(q.choices)?q.choices:null, answer:q.answer??null, solution:q.solution??null, image:q.image??null}));
-const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-original-text-solution3.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('../m2s1-text3-solution-fragments.cjs'),require.resolve('./existing-registered-vector-svg7-ui.cjs'),require.resolve('./original-source-error-hold.cjs'),require.resolve('./m1s2-problem-renderer-continuity.cjs'),require.resolve('./m1s2-problem-renderer-ui.cjs'),require.resolve('./m3s2-layout-continuity.cjs'),require.resolve('./m3-e052-q5-complete-given-continuity.cjs'),q5CompleteGiven.worker].map(p=>fs.readFileSync(p))));
+const BUILDER_SHA = sha(Buffer.concat([__filename,require.resolve('./renderer-registration-hold.cjs'),require.resolve('./partial-submission.cjs'),require.resolve('./metadata-registration-hold.cjs'),require.resolve('./verify-hold-metadata-replay.mjs'),require.resolve('./registered-renderer-continuity.cjs'),registeredRenderer.worker,require.resolve('./rebind-existing-renderer-v2.cjs'),require.resolve('./existing-registered-vector-continuity.cjs'),require.resolve('./existing-original-text-solution3.cjs'),require.resolve('./existing-registered-vector-ui.cjs'),require.resolve('../m2s1-text3-solution-fragments.cjs'),require.resolve('./existing-registered-vector-svg7-ui.cjs'),require.resolve('./existing-vector-svg-index-continuity.cjs'),require.resolve('./existing-registered-vector-svg7-derived-continuity.cjs'),require.resolve('../../archive/svg-accessibility.js'),require.resolve('./original-source-error-hold.cjs'),require.resolve('./m1s2-problem-renderer-continuity.cjs'),require.resolve('./m1s2-problem-renderer-ui.cjs'),require.resolve('./m3s2-layout-continuity.cjs'),require.resolve('./m3-e052-q5-complete-given-continuity.cjs'),q5CompleteGiven.worker].map(p=>fs.readFileSync(p))));
 const own = (o, k) => Object.prototype.hasOwnProperty.call(o || {}, k);
 function safe(root, rel) {
   if (typeof rel !== 'string' || !rel || /[\\\0-\x1f]/.test(rel) || path.posix.isAbsolute(rel) || rel.split('/').some(x => !x || x === '..' || x === '.')) throw Error('UNSAFE_PATH');
@@ -393,7 +394,7 @@ function stableContinuityClaimPosition(file){
   const {m1ProblemContinuityClaims,m3LayoutContinuityClaims,q5CompleteGivenContinuityClaims,...ordinary}=file;
   return {...ordinary,...(own(file,'m1ProblemContinuityClaims')?{m1ProblemContinuityClaims}:{}),...(own(file,'m3LayoutContinuityClaims')?{m3LayoutContinuityClaims}:{}),...(own(file,'q5CompleteGivenContinuityClaims')?{q5CompleteGivenContinuityClaims}:{})};
 }
-function serialize(x){return JSON.stringify(x)+'\n';}
+function serialize(x){return item4SlotIndexText(x);}
 function verify(index) {
   for(const row of index.records)originalSourceError.assertNotSubject(row);
   const api=consumer.createIndex(index);

@@ -162,7 +162,11 @@ window.questionBank = [
     "sourceQid": 3,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q03-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q03-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q03-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_유사/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 아래로 볼록한 포물선이 그려져 있고, x축과 만나는 두 점과 y축과 만나는 점, 꼭짓점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "y=(x+2)(x−5)의 교점−2,5와 y절편−10을 읽는다. 전개하면 x²−3x−10이므로 정답 a=−3.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -220,7 +224,11 @@ window.questionBank = [
     "sourceQid": 4,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q04-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q04-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q04-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_유사/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 위로 볼록한 포물선의 3≤x≤7 부분이 그려져 있고, 꼭짓점과 양 끝점이 점으로 표시되어 있다.",
+    "solutionImageCaption": "y=−(x−4)²+4의 정의역3≤x≤7 안에 꼭짓점이 있다. 양끝과 꼭짓점 높이를 비교하여 정답 최댓값4.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -331,7 +339,11 @@ window.questionBank = [
     "sourceQid": 6,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q06-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q06-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_팔마고_1학기_기말_고1_유사_plans/q06-solution.plan.json",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_유사/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 −6부터 3까지의 범위가 양 끝을 포함하여 굵게 표시되어 있고, 그 범위 안의 정수 자리에 점이 찍혀 있다.",
+    "solutionImageCaption": "−9≤2x+3≤9를 정리하면−6≤x≤3. 양끝을 포함한 정수를 세면 정답10개.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

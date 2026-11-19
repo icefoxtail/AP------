@@ -56,6 +56,14 @@ function context() {
     canonicalBefore: clone(canonical), canonicalAfter: clone(canonical), cache: immutableCache,
     supportedFields: new Set(Object.keys(patch.after)) };
 }
+// The tool authenticates the renderer at HEAD:archive/engine.html, so the same
+// engine bytes preserved in the working tree must be in the HEAD tree as well.
+function commitEngineAtHead(root) {
+  git(root, ['add', '--', 'archive/engine.html']);
+  const tree = git(root, ['write-tree']).toString().trim();
+  const commit = git(root, ['commit-tree', tree, '-m', 'Synthetic HEAD carrying the renderer']).toString().trim();
+  fs.writeFileSync(path.join(root, '.git/HEAD'), commit + '\n');
+}
 function reseal(ctx, key, value) {
   const relative = ctx.patch.sourceReview.q5CompleteGivenApplication[key].path, bytes = serialized(value);
   write(relative, bytes);
@@ -114,6 +122,7 @@ before(() => {
   preserve(basis.originalSourceReview.proposalFinalization.proposalSelections[0].documentRef.path,
     gitBytes(basis.nativeReviewRef.commit, basis.originalSourceReview.proposalFinalization.proposalSelections[0].documentRef.path));
   for (const change of binding.requestSnapshot.registryChanges) preserve(change.path, gitBytes(BASE, change.path));
+  commitEngineAtHead(fixture);
   const review = gitJson(basis.nativeReviewRef.commit, basis.nativeReviewRef.path);
   const original = bank(gitBytes(basis.nativeReviewRef.commit, basis.sourceBeforeRef.path));
   native = { spec: clone(q5.sourceReview), review, sourceBlob: review.sourceAfterBlob, sourceSha256: review.sourceAfterSha256,
@@ -310,6 +319,7 @@ function ensureIssued() {
     const dest = path.join(issuedRoot, p); fs.mkdirSync(path.dirname(dest), { recursive: true });
     fs.linkSync(path.join(fixture, p), dest);
   }
+  commitEngineAtHead(issuedRoot);
   for (const p of [RECEIPT + '.json', OLD_BINDING]) putIssued(p, gitBytes(CURRENT, p));
   const indexPath = 'archive/data/meta-foundation/canonical/registry_index.json';
   const index = gitJson(CURRENT, indexPath);
@@ -393,3 +403,97 @@ test('issued Q5 still requires the original Git ancestor even when live bytes an
   const alt = path.join(issuedRoot,'.git/objects/info/alternates'), raw = fs.readFileSync(alt); fs.unlinkSync(alt);
   try { assert.throws(() => verifyIssued(c)); } finally { fs.writeFileSync(alt,raw); }
 });
+
+// The captured global SVG index also contains other exams. The original UI
+// authority remains fixed while its exact consumed asset lookup is preserved.
+const svgIndexPath = 'archive/data/svg-accessibility-index.js';
+const svgIndexPrefix = "(function(root){\n  'use strict';\n  root.APSvgAccessibilityIndex = Object.freeze(";
+const svgIndexSuffix = ");\n}(typeof window !== 'undefined' ? window : globalThis));\n";
+const svgIndexDoc = raw => JSON.parse(raw.toString().slice(svgIndexPrefix.length, -svgIndexSuffix.length));
+const svgIndexBytes = doc => Buffer.from(svgIndexPrefix + JSON.stringify(doc) + svgIndexSuffix);
+const capturedAssetRefs = () => [...technical.servedFiles, ...technical.mirroredAssets]
+  .filter(ref => ref.path.startsWith('archive/assets/'));
+const svgContinuity = (await import('../tools/4slot/existing-vector-svg-index-continuity.cjs')).default;
+function withSvgIndex(edit, check) {
+  restore(); const raw = baseFiles.get(svgIndexPath), doc = svgIndexDoc(raw);
+  try { write(svgIndexPath, edit(doc, raw)); check(); } finally { restore(); }
+}
+
+test('actual later main global SVG index preserves the issued Q5 complete-given proof', () => {
+  restore(); const before = validate(context());
+  const current = gitBytes('debf134d0e4807c1d8f04264a5dd9a707b9d2cb9', svgIndexPath);
+  assert.notEqual(sha(current), sha(baseFiles.get(svgIndexPath)));
+  assert.equal(svgContinuity.selectEntries(svgContinuity.parseIndex(current), capturedAssetRefs()).length, 1);
+  withSvgIndex(() => current, () => assert.deepEqual(validate(context()), before));
+});
+
+test('foreign generated SVG entries preserve Q5 but its consumed record cannot change', () => {
+  restore(); const before = validate(context());
+  withSvgIndex(doc => {
+    const row = clone(svgContinuity.selectEntries(doc, capturedAssetRefs())[0]);
+    row.assetRef = 'assets/images/public-unrelated-for-q5/diagram.svg';
+    row.sourceExamRef = 'public-unrelated-for-q5'; row.sourceQid = 'public-unrelated';
+    doc.records.push(row); return svgIndexBytes(doc);
+  }, () => assert.deepEqual(validate(context()), before));
+  withSvgIndex(doc => {
+    const row = svgContinuity.selectEntries(doc, capturedAssetRefs())[0];
+    row.descriptionKo = 'synthetic changed consumed description'; return svgIndexBytes(doc);
+  }, () => assert.throws(() => validate(context()), /SVG_INDEX_CONSUMED_FOOTPRINT_DRIFT/));
+});
+
+test('removing or adding a consumed SVG role remains a closed Q5 failure', () => {
+  for (const mode of ['remove', 'add-role']) withSvgIndex(doc => {
+    const row = svgContinuity.selectEntries(doc, capturedAssetRefs())[0];
+    if (mode === 'remove') doc.records = doc.records.filter(value => value !== row);
+    else doc.records.push({ ...row, visualRole: row.visualRole === 'problem' ? 'solution' : 'problem' });
+    return svgIndexBytes(doc);
+  }, () => assert.throws(() => validate(context()), /SVG_INDEX_CONSUMED_FOOTPRINT_DRIFT/));
+});
+
+test('normalized duplicate SVG roles outside Q5 still fail the whole runtime lookup', () => {
+  withSvgIndex(doc => {
+    const row = clone(svgContinuity.selectEntries(doc, capturedAssetRefs())[0]);
+    doc.records.push({ ...row, assetRef: 'assets/images/public-unrelated-for-q5/diagram.svg' },
+      { ...row, assetRef: '/archive/assets/images/public-unrelated-for-q5/diagram.svg' });
+    return svgIndexBytes(doc);
+  }, () => assert.throws(() => validate(context()), /RUNTIME_LOOKUP_REJECTED/));
+});
+
+test('Q5 rejects executable SVG index suffixes without running them', () => {
+  withSvgIndex((_doc, raw) => Buffer.concat([raw, Buffer.from('globalThis.__q5SvgExecuted = true;')]),
+    () => assert.throws(() => validate(context()), /WRAPPER/));
+  assert.equal(globalThis.__q5SvgExecuted, undefined);
+});
+
+test('missing current SVG index cannot reuse a populated immutable Q5 cache', () => {
+  restore(); validate(context());
+  try { fs.unlinkSync(path.join(fixture, svgIndexPath));
+    assert.throws(() => validate(context()), /LIVE_SVG_INDEX_REQUIRED/);
+  } finally { restore(); }
+});
+
+test('a changed exact consumed asset is still rejected with a later global SVG index', () => {
+  withSvgIndex(() => gitBytes('debf134d0e4807c1d8f04264a5dd9a707b9d2cb9', svgIndexPath), () => {
+    const target = basis.newAssetRef.path; write(target, Buffer.concat([baseFiles.get(target), Buffer.from('changed')]));
+    assert.throws(() => validate(context()), /LIVE_FILE_MISSING_OR_SIZE_DRIFT|LIVE_RAW_DRIFT/);
+  });
+});
+
+for (const [label, ordinal, both] of [
+  ['Q5 metadata and runtime', 5, true],
+  ['Q12 companion metadata and runtime', 12, true],
+  ['Q5 runtime only', 5, false],
+]) {
+  test('issued ' + label + ' cannot claim an unissued canonical pack version', () => {
+    const c = issuedContext();
+    const metadata = c.receipt.appliedRecords.find(row => row.sourceOrdinal === ordinal);
+    const runtime = c.receipt.runtimeRecords.find(row => row.sourceOrdinal === ordinal);
+    const oldVersion = metadata.metaFoundationPackVersion, claimedVersion = '999.0.0';
+    assert.notEqual(oldVersion, claimedVersion);
+    runtime.metaFoundationPackVersion = claimedVersion;
+    if (both) metadata.metaFoundationPackVersion = claimedVersion;
+    for (const row of both ? [metadata, runtime] : [runtime])
+      row.metadataRevision = row.metadataRevision.replace('@' + oldVersion + ':', '@' + claimedVersion + ':');
+    assert.throws(() => verifyIssued(c), /Q5 original typed ancestor current ACTIVE pack version differs/);
+  });
+}

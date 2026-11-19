@@ -149,101 +149,82 @@ export function examImageR2Url(env, assetPath) {
   return new URL(`${base}/exams/images/${parts.map(encodeURIComponent).join("/")}`);
 }
 
-function bytesToBase64(bytes) {
-  let binary = "";
-  for (let i = 0; i < bytes.length; i += 0x8000)
-    binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
-  return btoa(binary);
-}
-
-async function embedSavedPaperAssets(env, questions) {
-  const cache = new Map();
+// Reads one source image (R2 first, Pages copy as the rollback path). Used to embed it (old format) and to check it (key refs).
+async function fetchSourceAsset(env, path) {
   const base = String(
     env.ARCHIVE_PUBLIC_BASE_URL || "https://icefoxtail.github.io/AP------/archive",
   ).replace(/\/+$/, "") + "/";
-  async function inlineReference(value) {
-    if (typeof value !== "string") return value;
-    const path = sourceAssetPath(value);
-    if (!path) return value;
-    if (cache.has(path)) return cache.get(path);
-    let response = null;
-    const r2Url = examImageR2Url(env, path);
-    if (r2Url) {
-      try { response = await fetch(r2Url); } catch { response = null; }
-      if (response && !response.ok) {
-        try { await response.body?.cancel(); } catch { /* body already closed */ }
-        response = null;
-      }
+  let response = null;
+  const r2Url = examImageR2Url(env, path);
+  if (r2Url) {
+    try { response = await fetch(r2Url); } catch { response = null; }
+    if (response && !response.ok) {
+      try { await response.body?.cancel(); } catch { /* body already closed */ }
+      response = null;
     }
-    if (!response) {
-      // R2 unavailable (or EXAM_IMAGE_BASE_URL is ""): the Pages copy, which exists only after a rollback re-includes it.
-      const url = new URL(path, base);
-      response = env.ARCHIVE2_ASSETS
-        ? await env.ARCHIVE2_ASSETS.fetch(url)
-        : await fetch(url);
-    }
-    if (!response.ok) fail("문제지 이미지 파일을 저장할 수 없습니다.", 409);
-    const reader = response.body?.getReader();
-    let bytes;
-    if (reader) {
-      const chunks = [];
-      let size = 0;
-      try {
-        for (;;) {
-          const { done, value: chunk } = await reader.read();
-          if (done) break;
-          size += chunk.byteLength;
-          if (size > MAX_SAVED_PAPER_BYTES) {
-            await reader.cancel();
-            fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
-          }
-          chunks.push(chunk);
+  }
+  if (!response) {
+    // R2 unavailable (or EXAM_IMAGE_BASE_URL is ""): the Pages copy, which exists only after a rollback re-includes it.
+    const url = new URL(path, base);
+    response = env.ARCHIVE2_ASSETS
+      ? await env.ARCHIVE2_ASSETS.fetch(url)
+      : await fetch(url);
+  }
+  if (!response.ok) fail("문제지 이미지 파일을 저장할 수 없습니다.", 409);
+  const reader = response.body?.getReader();
+  let bytes;
+  if (reader) {
+    const chunks = [];
+    let size = 0;
+    try {
+      for (;;) {
+        const { done, value: chunk } = await reader.read();
+        if (done) break;
+        size += chunk.byteLength;
+        if (size > MAX_SAVED_PAPER_BYTES) {
+          await reader.cancel();
+          fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
         }
-      } finally {
-        reader.releaseLock();
+        chunks.push(chunk);
       }
-      bytes = new Uint8Array(size);
-      let offset = 0;
-      for (const chunk of chunks) {
-        bytes.set(chunk, offset);
-        offset += chunk.byteLength;
-      }
-    } else {
-      bytes = new Uint8Array(await response.arrayBuffer());
-      if (bytes.byteLength > MAX_SAVED_PAPER_BYTES)
-        fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
+    } finally {
+      reader.releaseLock();
     }
-    const ext = path.split(".").at(-1).toLowerCase();
-    const fallbackMime = ({ png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", svg: "image/svg+xml", webp: "image/webp", gif: "image/gif" })[ext];
-    const declaredMime = String(response.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
-    const mime = declaredMime.startsWith("image/") ? declaredMime : fallbackMime;
-    if (!mime) fail("지원하지 않는 문제지 이미지 형식입니다.", 409);
-    const dataUrl = `data:${mime};base64,${bytesToBase64(bytes)}`;
-    cache.set(path, dataUrl);
-    return dataUrl;
-  }
-  async function inlineHtmlImages(value) {
-    if (typeof value !== "string" || !/(?:src\s*=|url\s*\()/i.test(value)) return value;
-    const matches = [...value.matchAll(/(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi)];
-    if (!matches.length) return value;
-    let outputText = "";
-    let cursor = 0;
-    for (const match of matches) {
-      const ref = match[3] || match[5];
-      const rewritten = await inlineReference(ref);
-      outputText += value.slice(cursor, match.index);
-      if (match[3]) outputText += `${match[1]}${match[2]}${rewritten}${match[2]}`;
-      else outputText += `url(${match[4]}${rewritten}${match[6]}`;
-      cursor = match.index + match[0].length;
+    bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) {
+      bytes.set(chunk, offset);
+      offset += chunk.byteLength;
     }
-    return outputText + value.slice(cursor);
+  } else {
+    bytes = new Uint8Array(await response.arrayBuffer());
+    if (bytes.byteLength > MAX_SAVED_PAPER_BYTES)
+      fail("문제지 이미지가 저장 한도를 넘었습니다.", 413);
   }
-  for (const question of questions) {
-    if (typeof question.image === "string") question.image = await inlineReference(question.image);
-    if (typeof question.solutionImage === "string") question.solutionImage = await inlineReference(question.solutionImage);
-    for (const field of ["content", "question", "solution"])
-      if (typeof question[field] === "string") question[field] = await inlineHtmlImages(question[field]);
+  return { bytes, response };
+}
+
+const HTML_IMAGE_REF = /(\bsrc\s*=\s*)(["'])([^"']+)\2|url\(\s*(["']?)([^)"'\s]+)(["']?\s*\))/gi;
+function questionAssetPaths(question) {
+  const refs = [question.image, question.solutionImage];
+  for (const field of ["content", "question", "solution"])
+    if (typeof question[field] === "string") for (const match of question[field].matchAll(HTML_IMAGE_REF)) refs.push(match[3] || match[5]);
+  return refs.filter((ref) => typeof ref === "string").map(sourceAssetPath).filter(Boolean);
+}
+
+async function sha256Bytes(bytes) {
+  return Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)), (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+// The saved paper keeps the exam image PATH in its text and records each image as { path, sha256, bytes } (a later asset
+// replacement is then detectable). One list per paper. An image that cannot be read stops the whole save: no partial paper.
+async function recordSavedPaperAssets(env, papers) {
+  const known = new Map();
+  for (const path of new Set(papers.flatMap((paper) => paper.questions.flatMap(questionAssetPaths)))) {
+    const { bytes } = await fetchSourceAsset(env, path);
+    known.set(path, { path, sha256: await sha256Bytes(bytes), bytes: bytes.byteLength });
   }
+  return papers.map((paper) => [...new Set(paper.questions.flatMap(questionAssetPaths))].sort().map((path) => known.get(path)));
 }
 
 export async function prepareSavedPaperBatch(env, input, metadataAuthority = null) {
@@ -318,10 +299,8 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
       };
     }
   }
-  // Keep the exact image bytes inside the immutable snapshot. Source asset
-  // paths are stable filenames, so saving only the URL would allow a later
-  // asset replacement to silently change an already saved paper.
-  await embedSavedPaperAssets(env, input.papers.flatMap((paper) => paper.questions));
+  // Images stay as paths in the text; their sha256 and size are recorded in the snapshot (see recordSavedPaperAssets).
+  const assetsByPaper = await recordSavedPaperAssets(env, input.papers);
 
   for (let i = 0; i < input.papers.length; i++) {
     const paper = input.papers[i];
@@ -329,7 +308,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
     const title = String(paper.meta.title || paper.meta.printHeaderOptions?.title || "").trim();
     if (!title || title.length > 150) fail("시험지 제목을 1~150자로 입력해 주세요.", 409);
     const qpp = Number(paper.meta.qpp || 4);
-    if (![4, 6, 8].includes(qpp)) fail("출력 쪽당 문항 수를 확인해 주세요.", 409);
+    if (![2, 4, 6, 8].includes(qpp)) fail("출력 쪽당 문항 수를 확인해 주세요.", 409);
     const meta = {
       ...paper.meta,
       title,
@@ -354,6 +333,7 @@ export async function prepareSavedPaperBatch(env, input, metadataAuthority = nul
       meta,
       bridgeRows,
       selectionFilters,
+      assets: assetsByPaper[i],
       verifiedAt: new Date().toISOString(),
     };
     const snapshotJson = stableStringify(snapshot);
@@ -400,9 +380,10 @@ export async function readAndVerifySavedSnapshot(row) {
     !isPlainObject(snapshot.meta) ||
     !Array.isArray(snapshot.bridgeRows) ||
     !isPlainObject(snapshot.selectionFilters) ||
+    (snapshot.assets !== undefined && !validSnapshotAssets(snapshot.assets)) ||
     snapshot.bridgeRows.length !== Number(row.question_count) ||
     snapshot.questions.length !== Number(row.question_count) ||
-    ![4, 6, 8].includes(Number(snapshot.meta.qpp)) ||
+    ![2, 4, 6, 8].includes(Number(snapshot.meta.qpp)) ||
     String(snapshot.meta.title || "") !== String(row.title || "") ||
     String(snapshot.meta.grade || "") !== String(row.grade || "") ||
     stableStringify(snapshot.meta.questionUids) !== stableStringify(snapshot.questions.map((question) => question.questionUid)) ||
@@ -410,4 +391,16 @@ export async function readAndVerifySavedSnapshot(row) {
     (await sha256hex(stableStringify(snapshot))) !== row.snapshot_hash
   ) fail("저장한 시험지 snapshot 검증에 실패했습니다.", 409);
   return snapshot;
+}
+
+// Key-reference snapshots keep the exam image paths as they are and list every image they use as { path, sha256, bytes }.
+// Old snapshots have no `assets` list (their images are embedded) and are read exactly as before.
+const ASSET_SHA256 = /^[0-9a-f]{64}$/;
+function validSnapshotAssets(assets) {
+  try {
+    return Array.isArray(assets) &&
+      assets.every((asset) => isPlainObject(asset) && sourceAssetPath(asset.path) === asset.path &&
+        ASSET_SHA256.test(String(asset.sha256)) && Number.isInteger(asset.bytes) && asset.bytes >= 0) &&
+      new Set(assets.map((asset) => asset.path)).size === assets.length;
+  } catch { return false; }
 }

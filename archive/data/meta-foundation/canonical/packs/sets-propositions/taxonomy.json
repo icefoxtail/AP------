@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 25,
-  "templateCount": 99,
+  "problemTypeCount": 26,
+  "templateCount": 107,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
@@ -709,6 +709,36 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_INTEGER_REMAINDER",
+      "canonicalLabelKo": "정수의 나머지",
+      "definition": "홀짝 또는 나눗셈 나머지로 정수를 표현하고 식을 전개하여 결과의 나머지를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_0c15618418259a1014f545707672db3ec431b1c3685e785b87bc05e581031bd3",
+        "qid_v1_11697a12ebf5c5c424675c8f89475c04cb25e349370049f272d667cfa80ad1ff",
+        "qid_v1_873260fac3e229c91066f05b93a5147c6b0c9f76e26a4bc9c4692572f399fd6a",
+        "qid_v1_bebb38b9d21f900749766019db6c4e56cabee585b5409562caa9d575138cd155",
+        "qid_v1_d2f05d6fb699fbe6c1176d7ce60e26721053ac587121603c9f78352eb48a908f"
+      ],
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_H1_INTEGER_REMAINDER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],
@@ -2459,6 +2489,254 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_b53102436575a00dbcd4d3f5a94dd2f1b1e1a3cafc5c65ff50d42e20ae907a46"
+      ]
+    },
+    {
+      "templateKey": "TPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND",
+      "parentProblemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "canonicalLabelKo": "제곱합 비음수 극값",
+      "definition": "목표식과 경곗값의 차를 비음수 제곱합으로 나타내 범위를 구하고 등호 조건을 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_c9e02de19a138a6b766733fd77c0ac387cf73e40b322a7980ad50953e304f3f8",
+        "qid_v1_ccdfee28dff22780d09ac577cf9ff43933035c34e574389ace7512be8a1aca9f",
+        "qid_v1_efa0d5b627753c5a9dd9a1c35048f1954e4de67623673d33b3f0459c3eb25090"
+      ],
+      "sourceUnits": [
+        "H15-SA-13",
+        "H15-SB-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_ABSOLUTE_INEQUALITY_EXTREMUM_SQUARE_BOUND",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_PROPOSITION_PARAMETER_CONDITION_OVERLAP",
+      "parentProblemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "canonicalLabelKo": "진리집합 겹침 조건",
+      "definition": "두 구간의 교집합이 비지 않도록 끝점을 비교해 매개변수 구간을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_12a8658fbc2e663fe6c0a6534633cdf9bf08d781d3b17edfc1f7dd1b75084919",
+        "qid_v1_b1669de78461c0e56864f0f8a248abbd7e8e1d012645c301edff82245238fd90",
+        "qid_v1_ec320860781d48092fa3b819da0b08f023d6fcd14fa654badd1ff4be0c745377"
+      ],
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_PROPOSITION_PARAMETER_CONDITION_OVERLAP",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_PROPOSITION_PARAMETER_CONDITION_UNIVERSAL",
+      "parentProblemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+      "canonicalLabelKo": "반직선 전칭 부등식",
+      "definition": "주어진 반직선에서 이차식의 최솟값을 계산해 전칭 부등식의 계수 조건을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_1f95f9641e051a398b4d89ce8de075e056d329048ae8a93c3cd07a187b55baf0",
+        "qid_v1_9de2adbd84e259c9643029b5a9c88ace162fac4e2c23cbf61d5feb1c8025f7c2"
+      ],
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_PROPOSITION_PARAMETER_CONDITION_UNIVERSAL",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_QUANTIFIER_NEGATION_NEGATE",
+      "parentProblemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "canonicalLabelKo": "양화명제 부정",
+      "definition": "전칭·존재 양화사를 서로 바꾸고 술어를 부정하여 부정 명제 또는 그 진릿값을 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_0d7321b2838232a014733052b5ebe1d23294162d61068e7cd6aa09b6f1eb9935",
+        "qid_v1_ad2ba7b4e557731ac71e917a758553af037a68b266e06d4ba8bf2150b229f656",
+        "qid_v1_b178aa0902fc39e95ffd9b916bb66773afb0c86711bcd5505e997cb2034168e4",
+        "qid_v1_eb42408e604442d6f025d2e8789d47480630e7906ee0b80453de274fdce805e5"
+      ],
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_QUANTIFIER_NEGATION_NEGATE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_SET_CONSTRUCTION_ENUMERATE",
+      "parentProblemTypeKey": "PT_SET_CONSTRUCTION",
+      "canonicalLabelKo": "집합 원소 나열",
+      "definition": "약수·방정식·구간 조건을 만족하는 원소를 빠짐없이 나열한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_272a235479437246f289ff311ba7a6e6c042778b6bf6345f9f8a7d4f1f447091",
+        "qid_v1_bb1178dec7c570ab3ec0a4e2efb2a22424136e9899107b4731c7850ce926ebd8",
+        "qid_v1_d5bcb97a11adb62faf93b401722c8e94f2f6d65af57fb0ab3d58157faf177381",
+        "qid_v1_dfd241fafe389e3205fe39cb997c0ccdd9a43a29c43d01c45ba8150e67ca66c2"
+      ],
+      "sourceUnits": [
+        "H22-C2-02",
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_SET_CONSTRUCTION_ENUMERATE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_SUBSET_COUNT_PAIR_CLOSED",
+      "parentProblemTypeKey": "PT_SUBSET_COUNT",
+      "canonicalLabelKo": "짝 대응 닫힘 부분집합",
+      "definition": "x와 k/x의 약수쌍 및 제곱근 고정점으로 원소를 묶어 묶음별 선택 조건을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 14,
+      "supportingQuestionUids": [
+        "qid_v1_0e0914beb437f510163049a2378ff8cc247dd6a5516a62b1c5d40f1faba46c0f",
+        "qid_v1_1a75d203d5f35f4e24352c2013bdb4475dd616a5b0c69d8cfaba0a54ac712d8b",
+        "qid_v1_201224692abc544193e6f8084a6f44418522a92ee4d17195f78d9cb91404bd77",
+        "qid_v1_2bb33568e2716a16ecb8717179ac3672d8bd4a4b34e53eb61d12e2540b6c5fff",
+        "qid_v1_2ec6adef74698e8eeebda78814d675b58a4654a5985109795038cb3ca5a61f48",
+        "qid_v1_3261320f8dd2dadf30b0ede84f95e961e90fbb0c93e0c7f96c62eac394c29c0a",
+        "qid_v1_3cc19c1a9bac63a0b423b1cc90a18437df054daed09a17efc5b8af51270193cb",
+        "qid_v1_48866e7f1d75b7bbb79c6a71a90c31405b2170d5bd5c49197b0ebfdb8b612e71",
+        "qid_v1_5d1512216425cfe5f4a1935e336cb0da297f7e0aaec3e08702e276051cbc952b",
+        "qid_v1_6057b31e38e671e0480f16262e215b23ee2a6e0d04fb1eb64eb980ceb7f36aa9",
+        "qid_v1_7947e4a8fd3f46ee44c8ef66ba4518f8a110c88f5d1c20ba41775e50b7abfcf6",
+        "qid_v1_820948c72b34ba7b0f939db7893df4366762bab53210d1da2bb2f8c817c02b46",
+        "qid_v1_def2239e85565f847c59fe5e2e0bb7ef85770bfd9e4f86fddd012b2705e97dde",
+        "qid_v1_f5edfd6bb8b1abc34a625504ff8e6247cfe543a543c788aa28849a5528621a6c"
+      ],
+      "sourceUnits": [
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_SUBSET_COUNT_PAIR_CLOSED",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_SUBSET_COUNT_SUM_SUBSET",
+      "parentProblemTypeKey": "PT_SUBSET_COUNT",
+      "canonicalLabelKo": "원소 합 조건 부분집합",
+      "definition": "필수 원소의 합을 뺀 나머지 합을 만드는 자유 원소 조합을 나열한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_54fb7cd5dd1392a4270e683d8b28418c735faead0df2bc87e20af6120f833698",
+        "qid_v1_a822694f2d7e89bdeb761bb63c05437880b82c5adc85b16e6719fd0c79bfccfd",
+        "qid_v1_c16151df89e2584ea556f5013902a2114014307b90b1b653bede2553d471f87e",
+        "qid_v1_ce5eaae39b7a4b1c2821b2ac033739470d09cb785f8b4d543028e325178cffe3",
+        "qid_v1_d69e0811c421a0cd82715b225df836733f90514bd5aa821f7d50333456526caa"
+      ],
+      "sourceUnits": [
+        "H22-C2-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_SUBSET_COUNT_SUM_SUBSET",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_TRUTH_SET_RELATION_INTERSECTION",
+      "parentProblemTypeKey": "PT_TRUTH_SET_RELATION",
+      "canonicalLabelKo": "진리집합 교집합 정수",
+      "definition": "부등식 진리집합의 교집합에 속하는 자연수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "SETS_PROPOSITIONS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_910c05ed16ac960a8a1c274fa1f7a3f43ac5c86a6417879928fe218b1ce1fae7",
+        "qid_v1_a12ec9eca1c8def4da7ea1aaa414c18c25074ce0f2c6accfa877ae38a21fbc3c",
+        "qid_v1_f19db0f3a3d09ec9174b01e757515a26f349d606807b9658f640abb2d6256b92"
+      ],
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_TRUTH_SET_RELATION_INTERSECTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],

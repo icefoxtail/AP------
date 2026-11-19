@@ -172,7 +172,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "questionType": "객관식",
-    "content": "다음 그림은 함수 $y = \\log_4 2x$의 그래프와 직선 $y = x$이다. 점선이 직선 $y=x$와 만나는 점이 $(2,2)$일 때, 상수 $a$의 값을 구하면? (단, 점선은 $x$축 또는 $y$축에 평행하다.) [3.7점]<br><img src=\"assets/images/21_매산여고_1학기_중간_고2_수학I/q05.png\" class=\"exam-img\">",
+    "content": "다음 그림은 함수 $y = \\log_4 2x$의 그래프와 직선 $y = x$이다. 점선이 직선 $y=x$와 만나는 점이 $(2,2)$일 때, 상수 $a$의 값을 구하면? (단, 점선은 $x$축 또는 $y$축에 평행하다.) [3.7점]<br><img src=\"assets/images/21_매산여고_1학기_중간_고2_수학I/q05.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"좌표평면에 y=x와 y=log₄(2x)가 그려져 있다. y=2 수평 점선은 y=x와 (2,2)에서 만나고, 로그곡선과 만나는 점에서 x축으로 내린 수직 점선의 x좌표를 a로 표시한다.\">",
     "choices": [
       "$2$",
       "$4$",
@@ -181,8 +181,11 @@ window.questionBank = [
       "$32$"
     ],
     "answer": "③",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q05-solution.svg",
-    "solution": "점선이 직선 $y=x$와 만나는 점이 $(2,2)$이므로 점선의 높이는 $y=2$이다.\n같은 점선이 로그함수 $y=\\log_4(2x)$와 만나는 점의 $x$좌표가 $a$이므로 $\\log_4(2a)=2$이다.\n로그의 정의에 따라 $2a=4^2=16$이고, 따라서 $a=8$이다.\n정답은 ③이다."
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q5-solution-v3.svg",
+    "solution": "점선이 직선 $y=x$와 만나는 점이 $(2,2)$이므로 점선의 높이는 $y=2$이다.\n같은 점선이 로그함수 $y=\\log_4(2x)$와 만나는 점의 $x$좌표가 $a$이므로 $\\log_4(2a)=2$이다.\n로그의 정의에 따라 $2a=4^2=16$이고, 따라서 $a=8$이다.\n정답은 ③이다.",
+    "solutionImageAlt": "해설 그림: 좌표평면에 주황 직선 y=x와 파란 로그곡선 y=log₄(2x), 가로 점선 y=2가 그려져 있다. 점선 y=2는 직선 y=x와 점 (2,2)에서 만나고, 같은 점선이 로그곡선과 만나는 점에서 x축으로 내린 수선의 발의 x좌표를 a로 표시한다.",
+    "solutionImageCaption": "점선 y=2가 직선 y=x와 만나는 점은 (2,2)이므로 점선의 높이는 2이고, 같은 점선이 로그곡선 y=log₄(2x)와 만나는 점의 x좌표가 a이다. log₄(2a)=2에서 2a=16이므로 a=8이다. 정답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -320,7 +323,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "questionType": "객관식",
-    "content": "그림과 같이 두 곡선 $y=3^{-x}+1$, $y=3^x+\\frac{a}{9}$의 교점을 $A$라 하자. 삼각형 $ABC$의 높이가 밑변의 길이의 2배일 때, 삼각형 $ABC$의 넓이가 25가 되도록 하는 양수 $a$의 값을 구하면? (단, $O$는 원점이고, 점 $B$와 점 $C$는 $x$축 위의 점이다.) [4.1점]<br><img src=\"assets/images/21_매산여고_1학기_중간_고2_수학I/q09.png\" class=\"exam-img\">",
+    "content": "그림과 같이 두 곡선 $y=3^{-x}+1$, $y=3^x+\\frac{a}{9}$의 교점을 $A$라 하자. 삼각형 $ABC$의 높이가 밑변의 길이의 2배일 때, 삼각형 $ABC$의 넓이가 25가 되도록 하는 양수 $a$의 값을 구하면? (단, $O$는 원점이고, 점 $B$와 점 $C$는 $x$축 위의 점이다.) [4.1점]<br><img src=\"assets/images/21_매산여고_1학기_중간_고2_수학I/q09.png\" class=\"exam-img\" data-archive-mobile-figure=\"true\" alt=\"두 곡선 y=3^(−x)+1과 y=3^x+a/9가 A에서 만난다. B와 C는 x축 위에 있고, 삼각형 ABC의 내부와 A에서 x축까지의 높이를 표시한다.\">",
     "choices": [
       "$81$",
       "$83$",
@@ -588,9 +591,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "동경의 각은 $2\\pi$의 정수배만큼 달라도 같은 방향을 나타낸다. 따라서 대칭 관계를 각의 합으로 나타낸다.\n$y$축에 대하여 대칭인 두 동경의 각의 합은 $\\pi$에 $2\\pi$의 정수배를 더한 값이다.\n$\\theta+5\\theta=\\pi+2k\\pi$ ($k$는 정수)\n$6\\theta=\\pi+2k\\pi$이다.\n또 직선 $y=x$에 대하여 대칭인 두 동경의 각의 합은 $\\frac\\pi2$에 $2\\pi$의 정수배를 더한 값이다.\n$\\theta+2\\theta=\\frac\\pi2+2m\\pi$ ($m$은 정수)\n$3\\theta=\\frac\\pi2+2m\\pi$\n$\\theta=\\frac\\pi6+\\frac{2m\\pi}{3}$이다.\n이 식에 $6$을 곱하면 $6\\theta=\\pi+4m\\pi$이므로 첫째 대칭 조건도 자동으로 만족한다.\n따라서 보기의 각을 둘째 식에 차례로 대입한다.\nㄱ. $\\theta=\\frac\\pi6$은 $m=0$이므로 가능하다.\nㄴ. $\\theta=\\frac\\pi2$는 $m=\\frac12$이므로 불가능하다.\nㄷ. $\\theta=\\frac{5\\pi}6$은 $m=1$이므로 가능하다.\nㄹ. $\\theta=\\frac{7\\pi}6$은 $m=\\frac32$이므로 불가능하다.\nㅁ. $\\theta=\\frac{3\\pi}2$는 $m=2$이므로 가능하다.\n그러므로 ㄱ, ㄷ, ㅁ이 옳고 정답은 ⑤이다.",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q16-solution-v2.svg",
     "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
-    "templateKey": "TPL_COTERMINAL_ANGLES_SYMMETRY_SYSTEM"
+    "templateKey": "TPL_COTERMINAL_ANGLES_SYMMETRY_SYSTEM",
+    "solutionImageAlt": "해설 그림: 단위원 위의 세 동경과 y축 및 y=x 반사축을 같은 좌표 눈금으로 나타낸 그림. 두 쌍의 같은 색 각 표시가 각각의 반사 관계를 보여 준다.",
+    "solutionImageCaption": "y축 반사에서 θ+5θ=π+2kπ, y=x 반사에서 θ+2θ=π/2+2mπ (k,m∈ℤ)이다. 가능한 각은 π/6, 5π/6, 3π/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -727,7 +733,10 @@ window.questionBank = [
     "choices": [],
     "answer": "$[0,\\frac{2\\pi}{3}]\\cup[\\frac{4\\pi}{3},2\\pi)$",
     "solution": "$\\sin(\\frac{3\\pi}{2}+x)=-\\cos x$이므로 부등식은 $2\\sin^2x+\\cos x-1\\ge0$이다.\n$\\sin^2x=1-\\cos^2x$를 대입하면 $1+\\cos x-2\\cos^2x\\ge0$이다.\n이를 인수분해하면 $(1-\\cos x)(2\\cos x+1)\\ge0$이다.\n$-1\\le\\cos x\\le1$이므로 $1-\\cos x\\ge0$이고, 부등식은 $\\cos x\\ge-\\frac12$와 같다.\n$0\\le x<2\\pi$에서 해는 $0\\le x\\le\\frac{2\\pi}{3}$ 또는 $\\frac{4\\pi}{3}\\le x<2\\pi$이다.",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q20-solution.svg"
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선 y=cos x와 수평선 y=−1/2를 그린다. 교점 두 곳은 등호가 포함되어 채운 점이고, 정의역 시작 x=0은 포함, 끝 x=2π는 제외된다. 곡선이 기준선 위에 있는 부분이 조건을 만족한다.",
+    "solutionImageCaption": "sin(3π/2+x)=−cos x이므로 식은 2sin²x+cos x−1≥0이다. sin²x=1−cos²x를 대입하면 (1−cos x)(2cos x+1)≥0이고, −1≤cos x≤1에서 이는 cos x≥−1/2와 같다. 0≤x<2π에서 경계 교점은 2π/3, 4π/3이며 두 점은 등호로 포함된다. 따라서 해는 [0,2π/3]∪[4π/3,2π)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -823,6 +832,9 @@ window.questionBank = [
     "choices": [],
     "answer": "1) 최댓값 $4$, 최솟값 $0$  2) $35$  3) $[0,\\frac19)\\cup(\\frac29,\\frac49)\\cup(\\frac59,\\frac79)\\cup(\\frac89,1]$",
     "solution": "1) $|\\cos u|$는 $\\cos(u+\\pi)=-\\cos u$이므로 $|\\cos(u+\\pi)|=|\\cos u|$를 만족한다. 따라서 $f(x)=|4\\cos3\\pi x|$의 주기는 $3\\pi p=\\pi$에서 $p=\\frac13$이다.\n한 주기 $0\\le x\\le\\frac13$에서 $(0,4)$, $(\\frac16,0)$, $(\\frac13,4)$를 지나며 이 모양이 반복된다. $y$축과 만나는 점은 $(0,4)$, $x$축과 만나는 점은 $(\\frac{2k+1}{6},0)$ ($k$는 정수)이다.\n$0\\le|\\cos3\\pi x|\\le1$이므로 최댓값은 $4$, 최솟값은 $0$이다.\n2) 모든 실수 $x$에서 $f(x+p)=f(x)$라면 특히 $x=0$에서 $f(p)=f(0)=4$여야 한다.\n$|4\\cos3\\pi p|=4\\Rightarrow|\\cos3\\pi p|=1\\Rightarrow3\\pi p=n\\pi\\Rightarrow p=\\frac n3$ ($n$은 정수)이다.\n거꾸로 $p=\\frac n3$이면 모든 $x$에 대하여\n$f(x+p)=|4\\cos(3\\pi x+n\\pi)|=|4(-1)^n\\cos3\\pi x|=|4\\cos3\\pi x|=f(x)$이다.\n따라서 가능한 주기는 정확히 $p=\\frac n3$이고, $0<p<12$에서 $0<n<36$이므로 $n=1,2,\\ldots,35$의 $35$개이다.\n3) $t=3\\pi x$로 놓으면 $0\\le x\\le1$은 $0\\le t\\le3\\pi$이고, $f(x)>2$는 $|\\cos t|>\\frac12$, 즉 $\\cos t>\\frac12$ 또는 $\\cos t<-\\frac12$이다.\n$0\\le t\\le3\\pi$에서 경계 $|\\cos t|=\\frac12$가 되는 각은 $\\frac\\pi3,\\frac{2\\pi}3,\\frac{4\\pi}3,\\frac{5\\pi}3,\\frac{7\\pi}3,\\frac{8\\pi}3$이다. 이 각에서는 부등호가 $>$이므로 제외한다.\n사인·코사인의 그래프에서 $|\\cos t|$가 $\\frac12$보다 큰 구간은\n$t\\in[0,\\frac\\pi3)\\cup(\\frac{2\\pi}3,\\frac{4\\pi}3)\\cup(\\frac{5\\pi}3,\\frac{7\\pi}3)\\cup(\\frac{8\\pi}3,3\\pi]$이다.\n양 끝 $t=0,3\\pi$에서는 $|\\cos t|=1$이므로 포함한다. 각 끝점을 $3\\pi$로 나누면\n$x\\in[0,\\frac19)\\cup(\\frac29,\\frac49)\\cup(\\frac59,\\frac79)\\cup(\\frac89,1]$이다.",
-    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q23-solution.svg"
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고2_수학I/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 0부터 1까지 절댓값 코사인 곡선이 같은 모양으로 세 번 반복된다. 세로축과 만나는 점은 (0, 4)이고 가로축에서 (1/6, 0), (1/2, 0), (5/6, 0)에 닿는다. 수평선 y=2와 만나는 곳은 열린 원으로 표시되어 있다.",
+    "solutionImageCaption": "접힌 곡선의 주기는 $1/3$이다. 수평선 $y=2$보다 곡선이 높은 곳을 읽는다. 곡선이 수평선에 닿는 열린 점은 해에서 제외한다. 답은 1) 최댓값 $4$, 최솟값 $0$ 2) $35$개 3) $[0,\\frac{1}{9})\\cup(\\frac{2}{9},\\frac{4}{9})\\cup(\\frac{5}{9},\\frac{7}{9})\\cup(\\frac{8}{9},1]$이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -3,6 +3,79 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## CURRENT — 새 문항 메타는 최소 한 벌 (2026-11-19, 사용자 승인)
+
+- **작성자가 고르는 것:** `curriculum`(2015/2022), `standardUnitKey`·`subUnitKey`, `rpmPrimaryRecordId`(단수), `problemTypeKey`·`templateKey`, `difficultyBucket`(정수 1~5), `crossConceptKeys`·`conditionKeys`·`integrationPattern`, 4칸(`item-4slot/**` 별도 파일). 식별자와 결속 지문(발문+보기)은 기계가 만든다.
+- **도구가 채우는 것:** `rpmL1~rpmL4`는 등록기가 번호의 크로스워크 행에서 채운다(아래 "등록기 최소 한 벌"). 단원·소단원 라벨·순서는 키에서 정해지는 값이므로 마스터 글자를 바꾸지 않는다(하네스가 채우고, 하네스가 없는 라인은 마스터 글자를 그대로 옮긴다).
+- **쓰지 않는 것(요청에도 원본 JS에도):** `rpmPrimaryL1~L4`, `rpmPrimary{}`, `rpmPrimaryRecordIds`, `curriculumKey`(=`curriculum`), 맨 `L1~L4`, `ptTplCandidate`, `difficultyBasis`·`levelBasis`, `level`. `originalCategory`는 원본 기출에 적힌 글자만 적고 새 유사·생성 문항은 비운다. 원본 JS에 `level`·`L3` 같은 사본을 쓰면 파생 라벨과 달라 등록기 parity 검사로 거부된다.
+- **아직 남은 관문(쓰지 않으면 문제없음):** CI 후보 검사(`tools/ci/archive-reviewed-source-candidate.mjs`)는 허용 목록 밖 필드를 아직 `UNKNOWN_METADATA_FIELD`로 거부한다. 스테이지 검증기는 난이도 보조 3칸(`difficultyConfidence`·`difficultyBoundaryFlag`·`legacyLevelCompatibility`)을 아직 요구하므로 이 셋은 계속 적는다.
+- **허용 목록 안 필드를 `after`에 새로 넣을 때는 `before`에 `null`을 같이 쓴다**(CAS 규칙 그대로).
+- **금지:** 경로→번호 역산, 번호→TPL 계산, 소단원→L1·L2 계산. 맨 `L1~L4`는 RPM 값과 PT·TPL 라벨이 섞인 칸이므로 기존 값을 비교해 지우거나 옮기지 않는다.
+- **받는 쪽과 기존 값은 그대로다.** 화면·빌더·등록기는 옛 이름으로 들어온 값도 계속 받고, 기존 문항 값은 지우지 않는다.
+- 이유: 같은 값을 여러 칸에 쓰게 하면 칸끼리 어긋난다(2026-11-18 하/중/상 사고). 줄이는 것은 쓰게 하는 것이지 받는 것이 아니다.
+
+## 난이도는 정수 1~5만 (2026-11-18 21시 KST부터 적용)
+
+- **적용 시점:** 2026-11-18 21:00 KST 이후 새로 만들거나 반입하는 모든 아카이브 문항(기출·유사·교과서·문제집·생성).
+- **규칙:** 난이도는 정수 `difficultyBucket` 1~5만 판정한다. 새 문항에는 `level`(하/중/상)을 쓰지 않는다. 검사기는 `level`이 없으면 통과하고, 있으면 하/중/상만 허용한다.
+- **기존 문항:** 그 전에 만들어진 문항의 `level`은 지우지 않고 그대로 두며, 하/중/상에서 정수로 환산하지 않는다.
+- **우선순위:** 봉인 문서(룰북 v2.6, difficultyBucket 운영규칙 v1.3 등)의 "level 3단계 유지" 조항보다 이 결정이 새 문항에 우선한다. 봉인 문서는 고치지 않는다. 현행 규칙 전체는 [RULEBOOK_CURRENT.md](../rules/RULEBOOK_CURRENT.md).
+- **이유:** 같은 것을 두 번 물어, 작성 모델이 같은 정수에 "중"과 "상"을 섞어 채웠다(두 칸이 어긋남).
+- **진행 중(각각 다른 PR):** 옛 `mixer.html`(상/중/하 필터)은 진입 링크를 숨기고, 등록기의 `level` 검사는 삭제한다.
+
+## CURRENT — 메타 결속 지문 범위: 발문과 보기만 본다 (2026-11-18, 사용자 결정)
+
+- **결정:** 검수된 메타를 문항에 묶는 지문(결속)은 발문과 보기(선택지)만 본다. 해설·정답·그림·다른 메타가 바뀌어도 이미 한 판정은 유지하고, 발문·보기가 바뀌는 오류 수정 때만 다시 판정한다. 이유: 해설을 다듬거나 그림을 SVG로 교체하거나 이미지를 다시 자를 때마다 검수된 메타가 무효가 되어 자동 등록 대기가 수천 건 쌓였다. 발문은 처음 정해 두면 웬만해서 바뀌지 않는다.
+- **발문의 정의:** `content`, 없으면 `question`, 없으면 `stem` 중 비어 있지 않은 문자열이다(`archive/exam-source-reader.js`의 `readStemForBinding`). 이유: 중등 일부 시험지(63개 파일)는 발문이 `question`에만 있는데 기존 지문은 `content`만 읽어서 그 파일들의 발문 수정이 조용히 통과했다.
+- **발문 안의 그림 태그는 지문에서 가린다.** `<img>`·`<svg>`·`<figure>`·`<picture>`를 지우고 빈 `<p></p>`를 지운다. 모든 `<…>`를 지우지 않는다(수식의 `a<b`가 사라져 발문 수정이 가려진다). 보기 앞의 ①~⑩ 기호 한 개는 지문에서 빼되 `1)`·`(1)`·`1.` 같은 번호는 지우지 않는다(`1.5`가 깨진다). 공백·줄바꿈·`<br>` 차이는 같게 본다. 이유: 중등 시험지는 그림이 발문 문자열 안에 들어 있어서 그림 교체가 곧 발문 변경으로 보였다.
+- **보기가 그림 안에 든 문항(`choicesEmbeddedInImage`)은 그림이 곧 보기이므로 `image`·`images`를 지문에 포함한다.** 이유: 이 문항은 그림을 바꾸면 보기가 바뀐다.
+- **예외 — 그림이 곧 문제·보기인 곳은 그림도 결속에 들어간다:** ① 발문이 그림뿐인 문항(그림 태그를 지우면 글자가 남지 않음) ② 보기 칸이 그림뿐인 문항 ③ 보기가 전부 비었거나 기호(①~⑤ 등)뿐이고 문항에 그림이 있는 경우 ④ `choicesEmbeddedInImage` 문항. 이때는 그림 경로(`image`·`images`, 발문·보기 안 그림 태그의 주소)가 지문에 포함되어, 그림을 바꾸면 재판정 대상이 된다. 서술형(`choices: []`)은 ③에 해당하지 않는다(보기가 없는 것이지 그림이 보기인 것이 아니다). 이유: 그림을 빼면 학생이 보는 문제·보기가 남지 않는 문항에서 그림 교체가 조용히 통과하면 승인된 것과 다른 문제가 나간다(구현: `archive/question-binding.js`, 지문 버전 `text-v1`).
+- **승인된 교정 재결속 (2026-11-19):** `entries`(동결)는 "발문·보기가 같다"만 담으므로, 승인된 교정 커밋·PR이 발문·보기를 정식으로 고친 행(공백·표기 `format`, 내용 교정 `content`, 발문·보기는 같고 그림만 바뀐 `figure`)은 같은 파일의 별도 구역 `revisions`(추가 전용)에 남긴다. 항목은 옛 지문 `fp`, 옛 text `from`, 현재 text, 교정 커밋 40자 `commits`, `prs`를 싣고, 도구는 `build-text-binding-rebinds.mjs --revisions <승인목록.tsv> [--write-revisions]`(승인 판단은 사람·관제가 하고 도구는 git 이력으로 옛 지문·옛 text를 기계 확인한 것만 기록)이다. 소비자(`classifyMetaBinding`)는 옛 지문이 행이 들고 있던 값이고 text가 현재 text-v1과 같을 때만 "row"로 인정하므로, 이후 발문·보기가 또 바뀌면 효력이 저절로 사라진다. `--check --against <ref>`는 `entries`는 한 글자도 같게, `revisions`는 기존 항목이 그대로 앞에 있게(추가만) 요구한다. `content` 교정 행의 유형·난이도 판정은 옛 발문 기준이므로 교정 뒤 다시 볼 대상이다(별도 검토 라인). 이유: 정식 교정된 문항이 카탈로그에서 source_release로 빠져 화면·출제에서 사라지는 것을, 동결된 옛 기록을 건드리거나 새 장부를 만들지 않고 막기 위해서다. **같은 (uid, fp)의 나중 항목이 이긴다 (2026-11-19):** 정식 수정으로 같은 지문 키의 text가 다시 바뀐 경우, 도구는 같은 모양의 새 항목을 `revisions` 뒤에 추가할 수 있고(효력 있는 마지막 항목의 text가 현재 text와 같으면 ALREADY_RECORDED로 거절), 읽는 쪽(`text-binding-lib.mjs`의 `rebindHolds`, 카탈로그·등록기·`classifyMetaBinding`이 모두 이 함수를 쓴다)은 같은 키의 마지막 항목만 쓴다. 동결 entries와 키가 겹치면 revisions의 나중 항목이 우선한다. `--check --against`는 기존 항목이 그대로 앞에 있을 것만 요구하고 `--verify-history`는 대체된 옛 항목을 "supersededRevisions"로 세고 건너뛴다. 이유: 옛 기록을 고치거나 새 상태값을 만들지 않고 두 번째 정식 수정을 추가 전용으로 남기기 위해서다.
+- **발문·보기를 고친 작업은 결속까지 같은 작업 안에서 마무리한다 (2026-11-19, 사용자 지시).** 발문·보기(또는 그림이 곧 문제·보기인 문항의 그림)를 고치는 PR은 바뀐 행 목록(questionUid)을 함께 내고, 병합과 같은 묶음에서 둘 중 하나를 끝낸다. ① 수학 내용이 같은 정식 수정(원문 복원·오탈자·표기·최소 수정)은 `build-text-binding-rebinds.mjs --revisions`로 새 지문을 재결속 기록에 추가한다(추가 전용, 같은 문항은 나중 기록이 이긴다). ② 문제가 실질적으로 달라진 행(정답·요구·조건이 바뀜)은 재결속하지 않고 유형·난이도를 다시 판정해 등록한다. 어느 쪽인지 정하지 못한 행은 목록에 남겨 보고한다. 이유: 자동 등록기와 카탈로그는 발문·보기 결속이 확인되지 않는 행을 계속 거절하므로, 수리만 하고 지문을 갱신하지 않으면 그 문항은 유형·난이도가 붙지 않은 채로 남는다.
+- **적용 범위는 메타 결속뿐이다.** 저장한 문제지·출제본의 무결성 지문과 4칸의 출처 지문은 이 결정과 별개이고 지금 그대로다. 기존 영수증·identity 기록·메타 행·런타임은 고치지 않고, 소급 적용은 "재결속 장부"를 새 파일로 추가하는 방식으로 한다. 이유: 승인 기록은 사후에 고쳐 쓰지 않는다.
+- **이 문서는 결정의 기록이다.** 구현은 후속 PR로 단계별로 들어온다(텍스트 지문 모듈 `archive/question-binding.js` → 재결속 장부 → 등록기 → 카탈로그). 그 전까지 등록기·카탈로그의 동작은 바뀌지 않았다.
+- **구현 상태 (2026-11-18):** ① 텍스트 지문 모듈 `archive/question-binding.js`. ② **카탈로그**(`build-archive2-catalog.mjs`, 판정은 `archive/tools/meta-foundation/text-binding-lib.mjs`의 `classifyMetaBinding` 한 곳): `metaBinding`은 값 하나("text" 또는 빔) — "이 행의 메타가 지금과 같은 발문+보기에 대한 것인가"다. 근거는 행의 내용 지문 일치, 동결된 재결속 기록, 유형 판정 자신의 지문(`typeApproval.textBindingFingerprint`)이고, 유형 판정만 근거일 때는 PT/TPL만 내고 L3·교육과정은 뺀다. 화면 반영은 등록 스냅숏(카탈로그 재생성)이 돈 뒤다. ③ **재결속 기록** `archive/data/meta-foundation/text-binding-rebinds.v1.json`은 옛 기록(영수증·identity)용으로 git 이력에서 1회 계산한 결과이며 **동결**되어 더 자라지 않는다(도구 `build-text-binding-rebinds.mjs`: `--write`는 파일이 있으면 거절, `--check --against <ref>`는 기준 ref와 같아야 통과). 발문·보기가 바뀐 문항과 이력에서 못 찾은 문항은 기록하지 않는다. ④ 새 유형 판정은 `typeApproval.textBindingFingerprint`(text-v1)를 직접 싣는다. 자동 등록 레인(`auto-register-merged-source.mjs`)은 이 변경 범위 밖이다(접힌 `metaBinding`에 맞춘 verify 한 줄만 바꿨다). ⑤ 카탈로그의 `sourceStatus`·기본 배정(`verifiedBasicAssignment`)·표시 투영(`createSourceBoundDisplayProjection`의 `textBound`)도 같은 기준을 쓴다: 행 결속(`classifyMetaBinding`이 "row")이 확인된 행은 해설·정답·그림이 바뀌어도 통과하고, 유형 판정만 묶인 행("type")·결속 없는 행은 이전처럼 걸린다. 이유: 해설만 고친 문항이 문제지 만들기 기본 선택에서 사라지지 않게 하기 위해서다.
+
+## CURRENT — 단일 모델 초안 등급: 비어 있는 메타는 모델 하나로 빨리 채우고 초안으로 표시한다 (2026-11-18, 사용자 결정)
+
+- **값이 있으면 쓴다.** 막는 것은 실제 결함뿐이다(없는 키, 학년·과목 불일치, 발문·보기가 바뀐 문항). 이유: 사용자 결정(2026-11-18) "최대한 많은 유형을 최대한 많이 활용하는 거야." "첫 번째 작업자의 결과값이 있으면 충분히 사용할 수 있게 하고, 나중에 토큰 여유가 있으면 두 번째 딥시크를 띄우면 그게 독립이니 그렇게 판단하면 된다. 무조건 안 되는 건 절대 안 돼. 있으면 사용이야."
+- **결정("그래. 일단 채우자."):** 비어 있는 메타(유형 키·난이도·라벨 등)는 교차 검증 없이 모델 하나(`opencode-go/deepseek-v4.1-flash`)가 판정해 빨리 채운다. 이 값은 **검수 전 초안 등급**이다. 검수 값과 구분되는 초안 등급 표시를 붙인다. 이유: 등록 대기 약 13,000건을 두 번 독립 판정으로는 감당할 수 없고, 문제지 선정 품질에는 초안이라도 있는 편이 낫다.
+- **이 범위의 예외다.** 아래 "판정은 두 번, 서로 보지 않고 한다"와 "난이도 값은 고치지 않는다(추정해 바꾸지 않는다)" 조항, 그리고 추정 메타값 금지는 이 초안 등급 범위에서만 적용하지 않는다. 그 밖의 경로(검수 값으로 등록, 이미 두 번 판정한 값의 변경)는 그대로다.
+- **지키는 것:** 등록부에 실제로 있는 키만 쓴다 / 학년·과목이 맞는다 / 기계 검사는 그대로 통과해야 한다. 이미 승인된 값은 덮어쓰지 않는다(빈 칸만 채운다). 맞는 키가 없으면 가까운 키에 붙이거나 추정하지 않고 위 "확장 원칙"대로 정식 `registryChanges`로 새 키를 만든다. 이유: 초안이라도 존재하지 않는 키나 다른 학년 키가 들어가면 화면의 필터와 설명이 틀린다.
+- **초안 등급 표시와 승격:** 초안 값도 문제 선정·필터·화면에 그대로 쓴다. 초안 등급 표시는 얼마나 확인됐는지를 알려 주는 꼬리표이며 사용을 막는 조건이 아니다. 집계 보고에서만 검수 값과 구분해 센다. 초안 표시 필드는 표시 전용이며 선정 가능(selectable/usable) 판정에 넣지 않는다. 표시의 필드 이름·값은 후속 PR에서 정한다(이 문서는 이름을 확정하지 않는다). 두 번째 독립 판정(같은 종류의 모델을 따로 띄운 것도 독립으로 본다)과 일치하면 등급을 올린다. 승격은 선택이며 사용의 전제가 아니다. 두 번째 판정은 토큰 여유가 있을 때 돌린다.
+- **표시 이름(확정, 2026-11-18):** 요청의 승인 종류는 `DRAFT_SINGLE_MODEL`, 행의 칸별 상태는 `fieldStatus.<칸>` = `draft_single_model`이다. 이 둘 외에 새 상태값·필드·영수증 종류는 만들지 않는다(사전: `archive/data/meta-os/status-vocabulary.json`). 결속은 발문+보기 지문(`archive/question-binding.js` text-v1) 하나다.
+- **난이도 초안 요청의 결속(2026-11-19):** 요청 항목마다 판정 당시 발문+보기 지문 `textBindingFingerprint`가 실려 있고, 난이도 등록기는 이것을 현재 문항의 text-v1 지문과 대조해 다르면 그 요청을 거절한다(dry-run·write·verify-projection 동일; 해설·정답·그림 수정은 지문이 같아 통과). 요청의 **모든 항목**에 이 지문이 실려 있는 `DRAFT_SINGLE_MODEL` 요청은 시험지 파일 전체 blob(`latestBlobSha`) 비교를 하지 않는다(`isTextBoundDraft`, 등록기·PR 미리 검증·소비자 게이트가 같은 판정). 이유: 같은 시험지의 다른 문항 해설·그림이 고쳐졌다는 이유로 요청 전체가 거절되던 것을 없애고, 막는 것을 "발문·보기가 바뀐 문항"이라는 실제 결함으로 좁히기 위해서다. 다른 승인 종류나 지문 없는 항목이 섞인 요청은 파일 blob 비교가 그대로다.
+- **운영 순서 확인(2026-11-19):** 난이도 초안 요청을 만든 뒤 같은 시험지의 다른 문항 해설 한 글자를 바꾸고 `tools/ci/reviewed-meta-register-pass.sh`를 끝까지 돌리면 등록·투영 검증·소비자 검증이 모두 통과해야 한다(요청 1개로 확인함). 시험지에 이미 실제 난이도 값(초안 값과 다른 숫자·확신도·경계)이 적힌 문항은 요청에서 뺀다 — 이 길은 빈 칸 채우기만 하고, 그런 행은 소비자 검증이 막는다.
+
+## CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)
+
+이 절이 아래 "빈 메타 총정리"·"실행 방식"·"REVIEW2" 절의 유형 관련 문구보다 우선한다. 난이도·단원·소단원은 아래 절 그대로다(두 번 독립 판정).
+
+- **유형에는 "두 판정이 일치한 것만 등록"을 요구하지 않는다.** 문항·해설·그림을 읽고 해설의 결정적 풀이 단계를 한 문장으로 적은 직접 판정 한 번이 정식 값이다. 다른 판정 줄은 문턱이 아니라 품질 대조용이다. 이유: 유형이 비어 있는 문항이 1만 5천 개가 넘고, 판정 속도와 근거 품질이 충분한 작업자가 생겼다. 엄격한 문턱보다 모든 문항을 쓸 수 있게 하는 것이 목표다.
+- **지키는 것은 세 가지:** 근거 문장 없이 채우지 않는다 / 고른 키가 레지스트리에 ACTIVE다 / TPL의 상위가 고른 PT다.
+- **도구는 확인용이지 문턱이 아니다.** 후보 조회 도구가 후보를 못 주거나(단원 연결 없음) 검사가 통과시키지 못해도 판정을 보류로 낮추지 않는다. 판정은 읽은 대로 적고 검사 결과는 따로 적는다. 보류는 문항·그림이 없거나 근거가 없어 판단 자체가 안 될 때만 쓴다.
+- **PT만 맞으면 PT만 먼저 채운다.** 맞는 TPL이 없으면 TPL은 새 키 제안으로 남긴다.
+- **새 키는 막지 않는다.** 비슷한 키가 이미 있는지 엄격히 가리느라 붙들지 않고, 만든 키마다 이름·정의·해당 문항을 남긴다. 뜻이 비슷한 유형은 나중에 묶음표로 하나로 본다(소단원 묶음표와 같은 방식, 키는 그대로 두고 묶음만 얹는다). 키·연결 표 파일 수정은 PR로만 올린다(`docs/agents/common.md` "공유 데이터 고정값").
+- **새 키의 생성 규칙과 도구 (NEW_KEY 묶음표 → 등록 요청):** 묶음표(`data/type-bundles-20261117`의 `new-pt-bundles.json`·`new-pt-assign.jsonl`·`new-tpl-bundles.json`·`new-tpl-assign.jsonl`)의 묶음 하나가 새 키 하나다. 키는 묶음 id에서 결정적으로 만든다: `NPT_<과정>_<이름>` → `PT_<과정>_<이름>`, `NTPL_<과정>_<이름>` → `TPL_<과정>_<이름>`(과정 접두는 묶음 id 안에 있다). 한 번 나간 키는 바꾸지 않고 같은 입력은 같은 키를 낸다. 이름(`canonicalLabelKo`)·정의는 묶음표의 한글 `nameKo`·`definition` 그대로다. `absorbInto`가 있는 묶음은 그 기존 키를 쓰고 키를 만들지 않으며, 만든 키가 이미 등록부에 있고 상위가 같으면 새로 만들지 않고 그 키를 쓴다. 변환기 `build-type-judgment-requests.mjs`에 `--bundles <git ref> [--bundles-only]`를 주면 NEW_KEY 줄(과 새 TPL이 필요한 PT-only 줄)이 위 키의 PICK 줄로 바뀌고, 쓰인 키마다 기존 추가 전용 `registryChanges`(problemTypes/templates/bindings, 필요하면 pack 범위 추가)가 가장 먼저 정렬되는 요청(`tc-…`)에 실린다. 새 상태값·필드·영수증 종류는 없다. 새 PT의 소유 pack은 묶음 문항 단원에 이미 바인딩이 가장 많은 pack(없으면 과정에 바인딩이 가장 많은 pack), 바인딩은 문항 자신의 단원·소단원(태그 마스터에 있는 것, 과정·교육과정마다 최대 3쌍)이다. `--replace-draft-types`를 주면 유형 칸에 임시값(빈 상태·`manual_review_pending`·`projection_unmaterialized`, 등록기가 이미 덮어쓰기를 받는 상태)이 있고 dots 값과 다른 문항은 별도 요청(`tr-…`, 빈 칸 등록보다 뒤에 정렬)으로 교체하고, 승인값·`r2e_adjudicated` 등은 유지하며 `TYPE_KEPT_DIFFERS_FROM_JUDGMENT`(기존·판정 값 포함)로 `--skipped-out` 목록에 남긴다. `--max-requests N`은 등록 순서대로 앞의 N개만 써서 한 묶음으로 올린다(다음 묶음은 앞 묶음이 등록된 main에서 같은 명령을 다시 돌린다). 구현 `archive/tools/meta-foundation/new-type-keys.mjs`, 테스트 `tests/archive-new-type-keys.test.mjs`. 이유: 새 키 판정 3천여 줄이 키가 없어 유형으로 고를 수 없었고, 같은 묶음이 항상 같은 키가 되어야 다시 생성해도 요청이 어긋나지 않는다.
+- **범위와 결과 위치:** 원본 기출·유사·교과서 문항의 유형 판정은 한 작업 줄이 전체를 맡는다. 결과표는 운반용 브랜치 `data/type-judgment-c-20261116`(중등)·`-d-`(고등)·`-t-`(교과서)의 `docs/plans/archive-one-route-upgrade/type-results-*/`에 문항당 한 줄로 쌓인다. 다른 줄이 같은 문항을 판정하기 전에 여기를 먼저 본다. 유사 문항이 원본과 풀이 유형이 같으면 원본의 판정을 이어 쓴다.
+- **규칙이 바뀌면 같은 날 이 문서를 고쳐 `main`에 올린다.** 이유: 2026-11-16 밤, 잠금 해제가 문서에 반영된 뒤에도 다른 작업 줄이 "공식 도구 결과만·두 판정 일치만"이라는 옛 문구로 유형 작업을 시작했다.
+- **유형만 등록하는 요청 (`approval.type: "DIRECT_JUDGMENT"`, 2026-11-17).** v2 요청 형식에 `scope: "PARTIAL_UIDS"`, `fieldScope: "TYPE_ONLY"`를 붙이고, 문항마다 `before`/`after`에 `problemTypeKey`·`templateKey`만 적는다(TPL이 없으면 PT만). 필수 증거: 문항별 `rationale`(결정적 풀이 단계 한 문장)·`judgedFingerprints`(판정 때 읽은 지문)·`scope`(과목·교육과정), 요청의 `approval.judge`·`decisionRef`(이 절의 제목)·`resultSource`(결과표 브랜치·커밋·파일)이고 `reviewPassCount`는 1이다. 등록기는 `problemTypeKey`·`templateKey`·`fieldStatus.problemType/template`(= `approved_direct_judgment`)·`typeApproval`만 쓰고, 단원·소단원·난이도·교차개념·조건·결합패턴·RPM 경로와 행 상태는 읽어 승인하지도 쓰지도 않는다(요청에 그 칸이 있으면 거부). 이미 승인된 유형은 덮어쓰지 않고 승인 전 값만 바꾼다. PT/TPL ACTIVE·TPL 상위·과목·교육과정별 ACTIVE 연결·`before` 일치·원본 blob 결속은 그대로 엄격하다. 새 키는 같은 요청의 `registryChanges`(추가 전용 problemTypes/templates/bindings)로 넣고, 같은 새 키를 쓰는 요청이 여럿이면 그 키를 만드는 요청 파일 이름이 먼저 정렬되게 한다. 영수증은 `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/<requestId>.json`(`fieldScope: "TYPE_ONLY"`)이다. 구현 `archive/tools/meta-foundation/register-type-judgment.mjs`, 테스트 `tests/archive-type-judgment-registration.test.mjs`. 이유: 기존 v2 요청은 단원·난이도·교차개념까지 한꺼번에 승인해서, 유형 판정이 끝난 문항도 다른 칸이 승인 전이면 요청이 되지 못했다.
+- **유형 전용 요청의 한계(알고 쓴다):** (1) 행의 지문(stem·보기·그림)이 현재 원본과 달라 `rowBinding`이 `stale`인 행도, 판정이 현재 발문·보기에 대한 것이면(`typeApproval.textBindingFingerprint`가 현재 text-v1과 같거나 판정 당시 내용 지문이 현재와 같음) 카탈로그가 PT/TPL을 보여준다(아래 "메타 결속 지문 범위" 구현 상태). 원본의 해설·정답만 바뀐 `content` 행은 원래 보인다. (2) 영수증이 있는 행(`metadataApprovalType`이 있는 행)과 분류 HOLD 행은 이 길로 받지 않는다. (3) 학생 화면에서는 유형 필터·"승인" 표시(메타 힌트 길)로 보이고, 단원·소단원·RPM 경로 승인이 필요한 L3/L4 엄격 길은 그대로다.
+- **키의 과정이 시험지 학년 이하이면 받는다 (`reach`, 2026-11-19, 사용자 결정 "교육과정 이동 시켜서 메타 완성시켜").** 행의 과정과 키의 과정이 달라도, 키 과정의 학년이 max(행 과정 학년, 시험지 경로 학년) 이하이면 변환기(`chooseScope`)와 등록기(`course-aliases.mjs`의 `reach()`)가 받고 영수증 `typeApproval.scope`에 `rowCourse`·`courseRelation: "reach"`를 남긴다(같은 과정·별칭·후속은 전과 같고 먼저 본다). 시험지 학년보다 높은 학년의 키는 계속 거부한다(같은 학년 키로 다시 판정). 위로 옮겨 간 단원(2009 개정 중3 좌표 거리·최단거리 → 2022 공통수학2)만 `course-aliases.v1.json`의 `courseMoves`(추가 전용, PT·행 학년·키 학년·시험지 연도 상한)로 따로 받는다. 행의 과정·단원 필드는 옮기지 않는다(화면의 유형 선택은 PT만 읽고, 단원별 배치는 행의 단원 필드와 시험지 학년으로 하기 때문). 이유: 교육과정 개편으로 단원이 아래 학년으로 옮겨 가거나 시험지가 낮은 학년 내용을 쓰는 문항 약 260건이 과정 불일치로 거부되고 있었다. 주의: 이 규칙은 형식 검사만 넓히므로 천장 이하 학년의 틀린 키도 형식상 통과한다. 키가 문항에 맞는지는 내용 판정(결정 단계 근거 문장·발문·보기 결속)이 지키는 안전장치다.
+- **유형 전용 요청은 문항의 발문+보기에만 묶인다 (2026-11-18).** 요청 항목마다 `textBindingFingerprint`(text-v1: 발문+보기, 판정 시점 문항 기준)가 필수이고, 등록기는 현재 문항의 text-v1과 비교해 다르면 요청 전체를 거절한다(레인이 요청 단위로 전부-아니면-전무라서. 변환기 `build-type-judgment-requests.mjs`가 `--judged-base auto`(기본)로 바뀐 문항을 미리 뺀다; 판정 시점 원본을 못 찾은 "미확인"은 현재 문항 기준이고 요약 `judgedBaseCheck.unverified`에 건수가 나온다). 시험지 파일의 blob(`expectedSourceBlobSha1`)·`judgedFingerprints`·그림·해설·정답은 비교하지 않는다. 이미 등록된 요청의 재생(replay)은 이후 파일이 바뀌어도 깨지지 않는다. 이유: 그림 참조만 바뀐 시험지의 유형 요청이 blob 불일치로 거부되어 요청을 다시 만들어야 했다.
+
+## CURRENT — PT/TPL 이름의 굵기: 단어 위주로 단순하게, 세부는 조건·결합 개념으로 (2026-11-17, 사용자 결정)
+
+새 PT·TPL을 제안·생성·묶을 때와 유형을 판정할 때 모든 작업자(기출·유사·교과서·ALIVE, 사람·모델 공통)가 따른다. 위 "직접 판정" 절과 아래 "확장 원칙" 절에 더해 적용한다.
+
+- **PT는 개념 단어 하나다.** 교과서 소단원·핵심 개념 굵기의 짧은 명사구로 짓는다(예: 순환소수, 근의 공식, 무게중심, 지수법칙). 이름에 조건·상황·풀이 절차를 넣지 않는다("연립방정식의 해를 대입한 미정계수 결정", "부등식의 해로 계수관계 복원" 같은 이름은 PT가 아니다). 한 PT에 수십~수백 문항이 모이는 것이 정상이다.
+- **TPL은 그 개념 안에서 묻는 것 한 단어다.** 한 단계만 더 나눈다(예: 순환소수 → 유한소수 판별 / 분수로 변환 / 자릿수 찾기). 한 PT 아래 TPL은 보통 몇 개다.
+- **그 밖의 세부는 PT/TPL이 아니라 Condition·CrossConcept에 적는다.** 미정계수가 있다, 해의 조건이 주어진다, 도형과 결합한다, 문장제다, 다른 단원 개념이 함께 쓰인다 같은 것이다. 맞는 Condition·CrossConcept 키가 없으면 아래 "확장 원칙"대로 새로 만든다.
+- **판단 기준:** 이름을 수학 교사에게 한 단어로 말했을 때 어떤 문항들인지 바로 떠오르는가. 떠오르지 않을 만큼 길거나 좁으면 TPL이나 조건·결합 개념으로 내린다. 기존 사전의 굵기(`PT_M3_POLY_FACTORIZATION`, `PT_CIRCLE_TANGENT`, `PT_BINOMIAL_DISTRIBUTION`)에 맞춘다.
+- **새 키 제안은 기계가 읽는 묶음표로 낸다.** 보고서의 글이 아니라 묶음 목록(묶음 id·이름·정의·기존 키로 흡수할지)과 문항별 대응표(uid → 묶음, 조건·결합 개념 꼬리표)를 파일로 남긴다. 같은 개념을 작업 줄마다 다른 이름으로 제안하지 않도록, 제안 전에 기존 묶음표를 먼저 본다.
+- **판정 지시서에는 이 굵기를 처음부터 적는다.**
+- 이유: 2026-11-16~17 유형 직접 판정(23,913줄)에서 새 PT 제안 3,196줄이 서로 다른 이름 707개로 갈렸고 그 절반이 1건뿐이었다. 지시서에 이름의 굵기가 없어서 조건과 절차가 PT 이름에 들어갔다. 사전의 첫 설계는 "PT/TPL은 단어 위주로 단순하게, 나머지는 CrossConcept 등 추가 메타로"였고, 유형의 쓰임(학교 시험지와 유형이 닮은 문항으로 다시 뽑기)은 같은 유형 문항이 한 묶음으로 모여야 성립한다.
+
 ## CURRENT — 공유 크로스워크는 추가만 한다 / 통파일 해시 고정은 봉인 영수증 + 행 검사로만 허용 (2026-11-03, 사용자 결정 A안)
 
 - `archive/data/meta-foundation/crosswalks/**`는 다른 세션이 계속 행을 덧붙이는 공유 파일이다. 승인된 Generated Meta가 박아 둔 파일 통해시(`rpmDraftAuthoritySha256`, `rpmAuthoritySha256`)는 이 파일이 자라면 달라진다. 가드는 고정된 옛 해시를 (1) 봉인된 영수증(`archive/tools/sealed-crosswalk-digests.cjs`)이 같은 파일에 대해 기록한 해시이고 (2) Meta가 가리키는 행이 현재 파일에 그대로 있을 때(코스·단원·소단원·L1~L3, 생성 L4가 아니면 L4 라벨 일치)만 받는다. 어느 쪽이든 어긋나면 그대로 실패시킨다. 승인·영수증·학생 화면 내용은 고치지 않는다.
@@ -48,9 +121,10 @@
 
 ## CURRENT — 유사시험지 RPM Primary 경로(rpmPrimaryPath) 등록 (2026-11-02)
 
-- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다.
+- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다. (2026-11-19) 이제 등록기가 `rpmPrimaryRecordId`를 저장하고 빈 `rpmL1~L4`를 그 번호에서 채우므로, 새 문항은 위 "최소 한 벌"대로 번호만 쓴다.
 - 이미 등록된 시험지에 경로만 추가: `python3 tools/main_merge_master.py --exam <시험지> --rpm-path-delta --apply` → `.archive-meta-register/inbox/rpmpath-<시험지>.json`(FINAL_QA, 다른 승인 값 변경 없음, 기존 `targetParentRef` 유지, 경로를 못 정한 문항은 빈 패치). 이유: 같은 requestId로 다시 등록하면 "requestId reused with different content"로 거부된다.
 
+- 등록기 최소 한 벌(2026-11-19): 작성자는 키·`rpmPrimaryRecordId`·난이도 정수 같은 판정 값만 요청에 넣는다. 사본·보조 필드(`rpmPrimaryL1~L4`, `difficultyBasis` 등 `reviewed-meta-value-fields.mjs` 목록 밖)를 안 써도 등록되고, 써도 거부하지 않는다. 저장하지 않고 영수증·결과의 `reportTags`(`UNSTORED_FIELDS`)에 이름만 남긴다. `rpmPrimaryRecordId`가 있고 `rpmL1~L4`가 비어 있으면 등록기가 크로스워크 그 번호의 행에서 채운다(이미 있는 값은 덮지 않고 다르면 `RPM_DIFFERS_FROM_CROSSWALK`만 보고, 번호가 크로스워크에 없으면 비워 두고 `RPM_RECORD_ID_NOT_IN_CROSSWALK`로 보고). 운영 뒤쪽 검사(consumer-verify)도 같은 원칙이라 저장되지 않는 필드와 번호 자체는 소비자 값 비교에서 뺀다. 이유: 사본을 손으로 쓰다 어긋나 요청이 거부되는 일을 없애고, 글자는 도구가 채우게 하기 위해서다.
 - 생성기 보강(2026-11-02): ① 크로스워크 행의 `scope`(`수학_상/하`)와 `standardCourse`(`수학(상/하)`)는 같은 과목의 두 표기라 어느 쪽이든 과목과 같으면 후보로 본다(2015 고1 문항이 모두 경로를 잃었던 원인). ② `FAMILY_ACTIVE` 행은 `templateCandidates`에 문항의 TPL이 있으면 후보다(행이 TPL 선택을 Resolver에 맡기는 구조라 `templateKey`가 없다). 소형 메타가 지목한 레코드가 문항의 PT/TPL·내용과 맞지 않으면 지목을 고치거나(새 행 `rpmPrimaryRecordId`) 마스터에 맞는 리프가 없을 때만 비운다. 이유: 지목이 틀린 채로 두면 문항이 엉뚱한 리프에 붙거나 경로 없이 등록된다.
 - 24 고1 2학기 기말 유사 5건 기록: 결정과 영향 확인은 `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/rpmpath-h1-2final-24-5exams-crosswalk-decisions-20261102.review.json`. 소형 메타의 L1/L2가 RPM 부모(예: 함수>함수)인데 `parentAssignment`가 없으면 등록기가 'canonical label mismatch'로 거부하므로 값을 낮추지 말고 `parentAssignment`(CROSSWALK_EXACT)를 항목마다 적는다. 같은 바인딩을 필요로 하는 요청이 여럿이면 registryChanges는 요청 처리 순서(inbox 파일명 순)상 먼저 오는 요청 하나에만 싣는다(두 번 실으면 둘째가 'registry before mismatch'로 거부된다).
 
@@ -65,13 +139,13 @@
 - 공용 대형 메타는 조회용이며 작업자는 시험지 소형 JSON/stage-local 패킷만 수정한다. 병합 후 등록·Consumer/Search parity는 Git 자동화/기술 소유 범위다. GPT 사후 FINAL QA의 종료는 [v2.0 카드](../../docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)대로 Git main/대상 blob 확인까지이며, PT/TPL 신규 검사 제외·후속 CI/Pages 수동 폴링 제외를 지킨다. 자동화 검증을 수행하지 않았으면 `PIPELINE_PASS`라고 주장하지 않는다.
 
 ## CURRENT HARD — JS 신규·수정·검수 Meta 필수 확인 (2026-10-10)
-- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·level/1~5 난이도·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
+- 모든 기출·유사·Generated·교재/평가용 JS의 신규 제작·기존 수정·문항 검수에서 [JS Metadata 필수 계약](../../docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md)을 적용한다. 해당 작업 UID의 standardUnit/subUnit·RPM L1~L4·CrossConcept/Condition/Integration/PT/TPL·1~5 난이도(정수 difficultyBucket만, 새 문항에 `level` 없음: [난이도 절](#난이도는-정수-15만-2026-11-18-21시-kst부터-적용))·UID/sourceQid/provenance·Consumer/index 정합을 확인한다. 미확정 근거는 정확한 EVIDENCE_DEBT로 기록하고 가짜 키/추정값/가짜 NONE으로 채우지 않는다. 핀포인트 작업의 범위를 무관한 문항 전수 재검으로 확대하지 않는다. 메타 변경은 필수 직접 dependency와 운영 검색 projection에 결속한다.
 
 ## CURRENT — 5단계 난이도(Gemini) 인박스 운반: 수리는 도구가, 작업 목록은 빈 파일만 (2026-11-11, 사용자 위임 결정)
 
 - **배경 숫자:** 2026-10-30 ~ 11-09 장부(`.archive-meta-register/diff5-intake-ledger.json`) 698건 중 반영 191건(3,424문항), 보류 504건. 보류의 절반(약 260건)은 이미 난이도가 있는 시험지를 다시 판정한 것이고, 나머지 절반(약 240건)은 형식 문제였다(원본 변경으로 해시 불일치 57, `ordinal` 대신 `sourceOrdinal` 48, 값 형식 무효 42, payload 형식 29 등). 그동안 난이도가 전혀 없는 파일 333개(7,611문항)는 그대로였다.
 - **수리는 운반 작업자가 손으로 하지 않고 도구가 한다:** `node archive/tools/meta-foundation/register-difficulty5.mjs --wrap <Drive 원본> --normalize …`. `sourceOrdinal`→`ordinal`, 신뢰도 대문자→소문자, `schemaVersion`→`v1`, 등록 필드만 추출, `latestBlobSha`를 현재 파일의 LF blob 해시로 맞춘다. 고친 내용은 stderr의 `DIFF5_INTAKE_REPAIRS:` 줄과 `gemini._intakeNote`에 남는다. 이유: 지시문으로 시킨 손 수리는 규칙이 있는 동안에도 해시 불일치 57건을 그대로 흘렸다(Windows CRLF 바이트 해시를 쓰는 등 매번 다르게 처리).
-- **난이도 값은 고치지 않는다.** `after.difficultyBucket` 등 판정 값은 그대로 옮기고, `"3"`·`"certain"`·`"none"`처럼 규격과 다른 값은 추정해 바꾸지 않아 지금처럼 `SKIP_INVALID`가 된다. 등록기의 문항 번호↔questionUid 대조와 "기존 숫자는 덮어쓰지 않는다"는 그대로다.
+- **난이도 값은 고치지 않는다.** `after.difficultyBucket` 등 판정 값은 그대로 옮기고, `"3"`·`"certain"`·`"none"`처럼 규격과 다른 값은 추정해 바꾸지 않아 지금처럼 `SKIP_INVALID`가 된다. 등록기의 문항 번호↔questionUid 대조와 "기존 숫자는 덮어쓰지 않는다"는 그대로다. 단, 위 "단일 모델 초안 등급" 절의 빈 칸 채우기는 이 조항의 예외다.
 - **장부의 "같은 파일은 건너뛴다"는 유지한다.** 다만 수리 규칙이 바뀌어 다시 볼 가치가 생긴 보류 건은 장부에서 그 항목을 지워 다음 회차에 새 파일로 다시 처리되게 한다(2026-11-11에 해시 불일치·ordinal·payload·값 형식 무효 176건을 이렇게 되돌렸다). 충돌(기존 난이도와 다름)·questionUid 불일치·원본 없음은 되돌리지 않는다.
 - **판정 대상은 난이도가 빈 파일만:** `node archive/tools/meta-foundation/list-missing-difficulty5.mjs [--format tsv] [--out <파일>]`이 정본 메타 기준으로 목록을 만든다(기출 최신 연도 먼저 → 유형 → 교과서 → 유사, 일부만 빈 파일은 빈 문항 번호 포함). Gemini 예약 라인에는 이 목록의 파일만 판정하게 한다. 이유: 이미 숫자가 있는 파일의 재판정은 인박스에서 전부 버려진다.
 - 기존 난이도와 다르게 나온 재판정을 반영하려면 `reviewedCorrection`(정확한 근거 필요) 경로를 쓴다. 인박스 운반에서 덮어쓰지 않는다.
@@ -84,7 +158,7 @@
 - **판단은 모델이, 형식은 도구가 만든다.** 판정하는 세션은 아래 판정 원장만 낸다. 등록 요청의 `before`·해시·문항 수·스키마는 도구가 정본에서 읽어 채운다. 이유: 손으로 만든 요청이 난이도 약 240건, 분류 39건 이상 형식으로 거부됐다.
 - **빈 것만 한다.** 대상은 저장소 도구가 만든 "빈 파일 목록"에 있는 파일뿐이고 위에서부터 한다. 이유: 난이도 제출 698건 중 약 260건이 이미 값이 있는 시험지의 재판정이라 버려졌다.
 - **한 번 읽을 때 다 받는다.** 분류 읽기 한 번에 단원·소단원(빈 문항만), 핵심 풀이·결정 단계·RPM L1~L4, CrossConcept·Condition·Integration을 함께 낸다. 화면이 읽지 않는 항목만 채우는 단독 작업은 만들지 않는다. 난이도는 별도 판정이라 위 절의 라인을 그대로 쓴다.
-- **판정은 두 번, 서로 보지 않고 한다. 안 맞으면 추정하지 않는다.** 1차 판정과 2차 판정은 서로 다른 대화 컨텍스트에서 한다(별도 Codex 창이거나, 한 감독 세션이 따로 띄운 하위 작업자 둘). 2차는 자기 원장을 다 쓰기 전에 1차 원장을 열지 않고, 감독 세션은 2차 작업자에게 대상 시험지 목록만 넘기고 1차 원장의 내용은 넘기지 않는다. 감독 세션은 불일치를 한쪽 값으로 정해 주지 않는다. 두 원장이 일치한 문항만 등록하고 불일치·판정 불가는 HOLD 목록에 `EVIDENCE_DEBT`로 남긴다. 같은 세션의 자기 점검을 독립 검수로 적지 않는다.
+- **판정은 두 번, 서로 보지 않고 한다. 안 맞으면 추정하지 않는다.** 1차 판정과 2차 판정은 서로 다른 대화 컨텍스트에서 한다(별도 Codex 창이거나, 한 감독 세션이 따로 띄운 하위 작업자 둘). 2차는 자기 원장을 다 쓰기 전에 1차 원장을 열지 않고, 감독 세션은 2차 작업자에게 대상 시험지 목록만 넘기고 1차 원장의 내용은 넘기지 않는다. 감독 세션은 불일치를 한쪽 값으로 정해 주지 않는다. 두 원장이 일치한 문항만 등록하고 불일치·판정 불가는 HOLD 목록에 `EVIDENCE_DEBT`로 남긴다. 같은 세션의 자기 점검을 독립 검수로 적지 않는다. 단, 위 "단일 모델 초안 등급" 절의 범위(비어 있는 메타를 모델 하나로 채우고 초안 등급으로 표시)는 이 조항의 예외다.
 - **PT/TPL도 원장에 적을 수 있다 (2026-11-16 사용자 결정으로 변경, 이전: "원장에 적지 않는다").** 문항·해설의 결정 단계를 근거로 ACTIVE 키를 직접 판정해 근거 구절과 함께 적는다. RPM 경로에서 Resolver(`rpm-active-resolver.mjs`)가 뽑은 값도 그대로 쓸 수 있다. 맞는 키가 없으면 가까운 키에 붙이지 말고 "새 키 후보"로 적어 `registryChanges`로 처리한다(위 "확장 원칙" 절). 두 판정이 일치한 값만 등록한다. 이유: 유형을 Resolver 출력으로만 받으면 크로스워크 행이 없는 문항의 유형 칸이 계속 빈다.
 - **역할(창 A·B는 별도 창 또는 감독 세션의 하위 작업자 A·B):** Codex 창 A = 도구 제작, 밀린 판정 회수(판정 값은 그대로 두고 `before`·해시만 현재 정본으로 다시 만들어 새 `requestId`로 재제출), 분류 1차 원장. Codex 창 B = 분류 2차 원장, 두 원장 대조 → 도구로 요청 생성 → dry-run → 인박스 PR, HOLD·새 키 후보·거부 건 처리. 원장은 작업 폴더 `.tmp/meta-backfill/`에 두고 커밋하지 않는다.
 - **채우는 순서(화면에 쓰이는 것부터):** ① 난이도(기출 2026년 → 과거 → 유형별·교과서·유사) ② 단원·소단원이 빈 기출 ③ 유형(기출 최신 연도부터) ④ 교과서 소단원, 유형별·유사 문제지.
@@ -120,6 +194,16 @@
 - **구역(`section`):** 한 단원의 소단원을 머리말로 나누고 싶을 때 단원에 `sections`(이름 목록)를 두고 소단원 묶음에 `section`을 단다. 지금은 공통수학1 "여러 가지 방정식과 부등식"만 "여러 가지 방정식"/"여러 가지 부등식"으로 나눈다. 단원 일반·기타·이동·제외 묶음에는 `section`이 없다.
 - **검사:** `tests/meta-os-subunit-groups.test.mjs`(한 키는 통합 단원당 한 묶음, 표의 키가 정본에 있음, 라벨 한글·비어 있지 않음, 종류별 규칙, `--check` 일치). 운영 데이터의 정확한 개수는 고정하지 않는다.
 
+## CURRENT — 문항별 중단원 지정표 (2026-11-17, 사용자 결정)
+
+- **무엇:** `archive/data/archive2-middle-parent-assignments.json`. 옛(2015) 소단원 키가 2022 중단원 둘 이상에 걸치거나 키가 없어서 단원 표(중등)의 "중단원 미지정"에 떨어지던 문항을, 문항을 하나씩 읽고(1차, 독립 2차, 불일치는 최종 판정) 정한 중단원 하나에 잇는 표다. 옛 키·크로스워크·`legacySubUnitMappings`(`RPM_MIDDLE_LEGACY_SUBUNIT_PARENT_DRIFT` 검사 대상)·봉인 문서는 바꾸지 않는다(소단원 묶음표와 같은 "키는 그대로, 표를 얹는다" 방식). 이유: 원의 성질 380문항이 "원주각"·"원주각의 활용" 칸이 0인 채 미지정에 있어 선생님이 원주각만 골라 출제할 수 없었다.
+- **정본과 파생:** 정본은 지정표 파일 하나다. 카탈로그 빌더(`archive/tools/build-archive2-catalog.mjs`)가 지정표를 읽어 카탈로그 문항에 `reviewedMiddleParentKey` 필드를 싣고(파생, `--check`가 불일치를 잡는다), 화면은 그 필드만 읽는다(`UnitPastExamsCore.reviewedMiddleParent`, 단원 표 `archive2-unit-tree.js` `assign`, 통합 단원 `classify`). 지정표를 따로 내려받지 않는다.
+- **지문 조건:** 문항 본문(발문·보기·그림)의 지문(`assignmentFingerprint`)이 판정 당시와 같을 때만 필드가 실린다. 본문이 바뀐 문항은 필드가 없어 예전 규칙으로 떨어진다(추정 금지). 해설·정답만 바뀐 것은 지정이 유지된다.
+- **우선순위:** 정본 판정이 EXACT인 문항은 그 판정이 1순위이고 지정표는 쓰지 않는다. 지정이 같은 학년의 다른 대단원 중단원이면 대단원도 그 중단원의 대단원이 된다. 학년이 다른 중단원(예: 중3 문항을 중2 피타고라스 정리로)은 지정표에 넣지 않는다(문항 학년은 바꾸지 않는다). 판정이 NOT_IN_2022인 문항도 넣지 않는다(예전처럼 미지정).
+- **도구:** `node archive/tools/build-middle-parent-assignments.mjs --ledger <final.jsonl> [--unresolved <out.jsonl>]`로 판정 원장(한 줄에 한 문항 JSONL)을 지정표로 바꾼다. `OTHER_BIG_UNIT` 행은 판정자가 적은 대단원·중단원 이름이 같은 학년의 정본 중단원 하나와 정확히 맞을 때만 풀고(학년 접두어·공백 차이만 맞춘다), 아니면 추정하지 않고 `unresolved`로 낸다. `--check`는 지정표 파일을 검증한다. 원장(`final.jsonl`, 근거글 포함 약 3MB)은 Git에 넣지 않고 Drive에 두며, 지정표 `basis.ledgerSha256`에 해시만 남긴다. 문항을 더 판정했으면 원장을 합쳐 도구를 다시 돌린다. 지정표를 손으로 고치지 않는다.
+- **워커:** 워커(`apmath/worker-backup/worker`)는 단원 분류(`archive2-unit-tree`·`archive2-unified-units`·`unit-past-exams-core`)를 번들하지 않는다. 지정표 변경은 워커 재배포 대상이 아니다(`tools/ci/apms-worker-bundle-paths.txt`의 파일을 건드리지 않았다).
+- **검사:** `tests/archive2-middle-parent-assignments.test.js`(지정 문항이 지정 중단원으로 감, EXACT 1순위, 지문이 다르면 무시, 키가 전부 정본, 카탈로그 필드가 지정표와 일치). 운영 데이터의 정확한 개수는 고정하지 않는다.
+
 ## CURRENT — REVIEW2 등록 완화 (2026-11-13, 사용자 결정)
 
 두 번 독립 판정(REVIEW2) 경로에만 적용한다. 다른 승인 유형(FINAL_QA, META_PIPELINE_AUDIT)과 나머지 검사는 그대로다.
@@ -134,3 +218,11 @@
 - **무엇:** `archive/tools/meta-foundation/source-delta.mjs`는 같은 문항의 옛 본문과 현재 본문을 비교해 무엇이 바뀌었는지 판정하는 순수 모듈이다(`UNCHANGED`·`FIGURE`·`NOTATION`·`SOLUTION`·`STEM_EDIT`·`ANSWER`·`REPLACED`·`NUMBER_MISMATCH`). 지문 계산식은 기존 등록기와 글자 그대로 같고, `NOTATION`은 코드에 이유와 함께 적힌 명시 규칙만 같게 본다(애매하면 아님). 이유: 그림 교체·본문 오류 수정으로 지문이 어긋난 문항의 메타를 떼지 않고, 변경 종류를 꼬리표로 남기는 재결속의 첫 단계다.
 - **보고 도구:** `node archive/tools/meta-foundation/source-delta-report.mjs --scope <시험지 경로 접두어> --out <저장소 밖 경로>`는 읽기 전용이며 어긋난 문항마다 git 이력에서 옛 blob을 찾아 분류를 집계한다. 보고서는 Git에 두지 않는다(저장소 안 출력은 거부). `REPLACED` 임계값(`REPLACED_RECALL_THRESHOLD`)은 표본 약 20건으로 정한 값이고 전수 보고로 보정한다.
 - 이 PR 시점에서 등록기·빌더·화면 코드는 이 모듈을 쓰지 않는다. 검사: `tests/archive-source-delta.test.mjs`.
+
+- 완성도 확인: `node archive/tools/completion/check.mjs --scope original/middle/m3/1` (읽기 전용, 시험별 요약 + 문항 TSV).
+- JSON 증적은 `--format json --out /tmp/completion.json`, 완료 게이트는 `--require complete`를 사용한다. 저장소 내부 출력은 금지한다.
+- 실행 이유: 본문·답·풀이·그림과 canonical 메타/4슬롯의 부족 상태를 분리 집계하며, 수학 정오·승인·등록을 자동 변경하지 않는다.
+- 상태값: stem·answer `OK|MISSING`(답·풀이의 `.`·`-`·`?`·`TODO`·`null`·`undefined` 단독 값은 `BOILERPLATE`), solution `OK|MISSING|BOILERPLATE`, figure `OK|NOT_NEEDED|FILE_MISSING|BROKEN_SVG`, unit `APPROVED|RECORDED|LABEL_MISMATCH|MISSING`, difficulty `APPROVED|NUMBER_ONLY|INVALID|MISSING`, type `APPROVED|RECORDED|HOLD|INVALID|REGISTRY_UNAVAILABLE|MISSING`, fourSlot `REGISTERED|WRITTEN|STALE|MISSING`, overall `COMPLETE|PENDING_REGISTER|IN_PROGRESS|BLOCKED`. 태그·`&nbsp;`를 벗기고 비어 있으면 없는 값으로 보되 그림·수식 태그(`<img`·`<svg`·`<math`)가 있으면 내용으로 본다. 이유: 빈 값을 완성으로 통과시키지 않기 위해서다.
+- `REGISTRY_UNAVAILABLE`은 활성 레지스트리를 읽지 못한 환경 문제다(문항 데이터 결함 아님). 이 상태면 COMPLETE가 될 수 없고, 요약 머리의 `# WARNING` 줄·stderr·`--require complete` 실패 사유에 표시된다. 빈 선택(문항 0개)도 `--require complete`는 실패시킨다.
+- 4칸에 `NOT_SUBMITTED`·`EXPLICIT_REVIEW_HOLD:`·`SOURCE_UID_CONFLICT` 저장 사유가 있으면 `reasons`에 그대로 나오고 `PENDING_REGISTER`(등록하면 됨)가 아니라 `IN_PROGRESS`로 본다. unit 불일치는 `UNIT_NAME_DIFFERS`·`UNIT_KEY_NOT_IN_MASTER`·`SUBUNIT_*`로 구분해 `reasons`에 적는다.
+- SVG 검사는 `python3`(없으면 `python`)의 XML 파서가 필요하고, 시작할 때 프로브해 쓸 수 없으면 `PYTHON_UNAVAILABLE`로 중단한다(Windows의 Microsoft Store 스텁 포함). 깨짐(`BROKEN_SVG`)은 파서가 ParseError를 낸 경우만이다. `--exam` 하나만 봐도 4칸 등록부 빌더가 전체 4칸 파일을 다시 검증한다(빌더에 시험지 한정 옵션이 없다).

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-41a5884776a3-56587363",
+  "sourceArchiveFile": "original/middle/m1/2final/24_왕운중_2학기_기말_중1_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_2e86456060a73a45ed0061dc60dbb030d73c60a5c082267f8a35fff483dd09f1",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+      "templateKey": "TPL_M1_TRIANGLE_VERTICAL_ANGLE_CHASE",
+      "step": "왼쪽 삼각형에서75도를 구해 맞꼭지각으로 옮기고 오른쪽 내각합에서45도를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c71f505b8054c32612130ecaeb5267f00e56c7333796937539fc988f3e0f14a2",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_ANGLE",
+      "step": "내각합(n-2)180과 외각합360의 합이1800임을 세워 n=10을 구한다.",
+      "note": "필요 TPL: 내각·외각 총합에서 변 수를 역산한다. 대각선을 요구하지 않는다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b3709fbcfd8563154b9353c0e506ac78b6a5f1cc576184d27171e49fdc1480bc",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_ANGLE_SUM",
+      "step": "외각의 보각으로 내각165-x,70을 얻고 사각형 내각합360에서x=70과각C140을 구한다.",
+      "note": "필요 TPL: 일반 다각형 내각합과 보각 관계로 미지 내각을 구한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b2bc4e767d4a73c8c29dfb8f37cc4fbee5bddfffbf5b901161ef54055bb4d8ab",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_DIAGONAL_TRIANGLE_ANGLE_CHASE",
+      "step": "정오각형 내각108과 이등변삼각형 밑각36을 이용해 삼각형BFC의각72,36에서 교점각72를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8b8769a32b0848b7206dd5bc1b23e5bad8b0d52e515bd177613be0582a8f32c",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_ANGLE_CHASE",
+      "step": "붙인 정오각형 내각108과 정육각형 내각120을 한 바퀴360에서 빼132도를 구한다.",
+      "note": "필요 TPL: 접합한 정다각형의 내각을 구해 공통 꼭짓점의 남은 각을 계산한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cfad542881c8b3e48289c056988672b0cbcbc20ef2e7fde41f1d0724c4f6b2ac",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_MEASURE_RATIO",
+      "step": "공통 반지름r과 높이2r로 구·원기둥·원뿔 부피를 쓰고 공통계수를 소거해2:3:1을 구한다.",
+      "note": "필요 TPL: 공통 치수를 가진 구·원기둥·원뿔 부피의 비를 공식으로 비교한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2f4cc32028c6ae07ff056bb49e5c3e8867eb3a13098f71deae0bf5e46633cd74",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+      "templateKey": "TPL_M1_SOLID_FIGURE_MEASURE_RATIO",
+      "step": "원뿔대 옆넓이195π와 두 밑넓이125π를 더해 구 겉넓이64π로 나눈다.",
+      "note": " 필요 TPL: 원뿔대 두 원형 밑면과 고리 부채꼴 옆면의 겉넓이. ACTIVE FRUSTUM_SURFACE는 사다리꼴 옆면에 한정되어 선택하지 않음.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_46fefef1a967ad179d1883d34940807a2cca39be4a7bb642ddce0af5fd5a2550",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+      "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR",
+      "step": "외각은 나머지 두 내각 합이므로x=180-(x+2)+58을 풀어118도를 구한다.",
+      "note": "필요 TPL: 한 외각과 이웃하지 않는 두 내각 합 관계를 미지각의 방정식으로 세운다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d558a727a4b5d2c1b2f9a5397039f787bccfc4524326cd63f7e4dae4e261006d",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+      "templateKey": "TPL_M1_DATA_CATEGORY_PERCENTAGE_FREQUENCY",
+      "step": "여학생20×0.05=1명과 남학생15×0.4=6명을 합하고 전체35명으로 나누어0.2를 구한다.",
+      "note": "필요 TPL: 집단별 상대도수를 실제 도수로 환산해 합친 집단의 상대도수를 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2final.jsonl"
+    }
+  ]
+}

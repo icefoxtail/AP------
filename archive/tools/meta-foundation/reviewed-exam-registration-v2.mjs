@@ -1,4 +1,5 @@
 import { requireProjectionPhase, projectionInput } from './reviewed-projection-phase.mjs';
+import { questionMetadataText } from './question-metadata-format.mjs';
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -25,12 +26,13 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from 
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
-import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
+import { validateRpmPrimaryProvenance, fillRpmFromRecordId } from "./reviewed-rpm-provenance.mjs";
 import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, nativeAuthorityHoldState, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
+import { DIRECT_JUDGMENT, registerTypeJudgment } from "./register-type-judgment.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
@@ -274,21 +276,16 @@ const SOP_V12_REVIEWER_ROLES = new Set(["ROOT", "AUTHORIZED_REVIEWER"]);
 export function sopV12PackIncludes(primaryPack, rowPack) {
   return typeof primaryPack === "string" && typeof rowPack === "string" && primaryPack.split("_AND_").includes(rowPack);
 }
-const SOP_V12_LEVELS = new Set(["하", "중", "상"]);
-// Legacy display labels are independent from the reviewed five-step bucket.
-// Preserve only observed, explicit noncanonical values in an exact FINAL_QA
-// source; this does not synthesize a label or permit unknown difficulty.
-export function isPreservedHistoricalLevel({ approvalType, question, final }) {
-  return approvalType === "FINAL_QA" && Object.hasOwn(question, "level") &&
-    Object.hasOwn(final, "level") && (question.level === null || question.level === "중상") &&
-    question.level === final.level && Number.isInteger(final.difficultyBucket) &&
-    final.difficultyBucket >= 1 && final.difficultyBucket <= 5 &&
-    question.difficultyBucket === final.difficultyBucket &&
-    ["high", "medium", "low"].includes(final.difficultyConfidence) &&
-    question.difficultyConfidence === final.difficultyConfidence &&
-    ["NONE", "B12", "B23", "B34", "B45"].includes(final.difficultyBoundaryFlag) &&
-    question.difficultyBoundaryFlag === final.difficultyBoundaryFlag &&
-    question.legacyLevelCompatibility === "UNKNOWN" && final.legacyLevelCompatibility === "UNKNOWN";
+// Runtime-only catalog identity provenance. These fields live on the runtime record (the metadata row does not carry them) and
+// record that the UID <-> sourceFile#ordinal join was verified/repaired once. Re-registering type/unit/difficulty values must not
+// forget that fact (the runtime tests count these flags), so the registrar carries them over from the record it replaces —
+// only when the request does not state them and the question's identity (UID, file, ordinal, source/content) is unchanged.
+export const RUNTIME_IDENTITY_PROVENANCE_FIELDS = Object.freeze(["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"]);
+export function preservedRuntimeIdentityProvenance({ previous, final, ordinal, identityReplaced }) {
+  if (!previous || identityReplaced || previous.questionUid !== final.questionUid ||
+      previous.sourceArchiveFile !== final.sourceArchiveFile || Number(previous.sourceOrdinal) !== Number(ordinal)) return {};
+  return Object.fromEntries(RUNTIME_IDENTITY_PROVENANCE_FIELDS.filter(key => Object.hasOwn(previous, key) && !Object.hasOwn(final, key))
+    .map(key => [key, structuredClone(previous[key])]));
 }
 const textValue = value => typeof value === "string" && value.trim().length > 0;
 const compactSourceText = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
@@ -425,7 +422,6 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
         !/^PT_[A-Z0-9_]+$/.test(row.verifiedPrimaryTaxonomy || "") ||
         !/^TPL_[A-Z0-9_]+$/.test(row.verifiedTemplatePattern || "") ||
         !textValue(unitKey) || !textValue(subUnitKey) ||
-        !SOP_V12_LEVELS.has(row.levelVerbatimPreserved) ||
         !Number.isInteger(row.difficultyRank) || row.difficultyRank < 1 || row.difficultyRank > 5 ||
         !textValue(row.difficultyReasonTrace) ||
         !Number.isInteger(row.solutionStepCountVerified) || row.solutionStepCountVerified < 1)
@@ -2112,6 +2108,25 @@ function registerIdentityFingerprintOnly({ root, req, metadata, identity, rows, 
     consumerSearchStatus: "NOT_RUN", browserStatus: "NOT_RUN" };
 }
 
+// A receipt's applied row is replayed against the current row byte for byte. A DIRECT_JUDGMENT (TYPE_ONLY) registration afterwards adds the type
+// fields and a typeApproval to a row whose receipt recorded NO type; those fields (and only those) are then left out of the comparison.
+// Anything else that differs, or a receipt that recorded a type of its own, still counts as drift.
+const TYPE_LANE_ROW_KEYS = ["problemTypeKey", "templateKey", "typeApproval"];
+const withoutTypeLane = row => {
+  const copy = structuredClone(row);
+  for (const key of TYPE_LANE_ROW_KEYS) delete copy[key];
+  if (copy.fieldStatus) { delete copy.fieldStatus.problemType; delete copy.fieldStatus.template; }
+  return copy;
+};
+export function receiptRecordMatchesRow(current, record) {
+  if (eq(current, record)) return true;
+  if (!current || !record || current.typeApproval?.approvalType !== DIRECT_JUDGMENT || record.typeApproval !== undefined) return false;
+  const blank = value => value === undefined || value === null || value === "";
+  const unapproved = status => !/^approved/i.test(String(status ?? ""));
+  if (!blank(record.problemTypeKey) || !blank(record.templateKey) || !unapproved(record.fieldStatus?.problemType) || !unapproved(record.fieldStatus?.template)) return false;
+  return eq(withoutTypeLane(current), withoutTypeLane(record));
+}
+
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null }) {
   if (projectionPhase !== null) requireProjectionPhase(projectionPhase, { root, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
@@ -2127,8 +2142,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode !== undefined && req.registrationMode !== "IDENTITY_FINGERPRINT_ONLY") fail("unsupported registration mode");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
-  if (!["REVIEW2", "FINAL_QA", "META_PIPELINE_AUDIT"].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
+  if (!["REVIEW2", "FINAL_QA", "META_PIPELINE_AUDIT", DIRECT_JUDGMENT].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
   if (req.approval.type === "REVIEW2" && req.approval.reviewPassCount !== 2) fail("REVIEW2 count must be 2");
+  if (req.approval.type === DIRECT_JUDGMENT && req.approval.reviewPassCount !== 1) fail("DIRECT_JUDGMENT count must be 1");
   requireText(req.approval.approvedBy, "approvedBy");
   const evidenceRefs = refs => {
     if (!Array.isArray(refs) || !refs.length) fail("evidenceRefs required");
@@ -2153,7 +2169,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const blob = fs.existsSync(path.join(root, ".git"))
     ? execFileSync("git", ["hash-object", "--path", `archive/exams/${source}`, "--stdin"], { cwd: root, input: bytes, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }).trim()
     : crypto.createHash("sha1").update(`blob ${bytes.length}\0`).update(bytes).digest("hex");
-  if (req.expectedSourceBlobSha1 !== blob) fail("source Git blob drift");
+  // A direct type judgment is bound to each question's stem + choices (textBindingFingerprint, checked by its lane), not to the file blob.
+  if (req.expectedSourceBlobSha1 !== blob && req.approval.type !== DIRECT_JUDGMENT) fail("source Git blob drift");
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx);
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
@@ -2227,6 +2244,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read, projectionPhase });
+  // Direct type judgment (type fields only): its own lane, replay and receipt; it shares only the registry planner and the checks above.
+  if (req.approval.type === DIRECT_JUDGMENT) return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields,
+    h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
+      sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
+        isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {
@@ -2262,7 +2284,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         previous.appliedRecords.some(record => !targetUids.has(record.questionUid)) ||
         [...(previous.appliedIdentityRecords || []), ...previous.runtimeRecords].some(record => !targetUids.has(record.questionUid))))
       fail("partial receipt UID scope mismatch");
-    for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
+    for (const record of previous.appliedRecords) if (!receiptRecordMatchesRow(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
     for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentTables = replayLookup();
     const replaySourceReviewCache = new Map(), replaySourceReviewContext = new Map();
@@ -2478,7 +2500,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const sourceValueOverrides = [];
-  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [];
+  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [], reportTags = [];
   const extensionUsage = new Map(), priorBanks = new Map(), sourceReviewCache = new Map();
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
@@ -2498,7 +2520,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       return context.reason ? null : nativeReviewReceipt({ ...ancestor, registry: approvedRendererRegistry, ...context });
     } }) : null;
   for (let i = 0; i < bank.length; i++) {
-    const current = rows[i], patch = patches.get(current.questionUid);
+    const current = rows[i];
+    let patch = patches.get(current.questionUid);
     if (partial && !patch) continue;
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
@@ -2583,7 +2606,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const existingRuntime = (runtimes.get(owners.get(current.questionUid))?.data.records || []).find(r => r.questionUid === current.questionUid);
       if (rebindPrior.priorRuntime && !eq(existingRuntime, rebindPrior.priorRuntime.get(current.questionUid)))
         fail(`sourceRebind partial runtime differs from prior receipt: ${current.questionUid}`);
-      const rrPrior = { ...finalPrior, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
+      // This branch only runs when the identity is unchanged (checkedPrior.identityChanged is false), so the replaced record's
+      // catalog identity provenance carries over; the exact comparison below stays as strict as before.
+      const rrPrior = { ...finalPrior, ...preservedRuntimeIdentityProvenance({ previous: existingRuntime, final: finalPrior, ordinal: i + 1, identityReplaced: false }),
+        sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
         approvedSourceFingerprint: checkedPrior.sourceFingerprint, legacyLevel: finalPrior.level,
         runtimeSelectable: finalPrior.defaultSelectable && finalPrior.curriculumApplicability === "DEFAULT_SCOPE" };
       if (owners.get(current.questionUid) !== packIdPrior || !existingRuntime ||
@@ -2606,9 +2632,15 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       Object.assign(current, finalPrior); applied.push(structuredClone(finalPrior)); runtimeRecords.push(rrPrior);
       continue;
     }
-    for (const [field, value] of Object.entries(patch.before)) if (!valueFields.has(field) || !eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
-    for (const [field, value] of Object.entries(patch.after)) {
-      if (!valueFields.has(field)) fail(`unapproved field: ${field}`);
+    // Fields outside the value contract are not rejected: they are not stored and the receipt/result names them.
+    const unstored = [...new Set([...Object.keys(patch.before), ...Object.keys(patch.after)].filter(field => !valueFields.has(field)))];
+    if (unstored.length) {
+      reportTags.push({ questionUid: current.questionUid, kind: "UNSTORED_FIELDS", fields: unstored });
+      const keep = values => Object.fromEntries(Object.entries(values).filter(([field]) => valueFields.has(field)));
+      patch = { ...patch, before: keep(patch.before), after: keep(patch.after) };
+    }
+    for (const [field, value] of Object.entries(patch.before)) if (!eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
+    for (const field of Object.keys(patch.after)) {
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
@@ -2667,11 +2699,6 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
-    // REVIEW2 only: a source that does not carry `level` at all may stay without one (nothing is invented); a carried value must still be valid.
-    const reviewTwoLevelAbsent = req.approval.type === "REVIEW2" && !Object.hasOwn(q, "level") && (final.level === undefined || final.level === null || final.level === "");
-    if (!reviewTwoLevelAbsent && !["하", "중", "상"].includes(final.level) &&
-        !isPreservedHistoricalLevel({ approvalType: req.approval.type, question: q, final }))
-      fail(`level invalid: ${current.questionUid}`);
     const debtRows = req.approval.type === "META_PIPELINE_AUDIT" ? (req.approval.metaPipelineAudit.unreviewedFields || []) : [];
     let difficultyEvidenceDebt = null;
     if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
@@ -2735,6 +2762,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
       final[field] = label;
     }
+    fillRpmFromRecordId({ root, final, cache: sourceReviewCache, questionUid: current.questionUid, reportTags });
     const revision = `meta-foundation:${pack.meta.packId}@${pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}`;
     const confidence = req.approval.type === "REVIEW2" ? "independent_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "meta_pipeline_audit" : "approved_final_qa";
@@ -2836,11 +2864,16 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         runtimeVersion: `${packId}@${pack.meta.packVersion}/reviewed-exam-v2`, counts: {}, records: [], taxonomyRows: [], ownedScopes: [] } });
     }
     const oldOwner = owners.get(current.questionUid);
+    const previousRuntime = oldOwner ? runtimes.get(oldOwner)?.data.records.find(r => r.questionUid === current.questionUid) : undefined;
+    // A fingerprint repair without a content-preserving rebind, or a changed question text, means the identity was replaced.
+    const identityReplaced = checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint") && !patch.rebind ||
+      current.contentFingerprint != null && current.contentFingerprint !== checked.contentFingerprint;
     if (oldOwner && oldOwner !== packId) {
       const old = runtimes.get(oldOwner);
       old.data.records = old.data.records.filter(r => r.questionUid !== current.questionUid); touched.add(oldOwner);
     }
-    const rr = { ...final, sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
+    const rr = { ...final, ...preservedRuntimeIdentityProvenance({ previous: previousRuntime, final, ordinal: i + 1, identityReplaced }),
+      sourceQuestionNo: String(q.sourceQuestionNo ?? q.id ?? ""), sourceIdentity: `${source}#${i + 1}`,
       approvedSourceFingerprint: fingerprint, legacyLevel: final.level,
       runtimeSelectable: final.defaultSelectable && final.curriculumApplicability === "DEFAULT_SCOPE" };
     const rt = runtimes.get(packId).data;
@@ -2875,7 +2908,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (Object.hasOwn(metadata.counts, "explicitProblemTypeHolds")) metadata.counts.explicitProblemTypeHolds = metadata.records.filter(r => r.fieldStatus?.problemType === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitTemplateHolds")) metadata.counts.explicitTemplateHolds = metadata.records.filter(r => r.fieldStatus?.template === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitDifficultyHolds")) metadata.counts.explicitDifficultyHolds = metadata.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
-  plan.output.set(META, json(metadata));
+  plan.output.set(META, questionMetadataText(metadata));
   if (identityChanged) {
     // Retain UID, source ordinal, lookups and unrelated identity records.
     const stableIdentity = { ...identity }; delete stableIdentity.generatedAt; delete stableIdentity.identityDigest;
@@ -2921,6 +2954,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         solutionFingerprintRepairs: fingerprintRepairs.length, newMetadataApprovals: 0, preservedMetadataApprovals: applied.length } } : {}),
     ...(approvedRendererBinding ? { approvedRendererPreservation: approvedRendererBinding } : {}),
     ...(rpmPrimaryBindings.length ? { rpmPrimaryBindings } : {}),
+    ...(reportTags.length ? { reportTags } : {}),
     ...(nativeParentBindings.length ? { nativeParentBindings } : {}),
     ...(sourceValueOverrides.length ? { sourceValueOverrides } : {}),
     ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: metaPipelineAudit.inputAuditSchemaVersion || metaPipelineAudit.audit.schemaVersion,
@@ -3007,7 +3041,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields, ...preservationFields,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
     fingerprintRepairCount: fingerprintRepairs.length,
-    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
+    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...(reportTags.length ? { reportTags } : {}) };
 }
 
 // Loads the digest-checked canonical input bundle exactly as the student Consumer
@@ -3077,7 +3111,7 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     // is verified against that lane; every field the lane does not carry is verified against the
     // exact active runtime pack row. A canonical value that exists must still equal the request.
     const canonicalMissing = Array.isArray(c.canonicalAssignmentReasons) && c.canonicalAssignmentReasons.includes("assignment_missing");
-    const laneBound = canonicalMissing && ["exact", "content"].includes(c.metaBinding);
+    const laneBound = canonicalMissing && Boolean(c.metaBinding);
     const projection = c.metaProjection && c.metaProjection.projectionStatus === "DISPLAY_ONLY_SOURCE_BOUND" ? c.metaProjection : null;
     const lane = {
       curriculumKey: () => c.metaHintCurriculum,
@@ -3185,24 +3219,10 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     if (!found) fail(`Search UID source missing: ${r.questionUid}`);
     for (const f of ["standardUnitKey", "subUnitKey", "level"]) {
       if (eq(found[f], r[f])) continue;
-      // The source-only search index serializes an explicit null legacy label as
-      // an empty string. Recheck the exact source and known D5 fields; no other
-      // absent, changed or unreviewed value receives this projection exception.
-      if (f === "level" && r.level === null && found.level === "" && r.metadataApprovalType === "FINAL_QA") {
-        const sourceFile = "archive/exams/" + r.sourceArchiveFile;
-        let bank = searchSourceCache.get(sourceFile);
-        if (!bank) {
-          const sourceContext = { window: {}, console: { log() {}, warn() {}, error() {} } };
-          vm.createContext(sourceContext);
-          vm.runInContext(fs.readFileSync(safePath(root, sourceFile), "utf8"), sourceContext, { timeout: 5000 });
-          bank = sourceContext.window.questionBank || sourceContext.window.questions || sourceContext.questions || sourceContext.questionBank || sourceContext.window.examData?.questions;
-          searchSourceCache.set(sourceFile, bank);
-        }
-        const question = bank?.[Number(r.sourceOrdinal) - 1];
-        if (question && isPreservedHistoricalLevel({ approvalType: r.metadataApprovalType, question, final: r })) continue;
-      }
-      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey", "level"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
-      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey", "level"].includes(f)) {
+      // A question without a level (absent, null or empty) has nothing to compare; a level that is present must still match the search index.
+      if (f === "level" && (r.level === undefined || r.level === null || r.level === "")) continue;
+      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
+      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey"].includes(f)) {
         const sourceFile = "archive/exams/" + r.sourceArchiveFile;
         let bank = searchSourceCache.get(sourceFile);
         if (!bank) {

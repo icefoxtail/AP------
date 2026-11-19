@@ -22,10 +22,14 @@ class GraphOverview(unittest.TestCase):
             fitted=fit_overview(p)['graphPlan'];o=produce(fitted);r=audit(fitted,o['svg'],o['transform'])
             self.assertEqual(r['status'],'PASS',(coefficients,r['errors']));self.assertEqual(fitted['sourceDomain'],p['sourceDomain']);self.assertEqual(r['overview']['status'],'PASS')
             self.assertEqual(fitted['overviewPolicy'],'QUADRATIC_EQUAL_UNIT_OVERVIEW_v1');self.assertTrue(fitted['equalUnits'])
-            x0,x1,y0,y1=fitted['viewport'];self.assertAlmostEqual(448/(x1-x0),fitted['plotCanvas']['height']/(y1-y0),9)
+            x0,x1,y0,y1=fitted['viewport'];self.assertAlmostEqual(448/(x1-x0)*fitted['axisRatio'],fitted['plotCanvas']['height']/(y1-y0),9)   # a figure taller than 1:1.2 is drawn at y/x 2/3 or 1/2 from the start
             self.assertTrue(160<=fitted['plotCanvas']['height']<=640)
         # A vertex far from the axes or a needle-steep parabola cannot be drawn readably at one scale: an honest failure.
         for coefficients in [['10000','0','1'],['-20','-60','3'],['0','0','10000']]:
+            with self.assertRaisesRegex(ValueError,'EQUAL_UNIT_PARABOLA_TOO_NARROW'):fit_overview(graph(coefficients=coefficients,domain=[-.01,.01],sourceDomain={'kind':'ALL_REALS'},axisFold=False))
+        # With the fold the first one is no longer refused: the x axis stands on the bottom edge instead of 10000 units below the vertex.
+        self.assertEqual(fit_overview(graph(coefficients=['10000','0','1'],domain=[-.01,.01],sourceDomain={'kind':'ALL_REALS'}))['graphPlan']['axisFold']['x']['edge'],'BOTTOM')
+        for coefficients in [['-20','-60','3'],['0','0','10000']]:
             with self.assertRaisesRegex(ValueError,'EQUAL_UNIT_PARABOLA_TOO_NARROW'):fit_overview(graph(coefficients=coefficients,domain=[-.01,.01],sourceDomain={'kind':'ALL_REALS'}))
     def test_squeeze_only_after_a_failure_at_one_scale(self):
         # y=x^2+29 in a 222-high panel: at one scale the curve is 31 px wide (too narrow); y squeezed to half the x scale makes it readable.
@@ -36,7 +40,9 @@ class GraphOverview(unittest.TestCase):
         self.assertIn('EQUAL_UNIT_SCALE_MISMATCH',audit({**fitted,'axisRatio':1},o['svg'],o['transform'])['errors'])
         self.assertIn('AXIS_RATIO_INVALID',audit({**fitted,'axisRatio':.4},o['svg'],o['transform'])['errors'])
         # A figure that fits at one scale keeps it; axisSqueeze (after a layout failure) squeezes only as far as filling the width needs.
-        self.assertEqual(fit_overview(graph(sourceDomain={'kind':'ALL_REALS'}))['graphPlan']['axisRatio'],1.0)
+        # (the default parabola of this test is taller than 1:1.2, so it is made shorter at once: the squeeze is no longer only a repair after a failure)
+        self.assertEqual(fit_overview(graph(sourceDomain={'kind':'ALL_REALS'},axisFold=False))['graphPlan']['axisRatio'],1.0)
+        self.assertIn(fit_overview(graph(sourceDomain={'kind':'ALL_REALS'}))['graphPlan']['axisRatio'],(2/3,.5))
         tall=graph(coefficients=['4','0','-1'],domain=[-1,3],sourceDomain={'kind':'INTERVAL','range':[-1,3]},requiredPoints=[],plotHeightLimit=300)
         self.assertEqual(fit_overview(tall)['graphPlan']['axisRatio'],1.0)
         squeezed=fit_overview({**tall,'axisSqueeze':True})['graphPlan'];s=produce(squeezed)

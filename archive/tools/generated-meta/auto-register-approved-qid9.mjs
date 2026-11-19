@@ -589,9 +589,13 @@ const main=()=>{
    const subUnitKey=m.subUnitKey||ci.subUnitKey;
    requireTrue(standardUnitKey&&subUnitKey,'QID9_STANDARD_UNIT_UNKNOWN:'+uid);
    const family=ci.rpmExactView||m;
-    const rpmL1=family.rpmL1,rpmL2=family.rpmL2,rpmL3=family.rpmL3,sourceRpmL4=family.rpmL4;
+    const rpmL4Declared=family.rpmL4;
+    // RPM check: a record ID or a stored path is checked when present; with neither there is nothing to check here.
+    const idRecord=family.rpmPrimaryRecordId?cross.records.find(row=>row.id===family.rpmPrimaryRecordId):null;
+    requireTrue(!family.rpmPrimaryRecordId||!!idRecord,'RPM_RECORD_ID_UNKNOWN:'+uid);
+    const rpmL1=family.rpmL1||idRecord?.rpmPath.majorUnit,rpmL2=family.rpmL2||idRecord?.rpmPath.midUnit,rpmL3=family.rpmL3||idRecord?.rpmPath.l3,sourceRpmL4=rpmL4Declared||idRecord?.rpmPath.l4;
     const generatedL4Id=m.generatedExtL4Id||ci.generatedExtL4Id||null;
-    requireTrue(rpmL1&&rpmL2&&rpmL3&&sourceRpmL4,'RPM_META_SOURCE_REQUIRED:'+uid);
+    requireTrue(!(rpmL1||rpmL2||rpmL3||sourceRpmL4)||rpmL1&&rpmL2&&rpmL3&&sourceRpmL4,'RPM_META_SOURCE_REQUIRED:'+uid);
     const namespace=String(sourceRpmL4).startsWith('EXT-')||generatedL4Id?'GENERATED_EXT_L4':'RPM_EXISTING_DRAFT';
     const rpmL4=namespace==='GENERATED_EXT_L4'?(String(sourceRpmL4).startsWith('EXT-')?sourceRpmL4:generatedL4Id):sourceRpmL4;
     const generatedL4RegistryRef=m.generatedL4RegistryRef||ci.generatedL4RegistryRef||
@@ -696,7 +700,7 @@ const main=()=>{
     crossConceptRegistryRef:crossRegistry,conditionRegistryRef:conditionRegistry,
     sourceKind:'generated',
      integrationPattern:projectedIntegrationPattern,
-    difficultyBucket:ci.difficultyBucket,level:ci.level,problemTypeKey:pt,templateKey:tpl,
+    difficultyBucket:ci.difficultyBucket,...(ci.level!==undefined?{level:ci.level}:{}),problemTypeKey:pt,templateKey:tpl,
     ...(labels.length?{conditionEvidenceLabels:labels}:{}),
     ...(n===6&&slot==='B1'?{conditionRuleModifiers:['EVEN_INTEGER']}:{}),
     ...(missing.length?{crossConceptEvidenceLabels:missing}:{}),
@@ -745,7 +749,7 @@ const main=()=>{
       skipped++;continue;
      }
    const seed={
-    id:1,uid,level:ci.level,difficultyBucket:ci.difficultyBucket,
+    id:1,uid,...(ci.level!==undefined?{level:ci.level}:{}),difficultyBucket:ci.difficultyBucket,
     category,originalCategory:category,standardCourse:'공통수학2',standardUnitKey,
     standardUnit:category,standardUnitOrder:Number(standardUnitKey.slice(-2)),
     subUnitKey,subUnit:subLabel,subUnitConfidence:'candidate_evidence',

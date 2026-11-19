@@ -145,8 +145,8 @@ window.questionBank = [
     "questionNumber": 8,
     "number": 8,
     "questionType": "객관식",
-    "question": "8. 다음 그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=15$로 둘러싸인 부분에 내접하는 직사각형 $\\text{ABCD}$의 넓이는? [5.0점]",
-    "content": "8. 다음 그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=15$로 둘러싸인 부분에 내접하는 직사각형 $\\text{ABCD}$의 넓이는? [5.0점]",
+    "question": "8. 다음 그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=15$로 둘러싸인 부분에 내접하는 정사각형 $\\text{ABCD}$의 넓이는? [5.0점]",
+    "content": "8. 다음 그림과 같이 이차함수 $y=x^2$의 그래프와 직선 $y=15$로 둘러싸인 부분에 내접하는 정사각형 $\\text{ABCD}$의 넓이는? [5.0점]",
     "choices": [
       "① $4$",
       "② $9$",
@@ -157,8 +157,8 @@ window.questionBank = [
     "images": [
       "assets/images/17_경북환호여중_1학기_기말_중3_수학/q08.png"
     ],
-    "answer": "",
-    "solution": "",
+    "answer": "⑤",
+    "solution": "정사각형의 한 변을 $2t$라 하면 $A, D$는 $y=x^2$ 위에 있으므로 높이는 $15-t^2$이다. 정사각형이므로 $2t=15-t^2$, 즉 $(t+5)(t-3)=0$에서 $t=3$이다. 한 변이 $6$이므로 넓이는 $36$이다. 정답은 ⑤이다.",
     "score": 5.0,
     "image": "assets/images/17_경북환호여중_1학기_기말_중3_수학/q08.png"
   },
@@ -244,7 +244,6 @@ window.questionBank = [
   },
   {
     "id": 13,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "①과 ④는 꼭짓점이 x축의 양쪽 중 오른쪽에 있고 아래로 열리는 같은 모양이다. ②는 x축 음의 부분에 닿으며 위로 열리고, ③은 x축 양의 부분에 닿으며 위로 열린다. ⑤는 x축 음의 부분에 닿으며 아래로 열린다.",
     "questionNumber": 13,
@@ -441,7 +440,6 @@ window.questionBank = [
   },
   {
     "id": 23,
-    "layoutTag": "fullwidth",
     "imageSize": "large",
     "imageAlt": "위로 열린 파란 포물선의 꼭짓점은 (2, −3)이다. 포물선이 세로축의 1을 지나는 곳과 꼭짓점을 표시했다.",
     "questionNumber": 23,

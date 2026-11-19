@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-9009cdc85f59-a466a5dc",
+  "requestSha256": "57b73cfae13bfc60b097f333e25731eb835a831dfb74ca15c74a19938425c8d8",
+  "examUid": "26_복성고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "69cd59c4fb7988914c63025c6051d280773e4864",
+  "sourceRawSha256": "1b24218b63f7b0b4fa896cfe043ff7a80b24e3ddcc105d2b09ff9f23d95a1e15",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9009cdc85f59-a466a5dc.type-ledger.json",
+        "sha256": "a392e193f953891ecc8b55898eee7e3c7d1e2e6630ed81f4a9c84c0ac991606d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_72a749cf064caff6cc21890992437b49b7bb6ad66612ca0ea6d9cacb8ec03c4c",
+      "sourceArchiveFile": "original/high/h1/1mid/26_복성고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9009cdc85f59-a466a5dc",
+        "judge": "dots",
+        "rationale": "8⁷−1을 8−1로 인수분해하면 7의 배수이므로 8⁷+15를 7로 나눈 나머지는 2이고 수요일이다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "9f5a06a5d28aa33e9e30e86a96193d91d86b2c0943fdb1896fa9dc0a7a8bc74a",
+        "judgedContentFingerprint": "23bc9b8ab066f93758ec0415a9ef9f7b593e6dfc8449d42087a0d0964603000c",
+        "rowBinding": "content",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9009cdc85f59-a466a5dc.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

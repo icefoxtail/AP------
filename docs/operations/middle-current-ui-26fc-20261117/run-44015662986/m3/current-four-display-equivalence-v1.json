@@ -1,0 +1,942 @@
+{
+  "schemaVersion": "archive-independent-m3-q5-q16-current-display-reuse-v1",
+  "reviewer": "/root/m3s2_release",
+  "reviewedAt": "2026-11-17",
+  "decision": "ACCEPT_EXACT_CURRENT_FOUR_PNG_DISPLAY_BY_PRIOR_OBSERVATION_REUSE_ONLY",
+  "inputPins": {
+    "q5-new": {
+      "gitBlobSha1": "0cd74ab0be77a70badcabc655b811bb02cbb9209",
+      "sha256": "9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279",
+      "bytes": 76724
+    },
+    "q5-old": {
+      "gitBlobSha1": "e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb",
+      "sha256": "c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f",
+      "bytes": 76825
+    },
+    "q5-old-visual": {
+      "gitBlobSha1": "ba2b198f2e8876f2667f29e12e595556714460c5",
+      "sha256": "d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e",
+      "bytes": 1736
+    },
+    "q16-new": {
+      "gitBlobSha1": "93f7d450d8c025a0e9e13f8fe7d2e853fcdf16e5",
+      "sha256": "f3aed5e059efdb74b542c9ff3ca71f5668d5b4505599af628307d76f57297a12",
+      "bytes": 72140
+    },
+    "q16-old": {
+      "gitBlobSha1": "ed5e933876e02bbbe597f4df34e3d85ce3cc47ab",
+      "sha256": "31cdd2904799b243ff7d85e43756f27c5c055e2c4e9f5bac4a648652db23fce1",
+      "bytes": 72254
+    },
+    "q16-old-visual": {
+      "gitBlobSha1": "9030d5bdbd75858eff6af3884ae806ee30088510",
+      "sha256": "7faa8035dcc9b6b3f2d608588adb39a5fb242de22ae33347bfd84ef2678f73d3",
+      "bytes": 2048
+    },
+    "q5-frames": {
+      "gitBlobSha1": "439b8fc9187f3907a63a16af5841251952024533",
+      "sha256": "c822e4bac3fb2ba1a21657f89f838d35bedbe08820d418021ec75c72c666d628",
+      "bytes": 197175
+    },
+    "q16-frames": {
+      "gitBlobSha1": "f321736234b755d5acd5173fc8a00276389ef659",
+      "sha256": "aba4b5c5555269eb8187241f576914c833b487ebeca8820e3d2d8cb0c4b9d17b",
+      "bytes": 161762
+    }
+  },
+  "actualCapture": {
+    "head": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+    "runId": "44015662986",
+    "eventName": "push",
+    "ref": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+    "repository": "icefoxtail/AP------",
+    "publicationCommit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3",
+    "rootReportedJobIds": {
+      "q5": "133812926052",
+      "q16": "133812925943"
+    },
+    "jobIdProvenance": "Root directly observed the completed actual jobs; technical/frame run/head/event identities independently read here.",
+    "technicalStatus": "TECHNICAL_PASS_VISUAL_REVIEW_PENDING",
+    "logicalCases": 4,
+    "pngFiles": 4
+  },
+  "priorEvidence": {
+    "q5": {
+      "technical": {
+        "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+        "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-technical-v1.json",
+        "gitBlobSha1": "e3acc11099e73b7b8cf7d9d1f5d975a3acc10ccb",
+        "sha256": "c96b586c177b4958620c658a0d135e04c3e66d66e4374a4e2b6941c847d44e2f",
+        "bytes": 76825
+      },
+      "visual": {
+        "commit": "1dbeaaa687d48f74b381c1dc5d2c330f1bfe4ea2",
+        "path": "docs/operations/m3-e052-q5-complete-given-20261116/student-ui-independent-v1.json",
+        "gitBlobSha1": "ba2b198f2e8876f2667f29e12e595556714460c5",
+        "sha256": "d3a1eaa44d2801af173f7721d634cc6788ecfad46428ac80693f9fccbb2bf95e",
+        "bytes": 1736
+      },
+      "decision": "APPROVE_EXACT_STUDENT_UI",
+      "reviewer": "GPT_ROOT_C8F1B0BFB4FA",
+      "pngReuse": "Current independently decoded PNG hashes/sizes match both original technical and immutable prior visual2. No fresh mathematical or given review."
+    },
+    "q16": {
+      "technical": {
+        "commit": "29494e8d5a1dac11a542b0b402d0f854c5cb452e",
+        "path": "docs/operations/m3s2-q16-layout-ui-26fc-20261116/technical-proof.json",
+        "gitBlobSha1": "ed5e933876e02bbbe597f4df34e3d85ce3cc47ab",
+        "sha256": "31cdd2904799b243ff7d85e43756f27c5c055e2c4e9f5bac4a648652db23fce1",
+        "bytes": 72254
+      },
+      "visual": {
+        "commit": "933fb9238f617d1924aa823633ff6f23fde8a37d",
+        "path": "docs/operations/m3s2-q16-layout-ui-26fc-20261116/independent-visual-review.json",
+        "gitBlobSha1": "9030d5bdbd75858eff6af3884ae806ee30088510",
+        "sha256": "7faa8035dcc9b6b3f2d608588adb39a5fb242de22ae33347bfd84ef2678f73d3",
+        "bytes": 2048
+      },
+      "decision": "ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY",
+      "reviewer": "GPT_ROOT_26FC42390A50_SEPARATE_VISUAL_INSPECTION",
+      "pngReuse": "Current independently decoded PNG hashes/sizes and capture whole hashes match original technical and immutable prior visual2; root separately supplied identical original PNG Git pins."
+    }
+  },
+  "independentByteVerification": [
+    {
+      "profile": "q5",
+      "frameCount": 54,
+      "chunkCount": 46,
+      "files": 3,
+      "pngFiles": 2,
+      "totalBytes": 136305,
+      "bundleStableSha256": "9aa75d63c40d2b0a4dfd22e11973cb759770f2ace7e58af99329685bb2e57203",
+      "manifestStableHashExact": true,
+      "execution": {
+        "provider": "GITHUB_ACTIONS",
+        "repository": "icefoxtail/AP------",
+        "eventName": "push",
+        "ref": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+        "pullRequest": null,
+        "baseSha": null,
+        "checkoutCommit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "eventCommit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "runId": "44015662986",
+        "runAttempt": 1,
+        "workflow": "Middle Protected Current Renderer",
+        "job": "current-ui"
+      },
+      "allFiles": [
+        {
+          "path": "technical-proof.json",
+          "sha256": "9248d818ec7c44d3f8f4273526c4af1d70624385d185b63db3270e1324b2c279",
+          "gitBlobSha1": "0cd74ab0be77a70badcabc655b811bb02cbb9209",
+          "bytes": 76724,
+          "rawTechnicalExact": true,
+          "pngDimensions": null,
+          "publishedExact": true
+        },
+        {
+          "path": "E052-Q5-desktop-tile-01.png",
+          "sha256": "600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f",
+          "gitBlobSha1": "9d96646282e97104a032c81c03451bda8794eb1b",
+          "bytes": 28776,
+          "rawTechnicalExact": null,
+          "pngDimensions": {
+            "width": 316,
+            "height": 287
+          },
+          "publishedExact": true
+        },
+        {
+          "path": "E052-Q5-mobile-tile-01.png",
+          "sha256": "d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab",
+          "gitBlobSha1": "a977c9c35a5b2a5bb4fd90c23ffbc16d30e9d908",
+          "bytes": 30805,
+          "rawTechnicalExact": null,
+          "pngDimensions": {
+            "width": 350,
+            "height": 299
+          },
+          "publishedExact": true
+        }
+      ],
+      "originalFilesReassembled": true,
+      "imageInspection": 0,
+      "publicationCommit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3"
+    },
+    {
+      "profile": "q16",
+      "frameCount": 46,
+      "chunkCount": 38,
+      "files": 3,
+      "pngFiles": 2,
+      "totalBytes": 111053,
+      "bundleStableSha256": "4b9dd98fc87f9dda5fd6abf5d4b15ecbf3291d96b52cf7f16391097fb263255a",
+      "manifestStableHashExact": true,
+      "execution": {
+        "provider": "GITHUB_ACTIONS",
+        "repository": "icefoxtail/AP------",
+        "eventName": "push",
+        "ref": "refs/heads/ops/middle-protected9-current-renderer-26fc-20261117",
+        "pullRequest": null,
+        "baseSha": null,
+        "checkoutCommit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "eventCommit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+        "runId": "44015662986",
+        "runAttempt": 1,
+        "workflow": "Middle Protected Current Renderer",
+        "job": "current-ui"
+      },
+      "allFiles": [
+        {
+          "path": "technical-proof.json",
+          "sha256": "f3aed5e059efdb74b542c9ff3ca71f5668d5b4505599af628307d76f57297a12",
+          "gitBlobSha1": "93f7d450d8c025a0e9e13f8fe7d2e853fcdf16e5",
+          "bytes": 72140,
+          "rawTechnicalExact": true,
+          "pngDimensions": null,
+          "publishedExact": true
+        },
+        {
+          "path": "E008-Q16-desktop-tile-01.png",
+          "sha256": "b12e1f0ac18d5d903518afa714a311c67cdcfda191c3bf9ee5d20b67df32fc61",
+          "gitBlobSha1": "9b2057478538aae62881fc434f4ca825ce7e7256",
+          "bytes": 28361,
+          "rawTechnicalExact": null,
+          "pngDimensions": {
+            "width": 316,
+            "height": 250
+          },
+          "publishedExact": true
+        },
+        {
+          "path": "E008-Q16-mobile-tile-01.png",
+          "sha256": "3fe2010b0513b607f302625dfb2298f1dbe370d9237d6d728b8e56c1bd03ce1f",
+          "gitBlobSha1": "d4353601dda1f361da12e3b885861be0e64096dc",
+          "bytes": 10552,
+          "rawTechnicalExact": null,
+          "pngDimensions": {
+            "width": 148,
+            "height": 120
+          },
+          "publishedExact": true
+        }
+      ],
+      "originalFilesReassembled": true,
+      "imageInspection": 0,
+      "publicationCommit": "90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3"
+    }
+  ],
+  "caseAndInputComparisons": [
+    {
+      "profile": "q5",
+      "scope": "EXACT_E052_Q5_PROBLEM_DISPLAY_ONLY",
+      "cases": [
+        {
+          "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+          "sourceOrdinal": 5,
+          "viewport": {
+            "name": "desktop",
+            "width": 1365,
+            "height": 1000
+          },
+          "oldCaptureSha256": "c8b9d64f37b721fe27a88b8a696877f8af0c29acacd2e292a6bca9c032e376cd",
+          "currentCaptureSha256": "0a98c5f206e8d6d5e709dbe239e1a1a24112537c35e8b42d3097298fb473546b",
+          "captureWholeExact": false,
+          "captureExceptNamedEqualSlotEvidenceExact": true,
+          "captureEvidenceDifferences": [
+            {
+              "path": "/equalSlotEvidence/0/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/1/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/2/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/3/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/3/gitBlobSha1",
+              "before": "5937d98954764d79bf8efc2b528cd3a5b791c573",
+              "after": "c59ca5c001e007e7fa123089f306a54bba8ee796"
+            },
+            {
+              "path": "/equalSlotEvidence/3/sha256",
+              "before": "0386a00334a011de691a2d298f1822f8d9894e60090d8020fc7e01a10e62762d",
+              "after": "43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7"
+            },
+            {
+              "path": "/equalSlotEvidence/4/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/5/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/6/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            }
+          ],
+          "geometryWholeExact": true,
+          "surfaceStructureWholeExact": true,
+          "oldVisualDecision": "PASS",
+          "oldVisualShotInventoryMatchesCurrent": true,
+          "oldVisualCaptureHashMatchesWhenPresent": null,
+          "orderedScreenshotsWholeExact": true,
+          "pageErrors": 0,
+          "requestFailures": 0,
+          "externalRequests": 0,
+          "currentTechnicalStatus": "PASS",
+          "currentSourceRef": {
+            "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+            "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+            "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+            "sha256": "996ba1f2538b060c96f6528fc90c62affa567285a6a24d2106051199f9a348d1",
+            "bytes": 66658
+          },
+          "currentAssetRefs": [
+            {
+              "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+              "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png",
+              "gitBlobSha1": "716c4228fd5e2ab0ad995eae9b498f8b57a8eb88",
+              "sha256": "e09a9ffa670e31766c57c4687e88a8d44fb773e0ca265cc4d1ad06e40a79ad6f",
+              "bytes": 57270
+            }
+          ],
+          "screenshots": [
+            {
+              "tileIndex": 1,
+              "path": "E052-Q5-desktop-tile-01.png",
+              "sha256": "600ad7c79c86889cc1f1bba376c929d67fc942aa495a08dcb77c2a48f612aa1f",
+              "bytes": 28776
+            }
+          ]
+        },
+        {
+          "questionUid": "qid_v1_f0b8bed25f89afa2840da1e6980215f102c4e9a44ef272080a3c53a4a5226fe1",
+          "sourceOrdinal": 5,
+          "viewport": {
+            "name": "mobile",
+            "width": 390,
+            "height": 844
+          },
+          "oldCaptureSha256": "d34bd4b71998613915337e6f8bbe3445737a2edeef72898127584a688842879a",
+          "currentCaptureSha256": "968073d6507670f5662763dcdf07f24f8be8fe049b6afc4ab1a8d4007f3b4269",
+          "captureWholeExact": false,
+          "captureExceptNamedEqualSlotEvidenceExact": true,
+          "captureEvidenceDifferences": [
+            {
+              "path": "/equalSlotEvidence/0/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/1/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/2/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/3/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/3/gitBlobSha1",
+              "before": "5937d98954764d79bf8efc2b528cd3a5b791c573",
+              "after": "c59ca5c001e007e7fa123089f306a54bba8ee796"
+            },
+            {
+              "path": "/equalSlotEvidence/3/sha256",
+              "before": "0386a00334a011de691a2d298f1822f8d9894e60090d8020fc7e01a10e62762d",
+              "after": "43067702c2eb2ca062aa73c0551a5fb5d3ad9a35bcf409452778b41c01f0e6a7"
+            },
+            {
+              "path": "/equalSlotEvidence/4/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/5/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            },
+            {
+              "path": "/equalSlotEvidence/6/commit",
+              "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+              "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+            }
+          ],
+          "geometryWholeExact": true,
+          "surfaceStructureWholeExact": true,
+          "oldVisualDecision": "PASS",
+          "oldVisualShotInventoryMatchesCurrent": true,
+          "oldVisualCaptureHashMatchesWhenPresent": null,
+          "orderedScreenshotsWholeExact": true,
+          "pageErrors": 0,
+          "requestFailures": 0,
+          "externalRequests": 0,
+          "currentTechnicalStatus": "PASS",
+          "currentSourceRef": {
+            "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+            "path": "archive/exams/original/middle/m3/2final/21_풍덕중_2학기_기말_중3_기출.js",
+            "gitBlobSha1": "82c627bacb59105e9bd3a5397d4828757308d587",
+            "sha256": "996ba1f2538b060c96f6528fc90c62affa567285a6a24d2106051199f9a348d1",
+            "bytes": 66658
+          },
+          "currentAssetRefs": [
+            {
+              "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+              "path": "archive/assets/images/21_풍덕중_2학기_기말_중3_기출/q05-problem-source-v2.png",
+              "gitBlobSha1": "716c4228fd5e2ab0ad995eae9b498f8b57a8eb88",
+              "sha256": "e09a9ffa670e31766c57c4687e88a8d44fb773e0ca265cc4d1ad06e40a79ad6f",
+              "bytes": 57270
+            }
+          ],
+          "screenshots": [
+            {
+              "tileIndex": 1,
+              "path": "E052-Q5-mobile-tile-01.png",
+              "sha256": "d83399fdf70d554a7505310b038b490ca55730d962f040e83bbf2606e614ccab",
+              "bytes": 30805
+            }
+          ]
+        }
+      ],
+      "servedInputDifferences": [
+        {
+          "path": "archive/engine.html",
+          "before": {
+            "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+            "sha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+            "bytes": 201060
+          },
+          "after": {
+            "gitBlobSha1": "226342544e896cd6a6f35aa946947b89ef3c893e",
+            "sha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+            "bytes": 196085
+          }
+        },
+        {
+          "path": "archive/archive2-output-bar.css",
+          "before": null,
+          "after": {
+            "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+            "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+            "bytes": 9673
+          }
+        },
+        {
+          "path": "archive/css/js-archive-theme-override.css",
+          "before": {
+            "gitBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+            "sha256": "4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2",
+            "bytes": 15557
+          },
+          "after": {
+            "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+            "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+            "bytes": 13947
+          }
+        },
+        {
+          "path": "archive/archive2-reader-controls.css",
+          "before": {
+            "gitBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+            "sha256": "24631292b2c7a8831fd6cb01de7eb4662d2c69d3c6542d380a5abaa0c43bafe3",
+            "bytes": 3687
+          },
+          "after": {
+            "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+            "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+            "bytes": 4905
+          }
+        },
+        {
+          "path": "archive/exam-display-title.js",
+          "before": null,
+          "after": {
+            "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+            "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+            "bytes": 2358
+          }
+        },
+        {
+          "path": "archive/data/svg-accessibility-index.js",
+          "before": {
+            "gitBlobSha1": "336b40d677ec4e44e179046f22fa777566f15e42",
+            "sha256": "24cfc360122f8a8ce7292bed979076dbdfa8153b93b27b78618e3d41870c79ff",
+            "bytes": 5556055
+          },
+          "after": {
+            "gitBlobSha1": "6cdfe2562ba3520d6cb5c55fdb8209e85a8afd4a",
+            "sha256": "3d1ca0fb8b4e5b3381d42b4edad1b7dc5e8e0e8a2afa5eacec4fd3da4380710d",
+            "bytes": 5687723
+          }
+        },
+        {
+          "path": "archive/screen-runtime-adapter.js",
+          "before": {
+            "gitBlobSha1": "3d8f3159934c99637c4df893649adbc331065d96",
+            "sha256": "2834bd3d0f3b40264921e15a85840df3d2374c7fcc6158844ce12883fb7cdd93",
+            "bytes": 52980
+          },
+          "after": {
+            "gitBlobSha1": "fb0ee7afc7eed48b30975874c5536eb283f308c9",
+            "sha256": "ed0b267dc3b27675c2c0ed0aa985991a0aad3d3863ce5bcd43f0acb28033d709",
+            "bytes": 53393
+          }
+        },
+        {
+          "path": "archive/render-feedback.js",
+          "before": {
+            "gitBlobSha1": "d1dd28351e42c887269744fa127f5979b81f213c",
+            "sha256": "a55be90c452de08090ba648c1e8150f6fdecbfc9e10a9bd2e1ed59ccad727052",
+            "bytes": 7419
+          },
+          "after": {
+            "gitBlobSha1": "bba4a0a028b08260de01ae66a936dd9b77a849af",
+            "sha256": "324177edefdcb996b4717a7853fc8bd542ac98098e3c6b8eabd42124eb424631",
+            "bytes": 7461
+          }
+        },
+        {
+          "path": "archive/data/question_metadata.json",
+          "before": {
+            "gitBlobSha1": "f705bba21cd6eaad71f9317cd55ee4ce85e187c7",
+            "sha256": "d31132c09f3d18ba31e22ff77d19a41f496dc6f528e62b8692776f404625bbce",
+            "bytes": 72167163
+          },
+          "after": {
+            "gitBlobSha1": "f28fb72f0099ad4cbe031fb1f652aaf457699d51",
+            "sha256": "377f95d2d0f829a2fe2607fff49125f624b6e5401d4d8a6dc8b1ff79316310b3",
+            "bytes": 74271150
+          }
+        },
+        {
+          "path": "archive/archive2-tokens.css",
+          "before": null,
+          "after": {
+            "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+            "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+            "bytes": 2241
+          }
+        }
+      ],
+      "servedInputsRemoved": [
+        {
+          "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.98.woff2",
+          "gitBlobSha1": "2498a1ce9304c3853e6809fd341123663a3fd732",
+          "sha256": "88a7a240566b8ca39cf86d6122ef9efe3cbbedf3fc4854dc9993b97c302aae43",
+          "bytes": 11692
+        }
+      ],
+      "oldServedCount": 86,
+      "currentServedCount": 88,
+      "sourceItemsWholeMetadataExactExceptCommit": true,
+      "selectedDataProjectionsWholeExact": null,
+      "selectedDataProjections": null,
+      "fonts": {
+        "profile": "q5",
+        "sourceAndQuestionAssetItemFieldsExactExceptImmutableCommit": true,
+        "oldGlobalFontCount": 31,
+        "currentGlobalFontCount": 30,
+        "removedResourceIds": [
+          "cf3f7bcae01e00f44158a8856b11c7c8a30174647e6181b4dc402c6121b6a20c"
+        ],
+        "addedResourceIds": [],
+        "retainedFontRowsExactExceptCommit": true,
+        "cases": [
+          {
+            "viewport": "desktop",
+            "oldCaseFontIds": 30,
+            "currentCaseFontIds": 30,
+            "currentIdsAllDeclared": true,
+            "fontReadinessWholeExact": true,
+            "readiness": "RENDER_READY",
+            "solutionNodes": 0,
+            "imagesComplete": true,
+            "mathErrors": 0,
+            "unrenderedMath": 0
+          },
+          {
+            "viewport": "mobile",
+            "oldCaseFontIds": 31,
+            "currentCaseFontIds": 30,
+            "currentIdsAllDeclared": true,
+            "fontReadinessWholeExact": true,
+            "readiness": "RENDER_READY",
+            "solutionNodes": 0,
+            "imagesComplete": true,
+            "mathErrors": 0,
+            "unrenderedMath": 0
+          }
+        ]
+      }
+    },
+    {
+      "profile": "q16",
+      "scope": "EXACT_E008_Q16_LAYOUT_ONLY",
+      "cases": [
+        {
+          "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+          "sourceOrdinal": 16,
+          "viewport": {
+            "name": "desktop",
+            "width": 1365,
+            "height": 1000
+          },
+          "oldCaptureSha256": "0d5cb62ccdddb9c960cd11e992bc1f5adae4335a18bce9baad25d37ccae76175",
+          "currentCaptureSha256": "0d5cb62ccdddb9c960cd11e992bc1f5adae4335a18bce9baad25d37ccae76175",
+          "captureWholeExact": true,
+          "captureExceptNamedEqualSlotEvidenceExact": true,
+          "captureEvidenceDifferences": [],
+          "geometryWholeExact": true,
+          "surfaceStructureWholeExact": true,
+          "oldVisualDecision": "ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY",
+          "oldVisualShotInventoryMatchesCurrent": true,
+          "oldVisualCaptureHashMatchesWhenPresent": true,
+          "orderedScreenshotsWholeExact": true,
+          "pageErrors": 0,
+          "requestFailures": 0,
+          "externalRequests": 0,
+          "currentTechnicalStatus": "PASS",
+          "currentSourceRef": {
+            "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+            "path": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+            "gitBlobSha1": "80043be4a26d379664740f0846720bba38f31d5a",
+            "sha256": "02614aa1dcd88aa933aa81712074fb66597867fd3d3673bb3bb23312bc91636b",
+            "bytes": 63188
+          },
+          "currentAssetRefs": [],
+          "screenshots": [
+            {
+              "tileIndex": 1,
+              "path": "E008-Q16-desktop-tile-01.png",
+              "sha256": "b12e1f0ac18d5d903518afa714a311c67cdcfda191c3bf9ee5d20b67df32fc61",
+              "bytes": 28361
+            }
+          ]
+        },
+        {
+          "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+          "sourceOrdinal": 16,
+          "viewport": {
+            "name": "mobile",
+            "width": 390,
+            "height": 844
+          },
+          "oldCaptureSha256": "cde2b465165993e7f0a4a6147d1d7a36a5c9b1d10a7305586e0387b3365e3933",
+          "currentCaptureSha256": "cde2b465165993e7f0a4a6147d1d7a36a5c9b1d10a7305586e0387b3365e3933",
+          "captureWholeExact": true,
+          "captureExceptNamedEqualSlotEvidenceExact": true,
+          "captureEvidenceDifferences": [],
+          "geometryWholeExact": true,
+          "surfaceStructureWholeExact": true,
+          "oldVisualDecision": "ACCEPT_LAYOUT_DISPLAY_CONTINUITY_ONLY",
+          "oldVisualShotInventoryMatchesCurrent": true,
+          "oldVisualCaptureHashMatchesWhenPresent": true,
+          "orderedScreenshotsWholeExact": true,
+          "pageErrors": 0,
+          "requestFailures": 0,
+          "externalRequests": 0,
+          "currentTechnicalStatus": "PASS",
+          "currentSourceRef": {
+            "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+            "path": "archive/exams/original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+            "gitBlobSha1": "80043be4a26d379664740f0846720bba38f31d5a",
+            "sha256": "02614aa1dcd88aa933aa81712074fb66597867fd3d3673bb3bb23312bc91636b",
+            "bytes": 63188
+          },
+          "currentAssetRefs": [],
+          "screenshots": [
+            {
+              "tileIndex": 1,
+              "path": "E008-Q16-mobile-tile-01.png",
+              "sha256": "3fe2010b0513b607f302625dfb2298f1dbe370d9237d6d728b8e56c1bd03ce1f",
+              "bytes": 10552
+            }
+          ]
+        }
+      ],
+      "servedInputDifferences": [
+        {
+          "path": "archive/engine.html",
+          "before": {
+            "gitBlobSha1": "905952ae39138e1f6dc0aa2d7c7c8a64403f527b",
+            "sha256": "a963c562478b96f7f9d8ae09ad6e5c85b3262296d734e7abd001836e1c3f317b",
+            "bytes": 201060
+          },
+          "after": {
+            "gitBlobSha1": "226342544e896cd6a6f35aa946947b89ef3c893e",
+            "sha256": "671f89999fe07b0f5695bb088ef9d262d7d2da95947689117241bb6f3b633ce5",
+            "bytes": 196085
+          }
+        },
+        {
+          "path": "archive/archive2-output-bar.css",
+          "before": null,
+          "after": {
+            "gitBlobSha1": "6e5899be049eed33d7a82c02e8eb22c8c43a9bec",
+            "sha256": "a25a088c8a16a8401a210fa903808125baf5aa399e59242fe2bbb64ce94bb5c8",
+            "bytes": 9673
+          }
+        },
+        {
+          "path": "archive/css/js-archive-theme-override.css",
+          "before": {
+            "gitBlobSha1": "930e73b8d48bb793d5ec4cc7effabd6eef40dd4f",
+            "sha256": "4dfc5092355c90859e75f62a0fb0d7bf150c54202ce51d2cb5a48951adb2b7a2",
+            "bytes": 15557
+          },
+          "after": {
+            "gitBlobSha1": "5e168d7e3753639e8a0b92753b0797bef0d9d3e2",
+            "sha256": "205a1d456fc21ee150550a61f1959b027a4fcd22f20e623471b637481b4702a4",
+            "bytes": 13947
+          }
+        },
+        {
+          "path": "archive/archive2-reader-controls.css",
+          "before": {
+            "gitBlobSha1": "66a223f9e2c737a4caa0bd9b2fd0710ad5b4ee49",
+            "sha256": "24631292b2c7a8831fd6cb01de7eb4662d2c69d3c6542d380a5abaa0c43bafe3",
+            "bytes": 3687
+          },
+          "after": {
+            "gitBlobSha1": "8bbb2202ba3d8c04aa6f7867031fbbebff0c511d",
+            "sha256": "5e53a4a96dcf8e1e08eb8e55096ef61299946269aa8d3b33b4d35ad604c022eb",
+            "bytes": 4905
+          }
+        },
+        {
+          "path": "archive/exam-display-title.js",
+          "before": null,
+          "after": {
+            "gitBlobSha1": "f669223144e179ec9e06855f8016e7ff88074864",
+            "sha256": "619973f16351892792f831421726cc604b3ff99b4d341a616b63ec5347f76444",
+            "bytes": 2358
+          }
+        },
+        {
+          "path": "archive/data/svg-accessibility-index.js",
+          "before": {
+            "gitBlobSha1": "336b40d677ec4e44e179046f22fa777566f15e42",
+            "sha256": "24cfc360122f8a8ce7292bed979076dbdfa8153b93b27b78618e3d41870c79ff",
+            "bytes": 5556055
+          },
+          "after": {
+            "gitBlobSha1": "6cdfe2562ba3520d6cb5c55fdb8209e85a8afd4a",
+            "sha256": "3d1ca0fb8b4e5b3381d42b4edad1b7dc5e8e0e8a2afa5eacec4fd3da4380710d",
+            "bytes": 5687723
+          }
+        },
+        {
+          "path": "archive/screen-runtime-adapter.js",
+          "before": {
+            "gitBlobSha1": "3d8f3159934c99637c4df893649adbc331065d96",
+            "sha256": "2834bd3d0f3b40264921e15a85840df3d2374c7fcc6158844ce12883fb7cdd93",
+            "bytes": 52980
+          },
+          "after": {
+            "gitBlobSha1": "fb0ee7afc7eed48b30975874c5536eb283f308c9",
+            "sha256": "ed0b267dc3b27675c2c0ed0aa985991a0aad3d3863ce5bcd43f0acb28033d709",
+            "bytes": 53393
+          }
+        },
+        {
+          "path": "archive/render-feedback.js",
+          "before": {
+            "gitBlobSha1": "d1dd28351e42c887269744fa127f5979b81f213c",
+            "sha256": "a55be90c452de08090ba648c1e8150f6fdecbfc9e10a9bd2e1ed59ccad727052",
+            "bytes": 7419
+          },
+          "after": {
+            "gitBlobSha1": "bba4a0a028b08260de01ae66a936dd9b77a849af",
+            "sha256": "324177edefdcb996b4717a7853fc8bd542ac98098e3c6b8eabd42124eb424631",
+            "bytes": 7461
+          }
+        },
+        {
+          "path": "archive/data/question_metadata.json",
+          "before": {
+            "gitBlobSha1": "f705bba21cd6eaad71f9317cd55ee4ce85e187c7",
+            "sha256": "d31132c09f3d18ba31e22ff77d19a41f496dc6f528e62b8692776f404625bbce",
+            "bytes": 72167163
+          },
+          "after": {
+            "gitBlobSha1": "f28fb72f0099ad4cbe031fb1f652aaf457699d51",
+            "sha256": "377f95d2d0f829a2fe2607fff49125f624b6e5401d4d8a6dc8b1ff79316310b3",
+            "bytes": 74271150
+          }
+        },
+        {
+          "path": "archive/archive2-tokens.css",
+          "before": null,
+          "after": {
+            "gitBlobSha1": "e7866d0d24504a0ce770e700ef42cc5069276b43",
+            "sha256": "2ea2008d63916cfe61a6f07cabad249f70ac818bdbc5599d7bd4efaddc8266e1",
+            "bytes": 2241
+          }
+        }
+      ],
+      "servedInputsRemoved": [
+        {
+          "path": "archive/vendor/nanum-myeongjo/9Btx3DZF0dXLMZlywRbVRNhxy1LuEGI-gZ_Ll9dMHVruCTvHYAnNT2g.98.woff2",
+          "gitBlobSha1": "2498a1ce9304c3853e6809fd341123663a3fd732",
+          "sha256": "88a7a240566b8ca39cf86d6122ef9efe3cbbedf3fc4854dc9993b97c302aae43",
+          "bytes": 11692
+        }
+      ],
+      "oldServedCount": 89,
+      "currentServedCount": 91,
+      "sourceItemsWholeMetadataExactExceptCommit": true,
+      "selectedDataProjectionsWholeExact": true,
+      "selectedDataProjections": {
+        "schemaVersion": "archive-m3s2-q16-ui-data-projection-v1",
+        "questionUid": "qid_v1_0ec5ac5da3b680c3a3e688406be0da91045d4ea581a83b6ec224927defe57bdf",
+        "sourceArchiveFile": "original/middle/m3/2final/25_풍덕중_2학기_기말_중3_기출.js",
+        "sourceOrdinal": 16,
+        "metadataSha256": "a83412669da7333bbafb2ffb13a570bde073f150d218d64da25e8a881bc10b92",
+        "identitySha256": "14e7993098a77babf53ee0b1036537579b85c3b27fb194204630f0ab174d3e55"
+      },
+      "fonts": {
+        "profile": "q16",
+        "sourceAndQuestionAssetItemFieldsExactExceptImmutableCommit": true,
+        "oldGlobalFontCount": 34,
+        "currentGlobalFontCount": 33,
+        "removedResourceIds": [
+          "cf3f7bcae01e00f44158a8856b11c7c8a30174647e6181b4dc402c6121b6a20c"
+        ],
+        "addedResourceIds": [],
+        "retainedFontRowsExactExceptCommit": true,
+        "cases": [
+          {
+            "viewport": "desktop",
+            "oldCaseFontIds": 33,
+            "currentCaseFontIds": 33,
+            "currentIdsAllDeclared": true,
+            "fontReadinessWholeExact": true,
+            "readiness": "RENDER_READY",
+            "solutionNodes": 0,
+            "imagesComplete": true,
+            "mathErrors": 0,
+            "unrenderedMath": 0
+          },
+          {
+            "viewport": "mobile",
+            "oldCaseFontIds": 34,
+            "currentCaseFontIds": 33,
+            "currentIdsAllDeclared": true,
+            "fontReadinessWholeExact": true,
+            "readiness": "RENDER_READY",
+            "solutionNodes": 0,
+            "imagesComplete": true,
+            "mathErrors": 0,
+            "unrenderedMath": 0
+          }
+        ]
+      }
+    }
+  ],
+  "q5NamedCaptureProvenanceDelta": {
+    "entireCaptureEqual": false,
+    "exceptEqualSlotEvidenceWholeEqual": true,
+    "exactlySevenImmutableRefCommits": {
+      "before": "c29e1cc63c1d55b9c049c254908e466dad23a086",
+      "after": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502"
+    },
+    "producerOnlyPinChange": {
+      "path": "tools/check-m3-e052-q5-problem-browser.cjs",
+      "beforeGitBlobSha1": "5937d98954764d79bf8efc2b528cd3a5b791c573",
+      "afterGitBlobSha1": "c59ca5c001e007e7fa123089f306a54bba8ee796"
+    },
+    "priorProducerIndependentReview": {
+      "gitBlobSha1": "502c8ee23467dcb392458e0c7c0843dbcf7f812b",
+      "sha256": "510e9d3048f6d90ff6f25fea0c58f984b4bc4e5b924e9b5132c55811a8c80512",
+      "bytes": 7427,
+      "reuse": "Previously received exact producer4 static review; no duplicate code execution."
+    },
+    "measurementAndCoverageFieldsChanged": 0
+  },
+  "fontsBoundary": {
+    "note": "Both current mobile cases omit the same .98.woff2 response; retained font records are byte-pin exact except capture commit, all current resource IDs are declared and all loaded readiness fields remain exact. Old full-font inventories are not asserted equal.",
+    "oldToCurrentCounts": {
+      "q5": [
+        31,
+        30
+      ],
+      "q16": [
+        34,
+        33
+      ]
+    },
+    "removedResourceId": "cf3f7bcae01e00f44158a8856b11c7c8a30174647e6181b4dc402c6121b6a20c",
+    "nextReaderRequirement": "Authenticate the complete actual current font/served/asset inventory. This observed response omission is not a generic permission to ignore font changes."
+  },
+  "rendererBoundary": {
+    "oldAndCurrentCodeEquivalent": false,
+    "currentActualServedCounts": {
+      "q5": 88,
+      "q16": 91
+    },
+    "newlyServedPaths": [
+      "archive/archive2-output-bar.css",
+      "archive/exam-display-title.js",
+      "archive/archive2-tokens.css"
+    ],
+    "existingRendererChangedPaths": [
+      "archive/engine.html",
+      "archive/css/js-archive-theme-override.css",
+      "archive/archive2-reader-controls.css",
+      "archive/screen-runtime-adapter.js",
+      "archive/render-feedback.js"
+    ],
+    "generatedDataFullBytesDiffer": [
+      "archive/data/question_metadata.json",
+      "archive/data/svg-accessibility-index.js"
+    ],
+    "sourceAndProblemAssetWholePinsUnchanged": true,
+    "q16SelectedMetadataAndIdentityProjectionExact": true,
+    "rule": "Reuse only these four observed displays. Future consumption must validate current code/font/asset bytes and scoped generated-data invariants; old live guards are not disabled."
+  },
+  "boundaries": {
+    "currentImagesOpened": 0,
+    "currentImagesEdited": 0,
+    "recapture": 0,
+    "sourceQuestionReview": 0,
+    "sourceEvaluation": 0,
+    "newMathematicalQa": 0,
+    "newSemanticApproval": 0,
+    "newNativeApproval": 0,
+    "newDifficultyJudgment": 0,
+    "newFourSlotVector": 0,
+    "newRegistration": 0,
+    "remoteRefWrites": 0,
+    "repositoryJavaScriptEvaluation": 0
+  },
+  "downstream": {
+    "native": "NOT_RUN_FOR_CURRENT_REBINDING",
+    "builder": "NOT_RUN_FOR_CURRENT_REBINDING",
+    "consumer": "NOT_RUN_FOR_CURRENT_REBINDING",
+    "productionHelperOrSidecarChanges": 0
+  },
+  "nextAction": "Publish this immutable witness. Bind a separate current visual document to the actual published witness/technical refs, then use narrow existing-authority-preserving Q5 and Q16 contracts. Q5 original GIVEN, issued Native and ancestor guards and Q16 original authority/MDID/vector guards remain mandatory."
+}

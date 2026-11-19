@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 41,
-  "templateCount": 116,
+  "problemTypeCount": 42,
+  "templateCount": 124,
   "problemTypes": [
     {
       "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
@@ -1184,6 +1184,32 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b"
+      ]
+    },
+    {
+      "problemTypeKey": "PT_H1_FUNCTION_MODEL",
+      "canonicalLabelKo": "함수의 활용",
+      "definition": "실생활의 양 사이 관계를 해석하여 독립변수에 대한 함수식을 구성한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_ae67afa3ab10f1b5de9ea918ef160a9b44ac347d5173914002c5cf3de86f3004"
+      ],
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_H1_FUNCTION_MODEL",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],
@@ -4285,6 +4311,227 @@
       "supportingItemCount": 1,
       "supportingQuestionUids": [
         "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b"
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "부등식 경계",
+      "definition": "양수식의 산술기하평균·코시·제곱 비음성으로 목표식의 상하한을 구하고 등호가 허용되는지 확인한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 6,
+      "supportingQuestionUids": [
+        "qid_v1_0ca67e94cf1651535e0f0a7bea70bd00dbc3e304baf1991c6ee1ad174788fa18",
+        "qid_v1_71d10593f63466aec883da83e48eecd8ca735b276b4a821487baf7fea3809c2a",
+        "qid_v1_771c77580980b49bbc3df7447fe8966da09a29144bcd0230a5d06484830ba72d",
+        "qid_v1_c20ea7923bd5f91fbbfdad243b476762026ac74e86ad2cfebcf637a14822f5d3",
+        "qid_v1_ed3415e3dc7d358a6e1213e0999b1960f3fb08eb2fd2493c3a9a4c1e7d24e37d",
+        "qid_v1_ee6aa636b03444d2002cdbc60adbefe8e11439c7e40f9ecebf4abbb3f18daf1a"
+      ],
+      "sourceUnits": [
+        "H15-M1-02",
+        "H15-M1-03",
+        "H22-A-01",
+        "H22-A-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_EXTREMUM_INEQUALITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_QUADRATIC",
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "이차식 환원",
+      "definition": "로그·거듭제곱 관계로 목표식을 이차식으로 바꾸고 완전제곱식의 꼭짓점에서 최댓값을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_05ee0628d04328f4747b0ce9f13f35b8a6677c8224a3c72ddc055b9ce9c3db32",
+        "qid_v1_58430eb44c722f4109398533061ed3de10ee992874c28c45ca3ed02ebb390bca",
+        "qid_v1_932fe1f2d579db9016ee2df2c2c5b77c3f0a8d6f23cd27c686b1a15c7f1e8ee7"
+      ],
+      "sourceUnits": [
+        "H15-M1-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_EXTREMUM_QUADRATIC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_EXTREMUM_SUB_QUADRATIC",
+      "parentProblemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "치환범위 이차식 극값",
+      "definition": "삼각함수 또는 지수식을 변수로 치환하고 그 범위에서 이차식 극값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_16f0bc83be56f3f8d0b32ae5c28c0cf43e8d92387ff957fa56393a8614050cac",
+        "qid_v1_bd86189a8fa7e73603da5f3051be815c6d7dd7464edd2ecd40d04aad9dd0b61c",
+        "qid_v1_cc1316587a65bbeae099ef913c88fbb3966314c4b4a6e4194607a8c84aa3a69d"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_EXTREMUM_SUB_QUADRATIC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "함수 그래프 평행사변형",
+      "definition": "평행사변형의 같은 변 또는 평행 조건을 로그값·좌표 관계로 나타내 길이비나 곱을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_e7f6550571f6a2579f5697b7dcff4d579d449dc1fd3af68a1dd7a6e02636e12c",
+        "qid_v1_f2e6952a490b885c9b2e7a84100cdb48f26ab0aeed054ada88dd7e42b23d5053"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "함수 간격 일정 넓이",
+      "definition": "같은 높이의 가로 간격 또는 같은 입력의 세로 간격이 일정함을 이용해 영역 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_a23513048fdbf3128a8ce71d82e16fff06edd1212c877782c750bdc8cacf0fa9",
+        "qid_v1_f177a4fc9f193cce4f286b1d15a910647b2c78bab24295f4501f4a74f2d504d2"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "그래프 좌표 추적",
+      "definition": "그림의 절편과 대응하는 입력·출력값을 차례로 추적해 좌표를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_5f025b4f7813da33941ed67a0d3918095816edfe326acf4b3fc42673ee8876a1",
+        "qid_v1_77c12cd74d8115e0b3923b88104b33a2bdf1c95abc10b5ae7aa911c561b0de3e"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "canonicalLabelKo": "교점 삼각형 넓이",
+      "definition": "그래프와 수평선 교점에서 밑변과 높이를 읽어 삼각형 넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_40a817f87fb8aa4d7c62a880c20446ee6d4b48f4abdc8170f8ded64d6bca4575",
+        "qid_v1_63288d6f0196f28af4c810e6dcea5f3182d83edc6811d6e0aca3303292d989e5"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+      "parentProblemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "canonicalLabelKo": "이동 그래프 계수 복원",
+      "definition": "이동한 지수·로그 그래프의 점근선과 통과점을 이용해 이동량을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_15b9c84d0cec73d6916cd97211840ed33dd73ad6e96b54e7dc3e79a46bad022e",
+        "qid_v1_b9aa26ea0ddac8914f1bdef592387706b9086129d2ff7bcdc286a4d9567d5933"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
       ]
     }
   ],

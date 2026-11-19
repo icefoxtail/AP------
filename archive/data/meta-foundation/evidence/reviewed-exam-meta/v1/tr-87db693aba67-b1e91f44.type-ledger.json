@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-87db693aba67-b1e91f44",
+  "sourceArchiveFile": "similar/high/h2/1mid/26_순천고_1학기_중간_고2_대수_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_22957f07b98efb40638fc82a252356c55c563581a96c57ec079a5286844ebbcb",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+      "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+      "step": "81을 3의 네제곱으로 고친 뒤 곱의 지수를 더하여 3의 제곱을 얻는다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8c13fb3cd2a8f222cb58574ab7dd2ea84b5e2e3f2fd7e81b3e665c1c0af1205d",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+      "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+      "step": "네제곱근의 곱을 합차곱 16의 네제곱근으로 정리하고 분모를 유리지수로 바꾸어 나눈다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_eebedbd46c0bbc4eca8fdfcd30f87a58ee7ff60a7d59770835044cbcab112550",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "모든 양의 x에서 지수함수값이 1보다 작다는 조건을 밑이 0과 1 사이라는 이차부등식으로 바꾼다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5f3aef6cb805c045f38901dfa90edfecfead1c89736c19af6439b0a8bc27a4d1",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+      "step": "등변 조건을 두 교점의 좌표가 같다는 로그방정식으로 바꾸고 위치조건에 맞는 점 사이 거리를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 연결 후보 밖이지만 ACTIVE 정의가 직접 읽은 결정적 풀이와 맞아 선택함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_78d29f07f29a1600945accd08ad64fca74f365b633b41eaa2c7853ad57ca29d6",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_RADIAN_SECTOR_GEOMETRY_COMPOSITE",
+      "step": "같은 중심각의 넓이합을 피타고라스 관계로 바꾸어 자연수 변을 찾고 호 길이로 중심각과 부채꼴 넓이를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT는 맞지만 TPL은 세부 풀이 전체에 꼭 맞지 않아 null로 남김. 검사기의 TPL_NOT_ACTIVE는 null 선택에서 발생한 결과로 별도 보존.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_28987f45f8ae7a0e8fb821e03988a7220d7bc63ddef2b6bf25deed4e2a2fdecf",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "절댓값 그래프의 양쪽 선분을 나누고 로그함수의 증감 및 끝점 위치로 n별 교점을 센다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_23c52ebd6e41e26a8ec1e826cbc8d5fd9dc76f0102865a99925ce29c43f5cbf9",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+      "step": "서로 다른 소수의 지수가 모두 정수가 되어야 하므로 분모 4,6,10의 최소공배수 60을 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 연결 후보 밖이지만 ACTIVE 정의가 직접 읽은 결정적 풀이와 맞아 선택함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f05bc3efdb2165a06ebc73ae3080a7ea66557e1995fd09a85e6016d68c0ebf5",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_FUNCTION_INEQUALITY_RANGE",
+      "step": "이차식인 진수의 범위를 먼저 구한 뒤 밑의 크기에 따른 로그함수의 증감으로 최대를 주는 진수를 결정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT는 맞지만 TPL은 세부 풀이 전체에 꼭 맞지 않아 null로 남김. 검사기의 TPL_NOT_ACTIVE는 null 선택에서 발생한 결과로 별도 보존.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f4188c932e18e7432f1025d7aab015c592e1bf2837aa8217f46cdbde33fc1562",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+      "templateKey": "TPL_H22A_01_ROOT_REAL_067",
+      "step": "피제곱수의 부호와 차수의 홀짝에 따라 실수근 수를 구하여 연속 두 차수의 근 수를 비교한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8440ae04f0ed086ab7a9f55df5a08c75b66b631f1d62b825df77e996432b82a5",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+      "templateKey": "TPL_EXPONENTIAL_EQUATION_SUBSTITUTION_ABS_ROOTCOUNT",
+      "step": "f값을 3 또는 4로 인수분해한 뒤 양수 지수치환에서 절댓값 방정식의 해 개수를 경우별로 합산한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT는 맞지만 TPL은 세부 풀이 전체에 꼭 맞지 않아 null로 남김. 검사기의 TPL_NOT_ACTIVE는 null 선택에서 발생한 결과로 별도 보존.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ from lattice_path_observer import audit
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:
-    result=audit(payload['lattice'],payload['svg'])
+    result=audit(payload['lattice'],payload['svg'],payload.get('surface'))
     status='OK'
 except (ValueError,KeyError,TypeError,IndexError,ZeroDivisionError) as error:
     result,status={'code':str(error)},'ERROR'

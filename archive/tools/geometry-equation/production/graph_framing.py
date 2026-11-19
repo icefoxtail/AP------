@@ -410,6 +410,166 @@ def squeeze_ratio(points,height_limit):
     fit=((height_limit-2*EQUAL_UNIT_EDGE_PX)/yspan)/((QUADRATIC_PLOT_WIDTH-2*EQUAL_UNIT_EDGE_PX)/xspan)
     return max(AXIS_SQUEEZE_MIN_RATIO,min(1.0,fit))
 
+# ---- axis fold (piecewise-polynomial): an axis far from every drawn feature is drawn on the window edge instead of through the empty gap ----
+# The origin used to be framed with the features, so a curve far above (or beside) the axes left most of the figure empty. A folded axis stands on the
+# window edge, never nearer a feature than AXIS_FOLD_CLEAR_PX, carries no tick numbers and no O; the other axis keeps its real position. The window
+# is also made shorter when the figure would be taller than 1:1.2 (height:width), by the y/x scale ratio 2/3, then 1/2.
+AXIS_FOLD_CLEAR_PX=60          # a feature (dot centre) stands at least this far from the folded axis line: its label fits between and still keeps 12 px clear
+AXIS_FOLD_FILL_MAX=.5          # an axis is folded only when the drawn features fill less than this fraction of the extent the origin would force
+AXIS_FOLD_TALL=1.2             # plot height : width above this is squeezed (y/x ratio 2/3, then 1/2)
+AXIS_FOLD_RATIOS=(1.0,2/3,.5)
+
+def axis_fold_allowed(plan):
+    """A figure whose axes are part of what it says is never folded: an author's own scale or application axes, a shaded region (reaches the axis),
+    an overlay that reaches the axes or needs one scale (guides, quadrants, circles, angles, segments, a slanted line) or a slanted reference line (y=x, a slope compared
+    with 1 needs one scale and crosses the folded edge). Overlay points, names and horizontal lines are the only overlays that may stay."""
+    if plan.get('axisFold') is False or plan.get('axisScale') is not None or plan.get('applicationAxes') is True:return False
+    if plan.get('regions') or plan.get('lines') or plan.get('linePoints') or plan.get('plotHeightLimit') is not None or plan.get('compositeHeader') is not None:return False
+    overlays=plan.get('overlays')
+    if overlays:
+        if not isinstance(overlays,dict) or set(overlays)-{'points','lines','names'}:return False
+        for entry in overlays.get('lines') or []:
+            # a vertical line is not framed by anything: the frame was only wide enough for it by luck of the origin, so such a figure keeps the origin frame
+            if not isinstance(entry,dict) or 'x' in entry or str(entry.get('slope')) not in ('0','0.0'):return False
+    if any(isinstance(line,dict) and 'slope' in line for line in plan.get('referenceLines') or []):return False
+    # a reference curve made of (or containing) a slanted straight piece is a slanted line too: its drawn end meets the window edge
+    return not any(slope not in (0.0,) for slope in linear_slopes({'referenceCurves':plan.get('referenceCurves')}))
+
+def linear_slopes(plan):
+    """The slope of every straight line or linear piece the plan draws: a number (nan when it cannot be read), None for a vertical overlay line, 0.0 for a horizontal one.
+    Sources: referenceLines, lines, overlays.lines, linear pieces of the function and of the reference curves."""
+    out=[]
+    def add(text):
+        try:out.append(pp_exact_float(str(text)))
+        except (ValueError,TypeError,ZeroDivisionError,S.SympifyError):out.append(math.nan)
+    for row in plan.get('referenceLines') or []:
+        if isinstance(row,dict):add(row['slope']) if 'slope' in row else out.append(0.0)
+    for row in plan.get('lines') or []:
+        if isinstance(row,dict) and 'slope' in row:add(row['slope'])
+    overlays=plan.get('overlays')
+    for row in (overlays.get('lines') if isinstance(overlays,dict) else None) or []:
+        if isinstance(row,dict):out.append(None) if 'x' in row else add(row.get('slope','nan'))
+    def pieces_of(rows):
+        for row in rows or []:
+            values=row.get('coefficients') if isinstance(row,dict) else None
+            if not isinstance(values,list) or not values:continue
+            degree=0
+            for index,value in enumerate(values):
+                if str(value) not in ('0','-0','0.0'):degree=index
+            if degree==0:out.append(0.0)
+            elif degree==1:add(values[1])
+    pieces_of(plan.get('pieces'))
+    for curve in plan.get('referenceCurves') or []:
+        if isinstance(curve,dict):pieces_of(curve.get('pieces'))
+    return out
+
+def one_to_one_needed(plan):
+    """True when the figure only reads right at one scale on both axes: a slope of +-1 (y=x, y=-x+k, a 45 degree comparison), two perpendicular slanted lines, circles, angles, polygons or
+    an authored equalUnits. A secant, a tangent or a parallel pair survives a squeeze, so a slanted line alone is not a reason."""
+    if plan.get('equalUnits') is True:return True
+    overlays=plan.get('overlays')
+    if isinstance(overlays,dict) and set(overlays)&{'circles','circleRegions','rightAngles','angles','equalAngles','polygons'}:return True
+    slanted=[m for m in linear_slopes(plan) if m is not None and (math.isnan(m) or abs(m)>1e-12)]
+    if any(not math.isnan(m) and abs(abs(m)-1)<1e-9 for m in slanted):return True
+    return any(not math.isnan(a) and not math.isnan(b) and abs(a*b+1)<1e-9 for index,a in enumerate(slanted) for b in slanted[index+1:])
+
+def axis_squeeze_allowed(plan):
+    """The automatic squeeze of a figure taller than 1:1.2. It does not need the fold's conditions: a slanted line, a root or a tangent survives it. It is not made for an author's own
+    scale or application axes, a stacked panel, a figure that needs one scale (one_to_one_needed), a shaded region, or an overlay that is not a point, a name or a horizontal line
+    (a vertical line is not framed by anything but the origin, guides and quadrants are cut by the window)."""
+    if plan.get('axisFold') is False or plan.get('axisScale') is not None or plan.get('applicationAxes') is True:return False
+    if plan.get('regions') or plan.get('plotHeightLimit') is not None or plan.get('compositeHeader') is not None:return False
+    overlays=plan.get('overlays')
+    if overlays:
+        if not isinstance(overlays,dict) or set(overlays)-{'points','lines','names'}:return False
+        for entry in overlays.get('lines') or []:
+            if not isinstance(entry,dict) or 'x' in entry:return False
+    return not one_to_one_needed(plan)
+
+def axis_ratio_reason(plan,ratio):
+    """'TALL' when the y/x ratio is under 1 because the figure was taller than 1:1.2 and the plan may be squeezed; None for one scale, an author's own scale, a requested
+    squeeze or a squeeze after a failure. The observer re-checks a 'TALL' squeeze against the figure's own lines."""
+    if ratio>=1.0 or plan.get('axisSqueeze') is True or plan.get('axisScale') is not None or plan.get('applicationAxes') is True:return None
+    return 'TALL' if axis_squeeze_allowed(plan) else None   # a squeeze after a failure keeps the plan as it was (no tag)
+
+def axis_fold_sides(plan,features):
+    """{'x':'BOTTOM'|'TOP','y':'LEFT'|'RIGHT'} for each axis that lies clear of every feature and whose gap would leave the features filling under half the extent;
+    an axis the features reach (a root, an intercept, the origin itself, a curve crossing it) is never folded."""
+    if not axis_fold_allowed(plan) or not features:return {}
+    xs=[p[0] for p in features];ys=[p[1] for p in features];sides={}
+    # An overlay line is not framed by itself: a horizontal or vertical one must already lie inside the box of the features, or the window would miss it.
+    for entry in (plan.get('overlays') or {}).get('lines') or []:
+        try:
+            if 'x' in entry:value=float(Fraction(str(entry['x'])));inside=min(xs)<=value<=max(xs)
+            else:value=float(Fraction(str(entry['intercept'])));inside=min(ys)<=value<=max(ys)
+        except (ValueError,ZeroDivisionError,TypeError):return {}
+        if not inside:return {}
+    for axis,values,low_side,high_side in (('x',ys,'BOTTOM','TOP'),('y',xs,'LEFT','RIGHT')):
+        low,high=min(values),max(values)
+        if low>0:full=high;side=low_side
+        elif high<0:full=-low;side=high_side
+        else:continue
+        if (high-low)<AXIS_FOLD_FILL_MAX*full:sides[axis]=side
+    return sides
+
+def axis_fold_frame(points,height_limit,ratio,sides,features):
+    """equal_unit_frame with AXIS_FOLD_CLEAR_PX between the nearest feature and each folded edge (equal_unit_frame leaves EQUAL_UNIT_EDGE_PX around its points)."""
+    extra=AXIS_FOLD_CLEAR_PX-EQUAL_UNIT_EDGE_PX
+    xs=[p[0] for p in features];ys=[p[1] for p in features];cx,cy=(min(xs)+max(xs))/2,(min(ys)+max(ys))/2
+    scale=None;pts=list(points)
+    for _ in range(8):
+        viewport,height,new_scale=equal_unit_frame(pts,height_limit,ratio)
+        if scale is not None and abs(new_scale-scale)<=1e-9*scale:break
+        scale=new_scale;pts=list(points)
+        if 'x' in sides:
+            gap=extra/(scale*ratio);pts.append((cx,min(ys)-gap) if sides['x']=='BOTTOM' else (cx,max(ys)+gap))
+        if 'y' in sides:
+            gap=extra/scale;pts.append((min(xs)-gap,cy) if sides['y']=='LEFT' else (max(xs)+gap,cy))
+    return viewport,height,scale
+
+def axis_fold_record(viewport,sides):
+    """The fitted plan's axisFold: where each folded axis is drawn (the window edge) and on which side the features lie."""
+    record={'schemaVersion':'AXIS_FOLD_v1'}
+    if 'x' in sides:record['x']={'edge':sides['x'],'at':viewport[2] if sides['x']=='BOTTOM' else viewport[3]}
+    if 'y' in sides:record['y']={'edge':sides['y'],'at':viewport[0] if sides['y']=='LEFT' else viewport[1]}
+    return record
+
+def axis_fold_ticks_ok(plan,viewport):
+    """Real tick values the author wrote must stay inside the window: a tick that would fall in the folded part cancels the fold."""
+    ticks=plan.get('axisTickValues')
+    if not isinstance(ticks,dict):return True
+    for axis,(low,high) in (('x',viewport[0:2]),('y',viewport[2:4])):
+        for value in ticks.get(axis) or []:
+            try:number=float(Fraction(str(value)))
+            except (ValueError,ZeroDivisionError):return False
+            if not low<=number<=high:return False
+    return True
+
+def axis_fold_points(features,sides):
+    """The points a frame must hold: the features, plus the origin when no axis is folded, or the part of it the window still shows (the y axis line x=0 when only
+    the x axis is folded, the x axis line y=0 when only the y axis is folded)."""
+    points=list(features)
+    if 'x' not in sides and 'y' not in sides:points.append((0.0,0.0))
+    elif 'x' in sides and 'y' not in sides:points.append((0.0,min(p[1] for p in features)))
+    elif 'y' in sides and 'x' not in sides:points.append((min(p[0] for p in features),0.0))
+    return points
+
+def axis_fold_fit(plan,features,limit,accept,error,allowed=None):
+    """Frame an equal-unit figure: folded when an axis is far from every feature (allowed: {'x':'BOTTOM'..} limits the sides a family can fold), else with the
+    origin as before. accept(viewport,scale,ratio) says whether the curve is wide enough. Returns viewport, height, scale, ratio and the folded sides."""
+    sides=axis_fold_sides(plan,features)
+    if allowed is not None:sides={axis:side for axis,side in sides.items() if allowed.get(axis)==side}
+    for sides_try in ([sides,{}] if sides else [{}]):
+        points=axis_fold_points(features,sides_try)
+        frame_at=(lambda r,points=points,sides_try=sides_try:axis_fold_frame(points,limit,r,sides_try,features)) if sides_try else (lambda r,points=points:equal_unit_frame(points,limit,r))
+        ratios=axis_ratios(plan,points,limit,tall=(lambda r,frame_at=frame_at:frame_at(r)[1]/QUADRATIC_PLOT_WIDTH) if axis_squeeze_allowed(plan) else None)
+        for ratio in ratios:
+            viewport,height,scale=frame_at(ratio)
+            if accept(viewport,scale,ratio):
+                if sides_try and not axis_fold_ticks_ok(plan,viewport):break
+                return viewport,height,scale,ratio,sides_try
+    raise ValueError(error)
+
 # graphPlan.axisScale {x,y} (piecewise-polynomial only): the author's own scale for each axis, for a graph whose axes measure different things (minutes
 # against kilometres). Only the proportion counts: {x:1,y:12} draws one y unit twelve times as long as one x unit. Positive integers, decimals or
 # rational strings, and the proportion stays within 1:64 .. 64:1.
@@ -431,7 +591,7 @@ def axis_scale_ratio(plan):
     if not 1/AXIS_SCALE_MAX_RATIO<=ratio<=AXIS_SCALE_MAX_RATIO:raise ValueError('AXIS_SCALE_RATIO_OUT_OF_RANGE')
     return float(ratio)
 
-def axis_ratios(plan,points,height_limit):
+def axis_ratios(plan,points,height_limit,tall=None):
     """One scale first; a squeeze (y at most halved) only after a failure: axisSqueeze (set by the runner after a layout failure) asks for it
     straight away, and a figure too narrow at one scale tries it next. An author's axisScale is the one ratio, and no squeeze may follow it."""
     declared=axis_scale_ratio(plan)
@@ -441,22 +601,31 @@ def axis_ratios(plan,points,height_limit):
     squeeze=plan.get('axisSqueeze',False)
     if squeeze not in (True,False):raise ValueError('INVALID_AXIS_SQUEEZE')
     ratio=squeeze_ratio(points,height_limit)
-    return [ratio] if squeeze else [1.0]+([ratio] if ratio<1.0 else [])
+    if squeeze:return [ratio]
+    first=1.0
+    if tall is not None:
+        # A figure taller than 1:1.2 (height:width) is made shorter before it is drawn: y/x scale 2/3, and 1/2 when that is still too tall.
+        first=next((r for r in AXIS_FOLD_RATIOS if tall(r)<=AXIS_FOLD_TALL),AXIS_FOLD_RATIOS[-1])
+    return [first]+([ratio] if ratio<first else [])
 
 def _fit_quadratic_equal_unit(plan,hf,kf,af,natural,required,line_points):
     """All reals: the vertex, the natural arms (half-span 2/sqrt|a|, rise 4), the key and line points and the origin, at one scale; the curve
     runs to just inside the top (or bottom) edge."""
     rise=4 if af>0 else -4
-    points=[(0.0,0.0),(hf,kf),(hf-natural,kf+rise),(hf+natural,kf+rise)]+[(p['x'],p['y']) for p in required+line_points]+[(x,y) for x,y in plan.get('overlayAnchors',[])]
+    features=[(hf,kf),(hf-natural,kf+rise),(hf+natural,kf+rise)]+[(p['x'],p['y']) for p in required+line_points]+[(x,y) for x,y in plan.get('overlayAnchors',[])]
     limit=plot_height_limit(plan)
-    for ratio in axis_ratios(plan,points,limit):
-        viewport,height,scale=equal_unit_frame(points,limit,ratio)
+    def curve_ends(viewport):
         edge=viewport[3] if af>0 else viewport[2];dx=math.sqrt(.96*(edge-kf)/af)
-        lo,hi=max(viewport[0],hf-dx),min(viewport[1],hf+dx)
+        return max(viewport[0],hf-dx),min(viewport[1],hf+dx)
+    def wide_enough(viewport,scale,ratio):
         # Too narrow to read: the drawn curve under 48 px wide, or the vertex region (natural window) under 24 px.
-        if (hi-lo)*scale>=EQUAL_UNIT_MIN_CURVE_PX and 2*natural*scale>=EQUAL_UNIT_MIN_NATURAL_PX:break
-    else:raise ValueError('EQUAL_UNIT_PARABOLA_TOO_NARROW')
+        lo,hi=curve_ends(viewport);return (hi-lo)*scale>=EQUAL_UNIT_MIN_CURVE_PX and 2*natural*scale>=EQUAL_UNIT_MIN_NATURAL_PX
+    # Only the x axis can fold, and only on the side the arms run away from (they reach the window edge on the other side, which must not be an axis).
+    viewport,height,scale,ratio,fold=axis_fold_fit(plan,features,limit,wide_enough,'EQUAL_UNIT_PARABOLA_TOO_NARROW',allowed={'x':'BOTTOM' if af>0 else 'TOP'})
+    lo,hi=curve_ends(viewport)
     fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'QUADRATIC_EQUAL_UNIT_OVERVIEW_v1','equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
+    if fold:fitted['axisFold']=axis_fold_record(viewport,fold)
+    if axis_ratio_reason(plan,ratio):fitted['axisRatioReason']=axis_ratio_reason(plan,ratio)
     return {'graphPlan':fitted,'policy':'QUADRATIC_EQUAL_UNIT_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':{'vertex':[hf,kf],'opening':'UP' if af>0 else 'DOWN','naturalHalfSpan':natural,'scalePxPerUnit':scale},'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 INTERVAL_STATES={'CLOSED','OPEN'}
@@ -513,9 +682,11 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     h=-c[1]/(2*c[2])
     values=[f(lo),f(hi)]+([f(h)] if lo<h<hi else [])
     xs=[float(lo),float(hi)]+([float(h)] if lo<h<hi else [])
-    points=[(0.0,0.0)]+list(zip(xs,[float(v) for v in values]))+[(p['x'],p['y']) for p in required+line_points]
+    features_xy=list(zip(xs,[float(v) for v in values]))+[(p['x'],p['y']) for p in required+line_points]
     application=plan.get('applicationAxes')
-    if not application:points=points+[(x,y) for x,y in plan.get('overlayAnchors',[])]
+    if not application:features_xy=features_xy+[(x,y) for x,y in plan.get('overlayAnchors',[])]
+    points=[(0.0,0.0)]+features_xy
+    fold={}
     if application not in (None,True):raise ValueError('INVALID_APPLICATION_AXES')
     if application:
         if plan.get('axisSqueeze') is not None or plan.get('plotCanvas') is not None:raise ValueError('INVALID_APPLICATION_AXES')
@@ -526,13 +697,12 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
             if not isinstance(ticks,dict) or set(ticks)!={'x','y'} or not isinstance(ticks[axis],list) or not application_ticks_valid(ticks[axis],lo_v,hi_v):raise ValueError('APPLICATION_AXES_TICKS_INVALID:'+axis)
     else:
         limit=plot_height_limit(plan)
-        for ratio in axis_ratios(plan,points,limit):
-            viewport,height,scale=equal_unit_frame(points,limit,ratio)
-            if float(hi-lo)*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
-        else:raise ValueError('EQUAL_UNIT_CURVE_TOO_NARROW')
+        viewport,height,scale,ratio,fold=axis_fold_fit(plan,features_xy,limit,lambda viewport,scale,ratio:float(hi-lo)*scale>=EQUAL_UNIT_MIN_CURVE_PX,'EQUAL_UNIT_CURVE_TOO_NARROW')
     features={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':str(lo),'y':str(f(lo)),'state':states[0]},{'side':'END','x':str(hi),'y':str(f(hi)),'state':states[1]}]}
     policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     fitted={**plan,'domain':[float(lo),float(hi)],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','intervalFeatures':features,'intervalFeaturePolicy':policy,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
+    if fold:fitted['axisFold']=axis_fold_record(viewport,fold)
+    if axis_ratio_reason(plan,ratio):fitted['axisRatioReason']=axis_ratio_reason(plan,ratio)
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
 # ---- graphPlan.regions of an inverse proportion (rational-spike-v1, y=k/(d0+d1*x)) ----------------------------------------------------------------------
@@ -1957,7 +2127,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'nameVariable','family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand','curveColor'}
+PIECEWISE_POLY_FIELDS={'axisFold','nameVariable','family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','axisScale','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions','axisTitles','coordinateBand','curveColor'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -2128,6 +2298,7 @@ def piecewise_polynomial_source(plan):
     """Exact pieces, breakpoints, source interval and the piece intervals (None for an unbounded end); the grammar checks of the family."""
     unknown=sorted(set(plan)-PIECEWISE_POLY_FIELDS)
     if unknown:raise ValueError('PIECEWISE_POLY_FIELD_UNKNOWN:'+unknown[0])
+    if 'axisFold' in plan and plan['axisFold'] is not False:raise ValueError('PIECEWISE_POLY_AXIS_FOLD_INVALID')   # axisFold:false keeps the origin framed (no fold, no automatic squeeze); the fold itself is never authored
     raw_pieces=plan.get('pieces');raw_breaks=plan.get('breakpoints',[])
     if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=PIECEWISE_POLY_MAX_PIECES:raise ValueError('PIECEWISE_POLY_PIECE_COUNT_INVALID')
     if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_BREAKPOINT_COUNT_INVALID')
@@ -2675,13 +2846,25 @@ def fit_piecewise_polynomial(plan):
         ends=[(left_x,g_float(left_x)),(right_x,g_float(right_x))]
     for region in regions:
         if region['fromValue']<ends[0][0]-1e-9 or region['toValue']>ends[1][0]+1e-9:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region['id'])
+    fold={}
     for attempt in range(2):
         ref_end_points=[(end[0],value) for end in ends for value in (ref_float(row,end[0]) for row in refs) if value is not None]
-        points=[(0.0,0.0)]+key+ends+ref_end_points
-        for ratio in axis_ratios(plan,points,limit):
-            viewport,height,scale=equal_unit_frame(points,limit,ratio)
-            if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
-        else:raise ValueError('PIECEWISE_POLY_CURVE_TOO_NARROW')
+        features_xy=key+ends+ref_end_points
+        sides=axis_fold_sides(plan,features_xy)
+        for sides_try in ([sides,{}] if sides else [{}]):
+            # An axis that stays is framed with its real position (the origin, or the point of it that the window still has to hold); a folded one is not.
+            points=list(features_xy)
+            if 'x' not in sides_try and 'y' not in sides_try:points.append((0.0,0.0))
+            elif 'x' in sides_try and 'y' not in sides_try:points.append((0.0,min(p[1] for p in features_xy)))
+            elif 'y' in sides_try and 'x' not in sides_try:points.append((min(p[0] for p in features_xy),0.0))
+            frame_at=(lambda r,points=points,sides_try=sides_try:axis_fold_frame(points,limit,r,sides_try,features_xy)) if sides_try else (lambda r,points=points:equal_unit_frame(points,limit,r))
+            ratios=axis_ratios(plan,points,limit,tall=(lambda r,frame_at=frame_at:frame_at(r)[1]/QUADRATIC_PLOT_WIDTH) if axis_squeeze_allowed(plan) else None)
+            for ratio in ratios:
+                viewport,height,scale=frame_at(ratio)
+                if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+            else:raise ValueError('PIECEWISE_POLY_CURVE_TOO_NARROW')
+            if not sides_try or axis_fold_ticks_ok(plan,viewport):break
+        fold=sides_try
         if lo is not None or attempt:break
         # An arm shorter than 12 px beyond the outermost key point is lengthened once and the figure framed again.
         key_lo,key_hi=min([p[0] for p in key] or [0.0]),max([p[0] for p in key] or [0.0])
@@ -2729,6 +2912,8 @@ def fit_piecewise_polynomial(plan):
         merged.update(exact_points);fitted['exactCoordinates']=merged
     fitted['requiredPoints']=required
     fitted.update({'domain':draw,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','piecewisePolynomialFeatures':features,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}})
+    if fold:fitted['axisFold']=axis_fold_record(viewport,fold)
+    if axis_ratio_reason(plan,ratio):fitted['axisRatioReason']=axis_ratio_reason(plan,ratio)
     if lo is not None:
         fitted['intervalFeatures']={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':_pp_text(lo),'y':_pp_text(g(lo)),'state':states[0]},{'side':'END','x':_pp_text(hi),'y':_pp_text(g(hi)),'state':states[1]}]}
         fitted['intervalFeaturePolicy']={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}

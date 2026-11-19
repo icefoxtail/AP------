@@ -1358,16 +1358,16 @@ window.questionBank = [
       "연립방정식"
     ],
     "wide": false,
-    "content": "연립방정식 $\\begin{cases}x-y=a\\\\bx-y=1\\end{cases}$을 풀기 위해 두 일차방정식의 그래프를 그렸더니 그림과 같았다. 상수 $a,b$에 대하여 $a+b$의 값을 구하시오. [4점]",
+    "content": "연립방정식 $\\begin{cases}x+y=a\\\\bx-y=1\\end{cases}$을 풀기 위해 두 일차방정식의 그래프를 그렸더니 그림과 같았다. 상수 $a,b$에 대하여 $a+b$의 값을 구하시오. [4점]",
     "choices": [
       "$-6$",
       "$-3$",
-      "1",
+      "7",
       "2",
       "5"
     ],
     "answer": "③",
-    "solution": "두 직선의 교점이 연립방정식의 해라는 점을 이용하여 계수를 정한다.\n\n그래프에서 두 직선의 교점은 $(2,3)$이다.\n첫째 식 $x-y=a$에 대입하면 $a=2-3=-1$이다.\n둘째 식 $bx-y=1$에 대입하면 $2b-3=1$, $2b=4$이므로 $b=2$이다.\n\n계산을 확인하면 (2,3)을 대입해 a=-1,b=2이다.\n따라서 정답은 ③이다.",
+    "solution": "두 직선의 교점이 연립방정식의 해라는 점을 이용하여 계수를 정한다.\n\n그래프에서 두 직선의 교점은 $(2,3)$이다.\n첫째 식 $x+y=a$에 대입하면 $a=2+3=5$이다.\n둘째 식 $bx-y=1$에 대입하면 $2b-3=1$, $2b=4$이므로 $b=2$이다.\n따라서 $a+b=7$이므로 정답은 ③이다.",
     "image": "assets/images/26_동산중_1학기_기말_중2_기출/q20.png",
     "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
     "subUnit": "연립일차방정식",
@@ -1408,7 +1408,11 @@ window.questionBank = [
       "archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js",
       "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
       "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
-    ]
+    ],
+    "solutionImage": "assets/images/26_동산중_1학기_기말_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 두 직선 y=2x−1과 y=−x+5가 그려져 있고, 두 직선의 교점 (2,3)과 y절편 (0,−1), (0,5)가 표시되어 있다.",
+    "solutionImageCaption": "교점 (2,3)이 두 식의 해이므로 x+y=a에서 a=5이고, bx−y=1에서 2b−3=1이므로 b=2이다. a+b=7이므로 답은 ③ 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

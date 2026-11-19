@@ -278,7 +278,7 @@ window.questionBank = [
   },
   {
     "id": 4,
-    "question": "정의역이 \\{x \\mid 2 \\le x \\le 6\\}인 함수 y = \\log_{\\frac{1}{2}} (x+2) - 3의 최댓값을 M, 최솟값을 m이라 할 때, M-m의 값은?",
+    "question": "정의역이 $\\{x \\mid 2 \\le x \\le 6\\}$인 함수 $y = \\log_{\\frac{1}{2}} (x+2) - 3$의 최댓값을 M, 최솟값을 m이라 할 때, $M-m$의 값은?",
     "choices": [
       "-1",
       "0",
@@ -306,7 +306,7 @@ window.questionBank = [
       "subUnit": "로그함수의 최대최소",
       "difficulty": 2
     },
-    "content": "정의역이 \\{x \\mid 2 \\le x \\le 6\\}인 함수 y = \\log_{\\frac{1}{2}} (x+2) - 3의 최댓값을 M, 최솟값을 m이라 할 때, M-m의 값은?",
+    "content": "정의역이 $\\{x \\mid 2 \\le x \\le 6\\}$인 함수 $y = \\log_{\\frac{1}{2}} (x+2) - 3$의 최댓값을 M, 최솟값을 m이라 할 때, $M-m$의 값은?",
     "questionType": "객관식",
     "category": "로그함수",
     "originalCategory": "지수함수와 로그함수",
@@ -739,7 +739,7 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "question": "양수 x가 다음 조건을 만족시킬 때, 6\\log x의 값은?<br><br>(가) 100 < x < 1000<br>(나) \\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}의 값은 정수이다.",
+    "question": "양수 x가 다음 조건을 만족시킬 때, $6\\log x$의 값은?<br><br>(가) $100 &lt; x &lt; 1000$<br>(나) $\\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}$의 값은 정수이다.",
     "choices": [
       "16",
       "18",
@@ -767,7 +767,7 @@ window.questionBank = [
       "subUnit": "상용로그의 성질",
       "difficulty": 3
     },
-    "content": "양수 x가 다음 조건을 만족시킬 때, 6\\log x의 값은?<br><br>(가) 100 < x < 1000<br>(나) \\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}의 값은 정수이다.",
+    "content": "양수 x가 다음 조건을 만족시킬 때, $6\\log x$의 값은?<br><br>(가) $100 &lt; x &lt; 1000$<br>(나) $\\log 2x^2 - \\log \\frac{\\sqrt{x}}{5}$의 값은 정수이다.",
     "questionType": "객관식",
     "category": "로그의 뜻과 성질",
     "originalCategory": "지수와 로그",
@@ -1470,10 +1470,10 @@ window.questionBank = [
     "questionUid": "qid_v1_3f7255c2d69d7a2d4f298ec2b96ce24eb7aa39bb4efbbf46a8181dbd8313b52f",
     "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_수학I.js",
     "sourceOrdinal": 16,
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q16-solution.svg",
-    "solutionImageAlt": "a=3과 a=4일 때 아래로 열린 이차함수와 y=3, y=9의 교점",
-    "solutionImageCaption": "꼭짓점 높이 12와 19보다 낮은 y=3, 9에서 각각 두 교점이 생기고 y=27은 두 그래프보다 위에 있다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q16-solution-v3.svg",
+    "solutionImageAlt": "해설 그림: 아래로 열린 두 포물선이 있고, 파란 곡선에는 a=3, 주황 곡선에는 a=4 라벨이 붙어 있다. 파란 곡선의 꼭짓점은 y=9보다 높고 주황 곡선의 꼭짓점은 y=27보다 낮으며, 두 곡선 모두 y=3, y=9와 두 점씩 만나고 y=27과는 만나지 않는다.",
+    "solutionImageCaption": "a=3(파란 곡선)과 a=4(주황 곡선)일 때 두 포물선은 모두 y=3, y=9와 두 점씩 만나고 y=27과는 만나지 않는다. 가능한 자연수 a의 합은 7이고 정답은 ③이다.",
+    "solutionImageSize": "full",
     "sourceChoices": [
       "① 3",
       "② 5",
@@ -1565,10 +1565,10 @@ window.questionBank = [
       "axis": "RPM_L4",
       "reason": "The exact repeated piecewise exponential area-scaling relation has no matching H15 Math I L4 crosswalk entry."
     },
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q17-solution.svg",
-    "solutionImageAlt": "기본 구간의 두 지수 곡선과 다음 구간에서 높이가 3분의 1로 줄어드는 모습",
-    "solutionImageCaption": "기본 구간에서 대응하는 함수값의 합이 2이고, 이후 구간은 세로로 축소된다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q17-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 그림은 전체 0≤x≤8 중 0≤x≤4의 앞 두 주기만 표시한다. 파란 실선 f₁=3^x−1 (0≤x≤1), f₂=3−3^(x−1) (1<x≤2)와 주황 점선 f₃=f₁(x−2)/3, f₄=f₂(x−2)/3 (2<x≤4)가 보인다. 봉우리 높이는 2와 2/3이며 반복 구간은 오른쪽으로 2 이동하고 세로로 1/3 축소된다.",
+    "solutionImageCaption": "0≤x≤1에서 f(x)=3^x−1이고 f(x+1)=3−3^x이므로 첫 주기의 넓이는 2이다. [2,4]에서는 같은 두 조각을 오른쪽으로 2 이동하고 높이를 1/3로 줄여 넓이가 2/3이다. 이후 두 구간의 넓이는 각각 2/9, 2/27이므로 S=2+2/3+2/9+2/27=80/27이다. 따라서 27S=80, 정답은 ②이다.",
+    "solutionImageSize": "full",
     "questionUid": "qid_v1_06d42ec650e91d5c4123b0b1d378f00e1fa40ca03b1bbe2d77534e37d03e0785",
     "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_수학I.js",
     "sourceOrdinal": 17,
@@ -1934,7 +1934,7 @@ window.questionBank = [
   },
   {
     "id": 22,
-    "question": "1보다 큰 실수 a에 대하여 두 곡선 y = \\log_a x, y = \\log_{a+2} x가 직선 y = 2와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 y = \\log_{a+2} x와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 y = \\log_a x와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;(y = \\log_a x, y = \\log_{a+2} x, y = 2)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) \\overline{\\mathrm{AC}} = 1일 때, \\overline{\\mathrm{BD}}의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
+    "question": "1보다 큰 실수 a에 대하여 두 곡선 $y = \\log_a x$, $y = \\log_{a+2} x$가 직선 $y = 2$와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 $y = \\log_{a+2} x$와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 $y = \\log_a x$와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;($y = \\log_a x$, $y = \\log_{a+2} x$, $y = 2$)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) $\\overline{\\mathrm{AC}} = 1$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
     "choices": [],
     "answer": "2",
     "solution": "$y=2$와 만나는 점은\n$A=(a^2,2)$, $B=((a+2)^2,2)$이다.\n$A$의 x좌표에서 다른 곡선과 만나는 $C$는\n$C=(a^2,\\log_{a+2}a^2)$이고, $B$의 x좌표에서 첫 곡선과 만나는 $D$는\n$D=((a+2)^2,\\log_a((a+2)^2))$이다.\n$a>1$이므로 $a+2>a$이고, $AC=2-\\log_{a+2}a^2=1$에서 $\\log_{a+2}a=\\dfrac12$이다.\n따라서 $\\sqrt{a+2}=a$, 즉 $a^2-a-2=0$이다. $a>1$을 만족하는 값은 $a=2$이다.\n이때 $A=(4,2)$, $B=(16,2)$, $C=(4,1)$, $D=(16,4)$이므로 $BD=4-2=2$이다.\n따라서 구하는 값은 2이다.",
@@ -1956,7 +1956,7 @@ window.questionBank = [
       "subUnit": "로그함수의 그래프와 선분의 길이",
       "difficulty": 4
     },
-    "content": "1보다 큰 실수 a에 대하여 두 곡선 y = \\log_a x, y = \\log_{a+2} x가 직선 y = 2와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 y = \\log_{a+2} x와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 y = \\log_a x와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;(y = \\log_a x, y = \\log_{a+2} x, y = 2)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) \\overline{\\mathrm{AC}} = 1일 때, \\overline{\\mathrm{BD}}의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
+    "content": "1보다 큰 실수 a에 대하여 두 곡선 $y = \\log_a x$, $y = \\log_{a+2} x$가 직선 $y = 2$와 만나는 점을 각각 A, B라 하자. 점 A를 지나고 y축에 평행한 직선이 곡선 $y = \\log_{a+2} x$와 만나는 점을 C, 점 B를 지나고 y축에 평행한 직선이 곡선 $y = \\log_a x$와 만나는 점을 D라 할 때, 다음 물음에 답하시오.<br><br>(1) 다음 제시된 사항을 모두 반영하여, 문제의 조건을 그래프로 나타내시오. [3점]<br>- 각 그래프의 끝에 그래프가 나타내는 함수식을 적기<br>&nbsp;&nbsp;&nbsp;&nbsp;($y = \\log_a x$, $y = \\log_{a+2} x$, $y = 2$)<br>- 그래프에 x절편 나타내기<br>- 그래프에 점 A, B, C, D 나타내기<br><br>(2) $\\overline{\\mathrm{AC}} = 1$일 때, $\\overline{\\mathrm{BD}}$의 길이를 구하고, 그 풀이과정을 서술하시오. [4점]",
     "questionType": "서술형",
     "category": "로그함수",
     "originalCategory": "지수함수와 로그함수",
@@ -1976,10 +1976,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "decisiveStep": "두 로그함수의 y=2 위 점을 구한 뒤 AC 조건으로 밑 a를 결정한다.",
-    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q22-solution.svg",
-    "solutionImageAlt": "y=2 위의 점 A와 B 및 두 로그함수의 교점 C와 D",
-    "solutionImageCaption": "AC=1에서 a=2를 얻으면 A, B, C, D의 좌표가 확정된다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_수학I/q22-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 밑이 a인 로그곡선과 밑이 a+2인 로그곡선은 공통 x절편 1을 지난다. 수평선 y=2는 첫째 곡선의 A와 둘째 곡선의 B를 지난다. A에서 아래로 그은 수직선은 둘째 곡선의 C에, B에서 위로 그은 수직선은 첫째 곡선의 D에 닿는다.",
+    "solutionImageCaption": "$AC=1$이므로 $\\log_{a+2}(a^2)=1$이다. $a^2=a+2$를 만족하는 $a>1$은 $a=2$이다. 이때 B와 D의 높이는 각각 2와 4이므로 $BD=4-2=2$이다. 따라서 답은 2이다.",
+    "solutionImageSize": "full",
     "sourceProvenance": {
       "batch": "h2-1mid-20261011-b5",
       "evidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/22_팔마고_1학기_중간_고2_수학I.evidence.json",

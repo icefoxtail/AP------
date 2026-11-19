@@ -486,8 +486,8 @@ window.examData = {
       "도형"
     ],
     "wide": false,
-    "content": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 가로 6cm가 표시된 그림\" /></p>",
-    "question": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 가로 6cm가 표시된 그림\" /></p>",
+    "content": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 높이 8cm가 표시된 그림\" /></p>",
+    "question": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 높이 8cm가 표시된 그림\" /></p>",
     "choices": [
       "면 $\\mathrm{EFGH}$에 대응하는 면 $\\mathrm{MNOP}$이다",
       "두 사각기둥의 닮음비는 $1:2$ 이다",
@@ -499,7 +499,7 @@ window.examData = {
       "assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png"
     ],
     "answer": "④",
-    "solution": "두 닮은 사각기둥 (가), (나)에 대하여 옳지 않은 설명을 고른다.\n조건: 대응변 $\\overline{\\mathrm{AB}} = 3\\text{ cm}, \\overline{\\mathrm{IJ}} = 6\\text{ cm}$, (가)의 세로 $\\overline{\\mathrm{BC}} = 3\\text{ cm}$, 높이 $\\overline{\\mathrm{BF}} = 4\\text{ cm}$.\n\n닮음비가 $m : n$인 두 입체도형에서:\n1. 대응하는 모서리의 길이의 비는 $m : n$이다.\n2. 대응하는 면의 넓이의 비는 $m^2 : n^2$이다.\n3. 부피의 비는 $m^3 : n^3$이다.\n\n1단계: 닮음비 계산\n대응하는 모서리 $\\overline{\\mathrm{AB}} : \\overline{\\mathrm{IJ}} = 3 : 6 = 1 : 2$.\n\n2단계: 선지별 검토\n- 선지 ①: 밑면 $\\mathrm{EFGH}$에 대응하는 면은 밑면 $\\mathrm{MNOP}$이다. (참)\n- 선지 ②: 두 사각기둥의 닮음비는 $1 : 2$이다. (참)\n- 선지 ③: $\\overline{\\mathrm{JK}}$는 $\\overline{\\mathrm{BC}}$에 대응하므로 $\\overline{\\mathrm{JK}} = 2 \\times \\overline{\\mathrm{BC}} = 2 \\times 3 = 6\\text{ cm}$이다. (참)\n- 선지 ⑤: 넓이의 비는 $1^2 : 2^2 = 1 : 4$이다. (참)\n- 선지 ④: 닮음비가 $1:2$일 때 부피의 비는 $1^3 : 2^3 = 1 : 8$이다.\n따라서 (가)의 부피가 $12\\text{cm}^3$일 때, (나)의 부피는:\n$12 \\times 8 = 96\\text{cm}^3$이어야 한다.\n선지의 $36\\text{cm}^3$은 거짓이다.\n\n① 옳음\n② 옳음\n③ 옳음\n④ 옳지 않음 (부피는 $96\\text{cm}^3$이어야 함)\n⑤ 옳음\n\n따라서 옳지 않은 것은 ④이다.",
+    "solution": "두 닮은 사각기둥 (가), (나)에 대하여 옳지 않은 설명을 고른다.\n조건: (가)의 $\\overline{\\mathrm{BC}} = 3\\text{ cm}$, 높이 $\\overline{\\mathrm{BF}} = 4\\text{ cm}$이고 (나)의 높이 $\\overline{\\mathrm{JN}} = 8\\text{ cm}$이다.\n\n닮음비가 $m : n$인 두 입체도형에서:\n1. 대응하는 모서리의 길이의 비는 $m : n$이다.\n2. 대응하는 면의 넓이의 비는 $m^2 : n^2$이다.\n3. 부피의 비는 $m^3 : n^3$이다.\n\n1단계: 닮음비 계산\n대응하는 모서리 $\\overline{\\mathrm{BF}} : \\overline{\\mathrm{JN}} = 4 : 8 = 1 : 2$.\n\n2단계: 선지별 검토\n- 선지 ①: 밑면 $\\mathrm{EFGH}$에 대응하는 면은 밑면 $\\mathrm{MNOP}$이다. (참)\n- 선지 ②: 두 사각기둥의 닮음비는 $1 : 2$이다. (참)\n- 선지 ③: $\\overline{\\mathrm{JK}}$는 $\\overline{\\mathrm{BC}}$에 대응하므로 $\\overline{\\mathrm{JK}} = 2 \\times \\overline{\\mathrm{BC}} = 2 \\times 3 = 6\\text{ cm}$이다. (참)\n- 선지 ⑤: 넓이의 비는 $1^2 : 2^2 = 1 : 4$이다. (참)\n- 선지 ④: 닮음비가 $1:2$일 때 부피의 비는 $1^3 : 2^3 = 1 : 8$이다.\n따라서 (가)의 부피가 $12\\text{cm}^3$일 때, (나)의 부피는:\n$12 \\times 8 = 96\\text{cm}^3$이어야 한다.\n선지의 $36\\text{cm}^3$은 거짓이다.\n\n① 옳음\n② 옳음\n③ 옳음\n④ 옳지 않음 (부피는 $96\\text{cm}^3$이어야 함)\n⑤ 옳음\n\n따라서 옳지 않은 것은 ④이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -623,8 +623,8 @@ window.examData = {
       "도형"
     ],
     "wide": false,
-    "content": "<p>15. 오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q15.png\" alt=\"삼각형 ABC에서 BC와 DE가 평행하고 AD=10cm, DB=5cm, AE=6cm, EC=x cm, DE=y cm, BC=15cm가 표시된 그림\" /></p>",
-    "question": "<p>15. 오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q15.png\" alt=\"삼각형 ABC에서 BC와 DE가 평행하고 AD=10cm, DB=5cm, AE=6cm, EC=x cm, DE=y cm, BC=15cm가 표시된 그림\" /></p>",
+    "content": "<p>15. 오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q15.png\" alt=\"삼각형 ABC에서 BC와 DE가 평행하고 AD=10cm, DB=5cm, AE=8cm, EC=x cm, DE=y cm, BC=15cm가 표시된 그림\" /></p>",
+    "question": "<p>15. 오른쪽 $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q15.png\" alt=\"삼각형 ABC에서 BC와 DE가 평행하고 AD=10cm, DB=5cm, AE=8cm, EC=x cm, DE=y cm, BC=15cm가 표시된 그림\" /></p>",
     "choices": [
       "$12\\text{cm}$",
       "$13\\text{cm}$",
@@ -635,8 +635,8 @@ window.examData = {
     "images": [
       "assets/images/20_풍덕중_2학기_중간_중2_수학/q15.png"
     ],
-    "answer": "②",
-    "solution": "$\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, 미지수 $x+y$의 값을 구한다.\n주어진 조건: $\\overline{\\mathrm{AD}} = 10\\text{ cm}, \\overline{\\mathrm{DB}} = 5\\text{ cm}, \\overline{\\mathrm{AE}} = 6\\text{ cm}, \\overline{\\mathrm{EC}} = x\\text{ cm}, \\overline{\\mathrm{DE}} = y\\text{ cm}, \\overline{\\mathrm{BC}} = 15\\text{ cm}$.\n\n삼각형에서 평행선 사이의 선분의 길이의 비 성질을 이용한다:\n1. $\\overline{\\mathrm{AD}} : \\overline{\\mathrm{DB}} = \\overline{\\mathrm{AE}} : \\overline{\\mathrm{EC}}$\n2. $\\overline{\\mathrm{AD}} : \\overline{\\mathrm{AB}} = \\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}}$\n\n1단계: $x$의 값 계산\n$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{DB}} = 10 : 5 = 2 : 1$\n따라서 $\\overline{\\mathrm{AE}} : \\overline{\\mathrm{EC}} = 2 : 1$이므로:\n$6 : x = 2 : 1 \\implies 2x = 6 \\implies x = 3\\text{ cm}$\n\n2단계: $y$의 값 계산\n$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}} + \\overline{\\mathrm{DB}} = 10 + 5 = 15\\text{ cm}$\n$\\triangle\\mathrm{ADE} \\sim \\triangle\\mathrm{ABC}$의 닮음비는:\n$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{AB}} = 10 : 15 = 2 : 3$\n따라서 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}} = 2 : 3$이므로:\n$y : 15 = 2 : 3 \\implies 3y = 30 \\implies y = 10\\text{ cm}$\n\n3단계: $x+y$의 값 계산\n$x + y = 3 + 10 = 13\\text{ cm}$\n\n① $12\\text{cm}$: 오답\n② $13\\text{cm}$: 계산 결과와 일치함 (정답)\n③ $14\\text{cm}$: 오답\n④ $15\\text{cm}$: 오답\n⑤ $16\\text{cm}$: 오답\n\n따라서 $x+y$의 값은 ② $13\\text{cm}$이다.",
+    "answer": "③",
+    "solution": "$\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{BC}} \\parallel \\overline{\\mathrm{DE}}$일 때, 미지수 $x+y$의 값을 구한다.\n주어진 조건: $\\overline{\\mathrm{AD}} = 10\\text{ cm}, \\overline{\\mathrm{DB}} = 5\\text{ cm}, \\overline{\\mathrm{AE}} = 8\\text{ cm}, \\overline{\\mathrm{EC}} = x\\text{ cm}, \\overline{\\mathrm{DE}} = y\\text{ cm}, \\overline{\\mathrm{BC}} = 15\\text{ cm}$.\n\n삼각형에서 평행선 사이의 선분의 길이의 비 성질을 이용한다:\n1. $\\overline{\\mathrm{AD}} : \\overline{\\mathrm{DB}} = \\overline{\\mathrm{AE}} : \\overline{\\mathrm{EC}}$\n2. $\\overline{\\mathrm{AD}} : \\overline{\\mathrm{AB}} = \\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}}$\n\n1단계: $x$의 값 계산\n$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{DB}} = 10 : 5 = 2 : 1$\n따라서 $\\overline{\\mathrm{AE}} : \\overline{\\mathrm{EC}} = 2 : 1$이므로:\n$8 : x = 2 : 1 \\implies 2x = 8 \\implies x = 4\\text{ cm}$\n\n2단계: $y$의 값 계산\n$\\overline{\\mathrm{AB}} = \\overline{\\mathrm{AD}} + \\overline{\\mathrm{DB}} = 10 + 5 = 15\\text{ cm}$\n$\\triangle\\mathrm{ADE} \\sim \\triangle\\mathrm{ABC}$의 닮음비는:\n$\\overline{\\mathrm{AD}} : \\overline{\\mathrm{AB}} = 10 : 15 = 2 : 3$\n따라서 $\\overline{\\mathrm{DE}} : \\overline{\\mathrm{BC}} = 2 : 3$이므로:\n$y : 15 = 2 : 3 \\implies 3y = 30 \\implies y = 10\\text{ cm}$\n\n3단계: $x+y$의 값 계산\n$x + y = 4 + 10 = 14\\text{ cm}$\n\n① $12\\text{cm}$: 오답\n② $13\\text{cm}$: 오답\n③ $14\\text{cm}$: 계산 결과와 일치함 (정답)\n④ $15\\text{cm}$: 오답\n⑤ $16\\text{cm}$: 오답\n\n따라서 $x+y$의 값은 ③ $14\\text{cm}$이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -668,8 +668,8 @@ window.examData = {
       "도형"
     ],
     "wide": false,
-    "content": "<p>16. 그림에서 $l \\parallel m \\parallel n \\parallel k$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"4개의 평행선 l, m, n, k를 지나는 두 직선이 만나면서 생기는 선분의 길이: 왼쪽 4cm, x cm, 2cm와 오른쪽 6cm, y cm, 3cm가 표시된 그림\" /></p>",
-    "question": "<p>16. 그림에서 $l \\parallel m \\parallel n \\parallel k$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"4개의 평행선 l, m, n, k를 지나는 두 직선이 만나면서 생기는 선분의 길이: 왼쪽 4cm, x cm, 2cm와 오른쪽 6cm, y cm, 3cm가 표시된 그림\" /></p>",
+    "content": "<p>16. 그림에서 $l \\parallel m \\parallel n \\parallel k$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"4개의 평행선 l, m, n, k를 지나는 두 직선이 만나면서 생기는 선분의 길이: 왼쪽 4cm, x cm, 2cm와 오른쪽 6cm, l에서 n까지 15cm, m에서 k까지 y cm가 표시된 그림\" /></p>",
+    "question": "<p>16. 그림에서 $l \\parallel m \\parallel n \\parallel k$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q16.png\" alt=\"4개의 평행선 l, m, n, k를 지나는 두 직선이 만나면서 생기는 선분의 길이: 왼쪽 4cm, x cm, 2cm와 오른쪽 6cm, l에서 n까지 15cm, m에서 k까지 y cm가 표시된 그림\" /></p>",
     "choices": [
       "$18\\text{cm}$",
       "$19\\text{cm}$",
@@ -680,8 +680,8 @@ window.examData = {
     "images": [
       "assets/images/20_풍덕중_2학기_중간_중2_수학/q16.png"
     ],
-    "answer": "③",
-    "solution": "4개의 직선 $l \\parallel m \\parallel n \\parallel k$이 평행할 때, 두 횡단선에 의해 잘린 선분들로부터 $x+y$의 값을 구한다.\n조건: 평행선 사이의 왼쪽 선분들은 $4\\text{ cm}, x\\text{ cm}, 2\\text{ cm}$, 오른쪽 선분들은 $6\\text{ cm}, y\\text{ cm}, 3\\text{ cm}$ (비율 $4:6 = x:y = 2:3$).\n\n평행선 사이의 선분의 길이의 비 성질에 의해, 세 개 이상의 평행선이 다른 두 직선과 만날 때 생기는 대응하는 선분의 길이의 비는 서로 같다:\n$\\dfrac{a}{a'} = \\dfrac{b}{b'} = \\dfrac{c}{c'}$\n\n1단계: 평행선 사이의 기본 비 구하기\n첫 번째 구간과 세 번째 구간의 대응선분 비는 다음과 같다:\n$4 : 6 = 2 : 3 = \\dfrac{2}{3}$\n\n2단계: $x, y$ 사이의 관계식 적용\n가운데 구간의 대응선분 비 역시 같아야 하므로:\n$\\dfrac{x}{y} = \\dfrac{2}{3} \\implies 2y = 3x$\n도면의 수치에서 왼쪽 구간의 $x = 8\\text{ cm}$일 때, 대응하는 오른쪽 구간 $y$는 다음과 같다:\n$4 : 6 = 8 : y \\implies 4y = 48 \\implies y = 12\\text{ cm}$\n\n3단계: $x+y$의 값 계산\n$x + y = 8 + 12 = 20\\text{ cm}$\n\n① $18\\text{cm}$: 오답\n② $19\\text{cm}$: 오답\n③ $20\\text{cm}$: 계산 결과와 일치함 (정답)\n④ $21\\text{cm}$: 오답\n⑤ $22\\text{cm}$: 오답\n\n따라서 $x+y$의 값은 ③ $20\\text{cm}$이다.",
+    "answer": "①",
+    "solution": "4개의 직선 $l \\parallel m \\parallel n \\parallel k$가 두 직선과 만날 때, 대응하는 선분의 길이의 비는 같다.\n그림에서 왼쪽 선분은 $l$~$m$이 $4\\text{ cm}$, $m$~$n$이 $x\\text{ cm}$, $n$~$k$가 $2\\text{ cm}$이고, 오른쪽 선분은 $l$~$m$이 $6\\text{ cm}$, $l$~$n$이 $15\\text{ cm}$, $m$~$k$가 $y\\text{ cm}$이다.\n\n1단계: $x$의 값 계산\n$4 : (4+x) = 6 : 15 \\implies 6(4+x) = 60 \\implies x = 6$\n\n2단계: $y$의 값 계산\n$m$~$k$의 왼쪽 길이는 $x+2 = 8\\text{ cm}$이므로\n$4 : 8 = 6 : y \\implies 4y = 48 \\implies y = 12\\text{ cm}$\n\n3단계: $x+y$의 값 계산\n$x + y = 6 + 12 = 18\\text{ cm}$\n\n① $18\\text{cm}$: 계산 결과와 일치함 (정답)\n② $19\\text{cm}$: 오답\n③ $20\\text{cm}$: 오답\n④ $21\\text{cm}$: 오답\n⑤ $22\\text{cm}$: 오답\n\n따라서 $x+y$의 값은 ① $18\\text{cm}$이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -758,8 +758,8 @@ window.examData = {
       "도형"
     ],
     "wide": false,
-    "content": "<p>18. 다음 그림에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 대각선에 의해 나뉜 평행선 EF의 두 선분 x, y: AD=6cm, BC=10cm, AE 대 EB = 3 대 2가 표시된 그림\" /></p>",
-    "question": "<p>18. 다음 그림에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 대각선에 의해 나뉜 평행선 EF의 두 선분 x, y: AD=6cm, BC=10cm, AE 대 EB = 3 대 2가 표시된 그림\" /></p>",
+    "content": "<p>18. 다음 그림에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 대각선에 의해 나뉜 평행선 EF의 두 선분 x, y: AD=7cm, BC=3cm, AB=10cm가 표시된 그림\" /></p>",
+    "question": "<p>18. 다음 그림에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$일 때, $x+y$의 값은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png\" alt=\"사다리꼴 ABCD에서 대각선에 의해 나뉜 평행선 EF의 두 선분 x, y: AD=7cm, BC=3cm, AB=10cm가 표시된 그림\" /></p>",
     "choices": [
       "$7\\text{cm}$",
       "$8\\text{cm}$",
@@ -770,8 +770,8 @@ window.examData = {
     "images": [
       "assets/images/20_풍덕중_2학기_중간_중2_수학/q18.png"
     ],
-    "answer": "③",
-    "solution": "사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이고, 대각선과 $\\overline{\\mathrm{EF}}$의 교점에 의해 나뉜 두 선분의 길이가 각각 $x, y$일 때, $x+y = \\overline{\\mathrm{EF}}$의 길이를 구한다.\n주어진 조건: $\\overline{\\mathrm{AD}} = 6\\text{ cm}, \\overline{\\mathrm{BC}} = 10\\text{ cm}, \\overline{\\mathrm{AE}} : \\overline{\\mathrm{EB}} = 3 : 2$.\n\n사다리꼴의 대각선과 평행선 공식:\n대각선과의 교점을 $\\mathrm{G}$라 하면 $\\overline{\\mathrm{EF}} = \\overline{\\mathrm{EG}} + \\overline{\\mathrm{GF}} = x + y$이다.\n- $\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{EG}} \\parallel \\overline{\\mathrm{BC}}$이므로 $\\overline{\\mathrm{EG}} = \\overline{\\mathrm{BC}} \\times \\dfrac{\\overline{\\mathrm{AE}}}{\\overline{\\mathrm{AB}}} = 10 \\times \\dfrac{3}{3+2} = 10 \\times \\dfrac{3}{5} = 6\\text{ cm}$\n- $\\triangle\\mathrm{ACD}$에서 $\\overline{\\mathrm{GF}} \\parallel \\overline{\\mathrm{AD}}$이므로 $\\overline{\\mathrm{GF}} = \\overline{\\mathrm{AD}} \\times \\dfrac{\\overline{\\mathrm{CG}}}{\\overline{\\mathrm{CA}}} = \\overline{\\mathrm{AD}} \\times \\dfrac{\\overline{\\mathrm{EB}}}{\\overline{\\mathrm{AB}}} = 6 \\times \\dfrac{2}{5} = 2.4\\text{ cm}$\n- 따라서 $\\overline{\\mathrm{EF}} = x + y = 6 + 2.4 = 8.4\\text{ cm}$\n(사다리꼴 평행선 공식: $\\overline{\\mathrm{EF}} = \\dfrac{m \\times \\overline{\\mathrm{BC}} + n \\times \\overline{\\mathrm{AD}}}{m + n} = \\dfrac{3 \\times 10 + 2 \\times 6}{3 + 2} = \\dfrac{42}{5} = 8.4\\text{ cm}$)\n\n1단계: 공식에 의한 연속 등식\n$x + y = \\overline{\\mathrm{EF}} = \\dfrac{3 \\times 10 + 2 \\times 6}{3 + 2}$\n$= \\dfrac{30 + 12}{5} = \\dfrac{42}{5} = 8.4\\text{ cm}$\n\n① $7\\text{cm}$: 오답\n② $8\\text{cm}$: 오답\n③ $8.4\\text{cm}$: 계산 결과와 일치함 (정답)\n④ $8.6\\text{cm}$: 오답\n⑤ $9.1\\text{cm}$: 오답\n\n따라서 $x+y$의 값은 ③ $8.4\\text{cm}$이다.",
+    "answer": "⑤",
+    "solution": "사다리꼴 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이고, 그림에서 $\\overline{\\mathrm{AD}} = 7\\text{ cm}, \\overline{\\mathrm{BC}} = 3\\text{ cm}, \\overline{\\mathrm{AB}} = 10\\text{ cm}$이다. 두 대각선 $\\overline{\\mathrm{AC}}$, $\\overline{\\mathrm{BD}}$의 교점을 $\\mathrm{F}$라 하면 $x = \\overline{\\mathrm{EF}}$, $y = \\overline{\\mathrm{AE}}$이다.\n\n1단계: $\\overline{\\mathrm{AF}} : \\overline{\\mathrm{FC}}$ 구하기\n$\\overline{\\mathrm{AD}} \\parallel \\overline{\\mathrm{BC}}$이므로 $\\triangle\\mathrm{AFD} \\sim \\triangle\\mathrm{CFB}$이고\n$\\overline{\\mathrm{AF}} : \\overline{\\mathrm{FC}} = 7 : 3$이다.\n\n2단계: $y$의 값 계산\n$\\triangle\\mathrm{ABC}$에서 $\\overline{\\mathrm{EF}} \\parallel \\overline{\\mathrm{BC}}$이므로\n$\\overline{\\mathrm{AE}} : \\overline{\\mathrm{AB}} = \\overline{\\mathrm{AF}} : \\overline{\\mathrm{AC}} = 7 : 10$이다.\n따라서 $y = \\overline{\\mathrm{AE}} = 10 \\times \\dfrac{7}{10} = 7\\text{ cm}$이다.\n\n3단계: $x$의 값 계산\n$x = \\overline{\\mathrm{EF}} = \\overline{\\mathrm{BC}} \\times \\dfrac{\\overline{\\mathrm{AF}}}{\\overline{\\mathrm{AC}}} = 3 \\times \\dfrac{7}{10} = 2.1\\text{ cm}$이다.\n\n4단계: $x+y$의 값 계산\n$x + y = 2.1 + 7 = 9.1\\text{ cm}$\n\n① $7\\text{cm}$: 오답\n② $8\\text{cm}$: 오답\n③ $8.4\\text{cm}$: 오답\n④ $8.6\\text{cm}$: 오답\n⑤ $9.1\\text{cm}$: 계산 결과와 일치함 (정답)\n\n따라서 $x+y$의 값은 ⑤ $9.1\\text{cm}$이다.",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",

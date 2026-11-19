@@ -197,7 +197,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원_고2_유형확인/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선이 최고점 4와 최저점 -2 사이에서 한 주기 동안 그려져 있고, y축에 -2, 1, 4가, x축 끝에 3π가 표시된 그림이다.",
+    "solutionImageCaption": "주어진 최고·최저 높이로 중심과 진폭을 구하고 한 주기의 길이를 맞춘다. 그 곡선에서 원문이 요구한 입력의 위치를 찾아 값을 계산한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 10,
@@ -219,7 +223,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원_고2_유형확인/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인 곡선 한 주기와 수평선 y=1/4가 두 점에서 만나고, 두 교점 사이의 가운데를 지나는 세로 점선 x=1/2이 표시된 그림이다.",
+    "solutionImageCaption": "한 주기 안의 두 교점은 가운데 세로선에 대해 대칭이다. 두 교점의 가로 좌표를 더할 때 이 대칭을 이용한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -263,7 +271,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_삼각함수_중단원_고2_유형확인/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 사인 곡선과 수평선 y=3/2가 두 점 A, B에서 만나고, 원점 O와 A, B를 이은 삼각형 및 선분 AB의 길이 8/3이 표시된 그림이다.",
+    "solutionImageCaption": "사인 곡선과 주어진 수평선의 두 교점을 밑변 양 끝으로 삼는다. 원점에서 수평 밑변까지의 높이는 주어진 수평선의 높이와 같다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,

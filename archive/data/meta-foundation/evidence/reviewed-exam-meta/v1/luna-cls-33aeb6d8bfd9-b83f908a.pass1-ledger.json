@@ -1,0 +1,12 @@
+{
+  "schemaVersion":"meta-judgment-ledger-v1",
+  "judge":"luna-pass1",
+  "createdAt":"2026-11-11T23:58:00+09:00",
+  "sourceArchiveFile":"original/high/h2/1mid/23_팔마고_1학기_중간_고2_확률과통계.js",
+  "items":[
+    {"ordinal":3,"questionUid":"","primaryMethod":"C(5,5)+C(6,5)+…+C(11,5)를 파스칼 항등식 C(k,5)=C(k+1,6)-C(k,6)으로 망원합으로 바꾼다.","decisiveStep":"중간 항이 소거되어 C(12,6)-C(5,6)=C(12,6)이 남고 선택지 ⑤와 일치한다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"이항정리","l3":"이항계수","l4":"조합 항등식"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":19,"questionUid":"","primaryMethod":"각 사람의 최단 경로를 가로 3번과 세로 3번의 배열로 세고, 중앙선을 따라 C에 오기 전에 만나는 경로를 제외한다.","decisiveStep":"C에서 처음 만나는 경우는 적어도 한 사람이 중앙선에 C에서만 진입하는 10가지 경로를 택하므로 포함배제 결과는 10·20+20·10-10·10=300이다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"순열과 조합","l3":"순열","l4":"일렬 배열"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":20,"questionUid":"","primaryMethod":"홀수 윗수가 있는 이항계수에서 대칭인 항끼리 짝지어 C(2n+1,1)+…+C(2n+1,n)=2^(2n)-1로 바꾼다.","decisiveStep":"1023=2^10-1이므로 2n=10이고 자연수 n은 5이다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"이항정리","l3":"이항계수","l4":"이항계수의 성질"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"NONE"},
+    {"ordinal":21,"questionUid":"","primaryMethod":"X에서 Y로 가는 함수의 단사·엄격증가·비감소 개수를 각각 순열, 조합, 중복조합으로 세고, 비감소 함수 중 f(2)f(5)=18인 경우를 조건부확률의 분자로 센다.","decisiveStep":"비감소인 경우에는 f(2)≤f(5)이므로 곱이 18인 쌍은 (3,6)뿐이고, 나머지 세 값의 가능한 배치는 30개여서 전체 252개 중 비율은 5/42이다.","rpmPath":{"majorUnit":"경우의 수","midUnit":"순열과 조합","l3":"중복조합","l4":"정수해 개수"},"crossConceptKeys":[],"conditionKeys":[],"integrationPattern":"CASE_BRANCH"}
+  ]
+}

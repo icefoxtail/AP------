@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-2c551e3ce539-0f037b3b",
+  "sourceArchiveFile": "original/middle/m2/1mid/24_문성중_1학기_중간_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3fe4deb37e2061f49fd11b13813936b04f9d7972c82fa66cc062602b3d948549",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+      "templateKey": null,
+      "step": "처음식에서 잘못된결과를 빼A=-3x+3y+4를 복원하고 다시 더하여-x+4y+5를 얻는다.",
+      "note": "새 TPL 제안: 잘못 뺀 다항식의 덧셈 복원. 정의: 처음식에서 잘못된결과를 빼A=-3x+3y+4를 복원하고 다시 더하여-x+4y+5를 얻는다. 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ab5318415cbf5f3aa854708554b2bd5c1d5e100551f4307904c73aad8eb98820",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+      "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+      "step": "a≤b에서 음수배인②만 방향이 뒤집혀4-a≥4-b가 된다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    }
+  ]
+}

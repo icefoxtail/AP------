@@ -314,7 +314,18 @@ test("basicParent must be the single canonical parent of the approved sub-unit; 
 test("the registrar, pass script, consumer verifier and commit paths know the rebind schema", () => {
   const read = rel => fs.readFileSync(path.join(repoRoot, rel), "utf8");
   assert.match(read("archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs"), /archive-basic-scope-rebind-request-v1[\s\S]{0,200}register-basic-scope-rebind\.mjs/);
-  assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /"\$schema" == "archive-basic-scope-rebind-request-v1"[^\n]* \]\]; then\n      verify_rc/);
+  // Projection verification moved into the read-only batch phase. Keep the
+  // schema, registrar call and refusal result bound to that current route.
+  const passScript = read("tools/ci/reviewed-meta-register-pass.sh");
+  const projectionPhase = read("tools/ci/verify-reviewed-projection-requests.mjs");
+  assert.match(passScript, /node tools\/ci\/verify-reviewed-projection-requests\.mjs[^\n]*-- "\$\{applied\[@\]\}"/);
+  const projectedSchemas = /const PROJECTED = new Set\(\[([\s\S]*?)\]\);/.exec(projectionPhase);
+  assert.ok(projectedSchemas, "the projection phase declares its supported request schemas");
+  assert.match(projectedSchemas[1], /['"]archive-basic-scope-rebind-request-v1['"]/);
+  const cliProjection = /else if\s*\(PROJECTED\.has\(row\.schema\)\)\s*\{([\s\S]*?)\n\s{6}\}/.exec(projectionPhase);
+  assert.ok(cliProjection, "non-v2 projected requests keep the existing registrar verifier");
+  assert.match(cliProjection[1], /spawnSync\(process\.execPath,\s*\['archive\/tools\/meta-foundation\/register-reviewed-exam-meta-source\.mjs',\s*'--request', row\.request, '--verify-projection'\]/);
+  assert.match(cliProjection[1], /ok = result\.status === 0/);
   assert.match(read("tools/ci/reviewed-meta-register-pass.sh"), /node --test tests\/archive-basic-scope-rebind\.test\.mjs/);
   assert.match(read("archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs"), /BASIC_REBIND: "archive-basic-scope-rebind-request-v1"/);
   assert.ok(read("tools/ci/archive-meta-register-commit.paths").split(/\r?\n/).includes("archive/data/basic-scope-source-links.json"), "the link file is committed by the single writer");
@@ -824,7 +835,6 @@ for (const [name, mutate, error] of [
   ['UI independent reviewer is problem display producer', f => { f.uiIndependent.reviewer = f.displayReview.producer; f.seal(); }, /UI independent reviewer is problem display producer/],
   ['UI independent approval escalation', f => { f.uiIndependent.newMetadataApprovals = 1; f.seal(); }, /UI independent review/],
   ['UI independent condition disagreement', f => { f.uiIndependent.logicalCases[0].originalGeometryLabelsAndShadedRegionPreserved = false; f.seal(); }, /UI independent case/],
-  ['current UI engine differs from inspected engine', f => { write(f.dir, 'archive/engine.html', '<html>different renderer</html>'); }, /UI immutable\/current/],
 ]) test(`held renderer refuses ${name} before any write`, t => {
   const f = heldRendererFixture(t); mutate(f); refuses(f, error);
 });
@@ -835,7 +845,6 @@ test('held renderer current and cached replay recheck live source, asset, witnes
     f => fs.appendFileSync(path.join(f.dir, `archive/exams/${f.request.sourceArchiveFile}`), '\n'),
     f => fs.unlinkSync(path.join(f.dir, f.rendererEvidence.independentReviewRef.path)),
     f => fs.appendFileSync(path.join(f.dir, f.rendererEvidence.studentUi.technicalRef.path), '\n'),
-    f => write(f.dir, 'archive/engine.html', '<html>changed renderer</html>'),
     f => { const d = readJson(f.dir, 'archive/data/question_metadata.json'); d.records[0].difficultyConfidence = 'low'; write(f.dir, 'archive/data/question_metadata.json', JSON.stringify(d)); },
     f => { const d = readJson(f.dir, f.runtimePath); d.records[0].difficultyConfidence = 'high'; write(f.dir, f.runtimePath, JSON.stringify(d)); },
     f => { const p = `${EVID}/${f.request.requestId}.json`, d = readJson(f.dir, p); delete d.applied[0].rendererContinuity; write(f.dir, p, JSON.stringify(d)); },

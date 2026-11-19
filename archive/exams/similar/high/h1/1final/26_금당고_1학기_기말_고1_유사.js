@@ -106,7 +106,11 @@ window.questionBank = [
     "sourceQid": 2,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q02-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q02-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q02-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_유사/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선을 위아래로 놓고, 위 수직선에는 3보다 오른쪽인 부분이, 아래 수직선에는 7보다 왼쪽인 부분이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "3x-4>5에서 x>3, 2x+5<19에서 x<7이므로 두 조건을 함께 만족하는 범위는 3<x<7이고 두 끝점은 포함하지 않는다. 따라서 답은 ⑤ 3<x<7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -540,7 +544,11 @@ window.questionBank = [
     "sourceQid": 10,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q10-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q10-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q10-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_유사/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 n 위에 11과 13을 양 끝으로 하는 열린 구간이 굵은 선으로 표시된 그림이다.",
+    "solutionImageCaption": "가장 작은 자연수를 n이라 하면 네 수의 합은 4n+6이고, 50<4n+6<58에서 11<n<13이므로 n=12이다. 가장 큰 수는 n+3=15이므로, 답은 ② 15이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -652,7 +660,11 @@ window.questionBank = [
     "sourceQid": 12,
     "variationType": "STRICT_VARIANT",
     "problemPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q12-problem.plan.json",
-    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q12-solution.plan.json"
+    "solutionPlanRef": "archive/exams/similar/high/h1/1final/26_금당고_1학기_기말_고1_유사_plans/q12-solution.plan.json",
+    "solutionImage": "assets/images/26_금당고_1학기_기말_고1_유사/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 지역 A, B, C, D가 선으로 이어진 그림으로, A와 B 사이에 2, A와 D 사이에 2, B와 C 사이에 3, B와 D 사이에 1, C와 D 사이에 2가 적혀 있고 A와 C 사이에는 선이 없다.",
+    "solutionImageCaption": "지나는 지역의 순서로 나누면 A→B→C는 2×3=6가지, A→D→C는 2×2=4가지, A→B→D→C는 2×1×2=4가지, A→D→B→C는 2×1×3=6가지이다. 네 경우는 겹치지 않으므로 합은 20이고, 답은 ① 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -852,7 +864,7 @@ window.questionBank = [
       "켤레복소수"
     ],
     "wide": false,
-    "content": "사차방정식 $x^4+ax^3+bx^2+cx+d=0$의 두 근 $\\alpha,\\beta$가 다음 조건을 만족시킨다. 실수 $a,b,c,d$에 대하여 $a+b+c+d$의 최솟값은? [5점]<br><div class='note-box'>(가) $\\alpha+\\overline\\alpha=6$, $\\beta-\\overline\\beta=4i$<br>(나) $\\alpha-\\beta$는 5가 아닌 실수이다.</div>",
+    "content": "사차방정식 $x^4+ax^3+bx^2+cx+d=0$의 서로 다른 두 근 $\\alpha,\\beta$가 다음 조건을 만족시킨다. 실수 $a,b,c,d$에 대하여 $a+b+c+d$의 최솟값은? [5점]<br><div class='note-box'>(가) $\\alpha+\\overline\\alpha=6$, $\\beta-\\overline\\beta=4i$<br>(나) $\\alpha-\\beta$는 5가 아닌 실수이다.</div>",
     "choices": [
       "$29$",
       "$30$",
@@ -861,7 +873,7 @@ window.questionBank = [
       "$33$"
     ],
     "answer": "③",
-    "solution": "계수가 모두 실수이므로 허수인 근의 켤레복소수도 근이다.\n(가)에서 $\\alpha+\\overline\\alpha=6$이므로 $\\alpha$의 실수부분은 $3$이다.\n$\\beta-\\overline\\beta=4i$이므로 $\\beta$의 허수부분은 $2$이다.\n(나)에서 $\\alpha-\\beta$가 실수이므로 두 수의 허수부분이 같다. 따라서 $\\alpha$의 허수부분도 $2$이고 $\\alpha=3+2i$이다.\n$\\beta=s+2i$ ($s$는 실수)라 하자.\n(나)에서 $\\alpha-\\beta=3-s\\ne5$이므로 $s\\ne-2$이다.\n네 근은 $3+2i,\\ 3-2i,\\ s+2i,\\ s-2i$이므로\n$P(x)=(x^2-6x+13)(x^2-2sx+s^2+4)$이다.\n$a+b+c+d=P(1)-1$이므로 $P(1)$을 구한다.\n$P(1)=(1-6+13)(1-2s+s^2+4)$\n$=8(s^2-2s+5)$\n$=8\\{(s-1)^2+4\\}$이다.\n$s=1$일 때 최소이고, $s=1$은 $s\\ne-2$를 만족한다.\n최솟값은 $P(1)=32$이다.\n따라서 $a+b+c+d$의 최솟값은 $32-1=31$이다.\n따라서 정답은 ③이다.",
+    "solution": "계수가 모두 실수이므로 허수인 근의 켤레복소수도 근이다.\n(가)에서 $\\alpha+\\overline\\alpha=6$이므로 $\\alpha$의 실수부분은 $3$이다.\n$\\beta-\\overline\\beta=4i$이므로 $\\beta$의 허수부분은 $2$이다.\n(나)에서 $\\alpha-\\beta$가 실수이므로 두 수의 허수부분이 같다. 따라서 $\\alpha$의 허수부분도 $2$이고 $\\alpha=3+2i$이다.\n$\\beta=s+2i$ ($s$는 실수)라 하자.\n(나)에서 $\\alpha-\\beta=3-s\\ne5$이므로 $s\\ne-2$이고, $\\alpha\\ne\\beta$이므로 $s\\ne3$이다.\n네 근은 $3+2i,\\ 3-2i,\\ s+2i,\\ s-2i$이므로\n$P(x)=(x^2-6x+13)(x^2-2sx+s^2+4)$이다.\n$a+b+c+d=P(1)-1$이므로 $P(1)$을 구한다.\n$P(1)=(1-6+13)(1-2s+s^2+4)$\n$=8(s^2-2s+5)$\n$=8\\{(s-1)^2+4\\}$이다.\n$s=1$일 때 최소이고, $s=1$은 $s\\ne-2$, $s\\ne3$을 만족한다.\n최솟값은 $P(1)=32$이다.\n따라서 $a+b+c+d$의 최솟값은 $32-1=31$이다.\n따라서 정답은 ③이다.",
     "score": 5,
     "points": 5,
     "difficultyBucket": 4,

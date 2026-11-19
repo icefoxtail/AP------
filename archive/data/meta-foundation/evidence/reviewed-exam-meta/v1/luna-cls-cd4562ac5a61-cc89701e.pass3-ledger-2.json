@@ -1,0 +1,234 @@
+{
+    "schemaVersion":  "meta-judgment-ledger-v1",
+    "judge":  "luna-pass3",
+    "createdAt":  "2026-11-13T11:40:00+09:00",
+    "sourceArchiveFile":  "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
+    "items":  [
+                  {
+                      "ordinal":  1,
+                      "id":  1,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "두 주사위 눈의 차가 3인 경우는 6/36=1/6이어서 X~B(180,1/6), 평균 30과 표준편차 √25=5의 합은 35다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_DICE_EXPERIMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  10,
+                      "id":  10,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "흰 공 2개를 포함해 두 공을 뽑는 기댓값은 2×(2/5)=4/5이므로 E(10X+1)=10×4/5+1=9다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  11,
+                      "id":  11,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "V(bX+8)=18b²=18이고 b\u003e0이므로 b=1이며 E(aX+b)=6a+1=43에서 a=7이라 ab=7이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  13,
+                      "id":  13,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "E(2X+1)=11과 V(2X+1)=16에서 E(X)=5, V(X)=4이므로 E(X²)=V(X)+E(X)²=29다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  14,
+                      "id":  14,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "P(X≥k)=1−k²/30의 차분에서 점확률 분자는 1,3,5,7,9이고 P(X=5)=5/30이므로 E(X²)=355/30=71/6이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "기댓값과 분산",
+                                      "l4":  "기댓값"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  15,
+                      "id":  15,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "교점 방정식 Xx²+10x+X/2=0의 판별식은 100−2X²이고 4≤X≤8에서 음수가 되려면 X=8이므로 3,3,2를 뽑는 확률은 2/20=1/10이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  16,
+                      "id":  16,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "P(X=k)=2k/[n(n+1)]에서 E(X)=(2n+1)/3=9이므로 n=13이고 E(X²)=13×14/2=91, V(X)=91−81=10이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ]
+                  },
+                  {
+                      "ordinal":  17,
+                      "id":  17,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "넓이는 X(6−X)이므로 E(X²)=V(X)+E(X)²=2+16=18에서 넓이의 평균은 6×4−18=6이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT",
+                                               "CC_EXPECTATION_LINEARITY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  18,
+                      "id":  18,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "X≥5는 처음 네 번에 흰 구슬이 0개 또는 1개인 경우이므로 유리한 조합은 5+3×10=35, 전체는 70이고 확률은 1/2다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  19,
+                      "id":  19,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "전체 삼각형 넓이 9k=1에서 k=1/9이고 x=3과 9/2 사이의 높이는 1/3과 1/6이라 사다리꼴 넓이 확률은 3/8이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_FUNCTION_AREA"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_PIECEWISE_DOMAIN_PARTITION"
+                                        ]
+                  },
+                  {
+                      "ordinal":  2,
+                      "id":  2,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "X~B(45,1/3)이면 E(X)=15, V(X)=10이므로 E(X²)=10+15²=235다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  20,
+                      "id":  20,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "한 번의 점수는 3점 확률 2/3, 5점 확률 1/3이라 평균 11/3과 분산 8/9이고 450회 총점의 평균과 분산은 1650,400이므로 합은 2050이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "이항분포",
+                                      "l4":  "평균·분산"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_LINEAR_EXPECTATION_PROPERTY"
+                                           ]
+                  },
+                  {
+                      "ordinal":  21,
+                      "id":  21,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "(2x−1)/a의 네 확률 합이 16/a=1에서 a=16이고 E(X)=25/8, E(X²)=85/8이므로 분산은 55/64다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_PROBABILITY_DISTRIBUTION_TABLE",
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  22,
+                      "id":  22,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "합의 항은 B(200,1/4)의 k²P(X=k)이므로 합은 E(X²)=50²+200×1/4×3/4=5075/2다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_EXPECTATION_SECOND_MOMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  4,
+                      "id":  4,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "같은 색을 뽑을 확률은 (C(4,2)+C(3,2))/C(7,2)=3/7이고 98회 이항분산은 24이므로 σ(5X+2)=√600=10√6이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_COMBINATION_PROBABILITY",
+                                               "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+                                           ]
+                  },
+                  {
+                      "ordinal":  5,
+                      "id":  5,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "E(2X+5)=95에서 m=45, V(2X+5)=36에서 σ=3이고 대칭 꼬리확률은 (3+a)+(5−b)=90이라 a−b+σ=85다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_POSITIVE"
+                                        ]
+                  },
+                  {
+                      "ordinal":  6,
+                      "id":  6,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "그래프 축 위치로 자연수 m\u003c4, 곡선 폭으로 자연수 σ\u003c7이므로 3×6=18개의 순서쌍이 가능하다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_INEQUALITY_ORDERED_PAIRS"
+                                           ],
+                      "conditionKeys":  [
+                                            "COND_NATURAL"
+                                        ],
+                      "hold":  "rpmPath.l4: H2-확률과통계.json에 정규분포 곡선의 평균·폭 비교에 맞는 허용 l4 값이 없어 비움"
+                  },
+                  {
+                      "ordinal":  7,
+                      "id":  7,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "평균 m을 중심으로 양쪽 2σ~3σ 띠의 확률이 같아서 중앙 구간 확률은 b−(a−b)=2b−a다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "crossConceptKeys":  [
+                                               "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+                                               "CC_INTERVAL_PROBABILITY_ADDITION"
+                                           ]
+                  },
+                  {
+                      "ordinal":  9,
+                      "id":  9,
+                      "chosenFrom":  "pass2",
+                      "resolutionReason":  "확률 합에서 b=1, 1/4+a+1/4=1에서 a=1/2이고 평균은 1/4+1+3/4=2이므로 ㄴ과 ㄷ만 참이다.",
+                      "choiceTableUsed":  "H2-확률과통계.json",
+                      "rpmPath":  {
+                                      "l3":  "확률변수와 확률분포",
+                                      "l4":  "확률질량함수"
+                                  },
+                      "crossConceptKeys":  [
+                                               "CC_DISCRETE_EXPECTATION"
+                                           ]
+                  }
+              ]
+}

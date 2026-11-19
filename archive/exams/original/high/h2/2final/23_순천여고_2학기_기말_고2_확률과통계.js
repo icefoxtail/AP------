@@ -174,7 +174,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로에 a의 눈 1부터 6, 세로에 b의 눈 1부터 6이 적힌 표로, 각 칸에 순서쌍이 들어 있다. 곱이 4의 배수가 되는 칸들이 회색으로 칠해져 있다.",
+    "solutionImageCaption": "곱이 4의 배수인 순서쌍은 15가지이고, 그중 두 눈의 합이 9 이상인 것은 (4,5), (4,6), (5,4), (6,4), (6,6)의 5가지이다. 조건부확률은 15분의 5 = 3분의 1. 따라서 답은 ① 3분의 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -218,7 +222,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 예: 수직선에 I, J, K가 1, 4, 7 위치에 찍혀 있고, I와 J 사이, J와 K 사이에 각각 흰카드라는 중괄호 표시가 붙어 있다.",
+    "solutionImageCaption": "흰 카드가 수 순서대로 고정되어 있으므로 검은 카드 3장이 들어갈 틈을 고르는 문제가 된다. 그림은 예: i=1, j=4, k=7인 경우로, 1과 4 사이에 3, 4와 7 사이에 6이 들어가 조건을 만족한다. 가운데 틈이 3, 4, 5일 때 경우의 수가 각각 6, 9, 6가지이고 모두 더하면 21이다. 따라서 답은 ① 21이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -752,7 +760,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 -2.58부터 0까지가 파란색, 0부터 2.58까지가 주황색으로 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준오차는 16 ÷ 8 = 2이므로 99% 신뢰구간의 오차한계는 2.58 × 2 = 5.16이다. 120 ± 5.16에서 114.84 ≤ m ≤ 125.16. 따라서 답은 ⑤ 114.84 ≤ m ≤ 125.16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -797,7 +809,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 -2부터 0까지가 파란색, 0부터 2까지가 주황색으로 칠해져 있다.",
+    "solutionImageCaption": "표본평균의 표준오차는 10 ÷ 10 = 1이므로 |X̄ - m| ≤ 2는 |Z| ≤ 2와 같다. 표에서 P(0 ≤ Z ≤ 2) = 0.4772이므로 2 × 0.4772 = 0.9544. 따라서 답은 ④ 0.9544이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -841,7 +857,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 표준정규분포 곡선의 가운데 -1.96부터 0까지가 파란색, 0부터 1.96까지가 주황색으로 칠해져 있다.",
+    "solutionImageCaption": "모평균과 표본평균의 차의 최댓값은 오차한계 1.96 × 4 ÷ √25 = 1.96 × 0.8 = 1.568시간이다. 따라서 답은 ④ 1.568이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1007,6 +1027,10 @@ window.questionBank = [
     "subUnitKey": "H15-PS-06-CONFIDENCE_INTERVAL",
     "subUnit": "신뢰구간",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_순천여고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 개의 수직선에 95% 구간 62.16 ≤ x ≤ 77.84와 99% 구간 59.68 ≤ x ≤ 80.32가 각각 파란색과 주황색으로 표시되어 있다.",
+    "solutionImageCaption": "95% 구간의 중심은 (62.16 + 77.84) ÷ 2 = 70이고 오차한계 7.84에서 표준오차는 7.84 ÷ 1.96 = 4이다. 99%의 오차한계는 2.58 × 4 = 10.32이므로 구간은 59.68 ≤ m ≤ 80.32이고, 그 안의 자연수는 60부터 80까지 21개. 따라서 답은 21이다.",
+    "solutionImageSize": "full"
   }
 ];

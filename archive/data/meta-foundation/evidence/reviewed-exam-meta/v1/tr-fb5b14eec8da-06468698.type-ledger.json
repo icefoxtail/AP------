@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-fb5b14eec8da-06468698",
+  "sourceArchiveFile": "similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4c25dc0a3e8427e1a2fdfa0d3cc5036f1044a0f6b74594ad2d96b09be4dea7ce",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_FINITE_LIST_PRIME_COUNT",
+      "templateKey": "TPL_M1_FINITE_LIST_PRIME_COUNT_CORE",
+      "step": "1을제외하고27,49의소인수를확인해소수19,31,53의3개를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_52e1ef5773166ec7f545130bd9452656cc5c21070281bdc268c3e6f7e17f1973",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_DIVISOR_APPLICATION",
+      "templateKey": "TPL_M1_GCD_DIVISOR_APPLICATION_COMMON_DIVISOR",
+      "step": "두분수가자연수가되려면분모n은공약수이므로최대공약수28을 구한다.",
+      "note": "새 TPL 제안: 나머지가 있는 공약수 상황: 각 수에서 나머지를 빼고 얻은 수들의 공약수를 구하여 나머지 크기 조건을 적용한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_170c80d4f00d34b5fbf3dcbf6f73f2d77fd69efea47783f82c82939145128458",
+      "sourceOrdinal": 7,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_RATIONAL_CLASS",
+      "templateKey": null,
+      "step": "0의분류와정수·유리수포함관계및음수대소를판별해①을 고른다.",
+      "note": "새 PT 제안: 정수·유리수의 분류 성질. 정수·유리수 및 양수·음수·0의 정의와 포함관계를 적용하여 진술을 판별한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_426c06f3f65e8e10d124d437d3bcd363ce3e1318cab58a152bcaa867a75c6557",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_EVALUATE_AND_RANK",
+      "step": "거듭제곱과부호적용범위를구분해-9/4,-9/16,3/16,9/16,9/4를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_64964b29f6a19a71e6a3c13db68811367afe814e1fee2d49b4e5f577b215c482",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT",
+      "templateKey": "TPL_M1_CUBE_NET_OPPOSITE_FACE_ASSIGNMENT_RECIPROCAL",
+      "step": "그림전개도의맞은편쌍에서역수조건으로a=-3/2,b=2,c=-5/2를구해(a+c)/b=-2를 계산한다.",
+      "note": "새 TPL 제안: 반대면 역수 조건: 전개도를 접어 마주 보는 면을 복원하고 역수 관계로 미지 면의 값을 결정한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c7461a0a0d8d10c8e5a2e6ca738d7403330b210f154ce8c37e9af0c5045a0e7c",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ALGEBRAIC_PRODUCT_TERM_RECOVERY",
+      "templateKey": "TPL_ALGEBRAIC_PRODUCT_TERM_RECOVERY_CORE",
+      "step": "(a+b)c=ac+bc를사용해bc=-5/4-3/4=-2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_30729063625dabf372fd7e9324eba4fb54d277bc36ad49a957bf83a86a58ce66",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_WORD_QUANTITY_TRANSLATION",
+      "step": "30퍼센트할인가0.7x를낸돈10000에서뺀식10000-0.7x를 세운다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0fc2fdce246c8775abba2d8d16f1c61ed1ff72bd005236548face7ac660400b4",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_ALGEBRAIC_EXPRESSION_TRANSLATION",
+      "templateKey": "TPL_M1_ALGEBRAIC_EXPRESSION_TRANSLATION_OPERATION_NOTATION",
+      "step": "(-3)으로나누는것은-1/3을곱하므로④는-xy²/3이어야함을 판별한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2a4b0f76949bc7094ae55de57f5dc1740315eab4472ee9796f7a5aff9880f988",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_CANDIDATE",
+      "step": "최소·최대지수조건에서A=2³·3ᵇ·5ᶜ,b=1또는2,c=0또는1로24,72,120,360을 열거한다.",
+      "note": "새 TPL 제안: 최대공약수·최소공배수 직접 계산: 소인수별 지수의 최소·최대를 사용하여 최대공약수와 최소공배수를 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_89ab8e24d23fc92fd9aead14da9f06ce2cabfbbafda57d34c8c96f4fbf80456b",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_ORDER",
+      "step": "거듭제곱ㄹ,나눗셈ㄷ,안쪽뺄셈ㄴ,곱셈ㅁ,바깥뺄셈ㄱ순서로17/3을 계산한다.",
+      "note": "새 TPL 제안: 연산법칙·계산순서 판정: 각 식 변형을 교환·결합·분배법칙이나 연산 우선순위에 대응한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1mid.jsonl"
+    }
+  ]
+}

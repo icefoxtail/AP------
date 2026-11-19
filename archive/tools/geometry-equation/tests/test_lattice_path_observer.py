@@ -27,13 +27,15 @@ class Counts(unittest.TestCase):
         self.assertEqual((plan.total, counts[(4, 2)], counts[(6, 3)]), (15, 5, 15))
         self.assertNotIn((0, 3), counts)
 
-    def test_the_target_count_is_not_shown_unless_asked(self):
+    def test_the_target_count_is_shown_in_a_solution_figure_unless_hidden(self):
         plan = O.Plan(Q12)
+        shown = plan.shown(plan.expected_counts())
+        self.assertEqual(shown[(6, 3)], 69)
+        self.assertIn((0, 0), shown)
+        plan = O.Plan({**Q12, 'hideTargetCount': True})
         shown = plan.shown(plan.expected_counts())
         self.assertNotIn((6, 3), shown)
         self.assertIn((0, 0), shown)
-        plan = O.Plan({**Q12, 'hideTargetCount': False})
-        self.assertEqual(plan.shown(plan.expected_counts())[(6, 3)], 69)
 
     def test_waypoint_segment_counts_are_independent_prefixes(self):
         lat = {'grid': {'cols': 4, 'rows': 3}, 'points': {'A': [0, 0], 'P': [2, 2], 'B': [4, 3]}, 'viaPoints': ['P'], 'counts': 'segments', 'hideTargetCount': False}

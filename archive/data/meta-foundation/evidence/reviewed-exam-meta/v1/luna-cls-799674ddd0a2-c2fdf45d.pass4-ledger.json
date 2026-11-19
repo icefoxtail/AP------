@@ -1,0 +1,68 @@
+{
+ "schemaVersion": "meta-judgment-ledger-v1",
+ "judge": "sonnet-pass4",
+ "createdAt": "2026-11-13T22:18:46.177+00:00",
+ "sourceArchiveFile": "similar/high/h1/1final/25_금당고_1학기_기말_고1_확인.js",
+ "items": [
+  {
+   "ordinal": 2,
+   "chosenFrom": "new",
+   "resolutionReason": "420=2²·3·5·7을 소인수분해해 약수의 개수 (2+1)(1+1)(1+1)(1+1)=24를 구하는 문항이라 앞서 제안한 약수의 개수와 합 계열을 쓴다.",
+   "choiceTableUsed": "H1-공통수학1.json",
+   "rpmPath": {
+    "majorUnit": "",
+    "midUnit": "",
+    "l3": "",
+    "l4": ""
+   },
+   "hold": "신규 제안: 공통수학1 표에 약수의 개수와 총합 경로가 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.majorUnit": {
+     "value": "정수의 성질",
+     "label": "정수의 성질",
+     "parent": "(최상위)",
+     "why": "가장 가까운 경우의 수는 개수를 세는 단원이지만 이 문항은 소인수분해로 약수를 센다."
+    },
+    "rpmPath.midUnit": {
+     "value": "약수와 배수",
+     "label": "약수와 배수",
+     "parent": "정수의 성질",
+     "why": "가장 가까운 인수분해는 다항식의 인수이고 이 문항은 자연수의 약수다."
+    },
+    "rpmPath.l3": {
+     "value": "약수의 개수와 총합",
+     "label": "약수의 개수와 총합",
+     "parent": "정수의 성질 > 약수와 배수",
+     "why": "가장 가까운 인수분해의 활용은 수의 계산이며 이 문항은 약수의 개수 공식이다."
+    },
+    "rpmPath.l4": {
+     "value": "소인수분해를 이용한 약수의 개수와 합",
+     "label": "소인수분해를 이용한 약수의 개수와 합",
+     "parent": "정수의 성질 > 약수와 배수 > 약수의 개수와 총합",
+     "why": "가장 가까운 수의 계산은 인수분해로 수를 계산하는 것이고 이 문항은 지수 조합으로 약수를 센다."
+    }
+   }
+  },
+  {
+   "ordinal": 9,
+   "chosenFrom": "new",
+   "resolutionReason": "|x-2|+3|x-4|<6을 기준점 2와 4로 나눠 풀어 정수해 3,4의 합 7을 구하는 절댓값 부등식이며 정수해 l4는 있으나 l3은 앞서 제안한 값을 쓴다.",
+   "choiceTableUsed": "H1-공통수학1.json",
+   "rpmPath": {
+    "majorUnit": "방정식과 부등식",
+    "midUnit": "여러 가지 부등식",
+    "l3": "",
+    "l4": "정수해"
+   },
+   "hold": "신규 제안: 여러 가지 부등식 아래 절댓값 부등식 항목이 표에 없음(앞서 제안한 값 재사용).",
+   "proposedNew": {
+    "rpmPath.l3": {
+     "value": "절댓값 부등식",
+     "label": "절댓값을 포함한 부등식",
+     "parent": "방정식과 부등식 > 여러 가지 부등식",
+     "why": "가장 가까운 연립일차부등식은 두 일차부등식의 공통 범위이고, 이 문항은 절댓값 경계 2, 4로 구간을 나눈다."
+    }
+   }
+  }
+ ]
+}

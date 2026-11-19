@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-f74b380c7096-baf1f9e7",
+  "requestSha256": "65337fbc5da095075eac432ace32be202ae5bef6b17b3320c1835c0b6370f9ad",
+  "examUid": "20_효천고_1학기_기말_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1final/20_효천고_1학기_기말_고1_기출.js",
+  "sourceBlobSha1": "09ce59490cfab8d66867a5cc2440081c70856578",
+  "sourceRawSha256": "b1226bd33033c5b2623cf1e8e6252c3c5bbac394343945a51db2b9f98e6aa186",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f74b380c7096-baf1f9e7.type-ledger.json",
+        "sha256": "744bdc5808eca8ad2f12e7829f8f59b80151d0f21dc1756ad1621b8b30cc4655"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_96706fbe02f5db8b995641ebe0e429e59145e01ac771fb9ad3b9dbe198c5ecac",
+      "sourceArchiveFile": "original/high/h1/1final/20_효천고_1학기_기말_고1_기출.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-f74b380c7096-baf1f9e7",
+        "judge": "dots",
+        "rationale": "제수 x-1의 근 1을 대입하여 P(1)=0을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "caa4ca488618e498611ebba639ea3a015e4b55b1602e2860b471d4157bbf471a",
+        "judgedContentFingerprint": "3c8a15492cc0d4431fd1056d4380f4e3c691bb8eb56f7f014c74bf81ec345e1c",
+        "rowBinding": "content",
+        "textBindingFingerprint": "4c2f537da7effdf65970fd294780fb148a96d190ba056686c141cee741a18662",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-f74b380c7096-baf1f9e7.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+          "templateKey": null,
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

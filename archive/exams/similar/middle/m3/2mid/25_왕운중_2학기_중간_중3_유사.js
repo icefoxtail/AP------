@@ -570,9 +570,9 @@ window.questionBank = [
     "choices": [
       "(가) $90^\\circ$",
       "(나) $OB$",
-      "(다) $OM$",
+      "(다) 공통",
       "(라) ASA 합동",
-      "(마) $AM=BM$"
+      "(마) $BM$"
     ],
     "answer": "④",
     "solution": "$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = 90^\\circ$ (가)\n$OA = OB$ (반지름) (나)\n$OM$은 공통 (다)\n\n빗변의 길이와 다른 한 변의 길이가 각각 같으므로\n$\\triangle OAM \\equiv \\triangle OBM$ (RHS 합동)\n\n따라서 (라)에 ASA 합동이라 한 것은 옳지 않다.\n정답은 ④이다.",
@@ -738,7 +738,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
+    "content": "다음 그림과 같이 4개의 원은 각각 네 삼각형의 내접원이고, $AB, AC, AD, AE, AF$는 접선이며 $AC, AD, AE$는 공통접선이다. 이웃한 두 원은 서로 접한다. $AB=30, BC=24, CD=20, DE=14, EF=10$일 때, $AD+AF$의 길이를 구하면? [4점]",
     "choices": [
       "40",
       "42",
@@ -837,7 +837,7 @@ window.questionBank = [
       "$\\dfrac{\\sqrt{6}+\\sqrt{2}}{8}$"
     ],
     "answer": "③",
-    "solution": "직각삼각형 $AEF$에서 $AF = 8, \\angle EAF = 30^\\circ$이므로\n$AE = 8\\cos 30^\\circ = 4\\sqrt{3}, EF = 8\\sin 30^\\circ = 4$\n\n$AE$가 세로변과 $45^\\circ$를 이루므로 가로 방향 투영은\n$AE\\sin 45^\\circ = 4\\sqrt{3} \\times \\dfrac{\\sqrt{2}}{2} = 2\\sqrt{6}$\n\n$EF \\perp AE$이므로 $EF$의 가로 방향 투영은\n$EF\\cos 45^\\circ = 4 \\times \\dfrac{\\sqrt{2}}{2} = 2\\sqrt{2}$\n\n$AF\\sin 75^\\circ = 2\\sqrt{6} + 2\\sqrt{2}$\n$8\\sin 75^\\circ = 2\\sqrt{6} + 2\\sqrt{2}$\n$\\sin 75^\\circ = \\dfrac{2\\sqrt{6} + 2\\sqrt{2}}{8} = \\dfrac{\\sqrt{6} + \\sqrt{2}}{4}$\n\n정답은 ③이다.",
+    "solution": "$\\angle A=30^\\circ$, $\\angle B=\\angle C=75^\\circ$이고 $\\overline{AB}=\\overline{AC}=2$인 이등변삼각형 $ABC$를 생각한다.\n$C$에서 $AB$에 내린 수선의 발을 $H$라 하면 $\\overline{CH}=2\\sin30^\\circ=1$, $\\overline{AH}=2\\cos30^\\circ=\\sqrt{3}$이므로 $\\overline{BH}=2-\\sqrt{3}$이다.\n따라서 $\\overline{BC}^2=1^2+(2-\\sqrt{3})^2=8-4\\sqrt{3}$이므로 $\\overline{BC}=\\sqrt{6}-\\sqrt{2}$이다.\n직각삼각형 $CBH$에서 $\\sin75^\\circ=\\dfrac{\\overline{CH}}{\\overline{BC}}=\\dfrac{1}{\\sqrt{6}-\\sqrt{2}}=\\dfrac{\\sqrt{6}+\\sqrt{2}}{4}$이다.\n정답은 ③이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q20-quality-v4.svg",
     "solutionImage": "assets/images/25_왕운중_2학기_중간_중3_유사/q20-solution.svg",
     "solutionImageAlt": "직각삼각형 투영과 sin 75도",

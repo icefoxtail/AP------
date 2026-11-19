@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T23:54:16+09:00",
+  "sourceArchiveFile": "original/high/h2/2mid/24_조대부고_2학기_중간_고2_수학II.js",
+  "items": [
+    {
+      "ordinal": 1,
+      "chosenFrom": "pass2",
+      "resolutionReason": "그래프에서 x→3−일 때 f(x)→0이고 g(x)→−2라 분모의 극한이 0이 아니므로 몫의 좌극한은 0/(−2)=0이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "함수의 극한",
+        "l4": "좌극한·우극한"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 21,
+      "chosenFrom": "pass2",
+      "resolutionReason": "(f−g)/(x−2)→0에서 f(2)=g(2), f′(2)=g′(2)를 얻고 합식에서 두 값이 8, 두 기울기가 3이므로 f(x)=3x+2, g(x)=3x²−9x+14이고 f(1)g(1)=40이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "majorUnit": "미분",
+        "midUnit": "미분계수와 도함수",
+        "l3": "미분계수",
+        "l4": "정의로 미분계수"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POLYNOMIAL_DEGREE_ONE"
+      ],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 5,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x=0에서 f의 좌극한은 6이고 함수값 및 우극한은 −2이므로 제곱함수의 연속 조건은 (6−a)²=(−2−a)², 즉 8(4−2a)=0에서 a=2이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 연속",
+        "l3": "연속 조건",
+        "l4": "미정계수"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "ordinal": 7,
+      "chosenFrom": "pass2",
+      "resolutionReason": "x=1에서 f·g의 좌우 극한은 모두 −1이라 ㄱ은 참이지만 f−g의 좌우 극한은 2와 −2이며, x=−1에서 곱도 −1과 1로 달라 ㄴ·ㄷ은 거짓이다.",
+      "choiceTableUsed": "H2-수학II.json",
+      "rpmPath": {
+        "majorUnit": "함수의 극한과 연속",
+        "midUnit": "함수의 극한",
+        "l3": "함수의 극한",
+        "l4": "좌극한·우극한"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    }
+  ]
+}

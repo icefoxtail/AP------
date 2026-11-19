@@ -1,0 +1,118 @@
+--- a/tools/4slot/check-m2-closed8-current-ui-scoped.cjs
++++ b/tools/4slot/check-m2-closed8-current-ui-scoped.cjs
+@@ -22,9 +22,9 @@
+   "files": [
+     {
+       "path": "archive/tools/meta-foundation/m2-problem21-current-ui-continuity.mjs",
+-      "gitBlobSha1": "0fcbb1be605cd1418bd71fa91b24acd3bda0fc87",
+-      "sha256": "b9485fb7db68ea6f15b9e2b4d0f7c0567c9457faa5ab82dfceba903e1a5a6c0b",
+-      "bytes": 65666
++      "gitBlobSha1": "7a2cc6c166deef9d2664f8d4ff29835c3854ea3d",
++      "sha256": "c1fcd1eacfcb5a1737396bbf3433028a60af6346ef4fe24e0b3d2c04e4615079",
++      "bytes": 68629
+     },
+     {
+       "path": "archive/tools/meta-foundation/auto-register-merged-source.mjs",
+@@ -40,9 +40,15 @@
+     },
+     {
+       "path": "archive/tools/meta-foundation/reviewed-source-reassessment.mjs",
+-      "gitBlobSha1": "02549be443e029f094ae9e0213865b91063d6930",
+-      "sha256": "324d1d6bc33f4ad13928f80cb59eab1270c946457e76f2dc494e6fae6c7ed89b",
+-      "bytes": 36945
++      "gitBlobSha1": "67a469c022bf3e04049723098d659b025eaa9c88",
++      "sha256": "9efe04730bf2e2d54081a9c255c0d1d6e6de6926826cddf7db28e36b8658da46",
++      "bytes": 37364
++    },
++    {
++      "path": "archive/tools/meta-foundation/reviewed-m2-native-rpm-course.mjs",
++      "gitBlobSha1": "8a5fce2336624f24866ba32133a92aabdc25b52e",
++      "sha256": "f4a4581b14aa3c370fc288184b7876e7493a2340fa1ce570365572f6cac8d09d",
++      "bytes": 42180
+     },
+     {
+       "path": "archive/tools/meta-foundation/reviewed-m2-problem21-continuity.mjs",
+@@ -515,7 +521,7 @@
+     const identityDocument=JSON.parse(fs.readFileSync(file(f.fixture,ID)));
+     const byUid=new Map(f.identities.map(row=>[row.questionUid,row])),
+       byJoin=new Map(f.identities.map(row=>[row.sourceArchiveFile+'#'+row.sourceOrdinal,row]));
+-    const nativeResults=[],negative=[],inputs=[];
++    const nativeResults=[],negative=[],inputs=[];let firstRpmArgs;
+     for(const item of f.items){
+       const doc=f.docs.find(d=>d.item.questionUid===item.questionUid),receipt=JSON.parse(fs.readFileSync(file(f.fixture,doc.document.receiptRef.path)));
+       const current=f.metadata.find(r=>r.questionUid===item.questionUid),identity=byUid.get(item.questionUid);
+@@ -527,12 +533,39 @@
+         identityMap:identityDocument,identityByJoin:byJoin};
+       const args={nativeSource,question:bank[item.sourceOrdinal-1],previous:f.priorBanks.get(item.sourceArchiveFile)[item.sourceOrdinal-1],
+         current,identity,source:item.sourceArchiveFile,ordinal:item.sourceOrdinal,receipt};
+-      inputs.push(args);let invoked=0,captured;
++      inputs.push(args);let invoked=0,captured,capturedRpm;
+       const result=helper.replayM2Problem21CurrentUiContinuation({...args,revalidateLeaf:leaf=>{
+         invoked++;
+         need(native.validateNativeReviewedSourceReuse(receipt,leaf.nativeSource,leaf.question,identity,item.sourceOrdinal,current,registry)===true,
+           'ORDINARY_NATIVE_REQUIRED');
++        const issuedBinding=JSON.parse(fs.readFileSync(file(f.fixture,item.sourceReviewBindingRef.path)));
++        const originalPatch=issuedBinding.requestSnapshot.items.find(row=>row.questionUid===item.questionUid&&row.sourceOrdinal===item.sourceOrdinal);
++        const normalizedPatch=structuredClone(originalPatch);
++        delete normalizedPatch.sourceReview.m2ProblemRenderer21Continuity;
++        delete normalizedPatch.sourceReview.e023SolutionDisplayContinuity;
++        const issuedCourseProof=receipt.fingerprintRepairs.find(row=>row.questionUid===item.questionUid&&row.sourceOrdinal===item.sourceOrdinal).sourceReview.nativeRpmCourseTransport;
++        capturedRpm={context:leaf.nativeSource.m2Problem21CurrentUiContinuation,root:f.fixture,
++          request:issuedBinding.requestSnapshot,patch:normalizedPatch,metadata:{...current,...originalPatch.before},final:current,
++          issuedProof:issuedCourseProof,relativePath:item.currentSourceRef.path,currentSourceBytes:bytes};
++        const rpmView=helper.readM2Problem21CurrentRpmSource(capturedRpm);
++        need(Buffer.isBuffer(rpmView)&&rpmView.equals(leaf.nativeSource.bytes),'ORIGINAL_RPM_ISSUED_VIEW_REQUIRED');
+         if(item===f.items[0]){
++          firstRpmArgs=capturedRpm;
++          const nextRpm=()=>({...capturedRpm,request:structuredClone(capturedRpm.request),patch:structuredClone(capturedRpm.patch),
++            metadata:structuredClone(capturedRpm.metadata),final:structuredClone(capturedRpm.final),
++            issuedProof:structuredClone(capturedRpm.issuedProof),currentSourceBytes:Buffer.from(bytes)});
++          for(const change of [
++            x=>x.context=Object.freeze({}),x=>x.patch.questionUid=f.items[1].questionUid,
++            x=>x.patch.sourceOrdinal++,x=>x.request.requestId+='-wrong',x=>x.patch.after.courseKey='unbound',
++            x=>x.patch.sourceReview.m2ProblemRenderer21Continuity=structuredClone(originalPatch.sourceReview.m2ProblemRenderer21Continuity),
++            x=>delete x.issuedProof,x=>x.issuedProof.crosswalkClassificationGranted=true,
++            x=>x.final.metadataRevision+='-wrong',x=>x.currentSourceBytes[0]^=1,
++            x=>x.currentSourceBytes=Buffer.from(leaf.nativeSource.bytes)
++          ]){const value=nextRpm();change(value);assert.throws(()=>helper.readM2Problem21CurrentRpmSource(value));}
++          for(const other of f.outside){const value=nextRpm();value.patch.questionUid=other.questionUid;value.patch.sourceOrdinal=other.sourceOrdinal;
++            assert.throws(()=>helper.readM2Problem21CurrentRpmSource(value),/PRIVATE_ISSUED_RPM_SOURCE_CONTEXT/);}
++          negative.push({name:'issued-rpm-reader-token-request-proof-current-bytes-and-outside39',rejected:50});
++
+           captured={context:leaf.nativeSource.m2Problem21CurrentUiContinuation,nativeSource:leaf.nativeSource,
+             current,identity,source:item.sourceArchiveFile,ordinal:item.sourceOrdinal,question:leaf.question,receipt};
+           need(helper.assertM2Problem21CurrentUiLeaf(captured)===true,'PRIVATE_VALID_LEAF');
+@@ -573,6 +606,8 @@
+         return item.receiptRef.path;
+       }});
+       need(invoked===1&&result===item.receiptRef.path,'NATIVE_CALLBACK_ONCE');
++      assert.throws(()=>helper.readM2Problem21CurrentRpmSource(capturedRpm),/PRIVATE_ISSUED_RPM_SOURCE_CONTEXT/);
++      negative.push({name:'issued-rpm-reader-expires-after-'+item.key,rejected:1});
+       if(captured){
+         assert.throws(()=>helper.assertM2Problem21CurrentUiLeaf(captured),/PRIVATE_SELECTED_LEAF/);
+         assert.throws(()=>helper.readM2Problem21CurrentUiContinuation({context:captured.context}),/PRIVATE_ORIGINAL_P21_READER/);
+@@ -580,7 +615,7 @@
+       }
+       need(worker.verifyRegisteredRendererContinuity(f.fixture,doc.path).status==='PASS','EXISTING_VECTOR_WORKER_REQUIRED');
+       nativeResults.push({questionUid:item.questionUid,sourceOrdinal:item.sourceOrdinal,receiptPath:item.receiptRef.path,
+-        ordinaryNative:'PASS',callerIdentityShape:'AUTO_JSON_DOCUMENT_EXACT',currentActiveFields:'VALIDATED',
++        ordinaryNative:'PASS',issuedRpmSourceView:'PASS_WITH_EXACT_CURRENT_BYTES_AND_ISSUED_PROOF',callerIdentityShape:'AUTO_JSON_DOCUMENT_EXACT',currentActiveFields:'VALIDATED',
+         worker:'PASS',workerIdentityShape:'MAP_EXACT',metadataSha256:whole(current),
+         identitySha256:whole(identity),runtimeSha256:whole(matches[0].row),sourceSha256:sha(bytes)});
+     }
+@@ -617,10 +652,14 @@
+     assert.throws(()=>helper.replayM2Problem21CurrentUiContinuation({...inputs[0],revalidateLeaf:leaf=>{
+       const payload={context:leaf.nativeSource.m2Problem21CurrentUiContinuation,nativeSource:leaf.nativeSource,
+         current:inputs[0].current,identity:inputs[0].identity,source:inputs[0].source,ordinal:inputs[0].ordinal,question:leaf.question};
+-      escaped=Promise.resolve().then(()=>assert.throws(()=>helper.assertM2Problem21CurrentUiLeaf(payload),/PRIVATE_SELECTED_LEAF/));
++      escaped=Promise.resolve().then(()=>{
++        assert.throws(()=>helper.assertM2Problem21CurrentUiLeaf(payload),/PRIVATE_SELECTED_LEAF/);
++        assert.throws(()=>helper.readM2Problem21CurrentRpmSource({...firstRpmArgs,context:payload.context}),/PRIVATE_ISSUED_RPM_SOURCE_CONTEXT/);
++      });
+       return escaped;
+     }}),/ORDINARY_NATIVE_VALIDATION_REQUIRED/);
+     await escaped;negative.push({name:'asynchronous-callback-escape',rejected:1});
++    negative.push({name:'asynchronous-issued-rpm-reader-escape',rejected:1});
+     // A same-bank nonselected source mutation is still a whole-file pin failure.
+     const sourcePath=inputs[0].nativeSource.root&&f.items[0].currentSourceRef.path,sourceFile=file(f.fixture,sourcePath),sourceRaw=fs.readFileSync(sourceFile);
+     fs.writeFileSync(sourceFile,Buffer.concat([sourceRaw,Buffer.from(' ')]));

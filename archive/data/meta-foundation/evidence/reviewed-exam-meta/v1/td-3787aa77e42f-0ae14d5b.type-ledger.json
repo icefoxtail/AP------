@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-3787aa77e42f-0ae14d5b",
+  "sourceArchiveFile": "original/middle/m2/1final/25_왕의중_1학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8fb1c12debc095c50417327d5e17689f99d970141481b4722428310092f087f7",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+      "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+      "step": "미정계수 없는 두 식을 정수계수로 고쳐5x+2y=40,x+3y=21을 풀고 공통해(6,5)에서 a=7,b=39,차32를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5d59d5af34903e734db6def0a602cd10abb211ba9c84ebdea78e9de7211c47f3",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_WORD_PROBLEM_COST",
+      "templateKey": "TPL_M2_SOLVE_UNIT_PRICE_SYSTEM_WORD_PROBLEM_DESCRIPTIVE",
+      "step": "핫도그 단가x,음료 단가y에3x+3y=12600,5x+4y=19200을 세워 음료 단가1800원을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_624f9b68f86eaf3a3e2f0359cd257524a017c9a49da7cd29836f1608b859e29b",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+      "templateKey": null,
+      "step": "같은 둘레의 직사각형은 가로·세로 조합에 따라 넓이가 달라져 한 x에 여러 y가 대응하므로④를 고른다.",
+      "note": "새 TPL 제안: 대응 관계의 함수 여부 판별. 정의: 같은 둘레의 직사각형은 가로·세로 조합에 따라 넓이가 달라져 한 x에 여러 y가 대응하므로④를 고른다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5089c3cb3a90e52c7161ad1e6ee7651dcca718ff4268865b5c3f9d72751264b1",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+      "templateKey": "TPL_M2_FIND_VERTICAL_SHIFT_PASSING_THROUGH_POINT",
+      "step": "이동한 직선 y=-2x+a에 x절편(3/4,0)을 대입해 a=3/2를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07f6edee6e305b95146cafac1b73748399cd953e2295af1e259ab6135b9cff09",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_M2_EVALUATE_STATEMENTS_ON_LINEAR_EQUATION_GRAPH",
+      "step": "기울기·절편·통과점·평행 조건을 검토하고 음의 기울기와 음의 y절편 그래프가 제4사분면도 지나므로②를 거른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8372620e06be5a2f74ea4db96f4ca07bae638bd7cac1c8e67c248ff399b9c174",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_LINEAR_FUNCTION_QUADRANT_CONDITION",
+      "templateKey": null,
+      "step": "제1사분면을 피하려면 기울기-(a+1)≤0과 절편a-7≤0이므로 -1≤a≤7을 얻어 정수9개를 센다.",
+      "note": "새 TPL 제안: 제1사분면을 피하는 정수 매개변수 개수. 정의: 제1사분면을 피하려면 기울기-(a+1)≤0과 절편a-7≤0이므로 -1≤a≤7을 얻어 정수9개를 센다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1final.jsonl"
+    }
+  ]
+}

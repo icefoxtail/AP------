@@ -7,7 +7,7 @@ const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const archiveFile = 'original/high/h2/2mid/25_매산고_2학기_중간_고2_수학II.js';
 const examPath = path.join(root, 'archive', 'exams', archiveFile);
-const svgPath = path.join(root, 'archive', 'assets', 'images', '25_매산고_2학기_중간_고2_수학II', 'q13-solution.svg');
+const svgPath = path.join(root, 'archive', 'assets', 'images', '25_매산고_2학기_중간_고2_수학II', 'q13-solution-v3.svg');
 
 function loadQuestionBank(file) {
   const context = { window: {} };
@@ -23,7 +23,7 @@ test('25 매산고 수학II 원본은 20개 해설을 닫고 q13 solution visual
 
   const q13 = questions.find(question => question.id === 13);
   assert.equal(q13.answer, '⑤');
-  assert.equal(q13.solutionImage, 'assets/images/25_매산고_2학기_중간_고2_수학II/q13-solution.svg');
+  assert.equal(q13.solutionImage, 'assets/images/25_매산고_2학기_중간_고2_수학II/q13-solution-v3.svg');
   assert.equal(q13.solutionImageStatus, 'asset_verified');
   assert.equal(fs.existsSync(svgPath), true);
 

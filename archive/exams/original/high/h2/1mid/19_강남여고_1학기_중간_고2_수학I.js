@@ -404,7 +404,7 @@ window.questionBank = [
       "$a < c < b$"
     ],
     "answer": "⑤",
-    "solution": "$0<\\frac12<1$이므로 함수 $y=\\log_{\\frac{1}{2}}x$는 감소한다.\n$3>2$이므로 $a=\\log_{\\frac{1}{2}}3<\\log_{\\frac{1}{2}}2=-1=c$이다.\n또 $\\frac13<\\frac12$이므로 $b=\\log_{\\frac{1}{2}}\\frac13>\\log_{\\frac{1}{2}}\\frac12=-1=c$이다.\n따라서 $a<c<b$이고 정답은 ⑤이다.",
+    "solution": "$0<\\frac12<1$이므로 함수 $y=\\log_{\\frac{1}{2}}x$는 감소한다.\n$3>2$이므로 $a=\\log_{\\frac{1}{2}}3<\\log_{\\frac{1}{2}}2=-1=c$이다.\n또 $\\frac13<\\frac12$이므로 $b=\\log_{\\frac{1}{2}}\\frac13>\\log_{\\frac{1}{2}}\\frac12=1>-1=c$이다.\n따라서 $a<c<b$이고 정답은 ⑤이다.",
     "questionUid": "qid_v1_2662ef5199414632ea6e4ea3ca6cc825739db44b1c67fcfe1faeb91624d6b2db",
     "sourceQid": 6,
     "sourceArchiveFile": "exams/original/high/h2/1mid/19_강남여고_1학기_중간_고2_수학I.js",

@@ -394,7 +394,7 @@ function verify(root,entry,{d,it,id,cur,dict,bank,sourceRaw,identity,uidUses,loa
     const currentUi={sourceRef:doc.currentSourceRef,assetRefs:currentAssets};
     const capturedUi=continuedCheckout?verifyUiCheckoutContinuity(reader,review.uiCheckoutContinuity,
       {technical,questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,...currentUi}):currentUi;
-    const ui=verifyUi({technical,visual,technicalRef:review.technicalRef,readRef:ref=>reader.read(ref),readLiveRef:ref=>reader.read(ref,true),
+    const ui=verifyUi({technical,visual,technicalRef:review.technicalRef,readRef:ref=>reader.read(ref),readLiveRef:ref=>reader.read(ref,true),readCurrentFile:p=>reader.local(p),
       questionUid:doc.questionUid,sourceOrdinal:doc.sourceOrdinal,surface,...capturedUi});
     uiCases+=ui.logicalCases;uiTiles+=ui.originalTiles;
   }

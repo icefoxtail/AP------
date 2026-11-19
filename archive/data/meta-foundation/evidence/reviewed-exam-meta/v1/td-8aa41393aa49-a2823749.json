@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-8aa41393aa49-a2823749",
+  "requestSha256": "a64113165e0e2e54f88e8a4ea843b1916756325dd26bd151703872bd3471d6ac",
+  "examUid": "24_순천고_1학기_중간_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js",
+  "sourceBlobSha1": "9c0c068a0f552bd81b663810ce36f40c8b7f7b5b",
+  "sourceRawSha256": "835b550d2f43bb83dd05d9820b13a270b40e54d36ad67bbee690cd444cc57d39",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8aa41393aa49-a2823749.type-ledger.json",
+        "sha256": "3cf2901c76b6f01bf77aed11c10927f09b7153eaf3d3ad2daf3abbf1fb16da63"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_5e883e56b289c2cd4355f6f18fbb43dd5423d2e182f6200a49c0a1f683b4be5d",
+      "sourceArchiveFile": "original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION",
+      "templateKey": null,
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8aa41393aa49-a2823749",
+        "judge": "dots",
+        "rationale": "중복순열5Π3=125와 중복조합3H5=7C5=21을 각각 계산하여146을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "cbefa49eaaa39e9bf5f9a3ea6e2575e2716ab4cc5be72d520249eccba2f06f37",
+        "judgedContentFingerprint": "57cb73418888cdb0841fbd2d83f7fc3d8a95e2b34c4ad51b9a83bea245e7498c",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d75d95e4230a6be2b3bcfdb8196058afc7e0a663538eb602ce5f18799a018abf",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8aa41393aa49-a2823749.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+          "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

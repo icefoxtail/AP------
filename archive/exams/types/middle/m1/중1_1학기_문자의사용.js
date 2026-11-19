@@ -33,7 +33,7 @@ window.questionBank = [
       "$3 \\div x \\div 2 \\times y = \\dfrac{3y}{2x}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] ① $\\dfrac{1}{a}$ ② $0.1a$ ③ $\\dfrac{x}{yz}$ ④ $-a$\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] ① $\\dfrac{1}{a}$ ② $0.1a$ ③ $\\dfrac{xz}{y}$ (보기의 $\\dfrac{x}{yz}$는 옳지 않다) ④ $-a$\n따라서 정답은 ⑤이다.",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -625,8 +625,8 @@ window.questionBank = [
     "wide": false,
     "content": "다음은 기호 $\\times$, $\\div$를 생략하고 식을 나타낸 것이다. 옳은 것을 모두 고르면? (정답 2개)",
     "choices": [
-      "$a \\times (-2) \\times b - c \\div 2 = -2ab - \\dfrac{c}{2}$",
-      "$3a \\div \\dfrac{1}{2}b = 6ab$",
+      "$a \\times (-2) \\times b \\times c - c \\div 2 = -2ab - \\dfrac{c}{2}$",
+      "$3a \\div \\left(\\dfrac{1}{2}b\\right) = 6ab$",
       "$(-1) \\times c + a \\times \\dfrac{1}{b} = -c + \\dfrac{a}{b}$",
       "$(x-y) \\div 2 + 6 \\div z = 2(x-y) + 6z$",
       "$x \\times y \\div (x+y) = \\dfrac{xy}{x+y}$"
@@ -1361,7 +1361,7 @@ window.questionBank = [
       "$x \\div (y \\div 3) = \\dfrac{xy}{3}$",
       "$x \\div y \\div 3 = \\dfrac{3x}{y}$",
       "$(-1) \\div (a \\times b) = -\\dfrac{b}{a}$",
-      "$a \\div b \\times c - c \\div b = \\dfrac{abc - cb}{}$",
+      "$a \\div b \\times c - c \\div b = \\dfrac{abc - cb}{b}$",
       "$-(a-b) \\div \\dfrac{1}{3} = 3(b-a)$"
     ],
     "answer": "⑤",
@@ -1520,7 +1520,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "직선 주로를 달리는 레이싱 대회에서 차량들이 색칠한 지점을 지날 때마다 속도를 $\\dfrac{1}{2}$로 줄여야 한다. 다음 차량들 중 1등한 차와 5등한 차를 찾아라.",
+    "content": "직선 주로를 달리는 레이싱 대회에서 차량들이 색칠한 지점을 지날 때마다 속도를 $\\dfrac{1}{2}$로 줄여야 한다. 모든 차량은 같은 속력으로 출발한다. 다음 차량들 중 1등한 차와 5등한 차를 찾아라.",
     "choices": [],
     "answer": "1등: 4번 차, 5등: 1번 차",
     "solution": "[키포인트] 각 차량의 이동 시간 계산 (속도를 $V$라 하면):\n- 1번 차: $\\dfrac{280}{V}$ / 2번 차: $\\dfrac{270}{V}$ / 3번 차: $\\dfrac{250}{V}$ / 4번 차: $\\dfrac{220}{V}$ / 5번 차: $\\dfrac{275}{V}$\n→ 가장 적은 시간: 4번 차 (1등), 가장 많은 시간: 1번 차 (5등)\n따라서 구하는 값은 1등: 4번 차, 5등: 1번 차이다.",
@@ -1743,7 +1743,7 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "content": "수연이네 병원에서는 하루에 $x$명씩 환자를 진료하고 있었는데 내일부터 5일 동안은 하루에 10%씩 환자를 더 진료하기로 하였다. 내일부터 이틀 동안 수연이네 병원에서 진료할 환자 수는 몇 명인지 $x$를 사용한 식으로 나타내어라.",
+    "content": "수연이네 병원에서는 하루에 $x$명씩 환자를 진료하고 있었는데 내일부터 5일 동안은 전날보다 10%씩 환자를 더 진료하기로 하였다. 내일부터 이틀 동안 수연이네 병원에서 진료할 환자 수는 몇 명인지 $x$를 사용한 식으로 나타내어라.",
     "choices": [],
     "answer": "$2.31x$명",
     "solution": "[키포인트] - 내일 진료할 환자 수: $1.1x$명\n- 이틀 동안: $1.1x + 1.1 \\times 1.1x = (2.1) \\times 1.1x = 2.31x$(명)\n따라서 구하는 값은 $2.31x$명이다.",
@@ -1774,7 +1774,7 @@ window.questionBank = [
       "활용"
     ],
     "wide": false,
-    "content": "작년 우리 학교 입학생 수는 $a$명이었고, 작년 남자 입학생 수는 $x$명이었다. 올해는 남학생은 작년보다 6% 증가하고 여학생은 4% 감소하였다고 할 때, 올해 전체 학생 수를 $a$와 $x$를 사용한 식으로 나타내어라.",
+    "content": "작년 우리 학교 입학생 수는 $a$명이었고, 작년 남자 입학생 수는 $x$명이었다. 올해는 남학생은 작년보다 6% 증가하고 여학생은 4% 감소하였다고 할 때, 올해 입학생 수를 $a$와 $x$를 사용한 식으로 나타내어라.",
     "choices": [],
     "answer": "$\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명",
     "solution": "[키포인트] - 올해 남학생 수: $\\dfrac{106}{100}x$\n- 올해 여학생 수: $\\dfrac{96}{100}(a-x)$\n- 올해 전체: $\\dfrac{106}{100}x + \\dfrac{96}{100}(a-x) = \\dfrac{10}{100}x + \\dfrac{96}{100}a = \\dfrac{1}{10}x + \\dfrac{24}{25}a$\n따라서 구하는 값은 $\\left(\\dfrac{1}{10}x + \\dfrac{24}{25}a\\right)$명이다.",

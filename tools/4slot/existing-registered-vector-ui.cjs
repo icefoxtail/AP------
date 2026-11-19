@@ -191,8 +191,8 @@ function coverage(c, screenshots, viewport, surface, context) {
   if (previousEnd !== height || !eq(c.scrollAfter,previousScroll) || c.scrollOperations !== operations) fail('INCOMPLETE_COVERAGE');
 }
 /** readRef returns exact immutable bytes; it may also validate a live source. */
-function verifyUi({technical, visual, technicalRef, readRef, readLiveRef, questionUid, sourceOrdinal, surface, sourceRef, assetRefs}) {
-  if (technical?.schemaVersion === svg7Ui.SCHEMA) return svg7Ui.verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,
+function verifyUi({technical, visual, technicalRef, readRef, readLiveRef, readCurrentFile, questionUid, sourceOrdinal, surface, sourceRef, assetRefs}) {
+  if (technical?.schemaVersion === svg7Ui.SCHEMA || technical?.schemaVersion === svg7Ui.CURRENT_SCHEMA) return svg7Ui.verifySvg7Ui({technical,visual,technicalRef,readRef,readLiveRef,readCurrentFile,
     questionUid,sourceOrdinal,surface,sourceRef,assetRefs,
     validateCapture:(capture,shots,viewport,context)=>coverage(capture,shots,viewport,'PROBLEM',context)});
   exact(technical, ['schemaVersion','status','executionOwner','checkoutCommit','sourceOverlayCount','domWrites','cssWrites',

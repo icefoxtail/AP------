@@ -129,7 +129,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": "중",
       "score": 5.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "도형",
@@ -456,7 +456,7 @@ window.examData = {
       "difficultyBucket": 2,
       "level": 2,
       "score": 4.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "도형",
@@ -742,7 +742,7 @@ window.examData = {
       "difficultyBucket": 1,
       "level": "하",
       "score": 3.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "인수분해",
@@ -873,7 +873,7 @@ window.examData = {
       "difficultyBucket": 3,
       "level": "중",
       "score": 6.0,
-      "layoutTag": "fullwidth",
+      "layoutTag": "grid",
       "wide": false,
       "tags": [
         "도형",

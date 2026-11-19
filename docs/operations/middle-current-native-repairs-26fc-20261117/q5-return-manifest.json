@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "archive-q5-issued-ui-proof-representation-repair-v1",
+  "status": "MINIMUM_PRODUCTION_CANDIDATE_ACTUAL_NATIVE_REQUIRED",
+  "files": [
+    {
+      "path": "archive/tools/meta-foundation/reviewed-m3-e052-q5-complete-given.mjs",
+      "before": {
+        "gitBlobSha1": "a725d9af4e25f4c118a6e743ad95cb01bec5cf8c",
+        "sha256": "489a8089bd53ca5ca3823c932561381d40971b15038c13a8bd3ef8dc6cf8f5d3",
+        "bytes": 51020
+      },
+      "after": {
+        "gitBlobSha1": "9395012e8c6c7af8cae33586b3e39f3081ffea04",
+        "sha256": "904f664a60ffb4c6e5503916a8a3f60d664318633018fec8f8d35a7d4c6a64e2",
+        "bytes": 50976
+      }
+    }
+  ],
+  "delta": {
+    "old": "  return { technicalRef: currentUi ? currentUi.technicalRef : ctx.spec.technicalRef,\n    visualRef: currentUi ? currentUi.visualRef : ctx.spec.visualRef, checkoutCommit: technical.checkoutCommit,\n    ...(currentUi ? {originalAuthorityTechnicalRef: ctx.spec.technicalRef, originalAuthorityVisualRef: ctx.spec.visualRef,\n      currentDisplayEquivalenceRef: currentUi.witnessRef, originalVisualRecordsReused: true} : {}),",
+    "replacement": "  // The live current UI has been fully authenticated above. This return belongs\n  // to the already-issued source-review proof, whose whole representation must\n  // remain unchanged; current UI provenance is verified, not newly issued here.\n  return { technicalRef: ctx.spec.technicalRef, visualRef: ctx.spec.visualRef,\n    checkoutCommit: originalTechnical.checkoutCommit,"
+  },
+  "inverseWholeBeforeExact": true,
+  "observedCause": {
+    "reportedBy": "ROOT_ACTUAL_LOCAL_DIAGNOSTIC2",
+    "diagnosticCode": "ec950daeac2a8c8de2d6109dcb6971654340234d",
+    "diagnosticManifest": "85b0df4d419607bd1d306dcf839a7bd5f6ec2674",
+    "rootIntegrationIdentifier": "48c507",
+    "originalModuleRestored": "616f7882d8891b7a28369fe29292448d1c853b1b",
+    "cleanWorktreeReported": true,
+    "expectedWholeSha256": "cc9124e49b321cfd8d1d26aa42745e64f6c942ba9f8487a0b2e1b7008219334a",
+    "observedWholeSha256": "d672323a98a64990824205e829fd9549e21b5ef61358eeef0f6e00e3711b9f3c",
+    "allDifferencesUnder": "$.q5CompleteGivenApplication.ui",
+    "differences": 15,
+    "visited": 20,
+    "truncated": false,
+    "otherDifferences": 0,
+    "paths": [
+      "checkoutCommit",
+      "currentDisplayEquivalenceRef (added object)",
+      "originalAuthorityTechnicalRef (added object)",
+      "originalAuthorityVisualRef (added object)",
+      "originalVisualRecordsReused (added boolean)",
+      "technicalRef.commit",
+      "technicalRef.path",
+      "technicalRef.gitBlobSha1",
+      "technicalRef.sha256",
+      "technicalRef.bytes",
+      "visualRef.commit",
+      "visualRef.path",
+      "visualRef.gitBlobSha1",
+      "visualRef.sha256",
+      "visualRef.bytes"
+    ],
+    "rawDiagnosticBytesIndependentRead": "NOT_CLAIMED; exact safe parsed observation supplied by root"
+  },
+  "repair": {
+    "summary": "After all existing fresh UI checks complete, return original issued UI references and original capture checkout; do not append a new provenance representation to the existing issued source-review proof.",
+    "unchanged": [
+      "currentM3Q5Ui full body",
+      "assertM3Q5CurrentUiDocuments full body",
+      "current6 immutable ancestry and HEAD/live exact checks",
+      "source/asset/font/code/PNG/geometry checks",
+      "whole consumed SVG footprint check including Q22 preload",
+      "original GIVEN/source/complete review/ancestor authorities",
+      "current definitions and source-review equality",
+      "worker Native===true and every observed dependency final rehash",
+      "prior original-publication exception limited to authenticated original refs",
+      "all current and original UI documents",
+      "all other source-review proof fields"
+    ],
+    "freshProvenanceRemains": "Exact existing current evidence documents and current live observed dependencies; it is authenticated independently of the immutable issued proof representation.",
+    "noUpdatedReceiptOrApproval": true
+  },
+  "existingValidation": {
+    "testPath": "tests/archive-m3-e052-q5-current-ui-reuse.test.mjs",
+    "gitBlobSha1": "a11402180c3b1f5a124905dbdb5e1ff78c34d600",
+    "sha256": "896f16b36f9cb2878f758f80ed0a836fde765dc78cfc76d9f697af691004e1ac",
+    "bytes": 8192,
+    "testUnchanged": true,
+    "actualRequired": "Existing actual-native case must pass original Native and its unchanged whole source-review equality, vector25/outside24 and current observed refs; run only this remaining actual case on exact current integrated data.",
+    "priorReusable": {
+      "shadow61": "PASS as previously observed, same preview5960/test132b unchanged",
+      "q5Metadata44": "PASS as previously observed, current document validation code/test unchanged",
+      "scope49": "NOT_YET_PASS"
+    }
+  },
+  "checks": {
+    "authorNodeSyntax": "NOT_RUN",
+    "authorNative": "NOT_RUN",
+    "authorTests": "NOT_RUN",
+    "textualInverse": "PASS",
+    "candidateFullRemoteReadback": "PASS"
+  },
+  "limits": {
+    "sourceWrites": 0,
+    "metadataWrites": 0,
+    "identityWrites": 0,
+    "receiptWrites": 0,
+    "approvalChanges": 0,
+    "uiDocumentChanges": 0,
+    "newMathReview": 0,
+    "newVisualReview": 0,
+    "newFourSlotApprovals": 0,
+    "remoteRefWrites": 0
+  }
+}

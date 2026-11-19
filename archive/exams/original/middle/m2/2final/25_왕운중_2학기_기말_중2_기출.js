@@ -13,7 +13,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -60,7 +60,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -109,7 +109,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -157,7 +157,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -251,7 +251,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -298,7 +298,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -342,7 +342,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형"
     ],
@@ -390,7 +390,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -439,7 +439,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형",
       "표"
@@ -482,7 +482,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 5,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -531,7 +531,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "도형"
     ],
@@ -620,7 +620,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [],
     "wide": false,
     "content": "하윤이는 오늘 주말 데이트에 다음 그림과 같이 상의 3벌과 하의 2벌 중에서 옷을 입으려 한다. 이 때, 상의와 하의를 한 벌씩 짝 지어 입을 수 있는 경우의 수를 구하면?",
@@ -745,7 +745,7 @@ window.questionBank = [
     "standardUnit": "도형의 닮음",
     "standardUnitOrder": 6,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "도형",
       "확률"
@@ -884,10 +884,10 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "객관식",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [],
     "wide": false,
-    "content": "다음과 같은 규칙에 따라 성준, 서윤, 윤태 세 명의 학생이 말판 게임을 하고 있다. 세 학생의 말의 위치가 &lt;그림 1&gt;과 같고 성준이가 주사위를 던질 차례라고 할 때, 윤태의 말이 ‘시작’이라고 적혀 있는 지점으로 갈 확률을 구하면? (5점)<br><img src=\"assets/images/25_왕운중_2학기_기말_중2_기출/q20-problem-visual-v2.svg\" alt=\"격자 위 맨 윗줄의 왼쪽부터 시작으로, 시작으로, 시작으로, 승, 시작으로, 시작으로, 승, 시작으로가 놓인다. 맨 아래 왼쪽에서 네 번째 교점은 시작이다. 위에서 서윤은 둘째 줄 다섯째 교점, 윤태는 셋째 줄 셋째 교점, 성준은 넷째 줄 넷째 교점에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><strong>규칙</strong><p>◎ 자신의 차례에 주사위 한 개를 두 번 던진다.</p><p>◎ 던져서 나온 주사위의 눈에 따라 다음과 같이 말을 이동한다.<br>· 눈의 수가 1이면 위로 1칸 이동<br>· 눈의 수가 2이면 위로 2칸 이동<br>· 눈의 수가 3이면 왼쪽으로 1칸 이동<br>· 그 이외의 눈이 나오면 오른쪽으로 1칸 이동</p><p>◎ 말을 이동하여 도착하는 지점에 상대편 말이 있으면 그 말을 잡는다.</p><p>◎ 다음의 각 경우에 말이 ‘시작’이라고 적혀 있는 지점에서 다시 출발한다.<br>· 말이 ‘시작으로’라고 적혀 있는 지점에 도착하는 경우<br>· 말이 맨 윗줄을 넘는 경우<br>· 상대편에게 말을 잡힌 경우</p><p>◎ ‘승’이라고 적혀 있는 두 지점 중 어느 한 곳에 먼저 말이 도착하면 이긴다.</p></div>",
+    "content": "다음과 같은 규칙에 따라 성준, 서윤, 윤태 세 명의 학생이 말판 게임을 하고 있다. 세 학생의 말의 위치가 &lt;그림 1&gt;과 같고 성준이가 주사위를 던질 차례라고 할 때, 윤태의 말이 ‘시작’이라고 적혀 있는 지점으로 갈 확률을 구하면? (5점)<br><img data-scale=\"85\" src=\"assets/images/25_왕운중_2학기_기말_중2_기출/q20-problem-visual-v2.svg\" alt=\"격자 위 맨 윗줄의 왼쪽부터 시작으로, 시작으로, 시작으로, 승, 시작으로, 시작으로, 승, 시작으로가 놓인다. 맨 아래 왼쪽에서 네 번째 교점은 시작이다. 위에서 서윤은 둘째 줄 다섯째 교점, 윤태는 셋째 줄 셋째 교점, 성준은 넷째 줄 넷째 교점에 있다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"><div class=\"question-note-box\"><strong>규칙</strong><p>◎ 자신의 차례에 주사위 한 개를 두 번 던진다.</p><p>◎ 던져서 나온 주사위의 눈에 따라 다음과 같이 말을 이동한다.<br>· 눈의 수가 1이면 위로 1칸 이동<br>· 눈의 수가 2이면 위로 2칸 이동<br>· 눈의 수가 3이면 왼쪽으로 1칸 이동<br>· 그 이외의 눈이 나오면 오른쪽으로 1칸 이동</p><p>◎ 말을 이동하여 도착하는 지점에 상대편 말이 있으면 그 말을 잡는다.</p><p>◎ 다음의 각 경우에 말이 ‘시작’이라고 적혀 있는 지점에서 다시 출발한다.<br>· 말이 ‘시작으로’라고 적혀 있는 지점에 도착하는 경우<br>· 말이 맨 윗줄을 넘는 경우<br>· 상대편에게 말을 잡힌 경우</p><p>◎ ‘승’이라고 적혀 있는 두 지점 중 어느 한 곳에 먼저 말이 도착하면 이긴다.</p></div>",
     "choices": [
       "$\\dfrac{17}{18}$",
       "$\\dfrac56$",
@@ -930,7 +930,7 @@ window.questionBank = [
     "standardUnit": "피타고라스 정리",
     "standardUnitOrder": 7,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "그래프",
@@ -978,7 +978,7 @@ window.questionBank = [
     "standardUnit": "확률",
     "standardUnitOrder": 8,
     "questionType": "서술형",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "도형"

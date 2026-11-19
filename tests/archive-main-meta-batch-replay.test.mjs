@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
-import {registerMergedSource,sourceFingerprint,contentFingerprint} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
+import {registerMergedSource,summarizeBacklog,safeInstrumentation,topCounts,sourceFingerprint,contentFingerprint} from '../archive/tools/meta-foundation/auto-register-merged-source.mjs';
 
 const source='original/middle/m3/1mid/batch-fixture.js';
 const metaPath='archive/data/question_metadata.json',identityPath='archive/data/question_identity_map.json';
@@ -176,4 +176,94 @@ test('a new registry binding retries pending source without replacing a partial 
   const replay=await f.replay();assert.equal(replay.replayVerified,true);assert.equal(replay.replayed,2);
   assert.equal(replay.results.find(r=>r.questionUid===f.uid(1)).status,'SUPPLEMENT_PENDING');
   assert.deepEqual(replay.plannedPaths,[]);assert.deepEqual(f.read(metaPath).records[0],heldBefore);
+});
+
+// ---- run instrumentation (PR-1): report-only numbers, conservation checks instead of fixed production counts ----
+const accounted=i=>i.run.attempted+i.run.unchangedSkipped+i.run.notReachedBudget;
+test('the run report accounts for every target and splits this merge from the queued backlog',async t=>{
+  const f=fixture(t),first=await f.first(),i=first.instrumentation;
+  assert.equal(i.schemaVersion,'archive-main-merge-meta-instrumentation-v1');
+  assert.equal(i.run.targets,accounted(i),'targets = attempted + skipped unchanged + not reached');
+  assert.equal(i.run.applied+i.run.alreadyRegistered+i.run.refused,i.run.attempted);
+  assert.equal(i.run.attempted,first.replayBatch.targets.length);assert.equal(i.run.registeredUids,first.applied);
+  assert.equal(i.run.requestFiles,first.plannedPaths.filter(p=>p.includes('/requests/')).length);
+  assert.equal(i.attemptedByFile.top.reduce((n,r)=>n+r.total,0)+i.attemptedByFile.otherCount,i.run.attempted);
+  for(const r of i.attemptedByFile.top)assert.equal(r.total,r.registered+r.alreadyRegistered+r.refused);
+  assert.equal(i.origin.available,true);
+  const o=i.origin;
+  assert.equal(o.thisMergeDiff.questions+o.queuedBacklog.questions+o.pilot.questions,i.run.targets);
+  assert.equal(o.thisMergeDiff.questions,0,'no exam bytes changed since the cursor');assert.equal(o.thisMergeQuestionsNotReachedBecauseOfBudget,0);
+  const b=i.backlogAfterRun;
+  assert.equal(b.pendingTotal,first.pending);assert.equal(i.pendingBeforeRun,3);
+  assert.ok(b.neverTried<=b.withoutAttemptSignature);assert.ok(b.attemptedRefused<=b.pendingTotal);assert.ok(b.withoutAttemptSignature<=b.pendingTotal);
+  assert.ok(b.reasonAtomTotal>=b.attemptedRefused,'an entry can carry several reasons, never fewer than one');
+  assert.equal(b.reasons.top.reduce((n,r)=>n+r.count,0)+b.reasons.otherCount,b.reasonAtomTotal);
+  assert.equal(b.oldestBaseCommit.commit,f.head);assert.equal(b.oldestBaseCommit.count,b.pendingTotal);
+});
+
+test('a changed exam question that the batch limit leaves behind is counted as this-merge work not reached',async t=>{
+  const f=fixture(t);
+  const bank=JSON.parse(f.bytes('archive/exams/'+source).toString().replace(/^window\.questionBank=/,'').replace(/;\s*$/,''));
+  bank[2].content='Fixture 3 revised';
+  f.put('archive/exams/'+source,'window.questionBank='+JSON.stringify(bank)+';\n');f.git('add','-A');f.git('commit','-qm','revise question 3');
+  const first=await f.first(),i=first.instrumentation,o=i.origin;
+  assert.equal(o.thisMergeDiff.questions,1);assert.equal(o.thisMergeDiff.changedExamFiles,1);assert.equal(o.thisMergeDiff.alsoQueuedBefore,1);
+  assert.equal(o.queuedBacklog.questions,2);
+  assert.equal(o.thisMergeQuestionsNotReachedBecauseOfBudget,1,'limit 1 reaches ordinal 1 only; ordinal 3 waits in the queue');
+  assert.equal(o.thisMergeDiff.attempted+o.thisMergeDiff.unchangedSkipped+o.thisMergeDiff.notReachedBudget,o.thisMergeDiff.questions);
+  assert.equal(i.run.targets,accounted(i));
+  assert.ok(f.read(statePath).pending[source+'#3'],'the unreached question is still queued, not lost');
+});
+
+test('instrumentation is outside the replay binding: no committed byte, digest or replay verdict depends on it',async t=>{
+  const f=fixture(t),first=await f.first(),stateBefore=f.bytes(statePath);
+  assert.equal(Object.hasOwn(first.replayBatch,'instrumentation'),false);
+  const replayed=await f.replay();assert.equal(replayed.replayVerified,true);
+  assert.equal(Object.hasOwn(replayed,'instrumentation'),false,'a replay report carries no run numbers');
+  const report=f.read('first-report.json');report.instrumentation={at:new Date().toISOString(),random:Math.random(),run:null};f.put('first-report.json',report);
+  assert.equal((await f.replay()).replayVerified,true,'timestamps or any other value in the instrumentation cannot break idempotence');
+  delete report.instrumentation;f.put('first-report.json',report);assert.equal((await f.replay()).replayVerified,true);
+  assert.deepEqual(f.bytes(statePath),stateBefore);
+  assert.equal(JSON.stringify(f.read(statePath)).includes('instrumentation'),false);
+});
+
+test('an empty queue still reports zero work with the same accounting',async t=>{
+  const f=fixture(t,{count:1,pending:()=>false});await f.first();
+  const empty=await f.first(),i=empty.instrumentation;
+  assert.equal(i.run.targets,0);assert.equal(accounted(i),0);assert.equal(i.backlogAfterRun.pendingTotal,0);assert.equal(i.backlogAfterRun.oldestBaseCommit,null);
+});
+
+test('backlog summary counts reasons per atom, flags multi-reason entries and finds the oldest base by commit date',async t=>{
+  const f=fixture(t,{count:1,pending:()=>false});
+  f.put('later.txt','later');f.git('add','later.txt');f.git('commit','-qm','later');
+  const newer=f.git('rev-parse','HEAD'),older=f.head;
+  const pending={a:{baseCommit:newer,attemptSignature:'s',lastReasons:['X','Y:1']},b:{baseCommit:older,attemptSignature:'s',lastReasons:['X']},
+    c:{baseCommit:older},d:{baseCommit:older,attemptSignature:'s'},e:{baseCommit:'0'.repeat(40)}};
+  const s=summarizeBacklog(f.root,pending);
+  assert.equal(s.pendingTotal,5);assert.equal(s.withoutAttemptSignature,2);assert.equal(s.attemptedRefused,2);assert.equal(s.neverTried,2);
+  assert.equal(s.entriesWithMultipleReasons,1);assert.equal(s.reasonAtomTotal,3);assert.ok(s.reasonAtomTotal>=s.attemptedRefused);
+  assert.deepEqual(s.reasons.top,[{name:'X',count:2},{name:'Y:1',count:1}]);
+  assert.deepEqual(s.reasonKinds.top,[{name:'X',count:2},{name:'Y',count:1}]);
+  assert.equal(s.distinctBaseCommits,3);
+  assert.equal(s.oldestBaseCommit,null,'an unresolvable base commit never fails the report');
+  delete pending.e;
+  assert.equal(summarizeBacklog(f.root,pending).oldestBaseCommit.commit,older);assert.equal(summarizeBacklog(f.root,pending).oldestBaseCommit.count,3);
+  const many=new Map(Array.from({length:30},(_,i)=>['n'+String(i).padStart(2,'0'),i+1]));
+  const top=topCounts(many);assert.equal(top.top.length,20);assert.equal(top.otherNames,10);
+  assert.equal(top.top.reduce((n,r)=>n+r.count,0)+top.otherCount,465);assert.equal(top.top[0].name,'n29');
+});
+
+test('a pending entry with unexpected values never stops registration or the other report fields',async t=>{
+  const f=fixture(t,{count:2,max:2,pending:()=>false});
+  const state=f.read(statePath);
+  Object.assign(state.pending[source+'#2'],{lastReasons:'oops',attemptSignature:{}});
+  f.put(statePath,state);
+  const r=await f.first();
+  assert.equal(r.applied,2,'both questions still register');assert.ok(r.instrumentation);
+  assert.ok(r.results.every(x=>x.status==='APPLY'));
+  const s=summarizeBacklog(f.root,{a:null,b:'x',c:{lastReasons:[null,{}],baseCommit:{}},d:{lastReasons:'oops'}});
+  assert.equal(s.pendingTotal,4);assert.equal(s.malformedEntries,2);assert.ok(s.reasonAtomTotal>=2);
+  const broken=safeInstrumentation(()=>{throw Error('boom '+'x'.repeat(500));});
+  assert.equal(broken.schemaVersion,'archive-main-merge-meta-instrumentation-v1');assert.ok(broken.error.startsWith('boom'));assert.ok(broken.error.length<=160);
+  assert.deepEqual(safeInstrumentation(()=>({ok:1})),{ok:1});
 });

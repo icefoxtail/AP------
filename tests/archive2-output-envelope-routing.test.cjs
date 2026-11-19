@@ -1,11 +1,12 @@
 const assert = require("node:assert/strict");
 const { readFileSync } = require("node:fs");
 const { test } = require("node:test");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const read = (path) => readFileSync(path, "utf8");
 const mixedEngine = read("archive/mixed_engine.html");
 const output = read("archive/archive2-output.js");
-const workspace = read("archive/archive2-workspace.js");
+const workspace = readWorkspace();
 const library = read("archive/archive2-library.js");
 const entry = read("archive/archive2-entry.js");
 const pdf = read("apmath/worker-backup/worker/routes/exam-pdf.js");

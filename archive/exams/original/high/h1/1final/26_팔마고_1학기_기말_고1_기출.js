@@ -704,6 +704,7 @@ window.questionBank = [
     "wide": false,
     "content": "그림과 같이 한 변의 길이가 $4$인 정사각형 $ABCD$에서 선분 $BC$의 연장선 위에 $\\overline{BF}=\\overline{CG}$가 되도록 두 점 $F$, $G$를 잡는다. 선분 $FG$를 한 변으로 하고 점 $E$를 꼭짓점으로 갖는 정삼각형 $EFG$가 선분 $AD$와 두 점에서 만난다. 선분 $EF$가 선분 $AD$, 선분 $AB$와 만나는 점을 각각 $H$, $I$라 하고 선분 $EG$가 선분 $AD$, 선분 $CD$와 만나는 점을 각각 $J$, $K$라 하자. 삼각형 $EHJ$의 넓이와 삼각형 $AIH$의 넓이의 합의 최솟값을 구하시오. (단, $\\dfrac{4\\sqrt3}{3}-1\\le\\overline{BF}\\lt\\dfrac{4\\sqrt3}{3}$) [총 6점] [부분점수 부여]",
     "image": "assets/images/26_팔마고_1학기_기말_고1_기출/q22.png",
+    "imageScale": 70,
     "imageSize": "tall",
     "choices": [],
     "answer": "$\\dfrac{3\\sqrt3}{2}$",

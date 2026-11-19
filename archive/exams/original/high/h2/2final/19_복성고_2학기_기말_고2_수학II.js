@@ -176,7 +176,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "c07a65d08f6958e3f1997d69194a72a63e7caf04564fc9b1625e888886abb11a"
+    "solutionSha256": "c07a65d08f6958e3f1997d69194a72a63e7caf04564fc9b1625e888886abb11a",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 아래로 볼록한 곡선 y=f′(x)가 그려져 있고, 곡선이 가로축과 만나는 두 점 (−1,0), (3,0)과 꼭짓점 (1,−12)가 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=3x²−6x−9=3(x−3)(x+1)이라 x=−1의 왼쪽에서 양수, 오른쪽에서 음수이므로 f는 x=−1에서 극댓값 f(−1)=5+a를 갖는다. 5+a=6에서 a=1이므로 답은 ④ 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -403,7 +407,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "9d335334acae68ca4b8db06f839e49529d8f6759ba6e1d85bd8997c99970aa76"
+    "solutionSha256": "9d335334acae68ca4b8db06f839e49529d8f6759ba6e1d85bd8997c99970aa76",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축과 세로축 위에 아래로 볼록한 곡선 y=f′(x)가 그려져 있고, 곡선이 가로축과 만나는 두 점 (0,0), (1,0)과 꼭짓점 (1/2,−3/2)가 표시되어 있다.",
+    "solutionImageCaption": "f′(x)=6x(x−1)이라 x<0과 x>1에서 양수, 0<x<1에서 음수이므로 f는 [0,1]에서 감소한다. 따라서 답은 ③ [0,1]이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -493,7 +501,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "27c59b96dcf93bf0ad6e3a5e5257dc63ee19c1525146117ed6db37278c8fc2af"
+    "solutionSha256": "27c59b96dcf93bf0ad6e3a5e5257dc63ee19c1525146117ed6db37278c8fc2af",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 x와 세로축 y 위에 삼차곡선이 그려져 있고, 점 (−2,15)에서 봉우리, 점 (4/3,−95/27)에서 골짜기를 이룬다. 높이 9의 수평선이 곡선과 세 점에서 만나고, y절편 (0,3)이 표시되어 있다.",
+    "solutionImageCaption": "P(x)=x³+x²−8x+3이라 두면 P′(x)=(3x−4)(x+2)에서 x=−2일 때 극대 15이고 P(0)=3이다. 수평선 y=a가 음의 근 둘과 양의 근 하나를 가지려면 3<a<15이다. 그림은 a=9인 예를 보여 준다. 정수 a는 4부터 14까지 11개이므로 답은 ② 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -762,7 +774,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "8c1c3e1523566ecea4913116a088c4abc502c12ef5b93f76bdb02963d6aaab70"
+    "solutionSha256": "8c1c3e1523566ecea4913116a088c4abc502c12ef5b93f76bdb02963d6aaab70",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 u와 세로축 v 위에 원점 대칭인 삼차곡선이 그려져 있고, 가로축과 만나는 점 (−1,0), (0,0), (1,0)과 극대·극소의 좌표가 표시되어 있다. 왼쪽은 가로축 위, 오른쪽은 가로축 아래 영역이 서로 다른 농도로 칠해져 있다.",
+    "solutionImageCaption": "f(x)=ax(x²−a²)의 영점은 −a, 0, a이고 0<x<a에서 f(x)<0이므로 오른쪽 넓이는 0부터 a까지 −ax(x²−a²)를 적분한 a⁵/4이다. 원점 대칭이라 왼쪽도 a⁵/4이므로 a⁵/2=512, a⁵=4⁵에서 a=4이고 답은 ④ 4이다. 그림은 a=1로 정규화해 가로축 u=x/a, 세로축 v=f(x)/a⁴로 그린 것이고, 영점은 u=−1, 0, 1에 해당한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -852,7 +868,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "bcb6242b347e1bd1c7a3ff0b7e3600d28f1de668c9c01d1d174fe1d1ee114844"
+    "solutionSha256": "bcb6242b347e1bd1c7a3ff0b7e3600d28f1de668c9c01d1d174fe1d1ee114844",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 t와 세로축 d 위에 증가하는 곡선 d=t+t²/2가 그려져 있고, 높이 180의 수평선 d=180이 곡선과 한 점에서 만난다.",
+    "solutionImageCaption": "서로 반대 방향이므로 상대 이동거리는 0부터 t까지 (1+u)를 적분한 t+t²/2이고, 세 번째 만남은 상대 거리가 3·60=180일 때이다. t²+2t−360=(t+20)(t−18)=0에서 t=18이므로 답은 ④ 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -970,7 +990,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "168c9a788554bd8f56bc66fb95299d6965af7b1ddeef86e42d981ca649efce34"
+    "solutionSha256": "168c9a788554bd8f56bc66fb95299d6965af7b1ddeef86e42d981ca649efce34",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 −1인 점 A, 1인 점 B와 그 오른쪽의 점 x가 표시되어 있다.",
+    "solutionImageCaption": "x<1에서는 f(t)=5이므로 g(x)=−1부터 x까지 5(t−2)를 적분한 (5/2)x²−10x−25/2이고 이것이 (나)이다. g(1)=−20을 이어 x≥1에서 g(x)=x³−2x²−4x−15이므로 답은 (가) x³−2x²−4x−15, (나) (5/2)x²−10x−25/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
@@ -1010,6 +1034,10 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "wide": false,
     "smallBoardContinuityStatus": "PASS",
-    "solutionSha256": "6b9fae398f7fb8f98ce8734d3d7984f2125019c14e0c80b62a74b0a355a08b32"
+    "solutionSha256": "6b9fae398f7fb8f98ce8734d3d7984f2125019c14e0c80b62a74b0a355a08b32",
+    "solutionImage": "assets/images/19_복성고_2학기_기말_고2_수학II/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: y축을 중심으로 좌우 대칭인 곡선이 점 (0,5)에서 봉우리를 이루고, 점 (−4,−27)과 점 (4,−27)에서 골짜기를 이룬다.",
+    "solutionImageCaption": "그림은 b=0일 때의 모양으로, 극댓값이 5이고 양쪽 극솟값이 −27이다. x=0에서 미분가능하려면 h′(−a)=3(−a−3)(−a+1)=0이라 a=−3 또는 a=1이고, a=1일 때 x=0의 좌우에서 부호가 +에서 −로 바뀌어 극댓값을 갖는다. f(0)=5+b=0에서 b=−5이므로 a+b=1−5=−4이고 답은 −4이다.",
+    "solutionImageSize": "full"
   }
 ];

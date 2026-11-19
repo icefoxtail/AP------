@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const { readWorkspace, workspaceFunction } = require("./helpers/archive2-workspace-source.cjs");
 
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
@@ -51,7 +52,7 @@ function assignmentReceiptRuntime(kind) {
 }
 
 function assignmentHandoffHarness(classes, kind = 'original') {
-  const workspace = read('archive2-workspace.js');
+  const workspace = readWorkspace();
   const entry = read('archive2-entry.js');
   const index = read('index.html');
   const receipts = [];
@@ -187,9 +188,9 @@ function assignmentHandoffHarness(classes, kind = 'original') {
   };
 
   const parentMessageCode = [
-    sliceBetween(workspace, 'function setOriginalStep(step) {', 'async function buildOriginalSourceOutput('),
+    workspaceFunction(workspace, 'function setOriginalStep(step) {'),
     sliceBetween(workspace, 'async function originalOutputUrl(mode = "exam", preview = true) {', 'async function originalPrint() {'),
-    sliceBetween(workspace, 'function renderOriginalReceipts() {', 'function openOriginalIssue('),
+    workspaceFunction(workspace, 'function renderOriginalReceipts() {'),
     sliceBetween(workspace, 'window.addEventListener("message", (event) => {', '$("modal").addEventListener("cancel"'),
   ].join('\n');
   vm.runInNewContext(parentMessageCode, parent, { filename: 'archive2-workspace-original-handoff.js' });
@@ -287,7 +288,7 @@ function frozenSnapshot(questionUid, content) {
 }
 
 test('Saved Paper embedded issue mounts the shared receipt and frozen Assignment preview surface', () => {
-  const workspace = read('archive2-workspace.js');
+  const workspace = readWorkspace();
   const entry = read('archive2-entry.js');
   const openSaved = sliceBetween(workspace, 'function openSavedPaperIssue(id) {', 'window.Archive2WorkspaceSavedPaperIssue =');
   const captured = { title: '', body: '' };
@@ -526,8 +527,9 @@ test('Original and Saved Paper PDF failure is a saved receipt; retry POST target
     });
     h.context.renderAssignTargetProgressView();
     assert.match(h.host.innerHTML, /고1 기하반/);
-    assert.match(h.host.innerHTML, new RegExp(`Assignment ID[^<]*${h.assignmentId}`));
+    assert.match(h.host.innerHTML, new RegExp(`출제 번호[^<]*${h.assignmentId}`));
     assert.match(h.host.innerHTML, /PDF 다시 준비/);
+    assert.doesNotMatch(h.host.innerHTML.replace(/<[^>]*>/g, ' '), /Assignment|action/, '출제 완료 패널에 영어 내부 용어가 보이지 않는다');
     for (const mode of ['exam', 'sol', 'ans']) assert.match(h.host.innerHTML, new RegExp(`archiveBoardDirectOutput\\('${h.assignmentId}','${mode}'\\)`));
 
     await h.context.assignTargetRetryPdf('classA');

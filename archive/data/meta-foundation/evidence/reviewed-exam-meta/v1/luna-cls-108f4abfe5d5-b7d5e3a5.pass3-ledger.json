@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "meta-judgment-ledger-v1",
+  "judge": "luna-pass3",
+  "createdAt": "2026-11-13T18:55:00+09:00",
+  "sourceArchiveFile": "original/high/h1/2mid/22_제일고_2학기_중간_고1_기출.js",
+  "items": [
+    {
+      "ordinal": 17,
+      "chosenFrom": "new",
+      "resolutionReason": "f(y,x+1)=0에서 원래 좌표 u=y,v=x+1이므로 축 교환 뒤 x방향으로 1만큼 왼쪽 이동해 왼쪽 반원과 x=0 선분이 된다.",
+      "choiceTableUsed": "H1-수학(상).json",
+      "rpmPath": {
+        "majorUnit": "도형의 방정식",
+        "midUnit": "도형의 이동",
+        "l3": "이동의 합성"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "PT_MOVE_EQUATION_TRANSFORM",
+      "hold": {
+        "rpmPath": {
+          "l4": "원래 도형을 찾는 역변환이 아니라 좌표교환 후 평행이동하는 순방향 변환이며 표에 이 순방향 합성에 맞는 l4가 없음."
+        }
+      }
+    },
+    {
+      "ordinal": 20,
+      "chosenFrom": "new",
+      "resolutionReason": "a₁이 제곱수 집합에도 있으려면 a₁=1이고 a₁+a₄=10에서 a₄=9이며 9∈B라 3∈A; 합집합 합 232에서 교집합 10을 보정하면 A={1,2,3,9,11}이다.",
+      "choiceTableUsed": "H1-수학(하).json",
+      "rpmPath": {
+        "majorUnit": "집합과 명제",
+        "midUnit": "집합의 연산",
+        "l3": "교집합과 합집합",
+        "l4": "집합 연산"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "PT_SET_CONSTRUCTION"
+    },
+    {
+      "ordinal": 4,
+      "chosenFrom": "pass2",
+      "resolutionReason": "ㄱ은 t=x−1>0에서 4t+4/t+4≥12이고 ㄴ은 25−(x+2y)^2=(2x−y)^2≥0이라 b=10이므로 a+b=22다.",
+      "choiceTableUsed": "H1-공통수학1.json",
+      "rpmPath": {
+        "majorUnit": "방정식과 부등식",
+        "midUnit": "여러 가지 부등식",
+        "l3": "절대부등식"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "hold": {
+        "rpmPath": {
+          "l4": "ㄱ은 산술·기하평균, ㄴ은 제곱식의 비음수성으로 상한을 보여 표의 l4 하나로 두 증명을 동시에 표시할 수 없음."
+        }
+      }
+    },
+    {
+      "ordinal": 8,
+      "chosenFrom": "new",
+      "resolutionReason": "세 원소의 각 함수값 선택으로 p=3^3=27, 전단사 순열 q=3!=6, 항등함수 r=1, 상수함수 s=3이므로 합은 37이다.",
+      "choiceTableUsed": "H1-수학(하).json",
+      "rpmPath": {
+        "majorUnit": "함수",
+        "midUnit": "함수"
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_FUNCTION_TYPE_RESTRICTION"
+      ],
+      "integrationPattern": "PT_FUNCTION_COUNTING",
+      "hold": {
+        "rpmPath": {
+          "l3": "일반 함수·일대일대응·항등함수·상수함수 네 종류의 개수를 더하므로 단일 RPM 세부 유형으로 축약하지 않음.",
+          "l4": "선택지 함수 RPM은 특정 함수 성질만 다뤄 네 종류 계산을 모두 대표하지 않음."
+        }
+      }
+    }
+  ]
+}

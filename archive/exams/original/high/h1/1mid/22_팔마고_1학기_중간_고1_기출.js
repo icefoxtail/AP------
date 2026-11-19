@@ -294,7 +294,7 @@ window.questionBank = [
     "id": 6,
     "type": "single",
     "score": 3.8,
-    "question": "이차방정식 $ax^2+2(a+2)x+a=0$ 이 실근을 갖도록 하는 $4$ 이하의 정수 $a$의 개수는?",
+    "question": "방정식 $ax^2+2(a+2)x+a=0$ 이 실근을 갖도록 하는 $4$ 이하의 정수 $a$의 개수는?",
     "choices": [
       "$3$",
       "$4$",
@@ -320,7 +320,7 @@ window.questionBank = [
       "subUnit": "이차방정식의 판별식",
       "difficulty": 2
     },
-    "content": "이차방정식 $ax^2+2(a+2)x+a=0$ 이 실근을 갖도록 하는 $4$ 이하의 정수 $a$의 개수는?",
+    "content": "방정식 $ax^2+2(a+2)x+a=0$ 이 실근을 갖도록 하는 $4$ 이하의 정수 $a$의 개수는?",
     "category": "판별식과 근의 조건",
     "originalCategory": "방정식과 부등식",
     "standardCourse": "수학(상)",

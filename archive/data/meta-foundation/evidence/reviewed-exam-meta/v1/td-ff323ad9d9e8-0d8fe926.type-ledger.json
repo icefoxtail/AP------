@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-ff323ad9d9e8-0d8fe926",
+  "sourceArchiveFile": "original/high/h2/2mid/19_강남여고_2학기_중간_고2_수학II.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e10f76c5f3c29143ff7abfa4b32a21773e3ef93d2115e2574e5d7c98f303ec33",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "∛9=3^(2/3)로 변환하고 같은 밑의 지수를 더하여 3^(2/3+1/3)=3을 얻는다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. root fresh 독립 판정 인계. 안전 원문과 ACTIVE 정의만 읽은 별도 판정자 결과를 source UID·ACTIVE·parent 결속 확인 후 반영. 기존 판정 폐기, 비교·재판정 없이 인계값 유지.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1ceadccefcf9eec26846b4a7ed36c74f600310b0a82ca0fce24bf82ac254da97",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+      "templateKey": "TPL_LOG_BASE_ANTILOG_EXISTENCE_CONDITION",
+      "step": "밑조건 a>2,a≠3과 진수조건−2<a<5의 교집합 정수는4이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b8a8620e39443ca6f29f083637a7210ce09eb89ead606f15ee57d8757e2ad183",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "step": "목표식을 log3(x−3)+1로 바꾸면 오른쪽1 아래2 이동으로 합−1이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_593360c7fb6d324746dfce9acee644a65ae54a9060cc23660cbd13c356764101",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+      "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+      "step": "최댓값 a+c=3과 f0=−a+c=−1,주기2π/b=π로 a2,b2,c1,합5이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4abfbe70341675314589d27aa106722df858b8fa7330c8ceb9e2474f23836900",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+      "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+      "step": "첫항3에서6+3d=12로 d2,a5=11이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_72372fd4fa1da1361179808614cf036940ec19c801db286269ecb0514cb85067",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+      "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+      "step": "내각합으로 sin A=sin(B+C)=1/3이므로 넓이(1/2)·5·6/3=5이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_971f0403de067e01482f171320530960f01eda691eb32c51fe1cc745a3f0884f",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+      "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+      "step": "부분합비1+r^10=3에서 r^10=2이므로1+r^30=9이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_93d2e6d7feab4158752d7320ebf38de9b398011e9d2aaaa1354a7cb923e33b33",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": null,
+      "step": "두시점 로그식을 빼면 log T2=.09−(1/4)log4=−.06이므로10^(−.06)이다.",
+      "note": "문항·해설 직접 판독. 본문 조건 완결, 보조 해설 그림 불필요. TPL 제안명: 로그 실용모형의 입력비에 따른 출력 복원. 정의: 공통상수를 차로 소거하고 입력비의 로그에서 출력 로그와 실값을 구한다. 구별 단서: log T=K−(1/4)log P와 연습일수4배; pH 또는 지수성장 기간과 다름. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ]
+}

@@ -21,7 +21,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 A와 마주 보는 변 BC, 각 C와 마주 보는 변 AB를 짝지어 사인법칙을 적용한다.",
+    "solutionImageCaption": "각 A와 마주 보는 변 BC, 각 C와 마주 보는 변 AB를 짝지어 사인법칙을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -43,7 +47,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 변 사이의 각 A를 기준으로 맞은편 변 BC를 찾는다.",
+    "solutionImageCaption": "두 변 사이의 각 A를 기준으로 맞은편 변 BC를 찾는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -65,7 +73,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 변과 그 끼인각으로 삼각형의 높이와 넓이를 연결한다.",
+    "solutionImageCaption": "두 변과 그 끼인각으로 삼각형의 높이와 넓이를 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -87,7 +99,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 변에서 각 C의 사인값을 구하여 두 변과 끼인각의 넓이 공식에 연결한다.",
+    "solutionImageCaption": "세 변에서 각 C의 사인값을 구하여 두 변과 끼인각의 넓이 공식에 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -109,7 +125,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 현 BC와 원주각 A의 대응을 확인하고 외접원의 반지름을 사인법칙에 사용한다.",
+    "solutionImageCaption": "현 BC와 원주각 A의 대응을 확인하고 외접원의 반지름을 사인법칙에 사용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -153,7 +173,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형의 외접원을 연못의 경계로 보고 현 BC에 대응하는 원주각 A를 사용한다.",
+    "solutionImageCaption": "삼각형의 외접원을 연못의 경계로 보고 현 BC에 대응하는 원주각 A를 사용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -219,7 +243,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC에서 변 AB가 7, 변 BC가 3k, 변 CA가 8k로 표시되어 있고, 각 C가 60°로 표시되어 있다.",
+    "solutionImageCaption": "사인법칙에서 7/(sin C)=14√3/3이므로 sin C=√3/2이고, C<90°에서 C=60°이다. a=3k, b=8k를 코사인법칙에 넣으면 49=9k²+64k²−24k²=49k²이므로 k=1이다. 따라서 a=3이고 답은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -263,7 +291,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 코사인법칙으로 얻은 현 BC와 원주각 A를 외접원 반지름에 연결한다.",
+    "solutionImageCaption": "코사인법칙으로 얻은 현 BC와 원주각 A를 외접원 반지름에 연결한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -329,7 +361,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 내심 I에서 각 변에 내린 높이가 같으므로 세 작은 삼각형의 넓이를 합친다.",
+    "solutionImageCaption": "내심 I에서 각 변에 내린 높이가 같으므로 세 작은 삼각형의 넓이를 합친다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -351,7 +387,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 정육각형에서 중점 P와 꼭짓점 E를 연결하여 삼각형 PDE에 코사인법칙을 적용한다.",
+    "solutionImageCaption": "정육각형에서 중점 P와 꼭짓점 E를 연결하여 삼각형 PDE에 코사인법칙을 적용한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -373,7 +413,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/비상_대수_사인코사인법칙_고2_유형확인/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 각이등분선 AD가 밑변을 두 변의 길이 비로 나누므로 두 삼각형의 넓이 비가 같다.",
+    "solutionImageCaption": "각이등분선 AD가 밑변을 두 변의 길이 비로 나누므로 두 삼각형의 넓이 비가 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -388,10 +432,10 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "원에 내접하는 사각형 $\\text{ABCD}$에서 $\\overline{\\text{AB}}=\\overline{\\text{BC}}=4$, $\\overline{\\text{CD}}+\\overline{\\text{DA}}=10$, $\\angle \\text{ADC}=120^\\circ$일 때, 사각형 $\\text{ABCD}$의 넓이를 구하시오.",
+    "content": "원에 내접하는 사각형 $\\text{ABCD}$에서 $\\overline{\\text{AB}}=\\overline{\\text{BC}}=4$, $\\overline{\\text{CD}}+\\overline{\\text{DA}}=2\\sqrt{5}$, $\\angle \\text{ADC}=120^\\circ$일 때, 사각형 $\\text{ABCD}$의 넓이를 구하시오.",
     "choices": [],
-    "answer": "25\\sqrt{3}",
-    "solution": "[키포인트] 원에 내접하는 사각형의 성질과 코사인법칙\\n조건 정리: 원에 내접하는 사각형 $ABCD$, $AB=BC=4$, $CD+DA=10$, $\\angle ADC=120^\\circ$\\n풀이 방향: 원에 내접하는 사각형의 마주보는 대각의 합이 $180^\\circ$임을 이용하여 대각선 $AC$의 길이를 두 가지 방법으로 구하고, 이를 통해 변의 길이의 곱을 찾아 넓이를 구한다.\\n정석 풀이: 원에 내접하는 사각형에서 마주보는 각의 크기의 합은 $180^\\circ$이므로 $\\angle ABC = 180^\\circ - 120^\\circ = 60^\\circ$이다.\\n삼각형 $ABC$에서 코사인법칙에 의해 $AC^2 = AB^2 + BC^2 - 2 \\cdot AB \\cdot BC \\cdot \\cos 60^\\circ = 16 + 16 - 2 \\cdot 4 \\cdot 4 \\cdot \\dfrac{1}{2} = 16$이므로 $AC = 4$이다.\\n삼각형 $ADC$에서 코사인법칙에 의해 $AC^2 = CD^2 + DA^2 - 2 \\cdot CD \\cdot DA \\cdot \\cos 120^\\circ$이므로 $16 = CD^2 + DA^2 + CD \\cdot DA$이다.\\n이 식을 변형하면 $(CD+DA)^2 = CD^2 + DA^2 + 2 \\cdot CD \\cdot DA$이므로, $10^2 = 100 = (CD^2 + DA^2 + CD \\cdot DA) + CD \\cdot DA = 16 + CD \\cdot DA$이다.\\n따라서 $CD \\cdot DA = 84$이다.\\n사각형 $ABCD$의 넓이는 삼각형 $ABC$와 삼각형 $ADC$의 넓이의 합과 같다.\\n$\\triangle ABC = \\dfrac{1}{2} \\cdot 4 \\cdot 4 \\cdot \\sin 60^\\circ = 4\\sqrt{3}$\\n$\\triangle ADC = \\dfrac{1}{2} \\cdot CD \\cdot DA \\cdot \\sin 120^\\circ = \\dfrac{1}{2} \\cdot 84 \\cdot \\dfrac{\\sqrt{3}}{2} = 21\\sqrt{3}$\\n따라서 사각형 $ABCD$의 넓이는 $4\\sqrt{3} + 21\\sqrt{3} = 25\\sqrt{3}$이다.\\n따라서 구하는 값은 $25\\sqrt{3}$이다.",
+    "answer": "5\\sqrt{3}",
+    "solution": "[키포인트] 원에 내접하는 사각형의 성질과 코사인법칙\\n조건 정리: 원에 내접하는 사각형 $ABCD$, $AB=BC=4$, $CD+DA=2\\sqrt{5}$, $\\angle ADC=120^\\circ$\\n정석 풀이: 마주보는 각의 합이 $180^\\circ$이므로 $\\angle ABC = 60^\\circ$이다.\\n삼각형 $ABC$에서 $AC^2 = 4^2 + 4^2 - 2 \\cdot 4 \\cdot 4 \\cdot \\cos 60^\\circ = 16$이므로 $AC = 4$이다.\\n삼각형 $ADC$에서 $AC^2 = CD^2 + DA^2 - 2 \\cdot CD \\cdot DA \\cdot \\cos 120^\\circ$이므로 $16 = CD^2 + DA^2 + CD \\cdot DA = (CD+DA)^2 - CD \\cdot DA = 20 - CD \\cdot DA$이다.\\n따라서 $CD \\cdot DA = 4$이다.\\n$\\triangle ABC = \\dfrac{1}{2} \\cdot 4 \\cdot 4 \\cdot \\sin 60^\\circ = 4\\sqrt{3}$이고 $\\triangle ADC = \\dfrac{1}{2} \\cdot 4 \\cdot \\sin 120^\\circ = \\sqrt{3}$이다.\\n따라서 사각형 $ABCD$의 넓이는 $4\\sqrt{3}+\\sqrt{3}=5\\sqrt{3}$이다.",
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "category_or_cue_inferred",

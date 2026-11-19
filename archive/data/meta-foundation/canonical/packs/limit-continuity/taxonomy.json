@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 7,
-  "templateCount": 29,
+  "templateCount": 33,
   "foundationPack": "LIMIT_CONTINUITY",
   "ownerPack": "LIMIT_CONTINUITY",
   "problemTypes": [
@@ -1080,6 +1080,114 @@
       ],
       "sourceUnit": "MATH2_CONTINUITY",
       "problemTypeKey": "PT_CONTINUITY_JUDGMENT"
+    },
+    {
+      "templateKey": "TPL_CONTINUITY_CONDITION_COMPOSITION",
+      "parentProblemTypeKey": "PT_CONTINUITY_CONDITION",
+      "canonicalLabelKo": "합성함수 연속 조건",
+      "definition": "안쪽 함수의 좌우 극한과 함숫값을 바깥 함수가 같은 값으로 보내도록 계수를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_21f297b71881feca7d80af975005dd691437ea50ebf379e3654112d99aa8f427"
+      ],
+      "sourceUnits": [
+        "H15-M2-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_CONTINUITY_CONDITION_COMPOSITION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LIMIT_PARAMETER_DETERMINATION_ONE_SIDED",
+      "parentProblemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "canonicalLabelKo": "좌우 극한 일치",
+      "definition": "경계에서 좌극한과 우극한을 같게 놓아 극한이 존재하도록 계수를 정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_149d5f24fc8f10d7b7cb563a2bd6d84ba62f617c3a5cd610b184033a8068f033",
+        "qid_v1_1a159960698c29a4f47eb62629f8eca688e336e7517a48b1e84a385367056906"
+      ],
+      "sourceUnits": [
+        "H15-M2-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_PARAMETER_DETERMINATION_ONE_SIDED",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LIMIT_VALUE_CALC_CONVERGENCE",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalLabelKo": "역수식 수렴과 발산",
+      "definition": "역수항이 0으로 가는 경우와 양의 분모가 0으로 가는 경우를 구분해 극한을 판단한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_d95943da8232b480cbe744e61d3d905a4ba73e650a6bf3bff3be45992f57a7b0"
+      ],
+      "sourceUnits": [],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_VALUE_CALC_CONVERGENCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LIMIT_VALUE_CALC_MULTI",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalLabelKo": "극한 종합 계산",
+      "definition": "각 극한의 형태에 맞게 인수분해·유리화·지배항·샌드위치 방법을 적용하여 결합값을 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_065e22c667e90a65e850baf7c2ea4d6a96b2977015f5e974568282429f9c76aa",
+        "qid_v1_6a49abc0ff488338dd8c09318d1f3089618abb2f4e341cbce35e17b6a12ee437"
+      ],
+      "sourceUnits": [
+        "H15-M2-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_VALUE_CALC_MULTI",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ]
 }

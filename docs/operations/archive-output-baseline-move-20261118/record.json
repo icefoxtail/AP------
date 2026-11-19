@@ -1,0 +1,568 @@
+{
+  "schema": "archive-output-baseline-move-record-v1",
+  "date": "2026-11-18",
+  "status": "DRAFT_SCREEN_JUDGMENT_PASS",
+  "conflictResolutions": "EVIDENCE_DEBT: 9건, 상세 목록 미기록",
+  "precedent": [
+    "4a8a65d8c3 (solution SVG display rule, closest analogue)",
+    "b0f49d60d0 (performance reference b9d77f8a -> 7611743a)",
+    "062526a797 (original reference 9efb9633 -> 13636f87)"
+  ],
+  "baselines": {
+    "performance": {
+      "old": "7611743a80b71488f63f281af4a225afece3d40a",
+      "new": "7b2b09e062f17c2b39ddf148c530bb483601dab2",
+      "branch": "review-reference/performance-renderer-parity-20261118",
+      "oldBranch": "review-reference/performance-font-output-url-20261115",
+      "newIsDirectChildOfOld": true
+    },
+    "original": {
+      "old": "13636f8799b1ff7de4c5f61f5f8d7f4e4b0e84eb",
+      "new": "5aa7dd8273761a12881efd87b967cb531295f391",
+      "branch": "review-reference/original-renderer-parity-20261118",
+      "oldBranch": "review-reference/original-font-import-order-20261115",
+      "newIsDirectChildOfOld": true
+    },
+    "pushPolicy": "Only new commits on new branches whose parent is the old baseline commit; nothing force-pushed, no existing baseline commit rewritten."
+  },
+  "appliedChanges": [
+    {
+      "id": "e841eb07f2",
+      "what": "verified Hangul math renderer (archive/engine.html unknownText hook); drives the images24 mathMarkupHash drift",
+      "files": [
+        "archive/engine.html"
+      ],
+      "dependenciesAdded": "The hook lives inside the enclosed-Latin MathJax pageReady/unknownText scaffolding of 6f4cba75da/e40e4b58ff, which the old references lack. Carried verbatim from the PR head: engine.html pageReady + waitForEnclosedLatinMath + typesetMath wait + @font-face AP Enclosed Latin, archive/vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2 (the pageReady throws without it) and LICENSE.txt (font license), archive/mathjax_render_loop.js (one-line wait call), cache-version strings. Needed because without the hook scaffolding the Hangul markup cannot be produced."
+    },
+    {
+      "id": "#2398 c75eacd1f8",
+      "what": "mixed oversize wide fallback",
+      "files": [
+        "archive/mixed_engine.html",
+        "archive/exam-render-executor.js",
+        "archive/solution-render-executor.js",
+        "apmath/wrong_print_engine.html"
+      ],
+      "adaptation": "solution-render-executor.js: the old references have no yieldSolutionLayout batch helper, so the rescue path awaits deps.raf() like the surrounding old code. Original reference additionally lacks EXAM_IMAGE_TIMEOUT_MS, so only the #2398 additions were taken."
+    },
+    {
+      "id": "#2397 5d57b0020d",
+      "what": "line-break formatting (atomic short inline formulas, note-box layout)",
+      "files": [
+        "archive/engine.html",
+        "archive/mixed_engine.html",
+        "apmath/wrong_print_engine.html",
+        "archive/generated-bank.html",
+        "archive/mathjax-atomic-inline.js (new, self-contained)"
+      ],
+      "notApplied": "mixer.html, tools/archive-pages-release-manifest.json, tests (not renderer output)"
+    },
+    {
+      "id": "#2399 ba8e6e641d",
+      "what": "figure default large (question/solution figure size caps, imageSizeOverride)",
+      "files": [
+        "archive/engine.html",
+        "archive/mixed_engine.html",
+        "apmath/wrong_print_engine.html",
+        "archive/generated-bank.html",
+        "archive/archive2-preview-mobile.css",
+        "archive/print-contract.js",
+        "archive/render-authority.js",
+        "archive/render-state-normalizer.js"
+      ]
+    }
+  ],
+  "method": "Per-file three-way merge of each change set (child vs its parent) onto the old reference bytes, in merge order e841, #2398, #2397, #2399. Whole-file copies from the PR head were rejected: those files also carry student navigation, output bar, display title, vendored fonts and performance runtime that the correctness-only references must not contain. Conflicts (baseline lacks the surrounding main code) were resolved by hand keeping old-reference lines and taking only the change-set deltas.",
+  "notApplied": [
+    "performance/runtime code (screen-runtime*, output-metadata-loader, common-fast-runtime ...)",
+    "student navigation, output bar, exam-display-title, vendored Nanum font",
+    "source data, fixtures, tolerances"
+  ],
+  "files": {
+    "performanceDiffVsOld": [
+      "apmath/wrong_print_engine.html",
+      "archive/archive2-preview-mobile.css",
+      "archive/engine.html",
+      "archive/exam-render-executor.js",
+      "archive/generated-bank.html",
+      "archive/mathjax-atomic-inline.js",
+      "archive/mathjax_render_loop.js",
+      "archive/mixed_engine.html",
+      "archive/print-contract.js",
+      "archive/render-authority.js",
+      "archive/render-state-normalizer.js",
+      "archive/solution-render-executor.js",
+      "archive/vendor/ap-enclosed-latin/APEnclosedLatin-Regular.woff2",
+      "archive/vendor/ap-enclosed-latin/LICENSE.txt"
+    ],
+    "originalDiffVsOld": "same 14 files"
+  },
+  "verification": {
+    "performanceHarness": {
+      "cmd": "ARCHIVE_PERFORMANCE_BASE_SHA=<new> SKIP_PDF=1 REPEATS=1 node tests/archive2-output-performance-browser.cjs (current = PR head ba8e6e641d)",
+      "result": "pass=true, outputParity=PASS, 110 cases, 55 comparisons, Chrome 157",
+      "oldBaselineResult": "FAIL on #2399 PR head (CI run log, pass=false outputParity=FAIL)"
+    },
+    "originalHarness": {
+      "cmd": "ARCHIVE_SOLUTION_BASE_SHA=<new> REPEATS=2 node tests/archive2-solution-loading-browser.cjs",
+      "result": "pass=true, 16 cases, 6 comparisons",
+      "oldBaselineResult": "pass=false (actual-50-qpp1-parity OUTPUT_PARITY_MISMATCH field bodyHash)"
+    },
+    "pinConsistency": "7 performance pins + 2 solution pins in archive-output-performance.yml equal tests/archive2-output-comparison-references.json; node --test tests/archive2-output-strict-gate.test.cjs 12/12, tests/archive2-output-release-qualification.test.cjs 17/17",
+    "notRun": [
+      "PDF phase (ARCHIVE_PERFORMANCE_SKIP_PDF=1; PDF rasters compare same-renderer output)",
+      "NETWORK_ONLY phases",
+      "cache/pdf-images24 CI jobs",
+      "full test suite",
+      "CI on main after merge"
+    ]
+  },
+  "diffTable": {
+    "performanceReference": [
+      {
+        "fixture": "envelope8",
+        "mode": "exam",
+        "pagesOld": 2,
+        "pagesNew": 2,
+        "blocksOld": 8,
+        "blocksNew": 8,
+        "changed": 0,
+        "matched": 8,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope8",
+        "mode": "sol",
+        "pagesOld": 4,
+        "pagesNew": 4,
+        "blocksOld": 8,
+        "blocksNew": 8,
+        "changed": 7,
+        "matched": 8,
+        "maxd": -28,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope8",
+        "mode": "ans",
+        "pagesOld": 1,
+        "pagesNew": 1,
+        "blocksOld": 8,
+        "blocksNew": 8,
+        "changed": 0,
+        "matched": 8,
+        "maxd": 0,
+        "same": true,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50",
+        "mode": "exam",
+        "pagesOld": 13,
+        "pagesNew": 13,
+        "blocksOld": 52,
+        "blocksNew": 52,
+        "changed": 0,
+        "matched": 52,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50",
+        "mode": "sol",
+        "pagesOld": 24,
+        "pagesNew": 23,
+        "blocksOld": 51,
+        "blocksNew": 51,
+        "changed": 39,
+        "matched": 51,
+        "maxd": -62,
+        "same": false,
+        "moved": 22
+      },
+      {
+        "fixture": "envelope50",
+        "mode": "ans",
+        "pagesOld": 2,
+        "pagesNew": 2,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50-qpp1",
+        "mode": "exam",
+        "pagesOld": 50,
+        "pagesNew": 50,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50-qpp1",
+        "mode": "sol",
+        "pagesOld": 46,
+        "pagesNew": 46,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 16,
+        "matched": 50,
+        "maxd": -257,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50-qpp1",
+        "mode": "ans",
+        "pagesOld": 2,
+        "pagesNew": 2,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "images24",
+        "mode": "exam",
+        "pagesOld": 6,
+        "pagesNew": 6,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "images24",
+        "mode": "sol",
+        "pagesOld": 12,
+        "pagesNew": 12,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 17,
+        "matched": 24,
+        "maxd": -62,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "images24",
+        "mode": "ans",
+        "pagesOld": 1,
+        "pagesNew": 1,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "long23",
+        "mode": "exam",
+        "pagesOld": 6,
+        "pagesNew": 6,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "long23",
+        "mode": "sol",
+        "pagesOld": 16,
+        "pagesNew": 16,
+        "blocksOld": 33,
+        "blocksNew": 31,
+        "changed": 27,
+        "matched": 31,
+        "maxd": -131,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "long23",
+        "mode": "ans",
+        "pagesOld": 1,
+        "pagesNew": 1,
+        "blocksOld": 23,
+        "blocksNew": 23,
+        "changed": 2,
+        "matched": 23,
+        "maxd": 2,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "ordinary",
+        "mode": "exam",
+        "pagesOld": 6,
+        "pagesNew": 6,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "ordinary",
+        "mode": "sol",
+        "pagesOld": 12,
+        "pagesNew": 11,
+        "blocksOld": 25,
+        "blocksNew": 25,
+        "changed": 21,
+        "matched": 25,
+        "maxd": -44,
+        "same": false,
+        "moved": 8
+      },
+      {
+        "fixture": "ordinary",
+        "mode": "ans",
+        "pagesOld": 1,
+        "pagesNew": 1,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": true,
+        "moved": 0
+      },
+      {
+        "fixture": "legacy50",
+        "mode": "exam",
+        "pagesOld": 13,
+        "pagesNew": 13,
+        "blocksOld": 52,
+        "blocksNew": 52,
+        "changed": 0,
+        "matched": 52,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "legacy50",
+        "mode": "sol",
+        "pagesOld": 24,
+        "pagesNew": 23,
+        "blocksOld": 51,
+        "blocksNew": 51,
+        "changed": 39,
+        "matched": 51,
+        "maxd": -62,
+        "same": false,
+        "moved": 22
+      },
+      {
+        "fixture": "legacy50",
+        "mode": "ans",
+        "pagesOld": 2,
+        "pagesNew": 2,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "continuation-golden",
+        "mode": "exam",
+        "pagesOld": 4,
+        "pagesNew": 4,
+        "blocksOld": 8,
+        "blocksNew": 8,
+        "changed": 0,
+        "matched": 8,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "continuation-golden",
+        "mode": "sol",
+        "pagesOld": 4,
+        "pagesNew": 4,
+        "blocksOld": 12,
+        "blocksNew": 12,
+        "changed": 2,
+        "matched": 12,
+        "maxd": 14,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "continuation-golden",
+        "mode": "ans",
+        "pagesOld": 1,
+        "pagesNew": 1,
+        "blocksOld": 8,
+        "blocksNew": 8,
+        "changed": 0,
+        "matched": 8,
+        "maxd": 0,
+        "same": true,
+        "moved": 0
+      }
+    ],
+    "originalReferenceSubset": [
+      {
+        "fixture": "envelope50",
+        "mode": "exam",
+        "pagesOld": 13,
+        "pagesNew": 13,
+        "blocksOld": 52,
+        "blocksNew": 52,
+        "changed": 0,
+        "matched": 52,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50",
+        "mode": "sol",
+        "pagesOld": 24,
+        "pagesNew": 23,
+        "blocksOld": 51,
+        "blocksNew": 51,
+        "changed": 39,
+        "matched": 51,
+        "maxd": -62,
+        "same": false,
+        "moved": 22
+      },
+      {
+        "fixture": "envelope50",
+        "mode": "ans",
+        "pagesOld": 2,
+        "pagesNew": 2,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50-qpp1",
+        "mode": "exam",
+        "pagesOld": 50,
+        "pagesNew": 50,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50-qpp1",
+        "mode": "sol",
+        "pagesOld": 46,
+        "pagesNew": 46,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 16,
+        "matched": 50,
+        "maxd": -257,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "envelope50-qpp1",
+        "mode": "ans",
+        "pagesOld": 2,
+        "pagesNew": 2,
+        "blocksOld": 50,
+        "blocksNew": 50,
+        "changed": 0,
+        "matched": 50,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "images24",
+        "mode": "exam",
+        "pagesOld": 6,
+        "pagesNew": 6,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "images24",
+        "mode": "sol",
+        "pagesOld": 12,
+        "pagesNew": 12,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 17,
+        "matched": 24,
+        "maxd": -62,
+        "same": false,
+        "moved": 0
+      },
+      {
+        "fixture": "images24",
+        "mode": "ans",
+        "pagesOld": 1,
+        "pagesNew": 1,
+        "blocksOld": 24,
+        "blocksNew": 24,
+        "changed": 0,
+        "matched": 24,
+        "maxd": 0,
+        "same": false,
+        "moved": 0
+      }
+    ],
+    "markdown": "C:/AI_WS/tmp/review/baseline-move/diff-table.md (local evidence, not committed)"
+  },
+  "screenshots": "C:/AI_WS/tmp/review/baseline-move/perf-pair/shots and orig-pair/shots (local evidence, not committed)",
+  "reviewers": [
+    {
+      "actor": "Claude Sonnet sub-agent (baseline-move preparation)",
+      "looked": "harness results, diff table, a sample of screenshots (ordinary sol p1 old/new, long23 sol p8 new, images24 exam p1 new)",
+      "verdict": "no unintended breakage seen in the viewed pages"
+    },
+    {
+      "actor": "관제(Claude) 화면 판정",
+      "verdict": "PASS — 2026-11-18, diff-table 전체와 그림 6장 확인(ordinary_sol_p03 old/new, envelope50_sol_p23_new, long23_sol_p08_new, envelope50-qpp1_sol_p42_new, nested before/after). 나머지 그림은 작업자 확인"
+    }
+  ]
+}

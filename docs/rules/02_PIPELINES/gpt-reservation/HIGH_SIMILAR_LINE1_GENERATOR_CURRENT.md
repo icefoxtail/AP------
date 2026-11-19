@@ -38,8 +38,8 @@
 3. **유사문항 작성 (STRICT_VARIANT)** — §3 원칙. 원본 1문항당 유사 1문항, 문항 번호·배점 동일. 배점 합 100.0.
 4. **그림이 필요한 문항**: `AUTHOR_GUIDE.md` 계약대로 plan을 쓰고 공식 렌더러 `render-plan.mjs`로 실제 렌더한다. 임의 SVG 수작업 금지. 그림이 필요 없으면 plan에 `EXEMPT` + 한 문장 사유.
 5. **저장 파일** (`archive/exams/similar/high/<g>/<term>/`)
-   - `<stem>_유사.js`: `window.examTitle`, `window.examDisplayTitle`, `window.questionBank`. 문항 필드는 형식 견본과 같게 한다(`id, level, category, standardCourse, curriculum, curriculumKey, courseKey, standardUnitKey, subUnitKey, conceptClusterKey, questionType, content, choices, answer, solution` 등).
-   - `<stem>_유사.meta-qNN-qMM.json`: `approval.reviewStatus = "review_required"`. 문항마다 `sourceQid, variationType, primaryMethod, decisiveStep, rpm(L1~L4), ptTplCandidate, crossConceptKeys, conditionKeys, integrationPattern, difficultyBucket, difficultyConfidence, difficultyBoundaryFlag, difficultyReason, level, item4slot, hold`.
+   - `<stem>_유사.js`: `window.examTitle`, `window.examDisplayTitle`, `window.questionBank`. 문항 필드는 형식 견본과 같게 한다(`id, category, standardCourse, curriculum, courseKey, standardUnitKey, standardUnit, subUnitKey, subUnit, conceptClusterKey, questionType, content, choices, answer, solution` 등). 라벨(`category`·`standardUnit`·`subUnit`)은 키의 마스터 글자를 그대로 옮긴다. `curriculumKey`·`level`·`L1~L4` 같은 메타 사본은 JS에 쓰지 않는다(등록기 parity 거부, [최소 한 벌](../../../agents/metadata.md)).
+   - `<stem>_유사.meta-qNN-qMM.json`: `approval.reviewStatus = "review_required"`. 문항마다 `sourceQid, variationType, primaryMethod, decisiveStep, rpmPrimaryRecordId, problemTypeKey, templateKey, crossConceptKeys, conditionKeys, integrationPattern, difficultyBucket, difficultyConfidence, difficultyBoundaryFlag, difficultyReason, item4slot, hold`(새 문항에 `level` 하/중/상은 쓰지 않는다. [규칙](../../../agents/metadata.md#난이도는-정수-15만-2026-11-18-21시-kst부터-적용)). `rpmL1~L4` 글자는 등록기가 번호에서 채우므로 쓰지 않아도 된다. `rpmPrimary{}`·`rpmPrimaryL1~L4`·`rpmPrimaryRecordIds`·맨 `L1~L4`·`curriculumKey`·`levelBasis`·`difficultyBasis`·`ptTplCandidate`는 쓰지 않는다(2026-11-19 [최소 한 벌](../../../agents/metadata.md)). 허용 목록 안 필드를 `after`에 새로 넣으면 `before`에 `null`을 같이 쓴다.
    - `<stem>_유사_plans/qNN-problem.plan.json`, `qNN-solution.plan.json` (문항 수 × 2).
 6. **자체 점검** (§4) 후 `--phase=draft` 진단: `node tools/harness/verify_similar_exam.mjs <similarStem> --phase=draft`. 초안 PASS는 출고 승인이 아니다.
 7. **인계**
@@ -61,7 +61,7 @@
   - **크로스워크 행이 없으면(`DIRECT_BINDING_GAP`·`RPM_ONLY`) 행을 덧붙인다.** 문항·해설을 보고 마스터에 있는 RPM 리프를 정해 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/<파일>.json`에 `DIRECT_ACTIVE` 행을 추가하고 `summary` 개수를 갱신한다(`docs/agents/metadata.md` "크로스워크 행 확장"). 마스터에 맞는 리프가 없으면 새 리프를 `newKeyProposal`로 제안해 채운다. 이름이 비슷하다고 고르지 않는다.
   - 근사 키로 때우지 않는다. 가장 가까운 리프로 "근사"한 문항은 허용되지 않는다. 해설이 두 리프 중 하나로 정해지지 않으면 `rpmPrimaryRecordId`로 지목한다.
   - 메타 작성 도구·절차: `docs/architecture/JS_Archive_Meta_Single_Entry_Resolver_CURRENT.md`, `node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage CREATE --input <stage-local decision.json> --out <stage-local evidence.json>`, 방향 원칙은 `docs/architecture/JS_Archive_Meta_OS_CURRENT.md` 0장(새 값은 받아 두고 나중에 묶는다 / 값이 있으면 쓴다 / 추정으로 만들지 않는다).
-  - PT/TPL 최종 값은 공식 Resolver 결과다. 후보(`ptTplCandidate`)에는 실제 키(기존 또는 `registryChanges`로 만든 새 키)를 적는다. null로 두지 않는다.
+  - PT/TPL은 문항·해설의 결정 단계를 읽은 직접 판정이 정본이다(2026-11-16, "공식 Resolver 결과만" 제한 해제). `problemTypeKey`·`templateKey`에 실제 키(기존 또는 `registryChanges`로 만든 새 키)를 적는다. null로 두지 않는다.
   - 4칸(`item4slot`)은 문항마다 발문·해설을 읽고 판정하며, 용어는 `term-dictionary-v1.5.json`에 있는 것만 쓴다. 사전에 없는 용어는 후보로 선언한다(`JS_Archive_Item_4Slot_Term_Contract_CURRENT_v1.md`).
   - 난이도는 보수적으로(애매하면 낮은 단계 + 경계 플래그), `primaryMethod`·`decisiveStep`·`difficultyReason`은 문항마다 직접 쓴다.
   - 빈 칸 0이 목표다. 도구·권한 때문에 정말 만들 수 없는 칸만 `hold`에 구체적인 이유와 시도한 것을 적고 PR 본문 첫머리에 별도로 올린다. "맞는 키가 없다"는 이유로 비우는 것은 허용되지 않는다.
@@ -73,7 +73,7 @@
 - 문항 수·배점 합이 원본과 같은가. 정답 번호 max−min ≤ 1, 3연속 없음.
 - 문항마다 발문·보기만 보고 다시 풀어 답이 같은가.
 - `.js`가 문법 오류 없이 로드되는가(`node -e` 로 `window` 스텁 후 `require`). 메타·plan이 JSON으로 읽히는가.
-- plan이 문항 수 × 2개 있는가. 메타의 `rpm`이 현행 표(또는 새로 낸 `newKeyProposal`)의 한 줄인가. 빈 칸이 0인가(`hold`는 만들 수 없던 칸만, 구체 사유와 함께).
+- plan이 문항 수 × 2개 있는가. 메타의 `rpmPrimaryRecordId`가 크로스워크에 있는 번호(또는 새로 낸 `newKeyProposal`)인가. 빈 칸이 0인가(`hold`는 만들 수 없던 칸만, 구체 사유와 함께).
 - 같은 문장이 반복된 `primaryMethod`·`difficultyReason`이 없는가. 한 시험지의 전 문항이 같은 L3·난이도가 아닌가.
 
 ---

@@ -241,7 +241,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "제곱근",
       "도형",
@@ -285,7 +285,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "제곱근",
       "수직선",
@@ -583,7 +583,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "인수분해",
       "도형",
@@ -700,7 +700,7 @@ window.questionBank = [
     "standardUnit": "다항식의 곱셈과 인수분해",
     "standardUnitOrder": 2,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "인수분해",
       "도형",
@@ -806,7 +806,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "subjective-2up",
     "tags": [
       "서술형",
       "제곱근표",
@@ -904,7 +904,7 @@ window.questionBank = [
     "standardUnit": "실수와 그 계산",
     "standardUnitOrder": 1,
     "questionType": "",
-    "layoutTag": "fullwidth",
+    "layoutTag": "grid",
     "tags": [
       "서술형",
       "제곱근",

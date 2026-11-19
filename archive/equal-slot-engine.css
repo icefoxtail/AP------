@@ -14,6 +14,24 @@
 .ap-slot-content[data-equal-slot-profile~="compact"] .choices { margin-top: 5px; gap: 2px 8px; }
 .ap-slot-content[data-equal-slot-profile~="compact"] .choice-item { line-height: 1.4; }
 .ap-slot-content[data-equal-slot-profile~="choices"] .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 3px 8px; }
+/* images 프로파일(칸이 모자랄 때 그림을 더 줄이는 마지막 수단).
+   2026-11-18: A4 쪽 배치는 figure-size.css의 비율 규칙을 쓰므로 px로 자르지 않고 그 비율에 0.8을 곱한다(--ap-fig-k). 묶음 그림은 줄이지 않는다.
+   휴대폰 읽기 배치(<=640px 화면)는 옛 규칙(78%·150px)을 그대로 쓴다. */
+@media screen and (max-width: 640px) {
 .ap-slot-content[data-equal-slot-profile~="images"] .q-image-wrap img,
 .ap-slot-content[data-equal-slot-profile~="images"] .q-content img { max-width: 78%; max-height: 150px; object-fit: contain; }
+}
+@media not screen and (max-width: 640px) {
+.ap-slot-content[data-equal-slot-profile~="images"] :is(.q-image-wrap, .q-content) :is(img, svg):not([data-ap-fig="bundle"]):not([data-ap-fig="scaled"]) { --ap-fig-k: 0.8; }
+}
+/* 한 단 전체(span 2)로도 모자랄 때만 쓰는 그림 단계 축소(equal-slot-engine.js의 tall 프로파일). 단 폭의 0.55 x 0.7 = 38.5%, x 0.636 = 35%(하한). */
+@media not screen and (max-width: 640px) {
+.ap-slot-content[data-equal-slot-profile~="images"][data-equal-slot-profile~="tight"] :is(.q-image-wrap, .q-content) :is(img, svg):not([data-ap-fig="bundle"]):not([data-ap-fig="scaled"]) { --ap-fig-k: 0.7; }
+.ap-slot-content[data-equal-slot-profile~="images"][data-equal-slot-profile~="floor"] :is(.q-image-wrap, .q-content) :is(img, svg):not([data-ap-fig="bundle"]):not([data-ap-fig="scaled"]) { --ap-fig-k: 0.636; }
+}
+/* 글자를 10.8px 밑으로 줄이지 않는 대신 한 단 전체에도 안 들어가는 문항은 교사 화면에 빨간 점선과 문구로 보인다(인쇄·PDF·인쇄용 이미지에는 넣지 않는다). */
+@media screen and (min-width: 641px) {
+.q-box[data-layout-overflow="1"] { position: relative; outline: 2px dashed #c62828; outline-offset: -2px; z-index: 2; }
+.q-box[data-layout-overflow="1"]::after { content: "LAYOUT_OVERFLOW: 칸에 다 안 들어감"; position: absolute; right: 0; bottom: 0; background: #c62828; color: #fff; font: 700 11px/1.3 sans-serif; padding: 2px 6px; z-index: 3; }
+}
 @media print { .page.ap-equal-slot-page { height: 296.5mm !important; overflow: visible !important; } }

@@ -18,7 +18,7 @@ import { auditSourceBindingPath } from "../archive/tools/meta-foundation/native-
 import { buildReviewedSourceBinding, reviewedSourceBindingPath } from "../archive/tools/meta-foundation/reviewed-source-binding.mjs";
 import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
 import canonical from "../archive/archive2-canonical.js";
-import { collectSourceValueOverrides, isLegacyPathFormulaUid, legacyPathFormulaUids, isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { collectSourceValueOverrides, isLegacyPathFormulaUid, legacyPathFormulaUids, isAuditedPendingIntegrationRebindAllowed, isMetaPipelineApprovedTypeRebindAllowed, isSopPendingSourceNamespaceCorrectionAllowed, isSopV12SourceFieldCorrectionAllowed, isSourceConditionEvidenceDebtAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, preservedRuntimeIdentityProvenance, registerReviewedExamV2, sopV12PackIncludes, sourceVisualType, validateSourceConditionCorrections, validateSourceCrossConceptCorrections, validateTargetedAuditCorrections, validateTargetedRecoverySupplement, verifyConsumerValues, verifyIdentityFingerprintConsumer } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 test("targeted audit correction preserves raw provenance and cannot merge canonical keys", () => {
   const ref = { path: "docs/audit-correction.json", sha256: "a".repeat(64) };
@@ -1724,8 +1724,7 @@ for (const [name, mutate, error] of [
   ["inactive template", f => { f.request.registryChanges.find(c => c.path.endsWith("taxonomy.json")).after.templates[0].status = "RETIRED"; }, /inactive\/missing TPL/],
   ["invalid parent", f => { f.request.registryChanges.find(c => c.path.endsWith("taxonomy.json")).after.templates[0].parentProblemTypeKey = "PT_MISSING"; }, /TPL parent missing/],
   ["binding missing", f => { f.request.registryChanges.find(c => c.path.endsWith("bindings.json")).after.bindings = []; }, /binding missing/],
-  ["wrong source value", f => { f.request.items[0].after.difficultyBucket = 4; }, /source\/approved metadata parity/],
-  ["protected student field", f => { f.request.items[0].after.solution = "rewrite"; }, /unapproved field/]
+  ["wrong source value", f => { f.request.items[0].after.difficultyBucket = 4; }, /source\/approved metadata parity/]
 ]) test(`reject ${name} before any write`, t => {
   const f = fixture(t); const original = fs.readFileSync(path.join(f.root, META));
   mutate(f);
@@ -2565,26 +2564,13 @@ for (const level of [null, "중상"]) test(`FINAL_QA preserves explicit historic
   const indexRow = { ...records[0], sourceFile: records[0].sourceArchiveFile, course: records[0].standardCourse, level: level ?? "" };
   f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([indexRow])};`);
   assert.doesNotThrow(() => verifyConsumerValues(f.root, records, runtime, { records: [catalogRow] }));
-  if (level === null) {
-    rewriteSource(f, q => { delete q.level; });
-    assert.throws(() => verifyConsumerValues(f.root, records, runtime, { records: [catalogRow] }), /Search metadata mismatch/);
-    rewriteSource(f, q => { q.level = null; q.difficultyBucket = "UNKNOWN"; });
-    assert.throws(() => verifyConsumerValues(f.root, records, runtime, { records: [catalogRow] }), /Search metadata mismatch/);
-  }
 });
 
-test("historical level preservation still rejects missing, fabricated, unknown and mismatched inputs", t => {
+test("historical level preservation still rejects unknown difficultyBucket values and mismatched inputs", t => {
   const cases = [
-    [f => { rewriteSource(f, q => { delete q.level; }); }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.level = "최상"; }); f.request.items[0].after.level = "최상"; }, /level invalid/],
     [f => { f.request.items[0].after.level = "중상"; }, /metadata parity/],
-    [f => { rewriteSource(f, q => { q.difficultyBucket = "UNKNOWN"; }); f.request.items[0].after.difficultyBucket = "UNKNOWN"; }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.difficultyBucket = 6; }); f.request.items[0].after.difficultyBucket = 6; }, /level invalid/],
-    [f => { rewriteSource(f, q => { delete q.difficultyBucket; }); }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.difficultyConfidence = "UNKNOWN"; }); f.request.items[0].after.difficultyConfidence = "UNKNOWN"; }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.difficultyBoundaryFlag = "UNKNOWN"; }); f.request.items[0].after.difficultyBoundaryFlag = "UNKNOWN"; }, /level invalid/],
-    [f => { rewriteSource(f, q => { q.legacyLevelCompatibility = "NORMAL"; }); f.request.items[0].after.legacyLevelCompatibility = "NORMAL"; }, /level invalid/],
-    [f => { review2(f); }, /level invalid/],
+    [f => { rewriteSource(f, q => { q.difficultyBucket = "UNKNOWN"; }); f.request.items[0].after.difficultyBucket = "UNKNOWN"; }, /(?:level|difficulty\w*) invalid/],
+    [f => { rewriteSource(f, q => { q.difficultyBucket = 6; }); f.request.items[0].after.difficultyBucket = 6; }, /(?:level|difficulty\w*) invalid/],
     [f => { f.request.expectedSourceBlobSha1 = "f".repeat(40); }, /source.*(?:blob|SHA)|Source/i],
     [f => { f.put("docs/approval.json", { approved: false }); }, /evidence missing\/drift/],
   ];
@@ -2597,17 +2583,17 @@ test("historical level preservation still rejects missing, fabricated, unknown a
   }
 });
 
-test("REVIEW2 may register a question whose source carries no level; other approvals and carried values stay strict", t => {
-  const f = review2(fixture(t));
-  rewriteSource(f, q => { delete q.level; });
-  delete f.request.items[0].after.level; delete f.request.items[0].before.level;
-  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
-  assert.equal(f.read(META).records[0].level, undefined);
-  const g = fixture(t); rewriteSource(g, q => { delete q.level; });
-  delete g.request.items[0].after.level; delete g.request.items[0].before.level;
-  assert.throws(() => registerReviewedExamV2({ root: g.root, request: g.request }), /level invalid/);
+test("a request without level is not rejected because of level; a carried level is stored as is", t => {
+  for (const make of [f => review2(f), f => f]) {
+    const f = make(fixture(t));
+    rewriteSource(f, q => { delete q.level; });
+    delete f.request.items[0].after.level; delete f.request.items[0].before.level;
+    assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).status, "PASS");
+    assert.equal(f.read(META).records[0].level, undefined);
+  }
   const h = review2(fixture(t)); rewriteSource(h, q => { q.level = "최상"; }); h.request.items[0].after.level = "최상";
-  assert.throws(() => registerReviewedExamV2({ root: h.root, request: h.request }), /level invalid/);
+  assert.equal(registerReviewedExamV2({ root: h.root, request: h.request, write: true }).status, "PASS");
+  assert.equal(h.read(META).records[0].level, "최상");
   const i = review2(fixture(t)); delete i.request.items[0].after.level; delete i.request.items[0].before.level;
   assert.throws(() => registerReviewedExamV2({ root: i.root, request: i.request }), /metadata parity: uid1.level/);
 });
@@ -3012,8 +2998,11 @@ test("partial UID dry-run and write preserve the omitted HOLD and source bytes",
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
   assert.equal(raw(META), before);
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, write: true }).totalQuestions, 1);
-  const holdBytes = JSON.stringify(f.hold, null, 2).replaceAll("\n", "\n    ");
-  assert.ok(before.includes(holdBytes) && raw(META).includes(holdBytes));
+  // The untouched hold row keeps its exact content; the written file uses the one-record-per-line form.
+  const heldRow = text => JSON.parse(text).records.find(r => r.questionUid === f.hold.questionUid);
+  assert.deepEqual(heldRow(before), f.hold);
+  assert.deepEqual(heldRow(raw(META)), f.hold);
+  assert.ok(raw(META).includes(`\n    ${JSON.stringify(f.hold)}`));
   assert.equal(raw(f.sourcePath), source);
   assert.deepEqual(f.read(f.receiptPath).appliedRecords.map(r => r.questionUid), ["uid1"]);
 });
@@ -6410,6 +6399,77 @@ test('renderer v3 prior solution witness cannot be omitted or broaden the exact 
   });
 });
 
+// Runtime-only catalog identity provenance (catalogIdentityRepairVerified & co) must survive a re-registration that does not state it.
+function reregisterFixture(t, { flag = true } = {}) {
+  const f = fixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const runtimeFile = "archive/data/meta-foundation/runtime/new-course-v1.json";
+  const runtime = f.read(runtimeFile);
+  if (flag) {
+    runtime.records[0].catalogIdentityRepairVerified = true;
+    runtime.records[0].catalogIdentityRepairEvidence = "fixture identity repair evidence";
+    runtime.records[0].rawQuestionHash = "raw-hash-1";
+  }
+  f.put(runtimeFile, runtime);
+  const first = f.read(META).records[0];
+  const q2 = { ...f.q, difficultyBucket: 4 };
+  const text = `window.questions = ${JSON.stringify([q2])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, text);
+  const request = { schemaVersion: f.request.schemaVersion, requestId: "test-new-course-reregister", examUid: "exam1", sourceArchiveFile: f.request.sourceArchiveFile,
+    expectedSourceBlobSha1: blob(text), expectedQuestionCount: 1,
+    approval: { type: "FINAL_QA", metadataReviewed: true, approvedBy: "fixture-reviewer", evidenceRefs: f.evidenceRefs },
+    items: [{ questionUid: "uid1", sourceOrdinal: 1, before: { difficultyBucket: first.difficultyBucket }, after: { difficultyBucket: 4 }, reason: "난이도만 다시 등록", evidenceRefs: f.evidenceRefs }] };
+  return { ...f, request, runtimeFile };
+}
+
+test("re-registration keeps catalog identity provenance on the runtime record when the request does not state it", t => {
+  const f = reregisterFixture(t);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(f.runtimeFile).records[0];
+  assert.equal(row.difficultyBucket, 4);
+  assert.equal(row.catalogIdentityRepairVerified, true);
+  assert.equal(row.catalogIdentityRepairEvidence, "fixture identity repair evidence");
+  assert.equal(row.rawQuestionHash, "raw-hash-1");
+});
+
+test("re-registration does not invent identity provenance for a runtime record that never had it", t => {
+  const f = reregisterFixture(t, { flag: false });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(f.runtimeFile).records[0];
+  assert.equal(row.difficultyBucket, 4);
+  for (const key of ["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"]) assert.equal(Object.hasOwn(row, key), false, key);
+});
+
+test("identity provenance is carried only for the same UID, file, ordinal and unreplaced identity", () => {
+  const previous = { questionUid: "u", sourceArchiveFile: "a.js", sourceOrdinal: 3, catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "e", rawQuestionHash: "h", problemTypeKey: "PT_OLD" };
+  const final = { questionUid: "u", sourceArchiveFile: "a.js", sourceOrdinal: 3 };
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final, ordinal: 3, identityReplaced: false }),
+    { catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "e", rawQuestionHash: "h" });
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final, ordinal: 3, identityReplaced: true }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final, ordinal: 4, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final: { ...final, sourceArchiveFile: "b.js" }, ordinal: 3, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final: { ...final, questionUid: "v" }, ordinal: 3, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous: undefined, final, ordinal: 3, identityReplaced: false }), {});
+  assert.deepEqual(preservedRuntimeIdentityProvenance({ previous, final: { ...final, rawQuestionHash: "stated" }, ordinal: 3, identityReplaced: false }),
+    { catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "e" });
+});
+
+test("a re-registration that replaces the question identity (fingerprint repair) drops identity provenance", t => {
+  const f = reregisterFixture(t);
+  const identityPath = "archive/data/question_identity_map.json", identityBefore = f.read(identityPath).records[0].sourceFingerprint;
+  const q3 = { ...f.q, content: "교체된 지문", difficultyBucket: 4 };
+  const text = `window.questions = ${JSON.stringify([q3])};
+`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, text);
+  const after = { sourceFingerprint: auditSourceFingerprint(q3), contentFingerprint: auditContentFingerprint(q3) };
+  Object.assign(f.request, { expectedSourceBlobSha1: blob(text) });
+  Object.assign(f.request.items[0], { before: { ...f.request.items[0].before, sourceFingerprint: f.read(META).records[0].sourceFingerprint, contentFingerprint: null },
+    after: { ...f.request.items[0].after, ...after }, identityBefore: { sourceFingerprint: identityBefore } });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(f.runtimeFile).records[0];
+  assert.equal(row.difficultyBucket, 4);
+  for (const key of ["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"]) assert.equal(Object.hasOwn(row, key), false, key);
+});
 
 // Actual registrar/Native/Consumer parity for the issued read-only batch context.
 test('projection phase reuses inputs while revalidating each real partial Native replay', async t => {
@@ -6434,4 +6494,93 @@ test('projection input context cannot enter real write or ordinary dry-run regis
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true, projectionPhase: phase }), /read-only projection/);
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, projectionPhase: phase }), /read-only projection/);
   closeProjectionPhase(phase, f.root);
+});
+
+test("source rebind keeps catalog identity provenance on the runtime record and never invents it", t => {
+  const keys = ["catalogIdentityRepairVerified", "catalogIdentityRepairEvidence", "rawQuestionHash"];
+  const runtimeFile = "archive/data/meta-foundation/runtime/new-course-v1.json";
+  const flagged = sourceRebindFixture(t);
+  const runtime = flagged.read(runtimeFile);
+  Object.assign(runtime.records[0], { catalogIdentityRepairVerified: true, catalogIdentityRepairEvidence: "fixture identity repair evidence", rawQuestionHash: "raw-hash-1" });
+  flagged.put(runtimeFile, runtime);
+  // Same strict runtime comparison as before; only the replaced record's identity provenance is carried over.
+  assert.equal(registerReviewedExamV2({ root: flagged.root, request: flagged.request, write: true }).status, "PASS");
+  const row = flagged.read(runtimeFile).records[0];
+  assert.equal(row.catalogIdentityRepairVerified, true);
+  assert.equal(row.catalogIdentityRepairEvidence, "fixture identity repair evidence");
+  assert.equal(row.rawQuestionHash, "raw-hash-1");
+  assert.equal(row.metadataRevision.endsWith(":test-source-rebind"), true);
+  const plain = sourceRebindFixture(t);
+  assert.equal(registerReviewedExamV2({ root: plain.root, request: plain.request, write: true }).status, "PASS");
+  for (const key of keys) assert.equal(Object.hasOwn(plain.read(runtimeFile).records[0], key), false, key);
+});
+
+// Meta slim PR 0: the registrar takes the judged values only; copies/auxiliary fields are neither required nor stored.
+test("minimal request without copy or auxiliary fields registers", t => {
+  const f = fixture(t);
+  for (const k of ["rpmSemanticStatus", "rpmL3", "rpmL4"]) { delete f.request.items[0].after[k]; delete f.request.items[0].before[k]; }
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  assert.equal(result.reportTags, undefined);
+  const row = f.read(META).records[0];
+  assert.equal(row.problemTypeKey, "PT_NEW");
+  assert.equal(row.difficultyBucket, 3);
+  assert.equal(row.rpmL3, undefined);
+});
+
+test("a field outside the value contract is not stored and is reported instead of rejected", t => {
+  const f = fixture(t);
+  Object.assign(f.request.items[0].after, { solution: "rewrite", rpmPrimaryL3: "copy", difficultyBasis: "why" });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.status, "PASS");
+  assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "UNSTORED_FIELDS", fields: ["solution", "rpmPrimaryL3", "difficultyBasis"] }]);
+  const row = f.read(META).records[0];
+  for (const k of ["solution", "rpmPrimaryL3", "difficultyBasis"]) assert.equal(Object.hasOwn(row, k), false, k);
+  assert.equal(row.problemTypeKey, "PT_NEW");
+  assert.equal(fs.readFileSync(path.join(f.root, "archive/exams/fixture/exam.js"), "utf8").includes("rewrite"), false);
+  // The same in-memory request can be replayed: the registrar must not have rewritten it.
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).replay, true);
+});
+
+function recordIdFixture(t, { fixtureRowId = "FIXTURE-RPM-1", keepL = {} } = {}) {
+  const f = fixture(t);
+  const rpmPath = { majorUnit: "정본 RPM 대단원", midUnit: "정본 RPM 중단원", l3: "정본 RPM 개념", l4: "정본 RPM 유형" };
+  const item = f.request.items[0];
+  for (const k of ["rpmSemanticStatus", "rpmL3", "rpmL4"]) { delete item.after[k]; delete item.before[k]; }
+  item.before.rpmPrimaryRecordId = null; item.after.rpmPrimaryRecordId = "FIXTURE-RPM-1";
+  for (const [k, v] of Object.entries(keepL)) { item.before[k] = null; item.after[k] = v; }
+  const masterPath = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
+  f.put(masterPath, { schemaVersion: "js-archive-taxonomy-rpm-primary-v1.0", authorityStatus: "LOCKED", records: [] });
+  f.put("archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle1.json", { schemaVersion: "rpm-primary-active-crosswalk-v1", status: "ACTIVE_REFERENCE",
+    rpmAuthority: { source: masterPath }, records: [{ id: fixtureRowId, curriculum: "2022", scope: "중1 수학", rpmPath }] });
+  return { f, rpmPath };
+}
+
+test("rpmPrimaryRecordId fills empty rpmL1~L4 from its crosswalk row", t => {
+  const { f, rpmPath } = recordIdFixture(t);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.rpmPrimaryRecordId, "FIXTURE-RPM-1");
+  assert.deepEqual([row.rpmL1, row.rpmL2, row.rpmL3, row.rpmL4], [rpmPath.majorUnit, rpmPath.midUnit, rpmPath.l3, rpmPath.l4]);
+  assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "RPM_FILLED_FROM_RECORD_ID", rpmPrimaryRecordId: "FIXTURE-RPM-1", fields: ["rpmL1", "rpmL2", "rpmL3", "rpmL4"] }]);
+  assert.equal(row.L3, "새 유형", "plain L1~L4 display fields come from PT/TPL, not from the RPM fill");
+});
+
+test("rpmPrimaryRecordId never overwrites an existing rpmL value and reports a difference", t => {
+  const { f } = recordIdFixture(t, { keepL: { rpmL3: "작성자가 쓴 개념", rpmL4: "정본 RPM 유형" } });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.rpmL3, "작성자가 쓴 개념");
+  assert.equal(row.rpmL4, "정본 RPM 유형");
+  assert.equal(row.rpmL1, "정본 RPM 대단원");
+  assert.deepEqual(result.reportTags.map(tag => [tag.kind, tag.fields]), [["RPM_FILLED_FROM_RECORD_ID", ["rpmL1", "rpmL2"]], ["RPM_DIFFERS_FROM_CROSSWALK", ["rpmL3"]]]);
+});
+
+test("rpmPrimaryRecordId absent from the crosswalk leaves rpmL1~L4 empty and is reported", t => {
+  const { f } = recordIdFixture(t, { fixtureRowId: "OTHER-RPM-9" });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.rpmPrimaryRecordId, "FIXTURE-RPM-1");
+  for (const k of ["rpmL1", "rpmL2", "rpmL3", "rpmL4"]) assert.equal(Object.hasOwn(row, k), false, k);
+  assert.deepEqual(result.reportTags, [{ questionUid: "uid1", kind: "RPM_RECORD_ID_NOT_IN_CROSSWALK", rpmPrimaryRecordId: "FIXTURE-RPM-1" }]);
 });

@@ -302,7 +302,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>10. 그림은 두 이차함수 $y=3x^2$과 $y=-x^2$의 그래프를 그린 것이다. 빗금 친 부분에 있는 이차함수의 그래프는? (단, $\\text{O}$는 원점) (4.2점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q10-problem-visual-v2.svg\" alt=\"파란 위쪽 경계 y=3x²와 주황 아래쪽 경계 y=−x²가 원점에서 만난다. 각 x에서 두 곡선 사이에 해당하는 영역을 연두색과 옅은 빗금으로 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
@@ -315,7 +315,7 @@ window.examData = {
         "$y=-\\frac{4}{3}x^2$"
       ],
       "answer": "②",
-      "solution": "[원문 조건 및 구할 대상]\n그림에서 두 이차함수 $y = 3x^2$과 $y = -x^2$의 그래프 사이의 빗금 친 영역에 속하는 포물선의 식을 고른다.\n\n[핵심 발상/공식/보조선]\n원점을 꼭짓점으로 하는 포물선 $y = ax^2$에 대하여:\n1) $a > 0$이면 아래로 볼록하고 $x$축 위쪽(제1, 2사분면)에 위치한다.\n2) $|a|$가 클수록 포물선의 폭이 좁아지고, $|a|$가 작을수록 폭이 넓어진다.\n그림의 빗금 친 영역은 아래로 볼록하면서 $y = 3x^2$보다 폭이 넓은($x$축에 가까운) 영역이므로, $0 < a < 3$을 만족해야 한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 빗금 친 영역의 범위 파악\n- 위로는 $y = 3x^2$의 그래프 안쪽이 아닌 바깥쪽\n- 아래로는 $x$축 위쪽($y > 0$ 영역)\n따라서 $y = ax^2$에서 계수 $a$의 범위는 $0 < a < 3$이다.\n\n2단계: 선지별 계수 $a$ 검토\n- ① $y = 4x^2$: $a = 4 > 3$이므로 $y = 3x^2$보다 폭이 좁아 빗금 밖이다.\n- ② $y = \\frac{2}{3}x^2$: $a = \\frac{2}{3}$은 $0 < \\frac{2}{3} < 3$을 만족하므로 빗금 친 부분에 있다.\n- ③ $y = -\\frac{3}{2}x^2$: $a = -\\frac{3}{2} < 0$ (위로 볼록, $x$축 아래쪽)\n- ④ $y = -2x^2$: $a = -2 < 0$ (위로 볼록)\n- ⑤ $y = -\\frac{4}{3}x^2$: $a = -\\frac{4}{3} < 0$ (위로 볼록)\n\n[경우 나눔 및 5개 선지 검토]\n오직 ②번만이 $0 < a < 3$을 만족하여 빗금 친 영역에 위치한다.\n\n[명확한 결론]\n따라서 정답은 ②이다."
+      "solution": "[원문 조건 및 구할 대상]\n그림에서 두 이차함수 $y = 3x^2$과 $y = -x^2$의 그래프 사이의 빗금 친 영역에 속하는 포물선의 식을 고른다.\n\n[핵심 발상]\n원점을 꼭짓점으로 하는 포물선 $y = ax^2$은 $|a|$가 클수록 폭이 좁아진다. 빗금 친 영역은 위쪽 경계가 $y=3x^2$, 아래쪽 경계가 $y=-x^2$이므로 $y=ax^2$이 이 영역에 있으려면 $-1<a<3$이어야 한다.\n\n[보기 검토]\n① $y=4x^2$: $a=4>3$이므로 $y=3x^2$ 위쪽에 있어 빗금 밖이다.\n② $y=\\frac{2}{3}x^2$: $-1<\\frac{2}{3}<3$이므로 빗금 안이다.\n③ $y=-\\frac{3}{2}x^2$: $a=-\\frac{3}{2}<-1$이므로 $y=-x^2$ 아래쪽이라 빗금 밖이다.\n④ $y=-2x^2$: $a=-2<-1$이므로 빗금 밖이다.\n⑤ $y=-\\frac{4}{3}x^2$: $a=-\\frac{4}{3}<-1$이므로 빗금 밖이다.\n\n따라서 정답은 ②이다."
     },
     {
       "id": 11,
@@ -364,7 +364,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>12. 이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때, 이 이차함수의 식은? (단, $\\text{O}$는 원점) (4.6점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q12-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 가로축의 −6과 2에서 만난다. 세로축에서의 교점은 −4이고 꼭짓점은 왼쪽 아래로 내려간다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
@@ -377,7 +377,7 @@ window.examData = {
         "$y=\\frac{5}{2}x^2+\\frac{4}{3}x-4$"
       ],
       "answer": "①",
-      "solution": "[원문 조건 및 구할 대상]\n그림에서 주어진 포물선의 꼭짓점이 $\\left(-2, -\\frac{16}{3}\\right)$이고 $y$절편이 $-4$, 즉 점 $(0, -4)$를 지날 때, 일반형 $y = ax^2 + bx + c$의 식을 구한다.\n\n[핵심 발상/공식/보조선]\n꼭짓점 $(p, q)$가 주어졌으므로 표준형 $y = a(x - p)^2 + q$로 식을 세운 뒤, 지나는 점 $(0, -4)$를 대입하여 $a$의 값을 구하고 전개한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: 꼭짓점 좌표를 이용한 표준형 작성\n$y = a(x - (-2))^2 - \\frac{16}{3} = a(x + 2)^2 - \\frac{16}{3}$\n\n2단계: 점 $(0, -4)$를 대입하여 $a$ 계산\n$-4 = a(0 + 2)^2 - \\frac{16}{3}$\n$-4 = 4a - \\frac{16}{3}$\n$4a = -4 + \\frac{16}{3} = -\\frac{12}{3} + \\frac{16}{3} = \\frac{4}{3}$\n$a = \\frac{4}{3} \\times \\frac{1}{4} = \\frac{1}{3}$\n\n3단계: 일반형으로 전개\n$y = \\frac{1}{3}(x + 2)^2 - \\frac{16}{3}$\n$y = \\frac{1}{3}(x^2 + 4x + 4) - \\frac{16}{3}$\n$y = \\frac{1}{3}x^2 + \\frac{4}{3}x + \\frac{4}{3} - \\frac{16}{3}$\n$y = \\frac{1}{3}x^2 + \\frac{4}{3}x - \\frac{12}{3}$\n$y = \\frac{1}{3}x^2 + \\frac{4}{3}x - 4$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $y = \\frac{1}{3}x^2 + \\frac{4}{3}x - 4$: 전개된 식과 정확히 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 구하는 식은 ①이다."
+      "solution": "[원문 조건 및 구할 대상]\n그림에서 포물선은 $x$축과 $x=-6$, $x=2$에서 만나고 $y$축과 점 $(0, -4)$에서 만난다. 이때 일반형 $y = ax^2 + bx + c$의 식을 구한다.\n\n[핵심 발상/공식/보조선]\n$x$절편이 $-6$, $2$이므로 $y = a(x+6)(x-2)$로 놓고, 점 $(0, -4)$를 대입하여 $a$의 값을 구한 뒤 전개한다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $x$절편을 이용한 식 작성\n$y = a(x+6)(x-2)$\n\n2단계: 점 $(0, -4)$를 대입하여 $a$ 계산\n$-4 = a \\times 6 \\times (-2) = -12a$\n$a = \\dfrac{1}{3}$\n\n3단계: 일반형으로 전개\n$y = \\dfrac{1}{3}(x+6)(x-2) = \\dfrac{1}{3}(x^2 + 4x - 12)$\n$y = \\dfrac{1}{3}x^2 + \\dfrac{4}{3}x - 4$\n\n[경우 나눔 및 5개 선지 검토]\n- ① $y = \\dfrac{1}{3}x^2 + \\dfrac{4}{3}x - 4$: 전개된 식과 정확히 일치\n- ②, ③, ④, ⑤: 오답\n\n[명확한 결론]\n따라서 구하는 식은 ①이다."
     },
     {
       "id": 13,
@@ -400,14 +400,14 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>13. &lt;보기&gt;는 일차함수 $y=ax+b$의 그래프를 나타낸 것이다. 이때, 이차함수 $y=-bx^2+a$의 그래프는? (단, $\\text{O}$는 원점) (4.6점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.\" style=\"display:block;width:min(100%,406px);height:auto;margin:0 auto;\"></p>",
       "question": "<p>13. &lt;보기&gt;는 일차함수 $y=ax+b$의 그래프를 나타낸 것이다. 이때, 이차함수 $y=-bx^2+a$의 그래프는? (단, $\\text{O}$는 원점) (4.6점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-problem-visual-v2.svg\" alt=\"직선 y=ax+b는 오른쪽으로 갈수록 높아진다. 직선은 y축의 양의 부분과 x축의 음의 부분을 지난다.\" style=\"display:block;width:min(100%,406px);height:auto;margin:0 auto;\"></p>",
       "choices": ["<img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-choice-1-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 음의 부분에 놓여 있고 아래로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","<img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-choice-2-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 양의 부분에 놓여 있고 아래로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","<img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-choice-3-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 원점에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","<img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-choice-4-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 음의 부분에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">","<img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q13-choice-5-problem-visual-v2.svg\" alt=\"y축에 대칭인 포물선이다. 꼭짓점은 양의 부분에 놓여 있고 위로 열린다.\" style=\"display:block;width:min(100%,320px);height:auto;margin:0 auto;\">"],
       "answer": "②",
-      "solution": "[원문 조건 및 구할 대상]\n일차함수 $y = ax + b$의 그래프를 보고 $a, b$의 부호를 판단한 후, 이차함수 $y = -bx^2 + a$의 그래프의 개형을 찾는다.\n\n[핵심 발상/공식/보조선]\n1) 일차함수 $y = ax + b$에서 기울기 $a$는 직선이 오른쪽 위를 향하면 $a > 0$, $y$절편 $b$는 $y$축과 만나는 점의 위치에 따라 결정된다.\n2) 이차함수 $y = -bx^2 + a$에서 $x^2$의 계수가 음수이면 위로 볼록, 양수이면 아래로 볼록이다. 꼭짓점의 좌표는 $(0, a)$이므로 축은 $y$축이고, 꼭짓점의 $y$좌표는 $a$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a, b$의 부호 판정\n주어진 일차함수 그래프는:\n- 오른쪽 위로 향하므로 기울기 $a > 0$\n- $y$축과 양의 부분에서 만나므로 $y$절편 $b > 0$\n\n2단계: 이차함수 $y = -bx^2 + a$의 성질 분석\n- $x^2$의 계수: $-b < 0$ (이유: $b > 0$이므로 $-b < 0$). 따라서 위로 볼록한 포물선이다.\n- 꼭짓점의 좌표: $(0, a)$. $a > 0$이므로 꼭짓점은 $y$축의 양의 부분에 위치한다.\n- 대칭축: $x = 0$ ($y$축 대칭)\n\n3단계: 종합 개형 매핑\n위로 볼록하면서 꼭짓점이 $y$축 양의 부분에 있는 포물선을 고른다.\n\n[경우 나눔 및 5개 선지 검토]\n- ①: 아래로 볼록 (오답)\n- ②: 위로 볼록하고 꼭짓점이 $y$축 양의 부분에 위치 (정확히 부합)\n- ③: 아래로 볼록 (오답)\n- ④: 위로 볼록하지만 꼭짓점이 $y$축 음의 부분에 위치 (오답)\n- ⑤: 축이 $y$축이 아님 (오답)\n\n[명확한 결론]\n따라서 옳은 그래프는 ②이다."
+      "solution": "[원문 조건 및 구할 대상]\n일차함수 $y = ax + b$의 그래프를 보고 $a, b$의 부호를 판단한 후, 이차함수 $y = -bx^2 + a$의 그래프의 개형을 찾는다.\n\n[핵심 발상/공식/보조선]\n1) 일차함수 $y = ax + b$에서 기울기 $a$는 직선이 오른쪽 위를 향하면 $a > 0$, $y$절편 $b$는 $y$축과 만나는 점의 위치에 따라 결정된다.\n2) 이차함수 $y = -bx^2 + a$에서 $x^2$의 계수가 음수이면 위로 볼록, 양수이면 아래로 볼록이다. 꼭짓점의 좌표는 $(0, a)$이므로 축은 $y$축이고, 꼭짓점의 $y$좌표는 $a$이다.\n\n[연속 등식 및 충분한 중간 계산]\n1단계: $a, b$의 부호 판정\n주어진 일차함수 그래프는:\n- 오른쪽 위로 향하므로 기울기 $a > 0$\n- $y$축과 양의 부분에서 만나므로 $y$절편 $b > 0$\n\n2단계: 이차함수 $y = -bx^2 + a$의 성질 분석\n- $x^2$의 계수: $-b < 0$ (이유: $b > 0$이므로 $-b < 0$). 따라서 위로 볼록한 포물선이다.\n- 꼭짓점의 좌표: $(0, a)$. $a > 0$이므로 꼭짓점은 $y$축의 양의 부분에 위치한다.\n- 대칭축: $x = 0$ ($y$축 대칭)\n\n3단계: 종합 개형 매핑\n위로 볼록하면서 꼭짓점이 $y$축 양의 부분에 있는 포물선을 고른다.\n\n[경우 나눔 및 5개 선지 검토]\n- ①: 위로 볼록하지만 꼭짓점이 $y$축의 음의 부분에 위치 (오답)\n- ②: 위로 볼록하고 꼭짓점이 $y$축의 양의 부분에 위치 (정확히 부합)\n- ③: 아래로 볼록하고 꼭짓점이 원점 (오답)\n- ④: 아래로 볼록하고 꼭짓점이 $y$축의 음의 부분에 위치 (오답)\n- ⑤: 아래로 볼록하고 꼭짓점이 $y$축의 양의 부분에 위치 (오답)\n\n[명확한 결론]\n따라서 옳은 그래프는 ②이다."
     },
     {
       "id": 14,
@@ -429,7 +429,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 2,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>14. 올림픽의 다이빙 경기 중에는 높이가 $15\\text{m}$인 고정 다이빙대에서 뛰어드는 플랫폼 다이빙이 있다. $15\\text{m}$ 높이의 다이빙대 위에서 도약하여 다이빙한 선수의 $t$초 후의 높이 $h\\text{m}$는 $h=-4.9t^2+4.9t+15$이라고 한다. 선수가 가장 높이 올라갔을 때, 수면으로부터의 높이는? (4.8점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q14-problem-visual-v2.svg\" alt=\"아래에 수면을 나타낸 파란 평면이 있다. 그 왼쪽 위에는 다이빙대가 있고, 출발하는 사람과 수면 사이의 수직 높이를 15 m라고 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
@@ -464,7 +464,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>15. 가로와 세로의 길이가 각각 $4\\text{cm}$, $6\\text{cm}$인 직사각형 $\\text{ABCD}$가 있다. 가로의 길이는 매초 $2\\text{cm}$씩 늘어나고 세로의 길이는 매초 $1\\text{cm}$씩 줄어들 때, 처음 직사각형과 넓이가 같아지는 것은 몇 초 후인가? (4.8점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q15-problem-visual-v2.svg\" alt=\"왼쪽의 파랑 직사각형 ABCD는 가로 4 cm, 세로 6 cm이다. 주황 점선으로 오른쪽으로 확장되고 아래쪽이 줄어든 직사각형을 표시했다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
@@ -499,7 +499,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>16. 이차함수 $y=x^2+x+a$의 그래프에서 $x$축과의 교점을 $\\text{A}$, $\\text{B}$라 하자. $\\overline{\\text{AB}}=7$일 때, 이 이차함수의 최솟값은? (5.0점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q16-problem-visual-v2.svg\" alt=\"위로 열린 포물선이 x축을 왼쪽에서 A, 오른쪽에서 B로 만난다. 두 점의 가운데보다 아래쪽에 꼭짓점이 놓인다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
@@ -530,7 +530,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "객관식",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>17. 그림과 같이 두 점 $\\text{A}$, $\\text{B}$는 이차함수 $y=x^2$의 그래프 위의 점이고, $y$축에 서로 대칭이다. 점 $\\text{B}$에서 $y$축에 평행한 선을 그어 이차함수 $y=-\\frac{2}{3}x^2$의 그래프와 만나는 점을 $\\text{C}$라고 하자. $\\overline{\\text{AB}}:\\overline{\\text{BC}}=2:1$일 때, 점 $\\text{A}$의 좌표는? (단, 점 $\\text{B}$는 제1사분면 위에 있다.) (5.0점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q17-problem-visual-v2.svg\" alt=\"위로 열린 y=x²에는 A와 B가 있다. 두 점의 높이는 같다. B에서 같은 세로선을 내려 주황 점선 y=−2x²/3 위의 C에 닿는다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",
@@ -640,7 +640,7 @@ window.examData = {
       "subUnitClassificationDepth": "complete_category",
       "difficultyBucket": 3,
       "questionType": "서술형",
-      "layoutTag": "fullwidth",
+      "layoutTag": "vertical",
       "tags": [],
       "wide": false,
       "content": "<p>[서술형 4] 이차함수의 그래프가 점 $(k, 10)$을 지난다고 할 때, $k$의 값은 두 개가 나온다. 이때, 두 $k$값의 차를 구하시오. (풀이과정을 서술하시오.) (7.0점)<br><img src=\"assets/images/16_은계중_1학기_기말_중3_수학/q21-problem-visual-v2.svg\" alt=\"위로 열린 포물선은 x축의 2에서 꼭짓점을 이루고 세로축의 4를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\"></p>",

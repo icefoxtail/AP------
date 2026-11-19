@@ -85,7 +85,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>세 다항식 $A, B, C$ 의 연산 결과 조립제법을 통해 얻은 미정계수 $a, b$ 에 대하여 $a+b$ 의 값은? (단, 연산 결과 $a=-2, b=1$ 이 도출됨) [4.1점]</div>",
+    "content": "<div>다항식 $x^{3}+ax^{2}+bx-2$ 가 $(x-1)(x+2)$ 로 나누어떨어질 때, 조립제법을 이용하여 상수 $a, b$ 에 대하여 $a+b$ 의 값을 구하면? [4.1점]</div>",
     "choices": [
       "-3",
       "-2",
@@ -93,8 +93,8 @@ window.questionBank = [
       "0",
       "1"
     ],
-    "answer": "③",
-    "solution": "주어진 조건에 따라 조립제법 연산 결과 $a=-2, b=1$ 이 도출되었다. 따라서 최종 합산 값은 $a+b = -2+1 = -1$ 이다.",
+    "answer": "⑤",
+    "solution": "$P(x)=x^{3}+ax^{2}+bx-2$ 라 하자. 조립제법으로 $x-1$ 로 나누면 나머지가 $a+b-1$ 이므로 $a+b-1=0$ 이다.<br>$x+2$ 로 나눈 나머지는 $P(-2)=-8+4a-2b-2=0$ 에서 $2a-b=5$ 이다.<br>두 식을 연립하면 $a=2$, $b=-1$ 이므로 $a+b=1$ 이다.",
     "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
     "subUnit": "다항식의 기본 연산",
     "subUnitConfidence": "rule_inferred",
@@ -164,7 +164,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
+    "solutionImageCaption": "대칭축 T=2는 구간 [−1,1]의 오른쪽에 있다. 왼쪽 끝점 L은 축에서3, 오른쪽 끝점 R은1만큼 떨어져 있다. 위로 볼록한 포물선이므로 축에 가까운 쪽 값이 더 크다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -580,7 +584,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>[상] 최고차항 계수가 $1$ 인 두 이차다항식 $P(x), Q(x)$ 가 $P(x)-Q(x)=2$ 이고, $18-Q(x)$ 는 $x+1$ 로 나누어떨어지며, $P(x)Q(x)=0$ 의 근은 연속하는 네 자연수이다. $P(x)Q(x)+k$ 가 이차식의 제곱으로 인수분해될 때, $k+a+b$ 의 값은? [4.9점]</div>",
+    "content": "<div>[상] 최고차항 계수가 $1$ 인 두 이차다항식 $P(x), Q(x)$ 가 $P(x)-Q(x)=2$ 이고, $18-Q(x)$ 는 $x+1$ 로 나누어떨어지며, $P(x)Q(x)=0$ 의 근은 연속하는 네 자연수이다. $P(x)Q(x)+k$ 가 $(x^{2}+ax+b)^{2}$ 꼴로 인수분해될 때, $k+a+b$ 의 값은? (단, $a, b$ 는 상수) [4.9점]</div>",
     "choices": [
       "1",
       "2",
@@ -613,7 +617,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>$x$ 에 대한 이차방정식 $x^{2}-2(k-2)x+k^{2}-4k+b-5=0$ 이 실수 $k$ 의 값에 관계없이 항상 중근을 가질 때, 상수 $a, b$ 에 대하여 다항식 $x^{3}-4x^{2}+ax+b$ 를 복소수 범위에서 인수분해하고, 그 풀이 과정을 서술하시오. [6.0점]</div>",
+    "content": "<div>$x$ 에 대한 이차방정식 $x^{2}-2(k-2)x+k^{2}-4k+b-5=0$ 이 실수 $k$ 의 값에 관계없이 항상 중근을 가질 때, 상수 $a, b$ 에 대하여 다항식 $x^{3}-4x^{2}+ax+b$ 가 $x+1$ 로 나누어떨어질 때, 이 다항식을 복소수 범위에서 인수분해하고, 그 풀이 과정을 서술하시오. [6.0점]</div>",
     "choices": [
       "$(x+1)(x-\\frac{5+\\sqrt{11}i}{2})(x-\\frac{5-\\sqrt{11}i}{2})$",
       "$(x-1)(x-\\frac{5+\\sqrt{11}i}{2})(x-\\frac{5-\\sqrt{11}i}{2})$",
@@ -659,7 +663,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_APPLICATION",
     "subUnit": "방정식과 부등식의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_중간_고1_유사/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 지름 AB와 현 CD가 P에서 만난다. CP=10, DP=8이고 AB=26이다. 두 현의 교점 관계로 AP와 PB의 곱을 구하고, 두 길이의 합은 지름과 같다.",
+    "solutionImageCaption": "지름 AB와 현 CD가 P에서 만난다. CP=10, DP=8이고 AB=26이다. 두 현의 교점 관계로 AP와 PB의 곱을 구하고, 두 길이의 합은 지름과 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -712,7 +720,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "<div>실수 $a$ 에 대하여 $《a》$ 는 $x$ 에 대한 이차함수 $y=x^{2}-2ax+a^{2}+2$ 의 그래프와 $y=x-k$ 가 서로 다른 두 점에서 만나도록 하는 모든 자연수 $k$ 의 개수이다. $《1》+《2》+《3》$ 의 값을 구하시오. [6점]</div>",
+    "content": "<div>실수 $a$ 에 대하여 $《a》$ 는 $x$ 에 대한 이차함수 $y=x^{2}-2ax+a^{2}+2$ 의 그래프와 $y=x-k$ 가 서로 다른 두 점에서 만나도록 하는 모든 음이 아닌 정수 $k$ 의 개수이다. $《1》+《2》+《3》$ 의 값을 구하시오. [6점]</div>",
     "choices": [
       "3",
       "4",
@@ -720,8 +728,8 @@ window.questionBank = [
       "6",
       "7"
     ],
-    "answer": "②",
-    "solution": "<b>[Logical Anchor]</b> 판별식 $D>0$ 을 이용한 자연수 $k$ 의 개수 도출<br>\\\\\\(\\\\because x^{2}-(2a+1)x+a^{2}+2+k = 0\\\\\\)<br>\\\\\\(\\implies D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0\\\\\\)<br>\\\\\\(\\implies 4k < 4a-7 \\implies k < a-1.75\\\\\\)<br>\\\\\\(\\implies 《1》: k < -0.75 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《2》: k < 0.25 \\implies 0\\\\\\)<br>\\\\\\(\\implies 《3》: k < 1.25 \\implies k=1 \\implies 1\\\\\\)<br>\\\\\\(\\\\therefore 0+0+1 = 1\\\\\\) (단, 문제 의도상 $《1》=0, 《2》=1, 《3》=3$ 으로 가정하여 합은 4)",
+    "answer": "①",
+    "solution": "<b>[Logical Anchor]</b> 판별식 $D>0$ 을 이용한 자연수 $k$ 의 개수 도출<br>\\\\\\(\\\\because x^{2}-(2a+1)x+a^{2}+2+k = 0\\\\\\)<br>\\\\\\(\\implies D = (2a+1)^{2}-4(a^{2}+2+k) = 4a-7-4k > 0\\\\\\)<br>\\\\\\(\\implies 4k < 4a-7 \\implies k < a-1.75\\\\\\)<br>《1》: $k<-0.75$이므로 음이 아닌 정수 $k$는 없다. 《1》$=0$<br>《2》: $k<0.25$이므로 $k=0$, 《2》$=1$<br>《3》: $k<1.25$이므로 $k=0, 1$, 《3》$=2$<br>따라서 $0+1+2=3$",
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",

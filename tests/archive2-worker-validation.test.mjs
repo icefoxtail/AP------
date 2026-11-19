@@ -204,22 +204,32 @@ test("BASIC restores current source bytes with optional metadata missing and pas
   }
 });
 
-test("BASIC rejects an unapproved source release despite verified identity and taxonomy", async () => {
+test("BASIC rejects a source release that is not confirmed, and a confirmed stem+choices row is never blocked by it", async () => {
+  // A row whose stem and choices are not confirmed as unchanged (changed, or only the type judgment is bound) stays HOLD, gets no assignment and is
+  // blocked by source_release. A row that carries a valid assignment (stem and choices confirmed) is never HOLD, so the release gate cannot block it alone.
+  assert.equal(catalog.records.filter(row => row.sourceStatus === "HOLD" && core.Canonical.validateBasicAssignment(row, catalog.canonicalAuthority).ok).length, 0,
+    "a row with a valid assignment must have a confirmed stem+choices binding, hence a released source");
   const record = catalog.records.find(row => row.sourceStatus === "HOLD" &&
-    row.sourceIntegrityStatus === "VERIFIED" && core.Canonical.validateBasicAssignment(row, catalog.canonicalAuthority).ok &&
-    core.Canonical.validateAdvancedAssignment(row, catalog.canonicalAuthority).ok);
+    row.sourceIntegrityStatus === "VERIFIED" && row.identityStatus === "VERIFIED" && row.difficultyBucket === "UNKNOWN");
   assert.ok(record);
+  const reasons = core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).reasons;
+  assert.ok(reasons.includes("source_release"));
   assert.equal(core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok, false);
   assert.equal(core.difficultyEligible(record), false);
   assert.equal(core.advancedEligible(record), false);
-  const original = source.evaluate(fs.readFileSync(path.join(root, "archive/exams", record.sourceFile), "utf8"), record.sourceFile)[record.sourceOrdinal - 1];
+  assert.equal(core.Canonical.validateBasicAssignment(record, catalog.canonicalAuthority).ok, false);
+  assert.equal(core.Canonical.validateAdvancedAssignment(record, catalog.canonicalAuthority).ok, false);
+  // Server side: the HOLD row has no assignment of its own, so ask for an approved scope that belongs to an assigned question of the same grade
+  // (preferably from the same exam). The server must not carry the HOLD row in that approved scope.
+  const scopeOwner = catalog.records.find(row => row.automatic && row.sourceFile === record.sourceFile) ||
+    catalog.records.find(row => row.automatic && row.effectiveBrowseGrade === record.effectiveBrowseGrade);
+  assert.ok(scopeOwner, "an assigned question gives the approved scope to request");
   await expectValidationFailure(
     () => validateApprovedMixedQuestions(env, [materialize(record)], input({
-      grade: record.effectiveBrowseGrade, primaryPaths: [core.pathKey(record, 4)],
+      grade: scopeOwner.effectiveBrowseGrade, primaryPaths: [core.pathKey(scopeOwner, 4)],
     })),
     "승인된 문항·출제 범위와 일치하지 않습니다.",
   );
-  assert.ok(original.content);
 });
 
 test("Worker bridge rows follow registered UID identity after a same-grade source-path repair", async () => {
@@ -409,5 +419,25 @@ test("library state defaults legacy rows and never revives a one-way tombstone",
   assert.throws(
     () => resolve({ deleted_at: null }, { status: "BROKEN" }),
     /invalid library status/i,
+  );
+});
+
+test("mixed validation rejects a source value placed where the catalog value is empty, and accepts the catalog value", async () => {
+  // Source.restore keeps the source JS value when the catalog value is empty; the server compares against the catalog
+  // value (including ""), so the saved-paper request must carry the catalog value. The metadata check must stay strict.
+  const record = catalog.records.find((row) => core.generalUseEligibility(row).ok &&
+    typeof row.sourceFile === "string" && row.courseKey === "" && row.assignmentFingerprint && row.sourceFingerprint);
+  assert.ok(record, "catalog has a general-use record whose courseKey is empty");
+  const filters = { grade: record.effectiveBrowseGrade, primaryPaths: [core.generalPathKey(record)] };
+  const exact = materialize(record);
+  assert.equal(exact.courseKey, "");
+  await validateApprovedMixedQuestions(env, [{ ...exact }], input(filters));
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [{ ...exact, courseKey: "SOURCE-ONLY-COURSE" }], input(filters)),
+    "canonical metadata parity mismatch: courseKey",
+  );
+  await expectValidationFailure(
+    () => validateApprovedMixedQuestions(env, [{ ...exact, curriculumKey: "SOURCE-ONLY-CURRICULUM" }], input(filters)),
+    "canonical metadata parity mismatch: curriculumKey",
   );
 });

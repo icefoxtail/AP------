@@ -173,7 +173,6 @@ window.examData = {
     },
     {
       "number": 12,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q12-solution.svg",
       "solutionImageAlt": "왼쪽 직선이 오른쪽으로 올라가며 원점 아래쪽에서 세로축을 지난다. 오른쪽 포물선의 주황 꼭짓점은 오른쪽 아래에 있다.",
       "solutionImageCaption": "기울기 a>0, y절편 b<0이다. 즉 꼭짓점 (a,b)는 오른쪽 아래에 있고 정답은 ①이다.",
@@ -192,7 +191,6 @@ window.examData = {
     },
     {
       "number": 13,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q13-solution.svg",
       "solutionImageAlt": "보라 점선으로 주황 꼭짓점에서 두 축에 연결했다. 가로 점 p는 원점 왼쪽, 세로 점 q는 원점 아래에 있다.",
       "solutionImageCaption": "위로 열려 a>0이고 왼쪽 아래 꼭짓점에서 p<0, q<0이다. 정답은 ③이다.",
@@ -309,7 +307,6 @@ window.examData = {
     },
     {
       "number": 20,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q20-solution.svg",
       "solutionImageAlt": "파란 사진과 주황 액자 부분을 구분했다. 각 쪽의 폭 x를 더한 바깥 가로와 세로는 각각 12+2x와 20+2x이다.",
       "solutionImageCaption": "(12+2x)(20+2x)−12×20=320이다. 양수 해는 4이므로 사진틀 폭은 4 cm이다.",
@@ -322,7 +319,6 @@ window.examData = {
     },
     {
       "number": 21,
-      "layoutTag": "fullwidth",
       "solutionImage": "assets/images/19_이수중_1학기_기말_중3_수학/q21-solution.svg",
       "solutionImageAlt": "두 포물선을 같은 높이의 보라 수평선이 가로지른다. 초록 바깥 두 점 사이가 파란 안쪽 두 점 사이보다 길다.",
       "solutionImageCaption": "위로 열려 a>0이다. 같은 x≠0에서 ax²<3x²이므로 a<3이다. 범위는 0<a<3이다.",

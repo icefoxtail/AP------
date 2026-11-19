@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-300b757de497-da7c22df",
+  "sourceArchiveFile": "similar/high/h1/2final/25_효천고_2학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7e8134396868e19cc35d9803c0001fcd31ae88831139b5243cec9fec11a70f01",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EQUALITY",
+      "templateKey": "TPL_EQUAL_FUNCTION_FINITE_DOMAIN",
+      "step": "정의역의 두 입력에서 함수값이 같은 두 일차식을 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_16f2ffce7ccb0f2d850fb684269a02610773d3b3d22dc7509de16b1e1cd16ddd",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "step": "중점을 지나는 조건으로 계수를 정하고 역함수값을 원래 함수의 방정식으로 바꾼다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6305c48e7881694f0bab48c2d21695bd4652904edb3d45580742bd0f546e653d",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_TRUTHSET_SET_OPERATION",
+      "step": "여집합의 합집합 등식에서 P⊂R과 P∩Q=공집합을 얻어 함의를 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b69a8c0f6d9558e7dbd01d8bdbdc07631e8c02b6a67b347022f5d7938ee68b2d",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+      "templateKey": "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+      "step": "0과 반대 입력을 대입하여 f(m)+f(-m)=km²를 얻고 대칭합을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f996a7b124be937561c5161fc3f512919dde892658d9a7dafca9284aee5a904",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+      "step": "그림의 점근선과 가지방향으로 b,c 및 a의 양성을 정하고 근호함수의 x절편 조건으로 a의 상한을 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5657a7efe47a023b74b2cd2dfb787f5857c915f7c69a872f92190ca824eb5454",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "step": "절댓값 이차함수의 수평선 교점이 세 개 이상이 되는 높이의 경계를 찾는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_19dc2297bb2175d2f7cf1e1b5b191b2d6914c43892f1f3f7559270f2ff999165",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_EQUATION_GRAPH",
+      "step": "목표2에서 세 번 원상을 추적하여 매 단계 두 갈래로 나뉘는 여덟 입력을 센다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_61f835eff3ff1956f623151a638fd0ec5948ae8ec3dc09f03a78c2d7ad4242af",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": null,
+      "step": "모든 매개변수 조건에서 중심이 일치하는 a=0을 택해 XY=4와 원의 교점수를 산술기하평균 경계로 해석한다.",
+      "note": "필요 TPL: 유리함수와 원의 교점수. 정의: 유리함수 중심을 이동원점으로 두고 곱 고정조건과 거리제곱의 최소를 비교하여 원과의 교점수를 정한다. 해설은 a=0 필요조건만 제시해 모든a의 충분성 검증은 생략한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fca77044da937a432055d4f872465e9695d45f101b8039906615e67a02e9108e",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+      "templateKey": "TPL_EXISTENTIAL_NEGATION_PARAMETER",
+      "step": "존재명제를 전칭양수조건으로 부정하고 이차식 판별식 음수인 정수계수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_49c20f24d896d6ac0bf4787d9309b3f2d606716be91fd5c88b9d142f2fab5ffc",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "step": "둘레를 양수 t에 대한2(t+4/t+3)으로 바꾸어 산술기하평균을 쓴다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2final.jsonl"
+    }
+  ]
+}

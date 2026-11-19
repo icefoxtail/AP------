@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-92cfd80f7271-b2fc1ab5",
+  "sourceArchiveFile": "original/high/h1/1mid/21_매산고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_87c229978ed2af35d6738639fe48a011cae3a3fb55e8836ba35bbfca565cfd97",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "인수 형태 우변을 전개하여 x²항 계수를 좌변과 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4483892ad2a662dfe2c0e46e22cb2ae7fa01d075565e2f1e0a4bb0c8ca0ff804",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_AUDIT",
+      "step": "음수 제곱근의 곱·몫과 켤레복소수 조건에 구체적인 반례를 넣어 각 명제의 거짓을 보인다.",
+      "note": "TPL 제안: 복소수 연산 명제의 반례 판정; 음수의 제곱근 곱·몫과 0의 예외를 반례로 검토한다. 새 TPL 제안: 음수 제곱근의 곱·몫과 켤레복소수 조건에 구체적인 반례를 넣어 각 명제의 거짓을 보인다. 정의: 음수 제곱근의 곱·몫과 켤레복소수 조건에 구체적인 반례를 넣어 각 명제의 거짓을 보인다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a652854ee8fccbeac379e611aa305456987a1f205d5fb6f21858ec159314135c",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+      "step": "t=x-3으로 치환해 짝수차 항만 남는 (t²-7)⁷에 t²=7을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5d08e8ea8c0789295acd2e2edecc6fa801ae53531b553a1c49c753d056f0b29c",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "step": "이차함수 항등식의 계수를 비교해 f를 구하고 구간 끝점 값으로 극값 합을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-4e0d6535b67b-8cb4a4f2",
+  "sourceArchiveFile": "original/high/h1/1mid/23_금당고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ff4f020a7c6949cfa36f18982e17554f034c0ef5fb1d0352ab5b5399f9679361",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "step": "복소수 등식의 실수부와 허수부를 각각 비교하여 a,b를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a7f0eb8d48037cec58a4b7b8c4bef5d46a64b69d44e5164d93c393d7d1df6b7a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+      "step": "x=1과 -1을 대입한 값의 평균에서 x=0으로 구한 상수항을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb6dfdd3ef6fdb114fcffcede6a86a62edbd58c3d689acaa5b87b6fb70aeead4",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONDITION_EQUATION_SIGN",
+      "step": "음수 제곱근의 곱과 몫에서 음의 부호가 생기는 조건으로 a,b,c의 부호를 정해 절댓값을 푼다.",
+      "note": "TPL 제안: 음수 제곱근의 곱·몫 등식에서 피제곱수의 부호 조건을 판단한다. 새 TPL 제안: 음수 제곱근의 곱과 몫에서 음의 부호가 생기는 조건으로 a,b,c의 부호를 정해 절댓값을 푼다. 정의: 음수 제곱근의 곱과 몫에서 음의 부호가 생기는 조건으로 a,b,c의 부호를 정해 절댓값을 푼다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c803cae521210a078ecd91f3a273a05484109060da0de9d7cf69d113e68afa41",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "나눗셈 항등식에 x를 곱하고 제수를 상수배로 바꾼 뒤 남은 일차항을 다시 분리하여 몫과 나머지를 읽는다.",
+      "note": "TPL 제안: 제수의 상수배와 피제수 곱셈에 따른 몫·나머지 항등식의 변환. 새 TPL 제안: 나눗셈 항등식에 x를 곱하고 제수를 상수배로 바꾼 뒤 남은 일차항을 다시 분리하여 몫과 나머지를 읽는다. 정의: 나눗셈 항등식에 x를 곱하고 제수를 상수배로 바꾼 뒤 남은 일차항을 다시 분리하여 몫과 나머지를 읽는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cc711b8196f095e045521873de2b65d35eb7f05057b884b8b811cc09fb478d7d",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "나누어떨어지는 조건을 세 영점에서 함숫값 조건으로 바꾸어 삼차식의 상수항을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_db58e6a0b47eb3783853af03ab09010eb4ca62e80e6bf5662334ae1a0d651cc1",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_PIECEWISE_CASE",
+      "step": "이차함수를 정한 뒤 영점 안팎에서 절댓값을 나누어 직선과의 교점 수를 접점과 경계 중복까지 세어 판단한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a07caec16fed8769d97b410c47611d9e7a5e79c68a5936df42063a5452e2f314",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_FACTOR",
+      "step": "영점 -1로 일차인수를 추출한 뒤 남은 삼차식을 묶어 최종 인수분해한다.",
+      "note": "TPL 제안: 정수 영점 확인과 나눗셈을 결합한 고차다항식 인수분해. 새 TPL 제안: 영점 -1로 일차인수를 추출한 뒤 남은 삼차식을 묶어 최종 인수분해한다. 정의: 영점 -1로 일차인수를 추출한 뒤 남은 삼차식을 묶어 최종 인수분해한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2dafb4a47591b27914869ed1021465da61c4c65f4d5afc77b63d37f51ab73f05",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "켤레제곱합 조건에서 a²=9b²를 얻어 목표식을 한 변수 이차식으로 바꾸고 완전제곱식의 최소를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_15b72eec050c298507a7c005be3e32ebd0eb0203c39ac44c12c1e0b2559d3459",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "step": "a=3을 구하고 제곱차를 합과 차의 곱으로 바꾸어 b+c와 c-b를 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_58e90cdeb0392cdda0b123f1ed561eb363b25f25adc135dc350321bf8771d124",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "이동구간 최대의 최소는 꼭짓점 중심 구간에서 생김을 이용하고 최솟값의 평탄구간 높이로 이차함수를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

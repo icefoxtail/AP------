@@ -1,0 +1,420 @@
+{
+  "schemaVersion": "archive-m1s2-current-ui-reuse-reversible-delta-v1",
+  "productionPath": "tools/4slot/m1s2-problem-renderer-ui.cjs",
+  "actualMain": {
+    "commit": "8c5b782f706f7c47bbbce56129844899c1697075",
+    "before": {
+      "gitBlobSha1": "d26a950d5a907698f7468e29c799f127985c0005",
+      "sha256": "30b2b0abe6c91c3a7ffc2f1a7c3aca37b499d9bd32ba8a31e01f2cf6fe94b45b",
+      "bytes": 20016
+    }
+  },
+  "inheritedPrimaryCandidate": {
+    "commit": "48d18ccdc7eafffe3d1d8ae32e65a4dc23437502",
+    "before": {
+      "gitBlobSha1": "e6023949667d46a57880dab82e383c3a9dabf0e7",
+      "sha256": "5f107e3286a97ea73127f5a8211e73cc328da87814d213ebc568ded9e3f098fb",
+      "bytes": 20103
+    },
+    "change": {
+      "oldText": "const bytes=reader.local(p),ref={path:p,gitBlobSha1:crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+bytes.length+'\\0'),bytes])).digest('hex'),sha256:sha(bytes),bytes:bytes.length};\n reader.read(ref,true);return bytes;\n}\nfunction svgContinuity(before,after,assets){if(!eq(svgRecords(before,assets),svgRecords(after,assets)))fail('SELECTED_SVG_INDEX_DRIFT');}\nfunction capturedArtifacts(reader,refs,artifacts,ancestor){\n if(!Array.isArray(refs)||refs.length!==artifacts.length||new Set(refs.map(r=>r.path)).size!==refs.length)fail('PNG_REF_INVENTORY');\n for(const a of artifacts){const ref=unique(refs,r=>path.posix.basename(r.path||'')===a.path&&r.sha256===a.sha256&&r.bytes===a.bytes,'PNG_REF');\n  if(Object.hasOwn(ref,'commit'))ancestor(ref.commit,reader.head);\n  const bytes=reader.read(ref,true);if(bytes.length<PNG_SIGNATURE.length||!bytes.subarray(0,PNG_SIGNATURE.length).equals(PNG_SIGNATURE))fail('PNG_BYTES');\n }\n}\nfunction surfaceTopology(s,visibleChildren){\n exact(s,['schemaVersion','kind','equalSlot','wrapperCount','outerElementCount','nonemptyOutsideNodes','numberCount','contentCount','nestedQuestionCount','targetInsideContainer','semanticChildCount'],'SURFACE');\n if(s.schemaVersion!=='archive-m1s2-native-problem-surface-v1'||!['DIRECT_CHILDREN','AP_EQUAL_SLOT_CONTENT'].includes(s.kind)||\n    !['wrapperCount','outerElementCount','nonemptyOutsideNodes','numberCount','contentCount','nestedQuestionCount','semanticChildCount'].every(k=>integer(s[k]))||\n    s.numberCount!==1||s.contentCount!==1||s.nestedQuestionCount!==0||s.targetInsideContainer!==true||s.semanticChildCount<3||s.semanticChildCount!==visibleChildren)fail('SURFACE_COMPLETENESS');\n if(s.kind==='AP_EQUAL_SLOT_CONTENT'?(s.equalSlot!==true||s.wrapperCount!==1||s.outerElementCount!==1||s.nonemptyOutsideNodes!==0):\n   (s.equalSlot!==false||s.wrapperCount!==0||s.nonemptyOutsideNodes!==0||s.outerElementCount<3))fail('SURFACE_TOPOLOGY');\n}\nfunction artifact(x){exact(x,['path','sha256','bytes'],'ARTIFACT');if(typeof x.path!=='string'||!/^[A-Za-z0-9_./-]+\\.png$/.test(x.path)||x.path.startsWith('/')||x.path.split('/').some(p=>!p||p==='.'||p==='..')||!HEX.test(x.sha256)||!integer(x.bytes,1))fail('ARTIFACT');return x;}\nfunction screenshot(x){exact(x,['tileIndex','path','sha256','bytes'],'SCREENSHOT');if(!integer(x.tileIndex,1))fail('SCREENSHOT');const{tileIndex,...a}=x;artifact(a);return a;}\nfunction rect(x){exact(x,['x','y','width','height'],'RECT');if(!Object.values(x).every(Number.isFinite)||x.x<0||x.y<0||x.width<=0||x.height<=0)fail('RECT');}\nfunction scroll(x){exact(x,['x','y'],'SCROLL');if(!Object.values(x).every(Number.isFinite)||x.x<0||x.y<0)fail('SCROLL');}\nfunction coverage(c,screenshots,viewport){\n exact(c,['schemaVersion','method','tileLimit','overlapCssPixels','tileCount','content','question','viewport','visibleChildren','coverage','tiles','scrollBefore','scrollAfter','scrollOperations','domSha256','feedbackIdle','foreignContentHits','cssWrites','domWrites','viewportChanges','compositeImageCreated'],'CAPTURE');\n if(c.schemaVersion!=='archive-problem-scroll-coverage-v1'||c.method!=='UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES'||c.tileLimit!==8||c.overlapCssPixels!==32||\n    !integer(c.tileCount,1)||c.tileCount>8||!integer(c.visibleChildren,3)||!HEX.test(c.domSha256)||!Array.isArray(c.tiles)||c.tiles.length!==c.tileCount||screenshots.length!==c.tileCount||\n    c.feedbackIdle!==true||c.foreignContentHits!==0||c.cssWrites!==0||c.domWrites!==0||c.viewportChanges!==0||c.compositeImageCreated!==false||!integer(c.scrollOperations))fail('CAPTURE');\n exact(c.viewport,['width','height'],'VIEWPORT');if(!eq(c.viewport,{width:viewport.width,height:viewport.height}))fail('VIEWPORT');\n rect(c.content);rect(c.question);scroll(c.scrollBefore);scroll(c.scrollAfter);\n const close=(a,b)=>Math.abs(a-b)<=1e-6,height=c.content.height;\n if(!close(c.content.x,c.question.x)||!close(c.content.width,c.question.width)||c.content.y<c.question.y-1e-6||c.content.y+c.content.height>c.question.y+c.question.height+1e-6)fail('CONTENT_GEOMETRY');\n if(!eq(c.coverage,{requiredInterval:[0,height],coveredInterval:[0,height],complete:true}))fail('COVERAGE');\n let previousEnd=null,previousScroll=c.scrollBefore,operations=0;\n for(let i=0;i<c.tileCount;i++){const t=c.tiles[i],s=screenshots[i];screenshot(s);\n  exact(t,['tileIndex','relativeInterval','filename','clip','scroll','scrollOperations','feedbackIdle','obstructionsIntersectingClip','hitTestSamples','foreignContentHits','domSha256'],'TILE');\n  if(t.tileIndex!==i+1||s.tileIndex!==i+1||t.filename!==s.path||t.feedbackIdle!==true||t.obstructionsIntersectingClip!==0||t.foreignContentHits!==0||!integer(t.hitTestSamples,2)||!integer(t.scrollOperations)||t.scrollOperations>3||t.domSha256!==c.domSha256)fail('TILE');\n  if(!Array.isArray(t.relativeInterval)||t.relativeInterval.length!==2||!t.relativeInterval.every(Number.isFinite))fail('INTERVAL');\n  const[start,end]=t.relativeInterval;if(start<0||end<=start||end>height||(i===0?start!==0:start!==previousEnd-32)||(i>0&&end<=previousEnd))fail('INTERVAL');\n  rect(t.clip);scroll(t.scroll);\n  if(t.clip.x+t.clip.width>viewport.width||t.clip.y+t.clip.height>viewport.height||!close(t.clip.height,end-start)||!close(t.clip.width,c.content.width)||\n     !close(t.clip.x+t.scroll.x,c.content.x)||!close(t.clip.y+t.scroll.y,c.content.y+start)||(t.scrollOperations===0&&!eq(t.scroll,previousScroll)))fail('CLIP');\n  previousEnd=end;previousScroll=t.scroll;operations+=t.scrollOperations;\n }\n if(previousEnd!==height||!eq(c.scrollAfter,previousScroll)||c.scrollOperations!==operations)fail('INCOMPLETE_COVERAGE');\n}\nfunction verify({reader,doc,current,subjects,ancestor}){\n const t=reader.json(doc.uiTechnicalRef,true),v=reader.json(doc.uiVisualRef,true);\n if(t.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.executionOwner!=='GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'||\n    !OID.test(t.checkoutCommit)||!OID.test(t.baseCommit)||!String(t.browserVersion||'').trim()||t.mode!=='exam'||t.studentReview!==true||t.problemOnlyScreenshots!==true||\n    t.sourceOverlay!==false||t.sourceOverlayCount!==0||t.sourceWrites!==0||t.solutionsOpened!==false||t.productionCdnTest!==false||t.newFullMathematicalQa!==false||\n    t.newMetadataApprovals!==0||t.newDifficultyJudgments!==0||t.newReviewPassCount!==0||t.newFourSlotApprovals!==0||\n    t.expectedLogicalCases!==14||t.completedLogicalCases!==14||!Array.isArray(t.results)||t.results.length!==14||!Array.isArray(t.screenshotArtifacts)||t.screenshotArtifactCount!==t.screenshotArtifacts.length||\n    !Array.isArray(t.failures)||t.failures.length||!Array.isArray(t.externalFontResources)||t.externalFontResources.length)fail('TECHNICAL');\n exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl'],'CI_EXECUTION');\n if(t.execution.provider!=='GITHUB_ACTIONS'||t.execution.eventName!=='pull_request'||t.execution.repository!=='icefoxtail/AP------'||\n    !String(t.execution.workflow||'').trim()||t.execution.job!=='m1s2-problem-seven'||!/^[1-9][0-9]*$/.test(t.execution.runId||'')||\n    !integer(t.execution.runAttempt,1)||!integer(t.execution.pullRequest,1)||t.execution.headSha!==t.checkoutCommit||\n    !OID.test(t.execution.baseSha||'')||!OID.test(t.execution.eventSha||'')||\n    t.execution.runUrl!=='https://github.com/icefoxtail/AP------/actions/runs/'+t.execution.runId)fail('CI_EXECUTION');\n if(v.schemaVersion!=='archive-independent-m1s2-problem-seven-ui-review-v1'||v.decision!==DECISION||!String(v.reviewer||'').trim()||v.reviewer===doc.author||v.reviewer===t.executionOwner||\n    v.newMathQa!==0||v.newSemanticApproval!==0||v.newFourSlotVector!==0||!Array.isArray(v.records)||v.records.length!==14)fail('VISUAL');\n visualTechnicalRef(reader,v.technicalRef,doc.uiTechnicalRef,ancestor);\n ancestor(doc.reviewedSourceRef.commit,t.baseCommit);ancestor(t.baseCommit,t.checkoutCommit);ancestor(t.checkoutCommit,reader.head);\n for(const[ref,pin]of[[t.checkerRef,PINS.checker],[t.captureHelperRef,PINS.capture],[t.surfaceHelperRef,PINS.surface],[t.manifestRef,PINS.manifest]]){\n  if(ref?.commit!==t.checkoutCommit||ref.path!==pin.path||ref.sha256!==pin.sha256)fail('IMPLEMENTATION');capturedRef(reader,ref,t.checkoutCommit,true);\n }\n const manifest=reader.json(withoutCommit(t.manifestRef),true);\n if(manifest.schemaVersion!=='archive-m1s2-problem-seven-ui-manifest-v1'||manifest.scope!=='M1S2_SEVEN_EXISTING_PROBLEM_RENDERERS_ONLY'||manifest.expectedCases!==14||manifest.items?.length!==7)fail('MANIFEST');\n if(!Array.isArray(t.servedFiles)||!Array.isArray(t.mirroredAssets)||!Array.isArray(t.studentFontResources))fail('RUNTIME_INVENTORY');\n const mdRef=unique(t.servedFiles,r=>r.path===MD,'METADATA_REQUIRED');\n if(mdRef.commit!==t.checkoutCommit||t.identityRef?.commit!==t.checkoutCommit||t.identityRef.path!==ID)fail('DATA_CAPTURE_REF');\n // Full captured Git bytes stay authenticated. Only the seven selected rows\n // are authority inputs; unrelated generated rows may legitimately advance.\n selectedDataRows(reader.projection(mdRef,'metadata'),reader.projection(null,'metadata'),subjects,'METADATA');\n selectedDataRows(reader.projection(t.identityRef,'identity'),reader.projection(null,'identity'),subjects,'IDENTITY');\n const svgRef=unique(t.servedFiles,r=>r.path===SVG_INDEX,'SVG_INDEX_REQUIRED'),assets=new Set(manifest.items.map(r=>r.assetPath));\n svgContinuity(capturedRef(reader,svgRef,t.checkoutCommit),currentData(reader,SVG_INDEX),assets);\n const runtimePaths=new Set();let engine=0;\n for(const ref of t.servedFiles){if(ref.commit!==t.checkoutCommit||runtimePaths.has(ref.path))fail('RUNTIME_INVENTORY');runtimePaths.add(ref.path);\n  // Own source/assets are checked by each selected sidecar. Recheck the exact\n  // shared student runtime without coupling one UID to another exam's bytes.\n  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/'));\n  if(ref.path==='archive/engine.html')engine++;\n }if(engine!==1)fail('ENGINE_REQUIRED');\n const mirroredPaths=new Set();for(const ref of t.mirroredAssets){if(!ref.path?.startsWith('archive/assets/images/')||mirroredPaths.has(ref.path))fail('MIRRORED_INVENTORY');mirroredPaths.add(ref.path);capturedRef(reader,ref,t.checkoutCommit);}\n if(t.fontLicenseRef?.path!=='archive/vendor/nanum-myeongjo/OFL.txt')fail('FONT_LICENSE');capturedRef(reader,t.fontLicenseRef,t.checkoutCommit,true);\n const fontResources=new Map();\n for(const f of t.studentFontResources){\n  if(!HEX.test(f.resourceId)||fontResources.has(f.resourceId)||f.commit!==t.checkoutCommit||f.status!==200||!['STYLESHEET','FONT'].includes(f.kind)||\n     !f.path?.startsWith('archive/vendor/nanum-myeongjo/')||f.kind==='FONT'&&![400,700,800].includes(f.weight)||f.kind==='STYLESHEET'&&f.weight!==null)fail('FONT_RESOURCE');\n  const ref=Object.fromEntries(['commit','path','gitBlobSha1','sha256','bytes'].map(k=>[k,f[k]]));\n  if(f.resourceId!==sha(stable({path:f.path,responseSha256:f.sha256,mime:f.mime})))fail('FONT_RESOURCE_ID');capturedRef(reader,ref,t.checkoutCommit,true);fontResources.set(f.resourceId,f);\n }\n const byUid=new Map(subjects.map(s=>[s.questionUid,s])),seen=new Set(),visualSeen=new Set(),artifacts=[];\n for(const r of t.results){\n  const subject=byUid.get(r.questionUid),key=r.questionUid+':'+r.viewport?.name,viewport=r.viewport?.name==='desktop'?{name:'desktop',width:1365,height:1000}:{name:'mobile',width:390,height:844};\n  if(!subject||r.sourceOrdinal!==subject.sourceOrdinal||seen.has(key)||!eq(r.viewport,viewport)||r.surface!=='PROBLEM'||r.mode!=='exam'||r.status!=='PASS'||r.visualReview!=='PENDING')fail('CASE');seen.add(key);\n  if(!Array.isArray(r.pageErrors)||r.pageErrors.length||!Array.isArray(r.requestFailures)||r.requestFailures.length||!Array.isArray(r.externalRequests)||r.externalRequests.length)fail('CASE_ERRORS');\n  const item=unique(manifest.items,x=>x.questionUid===r.questionUid,'MANIFEST_ITEM');\n  if(item.sourceOrdinal!==r.sourceOrdinal||item.sourcePath!=='archive/exams/'+subject.sourceArchiveFile||r.sourceRef?.path!==item.sourcePath||r.sourceRef.commit!==t.checkoutCommit||\n     r.sourceRef.gitBlobSha1!==item.sourceGitBlobSha1||r.sourceRef.sha256!==item.sourceSha256||r.sourceRef.bytes!==item.sourceBytes||r.questionSha256!==item.questionSha256||\n     !Array.isArray(r.assetRefs)||r.assetRefs.length!==1||r.assetRefs[0].commit!==t.checkoutCommit||r.assetRefs[0].path!==item.assetPath||r.assetRefs[0].gitBlobSha1!==item.assetGitBlobSha1||r.assetRefs[0].sha256!==item.assetSha256||r.assetRefs[0].bytes!==item.assetBytes)fail('MANIFEST_BINDING');\n  capturedRef(reader,r.sourceRef,t.checkoutCommit);for(const ref of r.assetRefs)capturedRef(reader,ref,t.checkoutCommit);\n  const tech=r.technical;\n  if(tech?.mode!=='exam'||tech.questions!==item.expectedBankCount||tech.readiness!=='RENDER_READY'||!integer(tech.pages,1)||tech.imagesComplete!==true||tech.mathErrors!==0||tech.unrenderedMath!==0||tech.mathJaxSource!=='local'||tech.solutionNodes!==0||\n     tech.fontReadiness?.status!=='loaded'||tech.fontReadiness.family!=='Nanum Myeongjo'||tech.fontReadiness.weights?.length!==3||\n     tech.fontReadiness.weights.some((f,i)=>f.weight!==[400,700,800][i]||!integer(f.loadedFaces,1)||f.allLoaded!==true||f.checked!==true)||\n     !Array.isArray(tech.fontReadiness.problemFontFamilies)||!tech.fontReadiness.problemFontFamilies.length||tech.fontReadiness.problemFontFamilies.some(f=>!f.includes('Nanum Myeongjo'))||\n     !Array.isArray(tech.fontResourceIds)||new Set(tech.fontResourceIds).size!==tech.fontResourceIds.length||tech.fontResourceIds.some(k=>!fontResources.has(k)))fail('RENDER_STATE');\n  const fonts=tech.fontResourceIds.map(k=>fontResources.get(k));\n  if(!fonts.some(f=>f.kind==='STYLESHEET')||tech.fontReadiness.weights.some(w=>fonts.filter(f=>f.kind==='FONT'&&f.weight===w.weight).length<w.loadedFaces))fail('FONT_RESPONSES');\n  if(!Array.isArray(r.screenshots))fail('SCREENSHOTS');surfaceTopology(r.surfaceStructure,r.capture?.visibleChildren);coverage(r.capture,r.screenshots,r.viewport);artifacts.push(...r.screenshots.map(screenshot));\n  const visual=unique(v.records,x=>x.questionUid===r.questionUid&&x.viewport?.name===r.viewport.name,'VISUAL_CASE');visualSeen.add(key);\n  if(visual.sourceOrdinal!==r.sourceOrdinal||visual.surface!=='PROBLEM'||!eq(visual.viewport,r.viewport)||visual.captureSha256!==sha(stable(r.capture))||visual.decision!==DECISION||\n     !Array.isArray(visual.screenshots)||!eq(visual.screenshots.map(s=>{if(s.decision!==DECISION)fail('VISUAL_TILE');const{decision,...ref}=s;return ref;}),r.screenshots))fail('VISUAL_BINDING');\n  if(r.questionUid===doc.questionUid&&(!eq(withoutCommit(r.sourceRef),doc.currentSourceRef)||r.questionSha256!==sha(stable(current))||\n     !eq(r.assetRefs.map(withoutCommit),doc.currentAssets.filter(a=>a.path==='archive/'+current.image))))fail('SELECTED_SOURCE_BINDING');\n }\n const sorted=rows=>rows.slice().sort((a,b)=>a.path.localeCompare(b.path));\n if(seen.size!==14||visualSeen.size!==14||new Set(artifacts.map(x=>x.path)).size!==artifacts.length||!eq(sorted(artifacts),sorted(t.screenshotArtifacts.map(artifact))))fail('ARTIFACT_INVENTORY');\n capturedArtifacts(reader,v.artifactRefs,artifacts,ancestor);\n return{logicalCases:2,newSemanticApproval:0,newFourSlotVector:0};\n}\nmodule.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology",
+      "newText": "if(p!==SVG_INDEX)fail('GENERATED_DATA_PATH');\n // The writer generates this data before fourSlot and commits it afterwards.\n // Keep the captured whole file Git-authenticated; the current regular file\n // is checked by the fixed JSON wrapper and exact selected-record comparison.\n return reader.local(SVG_INDEX);\n}\nfunction svgContinuity(before,after,assets){if(!eq(svgRecords(before,assets),svgRecords(after,assets)))fail('SELECTED_SVG_INDEX_DRIFT');}\nfunction capturedArtifacts(reader,refs,artifacts,ancestor){\n if(!Array.isArray(refs)||refs.length!==artifacts.length||new Set(refs.map(r=>r.path)).size!==refs.length)fail('PNG_REF_INVENTORY');\n for(const a of artifacts){const ref=unique(refs,r=>path.posix.basename(r.path||'')===a.path&&r.sha256===a.sha256&&r.bytes===a.bytes,'PNG_REF');\n  if(Object.hasOwn(ref,'commit'))ancestor(ref.commit,reader.head);\n  const bytes=reader.read(ref,true);if(bytes.length<PNG_SIGNATURE.length||!bytes.subarray(0,PNG_SIGNATURE.length).equals(PNG_SIGNATURE))fail('PNG_BYTES');\n }\n}\nfunction surfaceTopology(s,visibleChildren){\n exact(s,['schemaVersion','kind','equalSlot','wrapperCount','outerElementCount','nonemptyOutsideNodes','numberCount','contentCount','nestedQuestionCount','targetInsideContainer','semanticChildCount'],'SURFACE');\n if(s.schemaVersion!=='archive-m1s2-native-problem-surface-v1'||!['DIRECT_CHILDREN','AP_EQUAL_SLOT_CONTENT'].includes(s.kind)||\n    !['wrapperCount','outerElementCount','nonemptyOutsideNodes','numberCount','contentCount','nestedQuestionCount','semanticChildCount'].every(k=>integer(s[k]))||\n    s.numberCount!==1||s.contentCount!==1||s.nestedQuestionCount!==0||s.targetInsideContainer!==true||s.semanticChildCount<3||s.semanticChildCount!==visibleChildren)fail('SURFACE_COMPLETENESS');\n if(s.kind==='AP_EQUAL_SLOT_CONTENT'?(s.equalSlot!==true||s.wrapperCount!==1||s.outerElementCount!==1||s.nonemptyOutsideNodes!==0):\n   (s.equalSlot!==false||s.wrapperCount!==0||s.nonemptyOutsideNodes!==0||s.outerElementCount<3))fail('SURFACE_TOPOLOGY');\n}\nfunction artifact(x){exact(x,['path','sha256','bytes'],'ARTIFACT');if(typeof x.path!=='string'||!/^[A-Za-z0-9_./-]+\\.png$/.test(x.path)||x.path.startsWith('/')||x.path.split('/').some(p=>!p||p==='.'||p==='..')||!HEX.test(x.sha256)||!integer(x.bytes,1))fail('ARTIFACT');return x;}\nfunction screenshot(x){exact(x,['tileIndex','path','sha256','bytes'],'SCREENSHOT');if(!integer(x.tileIndex,1))fail('SCREENSHOT');const{tileIndex,...a}=x;artifact(a);return a;}\nfunction rect(x){exact(x,['x','y','width','height'],'RECT');if(!Object.values(x).every(Number.isFinite)||x.x<0||x.y<0||x.width<=0||x.height<=0)fail('RECT');}\nfunction scroll(x){exact(x,['x','y'],'SCROLL');if(!Object.values(x).every(Number.isFinite)||x.x<0||x.y<0)fail('SCROLL');}\nfunction coverage(c,screenshots,viewport){\n exact(c,['schemaVersion','method','tileLimit','overlapCssPixels','tileCount','content','question','viewport','visibleChildren','coverage','tiles','scrollBefore','scrollAfter','scrollOperations','domSha256','feedbackIdle','foreignContentHits','cssWrites','domWrites','viewportChanges','compositeImageCreated'],'CAPTURE');\n if(c.schemaVersion!=='archive-problem-scroll-coverage-v1'||c.method!=='UNCHANGED_VIEWPORT_ORIGINAL_SCROLL_TILES'||c.tileLimit!==8||c.overlapCssPixels!==32||\n    !integer(c.tileCount,1)||c.tileCount>8||!integer(c.visibleChildren,3)||!HEX.test(c.domSha256)||!Array.isArray(c.tiles)||c.tiles.length!==c.tileCount||screenshots.length!==c.tileCount||\n    c.feedbackIdle!==true||c.foreignContentHits!==0||c.cssWrites!==0||c.domWrites!==0||c.viewportChanges!==0||c.compositeImageCreated!==false||!integer(c.scrollOperations))fail('CAPTURE');\n exact(c.viewport,['width','height'],'VIEWPORT');if(!eq(c.viewport,{width:viewport.width,height:viewport.height}))fail('VIEWPORT');\n rect(c.content);rect(c.question);scroll(c.scrollBefore);scroll(c.scrollAfter);\n const close=(a,b)=>Math.abs(a-b)<=1e-6,height=c.content.height;\n if(!close(c.content.x,c.question.x)||!close(c.content.width,c.question.width)||c.content.y<c.question.y-1e-6||c.content.y+c.content.height>c.question.y+c.question.height+1e-6)fail('CONTENT_GEOMETRY');\n if(!eq(c.coverage,{requiredInterval:[0,height],coveredInterval:[0,height],complete:true}))fail('COVERAGE');\n let previousEnd=null,previousScroll=c.scrollBefore,operations=0;\n for(let i=0;i<c.tileCount;i++){const t=c.tiles[i],s=screenshots[i];screenshot(s);\n  exact(t,['tileIndex','relativeInterval','filename','clip','scroll','scrollOperations','feedbackIdle','obstructionsIntersectingClip','hitTestSamples','foreignContentHits','domSha256'],'TILE');\n  if(t.tileIndex!==i+1||s.tileIndex!==i+1||t.filename!==s.path||t.feedbackIdle!==true||t.obstructionsIntersectingClip!==0||t.foreignContentHits!==0||!integer(t.hitTestSamples,2)||!integer(t.scrollOperations)||t.scrollOperations>3||t.domSha256!==c.domSha256)fail('TILE');\n  if(!Array.isArray(t.relativeInterval)||t.relativeInterval.length!==2||!t.relativeInterval.every(Number.isFinite))fail('INTERVAL');\n  const[start,end]=t.relativeInterval;if(start<0||end<=start||end>height||(i===0?start!==0:start!==previousEnd-32)||(i>0&&end<=previousEnd))fail('INTERVAL');\n  rect(t.clip);scroll(t.scroll);\n  if(t.clip.x+t.clip.width>viewport.width||t.clip.y+t.clip.height>viewport.height||!close(t.clip.height,end-start)||!close(t.clip.width,c.content.width)||\n     !close(t.clip.x+t.scroll.x,c.content.x)||!close(t.clip.y+t.scroll.y,c.content.y+start)||(t.scrollOperations===0&&!eq(t.scroll,previousScroll)))fail('CLIP');\n  previousEnd=end;previousScroll=t.scroll;operations+=t.scrollOperations;\n }\n if(previousEnd!==height||!eq(c.scrollAfter,previousScroll)||c.scrollOperations!==operations)fail('INCOMPLETE_COVERAGE');\n}\nfunction verify({reader,doc,current,subjects,ancestor}){\n const t=reader.json(doc.uiTechnicalRef,true),v=reader.json(doc.uiVisualRef,true);\n if(t.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||t.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||t.executionOwner!=='GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'||\n    !OID.test(t.checkoutCommit)||!OID.test(t.baseCommit)||!String(t.browserVersion||'').trim()||t.mode!=='exam'||t.studentReview!==true||t.problemOnlyScreenshots!==true||\n    t.sourceOverlay!==false||t.sourceOverlayCount!==0||t.sourceWrites!==0||t.solutionsOpened!==false||t.productionCdnTest!==false||t.newFullMathematicalQa!==false||\n    t.newMetadataApprovals!==0||t.newDifficultyJudgments!==0||t.newReviewPassCount!==0||t.newFourSlotApprovals!==0||\n    t.expectedLogicalCases!==14||t.completedLogicalCases!==14||!Array.isArray(t.results)||t.results.length!==14||!Array.isArray(t.screenshotArtifacts)||t.screenshotArtifactCount!==t.screenshotArtifacts.length||\n    !Array.isArray(t.failures)||t.failures.length||!Array.isArray(t.externalFontResources)||t.externalFontResources.length)fail('TECHNICAL');\n exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl'],'CI_EXECUTION');\n if(t.execution.provider!=='GITHUB_ACTIONS'||t.execution.eventName!=='pull_request'||t.execution.repository!=='icefoxtail/AP------'||\n    !String(t.execution.workflow||'').trim()||t.execution.job!=='m1s2-problem-seven'||!/^[1-9][0-9]*$/.test(t.execution.runId||'')||\n    !integer(t.execution.runAttempt,1)||!integer(t.execution.pullRequest,1)||t.execution.headSha!==t.checkoutCommit||\n    !OID.test(t.execution.baseSha||'')||!OID.test(t.execution.eventSha||'')||\n    t.execution.runUrl!=='https://github.com/icefoxtail/AP------/actions/runs/'+t.execution.runId)fail('CI_EXECUTION');\n if(v.schemaVersion!=='archive-independent-m1s2-problem-seven-ui-review-v1'||v.decision!==DECISION||!String(v.reviewer||'').trim()||v.reviewer===doc.author||v.reviewer===t.executionOwner||\n    v.newMathQa!==0||v.newSemanticApproval!==0||v.newFourSlotVector!==0||!Array.isArray(v.records)||v.records.length!==14)fail('VISUAL');\n visualTechnicalRef(reader,v.technicalRef,doc.uiTechnicalRef,ancestor);\n ancestor(doc.reviewedSourceRef.commit,t.baseCommit);ancestor(t.baseCommit,t.checkoutCommit);ancestor(t.checkoutCommit,reader.head);\n for(const[ref,pin]of[[t.checkerRef,PINS.checker],[t.captureHelperRef,PINS.capture],[t.surfaceHelperRef,PINS.surface],[t.manifestRef,PINS.manifest]]){\n  if(ref?.commit!==t.checkoutCommit||ref.path!==pin.path||ref.sha256!==pin.sha256)fail('IMPLEMENTATION');capturedRef(reader,ref,t.checkoutCommit,true);\n }\n const manifest=reader.json(withoutCommit(t.manifestRef),true);\n if(manifest.schemaVersion!=='archive-m1s2-problem-seven-ui-manifest-v1'||manifest.scope!=='M1S2_SEVEN_EXISTING_PROBLEM_RENDERERS_ONLY'||manifest.expectedCases!==14||manifest.items?.length!==7)fail('MANIFEST');\n if(!Array.isArray(t.servedFiles)||!Array.isArray(t.mirroredAssets)||!Array.isArray(t.studentFontResources))fail('RUNTIME_INVENTORY');\n const mdRef=unique(t.servedFiles,r=>r.path===MD,'METADATA_REQUIRED');\n if(mdRef.commit!==t.checkoutCommit||t.identityRef?.commit!==t.checkoutCommit||t.identityRef.path!==ID)fail('DATA_CAPTURE_REF');\n // Full captured Git bytes stay authenticated. Only the seven selected rows\n // are authority inputs; unrelated generated rows may legitimately advance.\n selectedDataRows(reader.projection(mdRef,'metadata'),reader.projection(null,'metadata'),subjects,'METADATA');\n selectedDataRows(reader.projection(t.identityRef,'identity'),reader.projection(null,'identity'),subjects,'IDENTITY');\n const svgRef=unique(t.servedFiles,r=>r.path===SVG_INDEX,'SVG_INDEX_REQUIRED'),assets=new Set(manifest.items.map(r=>r.assetPath));\n svgContinuity(capturedRef(reader,svgRef,t.checkoutCommit),currentData(reader,SVG_INDEX),assets);\n const runtimePaths=new Set();let engine=0;\n for(const ref of t.servedFiles){if(ref.commit!==t.checkoutCommit||runtimePaths.has(ref.path))fail('RUNTIME_INVENTORY');runtimePaths.add(ref.path);\n  // Own source/assets are checked by each selected sidecar. Recheck the exact\n  // shared student runtime without coupling one UID to another exam's bytes.\n  if(![MD,ID,SVG_INDEX].includes(ref.path))capturedRef(reader,ref,t.checkoutCommit,!ref.path.startsWith('archive/exams/')&&!ref.path.startsWith('archive/assets/images/'));\n  if(ref.path==='archive/engine.html')engine++;\n }if(engine!==1)fail('ENGINE_REQUIRED');\n const mirroredPaths=new Set();for(const ref of t.mirroredAssets){if(!ref.path?.startsWith('archive/assets/images/')||mirroredPaths.has(ref.path))fail('MIRRORED_INVENTORY');mirroredPaths.add(ref.path);capturedRef(reader,ref,t.checkoutCommit);}\n if(t.fontLicenseRef?.path!=='archive/vendor/nanum-myeongjo/OFL.txt')fail('FONT_LICENSE');capturedRef(reader,t.fontLicenseRef,t.checkoutCommit,true);\n const fontResources=new Map();\n for(const f of t.studentFontResources){\n  if(!HEX.test(f.resourceId)||fontResources.has(f.resourceId)||f.commit!==t.checkoutCommit||f.status!==200||!['STYLESHEET','FONT'].includes(f.kind)||\n     !f.path?.startsWith('archive/vendor/nanum-myeongjo/')||f.kind==='FONT'&&![400,700,800].includes(f.weight)||f.kind==='STYLESHEET'&&f.weight!==null)fail('FONT_RESOURCE');\n  const ref=Object.fromEntries(['commit','path','gitBlobSha1','sha256','bytes'].map(k=>[k,f[k]]));\n  if(f.resourceId!==sha(stable({path:f.path,responseSha256:f.sha256,mime:f.mime})))fail('FONT_RESOURCE_ID');capturedRef(reader,ref,t.checkoutCommit,true);fontResources.set(f.resourceId,f);\n }\n const byUid=new Map(subjects.map(s=>[s.questionUid,s])),seen=new Set(),visualSeen=new Set(),artifacts=[];\n for(const r of t.results){\n  const subject=byUid.get(r.questionUid),key=r.questionUid+':'+r.viewport?.name,viewport=r.viewport?.name==='desktop'?{name:'desktop',width:1365,height:1000}:{name:'mobile',width:390,height:844};\n  if(!subject||r.sourceOrdinal!==subject.sourceOrdinal||seen.has(key)||!eq(r.viewport,viewport)||r.surface!=='PROBLEM'||r.mode!=='exam'||r.status!=='PASS'||r.visualReview!=='PENDING')fail('CASE');seen.add(key);\n  if(!Array.isArray(r.pageErrors)||r.pageErrors.length||!Array.isArray(r.requestFailures)||r.requestFailures.length||!Array.isArray(r.externalRequests)||r.externalRequests.length)fail('CASE_ERRORS');\n  const item=unique(manifest.items,x=>x.questionUid===r.questionUid,'MANIFEST_ITEM');\n  if(item.sourceOrdinal!==r.sourceOrdinal||item.sourcePath!=='archive/exams/'+subject.sourceArchiveFile||r.sourceRef?.path!==item.sourcePath||r.sourceRef.commit!==t.checkoutCommit||\n     r.sourceRef.gitBlobSha1!==item.sourceGitBlobSha1||r.sourceRef.sha256!==item.sourceSha256||r.sourceRef.bytes!==item.sourceBytes||r.questionSha256!==item.questionSha256||\n     !Array.isArray(r.assetRefs)||r.assetRefs.length!==1||r.assetRefs[0].commit!==t.checkoutCommit||r.assetRefs[0].path!==item.assetPath||r.assetRefs[0].gitBlobSha1!==item.assetGitBlobSha1||r.assetRefs[0].sha256!==item.assetSha256||r.assetRefs[0].bytes!==item.assetBytes)fail('MANIFEST_BINDING');\n  capturedRef(reader,r.sourceRef,t.checkoutCommit);for(const ref of r.assetRefs)capturedRef(reader,ref,t.checkoutCommit);\n  const tech=r.technical;\n  if(tech?.mode!=='exam'||tech.questions!==item.expectedBankCount||tech.readiness!=='RENDER_READY'||!integer(tech.pages,1)||tech.imagesComplete!==true||tech.mathErrors!==0||tech.unrenderedMath!==0||tech.mathJaxSource!=='local'||tech.solutionNodes!==0||\n     tech.fontReadiness?.status!=='loaded'||tech.fontReadiness.family!=='Nanum Myeongjo'||tech.fontReadiness.weights?.length!==3||\n     tech.fontReadiness.weights.some((f,i)=>f.weight!==[400,700,800][i]||!integer(f.loadedFaces,1)||f.allLoaded!==true||f.checked!==true)||\n     !Array.isArray(tech.fontReadiness.problemFontFamilies)||!tech.fontReadiness.problemFontFamilies.length||tech.fontReadiness.problemFontFamilies.some(f=>!f.includes('Nanum Myeongjo'))||\n     !Array.isArray(tech.fontResourceIds)||new Set(tech.fontResourceIds).size!==tech.fontResourceIds.length||tech.fontResourceIds.some(k=>!fontResources.has(k)))fail('RENDER_STATE');\n  const fonts=tech.fontResourceIds.map(k=>fontResources.get(k));\n  if(!fonts.some(f=>f.kind==='STYLESHEET')||tech.fontReadiness.weights.some(w=>fonts.filter(f=>f.kind==='FONT'&&f.weight===w.weight).length<w.loadedFaces))fail('FONT_RESPONSES');\n  if(!Array.isArray(r.screenshots))fail('SCREENSHOTS');surfaceTopology(r.surfaceStructure,r.capture?.visibleChildren);coverage(r.capture,r.screenshots,r.viewport);artifacts.push(...r.screenshots.map(screenshot));\n  const visual=unique(v.records,x=>x.questionUid===r.questionUid&&x.viewport?.name===r.viewport.name,'VISUAL_CASE');visualSeen.add(key);\n  if(visual.sourceOrdinal!==r.sourceOrdinal||visual.surface!=='PROBLEM'||!eq(visual.viewport,r.viewport)||visual.captureSha256!==sha(stable(r.capture))||visual.decision!==DECISION||\n     !Array.isArray(visual.screenshots)||!eq(visual.screenshots.map(s=>{if(s.decision!==DECISION)fail('VISUAL_TILE');const{decision,...ref}=s;return ref;}),r.screenshots))fail('VISUAL_BINDING');\n  if(r.questionUid===doc.questionUid&&(!eq(withoutCommit(r.sourceRef),doc.currentSourceRef)||r.questionSha256!==sha(stable(current))||\n     !eq(r.assetRefs.map(withoutCommit),doc.currentAssets.filter(a=>a.path==='archive/'+current.image))))fail('SELECTED_SOURCE_BINDING');\n }\n const sorted=rows=>rows.slice().sort((a,b)=>a.path.localeCompare(b.path));\n if(seen.size!==14||visualSeen.size!==14||new Set(artifacts.map(x=>x.path)).size!==artifacts.length||!eq(sorted(artifacts),sorted(t.screenshotArtifacts.map(artifact))))fail('ARTIFACT_INVENTORY');\n capturedArtifacts(reader,v.artifactRefs,artifacts,ancestor);\n return{logicalCases:2,newSemanticApproval:0,newFourSlotVector:0};\n}\nmodule.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData"
+    },
+    "reason": "Previously frozen current generated SVG data reader repair already present in the primary PR/ops tree; this work preserves it exactly."
+  },
+  "currentCaptureBinding": {
+    "after": {
+      "gitBlobSha1": "4321e8e5e1a10d158e4ab8ac87e0e17bc2c82836",
+      "sha256": "9839283ab1b0f1affa7919618d7bea9fd3e9f5b2d8f5123812fc840546039223",
+      "bytes": 32395
+    },
+    "edits": [
+      {
+        "label": "closed-current-preflight",
+        "oldText": " const t=reader.json(doc.uiTechnicalRef,true),v=reader.json(doc.uiVisualRef,true);",
+        "newText": " const t=reader.json(doc.uiTechnicalRef,true),v=reader.json(doc.uiVisualRef,true);\n const currentBinding=currentReuseRequested(doc,t,v);\n if(currentBinding)verifyCurrentVisualReuse({reader,doc,t,v,ancestor});"
+      },
+      {
+        "label": "owner-closed-branch",
+        "oldText": "t.executionOwner!=='GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD'||",
+        "newText": "t.executionOwner!==(currentBinding?CURRENT_OWNER:'GITHUB_ACTIONS_CHROMIUM_EXACT_PR_HEAD')||"
+      },
+      {
+        "label": "legacy-execution-body-preserved",
+        "oldText": " exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl'],'CI_EXECUTION');\n if(t.execution.provider!=='GITHUB_ACTIONS'||t.execution.eventName!=='pull_request'||t.execution.repository!=='icefoxtail/AP------'||\n    !String(t.execution.workflow||'').trim()||t.execution.job!=='m1s2-problem-seven'||!/^[1-9][0-9]*$/.test(t.execution.runId||'')||\n    !integer(t.execution.runAttempt,1)||!integer(t.execution.pullRequest,1)||t.execution.headSha!==t.checkoutCommit||\n    !OID.test(t.execution.baseSha||'')||!OID.test(t.execution.eventSha||'')||\n    t.execution.runUrl!=='https://github.com/icefoxtail/AP------/actions/runs/'+t.execution.runId)fail('CI_EXECUTION');",
+        "newText": " if(currentBinding)verifyCurrentCaptureExecution(t);\n else{\n exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl'],'CI_EXECUTION');\n if(t.execution.provider!=='GITHUB_ACTIONS'||t.execution.eventName!=='pull_request'||t.execution.repository!=='icefoxtail/AP------'||\n    !String(t.execution.workflow||'').trim()||t.execution.job!=='m1s2-problem-seven'||!/^[1-9][0-9]*$/.test(t.execution.runId||'')||\n    !integer(t.execution.runAttempt,1)||!integer(t.execution.pullRequest,1)||t.execution.headSha!==t.checkoutCommit||\n    !OID.test(t.execution.baseSha||'')||!OID.test(t.execution.eventSha||'')||\n    t.execution.runUrl!=='https://github.com/icefoxtail/AP------/actions/runs/'+t.execution.runId)fail('CI_EXECUTION');\n }"
+      },
+      {
+        "label": "separate-reuse-visual-schema",
+        "oldText": "v.schemaVersion!=='archive-independent-m1s2-problem-seven-ui-review-v1'||",
+        "newText": "v.schemaVersion!==(currentBinding?CURRENT_VISUAL_SCHEMA:'archive-independent-m1s2-problem-seven-ui-review-v1')||"
+      },
+      {
+        "label": "closed-producer-pin",
+        "oldText": " for(const[ref,pin]of[[t.checkerRef,PINS.checker],[t.captureHelperRef,PINS.capture],[t.surfaceHelperRef,PINS.surface],[t.manifestRef,PINS.manifest]]){",
+        "newText": " const implementationPins=currentBinding?CURRENT_PINS:PINS;\n for(const[ref,pin]of[[t.checkerRef,implementationPins.checker],[t.captureHelperRef,implementationPins.capture],[t.surfaceHelperRef,implementationPins.surface],[t.manifestRef,implementationPins.manifest]]){"
+      },
+      {
+        "label": "current-closed-contract-and-test-exports",
+        "oldText": "module.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData};",
+        "newText": "\n// One immutable current ops capture reuses exactly the prior accepted pixels.\nconst CURRENT_OWNER=\"GITHUB_ACTIONS_CHROMIUM_CLOSED_OPS_PUSH_HEAD\";\nconst CURRENT_VISUAL_SCHEMA=\"archive-independent-m1s2-current-ui-reuse-v1\";\nconst CURRENT_CAPTURE_HEAD=\"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502\";\nconst CURRENT_BASE_COMMIT=\"a66a389b96525f67e2868a000184039e08627e9f\";\nconst CURRENT_EXECUTION=Object.freeze({\"provider\":\"GITHUB_ACTIONS\",\"eventName\":\"push\",\"repository\":\"icefoxtail/AP------\",\"workflow\":\"Middle Protected Current Renderer\",\"job\":\"current-ui\",\"runId\":\"44015662986\",\"runAttempt\":1,\"pullRequest\":null,\"headSha\":\"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502\",\"baseSha\":null,\"eventSha\":\"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502\",\"runUrl\":\"https://github.com/icefoxtail/AP------/actions/runs/44015662986\",\"ref\":\"refs/heads/ops/middle-protected9-current-renderer-26fc-20261117\",\"capturedHead\":\"48d18ccdc7eafffe3d1d8ae32e65a4dc23437502\"});\nconst CURRENT_ARTIFACT_PREFIX=\"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/\";\nconst CURRENT_TECHNICAL_REF=Object.freeze({\"commit\":\"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3\",\"path\":\"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json\",\"gitBlobSha1\":\"82fe4a6929e1d7b800bbba4f3a2634ffea04cc77\",\"sha256\":\"6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42\",\"bytes\":222310});\nconst CURRENT_VISUAL_REF=Object.freeze({\"commit\":\"d3d625ceb7315ffddbcd4a0a8c9960527fe0c9ed\",\"path\":\"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json\",\"gitBlobSha1\":\"e626233f7aeaddf7d7d81bab5daf59e7ed2996bc\",\"sha256\":\"ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807\",\"bytes\":18296});\nconst CURRENT_EQUIVALENCE_REF=Object.freeze({\"commit\":\"d22e6702b1a8cb5e06f658bd3d3bf8a1a7b3a543\",\"path\":\"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/exact-display-equivalence-v1.json\",\"gitBlobSha1\":\"7b299baaa116756e2527a77c5181ed03ec1ae91d\",\"sha256\":\"873fabbec304705ea3e12ff4621849b040fdd4f7096006bfd8b00f07d2f55dec\",\"bytes\":53093});\nconst CURRENT_INDEPENDENT_REF=Object.freeze({\"commit\":\"d22e6702b1a8cb5e06f658bd3d3bf8a1a7b3a543\",\"path\":\"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/root-independent-equivalence-v1.json\",\"gitBlobSha1\":\"2cb1d70d666c5742ef57b0bce2b4dbf9231c5afe\",\"sha256\":\"83bb6258be37609abfda71527f65165f1658b5caf5da572ee93fe1f60bc7f4ac\",\"bytes\":16257});\nconst CURRENT_REASSEMBLY_REF=Object.freeze({\"commit\":\"90baaac80f0dac03a968c2c5ad6ccf9ca3ddb3c3\",\"path\":\"docs/operations/middle-current-ui-26fc-20261117/run-44015662986/root-reassembly-v1.json\",\"gitBlobSha1\":\"f07ff335d4abab50048d700d5a526d3f9fa68790\",\"sha256\":\"fa841847643c673948650c4d70a1ae00fc578e3ee627ccfc820d2b2fda081910\",\"bytes\":7306});\nconst PRIOR_TECHNICAL_REF=Object.freeze({\"commit\":\"a019663b1c3940b57a47a3b8abc025a56e2673c3\",\"path\":\"docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json\",\"gitBlobSha1\":\"1dfbe22d89b9d8f229724796dc559fe3799483b8\",\"sha256\":\"d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a\",\"bytes\":222136});\nconst PRIOR_VISUAL_REF=Object.freeze({\"commit\":\"c4e1838e9245c877c98c96e7cb9d8b4c6b426758\",\"path\":\"docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json\",\"gitBlobSha1\":\"77f810ff113e15ee894d21c8bab591ab8132539b\",\"sha256\":\"7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9\",\"bytes\":15105});\nconst CURRENT_PINS=Object.freeze({...PINS,checker:Object.freeze({path:\"tools/check-m1s2-problem-seven-browser.cjs\",sha256:\"130fcab0be811c537ddce05f5c1f17a26e18cf9862ea690dbefcea419bde73e9\"})});\n\nfunction currentReuseRequested(doc,t,v){\n return doc.uiTechnicalRef?.path===CURRENT_TECHNICAL_REF.path||\n  t.executionOwner===CURRENT_OWNER||v.schemaVersion===CURRENT_VISUAL_SCHEMA;\n}\nfunction verifyCurrentCaptureExecution(t){\n exact(t.execution,['provider','eventName','repository','workflow','job','runId','runAttempt','pullRequest','headSha','baseSha','eventSha','runUrl','ref','capturedHead'],'CURRENT_CI_EXECUTION');\n if(t.executionOwner!==CURRENT_OWNER||t.checkoutCommit!==CURRENT_CAPTURE_HEAD||t.baseCommit!==CURRENT_BASE_COMMIT||\n    !eq(t.execution,CURRENT_EXECUTION))fail('CURRENT_CI_EXECUTION');\n}\nfunction verifyCurrentVisualReuse({reader,doc,t,v,ancestor}){\n if(!eq(doc.uiTechnicalRef,withoutCommit(CURRENT_TECHNICAL_REF))||\n    !eq(doc.uiVisualRef,withoutCommit(CURRENT_VISUAL_REF)))fail('CURRENT_REF_SCOPE');\n for(const ref of[CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF,CURRENT_EQUIVALENCE_REF,CURRENT_INDEPENDENT_REF,\n   CURRENT_REASSEMBLY_REF,PRIOR_TECHNICAL_REF,PRIOR_VISUAL_REF])ancestor(ref.commit,reader.head);\n // Authenticate immutable publication paths and current regular-file bytes;\n // the raw push result is never relabelled or projected into PR provenance.\n const sealedTechnical=reader.json(CURRENT_TECHNICAL_REF,true),sealedVisual=reader.json(CURRENT_VISUAL_REF,true);\n if(!eq(t,sealedTechnical)||!eq(v,sealedVisual))fail('CURRENT_RAW_BINDING');\n verifyCurrentCaptureExecution(t);\n exact(v,['schemaVersion','reviewer','derivationAuthor','decision','reviewMethod','technicalRef','priorTechnicalRef',\n  'priorVisualRef','equivalenceRef','rootReassemblyRef','actualExecution','newMathQa','newSemanticApproval','newFourSlotVector',\n  'newVisualInspection','priorVisualRecordsCopiedExactly','currentRawTechnicalUnchanged','sharedCodeEquivalenceClaimed',\n  'currentRuntimeAndFontLiveGuardsRequired','records','artifactRefs','continuingContentHolds','officialAuthorityBuilderConsumerStatus',\n  'independentEquivalenceRef','currentCaptureFilesWereModified'],'CURRENT_VISUAL');\n if(v.schemaVersion!==CURRENT_VISUAL_SCHEMA||v.derivationAuthor!=='GPT_M1_RELEASE_CLOSEOUT'||v.decision!==DECISION||\n    v.reviewMethod!=='EXACT_ORIGINAL_PNG_AND_CAPTURE_REUSE_OF_PRIOR_SEPARATE_VISUAL_INSPECTION'||\n    !eq(v.technicalRef,CURRENT_TECHNICAL_REF)||!eq(v.priorTechnicalRef,PRIOR_TECHNICAL_REF)||!eq(v.priorVisualRef,PRIOR_VISUAL_REF)||\n    !eq(v.equivalenceRef,CURRENT_EQUIVALENCE_REF)||!eq(v.independentEquivalenceRef,CURRENT_INDEPENDENT_REF)||\n    !eq(v.rootReassemblyRef,CURRENT_REASSEMBLY_REF)||!eq(v.actualExecution,CURRENT_EXECUTION)||\n    v.newMathQa!==0||v.newSemanticApproval!==0||v.newFourSlotVector!==0||v.newVisualInspection!==0||\n    v.priorVisualRecordsCopiedExactly!==true||v.currentRawTechnicalUnchanged!==true||v.currentCaptureFilesWereModified!==false||\n    v.sharedCodeEquivalenceClaimed!==false||v.currentRuntimeAndFontLiveGuardsRequired!==true||\n    v.continuingContentHolds!=='FOUR_PREEXISTING_CONTENT_OR_SOLUTION_HOLDS_UNCHANGED'||\n    v.officialAuthorityBuilderConsumerStatus!=='CURRENT_BINDING_NOT_RUN')fail('CURRENT_VISUAL');\n const prior=reader.json(PRIOR_TECHNICAL_REF),oldVisual=reader.json(PRIOR_VISUAL_REF);\n const witness=reader.json(CURRENT_EQUIVALENCE_REF),independent=reader.json(CURRENT_INDEPENDENT_REF),assembly=reader.json(CURRENT_REASSEMBLY_REF);\n if(witness.schemaVersion!=='archive-m1s2-current-fourteen-byte-equivalence-v1'||\n    witness.status!=='EXACT_CURRENT_DISPLAY_BYTES_PRIOR_VISUAL_RECORDS_REUSABLE_INDEPENDENT_REVIEW_REQUIRED'||\n    witness.currentCapture?.commit!==CURRENT_CAPTURE_HEAD||!eq(witness.refs?.currentTechnical,CURRENT_TECHNICAL_REF)||\n    !eq(witness.refs?.priorTechnical,PRIOR_TECHNICAL_REF)||!eq(witness.refs?.priorVisual,PRIOR_VISUAL_REF)||\n    independent.decision!=='ACCEPT_REUSE_OF_IDENTICAL_EXISTING_DISPLAY_OBSERVATIONS_ONLY'||\n    independent.currentEvidenceCommit!==CURRENT_TECHNICAL_REF.commit)fail('CURRENT_EQUIVALENCE');\n if(oldVisual.schemaVersion!=='archive-independent-m1s2-problem-seven-ui-review-v1'||oldVisual.decision!==DECISION||\n    oldVisual.newMathQa!==0||oldVisual.newSemanticApproval!==0||oldVisual.newFourSlotVector!==0||\n    !eq(oldVisual.technicalRef,PRIOR_TECHNICAL_REF)||v.reviewer!==oldVisual.reviewer||\n    !Array.isArray(oldVisual.records)||oldVisual.records.length!==14||!eq(v.records,oldVisual.records))fail('CURRENT_PRIOR_VISUAL');\n if(prior.schemaVersion!=='archive-m1s2-problem-seven-github-ui-raw-v1'||\n    prior.status!=='TECHNICAL_PASS_VISUAL_REVIEW_PENDING'||!Array.isArray(prior.results)||prior.results.length!==14||\n    !Array.isArray(t.results)||t.results.length!==14||!eq(prior.screenshotArtifacts,t.screenshotArtifacts))fail('CURRENT_CAPTURE_REUSE');\n const stripItem=x=>({...x,sourceRef:withoutCommit(x.sourceRef),assetRef:withoutCommit(x.assetRef)});\n if(!Array.isArray(t.items)||!Array.isArray(prior.items)||!eq(t.items.map(stripItem),prior.items.map(stripItem))||\n    !eq(withoutCommit(t.manifestRef),withoutCommit(prior.manifestRef))||\n    !Array.isArray(t.mirroredAssets)||!eq(t.mirroredAssets.map(withoutCommit),prior.mirroredAssets.map(withoutCommit)))fail('CURRENT_APPROVED_INPUTS');\n const oldFonts=new Map((prior.studentFontResources||[]).map(f=>[f.resourceId,f]));\n const newFonts=new Map((t.studentFontResources||[]).map(f=>[f.resourceId,f]));\n if(oldFonts.size!==prior.studentFontResources?.length||newFonts.size!==t.studentFontResources?.length||\n    oldFonts.size!==newFonts.size||[...newFonts].some(([id,f])=>!oldFonts.has(id)||!eq(withoutCommit(f),withoutCommit(oldFonts.get(id)))))fail('CURRENT_FONT_INVENTORY');\n for(let i=0;i<14;i++){\n  const a=prior.results[i],b=t.results[i];\n  if(a.questionUid!==b.questionUid||a.sourceOrdinal!==b.sourceOrdinal||!eq(a.viewport,b.viewport)||\n     a.surface!==b.surface||a.mode!==b.mode||a.questionSha256!==b.questionSha256||\n     !eq(withoutCommit(a.sourceRef),withoutCommit(b.sourceRef))||\n     !eq(a.assetRefs.map(withoutCommit),b.assetRefs.map(withoutCommit))||\n     !['capture','screenshots','geometry','surfaceStructure','pageErrors','requestFailures','externalRequests'].every(k=>eq(a[k],b[k])))fail('CURRENT_CAPTURE_REUSE');\n  const before={...a.technical},after={...b.technical};delete before.fontResourceIds;delete after.fontResourceIds;\n  if(!eq(before,after)||!Array.isArray(b.technical.fontResourceIds)||\n     new Set(b.technical.fontResourceIds).size!==b.technical.fontResourceIds.length||\n     b.technical.fontResourceIds.some(id=>!a.technical.fontResourceIds.includes(id)||!newFonts.has(id)))fail('CURRENT_FONT_CASE_REUSE');\n }\n if(!Array.isArray(oldVisual.artifactRefs)||oldVisual.artifactRefs.length!==14)fail('CURRENT_PRIOR_PNG');\n const expectedArtifacts=oldVisual.artifactRefs.map(ref=>({...ref,commit:CURRENT_TECHNICAL_REF.commit,\n  path:CURRENT_ARTIFACT_PREFIX+path.posix.basename(ref.path)}));\n const byPath=refs=>refs.slice().sort((a,b)=>a.path.localeCompare(b.path));\n if(!Array.isArray(v.artifactRefs)||new Set(v.artifactRefs.map(r=>r.path)).size!==14||!eq(byPath(v.artifactRefs),byPath(expectedArtifacts)))fail('CURRENT_PNG_REUSE');\n const profile=unique(assembly.profileReceipts,x=>x.profile==='m1','CURRENT_TRANSPORT_PROFILE');\n if(assembly.checkoutCommit!==CURRENT_CAPTURE_HEAD||String(assembly.runId)!==CURRENT_EXECUTION.runId||\n    profile.logical!==14||profile.png!==14||profile.files!==15||profile.technicalGit!==CURRENT_TECHNICAL_REF.gitBlobSha1||\n    profile.technicalRaw!==CURRENT_TECHNICAL_REF.sha256||assembly.checks?.pngFullRemoteReadback!==true)fail('CURRENT_TRANSPORT');\n for(const ref of oldVisual.artifactRefs){\n  const bytes=reader.read(ref),name=path.posix.basename(ref.path);\n  if(bytes.length<PNG_SIGNATURE.length||!bytes.subarray(0,PNG_SIGNATURE.length).equals(PNG_SIGNATURE))fail('CURRENT_PRIOR_PNG');\n  const rb=unique(assembly.pngReadbacks,x=>x.profile==='m1'&&x.path===name,'CURRENT_TRANSPORT_PNG');\n  if(rb.git!==ref.gitBlobSha1||rb.raw!==ref.sha256||rb.bytes!==ref.bytes||rb.readback!==true)fail('CURRENT_TRANSPORT_PNG');\n }\n return true;\n}\n\nmodule.exports={verify,coverage,PINS,DECISION,capturedRef,visualTechnicalRef,selectedDataRows,svgRecords,svgContinuity,capturedArtifacts,surfaceTopology,currentData,\n currentReuseRequested,verifyCurrentCaptureExecution,verifyCurrentVisualReuse,CURRENT_OWNER,CURRENT_VISUAL_SCHEMA,CURRENT_CAPTURE_HEAD,CURRENT_PINS,\n CURRENT_TECHNICAL_REF,CURRENT_VISUAL_REF,CURRENT_EQUIVALENCE_REF,CURRENT_INDEPENDENT_REF,CURRENT_REASSEMBLY_REF,PRIOR_TECHNICAL_REF,PRIOR_VISUAL_REF};"
+      }
+    ],
+    "inverseToPrimaryByteExact": true
+  },
+  "sidecars": [
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_0292dec1b0304cd70882882526d8b57b86e2ab60a53d14a7c6aadcbc3e1f2246.json",
+        "gitBlobSha1": "62f472da789f277afe9f6603058e048509ffd8ec",
+        "sha256": "989b32edc73a830f22fbb1fa004d781a49bc21783f4eb31f189a74b861bf49dd",
+        "bytes": 6650,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "37ae75f016b1ea7ef950df4e90f6f57e1a1f0daf",
+        "sha256": "f61852df9d4ed2ccd9c06074b8ccc701fe10df7bff4f3dd3a8904b0494dd2e95",
+        "bytes": 6678
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_04a3307fa2f22f54255d293e5f2159fec8ae31d99a2c3188c242dd96b710d6e6.json",
+        "gitBlobSha1": "47d21b5867150454cf6f00fa6fc11c7f0d85bc3c",
+        "sha256": "890b4212a3d19b6ff6f69aae6586ac1a1b1b0e95a9ef67826de3628a89c2a18b",
+        "bytes": 6648,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "11c13b3f9994d8840c41e62cf63bf1e611686dbd",
+        "sha256": "b4051411a73e21e004684c6865e466ed5ac24ba83d5f611a07d8e303a7772f9c",
+        "bytes": 6676
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_7f4235f2620956516dfafbb36f1947f7edfe47aef1292379105eb747ba511fe3.json",
+        "gitBlobSha1": "e9c235775dd2b66cdbb91f75a03ebb6339fb5acf",
+        "sha256": "76fc45120d8ee6d116695cd3f0cc4a594494e10f772f217ecf6f5d49831fa09d",
+        "bytes": 6669,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "7677883751409a30eb7b9835423bcb1b724dd450",
+        "sha256": "7d8bbc1aaaccf40a47b6d2c2e574f5bf19f0f2f3f329ffd9ad39211a4e4974c0",
+        "bytes": 6697
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_a989f82a87d00dc1ec8c7d552fa21572235abfe58518c41fc7f95001ec9d689e.json",
+        "gitBlobSha1": "acd6443f3c167a6274b8f7ff46a71f58e1c959ac",
+        "sha256": "6764fb54252e6133425c756bce69a03f2060c5516c078557a65828d648490e41",
+        "bytes": 6663,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "a4cfb2cb9ce6ed5ebbb92b5527d1e3a4448a622e",
+        "sha256": "85cdb1c5583d19ab9def4165b3b8e9aa3119d5ebd1b79fd19b342f2aad38eafb",
+        "bytes": 6691
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_b0046185c909143e8665ec134015703f04e8b0d17904e06717055b7771e63e15.json",
+        "gitBlobSha1": "9bed94ffd50cd9a6ee4a739a786472567e8a002e",
+        "sha256": "a5bc92b203b6d916ef5fbc2ed22691cc2a15d0562c6b8ebe88682bf570a2b037",
+        "bytes": 6669,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "aa0fd6b93e5a9022f565bc04ae794f0f8fb01ff3",
+        "sha256": "e0ced2ce4d5797544bce3b858d8b398b2d72ac96044342d3430582f6714f5c55",
+        "bytes": 6697
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_dda907fccf6844e209f2f909dacdb1ea30f2d76c258a72b76fd246c3655f4140.json",
+        "gitBlobSha1": "30f89918905b9a4fdbc77ad0d817e071a8bab690",
+        "sha256": "276aa21cb8c12580d45f80098ac10bd2ccc8c8506efb9fc89f476e2cc82c4a4b",
+        "bytes": 6664,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "662b480e1560d7ffa759e100005a5bed42022d79",
+        "sha256": "0443bd24448aa4462ecf179bc10ab6f0add2c8120f7d2e853d477e0f3a9c3264",
+        "bytes": 6692
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    },
+    {
+      "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json",
+      "before": {
+        "path": ".archive-meta-register/4slot-m1s2-problem-renderer-continuity/qid_v1_ebdae8cefdff3298308be0484ffbfd39d3a23075360265b27fd7b43f25af0b9c.json",
+        "gitBlobSha1": "779fc4f6766d8b900408c7b0881ffcfd33f55a06",
+        "sha256": "125ac3d9de600bd7de8380a0ec99af17a9cd7003f100ce8a8e7fff502deb7d9b",
+        "bytes": 6648,
+        "sameAsObservedSnapshot": true
+      },
+      "after": {
+        "gitBlobSha1": "3a361820e3ac959c759aed8bb421c319df6b0ae7",
+        "sha256": "c060e456198a7fef9407723378b231b3f9cd52babcf483b7c6556d269f96ab82",
+        "bytes": 6676
+      },
+      "changedFields": [
+        "uiTechnicalRef",
+        "uiVisualRef"
+      ],
+      "beforeValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/technical-proof.json",
+          "gitBlobSha1": "1dfbe22d89b9d8f229724796dc559fe3799483b8",
+          "sha256": "d379e5f05e1e59e74b635452e535fc676fec502542ff7a25c0d77cb63a898f9a",
+          "bytes": 222136
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/m1s2-problem-seven-ui-26fc-20261116/independent-visual-review.json",
+          "gitBlobSha1": "77f810ff113e15ee894d21c8bab591ab8132539b",
+          "sha256": "7f30419f07e71faf441418ed07b30366037413fb99f9448b39a7ba208bb646a9",
+          "bytes": 15105
+        }
+      },
+      "afterValues": {
+        "uiTechnicalRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/technical-proof.json",
+          "gitBlobSha1": "82fe4a6929e1d7b800bbba4f3a2634ffea04cc77",
+          "sha256": "6d7281d12281f6ceb454d3cc79244a66a8a5013327120a4b5bfde98671d8fa42",
+          "bytes": 222310
+        },
+        "uiVisualRef": {
+          "path": "docs/operations/middle-current-ui-26fc-20261117/run-44015662986/m1/visual-current-reuse-v1.json",
+          "gitBlobSha1": "e626233f7aeaddf7d7d81bab5daf59e7ed2996bc",
+          "sha256": "ca40535462ab65d42ddac642fe640dbcb49dee9ae03dd3f611813aab778d6807",
+          "bytes": 18296
+        }
+      },
+      "wholeOtherDocumentExact": true
+    }
+  ],
+  "newTest": {
+    "path": "tests/item-4slot-m1s2-current-ui-reuse.test.cjs",
+    "before": null,
+    "after": {
+      "gitBlobSha1": "6c64f558090dae1e9b58adee42904155fb5f22b4",
+      "sha256": "354b4d9cb518d82d10df42781daa8e87ae5d934ddd7347e21782b5491d2565de",
+      "bytes": 15066
+    },
+    "authoredCaseCount": 53,
+    "execution": "NOT_RUN"
+  },
+  "scope": {
+    "existingHelperChanged": false,
+    "existingTestsChanged": false,
+    "legacyCommonGuardsInverseExact": true,
+    "newAuthority": false
+  }
+}

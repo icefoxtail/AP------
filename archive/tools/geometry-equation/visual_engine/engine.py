@@ -15,6 +15,8 @@ from .geometry_model import Circle,CircularArc,Line,clip_line,finite
 from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression,parse_list as _parse_list
 OPEN_POINT_STROKE_WIDTH=1.8   # a hollow overlay point (markerState OPEN): the ring is heavier than a filled dot's 0.8 outline so it reads as a circle on a phone
 
+AXIS_FOLD_AXIS_GAP_PX=12.0   # a folded axis and the other axis never touch: the other one ends this far short (observer: axis_fold_audit)
+
 def _exact_float(text):
     """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
     try:return float(Fraction(text))
@@ -22,7 +24,7 @@ def _exact_float(text):
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
-from .label_layout import Box,layout,approximate_size,DIRECTIONS,point_segment_distance,segment_segment_distance,measured_tick_ink
+from .label_layout import Box,layout,apply_label_hints,approximate_size,DIRECTIONS,point_segment_distance,segment_segment_distance,measured_tick_ink
 from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
@@ -486,9 +488,30 @@ def prepare(spec):
         if axis_bounds is not None:
             if not isinstance(axis_bounds,list) or len(axis_bounds)!=4 or any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) for v in axis_bounds):raise ValueError('INVALID_AXIS_BOUNDS')
             xmin,xmax,ymin,ymax=max(xmin,axis_bounds[0]),min(xmax,axis_bounds[1]),max(ymin,axis_bounds[2]),min(ymax,axis_bounds[3])
+        # (axis fold) an axis far from every feature stands on the window edge (displayFacts.axisFold, set by graph_framing), never through the empty gap to the origin
+        axis_fold=spec['displayFacts'].get('axisFold')
+        axis_at={'x':0,'y':0}
+        if axis_fold is not None:
+            if not isinstance(axis_fold,dict) or axis_fold.get('schemaVersion')!='AXIS_FOLD_v1' or set(axis_fold)-{'schemaVersion','x','y'}:raise ValueError('INVALID_AXIS_FOLD')
+            for axis,edges in (('x',('BOTTOM','TOP')),('y',('LEFT','RIGHT'))):
+                row=axis_fold.get(axis)
+                if row is None:continue
+                if not isinstance(row,dict) or set(row)!={'edge','at'} or row['edge'] not in edges or isinstance(row['at'],bool) or not isinstance(row['at'],(int,float)) or not math.isfinite(row['at']):raise ValueError('INVALID_AXIS_FOLD')
+                edge_value={'BOTTOM':ymin,'TOP':ymax,'LEFT':xmin,'RIGHT':xmax}[row['edge']]
+                if abs(row['at']-edge_value)>1e-6*max(1,abs(edge_value)):raise ValueError('AXIS_FOLD_NOT_ON_WINDOW_EDGE')
+                axis_at[axis]=edge_value
+        # The other axis stops AXIS_FOLD_AXIS_GAP_PX short of a folded axis, so their corner is not read as the origin (0,0).
+        x_from,x_to,y_from,y_to=xmin,xmax,ymin,ymax
+        if axis_fold is not None:
+            if 'x' in axis_fold:
+                if axis_fold['x']['edge']=='BOTTOM':y_from=ymin+AXIS_FOLD_AXIS_GAP_PX/vp.sy
+                else:y_to=ymax-AXIS_FOLD_AXIS_GAP_PX/vp.sy
+            if 'y' in axis_fold:
+                if axis_fold['y']['edge']=='LEFT':x_from=xmin+AXIS_FOLD_AXIS_GAP_PX/vp.sx
+                else:x_to=xmax-AXIS_FOLD_AXIS_GAP_PX/vp.sx
         axes=[]
-        if show_x:axes.append(('x-axis',(xmin,0),(xmax,0)))
-        if show_y:axes.append(('y-axis',(0,ymin),(0,ymax)))
+        if show_x:axes.append(('x-axis',(x_from,axis_at['x']),(x_to,axis_at['x'])))
+        if show_y:axes.append(('y-axis',(axis_at['y'],y_from),(axis_at['y'],y_to)))
         zero_pole=any(pole.get('boundary') and pole['x']=='0' for pole in (trig_interval_features or {}).get('poles',[]))
         for oid,a,b in axes:
             # An excluded tangent pole on x=0 shares the y-axis; the axis must leave its dashes visible.
@@ -533,14 +556,17 @@ def prepare(spec):
         axis_labels=[]
         axis_titles=spec['displayFacts'].get('axisTitles',{})
         if not isinstance(axis_titles,dict) or set(axis_titles)-{'x','y'} or any(not isinstance(v,str) or not v for v in axis_titles.values()):raise ValueError('INVALID_AXIS_TITLES')
-        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x'),axis_titles.get('x')))
-        if show_y:axis_labels.append(('axis-y',(0,ymax),'y',axis_titles.get('y')))
+        if show_x:axis_labels.append(('axis-x',(xmax,axis_at['x']),spec['displayFacts'].get('axisVariable','x'),axis_titles.get('x')))
+        if show_y:axis_labels.append(('axis-y',(axis_at['y'],ymax),'y',axis_titles.get('y')))
         for oid,at,text,title in axis_labels:
             # A plain Korean title (a name with its unit) is a text label that must find room (never suppressed); the letter is a math label.
             if title is not None and axis_title_tex(title) is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'tex':axis_title_tex(title),'font':13,'priority':4,'allowSuppress':False,'math':True,'bindText':True})
             elif title is not None and axis_title_parts(title) is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'parts':axis_title_parts(title),'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             elif title is not None:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':title,'layoutText':title,'font':13,'priority':4,'allowSuppress':False,'math':False,'bindText':True})
             else:labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
+        for label in labels:
+            # the x axis name stands below the end of its axis (right and below first): above it, it would sit beside the labels of lines and curves ending there and read as part of them (y=3 and x read as y=3x)
+            if label['id']=='axis-x':label['directions']=('SE','S','E','NE','N','SW','W','NW')
         visible_axes=[];fraction_text={}
         if show_x:visible_axes.append(('x',xmin,xmax))
         if show_y:visible_axes.append(('y',ymin,ymax))
@@ -566,7 +592,7 @@ def prepare(spec):
                 # A tick number exactly at a drawn graph reference point would repeat that point's x on the axis and collide with its label/marker:
                 # the reference point already carries the value, so the redundant tick is omitted.
                 if axis=='x' and any(abs(value-item)<=1e-12 for item in reference_positions):continue
-                at=(value,0) if axis=='x' else (0,value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
+                at=(value,axis_at['x']) if axis=='x' else (axis_at['y'],value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
                 display_token=str(int(value)) if float(value).is_integer() else f'{value:.10g}'
                 id_token=str(index) if index is not None else display_token
                 oid=f'tick-{axis}-{id_token}'
@@ -1014,12 +1040,17 @@ def prepare(spec):
             d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
             primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region',**region_paint(obj['fill']),'noStroke':True,'fillRule':'evenodd',
                        'mark':'graph-region','markId':oid,'fillPolygons':[polygon]})
+            region_areas.append({'id':oid,'polygons':[polygon]})
             if obj.get('labelText') is not None:
                 tree=parse(obj['labelText']);markup=serialize(tree,'svg')
                 label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
                        'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[polygon],'labelGap':14}
                 label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
+                # A band too thin or too crowded to hold its name: the label stands outside it on a leader from its outer boundary (the same E32 leader a plane region uses). The anchors are
+                # found after the last object, when every curve is drawn (a leader never crosses another curve).
+                label['regionLeader']={'anchors':[],'gaps':list(REGION_LEADER_GAPS),'polygons':[polygon],'near':None,'only':False,'graphRegion':True,'corners':[list(polygon[0]),list(polygon[len(upper)-1]),list(polygon[len(upper)]),list(polygon[-1])]}
+                region_labels.append(label)
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]),clip_refine=obj.get('clipRefine') is True)
@@ -1367,6 +1398,9 @@ def prepare(spec):
             labels.append(label)
     # An angle label never stands inside another angle mark's sector (it would read as that angle's value): each wedge search knows the other sectors.
     for label in region_labels:label['regionLeader']['regions']=[{'id':row['id'],'polygons':row['polygons']} for row in region_areas]
+    for label in region_labels:
+        site=label['regionLeader']
+        if site.pop('graphRegion',False):site['anchors']=_region_leader_anchors(site['polygons'],obstacles,[tuple(c) for c in site.pop('corners')],(),mark_spots)
     for label in labels:
         if 'wedgeSearch' in label:label['wedgeSearch']['others']=[sector for other,sector in angle_sectors.items() if other!=label.get('target') and label.get('target') not in angle_over.get(other,())]
     # (G18b) multi-curve figure: a curve's formula (nearCurve) stands beside its own curve and an asymptote's value (nearLine) at the end of its own dashed line. Here, with every stroke drawn,
@@ -1458,6 +1492,7 @@ def build(spec,measurements=None,fragments=None,strict_measured_fragments=False,
     label_margin=12 if fragments is not None else vp.margin
     safe=Box(label_margin,label_margin,vp.width-2*label_margin,vp.height-2*label_margin)
     panel=Box(vp.width-vp.margin-vp.panel,vp.margin,vp.panel,vp.height-2*vp.margin)
+    if spec['displayFacts'].get('labelHints') is not None:apply_label_hints(labels,spec['displayFacts']['labelHints'])
     result=layout(labels,obstacles,safe,panel,measurements,require_measurements=strict_measured_fragments,last_resort=last_resort)
     for row in result.get('labels',[])+result.get('suppressed',[]):
         if isinstance(row,dict):row.pop('tickInk',None)   # a placement input only: the witness and the SVG carry what they carried before

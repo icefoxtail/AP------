@@ -2,6 +2,7 @@
 // restores only a finite semantic/authority projection and creates no approval.
 // Original receipts, source bytes, identity, difficulty and shared registries are immutable.
 import fs from 'node:fs';
+import { questionMetadataText } from './question-metadata-format.mjs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
@@ -259,7 +260,7 @@ export function registerNativeAuthorityCorrection({ root, request: req, write = 
     metadataRegistrationStatus: 'UNSUPPORTED_AUTHORITY_WITHDRAWN', newMetadataApprovals: 0,
     withdrawnMetadataApprovals: applied.length, sourceHold: false, identityChanged: false, difficultyChanged: false,
     restoredFieldAllowlist: AUTHORITY_RESTORABLE_FIELDS, applied };
-  const receiptText = json(receipt), outputs = new Map([[META, json(metadata)], [receiptPath, receiptText]]);
+  const receiptText = json(receipt), outputs = new Map([[META, questionMetadataText(metadata)], [receiptPath, receiptText]]);
   for (const file of touched) { const rt = runtime.docs.get(file); refreshRuntime(rt); outputs.set(file, json(rt)); }
   for (const row of applied) outputs.set(authorityHoldSealPath(row.questionUid), json({ schemaVersion: AUTHORITY_HOLD_SCHEMA,
     questionUid: row.questionUid, sourceArchiveFile: req.sourceArchiveFile, sourceOrdinal: row.sourceOrdinal,

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tr-e1514238fd45-a4fc9bb2",
+  "requestSha256": "cd72f4778413e8969d6f2b81c48721e86f7e97afef32bf70d24b37d85d868541",
+  "examUid": "22_팔마중_2학기_중간_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+  "sourceBlobSha1": "de2c23482b6617df066122f6b175b6793ca10bf0",
+  "sourceRawSha256": "0f4c286f09c71fedc1054e8073f429d7ca7bd00c36b590c3863f148c5301b1ad",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e1514238fd45-a4fc9bb2.type-ledger.json",
+        "sha256": "34cb70c9d13b19732715f4338a8f890d2db75844acaa07607d16cebea0d5ce4e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e498bfea360a95d6ac2fdf4ab8574b034e028d72e4342915ad4e2598363cb2a7",
+      "sourceArchiveFile": "original/middle/m3/2mid/22_팔마중_2학기_중간_중3_수학.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tr-e1514238fd45-a4fc9bb2",
+        "judge": "dots",
+        "rationale": "대각선으로 나뉜 네 삼각형의 넓이를 합쳐 1/2·AC·BD·sin60°=30을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "8a7b76908b3ea490bb553cf6791985868d2bd755f264c91076c400ab3e92b430",
+        "judgedContentFingerprint": "8fa3d96bbf0b623672ea4993d6e659b78ebb10a388f78be17d9626239c3f9e1c",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "8e93f88fadc61ccd42924ec50b7adad46d7f12588f1d78e15241163b57e92d56",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tr-e1514238fd45-a4fc9bb2.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": null,
+          "matchesRegistered": true
+        },
+        "priorType": {
+          "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+          "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}
