@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "OPEN",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": [
+        "2",
+        "5"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "14"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "2"
+      ],
+      "B": [
+        "4",
+        "14"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "u",
+          "slope": "3",
+          "intercept": "5",
+          "label": "y=3x+5"
+        }
+      ]
+    }
+  },
+  "caption": "그림의 아래 직선은 y=3x+2, 위 직선은 y=3x+5이고 x>0에서 f(x)는 두 직선 사이에 있다. 각 변을 x로 나누면 3+2/x < f(x)/x < 3+5/x이다. x→∞일 때 양 끝의 3+2/x와 3+5/x가 모두 3에 수렴하므로 f(x)/x도 3에 수렴한다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$가 모든 양의 실수 $x$에 대하여 $3x+2\\lt f(x)\\lt3x+5$를 만족시킬 때, 극한값 $\\lim_{x\\to\\infty}\\dfrac{f(x)}x$를 구하면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x>0에서 f(x)가 두 평행한 직선 y=3x+2와 y=3x+5 사이에 끼어 있음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x>0에서 f(x)가 두 평행한 직선 y=3x+2와 y=3x+5 사이에 있다."
+  ],
+  "accessibilityDescription": "기울기가 3으로 같은 두 평행한 직선과 그 사이의 띠 모양 영역을 나타낸 그래프이다."
+}

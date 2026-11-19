@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-3"
+        ]
+      },
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "2"
+      ],
+      "V": [
+        "2",
+        "1"
+      ]
+    }
+  },
+  "caption": "x→1에서 극한이 존재하려면 좌극한과 우극한이 같아야 한다. 우극한은 1-4+5=2이고 좌극한은 -3+k이므로 k=5이다. 그림은 k=5일 때 직선 y=-3x+5와 포물선 y=x²-4x+5가 P(1,2)에서 이어지는 모습이며 포물선의 꼭짓점은 V(2,1)이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}x^2-4x+5&(x\\ge1)\\\\-3x+k&(x\\lt1)\\end{cases}$에서 극한값 $\\lim_{x\\to1}f(x)$가 존재할 때, 상수 $k$의 값을 구하면? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k=5일 때 x=1에서 좌극한과 우극한이 모두 2로 만나는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=5일 때 직선 조각과 포물선 조각이 P(1,2)에서 이어져 좌극한과 우극한이 모두 2이다."
+  ],
+  "accessibilityDescription": "x=1에서 이어지는 직선 조각과 아래로 볼록한 포물선 조각으로 된 함수의 그래프이며 이어지는 점 P와 포물선의 꼭짓점 V가 표시되어 있다."
+}

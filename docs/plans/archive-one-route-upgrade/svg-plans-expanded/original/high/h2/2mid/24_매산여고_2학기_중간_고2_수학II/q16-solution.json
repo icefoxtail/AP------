@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -4,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "3/2",
+        "y": "-9/4"
+      },
+      {
+        "id": "P",
+        "x": "4",
+        "y": "4"
+      }
+    ],
+    "exactCoordinates": {
+      "O": [
+        "0",
+        "0"
+      ],
+      "A": [
+        "3",
+        "0"
+      ],
+      "V": [
+        "3/2",
+        "-9/4"
+      ],
+      "P": [
+        "4",
+        "4"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "g1",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=g′(x)"
+        }
+      ]
+    }
+  },
+  "caption": "예: 포물선은 y=f′(x)=x²-3x이고 직선은 y=g′(x)=x이며 두 그래프는 x=0과 x=4에서 만난다(h′=f′-g′). ㄱ은 0<x<3에서 f′<0이라 f가 감소하므로 f(0)>f(3)이고 참이다. ㄴ은 h′이 x=0에서 양에서 음으로 바뀌어 극대이므로 거짓이다. ㄷ은 3<x<4에서 포물선이 직선 아래라 h′<0이어서 h(3)>h(4)이므로 거짓이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)$의 도함수 $y=f'(x)$의 그래프와 이차함수 $g(x)$의 도함수 $y=g'(x)$의 그래프가 그림과 같다. 함수 $h(x)$를 $h(x)=f(x)-g(x)$라 할 때, 보기에서 옳은 것만을 있는 대로 고르면? [4.3점]<div class=\"note-box\">ㄱ. $f(0)\\gt f(3)$<br>ㄴ. 함수 $h(x)$는 $x=0$에서 극소이다.<br>ㄷ. $h(3)\\lt h(4)$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′의 그래프(포물선)와 g′의 그래프(직선)의 위아래 관계로 h′의 부호를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 f′과 직선 g′이 x=0, 4에서 만나고 0<x<4에서 포물선이 직선 아래라 h′이 음수이다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 원점을 지나는 직선이 두 점 O와 P에서 만나는 그래프이며 포물선과 x축의 교점 A와 꼭짓점 V가 표시되어 있다."
+}
