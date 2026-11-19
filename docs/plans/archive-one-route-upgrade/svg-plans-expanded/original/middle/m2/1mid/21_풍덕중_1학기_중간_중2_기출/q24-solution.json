@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "24"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "13"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ic",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "I"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "IP",
+      "refs": [
+        "I",
+        "P"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc",
+    "ic"
+  ],
+  "displayLines": [],
+  "caption": "빗변 AB=√(10²+24²)=√676=26이다. 외접원의 중심 O는 빗변의 중점이므로 R=26/2=13이고 M=πR²=169π이다. 내접원의 반지름은 r=(10+24−26)/2=4이고 N=πr²=16π이다. 따라서 M−N=169π−16π=153π이다.",
+  "accessibilityDescription": "꼭짓점 C에서 직각인 직각삼각형 ABC와 빗변의 중점 O를 중심으로 하는 외접원, 세 변에 접하는 내접원이 있고 BC 10, CA 24, 외접원 반지름 R=13, 내접원 반지름 r=4가 적혀 있다.",
+  "newVisualInformation": [
+    "빗변 26에서 외접원 반지름 R=13과 내접원 반지름 r=(10+24−26)/2=4를 구해 M−N=153π"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "직각삼각형 ABC ($BC=10, CA=24$)에서 외접원 넓이 $M$, 내접원 넓이 $N$일 때 $M-N$? [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AO",
+        "OB"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAO",
+        "ownerSegment": "AO",
+        "text": "R=13",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vOB",
+        "ownerSegment": "OB",
+        "text": "13",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "24",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vIP",
+        "ownerSegment": "IP",
+        "text": "r=4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

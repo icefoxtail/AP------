@@ -1,0 +1,77 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      },
+      "height": 6,
+      "names": "......"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "3x"
+    },
+    {
+      "edge": [
+        "#b0",
+        "#b2"
+      ],
+      "label": "2y/3"
+    },
+    {
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "h"
+    }
+  ],
+  "highlights": [
+    {
+      "face": "bottom"
+    }
+  ],
+  "solidCaption": {
+    "math": "V=60x²y",
+    "text": "삼각기둥"
+  },
+  "caption": "예: 밑면(색칠)이 밑변 3x, 높이 2y/3인 직각삼각형이고 높이가 h, 부피가 60x²y인 삼각기둥이다(길이의 비율은 모양만 나타낸 것이다). 밑넓이는 (1/2)×3x×(2y/3)=xy이다. 부피 xy×h=60x²y에서 h=60x이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면이 밑변 $3x$, 높이 $\\frac{2}{3}y$인 직각삼각형인 삼각기둥 부피가 $60x^2y$일 때 높이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "밑넓이 xy, 부피 xy×h=60x²y",
+      "mappedTo": "solidCaption"
+    }
+  ],
+  "newVisualInformation": [
+    "색칠한 직각삼각형 밑면의 두 변 3x, 2y/3으로 밑넓이 xy를 구하고 높이 h=60x를 얻는 관계"
+  ],
+  "accessibilityDescription": "밑면이 직각삼각형인 삼각기둥이고 밑면이 색칠되어 있으며 밑면의 두 직각변과 높이에 길이 문자가 적혀 있다."
+}

@@ -1,0 +1,248 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-2",
+                "denominator": "1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "-2",
+                "denominator": "1"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "5"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "circ",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "circ"
+  ],
+  "displayLines": [],
+  "caption": "예: 반지름이 같은 원 위에 세 꼭짓점이 있는 삼각형으로 그렸다. 외심 O에서 세 꼭짓점까지의 거리가 같아 OA=OC=r이다. △AOC의 둘레가 20이고 AC=8이므로 2r+8=20, 2r=12에서 r=6이다. 따라서 반지름은 6cm이고 답은 ⑤이다.",
+  "accessibilityDescription": "삼각형 ABC와 세 꼭짓점을 지나는 원이 있고 외심 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 이 선분에 r, 변 CA에 8이 적혀 있다.",
+  "newVisualInformation": [
+    "외심에서 세 꼭짓점까지 거리 r이 같아 삼각형 AOC의 둘레 2r+8=20에서 r=6"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $O$가 $\\triangle ABC$의 외심이고 $\\triangle AOC$ 둘레가 $20, \\overline{AC}=8$일 때 반지름은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "OA",
+        "OB",
+        "OC"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vOA",
+        "ownerSegment": "OA",
+        "text": "r",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vOC",
+        "ownerSegment": "OC",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vOB",
+        "ownerSegment": "OB",
+        "text": "r",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "8",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

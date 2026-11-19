@@ -1,0 +1,200 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "15"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "D",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DC",
+      "refs": [
+        "D",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB=AC인 이등변삼각형에서 꼭지각 A에서 밑변에 내린 수선 AD는 밑변을 수직이등분한다. 따라서 BD=(1/2)BC=(1/2)×16=8cm이다. 답은 ④이다.",
+  "accessibilityDescription": "이등변삼각형 ABC의 꼭짓점 A에서 밑변 BC로 수선 AD가 내려져 있고 D에 직각 표시가 있으며 BD와 DC에 같은 눈금이 있다. 밑변 BC 아래에 16이 적혀 있고 BD에 8이 적혀 있다.",
+  "newVisualInformation": [
+    "꼭지각에서 내린 수선이 밑변을 수직이등분하여 BD=16÷2=8"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB}=\\overline{AC}, \\overline{AD} \\perp \\overline{BC}$인 $\\triangle ABC$에서 $\\overline{BC}=16cm$일 때 $\\overline{BD}$는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "CA"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "BD",
+        "DC"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vBD",
+        "ownerSegment": "BD",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "16",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 16
+      }
+    ]
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bw",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "W"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cx",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "X"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bw",
+          "cx"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "O",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "O",
+          "C",
+          "B"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: ∠A=60°, ∠B=70°, ∠C=50°인 삼각형으로 그렸다. I가 △OBC의 내심이므로 ∠BIC=90°+(1/2)∠BOC이다. 150°=90°+(1/2)∠BOC에서 ∠BOC=120°이다. O가 △ABC의 외심이므로 ∠BOC=2∠A이고 2∠A=120°에서 ∠A=60°이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "삼각형 ABC의 안쪽에 외심 O가 있고 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 삼각형 OBC의 내심 I에서 B와 C로 선분이 그어져 있다. 꼭짓점 A의 각 60°, 각 BOC 120°, 각 BIC 150°가 표시되어 있다.",
+  "newVisualInformation": [
+    "내심 I의 각 150°=90°+∠BOC/2에서 ∠BOC=120°, 외심의 중심각 ∠BOC=2∠A에서 ∠A=60°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$O$는 $\\triangle ABC$의 외심, $I$는 $\\triangle OBC$의 내심이고 $\\angle A<90^\\circ$이다. $\\angle BIC=150^\\circ$일 때 $\\angle A$는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "OA",
+        "OB",
+        "OC"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "∠A=60°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "O",
+          "C"
+        ],
+        "label": "120°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "label": "150°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

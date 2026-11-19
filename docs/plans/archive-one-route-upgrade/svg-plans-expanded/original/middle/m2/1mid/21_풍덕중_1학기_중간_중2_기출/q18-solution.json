@@ -1,0 +1,299 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BI",
+      "refs": [
+        "B",
+        "I"
+      ]
+    },
+    {
+      "id": "CI",
+      "refs": [
+        "C",
+        "I"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: ∠A=50°, ∠B=70°, ∠C=60°인 삼각형으로 그렸다. 내심 I에서 BI, CI는 ∠B, ∠C의 이등분선이므로 ∠IBC=β, ∠ICB=γ이다. ∠BIC=180°−(β+γ)=180°−(1/2)(180°−∠A)=90°+(1/2)∠A이다. ∠A=50°이므로 ∠BIC=90°+25°=115°이고 답은 ④이다.",
+  "accessibilityDescription": "삼각형 ABC의 내부에 내심 I가 있고 I에서 B와 C로 선분이 그어져 있으며 꼭짓점 A의 각 50°, 각 BIC 115°, 꼭짓점 B와 C에서 이등분된 각이 같은 표시로 나타나 있다.",
+  "newVisualInformation": [
+    "내심에서 B, C로 이은 각이 90°+∠A/2=115°가 되는 관계"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $I$가 $\\triangle ABC$의 내심일 때, $\\angle BIC$의 크기는? (단, $\\angle A=50^\\circ$ 기준) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "I",
+          "C"
+        ],
+        "label": "115°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "∠A=50°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "I"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "I",
+          "B",
+          "C"
+        ],
+        "label": "β",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "A",
+          "C",
+          "I"
+        ],
+        "label": "γ",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "a5",
+        "refs": [
+          "I",
+          "C",
+          "B"
+        ],
+        "label": "γ",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      }
+    ]
+  }
+}

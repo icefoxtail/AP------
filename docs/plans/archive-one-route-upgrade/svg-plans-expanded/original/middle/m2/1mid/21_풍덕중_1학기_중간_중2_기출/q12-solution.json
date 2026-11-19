@@ -1,0 +1,221 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "B",
+    "C",
+    "A"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB=AC이므로 두 밑각이 같아 ∠B=∠C이다. ∠B+∠C=180°−100°=80°이므로 ∠B=40°이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "꼭지각 A가 100°인 이등변삼각형 ABC이며 변 AB와 CA에 같은 길이 눈금이 있고 두 밑각 B와 C에 같은 표시와 40°가 적혀 있다.",
+  "newVisualInformation": [
+    "꼭지각 100°에서 두 밑각의 합 80°를 반으로 나눠 ∠B=40°를 얻는 과정"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 ABC에서 $\\angle A=100^\\circ$일 때 $\\angle B$는? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "CA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "100°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "∠B=40°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "label": "40°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "9"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "피타고라스 정리에서 AC²=AB²−BC²=15²−9²=144이므로 AC=12이다. 따라서 △ABC의 넓이는 (1/2)×BC×AC=(1/2)×9×12=54이다. 답은 ③이다.",
+  "accessibilityDescription": "꼭짓점 C에서 직각인 직각삼각형 ABC이며 빗변 AB에 15, 변 BC에 9, 변 CA에 12가 적혀 있고 삼각형 안이 칠해져 있다.",
+  "newVisualInformation": [
+    "빗변 15와 한 변 9에서 나머지 변 12를 구해 밑변 9, 높이 12의 넓이 54를 확인"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\angle C=90^\\circ$인 직각삼각형 $ABC$에서 $\\overline{AB}=15$, $\\overline{BC}=9$일 때, $\\triangle ABC$의 넓이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "15",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "9",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCA",
+        "ownerSegment": "CA",
+        "text": "12",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "54",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

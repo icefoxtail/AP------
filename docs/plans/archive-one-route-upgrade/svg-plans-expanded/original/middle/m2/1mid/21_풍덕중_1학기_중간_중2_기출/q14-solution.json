@@ -1,0 +1,308 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "71"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "71"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bx",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "args": {
+          "mode": "EXTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bx"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "14"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "∠A=38°이고 AB=AC이므로 ∠B=∠C=(180°−38°)/2=71°이다. ∠B의 이등분선은 BC와 35.5°를 이루고, BC를 연장한 점 E에 대해 ∠C의 외각 ACE=180°−71°=109°이므로 그 이등분선은 CE와 54.5°를 이룬다. 삼각형 DBC에서 외각의 성질로 ∠BDC=54.5°−35.5°=19°이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "이등변삼각형 ABC에서 변 BC를 C쪽으로 연장한 점 E가 있고 B에서 나온 각의 이등분선과 C의 외각의 이등분선이 점 D에서 만나며 꼭지각 38°, 두 이등분선의 각 35.5°와 54.5°, 각 BDC가 표시되어 있다.",
+  "newVisualInformation": [
+    "내각 이등분선 35.5°와 외각 이등분선 54.5°의 차로 ∠BDC=19°를 얻는 과정"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\overline{AB}=\\overline{AC}, \\angle A=38^\\circ$일 때, $\\angle B$ 이등분선과 $\\angle C$ 외각 이등분선 교점 $D$의 각 $\\angle BDC$는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "CA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "38°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "label": "35.5°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "D",
+          "C",
+          "E"
+        ],
+        "label": "54.5°",
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "D",
+          "C"
+        ],
+        "label": "∠BDC=19°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

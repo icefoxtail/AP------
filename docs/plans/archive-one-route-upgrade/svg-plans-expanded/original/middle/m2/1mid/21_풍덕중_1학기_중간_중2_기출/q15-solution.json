@@ -1,0 +1,364 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cb",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pc",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "C",
+          "cb"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lw",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "W"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pc",
+          "lw"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "fe",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "F",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "pf",
+        "op": "PERPENDICULAR_THROUGH",
+        "inputs": [
+          "F",
+          "fe"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "W2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "E",
+          "F"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "40"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lw2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "W2"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "pf",
+          "lw2"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "두 삼각형은 직각삼각형이고 빗변 AB=DE, 한 변 BC=EF이므로 RHS 합동이다. 따라서 대응각의 크기가 같아 ∠E=∠B=40°이다. 직각삼각형 DEF에서 ∠D=180°−90°−40°=50°이므로 x=50이고 답은 ③이다.",
+  "accessibilityDescription": "합동인 두 직각삼각형 ABC와 DEF가 나란히 있고 C와 F에 직각 표시가 있으며 빗변 AB와 DE, 한 변 BC와 EF에 같은 눈금이 있다. B와 E의 각 40°, D의 각 x=50°가 표시되어 있다.",
+  "newVisualInformation": [
+    "빗변과 한 변이 같은 두 직각삼각형이 RHS 합동이어서 ∠E=∠B=40°이고 ∠D=50°가 되는 대응"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 직각삼각형 $ABC$, $DEF$에서 $\\angle C=\\angle F=90^\\circ$, $\\overline{AB}=\\overline{DE}$, $\\overline{BC}=\\overline{EF}$이다. $\\angle B=40^\\circ$일 때 $\\angle D=x^\\circ$라 하면 $x$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "D",
+        "F",
+        "E"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "DE"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "BC",
+        "EF"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "40°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "E",
+          "F"
+        ],
+        "label": "40°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "E",
+          "D",
+          "F"
+        ],
+        "label": "x=50°",
+        "style": "ARC"
+      }
+    ]
+  }
+}
