@@ -1,0 +1,56 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "e05d722d1b5eaae1",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "첫째 식에 10 을 곱하면 4x + 3y = 36 이다.",
+    "둘째 식에 12를 곱하면 3x - 4y = 2 이다.",
+    "연립하여 풀면 x = 6, y = 4 이다.",
+    "따라서 a = 6, b = 4 이므로 2a - b = 12 - 4 = 8 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_DECIMAL_COEFFICIENTS",
+  "templateKey": "TPL_M2_SOLVE_DECIMAL_SYSTEM_AND_LINEAR_COMBINATION",
+  "newKeyProposal": null,
+  "typeReason": "소수 계수 식에 10 을 곱하여 정수 계수로 변환해 푸는 연립방정식 유형이다.",
+  "rpmRecordId": "M2-RPM-035",
+  "rpmReason": "양변에 10 과 12를 곱하여 계수를 간단히 한 뒤 연립한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "양변에 10 을 곱하는 등 두 식의 분모와 소수를 정리하고 연립한다.",
+  "how": "첫째 식에 10을 곱해 정리한 후 가감법으로 a=6, b=4를 구해 8을 얻었다.",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 0.4x + 0.3(y - 2) = 3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "해를 $(a, b)$라고 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "을 ㉠에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
