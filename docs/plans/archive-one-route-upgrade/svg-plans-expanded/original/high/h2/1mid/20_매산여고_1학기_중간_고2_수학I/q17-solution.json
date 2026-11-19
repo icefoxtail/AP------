@@ -297,20 +297,6 @@
   "planeMarks": {
     "angles": [
       {
-        "id": "a1",
-        "refs": [
-          "X",
-          "O",
-          "B"
-        ],
-        "value": 30,
-        "label": "30°",
-        "labelKind": "MATH",
-        "arcs": 1,
-        "ring": 1,
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
         "id": "a2",
         "refs": [
           "X",
@@ -321,7 +307,7 @@
         "label": "150°",
         "labelKind": "MATH",
         "arcs": 1,
-        "ring": 2,
+        "ring": 1,
         "factRole": "DERIVED_INTERMEDIATE"
       },
       {
@@ -335,29 +321,16 @@
         "label": "210°",
         "labelKind": "MATH",
         "arcs": 1,
-        "ring": 3,
-        "factRole": "DERIVED_INTERMEDIATE"
-      },
-      {
-        "id": "a4",
-        "refs": [
-          "X",
-          "O",
-          "E"
-        ],
-        "value": 330,
-        "label": "330°",
-        "labelKind": "MATH",
-        "arcs": 1,
-        "ring": 4,
-        "factRole": "DERIVED_INTERMEDIATE"
+        "ring": 2,
+        "factRole": "DERIVED_INTERMEDIATE",
+        "side": "OUTER"
       }
     ]
   },
   "caption": "θ의 동경과 5θ의 동경이 y축에 대하여 대칭이면 5θ≡π−θ (mod 2π)이므로 θ=(2k+1)π/6이다. π/2<θ<3π/2에서 θ=5π/6(150°, 동경 OA)과 7π/6(210°, 동경 OD)이다. θ=5π/6이면 5θ=25π/6의 동경은 30°(OB), θ=7π/6이면 5θ=35π/6의 동경은 330°(OE)이고 각 쌍은 y축에 대칭이다. 합은 5π/6+7π/6=2π이므로 답은 ②이다.",
-  "accessibilityDescription": "반지름 1인 단위원 위에 원점에서 네 동경 OA, OB, OD, OE가 있다. OA와 OB는 위쪽에서, OD와 OE는 아래쪽에서 y축을 사이에 두고 좌우 대칭이며 각 30°, 150°, 210°, 330°가 표시되어 있다.",
+  "accessibilityDescription": "반지름 1인 단위원 위에 원점에서 네 동경 OA, OB, OD, OE가 있다. OA와 OB는 위쪽에서, OD와 OE는 아래쪽에서 y축을 사이에 두고 좌우 대칭이며 θ에 해당하는 150°와 210°가 각으로 표시되어 있다.",
   "newVisualInformation": [
-    "θ=150°와 5θ의 동경 30°, θ=210°와 5θ의 동경 330°가 y축에 대칭인 두 쌍을 단위원에 보여 θ의 값 5π/6, 7π/6을 읽게 한다."
+    "θ=150°(5θ의 동경 30°), θ=210°(5θ의 동경 330°)가 y축에 대칭인 두 쌍을 단위원에 보여 θ의 값 5π/6, 7π/6을 읽게 한다."
   ],
   "sourceConditions": [
     {

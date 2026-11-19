@@ -67,21 +67,21 @@
       },
       {
         "id": "P",
-        "op": "POLAR_POINT",
-        "inputs": [
-          "A",
-          "C"
-        ],
+        "op": "SOURCE_POINT",
+        "inputs": [],
         "args": {
-          "length": {
-            "kind": "integer",
-            "value": "3"
-          },
-          "angleDeg": {
-            "kind": "integer",
-            "value": "0"
-          },
-          "turn": "CCW"
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "12",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "6",
+              "denominator": "5"
+            }
+          ]
         },
         "outputType": "POINT",
         "factRole": "GIVEN"

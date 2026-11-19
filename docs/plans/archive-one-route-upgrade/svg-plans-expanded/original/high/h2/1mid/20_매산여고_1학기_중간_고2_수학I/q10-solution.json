@@ -1,31 +1,26 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "exponential-affine-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "exponential-affine",
+    "base": "3",
+    "coefficients": [
+      "1",
+      "1",
+      "-1"
+    ],
+    "shiftX": "3",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      4
+    ],
     "viewport": [
       -2,
       5,
       -3,
       4
-    ],
-    "curves": [
-      {
-        "id": "f",
-        "kind": "EXPONENTIAL",
-        "base": "3",
-        "shiftX": "3",
-        "coefficients": [
-          "1",
-          "1",
-          "-1"
-        ],
-        "domain": [
-          "-2",
-          "4"
-        ],
-        "color": "BLUE",
-        "label": "f"
-      }
     ],
     "axisTickValues": {
       "x": [
@@ -39,8 +34,7 @@
       "points": [
         {
           "id": "P",
-          "x": "3",
-          "y": "0",
+          "curveX": "3",
           "coordinates": true
         }
       ],

@@ -1,31 +1,26 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "exponential-affine-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "exponential-affine",
+    "base": "2",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "shiftX": "3",
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      6.5
+    ],
     "viewport": [
       -1,
       8,
       -1,
       11
-    ],
-    "curves": [
-      {
-        "id": "f",
-        "kind": "EXPONENTIAL",
-        "base": "2",
-        "shiftX": "3",
-        "coefficients": [
-          "1",
-          "1",
-          "0"
-        ],
-        "domain": [
-          "0",
-          "13/2"
-        ],
-        "color": "BLUE",
-        "label": "f"
-      }
     ],
     "axisTickValues": {
       "x": [
@@ -45,41 +40,31 @@
       "points": [
         {
           "id": "A",
-          "x": "1",
-          "y": "1/4",
+          "curveX": "1",
           "coordinates": true
         },
         {
           "id": "B",
-          "x": "2",
-          "y": "1/2",
+          "curveX": "2",
           "coordinates": true
         },
         {
           "id": "C",
-          "x": "3",
-          "y": "1",
+          "curveX": "3",
           "coordinates": true
         },
         {
           "id": "D",
-          "x": "4",
-          "y": "2",
+          "curveX": "4",
           "coordinates": true
-        },
-        {
-          "id": "E",
-          "x": "4585/1000",
-          "y": "3",
-          "coordinates": false
         }
       ]
     }
   },
-  "caption": "예: n=3인 f(x)=2ˣ⁻³의 그림이다. 점 A(1, 1/4), B(2, 1/2)는 x좌표만 자연수이고 이런 점은 x=1, …, n−1의 n−1개이다. C(3, 1), D(4, 2)는 x, y좌표가 모두 자연수라 조건에 맞지 않는다. y좌표가 자연수인 점은 y=1부터 99까지 99개이고 그중 y=1, 2, 4, 8, 16, 32, 64일 때는 x도 자연수여서 제외하면 92개이다(점 E는 y=3일 때 x좌표가 자연수가 아니다). 전체는 n+91개이고 n+91≥110에서 n≥19이므로 최솟값은 19이다. 따라서 답은 ④이다.",
-  "accessibilityDescription": "오른쪽 위로 올라가는 지수 곡선 f 위에 점 A, B, C, D, E가 있다. 왼쪽의 A, B는 높이가 1보다 작고 C, D는 x좌표와 y좌표가 모두 정수이며 E는 높이 3에 있다.",
+  "caption": "예: n=3인 f(x)=2ˣ⁻³의 그림이다. 점 A(1, 1/4), B(2, 1/2)는 x좌표만 자연수이고 이런 점은 x=1, …, n−1의 n−1개이다. C(3, 1), D(4, 2)는 x, y좌표가 모두 자연수라 조건에 맞지 않는다. y좌표가 자연수인 점은 y=1부터 99까지 99개이고 그중 y=1, 2, 4, 8, 16, 32, 64일 때는 x도 자연수여서 제외하면 92개이다(예를 들어 y=3일 때 x좌표는 자연수가 아니다). 전체는 n+91개이고 n+91≥110에서 n≥19이므로 최솟값은 19이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 지수 곡선 f 위에 점 A, B, C, D가 있다. 왼쪽의 A, B는 높이가 1보다 작고 C, D는 x좌표와 y좌표가 모두 정수이다.",
   "newVisualInformation": [
-    "x좌표만 자연수인 점 A, B, 둘 다 자연수인 점 C, D, y좌표만 자연수인 점 E를 구분해 보여 점의 개수 n+91을 읽게 한다."
+    "x좌표만 자연수인 점 A, B와 둘 다 자연수인 점 C, D를 구분해 보여 점의 개수 n+91을 읽게 한다."
   ],
   "sourceConditions": [
     {

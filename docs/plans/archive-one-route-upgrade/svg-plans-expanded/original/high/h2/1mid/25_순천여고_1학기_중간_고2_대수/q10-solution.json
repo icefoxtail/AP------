@@ -1,31 +1,26 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "logarithmic-affine-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "logarithmic-affine",
+    "base": "10",
+    "coefficients": [
+      "2",
+      "1",
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_LOG_AFFINE"
+    },
+    "domain": [
+      -0.9,
+      9
+    ],
     "viewport": [
       -2,
       10,
       -4,
       4
-    ],
-    "curves": [
-      {
-        "id": "f",
-        "kind": "LOGARITHMIC",
-        "base": "10",
-        "coefficients": [
-          "2",
-          "1",
-          "1",
-          "1"
-        ],
-        "domain": [
-          "-99/100",
-          "9"
-        ],
-        "color": "BLUE",
-        "label": "f"
-      }
     ],
     "axisTickValues": {
       "x": [
@@ -39,8 +34,7 @@
       "points": [
         {
           "id": "P",
-          "x": "0",
-          "y": "1",
+          "curveX": "0",
           "coordinates": true
         }
       ],
