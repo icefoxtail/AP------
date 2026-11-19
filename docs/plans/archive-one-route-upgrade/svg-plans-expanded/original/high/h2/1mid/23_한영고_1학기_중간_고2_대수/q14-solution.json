@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-18",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "27"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      27
+    ],
+    "viewport": [
+      0,
+      28,
+      -100,
+      260
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-17"
+      },
+      {
+        "id": "V",
+        "x": "9",
+        "y": "-81"
+      },
+      {
+        "id": "B",
+        "x": "27",
+        "y": "243"
+      }
+    ]
+  },
+  "caption": "3의 (log₅x)제곱을 t로 두면 1≤x≤125에서 1≤t≤27이고 y=t²−18t=(t−9)²−81이다. 그래프는 꼭짓점 V(9, −81)에서 최소이고 구간 끝 B(27, 243)에서 최대이다(왼쪽 끝은 A(1, −17)). 따라서 M=243, m=−81이고 √(M−m)=√324=18이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "1에서 27까지의 구간에서 아래로 볼록한 포물선이 그려져 있고, 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "치환한 이차식의 구간 [1, 27]에서 최저점 V(9, −81)과 최고점 B(27, 243)를 보여 M−m=324를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$1 \\le x \\le 125$인 함수 $y = 3^{\\log_5 x} x^{\\log_5 3} - 2 \\cdot 3^{\\log_5 25x}$의 최댓값 $M$, 최솟값 $m$에 대하여 $\\sqrt{M-m}$의 값은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

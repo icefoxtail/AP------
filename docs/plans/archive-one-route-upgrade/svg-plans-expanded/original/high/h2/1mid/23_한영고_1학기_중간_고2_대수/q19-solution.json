@@ -1,0 +1,58 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "ALL_REALS_WITH_TAN_POLES"
+    },
+    "domain": [
+      0,
+      6.28
+    ],
+    "viewport": [
+      -0.3,
+      6.6,
+      -4,
+      4
+    ],
+    "referenceLines": [
+      {
+        "id": "m",
+        "y": "-1",
+        "intersectionCount": 2
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/2",
+        "3/4",
+        "3/2",
+        "7/4",
+        "2"
+      ],
+      "y": [
+        "-1"
+      ]
+    }
+  },
+  "caption": "y=tanx의 그래프에서 점근선은 x=π/2, 3π/2이다. 직선 y=−1과 만나는 점은 x=3π/4, 7π/4이다. 그래프가 직선 y=−1 이상인 구간은 0≤x<π/2, 3π/4≤x<3π/2, 7π/4≤x≤2π이다. 따라서 해는 이 세 구간이다.",
+  "accessibilityDescription": "0에서 2π까지 세 가지로 나뉜 탄젠트 곡선과 가로선 y=−1이 두 점에서 만나고, 두 점근선 x=π/2, 3π/2와 교점의 x좌표가 가로축 눈금으로 표시되어 있다.",
+  "newVisualInformation": [
+    "탄젠트 곡선과 y=−1의 교점 3π/4, 7π/4, 점근선 π/2, 3π/2를 보여 tanx≥−1인 세 구간을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $0 \\le x \\le 2\\pi$ 일 때, 부등식 $\\tan x \\ge -1$ 의 해를 그래프를 활용하여 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "S",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "neg",
+                  "args": [
+                    {
+                      "kind": "expression",
+                      "op": "sqrt",
+                      "args": [
+                        {
+                          "kind": "integer",
+                          "value": "3"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "Q",
+    "S"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    },
+    {
+      "id": "sOS",
+      "refs": [
+        "O",
+        "S"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [
+    "P",
+    "Q",
+    "S"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "labelDirections": {
+    "P": "NE",
+    "Q": "NW",
+    "S": "SE"
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 60,
+        "label": "π/3",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 1,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "X",
+          "O",
+          "Q"
+        ],
+        "value": 180,
+        "label": "π",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 2,
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "X",
+          "O",
+          "S"
+        ],
+        "value": 300,
+        "label": "5π/3",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 3,
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "tanx−2sinx=sinx(1/cosx−2)=0에서 sinx=0 또는 cosx=1/2이다. 0<x≤2π에서 sinx=0이면 x=π, 2π이고 cosx=1/2이면 x=π/3, 5π/3이다. 그림은 단위원에서 동경 OP(π/3), OQ(π), OS(5π/3)를 나타낸 것이고 x=2π는 x축의 양의 방향이다. 해의 합은 π+2π+π/3+5π/3=5π이다. 따라서 답은 5π이다.",
+  "accessibilityDescription": "반지름 1인 단위원 위에 점 P, Q, S가 있다. P는 위쪽 오른쪽, Q는 왼쪽 끝, S는 아래쪽 오른쪽에 있고 각 π/3, π, 5π/3와 세 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "단위원에서 해 π/3, π, 5π/3의 동경과 좌표를 보여 sinx=0 또는 cosx=1/2인 해를 빠짐없이 찾게 한다. 2π는 x축의 양의 방향이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 2] $0 < x \\le 2\\pi$ 일 때, 방정식 $\\tan x - 2\\sin x = 0$ 의 모든 해의 합은? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
