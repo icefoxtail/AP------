@@ -16,6 +16,7 @@ const navigation = require('../archive/archive2-navigation.js');
 const Tree = require('../archive/archive2-unit-tree.js');
 const Toc = require('../archive/rpm-middle-toc.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { readWorkspace, loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -391,12 +392,10 @@ function harness(data, { quick = true } = {}) {
     const popup = { document: { body: {} }, location: { replace: href => opened.push(href) }, close() { popup.closed = true; } };
     return popup;
   };
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     globalThis.workspaceTest = {state, render, renderQuick, quickState, routeUrl, readUrl, openQuickAssessment,
       balancedQuickSelection, setQuickPoolCache: cache => { quickPoolCache = cache; }};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.useMode = 'general';
@@ -682,7 +681,7 @@ test('the quick products have one navigation tab that stays active on all four v
   assert.match(markup, /data-view="five-minute" data-nav-key="quick"/);
   assert.match(navigation.markup('unit'), /href="workspace.html\?view=five-minute"/);
   assert.equal((markup.match(/빠른 평가/g) || []).length, 1, 'one PC menu entry (the phone cell is the short 빠른평가)');
-  assert.match(read('archive2-workspace.js'), /class="phone-quick-link" data-view="five-minute"/, '만들기 screen links to 빠른 평가');
+  assert.match(readWorkspace(), /class="phone-quick-link" data-view="five-minute"/, '만들기 screen links to 빠른 평가');
   const html = read('workspace.html');
   const order = ['archive2-unified-units.js', 'archive2-quick-pools.js', 'archive2-workspace.js'].map(file => html.indexOf(file));
   assert.ok(order.every((position, i) => position > 0 && (!i || position > order[i - 1])));
@@ -697,7 +696,7 @@ test('the quick products have one navigation tab that stays active on all four v
 });
 
 test('workspace has no leftover per-curriculum quick course options', () => {
-  const source = read('archive2-workspace.js');
+  const source = readWorkspace();
   assert.doesNotMatch(source, /quickAssessmentUnits|renderFiveMinute|openFiveMinuteUnit|five-minute-course|five-minute-grade/);
   assert.doesNotMatch(source, /\$\{unit\.courseKey\}|curriculumKey\}`\)\.join|· \$\{unit\.curriculumKey\}/);
 });

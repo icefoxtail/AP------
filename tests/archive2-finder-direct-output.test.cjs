@@ -1,8 +1,9 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const { test } = require("node:test");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
-const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
+const workspace = readWorkspace();
 
 test("Archive2 Finder exposes one-click exam, solution, and answer outputs beside separate issue/select actions", () => {
   // Finder and home rows are drawn by one function (examRowMarkup); renderFind only passes rows to it.

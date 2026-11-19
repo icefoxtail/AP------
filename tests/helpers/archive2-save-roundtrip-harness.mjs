@@ -24,6 +24,7 @@ export const { catalog } = require("./archive2-scope-harness.cjs");
 const BASE = "https://archive.test/archive/";
 const API_BASE = "https://archive.test/api";
 const readArchive = (file) => fs.readFileSync(path.join(root, "archive", file), "utf8");
+const { loadWorkspace } = require("./archive2-workspace-source.cjs");
 
 const MIME = { ".svg": "image/svg+xml", ".png": "image/png", ".json": "application/json", ".js": "application/javascript" };
 const mimeOf = (file) => MIME[path.extname(file).toLowerCase()] || "image/jpeg";
@@ -187,13 +188,10 @@ export function createWorkspace(workerHandle) {
   ctx.window = ctx;
   ctx.APMATH_API_BASE = API_BASE;
   storage.set("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
-  const source = readArchive("archive2-workspace.js");
-  const startup = source.lastIndexOf("  (async () => {");
-  if (startup < 0) throw new Error("archive2-workspace.js boot block not found");
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     globalThis.ws = { state, scopeOptions, request, review, prepare, generate, savePapers, openSavedPaperRevision };
-  })();`, ctx);
+  `);
   const ws = ctx.ws;
   Object.assign(ws.state, {
     catalog, byUid: new Map(catalog.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r])),

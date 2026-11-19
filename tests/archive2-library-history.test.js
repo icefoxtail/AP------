@@ -4,6 +4,7 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const LIB_PATH = require.resolve("../archive/archive2-library.js");
 const SUMMARY = "/class-exam-assignments/recent-summary";
@@ -358,7 +359,7 @@ test("refreshHistory re-reads the history of the list that is on screen", async 
 
 test("the saved-paper API client wiring: the workspace loads the pieces the rows need", () => {
   const root = path.resolve(__dirname, "..");
-  const workspace = fs.readFileSync(path.join(root, "archive/archive2-workspace.js"), "utf8");
+  const workspace = readWorkspace();
   assert.match(workspace, /window\.Archive2WorkspaceOpenAssignmentStatus = openRecentAssignmentStatus/);
   assert.match(workspace, /Archive2Library\?\.refreshHistory\?\.\(\)/);
   const library = fs.readFileSync(path.join(root, "archive/archive2-library.js"), "utf8");

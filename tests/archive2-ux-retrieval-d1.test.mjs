@@ -18,6 +18,7 @@ const core = requireRoot("../archive/archive2-core.js");
 const history = requireRoot("../archive/archive2-history.js");
 const source = requireRoot("../archive/archive2-source.js");
 const { catalog } = requireRoot("./helpers/archive2-scope-harness.cjs");
+const { readWorkspace } = requireRoot("./helpers/archive2-workspace-source.cjs");
 
 test("recent-summary D1 subject normalization matches Roman aliases and exact student reads stay scoped", async () => {
   const bundle = await build({
@@ -748,7 +749,7 @@ export default { async fetch(request, env) {
 });
 
 test("Recent workspace request carries its filter state and debounces refetches", async () => {
-  const source = fs.readFileSync(path.join(root, "archive/archive2-workspace.js"), "utf8");
+  const source = readWorkspace();
   const cardStart = source.indexOf("  function recentAssignmentMarkup() {");
   const cardEnd = source.indexOf("  function updateRecentResults()", cardStart);
   assert.ok(cardStart >= 0 && cardEnd > cardStart);
