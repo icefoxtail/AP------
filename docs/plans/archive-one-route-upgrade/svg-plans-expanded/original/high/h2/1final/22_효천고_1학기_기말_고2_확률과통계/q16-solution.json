@@ -12,22 +12,24 @@
     ],
     "elements": [
       {
-        "text": "P(A∩B)",
+        "text": "P(Acap B)",
         "in": [
           "A",
           "B"
-        ]
+        ],
+        "math": true
       },
       {
-        "text": "P(B)−P(A∩B)",
+        "text": "P(A^ccap B)",
         "in": [
           "B"
-        ]
+        ],
+        "math": true
       }
     ],
     "shade": "B∩A^c"
   },
-  "caption": "B는 A와 겹치는 부분과 A 밖의 부분으로 나뉜다. 그림에서 겹침의 확률이 P(A∩B)이고, 색칠한 A 밖의 부분이 A의 여사건과 B의 겹침이므로 그 확률은 P(B)−P(A∩B)이다. A, B가 독립이면 P(A∩B)=P(A)P(B)이므로 P(B)−P(A)P(B)=P(B){1−P(A)}=P(A의 여사건)P(B)이다. 따라서 두 사건은 독립이다. 답은 ④이다.",
+  "caption": "B는 A와 겹치는 부분과 A 밖의 부분으로 나뉜다. 그림에서 겹침의 확률이 P(A∩B)이고, 색칠한 A 밖의 부분이 A의 여사건과 B의 겹침 P(A의 여사건∩B)이므로 그 확률은 P(B)−P(A∩B)이다. A, B가 독립이면 P(A∩B)=P(A)P(B)이므로 P(B)−P(A)P(B)=P(B){1−P(A)}=P(A의 여사건)P(B)이다. 따라서 두 사건은 독립이다. 답은 ④이다.",
   "newVisualInformation": [
     "B가 A 안의 부분과 A 밖의 부분으로 나뉘어 P(B)=P(A∩B)+P(A의 여사건∩B)임이 보인다."
   ],

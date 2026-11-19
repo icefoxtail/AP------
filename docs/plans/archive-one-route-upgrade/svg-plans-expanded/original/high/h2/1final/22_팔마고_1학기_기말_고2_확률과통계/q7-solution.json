@@ -4,26 +4,25 @@
     "kind": "NORMAL_CURVE",
     "curves": [
       {
-        "id": "Z",
-        "mean": "0",
-        "sd": "1",
-        "label": "Z"
+        "id": "X",
+        "mean": "1",
+        "sd": "2",
+        "label": "X"
       }
     ],
     "ticks": [
       {
-        "x": "0",
-        "text": "1"
+        "x": "1"
       },
       {
-        "x": "2",
+        "x": "5",
         "text": "a"
       }
     ],
     "shades": [
       {
-        "from": "0",
-        "to": "2",
+        "from": "1",
+        "to": "a",
         "color": "BLUE"
       }
     ],
@@ -32,7 +31,8 @@
         "shade": 0,
         "text": "0.4772"
       }
-    ]
+    ],
+    "zAxis": true
   },
   "caption": "X는 N(1, 4)이므로 평균 1, 표준편차 2이다. P(1≤X≤a)=P(0≤Z≤(a−1)/2)=0.4772이고 표에서 P(0≤Z≤2)=0.4772이므로 (a−1)/2=2이다. 따라서 a=5이고 답은 ④이다.",
   "newVisualInformation": [
