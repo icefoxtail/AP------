@@ -1193,9 +1193,7 @@
       el.type === "checkbox" ? el.checked : el.value;
     if (el.dataset.header === "title") {
       state.title = el.value;
-      const heading = document.querySelector(".intro h1");
-      if (heading?.firstChild)
-        heading.firstChild.textContent = state.title + " ";
+      syncComposeHeading();
     }
     state.prepared = [];
     scheduleSave();
@@ -1208,6 +1206,11 @@
     if (target?.matches?.("[data-cz-output]")) state.outputSettingsOpen = Boolean(target.open);
     else if (target?.matches?.("[data-scope-group]")) state.scopeGroupOpen[target.dataset.scopeGroup] = Boolean(target.open);
   }, true);
+  // 제목을 바꾸면 화면 맨 위 제목도 바로 새 이름을 보여 준다(출력 설정의 제목 칸과 머리글 칸 모두).
+  function syncComposeHeading() {
+    const heading = document.querySelector(".intro h1");
+    if (heading?.firstChild) heading.firstChild.textContent = state.title + " ";
+  }
   function changeOutput(el) {
     if (state.busy) return;
     if (
@@ -1231,6 +1234,7 @@
         includeQr: s.includeQr,
       });
       state.title = s.header.title;
+      syncComposeHeading();
       state.prepared = [];
       scheduleSave();
       refreshComposeSaveContinuity();
