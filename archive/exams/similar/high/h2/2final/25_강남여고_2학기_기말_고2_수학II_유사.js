@@ -21,14 +21,14 @@ window.questionBank = [
     "wide": false,
     "content": "함수 $f(x)=x^2-8x+3$에 대하여 닫힌구간 $[1,7]$에서 롤의 정리를 만족하는 상수 $c$의 값은? [3점]",
     "choices": [
+      "$0$",
+      "$1$",
       "$2$",
       "$3$",
-      "$4$",
-      "$5$",
-      "$6$"
+      "$4$"
     ],
-    "answer": "③",
-    "solution": "다항함수이므로 $[1,7]$에서 연속이고 $(1,7)$에서 미분가능하다.\n양 끝의 함숫값을 구하면\n$f(1)=1-8+3=-4$\n$f(7)=49-56+3=-4$\n$f(1)=f(7)$이므로 롤의 정리에 의해 $1<c<7$이고 $f'(c)=0$인 $c$가 존재한다.\n$f'(x)=2x-8$\n$f'(c)=2c-8=0$\n$\\Rightarrow c=4$\n실제로 $1<4<7$이므로 조건을 만족한다.\n따라서 정답은 ③이다.",
+    "answer": "⑤",
+    "solution": "다항함수이므로 $[1,7]$에서 연속이고 $(1,7)$에서 미분가능하다.\n양 끝의 함숫값을 구하면\n$f(1)=1-8+3=-4$\n$f(7)=49-56+3=-4$\n$f(1)=f(7)$이므로 롤의 정리에 의해 $1<c<7$이고 $f'(c)=0$인 $c$가 존재한다.\n$f'(x)=2x-8$\n$f'(c)=2c-8=0$\n$\\Rightarrow c=4$\n실제로 $1<4<7$이므로 조건을 만족한다.\n따라서 정답은 ⑤이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -72,14 +72,14 @@ window.questionBank = [
     "wide": false,
     "content": "$\\displaystyle\\int_0^2(3x^2-2x+1)dx$의 값은? [3점]",
     "choices": [
-      "$2$",
-      "$3$",
-      "$4$",
       "$5$",
-      "$6$"
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$"
     ],
-    "answer": "⑤",
-    "solution": "정적분은 다항식의 각 항을 적분한 뒤 위끝값에서 아래끝값을 뺀다.\n$\\displaystyle\\int_0^2(3x^2-2x+1)\\,dx$\n$=\\left[x^3-x^2+x\\right]_0^2$\n$=(8-4+2)-(0-0+0)$\n$=6$\n따라서 정답은 ⑤이다.",
+    "answer": "②",
+    "solution": "정적분은 다항식의 각 항을 적분한 뒤 위끝값에서 아래끝값을 뺀다.\n$\\displaystyle\\int_0^2(3x^2-2x+1)\\,dx$\n$=\\left[x^3-x^2+x\\right]_0^2$\n$=(8-4+2)-(0-0+0)$\n$=6$\n따라서 정답은 ②이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -575,14 +575,14 @@ window.questionBank = [
     "wide": false,
     "content": "두 함수 $f(x)=x^3+3x^2-2x+11$, $g(x)=7x+a$가 있다. $x\\gt 0$인 모든 실수 $x$에 대하여 부등식 $f(x)\\ge g(x)$가 성립할 때, 실수 $a$의 최댓값은? [4점]",
     "choices": [
-      "$2$",
-      "$3$",
       "$4$",
       "$5$",
-      "$6$"
+      "$6$",
+      "$7$",
+      "$8$"
     ],
-    "answer": "⑤",
-    "solution": "$h(x)=f(x)-g(x)=x^3+3x^2-9x+11-a$라 하면 $x>0$에서 $h(x)\\ge0$이어야 한다.\n즉 $x>0$에서 $h(x)$의 최솟값이 $0$ 이상이어야 한다.\n$h'(x)=3x^2+6x-9=3(x+3)(x-1)$\n$x>0$에서 $h'(x)=0$인 것은 $x=1$뿐이다.\n$0<x<1$에서 $h'(x)<0$, $x>1$에서 $h'(x)>0$이므로 $h(x)$는 $x=1$에서 최솟값을 갖는다.\n$h(1)=1+3-9+11-a=6-a$\n$6-a\\ge0$이므로 $a\\le6$이다.\n$a=6$일 때 $h(x)=(x-1)^2(x+5)\\ge0$ $(x>0)$이므로 조건을 만족한다.\n따라서 $a$의 최댓값은 $6$이고, 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "$h(x)=f(x)-g(x)=x^3+3x^2-9x+11-a$라 하면 $x>0$에서 $h(x)\\ge0$이어야 한다.\n즉 $x>0$에서 $h(x)$의 최솟값이 $0$ 이상이어야 한다.\n$h'(x)=3x^2+6x-9=3(x+3)(x-1)$\n$x>0$에서 $h'(x)=0$인 것은 $x=1$뿐이다.\n$0<x<1$에서 $h'(x)<0$, $x>1$에서 $h'(x)>0$이므로 $h(x)$는 $x=1$에서 최솟값을 갖는다.\n$h(1)=1+3-9+11-a=6-a$\n$6-a\\ge0$이므로 $a\\le6$이다.\n$a=6$일 때 $h(x)=(x-1)^2(x+5)\\ge0$ $(x>0)$이므로 조건을 만족한다.\n따라서 $a$의 최댓값은 $6$이고, 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -746,14 +746,14 @@ window.questionBank = [
     "wide": false,
     "content": "삼차함수 $f(x)$가 모든 실수 $x$에 대하여 $f(-x)=-f(x)$를 만족시킨다.<br>$\\displaystyle\\int_{-1}^{1}x^2f'(x)dx=10$<br>이고 $f'(1)=27$일 때, $f(-1)$의 값은? [4점]",
     "choices": [
-      "$-7$",
-      "$-3$",
-      "$1$",
-      "$5$",
-      "$7$"
+      "$-23$",
+      "$-19$",
+      "$-15$",
+      "$-11$",
+      "$-7$"
     ],
-    "answer": "①",
-    "solution": "$f(-x)=-f(x)$이므로 $f(x)$는 홀수차 항만 가지는 삼차함수이다.\n$f(x)=ax^3+bx$ $(a\\ne0)$로 놓을 수 있다.\n$f'(x)=3ax^2+b$\n$f'(1)=3a+b=27$ …… ①\n$x^2f'(x)=3ax^4+bx^2$은 $y$축에 대칭인 (우함수) 식이므로\n$\\displaystyle\\int_{-1}^{1}x^2f'(x)dx=2\\displaystyle\\int_0^1(3ax^4+bx^2)dx$\n$=2\\left[\\dfrac{3a}{5}x^5+\\dfrac{b}{3}x^3\\right]_0^1$\n$=2\\left(\\dfrac{3a}{5}+\\dfrac{b}{3}\\right)=10$\n$\\Rightarrow 9a+5b=75$ …… ②\n①에서 $b=27-3a$를 ②에 대입하면 $9a+135-15a=75$\n$-6a=-60$\n$\\Rightarrow a=10,\\ b=-3$\n$f(x)=10x^3-3x$이므로 $f(-1)=-10+3=-7$\n따라서 정답은 ①이다.",
+    "answer": "⑤",
+    "solution": "$f(-x)=-f(x)$이므로 $f(x)$는 홀수차 항만 가지는 삼차함수이다.\n$f(x)=ax^3+bx$ $(a\\ne0)$로 놓을 수 있다.\n$f'(x)=3ax^2+b$\n$f'(1)=3a+b=27$ …… ①\n$x^2f'(x)=3ax^4+bx^2$은 $y$축에 대칭인 (우함수) 식이므로\n$\\displaystyle\\int_{-1}^{1}x^2f'(x)dx=2\\displaystyle\\int_0^1(3ax^4+bx^2)dx$\n$=2\\left[\\dfrac{3a}{5}x^5+\\dfrac{b}{3}x^3\\right]_0^1$\n$=2\\left(\\dfrac{3a}{5}+\\dfrac{b}{3}\\right)=10$\n$\\Rightarrow 9a+5b=75$ …… ②\n①에서 $b=27-3a$를 ②에 대입하면 $9a+135-15a=75$\n$-6a=-60$\n$\\Rightarrow a=10,\\ b=-3$\n$f(x)=10x^3-3x$이므로 $f(-1)=-10+3=-7$\n따라서 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -921,14 +921,14 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$에 대하여 $\\displaystyle\\int_0^3f(x)dx=4$일 때, $\\displaystyle\\sum_{k=1}^{15}\\int_{3k}^{3k+3}f(x-3k)dx$의 값은? [4.5점]",
     "choices": [
+      "$48$",
+      "$52$",
       "$56$",
       "$60$",
-      "$64$",
-      "$68$",
-      "$72$"
+      "$64$"
     ],
-    "answer": "②",
-    "solution": "$y=f(x-3k)$의 그래프는 $y=f(x)$의 그래프를 $x$축의 방향으로 $3k$만큼 평행이동한 것이다.\n따라서 구간 $[3k,3k+3]$에서 $y=f(x-3k)$의 그래프와 $x$축 사이의 (부호를 포함한) 넓이는 구간 $[0,3]$에서 $y=f(x)$의 그래프와 $x$축 사이의 넓이와 같다.\n$\\Rightarrow \\displaystyle\\int_{3k}^{3k+3}f(x-3k)dx=\\displaystyle\\int_0^3f(x)dx=4$\n이 값은 $k$의 값에 관계없이 항상 $4$이다.\n$\\displaystyle\\sum_{k=1}^{15}\\int_{3k}^{3k+3}f(x-3k)dx=\\sum_{k=1}^{15}4$\n$=4\\cdot15$\n$=60$\n따라서 정답은 ②이다.",
+    "answer": "④",
+    "solution": "$y=f(x-3k)$의 그래프는 $y=f(x)$의 그래프를 $x$축의 방향으로 $3k$만큼 평행이동한 것이다.\n따라서 구간 $[3k,3k+3]$에서 $y=f(x-3k)$의 그래프와 $x$축 사이의 (부호를 포함한) 넓이는 구간 $[0,3]$에서 $y=f(x)$의 그래프와 $x$축 사이의 넓이와 같다.\n$\\Rightarrow \\displaystyle\\int_{3k}^{3k+3}f(x-3k)dx=\\displaystyle\\int_0^3f(x)dx=4$\n이 값은 $k$의 값에 관계없이 항상 $4$이다.\n$\\displaystyle\\sum_{k=1}^{15}\\int_{3k}^{3k+3}f(x-3k)dx=\\sum_{k=1}^{15}4$\n$=4\\cdot15$\n$=60$\n따라서 정답은 ④이다.",
     "points": 4.5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -1149,14 +1149,14 @@ window.questionBank = [
     "wide": false,
     "content": "다항함수 $f(x)$가 모든 실수 $x$에 대하여<br>$\\displaystyle\\int_1^x(x-t)f(t)dt=-2x^3+ax-10+\\int_0^x f(t)dt$<br>를 만족시킬 때, 상수 $a$에 대하여 $a+f(1)$의 값은? [4.5점]",
     "choices": [
-      "$2$",
-      "$3$",
       "$4$",
       "$5$",
-      "$6$"
+      "$6$",
+      "$7$",
+      "$8$"
     ],
-    "answer": "⑤",
-    "solution": "좌변을 $x$에 대한 식으로 정리하면\n$\\displaystyle\\int_1^x(x-t)f(t)dt=x\\displaystyle\\int_1^xf(t)dt-\\displaystyle\\int_1^xtf(t)dt$\n양변을 $x$에 대하여 미분한다. 좌변은 곱의 미분법에 의하여\n$\\displaystyle\\int_1^xf(t)dt+xf(x)-xf(x)=\\displaystyle\\int_1^xf(t)dt$\n우변은 $-6x^2+a+f(x)$이다.\n$\\displaystyle\\int_1^xf(t)dt=-6x^2+a+f(x)$ …… ①\n①의 양변에 $x=1$을 대입하면 좌변은 $\\displaystyle\\int_1^1f(t)dt=0$이므로\n$0=-6+a+f(1)$\n$\\Rightarrow a+f(1)=6$\n따라서 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "좌변을 $x$에 대한 식으로 정리하면\n$\\displaystyle\\int_1^x(x-t)f(t)dt=x\\displaystyle\\int_1^xf(t)dt-\\displaystyle\\int_1^xtf(t)dt$\n양변을 $x$에 대하여 미분한다. 좌변은 곱의 미분법에 의하여\n$\\displaystyle\\int_1^xf(t)dt+xf(x)-xf(x)=\\displaystyle\\int_1^xf(t)dt$\n우변은 $-6x^2+a+f(x)$이다.\n$\\displaystyle\\int_1^xf(t)dt=-6x^2+a+f(x)$ …… ①\n①의 양변에 $x=1$을 대입하면 좌변은 $\\displaystyle\\int_1^1f(t)dt=0$이므로\n$0=-6+a+f(1)$\n$\\Rightarrow a+f(1)=6$\n따라서 정답은 ③이다.",
     "points": 4.5,
     "curriculum": "2015",
     "curriculumKey": "2015",
