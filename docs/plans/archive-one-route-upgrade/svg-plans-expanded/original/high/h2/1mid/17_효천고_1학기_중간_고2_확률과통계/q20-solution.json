@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "40"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-20"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-60"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-80"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-35"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-60"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-35"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-20"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 부부끼리 이웃하는 경우는 세 부부를 세 묶음으로 보아 (3−1)!=2가지이고 묶음 안의 순서가 2의 3제곱=8가지이므로 m=16이다. 부부끼리 마주 보는 경우는 한 사람을 점 A에 고정하면 배우자가 마주 보는 점 D로 정해지고, 남은 두 부부가 마주 보는 두 쌍 B와 E, C와 F에 앉는 방법이 2!×2의 제곱=8가지이므로 n=8이다. 따라서 m+n=24이다.",
+  "accessibilityDescription": "여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 점 A와 마주 보는 점 D, 점 B와 점 E, 점 C와 점 F의 마주 보는 세 쌍이 구분되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "세 쌍의 부부가 원탁에 둘러앉을 때, 부부끼리 이웃하여 앉는 방법의 수를 $m$가지, 부부끼리 마주 보고 앉는 방법의 수를 $n$가지라고 할 때, $m+n$의 값은? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "abstract",
+      "condition": "원탁·원형 배열을 도형의 꼭짓점으로 옮긴 배치 예시이며 좌표와 길이는 원문 조건이 아니다.",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "마주 보는 자리 세 쌍이 구분되어 부부가 마주 앉는 경우를 2!×2의 제곱으로 세는 근거가 보인다."
+  ]
+}
