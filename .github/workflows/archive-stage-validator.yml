@@ -69,6 +69,12 @@ permissions:
   pull-requests: read
   issues: read
 
+# A newer push to the same pull request cancels that PR's older run (runner demand).
+# Comment-triggered and manual runs keep one group per run and are never cancelled.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('archive-stage-validator-pr-{0}', github.event.pull_request.number) || format('archive-stage-validator-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   pilot:
     if: github.event_name == 'pull_request'

@@ -73,7 +73,8 @@ jobs:
     # Runs outside the register lock. A push whose tree is already fully registered (writer --check:
     # nothing needed) goes straight to Pages; anything else or any error leaves it to register.
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    # Main-only job: repository variable MAIN_RUNNER selects the runner (unset = GitHub-hosted).
+    runs-on: ${{ vars.MAIN_RUNNER || 'ubuntu-latest' }}
     timeout-minutes: 15
     permissions:
       contents: read
@@ -113,7 +114,8 @@ jobs:
   register:
     needs: classify
     if: ${{ !cancelled() && github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.classify.outputs.skip_register != 'true' }}
-    runs-on: ubuntu-latest
+    # Main-only job: repository variable MAIN_RUNNER selects the runner (unset = GitHub-hosted).
+    runs-on: ${{ vars.MAIN_RUNNER || 'ubuntu-latest' }}
     # reviewed inbox lane 120 + other lanes; persist may redo one full prepare.
     timeout-minutes: 345
     permissions:
