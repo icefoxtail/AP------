@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "22/3",
+          "-2",
+          "1/6"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      9
+    ],
+    "viewport": [
+      -0.5,
+      9,
+      -8,
+      25
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "4",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "curveX": "6",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "curveX": "8",
+          "coordinates": true
+        },
+        {
+          "id": "E",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "6",
+          "label": "y=6"
+        },
+        {
+          "id": "t",
+          "slope": "22/3",
+          "intercept": "-134/3",
+          "label": "t"
+        }
+      ]
+    }
+  },
+  "caption": "f(2)=f(4)=f(6)=6이므로 수평선 y=6과 곡선이 A(2,6), B(4,6), C(6,6)에서 만나고 f(x)=6+a(x-2)(x-4)(x-6)이다. f(0)=-2에서 a=1/6이고 곡선이 E(0,-2)를 지난다. D(8,14)에서의 접선 t의 기울기가 f′(8)=(1/6)(8+12+24)=22/3이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "삼차함수 $f(x)$가 $f(0)=-2$, $f(2)=f(4)=f(6)=6$일 때, $f'(8)$의 값을 구하면? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "수평선 y=6과의 세 교점 A, B, C와 점 E(0,-2), D(8,14)에서의 접선 t를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "수평선 y=6과 세 점 A(2,6), B(4,6), C(6,6)에서 만나는 삼차곡선과 D(8,14)에서의 접선 t(기울기 22/3)를 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 아래의 점 E에서 올라가 세 점 A, B, C에서 수평선과 만나며 한 번 오르고 내렸다 다시 가파르게 오르는 삼차곡선과, 오른쪽 점 D에서 접하는 가파르게 오르는 직선 t가 나타난 그래프이다."
+}

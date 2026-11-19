@@ -1,0 +1,61 @@
+{
+  "capability": "rational-spike-v1",
+  "graphPlan": {
+    "family": "rational",
+    "numerator": [
+      "-2"
+    ],
+    "denominator": [
+      "1",
+      "1"
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      -2.5,
+      0.5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "예: a=-2일 때 f(x)=-2/(x+1)을 그렸다. 닫힌구간 [1,2]에서 분모가 양수이고 a<0이라 곡선이 계속 올라간다. 그래서 왼쪽 끝 A(1,-1)에서 최솟값 -1, 오른쪽 끝 B(2,-2/3)에서 최댓값 -2/3을 갖는다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\frac{a}{x+1}$가 닫힌 구간 $[1, 2]$에서 최솟값 $-1$을 가질 때 최댓값으로 알맞은 것을 고르면? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=-2일 때 구간 [1,2]에서 증가하는 곡선의 왼쪽 끝 A(1,-1)이 최소, 오른쪽 끝 B(2,-2/3)가 최대임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 [1,2]에서 곡선이 증가하며 왼쪽 끝 A(1,-1)이 최솟값, 오른쪽 끝 B(2,-2/3)가 최댓값임을 보인다."
+  ],
+  "accessibilityDescription": "가로축 아래에서 왼쪽의 낮은 곳에서 시작해 오른쪽으로 갈수록 완만하게 올라가는 곡선에 점 A와 점 B가 표시된 그래프이다."
+}

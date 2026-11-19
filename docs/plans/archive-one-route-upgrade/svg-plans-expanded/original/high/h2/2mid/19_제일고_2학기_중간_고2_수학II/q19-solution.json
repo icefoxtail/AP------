@@ -1,0 +1,72 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-2",
+          "-1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "0"
+      ]
+    }
+  },
+  "caption": "f(2)=0이고 x→2-, x→2+의 극한도 모두 0이라 x=2에서 연속이다. 그림에서 왼쪽 포물선과 오른쪽 직선이 x축 위의 점 P(2,0)에서 만난다. 좌미분계수는 2·2-1=3, 우미분계수는 1로 서로 달라 P에서 뾰족하게 꺾이므로 미분가능하지 않다. 따라서 연속이지만 미분가능하지 않다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 함수\n$$f(x)=\\begin{cases} x^2-x-2 & (x \\le 2) \\\\ x-2 & (x > 2) \\end{cases}$$\n에 대하여 $x=2$에서의 연속성 [3.0점]과 미분가능성 [2.0점]을 조사하여라. [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "P(2,0)에서 두 조각이 이어지지만 좌우 기울기 3, 1이 다름을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=2에서 포물선과 직선이 P(2,0)에서 이어지지만 좌우 기울기가 3, 1로 달라 꺾임을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽의 아래로 볼록한 포물선이 가로축 위의 점 P에서 오른쪽의 완만하게 오르는 직선으로 꺾여 이어지는 그래프이다."
+}

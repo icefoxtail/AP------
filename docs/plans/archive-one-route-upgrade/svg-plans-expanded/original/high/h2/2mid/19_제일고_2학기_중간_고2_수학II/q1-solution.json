@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          -3,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "y=x/|x|의 그래프이다. x<0에서 -1, x>0에서 1이므로 x→0-일 때 좌극한 -1, x→0+일 때 우극한 1로 두 값이 다르고 x=0에서는 정의되지 않아 양쪽 수평선이 열린 점으로 끝난다. 따라서 이 극한은 수렴하지 않고 답은 ④이다. 나머지 ①, ②, ③, ⑤는 각각 2, -6, 0, 0으로 수렴한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 수렴하지 않는 함수의 극한을 고르면? [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0에서 좌극한 -1과 우극한 1이 다른 두 수평선을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0에서 왼쪽 수평선(높이 -1)과 오른쪽 수평선(높이 1)이 모두 열린 점으로 끝남을 보인다."
+  ],
+  "accessibilityDescription": "x=0에서 끊어지는 그래프로, 아래쪽 수평선과 위쪽 수평선이 x=0에서 각각 열린 점으로 끝나는 모양이다."
+}
