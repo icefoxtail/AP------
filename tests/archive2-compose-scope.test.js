@@ -1516,9 +1516,76 @@ test('저장이 정본 메타 불일치(409)로 거절되면 화면에는 안내
   assert.equal(state.saveError, '분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.');
   assert.doesNotMatch(state.saveError, /parity|courseKey/);
   assert.ok(warn.mock.calls.some(call => call.arguments.some(arg => String(arg).includes(raw))), 'raw server text goes to console.warn');
-  // 다른 거절은 이 PR 범위 밖이라 그대로 둔다.
+  // 너무 큼(413)은 서버 문장 대신 할 일이 든 문구를 보이고, 서버 원문은 접힌 상세로 간다(아래 테스트).
   const other = await run('1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.', 413);
-  assert.equal(other.saveError, '1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.');
+  assert.match(other.saveError, /너무 커서.*나누거나 문항 수를 줄여/);
+});
+
+// ---- 저장 실패 문구: 거절 이유마다 다른 문구, 할 일 포함, 서버 원문·내부 용어 비노출 ----
+// 화면은 archive2-error-detail.js가 있을 때 문구를 만든다(워크스페이스 페이지가 함께 올린다). 하네스에도 올려 실제 경로로 본다.
+const withErrorDetail = harness => { harness.ctx.Archive2ErrorDetail = require('../archive/archive2-error-detail.js'); return harness; };
+test('저장 실패 문구는 이유(로그인 만료·너무 큼·분류 기준 갱신·분류 자료 불일치)마다 다르고 할 일이 들어 있다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const cases = [
+    { status: 401, raw: 'Unauthorized', todo: /다시 로그인/, keeps: /초안에 남아 있습니다/ },
+    { status: 403, raw: 'Forbidden: teacher only', todo: /다시 로그인/, keeps: /초안에 남아 있습니다/ },
+    { status: 413, raw: 'Payload too large: 1500000 bytes', todo: /나누거나 문항 수를 줄여/ },
+    { status: 409, raw: '분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.', todo: /새로고침/, stale: true },
+    { status: 409, raw: 'canonical metadata parity mismatch: courseKey', todo: /새로고침/ },
+  ];
+  const seen = new Map();
+  for (const item of cases) {
+    const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+    let posts = 0;
+    ctx.fetch = async (url, init = {}) => {
+      const parsed = new URL(String(url));
+      if (parsed.pathname === '/api/archive-saved-papers' && init.method === 'POST') { posts++; return { ok: false, status: item.status, json: async () => ({ success: false, error: item.raw }) }; }
+      if (parsed.pathname.endsWith('/data/archive2-canonical-input-manifest.json')) return { ok: false, status: 503, text: async () => '' };
+      throw new Error('unexpected request: ' + parsed.pathname);
+    };
+    await w.savePapers();
+    const shown = w.state.saveError, label = `${item.status} ${item.raw}`;
+    assert.equal(w.state.saveResultState, 'FAILED', label);
+    assert.match(shown, item.todo, label);
+    if (item.keeps) assert.match(shown, item.keeps, label);
+    assert.doesNotMatch(shown, /parity|courseKey|Unauthorized|Forbidden|Payload|bytes|HOLD|projection|canonical|HTTP/i, label);
+    assert.match(String(ctx.document.getElementById('status').textContent), /시험지를 저장하지 못했습니다\./, label);
+    assert.ok(posts <= 2, label + ': no extra retries beyond the existing stale-version resend');
+    seen.set(label, shown);
+  }
+  // 401과 403은 같은 안내, 나머지는 서로 다른 문구.
+  assert.equal(seen.get('401 Unauthorized'), seen.get('403 Forbidden: teacher only'));
+  const distinct = new Set([...seen.values()]);
+  assert.equal(distinct.size, 4, [...distinct].join(' | '));
+});
+
+test('저장 실패의 서버 원문은 접힌 상세에만 있고, 표에 없는 거절은 일반 문구에 코드가 붙는다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+  captureSavePost(ctx, () => ({ ok: false, status: 413, json: async () => ({ success: false, error: 'Payload too large: 1500000 bytes' }) }));
+  await w.savePapers();
+  const info = require('../archive/archive2-error-detail.js').describe(Object.assign(new Error('Payload too large: 1500000 bytes'), { status: 413, data: { error: 'Payload too large: 1500000 bytes' } }), { headline: w.state.saveError });
+  assert.equal(info.headline, w.state.saveError);
+  assert.match(info.detailText, /Payload too large/, 'the original text is in the folded detail');
+  assert.match(info.detailText, /413/);
+  assert.doesNotMatch(info.headline, /Payload/);
+  // 표에 없는 4xx(예: 422)는 지금과 같다: 영어 원문은 일반 문구로 가려진다.
+  const other = withErrorDetail(configureSaveHarness(t));
+  captureSavePost(other.ctx, () => ({ ok: false, status: 422, json: async () => ({ success: false, error: 'validation failed: papers[0]' }) }));
+  await other.w.savePapers();
+  assert.equal(other.w.state.saveResultState, 'FAILED');
+  assert.equal(other.w.state.saveError, 'validation failed: papers[0]', 'unchanged: the screen turns this into the general sentence');
+  assert.equal(other.ctx.document.getElementById('status').textContent, '시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.');
+});
+
+test('네트워크 끊김·시간 초과는 거절이 아니라 결과 모름이라 저장 결과 확인을 안내한다(문구 그대로)', async t => {
+  for (const make of [() => new TypeError('Failed to fetch'), () => Object.assign(new Error('응답이 늦습니다. 잠시 뒤 다시 시도해 주세요.'), { timeout: true })]) {
+    const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+    ctx.fetch = async (url, init = {}) => { if (new URL(String(url)).pathname === '/api/archive-saved-papers' && init.method === 'POST') throw make(); throw new Error('lost'); };
+    await w.savePapers();
+    assert.equal(w.state.saveResultState, 'RESULT_UNKNOWN');
+    assert.match(String(ctx.document.getElementById('status').textContent), /저장 결과를 확인하지 못했습니다.*저장 결과 확인/);
+  }
 });
 
 // ---- 저장은 "낡은 줄 아는 버전"을 보내지 않고, 서버가 앞서간 경우 한 번만 다시 읽어 다시 보낸다 ----
