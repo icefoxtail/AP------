@@ -1663,7 +1663,8 @@
   }
   // 문제지 만들기 조건(학년·과목·교육과정·세부 조건) 변경. 선택 상자의 change와 학년·과목 버튼이 같이 쓴다.
   function changeComposeFilter(key, value) {
-    if (state.sealed) {
+    // 수정본(저장본에서 연 문제지)의 범위는 원본에 고정이다(조건 칸은 그려지지도 않는다). 조건이 바뀌면 손본 문항·고정·교체 이력이 비워지므로 건드리지 않는다.
+    if (state.sealed || state.derivationSource) {
       render();
       return;
     }
