@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "P(A∩B)",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "P(B)−P(A∩B)",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "B∩A^c"
+  },
+  "caption": "B는 A와 겹치는 부분과 A 밖의 부분으로 나뉜다. 그림에서 겹침의 확률이 P(A∩B)이고, 색칠한 A 밖의 부분이 A의 여사건과 B의 겹침이므로 그 확률은 P(B)−P(A∩B)이다. A, B가 독립이면 P(A∩B)=P(A)P(B)이므로 P(B)−P(A)P(B)=P(B){1−P(A)}=P(A의 여사건)P(B)이다. 따라서 두 사건은 독립이다. 답은 ④이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B가 겹친 벤다이어그램이며 겹침과 B에서 A 밖의 부분에 확률식이 적혀 있고 B에서 A 밖의 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "B가 A 안의 부분과 A 밖의 부분으로 나뉘어 P(B)=P(A∩B)+P(A의 여사건∩B)임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음은 두 사건 $A, B$ 가 독립이면 $A^c$ 가 사건 $A$ 의 여사건에 해당한다고 할 때, 두 사건 $A^c, B$ 또한 독립임을 증명하는 과정이다. <증명과정>에서 빈칸에 있는 번호에 들어갈 내용이 틀린 것은? [4점]\n\n<증명과정>\n어떤 시행에서 독립인 두 사건 $A, B$ 에 대하여 $A^c$ 가 사건 $A$의 여사건에 해당한다고 할 때, 다음이 성립한다.\n$P(B) = P(A \\cap B) +$ ①\n확률의 곱셈정리에 의하여, 다음과 같이 쓸 수 있다.\n$P(B) =$ ② $+$ ③\n두 사건 $A, B$ 가 독립이므로 다음이 성립한다.\n③ $= P(B) -$ ④\n$= $ ⑤\n$\\therefore P(B|A^c) = P(B)$\n따라서, 두 사건 $A^c, B$ 는 독립이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
