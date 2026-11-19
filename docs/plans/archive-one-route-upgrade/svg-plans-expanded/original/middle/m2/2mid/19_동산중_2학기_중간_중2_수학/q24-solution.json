@@ -1,0 +1,337 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ad",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "25"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbe",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lbe",
+          "ad"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "E",
+          "O"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lDF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lbe",
+          "ac"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lDF",
+          "ac"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "EA",
+      "refs": [
+        "E",
+        "A"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "(1) AE=CF이고 AD∥BC이므로 ED=AD−AE=BC−CF=BF이고 ED∥BF이다. 한 쌍의 대변이 평행하고 길이가 같으므로 EBFD는 평행사변형이다. (2) 평행사변형에서 BE∥DF이므로 ∠AGB=∠AHD(동위각)이다. △ABG에서 ∠BAG=45°이므로 ∠AGB=180°−45°−25°=110°이다. 따라서 ∠AHD=110°이고 맞꼭지각 ∠GHF=∠AHD=110°이다. 그림은 해설의 ∠ABG=25°를 쓴 것이다.",
+  "accessibilityDescription": "정사각형 ABCD의 변 AD 위에 점 E, 변 BC 위에 점 F가 있고 대각선 AC와 선분 BE, DF가 각각 점 G, H에서 만난다. AE와 CF에 같은 눈금이 있고 각 ABG 25°, 각 GHF 110°가 표시되어 있다.",
+  "newVisualInformation": [
+    "BE∥DF의 동위각과 △ABG의 ∠AGB=110°로 ∠GHF=110°이고 EBFD가 평행사변형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 3. 아래 그림과 같은 정사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AD}}$, $\\overline{\\mathrm{BC}}$ 위에 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CF}}$가 되도록 점 $\\mathrm{E}$, $\\mathrm{F}$를 잡자. $\\overline{\\mathrm{AC}}$가 $\\overline{\\mathrm{BE}}$, $\\overline{\\mathrm{DF}}$와 만나는 점을 각각 $\\mathrm{G}$, $\\mathrm{H}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s03.png\" /></p><p>(1) 사각형 $\\mathrm{EBFD}$는 평행사변형임을 보이시오.</p><p>(2) $\\angle\\mathrm{ABG}=25^\\circ$일 때, $\\angle\\mathrm{GHF}$의 크기를 풀이과정과 함께 구하시오.</p><p>(채점기준 - 1. 평행사변형임을 보이기 : 2점, 2. $\\angle\\mathrm{GHF}$ 구하기 : 3점) [5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "EA",
+        "CF"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "G"
+        ],
+        "label": "25°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "G",
+          "H",
+          "F"
+        ],
+        "label": "∠GHF=110°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

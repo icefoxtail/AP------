@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "2x−y=3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-1/2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "x+ay=4 (a=2)",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "교점 (b,1)은 2x−y=3 위에 있으므로 2b−1=3에서 b=2이다. 또 이 점은 x+ay=4 위에 있으므로 2+a=4에서 a=2이다. 그림은 a=2일 때 두 직선이 점 P(2,1)에서 만나는 모습이다. 따라서 a=2, b=2이고 답은 ③이다.",
+  "newVisualInformation": [
+    "교점 (b,1)이 2x−y=3 위에 있어 b=2이고 x+ay=4 위에 있어 a=2"
+  ],
+  "accessibilityDescription": "한 직선은 오른쪽 위로, 다른 직선은 오른쪽 아래로 향하며 두 직선이 점 P(2,1)에서 만나고 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>2. 연립방정식 $\\begin{cases} 2x-y=3 \\\\ x+ay=4 \\end{cases}$의 각 일차방정식의 그래프를 그렸더니 두 그래프의 교점의 좌표가 $(b,\\ 1)$이었다. 이때 $a,\\ b$의 값을 옳게 구한 것을 고르면?(4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

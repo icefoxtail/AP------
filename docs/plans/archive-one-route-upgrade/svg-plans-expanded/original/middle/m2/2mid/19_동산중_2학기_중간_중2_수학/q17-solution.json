@@ -1,0 +1,266 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "E",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "직각삼각형 ABC에서 BC=3+5=8cm, AC=10cm이므로 AB=√(10²−8²)=6cm이다. AE가 ∠BAC의 이등분선이고 BE:EC=AB:AC=3:5로 BE=3, EC=5와 맞는다. △AEC는 밑변 EC=5cm이고 높이가 AB=6cm이므로 넓이는 (1/2)×5×6=15cm²이다. 답은 ③이다.",
+  "accessibilityDescription": "직사각형 ABCD의 대각선 AC와 꼭짓점 A에서 변 BC 위의 점 E로 그은 각의 이등분선이 있고 BE 3, EC 5, AC 10, AB 6이 적혀 있으며 삼각형 AEC가 칠해져 넓이 15가 적혀 있다.",
+  "newVisualInformation": [
+    "BC=8, AC=10에서 AB=6이고 △AEC의 밑변 EC=5, 높이 AB=6으로 넓이 15"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>17. 아래의 직사각형 $\\mathrm{ABCD}$에 대해서 $\\angle\\mathrm{BAC}$를 이등분한 선과 $\\overline{\\mathrm{BC}}$와 만나는 점을 $\\mathrm{E}$라 하자. $\\mathrm{E}$가 변 $\\overline{\\mathrm{BC}}$ 위에 있고, $\\overline{\\mathrm{BE}}=3\\text{cm}$, $\\overline{\\mathrm{EC}}=5\\text{cm}$, $\\overline{\\mathrm{AC}}=10\\text{cm}$라 할 때 $\\triangle\\mathrm{AEC}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q17.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "E",
+          "A",
+          "C"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vBE",
+        "ownerSegment": "BE",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vEC",
+        "ownerSegment": "EC",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "6",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "15",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "E",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

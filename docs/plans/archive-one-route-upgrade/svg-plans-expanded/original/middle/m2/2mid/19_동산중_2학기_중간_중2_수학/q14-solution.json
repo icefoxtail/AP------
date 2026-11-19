@@ -1,0 +1,201 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB=CD이고 AB∥CD이므로 사각형 ABCD는 평행사변형이다. AC가 ∠A를 이등분하면 ∠DAC=∠BAC이고 AB∥CD에서 ∠BAC=∠DCA(엇각)이므로 △ACD가 이등변삼각형이 되어 CD=AD=6cm이다. 따라서 이웃한 두 변이 같은 마름모이고 네 변이 모두 6cm이므로 둘레는 4×6=24cm이다. 답은 ④이다.",
+  "accessibilityDescription": "평행사변형 ABCD에 대각선 AC가 그어져 있고 꼭짓점 A의 각이 AC로 이등분되어 같은 표시가 있다. 네 변에 같은 눈금이 있고 변 DA에 6이 적혀 있다.",
+  "newVisualInformation": [
+    "대각선 AC의 각의 이등분과 AB∥CD의 엇각으로 CD=AD=6이 되어 네 변이 모두 6인 마름모"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 아래 그림에서 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{CD}}$, $\\overline{\\mathrm{AB}}\\parallel \\overline{\\mathrm{CD}}$이고, $\\overline{\\mathrm{AC}}$가 $\\angle\\mathrm{A}$를 이등분 한다. $\\overline{\\mathrm{AD}}=6\\text{cm}$일 때 $\\square\\mathrm{ABCD}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q14.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "BC",
+        "CD",
+        "DA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "A",
+          "D"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vDA",
+        "ownerSegment": "DA",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

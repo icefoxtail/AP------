@@ -1,0 +1,87 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=2x−4",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "1"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=x−3",
+        "color": "WARM"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "2/3",
+          "2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "−6x+3y=2",
+        "color": "GREEN",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 일차함수 y=2x−4, y=x−3의 교점은 2x−4=x−3에서 x=1, y=−2이므로 P(1,−2)이다. −6x+3y=2는 y=2x+2/3이고 기울기가 2이므로 평행한 직선은 기울기가 2이고 P를 지나는 y=2x−4이다. 이 직선의 x절편은 2, y절편은 −4이다. 따라서 x절편 2, y절편 −4인 보기가 정답이다.",
+  "newVisualInformation": [
+    "교점 P(1,−2)를 지나고 기울기 2인 직선 y=2x−4의 x절편 2와 y절편 −4"
+  ],
+  "accessibilityDescription": "세 직선이 그려져 있고 실선 두 직선이 점 P(1,−2)에서 만난다. 점선은 기울기가 같은 평행한 직선이며 실선 중 기울기가 큰 직선이 x축과 (2,0)에서, y축과 (0,−4)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>3. 두 일차함수 $y=2x-4$, $y=x-3$의 교점을 지나고, $-6x+3y=2$의 그래프와 평행한 직선의 $x$절편과 $y$절편을 옳게 구한 것을 고르면?(4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

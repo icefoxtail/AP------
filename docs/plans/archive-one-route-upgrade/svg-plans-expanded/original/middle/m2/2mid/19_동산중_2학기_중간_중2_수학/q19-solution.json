@@ -1,0 +1,289 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bA",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "A",
+          "D"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bD",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "C",
+          "D",
+          "A"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bA",
+          "bB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bC",
+          "bD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bD",
+          "bA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [
+    "bA",
+    "bB",
+    "bC",
+    "bD"
+  ],
+  "caption": "예: ∠A=70°인 평행사변형으로 그렸다. 이웃한 두 각의 합이 180°이므로 이웃한 두 내각의 이등분선이 이루는 각은 180°−(1/2)×180°=90°이다. 따라서 네 내각의 이등분선이 만드는 사각형 EFGH는 네 각이 모두 직각인 직사각형이다. 답은 ②이다.",
+  "accessibilityDescription": "평행사변형 ABCD의 네 내각의 이등분선이 그어져 서로 만나 안쪽에 사각형 EFGH를 만들고 EFGH의 네 꼭짓점에 모두 직각 표시가 있다.",
+  "newVisualInformation": [
+    "이웃한 두 내각의 이등분선이 이루는 각이 90°여서 EFGH가 네 각이 직각인 직사각형"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>19. 오른쪽 그림과 같은 평행사변형 $\\mathrm{ABCD}$에서 네 내각의 이등분선으로 만들어지는 $\\square\\mathrm{EFGH}$는 어떤 도형인지 고르면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q19.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "H",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "E",
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "F",
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "G",
+        "H",
+        "E"
+      ]
+    }
+  ]
+}

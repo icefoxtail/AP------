@@ -1,0 +1,211 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc"
+  ],
+  "displayLines": [],
+  "caption": "직각삼각형의 외심 O는 빗변 AC의 중점이므로 OA=OB=OC=2cm이고 AC=4cm이다. ∠A=45°이므로 직각이등변삼각형이고 높이 OB=2cm이다. 따라서 넓이는 (1/2)×AC×OB=(1/2)×4×2=4cm²이다. 답은 ③이다.",
+  "accessibilityDescription": "꼭짓점 B에서 직각인 직각삼각형 ABC와 빗변의 중점 O를 중심으로 하는 외접원이 있고 OB에 2가 적혀 있으며 꼭짓점 A의 각 45°가 표시되고 삼각형 안이 칠해져 넓이 4가 적혀 있다.",
+  "newVisualInformation": [
+    "외심이 빗변의 중점이어서 AC=4, 높이 OB=2이므로 넓이 4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 점 $\\mathrm{O}$는 $\\angle\\mathrm{B}=90^\\circ$인 직각삼각형 $\\mathrm{ABC}$의 외심이다. $\\angle\\mathrm{A}=45^\\circ$, $\\overline{\\mathrm{OB}}=2\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 넓이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q08.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "equalLengths": [],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "45°",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vOB",
+        "ownerSegment": "OB",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "4",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

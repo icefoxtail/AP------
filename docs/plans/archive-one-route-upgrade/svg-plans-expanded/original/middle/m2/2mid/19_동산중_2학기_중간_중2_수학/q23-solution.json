@@ -1,0 +1,353 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "C",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "70"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bu",
+          "cv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "A",
+          "C",
+          "B"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "bB",
+          "bC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "fB",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "fC",
+        "op": "ANGLE_BISECTOR",
+        "inputs": [
+          "E",
+          "C",
+          "B"
+        ],
+        "args": {
+          "mode": "INTERNAL"
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "fB",
+          "fC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB=AC이고 ∠A=40°이므로 ∠B=∠C=(180°−40°)/2=70°이다. E가 △ABC의 내심이므로 BE는 ∠B의 이등분선이고 ∠EBC=70°÷2=35°이다. F가 △EBC의 내심이므로 BF는 ∠EBC의 이등분선이고 ∠EBF=35°÷2=17.5°이다. 따라서 ∠EBF=17.5°이다.",
+  "accessibilityDescription": "이등변삼각형 ABC 안에 내심 E가 있고 삼각형 EBC의 내심 F가 있으며 B와 C에서 E와 F로 선분이 그어져 있다. 꼭지각 40°, 각 ABE와 EBC에 35°, 각 EBF와 FBC에 17.5°가 표시되어 있다.",
+  "newVisualInformation": [
+    "∠B=70°의 이등분 ∠EBC=35°, 다시 이등분해 ∠EBF=17.5°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 2. 아래 그림의 $\\triangle\\mathrm{ABC}$은 $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{AC}}$인 이등변 삼각형이다. 점 $\\mathrm{E}$는 $\\triangle\\mathrm{ABC}$의 내심이고, $\\mathrm{F}$는 $\\triangle\\mathrm{EBC}$의 내심이다. $\\angle\\mathrm{BAC}=40^\\circ$일 때 $\\angle\\mathrm{EBF}$의 크기를 구하시오.(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s02.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "CA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "label": "40°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "label": "35°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "label": "35°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "E",
+          "B",
+          "F"
+        ],
+        "label": "∠EBF=17.5°",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "F",
+          "B",
+          "C"
+        ],
+        "label": "17.5°",
+        "style": "ARC",
+        "equalGroup": 2,
+        "arcs": 2
+      }
+    ]
+  }
+}

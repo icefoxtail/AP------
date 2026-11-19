@@ -1,0 +1,319 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lEC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "E",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAD",
+          "lEC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "G",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BG",
+      "refs": [
+        "B",
+        "G"
+      ]
+    },
+    {
+      "id": "GC",
+      "refs": [
+        "G",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FC",
+      "refs": [
+        "F",
+        "C"
+      ]
+    },
+    {
+      "id": "AF",
+      "refs": [
+        "A",
+        "F"
+      ]
+    },
+    {
+      "id": "FD",
+      "refs": [
+        "F",
+        "D"
+      ]
+    },
+    {
+      "id": "AG",
+      "refs": [
+        "A",
+        "G"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: AE=CD=2cm인 사다리꼴로 그렸다(AE∥BC). (1) △AEF와 △DCF에서 AE=DC, AE∥DC이므로 엇각 ∠EAF=∠CDF, ∠AEF=∠DCF이다. 한 변과 양 끝 각이 같아 △AEF≡△DCF(ASA 합동)이다. (2) AE+BC=CD+BC=BD=6cm이므로 사다리꼴 ABCE의 넓이는 (1/2)×(AE+BC)×AG=(1/2)×6×4=12cm²이다.",
+  "accessibilityDescription": "사다리꼴 ABCE의 변 BC를 C쪽으로 연장한 점 D가 있고 A에서 BD로 수선 AG가 내려져 있다. 선분 AD와 EC가 점 F에서 만나고 AE와 CD에 같은 눈금이 있으며 BD 6, AG 4가 적혀 있고 사다리꼴 ABCE가 칠해져 넓이 12가 적혀 있다.",
+  "newVisualInformation": [
+    "△AEF≡△DCF(ASA)이고 AE+BC=BD=6, 높이 AG=4로 사다리꼴 ABCE의 넓이 12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 4. 사다리꼴 $\\mathrm{ABCE}$에서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{CD}}$라 하자.</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s04.png\" /></p><p>(1) $\\triangle\\mathrm{AEF}\\equiv\\triangle\\mathrm{DCF}$임을 보이시오.</p><p>(2) 점 $\\mathrm{A}$에 $\\overline{\\mathrm{BD}}$에 수직으로 내린 점을 $\\mathrm{G}$라 하자. $\\overline{\\mathrm{BD}}=6\\text{cm}$, $\\overline{\\mathrm{AG}}=4\\text{cm}$일 때, $\\square\\mathrm{ABCE}$의 넓이를 구하시오.</p><p>(채점기준 : (1) 3점, (2) 3점) [6점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "G",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AE",
+        "CD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAG",
+        "ownerSegment": "AG",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "12",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "B",
+              "C",
+              "E"
+            ]
+          }
+        ]
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "D",
+        "label": "6",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 6
+      }
+    ]
+  }
+}

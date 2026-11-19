@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "100"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "50"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lbe",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "lbe"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "마름모의 대각선 AC는 ∠A를 이등분하므로 ∠BAE=∠EAD=50°이고 ∠BAD=100°이다. AE=BE이므로 △ABE의 두 밑각이 같아 ∠ABE=∠BAE=50°이다. 마름모에서 ∠ABC=180°−100°=80°이므로 ∠EBC=80°−50°=30°이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "마름모 ABCD의 대각선 AC 위에 점 E가 있고 B에서 E로 선분이 그어져 있다. 네 변에 같은 눈금이 있고 AE와 BE에 같은 눈금이 있으며 각 EAD, 각 BAE, 각 ABE에 같은 크기 50°, 각 EBC에 30°가 표시되어 있다.",
+  "newVisualInformation": [
+    "대각선의 각 이등분과 AE=BE의 밑각으로 ∠ABE=50°이고 ∠ABC=80°에서 ∠EBC=30°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 아래의 마름모 $\\mathrm{ABCD}$에 대해서 $\\overline{\\mathrm{AE}}=\\overline{\\mathrm{BE}}$가 되도록 $\\overline{\\mathrm{AC}}$위의 점 $\\mathrm{E}$를 잡았다. $\\angle\\mathrm{EAD}=50^\\circ$라 할 때, $\\angle\\mathrm{EBC}$의 크기를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q18.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "BC",
+        "CD",
+        "DA"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "AE",
+        "BE"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "E",
+          "A",
+          "D"
+        ],
+        "label": "50°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "label": "50°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "B",
+          "E"
+        ],
+        "label": "50°",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "label": "∠EBC=30°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

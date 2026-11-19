@@ -1,0 +1,231 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "H",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "등변사다리꼴이므로 점 D에서 BC에 내린 수선의 발을 H′이라 하면 BH=H′C이고 HH′=AD=3cm이다. 따라서 BH=(BC−AD)/2=(5−3)/2=1cm이다. 답은 ①이다.",
+  "accessibilityDescription": "등변사다리꼴 ABCD에서 윗변 AD 3, 아랫변 BC 5가 적혀 있고 A에서 BC로 내린 수선의 발 H에 직각 표시가 있으며 BH 1, HC 4가 적혀 있고 두 다리 AB와 CD에 같은 눈금이 있다.",
+  "newVisualInformation": [
+    "등변사다리꼴에서 아랫변과 윗변의 차 5−3=2의 절반이 BH=1"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 아래 그림의 $\\square\\mathrm{ABCD}$는 $\\overline{\\mathrm{AD}}\\parallel\\overline{\\mathrm{BC}}$이고, $\\overline{\\mathrm{AB}}=\\overline{\\mathrm{DC}}$인 등변사다리꼴이다. $\\overline{\\mathrm{AD}}=3\\text{cm}$, $\\overline{\\mathrm{BC}}=5\\text{cm}$이고, 점 $\\mathrm{A}$에서 $\\overline{\\mathrm{BC}}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\overline{\\mathrm{BH}}$의 길이를 구하면?(3점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q20.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "CD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vDA",
+        "ownerSegment": "DA",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBH",
+        "ownerSegment": "BH",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vHC",
+        "ownerSegment": "HC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "5",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 5
+      }
+    ]
+  }
+}

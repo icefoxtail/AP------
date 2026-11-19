@@ -1,0 +1,293 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "CENTROID",
+        "inputs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAB",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBC",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCA",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "A"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lAB"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lBC"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "I",
+          "lCA"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "I",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "ID",
+      "refs": [
+        "I",
+        "D"
+      ]
+    },
+    {
+      "id": "IE",
+      "refs": [
+        "I",
+        "E"
+      ]
+    },
+    {
+      "id": "IF",
+      "refs": [
+        "I",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "정삼각형의 내심 I에서 각 변에 내린 수선의 발 D, E, F는 각 변의 중점이다. 그러므로 AD가 한 변 AB의 절반이어서 AB=2×AD=2×2=4cm이다. 세 변의 길이가 같으므로 둘레는 4×3=12cm이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "정삼각형 ABC의 내심 I에서 세 변으로 수직인 선분 ID, IE, IF가 내려져 있고 각 수선의 발에 직각 표시가 있다. 각 변이 중점으로 나뉘어 같은 길이의 여섯 선분에 같은 눈금이 있으며 AD에 2가 적혀 있다.",
+  "newVisualInformation": [
+    "정삼각형의 내심에서 내린 수선의 발이 각 변의 중점이어서 AB=2×AD=4, 둘레 12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 아래의 정삼각형 $\\mathrm{ABC}$의 내심을 $\\mathrm{I}$라 하자. $\\mathrm{I}$에서 각 변에 수직으로 내린 선과의 교점을 $\\mathrm{D},\\ \\mathrm{E},\\ \\mathrm{F}$라 하자. $\\overline{\\mathrm{AD}}=2\\text{cm}$일 때, $\\triangle\\mathrm{ABC}$의 둘레의 길이를 구하면?(4점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/q11.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "I",
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "I",
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AD",
+        "DB",
+        "BE",
+        "EC",
+        "CF",
+        "FA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "2",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

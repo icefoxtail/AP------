@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "-3"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "3x+y=3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "x−y=−3",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "3x+y=3은 y=3−3x이고 x절편 1, y절편 3이다. x−y=−3은 y=x+3이고 x절편 −3, y절편 3이다. 두 직선은 y축 위의 점 (0,3)에서 만난다. 따라서 x축과 두 직선으로 둘러싸인 삼각형은 밑변이 −3부터 1까지의 길이 4, 높이가 3이므로 넓이는 (1/2)×4×3=6이다.",
+  "newVisualInformation": [
+    "두 직선이 x축과 만나는 점 (−3,0), (1,0)과 교점 (0,3)으로 이루어진 삼각형의 밑변 4, 높이 3"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 내려가는 직선과 오른쪽 위로 올라가는 직선이 y축 위의 점 (0,3)에서 만나고 각각 x축과 (1,0), (−3,0)에서 만나며 세 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 1. 아래 그림과 같이 두 일차방정식 $3x+y=3$, $x-y=-3$의 그래프와 $x$축으로 둘러싸인 삼각형의 넓이를 풀이과정과 함께 구하시오. (5점)</p><p><img src=\"assets/images/19_동산중_2학기_중간_중2_수학/s01.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
