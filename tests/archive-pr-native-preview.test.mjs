@@ -2841,14 +2841,3 @@ test('type-only direct judgment preview refuses a Consumer result of another kin
   assert.equal(out.status,'PASS');
   assert.deepEqual(out.nativePreview.checks.find(c=>c.id==='native-consumer').directTypeJudgments,{requests:1,newMetadataApprovals:0,directTypeApprovals:0,typeNotDisplayed:1});
 });
-
-test('a request whose refusal record name .gitignore would drop fails at the PR; an ordinary name still selects', t => {
-  const f = fixture(t, { partial: true, otherOwner: false });
-  f.write('.gitignore', '*textbook*\n');
-  f.git('add', '.'); f.git('commit', '-qm', 'ignore pattern, ordinary request name');
-  assert.deepEqual(selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.git('rev-parse', 'HEAD') }).map(r => r.path), [REQUEST]);
-  const ignored = '.archive-meta-register/inbox/zz__textbooks__refused.json';
-  f.write(ignored, json(f.request)); f.git('add', '-f', '.'); f.git('commit', '-qm', 'request named like an ignored path');
-  assert.throws(() => selectNativeRequests({ root: f.root, baseSha: f.baseSha, headSha: f.git('rev-parse', 'HEAD') }),
-    /INBOX_NAME_IGNORED_BY_GITIGNORE:\.archive-meta-register\/inbox\/zz__textbooks__refused\.json/);
-});

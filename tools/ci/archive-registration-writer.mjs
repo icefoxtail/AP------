@@ -44,11 +44,15 @@ export function fingerprint(rows, patterns) {
     .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join(''));
 }
 const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs)}));
+// Refusal/pending records are named like their request, so .gitignore (for example `*textbook*`) can match them.
+// Those two directories alone are listed without the ignore rules; every other ignored file stays unlisted.
+const RECORD_DIRS=['.archive-meta-register/rejected/','.archive-meta-register/pending-supplement/'];
 const unstaged = root => unique([...splitZ(git(root,'diff','--name-only','--no-renames','-z')),
-  ...splitZ(git(root,'ls-files','--others','--exclude-standard','-z'))]);
+  ...splitZ(git(root,'ls-files','--others','--exclude-standard','-z')),
+  ...splitZ(git(root,'ls-files','--others','-z','--',...RECORD_DIRS))]);
 const changed = root => unique([...splitZ(git(root,'diff','HEAD','--name-only','--no-renames','-z')), ...unstaged(root)]);
 function stage(root, files) {
-  for(let i=0;i<files.length;i+=200)git(root,'--literal-pathspecs','add','--',...files.slice(i,i+200));
+  for(let i=0;i<files.length;i+=200)git(root,'--literal-pathspecs','add','-f','--',...files.slice(i,i+200));
 }
 function guardFiles(files, allowed, label) {
   const bad=files.filter(f=>!matches(f,allowed));

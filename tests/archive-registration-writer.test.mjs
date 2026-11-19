@@ -972,8 +972,9 @@ fs.writeFileSync(report,JSON.stringify({status:'OK',changed:false,indexSha256:sh
   assert.ok(!fs.readFileSync(path.join(temp,'archive-four-slot/stage-times.jsonl'),'utf8').includes('"exitCode":1'));
 });
 
-// A request that leaves .archive-meta-register/inbox/ must be applied or have a committed refusal record.
-// A refusal copy whose name .gitignore matches is never staged, so the deletion alone would drop the request.
+// A refusal/pending record is named like its request, so .gitignore (`*textbook*`) can match it. The writer stages the
+// records directories regardless of the ignore rules (and only those); the final gate is a backstop that fails the run
+// if a request still leaves .archive-meta-register/inbox/ with neither an applied entry nor a staged record.
 const INBOX_DIR='.archive-meta-register/inbox/';
 function inboxFixture(t,modes) {
   const f=fixture(t);
@@ -988,24 +989,38 @@ function inboxFixture(t,modes) {
     const applied=[],opt={root:args.root,rejectedDir:'.archive-meta-register/rejected'};
     for(const [name,mode] of Object.entries(modes)) {
       const abs=path.join(args.root,INBOX_DIR+name);
-      if(mode==='reject')recordRejection(opt,abs,{error:'fixture refusal'},{log(){}});
-      else{applied.push(INBOX_DIR+name);fs.rmSync(abs);}
+      if(mode==='reject'||mode==='reject-lost')recordRejection(opt,abs,{error:'fixture refusal'},{log(){}});
+      if(mode==='reject-lost')for(const lost of [name,name.replace(/\.json$/,'.rejection.json')])fs.rmSync(path.join(args.root,'.archive-meta-register/rejected',lost));
+      if(mode==='apply'){applied.push(INBOX_DIR+name);fs.rmSync(abs);}
     }
+    write(args.root,'out/stray__textbook__.json',{ignored:'outside the records directories'});
     fs.writeFileSync(path.join(pass,'applied.txt'),applied.map(p=>p+'\n').join(''));
     return {advisories:[]};
   };
   return {...f,options:{...f.options,lanes,execute}};
 }
 
-test('a rejected request whose refusal copy .gitignore drops fails the run, names the request, and persists nothing',async t=>{
-  const f=inboxFixture(t,{'zz__textbooks__dropped.json':'reject','zz__ordinary.json':'reject'});
+test('a rejected request whose name .gitignore matches still has its refusal record staged; other requests proceed; other ignored files stay out',async t=>{
+  const f=inboxFixture(t,{'zz__textbooks__refused.json':'reject','zz__ordinary.json':'reject','zz__applied.json':'apply'});
+  const result=await prepareRegistration(f.options);
+  assert.equal(result.safeToPersist,true);
+  assert.deepEqual(git(f.root,'diff','--cached','--name-only','--no-renames','--','.archive-meta-register/inbox','.archive-meta-register/rejected').split('\n').sort(),
+    ['.archive-meta-register/inbox/zz__applied.json','.archive-meta-register/inbox/zz__ordinary.json','.archive-meta-register/inbox/zz__textbooks__refused.json',
+      '.archive-meta-register/rejected/zz__ordinary.json','.archive-meta-register/rejected/zz__ordinary.rejection.json',
+      '.archive-meta-register/rejected/zz__textbooks__refused.json','.archive-meta-register/rejected/zz__textbooks__refused.rejection.json']);
+  assert.equal(git(f.root,'ls-files','--','out/stray__textbook__.json'),'','an ignored file outside the records directories is never staged');
+  assert.equal(git(f.root,'ls-files','--others','--ignored','--exclude-standard','--','out'),'out/stray__textbook__.json');
+});
+
+test('backstop: a request that left the inbox with no applied entry and no record fails the run, names it, and persists nothing',async t=>{
+  const f=inboxFixture(t,{'zz__lost.json':'reject-lost','zz__ordinary.json':'reject'});
   await assert.rejects(prepareRegistration(f.options),error=>{
-    assert.match(error.message,/^SILENT_INBOX_DROP:zz__textbooks__dropped\.json:/);
+    assert.match(error.message,/^SILENT_INBOX_DROP:zz__lost\.json:/);
     assert.doesNotMatch(error.message,/zz__ordinary/);assert.match(error.message,/gitignore/i);return true;
   });
   const report=readJson(f.work,'report.json');
   assert.equal(report.status,'FINAL_GATE_FAILED');assert.equal(report.safeToPersist,false);
-  assert.equal(git(f.root,'show',`HEAD:${INBOX_DIR}zz__textbooks__dropped.json`).includes('requestId'),true,'the request stays in the committed inbox');
+  assert.equal(git(f.root,'show',`HEAD:${INBOX_DIR}zz__lost.json`).includes('requestId'),true,'the request stays in the committed inbox');
 });
 
 test('a rejected request with a committable name stays a successful run with its refusal record staged',async t=>{
