@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x≤6",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "어떤 수를 x라 하면 5(x−3)≤2x+3이다. 5x−15≤2x+3에서 3x≤18이므로 x≤6이다. 수직선에서 6은 찬 점으로 해에 포함된다. 자연수는 1, 2, 3, 4, 5, 6이므로 개수는 6개이다.",
+  "accessibilityDescription": "수직선 위에 6 이하의 수 전체가 왼쪽으로 뻗은 구간이 있고 6에는 찬 점이 있다.",
+  "newVisualInformation": [
+    "해 x≤6에 속하는 자연수는 1부터 6까지 6개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어떤 수에서 $3$을 뺀 값의 $5$배가 어떤 수의 $2$배에서 $3$을 더한 값보다 크지 않다. 이를 만족하는 자연수의 개수를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
