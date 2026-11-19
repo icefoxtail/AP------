@@ -1,0 +1,6 @@
+{
+  "schema": "archive-test-durations-v1",
+  "note": "Hint for tools/ci/test-shard.cjs: seconds per test command (key = the name tools/run-tests.js reports as FAIL). A test missing here, or a stale key, never drops a test: it is simply placed with defaultSeconds. Refresh from the per-shard result artifacts (durationsMs) of a recent CI run with tools/ci/refresh-test-durations.mjs.",
+  "defaultSeconds": 5,
+  "seconds": {}
+}
