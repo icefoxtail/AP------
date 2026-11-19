@@ -1,0 +1,77 @@
+{
+  "qid": "15",
+  "itemFingerprint": "ba1289a7dc7080d3",
+  "solveSteps": [
+    "평행이동하여 완전히 포개지려면 이차항의 계수가 같아야 한다.",
+    "ㄱ. y = -3x^2 + 4에서 이차항 계수는 -3이다.",
+    "ㄴ. y = 3x^2 + 2에서 이차항 계수는 3이다.",
+    "ㄷ. y = -(x+2)^2에서 이차항 계수는 -1이다.",
+    "ㄹ. y = -3(x-1)^2 + 5에서 이차항 계수는 -3이다.",
+    "ㅁ. y = (x+2)^2 - 1에서 이차항 계수는 1이다.",
+    "따라서 이차항의 계수가 -3으로 같은 ㄱ과 ㄹ을 완전히 포갤 수 있다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "다음 <보기>의 이차함수 중 그 그래프를 평행",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmReason": "이차항의 계수가 -3으로 같은 포물선 ㄱ과 ㄹ이 평행이동에 의해 완전히 포개짐을 판별하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_TRANSLATION_SAME_SHAPE",
+  "typeReason": "이차함수 y = -3x^2 + 4 등의 이차항 계수를 비교하여 평행이동으로 포개지는 쌍을 식별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 포물선의 이차항 계수가 -3으로 일치하는 ㄱ과 ㄹ을 찾는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "보기>의 이차함수 중 그 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "보기>의 이차함수 중 그 그래프를"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "평행이동하여 완전히 포갤 수 있는 것끼리",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "이차항의 계수가 같아야 한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "보기의 다섯 이차함수 식을 확인한다.",
+    "goal": "포개질 수 있는 쌍을 고른다.",
+    "method": "이차항의 계수를 비교하여 일치 여부를 본다.",
+    "condition": "부호와 절댓값이 모두 같아야 포개진다."
+  },
+  "how": "이차항의 계수가 $-3$으로 같은 것은 ㄱ과 ㄹ이므로 완전히 포갤 수 있는 쌍으로 ④를 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

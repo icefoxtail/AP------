@@ -1,0 +1,74 @@
+{
+  "qid": "16",
+  "itemFingerprint": "655c6a819fbe1556",
+  "solveSteps": [
+    "a > 0이므로 포물선은 아래로 볼록하다.",
+    "꼭짓점의 좌표는 (p, q)이다.",
+    "p < 0, q > 0이므로 꼭짓점은 제2사분면에 위치한다.",
+    "따라서 아래로 볼록하고 꼭짓점이 제2사분면에 있는 그래프는 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그래프로 알맞은 것은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "$a > 0, p < 0, q > 0$일 때,",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmReason": "계수 a > 0과 꼭짓점 p < 0, q > 0의 부호 조건으로 포물선 그래프 개형을 찾는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_VERTEX_FORM_READ_VERTEX",
+  "typeReason": "꼭짓점 p, q의 부호와 볼록성 a로 이차함수의 올바른 그래프 형태를 선택하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "꼭짓점 (p, q)의 사분면 위치와 a > 0 볼록성 조건을 확인하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = a(x-p)^2 + q$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "그래프로 알맞은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점 $(p, q)$에서 $p < 0, q > 0$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "solution",
+        "quote": "꼭짓점은 제2사분면 위에 있다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "a, p, q의 부호 조건을 확인한다.",
+    "goal": "올바른 그래프 보기를 고른다.",
+    "method": "꼭짓점 위치와 아래로 볼록한 개형을 대조한다.",
+    "condition": "꼭짓점이 제2사분면에 있어야 한다."
+  },
+  "how": "a > 0에서 아래로 볼록하고 꼭짓점 (p, q)가 p < 0, q > 0이므로 제2사분면에 위치함을 확인해 ③으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

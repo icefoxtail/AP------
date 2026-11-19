@@ -1,0 +1,75 @@
+{
+  "qid": "18",
+  "itemFingerprint": "be0f81e25522bfdf",
+  "solveSteps": [
+    "y = -2x^2 + 8x - 9를 표준형으로 변형한다.",
+    "y = -2(x - 2)^2 + 8 - 9 = -2(x - 2)^2 - 1이다.",
+    "꼭짓점은 (2, -1)이고 위로 볼록하다.",
+    "모든 실수 x에 대하여 y <= -1 < 0이므로 그래프는 x축 아래에만 있다.",
+    "따라서 제1사분면과 제2사분면을 지나지 않는다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "다음 중 이차함수 $y = -2x^2 + 8x",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "y = -2x^2 + 8x - 9를 y = -2(x-2)^2 - 1로 변형하여 지나지 않는 제1, 제2사분면을 판별하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_AVOID_EXISTING",
+  "typeReason": "완전제곱식 변형으로 꼭짓점 y좌표가 -1 이하임을 보여 제1, 제2사분면을 지나지 않음을 밝히는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "일반형 식 y = -2x^2 + 8x - 9의 꼭짓점을 구해 그래프의 사분면 통과 범위를 판별하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "다음 중 이차함수 $y = -2x^2 + 8x - 9$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "지나지 않는 사분면을 모두 고른 것은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "그래프",
+        "src": "solution",
+        "quote": "그래프는 항상 $x$축 아래에만 있으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "choices",
+        "quote": "제1, 제2사분면"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 이차함수 식을 확인한다.",
+    "goal": "그래프가 지나지 않는 사분면을 고른다.",
+    "method": "표준형으로 고쳐 최댓값 y <= -1을 분석한다.",
+    "condition": "x축 아래에만 위치하여 1, 2사분면을 지나지 않음을 확인한다."
+  },
+  "how": "$y = -2(x-2)^2 - 1$에서 최댓값이 $-1$로 항상 $x$축 아래에만 있으므로 제1, 제2사분면을 지나지 않아 ④로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

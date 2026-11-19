@@ -1,0 +1,78 @@
+{
+  "qid": "23",
+  "itemFingerprint": "62690d8d6aec6d7b",
+  "solveSteps": [
+    "y = ax^2 + bx + c가 제2사분면만을 지나지 않으려면 위로 볼록해야 하므로 a < 0이다.",
+    "꼭짓점이 제1사분면에 있어야 하므로 축 -b/(2a) > 0에서 b > 0이다.",
+    "y절편 c = f(0)이 양수이면 제2사분면을 지나므로 c < 0이어야 한다.",
+    "따라서 a < 0, b > 0, c < 0이다.",
+    "y = bx^2 + cx + a에서 b > 0이므로 아래로 볼록하다.",
+    "대칭축은 -c/(2b) > 0으로 y축의 오른쪽에 있고, y절편은 a < 0이다.",
+    "따라서 y축 음의 부분과 만나며 꼭짓점은 제4사분면에 위치하고,",
+    "제1, 제2, 제3, 제4사분면을 모두 지나는 포물선이다."
+  ],
+  "solvedAnswer": "a < 0, b > 0, c < 0이고, y = bx^2 + cx + a는 아래로 볼록하며 모든 사분면을 지나는 포물선이다.",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "제2사분면만 피하는 조건으로 y = ax^2 + bx + c의 부호 a < 0, b > 0, c < 0을 정하고 y = bx^2 + cx + a 개형을 밝히는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_AVOID_EXISTING",
+  "typeReason": "사분면 통과 조건으로부터 y = ax^2 + bx + c의 부호를 유추하고 다른 포물선 개형을 설명하는 서술형 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "특정 사분면 통과 조건으로 y = ax^2 + bx + c의 세 계수 부호를 유도하고 개형을 판별하는 심화 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = ax^2 + bx + c$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프의개형",
+        "src": "stem",
+        "quote": "그래프의 개형을 설명하시오. (단, $a, b, c$는"
+      }
+    ],
+    "method": [
+      {
+        "term": "부호",
+        "src": "stem",
+        "quote": "$a, b, c$의 부호를 구하고, 이차함수",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 제2사분면만을 지나지 않을 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "제2사분면만 지나지 않는 조건을 확인한다.",
+    "goal": "계수의 부호와 새 함수의 개형을 설명한다.",
+    "method": "볼록성, 대칭축, y절편 부호를 단계적으로 도출한다.",
+    "condition": "c != 0이고 제2사분면만 배제되어야 한다."
+  },
+  "how": "제2사분면만 지나지 않으므로 $a < 0, b > 0, c < 0$이며, $y = bx^2 + cx + a$는 아래로 볼록하고 모든 사분면을 지나는 포물선으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  },
+  "unitEvidence": "이차함수 $y = ax^2 + bx + c$의"
+}
