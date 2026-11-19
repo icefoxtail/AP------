@@ -161,7 +161,12 @@ export function createWorkspace(workerHandle) {
     localStorage: { getItem: (k) => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) },
     document: {
       baseURI: BASE + "workspace.html", getElementById: node, querySelector: () => null, querySelectorAll: () => [],
-      createElement: () => ({ setAttribute() {}, append() {}, addEventListener() {}, classList: { add() {} } }),
+      // append() keeps the children: the screen's error alert (showErrorToast) reads firstChild / children[1] of the box it builds.
+      createElement: () => {
+        const el = { children: [], firstChild: null, textContent: "", innerHTML: "", setAttribute() {}, addEventListener() {}, classList: { add() {} } };
+        el.append = (...kids) => { el.children = kids; el.firstChild = kids[0] ?? null; };
+        return el;
+      },
       body: { dataset: {}, appendChild() {} },
       addEventListener: (name, callback) => { if (!events.has(name)) events.set(name, []); events.get(name).push(callback); },
     },
@@ -231,16 +236,19 @@ export function imageRefs(question) {
     return i < 0 ? "" : p.slice(i);
   }).filter(Boolean);
 }
-// What the Worker will store, estimated from the screen's own paper: text bytes plus every image as base64 (4/3 of the file).
+// What the Worker will store, estimated from the screen's own paper. The Worker keeps images as paths and lists each one in the snapshot's
+// `assets` (path, sha256, size): it does not embed the picture bytes (only snapshots saved before that change did, and nothing reads them
+// as a size model any more). So the size follows the text: the snapshot repeats the questions as bridge rows, filters and scope lists.
+// Measured on 2026-11-20 (four 중3 two-unit, 20-question papers with 14-24 pictures): stored bytes were 3.7-4.5 times the paper's text bytes
+// whatever the picture count (14 pictures 273,533 B; 24 pictures 269,466 B), and the samples of all five grades stored 10-18% of the limit.
+// The factor below errs about 1.3 times above that, and each picture adds its asset row. The server limit itself is still checked on the real stored size (see the sample tests), not on this estimate.
+const SNAPSHOT_TEXT_FACTOR = 6;
+const ASSET_ROW_BYTES = 300;
 export function estimateSnapshotBytes(paper) {
-  let imageBytes = 0, images = 0;
-  for (const q of paper.questions) for (const rel of imageRefs(q)) {
-    images++;
-    try { imageBytes += Math.ceil(fs.statSync(path.join(root, "archive", decodeURIComponent(rel))).size * 4 / 3); } catch { /* the Worker reports a missing image itself */ }
-  }
+  let images = 0;
+  for (const q of paper.questions) images += imageRefs(q).length;
   const text = Buffer.byteLength(JSON.stringify({ questions: paper.questions, meta: paper.meta }));
-  // bridgeRows add roughly the same text again; double it so the estimate errs on the large side.
-  return { bytes: text * 2 + imageBytes, images };
+  return { bytes: text * SNAPSHOT_TEXT_FACTOR + images * ASSET_ROW_BYTES, images };
 }
 // Does the screen's restored question carry a metadata value that differs from the catalog record? (the S1 failure shape)
 export function metadataDiffersFromCatalog(ws, paper) {
