@@ -146,16 +146,22 @@ export function splitMetadataFile(root) {
 const git = (root, args, options = {}) => execFileSync('git', args, { cwd: root, maxBuffer: 1 << 30, stdio: ['ignore', 'pipe', 'pipe'], ...options });
 
 // The file text of archive/data/question_metadata.json at a commit: older commits carry the single file, later ones the shards.
+// Only a shard assembly (parse + rebuild of ~85 MB) is worth remembering, and only the last two: a commit that still carries the
+// single file is one `git show`, exactly as before. Remembering every such 85 MB buffer (a preservation audit walks many old commits)
+// kept them all alive and made a test that visits dozens of historical commits about twice as slow (GC pressure).
 const atMemo = new Map();
 export function questionMetadataBytesAt(root, ref) {
   const memoKey = /^[a-f0-9]{40}$/.test(ref) ? path.resolve(root) + '|' + ref : null;
   if (memoKey && atMemo.has(memoKey)) return atMemo.get(memoKey);
-  const bytes = readMetadataBytesAt(root, ref);
-  if (memoKey) atMemo.set(memoKey, bytes);
+  try { return git(root, ['show', `${ref}:${META_FILE}`]); } catch { /* fall through to the shards */ }
+  const bytes = assembleMetadataBytesAt(root, ref);
+  if (memoKey) {
+    atMemo.set(memoKey, bytes);
+    while (atMemo.size > 2) atMemo.delete(atMemo.keys().next().value);
+  }
   return bytes;
 }
-function readMetadataBytesAt(root, ref) {
-  try { return git(root, ['show', `${ref}:${META_FILE}`]); } catch { /* fall through to the shards */ }
+function assembleMetadataBytesAt(root, ref) {
   const listing = git(root, ['ls-tree', '-r', `${ref}`, '--', SHARD_DIR + '/']).toString('utf8').trim().split('\n').filter(Boolean);
   if (!listing.length) throw new Error(`question metadata not found at ${ref}`);
   const entries = listing.map(line => {
