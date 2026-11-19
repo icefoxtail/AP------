@@ -1,0 +1,71 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -1,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "Q",
+        "x": "0",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "3",
+        "5"
+      ],
+      "Q": [
+        "0",
+        "2"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x=3에서 분모가 0이므로 분자도 0이어야 하고 9+3p-6=0에서 p=-1이다. 그러면 x≠3에서 f(x)=(x-3)(x+2)/(x-3)=x+2이므로 그래프는 직선 y=x+2이고 극한은 5이다. x=3의 함숫값 q가 이 극한과 같아야 연속이므로 점 P(3,5)가 직선 위에 있고 q=5이다. q-p=6이므로 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "2. 함수\n$$f(x) = \\begin{cases} \\frac{x^2+px-6}{x-3} & (x \\ne 3) \\\\ q & (x = 3) \\end{cases}$$\n가 $x=3$에서 연속일 때, 상수 $q-p$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "p=-1일 때 x≠3의 그래프 y=x+2와 x=3의 함숫값 점 P(3,5)가 이어짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "p=-1일 때 직선 y=x+2 위의 x=3인 점 P(3,5)가 함숫값 q=5와 같아 그래프가 끊기지 않음을 보인다."
+  ],
+  "accessibilityDescription": "기울기가 1인 직선 위에 x=3인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다."
+}
