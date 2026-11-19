@@ -7,6 +7,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
+const { readWorkspace, loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -92,12 +93,9 @@ function load({ detail = false } = {}) {
     ...(detail ? { Archive2ErrorDetail: require('../archive/archive2-error-detail.js') } : {}),
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     globalThis.alertTest = { status };
-  })();`, ctx);
+  `);
   return {
     status: ctx.alertTest.status,
     body,
@@ -184,7 +182,7 @@ test('the alert is styled to be seen: >=14px text, >=44px close target, above ba
 });
 
 test('teacherErrorMessage drops a leading CODE: but keeps the Korean reason behind it', () => {
-  const source = read('archive2-workspace.js');
+  const source = readWorkspace();
   const start = source.indexOf('  const HANGUL = ');
   const end = source.indexOf('  // Errors also get a fixed, dismissible alert');
   assert.ok(start > 0 && end > start, 'teacherErrorMessage block found');

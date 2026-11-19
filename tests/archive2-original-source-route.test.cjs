@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const crypto = require('node:crypto');
 const core = require('../archive/archive2-core.js');
 const output = require('../archive/archive2-output.js');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 function workspace() {
   const popups = [];
@@ -19,14 +20,12 @@ function workspace() {
       return popup;
     },
   };
-  const source = fs.readFileSync(require.resolve('../archive/archive2-workspace.js'), 'utf8');
-  vm.runInNewContext(source.slice(0, source.lastIndexOf('  (async () => {')) +
-    'window.testApp = { openFinderOutput, state }; })();', {
+  loadWorkspace({
     window, crypto, console, URL, URLSearchParams,
     location: new URL('https://archive.test/archive/workspace.html?view=find'),
     localStorage: { getItem: () => null }, setTimeout: () => 0, clearTimeout() {},
     document: { getElementById: id => nodes[id] ||= { addEventListener() {} }, addEventListener() {} },
-  });
+  }, 'window.testApp = { openFinderOutput, state };');
   window.testApp.state.catalog = { records: [], sourceHashes: [] };
   return { ...window.testApp, popups };
 }

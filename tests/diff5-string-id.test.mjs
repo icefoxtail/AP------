@@ -53,9 +53,14 @@ function exactFixture(t, questions, sourceNos) {
 test('unique numeric or string source IDs with exact identity fingerprints pass',t=>{
   assert.equal(exactFixture(t,[{id:81,content:'a'},{id:'qid_x',content:'b'}],[81,'qid_x']).verify().summary.VERIFIED,2);
 });
-test('exact identity exception rejects duplicate ID, wrong identity, shifted number, and stale fingerprint',t=>{
+// The identity map's sourceFingerprint (which includes answer/solution) is no longer compared (the string-id relaxation): a stale value does not
+// refuse a row whose id, number, in-exam id uniqueness and UID uniqueness still agree, and it does not rescue a row whose identity disagrees.
+const staleFingerprint=f=>{const p=path.join(f.root,'archive/data/question_identity_map.json'),d=JSON.parse(fs.readFileSync(p,'utf8'));d.records.forEach(r=>{r.sourceFingerprint='stale';});fs.writeFileSync(p,JSON.stringify(d));return f;};
+test('exact identity exception rejects duplicate ID, wrong identity and shifted number; a stale fingerprint alone no longer refuses',t=>{
   assert.throws(exactFixture(t,[{id:81},{id:81}],[81,81]).verify,/source question id mismatch/);
   assert.throws(exactFixture(t,[{id:81}],[82]).verify,/source question id mismatch/);
   assert.throws(exactFixture(t,[{id:81,number:2}],[81]).verify,/source question id mismatch/);
-  const f=exactFixture(t,[{id:81}],[81]),p=path.join(f.root,'archive/data/question_identity_map.json'),d=JSON.parse(fs.readFileSync(p,'utf8'));d.records[0].sourceFingerprint='stale';fs.writeFileSync(p,JSON.stringify(d));assert.throws(f.verify,/source question id mismatch/);
+  assert.equal(staleFingerprint(exactFixture(t,[{id:81}],[81])).verify().summary.VERIFIED,1);
+  assert.throws(staleFingerprint(exactFixture(t,[{id:81}],[82])).verify,/source question id mismatch/);
+  assert.throws(staleFingerprint(exactFixture(t,[{id:81,number:2}],[81])).verify,/source question id mismatch/);
 });

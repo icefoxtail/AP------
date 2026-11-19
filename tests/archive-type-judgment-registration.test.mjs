@@ -203,11 +203,60 @@ test("an already approved type is never overwritten, and no file is written", t 
   assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence")), false);
 });
 
-test("statuses other than an unapproved type are not overwritten (hold, adjudicated)", t => {
+test("statuses other than an unapproved type are not overwritten while the field holds a value (hold, adjudicated)", t => {
   for (const status of ["meta_semantic_hold", "r2e_adjudicated", "EVIDENCE_DEBT"]) {
-    const f = fixture(t, { rowMutations: { 1: { fieldStatus: { problemType: status, template: "manual_review_pending" } } } });
+    const f = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: status, template: "manual_review_pending" } } } });
     assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]), { write: true }), /type field status is not overwritable/);
   }
+});
+
+// A status is a tag on a value: a field with no value has nothing to protect (decision: value present -> use it; only real defects block).
+for (const [label, blank] of [["empty string", ""], ["null", null]]) {
+  test(`an approved_semantic_review row whose type and template values are blank (${label}) is filled, and only then`, t => {
+    const sem = { problemType: "approved_semantic_review", template: "approved_semantic_review" };
+    const f = fixture(t, { rowMutations: { 1: { problemTypeKey: blank, templateKey: blank, fieldStatus: { ...sem } } } });
+    const others = f.rows()[0];
+    f.run(f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]), { write: true });
+    const row = f.rows()[0];
+    assert.equal(row.problemTypeKey, "PT_A");
+    assert.equal(row.templateKey, "TPL_A");
+    assert.equal(row.fieldStatus.problemType, TYPE_FIELD_STATUS);
+    assert.equal(row.fieldStatus.template, TYPE_FIELD_STATUS);
+    assert.equal(row.typeApproval.priorType.problemTypeStatus, "approved_semantic_review", "the old tag is kept in the approval record");
+    assert.equal(row.standardUnitKey, others.standardUnitKey);
+    // PT-only: the template stays blank and keeps its old tag
+    const g = fixture(t, { rowMutations: { 1: { problemTypeKey: blank, templateKey: blank, fieldStatus: { ...sem } } } });
+    g.run(g.request([g.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+    assert.equal(g.rows()[0].fieldStatus.problemType, TYPE_FIELD_STATUS);
+    assert.equal(g.rows()[0].fieldStatus.template, "approved_semantic_review");
+  });
+}
+
+test("an approved row that holds a value is still never overwritten; a blank field does not open the field that holds one", t => {
+  const sem = "approved_semantic_review";
+  // type value present, approved
+  const a = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } }), aBefore = a.bytes();
+  assert.throws(() => a.run(a.request([a.item(1, { problemTypeKey: "PT_A" })]), { write: true }), /type already approved: uid1\.problemType=approved_semantic_review/);
+  assert.deepEqual(a.bytes(), aBefore);
+  // type blank, template value present and approved: the template field stays final, so the request is refused as a whole
+  const b = fixture(t, { rowMutations: { 1: { problemTypeKey: "", templateKey: "TPL_B", fieldStatus: { problemType: sem, template: sem } } } }), bBefore = b.bytes();
+  assert.throws(() => b.run(b.request([b.item(1, { problemTypeKey: "PT_B", templateKey: "TPL_B" })]), { write: true }), /type already approved: uid1\.template=approved_semantic_review/);
+  assert.deepEqual(b.bytes(), bBefore);
+  // a request that claims "blank" for a field that actually holds a value
+  const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])), /before mismatch: uid1\.problemTypeKey/);
+});
+
+test("filling a blank approved row still needs every other check: course, registry and the judged text", t => {
+  const blankRow = { problemTypeKey: "", templateKey: "", fieldStatus: { problemType: "approved_semantic_review", template: "approved_semantic_review" } };
+  const f = fixture(t, { rowMutations: { 1: blankRow } });
+  assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_A" }, { scope: { curriculum: "2022", standardCourse: "중2 수학" } })])), /course mismatch/);
+  assert.throws(() => f.run(f.request([f.item(1, { problemTypeKey: "PT_C" })])), /ACTIVE curriculum binding missing/);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
+  editSource(f, 1, { content: "다른 발문" });
+  assert.throws(() => f.run(req, { write: true }), /stem or choices differ from the judged text.*uid1/);
+  const held = fixture(t, { rowMutations: { 1: { ...blankRow, foundationTaxonomyStatus: "HOLD" } } });
+  assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
 });
 
 test("a row with a receipt on its other fields takes a type while its type is still empty; a taxonomy HOLD row is refused", t => {

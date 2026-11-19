@@ -9,6 +9,7 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), "utf8");
 const Assign = require("../archive/archive2-assign.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const P1 = "00000000-0000-4000-8000-000000000001";
 const P2 = "00000000-0000-4000-8000-000000000002";
@@ -837,7 +838,7 @@ function sliceBetween(source, start, end) {
   return source.slice(from, to);
 }
 function workspaceDispatch({ search = "", papersFromApi = null, assign = true }) {
-  const source = read("archive", "archive2-workspace.js");
+  const source = readWorkspace();
   const code = sliceBetween(source, "function assignRequest(route, opt = {}) {", "function originalIssueBusy() {");
   const opened = [];
   const legacy = [];
@@ -893,7 +894,7 @@ test("workspace: 패널 요청은 로그인이 없으면 401로 알리고, 헤�
   assert.equal(JSON.stringify(h.requests[0]), JSON.stringify({ route: "/class-exam-assignments", body: { a: 1 }, method: "POST", options: { headers: { "X-Archive2-Contract": "archive2-v1" }, timeoutMs: 150000 } }));
   h.context.teacherSessionOk = () => false;
   await assert.rejects(() => h.context.assignRequest("/qr-classes"), (error) => error.status === 401);
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /if \(window\.Archive2Assign\?\.handlePopState\?\.\(\)\) return;/);
   assert.match(workspace, /else if \(a === "saved-paper-issue"\) await openSavedPaperAssign\(b\.dataset\.paperId\);/);
   assert.match(workspace, /window\.Archive2WorkspaceSavedPaperIssue = openSavedPaperAssign;/);

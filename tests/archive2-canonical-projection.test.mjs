@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 import core from "../archive/archive2-core.js";
 
 const require = createRequire(import.meta.url);
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const canonical = require("../archive/archive2-canonical.js");
 const archiveSource = require("../archive/archive2-source.js");
 const ProblemBankMeta = require("../archive/problem-bank-meta.js");
@@ -49,8 +50,7 @@ function scopeHarnessFixture() {
   const run = () => {
     const fakeFs = { readFileSync(file, encoding) {
       let bytes;
-      if (file === path.join(archiveDir, "archive2-workspace.js")) bytes = Buffer.from("");
-      else if (file === path.join(archiveDir, "data/archive2-canonical-input-manifest.json"))
+      if (file === path.join(archiveDir, "data/archive2-canonical-input-manifest.json"))
         bytes = Buffer.from(JSON.stringify(manifest));
       else {
         const entry = [...raw].find(([relative]) => path.resolve(archiveDir, relative) === file);
@@ -372,7 +372,7 @@ test("workspace loads the shared canonical validator before core and runtime", (
 });
 
 test("Compose consumes only the resolved catalog from the verified version bundle", () => {
-  const source = fs.readFileSync(path.join(root, "archive/archive2-workspace.js"), "utf8");
+  const source = readWorkspace();
   assert.doesNotMatch(source, /fetch\(["']data\/archive2-catalog\.json/);
   assert.match(source, /applyArchiveMetaFoundationCatalog\(\)/);
 });

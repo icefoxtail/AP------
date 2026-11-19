@@ -929,42 +929,55 @@
       errors.push("선택 학생의 출제 이력을 먼저 확인해야 합니다.");
     return errors;
   }
-  // S14 type diversity. The recency order is untouched: this only reorders WITHIN the year being
-  // consumed, replacing a pick whose problem type was already chosen (earlier in the paper, in an
-  // earlier row or by a pin) by another candidate of the same year whose type is new, when one
-  // exists. Questions without a recorded type never count as repeats, and when no new type is
-  // left the originally chosen questions stay, so the count and the year spread never change.
-  function diversifyByType(picked, yearPool, usedTypes, seed) {
-    const seen = new Set(usedTypes);
-    const kept = [], repeats = [];
-    for (const record of picked) {
-      const type = selectionTypeKey(record);
-      if (type && seen.has(type)) repeats.push(record);
-      else { kept.push(record); if (type) seen.add(type); }
+  // Original/similar families. A similar-problem set is a variant of ONE original exam, question for
+  // question (the similar file's question n is the variant of the original's question n; measured
+  // on the catalog: same-position text similarity 0.58 against 0.08 for a random position). Two
+  // members of a family on one paper read as the same problem twice (same school, year and number
+  // on both rows), so automatic selection takes at most one member per family.
+  // The pairing rules are archive2-similar.js's (ambiguous sets stay unlinked, so they are never
+  // treated as a pair). That module is a browser global loaded by workspace.html after this file, so
+  // it is looked up when a paper is built, never at load; without it no family is known and only the
+  // type rule applies. Exam rows are rebuilt from the records because the selection only gets records.
+  const familyResolvers = new WeakMap();
+  const examStubOf = (record) => {
+    const axis = text(record.examAxis);
+    const cut = axis.indexOf("-");
+    const file = normalizeFile(record.sourceFile);
+    return {
+      file,
+      school: record.school,
+      grade: record.sourceGrade || record.effectiveBrowseGrade,
+      year: record.year,
+      semester: cut > 0 ? axis.slice(0, cut) : "",
+      examType: cut > 0 ? axis.slice(cut + 1) : "",
+      subject: record.subject,
+      contentType: record.contentType,
+      identityTitle: file.split("/").pop().replace(/\.js$/i, ""),
+    };
+  };
+  function familyResolver(records) {
+    const similar = typeof globalThis !== "undefined" ? globalThis.Archive2Similar : null;
+    if (!similar?.pairSimilarSets || !Array.isArray(records)) return () => "";
+    const cached = familyResolvers.get(records);
+    if (cached && cached.similar === similar && cached.size === records.length) return cached.resolve;
+    const stubs = new Map();
+    for (const record of records) {
+      const file = normalizeFile(record.sourceFile);
+      if (file && !stubs.has(file)) stubs.set(file, examStubOf(record));
     }
-    if (!repeats.length) return picked;
-    const pickedUids = new Set(picked.map((record) => record.questionUid));
-    const isNewType = (record) => { const type = selectionTypeKey(record); return !type || !seen.has(type); };
-    let rest = yearPool.filter((record) => !pickedUids.has(record.questionUid) && isNewType(record));
-    let need = repeats.length;
-    while (need > 0 && rest.length) {
-      const more = selector.selectCandidates(rest, { count: need }, { selectionSeed: seed }).selected;
-      if (!more.length) break;
-      const moreUids = new Set(more.map((record) => record.questionUid));
-      for (const record of more) {
-        const type = selectionTypeKey(record);
-        if (type && seen.has(type)) continue;
-        kept.push(record);
-        if (type) seen.add(type);
-        need--;
-      }
-      rest = rest.filter((record) => !moreUids.has(record.questionUid) && isNewType(record));
+    const pairs = similar.pairSimilarSets([...stubs.values()]);
+    const prefixByFile = new Map();
+    for (const [file, stub] of stubs) {
+      const base = similar.isOriginalExam(stub) ? file : pairs.originalFileFor(file);
+      if (base) prefixByFile.set(file, base);
     }
-    for (const record of repeats) {
-      if (kept.length >= picked.length) break;
-      kept.push(record);
-    }
-    return kept;
+    const resolve = (record) => {
+      const prefix = prefixByFile.get(normalizeFile(record.sourceFile));
+      const ordinal = Number(record.sourceOrdinal);
+      return prefix && Number.isInteger(ordinal) && ordinal > 0 ? `${prefix}#${ordinal}` : "";
+    };
+    familyResolvers.set(records, { similar, size: records.length, resolve });
+    return resolve;
   }
   function selectBlueprint(records, request, context = {}, options = {}) {
     const started = Date.now();
@@ -990,8 +1003,17 @@
     );
     if (byUid.size !== candidates.length) errors.push("후보 UID가 중복됩니다.");
     const selected = [];
-    const usedTypes = new Set();
-    const noteType = (record) => { const type = selectionTypeKey(record); if (type) usedTypes.add(type); };
+    // How many chosen questions carry each problem type, and which original/similar families are used.
+    // Pins count as used (the teacher chose them), but two pins of one family both stay.
+    const typeCounts = new Map();
+    const usedFamilies = new Set();
+    const familyOf = familyResolver(records);
+    const noteType = (record) => {
+      const type = selectionTypeKey(record);
+      if (type) typeCounts.set(type, (typeCounts.get(type) || 0) + 1);
+      const family = familyOf(record);
+      if (family) usedFamilies.add(family);
+    };
     const rows = request.rows || [];
     const rowResults = rows.map((row) => ({
       id: row.id,
@@ -1063,7 +1085,8 @@
           groups.delete(group.key);
           const bestRank = Math.min(...group.records.map(record => recencyRank(sourceYear(record))));
           const selection = selector.selectCandidates(
-            group.records.filter(record => recencyRank(sourceYear(record)) === bestRank),
+            group.records.filter(record => recencyRank(sourceYear(record)) === bestRank &&
+              !usedFamilies.has(familyOf(record))),
             { count: 1 },
             { selectionSeed: request.seed || VERSION },
           );
@@ -1077,22 +1100,77 @@
           conceptCounts.set(group.concept, (conceptCounts.get(group.concept) || 0) + 1);
         }
       }
-      // Recency is a priority after hard scope/quality/history gates (RECENCY_POLICY: newest
-      // year first, unknown years last). The existing seeded
-      // selection is preserved within each year.
-      for (const year of sortYearsByRecency(new Set(pool.map(sourceYear)))) {
-        const remaining = row.count - result.selected;
-        if (!remaining) break;
-        const yearPool = pool.filter((record) => !used.has(record.questionUid) && sourceYear(record) === year);
-        const seed = request.seed || VERSION;
-        const selection = selector.selectCandidates(yearPool, { count: remaining }, { selectionSeed: seed });
-        for (const record of diversifyByType(selection.selected, yearPool, usedTypes, seed)) {
-          selected.push({ ...record, rowId: row.id });
-          used.add(record.questionUid);
-          noteType(record);
-          result.selected++;
-        }
+      // Fill the rest. Years are visited newest first (RECENCY_POLICY: unknown years last) and the
+      // seeded selector chooses within a year, but a question is only taken when
+      //   - its problem type is below the current cap (cap 1 = types not on the paper yet), and
+      //   - its original/similar family is unused (unless the pool is exhausted without pairs).
+      // So "newest year first" now means "newest question of the same type": a new type from an
+      // earlier year comes before a repeated type from the latest year. Pass order, strictest first:
+      // no pairs with type cap 1, 2, 3 ... and only then, if the count still is not met, pairs
+      // allowed with the same cap order. A question without a recorded type is never a repeat but
+      // joins at cap 2 (after the new types), and the requested count is always filled when the pool
+      // has enough questions.
+      const seed = request.seed || VERSION;
+      const poolByYear = new Map();
+      for (const record of pool) {
+        const year = sourceYear(record);
+        if (!poolByYear.has(year)) poolByYear.set(year, []);
+        poolByYear.get(year).push(record);
       }
+      const years = sortYearsByRecency(poolByYear.keys());
+      const poolTypeCounts = new Map();
+      for (const record of pool) {
+        const type = selectionTypeKey(record);
+        if (type) poolTypeCounts.set(type, (poolTypeCounts.get(type) || 0) + 1);
+      }
+      let maxCap = 2;
+      for (const [type, n] of poolTypeCounts) maxCap = Math.max(maxCap, n + (typeCounts.get(type) || 0));
+      const takeFromYear = (yearPool, cap, allowPairs) => {
+        const allowed = (record) => {
+          if (used.has(record.questionUid)) return false;
+          const type = selectionTypeKey(record);
+          // A question without a recorded type is not a repeat, but it is not a NEW type either:
+          // it waits until the new types of the paper are used up (cap 2).
+          if (type ? (typeCounts.get(type) || 0) >= cap : cap < 2) return false;
+          if (!allowPairs && usedFamilies.has(familyOf(record))) return false;
+          return true;
+        };
+        // Ask the selector only for as many questions as the type cap can still admit; it ranks the
+        // whole pool once per question it returns, so a large count over a mostly-capped pool is slow.
+        const admissible = (list) => {
+          const perType = new Map();
+          let total = 0;
+          for (const record of list) {
+            const type = selectionTypeKey(record);
+            if (!type) total += cap >= 2 ? 1 : 0;
+            else perType.set(type, (perType.get(type) || 0) + 1);
+          }
+          for (const [type, n] of perType) total += Math.min(n, cap - (typeCounts.get(type) || 0));
+          return total;
+        };
+        let rest = yearPool.filter(allowed);
+        while (rest.length && result.selected < row.count) {
+          const want = Math.min(row.count - result.selected, admissible(rest));
+          const chosen = selector.selectCandidates(rest, { count: want }, { selectionSeed: seed }).selected;
+          if (!chosen.length) break;
+          const seen = new Set(chosen.map((record) => record.questionUid));
+          for (const record of chosen) {
+            if (result.selected >= row.count) break;
+            if (!allowed(record)) continue;
+            selected.push({ ...record, rowId: row.id });
+            used.add(record.questionUid);
+            noteType(record);
+            result.selected++;
+          }
+          rest = rest.filter((record) => !seen.has(record.questionUid) && allowed(record));
+        }
+      };
+      for (const allowPairs of [false, true])
+        for (let cap = 1; cap <= maxCap && result.selected < row.count; cap++)
+          for (const year of years) {
+            if (result.selected >= row.count) break;
+            takeFromYear(poolByYear.get(year), cap, allowPairs);
+          }
     }
     selected.sort(
       (a, b) =>
@@ -1266,6 +1344,7 @@
     metaFacetOptions,
     metaFacetStatusText,
     selectionTypeKey,
+    familyResolver,
     typeCoverage,
     matches,
     migrateLegacyAdvancedFilters,

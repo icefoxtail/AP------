@@ -10,7 +10,8 @@ import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tool
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import canonical from "../archive/archive2-canonical.js";
 import vm from "node:vm";
-import { registerDifficulty5 } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { registerDifficulty5, computeLegacyCompat, DRAFT_SINGLE_MODEL } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -586,4 +587,137 @@ test("D5-only compatibility normalization never applies to typed corrections or 
     sourceArchiveFile: p.request.gemini.sourceArchiveFile, expectedSourceBlobSha1: p.request.gemini.latestBlobSha,
     items: [{ questionUid: p.entry.questionUid, sourceOrdinal: p.entry.sourceOrdinal, before: { difficultyBucket: 3 }, after: { difficultyBucket: 4 } }] }));
   const other = p.check(); assert.equal(other.status, "FAIL"); assert.equal(other.failures[0].reason, "METADATA_CONFLICT");
+});
+
+// An ordinary difficulty request without a legacy level carries three fields (the registrar writes legacyLevelCompatibility only
+// for a row that still has a level, a2850c075f). The consumer gate compares every field the registrar reports and always requires
+// the three core fields; a level-less request is not refused for the absent compatibility field.
+function levelLessFixture(t, { drop = [], keepCompat = false, inline = null } = {}) {
+  const f = difficultyRefusalFixture(t, 0), g = f.request.gemini, item = g.items[0];
+  const after = Object.fromEntries(["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", ...(keepCompat ? ["legacyLevelCompatibility"] : [])]
+    .filter(field => !drop.includes(field)).map(field => [field, item.after[field]]));
+  let latestBlobSha = g.latestBlobSha;
+  if (inline) {
+    // The exam file's own inline annotation of the registered question (what the catalog compares with the registered value).
+    const file = path.join(f.root, f.entry.sourcePath);
+    fs.appendFileSync(file, `\n;Object.assign(window.questionBank[${f.entry.sourceOrdinal - 1}], ${JSON.stringify(inline)});\n`);
+    const raw = fs.readFileSync(file), lf = raw.includes(0x0d) ? Buffer.from(raw.toString("utf8").replace(/\r\n/g, "\n")) : raw;
+    latestBlobSha = crypto.createHash("sha1").update(`blob ${lf.length}\0`).update(lf).digest("hex");
+  }
+  const request = { schemaVersion: f.request.schemaVersion, gemini: { schemaVersion: "v1", requestId: "level-less-test",
+    sourceArchiveFile: g.sourceArchiveFile, latestBlobSha, items: [{ ordinal: item.ordinal, questionUid: item.questionUid, after }] } };
+  f.put("difficulty.json", JSON.stringify(request));
+  return f;
+}
+const otherValue = (field, current) => field === "difficultyBucket" ? (current === 1 ? 2 : 1) : field === "difficultyConfidence" ? "low" : "B45";
+
+test("level-less difficulty request (three fields) passes the consumer gate", t => {
+  const f = levelLessFixture(t);
+  const out = f.check(); assert.equal(out.status, "PASS", JSON.stringify(out.failures));
+  assert.equal(out.exams[0].officialDifficultyTuplesVerified, 1); assert.equal(out.exams[0].semanticApproval, false);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
+  // a stale exposed compatibility value is not part of what the request registered
+  f.row.legacyLevelCompatibility = "STRONG_CONFLICT"; f.refresh();
+  assert.equal(f.check().status, "PASS");
+});
+
+test("level-less difficulty request: a core field that is missing or different is still refused", t => {
+  for (const field of ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag"]) {
+    const missing = levelLessFixture(t, { drop: [field] });
+    const out = missing.check(); assert.equal(out.status, "FAIL", "missing " + field); assert.equal(out.counts.passed, 0);
+    const f = levelLessFixture(t);
+    f.meta[field] = otherValue(field, f.meta[field]);
+    f.put("archive/data/question_metadata.json", JSON.stringify({ records: [f.meta] }));
+    const bad = f.check(); assert.equal(bad.status, "FAIL", "different " + field);
+    assert.match(bad.failures[0].detail, /official difficulty projection failed/);
+    const stale = levelLessFixture(t);
+    stale.row[field] = otherValue(field, stale.row[field]); stale.refresh();
+    const staleOut = stale.check(); assert.equal(staleOut.status, "FAIL", "stale consumer " + field);
+    assert.match(staleOut.failures[0].detail, /official difficulty tuple != canonical consumer/);
+  }
+});
+
+// A row that still has a legacy level gets a compatibility value from the registrar: all four fields are reported and compared.
+function leveledFixture(t) {
+  const f = levelLessFixture(t, { keepCompat: true }), compat = computeLegacyCompat("중", f.meta.difficultyBucket);
+  f.meta.level = "중"; f.meta.legacyLevelCompatibility = compat; f.row.legacyLevelCompatibility = compat;
+  f.put("archive/data/question_metadata.json", JSON.stringify({ records: [f.meta] })); f.refresh();
+  return { f, compat };
+}
+
+test("a row with a legacy level keeps the four-field comparison (compatibility value must match)", t => {
+  const { f, compat } = leveledFixture(t), ok = f.check();
+  assert.equal(ok.status, "PASS", JSON.stringify(ok.failures));
+  const wrong = compat === "STRONG_CONFLICT" ? "NORMAL" : "STRONG_CONFLICT";
+  const mutated = leveledFixture(t).f; mutated.meta.legacyLevelCompatibility = wrong;
+  mutated.put("archive/data/question_metadata.json", JSON.stringify({ records: [mutated.meta] }));
+  const out = mutated.check(); assert.equal(out.status, "FAIL"); assert.match(out.failures[0].detail, /official difficulty projection failed/);
+  const stale = leveledFixture(t).f; stale.row.legacyLevelCompatibility = wrong; stale.refresh();
+  const staleOut = stale.check(); assert.equal(staleOut.status, "FAIL"); assert.match(staleOut.failures[0].detail, /official difficulty tuple != canonical consumer/);
+});
+
+// A difficulty request blocks only on the fields it changes. The exam file's older inline annotations in other fields stay visible as advisories.
+test("ordinary difficulty request: an inline conflict in a field the request does not change is an advisory, not a refusal", t => {
+  const f = levelLessFixture(t);
+  f.row.metadataConflicts = ["reviewStatus", "problemTypeKey", "templateKey", "integrationPattern"]; f.refresh();
+  const out = f.check(); assert.equal(out.status, "PASS", JSON.stringify(out.failures));
+  assert.deepEqual(out.metadataConflictAdvisories.map(a => [a.field, a.reason]),
+    ["reviewStatus", "problemTypeKey", "templateKey", "integrationPattern"].map(field => [field, "NOT_CHANGED_BY_THIS_REQUEST"]));
+  assert.ok(out.metadataConflictAdvisories.every(a => a.semanticApproval === false));
+  assert.equal(out.exams[0].semanticApproval, false);
+  // a real defect flag is never waived
+  const defect = levelLessFixture(t); defect.row.metadataConflicts = ["foundationTaxonomy"]; defect.refresh();
+  const refused = defect.check(); assert.equal(refused.status, "FAIL"); assert.equal(refused.failures[0].reason, "METADATA_CONFLICT");
+});
+
+test("ordinary difficulty request: an inline placeholder in a registered field is not a conflict, a real inline value that differs is refused", t => {
+  const placeholders = levelLessFixture(t, { inline: { difficultyBucket: "UNKNOWN", difficultyConfidence: "", difficultyBoundaryFlag: null } });
+  placeholders.row.metadataConflicts = ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag"]; placeholders.refresh();
+  const ok = placeholders.check(); assert.equal(ok.status, "PASS", JSON.stringify(ok.failures));
+  assert.deepEqual(ok.metadataConflictAdvisories.map(a => [a.field, a.reason]),
+    ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag"].map(field => [field, "INLINE_PLACEHOLDER_REPLACED"]));
+  for (const [field, inlineValue] of [["difficultyBucket", 5], ["difficultyBucket", "중"], ["difficultyConfidence", "low"], ["difficultyBoundaryFlag", "B45"]]) {
+    const f = levelLessFixture(t, { inline: { [field]: inlineValue } });
+    const registered = f.request.gemini.items[0].after[field];
+    if (registered === inlineValue) continue;
+    f.row.metadataConflicts = [field]; f.refresh();
+    const out = f.check(); assert.equal(out.status, "FAIL", field + "=" + inlineValue);
+    assert.equal(out.failures[0].reason, "METADATA_CONFLICT"); assert.equal(out.failures[0].detail, field);
+    assert.deepEqual(out.metadataConflictAdvisories, []);
+  }
+});
+
+// A text-bound draft (approvalType DRAFT_SINGLE_MODEL, every item carries the stem+choices fingerprint) is bound per question: another
+// question's solution being edited changes the whole-file blob, which the consumer gate must not treat as a mismatch. A request that is not
+// a text-bound draft keeps the whole-file blob binding.
+function draftFixture(t, { draft = true, fingerprint = true } = {}) {
+  const f = levelLessFixture(t), base = JSON.parse(fs.readFileSync(f.file, "utf8")), item = base.gemini.items[0];
+  const file = path.join(f.root, f.entry.sourcePath), context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(file, "utf8"), context);
+  if (fingerprint) item.textBindingFingerprint = textFingerprint(context.window.questionBank[f.entry.sourceOrdinal - 1]);
+  const request = draft ? { ...base, approvalType: DRAFT_SINGLE_MODEL, judge: "opencode-go/deepseek-v4.1-flash" } : base;
+  f.put("difficulty.json", JSON.stringify(request));
+  // another question's solution is edited after the request was generated: the file blob no longer matches latestBlobSha
+  const other = f.entry.sourceOrdinal === 1 ? 1 : 0;
+  fs.appendFileSync(file, `\n;window.questionBank[${other}].solution = "다른 문항 해설 한 글자 수정";\n`);
+  return f;
+}
+
+test("text-bound draft: another question's solution edit (file blob differs) still passes the consumer gate", t => {
+  const f = draftFixture(t), out = f.check();
+  assert.equal(out.status, "PASS", JSON.stringify(out.failures));
+  assert.equal(out.exams[0].officialDifficultyTuplesVerified, 1); assert.equal(out.exams[0].semanticApproval, false);
+});
+
+test("not a text-bound draft (ordinary request or an item without the fingerprint) with a changed file blob is refused as before", t => {
+  for (const options of [{ draft: false }, { fingerprint: false }]) {
+    const out = draftFixture(t, options).check();
+    assert.equal(out.status, "FAIL", JSON.stringify(options)); assert.equal(out.counts.passed, 0);
+    assert.equal(out.failures[0].reason, "SOURCE_BLOB_MISMATCH");
+  }
+});
+
+test("a typed (reviewed) difficulty correction keeps refusing every conflict", t => {
+  const f = difficultyRefusalFixture(t, 0); f.row.metadataConflicts = ["reviewStatus"]; f.refresh();
+  const out = f.check(); assert.equal(out.status, "FAIL"); assert.equal(out.failures[0].reason, "METADATA_CONFLICT"); assert.equal(out.failures[0].detail, "reviewStatus");
 });

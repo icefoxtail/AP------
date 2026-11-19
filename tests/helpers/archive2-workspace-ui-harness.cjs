@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { loadWorkspace } = require('./archive2-workspace-source.cjs');
 
 const root = path.resolve(__dirname, '../..');
 const read = name => fs.readFileSync(path.join(root, 'archive', name), 'utf8');
@@ -93,10 +94,7 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
   vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  if (startup <= 0) throw new Error('workspace network bootstrap was not found');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => { noteRenderedViewTransition(); globalThis.workspaceRenderCount++; globalThis.__onWholeRender(); };
     globalThis.workspaceRenderCount = 0;
     globalThis.workspaceTest = {
@@ -107,7 +105,7 @@ function workspaceHarness(fetcher = async () => { throw new Error('unexpected ne
       setView: view => { state.view = view; noteRenderedViewTransition(); },
       setClasses: rows => { classRows = rows; },
     };
-  })();`, ctx);
+  `);
   const workspace = ctx.workspaceTest;
   workspace.state.catalog = { taxonomy: [], records: [], exams: [], indexVersion: 'ui-test' };
   workspace.state.finderIndex = ctx.Archive2Core.buildFinderIndex(workspace.state.catalog);

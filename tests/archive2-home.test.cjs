@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
+const { readWorkspace, loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
 // Loads the workspace script (minus its network bootstrap) and exposes the home helpers.
@@ -45,13 +46,10 @@ function loadHome() {
   vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     globalThis.homeTest = { state, homeSchoolChips, readRecentExams, rememberRecentExam, homeExamList,
       renderHome, relativeDayLabel, gradeClass };
-  })();`, ctx);
+  `);
   return { ctx, storage, home: ctx.homeTest };
 }
 
@@ -183,5 +181,5 @@ test('home lists the printable class forms as a static link that needs no catalo
 
 test('the three screens that moved into the 보관함 · 출제 내역 switch show it', () => {
   assert.match(read('archive2-library.js'), /libraryTabs\?\.\("saved"\)/);
-  assert.match(read('archive2-workspace.js'), /libraryTabs\?\.\("recent"\)/);
+  assert.match(readWorkspace(), /libraryTabs\?\.\("recent"\)/);
 });

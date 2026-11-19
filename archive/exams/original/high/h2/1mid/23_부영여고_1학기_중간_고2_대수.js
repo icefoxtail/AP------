@@ -402,7 +402,7 @@ window.questionBank = [
   {
     "id": 12,
     "level": "상",
-    "content": "각 변환과 삼각함수의 성질을 이용하여 $a^2+b^2$ 의 값을 구하시오. [4.7점]",
+    "content": "$\\sin\\left(\\frac{\\pi}{2}+\\theta\\right)+\\sin(\\pi-\\theta)+\\cos\\left(\\frac{\\pi}{2}+\\theta\\right)+\\cos(-\\theta)=a$, $\\cos^{2}\\theta(1+\\tan\\theta)^{2}+2\\sin\\theta(1-\\cos\\theta)-1=b$ 라 할 때, 두 상수 $a, b$에 대하여 $a^{2}+b^{2}$ 의 값은? [4.7점]",
     "choices": [
       "2",
       "3",
@@ -410,7 +410,7 @@ window.questionBank = [
       "5",
       "6"
     ],
-    "answer": "①",
+    "answer": "③",
     "category": "삼각함수의 각 변환",
     "originalCategory": "삼각함수의 각 변환",
     "standardCourse": "대수",
@@ -429,7 +429,7 @@ window.questionBank = [
       "개념"
     ],
     "wide": false,
-    "solution": "<b>[Logical Anchor]</b> $\\sin(\\frac{\\pi}{2}+\\theta) = \\cos\\theta$ 등의 성질을 사용하여 식을 단순화함.\\n주어진 식의 삼각함수 항들을 각 변환 공식을 통해 1차 결합함.\\n계산 결과 $a=1, b=1$ (또는 합이 일정한 상수 도출)\\n$\\therefore a^2 + b^2 = 2$",
+    "solution": "<b>[Logical Anchor]</b> 각 변환 공식으로 $a$, $b$를 $\\theta$의 식으로 단순화함.\\n$a=\\cos\\theta+\\sin\\theta-\\sin\\theta+\\cos\\theta=2\\cos\\theta$\\n$b=(\\cos\\theta+\\sin\\theta)^2+2\\sin\\theta-2\\sin\\theta\\cos\\theta-1=1+2\\sin\\theta\\cos\\theta+2\\sin\\theta-2\\sin\\theta\\cos\\theta-1=2\\sin\\theta$\\n$\\therefore a^2+b^2=4\\cos^2\\theta+4\\sin^2\\theta=4$",
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -466,6 +466,7 @@ window.questionBank = [
       "상급"
     ],
     "wide": false,
+    "image": "assets/images/23_부영여고_1학기_중간_고2_대수/q13.png",
     "solution": "<b>[Logical Anchor]</b> 그래프의 진폭(최대/최소), 주기, 평행이동을 순차적으로 분석함.\\n$i)  a  도출: 최댓값  3,  최솟값  -3 \\implies a = 3$\\n$ii)  b  도출: 주기가  \\pi \\implies \\frac{2\\pi}{b} = \\pi \\implies b = 2$\\n$iii)  c  도출:  x = \\frac{5}{6}\\pi  에서 최대  3 \\implies 2(\\frac{5}{6}\\pi) - c = 0 \\implies c = \\frac{5}{3}\\pi$\\n$iv) 계산:  \\frac{3 \\cdot 2 \\cdot 5/3\\pi}{\\pi} = 10$\\n$\\therefore 10$",
     "subUnitKey": "H22-C-10-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
@@ -549,7 +550,7 @@ window.questionBank = [
   {
     "id": 16,
     "level": "상",
-    "content": "방정식 $\\cos^{2}x - \\sin x + 1 - k = 0$ 이 서로 다른 두 실근을 갖도록 하는 실수 $k$ 의 범위가 $a \\le k \\le b$ 일 때, $b-a$ 의 값은? [4.9점]",
+    "content": "방정식 $\\cos^{2}x - \\sin x + 1 - k = 0$ 이 실근을 갖도록 하는 실수 $k$ 의 범위가 $a \\le k \\le b$ 일 때, $b-a$ 의 값은? [4.9점]",
     "choices": [
       "1/4",
       "3/4",

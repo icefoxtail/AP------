@@ -44,11 +44,15 @@ export function fingerprint(rows, patterns) {
     .map(r=>`${r.path}\0${r.mode}\0${r.blob}\n`).join(''));
 }
 const inputFingerprint=(rows,lane)=>sha(json({patterns:lane.inputs,parameters:lane.parameters||{},files:fingerprint(rows,lane.inputs)}));
+// Refusal/pending records are named like their request, so .gitignore (for example `*textbook*`) can match them.
+// Those two directories alone are listed without the ignore rules; every other ignored file stays unlisted.
+const RECORD_DIRS=['.archive-meta-register/rejected/','.archive-meta-register/pending-supplement/'];
 const unstaged = root => unique([...splitZ(git(root,'diff','--name-only','--no-renames','-z')),
-  ...splitZ(git(root,'ls-files','--others','--exclude-standard','-z'))]);
+  ...splitZ(git(root,'ls-files','--others','--exclude-standard','-z')),
+  ...splitZ(git(root,'ls-files','--others','-z','--',...RECORD_DIRS))]);
 const changed = root => unique([...splitZ(git(root,'diff','HEAD','--name-only','--no-renames','-z')), ...unstaged(root)]);
 function stage(root, files) {
-  for(let i=0;i<files.length;i+=200)git(root,'--literal-pathspecs','add','--',...files.slice(i,i+200));
+  for(let i=0;i<files.length;i+=200)git(root,'--literal-pathspecs','add','-f','--',...files.slice(i,i+200));
 }
 function guardFiles(files, allowed, label) {
   const bad=files.filter(f=>!matches(f,allowed));
@@ -223,6 +227,18 @@ function checkPreserved(root,beforeRows,beforeSeals) {
   const seals=read(root,'archive/data/meta-foundation/crosswalks/sealed-digests.v1.json',{entries:[]});
   const after=new Map((seals.entries||[]).map(e=>[`${e.path}\0${e.sha256}`,JSON.stringify(e)]));
   for(const e of beforeSeals.entries||[])if(after.get(`${e.path}\0${e.sha256}`)!==JSON.stringify(e))throw Error('EXISTING_CROSSWALK_SEAL_CHANGED');
+}
+
+// A request that left the inbox must be applied (the pass's applied list) or have its rejected/pending record in the
+// index. A new record whose name .gitignore matches (for example `*textbook*`) never reaches the index, so only the
+// inbox deletion would be committed: the request would vanish, neither applied nor rejected.
+const INBOX='.archive-meta-register/inbox/',REJECTED='.archive-meta-register/rejected/',PENDING='.archive-meta-register/pending-supplement/';
+export function silentInboxDrops(root,before,nativeWork) {
+  const after=new Set(indexRows(root).map(r=>r.path)),appliedFile=path.join(nativeWork,'archive-meta-register-pass','applied.txt');
+  const applied=new Set(fs.existsSync(appliedFile)?fs.readFileSync(appliedFile,'utf8').split(/\r?\n/).filter(Boolean).map(p=>path.posix.basename(p.replace(/\\/g,'/'))):[]);
+  return before.map(r=>r.path).filter(p=>p.startsWith(INBOX)&&p.endsWith('.json')&&!p.slice(INBOX.length).includes('/')&&!after.has(p))
+    .map(p=>p.slice(INBOX.length)).filter(name=>!applied.has(name)
+      &&!(after.has(REJECTED+name)&&after.has(REJECTED+name.replace(/\.json$/,'.rejection.json')))&&!after.has(PENDING+name));
 }
 
 function assertClean(root) {
@@ -555,6 +571,12 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   guardFiles(changed(root),[...allOutputs,STATE],'TRANSACTION');
   if(unstaged(root).length)throw Error('UNSTAGED_TRANSACTION_OUTPUT');
   try {
+    const dropped=silentInboxDrops(root,before,nativeWork);
+    if(dropped.length) {
+      const names=dropped.slice(0,15).join(',');
+      if(env.GITHUB_STEP_SUMMARY)fs.appendFileSync(env.GITHUB_STEP_SUMMARY,`\nSILENT_INBOX_DROP: ${names}: left the inbox with no applied record and no committed rejected/pending record; nothing is committed and the requests stay in the inbox.\n`);
+      throw Error(`SILENT_INBOX_DROP:${names}: left the inbox with no applied record and no committed rejected/pending record (the rejected copy may have been dropped by .gitignore, for example a name containing "textbook")`);
+    }
     report.whitespace=checkStagedRegistrationWhitespace(root);
     checkPreserved(root,before,initialSeals);
   } catch(error) {

@@ -7,6 +7,7 @@ const crypto = require('node:crypto');
 const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
 const { catalog, withTestAssignments } = require('./helpers/archive2-scope-harness.cjs');
+const { readWorkspace, loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -50,14 +51,11 @@ function harness(data = structuredClone(catalog)) {
     Archive2Source: archiveSource,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {setRender: fn => { render = fn; }, state, scopeOptions, renderScopes, renderComposition, renderInspector, renderCompose, renderMobileActions, planRows, request, bucketButtons, newDraft, draft, applyDraft, applySavedPaperRevision, saveWorkSignature, savePapers, prepare, print, assign, findExams, renderFind, pool, routeUrl, urlState, replaceUrlState, readUrl};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.byUid = new Map(data.records.map(row => [row.questionUid, row]));
@@ -77,7 +75,7 @@ function harness(data = structuredClone(catalog)) {
 }
 
 function configureSaveHarness(t) {
-  const { w, ctx } = harness();
+  const { w, ctx, click, change } = harness();
   const previousDocument = global.document;
   const previousFetch = global.fetch;
   global.document = { baseURI: "https://archive.test/archive/workspace.html" };
@@ -105,7 +103,7 @@ function configureSaveHarness(t) {
   w.state.ackWarnings = true;
   ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   ctx.APMATH_API_BASE = "https://archive.test/api";
-  return { w, ctx };
+  return { w, ctx, click, change };
 }
 
 function basicRecord(grade, change = {}) {
@@ -575,18 +573,18 @@ test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
     ['archive2-canonical.js', '20261104-source-meta-approval-1'],
-    ['archive2-core.js', '20261111-one-lane-difficulty-1'],
+    ['archive2-core.js', '20261119-pair-type-spread-1'],
     ['meta-foundation-runtime.js', '20261110-first-paint-1'],
     ['archive2-history.js', '20261110-teacher-copy-1'],
-    ['archive2-workspace.js', '20261118-error-detail-1'],
     ['archive2-quick-pools.js', '20261117-middle-parent-1'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
     ['archive2-unified-units.js', '20261117-middle-parent-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
+  assertWorkspaceScriptVersions(assert);
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
-  assert.match(html, /archive2-source\.js\?v=20261118-error-detail-1/);
+  assert.match(html, /archive2-source\.js\?v=20261119-source-parallel-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
   assert.match(html, /archive2\.css\?v=20261117-home-forms-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
@@ -1518,9 +1516,166 @@ test('저장이 정본 메타 불일치(409)로 거절되면 화면에는 안내
   assert.equal(state.saveError, '분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.');
   assert.doesNotMatch(state.saveError, /parity|courseKey/);
   assert.ok(warn.mock.calls.some(call => call.arguments.some(arg => String(arg).includes(raw))), 'raw server text goes to console.warn');
-  // 다른 거절은 이 PR 범위 밖이라 그대로 둔다.
+  // 너무 큼(413)은 서버 문장 대신 할 일이 든 문구를 보이고, 서버 원문은 접힌 상세로 간다(아래 테스트).
   const other = await run('1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.', 413);
-  assert.equal(other.saveError, '1권 데이터가 저장 한도(1,500,000바이트)를 넘었습니다.');
+  assert.match(other.saveError, /너무 커서.*나누거나 문항 수를 줄여/);
+});
+
+// ---- 저장 실패 문구: 거절 이유마다 다른 문구, 할 일 포함, 서버 원문·내부 용어 비노출 ----
+// 화면은 archive2-error-detail.js가 있을 때 문구를 만든다(워크스페이스 페이지가 함께 올린다). 하네스에도 올려 실제 경로로 본다.
+const withErrorDetail = harness => { harness.ctx.Archive2ErrorDetail = require('../archive/archive2-error-detail.js'); return harness; };
+test('저장 실패 문구는 이유(로그인 만료·너무 큼·분류 기준 갱신·분류 자료 불일치)마다 다르고 할 일이 들어 있다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const cases = [
+    { status: 401, raw: 'Unauthorized', todo: /다시 로그인/, keeps: /초안에 남아 있습니다/ },
+    { status: 403, raw: 'Forbidden: teacher only', todo: /다시 로그인/, keeps: /초안에 남아 있습니다/ },
+    { status: 413, raw: 'Payload too large: 1500000 bytes', todo: /나누거나 문항 수를 줄여/ },
+    { status: 409, raw: '분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.', todo: /새로고침/, stale: true },
+    { status: 409, raw: 'canonical metadata parity mismatch: courseKey', todo: /새로고침/ },
+  ];
+  const seen = new Map();
+  for (const item of cases) {
+    const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+    let posts = 0;
+    ctx.fetch = async (url, init = {}) => {
+      const parsed = new URL(String(url));
+      if (parsed.pathname === '/api/archive-saved-papers' && init.method === 'POST') { posts++; return { ok: false, status: item.status, json: async () => ({ success: false, error: item.raw }) }; }
+      if (parsed.pathname.endsWith('/data/archive2-canonical-input-manifest.json')) return { ok: false, status: 503, text: async () => '' };
+      throw new Error('unexpected request: ' + parsed.pathname);
+    };
+    await w.savePapers();
+    const shown = w.state.saveError, label = `${item.status} ${item.raw}`;
+    assert.equal(w.state.saveResultState, 'FAILED', label);
+    assert.match(shown, item.todo, label);
+    if (item.keeps) assert.match(shown, item.keeps, label);
+    assert.doesNotMatch(shown, /parity|courseKey|Unauthorized|Forbidden|Payload|bytes|HOLD|projection|canonical|HTTP/i, label);
+    assert.match(String(ctx.document.getElementById('status').textContent), /시험지를 저장하지 못했습니다\./, label);
+    assert.ok(posts <= 2, label + ': no extra retries beyond the existing stale-version resend');
+    seen.set(label, shown);
+  }
+  // 401과 403은 같은 안내, 나머지는 서로 다른 문구.
+  assert.equal(seen.get('401 Unauthorized'), seen.get('403 Forbidden: teacher only'));
+  const distinct = new Set([...seen.values()]);
+  assert.equal(distinct.size, 4, [...distinct].join(' | '));
+});
+
+test('저장 실패의 서버 원문은 접힌 상세에만 있고, 표에 없는 거절은 일반 문구에 코드가 붙는다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+  captureSavePost(ctx, () => ({ ok: false, status: 413, json: async () => ({ success: false, error: 'Payload too large: 1500000 bytes' }) }));
+  await w.savePapers();
+  const info = require('../archive/archive2-error-detail.js').describe(Object.assign(new Error('Payload too large: 1500000 bytes'), { status: 413, data: { error: 'Payload too large: 1500000 bytes' } }), { headline: w.state.saveError });
+  assert.equal(info.headline, w.state.saveError);
+  assert.match(info.detailText, /Payload too large/, 'the original text is in the folded detail');
+  assert.match(info.detailText, /413/);
+  assert.doesNotMatch(info.headline, /Payload/);
+  // 표에 없는 4xx(예: 422)는 지금과 같다: 영어 원문은 일반 문구로 가려진다.
+  const other = withErrorDetail(configureSaveHarness(t));
+  captureSavePost(other.ctx, () => ({ ok: false, status: 422, json: async () => ({ success: false, error: 'validation failed: papers[0]' }) }));
+  await other.w.savePapers();
+  assert.equal(other.w.state.saveResultState, 'FAILED');
+  assert.equal(other.w.state.saveError, 'validation failed: papers[0]', 'unchanged: the screen turns this into the general sentence');
+  assert.equal(other.ctx.document.getElementById('status').textContent, '시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.');
+});
+
+test('네트워크 끊김·시간 초과는 거절이 아니라 결과 모름이라 저장 결과 확인을 안내한다(문구 그대로)', async t => {
+  for (const make of [() => new TypeError('Failed to fetch'), () => Object.assign(new Error('응답이 늦습니다. 잠시 뒤 다시 시도해 주세요.'), { timeout: true })]) {
+    const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+    ctx.fetch = async (url, init = {}) => { if (new URL(String(url)).pathname === '/api/archive-saved-papers' && init.method === 'POST') throw make(); throw new Error('lost'); };
+    await w.savePapers();
+    assert.equal(w.state.saveResultState, 'RESULT_UNKNOWN');
+    assert.match(String(ctx.document.getElementById('status').textContent), /저장 결과를 확인하지 못했습니다.*저장 결과 확인/);
+  }
+});
+
+// ---- 요청이 나가기 전의 실패(로그인 정보 없음)는 결과 모름이 아니다. 나간 뒤의 끊김·시간 초과·5xx는 계속 결과 모름 ----
+const LOGIN_NEEDED = /로그인이 필요합니다.*로그인한 뒤 저장해 주세요.*초안에 남아 있습니다/;
+function countingFetch(ctx, reply) {
+  const calls = [];
+  ctx.fetch = async (url, init = {}) => {
+    const parsed = new URL(String(url));
+    calls.push(parsed.pathname + ' ' + (init.method || 'GET'));
+    return reply(parsed, init);
+  };
+  return calls;
+}
+const saveCalls = calls => calls.filter(call => call === '/api/archive-saved-papers POST').length;
+
+test('로그인 정보가 없으면 요청을 보내지 않고 일반 실패로 처리한다: 편집 잠금 없음, 로그인 안내, 같은 batch id로 다시 저장', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const { w, ctx, statusText } = (() => { const h = withErrorDetail(configureSaveHarness(t)); return { ...h, statusText: () => String(h.ctx.document.getElementById('status').textContent) }; })();
+  ctx.localStorage.setItem('APMATH_SESSION', 'null'); // 로그인 정보 없음
+  const calls = countingFetch(ctx, () => { throw new Error('nothing may be fetched without a login'); });
+  await w.savePapers();
+  assert.equal(calls.length, 0, 'fetch is never called');
+  assert.equal(w.state.saveResultState, 'FAILED');
+  assert.notEqual(w.state.saveResultState, 'RESULT_UNKNOWN');
+  assert.match(w.state.saveError, LOGIN_NEEDED);
+  assert.match(statusText(), LOGIN_NEEDED);
+  assert.doesNotMatch(statusText() + w.state.saveError, /결과를 확인하지 못했습니다|저장 결과 확인|중복 저장/);
+  const batch = w.state.saveBatchId;
+  assert.ok(batch, 'the batch id was prepared but never reached the server');
+  await w.savePapers(); // 다시 눌러도 같은 안내(편집·저장이 잠기지 않음)
+  assert.equal(w.state.saveResultState, 'FAILED');
+  assert.equal(calls.length, 0);
+  // 로그인한 뒤 같은 내용을 다시 저장하면 같은 batch id로 한 번 나가 저장된다(요청이 나간 적 없으므로 중복 위험 없음).
+  ctx.localStorage.setItem('APMATH_SESSION', JSON.stringify({ id: 'fixture-teacher', session_token: 'fixture-token' }));
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(bodies.length, 1);
+  assert.equal(bodies[0].save_batch_id, batch);
+});
+
+test('요청이 나간 뒤의 네트워크 끊김·시간 초과·5xx는 계속 결과 모름(RESULT_UNKNOWN)이다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const replies = [
+    ['network cut', () => { throw new TypeError('Failed to fetch'); }],
+    ['timeout error', () => { throw Object.assign(new Error('응답이 늦습니다. 잠시 뒤 다시 시도해 주세요.'), { timeout: true }); }],
+    ['503', () => ({ ok: false, status: 503, json: async () => ({ success: false, error: 'Service Unavailable' }) })],
+    ['500', () => ({ ok: false, status: 500, json: async () => ({ success: false, error: 'Internal error' }) })],
+  ];
+  for (const [label, reply] of replies) {
+    const { w, ctx } = withErrorDetail(configureSaveHarness(t));
+    const calls = countingFetch(ctx, (parsed, init) => {
+      if (parsed.pathname === '/api/archive-saved-papers' && init.method === 'POST') return reply();
+      throw new TypeError('Failed to fetch'); // 결과 확인(GET)도 닿지 않는다
+    });
+    await w.savePapers();
+    assert.equal(saveCalls(calls), 1, label);
+    assert.equal(w.state.saveResultState, 'RESULT_UNKNOWN', label);
+    assert.match(String(ctx.document.getElementById('status').textContent), /저장 결과를 확인하지 못했습니다.*저장 결과 확인/, label);
+    assert.doesNotMatch(String(ctx.document.getElementById('status').textContent), /로그인이 필요합니다/, label);
+  }
+});
+
+test('401 응답은 로그인 만료 문구, 요청 전 로그인 없음은 로그인 필요 문구로 서로 다르다', async t => {
+  t.mock.method(console, 'warn', () => {});
+  const expired = withErrorDetail(configureSaveHarness(t));
+  captureSavePost(expired.ctx, () => ({ ok: false, status: 401, json: async () => ({ success: false, error: 'Unauthorized' }) }));
+  await expired.w.savePapers();
+  assert.equal(expired.w.state.saveResultState, 'FAILED');
+  assert.match(expired.w.state.saveError, /로그인이 만료됐습니다/);
+  const missing = withErrorDetail(configureSaveHarness(t));
+  missing.ctx.localStorage.setItem('APMATH_SESSION', 'null');
+  await missing.w.savePapers();
+  assert.match(missing.w.state.saveError, /로그인이 필요합니다/);
+  assert.notEqual(expired.w.state.saveError, missing.w.state.saveError);
+});
+
+test('api()는 로그인 없이 막힌 요청에만 requestNotSent를 달고, 서버·네트워크 오류에는 달지 않는다', async t => {
+  const { ctx } = configureSaveHarness(t);
+  const request = ctx.Archive2Api.request;
+  ctx.localStorage.setItem('APMATH_SESSION', 'null');
+  let calls = 0;
+  ctx.fetch = async () => { calls++; return { ok: true, status: 200, json: async () => ({ success: true }) }; };
+  await assert.rejects(request('/anything', { a: 1 }), error => error.requestNotSent === true);
+  assert.equal(calls, 0);
+  ctx.localStorage.setItem('APMATH_SESSION', JSON.stringify({ id: 'fixture-teacher', session_token: 'fixture-token' }));
+  ctx.fetch = async () => { throw new TypeError('Failed to fetch'); };
+  await assert.rejects(request('/anything', { a: 1 }), error => error.requestNotSent === undefined);
+  ctx.fetch = async () => ({ ok: false, status: 500, json: async () => ({ success: false, error: 'x' }) });
+  await assert.rejects(request('/anything', { a: 1 }), error => error.requestNotSent === undefined && error.status === 500);
 });
 
 // ---- 저장은 "낡은 줄 아는 버전"을 보내지 않고, 서버가 앞서간 경우 한 번만 다시 읽어 다시 보낸다 ----
@@ -1631,7 +1786,7 @@ test('기준 갱신이 아닌 409·413은 자동으로 다시 보내지 않는�
 });
 
 test('낡은 초안 버전은 저장 버튼 옆에 개발자식 안내를 내지 않는다', () => {
-  assert.doesNotMatch(read('archive2-workspace.js'), /문항 목록 버전이 달라/);
+  assert.doesNotMatch(readWorkspace(), /문항 목록 버전이 달라/);
 });
 
 // ---- 수정본 재저장: 저장본에 서버가 내장한 그림(data: URL)은 전송 사본에서만 원래 경로로 되돌린다 (수리 목록 34) ----
@@ -1721,4 +1876,62 @@ test('수정본 재저장: 저장본 문항의 본문이 달라졌으면(그림 
   assert.notEqual(w.state.saveResultState, 'SAVED');
   assert.equal(bodies.length, 0, 'nothing was sent');
   assert.match(w.state.saveError, /원본 문항이 바뀌어/);
+});
+
+// ---- 학년·과목 버튼을 누른 뒤 저장해도 서버가 모르는 조건 키가 실리지 않는다 ----
+// 학년·과목 버튼(changeComposeFilter)은 state.filters에 metaL3/metaPT/metaTPL/metaApprovedOnly를 ""로 만든다. 저장 서버는 값과 상관없이 모르는 키가 있으면
+// 409 "허용되지 않은 출제 조건"으로 거절하므로, 저장 요청의 키는 서버가 읽는 허용 키 안에 있어야 한다. 허용 키는 손으로 옮겨 적지 않고 Worker 소스에서 읽는다.
+function workerFilterKeys() {
+  const text = fs.readFileSync(path.join(root, 'apmath/worker-backup/worker/helpers/archive-saved-papers.js'), 'utf8');
+  const body = /const FILTER_KEYS = new Set\(\[([\s\S]*?)\]\)/.exec(text);
+  assert.ok(body, 'the Worker declares FILTER_KEYS');
+  const keys = new Set([...body[1].matchAll(/"([^"]+)"/g)].map(match => match[1]));
+  assert.ok(keys.has('grade') && keys.has('primaryPaths') && keys.has('scopeQuestionUids'), 'the parsed Worker key list is the real one');
+  return keys;
+}
+async function pressThenSave(t, presses) {
+  const { w, ctx, click, change } = configureSaveHarness(t);
+  for (const press of presses) {
+    if (press.change) await change('compose', press.change[0], press.change[1]);
+    else await click(press);
+  }
+  // 버튼이 단원 선택과 만든 결과를 비우므로, 버튼 뒤의 학년에서 단원을 고르고 문항을 뽑은 상태를 다시 만든다.
+  const record = catalog.records.find(row => row.effectiveBrowseGrade === w.state.filters.grade &&
+    core.matches(row, w.state.filters, w.state) &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  assert.ok(record, 'a BASIC-eligible record that the pressed grade/subject filters accept in ' + w.state.filters.grade);
+  const scope = core.pathKey(record, 4);
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.ackWarnings = true;
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(bodies.length, 1);
+  return { w, record, filters: bodies[0].selection_filters };
+}
+const GRADE_BUTTONS = [{ action: 'compose-grade', grade: '중3' }, { action: 'compose-grade', grade: '고1' }];
+
+for (const [name, presses] of [
+  ['학년 버튼', [GRADE_BUTTONS[0]]],
+  ['다른 학년 버튼', [GRADE_BUTTONS[1]]],
+  ['학년 버튼 뒤 과목 버튼', [GRADE_BUTTONS[1], { action: 'compose-subject', subject: 'COMMON_MATH_2' }]],
+  ['과목 버튼', [{ action: 'compose-subject', subject: 'COMMON_MATH_1' }]],
+]) {
+  test(`${name}를 누른 뒤 저장 요청의 selection_filters 키는 전부 서버 허용 키 안에 있다`, async t => {
+    const allowed = workerFilterKeys();
+    const { filters } = await pressThenSave(t, presses);
+    const unknown = Object.keys(filters).filter(key => !allowed.has(key));
+    assert.deepEqual(unknown, [], 'the server answers 409 for any key it does not know');
+  });
+}
+
+test('세부 조건(개념·유형·풀이)을 실제로 고른 경우도 조건 키는 싣지 않고, 고른 문항은 범위 목록으로 서버 재검증을 통과한다', async t => {
+  const allowed = workerFilterKeys();
+  const { w, record, filters } = await pressThenSave(t, [GRADE_BUTTONS[1], { change: ['metaApprovedOnly', '1'] }]);
+  assert.equal(w.state.filters.metaApprovedOnly, '1', "the teacher's choice stays the screen state (and the draft keeps it)");
+  assert.deepEqual(Object.keys(filters).filter(key => !allowed.has(key)), []);
+  assert.ok(filters.scopeQuestionUids.includes(record.questionUid), 'the selection travels as the scope UID list');
+  assert.equal(core.matches(record, filters, { canonicalAuthority: catalog.canonicalAuthority }), true, 'the server replay accepts the saved question');
 });

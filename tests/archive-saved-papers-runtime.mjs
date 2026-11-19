@@ -488,7 +488,9 @@ try {
     const parentRow = await db.prepare("SELECT * FROM archive_saved_papers WHERE id=?").bind(directId).first();
     const insertRow = async (patch) => {
       const row = { ...parentRow, id: uuid(), save_batch_id: uuid(), save_request_hash: crypto.randomBytes(32).toString("hex"), ...patch };
-      row.snapshot_hash = crypto.createHash("sha256").update(row.snapshot_json).digest("hex");
+      // A test row may carry its own snapshot_hash to model a stored paper whose hash no longer matches (rows are immutable once stored).
+      if (!Object.prototype.hasOwnProperty.call(patch, "snapshot_hash"))
+        row.snapshot_hash = crypto.createHash("sha256").update(row.snapshot_json).digest("hex");
       const columns = Object.keys(row);
       await db.prepare(`INSERT INTO archive_saved_papers (${columns.join(",")}) VALUES (${columns.map(() => "?").join(",")})`)
         .bind(...columns.map((column) => row[column])).run();
@@ -505,6 +507,23 @@ try {
     // A malformed asset record is rejected like any other snapshot defect.
     const malformedId = await insertRow({ snapshot_json: stableStringify({ ...stored, assets: [{ path: "not-an-image-path", sha256: "x", bytes: -1 }] }) });
     assert.equal((await request(`archive-saved-papers/${malformedId}`)).status, 409);
+
+    // A new-format snapshot (with assets) is read only while its hash matches the stored snapshot_hash.
+    assert.ok(Array.isArray(stored.assets) && stored.assets.length > 0, "fixture snapshot is the new key-reference format");
+    const intactId = await insertRow({ snapshot_json: stableStringify(stored) });
+    assert.equal((await request(`archive-saved-papers/${intactId}`)).status, 200, "control: intact new-format snapshot is readable");
+    // (a) snapshot_json altered after the hash was recorded (an image record changed).
+    // Saved rows are immutable (trigger), so each tampered paper is inserted as a new row.
+    const alteredAssets = stored.assets.map((asset, index) => index === 0 ? { ...asset, sha256: "0".repeat(64) } : asset);
+    const originalHash = crypto.createHash("sha256").update(stableStringify(stored)).digest("hex");
+    const alteredId = await insertRow({ snapshot_json: stableStringify({ ...stored, assets: alteredAssets }), snapshot_hash: originalHash });
+    const alteredDetail = await request(`archive-saved-papers/${alteredId}`);
+    assert.equal(alteredDetail.status, 409, "new-format snapshot whose assets no longer match its hash is rejected");
+    const alteredAssign = await request("class-exam-assignments", "POST", { ...assignmentInput, saved_paper_id: alteredId, assignment_batch_id: uuid() });
+    assert.notEqual(alteredAssign.body?.saved, true, "a hash-mismatched saved paper cannot be assigned");
+    // (b) the stored hash itself is wrong while snapshot_json is intact.
+    const badHashId = await insertRow({ snapshot_json: stableStringify(stored), snapshot_hash: "f".repeat(64) });
+    assert.equal((await request(`archive-saved-papers/${badHashId}`)).status, 409, "new-format snapshot with a wrong snapshot_hash is rejected");
   }
   const priorBlueprintCount = Number((await db.prepare("SELECT COUNT(*) n FROM exam_blueprints WHERE archive_file=?").bind(assignment.body.assignment.archive_file).first()).n);
   assert.ok(priorBlueprintCount >= 1);

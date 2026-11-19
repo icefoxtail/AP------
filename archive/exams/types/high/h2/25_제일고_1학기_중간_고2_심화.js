@@ -266,7 +266,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "$f(x)=a\\cos bx+c$의 최댓값 $4$, 최솟값 $-2$, 주기 $3\\pi$일 때, $f(\\frac{\\pi}{2})$의 값은?",
+    "content": "$f(x)=a\\cos bx+c$의 최댓값 $4$, 최솟값 $-2$, 주기 $3\\pi$일 때, $f(\\frac{\\pi}{2})$의 값은? (단, $a>0$, $b>0$)",
     "choices": [
       "$\\frac{1}{2}$",
       "$1$",

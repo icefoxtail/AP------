@@ -191,6 +191,28 @@ test("a pack that does not declare the binding course is skipped by default and 
   assert.equal(planRequests({ ctx, resultRows: rows, approvedBy: "x" }).requests.length, 0);
 });
 
+test("a status tag does not block a blank field: approved_semantic_review with no value converts, a value that is present stays", () => {
+  const sem = { problemType: "approved_semantic_review", template: "approved_semantic_review" };
+  const recs = [
+    row(1, { problemTypeKey: "", templateKey: "", fieldStatus: { ...sem } }), // blank string, approved tag
+    row(2, { problemTypeKey: null, templateKey: null, fieldStatus: { ...sem } }), // null, approved tag
+    row(3, { problemTypeKey: "PT_A", templateKey: "", fieldStatus: { ...sem } }), // type value present and approved
+    row(4, { problemTypeKey: "", templateKey: "TPL_A", fieldStatus: { ...sem } }), // only the template value present and approved
+    row(5, { problemTypeKey: "", templateKey: "", fieldStatus: { problemType: "meta_semantic_hold", template: "manual_review_pending" } }), // blank with a hold tag: nothing to protect
+    row(6), row(7) // the exam has 7 questions; these two have no result line
+  ];
+  const ctx = makeCtx({ records: recs });
+  const rows = [1, 2, 3, 4, 5].map(n => line(n));
+  const { requests, skipped } = planRequests({ ctx, resultRows: rows, approvedBy: "x" });
+  assert.deepEqual(requests[0].items.map(i => i.questionUid), ["uid1", "uid2", "uid5"]);
+  for (const i of requests[0].items) assert.deepEqual(i.before, { problemTypeKey: "", templateKey: "" });
+  assert.deepEqual(skipped.map(s => [s.uid, s.reason]), [["uid3", "TYPE_ALREADY_PRESENT"], ["uid4", "TYPE_ALREADY_PRESENT"]]);
+  // the approved value is kept under --replace-draft-types too (counted with its own reason, not replaced)
+  const rep = planRequests({ ctx, resultRows: [line(3, { pt: "PT_HIGH", tpl: null })], approvedBy: "x", replaceDraft: true });
+  assert.equal(rep.requests.length, 0);
+  assert.equal(rep.skipped[0].reason, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT");
+});
+
 test("rows with receipts on other fields are skipped by default and converted on request", () => {
   const dflt = plan();
   assert.equal(dflt.requests[0].items.some(i => i.questionUid === "uid7"), false);

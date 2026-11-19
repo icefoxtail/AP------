@@ -5,6 +5,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 const { workspaceHarness, okJson } = require("./helpers/archive2-workspace-ui-harness.cjs");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const sessionSource = fs.readFileSync(path.join(__dirname, "..", "archive", "archive2-session.js"), "utf8");
 const SESSIONS = {
@@ -123,7 +124,7 @@ test("보관함: a 401/403 shows the notice; any other failure shows one alert w
 });
 
 test("the login notice puts the explanation below the button, and success sentences are not printed", () => {
-  const workspace = fs.readFileSync(path.join(__dirname, "..", "archive", "archive2-workspace.js"), "utf8");
+  const workspace = readWorkspace();
   assert.match(workspace, /<p><a class="button-like primary" href="\.\.\/apmath\/"[^>]*>선생님 로그인<\/a><\/p><p class="muted">로그인한 뒤 이 화면으로 돌아오면 됩니다\.<\/p>/);
   assert.doesNotMatch(workspace, /status\("저장한 시험지를 불러왔습니다\."\)|status\("저장한 시험지를 서버에서 불러오고 있습니다\."\)/);
   const library = fs.readFileSync(path.join(__dirname, "..", "archive", "archive2-library.js"), "utf8");

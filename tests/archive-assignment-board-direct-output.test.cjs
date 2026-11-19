@@ -1,11 +1,12 @@
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const { test } = require("node:test");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const board = fs.readFileSync("archive/index.html", "utf8");
 const worker = fs.readFileSync("apmath/worker-backup/worker/routes/exams.js", "utf8");
 const engine = fs.readFileSync("archive/engine.html", "utf8");
-const workspace = fs.readFileSync("archive/archive2-workspace.js", "utf8");
+const workspace = readWorkspace();
 function assertMatch(source, pattern, message) {
   assert.equal(pattern.test(source), true, message);
 }

@@ -11,6 +11,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
+const { readWorkspace, loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const archiveDir = path.join(__dirname, '..', 'archive');
 const read = (name) => fs.readFileSync(path.join(archiveDir, name), 'utf8');
@@ -219,11 +220,9 @@ function boot(search = '', { session = false } = {}) {
   vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);
-  let source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {\n    readUrl();');
-  assert.ok(startup > 0, 'the boot IIFE keeps its shape');
-  source = source.slice(0, startup) + 'globalThis.__ws = { state, renderContent, render, status };\n' + source.slice(startup);
-  vm.runInContext(source, ctx);
+  assert.ok(readWorkspace().includes('  (async () => {\n    readUrl();'), 'the boot IIFE keeps its shape');
+  // the hook runs before the boot IIFE starts, so the boot's first draw is already visible to the test
+  loadWorkspace(ctx, 'globalThis.__ws = { state, renderContent, render, status };', { boot: true });
   const fill = (name) => { if (!nodes.has('fill:' + name)) nodes.set('fill:' + name, makeNode('fill:' + name)); return nodes.get('fill:' + name); };
   return {
     ctx, ws: ctx.__ws, node, library, pushed, storage, fill,

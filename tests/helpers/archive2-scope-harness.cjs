@@ -4,7 +4,6 @@ const vm = require('node:vm');
 const crypto = require('node:crypto');
 const core = require('../../archive/archive2-core.js');
 const archiveDir = path.resolve(__dirname, '../../archive');
-const workspaceSource = fs.readFileSync(path.join(archiveDir, 'archive2-workspace.js'), 'utf8');
 
 function readProjection() {
   const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, 'data/archive2-canonical-input-manifest.json'), 'utf8'));
@@ -74,11 +73,13 @@ function workspace(filters = { grade: '중1' }, data = catalog) {
   data = withTestAssignments(data);
   const listeners = {}, controls = {};
   const window = { Archive2Core: core, Archive2Canonical: core.Canonical };
-  vm.runInNewContext(workspaceSource.slice(0, workspaceSource.indexOf('  document.addEventListener("submit"')) +
-    '\nrender = () => {}; scheduleSave = () => {}; window.scopeTest = { state, scopeOptions, renderScopes, selectedScopePaths, selectedScopeQuestionUids, taxonomyRowsForFilters, planRows, request, pool };\n})();', {
+  const { loadWorkspace } = require('./archive2-workspace-source.cjs');
+  loadWorkspace({
     window, crypto,
     document: { addEventListener: (name, fn) => listeners[name] = fn, getElementById: id => controls[id] },
-  });
+  },
+    'render = () => {}; scheduleSave = () => {}; window.scopeTest = { state, scopeOptions, renderScopes, selectedScopePaths, selectedScopeQuestionUids, taxonomyRowsForFilters, planRows, request, pool };',
+    { until: '  document.addEventListener("submit"' });
   Object.assign(window.scopeTest.state, { catalog: data, filters });
   return { ...window.scopeTest, controls, click: dataset => listeners.click({ target: { closest: () => ({ dataset }) } }) };
 }

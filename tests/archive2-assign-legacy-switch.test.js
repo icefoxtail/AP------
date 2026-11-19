@@ -7,6 +7,7 @@ const vm = require("node:vm");
 const crypto = require("node:crypto");
 const Assign = require("../archive/archive2-assign.js");
 const core = require("../archive/archive2-core.js");
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const FILE = "2025/왕운중-중1-1학기-중간.js";
 const EXAM = { file: FILE, school: "왕운중", grade: "중1", year: "2025", semester: 1, examType: "mid", contentType: "기출", subject: "중1 수학", qCount: 3, identityTitle: "t" };
@@ -55,16 +56,13 @@ function load(search) {
   };
   context.window = context;
   const ctx = vm.createContext(context);
-  const source = fs.readFileSync("archive/archive2-workspace.js", "utf8");
-  const startup = source.lastIndexOf("  (async () => {");
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(Object.assign(ctx, { __legacy: legacy }), `
     render = () => {};
     openOriginalIssue = (exam, step) => { globalThis.__legacy.push(["original", exam.file, step]); };
     openSavedPaperIssue = (id) => { globalThis.__legacy.push(["saved", id]); };
     globalThis.workspaceTest = { state, routeUrl, replaceUrlState, replaceFinderUrlState, openOriginalAssign, openSavedPaperAssign,
       showSavedLibrary, openRouteInPage };
-  })();`, Object.assign(ctx, { __legacy: legacy }));
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = { indexVersion: "iv", sourceHashes: [[FILE, "hash"]], exams: [EXAM] };
   w.state.view = "find";

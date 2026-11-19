@@ -170,18 +170,165 @@ test("classifyMetaBinding: bound when stem+choices are unchanged (row or type), 
     "a type changed by another route is not covered by an old judgment");
 });
 
-test("the committed rebinds file, when present, is well-formed and unique per (uid, fp)", () => {
+// 계약 변경 2026-11-19: 정식 수정으로 같은 지문 키(uid, fp)의 text가 다시 바뀐 경우를 추가 전용으로 기록해야 하므로, 유일성은 동결 entries 안에서만 요구하고
+// revisions 안에서는 같은 키가 여러 번 있을 수 있다(마지막 항목만 유효, rebindHolds). 검사를 없앤 것이 아니라 "마지막만 유효"로 바꾼 것이다.
+test("the committed rebinds file, when present, is well-formed; entries are unique per (uid, fp), the last revision per key is the valid one", () => {
   const file = path.join(repo, REBINDS_PATH);
   if (!fs.existsSync(file)) return;
   const rebinds = loadRebinds(repo);
+  const doc = JSON.parse(fs.readFileSync(file, "utf8"));
   const seen = new Set();
-  for (const entries of rebinds.byUid.values()) for (const e of entries) {
+  for (const e of doc.entries) {
     const key = e.uid + "|" + e.fp;
-    assert.ok(!seen.has(key), "duplicate " + key);
+    assert.ok(!seen.has(key), "duplicate entry " + key);
     seen.add(key);
   }
+  // 읽는 쪽이 같은 키의 마지막 항목을 쓰는지: revisions의 마지막 항목의 text는 항상 효력이 있다.
+  const last = new Map();
+  for (const e of doc.revisions || []) last.set(e.uid + "|" + e.fp, e);
+  for (const e of last.values()) assert.ok(rebindHolds(rebinds, e.uid, e.fp, e.text), "the last revision of a key is the effective one " + e.uid);
   const check = run(repo, "--check");
   assert.equal(check.status, 0, check.out);
+});
+
+// ---- 같은 (uid, fp)의 나중 항목이 이긴다(대체) -----------------------------------------------------------------------------
+test("supersede: a later revision of the same (uid, fp) replaces the earlier text; the tool appends it, readers use the last, history check skips the old one", (t) => {
+  const { root, second, v2 } = fixtureRepo(t);
+  assert.equal(run(root, "--write").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "rebinds");
+  const approved = path.join(root, "approved.tsv");
+  fs.writeFileSync(approved, "uid2\tcontent\t" + second + "\t#7\n");
+  assert.equal(run(root, "--revisions", approved, "--write-revisions").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revision 1");
+  const rows = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+  const bind = (question) => classifyMetaBinding({ meta: rows[1], question, assignmentFingerprint: contentFingerprint(question), rebinds: loadRebinds(root) });
+  assert.equal(bind(v2[1]), "row");
+  assert.equal(run(root, "--revisions", approved).json().rejected.ALREADY_RECORDED, 1, "while the recorded text is still current nothing is added");
+
+  // 정식 수정으로 같은 문항의 발문이 또 바뀐다. 옛 revision의 text는 더 이상 현재 text가 아니다.
+  const v3 = [v2[0], { ...v2[1], content: "<p>a+b의 값을 구하시오. (단, a, b는 양수)</p>" }, v2[2]];
+  fs.writeFileSync(path.join(root, "archive/exams/fixture/exam.js"), exam(v3));
+  git(root, "add", "-A"); const third = (git(root, "commit", "-q", "-m", "v3"), git(root, "rev-parse", "HEAD").trim());
+  assert.equal(bind(v3[1]), "", "the recorded text no longer matches the corrected stem");
+  assert.equal(run(root, "--check", "--verify-history").status, 1, "a stale last revision still fails the history check");
+  const before = fs.readFileSync(path.join(root, REBINDS_PATH), "utf8");
+  const second2 = path.join(root, "approved2.tsv");
+  fs.writeFileSync(second2, "uid2\tcontent\t" + third + "\t#8\n");
+  const dry = run(root, "--revisions", second2);
+  assert.equal(dry.json().newRevisions, 1, "a changed text for a recorded key is appended instead of refused");
+  assert.equal(run(root, "--revisions", second2, "--write-revisions").status, 0);
+  const after = fs.readFileSync(path.join(root, REBINDS_PATH), "utf8");
+  const docAfter = JSON.parse(after);
+  assert.equal(docAfter.revisions.length, 2);
+  assert.equal(docAfter.revisions[1].uid, "uid2");
+  assert.equal(docAfter.revisions[0].fp, docAfter.revisions[1].fp, "same key");
+  assert.notEqual(docAfter.revisions[0].text, docAfter.revisions[1].text);
+  assert.ok(after.includes(JSON.stringify(JSON.parse(before).revisions[0])), "the earlier revision is kept byte for byte");
+  assert.equal(bind(v3[1]), "row", "the later revision wins");
+  assert.equal(bind(v2[1]), "", "and the superseded text no longer binds");
+  assert.equal(run(root, "--revisions", second2).json().rejected.ALREADY_RECORDED, 1, "adding the same superseding item twice is refused");
+  const check = run(root, "--check", "--verify-history");
+  assert.equal(check.status, 0, check.out);
+  assert.equal(check.json().supersededRevisions, 1, "the old revision is recorded as superseded and skipped");
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revision 2");
+  assert.equal(run(root, "--check", "--against", "HEAD~1").status, 0, "appending keeps the earlier revisions in front");
+  // 읽는 쪽 규칙 자체: 동결 entries와 (uid, fp)가 겹쳐도 나중 revisions 항목이 이긴다.
+  const entryLike = { uid: "u", fp: "a".repeat(64), text: "1".repeat(64) };
+  const byUid = new Map([["u", [entryLike, { ...entryLike, text: "2".repeat(64), from: "1".repeat(64), edit: "content", commits: ["c"] }]]]);
+  assert.equal(rebindHolds({ byUid }, "u", "a".repeat(64), "2".repeat(64)), true);
+  assert.equal(rebindHolds({ byUid }, "u", "a".repeat(64), "1".repeat(64)), false, "the older entry is overridden by the later revision");
+});
+
+// ---- 원문 복귀: 수정(revision) 뒤 등록 당시 발문·보기로 되돌린 문항 ---------------------------------------------------------------
+// exact=true: 되돌린 문항이 등록 당시와 바이트까지 같다(행의 내용 지문이 다시 현재와 같다 -> 예전에는 ALREADY_CURRENT로 거절).
+// exact=false: 발문·보기는 같지만 그림이 달라 내용 지문은 다르다(재결속 기록만으로 결속을 읽는다).
+for (const exact of [true, false]) test(`return to the original text (${exact ? "byte-identical" : "figure differs"}): the return item supersedes the earlier revision; duplicates, stale last items and rewrites still fail`, (t) => {
+  const { root, second, v2 } = fixtureRepo(t);
+  assert.equal(run(root, "--write").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "rebinds");
+  const rowsOf = () => JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+  const bind = (question) => classifyMetaBinding({ meta: rowsOf()[1], question, assignmentFingerprint: contentFingerprint(question), rebinds: loadRebinds(root) });
+  const holds = (question) => rebindHolds(loadRebinds(root), "uid2", rowsOf()[1].contentFingerprint, textFingerprint(question));
+  const commitFile = (message, questions) => {
+    fs.writeFileSync(path.join(root, "archive/exams/fixture/exam.js"), exam(questions));
+    git(root, "add", "-A"); git(root, "commit", "-q", "-m", message);
+    return git(root, "rev-parse", "HEAD").trim();
+  };
+  const approve = (name, edit, commit) => { const file = path.join(root, name); fs.writeFileSync(file, "uid2\t" + edit + "\t" + commit + "\t\n"); return file; };
+
+  // 1단: 정식 수정(a-b -> a+b)과 그 revision.
+  assert.equal(run(root, "--revisions", approve("a1.tsv", "content", second), "--write-revisions").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revision");
+  assert.equal(bind(v2[1]), "row");
+
+  // 2단: 원문으로 되돌림. 마지막 항목(a+b)이 더 이상 현재 text가 아니다.
+  const original = { ...v2[1], content: "<p>a-b를 구하시오.</p>", ...(exact ? {} : { image: "figs/recut-again.png" }) };
+  const reverted = [v2[0], original, v2[2]];
+  const revertCommit = commitFile("revert to the original stem", reverted);
+  assert.equal(holds(original), false, "the stale last revision no longer holds for the original text");
+  assert.equal(bind(original), exact ? "row" : "", exact ? "an exact revert is bound by the row fingerprint itself" : "the recorded text no longer matches");
+  assert.equal(run(root, "--check", "--verify-history").status, 1, "a stale last item still fails the history check");
+  const before = fs.readFileSync(path.join(root, REBINDS_PATH), "utf8");
+
+  // 복귀 항목은 edit=figure(옛 지문의 발문·보기와 같음)로만 적는다. 내용 수정으로 적으면 거절한다.
+  assert.deepEqual(run(root, "--revisions", approve("bad.tsv", "content", revertCommit)).json().rejected, { TEXT_SAME_BUT_NOT_FIGURE: 1 });
+  const ret = approve("a2.tsv", "figure", revertCommit);
+  const dry = run(root, "--revisions", ret);
+  assert.equal(dry.json().newRevisions, 1, "a return item is appended instead of refused as ALREADY_CURRENT");
+  assert.equal(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8"), before, "a dry run writes nothing");
+  assert.equal(run(root, "--revisions", ret, "--write-revisions").status, 0);
+  const doc = JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8"));
+  assert.equal(doc.revisions.length, 2);
+  assert.ok(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8").includes(JSON.stringify(JSON.parse(before).revisions[0])), "the earlier revision is kept byte for byte");
+  assert.deepEqual([doc.revisions[1].edit, doc.revisions[1].from === doc.revisions[1].text, doc.revisions[0].fp === doc.revisions[1].fp], ["figure", true, true]);
+  assert.equal(holds(original), true, "the return item is the last one for the key and holds");
+  assert.equal(holds(v2[1]), false, "the superseded text no longer binds");
+  assert.equal(bind(original), "row");
+  const check = run(root, "--check", "--verify-history");
+  assert.equal(check.status, 0, check.out);
+  assert.equal(check.json().supersededRevisions, 1, "the earlier revision is skipped as superseded");
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "return item");
+  assert.equal(run(root, "--check", "--against", "HEAD~1").status, 0, "appending keeps the earlier items in front");
+
+  // 복귀 뒤 중복 추가는 거절한다(마지막 효력 항목이 이미 현재 text).
+  const again = run(root, "--revisions", ret).json();
+  assert.equal(again.newRevisions, 0);
+  assert.equal(Object.values(again.rejected).reduce((a, b) => a + b, 0), 1);
+  assert.ok(again.rejected.ALREADY_CURRENT || again.rejected.ALREADY_RECORDED);
+
+  // 3단: 다시 수정(a×b). 마지막 항목(복귀)이 stale이 되어 다시 실패하고, 새 revision이 뒤에 붙어 해소한다.
+  const v4 = [v2[0], { ...original, content: "<p>a×b를 구하시오.</p>" }, v2[2]];
+  const third = commitFile("edit again", v4);
+  assert.equal(bind(v4[1]), "", "the return item does not bind the new edit");
+  assert.equal(run(root, "--check", "--verify-history").status, 1, "the last item (the return) is stale again");
+  const edit3 = approve("a3.tsv", "content", third);
+  assert.equal(run(root, "--revisions", edit3).json().newRevisions, 1);
+  assert.equal(run(root, "--revisions", edit3, "--write-revisions").status, 0);
+  assert.equal(bind(v4[1]), "row");
+  assert.equal(holds(original), false, "after the later edit the return item no longer binds the original text");
+  const final = run(root, "--check", "--verify-history");
+  assert.equal(final.status, 0, final.out);
+  assert.equal(final.json().supersededRevisions, 2);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revision 3");
+
+  // 추가 전용: 항목을 고치거나 지우거나 끼워 넣으면 거절한다.
+  const file = path.join(root, REBINDS_PATH);
+  const good = fs.readFileSync(file, "utf8");
+  const docNow = JSON.parse(good);
+  const canonical = (value) => {
+    const head = { schemaVersion: value.schemaVersion, textFingerprintVersion: value.textFingerprintVersion, appendOnly: true, note: value.note, batches: value.batches, revisionsNote: value.revisionsNote };
+    return JSON.stringify(head, null, 2).replace(/\n}$/, "") + ',\n  "entries": [\n' + value.entries.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]"
+      + ',\n  "revisions": [\n' + value.revisions.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]\n}\n";
+  };
+  assert.equal(canonical(docNow), good);
+  fs.writeFileSync(file, canonical({ ...docNow, revisions: [docNow.revisions[0], { ...docNow.revisions[1], prs: ["#9"] }, docNow.revisions[2]] }));
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "rewriting the return item is rejected");
+  fs.writeFileSync(file, canonical({ ...docNow, revisions: [docNow.revisions[0], docNow.revisions[2]] }));
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "deleting the return item is rejected");
+  fs.writeFileSync(file, canonical({ ...docNow, revisions: [docNow.revisions[0], docNow.revisions[2], docNow.revisions[1]] }));
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "reordering (inserting in the middle) is rejected");
+  fs.writeFileSync(file, good);
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 0);
 });
 
 // 추가 전용: 이 변경이 기준 브랜치의 기존 항목을 고치거나 지우지 않았는가. 기준 ref를 풀 수 없는 얕은 체크아웃에서는 실패가 아니라
@@ -196,4 +343,66 @@ test("the committed rebinds file equals the base branch's file (frozen)", (t) =>
     return;
   }
   assert.equal(result.status, 0, result.out);
+});
+
+// ---- 승인된 교정 재결속(revisions): entries(동결)와 별도 구역, 추가 전용 ----------------------------------------------------
+test("revisions: an approved correction rebinds the changed stem; unverifiable, mislabelled or later-edited ones do not", (t) => {
+  const { root, second, v2 } = fixtureRepo(t);
+  assert.equal(run(root, "--write").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "rebinds");
+  const entriesBefore = JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")).entries;
+  const approved = path.join(root, "approved.tsv");
+  // uid2: 발문 a-b -> a+b (내용 교정). uid3: 이력에 없는 지문(NO_HISTORY). uid2를 figure라고 잘못 올리는 경우는 아래에서 따로 거절을 본다.
+  fs.writeFileSync(approved, ["uid2\tcontent\t" + second + "\t#7", "uid3\tcontent\t" + second + "\t"].join("\n") + "\n");
+  const dry = run(root, "--revisions", approved);
+  assert.equal(dry.status, 0, dry.err);
+  assert.equal(dry.json().newRevisions, 1);
+  assert.deepEqual(dry.json().rejected, { NO_HISTORY: 1 });
+  assert.equal(JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")).revisions, undefined, "a dry run writes nothing");
+
+  const wrong = path.join(root, "wrong.tsv");
+  fs.writeFileSync(wrong, "uid2\tfigure\t" + second + "\t\n");
+  assert.deepEqual(run(root, "--revisions", wrong).json().rejected, { FIGURE_BUT_TEXT_CHANGED: 1 });
+  fs.writeFileSync(wrong, "uid2\tcontent\tabc123\t\n");
+  assert.notEqual(run(root, "--revisions", wrong).status, 0, "commits must be full 40-hex shas");
+
+  assert.equal(run(root, "--revisions", approved, "--write-revisions").status, 0);
+  const doc = JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8"));
+  assert.deepEqual(doc.entries, entriesBefore, "the frozen entries are untouched");
+  assert.equal(doc.revisions.length, 1);
+  assert.deepEqual([doc.revisions[0].uid, doc.revisions[0].edit, doc.revisions[0].commits, doc.revisions[0].prs], ["uid2", "content", [second], ["#7"]]);
+  assert.equal(run(root, "--check", "--verify-history").status, 0);
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 0, "adding revisions keeps the frozen entries equal to the base");
+  assert.equal(run(root, "--revisions", approved).json().rejected.ALREADY_RECORDED, 1, "a recorded revision is not added twice");
+
+  // 소비자: 옛 지문 + 현재 text 가 모두 맞을 때만 결속으로 인정한다.
+  const rows = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+  const rebinds = loadRebinds(root);
+  assert.equal(rebinds.revisions, 1);
+  const bind = (uid, row, question, r = rebinds) => classifyMetaBinding({ meta: row, question, assignmentFingerprint: contentFingerprint(question), rebinds: r });
+  assert.equal(bind("uid2", rows[1], v2[1]), "row", "approved correction: the corrected stem is bound");
+  assert.equal(bind("uid3", rows[2], v2[2]), "", "an unverifiable (not approved) row stays unbound");
+  const edited = { ...v2[1], content: "<p>a×b를 구하시오.</p>" };
+  assert.equal(bind("uid2", rows[1], edited), "", "a later edit of the stem voids the revision (new text fingerprint differs)");
+  assert.equal(bind("uid2", { ...rows[1], contentFingerprint: "7".repeat(64) }, v2[1]), "", "the old fingerprint must be the one the row held");
+
+  // 추가 전용: 기준에서 항목을 빼거나 바꾸면 거절, 형식이 틀리면 거절.
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revisions");
+  const file = path.join(root, REBINDS_PATH);
+  const good = fs.readFileSync(file, "utf8");
+  const canonical = (value) => {
+    const head = { schemaVersion: value.schemaVersion, textFingerprintVersion: value.textFingerprintVersion, appendOnly: true, note: value.note, batches: value.batches, revisionsNote: value.revisionsNote };
+    return JSON.stringify(head, null, 2).replace(/\n}$/, "") + ',\n  "entries": [\n' + value.entries.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]"
+      + ',\n  "revisions": [\n' + value.revisions.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]\n}\n";
+  };
+  assert.equal(canonical(doc), good, "test serializer matches the tool's canonical form");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], prs: ["#8"] }] }));
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "changing a recorded revision is rejected");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], from: doc.revisions[0].text }] }));
+  assert.equal(run(root, "--check").status, 1, "content edit with from == text is inconsistent");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], commits: ["short"] }] }));
+  assert.equal(run(root, "--check").status, 1, "commits must be 40-hex");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], text: sha("forged") }] }));
+  assert.equal(run(root, "--check", "--verify-history").status, 1, "history does not support a forged text");
+  fs.writeFileSync(file, good);
 });

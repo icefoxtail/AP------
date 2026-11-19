@@ -2,7 +2,7 @@
 // 결정: docs/agents/metadata.md "메타 결속 지문 범위: 발문과 보기만 본다". 지문 계산 규칙은 archive/question-binding.js 한 곳이다.
 // 여기서는 그 모듈이 만든 직렬화를 node crypto로 해시할 뿐이다(bindingFingerprint와 같은 값이어야 하며 테스트가 대조한다).
 // 재결속 기록(archive/data/meta-foundation/text-binding-rebinds.v1.json)은 "등록 당시의 5필드/내용 지문 X가 가리키던 문항의
-// 발문·보기가 지금과 같다"는 사실을 추가 전용으로 남긴 것이다. 소비자(카탈로그 빌더·등록기)는 기존 지문이 일치하면 이전과 똑같이
+// 발문·보기가 지금과 같다"는 사실(entries, 동결)과, 승인된 교정을 거쳐 지금 text가 되었다는 사실(revisions, 추가 전용)을 남긴 것이다. 소비자(카탈로그 빌더·등록기)는 기존 지문이 일치하면 이전과 똑같이
 // 동작하고, 일치하지 않을 때만 이 기록을 본다. 기록은 발문·보기가 지금과 같을 때만 효력이 있다(현재 text-v1과 대조).
 import fs from "node:fs";
 import path from "node:path";
@@ -47,14 +47,28 @@ export function loadRebinds(root, rel = REBINDS_PATH) {
     if (!byUid.has(entry.uid)) byUid.set(entry.uid, []);
     byUid.get(entry.uid).push(entry);
   }
-  return { present: true, entries: doc.entries.length, byUid };
+  // 승인된 교정 재결속(revisions): 같은 읽기 방식(옛 지문 fp -> 지금의 text)이고, 승인 근거(edit·commits)와 옛 text(from)를 더 갖는다.
+  // entries와 섞이지 않게 따로 세고, 대조는 rebindHolds가 똑같이 한다.
+  const revisions = Array.isArray(doc.revisions) ? doc.revisions : [];
+  for (const entry of revisions) {
+    if (!entry || typeof entry.uid !== "string" || !HEX64.test(entry.fp) || !HEX64.test(entry.text) || !HEX64.test(entry.from) ||
+        !["format", "content", "figure"].includes(entry.edit) || !Array.isArray(entry.commits) || !entry.commits.length)
+      throw new Error("text-binding-rebinds: malformed revision " + JSON.stringify(entry));
+    if (!byUid.has(entry.uid)) byUid.set(entry.uid, []);
+    byUid.get(entry.uid).push(entry);
+  }
+  return { present: true, entries: doc.entries.length, revisions: revisions.length, byUid };
 }
 
 // 지문 anchorFp(등록 당시 값)가 가리키던 문항의 발문·보기가 지금 문항과 같다고 기록돼 있는가.
 // currentTextFp: textFingerprint(현재 문항). 같은 문항 번호의 발문·보기가 이후 바뀌었다면 기록의 text가 달라져 거짓이 된다.
+// 같은 (uid, fp)가 여러 번 기록되어 있으면 **마지막** 항목만 효력이 있다(2026-11-19): byUid의 순서는 entries(동결) 다음 revisions(기록 순서)이므로
+// "나중에 추가된 항목이 이긴다". 정식 수정으로 같은 지문 키의 text가 다시 바뀐 경우를 추가 전용으로 남기기 위한 규칙이고, 읽는 곳은 이 함수 하나다.
 export function rebindHolds(rebinds, uid, anchorFp, currentTextFp) {
   if (!rebinds?.byUid || !uid || !anchorFp || !currentTextFp) return false;
-  return (rebinds.byUid.get(uid) || []).some((entry) => entry.fp === anchorFp && entry.text === currentTextFp);
+  let latest = null;
+  for (const entry of rebinds.byUid.get(uid) || []) if (entry.fp === anchorFp) latest = entry;
+  return latest !== null && latest.text === currentTextFp;
 }
 
 // 카탈로그가 메타 힌트를 보여 줄 근거: 이 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가. 결과는 둘뿐이다.

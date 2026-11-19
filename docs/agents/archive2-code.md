@@ -13,6 +13,33 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 이 검사를 생략·격리하거나 데이터 분모를 줄이고, 시간 상한·검증 조건을 완화하여 통과시키지 않는다. 구조 변경이 필요해도 기존 동작·응답성·내용 검증을 먼저 보존한다. 이 계약 자체의 변경은 명시적인 사용자 지시와 근거를 필요로 한다.
 - 시험지 source만 수정하는 CREATE/R1/R2/R3 작업은 기존 시험지 품질 절차를 따른다. 런타임 흐름도 바꾸는 경우에는 이 계약을 함께 적용한다.
 
+## 교사 화면 코드(`archive2-workspace*.js`) 파일 지도 (2026-11-19)
+
+- 이유: 388KB 파일 하나를 고치는 PR이 한 번에 하나만 갈 수 있어 네 줄기(자료 로딩·저장/오류 문구·미리보기/인쇄·선정 결과 표시)가 서로 기다렸다. 함수 본문은 한 글자도 바꾸지 않고 파일만 나눴다(동작·출력 불변). 이 문서 아래 본문의 `archive2-workspace.js` 언급은 아래 표에서 그 함수가 있는 파일을 뜻한다.
+- 일곱 파일은 `workspace.html`에 **core → find → compose → preview → save → recent → main** 순서로 로드하고, 모두 `window.Archive2Workspace` 하나를 공유한다(번들러·모듈 없음).
+
+| 파일 | 담는 것 |
+| --- | --- |
+| `archive2-workspace-core.js` | 공용: `state`, `$ esc button`, API 클라이언트(`api`·`headers`), 필터·매칭 규칙, `showDialog`. 다른 파일을 부르지 않는 말단 |
+| `archive2-workspace-find.js` | 자료 로딩 뒤 홈, 학교별 기출 찾기, 유사문제 목록, 자료 점검 |
+| `archive2-workspace-compose.js` | 문제지 구성·선정·교체: 단원 트리, 빠른 평가, 선정 결과 표시, `generate/replace/prepare/request/review/seal` |
+| `archive2-workspace-preview.js` | 미리보기·인쇄: `updatePreview/outputUrl/print/finalGate/download`, 원본 출력 |
+| `archive2-workspace-save.js` | 저장·초안·출제 연결·오류 문구: `savePapers`, 초안 저장·복원, 저장본 수정, 출제 패널 열기, `status/teacherErrorMessage` |
+| `archive2-workspace-recent.js` | 출제 내역 화면·취소·PDF 재시도 |
+| `archive2-workspace.js` (main) | `render` 분기, URL 쓰기·읽기, **이벤트 리스너(클릭 처리기 포함)**, 부팅. 맨 마지막에 로드 |
+
+- **이름 주고받기**: 각 파일은 끝에서 자기 최상위 이름을 `Object.assign(WS.api, {…})`로 내놓고, 다른 파일의 이름은 맨 위 `let …;`(헤더)와 `WS.links.push(…)`로 받는다. **다른 파일의 함수를 새로 부르면 그 파일 헤더 두 곳(let 목록·구조분해)에 이름을 더한다.** `tests/archive2-workspace-parts.test.js`가 빠뜨린 이름·주인 없는 이름·로드 순서·Pages 목록 누락을 잡는다.
+- **여러 파일이 바꾸는 변수는 `V.이름`**(`WS.v`)이다(예: `V.previewTimer`, `V.classRows`). 새로 파일 사이에서 공유할 변경 가능한 변수가 생기면 `V`에 둔다.
+- **캐시 버전**: 파일마다 자기 `?v=`를 두고 그 파일을 바꾼 PR만 올린다. 코드에서 이름을 새로 내놓거나 받으면 두 파일 모두 바뀌므로 둘 다 올린다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다.
+- **compose의 "종이 만들기" 함수(`prepare/request/review/seal/pool/replace`)는 미리보기·저장도 부른다.** 서명을 바꿀 때는 호출하는 쪽 파일을 같이 고친다.
+- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다.
+
+## 시험지 보관함 "26년 2학기 기말 모의고사" (2026-11-19 사용자 요청)
+
+- 원장·선생님이 학생에게 바로 출력하는 중1 2학기 기말 모의고사 1~5회(각 객관식 20 + 서술형 4)를 옛 원클릭 보관함(`archive/assessment/assessment-mvp.html`)의 맨 앞 탭에 둔다. 자료는 `archive/assessment/assessment-packs-2sem-final-mock.generated.js`(`window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL`)이고, `mixed_engine.html`의 `packId` 대체 경로가 이 파일도 읽는다. 진입은 APMS 기존 "시험지 보관함"(원장 대시보드 카드, 선생님 서랍)이며 첫 탭이 모의고사다. `?category=<탭 이름>`으로 탭을 지정할 수도 있다.
+- 자료 파일은 손으로 고치지 않는다. 선정 목록(`archive/tools/assessment-mock/selection-m1-2final-mock.json`: 회차·번호·출처 파일·원 문항 번호·단원·세부 유형)을 고치고 `node archive/tools/assessment-mock/build-m1-2final-mock.cjs`로 원본 시험지 JS에서 다시 조립한다(`--check`는 일치 검사, `--tsv <경로>`는 목록 출력). 이유: 문항·정답·해설·그림 참조는 원본 그대로 복사해야 하고, 바뀌는 것은 서술형 앞머리의 원 시험지 번호 표기("[서술형3]" 등) 제거뿐이다.
+- 선정 규칙: 2024·2025년 기출 우선(부족한 칸만 2023), 2026년 시험지 제외, 한 회차 안에 같은 세부 유형 없음, 한 회차 안 같은 시험지 최대 3문항, 5회 사이 문항 겹침 없음. `tests/assessment-mock-2sem-final-packs.test.js`가 결함 조건을 검사한다.
+
 ## 화면 디자인 (2026-11-10 사용자 결정)
 
 - 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 6칸)가 `workspace.html`과 `unit-past-exams.html`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.
@@ -58,7 +85,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 ## 그림 크기는 단 폭 비율 하나 (2026-11-18 사용자 결정, 2026-11-17의 large·full 규칙을 대체)
 
 - 적용 범위는 **A4 쪽 배치** = PC 화면의 쪽 보기 + 인쇄 + PDF다. 인쇄는 화면에서 만든 쪽 DOM을 그대로 찍으므로 `@media print`가 아니라 "휴대폰이 아닌 모든 곳"(`@media not screen and (max-width: 640px)`)에 건다. **휴대폰 읽기 배치(<=640px 화면)는 옛 규칙(`engine.html`·`mixed_engine.html`의 등급 CSS, `archive2-preview-mobile.css`)이 그대로**다(학생이 확대해서 봄). 이유: 학생은 문제지를 거의 A4로 뽑아 푸는데 그림이 한 단 폭의 90%로 칸을 채워 풀이 쓸 자리가 없었고, 크기 규칙이 등급 클래스·인라인 max-width·선택지(규칙 없음)·해설 SVG x0.6·균등 칸 78%/150px로 흩어져 서로 다퉜다.
-- 값과 규칙은 `archive/figure-size.css`(변수 `--ap-col-w` 83.65mm, `--ap-fig-q` 0.55, `--ap-fig-sol` 0.6, `--ap-fig-wide-w` 0.88, `--ap-fig-wide-h` 0.3)에 있고 숫자 하나만 바꾸면 된다. 규칙은 `@layer ap-figure-size`의 `!important`라서 해설 칸 맞춤(`sol-fit-narrow`)·인라인 `style="max-width:Npx"`·옛 등급보다 이긴다. 문제 그림(필드 그림, 본문 인라인 img·svg, 해설지의 문제 다시보기 그림)은 폭·높이 모두 단 폭의 55% 이하, 해설 그림(필드, 해설 본문 인라인)은 60% 이하다. 가로로 긴 그림(자연 폭:높이 >= 2:1)은 폭 88%·높이 30% 이하다. **묶음 그림은 줄이지 않고 단 폭 전체까지**: 선택지 안 그림, 한 문항 본문에 그림 2개 이상, 보기가 전부 비었거나 번호 기호뿐인데 그림이 있는 문항, `choicesEmbeddedInImage === true`. 작성자가 정한 width가 있는 묶음 그림은 그 크기를 그대로 둔다.
+- 값과 규칙은 `archive/figure-size.css`(변수 `--ap-col-w` 83.65mm, `--ap-fig-q` 0.55, `--ap-fig-sol` 0.6, `--ap-fig-wide-w` 0.88, `--ap-fig-wide-h` 0.3)에 있고 숫자 하나만 바꾸면 된다. 규칙은 `@layer ap-figure-size`의 `!important`라서 해설 칸 맞춤(`sol-fit-narrow`)·인라인 `style="max-width:Npx"`·옛 등급보다 이긴다. 문제 그림(필드 그림, 본문 인라인 img·svg, 해설지의 문제 다시보기 그림)은 폭·높이 모두 단 폭의 55% 이하, 해설 그림(필드, 해설 본문 인라인)은 60% 이하다. 가로로 긴 그림(자연 폭:높이 >= 2:1)은 폭 88%·높이 30% 이하다. **묶음 그림은 줄이지 않고 단 폭 전체까지**: 선택지 안 그림, 한 문항 본문에 그림 2개 이상, 보기가 전부 비었거나 번호 기호뿐인데 그림이 있는 문항(보기 2개 이상), 보기 칸이 아예 없거나 빈 배열인데 답이 ①~⑤ 꼴이고 그림이 있으며 발문 글자에 ①·②가 함께 없는 객관식(2026-11-19 `emptyChoicesAreFigure`, 크기 판정 전용이라 문항 결속 `question-binding.js`와 무관), `choicesEmbeddedInImage === true`. 작성자가 정한 width가 있는 묶음 그림은 그 크기를 그대로 둔다.
 - 그림 하나 덮어쓰기: 문항 필드 `imageScale`·`solutionImageScale`(단 폭 대비 %, 30~100), 본문 인라인 `<img data-scale="70">`. 범위 밖·숫자 아님은 무시하고, 있으면 위 기본값·가로로 긴 규칙·묶음 규칙보다 우선한다. 두 필드는 `render-state-normalizer.js`의 `RENDER_FIELDS`를 지난다.
 - 가로로 긴지·묶음인지·배율은 CSS가 알 수 없어서 `archive/figure-size.js`(`APFigureSize.classify`)가 그림이 모두 불러와진 뒤 쪽 배치 측정 전에 한 번 `data-ap-fig`(wide|bundle|scaled)를 붙인다(`applyAutoImageSizeClasses`와 `applySolutionSvgDisplayWidth`가 부른다). 값은 이 파일에 쓰지 않는다. 보기가 그림인 문항은 박스를 만들 때 `data-ap-fig-bundle`을 붙인다.
 - **옛 등급은 A4에서 크기에 영향이 없다**: `imageSize`·`imageSizeOverride`·`solutionImageSize`·`solutionImageSizeOverride`·`solutionImageLayout`는 데이터와 클래스는 그대로이고(휴대폰 규칙이 읽는다) 이 규칙이 읽지 않는다. 해설 SVG의 자연 폭 x0.6 인라인 width도 이 규칙이 켜진 화면에서는 넣지 않는다(`APFigureSize.isActive()`가 CSS 변수 `--ap-fig-sol` 유무로 판정, 휴대폰·오답 엔진은 옛 계산). 해설은 2단 안에서만 놓이고 `solutionImageLayout: "fullwidth"`로 쪽 전체 폭을 쓰지 않는다(`solution-render-executor.js`는 `APFigureSize`가 있을 때 무시, 오답 엔진은 옛 동작). 해설 칸 맞춤이 끝내 안 될 때의 마지막 수단 전폭 승격(위 "해설지 반폭 칸 넘침 처리")은 그대로다.
@@ -80,6 +107,8 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 문제지 만들기·단원별 기출·빠른 평가의 연도 순서는 **항상 최신 연도가 먼저**(2026 → 2025 → 2024 …)이고 연도를 알 수 없는 자료는 마지막이다(`Archive2Core.recencyRank` 한 곳). 이유: 26·27·28년 시험지가 계속 쌓이고, 수학도 출제 경향이 있어 최신 연도 기출을 먼저 풀어 보는 것이 학생에게 도움이 된다.
 - 2026-10-29의 "완결된 최근 연도(2025, 2024 …)를 먼저, 올해 자료는 그다음" 결정을 **대체**한다. "올해 자료는 뒤로" 규칙을 다시 넣지 않는다.
 - 단원별 기출은 먼저 최신 연도 순으로 문제지를 자르므로 **문제지 1이 가장 최신 연도**이고, **한 문제지 안에서는** 쉬운 단계부터(1→5→단계 미지정) 정리해 단계 제목을 붙인다(`buildStepPapers`). 한 시험(같은 원본 파일)은 한 문제지에 함께 두고 목표 50·최대 80문항 규칙은 그대로다.
+- **자동 선정은 "같은 유형이면 최신 것"이다 (2026-11-18 사용자·관제 결정, `archive2-core.js` `selectBlueprint`).** 최신 연도부터 보되, 같은 유형을 겹쳐 넣기 전에 문제지에 아직 없는 유형을 이전 연도에서라도 먼저 채우고(유형 상한 1 → 2 → 3 … 순), 유형을 모르는 문항은 새 유형 다음(상한 2)에 들어간다. 유형이 하나뿐이면 그 유형 안에서 최신 연도가 먼저다. 요청 문항 수는 풀이 모자라지 않는 한 늘 채운다. 이유: 이전에는 연도 안에서만 유형을 분산해 고1 다항식+인수분해 20문항이 유형 6가지·중복 13문항·전부 2026년으로 나왔다.
+- **원본–유사 짝은 한 문제지에 같이 넣지 않는다(교사가 직접 고른 고정 문항은 예외, 둘 다 고정하면 둘 다 남는다).** 짝 = 유사 세트의 n번 문항과, `archive2-similar.js`가 정한 그 세트의 원본 시험의 n번 문항(위치 기준: 같은 번호 문장 유사도 0.58, 무작위 위치 0.08). 한 원본에 유사 세트가 둘이면 셋 모두 한 가족이다. 가족당 하나만 자동으로 뽑고, 다른 방법으로 문항 수를 채울 수 없을 때만 마지막에 짝을 허용한다. 짝은 카탈로그 값이 아니라 선정 시점에 레코드에서 시험 행을 다시 만들어 `archive2-similar.js`로 계산한다(`familyResolver`, 시험 행 기반 계산과 전수 일치를 `tests/archive2-selection-pairs.test.js`가 확인). `archive2-similar.js`는 워크스페이스가 `archive2-core.js` 뒤에 부르는 전역이라 선정 때 찾고, 없으면 짝 규칙만 빠진다. `archive2-core.js`에 새 `require`를 넣지 않는다(Worker 번들 모듈 집합이 바뀌어 배포 검증이 걸린다). 연결 못 한 유사 세트(연도 없음 등)는 짝으로 보지 않는다. 교체(다른 문항으로 바꾸기)는 교사가 직접 고르는 경로라 건드리지 않았다.
 - 이 순서가 바뀌면 문제지 구성과 `snapshotKey`가 달라진다. 이미 출제·저장한 문제지는 저장 당시 내용으로 고정되어 있어야 하므로, 번호나 키로 과거 출제를 다시 찾는 코드를 새로 만들지 않는다.
 
 ## 유사문제는 기출 옆에 (2026-11-10 사용자 요청)

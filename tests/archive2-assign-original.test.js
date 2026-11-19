@@ -11,6 +11,7 @@ const root = path.resolve(__dirname, "..");
 const read = (...parts) => fs.readFileSync(path.join(root, ...parts), "utf8");
 const Assign = require("../archive/archive2-assign.js");
 const Output = require("../archive/archive2-output.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const tick = () => new Promise((resolve) => setImmediate(resolve));
 const NOW = Date.parse("2026-11-10T03:00:00Z"); // 한국 시간 2026-11-10 12:00
@@ -832,7 +833,7 @@ function sliceBetween(source, start, end) {
   return source.slice(from, to);
 }
 function workspaceHarness({ search = "", assign = true, catalog = null } = {}) {
-  const source = read("archive", "archive2-workspace.js");
+  const source = readWorkspace();
   const code = sliceBetween(source, "function assignRequest(route, opt = {}) {", "function originalIssueBusy() {");
   const opened = [];
   const legacy = [];
@@ -919,7 +920,7 @@ test("workspace: 패널에 현재 배포된 기준 버전을 다시 읽는 함�
 });
 
 test("workspace: source-issue는 새 패널 함수로 가고, 단원별 기출·옛 iframe 함수는 그대로 남아 있다", () => {
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /a === "source-issue"\) \{[\s\S]{0,200}openOriginalAssign\(state\.catalog\.exams\[Number\(b\.dataset\.exam\)\]\);/);
   assert.match(workspace, /function openOriginalIssue\(exam, step = "review"\)/);
   assert.match(workspace, /function openSavedPaperIssue\(id\)/);
@@ -929,7 +930,7 @@ test("workspace: source-issue는 새 패널 함수로 가고, 단원별 기출·
 });
 
 test("버튼 글자: 줄에는 '출제', 패널 제목은 '반에 출제', 스크린리더 이름은 풀어 쓴다", () => {
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   assert.match(workspace, /button\("source-issue", "출제", `type="button" class="primary" data-exam="\$\{index\}" aria-label="\$\{esc\(title\)\} 반에 출제"`\)/);
   assert.match(workspace, /button\("source-issue", "출제", `type="button" class="primary" data-exam="\$\{setIndex\}" aria-label="\$\{esc\(setTitle\)\} 반에 출제"`\)/);
   assert.match(workspace, /alreadySaved \? "저장한 문제지 출제" : "저장하고 출제"/);
@@ -949,7 +950,7 @@ test("버튼 글자: 줄에는 '출제', 패널 제목은 '반에 출제', 스�
 });
 
 test("한 화면 안내문: 홈 줄·유사 세트 대화상자·학교별 기출이 모두 source-issue 하나로 새 패널에 닿는다", () => {
-  const workspace = read("archive", "archive2-workspace.js");
+  const workspace = readWorkspace();
   const handlers = workspace.match(/a === "source-issue"/g) || [];
   assert.equal(handlers.length, 1, "출제 진입은 한 곳");
   assert.equal((workspace.match(/button\("source-issue"/g) || []).length, 3, "시험 줄, 유사문제 칸, 유사 세트 대화상자");

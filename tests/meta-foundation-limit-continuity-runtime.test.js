@@ -8,6 +8,7 @@ const os = require("os");
 const crypto = require("crypto");
 const { createNativeRuntimeVerifier } = require("./helpers/byte-bound-native-runtime.cjs");
 const C = require("../archive/archive2-core.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 async function main() {
 const root = path.resolve(__dirname, "..");
@@ -275,7 +276,7 @@ assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");
 assert(C.finderCourseKeys(runtime.taxonomyRows, { grade: "고2", curriculumKey: "2015" }).has("수학II"));
 
-const workspace = readText("archive/archive2-workspace.js");
+const workspace = readWorkspace();
 assert(/C\.subjectProjectionOptions\(filters\.grade\)/.test(workspace));
 assert(/C\.finderMatches\(/.test(workspace));
 

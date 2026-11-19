@@ -7,6 +7,7 @@ const crypto = require("node:crypto");
 const library = require("../archive/archive2-library.js");
 const output = require("../archive/archive2-output.js");
 const contract = require("../archive/archive2-output-contract.js");
+const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 function storage(initial = {}, maxBytes = Infinity) {
   const values = new Map(Object.entries(initial));
@@ -690,7 +691,7 @@ test("Saved Library outstanding render is invalidated when workspace leaves the 
     assert.equal(await render, false, "stale success resolves as a non-render result");
     assert.equal(host.innerHTML, "Finder screen");
     assert.equal(global.history.state?.archive2SavedLibrary, undefined);
-    const workspaceSource = fs.readFileSync(path.join(__dirname, "..", "archive", "archive2-workspace.js"), "utf8");
+    const workspaceSource = readWorkspace();
     assert.match(workspaceSource, /state\.view !== "saved"\) window\.Archive2Library\?\.invalidatePendingRequests\?\.\(\);/);
     // A successful load is not announced on screen (2026-11-10); only failures are.
     assert.doesNotMatch(workspaceSource, /status\("저장한 시험지를 불러왔습니다\."\)/);

@@ -15,6 +15,7 @@ const Unified = require('../archive/archive2-unified-units.js');
 const UnitCore = require('../archive/unit-past-exams-core.js');
 const ProblemBankMeta = require('../archive/problem-bank-meta.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -402,8 +403,10 @@ function requestFor(rows, count, extra = {}) {
   };
 }
 
-test('a paper spreads over different problem types without changing the count or the recency years', () => {
-  // 2025: 6 questions of ONE type + 3 other types; 2024 holds more types. Request 5 of 2025 only.
+test('a new type of an earlier year comes before a repeated type of the newest year, and the count never changes', () => {
+  // 2025: 6 questions of ONE type + 3 other types; 2024 holds 3 more types. Request 5.
+  // Four types exist in 2025; before this rule the 5th question was a forced repeat of the 2025 type,
+  // now it is the newest question of a type the paper does not have yet (an earlier year).
   const types = ['PT_A', 'PT_A', 'PT_A', 'PT_A', 'PT_A', 'PT_A', 'PT_B', 'PT_C', 'PT_D'];
   const y2025 = types.map(type => record({ year: 2025, metaBinding: 'text', metaHintPT: type, metaHintStatus: '-P-' }));
   const y2024 = ['PT_E', 'PT_F', 'PT_G'].map(type => record({ year: 2024, metaBinding: 'text', metaHintPT: type, metaHintStatus: '-P-' }));
@@ -412,18 +415,19 @@ test('a paper spreads over different problem types without changing the count or
     const result = core.selectBlueprint(rows, requestFor(rows, 5, { seed }));
     assert.equal(result.ok, true);
     assert.equal(result.selected.length, 5);
-    assert.deepEqual([...new Set(result.selected.map(row => row.year))], [2025], 'recency: the newest complete year is consumed first');
-    const distinct = new Set(result.selected.map(row => core.selectionTypeKey(row)));
-    assert.equal(distinct.size, 4, 'four types exist in 2025, so four distinct types and one forced repeat: ' + [...distinct]);
+    assert.equal(result.selected.filter(row => row.year === 2025).length, 4, 'the newest year still supplies every type it has');
+    assert.equal(result.selected.filter(row => row.year === 2024).length, 1);
     assert.equal(result.diagnostics.typeCoverage.typedCount, 5);
-    assert.equal(result.diagnostics.typeCoverage.distinctTypes, 4);
-    assert.equal(result.diagnostics.typeCoverage.repeatedCount, 1);
+    assert.equal(result.diagnostics.typeCoverage.distinctTypes, 5, 'no type repeats while an unused type exists');
+    assert.equal(result.diagnostics.typeCoverage.repeatedCount, 0);
   }
-  // 7 of 2025 then spills into 2024 in recency order, each year spread over its own types
+  // 11 of 12: all 7 types first (newest question of each), then the 4 forced repeats come from the
+  // newest year's only repeatable type, so the count is met and the year order is still newest first
   const spill = core.selectBlueprint(rows, requestFor(rows, 11, { seed: 'spill' }));
   assert.equal(spill.selected.length, 11);
-  assert.equal(spill.selected.filter(row => row.year === 2025).length, 9);
-  assert.equal(spill.selected.filter(row => row.year === 2024).length, 2);
+  assert.equal(spill.selected.filter(row => row.year === 2025).length, 8);
+  assert.equal(spill.selected.filter(row => row.year === 2024).length, 3);
+  assert.equal(spill.diagnostics.typeCoverage.distinctTypes, 7);
 });
 
 test('without recorded types the selection is byte-identical to the previous behaviour', () => {
@@ -628,14 +632,12 @@ function composeHarness(data, labels) {
     ARCHIVE_META_FOUNDATION_LABELS: labels,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, selectedScopeOptions, request, planRows, generate, renderComposition,
       composeMetaFacets, metaTypeText, unifiedIndex, renderInspector, invalidate};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.useMode = 'general';
@@ -724,7 +726,7 @@ test('문제지 만들기: facets are counted for the whole list while no unit i
 
 test('the workspace and the unit page load the new scripts with a new cache version and the changed shared modules stay loadable in APMS', () => {
   const version = '20261029-s14-1';
-  const coreVersion = '20261111-one-lane-difficulty-1';
+  const coreVersion = '20261119-pair-type-spread-1';
   const workspace = read('workspace.html');
   assert.match(workspace, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(workspace, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
@@ -733,7 +735,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /archive2-unified-units\.js\?v=20261117-middle-parent-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261118-error-detail-1/);
+  assertWorkspaceScriptVersions(assert);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
@@ -746,5 +748,5 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(clinic, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(clinic, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // APMS moved clinic-print.js on with the clinic workspace (M7, 2026-11-02).
-  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=(20261102-(ws-clinic|perf)-1|20261117-reader-1)/);
+  assert.match(fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8'), /clinic-print\.js\?v=(20261102-(ws-clinic|perf)-1|20261117-reader-1|20261119-pair-type-spread-1|20261119-source-parallel-1)/);
 });

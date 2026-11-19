@@ -474,8 +474,8 @@ window.questionBank = [
     "wide": false,
     "content": "[연결] 미세 먼지 농도에 따른 미세 먼지 예보 등급은 다음과 같이 분류한다.\n<img src=\"q17.png\" />\n\n어느 지역의 3일간의 미세 먼지 농도와 예보 등급이 다음과 같을 때, $x$의 값의 범위와 5월 2일의 미세 먼지 예보 등급을 각각 구하시오.",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$40<x\\le50$, 보통",
+    "solution": "5월 1일: 등급이 좋음이므로 $0\\le50-x\\le30$에서 $20\\le x\\le50$이다.\n5월 3일: 등급이 나쁨이므로 $80<3x-40\\le150$에서 $40<x\\le\\frac{190}{3}$이다.\n두 범위의 공통부분은 $40<x\\le50$이다.\n이때 5월 2일의 농도 $x$는 30 초과 80 이하이므로 예보 등급은 보통이다."
   },
   {
     "id": 18,
@@ -726,8 +726,8 @@ window.questionBank = [
     "wide": false,
     "content": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 연립부등식 $\\begin{cases} f(x)<0 \\\\ g(x)\\ge 0 \\end{cases}$의 해를 구하시오.\n<img src=\"q26.png\" />",
     "choices": [],
-    "answer": "",
-    "solution": ""
+    "answer": "$0<x\\le2$",
+    "solution": "그래프에서 $f(x)<0$의 해는 $0<x<3$이고 $g(x)\\ge0$의 해는 $-2\\le x\\le2$이다.\n따라서 연립부등식의 해는 두 범위의 공통부분 $0<x\\le2$이다."
   },
   {
     "id": 27,
