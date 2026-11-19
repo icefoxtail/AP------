@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4,
+      -1,
+      8
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "2",
+        "1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "sampleNote": "f(x)=x²-4x+5",
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "3/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "t",
+          "slope": "-2",
+          "intercept": "4",
+          "label": "t"
+        },
+        {
+          "id": "s",
+          "slope": "-5/2",
+          "intercept": "5",
+          "label": "s"
+        }
+      ]
+    }
+  },
+  "caption": "예: f(x)=x²-4x+5, h=1/2일 때의 그림이다. 접선 t는 T(1,2)에서 기울기 f′(1)=-2이고 할선 s는 A(0,5)=(1-2h, f(1-2h))와 B(3/2,5/4)=(1+h, f(1+h))를 지난다. 분자 f(1-2h)-f(1+h)를 3h로 나눈 값은 두 점의 기울기에 관한 값이며 h→0이면 -f′(1)로 수렴해 주어진 극한은 -f′(1)=2이다. 따라서 f′(1)=-2이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$에 대하여 $\\displaystyle\\lim_{h\\to0}\\dfrac{f(1-2h)-f(1+h)}{3h}=2$일 때, $f'(1)$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 T에서 기울기 f′(1)=-2인 접선 t와 h=1/2일 때의 두 점 A, B를 지나는 할선 s를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f′(1)=-2인 접선 t와 증분 -2h, h에 해당하는 두 점 A, B를 지나는 할선 s이다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 점 T에서 접하는 직선 t, 포물선 위의 두 점 A, B를 지나는 할선 s를 나타낸 그래프이다."
+}

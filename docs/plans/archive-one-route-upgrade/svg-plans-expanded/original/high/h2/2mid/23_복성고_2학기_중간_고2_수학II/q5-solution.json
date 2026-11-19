@@ -1,0 +1,111 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "x": "1",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "2"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 성질(x=-1, 0, 1에서 불연속이고 극한이 없는 점은 x=0뿐)을 갖는 예시 그래프를 그렸다. x=-1과 x=1에서는 좌극한과 우극한이 같지만(점 A, C의 값) 함숫값이 달라 불연속이고, x=0에서는 좌극한 1, 우극한 2(점 B)가 달라 극한이 없다. 따라서 a=0, b=3이고 a+b=3이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 오른쪽 그림과 같을 때, 열린구간 $(-2,2)$에서 극한값이 존재하지 않는 점의 $x$좌표를 $a$라 하고, 불연속인 점의 개수를 $b$라 하자. 이때 $a+b$의 값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0에서 극한이 없고 x=-1, 0, 1에서 불연속인 예시 그래프를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0에서 좌극한 1과 우극한 2가 달라 극한이 없고 x=-1, 0, 1의 세 점에서 불연속이다."
+  ],
+  "accessibilityDescription": "구간 (-2,2)에서 x=-1, 0, 1에서 끊어지는 조각 그래프이며 x=-1, 1에는 함숫값이 다른 점이, x=0에는 높이가 다른 두 조각이 있다."
+}

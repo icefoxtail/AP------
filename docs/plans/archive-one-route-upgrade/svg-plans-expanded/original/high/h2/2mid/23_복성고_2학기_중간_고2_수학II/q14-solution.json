@@ -1,0 +1,136 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "-2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "3"
+      },
+      {
+        "id": "E",
+        "x": "2",
+        "y": "2"
+      },
+      {
+        "id": "F",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "-1"
+      ],
+      "B": [
+        "-1",
+        "1"
+      ],
+      "C": [
+        "0",
+        "2"
+      ],
+      "D": [
+        "1",
+        "3"
+      ],
+      "E": [
+        "2",
+        "2"
+      ],
+      "F": [
+        "3",
+        "0"
+      ]
+    }
+  },
+  "caption": "예: 여섯 점 A(-2,-1), B(-1,1), C(0,2), D(1,3), E(2,2), F(3,0)을 차례로 직선으로 이은 연속함수 f이다. h(x)=x²f(x)-2x-1은 x=-2, -1, 0, 1, 2, 3에서 -1, 2, -1, 0, 3, -7이므로 (-2,-1), (-1,0), (2,3)에서 부호가 바뀌어 근이 각각 하나 있고 h(1)=0이라 x=1도 근이다. 따라서 최소 4개이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속함수 $y=f(x)$의 그래프가 여섯 개의 점 $(-2,-1)$, $(-1,1)$, $(0,2)$, $(1,3)$, $(2,2)$, $(3,0)$을 지날 때, 방정식 $x^2f(x)=2x+1$이 열린구간 $(-2,3)$에서 갖는 최소의 실근의 개수는? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "여섯 점을 직선으로 이은 f와 h의 부호 변화가 일어나는 구간을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "여섯 점 A~F를 차례로 이은 연속함수 f의 예이며 h=x²f-2x-1이 네 곳에서 0이 된다."
+  ],
+  "accessibilityDescription": "여섯 개의 점 A부터 F까지를 차례로 직선으로 이은 꺾은선 그래프이며 각 점의 좌표가 표시되어 있다."
+}

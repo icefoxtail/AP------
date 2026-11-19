@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "-1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "5"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "4"
+      ],
+      "V": [
+        "-1",
+        "2"
+      ],
+      "B": [
+        "2",
+        "5"
+      ]
+    }
+  },
+  "caption": "f(x)=|x+1|+2는 꼭짓점 V(-1,2)에서 최솟값 m=2를 갖는다. 양 끝점은 A(-3,4), B(2,5)이고 더 큰 B에서 최댓값 M=5를 갖는다. 따라서 M+m=7이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "닫힌구간 $[-3,2]$에서 $f(x)=|x+1|+2$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M+m$은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "꼭짓점 V와 양 끝점 A, B의 함숫값을 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 V(-1,2)가 최솟점이고 끝점 B(2,5)가 최댓점이다."
+  ],
+  "accessibilityDescription": "구간 [-3,2]에서 V 모양으로 꺾이는 절댓값 그래프이며 꼭짓점 V와 양 끝점 A, B의 좌표가 표시되어 있다."
+}
