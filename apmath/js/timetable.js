@@ -944,10 +944,11 @@ function getNextTimetableDraftYear(now) {
 
 function getTimetableDueDraftVersions(now) {
     var today = (now instanceof Date ? now : new Date()).toLocaleDateString('sv-SE');
-    // 적용 예약(scheduled)된 개편안은 서버가 알아서 적용하므로 띠는 draft에만 띄운다.
+    // [적용 예약]으로 예약돼 서버가 알아서 적용하는 개편안(auto_apply_armed)은 띠를 띄우지 않는다.
+    // draft와, 예전에 scheduled로만 남은(자동 적용 대상이 아닌) 개편안은 원장이 직접 적용해야 하므로 띠로 알린다.
     return getDraftTimetableVersionsForView().filter(function(version) {
         var effectiveFrom = String(version && version.effective_from || '').trim();
-        return String(version && version.status || '') === 'draft' && !!effectiveFrom && effectiveFrom <= today;
+        return !isTimetableVersionAutoApplyArmed(version) && !!effectiveFrom && effectiveFrom <= today;
     });
 }
 
@@ -1456,8 +1457,12 @@ function formatTimetableMonthDay(dateText) {
     return m ? Number(m[2]) + '월 ' + Number(m[3]) + '일' : String(dateText || '');
 }
 
+function isTimetableVersionAutoApplyArmed(version) {
+    return !!version && String(version.status || '') === 'scheduled' && Number(version.auto_apply_armed || 0) === 1;
+}
+
 function getTimetableDraftStatusText(version) {
-    if (version && String(version.status || '') === 'scheduled') {
+    if (isTimetableVersionAutoApplyArmed(version)) {
         return formatTimetableMonthDay(version.effective_from) + ' 자동 적용 예약';
     }
     return getTimetableStatusLabel(version && version.status);
@@ -2280,7 +2285,7 @@ function buildTimetableVersionHeaderActionsHtml() {
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttRefreshDraftRoster()" title="현재 운영 명단으로 개편안을 다시 맞춥니다">명단 새로고침</button>';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttRestartDraft()" title="개편안을 버리고 현재 운영 명단으로 다시 만듭니다">새로 만들기</button>';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScanDraftPreview()">충돌 확인</button>';
-        html += String(selectedVersion.status || '') === 'scheduled'
+        html += isTimetableVersionAutoApplyArmed(selectedVersion)
             ? '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScheduleDraftCancel()" title="적용일 자동 적용 예약을 취소합니다">예약 취소</button>'
             : '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScheduleDraft()" title="적용일이 되면 자동으로 운영 시간표에 반영합니다">적용 예약</button>';
         html += '<button class="btn btn-primary" style="padding:5px 10px; font-size:11px; font-weight:800; border-radius:999px; white-space:nowrap;" onclick="window.ttOpenDraftActivateConfirm()">개편 시간표 적용</button>';

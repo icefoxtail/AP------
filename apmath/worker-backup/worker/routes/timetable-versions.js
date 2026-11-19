@@ -1933,10 +1933,43 @@ function summarizeRosterSyncForLog(result) {
   };
 }
 
+// 자동 적용 대상은 "새 [적용 예약] 흐름으로 예약된" 개편안뿐이다. 예전에 API로 scheduled가 된 채 남은 옛 개편안이
+// 배포 후 첫 cron에 원장 모르게 운영에 적용되는 것을 막기 위해, 예약 PATCH가 성공할 때 표식 로그를 남기고 cron은 표식을 확인한다.
+const SCHEDULE_MARKER_STATUSES = ['schedule_requested', 'schedule_cancelled'];
+
+async function writeScheduleMarker(env, versionId, status, summary) {
+  await env.DB.prepare(`
+    INSERT INTO timetable_version_apply_logs
+      (id, academy_id, version_id, status, started_at, finished_at, summary_json, created_at)
+    VALUES (?, 'apmath', ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, CURRENT_TIMESTAMP)
+  `).bind(makeId('tval'), versionId, status, JSON.stringify(summary)).run();
+}
+
+// 가장 최근 예약 관련 로그가 schedule_requested이고 그 적용일이 현재 effective_from과 같을 때만 true.
+// (같은 초에 쌓인 표식도 순서가 맞도록 rowid로 최신을 고른다.)
+async function isAutoApplyArmed(env, version) {
+  if (!version || version.status !== 'scheduled') return false;
+  const marker = await env.DB.prepare(`
+    SELECT status, summary_json FROM timetable_version_apply_logs
+    WHERE version_id = ? AND status IN (${SCHEDULE_MARKER_STATUSES.map(v => `'${v}'`).join(', ')})
+    ORDER BY rowid DESC LIMIT 1
+  `).bind(version.id).first();
+  if (!marker || marker.status !== 'schedule_requested') return false;
+  const requestedDate = String(safeParseMemoJson(marker.summary_json, 'schedule marker').effective_from || '').trim();
+  return !!requestedDate && requestedDate === String(version.effective_from || '').trim();
+}
+
+// 화면이 "자동 적용 예약됨"과 "예전에 scheduled로만 남은 개편안"을 구분하도록 scheduled 행에 표시를 붙인다.
+async function withAutoApplyArmed(env, version) {
+  if (!version || version.status !== 'scheduled') return version;
+  return { ...version, auto_apply_armed: (await isAutoApplyArmed(env, version)) ? 1 : 0 };
+}
+
 async function autoApplyScheduledVersion(env, versionId, today) {
   // 다시 읽어서 아직 예약 상태일 때만 진행한다(그 사이 원장이 직접 적용·취소했으면 건너뜀 → 중복 적용 없음).
   const version = await getVersion(env, versionId);
   if (!version || version.status !== 'scheduled') return { version_id: versionId, skipped: true };
+  if (!(await isAutoApplyArmed(env, version))) return { version_id: versionId, skipped: true, reason: 'not_scheduled_by_director' };
   const summary = { source: 'scheduled', applied_on: today, title: version.title, effective_from: version.effective_from };
   try {
     // 짜는 동안 바뀐 명단을 먼저 맞춘다. 맞추지 못하면 낡은 명단으로 적용하지 않는다.
@@ -1979,7 +2012,7 @@ export async function runScheduledTimetableActivation(env, scheduledAt = new Dat
   for (const row of (due.results || [])) {
     results.push(await autoApplyScheduledVersion(env, row.id, today));
   }
-  return { today, due_count: results.length, results };
+  return { today, due_count: results.filter(r => !r.skipped).length, skipped_count: results.filter(r => r.skipped).length, results };
 }
 
 async function getLatestAutoApplyResult(env) {
@@ -2021,7 +2054,9 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
       ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
       ORDER BY school_year DESC, created_at DESC
     `).bind(...params).all();
-    return jsonResponse({ success: true, timetable_versions: res.results || [] });
+    const versions = [];
+    for (const version of (res.results || [])) versions.push(await withAutoApplyArmed(env, version));
+    return jsonResponse({ success: true, timetable_versions: versions });
   }
 
   if (method === 'POST' && id === 'ensure-active') {
@@ -2094,7 +2129,7 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
     const renderableVersionClasses = (await listVersionClasses(env, id, { renderableOnly: true }));
     return jsonResponse({
       success: true,
-      timetable_version: version,
+      timetable_version: await withAutoApplyArmed(env, version),
       timetable_version_classes: versionClasses,
       timetable_classes: renderableVersionClasses.map(versionClassCompatClassRow),
       timetable_version_slots: await listSlots(env, id, null, { renderableOnly: true }),
@@ -2131,11 +2166,21 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
     }
     if (row.status === 'cancelled') row.cancelled_at = new Date().toISOString();
     row.updated_at = new Date().toISOString();
+    const armedBefore = await isAutoApplyArmed(env, version);
     const keys = Object.keys(row);
     if (keys.length) {
       await env.DB.prepare(`UPDATE timetable_versions SET ${keys.map(key => `${key} = ?`).join(', ')} WHERE id = ?`).bind(...keys.map(key => row[key]), id).run();
     }
-    return jsonResponse({ success: true, timetable_version: await getVersion(env, id) });
+    const updated = await getVersion(env, id);
+    // 예약 표식: 예약하면 schedule_requested(적용일·예약한 사람), 취소하면 schedule_cancelled.
+    // 예약된 상태에서 적용일만 바꾸면 새 날짜로 표식을 다시 남긴다. 표식 없는 옛 scheduled는 날짜만 바꿔도 자동 적용으로 켜지 않는다.
+    const requester = String(teacher?.login_id || teacher?.id || teacher?.name || '');
+    if (updated.status === 'scheduled' && (row.status === 'scheduled' || (armedBefore && 'effective_from' in row))) {
+      await writeScheduleMarker(env, id, 'schedule_requested', { effective_from: updated.effective_from, requested_by: requester });
+    } else if (version.status === 'scheduled' && updated.status !== 'scheduled') {
+      await writeScheduleMarker(env, id, 'schedule_cancelled', { effective_from: version.effective_from, cancelled_by: requester });
+    }
+    return jsonResponse({ success: true, timetable_version: await withAutoApplyArmed(env, updated) });
   }
 
   if (method === 'GET' && id && action === 'slots') {

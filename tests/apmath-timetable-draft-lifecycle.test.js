@@ -255,6 +255,66 @@ function buildDb() {
     assert.strictEqual(retry.results[0].success, true, '원인을 고치면 다음 날 cron이 다시 시도해 적용한다');
   }
 
+  // ───────────── 4. 자동 적용은 새 [적용 예약] 흐름으로 예약된 개편안만 ─────────────
+  {
+    const h = harness();
+    h.run("INSERT INTO classes (id, name, grade, subject, teacher_name, is_active) VALUES ('c1','고1 A반','고1','수학','박',1)");
+    h.student('s1', '가'); h.join('c1', 's1');
+    h.run("INSERT INTO timetable_versions (id, school_year, title, status) VALUES ('ttv_active', 2026, '운영', 'active')");
+    const vid = (await h.call('POST', ['create-next-draft'], { school_year: 2031 })).body.timetable_version.id;
+    const statusOf = () => h.get('SELECT status FROM timetable_versions WHERE id = ?', vid).status;
+    const markers = () => h.all("SELECT status, summary_json FROM timetable_version_apply_logs WHERE version_id = ? AND status LIKE 'schedule_%' ORDER BY rowid", vid);
+
+    // 예전에 API/DB로 scheduled + 과거 적용일만 남은 옛 개편안: 표식이 없으므로 cron이 건드리지 않는다
+    h.run("UPDATE timetable_versions SET status = 'scheduled', effective_from = '2026-01-01' WHERE id = ?", vid);
+    const legacy = await mod.runScheduledTimetableActivation(h.env, new Date('2026-11-18T15:05:00Z'));
+    assert.strictEqual(legacy.due_count, 0);
+    assert.strictEqual(legacy.skipped_count, 1);
+    assert.strictEqual(legacy.results[0].reason, 'not_scheduled_by_director');
+    assert.strictEqual(statusOf(), 'scheduled');
+    assert.strictEqual(h.get("SELECT COUNT(*) AS n FROM classes WHERE promotion_version_id = ?", vid).n, 0, '운영에 아무것도 적용되지 않는다');
+    const listed = (await h.call('GET', [])).body.timetable_versions.find(v => v.id === vid);
+    assert.strictEqual(listed.auto_apply_armed, 0, '화면은 이 개편안을 직접 적용 띠로 안내할 수 있다');
+    assert.strictEqual((await h.call('GET', ['auto-apply-latest'])).body.auto_apply, null, '표식·건너뜀은 자동 적용 결과로 나오지 않는다');
+
+    // 새 흐름으로 예약하면 표식이 남고 그날 적용된다
+    h.run("UPDATE timetable_versions SET status = 'draft' WHERE id = ?", vid);
+    const reserved = await h.call('PATCH', [vid], { status: 'scheduled', effective_from: '2031-01-10' });
+    assert.strictEqual(reserved.body.timetable_version.auto_apply_armed, 1);
+    assert.deepStrictEqual(markers().map(m => m.status), ['schedule_requested']);
+    assert.strictEqual(JSON.parse(markers()[0].summary_json).effective_from, '2031-01-10');
+    assert.strictEqual(JSON.parse(markers()[0].summary_json).requested_by, 'owner');
+    assert.strictEqual((await h.call('GET', ['auto-apply-latest'])).body.auto_apply, null);
+
+    // 예약 → 취소 → (직접 status만 scheduled로 바꿈): 최근 표식이 취소이므로 적용 안 함
+    const cancelled = await h.call('PATCH', [vid], { status: 'draft' });
+    assert.strictEqual(cancelled.body.timetable_version.status, 'draft');
+    assert.deepStrictEqual(markers().map(m => m.status), ['schedule_requested', 'schedule_cancelled']);
+    h.run("UPDATE timetable_versions SET status = 'scheduled' WHERE id = ?", vid);
+    const afterCancel = await mod.runScheduledTimetableActivation(h.env, new Date('2031-01-09T15:05:00Z'));
+    assert.strictEqual(afterCancel.due_count, 0);
+    assert.strictEqual(afterCancel.skipped_count, 1);
+    assert.strictEqual(statusOf(), 'scheduled');
+
+    // 다시 예약한 뒤 적용일을 바꾸면 표식이 새 날짜로 남고, 새 날짜에 적용된다(옛 날짜에는 안 됨)
+    await h.call('PATCH', [vid], { status: 'scheduled' });
+    assert.strictEqual(markers().at(-1).status, 'schedule_requested');
+    const moved = await h.call('PATCH', [vid], { effective_from: '2031-01-20' });
+    assert.strictEqual(moved.body.timetable_version.auto_apply_armed, 1);
+    assert.strictEqual(JSON.parse(markers().at(-1).summary_json).effective_from, '2031-01-20');
+    const early = await mod.runScheduledTimetableActivation(h.env, new Date('2031-01-14T15:05:00Z'));
+    assert.strictEqual(early.due_count, 0, '옛 적용일(1월 10일) 이후라도 새 적용일 전에는 적용 안 됨');
+    assert.strictEqual(statusOf(), 'scheduled');
+    // 표식 뒤에 적용일이 직접(DB) 바뀌어 표식의 날짜와 다르면 적용하지 않는다
+    h.run("UPDATE timetable_versions SET effective_from = '2031-01-15' WHERE id = ?", vid);
+    assert.strictEqual((await mod.runScheduledTimetableActivation(h.env, new Date('2031-01-15T15:05:00Z'))).due_count, 0);
+    h.run("UPDATE timetable_versions SET effective_from = '2031-01-20' WHERE id = ?", vid);
+    const onDate = await mod.runScheduledTimetableActivation(h.env, new Date('2031-01-19T15:05:00Z'));
+    assert.strictEqual(onDate.due_count, 1);
+    assert.strictEqual(onDate.results[0].success, true, JSON.stringify(onDate));
+    assert.strictEqual(statusOf(), 'active');
+  }
+
   // cron 진입점: 다른 예약 작업과 allSettled로 분리되어 있다
   const indexSource = fs.readFileSync(path.join(workerDir, 'index.js'), 'utf8');
   assert.ok(indexSource.includes('runScheduledTimetableActivation(env, scheduledAt)'), 'index.js scheduled가 적용 예약 작업을 호출해야 함');

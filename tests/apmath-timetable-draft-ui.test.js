@@ -216,15 +216,23 @@ const detail = (extra = {}) => ({
   assert.match(header2, /적용 예약/);
   assert.doesNotMatch(header2, /예약 취소/);
   assert.match(header2, /개편 시간표 적용/, '즉시 적용 버튼은 그대로');
-  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', title: '개편 초안', effective_from: '2031-01-10', school_year: 2031 }];
+  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', title: '개편 초안', effective_from: '2031-01-10', school_year: 2031, auto_apply_armed: 1 }];
   ui2.selectedTimetableVersion = ui2.timetableVersions[0];
   header2 = context.buildTimetableVersionHeaderActionsHtml();
   assert.match(header2, /예약 취소/);
   assert.match(header2, /1월 10일 자동 적용 예약/);
+  // 예전에 scheduled로만 남은 개편안(표식 없음)은 자동 적용 대상이 아니므로 [적용 예약]으로 다시 예약하게 한다
+  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', title: '개편 초안', effective_from: '2031-01-10', school_year: 2031, auto_apply_armed: 0 }];
+  ui2.selectedTimetableVersion = ui2.timetableVersions[0];
+  header2 = context.buildTimetableVersionHeaderActionsHtml();
+  assert.match(header2, /적용 예약/);
+  assert.doesNotMatch(header2, /예약 취소|자동 적용 예약/);
 
   // "적용 예정일이 지났습니다" 띠는 draft에만
-  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', effective_from: '2020-01-01' }];
+  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', effective_from: '2020-01-01', auto_apply_armed: 1 }];
   assert.equal(context.getTimetableDueDraftVersions(new Date('2031-02-01T00:00:00')).length, 0);
+  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', effective_from: '2020-01-01', auto_apply_armed: 0 }];
+  assert.equal(context.getTimetableDueDraftVersions(new Date('2031-02-01T00:00:00')).length, 1, '표식 없는 scheduled는 draft처럼 직접 적용 띠로 안내');
   ui2.timetableVersions = [{ id: 'v1', status: 'draft', effective_from: '2020-01-01' }];
   assert.equal(context.getTimetableDueDraftVersions(new Date('2031-02-01T00:00:00')).length, 1);
 
