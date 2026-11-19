@@ -1,0 +1,38 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "highlight": {
+      "expr": "10*a+b",
+      "in": [
+        11,
+        12,
+        13,
+        21,
+        22,
+        23,
+        31,
+        32,
+        33,
+        41,
+        42,
+        43,
+        65
+      ]
+    }
+  },
+  "caption": "면의 번호 1, 2, 3, 4, 5, 6은 각각 30°, 45°, 60°, 90°, 180°, 270°에 대응한다. 첫 번째 눈이 a, 두 번째 눈이 b인 6×6 표에서 sin a와 cos b의 곱이 양수인 칸을 칠했다. sin a>0은 번호 1~4, cos b>0은 번호 1~3이므로 4×3=12칸이고, sin a<0은 번호 6, cos b<0은 번호 5이므로 1칸이다. 모두 13칸이므로 확률은 13/36이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "두 주사위의 눈 (a, b)를 가로세로로 놓은 6×6 표이며 sin a와 cos b의 곱이 양수인 열세 칸이 칠해져 있다.",
+  "newVisualInformation": [
+    "곱이 양수인 칸이 a가 1~4일 때 b가 1~3인 12칸과 (6, 5)의 1칸으로 보여 13칸이 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위에는 1에서 6까지의 숫자를 대신하여 $30^\\circ, 45^\\circ, 60^\\circ, 90^\\circ, 180^\\circ, 270^\\circ$가 각각 여섯 개의 면에 쓰여져 있다. 이 주사위를 차례로 두 번 던져 나오는 눈의 수를 $a$와 $b$라 할 때, 다음 함수 $f(x)=\\sin x$와 $g(x)=\\cos x$에 대하여 $f(a)g(b)$의 값이 양의 실수가 되는 확률은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

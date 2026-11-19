@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "A만",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "1/6",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "B만",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1/4",
+        "in": []
+      }
+    ],
+    "shade": "(A∩B^c)∪(A^c∩B)"
+  },
+  "caption": "A△B는 색칠한 A만과 B만을 합친, 정확히 한 사건만 일어나는 부분이다. 합집합에서 A△B를 뺀 겹침이 P(A∩B)=1/6이다. 또 P(A△B)=P(A∪B)−P(A∩B)=7/9×P(A∪B)이므로 2/9×P(A∪B)=1/6에서 P(A∪B)=3/4이다. 덧셈정리로 P(A)+P(B)=P(A∪B)+P(A∩B)=3/4+1/6=11/12이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B가 겹친 벤다이어그램이며 겹침에 1/6, 바깥에 1/4가 적혀 있고 A만과 B만이 색칠되어 있다.",
+  "newVisualInformation": [
+    "색칠한 A△B와 겹침 1/6을 합친 합집합이 3/4이고 바깥이 1/4임이 보여 P(A)+P(B)=11/12의 근거가 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 3] 두 사건 $A, B$에 대하여 연산 $\\Delta$를<br>$$A \\Delta B = (A-B) \\cup (B-A)$$<br>라 정의할 때, $P(A \\Delta B) = \\frac{7}{9}P(A \\cup B)$와 $P((A \\cup B) - (A \\Delta B)) = \\frac{1}{6}$가 성립한다. 이때, $P(A)+P(B)$의 값을 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
