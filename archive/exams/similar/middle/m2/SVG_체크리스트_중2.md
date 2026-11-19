@@ -522,3 +522,35 @@
 | 24 | BENEFICIAL | BENEFICIAL | 문제: 수직선에 원점과 오른쪽 2, 왼쪽 1 이동을 표시한 그림이 있으면 최종 위치 조건 이해가 쉽다. / 해설: 수직선에 앞면 3회, 뒷면 2회 이동을 표시하면 위치 4가 되는 과정이 한눈에 보인다. |
 
 - 문제그림 REQUIRED/BENEFICIAL 8개: 3, 4, 6, 7, 8, 14, 21, 24. 해설그림 REQUIRED/BENEFICIAL 8개: 4, 6, 7, 8, 14, 21, 22, 24.
+
+## 24_신흥중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q7[보기/정답④→②], q9[보기/정답③→⑤], q10[보기/정답⑤→①], q13[보기/정답①→⑤], q15[보기/정답⑤→③], q16[보기/정답②→⑤], q19[발문], q20[발문], q21[발문], q22[발문], q23[발문]. 해설 2개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
