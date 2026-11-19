@@ -1,18 +1,23 @@
 // ds-plan-exam.sh 가 부르는 보조 도구(대상 계산·검증·정리). 저장소 루트에서 실행한다.
-//   node ds-plan-lib.cjs prep     <시험지 JS> <outdir>   plan 대기 문항 − 이미 plan/판정이 있는 문항 → <outdir>/pending.json, INPUT.md. 대상 수를 출력(0이면 할 일 없음)
+//   node ds-plan-lib.cjs prep     <시험지 JS> <outdir>   plan 대기 문항 − 이미 plan/판정이 있는 문항 → <outdir>/pending.json. 문맥 꾸러미(본보기 plan·가이드 발췌·문항)를 호출 묶음(기본 5문항)마다
+//                                                        <outdir>/INPUT-<k>.md 로 만들고 묶음 목록 chunks.txt(줄마다 문항 번호 쉼표 목록)와 INPUT 크기를 쓴다. 대상 수를 출력(0이면 할 일 없음)
+//   node ds-plan-lib.cjs expand   <시험지 JS> <outdir> <답 파일…>  DeepSeek 의 답(=== Q<번호> === 줄 뒤에 JSON 하나씩)을 읽어 FIGURE 는 plan 폴더에 q<no>-solution.json(문제 원문 source 항목은 여기서 넣는다),
+//                                                        그 밖의 판정은 <outdir>/q<no>/result.json 으로 펼친다. 읽은 JSON 은 <outdir>/q<no>/answer.json 에 남긴다(재시도 입력용)
+//   node ds-plan-lib.cjs retry-prep <시험지 JS> <outdir>  validate.json 의 bad 문항만 문제 목록·직전 답과 함께 INPUT-r<k>.md 로 만들고 chunks-retry.txt 를 쓴다. 묶음 수를 출력
 //   node ds-plan-lib.cjs validate <시험지 JS> <outdir>   대상 문항마다 기계 검증 → <outdir>/validate.json({ok:[no…], bad:[{no,problems}]}). 문제가 있으면 줄마다 출력하고 종료코드 1
 //   node ds-plan-lib.cjs finalize <시험지 JS> <outdir>   validate.json 기준으로 정리: 못 통과한 문항의 plan 파일을 치우고(백업), 통과한 문항의 _decisions.jsonl 행과
 //                                                        source-revision.json 을 쓰고, 예상 밖의 변경을 되돌린다. 통과 문항 번호를 출력한다.
 //   node ds-plan-lib.cjs report   <시험지 JS> <outdir>   통과 문항 결과 표(문항 | 결과 | 설명 | PNG 경로)를 출력한다.
 // 문항 번호 no = 시험지 문항 배열의 1부터 센 자리(공장 build.cjs 와 같다). 렌더에 넘기는 ordinal = 배열에 숫자가 아닌 id가 있으면 그 id, 아니면 no.
+// DeepSeek 은 탐색하지 않는다(2026-11-19 사용자 지시: 탐색이 문항당 9분 중 거의 전부였다). 필요한 것은 INPUT 에 다 넣고 답만 받는다(도구 없는 agent).
 // 글로만 쓴다(2026-11-19 사용자 지시): 렌더·PNG 확인은 하지 않는다(나중에 공장이 일괄 렌더하고 실패분은 수리로 넘긴다).
 // DeepSeek 이 쓰는 것: <PLANDIR>/q<no>-solution.json(FIGURE), <OUT>/q<no>/result.json(FIGURE 가 아닌 문항만). _decisions.jsonl 은 이 도구가 쓴다.
 const fs = require('fs'), path = require('path'), vm = require('vm'), cp = require('child_process');
 const LEDGER = 'archive/tools/geometry-equation/production/exam-figure-ledger/';
 const PLAN_BASE = 'docs/plans/archive-one-route-upgrade/svg-plans-expanded/';
 const DECISIONS = ['FIGURE', 'EXEMPT', 'CONTENT', 'UNSUPPORTED'];
-const [cmd, js, out] = process.argv.slice(2);
-if (!cmd || !js || !out) { console.error('usage: ds-plan-lib.cjs prep|validate|finalize|report <시험지 JS> <outdir>'); process.exit(2); }
+const [cmd, js, out, ...rest] = process.argv.slice(2);
+if (!cmd || !js || !out) { console.error('usage: ds-plan-lib.cjs prep|expand|retry-prep|validate|finalize|report <시험지 JS> <outdir>'); process.exit(2); }
 const src = js.replace(/\\/g, '/');
 const PFX = 'archive/exams/original/';
 if (!src.startsWith(PFX) || !src.endsWith('.js')) { console.error('시험지 JS는 저장소 루트 기준 archive/exams/original/...js 경로여야 한다'); process.exit(2); }
@@ -38,6 +43,22 @@ function ledgerPending() {
   return led.items.filter(i => i.state === 'OPEN_LAYOUT' && String(i.reason || '').startsWith('plan 대기'));
 }
 
+const CHUNK = Math.max(1, Number(process.env.DS_CHUNK) || 5);
+// rows 를 CHUNK 문항씩 묶어 문맥 꾸러미(INPUT-<prefix><k>.md)를 쓰고 묶음 목록을 chunksFile 에 쓴다. INPUT 크기를 표준에러로 알린다.
+function writeChunks(rows, prefix, chunksFile, extra) {
+  const { buildInput } = require('./ds-plan-context.cjs');
+  const lines = [];
+  for (let k = 0, i = 0; i < rows.length; i += CHUNK, k++) {
+    const part = rows.slice(i, i + CHUNK);
+    const r = buildInput({ bank, rows: part, examRel: rel, extra });
+    const name = `${prefix}${k + 1}.md`;
+    fs.writeFileSync(path.join(out, name), r.text);
+    lines.push(part.map(x => x.no).join(','));
+    console.error(`${name}: ${part.length}문항 ${(r.stats.bytes / 1024).toFixed(1)}KB ${r.stats.lines}줄 (본보기 ${r.stats.exemplars}개 ${(r.stats.exBytes / 1024).toFixed(1)}KB, 가이드 ${r.stats.guideLines}줄 ${(r.stats.guideBytes / 1024).toFixed(1)}KB, capability ${r.stats.caps.join('/')})`);
+  }
+  fs.writeFileSync(path.join(out, chunksFile), lines.join('\n') + '\n');
+}
+
 if (cmd === 'prep') {
   fs.mkdirSync(out, { recursive: true });
   const dec = readDecisions().map(d => d.no);
@@ -53,15 +74,8 @@ if (cmd === 'prep') {
   }
   rows.sort((a, b) => a.no - b.no);
   fs.writeFileSync(pendingPath, JSON.stringify({ exam: src, rows, skipped }, null, 1));
-  const md = rows.map(r => { const q = bank[r.no - 1];
-    return [`### Q${r.no}  (plan 파일 q${r.no}-solution.json, 렌더 ordinal ${JSON.stringify(r.ordinal)})`,
-      `장부 사유: ${r.reason}`,
-      `문제: ${q.content ?? q.question ?? ''}`,
-      q.choices && q.choices.length ? `보기: ${JSON.stringify(q.choices)}` : '',
-      q.image ? `문제 그림 파일: archive/${q.image}` : '',
-      `정답: ${q.answer ?? ''}`, `해설: ${q.solution ?? ''}`].filter(Boolean).join('\n'); });
-  fs.writeFileSync(path.join(out, 'INPUT.md'), md.join('\n\n') + '\n');
   if (skipped.plan || skipped.decided || skipped.notInBank) console.error(`건너뜀: plan 있음 ${skipped.plan}, 이미 판정 ${skipped.decided}, 문항 번호 없음 ${skipped.notInBank}`);
+  if (rows.length) writeChunks(rows, 'INPUT-', 'chunks.txt', null);
   console.log(rows.length);
   process.exit(0);
 }
@@ -94,6 +108,12 @@ function knownFields() {
           if (CONTAINERS.includes(k) && j[k] && typeof j[k] === 'object' && !Array.isArray(j[k])) { const s = o.sub[k] || (o.sub[k] = new Set()); for (const kk of Object.keys(j[k])) s.add(kk); } }
       } catch {} } } };
   walk(base.replace(/\/$/, ''));
+  // ops/golden 의 plan.json 도 본보기다(plan 폴더에 plan 이 없는 capability 가 있다: exp-log-pair, lattice-path 등)
+  const gd = 'archive/tools/geometry-equation/ops/golden';
+  if (fs.existsSync(gd)) for (const d of fs.readdirSync(gd)) { try { const j = readJson(`${gd}/${d}/plan.json`); const c = j.capability; if (typeof c !== 'string') continue;
+    const o = by[c] || (by[c] = { n: 0, top: new Set(), sub: {} }); o.n++;
+    for (const k of Object.keys(j)) { o.top.add(k);
+      if (CONTAINERS.includes(k) && j[k] && typeof j[k] === 'object' && !Array.isArray(j[k])) { const s = o.sub[k] || (o.sub[k] = new Set()); for (const kk of Object.keys(j[k])) s.add(kk); } } } catch {} }
   return (knownCache = by);
 }
 
@@ -144,7 +164,8 @@ function resultOf(r) {
 function validateOne(r) {
   const problems = [], pf = planDir + planFile(r.no);
   const res = resultOf(r);
-  if (!res) return [`plan 파일(${planFile(r.no)})도 result.json 도 없다(문항을 처리하지 않았다)`];
+  if (!res) { let pe = ''; try { pe = fs.readFileSync(path.join(out, 'q' + r.no, 'parse-error.txt'), 'utf8').trim(); } catch {}
+    return [pe ? `답에서 이 문항의 JSON 을 읽지 못했다: ${pe}` : `이 문항의 답(=== Q${r.no} === 표지와 JSON)이 없다`]; }
   if (!DECISIONS.includes(res.decision)) return [`decision 값이 정해진 것이 아니다(${res.decision})`];
   if (res.decision === 'FIGURE') {
     if (!fs.existsSync(pf)) return [`FIGURE 인데 ${planFile(r.no)} 가 plan 폴더에 없다`];
@@ -157,6 +178,83 @@ function validateOne(r) {
     if (typeof res.attempts !== 'string' || res.attempts.trim().length < 10) problems.push('UNSUPPORTED 는 attempts(찾아 본 방법)가 필요하다');
   }
   return problems;
+}
+
+// ---------- DeepSeek 답 펼치기 ----------
+// 답 형식: 문항마다 "=== Q<번호> ===" 한 줄, 그 뒤에 JSON 객체 하나. 코드펜스는 있어도 읽는다.
+//   {"decision":"FIGURE","plan":{…}}  |  {"decision":"EXEMPT|CONTENT|UNSUPPORTED","why":"…","errorCode":"…","attempts":"…"}
+const stripAnsi = t => String(t).replace(/\x1b\[[0-9;?]*[A-Za-z]/g, '').replace(/\r/g, '');
+// 첫 '{' 부터 짝이 맞는 '}' 까지(문자열 안의 괄호는 무시)
+function extractObject(t) {
+  const a = t.indexOf('{'); if (a < 0) throw new Error('JSON 객체가 없다');
+  let depth = 0, inStr = false, esc = false;
+  for (let i = a; i < t.length; i++) { const c = t[i];
+    if (inStr) { if (esc) esc = false; else if (c === '\\') esc = true; else if (c === '"') inStr = false; continue; }
+    if (c === '"') inStr = true; else if (c === '{') depth++; else if (c === '}' && --depth === 0) return t.slice(a, i + 1); }
+  throw new Error('JSON 객체가 닫히지 않았다(출력이 잘렸을 수 있다)');
+}
+function parseLoose(seg) {
+  const t = extractObject(seg);
+  try { return JSON.parse(t); } catch (e1) {
+    try { return JSON.parse(t.replace(/\\(?!["\\/bfnrtu])/g, '\\\\')); } catch { throw e1; } // 잘못된 백슬래시 이스케이프(LaTeX)만 고쳐 본다
+  }
+}
+function parseAnswers(text) {
+  const t = stripAnsi(text), re = /^[ \t`*#>-]*={2,}[ \t]*Q(\d+)[ \t]*={2,}[ \t`*]*$/gm, marks = [];
+  let m; while ((m = re.exec(t))) marks.push({ no: Number(m[1]), at: m.index, end: m.index + m[0].length });
+  return marks.map((mk, i) => ({ no: mk.no, seg: t.slice(mk.end, i + 1 < marks.length ? marks[i + 1].at : t.length) }));
+}
+const qdir = no => path.join(out, 'q' + no);
+const rmQuiet = f => { try { fs.rmSync(f); } catch {} };
+
+if (cmd === 'expand') {
+  if (!rest.length) { console.error('usage: ds-plan-lib.cjs expand <시험지 JS> <outdir> <답 파일…>'); process.exit(2); }
+  const targets = new Set(pend.map(r => r.no)); let n = 0, fail = 0;
+  for (const file of rest) {
+    let text = ''; try { text = fs.readFileSync(file, 'utf8'); } catch { console.error('답 파일을 읽을 수 없다: ' + file); continue; }
+    for (const { no, seg } of parseAnswers(text)) {
+      if (!targets.has(no)) { console.error(`WARN: 대상이 아닌 문항 Q${no} 의 답은 버린다`); continue; }
+      fs.mkdirSync(qdir(no), { recursive: true });
+      rmQuiet(path.join(qdir(no), 'parse-error.txt'));
+      let obj; try { obj = parseLoose(seg); } catch (e) { fs.writeFileSync(path.join(qdir(no), 'parse-error.txt'), String(e.message) + '\n'); console.error(`Q${no}: 답을 읽지 못했다: ${e.message}`); fail++; continue; }
+      fs.writeFileSync(path.join(qdir(no), 'answer.json'), JSON.stringify(obj, null, 1));
+      const pf = planDir + planFile(no); let decision = obj.decision;
+      if (!decision && obj.capability) decision = 'FIGURE';
+      if (decision === 'FIGURE') {
+        const plan = obj.plan && typeof obj.plan === 'object' ? obj.plan : (obj.capability ? obj : null);
+        if (!plan) { fs.writeFileSync(path.join(qdir(no), 'parse-error.txt'), 'decision 이 FIGURE 인데 plan 객체가 없다\n'); fail++; continue; }
+        const q = bank[no - 1];
+        if (!Array.isArray(plan.sourceConditions)) plan.sourceConditions = [];
+        if (!plan.sourceConditions.some(c => c && c.mappedTo === 'PRESERVED_ARCHIVE_BANK'))
+          plan.sourceConditions.unshift({ id: 'source', condition: String(q.content ?? q.question ?? ''), mappedTo: 'PRESERVED_ARCHIVE_BANK' });
+        fs.mkdirSync(planDir, { recursive: true });
+        fs.writeFileSync(pf, JSON.stringify(plan, null, 2) + '\n');
+        rmQuiet(path.join(qdir(no), 'result.json'));
+      } else {
+        const res = { decision: decision || null, why: obj.why };
+        if (obj.errorCode !== undefined) res.errorCode = obj.errorCode;
+        if (obj.attempts !== undefined) res.attempts = obj.attempts;
+        fs.writeFileSync(path.join(qdir(no), 'result.json'), JSON.stringify(res, null, 1));
+        rmQuiet(pf); // 판정이 FIGURE 가 아니면 plan 폴더에 plan 이 남지 않는다
+      }
+      n++;
+    }
+  }
+  console.log(`EXPAND answers=${n} unreadable=${fail}`);
+  process.exit(0);
+}
+
+if (cmd === 'retry-prep') {
+  const v = readJson(path.join(out, 'validate.json'));
+  const extra = {}, rows = [];
+  for (const b of v.bad) { const r = pend.find(x => x.no === b.no); if (!r) continue; rows.push(r);
+    let prev = null; try { prev = readJson(path.join(qdir(b.no), 'answer.json')); } catch {}
+    extra[b.no] = { problems: b.problems, prev }; }
+  rows.sort((a, b) => a.no - b.no);
+  if (!rows.length) { console.log(0); process.exit(0); }
+  writeChunks(rows, 'INPUT-r', 'chunks-retry.txt', extra);
+  console.log(fs.readFileSync(path.join(out, 'chunks-retry.txt'), 'utf8').split('\n').filter(Boolean).length);
+  process.exit(0);
 }
 
 if (cmd === 'validate') {
