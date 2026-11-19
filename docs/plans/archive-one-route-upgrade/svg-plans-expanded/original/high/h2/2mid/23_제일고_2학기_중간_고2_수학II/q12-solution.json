@@ -1,0 +1,133 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          4,
+          6
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "1"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "D",
+        "x": "3",
+        "y": "5"
+      },
+      {
+        "id": "E",
+        "x": "3",
+        "y": "2"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 성질을 갖는 예시 그래프를 그렸다. x=1은 빈 점 A와 채운 점 B가 어긋나 극한은 있으나 불연속, x=2와 x=4는 꺾인 연속점, x=3은 좌극한 5(열린 점 D)와 우극한 2(점 E)가 달라 극한이 없다. x=0과 x=5는 매끄럽다. 따라서 A={0,1,2,4,5}, B={0,2,4,5}, C={0,5}이고 m+n+l=5+4+2=11이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같다.\n\n정수 전체의 집합의 세 부분집합 $A,B,C$를\n$A=\\{a\\mid \\lim_{x\\to a}f(x)$의 값이 존재, $-1\\lt a\\lt6\\}$,\n$B=\\{b\\mid \\lim_{x\\to b}\\{f(x)-f(b)\\}=0,\\ -1\\lt b\\lt6\\}$,\n$C=\\{c\\mid \\lim_{x\\to c}\\dfrac{f(x)-f(c)}{x-c}$의 값 존재, $-1\\lt c\\lt6\\}$\n이라 하자. 집합 $A$의 원소의 개수를 $m$, 집합 $B$의 원소의 개수를 $n$, 집합 $C$의 원소의 개수를 $l$이라 할 때, $m+n+l$의 값은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 어긋난 점, x=2, 4의 꺾임, x=3의 점프, x=0, 5의 매끄러움을 한 그래프에 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 점이 어긋나고 x=2, 4에서 꺾이며 x=3에서 끊어지고 x=0, 5에서는 매끄러운 예시 그래프이다."
+  ],
+  "accessibilityDescription": "구간 (-1,6)에서 x=1의 어긋난 점 A, B, x=2와 x=4에서 꺾이는 부분, x=3에서 끊어지는 점 D, E가 있는 조각 그래프이다."
+}
