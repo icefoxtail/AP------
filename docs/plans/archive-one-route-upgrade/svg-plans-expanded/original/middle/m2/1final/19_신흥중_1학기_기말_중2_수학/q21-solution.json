@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3",
+          "1/2"
+        ],
+        "domain": [
+          "-8",
+          "2"
+        ],
+        "label": "y=x/2+3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-1/2"
+        ],
+        "domain": [
+          "-8",
+          "2"
+        ],
+        "label": "y=−x/2−3",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-6",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 그래프가 x축 위에서 만나려면 x절편이 같아야 한다. y=(1/2)x+3에서 y=0이면 x=−6이므로 x절편은 −6이다. y=ax−3이 점 (−6,0)을 지나므로 0=−6a−3에서 a=−1/2이다. 그림은 두 직선이 x축 위의 점 P(−6,0)에서 만나는 모습이다.",
+  "newVisualInformation": [
+    "두 직선이 x축 위의 점 (−6,0)에서 만나므로 0=−6a−3에서 a=−1/2"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 직선과 오른쪽 아래로 향하는 직선이 x축 위의 점 P(−6,0)에서 만나고 각각 y절편 3과 −3을 지난다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>서술형 2. 일차함수 $y=ax-3$의 그래프는 일차함수 $y=\\frac{1}{2}x+3$의 그래프와 $x$축 위에서 만날 때, 상수 $a$의 값을 구하시오. [7점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

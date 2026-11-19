@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-1/2"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "label": "y=−x/2+1",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "4",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "K",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 (−2,2), (4,−1)을 지나므로 기울기는 (−1−2)/(4−(−2))=−1/2이다. 점 (4,−1)을 지나므로 y−(−1)=−(1/2)(x−4)에서 y=−(1/2)x+1이다. 따라서 y절편 k=1이고 답은 ③이다.",
+  "newVisualInformation": [
+    "두 점에서 기울기 −1/2이고 y절편 k=1"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선이 (−2,2)와 (4,−1)을 지나고 y축과 점 K(0,1)에서 만나며 점들의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 다음 그림과 같은 직선에서 $k$의 값은? [4점]<br><br><img src=\"assets/images/19_신흥중_1학기_기말_중2_수학/q15.png\" alt=\"점 (-2, 2)와 점 (4, -1)을 지나며 y절편이 k인 직선 그래프\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "-1"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=−x−2",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "예: a=−1, b=2인 점 P(−1,2)로 그렸다. 점 (a,b)가 제2사분면 위의 점이면 a<0, b>0이다. 일차함수 y=(1/a)x+ab에서 기울기 1/a<0이므로 오른쪽 아래로 향하고 y절편 ab<0이다. 기울기가 음수이고 y절편이 음수인 직선은 제2, 3, 4사분면을 지나고 제1사분면을 지나지 않는다. 답은 ①이다.",
+  "newVisualInformation": [
+    "a<0, b>0이면 기울기 1/a<0, y절편 ab<0이어서 직선은 제1사분면을 지나지 않음"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선이 y축 아래쪽 (0,−2)와 x축 왼쪽 (−2,0)을 지나고 제2사분면에 점 P(−1,2)가 표시되어 있다. 직선은 제1사분면을 지나지 않는다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>6. 점 $(a, b)$가 제2사분면 위의 점일 때, 일차함수 $y=\\frac{1}{a}x+ab$의 그래프가 지나지 않는 사분면은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

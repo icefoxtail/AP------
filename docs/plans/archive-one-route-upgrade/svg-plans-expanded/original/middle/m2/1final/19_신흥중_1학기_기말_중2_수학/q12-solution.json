@@ -1,0 +1,73 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "3"
+        ],
+        "domain": [
+          "-3",
+          "1"
+        ],
+        "label": "y=3x+6",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-2"
+        ],
+        "domain": [
+          "-1",
+          "4"
+        ],
+        "label": "y=−2x+6",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "두 직선의 y절편이 모두 6이므로 높이는 6이다. 넓이가 15이면 (1/2)×(밑변)×6=15에서 밑변은 5이다. y=3x+6의 x절편이 −2이므로 y=ax+6의 x절편은 −2+5=3이다. 0=3a+6에서 a=−2이다. 따라서 답은 ①이다.",
+  "newVisualInformation": [
+    "밑변 5, 높이 6에서 넓이 15이고 x절편이 3이므로 a=−2"
+  ],
+  "accessibilityDescription": "점 (0,6)에서 만나는 두 직선이 x축과 각각 (−2,0)과 (3,0)에서 만나 x축과 함께 삼각형을 이룬다. 세 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 두 일차함수 $y=3x+6$, $y=ax+6$의 그래프와 $x$축으로 둘러싸인 도형의 넓이가 15일 때, 상수 $a$의 값은? (단, $a < 0$) [5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

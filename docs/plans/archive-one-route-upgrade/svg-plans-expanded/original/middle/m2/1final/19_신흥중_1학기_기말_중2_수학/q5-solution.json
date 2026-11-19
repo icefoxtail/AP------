@@ -1,0 +1,74 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "5",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "4"
+        ],
+        "label": "y=x+5",
+        "color": "BLUE",
+        "style": "DASHED"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-4",
+          "1"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "label": "y=x−4",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "5",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y=ax+5를 y축의 방향으로 −9만큼 평행이동하면 y=ax−4이고 y절편은 b=−4이다. x절편이 4이므로 0=4a−4에서 a=1이다. 따라서 a+b=1+(−4)=−3이고 답은 ①이다. 그림에서 점선은 이동 전 y=x+5, 실선은 이동 후 y=x−4이다.",
+  "newVisualInformation": [
+    "이동한 직선 y=ax−4의 x절편이 4이므로 a=1, b=−4이어서 a+b=−3"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 평행한 두 직선이 있다. 점선은 y절편 5인 이동 전의 직선이고 실선은 x절편 4, y절편 −4인 이동 후의 직선이며 세 점이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>5. 일차함수 $y=ax+5$의 그래프를 $y$축의 방향으로 $-9$만큼 평행이동한 그래프의 $x$절편이 4, $y$절편이 $b$일 때, $a+b$의 값은? (단, $a$는 상수) [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

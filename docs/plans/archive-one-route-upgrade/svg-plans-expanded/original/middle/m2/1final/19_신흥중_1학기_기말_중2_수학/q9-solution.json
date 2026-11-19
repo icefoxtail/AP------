@@ -1,0 +1,48 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=−2x−3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=−2x+b (b=2)",
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "두 직선이 서로 만나지 않으려면 평행해야 하므로 기울기는 같고 y절편은 달라야 한다. ax−y=3은 y=ax−3, 2x+y=b는 y=−2x+b이므로 a=−2이고 −3≠b이다. 그림은 a=−2, b=2인 예이다. 따라서 a=−2, b≠−3이고 답은 ②이다.",
+  "newVisualInformation": [
+    "평행하려면 기울기 a=−2이고 y절편이 달라 b≠−3"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 두 직선이 서로 평행하게 그려져 있고 y절편이 −3인 직선과 y절편이 2인 직선이며 각각 식이 적혀 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>9. 두 일차방정식 $ax-y=3$, $2x+y=b$의 그래프가 서로 만나지 않을 때, 상수 $a$, $b$의 조건은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

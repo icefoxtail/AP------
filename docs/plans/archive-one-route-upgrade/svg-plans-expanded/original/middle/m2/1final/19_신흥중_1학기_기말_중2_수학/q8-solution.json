@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=−2x+1",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-1",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 A(1,−1), B(−1,3)을 지나는 직선의 기울기는 (3−(−1))/(−1−1)=−2이다. 점 C(k, k+1)도 이 직선 위에 있으므로 A, C의 기울기도 −2이다. (k+1−(−1))/(k−1)=−2에서 k+2=−2k+2이므로 k=0이다. 따라서 C(0,1)이고 답은 ③이다.",
+  "newVisualInformation": [
+    "직선 y=−2x+1 위의 세 점으로 점 C(k,k+1)에서 k=0"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선 y=−2x+1 위에 세 점 A(1,−1), B(−1,3), C(0,1)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>8. 세 점 $(1, -1)$, $(-1, 3)$, $(k, k+1)$이 한 직선 위에 있을 때, $k$의 값은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
