@@ -1508,7 +1508,7 @@
       if (!original) return false;
       if ((await Source.fingerprint(original)) !== record.sourceFingerprint) return false;
       if ((await Source.fingerprint(prior)) !== record.sourceFingerprint) return false;
-      return "qid_v1_" + (await Source.digest(file + "#" + ordinal)) === record.questionUid;
+      return await Source.uidMatchesSource(record, state.catalog);
     } catch {
       return false;
     }

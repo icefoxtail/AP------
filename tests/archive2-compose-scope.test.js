@@ -584,7 +584,7 @@ test('all changed browser scripts use new cache versions', () => {
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assertWorkspaceScriptVersions(assert);
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
-  assert.match(html, /archive2-source\.js\?v=20261119-source-parallel-1/);
+  assert.match(html, /archive2-source\.js\?v=20261119-verified-rename-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
   assert.match(html, /archive2\.css\?v=20261119-diagnostic-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);

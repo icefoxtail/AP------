@@ -203,6 +203,22 @@
       );
     return cache.get(key);
   }
+  // 문항 UID가 원본 위치와 맞는가. 보통은 "qid_v1_" + sha256(파일#순번)이다. 파일을 개명한 시험지는 개명 전 UID를 그대로 둔다
+  // (카탈로그 만들기가 그렇게 VERIFIED로 싣고 Worker도 같은 기준으로 통과시킨다). 그 경우는 카탈로그의 identityByUid가
+  // 이 UID를 VERIFIED로 같은 파일·같은 순번에 묶고 있을 때만 맞는 것으로 본다. 복원(restore)과 준비된 문항 재사용(stillRestorable)이
+  // 이 한 함수를 같이 쓴다.
+  async function uidMatchesSource(record, catalog) {
+    if ("qid_v1_" + (await digest(record.sourceFile + "#" + record.sourceOrdinal)) === record.questionUid) return true;
+    const identity = catalog?.canonicalAuthority?.identityByUid?.[record.questionUid];
+    const norm = core?.normalizeFile || ((value) => String(value ?? ""));
+    return Boolean(
+      identity &&
+        identity.status === "VERIFIED" &&
+        String(identity.questionUid || record.questionUid) === String(record.questionUid) &&
+        norm(identity.sourceArchiveFile) === norm(record.sourceFile) &&
+        Number(identity.sourceOrdinal) === Number(record.sourceOrdinal),
+    );
+  }
   async function restore(records, catalog, options = {}) {
     options = options && typeof options === "object" ? options : {};
     const hashes = new Map(catalog.sourceHashes);
@@ -259,11 +275,7 @@
         if (!question) throw fail("문항의 source fingerprint가 일치하지 않습니다.", { code: "QUESTION_NOT_FOUND" });
         if ((await fingerprint(question)) !== record.sourceFingerprint)
           throw fail("문항의 source fingerprint가 일치하지 않습니다.", { code: "QUESTION_CONTENT_CHANGED" });
-        if (
-          "qid_v1_" +
-            (await digest(record.sourceFile + "#" + record.sourceOrdinal)) !==
-          record.questionUid
-        )
+        if (!(await uidMatchesSource(record, catalog)))
           throw fail("문항 UID/source가 일치하지 않습니다.", { code: "QUESTION_UID_MISMATCH" });
         // Content, answer, solution and all visual/layout fields stay byte-value equivalent.
         const result = {
@@ -344,5 +356,5 @@
         return result;
     }
   }
-  return { evaluate, digest, fingerprint, generatedContentFingerprint, load, restore, restoreGenerated, FETCH_CONCURRENCY };
+  return { evaluate, digest, fingerprint, generatedContentFingerprint, load, restore, restoreGenerated, uidMatchesSource, FETCH_CONCURRENCY };
 });
