@@ -1,0 +1,38 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "f",
+        "mean": "0",
+        "sd": "1",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "mean": "0",
+        "sd": "2",
+        "label": "g"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "0",
+        "text": "m"
+      }
+    ]
+  },
+  "caption": "두 곡선의 대칭축이 모두 x=m이므로 두 확률변수의 평균이 m으로 같다(ㄱ). f는 g보다 중심 부근에서 높고 폭이 좁으므로 표준편차가 작아 V(X1)<V(X2)이다(ㄴ). 확률밀도함수는 그래프와 x축 사이의 전체 넓이가 1이다(ㄷ). 그림은 이 관계를 보이는 예이다. 따라서 ㄱ, ㄴ, ㄷ이 모두 옳아 답은 ⑤이다.",
+  "accessibilityDescription": "같은 대칭축 m을 가진 두 정규분포 곡선 f와 g가 겹쳐 있고 f가 더 좁고 높다.",
+  "newVisualInformation": [
+    "같은 평균 m에서 f가 g보다 좁고 높아 표준편차가 더 작다는 것이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림에서 두 곡선 $f(x), g(x)$는 각각 정규분포를 따르는 두 확률변수 $X_1, X_2$의 확률밀도함수의 그래프이다. 곡선 $f(x), g(x)$의 대칭축은 $x=m$으로 동일할 때, 다음 <보기>에서 옳은 것만을 있는 대로 고른 것은? [4.0점]<br><br><img src=\"assets/images/22_금당고_1학기_기말_고2_확률과통계/q12.png\" class=\"question-img\"><br><br><div class=\"exam-box\">ㄱ. $E(X_1) = m$<br>ㄴ. $V(X_1) < V(X_2)$<br>ㄷ. $f(x), g(x)$ 모두 곡선과 $x$축 사이의 넓이는 1이다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

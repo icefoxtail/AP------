@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-2",
+        "text": "430"
+      },
+      {
+        "x": "0",
+        "text": "450"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "-2",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.0228"
+      }
+    ]
+  },
+  "caption": "낮은 순서로 228번째의 누적비율은 228/10000=0.0228이다. P(0≤Z≤2)=0.4772이므로 P(Z≤−2)=0.5−0.4772=0.0228이고 표준점수는 z=−2이다. (x−450)/10=−2에서 x=430점이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "평균 450에 대응하는 중심 0의 표준정규분포 곡선이며 430에 해당하는 z=−2 위치가 표시되고 그 왼쪽 꼬리가 칠해져 있다.",
+  "newVisualInformation": [
+    "누적비율 0.0228의 경계가 z=−2이고 점수 430에 대응함을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 자격증 시험에서 전체 응시자 10000명의 시험 점수는 평균이 450점, 표준편차가 10점인 정규분포를 따른다고 한다. 점수가 낮은 순서대로 나열할 때 228번째 학생의 점수를 표준정규분포표를 이용하여 구한 것은? [4.0점]<br><br><table class=\"exam-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

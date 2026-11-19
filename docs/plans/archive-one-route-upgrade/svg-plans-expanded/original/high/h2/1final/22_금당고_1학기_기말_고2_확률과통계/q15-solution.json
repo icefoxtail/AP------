@@ -1,0 +1,101 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "X 구간 10~13"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            {
+              "x": "0",
+              "text": "10"
+            },
+            {
+              "x": "1.5",
+              "text": "13"
+            }
+          ],
+          "shades": [
+            {
+              "from": "0",
+              "to": "1.5",
+              "color": "BLUE"
+            }
+          ],
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.4332"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "Y 꼬리 확률"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            {
+              "x": "-2",
+              "text": "10-σ/2"
+            },
+            {
+              "x": "-1.5",
+              "text": "10"
+            }
+          ],
+          "shades": [
+            {
+              "from": "-2",
+              "to": null,
+              "color": "WARM"
+            }
+          ],
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.9772"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "X를 표준화하면 P(10≤X≤13)=P(0≤Z≤1.5)=0.4332이다. 식에서 P(Y≤10)=0.0668이므로 Y에서 10의 표준점수는 −1.5이다. 10−σ/2는 이보다 표준편차의 0.5배 더 작아 표준점수 −2이다. 따라서 P(Y≥10−σ/2)=P(Z≥−2)=0.5+0.4772=0.9772이다. 답은 ⑤이다.",
+  "accessibilityDescription": "표준정규분포 곡선 두 개가 나란히 있다. 왼쪽 곡선은 0부터 1.5까지가, 오른쪽 곡선은 z=−2의 오른쪽 전체가 칠해져 있고 z=−1.5에 10이 표시되어 있다.",
+  "newVisualInformation": [
+    "X의 구간 [10, 13]이 z=0부터 1.5이고 Y에서 10의 표준점수 −1.5와 10−σ/2의 표준점수 −2가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$는 평균이 10, 표준편차가 2인 정규분포를 따르고, 확률변수 $Y$는 평균이 $m$, 표준편차가 $\\sigma$인 정규분포를 따른다. 두 확률변수 $X, Y$가 $P(Y \\le 10) + P(10 \\le X \\le 13) = \\dfrac{1}{2}$을 만족시킬 때, $P\\left(Y \\ge 10 - \\dfrac{1}{2}\\sigma\\right)$의 값을 표준정규분포표를 이용하여 구한 것은? [4.5점]<br><br><table class=\"exam-table\"><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr><tr><td>1.0</td><td>0.3413</td></tr><tr><td>1.5</td><td>0.4332</td></tr><tr><td>2.0</td><td>0.4772</td></tr><tr><td>2.5</td><td>0.4938</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
