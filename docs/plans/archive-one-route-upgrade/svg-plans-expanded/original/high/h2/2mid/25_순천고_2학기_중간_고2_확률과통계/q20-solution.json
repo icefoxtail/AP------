@@ -1,0 +1,52 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "30",
+        "sd": "4"
+      },
+      {
+        "id": "Y",
+        "mean": "42",
+        "sd": "4"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "30"
+      },
+      {
+        "x": "36"
+      },
+      {
+        "x": "42"
+      },
+      {
+        "x": "48"
+      }
+    ],
+    "shades": [
+      {
+        "from": "36",
+        "to": "48",
+        "color": "BLUE",
+        "curve": "Y"
+      }
+    ]
+  },
+  "caption": "E(X²)=σ²+30²=916에서 σ=4이다. P(X≥26)=0.8413이므로 P(Y≥46)=0.1587=P(Z≥1)이고 m=46−4=42이다. 같은 분산의 두 곡선의 교점은 평균 30, 42의 중점 36이고, Y의 대칭으로 b=48이다. P(36≤Y≤48)=P(−1.5≤Z≤1.5)=2×0.4332=0.8664이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "평균 30의 곡선 X와 평균 42의 곡선 Y가 겹쳐 있고 36, 42, 48 위치가 표시되며 Y의 36부터 48까지가 색칠되어 있다.",
+  "newVisualInformation": [
+    "두 곡선의 교점 a=36과 대칭점 b=48, 그리고 Y의 구간 [36, 48]을 한 그림에서 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 확률변수 $X$, $Y$가 각각 정규분포 $N(30,\\sigma^2)$, $N(m,\\sigma^2)$을 따르고, 다음 조건을 만족시킨다.<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">(가) $E(X^2)=916$ &nbsp;&nbsp; (나) $P(X\\ge26)+P(Y\\ge46)=1$</div>두 확률변수 $X$, $Y$의 확률밀도함수를 각각 $f(x)$, $g(x)$라 할 때, 두 상수 $a$, $b$ $(a<b)$에 대하여 $f(a)=g(a)=g(b)$이다. $P(a\\le Y\\le b)$의 값을 오른쪽 표준정규분포표를 이용하여 구하면? [4.2점]<table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr></thead><tbody><tr><td>$0.5$</td><td>$0.1915$</td></tr><tr><td>$1.0$</td><td>$0.3413$</td></tr><tr><td>$1.5$</td><td>$0.4332$</td></tr><tr><td>$2.0$</td><td>$0.4772$</td></tr></tbody></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

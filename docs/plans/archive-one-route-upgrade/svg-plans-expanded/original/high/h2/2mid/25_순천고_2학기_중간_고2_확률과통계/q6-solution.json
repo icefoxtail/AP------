@@ -1,0 +1,60 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "0",
+        "sd": "1",
+        "label": "X"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1",
+        "text": "m-σ"
+      },
+      {
+        "x": "0",
+        "text": "m"
+      },
+      {
+        "x": "1",
+        "text": "m+σ"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-1",
+        "to": "0",
+        "color": "BLUE"
+      },
+      {
+        "from": "0",
+        "to": "1",
+        "color": "WARM"
+      }
+    ],
+    "symmetry": [
+      {
+        "pair": [
+          "-1",
+          "1"
+        ]
+      }
+    ]
+  },
+  "caption": "정규분포 곡선은 평균 m을 지나는 직선 x=m에 대하여 대칭이다(ㄴ). 그래서 m−σ부터 m까지와 m부터 m+σ까지의 넓이가 같고, m−σ부터 m+σ까지의 확률은 m−σ부터 m까지의 두 배이다(ㄱ). 또 (X−m)/σ는 평균 0, 표준편차 1인 표준정규분포를 따른다(ㄷ). 따라서 ㄱ, ㄴ, ㄷ이 모두 옳아 답은 ⑤이다.",
+  "accessibilityDescription": "평균 m을 중심으로 좌우 대칭인 정규분포 곡선에 m−σ부터 m, m부터 m+σ까지가 다른 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "m을 중심으로 한 좌우 대칭과 m−σ부터 m+σ까지의 두 칸 넓이가 같음을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 정규분포 $N(m,\\sigma^2)$을 따를 때, 옳은 것만을 보기에서 있는 대로 고른 것은? [3.6점]<div style=\"border:1px solid #555; padding:6px 8px; margin:6px 0;\">ㄱ. $P(m-\\sigma\\le X\\le m+\\sigma)=2P(m-\\sigma\\le X\\le m)$<br>ㄴ. 확률변수 $X$의 정규분포 곡선은 직선 $x=m$에 대하여 대칭이다.<br>ㄷ. 확률변수 $\\dfrac{X-m}{\\sigma}$은 표준정규분포 $N(0,1)$을 따른다.</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
