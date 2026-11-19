@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-eeb2ea1160cf-5bb59ab6",
+  "examUid": "25_왕운중_2학기_기말_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+  "expectedSourceBlobSha1": "3bfcf3713676cd5fa7f306e4ee3d7d5e6ba6ca6a",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eeb2ea1160cf-5bb59ab6.type-ledger.json",
+        "sha256": "6f1d7ad45931efd5fcaa0ae7624d2de4c9a9ef4400b5bc31f947e095ba29a0ff"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_4a25734918f74029129d95e40991fb643d8a42e4f3d20cd9a45b8e532453c6ee",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION"
+      },
+      "rationale": "중앙값의 유일성과 극단값 민감도,최빈값 존재,편차합0 및 분산의 산포 의미를 각각 대조하여ㄷㅁ을 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "6336112922bc67097d5c719b14382d57c30fefa242ad191b4c524bce7212788d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eeb2ea1160cf-5bb59ab6.type-ledger.json",
+          "sha256": "6f1d7ad45931efd5fcaa0ae7624d2de4c9a9ef4400b5bc31f947e095ba29a0ff"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_25c6ae7a39cfd2af6d53d8744289f83151b5cc4ee737a9b4b6ea2cb18cee88b5",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+        "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_CALCULATE"
+      },
+      "rationale": "자료별 평균5,중앙값3,최빈값2,표준편차√2,분산10을 각각 계산하여 최대⑤를 고른다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "08b69566f67cb927af692442f22d417ba035136d229eca44440fdbd465726c38",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eeb2ea1160cf-5bb59ab6.type-ledger.json",
+          "sha256": "6f1d7ad45931efd5fcaa0ae7624d2de4c9a9ef4400b5bc31f947e095ba29a0ff"
+        }
+      ]
+    }
+  ]
+}
