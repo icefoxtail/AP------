@@ -24,7 +24,7 @@ const base = withTestAssignments(structuredClone(catalog));
 const finderCache = new WeakMap();
 const finderOf = data => { if (!finderCache.has(data)) finderCache.set(data, core.buildFinderIndex(data)); return finderCache.get(data); };
 
-function harness(data = base) {
+function harness(data = base, extra = {}) {
   const storage = new Map(), nodes = new Map();
   const node = id => {
     if (!nodes.has(id)) nodes.set(id, { innerHTML: '', textContent: '', dataset: {}, setAttribute() {}, addEventListener() {}, querySelectorAll: () => [], classList: { toggle() {}, add() {}, remove() {} }, close() {}, showModal() {} });
@@ -40,7 +40,7 @@ function harness(data = base) {
     Archive2Core: core, Archive2UnifiedUnits: Unified, Archive2QuickPools: Quick, Archive2UnitTree: Tree,
     ProblemBankMeta: require('../archive/problem-bank-meta.js'), Archive2Canonical: core.Canonical,
     Archive2Output: require('../archive/archive2-output.js'), Archive2Papers: require('../archive/archive2-papers.js'),
-    Archive2History: require('../archive/archive2-history.js'), Archive2Source: archiveSource,
+    Archive2History: require('../archive/archive2-history.js'), Archive2Source: archiveSource, ...extra,
   });
   ctx.window = ctx;
   loadWorkspace(ctx, `
@@ -226,3 +226,95 @@ for (const distribution of ['equal', 'pool']) {
     } finally { reloadGroups(); }
   });
 }
+
+// ---- 기준 시험지로 다시 만들기(화면): 고른 문항 UID 목록 → 문제지 만들기 → 저장 요청 → 서버 재현 ----
+const Derive = require('../archive/archive2-derive.js');
+function workerFilterKeys() {
+  const text = fs.readFileSync(path.join(root, 'apmath/worker-backup/worker/helpers/archive-saved-papers.js'), 'utf8');
+  const body = /const FILTER_KEYS = new Set\(\[([\s\S]*?)\]\)/.exec(text);
+  assert.ok(body, 'the Worker declares FILTER_KEYS');
+  const keys = new Set([...body[1].matchAll(/"([^"]+)"/g)].map(match => match[1]));
+  assert.ok(keys.has('grade') && keys.has('scopeQuestionUids'), 'the parsed Worker key list is the real one');
+  return keys;
+}
+const sourceWith = blank => ({ restore: async records => records.map(r => ({ questionUid: r.questionUid, answer: blank.has(r.questionUid) ? '' : '1', solution: blank.has(r.questionUid) ? '' : '해설' })) });
+function deriveHarness(blank = new Set(), basePaper = null) {
+  const paper = basePaper || generated({ pick: 3, count: 12 }).w;
+  const baseRecords = plain(paper.state.selected);
+  const baseUids = baseRecords.map(r => r.questionUid);
+  const h = harness(base, { Archive2Derive: Derive, Archive2Source: sourceWith(blank) });
+  const api = h.ctx.Archive2Workspace.api, V = h.ctx.Archive2Workspace.v;
+  const body = () => h.ctx.document.getElementById('modal-body').innerHTML;
+  return { ...h, api, V, baseUids, baseRecords, body, paper };
+}
+const startDerive = H => H.api.deriveStartFromItems(H.baseUids.map(uid => ({ uid })), { title: '테스트 기준' });
+
+test('다시 뽑은 문제지 → 문제지 만들기 → 실제 저장 요청 범위 → 서버 재현 통과, 초안을 다시 열어도 같다', async () => {
+  const H = deriveHarness();
+  const { w, api, V, baseUids } = H;
+  startDerive(H);
+  await api.deriveAction('derive-run', {});
+  const result = V.derive.dlg.result;
+  assert.ok(result.items.length > 0, 'something was derived');
+  assert.ok(result.items.every(r => !baseUids.includes(r.questionUid)), 'no base question comes back');
+  assert.match(H.body(), /문항/, 'the result is told in names');
+  assert.doesNotMatch(H.body(), /templateKey|problemTypeKey|qid_v1_/, 'no internal key on the screen');
+  await api.deriveAction('derive-compose', {});
+  const picked = plain(w.state.selected).map(r => r.questionUid);
+  const wanted = result.items.map(r => r.questionUid);
+  assert.ok(picked.length > 0 && picked.every(uid => wanted.includes(uid)), 'every question of the paper is a derived one');
+  assert.ok(w.state.derive && w.state.derive.resultUids.length === wanted.length);
+  // the request the save sends: only keys the Worker knows, and the Worker's replay (core.matches + general eligibility) accepts each question
+  const req = w.request(true);
+  assert.deepEqual(Object.keys(req.filters).filter(key => !workerFilterKeys().has(key)), [], 'the server answers 409 for an unknown key');
+  for (const record of w.state.selected) {
+    assert.equal(core.matches(record, req.filters, { canonicalAuthority: base.canonicalAuthority }), true, 'selection_filters accept ' + record.questionUid);
+    assert.equal(core.generalUseEligibility(record).ok, true);
+  }
+  for (const row of req.rows) assert.equal(w.state.selected.filter(r => r.rowId === row.id).length, row.count, 'row counts match the selection');
+  assert.ok(req.filters.scopeQuestionUids.length >= picked.length);
+  // reopen the draft: the same paper, and the note that tells how it was made
+  const draft = plain(w.draft());
+  const opened = harness(base, { Archive2Derive: Derive });
+  opened.w.applyDraft(structuredClone(draft));
+  assert.deepEqual(plain(opened.w.state.selected).map(r => r.questionUid), picked);
+  assert.deepEqual(plain(opened.w.state.derive), plain(w.state.derive));
+  assert.match(opened.ctx.Archive2Workspace.api.deriveNoteMarkup(), /다시 만들기/);
+  // a changed paper no longer claims to be the derived one
+  opened.w.state.selected = opened.w.state.selected.slice(1);
+  assert.equal(opened.ctx.Archive2Workspace.api.deriveNoteMarkup(), '');
+  // a draft with a broken derive record is refused, not half-applied
+  const broken = structuredClone(draft);
+  broken.derive.typeMode = 'x';
+  assert.throws(() => harness(base, { Archive2Derive: Derive }).w.applyDraft(broken), /형식이 올바르지 않아/);
+  // 다시 뽑기: what was just given is left out of the next result
+  const before = new Set(wanted);
+  await api.deriveAction('derive-compose-again', {});
+  const again = V.derive.dlg.result;
+  assert.ok(again && again.items.every(r => !before.has(r.questionUid) && !baseUids.includes(r.questionUid)), 'the new result leaves out the earlier one and the base');
+});
+
+test('정답·해설이 빈 문항은 기본으로 빠지고 기억된다', async () => {
+  const probe = deriveHarness();
+  startDerive(probe);
+  await probe.api.deriveAction('derive-run', {});
+  const first = probe.V.derive.dlg.result.items.map(r => r.questionUid)[0];
+  assert.ok(first, 'the probe derived something');
+  const H = deriveHarness(new Set([first]), probe.paper);
+  startDerive(H);
+  H.V.derive.dlg.seed = probe.V.derive.dlg.seed;
+  await H.api.deriveAction('derive-run', {});
+  assert.equal(H.V.derive.dlg.result.items.some(r => r.questionUid === first), false, 'the empty question is not given');
+  assert.ok(H.V.derive.blank.has(first), 'and it is remembered as empty');
+});
+
+test('UID가 없는 옛 출제본은 원본 파일·순번으로 되찾고, 못 찾으면 지원하지 않는다고 알린다', () => {
+  const H = deriveHarness();
+  const items = H.baseRecords.map(r => ({ uid: '', file: r.sourceFile, ordinal: r.sourceOrdinal, no: '' }));
+  const found = H.api.deriveResolveBase(items);
+  assert.deepEqual([...found.uids].sort(), [...new Set(H.baseUids)].sort(), 'every question is found again from file + ordinal');
+  assert.equal(found.recovered, H.baseUids.length);
+  H.api.deriveStartFromItems([{ uid: '' }, { uid: '', file: 'nowhere/none.js', ordinal: 3 }], {});
+  assert.match(H.body(), /옛 형식 출제본이라 다시 뽑기를 지원하지 않습니다/);
+  assert.equal(H.V.derive.dlg, null, 'no dialog of choices opens for a paper that cannot be traced');
+});

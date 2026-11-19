@@ -169,7 +169,7 @@
   }
   const freshSeed = () => crypto.randomUUID().slice(0, 8);
   // items: identity items from a window message or an envelope. A paper that cannot be traced says so and stops there.
-  function startFromItems(items, { title, note } = {}) {
+  function deriveStartFromItems(items, { title, note } = {}) {
     if (!state.catalog?.records) { status("자료를 준비하는 중입니다. 준비가 끝나면 이어서 진행합니다."); V.derive.pending = { items, title, note }; return; }
     const base = deriveResolveBase(items);
     if (!base.uids.length) {
@@ -189,14 +189,14 @@
     // A request that arrived before the catalog was ready waits here; an address with ?derive= is the fallback of the output window.
     startFromPending();
     if (!wanted.length) return;
-    startFromItems(wanted.map((uid) => ({ uid })), { title: "기준 시험지" });
+    deriveStartFromItems(wanted.map((uid) => ({ uid })), { title: "기준 시험지" });
     try { replaceUrlState(); } catch {}
   }
   function startFromPending() {
     const pending = V.derive.pending;
     if (!pending || !state.catalog?.records) return;
     V.derive.pending = null;
-    startFromItems(pending.items, pending);
+    deriveStartFromItems(pending.items, pending);
   }
   // A small window (mixed_engine) asks this page, which holds the catalog, to open the dialog.
   window.addEventListener("message", (event) => {
@@ -206,7 +206,7 @@
     try { event.source?.postMessage({ type: "archive2-derive-ack" }, location.origin); } catch {}
     const items = data.items.map((item) => ({ uid: text(item?.uid), file: text(item?.file), ordinal: Number(item?.ordinal) || 0, no: text(item?.no) }));
     try { window.focus(); } catch {}
-    startFromItems(items, { title: text(data.title).slice(0, 80), note: data.assignment ? "출제한 시험지의 유형·난이도는 지금 자료 기준입니다." : "" });
+    deriveStartFromItems(items, { title: text(data.title).slice(0, 80), note: data.assignment ? "출제한 시험지의 유형·난이도는 지금 자료 기준입니다." : "" });
   });
   // 출제 내역 row: the assignment's own paper (the server replays what was issued).
   async function startFromAssignment(assignmentId) {
@@ -219,13 +219,13 @@
       const envelope = data?.envelope;
       if (!envelope) throw new Error("출제 당시 내용을 불러오지 못했습니다. 새로고침한 뒤 다시 시도하고, 계속되면 관리자에게 알려 주세요.");
       status("");
-      startFromItems(deriveItemsFromEnvelope(envelope), { title: row?.title || envelope.meta?.title || "출제한 시험지", note: "출제한 시험지의 유형·난이도는 지금 자료 기준입니다." });
+      deriveStartFromItems(deriveItemsFromEnvelope(envelope), { title: row?.title || envelope.meta?.title || "출제한 시험지", note: "출제한 시험지의 유형·난이도는 지금 자료 기준입니다." });
     } catch (error) {
       status(teacherErrorMessage(error, "출제한 시험지를 불러오지 못했습니다. 잠시 뒤 다시 시도해 주세요."), true, error);
     }
   }
   // 문제지 만들기의 "다시 뽑기": same choices, new seed, and what was already given is left out (the chain).
-  function startFromCompose() {
+  async function startFromCompose() {
     const info = state.derive;
     if (!info || !Array.isArray(info.baseUids) || !info.baseUids.length) return;
     if (!deriveIndex()) { status("문항 목록을 준비하지 못했습니다. 새로고침한 뒤 다시 시도해 주세요.", true); return; }
@@ -234,7 +234,7 @@
       preset: { typeMode: info.typeMode, level: info.level, source: info.source, publisher: info.publisher, exclude: [...(info.exclude || []), ...(info.resultUids || [])] },
     });
     openDialog(dlg);
-    runDerive();
+    await runDerive();
   }
 
   // ---- 화면 ----
@@ -489,6 +489,7 @@
   Object.assign(WS.api, {
     deriveAction,
     deriveNoteMarkup,
+    deriveStartFromItems,
     deriveResolveBase,
     deriveItemsFromEnvelope,
     openDeriveFromUrl,
