@@ -7,6 +7,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'archive', 'assessment', 'assessment-mvp.html'), 'utf8');
+const coreSource = fs.readFileSync(path.join(__dirname, '..', 'archive', 'assessment', 'assessment-pack-core.js'), 'utf8');
 // 쪽 안의 큰 인라인 스크립트(출제·열기 로직)만 꺼낸다.
 const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]).sort((a, b) => b.length - a.length)[0];
 
@@ -63,6 +64,7 @@ function boot({ storage, session = null, fetchImpl, openMode = 'ok' }) {
     return makeWin();
   };
   vm.createContext(sandbox);
+  vm.runInContext(coreSource, sandbox, { filename: 'assessment-pack-core.js' });
   vm.runInContext(script.replace(/\bconst (APMATH|MOCK)/g, 'const $1'), sandbox, { filename: 'assessment-mvp.inline.js' });
   // 스크립트 끝의 렌더 호출이 끝난 뒤의 상태에서 시작
   return { sandbox, opened, notices, wins };

@@ -9,6 +9,7 @@ const vm = require('node:vm');
 const Assign = require('../archive/archive2-assign.js');
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'archive', 'assessment', 'assessment-mvp.html'), 'utf8');
+const coreSource = fs.readFileSync(path.join(__dirname, '..', 'archive', 'assessment', 'assessment-pack-core.js'), 'utf8');
 const script = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]).sort((a, b) => b.length - a.length)[0];
 
 const PACK = {
@@ -119,6 +120,7 @@ function boot({ storage = makeStorage(), search = '', server = makeServer(), wit
     };
   }
   vm.createContext(sandbox);
+  vm.runInContext(coreSource, sandbox, { filename: 'assessment-pack-core.js' });
   vm.runInContext(script, sandbox, { filename: 'assessment-mvp.inline.js' });
   return { sandbox, opened, wins, panelOpens, nodes, server, storage, getNode };
 }
@@ -159,7 +161,7 @@ test('주소에 assign=legacy가 있거나 패널 스크립트가 없으면 옛 
 test('패널이 보내는 본문: 같은 서버 경로·옛 모달과 같은 MIXED 본문에 pack_id·pack_hash, 계약 헤더 없음', async () => {
   const ctx = boot();
   call(ctx, 'openAssessmentPrintModeModal(packs[0]); selectAssessmentPrintMode(true);');
-  const handleModel = call(ctx, '_assessmentAssignPanel.handle.model');
+  const handleModel = call(ctx, 'assessmentPackCore.panelContext().handle.model');
   await tick(); await tick();
   assert.equal(handleModel.state.phase, 'select', '반 목록을 받았다');
   await handleModel.toggleClass('c1', true);
@@ -168,7 +170,7 @@ test('패널이 보내는 본문: 같은 서버 경로·옛 모달과 같은 MIX
   assert.ok(post, 'POST가 나갔다');
   assert.equal(post.headers['X-Archive2-Contract'], undefined, '계약 헤더가 없다(헤더 없는 옛 경로)');
   assert.equal(post.headers.Authorization, 'Bearer tok', '이 브라우저의 교사 로그인으로 보낸다');
-  const key = call(ctx, 'assessmentAssignKey(packs[0])');
+  const key = call(ctx, 'AssessmentPackCore.assignKey(packs[0])');
   assert.match(key, /^assessment_UNIT_1SEM_H2_02_25_fnv1a_[0-9a-f]{8}$/);
   assert.equal(post.body.archive_file, `MIXED:${key}`);
   assert.equal(post.body.source_type, 'mixed');
@@ -193,13 +195,13 @@ test('같은 팩을 같은 반에 다시 내면 같은 키로 나가고, 패널�
   const server = makeServer();
   const first = boot({ server });
   call(first, 'openAssessmentPrintModeModal(packs[0]); selectAssessmentPrintMode(true);');
-  const m1 = call(first, '_assessmentAssignPanel.handle.model');
+  const m1 = call(first, 'assessmentPackCore.panelContext().handle.model');
   await tick(); await tick();
   await m1.toggleClass('c1', true);
   await m1.start();
   const second = boot({ server });
   call(second, 'openAssessmentPrintModeModal(packs[0]); selectAssessmentPrintMode(true);');
-  const m2 = call(second, '_assessmentAssignPanel.handle.model');
+  const m2 = call(second, 'assessmentPackCore.panelContext().handle.model');
   await tick(); await tick();
   await m2.loadOriginalHistory();
   const cls = m2.state.classes.find((c) => c.id === 'c1');
@@ -215,18 +217,18 @@ test('같은 팩을 같은 반에 다시 내면 같은 키로 나가고, 패널�
 test('출제된 건의 시험지 단추는 같은 키·반 연결·등록 끝남 표시로 QR 시험지를 연다(엔진이 다시 등록하지 않는다)', async () => {
   const ctx = boot();
   call(ctx, 'openAssessmentPrintModeModal(packs[0]); selectAssessmentPrintMode(true);');
-  const model = call(ctx, '_assessmentAssignPanel.handle.model');
+  const model = call(ctx, 'assessmentPackCore.panelContext().handle.model');
   await tick(); await tick();
   await model.toggleClass('c2', true);
   await model.start();
   const job = model.state.jobs[0];
   assert.equal(job.status, 'ok');
   assert.match(Assign.render(model).body, /data-action="assignment-output-direct"/, '결과 줄에 시험지·해설·정답 단추가 있다');
-  call(ctx, `openAssessmentAssignedOutput(${JSON.stringify(job.assignmentId)}, "exam")`);
+  call(ctx, `assessmentPackCore.openAssignedOutput(${JSON.stringify(job.assignmentId)}, "exam")`);
   assert.equal(ctx.opened.length, 1, '클릭 순간 창이 열린다');
   await tick(); await tick();
   const url = urlOf(ctx.wins[0]);
-  const key = call(ctx, 'assessmentAssignKey(packs[0])');
+  const key = call(ctx, 'AssessmentPackCore.assignKey(packs[0])');
   assert.ok(url.pathname.endsWith('/mixed_engine.html'));
   assert.equal(url.searchParams.get('key'), key, '등록한 MIXED 키와 같은 키');
   assert.equal(url.searchParams.get('mode'), 'exam');
@@ -240,7 +242,7 @@ test('출제된 건의 시험지 단추는 같은 키·반 연결·등록 끝남
   assert.ok(ctx.storage.getItem('mixedQuestions_' + key), '엔진에 넘길 자료를 저장했다');
   assert.equal(ctx.server.posts().length, 1, '열기만으로는 서버에 다시 등록하지 않는다');
 
-  call(ctx, `openAssessmentAssignedOutput(${JSON.stringify(job.assignmentId)}, "sol")`);
+  call(ctx, `assessmentPackCore.openAssignedOutput(${JSON.stringify(job.assignmentId)}, "sol")`);
   await tick(); await tick();
   const sol = urlOf(ctx.wins[1]);
   assert.equal(sol.searchParams.get('mode'), 'sol');
@@ -257,7 +259,7 @@ test('출제가 안 된 반의 줄에는 시험지를 QR 없이 여는 단추가
     server.failPost = failPost;
     const ctx = boot({ server });
     call(ctx, 'openAssessmentPrintModeModal(packs[0]); selectAssessmentPrintMode(true);');
-    const model = call(ctx, '_assessmentAssignPanel.handle.model');
+    const model = call(ctx, 'assessmentPackCore.panelContext().handle.model');
     await tick(); await tick();
     await model.toggleClass('c1', true);
     await model.start().catch(() => {});
@@ -265,7 +267,7 @@ test('출제가 안 된 반의 줄에는 시험지를 QR 없이 여는 단추가
     assert.ok(['failed', 'unknown'].includes(job.status), `${label}: 출제가 안 됐다 (${job.status})`);
     assert.match(Assign.render(model).body, /data-host-action="plain-paper"[^>]*>QR 없이 시험지 열기/, `${label}: 줄에 단추`);
     assert.doesNotMatch(Assign.render(model).body, /assignment-output-direct/, `${label}: QR 시험지 단추는 없다`);
-    call(ctx, 'openAssessmentPlainPaper()');
+    call(ctx, 'assessmentPackCore.openPlainPaper()');
     assert.equal(ctx.opened.length, 1, `${label}: 클릭 순간 창이 열린다`);
     await tick(); await tick();
     const url = urlOf(ctx.wins[0]);
@@ -273,13 +275,13 @@ test('출제가 안 된 반의 줄에는 시험지를 QR 없이 여는 단추가
     assert.equal(url.searchParams.get('class'), null, label);
     assert.equal(url.searchParams.get('assignmentRegistered'), null, label);
     assert.equal(url.searchParams.get('mode'), 'exam');
-    assert.equal(url.searchParams.get('key'), call(ctx, 'assessmentAssignKey(packs[0])'));
+    assert.equal(url.searchParams.get('key'), call(ctx, 'AssessmentPackCore.assignKey(packs[0])'));
     assert.equal(url.searchParams.get('packId'), PACK.id, label);
   }
   // 출제된 줄(ok)에는 그 단추가 없다.
   const okCtx = boot();
   call(okCtx, 'openAssessmentPrintModeModal(packs[0]); selectAssessmentPrintMode(true);');
-  const okModel = call(okCtx, '_assessmentAssignPanel.handle.model');
+  const okModel = call(okCtx, 'assessmentPackCore.panelContext().handle.model');
   await tick(); await tick();
   await okModel.toggleClass('c1', true);
   await okModel.start();

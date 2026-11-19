@@ -255,8 +255,6 @@ test("filling a blank approved row still needs every other check: course, regist
   const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
   editSource(f, 1, { content: "다른 발문" });
   assert.throws(() => f.run(req, { write: true }), /stem or choices differ from the judged text.*uid1/);
-  const held = fixture(t, { rowMutations: { 1: { ...blankRow, foundationTaxonomyStatus: "HOLD" } } });
-  assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
 });
 
 test("a row with a receipt on its other fields takes a type while its type is still empty; a taxonomy HOLD row is refused", t => {
@@ -267,8 +265,11 @@ test("a row with a receipt on its other fields takes a type while its type is st
   // the same row with an already approved type is still final
   const approved = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2", problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "approved_review2", template: "approved_review2" } } } });
   assert.throws(() => approved.run(approved.request([approved.item(1, { problemTypeKey: "PT_A" })])), /type already approved/);
+  // a row-level taxonomy HOLD is no reason to refuse a judged type (the hold stays on the row's other fields)
   const held = fixture(t, { rowMutations: { 1: { foundationTaxonomyStatus: "HOLD" } } });
-  assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
+  held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+  assert.equal(held.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(held.rows()[0].foundationTaxonomyStatus, "HOLD", "the hold on the row is untouched");
 });
 
 test("receipt replay ignores the type fields a DIRECT_JUDGMENT added to a row whose receipt recorded no type, and nothing else", () => {
