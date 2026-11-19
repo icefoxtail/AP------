@@ -138,7 +138,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "",
+    "content": "다음 보기 중 옳은 것을 모두 고른 것은?\n<div class=\"boxed-content\">\n&lt;보기&gt;<br>\nㄱ. 모든 합성수는 약수의 개수가 짝수이다.<br>\nㄴ. 2를 제외한 모든 짝수는 소수가 아니다.<br>\nㄷ. 서로 다른 두 소수의 곱은 항상 소수이다.<br>\nㄹ. 100에 가장 가까운 소수는 101이다.\n</div>",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㄹ",
@@ -417,7 +417,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "",
+    "content": "$4^{25}$ + $5^{10}$ + $7^{13}$을 10으로 나누었을 때의 나머지를 구하시오.",
     "choices": [],
     "answer": "6",
     "answerStatus": "hand_solved_book_numbered",
@@ -927,7 +927,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "",
+    "content": "126/n 이 자연수가 되도록 하는 자연수 n의 개수를 구하시오.",
     "choices": [],
     "answer": "12",
     "answerStatus": "hand_solved_book_numbered",
