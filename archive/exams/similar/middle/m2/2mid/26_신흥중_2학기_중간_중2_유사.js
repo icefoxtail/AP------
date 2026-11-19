@@ -181,7 +181,7 @@ window.questionBank = [
       "5"
     ],
     "answer": "⑤",
-    "solution": "삼각형의 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\n\\angle A = 180^\\circ - (40^\\circ + 70^\\circ) = 180^\\circ - 110^\\circ = 70^\\circ\n$$\n$\\angle A = \\angle C = 70^\\circ$이므로 $\\triangle ABC$는 두 내각의 크기가 같은 이등변삼각형이다.\n따라서 두 각의 대변의 길이가 서로 같다.\n$$\n\\overline{AB} = \\overline{BC}\n$$\n주어진 식을 대입하면\n$$\n2x + 1 = x + 6 \\implies x = 5\n$$\n따라서 정답은 ⑤이다.",
+    "solution": "삼각형의 세 내각의 합으로 $\\angle A$를 구한 뒤, 크기가 같은 두 각의 대변을 같다고 놓아 $x$를 구한다.\n$$\n\\begin{aligned}\n\\angle A &= 180^\\circ - (40^\\circ + 70^\\circ) \\\\\n&= 180^\\circ - 110^\\circ \\\\\n&= 70^\\circ\n\\end{aligned}\n$$\n$\\angle A$와 $\\angle C$의 크기가 같으므로 두 각의 대변의 길이가 같다.\n$$\\overline{AB} = \\overline{BC}$$\n주어진 식을 대입하면\n$$2x + 1 = x + 6$$\n$$\n\\begin{aligned}\n2x - x &= 6 - 1 \\\\\nx &= 5\n\\end{aligned}\n$$\n따라서 정답은 ⑤이다.",
     "points": 3,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -366,7 +366,7 @@ window.questionBank = [
       "$5\\text{ cm}$"
     ],
     "answer": "⑤",
-    "solution": "1. 평행사변형에서 $\\overline{AD} \\parallel \\overline{BC}$이므로 엇각의 크기는 같다.\n$$\n\\angle AFB = \\angle FBC\n$$\n선분 $BF$가 $\\angle B$의 이등분선이므로 $\\angle ABF = \\angle FBC$이다.\n따라서 $\\angle ABF = \\angle AFB$이므로 $\\triangle ABF$는 이등변삼각형이다.\n$$\n\\overline{AF} = \\overline{AB} = 10\\text{ (cm)}\n$$\n2. $\\overline{AD} = 15\\text{ cm}$이므로\n$$\n\\overline{FD} = \\overline{AD} - \\overline{AF} = 15 - 10 = 5\\text{ (cm)}\n$$\n3. $\\overline{AB} \\parallel \\overline{DE}$이므로 두 삼각형 $\\triangle ABF$와 $\\triangle DEF$는 닮음이다 (AA 닮음).\n$$\n\\triangle ABF \\sim \\triangle DEF\n$$\n대응변의 길이의 비는 같으므로\n$$\n\\overline{AB} : \\overline{DE} = \\overline{AF} : \\overline{FD}\n$$\n$$\n10 : \\overline{DE} = 10 : 5 \\implies \\overline{DE} = 5\\text{ (cm)}\n$$\n따라서 정답은 ⑤이다.",
+    "solution": "각의 이등분선과 평행선으로 이등변삼각형을 찾고, 닮은 두 삼각형의 변의 비로 $\\overline{DE}$를 구한다.\n$\\overline{AD} \\parallel \\overline{BC}$이므로 엇각의 크기가 같다.\n$$\\angle AFB = \\angle FBC$$\n선분 $BF$가 $\\angle B$의 이등분선이므로\n$$\\angle ABF = \\angle FBC$$\n따라서\n$$\\angle ABF = \\angle AFB$$\n두 각의 크기가 같으므로 $\\triangle ABF$는 이등변삼각형이다.\n$$\\overline{AF} = \\overline{AB} = 10\\,\\text{cm}$$\n$$\\overline{FD} = \\overline{AD} - \\overline{AF} = 15 - 10 = 5\\,\\text{cm}$$\n$\\overline{AB} \\parallel \\overline{DE}$이므로 엇각의 크기가 같다.\n$$\\angle BAF = \\angle FDE$$\n맞꼭지각의 크기도 같다.\n$$\\angle AFB = \\angle DFE$$\n따라서 두 삼각형은 닮음이다.\n$$\\triangle ABF \\sim \\triangle DEF$$\n대응변의 길이의 비가 같으므로\n$$\\overline{AB} : \\overline{DE} = \\overline{AF} : \\overline{FD}$$\n$$10 : \\overline{DE} = 10 : 5$$\n$$\\overline{DE} = 5\\,\\text{cm}$$\n따라서 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -403,7 +403,7 @@ window.questionBank = [
       "$76\\text{ cm}^2$"
     ],
     "answer": "②",
-    "solution": "두 닮은 평면도형에서 넓이의 비는 닮음비의 제곱의 비와 같다.\n닮음비가 $3 : 4$이므로 넓이의 비는\n$$\n3^2 : 4^2 = 9 : 16\n$$\n삼각형 $DEF$의 넓이를 $S$라 하면\n$$\n36 : S = 9 : 16\n$$\n외항의 곱과 내항의 곱을 비교하면\n$$\n9S = 36 \\times 16 \\implies S = 4 \\times 16 = 64\\text{ (cm}^2\\text{)}\n$$\n따라서 $\\triangle DEF$의 넓이는 $64\\text{ cm}^2$이다.\n정답은 ②이다.",
+    "solution": "닮음비로 넓이의 비를 구한 뒤, 비례식을 풀어 $\\triangle DEF$의 넓이를 구한다.\n닮음비가 $3 : 4$이므로 넓이의 비는\n$$3^2 : 4^2 = 9 : 16$$\n$\\triangle DEF$의 넓이를 $S$라 하면\n$$36 : S = 9 : 16$$\n외항의 곱과 내항의 곱이 같으므로\n$$9S = 36 \\times 16$$\n$$\n\\begin{aligned}\nS &= \\dfrac{36 \\times 16}{9} \\\\\n&= 4 \\times 16 \\\\\n&= 64\\,\\text{cm}^2\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -431,7 +431,7 @@ window.questionBank = [
       "CHAINED_ISOSCELES_EXTERIOR_ANGLE"
     ],
     "wide": false,
-    "content": "그림과 같이 세 점 $A, B, C$가 순서대로 변 위에 있고 $\\overline{AD} = \\overline{DB} = \\overline{BC}$이다. $\\angle ADE = 84^\\circ$일 때, $\\angle ACD$의 크기는? [4점]",
+    "content": "세 점 $A, B, C$가 한 직선 위에 이 순서대로 있고, 점 $D$는 이 직선 밖의 점이며 $\\overline{AD} = \\overline{DB} = \\overline{BC}$이다. 점 $E$는 직선 $CD$ 위에서 $D$가 $C$와 $E$ 사이에 오도록 잡았다. $\\angle ADE = 84^\\circ$일 때, $\\angle ACD$의 크기는? [4점]",
     "choices": [
       "$22^\\circ$",
       "$24^\\circ$",
@@ -440,7 +440,7 @@ window.questionBank = [
       "$30^\\circ$"
     ],
     "answer": "④",
-    "solution": "구하고자 하는 각의 크기를 $\\angle ACD = x$라 하자.\n1. $\\triangle BCD$에서 $\\overline{BC} = \\overline{BD}$이므로 이등변삼각형이다.\n$$\n\\angle BDC = \\angle BCD = x\n$$\n삼각형의 외각의 성질에 의하여\n$$\n\\angle ABD = \\angle BCD + \\angle BDC = x + x = 2x\n$$\n2. $\\triangle ADB$에서 $\\overline{AD} = \\overline{DB}$이므로 이등변삼각형이다.\n$$\n\\angle BAD = \\angle ABD = 2x\n$$\n3. $\\triangle ACD$에서 외각 $\\angle ADE$의 크기는 이웃하지 않는 두 내각의 크기의 합과 같다.\n$$\n\\angle ADE = \\angle CAD + \\angle ACD = 2x + x = 3x\n$$\n조건에서 $\\angle ADE = 84^\\circ$이므로\n$$\n3x = 84^\\circ \\implies x = 28^\\circ\n$$\n따라서 $\\angle ACD = 28^\\circ$이다.\n정답은 ④이다.",
+    "solution": "$\\angle ACD$의 크기를 $x$로 놓고, 이등변삼각형의 밑각과 삼각형의 외각을 차례로 이용하여 $x$를 구한다.\n구하는 각을 $\\angle ACD = x$라 하자.\n세 점 $A, B, C$가 한 직선 위에 있으므로 $\\angle BCD$도 $x$이다.\n$\\triangle BCD$에서 $\\overline{BC} = \\overline{BD}$이므로 밑각의 크기가 같다.\n$$\\angle BDC = \\angle BCD = x$$\n삼각형의 외각의 성질에 의하여\n$$\\angle ABD = \\angle BCD + \\angle BDC$$\n$$\n\\begin{aligned}\n\\angle ABD &= x + x \\\\\n&= 2x\n\\end{aligned}\n$$\n$\\triangle ADB$에서 $\\overline{AD} = \\overline{DB}$이므로 밑각의 크기가 같다.\n$$\\angle BAD = \\angle ABD = 2x$$\n세 점 $A, B, C$가 한 직선 위에 있으므로 $\\angle CAD$는 $\\angle BAD$와 같다.\n$$\\angle CAD = 2x$$\n점 $E$가 직선 $CD$ 위에서 $D$가 $C$와 $E$ 사이에 있으므로 $\\angle ADE$는 $\\triangle ACD$의 꼭짓점 $D$에서의 외각이다.\n$$\\angle ADE = \\angle CAD + \\angle ACD$$\n$$\n\\begin{aligned}\n\\angle ADE &= 2x + x \\\\\n&= 3x\n\\end{aligned}\n$$\n$\\angle ADE = 84^\\circ$이므로\n$$\n\\begin{aligned}\n3x &= 84^\\circ \\\\\nx &= 28^\\circ\n\\end{aligned}\n$$\n따라서 $\\angle ACD = 28^\\circ$이고 정답은 ④이다.",
     "points": 4,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -514,7 +514,7 @@ window.questionBank = [
       "직사각형이 정사각형이 되려면 두 대각선이 서로 다른 것을 이등분해야 한다."
     ],
     "answer": "③",
-    "solution": "여러 가지 사각형의 정의와 대각선의 성질을 비교한다.\n① 평행사변형의 두 대각선이 서로 수직이면 직사각형이 아니라 마름모가 된다. (거짓)\n② 평행사변형의 한 내각의 크기가 $90^\\circ$이면 마름모가 아니라 직사각형이 된다. (거짓)\n③ 마름모는 네 변의 길이가 같고 대각선이 수직이등분한다. 여기에 '두 대각선의 길이가 같다'는 직사각형의 성질이 추가되면 네 각도 모두 같아져 정사각형이 된다. (참)\n④ 사다리꼴에서 평행하지 않은 한 쌍의 대변의 길이가 같으면 등변사다리꼴이 될 수 있으므로 평행사변형이 되지 않는다. (거짓)\n⑤ 직사각형은 이미 두 대각선이 서로 다른 것을 이등분하므로, 이 조건만으로 정사각형이 되지 않는다. (거짓)\n따라서 옳은 것은 ③이다.",
+    "solution": "보기마다 한 단계 더 특별한 사각형이 되기 위한 조건인지 확인한다.\n① 평행사변형의 두 대각선이 서로 수직이면 마름모가 되므로, 직사각형이 되기 위한 조건이 아니다. (거짓)\n② 평행사변형의 한 내각의 크기가 $90^\\circ$이면 직사각형이 되므로, 마름모가 되기 위한 조건이 아니다. (거짓)\n③ 마름모는 네 변의 길이가 같고, 여기에 두 대각선의 길이가 같다는 조건이 더해지면 네 내각이 모두 $90^\\circ$가 되어 정사각형이 된다. (참)\n④ 사다리꼴에서 평행하지 않은 한 쌍의 대변의 길이가 같으면 등변사다리꼴이 될 뿐, 평행사변형이 되지 않는다. (거짓)\n⑤ 직사각형은 이미 두 대각선이 서로 다른 것을 이등분하므로, 이 조건만으로는 정사각형이 되지 않는다. (거짓)\n따라서 정답은 ③이다.",
     "points": 4,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -551,7 +551,7 @@ window.questionBank = [
       "$\\overline{AD} \\parallel \\overline{BC},\\; \\overline{AB} = \\overline{DC}$"
     ],
     "answer": "⑤",
-    "solution": "평행사변형이 되기 위한 5가지 조건은 다음과 같다.\n1. 두 쌍의 대변이 각각 평행하다. (①)\n2. 두 쌍의 대각의 크기가 각각 같다. (②)\n3. 두 쌍의 대변의 길이가 각각 같다. (③)\n4. 두 대각선이 서로 다른 것을 이등분한다. (④)\n5. 한 쌍의 대변이 평행하고 그 길이가 같다.\n⑤의 경우 한 쌍의 대변($\\overline{AD}, \\overline{BC}$)이 평행하지만, 길이가 같은 변은 다른 한 쌍($\\overline{AB}, \\overline{DC}$)이다.\n이 조건은 평행하지 않은 두 변의 길이가 같은 등변사다리꼴도 만족하므로 항상 평행사변형이 되는 것은 아니다.\n따라서 정답은 ⑤이다.",
+    "solution": "평행사변형이 되기 위한 조건을 보기마다 확인한다.\n① 두 쌍의 대변이 각각 평행하므로 항상 평행사변형이 된다.\n② 두 쌍의 대각의 크기가 각각 같으므로 항상 평행사변형이 된다.\n③ 두 쌍의 대변의 길이가 각각 같으므로 항상 평행사변형이 된다.\n④ 두 대각선이 서로 다른 것을 이등분하므로 항상 평행사변형이 된다.\n⑤ $\\overline{AD} \\parallel \\overline{BC}$이지만 길이가 같은 변은 다른 한 쌍인 $\\overline{AB}$, $\\overline{DC}$이다. 이 조건은 평행하지 않은 두 변의 길이가 같은 등변사다리꼴도 만족하므로 항상 평행사변형이 되지는 않는다.\n따라서 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -588,7 +588,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ, ㄹ"
     ],
     "answer": "②",
-    "solution": "보기의 각 명제를 판별한다.\nㄱ. 평행사변형의 두 대각선이 서로 수직이면 네 변의 길이가 같아지므로 마름모가 된다. (참)\nㄴ. 평행사변형의 두 대각선의 길이가 같으면 네 내각의 크기가 모두 $90^\\circ$가 되므로 직사각형이다. (참)\nㄷ. 직사각형의 이웃하는 두 변의 길이가 같으면 네 변의 길이가 모두 같아지므로 정사각형이다. (참)\nㄹ. 두 대각선이 서로 수직이더라도 서로를 이등분하지 않으면 마름모가 아니다 (예: 연꼴 또는 대각선이 수직으로 교차하는 일반 사각형). 따라서 거짓이다.\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다.\n정답은 ②이다.",
+    "solution": "보기의 명제를 하나씩 참과 거짓으로 판별한다.\nㄱ. 평행사변형의 두 대각선이 서로 수직이면 네 변의 길이가 같아지므로 마름모가 된다. (참)\nㄴ. 평행사변형의 두 대각선의 길이가 같으면 네 내각의 크기가 모두 $90^\\circ$가 되므로 직사각형이 된다. (참)\nㄷ. 직사각형의 이웃하는 두 변의 길이가 같으면 네 변의 길이가 모두 같아지므로 정사각형이 된다. (참)\nㄹ. 두 대각선이 서로 수직이어도 서로 다른 것을 이등분하지 않으면 네 변의 길이가 같아지지 않으므로 마름모가 아니다. (거짓)\n따라서 옳은 것은 ㄱ, ㄴ, ㄷ이므로 정답은 ②이다.",
     "points": 5,
     "curriculum": "2022",
     "curriculumKey": "2022",
@@ -764,7 +764,7 @@ window.questionBank = [
       "RHS_CONGRUENCE_ISOSCELES_ANGLE_PROOF"
     ],
     "wide": false,
-    "content": "[서술형 1] $\\triangle ABC$에서 변 $BC$의 중점을 $M$이라 하고, 점 $M$에서 두 변 $AB, AC$에 내린 수선의 발을 각각 $D, E$라 하자. $\\overline{DM} = \\overline{EM}$이고 $\\angle A = 72^\\circ$일 때, $\\angle BMD$의 크기를 구하고, 그 풀이 과정을 서술하시오. [5점]",
+    "content": "[서술형 1] $\\triangle ABC$에서 변 $BC$의 중점을 $M$이라 하고, 점 $M$에서 두 변 $AB, AC$에 내린 수선의 발을 각각 $D, E$라 하자. $\\overline{DM} = \\overline{EM}$이고 $\\angle A = 72^\\circ$일 때, $\\angle BMD$의 크기를 구하는 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "$36^\\circ$",
     "solution": "[풀이 과정]\n1단계: 직각삼각형의 합동 증명\n점 $M$이 선분 $BC$의 중점이므로\n$$\n\\overline{BM} = \\overline{CM}\n$$\n$\\overline{MD} \\perp \\overline{AB}$, $\\overline{ME} \\perp \\overline{AC}$이므로\n$$\n\\angle BDM = \\angle CEM = 90^\\circ\n$$\n조건에서 $\\overline{DM} = \\overline{EM}$이다.\n직각삼각형 $BDM$과 직각삼각형 $CEM$에서\n- 빗변의 길이가 같다: $\\overline{BM} = \\overline{CM}$\n- 한 직각변의 길이가 같다: $\\overline{DM} = \\overline{EM}$\n따라서 두 직각삼각형은 합동이다 (RHS 합동).\n$$\n\\triangle BDM \\cong \\triangle CEM \\quad (\\text{RHS 합동})\n$$\n2단계: 밑각 $\\angle B$의 크기 구하기\n합동인 두 삼각형에서 대응각의 크기는 서로 같으므로\n$$\n\\angle B = \\angle C\n$$\n따라서 $\\triangle ABC$는 $\\overline{AB} = \\overline{AC}$인 이등변삼각형이다.\n$\\angle A = 72^\\circ$이므로\n$$\n\\angle B = \\frac{180^\\circ - 72^\\circ}{2} = \\frac{108^\\circ}{2} = 54^\\circ\n$$\n3단계: $\\angle BMD$의 크기 구하기\n직각삼각형 $BDM$에서 세 내각의 합은 $180^\\circ$이므로\n$$\n\\angle BMD = 180^\\circ - \\angle BDM - \\angle B = 180^\\circ - 90^\\circ - 54^\\circ = 36^\\circ\n$$\n따라서 구하는 각의 크기는 $36^\\circ$이다.\n답: 36°",
@@ -795,7 +795,7 @@ window.questionBank = [
       "PARALLELOGRAM_TO_RECTANGLE_DIAGONAL_PROOF"
     ],
     "wide": false,
-    "content": "[서술형 2] 마름모 $ABCD$에서 대각선 $AC$의 중점을 $O$라 하고, 변 $AB$ 위의 점 $E$와 변 $CD$ 위의 점 $F$에 대하여 선분 $EF$가 점 $O$를 지나며 $\\overline{AC} = \\overline{EF}$를 만족한다. $\\angle EAO = 50^\\circ$일 때, 다음 물음에 답하고 그 풀이 과정을 서술하시오. [총 7점]\n(1) 사각형 $AECF$가 직사각형인 이유를 서술하시오. [5점]\n(2) $\\angle CEF$의 크기를 구하시오. [2점]",
+    "content": "[서술형 2] 마름모 $ABCD$에서 대각선 $AC$의 중점을 $O$라 하고, 변 $AB$ 위의 점 $E$와 변 $CD$ 위의 점 $F$에 대하여 선분 $EF$가 점 $O$를 지나며 $\\overline{AC} = \\overline{EF}$를 만족한다. $\\angle EAO = 50^\\circ$일 때, 다음 물음에 답하는 과정을 서술하시오. [총 7점]\n(1) 사각형 $AECF$가 직사각형인 이유를 서술하시오. [5점]\n(2) $\\angle CEF$의 크기를 구하시오. [2점]",
     "choices": [],
     "answer": "(1) 풀이 참조 / (2) $40^\\circ$",
     "solution": "[풀이 과정]\n(1) 사각형 $AECF$가 직사각형인 이유:\n1. 마름모 $ABCD$에서 대변이 평행하므로 $\\overline{AB} \\parallel \\overline{CD}$이며, 따라서 $\\overline{AE} \\parallel \\overline{CF}$이다.\n2. 점 $O$는 선분 $AC$의 중점이므로 $\\overline{AO} = \\overline{CO}$이다.\n3. $\\overline{AE} \\parallel \\overline{CF}$에 의해 엇각의 크기가 같으므로 $\\angle OAE = \\angle OCF$이다.\n또한 맞꼭지각의 크기가 같으므로 $\\angle AOE = \\angle COF$이다.\n따라서 한 변의 길이와 그 양 끝 각의 크기가 각각 같으므로\n$$\n\\triangle AOE \\cong \\triangle COF \\quad (\\text{ASA 합동})\n$$\n합동이므로 대응변 $\\overline{OE} = \\overline{OF}$이다.\n4. 사각형 $AECF$에서 두 대각선 $AC, EF$가 점 $O$에서 서로 다른 것을 이등분하므로 사각형 $AECF$는 평행사변형이다.\n5. 문제의 조건에서 두 대각선의 길이가 $\\overline{AC} = \\overline{EF}$로 같으므로, 사각형 $AECF$는 두 대각선의 길이가 같은 평행사변형, 즉 직사각형이다.\n(2) $\\angle CEF$의 크기 구하기:\n사각형 $AECF$가 직사각형이므로\n$$\n\\angle AEC = 90^\\circ\n$$\n직사각형의 두 대각선은 길이가 같고 서로를 이등분하므로\n$$\n\\overline{OA} = \\overline{OE}\n$$\n따라서 $\\triangle AOE$는 이등변삼각형이므로\n$$\n\\angle AEF = \\angle EAO = 50^\\circ\n$$\n그러므로 구하는 각의 크기는\n$$\n\\angle CEF = \\angle AEC - \\angle AEF = 90^\\circ - 50^\\circ = 40^\\circ\n$$\n이다.\n답: (1) 풀이 참조, (2) 40°",
@@ -826,10 +826,10 @@ window.questionBank = [
       "NESTED_CIRCUMCENTER_INCENTER_ANGLES"
     ],
     "wide": false,
-    "content": "[서술형 3] 삼각형 $ABC$의 외심을 $O$라 하고, 삼각형 $ABO$의 외심과 내심을 각각 점 $O', I$라 하자. 선분 $AI, AO, AC$가 순서대로 놓여 있고 $\\angle OAC = x$, $\\angle BAI = y$일 때, 다음 물음에 답하고 그 과정을 서술하시오. [총 8점]\n(1) $\\angle IAC$의 크기를 $x, y$를 사용하여 나타내시오. [4점]\n(2) $\\angle IAO' = 15^\\circ$일 때, $y$의 값을 구하시오. [4점]",
+    "content": "[서술형 3] 삼각형 $ABC$의 외심을 $O$라 하고, 삼각형 $ABO$의 외심과 내심을 각각 점 $O', I$라 하자. 선분 $AI, AO, AC$가 순서대로 놓여 있고 $\\angle OAC = x$, $\\angle BAI = y$일 때, 다음 물음에 답하는 과정을 서술하시오. [총 8점]\n(1) $\\angle IAC$의 크기를 $x, y$를 사용하여 나타내시오. [4점]\n(2) 점 $O'$가 $\\angle IAO$의 내부에 있고 $\\angle IAO' = 15^\\circ$일 때, $y$의 값을 구하시오. [4점]",
     "choices": [],
     "answer": "(1) $x + y$ / (2) $35^\\circ$",
-    "solution": "[풀이 과정]\n(1) $\\angle IAC$의 크기 나타내기:\n점 $I$는 $\\triangle ABO$의 내심이므로 선분 $AI$는 $\\angle BAO$의 이등분선이다.\n따라서\n$$\n\\angle BAI = \\angle IAO = y\n$$\n선분 $AI, AO, AC$가 순서대로 놓여 있으므로 $\\angle IAC$는 $\\angle IAO$와 $\\angle OAC$의 합이다.\n$$\n\\angle IAC = \\angle IAO + \\angle OAC = y + x = x + y\n$$\n(2) $y$의 값 구하기:\n1. 점 $O$는 $\\triangle ABC$의 외심이므로 $\\overline{OA} = \\overline{OB}$이다.\n따라서 $\\triangle AOB$는 이등변삼각형이다.\n$\\angle BAO = 2y$이므로\n$$\n\\angle ABO = \\angle BAO = 2y\n$$\n$$\n\\angle AOB = 180^\\circ - 4y\n$$\n2. 점 $O'$는 $\\triangle ABO$의 외심이므로 $\\overline{O'A} = \\overline{O'B} = \\overline{O'O}$이다.\n점 $O'$는 선분 $AB$의 수직이등분선이자 꼭지각 $\\angle AOB$의 이등분선 위에 놓인다.\n$$\n\\angle BOO' = \\frac{1}{2}\\angle AOB = \\frac{180^\\circ - 4y}{2} = 90^\\circ - 2y\n$$\n$\\triangle OBO'$에서 $\\overline{O'B} = \\overline{O'O}$이므로 이등변삼각형이고\n$$\n\\angle OBO' = \\angle BOO' = 90^\\circ - 2y\n$$\n따라서\n$$\n\\angle ABO' = \\angle ABO - \\angle OBO' = 2y - (90^\\circ - 2y) = 4y - 90^\\circ\n$$\n3. $\\triangle ABO'$에서 $\\overline{O'A} = \\overline{O'B}$이므로 이등변삼각형이다.\n$$\n\\angle BAO' = \\angle ABO' = 4y - 90^\\circ\n$$\n4. $\\angle IAO'$의 크기는 $\\angle BAO'$와 $\\angle BAI$의 차이이므로\n$$\n\\angle IAO' = \\angle BAO' - \\angle BAI = (4y - 90^\\circ) - y = 3y - 90^\\circ\n$$\n조건에서 $\\angle IAO' = 15^\\circ$이므로\n$$\n3y - 90^\\circ = 15^\\circ \\implies 3y = 105^\\circ \\implies y = 35^\\circ\n$$\n따라서 $y$의 값은 $35^\\circ$이다.\n답: (1) x + y, (2) 35°",
+    "solution": "내심과 외심의 성질로 각을 $x, y$로 나타내고, $\\angle IAO' = 15^\\circ$ 조건을 이용하여 $y$를 구한다.\n(1) 점 $I$는 $\\triangle ABO$의 내심이므로 선분 $AI$는 $\\angle BAO$의 이등분선이다.\n$$\\angle BAI = \\angle IAO = y$$\n선분 $AI, AO, AC$가 순서대로 놓여 있으므로 $\\angle IAC$는 $\\angle IAO$와 $\\angle OAC$의 합이다.\n$$\\angle IAC = \\angle IAO + \\angle OAC$$\n$$\n\\begin{aligned}\n\\angle IAC &= y + x \\\\\n&= x + y\n\\end{aligned}\n$$\n따라서 $\\angle IAC = x + y$이다. [4점]\n(2) 점 $O$는 $\\triangle ABC$의 외심이므로\n$$\\overline{OA} = \\overline{OB}$$\n따라서 $\\triangle AOB$는 이등변삼각형이고, $\\angle BAO$는 $\\angle BAI$의 $2$배이다.\n$$\\angle BAO = 2\\angle BAI = 2y$$\n$$\\angle ABO = \\angle BAO = 2y$$\n$$\n\\begin{aligned}\n\\angle AOB &= 180^\\circ - (2y + 2y) \\\\\n&= 180^\\circ - 4y\n\\end{aligned}\n$$\n점 $O'$는 $\\triangle ABO$의 외심이므로\n$$\\overline{O'A} = \\overline{O'B} = \\overline{O'O}$$\n점 $O'$는 선분 $AB$의 수직이등분선 위에 있고, 이 직선은 $\\angle AOB$를 이등분한다.\n$$\n\\begin{aligned}\n\\angle BOO' &= \\dfrac{1}{2}\\angle AOB \\\\\n&= \\dfrac{180^\\circ - 4y}{2} \\\\\n&= 90^\\circ - 2y\n\\end{aligned}\n$$\n$\\triangle OBO'$에서 $\\overline{O'B} = \\overline{O'O}$이므로 밑각의 크기가 같다.\n$$\\angle OBO' = \\angle BOO' = 90^\\circ - 2y$$\n따라서\n$$\n\\begin{aligned}\n\\angle ABO' &= \\angle ABO - \\angle OBO' \\\\\n&= 2y - (90^\\circ - 2y) \\\\\n&= 4y - 90^\\circ\n\\end{aligned}\n$$\n$\\triangle ABO'$에서 $\\overline{O'A} = \\overline{O'B}$이므로 밑각의 크기가 같다.\n$$\\angle BAO' = \\angle ABO' = 4y - 90^\\circ$$\n점 $O'$가 $\\angle IAO$의 내부에 있으므로 $\\angle BAO'$가 $\\angle BAI$보다 크고, $\\angle IAO'$는 두 각의 차이다.\n$$\\angle IAO' = \\angle BAO' - \\angle BAI$$\n$$\n\\begin{aligned}\n\\angle IAO' &= (4y - 90^\\circ) - y \\\\\n&= 3y - 90^\\circ\n\\end{aligned}\n$$\n조건에서 $\\angle IAO' = 15^\\circ$이므로\n$$\n\\begin{aligned}\n3y - 90^\\circ &= 15^\\circ \\\\\n3y &= 105^\\circ \\\\\ny &= 35^\\circ\n\\end{aligned}\n$$\n따라서 $y = 35^\\circ$이다. [4점]",
     "points": 8,
     "curriculum": "2022",
     "curriculumKey": "2022",
