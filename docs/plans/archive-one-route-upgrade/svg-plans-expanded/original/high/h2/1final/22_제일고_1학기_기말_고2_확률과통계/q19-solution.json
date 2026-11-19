@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1/10",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3/10",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "1/5",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "2/5",
+        "in": []
+      }
+    ],
+    "shade": "B∩A^c"
+  },
+  "caption": "P(A∩B)=P(A|B)P(B)=3/5×1/2=3/10이다. 그림은 A만 1/10, 겹침 3/10, B만 1/5, 바깥 2/5이고 색칠한 B만의 영역이 A의 여사건과 B의 겹침이다. P(A의 여사건∩B)=1/2−3/10=1/5이고 P(A의 여사건)=3/5이므로 P(B|A의 여사건)=(1/5)/(3/5)=1/3이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B가 겹친 벤다이어그램이며 영역마다 확률이 적혀 있고 B에만 속하는 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "B가 A 안과 A 밖으로 나뉘어 B만의 확률 1/5과 A의 여사건 확률 3/5가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 표본공간 $S$의 사건 $A, B$에 대하여 $P(A)=\\dfrac{2}{5}$, $P(B)=\\dfrac{1}{2}$, $P(A|B)=\\dfrac{3}{5}$일 때, $P(B|A^c)$를 구하는 풀이과정과 답을 쓰시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

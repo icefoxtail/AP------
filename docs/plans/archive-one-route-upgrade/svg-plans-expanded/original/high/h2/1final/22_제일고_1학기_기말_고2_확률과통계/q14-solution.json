@@ -1,0 +1,46 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "-4/9",
+              "state": "CLOSED"
+            }
+          },
+          {
+            "lo": {
+              "value": "0",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "1",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "a"
+  },
+  "caption": "판별식 D=9a²+4a=a(9a+4)≥0이면 실근이 있으므로 a≤−4/9 또는 a≥0이다. −1≤a≤1과 겹치면 수직선에 표시한 −1≤a≤−4/9와 0≤a≤1이다. 길이는 5/9와 1이고 전체 구간 [−1, 1]의 길이는 2이므로 확률은 (5/9+1)/2=7/9이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "수직선 위에 −1부터 −4/9까지의 구간과 0부터 1까지의 구간이 칠해져 있다.",
+  "newVisualInformation": [
+    "실근이 있는 a의 범위가 두 구간으로 보이고 전체 길이 2와 비교할 수 있다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[14] $-1 \\le a \\le 1$인 실수 $a$에 대하여 이차방정식 $x^2+3ax-a=0$이 실근을 가질 확률은? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

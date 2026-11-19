@@ -1,0 +1,101 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "최대 B가 A 안"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1/2",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "1/8",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "3/8",
+              "in": []
+            }
+          ],
+          "shade": "A∩B",
+          "subset": [
+            "B",
+            "A"
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "최소 합집합 전체"
+      },
+      "plan": {
+        "capability": "set-diagram-figure-v1",
+        "diagram": {
+          "kind": "VENN",
+          "sets": [
+            {
+              "id": "A"
+            },
+            {
+              "id": "B"
+            }
+          ],
+          "elements": [
+            {
+              "text": "1/2",
+              "in": [
+                "A"
+              ]
+            },
+            {
+              "text": "1/8",
+              "in": [
+                "A",
+                "B"
+              ]
+            },
+            {
+              "text": "3/8",
+              "in": [
+                "B"
+              ]
+            }
+          ],
+          "shade": "A∩B"
+        }
+      }
+    }
+  ],
+  "caption": "P(A∩B)는 P(A)=5/8, P(B)=1/2 중 작은 쪽을 넘지 못해 최대 1/2이고 이는 B가 A에 포함될 때(왼쪽 그림)이다. P(A∪B)≤1에서 P(A∩B)≥5/8+1/2−1=1/8이고 이는 A∪B가 전체일 때(오른쪽 그림)이다. P(A|B)=P(A∩B)/P(B)이므로 M=(1/2)/(1/2)=1, m=(1/8)/(1/2)=1/4이다. 따라서 M+m=5/4이고 답은 ①이다.",
+  "accessibilityDescription": "벤다이어그램 두 개가 나란히 있다. 왼쪽은 B가 A 안에 포함되고 겹침이 색칠되어 있으며, 오른쪽은 두 집합이 겹쳐 합집합이 전체를 덮고 겹침이 색칠되어 있다.",
+  "newVisualInformation": [
+    "조건부확률이 최대가 되는 B⊂A와 최소가 되는 A∪B가 전체인 두 경우가 나란히 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[16] 두 사건 A, B에 대하여 $P(A)=\\dfrac{5}{8}, P(B)=\\dfrac{1}{2}$일 때, $P(A|B)$의 최댓값을 $M$, 최솟값을 $m$이라 하자. 이때 $M+m$의 값을 구하면? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
