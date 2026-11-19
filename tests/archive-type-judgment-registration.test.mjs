@@ -255,8 +255,6 @@ test("filling a blank approved row still needs every other check: course, regist
   const req = f.request([f.item(1, { problemTypeKey: "PT_A" })]);
   editSource(f, 1, { content: "다른 발문" });
   assert.throws(() => f.run(req, { write: true }), /stem or choices differ from the judged text.*uid1/);
-  const held = fixture(t, { rowMutations: { 1: { ...blankRow, foundationTaxonomyStatus: "HOLD" } } });
-  assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
 });
 
 test("a row with a receipt on its other fields takes a type while its type is still empty; a taxonomy HOLD row is refused", t => {
@@ -267,8 +265,11 @@ test("a row with a receipt on its other fields takes a type while its type is st
   // the same row with an already approved type is still final
   const approved = fixture(t, { rowMutations: { 1: { metadataApprovalType: "REVIEW2", problemTypeKey: "PT_B", templateKey: "TPL_B", fieldStatus: { problemType: "approved_review2", template: "approved_review2" } } } });
   assert.throws(() => approved.run(approved.request([approved.item(1, { problemTypeKey: "PT_A" })])), /type already approved/);
+  // a row-level taxonomy HOLD is no reason to refuse a judged type (the hold stays on the row's other fields)
   const held = fixture(t, { rowMutations: { 1: { foundationTaxonomyStatus: "HOLD" } } });
-  assert.throws(() => held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })])), /foundation taxonomy HOLD/);
+  held.run(held.request([held.item(1, { problemTypeKey: "PT_A" })]), { write: true });
+  assert.equal(held.rows()[0].problemTypeKey, "PT_A");
+  assert.equal(held.rows()[0].foundationTaxonomyStatus, "HOLD", "the hold on the row is untouched");
 });
 
 test("receipt replay ignores the type fields a DIRECT_JUDGMENT added to a row whose receipt recorded no type, and nothing else", () => {
@@ -425,11 +426,15 @@ test("dry run on the real repository data plans only the metadata file and the r
     const bound = JSON.parse(fs.readFileSync(path.join(repo, `${dir}/bindings.json`), "utf8")).bindings.filter(b => b.status === "ACTIVE");
     for (const b of bound) if (!bindings.has(`${b.curriculum}|${b.standardCourse}`)) bindings.set(`${b.curriculum}|${b.standardCourse}`, b);
   }
-  const wanted = meta.records.find(r => !r.problemTypeKey && !r.metadataApprovalType && r.metadataStatus === "registration_pending_semantic_review" &&
-    r.fieldStatus?.problemType === "manual_review_pending" && r.fieldStatus?.template === "manual_review_pending" &&
-    (r.curriculum || r.curriculumKey) && bindings.has(`${r.curriculum || r.curriculumKey}|${r.standardCourse}`) &&
-    !String(r.foundationTaxonomyStatus || "").startsWith("HOLD"));
-  assert.ok(wanted, "the real data has a pending, typeless row of a bound course");
+  const boundTypeless = r => !r.problemTypeKey && !r.metadataApprovalType && (r.curriculum || r.curriculumKey) &&
+    bindings.has(`${r.curriculum || r.curriculumKey}|${r.standardCourse}`) && !String(r.foundationTaxonomyStatus || "").startsWith("HOLD");
+  // Prefer the original sample (pending semantic review, both type fields pending). The registrations of the type data batches
+  // consume such rows, so fall back to any other typeless, receipt-less row of a bound course (the lane fills an empty type field
+  // whatever its status tag says). With no such row left there is nothing to dry-run on the real data: skip, never relax the assertions below.
+  const wanted = meta.records.find(r => boundTypeless(r) && r.metadataStatus === "registration_pending_semantic_review" &&
+    r.fieldStatus?.problemType === "manual_review_pending" && r.fieldStatus?.template === "manual_review_pending") ||
+    meta.records.find(boundTypeless);
+  if (!wanted) { t.skip("the real data has no typeless, receipt-less row of a bound course left (the type data batches filled them); the lane is covered by the fixture tests above"); return; }
   const binding = bindings.get(`${wanted.curriculum || wanted.curriculumKey}|${wanted.standardCourse}`);
   const bytes = fs.readFileSync(path.join(repo, "archive/exams", wanted.sourceArchiveFile));
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-74433d22b40c-e41cb595",
+  "sourceArchiveFile": "similar/high/h2/1mid/24_금당고_1학기_중간_고2_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4c04daff3bc2a7b4addb632040c2997e2e0205f753d352b05070223fbd0892e7",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "밑이 같은 거듭제곱의 지수를 더하여 5의 1제곱을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_76d75e668d6ba8b8a75410805232b31891e0b39f6fc9ce2f2a21f810365903aa",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+      "step": "세 로그를 같은 밑으로 바꾸면 분자와 분모가 순환 소거된다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5575377599361c7e031e526d55701c15c6c7342c7668d9e36b89c52123dc0394",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+      "step": "각을 한 회전으로 환원하여 90도와 180도 사이에 있는 각을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ced6f882cc091dd4052b34ccae8fac0a8945273e53a34f9695c40372158a8a62",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+      "step": "제곱합 항등식으로 코사인의 크기를 구하고 제3사분면의 음의 부호를 붙인다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c4b64a5875558924ba92295b6a137f3564d44dc05033606f9313f222d87b0a47",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "templateKey": "TPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
+      "step": "소인수 3과 2의 유리수 지수가 정수가 되도록 m을 6의 배수로 두고 분모를 없애는 최소 n을 구한다.",
+      "note": "필요 TPL: 거듭제곱근 곱의 자연수화 최솟값. 정의: 소인수별 지수의 정수 조건과 분모 소거 조건을 결합하여 두 자연수의 합을 최소화한다. source 정답/해설 오류: m=6,n=8로 최솟값14인데 선택지에 없다는 이유로22를 택한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a1a72b367b628192a000714a0d75417254373ccdad775e582532cbaa9b3fcff4",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "templateKey": "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS",
+      "step": "두 분기 모두 cos x=cos(k/3)로 환원하여 한 주기 안의 대칭근을 센다.",
+      "note": "source 답7 오류: k=1부터5까지 0<k/3<π이므로 각 두 교점이고 합10이다.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    }
+  ]
+}

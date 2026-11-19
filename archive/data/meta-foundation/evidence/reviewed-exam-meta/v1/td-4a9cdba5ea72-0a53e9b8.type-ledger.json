@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4a9cdba5ea72-0a53e9b8",
+  "sourceArchiveFile": "textbooks/미래엔_대수/미래엔_대수_지수함수와로그함수_중단원마무리_고2/미래엔_대수_지수함수와로그함수_중단원마무리_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_de0fff1da1723047e6c6dbf6989bd2d14885be924bc3c9ebf2565b49024c6173",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+      "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "step": "x>0에서 (1/5)^(x-1)의 상한은 5이므로 전체 함수가 양수가 되지 않게 하는 최대 k는 -5이다.",
+      "note": "ACTIVE 정의를 직접 확인하여 과목 연결 후보 밖의 일반 함수 유형을 선택. 검사: CANONICAL_UNIT_INVALID",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/미래엔_대수.jsonl"
+    }
+  ]
+}

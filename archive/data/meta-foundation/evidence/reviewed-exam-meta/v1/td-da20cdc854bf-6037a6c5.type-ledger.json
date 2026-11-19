@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-da20cdc854bf-6037a6c5",
+  "sourceArchiveFile": "original/high/h1/2final/22_제일고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_545698b27c510148244e5b02695d11caf760131e8812cfada16f7e904d599a0c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_VALUE",
+      "step": "대응도로 f∘g의 값을 만든 뒤 출력 7의 입력을 역추적해 두 값을 더한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2fcfcd64b440f58f94fb422fcd067e06a3003c6dbdb0de65e0533d9846afb9fd",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "3+5/(x-2) 표준형에서 중심과 점근선을 읽고 절편과 사분면을 직접 확인한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_52c0a4acbe67b7824a363b1f5ce99646d857497d9dde4eb56dabd178edfe67cd",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "step": "두 조각의 치역 (-3,1),(-∞,a]가 겹침과 빈틈 없이 이어지도록 a=-3으로 둔다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4d8127d06293a63ae92a6981240992c8d6f85ffcd3dd3d2ac8180d59adb1dafc",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "step": "k-3의 부호로 단조성을 나누고 최소값 4가 되는 오른쪽 끝값 조건을 푼다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3bf0e60400794d7b1e7008a0e11cb7688e2ad7802d4cfa95d68432aa254e4e1f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "교점 y에 대한 이차식이 서로 다른 두 비음수근을 갖도록 판별식과 근의 곱을 제한한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2e7b47756cce0fdf84a010e6da6ce8762918f4774c1a87218885aeaadd10bdea",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_PROPERTIES",
+      "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+      "step": "역함수 교점의 반례와 합성 정의역을 확인하고 일대일함수 h를 소거하여 보기의 참거짓을 판단한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5f47436c9923c4d7251fe875438c467836a6111e3018f3565d6276a40cf0e191",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+      "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+      "step": "절편 A,B와 점근선 교점 C의 좌표를 구해 두 직선의 기울기를 같게 둔다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_75ab496f366b5f5416fb2f44abbda3b82201621a50217b5e1d528de09e6e141b",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "step": "각 이차함수 조각의 단조구간과 치역 경계를 맞춰 일대일대응 가능한 계수를 정한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8716c67f7ded642accad9ba43fd48fb8551871b729147610a2e9441462cc80b2",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_SURJECTION_COUNT",
+      "step": "전체 3⁶개 함수에서 공역 값을 빠뜨린 경우를 포함배제로 제외한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d541e2b05cd1b011832f0536ec88d1a3aa0d5aeb892a714aaab1ada6fabd297e",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+      "step": "증가함수는 네 출력의 조합, 일대일함수는 네 출력의 순열로 각각 센다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_21e3ea74d7de3776e1481fbae093363ca1edd303d8235717751edd2f9e539207",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_CONSTRAINED_FUNCTION_COUNT",
+      "step": "합성 치역이 같은 조건을 치역 위 고정점 없는 순열로 바꿔 치역 크기별로 센다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_74781d1cf2d58d8558e675ac256be79717b54e6a7dbbea80bbb651fe50c6d9b8",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADICAL_EXPRESSION",
+      "templateKey": "TPL_RADICAL_EXPRESSION_SIMPLIFY",
+      "step": "수직 길이 √(k+2)-√k를 합하여 중간 항을 소거하고 처음·끝 두 항을 남긴다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}

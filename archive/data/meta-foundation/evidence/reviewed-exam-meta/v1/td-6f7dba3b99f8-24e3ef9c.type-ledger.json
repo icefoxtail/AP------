@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-6f7dba3b99f8-24e3ef9c",
+  "sourceArchiveFile": "original/high/h1/2final/22_매산고_2학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e88a7e61d616cf5448d4424c133991c4d51874e030b1037abae3a5f64a980182",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+      "step": "정의역 경계에서 a=6을 정하고 점 (5,1)로 b=3을 구해 치역을 얻는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7a6736fd913fb5da73bb010024d3fb272dbbde78aae0f4e3e8c054aea1009100",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+      "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
+      "step": "대응도에서 g를 먼저 적용하고 f와 f⁻¹의 대응을 각각 따라 합성값을 더한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_63f17dcb4c34583b794203fc9792dd22a01dca79be4997c1ffd11c205a8eb8ea",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+      "step": "제1사분면 교점의 x범위 0<x≤4에서 k=2x+3-√(4-x)의 범위를 구한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6f83e52fa8459989438773e657921965815edb73f3b92b98a4cad2372989124a",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "A=(t,2/t)에서 수평·수직 교점 좌표를 정해 넓이를 (k-2)²/4로 표현한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f29e619b9b3893f55bb0139ccc5d1777e3f7da766c0af10560c2b1b2554f6a71",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FINITE_BIJECTION",
+      "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+      "step": "x=1,2를 합성 조건에 대입하고 일대일대응 제약으로 f(4)의 가능한 값을 추린다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_14cb1da0f688f872fb673d993560cbda973723295c85b888ac64d0dae1d1b93b",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "step": "A의 대칭점 B와 역함숫값으로 C,D 좌표를 정해 수평 밑변과 높이로 넓이를 계산한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4a821724d6cb57879cef97b70e81b4613aadd83e3e223d6d7e369cc0d1200e15",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "step": "유리식의 극점 x=4를 조각 경계로 잡고 두 치역이 실수 전체를 겹침 없이 덮게 한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dfbb913abebfcd1d5a65c8da0ae4a453d4c2b067185adc88f983b8d7629f502a",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "두 근호를 A,B≥0으로 두어 A+B=4,AB=8-3k를 얻고 서로 다른 교점의 경계를 찾는다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3ed615f7b073e04f8651c729afbdf3789a8b0807914d31beb2d960619f5a18bd",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "step": "증가하는 무리함수의 양 끝값을 각각 최소 -1과 최대 2에 맞춰 a,b를 정한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_56d56c1538fe8bb51cea68e13ebb2a90413f9363fc7c69df62a72139f672400b",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+      "step": "주기 2와 y축 대칭을 이용해 양의 축 반주기별 교점을 세고 끝점 중복을 제거한다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a84762d677f1003e5dddace605d252c3dba03eb2ab5d9daeacbbb03f6f4f3e3d",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "step": "유리함수가 상수가 되는 b=ac만 제외하여 8³에서 가능한 20개 계수쌍을 뺀다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f18bf25541032ddb6ed4d731bc82b7f52c7a6cffe227be39fcdd6db00544cdfc",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "두 교점을 근 x₁,x₂로 놓아 삼각형 넓이를 3",
+      "note": "x₁-x₂; 로 바꾸고 근의 합·곱을 쓴다.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_745f4e2587373a6a054e0d0d0bf9c66bd61ab5d59ccb7cb2675826fb06002510",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+      "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+      "step": "공통 고정점 2를 중심으로 일차함수를 표현해 합성 닫힘 조건을 기울기 t²∈{1,t}로 바꾼다.",
+      "note": "ACTIVE 키와 상위 관계 직접 확인.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2final.jsonl"
+    }
+  ]
+}

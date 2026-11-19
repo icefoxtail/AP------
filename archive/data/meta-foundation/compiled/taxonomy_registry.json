@@ -4,7 +4,7 @@
   "sourcePacks": [
     {
       "packId": "GEOMETRY_EQUATIONS",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "packId": "SETS_PROPOSITIONS",
@@ -16,7 +16,7 @@
     },
     {
       "packId": "LIMIT_CONTINUITY",
-      "version": "1.1.3"
+      "version": "1.1.4"
     },
     {
       "packId": "INTEGRAL_CALCULUS",
@@ -32,11 +32,11 @@
     },
     {
       "packId": "MIDDLE_GEOMETRY",
-      "version": "1.0.13"
+      "version": "1.0.14"
     },
     {
       "packId": "MIDDLE1",
-      "version": "1.0.13"
+      "version": "1.0.14"
     },
     {
       "packId": "H1_FOUNDATION",
@@ -72,7 +72,7 @@
     }
   ],
   "problemTypeCount": 515,
-  "templateCount": 1430,
+  "templateCount": 1436,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -23194,6 +23194,34 @@
       ]
     },
     {
+      "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+      "parentProblemTypeKey": "PT_LINE_EQUATION",
+      "canonicalLabelKo": "점과 방향벡터 직선식",
+      "definition": "주어진 점과 방향벡터로 직선의 매개식 또는 일반식을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "GEOMETRY_EQUATIONS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_dd7ce575b8a6593b9dd3c2c90d648cf46bc26afbc2cacb60fd675c43ae162edc",
+        "qid_v1_feb1fd3a0f89caafaf0cfd5f51d8c50023232be7b11dbc5ae07b811988e6d294"
+      ],
+      "sourceUnits": [
+        "H22-GE-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LINE_EQUATION_DIRECTION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
       "templateKey": "TPL_ABSOLUTE_INEQUALITY_TRUTH_PROOF",
       "canonicalLabelKo": "절대부등식의 참·거짓과 증명",
       "definition": "항상 성립하는 부등식인지 판정하고 성립 근거를 보인다.",
@@ -29374,6 +29402,62 @@
       ]
     },
     {
+      "templateKey": "TPL_LIMIT_VALUE_CALC_DOMINANCE",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalLabelKo": "지배항",
+      "definition": "거듭제곱 밑의 크기 또는 수열 최고차항으로 정규화하여 무한대 극한을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_38c44e82c285f79b90aa23c3add0115936076ca6a6b7c38c1567ff8be34474ef"
+      ],
+      "sourceUnits": [
+        "H15-CALC-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_VALUE_CALC_DOMINANCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LIMIT_VALUE_CALC_STANDARD",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalLabelKo": "기본 극한",
+      "definition": "지수·로그·삼각함수의 입력을 치환하여 표준 기본극한으로 환원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_8666446c0d0c6e6087720875d3069ac95e3d23e4376424ffa6e3457782df0ecd",
+        "qid_v1_eec6272a15b3c5232fca58d5de2d69d8876c244516d2e3822744102221605bca"
+      ],
+      "sourceUnits": [
+        "H15-CALC-03",
+        "H15-CALC-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_VALUE_CALC_STANDARD",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
       "templateKey": "TPL_INDEFINITE_DIFFERENTIAL_RELATION",
       "canonicalLabelKo": "부정적분과 미분의 관계",
       "definition": "부정적분과 미분의 관계의 반복 가능한 조건 배치와 decisive 풀이 골격.",
@@ -34369,6 +34453,41 @@
         {
           "source": "TYPE_BUNDLE_TABLE",
           "bundle": "NTPL_TRIG_RATIO_MONOTONIC",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
+      "parentProblemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "canonicalLabelKo": "반지름과 현",
+      "definition": "반지름·접선·현의 수직 관계로 직각삼각형을 만들고 제곱식 방정식으로 반지름·길이·넓이를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE_GEOMETRY",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_1860d0a9e596a101016c42139217d6ecd482209e87a3137ed9eea78f6728db95",
+        "qid_v1_21d63a9e9bc6b47608c3cb9c22a5e9943b3118b1b7e9240958605d52b3a7b24c",
+        "qid_v1_2e139761a3219a8d493129b08d4d26866eae617586f605ec72cffc586886d563",
+        "qid_v1_695a4f7ba271112e7c6b9646d4d740eaa405ba0255d91b2b518012577388fa97",
+        "qid_v1_88bc733b9c131543daf257062711c6d623d1890db0d58df4adc34410a20e6414",
+        "qid_v1_98254ca4e48810015fa935f5adc121379ea82507740d508f1705b98e398e9894",
+        "qid_v1_b0748ddad1adbd87f9f86767c54e2cdb23764f692a0b848ab6f601506acfd72f",
+        "qid_v1_df0d572b86b671ec55d9b1a01bcfc8e698cacb59cd1c80fca3b3a8c0006ad495",
+        "qid_v1_e228cdc936628e84fce5ae7d0083eae3bc0d7cde9ce846813d33639fdfe7cb28"
+      ],
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH",
           "bundleTable": {
             "branch": "data/type-bundles-20261117",
             "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
@@ -44130,6 +44249,65 @@
         {
           "source": "TYPE_BUNDLE_TABLE",
           "bundle": "NTPL_MINIMUM_FACTOR_TO_PERFECT_SQUARE_MULTIPLIER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT",
+      "parentProblemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "canonicalLabelKo": "통계량 검토",
+      "definition": "실제 자료의 평균·중앙값·최빈값을 계산하고 정의와 자료 해석에 관한 진술을 판정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_39cb0d1e17060301282f41e27e6aac0036301fc6df71ac49709da5c864b41250",
+        "qid_v1_48dd5d50cc3aee6da1d09dcd93be4ad8c9ae0494ef8cfc69a68020fd9cc4886f",
+        "qid_v1_9adc52d7f443d11d4b2804b7585f76b55f81711e9b9d182539ee0e723f76665c",
+        "qid_v1_e1cf9a97232565aac869ad514848c7d0e4fd515ee1feddd8b7a382180d8e9ee9"
+      ],
+      "sourceUnits": [
+        "M3-07"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_CENTRAL_TENDENCY_AUDIT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
+      "parentProblemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+      "canonicalLabelKo": "직선 교점 넓이",
+      "definition": "중2 시험지에서 직선들의 교점과 절편을 구하고 좌표차를 밑변·높이로 삼각형 넓이를 계산한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE1",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_18963e78f1df0a35187d1f731c2e029279662fbf773b127084b9319d711dc8c0",
+        "qid_v1_1e86fe684aa9067c7eddbc36fb97d94976245e41e50eedb231e3e6421de897a7",
+        "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520"
+      ],
+      "sourceUnits": [
+        "M2-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED",
           "bundleTable": {
             "branch": "data/type-bundles-20261117",
             "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
