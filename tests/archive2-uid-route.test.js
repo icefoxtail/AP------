@@ -11,6 +11,7 @@ const core = require('../archive/archive2-core.js');
 const archiveSource = require('../archive/archive2-source.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -57,16 +58,14 @@ function harness(data) {
     Archive2Source: archiveSource,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, renderScopes, renderHealth, unifiedHealth, unifiedIndex, planRows, request, pool,
       draft, applyDraft, generate, review, applySourceRoute, applyUidRoute, clearUidRoute, syncUidRoute, readUrl, routeUrl, newDraft, renderUidRoute, filterMarkup, reconcileUnifiedFilters, compactSaveFilters,
       selectedScopeOptions, workspaceMatches, workspaceEligibility, applySavedPaperRevision,
       findExams, reconcileFinderFilters, finderMoreFiltersMarkup, renderComposition};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.useMode = 'general';

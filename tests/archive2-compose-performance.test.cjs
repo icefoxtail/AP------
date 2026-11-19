@@ -6,6 +6,7 @@ const crypto = require('node:crypto');
 const { performance } = require('node:perf_hooks');
 const { catalog, core } = require('./helpers/archive2-scope-harness.cjs');
 const problemBankMeta = require('../archive/problem-bank-meta.js');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 function app(useMode = 'strict') {
   const nodes = { content: { addEventListener() {} } };
@@ -17,9 +18,7 @@ function app(useMode = 'strict') {
     Archive2Papers: require('../archive/archive2-papers.js'),
     addEventListener() {},
   };
-  const source = fs.readFileSync(require.resolve('../archive/archive2-workspace.js'), 'utf8');
-  vm.runInNewContext(source.slice(0, source.lastIndexOf('  (async () => {')) +
-    'window.testApp = { state, render }; })();', {
+  loadWorkspace({
     window, crypto, console, setTimeout: () => 0, clearTimeout() {},
     URLSearchParams, location: { search: '' },
     document: {
@@ -27,7 +26,7 @@ function app(useMode = 'strict') {
       querySelector: () => null, querySelectorAll: () => [], body: { dataset: {} },
       addEventListener: (name, fn) => listeners[name] = fn,
     },
-  });
+  }, 'window.testApp = { state, render };');
   const { state, render } = window.testApp;
   Object.assign(state, { catalog: structuredClone(catalog), view: 'compose', filters: { grade: '고1' }, useMode });
   state.metaIndex = window.ProblemBankMeta.buildIndex(state.catalog.records, []);

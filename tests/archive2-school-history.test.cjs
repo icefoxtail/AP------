@@ -5,6 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const crypto = require('node:crypto');
 const scopeHarness = require('./helpers/archive2-scope-harness.cjs');
+const { readWorkspace, loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 const approvedTestCatalog = scopeHarness.catalog;
 const withTestAssignments = scopeHarness.withTestAssignments;
 const projectionPolicy = approvedTestCatalog.projectionPolicy;
@@ -64,10 +65,7 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
   vm.runInContext(read('archive2-canonical.js'), ctx);
   vm.runInContext(read('archive2-core.js'), ctx);
   vm.runInContext(read('archive2-history.js'), ctx);
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0, 'only skip the network bootstrap, not handlers');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => { globalThis.workspaceRenderCount++; };
     globalThis.workspaceRenderCount = 0;
     globalThis.workspaceTest = {
@@ -78,7 +76,7 @@ function harness(fetcher = async () => { throw new Error('unexpected network'); 
       getClasses: () => classRows,
       getRenderCount: () => globalThis.workspaceRenderCount,
     };
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = { taxonomy: [], records: [], exams: [], indexVersion: 'unit-test' };
   w.state.finderIndex = ctx.Archive2Core.buildFinderIndex(w.state.catalog);
@@ -282,7 +280,7 @@ test('Compose pool/scopes still consume the record-level projection authority', 
       h.c.basicScopeParent(r, h.w.state.catalog.basicScopeLinks, h.w.state.catalog.canonicalAuthority));
     assert.equal(h.w.scopeOptions().reduce((sum, s) => sum + s.count, 0), selectable.length);
   }
-  const source = read('archive2-workspace.js');
+  const source = readWorkspace();
   assert.equal((source.match(/subject: C\.subjectProjectionLabel\(state\.filters\)/g) || []).length, 2);
   // The replacement-candidate filter goes through workspaceMatches, which applies the shared C.matches
   // with the unified-only keys stripped (the projection authority itself is unchanged).
@@ -619,7 +617,7 @@ test('recent and student detail expose cancellation, replacement, review-only, a
   assert.match(markup, /열람 전용 · 1명/);
   assert.match(markup, /PDF 준비 실패/);
   assert.match(markup, /PDF 다시 준비/);
-  const workspace = read('archive2-workspace.js');
+  const workspace = readWorkspace();
   assert.match(workspace, /url\.searchParams\.set\("assignment_id", String\(a\.id \|\| assignmentId\)\)/);
   assert.match(workspace, /url\.searchParams\.set\("student_id", String\(studentId \|\| ""\)\)/);
   assert.match(workspace, /url\.searchParams\.set\("omr", "1"\)/);

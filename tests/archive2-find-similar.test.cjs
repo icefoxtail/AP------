@@ -5,6 +5,7 @@ const vm = require("node:vm");
 const crypto = require("node:crypto");
 const core = require("../archive/archive2-core.js");
 const Similar = require("../archive/archive2-similar.js");
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 const catalog = core.decodeCatalog(JSON.parse(fs.readFileSync("archive/data/archive2-catalog.json")));
 const pairs = Similar.pairSimilarSets(catalog.exams);
@@ -60,14 +61,11 @@ function load(search = "?view=find&material=exam") {
   };
   context.window = context;
   const ctx = vm.createContext(context);
-  const source = fs.readFileSync("archive/archive2-workspace.js", "utf8");
-  const startup = source.lastIndexOf("  (async () => {");
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     globalThis.workspaceTest = { state, findExams, renderFind, renderHome, renderUnlinkedSimilar, routeUrl, readUrl,
       rememberRecentExam, findSummaryText };
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = catalog;
   w.state.finderIndex = core.buildFinderIndex(catalog);
