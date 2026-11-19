@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-3",
+        "-2",
+        "-1",
+        "1",
+        "2",
+        "3"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "1"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다. a=-3, -2에서는 f→3, 2이고 x/f(x)→-1이며 극한이 있다. a=-1에서는 f의 좌극한 1, 우극한 2라 x/f(x)의 좌우 극한이 -1과 -1/2로 달라 극한이 없다. a=0에서는 f→1이므로 0으로 수렴하고, a=2에서는 f→1이므로 2로 수렴한다. a=1, 3에서는 f→0이고 분자가 0이 아니므로 극한이 없다. 극한이 존재하는 a는 -3, -2, 0, 2의 4개이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같을 때, 정수 $a(-3 \\le a \\le 3)$에 대하여 $\\lim_{x \\to a} \\frac{x}{f(x)}$의 값이 존재하도록 하는 모든 $a$의 개수는? [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "각 정수 a에서 f의 극한값과 0이 되는 점 a=1, 3을 그래프에서 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1에서 f의 좌극한 1, 우극한 2로 끊기고 x=1, 3에서 f가 0이 되는 것을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽에서 오른쪽 아래로 내려오다 x=-1에서 끊겨 위로 올라가고, 다시 내려가 x=1에서 가로축에 닿았다가 올라가고 x=3에서 다시 가로축에 닿는 꺾은선 모양의 그래프이다."
+}

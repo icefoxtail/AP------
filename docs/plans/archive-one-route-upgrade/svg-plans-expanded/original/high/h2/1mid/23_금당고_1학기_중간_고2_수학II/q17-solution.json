@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      1.5
+    ],
+    "viewport": [
+      -1.5,
+      1.5,
+      -0.5,
+      4.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "-1/2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "-1/2",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "1",
+          "intercept": "1",
+          "label": "l"
+        },
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "2",
+          "label": "h"
+        }
+      ],
+      "segments": [
+        {
+          "id": "bh",
+          "from": "B",
+          "to": "H"
+        }
+      ]
+    }
+  },
+  "caption": "예: t=1일 때를 그린다. 직선 y=x+1과 y=2x²의 교점은 A(1,2)와 B(-1/2,1/2)이고, A를 지나는 수평선 h가 포물선과 다시 만나는 점은 C(-1,2)이다. B에서 AC에 내린 수선의 발은 H(-1/2,2)이므로 AH=3/2, CH=1/2이다. 일반적으로 x_A=(1+√(1+8t))/4, x_B=(1-√(1+8t))/4이고 AH-CH=-2x_B=(√(1+8t)-1)/2이다. 따라서 극한은 lim (√(1+8t)-1)/(8t)=1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<단답형 1>\n$t>0$인 실수 $t$에 대하여 직선 $y=x+t$와 곡선 $y=2x^2$이 만나는 두 점을 각각 $\\mathrm{A}, \\mathrm{B}$라 하자. 점 $\\mathrm{A}$를 지나고 $x$축에 평행한 직선이 곡선 $y=2x^2$와 만나는 점 중 점 $\\mathrm{A}$가 아닌 점을 $\\mathrm{C}$, 점 $\\mathrm{B}$에서 선분 $\\mathrm{AC}$에 내린 수선의 발을 $\\mathrm{H}$라 할 때, $\\lim_{t \\to 0^+} \\frac{\\overline{\\mathrm{AH}}-\\overline{\\mathrm{CH}}}{4t}$의 값을 구하시오. (단, 점 $\\mathrm{A}$의 $x$좌표는 양수이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1에서 직선과 포물선의 교점 A, B, 수평선과의 교점 C, 수선의 발 H를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1인 예에서 교점 A, B, A를 지나는 수평선과 포물선의 교점 C, B에서 내린 수선의 발 H를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 기울기 1인 직선 l이 두 점 A, B에서 만나고, A를 지나는 수평선 h가 포물선과 다시 만나는 점 C가 있으며, B에서 수평선으로 내린 수선의 발 H가 표시된 그래프이다."
+}

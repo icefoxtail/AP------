@@ -1,0 +1,127 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.4,
+      1.4
+    ],
+    "viewport": [
+      -1.4,
+      1.4,
+      -1.2,
+      2.2
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "2",
+        "intercept": "-1",
+        "intersectionX": [
+          "1"
+        ]
+      },
+      {
+        "id": "m",
+        "slope": "-2",
+        "intercept": "-1",
+        "intersectionX": [
+          "-1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "K",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "U",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "M",
+          "x": "-1/2",
+          "y": "0"
+        },
+        {
+          "id": "N",
+          "x": "1/2",
+          "y": "0"
+        }
+      ],
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "0",
+            "1/4-sqrt(5)/4"
+          ],
+          "radiusSquared": "3/8-sqrt(5)/8"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "K": "K",
+    "T": "T",
+    "U": "U",
+    "M": "M",
+    "N": "N"
+  },
+  "caption": "예: k=-1일 때를 그린다. 점 K(0,-1)에서 y=x²에 그은 두 접선 l, m은 접점이 T(1,1), U(-1,1)이고 y=2x-1, y=-2x-1이다. 두 접선의 x절편은 M(-1/2,0), N(1/2,0)이고 삼각형 KMN의 밑변은 1, 높이는 1이다. 내접원의 반지름은 r=(넓이)/(반둘레)=(1/2)/((1+√5)/2)=(√5-1)/4이다. 일반적으로 p=√(-k)이면 밑변 p, 높이 p²이고 r(k)/k=-1/(1+2√(1/4+p²))이며 k→0-에서 -1/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<서술형 2>\n그림과 같이 점 $(0, k)$에서 곡선 $y=x^2$에 그은 두 접선을 각각 $l, m$이라 하자. $x$축과 두 직선 $l, m$으로 만들어지는 삼각형에 내접하는 원의 반지름을 $r(k)$이라 할 때, $\\lim_{k \\to 0^-} \\frac{r(k)}{k}$의 값을 풀이과정과 함께 상세하게 서술하시오. (단, $k<0$) [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k=-1에서 두 접선 l, m, 접점 T, U, x절편 M, N과 삼각형 KMN의 내접원을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=-1인 예에서 두 접선의 접점 T, U, x절편 M, N과 삼각형 KMN에 내접하는 원을 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 포물선 바깥 아래쪽의 점 K에서 그은 두 접선이 있고, 두 접선과 가로축이 이루는 삼각형 안에 원이 그려져 있다."
+}
