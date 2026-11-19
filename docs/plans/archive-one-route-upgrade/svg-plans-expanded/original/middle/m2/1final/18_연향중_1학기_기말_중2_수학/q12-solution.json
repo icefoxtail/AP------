@@ -1,0 +1,50 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "5"
+        ],
+        "label": "y=−2x+7",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "-3",
+          "y": "13",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "-3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "−3≤x<5에서 y=−2x+7의 값의 범위를 구한다. 기울기가 −2이므로 x가 커질수록 y는 작아진다. x=−3일 때 y=13이고 이때 x=−3을 포함하므로 13을 포함한다. x=5일 때 y=−3이지만 x=5는 포함하지 않으므로 −3은 포함하지 않는다. 따라서 −3<−2x+7≤13이고 답은 ①이다.",
+  "newVisualInformation": [
+    "x=−3일 때 y=13(포함), x=5일 때 y=−3(미포함)이므로 −3<y≤13"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선 위에 x=−3인 점 A(−3,13)와 x=5인 점 B(5,−3)가 표시되어 있다. y의 값은 B에서 A까지 −3보다 크고 13 이하이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. $-3 \\le x < 5$일 때, $-2x+7$의 값의 범위는? [3.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

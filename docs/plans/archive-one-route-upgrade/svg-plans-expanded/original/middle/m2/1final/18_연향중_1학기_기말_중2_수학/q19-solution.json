@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "10<a≤12",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "10",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "4x−2<2(x+5)에서 x<6이다. x+a≤3x+4에서 x≥(a−4)/2이다. 정수 x가 2개이면 x=4, 5이므로 3<(a−4)/2≤4이다. 이를 풀면 10<a≤12이다. 수직선에서 10은 속이 빈 점, 12는 찬 점이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "수직선 위에 10과 12 사이의 구간이 있고 10은 속이 빈 점, 12는 찬 점이다.",
+  "newVisualInformation": [
+    "정수 해가 4, 5뿐일 조건 3<(a−4)/2≤4에서 10<a≤12"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>19. 연립일차부등식 $\\begin{cases} 4x-2 < 2(x+5) \\\\ x+a \\le 3x+4 \\end{cases}$를 동시에 만족하는 정수 $x$의 값이 2개일 때, $a$의 값의 범위는? [4.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

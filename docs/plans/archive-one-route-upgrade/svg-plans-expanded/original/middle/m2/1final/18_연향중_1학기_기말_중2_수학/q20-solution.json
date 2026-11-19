@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "17≤n<20",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "17",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "20",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "의자의 개수를 n이라 하면 학생은 2n+5명이다. 3명씩 앉으면 의자 4개가 남으므로 (n−4)개의 의자 중 마지막 의자에는 1명 이상 3명 이하가 앉는다. 즉 3(n−5)<2n+5≤3(n−4)이다. 3n−15<2n+5에서 n<20이고 2n+5≤3n−12에서 n≥17이다. 따라서 17≤n<20이고 보기 중 18개가 가능하다. 답은 ④이다.",
+  "accessibilityDescription": "수직선 위에 17과 20 사이의 구간이 있고 17은 찬 점, 20은 속이 빈 점이다.",
+  "newVisualInformation": [
+    "조건 3(n−5)<2n+5≤3(n−4)에서 17≤n<20이므로 의자는 18개가 가능"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 어느 반 학생들이 긴 의자에 앉으려고 한다. 한 의자에 2명씩 앉으면 학생 5명이 남고, 3명씩 앉으면 의자 4개가 남는다고 할 때, 다음 중 의자의 개수가 될 수 있는 것은? [4.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
