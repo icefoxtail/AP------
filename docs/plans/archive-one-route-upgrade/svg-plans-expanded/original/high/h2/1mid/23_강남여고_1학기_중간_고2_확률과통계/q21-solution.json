@@ -1,0 +1,198 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "sDE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    },
+    {
+      "id": "sEF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "sFA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "caption": "정육각형의 꼭짓점 여섯 곳을 A부터 F로 나타낸 그림이다. 변으로 연결된 두 수의 곱이 짝수이려면 이웃한 두 수가 모두 홀수이면 안 된다. 따라서 홀수는 서로 이웃하지 않는 꼭짓점에 놓아야 하며, 예를 들어 A, C, E처럼 하나 건너 놓는다. 홀수가 2개이면 이웃하지 않는 자리 선택이 9가지, 3개이면 2가지이다. 수를 배열하면 9×12×24+2×24×24=3744이고 회전 6가지를 같게 보아 6으로 나누면 624이다. 답은 ②이다.",
+  "accessibilityDescription": "여섯 꼭짓점 A부터 F가 육각형으로 이어진 그림이며 변으로 이웃한 꼭짓점들이 보인다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같은 정육각형의 각 꼭짓점에 $1$부터 $8$까지의 자연수 중 서로 다른 $6$개를 써 넣으려고 한다. 변으로 연결된 두 수의 곱이 항상 짝수가 되도록 수를 써 넣은 경우의 수는? (단, 정육각형을 회전하여 숫자가 일치하면 같은 것으로 본다.) [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "abstract",
+      "condition": "원탁·원형 배열을 도형의 꼭짓점으로 옮긴 배치 예시이며 좌표와 길이는 원문 조건이 아니다.",
+      "mappedTo": "displaySegments"
+    }
+  ],
+  "newVisualInformation": [
+    "이웃한 꼭짓점과 하나 건너 이웃하지 않는 꼭짓점이 구분되어 홀수를 놓을 수 있는 자리 선택의 근거가 보인다."
+  ]
+}

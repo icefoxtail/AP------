@@ -1,0 +1,39 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "2개",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "A",
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A∩B=A이므로 A는 B에 포함되고 B−A에는 원소가 정확히 2개 있다. 먼저 6개의 원소 중 B−A에 넣을 2개를 고르는 방법은 6C2=15가지이다. 나머지 4개의 원소는 각각 A에 넣거나 B 밖에 두어 2⁴가지이고, A가 공집합이면 안 되므로 1가지를 뺀 2⁴−1=15가지이다. 따라서 15×15=225이다. 답은 ⑤이다.",
+  "accessibilityDescription": "전체집합 안에서 집합 A가 집합 B 안에 포함된 벤다이어그램이며 B에서 A 밖의 부분에 2개라고 적혀 있고 A 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "A⊂B 관계와 B에서 A를 뺀 부분이 정확히 2개라는 구조가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "전체집합 $U=\\{1, 2, 3, 4, 5, 6\\}$의 공집합이 아닌 두 부분집합 $A$, $B$에 대하여 $A \\cap B = A$, $n(B - A)=2$를 만족시키는 집합 $A$, $B$의 모든 순서쌍 $(A, B)$의 개수는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
