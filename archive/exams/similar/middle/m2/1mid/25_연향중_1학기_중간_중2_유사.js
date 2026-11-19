@@ -37,7 +37,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_CONVERSION_STRATEGY",
-    "solution": "순환마디의 숫자가 $2$개인 순환소수는 소수점 아래 순환마디 부분을 완전히 일치시켜 소거하기 위해 $100x$와 $x$를 이용한다. $$ \\begin{aligned} x &= 0.383838\\cdots \\ 100x &= 38.383838\\cdots \\end{aligned} $$ 두 식을 변끼리 빼면 소수점 아래 순환하는 부분이 모두 소거되어 $99x = 38$이라는 정수 계수의 일차방정식으로 정리된다. 따라서 가장 편리한 식은 $100x - x$이므로 정답은 ②이다.",
+    "solution": "순환소수 $0.\\dot{3}\\dot{8}$의 순환마디가 두 자리이므로 $100x$와 $x$의 차를 이용해 분수로 고친다.\n$$ x = 0.383838\\cdots $$\n$$ 100x = 38.383838\\cdots $$\n$$ \\begin{aligned} 100x - x &= 38.383838\\cdots - 0.383838\\cdots \\\\ &= 38 \\end{aligned} $$\n$$ 99x = 38 $$\n소수점 아래 순환하는 부분이 같아서 한 번에 지워진다.\n따라서 가장 편리한 식은 $100x - x$이므로 정답은 ②이다.",
     "points": 3
   },
   {
@@ -74,7 +74,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "MIXED_REPEATING_DECIMAL_AUDIT",
-    "solution": "주어진 순환소수는 $x = 2.15333\\cdots$이다. 먼저 $100x = 215.333\\cdots$, $10x = 21.5333\\cdots$를 쓴다. 두 식을 빼면 $$100x - 10x = 90x = 215.333\\cdots - 21.5333\\cdots = 193.8$$이다. 따라서 $x = \\dfrac{193.8}{90} = \\dfrac{1938}{900} = \\dfrac{323}{150}$이다. 그러므로 $100x - 10x$를 이용해도 분수로 나타낼 수 있다. ⑤의 계산값 $193.3$은 실제 차 $193.8$과 다르므로 옳지 않다. 다른 선지는 모두 참이므로 정답은 ⑤이다.",
+    "solution": "순환소수 $x = 2.15333\\cdots$의 순환마디를 확인하고 분수로 고쳐 보기마다 옳고 그름을 판정한다.\n$$ x = 2.15333\\cdots $$\n① 소수점 아래 셋째 자리부터 $3$이 한없이 반복되므로 순환마디는 $3$이다. (옳음)\n$$ 100x = 215.333\\cdots $$\n$$ 10x = 21.5333\\cdots $$\n$$ \\begin{aligned} 100x - 10x &= 215.333\\cdots - 21.5333\\cdots \\\\ &= 193.8 \\end{aligned} $$\n$$ 90x = 193.8 $$\n$$ \\begin{aligned} x &= \\dfrac{193.8}{90} \\\\ &= \\dfrac{1938}{900} \\\\ &= \\dfrac{2153 - 215}{900} \\end{aligned} $$\n② 위에서 구한 값과 같으므로 옳다.\n③ $x$는 소수점 아래가 끝없이 이어지는 무한소수이고 $\\dfrac{1938}{900}$과 같이 분수로 나타낼 수 있으므로 유리수이다. (옳음)\n④ $2.15333\\cdots$는 $2.15\\dot{3}$으로 나타내므로 옳다.\n⑤ $100x - 10x$의 값은 $193.8$인데 보기에는 $193.3$으로 되어 있으므로 옳지 않다.\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -111,7 +111,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_PERIOD_LENGTH_SUM",
-    "solution": "각 분수를 나눗셈하여 순환마디를 구하고 그 길이를 센다. 1단계: $\\dfrac{1}{3}$을 소수로 나타낸다. $$ \\frac{1}{3} = 0.333\\cdots = 0.\\dot{3} $$ 순환마디는 $3$으로 숫자의 개수는 $1$개이다. $$ x = 1 $$ 2단계: $\\dfrac{4}{27}$를 소수로 나타낸다. $$ 4 \\div 27 = 0.148148148\\cdots = 0.\\dot{1}4\\dot{8} $$ 순환마디는 $148$로 숫자의 개수는 $3$개이다. $$ y = 3 $$ 3단계: $x + y$의 값을 계산한다. $$ x + y = 1 + 3 = 4 $$ 따라서 정답은 ①이다.",
+    "solution": "두 분수를 소수로 나타내어 순환마디의 숫자 개수를 각각 구한다.\n$$ \\begin{aligned} \\dfrac{1}{3} &= 0.333\\cdots \\\\ &= 0.\\dot{3} \\end{aligned} $$\n순환마디는 $3$이므로 $x = 1$이다.\n$$ \\begin{aligned} 4 \\div 27 &= 0.148148148\\cdots \\\\ &= 0.\\dot{1}4\\dot{8} \\end{aligned} $$\n순환마디는 $148$이므로 $y = 3$이다.\n$$ \\begin{aligned} x + y &= 1 + 3 \\\\ &= 4 \\end{aligned} $$\n따라서 정답은 ①이다.",
     "points": 4
   },
   {
@@ -137,18 +137,18 @@ window.questionBank = [
     "wide": false,
     "content": "분수 $\\dfrac{5}{13}$를 소수로 나타낼 때 소수점 아래 100번째 자리의 숫자를 구하면? [4점]",
     "choices": [
+      "$1$",
       "$3$",
-      "$8$",
       "$4$",
       "$6$",
-      "$1$"
+      "$8$"
     ],
     "answer": "④",
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_NTH_DIGIT",
-    "solution": "분수를 소수로 변환하여 순환마디를 구한 후 주기를 이용한다. 1단계: $5 \\div 13$의 나눗셈을 수행한다. $$ \\frac{5}{13} = 0.384615384615\\cdots = 0.\\dot{3}8461\\dot{5} $$ 순환마디는 $384615$이며 순환마디의 길이는 $6$이다. 2단계: $100$을 순환마디의 길이 $6$으로 나눈 나머지를 구한다. $$ 100 = 6 \\times 16 + 4 $$ 나머지가 $4$이므로 소수점 아래 100번째 자리의 숫자는 순환마디 $384615$의 $4$번째 숫자와 같다. 순환마디의 $4$번째 숫자는 $6$이다. 따라서 정답은 ④이다.",
+    "solution": "$5 \\div 13$을 계산하여 순환마디를 찾고 그 주기로 소수점 아래 100번째 자리의 숫자를 구한다.\n$$ \\begin{aligned} \\dfrac{5}{13} &= 0.384615384615\\cdots \\\\ &= 0.\\dot{3}8461\\dot{5} \\end{aligned} $$\n순환마디는 $384615$이고 길이는 $6$이다.\n$$ 100 = 6 \\times 16 + 4 $$\n나머지가 $4$이므로 100번째 자리의 숫자는 순환마디의 $4$번째 숫자와 같다.\n순환마디 $384615$의 $4$번째 숫자는 $6$이다.\n따라서 정답은 ④이다.",
     "points": 4
   },
   {
@@ -185,7 +185,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "FINITE_DECIMAL_DIVISOR_SUM",
-    "solution": "분수를 기약분수로 나타내어 분모의 소인수 조건을 분석한다. 1단계: 분모와 분자를 소인수분해하여 약분한다. $$ \\frac{18}{75 \\times x} = \\frac{2 \\times 3^2}{(3 \\times 5^2) \\times x} = \\frac{2 \\times 3}{5^2 \\times x} = \\frac{6}{25x} $$ 2단계: $\\dfrac{6}{25x}$가 유한소수가 되려면 기약분수의 분모의 소인수가 $2$ 또는 $5$뿐이어야 한다. 이미 분모에 $5^2$이 있으므로, 한 자리 자연수 $x$는 소인수로 $2$와 $5$만을 갖거나, 분자의 소인수 $3$과 약분되어 분모에 소인수 $3$이 남지 않아야 한다. 즉, $x$의 소인수 중 $2$와 $5$ 이외의 소인수는 분자의 $3$과 최대 한 번 약분될 수 있는 $3$뿐이다. 3단계: 한 자리 자연수 $x \\in {1, 2, 3, 4, 5, 6, 7, 8, 9}$를 각각 검토한다.\n\n\n* $x = 1 = 1$ (유한소수 가능)\n* $x = 2 = 2$ (유한소수 가능)\n* $x = 3$: 분자의 $3$과 약분되어 분모에 $2, 5$만 남음 (유한소수 가능)\n* $x = 4 = 2^2$ (유한소수 가능)\n* $x = 5 = 5$ (유한소수 가능)\n* $x = 6 = 2 \\times 3$: $3$이 분자와 약분되어 분모에 $2$만 남음 (유한소수 가능)\n* $x = 7$: 분모에 소인수 $7$이 남아 불가 (순환소수)\n* $x = 8 = 2^3$ (유한소수 가능)\n* $x = 9 = 3^2$: 분자의 $3$과 약분되어도 분모에 $3$이 남아 불가 (순환소수) 따라서 가능한 한 자리 자연수 $x$는 $1, 2, 3, 4, 5, 6, 8$이다. 4단계: 모든 $x$의 합을 구한다. $$ 1 + 2 + 3 + 4 + 5 + 6 + 8 = 29 $$ 그러므로 정답은 ③이다.",
+    "solution": "$\\dfrac{18}{75x}$를 약분하여 분모의 소인수를 확인하고 유한소수가 되는 한 자리 자연수 $x$를 모두 찾는다.\n$$ \\begin{aligned} \\dfrac{18}{75x} &= \\dfrac{2 \\times 3^2}{3 \\times 5^2 \\times x} \\\\ &= \\dfrac{2 \\times 3}{5^2 \\times x} \\\\ &= \\dfrac{6}{25x} \\end{aligned} $$\n유한소수가 되려면 기약분수의 분모에 소인수 $2$와 $5$만 남아야 한다.\n분모 $25x$에서 $2$와 $5$ 이외의 소인수는 분자 $6$의 소인수 $3$과 약분되어야 한다.\n한 자리 자연수 $x$는 1, 2, 3, 4, 5, 6, 7, 8, 9이다.\n$x = 1$이면 분모가 $25 = 5^2$이므로 유한소수이다.\n$x = 2$이면 분모가 $50 = 2 \\times 5^2$이므로 유한소수이다.\n$x = 3$이면 분모의 $3$이 분자의 $3$과 약분되어 분모가 $25$가 되므로 유한소수이다.\n$x = 4$이면 분모가 $100 = 2^2 \\times 5^2$이므로 유한소수이다.\n$x = 5$이면 분모가 $125 = 5^3$이므로 유한소수이다.\n$x = 6$이면 분모의 $3$이 분자의 $3$과 약분되어 분모가 $50$이 되므로 유한소수이다.\n$x = 7$이면 분모에 소인수 $7$이 남으므로 순환소수이다.\n$x = 8$이면 분모가 $200 = 2^3 \\times 5^2$이므로 유한소수이다.\n$x = 9$이면 분모의 $3$ 하나만 약분되고 $3$이 남으므로 순환소수이다.\n가능한 $x$는 1, 2, 3, 4, 5, 6, 8이다.\n$$ 1 + 2 + 3 + 4 + 5 + 6 + 8 = 29 $$\n따라서 정답은 ③이다.",
     "points": 5
   },
   {
@@ -222,7 +222,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "EXPONENT_LAWS_COMPARATIVE_AUDIT",
-    "solution": "지수법칙을 적용하여 각 선지의 식을 밑 $a$의 단일 거듭제곱으로 정리한다. $$ \\begin{aligned} \\text{① } & a^5 \\times a^3 = a^{5+3} = a^8 \\ \\text{② } & a^{16} \\div a^2 = a^{16-2} = a^{14} \\ \\text{③ } & (a^2)^4 = a^{2 \\times 4} = a^8 \\ \\text{④ } & (ab)^4 \\div \\left(\\frac{b}{a}\\right)^4 = a^4b^4 \\div \\frac{b^4}{a^4} = a^4b^4 \\times \\frac{a^4}{b^4} = a^{4+4} = a^8 \\ \\text{⑤ } & a \\times a^3 \\times a^4 = a^{1+3+4} = a^8 \\end{aligned} $$ ①, ③, ④, ⑤의 계산 결과는 모두 $a^8$이지만, ②만 $a^{14}$이다. 따라서 나머지 넷과 다른 하나는 ②이다.",
+    "solution": "지수법칙으로 보기 ①~⑤를 각각 계산하여 값이 나머지 넷과 다른 하나를 찾는다.\n① 지수를 더한다.\n$$ \\begin{aligned} a^5 \\times a^3 &= a^{5+3} \\\\ &= a^8 \\end{aligned} $$\n①은 $a^8$이다.\n② 지수를 뺀다.\n$$ \\begin{aligned} a^{16} \\div a^2 &= a^{16-2} \\\\ &= a^{14} \\end{aligned} $$\n②는 $a^{14}$이다.\n③ 지수를 곱한다.\n$$ \\begin{aligned} (a^2)^4 &= a^{2 \\times 4} \\\\ &= a^8 \\end{aligned} $$\n③은 $a^8$이다.\n④ 나눗셈을 역수의 곱셈으로 바꾸어 정리한다.\n$$ \\begin{aligned} (ab)^4 \\div \\left(\\dfrac{b}{a}\\right)^4 &= a^4b^4 \\div \\dfrac{b^4}{a^4} \\\\ &= a^4b^4 \\times \\dfrac{a^4}{b^4} \\\\ &= a^8 \\end{aligned} $$\n④는 $a^8$이다.\n⑤ 지수를 모두 더한다.\n$$ \\begin{aligned} a \\times a^3 \\times a^4 &= a^{1+3+4} \\\\ &= a^8 \\end{aligned} $$\n⑤는 $a^8$이다.\n따라서 정답은 ②이다.",
     "points": 4
   },
   {
@@ -259,7 +259,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "BINARY_DATA_UNIT_EXPONENT",
-    "solution": "주어진 단위 환산 관계를 거듭제곱의 곱셈으로 차례대로 연결한다. 1단계: $1\\text{ MB}$를 $\\text{bit}$ 단위로 변환한다. $$ \\begin{aligned} 1\\text{ MB} &= 2^{10}\\text{ KB} \\ &= 2^{10} \\times 2^{10}\\text{ B} = 2^{20}\\text{ B} \\ &= 2^{20} \\times 2^3\\text{ bit} = 2^{23}\\text{ bit} \\end{aligned} $$ 2단계: $8\\text{ MB}$를 밑이 $2$인 거듭제곱으로 나타낸다. $$ 8 = 2^3 $$ 따라서 $8\\text{ MB}$는 다음과 같다. $$ 8\\text{ MB} = 2^3 \\times 1\\text{ MB} = 2^3 \\times 2^{23}\\text{ bit} = 2^{3 + 23}\\text{ bit} = 2^{26}\\text{ bit} $$ 그러므로 정답은 ①이다.",
+    "solution": "단위 사이의 관계를 거듭제곱의 곱셈으로 이어 $8\\,\\text{MB}$를 비트로 나타낸다.\n$$ \\begin{aligned} 1\\,\\text{MB} &= 2^{10}\\,\\text{KB} \\\\ &= 2^{10} \\times 2^{10}\\,\\text{B} \\\\ &= 2^{20}\\,\\text{B} \\\\ &= 2^{20} \\times 2^3\\,\\text{bit} \\\\ &= 2^{23}\\,\\text{bit} \\end{aligned} $$\n$$ 8 = 2^3 $$\n$$ \\begin{aligned} 8\\,\\text{MB} &= 2^3 \\times 2^{23}\\,\\text{bit} \\\\ &= 2^{3+23}\\,\\text{bit} \\\\ &= 2^{26}\\,\\text{bit} \\end{aligned} $$\n따라서 정답은 ①이다.",
     "points": 4
   },
   {
@@ -296,7 +296,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POWER_BASE_CHANGE_REPRESENTATION",
-    "solution": "밑 $16$을 소인수 $2$의 거듭제곱으로 변형하여 $2^5 = A$와 연결한다. 1단계: $16$은 $2^4$이므로 $16^5$의 지수를 변형한다. $$ 16^5 = (2^4)^5 = 2^{4 \\times 5} = 2^{20} $$ 2단계: $2^{20}$을 $2^5$의 거듭제곱 형태로 변형한다. $$ 2^{20} = (2^5)^4 $$ 3단계: $2^5 = A$를 대입한다. $$ 16^5 = A^4 $$ 따라서 역수를 취하면 다음과 같다. $$ \\frac{1}{16^5} = \\frac{1}{A^4} $$ 그러므로 정답은 ⑤이다.",
+    "solution": "밑 $16$을 $2$의 거듭제곱으로 고친 뒤 $2^5 = A$를 대입한다.\n$$ \\begin{aligned} 16^5 &= (2^4)^5 \\\\ &= 2^{4 \\times 5} \\\\ &= 2^{20} \\\\ &= (2^5)^4 \\\\ &= A^4 \\end{aligned} $$\n$$ \\dfrac{1}{16^5} = \\dfrac{1}{A^4} $$\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -333,7 +333,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "COMPOSITE_MONOMIAL_SYSTEM",
-    "solution": "좌변을 지수법칙을 이용하여 정리한 후 우변의 계수 및 지수와 비교한다. 1단계: 좌변의 거듭제곱과 곱셈, 나눗셈을 전개한다. $$ (-3x^A y^2)^2 = (-3)^2 (x^A)^2 (y^2)^2 = 9 x^{2A} y^4 $$ $$ 9 x^{2A} y^4 \\times x^4 y^3 = 9 x^{2A + 4} y^{4 + 3} = 9 x^{2A + 4} y^7 $$ $$ \\div \\left(\\frac{x}{y^3}\\right)^B = \\div \\frac{x^B}{y^{3B}} = \\times \\frac{y^{3B}}{x^B} $$ 따라서 좌변은 다음과 같다. $$ 9 x^{2A + 4 - B} y^{7 + 3B} $$ 2단계: 우변 $C x^7 y^{16}$과 계수 및 각 문자의 지수를 비교한다.\n\n\n* 계수 비교: $$ C = 9 $$\n* $y$의 지수 비교: $$ 7 + 3B = 16 \\implies 3B = 9 \\implies B = 3 $$\n* $x$의 지수 비교: $$ 2A + 4 - B = 7 \\implies 2A + 4 - 3 = 7 \\implies 2A + 1 = 7 \\implies 2A = 6 \\implies A = 3 $$ 3단계: $A + B + C$의 값을 구한다. $$ A + B + C = 3 + 3 + 9 = 15 $$ 따라서 정답은 ③이다.",
+    "solution": "좌변을 지수법칙으로 정리하여 계수와 문자의 지수를 우변과 하나씩 비교한다.\n먼저 $(-3x^A y^2)^2$을 전개한다.\n$$\\begin{aligned} (-3x^A y^2)^2 &= (-3)^2 \\times (x^A)^2 \\times (y^2)^2 \\\\ &= 9x^{2A}y^4 \\end{aligned}$$\n여기에 $x^4y^3$을 곱한다.\n$$\\begin{aligned} 9x^{2A}y^4 \\times x^4y^3 &= 9x^{2A+4}y^{4+3} \\\\ &= 9x^{2A+4}y^7 \\end{aligned}$$\n나누는 식 $\\left(\\dfrac{x}{y^3}\\right)^B$를 정리한다.\n$$\\left(\\dfrac{x}{y^3}\\right)^B = \\dfrac{x^B}{y^{3B}}$$\n나누는 것은 역수를 곱하는 것이므로 좌변 전체는 다음과 같다.\n$$\\begin{aligned} 9x^{2A+4}y^7 \\div \\dfrac{x^B}{y^{3B}} &= 9x^{2A+4}y^7 \\times \\dfrac{y^{3B}}{x^B} \\\\ &= 9x^{2A+4-B}y^{7+3B} \\end{aligned}$$\n우변 $Cx^7y^{16}$과 계수를 비교한다.\n$$C = 9$$\n$y$의 지수를 비교한다.\n$$7 + 3B = 16$$\n$$3B = 9$$\n$$B = 3$$\n$x$의 지수를 비교한다.\n$$2A + 4 - 3 = 7$$\n$$2A + 1 = 7$$\n$$2A = 6$$\n$$A = 3$$\n세 상수의 합을 구한다.\n$$A + B + C = 3 + 3 + 9 = 15$$\n따라서 정답은 ③이다.",
     "points": 4
   },
   {
@@ -370,7 +370,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_DISTRIBUTIVE_COEFFICIENT_SUM",
-    "solution": "분배법칙으로 괄호를 풀고 동류항끼리 모아 정리한다. $$ \\begin{aligned} a(6a - 4b) - a(8a - 11b) &= (6a^2 - 4ab) - (8a^2 - 11ab) \\ &= 6a^2 - 4ab - 8a^2 + 11ab \\ &= (6 - 8)a^2 + (-4 + 11)ab \\ &= -2a^2 + 7ab \\end{aligned} $$ 따라서 $a^2$의 계수 $A = -2$, $ab$의 계수 $B = 7$이다. 두 계수의 합을 구하면 $$ A + B = -2 + 7 = 5 $$ 그러므로 정답은 ④이다.",
+    "solution": "분배법칙으로 괄호를 풀어 동류항끼리 정리한 뒤 $a^2$의 계수와 $ab$의 계수를 읽는다.\n앞의 괄호와 뒤의 괄호를 각각 전개한다.\n$$\\begin{aligned} a(6a - 4b) - a(8a - 11b) &= (6a^2 - 4ab) - (8a^2 - 11ab) \\\\ &= 6a^2 - 4ab - 8a^2 + 11ab \\end{aligned}$$\n동류항끼리 모은다.\n$$\\begin{aligned} 6a^2 - 4ab - 8a^2 + 11ab &= (6 - 8)a^2 + (-4 + 11)ab \\\\ &= -2a^2 + 7ab \\end{aligned}$$\n$a^2$의 계수는 $-2$이므로 $A = -2$이다.\n$ab$의 계수는 $7$이므로 $B = 7$이다.\n두 계수의 합을 구한다.\n$$A + B = -2 + 7 = 5$$\n따라서 정답은 ④이다.",
     "points": 4
   },
   {
@@ -407,7 +407,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_ISOLATION_INVERSE_OP",
-    "solution": "등식의 성질과 역연산을 이용하여 $\\square$에 대하여 식을 푼다. 1단계: $\\square$를 구하기 위해 양변에 $x^2y$를 곱하고 $\\dfrac{3}{2}xy$로 나눈다. $$ \\begin{aligned} \\square &= (12x^2y - 18xy^2) \\times x^2y \\div \\left(\\frac{3}{2}xy\\right) \\ &= (12x^2y - 18xy^2) \\times x^2y \\times \\frac{2}{3xy} \\end{aligned} $$ 2단계: 먼저 $x^2y \\times \\dfrac{2}{3xy}$를 계산한다. $$ \\frac{2x^2y}{3xy} = \\frac{2x}{3} $$ 3단계: 다항식에 분배하여 곱한다. $$ \\begin{aligned} \\square &= (12x^2y - 18xy^2) \\times \\frac{2x}{3} \\ &= 12x^2y \\times \\frac{2x}{3} - 18xy^2 \\times \\frac{2x}{3} \\ &= 4 \\times 2 x^{2+1}y - 6 \\times 2 x^{1+1}y^2 \\ &= 8x^3y - 12x^2y^2 \\end{aligned} $$ 따라서 알맞은 식은 $8x^3y - 12x^2y^2$이므로 정답은 ①이다.",
+    "solution": "$\\square$가 들어 있는 곱셈과 나눗셈을 거꾸로 계산하여 $\\square$에 알맞은 식을 구한다.\n주어진 등식의 양변에 $x^2y$를 곱한다.\n$$\\dfrac{3}{2}xy \\times (\\square) = (12x^2y - 18xy^2) \\times x^2y$$\n양변을 $\\dfrac{3}{2}xy$로 나눈다.\n$$\\begin{aligned} \\square &= (12x^2y - 18xy^2) \\times x^2y \\div \\dfrac{3}{2}xy \\\\ &= (12x^2y - 18xy^2) \\times x^2y \\times \\dfrac{2}{3xy} \\end{aligned}$$\n$x^2y \\times \\dfrac{2}{3xy}$를 먼저 계산한다.\n$$\\begin{aligned} x^2y \\times \\dfrac{2}{3xy} &= \\dfrac{2x^2y}{3xy} \\\\ &= \\dfrac{2x}{3} \\end{aligned}$$\n다항식의 각 항에 $\\dfrac{2x}{3}$을 분배하여 곱한다.\n$$\\begin{aligned} \\square &= (12x^2y - 18xy^2) \\times \\dfrac{2x}{3} \\\\ &= 12x^2y \\times \\dfrac{2x}{3} - 18xy^2 \\times \\dfrac{2x}{3} \\\\ &= 8x^3y - 12x^2y^2 \\end{aligned}$$\n따라서 정답은 ①이다.",
     "points": 4
   },
   {
@@ -436,7 +436,7 @@ window.questionBank = [
       "$-\\dfrac{16}{y} + \\dfrac{32}{x}$",
       "$-\\dfrac{8}{y} + \\dfrac{16}{x}$",
       "$\\dfrac{16}{y} - \\dfrac{32}{x}$",
-      "$\\dfrac{32}{x} - \\dfrac{16}{y}$",
+      "$\\dfrac{32}{y} - \\dfrac{16}{x}$",
       "$16x - 32y$"
     ],
     "answer": "③",
@@ -444,7 +444,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "WRONG_OPERATION_CORRECT_EXPRESSION",
-    "solution": "어떤 다항식을 먼저 구한 후 원래의 나눗셈을 바르게 수행한다. 1단계: 어떤 다항식을 $P$라 하자. 잘못하여 곱한 결과가 $4x^2y - 8xy^2$이므로 $$ P \\times \\left(-\\frac{1}{2}xy\\right) = 4x^2y - 8xy^2 $$ 양변을 $-\\dfrac{1}{2}xy$로 나눈다. $$ \\begin{aligned} P &= (4x^2y - 8xy^2) \\div \\left(-\\frac{1}{2}xy\\right) \\ &= (4x^2y - 8xy^2) \\times \\left(-\\frac{2}{xy}\\right) \\ &= -8x + 16y \\end{aligned} $$ 2단계: 바르게 계산한 식을 구한다. $P$를 원래 나누어야 했던 $-\\dfrac{1}{2}xy$로 나눈다. $$ \\begin{aligned} P \\div \\left(-\\frac{1}{2}xy\\right) &= (-8x + 16y) \\times \\left(-\\frac{2}{xy}\\right) \\ &= \\frac{(-8x) \\times (-2)}{xy} + \\frac{16y \\times (-2)}{xy} \\ &= \\frac{16x}{xy} - \\frac{32y}{xy} \\ &= \\frac{16}{y} - \\frac{32}{x} \\end{aligned} $$ 따라서 바르게 계산한 식은 $\\dfrac{16}{y} - \\dfrac{32}{x}$이므로 정답은 ③이다.",
+    "solution": "잘못 곱한 결과에서 어떤 다항식을 먼저 구하고, 그 식을 원래 나누어야 했던 식으로 나눈다.\n어떤 다항식을 $P$라 하자.\n$$P \\times \\left(-\\dfrac{1}{2}xy\\right) = 4x^2y - 8xy^2$$\n양변을 $-\\dfrac{1}{2}xy$로 나누어 $P$를 구한다.\n$$\\begin{aligned} P &= (4x^2y - 8xy^2) \\div \\left(-\\dfrac{1}{2}xy\\right) \\\\ &= (4x^2y - 8xy^2) \\times \\left(-\\dfrac{2}{xy}\\right) \\\\ &= -8x + 16y \\end{aligned}$$\n이제 $P$를 $-\\dfrac{1}{2}xy$로 바르게 나눈다.\n$$\\begin{aligned} P \\div \\left(-\\dfrac{1}{2}xy\\right) &= (-8x + 16y) \\times \\left(-\\dfrac{2}{xy}\\right) \\\\ &= \\dfrac{(-8x) \\times (-2)}{xy} + \\dfrac{16y \\times (-2)}{xy} \\\\ &= \\dfrac{16x}{xy} - \\dfrac{32y}{xy} \\\\ &= \\dfrac{16}{y} - \\dfrac{32}{x} \\end{aligned}$$\n따라서 정답은 ③이다.",
     "points": 4
   },
   {
@@ -481,7 +481,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_BY_MONOMIAL_SUBTRACTION",
-    "solution": "두 분수식을 각각 항별로 약분하여 정리한 후 뺄셈을 수행한다. 1단계: 첫 번째 분수식을 계산한다. $$ \\frac{4x - 2x^3}{x} = \\frac{4x}{x} - \\frac{2x^3}{x} = 4 - 2x^2 $$ 2단계: 두 번째 분수식을 계산한다. $$ \\frac{9x^3 - 7x^5}{x^3} = \\frac{9x^3}{x^3} - \\frac{7x^5}{x^3} = 9 - 7x^2 $$ 3단계: 두 식의 뺄셈을 괄호를 풀어 계산한다. $$ \\begin{aligned} (4 - 2x^2) - (9 - 7x^2) &= 4 - 2x^2 - 9 + 7x^2 \\ &= (-2 + 7)x^2 + (4 - 9) \\ &= 5x^2 - 5 \\end{aligned} $$ 따라서 바르게 계산한 식은 $5x^2 - 5$이므로 정답은 ②이다.",
+    "solution": "두 분수식을 각각 항별로 나누어 간단히 한 뒤 뺄셈을 계산한다.\n첫 번째 분수식을 항별로 나눈다.\n$$\\begin{aligned} \\dfrac{4x - 2x^3}{x} &= \\dfrac{4x}{x} - \\dfrac{2x^3}{x} \\\\ &= 4 - 2x^2 \\end{aligned}$$\n두 번째 분수식을 항별로 나눈다.\n$$\\begin{aligned} \\dfrac{9x^3 - 7x^5}{x^3} &= \\dfrac{9x^3}{x^3} - \\dfrac{7x^5}{x^3} \\\\ &= 9 - 7x^2 \\end{aligned}$$\n두 식을 빼면서 뒤의 괄호를 푼다.\n$$\\begin{aligned} (4 - 2x^2) - (9 - 7x^2) &= 4 - 2x^2 - 9 + 7x^2 \\\\ &= (-2 + 7)x^2 + (4 - 9) \\\\ &= 5x^2 - 5 \\end{aligned}$$\n따라서 정답은 ②이다.",
     "points": 4
   },
   {
@@ -518,7 +518,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "CYLINDER_VOLUME_RATIO_ALGEBRA",
-    "solution": "원기둥의 부피 공식 $V = \\pi r^2 h$를 적용하여 두 원기둥의 부피의 비를 구한다. 1단계: 원기둥 A의 밑면의 반지름의 길이를 $r$, 높이를 $h$라 하자. 원기둥 A의 부피는 다음과 같다. $$ V_A = \\pi r^2 h $$ 2단계: 원기둥 B의 반지름과 높이를 $r, h$로 나타내어 부피를 구한다. 원기둥 B의 반지름은 $2r$, 높이는 $\\dfrac{1}{3}h$이므로 $$ V_B = \\pi (2r)^2 \\times \\left(\\frac{1}{3}h\\right) = \\pi \\times 4r^2 \\times \\frac{1}{3}h = \\frac{4}{3}\\pi r^2 h = \\frac{4}{3}V_A $$ 3단계: 원기둥 A의 부피가 원기둥 B의 부피의 몇 배인지 계산한다. $$ V_A = \\frac{3}{4}V_B $$ 따라서 원기둥 A의 부피는 원기둥 B의 부피의 $\\dfrac{3}{4}$배이므로 정답은 ⑤이다.",
+    "solution": "두 원기둥의 밑넓이와 높이의 관계를 부피 식에 넣어 A의 부피가 B의 부피의 몇 배인지 구한다.\n원기둥 A의 밑넓이를 $S$, 높이를 $h$라 하자.\n$$V_A = S \\times h$$\n원기둥 B의 밑면의 반지름의 길이는 A의 $2$배이다.\n반지름이 $2$배이면 밑넓이는 $4$배이다.\n$$2^2 = 4$$\n원기둥 B의 높이는 A의 $\\dfrac{1}{3}$배이므로 B의 부피는 다음과 같다.\n$$\\begin{aligned} V_B &= 4S \\times \\dfrac{1}{3}h \\\\ &= \\dfrac{4}{3}Sh \\end{aligned}$$\n$Sh = V_A$이므로 다음과 같다.\n$$V_B = \\dfrac{4}{3}V_A$$\n양변에 $\\dfrac{3}{4}$을 곱하여 $V_A$만 남긴다.\n$$V_A = \\dfrac{3}{4}V_B$$\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -542,7 +542,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "content": "다음 <보기> 중에서 일차부등식이 아닌 것만을 있는 대로 고른 것은? [3점]\n\n\n<보기> ㄱ. $9 - 3x = 2x - 1$ ㄴ. $3x + 4 > 0$ ㄷ. $x > 7$ ㄹ. $2x^2 - x \\ge 2x^2 + 3x - 5$ ㅁ. $-\\dfrac{1}{2x} - \\dfrac{3}{5} \\ge \\dfrac{1}{5x}$",
+    "content": "다음 <보기> 중에서 일차부등식이 아닌 것만을 있는 대로 고른 것은? [3점]\n\n\n<보기>\nㄱ. $9 - 3x = 2x - 1$\nㄴ. $3x + 4 > 0$\nㄷ. $x > 7$\nㄹ. $2x^2 - x \\ge 2x^2 + 3x - 5$\nㅁ. $-\\dfrac{1}{2x} - \\dfrac{3}{5} \\ge \\dfrac{1}{5x}$",
     "choices": [
       "ㄱ, ㄴ",
       "ㄱ, ㅁ",
@@ -555,7 +555,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "LINEAR_INEQUALITY_DEFINITION_CHECK",
-    "solution": "부등식을 모든 항을 좌변으로 이항하여 정리했을 때, $(\\text{일차식}) > 0, < 0, \\ge 0, \\le 0$의 형태가 되는지를 점검한다. $$ \\begin{aligned} \\text{ㄱ: } & 9 - 3x = 2x - 1 \\implies -5x + 10 = 0 \\ & \\text{부등호가 없고 등호만 있는 일차방정식이다. (일차부등식 아님)} \\ \\text{ㄴ: } & 3x + 4 > 0 \\ & \\text{좌변이 일차식인 일차부등식이다. (일차부등식 맞음)} \\ \\text{ㄷ: } & x - 7 > 0 \\ & \\text{좌변이 일차식인 일차부등식이다. (일차부등식 맞음)} \\ \\text{ㄹ: } & 2x^2 - x \\ge 2x^2 + 3x - 5 \\ & 2x^2 - x - 2x^2 - 3x + 5 \\ge 0 \\implies -4x + 5 \\ge 0 \\ & \\text{이차항이 소거되고 일차항이 남으므로 일차부등식이다. (일차부등식 맞음)} \\ \\text{ㅁ: } & -\\frac{1}{2x} - \\frac{3}{5} \\ge \\frac{1}{5x} \\ & \\text{미지수 } x\\text{가 분모에 있으므로 다항식이 아니며, 일차부등식이 아니다. (일차부등식 아님)} \\end{aligned} $$ 따라서 일차부등식이 아닌 것은 ㄱ, ㅁ이므로 정답은 ②이다.",
+    "solution": "각 보기를 정리한 뒤 좌변이 $x$에 대한 일차식인지 확인하여 일차부등식이 아닌 것을 고른다.\nㄱ. $9 - 3x = 2x - 1$은 부등호가 없고 등호만 있으므로 일차부등식이 아니다.\nㄴ. $3x + 4 > 0$은 좌변이 일차식이므로 일차부등식이다.\nㄷ. $x > 7$은 좌변이 일차식이므로 일차부등식이다.\nㄹ. $x^2$이 있는 항을 좌변으로 옮긴다.\n$$2x^2 - x - 2x^2 - 3x + 5 \\ge 0$$\n$x^2$이 있는 항이 지워지므로\n$$-4x + 5 \\ge 0$$\n좌변이 일차식이므로 일차부등식이다.\nㅁ. $-\\dfrac{1}{2x} - \\dfrac{3}{5} \\ge \\dfrac{1}{5x}$는 미지수 $x$가 분모에 있으므로 일차부등식이 아니다.\n일차부등식이 아닌 것은 ㄱ, ㅁ이다.\n따라서 정답은 ②이다.",
     "points": 3
   },
   {
@@ -592,7 +592,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "VERBAL_TO_INEQUALITY_MODELING",
-    "solution": "문장의 수량 관계를 부등호 및 사칙연산 기호로 옳게 나타내었는지 검토한다. $$ \\begin{aligned} \\text{① } & x\\text{에서 } 4\\text{를 뺀 값: } x - 4, \\quad x\\text{의 } 3\\text{배보다 작다: } < 3x \\implies x - 4 < 3x \\text{ (옳음)} \\ \\text{② } & x\\text{가 } 120 \\text{ 이상: } x \\ge 120 \\text{ (옳음)} \\ \\text{③ } & 1\\text{개에 } 800\\text{원인 빵 } x\\text{개의 가격: } 800x, \\quad 5000\\text{원 이하: } \\le 5000 \\implies 800x \\le 5000 \\text{ (옳음)} \\ \\text{④ } & 1\\text{자루에 } 1{,}200\\text{원인 볼펜 } 5\\text{자루의 값은 } 1200 \\times 5\\text{원이다.} \\ & \\text{필통 값 } 4{,}000\\text{원을 더한 총금액은 } 1200 \\times 5 + 4000\\text{이어야 한다.} \\ & \\text{선지에서는 } 1200 + 5 + 4000\\text{으로 곱셈을 덧셈으로 잘못 표기하였다. (옳지 않음)} \\ \\text{⑤ } & x\\text{에서 } 5\\text{를 사용하고 남은 길이: } x - 5, \\quad 3\\text{보다 길다: } > 3 \\implies x - 5 > 3 \\text{ (옳음)} \\end{aligned} $$ 따라서 옳지 않은 것은 ④이다.",
+    "solution": "각 문장을 부등식으로 옮긴 결과가 보기의 식과 같은지 확인하여 옳지 않은 것을 고른다.\n①. $x$에서 $4$를 뺀 값이 $x$의 $3$배보다 작으므로\n$$x - 4 < 3x$$\n보기와 같으므로 옳다.\n②. 탑승객의 키 $x\\,\\text{cm}$가 $120\\,\\text{cm}$ 이상이므로\n$$x \\ge 120$$\n보기와 같으므로 옳다.\n③. $1$개에 $800$원인 빵 $x$개의 가격이 $5000$원 이하이므로\n$$800x \\le 5000$$\n보기와 같으므로 옳다.\n④. 볼펜 $5$자루의 값은 $1200 \\times 5$원이고, 필통 값 $4000$원을 더한 금액이 $15000$원보다 작으므로\n$$1200 \\times 5 + 4000 < 15000$$\n보기는 $1200 + 5 + 4000 < 15000$으로 곱셈을 덧셈으로 잘못 나타내었으므로 옳지 않다.\n⑤. 길이가 $x\\,\\text{m}$인 끈에서 $5\\,\\text{m}$를 사용한 남은 길이가 $3\\,\\text{m}$보다 길므로\n$$x - 5 > 3$$\n보기와 같으므로 옳다.\n따라서 정답은 ④이다.",
     "points": 4
   },
   {
@@ -629,7 +629,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "DECIMAL_INEQUALITY_MIN_INTEGER",
-    "solution": "소수 계수를 정수로 변형하여 부등식을 푼다. 1단계: 양변에 $10$을 곱한다. $$ 20 - 5x \\le 5 $$ 2단계: 상수항 $20$을 우변으로 이항한다. $$ -5x \\le 5 - 20 \\implies -5x \\le -15 $$ 3단계: 양변을 음수 $-5$로 나누면 부등호의 방향이 바뀐다. $$ x \\ge \\frac{-15}{-5} \\implies x \\ge 3 $$ 4단계: $x \\ge 3$을 만족시키는 가장 작은 정수는 $3$이다. 따라서 정답은 ③이다.",
+    "solution": "소수 계수를 정수로 고쳐 일차부등식을 풀고, 그 해에 속하는 가장 작은 정수를 찾는다.\n$$ 2 - 0.5x \\le 0.5 $$\n양변에 $10$을 곱하면\n$$ 20 - 5x \\le 5 $$\n상수항 $20$을 우변으로 이항하면\n$$ -5x \\le 5 - 20 $$\n$$ -5x \\le -15 $$\n양변을 음수 $-5$로 나누면 부등호의 방향이 바뀌므로\n$$ \\begin{aligned} x &\\ge \\dfrac{-15}{-5} \\\\ &= 3 \\end{aligned} $$\n$x \\ge 3$을 만족시키는 정수 중에서 가장 작은 것은 $3$이다.\n따라서 정답은 ③이다.",
     "points": 4
   },
   {
@@ -666,7 +666,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_PROPERTIES_TRANSFORMATION",
-    "solution": "부등식의 양변에 음수를 곱하거나 나눌 때만 부등호의 방향이 바뀐다는 기본 성질을 검토한다. $$ \\begin{aligned} \\text{① } & a < b\\text{의 양변에서 } 4\\text{를 빼면 } a - 4 < b - 4 \\text{ (참)} \\ \\text{② } & a < b\\text{의 양변에 } 4\\text{를 곱하고 } 3\\text{을 더하면 } 4a + 3 < 4b + 3 \\text{ (참)} \\ \\text{③ } & a < b\\text{의 양변을 음수 } -3\\text{으로 나누면 부등호 방향이 바뀌어 } -\\frac{a}{3} > -\\frac{b}{3} \\text{ (참)} \\ \\text{④ } & a < b\\text{의 양변에 } -1\\text{을 곱하면 } -a > -b, \\quad 7\\text{을 더하면 } 7 - a > 7 - b \\text{ (참)} \\ \\text{⑤ } & a < b\\text{의 양변에 } 3\\text{을 더하면 } a + 3 < b + 3, \\ & \\text{양변을 음수 } -2\\text{로 나누면 부등호 방향이 바뀌어 } -\\frac{a + 3}{2} > -\\frac{b + 3}{2}\\text{이어야 한다.} \\ & \\text{선지에서는 부등호 방향을 바꾸지 않았으므로 옳지 않다. (거짓)} \\end{aligned} $$ 따라서 옳지 않은 것은 ⑤이다.",
+    "solution": "$a < b$일 때 성립하는 부등식의 성질을 보기마다 확인하여 옳지 않은 것을 찾는다.\n부등식의 양변에 같은 수를 더하거나 빼도 부등호의 방향은 바뀌지 않는다.\n부등식의 양변에 음수를 곱하거나 나누면 부등호의 방향이 바뀐다.\n① $a < b$의 양변에서 $4$를 빼면\n$$ a - 4 < b - 4 $$\n부등호의 방향이 그대로이므로 옳다.\n② $a < b$의 양변에 $4$를 곱하면\n$$ 4a < 4b $$\n양변에 $3$을 더하면\n$$ 4a + 3 < 4b + 3 $$\n부등호의 방향이 그대로이므로 옳다.\n③ $a < b$의 양변을 음수 $-3$으로 나누면\n$$ -\\dfrac{a}{3} > -\\dfrac{b}{3} $$\n부등호의 방향이 바뀌었으므로 옳다.\n④ $a < b$의 양변에 $-1$을 곱하면\n$$ -a > -b $$\n양변에 $7$을 더하면\n$$ 7 - a > 7 - b $$\n부등호의 방향이 바뀌었으므로 옳다.\n⑤ $a < b$의 양변에 $3$을 더하면\n$$ a + 3 < b + 3 $$\n양변을 음수 $-2$로 나누면\n$$ -\\dfrac{a + 3}{2} > -\\dfrac{b + 3}{2} $$\n이어야 하는데 보기에는 부등호가 $<$로 되어 있으므로 옳지 않다.\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -703,7 +703,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "EQUIVALENT_INEQUALITIES_COEFFICIENT",
-    "solution": "두 부등식을 각각 풀어 해의 범위를 비교한다. 1단계: 첫 번째 부등식의 양변에 분모의 최소공배수 $8$을 곱한다. $$ \\begin{aligned} 8 \\times \\frac{1}{2}x &< 8 \\times \\left(\\frac{3}{4} + \\frac{1}{8}x\\right) \\ 4x &< 6 + x \\ 3x &< 6 \\ x &< 2 \\end{aligned} $$ 2단계: 두 번째 부등식을 푼다. $$ \\begin{aligned} 2a - 0.4x &> x \\ -0.4x - x &> -2a \\ -1.4x &> -2a \\end{aligned} $$ 양변에 $-10$을 곱하면 부등호의 방향이 바뀐다. $$ 14x < 20a \\implies x < \\frac{20a}{14} = \\frac{10a}{7} $$ 3단계: 두 부등식의 해가 서로 같으므로 경계값을 비교한다. $$ \\begin{aligned} \\frac{10a}{7} &= 2 \\ 10a &= 14 \\ a &= \\frac{14}{10} = \\frac{7}{5} \\end{aligned} $$ 따라서 상수 $a$의 값은 $\\dfrac{7}{5}$이므로 정답은 ①이다.",
+    "solution": "두 일차부등식을 각각 풀어 해를 비교하고, 해가 같아지게 하는 $a$의 값을 구한다.\n첫 번째 부등식의 양변에 분모의 최소공배수 $8$을 곱하면\n$$ \\begin{aligned} 8 \\times \\dfrac{1}{2}x &< 8 \\times \\left( \\dfrac{3}{4} + \\dfrac{1}{8}x \\right) \\\\ 4x &< 6 + x \\\\ 3x &< 6 \\\\ x &< 2 \\end{aligned} $$\n두 번째 부등식의 괄호를 풀면\n$$ 2a - 0.4x > x $$\n$-0.4x$와 $-2a$를 각각 반대쪽 변으로 옮기면\n$$ -0.4x - x > -2a $$\n$$ -1.4x > -2a $$\n양변에 $-10$을 곱하면 부등호의 방향이 바뀌므로\n$$ \\begin{aligned} 14x &< 20a \\\\ x &< \\dfrac{20a}{14} \\\\ &= \\dfrac{10a}{7} \\end{aligned} $$\n두 부등식의 해가 같으므로 경계값이 같다.\n$$ \\dfrac{10a}{7} = 2 $$\n양변에 $7$을 곱하면\n$$ 10a = 14 $$\n$$ \\begin{aligned} a &= \\dfrac{14}{10} \\\\ &= \\dfrac{7}{5} \\end{aligned} $$\n따라서 $a = \\dfrac{7}{5}$이므로 정답은 ①이다.",
     "points": 4
   },
   {
@@ -740,7 +740,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_HIKING_SPEED_TIME",
-    "solution": "등산 코스의 편도 거리를 $x\\text{ km}$라 두고 시간 부등식을 세운다. 1단계: 단위(시간)를 일치시킨다.\n\n\n* 휴식 시간: $20\\text{분} = \\dfrac{20}{60}\\text{시간} = \\dfrac{1}{3}\\text{시간}$\n* 총 제한 시간: $2\\text{시간 } 40\\text{분} = 2 + \\dfrac{40}{60} = 2 + \\dfrac{2}{3} = \\dfrac{8}{3}\\text{시간}$ 2단계: 총 소요 시간에 대한 부등식을 세운다. $$ (\\text{올라갈 때 시간}) + (\\text{휴식 시간}) + (\\text{내려올 때 시간}) \\le \\frac{8}{3} $$ $$ \\frac{x}{3} + \\frac{1}{3} + \\frac{x}{4} \\le \\frac{8}{3} $$ 3단계: 양변에 분모의 최소공배수 $12$를 곱한다. $$ \\begin{aligned} 4x + 4 + 3x &\\le 32 \\ 7x + 4 &\\le 32 \\ 7x &\\le 28 \\ x &\\le 4 \\end{aligned} $$ 따라서 최대 $4\\text{ km}$ 떨어진 곳까지 올라갔다 올 수 있으므로 정답은 ④이다.",
+    "solution": "편도 거리를 $x\\,\\text{km}$라 하고, 올라가는 시간과 쉬는 시간, 내려오는 시간의 합으로 부등식을 세운다.\n휴식 시간 $20$분을 시간 단위로 고치면\n$$ \\dfrac{20}{60} = \\dfrac{1}{3} $$\n총 제한 시간 $2$시간 $40$분을 시간 단위로 고치면\n$$ \\begin{aligned} 2 + \\dfrac{40}{60} &= 2 + \\dfrac{2}{3} \\\\ &= \\dfrac{6}{3} + \\dfrac{2}{3} \\\\ &= \\dfrac{8}{3} \\end{aligned} $$\n올라갈 때는 한 시간에 $3\\,\\text{km}$씩 가므로 걸린 시간은\n$$ \\dfrac{x}{3}\\,\\text{시간} $$\n내려올 때는 한 시간에 $4\\,\\text{km}$씩 가므로 걸린 시간은\n$$ \\dfrac{x}{4}\\,\\text{시간} $$\n세 시간의 합이 제한 시간 이하이어야 하므로\n$$ \\dfrac{x}{3} + \\dfrac{1}{3} + \\dfrac{x}{4} \\le \\dfrac{8}{3} $$\n양변에 분모의 최소공배수 $12$를 곱하면\n$$ \\begin{aligned} 4x + 4 + 3x &\\le 32 \\\\ 7x + 4 &\\le 32 \\\\ 7x &\\le 28 \\\\ x &\\le 4 \\end{aligned} $$\n따라서 최대 $4\\,\\text{km}$ 떨어진 곳까지 올라갔다 올 수 있으므로 정답은 ④이다.",
     "points": 5
   },
   {
@@ -771,7 +771,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POWER_SUM_TO_PRODUCT_STEPWISE",
-    "solution": "지수법칙과 거듭제곱의 성질을 단계별로 서술한다.\n\n\n(1) [4점] 동일한 거듭제곱의 덧셈을 곱셈으로 바꾸고 밑을 $3$으로 통일한다. $A$는 $3^3$이 $3$개 더해진 것이므로 $$ A = 3^3 + 3^3 + 3^3 = 3 \\times 3^3 = 3^{1 + 3} = 3^4 \\quad [2\\text{점}] $$ $B$는 $9^4$이 $3$개 더해진 것이고 $9 = 3^2$이므로 $$ \\begin{aligned} B &= 9^4 + 9^4 + 9^4 = 3 \\times 9^4 \\ &= 3 \\times (3^2)^4 = 3 \\times 3^{2 \\times 4} \\ &= 3^1 \\times 3^8 = 3^{1 + 8} = 3^9 \\quad [2\\text{점}] \\end{aligned} $$\n\n\n(2) [2점] 밑이 같은 거듭제곱의 나눗셈 지수법칙을 적용한다. $$ \\begin{aligned} B \\div A &= 3^9 \\div 3^4 \\ &= 3^{9 - 4} \\ &= 3^5 \\quad [2\\text{점}] \\end{aligned} $$ (참고: $3^5 = 243$으로 답해도 정답으로 인정한다.)\n\n\n따라서 (1) $A = 3^4, B = 3^9$, (2) $3^5$이다.",
+    "solution": "같은 수를 여러 번 더한 것을 곱셈으로 바꾸고 지수법칙을 써서 $A$, $B$를 $3$의 거듭제곱으로 나타낸다.\n(1) $A$는 $3^3$을 $3$개 더한 것이므로\n$$ \\begin{aligned} A &= 3^3 + 3^3 + 3^3 \\\\ &= 3 \\times 3^3 \\\\ &= 3^1 \\times 3^3 \\\\ &= 3^{1 + 3} \\\\ &= 3^4 \\end{aligned} $$\n$9 = 3^2$이므로 $B$는\n$$ \\begin{aligned} B &= 9^4 + 9^4 + 9^4 \\\\ &= 3 \\times 9^4 \\\\ &= 3 \\times (3^2)^4 \\\\ &= 3 \\times 3^8 \\\\ &= 3^1 \\times 3^8 \\\\ &= 3^{1 + 8} \\\\ &= 3^9 \\end{aligned} $$\n따라서 $A = 3^4$, $B = 3^9$이다. [4점]\n(2) 밑이 같은 거듭제곱의 나눗셈은 지수를 빼서 계산한다.\n$$ \\begin{aligned} B \\div A &= 3^9 \\div 3^4 \\\\ &= 3^{9 - 4} \\\\ &= 3^5 \\end{aligned} $$\n따라서 $B \\div A = 3^5$이다. [2점]",
     "points": 6
   },
   {
@@ -802,7 +802,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_DIVISION_EVALUATION_STEPWISE",
-    "solution": "다항식의 나눗셈을 전개하고 식의 값을 대입하여 계산한다.\n\n\n(1) [4점] 첫 번째 괄호의 나눗셈을 계산한다. $$ \\begin{aligned} (8x^2 - 12xy) \\div (-4x) &= \\frac{8x^2}{-4x} - \\frac{12xy}{-4x} \\ &= -2x + 3y \\quad [1.5\\text{점}] \\end{aligned} $$ 두 번째 괄호의 나눗셈을 역수의 곱셈으로 계산한다. $$ \\begin{aligned} (6x^2y - 9xy + 15xy^2) \\div \\left(\\frac{3}{2}xy\\right) &= (6x^2y - 9xy + 15xy^2) \\times \\frac{2}{3xy} \\ &= 6x^2y \\times \\frac{2}{3xy} - 9xy \\times \\frac{2}{3xy} + 15xy^2 \\times \\frac{2}{3xy} \\ &= 4x - 6 + 10y \\quad [1.5\\text{점}] \\end{aligned} $$ 두 식의 뺄셈을 동류항끼리 정리한다. $$ \\begin{aligned} (-2x + 3y) - (4x - 6 + 10y) &= -2x + 3y - 4x + 6 - 10y \\ &= (-2 - 4)x + (3 - 10)y + 6 \\ &= -6x - 7y + 6 \\quad [1\\text{점}] \\end{aligned} $$\n\n\n(2) [3점] 간단히 한 식 $-6x - 7y + 6$에 $x = \\dfrac{3}{4}, y = 2$를 대입한다. $$ \\begin{aligned} -6 \\times \\frac{3}{4} - 7(2) + 6 &= -\\frac{9}{2} - 14 + 6 \\ &= -\\frac{9}{2} - 8 \\ &= -\\frac{9}{2} - \\frac{16}{2} \\ &= -\\frac{25}{2} \\quad [3\\text{점}] \\end{aligned} $$\n\n\n따라서 (1) $-6x - 7y + 6$, (2) $-\\dfrac{25}{2}$이다.",
+    "solution": "다항식의 나눗셈을 각각 계산하여 주어진 식을 간단히 하고, $x$, $y$의 값을 대입하여 값을 구한다.\n(1) 첫째 괄호는 각 항을 $-4x$로 나누어 계산한다.\n$$ \\begin{aligned} (8x^2 - 12xy) \\div (-4x) &= \\dfrac{8x^2}{-4x} - \\dfrac{12xy}{-4x} \\\\ &= -2x + 3y \\end{aligned} $$\n둘째 괄호는 나누는 식의 역수를 곱하여 계산한다.\n$$ \\begin{aligned} (6x^2y - 9xy + 15xy^2) \\div \\left( \\dfrac{3}{2}xy \\right) &= (6x^2y - 9xy + 15xy^2) \\times \\dfrac{2}{3xy} \\\\ &= 4x - 6 + 10y \\end{aligned} $$\n두 결과의 차를 계산하면\n$$ \\begin{aligned} (-2x + 3y) - (4x - 6 + 10y) &= -2x + 3y - 4x + 6 - 10y \\\\ &= (-2 - 4)x + (3 - 10)y + 6 \\\\ &= -6x - 7y + 6 \\end{aligned} $$\n따라서 주어진 식을 간단히 하면 $-6x - 7y + 6$이다. [4점]\n(2) (1)에서 구한 식 $-6x - 7y + 6$에 $x = \\dfrac{3}{4}$, $y = 2$를 대입하면\n$$ \\begin{aligned} -6 \\times \\dfrac{3}{4} - 7 \\times 2 + 6 &= -\\dfrac{9}{2} - 14 + 6 \\\\ &= -\\dfrac{9}{2} - 8 \\\\ &= -\\dfrac{9}{2} - \\dfrac{16}{2} \\\\ &= -\\dfrac{25}{2} \\end{aligned} $$\n따라서 주어진 식의 값은 $-\\dfrac{25}{2}$이다. [3점]",
     "points": 7
   },
   {
@@ -833,7 +833,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_BOUNDARY_MATCH_PARAM",
-    "solution": "부등식을 정리하여 수직선의 해집합과 계수를 비교한다.\n\n\n1단계: 주어진 일차부등식을 $x$에 관하여 푼다. $$ \\begin{aligned} 5x - 3 &\\le -ax + b \\ 5x + ax &\\le b + 3 \\ (5 + a)x &\\le b + 3 \\quad [2\\text{점}] \\end{aligned} $$ 조건에서 $a < -5$이므로 양변에 $5$를 더하면 $$ 5 + a < 0 $$ 즉, $x$의 계수 $5 + a$는 음수이다. 양변을 음수 $5 + a$로 나누면 부등호의 방향이 반대로 바뀐다. $$ x \\ge \\frac{b + 3}{5 + a} \\quad [2\\text{점}] $$\n\n\n2단계: 수직선에 나타난 해와 경계값을 비교한다. 수직선이 나타내는 해는 $x \\ge -1$이므로 $$ \\frac{b + 3}{5 + a} = -1 \\quad [2\\text{점}] $$ 양변에 $5 + a$를 곱한다. $$ b + 3 = -(5 + a) = -5 - a $$ $-a$를 좌변으로, $3$을 우변으로 이항하여 $a + b$를 정리한다. $$ \\begin{aligned} a + b &= -5 - 3 \\ a + b &= -8 \\quad [1\\text{점}] \\end{aligned} $$\n\n\n따라서 $a + b$의 값은 $-8$이다.",
+    "solution": "주어진 일차부등식을 $x$에 대하여 정리하고, 수직선에 나타난 해의 경계값과 비교하여 $a + b$를 구한다.\n주어진 부등식에서 $x$를 포함하는 항을 좌변으로 옮긴다. [2점]\n$$ \\begin{aligned} 5x - 3 &\\le -ax + b \\\\ 5x + ax &\\le b + 3 \\\\ (5 + a)x &\\le b + 3 \\end{aligned} $$\n$a < -5$의 양변에 $5$를 더하면\n$$ 5 + a < 0 $$\n$x$의 계수 $5 + a$가 음수이므로 양변을 $5 + a$로 나누면 부등호의 방향이 바뀐다. [2점]\n$$ x \\ge \\dfrac{b + 3}{5 + a} $$\n수직선이 나타내는 해가 $x \\ge -1$이므로 경계값이 같다. [2점]\n$$ \\dfrac{b + 3}{5 + a} = -1 $$\n양변에 $5 + a$를 곱하면\n$$ b + 3 = -(5 + a) $$\n우변의 괄호를 풀면\n$$ b + 3 = -5 - a $$\n$-a$를 좌변으로, $3$을 우변으로 이항하면 [1점]\n$$ \\begin{aligned} a + b &= -5 - 3 \\\\ &= -8 \\end{aligned} $$\n따라서 $a + b$의 값은 $-8$이다.",
     "points": 7
   }
 ];
