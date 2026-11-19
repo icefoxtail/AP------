@@ -1,0 +1,69 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "ratePi": "1/2",
+    "coefficients": [
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-9",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -9.3,
+      9.3
+    ],
+    "viewport": [
+      -10,
+      10,
+      -1.5,
+      1.5
+    ],
+    "referenceLines": [
+      {
+        "id": "l",
+        "slope": "1/9",
+        "intercept": "0",
+        "intersectionCount": 9
+      }
+    ],
+    "keyPoints": false,
+    "axisTickValues": {
+      "x": [
+        "-9",
+        "-5",
+        "-1",
+        "3",
+        "7",
+        "9"
+      ],
+      "y": [
+        "1",
+        "-1"
+      ]
+    }
+  },
+  "caption": "방정식 cos(πx/2)=x/9의 실근은 코사인 곡선과 직선 y=x/9의 교점의 x좌표이다. −1≤cos≤1이므로 −9≤x≤9에서만 교점이 가능하다. x<0에서는 코사인이 음수인 두 골짜기 (−7, −5), (−3, −1)에서 두 번씩 모두 4개, x>0에서는 봉우리 (−1, 1)의 오른쪽에서 1개, (3, 5)에서 2개, (7, 9)에서 2개가 만난다. 교점의 개수는 4+1+2+2=9이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "−9에서 9까지 코사인 곡선이 여러 번 오르내리고, 원점을 지나 오른쪽 위로 완만하게 올라가는 직선이 곡선과 여러 점에서 만난다.",
+  "newVisualInformation": [
+    "코사인 곡선과 직선 y=x/9를 −9≤x≤9에서 함께 그려 교점이 9개임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "방정식 $\\cos(\\pi x/2)=\\frac{x}{9}$의 서로 다른 실근의 개수를 구하시오. [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

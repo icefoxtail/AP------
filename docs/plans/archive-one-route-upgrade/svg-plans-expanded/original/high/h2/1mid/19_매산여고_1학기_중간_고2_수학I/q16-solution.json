@@ -1,0 +1,61 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "2",
+      "2",
+      "1"
+    ],
+    "phasePi": "-1",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -0.2,
+      3.4
+    ],
+    "viewport": [
+      -0.4,
+      3.7,
+      -1.7,
+      3.7
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "y": [
+        "3",
+        "1",
+        "-1"
+      ]
+    }
+  },
+  "caption": "f(x)=2sin(2x−π)+1=1−2sin2x이다. 그림에서 최댓값은 3, 최솟값은 −1이므로 ②, ③은 틀리다. 구간 0≤x≤π/2에서 x=π/4까지 감소하다가 다시 증가하므로 ④도 틀리다. f의 주기는 π이고 tan2x의 주기는 π/2이므로 ①도 틀리다. f(0)=1, f(π)=1이므로 f(0)+f(π)=2이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "0에서 π까지 한 주기의 사인 곡선이 y=1에서 시작해 π/4에서 가장 낮고 3π/4에서 가장 높았다가 y=1로 돌아온다. 세로축에 3, 1, −1 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "한 주기의 그래프에서 최댓값 3, 최솟값 −1, 구간별 증감, f(0)=f(π)=1을 보여 다섯 보기의 참거짓을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2\\sin(2x-\\pi)+1$에 대한 설명 중 옳은 것은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

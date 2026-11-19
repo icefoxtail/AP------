@@ -1,0 +1,249 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "1",
+              "denominator": "2"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "expression",
+                  "op": "sqrt",
+                  "args": [
+                    {
+                      "kind": "integer",
+                      "value": "3"
+                    }
+                  ]
+                },
+                {
+                  "kind": "integer",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "P",
+          "xaxis"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sPH",
+      "refs": [
+        "P",
+        "H"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sOH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [
+    "P"
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "X",
+    "H"
+  ],
+  "unmarkedPointNames": [
+    "H"
+  ],
+  "labelDirections": {
+    "P": "NE"
+  },
+  "rightAngles": [
+    {
+      "id": "rH",
+      "refs": [
+        "P",
+        "H",
+        "O"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aT",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 60,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "s",
+        "ownerSegment": "sPH",
+        "text": "√3/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "c",
+        "ownerSegment": "sOH",
+        "text": "1/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "r",
+        "ownerSegment": "sOP",
+        "text": "1",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "예: θ=π/3일 때 단위원 위의 점 P(1/2, √3/2)의 그림이다. 제곱근이 실수이고 분모가 0이 아니려면 sinθ>0이고 cosθ>0이어야 하므로 θ는 제1사분면의 각이다. 보기 중 −π≤θ≤π에서 제1사분면의 각은 π/3뿐이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "반지름 1인 단위원 위 제1사분면에 점 P가 있고 원점에서 P로 향하는 동경과 P에서 x축으로 내린 점선이 직각삼각형을 이룬다. 각 θ와 두 변의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "제1사분면의 단위원에서 sinθ>0, cosθ>0인 점 P를 보여 가능한 각이 제1사분면의 각 π/3뿐임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\dfrac{\\sqrt{\\cos\\theta}}{\\sqrt{\\sin\\theta}}=\\sqrt{\\dfrac{\\cos\\theta}{\\sin\\theta}}$, $\\sin\\theta\\cos\\theta\\ne0$일 때 $-\\pi\\le\\theta\\le\\pi$에서 가능한 $\\theta$는? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

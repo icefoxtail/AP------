@@ -1,0 +1,76 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      7,
+      -4,
+      4
+    ],
+    "curves": [
+      {
+        "id": "up",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/8",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "a>1"
+      },
+      {
+        "id": "dn",
+        "kind": "LOGARITHMIC",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/8",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "0<a<1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y=log(a)x의 그래프는 x>0에서만 있으므로 정의역은 양의 실수 전체(⑥)이고 치역은 실수 전체(⑤)이다. a>1(파란 곡선)이면 증가(⑦), 0<a<1(주황 곡선)이면 감소(⑧)이다. 두 곡선은 점 P(1, 0)을 지나므로 ③이고, y축(x=0)에 한없이 가까워지므로 점근선은 y축(⑩)이다. 따라서 6−5+7−8+3−10=−7이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 로그 곡선과 오른쪽 아래로 내려가는 주황 로그 곡선이 세로축 오른쪽에서 점 P에서 만난다. 두 곡선은 세로축에 한없이 가까워진다.",
+  "newVisualInformation": [
+    "두 로그 곡선이 모두 점 P(1, 0)을 지나고 y축에 접근하며 a>1에서 증가, 0<a<1에서 감소함을 보여 ㉠~㉥을 고르게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형1] $y=\\log_a x$ ($a>0,a\\ne1$)의 성질을 보기 번호로 골라 $\\text{㉠}-\\text{㉡}+\\text{㉢}-\\text{㉣}+\\text{㉤}-\\text{㉥}$을 계산하시오. [5점]<br>㉠ 정의역, ㉡ 치역, ㉢ $a>1$일 때 변화, ㉣ $0<a<1$일 때 변화, ㉤ 그래프가 지나는 점, ㉥ 점근선이 되는 축.<br>① $(0,0)$ ② $(0,1)$ ③ $(1,0)$ ④ $(1,1)$ ⑤ 실수 전체 ⑥ 양의 실수 전체 ⑦ 증가 ⑧ 감소 ⑨ $x$축 ⑩ $y$축",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

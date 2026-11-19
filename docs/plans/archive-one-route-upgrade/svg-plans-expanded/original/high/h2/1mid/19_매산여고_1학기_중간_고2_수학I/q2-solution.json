@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -6,
+      12
+    ],
+    "curves": [
+      {
+        "id": "c3",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-9/5",
+          "9/5"
+        ],
+        "color": "BLUE",
+        "label": "y=x³"
+      },
+      {
+        "id": "c4",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-9/5",
+          "9/5"
+        ],
+        "color": "WARM",
+        "label": "y=x⁴"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "5",
+        "-4"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "p",
+          "slope": "0",
+          "intercept": "5"
+        },
+        {
+          "id": "n",
+          "slope": "0",
+          "intercept": "-4"
+        }
+      ]
+    }
+  },
+  "caption": "x의 n제곱=a의 실근은 y=x의 n제곱의 그래프와 가로선 y=a의 교점의 x좌표이다. 홀수 거듭제곱(파란 y=x³)은 증가하여 어떤 가로선과도 한 점에서 만나므로 5의 n제곱근 중 실수는 한 개이다. 짝수 거듭제곱(주황 y=x⁴)은 y=5와 두 점에서 만나지만 y=−4와는 만나지 않으므로 −4의 짝수 제곱근 중 실수는 없다. 따라서 옳은 것은 ④이다.",
+  "accessibilityDescription": "왼쪽 아래에서 오른쪽 위로 이어지는 파란 3차 곡선과 가운데가 움푹 들어간 주황 4차 곡선이 있다. 위쪽 가로선 y=5는 파란 곡선과 한 점, 주황 곡선과 두 점에서 만나고 아래쪽 가로선 y=−4는 주황 곡선과 만나지 않는다.",
+  "newVisualInformation": [
+    "홀수·짝수 거듭제곱 그래프와 가로선 y=5, y=−4의 교점 수를 비교해 실수인 n제곱근의 개수를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 설명 중 옳은 것은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

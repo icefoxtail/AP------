@@ -1,0 +1,65 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6.3
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      -1.5,
+      1.5
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-sqrt(3)/2",
+        "intersectionCount": 2
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "4/3",
+        "5/3",
+        "2"
+      ],
+      "y": [
+        "sqrt(3)/2"
+      ]
+    }
+  },
+  "caption": "cos(π/2+π/6)=cos(2π/3)=−1/2, cos(π/2−π/3)=cos(π/6)=√3/2이므로 식은 sinθ+√3/2=0, 곧 sinθ=−√3/2이다. 사인 곡선과 가로선 y=−√3/2는 0≤θ≤2π에서 두 점에서 만나고 그 x좌표는 4π/3과 5π/3이다. 합은 4π/3+5π/3=3π이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "0에서 2π까지 한 주기의 사인 곡선과 가로선이 아래쪽 골짜기 부분에서 두 점에서 만난다. 가로축에 4π/3, 5π/3, 2π 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "사인 곡선과 가로선 y=−√3/2의 두 교점 4π/3, 5π/3을 보여 모든 θ의 합 3π를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$\\sin\\theta+\\cos(\\pi/2+\\pi/6)+\\cos(\\pi/2-\\pi/3)=-\\frac{1}{2}$를 만족하는 $0\\le\\theta\\le2\\pi$의 모든 $\\theta$의 합은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
