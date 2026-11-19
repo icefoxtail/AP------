@@ -8,6 +8,7 @@ const Core = require('../archive/archive2-core.js');
 const UnitCore = require('../archive/unit-past-exams-core.js');
 const Unified = require('../archive/archive2-unified-units.js');
 const Toc = require('../archive/rpm-middle-toc.js');
+const { loadWorkspace } = require("./helpers/archive2-workspace-source.cjs");
 
 // Independent destinations from the approved placement plan. IDs locate fixtures only;
 // production matching continues to use the complete base path, including its curriculum.
@@ -56,10 +57,7 @@ function harness(records) {
     Archive2Source: {}, Archive2Papers: {}, Archive2History: {},
   });
   ctx.window = ctx;
-  const source = fs.readFileSync(path.join(__dirname, '../archive/archive2-workspace.js'), 'utf8');
-  const startup = source.lastIndexOf('  (async () => {');
-  assert.ok(startup > 0);
-  vm.runInContext(source.slice(0, startup) + '\nwindow.searchTest = { state, findExams, findSearchText };\n})();', ctx);
+  loadWorkspace(ctx, '\nwindow.searchTest = { state, findExams, findSearchText };\n');
   const api = ctx.searchTest;
   api.state.catalog = { records, exams, taxonomy: [] };
   api.state.finderIndex = Core.buildFinderIndex(api.state.catalog);

@@ -54,6 +54,8 @@
 | `prompts/sonnet-exam-brief.md` | **과거(루나)** 시험지 단위 Sonnet 최종 보충 지시 |
 | `ds-launch-exam.sh` | DeepSeek 초안 실행(루나 사용량 한도로 2026-11-10 전환): `ds-launch-exam.sh <tablekey> <시험지 JS>`. 시험지 전체 플랜 초안을 만든다 |
 | `qrun-ds.sh` | 대기열(`queue-ds.tsv`)의 시험지마다 DeepSeek 초안 → Sonnet A 구현·검수를 이어 돌린다. 슬롯 수는 `qrun-ds.slots` |
+| `ds-triage-exam.sh` | 해설 그림 필요 판정만(플랜·렌더 없음): `ds-triage-exam.sh <시험지 JS>`. 미판정 문항만 DeepSeek이 FIGURE/REPLACE/KEEP_EXISTING/EXEMPT/CONTENT로 판정 → 기계 검증(실패 시 1회 재호출) → `ledger-upsert.py`로 장부 반영(`APPLY=0`이면 반영 생략). FIGURE·REPLACE는 `OPEN_LAYOUT`("plan 대기: …"). 결과 `.tmp/work/triage-ds/<이름>/`. 지시문 `prompts/ds-triage.md`, 보조 `ds-triage-lib.cjs`(prep·validate·apply) |
+| `qrun-ds-triage.sh` | 시험지 목록 파일(한 줄에 JS 경로)을 순서대로 `ds-triage-exam.sh`로 돌린다(기본 한 번에 하나). 결과 한 줄씩 `.tmp/work/qrun-ds-triage.log`, OpenCode 한도면 30분 기다렸다 같은 시험지부터 재개 |
 | `ds-svgtext.cjs` | DeepSeek 초안의 SVG 텍스트(글자·수식) 점검 보조 |
 | `prompts/ds-exam-draft.md` | DeepSeek 시험지 초안 지시서 |
 | `prompts/sonnet-exam-impl.md` | Sonnet A 구현·검수 지시서(DeepSeek 초안 → Sonnet 검수·마감) |

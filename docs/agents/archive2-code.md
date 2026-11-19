@@ -13,6 +13,27 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - 이 검사를 생략·격리하거나 데이터 분모를 줄이고, 시간 상한·검증 조건을 완화하여 통과시키지 않는다. 구조 변경이 필요해도 기존 동작·응답성·내용 검증을 먼저 보존한다. 이 계약 자체의 변경은 명시적인 사용자 지시와 근거를 필요로 한다.
 - 시험지 source만 수정하는 CREATE/R1/R2/R3 작업은 기존 시험지 품질 절차를 따른다. 런타임 흐름도 바꾸는 경우에는 이 계약을 함께 적용한다.
 
+## 교사 화면 코드(`archive2-workspace*.js`) 파일 지도 (2026-11-19)
+
+- 이유: 388KB 파일 하나를 고치는 PR이 한 번에 하나만 갈 수 있어 네 줄기(자료 로딩·저장/오류 문구·미리보기/인쇄·선정 결과 표시)가 서로 기다렸다. 함수 본문은 한 글자도 바꾸지 않고 파일만 나눴다(동작·출력 불변). 이 문서 아래 본문의 `archive2-workspace.js` 언급은 아래 표에서 그 함수가 있는 파일을 뜻한다.
+- 일곱 파일은 `workspace.html`에 **core → find → compose → preview → save → recent → main** 순서로 로드하고, 모두 `window.Archive2Workspace` 하나를 공유한다(번들러·모듈 없음).
+
+| 파일 | 담는 것 |
+| --- | --- |
+| `archive2-workspace-core.js` | 공용: `state`, `$ esc button`, API 클라이언트(`api`·`headers`), 필터·매칭 규칙, `showDialog`. 다른 파일을 부르지 않는 말단 |
+| `archive2-workspace-find.js` | 자료 로딩 뒤 홈, 학교별 기출 찾기, 유사문제 목록, 자료 점검 |
+| `archive2-workspace-compose.js` | 문제지 구성·선정·교체: 단원 트리, 빠른 평가, 선정 결과 표시, `generate/replace/prepare/request/review/seal` |
+| `archive2-workspace-preview.js` | 미리보기·인쇄: `updatePreview/outputUrl/print/finalGate/download`, 원본 출력 |
+| `archive2-workspace-save.js` | 저장·초안·출제 연결·오류 문구: `savePapers`, 초안 저장·복원, 저장본 수정, 출제 패널 열기, `status/teacherErrorMessage` |
+| `archive2-workspace-recent.js` | 출제 내역 화면·취소·PDF 재시도 |
+| `archive2-workspace.js` (main) | `render` 분기, URL 쓰기·읽기, **이벤트 리스너(클릭 처리기 포함)**, 부팅. 맨 마지막에 로드 |
+
+- **이름 주고받기**: 각 파일은 끝에서 자기 최상위 이름을 `Object.assign(WS.api, {…})`로 내놓고, 다른 파일의 이름은 맨 위 `let …;`(헤더)와 `WS.links.push(…)`로 받는다. **다른 파일의 함수를 새로 부르면 그 파일 헤더 두 곳(let 목록·구조분해)에 이름을 더한다.** `tests/archive2-workspace-parts.test.js`가 빠뜨린 이름·주인 없는 이름·로드 순서·Pages 목록 누락을 잡는다.
+- **여러 파일이 바꾸는 변수는 `V.이름`**(`WS.v`)이다(예: `V.previewTimer`, `V.classRows`). 새로 파일 사이에서 공유할 변경 가능한 변수가 생기면 `V`에 둔다.
+- **캐시 버전**: 파일마다 자기 `?v=`를 두고 그 파일을 바꾼 PR만 올린다. 코드에서 이름을 새로 내놓거나 받으면 두 파일 모두 바뀌므로 둘 다 올린다. 새 파일은 `tools/archive-pages-release-manifest.json`에도 올린다.
+- **compose의 "종이 만들기" 함수(`prepare/request/review/seal/pool/replace`)는 미리보기·저장도 부른다.** 서명을 바꿀 때는 호출하는 쪽 파일을 같이 고친다.
+- **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다.
+
 ## 화면 디자인 (2026-11-10 사용자 결정)
 
 - 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 6칸)가 `workspace.html`과 `unit-past-exams.html`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.

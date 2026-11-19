@@ -15,6 +15,7 @@ const Unified = require('../archive/archive2-unified-units.js');
 const UnitCore = require('../archive/unit-past-exams-core.js');
 const ProblemBankMeta = require('../archive/problem-bank-meta.js');
 const { productionCatalog } = require('./helpers/archive2-scope-harness.cjs');
+const { loadWorkspace, assertWorkspaceScriptVersions } = require("./helpers/archive2-workspace-source.cjs");
 
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, 'archive', file), 'utf8');
@@ -631,14 +632,12 @@ function composeHarness(data, labels) {
     ARCHIVE_META_FOUNDATION_LABELS: labels,
   });
   ctx.window = ctx;
-  const source = read('archive2-workspace.js');
-  const startup = source.lastIndexOf('  (async () => {');
-  vm.runInContext(source.slice(0, startup) + `
+  loadWorkspace(ctx, `
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = {state, scopeOptions, selectedScopeOptions, request, planRows, generate, renderComposition,
       composeMetaFacets, metaTypeText, unifiedIndex, renderInspector, invalidate};
-  })();`, ctx);
+  `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
   w.state.useMode = 'general';
@@ -736,7 +735,7 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, /archive2-unified-units\.js\?v=20261117-middle-parent-1/);
   assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
   // The workspace itself moved on with the final-check fixes (S10).
-  assert.match(workspace, /archive2-workspace\.js\?v=20261118-error-detail-1/);
+  assertWorkspaceScriptVersions(assert);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);

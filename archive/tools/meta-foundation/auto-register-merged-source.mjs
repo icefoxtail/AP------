@@ -28,6 +28,7 @@ import { isAuditPreservation,isPreservableAuditRecord,loadAuditPreservation,plan
 
 import { nativeAuthorityHoldState } from './native-authority-correction.mjs';
 import { explicitRegistrationMode } from './registration-mode.mjs';
+import { classifyMetaBinding, loadRebinds } from './text-binding-lib.mjs';
 
 export const VERSION = 'archive-main-merge-meta-v1';
 export const AUTO = '.archive-meta-register/auto';
@@ -309,7 +310,7 @@ export function activeBindingContext({candidate,check,registry,runtimeOwner}) {
 }
 
 // The official ACTIVE validator is supplied by loadContext; fixtures use the same public interface.
-export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry}) {
+export function planQuestion({question:q, previous, current, identity, registry, validate, source, ordinal, runtimeOwner, priorReceipt, nativeSource, canonicalParentRetry, textRebinds}) {
   const reject = (...reasons) => ({status:'SUPPLEMENT_PENDING',reasons,questionUid:identity?.questionUid||current?.questionUid||null,sourceArchiveFile:source,sourceOrdinal:ordinal});
   if (!identity || !current || identity.questionUid!==current.questionUid || identity.sourceArchiveFile!==source || current.sourceArchiveFile!==source || Number(identity.sourceOrdinal)!==ordinal || Number(current.sourceOrdinal)!==ordinal) return reject('UID_JOIN_MISMATCH');
   if(originalSourceError.isSubject({questionUid:identity.questionUid,source,ordinal}))return reject(originalSourceError.REASON);
@@ -323,8 +324,14 @@ export function planQuestion({question:q, previous, current, identity, registry,
   const questionNo=String(q.sourceQuestionNo??q.id??'');
   if(previous&&String(previous.sourceQuestionNo??previous.id??'')!==questionNo)return reject('SOURCE_ORDINAL_CHANGED');
   const fp=sourceFingerprint(q), cf=contentFingerprint(q);
-  if(identity.sourceFingerprint!==fp) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
-  if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous))) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
+  // 결속은 발문+보기(text-v1)만 본다(docs/agents/metadata.md "메타 결속 지문 범위"). 전체 지문(해설·정답·그림 포함)이 어긋나도
+  // 이 행이 지금과 같은 발문·보기에 묶여 있음이 확인되면(행의 내용 지문 일치 또는 동결된 재결속 기록, 카탈로그와 같은 판정)
+  // 통과한다. 확인되지 않거나 유형 판정만 묶인 행은 기존 사유로 그대로 거절한다. 이유: identity의 전체 지문은 감사용이라
+  // 해설 한 줄만 고쳐도 자동 등록이 영구히 막혔다. 지문이 전부 일치하는 행은 이전과 똑같이 통과한다.
+  let textBound;
+  const rowTextBound=()=>textBound??=classifyMetaBinding({meta:current,question:q,assignmentFingerprint:cf,rebinds:textRebinds})==='row';
+  if(identity.sourceFingerprint!==fp && !rowTextBound()) return reject('IDENTITY_SOURCE_FINGERPRINT_MISMATCH');
+  if(current.sourceFingerprint!==fp && (!previous||current.sourceFingerprint!==sourceFingerprint(previous)) && !rowTextBound()) return reject('METADATA_SOURCE_FINGERPRINT_CONFLICT');
   const coreChanged=Boolean(previous&&!equal(pick(previous,CORE),pick(q,CORE)));
   const sourceMetaChanged=Boolean(!previous||!equal(semantic(previous),semantic(q)));
   if(current.metadataStatus==='SOURCE_HOLD')return reject('EXPLICIT_SOURCE_HOLD');
@@ -414,7 +421,9 @@ export function planQuestion({question:q, previous, current, identity, registry,
   if(current.metadataStatus==='approved_partial_with_explicit_holds'
     &&['problemType','template'].some(k=>current.fieldStatus?.[k]==='manual_review_pending'))
     return reject('EXPLICIT_PARTIAL_REVIEW_HOLD');
-  const final={...candidate,sourceFingerprint:fp,contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
+  // identity의 전체 지문이 낡은 행은 행의 전체 지문도 그대로 둔다(내용 지문 cf만 현재로). 이 등록기는 identity를 고치지 않으므로
+  // 행만 현재 지문으로 바꾸면 행≠identity 어긋남이 새로 생겨 다른 등록 길(FINAL_QA·난이도)이 "divergence"로 거절한다.
+  const final={...candidate,sourceFingerprint:identity.sourceFingerprint===fp?fp:(current.sourceFingerprint??fp),contentFingerprint:cf,curriculum:check.curriculum,curriculumKey:check.curriculum,
     courseKey:check.curriculum===current.curriculumKey&&current.courseKey?current.courseKey:candidate.standardCourse,
     L1:parentLabels.L1,L2:parentLabels.L2,L3:pt.canonicalLabelKo,L4:tpl.canonicalLabelKo,
     foundationTaxonomyStatus:'CONFIRMED',projectionStatus:'REUSE',metaFoundationStatus:'ACTIVE',
@@ -644,6 +653,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
     if(reportPath)fs.writeFileSync(reportPath,json(report));
     return report;
   }
+  const textRebinds=loadRebinds(root);
   const c=await contextLoader(root),banks=new Map(),sourceBindings=new Map(),previousBanks=new Map(),changedPacks=new Set(),outputs=new Map();
   if(replay&&c.registry.registrySha!==replay.registrySha)throw Error('AUTO_META_REPLAY_REGISTRY_DRIFT');
   const rowBinding=key=>{
@@ -702,7 +712,7 @@ export async function registerMergedSource({root=ROOT,write:doWrite=false,report
       const runtimeOwner=c.owners.get(id?.questionUid),nativeSource=sourceBindings.get(source);
       if(['FINAL_QA','REVIEW2','META_PIPELINE_AUDIT'].includes(current?.metadataApprovalType)&&!nativeSource.blobSha1)
         nativeSource.blobSha1=execFileSync('git',['hash-object','--path',rel,'--stdin'],{cwd:root,input:nativeSource.bytes,encoding:'utf8',stdio:['pipe','pipe','pipe']}).trim();
-      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,
+      result=planQuestion({question:q,previous:previousBanks.get(prevKey)[ordinal-1],current,identity:id,registry:c.registry,validate:c.validate,source,ordinal,runtimeOwner,priorReceipt:prior,canonicalParentRetry:parentRetry,textRebinds,
         nativeSource:{...nativeSource,...(parentRetry?{previousSourceBytes:execFileSync('git',['show',`${target.baseCommit}:${rel}`],{cwd:root,maxBuffer:16*1024*1024,stdio:['pipe','pipe','pipe']})}:{}),identityMap:c.identityMap,identityByJoin:c.identityByJoin,runtimeRecord:c.runtimes.get(runtimeOwner)?.data.records.find(r=>r.questionUid===id?.questionUid),
           runtimeStatus:c.runtimes.get(runtimeOwner)?.data.status}});
       if(result.status==='APPLY') {
