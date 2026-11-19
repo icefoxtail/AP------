@@ -733,3 +733,21 @@ test('고2 과목 칩·학년 버튼 전환은 지금처럼 단원 선택을 모
   await click({ action: 'compose-grade', grade: '중3' });
   assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), []);
 });
+
+test('고1 과목을 좁혀 단원이 해제됐다는 안내가 뜬 뒤 "방금 문제지 되돌리기"를 누르면 단원이 돌아오고 안내는 사라진다', async () => {
+  const { w, click } = harness();
+  const { first, second } = h1UnitsBySubject(w);
+  w.state.view = 'compose';
+  w.state.scopes = [first[0].key, second[0].key];
+  w.state.distribution = 'pool';
+  w.state.count = 4;
+  w.generate();
+  assert.ok(w.state.selected.length > 0, 'a paper was built from both subjects');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.selected.length, 0, '과목을 좁히면 결과가 지워진다');
+  assert.match(w.state.scopeNotice, /공통수학2 단원 1개는 .*범위 밖.*해제/);
+  await click({ action: 'restore-cleared' });
+  assert.deepEqual(JSON.parse(JSON.stringify(w.state.scopes)), [first[0].key, second[0].key], '되돌리면 두 과목의 단원이 모두 돌아온다');
+  assert.ok(w.state.selected.length > 0, '문제지도 돌아온다');
+  assert.equal(w.state.scopeNotice, '', '단원이 돌아왔으므로 해제 안내는 지운다');
+});

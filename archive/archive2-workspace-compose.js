@@ -92,6 +92,8 @@
       composeStale: false,
       composeStalePins: 0,
       composeNotice: "",
+      // 과목을 좁혀 "범위 밖이라 해제했습니다" 안내가 떠 있었다면, 단원이 되돌아왔으므로 그 안내도 지운다.
+      scopeNotice: "",
       ackWarnings: false,
     });
     scheduleSave();
