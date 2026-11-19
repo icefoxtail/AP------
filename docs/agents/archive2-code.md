@@ -34,6 +34,12 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 - **compose의 "종이 만들기" 함수(`prepare/request/review/seal/pool/replace`)는 미리보기·저장도 부른다.** 서명을 바꿀 때는 호출하는 쪽 파일을 같이 고친다.
 - **테스트는 파일 이름을 직접 읽지 않는다**: `tests/helpers/archive2-workspace-source.cjs`의 `readWorkspace()`(전체 텍스트), `loadWorkspace(ctx, 훅)`(vm에 올리고 훅 실행)을 쓴다. 판본 `?v=` 값은 고정하지 않는다.
 
+## 시험지 보관함 "26년 2학기 기말 모의고사" (2026-11-19 사용자 요청)
+
+- 원장·선생님이 학생에게 바로 출력하는 중1 2학기 기말 모의고사 1~5회(각 객관식 20 + 서술형 4)를 옛 원클릭 보관함(`archive/assessment/assessment-mvp.html`)의 맨 앞 탭에 둔다. 자료는 `archive/assessment/assessment-packs-2sem-final-mock.generated.js`(`window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL`)이고, `mixed_engine.html`의 `packId` 대체 경로가 이 파일도 읽는다. 진입은 APMS 기존 "시험지 보관함"(원장 대시보드 카드, 선생님 서랍)이며 첫 탭이 모의고사다. `?category=<탭 이름>`으로 탭을 지정할 수도 있다.
+- 자료 파일은 손으로 고치지 않는다. 선정 목록(`archive/tools/assessment-mock/selection-m1-2final-mock.json`: 회차·번호·출처 파일·원 문항 번호·단원·세부 유형)을 고치고 `node archive/tools/assessment-mock/build-m1-2final-mock.cjs`로 원본 시험지 JS에서 다시 조립한다(`--check`는 일치 검사, `--tsv <경로>`는 목록 출력). 이유: 문항·정답·해설·그림 참조는 원본 그대로 복사해야 하고, 바뀌는 것은 서술형 앞머리의 원 시험지 번호 표기("[서술형3]" 등) 제거뿐이다.
+- 선정 규칙: 2024·2025년 기출 우선(부족한 칸만 2023), 2026년 시험지 제외, 한 회차 안에 같은 세부 유형 없음, 한 회차 안 같은 시험지 최대 3문항, 5회 사이 문항 겹침 없음. `tests/assessment-mock-2sem-final-packs.test.js`가 결함 조건을 검사한다.
+
 ## 화면 디자인 (2026-11-10 사용자 결정)
 
 - 화면 디자인은 `archive/DESIGN.md`를 따른다. 색·글꼴·모양은 `archive/archive2-tokens.css` 한 곳에서 정의하고, 화면 CSS에 색 숫자를 직접 쓰지 않는다. 메뉴는 `archive2-navigation.js`(PC 6칸 / 휴대폰 6칸)가 `workspace.html`과 `unit-past-exams.html`에 같이 그린다. 이유: 화면마다 모양이 달라 완성도가 낮아 보인다는 사용자 지적이 있었다.

@@ -1754,6 +1754,9 @@ function renderAdminControlCenter() {
         <div class="ap-owner-topbar">
             <div class="ap-owner-topbar__date">${apEscapeHtml(fullDateLabel)}</div>
             <div class="ap-owner-topbar__tools">
+                <div class="ap-owner-sysgate ap-owner-archive-entry" role="navigation" aria-label="시험지 보관함">
+                    <button class="ap-owner-sysgate__tab" type="button" title="진단평가 · 단원평가 · 중간·기말평가 · 기말 모의고사" aria-label="시험지 보관함 열기: 진단평가, 단원평가, 중간·기말평가, 기말 모의고사" onclick="openAdminAssessmentArchiveWindow(event)">시험지 보관함</button>
+                </div>
                 ${adminSystemGateHtml}
                 ${adminGlobalSearchPanel}
             </div>
