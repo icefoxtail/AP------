@@ -1,0 +1,74 @@
+{
+  "qid": 12,
+  "itemFingerprint": "9243c1f050d1924d",
+  "solveSteps": [
+    "일차함수의 식에서 x절편은 y = 0일 때 x값이고, y절편은 상수항이다.",
+    "① y = -2x + 6: x절편 3, y절편 6이므로 합은 9이다.",
+    "② y = 2x - 16: x절편 8, y절편 -16이므로 합은 -8이다.",
+    "③ y = -(1/2)x + 4: x절편 8, y절편 4이므로 합은 8 + 4 = 12이다.",
+    "④ y = (4/3)x + 4: x절편 -3, y절편 4이므로 합은 1이다.",
+    "⑤ y = -3x + 12: x절편 4, y절편 12이므로 합은 16이다.",
+    "따라서 합이 12인 일차함수는 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "다음 중 $x$절편과 $y$절편의 합이 $12$인 일차함수의 식은?",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "y = -1/2 x + 4 등의 보기에서 x절편과 y절편의 합 12를 비교하는 기울기·절편 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "각 일차함수의 절편들을 계산해 y = -1/2 x + 4에서 절편의 합 12를 만족하는지 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "보기 식들의 절편을 구해 합 12를 비교하는 기본 확인 문제로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수의 식은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수의 식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "각 식의 ($x$절편) $+$ ($y$절편)을 구하면",
+        "evidenceType": "IMPLIED",
+        "justification": "x절편과 y절편을 계산해 합 조건 확인"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "다음 중 $x$절편과 $y$절편의 합이 $12$인"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "보기 ③ y = -1/2 x + 4의 x절편 8과 y절편 4의 합이 12임을 확인하여 ③을 정답으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

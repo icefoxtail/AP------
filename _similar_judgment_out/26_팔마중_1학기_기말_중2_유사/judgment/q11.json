@@ -1,0 +1,65 @@
+{
+  "qid": 11,
+  "itemFingerprint": "821eb6082c19d39a",
+  "solveSteps": [
+    "y = 3x - 5를 y축 방향으로 7만큼 평행이동하면 y = 3x - 5 + 7 = 3x + 2이다.",
+    "y절편은 x = 0일 때의 값이므로 2이다.",
+    "x절편은 y = 0일 때 3x + 2 = 0을 풀면 x = -2/3이다.",
+    "따라서 x절편: -2/3, y절편: 2이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = 3x - 5$의 그래프를",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "y = 3x - 5를 y축으로 평행이동하여 y = 3x + 2를 얻고 절편을 구하는 기울기·절편 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION",
+  "templateKey": "TPL_M2_LINEAR_FUNCTION_VERTICAL_TRANSLATION_FORMULA",
+  "typeReason": "y = 3x - 5의 평행이동식 y = 3x + 2로부터 x절편 -2/3과 y절편 2를 구하는 이동식 결정 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "y = 3x - 5의 평행이동 공식과 절편 정의를 적용하여 -2/3과 2를 산출하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = 3x - 5$의 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "$x$절편과 $y$절편을 올바르게 짝지은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "$y = 3x - 5$를 $y$축의 방향으로 $7$만큼 평행이동하면",
+        "evidenceType": "IMPLIED",
+        "justification": "y축 평행이동 공식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = 3x - 5를 평행이동한 y = 3x + 2에서 x절편 -2/3과 y절편 2를 도출하여 ①을 정답으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

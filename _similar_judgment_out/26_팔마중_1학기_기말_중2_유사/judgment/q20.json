@@ -1,0 +1,73 @@
+{
+  "qid": 20,
+  "itemFingerprint": "c8d3c0c9bc2e02c9",
+  "solveSteps": [
+    "세 직선 y = 2x + 4, x + y - 1 = 0, y = -2의 교점을 각각 구한다.",
+    "y = 2x + 4와 y = -x + 1의 교점은 2x + 4 = -x + 1에서 3x = -3이므로 x = -1, y = 2, 즉 (-1, 2)이다.",
+    "y = -2와 y = 2x + 4의 교점은 2x + 4 = -2에서 x = -3이므로 (-3, -2)이다.",
+    "y = -2와 x + y - 1 = 0의 교점은 x - 2 - 1 = 0에서 x = 3이므로 (3, -2)이다.",
+    "삼각형의 밑변의 길이는 3 - (-3) = 6이고, 높이는 2 - (-2) = 4이다.",
+    "따라서 삼각형의 넓이는 (1/2) * 6 * 4 = 12이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "세 직선 $y = 2x + 4$, $x + y - 1 = 0$, $y = -2$로",
+  "rpmRecordId": "M2-RPM-176",
+  "rpmReason": "세 직선 y = 2x + 4, x + y - 1 = 0, y = -2의 세 교점을 구하고 밑변 6, 높이 4로 둘러싸인 삼각형 넓이 12를 구하는 문항이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+  "typeReason": "세 직선의 교점들로 이루어진 밑변 6, 높이 4인 삼각형의 넓이 12를 계산하는 교점 삼각형 넓이 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "세 직선의 연립으로 세 꼭짓점 (-1, 2), (-3, -2), (3, -2)를 찾고 넓이 12를 계산하는 복합 문제로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "세 직선 $y = 2x + 4$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "둘러싸인 도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "따라서 삼각형의 밑변의 길이는 $3 - (-3) = 6$,",
+        "evidenceType": "IMPLIED",
+        "justification": "세 교점을 꼭짓점으로 하는 삼각형의 밑변과 높이로 넓이 계산"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도형",
+        "src": "stem",
+        "quote": "둘러싸인 도형의 넓이는?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "세 직선의 교점 (-1, 2), (-3, -2), (3, -2)로부터 밑변 6, 높이 4인 삼각형의 넓이가 12임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

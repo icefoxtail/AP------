@@ -1,0 +1,72 @@
+{
+  "qid": 5,
+  "itemFingerprint": "e9fdd3f8d28d812f",
+  "solveSteps": [
+    "미지수가 결정된 0.3x - 0.1y = 0.7과 2/3 x + 1/2 y = 3의 공통해를 먼저 구한다.",
+    "첫째 식에 10을 곱하면 3x - y = 7이고, 둘째 식에 6을 곱하면 4x + 3y = 18이다.",
+    "3x - y = 7에 3을 곱해 더하면 13x = 39이므로 x = 3이고, y = 3(3) - 7 = 2이다.",
+    "구한 공통해 (3, 2)를 ax - 3y = 6에 대입하면 3a - 6 = 6에서 3a = 12, 즉 a = 4이다.",
+    "공통해 (3, 2)를 -2x + by = 0에 대입하면 -6 + 2b = 0에서 2b = 6, 즉 b = 3이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "두 연립방정식",
+  "rpmRecordId": "M2-RPM-150",
+  "rpmReason": "계수가 완성된 두 식 3x - y = 7과 4x + 3y = 18에서 구한 해 (3, 2)를 대입하여 미정계수 a = 4, b = 3을 결정하는 문항이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_COMMON_SOLUTION",
+  "templateKey": "TPL_M2_FIND_PARAMETERS_FROM_TWO_SYSTEMS_WITH_SAME_SOLUTION",
+  "typeReason": "해를 공유하는 두 연립방정식에서 온전한 식들을 연립해 (3, 2)를 구하고 ax - 3y = 6 등에 대입해 상수를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "소수와 분수 계수를 정수화하여 3x - y = 7, 4x + 3y = 18을 풀고 미정계수 2개를 구하는 2단계 문제로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "두 연립방정식\n\n$\\begin{cases} 0.3x - 0.1y = 0.7"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b$의 값을 각각 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입법",
+        "src": "solution",
+        "quote": "$x = 3, y = 2$를 $ax - 3y = 6$에 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "공통해를 미정계수가 있는 식에 대입하여 계수 결정"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "의 해가 서로 같을 때,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "0.3x - 0.1y = 0.7과 2/3 x + 1/2 y = 3의 공통해 x = 3, y = 2를 구한 뒤 각각 대입해 a = 4, b = 3임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

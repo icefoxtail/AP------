@@ -1,0 +1,66 @@
+{
+  "qid": 3,
+  "itemFingerprint": "17c32c6d87c90a4c",
+  "solveSteps": [
+    "연립방정식 x = -3y + 5, 2x + 3y = 4에서 x 식을 둘째 식에 대입한다.",
+    "2(-3y + 5) + 3y = 4를 전개하면 -6y + 10 + 3y = 4이다.",
+    "-3y = -6에서 y = 2를 얻는다.",
+    "y = 2를 첫째 식에 대입하면 x = -3(2) + 5 = -1이다.",
+    "해 (a, b) = (-1, 2)이므로 a + b = -1 + 2 = 1이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} x = -3y + 5",
+  "rpmRecordId": "M2-RPM-149",
+  "rpmReason": "x = -3y + 5를 대입해 -3y + 10 = 4를 얻어 푸는 연립방정식 대입법 풀이 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "한 미지수에 대해 정리된 식을 대입하여 -3y + 10 = 4에서 해를 구하는 연립방정식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "대입법으로 식을 대입해 -3y + 10 = 4에서 y = 2를 바로 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} x = -3y + 5"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "해를 $(a, b)$와 같이 나타낼 때,"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입법",
+        "src": "solution",
+        "quote": "$x = -3y + 5$를 $2x + 3y = 4$에 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "한 미지수의 식을 대입하여 미지수 소거"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x = -3y + 5를 대입하여 -3y + 10 = 4에서 y = 2, x = -1을 얻고 a + b = 1이 됨을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

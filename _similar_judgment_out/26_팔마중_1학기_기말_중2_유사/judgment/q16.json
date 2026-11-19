@@ -1,0 +1,73 @@
+{
+  "qid": 16,
+  "itemFingerprint": "1cd6e7b252a4cb71",
+  "solveSteps": [
+    "점 P가 초속 2 cm로 움직이므로 x초 후 BP = 2x cm이다.",
+    "직사각형 ABCD에서 AD = BC = 20 cm이고, 높이 AB = 10 cm이다.",
+    "사각형 ABPD는 윗변 AD = 20, 아랫변 BP = 2x, 높이 AB = 10인 사다리꼴이다.",
+    "넓이 y = (1/2) * (2x + 20) * 10 = 10x + 100이다.",
+    "넓이가 140 cm^2이므로 10x + 100 = 140에서 10x = 40, 즉 x = 4(초 후)이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "직사각형 $ABCD$에서 $\\overline{AB} = 10\\text{ cm}$,",
+  "rpmRecordId": "M2-RPM-177",
+  "rpmReason": "동점 P의 이동에 따른 사각형 ABPD의 넓이 식 y = 10x + 100을 세우고 넓이 140일 때 x = 4를 구하는 그래프 활용 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "점 P의 이동 거리 2x를 이용해 사다리꼴 넓이 식 10x + 100을 세우고 목표 넓이 140에 대응하는 시간을 구하는 일차함수 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "동점의 위치를 x에 대한 식으로 나타내어 넓이 140을 만족하는 x = 4를 구하는 2단계 문제로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서 $\\overline{AB} = 10\\text{ cm}$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "사각형 $ABPD$의 넓이가 $140\\text{ cm}^{2}$가 되는 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "사다리꼴",
+        "src": "solution",
+        "quote": "사다리꼴 $ABPD$의 넓이 $y$는",
+        "evidenceType": "IMPLIED",
+        "justification": "사다리꼴 넓이 공식 적용"
+      }
+    ],
+    "condition": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "초속 $2\\text{ cm}$로 움직이고 있다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "사다리꼴 ABPD의 넓이 식 y = 10x + 100에서 10x + 100 = 140을 풀어 x = 4초 후임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

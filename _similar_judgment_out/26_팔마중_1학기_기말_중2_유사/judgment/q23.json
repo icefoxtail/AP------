@@ -1,0 +1,71 @@
+{
+  "qid": 23,
+  "itemFingerprint": "36a7cedd460d7490",
+  "solveSteps": [
+    "일차방정식 4x - 10y - 8 = 0의 x절편 a는 y = 0일 때 x값이므로 4x - 8 = 0에서 x = 2, 즉 a = 2이다.",
+    "점 (-3, b)가 직선 위의 점이므로 대입하면 4(-3) - 10b - 8 = 0이다.",
+    "-10b - 20 = 0에서 10b = -20이므로 b = -2이다.",
+    "따라서 ab = 2 * (-2) = -4이다."
+  ],
+  "solvedAnswer": "-4",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "일차방정식 $4x - 10y - 8 = 0$의",
+  "rpmRecordId": "M2-RPM-172",
+  "rpmReason": "4x - 10y - 8 = 0에서 x절편 a = 2와 지나는 점 (-3, b)의 b = -2를 구해 ab = -4를 계산하는 일차방정식의 그래프 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_EQUATION_POINT_SUBSTITUTION",
+  "templateKey": "TPL_M2_FIND_UNKNOWN_COEFFICIENT_AND_COORDINATE_FROM_LINE",
+  "typeReason": "일차방정식 4x - 10y - 8 = 0에 x절편 점 (2, 0)과 점 (-3, b)를 대입하여 미지의 값들을 결정하는 두 점 대입 절차 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "4x - 10y - 8 = 0에 y = 0과 점 (-3, b)를 각각 대입해 a = 2, b = -2를 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $4x - 10y - 8 = 0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "$ab$의 값을 구하고 그 풀이 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "$x$절편은 $y = 0$일 때의 $x$의 값이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "y=0 대입으로 x절편 산출 후 점 좌표 대입"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "그래프의 $x$절편을 $a$라 하고,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "4x - 10y - 8 = 0에서 x절편 a = 2를 구하고 점 (-3, b)를 대입하여 -10b - 20 = 0에서 b = -2를 얻어 ab = -4임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
