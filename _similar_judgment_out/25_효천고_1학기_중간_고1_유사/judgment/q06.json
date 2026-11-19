@@ -1,0 +1,65 @@
+{
+  "qid": 6,
+  "itemFingerprint": "85026f5640756935",
+  "solveSteps": [
+    "복소수 z = a + bi의 켤레복소수는 a - bi 이다.",
+    "z = -4 + 5i 의 허수부분 +5의 부호를 반대로 바꾸면 -4 - 5i 이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z = -4 + 5i$의 켤레복소수는?",
+  "rpmRecordId": "H1-RPM-157",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "복소수 z=-4+5i의 허수부 부호를 반대로 바꾸어 켤레복소수 -4-5i를 구했다.",
+  "typeReason": "켤레복소수의 정의에 따라 허수부 5의 부호를 반전시키는 기본 복소수 연산 유형이다.",
+  "rpmReason": "켤레복소수의 뜻과 기본 형태 -4-5i를 찾는 RPM 유형이다.",
+  "difficultyReason": "허수단위 i 앞 부호만 바꾸어 -4-5i를 구하는 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "quote": "복소수 $z = -4 + 5i$의 켤레복소수는?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "quote": "켤레복소수는? (단, $i = \\sqrt{-1}$)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "quote": "허수부분 $+5$의 부호를 반대로 바꾸면 켤레복소수는 $-4 - 5i$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부호",
+        "quote": "복소수 $z = -4 + 5i$의 허수부분 $+5$의 부호를 반대로 바꾸면",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

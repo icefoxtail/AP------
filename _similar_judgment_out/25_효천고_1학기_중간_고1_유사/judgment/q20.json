@@ -1,0 +1,67 @@
+{
+  "qid": 20,
+  "itemFingerprint": "03cae5cb80263851",
+  "solveSteps": [
+    "x에 대한 이차방정식이므로 최고차항의 계수 k - 2 != 0, 즉 k != 2 이어야 한다.",
+    "서로 다른 두 실근을 가지므로 판별식 D/4 > 0 이어야 한다.",
+    "D/4 = 2^2 - (k-2)(-5) = 4 + 5k - 10 = 5k - 6 > 0 에서 k > 6/5 이다.",
+    "k > 6/5 이고 k != 2 인 정수 k는 3, 4, 5, ... 이므로 최솟값은 3 이다.",
+    "정답은 3이다."
+  ],
+  "solvedAnswer": "$3$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+  "unitEvidence": "$x$에 대한 이차방정식 $(k - 2)x^2 + 4x - 5 = 0$이 서로 다른 두 실근을 갖도록 하는",
+  "rpmRecordId": "H1-RPM-161",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "이차방정식 조건 k!=2와 판별식 4+5k-10>0에서 k>6/5이므로 정수 k 최솟값 3을 구했다.",
+  "typeReason": "이차방정식 성립 조건과 판별식 4+5k-10>0 부등식을 결합하여 매개변수 정수 최솟값을 구하는 유형이다.",
+  "rpmReason": "판별식 4+5k-10>0을 이용해 실근 조건을 판정하고 최고차항 계수 예외를 처리하는 RPM 유형이다.",
+  "difficultyReason": "최고차항 계수가 0이 아니라는 조건과 4+5k-10>0 판별식을 함께 고려해 3을 구하는 서술형 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "$x$에 대한 이차방정식 $(k - 2)x^2 + 4x - 5 = 0$이 서로 다른 두 실근을 갖도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "quote": "정수 $k$의 최솟값을 구하고 그 과정을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "quote": "서로 다른 두 실근을 가지므로 판별식 $\\frac{D}{4} > 0$이어야 한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최고차항",
+        "quote": "주어진 방정식이 $x$에 대한 이차방정식이므로 최고차항의 계수 $k - 2 \\neq 0$, 즉 $k \\neq 2$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "qid": 23,
+  "itemFingerprint": "caded90b8aff8c71",
+  "solveSteps": [
+    "n^4 + 8n^3 + 14n^2 - 8n - 8 = (n^2 + 4n)^2 - 2(n^2 + 4n) - 8 = (n^2 + 4n - 4)(n^2 + 4n + 2) 로 인수분해된다.",
+    "n이 자연수이므로 n^2 + 4n - 4 < n^2 + 4n + 2 이고 n^2 + 4n + 2 >= 7 이다.",
+    "두 정수의 곱이 소수가 되려면 작은 쪽 인수가 1이어야 하므로 n^2 + 4n - 4 = 1, 즉 (n + 5)(n - 1) = 0 이다.",
+    "n은 자연수이므로 n = 1 이다.",
+    "f(x) = x^2 - 6x + 11 을 x - 1로 나눈 나머지는 f(1) = 1 - 6 + 11 = 6 이다.",
+    "정답은 6이다."
+  ],
+  "solvedAnswer": "$6$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-03",
+  "subUnitKey": "H22-C-03-FACTORIZATION",
+  "unitEvidence": "자연수 $n$에 대하여 $n^4 + 8n^3 + 14n^2 - 8n - 8$이 소수일 때,",
+  "rpmRecordId": "H1-RPM-151",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "식 n^4+8n^3+14n^2-8n-8에서 소수가 되도록 n^2+4n-4=1을 풀어 n=1을 정하고 f(1)=6을 구했다.",
+  "typeReason": "치환을 이용한 다항식 n^4+8n^3+14n^2-8n-8 인수분해로부터 소수 조건 n^2+4n-4=1을 적용하고 나머지를 구하는 유형이다.",
+  "rpmReason": "인수분해를 수의 소수 조건 n^4+8n^3+14n^2-8n-8에 적용하는 인수분해 활용 RPM 유형이다.",
+  "difficultyReason": "치환 인수분해 후 소수 정의에 따른 작은 인수 1 판정, f(x)=x^2-6x+11 나머지 계산까지 서술하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "quote": "자연수 $n$에 대하여 $n^4 + 8n^3 + 14n^2 - 8n - 8$이 소수일 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "quote": "다항식 $f(x) = x^2 - 6x + 11$을 $x - n$으로 나누었을 때의 나머지를 구하고 그 과정을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "quote": "주어진 식을 $n^2 + 4n = t$로 치환할 수 있도록 변형하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "quote": "두 정수의 곱이 소수가 되려면 작은 쪽 인수가 $1$이어야 하므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

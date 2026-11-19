@@ -1,0 +1,67 @@
+{
+  "qid": 3,
+  "itemFingerprint": "d213b01fac548b62",
+  "solveSteps": [
+    "임의의 실수 k에 대하여 성립하므로 k에 대한 항등식이다.",
+    "양변의 k의 계수를 비교하면 a - 2 = 4 이므로 a = 6 이다.",
+    "상수항을 비교하면 b = 3 이다.",
+    "따라서 a - b = 6 - 3 = 3 이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "임의의 실수 $k$에 대하여 등식 $(a - 2)k + 3 = 4k + b$가 성립할 때,",
+  "rpmRecordId": "H1-RPM-140",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "k에 대한 항등식이므로 계수비교 a-2=4, b=3으로부터 a-b=6-3=3을 구했다.",
+  "typeReason": "임의의 문자에 대한 항등식 성질을 이용해 계수비교법으로 미정계수 4를 구하는 유형이다.",
+  "rpmReason": "항등식의 기본 원리인 계수비교법 미정계수 결정 RPM k 유형이다.",
+  "difficultyReason": "일차식의 계수비교를 즉시 수행하여 6-3=3을 구하는 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "quote": "임의의 실수 $k$에 대하여 등식 $(a - 2)k + 3 = 4k + b$가 성립할 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "quote": "두 상수 $a, b$에 대하여 $a - b$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "항등식",
+        "quote": "주어진 등식이 $k$에 대한 항등식이므로 양변의 $k$의 계수와 상수항을 비교하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "$a - 2 = 4 \\implies a = 6, \\quad b = 3$",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

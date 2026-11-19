@@ -1,0 +1,67 @@
+{
+  "qid": 10,
+  "itemFingerprint": "72c5f1045146cf46",
+  "solveSteps": [
+    "주어진 식 x^2 + xy - 2y^2 + 4x + 5y + 3을 x에 대하여 내림차순으로 정리한다.",
+    "x^2 + (y+4)x - (2y^2 - 5y - 3) 에서 상수항을 인수분해하면 -(2y+1)(y-3) = (2y+1)(-y+3) 이다.",
+    "두 인수의 합 (2y+1) + (-y+3) = y + 4 로 x의 계수와 일치한다.",
+    "따라서 (x + 2y + 1)(x - y + 3) 으로 인수분해된다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-03",
+  "subUnitKey": "H22-C-03-FACTORIZATION",
+  "unitEvidence": "다항식 $x^2 + xy - 2y^2 + 4x + 5y + 3$을",
+  "rpmRecordId": "H1-RPM-150",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "x에 대해 정리 x^2+(y+4)x-(2y+1)(y-3)에서 xy 항을 고려하여 (x+2y+1)(x-y+3)으로 인수분해했다.",
+  "typeReason": "두 문자에 대한 xy 이차식을 한 문자에 대한 내림차순으로 정리하여 인수분해하는 표준 유형이다.",
+  "rpmReason": "복잡한 xy 다항식을 한 문자에 대해 내림차순 정렬 후 인수분해하는 RPM 유형이다.",
+  "difficultyReason": "이차식의 xy 항을 포함한 표준 내림차순 인수분해 단계를 순서대로 밟아가는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다항식 $x^2 + xy - 2y^2 + 4x + 5y + 3$을",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "quote": "인수분해한 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "내림차순",
+        "quote": "주어진 식을 $x$에 대하여 내림차순으로 정리하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수분해",
+        "quote": "$(2y + 1) + (-y + 3) = y + 4$이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

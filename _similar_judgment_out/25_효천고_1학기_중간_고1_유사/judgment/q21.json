@@ -1,0 +1,67 @@
+{
+  "qid": 21,
+  "itemFingerprint": "dbfca9f334b84976",
+  "solveSteps": [
+    "f(alpha) - 3*alpha = 0, f(beta) - 3*beta = 0 이므로 이차식 f(x) - 3x는 alpha, beta를 근으로 갖는다.",
+    "f(x)의 최고차항 계수가 2이고 x^2+ax+b=0의 두 근이 alpha, beta이므로 f(x) - 3x = 2(x^2 + ax + b) 이다.",
+    "따라서 f(x) = 2(x^2 + ax + b) + 3x 이다.",
+    "f(1) = 15 를 대입하면 2(1 + a + b) + 3 = 15 에서 2(1 + a + b) = 12, 즉 1 + a + b = 6 이다.",
+    "따라서 a + b = 5 이다. 정답은 5이다."
+  ],
+  "solvedAnswer": "$5$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-REMAINDER",
+  "unitEvidence": "이차방정식 $x^2 + ax + b = 0$의 서로 다른 두 근이 $\\alpha, \\beta$이다.",
+  "rpmRecordId": "H1-RPM-145",
+  "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+  "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "f(x)-3x=2(x^2+ax+b)로 세우고 f(1)=15를 대입하여 2(1+a+b)+3=15에서 a+b=5를 구했다.",
+  "typeReason": "영점 조건 f(x)-3x=0으로부터 인수정리로 다항식 f(x)를 복원하고 f(1)=15를 대입하는 유형이다.",
+  "rpmReason": "인수정리와 방정식의 근의 관계를 이용해 f(1)=15 조건에서 다항식을 복원하는 RPM 유형이다.",
+  "difficultyReason": "다항식 f(x)-3x를 설정하고 f(1)=15를 서술하여 a+b=5를 구하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "이차방정식 $x^2 + ax + b = 0$의 서로 다른 두 근이 $\\alpha, \\beta$이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "quote": "$x^2$의 계수가 $2$인 이차식 $f(x)$에 대하여 $f(\\alpha) = 3\\alpha$,",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "quote": "$f(1) = 15$를 대입하면 $$2(1 + a + b) + 3 = 15 \\implies 2(1 + a + b) = 12",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "quote": "$f(\\alpha) - 3\\alpha = 0$, $f(\\beta) - 3\\beta = 0$이므로 이차식 $f(x) - 3x$는 서로 다른 두 근 $\\alpha, \\beta$를 갖는다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "qid": 1,
+  "itemFingerprint": "df29f212e8716072",
+  "solveSteps": [
+    "다항식 x(x + 4)(x^2 - ax + a) = (x^2 + 4x)(x^2 - ax + a)를 전개한다.",
+    "전개식에서 x^3의 계수는 x^2*(-ax)와 4x*x^2의 합이므로 4 - a 이다.",
+    "x^2의 계수는 x^2*(a)와 4x*(-ax)의 합이므로 a - 4a = -3a 이다.",
+    "두 계수가 서로 같으므로 4 - a = -3a 에서 2a = -4, 즉 a = -2이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-01",
+  "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "다항식 $x(x + 4)(x^2 - ax + a)$의 전개식에서",
+  "rpmRecordId": "H1-RPM-134",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "식 x(x+4)(x^2-ax+a)를 전개하여 x^3의 계수 4-a와 x^2의 계수 -3a를 비교해 a=-2를 구했다.",
+  "typeReason": "다항식의 전개식에서 특정 차수인 x^3과 ax 계수를 추출하여 방정식을 세우는 유형이다.",
+  "rpmReason": "전개식에서 동류항 ax 차수와 계수를 정리하여 미정계수를 결정하는 RPM 유형이다.",
+  "difficultyReason": "다항식 x^2-ax+a를 전개하여 계수 비교 일차방정식을 푸는 전형적인 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다항식 $x(x + 4)(x^2 - ax + a)$의 전개식에서",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "quote": "상수 $a$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "quote": "주어진 식을 전개하면 $$x(x + 4)(x^2 - ax + a) = (x^2 + 4x)(x^2 - ax + a)",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "$x^3$의 계수 $4 - a$와 $x^2$의 계수 $-3a$가 서로 같으므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "qid": 5,
+  "itemFingerprint": "5b3aa046fdf99655",
+  "solveSteps": [
+    "복소수 z = 5 - 2i 에서 실수부분은 5 이고 허수부분은 -2 이다.",
+    "두 부분의 합은 5 + (-2) = 3 이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+  "unitEvidence": "복소수 $z = 5 - 2i$의 실수부분과 허수부분의 합은?",
+  "rpmRecordId": "H1-RPM-154",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "복소수 z=5-2i의 실수부 5와 허수부 -2의 합 5+(-2)=3을 구했다.",
+  "typeReason": "복소수 5-2i의 기본 정의인 실수부분과 허수부분을 식별하여 합 3을 구하는 유형이다.",
+  "rpmReason": "복소수 a+bi의 실수부 5와 허수부를 확인하는 기본 RPM 유형이다.",
+  "difficultyReason": "정의에 따라 실수부 5와 허수부 -2를 즉시 더하는 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "quote": "복소수 $z = 5 - 2i$의 실수부분과 허수부분의 합은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수부분",
+        "quote": "실수부분과 허수부분의 합은? (단, $i = \\sqrt{-1}$)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "실수부분",
+        "quote": "복소수 $z = 5 - 2i$의 실수부분은 $5$, 허수부분은 $-2$이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허수부분",
+        "quote": "두 부분의 합은 $5 + (-2) = 3$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

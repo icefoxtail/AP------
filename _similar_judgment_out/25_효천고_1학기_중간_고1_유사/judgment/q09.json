@@ -1,0 +1,67 @@
+{
+  "qid": 9,
+  "itemFingerprint": "61b1786e3a15abf0",
+  "solveSteps": [
+    "a^3 + b^3 + c^3 - 3abc = (1/2)(a+b+c){(a-b)^2 + (b-c)^2 + (c-a)^2} = 0 이다.",
+    "a, b, c는 삼각형의 세 변이므로 a+b+c > 0 이고 따라서 a = b = c 인 정삼각형이다.",
+    "둘레가 18이므로 한 변의 길이는 6이다.",
+    "정삼각형의 넓이는 sqrt(3)/4 * 6^2 = 9*sqrt(3) 이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-03",
+  "subUnitKey": "H22-C-03-FACTORIZATION",
+  "unitEvidence": "삼각형의 세 변의 길이 $a, b, c$가 $a^3 + b^3 + c^3 = 3abc$를 만족시키고",
+  "rpmRecordId": "H1-RPM-153",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "a^3+b^3+c^3-3abc=0에서 a=b=c인 정삼각형임을 도출하고 한 변 6의 넓이 sqrt(3)/4*36=9sqrt(3)을 구했다.",
+  "typeReason": "세제곱 합 조건식 인수분해로부터 도형의 형태를 규명하고 넓이 18을 계산하는 인수분해 활용 유형이다.",
+  "rpmReason": "인수분해 조건식을 삼각형의 변 길이에 적용하는 RPM 18 유형이다.",
+  "difficultyReason": "정삼각형 조건 도출 후 둘레 18을 이용해 기본 넓이 공식 sqrt(3)/4*36을 적용하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "삼각형의 세 변의 길이 $a, b, c$가 $a^3 + b^3 + c^3 = 3abc$를 만족시키고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "이 삼각형의 넓이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "정삼각형",
+        "quote": "$a, b, c$는 삼각형의 변의 길이이므로 $a + b + c > 0$이고, 따라서 $a = b = c$인 정삼각형이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "둘레",
+        "quote": "둘레의 길이가 $18$이므로 한 변의 길이는 $6$이고,",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}
