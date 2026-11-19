@@ -685,7 +685,7 @@
     "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
     "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
     "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
-    diagnostic: () => "첫 상담용 24문항입니다. 실제 학교 기출만 쓰고, 쉬운 단계부터 차례로 나옵니다. 학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다.",
+    diagnostic: () => "첫 상담용 24문항입니다. 실제 학교 기출을 쓰고(모자란 단계만 유형·유사 문항으로 채움), 쉬운 단계부터 차례로 나옵니다. 학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다.",
   };
   // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
   function quickRowMarkup(item, product, picked, busy) {
@@ -778,10 +778,17 @@
         const verdictAll = Quick.evaluate(scopes.roots, product, preset);
         const verdictSel = Quick.evaluate(selectedUnits, product, preset);
         const names = selectedUnits.slice(0, 3).map(unit => unit.label).join(" · ") + (selectedUnits.length > 3 ? ` 외 ${selectedUnits.length - 3}개` : "");
-        const reason = (verdict) => verdict.ok ? "" : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`;
+        // Short originals are filled with 유형·유사 questions of the same units (the pool decides, no choice for the teacher).
+        const reason = (verdict) => verdict.ok ? (diagnostic && verdict.fills.length
+          ? `<p class="qk-r-fill">${esc(Quick.fillText(verdict.fills))}</p>` : "")
+          : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`;
+        const formsBox = diagnostic ? `<label class="qk-forms"><input type="checkbox" id="quick-two-forms" data-quick-two-forms
+          ${quickState.twoForms ? "checked" : ""} ${busy ? "disabled" : ""}><span>A·B형 두 벌</span></label>
+          ${quickState.twoForms ? '<p class="muted qk-forms-note">같은 범위·난이도로 B형을 한 벌 더 만듭니다. 단원·단계별 문항 수는 같고 A형 문항은 쓰지 않습니다.</p>' : ""}
+          ${quickState.formB ? button("quick-open-b", "B형 열기", 'type="button"') : ""}` : "";
         const actions = `${button("quick-open-selected", `선택한 ${esc(noun)} ${selectedUnits.length}개로 시험지 열기`,
           `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
-          ${openAll(`${esc(wholeName)} 전체로 시험지 열기`, verdictAll.ok)}`;
+          ${openAll(`${esc(wholeName)} 전체로 시험지 열기`, verdictAll.ok)}${formsBox}`;
         const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(wholeName)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
           ${selectedUnits.length ? reason(verdictSel) : reason(verdictAll)}`;
         result = info(product.title, product.count, lines, actions);
@@ -802,7 +809,11 @@
         }
       }
     }
-    const barMarkup = bar ? `<div class="qk-bar" role="region" aria-label="시험지 열기"><div class="qk-bar-text"><strong class="qk-bar-count">${esc(bar.text)}</strong></div>
+    // 진단평가 only: the A·B check box also sits in the bottom bar, the only open button below 1100px.
+    const barForms = bar && diagnostic ? `<label class="qk-bar-forms"><input type="checkbox" id="quick-two-forms-bar" data-quick-two-forms
+      ${quickState.twoForms ? "checked" : ""} ${busy ? "disabled" : ""}><span>A·B형 두 벌</span></label>${quickState.formB
+        ? button("quick-open-b", "B형 열기", 'type="button" class="qk-bar-b"') : ""}` : "";
+    const barMarkup = bar ? `<div class="qk-bar" role="region" aria-label="시험지 열기">${barForms}<div class="qk-bar-text"><strong class="qk-bar-count">${esc(bar.text)}</strong></div>
       ${button(bar.action, "시험지 열기", `type="button" class="qk-bar-main" ${bar.disabled ? "disabled" : ""}`)}</div>` : "";
     const levelOpen = quickState.levelOpen ? " is-open" : "";
     return `<div class="qk">${tabs}<div class="qk-intro"><h1>${esc(product.title)}</h1><p class="muted">${esc(QUICK_INTRO[state.view]?.(grade) || "")}</p>${state.view === "subunit-test"
@@ -914,24 +925,45 @@
   // unit that is furthest below its share first) so the unit x step cells are filled as widely as possible. A repeated problem type
   // only costs a penalty (a question without a type is never penalised and stays in the pool). Returns the picks and, per cell
   // (unit x step), the questions that were not picked, in the order they would be picked next (used to replace an empty one).
-  function diagnosticSelection(units, steps, count) {
-    const stepList = steps.filter(([, need]) => need > 0).sort((a, b) => a[0] - b[0]);
-    const n = units.length, cells = new Map(), cellOf = new Map(), avail = units.map(() => 0);
+  // 부족 단계 보충 (2026-11-20): original questions come first. Only a step whose originals are fewer than the preset asks gets
+  // the missing number from the unit's 유형/유사 reserve (unit.fillBuckets), picked after the originals; a reserve question whose
+  // original/similar family (options.familyOf) is already on the paper is skipped unless nothing else is left.
+  // options.reserved: uids that must not be picked (the other form of an A·B pair).
+  const SELECTION_TYPE = record => C.metaFacetsOf(record)?.pt || "";
+  function diagnosticSelection(units, steps, count, options = {}) {
+    const familyOf = options.familyOf || (() => "");
+    const reserved = options.reserved || new Set();
+    const wanted = steps.filter(([, need]) => need > 0).sort((a, b) => a[0] - b[0]);
+    const n = units.length, cells = new Map(), fillCells = new Map(), cellOf = new Map(), avail = units.map(() => 0);
     const keyOf = (u, step) => `${u}|${step}`;
+    const shuffled = list => recencyShuffle([...new Map((list || []).filter(record => !reserved.has(record.questionUid))
+      .map(record => [record.questionUid, record])).values()]);
     units.forEach((unit, u) => {
-      for (const [step] of stepList) {
-        const rows = recencyShuffle([...new Map((unit.buckets[step] || []).map(record => [record.questionUid, record])).values()]);
+      for (const [step] of wanted) {
+        const rows = shuffled(unit.buckets[step]);
         cells.set(keyOf(u, step), rows);
-        rows.forEach(record => cellOf.set(record.questionUid, { u, step }));
+        rows.forEach(record => cellOf.set(record.questionUid, { u, step, fill: false }));
         avail[u] += rows.length;
+        const extra = shuffled(unit.fillBuckets?.[step]);
+        fillCells.set(keyOf(u, step), extra);
+        extra.forEach(record => cellOf.set(record.questionUid, { u, step, fill: true }));
       }
     });
+    // A step takes as many originals as it has (up to the preset); only the missing rest comes from the reserve.
+    const stepList = [], fillNeed = new Map();
+    for (const [step, need] of wanted) {
+      const have = units.reduce((sum, _, u) => sum + cells.get(keyOf(u, step)).length, 0);
+      const own = Math.min(need, have);
+      stepList.push([step, own]);
+      if (need > own) fillNeed.set(step, need - own);
+    }
+    const ownCount = stepList.reduce((sum, [, own]) => sum + own, 0);
     // Units with no usable question (a table-of-contents unit nobody asked about) do not take a share.
     const live = avail.filter(have => have > 0).length || 1;
-    const minimum = Math.min(Math.floor(count / live), 3);
+    const minimum = Math.min(Math.floor(ownCount / live), 3);
     const target = avail.map(have => Math.min(minimum, have));
     const room = avail.map((have, u) => have - target[u]);
-    let rest = count - target.reduce((sum, value) => sum + value, 0);
+    let rest = ownCount - target.reduce((sum, value) => sum + value, 0);
     while (rest > 0) {
       const open = room.map((value, u) => (value > 0 ? u : -1)).filter(u => u >= 0);
       if (!open.length) break;
@@ -947,32 +979,46 @@
       for (const share of shares) if (rest > 0 && room[share.u] > 0) { target[share.u]++; room[share.u]--; rest--; }
     }
     const lexLess = (a, b) => { for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i]; return false; };
-    const typeOf = record => C.metaFacetsOf(record)?.pt || "";
+    const typeOf = SELECTION_TYPE;
     const assigned = units.map(() => 0), picked = new Map(), picks = [], typeUse = new Map(), sourceUse = new Map();
-    const take = (u, step) => {
-      const rows = cells.get(keyOf(u, step));
-      let best = 0, bestScore = Infinity;
+    const bestRow = (rows, allowed = () => true) => {
+      let best = -1, bestScore = Infinity;
       rows.forEach((record, i) => {
+        if (!allowed(record)) return;
         const type = typeOf(record);
         const score = (type ? (typeUse.get(type) || 0) : 0) * 100 + quickRecencyTier(record) * 10 + Math.min(sourceUse.get(record.sourceFile) || 0, 9);
         if (score < bestScore) { best = i; bestScore = score; }
       });
-      const [record] = rows.splice(best, 1);
+      return best;
+    };
+    const note = record => {
       const type = typeOf(record);
       if (type) typeUse.set(type, (typeUse.get(type) || 0) + 1);
       sourceUse.set(record.sourceFile, (sourceUse.get(record.sourceFile) || 0) + 1);
+    };
+    const take = (u, step) => {
+      const rows = cells.get(keyOf(u, step));
+      const [record] = rows.splice(bestRow(rows), 1);
+      note(record);
       assigned[u]++; picks.push(record);
       const list = picked.get(keyOf(u, step)) || picked.set(keyOf(u, step), []).get(keyOf(u, step));
       list.push(record);
     };
+    // options.pair (an A·B pair is made): a cell first gives at most half of its questions, so B finds other ones in the same cell;
+    // a step that needs more than that still takes them (the overlap is then counted when B is made).
+    const startLength = new Map([...cells].map(([key, rows]) => [key, rows.length]));
     for (const [step, need] of stepList) {
       const inStep = units.map(() => 0);
       for (let k = 0; k < need; k++) {
         let bestUnit = -1, bestKey = null;
-        for (let u = 0; u < n; u++) {
-          if (!cells.get(keyOf(u, step)).length) continue;
-          const key = [assigned[u] - target[u], inStep[u], assigned[u], u];
-          if (!bestKey || lexLess(key, bestKey)) { bestKey = key; bestUnit = u; }
+        for (const roomy of options.pair ? [true, false] : [false]) {
+          for (let u = 0; u < n; u++) {
+            if (!cells.get(keyOf(u, step)).length) continue;
+            if (roomy && inStep[u] >= Math.floor(startLength.get(keyOf(u, step)) / 2)) continue;
+            const key = [assigned[u] - target[u], inStep[u], assigned[u], u];
+            if (!bestKey || lexLess(key, bestKey)) { bestKey = key; bestUnit = u; }
+          }
+          if (bestUnit >= 0) break;
         }
         if (bestUnit < 0) break;
         take(bestUnit, step); inStep[bestUnit]++;
@@ -980,7 +1026,7 @@
     }
     // A unit below its minimum takes one seat of a unit above its own minimum in a step both can serve.
     const floorOf = u => Math.min(minimum, avail[u]);
-    for (let guard = 0; guard < count * n; guard++) {
+    for (let guard = 0; guard < ownCount * n; guard++) {
       const needy = units.findIndex((_, u) => assigned[u] < floorOf(u));
       if (needy < 0) break;
       let fixed = false;
@@ -997,13 +1043,118 @@
       }
       if (!fixed) break;
     }
-    // The questions that were not picked of the same step (own unit first) replace an empty question.
+    // The missing rest of a short step: 유형/유사 questions of the same units, the unit with the fewest questions first.
+    const families = new Set(picks.map(familyOf).filter(Boolean));
+    const fillStart = new Map([...fillCells].map(([key, rows]) => [key, rows.length]));
+    for (const [step, need] of fillNeed) {
+      const inStep = units.map(() => 0);
+      for (let k = 0; k < need; k++) {
+        let done = false;
+        for (const strict of [true, false]) {
+          const allowed = record => !strict || !familyOf(record) || !families.has(familyOf(record));
+          let bestUnit = -1, bestKey = null;
+          // pair: B takes as many questions of the cell as A; with this fill the cell (originals + fills) must still fit B's fills
+          for (const roomy of options.pair ? [true, false] : [false]) {
+            for (let u = 0; u < n; u++) {
+              if (bestRow(fillCells.get(keyOf(u, step)), allowed) < 0) continue;
+              const mine = (picked.get(keyOf(u, step)) || []).length;
+              if (roomy && mine + 2 * (inStep[u] + 1) > fillStart.get(keyOf(u, step))) continue;
+              const key = [inStep[u], assigned[u], u];
+              if (!bestKey || lexLess(key, bestKey)) { bestKey = key; bestUnit = u; }
+            }
+            if (bestUnit >= 0) break;
+          }
+          if (bestUnit < 0) continue;
+          const rows = fillCells.get(keyOf(bestUnit, step));
+          const [record] = rows.splice(bestRow(rows, allowed), 1);
+          note(record);
+          assigned[bestUnit]++; inStep[bestUnit]++; picks.push(record);
+          if (familyOf(record)) families.add(familyOf(record));
+          done = true; break;
+        }
+        if (!done) break;
+      }
+    }
+    // The questions that were not picked of the same step (own unit first, originals before the reserve) replace an empty question.
     const sparesFor = record => {
       const at = cellOf.get(record.questionUid);
       if (!at) return [];
-      return [at.u, ...units.map((_, u) => u).filter(u => u !== at.u)].flatMap(u => cells.get(keyOf(u, at.step)));
+      const order = [at.u, ...units.map((_, u) => u).filter(u => u !== at.u)];
+      return [...order.flatMap(u => cells.get(keyOf(u, at.step))), ...order.flatMap(u => fillCells.get(keyOf(u, at.step)))]
+        .filter(candidate => !reserved.has(candidate.questionUid));
     };
-    return { selected: picks, sparesFor, unitMinimum: minimum, targets: target };
+    // unit x step cells of the picks (originals and reserve apart), for the second form of an A·B pair.
+    const cellPicks = () => {
+      const map = new Map();
+      for (const record of picks) {
+        const at = cellOf.get(record.questionUid);
+        if (!at) continue;
+        const key = keyOf(at.u, at.step), cell = map.get(key) || map.set(key, { u: at.u, step: at.step, orig: [], fill: [] }).get(key);
+        (at.fill ? cell.fill : cell.orig).push(record);
+      }
+      return map;
+    };
+    return { selected: picks, sparesFor, unitMinimum: minimum, targets: target, cellPicks,
+      fills: [...fillNeed].map(([step, missing]) => ({ bucket: step, count: missing })) };
+  }
+  // The second form (B) of an A·B pair: the same unit x step cells with the same number of questions as A, none of A's questions.
+  // A cell takes unused originals first; a cell that has none left (a short step: A took them all) takes unused 유형/유사 questions
+  // of the same cell instead; only a cell with neither takes A's own question again, and that is counted as overlap.
+  function diagnosticMirror(units, plan, options = {}) {
+    const familyOf = options.familyOf || (() => "");
+    const typeOf = SELECTION_TYPE;
+    const first = new Set(plan.selected.map(record => record.questionUid));
+    const cellsA = [...plan.cellPicks().values()].sort((a, b) => a.step - b.step || a.u - b.u);
+    const chosen = new Set(), picks = [], typeUse = new Map(), sourceUse = new Map();
+    const unique = list => recencyShuffle([...new Map((list || []).map(record => [record.questionUid, record])).values()]);
+    const choose = (rows, count, allowed = () => true) => {
+      const pool = rows.filter(record => !chosen.has(record.questionUid) && allowed(record)), got = [];
+      while (got.length < count && pool.length) {
+        let best = 0, bestScore = Infinity;
+        pool.forEach((record, i) => {
+          const type = typeOf(record);
+          const score = (type ? (typeUse.get(type) || 0) : 0) * 100 + quickRecencyTier(record) * 10 + Math.min(sourceUse.get(record.sourceFile) || 0, 9);
+          if (score < bestScore) { best = i; bestScore = score; }
+        });
+        const [record] = pool.splice(best, 1);
+        chosen.add(record.questionUid); got.push(record);
+        const type = typeOf(record);
+        if (type) typeUse.set(type, (typeUse.get(type) || 0) + 1);
+        sourceUse.set(record.sourceFile, (sourceUse.get(record.sourceFile) || 0) + 1);
+      }
+      return got;
+    };
+    const unused = rows => unique(rows).filter(record => !first.has(record.questionUid));
+    const lack = new Map();
+    const keyOf = cell => `${cell.u}|${cell.step}`;
+    for (const cell of cellsA) {
+      const need = cell.orig.length + cell.fill.length, got = choose(unused(units[cell.u].buckets[cell.step]), need);
+      picks.push(...got);
+      lack.set(keyOf(cell), need - got.length);
+    }
+    const families = new Set(picks.map(familyOf).filter(Boolean));
+    const strictly = record => !familyOf(record) || !families.has(familyOf(record));
+    for (const cell of cellsA) {
+      const missing = lack.get(keyOf(cell));
+      if (!missing) continue;
+      const rows = unused(units[cell.u].fillBuckets?.[cell.step]);
+      let got = choose(rows, missing, strictly);
+      if (got.length < missing) got = got.concat(choose(rows, missing - got.length));
+      for (const record of got) if (familyOf(record)) families.add(familyOf(record));
+      picks.push(...got);
+      lack.set(keyOf(cell), missing - got.length);
+    }
+    for (const cell of cellsA) {
+      const missing = lack.get(keyOf(cell));
+      if (missing) picks.push(...choose([...cell.orig, ...cell.fill], missing));
+    }
+    const sparesFor = record => {
+      const step = record.difficultyBucket >= 4 ? 4 : record.difficultyBucket;
+      const spare = rows => unused(rows).filter(candidate => !chosen.has(candidate.questionUid));
+      return [...spare(units.flatMap(unit => unit.buckets[step] || [])), ...spare(units.flatMap(unit => unit.fillBuckets?.[step] || []))];
+    };
+    const overlap = picks.filter(record => first.has(record.questionUid)).length;
+    return { selected: picks, sparesFor, overlap, exclude: first };
   }
   // A restored question without an answer or without a solution (text or image) cannot go on a 진단평가 paper.
   const isBlankQuestion = question => !question || !String(question.answer ?? "").trim() ||
@@ -1064,8 +1215,11 @@
       return;
     }
     const presetPairs = product.presets[preset];
-    let plan = null;
-    const pick = () => diagnostic ? (plan = diagnosticSelection(units, presetPairs, product.count)).selected
+    const twoForms = diagnostic && quickState.twoForms;
+    const familyOf = diagnostic ? C.familyResolver(state.catalog.records) : () => "";
+    const reserved = new Set();
+    let plan = null, planB = null;
+    const pick = () => diagnostic ? (plan = diagnosticSelection(units, presetPairs, product.count, { familyOf, reserved, pair: twoForms })).selected
       : product.combine || state.view === "unit-test"
       ? balancedQuickSelection(units, presetPairs)
       : presetPairs.flatMap(([bucket, count]) => recencyShuffle([...new Map(
@@ -1073,29 +1227,49 @@
         .slice(0, count));
     // Every quick product prints from the lowest difficulty step up (unit order inside a step); the chosen set does not change.
     let selected = Quick.orderByStep(units, pick());
-    if (new Set(selected.map(record => record.questionUid)).size !== product.count) {
+    const complete = list => new Set(list.map(record => record.questionUid)).size === product.count;
+    if (selected.length < product.count) {
+      status(`${label}: 문항이 모자라 시험지를 열 수 없습니다. 학기를 1·2학기로 바꾸거나 난이도를 바꿔 보세요.`, true);
+      return;
+    }
+    if (!complete(selected)) {
       status("같은 문항이 중복되어 시험지를 열 수 없습니다.", true);
       return;
     }
+    // A·B pair: B has the same unit x step cells as A and none of A's questions (a cell with no other question may overlap).
+    let selectedB = null;
+    if (twoForms) {
+      planB = diagnosticMirror(units, plan, { familyOf });
+      selectedB = Quick.orderByStep(units, planB.selected);
+      if (selectedB.length < product.count || !complete(selectedB)) {
+        status(`${label}: A·B형 두 벌을 만들 문항이 모자랍니다. A·B형 선택을 끄고 한 벌로 열어 보세요.`, true);
+        return;
+      }
+      for (const record of selectedB) reserved.add(record.questionUid);
+    }
     // The pools are cached per catalog load; every chosen question is checked against the
     // current usage and difficulty conditions before it is printed.
-    if (selected.some(record => !Quick.stillUsable(record, product))) {
+    if (selected.concat(selectedB || []).some(record => !Quick.stillUsable(record, product))) {
       V.quickPoolCache = { index: null, meta: null, metaByUid: null, pools: null };
       status("문항 상태가 바뀌어 목록을 다시 확인합니다. 다시 선택하세요.", true);
       render();
       return;
     }
+    // Every window is opened here, before the first await, while the click is still a user gesture.
     const popup = window.open("about:blank", "_blank");
     if (!popup) { status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true); return; }
     popup.document.body.textContent = "시험지를 준비하고 있습니다.";
+    const popupB = twoForms ? window.open("about:blank", "_blank") : null;
+    if (popupB) popupB.document.body.textContent = "시험지를 준비하고 있습니다.";
     quickState.busy = true;
+    quickState.formB = null;
     status("선택한 문항의 원본을 확인하고 있습니다.");
     render();
-    try {
-      let questions = await Source.restore(selected, state.catalog), replacedBlank = 0;
-      if (diagnostic) ({ selected, questions, replaced: replacedBlank } = await replaceBlankQuestions(units, selected, questions, plan));
-      const questionUids = selected.map(record => record.questionUid);
-      const title = `${product.title} · ${label}`;
+    const makeForm = async (list, formPlan, suffix) => {
+      let questions = await Source.restore(list, state.catalog), replaced = 0, chosen = list;
+      if (diagnostic) ({ selected: chosen, questions, replaced } = await replaceBlankQuestions(units, list, questions, formPlan));
+      const questionUids = chosen.map(record => record.questionUid);
+      const title = `${product.title} · ${label}${suffix ? ` · ${suffix}` : ""}`;
       const meta = {
         title, customTitle: title, identityTitle: title, count: product.count,
         grade: quickState.grade, subject: subjectLabel, questionUids,
@@ -1108,11 +1282,36 @@
         sourceKind: "archive2-compose", sourceId: crypto.randomUUID(), mode: "exam",
         questionCount: product.count, questionUids, meta, questions,
       });
-      const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true });
-      popup.location.replace(url.href);
-      status(`${label} · ${questionUids.length}문항 시험지를 열었습니다.${replacedBlank ? ` (정답·해설이 없는 ${replacedBlank}문항은 같은 단계의 다른 문항으로 바꿨습니다.)` : ""}`);
+      return { url: O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true }), chosen, replaced };
+    };
+    // "4~5단계 2문항은 유형 1문항 · 유사 1문항으로 채웠습니다": what the reserve questions of the paper really are.
+    const fillSummary = chosen => {
+      const kinds = { types: 0, similar: 0 };
+      for (const record of chosen) { const kind = String(record.sourceFile || "").split("/")[0]; if (kind in kinds) kinds[kind]++; }
+      const parts = [kinds.types ? `유형 ${kinds.types}문항` : "", kinds.similar ? `유사 ${kinds.similar}문항` : ""].filter(Boolean);
+      return parts.length ? ` 원본 기출이 모자란 단계는 ${parts.join(" · ")}으로 채웠습니다.` : "";
+    };
+    try {
+      const formA = await makeForm(selected, plan, twoForms ? "A형" : "");
+      popup.location.replace(formA.url.href);
+      let message = `${label} · ${formA.chosen.length}문항 시험지${twoForms ? " A형" : ""}를 열었습니다.${fillSummary(formA.chosen)}`;
+      const replacedBlank = formA.replaced;
+      let replacedAll = replacedBlank;
+      if (twoForms) {
+        // B must not take what A finally holds (a replaced blank question may differ from the plan).
+        for (const record of formA.chosen) planB.exclude.add(record.questionUid);
+        const formB = await makeForm(selectedB, planB, "B형");
+        replacedAll += formB.replaced;
+        const shared = formB.chosen.filter(record => planB.exclude.has(record.questionUid)).length;
+        if (popupB) popupB.location.replace(formB.url.href);
+        else quickState.formB = { url: formB.url.href, title: `${label} B형` };
+        message = `${label} · A·B형 두 벌(각 ${formA.chosen.length}문항)을 ${popupB ? "열었습니다" : "만들었습니다. B형은 아래 \"B형 열기\" 단추로 여세요"}.${fillSummary(formA.chosen)}`
+          + (shared ? ` A·B형이 같은 문항 ${shared}개를 함께 씁니다(해당 단원·단계에 다른 문항이 모자람).` : " A·B형에 겹치는 문항은 없습니다.");
+      }
+      status(`${message}${replacedAll ? ` (정답·해설이 없는 ${replacedAll}문항은 같은 단계의 다른 문항으로 바꿨습니다.)` : ""}`);
     } catch (error) {
       popup.close();
+      popupB?.close();
       status(error.message || "시험지를 준비하지 못했습니다.", true, error);
     } finally {
       quickState.busy = false;
@@ -1886,7 +2085,7 @@
     recencyShuffle,
     quickRecencyTier,
     quickCountsText,
-    balancedQuickSelection, diagnosticSelection,
+    balancedQuickSelection, diagnosticSelection, diagnosticMirror,
     quickUnitsLabel,
     openQuickAssessment,
     scopeOpenState,
