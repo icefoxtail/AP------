@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-91a493e47bb7-7f0427b5",
+  "sourceArchiveFile": "original/middle/m2/2final/19_동산중_2학기_기말_중2_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a4f8339aec2925e195b3c0a4c006ba2401e317e2b008c4ac39b8c8fef3c059dd",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+      "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+      "step": "BC=16이고 AC:BC=DC:AC=12:16=9:12=3:4이며 끼인각C가 공통이므로 ADC와BAC가 SAS 닮음이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_044359f0da1b369f6f7649afb6c844ab12b096903103bb47ba13ee1cbd455baf",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+      "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+      "step": "세 중점연결선의 길이가 원삼각형 대응변의 절반이므로 둘레는(10+12+14)/2=18이다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_30c513832a16cca07e200b7faab4962e79f5086701f6df4c0c286e1af0ca117a",
+      "sourceOrdinal": 10,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "각 중선이 꼭짓점 쪽2:1로 나뉘고 여섯 작은 삼각형 넓이는 같지만 서로 다른 중선 길이는 같을 필요가 없음을 판별한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4da0a248fa4694f7998b1b211d519f8276c4c61d1005a9bd15a271b38a483421",
+      "sourceOrdinal": 11,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "중점선 FE의 밑변비1/2와 G까지 높이비1/6에서 FGE는 전체1/12이다. CBG는 전체1/3이므로 주어진2의4배8이다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b4950ba875d74867f8939c3ebd0fe88efd7036412ebf0188c78127bc256efa3a",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_COMPOSITE_APPLICATION",
+      "step": "원뿔의 모선10·반지름6·높이로 만든 직각삼각형에서 h=8을 얻고 부피π×36×8/3=96π를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e20875db93c2a1987308d8e97a4b6f1d8dc6b118a430391488dd03e9a57ab089",
+      "sourceOrdinal": 19,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_COUNTING",
+      "templateKey": null,
+      "step": "회장5가지 선택 뒤 남은4명 중 순서 없는 부회장2명을6가지로 골라5×6=30을 구한다.",
+      "note": " 새 PT 제안: 서로 다른 직책과 같은 직책의 대표 선출. 구분되는 직책은 순서를 구별하고 같은 직책의 복수 인원은 순서를 구별하지 않아 중복을 제거하며 선출 경우의 수를 센다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dd86f62bda102911dcf2e35800b46e71720c0407f48eb22b7bf155ac2524229e",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "구별되는 세 동전 결과8가지 중 앞면1개3가지와 뒷면1개3가지가 배반이므로 확률6/8=3/4이다.",
+      "note": " 새 PT 제안: 등가능한 표본공간에서 확률 계산. 동전·주사위 등 등가능한 결과를 빠짐없이 세어 사건에 속하는 결과 수를 전체 결과 수로 나눈다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_33eb0e11556a1e18a3b397bdf2809828e020630aee6efd304af0881d25bf9ae2",
+      "sourceOrdinal": 21,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "주사위순서쌍36개에서 합2또는3인(1,1),(1,2),(2,1) 세 개를 제외하여33/36=11/12를 구한다.",
+      "note": " 새 PT 제안: 여사건을 이용한 확률 계산. 요구한 사건 대신 여사건의 결과를 세고 전체확률1에서 빼 목표 확률을 구한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_af5c1006fc1222e02224417f7f9c16ebbf866e7bb978d09cee5be07c5e272d5b",
+      "sourceOrdinal": 23,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_CENTROID",
+      "templateKey": null,
+      "step": "AG:GD=2:1에서 AD=15를 구하고 ABD의 두 변 중점을 잇는 EM은 AD의 절반이므로7.5를 구한다.",
+      "note": " 새 PT 제안: 무게중심의 중선비와 넓이 분할. 무게중심이 각 중선을 꼭짓점에서2:1로 나누는 성질과 중선·중점선에 의한 길이비 및 넓이 분할을 이용한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_81e4708ad296c03aeb4e896db142cc9b22da23f7cb2d015403d4bebccdf6bf05",
+      "sourceOrdinal": 25,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "templateKey": null,
+      "step": "원점 복귀는 좌우 각2회인 방향열6개이고 전체 등확률 방향열16개이므로 비복귀 확률1-6/16=5/8이다.",
+      "note": "원문의심: (1)의 경우의 수6은 이동 방향열 기준이다. 주사위 눈 자체의 결과열을 세면6×3⁴=486가지로 표본 정의를 명시해야 한다. 새 PT 제안: 여사건을 이용한 확률 계산. 요구한 사건 대신 여사건의 결과를 세고 전체확률1에서 빼 목표 확률을 구한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2final.jsonl"
+    }
+  ]
+}

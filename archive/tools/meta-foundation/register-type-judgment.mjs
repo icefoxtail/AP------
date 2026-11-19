@@ -20,6 +20,7 @@
 // same request through add-only registryChanges); `before` equals the current values; a type that is already approved is
 // never overwritten; the judgment is bound to the current source bytes (blob and per-question fingerprints).
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 import { loadCourseAliases } from "./course-aliases.mjs";
@@ -214,11 +215,13 @@ export function registerTypeJudgment(ctx) {
     if (!scope || !["2015", "2022"].includes(scope.curriculum) || !textOf(scope.standardCourse)) failWith(`scope.curriculum (2015|2022) and scope.standardCourse required: ${uid}`);
     const rowCurriculum = textOf(current.curriculum) || textOf(current.curriculumKey);
     const rowCourse = textOf(current.standardCourse) || textOf(current.courseKey);
-    // Row course vs judged course: equal, another spelling of it, or (when the alias data says so) the same subject of the other curriculum.
-    const courseRelation = rowCourse ? aliases.relation(rowCourse, scope.standardCourse) : "";
+    // Row course vs judged course: equal, another spelling of it, the same subject of the other curriculum, or (alias data) a key of a grade
+    // at or below the exam's ("reach": units moved between grades, prerequisite content; never a key above the exam's grade).
+    const courseRelation = rowCourse ? aliases.relation(rowCourse, scope.standardCourse) ||
+      aliases.reach(rowCourse, scope.standardCourse, { sourceArchiveFile: current.sourceArchiveFile, problemTypeKey }) : "";
     if (rowCourse && !courseRelation) failWith(`course mismatch: ${uid} row=${rowCourse} judged=${scope.standardCourse}`);
     // A successor course lives in the other curriculum, so the row's own curriculum is not compared with the binding's then.
-    if (rowCurriculum && rowCurriculum !== scope.curriculum && courseRelation !== "successor") failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
+    if (rowCurriculum && rowCurriculum !== scope.curriculum && !["successor", "reach"].includes(courseRelation)) failWith(`curriculum mismatch: ${uid} row=${rowCurriculum} judged=${scope.curriculum}`);
     checkTypeKeys(tables, { problemTypeKey, templateKey, scope }, h, aliases);
     // Source binding: the judgment was made on the current question text; the row's own fingerprints are tagged, not rewritten.
     const fp = h.sourceFingerprints(q), judgedText = textFingerprint(q);
@@ -236,7 +239,7 @@ export function registerTypeJudgment(ctx) {
     const typeApproval = { schemaVersion: TYPE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
       scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",
-        ...(courseRelation === "alias" || courseRelation === "successor" ? { rowCourse, courseRelation } : {}) },
+        ...(["alias", "successor", "reach"].includes(courseRelation) ? { rowCourse, courseRelation } : {}) },
       judgedSourceFingerprint: fp.sourceFingerprint, judgedContentFingerprint: fp.contentFingerprint, rowBinding,
       // 판정이 본 발문·보기의 지문(text-v1). 이후 해설·정답·그림이 바뀌어도 발문·보기가 같으면 이 판정이 유효하다는 근거다
       // (docs/agents/metadata.md "메타 결속 지문 범위"). 발문이 비어 지문을 만들 수 없는 문항은 필드를 쓰지 않는다.
@@ -272,7 +275,7 @@ export function registerTypeJudgment(ctx) {
       }
     }
   }
-  output.set("archive/data/question_metadata.json", json(metadata));
+  output.set("archive/data/question_metadata.json", questionMetadataText(metadata));
   const outputDigests = [...output].filter(([file, text]) => file !== "archive/data/question_metadata.json" &&
     (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text))
     .map(([file, text]) => ({ path: file, sha256: digest(text) }));

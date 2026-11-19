@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-bde9a70553ec-d2883bbb",
+  "requestSha256": "5a3ca15d54ea3c749a7f062eb2d4ce0e2bb4c049b0acada9968a12b82d9d2cab",
+  "examUid": "22_금당고_1학기_중간_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1mid/22_금당고_1학기_중간_고2_확률과통계.js",
+  "sourceBlobSha1": "64e5933e56acb0b26e7e5d752319bb8e46e5fa68",
+  "sourceRawSha256": "8e603a74ad9d9b868b40c23bb123e0b76652b2ba14e37e4265f13365dce1b9cc",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bde9a70553ec-d2883bbb.type-ledger.json",
+        "sha256": "148515354564db7d57f51561e9e0f9d8ee51439650ac447efebab1d79b644895"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6f5a8fd9e836fdf58b9e572057ec3fa6f221572af0ae6b83d36fc8e6cf4fdea0",
+      "sourceArchiveFile": "original/high/h2/1mid/22_금당고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-bde9a70553ec-d2883bbb",
+        "judge": "dots",
+        "rationale": "8^10=(7+1)^10,2⁹=8³=(7+1)³에서7배수항을 버리면 모두나머지1이므로 같은 요일 월요일을 얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1dd0e341aec87b6729f06819fa8039cb1a2ab2abaf97ceb540089b4127212863",
+        "judgedContentFingerprint": "718a6517637078d33ad4e72e8c1c2e0df8d451648f41ac0b2be71f8f3d6fec30",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d4181ef05f1b44246bdac25a0696e613332e190e5135878696412c71c9504bd3",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bde9a70553ec-d2883bbb.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

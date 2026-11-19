@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-cb7c098299eb-498837e8",
+  "requestSha256": "1758b39d8f17e5df5dfde3be084149ecf918f64820ffafc5c0cc26aa479e50d7",
+  "examUid": "20_매산고_1학기_기말_고2_확률과통계",
+  "sourceArchiveFile": "original/high/h2/1final/20_매산고_1학기_기말_고2_확률과통계.js",
+  "sourceBlobSha1": "5e1a96577321e0a281ebabba4d8687d9728d73e5",
+  "sourceRawSha256": "b3f84b7576f85f00d8183e175e9e150cc711c6846992351b16e901684379e402",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cb7c098299eb-498837e8.type-ledger.json",
+        "sha256": "6ff6b386a0c4a56244488bf1db5a14c047fd1288bac333bca91dcb2e31ed15c6"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c063d996f483f17c2b9428a87755d74199c3a0f35261f975b36d6c34a4c81b99",
+      "sourceArchiveFile": "original/high/h2/1final/20_매산고_1학기_기말_고2_확률과통계.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-cb7c098299eb-498837e8",
+        "judge": "dots",
+        "rationale": "독립인 두 오답 사건의 확률0.4·0.3을 여사건으로 빼서1−0.12=0.88.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "확률과 통계",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "a6a4d88d76c66512c2626222ea95b24e469d4328dac616c8d23bca8a06c8bd51",
+        "judgedContentFingerprint": "2a852516da6c7f87997d370f6944b687db0e4fca2ad129818399aca3bf3769b8",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f59f8f3b648c515255f8b3e9e75a79567000880849f0e934e92b9223d849f282",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cb7c098299eb-498837e8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}

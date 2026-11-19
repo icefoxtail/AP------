@@ -1,4 +1,5 @@
 import { requireProjectionPhase, projectionInput } from './reviewed-projection-phase.mjs';
+import { questionMetadataText } from './question-metadata-format.mjs';
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -25,7 +26,7 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from 
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
-import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
+import { validateRpmPrimaryProvenance, fillRpmFromRecordId } from "./reviewed-rpm-provenance.mjs";
 import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
@@ -275,22 +276,6 @@ const SOP_V12_REVIEWER_ROLES = new Set(["ROOT", "AUTHORIZED_REVIEWER"]);
 export function sopV12PackIncludes(primaryPack, rowPack) {
   return typeof primaryPack === "string" && typeof rowPack === "string" && primaryPack.split("_AND_").includes(rowPack);
 }
-const SOP_V12_LEVELS = new Set(["하", "중", "상"]);
-// Legacy display labels are independent from the reviewed five-step bucket.
-// Preserve only observed, explicit noncanonical values in an exact FINAL_QA
-// source; this does not synthesize a label or permit unknown difficulty.
-export function isPreservedHistoricalLevel({ approvalType, question, final }) {
-  return approvalType === "FINAL_QA" && Object.hasOwn(question, "level") &&
-    Object.hasOwn(final, "level") && (question.level === null || question.level === "중상") &&
-    question.level === final.level && Number.isInteger(final.difficultyBucket) &&
-    final.difficultyBucket >= 1 && final.difficultyBucket <= 5 &&
-    question.difficultyBucket === final.difficultyBucket &&
-    ["high", "medium", "low"].includes(final.difficultyConfidence) &&
-    question.difficultyConfidence === final.difficultyConfidence &&
-    ["NONE", "B12", "B23", "B34", "B45"].includes(final.difficultyBoundaryFlag) &&
-    question.difficultyBoundaryFlag === final.difficultyBoundaryFlag &&
-    question.legacyLevelCompatibility === "UNKNOWN" && final.legacyLevelCompatibility === "UNKNOWN";
-}
 // Runtime-only catalog identity provenance. These fields live on the runtime record (the metadata row does not carry them) and
 // record that the UID <-> sourceFile#ordinal join was verified/repaired once. Re-registering type/unit/difficulty values must not
 // forget that fact (the runtime tests count these flags), so the registrar carries them over from the record it replaces —
@@ -437,7 +422,6 @@ function normalizeSopV12Audit({ root, proof, rawAudit, manifest, review, bank, s
         !/^PT_[A-Z0-9_]+$/.test(row.verifiedPrimaryTaxonomy || "") ||
         !/^TPL_[A-Z0-9_]+$/.test(row.verifiedTemplatePattern || "") ||
         !textValue(unitKey) || !textValue(subUnitKey) ||
-        !SOP_V12_LEVELS.has(row.levelVerbatimPreserved) ||
         !Number.isInteger(row.difficultyRank) || row.difficultyRank < 1 || row.difficultyRank > 5 ||
         !textValue(row.difficultyReasonTrace) ||
         !Number.isInteger(row.solutionStepCountVerified) || row.solutionStepCountVerified < 1)
@@ -2516,7 +2500,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const sourceValueOverrides = [];
-  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [];
+  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [], reportTags = [];
   const extensionUsage = new Map(), priorBanks = new Map(), sourceReviewCache = new Map();
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
@@ -2536,7 +2520,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       return context.reason ? null : nativeReviewReceipt({ ...ancestor, registry: approvedRendererRegistry, ...context });
     } }) : null;
   for (let i = 0; i < bank.length; i++) {
-    const current = rows[i], patch = patches.get(current.questionUid);
+    const current = rows[i];
+    let patch = patches.get(current.questionUid);
     if (partial && !patch) continue;
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
@@ -2647,9 +2632,15 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       Object.assign(current, finalPrior); applied.push(structuredClone(finalPrior)); runtimeRecords.push(rrPrior);
       continue;
     }
-    for (const [field, value] of Object.entries(patch.before)) if (!valueFields.has(field) || !eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
-    for (const [field, value] of Object.entries(patch.after)) {
-      if (!valueFields.has(field)) fail(`unapproved field: ${field}`);
+    // Fields outside the value contract are not rejected: they are not stored and the receipt/result names them.
+    const unstored = [...new Set([...Object.keys(patch.before), ...Object.keys(patch.after)].filter(field => !valueFields.has(field)))];
+    if (unstored.length) {
+      reportTags.push({ questionUid: current.questionUid, kind: "UNSTORED_FIELDS", fields: unstored });
+      const keep = values => Object.fromEntries(Object.entries(values).filter(([field]) => valueFields.has(field)));
+      patch = { ...patch, before: keep(patch.before), after: keep(patch.after) };
+    }
+    for (const [field, value] of Object.entries(patch.before)) if (!eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
+    for (const field of Object.keys(patch.after)) {
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
@@ -2708,11 +2699,6 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
-    // REVIEW2 only: a source that does not carry `level` at all may stay without one (nothing is invented); a carried value must still be valid.
-    const reviewTwoLevelAbsent = req.approval.type === "REVIEW2" && !Object.hasOwn(q, "level") && (final.level === undefined || final.level === null || final.level === "");
-    if (!reviewTwoLevelAbsent && !["하", "중", "상"].includes(final.level) &&
-        !isPreservedHistoricalLevel({ approvalType: req.approval.type, question: q, final }))
-      fail(`level invalid: ${current.questionUid}`);
     const debtRows = req.approval.type === "META_PIPELINE_AUDIT" ? (req.approval.metaPipelineAudit.unreviewedFields || []) : [];
     let difficultyEvidenceDebt = null;
     if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
@@ -2776,6 +2762,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
       final[field] = label;
     }
+    fillRpmFromRecordId({ root, final, cache: sourceReviewCache, questionUid: current.questionUid, reportTags });
     const revision = `meta-foundation:${pack.meta.packId}@${pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}`;
     const confidence = req.approval.type === "REVIEW2" ? "independent_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "meta_pipeline_audit" : "approved_final_qa";
@@ -2921,7 +2908,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (Object.hasOwn(metadata.counts, "explicitProblemTypeHolds")) metadata.counts.explicitProblemTypeHolds = metadata.records.filter(r => r.fieldStatus?.problemType === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitTemplateHolds")) metadata.counts.explicitTemplateHolds = metadata.records.filter(r => r.fieldStatus?.template === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitDifficultyHolds")) metadata.counts.explicitDifficultyHolds = metadata.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
-  plan.output.set(META, json(metadata));
+  plan.output.set(META, questionMetadataText(metadata));
   if (identityChanged) {
     // Retain UID, source ordinal, lookups and unrelated identity records.
     const stableIdentity = { ...identity }; delete stableIdentity.generatedAt; delete stableIdentity.identityDigest;
@@ -2967,6 +2954,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         solutionFingerprintRepairs: fingerprintRepairs.length, newMetadataApprovals: 0, preservedMetadataApprovals: applied.length } } : {}),
     ...(approvedRendererBinding ? { approvedRendererPreservation: approvedRendererBinding } : {}),
     ...(rpmPrimaryBindings.length ? { rpmPrimaryBindings } : {}),
+    ...(reportTags.length ? { reportTags } : {}),
     ...(nativeParentBindings.length ? { nativeParentBindings } : {}),
     ...(sourceValueOverrides.length ? { sourceValueOverrides } : {}),
     ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: metaPipelineAudit.inputAuditSchemaVersion || metaPipelineAudit.audit.schemaVersion,
@@ -3053,7 +3041,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields, ...preservationFields,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
     fingerprintRepairCount: fingerprintRepairs.length,
-    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
+    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...(reportTags.length ? { reportTags } : {}) };
 }
 
 // Loads the digest-checked canonical input bundle exactly as the student Consumer
@@ -3231,24 +3219,10 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog, { a
     if (!found) fail(`Search UID source missing: ${r.questionUid}`);
     for (const f of ["standardUnitKey", "subUnitKey", "level"]) {
       if (eq(found[f], r[f])) continue;
-      // The source-only search index serializes an explicit null legacy label as
-      // an empty string. Recheck the exact source and known D5 fields; no other
-      // absent, changed or unreviewed value receives this projection exception.
-      if (f === "level" && r.level === null && found.level === "" && r.metadataApprovalType === "FINAL_QA") {
-        const sourceFile = "archive/exams/" + r.sourceArchiveFile;
-        let bank = searchSourceCache.get(sourceFile);
-        if (!bank) {
-          const sourceContext = { window: {}, console: { log() {}, warn() {}, error() {} } };
-          vm.createContext(sourceContext);
-          vm.runInContext(fs.readFileSync(safePath(root, sourceFile), "utf8"), sourceContext, { timeout: 5000 });
-          bank = sourceContext.window.questionBank || sourceContext.window.questions || sourceContext.questions || sourceContext.questionBank || sourceContext.window.examData?.questions;
-          searchSourceCache.set(sourceFile, bank);
-        }
-        const question = bank?.[Number(r.sourceOrdinal) - 1];
-        if (question && isPreservedHistoricalLevel({ approvalType: r.metadataApprovalType, question, final: r })) continue;
-      }
-      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey", "level"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
-      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey", "level"].includes(f)) {
+      // A question without a level (absent, null or empty) has nothing to compare; a level that is present must still match the search index.
+      if (f === "level" && (r.level === undefined || r.level === null || r.level === "")) continue;
+      if (r.metadataApprovalType === "REVIEW2" && ["standardUnitKey", "subUnitKey"].includes(f) && reviewTwoSourceLacks(root, r, f, found[f], searchSourceCache)) continue;
+      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey"].includes(f)) {
         const sourceFile = "archive/exams/" + r.sourceArchiveFile;
         let bank = searchSourceCache.get(sourceFile);
         if (!bank) {

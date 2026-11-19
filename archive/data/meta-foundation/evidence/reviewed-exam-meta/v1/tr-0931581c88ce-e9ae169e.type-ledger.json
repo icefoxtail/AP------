@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0931581c88ce-e9ae169e",
+  "sourceArchiveFile": "original/high/h1/1final/19_순천고_1학기_기말_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_8cef3d99d106205f3035460a246bf4e0d622a9cf240ec5fc6bfcd98010c5553f",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+      "templateKey": "TT_SHORTEST_MULTI_LINE",
+      "step": "반사와 거리 보존으로 세 변의 합을 한 직선 경로 길이로 펴서 최솟값을 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d83c161c36b55a1c6e686d3270d254b551c7ca895416c293cf28070b3f46348f",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+      "templateKey": "TPL_COORD_DISTANCE_OPTIMIZATION_REVERSE_TRIANGLE",
+      "step": "역삼각부등식 |AQ-BQ|≤AB의 등호 조건으로 Q를 직선 AB와 x축의 교점에 둔다.",
+      "note": "새 TPL 제안: 거리 차의 절댓값 최대. 정의: 역삼각부등식과 세 점의 일직선 등호 조건을 이용한다. 새 TPL 제안: 역삼각부등식 |AQ-BQ|≤AB의 등호 조건으로 Q를 직선 AB와 x축의 교점에 둔다. 정의: 역삼각부등식 |AQ-BQ|≤AB의 등호 조건으로 Q를 직선 AB와 x축의 교점에 둔다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    }
+  ]
+}

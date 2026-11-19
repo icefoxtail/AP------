@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-2bed38dd8599-0995fdd9",
+  "sourceArchiveFile": "similar/middle/m1/1final/19_연향중_1학기_기말_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_028f91af366dec677dfc98dd4df475d29892d476d1bec285e04682e6eb67b34e",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_POLYNOMIAL",
+      "templateKey": null,
+      "step": "항의 차수는 문자 지수이므로5x²의 차수는2임을 확인한다.",
+      "note": "새 PT 제안: 다항식의 구조 판별. 다항식의 항·계수·차수·상수항을 부호와 함께 식별하고 관련 조건을 판별한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_87b62018fa79d70113f7e60b7f1d9580412339c8e8b325a8a4bec7a14eff5932",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_EQUATION",
+      "templateKey": null,
+      "step": "등호로 두 식의 같음을 나타낸 표현만 고른다.",
+      "note": "새 PT 제안: 등식의 정의 판별. 등호로 두 수 또는 식의 같음을 나타낸 표현을 다른 표현과 구분한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_622304fe83ec89e3fff2df72909fb9421e1ae7a6213ef992d26c5902cc2f9afa",
+      "sourceOrdinal": 3,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_IDENTITY",
+      "templateKey": null,
+      "step": "전개 후 a=3,2a+b=1로 계수를 비교해 ab=-15를 구한다.",
+      "note": "새 PT 제안: 일차 항등식 계수 결정. 모든 변수 값에서 성립하는 일차 항등식의 양변 계수를 비교해 미지 상수를 결정한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_611dff508b52457f8338a103d73630f3c14ce168e8982c861762233ba73e1491",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_SOLVING_INTEGER",
+      "step": "해10(5-a)/3의 양수·정수 조건으로 a=2를 찾는다.",
+      "note": "새 TPL 제안: 일차방정식의 정수해 조건: 해를 매개변수 식으로 정리하고 부호·정수 조건으로 가능한 매개변수를 찾는다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f7d8807673be8c4106f14dfdee3e9e393b7a2ce689dcef8f7df7476fd32430c",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+      "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_POINT_SIGN_TRANSFORM",
+      "step": "ab<0,a>b로 a양수 b음수를 정해(-a,-b)의 사분면을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4e375f674edc7212dc5331a281f3c384a4420f7fef921b0703fccd5a4fa87120",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+      "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_SLOPE",
+      "step": "일정 유입량에서 넓은 단면은 높이 증가가 느리고 좁은 단면은 빠름을 비교한다.",
+      "note": "새 TPL 제안: 용기 단면과 수위 변화 대응: 일정 유입량에서 단면적 변화에 따른 수위 증가속도 변화를 그래프와 연결한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b4f22ade6662c79e4bf3cf722c4c4716859f9d08dc6bc08e3ee59f6d060c772",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT",
+      "step": "주어진 정비례식에(3,a),(b,-4)를 대입해 a=2,b=-6을 구한다.",
+      "note": "새 TPL 제안: 정비례·반비례 식의 결정과 대응값: 주어진 좌표·일정한 비 또는 곱을 이용하여 비례상수 및 대응값을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9f6a7bb8e940c09ba30fc79c51adb33de98fcaf1c8003ef2ba817f5e6f03f580",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+      "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_PROPORTION",
+      "step": "양의 비례상수인 식만 제1·3사분면을 지나는 것으로 선택한다.",
+      "note": "새 TPL 제안: 좌표·비례상수 부호와 사분면: 좌표와 비례상수의 부호를 이용하여 점 또는 그래프의 사분면을 판정한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f74bbc338f99fb6fdf137c13e047618cf32d934e11500c292c6381f9010fca67",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE",
+      "step": "맞물린 톱니 총수24·5=xy로 반비례식을 세운다.",
+      "note": "새 TPL 제안: 정비례·반비례 식의 결정과 대응값: 주어진 좌표·일정한 비 또는 곱을 이용하여 비례상수 및 대응값을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d8cfe3232f1fa2159a8c29014883ac36fd493204613c299ddae2433d02748e79",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "step": "두 분수식을 통분해 x/2+53/12로 정리하고 계수와 상수항을 결합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5a96e3acfb967cc607ae9b29ea846daa5f91b3ab2f62ad077f7e041a3e72c6b0",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+      "step": "그래프의 단위시간 이동거리300,60으로3000m 도착시간을 구해 차40분을 낸다.",
+      "note": "",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    }
+  ]
+}

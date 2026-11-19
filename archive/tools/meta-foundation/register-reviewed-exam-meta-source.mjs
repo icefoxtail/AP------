@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -245,7 +246,7 @@ const evidence = {
 };
 
 const outputs = new Map();
-outputs.set(metadataPath,jsonText(metadata));
+outputs.set(metadataPath,questionMetadataText(metadata));
 for (const pack of changedPacks) outputs.set(runtimeByPack.get(pack).rel,jsonText(runtimeByPack.get(pack).data));
 outputs.set(receiptRel,jsonText(receipt));
 outputs.set(req.evidencePath,jsonText(evidence));

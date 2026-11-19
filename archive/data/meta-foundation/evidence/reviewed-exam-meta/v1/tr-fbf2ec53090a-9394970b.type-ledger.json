@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-fbf2ec53090a-9394970b",
+  "sourceArchiveFile": "original/high/h2/1mid/22_팔마고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f20a46a457349fe33c70588c8ef8778388f9b01368167ece09565afc9572f7d2",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "양끝 a를 고정하고 가운데 중복 b,c 순열을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b7b52ef1addf5d8987c05b2be222469f5753d8995c9081d72286e6834ab439c8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "step": "AB를 묶은 원순열에서 CD도 이웃하는 원순열을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5fcc569fff1d065fc3fb07f01637bd3967f33ff0d3c90372bfa8f766042391ff",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "전체 정수해에서 a와 c가 각각 하한 이상인 여사건을 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_de406f53a2209fbea7cc72ab9ff36dad664038005f9a89bdf8638cb81a946ab8",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_COUNTING",
+      "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+      "step": "비감소 함수값 네 종류에서 내부 누락값과 반복값을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0e34caa7fd1b3006be5bf0f4dc72607efe688f040fdaebe0f6478f25eec9bf2a",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_BRANCH_REVERSE",
+      "step": "판매처별 반품확률을 가중해 역조건 비율 방정식을 세운다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a8a655c86594cc9b3c5c122aa9a4be193e2e0474094cde3aca664f164d6be90f",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "step": "양의 정수해 전체에서 등차 조건을 만족하는 해를 뺀다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7cb43f20433ca11efdef2f63f7017ea809c314352c0a21ea00185f8c544803db",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "step": "짝수 일의 자리별로 자리수 합 18인 반복배정을 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_95288674c83130dadf98f4f5d744a4be07a5f635295eb59542ec0704389dc2eb",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "step": "같은 방향 이동의 순열에서 연속 네 이동 묶음 조건을 포함배제로 센다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

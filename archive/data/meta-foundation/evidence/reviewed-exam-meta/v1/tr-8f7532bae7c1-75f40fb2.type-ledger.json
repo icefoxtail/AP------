@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-8f7532bae7c1-75f40fb2",
+  "sourceArchiveFile": "original/middle/m3/2mid/21_금당중_2학기_중간_중3_수학.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_80298469d51d949f4b6d3da50cf0aebc472a6141cfe549a2d1a4ba7f3703d963",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "step": "반지름1인직각삼각형에서각y의이웃변BC와빗변1의비로cosy=BC이다.",
+      "note": " 원문 그림 주의: 래스터 하단 일부가 잘려 A·B·D 및 각x 표기가 보이지 않음. 해설의 반지름1·각y 인접변BC 설명으로 핵심 삼각비 구조는 판정 가능.",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_459ce0cd913c975dcfa4f18a0191520a7500615f439ec39b4b096a5bc4acbb8f",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+      "step": "반지름OB,OC는불변이며중심각증가로현BC와sinx는증가하고cosx는감소한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0403c59b3633afbcf91f585663291447fcdc05b62b678f11d08a1bf12c20e4b2",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+      "step": "예각범위에서사인·탄젠트증가,코사인감소를특수각기준과비교하여cos46>cos60=1/2를고른다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2mid.jsonl"
+    }
+  ]
+}

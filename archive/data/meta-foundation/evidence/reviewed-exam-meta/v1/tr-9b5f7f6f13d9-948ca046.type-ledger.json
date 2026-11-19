@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-9b5f7f6f13d9-948ca046",
+  "sourceArchiveFile": "similar/high/h1/1final/26_매산고_1학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_78f2584c533f4f483f6428ede4defbf04b3a6f2ee19d96112fe6a1ba03f4c68b",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+      "step": "순열 6P2와 조합 7C2를 정의에 따라 계산하여 더한다.",
+      "note": "새 TPL 제안: 팩토리얼·순열·조합 직접 값 계산 — 정의식으로 각각 계산한 값을 합하거나 단일 값을 구한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d4a3c254c51dfeec06b7722a51930b0ed4f5c42d9bb2b3902249e3e7f2bfc0b8",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+      "step": "두 일차부등식을 풀어 공통 구간 2<x≤9에 속하는 정수를 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d071d7ffc173c2dc30895ec8c1ab35f5fb1dabe6eab99023270b5391d36d7f74",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "step": "허근 관계에서 ω³=-1,ω⁶=1을 얻어 지수를 줄이고 켤레근의 합 및 대입으로 각 진술을 검증한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7ec94f1380a94d035fedd278bad2382dedfe6012e7cd5fa7fe96e9e1681189af",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "templateKey": "TPL_H1_MATRIX_POWER_POLYNOMIAL",
+      "step": "대각성분의 다항식 z(z+1)(z²+1)=0으로 후보를 얻은 뒤 50항 거듭제곱 합 조건으로 i,-i를 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ed4ed8f86ad7b8de8be4f80c57c5131570f6d0d0283e0b3f83a751a2a06a598b",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "한 열에 짝수 학생이 정확히 한 명이라는 조건으로 두 체스판 형태를 정하고 홀짝 학생을 각각 배열한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

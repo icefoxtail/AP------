@@ -1,0 +1,934 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-f29501f9f48e-a397ad76",
+  "requestSha256": "92f92d0fef2cb4591639db58db2554ef51e8b2b05ba14b5274aa7dcbea2c3aab",
+  "examUid": "25_순천고_2학기_중간_고1_유사",
+  "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+  "sourceBlobSha1": "5c7b081a57e102c144f10083180e5a6700a36c35",
+  "sourceRawSha256": "8208c3978f07c1d89420531cec2582718862db332879222019b13a517f7526b2",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.type-ledger.json",
+        "sha256": "436b75f6fc499b839f92b157732f8771482f8e944f65ddf953cde22061321cc0"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 20,
+  "registryChanges": [],
+  "typeApprovals": 20,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 13,
+    "content": 1,
+    "stale": 6
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_0042147989f9a09e4d9df99b848d82d3c9cce69f7fd6f23bf50344b801ac325b",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_SET_CARDINALITY_DIRECT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "조건을24의 양의 약수로 해석해 원소를 센다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "091919d6ff977730b49ac19be0ba06ffad6725bf63a327d2be50b624b0d349d7",
+        "judgedContentFingerprint": "2efa46a4c36a0bb561da36630b76c9a8ffc16edfc405cdc57c6b9d9ecb41d9e8",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "fe2a18bb63a06ab36361e3e442e100aa6cb8b1bb85652dd819d9cbae1b01bea9",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5a2b3bbb3cd6a08f4cc1ce68834bffc0e189d198b2941b4a93d9189b9e260069",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+      "templateKey": "TPL_NESTED_SET_RELATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "공집합과 공집합을 원소로 갖는 집합을 구분한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "51e14a5f3056d66453ec219ca2791f7768dbefefa63bc6c3cb88218fff18c719",
+        "judgedContentFingerprint": "9cd6870165ae85d82a4fba4e86ffbe8801d9a108d8d6a76d5d27596f51b0334f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "6e74f98468f5441e0953eda881cdba1ef198cb9d79032d3fdabc7513cead058a",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_33944de318d1ae8c0b58acde0c987394df79b9065d27db24775c5d052666ba0b",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_COORD_FIGURE_PROPERTIES",
+      "templateKey": "TPL_FIGURE_PARALLELOGRAM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "대각선이 서로 이등분하는 조건으로 대변 꼭짓점을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d5936fdfe135144f4fb52dcd7b49b14f33bb5cdca4eeee3f549b506393f12eef",
+        "judgedContentFingerprint": "9bebdafdd3833f246fa2f41db25eb730686d400e950d0a72f2208d137964aece",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "ace3150c63a3a098424a251bbbaa5f36be08254bab692df8c3e7a3f764964e1a",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_fb44ec4cf49fafe613032490836e53a983e1455198bd9e6d8450a19d66fdda0a",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_SET_OPERATION",
+      "templateKey": "TPL_OPERATION_WITH_PARAMETER",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "교집합 단일원소 조건으로 a를 정해 차집합을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "8b3a19eff4330502e1effad5d9279a7d8879e8b232577b9d024eb9479ae58bca",
+        "judgedContentFingerprint": "fb12214bb401104e628717ed1ee37892bf9d33f1a73d89473c9fd4599207da7e",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "f63622ece480ed8d641f83488a60e9e58c748f3ca041d20154bce5ad44e3cfbe",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_127ad8e2e1f7ca81f5fd916f6006b3f0af0964d5dc1f111b290882ee650b532c",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_PROPER_OR_NONEMPTY_SUBSET_COUNT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "전체 부분집합에서 공집합과 자기자신을 제외한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d38fdf6216f05ac5f155e5f1d4bc65971fe6dad397fb3f143128dce79dd783a6",
+        "judgedContentFingerprint": "6048ad8a530a7986114c6dd30bec72a8f390e36595185007eb06f4d6be3907da",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "65e4a5eca443876bae208604b4ce3a09057745715f0d9d73859f626342123bb9",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_89f8d36b8d987a33828e3df0c6e30df8fa695b3e1c79a2042548710a887ff3e7",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "평행한 직선의 상수항 차이로 거리를 표현한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d88d6daf55df31e675f29140411d7ae0ab9acaa95e1221110ad30ec1beddd0e7",
+        "judgedContentFingerprint": "e2dd96c723ae7ca54feac49b6ebdba9c030fb0e5331cadf90102f3ac764cd1c0",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "2fa6d50503dd4fa105157b4cee3010a4f3e0075af6bc0857a88aba2432d9b957",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c7a9b369faf7a5f9cd988cc46cbe85ad9837feac2a7ee8440e4901a2b1f264fc",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_LINE_POSITION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "원의 중심과 직선 사이 거리보다 반지름이 커야 한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "c94b564bd98a2bb15e11811ebbfdcfa6de5ebdecfd77753f5e7af6ea18c3adb3",
+        "judgedContentFingerprint": "0997bdda5ca6f3410ca080890440846d15954146a138de0a8efc1f2c73ba37b3",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "c725b20164787fd53bcb3a278a3c523b5f191bcaa8de96819d0596f2654416ba",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6e3f9b66971dc9a4a41d40021dc63e98afb1ea6f7cac755762eb7fa87e64df8b",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+      "templateKey": "TT_LINE_TRANSLATION_RELATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "평행이동 뒤 직선의 수직기울기와 교점 조건을 적용한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b6eac30970b22376ae3d1010da078734817a59b6f85e5d41728498b896271843",
+        "judgedContentFingerprint": "87769096657a0637959191be1af7561aa8189c3b2e456fdf59b3566b60aab10a",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "76b4194e334ad1fe5dee8a707e225a5e809c294ae3537bc914e8b7b5eeafa53e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_437b66158b569b8e64f7f541f8f581a3706ef435ec6b5d0a9324fef2e4db9554",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "중심직선거리와 반지름으로 현길이를 계산한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1fa48d095ced0c8c92400e85642be70e6dff54396b717b04c6d824fd8c953bf9",
+        "judgedContentFingerprint": "e286797d1b960729d2553e29d5d13e4bc9ba4b6080e96eacb0d8575cd175fc34",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f97667f93a5c54a5396d250503f5d7b5f02a5d18e9282e461bd3c980e456b259",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7b699f362f339945354b20eb5bb8733c6ae3e728f73de09716e8570800cee5dd",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_SET_REGION_EXPRESSION",
+      "templateKey": "TPL_VENN_TO_EXPRESSION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "그림의 A 안이면서 B 또는 C인 영역을 집합식으로 나타낸다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "f41b81f4e0100446840934c67d7a468f3c69c70f49f51e03455a208f7d325e4b",
+        "judgedContentFingerprint": "f71b8d46b56cdcd4af6efe2314b9a431bb746c69d65881974bd457a8f73717cb",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "9252f328ac090a40770b2070b544b4e86c22401db4c077606c8efd12a673a89e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d37627f426d099dfd1de73a5d5d5ec57a190175bb3b02ceb4b27892f410faba3",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "거리제곱의 분수식을 완전제곱으로 비교해 상한과 등호조건을 정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "7224d5c7768ecaa5b83474db1654edc3a7658666211f10f80bb3cbdc5d9d5930",
+        "judgedContentFingerprint": "bbb857b5183a120251a3a2b3213a739b0935cbb39ddfa32706d0ce8bc1f7b5c5",
+        "rowBinding": "content",
+        "textBindingFingerprint": "3fa171d157090c9fc2dab1c0de0b1bb4aaa588cd266948a4ff23da08d504727b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_3afbb1efb8724a8c6c9300372ce75e16d5efcb1cef43d967d6520185da5abdb4",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_SET_OPERATION_LAW",
+      "templateKey": "TPL_OPERATION_LAW_JUDGMENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "차집합을 여집합으로 바꾸고 드모르간·분배법칙으로 명제를 확인한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "1e4dff4171d98b7d5d7360b30f5d84a6080cfdf188d83baa5beabe42bff1507f",
+        "judgedContentFingerprint": "f854b82cf9b6366289000abe57d61d8b9fb5c527888398cbffc500735081a12e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "d343dfc6573ae732d3393efb41f0ca3203e9964874bf836d97c3377af99b7e8b",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_bac21135afb7e959843fc2f6f4d70ba9381ef8baf6ac5ac9472d0d033eb67cd5",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_SET_INCLUSION",
+      "templateKey": "TPL_INCLUSION_DIVISOR_MULTIPLE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "배수집합의 포함을 n의 약수배수 조건으로 바꾼다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b8cca2fa5ef4c1bfa15e89d676130ffe2fe8a2ec78701468afe4da20d5a33472",
+        "judgedContentFingerprint": "34ba44664352c2ecf67f3431d5bd939e62e87c4f467eaf4db71c92fa2628fd67",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "4614b0dc6a3a4d57416e509c02766247ee7e7cd40554d6f29640c28aae2b77eb",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_9b3be5fe711f0852d1bc1b0eecf7b0bc27fc87c7c392c20c78001e0e66417483",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+      "templateKey": "TT_CIRCLE_TRANSLATION_TANGENCY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "이동한 중심에서 두 직선까지 거리가 반지름과 같도록 한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "5e3f26f8e66d79a801e06c3e95fdeb50293b93e3ed4b89f6b9e16d96465e73e1",
+        "judgedContentFingerprint": "14235204373b1bdec87afc9f369f9dc73657dc7b144cb66b414d02e6ced6aea4",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "6da799dfd60b8670e052389120a61ae7e41baac92b86f6a5788819e6e8c859f0",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6fc97b7de14439dc5436c1886c9271f20dcde5d4755d1d7dd8190a839e1792db",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_TWO_CIRCLES",
+      "templateKey": "TM_TWO_CIRCLES_COMMON_CHORD_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "직각삼각형 외접원을 구하고 두 원의 공통현 길이를 계산한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "dfcef0282afdf106f6dfc11743365f80224202a8d96297c922d06d590630856b",
+        "judgedContentFingerprint": "c75eb8523ce42f2afee2a8e75a2d2b73ded1603d58689c713552a793e85e25dd",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9b40d2b4ba4d4f8c5e60c56e1dfb69528582c13cda797770861f2cc76108d2b4",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_52dcb3b3fb93c354b659d982dbdf436a1c7cdb50748fd9b8922a2322b63cbbcc",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "무게중심에서 A를 복원한 뒤 BC까지 거리를 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "b6f05f70a08a993efe9a9001dbb4389c21848c4d05db82a59ad16b2f243b82ac",
+        "judgedContentFingerprint": "8b2181b18ebcd6c5fa8b64f2c4ca47fab2ea00389843f481588d04d324114cc8",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "2d1538eadb3b2d4e14b7f5d9a512b3ada127c40a262fd0fc6e64488bd2593bfe",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0bbe9a09d73ff0857293ed61907f5edf91de5b345115b45b4dcfcf0b9014ccb6",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_INTERSECTION_RELATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "직선대입 교점방정식의 근곱을 원점에서 두 교점까지 거리곱으로 바꾼다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "cd57198c1dd2acd4cc82ab144568856530b4628c12e871a70cf95ee7331ef529",
+        "judgedContentFingerprint": "eccf70bc2558bb3de738ddc7cd77d8d346a3c86a658d41214c8af1029ed2473b",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9083a1cc9f10f357d1a893e9c085b4e5dd82b41d961cd09c281cf5ffb4ecfd36",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_412c8087265c2fc6ce31c1eaca82da4a9246b6efd429b18650f5610799fa075e",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_SUBSET_COUNT",
+      "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "B원소를 필수로 고정하고 A-B의 자유선택에서 A를 제외한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "365dcf1e7794d65cffee0375c6c495ba821dfc052974abee44ee5fa59638c501",
+        "judgedContentFingerprint": "427ac65ab457a54695ca83825bf899316cf6b8eedc1ecaea700142e19ebdc04f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a5c91d7aa34a6e2ca7ebe09778c268401f8ea59a5e54fd42441cb1cb0e8ef383",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7e5266d01a0f4b5fdcfab62fb657a1bf95fcc13691b9011af8bb640575820193",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_PERPENDICULAR_FOOT_ALTITUDE",
+      "templateKey": "TPL_PERPENDICULAR_FOOT_COORDINATE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "주어진 직선과 수직인 점통과 직선을 연립해 수선의 발을 정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "9fd826a2a47ab360e4e202ec4429e0030b0de9a98e849f9c47ef9dae07b3f155",
+        "judgedContentFingerprint": "d96be4eadc7c018437c2cd6987732f0f187f5186678320e970045f80fec502ed",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "688d797f41f50d10ed257edc2ad64e73aa5f7ba9ab3347a4c5847c039e153d93",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_369f4ee27e4ce52b6c9572d0e37d16fcc855df33008fba04954b239d24f11649",
+      "sourceArchiveFile": "similar/high/h1/2mid/25_순천고_2학기_중간_고1_유사.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_SET_EXTREMUM",
+      "templateKey": "TPL_UNION_RANGE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f29501f9f48e-a397ad76",
+        "judge": "dots",
+        "rationale": "교집합의 가능한 범위를 구해 합집합의 최대최소로 전환한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "e62fd7f2fb1c4aad10fb9e357b097ee1a2a6015a0f403100aee3b3f43d719381",
+        "judgedContentFingerprint": "5ee1c6639b3e542bf92b690862433af31aab87abaf0e6060181c7ae6a2790eb0",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f220a71f0f449e2c885e378dfaf52b619447519d826d5ebf5aa15f27425c8dd9",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f29501f9f48e-a397ad76.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 20,
+  "expectedQuestionCount": 23
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-465df4047368-ebb7446d",
+  "sourceArchiveFile": "similar/high/h1/1final/26_금당고_1학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_7d9ad98580b60536c833d8aae22487fbe62187b2def23b81e6f2d14a36c0cef7",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ABSOLUTE_VALUE_EQUATION_INEQUALITY",
+      "templateKey": "TPL_H1_ABSOLUTE_DIRECT_INTERVAL",
+      "step": "절댓값의 크기가 7 이상인 조건을 내부식≤-7 또는 ≥7로 나눈다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_018562b23aa4baed8371efe6e3d8a1b0ec2dc9d22713d19146cde5f1d34ab486",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+      "step": "순열·조합·팩토리얼의 정의로 세 값을 직접 계산해 합한다.",
+      "note": "새 TPL 제안: 팩토리얼·순열·조합 직접 값 계산 — 정의식으로 각각 계산한 값을 합하거나 단일 값을 구한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_25f1210bed70087bfde9206a8c85e849d5f6eb620912f3958129e86d2f1de0c8",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "step": "다른 공의 배정은 순열, 같은 공의 배정은 상자 선택의 조합으로 구분하여 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5334b670de5614efba7d73ffe2ebed4b3e7a8f14115718a309f031f50d3e8fe8",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_GRAPH_PATH_COLOR",
+      "step": "중복 방문 없는 네 지역 경로를 순서별로 나누고 각 구간의 도로 선택 수를 곱해 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8f095f1f03304ad798e7a1dd6010db2fd29eccdbfa4f0f299849e9ad0f7e5c2",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_EQUATION",
+      "templateKey": "TPL_H1_MATRIX_EQUATION_LINEAR",
+      "step": "성분 규칙으로 A를 만든 뒤 행렬식을 X=3A-2B+E로 정리해 성분을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a94bee0c9b5dbb4d355bcba121b351c35e70e9af897cac72cc1d5801f10c6114",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "세 텐트의 어른 수 분배를 먼저 정하고 어른이 있는 텐트의 잔여 정원에 어린이를 배정하는 수를 합한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-06b50f297e3b-0253d5ed",
+  "sourceArchiveFile": "similar/high/h1/1final/26_순천여고_1학기_기말_고1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_66e473d2443f4dc3b74cfc356717b363bd2318332fd7e9c59ea84f29dbd09607",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_PERMUTATION_COMBINATION_CALCULATION",
+      "templateKey": "TPL_H1_PERMUTATION_COMBINATION_CALCULATION_CALCULATE",
+      "step": "조합의 팩토리얼 정의를 대입하여 약분하고 값을 계산한다.",
+      "note": "새 TPL 제안: 조합의 팩토리얼 정의를 대입하여 약분하고 값을 계산한다. 정의: 조합의 팩토리얼 정의를 대입하여 약분하고 값을 계산한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4e77b7858b065d998e8964569ed9a2b2a38074e0e0e6beb69e156ab6096019d8",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": "TPL_H1_MATRIX_MULTIPLICATION_DIMENSION",
+      "step": "앞 행렬의 열 수와 뒤 행렬의 행 수가 같은지 비교해 곱의 정의 가능성을 판단한다.",
+      "note": "새 TPL 제안: 앞 행렬의 열 수와 뒤 행렬의 행 수가 같은지 비교해 곱의 정의 가능성을 판단한다. 정의: 앞 행렬의 열 수와 뒤 행렬의 행 수가 같은지 비교해 곱의 정의 가능성을 판단한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bd799ae86a64a97964c2a2438d3c1cd4879441a7edf3c07bb4dceaece3152b32",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "x절편을 두 근으로 보고 근의 곱에서 b를, 근의 합에서 a를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9931ee2abbdb2f9a366f705f5b924d5a5a6056018cf387f0ac5cdc7ab65dd985",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+      "step": "기본 열벡터와의 곱에서 A의 두 열을 읽고 주어진 벡터와의 곱을 계산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9a6c13fad43bbd22cf72a3e0c912f88ff1e5327082053b0dbf8e40e37eef24c9",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_POWER_IDENTITY",
+      "templateKey": "TPL_H1_MATRIX_POWER_IDENTITY_SHEAR_POWER",
+      "step": "대각성분 1과 한 비대각성분을 가진 행렬의 거듭제곱에서 비대각성분이 n배임을 유도한다.",
+      "note": "새 TPL 제안: 대각성분 1과 한 비대각성분을 가진 행렬의 거듭제곱에서 비대각성분이 n배임을 유도한다. 정의: 대각성분 1과 한 비대각성분을 가진 행렬의 거듭제곱에서 비대각성분이 n배임을 유도한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f467d3354d5911a33ce1d09e01e36e59a1b15ac197643a7dc26f674c33f4ff71",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COUNTING_PRINCIPLE_GENERAL",
+      "templateKey": "TPL_H1_COUNTING_DIRECT_CASE",
+      "step": "상대 순서가 고정된 자음의 자리만 선택한 뒤 남은 모음 두 개를 배열한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_69a7c386fba313ccdaa4ca4943100c4c09267722de7b5d84967f21eb6a92d585",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_MULTIPLICATION",
+      "templateKey": "TPL_H1_MATRIX_PRODUCT_DIRECT",
+      "step": "행렬제곱의 성분합을 구하고 두 근의 합과 곱으로 치환해 k를 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_29f42ec3c268b140731674e450bc2b77084708515b175d69e7ccd1b234135307",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_DICTIONARY_ORDER_PERMUTATION",
+      "templateKey": null,
+      "step": "첫 자리의 0을 제외하고 자릿수별 팩토리얼 묶음을 빼가며 지정 순위의 수를 복원한다.",
+      "note": "새 TPL 제안: 첫 자리의 0을 제외하고 자릿수별 팩토리얼 묶음을 빼가며 지정 순위의 수를 복원한다. 정의: 첫 자리의 0을 제외하고 자릿수별 팩토리얼 묶음을 빼가며 지정 순위의 수를 복원한다. check-ledger: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c6fc0cc37d77f7fae2f63d24ec83130fb4a960ffbf494c565a47d204c242c639",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "step": "그래프가 x축과 만나지 않는 판별식 음수 조건을 두 눈의 차 제한으로 바꾸어 센다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b5fa911bcb14cb51a34825c088f5b5d860525e5268c38ee4633d51f56e174239",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "실근 조건으로 매개변수 범위를 얻고 근의 제곱합을 그 범위에서의 이차식으로 최소화한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    }
+  ]
+}

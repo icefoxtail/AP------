@@ -2,6 +2,7 @@
 // native type or an absent RPM leaf. The older Pungdeok correction contract and
 // figure-only rebind continue through their unchanged registrar branches.
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -275,7 +276,7 @@ export function registerReviewedParentCorrection({ root, request: req, write = f
     metadataRegistrationStatus: "BASIC_PARENT_CORRECTED", metadataValuesChanged: true, consumerSearchStatus: "NOT_RUN",
     totalRebound: applied.length, newFullSemanticApprovals: 0, nativeTypeApprovalsPreserved: applied.filter(r => r.nativeTypeApprovalPreserved).length,
     explicitTypeHolds: applied.filter(r => !r.nativeTypeApprovalPreserved).length, applied };
-  const outputs = new Map([[META, json(meta)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
+  const outputs = new Map([[META, questionMetadataText(meta)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
   for (const file of touched) { const rt = runtimes.get(file); refreshRuntime(rt);
     if (Object.hasOwn(rt.counts || {}, "runtimeSelectable")) rt.counts.runtimeSelectable = rt.records.filter(r => r.runtimeSelectable === true).length;
     outputs.set(file, json(rt)); }

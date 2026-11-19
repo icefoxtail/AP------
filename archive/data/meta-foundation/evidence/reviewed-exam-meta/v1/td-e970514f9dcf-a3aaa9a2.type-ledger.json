@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-e970514f9dcf-a3aaa9a2",
+  "sourceArchiveFile": "original/high/h2/1mid/23_제일고_1학기_중간_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_ae27f92b7384608ae1c09b44fd535764c585fa5f561c87857e499249ea8da2a6",
+      "sourceOrdinal": 15,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "templateKey": null,
+      "step": "중앙에서 끊긴 도로의 교차점을 제외하고 왼쪽·아래 누적경로 합을 계산하면 B에서80을 얻는다.",
+      "note": "문항·해설 직접 판독. 필수 원본 그림 Git blob 추출 후 시각 확인. 새 유형 제안명: 결손 격자 최단경로 누적. 정의: 실제 존재하는 방향도로를 따라 전구점 경로수를 더해 종점까지 최단경로를 계산한다. 구별 단서: 단일 직사각형 같은것순열 공식이 아닌 결손 교차점의 점화누적. 해당 과목 ACTIVE PT 없음. 도구 오류: PT_NOT_ACTIVE",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

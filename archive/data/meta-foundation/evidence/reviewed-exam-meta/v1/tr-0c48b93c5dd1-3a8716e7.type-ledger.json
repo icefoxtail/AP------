@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-0c48b93c5dd1-3a8716e7",
+  "sourceArchiveFile": "similar/middle/m1/2mid/25_동산중_2학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_44cfa0ee51a5417a29e20e2fea1920638049a250df87b5d22d8019ea416b9559",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_DIVISOR_MULTIPLE_EXPONENT",
+      "templateKey": "TPL_M1_DIVISOR_MULTIPLE_EXPONENT_DIVISOR_MULTIPLE",
+      "step": "90의 지수 (1,2,1)와 비교해 이하인 ㄱ,ㄷ은 약수,이상인 ㅁ은 배수로 분류한다.",
+      "note": "새 TPL 제안: 약수·배수의 지수 동시 판정: 원래 수와 후보의 소인수별 지수를 비교해 약수와 배수를 함께 판별한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_affec9f27c46461fcf676d6fdb14f678cef4431a16fe93ed467977242be3d9be",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_GCD_LCM_EXPONENT_CONSTRAINT",
+      "templateKey": "TPL_M1_GCD_LCM_EXPONENT_CONSTRAINT_CANDIDATE",
+      "step": "미지수가 15의 배수이자 90의 약수라는 조건으로 15,30,45,90을 얻고 기존 두 수를 제외한다.",
+      "note": "새 TPL 제안: 세 수의 GCD·LCM 미지수 열거: 소인수 지수의 최솟값·최댓값 제약을 만족하는 세 번째 수를 나열하고 서로 다름 조건을 적용한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3815527cfba79be7dc1c51e9bb7c298e997679d1ee1c06987ae73025ff7f7ffd",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SIGNED_CHANGE_MODEL",
+      "templateKey": "TPL_M1_SIGNED_CHANGE_MODEL_SIGN",
+      "step": "가격 상승을 양수로 정했으므로 반대 변화인 3000원 하락을 −3000원으로 나타낸다.",
+      "note": "새 TPL 제안: 상반된 변화의 부호 표현: 기준으로 정한 양의 변화와 반대 변화에 음의 부호를 붙인다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8ae2d3ec0e8ef6c607a0cfc4c81e084863b865d5a3f18157d7134734478669e7",
+      "sourceOrdinal": 12,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_RATIONAL_CLASS",
+      "templateKey": null,
+      "step": "각 단위구간의 등분 수로 좌표를 읽어 ㄱ=−3+1/2=−5/2이므로 −7/2라는 진술을 배제한다.",
+      "note": "새 PT 제안: 수직선 분할점의 유리수 좌표. 수직선에서 단위구간의 등분 수와 기준 정수로 표시된 분할점의 유리수 좌표를 결정한다. 기계검사: PT_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3d6a5b4a354fa349dc20aaedd28a368b0d236de0e3c255c38b0ebbc265e2c4e6",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY",
+      "templateKey": "TPL_EQUAL_ABSOLUTE_VALUE_DIFFERENCE_RECOVERY_OPPOSITE",
+      "step": "반대 부호의 두 수를 −a,a로 놓아 거리 2a=14에서 a=7과 두 수 −7,7을 구한다.",
+      "note": "새 TPL 제안: 반대수와 거리 복원: 절댓값이 같은 반대수의 거리가 절댓값의 두 배임을 이용하여 두 끝점을 결정한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cee5b1f958d2c3220ea678dfc8338c3b5072d9c1149c43c4486859c20968d44e",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+      "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_NUMBER_ORDER",
+      "step": "음수끼리는 절댓값이 큰 수가 작으므로 −6<−1임을 써 마지막 대소 관계를 배제한다.",
+      "note": "새 TPL 제안: 유리수 대소 진술 판별: 부호와 절댓값에 따른 순서를 적용해 제시된 부등호의 참거짓을 판단한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1b547720ac8160b4736554645e91fbc9f8e337485ded58a055d3cddbda4094ae",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_CHECK",
+      "step": "−3−(+6)을 −3+(−6)=−9로 바꾸어 계산해 +3이라는 잘못된 결과를 찾는다.",
+      "note": "새 TPL 제안: 유리수 사칙계산 결과 검토: 각 계산에 부호 규칙과 역수 또는 덧셈 변환을 적용해 잘못된 결과를 찾는다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2134da9f05842c5ada95aa087825298ab92d8e7d05aec2750c38d98e33d4d74c",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SUM",
+      "step": "7−25를 7+(−25)로 바꾸고 절댓값 차 18에 음의 부호를 붙인다.",
+      "note": "새 TPL 제안: 정수 덧셈·뺄셈: 뺄셈을 덧셈으로 바꾼 뒤 부호와 절댓값 규칙으로 계산한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_43a09befd25e5508e4bd7bbbc58fb63095c5f2533f74823cb24e2e4f8879adc2",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SUM",
+      "step": "큰 수 조건으로 a=11−4=7,작은 수 조건으로 b=3−8=−5를 얻고 a−b=12를 계산한다.",
+      "note": "새 TPL 제안: 상대적 크기의 정수식 계산: 주어진 수보다 특정 유리수만큼 크거나 작다는 조건을 덧셈·뺄셈으로 옮겨 요구량을 구한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2c79cdad5706d4d440909268affa8d77dac0679824db48781c0c9bf6c76a0b5f",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_OPERATION_RULE_JUDGMENT",
+      "templateKey": "TPL_M1_RATIONAL_OPERATION_RULE_JUDGMENT_SIGNED_SUBTRACTION",
+      "step": "풍선 제거와 모래 추가의 같은 하강 결과를 −(+2)=+(−2)로 모델링하여 뺄셈의 부호변환 원리를 찾는다.",
+      "note": "새 TPL 제안: 뺄셈 부호변환 상황 모델: 양·음의 양을 추가하거나 제거하는 상황을 식에 대응해 빼는 수의 부호를 바꾸어 더하는 원리를 확인한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_dcddabec445ea768e285be912b2aec9a41abc6533fb02bb07c4fcbfab5bec791",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
+      "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_CHECK",
+      "step": "−8÷(−4/3)을 −8×(−3/4)=6으로 바꾸어 −6이라는 잘못된 결과를 배제한다.",
+      "note": "새 TPL 제안: 유리수 사칙계산 결과 검토: 각 계산에 부호 규칙과 역수 또는 덧셈 변환을 적용해 잘못된 결과를 찾는다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_02ffacb6ab5010bc1808cec05764267fa85bdc3861162d06a0112f10bf925976",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS",
+      "templateKey": "TPL_EXTREME_PRODUCT_FROM_SELECTED_RATIONALS_PRODUCT",
+      "step": "최소 곱은 음수여야 하므로 양수와 음수 중 절댓값이 가장 큰 5와 −4를 골라 −20을 구한다.",
+      "note": "새 TPL 제안: 두 유리수 선택 곱의 극값: 유한한 수 목록에서 서로 다른 두 수의 곱을 부호와 절댓값으로 비교해 극값을 결정한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e05162764a899eb21b65fc5f4f6197309b9e22abc0311faa88dc5259aa797928",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_MINIMUM_FACTOR_TO_PERFECT_SQUARE",
+      "templateKey": "TPL_MINIMUM_FACTOR_TO_PERFECT_SQUARE_MULTIPLIER",
+      "step": "20=2²·5의 지수를 짝수로 만들기 위해 a=5k²로 놓고 두 번째 k=2에서 a=b=20을 얻는다.",
+      "note": "새 TPL 제안: 완전제곱 배수의 순서값: 홀수 지수 소인수를 보완한 최소인수에 제곱수를 곱해 가능한 인수를 순서대로 정한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    }
+  ]
+}

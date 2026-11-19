@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 15,
-  "templateCount": 30,
+  "problemTypeCount": 22,
+  "templateCount": 38,
   "foundationPack": "PROBABILITY_STATISTICS",
   "ownerPack": "PROBABILITY_STATISTICS",
   "problemTypes": [
@@ -870,6 +870,385 @@
           "questionOrdinals": [
             15
           ]
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_COUNTING",
+      "canonicalLabelKo": "경우의 수",
+      "definition": "유한한 선택과 배열의 결과를 빠짐없이 세고 합·곱의 법칙 및 중복 제거로 경우의 수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 79,
+      "supportingQuestionUids": [
+        "qid_v1_0195f0a7c4076f164503f61827844a995b8094286b16f652e90ecc40a5c94523",
+        "qid_v1_051128ce78e46e0d3d9c5d4bfbd9598d5728d421e3fd70092046042e3a56153c",
+        "qid_v1_07a58ebb91ee57882b397c714bb74b9a1b0d19447374ab012ad0ae0c00f13a52",
+        "qid_v1_09a4c7a1edea04cc3f6252d57fcb61ab6a575cdcfbcebecd0734a449a72ad7e0",
+        "qid_v1_0e133fdd721d40a534033216ebe4d6efd0a62619a25758ea9276c85c4a4fd6ea",
+        "qid_v1_16e73247bc21c92fca840618a83e6de367885478ba1852a0f634a6efb51bde09",
+        "qid_v1_21cc1947900c4c6a86485a60f73286f3e41bec0dabd73ba6f9925c2774bb952f",
+        "qid_v1_21fb8feb5f9374e331f66d9ab4436d4dfe5be2b847fd31eab8776d00fe4402ec",
+        "qid_v1_2499024247767b73df73b981511ac8e3d8bebd4b6e1c4d1db9c81a1992c0c03a",
+        "qid_v1_26a6eab7f9cca15f990264e52a7bbb302017dc3f0f2d9af22fb7054d8c67c269",
+        "qid_v1_29d69957b2e5f5d36cd3a3e23a734d1add9cfa547dd667bd520a28172215a9ff",
+        "qid_v1_2a0504765079f00d1d1470629a5946604ba16f8f1a7ca69ee35814cdbe4ef784",
+        "qid_v1_2b508b0f94425865fbbeee8c755a91735eb79cb3076b50926c7e602749ad0687",
+        "qid_v1_2c34503d08d783258688db5f638bb5fde0fff19a204cf9d92f5a6d445705bd0a",
+        "qid_v1_2de55775d2347b1a215682ca05a555ba83023b7b4a7687855580d489dbcdc211",
+        "qid_v1_2e9b38adf275bf70341f8c3efd5674694641bbbddf911c4756b8ff4420c7025a",
+        "qid_v1_2fbe925381515099a6676cd3ec04d3166d47d2ad2fd40c193df4acaf68badc15",
+        "qid_v1_31f1304b8402cd7d560c5883b87221cd78a79b4d8705699d23df2f74d794d825",
+        "qid_v1_323acd41f226abc69363fe5f19bed6e5c4ddb70cdb28801ee5f62a211f0215f0",
+        "qid_v1_34627561d3a30a10f460d14a219ae0f39eb50fa719a06e5af3a41a9a4d27ed33",
+        "qid_v1_3cde11625f9c7fc9aadb4e136a18cd26185afc36302ef7b3af0dfc6fc0a71147",
+        "qid_v1_40a4b305a6107f3c222cabb0e221db5526125a7f49b3dc97e99cc18f33562893",
+        "qid_v1_433f70378e0be113785ee6580f65915f90b768f6f6a234c7a891991d4bb42b3f",
+        "qid_v1_467b8dc55b535bb6e09c192c1e9625a1f6818b5cc390b9b25e718013bc2d242f",
+        "qid_v1_47339c515042049f5ab2a6659158673ad8f0b3d1c6bc7cce51a4136e09bd2864",
+        "qid_v1_50fa0867324c49c30942fd8c5b817e0a234d22edf2a57890bd50fc6c8b8b0869",
+        "qid_v1_5334dc71f31da16a4e72885fe521c3a48b1fe06b950872d2f76dbe750e889a69",
+        "qid_v1_54dab0473aec9167e432b42437d6885ddf6d7fcd177cf80ee3a24154731d3f2f",
+        "qid_v1_58029ec74706f46a301bd8e316a657513135e0619d8e7bb5f62a32007107e76e",
+        "qid_v1_5d78b87529945915fd06a08c41d01a408be697093f8c344a5a56504c5ab93115",
+        "qid_v1_5ec1b5a3db6a2f4d5e6d40acafa2428f88c48fe44e497475bbfe62bc2b6d05f8",
+        "qid_v1_60459bba2a23fb950125d879c045fbfd34e2bf056a475718913f2f883dcce7d7",
+        "qid_v1_62c06f9704d72252d3627f4629e6e70b0f6107673e30f1a31e97791b5be0d4ad",
+        "qid_v1_6bcbeb5fe6bb7c16cae81ecf0747b91d2399b5503f99a0db5ca908df58fb4df7",
+        "qid_v1_6e58aa4ca9664ef24639443c9ae8857014f7395e781694baa894c01849381289",
+        "qid_v1_6e958cb172db7c68b9c038159544600ad77ddc2525a5dd4cae0a946a5dacf9c0",
+        "qid_v1_760e4d6022e40128e50d62e8b9a934bb2f2c6e9af3f702c12fcb0e172c92ef88",
+        "qid_v1_7657be94fe1c355bba4340f06dda3f4ac980034c6593761a559f5d1d0d0ad263",
+        "qid_v1_78392da6a8503e516b41afe9ee7c0b6714bc89ea0a58f8aefd14d0c445925118",
+        "qid_v1_7fbaf6a2b97c68a1f9e3de2b0f458b3c10fc76aaadf19a1dbab074ac2d8c563e",
+        "qid_v1_8340d13952d2687182ecf4fe9eec194225a5de77fd3c0998c5d0f4138a3b190b",
+        "qid_v1_880bee3aea9af07c72bd83d5431d2a724b4677c14baa054754f4926b2e7fe7e2",
+        "qid_v1_886de205c24df4c488574c22400771f077b83e6b6d368a6ea516f74bdb94809c",
+        "qid_v1_888dcd071103c2dd7d244385679dbb08be345a949a3012edf85e93974fbc37c8",
+        "qid_v1_89c79c513f8fbeff31a4883516ab39370d5ca592368612353799872865f79b4a",
+        "qid_v1_8a10f06c98959ae84ce14505f427f022e9dfb22d3fd41a56167a8d61a4b202e5",
+        "qid_v1_94a4b5bd3c2bafff5322514863c731cc3ca6fbcdb999ce032d612e6dfb68afb4",
+        "qid_v1_995e1dbbb1696c4f38a46073ceadb7a0c81b44639e188d648ba93e632acfcfcf",
+        "qid_v1_9eb46bea4301554557eb0eb96a61060e15cd4f6fbb9af219f7c7e9fe22e3e394",
+        "qid_v1_9f3f3825540e4dcee612991556a02f97f634bc591b98a8e4acc707db9fc25b30",
+        "qid_v1_9fa567c3682e9b06006411ad214e966216a472e26bd84edc37803281b46022fa",
+        "qid_v1_a60b496bfdef0143d747340f4203ea2b997df3048b0304b3743e784067a695da",
+        "qid_v1_a69a6266f1521e6f620bfb01496579aa4b5c76f04ba8862197a4d05e7e2aac20",
+        "qid_v1_a941be16911747fe799516bfcd1e4e3fab0d4bc0468cc0fdcb40c9aa7ee84766",
+        "qid_v1_b02d41137aa234354a1cce7c16a311456c145a5ff99d28488ba0097aea2797a5",
+        "qid_v1_b14af6c0aa589c09462fbaf2f80ae3541d6ac3c0c10dd41cb9ee0b1534b820e5",
+        "qid_v1_b287642456ab23597a8b75a2a192b33c502c1745443128d7c7bee2f0548bea24",
+        "qid_v1_b3eced560a8331edd137bfb61dd969b22dce55ed8ea3cbc060307a18fa04b31e",
+        "qid_v1_b8564c176321097550764c170bdcee266e243ab4b7f0aa29919b05861f03b360",
+        "qid_v1_bbfffc85955e945e6f81416c9e52dbfc906cc3cadbaab99dcc44092f501324e6",
+        "qid_v1_c10dc21eabee7d29680c3c0041ec9096ce527753fc7517b634b6fa761930a60b",
+        "qid_v1_c49149124c43cd49e9566771e9adc4420755ce832856b597b0d85a353919b85f",
+        "qid_v1_c81421ec67b7f04a3ed86ab76b03e02b594283409cbc57eff85c2492a2a29e73",
+        "qid_v1_c976536da8053b6bfab5723189f5e3a3fa2c6de229768f7f17b047a77cd10534",
+        "qid_v1_cac4a936a99faabef96e14f9d23165eecbbf1417f040a0d04d74dbcce25b5c0d",
+        "qid_v1_cb9639a7e1c634094e3516ee4ec2df8641c4fa760c88e3a88e611026d1cf9981",
+        "qid_v1_d01edbffdf560cde13175083aefe5d062e3ef6393593cf080c96241ff8310735",
+        "qid_v1_d32f937d3f51d800bd65bb049e40476c1887bd8347193965bd9d3b84565a66bf",
+        "qid_v1_e0439e605592af02078e4d0efd85f039f68080b4b36ac41f916fd9417c371d95",
+        "qid_v1_e20875db93c2a1987308d8e97a4b6f1d8dc6b118a430391488dd03e9a57ab089",
+        "qid_v1_e54ca5436f74304220a5013f58d61d04a9495b8c38b74e26e923a0484f345b9f",
+        "qid_v1_e635fde4f1fd9365cb71ab60a7a9815f0c9d01391c2fa2788f4ee6caf731bb89",
+        "qid_v1_ea92d98949d402ddc635607972babbadde3b4c92343fb71b54dcc38ee3ff9bd4",
+        "qid_v1_ef258ab2d03d1b5413cc79e0e96b42303633dcb6e0747dad5404fe53c0e8a3b9",
+        "qid_v1_f16ef5950b924cac7134c98316f4f3d73bc2980359917bd3f12f4d57c99e7556",
+        "qid_v1_f2a496665fe83474194330a8d63181413a0d62f4468fed207b07ae31a876241b",
+        "qid_v1_f65e48c248976fad375b879cc697c58f346c387db67199ffa30db779526eae6d",
+        "qid_v1_f6b96a899ba1c82e2ca2fddc35880baa5fa180709a0547f70f6f5ec16d196146",
+        "qid_v1_fdfc839f5adc63e95961aa61d6f4f18582e754abedf709b033e4dea714c0fd73"
+      ],
+      "sourceUnits": [
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_COUNTING",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_LOGICAL_CONSTRAINT",
+      "canonicalLabelKo": "조건 추론",
+      "definition": "여러 논리 조건을 후보별로 대조하여 모든 조건을 만족하는 대상을 가려낸다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_4e41cd3ef76427e6a2a82b9edf0c400b1e7c40e6d1f8e18ce8fac377b3d5e8df"
+      ],
+      "sourceUnits": [
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_LOGICAL_CONSTRAINT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M2_PROBABILITY",
+      "canonicalLabelKo": "확률",
+      "definition": "등가능한 전체 결과에 대한 사건의 비와 확률의 기본 성질을 이용하며 여사건·단계별 경로의 곱과 합으로 확률을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 104,
+      "supportingQuestionUids": [
+        "qid_v1_0015dc69def320de7fa4e39bc81e7c8bbf7d53aa55fb05a7d5a96143cbdeff8b",
+        "qid_v1_003d3c0ce857918ef50ee37ff021d6b75d36ca7480ddf644c813753f5c04a2b3",
+        "qid_v1_023a92997fd9e16d100a53427048372bbf6092bcd758c865f61f7b632f13067f",
+        "qid_v1_0327ff76432dca7b69c22db6914beae91b024ac1229c60c806a4f21fc3b6d08e",
+        "qid_v1_099a69dc76112c4ef0a81883a085c1657a122d96d4e9255e0ffc5f1d7fcd83a4",
+        "qid_v1_0b20ea9127511c9d3c915be2ee70919a94c70be8635298b16ddc7c2a6cebbe3b",
+        "qid_v1_0e926988b77d1e276c460eecaedd32696bc49367afd28bb5bae21df4463d2228",
+        "qid_v1_107790cd6ae03e43424ac79ef18df8eede0146406b3e6a33b4605f70bfa97511",
+        "qid_v1_126b692ce4ac8aee791026a70b44932af0091562326fe80cf31c68ca6c930dda",
+        "qid_v1_12def9e59614babe936c8398c7b76cea74416be52ebc7502c32495e3638bffdb",
+        "qid_v1_138b30cac26acc1572b3b94277b2fbac4dd2489293bb013245e3c0ebd17b7fed",
+        "qid_v1_173b09a750d57ef9e08392b7d812306c376b2e435bedbebbb337ea15e41c6778",
+        "qid_v1_174d1526a619e3d2c6db7df82cf1114e3e308c45f4ddec3bd36a6471ab6510e8",
+        "qid_v1_1df1e4e1d1590f67b6b8a8fb0d75cc1a9ce8e0ce020db304cdd60c31a95bd789",
+        "qid_v1_22a9ffd4f499d05ed3de7ed12f4de48231c166d790d8be65b445569cc62a9845",
+        "qid_v1_2d5f277e6399765fb756654c259b33d31ebeb163668305f06aab89af934c20de",
+        "qid_v1_2f6781e99413d5250395e62484a047db4c00587eaa459c68bfe0add83d468c6c",
+        "qid_v1_30c037856a0c46573505ab340550da35a3c6df07d2e59f90fdeb93a19dbe3aa1",
+        "qid_v1_32660a4b57acdd5286c26239bca4d49f7b0265404cbc1e5de51487313b5074ce",
+        "qid_v1_337c961332cad3aaa3bd6fe18e350b9206c154bfcb5280bbf8618fb24058b94c",
+        "qid_v1_33eb0e11556a1e18a3b397bdf2809828e020630aee6efd304af0881d25bf9ae2",
+        "qid_v1_34d7df6a1e015dd20d4554f9887ae23c15ae23ad3a92fee0feab047f0293823b",
+        "qid_v1_36672a96facba8b1cb6735a5388834302c91a6ec0d20896323c6c3ac118193aa",
+        "qid_v1_3748f195665d2f4c117cb20a62956d81a745ee18e311eebbc5e5a25c7203396c",
+        "qid_v1_38a15f21d7bfcbd484c7db6cba4410fb17ea6daa485a193da126907f05bb2d99",
+        "qid_v1_3b91692490e4d42522bc9df58699d0c0f8f277577c93be65cde7b854da227baa",
+        "qid_v1_436f2ce19b5651874190300f36f5a540be0ab77cb1da9c62dcaa64441246e797",
+        "qid_v1_461e4e0d30c655ac9b15af9208b13cc8c3db183dbb5cc06273a56de96d639dc7",
+        "qid_v1_47ee15c6074289bf4df1eb68f712159df181ce4341f6e120781971db30dd8278",
+        "qid_v1_4a57f8db60537932c585b434d6122fac8dcd4347256e5b072fdd0fc21553bc41",
+        "qid_v1_4c8975e362f7e931799f157b4841f62594ef5e4302ae4a99592214d04c6b157f",
+        "qid_v1_4d2fae5718fd378def93e3b9f8cb2d9f874a45cb7f1b6c35c8202e700c073cd5",
+        "qid_v1_4f32443632ee74d5f67e1e466d4aa3acbee7b6866b060d9b1a3e6bd26500fb85",
+        "qid_v1_55005a147deaa9b350369f5764f09b9e7ce6eaaafe207cc28293959df8a7f4b0",
+        "qid_v1_5500af064a8f7fb30ccd4b1872fc348c41fefb75f91d47d7efb1ad33afe324f6",
+        "qid_v1_576ce3071c0f32e986d34ab65551531b6438eedeb68d2f5939ffa62f9ad94787",
+        "qid_v1_5dda50bee812711826e0098bf8e18ed39409a0fe04f6e4078ad6020cda7deb28",
+        "qid_v1_5ef591bc40c0b57ddd4c1fb4ebdd216b62f43a0e9cc14e0c3fcdd37e2bc3173a",
+        "qid_v1_6083ec375d3b2a9f0e432de61c84a533c239a2b21aa5fe3f978d37416e3bc273",
+        "qid_v1_644d9206e379d9d87ee6a8829f7a4af499b15d3377885c9f6f76ee4bfb39bcfa",
+        "qid_v1_646ea80ab49624894d4b989c3af33d5cc46f263e32c4d0fb0de48e443c3b790d",
+        "qid_v1_662dc9a6afb9f0f049cabd3790f9b555f79bf205d71d1729e020506626aa9d81",
+        "qid_v1_690ddf924bb6bc422ec26e7bcaba7094a7c4a66ce043bdaf5386bbcd2d7b8021",
+        "qid_v1_6ec42c599c5bcc5666e5304cc1d150e9da1e2ff977b5c6c2da4c2b0ea2d1845e",
+        "qid_v1_717104a2ee00b503b5803392767eed1dfad9222ccf2771022a2c858a6e244971",
+        "qid_v1_782006fbb2acd0c4f055fd01beecbb288265e7d0b73a1bcfd610014b37614e34",
+        "qid_v1_7c7a4eb14adb8c5094439bf4df73456d3583644278f715fdf66c321c794a93f2",
+        "qid_v1_7fbbb2cf87f608a350d2cb3ba1d810bc7fef8603928b884c538f69f08d42ac0f",
+        "qid_v1_80e416719b9c305445c7ca0a408aa6b501a43c2cbb0c1d13dd9fb717b6e23111",
+        "qid_v1_8116ec2c4974177f84a4bbffdc6b04177d57d7e89942b5282e7c522abc238a24",
+        "qid_v1_81e4708ad296c03aeb4e896db142cc9b22da23f7cb2d015403d4bebccdf6bf05",
+        "qid_v1_844ab6e6aa590ac2f6f986e77d5eecf400cc14d410d2a5f6ef628967b1518169",
+        "qid_v1_854e1d29b0869de2751ef3042d3bd9736af55c39be81526b5c6618ea973790d9",
+        "qid_v1_855baff6b2e809d69bdda152b29a85ae9d86a79fd9d23d21f1fdf1509d648eed",
+        "qid_v1_8adf93fc64dc171e61dcd8aae00c30e30fe2f3005e4c81083573982a4e17c36d",
+        "qid_v1_8b4142aca8d0a1eb9e10872e4a938e64f19cf40475c01ff15ba1a387034976a9",
+        "qid_v1_91cd189cfd3190ef91daefb7fabfda0295aa7a91828bd3f4e1a0b44ff42ea2a0",
+        "qid_v1_91ec3d9ce6e905621257aede110eb651819cae7d1999a1fbd81d4c693edf0ec3",
+        "qid_v1_97886e30d4cc7d34a90882e57a36f11029c7e4370154f47afc0321ecb6d9a76c",
+        "qid_v1_9a1b2709e6c7565113a808b2c351d1d2451fd5e62624902c0fa6fa1bb8b7288c",
+        "qid_v1_9a2370af020b47eda8d0fec5f896d218cf74c63dbdab6bdb10ccefdff6608baf",
+        "qid_v1_9a79f7d67c68703cc93ec6bf39931ef2163eef64945d704bff143010008e98ff",
+        "qid_v1_9d2797fb29ab914841ada0baf1dfdc8b3ae193356e2cd1fbef787ce96c361a11",
+        "qid_v1_9f7e019f726b8ab23e81652f7e3538d0755cd922eee165459cc1052fa57447e6",
+        "qid_v1_a110205036798c7822d7ddca502984c2136b0a75385f244856d37997910b9ddc",
+        "qid_v1_a5a9a37c3b3520cb1467ef22ee4fe0f56e5c355a8c278b037fae118c58668250",
+        "qid_v1_b2c93fe47c8659a8c885822e60f073e9d7a0a319c27ed5bdac2761298080bc03",
+        "qid_v1_b50958f824d21368038901f4f919932b7ba400580ed18c1875721dbf73d7cac8",
+        "qid_v1_b50a37b3f021ae6232bb956ab35df4f21b0e04afa3682de3f39a1ed92ef5970c",
+        "qid_v1_b59e1dc68c1b196ab80fb3dbd37a6b0a4f9524e52e2c03e8aa911641b42c793c",
+        "qid_v1_b5c29bdf8e597d06c293ff230c98c4a257bf76100d9b88ac179ca274aad1ad24",
+        "qid_v1_b5f275fe99e9ddb33d67fea16b39f6f473eb02bb97cdaff88e8c00f7c4f67dbd",
+        "qid_v1_b91045524e4a13e5c4465bd497aa69622ba0186ca58aab74fc4204dbdcb6c519",
+        "qid_v1_bcd29d74ada8f43d7916376dbfeabe7abd32e86859a3414c83b8bfc601a7d85d",
+        "qid_v1_c147fefa9c3a30b03297cb84497b7789913eee630e89a1998a94e14c5a306c71",
+        "qid_v1_c27139df2fe68f5e85625598d54346e1a8fa0cd88769dfdc3b1b2700b5079e87",
+        "qid_v1_c3f5a7e4bd3620fdf1c162e7fed1de65a3bd03f40d07a072f7a6e8f85cbea935",
+        "qid_v1_c45c0c569871a0a8a739e1c25d46dcd59abbaf74e5385f7608738e3cdf6269f0",
+        "qid_v1_c50dd5706425555bee31d0e03b6c98a8d747e4f592a928f5c291fcbf9baf65ce",
+        "qid_v1_c6711715a01fd27145b439d2e329676e18a60c517dc7c120ab3d82d479ecffa4",
+        "qid_v1_cc8a9abbd2f9ac391a25aee41d7619919b1c17c27f4b8a1cca40c0e1d1f0ac24",
+        "qid_v1_cf71a5d175a12dcfe8933413217268778bb27cfcd7bd5b41688a997a4d987c3c",
+        "qid_v1_d1fc64b3127793409a35db53d7d227b8726bb78b48e8d1ec824afbce9267fedf",
+        "qid_v1_d363cc5f21097e4c54d7db2f6cb86302a59629435dc0c6c4d3598e24b6d69ac3",
+        "qid_v1_d5792dfce39b491bccca94d15b95e98dbb1f180a1063624b3f0b997a37a4e553",
+        "qid_v1_d5b8c93aeb1423763874c5f09c1b0aa85e3c07a7dfced69806ad8ffe681629f7",
+        "qid_v1_d76e8c97a00513870a460488c9dfd82bbc90f65a3ba7da7e13da61cf1b15cf61",
+        "qid_v1_d9a997e182d310a986756d033e439e5b6489625e6a1da08e5c157467ed7ba684",
+        "qid_v1_d9e2538e6dc661e87caccbecf0b1b637c872006b83b88a8587d3907d6663e7e3",
+        "qid_v1_dc7326f23b07a05e9355f0127ab34935e7df5c85bb8ac240391941baadcad720",
+        "qid_v1_dd86f62bda102911dcf2e35800b46e71720c0407f48eb22b7bf155ac2524229e",
+        "qid_v1_e00d7e23c46a1468b70b358ae7ccf2d1511974039c2571072d0f5ec79bf42af0",
+        "qid_v1_e4932f6c768227031f70c7a1fb1dc3f6dd87e41154fba842ba1d918433313d8c",
+        "qid_v1_e51a4b15940df40ccbdfb0201f171a2068ace3f44d68cbfbfff30fed7db284be",
+        "qid_v1_e646f801d8bc3dc3f714d3de66d944e3a521aa4e2d766cdcf33b0b601d1c78f1",
+        "qid_v1_e72c09c608dafdcdf2d3e17e19690e4d5a10ff382b3cf56530b59adb305ec693",
+        "qid_v1_e7693d013cc210173c6e26a5d78a5c806e5b76ca1850825dfdb10778b02222b3",
+        "qid_v1_efbc332c6dd77b4c7ed2e4396acca287f98a1ec7e4bf6c0da1e7b06ea95cd73b",
+        "qid_v1_f06e679dd97c2e91a3911711b751452b02670672123fbb749813e0bf261d12f2",
+        "qid_v1_f25f0903341857fdfee45f1c3e5b0a0e2d1d3e335098a90bb7be676940701111",
+        "qid_v1_f367df53532b1f7b3a37513a8f87683b341a8e0c4510d74a9cf9c3dcbd0d3a15",
+        "qid_v1_f6565f94bb8c71b4a5833b5bf4b83c49c1a70fa99b539ce59ae7c06400bb9bc0",
+        "qid_v1_f8877a3fdde550fa514abfe3defda69c5e505654975c81d9e9d24fa70dc245a0",
+        "qid_v1_ff9040c2829edb3a2eb671bac7d239a6e35df2a84f571df44ca90438e5a7a575"
+      ],
+      "sourceUnits": [
+        "M2-03",
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_M2_PROBABILITY",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_PROB_COUNTING",
+      "canonicalLabelKo": "경우의 수",
+      "definition": "대상을 경우별로 나누거나 독립 선택을 결합하고 중복을 보정하여 가능한 수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 10,
+      "supportingQuestionUids": [
+        "qid_v1_0f53d1488a181e9c9eb098d0bb7967c8e7cf28a4c6517d953d9e92cc1b0d6abd",
+        "qid_v1_397eacf63aed6e096f9282dde286b0c0ebc2450660d68ed98462e5cfa69d408f",
+        "qid_v1_65793489e226d281cb97c54b9d918285da628569e28580170bb7213deebda422",
+        "qid_v1_69e0209ee3eeebc55a42272cf52a0e366d01d81a4e20b231c67005031de85dd2",
+        "qid_v1_6d29aad4547c93ca480d10a06debbb67f8151a937e825cd7a7dfcbccf2f4bb2d",
+        "qid_v1_73e744a0012d1a5aea59b92a1d69ccbd59d055edf1b80edc692705d028641a9b",
+        "qid_v1_7955be25ce24a5478cb90ef242d7e672513748ada6dd885b88d50d4df8aa1f7e",
+        "qid_v1_88a99a91457efed0225e3c3d2c2654d11a70ab7dcc0da7f9e5c6b83211019d80",
+        "qid_v1_ae27f92b7384608ae1c09b44fd535764c585fa5f561c87857e499249ea8da2a6",
+        "qid_v1_d48fd069e065759d143420b9261008746850fce8fff27c3f66b1e9687b79d9db"
+      ],
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_PROB_COUNTING",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_PROB_EXPONENT_LAWS",
+      "canonicalLabelKo": "지수법칙",
+      "definition": "거듭제곱의 나머지를 반복 곱셈과 주기성으로 환원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_7161624ad59b4e85cd84aacfaf5240828686958ce34ff21a2cbf442efa8e4981",
+        "qid_v1_e81bcd93816875c432a47d3583575da1fcc041c65f3bab6e351b380fdecb68a6",
+        "qid_v1_f63524597168dfed58436ad492482b24437ef35a3248b2280e8109f00521f4ba"
+      ],
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_PROB_EXPONENT_LAWS",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_PROB_INTEGER_PARTITION",
+      "canonicalLabelKo": "정수의 분할",
+      "definition": "합이 정해진 자연수들을 순서 없이 나열하며 중복되는 분할을 제외한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_402349b0a4d0f33f07d5cd62b6e71e4a100ce80d008dc93acbc76f1b65d3714b"
+      ],
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_PROB_INTEGER_PARTITION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_PROB_PERMUTATION_COMBINATION",
+      "canonicalLabelKo": "순열과 조합",
+      "definition": "순열·조합 및 중복형의 정의를 구별하여 기호를 계산하거나 선택·배정 구조에 맞게 적용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_0a0217f9381b64980c103bd3544e35c2bab3ecc47cfd4e5134e12662e98c4155",
+        "qid_v1_4a4507b076c66003f98e3bbd21960403a5ddb7e28f47e2091d26e5b37d522b06",
+        "qid_v1_5e883e56b289c2cd4355f6f18fbb43dd5423d2e182f6200a49c0a1f683b4be5d",
+        "qid_v1_848064a6f96108197632cfb085c359164f519252abcf38e953bd29fdcc7baae3"
+      ],
+      "sourceUnits": [
+        "H15-PS-01",
+        "H22-PS-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NPT_PROB_PERMUTATION_COMBINATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
         }
       ]
     }
@@ -1930,6 +2309,252 @@
           15
         ]
       }
+    },
+    {
+      "templateKey": "TPL_BINOMIAL_THEOREM_REMAINDER",
+      "parentProblemTypeKey": "PT_BINOMIAL_THEOREM",
+      "canonicalLabelKo": "나머지",
+      "definition": "수를 기준수와 작은 수의 합차로 놓고 이항전개에서 제수의 배수인 항을 버려 나머지나 끝자리를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 7,
+      "supportingQuestionUids": [
+        "qid_v1_0f436da7ad4140f0a313d41b2d26f3dfdcf0bf889d62def8b42ce7f7d0c15805",
+        "qid_v1_3dc318f07268595edef9870b95507c43c2062be6d803d88740190c2ef64deb09",
+        "qid_v1_6f5a8fd9e836fdf58b9e572057ec3fa6f221572af0ae6b83d36fc8e6cf4fdea0",
+        "qid_v1_7262747cfcfcd2fc1f3b8f49aa87b2015aec8c6cd77097b22e2c80cb80567a1f",
+        "qid_v1_b0c180e90b930f7a6e73ebaeca5c85bdb060939567ddfc251281efac0fba8938",
+        "qid_v1_b4fa613e3bbb5ce7574487bc6b17c0ec405750190f0ec09a87f3419b07912256",
+        "qid_v1_e39d95e93038438d4d0c478d3c7cf24c5f03f210585f5f57e8ff270c802fe499"
+      ],
+      "sourceUnits": [
+        "H15-PS-02",
+        "H22-PS-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_BINOMIAL_THEOREM_REMAINDER",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_PATH",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "canonicalLabelKo": "격자 경로",
+      "definition": "통행 불가 간선을 제외하고 교차점별 유입 경로 수를 누적하여 제한된 최단경로 수를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_940f24b66f4b31e4d594671bff86b6d02dc63f0bec9657da213b97592e1c3b6b",
+        "qid_v1_ed1e290bbf4ddf340c229ca47fd07648b7622410a702b3a2eb7ba970ce3afbc8"
+      ],
+      "sourceUnits": [
+        "H22-PS-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COUNTING_ARRANGEMENT_PATH",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_COUNTING_ARRANGEMENT_ROTATION",
+      "parentProblemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "canonicalLabelKo": "회전 중복",
+      "definition": "좌석이나 입체의 색 배열을 먼저 세고 실제 도형의 회전 대칭에 의한 중복을 나누어 서로 다른 배치를 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 9,
+      "supportingQuestionUids": [
+        "qid_v1_100dca0dcfacce814c8ee2b8631782116c31c9c28c3faaf0ccd720006a95adda",
+        "qid_v1_3c026a973151baf117fa9e7f4af50d5d0652d3d4384370d7f03ef500cf515a05",
+        "qid_v1_43d682a2d97ccd04eefdaa1f18ef3f54a31dc50ff77b064d3ee015a4472b87fe",
+        "qid_v1_47f5de1ff731758a1397cdafc281b9b76e67e9c0ec311c7e6885510fd5ef4266",
+        "qid_v1_ae1573bfe0f3e0952cba144d6a6f9b03b90c97af179fad1ab9728e2034b42492",
+        "qid_v1_b46053376ee9bf5dfb1d83800fff96d83c5d1da7738046df8931e61fbc571bfe",
+        "qid_v1_bc942e8659284c42b758342f21591d24fa40d6f7033a73ccf8c1a58233d3696e",
+        "qid_v1_bdf6dcf55bd64873d83a10a6fcd2f0ef726faaf11a7fe1eadf18cd027a0fe2b1",
+        "qid_v1_d1c4ddf94bf0ce007b704c8c3d9c04aeecd219966defd4dd383861ba97bdbfb2"
+      ],
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_COUNTING_ARRANGEMENT_ROTATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT",
+      "parentProblemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+      "canonicalLabelKo": "합과 곱의 법칙 결합",
+      "definition": "배타적인 경우는 더하고 연속 선택은 곱하여 전체 경우의 수를 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_c1366697d776433903fe0c5c8fa320409b820abb382eab452a1b2c8b3015e921",
+        "qid_v1_e107431c40dcf228ada6fc3fa0c32ed658c49edaa044bf72cb2153649c8f3d81"
+      ],
+      "sourceUnits": [
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_M2_BASIC_COUNTING_CASE_SPLIT_SUM_PRODUCT",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+      "parentProblemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "canonicalLabelKo": "확률 정의",
+      "definition": "표본공간·사건·근원사건을 나열하거나 정의와 확률의 기본 성질을 대조하여 진술을 판별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_0be3762cb402fe78c3e0862fdf5da10abe761dc391177e00d637a2c4fb2a8ed9",
+        "qid_v1_267c3e1bb3b0786c86d8fd35ac63b7815d4771f8d6096e4d8d2cc4c3eb9001cf",
+        "qid_v1_3892b3ff350a0b4b81ca558a4724a115c0a0898ef9fcc13e2681361638995c05",
+        "qid_v1_6e5ca1b2d2464fd70e6b9bee8a4f31b771924a33cc1c97da10d553268469ebb0",
+        "qid_v1_b8539a3e0e472d0d66feff4f53782218c23b0e2dd0fc485a341c3328dca24e87"
+      ],
+      "sourceUnits": [
+        "H15-PS-03",
+        "H22-PS-03",
+        "M2-08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_PROBABILITY_PROPERTIES_APPLICATION_DEFINITION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_RANDOM_VARIABLE_DISTRIBUTION_CLASSIFICATION",
+      "parentProblemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "canonicalLabelKo": "이산과 연속",
+      "definition": "가능한 값이 셀 수 있는지 연속 측정값인지 판단하여 확률변수의 종류와 정의를 구별한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [
+        "qid_v1_2d5c7a0cb2b9378880b5dd163ed29c07b1d7061074be6f0ec2642b594a883a15",
+        "qid_v1_3058c3b6fe7b6ba9d73d469651c878d82bdc421fa36244d5b1cb35439453c343",
+        "qid_v1_317a242890c8672228f93331c0d306d026b090d3aa3ff920c812741637542c55"
+      ],
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_RANDOM_VARIABLE_DISTRIBUTION_CLASSIFICATION",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_STATISTICAL_ESTIMATION_PROP_CI",
+      "parentProblemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "canonicalLabelKo": "모비율 신뢰구간",
+      "definition": "표본비율을 중심으로 표준오차와 신뢰계수를 이용해 모비율 신뢰구간을 구하거나, 주어진 구간의 중점에서 표본비율과 빈도를 복원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 5,
+      "supportingQuestionUids": [
+        "qid_v1_0f2d5b57565b73d695fce1a221fb1073863839d10c338fdfd2605f318a440ef7",
+        "qid_v1_4000939232e1fd2211b76f4ac0bbe775eee48ffd7f4e910c17d4d88480d958c6",
+        "qid_v1_61880b73756d0f29e4a60465e67c2849ad84baa8656116677640e2c172dce735",
+        "qid_v1_9b8379d341056dff8364a692f1a73f3c87006f8fbfb146e06515b167ba7e9bcd",
+        "qid_v1_eb6605a3e930038e55aead6433355455823f9289e7468d20cfc3a06b4d91b519"
+      ],
+      "sourceUnits": [
+        "H22-PS-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_STATISTICAL_ESTIMATION_PROP_CI",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_STATISTICAL_ESTIMATION_SAMPLE_MEAN",
+      "parentProblemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "canonicalLabelKo": "표본평균 분포",
+      "definition": "표본평균의 평균은 모평균이고 표준편차는 모표준편차를 표본크기 제곱근으로 나눈 값임을 이용한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "PROBABILITY_STATISTICS",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_06de81f5f35d6242f9b28644ee83b275de690a143d4ca07ca92125a2706cd3d0",
+        "qid_v1_79153099869f9a53509285af0d033b3b46c84e3da3455b2e64a9f256854613c9"
+      ],
+      "sourceUnits": [
+        "H15-PS-06"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_STATISTICAL_ESTIMATION_SAMPLE_MEAN",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
     }
   ],
   "externalReferences": {

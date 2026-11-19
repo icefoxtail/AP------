@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-e91a0f433cfa-d7002ca3",
+  "sourceArchiveFile": "similar/high/h2/1mid/26_매산고_1학기_중간_고2_기하_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_d9d4071baee9566c670e0f4f10b339d43bc3d8e4b07cbe53ab1a123a2a155f29",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+      "step": "공간에서 한 직선 위 세 점만으로는 그 직선을 포함하는 평면이 무수히 많다는 평면 결정 조건을 적용한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 공간에서 평면의 결정 조건 판별; 정의: 주어진 점과 직선들의 공선성·교차·평행·꼬인 위치를 확인하여 이를 포함하는 평면이 유일한지, 무수히 많은지, 존재하지 않는지를 구분한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3bf481a990b2a2d69787536652128d1fcac7926488fdbd2d476de260d9c5e408",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "step": "기울기 2인 직선을 쌍곡선에 대입한 이차방정식의 판별식을 0으로 두어 절편을 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 주어진 기울기의 이차곡선 접선 도출; 정의: 직선 y=mx+n을 이차곡선에 대입하고 이차방정식의 판별식을 0으로 놓아 주어진 기울기에 대응하는 절편 또는 접선 공식을 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8153be21b2c38ba84e03a7321705a6e3869552dcfd732b641a8909826dccf050",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "step": "직선 대입식의 중근 조건을 비교하되 이차항이 사라지는 점근선 평행 직선은 접선에서 제외한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 쌍곡선 접선 판별과 점근선 평행 예외; 정의: 주어진 직선을 쌍곡선에 대입하여 중근 조건을 검사하되 이차항이 사라지는 점근선 평행 직선은 한 교점만 있어도 접선으로 세지 않는다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d75d52aa21f9c2dfce58d2f160ffa1c09a08493490b37fe4427bcdbf011a4adf",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+      "step": "평행한 평면의 공통 법선과 수선을 포함하는 평면의 수직성을 적용하고 같은 평면에 평행한 두 직선의 반례를 든다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 공간 직선·평면의 평행·수직 명제 판정; 정의: 평면의 법선과 서로 만나는 두 직선에 대한 수직 조건으로 공간의 평행·수직 명제를 판단하고 반례 또는 추가 조건으로 참·거짓을 구분한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a61e3c847b5bcb2dfcb8273ee03ae2db747e83c0472fc68def3ec4b3bb6e6ac",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_PROJECTION",
+      "step": "정사면체 단면 삼각형의 넓이에 교선에 수직인 두 선분 사이 각의 코사인을 곱해 정사영 넓이를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 이면각의 코사인을 이용한 정사영 넓이; 정의: 원래 도형의 넓이를 구하고 두 평면의 교선에 각각 수직인 선분 사이 각을 이면각으로 잡아 그 코사인을 곱하여 정사영 넓이를 구한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_706a1ff6bb67e07e6179be469bfdf164a13e192e1f75e6954aac3fc19da86c84",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_CONIC_TANGENT_DISCRIMINANT",
+      "step": "일반 기울기 직선을 타원 방정식에 대입한 이차식 계수와 판별식의 중근 조건을 전개한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 주어진 기울기의 이차곡선 접선 도출; 정의: 직선 y=mx+n을 이차곡선에 대입하고 이차방정식의 판별식을 0으로 놓아 주어진 기울기에 대응하는 절편 또는 접선 공식을 구한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_623891a2ba085a8bbac73020d7ea305178ed52a96a7e4923719f67a4905e65df",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "templateKey": "TPL_GEO_SPACE_FIGURE_RELATION",
+      "step": "수직인 두 평면에서 한 평면 위 직선이 상대 평면에 수직이 되려면 교선에도 수직이어야 함을 두 직선 수직 조건으로 증명한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 공간 직선·평면의 평행·수직 명제 판정; 정의: 평면의 법선과 서로 만나는 두 직선에 대한 수직 조건으로 공간의 평행·수직 명제를 판단하고 반례 또는 추가 조건으로 참·거짓을 구분한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ecf4e594f75e9d346189d4c3a4aa242289f1e47e76ab42b3345aa050a06521fa",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+      "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+      "step": "타원 접선의 x절편과 접점에서 수직인 직선의 x절편을 각각 구하여 원점까지 거리의 곱을 계산한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d13803976b3674ea227354c21aa89f5465a063526670f7964557578902bffd1a",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_HYPERBOLA",
+      "templateKey": "TPL_GEO_HYPERBOLA_FOCAL_DISTANCE",
+      "step": "두 가지의 초점 거리 차를 둘레식에 대입하여 PF와 PF′를 구한 뒤 이등변 조건으로 초점 간 거리를 결정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT 정의에는 맞지만 활성 TPL의 세부 골격과 정확히 일치하지 않아 tpl=null. TPL_NOT_ACTIVE 검사는 null에 따른 결과로 별도 보존. 필요한 TPL 이름: 쌍곡선의 초점 거리차를 이용한 둘레 소거; 정의: 각 가지의 초점 거리차를 적용하여 두 점을 잇는 선분이 포함된 둘레에서 중간 거리를 소거하고 남은 삼각형의 변 관계로 초점 간 거리를 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    }
+  ]
+}

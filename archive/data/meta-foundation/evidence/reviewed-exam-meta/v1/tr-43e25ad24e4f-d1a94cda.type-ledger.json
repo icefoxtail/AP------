@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-43e25ad24e4f-d1a94cda",
+  "sourceArchiveFile": "similar/middle/m1/2mid/25_연향중_2학기_중간_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_029068d1a2a518bcb2f92207b0f48c5f723579feab839cd36156126fea0850a8",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COORDINATE_POINT_READING",
+      "templateKey": "TPL_COORDINATE_POINT_READING_QUADRANT_SIGN_TRANSFORM",
+      "step": "제4사분면 조건 a>0,b<0에서 −ab>0,a−b>0을 얻어 제1사분면으로 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c232b66fd912967dee8095ebb5654f4ae104c97057a4597e675d6be03311de19",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GRAPH_TO_CONTAINER_SHAPE_INFERENCE",
+      "templateKey": "TPL_GRAPH_TO_CONTAINER_SHAPE_INFERENCE_SLOPE",
+      "step": "단면적이 일정한 A는 직선 ㄴ,좁아지는 B는 가팔라지는 ㄷ,넓어지는 C는 완만해지는 ㄱ에 대응한다.",
+      "note": "새 TPL 제안: 그릇 폭과 수위 그래프 대응: 일정 유량에서 높이별 단면적 변화와 수위 증가율의 역관계로 곡선을 선택한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9586a293403b48b267eeebc81988847ccdcd63dc3fe4e9b4315e60f90568a1c8",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "step": "y=−2x에 x=0을 대입해 원점 통과를 확인하고 음의 비례상수로 사분면과 감소 성질을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ec9f673ad56a763a8c4830c75a880d1766c59a4435cf1dc15288ca706eee5c2b",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_STRAIGHT_ANGLE_PARTITION",
+      "templateKey": "TPL_M1_STRAIGHT_ANGLE_PARTITION_ADJACENT_RATIO_SUM",
+      "step": "COD=x,DOE=y로 놓아 평각 식 36+3x+3y=180에서 목표각 x+y=48도를 얻는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4188ec2621585c52674f10d440d91b9f9c2741a578fd5480cbaa9d9a08eaeed1",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_TRANSFER",
+      "step": "평행선 엇각으로 a=55도,동측내각으로 b=180−115=65도를 정해 합 120도를 구한다.",
+      "note": "새 TPL 제안: 두 횡단선의 직접 각 전달: 평행선의 엇각과 동측내각으로 각각 각을 정해 요구한 합을 계산한다. 기계검사: TPL_NOT_ACTIVE; 내용 판정과 분리하며 검증 통과로 취급하지 않음.",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_91835ecf53a12674b640fa846dab2e095fa280473a69fc16842aa856ba22c89e",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA",
+      "templateKey": "TPL_M1_SQUARE_CONFIGURATION_CONGRUENCE_AND_AREA_ROTATED_CENTER_OVERLAP",
+      "step": "OC=OD와 45도 및 직각의 차로 ASA 합동을 증명해 겹친 부분을 OCD 넓이25로 옮기고 두 부분합50을 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-2mid.jsonl"
+    }
+  ]
+}

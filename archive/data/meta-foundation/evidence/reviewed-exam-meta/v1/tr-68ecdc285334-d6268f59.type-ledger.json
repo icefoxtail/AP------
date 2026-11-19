@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-68ecdc285334-d6268f59",
+  "sourceArchiveFile": "original/high/h2/2final/23_강남여고_2학기_기말_고2_확률과통계.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_6d306849f9c8ac3b7962eceaf444919db1f9e4291074a9d8afa988ca4ad95074",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "step": "두 제품 모두 불량일 조합확률 1/15을 1에서 빼 불량 1개 이하의 확률을 구한다.",
+      "note": "ACTIVE 키·TPL 상위관계 직접 확인; 연결 없음(NEEDS_BINDING).",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c665d61a7a468f0bce2bb048f80dfeb8ff25b49b48ea37025c1d072d908a62c1",
+      "sourceOrdinal": 24,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "step": "63.6점을 z=0.3으로 표준화한 상위확률 0.38에 학생 500명을 곱한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_056422b3c69248f3f3d6a8b6012f04bed2e6e0c6ae97fa7a1a18675ef1a701ec",
+      "sourceOrdinal": 25,
+      "decision": "PICK",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "step": "95% 구간 중심 10과 반폭 0.392에서 n=100을 구하고 같은 중심의 99% 구간 양끝합을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2final.jsonl"
+    }
+  ]
+}

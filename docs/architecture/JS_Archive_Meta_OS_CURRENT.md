@@ -86,7 +86,7 @@
 **난이도** (정수 1~5 21,004. 그 칸의 다른 값: `하` 722 / `중` 1,736 / `상` 623 / `중상` 54 / `UNKNOWN` 72 / 빈 문자열 352 / null 94 / 필드 없음 3,966)
 - 빌더: 메타의 정수 1~5만 `difficultyBucket`으로, 아니면 `"UNKNOWN"`. JS `difficultyBucket`은 충돌 검사에만 쓴다. JS `level`은 `legacyLevel`로 분리 보존.
 - 일반: 정수 1~5만 본다(보조 3값 불요). 빠른: 정수 1~4 + 기술 게이트(`generalUseEligibility`).
-- 엄격 `difficultyEligible`(APMS 클리닉 추천 `apmath/js/clinic-recommendations.js`, 빠른 평가 감사 모드)은 소스 VERIFIED + 정수 + 보조 3값 + 충돌 없음을 요구한다(3장).
+- `difficultyEligible`(`archive2-core.js`, APMS 클리닉 추천 `apmath/js/clinic-recommendations.js`, 빠른 평가 감사 모드)은 일반 사용 자격(`generalUseEligibility`)과 정수 1~5만 본다. 보조 3값은 요구하지 않는다(2026-11-11 결정의 코드 반영). 보조 3값을 아직 요구하는 곳은 스테이지 검증기(`archive-stage-validator-artifact-v2.mjs`)다.
 - 기출: `meta.difficultyBucket || record.difficultyBucket`의 정수 1~5만 단계로 읽는다. 없으면 "단계 미지정"(제외 아님, `level`은 표시용).
 - 팩: 기존 난이도가 있으면 유지(없으면 팩 값), 병합 메타는 `metaFoundationDifficultyBucket`에 따로 둔다. 보조 3값은 덮어쓴다.
 - 통일안: ①→②(보조 3값이 없어도 쓰고 신뢰도는 꼬리표)→③(JS에 정수가 있을 때)→"단계 미지정". level→bucket 환산 금지는 그대로 ([DF] §21).
@@ -130,7 +130,7 @@
 | `archive2-canonical.js` 영수증 루프 | 등록 영수증 `REGISTERED`+승인 유형+원본 SHA 일치+단원·소단원 승인 | 정식 L3/L4 배정 |
 | `problem-bank-meta.js` `createSourceBoundDisplayProjection` | `approved_*`+단원·소단원 승인+증거, 또는 등록 대기 증거, 또는 검토된 H1 원본 | 표시 투영 `metaProjection`의 과목·단원·소단원 라벨(`DISPLAY_PROJECTION_CORE_APPROVAL_MISSING`) |
 | `buildMetaHint` | `metaHintCurriculum`만 `approved_*`+단원 승인 | 교육과정 근거 |
-| `archive2-core.js` `difficultyEligible` | 소스 VERIFIED(일반 모드는 `metaBinding: content`도)+정수+신뢰도 high/medium/low+경계 플래그 5값+호환성 `NORMAL`/`BORDERLINE_ACCEPTABLE`/`STRONG_CONFLICT`+난이도 필드 충돌 없음 | APMS 클리닉 추천, 빠른 평가 감사 모드. 정수 21,004행 중 8,462행만 보조 3값 조건 충족(12,542행 제외). 소스 상태 조건까지 넣은 카탈로그 기준으로는 7,955행만 통과(13,049행 제외, `audit.mjs` 활용 격차 2026-11-11) |
+| `archive2-core.js` `difficultyEligible` | (현재) `generalUseEligibility` + 정수 1~5. 아래는 2026-11-11 당시 조건: 소스 VERIFIED(일반 모드는 `metaBinding: content`도)+정수+신뢰도 high/medium/low+경계 플래그 5값+호환성 `NORMAL`/`BORDERLINE_ACCEPTABLE`/`STRONG_CONFLICT`+난이도 필드 충돌 없음 | APMS 클리닉 추천, 빠른 평가 감사 모드. 당시 정수 21,004행 중 8,462행만 보조 3값 조건 충족(12,542행 제외). 소스 상태 조건까지 넣은 카탈로그 기준으로는 7,955행만 통과(13,049행 제외, `audit.mjs` 활용 격차 2026-11-11) |
 | `archive2-core.js` `advancedEligible` | 소스 VERIFIED+등록 영수증 결속 배정(`REGISTERED`, FINAL_QA/REVIEW2/META_PIPELINE_AUDIT, 원본 SHA 일치)+foundation `CONFIRMED`+충돌 없음 | L3/L4 필터 |
 | `archive2-core.js` `basicEligibility` | `review`·`semantic`·`solution`·`source_issue` 보류, 적용성, 충돌 | 엄격 자동출제 지표. 일반 사용은 이 중 어느 것도 문턱으로 쓰지 않는다 |
 | 난이도 보조값 허용 목록 | `register-difficulty5.mjs`는 `BORDERLINE_REVIEW`를 쓰고 `active-registry.mjs`·`rpm-active-resolver.mjs`·`archive2-core.js`는 불인정 | 정본 `BORDERLINE_REVIEW` 1,029행(`NORMAL` 6,806 / `BORDERLINE_ACCEPTABLE` 1,183 / `STRONG_CONFLICT` 511 / `UNKNOWN` 638 / `MOTHER_FINAL_REVIEW` 54 / 없음 18,402). 2단계 첫 항목, 여기서는 사실만 |
@@ -224,6 +224,7 @@ node archive/tools/meta-foundation/stage-meta-bridge.mjs --stage R1 --input arch
 | 2026-11-11 | 빈 메타 총정리는 Codex가 직접(Gemini는 분류에 쓰지 않음), 판단은 모델이 형식은 도구가, 판정은 서로 보지 않고 두 번. 메타를 하나의 운영체제로 묶는다(Git이 유일한 정본, 3단계 순차) | [MD], 이 문서 |
 | 2026-11-11 | 새 키·새 값은 미분류로 받아 두고 나중에 묶는다. 채워 가는 메타 전체에 같은 방향 (정본이 아니라는 이유로 값이 밀려 파이프라인이 멈춤). 소단원은 키를 그대로 두고 묶음표로 묶는다 | [MD] 소단원 묶음표, 빈 메타 채우기 실행 방식 |
 | 2026-11-11 | 빈 메타 판정은 루나가 밤새 두 번 독립으로, 난이도 포함(Gemini 난이도는 참고). 난이도는 보수적으로, 원장은 기계 합격 검사로 걸러 낸다. 보류 문항은 그림을 직접 읽고, "조건이 모순"은 보류 사유가 아니다 (틀 문장 원장 41/45, 높게 잡는 쏠림) | [MD] 빈 메타 채우기 실행 방식 |
+| 2026-11-19 | 새 문항 메타는 최소 한 벌. 작성자는 키·레코드 번호·정수만 고르고, `rpmL1~L4`는 등록기가 번호에서 채우며, 읽는 곳 없는 사본은 쓰지 않는다. 기존 값·받는 범위는 그대로 (같은 값을 여러 칸에 써 어긋남, 하/중/상 사고) | [MD] 새 문항 메타는 최소 한 벌 |
 
 ## 9. 미결 표와 우선 적용
 

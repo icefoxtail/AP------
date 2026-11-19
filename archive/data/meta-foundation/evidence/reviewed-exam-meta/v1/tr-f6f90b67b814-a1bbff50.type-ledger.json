@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-f6f90b67b814-a1bbff50",
+  "sourceArchiveFile": "similar/middle/m1/1final/19_동산중_1학기_기말_중1_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_1c6b1ecb71bb23a22d6c6daff464831d6fc4c11afb96a341f42beb161c193cde",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_POLYNOMIAL",
+      "templateKey": null,
+      "step": "각 항에 부호를 포함해 -4x가 올바른 일차항임을 판정한다.",
+      "note": "새 PT 제안: 다항식의 구조 판별. 다항식의 항·계수·차수·상수항을 부호와 함께 식별하고 관련 조건을 판별한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c8503173b626e33d738ee1dd2ab379702f8e5c24ed070e34354621e4bdbd084d",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_POLYNOMIAL",
+      "templateKey": null,
+      "step": "이차항·일차항 계수와 상수항 -2,5,-7을 읽어 결합한다.",
+      "note": "새 PT 제안: 다항식의 구조 판별. 다항식의 항·계수·차수·상수항을 부호와 함께 식별하고 관련 조건을 판별한다. 도구 오류: PT_NOT_ACTIVE,DUPLICATE_PROPOSED_NAME",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3b4c93ef8ef5db248ad70ae6e01a8eddaf0925370781b837610adec41e4191ff",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+      "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+      "step": "각 식을 분모로 나눈 뒤 빼는 식의 부호를 바꾸어 x-1로 정리한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_2998177e9592a240dcd7358338e3877764bdb927e2531128ed4561f3c1cb32ff",
+      "sourceOrdinal": 5,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_M1_IDENTITY",
+      "templateKey": null,
+      "step": "양변을 전개하여 모든 x에서 계수가 같은 등식만 고른다.",
+      "note": "새 PT 제안: 일차방정식·항등식 구분. 양변을 전개·정리하여 일차방정식,항등식 및 그 밖의 식을 정의에 따라 구분한다. 도구 오류: PT_NOT_ACTIVE",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_f386031378de7c5495978c987e2bc1bf77959f9e52ab0916645dc6ae84ff8a05",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_READ",
+      "step": "속력 그래프가 수평에서 감소로 바뀌는 시각10초를 읽는다.",
+      "note": "새 TPL 제안: 상황 그래프의 증가·감소·변화량 해석: 시간 그래프의 기울기·수평 구간·변화량과 상황의 변화 관계를 읽는다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_07584f5b713e2041a116152e163288d3e3489afee2a034f84784c12907d8eba6",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
+      "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_PROPORTION",
+      "step": "비례상수가 음수인 정비례·반비례 그래프가 제2사분면을 지남을 적용한다.",
+      "note": "새 TPL 제안: 좌표·비례상수 부호와 사분면: 좌표와 비례상수의 부호를 이용하여 점 또는 그래프의 사분면을 판정한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9545a03d93561a45f5cbb5b1c43f4846ac691e8d9e919ca354a5fc54085a6324",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_RATE",
+      "step": "거리24와 속력.8을 이용해 .8x=24를 푼다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_18a58ca5aa2ed1a21bfb802db3f79bec4f13f55724c076206541ceaaf9c2863e",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+      "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_READ",
+      "step": "기온 그래프가 우상향하는 구간6시부터14시를 읽는다.",
+      "note": "새 TPL 제안: 상황 그래프의 증가·감소·변화량 해석: 시간 그래프의 기울기·수평 구간·변화량과 상황의 변화 관계를 읽는다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a6f2f8547aa8f5ea2fb6c79156eab486a7d9bc881ae2d8181293ce4e839a585a",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_DIRECT",
+      "step": "그림의 점(2,-4)를 y=ax에 대입해 a=-2를 구한다.",
+      "note": "새 TPL 제안: 정비례·반비례 식의 결정과 대응값: 주어진 좌표·일정한 비 또는 곱을 이용하여 비례상수 및 대응값을 구한다. 도구 오류: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_38bc52e945dbb174fd663ee812efcc70fe6081a6a613c86ab14c47baf8f367c8",
+      "sourceOrdinal": 25,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+      "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_INVERSE_POINT_SUBSTITUTION",
+      "step": "그림의(60,2)에서 반비례상수120을 정하고 대응값을 대입한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m1-1final.jsonl"
+    }
+  ]
+}

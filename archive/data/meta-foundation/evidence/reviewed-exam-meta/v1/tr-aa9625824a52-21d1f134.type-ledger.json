@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-aa9625824a52-21d1f134",
+  "sourceArchiveFile": "original/high/h1/1mid/22_복성고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0aa6e3e08ba7d569c5416fb6e090129e0b7edf0725375e86d252901cfb233462",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "step": "세제곱 차를 (x-y)³+3xy(x-y)로 변형해 주어진 값을 대입한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6575311368c1deffc3f0571ff9c63ab28737a4e242306114a66e85f9053b9804",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "step": "인수정리와 묶기를 이용해 (x-1)(2x+1)(2x²+1)로 분해하고 보기의 인수를 비교한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e9d9ef04225f97355f92b8117cd2bf0c037f6001414f8c419a041a1af3f2db30",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_OPERATION_AUDIT",
+      "step": "음수의 제곱근 분수, i의 주기, 켤레곱의 영 조건을 각각 계산하여 옳은 명제를 고른다.",
+      "note": "새 TPL 제안: 복소수 기본 성질 혼합 진위. 정의: 음수 제곱근 연산·i의 주기·켤레곱 조건의 서로 다른 명제를 개별 확인한다. 새 TPL 제안: 음수의 제곱근 분수, i의 주기, 켤레곱의 영 조건을 각각 계산하여 옳은 명제를 고른다. 정의: 음수의 제곱근 분수, i의 주기, 켤레곱의 영 조건을 각각 계산하여 옳은 명제를 고른다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_96bf4c5622efeca7fd035c54b770eca9297d2bb08e7249c2cfafcac0aeeb259c",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+      "templateKey": "TPL_H1_FACTOR_THEOREM_REPEATED",
+      "step": "나머지를 뺀 식에 x-2가 두 번 인수로 들어감을 이용해 한 인수를 제거한 뒤 다시 x=2를 대입한다.",
+      "note": "새 TPL 제안: 중복 일차인수 순차 대입. 정의: 나머지를 뺀 다항식의 중복인수 조건을 한 인수씩 제거하며 영점 대입하여 계수를 정한다. 새 TPL 제안: 나머지를 뺀 식에 x-2가 두 번 인수로 들어감을 이용해 한 인수를 제거한 뒤 다시 x=2를 대입한다. 정의: 나머지를 뺀 식에 x-2가 두 번 인수로 들어감을 이용해 한 인수를 제거한 뒤 다시 x=2를 대입한다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_90751a88fb893b6516eade15b014d4db589ca9c248406d1ce06f66a5dc5fdd0b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_POLY_DIVISION",
+      "templateKey": "TPL_H1_POLY_DIVISION_IDENTITY",
+      "step": "나눗셈 항등식의 차수 관계로 f의 차수 2를 정하고 계수비교로 f(x)=x²+2x+3을 얻는다.",
+      "note": "새 TPL 제안: 합성 다항식 나눗셈 항등식. 정의: f(x²)=f(x)Q(x)+r에서 차수와 계수를 비교해 f를 복원한다. 새 TPL 제안: 나눗셈 항등식의 차수 관계로 f의 차수 2를 정하고 계수비교로 f(x)=x²+2x+3을 얻는다. 정의: 나눗셈 항등식의 차수 관계로 f의 차수 2를 정하고 계수비교로 f(x)=x²+2x+3을 얻는다. 검사 오류: [{\"code\":\"TPL_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

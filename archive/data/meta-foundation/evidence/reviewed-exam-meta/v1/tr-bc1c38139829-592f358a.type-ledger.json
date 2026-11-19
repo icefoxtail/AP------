@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-bc1c38139829-592f358a",
+  "sourceArchiveFile": "similar/high/h2/1mid/26_제일고_1학기_중간_고2_대수_유사.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_4390ce6a7d1ab19517068c187ce80a7bec44b8cc9bfa6a64874c4c715da1e3cb",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+      "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_069",
+      "step": "세제곱근의 곱과 중첩 근호를 동일한 2의 세제곱근으로 정리하여 계수를 뺀다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_897420d6d1307d08fefd03ee801349f5351c184deab77f74dd17ac77c23489a3",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+      "step": "부채꼴 넓이=반지름×호 길이/2로 반지름을 구하고 호 길이를 반지름으로 나눠 중심각을 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 연결 후보 밖이지만 ACTIVE 정의가 직접 읽은 결정적 풀이와 맞아 선택함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7b4bd4120d240869416f92b343f86c44e90fd42894f59446b649733168ab58f1",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "step": "공통 거듭제곱값 k에 로그를 취해 지수의 역수를 표현하고 주어진 식을 xyz로 나누어 log k를 구한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 연결 후보 밖이지만 ACTIVE 정의가 직접 읽은 결정적 풀이와 맞아 선택함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cbed68f3190cf4061d92503399fe1aad83c10a41359ab7a9487633c5ec3f194b",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "step": "t=3의 x제곱+3의 −x제곱이 2 이상임을 구한 뒤 치환된 이차식의 제한구간 최솟값을 계산한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT는 맞지만 TPL은 세부 풀이 전체에 꼭 맞지 않아 null로 남김. 검사기의 TPL_NOT_ACTIVE는 null 선택에서 발생한 결과로 별도 보존.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_42302e7d00ca40c1247e7801e7e7618011854f3efa52351963072cfc82d69880",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "templateKey": "TPL_LOG_FUNCTION_INEQUALITY_RANGE",
+      "step": "합성의 안쪽 이차함수 범위를 구한 뒤 두 로그함수의 증가·감소에 맞춰 극값을 정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. PT는 맞지만 TPL은 세부 풀이 전체에 꼭 맞지 않아 null로 남김. 검사기의 TPL_NOT_ACTIVE는 null 선택에서 발생한 결과로 별도 보존.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_09b9350ab8b9d5319d02cf59e16a817cf3fe4fa4d10beefd211fa7d03af4243f",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+      "step": "두 수평선과 절댓값 로그곡선의 교점을 구한 뒤 평행한 변과 높이로 사다리꼴 넓이를 계산한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함. 연결 후보 밖이지만 ACTIVE 정의가 직접 읽은 결정적 풀이와 맞아 선택함.",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_5e5b5cbe43bed4e0611bd26e60a031cb3514bea2cd69f6f2d28565e43d933473",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "제4사분면에서 사인함수의 음수 주기별 교점 수를 직선의 x절편 위치로 나누어 세 교점 조건을 정한다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_66ebf0a942d339ea2ce7e653a5b8bd4c44ac07c535c98831950c66a651e7ef1b",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+      "step": "조각별 직선과 절댓값 지수 그래프의 수평선 교점 수를 n별로 나눈 뒤 합이 3인 순서쌍을 센다.",
+      "note": "원문과 해설을 직접 읽고 ACTIVE 정의로 독립 판정함.",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h2-1mid.jsonl"
+    }
+  ]
+}

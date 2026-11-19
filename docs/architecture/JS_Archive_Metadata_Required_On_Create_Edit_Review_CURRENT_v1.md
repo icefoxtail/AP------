@@ -79,15 +79,16 @@ JS 객체에 미지원 필드를 임의로 추가하지 않는다. **JS와 동�
 
 ## 2. 문항 JS 기본 필수 필드
 
-각 신규 candidate/production 문항은 기존 기본 스키마를 보존한다.
+각 신규 candidate/production 문항은 기존 기본 스키마를 보존하되, 필드를 둘로 나눈다(2026-11-19 메타 줄이기, 스테이지 검증기 `archive-stage-validator-artifact-v2.mjs` 기준).
 
-`id, category, originalCategory, standardCourse, standardUnitKey, standardUnit, standardUnitOrder, questionType, layoutTag, tags, wide, content, choices, answer, solution, subUnitKey, subUnit, subUnitConfidence, subUnitClassificationDepth`
+- 필수: `id, standardCourse, standardUnitKey, standardUnit, subUnitKey, subUnit, subUnitClassificationDepth, questionType, layoutTag, wide, content, choices, answer, solution`. `standardUnit`·`subUnit`은 키에서 정해지는 마스터 글자다(하네스가 채우고, 하네스가 없으면 그대로 옮긴다).
+- 있으면 검사하고 없으면 통과: `category, originalCategory, tags, standardUnitOrder, subUnitConfidence`. `originalCategory`는 원본 기출에 적힌 글자만 쓰고 새 유사·생성 문항은 비운다. 메타 사본(`level`·`L3` 등)은 원본 JS에 쓰지 않는다([metadata.md](../agents/metadata.md) "최소 한 벌").
 
 - `level`은 새 문항에서 선택(쓰지 않는다). 기존 문항의 값은 지우지 않으며 값이 있으면 '하'|'중'|'상'만 허용. 하/중/상에서 1~5로 **환산 금지**.
 - `questionType`은 실제 응답형(객관식/단답형/서술형 등 현재 schema 허용값); `tags`는 도형·그래프·표·서술형 등 실제 필요 요소를 표시한다.
 - `layoutTag:'grid'`, `wide:false` 기본. 화면 배치는 엔진이 자동으로 정하고 데이터의 배치 태그는 처음 배치에서 무시된다(수동 지정은 `layoutForce`뿐, docs/agents/archive2-code.md). 작성자가 데이터에 특수배치 태그를 새로 추정해 넣지 않는다.
 - `image`, `solutionImage` 및 관련 visual 필드는 실제 해당 문항에 필요한 경우에만 현재 지원 schema·asset 실파일과 연계한다.
-- `standardCourse → standardUnitKey → standardUnit → standardUnitOrder`와 `standardUnitKey → subUnitKey → subUnit`의 정합을 최신 Markdown/compiled master 직접 대조. `subUnitConfidence` 허용값: `existing_preserved|candidate_evidence|category_or_cue_inferred|rule_inferred`; `subUnitClassificationDepth`: `complete_candidate|complete_category|complete_documented|complete_rule`.
+- `standardCourse → standardUnitKey → standardUnit → standardUnitOrder`와 `standardUnitKey → subUnitKey → subUnit`의 정합을 최신 Markdown/compiled master 직접 대조. 값이 있을 때 `subUnitConfidence` 허용값: `existing_preserved|candidate_evidence|category_or_cue_inferred|rule_inferred`; `subUnitClassificationDepth`: `complete_candidate|complete_category|complete_documented|complete_rule`.
 - 키는 정식 master/허용된 extension parent에 실제 존재해야 하며 label/order/parent가 맞아야 한다. `RAW-*`, `RRAW-*`, `UNMAPPED-*`, `PROPOSED-*`를 정식 분류로 가장하지 않는다. 근거 불명 시 임의 채움 대신 정확한 문항·필드·사유를 분류 debt에 남긴다. 기존 legacy 누락은 범위 내에서만 처리한다.
 
 기준: `docs/rules/01_CANONICAL/JS아카이브룰북_v2.6.md`, `JS아카이브_표준단원키_마스터테이블.md`, `JS아카이브_세부단원_운영규칙_v1.md`, `archive/data/master_tables/js_archive_tag_master.json`.

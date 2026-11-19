@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { questionMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -104,7 +105,7 @@ export function registerFinalqaPinpointDelta({root, request, write = false, veri
     // Preserve the shared sidecar digest convention after the authorized server write.
     delete doc.digest;
     doc.digest=crypto.createHash("sha256").update(JSON.stringify(doc)).digest("hex");
-    const newText=JSON.stringify(doc,null,2)+"\n";
+    const newText=questionMetadataText(doc);
     fs.writeFileSync(path.join(root,META),newText,"utf8");
   }
   return {status:"PASS",examUid:EXAM,write,matchedRows:21,changedRows:changed,changedFields,fingerprintRepairs,

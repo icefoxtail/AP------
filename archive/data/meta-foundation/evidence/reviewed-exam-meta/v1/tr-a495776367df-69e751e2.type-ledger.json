@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tr-a495776367df-69e751e2",
+  "sourceArchiveFile": "original/high/h1/1mid/23_매산여고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_84cafecea84da0e22abe8261d593803b247d55b57735330aae138987764cbafc",
+      "sourceOrdinal": 2,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "음수 제곱근과 분수는 i로 정리하고 거듭제곱 네 항의 합이0임을 확인해 ㄷ만 제외한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b1e77bbb98420f194935311199c266ff88b7bc9223f7fd666bfe00c4fb8360b8",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+      "step": "P=(x+1)(x−2)Q+R에2를 대입하면 제수항이0이므로 R(2)=P(2)=7이다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e9e55ee0c5a9770b39b267b2764f93441a5bbfec544ad1ad8d3acdfa66df4720",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "step": "교점 방정식의 근의 합 a−1과 곱−3으로 차의 제곱16을 표현해 양수 a=3을 고른다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8225cee0833a37079915699ea2df3a1f4d1eafb7f81908091b226e15170e5410",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "step": "실제 그림의 두 교점 중 g의 꼭짓점Q와 x=−1인P의 좌표를 계산해 f에 대입하여 a,b를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0ec6678ffe1747e2c0a713e8bd71fa46edab2bd7795de048dd1c2a6cdf1ac370",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "step": "삼차 제수의 나머지를 x+2+k(x²−x+1)로 나타내 P(1)=4로 k=5를 정하고 P(−1)을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_63d41242295fd4b680980e77d3e9405f2a6bd21f280260f4741dbe86a6bf481b",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+      "step": "z=x+yi를 대입해 실수부x+3y=5와 허수부x+y=−1을 연립한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_b0e279acb2b25965df62185ff322dcc7b32e39430db0547675717651c0a49e4b",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "step": "구간별 두 이차식의 근 위치와 중근을 따로 세어 경계 m=11/3 및 접함 m=2√2일 때만 교점3개임을 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}
