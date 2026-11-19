@@ -1,0 +1,58 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "B의 4원소",
+        "in": [
+          "B",
+          "C",
+          "A"
+        ]
+      },
+      {
+        "text": "C에만 넣는 원소",
+        "in": [
+          "C",
+          "A"
+        ]
+      },
+      {
+        "text": "A에만 두는 원소",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "B",
+    "subset": [
+      "B",
+      "C",
+      "A"
+    ]
+  },
+  "caption": "B⊂C⊂A이므로 그림에서 가장 안쪽이 B, 가운데 고리가 C에서 B를 뺀 부분, 바깥 고리가 A에서 C를 뺀 부분이다. A의 원소 7개 중 B의 4원소를 고르는 방법이 7C4=35가지이다. B를 정하면 나머지 3원소는 각각 C에 넣거나 넣지 않아 2의 3제곱=8가지이다. 따라서 35×8=280이고 답은 ②이다.",
+  "accessibilityDescription": "전체집합 안에서 세 집합이 B, C, A 순서로 안쪽에 포함된 벤다이어그램이며 영역마다 이름이 적혀 있고 가장 안쪽 B가 색칠되어 있다.",
+  "newVisualInformation": [
+    "B⊂C⊂A의 세 영역이 구분되어 B를 고르고 나머지 3원소를 C에 넣을지 정하는 구조가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "집합 $A$, $B$, $C$는 다음을 만족한다.<br><br><div class=\"exam-box\">(가) $A = \\{a, b, c, d, e, f, g\\}$<br>(나) 집합 $B$의 원소 개수는 4개<br>(다) $B \\subset C \\subset A$</div><br>집합 $B$, $C$가 될 수 있는 모든 경우의 수를 구하면? [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
