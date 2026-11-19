@@ -186,9 +186,9 @@
   function teacherSessionOk() {
     const rule = window.Archive2Session;
     if (!rule?.state) return true;
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    if (memory.login_id && memory.raw_password) return true;
-    return rule.state(session()).loggedIn;
+    // 토큰이 없는 세션은 로그인한 것으로 보지 않는다(요청도 보내지 않고 로그인 안내를 낸다).
+    const current = session();
+    return Boolean(current?.session_token) && rule.state(current).loggedIn;
   }
   const isAuthError = (error) => error?.status === 401 || error?.status === 403;
   function loginNoticeMarkup(kind) {
@@ -644,6 +644,12 @@
         quickState.pick = "";
         quickState.shortOpen = false;
         replaceUrlState();
+        render();
+      } else if (a === "quick-semester") {
+        quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
+        quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
@@ -1401,7 +1407,7 @@
       state.selected = [];
       state.rows = [];
     }
-    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"].includes(p.get("view"))
       ? p.get("view")
       : "home";
     if (isQuickAssessmentView()) {

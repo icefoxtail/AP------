@@ -43,7 +43,7 @@
     { key: "library", label: "보관함", view: "saved", url: "workspace.html?view=saved" },
   ];
   // 5분 테스트 / 소단원 평가 / 중단원 평가 / 종합평가 share the 빠른 평가 menu entry.
-  const QUICK_VIEWS = ["five-minute", "subunit-test", "unit-test", "monthly-test"];
+  const QUICK_VIEWS = ["five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"];
   const WORKSPACE_VIEWS = ["home", "find", "compose", "saved", "recent", "health", ...QUICK_VIEWS];
   // Name shown in the phone top bar on every screen except 홈.
   const VIEW_TITLES = {
@@ -56,6 +56,7 @@
     "subunit-test": "소단원 평가",
     "unit-test": "중단원 평가",
     "monthly-test": "종합평가",
+    diagnostic: "진단평가",
   };
   const LOGIN_URL = "../apmath/";
   // The teacher rule lives in archive2-session.js (shared with 단원별 기출). Without it nobody counts as logged in.
