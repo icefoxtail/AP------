@@ -5,42 +5,39 @@
     "curves": [
       {
         "id": "X",
-        "mean": "0",
-        "sd": "1",
+        "mean": "m",
+        "sd": "σ",
         "label": "X"
       }
     ],
     "ticks": [
       {
-        "x": "-1",
-        "text": "m-σ"
+        "z": "-1"
       },
       {
-        "x": "0",
-        "text": "m"
+        "z": "0"
       },
       {
-        "x": "1",
-        "text": "m+σ"
+        "z": "1"
       }
     ],
     "shades": [
       {
-        "from": "-1",
-        "to": "0",
+        "from": "m-σ",
+        "to": "m",
         "color": "BLUE"
       },
       {
-        "from": "0",
-        "to": "1",
+        "from": "m",
+        "to": "m+σ",
         "color": "WARM"
       }
     ],
     "symmetry": [
       {
         "pair": [
-          "-1",
-          "1"
+          "m-σ",
+          "m+σ"
         ]
       }
     ]

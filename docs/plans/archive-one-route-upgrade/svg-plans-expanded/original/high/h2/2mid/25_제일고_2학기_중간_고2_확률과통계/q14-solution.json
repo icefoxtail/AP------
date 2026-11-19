@@ -13,34 +13,38 @@
     "ticks": [
       {
         "x": "-1",
-        "text": "W 70"
+        "text": "W70"
+      },
+      {
+        "x": "0"
       },
       {
         "x": "0.5",
-        "text": "X 215"
+        "text": "X215"
       },
       {
         "x": "2",
-        "text": "Y 210"
+        "text": "Y210"
       }
     ],
     "shades": [
       {
-        "from": "-1",
-        "to": "0.5",
+        "from": "W70",
+        "to": "X215",
         "color": "BLUE"
       },
       {
-        "from": "0.5",
-        "to": "2",
+        "from": "X215",
+        "to": "Y210",
         "color": "GREEN"
       },
       {
-        "from": "2",
+        "from": "Y210",
         "to": null,
         "color": "WARM"
       }
-    ]
+    ],
+    "zAxis": true
   },
   "caption": "표준화하면 a=P(Z≥−1), b=P(Z≥0.5), c=P(Z≥2)이다. 한 표준정규분포 곡선에서 오른쪽 꼬리는 시작점이 왼쪽일수록 넓다. 주황 부분이 c, 초록과 주황이 b, 파랑과 초록과 주황이 a이다. 따라서 a>b>c이고 답은 ①이다.",
   "newVisualInformation": [
