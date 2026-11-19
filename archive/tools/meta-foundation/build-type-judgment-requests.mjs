@@ -211,11 +211,9 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
   const wanted = exams ? new Set(exams.map(normalizeExam)) : null;
-  const seen = new Set();
+  const taken = new Set(); // a question one result line already put into a request: its other lines are duplicates (a line that was held or skipped does not take it)
   const candidates = new Map(); // exam -> rows
   for (const row of resultRows) {
-    if (seen.has(row.uid)) { skip(row, "DUPLICATE_RESULT_LINE"); continue; }
-    seen.add(row.uid);
     if (row._skip) { skip(row, row._skip); continue; } // decided by the new-key bundles (--bundles), see new-type-keys.mjs
     if (row.decision === "NEW_KEY") { skip(row, "DECISION_NEW_KEY_NOT_HANDLED"); continue; }
     if (row.decision === "HOLD") { skip(row, "DECISION_HOLD"); continue; }
@@ -242,6 +240,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if ((ctx.identityCountBySource.get(file) || 0) !== bank.length) { for (const { row } of entries) skip(row, "EXAM_IDENTITY_COUNT_DIFFERS_FROM_SOURCE"); continue; }
     const items = [];
     for (let { row, m } of entries) {
+      if (taken.has(row.uid)) { skip(row, "DUPLICATE_RESULT_LINE"); continue; }
       // A status is a tag on a value: a field with no value has nothing to protect, whatever its tag says (approved_* on an empty field is fillable).
       // 등록부에 없는 옛 키로 채워진 칸은 지킬 값이 없는 칸과 같다(register-type-judgment.mjs typeFieldHoldsRegisteredValue, 등록기와 같은 함수). before는 현재 값 그대로 적는다.
       const holds = { pt: typeFieldHoldsRegisteredValue(ctx.registry, "problemType", m.problemTypeKey), tpl: typeFieldHoldsRegisteredValue(ctx.registry, "template", m.templateKey) };
@@ -297,6 +296,7 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
       if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
+      taken.add(row.uid);
       items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null, replace });
     }
     // Replacements of draft values never share a request with the blank-field registrations (they are held back as the last batch).

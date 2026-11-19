@@ -375,3 +375,14 @@ test("a type written in the exam file never keeps a judged question out of a req
   assert.deepEqual(Object.keys(after).sort(), ["uid1", "uid2", "uid3"]);
   for (const uid of ["uid1", "uid2", "uid3"]) assert.deepEqual(after[uid], { problemTypeKey: "PT_A", templateKey: "TPL_A" });
 });
+
+test("a later result line for the same question is used when the earlier one was held; once one line is in a request the rest are duplicates", () => {
+  const held = line(1, { decision: "HOLD", pt: null, tpl: null });
+  const better = line(1, { judge: "claude-sonnet-5.5" });
+  const again = line(1, { judge: "dots" });
+  const { requests, skipped } = planRequests({ ctx: makeCtx(), resultRows: [held, better, again], approvedBy: "x" });
+  const items = requests.flatMap(r => r.items);
+  assert.equal(items.length, 1);
+  assert.equal(requests[0].approval.judge, "claude-sonnet-5.5");
+  assert.deepEqual(skipped.map(s => s.reason).sort(), ["DECISION_HOLD", "DUPLICATE_RESULT_LINE"]);
+});
