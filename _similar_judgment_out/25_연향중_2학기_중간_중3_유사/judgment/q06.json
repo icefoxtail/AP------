@@ -1,0 +1,62 @@
+{
+  "qid": 6,
+  "itemFingerprint": "5093aef035e6662e",
+  "solveSteps": [
+    "예각에서 tan 60도 = sqrt(3)이므로 x = 60도이고, sin 30도 = 1/2이므로 y = 30도이다.",
+    "따라서 x - y = 60도 - 30도 = 30도이고, cos(30도) = sqrt(3)/2이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "$x$, $y$가 모두 예각이므로 $\\tan 60^\\c",
+  "rpmRecordId": "M3-RPM-058",
+  "rpmReason": "특수각 x = 60도, y = 30도를 구하고 cos 30도 = sqrt(3)/2를 계산한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+  "typeReason": "특수각 x = 60도, y = 30도 조건으로부터 두 각의 차의 코사인 값을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x = 60도와 y = 30도를 즉시 찾아 cos 30도 = sqrt(3)/2를 구하므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "탄젠트",
+        "src": "stem",
+        "quote": "$\\tan x=\\sqrt"
+      }
+    ],
+    "goal": [
+      {
+        "term": "탄젠트",
+        "src": "solution",
+        "quote": "예각이므로 $\\tan 60^\\cir"
+      }
+    ],
+    "method": [
+      {
+        "term": "예각",
+        "src": "solution",
+        "quote": "$y$가 모두 예각이므로 $\\ta",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x = 60도, y = 30도에서 x - y = 30도를 얻고 cos 30도 = sqrt(3)/2로 계산하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

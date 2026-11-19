@@ -1,0 +1,63 @@
+{
+  "qid": 5,
+  "itemFingerprint": "7d377b34a78f8c60",
+  "solveSteps": [
+    "반지름 OA = OB = 1인 부채꼴 AOB에서 AH perp OB이다.",
+    "직각삼각형 AOH에서 OH = OA * cos 40도 = cos 40도이다.",
+    "따라서 선분 BH = OB - OH = 1 - cos 40도이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 반지름의 길이가 $1$이고 중심각의 ",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "$OA=OB=1$이고 $AH \\perp OB$이므로 직",
+  "rpmRecordId": "M3-RPM-060",
+  "rpmReason": "직각삼각형 AOH에서 코사인 정의로 OH = cos 40도를 구하고 BH를 유도한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "부채꼴 AOB의 반지름 1과 중심각 40도로부터 선분 BH의 길이를 표현하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "단위원에서 코사인의 기하학적 정의로 OH = cos 40도를 파악해 1 - cos 40도를 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "\\circ$인 부채꼴 $AOB$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "OB$일 때, 선분 $BH$의 길"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "가 $1$이고 중심각의 크기가 $4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직각삼각형 AOH에서 OH = cos 40도를 얻어 선분 BH = 1 - cos 40도로 산출해 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

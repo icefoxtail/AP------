@@ -1,0 +1,63 @@
+{
+  "qid": 20,
+  "itemFingerprint": "1fa942834b7debf3",
+  "solveSteps": [
+    "AO = 6 cm이므로 반원의 지름 AB = 12 cm이다.",
+    "접선의 길이는 같으므로 DA = DE, CB = CE이고 AD + BC = DE + CE = DC = 16 cm이다.",
+    "따라서 사각형 ABCD의 둘레는 AB + BC + CD + DA = 12 + 16 + 16 = 44 cm이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $DA$, $CB$, $CD$는 지름이 ",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "$AO=6,\\mathrm{cm}$이므로 반원의 지름 $",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmReason": "반원의 지름 AB = 12와 접선의 성질 AD + BC = 16을 더해 둘레 44 cm를 산출한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_LENGTH",
+  "typeReason": "반원의 접선과 접점 조건으로부터 사각형 ABCD의 둘레를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지름 12와 접선 합 AD + BC = 16을 더해 단순 덧셈 12 + 16 + 16 = 44를 수행하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "반원",
+        "src": "stem",
+        "quote": "이 $AB$인 반원 $O$의 접선"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "$ABCD$의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "반원 $O$의 접선이고 세 점 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "지름 AB = 12 cm와 접선 성질 AD + BC = DC = 16 cm에서 둘레 44 cm를 산출하여 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

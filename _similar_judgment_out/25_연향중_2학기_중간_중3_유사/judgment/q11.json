@@ -1,0 +1,62 @@
+{
+  "qid": 11,
+  "itemFingerprint": "8bea35e1e000c91b",
+  "solveSteps": [
+    "삼각형 ABC에서 변 AB = 6 cm, BC = 12 cm이고 사이각 B = 60도이다.",
+    "삼각형의 넓이는 (1/2) * 6 * 12 * sin 60도 = 36 * (sqrt(3)/2) = 18*sqrt(3) cm^2이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $AB=6,\\mathrm{cm}$, ",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "$A$에서 $BC$에 내린 수선의 길이를 $h$라 하면",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmReason": "두 변 AB = 6, BC = 12와 끼인각 60도의 사인 넓이 공식으로 18*sqrt(3)을 계산한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+  "typeReason": "두 변과 끼인각 60도로 삼각형 ABC의 넓이 18*sqrt(3)을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "삼각형 넓이 공식 (1/2)*ab*sin B를 바로 적용해 18*sqrt(3)을 구하므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "e ABC$의 넓이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "e ABC$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "e ABC$의 넓이는 $\\dfra",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "변 AB = 6과 BC = 12, sin 60도 공식으로 넓이 18*sqrt(3) cm^2를 산출해 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
