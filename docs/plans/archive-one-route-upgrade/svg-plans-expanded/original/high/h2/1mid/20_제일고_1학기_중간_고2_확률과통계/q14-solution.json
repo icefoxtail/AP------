@@ -1,0 +1,57 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      },
+      {
+        "id": "C"
+      }
+    ],
+    "elements": [
+      {
+        "text": "6",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "3",
+        "in": [
+          "A",
+          "C"
+        ]
+      },
+      {
+        "text": "4, 12",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "5, 7, 11",
+        "in": [
+          "C"
+        ]
+      }
+    ],
+    "shade": "A∩C"
+  },
+  "caption": "표본공간 S={3, 4, 5, 6, 7, 11, 12}에서 A={3, 6}, B={4, 12}, C={3, 5, 7, 11}이다. 그림에서 A와 B는 겹치지 않고 B와 C도 겹치지 않아 ①, ③은 서로 배반이다. A와 C는 3에서 겹치므로(색칠한 부분) 배반이 아니다. A의 여사건과 C의 교집합은 {5, 7, 11}, B의 여사건과 C의 여사건의 교집합은 {6}이어서 ④, ⑤도 배반이 아니다. 따라서 답은 ①, ③이다.",
+  "accessibilityDescription": "표본공간 안에서 세 집합 A, B, C의 벤다이어그램이며 원소가 영역에 적혀 있고 A와 C가 겹치는 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "A와 B, B와 C가 겹치지 않고 A와 C만 3에서 겹치는 구조가 보여 배반인 쌍이 구분된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$3, 4, 5, 6, 7, 11, 12$가 각각 적힌 7장의 카드 중에서 임의로 1장을 택할 때, 세 사건 $A, B, C$가\n\n$$\\begin{gathered} A: 6\\text{의 약수가 나오는 사건} \\\\ B: 4\\text{의 배수가 나오는 사건} \\\\ C: \\text{소수가 나오는 사건} \\end{gathered}$$\n\n일 때, 다음 중 서로 배반인 사건을 모두 고른 것은? [4.8점] (OMR 답안 중복 마킹 가능)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

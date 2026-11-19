@@ -1,0 +1,39 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 7,
+      "rows": 4
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        4,
+        2
+      ],
+      "B": [
+        7,
+        4
+      ]
+    },
+    "viaPoints": [
+      "P"
+    ],
+    "counts": "segments"
+  },
+  "caption": "A에서 P까지는 오른쪽 4칸, 위쪽 2칸이므로 6C2=15가지이다. P에서 B까지는 오른쪽 3칸, 위쪽 2칸이므로 5C2=10가지이다. P를 반드시 지나므로 곱의 법칙으로 15×10=150가지이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "가로 7칸 세로 4칸의 도로망이며 A, P, B가 표시되고 A에서 P, P에서 B 구간의 경로 수가 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "P를 경계로 나눈 두 구간의 경로 수 15와 10이 보여 곱의 법칙으로 150이 됨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림과 같은 도로망이 있다. 지점 $A$에서 반드시 지점 $P$를 거쳐 지점 $B$까지 가는 최단 경로의 수를 구한 것으로 옳은 것은? [4.5점]\n\n<img src=\"assets/images/20_제일고_1학기_중간_고2_확률과통계/q05.png\" alt=\"그림\" class=\"exam-image\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
