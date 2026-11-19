@@ -1,0 +1,92 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ]
+      },
+      {
+        "coefficients": [
+          "4",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "T",
+        "x": "5",
+        "y": "9"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "2",
+        "0"
+      ],
+      "T": [
+        "5",
+        "9"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "g",
+          "slope": "6",
+          "intercept": "-21",
+          "label": "y=6(x-k)"
+        }
+      ]
+    }
+  },
+  "caption": "f는 x=2에서 값과 기울기가 모두 0으로 이어지는 점 P(2,0)에서 미분가능하므로 a=2이다. 그림의 직선은 k=7/2일 때 g(x)=6(x-k)=6x-21의 x>k 부분으로, 포물선 y=(x-2)²에 점 T(5,9)에서 접하며 이보다 오른쪽으로 옮기면 f≥g가 깨진다. 따라서 k의 최솟값은 7/2이고 p+q=2+7=9이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=\\begin{cases}(x-2)^2&(x>a)\\\\0&(x\\le a)\\end{cases}$, $g(x)=\\begin{cases}0&(x\\le k)\\\\6(x-k)&(x>k)\\end{cases}$가 다음을 만족한다.\n\n(가) $f(x)$는 실수 전체에서 미분가능하다.\n(나) 모든 실수 $x$에 대하여 $f(x)\\ge g(x)$이다.\n\n실수 $k$의 최솟값을 $\\dfrac qp$라고 할 때, $p+q$의 값은? [4.6점]\n(단, $p,q$는 서로소이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "k=7/2일 때 직선 g가 포물선에 접점 T(5,9)에서 접하는 한계 경우를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=7/2일 때 직선 y=6x-21이 포물선 y=(x-2)²에 T(5,9)에서 접하는 한계 경우이다."
+  ],
+  "accessibilityDescription": "x축을 따라가다 점 P에서 포물선으로 이어지는 f의 그래프와 그 포물선에 점 T에서 접하는 직선을 나타낸 그림이다."
+}

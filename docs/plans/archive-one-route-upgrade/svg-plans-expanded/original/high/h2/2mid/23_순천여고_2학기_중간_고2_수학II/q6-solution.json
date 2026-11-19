@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "17/4",
+          "-5/4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      3
+    ],
+    "viewport": [
+      -1,
+      3,
+      0,
+      10
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "5/8",
+        "y": "247/64"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "5/8",
+        "247/64"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "V"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "S",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "t",
+          "slope": "3/4",
+          "intercept": "13/4",
+          "label": "t"
+        },
+        {
+          "id": "s",
+          "slope": "7/4",
+          "intercept": "9/4",
+          "label": "s"
+        }
+      ]
+    }
+  },
+  "caption": "예: g(x)=x²-5x/4+17/4(g(1)=4, g′(1)=3/4)의 그림이다. h가 0에 가까워지면 g(1+h)-4가 0에 가까워야 하므로 g(1)=4(점 T)이고 극한은 g′(1)=3/4, 곧 접선 t의 기울기이다. 그림의 할선 s는 h=1일 때 T와 S를 지나며 h→0이면 t에 가까워진다. 따라서 g(1)g′(1)=4×3/4=3이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $g(x)$가 $\\displaystyle\\lim_{h\\to0}\\dfrac{g(1+h)-4}{h}=\\dfrac34$를 만족할 때, $g(1)g'(1)$의 값은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "점 T(1,4)에서 기울기 3/4인 접선 t와 h=1의 점 S를 지나는 할선 s를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 T(1,4)에서 접선 t의 기울기가 3/4이고 h=1의 할선 s가 t로 가까워진다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 점 T에서 접하는 직선 t, 두 점 T, S를 지나는 할선 s를 나타낸 그래프이다."
+}

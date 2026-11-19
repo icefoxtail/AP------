@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          1,
+          4
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          4,
+          6
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "2",
+        "3"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "3"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 값을 갖는 예시 그래프를 그렸다. x=1의 왼쪽 가지는 열린 점 A(1,2)로 다가가므로 좌극한은 2이고, x=4의 오른쪽 가지는 점 B(4,3)에서 시작하므로 우극한은 3이다. 합은 2+3=5이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 아래와 같을 때, $\\displaystyle\\lim_{x\\to1-}f(x)+\\lim_{x\\to4+}f(x)$의 값은? [3.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 왼쪽에서 점 A의 높이 2, x=4의 오른쪽에서 점 B의 높이 3을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x→1-에서 f는 A(1,2)로, x→4+에서 f는 B(4,3)으로 다가간다."
+  ],
+  "accessibilityDescription": "x=1과 x=4에서 끊어지는 조각 그래프이며 x=1의 왼쪽 끝 점 A와 x=4의 오른쪽 시작점 B의 좌표가 표시되어 있다."
+}

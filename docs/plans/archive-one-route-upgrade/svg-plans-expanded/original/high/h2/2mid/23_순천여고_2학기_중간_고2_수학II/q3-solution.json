@@ -1,0 +1,68 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          -1,
+          2
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          2,
+          5
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "2",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "5"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "5"
+      }
+    ]
+  },
+  "caption": "x≠2에서 (x²+x-6)/(x-2)=x+3이므로 그래프는 직선 y=x+3이고 x=2인 점 P(2,5)만 비어 있다. x→2의 극한은 5이므로 f(2)=a가 이 빈 점을 5로 채울 때 연속이다. 따라서 a=5이고 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}\\dfrac{x^2+x-6}{x-2}&(x\\ne2)\\\\a&(x=2)\\end{cases}$가 실수 전체의 집합에서 연속일 때 상수 $a$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직선 y=x+3의 빈 점 P(2,5)를 f(2)=a로 채워 연속이 되는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=x+3의 x=2인 빈 점 P(2,5)를 a=5로 채우면 연속이 된다."
+  ],
+  "accessibilityDescription": "기울기 1인 직선에서 x=2인 점 P가 채워진 상태로 표시된 그래프이며 P의 좌표가 쓰여 있다."
+}

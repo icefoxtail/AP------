@@ -1,0 +1,119 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      1
+    ],
+    "viewport": [
+      -1,
+      1,
+      -0.5,
+      1.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "P",
+          "curveX": "1/2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "1/2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "op",
+          "from": "O",
+          "to": "P"
+        },
+        {
+          "id": "pq",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "oq",
+          "from": "O",
+          "to": "Q"
+        }
+      ],
+      "circles": [
+        {
+          "id": "C",
+          "center": [
+            "1/4",
+            "1/4"
+          ],
+          "radiusSquared": "1/8"
+        }
+      ],
+      "rightAngles": [
+        {
+          "at": "Q",
+          "from": [
+            "O",
+            "P"
+          ]
+        }
+      ]
+    }
+  },
+  "caption": "예: t=1/2일 때의 그림이다. P(1/2,1/2)이고 OQ=PQ에서 Q(0,t²+1/4)=Q(0,1/2)이다. 삼각형 POQ는 Q에서 직각이라 외접원의 지름은 OP이다. 일반적으로 sinθ=1/√(4t²+1), A(t)=(4t²+1)의 3/2제곱을 4로 나눈 값이고 t→∞에서 A(t)/t³→2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 그림과 같이 곡선 $y=2x^2$ 위의 점 $P(t,2t^2)$ $(t>0)$에 대하여 $\\overline{OQ}=\\overline{PQ}$가 되도록 점 $Q$를 $y$축의 양의 방향에 잡는다. 삼각형 $POQ$의 외접원의 지름의 길이를 $A(t)$라 할 때, 다음 물음에 답하시오. [7점]\n(단, $O$는 원점이다.)\n\n(1) $\\angle POQ=\\theta$라고 할 때, $\\sin\\theta$를 $t$에 대한 식으로 나타내시오. [2점]\n(2) $A(t)$를 구하시오. [3점]\n(3) $\\displaystyle\\lim_{t\\to\\infty}\\dfrac{A(t)}{t^3}$의 값을 구하시오. [2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1/2의 예에서 삼각형 POQ의 외접원과 직각 Q를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1/2의 예에서 삼각형 POQ는 Q에서 직각이고 외접원의 지름은 선분 OP이다."
+  ],
+  "accessibilityDescription": "포물선 위의 점 P, y축 위의 점 Q, 원점 O를 꼭짓점으로 하는 삼각형과 그 외접원을 나타낸 그림이며 Q에 직각 표시가 있다."
+}

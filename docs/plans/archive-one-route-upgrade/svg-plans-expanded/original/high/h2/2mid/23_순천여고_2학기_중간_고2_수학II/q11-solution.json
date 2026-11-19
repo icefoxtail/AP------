@@ -1,0 +1,85 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "4"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "4"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "4"
+      ],
+      "V": [
+        "1",
+        "0"
+      ]
+    }
+  },
+  "caption": "x=-1에서 좌미분계수 -4와 우미분계수 2(-1)+a가 같아야 하므로 a=-2이다. 연속 조건에서 -4(-1)=4=1-a+b이므로 b=1이다. 그림은 a=-2, b=1일 때 직선 y=-4x와 포물선 y=(x-1)²이 P(-1,4)에서 기울기 -4로 매끄럽게 이어지는 모습이다. a²-b²=4-1=3이므로 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}-4x&(x<-1)\\\\x^2+ax+b&(x\\ge-1)\\end{cases}$가 실수 전체의 집합에서 미분가능할 때, $a^2-b^2$의 값은? [4점]\n(단, $a,b$는 상수이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=-2, b=1일 때 P(-1,4)에서 값과 기울기 -4가 같게 이어지는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=-2, b=1일 때 직선과 포물선이 P(-1,4)에서 기울기 -4로 매끄럽게 이어진다."
+  ],
+  "accessibilityDescription": "왼쪽은 직선, 오른쪽은 아래로 볼록한 포물선이 점 P에서 매끄럽게 이어진 그래프이며 P의 좌표와 포물선의 꼭짓점 V가 표시되어 있다."
+}
