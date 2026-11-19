@@ -423,3 +423,36 @@
 | 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
 
 - 문제그림 REQUIRED/BENEFICIAL 4개: 16, 17, 20, 22. 해설그림 REQUIRED/BENEFICIAL 2개: 16, 17.
+
+## 24_향림중_1학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q21[발문], q22[발문], q23[발문], q24[발문]. 해설 22개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | BENEFICIAL | BENEFICIAL | 문제: 색종이가 겹쳐 이어지는 배치를 그림으로 보여 주면 겹치는 곳이 n-1곳이라는 파악이 쉬워진다. / 해설: n장 배치와 겹치는 구간, 가로 6n+2를 표시한 그림을 넣으면 식 세우는 과정이 분명해진다. |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | BENEFICIAL | BENEFICIAL | 문제: 원 모양 산책로 위 같은 지점에서 반대 방향으로 출발하는 두 사람을 화살표로 표시하면 상황 파악이 쉬워진다. / 해설: 두 사람의 이동 거리 합이 원 둘레 한 바퀴 8파이 km와 같다는 사실을 원 위에 표시하면 식을 세우는 과정이 분명해진다. |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | BENEFICIAL | NOT_NEEDED | 문제: 이기면 3계단 위, 지면 1계단 아래, 비기면 둘 다 1계단 위라는 규칙을 계단 그림으로 보여 주면 상황 파악이 쉬워진다. |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | BENEFICIAL | 해설: 직선 y=3x+6과 두 점 (-4,-6), (-6,-12)를 표시하면 좌표가 뒤바뀐 두 점의 위치를 확인하기 쉽다. |
+
+- 문제그림 REQUIRED/BENEFICIAL 3개: 7, 9, 15. 해설그림 REQUIRED/BENEFICIAL 3개: 7, 9, 24.
