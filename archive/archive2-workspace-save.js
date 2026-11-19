@@ -192,13 +192,109 @@
       pins: [...state.pins],
     };
   }
-  function drafts() {
+  // ---- 브라우저에 저장하는 초안: 초안마다 키 하나 + 색인 키 하나 ----
+  // 예전에는 키 하나(APMATH_ARCHIVE2_DRAFTS_v1:<사용자>)에 초안 20개 배열을 통째로 setItem해서, 큰 초안 몇 개면 저장 공간이 부족해졌다.
+  // 이제 초안은 "...DRAFTS_v2:<사용자>:d:<draftId>" 키에 하나씩, 순서(최근 저장이 앞)와 목록은 "...:index" 키에 둔다.
+  // 옛 키는 절대 지우거나 고치지 않는다(읽기 전용 백업). 색인이 없으면 첫 실행에 옛 키를 읽어 새 형식으로 옮기고, 옮기다 실패하면
+  // 이번 화면에서는 옛 키를 그대로 쓴다(초안은 한 건도 잃지 않는다). 초안 문서 모양(draft())은 그대로다.
+  const DRAFT_LIMIT = 20;
+  const draftMigrationFailed = new Set();
+  function draftKeys() {
+    const legacy = storageKey();
+    const base = legacy.replace("_DRAFTS_v1:", "_DRAFTS_v2:");
+    return { legacy, index: base + ":index", draft: (id) => base + ":d:" + id };
+  }
+  function storageGet(key) {
+    try { return localStorage.getItem(key); } catch { return null; }
+  }
+  function storageDrop(key) {
+    try { localStorage.removeItem(key); } catch { /* 지우지 못해도 색인에서 빠지면 보이지 않는다 */ }
+  }
+  function parseDraftIds(raw) {
     try {
-      const data = JSON.parse(localStorage.getItem(storageKey()) || "[]");
+      const data = JSON.parse(raw);
+      if (!data || data.version !== 1 || !Array.isArray(data.ids)) return null;
+      return data.ids.filter((id, i, all) => typeof id === "string" && all.indexOf(id) === i);
+    } catch { return null; }
+  }
+  function legacyDrafts(keys) {
+    try {
+      const data = JSON.parse(storageGet(keys.legacy) || "[]");
       return Array.isArray(data) ? data : [];
     } catch {
       return [];
     }
+  }
+  // { split: true, ids } = 새 형식(ids는 최근 저장 순), { split: false } = 옛 키 그대로 사용.
+  function draftStorage(keys = draftKeys()) {
+    const raw = storageGet(keys.index);
+    if (raw != null) {
+      const ids = parseDraftIds(raw);
+      // 읽을 수 없는 색인은 덮어쓰지 않는다(새 형식의 초안이 가려질 뿐 지워지지 않는다). 이번 화면은 옛 키로 간다.
+      return ids ? { split: true, ids } : { split: false };
+    }
+    if (draftMigrationFailed.has(keys.legacy)) return { split: false };
+    const old = legacyDrafts(keys).filter((d) => d && typeof d === "object" && !Array.isArray(d)).slice(0, DRAFT_LIMIT);
+    if (!old.length) return { split: true, ids: [] };
+    const written = [], ids = [];
+    try {
+      old.forEach((record, i) => {
+        const id = typeof record.draftId === "string" && record.draftId ? record.draftId : "legacy-" + i;
+        if (ids.includes(id)) return;
+        localStorage.setItem(keys.draft(id), JSON.stringify(record));
+        written.push(id);
+        ids.push(id);
+      });
+      localStorage.setItem(keys.index, JSON.stringify({ version: 1, ids }));
+      return { split: true, ids };
+    } catch {
+      // 새 키를 쓰다 실패(대개 저장 공간 부족): 방금 쓴 새 키만 걷어 내고 옛 키로 계속한다. 옛 키는 그대로다.
+      written.forEach((id) => storageDrop(keys.draft(id)));
+      draftMigrationFailed.add(keys.legacy);
+      return { split: false };
+    }
+  }
+  function drafts() {
+    const keys = draftKeys(), mode = draftStorage(keys);
+    if (!mode.split) return legacyDrafts(keys);
+    const out = [];
+    for (const id of mode.ids) {
+      try {
+        const record = JSON.parse(storageGet(keys.draft(id)));
+        if (record && typeof record === "object" && !Array.isArray(record)) out.push(record);
+      } catch { /* 읽을 수 없는 한 건은 건너뛴다 */ }
+    }
+    return out;
+  }
+  // 한 건을 저장한다. 새 형식에서는 setItem이 그 초안 하나분이다. 다른 탭이 방금 저장했을 수 있어 색인은 쓰기 직전에 다시 읽어 합친다.
+  function storeDraft(record) {
+    const keys = draftKeys(), mode = draftStorage(keys);
+    if (!mode.split) {
+      localStorage.setItem(keys.legacy, JSON.stringify([record, ...legacyDrafts(keys).filter((d) => d.draftId !== record.draftId)].slice(0, DRAFT_LIMIT)));
+      return;
+    }
+    const id = record.draftId;
+    localStorage.setItem(keys.draft(id), JSON.stringify(record));
+    const current = parseDraftIds(storageGet(keys.index)) ?? mode.ids;
+    const next = [id, ...current.filter((x) => x !== id)];
+    try {
+      localStorage.setItem(keys.index, JSON.stringify({ version: 1, ids: next.slice(0, DRAFT_LIMIT) }));
+    } catch (error) {
+      if (!current.includes(id)) storageDrop(keys.draft(id));
+      throw error;
+    }
+    // 20개를 넘어 색인에서 밀려난 초안만 지운다(용량이 모자라서 지우는 일은 없다).
+    next.slice(DRAFT_LIMIT).forEach((old) => storageDrop(keys.draft(old)));
+  }
+  function removeStoredDraft(id) {
+    const keys = draftKeys(), mode = draftStorage(keys);
+    if (!mode.split) {
+      localStorage.setItem(keys.legacy, JSON.stringify(legacyDrafts(keys).filter((d) => d.draftId !== id)));
+      return;
+    }
+    const current = parseDraftIds(storageGet(keys.index)) ?? mode.ids;
+    localStorage.setItem(keys.index, JSON.stringify({ version: 1, ids: current.filter((x) => x !== id) }));
+    storageDrop(keys.draft(id));
   }
   function save() {
     if (
@@ -208,15 +304,7 @@
       return;
     const record = draft();
     try {
-      localStorage.setItem(
-        storageKey(),
-        JSON.stringify(
-          [
-            record,
-            ...drafts().filter((d) => d.draftId !== record.draftId),
-          ].slice(0, 20),
-        ),
-      );
+      storeDraft(record);
     } catch {
       status(
         "브라우저 저장 공간이 부족합니다. 작업 파일 저장으로 보관하세요.",
@@ -1471,7 +1559,7 @@
       resetWorkingDraft();
     }
     try {
-      localStorage.setItem(storageKey(), JSON.stringify(drafts().filter((d) => d.draftId !== id)));
+      removeStoredDraft(id);
     } catch {
       status("만들던 문제지를 삭제하지 못했습니다. 다시 시도해 주세요.", true);
       return false;
