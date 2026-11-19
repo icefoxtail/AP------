@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-9029144df9cd-816bc5b3",
+  "requestSha256": "c7452da0e7e3cb217c85b744f09f73e6a3029b020f9b83407784a1eebf52eabd",
+  "examUid": "23_충무고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "ad93321fbd2e3436f1d539af542ce6f1d276bd9c",
+  "sourceRawSha256": "cfb4babee015a97392f2cb2c554b8e335ea1fd5ebdbca75dde33eed7b0ce8f21",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9029144df9cd-816bc5b3.type-ledger.json",
+        "sha256": "3682954f825000fb31161de88dea91a68c57578f77de5b118cb062cc6eb2784d"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_59947016d930a96a30ae1d5641f09e3a38a8ec8a8ace9994ea84bb20bb864736",
+      "sourceArchiveFile": "original/high/h1/1mid/23_충무고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_TRIANGLE_CENTERS",
+      "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9029144df9cd-816bc5b3",
+        "judge": "dots",
+        "rationale": "내접원 반지름과 반둘레로 BC=3√2와 높이 10/3을 구한 뒤 평행선의 닮음비 7/10을 제곱한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row",
+          "rowCourse": "수학(상)",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "22d752b3ff066f8f8e66dc61a8520c60749b77889d957321374cd1895d7122b9",
+        "judgedContentFingerprint": "c64a1bafa95782534960a90c3867e587f4747a0a56f664b362e14bf417788f35",
+        "rowBinding": "content",
+        "textBindingFingerprint": "dd32aae282db0058f3b420d844747a6f1a439baf65bb32c66d3397bae147a4f7",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9029144df9cd-816bc5b3.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "approved_semantic_review",
+          "templateStatus": "approved_semantic_review"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 21
+}

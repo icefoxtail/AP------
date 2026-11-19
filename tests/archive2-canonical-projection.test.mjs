@@ -643,9 +643,27 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
   const wrongApproval = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
   assert.ok(wrongApproval.canonicalAssignmentReasons.includes("assignment_missing"));
   runtime.records[0].metadataApprovalType = "META_PIPELINE_AUDIT";
+  // The receipt is bound per row (stem + choices), not to the whole exam file: a receipt naming other whole-file bytes keeps the row while the
+  // row's binding holds, and the row is dropped only when that binding is not confirmed.
   resources[proofPath].sourceRawSha256 = "e".repeat(64);
-  const wrongSource = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
-  assert.ok(wrongSource.canonicalAssignmentReasons.includes("assignment_missing"));
+  const otherFileBytes = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.equal(otherFileBytes.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
+  const registeredContentFingerprint = source.assignmentFingerprint, registeredSourceStatus = source.sourceStatus;
+  source.assignmentFingerprint = "d".repeat(64); // the current stem/choices/figure differ from the registered ones
+  source.sourceStatus = "HOLD";
+  const unconfirmed = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.ok(unconfirmed.canonicalAssignmentReasons.includes("assignment_missing"), "a changed row without a confirmed binding is dropped");
+  source.sourceStatus = "VERIFIED"; // the catalog builder confirmed the same stem+choices (text-v1 row binding, e.g. a reviewed rebind)
+  const rebound = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.equal(rebound.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT", "a confirmed binding keeps the registration");
+  assert.equal(rebound.assignmentFingerprint, "d".repeat(64), "the assignment binds the current fingerprint");
+  const registeredMetaFingerprint = source.metadataAssignmentEvidence.assignmentFingerprint;
+  source.metadataAssignmentEvidence.assignmentFingerprint = "c".repeat(64); // the metadata row is not the one this receipt registered
+  const otherRow = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
+  assert.ok(otherRow.canonicalAssignmentReasons.includes("assignment_missing"));
+  source.metadataAssignmentEvidence.assignmentFingerprint = registeredMetaFingerprint;
+  source.assignmentFingerprint = registeredContentFingerprint;
+  source.sourceStatus = registeredSourceStatus;
 
   // Native evidence names exact file bytes, while browser loading deliberately
   // normalizes BOM/CRLF. Equal JavaScript text is not equal approval bytes.
@@ -664,12 +682,13 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
     const pageRow = ProblemBankMeta.buildIndex([{ ...approved, currentSourceJsSha256: sha(normalized) }], [])[0];
     assert.equal(pageRow.L3, "검증된 개념");
 
+    // Raw bytes are no longer a gate for a row: a different or missing raw hash entry keeps a row whose binding holds.
     sourceCatalog.sourceRawHashes = [];
     const missingRaw = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
-    assert.ok(missingRaw.canonicalAssignmentReasons.includes("assignment_missing"), "normalized bytes cannot authorize a raw-byte receipt");
+    assert.equal(missingRaw.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
     sourceCatalog.sourceRawHashes = [[sourceFile, sha(raw + " ")]];
     const alteredRaw = canonical.resolveCatalog(input).records.find(row => row.questionUid === uid);
-    assert.ok(alteredRaw.canonicalAssignmentReasons.includes("assignment_missing"));
+    assert.equal(alteredRaw.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
   }
   for (const invalid of [null, [[sourceFile, "bad-sha"]], [["other-file.js", "a".repeat(64)]],
     [[sourceFile, "a".repeat(64)], [sourceFile, "b".repeat(64)]]]) {

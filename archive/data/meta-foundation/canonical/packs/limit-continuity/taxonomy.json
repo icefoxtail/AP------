@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 7,
-  "templateCount": 33,
+  "templateCount": 35,
   "foundationPack": "LIMIT_CONTINUITY",
   "ownerPack": "LIMIT_CONTINUITY",
   "problemTypes": [
@@ -1181,6 +1181,62 @@
         {
           "source": "TYPE_BUNDLE_TABLE",
           "bundle": "NTPL_LIMIT_VALUE_CALC_MULTI",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LIMIT_VALUE_CALC_DOMINANCE",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalLabelKo": "지배항",
+      "definition": "거듭제곱 밑의 크기 또는 수열 최고차항으로 정규화하여 무한대 극한을 구한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_38c44e82c285f79b90aa23c3add0115936076ca6a6b7c38c1567ff8be34474ef"
+      ],
+      "sourceUnits": [
+        "H15-CALC-01"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_VALUE_CALC_DOMINANCE",
+          "bundleTable": {
+            "branch": "data/type-bundles-20261117",
+            "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+            "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_LIMIT_VALUE_CALC_STANDARD",
+      "parentProblemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "canonicalLabelKo": "기본 극한",
+      "definition": "지수·로그·삼각함수의 입력을 치환하여 표준 기본극한으로 환원한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "LIMIT_CONTINUITY",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [
+        "qid_v1_8666446c0d0c6e6087720875d3069ac95e3d23e4376424ffa6e3457782df0ecd",
+        "qid_v1_eec6272a15b3c5232fca58d5de2d69d8876c244516d2e3822744102221605bca"
+      ],
+      "sourceUnits": [
+        "H15-CALC-03",
+        "H15-CALC-04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "TYPE_BUNDLE_TABLE",
+          "bundle": "NTPL_LIMIT_VALUE_CALC_STANDARD",
           "bundleTable": {
             "branch": "data/type-bundles-20261117",
             "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
