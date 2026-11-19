@@ -1,0 +1,57 @@
+{
+  "qid": 2,
+  "itemFingerprint": "f4984a7337c36c5d",
+  "solveSteps": [
+    "어떤 식을 $A$라 하면 $A + (3x^2 - x + 4) = 5x^2 + 3x - 2$이다. 10",
+    "$A = (5x^2 + 3x - 2) - (3x^2 - x + 4) = 2x^2 + 4x - 6$이다. 10",
+    "바르게 계산한 식은 $A - (3x^2 - x + 4) = -x^2 + 5x - 10$이다. 10"
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "어떤 식에서 $3x^{2} ",
+  "rpmRecordId": "M2-RPM-012",
+  "rpmReason": "다항식의 덧셈과 뺄셈 오연산 복원을 다루는 RPM 문항입니다. 10",
+  "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+  "templateKey": "TPL_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION_REVERSE",
+  "typeReason": "잘못 더한 다항식의 바른 계산을 복원하는 유형입니다. 10",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "잘못 계산된 다항식에서 원래 식을 역연산하고 바른 계산을 수행하는 10 관련 난이도 2 문제입니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "어떤 식에서 $3x^{2} - x +"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "바르게 계산한 식은\n$A - (3x^",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "잘못 더한 식을 역연산하여 원래 식을 구한 뒤 바르게 계산하여 -x^2 + 5x - 10을 얻었습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

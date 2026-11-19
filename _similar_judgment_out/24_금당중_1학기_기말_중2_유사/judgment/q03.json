@@ -1,0 +1,58 @@
+{
+  "qid": 3,
+  "itemFingerprint": "ff80818692de0b23",
+  "solveSteps": [
+    "소괄호부터 정리: $6x - 2y - (x - 4y) = 5x + 2y$이다. ax",
+    "중괄호 정리: $x + 3y - (5x + 2y) = -4x + y$이다. ax",
+    "$4x - (-4x + y) = 8x - y = ax + by$이므로 $a = 8, b = -1$이다. ax",
+    "따라서 $a \\times b = -8$이다. ax"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "ax + by$일 때, $a",
+  "rpmRecordId": "M2-RPM-013",
+  "rpmReason": "괄호가 복잡한 다항식의 덧셈과 뺄셈 ax 관련 RPM 문항입니다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "다중 괄호 전개와 동류항 정리를 통해 ax 계수를 구하는 다항식 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "여러 겹의 괄호가 포함된 다항식을 차례로 풀어 ax 계수를 결정하는 난이도 2 문제입니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "ax + by$일 때, $a$와 $b"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "src": "solution",
+        "quote": "$4x - [x + 3y - {6x ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "소괄호, 중괄호, 대괄호 순서로 전개하여 ax + by 형태를 만들고 ab를 구했습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

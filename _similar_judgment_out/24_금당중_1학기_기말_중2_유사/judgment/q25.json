@@ -1,0 +1,57 @@
+{
+  "qid": 25,
+  "itemFingerprint": "fb105bf309974645",
+  "solveSteps": [
+    "평행선 엇각에 의해 $\\angle ACD = \\angle CAB = a$이다. 90",
+    "(1) $a = b$이면 $\\triangle ODC$가 이등변삼각형이 되어 $\\overline{OC} = \\overline{OD} \\implies \\overline{AC} = \\overline{BD}$이므로 직사각형이다. 90",
+    "(2) $a + b = 90^\\circ$이면 $\\angle COD = 90^\\circ$가 되어 두 대각선이 직교하므로 마름모이다. 90"
+  ],
+  "solvedAnswer": "(1) $\\overline{OC} = \\overline{OD}$이므로 $\\overline{AC} = \\overline{BD}$가 되어 직사각형이다, (2) $\\angle COD = 90^{\\circ}$이므로 두 대각선이 직교하여 마름모이다",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "서술형 4] 평행사변형 $A",
+  "rpmRecordId": "M2-RPM-082",
+  "rpmReason": "사각형의 포함 관계와 90도 직사각형·마름모 조건 판정 RPM 문항입니다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "대각선 각 조건 90도로부터 직사각형 및 마름모를 판정하는 사각형 성질 유형입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각의 조건으로부터 직사각형과 90도 마름모 판정 조건을 단계별로 논증하는 난이도 2 문제입니다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "서술형 4] 평행사변형 $ABCD$에"
+      }
+    ],
+    "method": [
+      {
+        "term": "마름모",
+        "src": "solution",
+        "quote": "90^{\\circ}$이면 $\\tria",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "엇각과 삼각형 내각의 합으로 대각선 길이 일치와 대각선 직교 90도를 이끌어냈습니다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
