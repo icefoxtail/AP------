@@ -645,6 +645,12 @@
         quickState.shortOpen = false;
         replaceUrlState();
         render();
+      } else if (a === "quick-semester") {
+        quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
+        quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
+        render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
         quickState.bundle.clear();

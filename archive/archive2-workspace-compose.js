@@ -636,8 +636,16 @@
       V.quickPoolCache = { index, meta: metaIndex, metaByUid, pools: Quick.buildPools(index, { metaByUid }) };
       quickScopeCache = null;
     }
-    return V.quickPoolCache.pools;
+    if (state.view !== "diagnostic") return V.quickPoolCache.pools;
+    // 진단평가: its own pools (original exams only, 5단계 folded into the 4~5단계 slot) of the chosen semester, cached with the shared ones.
+    if (quickDiagCache.token !== V.quickPoolCache) quickDiagCache = { token: V.quickPoolCache, bySemester: new Map() };
+    const semester = quickState.semester;
+    if (!quickDiagCache.bySemester.has(semester))
+      quickDiagCache.bySemester.set(semester, Quick.buildPools(index, { metaByUid: V.quickPoolCache.metaByUid, product: Quick.PRODUCTS.diagnostic, semester }));
+    return quickDiagCache.bySemester.get(semester);
   }
+  let quickDiagCache = { token: null, bySemester: new Map() };
+  const QUICK_SEMESTER = Object.freeze({ "1": "1학기", "2": "2학기", "": "1·2학기" });
   // 중단원 / 소단원 scopes of the chosen grade and subject (shared unit tree). Built once per pool / selection /
   // 소단원 묶음표 load and read by every render and click. The 묶음표 (high school 소단원, a small JSON) is requested
   // at boot; until it is there a high school list shows its 단원 only and says so.
@@ -677,7 +685,7 @@
     "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
     "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
     "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
-    diagnostic: () => "첫 상담용입니다. 1단계부터 4단계까지 쉬운 문항부터 차례로 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
+    diagnostic: () => "첫 상담용 24문항입니다. 실제 학교 기출만 쓰고, 쉬운 단계부터 차례로 나옵니다. 학기를 고르고, 단원을 고르지 않으면 학기 전체에서 냅니다.",
   };
   // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
   function quickRowMarkup(item, product, picked, busy) {
@@ -706,6 +714,10 @@
     const grade = quickState.grade;
     const scopes = quickScopes(pools);
     const subjectLabel = subjects.find(subject => subject.value === quickState.subject)?.label || "";
+    const diagnostic = state.view === "diagnostic";
+    const wholeName = diagnostic ? `${subjectLabel} ${QUICK_SEMESTER[quickState.semester]}` : subjectLabel;
+    const semesterChips = diagnostic ? `<div class="quick-chips" role="group" aria-label="학기">${["1", "2", ""].map(value =>
+      `<button type="button" class="quick-chip" data-action="quick-semester" data-semester="${value}" aria-pressed="${value === quickState.semester}">${QUICK_SEMESTER[value]}</button>`).join("")}</div>` : "";
     const noun = Quick.unitNoun(state.view, grade);
     const gradeButtons = Unified.GRADES.map(label =>
       `<button type="button" class="find-grade ${quickGradeClass(label)}" data-action="quick-grade" data-grade="${label}" aria-pressed="${label === grade}">${label}</button>`).join("");
@@ -769,8 +781,8 @@
         const reason = (verdict) => verdict.ok ? "" : `<p class="qk-r-reason">${esc(Quick.shortageText(verdict.shortages))}</p>`;
         const actions = `${button("quick-open-selected", `선택한 ${esc(noun)} ${selectedUnits.length}개로 시험지 열기`,
           `type="button" class="primary" ${selectedUnits.length && verdictSel.ok && !busy ? "" : "disabled"}`)}
-          ${openAll(`${esc(subjectLabel)} 전체로 시험지 열기`, verdictAll.ok)}`;
-        const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(subjectLabel)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
+          ${openAll(`${esc(wholeName)} 전체로 시험지 열기`, verdictAll.ok)}`;
+        const lines = `<p class="qk-r-scope">${selectedUnits.length ? `<strong>${esc(names)}</strong>` : `<strong>${esc(wholeName)} 전체</strong> <span class="muted">(고른 ${esc(noun)} 없음)</span>`}</p>
           ${selectedUnits.length ? reason(verdictSel) : reason(verdictAll)}`;
         result = info(product.title, product.count, lines, actions);
         bar = { text: selectedUnits.length ? `${product.count}문항 · ${selectedUnits.length}개 ${noun}` : `${product.count}문항 · 과목 전체`,
@@ -797,11 +809,9 @@
       ? '<a class="qk-pack-link" href="assessment/assessment-mvp.html?scope=subunit">기존 소단원 평가팩 45개 보기</a>' : ""}</div>
       <div class="qk-grid">
         <div class="qk-cond">
-          <section class="qk-block"><h2 class="qk-h">학년 · 과목</h2>
-            <div class="qk-grades" role="group" aria-label="학년">${gradeButtons}</div>${subjectChips}</section>
-          ${product.order.length < 2 ? `<section class="qk-block qk-level"><h2 class="qk-h">난이도 · 쉬운 단계부터</h2>
-            <p class="muted" id="quick-assessment-mix">${mix}</p>
-            <p class="muted qk-note">낮은 단계 문항부터 차례로 출력됩니다. 같은 단계 안에서는 단원 순서입니다. 문항은 최신 연도부터 고르고, 난이도는 기록된 단계만 씁니다.</p></section>` : `<section class="qk-block qk-level${levelOpen}"><div class="qk-level-head"><h2 class="qk-h">난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
+          <section class="qk-block"><h2 class="qk-h">${diagnostic ? "학년 · 과목 · 학기" : "학년 · 과목"}</h2>
+            <div class="qk-grades" role="group" aria-label="학년">${gradeButtons}</div>${subjectChips}${semesterChips}</section>
+          <section class="qk-block qk-level${levelOpen}"><div class="qk-level-head"><h2 class="qk-h">난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
             <button type="button" class="qk-fold" data-action="quick-level-toggle" aria-expanded="${quickState.levelOpen}">바꾸기</button></div>
             <p class="muted" id="quick-assessment-mix">${mix}</p>
             <div class="qk-level-body"><div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
@@ -809,7 +819,7 @@
                 <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
                   value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
               </div></div>
-              <p class="muted qk-note">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></div></section>`}
+              <p class="muted qk-note">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></div></section>
           <section class="qk-block qk-scope"><h2 class="qk-h">${esc(noun)}</h2>${list}</section>
         </div>
         <aside class="qk-result" aria-label="만들어질 평가">${result}</aside>
@@ -839,7 +849,7 @@
   }
   function quickCountsText(unit, product) {
     return Quick.BUCKETS.filter(bucket => bucket < 4 || product.count >= 20)
-      .map(bucket => `${bucket}단계 ${unit.counts[bucket]}`).join(" · ");
+      .map(bucket => `${product.stepLabels?.[bucket] || bucket}단계 ${unit.counts[bucket]}`).join(" · ");
   }
   // Selection inputs come from the cached pool records of the chosen units only (no catalog scan).
   function balancedQuickSelection(units, preset) {
@@ -899,6 +909,130 @@
     }
     return selected;
   }
+  // 진단평가 selection (Quick.PRODUCTS.diagnostic): fills each step of the preset from the chosen units. Every unit gets at least
+  // min(floor(count / units), 3) questions, the rest of the seats follow the pool sizes; inside a step the units take turns (the
+  // unit that is furthest below its share first) so the unit x step cells are filled as widely as possible. A repeated problem type
+  // only costs a penalty (a question without a type is never penalised and stays in the pool). Returns the picks and, per cell
+  // (unit x step), the questions that were not picked, in the order they would be picked next (used to replace an empty one).
+  function diagnosticSelection(units, steps, count) {
+    const stepList = steps.filter(([, need]) => need > 0).sort((a, b) => a[0] - b[0]);
+    const n = units.length, cells = new Map(), cellOf = new Map(), avail = units.map(() => 0);
+    const keyOf = (u, step) => `${u}|${step}`;
+    units.forEach((unit, u) => {
+      for (const [step] of stepList) {
+        const rows = recencyShuffle([...new Map((unit.buckets[step] || []).map(record => [record.questionUid, record])).values()]);
+        cells.set(keyOf(u, step), rows);
+        rows.forEach(record => cellOf.set(record.questionUid, { u, step }));
+        avail[u] += rows.length;
+      }
+    });
+    // Units with no usable question (a table-of-contents unit nobody asked about) do not take a share.
+    const live = avail.filter(have => have > 0).length || 1;
+    const minimum = Math.min(Math.floor(count / live), 3);
+    const target = avail.map(have => Math.min(minimum, have));
+    const room = avail.map((have, u) => have - target[u]);
+    let rest = count - target.reduce((sum, value) => sum + value, 0);
+    while (rest > 0) {
+      const open = room.map((value, u) => (value > 0 ? u : -1)).filter(u => u >= 0);
+      if (!open.length) break;
+      const weight = open.reduce((sum, u) => sum + avail[u], 0);
+      const shares = open.map(u => ({ u, exact: rest * avail[u] / weight }));
+      let given = 0;
+      for (const share of shares) {
+        const whole = Math.min(Math.floor(share.exact), room[share.u]);
+        target[share.u] += whole; room[share.u] -= whole; given += whole; share.frac = share.exact - Math.floor(share.exact);
+      }
+      rest -= given;
+      shares.sort((a, b) => b.frac - a.frac || a.u - b.u);
+      for (const share of shares) if (rest > 0 && room[share.u] > 0) { target[share.u]++; room[share.u]--; rest--; }
+    }
+    const lexLess = (a, b) => { for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i]; return false; };
+    const typeOf = record => C.metaFacetsOf(record)?.pt || "";
+    const assigned = units.map(() => 0), picked = new Map(), picks = [], typeUse = new Map(), sourceUse = new Map();
+    const take = (u, step) => {
+      const rows = cells.get(keyOf(u, step));
+      let best = 0, bestScore = Infinity;
+      rows.forEach((record, i) => {
+        const type = typeOf(record);
+        const score = (type ? (typeUse.get(type) || 0) : 0) * 100 + quickRecencyTier(record) * 10 + Math.min(sourceUse.get(record.sourceFile) || 0, 9);
+        if (score < bestScore) { best = i; bestScore = score; }
+      });
+      const [record] = rows.splice(best, 1);
+      const type = typeOf(record);
+      if (type) typeUse.set(type, (typeUse.get(type) || 0) + 1);
+      sourceUse.set(record.sourceFile, (sourceUse.get(record.sourceFile) || 0) + 1);
+      assigned[u]++; picks.push(record);
+      const list = picked.get(keyOf(u, step)) || picked.set(keyOf(u, step), []).get(keyOf(u, step));
+      list.push(record);
+    };
+    for (const [step, need] of stepList) {
+      const inStep = units.map(() => 0);
+      for (let k = 0; k < need; k++) {
+        let bestUnit = -1, bestKey = null;
+        for (let u = 0; u < n; u++) {
+          if (!cells.get(keyOf(u, step)).length) continue;
+          const key = [assigned[u] - target[u], inStep[u], assigned[u], u];
+          if (!bestKey || lexLess(key, bestKey)) { bestKey = key; bestUnit = u; }
+        }
+        if (bestUnit < 0) break;
+        take(bestUnit, step); inStep[bestUnit]++;
+      }
+    }
+    // A unit below its minimum takes one seat of a unit above its own minimum in a step both can serve.
+    const floorOf = u => Math.min(minimum, avail[u]);
+    for (let guard = 0; guard < count * n; guard++) {
+      const needy = units.findIndex((_, u) => assigned[u] < floorOf(u));
+      if (needy < 0) break;
+      let fixed = false;
+      for (const [step] of stepList) {
+        if (!cells.get(keyOf(needy, step)).length) continue;
+        let donor = -1;
+        for (let v = 0; v < n; v++) if (v !== needy && assigned[v] > floorOf(v) && (picked.get(keyOf(v, step)) || []).length &&
+          (donor < 0 || assigned[v] > assigned[donor])) donor = v;
+        if (donor < 0) continue;
+        const list = picked.get(keyOf(donor, step)), back = list.pop();
+        picks.splice(picks.indexOf(back), 1); assigned[donor]--;
+        cells.get(keyOf(donor, step)).push(back);
+        take(needy, step); fixed = true; break;
+      }
+      if (!fixed) break;
+    }
+    // The questions that were not picked of the same step (own unit first) replace an empty question.
+    const sparesFor = record => {
+      const at = cellOf.get(record.questionUid);
+      if (!at) return [];
+      return [at.u, ...units.map((_, u) => u).filter(u => u !== at.u)].flatMap(u => cells.get(keyOf(u, at.step)));
+    };
+    return { selected: picks, sparesFor, unitMinimum: minimum, targets: target };
+  }
+  // A restored question without an answer or without a solution (text or image) cannot go on a 진단평가 paper.
+  const isBlankQuestion = question => !question || !String(question.answer ?? "").trim() ||
+    !(String(question.solution ?? "").trim() || String(question.solutionImage ?? "").trim());
+  // Replaces each empty restored question by the next not-picked question of the same step (its own unit first), restoring one
+  // candidate at a time. The set of steps never changes. Returns the final order (by step, then unit) and how many were replaced.
+  async function replaceBlankQuestions(units, selected, questions, plan) {
+    const records = selected.slice(), restored = questions.slice();
+    const taken = new Set(records.map(record => record.questionUid)), rejected = new Set();
+    let replaced = 0;
+    for (let i = 0; i < records.length; i++) {
+      if (!isBlankQuestion(restored[i])) continue;
+      const spares = plan.sparesFor(records[i]);
+      let done = false;
+      for (const candidate of spares) {
+        if (taken.has(candidate.questionUid) || rejected.has(candidate.questionUid)) continue;
+        let question;
+        try { [question] = await Source.restore([candidate], state.catalog); } catch (error) { rejected.add(candidate.questionUid); continue; }
+        if (isBlankQuestion(question)) { rejected.add(candidate.questionUid); continue; }
+        taken.add(candidate.questionUid);
+        records[i] = candidate; restored[i] = question; replaced++; done = true;
+        break;
+      }
+      if (!done) throw new Error("정답·해설이 있는 문항이 모자라 시험지를 만들 수 없습니다. 범위를 넓혀 보세요.");
+    }
+    const byUid = new Map(records.map((record, i) => [record.questionUid, restored[i]]));
+    const ordered = Quick.orderByStep(units, records);
+    return { selected: ordered, questions: ordered.map(record => byUid.get(record.questionUid)), replaced };
+  }
   function quickUnitsLabel(units, subjectLabel, all) {
     if (all) return `${subjectLabel} 전체`;
     const names = units.map(unit => unit.label);
@@ -916,7 +1050,8 @@
     const everything = unitKeys === "all";
     const units = everything ? scopes.roots : Quick.selectNodes(scopes, unitKeys);
     const subjectLabel = Unified.subjectByValue(quickState.grade, quickState.subject)?.label || "";
-    const label = quickUnitsLabel(units, subjectLabel, everything);
+    const diagnostic = state.view === "diagnostic";
+    const label = quickUnitsLabel(units, diagnostic ? `${subjectLabel} ${QUICK_SEMESTER[quickState.semester]}` : subjectLabel, everything);
     if (!units.length || (!product.combine && units.length !== 1)) return;
     const verdict = Quick.evaluate(units, product, preset);
     if (!verdict.ok) {
@@ -924,20 +1059,22 @@
       return;
     }
     const presetPairs = product.presets[preset];
-    const pick = () => product.combine || state.view === "unit-test"
+    let plan = null;
+    const pick = () => diagnostic ? (plan = diagnosticSelection(units, presetPairs, product.count)).selected
+      : product.combine || state.view === "unit-test"
       ? balancedQuickSelection(units, presetPairs)
       : presetPairs.flatMap(([bucket, count]) => recencyShuffle([...new Map(
         units.flatMap(unit => unit.buckets[bucket]).map(record => [record.questionUid, record])).values()])
         .slice(0, count));
-    const picked = pick();
-    const selected = state.view === "diagnostic" ? Quick.orderByStep(units, picked) : picked;
+    // Every quick product prints from the lowest difficulty step up (unit order inside a step); the chosen set does not change.
+    let selected = Quick.orderByStep(units, pick());
     if (new Set(selected.map(record => record.questionUid)).size !== product.count) {
       status("같은 문항이 중복되어 시험지를 열 수 없습니다.", true);
       return;
     }
     // The pools are cached per catalog load; every chosen question is checked against the
     // current usage and difficulty conditions before it is printed.
-    if (selected.some(record => Quick.usableBucket(record) !== record.difficultyBucket)) {
+    if (selected.some(record => !Quick.stillUsable(record, product))) {
       V.quickPoolCache = { index: null, meta: null, metaByUid: null, pools: null };
       status("문항 상태가 바뀌어 목록을 다시 확인합니다. 다시 선택하세요.", true);
       render();
@@ -950,7 +1087,8 @@
     status("선택한 문항의 원본을 확인하고 있습니다.");
     render();
     try {
-      const questions = await Source.restore(selected, state.catalog);
+      let questions = await Source.restore(selected, state.catalog), replacedBlank = 0;
+      if (diagnostic) ({ selected, questions, replaced: replacedBlank } = await replaceBlankQuestions(units, selected, questions, plan));
       const questionUids = selected.map(record => record.questionUid);
       const title = `${product.title} · ${label}`;
       const meta = {
@@ -967,7 +1105,7 @@
       });
       const url = O.outputEnvelopeUrl("mixed_engine.html", location.href, envelope, { studio: true });
       popup.location.replace(url.href);
-      status(`${label} · ${questionUids.length}문항 시험지를 열었습니다.`);
+      status(`${label} · ${questionUids.length}문항 시험지를 열었습니다.${replacedBlank ? ` (정답·해설이 없는 ${replacedBlank}문항은 같은 단계의 다른 문항으로 바꿨습니다.)` : ""}`);
     } catch (error) {
       popup.close();
       status(error.message || "시험지를 준비하지 못했습니다.", true, error);
@@ -1743,7 +1881,7 @@
     recencyShuffle,
     quickRecencyTier,
     quickCountsText,
-    balancedQuickSelection,
+    balancedQuickSelection, diagnosticSelection,
     quickUnitsLabel,
     openQuickAssessment,
     scopeOpenState,

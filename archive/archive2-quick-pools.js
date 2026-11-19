@@ -17,10 +17,7 @@
   // grade and subject; every record keeps its original curriculum, keys and metadata. This module
   // only builds the candidate pools and judges whether a pool satisfies a difficulty preset. It
   // never reads the legacy 하/중/상 label and never infers a numeric difficulty.
-  const PRESET_LABELS = Object.freeze({ basic: "기초", standard: "기본", application: "응용", advanced: "심화", diagnostic: "진단" });
-  // 진단평가 (first consultation, user decision 2026-11-19): 24 questions, 1단계 5 · 2단계 5 · 3단계 10 · 4단계 4, printed from the
-  // lowest step up. This is the one place that sets the step counts. 5단계 stays outside every quick product (BUCKETS below).
-  const DIAGNOSTIC_STEPS = Object.freeze([[1, 5], [2, 5], [3, 10], [4, 4]]);
+  const PRESET_LABELS = Object.freeze({ basic: "기초", standard: "기본", application: "응용", advanced: "심화" });
   // [difficultyBucket, count] pairs. 5단계 is not part of any preset, so it never enters a pool.
   const PRODUCTS = Object.freeze({
     "five-minute": Object.freeze({ title: "5분 테스트", count: 4, unitKind: "unit", unitLabel: "단원", pick: "any",
@@ -46,9 +43,16 @@
         application: [[1, 2], [2, 8], [3, 10], [4, 4]],
         advanced: [[1, 0], [2, 4], [3, 12], [4, 8]],
       }) }),
-    // One fixed composition (no difficulty slider). Selected like 종합평가 (several units, default 과목 전체), then ordered by orderByStep().
-    diagnostic: Object.freeze({ title: "진단평가", count: DIAGNOSTIC_STEPS.reduce((sum, [, count]) => sum + count, 0), unitKind: "unit", unitLabel: "단원",
-      combine: true, pick: "any", order: Object.freeze(["diagnostic"]), presets: Object.freeze({ diagnostic: DIAGNOSTIC_STEPS }) }),
+    // 진단평가 (first-consultation test, user decisions 2026-11-19): 24 questions from ORIGINAL past exams only (originalOnly), several
+    // units like 종합평가 (combine), the 4~5단계 slot counts 4단계 and 5단계 questions together (mergeTop, this product only), and the
+    // paper is printed from the lowest step up. The step counts are set here and nowhere else; 기본 is the default.
+    diagnostic: Object.freeze({ title: "진단평가", count: 24, unitKind: "unit", unitLabel: "단원", combine: true, pick: "any",
+      originalOnly: true, mergeTop: true, stepLabels: Object.freeze({ 4: "4~5" }),
+      order: Object.freeze(["basic", "standard", "advanced"]), presets: Object.freeze({
+        basic: [[1, 5], [2, 5], [3, 10], [4, 4]],
+        standard: [[1, 3], [2, 5], [3, 10], [4, 6]],
+        advanced: [[1, 2], [2, 4], [3, 10], [4, 8]],
+      }) }),
   });
   const VIEWS = Object.freeze(Object.keys(PRODUCTS));
   const BUCKETS = Object.freeze([1, 2, 3, 4]);
@@ -61,10 +65,21 @@
   // annotations are labels, not gates. No legacy 하/중/상 inference is allowed. The
   // `difficultyMode` argument/option is kept for caller compatibility; every value gives the
   // same result. 5단계 has no quick-assessment preset and remains out of scope.
-  function usableBucket(record, difficultyMode = "recorded") {
+  // mergeTop (진단평가 only): a 5단계 question sits in the 4~5단계 slot (bucket 4); every other product keeps 5단계 out.
+  function usableBucket(record, difficultyMode = "recorded", mergeTop = false) {
     if (!Core.difficultyEligible(record)) return 0;
     const bucket = record.difficultyBucket;
+    if (mergeTop) return bucket >= 1 && bucket <= 5 ? Math.min(bucket, 4) : 0;
     return bucket >= 1 && bucket <= 4 ? bucket : 0;
+  }
+  // 원본 기출 = a question of an original school exam (similar, textbook, type and generated sources are not).
+  const isOriginalExam = (record) => text(record?.sourceFile).startsWith("original/");
+  // "1" / "2": the semester of the exam a question comes from (1학기·2학기 중간/기말); "" for sources without one.
+  const examSemester = (record) => { const axis = text(record?.examAxis); return /^1-/.test(axis) ? "1" : /^2-(mid|final)/.test(axis) ? "2" : ""; };
+  // Is a chosen question still allowed in this product (the pools are cached per catalog load; checked again before printing).
+  function stillUsable(record, product) {
+    const merge = Boolean(product?.mergeTop), expected = merge ? Math.min(record.difficultyBucket, 4) : record.difficultyBucket;
+    return usableBucket(record, "recorded", merge) === expected && (!product?.originalOnly || isOriginalExam(record));
   }
 
   const emptyBuckets = () => ({ 1: [], 2: [], 3: [], 4: [] });
@@ -77,8 +92,11 @@
   // same records built by buildScopes() from the shared unit tree (archive2-unit-tree.js), so every
   // screen names, orders and groups units the same way (2026-11-16: no more 2015 "이전 분류" cards,
   // no duplicated or English sub-unit names; the 2015 legacy keys fold into the tree's 중단원).
+  // options.product: a product with originalOnly/mergeTop (진단평가) builds its own pools; options.semester ("1" | "2") keeps one
+  // semester's exams. Without a product the pools are the common ones every other product shares.
   function buildPools(index, options = {}) {
     const difficultyMode = options.difficultyMode === "eligible" ? "eligible" : "recorded";
+    const only = options.product?.originalOnly ? options.product : null;
     const pools = {
       difficultyMode,
       units: {},
@@ -89,9 +107,10 @@
       const unitMap = new Map(), seen = new Set();
       for (const entry of index.views[grade] || []) {
         const record = entry.record;
+        if (only && (!isOriginalExam(record) || (options.semester && examSemester(record) !== options.semester))) continue;
         const first = !countedRecords.has(record);
         if (first) { countedRecords.add(record); pools.stats.records++; }
-        const bucket = usableBucket(record, difficultyMode);
+        const bucket = usableBucket(record, difficultyMode, Boolean(only?.mergeTop));
         if (!bucket) {
           if (first) {
             if (record.difficultyBucket === 5 && Core.generalUseEligibility(record).ok) pools.stats.bucket5++;
@@ -145,8 +164,6 @@
     return (pools.units[grade]?.[subject] || []).slice();
   }
 
-  // The preset pairs of a product; an unknown name falls back to "standard", or to the only preset of a fixed product.
-  const presetOf = (product, presetName) => product.presets[presetName] || product.presets.standard || product.presets[product.order[0]] || [];
   function sumCounts(units) {
     const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
     for (const unit of units) for (const bucket of BUCKETS) counts[bucket] += unit.counts[bucket];
@@ -155,16 +172,16 @@
   // Pools of different units of one grade are disjoint (a question sits in exactly one unit), so
   // counts add. Returns the exact shortage per difficulty step for the chosen preset.
   function evaluate(units, product, presetName) {
-    const preset = presetOf(product, presetName);
+    const preset = product.presets[presetName] || product.presets.standard;
     const counts = sumCounts(units);
     const shortages = preset.filter(([bucket, need]) => need > 0 && counts[bucket] < need)
-      .map(([bucket, need]) => ({ bucket, need, have: counts[bucket] }));
+      .map(([bucket, need]) => ({ bucket, need, have: counts[bucket], ...(product.stepLabels?.[bucket] ? { label: product.stepLabels[bucket] } : {}) }));
     return { ok: shortages.length === 0, counts, shortages };
   }
   const shortageText = (shortages) =>
-    shortages.map(({ bucket, need, have }) => `${bucket}단계 ${need}문항 필요 · ${have}문항 가능`).join(" / ");
-  const presetMix = (product, presetName) => presetOf(product, presetName)
-    .filter(([, count]) => count).map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
+    shortages.map(({ bucket, label, need, have }) => `${label || bucket}단계 ${need}문항 필요 · ${have}문항 가능`).join(" / ");
+  const presetMix = (product, presetName) => (product.presets[presetName] || [])
+    .filter(([, count]) => count).map(([bucket, count]) => `${product.stepLabels?.[bucket] || bucket}단계 ${count}문항`).join(" · ");
 
   // Splits a unit list for the screen: units that can make this preset, and the rest with the
   // reason. For combinable products (종합평가) the caller evaluates a chosen union instead.
@@ -305,10 +322,11 @@
     return "단원";
   }
   // "2단계 문항 부족" / "2·3단계 문항 부족": the short reason for a list. shortageText() has the exact numbers.
-  const shortReason = (shortages) => `${shortages.map(({ bucket }) => bucket).join("·")}단계 문항 부족`;
+  const shortReason = (shortages) => `${shortages.map(({ bucket, label }) => label || bucket).join("·")}단계 문항 부족`;
 
-  // Print order of a selection: lowest difficulty step first; inside a step the unit (and 중단원) table-of-contents order,
-   // ties keep the selection order. units are the chosen scope nodes the selection was drawn from.
+  // Print order of a selection (every quick product): lowest difficulty first (the recorded step, so a 5단계 question follows the
+  // 4단계 ones); inside a step the unit (and 중단원) table-of-contents order; ties keep the selection order. The set of
+  // questions never changes. units are the chosen scope nodes the selection was drawn from.
   function orderByStep(units, selected) {
     const place = new Map();
     for (const unit of units) for (const bucket of BUCKETS) for (const record of unit.buckets[bucket])
@@ -338,9 +356,9 @@
   }
 
   return {
-    PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS, DIAGNOSTIC_STEPS, orderByStep,
+    PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS,
     isQuickView: (view) => VIEWS.includes(view),
-    usableBucket, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
+    usableBucket, isOriginalExam, examSemester, stillUsable, orderByStep, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
     buildScopes, wrapRecord, pickableGroups, selectNodes, unitNoun, shortReason,
     shortageText, presetMix,
   };
