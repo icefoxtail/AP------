@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-2"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ],
+        "label": "2x+y=4",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7/3",
+          "-5/3"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ],
+        "label": "5x+3y=7",
+        "color": "WARM"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "2/3",
+          "-4/3"
+        ],
+        "domain": [
+          "2",
+          "8"
+        ],
+        "label": "4x+3y=2 (a=3)",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "5",
+          "y": "-6",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a가 없는 2x+y=4와 5x+3y=7을 연립한다. y=4−2x를 대입하면 5x+12−6x=7에서 x=5, y=−6이므로 공통해는 P(5,−6)이다. 이 점이 4x+ay=2도 지나므로 20−6a=2에서 a=3이다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "세 직선의 공통점 P(5,−6)을 4x+ay=2에 대입해 a=3"
+  ],
+  "accessibilityDescription": "세 직선이 한 점 P(5,−6)에서 만나고 있으며 점 P의 좌표가 표시되어 있다. 세 직선은 모두 오른쪽 아래로 내려간다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>17. 연립방정식 $\\begin{cases} 2x+y = 4 \\\\ 4x+ay = 2 \\end{cases}$의 해가 일차방정식 $5x+3y = 7$을 만족시킬 때, $a$의 값을 구하면? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
