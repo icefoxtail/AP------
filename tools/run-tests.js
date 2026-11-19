@@ -534,9 +534,14 @@ const requiredCommands = [
     label: 'tests/item-4slot-data.test.cjs',
     args: ['tests/item-4slot-data.test.cjs']
   },
+  { label: 'tests/item-4slot-index-format.test.cjs', args: ['--test', 'tests/item-4slot-index-format.test.cjs'] },
   {
     label: 'tests/archive2-canonical-projection.test.mjs',
     args: ['--test', 'tests/archive2-canonical-projection.test.mjs']
+  },
+  {
+    label: 'tests/archive2-shards-builder.test.mjs',
+    args: ['--test', 'tests/archive2-shards-builder.test.mjs']
   },
   {
     // The register workflow runs this only when a diff5 request is in the inbox; a PR that changes the tool needs it too.

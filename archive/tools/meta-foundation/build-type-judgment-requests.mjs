@@ -131,11 +131,18 @@ function pathGrades(row) {
 // the row's course, another spelling of it or its successor (course-aliases.v1.json), and an ACTIVE binding of the PT in exactly that
 // curriculum/course inside the owner pack's declared scope. A pack that does not declare the binding's scope yet is widened by an
 // append-only pack change when `allowPackAdditions` is set (returned as `packAddition`); otherwise the row is skipped.
+const GRADES = ["중1", "중2", "중3", "고1", "고2", "고3"];
 export function chooseScope(registry, aliases, row, ptKey, { allowPackAdditions = false } = {}) {
   const all = registry.bindingsByPt.get(ptKey) || [];
   if (!all.length) return { skip: "SCOPE_PT_HAS_NO_BINDING" };
   const rowCur = text(row.curriculum) || text(row.curriculumKey), rowCourse = text(row.standardCourse) || text(row.courseKey);
   let pool, relation = "same";
+  // Keys of a grade at or below the exam's (aliases.reach: units moved between grades, prerequisite content); of those, the highest grade wins.
+  const reachPool = course => {
+    const hits = all.filter(b => aliases.reach(course, b.standardCourse, { sourceArchiveFile: row.sourceArchiveFile, problemTypeKey: ptKey }) === "reach");
+    const top = Math.max(-1, ...hits.map(b => GRADES.indexOf(aliases.gradeOf(b.standardCourse))));
+    return hits.filter(b => GRADES.indexOf(aliases.gradeOf(b.standardCourse)) === top);
+  };
   if (rowCourse) {
     const kinds = new Map(all.map(b => [b, aliases.relation(rowCourse, b.standardCourse)]));
     pool = all.filter(b => ["same", "alias"].includes(kinds.get(b)));
@@ -143,16 +150,18 @@ export function chooseScope(registry, aliases, row, ptKey, { allowPackAdditions 
     else {
       pool = all.filter(b => kinds.get(b) === "successor");
       relation = "successor";
+      if (!pool.length) { pool = reachPool(rowCourse); relation = "reach"; }
       if (!pool.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
     }
   } else {
     const grades = pathGrades(row);
     if (!grades.length) return { skip: "SCOPE_ROW_COURSE_UNKNOWN" };
     pool = all.filter(b => grades.includes(aliases.gradeOf(b.standardCourse)));
+    if (!pool.length) { pool = reachPool(""); relation = "reach"; }
     if (!pool.length) return { skip: "SCOPE_PT_BOUND_TO_OTHER_COURSE" };
   }
-  // The row's curriculum is compared with the binding's, except for a successor course (it lives in the other curriculum).
-  let candidates = rowCur && relation !== "successor" ? pool.filter(b => b.curriculum === rowCur) : pool;
+  // The row's curriculum is compared with the binding's, except for a successor or reach course (it lives in another curriculum/grade).
+  let candidates = rowCur && !["successor", "reach"].includes(relation) ? pool.filter(b => b.curriculum === rowCur) : pool;
   if (!candidates.length) return { skip: "SCOPE_CURRICULUM_MISMATCH" };
   const declared = b => { const pack = registry.packs.get(b.ownerPack || registry.pt.get(b.problemTypeKey)?.ownerPack); return pack && pack.curricula.includes(b.curriculum) && pack.standardCourses.includes(b.standardCourse); };
   let packAddition = null;
@@ -228,7 +237,8 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if ((ctx.identityCountBySource.get(file) || 0) !== bank.length) { for (const { row } of entries) skip(row, "EXAM_IDENTITY_COUNT_DIFFERS_FROM_SOURCE"); continue; }
     const items = [];
     for (const { row, m } of entries) {
-      const status = { pt: String(m.fieldStatus?.problemType ?? ""), tpl: String(m.fieldStatus?.template ?? "") };
+      // A status is a tag on a value: a field with no value has nothing to protect, whatever its tag says (approved_* on an empty field is fillable).
+      const status = { pt: empty(m.problemTypeKey) ? "" : String(m.fieldStatus?.problemType ?? ""), tpl: empty(m.templateKey) ? "" : String(m.fieldStatus?.template ?? "") };
       let replace = false;
       if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
         // --replace-draft-types: a value that is only a draft (both status fields overwritable) and differs from the judgment is replaced;

@@ -149,7 +149,7 @@ test("scope follows the strict lane and the alias file: another spelling or the 
   const spelled = sc(aliases, { standardCourse: "중1" }, "PT_A");
   assert.deepEqual(spelled.scope, { curriculum: "2015", standardCourse: "중1 수학" });
   assert.equal(spelled.relation, "alias");
-  assert.equal(sc(aliases, { standardCourse: "중2" }, "PT_A").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE"); // other grade is never mixed
+  assert.equal(sc(aliases, { standardCourse: "중2" }, "PT_A").relation, "reach"); // a key of a lower grade than the row's course is reached (see the reach test)
   assert.equal(sc(aliases, { standardCourse: "중1 수학" }, "PT_HIGH").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
   assert.equal(sc(aliases, { curriculum: "2022", standardCourse: "중1 수학" }, "PT_A").skip, "SCOPE_CURRICULUM_MISMATCH");
   assert.equal(sc(aliases, { standardCourse: "중1 수학" }, "PT_NONE").skip, "SCOPE_PT_HAS_NO_BINDING");
@@ -189,6 +189,28 @@ test("a pack that does not declare the binding course is skipped by default and 
   assert.ok([...requests].sort((a, b) => (a.requestId < b.requestId ? -1 : 1))[0] === carriers[0]); // registered first (inbox name order)
   // without the option nothing is widened and nothing converts
   assert.equal(planRequests({ ctx, resultRows: rows, approvedBy: "x" }).requests.length, 0);
+});
+
+test("a status tag does not block a blank field: approved_semantic_review with no value converts, a value that is present stays", () => {
+  const sem = { problemType: "approved_semantic_review", template: "approved_semantic_review" };
+  const recs = [
+    row(1, { problemTypeKey: "", templateKey: "", fieldStatus: { ...sem } }), // blank string, approved tag
+    row(2, { problemTypeKey: null, templateKey: null, fieldStatus: { ...sem } }), // null, approved tag
+    row(3, { problemTypeKey: "PT_A", templateKey: "", fieldStatus: { ...sem } }), // type value present and approved
+    row(4, { problemTypeKey: "", templateKey: "TPL_A", fieldStatus: { ...sem } }), // only the template value present and approved
+    row(5, { problemTypeKey: "", templateKey: "", fieldStatus: { problemType: "meta_semantic_hold", template: "manual_review_pending" } }), // blank with a hold tag: nothing to protect
+    row(6), row(7) // the exam has 7 questions; these two have no result line
+  ];
+  const ctx = makeCtx({ records: recs });
+  const rows = [1, 2, 3, 4, 5].map(n => line(n));
+  const { requests, skipped } = planRequests({ ctx, resultRows: rows, approvedBy: "x" });
+  assert.deepEqual(requests[0].items.map(i => i.questionUid), ["uid1", "uid2", "uid5"]);
+  for (const i of requests[0].items) assert.deepEqual(i.before, { problemTypeKey: "", templateKey: "" });
+  assert.deepEqual(skipped.map(s => [s.uid, s.reason]), [["uid3", "TYPE_ALREADY_PRESENT"], ["uid4", "TYPE_ALREADY_PRESENT"]]);
+  // the approved value is kept under --replace-draft-types too (counted with its own reason, not replaced)
+  const rep = planRequests({ ctx, resultRows: [line(3, { pt: "PT_HIGH", tpl: null })], approvedBy: "x", replaceDraft: true });
+  assert.equal(rep.requests.length, 0);
+  assert.equal(rep.skipped[0].reason, "TYPE_KEPT_DIFFERS_FROM_JUDGMENT");
 });
 
 test("rows with receipts on other fields are skipped by default and converted on request", () => {
@@ -272,4 +294,42 @@ test("result tables are read from plain folders (never repaired) and the exclude
     fs.writeFileSync(path.join(dir, "type-results-c", "b.jsonl"), "{broken\n");
     assert.throws(() => readResultTables(os.tmpdir(), [{ dir }]), /BROKEN_JSONL_LINE/);
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
+// ---- reach: a key of a grade at or below the exam's (2026-11-19) ----------------------------------------------------------------------
+const reachDoc = {
+  spellingGroups: [{ id: "M1", grade: "중1", members: ["중1 수학", "중1"], evidence: "fixture" }, { id: "M2", grade: "중2", members: ["중2 수학", "중2"], evidence: "fixture" },
+    { id: "M3", grade: "중3", members: ["중3 수학", "중3"], evidence: "fixture" }, { id: "H15", grade: "고1", members: ["수학(상)"], evidence: "fixture" },
+    { id: "H22", grade: "고1", members: ["공통수학1", "공통수학2"], evidence: "fixture" }],
+  successorGroups: [],
+  courseMoves: [{ id: "MOVE", problemTypeKeys: ["PT_COORD"], rowGrades: ["중3"], bindingGrades: ["고1"], maxExamYear: 2019, evidence: ["fixture"] }]
+};
+const reachAliases = makeCourseAliases(reachDoc);
+const bind = (problemTypeKey, curriculum, standardCourse) => ({ problemTypeKey, curriculum, standardCourse, ownerPack: "P", status: "ACTIVE" });
+const reachRegistry = makeRegistry({
+  problemTypes: ["PT_LOW", "PT_MID", "PT_UP", "PT_COORD"].map(problemTypeKey => ({ problemTypeKey, status: "ACTIVE", ownerPack: "P" })), templates: [],
+  bindings: [bind("PT_LOW", "2022", "중1 수학"), bind("PT_MID", "2015", "중2 수학"), bind("PT_UP", "2022", "공통수학1"), bind("PT_COORD", "2015", "수학(상)"), bind("PT_COORD", "2022", "공통수학2")],
+  packs: new Map([["P", { curricula: ["2015", "2022"], standardCourses: ["중1 수학", "중2 수학", "공통수학1", "수학(상)", "공통수학2"] }]])
+});
+const M3_19 = "original/middle/m3/2mid/19_가나중_2학기_중간_중3_수학.js", M3_20 = M3_19.replace("19_", "20_");
+
+test("reach: a key of a grade at or below the exam's grade is chosen; a key above it is still skipped", () => {
+  const sc = (row, pt, set = reachAliases) => chooseScope(reachRegistry, set, row, pt);
+  // the unit moved down: the PT is bound only to 중1 / 중2, the exam is 중3 (the row's own curriculum differs and is not compared)
+  const low = sc({ sourceArchiveFile: M3_20, standardCourse: "중3", curriculum: "2015" }, "PT_LOW");
+  assert.deepEqual(low.scope, { curriculum: "2022", standardCourse: "중1 수학" });
+  assert.equal(low.relation, "reach");
+  assert.deepEqual(sc({ sourceArchiveFile: M3_20, standardCourse: "M3-2" }, "PT_MID").scope, { curriculum: "2015", standardCourse: "중2 수학" });
+  assert.equal(sc({ sourceArchiveFile: M3_20 }, "PT_MID").relation, "reach", "a row without a course is placed by its exam folder");
+  assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "공통수학1" }, "PT_LOW").relation, "reach", "a wrongly filed row course");
+  // a key above the exam's grade
+  assert.equal(sc({ sourceArchiveFile: "original/middle/m1/1mid/24_가나중_1학기_중간_중1_기출.js", standardCourse: "중1 수학" }, "PT_MID").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  assert.equal(sc({ sourceArchiveFile: "original/middle/m2/1mid/24_가나중_1학기_중간_중2_기출.js", standardCourse: "중2 수학" }, "PT_UP").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  assert.equal(sc({ sourceArchiveFile: "original/middle/m2/1mid/24_가나중_1학기_중간_중2_기출.js" }, "PT_UP").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_UP").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  // the listed move: 좌표 PT of a 2019-or-earlier 중3 exam reaches its 고1 binding, a 2020 exam does not
+  assert.equal(sc({ sourceArchiveFile: M3_19, standardCourse: "중3" }, "PT_COORD").relation, "reach");
+  assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_COORD").skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
+  // without alias data nothing is reached
+  assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_LOW", makeCourseAliases(null)).skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });

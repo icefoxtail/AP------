@@ -26,7 +26,7 @@ import { hasNativeReviewedSourceClaim, validateNativeReviewedSourceReuse } from 
 import { loadActiveMetaRegistry } from "./active-registry.mjs";
 import { activeBindingContext, nativeReviewReceipt } from "./auto-register-merged-source.mjs";
 import { loadApprovedRendererPreservation, planApprovedRendererRecord, buildApprovedRendererBinding, verifyApprovedRendererReceipt } from "./native-approved-renderer-preservation.mjs";
-import { validateRpmPrimaryProvenance } from "./reviewed-rpm-provenance.mjs";
+import { validateRpmPrimaryProvenance, fillRpmFromRecordId } from "./reviewed-rpm-provenance.mjs";
 import { preparePrerequisiteExistingRpmAuthority } from "./reviewed-m2s1-prerequisite-existing-application.mjs";
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
@@ -2500,7 +2500,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const sourceValueOverrides = [];
-  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [];
+  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [], rpmPrimaryBindings = [], nativeParentBindings = [], reportTags = [];
   const extensionUsage = new Map(), priorBanks = new Map(), sourceReviewCache = new Map();
   let identityChanged = false;
   // Source-only rebind (2026-11-02): re-bind an already registered receipt to changed source bytes without
@@ -2520,7 +2520,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       return context.reason ? null : nativeReviewReceipt({ ...ancestor, registry: approvedRendererRegistry, ...context });
     } }) : null;
   for (let i = 0; i < bank.length; i++) {
-    const current = rows[i], patch = patches.get(current.questionUid);
+    const current = rows[i];
+    let patch = patches.get(current.questionUid);
     if (partial && !patch) continue;
     const q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
@@ -2631,9 +2632,15 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       Object.assign(current, finalPrior); applied.push(structuredClone(finalPrior)); runtimeRecords.push(rrPrior);
       continue;
     }
-    for (const [field, value] of Object.entries(patch.before)) if (!valueFields.has(field) || !eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
-    for (const [field, value] of Object.entries(patch.after)) {
-      if (!valueFields.has(field)) fail(`unapproved field: ${field}`);
+    // Fields outside the value contract are not rejected: they are not stored and the receipt/result names them.
+    const unstored = [...new Set([...Object.keys(patch.before), ...Object.keys(patch.after)].filter(field => !valueFields.has(field)))];
+    if (unstored.length) {
+      reportTags.push({ questionUid: current.questionUid, kind: "UNSTORED_FIELDS", fields: unstored });
+      const keep = values => Object.fromEntries(Object.entries(values).filter(([field]) => valueFields.has(field)));
+      patch = { ...patch, before: keep(patch.before), after: keep(patch.after) };
+    }
+    for (const [field, value] of Object.entries(patch.before)) if (!eq(current[field] ?? null, value)) fail(`before mismatch: ${current.questionUid}.${field}`);
+    for (const field of Object.keys(patch.after)) {
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
@@ -2755,6 +2762,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
       final[field] = label;
     }
+    fillRpmFromRecordId({ root, final, cache: sourceReviewCache, questionUid: current.questionUid, reportTags });
     const revision = `meta-foundation:${pack.meta.packId}@${pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}`;
     const confidence = req.approval.type === "REVIEW2" ? "independent_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "meta_pipeline_audit" : "approved_final_qa";
@@ -2946,6 +2954,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         solutionFingerprintRepairs: fingerprintRepairs.length, newMetadataApprovals: 0, preservedMetadataApprovals: applied.length } } : {}),
     ...(approvedRendererBinding ? { approvedRendererPreservation: approvedRendererBinding } : {}),
     ...(rpmPrimaryBindings.length ? { rpmPrimaryBindings } : {}),
+    ...(reportTags.length ? { reportTags } : {}),
     ...(nativeParentBindings.length ? { nativeParentBindings } : {}),
     ...(sourceValueOverrides.length ? { sourceValueOverrides } : {}),
     ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: metaPipelineAudit.inputAuditSchemaVersion || metaPipelineAudit.audit.schemaVersion,
@@ -3034,7 +3043,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length, ...scopeFields, ...preservationFields,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
     fingerprintRepairCount: fingerprintRepairs.length,
-    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
+    consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file), ...(reportTags.length ? { reportTags } : {}) };
 }
 
 // Loads the digest-checked canonical input bundle exactly as the student Consumer

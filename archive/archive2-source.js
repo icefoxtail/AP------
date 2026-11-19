@@ -12,6 +12,8 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function (core, problemBankMeta, examSourceReader, errorDetail) {
   "use strict";
   const cache = new Map();
+  // restore()가 원본 시험지 파일을 동시에 받는 상한. 브라우저 연결 수를 넘기지 않으려는 값이다.
+  const FETCH_CONCURRENCY = 6;
   // 어느 파일의 몇 번 문항에서 막혔는지를 오류에 실어 화면이 그대로 말하게 한다(archive2-error-detail.js). 메시지는 바꾸지 않는다.
   const mark = (error, detail) => (errorDetail ? errorDetail.annotate(error, detail) : error);
   const fail = (message, detail) => mark(new Error(message), detail);
@@ -206,17 +208,42 @@
     const hashes = new Map(catalog.sourceHashes);
     const files = [...new Set(records.map((r) => r.sourceFile))];
     const banks = new Map();
-    for (const file of files) {
+    // 원본 파일은 최대 FETCH_CONCURRENCY개씩 동시에 받는다(파일 목록 순서대로 시작). 파일마다 하는 일(SHA 기대값 확인,
+    // 받기·해시·평가, 오류에 파일·문항 번호 싣기)은 예전 직렬 반복과 같고, 실패는 직렬이었다면 처음 막혔을 파일(목록에서
+    // 가장 앞선 실패)의 오류를 그대로 던진다. 한 파일이 실패하면 새 파일은 더 받지 않는다.
+    const limit = Math.max(1, Math.min(FETCH_CONCURRENCY, Math.floor(Number(options.concurrency)) || FETCH_CONCURRENCY));
+    const loadFile = async (file) => {
       const sourceHash = String(hashes.get(file) || "").trim();
       if (options.requireSourceHash && !/^[a-f0-9]{64}$/i.test(sourceHash))
         throw fail("문항 원본의 기대 SHA-256을 확인할 수 없습니다: " + file, { file, code: "SOURCE_HASH_MISSING" });
       try {
-        banks.set(file, await load(file, sourceHash, options));
+        return await load(file, sourceHash, options);
       } catch (error) {
         // 파일을 못 읽으면 이 파일에서 가져오려던 문항 번호도 함께 알려 준다.
         const wanted = records.filter((r) => r.sourceFile === file).map((r) => r.sourceQuestionNo ?? r.sourceOrdinal);
         throw mark(error, { file, questionNo: wanted.length === 1 ? wanted[0] : "", code: "SOURCE_FETCH_FAILED" });
       }
+    };
+    const outcomes = new Array(files.length);
+    let nextIndex = 0;
+    let failedAny = false;
+    const worker = async () => {
+      while (!failedAny && nextIndex < files.length) {
+        const index = nextIndex++;
+        try {
+          outcomes[index] = { bank: await loadFile(files[index]) };
+        } catch (error) {
+          outcomes[index] = { error };
+          failedAny = true;
+        }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(limit, files.length) }, worker));
+    for (let index = 0; index < files.length; index += 1) {
+      const outcome = outcomes[index];
+      if (!outcome) break; // 앞선 실패 때문에 시작하지 않은 파일
+      if (outcome.error) throw outcome.error;
+      banks.set(files[index], outcome.bank);
     }
     // 문항 하나가 막혀도 끝까지 확인해 막힌 문항을 모두 알린다(성공/실패 판정은 Promise.all과 같다: 하나라도 막히면 실패).
     const restoreAll = errorDetail ? errorDetail.allOrReport : (promises) => Promise.all(promises);
@@ -317,5 +344,5 @@
         return result;
     }
   }
-  return { evaluate, digest, fingerprint, generatedContentFingerprint, load, restore, restoreGenerated };
+  return { evaluate, digest, fingerprint, generatedContentFingerprint, load, restore, restoreGenerated, FETCH_CONCURRENCY };
 });

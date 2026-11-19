@@ -705,7 +705,7 @@ window.examData = {
   {
     "id": 18,
     "score": 4,
-    "question": "<p>18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_중간_중2_수학/q18.png\" /></p>",
+    "question": "<p>18. 다음 그림에 대한 설명으로 옳은 것을 모두 고르면? (정답 2개) [4점]</p><p><img src=\"assets/images/21_팔마중_2학기_중간_중2_수학/q18-restored-20261119.png\" /></p>",
     "choices": [
       "$\\overline{\\mathrm{BD}}$의 길이는 $6\\text{cm}$이다.",
       "$\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{ADB}$는 $\\mathrm{SSS}$닮음이다.",
@@ -713,8 +713,8 @@ window.examData = {
       "$\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{ADB}$의 닮음비는 $3:2$이다.",
       "$\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DCB}$의 닮음비는 $6:5$이다."
     ],
-    "answer": "",
-    "solution": ""
+    "answer": "①, ④",
+    "solution": "그림에서 $AB=6$, $AD=4$, $DC=5$, $BC=9$이므로 $AC=9$이다.\n$\\triangle ABC$와 $\\triangle ADB$는 $\\angle A$가 공통이고 $AC:AB=9:6=3:2$, $AB:AD=6:4=3:2$이므로 SAS 닮음이고 닮음비는 $3:2$이다. (②, ④ 중 ④가 옳다.)\n이때 $BC:DB=3:2$에서 $BD=6$ cm이다. (① 옳다.)\n$\\triangle ABC$와 $\\triangle DCB$는 $\\angle C$가 공통이지만 $CA:CB=9:9$, $CB:CD=9:5$로 비가 달라 닮음이 아니다. (③, ⑤ 옳지 않다.)\n따라서 옳은 것은 ①, ④이다."
   },
   {
     "id": 19,
