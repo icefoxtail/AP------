@@ -1,0 +1,72 @@
+{
+  "qid": "21",
+  "itemFingerprint": "daa070c089ef2026",
+  "solveSteps": [
+    "\\sqrt{40n} = \\sqrt{4 \\times 10n} = 2\\sqrt{10n}이다.",
+    "이 식이 자연수가 되려면 근호 안의 수 10n = 2 \\times 5 \\times n이 완전제곱수이어야 한다.",
+    "따라서 소인수의 지수가 모두 짝수가 되어야 하므로 n = 10k^2 (k는 자연수) 꼴이어야 한다.",
+    "주어진 조건 20 <= n < 300에 대입하면 20 <= 10k^2 < 300이다.",
+    "양변을 10으로 나누면 2 <= k^2 < 30이다.",
+    "이를 만족하는 자연수 k는 2, 3, 4, 5의 4개이고, 이때 n은 각각 40, 90, 160, 250이다.",
+    "따라서 n의 개수는 4개이다."
+  ],
+  "solvedAnswer": "4개",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "[서·논술형 1] $20 \\le n < 300",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "40n이 자연수가 되는 일반형 10k^2을 세우고 20과 300 사이의 개수 4개를 구하는 문제이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+  "typeReason": "소인수분해로 40n의 완전제곱수 조건을 구하고 20과 300 범위의 자연수 개수를 세는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "40을 소인수분해해 n = 10k^2을 세우고 20과 300 사이 k의 개수 4개를 세는 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "< 300$인 자연수 $n$에 대하"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "하는 $n$의 개수를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "이어야 한다. 소인수분해를 통해 $n$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱수",
+        "src": "solution",
+        "quote": "$40n$이 완전제곱수이어야 한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "n의 범위와 근호식을 확인한다.",
+    "goal": "자연수 n의 개수를 구한다.",
+    "method": "40을 소인수분해해 n의 형태를 결정한다.",
+    "condition": "20 <= 10k^2 < 300 부등식을 만족하는 k를 찾는다."
+  },
+  "how": "$n = 10k^2$ 꼴에서 $2 \\le k^2 < 30$을 만족하는 $k = 2, 3, 4, 5$로 4개임을 판정하였다."
+}

@@ -1,0 +1,70 @@
+{
+  "qid": "14",
+  "itemFingerprint": "560e257657b54395",
+  "solveSteps": [
+    "(-2a - 3b)(a - b)를 분배법칙으로 전개한다.",
+    "-2a(a - b) - 3b(a - b) = -2a^2 + 2ab - 3ab + 3b^2이다.",
+    "동류항을 정리하면 -2a^2 - ab + 3b^2이다.",
+    "우변 Aa^2 + Bab + Cb^2와 계수를 비교하면 A = -2, B = -1, C = 3이다.",
+    "따라서 ABC = (-2) \\times (-1) \\times 3 = 6이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "unitEvidence": "$(-2a-3b)(a-b) = Aa^2 + B",
+  "rpmRecordId": "M3-RPM-017",
+  "rpmReason": "다항식을 전개하여 계수 A, B, C를 구하고 곱 ABC = 6을 계산하는 문제이다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
+  "typeReason": "두 일차식의 곱을 전개하여 동류항 ab를 모으고 계수 관계 ABC를 결정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분배법칙으로 전개해 ab 계수를 모으고 A = -2, B = -1, C = 3을 곱해 ABC를 구하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "^2$일 때, 상수 $A, B,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "을 정리한 후 계수를 비교한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "src": "solution",
+        "quote": "두 일차식을 분배법칙으로 전개하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "으로 전개하여 동류항을 정리한 후"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 일차식의 곱셈 등식을 확인한다.",
+    "goal": "ABC의 값을 계산한다.",
+    "method": "분배법칙으로 전개하고 동류항을 모은다.",
+    "condition": "양변의 동류항 계수를 각각 일치시킨다."
+  },
+  "how": "전개식 $-2a^2 - ab + 3b^2$로부터 $A=-2, B=-1, C=3$을 얻어 $ABC = 6$인 ④로 판정하였다."
+}

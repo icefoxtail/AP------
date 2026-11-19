@@ -1,0 +1,72 @@
+{
+  "qid": "13",
+  "itemFingerprint": "ddf5a855209574f3",
+  "solveSteps": [
+    "\\sqrt{48ab} = \\sqrt{16 \\times 3ab} = 4\\sqrt{3ab}이다.",
+    "이 값이 자연수가 되려면 3ab가 완전제곱수이어야 하므로 ab = 3k^2 꼴이어야 한다.",
+    "주사위 눈의 곱 ab의 범위는 1 <= ab <= 36이다.",
+    "k = 1일 때 ab = 3: (1, 3), (3, 1)의 2가지이다.",
+    "k = 2일 때 ab = 12: (2, 6), (3, 4), (4, 3), (6, 2)의 4가지이다.",
+    "k = 3일 때 ab = 27은 주사위 눈으로 만들 수 없다.",
+    "따라서 만족하는 순서쌍은 총 2 + 4 = 6가지이고, 전체 경우의 수는 36이므로 확률은 6/36 = 1/6이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "$\\mathrm{A}, \\mathrm{B}$ ",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "48ab가 자연수가 되기 위한 조건 ab = 3, 12를 찾고 36 경우 중 확률 1/6을 계산하는 문제이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+  "typeReason": "48ab 근호식의 자연수 조건을 완전제곱수로 환산하여 주사위 순서쌍의 확률을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "48을 소인수분해하여 ab의 3배수 제곱수 조건을 유도하고 36 중 6개를 세는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "48ab}$가 자연수가 될 확률은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "자연수가 될 확률은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "b$의 조건을 소인수분해로 찾고, 주사",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱수",
+        "src": "solution",
+        "quote": "$3ab$가 완전제곱수이어야 하므로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 주사위 눈과 근호식을 확인한다.",
+    "goal": "자연수가 될 확률을 구한다.",
+    "method": "48을 소인수분해하여 3ab의 완전제곱 조건을 찾는다.",
+    "condition": "주사위 눈 순서쌍의 개수를 36으로 나눈다."
+  },
+  "how": "48ab에서 ab = 3, 12인 6가지 경우를 찾아 전체 36으로 나누어 $1/6$인 ③으로 판정하였다."
+}
