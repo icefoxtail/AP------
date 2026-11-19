@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-01c489818ccc-e0438a8c",
+  "requestSha256": "5e92d61fb464ff051c23eab9215c07e2666971f29ff08ef4cf9d9db0663b2488",
+  "examUid": "이차방정식_중3_이차방정식의활용문해력_유형",
+  "sourceArchiveFile": "types/middle/m3/이차방정식_중3_이차방정식의활용문해력_유형.js",
+  "sourceBlobSha1": "bbeed01848c6c72474bdb6981a9dc1d766cf7612",
+  "sourceRawSha256": "88162ab28e21c357483d3136043e73cae8141f0a95290a3fe21f51dbe743ba31",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-01c489818ccc-e0438a8c.type-ledger.json",
+        "sha256": "31ff4b4e9eaa7955d6dd9b8c5c68639225389f324315adf4a8177f871496db1e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_f52664e10dc36692c209117c15b3251e690bcaa240b2b5aaff6fdcad0b66270d",
+      "sourceArchiveFile": "types/middle/m3/이차방정식_중3_이차방정식의활용문해력_유형.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_M1_LINEAR_EQUATION_MODELING",
+      "templateKey": "TPL_M1_LINEAR_EQUATION_MODEL_QUANTITY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-01c489818ccc-e0438a8c",
+        "judge": "dots",
+        "rationale": "처음 줄수와 의자수를 x로 두면 (x-4)(x+3)=x²-36. 이차항이 소거되어 -x-12=-36에서 x=24.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "9b12935f01645d9ef9603660da6dc9c18a153497baf1400072f7ea130c324054",
+        "judgedContentFingerprint": "8c870217e529ec17b0492e29671e886f464cab224a04d52aa82fff397d23a81e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a0d35a665586913387f84f6426f754d9ad3d74cc55dafd55e594b349c57902b1",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-m3.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-01c489818ccc-e0438a8c.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 16
+}

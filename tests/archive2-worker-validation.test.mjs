@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { test } from "node:test";
+import { after, test } from "node:test";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import * as savedPaperLibrary from "../apmath/worker-backup/worker/helpers/archive-saved-papers.js";
@@ -16,6 +16,20 @@ import {
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
+
+// Three tests need a catalog row in a transient state and skip when none is left (a skip is not a failure). If all three skip, nothing in this
+// file exercises those contracts any more: say so once, loudly, on stderr and in the GitHub step summary, because a "# SKIP" line is lost in the CI log.
+const CATALOG_STATE_TESTS = 3;
+const catalogStateSkips = [];
+const skipForCatalogState = (t, reason) => { catalogStateSkips.push(reason); return t.skip(reason); };
+after(() => {
+  if (catalogStateSkips.length < CATALOG_STATE_TESTS) return;
+  const message = `WARNING tests/archive2-worker-validation.test.mjs: all ${CATALOG_STATE_TESTS} catalog-state tests were skipped (${catalogStateSkips.join("; ")}). Not a failure; those contracts are no longer exercised by this file.`;
+  process.stderr.write(message + "\n");
+  if (process.env.GITHUB_STEP_SUMMARY) {
+    try { fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, "\n" + message + "\n"); } catch { /* the stderr line above remains */ }
+  }
+});
 const { catalog } = require("./helpers/archive2-scope-harness.cjs");
 const base = catalog.records.find((record) => record.automatic && (!process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX || record.sourceFile.startsWith(process.env.AP_ARCHIVE2_TEST_SOURCE_PREFIX)));
 assert.ok(base, "catalog must contain an automatic record");
@@ -122,7 +136,7 @@ test("BASIC middle3 questions without advanced taxonomy pass server validation",
   const record = catalog.records.find(row => row.effectiveBrowseGrade === "중3" &&
     row.taxonomyStatus === "UNKNOWN" && core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
   // The server judges the catalog's own record, which a test copy cannot change; once every 중3 BASIC question has an RPM leaf there is nothing to check.
-  if (!record) return t.skip("current registered Archive2 data has no 중3 BASIC question without an RPM leaf");
+  if (!record) return skipForCatalogState(t, "current registered Archive2 data has no 중3 BASIC question without an RPM leaf");
   await validateApprovedMixedQuestions(env, [materialize(record)], input({
     grade: "중3", primaryPaths: [core.pathKey(record, 4)],
   }));
@@ -227,7 +241,7 @@ test("BASIC rejects a source release that is not confirmed, and a confirmed stem
   const record = catalog.records.find(row => row.sourceStatus === "HOLD" &&
     row.sourceIntegrityStatus === "VERIFIED" && row.identityStatus === "VERIFIED" && row.difficultyBucket === "UNKNOWN");
   // The HOLD rows are checked against the catalog's own record; when none is left (source release resolved) there is nothing to reject.
-  if (!record) return t.skip("current registered Archive2 data has no verified HOLD question with UNKNOWN difficulty");
+  if (!record) return skipForCatalogState(t, "current registered Archive2 data has no verified HOLD question with UNKNOWN difficulty");
   const reasons = core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).reasons;
   assert.ok(reasons.includes("source_release"));
   assert.equal(core.basicEligibility(record, { canonicalAuthority: catalog.canonicalAuthority }).ok, false);
@@ -443,7 +457,7 @@ test("mixed validation rejects a source value placed where the catalog value is 
   // value (including ""), so the saved-paper request must carry the catalog value. The metadata check must stay strict.
   const record = catalog.records.find((row) => core.generalUseEligibility(row).ok &&
     typeof row.sourceFile === "string" && row.courseKey === "" && row.assignmentFingerprint && row.sourceFingerprint);
-  if (!record) return t.skip("current registered Archive2 data has no general-use record whose courseKey is empty");
+  if (!record) return skipForCatalogState(t, "current registered Archive2 data has no general-use record whose courseKey is empty");
   const filters = { grade: record.effectiveBrowseGrade, primaryPaths: [core.generalPathKey(record)] };
   const exact = materialize(record);
   assert.equal(exact.courseKey, "");

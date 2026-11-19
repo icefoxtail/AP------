@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-56b091245b7d-97cbf553",
+  "requestSha256": "1a0d18eec57588366e144f4dd5bb1d959afa0468bfabeacf0d39bc6c659b6a9f",
+  "examUid": "26_팔마중_2학기_중간_중2_기출",
+  "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+  "sourceBlobSha1": "56a82b886b5355ecbe9257ba29809064747166f4",
+  "sourceRawSha256": "bb2442158553f3021cc000c7fee7ced5b5f4f967b4fe6db3e5058ba3b3f6a5b1",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-56b091245b7d-97cbf553.type-ledger.json",
+        "sha256": "f9334ed370996984f13c8bb1a16c62abbd9a78579a4c90f38d5764fc6c8ff68a"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_91c913fad9da531db08233134cbd239687a0621d38b662760355f67bf352ad74",
+      "sourceArchiveFile": "original/middle/m2/2mid/26_팔마중_2학기_중간_중2_기출.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+      "templateKey": "TPL_MOVE_FOLDING_REFLECTION_REFLECTION_EXISTING",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-56b091245b7d-97cbf553",
+        "judge": "dots",
+        "rationale": "접는 선EF가 원래EC와 반사된EA의 각120도를 이등분하므로 FEC=60도이고 평행선으로 EFD=120도이다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중2 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "0b3b09ab07dc009202a435a3a39f47fa25409450d48f24517ab992d215ca6860",
+        "judgedContentFingerprint": "0d54e7f597f42f2dbc482dc50a9c4b48ef86276aec5874216625f40f70fc095c",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "232e83fe047067b60e6ea39e2767627ecd58148c554eaef9a25f057cc3f8caa4",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-56b091245b7d-97cbf553.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+          "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

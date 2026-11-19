@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-caca1b59887b-5bbf1ae1",
+  "sourceArchiveFile": "original/middle/m3/2final/22_풍덕중_2학기_기말_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_e1cf9a97232565aac869ad514848c7d0e4fd515ee1feddd8b7a382180d8e9ee9",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT",
+      "step": "막대그래프 도수2,4,5,3,1로 가중합42와 평균2.8을 얻고 여덟째 자료 및 최고도수 위치가 모두3이어서 ㄴㄷ을 고른다.",
+      "note": "cross_grade_key: 중1 대푯값 계산 정의 적용. 필요 TPL: 도수 막대그래프의 대푯값 진술 검토; 가중평균·누적도수 중앙값·최고도수 최빈값을 구해 진술을 판정한다. | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정 | 도구: TPL_NOT_ACTIVE",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9bb22d0b45e7349138cd817a8694dedddbe664a6282282af6dcec21311424604",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "첫 자료의 셋째가8이려면 a≥8, 둘째 자료의 가운데 값12와16을 유지하려면 a≤12이므로 교집합[8,12]를 구한다.",
+      "note": "cross_grade_key: 중1 대푯값 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": true,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8cdcb9e78a9e1f4e6545b51d58fc272b970fd255d7be14427615c16c44fab6da",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_CONSTRAINT_RECONSTRUCTION",
+      "step": "5회 총점450에서 기존4회 총점352를 빼 추가 점수98을 복원한다.",
+      "note": "cross_grade_key: 중1 평균 조건 복원 적용 | OUT_OF_CANDIDATES: 해당 과목 ACTIVE 정의를 직접 확인하여 판정",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    }
+  ]
+}

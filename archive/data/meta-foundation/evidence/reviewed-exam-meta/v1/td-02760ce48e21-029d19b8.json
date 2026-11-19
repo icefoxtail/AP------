@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-02760ce48e21-029d19b8",
+  "requestSha256": "b2a73874a5f59fee1d1846b3974c000f53a690f756e5bbb8231163d6db91e5d1",
+  "examUid": "20_매산고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/20_매산고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "94d6a2b33f15bce29426e511c2620d3bacbcb603",
+  "sourceRawSha256": "d8e12b2877157170d7de53a09920f5c0df85b5a9530e7778c568b7f0dabab6aa",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-02760ce48e21-029d19b8.type-ledger.json",
+        "sha256": "78899fe9c1e56323d98e4efda5e0beecd14e9fd8245bca9df5c1ac83feaaa36a"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e16b3cae7540a074db9ba495e254b594ca5590477eadf5e7afae9bfd3477c1a2",
+      "sourceArchiveFile": "original/high/h1/1mid/20_매산고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-02760ce48e21-029d19b8",
+        "judge": "dots",
+        "rationale": "공통식T=a²−4b²−c²를묶어T(a²+c²)=0에서a²=4b²+c². 양수제곱비교로ㄱ참,10,3,8반례로ㄴ거짓, a=b+c10에서b4,c6으로ㄷ거짓.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "29b145b4ef9518b2358bd3310f4d5a0064fab0a5654bf303bf5ad3512b144144",
+        "judgedContentFingerprint": "575fb954c9a826825f839991f85befb2b73b4fbc6af30df07e48550d96426a80",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "ac277614745b66f6c239749472abbd605ca063a58069e8fe6cf0653d5db19f16",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-02760ce48e21-029d19b8.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 20
+}
