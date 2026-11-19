@@ -1,0 +1,142 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄴ  y=|x|"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-1"
+              ]
+            },
+            {
+              "coefficients": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "0",
+              "0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄹ  y=x²-2|x|-3"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-3",
+                "2",
+                "1"
+              ]
+            },
+            {
+              "coefficients": [
+                "-3",
+                "-2",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "-3"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-3",
+              "3"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "Q",
+              "x": "0",
+              "y": "-3"
+            }
+          ],
+          "exactCoordinates": {
+            "Q": [
+              "0",
+              "-3"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "여섯 함수 중 x=0에서 연속이면서 뾰족하게 꺾이는 두 함수를 그렸다. ㄴ은 √(x²)=|x|라 원점 P에서 좌미분계수 -1, 우미분계수 1로 꺾인다. ㄹ은 x<0에서 x²+2x-3, x>0에서 x²-2x-3이라 Q(0,-3)에서 값은 같지만 좌미분계수 2와 우미분계수 -2가 달라 꺾인다. 나머지 ㄱ, ㄷ, ㅁ, ㅂ은 x=0 근방에서 매끄러워 미분가능하다. 따라서 답은 ④(ㄴ, ㄹ)이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 원점 P에서 V자로 꺾이는 그래프가, 둘째 패널에는 점 Q에서 뾰족하게 꺾이며 양쪽이 올라가는 W 모양 일부의 그래프가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 다음 중 $x=0$에서 연속이지만 미분가능하지 않은 함수를 <보기> 중에서 있는 대로 고른 것은? [3.7점]\n\n<보기>\nㄱ. $f(x)=[x^2]$\nㄴ. $f(x)=\\sqrt{x^2}$\nㄷ. $f(x)=|x|^2$\nㄹ. $f(x)=x^2-2|x|-3$\nㅁ. $f(x)=x|x|$\nㅂ. $f(x)=x|x+1|$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 연속이지만 미분불가능인 두 함수 ㄴ, ㄹ의 꺾이는 점을 두 패널로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "ㄴ과 ㄹ의 그래프가 x=0에서 연속이지만 좌우 기울기가 달라 뾰족하게 꺾이는 점 P, Q를 보인다."
+  ]
+}

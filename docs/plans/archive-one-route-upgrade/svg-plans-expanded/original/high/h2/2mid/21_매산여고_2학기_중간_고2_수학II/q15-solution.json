@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      1,
+      2.6
+    ],
+    "viewport": [
+      1,
+      2.6,
+      2,
+      13
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "3/2",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "21/10",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "6",
+          "intercept": "-5",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "461/100",
+          "intercept": "-51/25",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=2인 f(x)=x³-2x²+2x+3에서 h=1/10일 때를 그렸다. 직선 m은 두 점 A(3/2,39/8), B(21/10,7641/1000)를 잇는 할선이고, 직선 l은 T(2,7)에서의 접선으로 기울기 f′(2)=6이다. h가 0에 가까워지면 A, B가 T로 모여 m의 기울기도 6에 가까워진다. 분자의 두 변화량이 합쳐져 극한은 (6/4)f′(2)=9에서 f′(2)=6, a=2이고 f′(3)=17이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "15. 함수 $f(x)=x^3-ax^2+2x+3$가 $\\lim_{h \\to 0} \\frac{f(2+h)-f(2-5h)}{4h} = 9$를 만족시킬 때, $f'(3)$의 값을 구하면? (단, $a$는 상수) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=2-5h와 x=2+h의 두 점 A, B를 잇는 할선 m이 h→0에서 T에서의 접선 l에 가까워짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "T(2,7)의 양쪽 두 점 A, B를 잇는 할선 m과 T에서의 접선 l(기울기 6)을 보여 h→0일 때 할선이 접선에 가까워짐을 알게 한다."
+  ],
+  "accessibilityDescription": "오른쪽 위로 오르는 삼차곡선 위의 점 T에서 접하는 직선 l과, T의 양쪽에 있는 두 점 A, B를 지나는 덜 가파른 직선 m이 나타난 그래프이다."
+}

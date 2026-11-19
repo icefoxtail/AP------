@@ -1,0 +1,82 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -4,
+          -2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "3",
+          "-1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  },
+  "caption": "g는 |x|≤2에서 -|x|+3이고 밖에서 2이다. x=±2에서 안쪽 값은 1(닫힌 점)이고 바깥쪽 극한은 2(열린 점)라 불연속이다. f(x)g(x)가 연속이려면 f(-2)=f(2)=0이어야 하므로 f(x)=x²-4이다. f(x-a)g(x)가 x=2에서 연속이려면 f(2-a)=0이라 a=0 또는 4, x=-2에서 연속이려면 f(-2-a)=0이라 a=0 또는 -4이다. 정확히 한 점에서만 불연속이려면 a=±4이고 곱은 -16이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. 최고차항의 계수가 1인 이차함수 $f(x)$와 함수\n$$g(x) = \\begin{cases} -|x|+3 & (|x| \\le 2) \\\\ 2 & (|x| > 2) \\end{cases}$$\n에 대하여 함수 $f(x)g(x)$가 실수 전체의 집합에서 연속이다. $y=f(x-a)g(x)$가 한 점에서만 불연속이 되도록 하는 모든 실수 $a$값의 곱을 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "g가 x=±2에서 안쪽 값 1과 바깥쪽 극한 2로 불연속임을 열린 점과 닫힌 점으로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "g가 x=-2, 2에서 안쪽 높이 1의 닫힌 점과 바깥쪽 높이 2의 열린 점으로 끊어지고 x=0에서 꼭대기 3을 가짐을 보인다."
+  ],
+  "accessibilityDescription": "가운데가 뾰족하게 솟은 삼각형 모양의 꼭대기가 있고, 양쪽 끝에서 아래로 내려온 닫힌 점과 그보다 높은 곳의 수평선이 끊어져 있는 그래프이다."
+}
