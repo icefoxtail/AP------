@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-eaafdc26ca56-56cb9477",
+  "examUid": "17_신흥중_2학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/2final/17_신흥중_2학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "7a5c37444e3bfba5e3ada120d52f19fa9abf5e9b",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eaafdc26ca56-56cb9477.type-ledger.json",
+        "sha256": "fac53b135376bf9ad913fa7beef4f2c35b039454be3fb89138ea9b12faee72eb"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_18d1d72a82c0aa8b3fa36b7f795cefb1d08fbdfbe91fb05bc7f9d4aa328b124c",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_CIRCLE_CHORD"
+      },
+      "rationale": "중심 O에서 두 현 AB, AC까지의 거리 ON, OM이 같으므로 AB=AC임을 이용해 ∠B=55°와 ∠A=70°를 구한 뒤, 사각형 ANOM의 내각의 합으로 ∠MON=110°를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "cbfcd67a3a895327069875a88ee01e4fed345252eb3fbbc05e05831df733a058",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eaafdc26ca56-56cb9477.type-ledger.json",
+          "sha256": "fac53b135376bf9ad913fa7beef4f2c35b039454be3fb89138ea9b12faee72eb"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_695a4f7ba271112e7c6b9646d4d740eaa405ba0255d91b2b518012577388fa97",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_CIRCLE_LENGTH"
+      },
+      "rationale": "큰원접선등길이로 AF16-x,BF=x를 세워 x²+64=(16-x)²에서6,작은내접반지름(8+6-10)/2=2.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "f3eaa236c9ef6960939ce4ac23e3e2b58c30d7925e6ab0d8cdaf6afea17aa551",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eaafdc26ca56-56cb9477.type-ledger.json",
+          "sha256": "fac53b135376bf9ad913fa7beef4f2c35b039454be3fb89138ea9b12faee72eb"
+        }
+      ]
+    }
+  ]
+}

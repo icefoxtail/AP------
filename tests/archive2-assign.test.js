@@ -959,7 +959,7 @@ test("배포 꾸러미와 workspace.html에 새 파일이 같은 버전으로 �
   assert.ok(manifest.archiveRootFiles.includes("archive2-assign.css"));
   const html = read("archive", "workspace.html");
   assert.match(html, /archive2-assign\.css\?v=20261116-polish-1/);
-  assert.match(html, /archive2-assign\.js\?v=20261118-error-detail-1/);
+  assert.match(html, /archive2-assign\.js\?v=20261119-assessment-pack-1/);
   assert.ok(html.indexOf("archive2-assign.js") < html.indexOf("archive2-library.js"), "패널은 보관함보다 먼저 올라온다");
   for (const file of ["archive2-assign.js", "archive2-assign.css"]) assert.ok(fs.existsSync(path.join(root, "archive", file)));
   const css = read("archive", "archive2-assign.css");

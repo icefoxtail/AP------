@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-61a29b36bfaa-5561a03a",
+  "examUid": "19_동산중_1학기_기말_중3_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1final/19_동산중_1학기_기말_중3_수학.js",
+  "expectedSourceBlobSha1": "0b1936f52ec07487d1b3a6aa8a69a20bfd2ef657",
+  "expectedQuestionCount": 25,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61a29b36bfaa-5561a03a.type-ledger.json",
+        "sha256": "3933df7452aba00234c17964269da4354381d106da34b520610351bfc64ef181"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_8d9f4abdddb4ac2a9440dd3848f50b2ec6ec2701c89d52a8581e2606b1276b1e",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO"
+      },
+      "rationale": "닮은 직사각형 대응변 비1/x=x/(1-x)를 세워 양의 길이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "423769f6ed4509bb035cb37206e4dc8e9698d8e8f06d23ccce3017242ee9d74c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-61a29b36bfaa-5561a03a.type-ledger.json",
+          "sha256": "3933df7452aba00234c17964269da4354381d106da34b520610351bfc64ef181"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c929fe80c2e4-cbe242b0",
+  "sourceArchiveFile": "original/high/h1/2mid/22_순천여고_2학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_dba7b3430ea1a3c10a0405a383d179341eaa9a5c198c21a5b9b92325c50cbce5",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+      "templateKey": "TPL_NESTED_SET_RELATION",
+      "step": "{0,1}을 하나의 원소로 세어 A의 원소 수가 5임을 확인한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_45de1fc2e6f8f991dcc08c2ba6d098d92c725c436cbf365432f716ac97f54118",
+      "sourceOrdinal": 4,
+      "decision": "PICK",
+      "problemTypeKey": "PT_SET_CARDINALITY",
+      "templateKey": "TPL_TWO_SET_INCLUSION_EXCLUSION",
+      "step": "전체에서 미관람8명을 빼 합집합42를 구하고 31+23-42로 교집합12를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c6266a888c05c4faab50d7bdd5a49fee2db89cbdb61381ebdb7165ab7c2cbd99",
+      "sourceOrdinal": 7,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_COMPOSITION",
+      "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA",
+      "step": "합성을 f의 역함수∘g로 소거하고 그림의 g(e)=d와 f(b)=d를 이어 b를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7e4e443637b486887b38f3710f191ab6bb4683f1c8eb60890488ef28f6beef0f",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ITERATED_COMPOSITION",
+      "templateKey": "TPL_ITERATION_PERIOD",
+      "step": "그림의 대응을 거꾸로 읽어 4→2→1→5→4의 주기4를 만들고 2022를 4로 나눈 나머지를 적용한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_60544038f3534e5fda75e2448296b32c8f9f8580c7ee8723296f8e0367490f1d",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_NEC_SUFF_RELATION",
+      "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+      "step": "필요조건을 [-2,5]⊆(4-a,4+a)로 번역해 a>6의 최소 자연수7을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cc7fca272184a8ef6a73f9251e09d8f0c2eee6fdc8d02cb4ef295fafbe5a5108",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_CONTRADICTION_PROOF",
+      "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+      "step": "두 홀수 제곱합은 4로 나눈 나머지가2이나 짝수 c의 제곱은 4의 배수라는 모순을 완성한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_cb224a6fae4837a3f4f86182336b7a8a18c398ad97c4c3e1f56027901ffe8877",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRUTH_SET_RELATION",
+      "templateKey": "TPL_IMPLICATION_TRUTHSET_RELATION",
+      "step": "P-Q=∅와 Q∪Rᶜ=U를 P⊆Q,R⊆Q로 바꿔 직접 함의와 대우를 판정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6cf60b90c4f51d956e2d7ab480626aae025ec0b92a8355c26ccfd845511180f1",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+      "step": "f∘g가 항등함수인 점을 이용해 f(t)=8,2를 각각 정의구간에 맞춰 역산한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c833a22742c99df9c309f1f712a5ab18fca3124505f42c182a98437f303f36f0",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
+      "templateKey": "TPL_COMPOSITE_EXTREMUM",
+      "step": "안쪽 함수 치역[1,5]에서 바깥 이차함수의 끝점 값을 비교해 최소 a+7=5를 얻는다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_c58b3816861b22d76d415a19959cde8e132e39e7124a6cf0f0a117d6996dac91",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_COMPOSITION_EQUATION",
+      "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+      "step": "바깥 방정식 f(t)=1의 해 -1,1,3을 구한 뒤 안쪽 함수 치역에 맞는 t=1,3의 원상을 모두 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_a4101ff09cbd969187fbb10bde3c4900435715589ff52e58fe60a9c828fa9d76",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+      "step": "닮음식 a/8+b/6=1로 넓이를 b의 이차식으로 나타내 꼭짓점 b=3,a=4에서 둘레를 구한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9908b504105d14ee3429f21379e77449fc17e7aa59e86ce13870eebc2e13ff64",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": null,
+      "step": "짝함수의 세 실근 조건으로 b=3을 얻고 양의 정수 높이별 교점 개수가 9가 되도록 꼭짓점 높이를4로 정한다.",
+      "note": "필요 TPL 이름: 정수 높이별 교점 개수. 정의: 대칭 그래프의 수평 정수선별 교점 수를 누적하여 꼭짓점 높이와 계수를 결정한다.",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ae7edd0a077bc55bfd3c82dc51ae2344363fc6bd478e6db0205aa7c89b0e9a08",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+      "step": "역함수 존재를 꼭짓점 왼쪽의 단조구간 제한으로 해석하고 양 끝점 치역값으로 a=-4,b=1을 결정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    }
+  ]
+}

@@ -161,7 +161,9 @@
   const META_FACET_FILTERS = C.META_FACET_KEYS || [];
   const hasMetaFacetFilter = (filters) => META_FACET_FILTERS.some((key) => filters?.[key]);
   function withoutMetaFacets(filters) {
-    if (!hasMetaFacetFilter(filters)) return filters;
+    // Also when the keys exist with empty values (a grade/subject button clears them to ""): the saved-paper server rejects an unknown key
+    // (409) whatever its value, so the key itself must not travel.
+    if (!filters || !META_FACET_FILTERS.some((key) => Object.hasOwn(filters, key))) return filters;
     const stripped = { ...filters };
     for (const key of META_FACET_FILTERS) delete stripped[key];
     return stripped;

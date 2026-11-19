@@ -75,7 +75,7 @@ function harness(data = structuredClone(catalog)) {
 }
 
 function configureSaveHarness(t) {
-  const { w, ctx } = harness();
+  const { w, ctx, click, change } = harness();
   const previousDocument = global.document;
   const previousFetch = global.fetch;
   global.document = { baseURI: "https://archive.test/archive/workspace.html" };
@@ -103,7 +103,7 @@ function configureSaveHarness(t) {
   w.state.ackWarnings = true;
   ctx.localStorage.setItem("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   ctx.APMATH_API_BASE = "https://archive.test/api";
-  return { w, ctx };
+  return { w, ctx, click, change };
 }
 
 function basicRecord(grade, change = {}) {
@@ -586,7 +586,7 @@ test('all changed browser scripts use new cache versions', () => {
   assert.match(html, /problem-bank-meta\.js\?v=20261029-s14-1/);
   assert.match(html, /archive2-source\.js\?v=20261119-source-parallel-1/);
   assert.match(html, /archive2-library\.js\?v=20261111-assign-2/);
-  assert.match(html, /archive2\.css\?v=20261117-home-forms-1/);
+  assert.match(html, /archive2\.css\?v=20261119-restore-last-1/);
   assert.match(html, /archive2-tokens\.css\?v=20261110-shell-1/);
   assert.match(html, /archive2-papers\.js\?v=20261110-teacher-copy-1/);
   assert.match(html, /archive2-navigation\.js\?v=20261116-standalone-1/);
@@ -1876,4 +1876,62 @@ test('수정본 재저장: 저장본 문항의 본문이 달라졌으면(그림 
   assert.notEqual(w.state.saveResultState, 'SAVED');
   assert.equal(bodies.length, 0, 'nothing was sent');
   assert.match(w.state.saveError, /원본 문항이 바뀌어/);
+});
+
+// ---- 학년·과목 버튼을 누른 뒤 저장해도 서버가 모르는 조건 키가 실리지 않는다 ----
+// 학년·과목 버튼(changeComposeFilter)은 state.filters에 metaL3/metaPT/metaTPL/metaApprovedOnly를 ""로 만든다. 저장 서버는 값과 상관없이 모르는 키가 있으면
+// 409 "허용되지 않은 출제 조건"으로 거절하므로, 저장 요청의 키는 서버가 읽는 허용 키 안에 있어야 한다. 허용 키는 손으로 옮겨 적지 않고 Worker 소스에서 읽는다.
+function workerFilterKeys() {
+  const text = fs.readFileSync(path.join(root, 'apmath/worker-backup/worker/helpers/archive-saved-papers.js'), 'utf8');
+  const body = /const FILTER_KEYS = new Set\(\[([\s\S]*?)\]\)/.exec(text);
+  assert.ok(body, 'the Worker declares FILTER_KEYS');
+  const keys = new Set([...body[1].matchAll(/"([^"]+)"/g)].map(match => match[1]));
+  assert.ok(keys.has('grade') && keys.has('primaryPaths') && keys.has('scopeQuestionUids'), 'the parsed Worker key list is the real one');
+  return keys;
+}
+async function pressThenSave(t, presses) {
+  const { w, ctx, click, change } = configureSaveHarness(t);
+  for (const press of presses) {
+    if (press.change) await change('compose', press.change[0], press.change[1]);
+    else await click(press);
+  }
+  // 버튼이 단원 선택과 만든 결과를 비우므로, 버튼 뒤의 학년에서 단원을 고르고 문항을 뽑은 상태를 다시 만든다.
+  const record = catalog.records.find(row => row.effectiveBrowseGrade === w.state.filters.grade &&
+    core.matches(row, w.state.filters, w.state) &&
+    core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
+  assert.ok(record, 'a BASIC-eligible record that the pressed grade/subject filters accept in ' + w.state.filters.grade);
+  const scope = core.pathKey(record, 4);
+  w.state.scopes = [scope];
+  w.state.rows = [{ id: scope, paths: [scope], scopeQuestionUids: [record.questionUid], count: 1 }];
+  w.state.selected = [{ ...record, rowId: scope }];
+  w.state.ackWarnings = true;
+  const bodies = captureSavePost(ctx);
+  await w.savePapers();
+  assert.equal(w.state.saveResultState, 'SAVED', w.state.saveError);
+  assert.equal(bodies.length, 1);
+  return { w, record, filters: bodies[0].selection_filters };
+}
+const GRADE_BUTTONS = [{ action: 'compose-grade', grade: '중3' }, { action: 'compose-grade', grade: '고1' }];
+
+for (const [name, presses] of [
+  ['학년 버튼', [GRADE_BUTTONS[0]]],
+  ['다른 학년 버튼', [GRADE_BUTTONS[1]]],
+  ['학년 버튼 뒤 과목 버튼', [GRADE_BUTTONS[1], { action: 'compose-subject', subject: 'COMMON_MATH_2' }]],
+  ['과목 버튼', [{ action: 'compose-subject', subject: 'COMMON_MATH_1' }]],
+]) {
+  test(`${name}를 누른 뒤 저장 요청의 selection_filters 키는 전부 서버 허용 키 안에 있다`, async t => {
+    const allowed = workerFilterKeys();
+    const { filters } = await pressThenSave(t, presses);
+    const unknown = Object.keys(filters).filter(key => !allowed.has(key));
+    assert.deepEqual(unknown, [], 'the server answers 409 for any key it does not know');
+  });
+}
+
+test('세부 조건(개념·유형·풀이)을 실제로 고른 경우도 조건 키는 싣지 않고, 고른 문항은 범위 목록으로 서버 재검증을 통과한다', async t => {
+  const allowed = workerFilterKeys();
+  const { w, record, filters } = await pressThenSave(t, [GRADE_BUTTONS[1], { change: ['metaApprovedOnly', '1'] }]);
+  assert.equal(w.state.filters.metaApprovedOnly, '1', "the teacher's choice stays the screen state (and the draft keeps it)");
+  assert.deepEqual(Object.keys(filters).filter(key => !allowed.has(key)), []);
+  assert.ok(filters.scopeQuestionUids.includes(record.questionUid), 'the selection travels as the scope UID list');
+  assert.equal(core.matches(record, filters, { canonicalAuthority: catalog.canonicalAuthority }), true, 'the server replay accepts the saved question');
 });

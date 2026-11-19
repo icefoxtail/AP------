@@ -3,6 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { evaluateAnswerTokens } from '../../archive/tools/similar-import/choice-order-lib.mjs';
 
 // Resolve from this module, independent of cwd, OS and user's home directory.
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -700,24 +701,16 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
     errors.push(`Total score invariant violated: sum is ${totalScore.toFixed(1)}, expected 100.0`);
   }
 
-  // 5. Dynamic MCQ Slot Balance (for ANY number of MCQs M)
+  // 5. MCQ answer-number distribution.
+  // 2026-11-19: 예전의 "정답 칸 개수 최대-최소 <= 1" 균등 강제는 정답을 3412534125 처럼 되풀이 순서로 넣게 만들어(학생이 규칙을 알아챔)
+  // 정본 기준으로 교체했다. 기준·이유: docs/agents/similar-choices.md ("정답 번호 분포 결함 기준"), 판정: archive/tools/similar-import/choice-order-lib.mjs.
   const M = mcAnswers.length;
   if (M > 0) {
-    const q = Math.floor(M / 5);
-    const r = M % 5;
-    const minAllowed = q;
-    const maxAllowed = r === 0 ? q : q + 1;
-
-    const counts = Object.values(mcSlots);
-    const minCount = Math.min(...counts);
-    const maxCount = Math.max(...counts);
-
-    // Balanced distribution invariant: for any total M MCQs, every slot must have either q or q+1 answers.
-    // The difference between the most frequent and least frequent choice must be at most 1 (max - min <= 1).
-    if (maxCount - minCount > 1) {
+    const tokens = mcAnswers.map(a => String('①②③④⑤'.indexOf(a) + 1));
+    const dist = evaluateAnswerTokens(tokens);
+    if (dist.skewed) {
       errors.push(
-        `MCQ slot balance violated for ${M} MCQs: distribution is ${JSON.stringify(mcSlots)} ` +
-        `(expected each slot between ${minAllowed} and ${maxAllowed}, spread ${maxCount - minCount} > 1)`
+        `MCQ answer distribution violates docs/agents/similar-choices.md for ${M} MCQs: ${JSON.stringify(mcSlots)} (sequence ${tokens.join(' ')}): ${dist.reasons.join('; ')}`
       );
     }
   }

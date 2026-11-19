@@ -297,12 +297,43 @@ test('workflow conditions preserve output/checker Chrome and metadata shared-Con
   const runtime = read('.github/workflows/archive2-runtime-guard.yml');
   assert.match(ci, /name: Install Worker test dependencies\n\s+if: steps\.scope\.outputs\.worker_dependencies == 'true'/);
   assert.match(ci, /github\.event_name == 'push' && steps\.scope\.outputs\.prepare_projection == 'true'/);
-  assert.match(runtime, /name: Verify original routes, response budgets, and storage failures\n\s+if: steps\.scope\.outputs\.runtime_contract == 'true'/);
-  assert.match(runtime, /name: Compare 50 real solutions and verify asset failures in actual Chrome\n\s+if: steps\.scope\.outputs\.solution_browser == 'true'/);
-  assert.match(runtime, /name: Verify the changed scoped browser checker on one existing original\n\s+if: steps\.scope\.outputs\.scoped_browser_changed == 'true'/);
-  assert.match(runtime, /name: Load and print the changed original sources in actual Chrome\n\s+if: steps\.scope\.outputs\.mode == 'archive-content'/);
+  // The three former jobs are steps of one job; every step keeps its scope condition and also runs after another
+  // check failed (!cancelled()), so one failing check never hides the others.
+  assert.match(runtime, /name: Verify original routes, response budgets, and storage failures\n\s+id: runtime_contract\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.runtime_contract == 'true' \}\}/);
+  assert.match(runtime, /name: Compare 50 real solutions and verify asset failures in actual Chrome\n\s+id: solution_50\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.solution_browser == 'true' \}\}/);
+  assert.match(runtime, /name: Verify the changed scoped browser checker on one existing original\n\s+id: scoped_checker\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.scoped_browser_changed == 'true' \}\}/);
+  assert.match(runtime, /name: Load and print the changed original sources in actual Chrome\n\s+id: content_browser\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.mode == 'archive-content' \}\}/);
+  assert.match(runtime, /name: Verify finder and current middle RPM selection in actual Chrome\n\s+id: finder_browser\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.runtime_chrome == 'true' \}\}/);
+  assert.match(runtime, /name: Verify image deadlines and render feedback regressions\n\s+id: solution_tests\n\s+if: \$\{\{ !cancelled\(\) && steps\.scope\.outputs\.solution_browser == 'true' \}\}/);
   assert.match(runtime, /Shared Meta Chrome checks retain their own policies/);
   assert.doesNotMatch(runtime, /continue-on-error: true/);
+});
+
+test('runtime guard keeps one job whose every check step runs after another check failed and is listed in the summary', () => {
+  const runtime = read('.github/workflows/archive2-runtime-guard.yml');
+  assert.deepEqual([...runtime.matchAll(/^  ([a-z][a-z0-9-]*):$/gm)].map(match => match[1]).filter(name => name !== 'push' && name !== 'pull_request' && name !== 'workflow_dispatch' && name !== 'jobs'), ['runtime-guard']);
+  const steps = runtime.slice(runtime.indexOf('    steps:\n')).split(/\n      - /).slice(1);
+  // Before the scope decision a failure must stop everything (no scope, no checks); after it, only !cancelled()/always() conditions are allowed.
+  const afterScope = steps.slice(steps.findIndex(step => step.includes('id: scope')) + 1);
+  assert.ok(afterScope.length >= 14, 'all former three jobs\' steps are present');
+  for (const step of afterScope) {
+    const condition = /\n\s+if: (.+)\n/.exec(step)?.[1] || '';
+    assert.match(condition, /^(\$\{\{ !cancelled\(\)|always\(\)|\$\{\{ always\(\) )/, `step runs after an earlier check failed: ${step.split('\n')[0]}`);
+  }
+  // The runtime contract rewrites tracked derived files, and the other checks read tracked bytes against the tested commit
+  // (as on the clean checkout of their former jobs): everything that needs the clean tree runs first, the checkout is
+  // restored, then the contract and the finder check that consumes its output run.
+  const at = id => runtime.indexOf(`id: ${id}\n`);
+  for (const clean of ['ui_contract', 'plan', 'ui_six_cases', 'solution_tests', 'solution_50', 'content_browser', 'scoped_checker']) {
+    assert.ok(at(clean) > 0 && at(clean) < at('restore_checkout'), `${clean} runs on the clean checkout, before the restore`);
+  }
+  assert.ok(at('restore_checkout') < at('runtime_contract') && at('runtime_contract') < at('finder_browser'), 'restore, contract, then the finder that consumes the contract output');
+  assert.match(runtime, /git restore --source=HEAD --staged --worktree -- \.\n\s+git clean -fd/);
+  // Each check that can fail the job is named in the final summary.
+  for (const id of ['runtime_contract', 'finder_browser', 'ui_contract', 'plan', 'ui_six_cases', 'solution_tests', 'solution_50', 'content_browser', 'scoped_checker']) {
+    assert.ok(runtime.includes(`steps.${id}.outcome`), `summary lists ${id}`);
+  }
+  assert.match(runtime, /::error title=Archive2 runtime guard::FAILED: \$label/);
 });
 
 test('playground-only changes execute project and portal link tests without Archive generation', () => {

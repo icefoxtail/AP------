@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-36ae5d2a68f6-f7e45d6f",
+  "sourceArchiveFile": "original/high/h2/1mid/23_매산여고_1학기_중간_고2_수학I.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_5e40512e99c3b50ca5c365c8c375c35c5c89da494676606158581121c7592f05",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "step": "세제곱근을 유리수 지수로 바꾸고 같은 밑의 지수들을 더한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8405aabff6a9ce3d12bf24a856628cf5ed4afd3652c2200c1a7eefdd9064d235",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_083",
+      "step": "1보다 큰 밑의 증가성으로 지수를 비교하여 엄격한 정수 상한을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8f60e2a8ceb29641f12bbab3cbb78a790671c7a6a1514ecdabb16e7455dbf8be",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+      "step": "삼각형 내각합을 이용해 두 각의 합을 보각으로 바꾸고 삼각함수 항등관계를 검증한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8548de7c4b0e53b29e6b9886772370f3ec951520f5c4de55080a301270098d59",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "templateKey": "TPL_QUADRATIC_ROOTS_EXPONENT_EVALUATION",
+      "step": "이차방정식의 근의 합과 곱으로 지수를 정리한 뒤 로그와 지수의 역관계를 적용한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0546d7c5b7c9686afbfc22b385327652d82973f551417d90c763282b181e3620",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE",
+      "step": "여각 변환 후 모든 x에서 양수인 이차식의 판별식 조건으로 사인의 구간을 구해 각의 범위로 옮긴다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_bd9a418d9b44a0b40a550546caaccb71fe8ca1155a02f70d412f7423e6b16588",
+      "sourceOrdinal": 11,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+      "templateKey": "TPL_COTERMINAL_ANGLES_SYMMETRY_SYSTEM",
+      "step": "방향이 반대인 동경의 각 차를 π의 홀수배로 놓고 주어진 각 범위에서 값을 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fdecae6b5226611639b7d547f3de3089fb9fd251690dc3ffc3043056d20308bf",
+      "sourceOrdinal": 12,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+      "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+      "step": "로그의 역수와 밑변환으로 같은 밑 로그들의 합·차로 바꾸고 미지수의 곱을 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8a172ca84432e708b2be5b9dc0361a8a619485e95ea0d1d49b7505088e2414f2",
+      "sourceOrdinal": 13,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE",
+      "step": "사분면별 부호로 절댓값 등식의 구간·고립해를 구하고 사인부등식 해구간과 합집합을 취한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_1db0ed79df5839336e67fde065e21c21aba6713d1d14b767c09b7b60f9006ad2",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+      "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+      "step": "좌표의 제곱합과 비의 합에서 곱을 얻어 사인·코사인 차의 제곱을 계산하고 제4사분면으로 부호를 정한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_e56ed6ac0de54b0c2f68eec89e06e66747573c897ffbdf2160eb2f503a2e2ccb",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_02_EXP_INEQUALITY",
+      "templateKey": "TPL_H22A_02_EXP_INEQUALITY_084",
+      "step": "지수식을 양수 t로 바꾼 후 t=1을 기준으로 나눠 이차식이 항상 비음수가 되는 상수 구간을 교차한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_d26beb3cdc7c5fb51aeacdbafefb8bfcb65d3282a59ffe1436017ebe6fb6af47",
+      "sourceOrdinal": 19,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+      "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+      "step": "로그를 같은 밑으로 통일한 뒤 치환한 이차방정식을 풀고 지수로 원변수를 복원한다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-3d6ff13c1cd1-1ebe62d5",
+  "examUid": "26_금당고_1학기_중간_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "63f268b1aea9406182a7839d08f637e0d3494470",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3d6ff13c1cd1-1ebe62d5.type-ledger.json",
+        "sha256": "16ff19a2a50abb61c93dbf20abb92c660cc94f07d6a273d980ea18a18973c6aa"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_a7bbac7cb8394e48a372ef64ae10668285e885c28f9d0e68cd52b7737a3fe88d",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_VALUE",
+        "templateKey": "TPL_INVERSE_FUNCTION_FORM"
+      },
+      "rationale": "지수함수의 x와 y를 교환하여 y=x 대칭인 같은 밑의 로그함수를 얻는다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "bc48ab4e68a087791fabcdf9e0200dbdd2702d248ffde4b57ba7cc5848f3d84d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3d6ff13c1cd1-1ebe62d5.type-ledger.json",
+          "sha256": "16ff19a2a50abb61c93dbf20abb92c660cc94f07d6a273d980ea18a18973c6aa"
+        }
+      ]
+    }
+  ]
+}

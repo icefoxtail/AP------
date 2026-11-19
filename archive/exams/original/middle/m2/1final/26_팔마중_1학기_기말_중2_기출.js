@@ -409,13 +409,7 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "다음 중 $y=2x-2$의 그래프를 $y$축의 방향으로 4만큼 평행이동한 그래프를 고르면? [4점]<br><img data-scale=\"100\" src=\"assets/images/26_팔마중_1학기_기말_중2_기출/q11-problem-visual-v2.svg\" alt=\"①과 ②는 같은 정도로 가파르게 올라가며 각각 세로축 2, −2를 지난다. ③과 ④는 기울기가 완만하며 각각 세로축 2, −2를 지난다. ⑤는 오른쪽으로 갈수록 내려가고 세로축 2를 지난다.\" style=\"display:block;width:min(100%,520px);height:auto;margin:0 auto;\">",
-    "choices": [
-      "첫 번째 그래프",
-      "두 번째 그래프",
-      "세 번째 그래프",
-      "네 번째 그래프",
-      "다섯 번째 그래프"
-    ],
+    "choices": [],
     "answer": "①",
     "solution": "$y=2x-2$의 그래프를 $y$축의 양의 방향으로 $4$만큼 평행이동하면\n\n$y=(2x-2)+4$\n$=2x+2$이다.\n\n기울기는 $2$, $y$절편은 $2$이다.\n\n이 조건을 만족하는 것은 첫 번째 그래프이다.\n\n따라서 정답은 ①이다.",
     "image": "",

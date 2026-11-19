@@ -1,0 +1,394 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-1a147c14d200-802d16db",
+  "examUid": "23_팔마고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/23_팔마고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "d860f958ce2c760749f3cdca1b0a5486a73c5687",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+        "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_36b39f8fed3942370a8647cdd1a59194ef8b90e4c539a28d6f1a13782a96fe2c",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_ELEMENT_RELATION",
+        "templateKey": "TPL_NESTED_SET_RELATION"
+      },
+      "rationale": "공집합과 {1,2} 자체가 A의 원소인 사실과 부분집합 관계를 구별한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "a478eed764a1dc520f33139f880dae5451febf85569c92c4a6639f12c197abd3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_40fcc04a990b8fed6c3634d428b69901cdd32409828114e061644931afbe9583",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
+        "templateKey": "TT_POINT_TRANSLATION_COORD"
+      },
+      "rationale": "이동 전후 좌표를 비교하여 3+a=2,5+2=b를 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "801c05d615c4ed769d2dbccf6239c628bb4d4a7ba43a72f56b2031f4e184f011",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4ed8b633dde34316376ceccbde0af046e13602d1679d0746cf3ce8bfee9a48cf",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONTRADICTION_PROOF",
+        "templateKey": "TPL_IRRATIONALITY_DIVISIBILITY_CONTRADICTION"
+      },
+      "rationale": "√2=q/p를 기약분수로 가정하면 제곱식에서 q와 p가 모두 짝수가 되어 서로소 조건과 모순된다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "b698068a153cc6eacc861d5a73143c17e9e3e76321c33ab48c7d0a27db7f7e38",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a2b6944d1da30074885f0cc1ef8539db896b0b29834a74ab6443604f5cd2d321",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_QUADRATIC"
+      },
+      "rationale": "이동한 직선 y=2x+a-5와 포물선을 연립한 x²+a-8=0이 중근을 갖게 한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "e884ca4a8b093c4e4661809ab076986fb5e49665e137863c33a212ca1a3031e3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b050a8413ee6b7058884480731de06bf0a3adf0996a07c6864a4a2235293d3e9",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CONTRAPOSITIVE_PROOF",
+        "templateKey": "TPL_CONTRAPOSITIVE_DIVISIBILITY_PROOF"
+      },
+      "rationale": "대우에서 n=3k-1 또는3k-2로 나누어 n²의 3으로 나눈 나머지가1임을 보인다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "d2ff48586e2514f1b585b37776bcbc35d1541f75326e66d21b8506fb116221aa",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_7153b51c94011118317e5242733cc5e44e3c16b7bf2cc000cd09a62700f29832",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ITERATED_COMPOSITION",
+        "templateKey": "TPL_ITERATION_PERIOD"
+      },
+      "rationale": "2→4→8→6→2의 주기4를 확인하고 100을4로 나눈 나머지를 사용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "798a1200fd9ed47a1bdfcaa59b4d76c157e1fbb6ab0fe60e75a1691906880383",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d43295c005ac41dc9c97b22f173d829ea9d4dc0c2a794c4399617ea1121a6891",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_EXTREMUM",
+        "templateKey": "TPL_DIFFERENCE_RANGE"
+      },
+      "rationale": "교집합 크기의 범위4≤n(A∩B)≤15를 차집합 크기19-n(A∩B)에 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "15a27db3fa8e0227dc2df435ac78e9d680dcdc40f424122971c2dcb12fbb30d2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_cc9a9d22f610e28566309ce03b6131627e42af358f01c16efdd8c2677b0a862e",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_ONE_LINE"
+      },
+      "rationale": "A를 지정 직선에 반사한 A'=(-4,2)와 B 사이 거리로 AP+BP의 최소를 바꾼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "0bc88a3951d2a5b644becf00d53fe33d9e2042cb0f736d3d17bebc656861a585",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e322bfa20e99433c8b47e138d4c66e35f430c94ed847d8ba3f41bb77e92a71fc",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "rationale": "현의 반길이√5와 반지름√10으로 중심거리√5를 구해 l:y=2x+5를 정한 뒤 대척점 C와 수평 교점 D를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "1d7f8c6b50c95fac576d544abff6c35b26edfa1f0bc26271f46d239247ef9739",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_993f9b31d74063cf84d470648aed38b6835d0fe4415211a1bbfcd75b63851224",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
+        "templateKey": "TT_SHORTEST_MULTI_LINE"
+      },
+      "rationale": "A를 y=x,B를 y축에 반사하여 경로를 두 반사 원의 최단거리12-2-1로 바꾼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "9e297b67031a88e3bd923f14e4f358f46ff449bd60e217db7c26afbe3ca3f4e3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_25f80c602f6eeeddd5dc7e7d1db61ffc056375887d66cd466fec34b93511c971",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_AGGREGATE",
+        "templateKey": "TPL_WEIGHTED_SET_SUM_CONDITION"
+      },
+      "rationale": "합집합 원소합35=20+m-9에서 m=24를 구하고 B의 평행한 원소 이동에 따른 합24=20-4k를 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "6519c42d6b3a04f7dbd7de7d4fa965e58a09ea2607953a0686060ebb7387b5f4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6f8ac07756249bc3a996637787aca017643d87f83ffed69b32ce068e9aae7ce9",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT"
+      },
+      "rationale": "이동 후 두 축 접촉 조건에서 가능한 중심 자취 y=x,x±2를 얻고 원과 교점4개가 되려면 바깥 두 직선이 접해야 함을 쓴다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "79cc5e8f20cf6884770b0dbf153b6ffd72b5ecc37b70059dfe4d550c3874cf66",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f6f374770a5d0e7f88c19286ed3a89ce080e8329d8d8e1a40df9bad89af422e5",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_REFLECTION_AXIS",
+        "templateKey": "TT_REFLECTION_AXIS"
+      },
+      "rationale": "두 원 중심(1,3),(5,-3)의 수직이등분선을 대칭축으로 구하고 보존된 반지름2로 c를 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "32b33b7d9fd27be9f88989d8ef188548a0d0e1772793ee5bfd3086ef5c159fe9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f8ce9f5eb0667afd6441a5ce19a1b30cafb58ad2f0f3199f0780f2fa10d25acd",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_AMGM_PROOF"
+      },
+      "rationale": "양수항을 곱하고 나누어 주어진 부등식을 a+b≥2√ab로 바꾼 뒤 (√a-√b)²≥0으로 증명한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "e627ca06ce324ce2faee6d16158e5b390d3c76611b05aa4d7477cb9bcd39d37d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_939a9364c754ad218c1f9c520dbfec23fbc81bfcee71a845ba30c98578c2cb1e",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_MIXED_INEQUALITY_EXTREMUM"
+      },
+      "rationale": "코시 부등식과 (2x-y)²≥0으로 k²≤25를 얻고 양수 영역에서는 k>√5이며 하한에 도달하지 못함을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "7ba2183b23bb6274bf9e54e32984dccb43fd78183ce78aa40976ed446eb990d4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-1a147c14d200-802d16db.type-ledger.json",
+          "sha256": "8612aec19e74a013dcc0e9d5898b15cf3e129bc01d39c7ec81025b782f8e2400"
+        }
+      ]
+    }
+  ]
+}
