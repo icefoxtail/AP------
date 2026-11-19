@@ -33,7 +33,7 @@
 | Sonnet 서브에이전트 | 최종 검수·수정(effort high). **마무리는 항상 Sonnet.** 판정표 작성도 맡긴다. |
 | dots(별도 라인) | OPEN 문항 입력(item/plan/publish/STATUS)을 triage 브랜치 `codex/svg-triage-20261107`에 올린다. |
 
-- **위임 금지:** 루나·Sonnet은 OpenCode·deepseek 등 다른 모델에 넘기지 않는다(deepseek은 그림을 못 본다). PC 전역 `~/.codex/AGENTS.md` 위임 규칙은 2026-11-08 삭제(백업: scratchpad `codex-AGENTS.md.bak`).
+- **위임 금지:** 루나·Sonnet은 OpenCode·deepseek 등 다른 모델에 넘기지 않는다(이 라인의 2026-11-08 사용자 지시. "deepseek은 그림을 못 본다"는 이유는 사실이 아니어서 2026-11-19 삭제). PC 전역 `~/.codex/AGENTS.md` 위임 규칙은 2026-11-08 삭제(백업: scratchpad `codex-AGENTS.md.bak`).
 - **손으로 SVG 작성 금지.** 렌더는 `node .tmp/work/render.mjs`로만.
 - **[2026-11-17 사용자 결정으로 해설 그림은 완화: 정답이 그림에 있어도 반려하지 않고 과정 정보를 최대한 넣는다. 아래는 문제 그림 기준과 옛 사례.]** 정답·보기 번호는 그림·alt에 넣지 않는다. caption 끝에만 "정답은 …이다." 그림 속 값이 곧 정답이면 그것도 노출이다(예: 20 매산여 고1 Q04 h(1)=3 → "g(0)의 함숫값"으로 바꿈, 23 매산여 수2 Q23 좌표 제거).
 - **원본 JS·archive/assets는 승인 없이 수정하지 않는다.** 커밋에는 시험지 JS의 solutionImage* 필드, 새 SVG, 그 시험지의 원장 파일(`production/exam-figure-ledger/<원본 경로>.json`)만.
@@ -231,7 +231,7 @@ Sonnet(effort high)에게: `triage-20261107/<key>.md`를 `23-gangnam-girls.md` �
 - 2026-11-09 사용자 결정: 집 PC는 중등 대신 고1 1mid·1final·2mid를 맡는다(고1 2학기 기말·고2는 고등 PC). 브랜치 `svg-mid/batchNN-…`, 엔진 공백은 `ops/claude-batch/ENGINE_GAPS_MIDDLE.md`. 이유: PC별 담당을 나눠 겹침을 막기 위해서다.
 - 순서: 첫 묶음 이후 최신 연도부터 내림차순(그림 수·학기 무관). 대기열 `mkqueue-h1.cjs` → `qrun.sh`(슬롯 3, 렌더가 `render.lock` 하나라 더 늘려도 대기만 길어진다). 이유: 최신 시험지가 학생에게 먼저 필요하다.
 - 고1 1학기는 함수 위주: 일차·이차함수 문항은 그래프가 필요하면 빠짐없이 만든다(`exam-common.sh` `exam_subject`). 이유: 함수 문항은 그래프가 풀이 이해의 핵심이다.
-- 시험지 전체 플랜은 루나가 구현하며 세운다(DeepSeek은 이 PC에서만 허용되나 그림을 못 봐 쓰지 않기로 함). 이유: 그림을 보지 못하면 플랜이 어긋난다.
+- 시험지 전체 플랜은 루나가 구현하며 세운다(DeepSeek은 이 PC에서만 허용되며 이 라인에서는 쓰지 않기로 함. "그림을 못 본다"는 당시 이유는 사실이 아니어서 2026-11-19 삭제. DeepSeek도 그림을 본다).
 - 함정: caption 수식을 "엑스·와이·루트"로 소리 풀어 쓰던 것 → 지시문에 기호 사용 명시. 근호 좌표 자동 표기 "−1+(−1√10)" → SOURCE_POINT 식 좌표로 우회. `exam-common.sh`를 고칠 때 따옴표 하나가 빠져 실행 13건이 분류표 없이 돌았음 → 고친 뒤 `bash -n`으로 확인.
 - 골든 표본(25 효천·25 매산여 2학기 중간)은 이제 게시한다: rebind-m2-create-golden-sample-evidence.mjs --source <JS>로 재고정(#1572), 사용자 결정 2026-11-10 '지금은 골든 아님'. 이유: 게시하면 봉인 증거 SHA가 달라져 m2 create-gate 테스트가 실패하므로 재고정이 필요하다. 주의: 게시 뒤 `git checkout -- archive/data`를 하면 재고정한 증거 10개(archive/data/r2e-intake/m2/*.create.physical-evidence.json)가 되돌려지니 그 파일은 제외한다.
 - 첫 PR: 이번 5개 시험지(제목만; 25 효천고 2학기 중간은 위 사유로 제외).

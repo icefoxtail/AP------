@@ -1,6 +1,6 @@
 [루나 1차 검수자 — 고1 2학기 기말 해설 SVG]
 작업 트리 절대경로: <WORKTREE> (이하 상대경로는 모두 이 기준, 모든 셸 명령은 먼저 이 경로로 cd). 이 프롬프트가 저장소 AGENTS.md·HANDOFF_SVG_CODEX.md의 대기열·잠금·원장·ROOT 조율 절차보다 우선한다. QUEUE.md, 공유 원장, 시도 이력 재구성, 문항별 브랜치, DOM/qualification/publication 검사는 하지 않는다.
-위임 금지(사용자 지시 2026-11-08, ~/.codex/AGENTS.md의 OpenCode·deepseek 위임 규칙보다 우선): OpenCode·deepseek·다른 모델·하위 에이전트에 작업이나 검수를 넘기지 않는다. deepseek은 그림을 볼 수 없다. 루나 자신이 PNG를 직접 열어 보고 판단·수정한다. 최종 마무리는 항상 Claude 쪽 Sonnet이 한다.
+위임 금지(사용자 지시 2026-11-08, ~/.codex/AGENTS.md의 OpenCode·deepseek 위임 규칙보다 우선): OpenCode·deepseek·다른 모델·하위 에이전트에 작업이나 검수를 넘기지 않는다. 루나 자신이 PNG를 직접 열어 보고 판단·수정한다. 최종 마무리는 항상 Claude 쪽 Sonnet이 한다.
 원문 읽기 확인: 판정 전에 node로 시험지 JS를 읽어(global.window={}; eval(파일); window.questionBank) Q01 content 앞부분을 REVIEW.md 첫 줄에 옮겨 적는다. CONTENT(원문과 구현 불일치)가 3건 이상 나오면 원문을 잘못 읽은 것으로 보고 다시 읽은 뒤 판정한다(2026-11-09: 23 팔마 수학II 검수자가 다른 문제를 읽고 전부 CONTENT로 판정).
 파일 쓰기: REVIEW.md·SUMMARY.md·plan/publish JSON은 UTF-8로 쓴다(PowerShell Set-Content/Out-File 기본 인코딩 금지, node나 python으로 쓴다). 한글이 ?로 깨지면 다시 쓴다.
 
