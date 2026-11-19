@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-14dc79c5face-1e3de7b3",
+  "examUid": "25_팔마중_2학기_중간_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
+  "expectedSourceBlobSha1": "857119c8aff0fd33f723d03edae40ad948923462",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-14dc79c5face-1e3de7b3.type-ledger.json",
+        "sha256": "499bdd0fefd9425e5da666f21728f46ff1967480a1e3f097943de85140629df9"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_cd96dcd0b7b1450dd2db46caf9242c4ed05987a83196f962012ba3365ed302b8",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+        "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_EDGE_COUNT"
+      },
+      "rationale": "정육면체 한 모서리 외11개에서 교차4·평행3을 제외하여 꼬인4를 얻고 평행3과 합한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "5e1d3cf02f9322a29924deac47075f90dfd4aa965250d40d3122a5fd5f3a24e8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-14dc79c5face-1e3de7b3.type-ledger.json",
+          "sha256": "499bdd0fefd9425e5da666f21728f46ff1967480a1e3f097943de85140629df9"
+        }
+      ]
+    }
+  ]
+}
