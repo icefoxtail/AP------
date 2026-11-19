@@ -134,6 +134,18 @@ test("fixed whole-exam v2 request: all 24 reviewed L1..L4 and PT/TPL values reac
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
 });
 
+test("v2 consumer claims skip a crosswalk pointer and fields the registrar does not store", t => {
+  const f = historicalConsumerFixture(t);
+  const request = structuredClone(f.request);
+  for (const item of request.items) {
+    Object.assign(item.before, { rpmPrimaryRecordId: null, difficultyBasis: null });
+    Object.assign(item.after, { rpmPrimaryRecordId: "M3-RPM-001", difficultyBasis: "author note" });
+  }
+  const out = verifyChangedUidConsumerApproval({ root: f.root, requestPaths: [write(f.root, "extra-fields.json", request)] });
+  assert.deepEqual(out.failures, []);
+  assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
+});
+
 test("empty native preservation patches require the official existing receipt; ordinary KEEP remains skipped", t => {
   const f = historicalConsumerFixture(t), item = f.request.items[0];
   const request = { ...f.request, requestId: "missing-preservation-receipt", scope: "PARTIAL_UIDS", registryChanges: [],

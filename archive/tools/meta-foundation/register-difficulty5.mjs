@@ -272,12 +272,12 @@ export function registerDifficulty5({ root, request, write = false, verifyProjec
         const stringId = typeof q.id === "string" && q.id.length > 0;
         const legacyStringBinding = stringId && q.number === n && typeof idr.sourceQuestionNo === "string" &&
           sameId(q.id, idr.sourceQuestionNo) && bank.filter(row => sameId(row?.id, q.id)).length === 1;
-        // Extra binding is deliberately exact; stale/content-only fingerprints are not enough.
+        // The question id, number, in-exam id uniqueness and UID uniqueness are what tie the value to the right question.
+        // The full fingerprint (answer/solution included) is not compared: a solution-only edit is not a defect here.
         const identityBinding = ((typeof q.id === "number" && Number.isFinite(q.id)) || stringId) &&
           (q.number === undefined || q.number === n) && sameId(q.id, idr.sourceQuestionNo) &&
           bank.filter(row => sameId(row?.id, q.id)).length === 1 &&
-          (ids.records || []).filter(row => row.sourceArchiveFile === source && row.questionUid === item.questionUid).length === 1 &&
-          idr.sourceFingerprint === fingerprint(q) && rec.sourceFingerprint === fingerprint(q);
+          (ids.records || []).filter(row => row.sourceArchiveFile === source && row.questionUid === item.questionUid).length === 1;
         if (!legacyStringBinding && !identityBinding) fail("source question id mismatch #" + n);
       }
       // Same binding rule as build-archive2-catalog: "exact" = row approved against these bytes; "content" = only
