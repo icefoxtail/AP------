@@ -25,9 +25,11 @@ on:
 permissions:
   contents: read
 
+# A newer push to the same pull request cancels that PR's older run (runner demand).
+# Manual runs keep one group per run and are never cancelled.
 concurrency:
-  group: generated-consumer-browser-smoke-${{ github.ref }}
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('generated-consumer-browser-smoke-pr-{0}', github.event.pull_request.number) || format('generated-consumer-browser-smoke-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   browser-smoke:

@@ -355,14 +355,15 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
       <div class="archive-head sa-head">
         <div>
           <h1 class="archive-title sa-title">시험지 보관함</h1>
-          <p class="archive-sub sa-lead">진단평가 · 단원평가 · 중간·기말평가를 범위 확인 후 바로 출력합니다.</p>
+          <p class="archive-sub sa-lead">기말 모의고사 · 진단평가 · 단원평가 · 중간·기말평가를 범위 확인 후 바로 출력합니다.</p>
         </div>
         <div class="stats" id="stats"></div>
       </div>
       <div class="filter-band">
         <div class="filter-inner">
           <div class="fb-tabs" role="group" aria-label="평가 구분">
-            <button class="fb-original-toggle active" type="button" data-category="진단평가">진단평가</button>
+            <button class="fb-original-toggle active" type="button" data-category="26년 2학기 기말 모의고사">26년 2학기 기말 모의고사</button>
+            <button class="fb-original-toggle" type="button" data-category="진단평가">진단평가</button>
             <button class="fb-original-toggle" type="button" data-category="단원평가">단원평가</button>
             <button class="fb-original-toggle" type="button" data-category="중간·기말평가">중간·기말평가</button>
           </div>
@@ -384,14 +385,25 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
   </main>
 
   <script src="assessment-packs-1sem.generated.js"></script>
+  <script src="assessment-packs-2sem-final-mock.generated.js"></script>
   <script>
-    const DATA = window.APMATH_ASSESSMENT_PACKS_1SEM || { packs: [], sourceSummary: {} };
+    const MOCK_CATEGORY = '26년 2학기 기말 모의고사';
+    const BASE_DATA = window.APMATH_ASSESSMENT_PACKS_1SEM || { packs: [], sourceSummary: {} };
+    // 모의고사 자료는 별도 파일이다. 파일이 없거나 비어 있으면 탭을 숨기고 기존 화면 그대로 동작한다.
+    const MOCK_DATA = window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL || { packs: [], categoryOrder: [] };
+    const DATA = {
+      ...BASE_DATA,
+      packs: [...(MOCK_DATA.packs || []), ...(BASE_DATA.packs || [])],
+      categoryOrder: [...(MOCK_DATA.packs || []).length ? [MOCK_CATEGORY] : [],
+        ...(BASE_DATA.categoryOrder || ['진단평가', '단원평가', '중간·기말평가'])],
+    };
     const subunitScope = new URLSearchParams(location.search).get('scope') === 'subunit';
     const packs = (DATA.packs || []).filter((pack) =>
       !subunitScope || (pack.category === '단원평가' && String(pack.id || '').startsWith('SUB_1SEM_')));
     const categories = subunitScope ? ['단원평가'] :
       (DATA.categoryOrder || ['진단평가', '단원평가', '중간·기말평가']);
-    let active = categories[0] || '진단평가';
+    const requestedCategory = new URLSearchParams(location.search).get('category');
+    let active = categories.includes(requestedCategory) ? requestedCategory : (categories[0] || '진단평가');
 
     function escapeHTML(value) {
       return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
@@ -409,6 +421,16 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
 
     function renderStats() {
       const summary = DATA.sourceSummary || {};
+      if (!subunitScope && active === MOCK_CATEGORY) {
+        const mockPacks = packs.filter((pack) => pack.category === MOCK_CATEGORY);
+        const total = mockPacks.reduce((n, pack) => n + (pack.questions || []).length, 0);
+        const essay = mockPacks.reduce((n, pack) => n + (pack.questions || []).filter((q) => q.questionType === '서술형').length, 0);
+        document.getElementById('stats').innerHTML =
+          `<div class="stat"><strong>${mockPacks.length}</strong>모의고사</div>` +
+          `<div class="stat"><strong>${total}</strong>문항</div>` +
+          `<div class="stat"><strong>${essay}</strong>서술형</div>`;
+        return;
+      }
       if (subunitScope) {
         const questionCount = packs.reduce((total, pack) => total + (pack.questions || []).length, 0);
         document.getElementById('stats').innerHTML =
@@ -417,7 +439,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
         return;
       }
       document.getElementById('stats').innerHTML = [
-        `<div class="stat"><strong>${packs.length}</strong>평가</div>`,
+        `<div class="stat"><strong>${packs.filter((pack) => pack.category !== MOCK_CATEGORY).length}</strong>평가</div>`,
         `<div class="stat"><strong>${summary.uniqueTextQuestions || 0}</strong>서로 다른 문항</div>`,
         `<div class="stat"><strong>${summary.imageExcluded || 0}</strong>그림 문항 제외</div>`,
       ].join('');
@@ -576,6 +598,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
         button.classList.toggle('active', button.dataset.category === active);
       });
 
+      renderStats();
       const list = filterPacks();
       const grid = document.getElementById('grid');
       if (!list.length) {
@@ -602,7 +625,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
             ${isDiagnosticAssessmentPack(pack) ? `<button class="action-btn" type="button" data-action="diagnostic-start" data-pack-id="${escapeHTML(pack.id)}">정답입력</button>` : ''}
             <button class="action-btn" type="button" data-action="ans" data-pack-id="${escapeHTML(pack.id)}">정답</button>
             <button class="action-btn" type="button" data-action="sol" data-pack-id="${escapeHTML(pack.id)}">해설</button>
-            <button class="action-btn" type="button" data-action="analysis" data-pack-id="${escapeHTML(pack.id)}">분석표</button>
+            ${pack.category === MOCK_CATEGORY ? '' : `<button class="action-btn" type="button" data-action="analysis" data-pack-id="${escapeHTML(pack.id)}">분석표</button>`}
           </div>
         </article>
       `).join('');

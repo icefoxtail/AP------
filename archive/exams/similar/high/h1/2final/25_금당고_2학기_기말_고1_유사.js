@@ -191,16 +191,16 @@ window.questionBank = [
       "참거짓"
     ],
     "wide": false,
-    "content": "명제 $p\\to q$가 거짓일 때, 다음 중 반드시 참인 명제는?",
+    "content": "명제 $\\sim p\\to q$가 거짓일 때, 다음 중 반드시 거짓인 명제는?",
     "choices": [
-      "$p\\lor q$",
-      "$\\sim p\\land q$",
-      "$\\sim p\\lor q$",
-      "$p\\land q$",
-      "$\\sim q\\land\\sim p$"
+      "$\\sim q\\to p$",
+      "$p\\to q$",
+      "$q\\to p$",
+      "$p\\to\\sim q$",
+      "$\\sim p\\to\\sim q$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 조건명제 $p\\to q$가 거짓이려면 $p$가 참이고 $q$가 거짓이어야 한다.\n정석 풀이:\n1. 주어진 조건에서 $p$는 참, $q$는 거짓이므로 $\\sim p$는 거짓이고 $\\sim q$는 참이다.\n2. ① $p\\lor q$는 참 또는 거짓이므로 참이다.\n3. ② $\\sim p\\land q$는 거짓이고, ③ $\\sim p\\lor q$도 거짓이다.\n4. ④ $p\\land q$는 거짓이며, ⑤ $\\sim q\\land\\sim p$도 참과 거짓의 논리곱이므로 거짓이다.\n5. 따라서 반드시 참인 명제는 ① 하나이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 명제 「가정이면 결론이다」가 거짓인 경우는 가정이 참이고 결론이 거짓일 때뿐이다.\n정석 풀이:\n1. $\\sim p\\to q$가 거짓이므로 $\\sim p$는 참이고 $q$는 거짓이다. 즉 $p$는 거짓, $q$는 거짓이고, $\\sim p$와 $\\sim q$는 모두 참이다.\n2. ① $\\sim q\\to p$는 가정 $\\sim q$가 참이고 결론 $p$가 거짓이므로 거짓이다. (주어진 명제의 대우이므로 참, 거짓이 같다.)\n3. ② $p\\to q$와 ③ $q\\to p$는 가정이 거짓이므로 참이다.\n4. ④ $p\\to\\sim q$도 가정 $p$가 거짓이므로 참이고, ⑤ $\\sim p\\to\\sim q$는 가정과 결론이 모두 참이므로 참이다.\n5. 따라서 반드시 거짓인 명제는 ① 하나이다.\n따라서 정답은 ①이다.",
     "reviewStatus": "reviewed_pass",
     "solutionStatus": "reviewed_pass",
     "imageStatus": "none",
