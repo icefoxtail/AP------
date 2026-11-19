@@ -237,12 +237,8 @@ export function registerTypeJudgment(ctx) {
     bindingCounts[rowBinding]++;
     const embedded = { problemTypeKey: q.problemTypeKey ?? null, templateKey: q.templateKey ?? null };
     const hasEmbedded = !empty(q.problemTypeKey) || !empty(q.templateKey);
-    // The catalog compares an exam-embedded type with the registered one only for meta-foundation scoped rows.
-    if (String(current.metadataRevision || "").startsWith("meta-foundation:"))
-      for (const key of TYPE_FIELDS) {
-        const value = key === "problemTypeKey" ? problemTypeKey : templateKey;
-        if (!empty(q[key]) && q[key] !== value) failWith(`exam-embedded ${key} differs from the judged value on a meta-foundation row: ${uid}`);
-      }
+    // 시험지 JS에 적힌 유형이 판정과 다른 것은 거절 사유가 아니다(2026-11-20): 등록된 판정이 우선이고 적힌 값은 아래 typeApproval.examEmbeddedType에 기록으로 남는다.
+    // 카탈로그도 유형 필드의 불일치를 충돌로 세지 않는다(build-archive2-catalog.mjs).
     const typeApproval = { schemaVersion: TYPE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
       scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",

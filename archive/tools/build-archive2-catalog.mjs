@@ -435,7 +435,10 @@ for (const exam of exams) {
         String(sourceValue).trim() !== "" &&
         value !== undefined &&
         JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar
+        !metaV2Sidecar &&
+        // 유형(PT/TPL)은 등록된 판정이 시험지 JS에 적힌 값보다 우선한다(2026-11-20, 사용자: 있으면 보이고 쉽게 등록). 적힌 값과 다른 것은 충돌이 아니다.
+        // 적힌 값은 typeApproval.examEmbeddedType에 기록으로 남는다. 다른 필드의 충돌 판정은 그대로다.
+        field !== "problemTypeKey" && field !== "templateKey"
       )
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
