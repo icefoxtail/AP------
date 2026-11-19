@@ -489,3 +489,68 @@
 | 24 | BENEFICIAL | BENEFICIAL | 문제: 두 직선과 x축이 만드는 삼각형의 위치를 좌표평면에 그려 주면 밑변과 높이를 빨리 찾을 수 있다(식만으로도 풀린다) / 해설: x절편 (-6, 0), (4, 0)과 교점 (2, 4)를 표시한 좌표평면 그림이 있으면 밑변 10과 높이 4가 한눈에 보인다 |
 
 - 문제그림 REQUIRED/BENEFICIAL 2개: 11, 24. 해설그림 REQUIRED/BENEFICIAL 7개: 4, 6, 10, 11, 13, 14, 24.
+
+## 23_이수중_2학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q23[발문], q24[발문]. 해설 6개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | BENEFICIAL | NOT_NEEDED | 문제: 세 정사각형이 어느 변에 붙어 있는지 그림으로 보이면 관계가 한눈에 들어온다. |
+| 4 | REQUIRED | BENEFICIAL | 문제: 종이접기로 D가 BC 위의 P로 옮겨진 배치와 접는 선이 A를 지나는 상황은 그림 없이는 상상하기 어렵다. / 해설: 접힌 뒤 AP가 AD와 같은 길이임을 도형으로 보여 주면 1단계 설명이 쉬워진다. |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | REQUIRED | BENEFICIAL | 문제: 색칠한 두 초승달이 어느 영역인지 글로만 특정할 수 없어 그림이 반드시 필요하다. / 해설: 세 반원과 초승달, 삼각형의 관계를 그림으로 보여 주면 넓이 합이 삼각형 넓이와 같아지는 이유가 분명해진다. |
+| 7 | BENEFICIAL | BENEFICIAL | 문제: 점 O에서 만나는 두 대각선과 a, b, c, d의 위치를 그림으로 보여 주면 어느 삼각형에 피타고라스 정리를 쓰는지 분명해진다. / 해설: 직각삼각형 COD와 BOC를 그림에 표시하면 (가), (나)의 근거가 바로 보인다. |
+| 8 | BENEFICIAL | BENEFICIAL | 문제: 직각삼각형의 두 직각변과 빗변 위의 반원 배치를 그림으로 보여 주면 두 반원의 합이 빗변 반원과 같아지는 관계가 쉽게 이해된다. / 해설: 세 반원을 그려 두 반원 넓이의 합과 빗변 반원을 겹쳐 보이면 비례 관계 설명이 짧아진다. |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | BENEFICIAL | BENEFICIAL | 문제: 반원 호 위 4점과 지름 위 3점의 배치를 그려 주면 어느 3점이 일직선이 되는지 바로 보인다 / 해설: 지름 위 3점을 강조한 반원 그림이나 제외 경우 1가지 표시가 있으면 이해가 빠르다 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | BENEFICIAL | BENEFICIAL | 문제: 직각삼각형과 회전축 AC, 반지름 BC, 높이 AC를 표시한 그림이 있으면 회전체 파악이 쉽다. / 해설: 반지름 5, 높이 12인 원뿔의 단면 그림을 함께 보여 주면 부피 계산이 분명해진다. |
+| 22 | NOT_NEEDED | BENEFICIAL | 해설: 세 번의 시행을 나뭇가지 그림으로 그리면 AAB, BBA 두 경우가 분명해진다. |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | BENEFICIAL | BENEFICIAL | 문제: 수직선에 원점과 오른쪽 2, 왼쪽 1 이동을 표시한 그림이 있으면 최종 위치 조건 이해가 쉽다. / 해설: 수직선에 앞면 3회, 뒷면 2회 이동을 표시하면 위치 4가 되는 과정이 한눈에 보인다. |
+
+- 문제그림 REQUIRED/BENEFICIAL 8개: 3, 4, 6, 7, 8, 14, 21, 24. 해설그림 REQUIRED/BENEFICIAL 8개: 4, 6, 7, 8, 14, 21, 22, 24.
+
+## 24_신흥중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q7[보기/정답④→②], q9[보기/정답③→⑤], q10[보기/정답⑤→①], q13[보기/정답①→⑤], q15[보기/정답⑤→③], q16[보기/정답②→⑤], q19[발문], q20[발문], q21[발문], q22[발문], q23[발문]. 해설 2개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
