@@ -718,3 +718,36 @@
 | 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
 
 - 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 21_풍덕중_2학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q7[보기], q12[보기], q15[보기/정답⑤→②], q18[보기], q19[보기], q20[보기], q21[발문], q22[발문], q23[발문], q24[발문]. 해설 12개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | BENEFICIAL | 해설: 평행이동 전후 두 직선과 점 (0, 8)을 좌표평면에 그리면 b가 위로 5만큼 이동한 양임이 바로 보임 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | BENEFICIAL | 해설: 직선이 x축, y축과 만나는 두 점 (2, 0), (0, -6)을 표시하면 절편의 의미가 분명해짐 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | BENEFICIAL | BENEFICIAL | 문제: 선분 AB와 원점을 지나는 직선을 그려 보면 기울기가 A에서 최대, B에서 최소가 됨이 직관적으로 보임 / 해설: 원점에서 A, B를 지나는 두 직선을 함께 그리면 a의 범위를 그림으로 확인할 수 있음 |
+| 6 | BENEFICIAL | BENEFICIAL | 문제: 제1, 3, 4사분면을 지나는 직선의 예를 좌표평면에 그리면 a와 b의 부호가 바로 보임 / 해설: 기울기가 양수이고 y절편이 음수인 직선 그림으로 결론을 확인하면 이해가 쉬움 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | BENEFICIAL | BENEFICIAL | 문제: 직선과 두 좌표축으로 둘러싸인 삼각형을 그리면 밑변과 높이가 무엇인지 분명해짐 / 해설: 삼각형의 세 꼭짓점 (0, 0), (0, 6), (-4, 0)을 표시하면 넓이 계산이 시각적으로 확인됨 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | BENEFICIAL | NOT_NEEDED | 문제: A, B, C 세 지점과 4개, 3개의 길을 간단한 그림으로 나타내면 경로 선택 구조가 한눈에 보임 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | BENEFICIAL | NOT_NEEDED | 문제: 4 곱하기 4 교차점 격자에 A, B, P와 공사로 막힌 (3, 0)을 표시한 그림이 있으면 어느 경로가 금지되는지 즉시 보임 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | BENEFICIAL | BENEFICIAL | 문제: 세 직선과 그로 둘러싸인 삼각형을 그린 그림이 있으면 어느 변을 밑변으로 잡을지 판단이 빨라짐 / 해설: 교점 (0, -3), (3, 6), (3, 0)과 밑변 6, 높이 3을 표시한 간단한 그래프가 계산을 눈으로 확인시켜 줌 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 6개: 5, 6, 9, 11, 17, 22. 해설그림 REQUIRED/BENEFICIAL 6개: 1, 3, 5, 6, 9, 22.
