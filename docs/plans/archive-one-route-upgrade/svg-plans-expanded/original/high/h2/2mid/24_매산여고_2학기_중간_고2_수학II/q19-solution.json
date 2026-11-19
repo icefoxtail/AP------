@@ -4,8 +4,8 @@
     "family": "piecewise-discontinuous",
     "layout": "STACKED",
     "xWindow": [
-      -3,
-      3.5
+      -5,
+      5
     ],
     "pieces": [
       {
@@ -39,7 +39,7 @@
         ],
         "domain": [
           2,
-          "7/2"
+          "5/2"
         ],
         "start": "CLOSED"
       }
@@ -78,21 +78,25 @@
             ],
             "domain": [
               2,
-              3.5
+              "5/2"
             ],
             "start": "OPEN"
           }
         ],
-        "jumpValues": []
+        "jumpValues": [],
+        "axisTickValues": {
+          "x": [
+            "-1",
+            "2"
+          ],
+          "y": [
+            "-1",
+            "2"
+          ]
+        }
       }
     ],
     "limitArrows": [
-      {
-        "curve": "f",
-        "at": "2",
-        "side": "RIGHT",
-        "toY": "4"
-      },
       {
         "curve": "g",
         "at": "-1",
@@ -112,10 +116,22 @@
         "toY": "-1"
       }
     ],
-    "requiredPoints": [],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "2",
+        "y": "4"
+      }
+    ],
     "axisTickValues": {
-      "x": [],
-      "y": []
+      "x": [
+        "-1",
+        "2"
+      ],
+      "y": [
+        "2",
+        "4"
+      ]
     }
   },
   "caption": "위는 y=f(x), 아래는 y=g(x)의 그래프이다. x→-2-이면 |x|→2+이므로 f(|x|)는 x≥2의 식 x²을 따라 4에 수렴한다. x→-1+이면 g(x)→2-이므로 f(g(x))는 -1≤t<2의 식 f(t)=t를 따라 2에 수렴한다. x→∞이면 (2x-7)/(x-3)=2-1/(x-3)→2-이므로 g는 -1<t≤2의 식 -t+1을 따라 -1에 수렴한다. 합은 4+2+(-1)=5이다. 따라서 답은 ②이다.",
