@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "3/5",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "0",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "1/3",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1/15",
+        "in": []
+      }
+    ],
+    "shade": "B"
+  },
+  "caption": "2P(A)=3P(A의 여사건)과 P(A)+P(A의 여사건)=1에서 P(A)=3/5, P(A의 여사건)=2/5이다. 그림은 A가 3/5이고 A와 B가 서로 배반이라 겹침은 0이며 B는 A 밖에서 1/3이다. 나머지 바깥은 2/5−1/3=1/15이다. B는 A의 여사건 안에 있으므로 P(B|A의 여사건)=(1/3)÷(2/5)=5/6이고 답은 ⑤이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B의 벤다이어그램이며 A에 3/5, 겹침에 0, B에 1/3, 바깥에 1/15가 적혀 있고 B가 색칠되어 있다.",
+  "newVisualInformation": [
+    "B가 A와 겹치지 않고 A의 여사건 2/5 안에 들어 있어 조건부확률의 분자 1/3과 분모 2/5가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A, B$가 서로 배반사건이고<br>$$2P(A) = 3P(A^C),\\quad P(B) = \\frac{1}{3}$$<br>일 때, $P(B|A^C)$의 값은? (단, $A^C$은 $A$의 여사건이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

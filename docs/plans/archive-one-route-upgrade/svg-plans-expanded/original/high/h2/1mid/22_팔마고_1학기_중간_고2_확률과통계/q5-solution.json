@@ -1,0 +1,42 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1/8",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "3/16",
+        "in": [
+          "B"
+        ]
+      }
+    ],
+    "shade": "B"
+  },
+  "caption": "B는 A와 겹치는 부분과 A 밖의 부분으로 나뉘고 두 부분은 서로 겹치지 않는다. 그림에서 겹침의 확률이 1/8, A 밖의 부분의 확률이 3/16이다. 따라서 P(B)=1/8+3/16=2/16+3/16=5/16이고 답은 ④이다.",
+  "accessibilityDescription": "전체집합 안에서 두 집합 A, B가 겹친 벤다이어그램이며 겹침에 1/8, B에서 A 밖의 부분에 3/16이 적혀 있고 B 전체가 색칠되어 있다.",
+  "newVisualInformation": [
+    "B가 A와 겹치는 부분 1/8과 A 밖의 부분 3/16으로 나뉘어 합이 5/16임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A, B$에 대하여<br>$$P(A \\cap B) = \\frac{1}{8},\\quad P(A^C \\cap B) = \\frac{3}{16}$$<br>일 때, $P(B)$의 값은? (단, $A^C$은 $A$의 여사건이다.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
