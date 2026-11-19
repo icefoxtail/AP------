@@ -1,0 +1,95 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      11
+    ],
+    "viewport": [
+      0,
+      11,
+      0,
+      130
+    ],
+    "requiredPoints": [
+      {
+        "id": "E0",
+        "x": "0",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "E0"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "10",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "6",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "sec",
+          "slope": "12",
+          "intercept": "-15",
+          "label": "l"
+        },
+        {
+          "id": "tan",
+          "slope": "12",
+          "intercept": "-31",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "x=2에서 x=10까지의 평균변화율은 (105-9)/8=12이고 그림의 할선 l의 기울기이다. f′(x)=2x이므로 2a=12에서 a=6이고, 접점 T(6,41)에서의 접선 m의 기울기가 12로 l과 평행하다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^2+5$에 대하여 $x=2$에서 $x=10$까지의 평균변화율과 $x=a$에서의 미분계수가 같을 때, $a$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 l의 기울기 12와 같은 기울기의 접선 m이 접점 T(6,41)에서 접함을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A(2,9), B(10,105)를 잇는 할선 l과 평행한 접선 m, 접점 T(6,41)을 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 두 점 A, B를 잇는 직선 l과, 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m을 나타낸 그래프이다."
+}

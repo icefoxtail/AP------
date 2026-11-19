@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          -1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "x": "1",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "1",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 원점 대칭 그래프이다. [0,2]에서 x→1-일 때 f→1이고 x→2-일 때 f→-2이다. f(-x)=-f(x)이므로 x→-1+에서 f(x)=-f(-x)→-1이고 x→-2+에서 f(x)→2이다. 따라서 합은 -1+2=1이고 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x\\mid -2\\le x\\le2\\}$인 함수 $y=f(x)$의 그래프가 구간 $[0,2]$에서 그림과 같고, 정의역에 속하는 모든 실수 $x$에 대하여 $f(-x)=-f(x)$이다. $\\displaystyle\\lim_{x\\to-1+}f(x)+\\lim_{x\\to-2+}f(x)$의 값은? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "오른쪽 그래프의 x=1, 2 왼쪽 극한 1, -2를 원점 대칭시켜 x=-1, -2의 오른쪽 극한 -1, 2로 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "오른쪽 그래프를 원점 대칭시켜 x=-1과 x=-2의 오른쪽 극한 -1, 2를 열린 점과 닫힌 점으로 보인다."
+  ],
+  "accessibilityDescription": "원점에 대하여 대칭이며 x=-1과 x=1에서 열린 점과 닫힌 점으로 끊어지는 직선 조각들로 이루어진 그래프이다."
+}
