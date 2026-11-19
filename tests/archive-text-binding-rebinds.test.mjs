@@ -197,3 +197,65 @@ test("the committed rebinds file equals the base branch's file (frozen)", (t) =>
   }
   assert.equal(result.status, 0, result.out);
 });
+
+// ---- 승인된 교정 재결속(revisions): entries(동결)와 별도 구역, 추가 전용 ----------------------------------------------------
+test("revisions: an approved correction rebinds the changed stem; unverifiable, mislabelled or later-edited ones do not", (t) => {
+  const { root, second, v2 } = fixtureRepo(t);
+  assert.equal(run(root, "--write").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "rebinds");
+  const entriesBefore = JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")).entries;
+  const approved = path.join(root, "approved.tsv");
+  // uid2: 발문 a-b -> a+b (내용 교정). uid3: 이력에 없는 지문(NO_HISTORY). uid2를 figure라고 잘못 올리는 경우는 아래에서 따로 거절을 본다.
+  fs.writeFileSync(approved, ["uid2\tcontent\t" + second + "\t#7", "uid3\tcontent\t" + second + "\t"].join("\n") + "\n");
+  const dry = run(root, "--revisions", approved);
+  assert.equal(dry.status, 0, dry.err);
+  assert.equal(dry.json().newRevisions, 1);
+  assert.deepEqual(dry.json().rejected, { NO_HISTORY: 1 });
+  assert.equal(JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")).revisions, undefined, "a dry run writes nothing");
+
+  const wrong = path.join(root, "wrong.tsv");
+  fs.writeFileSync(wrong, "uid2\tfigure\t" + second + "\t\n");
+  assert.deepEqual(run(root, "--revisions", wrong).json().rejected, { FIGURE_BUT_TEXT_CHANGED: 1 });
+  fs.writeFileSync(wrong, "uid2\tcontent\tabc123\t\n");
+  assert.notEqual(run(root, "--revisions", wrong).status, 0, "commits must be full 40-hex shas");
+
+  assert.equal(run(root, "--revisions", approved, "--write-revisions").status, 0);
+  const doc = JSON.parse(fs.readFileSync(path.join(root, REBINDS_PATH), "utf8"));
+  assert.deepEqual(doc.entries, entriesBefore, "the frozen entries are untouched");
+  assert.equal(doc.revisions.length, 1);
+  assert.deepEqual([doc.revisions[0].uid, doc.revisions[0].edit, doc.revisions[0].commits, doc.revisions[0].prs], ["uid2", "content", [second], ["#7"]]);
+  assert.equal(run(root, "--check", "--verify-history").status, 0);
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 0, "adding revisions keeps the frozen entries equal to the base");
+  assert.equal(run(root, "--revisions", approved).json().rejected.ALREADY_RECORDED, 1, "a recorded revision is not added twice");
+
+  // 소비자: 옛 지문 + 현재 text 가 모두 맞을 때만 결속으로 인정한다.
+  const rows = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+  const rebinds = loadRebinds(root);
+  assert.equal(rebinds.revisions, 1);
+  const bind = (uid, row, question, r = rebinds) => classifyMetaBinding({ meta: row, question, assignmentFingerprint: contentFingerprint(question), rebinds: r });
+  assert.equal(bind("uid2", rows[1], v2[1]), "row", "approved correction: the corrected stem is bound");
+  assert.equal(bind("uid3", rows[2], v2[2]), "", "an unverifiable (not approved) row stays unbound");
+  const edited = { ...v2[1], content: "<p>a×b를 구하시오.</p>" };
+  assert.equal(bind("uid2", rows[1], edited), "", "a later edit of the stem voids the revision (new text fingerprint differs)");
+  assert.equal(bind("uid2", { ...rows[1], contentFingerprint: "7".repeat(64) }, v2[1]), "", "the old fingerprint must be the one the row held");
+
+  // 추가 전용: 기준에서 항목을 빼거나 바꾸면 거절, 형식이 틀리면 거절.
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revisions");
+  const file = path.join(root, REBINDS_PATH);
+  const good = fs.readFileSync(file, "utf8");
+  const canonical = (value) => {
+    const head = { schemaVersion: value.schemaVersion, textFingerprintVersion: value.textFingerprintVersion, appendOnly: true, note: value.note, batches: value.batches, revisionsNote: value.revisionsNote };
+    return JSON.stringify(head, null, 2).replace(/\n}$/, "") + ',\n  "entries": [\n' + value.entries.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]"
+      + ',\n  "revisions": [\n' + value.revisions.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]\n}\n";
+  };
+  assert.equal(canonical(doc), good, "test serializer matches the tool's canonical form");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], prs: ["#8"] }] }));
+  assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "changing a recorded revision is rejected");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], from: doc.revisions[0].text }] }));
+  assert.equal(run(root, "--check").status, 1, "content edit with from == text is inconsistent");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], commits: ["short"] }] }));
+  assert.equal(run(root, "--check").status, 1, "commits must be 40-hex");
+  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], text: sha("forged") }] }));
+  assert.equal(run(root, "--check", "--verify-history").status, 1, "history does not support a forged text");
+  fs.writeFileSync(file, good);
+});
