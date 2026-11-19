@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "4",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "2",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "6",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "8",
+        "in": []
+      }
+    ],
+    "shade": "A∪B"
+  },
+  "caption": "20면체의 눈 1~20에서 3의 배수 A는 3, 6, 9, 12, 15, 18의 6개이고 13 이상 B는 13부터 20까지 8개이다. 겹치는 15, 18의 2개를 뺀 영역별 개수는 A만 4, 둘 다 2, B만 6, 어디에도 없는 8이다. 덧셈정리 P(A∪B)=P(A)+P(B)−P(A∩B)=6/20+8/20−2/20=12/20=3/5이다.",
+  "accessibilityDescription": "전체집합 안에서 3의 배수 A와 13 이상 B가 겹친 벤다이어그램이며 영역별 개수가 적혀 있고 A 또는 B에 해당하는 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "A와 B가 겹치는 눈 15, 18의 2개와 영역별 개수 4, 2, 6, 8이 보여 덧셈정리에서 겹침을 한 번 빼야 함을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 표본공간 $\\mathrm{S}$의 두 사건 $\\mathrm{A}, \\mathrm{B}$에 대하여 다음 물음에 답하시오.\n1) 확률의 덧셈정리를 서술하시오. (단, 두 사건 $\\mathrm{A}, \\mathrm{B}$는 배반사건이 아니다.) [1점]\n2) 각 면에 $1$부터 $20$까지 자연수가 각각 적힌 정이십면체 모양의 주사위 한 개를 던지는 시행에서 $3$의 배수의 눈이 나오는 사건을 $\\mathrm{A}$, $13$ 이상의 눈이 나오는 사건을 $\\mathrm{B}$라 할 때, $\\mathrm{P}(\\mathrm{A}\\cup\\mathrm{B})$의 값을 구하고 그 과정을 서술하시오. [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
