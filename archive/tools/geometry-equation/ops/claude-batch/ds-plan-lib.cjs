@@ -215,7 +215,7 @@ if (cmd === 'finalize' || cmd === 'report') {
   }
   // 4) 예상 밖의 변경은 되돌린다(plan 폴더 안 허용: q<통과 no>-solution.json, _decisions.jsonl, source-revision.json)
   const allowed = new Set(['_decisions.jsonl', 'source-revision.json', ...v.ok.map(n => planFile(n))]);
-  const st = git('status', '--porcelain', '--untracked-files=all', '--', planDir).split('\n').filter(Boolean);
+  const st = cp.execFileSync('git', ['status', '--porcelain', '--untracked-files=all', '--', planDir], { encoding: 'utf8' }).split('\n').filter(Boolean); // trim 하지 않는다(첫 줄 ' M' 앞 공백이 상태 칸이다)
   for (const line of st) {
     const f = line.slice(3).replace(/^"|"$/g, ''); const base = path.basename(f);
     if (path.dirname(f).replace(/\\/g, '/') + '/' === planDir && allowed.has(base)) continue;
