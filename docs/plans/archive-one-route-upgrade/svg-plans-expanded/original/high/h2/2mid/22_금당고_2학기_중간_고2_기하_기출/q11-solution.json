@@ -1,0 +1,82 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "1/8",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "A",
+      "kind": "POINT",
+      "x": "18",
+      "y": "2",
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "8",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "l",
+      "rightAngle": true
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAP",
+      "from": "A",
+      "to": "P",
+      "label": "10"
+    },
+    {
+      "id": "sPH",
+      "from": "P",
+      "to": "H",
+      "label": "65/8"
+    },
+    {
+      "id": "sPF",
+      "from": "P",
+      "to": "F",
+      "label": "65/8"
+    }
+  ],
+  "caption": "y²=x/2에서 p=1/8이므로 F(1/8, 0)이고 준선은 x=−1/8이다. 포물선 위의 점에서 PF는 준선까지의 거리 PH와 같으므로 AP+PF=AP+PH이다. 이 값은 A에서 준선까지의 수선(수평선) 위에 P가 놓일 때 최소이므로 y좌표가 2이고 P(8, 2)이다. 이때 AP=10, PF=PH=65/8이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "오른쪽으로 열린 아주 가는 포물선과 초점 F, 왼쪽의 준선 l이 있다. 점 A에서 곡선 위의 점 P까지와 P에서 준선까지의 수평 선분이 한 직선 위에 있고, P에서 F로 가는 선분이 있다.",
+  "newVisualInformation": [
+    "PF=PH로 바꾼 A, P, H가 한 수평선 위에 놓인 모습을 보여 AP+PF가 최소인 P(8, 2)를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "포물선 $y^2=\\dfrac12x$의 초점 $F$와 점 $A(18,2)$에 대하여 $|\\overline{AP}|+|\\overline{PF}|$의 값이 최소가 되는 포물선 위의 점 $P$의 좌표를 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

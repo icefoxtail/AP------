@@ -1,0 +1,91 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "25",
+      "minor": "9"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1
+    },
+    {
+      "id": "A",
+      "kind": "ON_ELLIPSE",
+      "x": "4",
+      "branch": "POS"
+    },
+    {
+      "id": "B",
+      "kind": "ON_ELLIPSE",
+      "x": "4",
+      "branch": "NEG"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sAF",
+      "from": "A",
+      "to": "F",
+      "label": "9/5"
+    },
+    {
+      "id": "sFB",
+      "from": "F",
+      "to": "B",
+      "label": "9/5"
+    },
+    {
+      "id": "sAG",
+      "from": "A",
+      "to": "F'",
+      "label": "41/5"
+    },
+    {
+      "id": "sBG",
+      "from": "B",
+      "to": "F'",
+      "label": "41/5"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "A",
+        "B",
+        "F'"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "예: a=5, b=3인 타원에서 F를 지나는 세로 현의 끝점을 A, B로 한 그림이다. F가 현 AB 위에 있으므로 AB=AF+FB이다. 타원의 정의 AF+AF′=2a, BF+BF′=2a를 더하면 삼각형 ABF′의 둘레는 4a이다. 4a=20이므로 a=5이고 c=4에서 b²=25−16=9이므로 b=3이다. 따라서 a+b=8이고 답은 ②이다.",
+  "accessibilityDescription": "가로로 긴 타원과 두 초점 F, F′가 있다. 오른쪽 초점 F를 지나는 세로 현의 위아래 끝점 A, B와 왼쪽 초점 F′를 잇는 삼각형이 색칠되어 있고 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "F를 지나는 현 AB와 삼각형 ABF′를 보여 AF+AF′=BF+BF′=2a에서 둘레가 4a임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 두 초점 $F(4,0),F'(-4,0)$을 초점으로 하는 타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$에서 점 $F$를 지나는 직선이 타원과 만나는 두 점을 각각 $A,B$라 하자. 삼각형 $ABF'$의 둘레의 길이가 $20$일 때, 상수 $a,b$에 대하여 $a+b$의 값을 구하시오. (단, $a>0,b>0$) [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

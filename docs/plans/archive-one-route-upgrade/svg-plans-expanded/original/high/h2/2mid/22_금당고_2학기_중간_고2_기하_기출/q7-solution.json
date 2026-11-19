@@ -1,0 +1,82 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "4",
+      "minor": "3"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "side": 1,
+      "coordinates": true
+    },
+    {
+      "id": "F'",
+      "kind": "FOCUS",
+      "side": -1,
+      "coordinates": true
+    },
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "end": "MAJOR_POS",
+      "coordinates": true
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "end": "MINOR_POS",
+      "coordinates": true
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "-4/7*sqrt(7)",
+      "branch": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "OPPOSITE",
+      "of": "P"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "t1",
+      "slope": "1",
+      "intercept": "sqrt(7)",
+      "tangent": true
+    },
+    {
+      "id": "t2",
+      "slope": "1",
+      "intercept": "-sqrt(7)",
+      "tangent": true,
+      "dashed": true
+    }
+  ],
+  "caption": "3x²+4y²=12는 x²/4+y²/3=1이다. 중심은 (0, 0), 장반경 2, 단반경 √3이어서 초점은 F(1, 0), F′(−1, 0)이고 장축의 길이는 4, 단축의 길이는 2√3이다. 타원 위의 한 점에서 두 초점까지의 거리의 합은 2a=4로 일정하다. 기울기 1인 두 접선은 y=x±√7이다. 거리의 합이 30이라는 ②만 옳지 않으므로 답은 ②이다.",
+  "accessibilityDescription": "가로로 긴 타원과 두 초점 F, F′, 오른쪽 꼭짓점 A, 위쪽 꼭짓점 B가 있다. 기울기 1인 두 접선이 타원에 위쪽 왼쪽 접점 P와 아래쪽 오른쪽 접점 Q에서 닿아 있다.",
+  "newVisualInformation": [
+    "타원의 초점 (±1, 0), 꼭짓점 (2, 0), (0, √3)과 기울기 1인 두 접선의 접점 P, Q를 보여 ①, ③, ④, ⑤의 참을 확인하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 타원 $3x^2+4y^2=12$에 대한 설명으로 옳지 않은 것을 고르시오. [3.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

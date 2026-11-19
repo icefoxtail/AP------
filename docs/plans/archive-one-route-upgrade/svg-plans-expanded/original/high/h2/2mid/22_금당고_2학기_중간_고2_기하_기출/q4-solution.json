@@ -1,0 +1,57 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "T",
+      "kind": "ON_CONIC",
+      "x": "1/2",
+      "branch": "NEG",
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "-1/2",
+      "y": "0",
+      "coordinates": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "t",
+      "slope": "-2",
+      "intercept": "-1",
+      "tangent": true,
+      "label": "y=-2x-1"
+    }
+  ],
+  "caption": "포물선 y²=8x에서 p=2이고 기울기가 m인 접선은 y=mx+p/m이다. m=−2이면 접선은 y=−2x−1이고 접점은 T(1/2, −2)이다. 접선이 x축과 만나는 점은 0=−2x−1에서 Q(−1/2, 0)이다. 따라서 x절편은 −1/2이고 답은 ⑤이다.",
+  "accessibilityDescription": "오른쪽으로 열린 포물선과 아래쪽 접점 T에서 닿는 기울기 −2의 접선이 있다. 접선이 x축과 만나는 점 Q와 접점 T의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "접선 y=−2x−1과 접점 T(1/2, −2), x절편 Q(−1/2, 0)를 보여 접선의 x절편을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "포물선 $y^2=8x$에 접하고 기울기가 $-2$인 접선의 $x$절편을 구하시오. [3.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
