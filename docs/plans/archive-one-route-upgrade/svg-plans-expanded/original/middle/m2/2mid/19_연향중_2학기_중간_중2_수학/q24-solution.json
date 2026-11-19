@@ -1,0 +1,274 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-1",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "4",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "K"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-2",
+            "denominator": "3"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "8",
+                "denominator": "3"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "14"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "J",
+    "K",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "JK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "KL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "LJ",
+      "refs": [
+        "L",
+        "J"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "△ABC의 변은 AB=5, AC=6, BC=3cm이고 △JKL의 대응변은 JK=10, JL=12, KL=6cm이다. AB:JK=5:10=1:2, AC:JL=6:12=1:2, BC:KL=3:6=1:2로 세 쌍의 대응변의 비가 같다. 따라서 △ABC∽△JKL이고 닮음 조건은 SSS 닮음이다.",
+  "accessibilityDescription": "크기가 다른 두 삼각형 ABC와 JKL이 나란히 있다. 작은 삼각형의 변 AB 5, AC 6, BC 3, 큰 삼각형의 변 JK 10, JL 12, KL 6이 적혀 있다.",
+  "newVisualInformation": [
+    "세 쌍의 대응변의 비가 모두 1:2이므로 SSS 닮음 △ABC∽△JKL"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형4] 다음 주어진 삼각형들 가운데 수학적으로 닮음인 두 삼각형을 기호를 이용하여 나타내고, 닮음 조건을 쓰시오.</p><p>(1) 수학적으로 닮음인 두 삼각형을 찾고 기호를 이용하여 나타내시오. [2점]</p><p>(2) (1)에서 찾은 삼각형들의 닮음 조건을 쓰시오. [3점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/s04.png\" alt=\"여러 개의 삼각형이 주어지고 닮음인 쌍을 찾는 서술형 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vJK",
+        "ownerSegment": "JK",
+        "text": "10",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vJL",
+        "ownerSegment": "JL",
+        "text": "12",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vKL",
+        "ownerSegment": "KL",
+        "text": "6",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

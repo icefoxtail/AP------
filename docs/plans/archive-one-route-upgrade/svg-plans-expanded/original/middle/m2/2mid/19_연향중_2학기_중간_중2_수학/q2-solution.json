@@ -1,0 +1,276 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "35"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "V",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "D",
+          "B"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "110"
+          },
+          "turn": "CW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lu",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "U"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lv",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "V"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lu",
+          "lv"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBD",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "PERPENDICULAR_FOOT",
+        "inputs": [
+          "C",
+          "lBD"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "D",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "BD=CD이므로 △BCD는 이등변삼각형이고 ∠BCD=∠CBD=35°이다. ∠CDA는 △BCD의 외각이므로 ∠CDA=35°+35°=70°이다. AC=CD이므로 △ACD도 이등변삼각형이고 x=∠CAD=∠CDA=70°이다. △ACD에서 y=180°−70°−70°=40°이다. 따라서 x+y=110°이고 답은 ③이다.",
+  "accessibilityDescription": "삼각형 ABC의 변 AB 위에 점 D가 있고 선분 CD가 그어져 있다. AC, CD, BD에 같은 눈금이 있고 각 B와 각 BCD에 35°, 각 CAD에 x=70°, 각 ACD에 y=40°가 표시되어 있다.",
+  "newVisualInformation": [
+    "△BCD의 밑각 35°의 외각으로 ∠CDA=70°이고 △ACD에서 x=70°, y=40°이므로 x+y=110°"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>2. 다음 그림과 같은 $\\triangle \\text{ABC}$에서 $\\overline{\\text{AC}}=\\overline{\\text{CD}}=\\overline{\\text{BD}}$일 때, $\\angle x + \\angle y$를 구하면? (4점)</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q03.png\" alt=\"AC는 CD는 BD인 이등변삼각형들이 연결된 삼각형 ABC 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AC",
+        "CD",
+        "BD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "C",
+          "B",
+          "D"
+        ],
+        "label": "35°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "D",
+          "A",
+          "C"
+        ],
+        "label": "x=70°",
+        "style": "ARC"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "A",
+          "C",
+          "D"
+        ],
+        "label": "y=40°",
+        "style": "ARC"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "35°",
+        "style": "ARC"
+      }
+    ]
+  }
+}

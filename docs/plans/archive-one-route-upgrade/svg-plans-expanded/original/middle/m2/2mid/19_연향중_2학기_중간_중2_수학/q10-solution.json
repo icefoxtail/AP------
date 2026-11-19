@@ -1,0 +1,255 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "12"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "D",
+          "E"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "M",
+          "D"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc"
+  ],
+  "displayLines": [],
+  "caption": "예: 가로 16cm, 세로 12cm인 직사각형으로 그렸다. 세 각이 90°이면 네 번째 각도 90°이므로 직사각형이고 두 대각선은 길이가 같고 서로를 이등분한다. BD=AC=20cm이므로 DE=10cm이다. DE를 지름으로 하는 원의 반지름은 5cm이므로 넓이는 π×5²=25π이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "직사각형 ABCD의 두 대각선이 점 E에서 만나고 E에서 네 꼭짓점까지의 선분에 같은 눈금이 있다. 대각선 AC에 20이 적혀 있고 DE에 10이 적혀 있으며 DE를 지름으로 하는 원이 그려져 있다.",
+  "newVisualInformation": [
+    "직사각형의 대각선 BD=AC=20에서 DE=10이므로 지름이 10인 원의 넓이 25π"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>10. 다음 $\\square \\text{ABCD}$에 대해 $\\angle \\text{A} = \\angle \\text{B} = \\angle \\text{C} = 90^\\circ$, $\\overline{\\text{AC}}=20\\text{cm}$이고 두 대각선의 교점을 $\\text{E}$라고 할 때, $\\overline{\\text{DE}}$를 지름으로 하는 원의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q10.png\" alt=\"직사각형 ABCD와 대각선 교점 E에서 DE를 지름으로 하는 원 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "D",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "B",
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "EA",
+        "EB",
+        "EC",
+        "ED"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAC",
+        "ownerSegment": "AC",
+        "text": "20",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vED",
+        "ownerSegment": "ED",
+        "text": "10",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

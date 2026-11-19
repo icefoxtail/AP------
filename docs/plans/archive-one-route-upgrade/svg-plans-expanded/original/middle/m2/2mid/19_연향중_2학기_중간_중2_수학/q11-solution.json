@@ -1,0 +1,275 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "B"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "G",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "GE",
+      "refs": [
+        "G",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "마름모의 대각선은 서로를 수직이등분하므로 △ABF의 넓이를 S라 하면 마름모의 넓이는 4S이다. AB∥DC이고 BF=DF이므로 △BFG≡△DFE이고 두 삼각형의 넓이가 같다. 따라서 △AGF+△DEF=△AGF+△BFG=△ABF=S=20cm²이고 마름모의 넓이는 4×20=80cm²이다. 답은 ⑤이다.",
+  "accessibilityDescription": "마름모 ABCD의 두 대각선이 점 F에서 수직으로 만나고 변 AB 위의 점 G와 변 DC 위의 점 E를 지나는 직선이 F를 지난다. 삼각형 AGF와 삼각형 DEF가 칠해져 있고 네 변에 같은 눈금이 있으며 F에 직각 표시가 있다.",
+  "newVisualInformation": [
+    "△BFG≡△DFE이므로 △AGF+△DEF=△ABF=20이고 마름모의 넓이는 4×20=80"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>11. 다음 마름모 $\\square \\text{ABCD}$의 두 대각선 $\\overline{\\text{AC}}$, $\\overline{\\text{BD}}$는 서로를 수직이등분한다. 교점을 $\\text{F}$라 하고, 그림과 같이 $\\text{G}\\in\\overline{\\text{AB}}$, $\\text{E}\\in\\overline{\\text{DC}}$이며 $\\text{E,F,G}$가 한 직선 위에 있다. $\\triangle \\text{AGF}$와 $\\triangle \\text{DEF}$의 넓이의 합이 $20\\text{cm}^2$일 때, $\\square \\text{ABCD}$의 넓이를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q11.png\" alt=\"마름모 ABCD의 대각선 교점 F와 일직선 위의 G,F,E에서 삼각형 AGF와 DEF가 표시된 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "F",
+        "B"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "BC",
+        "CD",
+        "DA"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "S1",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "G",
+              "F"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "label": "S2",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "E",
+              "F"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "5"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "E",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EC",
+      "refs": [
+        "E",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "(1) ∠AEB+∠CED=90°이고 △ABE에서 ∠BAE+∠AEB=90°이므로 ∠BAE=∠CED이다. 두 직각삼각형 ABE와 DCE에서 빗변 AE=DE이고 한 예각이 같으므로 △ABE≡△DCE(RHA 합동)이다. (2) 대응변에서 BE=CD=5cm, EC=AB=3cm이므로 BC=BE+EC=8cm이다.",
+  "accessibilityDescription": "사각형 ABCD의 변 BC 위에 점 E가 있고 선분 AE와 DE가 그어져 있다. 각 B, 각 C, 각 AED에 직각 표시가 있고 AE와 DE에 같은 눈금이 있다. AB 3, CD 5, BE 5, EC 3, 변 BC 전체에 8이 적혀 있다.",
+  "newVisualInformation": [
+    "RHA 합동으로 BE=CD=5, EC=AB=3이므로 BC=8"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형1] 다음 그림과 같은 사각형 $\\text{ABCD}$에서 $\\overline{\\text{AE}} = \\overline{\\text{DE}}$일 때, 물음에 답하여라.</p><p>(1) 합동인 두 삼각형을 찾아 합동기호($\\equiv$)를 사용하여 나타내고 합동조건을 말하여라. [3점]</p><p>(2) $\\overline{\\text{BC}}$의 길이를 구하여라. [2점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/s01.png\" alt=\"직각사다리꼴 형태의 사각형 ABCD에서 AE=DE이고 AB=3cm, CD=5cm인 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "D",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "A",
+        "E",
+        "D"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AE",
+        "ED"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "B",
+          "A",
+          "E"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "C",
+          "E",
+          "D"
+        ],
+        "label": "α",
+        "style": "ARC",
+        "equalGroup": 1,
+        "arcs": 1
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "5",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBE",
+        "ownerSegment": "BE",
+        "text": "5",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vEC",
+        "ownerSegment": "EC",
+        "text": "3",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "d0",
+        "from": "B",
+        "to": "C",
+        "label": "8",
+        "unit": "cm",
+        "side": "BELOW",
+        "value": 8
+      }
+    ]
+  }
+}

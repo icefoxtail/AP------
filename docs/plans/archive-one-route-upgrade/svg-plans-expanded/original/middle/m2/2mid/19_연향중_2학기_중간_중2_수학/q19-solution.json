@@ -1,0 +1,387 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "9",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "18",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "12",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "expression",
+            "op": "mul",
+            "args": [
+              {
+                "kind": "rational",
+                "numerator": "18",
+                "denominator": "5"
+              },
+              {
+                "kind": "expression",
+                "op": "sqrt",
+                "args": [
+                  {
+                    "kind": "integer",
+                    "value": "21"
+                  }
+                ]
+              }
+            ]
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "36",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "20"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "18",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "32",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "24",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "E"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "48",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "36",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l1",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l2",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l3",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "l4",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    },
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [
+    "l1",
+    "l2",
+    "l3",
+    "l4"
+  ],
+  "caption": "네 평행선 l, m, n, o를 두 횡단선이 자르면 평행선 사이의 대응하는 선분의 길이의 비가 같다. 한 횡단선에서 x:3:6, 다른 횡단선에서 6:y:4이므로 6/x=y/3=4/6=2/3이다. 6/x=2/3에서 x=9이고 y/3=2/3에서 y=2이다. 따라서 x+y=9+2=11이고 답은 ②이다.",
+  "accessibilityDescription": "네 개의 평행선을 두 개의 횡단선이 비스듬히 가로지른다. 한 횡단선에는 평행선 사이의 길이가 x, 3, 6으로, 다른 횡단선에는 6, y, 4로 적혀 있으며 x에 9, y에 2가 적혀 있다.",
+  "newVisualInformation": [
+    "평행선 사이의 길이의 비 x:3:6=6:y:4에서 x=9, y=2이므로 x+y=11"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>19. 다음 그림에서 직선 $l, m, n, o$가 서로 평행하다고 할 때, $x+y$의 값을 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q19.png\" alt=\"네 평행선 l, m, n, o에 의해 분할된 선분과 미지수 x, y가 주어진 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "x=9",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vEF",
+        "ownerSegment": "EF",
+        "text": "6",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vFG",
+        "ownerSegment": "FG",
+        "text": "y=2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vGH",
+        "ownerSegment": "GH",
+        "text": "4",
+        "factRole": "GIVEN"
+      }
+    ]
+  }
+}

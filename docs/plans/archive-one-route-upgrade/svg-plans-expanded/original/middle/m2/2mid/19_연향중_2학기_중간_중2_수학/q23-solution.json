@@ -1,0 +1,247 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "expression",
+            "op": "sqrt",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              }
+            ]
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "P",
+    "C",
+    "D"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "DP",
+      "refs": [
+        "D",
+        "P"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "(1) AD∥BC이고 아랫변의 양 끝 각이 ∠B=∠C=60°로 같으므로 등변사다리꼴이다. (2) D를 지나 AB에 평행한 선분 DP를 그으면 □ABPD는 평행사변형이어서 BP=AD=2cm, DP=AB=2cm이다. △DPC는 ∠P=∠B=60°, ∠C=60°인 정삼각형이므로 PC=2cm이고 BC=BP+PC=4cm이다. (3) 둘레는 2+4+2+2=10cm이다.",
+  "accessibilityDescription": "등변사다리꼴 ABCD에서 AD가 윗변, BC가 아랫변이며 BC 위에 점 P가 있고 D에서 P로 선분이 그어져 있다. AB, AD, DP, PC, CD에 같은 눈금이 있고 각 B와 각 C에 60°가 표시되어 있으며 BC에 4가 적혀 있다.",
+  "newVisualInformation": [
+    "평행사변형 ABPD와 정삼각형 DPC로 BC=2+2=4이므로 둘레 2+4+2+2=10"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형3] $\\square \\text{ABCD}$에 대해 $\\overline{\\text{AD}} \\parallel \\overline{\\text{BC}}$, $\\overline{\\text{AB}}=\\overline{\\text{AD}}=2\\text{cm}$이고 $\\angle \\text{B} = \\angle \\text{C} = 60^\\circ$라 할 때, $\\square \\text{ABCD}$의 둘레의 길이를 다음 과정에 따라 구하시오.</p><p>(1) $\\square \\text{ABCD}$는 어떤 사각형인지 쓰시오. [2점]</p><p>(2) $\\overline{\\text{BC}}$의 길이를 구하시오. [2점]</p><p>(3) $\\square \\text{ABCD}$의 둘레의 길이를 구하시오. [1점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/s03.png\" alt=\"AD와 BC가 평행하고 AB는 AD는 2cm, 각 B는 C는 60도인 등변사다리꼴 ABCD 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "AB",
+        "AD",
+        "DP",
+        "PC",
+        "CD"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a0",
+        "refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "label": "60°",
+        "style": "ARC"
+      },
+      {
+        "id": "a1",
+        "refs": [
+          "B",
+          "C",
+          "D"
+        ],
+        "label": "60°",
+        "style": "ARC"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAD",
+        "ownerSegment": "AD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

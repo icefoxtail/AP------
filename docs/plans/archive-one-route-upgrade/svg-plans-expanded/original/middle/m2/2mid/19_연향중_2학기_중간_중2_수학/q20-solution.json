@@ -1,0 +1,327 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "12"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "F"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "POINT_REFLECTION",
+        "inputs": [
+          "G",
+          "B"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "H"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "F"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "MIDPOINT",
+        "inputs": [
+          "B",
+          "G"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "displaySegments": [
+    {
+      "id": "FG",
+      "refs": [
+        "F",
+        "G"
+      ]
+    },
+    {
+      "id": "GH",
+      "refs": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "id": "BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "EG",
+      "refs": [
+        "E",
+        "G"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "D, E가 BF, BG의 중점이므로 중점연결정리에 의해 DE=(1/2)FG에서 FG=2×2=4cm이다. △BFG와 △CGH는 높이가 같고 넓이의 비가 1:2이므로 밑변의 비 FG:GH=1:2에서 GH=8cm이다. 또 B, C가 AG, AH의 중점이므로 x=BC=(1/2)GH=4cm이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "한 직선 위에 F, G, H가 있고 점 B와 F, G를 이은 삼각형 BFG가 있다. 변 BF와 BG의 중점 D, E를 이은 선분 DE에 2가 적혀 있고 G에서 B를 지나 A까지 연장되며 C는 AH의 중점이다. BC에 x=4가 적혀 있고 삼각형 BFG는 S, 삼각형 CGH는 2S로 칠해져 있다.",
+  "newVisualInformation": [
+    "DE=2에서 FG=4, 넓이의 비 1:2에서 GH=8이고 중점연결정리로 x=BC=4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 그림에서 $\\triangle\\text{BFG}$에 대해 $\\overline{\\text{DE}}=2\\text{cm}$, $\\overline{\\text{BD}}=\\overline{\\text{DF}}$, $\\overline{\\text{BE}}=\\overline{\\text{EG}}$이고, $\\triangle\\text{AGH}$에 대해 $\\overline{\\text{AB}}=\\overline{\\text{BG}}$, $\\overline{\\text{AC}}=\\overline{\\text{CH}}$이다. $\\triangle\\text{BFG}$와 $\\triangle\\text{CGH}$의 넓이의 비가 $1:2$일 때, $x$의 값은? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q20.png\" alt=\"삼각형 AGH에서 B,C가 중점이고, 삼각형 BFG에서 D,E가 중점이며 넓이비와 x=BC가 주어진 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "BD",
+        "DF"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "BE",
+        "EG"
+      ]
+    },
+    {
+      "id": "eq2",
+      "count": 3,
+      "segments": [
+        "AC",
+        "CH"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vDE",
+        "ownerSegment": "DE",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vFG",
+        "ownerSegment": "FG",
+        "text": "4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vGH",
+        "ownerSegment": "GH",
+        "text": "8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vBC",
+        "ownerSegment": "BC",
+        "text": "x=4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "S",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "B",
+              "F",
+              "G"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "label": "2S",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "C",
+              "G",
+              "H"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

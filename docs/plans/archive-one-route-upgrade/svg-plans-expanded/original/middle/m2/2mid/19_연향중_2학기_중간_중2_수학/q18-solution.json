@@ -1,0 +1,285 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "11",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "8",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "-22",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "-16",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "rational",
+            "numerator": "44",
+            "denominator": "5"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "32",
+            "denominator": "5"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "O",
+    "C",
+    "E",
+    "B",
+    "D",
+    "F"
+  ],
+  "displaySegments": [
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "CE",
+      "refs": [
+        "C",
+        "E"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "DF",
+      "refs": [
+        "D",
+        "F"
+      ]
+    },
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "EF",
+      "refs": [
+        "E",
+        "F"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AB∥CD이므로 △AOB∽△COD이고 AB:CD=AO:OC=2:1에서 x=AB=2×2=4이다. OE=OC+CE=1+3=4이고 △COD∽△EOF이므로 y:CD=OE:OC=4:1에서 y=EF=4×2=8이다. 따라서 xy=4×8=32이고 답은 ④이다.",
+  "accessibilityDescription": "점 O에서 두 직선이 갈라지는 모양이고 한 직선 위에 A, O, C, E, 다른 직선 위에 B, O, D, F가 있다. 세 선분 AB, CD, EF가 서로 평행하게 그어져 있고 AO 2, OC 1, CE 3, CD 2가 적혀 있으며 AB에 4, EF에 8이 적혀 있다.",
+  "newVisualInformation": [
+    "AO:OC=2:1에서 AB=4, OE:OC=4:1에서 EF=8이므로 xy=32"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 다음 그림에서 $\\overline{\\text{AB}} \\parallel \\overline{\\text{CD}} \\parallel \\overline{\\text{EF}}$라고 할 때, $xy$를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q18.png\" alt=\"세 평행선 AB, CD, EF와 대각선 교점 구조에서 x, y가 표시된 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vAO",
+        "ownerSegment": "AO",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vOC",
+        "ownerSegment": "OC",
+        "text": "1",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCE",
+        "ownerSegment": "CE",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vCD",
+        "ownerSegment": "CD",
+        "text": "2",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "vAB",
+        "ownerSegment": "AB",
+        "text": "x=4",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "vEF",
+        "ownerSegment": "EF",
+        "text": "y=8",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

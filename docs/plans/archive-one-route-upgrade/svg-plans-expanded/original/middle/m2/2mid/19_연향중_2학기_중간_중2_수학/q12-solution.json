@@ -1,0 +1,470 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-10"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "E",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "A"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "F",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "G",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "C"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "H",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "D"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lAH",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "H"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lBE",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "E"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lCF",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "C",
+          "F"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lDG",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "D",
+          "G"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "I",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lAH",
+          "lBE"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "J",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lBE",
+          "lCF"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "K",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lCF",
+          "lDG"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "L",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "lDG",
+          "lAH"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L"
+  ],
+  "displaySegments": [
+    {
+      "id": "AE",
+      "refs": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "id": "ED",
+      "refs": [
+        "E",
+        "D"
+      ]
+    },
+    {
+      "id": "BF",
+      "refs": [
+        "B",
+        "F"
+      ]
+    },
+    {
+      "id": "FA",
+      "refs": [
+        "F",
+        "A"
+      ]
+    },
+    {
+      "id": "CG",
+      "refs": [
+        "C",
+        "G"
+      ]
+    },
+    {
+      "id": "GB",
+      "refs": [
+        "G",
+        "B"
+      ]
+    },
+    {
+      "id": "DH",
+      "refs": [
+        "D",
+        "H"
+      ]
+    },
+    {
+      "id": "HC",
+      "refs": [
+        "H",
+        "C"
+      ]
+    },
+    {
+      "id": "AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "BE",
+      "refs": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "CF",
+      "refs": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "id": "DG",
+      "refs": [
+        "D",
+        "G"
+      ]
+    },
+    {
+      "id": "IJ",
+      "refs": [
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "JK",
+      "refs": [
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "KL",
+      "refs": [
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "LI",
+      "refs": [
+        "L",
+        "I"
+      ]
+    },
+    {
+      "id": "JL",
+      "refs": [
+        "J",
+        "L"
+      ]
+    },
+    {
+      "id": "IK",
+      "refs": [
+        "I",
+        "K"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "예: 한 변이 10cm이고 AE=BF=CG=DH인 정사각형으로 그렸다. □IJKL은 정사각형이므로 두 대각선은 길이가 같고 서로 수직이다. 따라서 IK=JL=8cm이다. 넓이는 (1/2)×JL×IK=(1/2)×8×8=32cm²이다. 답은 ③이다.",
+  "accessibilityDescription": "정사각형 ABCD의 각 변 위에 같은 거리의 점 E, F, G, H가 있고 선분 AH, BE, CF, DG가 서로 교차해 안쪽에 정사각형 IJKL을 만든다. IJKL의 네 꼭짓점에 직각 표시가 있고 네 변에 같은 눈금이 있으며 두 대각선 JL과 IK가 그어져 있다.",
+  "newVisualInformation": [
+    "정사각형 IJKL의 두 대각선이 JL=IK=8이므로 넓이 (1/2)×8×8=32"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 정사각형 $\\text{ABCD}$에서 $\\text{E}\\in\\overline{\\text{AD}}$, $\\text{F}\\in\\overline{\\text{AB}}$, $\\text{G}\\in\\overline{\\text{BC}}$, $\\text{H}\\in\\overline{\\text{CD}}$이고 $\\overline{\\text{AE}}=\\overline{\\text{BF}}=\\overline{\\text{CG}}=\\overline{\\text{DH}}$이다. $\\text{I}=\\overline{\\text{AH}}\\cap\\overline{\\text{BE}}$, $\\text{J}=\\overline{\\text{BE}}\\cap\\overline{\\text{CF}}$, $\\text{K}=\\overline{\\text{CF}}\\cap\\overline{\\text{DG}}$, $\\text{L}=\\overline{\\text{DG}}\\cap\\overline{\\text{AH}}$라 하자. $\\square\\text{IJKL}$이 정사각형이고 $\\overline{\\text{JL}}=8\\text{cm}$일 때, $\\square\\text{IJKL}$의 넓이는? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q12.png\" alt=\"정사각형 ABCD 변의 점 E,F,G,H와 AH,BE,CF,DG의 교점 I,J,K,L이 보이는 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "rightAngles": [
+    {
+      "id": "r0",
+      "refs": [
+        "L",
+        "I",
+        "J"
+      ]
+    },
+    {
+      "id": "r1",
+      "refs": [
+        "I",
+        "J",
+        "K"
+      ]
+    },
+    {
+      "id": "r2",
+      "refs": [
+        "J",
+        "K",
+        "L"
+      ]
+    },
+    {
+      "id": "r3",
+      "refs": [
+        "K",
+        "L",
+        "I"
+      ]
+    }
+  ],
+  "equalLengths": [
+    {
+      "id": "eq0",
+      "count": 1,
+      "segments": [
+        "IJ",
+        "JK",
+        "KL",
+        "LI"
+      ]
+    },
+    {
+      "id": "eq1",
+      "count": 2,
+      "segments": [
+        "AE",
+        "BF",
+        "CG",
+        "DH"
+      ]
+    }
+  ]
+}

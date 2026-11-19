@@ -1,0 +1,54 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "CYLINDER",
+      "radius": 2,
+      "height": 4
+    },
+    {
+      "id": "s2",
+      "kind": "CYLINDER",
+      "radius": 3,
+      "height": 6
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "radius": "bottom",
+      "label": "2"
+    },
+    {
+      "solid": "s1",
+      "height": true,
+      "label": "4"
+    },
+    {
+      "solid": "s2",
+      "radius": "bottom",
+      "label": "3"
+    },
+    {
+      "solid": "s2",
+      "height": true,
+      "label": "6"
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 A / 오른쪽 B"
+  },
+  "caption": "두 원기둥 A, B를 같은 배율로 나란히 놓았다. A는 밑면의 반지름 2cm, 높이 4cm이고 B는 높이 6cm이다. 닮음비는 높이의 비와 같으므로 A:B=4:6=2:3이고 B의 밑면의 반지름은 2×3/2=3cm이다. B의 부피는 π×3²×6=54π cm³이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "크기가 다른 두 원기둥 A와 B가 나란히 있다. A는 밑면의 반지름 2, 높이 4이고 B는 밑면의 반지름 3, 높이 6이 적혀 있다.",
+  "newVisualInformation": [
+    "닮음비 2:3에서 원기둥 B의 반지름 3, 높이 6이므로 부피 54π"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>15. 다음 그림에서 두 원기둥 $\\text{A, B}$가 서로 닮은 도형일 때, 원기둥 $\\text{B}$의 부피를 구하면? [4점]</p><p><img src=\"assets/images/19_연향중_2학기_중간_중2_수학/q15.png\" alt=\"서로 닮은 두 원기둥 A와 B가 제시된 기하 도형\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
