@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "independent-format-taxonomy-delta-review-v1",
+  "exam": "22_향림중_1학기_중간_중3_유사",
+  "sourceRevisionId": "AHj4eMQC5ICyGkIHHO3QYWlUlkdpj1KygBig0hlRXPDDAM-0w80kchIl8s0m4sJBD6tCW3DMTV0Gfmpvrnawidp2g7SDC1t2WTAkIHkZcE4",
+  "previousCandidateBlobSha1": "ab74f9917cff9e05c4b2c48ed7da0ef53d209744",
+  "finalCandidateBlobSha1": "26fdef3067514ee4e012ea059e4ab017bee55bdd",
+  "candidateFileSha256": "b1e06c6043a4520f01e93a12f274092df543e62e9ea0bb2dad2563c38ca82d8d",
+  "separatorDelta": {
+    "status": "PASS",
+    "qids": [
+      3,
+      5,
+      7,
+      9,
+      10,
+      16,
+      17,
+      22,
+      23,
+      24
+    ],
+    "allRequestedRowsUseDoubleBackslashBreaks": true,
+    "noSingleBackslashSpaceRowBreaksRemain": true
+  },
+  "mathDelta": {
+    "status": "PASS_FORMAT_ONLY",
+    "changedKeys": [],
+    "keysMatchPreviouslyFrozenSourceReview": true,
+    "mathExpressionsAndValuesUnchanged": true,
+    "evidence": "R1 freeze recorded 24/24 keys and solutions for previous blob; current keys and formulas remain consistent; inspected delta was row separator escaping only."
+  },
+  "taxonomy": {
+    "items": [
+      {
+        "qid": 8,
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypePackStatus": "ACTIVE",
+        "problemTypeCompiledStatus": "ACTIVE",
+        "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+        "templatePackStatus": "ACTIVE",
+        "templateCompiledStatus": "ACTIVE",
+        "parentProblemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "parentMatches": true
+      },
+      {
+        "qid": 9,
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypePackStatus": "ACTIVE",
+        "problemTypeCompiledStatus": "ACTIVE",
+        "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+        "templatePackStatus": "ACTIVE",
+        "templateCompiledStatus": "ACTIVE",
+        "parentProblemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "parentMatches": true
+      },
+      {
+        "qid": 10,
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypePackStatus": "ACTIVE",
+        "problemTypeCompiledStatus": "ACTIVE",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "templatePackStatus": "ACTIVE",
+        "templateCompiledStatus": "ACTIVE",
+        "parentProblemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "parentMatches": true
+      },
+      {
+        "qid": 17,
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypePackStatus": "ACTIVE",
+        "problemTypeCompiledStatus": "ACTIVE",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "templatePackStatus": "ACTIVE",
+        "templateCompiledStatus": "ACTIVE",
+        "parentProblemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "parentMatches": true
+      },
+      {
+        "qid": 23,
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "problemTypePackStatus": "ACTIVE",
+        "problemTypeCompiledStatus": "ACTIVE",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "templatePackStatus": "ACTIVE",
+        "templateCompiledStatus": "ACTIVE",
+        "parentProblemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "parentMatches": true
+      }
+    ],
+    "semanticNote": "All PT/template keys are active in canonical MIDDLE3 taxonomy and compiled registry; template parent matches problem type. Q8 and Q9 are semantically over-specific as TPL_M3_RADICAL_POWER_DIVISION (defined around squaring a radical and fraction division), while their items are radical mixed product/division; TPL_M3_RADICAL_MIXED_OPERATION is the better existing fit. Q10/17/23 mappings fit."
+  },
+  "noRenderOrScreenReview": true
+}

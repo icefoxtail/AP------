@@ -1,0 +1,1967 @@
+{
+  "sourceDocumentId": "1RWH_QTTwMpbFzytYSbGZraheDxqFZliLAqwrocbOKeQ",
+  "sourceDocumentRevisionId": "AHj4eMREN9y7Hcffa7F0auFinG7KEOjYd3q4Ssx_OX9olM_IoVkawyQblmgRuW848zlhvMTuIU29xFnaLfHiwKgEelXGSyFcCgfGullze2A",
+  "declaredSourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "resolvedSourceArchiveFile": "archive/exams/original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "resolvedSourceGitBlobSha1": "eb37be5cbd55288b965f7a414a46bd5a82e2f5a5",
+  "alternateAliasPath": "archive/exams/original/middle/m3/2final/23_순천여중_2학기_기말_중3_기출.js",
+  "alternateAliasGitBlobSha1": "361feba2088c78608b9995b3b9fc5c563f0181da",
+  "aliasAudit": "The two main archive aliases have different blobs and nonidentical question-bank fields. The Drive MD explicitly selects 23_순여중; only that path is bound as its source. No assets from the 23_순천여중 directory are used.",
+  "note": "MD candidate metadata preserved; semantic RPM resolver, 4-slot review and registration remain incomplete.",
+  "items": [
+    {
+      "ordinal": 1,
+      "sourceQid": "1",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원주각과 중심각",
+      "primaryMethod": "원주각 $110^\\circ$에서 큰 호의 중심각 $220^\\circ$를 구해 $360^\\circ$에서 빼고, 중심각 $76^\\circ$를 반으로 나누어 원주각을 구한다.",
+      "decisiveStep": "큰 호에 대한 중심각 $220^\\circ$와 구하는 중심각 $x$의 합이 $360^\\circ$임을 이용한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "중심각과 원주각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "원주각과 중심각의 2배 관계를 두 그림에서 각각 적용한다."
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원주각과 중심각의 1:2 관계 및 원의 한 바퀴 $360^\\circ$ 성질을 바로 적용하는 기본 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_01",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "원 $O$"
+            },
+            {
+              "term": "원주각",
+              "src": "stem",
+              "quote": "원주각은 $110^\\circ$"
+            },
+            {
+              "term": "중심각",
+              "src": "stem",
+              "quote": "중심각은 $76^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "원주각은 중심각의 $\\dfrac{1}{2}$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "중심각",
+              "src": "solution",
+              "quote": "중심각의 합은 $360^\\circ$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "원주각과 중심각의 2배 관계로 두 각을 구함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 2,
+      "sourceQid": "2",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원주각과 중심각",
+      "primaryMethod": "$\\angle BED=65^\\circ$에서 $\\angle BOD=130^\\circ$를 구하고 $\\angle COD=74^\\circ$를 빼서 얻은 $\\angle BOC=56^\\circ$의 절반으로 $\\angle x$를 판정한다.",
+      "decisiveStep": "$\\angle x$가 $\\overarc{BC}$의 원주각이므로 중심각 $\\angle BOC$의 2배가 아니라 절반임을 확인한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "중심각과 원주각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "보조 반지름을 그어 중심각 차를 구한 뒤 원주각과 중심각 관계를 검증한다."
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_RADIUS_DEFINITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "보조선을 통한 중심각 변환과 2단계 각의 차를 거쳐 원주각의 절반 성질 오류를 찾는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_02",
+        "format": "옳지 않은 것",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "원 $O$"
+            },
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle BED = 65^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "옳지 않은 것은"
+            }
+          ],
+          "method": [
+            {
+              "term": "중심각",
+              "src": "solution",
+              "quote": "중심각",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "원주각이므로",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "중심각의 차를 구한 뒤 원주각 관계의 참거짓을 판별함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 3,
+      "sourceQid": "3",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "호의 길이와 원주각",
+      "primaryMethod": "호의 길이의 비 $4:3:5$로 $\\overarc{BC}$의 중심각 $360^\\circ \\times \\frac{3}{12}=90^\\circ$를 비례배분한 뒤 반으로 나누어 $\\angle BAC$를 구한다.",
+      "decisiveStep": "$\\overarc{BC}$에 대한 중심각 $90^\\circ$를 원주각 $\\angle BAC$로 변환하기 위해 $\\frac{1}{2}$을 곱한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "같은 호에 대한 원주각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "호의 비례배분으로 중심각 또는 원주각 전체 합에서 해당 원주각을 구한다."
+      },
+      "crossConceptKeys": [
+        "CC_RATIO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "호의 길이와 중심각·원주각의 정비례 관계 및 비례배분을 결합하여 계산한다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_03",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "원 $O$"
+            },
+            {
+              "term": "호",
+              "src": "stem",
+              "quote": "$\\overarc{AB} : \\overarc{BC} : \\overarc{CA} = 4 : 3 : 5$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x = \\angle BAC$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "중심각",
+              "src": "solution",
+              "quote": "중심각의 크기",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "원주각이므로",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "비",
+              "src": "stem",
+              "quote": "4 : 3 : 5",
+              "evidenceType": "IMPLIED",
+              "justification": "세 호의 길이의 비 4:3:5를 전체 합 12로 나누어 비례배분함"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "호의 길이의 비례배분으로 중심각을 구한 뒤 원주각으로 변환함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 4,
+      "sourceQid": "4",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "반원에 대한 원주각",
+      "primaryMethod": "지름 $\\overline{AB}$에 대한 원주각 $\\angle ADB=90^\\circ$와 $\\overarc{DC}$의 중심각 $52^\\circ$의 절반인 $\\angle DBC=26^\\circ$를 결합해 직각삼각형 $DEB$의 각을 판정한다.",
+      "decisiveStep": "지름에 대한 원주각 $90^\\circ$로 직각삼각형 $DEB$를 찾고 $\\angle DBC = \\frac{1}{2}\\angle DOC$를 적용한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "반원에 대한 원주각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "why": "반원의 원주각 $90^\\circ$와 호 DC의 원주각 관계를 함께 판정한다."
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "지름의 원주각 성질과 중심각-원주각 관계를 연쇄 적용해 5개 선지의 참거짓을 판별한다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_04",
+        "format": "복수 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "지름",
+              "src": "stem",
+              "quote": "$\\overline{AB}$를 지름으로"
+            },
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "반원 $O$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "옳은 것을 모두 고르면"
+            }
+          ],
+          "method": [
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "지름에 대한 원주각 $\\angle ADB = 90^\\circ$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "삼각형",
+              "src": "solution",
+              "quote": "직각삼각형 $DEB$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "지름의 원주각 90도와 호 DC의 원주각 26도를 함께 이용함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 5,
+      "sourceQid": "5",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원에 내접하는 사각형",
+      "primaryMethod": "$\\triangle BCD$의 내각의 합에서 $\\angle x = 74^\\circ$를 구한 뒤 내접사각형 대각의 합 $180^\\circ$로 $\\angle y = 106^\\circ$를 구한다.",
+      "decisiveStep": "내접사각형의 마주 보는 두 내각 $\\angle x$와 $\\angle y$의 합이 $180^\\circ$임을 적용한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "내접사각형의 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "삼각형 내각합과 원에 내접하는 사각형의 대각 성질을 순차 적용한다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "삼각형 내각의 합과 내접사각형의 대각 합 $180^\\circ$ 성질을 직접 적용하는 기초 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_05",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원에내접하는사각형",
+              "src": "stem",
+              "quote": "$\\square ABCD$가 원에 내접"
+            },
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle CBD = 38^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x = \\angle BCD$와 $\\angle y = \\angle BAD$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각형",
+              "src": "solution",
+              "quote": "$\\triangle BCD$에서 세 내각의 합은 $180^\\circ$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원에내접하는사각형",
+              "src": "solution",
+              "quote": "마주 보는 두 내각의 합은 $180^\\circ$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "내접",
+              "src": "stem",
+              "quote": "원에 내접"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "삼각형 내각합과 원에 내접하는 사각형의 대각 합 180도 이용"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 6,
+      "sourceQid": "6",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원에 내접하는 사각형",
+      "primaryMethod": "왼쪽은 내접사각형 대각의 합 $180^\\circ$를, 오른쪽은 내접사각형의 외각과 내대각이 같음을 적용해 $x, y$를 구한다.",
+      "decisiveStep": "내접사각형의 외각이 인접 내각이 아니라 마주 보는 내대각과 같음을 정확히 대응시킨다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "내접사각형의 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "내접사각형의 대각 합과 외각=내대각 성질을 두 그림에서 각각 적용한다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "내접사각형의 대각 합 $180^\\circ$와 외각=내대각 성질을 직접 적용하는 기본 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_06",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원에내접하는사각형",
+              "src": "stem",
+              "quote": "원에 내접하는 사각형"
+            },
+            {
+              "term": "외각",
+              "src": "stem",
+              "quote": "아래쪽 외각은 $88^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x$, $\\angle y$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "내각",
+              "src": "solution",
+              "quote": "마주 보는 두 내각의 합은 $180^\\circ$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "외각",
+              "src": "solution",
+              "quote": "한 외각의 크기는 그 내대각의 크기와 같으므로",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "내접",
+              "src": "stem",
+              "quote": "원에 내접"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "내접사각형의 대각 합과 외각-내대각 성질을 각각 적용함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 7,
+      "sourceQid": "7",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원에 내접하는 사각형",
+      "primaryMethod": "$\\triangle AFD$와 $\\triangle CDE$의 내각의 합으로 $A+D=228^\\circ$, $C+D=204^\\circ$를 세우고 $A+C=180^\\circ$와 연립해 $D=126^\\circ$, $B=54^\\circ$를 구한다.",
+      "decisiveStep": "두 삼각형의 내각 식을 더한 뒤 내접사각형의 대각 조건 $A+C=180^\\circ$를 대입해 $D$를 소거한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "내접사각형의 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "why": "내접사각형의 대각 합과 두 외접 삼각형의 내각 관계를 연립한다."
+      },
+      "crossConceptKeys": [
+        "CC_SYSTEM_OF_EQUATIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 연장선 삼각형의 내각 방정식과 내접사각형의 대각 조건을 연립하여 미지각을 구하는 중상 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_07",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원에내접하는사각형",
+              "src": "stem",
+              "quote": "원에 내접하는 $\\square ABCD$"
+            },
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle CED = 24^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x = \\angle ABC$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각형",
+              "src": "solution",
+              "quote": "$\\triangle AFD$에서",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원에내접하는사각형",
+              "src": "solution",
+              "quote": "원에 내접하는 사각형에서 $A + C = 180^\\circ$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "내접",
+              "src": "stem",
+              "quote": "원에 내접"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "두 삼각형의 외각·내각 관계와 내접사각형 대각 합을 연립함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 8,
+      "sourceQid": "8",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원주각과 중심각",
+      "primaryMethod": "원주각 $118^\\circ$와 $104^\\circ$에 대응하는 호의 중심각 합 $236^\\circ$, $208^\\circ$를 구해 $360^\\circ$에서 여호를 뺀 뒤 차로 $\\overarc{BC}$의 중심각을 구한다.",
+      "decisiveStep": "여호의 중심각 합 $124^\\circ$를 구해 $208^\\circ$에서 빼서 겹치는 호 $\\overarc{BC}$의 중심각 $84^\\circ$를 분리한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각과 중심각",
+        "l4": "중심각과 원주각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "why": "내접 오각형에서 두 원주각이 보는 호의 합과 차로 목표 호의 중심각을 찾는다."
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 원주각이 보는 호의 중복 구조를 파악해 $360^\\circ$ 차분으로 중심각을 구해야 하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_08",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "원 $O$에 내접"
+            },
+            {
+              "term": "원주각",
+              "src": "stem",
+              "quote": "원주각이 $118^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "중심각",
+              "src": "stem",
+              "quote": "중심각 $\\angle x$의 크기"
+            },
+            {
+              "term": "원주각",
+              "src": "stem",
+              "quote": "그 원주각의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "원주각의 크기는 중심각의 절반",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "호",
+              "src": "solution",
+              "quote": "나머지 호 $\\overarc{CD} + \\overarc{DE}$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "내접",
+              "src": "stem",
+              "quote": "원 $O$에 내접"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "두 원주각이 보는 호의 중심각 합과 차로 호 BC의 중심각을 구함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 9,
+      "sourceQid": "9",
+      "variationType": "CONDITION",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "접선과 현이 이루는 각",
+      "primaryMethod": "지름 $\\overline{AC}$와 접선 $\\overleftrightarrow{AT}$가 이루는 직각 $90^\\circ$에서 $\\angle CAB$를 뺀 각이 $\\angle BAT$임을 확인해 증명 단계의 부호 오류를 찾는다.",
+      "decisiveStep": "$\\angle BAT$가 $90^\\circ + \\angle CAB$가 아니라 $\\angle CAT - \\angle CAB = 90^\\circ - \\angle CAB$임을 판별한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "접선과 현이 이루는 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "why": "접선-현각 정리의 예각 경우 증명 과정을 검증한다."
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "접선-현각 정리의 표준 증명 단계에서 각의 덧셈·뺄셈 오류를 가려내는 개념 증명 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_09",
+        "format": "옳지 않은 것",
+        "slots": {
+          "given": [
+            {
+              "term": "접선",
+              "src": "stem",
+              "quote": "접선 $\\overleftrightarrow{AT}$"
+            },
+            {
+              "term": "지름",
+              "src": "stem",
+              "quote": "지름 $\\overline{AC}$"
+            },
+            {
+              "term": "현",
+              "src": "stem",
+              "quote": "접선과 현이 이루는 각"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "옳지 않은 것은"
+            }
+          ],
+          "method": [
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "지름 $\\overline{AC}$에 대한 원주각 $\\angle CDA = 90^\\circ$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "접선과현이이루는각",
+              "src": "stem",
+              "quote": "접선과 현이 이루는 각",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "지름의 원주각과 접선 수직 조건으로 증명 단계 오류를 판별함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 10,
+      "sourceQid": "10",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "접선과 현이 이루는 각",
+      "primaryMethod": "접선과 현이 이루는 각의 성질을 첫 번째 그림의 둔각 $115^\\circ$와 두 번째 그림의 $\\triangle ABC$ 내각에 각각 적용한다.",
+      "decisiveStep": "두 번째 그림에서 접선-현각 $48^\\circ$를 $\\angle ABC$로 옮긴 뒤 $\\triangle ABC$의 내각합 $180^\\circ$에서 뺀다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "접선과 현이 이루는 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "why": "접선과 현이 이루는 각이 둔각인 경우와 삼각형 내각을 결합한 예각 경우를 함께 묻는다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "접선-현각 정리의 둔각 대응과 삼각형 내각 계산을 차례로 수행하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_10",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "접선",
+              "src": "stem",
+              "quote": "직선 $AT$는 각각 원의 접선"
+            },
+            {
+              "term": "접점",
+              "src": "stem",
+              "quote": "점 $A$는 그 접점"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "접선과현이이루는각",
+              "src": "solution",
+              "quote": "접선 $AT$와 현 $AC$가 이루는",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "삼각형",
+              "src": "solution",
+              "quote": "$\\triangle ABC$에서 세 내각의 합은 $180^\\circ$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "접선-현각 성질로 원주각을 구하고 삼각형 내각합을 적용함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 11,
+      "sourceQid": "11",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "접선과 현이 이루는 각",
+      "primaryMethod": "이등변삼각형 $\\triangle APT$의 두 밑각 $38^\\circ$로 꼭지각 $\\angle PAT=104^\\circ$와 외각 $\\angle BAT=76^\\circ$, 접선-현각 $\\angle ABT=38^\\circ$를 계산해 옳지 않은 식을 찾는다.",
+      "decisiveStep": "$\\triangle APT$의 내각합에서 두 밑각 $38^\\circ$를 모두 빼야 함을 확인한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "접선과 현이 이루는 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+        "why": "이등변삼각형의 외각과 접선-현각 정리를 결합해 풀이 과정의 오류를 판별한다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "이등변삼각형 성질과 접선-현각 성질이 결합된 5단계 추론에서 계산 오류 선지를 찾는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_11",
+        "format": "옳지 않은 것",
+        "slots": {
+          "given": [
+            {
+              "term": "접점",
+              "src": "stem",
+              "quote": "점 $T$는 그 접점"
+            },
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle APT = 38^\\circ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "옳지 않은 것은"
+            }
+          ],
+          "method": [
+            {
+              "term": "삼각형",
+              "src": "solution",
+              "quote": "$\\triangle APT$는 이등변삼각형",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "접선과현이이루는각",
+              "src": "solution",
+              "quote": "접선-현각 성질",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "이등변삼각형 내각합과 접선-현각 성질을 연쇄 검증함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 12,
+      "sourceQid": "12",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "접선과 현이 이루는 각",
+      "primaryMethod": "접선-현각으로 $\\angle BCA=58^\\circ$를 구하고 지름의 원주각 $90^\\circ$로 $\\angle x=32^\\circ$, $\\triangle ABP$ 외각으로 $\\angle y=26^\\circ$를 구해 합한다.",
+      "decisiveStep": "지름 $\\overline{BC}$에 대한 원주각 $\\angle BAC=90^\\circ$와 직선 $PQ$ 위 평각 $180^\\circ$를 함께 사용한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "why": "반원의 원주각 $90^\\circ$, 접선-현각, 삼각형 외각을 연쇄 사용한다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "접선-현각과 지름의 원주각 $90^\\circ$를 결합해 두 각을 차례로 구한 뒤 더하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_12",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "지름",
+              "src": "stem",
+              "quote": "지름 $BC$"
+            },
+            {
+              "term": "접선",
+              "src": "stem",
+              "quote": "점 $A$에서 접하는 직선 $AQ$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "합",
+              "src": "stem",
+              "quote": "크기의 합"
+            }
+          ],
+          "method": [
+            {
+              "term": "접선과현이이루는각",
+              "src": "solution",
+              "quote": "접선과 현이 이루는 각의 성질",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "$\\angle BAC = 90^\\circ$",
+              "evidenceType": "IMPLIED",
+              "justification": "지름 BC에 대한 원주각이 90도임을 이용함"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "접선-현각과 지름의 원주각 90도로 두 각을 구해 합산함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 13,
+      "sourceQid": "13",
+      "variationType": "CONTEXT",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "대푯값",
+      "primaryMethod": "자료 10개를 크기순으로 정렬해 평균 $241$, 중앙값 $240$, 최빈값 $240$을 계산하고 대푯값 성질을 비교한다.",
+      "decisiveStep": "자료의 정렬 결과에서 5·6번째 값의 평균으로 중앙값을, 최다 빈도 값으로 최빈값을 확정한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "대푯값",
+        "l4": "평균·중앙값·최빈값"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 평균·중앙값·최빈값 개념 참거짓 전용 PT가 없다."
+      },
+      "crossConceptKeys": [
+        "CC_MEAN",
+        "CC_MEDIAN",
+        "CC_MODE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "주어진 10개 자료에서 평균·중앙값·최빈값을 직접 구하고 개념 문장을 판별하는 기본 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_13",
+        "format": "참/거짓",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "조사한 자료"
+            }
+          ],
+          "goal": [
+            {
+              "term": "대푯값",
+              "src": "stem",
+              "quote": "옳은 것은"
+            }
+          ],
+          "method": [
+            {
+              "term": "평균",
+              "src": "solution",
+              "quote": "평균은 $\\dfrac{235\\times 2",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "중앙값",
+              "src": "solution",
+              "quote": "중앙값은 5번째와 6번째",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "최빈값",
+              "src": "solution",
+              "quote": "최빈값은 $240$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "자료 정렬 후 평균·중앙값·최빈값을 계산하여 옳은 설명을 고름"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": "ptTplCandidate: 대푯값 종합 개념 판정 PT 미등재로 null"
+    },
+    {
+      "ordinal": 14,
+      "sourceQid": "14",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "최빈값과 중앙값",
+      "primaryMethod": "최빈값이 $9$라는 조건으로 미지수 $x=9$를 결정한 뒤 8개 자료를 정렬해 4·5번째 값의 평균을 구한다.",
+      "decisiveStep": "나머지 7개 값이 모두 1회씩 등장하므로 최빈값 조건에 의해 $x=9$가 유일하게 결정됨을 확인한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "대푯값",
+        "l4": "평균·중앙값·최빈값"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": null,
+        "why": "최빈값으로 미지수를 정한 뒤 중앙값을 계산하는 유형이다."
+      },
+      "crossConceptKeys": [
+        "CC_MODE",
+        "CC_MEDIAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "최빈값 조건으로 미지 변량을 확정한 뒤 짝수 개 자료의 중앙값을 계산하는 2단계 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_14",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "조사한 자료"
+            },
+            {
+              "term": "최빈값",
+              "src": "stem",
+              "quote": "최빈값이 $9$회"
+            }
+          ],
+          "goal": [
+            {
+              "term": "중앙값",
+              "src": "stem",
+              "quote": "중앙값을 구하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "최빈값",
+              "src": "solution",
+              "quote": "최빈값이 $9$회가 되려면",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "중앙값",
+              "src": "solution",
+              "quote": "중앙값은 가운데 두 값인",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "최빈값으로 미지수 x를 구한 뒤 짝수 개 자료의 중앙값을 구함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 15,
+      "sourceQid": "15",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "조건으로 자료 추론",
+      "primaryMethod": "두 번째 자료의 평균 $11$로 $a+b=23$을 얻고 첫 번째 자료의 중앙값 $9$ 조건으로 $a \\le 9$ 범위를 좁혀 $a=8, b=15$를 찾는다.",
+      "decisiveStep": "평균식 $a+b=23$과 첫 번째 자료 중앙값 부등식 $a \\le 9$를 동시에 만족시키는 값을 선택한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "자료 비교",
+        "l4": "조건으로 자료 추론"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": null,
+        "why": "평균과 중앙값 조건을 연립해 두 미지 변량을 결정한다."
+      },
+      "crossConceptKeys": [
+        "CC_MEAN",
+        "CC_MEDIAN"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평균 등식과 두 자료의 중앙값 순서 부등식을 함께 고려해 미지수를 확정해야 한다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_15",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "평균",
+              "src": "stem",
+              "quote": "평균은 $11$"
+            },
+            {
+              "term": "중앙값",
+              "src": "stem",
+              "quote": "중앙값은 $9$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "값",
+              "src": "stem",
+              "quote": "$a, b$의 값을 각각 구하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "평균",
+              "src": "solution",
+              "quote": "평균이 $11$이므로",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "중앙값",
+              "src": "solution",
+              "quote": "중앙값이 $9$이므로 $a \\le 9$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "미지수",
+              "src": "stem",
+              "quote": "자연수 $a, b$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "평균의 합 조건과 중앙값 순서 조건을 결합해 a, b를 판정함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 16,
+      "sourceQid": "16",
+      "variationType": "CONTEXT",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "편차",
+      "primaryMethod": "임의의 자료에서 각 변량에서 평균을 뺀 편차들의 총합은 항상 $0$임을 적용한다.",
+      "decisiveStep": "$\\sum (x_i - m) = \\sum x_i - nm = 0$ 성질을 바로 적용한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "산포도",
+        "l4": "편차"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "why": "편차의 합이 0인 기본 성질을 직접 확인한다."
+      },
+      "crossConceptKeys": [
+        "CC_SUM_OF_DEVIATIONS_ZERO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "편차의 합이 항상 0이라는 정의와 성질을 바로 적용하는 1단계 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_16",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "조사한 자료"
+            }
+          ],
+          "goal": [
+            {
+              "term": "편차",
+              "src": "stem",
+              "quote": "편차의 합을 구하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "편차",
+              "src": "solution",
+              "quote": "편차의 합은 항상 $0$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "편차의 정의로부터 편차의 총합이 0임을 바로 적용함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 17,
+      "sourceQid": "17",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "분산",
+      "primaryMethod": "평균 $8$로 총합 $64$를 구해 $x=12$를 확정한 뒤 편차의 제곱의 평균으로 분산을 계산한다.",
+      "decisiveStep": "미지수 $x=12$를 구한 후 8개 편차 $-5, 3, 0, -1, 0, -2, 1, 4$의 제곱합 $56$을 $8$로 나눈다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "산포도",
+        "l4": "분산"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "why": "평균으로 미지 변량을 구한 뒤 편차 제곱의 평균(분산)을 계산한다."
+      },
+      "crossConceptKeys": [
+        "CC_MEAN",
+        "CC_VARIANCE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평균을 이용해 미지 변량을 먼저 구한 뒤 8개 자료의 분산을 계산하는 2단계 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_17",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "조사한 자료"
+            },
+            {
+              "term": "평균",
+              "src": "stem",
+              "quote": "평균이 $8$회"
+            }
+          ],
+          "goal": [
+            {
+              "term": "분산",
+              "src": "stem",
+              "quote": "분산을 구하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "평균",
+              "src": "solution",
+              "quote": "총합은 $8 \\times 8 = 64$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "편차",
+              "src": "solution",
+              "quote": "편차의 제곱의 평균",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "평균으로 x를 구한 뒤 편차 제곱의 평균으로 분산을 계산함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 18,
+      "sourceQid": "18",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "표준편차",
+      "primaryMethod": "5개 자료 $4, 5, 7, 8, 11$의 평균 $7$을 구해 편차 제곱합 $30$을 $5$로 나눈 분산 $6$에 제곱근을 씌운다.",
+      "decisiveStep": "분산 $6$을 구한 뒤 양의 제곱근을 취해 표준편차 $\\sqrt{6}$으로 마무리한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "산포도",
+        "l4": "표준편차"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "표준편차 직접 계산 전용 PT 키가 표에 없다."
+      },
+      "crossConceptKeys": [
+        "CC_VARIANCE",
+        "CC_STANDARD_DEVIATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "평균, 편차, 분산, 표준편차의 정의를 순서대로 바로 적용하는 기본 계산 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_18",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자료",
+              "src": "stem",
+              "quote": "조사한 자료"
+            }
+          ],
+          "goal": [
+            {
+              "term": "표준편차",
+              "src": "stem",
+              "quote": "표준편차를 구하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "평균",
+              "src": "solution",
+              "quote": "평균은",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "분산",
+              "src": "solution",
+              "quote": "분산은 편차의 제곱의 평균",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "제곱근",
+              "src": "solution",
+              "quote": "양의 제곱근",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "평균→편차→분산→표준편차 순으로 직접 계산함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": "ptTplCandidate: 표준편차 직접 계산 PT 미등재로 null"
+    },
+    {
+      "ordinal": 19,
+      "sourceQid": "19",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "conceptClusterKey": "산점도와 상관관계",
+      "primaryMethod": "이상점 (가), (나)를 제외한 나머지 점들의 분포가 우상향이나 우하향 띠를 이루지 않음을 확인해 상관관계가 없음을 판별한다.",
+      "decisiveStep": "우상단의 두 이상점 (가), (나)를 제외한 뒤 남은 점들의 경향성을 따로 판독한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "상관관계",
+        "l3": "상관관계",
+        "l4": "상관관계가 약한 경우"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 상관관계 판정 전용 PT가 없다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "이상점 2개를 제거한 뒤 남은 산점도의 전체 분포 경향을 해석해야 하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_19",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "산점도",
+              "src": "stem",
+              "quote": "산점도이다"
+            }
+          ],
+          "goal": [
+            {
+              "term": "상관관계",
+              "src": "stem",
+              "quote": "상관관계는?"
+            }
+          ],
+          "method": [
+            {
+              "term": "산점도",
+              "src": "solution",
+              "quote": "나머지 점들의 전체적인 분포",
+              "evidenceType": "IMPLIED",
+              "justification": "산점도의 점 분포 형태를 보고 상관관계를 해석함"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "이상점을 제거한 후 산점도 분포에서 상관관계 유무를 판별함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": "ptTplCandidate: 산점도 상관관계 판정 PT 미등재로 null"
+    },
+    {
+      "ordinal": 20,
+      "sourceQid": "20",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+      "conceptClusterKey": "산점도 해석",
+      "primaryMethod": "산점도에서 직선 $y=x$ 위쪽($y>x$)에 놓인 점의 개수 3개를 세어 전체 10명에 대한 백분율 $30\\%$를 구한다.",
+      "decisiveStep": "경계선 $y=x$ 위의 두 점 $(55,55), (85,85)$를 제외하고 $y>x$인 점 3개만 정확히 센다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "상관관계",
+        "l3": "산점도",
+        "l4": "산점도 읽기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "산점도 조건 영역 계수 전용 PT 키가 표에 없다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "산점도에서 $y>x$ 부등식 영역에 속하는 점의 개수를 읽어 백분율로 환산하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_20",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "산점도",
+              "src": "stem",
+              "quote": "산점도이다"
+            }
+          ],
+          "goal": [
+            {
+              "term": "비율",
+              "src": "solution",
+              "quote": "전체의",
+              "evidenceType": "IMPLIED",
+              "justification": "전체의 몇 %인지 묻는 문항으로 비율(백분율)을 구함"
+            }
+          ],
+          "method": [
+            {
+              "term": "산점도",
+              "src": "solution",
+              "quote": "직선 $y = x$ 위쪽에 있는 점",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "직선 y=x 위쪽의 점을 세어 백분율을 계산함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": "ptTplCandidate: 산점도 읽기 PT 미등재로 null"
+    },
+    {
+      "ordinal": 21,
+      "sourceQid": "21",
+      "variationType": "CONDITION",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "원에 내접하는 사각형",
+      "primaryMethod": "$\\angle P$와 $\\angle R$가 보는 두 호의 중심각 합 $a+c=360^\\circ$에 원주각이 중심각의 절반임을 적용해 대각의 합이 $180^\\circ$임을 증명한다.",
+      "decisiveStep": "두 호 $\\overarc{QRS}$와 $\\overarc{QPS}$의 중심각의 합이 $360^\\circ$임을 이용해 $\\frac{1}{2}(a+c)=180^\\circ$를 유도한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "내접사각형의 각"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+        "why": "원에 내접하는 사각형의 대각 합 $180^\\circ$ 정리를 중심각-원주각으로 증명한다."
+      },
+      "crossConceptKeys": [
+        "CC_CIRCLE_PROPERTIES"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "원주각과 중심각 관계 및 원의 한 바퀴 $360^\\circ$를 이용해 교과서 핵심 정리를 서술형으로 증명하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_21",
+        "format": "증명/서술",
+        "slots": {
+          "given": [
+            {
+              "term": "원에내접하는사각형",
+              "src": "stem",
+              "quote": "원에 내접하는 사각형 $PQRS$"
+            }
+          ],
+          "goal": [
+            {
+              "term": "증명",
+              "src": "stem",
+              "quote": "항상 성립함을 원 $O$를 이용하여 설명하시오"
+            }
+          ],
+          "method": [
+            {
+              "term": "중심각",
+              "src": "solution",
+              "quote": "중심각의 크기를 $a$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "원주각의 크기는 같은 호에 대한 중심각",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": [
+            {
+              "term": "내접",
+              "src": "stem",
+              "quote": "원에 내접"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "두 호의 중심각 합 360도와 원주각 절반 성질로 대각 합 180도를 증명함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 22,
+      "sourceQid": "22",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-06",
+      "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+      "conceptClusterKey": "접선과 현이 이루는 각",
+      "primaryMethod": "접선-현각으로 $\\angle BCT=57^\\circ$를 구하고 반원의 원주각 $\\angle BTC=90^\\circ$로 $\\angle x=33^\\circ$, 같은 호의 원주각으로 $\\angle y=33^\\circ$를 구한다.",
+      "decisiveStep": "지름 $\\overline{BC}$로 얻은 직각 $\\angle BTC=90^\\circ$와 같은 호 $\\overarc{TC}$에 대한 두 원주각의 상등을 연결한다.",
+      "rpm": {
+        "majorUnit": "원의 성질",
+        "midUnit": "원주각",
+        "l3": "원주각의 활용",
+        "l4": "복합 각 추론"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+        "why": "접선-현각, 지름의 원주각 $90^\\circ$, 같은 호의 원주각 상등을 연쇄 적용한다."
+      },
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "접선-현각, 지름의 원주각 $90^\\circ$, 같은 호의 원주각 상등 3가지 성질을 차례로 결합하는 서술형 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_22",
+        "format": "다중 구하기",
+        "slots": {
+          "given": [
+            {
+              "term": "지름",
+              "src": "stem",
+              "quote": "$\\overline{BC}$가 지름"
+            },
+            {
+              "term": "접선",
+              "src": "stem",
+              "quote": "원 $O$의 접선"
+            },
+            {
+              "term": "접점",
+              "src": "stem",
+              "quote": "점 $T$는 그 접점"
+            }
+          ],
+          "goal": [
+            {
+              "term": "각",
+              "src": "stem",
+              "quote": "$\\angle x = \\angle TBC$와 $\\angle y = \\angle TAC$의 크기"
+            }
+          ],
+          "method": [
+            {
+              "term": "접선과현이이루는각",
+              "src": "solution",
+              "quote": "접선과 현이 이루는 각의 성질",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "원주각",
+              "src": "solution",
+              "quote": "지름에 대한 원주각 $\\angle BTC = 90^\\circ$",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "접선-현각과 지름의 원주각 90도, 같은 호 원주각을 연쇄 적용함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 23,
+      "sourceQid": "23",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "조건으로 자료 추론",
+      "primaryMethod": "평균 $15.4$로 나이 합 $77$을 구하고 최빈값 $19$세 2명·최솟값 $10$세·$16$세를 빼서 남은 한 명 $13$세를 구한 뒤 중앙값을 찾는다.",
+      "decisiveStep": "최빈값이 $19$세이므로 $19$세가 최소 2명 포함됨을 확정해 5명 중 4명의 나이를 고정한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "자료 비교",
+        "l4": "조건으로 자료 추론"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+        "templateKey": null,
+        "why": "평균·최빈값·최솟값 조건으로 전체 변량을 복원해 중앙값을 구한다."
+      },
+      "crossConceptKeys": [
+        "CC_MEAN",
+        "CC_MODE",
+        "CC_MEDIAN"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "최빈값의 최소 등장 횟수(2회)와 평균 합, 최솟값 조건을 종합해 미지 자료를 복원해야 하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_23",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "최빈값",
+              "src": "stem",
+              "quote": "최빈값은 $19$세"
+            },
+            {
+              "term": "평균",
+              "src": "stem",
+              "quote": "평균 나이는 $15.4$세"
+            }
+          ],
+          "goal": [
+            {
+              "term": "중앙값",
+              "src": "stem",
+              "quote": "나이의 중앙값을 구하시오"
+            }
+          ],
+          "method": [
+            {
+              "term": "평균",
+              "src": "solution",
+              "quote": "나이의 합은",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "최빈값",
+              "src": "solution",
+              "quote": "최빈값이 $19$세이므로",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "평균으로 총합을 구하고 최빈값 최소 중복 조건으로 나머지 나이를 역산함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    },
+    {
+      "ordinal": 24,
+      "sourceQid": "24",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-07",
+      "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+      "conceptClusterKey": "분산과 표준편차",
+      "primaryMethod": "편차의 합이 $0$임을 이용해 여섯 번째 편차 $-1$을 구한 뒤 제곱합 $56$을 $6$으로 나누어 분산과 유리화된 표준편차를 구한다.",
+      "decisiveStep": "여섯 번째 편차 $d=-1$을 복원한 후 분수 $\\sqrt{\\frac{28}{3}}$의 분모를 유리화한다.",
+      "rpm": {
+        "majorUnit": "통계",
+        "midUnit": "대푯값과 산포도",
+        "l3": "산포도",
+        "l4": "분산"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_DISPERSION_DEVIATION_PROPERTIES",
+        "templateKey": null,
+        "why": "편차의 합이 0인 성질로 누락 편차를 구한 뒤 분산과 표준편차를 계산한다."
+      },
+      "crossConceptKeys": [
+        "CC_SUM_OF_DEVIATIONS_ZERO",
+        "CC_VARIANCE",
+        "CC_STANDARD_DEVIATION",
+        "CC_RADICAL_RATIONALIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "편차의 합 $0$ 성질로 누락 편차를 구하고 분모의 유리화까지 수행하는 2단계 서술형 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "PENDING_23_SY_24",
+        "format": "다중 구하기",
+        "slots": {
+          "given": [
+            {
+              "term": "편차",
+              "src": "stem",
+              "quote": "다섯 명의 편차"
+            }
+          ],
+          "goal": [
+            {
+              "term": "분산",
+              "src": "stem",
+              "quote": "분산과 표준편차를 각각 구하시오"
+            },
+            {
+              "term": "표준편차",
+              "src": "stem",
+              "quote": "분산과 표준편차를 각각 구하시오"
+            }
+          ],
+          "method": [
+            {
+              "term": "편차",
+              "src": "solution",
+              "quote": "편차의 합은 항상 $0$",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "분산",
+              "src": "solution",
+              "quote": "분산은",
+              "evidenceType": "NAMED"
+            },
+            {
+              "term": "제곱근",
+              "src": "solution",
+              "quote": "양의 제곱근",
+              "evidenceType": "NAMED"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "편차 합 0으로 누락 편차를 구하고 분산·표준편차를 계산함"
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": ""
+    }
+  ]
+}

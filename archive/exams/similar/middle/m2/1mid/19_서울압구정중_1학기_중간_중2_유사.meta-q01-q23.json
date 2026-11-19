@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-19-apgujeong-m2-1mid-candidate-v1",
+  "examUid": "19_서울압구정중_1학기_중간_중2_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_유사.js",
+  "expectedSourceBlobSha1": "5c471a59f2a1d66a8608c53fa85e1221ae20fc1a",
+  "expectedSourceSha256": "237ab404d7b0f82e00540e74653311a56e46229751794224417e9995ba77e2cb",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "sourceEvidence": {
+    "sourceArchiveFile": "original/middle/m2/1mid/19_서울압구정중_1학기_중간_중2_수학.js",
+    "sourceBlobSha1": "603963bf0f61b762a0197dc736652e666f3e2734",
+    "sourceMDFileId": "1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA",
+    "sourceRevision": "AHj4eMRFfdmiiBf3pIIzwbInaX0ICfl_kc6iCli_ceF-eU8WJZAb-DK9N5u17_JMNFDJHsuhAbXdvUzUiVXhvoNtfAFHkQr4Aam95epCSaI",
+    "driveCreatedAt": "2026-11-14T08:57:01.915Z",
+    "driveModifiedAt": "2026-11-14T08:57:03.907Z",
+    "mdHeaderGeneratedAt": "2026-11-14",
+    "declaredQuestionCount": 23,
+    "declaredTotalScore": 100,
+    "verifiedItemScoreTotal": 100,
+    "sourceRevisionRead": "Direct native Google Docs text read; all 23 prompts, choices, answers, solutions and embedded item metadata read.",
+    "note": "Candidate similar exam only; original source unchanged. Q03 was repaired from a two-correct-statements prompt with incompatible count choices into a combination-choice item while retaining all five truth statements. Q09 and Q21 explicitly exclude zero from divisor variables. 4-slot validator ran on 23/23 items with 125 quotes, 0 FAIL and 22 WARN. Draft harness ran and is blocked only by the absent candidate-specific author plans directory; no plans were created. Independent review, official registration and visual QA remain NOT_RUN."
+  },
+  "items": [
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q01",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "sourceQid": "1",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-REPEATING_TO_FRACTION_SETUP",
+        "primaryMethod": "소수점 아래 비순환 1자리와 순환마디 2자리에 맞추어 1000x와 10x의 차를 선택한다.",
+        "decisiveStep": "1000x와 10x의 소수점 아래 배열이 .8585...로 일치함을 확인한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "순환소수 분수 변환 식 선택"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "비순환 자릿수와 순환마디 길이에 따른 10의 거듭제곱 배수만 정하면 된다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "순환소수"
+          ],
+          "goal": [
+            "분수"
+          ],
+          "method": [
+            "가감법"
+          ],
+          "condition": [
+            "순환마디"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q02",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "sourceQid": "2",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-FINITE_IRREDUCIBLE_MATCH",
+        "primaryMethod": "유한소수 조건(11의 배수)과 기약분수 분자 조건(7의 배수) 및 진분수 범위로 x = 77을 확정한다.",
+        "decisiveStep": "110 = 2*5*11에서 x가 77의 배수이면서 110보다 작으므로 x = 77, y = 10임을 구한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "유한소수 조건과 기약분수 미지수 결정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "유한소수 조건과 기약분수 분자 조건, 진분수 크기 제한을 동시에 만족하는 x를 찾아야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "기약분수",
+            "자연수"
+          ],
+          "goal": [
+            "합"
+          ],
+          "method": [
+            "소인수분해",
+            "약분"
+          ],
+          "condition": [
+            "유한소수",
+            "기약분수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q03",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "sourceQid": "3",
+        "variationType": "CONDITION",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-RATIONAL_DECIMAL_CLASSIFICATION",
+        "primaryMethod": "각 진술을 유리수와 소수 표현의 성질에 따라 참·거짓으로 분류한 뒤, 참인 두 진술의 조합을 고른다.",
+        "decisiveStep": "분류 결과 ㄴ과 ㅁ만 참이므로 해당 조합을 선택한다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유리수와 소수 표현",
+          "l4": "분수를 소수로"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "유리수와 소수 관계 2개 고르기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "유리수와 소수의 분류 체계에 대한 기본 개념 진위 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "유리수",
+            "순환소수"
+          ],
+          "goal": [
+            "조건"
+          ],
+          "method": [
+            "분류"
+          ],
+          "condition": [
+            "개수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Combination choices resolve the two-answer prompt; all five claims preserved."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q04",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "sourceQid": "4",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-FINITE_POLYGON_SIDE",
+        "primaryMethod": "한 변의 길이 1/n이 유한소수가 되도록 3 <= n < 12에서 소인수가 2와 5뿐인 n의 개수를 센다.",
+        "decisiveStep": "n = 4, 5, 8, 10의 4개를 빠짐없이 찾는다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "유한소수와 무한소수",
+          "l4": "분모의 소인수 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "정다각형 한 변의 길이가 유한소수가 되는 개수"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "도형 조건에서 분수 1/n을 세우고 범위 내 소인수 조건을 만족하는 자연수를 찾아야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "자연수",
+            "길이"
+          ],
+          "goal": [
+            "개수"
+          ],
+          "method": [
+            "소인수분해"
+          ],
+          "condition": [
+            "유한소수",
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q05",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "sourceQid": "5",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-REPEATING_REDUCED_DENOM",
+        "primaryMethod": "순환소수를 3 + a/9로 고쳐 약분 후 분모가 3이 되도록 3의 배수 중 9의 배수를 제외한다.",
+        "decisiveStep": "a = 9이면 정수가 되어 분모가 1이 되므로 a = 3, 6만 가능함을 가린다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "기약분수 분모가 3이 되는 순환소수 자릿수"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순환소수 분수 변환 후 약분 결과 분모가 3으로 남는 배수 조건을 찾아야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "순환소수",
+            "자연수"
+          ],
+          "goal": [
+            "개수"
+          ],
+          "method": [
+            "순환소수",
+            "약분"
+          ],
+          "condition": [
+            "기약분수",
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q06",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "sourceQid": "6",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-EXPONENT_WORD_RATIO",
+        "primaryMethod": "집과 고양이, 생쥐, 보리 이삭의 단계별 수를 곱으로 나타내고 거듭제곱의 비를 비교한다.",
+        "decisiveStep": "고양이 수 6²와 이삭 수 6⁴의 비를 구한다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "서술형 문장제 거듭제곱 비율 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "문장에서 두 개체의 거듭제곱 지수만 세어 나누면 되는 기본 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "자연수"
+          ],
+          "goal": [
+            "비율"
+          ],
+          "method": [
+            "지수법칙"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q07",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "sourceQid": "7",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-EXPONENT_MAX_COMPARE",
+        "primaryMethod": "다섯 지수 등식의 빈칸 값을 각각 구한 뒤 최댓값을 찾는다.",
+        "decisiveStep": "③에서 a^4 ÷ a^□ = 1/a^2이므로 □ = 4 + 2 = 6임을 확인한다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "지수법칙 빈칸 최댓값 비교"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "각 보기의 지수법칙 빈칸을 바로 구해 크기만 비교하는 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "거듭제곱"
+          ],
+          "goal": [
+            "최댓값"
+          ],
+          "method": [
+            "지수법칙"
+          ],
+          "condition": [
+            "거듭제곱"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q08",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "sourceQid": "8",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-PRIME_BASE_EXPONENT",
+        "primaryMethod": "12와 24를 소인수분해해 약분하고, 같은 거듭제곱의 합을 3배 곱셈으로 고쳐 밑을 3으로 통일한다.",
+        "decisiveStep": "12^6/24^4 = 3^2 = 9와 (3*3^4)/(3*3^3) = 3을 각각 계산해 뺀다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "소인수분해와 거듭제곱 합 분수 뺄셈"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "소인수분해 지수 계산과 거듭제곱 합 변형 두 가지를 모두 수행해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "거듭제곱",
+            "합"
+          ],
+          "goal": [
+            "차"
+          ],
+          "method": [
+            "소인수분해",
+            "지수법칙"
+          ],
+          "condition": [
+            "거듭제곱"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q09",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "sourceQid": "9",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "conceptClusterKey": "M2-01-MONOMIAL_POLYNOMIAL_DISTRIBUTE",
+        "primaryMethod": "몫 다항식 (4a + 3b - 2)에 나누는 단항식 ab를 분배법칙으로 곱해 원래 다항식을 구한다.",
+        "decisiveStep": "상수항 -2에도 ab를 곱해 -2ab를 빠뜨리지 않는다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "단항식과 다항식의 곱셈·나눗셈",
+          "l4": "분배법칙"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "단항식으로 나눈 몫에서 처음 다항식 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "다항식에 단항식 ab를 한 번 분배하여 곱하면 바로 구할 수 있다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "다항식",
+            "단항식"
+          ],
+          "goal": [
+            "다항식"
+          ],
+          "method": [
+            "분배법칙",
+            "전개"
+          ],
+          "condition": [
+            "0이 아닌 수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Explicitly excludes zero from the divisor ab."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q10",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "sourceQid": "10",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "conceptClusterKey": "M2-02-NATURAL_SOLUTIONS_SUM",
+        "primaryMethod": "일차부등식을 풀어 x <= 5를 구한 뒤 1부터 5까지의 자연수를 합산한다.",
+        "decisiveStep": "-5x >= -25에서 x <= 5를 구해 5까지 포함해 더한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "정수해 개수"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "일차부등식 자연수 해의 합"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "단순 일차부등식을 풀어 자연수 5개의 합을 구하는 기초 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "일차부등식",
+            "자연수"
+          ],
+          "goal": [
+            "합"
+          ],
+          "method": [
+            "이항"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q11",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "sourceQid": "11",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "conceptClusterKey": "M2-02-INEQUALITY_PROPERTIES",
+        "primaryMethod": "부호 조건이 없는 c의 곱셈(ㄴ)을 걸러내고 나머지 식에 부등식의 성질을 적용한다.",
+        "decisiveStep": "c의 부호가 정해지지 않아 ㄴ이 항상 참이 아님과 ㅁ의 음수 곱셈 부등호 반전을 확인한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "부등식의 성질",
+          "l4": "부등식의 성질"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "부등식의 성질 항상 옳은 것 개수 세기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "문자의 부호가 주어지지 않은 경우의 반례 판단까지 포함해 참인 개수를 세어야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "부등식"
+          ],
+          "goal": [
+            "개수"
+          ],
+          "method": [
+            "부등식"
+          ],
+          "condition": [
+            "부등식"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q12",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "sourceQid": "12",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "conceptClusterKey": "M2-02-FRACTION_INEQUALITY",
+        "primaryMethod": "양변에 분모 2와 3의 최소공배수 6을 곱해 정수로 바꾼 뒤 이항하여 x <= -2를 구한다.",
+        "decisiveStep": "-2(x - 1) = -2x + 2의 부호 분배와 -5x >= 10의 부등호 반전을 정확히 처리한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "일차부등식의 풀이",
+          "l4": "괄호·분수·소수가 있는 부등식"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "분수 계수 일차부등식 풀이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "최소공배수 6을 곱해 괄호를 풀고 이항하는 기본 분수 부등식 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "일차부등식"
+          ],
+          "goal": [
+            "범위"
+          ],
+          "method": [
+            "분배법칙",
+            "이항"
+          ],
+          "condition": [
+            "일차부등식"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q13",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "sourceQid": "13",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "conceptClusterKey": "M2-02-LITERAL_COEFF_INEQUALITY",
+        "primaryMethod": "첫째 부등식의 해 방향에서 a + b < 0과 a = 3b, b < 0을 얻어 둘째 부등식에 대입해 푼다.",
+        "decisiveStep": "a = 3b를 대입한 2bx < 2b에서 b < 0이므로 부등호 방향이 반대로 바뀌어 x > 1이 됨을 확인한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식",
+          "l3": "해의 조건",
+          "l4": "계수 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "미지수 계수 부등식 두 개 연계 풀이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyReason": "a, b의 관계식과 부호를 모두 유도한 뒤 둘째 부등식의 계수 부호까지 판정해야 한다.",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "일차부등식"
+          ],
+          "goal": [
+            "범위"
+          ],
+          "method": [
+            "대입",
+            "이항"
+          ],
+          "condition": [
+            "계수",
+            "범위"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q14",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "sourceQid": "14",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "conceptClusterKey": "M2-02-WALK_RUN_DISTANCE_WORD",
+        "primaryMethod": "시각 차 20분과 거리 2400m로 단위를 맞춘 뒤 도보 시간과 달리기 시간의 합이 20분 이하인 부등식을 푼다.",
+        "decisiveStep": "2.4km를 2400m로 환산하여 x/60 + (2400-x)/180 <= 20 부등식을 세운다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "거리·속력·시간",
+          "l4": "거리 조건"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "시각 제한 도보·달리기 최대 거리"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "출발·도착 시각 차 계산과 km-m 단위 변환을 거쳐 거리 부등식을 풀어야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "일차부등식",
+            "길이"
+          ],
+          "goal": [
+            "최댓값"
+          ],
+          "method": [
+            "통분",
+            "이항"
+          ],
+          "condition": [
+            "일차부등식"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q15",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "sourceQid": "15",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "conceptClusterKey": "M2-03-LINEAR_EQ_NATURAL_SOLUTIONS",
+        "primaryMethod": "두 일차방정식에서 계수가 큰 미지수 y에 자연수를 차례로 대입해 자연수 해의 개수를 각각 센다.",
+        "decisiveStep": "2x + 3y = 19에서 y가 홀수인 1, 3, 5일 때만 x가 자연수가 됨을 확인해 b = 3을 구한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "두 일차방정식의 자연수 해 개수 합"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "자연수를 대입해 두 방정식의 해 개수를 세어 더하는 기본 문항이다.",
+        "level": "하",
+        "item4slot": {
+          "given": [
+            "일차방정식",
+            "자연수"
+          ],
+          "goal": [
+            "개수",
+            "합"
+          ],
+          "method": [
+            "대입"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q16",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "sourceQid": "16",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "conceptClusterKey": "M2-03-INFINITE_SOLUTIONS_PARAM",
+        "primaryMethod": "첫째 식의 x항을 이항해 정리한 뒤 둘째 식에 -6을 곱해 상수항을 맞추어 계수를 비교한다.",
+        "decisiveStep": "상수항을 -6으로 일치시켜 a + 3 = -18과 b = 18을 구한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해가 특수한 연립방정식",
+          "l4": "해가 없거나 무수히 많은 경우"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "해가 무수히 많은 연립방정식 계수 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "우변의 x항을 이항하고 상수항을 맞추어 해가 무수히 많을 조건을 적용해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "연립방정식"
+          ],
+          "goal": [
+            "차"
+          ],
+          "method": [
+            "이항"
+          ],
+          "condition": [
+            "계수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q17",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "sourceQid": "17",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "conceptClusterKey": "M2-03-COMPLEX_SYSTEM_SOLVE",
+        "primaryMethod": "소수 식에 10, 분수 식에 6을 곱해 계수를 정수로 바꾼 뒤 가감법으로 연립방정식을 푼다.",
+        "decisiveStep": "분수 식에 6을 곱할 때 상수항 1과 분자 -(y-1)의 부호를 정확히 정리해 2x - 3y = 3을 얻는다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "복잡한 꼴의 연립방정식",
+          "l4": "분수·소수가 있는 연립방정식"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "소수와 분수가 섞인 연립방정식 풀이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "소수·분수 정수화 후 가감법을 거쳐 분수 해를 정확히 구해야 하는 문항이다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "연립방정식"
+          ],
+          "goal": [
+            "순서쌍"
+          ],
+          "method": [
+            "가감법",
+            "분배법칙"
+          ],
+          "condition": [
+            "연립방정식"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q18",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "sourceQid": "18",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "conceptClusterKey": "M2-03-PARAM_SYSTEM_RATIO",
+        "primaryMethod": "두 식을 k에 관한 연립방정식으로 풀어 x = 3k, y = k를 구한 뒤 분수식에 대입해 k를 약분한다.",
+        "decisiveStep": "x = 3k, y = k를 분수식에 대입하여 0이 아닌 상수 k를 약분한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "연립방정식의 풀이",
+          "l4": "가감법"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "상수 k 포함 연립방정식 풀고 식의 값 구하기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "문자가 포함된 연립방정식을 가감법으로 풀고 분수식에 대입해 약분해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "연립방정식"
+          ],
+          "goal": [
+            "식의값"
+          ],
+          "method": [
+            "가감법",
+            "대입",
+            "약분"
+          ],
+          "condition": [
+            "연립방정식"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q19",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "sourceQid": "19",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "conceptClusterKey": "M2-01-REPEATING_ERROR_DIFF",
+        "primaryMethod": "두 순환소수를 각각 분수 5/99와 5/90으로 고친 뒤 두 곱의 차가 5라는 일차방정식을 푼다.",
+        "decisiveStep": "(5/90 - 5/99)x = 5를 통분해 x/990 = 1을 얻는다.",
+        "rpm": {
+          "majorUnit": "유리수와 순환소수",
+          "midUnit": "유리수와 순환소수",
+          "l3": "순환소수",
+          "l4": "순환소수를 분수로"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "순환소수 잘못 곱한 오차 방정식 서술형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "두 순환소수를 분수로 정확히 변환하고 분수 계수 일차방정식을 풀어야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "순환소수",
+            "자연수",
+            "차"
+          ],
+          "goal": [
+            "자연수"
+          ],
+          "method": [
+            "순환소수",
+            "통분"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q20",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "sourceQid": "20",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "conceptClusterKey": "M2-01-DIGIT_COUNT_SCIENTIFIC",
+        "primaryMethod": "2의 거듭제곱 곱과 5의 거듭제곱 합을 각각 정리해 10^9을 묶어낸 뒤 a * 10^n 꼴과 자릿수를 구한다.",
+        "decisiveStep": "24 * 10^9을 2.4 * 10^{10}으로 고쳐 1 <= a < 10 조건을 맞춘다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "단항식의 계산",
+          "l3": "지수법칙",
+          "l4": "거듭제곱의 곱·몫"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "거듭제곱의 곱·합 표준형 및 자릿수 서술형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "거듭제곱 곱과 합의 변형을 모두 수행하고 1 <= a < 10 표준형으로 변환해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "거듭제곱",
+            "자연수"
+          ],
+          "goal": [
+            "자연수"
+          ],
+          "method": [
+            "지수법칙"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q21",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "sourceQid": "21",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-01",
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "conceptClusterKey": "M2-01-POLYNOMIAL_LINEAR_COMBO",
+        "primaryMethod": "단항식 나눗셈으로 B, C를 먼저 구하고 괄호 식을 3A - 2B - C로 정리한 뒤 대입해 계산한다.",
+        "decisiveStep": "주어진 다항식 식을 3A - 2B - C로 먼저 간단히 한 후 A, B, C를 대입한다.",
+        "rpm": {
+          "majorUnit": "식의 계산",
+          "midUnit": "다항식의 계산",
+          "l3": "식의 값과 활용",
+          "l4": "조건식 활용"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "다항식·단항식 나눗셈과 중첩 괄호 식 대입 서술형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "B와 C의 나눗셈 정리, 괄호 식 축약, 대입 후 동류항 정리를 모두 수행해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "다항식",
+            "단항식"
+          ],
+          "goal": [
+            "다항식"
+          ],
+          "method": [
+            "분배법칙",
+            "대입",
+            "동류항"
+          ],
+          "condition": [
+            "0이 아닌 수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Explicitly excludes zero from divisors 4xy and (-3x^2y^2)^2."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q22",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "sourceQid": "22",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-02",
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "conceptClusterKey": "M2-02-TRANSPORT_PASS_COMPARISON",
+        "primaryMethod": "할인 요금 900원과 구입비 3000원으로 교통카드 총액을 세우고 3일치 패스 요금 22500원보다 크다는 부등식을 푼다.",
+        "decisiveStep": "3일 여행이므로 패스 비용을 7500*3 = 22500원으로 계산하고 x > 21.66...에서 22회를 구한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "일차부등식의 활용",
+          "l3": "비율·가격·도형",
+          "l4": "할인·이익"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "교통카드와 일일패스 요금 비교 부등식 활용"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "10% 할인 요금, 3일간 패스 총액 계산, 소수 경계 올림을 모두 처리해야 한다.",
+        "level": "중",
+        "item4slot": {
+          "given": [
+            "일차부등식",
+            "자연수"
+          ],
+          "goal": [
+            "최솟값"
+          ],
+          "method": [
+            "이항"
+          ],
+          "condition": [
+            "자연수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    },
+    {
+      "questionUid": "candidate:1oWscrryfjv7olVRdkYdOWNv596LBXBHHl8Agf_yebOA:Q23",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "sourceQid": "23",
+        "variationType": "NUMERIC",
+        "standardCourse": "중2",
+        "courseKey": "M2-1",
+        "curriculum": "2015",
+        "standardUnitKey": "M2-03",
+        "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+        "conceptClusterKey": "M2-03-SWAPPED_COEFF_SYSTEM",
+        "primaryMethod": "a와 b를 바꾼 두 식에 x=2, y=1을 대입해 a, b를 먼저 구한 뒤 원래 두 연립방정식을 각각 푼다.",
+        "decisiveStep": "바꾼 식 2b+a=7, 2a+b=2를 연립해 a=-1, b=4를 구한다.",
+        "rpm": {
+          "majorUnit": "일차부등식과 연립일차방정식",
+          "midUnit": "연립일차방정식",
+          "l3": "해와 계수",
+          "l4": "해가 주어진 연립방정식"
+        },
+        "ptTplCandidate": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "why": "계수 바꿔 푼 연립방정식 복원 및 재풀이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "B23",
+        "difficultyReason": "a, b를 구하는 연립방정식과 원래 ①, ② 연립방정식 두 개를 총 세 번 풀어야 한다.",
+        "level": "상",
+        "item4slot": {
+          "given": [
+            "연립방정식"
+          ],
+          "goal": [
+            "순서쌍"
+          ],
+          "method": [
+            "대입",
+            "가감법"
+          ],
+          "condition": [
+            "계수"
+          ]
+        },
+        "hold": ""
+      },
+      "changeReason": "Transferred from the linked source revision; no mathematical change."
+    }
+  ]
+}

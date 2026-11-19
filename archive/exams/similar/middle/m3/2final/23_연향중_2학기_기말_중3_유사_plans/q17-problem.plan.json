@@ -1,0 +1,52 @@
+{
+  "status": "UNSUPPORTED",
+  "reason": "유사판에서 좌표 이름 대응을 새로 정해 A=(2,32), B=(4,28), C=(6,22), D=(8,18), E=(9,14)로 표시한다. 원본 그림의 점 배치를 복원했다고 주장하지 않는다. 렌더 자산은 아직 생성하지 않았다.",
+  "sourceDeclaredVisualStatus": "PLAN_OR_CAPABILITY_ONLY",
+  "assetCheck": "후보판 전용 렌더 자산을 만들지 않았다. SVG/렌더·화면 검수 후 연결해야 한다.",
+  "capabilityPlan": {
+    "capability": "stat-chart-figure-v1",
+    "chart": {
+      "kind": "SCATTER",
+      "xRange": [
+        0,
+        10
+      ],
+      "yRange": [
+        10,
+        35
+      ],
+      "xTitle": "운동 시간(시간)",
+      "yTitle": "체지방률(%)",
+      "points": [
+        {
+          "x": "2",
+          "y": "32",
+          "name": "A"
+        },
+        {
+          "x": "4",
+          "y": "28",
+          "name": "B"
+        },
+        {
+          "x": "6",
+          "y": "22",
+          "name": "C"
+        },
+        {
+          "x": "8",
+          "y": "18",
+          "name": "D"
+        },
+        {
+          "x": "9",
+          "y": "14",
+          "name": "E"
+        }
+      ]
+    },
+    "caption": "운동 시간과 체지방률의 산점도와 학생 A~E"
+  },
+  "labelMapping": "유사판용 새 대응: A=(2,32), B=(4,28), C=(6,22), D=(8,18), E=(9,14). 원본의 정확한 배치 복원 아님.",
+  "independentCheck": "MD의 점 좌표를 사용하면 A의 운동 시간 x=2가 다섯 값 중 최소이고 체지방률 y=32가 다섯 값 중 최대다. 따라서 A가 유일하게 좌상점이며 답은 보기 ②."
+}

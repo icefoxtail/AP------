@@ -1,0 +1,1641 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "similar-20-palma-m2-2final-candidate-v1",
+  "examUid": "20_팔마중_2학기_기말_중2_유사",
+  "sourceArchiveFile": "similar/middle/m2/2final/20_팔마중_2학기_기말_중2_유사.js",
+  "expectedSourceBlobSha1": "81a54b95e21324f381a7daad90da0128046a43cb",
+  "expectedSourceSha256": "4d97b41fbfaf4baec561a90fedb2ede5d769600530c0884e3fda0f9feb415e7f",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "approvedBy": null,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "sourceEvidence": {
+    "sourceArchiveFile": "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
+    "sourceBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+    "sourceMDFileId": "1WuTtbiTEmm719Xt7CNeF0OeNbP8T3sEtHlRfW86nYOc",
+    "sourceRevision": "AHj4eMRFPaG22yU4t0CAVPO1vNUbmWkAoY91szx_-MSRcebSML0S9hummAg-hyQZ6dSBLIRf0rqhBjA9u032MeMQRGuYhNTZevfnbYLDTqc",
+    "sourceLastModifiedUtc": "2026-11-13T10:47:40.234Z (user-provided)",
+    "sourceRevisionRead": "Direct native Google Docs read; revision AHj4eMRFPaG22yU4t0CAVPO1vNUbmWkAoY91szx_-MSRcebSML0S9hummAg-hyQZ6dSBLIRf0rqhBjA9u032MeMQRGuYhNTZevfnbYLDTqc; 24 Q headings and 44 display-math blocks verified. Native body extraction returned 47,179 UTF-16 code units vs user audit 49,246 chars; no inline objects found.",
+    "declaredQuestionCount": 24,
+    "declaredTotalScore": 100,
+    "verifiedItemScoreTotal": 100,
+    "note": "Question content parsed from the specified Docs revision. User audit character count differs from directly returned native body count; no original image objects reused. Corrections are recorded; official resolver, independent review, identity-map registration and consumer parity remain pending.",
+    "corrections": [
+      {
+        "qid": 4,
+        "before": "①의 AB=6, BC=8, ∠C=55°는 사인 법칙상 실제 삼각형이 존재하지 않으며 발문 “필요한 조건”은 충분조건 여부가 불명확하다.",
+        "after": "①을 AB=8, DE=12로 고쳐 두 삼각형 모두 실현 가능하게 하고, 추가 조건 하나만으로 닮음을 보장하는 조건을 묻도록 정정. ③만 AA 닮음을 보장하며 정답 유지."
+      },
+      {
+        "qid": "9,14,23",
+        "before": "해설의 도형 기호 등식에서 넓이 의미가 생략됨.",
+        "after": "넓이 등식에 넓이(△…), 넓이(□…)를 명시."
+      },
+      {
+        "qid": 14,
+        "before": "Q14 후보 분류가 직각삼각형 정리였으나 문항은 정사각형 안의 사각형 넓이 차감.",
+        "after": "M2-05 사각형의 성질/정사각형과 넓이로 수정. 확인되지 않은 PT/TPL 키는 보류."
+      },
+      {
+        "qid": "21-24",
+        "before": "서답형 발문은 이유/과정을 설명하라고 요구.",
+        "after": "questionType 서술형, choices 빈 배열로 정규화."
+      },
+      {
+        "qid": 11,
+        "before": "보기 머리말 <보기>가 HTML 해석 위험.",
+        "after": "보기:로 수정, ㄱ~ㅂ 6개 항목 유지."
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_eea9b887ea71c7408075062a76064aed1c7ac82a81448ae913cb6575e7e63e70",
+      "sourceOrdinal": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "ALWAYS_SIMILAR_FIGURES",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "항상 닮은 도형 정의 직접 판별",
+        "primaryMethod": "내각이 모두 60도로 같고 세 변의 길이의 비가 항상 일정한 두 정삼각형을 항상 닮은 도형으로 선별한다.",
+        "decisiveStep": "정삼각형의 모든 각(60도)과 변 비의 일정성 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "닮은 도형",
+        "rpmL4Label": "대응변·대응각",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 1,
+      "sourceUid": "qid_v1_73036163f616b1c24d8b841bdc40314d96c94b7ab215ad966d0553342d7e92e1",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "why": "항상 닮은 평면·입체도형을 판별하는 기본 개념 문항"
+      },
+      "item4slot": {
+        "given": [
+          "도형",
+          "정삼각형"
+        ],
+        "goal": [
+          "닮음"
+        ],
+        "method": [
+          "대응각",
+          "대응변"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_54c71ce9f23cdbf38edfa1309cd954cadd1879a78ff33f1f9723f981a6f91363",
+      "sourceOrdinal": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURES",
+        "subUnit": "닮은 도형의 성질과 겉넓이·부피의 비",
+        "conceptClusterKey": "SIMILAR_CONES_CIRCUMFERENCE",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "닮음비 비례식으로 반지름 도출 후 원둘레 계산 2단계",
+        "primaryMethod": "모선 길이 비 12:18=2:3으로 원뿔 A의 반지름 10을 구한 뒤 밑면 둘레 20pi를 계산한다.",
+        "decisiveStep": "r:15 = 2:3에서 반지름 r=10 산출 후 2pi r 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "닮은 도형",
+        "rpmL4Label": "닮음비",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "닮음비"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 2,
+      "sourceUid": "qid_v1_b5a23f146e8f2071637cd4f7a23551046dd7fad8e16d8c45dcf3c3f4ab432b53",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "why": "닮은 입체도형(원뿔)의 닮음비로 밑면의 반지름과 둘레를 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "원뿔",
+          "모선",
+          "반지름"
+        ],
+        "goal": [
+          "둘레",
+          "길이"
+        ],
+        "method": [
+          "닮음",
+          "닮음비"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_ba934599f459e1514e79cccbe026c752b62c34203ad0a7e40e995514e3f6c2c9",
+      "sourceOrdinal": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-SIMILAR_FIGURE",
+        "subUnit": "도형의 닮음",
+        "conceptClusterKey": "SIMILAR_TRIANGLES_CORRESPONDENCE",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "닮음비 3:2 계산 및 대응변 여부 확인",
+        "primaryMethod": "닮음비 12:8=3:2로 AB=15, AC=9를 구하고 대응변이 아닌 AB:DF 비가 5:2임을 확인한다.",
+        "decisiveStep": "AB:DF = 15:6 = 5:2 != 3:2 판별",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "닮은 도형",
+        "rpmL4Label": "대응변·대응각",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮은 도형",
+          "l4": "대응변·대응각"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 3,
+      "sourceUid": "qid_v1_b74a2b3069e2e5afb743209be6e731e631b38f22c8ff0127067f6bc548887753",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_SIMILAR_FIGURES",
+        "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+        "why": "닮은 두 삼각형에서 대응변 길이를 구하고 거짓 비례식을 가려내는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "선분"
+        ],
+        "goal": [
+          "선분",
+          "비율"
+        ],
+        "method": [
+          "닮음",
+          "닮음비",
+          "대응변"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_a9870af0d18dae654f05a36eaabfe4162bade199c2a5cbed3f1421e8ea85dbc1",
+      "sourceOrdinal": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "TRIANGLE_SIMILARITY_CONDITIONS",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "AA 및 SAS 닮음 조건의 충족 여부를 5개 선지에서 모두 검증",
+        "primaryMethod": "각 A와 D를 모두 90도로 두면 주어진 C=55도와 E=35도에 의해 B=E=35도, C=F=55도가 되어 AA 닮음이 성립한다.",
+        "decisiveStep": "각 A=D=90도 추가 후 B=E=35도, C=F=55도를 내각의 합으로 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "삼각형의 닮음",
+        "rpmL4Label": "AA",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 4,
+      "sourceUid": "qid_v1_1127f1cd1edbd1185df14364b6548fbd36d08afa3774069e091369035aecd6d3",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "why": "두 삼각형의 추가 조건 중 AA 닮음을 충분히 보장하는 조건을 판별하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "각",
+          "선분"
+        ],
+        "goal": [
+          "닮음"
+        ],
+        "method": [
+          "내각"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_71831a047d459052b65d84a8ac0201dc4a5c628b37a34fd2784d61b6cbf2ccde",
+      "sourceOrdinal": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "RECTANGLE_PERPENDICULAR_BISECTOR_SIMILARITY",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "대각선 피타고라스 정리 계산 후 직각삼각형 AA 닮음 비례식 2단계",
+        "primaryMethod": "피타고라스 정리로 BD=15, OD=15/2를 구하고 삼각형 EOD ~ 삼각형 BAD 닮음비로 DE=75/8을 계산한다.",
+        "decisiveStep": "DE : 15 = 15/2 : 12 비례식 풀이",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "닮음의 활용",
+        "rpmL4Label": "길이",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 5,
+      "sourceUid": "qid_v1_8a721d057d10922d1b0f26181a91a9972b72ac97a0771bfbe0548bef88f1452e",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "why": "직사각형 대각선의 수직이등분선이 만드는 직각삼각형 닮음으로 선분 길이를 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "직사각형",
+          "대각선",
+          "수직이등분선"
+        ],
+        "goal": [
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "피타고라스정리",
+          "닮음"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_fa8d055ab869bbb03eecdf10ff120ea8b116ff2eeb4c048d1be777569de340c1",
+      "sourceOrdinal": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLELOGRAM_IN_TRIANGLE_RATIO",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행사변형 대변 전환 후 일차방정식 풀이",
+        "primaryMethod": "평행사변형 대변 BF=DE=x를 설정하고 닮음비 x/(x+8) = 9/15 = 3/5 방정식을 풀어 x=12를 구한다.",
+        "decisiveStep": "x/(x+8) = 3/5에서 x=12 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "평행선 사이의 선분의 길이의 비",
+        "rpmL3Label": "삼각형과 평행선",
+        "rpmL4Label": "기본 비례",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "삼각형과 평행선",
+          "l4": "기본 비례"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 6,
+      "sourceUid": "qid_v1_eddc33cba6efb30d346b546fa8321806fa1a9cc1c79920e2bbb374341ad204cc",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_TRIANGLE",
+        "why": "삼각형 내부에 내접한 평행사변형 조건을 이용해 평행선 닮음비 방정식을 푸는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "평행",
+          "선분"
+        ],
+        "goal": [
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "평행사변형",
+          "닮음",
+          "방정식"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_b7414eca57325c5000eeb3f2842576dd22d12434543cdd8e31483d1e11f34b74",
+      "sourceOrdinal": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-PARALLEL_SEGMENT_RATIO",
+        "subUnit": "평행선 사이의 선분의 길이의 비",
+        "conceptClusterKey": "PARALLEL_CROSS_TRIANGLE_AREA",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "2단계 닮음 비례식을 통해 밑변과 높이를 모두 산출한 뒤 넓이 계산",
+        "primaryMethod": "모래시계 비 2:3으로 BD=25를 구하고 닮음비로 높이 EF=36/5를 얻어 넓이 90을 계산한다.",
+        "decisiveStep": "BD=25, EF=36/5 산출 후 1/2 * 25 * 36/5 = 90 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "평행선 사이의 선분의 길이의 비",
+        "rpmL3Label": "비례 활용",
+        "rpmL4Label": "선분비를 이용한 복합도형",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "평행선 사이의 선분의 길이의 비",
+          "l3": "비례 활용",
+          "l4": "선분비를 이용한 복합도형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 7,
+      "sourceUid": "qid_v1_edfd6ba1657231f4e831fd27fb93cde53eaa09d9fdc1e1f6d2de1270ca199588",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+        "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+        "why": "평행선 교차 도형에서 밑변과 높이를 닮음비로 각각 구해 삼각형 넓이를 구하는 심화 문항"
+      },
+      "item4slot": {
+        "given": [
+          "평행",
+          "선분",
+          "수선"
+        ],
+        "goal": [
+          "넓이",
+          "삼각형"
+        ],
+        "method": [
+          "닮음",
+          "비율"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_7c92a241632acd9111b017540f88c52751d21230970f5b49f0ef12aed576a525",
+      "sourceOrdinal": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "conceptClusterKey": "NESTED_CENTROID_SEGMENT_LENGTH",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "무게중심 내분비 2회 연속 적용",
+        "primaryMethod": "GD = 1/3 * 18 = 6을 구한 뒤 GG' = 2/3 * 6 = 4를 계산한다.",
+        "decisiveStep": "2/9 * 18 = 4 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "삼각형의 무게중심",
+        "rpmL3Label": "중선과 무게중심",
+        "rpmL4Label": "2:1 비",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "중선과 무게중심",
+          "l4": "2:1 비"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 8,
+      "sourceUid": "qid_v1_a4d7e220919b6440ebc6490d001a80dc50d74e42447f724ca48b34d85bb0dd9e",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_DISTANCE_RELATION",
+        "why": "중첩 무게중심에서 중선 2:1 비를 연속 적용해 선분 길이를 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "무게중심",
+          "중선",
+          "길이"
+        ],
+        "goal": [
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "비율"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_badd45ce657319ec4cb1fe9dfb0949f59c543e13ef60f1556ee1a95ae1652855",
+      "sourceOrdinal": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "conceptClusterKey": "CENTROID_QUADRILATERAL_AREA",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "무게중심 6등분 성질 1/3 배 적용",
+        "primaryMethod": "보조선 AG를 그어 무게중심 6등분 넓이 두 조각의 합인 1/3 * 72 = 24를 계산한다.",
+        "decisiveStep": "사각형 AEGF = 2/6 * 72 = 24 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "삼각형의 무게중심",
+        "rpmL3Label": "넓이와 무게중심",
+        "rpmL4Label": "넓이 분할",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "넓이 분할"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 9,
+      "sourceUid": "qid_v1_7a9f3def72e05d1e9a16f1ed74c4e7db0a9b78f886f55dca5ffd7b33e0c72938",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "why": "무게중심으로 나뉜 6등분 영역 중 두 영역으로 이루어진 사각형의 넓이를 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "중점",
+          "무게중심",
+          "넓이"
+        ],
+        "goal": [
+          "사각형",
+          "넓이"
+        ],
+        "method": [
+          "중선"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_e539f8ca1cea79d187ba1df198f64f45d6f7c86b903be51aedf6a0caab174d93",
+      "sourceOrdinal": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+        "subUnit": "삼각형의 무게중심의 성질",
+        "conceptClusterKey": "CENTROID_AND_MIDSEGMENT_DIFFERENCE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "평행선 중점정리와 무게중심 내분비 결합 후 길이 차감",
+        "primaryMethod": "중점연결정리로 AF=1/2 AD=24를 구하고 무게중심 비로 AG=2/3 AD=32를 구해 차 FG=8을 산출한다.",
+        "decisiveStep": "AG=32, AF=24 도출 후 차 8 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "삼각형의 무게중심",
+        "rpmL3Label": "넓이와 무게중심",
+        "rpmL4Label": "무게중심을 이용한 복합도형",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "삼각형의 무게중심",
+          "l3": "넓이와 무게중심",
+          "l4": "무게중심을 이용한 복합도형"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 10,
+      "sourceUid": "qid_v1_2511f0878121eb0f2506b8d0cbb8b2f400ef8585bf2a8945e8349d0ead9dc258",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COORD_CENTROID",
+        "templateKey": "TPL_CENTROID_APPLICATION",
+        "why": "무게중심의 2/3 지점과 중점연결정리의 1/2 지점 사이의 거리를 구하는 대표 심화 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "무게중심",
+          "중선",
+          "평행"
+        ],
+        "goal": [
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "중점연결정리",
+          "비율"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_a13a9949a00d3be23261da4e504c4aaaa56ef0dcf1ea314eab4995884720f188",
+      "sourceOrdinal": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리",
+        "conceptClusterKey": "PYTHAGOREAN_CONVERSE_DISCRIMINATION",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "피타고라스 수 판별 단순 계산",
+        "primaryMethod": "피타고라스 정리의 역 a^2+b^2=c^2을 6개 보기에 대입해 성립하는 ㄹ(9,12,15) 1개를 찾는다.",
+        "decisiveStep": "9^2+12^2=15^2만 성립함을 확인",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "피타고라스 정리",
+        "rpmL3Label": "피타고라스 정리의 역",
+        "rpmL4Label": "직각삼각형 판정",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리의 역",
+          "l4": "직각삼각형 판정"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 11,
+      "sourceUid": "qid_v1_89ee5aee743adae3ab7f18e97a72e9cf7d0423c2cd5017147717073dfc5dd27c",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 피타고라스 정리 전용 PT/TPL 키가 없음"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "길이"
+        ],
+        "goal": [
+          "직각삼각형"
+        ],
+        "method": [
+          "피타고라스정리"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_0fc0e47599a66376b6aa054f6d6aea3b584779502baf702adfb6169a786f2c8a",
+      "sourceOrdinal": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_THEOREM",
+        "subUnit": "피타고라스 정리",
+        "conceptClusterKey": "RIGHT_TRAPEZOID_SIDE_PYTHAGORAS",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "사다리꼴 수선 보조선 후 제곱합 직접 계산",
+        "primaryMethod": "수선 보조선으로 직각변 5, 3을 구하고 피타고라스 정리로 x^2 = 5^2+3^2 = 34를 계산한다.",
+        "decisiveStep": "5^2 + 3^2 = 34 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "피타고라스 정리",
+        "rpmL3Label": "피타고라스 정리",
+        "rpmL4Label": "직각삼각형의 변 길이",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "피타고라스 정리",
+          "l4": "직각삼각형의 변 길이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 12,
+      "sourceUid": "qid_v1_7d543780e2e1bb514694e9f9e25c5ca12605577d5982bafb435a131562d26236",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 피타고라스 정리 전용 PT/TPL 키가 없음"
+      },
+      "item4slot": {
+        "given": [
+          "사다리꼴",
+          "선분",
+          "직각"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "수선",
+          "피타고라스정리"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_70a824f7ab90081f5ec4970930ff1957f51c53dce19db75a98404da4a62e2875",
+      "sourceOrdinal": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "RECTANGLE_DIAGONAL_PROJECTION_DISTANCE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "피타고라스 정리와 직각삼각형 닮음 사영 공식 결합",
+        "primaryMethod": "BD=13을 구하고 직각삼각형 닮음 공식으로 BP=25/13, BQ=144/13을 산출해 차 119/13을 구한다.",
+        "decisiveStep": "BQ - BP = 144/13 - 25/13 = 119/13 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "피타고라스 정리",
+        "rpmL3Label": "도형에의 활용",
+        "rpmL4Label": "평면도형 길이",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 13,
+      "sourceUid": "qid_v1_8b1c182d21a7ba480ee1763e13cf1bdc94abb013c3813a6ec828817bf87ee88c",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 피타고라스 정리 전용 PT/TPL 키가 없음"
+      },
+      "item4slot": {
+        "given": [
+          "직사각형",
+          "대각선",
+          "수선",
+          "선분"
+        ],
+        "goal": [
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "피타고라스정리",
+          "닮음"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_3682de1772b3da7b528db82d20c2cd0e32729a2e685aaf1e917e495c7cf4d9b7",
+      "sourceOrdinal": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-05",
+        "standardUnit": "도형의 성질",
+        "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+        "subUnit": "사각형의 성질",
+        "conceptClusterKey": "INSCRIBED_SQUARE_AREA_PYTHAGORAS",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "정사각형의 한 변과 점 위치에서 모퉁이 삼각형 넓이를 빼는 2단계",
+        "primaryMethod": "큰 정사각형의 넓이에서 네 모퉁이의 합동인 직각삼각형 넓이 합 120을 빼 안쪽 정사각형 넓이 169를 구한다.",
+        "decisiveStep": "17^2-4*(1/2*5*12)=169 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 성질",
+        "rpmL2Label": "사각형의 성질",
+        "rpmL3Label": "사각형의 성질",
+        "rpmL4Label": "정사각형과 넓이",
+        "rpmPath": {
+          "majorUnit": "도형의 성질",
+          "midUnit": "사각형의 성질",
+          "l3": "사각형의 성질",
+          "l4": "정사각형과 넓이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 14,
+      "sourceUid": "qid_v1_d15ff4146f06f85f88024cef124fa2f1337cab24a9baffb58856818c4208b090",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "사각형 성질 분류표에 해당하는 전용 문제 유형 키가 확인되지 않아 후보로 보류"
+      },
+      "item4slot": {
+        "given": [
+          "정사각형",
+          "선분"
+        ],
+        "goal": [
+          "사각형",
+          "넓이"
+        ],
+        "method": [
+          "직각삼각형",
+          "합동"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_5b45fb04ca4df9a1794906f8417e96dbe5ec0bcec19604f7448608ee5d19f3c6",
+      "sourceOrdinal": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "HYPOTENUSE_TRISECTION_PYTHAGORAS",
+        "level": "상",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "수선 보조선 후 다변수 피타고라스 연립방정식 대수적 소거 고난도 문항",
+        "primaryMethod": "수선의 발 H를 내려 연립 피타고라스 방정식으로 5x^2 = 4^2 + 7^2 = 65를 유도하고 AB^2 = 9x^2 = 117을 구한다.",
+        "decisiveStep": "5x^2 = 65에서 x^2=13, AB^2 = 9*13 = 117 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "피타고라스 정리",
+        "rpmL3Label": "도형에의 활용",
+        "rpmL4Label": "평면도형 길이",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 15,
+      "sourceUid": "qid_v1_9dd7d4ee26a8a5a665285048dd98b653c66f4d56fda1c3b2cf80cdcd66918221",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 피타고라스 정리 전용 PT/TPL 키가 없음"
+      },
+      "item4slot": {
+        "given": [
+          "직각삼각형",
+          "선분"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "피타고라스정리",
+          "수선",
+          "방정식"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_104e3f2c31a81a3fb28c9387dbd8d476516a170d4923980619b5c01dc68311b3",
+      "sourceOrdinal": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "DICE_SUM_COUNTING",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "순서쌍 나열 및 단순 합의 법칙",
+        "primaryMethod": "합이 4인 순서쌍 3가지와 합이 10인 순서쌍 3가지를 나열해 합의 법칙으로 6을 구한다.",
+        "decisiveStep": "3 + 3 = 6 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "중복 없이 세기",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "중복 없이 세기"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 16,
+      "sourceUid": "qid_v1_b8564c176321097550764c170bdcee266e243ab4b7f0aa29919b05861f03b360",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "why": "두 주사위 눈의 합 조건을 만족하는 순서쌍의 개수를 세는 기본 문항"
+      },
+      "item4slot": {
+        "given": [
+          "주사위",
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "순서쌍"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_34bd63abe7a40ebfdeb717761f3e619e822442e012d5b8c6418017f2cff4db5e",
+      "sourceOrdinal": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "PRODUCT_RULE_BASIC",
+        "level": "하",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "곱의 법칙 직접 적용",
+        "primaryMethod": "곱의 법칙을 적용해 4 * 5 = 20을 계산한다.",
+        "decisiveStep": "4 * 5 = 20 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "단계별 선택",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 17,
+      "sourceUid": "qid_v1_bbfffc85955e945e6f81416c9e52dbfc906cc3cadbaab99dcc44092f501324e6",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "why": "독립적인 두 선택의 곱의 법칙을 적용하는 기초 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "곱"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_e4125c86515e68abfd68a90e6d2a2405208c2b61a2d342a324bc90de8cdb9a86",
+      "sourceOrdinal": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "ROCK_PAPER_SCISSORS_DRAW_COUNTING",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "동일 손/상이 손 2가지 경우 분류 및 합산",
+        "primaryMethod": "모두 같은 것을 내는 3가지와 모두 다른 것을 내는 3!=6가지를 더해 9를 구한다.",
+        "decisiveStep": "3 + 6 = 9 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "배열과 선택",
+        "rpmL4Label": "순서가 있는 경우",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_f2a496665fe83474194330a8d63181413a0d62f4468fed207b07ae31a876241b",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "why": "3인 가위바위보에서 비기는 경우를 두 경우로 분류해 세는 대표 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "합"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_dcf0188eebfde12f5dd8c57bd1961ef37eaa45b1e66a6fe686361e749ff42d4a",
+      "sourceOrdinal": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "ADJACENT_PERMUTATION_COUNTING",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "묶음 순열과 내부 배열 곱의 법칙 2단계 적용",
+        "primaryMethod": "여학생 3명을 하나로 묶어 4! = 24를 구하고 묶음 내부 배열 3! = 6을 곱해 144를 산출한다.",
+        "decisiveStep": "24 * 6 = 144 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "배열과 선택",
+        "rpmL4Label": "순서가 있는 경우",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_c976536da8053b6bfab5723189f5e3a3fa2c6de229768f7f17b047a77cd10534",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "why": "이웃 조건이 있는 일렬 배열의 묶음 순열을 계산하는 대표 문항"
+      },
+      "item4slot": {
+        "given": [
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "곱"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_75c1537cb3683748e3a781ac991aff2d1ee16caeb8cea46c6e15393975d06016",
+      "sourceOrdinal": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "MAP_COLORING_COUNTING",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "인접 조건 제약에 따른 순차적 선택 곱의 법칙 적용",
+        "primaryMethod": "가장 많이 인접한 A(5)부터 B(4), C(3), D(3) 순서로 경우의 수를 곱해 180을 구한다.",
+        "decisiveStep": "5 * 4 * 3 * 3 = 180 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "합의 법칙과 곱의 법칙",
+        "rpmL4Label": "단계별 선택",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "합의 법칙과 곱의 법칙",
+          "l4": "단계별 선택"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_6bcbeb5fe6bb7c16cae81ecf0747b91d2399b5503f99a0db5ca908df58fb4df7",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "why": "영역 인접 조건에 따라 중복 허용 색칠 방법의 수를 곱의 법칙으로 구하는 문항"
+      },
+      "item4slot": {
+        "given": [
+          "도형",
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "곱"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_13d67ba82148146a778ad16fd87192f1b5c24b898cd133b8a6a43021f74e2d6a",
+      "sourceOrdinal": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "ALTITUDES_AA_SIMILARITY",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "AA 닮음 증명 서술 및 대응변 비례식 계산",
+        "primaryMethod": "두 수선으로 직각과 공통각 A를 확인해 AA 닮음(삼각형 ADC ~ 삼각형 AEB)을 보이고 비례식 15:10=6:x를 풀어 x=4를 구한다.",
+        "decisiveStep": "3:2 = 6:x에서 x=4 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "삼각형의 닮음",
+        "rpmL4Label": "AA",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "삼각형의 닮음",
+          "l4": "AA"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_7f9ddd5cb85efd4477bf79fa151b187ee52abd612d431fa0dcd443a8252d4274",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_CRITERIA",
+        "why": "두 수선에 의해 형성된 두 직각삼각형의 AA 닮음을 설명하고 변 길이를 구하는 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "삼각형",
+          "수선",
+          "선분"
+        ],
+        "goal": [
+          "닮음",
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "각"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_7e7a88b1901a577b9b6fe54eaccd0a013be1bc8c7dd64d411fb9d7d281011a32",
+      "sourceOrdinal": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-06",
+        "standardUnit": "도형의 닮음",
+        "subUnitKey": "M2-06-TRIANGLE_SIMILARITY",
+        "subUnit": "삼각형의 닮음 조건과 대응변의 길이",
+        "conceptClusterKey": "RIGHT_TRIANGLE_MEDIAN_DOUBLE_ALTITUDE",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "외심 성질 AM=10 및 직각삼각형 사영 닮음 공식 2회 연쇄 적용",
+        "primaryMethod": "빗변 중점 성질로 AM=10을 구하고 AG^2=16*4=64를 적용한 뒤 다시 삼각형 AGM에서 AH=64/10=32/5를 계산한다.",
+        "decisiveStep": "AM=10, AG^2=64 산출 후 AH = 64/10 = 32/5 도출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "도형의 닮음",
+        "rpmL3Label": "닮음의 활용",
+        "rpmL4Label": "길이",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "도형의 닮음",
+          "l3": "닮음의 활용",
+          "l4": "길이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 22,
+      "sourceUid": "qid_v1_74c9b90424c6c8c7063af01676048515f96505e756d6f3db5cd41ae29eb7fbfa",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+        "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+        "why": "직각삼각형 외심 성질과 빗변 수선 닮음 공식을 2단계로 연쇄 적용하는 심화 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "직각삼각형",
+          "중점",
+          "수선",
+          "선분"
+        ],
+        "goal": [
+          "선분",
+          "길이"
+        ],
+        "method": [
+          "외심",
+          "닮음"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_7b7ff637b21480795cb346adce38e6252740a471de6c71ceeb7a63822e719efb",
+      "sourceOrdinal": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-07",
+        "standardUnit": "피타고라스 정리",
+        "subUnitKey": "M2-07-PYTHAGOREAN_APPLICATION",
+        "subUnit": "피타고라스 정리의 활용",
+        "conceptClusterKey": "RIGHT_TRIANGLE_CENTROID_CIRCUMCENTER_AREA",
+        "level": "상",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "무게중심, 직각삼각형 외심, 피타고라스 정리를 통합한 3단계 서술형",
+        "primaryMethod": "무게중심 비로 AD=30, 외심 성질로 BC=60을 구한 뒤 피타고라스 정리로 AB=48을 산출해 넓이 864를 계산한다.",
+        "decisiveStep": "BC=60, AB=48 도출 후 1/2 * 48 * 36 = 864 산출",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "도형의 닮음과 피타고라스 정리",
+        "rpmL2Label": "피타고라스 정리",
+        "rpmL3Label": "도형에의 활용",
+        "rpmL4Label": "평면도형 길이",
+        "rpmPath": {
+          "majorUnit": "도형의 닮음과 피타고라스 정리",
+          "midUnit": "피타고라스 정리",
+          "l3": "도형에의 활용",
+          "l4": "평면도형 길이"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 23,
+      "sourceUid": "qid_v1_8a14443a6c8ffd200ee56deccc6b008268eb6426a51dd728d35934f6235a4d53",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": null,
+        "templateKey": null,
+        "why": "메타 키선택표에 피타고라스 정리 전용 PT/TPL 키가 없음"
+      },
+      "item4slot": {
+        "given": [
+          "직각삼각형",
+          "무게중심",
+          "중선",
+          "선분"
+        ],
+        "goal": [
+          "넓이"
+        ],
+        "method": [
+          "외심",
+          "피타고라스정리"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    },
+    {
+      "questionUid": "qid_v1_2697a41a2fd7e5badc87f41de7a4c98faeceec3b8ee808615b1afd6c26f00655",
+      "sourceOrdinal": 24,
+      "before": null,
+      "after": {
+        "standardCourse": "중2 수학",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-08",
+        "standardUnit": "확률",
+        "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+        "subUnit": "경우의 수와 확률",
+        "conceptClusterKey": "THREE_DIGIT_EVEN_NUMBER_WITH_ZERO",
+        "level": "중",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "difficultyReason": "0 포함 여부에 따른 2가지 경우 분류 및 곱/합의 법칙 적용",
+        "primaryMethod": "일의 자리가 0일 때(30)와 2,4,6일 때(75)로 경우를 나누어 합 105를 구한다.",
+        "decisiveStep": "30 + 75 = 105 계산",
+        "rpmPrimaryRecordId": null,
+        "rpmL1Label": "확률",
+        "rpmL2Label": "경우의 수",
+        "rpmL3Label": "배열과 선택",
+        "rpmL4Label": "순서가 있는 경우",
+        "rpmPath": {
+          "majorUnit": "확률",
+          "midUnit": "경우의 수",
+          "l3": "배열과 선택",
+          "l4": "순서가 있는 경우"
+        },
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "problemTypeKey": null,
+        "templateKey": null,
+        "projectionStatus": "NOT_RUN",
+        "projectionReasonCode": "OFFICIAL_RESOLVER_NOT_RUN"
+      },
+      "sourceQid": 24,
+      "sourceUid": "qid_v1_cac4a936a99faabef96e14f9d23165eecbbf1417f040a0d04d74dbcce25b5c0d",
+      "sourceFileBlobSha1": "b3455fdf02ac23be52a83018c65bf75bf8a02f37",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "why": "0이 포함된 숫자 카드로 짝수인 세 자리 자연수를 만드는 대표 경우의 수 서술형 문항"
+      },
+      "item4slot": {
+        "given": [
+          "정수",
+          "사건"
+        ],
+        "goal": [
+          "자연수"
+        ],
+        "method": [
+          "곱",
+          "합"
+        ],
+        "condition": []
+      },
+      "hold": "Independent reviewer, semantic 4-slot review, official resolver and UID registration have not been run.",
+      "reason": "Concept cluster and PT/TPL remain candidates; resolver and registration not run."
+    }
+  ]
+}

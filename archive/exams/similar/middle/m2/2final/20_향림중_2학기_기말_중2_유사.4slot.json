@@ -1,0 +1,2354 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+  "sourceGitBlobSha": "159d0128f278ed5db7982c48c6b4430446fa983e",
+  "sourceSha256": "fd440c071efb32eb79f1c668d5923b7c537a0242f4bd61e1a2de36c406e7b64b",
+  "dictionaryVersion": "term-dict-v1.5-2026-11-04",
+  "judgedBy": {
+    "agent": "Codex stage-local MD migration",
+    "at": "2026-11-13",
+    "role": "source transfer/local math review/visual-benefit triage; independent review not claimed"
+  },
+  "stage": "CREATE_4SLOT_STAGE_LOCAL",
+  "review": {
+    "status": "UNREVIEWED",
+    "independentReview": "NOT_RUN",
+    "scope": "Independent review, semantic 4-slot review, resolver and registration not run."
+  },
+  "selfCheck": {
+    "status": "LOCAL_SELF_CHECK",
+    "itemsChecked": 24,
+    "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+    "sectionIsolation": "Parsed all 24 question sections, prompts, choices, answers, solutions and metadata fences.",
+    "scoreCheck": "24 item scores sum to 100.",
+    "mathReview": "Local independent computation checks for all 24 items; external independent reviewer NOT_RUN.",
+    "visualReview": "Problem/solution picture need judged separately for all 24; no SVG, rendering or screen QA.",
+    "identityBinding": "Candidate UID derived from canonical path and ordinal; registration NOT_RUN.",
+    "registration": "NOT_RUN",
+    "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+  },
+  "scope": {
+    "items": 24,
+    "sourceOrdinals": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "visualQueue": [],
+  "handoff": {
+    "nextOwner": "independent reviewer / authorized metadata registration owner",
+    "unresolved": [
+      "independent math/solution review not run",
+      "semantic 4-slot review not run",
+      "resolver, UID registration and consumer parity not run",
+      "SVG creation and visual QA not run",
+      "author plans assets not generated; draft harness will remain blocked"
+    ]
+  },
+  "candidates": [],
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심",
+            "termId": 185
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "점 $I$가 $\\triangle ABC$의 내심이고, 내접원이 세 변 $AB, BC, CA$와 만나는 접점을 각각 $D, E, F$라 하자. $\\overline{AB} = 9\\text{ cm}, \\overline{A",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "점 $I$가 $\\triangle ABC$의 내심이고, 내접원이 세 변 $AB, BC, CA$와 만나는 접점을 각각 $D, E, F$라 하자. $\\overline{AB} = 9\\text{ cm}, \\overline{A",
+            "termId": 144
+          },
+          {
+            "term": "길이",
+            "src": "solution",
+            "quote": "길이",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "합동",
+            "src": "stem",
+            "quote": "점 $I$가 $\\triangle ABC$의 내심이고, 내접원이 세 변 $AB, BC, CA$와 만나는 접점을 각각 $D, E, F$라 하자. $\\overline{AB} = 9\\text{ cm}, \\overline{A",
+            "termId": 193,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "goal",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "합동",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "내접원의 접선 길이 성질로 BE=BD=5와 CF=CE=7을 구해 합 12를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_93460aa6b577aaf6dad72cd325d5fefdb83da9797125a70e74a9bc08d4728587",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 1
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "점 $I$가 $\\triangle ABC$의 내심이고 $\\angle IBA = 30^\\circ, \\angle C = 76^\\circ$일 때, $\\angle IAC$의 크기는? [3점]",
+            "termId": 158
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심",
+            "termId": 185
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "method": [
+          {
+            "term": "이등분선",
+            "src": "solution",
+            "quote": "이등분선",
+            "termId": 177,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "내각",
+            "termId": 714,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "삼각형",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "각 B=60도를 구해 각 A=44도를 산출하고 절반인 각 IAC=22도를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d9a16b2f2156de3f205a2a783f035bbcb8e65fed34ed7cf7a75ad10ade8e78d0",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 2
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "다음 중 조건이 주어져도 $\\square ABCD$가 반드시 평행사변형이라고 보장하지 못하는 것은? (단, 점 $O$는 두 대각선 $AC$와 $BD$의 교점이다.) [4점]",
+            "termId": 162
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선",
+            "termId": 310
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "다음 중 조건이 주어져도 $\\square ABCD$가 반드시 평행사변형이라고 보장하지 못하는 것은? (단, 점 $O$는 두 대각선 $AC$와 $BD$의 교점이다.) [4점]",
+            "termId": 144
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "goal": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형",
+            "termId": 163
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행",
+            "termId": 180,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "사각형",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "평행사변형 판정 조건을 대조하고, ①이 두 대각선을 서로 이등분한다는 조건을 주지 않음을 확인한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_fb13392e4732031a2a27745dff2d0ede980117871054c6d0e0653c697dc85968",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 3
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "마름모",
+            "src": "choices",
+            "quote": "마름모",
+            "termId": 164
+          },
+          {
+            "term": "평행사변형",
+            "src": "choices",
+            "quote": "평행사변형",
+            "termId": 163
+          },
+          {
+            "term": "대각선",
+            "src": "choices",
+            "quote": "대각선",
+            "termId": 310
+          }
+        ],
+        "goal": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형",
+            "termId": 166
+          }
+        ],
+        "method": [
+          {
+            "term": "직사각형",
+            "src": "solution",
+            "quote": "직사각형",
+            "termId": 165,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "마름모에 대각선 길이 일치(직사각형 성질)가 추가되면 정사각형이 됨을 판별한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_651576718da2626fcef16fb07f9892b3cf11c755011433ae44cec1735e6c3b5d",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 4
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직사각형",
+            "src": "stem",
+            "quote": "직사각형",
+            "termId": 165
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선",
+            "termId": 310
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "method": [
+          {
+            "term": "이등변삼각형",
+            "src": "solution",
+            "quote": "이등변삼각형",
+            "termId": 159,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "직각",
+            "src": "stem",
+            "quote": "직사각형 $ABCD$의 두 대각선 $AC, BD$의 교점을 $O$라 하자. $\\angle BOC = 110^\\circ$이고 $\\angle ADO = x, \\angle ODC = y$일 때, $y-x$의 값은? [4점",
+            "termId": 344,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "method",
+          "term": "직각",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "이등변삼각형 AOD에서 밑각 x=35도를 구하고 직각에서 뺀 y=55도와의 차 20도를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_7bbba401806e20bb022d6e351760616900ea10a4d65c4b8f7b3d576f6dd7d4e4",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 5
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형",
+            "termId": 163
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점",
+            "termId": 188
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행",
+            "termId": 180
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이",
+            "termId": 213
+          }
+        ],
+        "goal": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리",
+            "termId": 441,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "F가 BC의 중점임을 보여 삼각형 AFC 넓이가 평행사변형 넓이 48의 1/4인 12임을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_6fde5e4e8a969a65a78af210c618c28e0de0ea63f181c6ee356d77ddc18cf189",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 6
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형",
+            "termId": 161
+          },
+          {
+            "term": "수선",
+            "src": "stem",
+            "quote": "수선",
+            "termId": 179
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 빗변 $BC$에 내린 수선의 발을 $D$라 하자. $\\overline{AD} = 24, \\overline{BD} = 32$이고 $\\o",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$\\angle A = 90^\\circ$인 직각삼각형 $ABC$의 꼭짓점 $A$에서 빗변 $BC$에 내린 수선의 발을 $D$라 하자. $\\overline{AD} = 24, \\overline{BD} = 32$이고 $\\o",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮음",
+            "termId": 192,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "termId": 195,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "goal",
+          "term": "자연수",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "닮음 공식 24^2=32y로 y=18을 구하고 피타고라스 정리로 x=40을 산출해 차 22를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b0f18a1b4aca3fb67c0d41c43bc1574ecd3648fff0926f32235697b81fb7288d",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 7
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형",
+            "termId": 161
+          },
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형",
+            "termId": 166
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이",
+            "termId": 213
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "termId": 195,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "정사각형 넓이로 AC=5, AB=13을 구하고 피타고라스 정리로 BC=12를 산출해 넓이 30을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_7ec8377e6af91cf6910ad3da0392c0ff68dc2e7cb0ef51337363b4483e1dc7d7",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 8
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형",
+            "termId": 163
+          },
+          {
+            "term": "이등분선",
+            "src": "stem",
+            "quote": "이등분선",
+            "termId": 177
+          },
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "goal": [
+          {
+            "term": "각",
+            "src": "solution",
+            "quote": "각",
+            "termId": 174
+          }
+        ],
+        "method": [
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행",
+            "termId": 180,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "내각",
+            "src": "solution",
+            "quote": "내각",
+            "termId": 714,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "삼각형 ACD에서 각 CAD=50도를 구해 반각 25도로 y=25도를 얻고 동위각 x=70도와의 차 45도를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d286d06403cd03ebe7f48696f7786c37c8ccda327e9456c0d3a6f55ba221f080",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 9
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사각형",
+            "src": "stem",
+            "quote": "$\\square ABCD \\sim \\square EFGH$이고 $\\angle A = 120^\\circ, \\angle B = 75^\\circ, \\angle D = 90^\\circ, \\overline{AB} = 10\\t",
+            "termId": 162
+          },
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "$\\square ABCD \\sim \\square EFGH$이고 $\\angle A = 120^\\circ, \\angle B = 75^\\circ, \\angle D = 90^\\circ, \\overline{AB} = 10\\t",
+            "termId": 174
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\square ABCD \\sim \\square EFGH$이고 $\\angle A = 120^\\circ, \\angle B = 75^\\circ, \\angle D = 90^\\circ, \\overline{AB} = 10\\t",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "choices",
+            "quote": "넓이",
+            "termId": 213
+          },
+          {
+            "term": "닮음비",
+            "src": "choices",
+            "quote": "닮음비",
+            "termId": 721
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "choices",
+            "quote": "닮음",
+            "termId": 192,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "대응각",
+            "src": "stem",
+            "quote": "$\\square ABCD \\sim \\square EFGH$이고 $\\angle A = 120^\\circ, \\angle B = 75^\\circ, \\angle D = 90^\\circ, \\overline{AB} = 10\\t",
+            "termId": 611,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변",
+            "termId": 612,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "사각형",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "given",
+          "term": "각",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "대응각",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "닮음비 15:9=5:3을 구한 뒤 넓이의 비가 5^2:3^2=25:9임을 이용해 ④를 오답으로 고른다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f24392277221a0261401098d727aa5def10d1452d4094d875b09f6b392f4a07a",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 10
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 변 $AB$ 위에 점 $D$가 있고 $\\overline{AD} = 3\\text{ cm}, \\overline{DB} = 9\\text{ cm}, \\overline{AC} = 6\\text{ cm}, \\",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 변 $AB$ 위에 점 $D$가 있고 $\\overline{AD} = 3\\text{ cm}, \\overline{DB} = 9\\text{ cm}, \\overline{AC} = 6\\text{ cm}, \\",
+            "termId": 144
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "수선",
+            "src": "solution",
+            "quote": "수선",
+            "termId": 179,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "termId": 195,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "방정식",
+            "src": "stem",
+            "quote": "삼각형 $ABC$의 변 $AB$ 위에 점 $D$가 있고 $\\overline{AD} = 3\\text{ cm}, \\overline{DB} = 9\\text{ cm}, \\overline{AC} = 6\\text{ cm}, \\",
+            "termId": 62,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "goal",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "방정식",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "수선의 발 H를 내려 CH^2 등식으로 AH=10/3을 구하고 직각삼각형 CDH에 피타고라스 정리를 적용해 CD=5를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_55ff7fa7a43ef7baa09073e40c827e166fbbeedd0b619a182c1cfca13c2837b3",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 11
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 두 변 $AB, AC$ 위에 각각 점 $D, E$가 있고 $\\overline{BC} \\parallel \\overline{DE}$이다. $\\overline{AD} = 9, \\overlin",
+            "termId": 158
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 두 변 $AB, AC$ 위에 각각 점 $D, E$가 있고 $\\overline{BC} \\parallel \\overline{DE}$이다. $\\overline{AD} = 9, \\overlin",
+            "termId": 180
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 두 변 $AB, AC$ 위에 각각 점 $D, E$가 있고 $\\overline{BC} \\parallel \\overline{DE}$이다. $\\overline{AD} = 9, \\overlin",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$\\triangle ABC$의 두 변 $AB, AC$ 위에 각각 점 $D, E$가 있고 $\\overline{BC} \\parallel \\overline{DE}$이다. $\\overline{AD} = 9, \\overlin",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "solution",
+            "quote": "닮음",
+            "termId": 192,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "닮음비",
+            "src": "solution",
+            "quote": "닮음비",
+            "termId": 721,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "삼각형",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "given",
+          "term": "평행",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "goal",
+          "term": "자연수",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "닮음비 AD:AB = 3:4를 적용해 x=9, y=8을 구하고 합 17을 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_5853cf233b3a5b923a5de784cdb72fc465f47bc66bb437c8fa78d53971ec70eb",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 12
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점",
+            "termId": 188
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "$\\triangle ABC$에서 세 변 $AB, BC, CA$의 중점을 각각 $D, E, F$라 하자. $\\overline{AB} = 6\\text{ cm}, \\overline{BC} = 8\\text{ cm}, \\ov",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "둘레",
+            "src": "stem",
+            "quote": "둘레",
+            "termId": 214
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리",
+            "termId": 441,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "중점연결정리에 의해 원래 삼각형 둘레 24의 절반인 12를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_a4e3ed6ec320e1b49fe46937b495a5505f767c1a0c98a66fa3e3ed04b2e63dd2",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 13
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선",
+            "termId": 143
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행",
+            "termId": 180
+          },
+          {
+            "term": "선분",
+            "src": "solution",
+            "quote": "선분",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "세 평행선 $l \\parallel m \\parallel n$이 두 직선과 만나고, 두 직선에서 교점의 순서는 모두 $l-m-n$이다. 첫 번째 직선에서 $l$과 $n$ 사이의 길이가 $24$, $m$과 $n$ 사이의",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "세 평행선 $l \\parallel m \\parallel n$이 두 직선과 만나고, 두 직선에서 교점의 순서는 모두 $l-m-n$이다. 첫 번째 직선에서 $l$과 $n$ 사이의 길이가 $24$, $m$과 $n$ 사이의",
+            "termId": 650,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "자연수",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "비율",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "l과 m 사이 길이 24-9=15를 구해 비례식 15:9 = 10:x를 풀어 x=6을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_960da43d9633cc4bf5dce6f41701ebab51065f7af07955eac7d7d033d3053c1c",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 14
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "중점",
+            "src": "stem",
+            "quote": "중점",
+            "termId": 188
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심",
+            "termId": 186
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이",
+            "termId": 213
+          }
+        ],
+        "goal": [
+          {
+            "term": "사각형",
+            "src": "solution",
+            "quote": "사각형",
+            "termId": 162
+          },
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "넓이",
+            "termId": 213
+          }
+        ],
+        "method": [
+          {
+            "term": "중선",
+            "src": "stem",
+            "quote": "중선",
+            "termId": 191,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "D,E,F를 각각 BC,AB,CA의 중점으로 두고 세 중선이 만든 6개 등넓이 삼각형 중 BEGD의 두 조각을 센다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_60595cebf10adbc2e08acbe3b57d0db66a707d56e5feae539609a657695d87a5",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 15
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "solution",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심",
+            "termId": 186
+          },
+          {
+            "term": "중선",
+            "src": "stem",
+            "quote": "중선",
+            "termId": 191
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행",
+            "termId": 180
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$\\triangle ABC$에서 점 $G$는 무게중심이고, 두 중선 $AD, BE$가 각각 변 $BC, AC$와 만나는 점이 $D, E$이다. 점 $D$에서 선분 $BE$에 평행한 직선을 그어 변 $AC$와 만나는 ",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "중점연결정리",
+            "src": "solution",
+            "quote": "중점연결정리",
+            "termId": 441,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "비율",
+            "src": "stem",
+            "quote": "$\\triangle ABC$에서 점 $G$는 무게중심이고, 두 중선 $AD, BE$가 각각 변 $BC, AC$와 만나는 점이 $D, E$이다. 점 $D$에서 선분 $BE$에 평행한 직선을 그어 변 $AC$와 만나는 ",
+            "termId": 650,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "자연수",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "비율",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "중점연결정리로 BE=12, CE=8을 구하고 무게중심 비로 x=8, 중점 성질로 y=16을 구해 합 24를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_414bbdd7cd586e1c5a2a53efac0f3735777c5aefccce485477273d92a45b9714",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 16
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "삼각형",
+            "src": "stem",
+            "quote": "삼각형",
+            "termId": 158
+          },
+          {
+            "term": "무게중심",
+            "src": "stem",
+            "quote": "무게중심",
+            "termId": 186
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "변 $BC$를 밑변으로 하는 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 무게중심을 각각 $G, G'$이라 하자. $\\overline{AD} = 15\\text{ cm}$일 때, $\\over",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "변 $BC$를 밑변으로 하는 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 무게중심을 각각 $G, G'$이라 하자. $\\overline{AD} = 15\\text{ cm}$일 때, $\\over",
+            "termId": 144
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "중점",
+            "src": "solution",
+            "quote": "중점",
+            "termId": 188,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "변 $BC$를 밑변으로 하는 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 무게중심을 각각 $G, G'$이라 하자. $\\overline{AD} = 15\\text{ cm}$일 때, $\\over",
+            "termId": 192,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "변 $BC$를 밑변으로 하는 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 무게중심을 각각 $G, G'$이라 하자. $\\overline{AD} = 15\\text{ cm}$일 때, $\\over",
+            "termId": 721,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "goal",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "닮음",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "닮음비",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "공통 밑변 중점 M에서 각 삼각형 무게중심까지의 거리가 꼭짓점까지 거리의 1/3임을 적용한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_481b0aa8934097ab9b7da390e26307a25ed8ce6e550a4e1d110e0724106d134e",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 17
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수",
+            "termId": 1
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "$1$에서 $20$까지의 자연수가 각각 적힌 $20$장의 카드에서 한 장을 뽑을 때, $3$의 배수 또는 $7$의 배수가 적힌 카드가 나오는 경우의 수는? [4점]",
+            "termId": 252
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "배수",
+            "termId": 12,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "합",
+            "src": "solution",
+            "quote": "합",
+            "termId": 286,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "사건",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "3의 배수 6개와 7의 배수 2개가 겹치지 않음을 확인해 6+2=8을 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_9e89ea88b750327e7fbc2b7019259f5a9971d6ba76faed5172f2b997e98f8c9c",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 18
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수",
+            "termId": 1
+          },
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "$0, 1, 2, 3, 4$의 수가 각각 적힌 $5$장의 카드 중에서 $3$장을 뽑아 만들 수 있는 세 자리 자연수의 개수는? [4점]",
+            "termId": 252
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "곱",
+            "src": "solution",
+            "quote": "곱",
+            "termId": 287,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "사건",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "백의 자리 0 제외 4가지, 십의 자리 4가지, 일의 자리 3가지를 곱해 48개를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_f5a8246f3d073df32a4fd6c81665b8999b9034a8ba97b00e86617718f22ecb54",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 19
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "사건",
+            "src": "stem",
+            "quote": "$A, B, C, D, E, F$의 $6$명의 후보 중에서 회장 $1$명과 부회장 $1$명을 뽑는 경우가 $a$가지이고, 대표 $2$명을 뽑는 경우가 $b$가지일 때, $a + b$의 값은? [4점]",
+            "termId": 252
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "$A, B, C, D, E, F$의 $6$명의 후보 중에서 회장 $1$명과 부회장 $1$명을 뽑는 경우가 $a$가지이고, 대표 $2$명을 뽑는 경우가 $b$가지일 때, $a + b$의 값은? [4점]",
+            "termId": 1
+          }
+        ],
+        "method": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$A, B, C, D, E, F$의 $6$명의 후보 중에서 회장 $1$명과 부회장 $1$명을 뽑는 경우가 $a$가지이고, 대표 $2$명을 뽑는 경우가 $b$가지일 때, $a + b$의 값은? [4점]",
+            "termId": 287,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A, B, C, D, E, F$의 $6$명의 후보 중에서 회장 $1$명과 부회장 $1$명을 뽑는 경우가 $a$가지이고, 대표 $2$명을 뽑는 경우가 $b$가지일 때, $a + b$의 값은? [4점]",
+            "termId": 286,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "given",
+          "term": "사건",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "goal",
+          "term": "자연수",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "곱",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        },
+        {
+          "slot": "method",
+          "term": "합",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "순서가 있는 회장·부회장 a=6*5=30과 순서가 없는 대표 2명 b=(6*5)/2=15를 더해 45를 구한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_c04d2e7a74dcc3f12b5eee742c8de97bc2156bf2def1bbb65028ea4797a979ad",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 20
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "평행사변형",
+            "src": "stem",
+            "quote": "평행사변형",
+            "termId": 163
+          },
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선",
+            "termId": 310
+          },
+          {
+            "term": "평행",
+            "src": "stem",
+            "quote": "평행",
+            "termId": 180
+          }
+        ],
+        "goal": [
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "서술형 1) 다음 보기는 「평행사변형 $PQRS$의 두 쌍의 대변의 길이가 각각 같음」을 설명한 것이다. 빈칸 (1), (2), (3)에 알맞은 기호 또는 문장을 정확하게 쓰시오. [5점]\n\n보기:\n평행사변형 $PQ",
+            "termId": 144
+          },
+          {
+            "term": "합동",
+            "src": "solution",
+            "quote": "합동",
+            "termId": 193
+          }
+        ],
+        "method": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각",
+            "termId": 174,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [
+        {
+          "slot": "goal",
+          "term": "선분",
+          "reason": "No exact visible source quote; reviewer follow-up required."
+        }
+      ],
+      "reasons": {
+        "method": "대각선 PR을 그어 엇각 2쌍과 공통변으로 ASA 합동을 증명하고 대응변이 같음을 서술한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_4103633e7ee31574fdc10fa834852fb39989d08ad70b54e29e4b96032e27b8fa",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 21
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "직각삼각형",
+            "src": "stem",
+            "quote": "직각삼각형",
+            "termId": 161
+          },
+          {
+            "term": "내심",
+            "src": "stem",
+            "quote": "내심",
+            "termId": 185
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "반지름",
+            "src": "stem",
+            "quote": "반지름",
+            "termId": 153
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "피타고라스정리",
+            "src": "solution",
+            "quote": "피타고라스 정리",
+            "termId": 195,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "넓이",
+            "termId": 213,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "피타고라스 정리로 BC=13을 구하고 넓이 등식 30 = 1/2 r (12+13+5)를 풀어 r=2를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_b461f753fdb7c7f8db9dcef5916ab351d4191e6a550bd18e5ab48a3cc8f0f677",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 22
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "원뿔",
+            "src": "stem",
+            "quote": "원뿔",
+            "termId": 712
+          },
+          {
+            "term": "모선",
+            "src": "stem",
+            "quote": "모선",
+            "termId": 414
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "부피",
+            "termId": 219
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음비",
+            "src": "stem",
+            "quote": "닮음비",
+            "termId": 721
+          },
+          {
+            "term": "부피",
+            "src": "stem",
+            "quote": "부피",
+            "termId": 219
+          }
+        ],
+        "method": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "닮음",
+            "termId": 192,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "닮음비 4:12=1:3을 세제곱해 부피비 1:27을 구하고 108pi / 27 = 4pi를 산출한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_312e284f29c4c761fd8784cfcb2bc3852133a2191b498853f24a65060324cd9c",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 23
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "소문항 묶음",
+      "slots": {
+        "given": [
+          {
+            "term": "정사각형",
+            "src": "stem",
+            "quote": "정사각형",
+            "termId": 166
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분",
+            "termId": 144
+          }
+        ],
+        "goal": [
+          {
+            "term": "닮음",
+            "src": "stem",
+            "quote": "닮음",
+            "termId": 192
+          },
+          {
+            "term": "선분",
+            "src": "stem",
+            "quote": "선분",
+            "termId": 144
+          },
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "길이",
+            "termId": 215
+          }
+        ],
+        "method": [
+          {
+            "term": "각",
+            "src": "stem",
+            "quote": "각",
+            "termId": 174,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          },
+          {
+            "term": "대응변",
+            "src": "solution",
+            "quote": "대응변",
+            "termId": 612,
+            "evidenceType": "NAMED",
+            "justification": "Source solution names or directly applies this method."
+          }
+        ],
+        "condition": []
+      },
+      "evidenceDebt": [],
+      "reasons": {
+        "method": "접힌 직각으로 삼각형 AEF ~ 삼각형 DIE (AA 닮음)를 보이고 AE=6을 구해 비례식 6:5 = AF:12를 풀어 72/5를 계산한다."
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "questionUid": "qid_v1_d4792516a1cae87be7cb552e47d90f11e330acf47e4b9c21afdd3365389263ad",
+      "identity": {
+        "status": "OFFICIAL_UID_DERIVED_MAP_PENDING",
+        "temporaryBinding": {
+          "sourceArchiveFile": "similar/middle/m2/2final/20_향림중_2학기_기말_중2_유사.js",
+          "sourceOrdinal": 24
+        },
+        "nextOwner": "authorized identity-map / registration owner",
+        "reason": "UID derived from canonical path; registration remains NOT_RUN."
+      },
+      "fingerprints": [],
+      "judgedBy": {
+        "agent": "Codex stage-local MD migration",
+        "at": "2026-11-13",
+        "role": "source transfer, local math check, visual-benefit triage; independent review not claimed"
+      },
+      "review": {
+        "status": "UNREVIEWED",
+        "independentReview": "NOT_RUN",
+        "note": "Semantic 4-slot review and independent reviewer remain NOT_RUN."
+      },
+      "selfCheck": {
+        "status": "SOURCE_TRANSFER_ONLY",
+        "sourceRead": "Direct Google Docs text read 12EzYwbbvLTQBbY0_OcbhfEFdtbHBGXcxquEaj1xBLl4, revision AHj4eMSCKgQqMeSbi-ffb11xXXbs0Q5IpdP1NPumDeSfolsiD0PhxiilE6VN6aFMwr5GGUzNFwVDYvHjQKFX2BMVOEEF0OKwyQc9ebjs60g.",
+        "visualReview": "NOT_RUN: no SVG creation, rendering QA, or screen review.",
+        "registration": "NOT_RUN",
+        "fourSlotValidation": "RAN: validator re-run: 24/24 items, 0 FAIL, 15 WARN; see file-level selfCheck."
+      }
+    }
+  ],
+  "sourceBindingHistory": []
+}

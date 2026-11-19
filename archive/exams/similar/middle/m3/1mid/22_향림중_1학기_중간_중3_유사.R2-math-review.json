@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "independent-candidate-review-v1",
+  "exam": "22_향림중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1nIzcS8we28HNoa7X9PvGY6mnFD1cTgp8zafCvRxj3LE",
+    "revisionId": "AHj4eMQC5ICyGkIHHO3QYWlUlkdpj1KygBig0hlRXPDDAM-0w80kchIl8s0m4sJBD6tCW3DMTV0Gfmpvrnawidp2g7SDC1t2WTAkIHkZcE4"
+  },
+  "candidate": {
+    "path": "archive/exams/similar/middle/m3/1mid/22_향림중_1학기_중간_중3_유사.js",
+    "gitBlobSha1": "ab74f9917cff9e05c4b2c48ed7da0ef53d209744",
+    "sha256": "4c3c3f5e3490abd2f0b6258556cbc19db98c2061fe1a1875c3835647b0feb330"
+  },
+  "review": {
+    "mathStatus": "PASS",
+    "qidsReviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "allSourceKeysMatch": true,
+    "all24AnswersAndSolutionsRecalculated": true,
+    "q3Reframe": "PASS: counts irrational numbers in place of referencing missing shaded diagram; equivalent per source plan",
+    "q7Reframe": "PASS: states coordinates A(1,0), D(-1,1), B(2,2), and P/Q side placement; yields 1-√5 and 1+√5",
+    "q21Table": "PASS: native source table is 10x6 and candidate table matches cells checked, including row 14/column 2 = 3.768"
+  },
+  "issues": [
+    {
+      "severity": "format",
+      "qids": [
+        3,
+        5,
+        7,
+        9,
+        10,
+        16,
+        17,
+        22,
+        23,
+        24
+      ],
+      "finding": "Within aligned math environments, single literal backslash-space separators appear between aligned rows. These are TeX spacing commands rather than row breaks and can make aligned math invalid/misaligned. Same issue exists in source Doc text.",
+      "recommendation": "Repair row separators to TeX `\\` in the candidate; no mathematical values need to change. Do not claim rendered validation without a renderer check."
+    }
+  ],
+  "visualStatus": "NOT_REVIEWED_NO_SCREEN_OR_SVG_PER_SCOPE",
+  "metadataStatus": "NOT_REVIEWED",
+  "createdAt": "2026-11-14"
+}

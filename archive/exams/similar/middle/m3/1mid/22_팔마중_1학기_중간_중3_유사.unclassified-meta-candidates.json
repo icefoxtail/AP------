@@ -1,0 +1,1886 @@
+{
+  "sourceDocumentId": "1CIecfQYdTanlZBwirIYSRgvk34q5y46NTGP2b7RuMMQ",
+  "sourceDocumentRevisionId": "AHj4eMQeX-wmYiSGeMUODQOCtIxjvH218cbLhSmksPjHw5V5KiPCA22W2XTNzaXkUrC90KYBG3IglA4KRFze0lEfghRmQjYp2Oi86xDwr_A",
+  "note": "Source Drive metadata is retained as unclassified candidate data; active RPM/crosswalk resolution, 4-slot review, and registry registration are incomplete.",
+  "items": [
+    {
+      "ordinal": 1,
+      "sourceQid": "1",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "conceptClusterKey": "제곱근의 뜻과 표현 판별",
+      "primaryMethod": "'$a$의 제곱근'과 '제곱근 $a$'의 정의를 구분하고 각 수의 제곱근 개수를 판정한다.",
+      "decisiveStep": "'제곱근 $36$'은 양의 제곱근 $\\sqrt{36} = 6$ 하나만을 의미함을 확인한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "제곱근",
+        "l4": "제곱근의 뜻"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": null,
+        "why": "제곱근의 정의와 부호·개수에 관한 참·거짓을 판별하는 기본 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_PRINCIPAL_SQUARE_ROOT",
+        "CC_NEGATIVE_SQUARE_ROOT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "제곱근의 기본 정의만으로 5개 보기의 참·거짓을 즉시 가리는 1단계 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "qid_v1_a5619f34b12d3f4c858a962207d705f4178e7ed59ffc424502f7e25593b2e9cd",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "제곱근",
+              "src": "stem",
+              "quote": "제곱근에 대한 설명으로"
+            }
+          ],
+          "goal": [
+            {
+              "term": "실수",
+              "src": "solution",
+              "quote": "실수 범위에서"
+            }
+          ],
+          "method": [
+            {
+              "term": "제곱근",
+              "src": "solution",
+              "quote": "제곱근 표현이 뜻하는 수를"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "'제곱근 $36$'은 양의 제곱근 $\\sqrt{36} = 6$ 하나만을 의미함을 확인한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 2,
+      "sourceQid": "2",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "제곱근의 성질 사칙연산",
+      "primaryMethod": "각 선택지의 $\\sqrt{a^2} = |a|$와 $(-\\sqrt{a})^2 = a$를 계산하여 값을 비교한다.",
+      "decisiveStep": "②~⑤는 모두 $4$이지만 ①만 $-8 \\times \\frac{1}{2} = -4$임을 확인한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "제곱근",
+        "l4": "제곱근의 성질"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": null,
+        "why": "근호와 제곱이 결합된 여러 식을 계산해 다른 값을 찾는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_SQUARE_SIMPLIFICATION",
+        "CC_ARITHMETIC_SIMPLIFICATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "5개 보기에 대해 제곱근 성질과 유리수 사칙연산을 각각 적용하는 기본 계산 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_b5c95d095c0620be6b103df229c7973c6fc76dfa21d6efc287fcd60043868bc9",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "제곱근",
+              "src": "solution",
+              "quote": "를 이용하여 각 식을 계산한다."
+            }
+          ],
+          "goal": [
+            {
+              "term": "절댓값",
+              "src": "solution",
+              "quote": "$\\sqrt{a^2} = |a|$와"
+            }
+          ],
+          "method": [
+            {
+              "term": "유리수",
+              "src": "solution",
+              "quote": "각 식을 계산한다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "②~⑤는 모두 $4$이지만 ①만 $-8 \\times \\frac{1}{2} = -4$임을 확인한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 3,
+      "sourceQid": "3",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "근호 없는 제곱근 판별",
+      "primaryMethod": "순환소수와 소수, 근호 식을 기약분수로 정리한 뒤 유리수의 제곱인지 판별한다.",
+      "decisiveStep": "$\\sqrt{\\frac{1}{9}} = \\frac{1}{3}$은 제곱수가 아니므로 그 제곱근에 근호가 남음을 가려낸다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "무리수와 실수",
+        "l4": "무리수 판별"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "templateKey": null,
+        "why": "순환소수·근호식·거듭제곱이 섞인 수들의 제곱근 유리수 여부를 판별하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_REPEATING_DECIMAL_RATIONAL",
+        "CC_SQUARE_ROOT_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "7개 수 각각을 정리해 제곱수 여부를 판단해야 하며 $\\sqrt{1/9}$ 함정을 피해야 하는 중급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_59933cff71a9ce21aa2887eb259b827fc077979b0d296f81bd5a6bb024b86743",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "제곱근",
+              "src": "stem",
+              "quote": "그 제곱근을 근호를 사용하지 않고"
+            }
+          ],
+          "goal": [
+            {
+              "term": "근호",
+              "src": "stem",
+              "quote": "근호를 사용하지 않고 나타낼 수 있는"
+            }
+          ],
+          "method": [
+            {
+              "term": "유리수",
+              "src": "solution",
+              "quote": "유리수의 제곱인지 확인한다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$\\sqrt{\\frac{1}{9}} = \\frac{1}{3}$은 제곱수가 아니므로 그 제곱근에 근호가 남음을 가려낸다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 4,
+      "sourceQid": "4",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "제곱근이 정수가 되는 자연수 조건",
+      "primaryMethod": "근호 안의 식 $43-x$가 $0$ 이상의 제곱수가 되도록 하는 자연수 $x$의 최댓값과 최솟값을 구한다.",
+      "decisiveStep": "'자연수'가 아니라 '정수' 조건이므로 $43-x=0$일 때 $M=43$을 포함하는 것이 핵심이다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "제곱근",
+        "l4": "제곱근의 성질"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": null,
+        "why": "$\\sqrt{A-x}$가 정수가 되는 자연수 $x$의 극값을 구하는 조건 해석 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_INTEGER_CONDITION",
+        "CC_PERFECT_SQUARE_ENUMERATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL",
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "자연수 $x$ 조건과 정수 출력 조건($0$ 포함)을 동시에 챙겨야 하는 중상급 문항이다.",
+      "level": "상",
+      "item4slot": {
+        "questionUid": "qid_v1_e4a3694ee175750a22a05b8bf20317d1f7223f4b2b45c857d9b6010337bbc3c5",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "정수",
+              "src": "stem",
+              "quote": "정수가 되도록 하는"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최댓값",
+              "src": "stem",
+              "quote": "가장 큰 값을 $M$"
+            }
+          ],
+          "method": [
+            {
+              "term": "근호",
+              "src": "solution",
+              "quote": "근호 안의 수 $43-x$가"
+            }
+          ],
+          "condition": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $x$의 값 중"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "'자연수'가 아니라 '정수' 조건이므로 $43-x=0$일 때 $M=43$을 포함하는 것이 핵심이다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 5,
+      "sourceQid": "5",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+      "conceptClusterKey": "실수의 대소 비교",
+      "primaryMethod": "부등식의 양변에서 같은 항을 소거하고 정수를 근호 안으로 넣어 크기를 비교한다.",
+      "decisiveStep": "⑤의 양변에서 $\\sqrt{13}$을 빼면 $-\\sqrt{21} > -5$, 즉 $\\sqrt{21} < 5$가 되어 참임을 확인한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "무리수와 실수",
+        "l4": "실수의 대소"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": null,
+        "why": "유리수와 무리수의 합·차로 이루어진 두 실수의 대소를 판별하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_REAL_NUMBER_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "공통 항 소거와 제곱근 크기 비교만으로 5개 부등식의 참·거짓을 판정하는 중급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_d8304534b216d9531fc33014bf6734f7b7294fbdd2cfe4841e7e99d37d75442e",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "실수",
+              "src": "stem",
+              "quote": "두 실수의 대소 관계가"
+            }
+          ],
+          "goal": [
+            {
+              "term": "제곱근",
+              "src": "solution",
+              "quote": "제곱근의 크기를 비교한다."
+            }
+          ],
+          "method": [
+            {
+              "term": "제곱근",
+              "src": "solution",
+              "quote": "제곱근의 크기를 비교한다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "⑤의 양변에서 $\\sqrt{13}$을 빼면 $-\\sqrt{21} > -5$, 즉 $\\sqrt{21} < 5$가 되어 참임을 확인한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 6,
+      "sourceQid": "6",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+      "conceptClusterKey": "수직선 위의 무리수 좌표와 유리화",
+      "primaryMethod": "정사각형의 대각선 길이를 구해 두 점의 좌표를 세우고 켤레 무리수로 분모를 유리화한다.",
+      "decisiveStep": "$a = 2-\\sqrt{2}$, $b = 2+\\sqrt{2}$를 대입한 뒤 분모·분자에 $2-\\sqrt{2}$를 곱해 유리화한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "수직선과 제곱근",
+        "l4": "무리수의 위치"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": null,
+        "why": "수직선 위 정사각형 회전으로 무리수 좌표를 구하고 유리화로 비를 계산하는 융합 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_NUMBER_LINE_COORDINATE_SHIFT",
+        "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "수직선 무리수 좌표 + 켤레 유리화",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수직선 위의 무리수 좌표 해석과 켤레 무리수 유리화 2단계가 결합된 중상급 문항이다.",
+      "level": "상",
+      "item4slot": {
+        "questionUid": "qid_v1_bd5cab3d065e10969ea9541ada6b3b5ca9beae528a26410568047decb688e527",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "수직선",
+              "src": "stem",
+              "quote": "수직선 위의 두 점"
+            }
+          ],
+          "goal": [
+            {
+              "term": "정사각형",
+              "src": "stem",
+              "quote": "정사각형 $ABCD$를 그린"
+            }
+          ],
+          "method": [
+            {
+              "term": "대각선",
+              "src": "solution",
+              "quote": "대각선 $AC$의 길이는"
+            }
+          ],
+          "condition": [
+            {
+              "term": "유리화",
+              "src": "solution",
+              "quote": "분모를 유리화하여"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$a = 2-\\sqrt{2}$, $b = 2+\\sqrt{2}$를 대입한 뒤 분모·분자에 $2-\\sqrt{2}$를 곱해 유리화한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 7,
+      "sourceQid": "7",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "conceptClusterKey": "근호 식 변형 및 덧셈·뺄셈",
+      "primaryMethod": "$\\sqrt{a^2b} = a\\sqrt{b}$ 변형과 분모의 유리화를 거쳐 $\\sqrt{5}$의 계수를 합산한다.",
+      "decisiveStep": "$\\frac{15}{\\sqrt{5}} = 3\\sqrt{5}$로 유리화하여 $-3\\sqrt{5}$와 소거한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "근호를 포함한 식의 덧셈과 뺄셈",
+        "l4": "분모의 유리화"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "why": "근호 간단히 하기와 분모 유리화를 결합한 기본 연산 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_ADDITION_SUBTRACTION",
+        "CC_RADICAL_RATIONALIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "모두 $\\sqrt{5}$ 꼴로 바로 정리되는 1단계 기본 근호 연산 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "qid_v1_d2ec61180e680dce237dd8bb89fa45082dfa88ef71a3ff620b64bb798e1e84fc",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "근호",
+              "src": "solution",
+              "quote": "근호 안의 제곱 인수를"
+            }
+          ],
+          "goal": [
+            {
+              "term": "유리화",
+              "src": "solution",
+              "quote": "분모를 유리화한 뒤"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수",
+              "src": "solution",
+              "quote": "제곱 인수를 밖으로 꺼내고"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$\\frac{15}{\\sqrt{5}} = 3\\sqrt{5}$로 유리화하여 $-3\\sqrt{5}$와 소거한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 8,
+      "sourceQid": "8",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "conceptClusterKey": "근호 안팎 변형을 통한 미지수 결정",
+      "primaryMethod": "분수를 약분해 근호 밖으로 꺼낸 값으로 $a$를, 근호 안으로 넣은 값으로 $b$를 구한 뒤 곱한다.",
+      "decisiveStep": "$a = \\frac{1}{5}$, $b = \\frac{5}{16}$를 곱하면 $ab = \\frac{1}{16}$이 되어 근호가 벗겨진다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "근호를 포함한 식의 곱셈과 나눗셈",
+        "l4": "제곱근의 변형"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "why": "근호 안과 밖으로 수를 이동시켜 두 유리수를 구하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_SIMPLIFICATION",
+        "CC_RADICAL_MULTIPLICATION_DIVISION"
+      ],
+      "conditionKeys": [
+        "COND_RATIONAL"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "약분과 근호 안팎 변형 2가지를 정확히 적용해야 하는 중급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_20d0d1a5f5c2b8ababfd5ed67d13d495f7fe691d0c7c754bf510eb875fac00ae",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "유리수",
+              "src": "stem",
+              "quote": "두 유리수 $a, b$에 대하여"
+            }
+          ],
+          "goal": [
+            {
+              "term": "근호",
+              "src": "solution",
+              "quote": "두 등식에서"
+            }
+          ],
+          "method": [
+            {
+              "term": "근호",
+              "src": "solution",
+              "quote": "두 등식에서 유리수 $a, b$의 값을"
+            }
+          ],
+          "condition": [
+            {
+              "term": "유리수",
+              "src": "solution",
+              "quote": "유리수 $a, b$의 값을"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$a = \\frac{1}{5}$, $b = \\frac{5}{16}$를 곱하면 $ab = \\frac{1}{16}$이 되어 근호가 벗겨진다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 9,
+      "sourceQid": "9",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "conceptClusterKey": "절댓값과 분배법칙이 포함된 근호 혼합 계산",
+      "primaryMethod": "절댓값 처리, 근호 간단히 하기, 분배법칙과 유리화를 차례로 적용해 무리수 계수를 비교한다.",
+      "decisiveStep": "$-(\\sqrt{2} - \\sqrt{6})$의 부호를 반전해 $11\\sqrt{2} - 5\\sqrt{6}$을 얻고 $m-n=16$을 계산한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "근호를 포함한 식의 혼합 계산",
+        "l4": "사칙연산"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "why": "절댓값과 분수 꼴 근호가 섞인 혼합 식을 정리해 계수를 구하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_MIXED_OPERATIONS",
+        "CC_RADICAL_DISTRIBUTIVE_LAW"
+      ],
+      "conditionKeys": [
+        "COND_RATIONAL"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "절댓값, 유리화, 괄호 앞 음수 부호 처리가 겹쳐 실수하기 쉬운 중급 혼합 계산 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_86bf3a07a3d602f9f3b98f6e0893f1800f4ab2b7887cba5869a784c7dd8faf58",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "유리수",
+              "src": "stem",
+              "quote": "두 유리수 $m, n$에 대하여"
+            }
+          ],
+          "goal": [
+            {
+              "term": "절댓값",
+              "src": "stem",
+              "quote": "|-3\\sqrt{24}|"
+            }
+          ],
+          "method": [
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "주어진 식에 대입하여"
+            }
+          ],
+          "condition": [
+            {
+              "term": "유리수",
+              "src": "stem",
+              "quote": "유리수 $m, n$"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$-(\\sqrt{2} - \\sqrt{6})$의 부호를 반전해 $11\\sqrt{2} - 5\\sqrt{6}$을 얻고 $m-n=16$을 계산한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 10,
+      "sourceQid": "10",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "무리수의 소수 부분 문자 표현",
+      "primaryMethod": "부등식으로 $\\sqrt{10}$과 $6-\\sqrt{10}$의 정수 부분을 구한 뒤 소수 부분을 $a$로 치환한다.",
+      "decisiveStep": "$6-\\sqrt{10}$의 정수 부분이 $2$임을 찾아 소수 부분 $4-\\sqrt{10}$에 $\\sqrt{10}=a+3$을 대입한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "무리수와 실수",
+        "l4": "무리수의 정수 부분과 소수 부분"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": null,
+        "why": "무리수의 정수·소수 부분을 구해 다른 무리수의 소수 부분을 문자로 나타내는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_APPROXIMATION",
+        "CC_RADICAL_ALGEBRAIC_REPRESENTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "음의 무리수가 포함된 식의 정수 부분을 부등식으로 찾아 대입해야 하는 중급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_6d3e483c6fd40adecef79d9c3b3ff84ddebf017ee9a8fdecc031a97e0b53bd46",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "소수",
+              "src": "stem",
+              "quote": "소수 부분을 $a$라 할 때"
+            }
+          ],
+          "goal": [
+            {
+              "term": "소수",
+              "src": "stem",
+              "quote": "$6 - \\sqrt{10}$의 소수 부분을"
+            }
+          ],
+          "method": [
+            {
+              "term": "정수",
+              "src": "solution",
+              "quote": "정수 부분은 $2$이고"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$6-\\sqrt{10}$의 정수 부분이 $2$임을 찾아 소수 부분 $4-\\sqrt{10}$에 $\\sqrt{10}=a+3$을 대입한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 11,
+      "sourceQid": "11",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "conceptClusterKey": "무리수 식이 유리수가 될 조건",
+      "primaryMethod": "식을 $A + B\\sqrt{3}$ 꼴로 정리한 뒤 $B = 0$ 조건으로 미지수 $a$를 구한다.",
+      "decisiveStep": "$\\sqrt{3}$의 계수 $\\frac{2}{3} - \\frac{a}{9} = 0$을 세워 $a = 6$을 얻는다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "근호를 포함한 식의 혼합 계산",
+        "l4": "유리수가 될 조건"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "why": "유리수·무리수 혼합 식이 유리수가 되도록 미정계수를 정하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RATIONAL_CONDITION_FOR_SURD_EXPRESSION",
+        "CC_RADICAL_RATIONALIZATION"
+      ],
+      "conditionKeys": [
+        "COND_RATIONAL"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "분수형 무리식의 유리화 후 유리수·무리수 항 분리 및 계수 0 조건까지 3단계가 필요한 문항이다.",
+      "level": "상",
+      "item4slot": {
+        "questionUid": "qid_v1_be02f375f03e5f23bd229d80e1a767a8378af292a184463837106bcc94bb6958",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "유리수",
+              "src": "stem",
+              "quote": "유리수 $a$의 값은"
+            }
+          ],
+          "goal": [
+            {
+              "term": "유리수",
+              "src": "stem",
+              "quote": "유리수가 되도록 하는"
+            }
+          ],
+          "method": [
+            {
+              "term": "유리화",
+              "src": "solution",
+              "quote": "분모를 유리화하여"
+            }
+          ],
+          "condition": [
+            {
+              "term": "계수",
+              "src": "solution",
+              "quote": "$\\sqrt{3}$의 계수가 $0$이어야"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$\\sqrt{3}$의 계수 $\\frac{2}{3} - \\frac{a}{9} = 0$을 세워 $a = 6$을 얻는다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 12,
+      "sourceQid": "12",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "곱셈공식 전개 참·거짓 판별",
+      "primaryMethod": "합·차 제곱, 합차 공식, 일차식 곱의 공식을 5개 보기에 적용해 계수와 부호를 대조한다.",
+      "decisiveStep": "②에서 $-5 - 12 = -17$, $(-5)(-12) = +60$으로 모든 항이 일치함을 확인한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "곱셈공식 종합"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": null,
+        "why": "기본 곱셈공식 4가지를 정확히 전개했는지 확인하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_MULTIPLICATION_FORMULAS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "기본 곱셈공식을 직접 대입해 부호·계수 오류를 찾는 1단계 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "qid_v1_a0b12c6ff2a5b85c2dfaa6a8efa145ddade1f6ab657bb750c90238f6c1de66c1",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "전개",
+              "src": "stem",
+              "quote": "전개한 것으로"
+            }
+          ],
+          "goal": [
+            {
+              "term": "곱셈공식",
+              "src": "solution",
+              "quote": "곱셈공식을 이용하여"
+            }
+          ],
+          "method": [
+            {
+              "term": "전개",
+              "src": "solution",
+              "quote": "바르게 전개해 본다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "②에서 $-5 - 12 = -17$, $(-5)(-12) = +60$으로 모든 항이 일치함을 확인한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 13,
+      "sourceQid": "13",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "곱셈공식의 기하학적 넓이 해석",
+      "primaryMethod": "한 변이 $a$인 정사각형에서 폭 $b$인 띠 두 개를 뺀 넓이 관계식으로 곱셈공식을 읽는다.",
+      "decisiveStep": "가로·세로 폭 $b$를 두 번 빼면 $b^2$이 중복 차감되므로 $+b^2$을 보정함을 확인한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "도형과 곱셈공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": null,
+        "why": "정사각형 분할 그림으로부터 대응되는 곱셈공식을 찾는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_SQUARE_EXPANSION",
+        "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "도형 넓이 분할 + 곱셈공식",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "그림의 변 길이를 읽고 겹쳐 빠진 $b^2$ 영역까지 연결하는 중급 개념 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_65e1163f6b7b628388500da3a8ffb3f7cb9ba7314278fefdccb8b7f6782384d8",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "정사각형",
+              "src": "solution",
+              "quote": "전체 정사각형의 한 변의 길이는"
+            }
+          ],
+          "goal": [
+            {
+              "term": "곱셈공식",
+              "src": "solution",
+              "quote": "곱셈 공식은"
+            }
+          ],
+          "method": [
+            {
+              "term": "넓이",
+              "src": "solution",
+              "quote": "전체 넓이는 $a^2$이다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "가로·세로 폭 $b$를 두 번 빼면 $b^2$이 중복 차감되므로 $+b^2$을 보정함을 확인한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 14,
+      "sourceQid": "14",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "완전제곱식 전개 계수 추출",
+      "primaryMethod": "$(3x-4)^2$을 전개해 $x^2$과 $x$의 계수 $a, b$를 읽고 $a-b$를 구한다.",
+      "decisiveStep": "$x$의 계수 부호($b = -24$)를 놓치지 않고 $9 - (-24) = 33$을 계산한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식",
+        "l4": "완전제곱식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": null,
+        "why": "일차식의 제곱을 전개하여 특정 항의 계수 차를 구하는 기본 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_SQUARE_EXPANSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "완전제곱식 전개 후 계수를 바로 읽어 뺄셈하는 1단계 기본 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "qid_v1_4243b0864b3399bdfaf8b27c3543380a34efb384aba495421f54e6fc7ae0d053",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "전개",
+              "src": "stem",
+              "quote": "전개식에서"
+            }
+          ],
+          "goal": [
+            {
+              "term": "계수",
+              "src": "stem",
+              "quote": "$x^2$의 계수를 $a$"
+            }
+          ],
+          "method": [
+            {
+              "term": "완전제곱식",
+              "src": "solution",
+              "quote": "완전제곱식 공식"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$x$의 계수 부호($b = -24$)를 놓치지 않고 $9 - (-24) = 33$을 계산한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 15,
+      "sourceQid": "15",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "직사각형 타일 넓이 합 인수분해",
+      "primaryMethod": "타일 넓이의 합 $2x^2+7x+3$을 인수분해하여 가로·세로 길이를 구하고 둘레를 계산한다.",
+      "decisiveStep": "$2x^2+7x+3=(2x+1)(x+3)$으로 인수분해한 뒤 두 변의 합을 $2$배한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "인수분해의 활용",
+        "l4": "도형의 넓이와 둘레"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "도형 타일들의 넓이 합을 이차식 인수분해로 연결해 둘레를 구하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_CROSS_MULTIPLICATION_FACTORIZATION",
+        "CC_GEOMETRIC_AREA_VOLUME_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "타일 넓이 합 + 이차식 인수분해",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "도형 타일 개수로 이차식을 직접 세우고 대각선 인수분해 후 둘레까지 구하는 중상급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_d82b85c4de9207af30094254b4b2b9ea6396d6a2c2e3cb27173461d12d085f37",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "직사각형",
+              "src": "stem",
+              "quote": "직사각형 타일 $12$개"
+            }
+          ],
+          "goal": [
+            {
+              "term": "둘레",
+              "src": "stem",
+              "quote": "둘레의 길이는"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "인수분해하면"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$2x^2+7x+3=(2x+1)(x+3)$으로 인수분해한 뒤 두 변의 합을 $2$배한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 16,
+      "sourceQid": "16",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "두 이차식의 공통인수 찾기",
+      "primaryMethod": "두 이차식을 각각 일차식의 곱으로 인수분해한 뒤 일치하는 인수를 선택한다.",
+      "decisiveStep": "두 식 모두 $(x + 3)$을 인수로 가짐을 확인한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "이차식의 인수분해",
+        "l4": "공통인수"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+        "why": "두 이차식을 각각 인수분해해 공통인 인수를 찾는 정형 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_QUADRATIC_TRINOMIAL_FACTORIZATION",
+        "CC_CROSS_MULTIPLICATION_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "최고차항 계수가 1인 식과 2인 식을 각각 인수분해해 비교하는 중급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_bf8b6de9e38b9f714b1929af86c1a2a9608562a671310bf26ebc716f9cb86e28",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "다항식",
+              "src": "stem",
+              "quote": "두 다항식"
+            }
+          ],
+          "goal": [
+            {
+              "term": "인수",
+              "src": "stem",
+              "quote": "공통으로 들어 있는 인수는"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "각각 인수분해한다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "두 식 모두 $(x + 3)$을 인수로 가짐을 확인한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 17,
+      "sourceQid": "17",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "공통인수 묶기 후 완전제곱식 인수분해",
+      "primaryMethod": "공통인수 $5$를 먼저 묶어낸 뒤 $a^2 - 6ab + 9b^2$을 완전제곱식으로 인수분해한다.",
+      "decisiveStep": "$5(a - 3b)^2$에서 일차식 인수 $a - 3b$를 찾는다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "인수분해 공식",
+        "l4": "공통인수로 묶기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "상수 공통인수를 묶어 완전제곱식으로 인수분해하는 기본 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_COMMON_FACTOR_EXTRACTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "공통인수 $5$를 묶으면 바로 완전제곱식이 보이는 1단계 기본 인수분해 문항이다.",
+      "level": "하",
+      "item4slot": {
+        "questionUid": "qid_v1_8c277a8abd867bc81dbafc56436b62e02ee942f98bb9bdb1d6213d9be9fd2792",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "다항식",
+              "src": "stem",
+              "quote": "다항식 $5a^2 - 30ab + 45b^2$의"
+            }
+          ],
+          "goal": [
+            {
+              "term": "인수",
+              "src": "stem",
+              "quote": "인수인 것은"
+            }
+          ],
+          "method": [
+            {
+              "term": "공통인수",
+              "src": "solution",
+              "quote": "공통인수 $5$로 묶은 뒤"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$5(a - 3b)^2$에서 일차식 인수 $a - 3b$를 찾는다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 18,
+      "sourceQid": "18",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "켤레 무리수 유리화 후 곱셈공식 변형",
+      "primaryMethod": "분모를 유리화해 $x+y$와 $xy$를 구한 뒤 통분과 곱셈공식 변형으로 값을 계산한다.",
+      "decisiveStep": "$x+y = 2\\sqrt{17}$, $xy = 1$을 $(x+y)^2 - 2xy$에 대입해 $66$을 얻는다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "다항식의 곱셈",
+        "l3": "곱셈공식의 변형",
+        "l4": "유리화와 식의 값"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+        "templateKey": null,
+        "why": "켤레 무리수를 유리화한 뒤 대칭식의 값을 곱셈공식 변형으로 구하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+        "CC_SUM_OF_SQUARES_IDENTITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "켤레 유리화 + 곱셈공식 변형",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "유리화, 통분, 곱셈공식 변형의 3단계를 모두 정확히 연결해야 하는 상급 문항이다.",
+      "level": "상",
+      "item4slot": {
+        "questionUid": "qid_v1_a454dbcc127337de592fde222b130269bb6ee2226ae665b8785081dc5013f7d8",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "유리화",
+              "src": "solution",
+              "quote": "분모를 유리화한다."
+            }
+          ],
+          "goal": [
+            {
+              "term": "곱셈공식",
+              "src": "solution",
+              "quote": "곱셈공식의 변형을 이용하면"
+            }
+          ],
+          "method": [
+            {
+              "term": "대입",
+              "src": "solution",
+              "quote": "구하는 식의 값은"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "$x+y = 2\\sqrt{17}$, $xy = 1$을 $(x+y)^2 - 2xy$에 대입해 $66$을 얻는다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 19,
+      "sourceQid": "19",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "완전제곱식이 될 조건과 부호 선택",
+      "primaryMethod": "상수항 조건 $a=(b/2)^2$와 일차항 계수 조건 $b = \\pm 2\\sqrt{AC}$에 $b<0$을 적용한다.",
+      "decisiveStep": "일차항 계수가 $b < 0$이므로 $+24$가 아니라 $b = -24$를 선택한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "인수분해 공식",
+        "l4": "완전제곱식이 될 조건"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "완전제곱식 조건에서 상수항과 가운데 항 계수를 부호 조건에 맞게 구하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_BINOMIAL_SQUARE_EXPANSION",
+        "CC_POLYNOMIAL_COEFFICIENT_MATCHING"
+      ],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "완전제곱식 조건 두 가지를 각각 적용하고 음수 조건으로 부호를 결정하는 중급 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_18d822eef241748699ea27c2d20c957d4b441a59c95c8f3931405bd928a9c412",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "다항식",
+              "src": "stem",
+              "quote": "두 다항식"
+            }
+          ],
+          "goal": [
+            {
+              "term": "완전제곱식",
+              "src": "stem",
+              "quote": "완전제곱식이 되도록 하는"
+            }
+          ],
+          "method": [
+            {
+              "term": "상수",
+              "src": "stem",
+              "quote": "상수 $a, b$에 대하여"
+            }
+          ],
+          "condition": [
+            {
+              "term": "완전제곱식",
+              "src": "solution",
+              "quote": "완전제곱식이 될 조건을"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "일차항 계수가 $b < 0$이므로 $+24$가 아니라 $b = -24$를 선택한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 20,
+      "sourceQid": "20",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "정수 계수 인수분해와 일차항 계수 범위",
+      "primaryMethod": "$ab = -10$을 만족하는 모든 정수 순서쌍 $(a, b)$를 나열하여 $k = a+b$의 최댓값과 최솟값을 구한다.",
+      "decisiveStep": "음수·양수 부호를 모두 고려한 $(1, -10)$과 $(-1, 10)$에서 $M=9, m=-9$를 찾는다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "이차식의 인수분해",
+        "l4": "일차항의 계수 구하기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "상수항의 정수 약수 쌍을 모두 나열해 일차항 계수의 최댓값·최솟값을 구하는 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_INTEGER_FACTOR_PAIRS",
+        "CC_QUADRATIC_TRINOMIAL_FACTORIZATION"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호가 반대인 모든 정수 쌍을 빠짐없이 나열해 극값을 결정해야 하는 상급 문항이다.",
+      "level": "상",
+      "item4slot": {
+        "questionUid": "qid_v1_489640612ba79bdb10e8444dd33e6922c8151ff9b4d8415824bada353c06c791",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "이차식",
+              "src": "stem",
+              "quote": "이차식 $x^2 + kx - 10$이"
+            }
+          ],
+          "goal": [
+            {
+              "term": "최댓값",
+              "src": "solution",
+              "quote": "최댓값 $M = 9$"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "stem",
+              "quote": "인수분해될 때"
+            }
+          ],
+          "condition": [
+            {
+              "term": "정수",
+              "src": "stem",
+              "quote": "$a, b$는 정수"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "음수·양수 부호를 모두 고려한 $(1, -10)$과 $(-1, 10)$에서 $M=9, m=-9$를 찾는다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 21,
+      "sourceQid": "21",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "인수분해를 이용한 소수 조건 판별",
+      "primaryMethod": "이차식을 $(15-a)(a+3)$으로 인수분해한 뒤 소수의 정의(한 인수가 $1$)를 적용한다.",
+      "decisiveStep": "$a+3 \\ge 4$이므로 $15-a = 1$일 때만 소수가 됨을 판단하여 $a=14$, 소수 $17$을 얻는다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "인수분해의 활용",
+        "l4": "수의 성질과 인수분해"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "이차식을 인수분해하여 자연수 조건에서 소수가 되는 값을 찾는 상급 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_FACTORIZATION_PRIME_CONDITION",
+        "CC_QUADRATIC_TRINOMIAL_FACTORIZATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "integrationPattern": "인수분해 + 소수 판별",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "식 인수분해와 소수의 약수 조건($1 \\times p$)을 결합해 자연수 해를 특정해야 하는 상급 문항이다.",
+      "level": "상",
+      "item4slot": {
+        "questionUid": "qid_v1_a3a8c49eb4fef50f79948a4bffea227c7205a1b5e13350f6c6959fee6e08240f",
+        "format": "단일 정답",
+        "slots": {
+          "given": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $a$에 대하여"
+            }
+          ],
+          "goal": [
+            {
+              "term": "소수",
+              "src": "stem",
+              "quote": "소수가 될 때"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "인수분해한다."
+            }
+          ],
+          "condition": [
+            {
+              "term": "인수",
+              "src": "solution",
+              "quote": "작은 인수 $15 - a$가"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$a+3 \\ge 4$이므로 $15-a = 1$일 때만 소수가 됨을 판단하여 $a=14$, 소수 $17$을 얻는다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 22,
+      "sourceQid": "22",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "비례배분과 정사각형 이어붙이기 둘레",
+      "primaryMethod": "넓이 비 $9:4:1$로 비례상수 $k$를 구해 한 변의 길이를 근호로 나타낸 뒤 계단형 둘레를 합산한다.",
+      "decisiveStep": "세로 방향 단차의 합이 왼쪽 변 길이 $3\\sqrt{5}$와 같아 전체 둘레가 $18\\sqrt{5}$임을 파악한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "근호를 포함한 식의 계산",
+        "l3": "근호를 포함한 식의 덧셈과 뺄셈",
+        "l4": "도형에서의 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": null,
+        "why": "넓이 비가 주어진 세 정사각형의 한 변 길이와 계단형 도형의 둘레를 구하는 서술형 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RATIO",
+        "CC_RADICAL_PERIMETER_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "비례배분 + 근호 덧셈 도형 활용",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "비례배분, $\\sqrt{a^2b}$ 변형, 계단형 도형의 둘레 구조 해석까지 서술해야 하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_d914d75f19af60b63cfde59998e871459425ae246feabf3cfa302c9aaf595e2e",
+        "format": "서술형",
+        "slots": {
+          "given": [
+            {
+              "term": "정사각형",
+              "src": "stem",
+              "quote": "세 정사각형 $A, B, C$를"
+            }
+          ],
+          "goal": [
+            {
+              "term": "둘레",
+              "src": "stem",
+              "quote": "전체 둘레의 길이를"
+            }
+          ],
+          "method": [
+            {
+              "term": "넓이",
+              "src": "solution",
+              "quote": "넓이의 비가 $9:4:1$이므로"
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "세로 방향 단차의 합이 왼쪽 변 길이 $3\\sqrt{5}$와 같아 전체 둘레가 $18\\sqrt{5}$임을 파악한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 23,
+      "sourceQid": "23",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+      "conceptClusterKey": "제곱근 미만 자연수 개수 합산",
+      "primaryMethod": "제곱수 $1, 4, 9, 16$을 경계로 구간을 나누어 $f(x)$의 값을 일정 구간별로 묶어 더한다.",
+      "decisiveStep": "'보다 작은'이므로 제곱수 $x=4, 9$에서는 각각 $1, 2$가 됨을 정확히 반영한다.",
+      "rpm": {
+        "majorUnit": "실수와 그 연산",
+        "midUnit": "제곱근과 실수",
+        "l3": "무리수와 실수",
+        "l4": "무리수의 정수 부분과 소수 부분"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": null,
+        "why": "$\\sqrt{x}$보다 작은 자연수의 개수를 제곱수 구간별로 나누어 합산하는 서술형 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_APPROXIMATION",
+        "CC_INTEGER_SQUARE_ROOTS"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "등호 포함 여부($x=4, 9$ 경계값)를 정확히 구분해 구간 합을 구해야 하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_5ff58354cf5ad541ab3006d390fc58c890067a5ff576e91c4dd3a07e9f333c8a",
+        "format": "서술형",
+        "slots": {
+          "given": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "자연수 $x$에 대하여"
+            }
+          ],
+          "goal": [
+            {
+              "term": "자연수",
+              "src": "stem",
+              "quote": "작은 자연수의 개수를"
+            }
+          ],
+          "method": [
+            {
+              "term": "자연수",
+              "src": "solution",
+              "quote": "작은 자연수의 개수는 $n$개이다."
+            }
+          ],
+          "condition": []
+        },
+        "reasons": {
+          "method": "'보다 작은'이므로 제곱수 $x=4, 9$에서는 각각 $1, 2$가 됨을 정확히 반영한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 24,
+      "sourceQid": "24",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "완전제곱식 제곱근과 범위 부호 판단",
+      "primaryMethod": "근호 안의 식을 완전제곱식으로 인수분해해 $|A|$ 꼴로 고친 뒤 $x$의 범위로 부호를 정한다.",
+      "decisiveStep": "$-\\frac{1}{4} < x < 5$에서 $5-x>0$과 $4x+1>0$을 모두 확인한 뒤 괄호를 풀어 계산한다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "인수분해 공식",
+        "l4": "근호 안의 완전제곱식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "근호 안 완전제곱식을 인수분해와 절댓값 부호 판별로 간단히 하는 서술형 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_SQUARE_ABSOLUTE_VALUE",
+        "CC_SIGN_DETERMINATION"
+      ],
+      "conditionKeys": [
+        "COND_RESTRICTED_INTERVAL"
+      ],
+      "integrationPattern": "완전제곱식 인수분해 + 제곱근 절댓값 성질",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "완전제곱식 인수분해, 절댓값 변환, 범위 부호 판별이 결합된 서술형 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_ccef9c9f9ce03a9855361e5717322b0b474717a1de40da03ea2ece53b6d80123",
+        "format": "서술형",
+        "slots": {
+          "given": [
+            {
+              "term": "이차식",
+              "src": "solution",
+              "quote": "근호 안의 이차식을"
+            }
+          ],
+          "goal": [
+            {
+              "term": "절댓값",
+              "src": "solution",
+              "quote": "절댓값을 벗기면"
+            }
+          ],
+          "method": [
+            {
+              "term": "완전제곱식",
+              "src": "solution",
+              "quote": "완전제곱식으로 인수분해한 뒤"
+            }
+          ],
+          "condition": [
+            {
+              "term": "인수분해",
+              "src": "solution",
+              "quote": "인수분해한 뒤"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$-\\frac{1}{4} < x < 5$에서 $5-x>0$과 $4x+1>0$을 모두 확인한 뒤 괄호를 풀어 계산한다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    },
+    {
+      "ordinal": 25,
+      "sourceQid": "25",
+      "variationType": "NUMERIC",
+      "standardCourse": "중3",
+      "courseKey": "M3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "합차 공식을 이용한 부채꼴 넓이 차 계산",
+      "primaryMethod": "두 부채꼴 넓이의 차를 $\\frac{1}{8}\\pi(R^2-r^2)$로 묶은 뒤 합차 공식으로 인수분해해 수 계산을 단순화한다.",
+      "decisiveStep": "$53.24 + 46.76 = 100$과 $53.24 - 46.76 = 6.48$을 곱해 $648\\pi / 8 = 81\\pi$를 얻는다.",
+      "rpm": {
+        "majorUnit": "다항식의 곱셈과 인수분해",
+        "midUnit": "인수분해",
+        "l3": "인수분해의 활용",
+        "l4": "수의 계산에의 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": null,
+        "why": "원 피자 한 조각의 넓이 차를 합차 공식 인수분해로 간편히 계산하는 서술형 문항이다."
+      },
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES_EVALUATION",
+        "CC_CIRCLE_SECTOR_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "부채꼴 넓이 차 + 합차 공식 인수분해",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "실생활 도형(8등분 원) 식 세우기와 합차 공식 수 계산을 함께 서술해야 하는 문항이다.",
+      "level": "중",
+      "item4slot": {
+        "questionUid": "qid_v1_2e3deddb645f0d4cbfa0d196661a6196b558cd1e81190e2eb02e069350c18149",
+        "format": "서술형",
+        "slots": {
+          "given": [
+            {
+              "term": "반지름",
+              "src": "stem",
+              "quote": "반지름의 길이가 각각"
+            }
+          ],
+          "goal": [
+            {
+              "term": "넓이",
+              "src": "stem",
+              "quote": "한 조각의 넓이는"
+            }
+          ],
+          "method": [
+            {
+              "term": "인수분해",
+              "src": "stem",
+              "quote": "인수분해를 이용하여"
+            }
+          ],
+          "condition": [
+            {
+              "term": "원",
+              "src": "stem",
+              "quote": "원 모양의 피자를"
+            }
+          ]
+        },
+        "reasons": {
+          "method": "$53.24 + 46.76 = 100$과 $53.24 - 46.76 = 6.48$을 곱해 $648\\pi / 8 = 81\\pi$를 얻는다."
+        },
+        "steps": [],
+        "scenarioNote": ""
+      },
+      "hold": {
+        "status": "EVIDENCE_DEBT",
+        "reason": "Source candidate retained; resolver, 4-slot review, and registry registration are not complete."
+      }
+    }
+  ]
+}

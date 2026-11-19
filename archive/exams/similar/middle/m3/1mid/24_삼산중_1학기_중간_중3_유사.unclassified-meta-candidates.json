@@ -1,0 +1,1255 @@
+{
+  "sourceDocumentId": "1edk9GdvE-2GO1qeMlkCsDlG0jhGvO5bkOV9G0SYs7H4",
+  "sourceDocumentRevisionId": "AHj4eMS-ixagE2bCE8Nlrfi5rPxNniiIQ8NsLmn0VfIHOP1brO_0XvhQIesn2hMkf9usquwfduEszUak6HXjNFPvJGTxsx7eK7RslPucIpc",
+  "note": "Drive MD의 문항별 분류·4칸은 검증 전 후보로 보존한다. ACTIVE RPM/crosswalk, 4칸 의미 검토 및 등록은 미완료.",
+  "items": [
+    {
+      "ordinal": 1,
+      "sourceQid": "1",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "conceptClusterKey": "SQUARE_ROOT_DEFINITION_PROPERTIES",
+      "primaryMethod": "3^2=(-3)^2=9로부터 9의 제곱근이 풀마 3임을 확인하여 1번 참을 판정한다.",
+      "decisiveStep": "9의 제곱근은 풀마 3이라는 정의의 일치성 확인",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "제곱근과 실수",
+        "l4": "제곱근의 뜻"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_DEFINITION_CHECK",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "why": "제곱근의 정의, 부호 규칙, 개수의 참/거짓을 평가하는 기본 문항"
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_ROOT_NOTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "제곱근 정의와 기호 성질을 직접 대조하는 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          22
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          369,
+          286
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 2,
+      "sourceQid": "2",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "SQUARE_ROOT_TABLE_READING",
+      "primaryMethod": "2.280^2 약 5.20으로부터 루트 5.2 약 2.280인데 2.295로 잘못 제시된 2번을 식별한다.",
+      "decisiveStep": "루트 5.2 = 2.280임을 확인하여 2.295의 오류 포착",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "제곱근의 값"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_APPROXIMATION",
+        "templateKey": "TPL_M3_SQUARE_ROOT_TABLE_ACCURACY_CHECK",
+        "why": "제곱근표의 소수점 어림값 계산 원리를 점검하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_APPROXIMATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "제곱근의 소수 셋째 자리 어림값의 정확도를 대조하는 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          560
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          22
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 3,
+      "sourceQid": "3",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "POLYNOMIAL_EXPANSION_BASIC_RULES",
+      "primaryMethod": "(2x-3)^2 = 4x^2 - 12x + 9가 완전제곱식 공식에 완벽히 일치함을 확인한다.",
+      "decisiveStep": "완전제곱식 전개 4x^2 - 12x + 9의 정확한 부호 및 계수 판별",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "다항식의 곱셈",
+        "l4": "곱셈 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLYNOMIAL_EXPANSION_AUDIT",
+        "templateKey": "TPL_M3_BINOMIAL_EXPANSION_TRUE_FALSE",
+        "why": "다항식 곱셈 공식의 다양한 기본 형태를 일괄 점검하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_EXPANSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "곱셈 공식 전개식을 직접 대조하여 참인 식을 찾는 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          35
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          40
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 4,
+      "sourceQid": "4",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_SYMMETRIC_EVALUATION",
+      "primaryMethod": "x^2+2xy+y^2-2 = (x+y)^2 - 2에 x+y=-3을 대입하여 9-2=7을 산출한다.",
+      "decisiveStep": "완전제곱식 묶기 후 (-3)^2 - 2 = 7 계산",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해를 이용한 식의 값 구하기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FACTORING_SUBSTITUTION",
+        "templateKey": "TPL_M3_SYMMETRIC_SUM_VALUE_EVAL",
+        "why": "완전제곱식을 이용하여 대칭식의 값을 간결하게 계산하는 기초 문항"
+      },
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "완전제곱식 공식으로 묶은 후 단순 대입하는 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          59,
+          40
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 5,
+      "sourceQid": "5",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "conceptClusterKey": "RADICAL_ABSOLUTE_VALUE_SIGN_RULES",
+      "primaryMethod": "a>0, b<0에서 2a - 5a + (-3b) = -3a - 3b를 도출한다.",
+      "decisiveStep": "b<0에서 루트(9b^2) = |3b| = -3b 부호 반전",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "제곱근과 실수",
+        "l4": "근호가 있는 식의 변형"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_SIGN_SIMPLIFY",
+        "templateKey": "TPL_M3_VARIABLE_RADICAL_ABSOLUTE_VALUE",
+        "why": "양수와 음수 변수가 혼합된 여러 근호 식의 절댓값 부호 처리를 종합하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_OF_RADICAL"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 근호의 부호 판정 후 뺄셈과 덧셈 부호를 종합 처리해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          5
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          24,
+          20
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 6,
+      "sourceQid": "6",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "conceptClusterKey": "REAL_NUMBER_SYSTEM_PROPOSITIONS",
+      "primaryMethod": "서로 다른 두 유리수 사이에는 무수히 많은 무리수가 존재함을 들어 1번의 오류를 판별한다.",
+      "decisiveStep": "조밀성에 의해 두 유리수 사이에 무리수는 유한개가 아닌 무수히 많음 포착",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "제곱근과 실수",
+        "l4": "무리수와 실수"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_TRUE_FALSE_SET",
+        "templateKey": "TPL_M3_REAL_NUMBER_THEOREMS",
+        "why": "유리수와 무리수의 조밀성 및 수직선의 실수 대응성을 체계적으로 점검하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DENSITY_OF_IRRATIONALS",
+        "CC_REAL_NUMBER_LINE_BIJECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "조밀성 명제에서 유한개라는 오류를 정확히 짚어내야 하는 개념 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          5
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          295,
+          4
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 7,
+      "sourceQid": "7",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RADICAL_COEFFICIENT_EXTRACTION",
+      "primaryMethod": "a=18, b=1/6을 도출하여 ab=3, 루트(ab)=루트3을 산출한다.",
+      "decisiveStep": "분모유리화로 b=1/6을 구하고 ab=3의 제곱근 취하기",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "제곱근의 곱셈과 나눗셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_COEFFICIENT_MATCH",
+        "templateKey": "TPL_M3_DUAL_RADICAL_PARAMETER_PRODUCT",
+        "why": "근호의 기본 변형(안으로 넣기와 유리화)을 연계하여 미지수의 제곱근을 구하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION_MONOMIAL"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "유리화 계산과 제곱근 곱셈을 2단계로 완결해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          22
+        ],
+        "goal": [
+          287
+        ],
+        "method": [
+          20,
+          53
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 8,
+      "sourceQid": "8",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RADICAL_DISTRIBUTIVE_SIMPLIFICATION",
+      "primaryMethod": "분배법칙 전개 후 루트98=7루트2를 적용하여 3루트14 - 4루트2를 산출한다.",
+      "decisiveStep": "루트98 = 7루트2 변환 및 마이너스 부호 분배",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "혼합 계산"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RADICAL_DISTRIBUTIVE_EXPANSION",
+        "templateKey": "TPL_M3_BINOMIAL_RADICAL_EXPAND_COLLECT",
+        "why": "근호가 포함된 두 괄호 식의 분배법칙과 동류항 정리를 평가하는 대표 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DISTRIBUTIVE_LAW",
+        "CC_RADICAL_LIKE_TERMS_COMBINE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "음수 괄호 전개와 98=49*2의 제곱인수 추출을 결합한 계산 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          39
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          41,
+          22
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 9,
+      "sourceQid": "9",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RADICAL_EXPRESSION_RATIONAL_CONDITION",
+      "primaryMethod": "식을 (-5x-2)+(4x+2)루트3으로 정리하여 4x+2=0에서 x=-1/2을 도출한다.",
+      "decisiveStep": "무리수 루트3의 계수 4x+2 = 0 수립",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "근호의 덧셈과 뺄셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RATIONAL_RESULT_CONDITION",
+        "templateKey": "TPL_M3_RADICAL_COEFFICIENT_ZERO",
+        "why": "근호를 포함한 일차식이 유리수가 되기 위해 무리수 동류항의 계수가 0이어야 함을 평가하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_RADICAL_LIKE_TERMS_COMBINE"
+      ],
+      "conditionKeys": [
+        "COND_RATIONAL_COEFFICIENTS"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "전개와 동류항 묶기 후 일차방정식을 풀어 x=-1/2을 구하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          39
+        ],
+        "goal": [
+          3
+        ],
+        "method": [
+          22,
+          696
+        ],
+        "condition": [
+          3
+        ]
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 10,
+      "sourceQid": "10",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RADICAL_GEOMETRIC_AREA_EQUATION",
+      "primaryMethod": "삼각형 넓이 1/2 * 8루트2 * 6 = 24루트2로부터 직사각형 가로 24루트2 / 4 = 6루트2를 산출한다.",
+      "decisiveStep": "삼각형 넓이 24루트2 도출 후 높이 4로 나누기",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "제곱근의 곱셈과 나눗셈의 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_GEOMETRIC_AREA_EQUALITY",
+        "templateKey": "TPL_M3_TRIANGLE_RECTANGLE_AREA_SOLVE",
+        "why": "도형 넓이 공식을 무리수 계수 방정식과 결합하여 미지변의 길이를 구하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA_FORMULA",
+        "CC_RECTANGLE_AREA_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "삼각형 넓이 계산 후 직사각형 가로를 구하는 기본 기하 융합 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          166
+        ],
+        "goal": [
+          216
+        ],
+        "method": [
+          20,
+          22
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 11,
+      "sourceQid": "11",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_FORMULA_VERIFICATION",
+      "primaryMethod": "(x-2)(x+4) = x^2+2x-8의 전개 일치를 확인하여 1번 참을 선택한다.",
+      "decisiveStep": "합이 2, 곱이 -8인 두 수 -2와 4의 인수분해 일치 확인",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FACTORING_AUDIT",
+        "templateKey": "TPL_M3_FACTORING_FORMULA_CHECK_SET",
+        "why": "이차삼항식 및 완전제곱식, 합차공식의 전개 정오를 종합 점검하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_CROSS_MULTIPLICATION_FACTORING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "우변 전개를 통해 좌변과 일치하는 올바른 인수분해를 찾는 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          59,
+          696
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 12,
+      "sourceQid": "12",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "DENOMINATOR_RATIONALIZATION_CONJUGATE",
+      "primaryMethod": "x=루트7-루트6, y=루트7+루트6으로 유리화 후 x-y = -2루트6을 산출한다.",
+      "decisiveStep": "x-y에서 루트7이 소거되고 -루트6 - 루트6 = -2루트6 산출",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "분모의 유리화"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CONJUGATE_RATIONALIZE_DIFF",
+        "templateKey": "TPL_M3_CONJUGATE_SUBTRACTION_EVAL",
+        "why": "합차 공식을 이용한 분모의 유리화와 무리수 차의 계산을 점검하는 정형 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "분모 유리화 후 괄호 뺄셈 부호를 정확히 처리하는 2단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          39
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          53,
+          22
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 13,
+      "sourceQid": "13",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "DIFFERENCE_OF_SQUARES_SIGN_EQUIVALENCE",
+      "primaryMethod": "(-x+y)(-x-y) = [-(x-y)][-(x+y)] = (x-y)(x+y) = x^2-y^2으로 전개식의 일치를 확인한다.",
+      "decisiveStep": "두 인수에서 마이너스 부호를 각각 꺼내 곱하여 부호가 양수가 됨을 파악",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "다항식의 곱셈",
+        "l4": "곱셈 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SIGN_EQUIVALENCE_CHECK",
+        "templateKey": "TPL_M3_DIFFERENCE_OF_SQUARES_EQUIVALENT_FORMS",
+        "why": "합차 공식에서 항의 부호가 변형된 다항식들의 대수적 동치성을 판별하는 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DIFFERENCE_OF_SQUARES_PRODUCT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호 처리 규칙(-1 * -1 = 1)을 합차 공식에 대조하는 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          40
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 14,
+      "sourceQid": "14",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "EXPANSION_COEFFICIENT_DETERMINATION",
+      "primaryMethod": "-2a=-4에서 a=2, b=4-3(2)=-2를 구하여 a-b = 2-(-2) = 4를 산출한다.",
+      "decisiveStep": "상수항에서 a=2를 확정한 후 b=-2를 얻어 a-b=4 도출",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "다항식의 곱셈",
+        "l4": "다항식의 곱셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_POLYNOMIAL_COEFFICIENT_MATCH",
+        "templateKey": "TPL_M3_BINOMIAL_PRODUCT_COEFFICIENTS",
+        "why": "두 일차식의 전개 계수를 비교하여 미지수를 순차적으로 구하는 표준 문항"
+      },
+      "crossConceptKeys": [
+        "CC_COEFFICIENT_COMPARISON_METHOD"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "상수항 비교 후 일차항 계수를 대입하여 차를 구하는 2단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          287
+        ],
+        "method": [
+          41,
+          696
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 15,
+      "sourceQid": "15",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "PERFECT_SQUARE_TRINOMIAL_CONDITION",
+      "primaryMethod": "2p+1 = 풀마 8에서 2p+1=8일 때 p=7/2, 2p+1=-8일 때 p=-9/2를 구한다.",
+      "decisiveStep": "완전제곱식에서 일차항 계수가 풀마 8의 두 가지 부호를 가짐을 고려",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "완전제곱식 만들기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_PERFECT_SQUARE_DUAL_ROOTS",
+        "templateKey": "TPL_M3_LINEAR_COEFFICIENT_PERFECT_SQUARE",
+        "why": "완전제곱식의 가운데 항이 양수와 음수 모두 가능함을 점검하는 대표 문항"
+      },
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_FACTORIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_ANALYSIS",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "풀마 부호 2가지를 모두 고려하여 두 개의 분수 해를 도출해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          287
+        ],
+        "method": [
+          59,
+          14
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 16,
+      "sourceQid": "16",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_GROUPING_AND_SYMMETRIC",
+      "primaryMethod": "(a^2+b^2)(x^2+y^2)로 인수분해하고 11 * 12 = 132를 계산한다.",
+      "decisiveStep": "식의 인수분해 및 a^2+b^2=11, x^2+y^2=12 각각의 독립 산출",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_GROUPING_FACTORING_SYMMETRIC_EVAL",
+        "templateKey": "TPL_M3_QUADRATIC_PRODUCT_FACTOR_EVAL",
+        "why": "공통인수 묶기와 곱셈 공식 변형을 복합 적용하는 전형적인 식의 값 문항"
+      },
+      "crossConceptKeys": [
+        "CC_COMMON_FACTOR_EXTRACTION",
+        "CC_SUM_OF_SQUARES_IDENTITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "인수분해 묶기 단계와 두 대칭식 변형 계산 단계를 순차적으로 완결해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          59,
+          40
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 17,
+      "sourceQid": "17",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "conceptClusterKey": "SQUARE_ROOT_INTEGER_PART_INTERVAL_COUNT",
+      "primaryMethod": "7 <= 루트x < 8에서 49 <= x < 64를 유도하여 개수 64 - 49 = 15개를 구한다.",
+      "decisiveStep": "반열린구간의 자연수 개수 64 - 49 = 15 산출",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "제곱근과 실수",
+        "l4": "무리수의 정수 부분과 소수 부분"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_INTEGER_PART_COUNTING",
+        "templateKey": "TPL_M3_RADICAL_FLOOR_RANGE_COUNT",
+        "why": "무리수 정수부분 부등식을 연속한 두 제곱수 범위로 변환하여 개수를 세는 정형 문항"
+      },
+      "crossConceptKeys": [
+        "CC_INTEGER_COUNT_BETWEEN_BOUNDS"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "정수부분의 부등식 정의와 제곱수 사이의 정수 개수 공식을 대입하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          450
+        ],
+        "goal": [
+          129
+        ],
+        "method": [
+          296,
+          20
+        ],
+        "condition": [
+          1
+        ]
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 18,
+      "sourceQid": "18",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "SQUARE_ROOT_GEOMETRIC_SIDE_SUM",
+      "primaryMethod": "루트12=2루트3, 루트27=3루트3, 루트75=5루트3을 더하여 10루트3을 산출한다.",
+      "decisiveStep": "각 근호를 2루트3, 3루트3, 5루트3으로 간단히 한 뒤 동류항 합산",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "근호의 덧셈과 뺄셈"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_SQUARE_SIDE_LENGTH_SUM",
+        "templateKey": "TPL_M3_MULTIPLE_SQUARES_SIDE_SUM",
+        "why": "정사각형 넓이의 제곱근 변환과 근호 덧셈을 결합한 대표 기하 기초 문항"
+      },
+      "crossConceptKeys": [
+        "CC_SQUARE_AREA_FORMULA",
+        "CC_RADICAL_LIKE_TERMS_COMBINE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "세 제곱근을 간단히 고쳐 더하는 표준 1단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          166
+        ],
+        "goal": [
+          286
+        ],
+        "method": [
+          22,
+          294
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 19,
+      "sourceQid": "19",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "FACTORIZATION_GEOMETRIC_AREA_MODEL",
+      "primaryMethod": "x(x-2y) - 3y^2 = x^2 - 2xy - 3y^2을 (x+y)(x-3y)로 인수분해한다.",
+      "decisiveStep": "넓이 식 x^2 - 2xy - 3y^2 수립 후 (x+y)(x-3y) 인수분해 완성",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_GEOMETRIC_AREA_FACTORING",
+        "templateKey": "TPL_M3_RECTANGLE_MINUS_SQUARES_FACTOR",
+        "why": "도형 절단 모델을 다항식으로 모델링하고 인수분해하는 대표 기하-대수 융합 문항"
+      },
+      "crossConceptKeys": [
+        "CC_AREA_MODEL_FACTORING"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_ORDER"
+      ],
+      "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "도형 상황을 다항식으로 표현하고 두 일차식의 곱으로 인수분해하는 2단계 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          166
+        ],
+        "goal": [
+          59
+        ],
+        "method": [
+          59,
+          294
+        ],
+        "condition": [
+          346
+        ]
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 20,
+      "sourceQid": "20",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+      "conceptClusterKey": "PERFECT_SQUARE_RECIPROCAL_RANGE",
+      "primaryMethod": "근호 안을 각각 (a-1/a)^2, (a+1/a)^2으로 바꾸고 3a - (1/a-a) - (a+1/a) = 3a - 2/a를 구한다.",
+      "decisiveStep": "0<a<1에서 a - 1/a < 0이므로 절댓값을 1/a - a로 처리하는 단계",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "제곱근과 실수",
+        "l4": "근호가 있는 식의 변형"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_RECIPROCAL_RADICAL_SIMPLIFY",
+        "templateKey": "TPL_M3_INTERVAL_RECIPROCAL_RADICAL_CHAIN",
+        "why": "역수 합과 차의 곱셈 공식 변형을 근호 절댓값 부호 판정과 결합한 대표 고난도 문항"
+      },
+      "crossConceptKeys": [
+        "CC_RECIPROCAL_SUM_DIFF_IDENTITY",
+        "CC_ABSOLUTE_VALUE_OF_RADICAL"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "역수 제곱 변형 공식 2개와 0<a<1에서의 역수 대소 관계 및 절댓값 처리를 모두 완결해야 하는 문항",
+      "level": "상",
+      "item4slot": {
+        "given": [
+          39
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          40,
+          24
+        ],
+        "condition": [
+          296
+        ]
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 21,
+      "sourceQid": "21",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "NUMBER_LINE_CONJUGATE_FRACTION",
+      "primaryMethod": "a=3+2루트3, b=3-2루트3을 세우고 (3-2루트3)/(3+2루트3)을 유리화하여 4루트3-7을 산출한다.",
+      "decisiveStep": "분모 9-12=-3과 분자 21-12루트3의 나눗셈으로 4루트3-7 도출",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "분모의 유리화"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_NUMBER_LINE_RATIONALIZE_EVAL",
+        "templateKey": "TPL_M3_SQUARE_SIDE_COORDINATES_FRACTION",
+        "why": "수직선 좌표 작도와 켤레 분모 유리화를 결합한 대표 서술형 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DENOMINATOR_RATIONALIZATION_CONJUGATE",
+        "CC_NUMBER_LINE_DISPLACEMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "무리수 좌표 형성 단계와 분모 유리화 음수 분모 약분 단계를 완결해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          166,
+          295
+        ],
+        "goal": [
+          53
+        ],
+        "method": [
+          295,
+          53
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 22,
+      "sourceQid": "22",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+      "conceptClusterKey": "RADICAL_CUBOID_VOLUME_SURFACE_AREA",
+      "primaryMethod": "모서리를 3루트3, 루트3, 2루트3으로 정리 후 부피 18루트3과 겉넓이 2(9+6+18)=66을 산출한다.",
+      "decisiveStep": "세 모서리 곱을 통한 부피 18루트3 및 면적 2배를 통한 겉넓이 66 계산",
+      "rpm": {
+        "majorUnit": "수와 연산",
+        "midUnit": "실수와 그 연산",
+        "l3": "근호를 포함한 식의 계산",
+        "l4": "제곱근의 곱셈과 나눗셈의 활용"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_CUBOID_RADICAL_MEASURES",
+        "templateKey": "TPL_M3_CUBOID_VOLUME_AND_SURFACE_AREA",
+        "why": "입체도형의 부피와 겉넓이 공식에 근호 연산을 적용하는 기본 입체 융합 문항"
+      },
+      "crossConceptKeys": [
+        "CC_CUBOID_VOLUME",
+        "CC_CUBOID_SURFACE_AREA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "직육면체 공식에 근호 수를 대입하여 부피와 겉넓이를 각각 계산하는 2단계 문항",
+      "level": "하",
+      "item4slot": {
+        "given": [
+          166
+        ],
+        "goal": [
+          216
+        ],
+        "method": [
+          20,
+          294
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 23,
+      "sourceQid": "23",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+      "conceptClusterKey": "ALGEBRAIC_FORMULA_DUAL_PROOF",
+      "primaryMethod": "(a+b)^2=a^2+2ab+b^2을 쓰고 대수적 분배법칙과 기하학적 넓이 분할로 이중 증명한다.",
+      "decisiveStep": "분배법칙 전개와 기하 정사각형 4분할 넓이 합 a^2+2ab+b^2의 논리적 서술",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "다항식의 곱셈",
+        "l4": "곱셈 공식"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_FORMULA_DUAL_PROOF_WRITTEN",
+        "templateKey": "TPL_M3_ALGEBRAIC_GEOMETRIC_PROOF",
+        "why": "곱셈 공식의 수학적 근거를 대수적·기하학적으로 다면 서술하는 개념 평가 문항"
+      },
+      "crossConceptKeys": [
+        "CC_DISTRIBUTIVE_LAW",
+        "CC_AREA_MODEL_EXPANSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "GEOMETRY_ALGEBRA_FUSION",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수식 전개 증명과 도형 분할 설명의 두 가지 서술 요건을 논리적으로 완결해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          132
+        ],
+        "method": [
+          41,
+          294
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    },
+    {
+      "ordinal": 24,
+      "sourceQid": "24",
+      "variationType": "STRICT_VARIANT",
+      "standardCourse": "중3",
+      "courseKey": "MID-MATH-3",
+      "curriculum": "2015",
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "conceptClusterKey": "ALGEBRAIC_VALUE_DUAL_METHOD_EVAL",
+      "primaryMethod": "직접 대입법과 x-2=루트5에서 x^2-4x=1을 이용하는 변형식 대입법으로 0을 산출한다.",
+      "decisiveStep": "직접 대입 전개와 x-2=루트5 양변 제곱 x^2-4x=1의 두 과정 완결",
+      "rpm": {
+        "majorUnit": "문자와 식",
+        "midUnit": "다항식의 곱셈과 인수분해",
+        "l3": "인수분해",
+        "l4": "인수분해를 이용한 식의 값 구하기"
+      },
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M3_DUAL_METHOD_ALGEBRAIC_EVAL",
+        "templateKey": "TPL_M3_DIRECT_VS_TRANSFORMED_QUADRATIC_EVAL",
+        "why": "무리수의 대입 계산과 대수적 변형식 풀이의 장단점을 비교 검증하는 심화 서술형 문항"
+      },
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_EXPANSION",
+        "CC_RADICAL_SQUARING_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "직접 대입 소거 과정과 이항 제곱 변형 과정을 각각 독립 서술해야 하는 문항",
+      "level": "중",
+      "item4slot": {
+        "given": [
+          37
+        ],
+        "goal": [
+          61
+        ],
+        "method": [
+          40,
+          24
+        ],
+        "condition": []
+      },
+      "hold": {
+        "status": "PASS",
+        "reason": null
+      }
+    }
+  ]
+}

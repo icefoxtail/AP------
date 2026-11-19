@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "similar-exam-candidate-review-receipt-v1",
+  "examUid": "24_신흥중_1학기_중간_중3_유사",
+  "source": {
+    "documentId": "1tqpMX2MwQgYyX2anesj_wOUnRIBR5BL30KObsQlqpbY",
+    "revisionId": "AHj4eMQTTXHiqKRBFRTu7xuT6HtkgoZr9vXWe7Nrvwa3nSAPKm0C480XaLxTpXeib_B_NPRHtrhU9-YeCoz5DKU86NHdyj_Idkrvdl_m8gw",
+    "title": "24_신흥중_1학기_중간_중3_유사_일체형.md",
+    "questionCount": 25,
+    "totalScore": 100
+  },
+  "candidateJs": "archive/exams/similar/middle/m3/1mid/24_신흥중_1학기_중간_중3_유사.js",
+  "candidateBlobSha1": "71c3e4de2a61e87b3f6a2a66cd08614e6adc4c71",
+  "authoringStatus": "CANDIDATE_DRAFT",
+  "sourceAudit": {
+    "mainAndAccumulatorDuplicate": "NOT_FOUND",
+    "relatedPRs": "NOT_FOUND",
+    "relatedBranches": "NOT_FOUND",
+    "localOwnership": "CONFIRMED_NO_OTHER_WORKTREE_FOR_TARGET",
+    "docInlineObjects": 0,
+    "docPositionedObjects": 0,
+    "sourceVisualStatuses": {
+      "EXEMPT": 25
+    }
+  },
+  "contentRepairs": [
+    "Docs 추출의 목록 구분자 `, ;`를 쉼표로 정리했다. 수식 의미는 바꾸지 않음.",
+    "Docs 추출의 cm 단위 구두점을 LaTeX 단위 표기로 정리했다."
+  ],
+  "mathReview": {
+    "status": "NOT_RUN_FULL_REVIEW",
+    "scope": "원문 25문항·100점, 답·해설 텍스트를 구조화했다. 전체 독립 문항별 정답/해설 검산은 수행하지 않음.",
+    "openIssues": [
+      "Q6 발문은 그림을 참조하지만 문서 본문에 실제 이미지가 없고, 풀이에서 좌표를 설명한다. 문제 조건의 독립 완결성·원본 그림을 확인해야 한다.",
+      "독립 검산이 필요한 전체 리뷰는 미실시."
+    ]
+  },
+  "metadataReview": {
+    "status": "EVIDENCE_DEBT",
+    "candidateRows": 25,
+    "resolverStatus": "NOT_RUN",
+    "4slotStatus": "UNREVIEWED_25",
+    "registrationStatus": "NOT_SUBMITTED"
+  },
+  "visualReview": {
+    "status": "NEEDS_FOLLOWUP",
+    "problemNeed": [
+      6,
+      24
+    ],
+    "solutionNeed": [
+      6,
+      24
+    ],
+    "createdAssets": [],
+    "renderedItems": [],
+    "notes": [
+      "Q6 그림 위치·좌표는 추정하지 않음.",
+      "Q24는 원기둥 전개도와 치수 관계를 보여주는 자료가 학습에 도움."
+    ]
+  },
+  "checks": {
+    "nodeCheck": "PASS",
+    "tableCheck": "PASS (1 file, 0 tables, 0 FAIL)",
+    "similarExamHarness": "EXPECTED_DRAFT_GATE_FAIL (Q6/Q24 problem figures UNSUPPORTED; solution figure warnings; not production PASS)",
+    "jsonParsing": "PASS; all four sidecars parsed and source blob bindings verified"
+  },
+  "userScope": "Candidate conversion, helpful problem/solution figure assessment, and accumulator push; no SVG, new PR, or main merge."
+}
