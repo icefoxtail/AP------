@@ -1,0 +1,84 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          0,
+          1
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "2",
+        "-1"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-1"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 값(x→1-에서 f→-1, t→0-에서 f→2)을 갖는 예시 그래프를 그렸다. x→1-이면 x-1→0-이므로 f(x-1)은 t=x-1에서 f(t)의 좌극한 2(점 A)로 간다. 또 f(x)의 x→1- 극한은 점 B의 -1이다. 따라서 곱의 극한은 (-1)×2=-2이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 아래와 같을 때, $\\displaystyle\\lim_{x\\to1-}f(x)f(x-1)$의 값을 구하면? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x→1-에서 f의 극한 -1(점 B)과 t→0-에서 f의 극한 2(점 A)를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x→1-에서 f는 -1로, t→0-에서 f(t)는 2로 가므로 곱의 극한은 -2이다."
+  ],
+  "accessibilityDescription": "x=0과 x=1에서 끊어지는 조각 함수의 그래프이며 x=0에서 왼쪽 값 2(점 A)와 x=1의 왼쪽 값 -1(점 B)이 표시되어 있다."
+}

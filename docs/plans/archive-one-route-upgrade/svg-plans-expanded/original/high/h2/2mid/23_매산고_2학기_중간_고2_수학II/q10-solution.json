@@ -1,0 +1,96 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3",
+          "3"
+        ],
+        "domain": [
+          -2,
+          1
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "2",
+          "3",
+          "1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "-1/2",
+        "y": "-3/4"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "6"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "12"
+      }
+    ]
+  },
+  "caption": "그림은 y=f(x)g(x)이다. x<1에서 3x(x+1), 1≤x≤2에서 2x(x-1), x>2에서 (x+2)(x+1)이다. x=1에서 좌극한은 6(점 A), 함숫값과 우극한은 0(점 B)이라 불연속이다. x=2에서 좌극한과 함숫값은 4(점 C), 우극한은 12(점 D)라 불연속이다. 그 밖의 점에서는 연속이므로 불연속인 점은 2개이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 함수 $f(x)=\\begin{cases}3x&(x\\lt1)\\\\2&(1\\le x\\le2)\\\\x+2&(x\\gt2)\\end{cases}$, $g(x)=\\begin{cases}x+1&(x\\lt1\\ \\lor\\ x\\gt2)\\\\x^2-x&(1\\le x\\le2)\\end{cases}$에 대하여 함수 $f(x)g(x)$의 불연속인 점의 개수를 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "곱함수의 x=1, 2에서 좌극한, 함숫값, 우극한의 차이를 점프로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "곱함수 f(x)g(x)는 x=1에서 6에서 0으로, x=2에서 4에서 12로 뛰는 불연속이다."
+  ],
+  "accessibilityDescription": "x=1과 x=2에서 끊어지는 세 조각 포물선으로 된 곱함수의 그래프이며 두 경계에서 좌극한과 함숫값을 나타내는 점 A, B, C, D가 표시되어 있다."
+}

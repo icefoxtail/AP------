@@ -1,0 +1,89 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10",
+          "-9",
+          "6",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "10",
+          "9",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "3",
+        "y": "10"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3"
+      ],
+      "y": [
+        "10"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "6"
+      },
+      {
+        "id": "Q",
+        "x": "3",
+        "y": "10"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "6"
+      ],
+      "Q": [
+        "3",
+        "10"
+      ]
+    }
+  },
+  "caption": "x=3에서 좌미분계수 -f′(3)과 우미분계수 f′(3)이 같아야 하므로 f′(3)=0이고 a=9이다. 이때 f(3)=10이고 연속 조건 b-f(3)=f(3)에서 b=20이다. 그림은 a=9, b=20일 때의 g의 그래프로, x<3에서 20-f, x≥3에서 f이며 Q(3,10)에서 기울기 0으로 매끄럽게 이어진다. 2a+3b=78이므로 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^3-6x^2+ax+10$에 대하여 함수 $g(x)=\\begin{cases}b-f(x)&(x\\lt3)\\\\f(x)&(x\\ge3)\\end{cases}$가 실수 전체의 집합에서 미분가능할 때, $2a+3b$의 값은? (단, $a,b$는 상수이다.) [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=3에서 값 10과 기울기 0이 같게 이어지는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=9, b=20일 때 g가 Q(3,10)에서 수평 접선으로 매끄럽게 이어지고 P(1,6)에서 극소이다."
+  ],
+  "accessibilityDescription": "삼차곡선의 두 조각이 점 Q에서 수평하게 매끄럽게 이어진 함수의 그래프이며 극소점 P와 점 Q의 좌표가 표시되어 있다."
+}

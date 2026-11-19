@@ -1,0 +1,140 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "6",
+          "-5",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "g",
+    "domain": [
+      -0.5,
+      4
+    ],
+    "viewport": [
+      -0.5,
+      4,
+      -5,
+      9
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "2-sqrt(2)",
+        "y": "2"
+      },
+      {
+        "id": "C",
+        "x": "(5-sqrt(7))/3",
+        "y": "(20+14*sqrt(7))/27"
+      },
+      {
+        "id": "D",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "F",
+        "x": "2+sqrt(2)",
+        "y": "2"
+      },
+      {
+        "id": "N",
+        "x": "(5+sqrt(7))/3",
+        "y": "(20-14*sqrt(7))/27"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "0",
+        "0"
+      ],
+      "B": [
+        "2-sqrt(2)",
+        "2"
+      ],
+      "C": [
+        "(5-sqrt(7))/3",
+        "(20+14*sqrt(7))/27"
+      ],
+      "D": [
+        "2",
+        "0"
+      ],
+      "E": [
+        "3",
+        "0"
+      ],
+      "F": [
+        "2+sqrt(2)",
+        "2"
+      ],
+      "N": [
+        "(5+sqrt(7))/3",
+        "(20-14*sqrt(7))/27"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "N"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "k",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=k"
+        }
+      ]
+    }
+  },
+  "caption": "예: g(x)=x³-5x²+6x, k=2로 그린 그림이다(해설이 말하는 점 a, b, c, d, e, f를 A, B, C, D, E, F로 표시했다). 극대점 C에서는 접선이 수평이라 g′(c)=0이고 점 A에서는 증가하여 g′(a)>0이므로 ㄱ(g′(a)<g′(c))은 거짓이다. g(d)=0이고 g(c)>0이므로 g(d)-g(c)<0<d-c라 ㄴ은 참이다. 점 D에서는 감소하므로 g′(d)<0이고 평균변화율 (g(d)-g(a))/(d-a)=0이라 ㄷ은 거짓이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "양수 $k$에 대하여 함수 $y=g(x)$의 그래프와 직선 $y=k$가 아래와 같을 때, 보기에서 옳은 것만을 있는 대로 고른 것은? (단, $g(a)=g(d)=g(e)=0$, $g(b)=g(f)=k$이다.) [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "예시 삼차함수에서 점 A, D, E의 영점, 직선 y=k와 만나는 점 B, F, 극대점 C를 보이고 접선 기울기와 평균변화율의 부호를 비교한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "A, D, E에서 x축과 만나고 직선 y=k와 B, F에서 만나며 C에서 극대인 삼차함수의 예시이다."
+  ],
+  "accessibilityDescription": "x축과 세 점 A, D, E에서 만나고 수평선 y=k와 두 점 B, F에서 만나는 삼차함수의 그래프이며 극대점 C와 극소점 N이 표시되어 있다."
+}
