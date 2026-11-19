@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "A",
+        "mean": "20",
+        "sd": "4",
+        "label": "A",
+        "meanLine": true
+      },
+      {
+        "id": "B",
+        "mean": "40",
+        "sd": "2",
+        "label": "B",
+        "meanLine": true
+      },
+      {
+        "id": "C",
+        "mean": "60",
+        "sd": "8",
+        "label": "C",
+        "meanLine": true
+      }
+    ],
+    "ticks": [
+      {
+        "x": "20",
+        "text": "mA"
+      },
+      {
+        "x": "40",
+        "text": "mB"
+      },
+      {
+        "x": "60",
+        "text": "mC"
+      }
+    ]
+  },
+  "caption": "정규분포 곡선의 중심 위치가 평균이므로 왼쪽부터 A, B, C이면 평균은 A<B<C 순이다. 곡선이 좁고 높을수록 표준편차가 작으므로 가장 좁은 B가 가장 작고 가장 넓은 C가 가장 크다. 따라서 표준편차는 B<A<C 순이다. 그림은 이 관계를 보이는 예이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "세 정규분포 곡선 A, B, C가 왼쪽부터 놓여 있고 B가 가장 좁고 높으며 C가 가장 넓고 낮다. 각 곡선의 중심 위치가 표시되어 있다.",
+  "newVisualInformation": [
+    "세 곡선의 중심 순서(평균)와 폭의 순서(표준편차)가 한 그림에서 비교된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림에서 세 곡선 $A,B,C$는 각각 정규분포를 따르는 세 확률변수 $X_A,X_B,X_C$의 확률밀도함수의 그래프이다. $X_A,X_B,X_C$의 평균을 각각 $m_A,m_B,m_C$, 표준편차를 $\\sigma_A,\\sigma_B,\\sigma_C$라 할 때, 대소를 올바르게 비교한 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "0",
+        "text": "90"
+      },
+      {
+        "x": "1",
+        "text": "96"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "1",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.8413"
+      }
+    ]
+  },
+  "caption": "성공 횟수는 B(150, 0.6)이므로 평균 90, 분산 150×0.6×0.4=36, 표준편차 6이다. 0.8413=0.5+0.3413이므로 P(Z≤1)이고 경계가 z=1이다. (a−90)/6=1에서 a=96이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "평균 90에 대응하는 중심 0의 정규분포 곡선이며 96에 해당하는 z=1 위치가 표시되고 그 왼쪽 전체가 칠해져 있다.",
+  "newVisualInformation": [
+    "확률 0.8413이 z=1의 왼쪽 넓이이고 그 경계가 a=96임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 농구선수의 자유투 성공 확률은 $0.6$이다. 이 선수가 자유투를 $150$번 시도할 때, 성공한 횟수가 $a$번 이하일 확률은 $0.8413$이라고 한다. 자연수 $a$의 값을 아래 표준정규분포표를 이용하여 구한 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

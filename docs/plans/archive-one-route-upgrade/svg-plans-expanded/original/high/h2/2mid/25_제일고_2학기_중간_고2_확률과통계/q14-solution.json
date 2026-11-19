@@ -1,0 +1,57 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1",
+        "text": "W 70"
+      },
+      {
+        "x": "0.5",
+        "text": "X 215"
+      },
+      {
+        "x": "2",
+        "text": "Y 210"
+      }
+    ],
+    "shades": [
+      {
+        "from": "-1",
+        "to": "0.5",
+        "color": "BLUE"
+      },
+      {
+        "from": "0.5",
+        "to": "2",
+        "color": "GREEN"
+      },
+      {
+        "from": "2",
+        "to": null,
+        "color": "WARM"
+      }
+    ]
+  },
+  "caption": "표준화하면 a=P(Z≥−1), b=P(Z≥0.5), c=P(Z≥2)이다. 한 표준정규분포 곡선에서 오른쪽 꼬리는 시작점이 왼쪽일수록 넓다. 주황 부분이 c, 초록과 주황이 b, 파랑과 초록과 주황이 a이다. 따라서 a>b>c이고 답은 ①이다.",
+  "accessibilityDescription": "표준정규분포 곡선이며 z=−1, 0.5, 2의 위치가 표시되고 −1부터 0.5까지, 0.5부터 2까지, 2의 오른쪽이 서로 다른 세 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "세 확률이 같은 곡선의 오른쪽 꼬리로 겹쳐 비교되어 a>b>c가 한눈에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $W,X,Y$가 각각 정규분포 $N(80,10^2)$, $N(200,30^2)$, $N(180,15^2)$을 따를 때, $a=P(W\\ge70)$, $b=P(X\\ge215)$, $c=P(Y\\ge210)$이라 하자. $a,b,c$ 중 값이 큰 값부터 차례대로 나열한 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1",
+        "text": "-3"
+      },
+      {
+        "x": "0",
+        "text": "1"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "-1",
+        "color": "BLUE"
+      },
+      {
+        "from": "0",
+        "to": null,
+        "color": "WARM"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.1587"
+      },
+      {
+        "shade": 1,
+        "text": "0.5"
+      }
+    ]
+  },
+  "caption": "곡선과 직선이 만나려면 x²+(W−1)x+(1−W)=0의 판별식 (W−1)(W+3)≥0이어야 하므로 W≤−3 또는 W≥1이다. W가 N(1, 4²)이면 W=−3은 z=−1, W=1은 z=0이다. 왼쪽 꼬리 0.1587과 오른쪽 절반 0.5를 더해 0.6587이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "평균 1에 대응하는 중심 0의 정규분포 곡선이며 W=−3과 W=1의 위치가 표시되고 −3의 왼쪽과 1의 오른쪽이 다른 색으로 칠해져 있다.",
+  "newVisualInformation": [
+    "두 곡선이 만나는 W의 범위 W≤−3, W≥1이 각각 z=−1의 왼쪽과 z=0의 오른쪽 넓이임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $W$가 정규분포 $N(1,4^2)$을 따를 때, 곡선 $y=x^2+Wx+1$과 직선 $y=x+W$가 만날 확률을 아래 표준정규분포표를 이용하여 구한 것은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
