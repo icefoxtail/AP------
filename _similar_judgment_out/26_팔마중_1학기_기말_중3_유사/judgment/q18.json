@@ -1,0 +1,72 @@
+{
+  "qid": 18,
+  "itemFingerprint": "aab94035eb335ed9",
+  "solveSteps": [
+    "y = x^2 - 2ax + a^2 + a + 2를 표준형으로 변형하면 y = (x - a)^2 + a + 2이다.",
+    "이 포물선의 꼭짓점의 좌표는 (a, a + 2)이다.",
+    "꼭짓점이 제3사분면 위에 있으려면 x좌표와 y좌표가 모두 음수이어야 한다.",
+    "a < 0이고 a + 2 < 0에서 a < -2이다.",
+    "따라서 공통 범위는 a < -2이므로 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = x^2 - 2ax + a^2 + a + 2$의",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmReason": "x^2 - 2ax + a^2 + a + 2를 완전제곱식으로 변형한 꼭짓점 (a, a+2)가 제3사분면에 위치하도록 a < -2를 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "x^2 - 2ax + a^2 + a + 2의 꼭짓점 (a, a+2)가 제3사분면에 위치할 조건 a < -2를 구하는 이차함수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x^2 - 2ax의 완전제곱 변환 후 제3사분면 부호 조건 a < 0, a + 2 < 0을 연립해 a < -2를 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = x^2 - 2ax + a^2 + a + 2$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a$의 값의 범위는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점이 제3사분면 위에 있으려면 $a < 0$이고 $a + 2 < 0$이어야 하므로",
+        "evidenceType": "IMPLIED",
+        "justification": "꼭짓점 좌표를 구한 뒤 사분면 좌표 부호 조건 적용"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점이 제3사분면 위에 있도록 하는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x^2 - 2ax의 표준형 꼭짓점 (a, a+2)에서 a < 0과 a + 2 < 0을 연립하여 a < -2임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "qid": 9,
+  "itemFingerprint": "2452879de97510e3",
+  "solveSteps": [
+    "이차함수는 y = ax^2 + bx + c (a != 0) 꼴의 다항함수이어야 한다.",
+    "① y = x + 2/x는 분모에 x가 있어 다항함수가 아니다.",
+    "② y = (x - 3)^2 = x^2 - 6x + 9로 이차함수이다.",
+    "③ y = -2x + 5는 일차함수이다.",
+    "④ y = 4 - 5x^2 = -5x^2 + 4로 이차함수이다.",
+    "⑤ y = (x + 1)^2 - x^3은 x^3 항이 남아 삼차함수이다.",
+    "따라서 이차함수인 것은 ②, ④이다."
+  ],
+  "solvedAnswer": "②, ④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "다음 중 이차함수인 것을 모두 고르면? (정답 2개) [3점]",
+  "rpmRecordId": "M3-RPM-043",
+  "rpmReason": "y = (x-3)^2과 y = 4 - 5x^2 등이 이차함수 조건을 만족하는지 판별하는 이차함수의 뜻 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_POLYNOMIAL",
+  "typeReason": "주어진 여러 식 중 y = (x-3)^2과 y = 4 - 5x^2이 차수가 2인 다항함수임을 식별하는 이차함수 판별 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "식의 전개와 차수를 관찰하여 y = (x-3)^2 등이 이차함수임을 직접 판별하므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "다음 중 이차함수인 것을 모두 고르면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수인 것을 모두 고르면? (정답 2개) [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "① 분모에 $x$가 있으므로 이차함수가 아니다.",
+        "evidenceType": "IMPLIED",
+        "justification": "다항식의 차수와 정의를 기준으로 이차함수 선별"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = (x-3)^2과 y = 4 - 5x^2은 정리했을 때 2차 다항식이므로 이차함수이며 정답은 ②, ④임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

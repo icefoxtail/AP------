@@ -1,0 +1,72 @@
+{
+  "qid": 4,
+  "itemFingerprint": "a9f9e1f2ca371171",
+  "solveSteps": [
+    "x^2 + 8x + 3k = -1을 일반형으로 정리하면 x^2 + 8x + (3k + 1) = 0이다.",
+    "이차방정식이 중근을 가지려면 상수항이 (일차항 계수 / 2)^2이어야 한다.",
+    "상수항 3k + 1 = (8 / 2)^2 = 16이다.",
+    "3k = 15이므로 k = 5이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $x^2 + 8x + 3k = -1$이 중근을 가질 때,",
+  "rpmRecordId": "M3-RPM-034",
+  "rpmReason": "x^2 + 8x + 3k = -1이 중근을 갖도록 상수항 3k + 1 = 16 조건을 적용해 k = 5를 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+  "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT",
+  "typeReason": "x^2 + 8x + (3k+1) = 0에서 완전제곱식 조건 3k + 1 = 16을 세워 매개변수 k = 5를 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "중근 조건 3k + 1 = 16을 세워 일차방정식을 풀어 k = 5를 산출하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 + 8x + 3k = -1$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "중근",
+        "src": "solution",
+        "quote": "중근을 가지려면 상수항이 $\\left(\\frac{8}{2}\\right)^2 = 16$이어야 하므로",
+        "evidenceType": "IMPLIED",
+        "justification": "이차방정식의 완전제곱식 중근 조건 적용"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 가질 때,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x^2 + 8x + (3k+1) = 0이 중근을 가질 조건 3k + 1 = 16에서 k = 5임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

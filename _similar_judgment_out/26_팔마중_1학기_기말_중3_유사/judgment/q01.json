@@ -1,0 +1,65 @@
+{
+  "qid": 1,
+  "itemFingerprint": "fd77bc0f6fb0aa9b",
+  "solveSteps": [
+    "이차방정식 x^2 - 3x - 18 = 0의 좌변을 인수분해한다.",
+    "곱이 -18이고 합이 -3인 두 정수는 -6과 3이므로 (x - 6)(x + 3) = 0이다.",
+    "따라서 x - 6 = 0 또는 x + 3 = 0에서 x = 6 또는 x = -3이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "다음 이차방정식 $x^2 - 3x - 18 = 0$의 해를 구하면?",
+  "rpmRecordId": "M3-RPM-032",
+  "rpmReason": "x^2 - 3x - 18 = 0을 (x-6)(x+3) = 0으로 인수분해하여 해 x = -3, x = 6을 구하는 기본 인수분해 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "이차방정식 x^2 - 3x - 18 = 0을 인수분해를 통해 해를 구하는 이차방정식 기본 풀이 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x^2 - 3x - 18 = 0을 간단한 정수 인수분해 공식으로 바로 풀 수 있어 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "다음 이차방정식 $x^2 - 3x - 18 = 0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "해를 구하면? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "$x^2 - 3x - 18 = (x-6)(x+3) = 0$",
+        "evidenceType": "IMPLIED",
+        "justification": "좌변을 인수분해하여 일차식의 곱으로 변형"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x^2 - 3x - 18 = 0을 (x-6)(x+3) = 0으로 인수분해하여 x = -3 또는 x = 6임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

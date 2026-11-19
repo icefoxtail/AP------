@@ -1,0 +1,74 @@
+{
+  "qid": 10,
+  "itemFingerprint": "1775d893e797db04",
+  "solveSteps": [
+    "이차함수 y = 5x^2의 그래프의 성질을 조사한다.",
+    "ㄱ. y = ax^2의 대칭축은 y축이다. (참)",
+    "ㄴ. a = 5 > 0이므로 아래로 볼록하다. (거짓)",
+    "ㄷ. 꼭짓점의 좌표는 (0, 0)이다. (거짓)",
+    "ㄹ. 포물선의 폭은 |a|의 값에 반비례한다. |5| < |-11/2| = 5.5이므로 y = 5x^2의 폭이 더 넓다. (참)",
+    "ㅁ. y = -5x^2은 y = 5x^2과 x축에 대하여 대칭이다. (참)",
+    "따라서 옳은 것은 ㄱ, ㄹ, ㅁ이므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = 5x^2$의 그래프에 대한 설명으로",
+  "rpmRecordId": "M3-RPM-045",
+  "rpmReason": "y = 5x^2과 y = -11/2 x^2의 계수 절댓값 비교 및 대칭축, 대칭성을 비교하는 포물선 모양 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+  "templateKey": "TPL_M3_EVALUATE_PARABOLA_PROPERTIES_STATEMENTS",
+  "typeReason": "y = 5x^2 그래프의 축, 볼록성, 폭(y = -11/2 x^2과의 비교), 대칭성에 대한 여러 진술의 참·거짓을 판별하는 포물선 성질 진술 판별 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "y = 5x^2의 기본 성질과 폭 비교 |5| < |-11/2|를 통해 참인 진술을 고르므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = 5x^2$의 그래프에 대한"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "그래프에 대한 설명으로 옳은 것만을 모두 고른 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭",
+        "src": "solution",
+        "quote": "$y=5x^2$과 $y=-5x^2$은 $x$축에 대칭이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "계수 부호 반전에 따른 x축 대칭 및 절댓값에 따른 폭 비교 적용"
+      }
+    ],
+    "condition": [
+      {
+        "term": "축",
+        "src": "stem",
+        "quote": "ㄱ. $y$축을 축으로 한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "y = 5x^2은 y축을 축으로 하고 |-11/2|보다 폭이 넓으며 y = -5x^2과 x축에 대칭이므로 ㄱ, ㄹ, ㅁ을 정답으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

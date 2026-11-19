@@ -1,0 +1,72 @@
+{
+  "qid": 22,
+  "itemFingerprint": "69aa5f84e10338a7",
+  "solveSteps": [
+    "점 (k-2, 2k^2 - 3k - 14)를 y = kx + 6에 대입하면 aligned 전개식 2k^2 - 3k - 14 = k(k-2) + 6이다.",
+    "2k^2 - 3k - 14 = k^2 - 2k + 6을 정리하면 k^2 - k - 20 = 0이다.",
+    "(k - 5)(k + 4) = 0이므로 k = 5 또는 k = -4이다.",
+    "점이 제1사분면 위에 있으므로 x좌표 k - 2 > 0이어야 한다.",
+    "따라서 k = 5이다."
+  ],
+  "solvedAnswer": "5",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "일차함수 $y = kx + 6$의 그래프가 제1사분면 위의 점",
+  "rpmRecordId": "M3-RPM-032",
+  "rpmReason": "y = kx + 6에 점을 대입해 aligned 전개로 k^2 - k - 20 = 0을 얻고 k - 2 > 0에서 k = 5를 구하는 인수분해 풀이 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "점의 좌표를 일차함수에 대입해 aligned 이차방정식 k^2 - k - 20 = 0을 세우고 사분면 조건으로 k = 5를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "점 대입으로 aligned 이차방정식 k^2 - k - 20 = 0을 풀고 사분면 조건으로 k = 5를 선별하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = kx + 6$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값을 구하는 과정을 서술하시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "점을 직선 식에 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "좌표를 일차함수 식에 대입하여 k에 대한 이차방정식 유도"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "제1사분면 위의 점"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "y = kx + 6에 점을 대입해 aligned 식 k^2 - k - 20 = 0을 얻고 제1사분면 조건 k - 2 > 0으로부터 k = 5임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

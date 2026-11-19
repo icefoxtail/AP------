@@ -1,0 +1,72 @@
+{
+  "qid": 21,
+  "itemFingerprint": "3086bb4a53fcf2d4",
+  "solveSteps": [
+    "(x-4)(x+a) = x^2 + (a-4)x - 4a = 0이다.",
+    "이차방정식 x^2 - 2x + b = 0과 해가 같으므로 일차항과 상수항 계수를 비교한다.",
+    "a - 4 = -2에서 a = 2이다.",
+    "b = -4a이므로 b = -4(2) = -8이다.",
+    "따라서 a^2 + b^2 = 2^2 + (-8)^2 = 4 + 64 = 68이다."
+  ],
+  "solvedAnswer": "68",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "두 이차방정식 $(x-4)(x+a) = 0$, $x^2 - 2x + b = 0$의",
+  "rpmRecordId": "M3-RPM-031",
+  "rpmReason": "(x-4)(x+a) = 0과 x^2 - 2x + b = 0의 계수를 비교해 a = 2, b = -8을 구하고 a^2 + b^2 = 68을 계산하는 문항이다.",
+  "problemTypeKey": "PT_M3_ROOT_COEFFICIENT",
+  "templateKey": "NONE",
+  "typeReason": "두 이차방정식이 같은 해를 가질 때 전개식을 계수 비교하여 a = 2, b = -8을 복원하고 a^2 + b^2 = 68을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "전개식의 계수 비교 a - 4 = -2로부터 a, b를 구하고 a^2 + b^2 = 68을 산출하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "두 이차방정식 $(x-4)(x+a) = 0$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b$에 대하여 $a^2 + b^2$의 값을 구하는 과정을 서술하시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "해",
+        "src": "solution",
+        "quote": "$x^2 - 2x + b = 0$과 해가 같으므로 계수를 비교하면",
+        "evidenceType": "IMPLIED",
+        "justification": "해가 같으므로 전개식과 계수를 비교하여 미정계수 결정"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "해가 같을 때,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(x-4)(x+a) = 0과 x^2 - 2x + b = 0의 계수를 비교해 a = 2, b = -8을 구하고 a^2 + b^2 = 68임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

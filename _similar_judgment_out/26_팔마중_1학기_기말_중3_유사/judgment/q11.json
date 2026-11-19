@@ -1,0 +1,65 @@
+{
+  "qid": 11,
+  "itemFingerprint": "59c7227dd4b6993b",
+  "solveSteps": [
+    "세 이차함수 y = ax^2, y = 4x^2, y = 2/3 x^2의 그래프에서 모두 아래로 볼록하므로 a > 0이다.",
+    "그림에서 y = ax^2의 그래프의 폭은 y = 4x^2보다 넓고 y = 2/3 x^2보다 좁으므로 2/3 < a < 4이다.",
+    "보기 중 1/2은 1/2 < 2/3이므로 이 범위에 속하지 않는다.",
+    "따라서 a의 값이 될 수 없는 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그래프가 다음 그림과 같을 때,",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "세 이차함수 $y = ax^2$, $y = 4x^2$,",
+  "rpmRecordId": "M3-RPM-045",
+  "rpmReason": "y = 4x^2과 y = 2/3 x^2 사이에 위치하는 y = ax^2의 계수 범위 2/3 < a < 4를 포물선 폭으로 판별하는 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+  "templateKey": "TPL_M3_QUADRATIC_PROPERTIES_WIDTH",
+  "typeReason": "y = ax^2의 그래프 폭 비교로부터 2/3 < a < 4를 유도해 1/2이 될 수 없음을 판정하는 포물선 폭과 방향 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "y = ax^2의 폭 비교 부등식 2/3 < a < 4에서 1/2의 대소를 비교하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "세 이차함수 $y = ax^2$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "수 $a$의 값이 될 수 없는 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "폭이 $y=4x^2$보다 넓고",
+        "evidenceType": "IMPLIED",
+        "justification": "이차항 계수의 절댓값에 따른 포물선 폭 비교"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림의 y = ax^2 폭 조건 2/3 < a < 4로부터 1/2 < 2/3이므로 a의 값이 될 수 없어 ⑤가 정답임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
