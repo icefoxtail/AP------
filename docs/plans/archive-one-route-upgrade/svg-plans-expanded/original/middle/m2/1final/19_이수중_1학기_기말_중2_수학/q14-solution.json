@@ -1,50 +1,77 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
-          "840",
-          "640"
-        ],
-        "domain": [
-          "0",
-          "25"
-        ],
-        "label": "y=640x+840",
-        "color": "BLUE"
+          "21/25",
+          "16/25"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "25"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      25
+    ],
+    "viewport": [
+      -4.5,
+      29.5,
+      -3.4,
+      20.2
+    ],
+    "axisTickValues": {
+      "x": [
+        "5",
+        "10",
+        "15",
+        "25"
+      ],
+      "y": [
+        "5",
+        "10",
+        "15"
+      ]
+    },
+    "axisTitles": {
+      "x": "사용량",
+      "y": "요금(천 원)"
+    },
     "overlays": {
       "points": [
         {
           "id": "P0",
           "x": "0",
-          "y": "840",
+          "y": "21/25",
           "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P",
           "x": "20",
-          "y": "13640",
+          "y": "341/25",
           "coordinates": true
         }
       ]
-    },
-    "axisTitles": {
-      "x": "x",
-      "y": "y(원)"
     }
   },
-  "caption": "표에서 사용량이 1씩 늘 때마다 요금이 640원씩 늘고 사용량이 0일 때 840원이므로 사용량 x와 요금 y 사이에 y=640x+840이 성립한다. y=13640이면 640x=12800에서 x=20이다. 따라서 도시가스의 사용량은 20m³이고 답은 ③이다.",
+  "caption": "표에서 사용량이 1씩 늘 때마다 요금이 640원씩 늘고 사용량이 0일 때 840원이므로 사용량 x와 요금 y 사이에 y=640x+840이 성립한다. y=13640이면 640x=12800에서 x=20이다. 그림의 세로축은 천 원 단위(13.64천 원 = 13,640원)이다. 따라서 도시가스의 사용량은 20m³이고 답은 ③이다.",
   "newVisualInformation": [
-    "일차함수 y=640x+840에서 y=13640이면 x=20"
+    "일차함수 y=640x+840에서 y=13640(13.64천 원)이면 x=20"
   ],
-  "accessibilityDescription": "y절편 840에서 시작해 오른쪽 위로 올라가는 직선이 있고 x=20일 때 y=13640인 점 P가 표시되어 있다.",
+  "accessibilityDescription": "y절편 0.84천 원(840원)에서 시작해 오른쪽 위로 올라가는 직선이 있고 x=20일 때 요금이 13.64천 원(13,640원)인 점 P가 표시되어 있다.",
   "sourceConditions": [
     {
       "id": "source",
