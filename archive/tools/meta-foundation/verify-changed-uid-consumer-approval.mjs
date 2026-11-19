@@ -89,6 +89,7 @@ const FIELD_ALIAS = { curriculum: "curriculumKey" };
 const nfc = value => typeof value === "string" ? value.normalize("NFC") : value;
 const same = (a, b) => isDeepStrictEqual(nfc(a) ?? null, nfc(b) ?? null);
 const own = (o, k) => Boolean(o) && typeof o === "object" && Object.hasOwn(o, k);
+const isInlinePlaceholder = value => value === null || value === undefined || value === "" || value === "UNKNOWN";
 const normalizeFile = value => String(value || "").normalize("NFC").replace(/\\/g, "/").replace(/^\.?\/?archive\/exams\//, "").replace(/^\.?\/?exams\//, "").replace(/^\/+/, "");
 
 class UnitError extends Error { constructor(reason, detail) { super(detail || reason); this.reason = reason; this.detail = detail || ""; } }
@@ -426,7 +427,7 @@ function verifiedDifficultyRows(root, unit, consumer) {
     return { ...row, difficultyProjection: { values, binding: checked.consumerBinding, semanticPending,
       ordinaryNormalization: proof.mode === "verify-projection" && !unit.request.reviewedCorrection,
       currentTags: { tagConfidence: meta.tagConfidence, tagStatus: meta.tagStatus },
-      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", "legacyLevelCompatibility"].map(field => [field, source[field] ?? null])) } };
+      sourceAnnotations: Object.fromEntries(["tagConfidence", "tagStatus", ...DIFFICULTY_FIELDS].map(field => [field, source[field] ?? null])) } };
   });
 }
 
@@ -454,6 +455,9 @@ function checkRow(consumer, unit, row) {
     const mismatched = DIFFICULTY_FIELDS.filter(field => own(difficulty.values, field) && own(resolved, field) && !same(resolved[field], difficulty.values[field]));
     if (mismatched.length) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty tuple != canonical consumer: " + mismatched.join(",") };
   }
+  // The fields this request changes: what the difficulty registrar reported, or the two type fields of a type-only request.
+  // A typed (reviewed) correction keeps the strict rule: every conflict blocks.
+  const requestFields = difficulty?.ordinaryNormalization ? Object.keys(difficulty.values) : unit.kind === "direct-type-judgment" ? ["problemTypeKey", "templateKey"] : null;
   const blockingConflicts = (resolved.metadataConflicts || []).filter(field => {
     if (unit.approvalType === "REVIEW2" && (field === "reviewStatus" || REVIEW2_SOURCE_OVERRIDE_FIELDS.includes(field))) return false;
     let reason = null;
@@ -465,8 +469,16 @@ function checkRow(consumer, unit, row) {
         same(resolved[field], difficulty.values[field]) && difficulty.sourceAnnotations[field] !== null &&
         !same(difficulty.sourceAnnotations[field], difficulty.values[field]))
       reason = "OFFICIAL_D5_LEGACY_COMPATIBILITY_NORMALIZATION";
+    // A difficulty or direct type request blocks only on the fields it changes. An older disagreement between the exam file's own
+    // inline value and the registered value in a field this request does not touch was not made by this request and is not removed
+    // by refusing it: it stays visible as an advisory. Other request kinds keep refusing every conflict.
+    if (!reason && requestFields && field !== "foundationTaxonomy" && !requestFields.includes(field)) reason = "NOT_CHANGED_BY_THIS_REQUEST";
+    // In a field the difficulty request registers, an inline placeholder (empty, null or UNKNOWN) is not a value that disagrees.
+    // A real inline value (1..5 or a legacy word) that differs from the registered value is still refused.
+    if (!reason && difficulty?.ordinaryNormalization && DIFFICULTY_FIELDS.includes(field) && isInlinePlaceholder(difficulty.sourceAnnotations[field]))
+      reason = "INLINE_PLACEHOLDER_REPLACED";
     if (!reason) return true;
-    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty.sourceAnnotations[field],
+    (out.metadataConflictAdvisories ||= []).push({ field, reason, sourceValue: difficulty?.sourceAnnotations?.[field] ?? null,
       canonicalValue: resolved[field], semanticApproval: false });
     return false;
   });
