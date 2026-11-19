@@ -1,0 +1,81 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      5,
+      -3,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "-1/2"
+        ],
+        "domain": [
+          "-2",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "11/10",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "x": "1"
+        }
+      ]
+    }
+  },
+  "caption": "g는 g(x)=log₃(x−1)의 그래프이고 점근선은 세로선 x=1이다. f는 f(x)=2⁻ˣ+t의 그래프이며 x축 위의 교점 P(1, 0)을 지날 때를 그렸다. f(1)=1/2+t=0이므로 t=−1/2이고 f의 점근선은 y=−1/2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "세로 점근선 x=1 오른쪽에서 올라가는 주황 로그 곡선 g와 오른쪽으로 내려가는 파란 지수 곡선 f가 있다. 점근선과 가로축이 만나는 점 P의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "g의 점근선 x=1과 x축이 만나는 점 P(1, 0)을 f가 지나도록 그려 t=−1/2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\log_{3}(x-1)$의 점근선과 함수 $y=2^{-x}+t$의 그래프가 만나는 점이 $x$축 위에 있을 때, 상수 $t$의 값은? (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

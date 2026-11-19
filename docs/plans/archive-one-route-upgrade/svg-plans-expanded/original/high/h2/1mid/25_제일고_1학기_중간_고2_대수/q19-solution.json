@@ -1,0 +1,86 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "8",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "7"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -1,
+      7,
+      -2,
+      16
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "5"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "2",
+        "y": "0"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "8"
+      },
+      {
+        "id": "D",
+        "x": "6",
+        "y": "8"
+      }
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "y8",
+          "slope": "0",
+          "intercept": "8"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=(x−2)(x−4)의 그래프로 x절편 A(2, 0), B(4, 0)과 y절편 C(0, 8)을 지난다. 진수 조건 f(x)>0에서 x<2 또는 x>4이고, log₂f(x)≤3에서 f(x)≤8이므로 직선 y=8 아래인 0≤x≤6이다. 두 범위의 공통부분은 0≤x<2 또는 4<x≤6이고 정수는 0, 1, 5, 6이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "아래로 볼록한 포물선 f와 가로선 y=8이 있고, 포물선이 가로축과 만나는 두 점 A, B와 가로선과 만나는 두 점 C, D의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "f가 양수인 구간 x<2, x>4와 f(x)≤8인 구간 0≤x≤6을 점 A, B, C, D와 직선 y=8로 보여 정수 0, 1, 5, 6을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "이차함수 $y = f(x)$의 그래프가 다음 그림과 같이 세 점 $(2, 0)$, $(4, 0)$, $(0, 8)$을 지난다. 부등식 $\\log_2 f(x) \\le 3$을 만족시키는 정수 $x$의 개수는? (4.6점)\\n<svg width=\"200\" height=\"180\" viewBox=\"0 0 200 180\" xmlns=\"http://www.w3.org/2000/svg\">\\n  <line x1=\"20\" y1=\"130\" x2=\"180\" y2=\"130\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n  <line x1=\"50\" y1=\"160\" x2=\"50\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\\n  <path d=\"M 40.0,17.5 L 42.73,26.88 L 45.47,35.9 L 48.2,44.53 L 50.94,52.79 L 53.67,60.68 L 56.41,68.2 L 59.14,75.34 L 61.88,82.11 L 64.61,88.5 L 67.35,94.52 L 70.08,100.16 L 72.82,105.43 L 75.55,110.33 L 78.29,114.86 L 81.02,119.0 L 83.76,122.78 L 86.49,126.18 L 89.22,129.21 L 91.96,131.86 L 94.69,134.14 L 97.43,136.05 L 100.16,137.58 L 102.9,138.74 L 105.63,139.52 L 108.37,139.93 L 111.1,139.97 L 113.84,139.63 L 116.57,138.92 L 119.31,137.83 L 122.04,136.38 L 124.78,134.54 L 127.51,132.33 L 130.24,129.75 L 132.98,126.8 L 135.71,123.47 L 138.45,119.77 L 141.18,115.69 L 143.92,111.24 L 146.65,106.41 L 149.39,101.22 L 152.12,95.64 L 154.86,89.7 L 157.59,83.38 L 160.33,76.68 L 163.06,69.61 L 165.8,62.17 L 168.53,54.35 L 171.27,46.16 L 174.0,37.6\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\\n  <text x=\"40\" y=\"55\" font-size=\"12px\">8</text>\\n  <text x=\"85\" y=\"145\" font-size=\"12px\">2</text>\\n  <text x=\"125\" y=\"145\" font-size=\"12px\">4</text>\\n  <text x=\"35\" y=\"145\" font-size=\"12px\">O</text>\\n  <text x=\"175\" y=\"145\" font-size=\"12px\">x</text>\\n  <text x=\"55\" y=\"25\" font-size=\"12px\">y</text>\\n  <text x=\"145\" y=\"45\" font-size=\"12px\">y=f(x)</text>\\n  <defs>\\n    <marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\">\\n      <path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/>\\n    </marker>\\n  </defs>\\n</svg>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

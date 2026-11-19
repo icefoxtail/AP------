@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "8",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "8"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      8
+    ],
+    "viewport": [
+      -1,
+      9,
+      -3,
+      20
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "r",
+      "y": "S"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "4",
+        "y": "16"
+      }
+    ]
+  },
+  "caption": "S는 반지름 r에 따른 부채꼴의 넓이이다. 둘레가 16이면 호의 길이는 l=16−2r이므로 S=(1/2)r(16−2r)=−(r−4)²+16이다. 그래프의 꼭짓점 V(4, 16)에서 넓이가 최대이므로 반지름은 4이고 이때 호의 길이는 8이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "r가 0에서 8 사이일 때 위로 볼록한 포물선 S가 그려져 있고 꼭짓점 V의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "부채꼴 넓이 S(r)의 그래프와 최고점 V(4, 16)을 보여 최대가 되는 반지름 4를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둘레의 길이가 16인 부채꼴 중에서 그 넓이가 최대인 부채꼴의 반지름의 길이는? (4.2점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

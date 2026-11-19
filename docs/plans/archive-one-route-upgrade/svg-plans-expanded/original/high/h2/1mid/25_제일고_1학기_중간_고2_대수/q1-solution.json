@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -1,
+      8
+    ],
+    "curves": [
+      {
+        "id": "up",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-4",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "a>1"
+      },
+      {
+        "id": "down",
+        "kind": "EXPONENTIAL",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "0<a<1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "파란 곡선은 a>1, 주황 곡선은 0<a<1인 y=aˣ의 그래프이다. 두 곡선은 모두 점 (0, 1)을 지나고 x축(y=0)에 한없이 가까워지지만 닿지 않으며, y축에는 가까워지지 않는다. 따라서 y축을 점근선으로 갖는다는 ⑤는 옳지 않고 답은 ⑤이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선과 오른쪽 아래로 내려오는 주황 지수 곡선이 점 (0, 1)에서 만나고, 두 곡선 모두 가로축 위쪽에 놓여 있다.",
+  "newVisualInformation": [
+    "a>1과 0<a<1인 두 지수곡선을 함께 그려 점 (0, 1) 통과, 치역, 증가·감소, x축 점근선을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "지수함수 $y=a^{x}(a>0, a\\ne 1)$의 그래프의 성질로 옳지 않은 것은? (3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

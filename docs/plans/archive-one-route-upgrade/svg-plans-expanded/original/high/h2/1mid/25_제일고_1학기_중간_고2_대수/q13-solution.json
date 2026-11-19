@@ -1,0 +1,63 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -2,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "-21/25"
+        ],
+        "domain": [
+          "-3",
+          "4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "4/25",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "slope": "0",
+          "intercept": "-21/25"
+        }
+      ]
+    }
+  },
+  "caption": "예: a=1/4, b=1/2일 때의 개형이다. bᵃ는 약 0.84이며 그림은 y=(1/2)ˣ−0.84를 그렸다. 두 로그함수가 모두 감소하므로 0<a<1, 0<b<1이고 x>1에서 log_a x>log_b x이므로 a<b이다. 그러면 0<a/b<1이라 그래프는 감소하고, y절편 1−bᵃ는 양수이며 점근선 y=−bᵃ은 x축 아래에 있다. 이런 그래프는 ⑤이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "오른쪽으로 내려가는 지수 곡선 f가 y축을 원점 위쪽의 점 P에서 지나고, x축 아래의 가로 점근선에 가까워진다. 점 P의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "0<a<b<1의 예에서 감소하는 지수곡선, 원점 위의 y절편 P, x축 아래 가로 점근선의 위치를 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "1이 아닌 두 양수 $a, b$에 대하여 두 함수 $y=\\log_a x$와 $y=\\log_b x$의 그래프가 다음 그림과 같을 때, 함수 $y=\\left(\\dfrac{a}{b}\\right)^x-b^a$의 그래프의 개형으로 가장 알맞은 것은? (4.2점)<br><img src=\"assets/images/25_제일고_1학기_중간_고2_대수/q13-quality-v4.svg\" alt=\"점 (1, 0)에서 만나는 두 감소 로그함수. x가 1보다 큰 쪽에서 밑이 a인 곡선이 밑이 b인 곡선보다 위에 있다.\" style=\"width:285px;max-width:100%;height:auto;\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

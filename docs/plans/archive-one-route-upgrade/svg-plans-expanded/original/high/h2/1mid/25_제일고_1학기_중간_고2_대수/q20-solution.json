@@ -1,0 +1,111 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      7,
+      -6,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "shiftX": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "6"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "-8",
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "1/2",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "5",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "3/2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "1",
+          "y": "-3",
+          "coordinates": true
+        },
+        {
+          "id": "D",
+          "x": "4",
+          "y": "1/2",
+          "coordinates": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "par",
+          "points": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "fill": "LIGHT"
+        }
+      ],
+      "segments": [
+        {
+          "id": "AC",
+          "from": "A",
+          "to": "C",
+          "dashed": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 y=2ˣ⁻³+1, g는 y=−8/2ˣ+1의 그래프이고 A, B는 f 위의 점, C, D는 g 위의 점이다. 무게중심 조건에서 x좌표의 합 xA+xB+xD=11, xA+xB+xC=8이므로 xD−xC=3이고 평행사변형 조건에서 xB−xA=−3이다. 이를 곡선 위 점의 조건에 넣어 A(5, 5), B(2, 3/2), C(1, −3), D(4, 1/2)을 얻는다. 넓이는 10이고 답은 ④이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f와 아래쪽에서 올라오는 주황 곡선 g가 있고, 네 점 A, B, C, D를 이은 평행사변형이 색칠되어 있다. 대각선 AC는 점선이고 네 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "두 곡선 위 점 A, B, C, D의 좌표와 평행사변형 ABCD, 대각선 AC를 보여 넓이 계산의 뼈대를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=2^{x-3}+1$의 그래프 위의 두 점 $A, B$와 함수 $y=-\\frac{8}{2^x}+1$의 그래프 위의 두 점 $C, D$가 다음 조건을 만족시킨다.<br>(가) 사각형 $ABCD$는 평행사변형이다.<br>(나) 삼각형 $ABD$의 무게중심의 $x$좌표는 $\\frac{11}{3}$이고, 삼각형 $ABC$의 무게중심의 $x$좌표는 $\\frac{8}{3}$이다.<br>사각형 $ABCD$의 넓이로 옳은 것은? (단, 선분 $AC$는 평행사변형 $ABCD$의 대각선이다.) (5점)<br>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
