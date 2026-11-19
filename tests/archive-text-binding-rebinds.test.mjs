@@ -170,18 +170,73 @@ test("classifyMetaBinding: bound when stem+choices are unchanged (row or type), 
     "a type changed by another route is not covered by an old judgment");
 });
 
-test("the committed rebinds file, when present, is well-formed and unique per (uid, fp)", () => {
+// 계약 변경 2026-11-19: 정식 수정으로 같은 지문 키(uid, fp)의 text가 다시 바뀐 경우를 추가 전용으로 기록해야 하므로, 유일성은 동결 entries 안에서만 요구하고
+// revisions 안에서는 같은 키가 여러 번 있을 수 있다(마지막 항목만 유효, rebindHolds). 검사를 없앤 것이 아니라 "마지막만 유효"로 바꾼 것이다.
+test("the committed rebinds file, when present, is well-formed; entries are unique per (uid, fp), the last revision per key is the valid one", () => {
   const file = path.join(repo, REBINDS_PATH);
   if (!fs.existsSync(file)) return;
   const rebinds = loadRebinds(repo);
+  const doc = JSON.parse(fs.readFileSync(file, "utf8"));
   const seen = new Set();
-  for (const entries of rebinds.byUid.values()) for (const e of entries) {
+  for (const e of doc.entries) {
     const key = e.uid + "|" + e.fp;
-    assert.ok(!seen.has(key), "duplicate " + key);
+    assert.ok(!seen.has(key), "duplicate entry " + key);
     seen.add(key);
   }
+  // 읽는 쪽이 같은 키의 마지막 항목을 쓰는지: revisions의 마지막 항목의 text는 항상 효력이 있다.
+  const last = new Map();
+  for (const e of doc.revisions || []) last.set(e.uid + "|" + e.fp, e);
+  for (const e of last.values()) assert.ok(rebindHolds(rebinds, e.uid, e.fp, e.text), "the last revision of a key is the effective one " + e.uid);
   const check = run(repo, "--check");
   assert.equal(check.status, 0, check.out);
+});
+
+// ---- 같은 (uid, fp)의 나중 항목이 이긴다(대체) -----------------------------------------------------------------------------
+test("supersede: a later revision of the same (uid, fp) replaces the earlier text; the tool appends it, readers use the last, history check skips the old one", (t) => {
+  const { root, second, v2 } = fixtureRepo(t);
+  assert.equal(run(root, "--write").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "rebinds");
+  const approved = path.join(root, "approved.tsv");
+  fs.writeFileSync(approved, "uid2\tcontent\t" + second + "\t#7\n");
+  assert.equal(run(root, "--revisions", approved, "--write-revisions").status, 0);
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revision 1");
+  const rows = JSON.parse(fs.readFileSync(path.join(root, "archive/data/question_metadata.json"), "utf8")).records;
+  const bind = (question) => classifyMetaBinding({ meta: rows[1], question, assignmentFingerprint: contentFingerprint(question), rebinds: loadRebinds(root) });
+  assert.equal(bind(v2[1]), "row");
+  assert.equal(run(root, "--revisions", approved).json().rejected.ALREADY_RECORDED, 1, "while the recorded text is still current nothing is added");
+
+  // 정식 수정으로 같은 문항의 발문이 또 바뀐다. 옛 revision의 text는 더 이상 현재 text가 아니다.
+  const v3 = [v2[0], { ...v2[1], content: "<p>a+b의 값을 구하시오. (단, a, b는 양수)</p>" }, v2[2]];
+  fs.writeFileSync(path.join(root, "archive/exams/fixture/exam.js"), exam(v3));
+  git(root, "add", "-A"); const third = (git(root, "commit", "-q", "-m", "v3"), git(root, "rev-parse", "HEAD").trim());
+  assert.equal(bind(v3[1]), "", "the recorded text no longer matches the corrected stem");
+  assert.equal(run(root, "--check", "--verify-history").status, 1, "a stale last revision still fails the history check");
+  const before = fs.readFileSync(path.join(root, REBINDS_PATH), "utf8");
+  const second2 = path.join(root, "approved2.tsv");
+  fs.writeFileSync(second2, "uid2\tcontent\t" + third + "\t#8\n");
+  const dry = run(root, "--revisions", second2);
+  assert.equal(dry.json().newRevisions, 1, "a changed text for a recorded key is appended instead of refused");
+  assert.equal(run(root, "--revisions", second2, "--write-revisions").status, 0);
+  const after = fs.readFileSync(path.join(root, REBINDS_PATH), "utf8");
+  const docAfter = JSON.parse(after);
+  assert.equal(docAfter.revisions.length, 2);
+  assert.equal(docAfter.revisions[1].uid, "uid2");
+  assert.equal(docAfter.revisions[0].fp, docAfter.revisions[1].fp, "same key");
+  assert.notEqual(docAfter.revisions[0].text, docAfter.revisions[1].text);
+  assert.ok(after.includes(JSON.stringify(JSON.parse(before).revisions[0])), "the earlier revision is kept byte for byte");
+  assert.equal(bind(v3[1]), "row", "the later revision wins");
+  assert.equal(bind(v2[1]), "", "and the superseded text no longer binds");
+  assert.equal(run(root, "--revisions", second2).json().rejected.ALREADY_RECORDED, 1, "adding the same superseding item twice is refused");
+  const check = run(root, "--check", "--verify-history");
+  assert.equal(check.status, 0, check.out);
+  assert.equal(check.json().supersededRevisions, 1, "the old revision is recorded as superseded and skipped");
+  git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revision 2");
+  assert.equal(run(root, "--check", "--against", "HEAD~1").status, 0, "appending keeps the earlier revisions in front");
+  // 읽는 쪽 규칙 자체: 동결 entries와 (uid, fp)가 겹쳐도 나중 revisions 항목이 이긴다.
+  const entryLike = { uid: "u", fp: "a".repeat(64), text: "1".repeat(64) };
+  const byUid = new Map([["u", [entryLike, { ...entryLike, text: "2".repeat(64), from: "1".repeat(64), edit: "content", commits: ["c"] }]]]);
+  assert.equal(rebindHolds({ byUid }, "u", "a".repeat(64), "2".repeat(64)), true);
+  assert.equal(rebindHolds({ byUid }, "u", "a".repeat(64), "1".repeat(64)), false, "the older entry is overridden by the later revision");
 });
 
 // 추가 전용: 이 변경이 기준 브랜치의 기존 항목을 고치거나 지우지 않았는가. 기준 ref를 풀 수 없는 얕은 체크아웃에서는 실패가 아니라

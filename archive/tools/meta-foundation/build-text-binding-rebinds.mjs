@@ -249,7 +249,11 @@ export function analyzeRevisions(root, approved, { existing } = {}) {
   const metadata = readJson(root, META), identity = readJson(root, IDENTITY);
   const rowByUid = new Map(metadata.records.map((r) => [r.questionUid, r]));
   const idByJoin = new Map(identity.records.map((r) => [r.sourceArchiveFile + "#" + r.sourceOrdinal, r]));
-  const have = new Set((existing?.revisions || []).map((e) => e.uid + "|" + e.fp));
+  // 같은 (uid, fp)는 나중 항목이 이긴다: 효력 있는 마지막 항목(entries 다음 revisions 순서)의 text가 현재 text와 같을 때만 "이미 기록"이고,
+  // 다르면(정식 수정으로 text가 또 바뀜) 새 항목을 뒤에 추가해 대체한다. 기존 항목은 건드리지 않는다.
+  const latestText = new Map();
+  for (const e of [...(existing?.entries || []), ...(existing?.revisions || [])]) latestText.set(e.uid + "|" + e.fp, e.text);
+  const batchSeen = new Set();
   const byFile = new Map();
   const rejected = [];
   for (const a of approved) {
@@ -270,7 +274,7 @@ export function analyzeRevisions(root, approved, { existing } = {}) {
       const fp = row.contentFingerprint;
       if (!curText || !HEX64.test(fp || "")) { rejected.push({ uid: a.uid, why: "NO_STEM_OR_FP" }); continue; }
       if (fp === contentFingerprint(q)) { rejected.push({ uid: a.uid, why: "ALREADY_CURRENT" }); continue; }
-      if (have.has(a.uid + "|" + fp)) { rejected.push({ uid: a.uid, why: "ALREADY_RECORDED" }); continue; }
+      if (latestText.get(a.uid + "|" + fp) === curText || batchSeen.has(a.uid + "|" + fp)) { rejected.push({ uid: a.uid, why: "ALREADY_RECORDED" }); continue; }
       versions ??= fileVersions(root, rel, { follow: false });
       let r = resolveAnchor(versions, row.sourceOrdinal, "B", fp, curText);
       if (r.status === "NO_HISTORY" && !followed) { followed = true; versions = fileVersions(root, rel, { follow: true }); r = resolveAnchor(versions, row.sourceOrdinal, "B", fp, curText); }
@@ -279,6 +283,7 @@ export function analyzeRevisions(root, approved, { existing } = {}) {
       if (!from) { rejected.push({ uid: a.uid, why: "OLD_TEXT_UNFINGERPRINTABLE" }); continue; }
       if (a.edit === "figure" && from !== curText) { rejected.push({ uid: a.uid, why: "FIGURE_BUT_TEXT_CHANGED" }); continue; }
       if (a.edit !== "figure" && from === curText) { rejected.push({ uid: a.uid, why: "TEXT_SAME_BUT_NOT_FIGURE" }); continue; }
+      batchSeen.add(a.uid + "|" + fp);
       added.push({ uid: a.uid, fp, family: "B", text: curText, from, edit: a.edit, commits: a.commits, prs: a.prs, file: rel, ordinal: row.sourceOrdinal });
     }
   }
@@ -315,7 +320,6 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
   if (!Array.isArray(revisions)) errors.push("revisions is not an array");
   else {
     if (revisions.length && typeof doc.revisionsNote !== "string") errors.push("revisions without revisionsNote");
-    const seenRev = new Set();
     for (const e of revisions) {
       const key = "revision " + e.uid + "|" + e.fp;
       if (!uids.has(e.uid)) errors.push("unknown uid " + e.uid);
@@ -324,8 +328,6 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
       if (!REVISION_EDITS.has(e.edit)) errors.push("bad edit " + key);
       if (e.edit === "figure" ? e.from !== e.text : e.from === e.text) errors.push("edit does not match from/text " + key);
       if (!Array.isArray(e.commits) || !e.commits.length || e.commits.some((c) => !/^[0-9a-f]{40}$/.test(c))) errors.push("revision without 40-hex commits " + key);
-      if (seenRev.has(key)) errors.push("duplicate " + key);
-      seenRev.add(key);
       if (verifyHistory) for (const c of e.commits || []) { try { git(root, ["cat-file", "-e", c + "^{commit}"]); } catch { errors.push("commit not found " + c + " (" + key + ")"); } }
     }
   }
@@ -368,6 +370,9 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
       }
     }
   }
+  let superseded = 0;
+  const lastRevision = new Map();
+  if (Array.isArray(revisions)) for (const e of revisions) lastRevision.set(e.uid + "|" + e.fp, e);
   if (verifyHistory && Array.isArray(revisions) && revisions.length) {
     const byFile = new Map();
     for (const e of revisions) { if (!byFile.has(e.file)) byFile.set(e.file, []); byFile.get(e.file).push(e); }
@@ -375,6 +380,8 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
       let versions = fileVersions(root, rel, { follow: false });
       const bank = currentBankOf(root, rel);
       for (const e of list) {
+        // 대체됨: 같은 (uid, fp)의 더 나중 항목이 있으면 이 항목은 효력이 없다. 기록은 남기고 검증만 건너뛴다.
+        if (lastRevision.get(e.uid + "|" + e.fp) !== e) { superseded++; continue; }
         const cur = bank?.[e.ordinal - 1];
         if (!cur || textFingerprint(cur) !== e.text) { errors.push("revision text is not the current text " + e.uid + "|" + e.fp); continue; }
         let r = resolveAnchor(versions, e.ordinal, "B", e.fp, e.text);
@@ -385,7 +392,7 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
       }
     }
   }
-  return { errors, entries: doc.entries.length, revisions: Array.isArray(revisions) ? revisions.length : 0, verified };
+  return { errors, entries: doc.entries.length, revisions: Array.isArray(revisions) ? revisions.length : 0, verified, superseded };
 }
 
 // ---- 보고용: 등록기 pending 사유별 분포 ---------------------------------------------------------------------------------
@@ -423,7 +430,7 @@ export async function main(argv) {
   if (args.has("--check")) {
     const sample = args.has("--sample") ? Number(args.get("--sample")) : undefined;
     const result = checkRebinds(root, { against: args.get("--against") || undefined, verifyHistory: args.has("--verify-history"), sample });
-    console.log(JSON.stringify({ check: result.errors.length ? "FAIL" : "PASS", entries: result.entries, revisions: result.revisions, verifiedAgainstHistory: result.verified, errors: result.errors.slice(0, 20) }, null, 2));
+    console.log(JSON.stringify({ check: result.errors.length ? "FAIL" : "PASS", entries: result.entries, revisions: result.revisions, verifiedAgainstHistory: result.verified, supersededRevisions: result.superseded, errors: result.errors.slice(0, 20) }, null, 2));
     process.exitCode = result.errors.length ? 1 : 0;
     return;
   }

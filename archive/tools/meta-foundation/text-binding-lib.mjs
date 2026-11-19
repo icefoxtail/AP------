@@ -62,9 +62,13 @@ export function loadRebinds(root, rel = REBINDS_PATH) {
 
 // 지문 anchorFp(등록 당시 값)가 가리키던 문항의 발문·보기가 지금 문항과 같다고 기록돼 있는가.
 // currentTextFp: textFingerprint(현재 문항). 같은 문항 번호의 발문·보기가 이후 바뀌었다면 기록의 text가 달라져 거짓이 된다.
+// 같은 (uid, fp)가 여러 번 기록되어 있으면 **마지막** 항목만 효력이 있다(2026-11-19): byUid의 순서는 entries(동결) 다음 revisions(기록 순서)이므로
+// "나중에 추가된 항목이 이긴다". 정식 수정으로 같은 지문 키의 text가 다시 바뀐 경우를 추가 전용으로 남기기 위한 규칙이고, 읽는 곳은 이 함수 하나다.
 export function rebindHolds(rebinds, uid, anchorFp, currentTextFp) {
   if (!rebinds?.byUid || !uid || !anchorFp || !currentTextFp) return false;
-  return (rebinds.byUid.get(uid) || []).some((entry) => entry.fp === anchorFp && entry.text === currentTextFp);
+  let latest = null;
+  for (const entry of rebinds.byUid.get(uid) || []) if (entry.fp === anchorFp) latest = entry;
+  return latest !== null && latest.text === currentTextFp;
 }
 
 // 카탈로그가 메타 힌트를 보여 줄 근거: 이 행(또는 유형 판정)이 지금과 같은 발문+보기에 대한 것인가. 결과는 둘뿐이다.
