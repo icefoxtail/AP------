@@ -1,0 +1,138 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "a=3일 때"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "6",
+                "3"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "0",
+              "6/5"
+            ],
+            "states": [
+              "OPEN",
+              "CLOSED"
+            ]
+          },
+          "domain": [
+            0,
+            1.2
+          ],
+          "viewport": [
+            -0.2,
+            1.5,
+            -1,
+            12
+          ],
+          "axisTickValues": {
+            "x": [
+              "1"
+            ],
+            "y": [
+              "9"
+            ]
+          },
+          "axisTitles": {
+            "x": "t",
+            "y": "h"
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": "1",
+              "y": "9"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "a=4일 때"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-5",
+                "8",
+                "4"
+              ]
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "0",
+              "6/5"
+            ],
+            "states": [
+              "OPEN",
+              "CLOSED"
+            ]
+          },
+          "domain": [
+            0,
+            1.2
+          ],
+          "viewport": [
+            -0.2,
+            1.5,
+            -6,
+            12
+          ],
+          "axisTickValues": {
+            "x": [
+              "1"
+            ],
+            "y": [
+              "-5",
+              "7"
+            ]
+          },
+          "axisTitles": {
+            "x": "t",
+            "y": "h"
+          },
+          "requiredPoints": [
+            {
+              "id": "B",
+              "x": "1",
+              "y": "7"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "t=2ˣ>0으로 놓으면 h(t)=a·t(t+2)+(−a²+2a+3)이다. a>0이면 t→0에서 h→−a²+2a+3이므로 이 상수항이 0 이상이어야 한다. 그림 왼쪽은 경계 a=3일 때 h=3t²+6t로 t>0에서 항상 양수이고, 오른쪽은 a=4일 때 상수항이 −5라서 t가 0에 가까우면 h가 음수이다. −1≤a≤3과 a>0, 그리고 a=0까지 합하면 a=0, 1, 2, 3이므로 개수는 4이다.",
+  "accessibilityDescription": "t가 0보다 큰 구간에서 아래로 볼록한 곡선 두 개가 두 그림으로 나뉘어 있다. 왼쪽은 원점에서 시작해 올라가고, 오른쪽은 가로축 아래에서 시작해 올라간다.",
+  "newVisualInformation": [
+    "경계 a=3(t→0에서 0에 접근)과 a=4(t→0에서 −5로 음수)의 그래프를 비교해 상수항 −a²+2a+3≥0 조건이 필요한 이유를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 모든 실수 $x$에 대하여 부등식 $a \\cdot 2^{2x} + a \\cdot 2^{x+1} - a^2+2a+3 > 0$이 항상 성립하도록 하는 모든 정수 $a$의 개수를 구하시오. [7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

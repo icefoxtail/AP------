@@ -1,0 +1,111 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -3,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "-5/2",
+          "5/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "1/2",
+        "coefficients": [
+          "-1",
+          "1",
+          "3"
+        ],
+        "domain": [
+          "-5/2",
+          "5/2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0",
+          "coordinates": false
+        },
+        {
+          "id": "A",
+          "x": "19/10",
+          "y": "2732/1000",
+          "coordinates": false
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-19/10",
+          "y": "-732/1000",
+          "coordinates": false
+        }
+      ],
+      "segments": [
+        {
+          "id": "oc",
+          "from": "O",
+          "to": "C"
+        }
+      ],
+      "polygons": [
+        {
+          "id": "q",
+          "points": [
+            "O",
+            "A",
+            "C",
+            "B"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "f(x)=2ˣ−1과 g(x)=−(1/2)ˣ+3의 교점은 2ˣ+2⁻ˣ=4에서 2ˣ=2±√3이다. 교점 A의 x좌표는 a=log₂(2+√3)(약 1.9), B의 x좌표는 −a이다. C는 g의 y절편 C(0, 2)이다. 그림의 선분 OC(길이 2)로 사각형 OACB를 삼각형 OAC와 OCB로 나누면 높이는 각각 a이다. 두 넓이는 (1/2)·2·a=a씩이므로 사각형의 넓이는 2a이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f와 위쪽으로 휘며 오르는 주황 곡선 g가 두 점 A, B에서 만나고, g가 세로축과 만나는 점 C가 있다. 원점 O에서 C까지의 선분과 사각형 OACB가 색칠되어 있다.",
+  "newVisualInformation": [
+    "두 곡선의 교점 A, B와 y절편 C(0, 2), 선분 OC로 나뉘는 사각형 OACB를 보여 넓이 2a=2·(1/2)·2·a를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형3] 그림과 같이 두 함수 $f(x)=2^x-1$, $g(x)=-\\left(\\dfrac{1}{2}\\right)^x+3$의 그래프가 만나는 두 점을 $\\mathrm{A}$, $\\mathrm{B}$라 하고 함수 $y=g(x)$의 그래프가 $y$축과 만나는 점을 $\\mathrm{C}$라 하자. 점 $\\mathrm{A}$의 $x$좌표를 $a$라 할 때, 사각형 $\\mathrm{OACB}$의 넓이를 $a$로 나타내시오. (단, $\\mathrm{O}$는 원점이다.) [8점]<br><br><img src=\"assets/images/19_금당고_1학기_중간_고2_수학I/q21.png\" class=\"question-img\">",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

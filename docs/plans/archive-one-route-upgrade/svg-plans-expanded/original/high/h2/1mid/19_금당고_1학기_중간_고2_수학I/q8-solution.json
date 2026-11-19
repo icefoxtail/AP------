@@ -1,0 +1,81 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "13",
+          "-6",
+          "1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "1",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      1,
+      4
+    ],
+    "viewport": [
+      0,
+      5,
+      0,
+      10
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "3",
+        "4"
+      ],
+      "y": [
+        "4",
+        "5",
+        "8"
+      ]
+    },
+    "axisTitles": {
+      "x": "t",
+      "y": "y"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "8"
+      },
+      {
+        "id": "V",
+        "x": "3",
+        "y": "4"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "5"
+      }
+    ]
+  },
+  "caption": "t=2의 (−x)제곱으로 놓으면 −2≤x≤0에서 1≤t≤4이고 y=t²−6t+a=(t−3)²+a−9이다. 최솟값은 꼭짓점 t=3에서 a−9=4이므로 a=13이다. 그림은 y=(t−3)²+4이다. 꼭짓점 V(3, 4)에서 최소이고 꼭짓점에서 더 먼 끝점 A(1, 8)에서 최대이다. B(4, 5)는 더 작다. 따라서 최댓값은 8이고 답은 ②이다.",
+  "accessibilityDescription": "1에서 4까지의 구간에서 아래로 볼록한 포물선이 그려져 있고 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "구간 1≤t≤4에서 포물선 y=(t−3)²+4의 꼭짓점 V(3, 4)와 끝점 A(1, 8), B(4, 5)를 보여 최솟값 4와 최댓값 8을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$-2 \\le x \\le 0$에서 함수 $y=4^{-x}-3\\times 2^{1-x}+a$의 최솟값이 4일 때, 최댓값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
