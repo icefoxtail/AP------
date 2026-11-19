@@ -1,0 +1,69 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "800"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "BLUE",
+        "label": "y=800x"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2000",
+          "500"
+        ],
+        "domain": [
+          "0",
+          "12"
+        ],
+        "color": "WARM",
+        "label": "y=500x+2000"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "7",
+        "12"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "20/3",
+          "y": "16000/3",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y"
+    }
+  },
+  "caption": "장미꽃 x송이의 값은 동네 상점이 800x원, 도매 상점이 교통비를 더해 500x+2000원이다. 두 직선은 점 P에서 만나며 그 x좌표가 20/3(약 6.67)이다. x가 20/3보다 크면 도매 상점의 직선이 아래로 내려와 더 싸다. 300x>2000에서 x>20/3이므로 7송이 이상이고 답은 ①이다.",
+  "newVisualInformation": [
+    "동네 800x와 도매 500x+2000의 두 비용 직선이 x=20/3에서 만나고 그 오른쪽에서 도매가 더 싸지는 구간"
+  ],
+  "accessibilityDescription": "가로축이 송이 수, 세로축이 비용인 좌표평면에 원점을 지나는 가파른 직선과 위쪽에서 시작하는 완만한 직선이 있고 두 직선이 만나는 점 P의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "장미꽃 1송이의 가격이 동네 상점은 800원이고, 도매 상점은 500원이다. 도매 상점에 다녀오는 교통비가 2000원일 때, 장미꽃을 몇 송이 이상 살 때 도매 상점에 가는 것이 유리한가? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
