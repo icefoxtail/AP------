@@ -645,6 +645,12 @@
         quickState.shortOpen = false;
         replaceUrlState();
         render();
+      } else if (a === "quick-semester") {
+        quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
+        quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
+        render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
         quickState.bundle.clear();
@@ -1397,7 +1403,7 @@
       state.selected = [];
       state.rows = [];
     }
-    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"].includes(p.get("view"))
       ? p.get("view")
       : "home";
     if (isQuickAssessmentView()) {
