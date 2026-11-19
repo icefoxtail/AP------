@@ -6,7 +6,9 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { NATIVE_REQUEST_SCHEMA, DIFFICULTY_REQUEST_SCHEMA, selectNativeRequests, orderNativeRequests, applyNativeRequests,
-  validateNativePreview, verifyNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths } from '../tools/ci/archive-pr-native-preview.mjs';
+  validateNativePreview, verifyNativeRequests, selectPendingNativeRequests, pendingNativeRequestPaths, SHADOW_RESTORE_PATHS } from '../tools/ci/archive-pr-native-preview.mjs';
+import { DECISION_DOCUMENT } from '../archive/tools/meta-foundation/register-type-judgment.mjs';
+const DECISION_SECTION = 'CURRENT fixture decision section';
 import { CI_WORKFLOW_PATH, REGISTRATION_CHECKS, prRegistrationProofNeeded,
   producePrRegistrationProof, validateLocalRegistrationProof,
 } from '../tools/ci/archive-pr-registration-proof.mjs';
@@ -264,7 +266,7 @@ test('geometry pack version dependency preserves the issued REVIEW2 row through 
     /does not match its issued Native receipt/, 'unchanged evidence cannot authorize a changed runtime row');
 });
 
-function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, directType = false, otherOwner = true, mutateRequest } = {}) {
+function fixture(t, { partial = false, identityOnly = false, difficultyOnly = false, pairedDifficulty = false, auditPreservation = false, auditSourcePreservation = false, finalQaPreservation = false, basicPreservation = false, directType = false, decisionDoc = false, otherOwner = true, mutateRequest } = {}) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'native-preview-fixture-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const write = (file, text, target = root) => {
@@ -293,6 +295,7 @@ function fixture(t, { partial = false, identityOnly = false, difficultyOnly = fa
   ].join('\n') + '\n');
   write(SOURCE, 'window.questions = '+JSON.stringify(Array.from({length:partial?24:1},(_,i)=>({id:i+1})))+';\n');
   write(EVIDENCE, json({ reviewed: 'fixture approval evidence, without student content' }));
+  if (decisionDoc) write(DECISION_DOCUMENT, '# metadata decision fixture\n\n' + DECISION_SECTION + '\n');
   sourceQualityHoldFixture(write);
   if (auditSourcePreservation) write(AUDIT_PRIOR_RECEIPT, json({
     schemaVersion: 'archive-reviewed-exam-meta-registration-v2', metadataRegistrationStatus: 'REGISTERED',
@@ -2809,6 +2812,29 @@ test('type-only direct judgment is previewed as its own kind with the registrar 
   const proof=f.produce();assert.equal(proof.status,'PASS');
   assert.equal(proof.nativePreview.requests[0].kind,'direct-type-judgment');
   assert.equal(f.validate(proof).reusable,true);f.assertShadowsRemoved();
+});
+
+test('type-only direct judgment request passes the shadow re-verification because the shadow carries the head decision document',t=>{
+  assert.ok(SHADOW_RESTORE_PATHS.includes(DECISION_DOCUMENT), 'the restore list reads the registrar constant');
+  const f=fixture(t,{partial:true,directType:true,decisionDoc:true});
+  const proof=f.produce(),seen=[];
+  // The same check the real registrar makes on a first registration (register-type-judgment checkDecisionDocument).
+  const decision=target=>{const full=path.join(target,DECISION_DOCUMENT);
+    if(!fs.existsSync(full))throw Error('decision document missing: '+DECISION_DOCUMENT);
+    if(!fs.readFileSync(full,'utf8').includes(DECISION_SECTION))throw Error('decision section not found in '+DECISION_DOCUMENT);
+    seen.push(target!==f.root);};
+  f.hook['dry-run']=decision;f.hook.write=decision;
+  assert.equal(f.validate(proof).reusable,true);
+  assert.ok(seen.includes(true),'the check ran inside a shadow, not only in the live checkout');
+  f.assertShadowsRemoved();
+});
+
+test('type-only direct judgment request still fails the shadow re-verification when the head has no decision document',t=>{
+  const f=fixture(t,{partial:true,directType:true});
+  const proof=f.produce();
+  f.hook['dry-run']=target=>{if(!fs.existsSync(path.join(target,DECISION_DOCUMENT)))throw Error('decision document missing: '+DECISION_DOCUMENT);};
+  assert.throws(()=>f.validate(proof),/decision document missing/);
+  f.assertShadowsRemoved();
 });
 
 test('type-only direct judgment preview refuses a registrar result that is not a verified type-only replay',t=>{

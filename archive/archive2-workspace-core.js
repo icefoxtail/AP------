@@ -537,13 +537,22 @@
       : route === "/archive-saved-papers" ? 90000 : 0;
     const controller = timeoutMs && typeof AbortController === "function" ? new AbortController() : null;
     const perform = async () => {
-      const result = await fetch(base + route, {
-        method,
-        headers: {
+      // headers() throws when there is no login. That happens before fetch(), so nothing was sent: the error is marked
+      // (requestNotSent) so a caller can tell "the request never left" from "sent, answer unknown" (network cut, timeout).
+      let requestHeaders;
+      try {
+        requestHeaders = {
           ...headers(),
           ...(body ? { "Content-Type": "application/json" } : {}),
           ...(options.headers || {}),
-        },
+        };
+      } catch (error) {
+        if (error && typeof error === "object") error.requestNotSent = true;
+        throw error;
+      }
+      const result = await fetch(base + route, {
+        method,
+        headers: requestHeaders,
         ...(body ? { body: JSON.stringify(body) } : {}),
         ...(controller ? { signal: controller.signal } : {}),
       });
