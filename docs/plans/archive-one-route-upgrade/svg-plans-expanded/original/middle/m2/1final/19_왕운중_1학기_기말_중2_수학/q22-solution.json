@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "4"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "label": "4x−y=3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "1/2",
+          "1/2"
+        ],
+        "domain": [
+          "1",
+          "5"
+        ],
+        "label": "x−2y=−1",
+        "color": "WARM"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "19/3",
+          "-2/3"
+        ],
+        "domain": [
+          "2",
+          "5"
+        ],
+        "label": "2x+3y=19",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "5",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "5",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "세 직선의 교점을 구한다. 4x−y=3과 x−2y=−1에서 A(1,1), 4x−y=3과 2x+3y=19에서 B(2,5), x−2y=−1과 2x+3y=19에서 C(5,3)이다. 삼각형 ABC의 넓이는 (1/2)|1(5−3)+2(3−1)+5(1−5)|=(1/2)|2+4−20|=7이다.",
+  "newVisualInformation": [
+    "세 교점 A(1,1), B(2,5), C(5,3)으로 이루어진 삼각형의 넓이 7"
+  ],
+  "accessibilityDescription": "세 직선이 서로 만나 삼각형을 이루고 세 꼭짓점 A(1,1), B(2,5), C(5,3)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>22. [서술형3] 세 직선 $4x-y=3$, $x-2y=-1$, $2x+3y=19$의 그래프로 둘러싸인 삼각형의 넓이를 구하여라. [7점]</p><p><img src=\"assets/images/19_왕운중_1학기_기말_중2_수학/q22.png\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
