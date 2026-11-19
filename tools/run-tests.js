@@ -364,6 +364,10 @@ const requiredCommands = [
     args: ['--test', 'tests/ci-signal-hygiene.test.mjs']
   },
   {
+    label: 'tests/ci-pr-run-cancel.test.mjs',
+    args: ['--test', 'tests/ci-pr-run-cancel.test.mjs']
+  },
+  {
     label: 'tests/archive-ci-scope.test.mjs',
     args: ['--test', 'tests/archive-ci-scope.test.mjs']
   },
