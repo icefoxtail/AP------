@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-9425fc79a7e6-45133e3a",
+  "requestSha256": "fa8f6cfd252e0b495c594f6bd25258c1ce72cac83968f917a1ba17742223c0c6",
+  "examUid": "26_삼산중_1학기_중간_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js",
+  "sourceBlobSha1": "ce69a8906c1806da99faec8a425cbc4fbc1efcbe",
+  "sourceRawSha256": "7034613a28c722169a1ab459f590afe6fa2618f1f19bbd76b2766d46cbdf76c3",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9425fc79a7e6-45133e3a.type-ledger.json",
+        "sha256": "db5bdc83e14fd057aaa79fc46cb26954624636a6f51f8cc7cbf7edc1bae5839b"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_c8a54e245a95e8381829a0c4399130150f73cc1303946634c9adbb2006ae13bd",
+      "sourceArchiveFile": "original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js",
+      "sourceOrdinal": 24,
+      "problemTypeKey": "PT_SIMILAR_FIGURES",
+      "templateKey": "TPL_SIMILAR_FIGURES_RATIO",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-9425fc79a7e6-45133e3a",
+        "judge": "dots",
+        "rationale": "긴 변 반분 뒤 대응변 비 x/√6=√6/(x/2)로x결정,반분길이로 사다리꼴 넓이.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "45bc83e2c259bd6f5bd1d64f783b4b9a0fbd357c5868eb27992cc05a9f60648c",
+        "judgedContentFingerprint": "2e6b67bd3a664c71511e39e6a703f9e9016b852b555467e6d93030e8fd6944fe",
+        "rowBinding": "content",
+        "textBindingFingerprint": "7fab6a81c8c983b7219448685256036843fd9703712d580a82f877e32bc9a923",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-9425fc79a7e6-45133e3a.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

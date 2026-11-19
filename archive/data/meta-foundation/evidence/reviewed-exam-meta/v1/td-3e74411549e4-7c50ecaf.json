@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-3e74411549e4-7c50ecaf",
+  "requestSha256": "1b33ff35c3bd01603c4f46c4c7b3ed7e82fc5809abf93d9c5dfccf0d0416681e",
+  "examUid": "24_왕운중_1학기_중간_중3_유사",
+  "sourceArchiveFile": "similar/middle/m3/1mid/24_왕운중_1학기_중간_중3_유사.js",
+  "sourceBlobSha1": "c1b49828b4ab9d9d0cef4b1af17de400e07df98c",
+  "sourceRawSha256": "ab3d2d81f0263c2c7a812402e855977379eb3957f91a00d613320a3001c348f3",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3e74411549e4-7c50ecaf.type-ledger.json",
+        "sha256": "3a9ecee3e069ff0a83480b47ea6422b19f8ed927d60463bb5da542b35f5ec82c"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e75eb5d921f99b0bb832828752423171a407c09eb95412b639ab2206a2d78dbe",
+      "sourceArchiveFile": "similar/middle/m3/1mid/24_왕운중_1학기_중간_중3_유사.js",
+      "sourceOrdinal": 23,
+      "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+      "templateKey": "TPL_M2_PYTHAGOREAN_RELATION_AREA_LENGTH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-3e74411549e4-7c50ecaf",
+        "judge": "dots",
+        "rationale": "계수 비교로 a=4,b=2를 구한 뒤 직각삼각형 높이 √(6²−2²)=4√2로 넓이를 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중2 수학",
+          "curriculumSource": "request",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "b2374be72387637382cd16efaf9932dd5d6e45733edde0627c94235fcbe6bcbc",
+        "judgedContentFingerprint": "4ba9f8533ff873f729d06c3fbf5bf2dc94ff36f369de0fea032474c88ad935a9",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "04ca137201f7b84143730daef112cc8510ff35827a6893df6702116a152c2820",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/similar-m3-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3e74411549e4-7c50ecaf.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}
