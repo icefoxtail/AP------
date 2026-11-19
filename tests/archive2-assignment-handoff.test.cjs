@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { readWorkspace } = require("./helpers/archive2-workspace-source.cjs");
+const { readWorkspace, workspaceFunction } = require("./helpers/archive2-workspace-source.cjs");
 
 const read = name => fs.readFileSync(path.join(__dirname, '../archive', name), 'utf8');
 
@@ -188,9 +188,9 @@ function assignmentHandoffHarness(classes, kind = 'original') {
   };
 
   const parentMessageCode = [
-    sliceBetween(workspace, 'function setOriginalStep(step) {', 'async function buildOriginalSourceOutput('),
+    workspaceFunction(workspace, 'function setOriginalStep(step) {'),
     sliceBetween(workspace, 'async function originalOutputUrl(mode = "exam", preview = true) {', 'async function originalPrint() {'),
-    sliceBetween(workspace, 'function renderOriginalReceipts() {', 'function openOriginalIssue('),
+    workspaceFunction(workspace, 'function renderOriginalReceipts() {'),
     sliceBetween(workspace, 'window.addEventListener("message", (event) => {', '$("modal").addEventListener("cancel"'),
   ].join('\n');
   vm.runInNewContext(parentMessageCode, parent, { filename: 'archive2-workspace-original-handoff.js' });

@@ -777,7 +777,7 @@ test("Recent workspace request carries its filter state and debounces refetches"
       catalog: { exams: [] },
       view: "recent",
     },
-    classRows: [{ id: "class-target", name: "고1 대상반", grade: "고1" }],
+    V: { classRows: [{ id: "class-target", name: "고1 대상반", grade: "고1" }] }, // classRows is shared between workspace scripts, so it lives on V
     C: {
       subjectProjectionOptions: () => [],
       HIGH_SEMANTIC_SUBJECTS: [{ value: "ALGEBRA", label: "대수", courseKeys: ["수학I", "대수"] }],
