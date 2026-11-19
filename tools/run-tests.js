@@ -539,6 +539,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-canonical-projection.test.mjs']
   },
   {
+    label: 'tests/archive2-shards-builder.test.mjs',
+    args: ['--test', 'tests/archive2-shards-builder.test.mjs']
+  },
+  {
     // The register workflow runs this only when a diff5 request is in the inbox; a PR that changes the tool needs it too.
     label: 'tests/archive-difficulty5-register.test.mjs',
     args: ['--test', 'tests/archive-difficulty5-register.test.mjs']
