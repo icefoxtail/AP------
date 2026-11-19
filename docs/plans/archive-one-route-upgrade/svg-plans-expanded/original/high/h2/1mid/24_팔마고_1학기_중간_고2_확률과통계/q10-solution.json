@@ -1,0 +1,40 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 4,
+      "rows": 4
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "P": [
+        2,
+        2
+      ],
+      "B": [
+        4,
+        4
+      ]
+    },
+    "viaPoints": [
+      "P"
+    ],
+    "counts": "segments",
+    "hideTargetCount": false
+  },
+  "caption": "A에서 B까지 오른쪽 4번, 위쪽 4번의 전체 최단 경로는 8C4=70가지이다. P를 지나는 경로는 A에서 P까지 6가지, P에서 B까지 6가지이므로 6×6=36가지이다. P를 지나지 않는 경우는 70−36=34가지이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로 4칸 세로 4칸의 도로망이며 A, P, B가 표시되고 A에서 P, P에서 B 구간의 경로 수가 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "P를 경계로 나눈 두 구간의 경로 수 6과 6이 보여 P를 지나는 경로가 36가지임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "점 $\\mathrm{A}$에서 점 $\\mathrm{B}$까지 이동하되, 점 $\\mathrm{P}$를 지나지 않으면서 최단 거리로 이동하는 경우의 수를 구하시오.\n\n<div class=\"diagram-box\"><img src=\"assets/images/24_팔마고_1학기_중간_고2_확률과통계/q10.png\" width=\"240\" /></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
