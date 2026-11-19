@@ -6,9 +6,7 @@
 ## 정본 — 새 SVG는 무조건 엔진으로 만든다 (2026-11-19 사용자 지시)
 
 - 문제 그림이든 해설 그림이든, 기출·유사·교재·유형·생성 문항 어느 것이든 **새로 만들거나 다시 만드는 SVG는 전부 저장소의 SVG 엔진(`archive/tools/geometry-equation/`, 작성 규칙 정본 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`)으로 만든다.** 손으로 쓴 SVG, 스크립트로 직접 조립한 SVG, 다른 도구가 낸 SVG는 넣지 않는다. 문항 수리·원문 복원·메타 작업처럼 그림이 본업이 아닌 작업에서 그림이 필요해져도 같다.
-- 엔진이 그 그림을 지원하지 못하면 손으로 그려 메우지 않는다. 지시선·라벨 등 기존 옵션으로 시도한 증거와 함께 "엔진 미지원"으로 보고하고, 그 문항은 그림 보류로 남긴다(엔진 확장은 엔진 라인의 일).
-- **제작 방식(현행, 2026-11-19 사용자 지시): 딥시크가 엔진으로 초안을 만들고, Sonnet이 검수하고 마감한다.** 딥시크는 plan을 쓰고 공식 엔진으로 렌더해 PNG를 직접 본 초안까지, Sonnet은 원문·정답·해설과 PNG를 대조해 고치고 최종 후보를 만든다(도구·지시문: `archive/tools/geometry-equation/ops/claude-batch/prompts/ds-exam-draft.md`, `archive/tools/geometry-equation/ops/claude-batch/prompts/sonnet-exam-impl.md`). 기출 해설 그림뿐 아니라 유사·교재·유형 문항과 문항 수리에서 생기는 그림도 같다. 아래의 루나 구현·루나 검수 절차는 과거 이력이다. 이유: 고2 SVG 작업이 이미 이 방식으로 돌고 있고, 초안은 값싼 모델로 충분하며 마감 품질은 Sonnet이 책임진다.
-- 작업 지시서에는 "그림은 엔진으로만 만든다"를 적고, 검수와 메인은 받은 그림이 엔진 산출물인지(plan·렌더 기록) 확인한 뒤에 보여 주거나 병합한다.
+- **제작 방식(현행, 2026-11-19 사용자 지시): DeepSeek 초안 → Sonnet 검수·마감(한 번).** 흐름·명령은 아래 "SVG 해설 그림 엔진 라인"의 "현행 흐름"이다. 기출 해설 그림뿐 아니라 유사·교재·유형 문항과 문항 수리에서 생기는 그림도 같다. SVG 담당은 Claude SVG 라인 하나이고(2026-11-17, 코덱스·GPT SVG 라인 없음) 루나는 쓰지 않는다. 이유: 초안은 값싼 모델로 충분하고 마감 품질은 Sonnet이 책임진다. 작업 지시서에는 "그림은 엔진으로만 만든다"를 적고, 검수와 메인은 받은 그림이 엔진 산출물인지(plan·렌더 기록) 확인한 뒤에 보여 주거나 병합한다.
 - 스캔에서 깨끗하게 잘라 넣는 원본 그림(PNG)은 이 규칙의 대상이 아니다. 아래 19행의 "엔진 표식의 부재만으로 교체 필요를 판정하지 않는다"는 이미 있는 그림에 대한 규칙이고, 새로 만드는 그림에는 이 절이 적용된다.
 - 이유: 원문 수리 작업에서 작업자가 그림 9장을 스크립트로 직접 조립해, 도수분포다각형에 점이 없고 선·글자 품질이 엔진 그림과 달랐다. 엔진 출력만 관측기가 식·라벨·눈금을 다시 대조하고, 학생이 보는 그림의 모양이 한결같아진다.
 
@@ -36,7 +34,7 @@
 
 ## SVG 해설 그림 엔진 라인 (2026-10-30)
 
-해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)과 기출 해설 그림 캠페인의 기존 현황·공통 품질 기준은 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 읽는다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`다. Claude 실행 방식과 Codex 실행 방식을 혼용하지 않는다.
+해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)과 기출 해설 그림 캠페인의 기존 현황·공통 품질 기준은 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 읽는다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`다.
 
 ### 해설 그림 장부 (2026-11-17)
 
@@ -46,15 +44,17 @@
 - 전체 요약 `production/exam-figure-queue.md`는 게시 때 고치지 않고, 필요할 때 `figure_ledger.py queue`로 다시 만든다.
 - 이유: 한 파일 장부를 모든 그림 PR이 고쳐 서로 다른 시험지 PR도 하나씩만 병합됐고, 부분 게시가 기존 PUBLISHED를 OPEN으로 덮은 사고(22개 시험지 402문항, PR #1778로 복구)가 있었다.
 
-### Codex 실행 경로 (2026-11-04, 사용자 지시)
+### 현행 흐름 (2026-11-19)
 
-Codex는 [Codex 전용 SVG 실행 계약](../../archive/tools/geometry-equation/HANDOFF_SVG_CODEX.md)을 먼저 읽는다. 현재 관리자는 Astra medium이며, ROOT가 원문과 실제 문제 그림을 확인해 시험지와 정확한 문항별로 쓰기 경로가 겹치지 않게 배정한다. 제작은 서로 다른 `gpt-6-luna` high 인스턴스 여러 명이 맡고, 각 제작자는 배정된 문항의 원문·해설·실제 그림을 읽어 자기 run 안에서만 초안과 지적 수리를 한다. 별도 `gpt-6-luna` xhigh가 실제 렌더된 SVG·PNG와 alt·caption을 독립 검수하고, 바뀐 해시만 재검한다. ROOT는 모든 최종 SVG와 PNG를 직접 확인하고 전체 렌더 큐·게시·원장·Git을 책임진다. 엔진 업그레이드·엔진 공백 진단·어려운 문항이나 배치 차단은 `gpt-6.1-sol` high가 맡는다. 어려움·범위·실패 횟수에 따라 Astra로 자동 승격하지 않으며, 담당을 바꾸려면 사용자의 별도 지시가 필요하다. 기존 Astra 완료 진단은 과거 이력으로 보존한다. 관리자 추론 수준은 Astra medium으로 유지한다. 이 라인에서는 DeepSeek·OpenCode를 사용하지 않으며 모델 연결 실패를 조용히 대체하지 않는다. 이유: 현재 담당을 분명히 하면서 기존 완료 기록과 별도 사용자 승인 경계를 보존하기 위해서다.
+1. **DeepSeek 초안**(`opencode-go/deepseek-v4.1-flash`, effort 설정 없음). 시험지 단위로 `ops/claude-batch/ds-launch-exam.sh <key> <시험지 JS>`를 띄운다(지시문 `prompts/ds-exam-draft.md`). 전 문항의 그림 필요 여부를 판정하고 item/plan/publish JSON을 쓰고 `node .tmp/work/render.mjs --item <item.json> --plan <plan.json> --out <dir>`로 ARCHIVE_BOUND까지 렌더한 뒤, `node .tmp/svg-m1/svg2png.cjs <svg> <png> 600`으로 만든 PNG를 **직접 보고** 1차로 고친다. DeepSeek은 그림을 본다(2026-11-16 `opencode run -f <png>`로 정육각형 라벨 순서·대각선까지 읽음 확인). 실행 안에서 PNG를 못 열면 메모에 남기고 시각 판단은 Sonnet에 넘긴다.
+2. **Sonnet 검수·마감은 한 번**(effort high, 지시문 `prompts/sonnet-exam-impl.md`). 원문·정답·해설과 PNG를 대조하고 plan을 고쳐 다시 렌더한다(손 SVG 금지). 최종 판정표와 기계 점검(ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음)을 낸다. 두 번째 Sonnet 검수는 두지 않는다. 메인이 PNG 표본에서 결함을 찾으면 메인이 직접 plan·publish를 고쳐 `render.mjs`로 다시 렌더한다(손 SVG 금지; 이유: 결함 하나에 지시서를 쓰고 Sonnet을 다시 돌리는 것보다 빠르다). 같은 묶음에 결함이 여럿이거나 같은 종류가 반복되면 지적 목록을 붙여 그 묶음을 Sonnet 검수·마감 단계로 돌려보낸다. `sonnet-final.md`는 과거(Sonnet B) 지시서다.
+3. **메인이 PNG 표본을 확인한 뒤 게시하고 PR을 올린다.** 게시 도구는 `ops/svg-m1/publish-exam.py`·`pubflow.py`이고 사용법은 HANDOFF 문서 §3-2·§4다. 시험지 5개쯤을 PR 하나로 묶는다.
+4. **엔진 미지원(손으로 메우지 않는다)은 백 개 중 한두 개가 정상이다.** 더 많으면 plan부터 의심한다. 손으로 그리지 않고, 지시선·패널·옵션으로 시도한 증거와 오류 코드를 붙여 UNSUPPORTED로 두고 그림은 보류한 뒤 `ops/claude-batch/ENGINE_GAPS*.md`에 남겨 엔진 라인으로 넘긴다. 큰 묶음(플랜이 많이 쌓인 경우)은 같은 단계를 묶어 돈다: 일괄 렌더 → 자동 관문 → Sonnet 모음 시트 눈 검수 → 실패분 처리(SPEC은 플랜 수리, ENGINE은 엔진 라인) → 게시.
 
-아래 공통 프롬프트에서는 현재 그림 품질 기준만 유지한다. 그 안의 과거 모델·역할·실행 명령은 Codex에 적용하지 않으며, Codex의 환경·역할·게시 명령은 전용 계약이 우선한다. Windows 이식 도구와 관련 실행 검증은 완료했다. 현재 승인된 10개 시험지 묶음은 제작·독립 검수·로컬 게시를 마쳤다. main 병합 상태는 Codex 인계 문서의 PR에서 확인한다. run의 중간 SVG·PNG는 `.tmp`의 임시 QA 자료이며 Git에 넣지 않고, 검수된 최종 운영 SVG만 `archive/assets/images`에 게시한다. 승인된 10개 시험지의 제작·검수 후 평면·입체·그래프·확률 등 검수 통과 대표 그림 여러 장(기본 4~6개)을 모아 사용자에게 먼저 보여준다. 필수 CI 녹색을 확인한 뒤 main 병합·원격 readback·실제 학생 페이지 QA 결과를 보고하고 멈춘다. 다음 묶음이나 G14는 별도 사용자 지시 전 시작하지 않는다.
+**시험지 하나·문항 몇 개만 그릴 때 최소 순서** (저장소 루트, 새 작업 트리 기준):
+`mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-equation/ops/svg-m1/. .tmp/svg-m1/` → `bash archive/tools/geometry-equation/ops/claude-batch/restore.sh`(도구를 `.tmp/work/`로 펼침) → 렌더 의존성(playwright가 든 node_modules)이 없으면 `GEOMETRY_NODE_MODULES` 지정 → 문항 폴더마다 `item.json`({"sourcePath": 시험지 JS 경로, "ordinal": 문항 id})·`plan.json`(같은 형태의 통과 사례 `.tmp/work/runs/*/exam-rev/qNN/plan.json`을 본떠 값만 바꾼다)·`publish.json`(alt·caption·size) → `render.mjs` → `svg2png.cjs`로 PNG → DeepSeek(또는 직접)이 PNG 확인 → Sonnet이 원문·정답·해설 대조·마감 → 메인이 PNG 확인 → `make-dec-exam.cjs`·`build-pub.py`(BAD 없음) → `pubflow.py --batch`로 게시. 어느 문항이든 plan 작성 전에 `AUTHOR_GUIDE.md`와 `.tmp/svg-m1/guide/`의 해당 형태 가이드를 읽는다.
+**현행으로 살아 있는 품질 규칙:** y=x·기울기 ±1 직선·원이 있는 단일 유리·무리함수 그래프는 `equalUnits:true`를 쓰고 PNG를 정답·해설과 대조한다(눈금 비 차이로 45°보다 가파르게 그려진 그림이 검수를 통과해 사용자가 지적했다). 정해진 DeepSeek·Sonnet 단계 밖의 다른 모델·하위 에이전트에 구현·검수를 넘기지 않고, PNG는 직접 보고 판단한다. 이 흐름에서는 대기열 상태 줄·잠금 같은 라인 간 조율 문서를 쓰지 않는다. 옛 루나 구현·검수 절차(2026-11-04~08)는 git 이력에 있다.
 
-### 고1 2학기 기말 해설 SVG 진행 경로 (2026-11-08 사용자 지시)
-
-PC의 Claude 메인이 `codex exec`로 루나를 직접 부른다. 시험지 하나씩 ① 루나 구현(effort high, 공식 엔진 렌더) → ② 다른 실행의 루나 검수(effort xhigh, 원문·정답·해설 대조, 문제가 있으면 plan·publish를 고쳐 재렌더) → ③ Sonnet 최종 검수(기계 점검: ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음, alt는 그림 설명(정답이 있어도 반려하지 않음), caption 끝 정답, y=x·기울기 ±1 직선·원이 있는 단일 유리·무리함수 그래프는 `equalUnits:true` + PNG를 정답·해설과 대조) → ④ Claude 메인 반영 순서로 진행한다. 미해결 문항은 Sonnet 작업자가 고치고, 엔진 공백은 사유를 적어 OPEN으로 넘긴다. 최종 검수를 통과한 시험지가 5개 모이면 PR 하나로 게시·병합한다(CI 녹색 확인 후). 이 경로에서는 대기열 상태 줄·잠금 같은 라인 간 조율 문서를 쓰지 않는다. 루나 지시서에는 "OpenCode·deepseek·다른 모델·하위 에이전트에 구현·검수를 넘기지 말고 루나가 PNG를 직접 보고 판단한다"를 반드시 넣는다(PC의 `~/.codex/AGENTS.md`에 있던 deepseek 우선 위임 규칙 때문에 루나가 검수를 넘긴 일이 있었다. 그 규칙은 2026-11-08 사용자 지시로 지웠다. "deepseek은 그림을 볼 수 없다"는 당시 문구는 사실이 아니어서 2026-11-19 삭제했다. deepseek도 그림을 본다). 최종 마무리는 항상 Sonnet이 한다. 묶음은 단계를 겹쳐 돌린다: 한 묶음이 Sonnet 최종·게시·CI에 있을 때 다음 묶음 루나 구현을 미리 시작하고, 루나 검수가 끝난 시험지는 그때그때 Sonnet 최종에 넣으며, 늦는 시험지는 다음 묶음으로 넘긴다(CI 약 45분·게시·원장 갱신을 묶음당 한 번만 하고 단계가 쉬지 않아 묶음당 약 3시간이 목표; 공식 렌더는 PC에서 한 번에 하나라 루나 동시 실행은 5~7개가 적당). 도구·함정·현재 상태 인계는 [Claude 묶음 인계](../../archive/tools/geometry-equation/HANDOFF_SVG_CLAUDE_BATCH.md)에 둔다(도구 자체는 사용자 PC 작업 트리 `.tmp/work/`). 이유: 구현은 지시가 분명하면 루나 high로 충분하고 검수는 xhigh가 결함을 잘 잡았으며, 시험지마다 PR·전체 검수를 반복하면 CI와 토큰이 낭비됐다. equalUnits 점검은 y=x 반복 경로 그림이 눈금 비 차이로 45°보다 가파르게 그려져 루나·Sonnet 검수를 모두 통과한 일을 사용자가 지적해 넣었다.
 
 ## 해설 그림 정보 우선 (2026-11-17, 사용자 결정)
 
