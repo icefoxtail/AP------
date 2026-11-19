@@ -1,0 +1,48 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "800",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "240"
+        ],
+        "label": "y=3x+800",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "200",
+          "y": "1400",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x(분)",
+      "y": "y(톤)"
+    }
+  },
+  "caption": "낮 12시부터 x분 동안 3톤씩 흘려보내므로 전체 방류량은 y=3x+800이다. 20분에 60톤이므로 1분에 3톤이다. y=1400이면 3x=600에서 x=200분이다. 12시에서 200분 후는 3시 20분이다. 따라서 답은 ①이다.",
+  "newVisualInformation": [
+    "일차함수 y=3x+800에서 y=1400이면 x=200분이므로 3시 20분"
+  ],
+  "accessibilityDescription": "800에서 시작해 오른쪽 위로 올라가는 직선이 있고 x=200일 때 y=1400인 점 P(200,1400)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 어느 댐에서는 오늘 오전에 800톤의 물을 흘려보낸 후 낮 12시부터 다시 수문을 열어 20분당 60톤의 물을 일정하게 흘려보낸다고 한다. 오늘 흘려보낸 물 전체의 양이 1400톤인 시각은 오후 몇 시 몇 분일까? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

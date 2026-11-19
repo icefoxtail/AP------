@@ -1,0 +1,52 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "3/4"
+        ],
+        "domain": [
+          "-1",
+          "5"
+        ],
+        "label": "y=(3/4)x−3",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "(1) y=0을 대입하면 0=(3/4)x−3에서 x=4이므로 x축과의 교점은 (4,0)이다. (2) x=0을 대입하면 y=−3이므로 y축과의 교점은 (0,−3)이다. (3) 도형은 직각삼각형이므로 넓이는 (1/2)×4×3=6이다.",
+  "newVisualInformation": [
+    "두 교점 (4,0), (0,−3)으로 이루어진 직각삼각형의 넓이 (1/2)×4×3=6"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 직선이 x축과 (4,0)에서, y축과 (0,−3)에서 만나 두 축과 직각삼각형을 이루고 두 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>[서술형 3] 일차함수 $y=\\frac{3}{4}x-3$의 그래프와 $x$축, $y$축으로 둘러싸인 도형의 넓이를 구하면? [5점]<br><br>(1) 그래프와 $x$축의 교점은? [2점]<br>(2) 그래프와 $y$축의 교점은? [2점]<br>(3) 넓이는? [1점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
