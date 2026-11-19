@@ -68,10 +68,13 @@ function fileRef(root, file) {
   const bytes = fs.readFileSync(full);
   return { path: file, sha256: sha(bytes), sizeBytes: bytes.length };
 }
+// Git holds the question metadata as per-exam shards; the native plans declare the one logical file they assemble to.
+// A changed shard therefore counts as a change of METADATA (whose recorded hash is the assembled file's).
+const METADATA_SHARDS = 'archive/data/question-metadata/v1/';
 const dirty = root => sorted([
   ...git(root, 'diff', '--name-only', '-z', 'HEAD', '--').split('\0'),
   ...git(root, 'ls-files', '--others', '--exclude-standard', '-z').split('\0'),
-].filter(Boolean));
+].filter(Boolean).map(file => file.startsWith(METADATA_SHARDS) ? METADATA : file));
 function dirtySnapshot(root) {
   return new Map(dirty(root).map(file => [file, fs.existsSync(safe(root, file)) ? fileRef(root, file).sha256 : null]));
 }
