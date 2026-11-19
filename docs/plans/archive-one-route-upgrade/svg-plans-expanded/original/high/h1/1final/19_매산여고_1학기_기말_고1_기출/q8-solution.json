@@ -1,0 +1,80 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=4x−6",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-6",
+          "-4"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=−4x−6",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "3",
+          "y": "6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "0",
+          "y": "-6",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "2",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 점 (1,−2), (3,6)을 지나는 직선의 기울기는 (6−(−2))/(3−1)=4이다. y=4x+n에 (1,−2)를 대입하면 n=−6이므로 y=4x−6이다. ㄱ: y절편이 −6이어서 참이다. ㄴ: 기울기가 −4인 직선 y=−4x−6(점선)과 평행하지 않아 거짓이다. ㄷ: x=2일 때 y=2이므로 점 (2,5)(P)를 지나지 않아 거짓이다. 따라서 옳은 것은 ㄱ뿐이고 답은 ①이다.",
+  "newVisualInformation": [
+    "직선 y=4x−6의 y절편 −6, 기울기 4이고 점 (2,5)는 직선 위에 있지 않음"
+  ],
+  "accessibilityDescription": "오른쪽 위로 향하는 직선이 두 점 (1,−2), (3,6)과 y절편 (0,−6)을 지나고 직선 위쪽에 점 P(2,5)가 직선 위에 있지 않은 점으로 표시되어 있다. 점선 직선 y=−4x−6이 오른쪽 아래로 함께 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 <보기>는 두 점 $(1,-2), (3,6)$을 지나는 직선에 대한 설명이다. 이때, 옳은 것을 모두 고르면? (3.8점)\n\n<보기>\nㄱ. $y$ 절편은 $-6$이다.\nㄴ. 직선 $y=-4x-6$과 평행한 직선이다.\nㄷ. 점 $(2,5)$를 지나는 직선이다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

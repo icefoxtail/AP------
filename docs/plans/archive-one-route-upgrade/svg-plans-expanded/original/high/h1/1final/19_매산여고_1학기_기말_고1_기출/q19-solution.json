@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "−3≤m<4",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "4",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "두 그래프의 높이 차 D(x)=(m+3)x²−2(m+3)x+7=(m+3)(x−1)²+4−m이 모든 실수 x에서 0보다 커야 한다. m+3=0이면 D(x)=7>0이어서 성립한다. m+3>0이면 최솟값 4−m>0에서 m<4이다. m+3<0이면 D(x)가 아래로 볼록하지 않아 성립하지 않는다. 따라서 −3≤m<4이다. 수직선에서 −3은 찬 점, 4는 속이 빈 점이다.",
+  "accessibilityDescription": "수직선 위에 −3과 4 사이의 구간이 있고 −3은 찬 점, 4는 속이 빈 점이다.",
+  "newVisualInformation": [
+    "높이 차 D(x)>0이 항상 성립할 조건으로 −3≤m<4"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=mx^2+7$의 그래프가 함수 $y=-3x^2+2(m+3)x$의 그래프보다 항상 위쪽에 있을 때, 실수 $m$의 값의 범위를 구하시오. (4점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

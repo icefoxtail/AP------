@@ -1,0 +1,62 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "91/2",
+          "1/6"
+        ],
+        "domain": [
+          "0",
+          "40"
+        ],
+        "label": "y=x/6+91/2",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "15",
+          "y": "48",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "27",
+          "y": "50",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "36",
+          "y": "103/2",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x(°C)",
+      "y": "y(L)"
+    }
+  },
+  "caption": "그래프는 두 점 (15,48), (27,50)을 지나는 직선이다. 기울기는 (50−48)/(27−15)=1/6이다. 온도가 27°C에서 36°C로 9°C 올라가면 부피는 9×(1/6)=1.5L 늘어난다. 따라서 36°C일 때 부피는 50+1.5=51.5L이고 점 P(36,51.5)이다. 답은 ④이다.",
+  "newVisualInformation": [
+    "기울기 1/6인 직선에서 x=36일 때 y=51.5"
+  ],
+  "accessibilityDescription": "오른쪽 위로 완만하게 올라가는 직선 위에 세 점 (15,48), (27,50), P(36,51.5)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일정한 압력에서 온도가 $15\\,^{\\circ}\\mathrm{C}$일 때 부피가 $48\\,\\mathrm{L}$이고, 온도가 $27\\,^{\\circ}\\mathrm{C}$일 때 부피가 $50\\,\\mathrm{L}$인 어떤 기체가 있다. 이 기체의 온도가 $x\\,^{\\circ}\\mathrm{C}$일 때 부피를 $y\\,\\mathrm{L}$라 하고, $x$와 $y$ 사이의 관계를 그래프로 나타내면 아래 그림과 같다. 온도가 $36\\,^{\\circ}\\mathrm{C}$일 때, 이 기체의 부피는 몇 $\\mathrm{L}$인가? (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

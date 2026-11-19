@@ -1,0 +1,147 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "-1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "-2"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "3",
+            "denominator": "2"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cc",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "M",
+          "O"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "displaySegments": [
+    {
+      "id": "MO",
+      "refs": [
+        "M",
+        "O"
+      ]
+    }
+  ],
+  "displayCircles": [
+    "cc"
+  ],
+  "displayLines": [],
+  "caption": "원점을 지나는 원의 방정식을 x²+y²+Dx+Ey=0으로 놓는다. (0,3)을 대입하면 9+3E=0에서 E=−3이고 (−2,−1)을 대입하면 5−2D−E=0에서 D=4이다. 표준형으로 바꾸면 (x+2)²+(y−3/2)²=25/4이므로 중심은 M(−2,3/2)이고 반지름은 5/2이다. 따라서 원의 둘레의 길이는 2π×5/2=5π이고 답은 ③이다.",
+  "accessibilityDescription": "원점 O와 점 A(−2,−1), 점 B(0,3)을 지나는 원이 그려져 있고 중심 M에서 원점 O로 반지름 선분이 그어져 있으며 반지름 5/2가 적혀 있다.",
+  "newVisualInformation": [
+    "세 점을 지나는 원의 중심 (−2,3/2)와 반지름 5/2에서 둘레 5π"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "원점을 지나는 원이 두 점 $(-2,-1), (0,3)$을 지날 때, 이 원의 둘레의 길이를 구하면? (4.0점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "vMO",
+        "ownerSegment": "MO",
+        "text": "r=5/2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  }
+}

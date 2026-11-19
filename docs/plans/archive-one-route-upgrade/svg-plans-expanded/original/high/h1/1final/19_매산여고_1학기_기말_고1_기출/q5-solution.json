@@ -1,0 +1,37 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "20/3<x<10",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "20/3",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "10",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "둘레가 20cm이므로 가로가 x이면 세로는 10−x이고 0<x<10이다. 가로가 세로의 2배보다 길므로 x>2(10−x)에서 x>20/3이다. 넓이 조건 x(10−x)≤24에서 (x−4)(x−6)≥0이므로 x≤4 또는 x≥6이다. 조건을 모두 합치면 20/3<x<10이다. 수직선에서 20/3과 10은 속이 빈 점이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "수직선 위에 20/3과 10 사이의 구간이 있고 두 끝점은 모두 속이 빈 점이다.",
+  "newVisualInformation": [
+    "조건 x>20/3, 0<x<10, x≥6을 모두 합치면 20/3<x<10"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "둘레의 길이가 $20\\,\\mathrm{cm}$인 직사각형 모양의 엽서를 만들려고 한다. 엽서의 가로의 길이는 세로의 길이의 2배보다 길다. 엽서의 넓이가 $24\\,\\mathrm{cm}^2$ 이하일 때, 가로의 길이를 $x$라 할 때, $x$의 범위를 구하면? (3.9점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
