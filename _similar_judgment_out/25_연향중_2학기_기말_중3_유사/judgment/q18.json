@@ -1,0 +1,63 @@
+{
+  "qid": 18,
+  "itemFingerprint": "99217bb5a3dc8edb",
+  "solveSteps": [
+    "aligned 식과 같이 변량에 5를 더하면 새로운 평균은 m + 5이다.",
+    "각 변량의 편차는 (a+5) - (m+5) = a - m으로 변함이 없으므로 분산은 그대로 v이다.",
+    "따라서 새로운 평균과 분산은 m+5, v이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "각 변량에 같은 수 $5$를 더하면 자료 전체가 오른쪽",
+  "rpmRecordId": "M3-RPM-087",
+  "rpmReason": "aligned 식에서 변량 a, b, c, d에 5를 더해도 편차는 불변이므로 분산 v를 확인한다.",
+  "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+  "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_TRANSLATION",
+  "typeReason": "aligned 식에서 변량의 평행이동에 따른 평균 m+5와 분산 v를 파악하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "aligned 전개에 의해 평균은 5 증가하고 분산은 변하지 않으므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "변량",
+        "src": "stem",
+        "quote": "$4$개의 변량 $a, b,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분산",
+        "src": "stem",
+        "quote": "균을 $m$, 분산을 $v$라고"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "로 $5$만큼 평행이동하므로 새로운",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "aligned 식에서 변량에 5를 더하면 평균은 m+5가 되고 분산은 v임을 확인하여 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

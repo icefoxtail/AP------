@@ -1,0 +1,63 @@
+{
+  "qid": 16,
+  "itemFingerprint": "ab9a404d97c037cc",
+  "solveSteps": [
+    "총합 24이므로 평균은 24/8 = 3회이다 (ㄱ 옳음).",
+    "정렬 0, 1, 2, 3, 4, 4, 4, 6에서 중앙값은 (3+4)/2 = 3.5회, 최빈값은 4회이다 (ㄴ 틀림, ㄷ 옳음).",
+    "편차 제곱합은 26이므로 분산 13/4, 표준편차 sqrt(13)/2이다 (ㄹ 옳음). 옳은 것은 ㄱ, ㄷ, ㄹ의 3개이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "주어진 자료의 각 통계량을 검증한다.\n\n- 변량의 총합",
+  "rpmRecordId": "M3-RPM-085",
+  "rpmReason": "평균 3, 중앙값 3.5, 최빈값 4, 표준편차 sqrt(13)/2를 계산하여 보기를 검증한다.",
+  "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+  "templateKey": "TPL_M3_COUNT_TRUE_STATEMENTS_ON_STATISTICS_CONCEPTS",
+  "typeReason": "총합 24인 8명의 턱걸이 횟수로부터 대푯값과 산포도 진술의 참 개수 3개를 판정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "평균 3과 표준편차 sqrt(13)/2 등 4개 보기를 검증하여 3개를 찾으므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "변량",
+        "src": "solution",
+        "quote": "증한다. - 변량의 총합은 $2"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$명의 턱걸이 횟수를 조사하였더니"
+      }
+    ],
+    "method": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "각 통계량을 검증한다. - 변",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "평균 3, 중앙값 3.5, 최빈값 4, 표준편차 sqrt(13)/2로 옳은 보기 ㄱ, ㄷ, ㄹ 3개를 확인하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

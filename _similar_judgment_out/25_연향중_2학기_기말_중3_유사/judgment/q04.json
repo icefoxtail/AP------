@@ -1,0 +1,63 @@
+{
+  "qid": 4,
+  "itemFingerprint": "11ddf7d2e07e9eab",
+  "solveSteps": [
+    "점 P에서 그은 두 접선의 길이는 같으므로 PA = PB이고, OP는 각 APB를 이등분하여 angle BPO = 30도이다.",
+    "직각삼각형 PBO에서 OB = 4 cm이므로 PB = 4 / tan(30도) = 4*sqrt(3) cm이다.",
+    "따라서 PA + PB = 4*sqrt(3) + 4*sqrt(3) = 8*sqrt(3) cm이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 두 선분 $\\overline{PA}, \\",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "원 밖의 한 점 $P$에서 원에 그은 두 접선의 길이는",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmReason": "원 밖의 점 P에서 그은 두 접선 PA, PB의 길이가 같음을 활용하여 8*sqrt(3)을 구한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_LENGTH",
+  "typeReason": "접선각 60도와 반지름 OB = 4로부터 접선의 길이 합 8*sqrt(3)을 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "반각 30도와 tan 30도 공식으로 PB = 4*sqrt(3)을 즉시 구하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "원 $O$의 접선이고 두 점 $"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "e{PB}$의 길이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "탄젠트",
+        "src": "solution",
+        "quote": "igned} \\tan 30^\\cir",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "반각 30도와 OB = 4로 직각삼각형에서 PB = 4*sqrt(3)을 얻어 PA + PB = 8*sqrt(3)으로 계산하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

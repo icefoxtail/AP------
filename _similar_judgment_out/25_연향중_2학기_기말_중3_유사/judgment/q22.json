@@ -1,0 +1,63 @@
+{
+  "qid": 22,
+  "itemFingerprint": "a221a12e335fbd25",
+  "solveSteps": [
+    "반지름 12 cm인 원의 둘레는 24*pi cm이다. 호 AB = 8*pi의 중심각은 120도, 호 CD = 4*pi의 중심각은 60도이다.",
+    "호 AC의 중심각을 x, 호 BD의 중심각을 y라 하면 x + y = 180도이고, 할선각 공식에서 (x - y)/2 = 30도, 즉 x - y = 60도이다.",
+    "연립하면 2x = 240도에서 x = 120도이므로 호 AC의 길이는 24*pi * (120/360) = 8*pi cm이다."
+  ],
+  "solvedAnswer": "$8\\pi,\\mathrm{cm}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서·논술형 2] 다음 그림과 같이 반지름의 길이가 $",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "반지름의 길이가 $12,\\mathrm{cm}$이므로 원",
+  "rpmRecordId": "M3-RPM-080",
+  "rpmReason": "할선각 30도와 원의 둘레 24pi로부터 호 AC의 중심각 120도와 길이 8pi를 구한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "두 할선의 교각 30도와 두 호의 길이 8pi, 4pi를 연립해 호 AC의 길이를 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "중심각의 합 180도와 차 60도를 연립하여 중심각 120도와 호의 길이 8pi를 구하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "서술형",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "그림과 같이 반지름의 길이가 $1"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "같이 반지름의 길이가 $12,\\m"
+      }
+    ],
+    "method": [
+      {
+        "term": "할선",
+        "src": "solution",
+        "quote": "$P$에서 두 할선이 이루는 각의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "둘레 24pi에서 중심각 합 180도와 할선각 차 60도를 연립해 x = 120도로 호 AC = 8pi를 산출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

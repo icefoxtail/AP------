@@ -1,0 +1,63 @@
+{
+  "qid": 3,
+  "itemFingerprint": "25d558636682b5e0",
+  "solveSteps": [
+    "중심 O에서 현 AB에 내린 수선의 발 E는 AB의 중점이므로 AE = 8/2 = 4이다.",
+    "반지름 OA = 8이고 angle OEA = 90도인 직각삼각형 OEA에서 OE^2 = 8^2 - 4^2 = 48이다.",
+    "따라서 OE = sqrt(48) = 4*sqrt(3)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $\\triangle ABC$는 $\\ove",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "원의 중심 $O$에서 현 $AB$에 내린 수선은 현을 ",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmReason": "중심에서 현 AB = 8에 내린 수선이 현을 이등분하여 AE = 4가 됨을 활용한다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "typeReason": "현의 길이 AB = 8과 반지름 OA = 8로부터 수선 OE의 길이 4*sqrt(3)을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "피타고라스 정리 OE = sqrt(8^2 - 4^2) = 4*sqrt(3)으로 바로 계산되므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "e{AC}$인 이등변삼각형이고 원 $O$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "e{OE}$의 길이는? (단, $"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "로 피타고라스 정리에 의하여 $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "현 AB = 8의 중점 AE = 4와 OA = 8로 피타고라스 정리에서 OE = 4*sqrt(3)을 산출하여 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

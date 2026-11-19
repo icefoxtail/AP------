@@ -1,0 +1,63 @@
+{
+  "qid": 20,
+  "itemFingerprint": "96753dadf2e878e2",
+  "solveSteps": [
+    "산점도에서 x축은 영어 성적, y축은 국어 성적이다.",
+    "점 D는 직선 y=x의 위쪽에 위치하므로 y > x, 즉 국어 성적이 영어 성적보다 더 우수하다.",
+    "따라서 영어 성적이 더 우수하다고 한 ⑤는 옳지 않다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "어느 학교 학생들의 영어 성적($x$축)과 국어 성적(",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+  "unitEvidence": "산점도에서 가로축($x$축)은 영어 성적, 세로축($y",
+  "rpmRecordId": "M3-RPM-090",
+  "rpmReason": "직선 y=x의 영역과 산점도 점의 위치를 해석하여 국어와 영어 성적을 비교한다.",
+  "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+  "templateKey": "TPL_M3_CORRELATION_TYPE_JUDGMENT",
+  "typeReason": "산점도에서 y=x 기준 점 D의 위치(y > x)를 파악해 오류 진술 ⑤를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직선 y=x 위쪽 점 D의 의미(국어 > 영어)를 직관적으로 판별하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "산점도",
+        "src": "stem",
+        "quote": "$축)에 대한 산점도에서 학생 $A"
+      }
+    ],
+    "goal": [
+      {
+        "term": "위치",
+        "src": "stem",
+        "quote": "C, D$의 위치가 다음과 같다"
+      }
+    ],
+    "method": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "점 $B$는 직선 $y=x$의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "점 D가 직선 y=x 위쪽에 위치하여 y > x이므로 국어가 더 우수함을 확인해 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 15,
+  "itemFingerprint": "6cc024f6de9cbbcb",
+  "solveSteps": [
+    "자료 A는 총합 49에서 평균 7, 중앙값 7, 최빈값 2, 7이다 (①, ② 옳음).",
+    "자료 B는 중앙값 16, 최빈값 16이다 (③ 옳음).",
+    "자료 C는 최빈값 5, 9이고, 중앙값은 (5+9)/2 = 7이므로 8이라고 한 ⑤는 옳지 않다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "각 자료의 대푯값을 판별한다.\n\n- 자료 $A$: 총합",
+  "rpmRecordId": "M3-RPM-082",
+  "rpmReason": "총합 49인 자료 A와 중앙값 16인 자료 B 및 자료 C의 통계량을 비교하여 참과 거짓을 판별한다.",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_DIRECT",
+  "typeReason": "총합 49인 자료 A와 중앙값 16인 자료 B를 통해 자료 C의 오류 진술 ⑤를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "총합 49에서 구한 자료 A의 평균과 자료 C의 중앙값 7을 순차 확인하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "다음 세 자료 $A, B,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대푯값",
+        "src": "solution",
+        "quote": "각 자료의 대푯값을 판별한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "료의 대푯값을 판별한다. - 자",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "총합 49인 자료 A와 달리 자료 C의 중앙값이 (5+9)/2 = 7인데 8로 진술된 ⑤의 오류를 확인하여 정답 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

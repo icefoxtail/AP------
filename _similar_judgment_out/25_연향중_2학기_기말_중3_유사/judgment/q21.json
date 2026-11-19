@@ -1,0 +1,63 @@
+{
+  "qid": 21,
+  "itemFingerprint": "9072531b0e3e380b",
+  "solveSteps": [
+    "직각삼각형 AMC에서 피타고라스 정리로 CM = sqrt((6*sqrt(5))^2 - 12^2) = sqrt(36) = 6 cm이다.",
+    "원의 반지름을 R = x + 6이라 하면 직각삼각형 OMA에서 (x + 6)^2 = x^2 + 12^2이므로 12x = 108, 즉 x = 9 cm이다.",
+    "반지름 R = 9 + 6 = 15 cm이므로 원 O의 넓이는 pi * 15^2 = 225*pi cm^2이다."
+  ],
+  "solvedAnswer": "$225\\pi,\\mathrm{cm}^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서·논술형 1] 다음 그림의 원 $O$에서 선분 $\\",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "$\\overline{CM} \\perp \\overline",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmReason": "현의 수직이등분선 성질과 피타고라스 정리로 반지름 15와 넓이 225pi를 산출한다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "typeReason": "현의 반 AM = 12와 CA = 6*sqrt(5)로부터 반지름 15와 넓이 225pi를 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 직각삼각형 AMC, OMA에서 피타고라스 정리를 연립해 R = 15를 구하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "서술형",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "원 $O$에서 선분 $\\overl"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "원 $O$의 넓이를 구하고 그"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": ". 피타고라스 정리에 의하여 선분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직각삼각형 AMC에서 CM = 6을 구하고 직각삼각형 OMA에서 R = 15를 얻어 넓이 225pi로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
