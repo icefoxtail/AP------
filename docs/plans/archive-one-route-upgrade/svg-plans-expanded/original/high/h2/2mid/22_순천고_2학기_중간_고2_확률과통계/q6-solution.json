@@ -4,46 +4,45 @@
     "kind": "NORMAL_CURVE",
     "curves": [
       {
-        "id": "Z",
-        "mean": "0",
-        "sd": "1",
-        "label": "Z"
+        "id": "X",
+        "mean": "m",
+        "sd": "σ",
+        "label": "X"
       }
     ],
     "ticks": [
       {
-        "x": "-3",
-        "text": "m-3σ"
+        "z": "-3"
       },
       {
-        "x": "0",
-        "text": "m"
+        "z": "0"
       },
       {
-        "x": "3",
-        "text": "m+3σ"
+        "z": "3"
       }
     ],
     "shades": [
       {
-        "from": "-3",
-        "to": "0",
+        "from": "m-3σ",
+        "to": "m",
         "color": "BLUE"
       },
       {
-        "from": "0",
-        "to": "3",
+        "from": "m",
+        "to": "m+3σ",
         "color": "WARM"
       }
     ],
     "areaLabels": [
       {
         "shade": 0,
-        "text": "0.4987"
+        "text": "0.4987",
+        "source": "TABLE"
       },
       {
         "shade": 1,
-        "text": "0.4987"
+        "text": "0.4987",
+        "source": "TABLE"
       }
     ]
   },
