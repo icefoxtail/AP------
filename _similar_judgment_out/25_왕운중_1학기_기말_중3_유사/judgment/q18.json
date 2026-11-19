@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "4bf860f1499d4569",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "두 포물선을 표준형으로 변형한다.",
+    "y = 2(x - 3a)^2 - 18a^2 + 3a^2 = 2(x - 3a)^2 - 15a^2 이므로 꼭짓점은 (3a, -15a^2) 이다.",
+    "y = 3(x - b)^2 - 3b^2 + 5a 이므로 꼭짓점은 (b, -3b^2 + 5a) 이다.",
+    "꼭짓점이 일치하므로 x좌표 b = 3a 에서 a/b = 1/3 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = 2x^2",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_VERTEX_FORM_COMMON_VERTEX",
+  "newKeyProposal": null,
+  "typeReason": "두 포물선의 꼭짓점 일치 조건에서 계수 -12 a 등을 정리해 비를 구하는 유형이다.",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmReason": "-12ax 등 일반형을 표준형으로 고쳐 두 꼭짓점 좌표를 일치시킨다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "-12a 등 문자가 포함된 두 식을 모두 표준형으로 변형하고 비교한다.",
+  "how": "꼭짓점 x좌표 3a = b 에서 바로 a/b = 1/3 을 도출하였다. 12",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = 2x^2 - 12ax + 3a^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$0$이 아닌 상수) [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "일치",
+        "src": "solution",
+        "quote": "꼭짓점의 $x$좌표가 같으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

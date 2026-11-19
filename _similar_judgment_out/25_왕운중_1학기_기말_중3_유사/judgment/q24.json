@@ -1,0 +1,57 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "c313671661618e31",
+  "solvedAnswer": "$f(x) = 3x^2 - 18x + 9$",
+  "solveSteps": [
+    "(가) y = (x - 2)^2 + 5 에 x = 0 을 대입하면 y = 9 이므로 y절편은 (0, 9), 즉 c = 9 이다.",
+    "(나) f(5) = f(1) 이므로 대칭축은 x = (5 + 1)/2 = 3 이다.",
+    "(다) 꼭짓점의 x좌표가 3이므로 y = 4(3) - 30 = 12 - 30 = -18 이다. 꼭짓점은 (3, -18) 이다.",
+    "f(x) = a(x - 3)^2 - 18 에 (0, 9)를 대입하면 9 = 9a - 18 에서 9a = 27, a = 3 이다.",
+    "따라서 f(x) = 3(x - 3)^2 - 18 = 3x^2 - 18x + 9 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $f(x) = ax",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_VERTEX_FORM_VERTEX_LOCUS",
+  "newKeyProposal": null,
+  "typeReason": "세 조건을 종합하여 꼭짓점 y좌표 -18 등을 구하고 f(x)를 완성하는 고난도 서술형 유형이다.",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "절편, 대칭축, 직선 위의 꼭짓점 y좌표 -18 등을 종합하여 식을 결정한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대칭축 계산, 꼭짓점 y좌표 -18 결정, 절편 대입의 다단계 추론 서술형이다.",
+  "how": "대칭축 3과 직선 대입으로 꼭짓점 (3, -18)을 구하고 f(x)=3x^2-18x+9를 도출하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x) = ax^2 + bx + c$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "$f(x)$를 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭축",
+        "src": "solution",
+        "quote": "대칭축은 $x = \\frac{5+1}{2} = 3$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

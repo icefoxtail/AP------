@@ -1,0 +1,56 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "95440961b83e4c71",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "y = -2x^2 을 y축 방향으로 3만큼 평행이동하면 y = -2x^2 + 3 이다.",
+    "점 (k, -15) 를 대입하면 -15 = -2k^2 + 3 이다.",
+    "2k^2 = 18 이므로 k^2 = 9 에서 k = +- 3 이다.",
+    "모든 k의 값의 곱은 3 * (-3) = -9 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = -2x^2",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_TRANSLATION_POINT",
+  "newKeyProposal": null,
+  "typeReason": "평행이동한 포물선에 점 (k, -15) 를 대입하여 k의 곱을 구하는 유형이다.",
+  "rpmRecordId": "M3-RPM-046",
+  "rpmReason": "y = -2x^2 + 3 에 점 (k, -15) 를 대입하여 k 값을 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행이동 식 세우기와 점 (k, -15) 대입 후 k^2 = 9 풀이를 진행한다.",
+  "how": "식 y = -2x^2 + 3 에 (k, -15)를 대입해 k=+-3을 구하고 곱 -9를 얻었다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = -2x^2$의 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "모든",
+        "src": "stem",
+        "quote": "모든 $k$의 값의 곱은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "점 $(k, -15)$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

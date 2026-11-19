@@ -1,0 +1,56 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "25a154118dc93f34",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "(x + a)^2 = 7 에서 x + a = +- sqrt(7) 이므로 x = -a +- sqrt(7) 이다.",
+    "주어진 해 x = 3/7 +- sqrt(b) 와 비교한다.",
+    "-a = 3/7 이므로 a = -3/7 이고, b = 7 이다.",
+    "따라서 ab = (-3/7) * 7 = -3 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $(x+a)^2",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+  "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_ROOT_PARAMETER",
+  "newKeyProposal": null,
+  "typeReason": "제곱근 형태의 해와 비교하여 미정계수의 곱 ab 를 구하는 유형이다.",
+  "rpmRecordId": "M3-RPM-033",
+  "rpmReason": "제곱근 풀이 해의 유리수 부분과 무리수 부분을 비교하여 ab 를 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱근을 이용한 풀이 결과를 근의 형태와 비교해 ab = -3 을 구한다.",
+  "how": "제곱근 형태로 푼 해를 비교해 a=-3/7, b=7을 구하고 곱 ab = -3을 계산하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "(단, $a, b$는 유리수)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$ab$의 값은? (단, $a, b$는 유리수)"
+      }
+    ],
+    "method": [
+      {
+        "term": "비교",
+        "src": "solution",
+        "quote": "비교하면 $-a = \\frac{3}{7}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

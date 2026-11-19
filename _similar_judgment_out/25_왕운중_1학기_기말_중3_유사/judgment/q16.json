@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "bf2a6e6961dc235c",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "포물선 그래프가 아래로 볼록하므로 a > 0 이다.",
+    "꼭짓점 (2, b)가 x축 아래에 위치하므로 b < 0 이다.",
+    "따라서 일차함수 y = ax + b 는 기울기 a > 0 이고 y절편 b < 0 이다.",
+    "오른쪽 위로 향하고 y절편이 음수인 직선은 그림 2번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그래프가 아래와 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = a(x-2",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_TRANSFER",
+  "newKeyProposal": null,
+  "typeReason": "포물선 꼭짓점 위치로 a, b 부호를 판정하고 일차함수 y = ax + b 그래프를 찾는 유형이다.",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmReason": "포물선 개형에서 구한 a, b 부호를 직선 y = ax + b 에 전이하여 판단한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ax 일차함수의 볼록 방향과 꼭짓점에서 부호를 찾아 직선을 그린다.",
+  "how": "아래로 볼록 a>0, 꼭짓점 아래 b<0을 도출해 일차함수 개형 2번을 선택하였다. ax",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = a(x-2)^2 + b$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax + b$의 그래프로 알맞은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "포물선",
+        "src": "solution",
+        "quote": "포물선이 아래로 볼록하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

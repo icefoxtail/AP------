@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "05fdaaec7603dbf4",
+  "solvedAnswer": "$1 + \\sqrt{5}$",
+  "solveSteps": [
+    "긴 부분의 길이를 x (x > 2)라 하면 전체 길이는 x + 2 이다.",
+    "황금비 비례식에 의해 2 : x = x : (x + 2) 이다.",
+    "외항의 곱과 내항의 곱이 같으므로 aligned 수식 전개에 따라 x^2 = 2x + 4, 즉 x^2 - 2x - 4 = 0 이다.",
+    "근의 공식으로 x = 1 +- sqrt(1 - (-4)) = 1 +- sqrt(5) 이다.",
+    "x > 2 이므로 긴 부분의 길이는 1 + sqrt(5) 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 선분을",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림의 선분을 두 부분",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+  "templateKey": "TPL_M3_QUADRATIC_EQUATION_WORD_PROBLEM_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "선분 길이의 황금비 비례식을 이차방정식 aligned 전개로 풀어 무리수 길이를 구하는 유형이다.",
+  "rpmRecordId": "M3-RPM-039",
+  "rpmReason": "선분의 길이 비례식으로부터 aligned 형태의 이차방정식을 세워 푼다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "비례식 세우기와 근의 공식 적용 후 aligned 양수 근 판정까지 서술해야 한다.",
+  "how": "2:x = x:(x+2) 로부터 x^2 - 2x - 4 = 0 을 세워 1+sqrt(5)를 도출하였다. aligned",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림의 선분을 두 부분으로 나눌 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "긴 부분의 길이를 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "비례식",
+        "src": "solution",
+        "quote": "황금비 비례식에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

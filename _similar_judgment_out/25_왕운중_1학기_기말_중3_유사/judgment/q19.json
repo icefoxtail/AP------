@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "104684ce6bfaf095",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "y = -3x^2 을 평행이동한 것이므로 폭과 모양을 결정하는 a = -3 이다.",
+    "y = -3(x - p)^2 + 5 의 꼭짓점은 (p, 5) 이다.",
+    "이 점이 (4, r) 과 일치하므로 p = 4 이고 r = 5 이다.",
+    "따라서 a + p - r = -3 + 4 - 5 = -4 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = a(x-p",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_TRANSLATION_SAME_SHAPE",
+  "newKeyProposal": null,
+  "typeReason": "상수항 5 를 가진 표준형 포물선과 꼭짓점 좌표를 비교하는 유형이다.",
+  "rpmRecordId": "M3-RPM-048",
+  "rpmReason": "평행이동 성질과 꼭짓점 (p, 5) 의 좌표 일치를 이용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "a = -3을 바로 파악하고 꼭짓점 (p, 5)와 (4, r)을 비교한다.",
+  "how": "a=-3, 꼭짓점에서 p=4, r=5를 찾아 a+p-r = -4를 계산하였다. 5",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = a(x-p)^2 + 5$의 그래프는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "꼭짓점의 좌표가 $(4, r)$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "평행이동해도 $x^2$의 계수는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
