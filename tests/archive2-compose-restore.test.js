@@ -66,7 +66,7 @@ function setup(t) {
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = { state, scopeOptions, request, review, generate, prepare, prepareSignature, previewSignature, draft, replace, replaceWith,
-      renderResultEmpty, renderResult, renderMobileActions, savePapers, newDraft, invalidate, clearedResult, selectedScopeQuestionUids, selectedScopePaths };
+      renderResultEmpty, renderResult, renderMobileActions, renderCompose, savePapers, newDraft, invalidate, clearedResult, selectedScopeQuestionUids, selectedScopePaths };
   `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -280,4 +280,29 @@ test('같은 초안에서 조건을 바꿔 지운 뒤 찾기의 "문제지 만�
   await h.click({ action: 'go-compose' });
   assert.equal(w.clearedResult(), null, 'new conditions brought from the finder discard it');
   assert.doesNotMatch(w.renderResultEmpty(), /data-compose-restore/);
+});
+
+// 저장본에서 연 수정본: 범위는 원본에 고정이라 조건 칸이 그려지지 않고, 조건 처리기가 불려도 손본 문항·고정·교체 이력은 그대로다.
+// (조건이 바뀌면 invalidate()가 결과를 비우고 초안에도 빈 상태가 저장되며, 되돌리기는 수정본을 담지 않는다.)
+test('수정본에는 조건 칸이 없고, 조건 처리기가 불려도 선택·고정·교체 이력이 그대로다', async t => {
+  const h = setup(t);
+  const { w } = h;
+  build(w);
+  w.state.pins = [w.state.selected[0].questionUid];
+  w.state.undo.push({ index: 1, before: w.state.selected[1], after: w.state.selected[1], wasPinned: false });
+  const normal = w.renderCompose();
+  assert.match(normal, /data-action="compose-grade"/, '일반 만들기 화면에는 학년 버튼이 있다');
+  w.state.derivationSource = { parentKind: 'SAVED_PAPER', parentId: 'p-1', parentDisplayName: '저장한 시험지', derivationType: 'REVISION' };
+  const revision = w.renderCompose();
+  assert.match(revision, /원본 저장 시험지의 고정된 범위/);
+  assert.doesNotMatch(revision, /data-action="compose-(grade|subject)"|data-group="compose"/, '수정본 화면에는 조건 칸이 그려지지 않는다');
+
+  const before = snapshotOf(w);
+  await h.click({ action: 'compose-grade', grade: '중3' });
+  await h.click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  for (const [filter, value] of [['metaApprovedOnly', '1'], ['metaPT', 'X'], ['grade', '고2'], ['semanticSubject', 'COMMON_MATH_2']])
+    await h.change({ dataset: { group: 'compose', filter }, value });
+  assert.deepEqual(snapshotOf(w), before, '선택·rows·고정·교체 이력·조건이 그대로다');
+  assert.equal(w.state.composeStale, false, '"조건이 바뀌었습니다" 안내도 뜨지 않는다');
+  assert.equal(w.clearedResult(), null);
 });
