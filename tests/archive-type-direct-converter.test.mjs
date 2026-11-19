@@ -378,6 +378,7 @@ test("a type written in the exam file: a dots judgment is registered as judged; 
   assert.deepEqual(after.uid4, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded key outside the exam's course does not win");
   assert.deepEqual(after.uid5, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded type equal to the judgment changes nothing");
   assert.deepEqual(stats.embeddedDiffers, { registeredDots: 1, registeredEmbedded: 1, registeredJudgment: { EMBEDDED_PT_NOT_ACTIVE: 1, EMBEDDED_OUT_OF_COURSE_SCOPE: 1 } });
+});
 
 test("a type field filled with a key the registry does not have holds no value (an old key is replaced, its old value kept in before); an approved registered key is still protected", () => {
   const sem = "approved_semantic_review";
