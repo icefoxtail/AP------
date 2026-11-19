@@ -36,7 +36,33 @@ export function assertOutput(file) {
 // GEOMETRY_CAPTURE_TIMEOUT_MS (0 < ms <= 600000) sets every browser wait of the render capture and layout pre-checks (page.goto, waitForFunction, screenshots,
 // setContent). Unset or invalid: the fixed defaults stay exactly as they were (60 s for the Archive page wait, Playwright's 30 s elsewhere). Raise it on a loaded PC.
 export const captureTimeoutMs=(defaultMs,raw=process.env.GEOMETRY_CAPTURE_TIMEOUT_MS)=>{const v=Number(raw);return raw!==undefined&&raw!==''&&Number.isFinite(v)&&v>0&&v<=600000?v:defaultMs;};
+// Browser reuse (render-plan runs only): once enableBrowserReuse() is called, launchBrowser() hands out a handle onto one shared Chrome instead of starting a new
+// Chrome per caller. Every page still opens in its own context (browser.newPage), so nothing but the process is shared. handle.close() closes the pages that handle
+// opened and marks the handle closed; the shared Chrome itself ends in closeSharedBrowser(). Outside render-plan (tests, capture tools) nothing changes.
+let reuseBrowser=false,sharedBrowser=null,ownLaunches=0;
+export const browserLaunchCount=()=>ownLaunches;
+export function enableBrowserReuse(){if(process.env.GEOMETRY_BROWSER_REUSE!=='0')reuseBrowser=true;}
+export async function closeSharedBrowser(){reuseBrowser=false;const pending=sharedBrowser;sharedBrowser=null;if(!pending)return;try{await (await pending).close();}catch{}}
+function browserHandle(real){
+  const pages=new Set();let closed=false;// pages and contexts this handle opened
+  const own=async(open)=>{const page=await open();pages.add(page);page.once('close',()=>pages.delete(page));return page;};
+  return new Proxy(real,{get(target,prop){
+    if(prop==='close')return async()=>{if(closed)return;closed=true;await Promise.allSettled([...pages].map(page=>page.close()));};
+    if(prop==='isConnected')return()=>!closed&&target.isConnected();
+    if(prop==='newPage')return(...args)=>own(()=>target.newPage(...args));
+    if(prop==='newContext')return(...args)=>own(()=>target.newContext(...args));
+    const value=Reflect.get(target,prop,target);
+    return typeof value==='function'?value.bind(target):value;
+  }});
+}
 export async function launchBrowser() {
+  if(!reuseBrowser)return launchOwnBrowser();
+  if(sharedBrowser){const existing=await sharedBrowser.catch(()=>null);if(existing?.isConnected())return browserHandle(existing);sharedBrowser=null;}
+  sharedBrowser=launchOwnBrowser();
+  return browserHandle(await sharedBrowser);
+}
+async function launchOwnBrowser() {
+  ownLaunches++;
   const executablePath=process.env.GEOMETRY_BROWSER_EXECUTABLE;
   const browser=await playwright().chromium.launch({...(executablePath?{executablePath}:{channel:process.env.GEOMETRY_BROWSER_CHANNEL||'chrome'}),headless:true});
   const wait=captureTimeoutMs(null);

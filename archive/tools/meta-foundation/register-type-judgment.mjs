@@ -237,8 +237,12 @@ export function registerTypeJudgment(ctx) {
     bindingCounts[rowBinding]++;
     const embedded = { problemTypeKey: q.problemTypeKey ?? null, templateKey: q.templateKey ?? null };
     const hasEmbedded = !empty(q.problemTypeKey) || !empty(q.templateKey);
-    // An exam-embedded type that differs from the judged value is no reason to refuse (2026-11-20): the direct judgment is the canonical value;
-    // the embedded value and whether it matches are kept in typeApproval.examEmbeddedType below.
+    // The catalog compares an exam-embedded type with the registered one only for meta-foundation scoped rows.
+    if (String(current.metadataRevision || "").startsWith("meta-foundation:"))
+      for (const key of TYPE_FIELDS) {
+        const value = key === "problemTypeKey" ? problemTypeKey : templateKey;
+        if (!empty(q[key]) && q[key] !== value) failWith(`exam-embedded ${key} differs from the judged value on a meta-foundation row: ${uid}`);
+      }
     const typeApproval = { schemaVersion: TYPE_APPROVAL_SCHEMA, approvalType: DIRECT_JUDGMENT, reviewPassCount: 1, requestId: req.requestId, judge, rationale,
       // curriculumSource: "row" = the row itself names the curriculum (cross-checked); "request" = only the judgment names it.
       scope: { curriculum: scope.curriculum, standardCourse: scope.standardCourse, curriculumSource: rowCurriculum ? "row" : "request",

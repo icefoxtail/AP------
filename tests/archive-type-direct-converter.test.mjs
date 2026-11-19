@@ -380,6 +380,7 @@ test("a type written in the exam file: a dots judgment is registered as judged; 
   assert.deepEqual(stats.embeddedDiffers, { registeredDots: 1, registeredEmbedded: 1, registeredJudgment: { EMBEDDED_PT_NOT_ACTIVE: 1, EMBEDDED_OUT_OF_COURSE_SCOPE: 1 } });
 });
 
+
 test("a type field filled with a key the registry does not have holds no value (an old key is replaced, its old value kept in before); an approved registered key is still protected", () => {
   const sem = "approved_semantic_review";
   const recs = records.map(r => r.sourceOrdinal === 1 ? { ...r, problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } : r);
@@ -388,4 +389,23 @@ test("a type field filled with a key the registry does not have holds no value (
   assert.deepEqual(item.before, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" });
   assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
   assert.equal(skipped.find(x => x.uid === "uid3").reason, "TYPE_ALREADY_PRESENT", "uid3 holds an approved ACTIVE key and stays");
+});
+
+test("on a meta-foundation row an exam-embedded type that differs from the value to register keeps the question out of the request (the catalog counts it as a metadata conflict and the consumer check refuses it)", () => {
+  const reg = makeRegistry({
+    problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }],
+    templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }],
+    bindings: ["PT_A", "PT_B"].map(problemTypeKey => ({ problemTypeKey, curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" })),
+    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중1 수학"] }]])
+  });
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_B", "TPL_B"], 3: ["PT_A", "TPL_A"], 4: ["PT_B", ""] };
+  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { metadataRevision: "meta-foundation:X" }));
+  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
+  const ctx = makeCtx({ records: recs, ctx: { registry: reg, readBank } });
+  const sonnet = { judge: "claude-sonnet-5.5" };
+  const { requests, skipped } = planRequests({ ctx, resultRows: [line(1), line(2, sonnet), line(3), line(4, { tpl: null })], approvedBy: "x" });
+  const after = Object.fromEntries(requests.flatMap(r => r.items).map(i => [i.questionUid, i.after]));
+  assert.deepEqual(Object.keys(after).sort(), ["uid2", "uid3"], "uid2 (a valid embedded type wins over a non-dots judgment) and uid3 (equal) are registered");
+  assert.deepEqual(after.uid2, { problemTypeKey: "PT_B", templateKey: "TPL_B" });
+  for (const uid of ["uid1", "uid4"]) assert.equal(skipped.find(s => s.uid === uid).reason, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT");
 });

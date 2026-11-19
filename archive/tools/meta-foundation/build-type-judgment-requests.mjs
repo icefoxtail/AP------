@@ -313,8 +313,11 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
-      // A type written into the exam file by its author is not a reason to refuse the direct judgment (the judgment is the canonical value, 2026-11-17;
-      // the registrar records the embedded value and whether it matches in typeApproval.examEmbeddedType).
+      // 시험지 JS에 적힌 유형이 등록할 값과 다르면 카탈로그가 meta-foundation 행에서 그 둘을 충돌(metadataConflicts)로 세고 소비자 검증이 거절한다
+      // (verify-changed-uid-consumer-approval METADATA_CONFLICT; 등록기도 같은 이유로 거절). 이런 문항은 요청에 넣지 않고 사유를 세어 남긴다.
+      // 적힌 유형을 바꾸려면 시험지 JS를 고치는 별도 절차가 필요하다. 위 규칙으로 적힌 유형이 등록 값이 된 문항은 같아서 통과한다.
+      if (String(m.metadataRevision || "").startsWith("meta-foundation:") &&
+          ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
       const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
