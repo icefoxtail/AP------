@@ -240,10 +240,10 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt{54} \\times \\sqrt{20} \\div \\sqrt{15} = a\\sqrt{b}$일 때, $a+b$의 값은? (단, $b$는 가능한 작은 자연수)",
     "choices": [
+      "4",
       "5",
       "6",
-      "9",
-      "10",
+      "7",
       "8"
     ],
     "answer": "⑤",
@@ -521,10 +521,10 @@ window.questionBank = [
     "content": "$x = \\frac{1}{\\sqrt{3}-\\sqrt{2}}, y = \\frac{1}{\\sqrt{3}+\\sqrt{2}}$일 때, $x^2 - xy + y^2$의 값은?",
     "choices": [
       "9",
-      "7",
-      "8",
       "10",
-      "11"
+      "11",
+      "12",
+      "13"
     ],
     "answer": "①",
     "solution": "[키포인트] 분모를 유리화한 후 곱셈 공식의 변형 $x^2-xy+y^2 = (x+y)^2 - 3xy$를 이용한다.\\n조건 정리: $x, y$를 유리화하여 합($x+y$)과 곱($xy$)을 구한다.\\n풀이 방향: 유리화된 값을 변형 공식에 대입하여 계산을 간소화한다.\\n정석 풀이:\\n$x = \\frac{\\sqrt{3}+\\sqrt{2}}{3-2} = \\sqrt{3}+\\sqrt{2}$\\n$y = \\frac{\\sqrt{3}-\\sqrt{2}}{3-2} = \\sqrt{3}-\\sqrt{2}$\\n$x+y = 2\\sqrt{3}$, $xy = (\\sqrt{3}+\\sqrt{2})(\\sqrt{3}-\\sqrt{2}) = 3-2 = 1$\\n$x^2-xy+y^2 = (x+y)^2 - 3xy = (2\\sqrt{3})^2 - 3(1) = 12 - 3 = 9$\\n따라서 정답은 ①이다.",
