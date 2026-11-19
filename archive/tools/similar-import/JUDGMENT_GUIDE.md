@@ -16,8 +16,10 @@
 | 7 반영 | `node archive/tools/similar-import/apply-judgment.mjs <stem.js> <작업폴더>/judgment` | 도구 |
 
 - 작업폴더는 저장소 밖 `C:/AI_WS/tmp/similar-judgment/<stem>/` 에 둔다. 판정·후보·검수 묶음은 저장소에 넣지 않는다.
+- 선택표: `build-candidates` 가 등록부에서 새로 만들어 `<작업폴더>/selection/*.md` 에 둔다 (`candidates/_exam.json` 의 `selectionFiles`, 이 시험 과목이 먼저). 단원 → 소단원·RPM 행·유형(PT→TPL)을 한글 이름과 함께 모았다. 저장소의 `archive/tools/similar-import/selection/` 은 `build-selection-tables.mjs --write` 가 만든 열람용 사본이다.
 - `build-candidates` 는 이미 있는 `judgment/qNN.json` 을 덮어쓰지 않는다. **이미 채워진 판정 파일이 있으면 내용을 믿지 말고** `--force` 로 빈 틀을 다시 만들어 처음부터 쓴다. 틀의 `itemFingerprint` 가 현재 문항과 다르거나 예시 글이 그대로 남아 있으면 `STALE_OR_EXAMPLE` 로 걸린다.
 - 진행 단계는 `C:/AI_WS/tmp/similar-judgment/STATUS.tsv` 에 쌓인다: `CONVERTED → JUDGED(검사 통과) → REVIEWED(검수 완료) → READY(운영 병합 가능)` 또는 `HOLD`.
+- **1단계 변환이 실패하면** 저장소 도구·원천 드라이브 파일은 고치지 않는다. 작업폴더에 내려받은 마크다운 사본에서 **형식만** 기계적으로 고쳐 다시 돌린다: 코드 블록 줄 앞뒤의 여분 역슬래시, 깨진 코드 블록 경계, 정답 칸의 표기(`②,④` → `②, ④`), 문항 번호 줄(`## Q07`) 같은 것. 무엇을 고쳤는지 작업폴더 `SOURCE_FIXES.md` 에 한 줄씩 적는다. 발문·보기·정답 번호·해설의 수학 내용을 바꿔야만 통과한다면 고치지 말고 그 시험지를 건너뛰고 보고한다.
 - 수학 내용(발문·보기·정답·해설)은 고치지 않는다. 틀렸다고 생각하면 `answerMatches:false` 와 `answerIssue` 로 보고하고 시험지는 보류된다.
 
 ## 1. 작성자용
@@ -26,7 +28,7 @@
 
 1. `problem` 의 발문·보기만 읽고 **직접 푼다.** 풀어서 답을 확인한 뒤에 `reference`(저장 정답·해설)를 본다.
 2. **단원·RPM·유형(PT/TPL)은 `reference` 해설에 적힌 결정적 풀이 단계를 기준으로 고른다.** 내 풀이가 해설과 다르면 해설 기준으로 고르고, 다르다는 사실은 `how` 에 적는다.
-3. `units` 에서 단원을 고른다. 단원 안의 `subUnits`, `rpm`, `problemTypes` 만 후보다. 원천이 적은 단원과 원본 기출 힌트 단원은 등록된 유형 전부, 다른 단원은 좁은 목록이다. 단원을 바꿨는데 후보가 비면 `NONE` 으로 두고 `how` 에 적는다. 원본 기출의 같은 번호 문항이 쓴 유형은 `sourceExamHint` 에 따로 있다(참고만 한다. 해설의 결정적 단계가 다르면 따르지 않는다).
+3. `units` 에서 단원을 고른다. 단원 안의 `subUnits`, `rpm`, `problemTypes` 가 후보이고 유형은 모든 단원에서 등록된 ACTIVE 전부다. 유형은 선택표에서도 개념 단어(한글 이름)로 찾는다. 선택표의 키는 후보 파일에 없어도 쓸 수 있다(맨 끝 "아래 학년 유형" 포함). 후보와 선택표에 맞는 유형이 없으면 `NONE` 으로 두고 `how` 에 적는다. 원본 기출의 같은 번호 문항이 쓴 유형은 `sourceExamHint` 에 따로 있다(참고만 한다. 해설의 결정적 단계가 다르면 따르지 않는다).
 4. `source` 는 원천 마크다운이 적어 온 값이다. 틀릴 수 있다. 그대로 베끼지 말고 문항을 읽고 정한다. (원천의 `primaryMethod`·`decisiveStep` 은 풀기 전에 보지 않도록 `reference` 쪽에 있다.)
 5. CrossConcept·Condition 키·결합 패턴(`integrationPattern`)과 출처(`provenance` 의 `generator`·`variationNote`)는 판정 대상이 아니다. 원천 마크다운 값을 그대로 옮기고 재판정하지 않으며, 원천에 없는 `generator`·`variationNote` 는 쓰지 않는다.
 
@@ -35,7 +37,7 @@
 | 칸 | 뜻 | 채우는 법 |
 | --- | --- | --- |
 | `solveSteps` | 직접 푼 과정 | 2~6줄. 이 문항의 숫자와 식을 쓴다. |
-| `solvedAnswer` | 내가 푼 답 | 객관식은 `②` 또는 값(`12`). 서답형은 값만(`$`는 있어도 없어도 된다). 소문항이면 `(1) 144, (2) 216`. |
+| `solvedAnswer` | 내가 푼 답 | 객관식은 `②` 또는 값(`12`). 복수 정답은 `②, ④`(순서·`2, 4` 표기 상관없음). 서답형은 값만(`$`는 있어도 없어도 된다). 소문항이면 `(1) 144, (2) 216`. |
 | `answerMatches` | 저장 정답과 같은가 | `true` / `false`. 검사기가 직접 비교해 거짓말을 잡는다. |
 | `answerIssue` | 다르면 무엇이 다른가 | `false` 일 때만 쓴다. 비우면 실패. |
 | `figureNeed` | 그림 필요 여부 | `NONE` 그림 언급 없음 · `SELF_CONTAINED` 그림 언급은 있으나 글만으로 풀림 · `NEEDS_FIGURE` 그림의 값·모양을 읽어야 풀림 |
@@ -45,9 +47,9 @@
 | `unitEvidence` | 근거 | 발문·해설에서 **그대로** 옮긴 구절 |
 | `rpmRecordId` | RPM 행 | 고른 단원의 `rpm` 후보 id. 맞는 것이 없으면 `NONE` |
 | `rpmReason` | 이유 | 이 문항의 어떤 단계가 그 행인지. 숫자·식을 넣는다. |
-| `problemTypeKey` `templateKey` | 유형 | 후보 안의 키. **후보에 맞는 유형이 없을 때만** `NONE`(+ `newKeyProposal`). 후보를 끝까지 보고 나서 정한다. TPL 은 고른 PT 의 것만. |
+| `problemTypeKey` `templateKey` | 유형 | 후보 안의 키. **선택표에서 개념 단어로 찾아 보고도 맞는 유형이 없을 때만** `NONE`(+ `newKeyProposal`). `NONE` 을 쓰기 전에 꼭 선택표를 찾아본다. TPL 은 고른 PT 의 것만. |
 | `typeReason` | 이유 | 결정적 풀이 단계 한 문장. 숫자·식을 넣는다. |
-| `newKeyProposal` | 새 키 제안 | PT 가 `NONE` 이면 필수: `{key,label,why}`. 이름은 개념 단어 하나(예: 평행사변형의 성질). 조건·절차를 이름에 넣지 않는다. 같은 개념은 다른 문항과 같은 key 를 쓴다. |
+| `newKeyProposal` | 새 키 제안 | PT 가 `NONE` 이면 필수: `{key,label,why}`. 선택표에 같은 개념이 없을 때만 낸다. 이름은 개념 단어 하나(예: 평행사변형의 성질). 조건·절차를 이름에 넣지 않는다. 같은 시험지·다른 시험지에서 같은 개념이면 같은 key 를 쓴다. |
 | `difficultyBucket` `difficultyConfidence` `difficultyBoundaryFlag` | 난이도 | 1~5 정수만(하/중/상은 쓰지 않는다), high/medium/low, 경계 `NONE`·`B12`·`B23`·`B34`·`B45`·`UNKNOWN`. **정의·공식을 바로 쓰면 1이다. 풀이 줄 수·서술형·배점·계산량은 올리는 이유가 아니다. 애매하면 낮게 잡고 경계 플래그(두 단계 사이면 `B12` 처럼 낮은 쪽이 앞)로 표시한다.** 경계 플래그의 두 단계에 `difficultyBucket` 이 들어 있어야 한다. |
 | `difficultyReason` | 이유 | 풀이 단계 수와 어려운 지점을 이 문항의 숫자로 |
 | `itemFingerprint` | (도구가 채움) | 건드리지 않는다. 문항이 바뀌었는지 검사기가 본다. |
@@ -59,7 +61,7 @@
 ### 지켜야 할 것 (검사기가 본다)
 
 - **인용은 한 글자도 바꾸지 않는다.** 복사해서 붙인다. 실제로 `꼭짓각` 을 `꼭지각` 으로 적어 걸린 일이 있다. 공백 차이는 봐 주지만 글자와 LaTeX 는 그대로여야 한다.
-- 후보 밖 키는 쓸 수 없다. 맞는 것이 없으면 `NONE` 과 이유를 쓴다. 가까운 키에 억지로 붙이지 않는다.
+- 후보·선택표 밖 키는 쓸 수 없다. 맞는 것이 없으면 `NONE` 과 이유를 쓴다. 가까운 키에 억지로 붙이지 않는다.
 - 이유 문장(`how`, `typeReason`, `rpmReason`, `difficultyReason`, `solveSteps`)에는 **이 문항의 숫자나 식**이 들어가야 한다. 다른 문항의 문장을 복사하면 `REASON_DUPLICATE` 이다.
 - 사전에 없는 용어는 가까운 말로 바꾸지 않는다. `candidate:true`, `parent`(사전 용어), `note` 를 붙여 후보로 선언한다.
 - 같은 칸에 같은 용어를 두 번 쓰지 않는다. method 에 `사칙연산` 을 쓰지 않는다. goal 에는 대입·계산 같은 방법어를 쓰지 않는다.
@@ -69,7 +71,7 @@
 ### 막히기 쉬운 곳
 
 - **소단원이 중복처럼 보인다.** 같은 이름의 소단원이 둘일 수 있다. 가장 내용이 가까운 키 하나를 고르고 `how` 에 적는다.
-- **RPM 행이 `RPM_ONLY` 이거나 PT 후보가 없다.** 단원에 후보 PT 가 하나도 없으면 `NONE` + `newKeyProposal` 을 쓴다. 후보가 있는데 `NONE` 으로 내지 않는다.
+- **RPM 행이 `RPM_ONLY` 이거나 PT 후보가 없다.** 단원 후보와 선택표에 맞는 PT 가 하나도 없으면 `NONE` + `newKeyProposal` 을 쓴다. 선택표에 맞는 개념이 있는데 `NONE` 으로 내지 않는다.
 - **그림 낱말(그림·표·아래의)이 있는데 글만으로 풀린다.** `SELF_CONTAINED` 와 그 구절 인용. 그림이 없으면 못 푸는 문항만 `NEEDS_FIGURE` 이고, 그림 파일이 없으면 시험지가 보류된다.
 - **4칸 인용이 길다.** 5~40자의 짧은 구절을 골라 그대로 옮긴다. `$`가 들어간 구간은 닫는 `$` 까지 옮기면 안전하다.
 
@@ -154,9 +156,9 @@
 | --- | --- |
 | `ANSWER_MISMATCH` | 풀이 답과 저장 정답이 다름. `answerMatches` 가 거짓말이면 실패, 정직하게 `false`+`answerIssue` 면 시험지 보류 |
 | `QUOTE_NOT_SUBSTRING` | 인용이 원문에 그대로 없음 / 4자 미만 |
-| `REASON_NO_ITEM_TOKEN` | 이유 문장에 이 문항의 숫자·식이 하나도 없음 |
+| `REASON_NO_ITEM_TOKEN` | 이유 문장에 이 문항의 숫자·식 토큰이 하나도 없음. 문항에 두 글자 이상 토큰(`12`, `0.5`, `x2`, `AB` 등)이 있으면 한 자리 숫자·한 글자 문자는 세지 않는다. 오류 메시지가 쓸 수 있는 토큰을 보여 주니 그중 하나를 이유 문장에 그대로 넣는다. 검사기 코드를 읽을 필요 없다. |
 | `REASON_DUPLICATE` | 다른 문항과 같은 문장 |
-| `KEY_NOT_IN_CANDIDATES` | 후보 밖 키 |
+| `KEY_NOT_IN_CANDIDATES` | 후보와 선택표 밖 키 |
 | `FIELD_EMPTY` | 빈 칸이거나 형식이 틀림 |
 | `TERM_NOT_IN_DICT` / `TERM_DUPLICATE_IN_SLOT` | 사전에 없는 용어 / 같은 칸에 같은 용어 |
 | `FIGURE_MISSING` | `NEEDS_FIGURE` 인데 그림 파일 없음 → 시험지 보류 |

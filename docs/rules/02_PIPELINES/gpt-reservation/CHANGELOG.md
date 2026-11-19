@@ -1,5 +1,8 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — 변경 이력
 
+## v2.2.1 — 2026-11-19: 고등 유사 메타는 최소 한 벌
+- 메타 파일은 `rpmPrimaryRecordId`·`problemTypeKey`·`templateKey` 등 판정 값만 쓴다. `rpm(L1~L4)`·`ptTplCandidate`·`rpmPrimary{}`·`curriculumKey` 같은 사본은 쓰지 않으며, `rpmL1~L4`는 등록기가 번호에서 채운다. PT/TPL "공식 Resolver 결과만" 문구를 직접 판정 정본(2026-11-16)으로 고쳤다. 이유: 같은 값을 여러 칸에 쓰면 칸끼리 어긋난다(`docs/agents/metadata.md` 최소 한 벌).
+
 ## v2.2.0 — 2026-11-12: 고등 유사 현황 보고 도구
 - `tools/high_similar_status.py` 추가(읽기 전용): origin/main 기준 구간별 원본·main 병합·진행 중(브랜치만 있음)·미생성 수, 병합 목록, 새로 병합한 유사의 메타 등록 여부(`question_metadata.json`에 stem 있음 = main 등록 writer 처리됨). 보고 담당 세션이 정기적으로 실행해 사용자에게 보고한다.
 

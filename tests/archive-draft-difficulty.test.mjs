@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
-import { registerDifficulty5, DRAFT_SINGLE_MODEL, DRAFT_FIELD_STATUS, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { registerDifficulty5, isTextBoundDraft, DRAFT_SINGLE_MODEL, DRAFT_FIELD_STATUS, SCHEMA } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
 import { planExamRequest, judgedStemChoicesSha256, textBindingSha256, LEDGER_SCHEMA } from "../archive/tools/meta-foundation/build-draft-difficulty-requests.mjs";
 
 const SOURCE = "original/high/h1/1mid/99_테스트고_1학기_중간_고1_기출.js";
@@ -128,4 +128,94 @@ test("the request is deterministic and the judged text check ignores figure tags
   assert.equal(judgedStemChoicesSha256(withFigure), judgedStemChoicesSha256(bank[0]));
   assert.notEqual(judgedStemChoicesSha256({ ...bank[0], choices: ["1", "2", "3", "4", "6"] }), judgedStemChoicesSha256(bank[0]));
   assert.equal(sha256("x").length, 64);
+});
+
+// The request carries the stem+choices fingerprint (text-v1) the grade was judged on; the lane refuses a question whose stem or choices
+// changed since, in dry-run, write and projection verification alike, and ignores edits to answer/solution/figure.
+function withChangedSource(x, request, mutate) {
+  const changed = structuredClone(bank); mutate(changed);
+  const text = "window.questionBank = " + JSON.stringify(changed, null, 2) + ";\n";
+  fs.writeFileSync(path.join(x.root, "archive/exams", SOURCE), text);
+  const bytes = Buffer.from(text);
+  const latestBlobSha = crypto.createHash("sha1").update("blob " + bytes.length + "\0").update(bytes).digest("hex");
+  return { ...request, gemini: { ...request.gemini, latestBlobSha } };
+}
+const threePaths = (x, request) => [() => registerDifficulty5({ root: x.root, request }),
+  () => registerDifficulty5({ root: x.root, request, write: true }), () => registerDifficulty5({ root: x.root, request, verifyProjection: true })];
+
+test("a changed stem since judgment refuses the request in dry-run, write and verification, and writes nothing", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  const changed = withChangedSource(x, request, b => { b[0].content = "다음 중 옳은 것은? $x^2=9$"; });
+  const before = fs.readFileSync(path.join(x.root, "archive/data/question_metadata.json"), "utf8");
+  for (const run of threePaths(x, changed)) assert.throws(run, /stem or choices changed since judged \(textBindingFingerprint\) #1/);
+  assert.equal(fs.readFileSync(path.join(x.root, "archive/data/question_metadata.json"), "utf8"), before);
+});
+
+test("changed choices since judgment refuse the request", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  const changed = withChangedSource(x, request, b => { b[0].choices = ["1", "2", "3", "4", "6"]; });
+  for (const run of threePaths(x, changed)) assert.throws(run, /stem or choices changed since judged \(textBindingFingerprint\) #1/);
+});
+
+test("an answer, solution or figure edit since judgment does not refuse the request", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  const changed = withChangedSource(x, request, b => { b[0].answer = 3; b[0].solution = "새 해설"; b[0].image = "fig.png"; b[1].solution = "해설만 추가"; });
+  assert.equal(registerDifficulty5({ root: x.root, request: changed }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, write: true }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, verifyProjection: true }).summary.VERIFIED, 2);
+});
+
+// The whole-file blob (latestBlobSha) is not compared for a draft request whose every item carries textBindingFingerprint:
+// another question's solution/figure edit makes the file blob differ, which must not refuse the request.
+function withStaleBlob(x, mutate) {
+  const changed = structuredClone(bank); mutate(changed);
+  fs.writeFileSync(path.join(x.root, "archive/exams", SOURCE), "window.questionBank = " + JSON.stringify(changed, null, 2) + ";\n");
+}
+
+test("draft request with fingerprints: another question's solution edit (file blob differs) does not refuse it", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1)]);
+  withStaleBlob(x, b => { b[2].solution = "다른 문항 해설"; b[3].image = "other.png"; });
+  assert.equal(isTextBoundDraft(request), true);
+  assert.equal(registerDifficulty5({ root: x.root, request }).summary.APPLY, 1);
+  assert.equal(registerDifficulty5({ root: x.root, request, write: true }).summary.APPLY, 1);
+  assert.equal(registerDifficulty5({ root: x.root, request, verifyProjection: true }).summary.VERIFIED, 1);
+});
+
+test("draft request with fingerprints and a stale file blob: the target stem edit is still refused, by the text check", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1)]);
+  withStaleBlob(x, b => { b[0].content = "바뀐 발문"; });
+  for (const run of threePaths(x, request)) assert.throws(run, /stem or choices changed since judged \(textBindingFingerprint\) #1/);
+});
+
+test("a draft request with an item lacking textBindingFingerprint keeps the whole-file blob check", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  delete request.gemini.items[1].textBindingFingerprint;
+  withStaleBlob(x, b => { b[2].solution = "다른 문항 해설"; });
+  assert.equal(isTextBoundDraft(request), false);
+  for (const run of threePaths(x, request)) assert.throws(run, /source Git blob drift/);
+});
+
+test("a request that is not a draft keeps the whole-file blob check even when its items carry the fingerprint", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1)]);
+  delete request.approvalType; delete request.judge;
+  withStaleBlob(x, b => { b[2].solution = "다른 문항 해설"; });
+  assert.equal(isTextBoundDraft(request), false);
+  for (const run of threePaths(x, request)) assert.throws(run, /source Git blob drift/);
+});
+
+test("an item without textBindingFingerprint keeps the previous behaviour even when the stem changed", t => {
+  const x = fixture(t);
+  const { request } = plan(x, [ledgerItem(1), ledgerItem(2)]);
+  for (const item of request.gemini.items) delete item.textBindingFingerprint;
+  const changed = withChangedSource(x, request, b => { b[0].content = "전혀 다른 문제"; });
+  assert.equal(registerDifficulty5({ root: x.root, request: changed }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, write: true }).summary.APPLY, 2);
+  assert.equal(registerDifficulty5({ root: x.root, request: changed, verifyProjection: true }).summary.VERIFIED, 2);
 });

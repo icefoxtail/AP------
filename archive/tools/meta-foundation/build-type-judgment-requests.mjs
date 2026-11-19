@@ -237,7 +237,8 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if ((ctx.identityCountBySource.get(file) || 0) !== bank.length) { for (const { row } of entries) skip(row, "EXAM_IDENTITY_COUNT_DIFFERS_FROM_SOURCE"); continue; }
     const items = [];
     for (const { row, m } of entries) {
-      const status = { pt: String(m.fieldStatus?.problemType ?? ""), tpl: String(m.fieldStatus?.template ?? "") };
+      // A status is a tag on a value: a field with no value has nothing to protect, whatever its tag says (approved_* on an empty field is fillable).
+      const status = { pt: empty(m.problemTypeKey) ? "" : String(m.fieldStatus?.problemType ?? ""), tpl: empty(m.templateKey) ? "" : String(m.fieldStatus?.template ?? "") };
       let replace = false;
       if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
         // --replace-draft-types: a value that is only a draft (both status fields overwritable) and differs from the judgment is replaced;

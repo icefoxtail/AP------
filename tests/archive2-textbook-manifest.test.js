@@ -289,5 +289,6 @@ test('textbook figures beside the source JS resolve at render time without touch
       figures++;
     }
   }
-  assert.equal(figures, 242, "S11 baseline: 242 inline figures in the registered textbook sources");
+  // 2026-11-19: 242 -> 241. 비상_대수_수열_익힘책_고2 #25 pointed at q25.png, a crop of a different problem (익힘책 10, an a_n quadratic-equation problem); the reference was removed on purpose and the question text carries the rules.
+  assert.equal(figures, 241, "S11 baseline: 241 inline figures in the registered textbook sources");
 });

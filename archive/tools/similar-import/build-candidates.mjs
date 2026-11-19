@@ -8,9 +8,10 @@ import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, parseCli, appendStatus, readBank, readJson, writeJson, pad2, gitBlobSha1, findSibling,
   loadMasters, loadCrosswalkRecords, loadTaxonomy, loadTermDictionary, loadCourseGroups, resolveCourseGroups,
-  buildCourseTables, itemHasImage, FIGURE_CUE_RE, findOriginalExamFile, itemFingerprint,
+  buildCourseTables, buildAllSelections, lowerGroupIds, itemHasImage, FIGURE_CUE_RE, findOriginalExamFile, itemFingerprint,
 } from './lib.mjs';
 import { parseSimilarMd } from '../similar-md-to-js.mjs';
+import { buildSelectionFiles, writeSelectionFiles, selectionFileName } from './build-selection-tables.mjs';
 
 export function emptyJudgment(qid, fingerprint = '') {
   return {
@@ -111,6 +112,7 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
   const grade = md?.exam?.grade || (stem.match(/_(중[123]|고[123])_/) || [])[1] || '';
 
   const masters = loadMasters(repoRoot);
+  const crosswalk = loadCrosswalkRecords(repoRoot);
   const groups = loadCourseGroups(repoRoot);
   const courseGroups = resolveCourseGroups({ bank, explicitCourse: course, grade, curriculum, groups });
   const taxonomy = loadTaxonomy(repoRoot);
@@ -128,16 +130,14 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
     hints.set(item.id, { exam: originalFile, sourceQid: srcQid, problemTypeKey: pt, templateKey: tpl, standardUnitKey: o.standardUnitKey || '' });
   }
   const tables = buildCourseTables({
-    repoRoot, courseGroups, curriculum, masters, crosswalk: loadCrosswalkRecords(repoRoot), taxonomy,
+    repoRoot, courseGroups, curriculum, masters, crosswalk, taxonomy,
     extraPts: [...hints.values()].map(h => ({ problemTypeKey: h.problemTypeKey, standardUnitKey: h.standardUnitKey })),
   });
   const dictionary = loadTermDictionary(repoRoot);
 
-  // 단원 목록은 문항마다 다르다: 문항의 주 단원(원천이 적은 단원, 원본 기출 문항의 단원)은 등록부의 같은 과목·단원 유형 전부,
-  // 나머지 단원은 이 시험 교육과정에 묶인 유형만 보인다 (후보가 지나치게 길어지지 않게). 주 단원을 알 수 없으면 전부 보인다.
-  const unitsFor = focus => tables.units.map(u => {
-    const wide = !focus.size || focus.has(u.key);
-    const pts = [...((wide ? tables.ptByUnitAny : tables.ptByUnit).get(u.key) || new Map()).values()];
+  // 단원 목록은 모든 문항이 같다: 단원마다 등록부의 같은 과목·단원 ACTIVE 유형 전부 (유형을 좁혀 보여 주지 않는다).
+  const unitsOut = tables.units.map(u => {
+    const pts = [...(tables.ptByUnit.get(u.key) || new Map()).values()];
     return {
       standardUnitKey: u.key,
       label: u.label,
@@ -156,12 +156,6 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       })),
     };
   });
-  const unitsOutCache = new Map();
-  const unitsOutFor = focus => {
-    const k = [...focus].sort().join(',');
-    if (!unitsOutCache.has(k)) unitsOutCache.set(k, unitsFor(focus));
-    return unitsOutCache.get(k);
-  };
   const rpmOutsideUnits = tables.rpmRows.filter(r => !r.standardUnitKey).map(r => r.id);
 
   const defs = {
@@ -169,6 +163,13 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
     problemTypes: Object.fromEntries([...tables.ptAll.values()].map(p => [p.problemTypeKey, p.definition || ''])),
     templates: Object.fromEntries([...tables.tplByPt.values()].flat().map(t => [t.templateKey, t.definition || t.internalSkeleton || ''])),
   };
+
+  // 선택표: 이 시험 과목과 아래 학년 과목의 선택표를 같은 등록부에서 새로 만들어 작업 폴더에 둔다 (후보와 같은 시점의 등록부).
+  const allSelections = buildAllSelections(repoRoot, { masters, crosswalk, taxonomy });
+  const selectionIds = [...new Set(courseGroups.flatMap(g => (allSelections.has(g.id) ? [g.id, ...lowerGroupIds(allSelections.get(g.id), allSelections)] : [])))];
+  const allFiles = buildSelectionFiles(repoRoot, allSelections);
+  const selectionFiles = new Map(selectionIds.map(id => [selectionFileName(id), allFiles.get(selectionFileName(id))]));
+  writeSelectionFiles(path.join(outDir, 'selection'), selectionFiles);
 
   fs.mkdirSync(path.join(outDir, 'candidates'), { recursive: true });
   fs.mkdirSync(path.join(outDir, 'judgment'), { recursive: true });
@@ -178,6 +179,8 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
     curriculum,
     grade,
     courses: courseGroups.map(g => g.id),
+    // 개념 단어로 유형을 찾는 선택표 (작업 폴더 기준 경로, 이 시험 과목이 먼저)
+    selectionFiles: [...selectionFiles.keys()].map(n => `selection/${n}`),
     dictionaryVersion: dictionary.version,
     unitCount: tables.units.length,
     rpmWithoutUnit: rpmOutsideUnits,
@@ -203,8 +206,6 @@ export function buildCandidateSet({ jsPath, outDir, mdPath = null, course = null
       item4slot: sourceMeta?.item4slot ?? null,
       boundary: sourceMeta?.difficultyBoundaryFlag ?? regItem?.difficultyBoundaryFlag ?? '',
     };
-    const focus = new Set([source.standardUnitKey, hints.get(qid)?.standardUnitKey].filter(k => k && tables.unitKeys.has(k)));
-    const unitsOut = unitsOutFor(focus);
     const sourcePlan = mdQ ? (mdQ.plan && typeof mdQ.plan === 'object' ? (mdQ.plan.exempt ? { exempt: mdQ.plan.reason || true } : { plan: true }) : { exempt: 'NONE' }) : null;
     const texts = { stem: item.content, choices: (item.choices || []).join('\n'), solution: item.solution };
 

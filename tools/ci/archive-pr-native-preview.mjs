@@ -35,7 +35,7 @@ const fail = reason => { throw Error(`PR_NATIVE_PREVIEW:${reason}`); };
 const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
-import { bindDifficulty5Source } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { bindDifficulty5Source, isTextBoundDraft } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
 
 export function nativeCommand(program, args, root) {
@@ -113,7 +113,7 @@ function selectDifficulty(root, file, request, headSha) {
   // permits only the registrar's existing CRLF-to-LF source binding convention.
   const difficultySourceBlobSha1 = ordinary
     ? bindDifficulty5Source(fs.readFileSync(safe(root, sourcePath)), payload.latestBlobSha).sha : blobSha1;
-  if (difficultySourceBlobSha1 !== payload.latestBlobSha || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+  if ((difficultySourceBlobSha1 !== payload.latestBlobSha && !(ordinary && isTextBoundDraft(request))) || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
   let bank;
   try {
     const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
