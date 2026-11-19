@@ -1,0 +1,82 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      "height": 5,
+      "names": "......"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "POLYGON",
+        "points": [
+          [
+            0,
+            0
+          ],
+          [
+            6,
+            0
+          ],
+          [
+            0,
+            8
+          ]
+        ]
+      },
+      "height": 10,
+      "names": "......"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true
+    },
+    {
+      "solid": "s2",
+      "height": true
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 작은 기둥 / 오른쪽 큰 기둥"
+  },
+  "caption": "예: 닮음비 2:1을 지키는 두 삼각기둥이다(밑면의 변의 길이는 모양만 나타낸다). 큰 기둥 밑면과 작은 기둥 밑면의 넓이비는 2²:1²=4:1이므로 △ABC의 넓이는 6×4=24cm²이다. 큰 삼각기둥의 높이가 10cm이므로 부피는 24×10=240cm³이다. 따라서 답은 ⑤이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 그림에서 두 삼각기둥은 서로 닮은 도형이고, $\\triangle ABC$에 대응하는 면이 $\\triangle A^{\\prime}B^{\\prime}C^{\\prime}$이다. $\\triangle A^{\\prime}B^{\\prime}C^{\\prime}$의 넓이가 $6\\,\\mathrm{cm}^2$일 때, 큰 삼각기둥의 부피는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "닮음비 2:1, 밑넓이비 4:1, 큰 밑넓이 24, 높이 10",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "닮음비 2:1인 두 삼각기둥의 높이 5와 10을 대응시켜 밑넓이비 4:1과 부피 24×10=240을 구하는 과정"
+  ],
+  "accessibilityDescription": "크기가 다른 두 삼각기둥이 같은 배율로 나란히 놓여 있고 왼쪽 기둥은 높이 5, 오른쪽 기둥은 높이 10이 표시되어 있다."
+}
