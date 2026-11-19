@@ -1,0 +1,159 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.5,
+      5.5,
+      -0.5,
+      2.5
+    ],
+    "curves": [
+      {
+        "id": "p0",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "p1",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "1",
+          "2"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "p2",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "2",
+          "3"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "p3",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "4",
+        "coefficients": [
+          "1",
+          "-1",
+          "-1"
+        ],
+        "domain": [
+          "3",
+          "4"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "p4",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "4",
+        "coefficients": [
+          "1",
+          "1",
+          "-1"
+        ],
+        "domain": [
+          "4",
+          "5"
+        ],
+        "color": "BLUE"
+      },
+      {
+        "id": "lg",
+        "kind": "LOGARITHMIC",
+        "base": "12",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/5",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "log"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "v1",
+          "x": "1"
+        },
+        {
+          "id": "v2",
+          "x": "2"
+        },
+        {
+          "id": "v3",
+          "x": "3"
+        },
+        {
+          "id": "v4",
+          "x": "4"
+        },
+        {
+          "id": "v5",
+          "x": "5"
+        }
+      ]
+    }
+  },
+  "caption": "예: n=4일 때 f와 y=log(12)x를 x가 0에서 5인 구간에 그린 그림이다. f는 주기 2로 짝수 정수에서 0, 홀수 정수에서 2이고 각 단위구간에서 단조이다. 0<x<1에서는 로그값이 음수라 교점이 없고, 1≤x<5의 각 단위구간 [1, 2], [2, 3], [3, 4], [4, 5]에서 곡선이 정확히 한 번씩 만난다. 일반적으로 N=(3n)²까지 교점은 N−1개이다. (3n)²−1=143에서 n=4이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "주기적으로 오르내리는 파란 곡선 조각들과 완만하게 올라가는 주황 로그 곡선이 있다. 세로 구분선 x=1, 2, 3, 4, 5가 있고 단위구간마다 로그 곡선이 파란 곡선과 한 번씩 만난다.",
+  "newVisualInformation": [
+    "단위구간마다 f와 로그 곡선이 한 번씩 만나는 구조를 보여 교점의 개수가 N−1임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "11. 실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다.\n<div class=\"problem-box\">\n(가) $f(x) = \\begin{cases} 3^{-x}-1 & (-1 \\le x < 0) \\\\ 3^x-1 & (0 \\le x < 1) \\end{cases}$<br>\n(나) 모든 실수 $x$에 대하여 $f(x) = f(x+2)$이다.\n</div>\n이 때, 자연수 $n$에 대하여, 함수 $y=f(x)$의 그래프와 함수 $y=\\log_{3n} x$의 그래프와의 교점의 개수가 143개 일 때, $n$의 값을 구하면? [5.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "xaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "yaxis",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "rational",
+              "numerator": "4",
+              "denominator": "5"
+            },
+            {
+              "kind": "rational",
+              "numerator": "-3",
+              "denominator": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "P",
+    "Q"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP",
+      "refs": [
+        "O",
+        "P"
+      ]
+    },
+    {
+      "id": "sOQ",
+      "refs": [
+        "O",
+        "Q"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 420
+  },
+  "hiddenPointNames": [
+    "X"
+  ],
+  "labelDirections": {
+    "P": "NE",
+    "Q": "SE"
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "X",
+          "O",
+          "P"
+        ],
+        "value": 36.87,
+        "label": "α",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "X",
+          "O",
+          "Q"
+        ],
+        "value": -36.87,
+        "label": "−α",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 2,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "예: 동경 OP와 OP'(그림의 점 Q)가 x축에 대하여 대칭이다. OP의 기준각은 α°이고 OP'의 기준각은 −α°이다. 따라서 일반각은 ∠XOP=360°×l+α°, ∠XOP'=360°×m−α°이고 합은 360°×(l+m)이다. 따라서 (가) α°, (나) −α°, (다) l+m이므로 답은 ①이다.",
+  "accessibilityDescription": "단위원과 x축 위의 시초선이 있고 x축의 위쪽과 아래쪽에 대칭인 두 동경이 있다. 각각 α와 −α의 각이 표시되어 있다.",
+  "newVisualInformation": [
+    "x축에 대칭인 두 동경의 기준각이 α와 −α임을 보여 두 일반각의 합이 360°×(l+m)임을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "12. 다음은 원점 $\\mathrm{O}$에서 $x$축의 양의 방향으로 시초선 $\\mathrm{OX}$를 잡을 때, $x$축에 대하여 대칭인 두 동경이 나타내는 일반각의 합을 구한 것이다.\n<p><img src=\"assets/images/19_순천여고_1학기_중간_고2_수학I/q12.png\" class=\"question-img\" alt=\"문제 12 그림\"></p>\n<div class=\"problem-box\">\n$x$축에 대하여 대칭인 두 동경을 각각 $\\mathrm{OP}, \\mathrm{OP'}$이라 하고, 두 동경이 나타내는 일반각을 각각<br>\n$\\angle\\mathrm{XOP} = 360^\\circ \\times l + (\\text{가})\\ (l\\text{은 정수})$<br>\n$\\angle\\mathrm{XOP'} = 360^\\circ \\times m + (\\text{나})\\ (m\\text{은 정수})$<br>\n라고 하면 이 두 일반각의 합은<br>\n$\\angle\\mathrm{XOP} + \\angle\\mathrm{XOP'} = 360^\\circ \\times (\\text{다})$<br>\n즉, $360^\\circ \\times (\\text{정수})$이다.\n</div>\n(가), (나), (다)를 옳게 나타낸 것은? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

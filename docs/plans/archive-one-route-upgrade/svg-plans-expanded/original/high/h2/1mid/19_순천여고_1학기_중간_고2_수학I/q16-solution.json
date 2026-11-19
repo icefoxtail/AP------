@@ -1,0 +1,51 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "TAN",
+    "coefficients": [
+      "1",
+      "2",
+      "-3"
+    ],
+    "phasePi": "-1/2",
+    "sourceDomain": {
+      "kind": "ALL_REALS_WITH_TAN_POLES"
+    },
+    "domain": [
+      0.05,
+      3.1
+    ],
+    "viewport": [
+      -0.3,
+      3.5,
+      -9,
+      3
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "y": [
+        "-3"
+      ]
+    }
+  },
+  "caption": "f(x)=tan(2x−π/2)−3이다. 주기는 π/2이므로 ㄱ은 거짓이다. 점근선은 2x−π/2=π/2+nπ에서 x=(n+1)π/2, 곧 x=(n/2)π(n은 정수)이므로 ㄴ은 참이다(그림의 세로 점선 x=0, π/2, π). 중심점은 (π/4, −3)이고 y=tan2x를 x축으로 π/4만큼 옮긴 것이므로 ㄷ은 거짓이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "0에서 π까지 탄젠트 곡선이 세로 점근선 사이에서 두 번 오른쪽 위로 올라가는 모양이다. 곡선의 중심은 π/4와 3π/4에서 y=−3 높이에 있다.",
+  "newVisualInformation": [
+    "탄젠트 곡선의 점근선 x=0, π/2, π와 중심점의 높이 −3, 주기 π/2를 보여 ㄱ~ㄷ의 참거짓을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 함수 $f(x)=\\tan\\left(2x-\\dfrac{\\pi}{2}\\right)-3$에 대한 설명으로 옳은 것만을 [보기]에서 있는 대로 고른 것은? [4.4점]\n<div class=\"problem-box\">\n<b>[ 보 기 ]</b><br>\nㄱ. 주기는 $\\pi$이다.<br>\nㄴ. 점근선은 직선 $x=\\dfrac{n}{2}\\pi (n\\text{은 정수})$이다.<br>\nㄷ. $y=\\tan 2x$의 그래프를 $x$축 방향으로 $\\dfrac{\\pi}{2}$만큼 $y$축 방향으로 $-3$만큼 평행이동 한 그래프이다.\n</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

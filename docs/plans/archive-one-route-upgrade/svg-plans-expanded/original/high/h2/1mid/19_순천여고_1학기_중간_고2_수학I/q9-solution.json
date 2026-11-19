@@ -1,0 +1,120 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      3,
+      -5,
+      3
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "-1",
+        "coefficients": [
+          "-1",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-4",
+          "1/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g1",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "-39/10",
+          "2"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "a=4"
+      },
+      {
+        "id": "g2",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "2",
+          "-1"
+        ],
+        "domain": [
+          "-19/10",
+          "2"
+        ],
+        "color": "GREEN",
+        "label": "a=2"
+      },
+      {
+        "id": "g3",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "1/3",
+          "-1"
+        ],
+        "domain": [
+          "-3/10",
+          "2"
+        ],
+        "color": "ROSE",
+        "style": "DASHED",
+        "label": "a=1/3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "-2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "0",
+          "y": "-2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "첫 곡선 f(x)=−3ˣ⁺¹+1은 제3사분면에서 −1<x<0 부분이다. 두 번째 곡선은 y=log₃(x+a)−1로 a가 커질수록 왼쪽으로 평행이동한다. 곡선이 제3사분면에서 f와 만나는 경계는 a=4(점 P(−1, 0)을 지남)와 a=1/3(점 Q(0, −2)를 지남)이다. 그림의 a=2인 곡선은 두 경계 사이에서 제3사분면에서 f와 만난다. 따라서 1/3<a<4이고 α+β=13/3이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "오른쪽 아래로 내려가는 파란 지수 곡선과 오른쪽 위로 올라가는 세 로그 곡선이 있다. 점선 로그 곡선 둘은 점 P와 Q를 지나고 실선 로그 곡선은 두 점선 사이에서 파란 곡선과 만난다.",
+  "newVisualInformation": [
+    "a=4, a=1/3일 때의 로그 곡선이 지나는 경계 점 P(−1, 0), Q(0, −2)를 보여 제3사분면 교점이 생기는 a의 범위를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 두 곡선 $y = -3^{x+1}+1$과 $y = -\\log_{\\frac{1}{3}}(x+a)-1$이 제3사분면에서 만나도록 하는 상수 $a$값의 범위가 $\\alpha < a < \\beta$일 때, $\\alpha+\\beta$의 값을 구하면? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

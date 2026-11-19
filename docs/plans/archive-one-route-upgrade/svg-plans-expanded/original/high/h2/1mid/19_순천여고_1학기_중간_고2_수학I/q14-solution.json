@@ -1,0 +1,180 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "60"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arc",
+        "circle": "k",
+        "center": "O",
+        "from": "A",
+        "to": "B",
+        "side": "MINOR",
+        "label": "pi/3"
+      }
+    ],
+    "expressionLabels": [
+      {
+        "id": "r",
+        "ownerSegment": "OA",
+        "text": "1",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "th",
+        "refs": [
+          "A",
+          "O",
+          "B"
+        ],
+        "value": 60,
+        "label": "pi/3",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ],
+    "regions": [
+      {
+        "id": "sec",
+        "fill": "LIGHT",
+        "label": "pi/6",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A",
+              "to": "B",
+              "side": "MINOR"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "호의 길이 s=rθ이다. 반지름 1, 중심각 60°=π/3이면 호의 길이는 1×π/3=π/3이다. 그림은 반지름 1, 중심각 π/3인 부채꼴이며 호의 길이는 π/3이다. 따라서 호의 길이가 60이라고 말한 수연의 말이 틀렸고 답은 ④이다.",
+  "accessibilityDescription": "중심 O에서 반지름 OA와 OB가 60°의 각을 이루는 부채꼴이 색칠되어 있다. 반지름 1, 중심각, 호의 길이와 넓이가 표시되어 있다.",
+  "newVisualInformation": [
+    "반지름 1, 중심각 60°(π/3)인 부채꼴에서 호의 길이가 π/3임을 보여 수연의 말이 틀림을 확인하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. (부채꼴의 호의길이와 넓이)다음은 순천여자고등학교 2학년 자연계 학생들의 대화 중 일부를 발췌한 것이다. 사실과 다르게 이야기하고 있는 학생은 누구인가요? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

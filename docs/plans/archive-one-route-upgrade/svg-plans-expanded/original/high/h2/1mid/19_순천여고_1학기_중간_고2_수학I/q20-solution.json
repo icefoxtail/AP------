@@ -1,0 +1,59 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "3",
+      "2",
+      "0"
+    ],
+    "phasePi": "1/3",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-1/3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1.1,
+      3.2
+    ],
+    "viewport": [
+      -1.5,
+      3.6,
+      -3.8,
+      3.8
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-1/6",
+        "5/6"
+      ],
+      "y": [
+        "3",
+        "3/2",
+        "-3"
+      ]
+    }
+  },
+  "caption": "그래프의 최댓값은 3, 최솟값은 −3이므로 a=3이다. 이웃한 두 극댓값의 x좌표의 차는 π(그림의 −π/6과 5π/6)이므로 2π/b=π에서 b=2이다. x=0에서의 값이 3/2이므로 3cosc=3/2, cosc=1/2이고 0<c<π/2이므로 c=π/3이다. 그림은 y=3cos(2x+π/3)이다. 따라서 (a, b, c)=(3, 2, π/3)이다.",
+  "accessibilityDescription": "코사인 곡선이 −π/3에서 π까지 그려져 있고 −π/6과 5π/6에서 가장 높다. 세로축에 3, 3/2, −3 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "최댓값 3, 최솟값 −3, 이웃한 극댓값의 간격 π, x=0에서의 값 3/2를 표시해 a=3, b=2, c=π/3을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형2] 함수 $y=a\\cos(bx+c)$의 그래프가 다음 그림과 같을 때, 상수 $a, b, c$의 값을 구하시오 [5점]\n(단, $a>0$, $b>0$, $0 < c < \\dfrac{\\pi}{2}$)\n<p><img src=\"assets/images/19_순천여고_1학기_중간_고2_수학I/q20.png\" class=\"question-img\" alt=\"서술형 2번 그림\"></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

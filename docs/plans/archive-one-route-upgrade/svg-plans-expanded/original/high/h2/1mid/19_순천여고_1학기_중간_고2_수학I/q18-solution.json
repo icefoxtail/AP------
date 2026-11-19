@@ -1,0 +1,65 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6.28
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      -1.5,
+      1.5
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-1/2",
+        "intersectionCount": 2
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "7/6",
+        "11/6",
+        "2"
+      ],
+      "y": [
+        "-1/2"
+      ]
+    }
+  },
+  "caption": "sin(π−x)=sinx이고 s=sinx로 놓으면 2(1−s²)+3s≤0에서 (2s+1)(s−2)≥0이다. −1≤s≤1이므로 s≤−1/2이다. 그림에서 사인 곡선이 가로선 y=−1/2 아래에 있는 구간은 7π/6≤x≤11π/6이다. 양 끝의 합은 7π/6+11π/6=3π이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "0에서 2π까지 한 주기의 사인 곡선과 가로선이 아래쪽 골짜기 부분에서 두 점에서 만난다. 가로축에 7π/6, 11π/6, 2π 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "사인 곡선이 y=−1/2 아래인 구간의 양 끝 7π/6, 11π/6을 보여 최솟값과 최댓값의 합 3π를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "18. $0 \\le x < 2\\pi$일 때, 부등식 $2\\cos^2 x + 3\\sin(\\pi-x) \\le 0$을 만족시키는 $x$의 최댓값과 최솟값의 합을 구하면? [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
