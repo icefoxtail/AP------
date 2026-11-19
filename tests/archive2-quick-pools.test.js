@@ -70,8 +70,8 @@ function shortUnitCatalog() {
 }
 
 test('the four products keep their sizes and difficulty mixes', () => {
-  assert.deepEqual(Quick.VIEWS, ['five-minute', 'subunit-test', 'unit-test', 'monthly-test']);
-  assert.deepEqual(Object.values(Quick.PRODUCTS).map(product => product.count), [4, 12, 20, 24]);
+  assert.deepEqual(Quick.VIEWS, ['five-minute', 'subunit-test', 'unit-test', 'monthly-test', 'diagnostic']);
+  assert.deepEqual(Object.values(Quick.PRODUCTS).map(product => product.count), [4, 12, 20, 24, 24]);
   for (const product of Object.values(Quick.PRODUCTS))
     for (const preset of Object.values(product.presets))
       assert.equal(preset.reduce((sum, [, count]) => sum + count, 0), product.count, product.title);
@@ -748,4 +748,108 @@ test('quick-assessment URL state stays out of the Finder and 출제 내역', asy
     h.w.state.view = view;
     assert.equal(h.w.routeUrl().searchParams.has('grade'), false);
   }
+});
+
+// ---- 진단평가 (2026-11-19): 24 questions, steps 5 / 5 / 10 / 4, printed from the lowest step up ----------------------------
+function diagnosticCatalog(step4) {
+  const records = [...many(1, 6), ...many(2, 6), ...many(3, 11), ...many(4, step4)].map(rec => ({
+    ...rec, sourceGrade: '고1', effectiveBrowseGrade: '고1', subject: '공통수학1', standardCourse: '공통수학1',
+  }));
+  return { indexVersion: 'quick-diagnostic-fixture-' + step4, records };
+}
+
+test('diagnostic product: the step counts come from one constant and make the fixed 24', () => {
+  const product = Quick.PRODUCTS.diagnostic;
+  assert.deepEqual(Quick.DIAGNOSTIC_STEPS, [[1, 5], [2, 5], [3, 10], [4, 4]]);
+  assert.equal(product.count, Quick.DIAGNOSTIC_STEPS.reduce((sum, [, count]) => sum + count, 0));
+  assert.equal(product.combine, true);
+  assert.deepEqual(product.order, ['diagnostic'], 'one fixed composition, no difficulty slider');
+  assert.deepEqual(product.presets.diagnostic, Quick.DIAGNOSTIC_STEPS);
+  // an unknown preset name never breaks the verdict of the fixed product
+  assert.deepEqual(Quick.presetMix(product, 'standard'), Quick.presetMix(product, 'diagnostic'));
+});
+
+test('diagnostic order: lowest step first, unit order inside a step, ties keep the selection order', () => {
+  const a = { order: 1, buckets: { 1: [], 2: [], 3: [], 4: [] } }, b = { order: 2, buckets: { 1: [], 2: [], 3: [], 4: [] } };
+  const mk = (bucket, unit) => { const rec = record(bucket); unit.buckets[bucket].push(rec); return rec; };
+  const rows = [mk(3, b), mk(2, b), mk(1, b), mk(4, a), mk(3, a), mk(1, a), mk(2, a), mk(1, b)];
+  const ordered = Quick.orderByStep([a, b], rows);
+  assert.equal(ordered.length, rows.length);
+  assert.deepEqual(ordered.map(rec => rec.difficultyBucket), [1, 1, 1, 2, 2, 3, 3, 4]);
+  assert.deepEqual(ordered.slice(0, 3), [rows[5], rows[2], rows[7]], 'unit 1 before unit 2; same unit keeps the selection order');
+  assert.deepEqual(rows.map(rec => rec.difficultyBucket), [3, 2, 1, 4, 3, 1, 2, 1], 'the input is not reordered in place');
+});
+
+test('diagnostic: a short step is reported on the screen with its numbers and never filled from another step', async () => {
+  const data = diagnosticCatalog(3);
+  const h = harness(data);
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  const html = h.w.renderQuick();
+  assert.match(html, /<h1>진단평가<\/h1>/);
+  assert.doesNotMatch(html, /id="five-minute-level"/, 'no difficulty slider for the fixed composition');
+  assert.match(html, /1단계 5문항 · 2단계 5문항 · 3단계 10문항 · 4단계 4문항/);
+  assert.match(html, /4단계 4문항 필요 · 3문항 가능/);
+  assert.match(html, /class="qk-bar"[\s\S]*qk-bar-main" disabled/, 'the open button stays off');
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 0, 'a short step never prints');
+});
+
+test('diagnostic: a complete fixture publishes 24 distinct questions, 5/5/10/4, lowest step first', async () => {
+  const data = diagnosticCatalog(4);
+  const h = harness(data);
+  h.w.state.view = 'diagnostic';
+  h.w.quickState.grade = '고1';
+  h.w.quickState.subject = 'COMMON_MATH_1';
+  assert.doesNotMatch(h.w.renderQuick(), /필요 · \d+문항 가능/, 'no shortage line when every step is covered');
+  await h.w.openQuickAssessment('all');
+  assert.equal(h.published.length, 1);
+  const { questionUids, meta, questionCount } = h.published[0];
+  assert.equal(questionCount, 24);
+  assert.equal(new Set(questionUids).size, 24);
+  assert.match(meta.title, /^진단평가 · /);
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const steps = Array.from(questionUids, id => byUid.get(id).difficultyBucket);
+  assert.deepEqual(steps, [...steps].sort((a, b) => a - b), 'printed from the lowest step up');
+  assert.deepEqual([1, 2, 3, 4].map(step => steps.filter(value => value === step).length), [5, 5, 10, 4]);
+});
+
+test('diagnostic on the real catalog: every grade that can make it prints 5/5/10/4 in step order, the others say what is short', async t => {
+  const data = await catalog();
+  const byUid = new Map(data.records.map(rec => [rec.questionUid, rec]));
+  const index = Unified.buildIndex(data.records, { projectionPolicy: data.projectionPolicy });
+  const pools = Quick.buildPools(index);
+  let printed = 0, short = 0;
+  for (const grade of ['중1', '중3', '고1']) {
+    const subject = Quick.subjectsFor(pools, grade).find(row => row.items > 0).value;
+    const h = harness(data);
+    h.w.state.view = 'diagnostic';
+    h.w.quickState.grade = grade;
+    h.w.quickState.subject = subject;
+    const html = h.w.renderQuick();
+    const units = pools.units[grade][subject];
+    const verdict = Quick.evaluate(units, Quick.PRODUCTS.diagnostic, 'diagnostic');
+    t.diagnostic(`${grade} ${subject}: ${verdict.ok ? 'can print' : 'short'} ${JSON.stringify(verdict.counts)}`);
+    await h.w.openQuickAssessment('all');
+    if (!verdict.ok) {
+      short++;
+      assert.equal(h.published.length, 0, grade);
+      assert.match(html, /\d단계 \d+문항 필요 · \d+문항 가능/, grade);
+      continue;
+    }
+    printed++;
+    const { questionUids } = h.published[0];
+    assert.equal(new Set(questionUids).size, 24, grade);
+    const steps = Array.from(questionUids, id => byUid.get(id).difficultyBucket);
+    assert.deepEqual(steps, [...steps].sort((a, b) => a - b), grade + ' step order');
+    assert.deepEqual([1, 2, 3, 4].map(step => steps.filter(value => value === step).length), [5, 5, 10, 4], grade);
+    const unitOrder = new Map();
+    for (const unit of units) for (const bucket of Quick.BUCKETS) for (const rec of unit.buckets[bucket]) unitOrder.set(rec.questionUid, unit.order);
+    for (const step of [1, 2, 3, 4]) {
+      const orders = Array.from(questionUids).filter(id => byUid.get(id).difficultyBucket === step).map(id => unitOrder.get(id));
+      assert.deepEqual(orders, [...orders].sort((a, b) => a - b), grade + ' unit order inside step ' + step);
+    }
+  }
+  assert.equal(printed + short, 3);
 });

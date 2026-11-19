@@ -677,6 +677,7 @@
     "subunit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "소단원"} 하나에서 12문항을 냅니다.`,
     "unit-test": (grade) => `${/^중/.test(grade) ? "중단원" : "단원"} 하나에서 20문항을 냅니다.`,
     "monthly-test": () => "여러 단원을 묶어 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
+    diagnostic: () => "첫 상담용입니다. 1단계부터 4단계까지 쉬운 문항부터 차례로 24문항을 냅니다. 고르지 않으면 과목 전체에서 냅니다.",
   };
   // One pickable row of the unit list: a button (one unit) or a check box (종합평가). `root` rows are the whole 대단원.
   function quickRowMarkup(item, product, picked, busy) {
@@ -798,7 +799,9 @@
         <div class="qk-cond">
           <section class="qk-block"><h2 class="qk-h">학년 · 과목</h2>
             <div class="qk-grades" role="group" aria-label="학년">${gradeButtons}</div>${subjectChips}</section>
-          <section class="qk-block qk-level${levelOpen}"><div class="qk-level-head"><h2 class="qk-h">난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
+          ${product.order.length < 2 ? `<section class="qk-block qk-level"><h2 class="qk-h">난이도 · 쉬운 단계부터</h2>
+            <p class="muted" id="quick-assessment-mix">${mix}</p>
+            <p class="muted qk-note">낮은 단계 문항부터 차례로 출력됩니다. 같은 단계 안에서는 단원 순서입니다. 문항은 최신 연도부터 고르고, 난이도는 기록된 단계만 씁니다.</p></section>` : `<section class="qk-block qk-level${levelOpen}"><div class="qk-level-head"><h2 class="qk-h">난이도 · <span id="five-minute-level-current">${Quick.PRESET_LABELS[preset]}</span></h2>
             <button type="button" class="qk-fold" data-action="quick-level-toggle" aria-expanded="${quickState.levelOpen}">바꾸기</button></div>
             <p class="muted" id="quick-assessment-mix">${mix}</p>
             <div class="qk-level-body"><div class="five-minute-slider"><div class="five-minute-slider-labels">${product.order.map(key => `<span>${Quick.PRESET_LABELS[key]}</span>`).join("")}</div>
@@ -806,7 +809,7 @@
                 <input id="five-minute-level" type="range" min="0" max="${product.order.length - 1}" step="1"
                   value="${product.order.indexOf(preset)}" aria-label="${esc(product.title)} 난이도" aria-valuetext="${Quick.PRESET_LABELS[preset]}">
               </div></div>
-              <p class="muted qk-note">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></div></section>
+              <p class="muted qk-note">문항은 최신 연도(2026년, 2025년 순)부터 고릅니다. 같은 연도에서는 무작위로 섞습니다. 난이도는 기록된 1~5단계만 쓰며 하·중·상 표시로 추정하지 않습니다.</p></div></section>`}
           <section class="qk-block qk-scope"><h2 class="qk-h">${esc(noun)}</h2>${list}</section>
         </div>
         <aside class="qk-result" aria-label="만들어질 평가">${result}</aside>
@@ -926,7 +929,8 @@
       : presetPairs.flatMap(([bucket, count]) => recencyShuffle([...new Map(
         units.flatMap(unit => unit.buckets[bucket]).map(record => [record.questionUid, record])).values()])
         .slice(0, count));
-    const selected = pick();
+    const picked = pick();
+    const selected = state.view === "diagnostic" ? Quick.orderByStep(units, picked) : picked;
     if (new Set(selected.map(record => record.questionUid)).size !== product.count) {
       status("같은 문항이 중복되어 시험지를 열 수 없습니다.", true);
       return;

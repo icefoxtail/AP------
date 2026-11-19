@@ -1397,7 +1397,7 @@
       state.selected = [];
       state.rows = [];
     }
-    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"].includes(p.get("view"))
       ? p.get("view")
       : "home";
     if (isQuickAssessmentView()) {

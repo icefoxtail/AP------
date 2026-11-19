@@ -17,7 +17,10 @@
   // grade and subject; every record keeps its original curriculum, keys and metadata. This module
   // only builds the candidate pools and judges whether a pool satisfies a difficulty preset. It
   // never reads the legacy 하/중/상 label and never infers a numeric difficulty.
-  const PRESET_LABELS = Object.freeze({ basic: "기초", standard: "기본", application: "응용", advanced: "심화" });
+  const PRESET_LABELS = Object.freeze({ basic: "기초", standard: "기본", application: "응용", advanced: "심화", diagnostic: "진단" });
+  // 진단평가 (first consultation, user decision 2026-11-19): 24 questions, 1단계 5 · 2단계 5 · 3단계 10 · 4단계 4, printed from the
+  // lowest step up. This is the one place that sets the step counts. 5단계 stays outside every quick product (BUCKETS below).
+  const DIAGNOSTIC_STEPS = Object.freeze([[1, 5], [2, 5], [3, 10], [4, 4]]);
   // [difficultyBucket, count] pairs. 5단계 is not part of any preset, so it never enters a pool.
   const PRODUCTS = Object.freeze({
     "five-minute": Object.freeze({ title: "5분 테스트", count: 4, unitKind: "unit", unitLabel: "단원", pick: "any",
@@ -43,6 +46,9 @@
         application: [[1, 2], [2, 8], [3, 10], [4, 4]],
         advanced: [[1, 0], [2, 4], [3, 12], [4, 8]],
       }) }),
+    // One fixed composition (no difficulty slider). Selected like 종합평가 (several units, default 과목 전체), then ordered by orderByStep().
+    diagnostic: Object.freeze({ title: "진단평가", count: DIAGNOSTIC_STEPS.reduce((sum, [, count]) => sum + count, 0), unitKind: "unit", unitLabel: "단원",
+      combine: true, pick: "any", order: Object.freeze(["diagnostic"]), presets: Object.freeze({ diagnostic: DIAGNOSTIC_STEPS }) }),
   });
   const VIEWS = Object.freeze(Object.keys(PRODUCTS));
   const BUCKETS = Object.freeze([1, 2, 3, 4]);
@@ -139,6 +145,8 @@
     return (pools.units[grade]?.[subject] || []).slice();
   }
 
+  // The preset pairs of a product; an unknown name falls back to "standard", or to the only preset of a fixed product.
+  const presetOf = (product, presetName) => product.presets[presetName] || product.presets.standard || product.presets[product.order[0]] || [];
   function sumCounts(units) {
     const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
     for (const unit of units) for (const bucket of BUCKETS) counts[bucket] += unit.counts[bucket];
@@ -147,7 +155,7 @@
   // Pools of different units of one grade are disjoint (a question sits in exactly one unit), so
   // counts add. Returns the exact shortage per difficulty step for the chosen preset.
   function evaluate(units, product, presetName) {
-    const preset = product.presets[presetName] || product.presets.standard;
+    const preset = presetOf(product, presetName);
     const counts = sumCounts(units);
     const shortages = preset.filter(([bucket, need]) => need > 0 && counts[bucket] < need)
       .map(([bucket, need]) => ({ bucket, need, have: counts[bucket] }));
@@ -155,7 +163,7 @@
   }
   const shortageText = (shortages) =>
     shortages.map(({ bucket, need, have }) => `${bucket}단계 ${need}문항 필요 · ${have}문항 가능`).join(" / ");
-  const presetMix = (product, presetName) => (product.presets[presetName] || [])
+  const presetMix = (product, presetName) => presetOf(product, presetName)
     .filter(([, count]) => count).map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
 
   // Splits a unit list for the screen: units that can make this preset, and the rest with the
@@ -299,6 +307,17 @@
   // "2단계 문항 부족" / "2·3단계 문항 부족": the short reason for a list. shortageText() has the exact numbers.
   const shortReason = (shortages) => `${shortages.map(({ bucket }) => bucket).join("·")}단계 문항 부족`;
 
+  // Print order of a selection: lowest difficulty step first; inside a step the unit (and 중단원) table-of-contents order,
+   // ties keep the selection order. units are the chosen scope nodes the selection was drawn from.
+  function orderByStep(units, selected) {
+    const place = new Map();
+    for (const unit of units) for (const bucket of BUCKETS) for (const record of unit.buckets[bucket])
+      if (!place.has(record.questionUid)) place.set(record.questionUid, [Number(unit.order) || 0, Number(unit.orderInUnit) || 0]);
+    return selected.map((record, index) => ({ record, index, key: place.get(record.questionUid) || [Infinity, 0] }))
+      .sort((a, b) => a.record.difficultyBucket - b.record.difficultyBucket || a.key[0] - b.key[0] || a.key[1] - b.key[1] || a.index - b.index)
+      .map((row) => row.record);
+  }
+
   // Everything a product needs for measurement across all grades/subjects (used by tests and the
   // before/after report).
   function summarize(pools, view, presetName, options = {}) {
@@ -319,7 +338,7 @@
   }
 
   return {
-    PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS,
+    PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS, DIAGNOSTIC_STEPS, orderByStep,
     isQuickView: (view) => VIEWS.includes(view),
     usableBucket, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
     buildScopes, wrapRecord, pickableGroups, selectNodes, unitNoun, shortReason,

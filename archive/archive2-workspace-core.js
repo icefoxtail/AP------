@@ -483,7 +483,7 @@
   const Quick = window.Archive2QuickPools;
   const QuickTree = window.Archive2UnitTree;
   const quickState = { grade: "", subject: "", busy: false, bundle: new Set(), pick: "", shortOpen: false, levelOpen: false, groupsFailed: false,
-    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard" } };
+    presets: { "five-minute": "standard", "subunit-test": "standard", "unit-test": "standard", "monthly-test": "standard", diagnostic: "diagnostic" } };
   const quickProduct = () => Quick?.PRODUCTS[state.view] || null;
   const quickPreset = () => quickState.presets[state.view] || "standard";
   const isQuickAssessmentView = () => Boolean(Quick?.isQuickView(state.view));
