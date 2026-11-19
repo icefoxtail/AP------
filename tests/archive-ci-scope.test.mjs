@@ -320,6 +320,15 @@ test('runtime guard keeps one job whose every check step runs after another chec
     const condition = /\n\s+if: (.+)\n/.exec(step)?.[1] || '';
     assert.match(condition, /^(\$\{\{ !cancelled\(\)|always\(\)|\$\{\{ always\(\) )/, `step runs after an earlier check failed: ${step.split('\n')[0]}`);
   }
+  // The runtime contract rewrites tracked derived files, and the other checks read tracked bytes against the tested commit
+  // (as on the clean checkout of their former jobs): everything that needs the clean tree runs first, the checkout is
+  // restored, then the contract and the finder check that consumes its output run.
+  const at = id => runtime.indexOf(`id: ${id}\n`);
+  for (const clean of ['ui_contract', 'plan', 'ui_six_cases', 'solution_tests', 'solution_50', 'content_browser', 'scoped_checker']) {
+    assert.ok(at(clean) > 0 && at(clean) < at('restore_checkout'), `${clean} runs on the clean checkout, before the restore`);
+  }
+  assert.ok(at('restore_checkout') < at('runtime_contract') && at('runtime_contract') < at('finder_browser'), 'restore, contract, then the finder that consumes the contract output');
+  assert.match(runtime, /git restore --source=HEAD --staged --worktree -- \.\n\s+git clean -fd/);
   // Each check that can fail the job is named in the final summary.
   for (const id of ['runtime_contract', 'finder_browser', 'ui_contract', 'plan', 'ui_six_cases', 'solution_tests', 'solution_50', 'content_browser', 'scoped_checker']) {
     assert.ok(runtime.includes(`steps.${id}.outcome`), `summary lists ${id}`);

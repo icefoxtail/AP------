@@ -87,21 +87,11 @@ jobs:
         id: scope
         run: node tools/ci/archive-ci-scope.mjs --output "$RUNNER_TEMP/archive-ci-scope.json"
 
-      # --- Archive2 runtime contract ---
-      - name: Record unchanged shared runtime scope
-        if: ${{ !cancelled() && steps.scope.outcome == 'success' && steps.scope.outputs.runtime_contract != 'true' }}
-        env:
-          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
-        run: |
-          printf 'Shared runtime regression: NOT_APPLICABLE for %s; common output/runtime code and its checkers are unchanged.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
-          echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
-      - name: Verify original routes, response budgets, and storage failures
-        id: runtime_contract
-        if: ${{ !cancelled() && steps.scope.outputs.runtime_contract == 'true' }}
-        timeout-minutes: 8
-        env:
-          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
-        run: node tools/check-archive2-runtime.cjs
+      # Order matters: the runtime contract check (further down) rewrites tracked derived files in the working tree
+      # (meta compile, SVG accessibility index, catalog, extension keys). The six-case UI check and the solution
+      # checks read tracked bytes and refuse a checkout that differs from the tested commit, as they did on the clean
+      # checkout of their former jobs. So every check that needs the clean tree runs first, the checkout is restored,
+      # and only then the contract and the finder check that consume its rewritten files.
 
       # --- Archive2 reviewed problem UI (6 cases): contract and plan (the browser step follows the shared Chrome setup) ---
       - name: Verify the closed problem UI evidence contract
@@ -127,16 +117,6 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm install --prefix "$RUNNER_TEMP/archive-solution-browser" --no-save --package-lock=false --no-audit --no-fund playwright@1.62.1
-
-      # --- Archive2 runtime contract (Chrome part) ---
-      - name: Verify finder and current middle RPM selection in actual Chrome
-        id: finder_browser
-        if: ${{ !cancelled() && steps.scope.outputs.runtime_chrome == 'true' }}
-        timeout-minutes: 5
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-          RPM_MIDDLE_BROWSER_REPORT_DIR: ${{ runner.temp }}/archive-rpm-middle-browser
-        run: node tools/check-archive2-finder-filter-browser.cjs
 
       # --- Archive2 reviewed problem UI (6 cases): browser ---
       - name: Verify all three reviewed problems in desktop and mobile exam mode
@@ -195,6 +175,47 @@ jobs:
         env:
           SCOPE_MODE: ${{ steps.scope.outputs.mode }}
         run: printf '50-question output check NOT_APPLICABLE for %s; common output and checker versions did not change. Affected project and data checks run in their existing jobs.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
+
+      # --- Archive2 runtime contract (last: it rewrites tracked derived files, see the note above) ---
+      - name: Return the checkout to the tested commit
+        id: restore_checkout
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' }}
+        run: |
+          dirty="$(git status --porcelain)"
+          if [[ -n "$dirty" ]]; then
+            echo "A check before the runtime contract left the checkout changed; restoring it to the tested commit:"
+            echo "$dirty"
+            {
+              echo '#### Checkout restored before the runtime contract'
+              echo '```'
+              echo "$dirty"
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          git restore --source=HEAD --staged --worktree -- .
+          git clean -fd
+      - name: Record unchanged shared runtime scope
+        if: ${{ !cancelled() && steps.scope.outcome == 'success' && steps.scope.outputs.runtime_contract != 'true' }}
+        env:
+          SCOPE_MODE: ${{ steps.scope.outputs.mode }}
+        run: |
+          printf 'Shared runtime regression: NOT_APPLICABLE for %s; common output/runtime code and its checkers are unchanged.\n' "$SCOPE_MODE" >> "$GITHUB_STEP_SUMMARY"
+          echo 'CI executes the selected source, Meta/Consumer, or registration fixtures. Existing Shared Meta Chrome checks retain their own policies.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify original routes, response budgets, and storage failures
+        id: runtime_contract
+        if: ${{ !cancelled() && steps.scope.outputs.runtime_contract == 'true' }}
+        timeout-minutes: 8
+        env:
+          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: node tools/check-archive2-runtime.cjs
+      - name: Verify finder and current middle RPM selection in actual Chrome
+        id: finder_browser
+        if: ${{ !cancelled() && steps.scope.outputs.runtime_chrome == 'true' }}
+        timeout-minutes: 5
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          RPM_MIDDLE_BROWSER_REPORT_DIR: ${{ runner.temp }}/archive-rpm-middle-browser
+        run: node tools/check-archive2-finder-filter-browser.cjs
 
       # --- Evidence uploads (unchanged names and retention) ---
       - name: Upload middle RPM browser evidence
