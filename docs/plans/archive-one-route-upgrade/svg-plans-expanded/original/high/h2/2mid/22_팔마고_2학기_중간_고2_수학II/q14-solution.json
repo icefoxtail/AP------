@@ -1,0 +1,102 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2.5
+    ],
+    "viewport": [
+      -2,
+      2.5,
+      -5,
+      11
+    ],
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "4"
+      },
+      {
+        "id": "E",
+        "x": "-sqrt(6)/3",
+        "y": "4*sqrt(6)/9"
+      },
+      {
+        "id": "F",
+        "x": "sqrt(6)/3",
+        "y": "-4*sqrt(6)/9"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-1",
+        "1"
+      ],
+      "Q": [
+        "2",
+        "4"
+      ],
+      "E": [
+        "-sqrt(6)/3",
+        "4*sqrt(6)/9"
+      ],
+      "F": [
+        "sqrt(6)/3",
+        "-4*sqrt(6)/9"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "t",
+        "slope": "1",
+        "intercept": "2",
+        "intersectionX": [
+          "-1",
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "f′(x)=3x²-2에서 f′(-1)=1이므로 P(-1,1)에서의 접선은 y=x+2(그림의 t)이다. x³-2x=x+2에서 (x+1)²(x-2)=0이므로 접선은 P에서 접하고 다시 Q(2,4)에서 곡선과 만난다. PQ=√((2+1)²+(4-1)²)=3√2이므로 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-2x$ 위의 점 $P(-1,1)$에서 접하는 접선이 곡선 $y=x^3-2x$와 다시 만나는 점을 $Q$라고 할 때, 선분 $PQ$의 길이는? [4.6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "접점 P(-1,1)에서의 접선 t가 곡선과 다시 만나는 점 Q(2,4)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "접점 P(-1,1)에서의 접선 y=x+2가 곡선과 다시 만나는 점 Q(2,4)를 보인다."
+  ],
+  "accessibilityDescription": "한 번 오르고 내려갔다 다시 오르는 삼차곡선과 점 P에서 접하고 오른쪽 점 Q에서 곡선과 다시 만나는 직선 t가 그려진 그래프이다."
+}

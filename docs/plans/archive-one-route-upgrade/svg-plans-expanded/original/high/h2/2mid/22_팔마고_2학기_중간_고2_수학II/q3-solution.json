@@ -1,0 +1,67 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          0
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "0",
+        "0"
+      ]
+    }
+  },
+  "caption": "ㄹ의 그래프이다. x→0-에서 함수값은 열린 점 (0,2)로 가까워지고 x≥0에서는 원점의 닫힌 점 P(0,0)에서 시작하므로 좌극한 2와 함숫값 0이 달라 불연속이다. ㄱ은 다항함수, ㄷ은 x=0이 정의역 안쪽이라 연속이고 ㄴ은 x=0에서 정의되지 않아 불연속이다. 따라서 연속인 것은 ㄱ, ㄷ이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 보기 중 $x=0$에서 연속인 함수를 있는 대로 고른 것은? [3.7점]<div class=\"note-box\">&lt;보기&gt;<br>ㄱ. $y=x^2+4x-1$<br>ㄴ. $y=\\dfrac2x+1$<br>ㄷ. $y=\\sqrt{x+1}$<br>ㄹ. $y=\\begin{cases}x^2&(x\\ge0)\\\\-x+2&(x\\lt0)\\end{cases}$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "ㄹ에서 x=0의 좌극한 2(열린 점)와 함숫값 0(닫힌 점)이 다름을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "ㄹ의 그래프에서 x=0의 왼쪽은 높이 2의 열린 점으로, 오른쪽은 원점의 닫힌 점에서 시작해 끊어짐을 보인다."
+  ],
+  "accessibilityDescription": "x=0에서 끊어지는 그래프이고, 왼쪽의 내려가는 직선은 높이 2의 열린 점에서 끝나며 오른쪽의 포물선은 원점의 닫힌 점에서 시작한다."
+}

@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "0",
+          "-6",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.4,
+      2.4
+    ],
+    "viewport": [
+      -2.4,
+      2.4,
+      -6,
+      6
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "0",
+        "y": "4"
+      },
+      {
+        "id": "E",
+        "x": "sqrt(3)",
+        "y": "-5"
+      },
+      {
+        "id": "F",
+        "x": "-sqrt(3)",
+        "y": "-5"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "sqrt(5)",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "0",
+        "4"
+      ],
+      "E": [
+        "sqrt(3)",
+        "-5"
+      ],
+      "F": [
+        "-sqrt(3)",
+        "-5"
+      ],
+      "A": [
+        "1",
+        "-1"
+      ],
+      "B": [
+        "sqrt(5)",
+        "-1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "-1",
+        "intersectionX": [
+          "-sqrt(5)",
+          "-1",
+          "1",
+          "sqrt(5)"
+        ]
+      }
+    ]
+  },
+  "caption": "f(1)=f(√5)=-1이므로 수평선 y=-1이 구간의 양 끝 A(1,-1), B(√5,-1)를 지나 롤의 정리를 쓸 수 있다. f′(x)=4x(x²-3)=0의 근 0, ±√3 중 열린구간 (1,√5)에 속하는 것은 √3뿐이고 그림의 E(√3,-5)에서 접선이 수평이다. 따라서 c=√3이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^4-6x^2+4$에 대하여 닫힌구간 $[1,\\sqrt5]$에서 롤의 정리를 만족시키는 실수 $c$의 값은? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝 A, B가 같은 높이이고 접선이 수평인 점 E의 x좌표 √3이 구간 안에 있음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 양 끝 A(1,-1), B(√5,-1)와 수평선 y=-1, 구간 안에서 접선이 수평인 점 E(√3,-5)를 보인다."
+  ],
+  "accessibilityDescription": "가운데가 솟은 W 모양의 사차곡선과 높이 -1의 수평선이 그려져 있고, 수평선이 곡선과 만나는 점 A, B와 접선이 수평이 되는 점 M, E, F가 표시되어 있다."
+}
