@@ -16,13 +16,13 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 연립부등식 $\\begin{cases} 2x-1 \\le 5 \\\\ x-a>0 \\end{cases}$ 을 만족시키는 정수 해가 정확히 $2$개가 되도록 하는 정수 $a$의 값은?",
     "choices": [
-      "0",
-      "1",
-      "2",
+      "4",
       "3",
-      "4"
+      "2",
+      "1",
+      "0"
     ],
-    "answer": "②",
+    "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -44,13 +44,13 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 이차부등식 $x^2-(k+2)x+2k \\le 0$ 을 만족시키는 정수 해의 개수가 $5$개가 되도록 하는 자연수 $k$의 값은?",
     "choices": [
+      "3",
       "4",
       "5",
       "6",
-      "7",
-      "8"
+      "7"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
@@ -100,13 +100,13 @@ window.questionBank = [
     "wide": false,
     "content": "자연수 $n$에 대하여 ${}_nP_4=12\\times{}_nP_2$ 를 만족하는 $n$의 값은?",
     "choices": [
-      "6",
+      "2",
+      "3",
       "4",
       "5",
-      "7",
-      "8"
+      "6"
     ],
-    "answer": "①",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -128,13 +128,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 이차정사각행렬 $A=\\begin{pmatrix} x+y & 2 \\\\ 4 & x-y \\end{pmatrix}$, $B=\\begin{pmatrix} 5 & 2 \\\\ z^2 & 1 \\end{pmatrix}$에 대하여 $A=B$일 때, $x^2+y^2+z^2$의 값은? (단, $x, y, z$는 실수이며 $z>0$이다.)",
     "choices": [
+      "9",
+      "11",
       "13",
       "15",
-      "17",
-      "19",
-      "21"
+      "17"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
@@ -156,13 +156,13 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix} 2 & -1 \\\\ 1 & 3 \\end{pmatrix}$, $B=\\begin{pmatrix} -1 & 2 \\\\ 0 & -2 \\end{pmatrix}$에 대하여 $2\\times2$ 행렬 $X$가 $2A-X=3B$를 만족할 때, 행렬 $X$의 모든 성분의 합은?",
     "choices": [
-      "9",
       "11",
       "13",
       "15",
-      "17"
+      "17",
+      "19"
     ],
-    "answer": "③",
+    "answer": "②",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "행렬과 그 연산 핵심 개념",
@@ -296,13 +296,13 @@ window.questionBank = [
     "wide": false,
     "content": "어른 $n$명과 어린이 $3$명이 일렬로 설 때, 양 끝에 적어도 한 명의 어린이가 서는 경우의 수가 $3600$이다. 이때 $n$의 값은?",
     "choices": [
-      "4",
-      "3",
-      "5",
+      "8",
+      "7",
       "6",
-      "7"
+      "5",
+      "4"
     ],
-    "answer": "①",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -380,11 +380,11 @@ window.questionBank = [
     "wide": false,
     "content": "두 제품 X, Y의 제조 원가와 판매가 행렬을 $P=\\begin{pmatrix} 2 & 3 \\\\ 5 & 7 \\end{pmatrix}$ (1행 제조 원가, 2행 판매가. 1열 제품 X, 2열 제품 Y)라 하고, 상반기와 하반기의 판매량 행렬을 $Q=\\begin{pmatrix} 10 & x \\\\ 15 & 20 \\end{pmatrix}$ (1열 상반기, 2열 하반기)라 하자. 하반기에 판매된 두 제품의 총 판매 이익금이 상반기의 총 판매 이익금보다 $50$만큼 더 많을 때, 자연수 $x$의 값은?",
     "choices": [
+      "5",
       "10",
       "15",
-      "25",
       "20",
-      "30"
+      "25"
     ],
     "answer": "④",
     "solution": "[JS 기준 풀이] 행렬 등식은 같은 위치의 성분을 비교하고, 곱셈은 행·열 내적으로 계산한다. 거듭제곱은 주어진 관계식으로 차수를 낮춘다. 계산 결과는 ④이다.",
@@ -436,11 +436,11 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 연립부등식 $\\begin{cases} (m+n)x^2-mx-6n \\ge 0 \\\\ (m-n)x^2+nx+m-n \\ge 0 \\end{cases}$ 의 해가 $x\\ge k$ 인 단일 구간으로 나타날 때, 상수 $k$의 값은? (단, $m,n$은 $m>0$인 상수이다.)",
     "choices": [
+      "$\\frac{1}{2}$",
       "1",
       "$\\frac{3}{2}$",
-      "$\\frac{5}{2}$",
       "2",
-      "3"
+      "$\\frac{5}{2}$"
     ],
     "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
@@ -496,11 +496,11 @@ window.questionBank = [
     "choices": [
       "44",
       "46",
+      "48",
       "50",
-      "52",
-      "48"
+      "52"
     ],
-    "answer": "⑤",
+    "answer": "③",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -522,10 +522,10 @@ window.questionBank = [
     "wide": false,
     "content": "다음 보기를 이용하여 물음에 답하시오.<br><br><보기><br>행렬 $M=\\begin{pmatrix} a & -b \\\\ b & a \\end{pmatrix}$, $N=\\begin{pmatrix} c & -d \\\\ d & c \\end{pmatrix}$ 에 대하여 $MN=\\begin{pmatrix} ac-bd & -(ad+bc) \\\\ ad+bc & ac-bd \\end{pmatrix}$ 를 만족한다. 또한 복소수 곱셈 $(a+bi)(c+di)=(ac-bd)+(ad+bc)i$ 임을 참고한다. (단, $a,b,c,d$는 실수이다.)<br><br>두 행렬 $P=\\begin{pmatrix} \\frac{\\sqrt{2}}{2} & -\\frac{\\sqrt{2}}{2} \\\\ \\frac{\\sqrt{2}}{2} & \\frac{\\sqrt{2}}{2} \\end{pmatrix}$, $Q=\\begin{pmatrix} \\frac{\\sqrt{3}}{2} & \\frac{1}{2} \\\\ -\\frac{1}{2} & \\frac{\\sqrt{3}}{2} \\end{pmatrix}$ 에 대하여 $(PQ)^n=E$ 가 성립하도록 하는 최소의 자연수 $n$의 값은? (단, $E$는 단위행렬이다.)",
     "choices": [
-      "12",
-      "18",
-      "30",
+      "48",
+      "42",
       "36",
+      "30",
       "24"
     ],
     "answer": "⑤",

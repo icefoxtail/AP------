@@ -44,13 +44,13 @@ window.questionBank = [
     "wide": false,
     "content": "6명의 육상 선수 중에서 4명을 뽑아 일렬로 세우는 경우의 수는?",
     "choices": [
-      "120",
-      "240",
-      "480",
       "360",
-      "720"
+      "600",
+      "840",
+      "1080",
+      "1320"
     ],
-    "answer": "④",
+    "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -72,11 +72,11 @@ window.questionBank = [
     "wide": false,
     "content": "${}_6C_3+{}_4P_2$의 값을 구하면?",
     "choices": [
+      "20",
       "24",
       "28",
-      "36",
       "32",
-      "40"
+      "36"
     ],
     "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
@@ -100,13 +100,13 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $2x-1<x+5 \\le 3x-3$의 해가 $a \\le x<b$일 때, $a+b$의 값은?",
     "choices": [
-      "8",
       "9",
+      "10",
       "11",
       "12",
-      "10"
+      "13"
     ],
-    "answer": "⑤",
+    "answer": "②",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -128,11 +128,11 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=-2x^2+8x-3$의 최댓값은?",
     "choices": [
+      "2",
       "3",
       "4",
-      "6",
       "5",
-      "7"
+      "6"
     ],
     "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
@@ -156,11 +156,11 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $|2x-3| < x+3$을 만족시키는 모든 정수 $x$의 개수는?",
     "choices": [
+      "2개",
       "3개",
       "4개",
-      "6개",
       "5개",
-      "7개"
+      "6개"
     ],
     "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
@@ -184,10 +184,10 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A=\\begin{pmatrix}1&-1\\\\2&3\\end{pmatrix}$, $B=\\begin{pmatrix}3&1\\\\-2&5\\end{pmatrix}$에 대하여 $X-3A=2B$를 만족시키는 행렬 $X$의 모든 성분의 합은?",
     "choices": [
+      "21",
+      "23",
       "25",
       "27",
-      "31",
-      "33",
       "29"
     ],
     "answer": "⑤",
@@ -212,13 +212,13 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $f(x)=x^2-2x-15$에 대하여 부등식 $f(x-1)<0$을 만족시키는 모든 정수 $x$의 합은?",
     "choices": [
+      "6",
+      "8",
       "10",
       "12",
-      "16",
-      "14",
-      "18"
+      "14"
     ],
-    "answer": "④",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -240,13 +240,13 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=ax^2+bx+c$의 그래프가 점 $(0, 5)$를 지나고 꼭짓점의 $x$좌표가 $2$이다. 이차방정식 $ax^2+bx+c=0$의 두 실근의 합은?",
     "choices": [
-      "2",
-      "4",
-      "6",
+      "10",
       "8",
-      "10"
+      "6",
+      "4",
+      "2"
     ],
-    "answer": "②",
+    "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
@@ -296,13 +296,13 @@ window.questionBank = [
     "wide": false,
     "content": "A, B, C, D 네 지점을 연결하는 도로망이 있다. A지점에서 B지점으로 가는 도로는 3개, A지점에서 C지점으로 가는 도로는 2개, B지점에서 D지점으로 가는 도로는 4개, C지점에서 D지점으로 가는 도로는 3개이다. B지점과 C지점을 연결하는 도로를 $x$개 추가하였더니 A지점에서 출발하여 B 또는 C를 거쳐 D지점으로 가는 전체 경우의 수가 120이 되었다. $x$의 값을 구하시오. (단, 한 번 지나간 지점은 다시 지나지 않고, 추가된 도로는 양방향 통행이 가능하다.)",
     "choices": [
-      "4",
-      "5",
       "6",
       "7",
-      "8"
+      "8",
+      "9",
+      "10"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-07-CORE",
     "subUnit": "합의 법칙과 곱의 법칙 핵심 개념",
@@ -352,13 +352,13 @@ window.questionBank = [
     "wide": false,
     "content": "$-1 \\le x \\le 4$에서 이차함수 $y=-x^2+6x+k$의 최댓값과 최솟값의 합이 10이 되도록 하는 상수 $k$의 값은?",
     "choices": [
+      "1",
       "2",
       "3",
-      "5",
-      "6",
-      "4"
+      "4",
+      "5"
     ],
-    "answer": "⑤",
+    "answer": "④",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -380,13 +380,13 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} x+y = -3 \\\\ x^2y + xy^2 - xy = 12 \\end{cases}$ 의 해를 $x=\\alpha, y=\\beta$라 할 때, $\\alpha^2+\\beta^2$의 값은?",
     "choices": [
+      "7",
+      "9",
       "11",
       "13",
-      "15",
-      "17",
-      "19"
+      "15"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -408,13 +408,13 @@ window.questionBank = [
     "wide": false,
     "content": "7개의 숫자 1, 2, 3, 4, 5, 6, 7에서 서로 다른 3개의 숫자를 택하여 만든 세 자리의 자연수 중에서 각 자리의 숫자의 합이 홀수인 자연수의 개수는?",
     "choices": [
+      "48",
+      "60",
       "72",
       "84",
-      "96",
-      "108",
-      "120"
+      "96"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-08-COMBINATION",
     "subUnit": "combination",
@@ -464,13 +464,13 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $|x-1| + |x+3| \\le 6$의 해와 이차부등식 $x^2+px+q \\le 0$의 해가 같을 때, $p+q$의 값은? (단, $p, q$는 상수이다.)",
     "choices": [
+      "-10",
       "-8",
       "-6",
       "-4",
-      "-2",
-      "0"
+      "-2"
     ],
-    "answer": "②",
+    "answer": "③",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
@@ -520,13 +520,13 @@ window.questionBank = [
     "wide": false,
     "content": "$x$에 대한 연립부등식 $\\begin{cases} 4x+3 \\ge 2x+7 \\\\ x-1 < -2x+k \\end{cases}$ 를 만족시키는 모든 정수 $x$의 값의 합이 14가 되도록 하는 정수 $k$의 개수는?",
     "choices": [
-      "1",
-      "2",
       "3",
       "4",
-      "5"
+      "5",
+      "6",
+      "7"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION",
     "subUnit": "여러 가지 방정식",
@@ -549,10 +549,10 @@ window.questionBank = [
     "content": "이차함수 $f(x)=-x^2+6x$의 그래프와 직선 $y=2x$가 만나는 두 점 중 원점이 아닌 점을 A라 하고, 점 A의 $x$좌표를 $\\alpha$라 하자. $0 < t < \\alpha$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프, 직선 $y=2x$와 만나는 점을 각각 P, Q라 할 때, 선분 PQ의 길이의 최댓값은 $M$이다. $M+\\alpha$의 값은?",
     "choices": [
       "8",
-      "4",
-      "6",
       "10",
-      "12"
+      "12",
+      "14",
+      "16"
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",

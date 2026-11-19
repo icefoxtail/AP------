@@ -16,13 +16,13 @@ window.questionBank = [
     "wide": false,
     "content": "이차함수 $y=x^2+2kx+k$의 그래프가 $x$축에 접하도록 하는 실수 $k$값의 합은?",
     "choices": [
-      "$-2$",
-      "$-1$",
       "$0$",
       "$1$",
-      "$2$"
+      "$2$",
+      "$3$",
+      "$4$"
     ],
-    "answer": "④",
+    "answer": "②",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "quadratic function graph",
@@ -45,10 +45,10 @@ window.questionBank = [
     "content": "$x$에 대한 삼차방정식 $2x^3-mx^2+2x=0$이 서로 다른 세 실근을 갖도록 하는 $10$ 이하의 자연수 $m$의 개수는?",
     "choices": [
       "$6$",
-      "$4$",
-      "$5$",
       "$7$",
-      "$8$"
+      "$8$",
+      "$9$",
+      "$10$"
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
@@ -72,13 +72,13 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} x^2-3xy-4y^2=0 \\\\ x^2+xy+y^2=7 \\end{cases}$의 해 $x=a$, $y=b$에 대하여 $a>0$, $b<0$일 때, $ab$의 값은?",
     "choices": [
+      "$-15$",
+      "$-13$",
+      "$-11$",
       "$-9$",
-      "$-7$",
-      "$-5$",
-      "$-3$",
-      "$-1$"
+      "$-7$"
     ],
-    "answer": "②",
+    "answer": "⑤",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -101,10 +101,10 @@ window.questionBank = [
     "content": "부등식 $-1\\leq 3x+2\\leq -x$의 해가 $a\\leq x\\leq b$일 때, $a+b$의 값은? (단, $a$, $b$는 상수이다.)",
     "choices": [
       "$-\\dfrac{3}{2}$",
-      "$-3$",
-      "$-2$",
       "$-1$",
-      "$-\\dfrac{1}{2}$"
+      "$-\\dfrac{1}{2}$",
+      "$0$",
+      "$\\dfrac{1}{2}$"
     ],
     "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
@@ -128,13 +128,13 @@ window.questionBank = [
     "wide": false,
     "content": "부등식 $|2x-1|\\leq x+1$의 해가 $a\\leq x\\leq b$일 때, $b-a$의 값은? (단, $a$, $b$는 상수이다.)",
     "choices": [
+      "$0$",
       "$1$",
       "$2$",
       "$3$",
-      "$4$",
-      "$5$"
+      "$4$"
     ],
-    "answer": "②",
+    "answer": "③",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -186,13 +186,13 @@ window.questionBank = [
     "wide": false,
     "content": "직각을 낀 두 변의 길이가 $30\\text{cm}$와 $60\\text{cm}$인 직각삼각형 모양의 천에서, 세로의 길이가 $a\\text{cm}$인 직사각형을 잘라낼 때, 직사각형의 넓이가 최대가 되도록 하는 $a$의 값은?<br><img src=\"assets/images/25_효천고_1학기_기말_고1_유사1/q07-audit-rework.svg\" alt=\"30cm와 60cm인 직각변이 있는 직각삼각형 안의 직사각형, 세로 변의 길이는 a cm\">",
     "choices": [
-      "$5$",
-      "$10$",
       "$15$",
       "$20$",
-      "$25$"
+      "$25$",
+      "$30$",
+      "$35$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
@@ -242,13 +242,13 @@ window.questionBank = [
     "wide": false,
     "content": "연립방정식 $\\begin{cases} x+2y=5 \\\\ 2xy=4 \\end{cases}$의 해를 $x=\\alpha$, $y=\\beta$라 하자. $\\alpha<\\beta$일 때, $\\alpha+\\beta$의 값은?",
     "choices": [
-      "$1$",
-      "$2$",
       "$3$",
       "$4$",
-      "$5$"
+      "$5$",
+      "$6$",
+      "$7$"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
     "subUnitKey": "H22-C-06-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",

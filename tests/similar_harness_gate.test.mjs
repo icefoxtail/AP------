@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
+import vm from 'node:vm';
 import { after, describe, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { verifySimilarExam } from '../tools/harness/verify_similar_exam.mjs';
@@ -376,20 +378,39 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
 // High school similar exams (h1/h2/h3). Fixtures are copied under a scratch ".../similar/high/..." tree so no
 // repository file is modified; engine evidence and assets are still read from the repository.
 // ---------------------------------------------------------------------------
-// 2026-11-19: 아래 고등 고정 시험지 중 일부(25_제일고 고2 확률과통계, 24_매산여고 고2 확률과통계)는 새 정답 번호 분포 기준
-// (docs/agents/similar-choices.md)에 걸리는 기존 시험지로, 유사문항 정답 번호 정리 배치에서 고칠 목록에 있다. 이 구역은 구조·영수증·그림 게이트를 확인하므로
-// 분포 오류만 걸러서 본다(분포 게이트 자체는 위의 'skewed answer-number distribution is blocked' 가 지킨다).
-const verifyHigh = (opts) => {
-  const res = verifySimilarExam(opts);
-  const errors = res.errors.filter((e) => !e.startsWith('MCQ answer distribution'));
-  return { ...res, errors, ok: errors.length === 0 };
-};
 const HIGH_DIR = 'archive/exams/similar/high/h2/2final';
 const HS = '25_제일고_2학기_기말_고2_확률과통계_유사'; // questionsReview receipt, clean PASS
 const HS_MATH2 = '25_제일고_2학기_기말_고2_수학II_유사'; // blindFirstPass.frozenAnswers receipt, PASS_WITH_NOTES
 const HS_DEBT = '25_매산여고_2학기_기말_고2_수학II_유사'; // UNSUPPORTED solution figures + VISUAL_DEBT receipt
 const HS_STAT = '24_매산여고_2학기_기말_고2_확률과통계_유사'; // stat-chart-figure-v1 plans
 const HS_SET = '25_순천여고_2학기_기말_고1_공통수학2_유사'; // set-diagram-figure-v1, h1
+
+// 2026-11-19: 세 시험지(HS, HS_STAT, HS_DEBT)는 검수 영수증이 봉인된 뒤 선택지·정답 칸이 정본 기준(docs/agents/similar-choices.md)에
+// 맞게 다시 짜였다. 영수증·메타는 봉인 문서라 저장소 파일은 고치지 않고, 시험용 복사본에서만 현재 JS에 맞춰 봉인값(JS 블롭 해시와 객관식 정답 칸)을 다시 맞춘다.
+// 그 위에서 영수증 변조·정답 변경 같은 결함 주입 시험과 통과 시험이 그대로 돈다. 다른 시험지는 이 보정을 받지 않는다.
+const RESEALED_STEMS = new Set(['25_제일고_2학기_기말_고2_확률과통계_유사', '24_매산여고_2학기_기말_고2_확률과통계_유사', '25_매산여고_2학기_기말_고2_수학II_유사']);
+const CIRCLES = '①②③④⑤';
+function resealScratchCopy(fx) {
+  const bytes = fs.readFileSync(fx.js);
+  const blob = crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob ' + bytes.length + '\0'), bytes])).digest('hex');
+  const sandbox = { window: {} };
+  vm.runInNewContext(bytes.toString('utf8'), sandbox);
+  const answers = new Map(sandbox.window.questionBank.map((q) => [Number(q.id), q.answer]));
+  const retarget = (v, a) => (typeof v === 'string' && CIRCLES.includes(v[0]) && a && v[0] !== a ? a + v.slice(1) : v);
+  const r = JSON.parse(fs.readFileSync(fx.receipt, 'utf8'));
+  r.candidateGitBlobSha1 = blob;
+  for (const e of r.questionsReview ?? []) {
+    const a = answers.get(Number(e.qid));
+    if (e.type !== '객관식' || !a) continue;
+    for (const k of ['candidateAnswer', 'derivedAnswer', 'blindFrozenAnswer']) if (k in e) e[k] = retarget(e[k], a);
+  }
+  fs.writeFileSync(fx.receipt, JSON.stringify(r, null, 2), 'utf8');
+  if (fx.meta) {
+    const m = JSON.parse(fs.readFileSync(fx.meta, 'utf8'));
+    m.expectedSourceBlobSha1 = blob;
+    fs.writeFileSync(fx.meta, JSON.stringify(m, null, 2), 'utf8');
+  }
+}
 
 function stageHighFixture(stem, name, dirRel = HIGH_DIR) {
   const dir = path.join(TEST_SCRATCH, name, 'similar', 'high', 'h2', '2final');
@@ -399,41 +420,43 @@ function stageHighFixture(stem, name, dirRel = HIGH_DIR) {
     fs.cpSync(path.join(REPO_ROOT, dirRel, f), path.join(dir, f), { recursive: true });
   }
   const file = (suffix) => path.join(dir, `${stem}${suffix}`);
-  return {
+  const fx = {
     dir,
     js: file('.js'),
     receipt: file('.review-receipt.json'),
     meta: fs.readdirSync(dir).map((f) => path.join(dir, f)).find((f) => f.includes('.meta-')),
     plan: (n) => path.join(dir, `${stem}_plans`, n),
-    run: (opts = {}) => verifyHigh({ jsPath: file('.js'), strictAuthoring: true, ...opts })
+    run: (opts = {}) => verifySimilarExam({ jsPath: file('.js'), strictAuthoring: true, ...opts })
   };
+  if (RESEALED_STEMS.has(stem)) resealScratchCopy(fx);
+  return fx;
 }
 const readJson = (p) => JSON.parse(fs.readFileSync(p, 'utf8'));
 const writeJson = (p, o) => fs.writeFileSync(p, JSON.stringify(o, null, 2), 'utf8');
 
 describe('High school similar exams: grade-aware harness', () => {
   test('stem lookup finds high-school exams and passes the clean release gate', () => {
-    const res = verifyHigh({ stem: HS, strictAuthoring: true });
+    const res = stageHighFixture(HS, 'lookup').run();
     assert.equal(res.ok, true, res.errors.join('; '));
     assert.equal(res.totalQuestions, 23);
   });
 
   test('PT/TPL are checked against the course packs (수학II -> derivative/integral-calculus), not middle1', () => {
-    const res = verifyHigh({ stem: HS_MATH2, strictAuthoring: true });
+    const res = verifySimilarExam({ stem: HS_MATH2, strictAuthoring: true });
     assert.equal(res.ok, true, res.errors.join('; '));
     assert.ok(!res.errors.some((e) => e.includes('unregistered')));
   });
 
   test('stat-chart-figure-v1 / set-diagram-figure-v1 plans and their title-less engine SVGs are supported', () => {
-    const stat = verifyHigh({ stem: HS_STAT, strictAuthoring: true });
+    const stat = stageHighFixture(HS_STAT, 'lookupstat').run();
     assert.equal(stat.ok, true, stat.errors.join('; '));
-    const set = verifyHigh({ stem: HS_SET, strictAuthoring: true });
+    const set = verifySimilarExam({ stem: HS_SET, strictAuthoring: true });
     assert.equal(set.ok, true, set.errors.join('; '));
     assert.ok(set.warnings.some((w) => w.includes('VISUAL_DEBT_ACKNOWLEDGED')), 'debt must stay visible');
   });
 
   test('PASS_WITH_* receipt statuses are accepted and surfaced as a qualified PASS', () => {
-    const res = verifyHigh({ stem: HS_DEBT, strictAuthoring: true });
+    const res = stageHighFixture(HS_DEBT, 'lookupdebt').run();
     assert.equal(res.ok, true, res.errors.join('; '));
     assert.ok(res.warnings.some((w) => w.includes('RECEIPT_QUALIFIED_PASS')));
   });

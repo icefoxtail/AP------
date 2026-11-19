@@ -17,10 +17,10 @@ window.questionBank = [
     "content": "$2 \\times 2$행렬 $A$의 $(i,j)$성분 $a_{ij}$가 $i+j$가 소수이면 $i+j$, 소수가 아니면 $|i-j|+1$로 정의될 때, 행렬 $A$의 모든 성분의 합은?",
     "choices": [
       "9",
-      "8",
       "10",
       "11",
-      "12"
+      "12",
+      "13"
     ],
     "answer": "①",
     "solution": "[키포인트] 행렬의 각 성분 위치 $(i, j)$에 따른 조건부 정의를 정확히 판별하여 합산한다.\\n1단계: 행렬 $A$의 각 성분을 구한다.\\n$a_{11}: i+j=2$ (소수) $\\implies a_{11}=2$\\n$a_{12}: i+j=3$ (소수) $\\implies a_{12}=3$\\n$a_{21}: i+j=3$ (소수) $\\implies a_{21}=3$\\n$a_{22}: i+j=4$ (소수 아님) $\\implies a_{22}=|2-2|+1=1$\\n2단계: 모든 성분의 합을 구한다.\\n$2 + 3 + 3 + 1 = 9$\\n∴ 정답: ①",
@@ -44,10 +44,10 @@ window.questionBank = [
     "wide": false,
     "content": "소인수가 2와 3뿐인 자연수 $N$의 양의 약수의 개수가 12개이다. $N$의 모든 양의 약수의 총합이 1000보다 큰 경우 중 $N$의 최솟값은?",
     "choices": [
+      "216",
+      "288",
       "324",
       "432",
-      "576",
-      "648",
       "486"
     ],
     "answer": "⑤",
@@ -156,10 +156,10 @@ window.questionBank = [
     "wide": false,
     "content": "두 행렬 $A = \\begin{pmatrix} x^2-x & 3 \\\\ 1 & y \\end{pmatrix}$, $B = \\begin{pmatrix} 2 & 3 \\\\ 1 & |x-1| \\end{pmatrix}$에 대하여 $A=B$를 만족시키는 모든 실수 $x$의 값의 합은?",
     "choices": [
+      "-3",
+      "-2",
       "-1",
       "0",
-      "2",
-      "3",
       "1"
     ],
     "answer": "⑤",
@@ -184,10 +184,10 @@ window.questionBank = [
     "wide": false,
     "content": "실계수 삼차방정식 $x^3+ax^2+bx-15=0$의 한 허근이 $1+2i$일 때, 이 방정식의 실근 $\\gamma$와 $a+b$의 합 $\\gamma+(a+b)$의 값은?",
     "choices": [
+      "5",
+      "6",
       "7",
       "8",
-      "10",
-      "11",
       "9"
     ],
     "answer": "⑤",
@@ -212,11 +212,11 @@ window.questionBank = [
     "wide": false,
     "content": "8개의 팀이 참가한 축구 대회에서 4팀씩 A, B 두 조로 나누어 조별로 각 팀이 다른 팀과 한 번씩 경기를 치르는 리그전을 진행한다. 그 후 각 조의 1위 팀끼리 결승전을 치를 때, 대회에서 열리는 전체 경기 수는?",
     "choices": [
+      "10",
       "11",
       "12",
-      "14",
       "13",
-      "15"
+      "14"
     ],
     "answer": "④",
     "solution": "[키포인트] 리그전의 경기 수는 전체 팀 중 2팀을 뽑는 조합의 수 ${}_{n}C_{2}$와 같다.\\n조건 정리: A조 4팀, B조 4팀이 각각 리그전을 치르고 마지막에 결승전 1경기를 추가한다.\\n정석 풀이:\\n1단계: A조 리그전 경기 수 구하기\\n4팀 중에서 경기를 치를 2팀을 선택하는 방법의 수이므로\\n${}_{4}C_{2} = \\dfrac{4 \\times 3}{2 \\times 1} = 6$(경기)\\n2단계: B조 리그전 경기 수 구하기\\nA조와 마찬가지로 4팀이므로 ${}_{4}C_{2} = 6$(경기)\\n3단계: 전체 경기 수 계산\\n(A조 경기) + (B조 경기) + (결승전) = $6 + 6 + 1 = 13$(경기)\\n따라서 정답은 ④이다.",
@@ -456,11 +456,11 @@ window.questionBank = [
     "wide": false,
     "content": "이차방정식 $x^2-x-1=0$의 두 실근을 $\\alpha, \\beta$라 하고, 행렬 $A = \\begin{pmatrix} \\alpha & 1 \\\\ 0 & \\beta \\end{pmatrix}$라 하자. $A^2 = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$일 때, $a+b+c+d$의 값은?",
     "choices": [
+      "1",
       "2",
       "3",
-      "5",
       "4",
-      "6"
+      "5"
     ],
     "answer": "④",
     "solution": "[키포인트] 행렬의 곱셈 연산 결과와 이차방정식의 근과 계수의 관계를 결합한다.\\n조건 정리: $x^2-x-1=0$의 근이 $\\alpha, \\beta$이므로 $\\alpha+\\beta=1, \\alpha\\beta=-1$이다.\\n정석 풀이:\\n1단계: $A^2$ 계산하기\\n$A^2 = \\begin{pmatrix} \\alpha & 1 \\\\ 0 & \\beta \\end{pmatrix} \\begin{pmatrix} \\alpha & 1 \\\\ 0 & \\beta \\end{pmatrix} = \\begin{pmatrix} \\alpha^2 & \\alpha+\\beta \\\\ 0 & \\beta^2 \\end{pmatrix}$\\n2단계: 각 성분 확인\\n$a = \\alpha^2, b = \\alpha+\\beta, c = 0, d = \\beta^2$\\n3단계: $a+b+c+d$ 식 정리\\n$a+b+c+d = \\alpha^2 + \\alpha+\\beta + 0 + \\beta^2 = (\\alpha^2 + \\beta^2) + (\\alpha+\\beta)$\\n4단계: 근과 계수의 관계 대입\\n$\\alpha^2 + \\beta^2 = (\\alpha+\\beta)^2 - 2\\alpha\\beta = 1^2 - 2(-1) = 3$\\n$\\alpha+\\beta = 1$\\n따라서 $3 + 1 = 4$이다.\\n따라서 정답은 ④이다.",
