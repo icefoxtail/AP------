@@ -1,0 +1,72 @@
+{
+  "qid": 17,
+  "itemFingerprint": "55aab32404d6a28c",
+  "solveSteps": [
+    "1) 턱걸이를 많이 한 계급부터 누적 인원을 계산한다.",
+    "2) 16회 이상 20회 미만: 4명 (1번째 ~ 4번째)",
+    "3) 12회 이상 16회 미만: 8명 (5번째 ~ 12번째)",
+    "4) 따라서 5번째인 학생이 속하는 계급은 12회 이상 16회 미만이므로 a = 12, b = 16이다.",
+    "5) 이 계급의 도수는 8명이므로 전체 25명에 대한 백분율은 c = (8 / 25) * 100 = 32%이다.",
+    "6) a + b + c = 12 + 16 + 32 = 60이다.",
+    "7) 따라서 정답은 60인 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "어느 학급 학생 $25$명의 턱걸이 횟수를 조사하여 나타낸 도수분포다각형에서 $0\\text{회 이상 }4\\text{회 미만}$부터 $16\\text{회 이상 }20\\text{회 미만}$까지 계급의 도수가 작은 계급부터 순서대로 $2, 4, 7, 8, 4$명이다. 턱걸이를 많이 한 쪽에서 $5$번째인 학생이 속하는 계급을 $a\\text{회 이상 }b\\text{회 미만}$이라 하고, 이 계급의 도수가 전체에서 차지하는 비율을 $c%$라 할 때, $a + b + c$의 값은? [5점]",
+  "rpmRecordId": "M1-RPM-231",
+  "rpmReason": "학생 25명의 도수분포다각형에서 상위 5번째 계급 a = 12, b = 16을 찾고 상대비율 c = 32%를 구해 a + b + c = 60을 구하는 M1-RPM-231 문제이다.",
+  "problemTypeKey": "PT_M1_DATA_ORDER_AND_VALUE",
+  "templateKey": "NONE",
+  "typeReason": "16회 이상 20회 미만 누적으로 상위 5번째 계급 [12, 16)을 정하고 전체 25명 중 도수 8명의 비율 c = 32%를 구하는 PT_M1_DATA_ORDER_AND_VALUE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "상위 순서 통계량으로 계급 12~16을 식별하고 백분율 32%를 계산해 합산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포다각형",
+        "src": "stem",
+        "quote": "사하여 나타낸 도수분포다각형에서 $0\\te"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "미만}$까지 계급의 도수가 작은"
+      }
+    ],
+    "method": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$명의 턱걸이 횟수를 조사하여 나",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {
+    "given": "학생 25명의 턱걸이 도수분포다각형 조건이다.",
+    "goal": "상위 5번째 계급과 백분율 c를 구하는 목표이다.",
+    "method": "턱걸이 횟수 누적 인원을 세는 방법이다.",
+    "condition": "추가 조건 없음."
+  },
+  "how": "16회 이상 20회 미만 4명 다음인 12~16회에 5번째가 속하므로 a = 12, b = 16, c = 32에서 a + b + c = 60임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

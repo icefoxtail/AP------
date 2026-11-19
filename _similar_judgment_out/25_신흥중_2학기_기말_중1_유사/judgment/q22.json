@@ -1,0 +1,76 @@
+{
+  "qid": 22,
+  "itemFingerprint": "918bdae33d88ba73",
+  "solveSteps": [
+    "1) 10명의 시청 시간을 크기순으로 나열하면 6, 6, 11, 13, 15, 17, 21, 24, 27, 160분이다.",
+    "2) 평균은 (6 + 6 + 11 + 13 + 15 + 17 + 21 + 24 + 27 + 160) / 10 = 300 / 10 = 30분이다.",
+    "3) 자료의 수가 10개이므로 중앙값은 5번째와 6번째 값의 평균인 (15 + 17) / 2 = 16분이다.",
+    "4) 최빈값은 빈도가 2회로 가장 많은 6분이다.",
+    "5) 극단값 160 때문에 평균(30분)은 중심 경향을 왜곡하고, 최빈값(6분)은 최솟값에 치우쳐 있으므로 중앙값(16분)이 가장 적절하다."
+  ],
+  "solvedAnswer": "(1) 평균: $30$분, 중앙값: $16$분, 최빈값: $6$분  (2) 중앙값이 가장 적절하다.",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "[서·논술형 4] 다음은 어느 동아리 학생 $10$명이 지난 주말 동안 시청한 동영상 시간(분)을 조사하여 나타낸 자료이다. 물음에 답하시오. [9점]\n\n$$\\text{[자료 (단위: 분)] } 11, \\quad 24, \\quad 17, \\quad 160, \\quad 6, \\quad 6, \\quad 21, \\quad 15, \\quad 13, \\quad 27$$\n\n(1) 동영상 시청 시간의 평균, 중앙값, 최빈값을 각각 구하시오. [6점] (2) (1)에서 구한 세 값 중 이 자료의 대푯값으로 가장 적절한 것을 하나 선택하고, 나머지 두 값이 대푯값으로 적절하지 않은 이유를 각각 서술하시오. [3점]",
+  "rpmRecordId": "M1-RPM-225-S2P-AB71",
+  "rpmReason": "10명의 시청 시간 자료에서 평균 30분, 중앙값 16분, 최빈값 6분을 계산하고 극단값 160의 영향으로 중앙값이 가장 적절함을 논술하는 M1-RPM-225-S2P-AB71 문제이다.",
+  "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+  "templateKey": "TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION",
+  "typeReason": "평균 30, 중앙값 16, 최빈값 6을 모두 산출하고 극단값 160에 따른 대푯값 적합성을 논증하는 TPL_M1_CENTRAL_TENDENCY_ALL_STATISTICS_COMBINATION 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "시간(분)을 조사하여 나타낸 자료이다. 물음에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대푯값",
+        "src": "stem",
+        "quote": "이 자료의 대푯값으로 가장 적절한 것을 하나"
+      }
+    ],
+    "method": [
+      {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "평균, 중앙값, 최빈값을 각각 구하시오.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최빈값",
+        "src": "stem",
+        "quote": "동영상 시청 시간의 평균, 중앙값, 최빈값을"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "동아리 학생 10명의 동영상 시청 시간 자료 조건이다.",
+    "goal": "평균, 중앙값, 최빈값 계산 및 가장 적절한 대푯값 선택 목표이다.",
+    "method": "자료를 크기순으로 나열하여 중앙값을 구하는 방법이다.",
+    "condition": "평균, 중앙값, 최빈값 3가지 대푯값 조건이다."
+  },
+  "how": "10개의 시청 시간에서 평균 30분, 중앙값 16분, 최빈값 6분을 산출하고 160분의 극단값으로 인해 중앙값이 대푯값으로 가장 적절함을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "평균 30, 중앙값 16, 최빈값 6의 3대 대푯값을 계산하고 극단값 160의 왜곡을 분석하는 2단계 서술형 문항이다."
+}

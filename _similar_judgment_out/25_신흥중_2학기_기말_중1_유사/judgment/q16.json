@@ -1,0 +1,77 @@
+{
+  "qid": 16,
+  "itemFingerprint": "48a810705bd79616",
+  "solveSteps": [
+    "1) 계급의 크기는 2 - 0 = 2시간으로 옳다.",
+    "2) 전체 회원 수는 3 + 6 + 9 + 8 + 5 + 3 + 1 = 35명으로 옳다.",
+    "3) 운동 시간이 4시간 미만인 회원은 0~2시간(3명) + 2~4시간(6명) = 9명이다.",
+    "4) 따라서 4시간 미만인 회원이 6명이라고 진술한 ①은 옳지 않다.",
+    "5) 도수가 가장 큰 계급은 도수가 9명인 4시간 이상 6시간 미만으로 옳다.",
+    "6) 따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "어느 동아리 회원들의 일주일 운동 시간을 조사하여 나타낸 히스토그램에서 계급이 $0\\text{시간 이상 }2\\text{시간 미만}$부터 $12\\text{시간 이상 }14\\text{시간 미만}$까지 $2\\text{시간}$ 간격으로 총 $7$개 계급이 있고, 각 계급의 도수가 왼쪽부터 순서대로 $3, 6, 9, 8, 5, 3, 1$명이다. 이에 대한 설명으로 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M1-RPM-231",
+  "rpmReason": "12시간 이상 14시간 미만까지의 히스토그램에서 전체 회원수 35명과 4시간 미만 인원 9명을 계산해 보기 ①의 오류를 판별하는 M1-RPM-231 문제이다.",
+  "problemTypeKey": "PT_M1_FREQUENCY",
+  "templateKey": "NONE",
+  "typeReason": "12시간 이상 14시간 미만 계급까지 히스토그램의 전체 도수 35명 및 구간 누적 도수 9명을 비교 해석하는 PT_M1_FREQUENCY 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "히스토그램의 도수를 차례로 읽어 누적 인원 3 + 6 = 9와 전체 회원수 35명을 확인하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "히스토그램",
+        "src": "stem",
+        "quote": "사하여 나타낸 히스토그램에서 계급이 $"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": ", 각 계급의 도수가 왼쪽부터 순"
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "히스토그램에서 계급이 $0\\tex",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "수가 왼쪽부터 순서대로 $3, 6"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "운동 시간 조사 결과 히스토그램 조건이다.",
+    "goal": "각 계급의 도수를 올바르게 해석하는 목표이다.",
+    "method": "계급의 크기와 구간별 도수를 확인하는 방법이다.",
+    "condition": "왼쪽부터 순서대로 주어진 계급 조건이다."
+  },
+  "how": "12시간 이상 14시간 미만까지 7개 계급에서 4시간 미만 인원은 3 + 6 = 9명이므로 6명이라 한 보기 ①이 옳지 않음을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

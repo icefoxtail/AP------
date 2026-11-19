@@ -1,0 +1,77 @@
+{
+  "qid": 12,
+  "itemFingerprint": "93ef2e664a012323",
+  "solveSteps": [
+    "1) 구의 반지름이 4 cm이므로 원기둥 밑면 반지름도 4 cm이다.",
+    "2) 구 2개가 꼭 맞게 들어가므로 원기둥의 높이는 구 지름(8 cm)의 2배인 16 cm이다.",
+    "3) 원기둥의 부피는 pi * 4^2 * 16 = 256 * pi cm^3이다.",
+    "4) 구 1개의 부피는 (4/3) * pi * 4^3 = (256/3) * pi cm^3이므로 구 2개의 부피의 합은 (512/3) * pi cm^3이다.",
+    "5) 따라서 빈 공간의 부피는 256 * pi - (512/3) * pi = (256/3) * pi cm^3이다.",
+    "6) 그러므로 정답은 (256/3) * pi cm^3인 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "밑면의 지름의 길이가 $8\\text{ cm}$인 원기둥 모양의 통에 반지름의 길이가 $4\\text{ cm}$인 구 $2$개가 위아래로 꼭 맞게 들어 있다. 이 통에서 두 구를 제외한 빈 공간의 부피는? (단, 통의 두께는 생각하지 않는다.) [5점]",
+  "rpmRecordId": "M1-RPM-219",
+  "rpmReason": "반지름 4 cm, 높이 16 cm인 원기둥 부피 256*pi에서 반지름 4 cm인 구 2개의 부피 512/3*pi를 빼서 빈 공간 부피 256/3*pi를 구하는 M1-RPM-219 문제이다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "typeReason": "원기둥 부피 256*pi와 구의 부피 공식을 결합하여 차이를 계산하는 PT_M1_SOLID_FIGURE_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "원기둥 높이 16 cm를 구하고 원기둥 부피와 구 2개 부피의 차 (256/3)*pi를 구하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원기둥",
+        "src": "stem",
+        "quote": "{ cm}$인 원기둥 모양의 통에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "공간",
+        "src": "stem",
+        "quote": "를 제외한 빈 공간의 부피는? ("
+      }
+    ],
+    "method": [
+      {
+        "term": "부피",
+        "src": "stem",
+        "quote": "한 빈 공간의 부피는? (단, 통",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "모양의 통에 반지름의 길이가 $4"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "지름 8 cm 원기둥과 반지름 4 cm 구 2개 조건이다.",
+    "goal": "구를 제외한 빈 공간의 부피를 구하는 목표이다.",
+    "method": "입체도형 부피 공식을 적용해 차를 구하는 방법이다.",
+    "condition": "구의 반지름 4 cm 조건이다."
+  },
+  "how": "원기둥 부피 256*pi에서 구 2개의 부피 512/3*pi를 빼서 빈 공간 부피가 (256/3)*pi cm^3임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

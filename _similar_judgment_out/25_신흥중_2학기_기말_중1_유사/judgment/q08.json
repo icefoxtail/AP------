@@ -1,0 +1,77 @@
+{
+  "qid": 8,
+  "itemFingerprint": "4664241768ec226e",
+  "solveSteps": [
+    "1) \\begin{aligned} 원기둥, 원뿔, 구는 모두 평면도형을 회전축을 중심으로 1회전하여 얻는 회전체이다. (참) \\end{aligned}",
+    "2) 원기둥을 회전축을 포함하는 평면으로 자른 단면은 직사각형이다. (참)",
+    "3) 구는 중심을 지나든 지나지 않든 어떤 평면으로 잘라도 그 단면은 항상 원이다. 타원이 되지 않는다. (거짓)",
+    "4) 회전체를 회전축을 포함하는 평면으로 자른 단면은 회전축에 대하여 선대칭도형이다. (참)",
+    "5) 회전체를 회전축에 수직인 평면으로 자른 단면은 항상 원이다. (참)",
+    "6) 따라서 옳지 않은 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "회전체에 대한 설명으로 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M1-RPM-212",
+  "rpmReason": "\\begin{aligned} 회전체의 단면 성질에서 구를 어떤 평면으로 잘라도 항상 원이 되며 타원이 될 수 없다는 성질을 판정하는 M1-RPM-212 문제이다. \\end{aligned}",
+  "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "\\begin{aligned} 회전축을 포함하거나 수직인 평면으로 자른 단면의 형태와 구의 단면이 항상 원임을 확인하는 PT_M1_ROTATION_SOLID_PROPERTIES 과제이다. \\end{aligned}",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "\\begin{aligned} 구의 단면은 중심을 지나지 않아도 항상 원이라는 기본 성질 1가지를 판별하는 1단계 문항이다. \\end{aligned}",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "회전체",
+        "src": "stem",
+        "quote": "회전체에 대한 설명으"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평면도형",
+        "src": "solution",
+        "quote": "원뿔, 구는 평면도형을 한 직선을"
+      }
+    ],
+    "method": [
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "원기둥을 축을 포함하는 평면으로 자르",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직사각형",
+        "src": "solution",
+        "quote": "과 높이로 된 직사각형이다. (참)}"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "회전체의 기본 정의와 성질 조건이다.",
+    "goal": "회전체를 생성하는 평면도형의 회전을 이해하는 목표이다.",
+    "method": "회전축을 포함하는 평면으로 자른 단면을 분석하는 방법이다.",
+    "condition": "원기둥 축 포함 단면이 직사각형이라는 조건이다."
+  },
+  "how": "\\begin{aligned} 구는 어떤 평면으로 잘라도 단면이 항상 원이므로 타원이 된다는 보기 ③이 옳지 않음을 확인하여 정답 ③으로 판정하였다. \\end{aligned}",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "qid": 7,
+  "itemFingerprint": "8fc4b62a126ac651",
+  "solveSteps": [
+    "1) 한 꼭짓점에 모인 면의 개수가 4인 정다면체는 정팔면체이다.",
+    "2) 정팔면체의 꼭짓점의 개수는 a = 6이다.",
+    "3) 모든 면이 정오각형인 정다면체는 정십이면체이다.",
+    "4) 정십이면체의 모서리의 개수는 b = (12 * 5) / 2 = 30이다.",
+    "5) 따라서 a + b = 6 + 30 = 36이다.",
+    "6) 그러므로 정답은 36인 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "한 꼭짓점에 모인 면의 개수가 $4$인 정다면체의 꼭짓점의 개수를 $a$, 모든 면이 정오각형인 정다면체의 모서리의 개수를 $b$라 할 때, $a + b$의 값은? [4점]",
+  "rpmRecordId": "M1-RPM-210",
+  "rpmReason": "한 꼭짓점에 모인 면이 4개인 정팔면체 꼭짓점 a = 6과 면이 정오각형인 정십이면체 모서리 b = 30으로 a + b = 36을 구하는 M1-RPM-210 문제이다.",
+  "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+  "templateKey": "NONE",
+  "typeReason": "5가지 정다면체의 면의 모양과 꼭짓점에 모인 면의 개수로부터 꼭짓점 a = 6, 모서리 b = 30을 복원하는 PT_M1_POLYHEDRON_COMPONENT_COUNT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정팔면체와 정십이면체를 각각 특정하고 꼭짓점수 6과 모서리수 30을 합산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정다면체",
+        "src": "stem",
+        "quote": "수가 $4$인 정다면체의 꼭짓점의 개"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "한 꼭짓점에 모인 면의"
+      }
+    ],
+    "method": [
+      {
+        "term": "정오각형",
+        "src": "stem",
+        "quote": ", 모든 면이 정오각형인 정다면체의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "모서리",
+        "src": "stem",
+        "quote": "인 정다면체의 모서리의 개수를 $b"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "한 꼭짓점에 모인 면의 수가 4인 정다면체 조건이다.",
+    "goal": "꼭짓점의 개수 a를 구하는 목표이다.",
+    "method": "면이 정오각형인 정십이면체를 파악하는 방법이다.",
+    "condition": "모서리의 개수 b 조건이다."
+  },
+  "how": "정팔면체의 꼭짓점 a = 6과 정십이면체의 모서리 b = 30에서 a + b = 36임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

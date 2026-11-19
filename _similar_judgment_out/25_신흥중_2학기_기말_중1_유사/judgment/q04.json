@@ -1,0 +1,76 @@
+{
+  "qid": 4,
+  "itemFingerprint": "089d47c48ffe1764",
+  "solveSteps": [
+    "1) 큰 호의 길이는 2 * pi * 9 * (60도 / 360도) = 18 * pi * (1/6) = 3 * pi cm이다.",
+    "2) 작은 호의 길이는 2 * pi * 3 * (60도 / 360도) = 6 * pi * (1/6) = pi cm이다.",
+    "3) 양쪽 선분의 길이는 각각 9 - 3 = 6 cm이므로 두 선분의 합은 2 * 6 = 12 cm이다.",
+    "4) 따라서 색칠한 부분의 둘레의 길이는 3 * pi + pi + 12 = (4 * pi + 12) cm이다.",
+    "5) 따라서 정답은 (4 * pi + 12) cm인 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "unitEvidence": "중심각의 크기가 $60^\\circ$이고 반지름의 길이가 각각 $9\\text{ cm}, 3\\text{ cm}$인 두 동심 부채꼴로 이루어진 도형에서 색칠한 부분의 둘레의 길이는? [4점]",
+  "rpmRecordId": "M1-RPM-205",
+  "rpmReason": "중심각 60도와 반지름 9 cm, 3 cm인 동심 부채꼴에서 두 호의 길이 3*pi + pi와 선분 길이 12 cm를 합하여 둘레를 구하는 M1-RPM-205 문제이다.",
+  "problemTypeKey": "PT_M1_CIRCLE_MEASURE",
+  "templateKey": "NONE",
+  "typeReason": "동심 부채꼴 호의 길이 공식과 양쪽 선분 길이 12 cm를 합산하여 둘레 4*pi + 12를 구하는 PT_M1_CIRCLE_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "반지름 9 cm, 3 cm 부채꼴의 큰 호, 작은 호의 길이와 두 선분의 차를 합산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "$인 두 동심 부채꼴로 이루어진 도"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "이고 반지름의 길이가 각각 $9\\"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "중심각의 크기가 $6",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "circ$이고 반지름의 길이가 각각"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "중심각 60도, 반지름 9 cm, 3 cm인 두 동심 부채꼴 조건이다.",
+    "goal": "색칠한 부분의 둘레의 길이를 구하는 목표이다.",
+    "method": "중심각 60도를 이용해 호의 길이를 계산하는 방법이다.",
+    "condition": "반지름의 길이 조건이다."
+  },
+  "how": "큰 호 3*pi cm, 작은 호 pi cm, 양쪽 선분 12 cm를 더해 (4*pi + 12) cm임을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
