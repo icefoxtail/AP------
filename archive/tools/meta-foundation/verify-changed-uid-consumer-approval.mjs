@@ -407,11 +407,13 @@ function verifiedDifficultyRows(root, unit, consumer) {
     const matches = consumer.difficultyMetadataByUid.get(row.uid) || [], meta = matches[0];
     if (!checked || checked.decision !== "VERIFIED" || matches.length !== 1 ||
         meta.sourceArchiveFile !== unit.sourceFile || meta.sourceOrdinal !== row.ordinal ||
-        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) && same(meta[field], checked.after[field])))
+        // The registrar writes legacyLevelCompatibility only for a row that still has a legacy level; a request without a level
+        // carries three fields. Every field the registrar reports is compared; the three core fields are always required.
+        !DIFFICULTY_FIELDS.every(field => own(checked.after, field) ? same(meta[field], checked.after[field]) : field === "legacyLevelCompatibility"))
       throw Error(`official difficulty metadata/UID mismatch: ${row.uid}`);
     const source = bank[row.ordinal - 1];
     if (!source) throw Error(`difficulty source ordinal missing: ${row.uid}`);
-    const values = Object.fromEntries(DIFFICULTY_FIELDS.map(field => [field, checked.after[field] ?? null]));
+    const values = Object.fromEntries(DIFFICULTY_FIELDS.filter(field => own(checked.after, field)).map(field => [field, checked.after[field] ?? null]));
     const semanticPending = !meta.metadataApprovalType &&
       ["registration_only_pending_review", "registration_pending_semantic_review"].includes(meta.metadataStatus) &&
       // A direct type judgment (type fields only) is not a semantic review of the row: its other fields stay pending.
@@ -445,7 +447,7 @@ function checkRow(consumer, unit, row) {
     // Some auxiliary D5 fields are not exposed by the page. Their exact current
     // metadata equivalence is already proven above; any exposed canonical value
     // must agree too, while the bucket still takes the real page/query path below.
-    const mismatched = DIFFICULTY_FIELDS.filter(field => own(resolved, field) && !same(resolved[field], difficulty.values[field]));
+    const mismatched = DIFFICULTY_FIELDS.filter(field => own(difficulty.values, field) && own(resolved, field) && !same(resolved[field], difficulty.values[field]));
     if (mismatched.length) return { ...out, reason: "VALUE_MISMATCH", detail: "official difficulty tuple != canonical consumer: " + mismatched.join(",") };
   }
   const blockingConflicts = (resolved.metadataConflicts || []).filter(field => {

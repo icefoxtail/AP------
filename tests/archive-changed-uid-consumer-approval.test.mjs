@@ -10,7 +10,7 @@ import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tool
 import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import canonical from "../archive/archive2-canonical.js";
 import vm from "node:vm";
-import { registerDifficulty5 } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
+import { registerDifficulty5, computeLegacyCompat } from "../archive/tools/meta-foundation/register-difficulty5.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -574,4 +574,63 @@ test("D5-only compatibility normalization never applies to typed corrections or 
     sourceArchiveFile: p.request.gemini.sourceArchiveFile, expectedSourceBlobSha1: p.request.gemini.latestBlobSha,
     items: [{ questionUid: p.entry.questionUid, sourceOrdinal: p.entry.sourceOrdinal, before: { difficultyBucket: 3 }, after: { difficultyBucket: 4 } }] }));
   const other = p.check(); assert.equal(other.status, "FAIL"); assert.equal(other.failures[0].reason, "METADATA_CONFLICT");
+});
+
+// An ordinary difficulty request without a legacy level carries three fields (the registrar writes legacyLevelCompatibility only
+// for a row that still has a level, a2850c075f). The consumer gate compares every field the registrar reports and always requires
+// the three core fields; a level-less request is not refused for the absent compatibility field.
+function levelLessFixture(t, { drop = [], keepCompat = false } = {}) {
+  const f = difficultyRefusalFixture(t, 0), g = f.request.gemini, item = g.items[0];
+  const after = Object.fromEntries(["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag", ...(keepCompat ? ["legacyLevelCompatibility"] : [])]
+    .filter(field => !drop.includes(field)).map(field => [field, item.after[field]]));
+  const request = { schemaVersion: f.request.schemaVersion, gemini: { schemaVersion: "v1", requestId: "level-less-test",
+    sourceArchiveFile: g.sourceArchiveFile, latestBlobSha: g.latestBlobSha, items: [{ ordinal: item.ordinal, questionUid: item.questionUid, after }] } };
+  f.put("difficulty.json", JSON.stringify(request));
+  return f;
+}
+const otherValue = (field, current) => field === "difficultyBucket" ? (current === 1 ? 2 : 1) : field === "difficultyConfidence" ? "low" : "B45";
+
+test("level-less difficulty request (three fields) passes the consumer gate", t => {
+  const f = levelLessFixture(t);
+  const out = f.check(); assert.equal(out.status, "PASS", JSON.stringify(out.failures));
+  assert.equal(out.exams[0].officialDifficultyTuplesVerified, 1); assert.equal(out.exams[0].semanticApproval, false);
+  assert.deepEqual(out.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
+  // a stale exposed compatibility value is not part of what the request registered
+  f.row.legacyLevelCompatibility = "STRONG_CONFLICT"; f.refresh();
+  assert.equal(f.check().status, "PASS");
+});
+
+test("level-less difficulty request: a core field that is missing or different is still refused", t => {
+  for (const field of ["difficultyBucket", "difficultyConfidence", "difficultyBoundaryFlag"]) {
+    const missing = levelLessFixture(t, { drop: [field] });
+    const out = missing.check(); assert.equal(out.status, "FAIL", "missing " + field); assert.equal(out.counts.passed, 0);
+    const f = levelLessFixture(t);
+    f.meta[field] = otherValue(field, f.meta[field]);
+    f.put("archive/data/question_metadata.json", JSON.stringify({ records: [f.meta] }));
+    const bad = f.check(); assert.equal(bad.status, "FAIL", "different " + field);
+    assert.match(bad.failures[0].detail, /official difficulty projection failed/);
+    const stale = levelLessFixture(t);
+    stale.row[field] = otherValue(field, stale.row[field]); stale.refresh();
+    const staleOut = stale.check(); assert.equal(staleOut.status, "FAIL", "stale consumer " + field);
+    assert.match(staleOut.failures[0].detail, /official difficulty tuple != canonical consumer/);
+  }
+});
+
+// A row that still has a legacy level gets a compatibility value from the registrar: all four fields are reported and compared.
+function leveledFixture(t) {
+  const f = levelLessFixture(t, { keepCompat: true }), compat = computeLegacyCompat("중", f.meta.difficultyBucket);
+  f.meta.level = "중"; f.meta.legacyLevelCompatibility = compat; f.row.legacyLevelCompatibility = compat;
+  f.put("archive/data/question_metadata.json", JSON.stringify({ records: [f.meta] })); f.refresh();
+  return { f, compat };
+}
+
+test("a row with a legacy level keeps the four-field comparison (compatibility value must match)", t => {
+  const { f, compat } = leveledFixture(t), ok = f.check();
+  assert.equal(ok.status, "PASS", JSON.stringify(ok.failures));
+  const wrong = compat === "STRONG_CONFLICT" ? "NORMAL" : "STRONG_CONFLICT";
+  const mutated = leveledFixture(t).f; mutated.meta.legacyLevelCompatibility = wrong;
+  mutated.put("archive/data/question_metadata.json", JSON.stringify({ records: [mutated.meta] }));
+  const out = mutated.check(); assert.equal(out.status, "FAIL"); assert.match(out.failures[0].detail, /official difficulty projection failed/);
+  const stale = leveledFixture(t).f; stale.row.legacyLevelCompatibility = wrong; stale.refresh();
+  const staleOut = stale.check(); assert.equal(staleOut.status, "FAIL"); assert.match(staleOut.failures[0].detail, /official difficulty tuple != canonical consumer/);
 });
