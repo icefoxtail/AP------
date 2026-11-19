@@ -1,0 +1,59 @@
+{
+  "qid": 23,
+  "itemFingerprint": "39a4cd38c4755dcf",
+  "solveSteps": [
+    "전체 학생 수를 x명이라 하면 한 학생당 나누어 준 연필의 개수는 (x - 12)자루이다.",
+    "총 연필 수가 160자루이므로 x(x - 12) = 160 이 성립한다.",
+    "전개하면 x^2 - 12x - 160 = 0 이고, (x - 20)(x + 8) = 0 이다.",
+    "학생 수는 양수이므로 x = 20 이다. 따라서 전체 학생 수는 20명이다."
+  ],
+  "solvedAnswer": "20명",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+  "unitEvidence": "연필 $160$자루를 반 전체 학생에게",
+  "rpmRecordId": "M3-RPM-042",
+  "rpmEvidence": "전체 학생 수를 $x$명이라 하면",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+  "templateKey": "NONE",
+  "typeReason": "실생활 연필 배분 상황을 미지수 x의 이차방정식으로 모델링하여 160 해를 구하는 활용 유형이다.",
+  "rpmReason": "증감과 개수 배분 조건으로 이차방정식을 세워 해결하는 160 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식을 세우고 인수분해하여 양수 해를 구하는 표준적인 난이도 2 160 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "연필 $160$자루를 반 전체 학생에게",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "quote": "전체 학생 수를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차방정식",
+        "quote": "전체 학생 수를 $x$명이라 하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차방정식",
+        "quote": "학생 수는 자연수이므로 $x = 20$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "전체 학생 수 x에 대해 x(x-12)=160을 세워 x^2-12x-160=0을 풀고 자연수 조건에서 x=20을 aligned 구했다."
+}

@@ -1,0 +1,60 @@
+{
+  "qid": 21,
+  "itemFingerprint": "47711a9e8377e855",
+  "solveSteps": [
+    "sqrt(x^2 + 6x + 9) = sqrt((x+3)^2) = |x + 3| 이다.",
+    "sqrt(x^2 + 2x + 1) = sqrt((x+1)^2) = |x + 1| 이다.",
+    "-3 < x < -1 이므로 x + 3 > 0, x + 1 < 0 이다.",
+    "따라서 |x + 3| + |x + 1| = (x + 3) - (x + 1) = 2 로 aligned 계산된다.",
+    "답은 2이다."
+  ],
+  "solvedAnswer": "2",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "$-3<x<-1$일 때,",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "$-3<x<-1$이므로 $x+3>0$, $x+1<0$이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+  "typeReason": "제곱근의 성질 sqrt(A^2)=|A|와 주어진 범위 조건을 이용하여 근호식을 간단히 하는 aligned 유형이다.",
+  "rpmReason": "제곱근의 기본 성질인 절댓값 변환과 부호 판정을 적용하는 aligned RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "완전제곱식 변형 후 부호를 따져 절댓값을 푸는 표준적인 난이도 2 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "$-3<x<-1$일 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "을 간단히 하시오. [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "quote": "$-3<x<-1$이므로 $x+3>0$, $x+1<0$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "quote": "$-3<x<-1$일 때,",
+        "src": "stem"
+      }
+    ]
+  },
+  "how": "근호 안을 완전제곱식으로 고쳐 |x+3|+|x+1|로 바꾸고 -3<x<-1에서 부호를 판단해 2를 aligned 계산했다."
+}

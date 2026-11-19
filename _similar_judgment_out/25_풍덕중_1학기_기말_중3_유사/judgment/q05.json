@@ -1,0 +1,60 @@
+{
+  "qid": 5,
+  "itemFingerprint": "f746a11c9fa7657e",
+  "solveSteps": [
+    "(3x+a)(x+b) = 3x^2 + (3b+a)x + ab 이므로 3b+a = 10 이고 k = ab 이다.",
+    "a, b가 자연수이므로 가능한 순서쌍 (b, a)는 (1, 7), (2, 4), (3, 1)이다.",
+    "각각에 대해 k = ab는 7, 8, 3 이다.",
+    "최댓값은 8, 최솟값은 3이므로 그 합은 8 + 3 = 11 이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "$(3x+a)(x+b)$로 인수분해되도록 하는",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "$a, b$는 자연수이므로",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+  "typeReason": "이차식의 인수분해 조건에서 자연수 미정계수의 부정방정식을 풀어 극값을 구하는 ab 10 유형이다.",
+  "rpmReason": "자연수 계수 조건을 만족하는 이차식 인수분해의 상수 k를 결정하는 10 ab RPM 유형이다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "자연수 조건 10으로 케이스를 나누어 k의 합 11을 aligned 구하므로 난이도 3이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "인수",
+        "quote": "$(3x+a)(x+b)$로 인수분해되도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "quote": "가장 큰 수와 가장 작은 수의 합은? [5점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수",
+        "quote": "$a, b$는 자연수이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수",
+        "quote": "최댓값은 $8$, 최솟값은 $3$이므로 합은 $8+3=11$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "3b+a=10을 만족하는 자연수 순서쌍을 조사하여 k=ab의 최댓값 8과 최솟값 3의 합 11을 aligned 구했다."
+}

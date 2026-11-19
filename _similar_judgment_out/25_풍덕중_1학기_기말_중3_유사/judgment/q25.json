@@ -1,0 +1,61 @@
+{
+  "qid": 25,
+  "itemFingerprint": "12352e7263e5684c",
+  "solveSteps": [
+    "y = x^2 - 4x + 5 에 x = 0 을 대입하면 y = 5 이므로 점 B의 좌표는 (0, 5)이고 선분 OB의 길이는 5이다.",
+    "점 A(a, b)가 제1사분면 위에 있으므로 선분 OB를 밑변으로 할 때 삼각형 OAB의 높이는 점 A의 x좌표인 a이다.",
+    "삼각형 OAB의 넓이가 10이므로 (1/2) * 5 * a = 10 에서 5a = 20, a = 4 이다.",
+    "점 A가 포물선 위의 점이므로 b = 4^2 - 4(4) + 5 = 16 - 16 + 5 = 5 이다.",
+    "따라서 a + b = 4 + 5 = 9 이다."
+  ],
+  "solvedAnswer": "9",
+  "answerMatches": true,
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그림과 같이 제$1$사분면 위의 점 $\\text{A}(a, b)$는",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "그래프가 $y$축과 만나는 점을 $\\text{B}$라 할 때,",
+  "rpmRecordId": "M3-RPM-047",
+  "rpmEvidence": "선분 $\\text{OB}$를 밑변으로 할 때 삼각형 $\\text{OAB}$의 높이는 $a$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_M3_GRAPH_GEOMETRY_TRIANGLE_AREA",
+  "typeReason": "포물선 위의 점과 y절편이 이루는 삼각형 OAB의 넓이 10 조건으로 좌표 a, b를 구하는 유형이다.",
+  "rpmReason": "이차함수 그래프 위의 점의 좌표와 삼각형 넓이 10를 연결하는 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "y절편으로 밑변을 구하고 높이 방정식을 풀어 a+b=9를 aligned 10 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "그래프가 $y$축과 만나는 점을 $\\text{B}$라 할 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "넓이가 $10$이면 $a+b$의 값을 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "quote": "선분 $\\text{OB}$를 밑변으로 할 때 삼각형 $\\text{OAB}$의 높이는 $a$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "점 $\\text{A}(a, b)$가 제$1$사분면 위에 있으므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "밑변 OB=5와 높이 a로 삼각형 OAB 넓이 (1/2)*5*a=10에서 a=4, b=5를 구하고 a+b=9를 aligned 계산했다."
+}
