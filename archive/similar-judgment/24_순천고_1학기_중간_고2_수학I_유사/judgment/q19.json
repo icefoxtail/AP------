@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "1aee95fe179af744",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$A(a, 4\\log_2(a-1)), B(a+2, 4\\log_2(a-1))$에서 $\\overline{BD}=4$이므로 $a=3$이다. 11 ABCD",
+    "따라서 $A(3, 4), B(5, 4), D(5, 8), C(6, 8)$이다. 11 ABCD",
+    "사다리꼴 넓이는 $\\frac{2+1}{2} \\times 4 = 6$이다. 11 ABCD",
+    "따라서 정답은 ⑤이다. 11 ABCD"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $y = 4\\log_2",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_LOG_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그함수와 지수함수 위의 점들로 이루어진 사다리꼴의 넓이 6을 구하는 유형이다. 11 ABCD",
+  "rpmRecordId": "H2-M1-RPM-028",
+  "rpmReason": "두 곡선의 좌표 관계식으로부터 꼭짓점을 결정하고 넓이를 계산한다. 11 ABCD",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "점 A, B, D, C의 좌표를 연립방정식으로 구하고 사다리꼴 넓이를 구하는 문항이다. 11 ABCD",
+  "how": "BD=4로부터 a=3을 구하고 사다리꼴 밑변 2, 윗변 1, 높이 4로 넓이 6을 계산했다. 11 ABCD",
+  "slots": {
+    "given": [
+      {
+        "term": "로그함수",
+        "src": "stem",
+        "quote": "함수 $y = 4\\log_2(x - 1)$의 그래프 위의 한 점 $A$를 지나고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "사각형 $ABCD$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "따라서 $A(3, 4)$, $B(5, 4)$, $D(5, 8)$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

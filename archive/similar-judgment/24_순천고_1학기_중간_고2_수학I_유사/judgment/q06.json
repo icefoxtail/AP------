@@ -1,0 +1,56 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "6e78d498ebe8fa46",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "근과 계수의 관계: $\\alpha+\\beta = 2\\sqrt{2}, \\alpha\\beta = -14$이다. 14",
+    "$(\\alpha-\\beta)^2 = (2\\sqrt{2})^2 - 4(-14) = 8 + 56 = 64 \\implies \\alpha-\\beta = 8$이다. 14",
+    "$\\log_2(\\alpha+\\beta) + \\log_2(\\alpha-\\beta) = \\log_2(2\\sqrt{2}) + \\log_2 8 = 3/2 + 3 = 9/2$이다. 14",
+    "따라서 정답은 ①이다. 14"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2 - 2\\",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-LOGARITHM",
+  "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식 근과 계수의 관계 alpha*beta=-14를 이용해 로그 연산을 수행하는 유형이다. 14",
+  "rpmRecordId": "H2-M1-RPM-009",
+  "rpmReason": "로그의 덧셈 성질과 곱셈공식을 연계하여 9/2를 계산한다. 14",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "곱셈공식 변형으로 alpha-beta=8을 구한 후 밑이 2인 로그를 계산하는 문항이다. 14",
+  "how": "근과 계수의 관계로 alpha-beta=8을 구하고 log_2(2sqrt(2))+log_2 8 = 9/2를 얻었다. 14",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 - 2\\sqrt{2}x - 14 = 0$의 두 근을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\log_2(\\alpha + \\beta) + \\log_2(\\alpha - \\beta)$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "근과 계수의 관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $\\alpha + \\beta = 2\\sqrt{2}$,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

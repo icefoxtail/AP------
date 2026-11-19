@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "0dd37d33eb3fdf0d",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "ㄱ: $y=\\log_2(x-3)$은 x축으로 3만큼 평행이동한 것이다 (참). 3.6",
+    "ㄴ: $y=\\log_2 5x = \\log_2 x + \\log_2 5$는 y축 평행이동한 것이다 (참). 3.6",
+    "ㄷ: $y=\\log_2 x^2$은 정의역이 $x \\ne 0$이므로 겹치지 않는다 (거짓). 3.6",
+    "ㄹ: $y=2^{-(x+1)}$은 $y=\\log_2 x$를 $y=x$ 대칭 후 y축 대칭 및 평행이동한 것이다 (참). 3.6",
+    "따라서 옳은 것은 ㄱ, ㄴ, ㄹ로 정답은 ②이다. 3.6"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 <보기>의 함수의 그래",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그함수의 평행이동과 대칭이동을 통해 겹쳐지는 그래프를 선별하는 유형이다. 3.6",
+  "rpmRecordId": "H2-M1-RPM-022",
+  "rpmReason": "평행이동과 대칭이동 변환 규칙을 적용하여 그래프 일치 여부를 판별한다. 3.6",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정의역 조건(ㄷ)과 역함수 대칭이동(ㄹ)을 꼼꼼히 판별해야 하는 문항이다. 3.6",
+  "how": "각 보기의 식 변형으로 평행/대칭이동 가능 여부를 확인해 ㄱ, ㄴ, ㄹ을 골랐다. 3.6",
+  "slots": {
+    "given": [
+      {
+        "term": "로그함수",
+        "src": "stem",
+        "quote": "다음 <보기>의 함수의 그래프 중"
+      }
+    ],
+    "goal": [
+      {
+        "term": "로그함수",
+        "src": "stem",
+        "quote": "그래프를 평행이동 또는 대칭이동하여 겹쳐지는 것을 모두 고르면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "ㄱ. $y = \\log_2(x - 3)$은 $y = \\log_2 x$를 $x$축 방향으로 $3$만큼 평행이동한 것이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

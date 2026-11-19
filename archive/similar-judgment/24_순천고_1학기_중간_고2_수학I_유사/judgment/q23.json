@@ -1,0 +1,55 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "1e33de43307e0055",
+  "solvedAnswer": "약 $5.64\\%$ (약 $5.6\\%$)",
+  "solveSteps": [
+    "$k = (3/4)^{10}$이라 하고 상용로그를 취하면 $\\log k = 10(0.4771 - 2 \\times 0.3010) = -1.2490$이다. 25",
+    "$-1.2490 = -2 + 0.7510 = \\log 10^{-2} + \\log 5.636 = \\log 0.05636$이다. 25",
+    "따라서 $k = 0.05636$이므로 약 5.6%이다. 25"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "서답형 3. (서술형) 방사",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+  "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "방사선 차단율 25%의 연속 적용 실생활 문제를 상용로그로 해결하는 유형이다. 25",
+  "rpmRecordId": "H2-M1-RPM-012",
+  "rpmReason": "상용로그 계산으로 (3/4)^10의 값을 추정하여 백분율 5.6%를 도출한다. 25",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "상용로그 지표와 가수 분리를 통해 0.05636을 유도하는 서술형 문항이다. 25",
+  "how": "log k = -1.2490 = -2 + 0.7510에서 k=0.05636을 얻어 약 5.6%를 구했다. 25",
+  "slots": {
+    "given": [
+      {
+        "term": "상용로그",
+        "src": "stem",
+        "quote": "단, $\\log 2 = 0.3010$, $\\log 3 = 0.4771$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상용로그",
+        "src": "stem",
+        "quote": "처음 양의 약 몇 $\\%$인지 풀이 과정과 함께 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "상용로그",
+        "src": "solution",
+        "quote": "$10$장을 통과한 후의 비율을 $k = \\left(\\dfrac{3}{4}\\right)^{10}$이라 하고 상용로그를 취하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

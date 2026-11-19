@@ -1,0 +1,1764 @@
+{
+  "qid": 13,
+  "questionType": "객관식",
+  "course": [
+    "H15_MATH1"
+  ],
+  "curriculum": "2015",
+  "problem": {
+    "content": "반지름의 길이가 $9$이고 중심각의 크기가 $\\dfrac{\\pi}{6}$인 부채꼴 $OAB$가 있다. 선분 $OA$ 위의 점 $E$에 대하여 선분 $EA$를 지름으로 하고 선분 $OB$에 접하는 반원을 $C$라 하자. 부채꼴 $OAB$의 넓이를 $T_1$, 반원 $C$의 넓이를 $T_2$라 할 때, $T_1 - T_2$의 값은? [4.2점]",
+    "choices": [
+      "$\\dfrac{3}{4}\\pi$",
+      "$\\pi$",
+      "$\\dfrac{3}{2}\\pi$",
+      "$\\dfrac{9}{4}\\pi$",
+      "$3\\pi$"
+    ],
+    "points": 4.2
+  },
+  "reference": {
+    "answer": "④",
+    "solution": "부채꼴 $OAB$의 넓이 $T_1$은\n$T_1 = \\dfrac{1}{2} \\cdot 9^2 \\cdot \\dfrac{\\pi}{6} = \\dfrac{27}{4}\\pi$\n반원 $C$의 반지름을 $r$이라 하고 중심을 $M$이라 하면 $\\overline{MA} = r$이므로 $\\overline{OM} = 9 - r$이다.\n반원 $C$가 선분 $OB$에 접하므로 중심 $M$에서 선분 $OB$에 내린 수선의 발을 $H$라 하면 $\\overline{MH} = r$이고 $\\angle MOH = \\dfrac{\\pi}{6}$이다.\n직각삼각형 $OMH$에서 $\\sin\\dfrac{\\pi}{6} = \\dfrac{\\overline{MH}}{\\overline{OM}}$이므로\n$\\dfrac{1}{2} = \\dfrac{r}{9 - r} \\implies 9 - r = 2r \\implies r = 3$\n따라서 반원 $C$의 넓이 $T_2$는\n$T_2 = \\dfrac{1}{2}\\pi \\cdot 3^2 = \\dfrac{9}{2}\\pi$\n그러므로 $T_1 - T_2 = \\dfrac{27}{4}\\pi - \\dfrac{9}{2}\\pi = \\dfrac{9}{4}\\pi$이다.",
+    "sourcePrimaryMethod": "반원 중심 M에서 반지름 OB까지의 거리 (9-r)sin(π/6)=r 관계로 반지름 r=3을 구해 넓이 차를 계산한다.",
+    "sourceDecisiveStep": "직각삼각형 OMH에서 sin(π/6)=r/(9-r)로 반원 반지름 r=3을 구하는 단계"
+  },
+  "source": {
+    "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
+    "standardUnitKey": "",
+    "subUnitKey": "",
+    "rpmPath": {
+      "majorUnit": "",
+      "midUnit": "",
+      "l3": "",
+      "l4": ""
+    },
+    "problemTypeKey": null,
+    "templateKey": null,
+    "difficultyBucket": 3,
+    "newKeyProposal": null,
+    "item4slot": {
+      "given": [
+        "부채꼴",
+        "반원",
+        "접선"
+      ],
+      "goal": [
+        "차"
+      ],
+      "method": [
+        "삼각비",
+        "부채꼴"
+      ],
+      "condition": []
+    },
+    "boundary": "NONE"
+  },
+  "units": [
+    {
+      "standardUnitKey": "H15-M1-01",
+      "label": "지수의 뜻과 성질",
+      "order": 1,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "label": "지수의 뜻과 성질"
+        },
+        {
+          "subUnitKey": "H15-M1-01-LOGARITHM",
+          "label": "로그의 뜻과 성질"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-001",
+          "path": "지수함수와 로그함수 > 지수 > 거듭제곱근 > n제곱근",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-002",
+          "path": "지수함수와 로그함수 > 지수 > 거듭제곱근 > 실수 조건",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-003",
+          "path": "지수함수와 로그함수 > 지수 > 지수의 확장 > 유리수 지수",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-004",
+          "path": "지수함수와 로그함수 > 지수 > 지수의 확장 > 실수 지수",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-005",
+          "path": "지수함수와 로그함수 > 지수 > 지수법칙 > 지수식 계산",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-006",
+          "path": "지수함수와 로그함수 > 지수 > 지수법칙 > 조건식",
+          "subUnitKey": "H15-M1-01-EXPONENT",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+          "label": "지수법칙 적용",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+              "label": "지수식·로그식의 결합 계산"
+            },
+            {
+              "templateKey": "TPL_EXPONENT_LAW_TRIG_EXPONENT_COMPARE",
+              "label": "지수 통일을 통한 삼각함수 비 계산"
+            },
+            {
+              "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT",
+              "label": "거듭제곱근과 로그 성질 진술 검증"
+            },
+            {
+              "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+              "label": "서로 역수인 거듭제곱 치환과 값 결정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+          "label": "거듭제곱근의 정수 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+              "label": "거듭제곱근의 정수해 경우의 수"
+            },
+            {
+              "templateKey": "TPL_ROOT_INTEGER_FEASIBILITY_EXPONENT",
+              "label": "지수 배수 조건"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENT_CALCULATION",
+          "label": "지수 계산",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+              "label": "유리수 지수 변환 계산"
+            },
+            {
+              "templateKey": "TPL_QUADRATIC_ROOTS_EXPONENT_EVALUATION",
+              "label": "이차방정식 근의 합·곱과 지수 계산"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+          "label": "지수방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPONENTIAL_SUBSTITUTION_EVALUATION",
+              "label": "지수식 치환 대입 계산"
+            },
+            {
+              "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
+              "label": "지수 치환 후 이차방정식의 근 판정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-02",
+      "label": "로그의 뜻과 성질",
+      "order": 2,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-02-EXPONENT_LOG_APPLICATION",
+          "label": "지수와 로그의 활용"
+        },
+        {
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "label": "로그의 뜻과 성질"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-007",
+          "path": "지수함수와 로그함수 > 로그 > 로그의 뜻 > 로그와 지수 관계",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-008",
+          "path": "지수함수와 로그함수 > 로그 > 로그의 뜻 > 밑과 진수 조건",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-009",
+          "path": "지수함수와 로그함수 > 로그 > 로그의 성질 > 곱·몫·거듭제곱",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-010",
+          "path": "지수함수와 로그함수 > 로그 > 로그의 성질 > 밑의 변환",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-011",
+          "path": "지수함수와 로그함수 > 로그 > 상용로그 > 상용로그표·자릿수",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-012",
+          "path": "지수함수와 로그함수 > 로그 > 상용로그 > 소수점 위치",
+          "subUnitKey": "H15-M1-02-LOGARITHM",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+          "label": "로그의 정의 조건 판정",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN",
+              "label": "로그 밑·진수 조건의 정수해"
+            },
+            {
+              "templateKey": "TPL_LOG_REAL_DOMAIN_SPLIT",
+              "label": "로그 밑·진수의 실수 열린구간 분리"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+          "label": "로그 성질과 밑변환의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT",
+              "label": "로그차 정수 조건으로 값의 곱 결정"
+            },
+            {
+              "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
+              "label": "주어진 로그값으로 복합 로그 표현"
+            },
+            {
+              "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+              "label": "연속 로그 곱의 망원식 간소화"
+            },
+            {
+              "templateKey": "TPL_LOG_EXPONENT_RECIPROCAL_CANCEL",
+              "label": "두 지수방정식의 로그 역수 소거"
+            },
+            {
+              "templateKey": "TPL_LOG_SOUND_DISTANCE_DECIBEL",
+              "label": "거리비 음압의 상용로그 계산"
+            },
+            {
+              "templateKey": "TPL_LOG_PRODUCT_GRAPH_ABSCISSA",
+              "label": "로그곱 변환과 그래프 좌표 판독"
+            },
+            {
+              "templateKey": "TPL_LOG_DECAY_EXPONENT_SOLVE",
+              "label": "감쇠 지수모형의 상용로그 역산"
+            },
+            {
+              "templateKey": "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+              "label": "중근으로 같은 로그값을 얻어 밑 교환"
+            },
+            {
+              "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_INTEGER_DIFF",
+              "label": "로그차 정수"
+            },
+            {
+              "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_INTEGER_POWER",
+              "label": "로그 정수쌍"
+            },
+            {
+              "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_SYMMETRIC",
+              "label": "로그 대칭식"
+            },
+            {
+              "templateKey": "TPL_LOG_IDENTITY_OPERATIONS_TELESCOPING",
+              "label": "로그합 소거"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+          "label": "로그 바닥함수 구간별 자연수 계수",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_FLOOR_INTEGER_INTERVAL_COUNT",
+              "label": "로그 바닥함수 구간별 자연수 계수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+          "label": "로그의 정의와 조건",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_BASE_ANTILOG_EXISTENCE_CONDITION",
+              "label": "로그 밑·진수 존재 조건"
+            },
+            {
+              "templateKey": "TPL_LOG_PROPERTY_JUDGMENT",
+              "label": "로그 성질과 정의역 조건 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_APPLICATION",
+          "label": "로그의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_EXPONENTIAL_GROWTH_MODEL",
+              "label": "지수성장 배수·기간 모델"
+            },
+            {
+              "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+              "label": "로그·지수 관계 연립식 정리"
+            },
+            {
+              "templateKey": "TPL_LOG_PH_CONCENTRATION_RATIO_SHIFT",
+              "label": "농도 변화에 따른 pH 차이 계산"
+            },
+            {
+              "templateKey": "TPL_LOG_APPLICATION_GROWTH",
+              "label": "증가와 감쇠"
+            },
+            {
+              "templateKey": "TPL_LOG_APPLICATION_LOG_MODEL",
+              "label": "로그 모형 비교"
+            },
+            {
+              "templateKey": "TPL_LOG_APPLICATION_SCALE",
+              "label": "로그 척도"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_MATH1_SYSTEM_INEQUALITY",
+          "label": "연립부등식",
+          "templates": []
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-03",
+      "label": "지수함수",
+      "order": 3,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "label": "지수함수의 활용"
+        },
+        {
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH",
+          "label": "지수함수의 그래프"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-013",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수함수의 그래프 > 증가·감소",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-014",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수함수의 그래프 > 평행이동",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-015",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수방정식 > 밑 통일",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-016",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수방정식 > 치환",
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-017",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수부등식 > 밑의 범위에 따른 부등호",
+          "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-018",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수부등식 > 치환",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-019",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수함수의 활용 > 최대·최소",
+          "subUnitKey": "",
+          "mappingStatus": "FAMILY_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-020",
+          "path": "지수함수와 로그함수 > 지수함수 > 지수함수의 활용 > 그래프 교점",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "label": "함수 그래프와 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+              "label": "그래프의 도형 관계에서 식 유도하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+              "label": "그래프 위 점의 거리·길이 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+              "label": "그래프와 격자점 관계"
+            },
+            {
+              "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+              "label": "그래프와 직선으로 둘러싸인 넓이"
+            },
+            {
+              "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+              "label": "사인함수의 대칭성과 내접 직사각형 면적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+              "label": "함수 그래프 평행사변형"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+              "label": "함수 간격 일정 넓이"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+              "label": "그래프 좌표 추적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "교점 삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+          "label": "지수방정식의 치환과 근의 개수",
+          "templates": [
+            {
+              "templateKey": "TPL_NESTED_EXPONENTIAL_ROOT_COUNT",
+              "label": "합성지수의 이차식 치환과 절댓값 근의 개수"
+            },
+            {
+              "templateKey": "TPL_EXPONENTIAL_EQUATION_SUBSTITUTION_ABS_ROOTCOUNT",
+              "label": "지수 절댓값 근 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+          "label": "지수부등식의 로그 환원",
+          "templates": [
+            {
+              "templateKey": "TPL_VARIABLE_EXPONENT_LOG_INEQUALITY",
+              "label": "미지 지수 포함 부등식을 로그 치환해 자연수 개수"
+            },
+            {
+              "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
+              "label": "반복 감소 지수모형과 로그를 이용한 최소 비율"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+          "label": "밑이 1보다 작은 지수함수의 단조성 비교",
+          "templates": [
+            {
+              "templateKey": "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+              "label": "밑이 1보다 작은 지수함수의 단조성 비교"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+          "label": "지수방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPONENTIAL_SUBSTITUTION_EVALUATION",
+              "label": "지수식 치환 대입 계산"
+            },
+            {
+              "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
+              "label": "지수 치환 후 이차방정식의 근 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+          "label": "지수적 감소",
+          "templates": [
+            {
+              "templateKey": "TPL_EXPONENTIAL_DECAY_HALF_LIFE",
+              "label": "반감기 지수감소 모델"
+            },
+            {
+              "templateKey": "TPL_EXPONENTIAL_DECAY_RATE",
+              "label": "잔존율"
+            },
+            {
+              "templateKey": "TPL_EXPONENTIAL_DECAY_SCALE",
+              "label": "반복 축소비 복원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "label": "함수의 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+              "label": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+              "label": "거리·넓이·둘레의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+              "label": "구간 끝점과 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+              "label": "매개변수 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+              "label": "부등식 경계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_QUADRATIC",
+              "label": "이차식 환원"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_SUB_QUADRATIC",
+              "label": "치환범위 이차식 극값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "label": "함수 그래프의 변환",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+              "label": "함수 그래프의 평행이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+              "label": "함수 그래프의 평행이동과 대칭이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+              "label": "이동 그래프 계수 복원"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-04",
+      "label": "로그함수",
+      "order": 4,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "label": "로그함수의 활용"
+        },
+        {
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "label": "로그함수의 그래프"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-021",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그함수의 그래프 > 증가·감소",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-022",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그함수의 그래프 > 평행이동",
+          "subUnitKey": "",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-023",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그방정식 > 진수 조건",
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-024",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그방정식 > 치환",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-025",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그부등식 > 정의역·밑 조건",
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-026",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그부등식 > 치환",
+          "subUnitKey": "",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-027",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그함수의 활용 > 최대·최소",
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-028",
+          "path": "지수함수와 로그함수 > 로그함수 > 로그함수의 활용 > 그래프 교점",
+          "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+          "mappingStatus": "DIRECT_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+          "label": "함수의 최댓값·최솟값",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_BOUND_COEFFICIENT",
+              "label": "범위 조건으로 계수의 최댓값·최솟값 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+              "label": "거리·넓이·둘레의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+              "label": "구간 끝점과 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+              "label": "매개변수 함수의 최댓값·최솟값"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_INEQUALITY",
+              "label": "부등식 경계"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_QUADRATIC",
+              "label": "이차식 환원"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_EXTREMUM_SUB_QUADRATIC",
+              "label": "치환범위 이차식 극값"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "label": "함수 그래프의 변환",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+              "label": "함수 그래프의 평행이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+              "label": "함수 그래프의 평행이동과 대칭이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+              "label": "이동 그래프 계수 복원"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_INVERSE_GRAPH",
+          "label": "역함수의 그래프",
+          "templates": [
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+              "label": "역함수 그래프의 대칭을 이용한 거리·넓이"
+            },
+            {
+              "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+              "label": "함수와 역함수의 교점·접점"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+          "label": "로그방정식의 정의역 검토",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+              "label": "로그법칙 적용 후 진수조건으로 허근 제거"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+          "label": "로그부등식과 구간의 교집합",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION",
+              "label": "로그 치환의 구간과 다항부등식 구간 교집합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+          "label": "로그함수 부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+              "label": "로그값의 크기 비교"
+            },
+            {
+              "templateKey": "TPL_LOG_FUNCTION_INEQUALITY_RANGE",
+              "label": "로그 치역"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-05",
+      "label": "삼각함수의 뜻과 값",
+      "order": 5,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "label": "삼각함수의 뜻과 값"
+        },
+        {
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "label": "삼각함수의 관계"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-029",
+          "path": "삼각함수 > 삼각함수 > 일반각과 호도법 > 일반각",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-030",
+          "path": "삼각함수 > 삼각함수 > 일반각과 호도법 > 호도법",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-031",
+          "path": "삼각함수 > 삼각함수 > 삼각함수의 뜻 > 단위원",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-032",
+          "path": "삼각함수 > 삼각함수 > 삼각함수의 뜻 > 삼각함수 값",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+          "mappingStatus": "DIRECT_ACTIVE"
+        },
+        {
+          "id": "H2-M1-RPM-033",
+          "path": "삼각함수 > 삼각함수 > 삼각함수의 성질 > 주기·대칭",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-034",
+          "path": "삼각함수 > 삼각함수 > 삼각함수의 성질 > 삼각함수 관계",
+          "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+          "mappingStatus": "FAMILY_ACTIVE"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+          "label": "호도법과 부채꼴의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+              "label": "호 길이와 넓이로 부채꼴 반지름 구하기"
+            },
+            {
+              "templateKey": "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+              "label": "호 길이·반지름에서 호도법 중심각 계산"
+            },
+            {
+              "templateKey": "TPL_SECTOR_FIXED_PERIMETER_MAX_AREA",
+              "label": "둘레 고정 부채꼴 넓이 최댓값"
+            },
+            {
+              "templateKey": "TPL_RADIAN_SECTOR_GEOMETRY_COMPOSITE",
+              "label": "도형 결합"
+            },
+            {
+              "templateKey": "TPL_RADIAN_SECTOR_GEOMETRY_FORMULA",
+              "label": "호와 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+          "label": "사분면 부호와 삼각함수값",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+              "label": "사분면과 제곱합으로 삼각함수 값 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+          "label": "삼각함수 항등식과 관계식",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+              "label": "삼각함수 분수식 변형과 부호 판정"
+            },
+            {
+              "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+              "label": "삼각함수 관계의 대수적 인수분해와 가능 범위"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+          "label": "일반각과 동경의 관계",
+          "templates": [
+            {
+              "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
+              "label": "반대 방향 동경 조건으로 각 결정"
+            },
+            {
+              "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+              "label": "일반각을 한 회전으로 환원해 같은 사분면 판단"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIGONOMETRIC_DEFINITION",
+          "label": "삼각함수의 정의와 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_RADIAN_DEGREE_QUADRANT_JUDGMENT",
+              "label": "호도법·육십분법 및 사분면 판정"
+            },
+            {
+              "templateKey": "TPL_COTERMINAL_ANGLES_SYMMETRY_SYSTEM",
+              "label": "동경 대칭과 일반각 주기 관계"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+          "label": "삼각함수 관계식",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIGONOMETRIC_SYMMETRIC_EXPRESSION_EVALUATION",
+              "label": "대칭 삼각함수식의 값 계산"
+            },
+            {
+              "templateKey": "TPL_TRIGONOMETRIC_RELATION_ANGLE_FORMULA",
+              "label": "덧셈과 배각"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H22A_05_SINE_LAW",
+          "label": "사인법칙",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_05_SINE_LAW_109",
+              "label": "외접원 반지름"
+            },
+            {
+              "templateKey": "TPL_H22A_05_SINE_LAW_110",
+              "label": "변·각 계산"
+            },
+            {
+              "templateKey": "TPL_H22A_05_SINE_LAW_SHAPE",
+              "label": "삼각형 판별"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+          "label": "코사인법칙",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+              "label": "변·각 계산"
+            },
+            {
+              "templateKey": "TPL_H22A_05_COSINE_LAW_112",
+              "label": "삼각형 판정"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+          "label": "삼각형의 넓이",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+              "label": "두 변과 끼인각"
+            },
+            {
+              "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114",
+              "label": "복합도형"
+            },
+            {
+              "templateKey": "TPL_H22A_05_TRIANGLE_AREA_CIRCUMRADIUS",
+              "label": "넓이와 외접원 반지름"
+            },
+            {
+              "templateKey": "TPL_H22A_05_TRIANGLE_AREA_INRADIUS",
+              "label": "내접원 반지름"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-06",
+      "label": "삼각함수의 그래프",
+      "order": 6,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "label": "삼각함수의 그래프"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-037",
+          "path": "삼각함수 > 삼각함수의 그래프 > 기본 그래프 > sin·cos",
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-038",
+          "path": "삼각함수 > 삼각함수의 그래프 > 기본 그래프 > tan",
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-039",
+          "path": "삼각함수 > 삼각함수의 그래프 > 그래프 변환 > 주기·진폭",
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-040",
+          "path": "삼각함수 > 삼각함수의 그래프 > 그래프 변환 > 평행이동",
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-041",
+          "path": "삼각함수 > 삼각함수의 그래프 > 그래프 활용 > 교점",
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        },
+        {
+          "id": "H2-M1-RPM-042",
+          "path": "삼각함수 > 삼각함수의 그래프 > 그래프 활용 > 최대·최소",
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "mappingStatus": "DIRECT_BINDING_GAP"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "label": "함수 그래프의 성질",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+              "label": "함수 그래프의 성질 판정"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_SYMMETRY",
+              "label": "함수 그래프의 대칭성"
+            },
+            {
+              "templateKey": "TPL_GRAPH_ORDER_INTERVAL",
+              "label": "그래프의 대소 관계"
+            },
+            {
+              "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+              "label": "절댓값 및 합성 삼각함수의 최소주기 합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_RECOVERY",
+          "label": "함수식 구하기",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+              "label": "점근선과 한 점으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+              "label": "그래프의 특징으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_POINT_VALUE",
+              "label": "점·함숫값 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY",
+              "label": "함수 관계·대칭 조건으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+              "label": "입력 치환으로 함수식 구하기"
+            },
+            {
+              "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+              "label": "합성관계에서 함수식 구하기"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+          "label": "함수 그래프와 도형",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+              "label": "그래프의 도형 관계에서 식 유도하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+              "label": "그래프 위 점의 거리·길이 구하기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_LATTICE",
+              "label": "그래프와 격자점 관계"
+            },
+            {
+              "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+              "label": "그래프와 직선으로 둘러싸인 넓이"
+            },
+            {
+              "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+              "label": "사인함수의 대칭성과 내접 직사각형 면적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_PARALLELOGRAM",
+              "label": "함수 그래프 평행사변형"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_STRIP",
+              "label": "함수 간격 일정 넓이"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRACE",
+              "label": "그래프 좌표 추적"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+              "label": "교점 삼각형 넓이"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+          "label": "함수 그래프의 교점",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+              "label": "절댓값·조각함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+              "label": "교점의 거리·비 조건"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TANGENCY_SINGLE",
+              "label": "접함 조건으로 교점 하나 만들기"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+              "label": "두 함수 그래프의 교점"
+            },
+            {
+              "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+              "label": "그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+              "label": "대칭·주기 그래프의 교점 개수"
+            },
+            {
+              "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+              "label": "사인곡선 수평 교점의 위상 합 제약"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "label": "함수 그래프의 변환",
+          "templates": [
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+              "label": "함수 그래프의 평행이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION_REFLECTION",
+              "label": "함수 그래프의 평행이동과 대칭이동"
+            },
+            {
+              "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+              "label": "이동 그래프 계수 복원"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-07",
+      "label": "삼각방정식과 삼각부등식",
+      "order": 7,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+          "label": "삼각방정식"
+        },
+        {
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+          "label": "삼각부등식"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-035",
+          "path": "삼각함수 > 삼각함수 > 삼각방정식·부등식 > 그래프를 이용한 해",
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-036",
+          "path": "삼각함수 > 삼각함수 > 삼각방정식·부등식 > 주기 구간의 해",
+          "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+          "label": "삼각방정식",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIGONOMETRIC_EQUATION_BASIC_ROOTS",
+              "label": "기본 삼각방정식의 구간 내 해"
+            },
+            {
+              "templateKey": "TPL_TRIGONOMETRIC_EQUATION_SUBSTITUTION_ROOTS",
+              "label": "삼각함수 치환 방정식의 해"
+            },
+            {
+              "templateKey": "TPL_TRIGONOMETRIC_EQUATION_COUNT",
+              "label": "삼각식 근 개수"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+          "label": "삼각부등식",
+          "templates": [
+            {
+              "templateKey": "TPL_TRIGONOMETRIC_INEQUALITY_INTERVAL_SOLVE",
+              "label": "삼각부등식 해의 구간 결정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-08",
+      "label": "등차수열",
+      "order": 8,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+          "label": "등차수열"
+        },
+        {
+          "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+          "label": "수열의 일반항"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-049",
+          "path": "수열 > 등차수열과 등비수열 > 등차수열 > 일반항",
+          "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-050",
+          "path": "수열 > 등차수열과 등비수열 > 등차수열 > 중항",
+          "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-051",
+          "path": "수열 > 등차수열과 등비수열 > 등차수열 > 합",
+          "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-055",
+          "path": "수열 > 등차수열과 등비수열 > 수열의 활용 > 조건으로 수열 결정",
+          "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-056",
+          "path": "수열 > 등차수열과 등비수열 > 수열의 활용 > 귀납적 패턴",
+          "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+          "label": "등차수열",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+              "label": "일반항"
+            },
+            {
+              "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_116",
+              "label": "중항"
+            },
+            {
+              "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+              "label": "합"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+          "label": "수열의 활용",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+              "label": "조건으로 수열 결정"
+            },
+            {
+              "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_122",
+              "label": "귀납적 패턴"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-09",
+      "label": "등비수열",
+      "order": 9,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+          "label": "등비수열"
+        },
+        {
+          "subUnitKey": "H15-M1-09-SEQUENCE_TERM",
+          "label": "수열의 일반항"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-052",
+          "path": "수열 > 등차수열과 등비수열 > 등비수열 > 일반항",
+          "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-053",
+          "path": "수열 > 등차수열과 등비수열 > 등비수열 > 중항",
+          "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-054",
+          "path": "수열 > 등차수열과 등비수열 > 등비수열 > 합",
+          "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+          "label": "등비수열",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+              "label": "일반항"
+            },
+            {
+              "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_119",
+              "label": "중항"
+            },
+            {
+              "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+              "label": "합"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-10",
+      "label": "수열의 합",
+      "order": 10,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "label": "수열의 합"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-057",
+          "path": "수열 > 수열의 합 > 합의 기호 Σ > Σ 계산",
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-058",
+          "path": "수열 > 수열의 합 > 합의 기호 Σ > 성질",
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-059",
+          "path": "수열 > 수열의 합 > 여러 가지 수열의 합 > 자연수 거듭제곱의 합",
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-060",
+          "path": "수열 > 수열의 합 > 여러 가지 수열의 합 > 부분분수·망원급수형",
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-061",
+          "path": "수열 > 수열의 합 > 계차수열 > 계차수열",
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-062",
+          "path": "수열 > 수열의 합 > 계차수열 > 일반항 구하기",
+          "subUnitKey": "H15-M1-10-SEQUENCE_SUM",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+          "label": "합의 기호 Σ",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_07_SIGMA_NOTATION_123",
+              "label": "Σ 계산"
+            },
+            {
+              "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+              "label": "성질"
+            }
+          ]
+        },
+        {
+          "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+          "label": "여러 가지 수열의 합",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_07_SEQUENCE_SUM_125",
+              "label": "자연수 거듭제곱의 합"
+            },
+            {
+              "templateKey": "TPL_H22A_07_SEQUENCE_SUM_126",
+              "label": "부분분수·망원급수형"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "standardUnitKey": "H15-M1-11",
+      "label": "수학적 귀납법",
+      "order": 11,
+      "subUnits": [
+        {
+          "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+          "label": "수학적 귀납법"
+        }
+      ],
+      "rpm": [
+        {
+          "id": "H2-M1-RPM-063",
+          "path": "수열 > 수학적 귀납법 > 수열의 귀납적 정의 > 점화식으로 항 구하기",
+          "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-064",
+          "path": "수열 > 수학적 귀납법 > 수열의 귀납적 정의 > 관계 추론",
+          "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-065",
+          "path": "수열 > 수학적 귀납법 > 수학적 귀납법 > 등식 증명",
+          "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+          "mappingStatus": "RPM_ONLY"
+        },
+        {
+          "id": "H2-M1-RPM-066",
+          "path": "수열 > 수학적 귀납법 > 수학적 귀납법 > 부등식·나눗셈 증명",
+          "subUnitKey": "H15-M1-11-MATHEMATICAL_INDUCTION",
+          "mappingStatus": "RPM_ONLY"
+        }
+      ],
+      "problemTypes": [
+        {
+          "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+          "label": "수학적 귀납법",
+          "templates": [
+            {
+              "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+              "label": "등식 증명"
+            },
+            {
+              "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_132",
+              "label": "부등식·나눗셈 증명"
+            },
+            {
+              "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_REACHABLE",
+              "label": "귀납 전이 도달 지표"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "termCandidates": [
+    {
+      "term": "반지름",
+      "matchedAs": "반지름",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "반지름의 길이가 $9"
+    },
+    {
+      "term": "부채꼴",
+      "matchedAs": "부채꼴",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "i}{6}$인 부채꼴 $OAB$가"
+    },
+    {
+      "term": "접함",
+      "matchedAs": "접하는",
+      "kind": "조건",
+      "src": "stem",
+      "quote": "분 $OB$에 접하는 반원을 $C$"
+    },
+    {
+      "term": "중심각",
+      "matchedAs": "중심각",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "가 $9$이고 중심각의 크기가 $\\"
+    },
+    {
+      "term": "길이",
+      "matchedAs": "길이",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "반지름의 길이가 $9$이고"
+    },
+    {
+      "term": "넓이",
+      "matchedAs": "넓이",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "$OAB$의 넓이를 $T_1$,"
+    },
+    {
+      "term": "반원",
+      "matchedAs": "반원",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "B$에 접하는 반원을 $C$라 하"
+    },
+    {
+      "term": "선분",
+      "matchedAs": "선분",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "B$가 있다. 선분 $OA$ 위의"
+    },
+    {
+      "term": "중심",
+      "matchedAs": "중심",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "가 $9$이고 중심각의 크기가 $"
+    },
+    {
+      "term": "지름",
+      "matchedAs": "지름",
+      "kind": "대상",
+      "src": "stem",
+      "quote": "반지름의 길이가 $9"
+    },
+    {
+      "term": "직각삼각형",
+      "matchedAs": "직각삼각형",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "{6}$이다. 직각삼각형 $OMH$에서"
+    },
+    {
+      "term": "반지름",
+      "matchedAs": "반지름",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "반원 $C$의 반지름을 $r$이라"
+    },
+    {
+      "term": "부채꼴",
+      "matchedAs": "부채꼴",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "부채꼴 $OAB$의"
+    },
+    {
+      "term": "삼각형",
+      "matchedAs": "삼각형",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "}$이다. 직각삼각형 $OMH$에서"
+    },
+    {
+      "term": "넓이",
+      "matchedAs": "넓이",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "$OAB$의 넓이 $T_1$은"
+    },
+    {
+      "term": "반원",
+      "matchedAs": "반원",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "{4}\\pi$ 반원 $C$의 반지"
+    },
+    {
+      "term": "선분",
+      "matchedAs": "선분",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "반원 $C$가 선분 $OB$에 접"
+    },
+    {
+      "term": "수선",
+      "matchedAs": "수선",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "OB$에 내린 수선의 발을 $H$"
+    },
+    {
+      "term": "중심",
+      "matchedAs": "중심",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "r$이라 하고 중심을 $M$이라"
+    },
+    {
+      "term": "지름",
+      "matchedAs": "지름",
+      "kind": "대상",
+      "src": "solution",
+      "quote": "원 $C$의 반지름을 $r$이라"
+    },
+    {
+      "term": "직각",
+      "matchedAs": "직각",
+      "kind": "조건",
+      "src": "solution",
+      "quote": "{6}$이다. 직각삼각형 $OMH"
+    }
+  ],
+  "figure": {
+    "cueWords": [
+      {
+        "word": "위의",
+        "quote": "있다. 선분 $OA$ 위의 점 $E$에 대하여"
+      }
+    ],
+    "hasPlan": false,
+    "problemPlanRef": null,
+    "hasImage": false,
+    "sourcePlan": {
+      "exempt": "STRICT_VARIANT"
+    },
+    "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
+  },
+  "sourceExamHint": null,
+  "guide": "JUDGMENT_GUIDE.md 를 먼저 읽는다. 후보 밖 키는 쓸 수 없다. 모든 이유 문장에는 이 문항의 숫자·식을 넣는다."
+}

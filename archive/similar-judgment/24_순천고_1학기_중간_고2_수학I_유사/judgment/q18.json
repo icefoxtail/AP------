@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "3f888efc7544fd34",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$x \\ge 0$ 구간에서 $x=0$ 교점 1개, $(1, 3), (3, 5), (5, 7)$에서 각 1개씩 총 4개이다. cases 10",
+    "$x < 0$ 구간에서 $(-3, -1), (-5, -3), (-7, -5)$에서 각 1개씩 총 3개이다. cases 10",
+    "전체 교점의 개수는 $4 + 3 = 7$개이다. cases 10",
+    "따라서 정답은 ④이다. cases 10"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-7 \\le x \\le 7",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "구간별 절댓값 함수와 지수함수 그래프의 교점 개수를 판별하는 유형이다. cases 10",
+  "rpmRecordId": "H2-M1-RPM-020",
+  "rpmReason": "우함수 대칭성과 지수함수의 함숫값 비교를 통해 교점 개수 7을 도출한다. cases 10",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꺾인 점들의 높이와 지수함수의 감소 거동을 비교해야 하는 고난도 문항이다. cases 10",
+  "how": "x>=0에서 교점 4개, x<0에서 교점 3개를 대소 비교로 확인해 총 7개를 구했다. cases 10",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "$-7 \\le x \\le 7$에서 정의된 함수 $f$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "그래프의 교점의 개수를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭",
+        "src": "solution",
+        "quote": "$y = f(x)$는 $y$축에 대하여 대칭이고,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

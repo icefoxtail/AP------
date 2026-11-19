@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "f559088b2fb92fa7",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\tan\\theta + 1/\\tan\\theta = 1/(\\sin\\theta\\cos\\theta) = 6 \\implies \\sin\\theta\\cos\\theta = 1/6$이다. 18",
+    "제3사분면이므로 $\\sin\\theta+\\cos\\theta = -\\sqrt{1 + 2(1/6)} = -\\frac{2\\sqrt{3}}{3}$이다. 18",
+    "$\\sin^3\\theta+\\cos^3\\theta = (-\\frac{2\\sqrt{3}}{3})(1 - 1/6) = -\\frac{5\\sqrt{3}}{9}$이다. 18",
+    "따라서 정답은 ①이다. 18"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\pi < \\theta <",
+  "standardUnitKey": "H15-M1-05",
+  "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+  "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "tan의 합 조건으로부터 삼각함수의 세제곱 합을 계산하는 유형이다. 18",
+  "rpmRecordId": "H2-M1-RPM-034",
+  "rpmReason": "tan를 sin/cos로 변형해 sin*cos를 구하고 곱셈공식으로 세제곱 합을 계산한다. 18",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사분면 부호와 sin^3+cos^3 인수분해 공식을 복합 적용하는 문항이다. 18",
+  "how": "sin*cos=1/6과 sin+cos=-2sqrt(3)/3을 구하고 세제곱 합 공식으로 -5sqrt(3)/9를 얻었다. 18",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각함수",
+        "src": "stem",
+        "quote": "$\\pi < \\theta < \\dfrac{3}{2}\\pi$이고 $\\tan\\theta + \\dfrac{1}{\\tan\\theta} = 6$이라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이때 $\\sin^3\\theta + \\cos^3\\theta$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각함수",
+        "src": "solution",
+        "quote": "$\\tan\\theta + \\dfrac{1}{\\tan\\theta} = \\dfrac{\\sin\\theta}{\\cos\\theta} + \\dfrac{\\cos\\theta}{\\sin\\theta}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

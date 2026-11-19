@@ -1,0 +1,55 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "0694d1b0fef5f58a",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\log 3640 = \\log(3.64 \\times 10^3) = 3 + 0.5611 = 3.5611$이다. 3640",
+    "$\\log 0.382 = \\log(3.82 \\times 10^{-1}) = -1 + 0.5821 = -0.4179$이다. 3640",
+    "합은 $3.5611 + (-0.4179) = 3.1432$이다. 따라서 정답은 ③이다. 3640"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 상용로그표를 이용하여",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-LOGARITHM",
+  "problemTypeKey": "PT_LOG_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "상용로그표를 이용하여 수 3640과 0.382의 상용로그 값의 합을 구하는 유형이다. 3640",
+  "rpmRecordId": "H2-M1-RPM-011",
+  "rpmReason": "자릿수와 소수점 위치를 이용해 상용로그 값을 계산한다. 3640",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "표에서 읽은 값과 지표(정수부분)를 결합하여 3.1432를 구하는 기초 문항이다. 3640",
+  "how": "표에서 log 3.64와 log 3.82를 읽어 지표를 더한 후 합 3.1432를 얻었다. 3640",
+  "slots": {
+    "given": [
+      {
+        "term": "상용로그",
+        "src": "stem",
+        "quote": "다음 상용로그표를 이용하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\log 3640 + \\log 0.382$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "상용로그",
+        "src": "solution",
+        "quote": "상용로그표에서 $\\log 3.64 = 0.5611$, $\\log 3.82 = 0.5821$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

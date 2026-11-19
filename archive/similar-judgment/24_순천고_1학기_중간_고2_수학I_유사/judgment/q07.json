@@ -1,0 +1,55 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "7eb1b04ae3697b88",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "밑 조건: $3-x > 0, 3-x \\ne 1 \\implies x < 3, x \\ne 2$이다. 12",
+    "진수 조건: $2x^2-12x+16 > 0 \\implies x^2-6x+8 > 0 \\implies (x-2)(x-4) > 0 \\implies x < 2$ 또는 $x > 4$이다. 12",
+    "공통 범위는 $x < 2$이다. 따라서 정답은 ④이다. 12"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 로그 값이 정의되기 위",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-LOGARITHM",
+  "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그 밑 조건과 진수 2x^2-12x+16>0 조건의 공통 범위를 구하는 유형이다. 12",
+  "rpmRecordId": "H2-M1-RPM-008",
+  "rpmReason": "밑과 진수의 부등식을 동시에 만족하는 해 x<2를 도출한다. 12",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차부등식과 일차부등식을 연립해 공통 범위 x<2를 찾는 표준 문항이다. 12",
+  "how": "밑 조건 x<3, x!=2와 진수 조건 x<2 또는 x>4의 교집합 x<2를 구했다. 12",
+  "slots": {
+    "given": [
+      {
+        "term": "로그",
+        "src": "stem",
+        "quote": "다음 로그 값이 정의되기 위한"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "실수 $x$의 범위를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "진수 조건",
+        "src": "solution",
+        "quote": "(2) 진수 조건: $2x^2 - 12x + 16 > 0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

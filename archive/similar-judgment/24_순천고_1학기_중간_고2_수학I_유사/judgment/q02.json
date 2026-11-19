@@ -1,0 +1,55 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "28db2ceae88b5a33",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$t = a^x$라 하면 $t^2 = a^{2x} = 5$이다. 31",
+    "$\\frac{a^{3x}-a^{-3x}}{a^x-a^{-x}} = \\frac{t^3-t^{-3}}{t-t^{-1}} = t^2 + 1 + t^{-2} = 5 + 1 + 1/5 = 31/5$이다. 31",
+    "따라서 정답은 ④이다. 31"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a^{2x} = 5$일 때",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "조건식 a^{2x}=5를 이용하여 분수식의 값 31/5을 구하는 유형이다. 31",
+  "rpmRecordId": "H2-M1-RPM-006",
+  "rpmReason": "조건식과 곱셈공식을 결합하여 식의 값 31/5을 유도한다. 31",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "치환 후 인수분해를 통해 t^2+1+t^{-2}에 대입해 31/5을 도출하는 표준 문항이다. 31",
+  "how": "t=a^x로 놓고 식을 정리해 5+1+1/5 = 31/5을 계산했다. 31",
+  "slots": {
+    "given": [
+      {
+        "term": "지수",
+        "src": "stem",
+        "quote": "$a^{2x} = 5$일 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\dfrac{a^{3x} - a^{-3x}}{a^x - a^{-x}}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$t = a^x$라 하면 $t > 0$이고 $t^2 = a^{2x} = 5$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

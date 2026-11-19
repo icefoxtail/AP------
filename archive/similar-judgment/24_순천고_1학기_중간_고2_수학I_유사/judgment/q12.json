@@ -1,0 +1,55 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "2d32901bbe70ed0f",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "(1) 밑이 1일 때: $x=1$은 $1^0 = 1^{12}$로 성립한다. 12",
+    "(2) 밑이 1이 아닐 때: $x^2-x=12 \\implies (x-4)(x+3)=0 \\implies x=4$이다 ($x>0$). 12",
+    "모든 해의 합은 $1 + 4 = 5$이다. 따라서 정답은 ②이다. 12"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "방정식 $x^{x^2 - x",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "밑에도 미지수가 있는 지수방정식 x^{x^2-x} = x^{12}의 해의 합을 구하는 유형이다. 12",
+  "rpmRecordId": "H2-M1-RPM-015",
+  "rpmReason": "밑이 1인 경우와 지수가 같은 경우를 분류하여 해를 모두 구한다. 12",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "밑 x=1인 해를 놓치지 않고 x=4와 합하여 5를 도출하는 문항이다. 12",
+  "how": "x=1과 x^2-x=12의 양수 해 x=4를 찾아 모든 해의 합 5를 구했다. 12",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $x^{x^2 - x} = x^{12}$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "모든 해의 합을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "(2) $x \\neq 1$일 때: 지수가 같아야 하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

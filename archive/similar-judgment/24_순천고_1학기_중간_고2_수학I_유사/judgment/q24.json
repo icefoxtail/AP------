@@ -1,0 +1,55 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "7ccd80e369879624",
+  "solvedAnswer": "$\\dfrac{258}{41}$",
+  "solveSteps": [
+    "평행이동 $(3, -3)$으로부터 $A(1, 34/9), B(4, 7/9)$이고 중점 y좌표 $a = 41/18$이다. OAB",
+    "선분 $AB = 3\\sqrt{2}$, 원점과 직선 사이 거리 $h = \\frac{43}{9\\sqrt{2}}$이므로 넓이 $S = 43/6$이다. OAB",
+    "$\\frac{2S}{a} = \\frac{2 \\times 43/6}{41/18} = \\frac{258}{41}$이다. OAB"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "서답형 4. (서술형) 두",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수함수의 평행이동 벡터와 직선 기울기 관계를 이용해 삼각형 OAB 넓이를 구하는 유형이다. OAB",
+  "rpmRecordId": "H2-M1-RPM-020",
+  "rpmReason": "두 지수함수의 평행이동 관계와 중점 좌표로부터 꼭짓점과 넓이를 구한다. OAB",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기 -1 직선과의 교점을 평행이동 벡터로 찾고 점과 직선 사이 거리로 푸는 고난도 서술형이다. OAB",
+  "how": "A(1, 34/9), B(4, 7/9)에서 a=41/18, S=43/6을 구하고 2S/a = 258/41을 계산했다. OAB",
+  "slots": {
+    "given": [
+      {
+        "term": "지수함수",
+        "src": "stem",
+        "quote": "두 함수 $y = \\left(\\dfrac{4}{3}\\right)^{x + 1} + 2$,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\dfrac{2S}{a}$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "곡선 $y = g(x)$는 곡선 $y = f(x)$를 $x$축의 방향으로 $3$만큼,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "1f3c4cfe1a48d764",
+  "solvedAnswer": "$7$",
+  "solveSteps": [
+    "밑 조건 $x>1, x \\ne 2$, 진수 조건 $x < 3/2$ 또는 $x > 2$이다. 10",
+    "$x > 2$일 때 $2x^2-7x+6 > (x-1)^2 \\implies x^2-5x+5 > 0 \\implies x > \\frac{5+\\sqrt{5}}{2} \\approx 3.62$이다. 10",
+    "$-10 \\le x \\le 10$에서 만족하는 정수는 $4, 5, 6, 7, 8, 9, 10$의 7개이다. 10"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "서답형 2. (서술형) $-",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "밑과 진수에 미지수가 있는 로그부등식을 풀고 정수해의 개수 7을 구하는 유형이다. 10",
+  "rpmRecordId": "H2-M1-RPM-025",
+  "rpmReason": "밑과 진수 조건을 확인하고 밑이 1보다 큰 구간에서 부등식을 풀어 7개를 찾는다. 10",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "밑의 범위 분할과 근의 공식을 이용한 정수해 선별 서술형 문항이다. 10",
+  "how": "밑 조건, 진수 조건을 구하고 x>3.62와 연립해 4부터 10까지 7개를 구했다. 10",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "$-10 \\le x \\le 10$에서 다음 부등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "만족하는 정수 $x$의 개수를 풀이 과정과 함께 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "진수 조건",
+        "src": "solution",
+        "quote": "밑 조건과 진수 조건에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

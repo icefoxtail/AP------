@@ -1,0 +1,56 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "accf532c958682bd",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$g(x) = (x-1)^2 + a-1$이라 하면 $0 \\le x \\le 3$에서 $x=3$일 때 최대값 $g(3) = a+3$을 갖는다. 4.2",
+    "밑이 $1/3 < 1$이므로 $g(x)$가 최대일 때 최솟값을 갖는다. 4.2",
+    "$\\log_{1/3}(a+3) = -2 \\implies a+3 = (1/3)^{-2} = 9 \\implies a = 6$이다. 4.2",
+    "따라서 정답은 ③이다. 4.2"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0 \\le x \\le 3$",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_LOG_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "밑이 1보다 작은 로그함수에서 진수의 최대값에 따른 최솟값 -2를 이용하는 유형이다. 4.2",
+  "rpmRecordId": "H2-M1-RPM-027",
+  "rpmReason": "로그함수의 감소 성질을 이용해 진수의 최댓값과 함숫값을 연립한다. 4.2",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식 진수의 제한 범위 최댓값과 감소 로그함수의 최솟값을 연계하는 문항이다. 4.2",
+  "how": "x=3에서 g(x) 최댓값 a+3을 구하고 log_{1/3}(a+3)=-2에서 a=6을 도출했다. 4.2",
+  "slots": {
+    "given": [
+      {
+        "term": "로그함수",
+        "src": "stem",
+        "quote": "$0 \\le x \\le 3$에서 함수 $y = \\log_{\\frac{1}{3}}(x^2 - 2x + a)$는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이때 상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "최솟값",
+        "src": "solution",
+        "quote": "밑이 $\\dfrac{1}{3} < 1$이므로 $y = \\log_{\\frac{1}{3}} g(x)$는 $g(x)$가 최대일 때 최솟값을 가진다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

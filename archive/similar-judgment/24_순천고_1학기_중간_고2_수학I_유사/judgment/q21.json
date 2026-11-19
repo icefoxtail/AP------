@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "7692cca4eeb7f549",
+  "solvedAnswer": "$0 < x < 3$",
+  "solveSteps": [
+    "밑 $x+1 > 0$이므로 범위를 나누어 푼다. 12",
+    "(1) $-1 < x < 0$일 때: 부등호 반전 $x^2-12 > -x^2+2x \\implies (x-3)(x+2)>0$으로 공통 범위 없음. 12",
+    "(2) $x=0$일 때 성립 안 함. 12",
+    "(3) $x > 0$일 때: 부등호 유지 $(x-3)(x+2)<0 \\implies 0 < x < 3$이다. 12",
+    "따라서 해는 $0 < x < 3$이다. 12"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "서답형 1. (서술형) 다음",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "밑에 미지수가 포함된 지수부등식에서 밑의 범위를 분류하여 해를 구하는 유형이다. 12",
+  "rpmRecordId": "H2-M1-RPM-017",
+  "rpmReason": "밑의 범위 0<x+1<1과 x+1>1에 따른 부등호 방향 변화를 적용한다. 12",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "밑 조건에 따라 부등호 방향을 나누어 서술해야 하는 서술형 문항이다. 12",
+  "how": "x+1>1일 때 지수 부등식을 풀어 해 0<x<3을 서술형으로 구했다. 12",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "서답형 1. (서술형) 다음 부등식을 푸시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "다음 부등식을 푸시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "밑 $x + 1 > 0$이므로 $x + 1$의 범위에 따라 세 경우로 나눈다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "5a87bae56af2364e",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "한 모서리 $s = 2^{7/3}$이다. 10 ABCD",
+    "정삼각형 AFC의 한 변의 길이는 $s\\sqrt{2}$이므로 넓이는 $\\frac{\\sqrt{3}}{4}(s\\sqrt{2})^2 = \\frac{\\sqrt{3}}{2}s^2 = \\sqrt{3} \\times 2^{11/3}$이다. 10 ABCD",
+    "$p=11, q=3$이므로 $10p + q = 10(11) + 3 = 113$이다. 10 ABCD",
+    "따라서 정답은 ②이다. 10 ABCD"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정육면체 $ABCD-EFGH",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "입체도형 부피 2^7로부터 정삼각형 단면의 넓이를 지수식으로 표현하는 유형이다. 10 ABCD",
+  "rpmRecordId": "H2-M1-RPM-004",
+  "rpmReason": "유리수 지수 계산을 통해 넓이 2^{11/3}의 지수 p, q를 도출한다. 10 ABCD",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "입체도형 대각선 길이와 유리수 지수 연산을 융합한 응용 문항이다. 10 ABCD",
+  "how": "s=2^{7/3}에서 넓이 sqrt(3)*2^{11/3}을 구하고 p=11, q=3에서 10p+q=113을 얻었다. 10 ABCD",
+  "slots": {
+    "given": [
+      {
+        "term": "지수",
+        "src": "stem",
+        "quote": "정육면체 $ABCD-EFGH$의 부피가 $2^7$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이때 서로소인 두 자연수 $p, q$에 대하여 $10p + q$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "$\\triangle AFC$의 넓이는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
