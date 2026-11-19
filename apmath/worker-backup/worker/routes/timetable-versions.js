@@ -312,31 +312,24 @@ async function getVersionClassByAnyId(env, versionId, classId) {
   `).bind(versionId, cid, cid).first();
 }
 
-async function ensureVersionClassesSeeded(env, version, options = {}) {
-  if (!version?.id) return [];
-  const existing = await listVersionClasses(env, version.id);
-  if (existing.length) return existing;
-
-  const activeClassRes = await env.DB.prepare(`
-    SELECT *
-    FROM classes
-    WHERE COALESCE(is_active, 1) != 0
-    ORDER BY grade ASC, name ASC, id ASC
-  `).all();
-  const sourceClasses = activeClassRes.results || [];
-  const rows = buildVersionClassRows(sourceClasses, version.id, { academy_id: options.academy_id || 'apmath' })
-    .map(row => {
+// 운영 반 -> 개편안 반 행. 처음 초안을 만들 때와 운영에서 새로 연 반을 가져올 때 같은 규칙을 쓴다
+// (학년 승급 이름, 중3 졸업 대상은 excluded).
+function buildSeedVersionClassRows(versionId, sourceClasses, academyId = 'apmath', sortBase = 0) {
+  return buildVersionClassRows(sourceClasses, versionId, { academy_id: academyId })
+    .map((row, index) => {
       const sourceClassId = String(row.source_class_id || '').trim();
       const promotedName = buildPromotedClassName(row.name_snapshot, row.source_grade, row.next_grade);
       return {
         ...row,
-        id: sourceClassId ? makeSourceVersionClassId(version.id, sourceClassId) : row.id,
-        name_snapshot: promotedName || row.name_snapshot
+        id: sourceClassId ? makeSourceVersionClassId(versionId, sourceClassId) : row.id,
+        name_snapshot: promotedName || row.name_snapshot,
+        sort_order: sortBase + index
       };
     });
+}
 
-  if (!rows.length) return [];
-  await env.DB.batch(rows.map(row => env.DB.prepare(`
+function buildVersionClassInsertStatements(env, rows) {
+  return rows.map(row => env.DB.prepare(`
     INSERT OR IGNORE INTO timetable_version_classes
       (id, academy_id, version_id, source_class_id, name_snapshot, source_name, grade_snapshot, source_grade, next_grade,
        teacher_name_snapshot, subject_snapshot, schedule_days_snapshot, time_label_snapshot, status, excluded_reason, is_new, sort_order, memo)
@@ -360,7 +353,23 @@ async function ensureVersionClassesSeeded(env, version, options = {}) {
     row.is_new,
     row.sort_order,
     row.memo
-  )));
+  ));
+}
+
+async function ensureVersionClassesSeeded(env, version, options = {}) {
+  if (!version?.id) return [];
+  const existing = await listVersionClasses(env, version.id);
+  if (existing.length) return existing;
+
+  const activeClassRes = await env.DB.prepare(`
+    SELECT *
+    FROM classes
+    WHERE COALESCE(is_active, 1) != 0
+    ORDER BY grade ASC, name ASC, id ASC
+  `).all();
+  const rows = buildSeedVersionClassRows(version.id, activeClassRes.results || [], options.academy_id || 'apmath');
+  if (!rows.length) return [];
+  await env.DB.batch(buildVersionClassInsertStatements(env, rows));
   return listVersionClasses(env, version.id);
 }
 
@@ -748,7 +757,17 @@ function uniqueValues(rows, key) {
 
 
 function makeAppliedClassId(versionId, versionClassId) {
-  return `cls_${safeVersionClassIdPart(versionId)}_${safeVersionClassIdPart(versionClassId)}`.slice(0, 120);
+  // 개편안으로 만든 운영 반에서 다시 다음 개편안을 만들면 반 id가 길어져 앞부분만 자르면 서로 같아진다(UNIQUE 충돌).
+  // 짧을 때는 예전 규칙 그대로 두고, 길 때만 전체 id의 해시를 붙여 구분한다.
+  const raw = part => String(part || '').replace(/[^a-zA-Z0-9_-]+/g, '_') || 'none';
+  const full = `cls_${raw(versionId)}_${raw(versionClassId)}`;
+  if (full.length <= 120) return full;
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < full.length; i += 1) {
+    hash ^= full.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return `${full.slice(0, 100)}_${hash.toString(16).padStart(8, '0')}`;
 }
 
 function getVersionClassTextbookInfo(versionClass = {}) {
@@ -1351,7 +1370,7 @@ export function isUntouchedDraftAssignment(row = {}, vcBySource = new Map()) {
   return !!sourceVc && rosterKey(sourceVc.id) === rosterKey(row.version_class_id);
 }
 
-export function computeRosterDiff({ versionClasses = [], assignments = [], memberships = [], students = [] } = {}) {
+export function computeRosterDiff({ versionClasses = [], assignments = [], memberships = [], students = [], opsClasses = [] } = {}) {
   const vcById = new Map();
   const vcBySource = new Map();
   for (const vc of versionClasses) {
@@ -1449,6 +1468,12 @@ export function computeRosterDiff({ versionClasses = [], assignments = [], membe
       }
     }
   }
+  // (4) 개편안을 만든 뒤 운영에서 새로 연 활성 반: 어떤 개편안 반과도 source_class_id가 맞지 않는 반.
+  // 개편안에서 삭제한(removed) 반이나 졸업(excluded) 반은 source 행이 남아 있어 여기에 걸리지 않는다.
+  const newClasses = opsClasses
+    .filter(c => rosterKey(c.id) && !vcBySource.has(rosterKey(c.id)))
+    .map(c => ({ ops_class_id: rosterKey(c.id), name: rosterKey(c.name) }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'ko') || a.ops_class_id.localeCompare(b.ops_class_id));
   newcomers.sort(compareRosterNames);
   withdrawn.sort(compareRosterNames);
   moves.sort(compareRosterNames);
@@ -1458,14 +1483,15 @@ export function computeRosterDiff({ versionClasses = [], assignments = [], membe
     withdrawn,
     moves,
     multi_class: multiClass,
-    in_sync: !newcomers.length && !withdrawn.length && !moves.length
+    new_classes: newClasses,
+    in_sync: !newcomers.length && !withdrawn.length && !moves.length && !newClasses.length
   };
 }
 
 async function loadRosterInputs(env, version) {
   await ensureVersionClassesSeeded(env, version);
   await ensureVersionAssignmentsMapped(env, version);
-  const [versionClasses, assignRes, memberRes, studentRes] = await Promise.all([
+  const [versionClasses, assignRes, memberRes, studentRes, opsClassRes] = await Promise.all([
     listVersionClasses(env, version.id),
     env.DB.prepare('SELECT * FROM timetable_version_student_assignments WHERE version_id = ?').bind(version.id).all(),
     env.DB.prepare(`
@@ -1475,17 +1501,19 @@ async function loadRosterInputs(env, version) {
       WHERE COALESCE(c.is_active, 1) != 0
       ORDER BY cs.class_id ASC, cs.student_id ASC
     `).all(),
-    env.DB.prepare('SELECT id, name, status, grade FROM students').all()
+    env.DB.prepare('SELECT id, name, status, grade FROM students').all(),
+    env.DB.prepare('SELECT * FROM classes WHERE COALESCE(is_active, 1) != 0 ORDER BY grade ASC, name ASC, id ASC').all()
   ]);
   return {
     versionClasses,
     assignments: assignRes.results || [],
     memberships: memberRes.results || [],
-    students: studentRes.results || []
+    students: studentRes.results || [],
+    opsClasses: opsClassRes.results || []
   };
 }
 
-function summarizeRosterSync(diff) {
+function summarizeRosterSync(diff, importedClasses = []) {
   const added = diff.newcomers.map(n => ({
     student_id: n.student_id,
     student_name: n.student_name,
@@ -1495,7 +1523,8 @@ function summarizeRosterSync(diff) {
   }));
   const removed = diff.withdrawn.map(w => ({ student_id: w.student_id, student_name: w.student_name, status: w.status, class_name: w.class_name }));
   const moved = diff.moves.map(m => ({ student_id: m.student_id, student_name: m.student_name, from_class_name: m.from_class_name, to_class_name: m.to_class_name }));
-  return { added, removed, moved, changed: added.length + removed.length + moved.length };
+  const addedClasses = importedClasses.map(c => ({ class_id: c.id, name: c.name_snapshot || c.source_name || '' }));
+  return { added, removed, moved, added_classes: addedClasses, changed: added.length + removed.length + moved.length + addedClasses.length };
 }
 
 function buildRosterSyncStatements(env, versionId, diff, inputs) {
@@ -1552,12 +1581,32 @@ async function loadRosterDiff(env, version) {
 }
 
 // 여러 번 실행해도 결과가 같다(멱등): 두 번째부터는 바꿀 것이 없다.
+async function importNewOperationalClasses(env, version, inputs, newClasses) {
+  const wanted = new Set(newClasses.map(c => c.ops_class_id));
+  const sources = inputs.opsClasses.filter(c => wanted.has(rosterKey(c.id)));
+  if (!sources.length) return [];
+  const sortBase = inputs.versionClasses.reduce((max, vc) => Math.max(max, Number(vc.sort_order) || 0), 0) + 1;
+  const rows = buildSeedVersionClassRows(version.id, sources, 'apmath', sortBase);
+  const slotStatements = await buildOperationalSlotStatements(env, version.id, rows, wanted);
+  // 반과 슬롯은 한 번에 넣는다. 중간에 끊겨도 다음 갱신이 이어서 가져온다.
+  await env.DB.batch(buildVersionClassInsertStatements(env, rows).concat(slotStatements));
+  return rows;
+}
+
+// 여러 번 실행해도 결과가 같다(멱등): 두 번째부터는 바꿀 것이 없다.
 async function syncDraftRoster(env, version) {
-  const inputs = await loadRosterInputs(env, version);
-  const diff = computeRosterDiff(inputs);
+  let inputs = await loadRosterInputs(env, version);
+  let diff = computeRosterDiff(inputs);
+  let importedClasses = [];
+  if (diff.new_classes.length) {
+    importedClasses = await importNewOperationalClasses(env, version, inputs, diff.new_classes);
+    // 새 반이 들어왔으니 학생 비교를 다시 한다(그 반 학생은 미배정이 아니라 그 반으로 들어간다).
+    inputs = await loadRosterInputs(env, version);
+    diff = computeRosterDiff(inputs);
+  }
   const statements = buildRosterSyncStatements(env, version.id, diff, inputs);
   if (statements.length) await env.DB.batch(statements);
-  return { roster_sync: summarizeRosterSync(diff), roster_multi_class: diff.multi_class };
+  return { roster_sync: summarizeRosterSync(diff, importedClasses), roster_multi_class: diff.multi_class };
 }
 
 // ───────────────────────── 미배정 · 반 삭제/복원 · 반 수정 ─────────────────────────
@@ -1723,13 +1772,13 @@ async function updateDraftClass(env, versionId, body) {
 // ───────────────────────── 새 초안 만들기 (운영 기준) ─────────────────────────
 // 반의 요일·시간은 직전 버전 슬롯이 아니라 "현재 운영 class_time_slots"에서 복사한다.
 // 운영에서 직접 고친 시간이 초안에 반영되려면 이쪽이 맞다.
-async function copyOperationalSlotsToVersion(env, version) {
-  const versionClasses = await ensureVersionClassesSeeded(env, version);
+async function buildOperationalSlotStatements(env, versionId, versionClasses, onlySourceClassIds = null) {
   const map = mapSourceClassToVersionClass(versionClasses);
   const res = await env.DB.prepare('SELECT * FROM class_time_slots ORDER BY day_of_week ASC, start_time ASC, class_id ASC').all();
   const statements = [];
   for (const slot of (res.results || [])) {
     const sourceClassId = String(slot.class_id || '').trim();
+    if (onlySourceClassIds && !onlySourceClassIds.has(sourceClassId)) continue;
     const versionClass = map.get(sourceClassId);
     if (!versionClass || !isRenderableVersionClass(versionClass)) continue;
     statements.push(env.DB.prepare(`
@@ -1738,7 +1787,7 @@ async function copyOperationalSlotsToVersion(env, version) {
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       makeId('tvs'),
-      version.id,
+      versionId,
       getVersionClassCompatClassId(versionClass),
       versionClass.id,
       sourceClassId,
@@ -1749,6 +1798,12 @@ async function copyOperationalSlotsToVersion(env, version) {
       slot.memo || null
     ));
   }
+  return statements;
+}
+
+async function copyOperationalSlotsToVersion(env, version) {
+  const versionClasses = await ensureVersionClassesSeeded(env, version);
+  const statements = await buildOperationalSlotStatements(env, version.id, versionClasses);
   if (statements.length) await env.DB.batch(statements);
   return statements.length;
 }

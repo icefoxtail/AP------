@@ -233,7 +233,16 @@ function installTimetableStyle() {
         '.tt-status-student-chip.tt-leave, .tt-std-name.tt-leave { color:#FF8C00 !important; }',
         '.tt-status-student-chip.tt-withdrawn, .tt-std-name.tt-withdrawn { color:#F9A8B8 !important; background:transparent !important; border:0 !important; text-decoration:none !important; }',
         '.tt-std-name.tt-search-hit { background:#FFE66D !important; color:#111827 !important; box-shadow:0 0 0 2px rgba(245,158,11,0.45) inset; font-weight:900; }',
-        '.tt-un-chip { display:inline-block; font-size:12px; font-weight:600; padding:3px 10px; min-height:24px; line-height:18px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--text); cursor:pointer; }',
+        '.tt-draft-actions { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:6px; min-width:0; }',
+        '.tt-draft-actions .btn { min-height:28px; white-space:nowrap; }',
+        '.tt-draft-actions input[type="date"] { height:28px; }',
+        '.tt-draft-actions-title { font-size:12px; font-weight:800; color:var(--text); white-space:nowrap; }',
+        '.tt-draft-actions-status { font-size:11px; font-weight:700; color:var(--secondary); white-space:nowrap; }',
+        '@media (max-width:640px) { .tt-draft-actions { flex:1 1 100%; justify-content:flex-start; } .tt-draft-actions .btn { min-height:36px; } .tt-draft-actions input[type="date"] { height:36px; } .tt-draft-actions-title { flex:1 1 100%; white-space:normal; overflow-wrap:anywhere; } .tt-print-btn { margin-left:0; } }',
+        '.tt-draft-bar { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; padding:10px 12px; margin-bottom:10px; border:1px solid var(--border); background:var(--surface); border-radius:10px; font-size:12px; font-weight:700; color:var(--text); line-height:1.5; box-sizing:border-box; max-width:100%; min-width:0; }',
+        '.tt-draft-bar > span { min-width:0; overflow-wrap:anywhere; }',
+        '.tt-draft-bar .tt-draft-bar-actions { margin-left:auto; display:flex; gap:6px; flex-shrink:0; }',
+        '.tt-un-chip { display:inline-block; font-size:12px; font-weight:600; padding:3px 10px; min-height:24px; line-height:18px; border:1px solid var(--border); border-radius:999px; background:var(--surface-2); color:var(--text); cursor:pointer; max-width:100%; overflow-wrap:anywhere; }',
         '.tt-un-chip[draggable="true"] { cursor:grab; }',
         '#tt-unassigned-bar.tt-drop-ready { border-color:rgba(26,92,255,0.45); background:rgba(26,92,255,0.03); }',
         '.tt-card-del { flex-shrink:0; border:0; background:transparent; color:var(--secondary); font-size:12px; font-weight:600; line-height:1; padding:3px 4px; border-radius:4px; cursor:pointer; font-family:inherit; }',
@@ -1003,11 +1012,12 @@ function ensureTimetableVersionsLoaded() {
 function mergeTimetableRosterNotice(sync) {
     var ui = ensureTimetableVersionUiState();
     if (!sync || !Number(sync.changed || 0)) return;
-    var prev = ui.timetableRosterNotice || { added: [], removed: [], moved: [] };
+    var prev = ui.timetableRosterNotice || { added: [], removed: [], moved: [], addedClasses: [] };
     ui.timetableRosterNotice = {
         added: prev.added.concat(Array.isArray(sync.added) ? sync.added : []),
         removed: prev.removed.concat(Array.isArray(sync.removed) ? sync.removed : []),
-        moved: prev.moved.concat(Array.isArray(sync.moved) ? sync.moved : [])
+        moved: prev.moved.concat(Array.isArray(sync.moved) ? sync.moved : []),
+        addedClasses: (prev.addedClasses || []).concat(Array.isArray(sync.added_classes) ? sync.added_classes : [])
     };
 }
 
@@ -1394,12 +1404,17 @@ async function openTimetableDraftActivateConfirm() {
     var unassigned = ui.selectedTimetableVersionUnassigned || [];
     var removed = ui.selectedTimetableVersionRemovedClasses || [];
     var rosterNotice = ui.timetableRosterNotice;
-    var rosterNoticeHtml = rosterNotice && (rosterNotice.added.length || rosterNotice.removed.length || rosterNotice.moved.length)
+    var rosterNoticeHtml = rosterNotice && (rosterNotice.added.length || rosterNotice.removed.length || rosterNotice.moved.length || (rosterNotice.addedClasses || []).length)
         ? '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">방금 현재 명단으로 갱신했습니다. 상단의 갱신 알림에서 바뀐 학생을 확인할 수 있습니다.</div>'
         : '';
-    var unassignedHtml = unassigned.length
-        ? '<div style="' + warnStyle + '">미배정 ' + unassigned.length + '명은 반 없이 적용됩니다: ' + apEscapeHtml(formatTimetableNameList(unassigned.map(getTimetableDraftUnassignedName), 12)) + '</div>'
-        : '';
+    // 개편안에서 새로 등록한 학생(temp)은 반이 없으면 적용 때 학생으로 등록되지 않으므로 일반 미배정과 따로 경고한다.
+    var unassignedTemp = unassigned.filter(function(row) { return !!String(row.temp_student_id || '').trim(); });
+    var unassignedPlain = unassigned.filter(function(row) { return !String(row.temp_student_id || '').trim(); });
+    var unassignedHtml = (unassignedPlain.length
+        ? '<div style="' + warnStyle + '">미배정 ' + unassignedPlain.length + '명은 반 없이 적용됩니다: ' + apEscapeHtml(formatTimetableNameList(unassignedPlain.map(getTimetableDraftUnassignedName), 12)) + '</div>'
+        : '') + (unassignedTemp.length
+        ? '<div style="' + warnStyle + '">신규 등록 학생 ' + unassignedTemp.length + '명(' + apEscapeHtml(formatTimetableNameList(unassignedTemp.map(getTimetableDraftUnassignedName), 12)) + ')은 반이 없어 등록되지 않습니다.</div>'
+        : '');
     var removedHtml = removed.length
         ? '<div>삭제한 반 ' + removed.length + '개: ' + apEscapeHtml(formatTimetableNameList(removed.map(function(row) { return row.name_snapshot || row.source_name || ''; }), 8)) + ' (운영에서도 닫힙니다)</div>'
         : '';
@@ -1750,7 +1765,8 @@ function openTimetableDraftClassEditModal(classId) {
     var teacherOptions = '<option value=""' + (currentTeacher ? '' : ' selected') + '>미지정</option>' + teachers.map(function(name) {
         return '<option value="' + apEscapeHtml(name) + '"' + (name === currentTeacher ? ' selected' : '') + '>' + apEscapeHtml(name) + '</option>';
     }).join('');
-    var gradeOptions = grades.map(function(g) {
+    // 학년이 비어 있는 반은 빈 선택지를 유지해야 저장할 때 중1로 바뀌지 않는다.
+    var gradeOptions = (currentGrade ? '' : '<option value="" selected>미지정</option>') + grades.map(function(g) {
         return '<option value="' + apEscapeHtml(g) + '"' + (g === currentGrade ? ' selected' : '') + '>' + apEscapeHtml(g) + '</option>';
     }).join('');
     if (typeof state !== 'undefined') {
@@ -1809,6 +1825,12 @@ async function confirmTimetableDraftClassEdit() {
     }
 }
 
+// 이름이 이미 "반"으로 끝나면(예: 중2 A반) 다시 붙이지 않는다("A반반" 방지).
+function getTimetableClassNameWithBanSuffix(name) {
+    var text = String(name || '').trim() || '이름 없는 ';
+    return /반$/.test(text) ? text : text + '반';
+}
+
 function openTimetableDraftClassRemoveConfirm(classId) {
     if (!isTimetableAdminMode() || !isTimetableDraftMode()) return;
     var cls = findTimetableClassById(classId);
@@ -1818,7 +1840,7 @@ function openTimetableDraftClassRemoveConfirm(classId) {
     showModal('반 삭제', '' +
         '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
             '<div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.6;">' +
-                apEscapeHtml(cls.name || '') + '반을 개편안에서 삭제합니다. 학생 ' + studentCount + '명은 미배정으로 옮겨집니다.' +
+                apEscapeHtml(getTimetableClassNameWithBanSuffix(cls.name)) + '을 개편안에서 삭제합니다. 학생 ' + studentCount + '명은 미배정으로 옮겨집니다.' +
             '</div>' +
             '<div style="font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">삭제한 반은 상단 "삭제한 반"에서 되살릴 수 있고, 개편안을 적용하면 운영에서도 닫힙니다.</div>' +
             '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
@@ -1935,6 +1957,10 @@ function buildTimetableRosterSummaryParts(notice) {
     var added = notice.added || [];
     var removed = notice.removed || [];
     var moved = notice.moved || [];
+    var addedClasses = notice.addedClasses || [];
+    if (addedClasses.length) {
+        parts.push('새 반 ' + addedClasses.length + '개 추가(' + formatTimetableNameList(addedClasses.map(function(row) { return row.name; }), 3) + ')');
+    }
     if (added.length) {
         parts.push('신입 ' + added.length + '명 추가(' + formatTimetableNameList(added.map(function(row) {
             return row.student_name + ' → ' + (row.unassigned ? '미배정' : row.class_name);
@@ -1955,26 +1981,24 @@ function buildTimetableDraftRosterBannerHtml() {
     var multi = ui.timetableRosterMulti || [];
     var unassigned = ui.selectedTimetableVersionUnassigned || [];
     var removed = ui.selectedTimetableVersionRemovedClasses || [];
-    var boxStyle = 'display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; padding:10px 12px; margin-bottom:10px; border:1px solid var(--border); background:var(--surface); border-radius:10px; font-size:12px; font-weight:700; color:var(--text); line-height:1.5;';
     var btnStyle = getTimetableHeaderActionButtonStyle();
     var html = '';
 
     var noticeParts = notice ? buildTimetableRosterSummaryParts(notice) : [];
     if (noticeParts.length || multi.length) {
-        html += '<div id="tt-roster-notice" style="' + boxStyle + '">';
+        html += '<div id="tt-roster-notice" class="tt-draft-bar">';
         if (noticeParts.length) html += '<span>현재 명단으로 갱신했습니다: ' + apEscapeHtml(noticeParts.join(' · ')) + '</span>';
         if (multi.length) html += '<span style="color:var(--secondary);">두 반 수강 ' + multi.length + '명은 한 반만 들어갑니다.</span>';
-        html += '<span style="margin-left:auto; display:flex; gap:6px;">' +
+        html += '<span class="tt-draft-bar-actions">' +
             '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenRosterDetail()">자세히</button>' +
             (noticeParts.length ? '<button class="btn" style="' + btnStyle + '" onclick="window.ttCloseRosterNotice()">닫기</button>' : '') +
         '</span></div>';
     }
 
-    // 미배정 줄: 0명이면 숨긴다. 숨겨진 동안에도 학생을 끌기 시작하면 잠깐 나타나 "반에서 빼기" 놓는 자리가 된다.
-    html += '<div id="tt-unassigned-bar" data-has-students="' + (unassigned.length ? '1' : '0') + '"' +
-        ' ondragover="handleTimetableUnassignedDragOver(event)" ondragleave="handleTimetableClassDragLeave(event)" ondrop="handleTimetableUnassignedDrop(event)"' +
-        ' style="' + boxStyle + (unassigned.length ? '' : ' display:none;') + '">' +
-        '<span>미배정 ' + unassigned.length + '명</span>' +
+    // 미배정 줄은 개편안에서 항상 보인다(0명이어도). 끌기 시작할 때 나타나면 표가 밀려 놓을 자리가 움직이기 때문이다.
+    html += '<div id="tt-unassigned-bar" class="tt-draft-bar"' +
+        ' ondragover="handleTimetableUnassignedDragOver(event)" ondragleave="handleTimetableClassDragLeave(event)" ondrop="handleTimetableUnassignedDrop(event)">' +
+        '<span>미배정 ' + unassigned.length + '명' + (unassigned.length ? '' : ' ·') + '</span>' +
         (unassigned.length
             ? unassigned.map(function(row) {
                 var sid = String(row.student_id || row.temp_student_id || '');
@@ -1983,13 +2007,13 @@ function buildTimetableDraftRosterBannerHtml() {
                     ' onclick="openTimetableDraftStudentActions(\'' + apEscapeHtml(sid) + '\',\'' + TIMETABLE_UNASSIGNED_ID + '\')">' + apEscapeHtml(getTimetableDraftUnassignedName(row)) + '</span>';
             }).join('')
             : '') +
-        '<span style="color:var(--secondary);">' + (unassigned.length ? '학생을 눌러 반에 넣거나 반 카드로 끌어 넣으세요.' : '여기에 놓으면 반에서 빠집니다.') + '</span>' +
+        '<span style="color:var(--secondary);">' + (unassigned.length ? '학생을 눌러 반에 넣거나 반 카드로 끌어 넣으세요. 반 안의 학생을 여기로 끌면 반에서 빠집니다.' : '학생을 여기로 끌면 반에서 빠집니다') + '</span>' +
         '</div>';
 
     if (removed.length) {
-        html += '<div style="' + boxStyle + '"><span>삭제한 반 ' + removed.length + '개</span>' +
+        html += '<div class="tt-draft-bar"><span>삭제한 반 ' + removed.length + '개</span>' +
             removed.map(function(row) {
-                return '<button class="btn" style="' + btnStyle + '" onclick="window.ttRestoreDraftClass(\'' + apEscapeHtml(String(row.id)) + '\')" title="되살리기">' +
+                return '<button class="btn" style="' + btnStyle + ' max-width:100%; white-space:normal; text-align:left;" onclick="window.ttRestoreDraftClass(\'' + apEscapeHtml(String(row.id)) + '\')" title="되살리기">' +
                     apEscapeHtml(row.name_snapshot || row.source_name || '이름 없음') + ' 되살리기</button>';
             }).join('') +
         '</div>';
@@ -1999,15 +2023,16 @@ function buildTimetableDraftRosterBannerHtml() {
 
 function openTimetableDraftRosterDetailModal() {
     var ui = ensureTimetableVersionUiState();
-    var notice = ui.timetableRosterNotice || { added: [], removed: [], moved: [] };
+    var notice = ui.timetableRosterNotice || { added: [], removed: [], moved: [], addedClasses: [] };
     var multi = ui.timetableRosterMulti || [];
     var sectionStyle = 'display:flex; flex-direction:column; gap:4px; padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:13px; font-weight:700; color:var(--text); line-height:1.5;';
-    var section = function(title, rows) {
+    var section = function(title, rows, unit) {
         if (!rows.length) return '';
-        return '<div style="' + sectionStyle + '"><div style="font-size:12px; color:var(--secondary);">' + apEscapeHtml(title) + ' ' + rows.length + '명</div>' +
+        return '<div style="' + sectionStyle + '"><div style="font-size:12px; color:var(--secondary);">' + apEscapeHtml(title) + ' ' + rows.length + (unit || '명') + '</div>' +
             rows.map(function(text) { return '<div>' + apEscapeHtml(text) + '</div>'; }).join('') + '</div>';
     };
     var html = '<div style="display:flex; flex-direction:column; gap:10px; padding:0 4px 4px;">' +
+        section('새 반 추가(운영에서 새로 연 반)', (notice.addedClasses || []).map(function(row) { return row.name; }), '개') +
         section('신입 추가', (notice.added || []).map(function(row) {
             return row.student_name + ' → ' + (row.unassigned ? '미배정 (현재 운영 반: ' + (row.ops_class_names || []).join(', ') + ')' : row.class_name);
         })) +
@@ -2019,15 +2044,8 @@ function openTimetableDraftRosterDetailModal() {
     if (typeof showModalStep === 'function') showModalStep('현재 명단 갱신 내용', html); else showModal('현재 명단 갱신 내용', html);
 }
 
-function showTimetableUnassignedDropZone(show) {
-    var bar = document.getElementById('tt-unassigned-bar');
-    if (!bar || bar.getAttribute('data-has-students') === '1') return;
-    bar.style.display = show ? '' : 'none';
-}
-
 function handleTimetableStudentDragEnd(event) {
     if (event && event.stopPropagation) event.stopPropagation();
-    showTimetableUnassignedDropZone(false);
 }
 
 function handleTimetableUnassignedDragOver(event) {
@@ -2067,7 +2085,7 @@ window.ttDraftStudentUnassign = function(studentId) { unassignTimetableDraftStud
 window.ttDraftStudentMove = function(studentId, sourceClassId) { moveTimetableDraftStudentFromModal(studentId, sourceClassId); };
 
 function getTimetableHeaderActionButtonStyle() {
-    return 'min-height:28px; padding:5px 9px; font-size:11px; font-weight:700; border-radius:999px; ' +
+    return 'min-height:28px; padding:5px 9px; font-size:11px; font-weight:700; border-radius:999px; white-space:nowrap; ' +
         'background:var(--surface); color:var(--secondary); border:1px solid var(--border); box-shadow:none;';
 }
 
@@ -2096,18 +2114,20 @@ function buildTimetableVersionHeaderActionsHtml() {
         return Number(version && version.school_year || 0) === nextYear;
     });
     var shouldShowCreate = !hasNextYearDraft;
-    var html = '<div style="display:flex; align-items:center; justify-content:flex-end; gap:6px; min-width:0;">';
+    // 좁은 화면(휴대폰)에서는 버튼이 여러 줄에 놓이고 글자는 한 줄로 유지된다(.tt-draft-actions, installTimetableStyle).
+    var html = '<div class="tt-draft-actions">';
+    var draftBtnStyle = btnStyle.replace('min-height:28px; ', '');
 
     if (isTimetableDraftMode() && selectedVersion) {
-        html += '<span style="font-size:12px; font-weight:800; color:var(--text); white-space:nowrap;">' + apEscapeHtml(selectedVersion.title || '시간표 초안') + '</span>';
-        html += '<span style="font-size:11px; font-weight:700; color:var(--secondary); white-space:nowrap;">상태: ' + apEscapeHtml(getTimetableStatusLabel(selectedVersion.status)) + '</span>';
-        html += '<input id="tt-draft-effective-from" type="date" value="' + apEscapeHtml(selectedVersion.effective_from || '') + '" style="height:28px; width:132px; padding:0 8px; border:1px solid var(--border); border-radius:999px; background:var(--surface); font-size:11px; font-weight:800; color:var(--text);">';
-        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttSaveDraftEffectiveDate()">저장</button>';
-        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttReturnActiveView()">운영 시간표로 이동</button>';
-        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttRefreshDraftRoster()" title="현재 운영 명단으로 개편안을 다시 맞춥니다">명단 새로고침</button>';
-        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttRestartDraft()" title="개편안을 버리고 현재 운영 명단으로 다시 만듭니다">새로 만들기</button>';
-        html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttScanDraftPreview()">충돌 확인</button>';
-        html += '<button class="btn btn-primary" style="min-height:28px; padding:5px 10px; font-size:11px; font-weight:800; border-radius:999px;" onclick="window.ttOpenDraftActivateConfirm()">개편 시간표 적용</button>';
+        html += '<span class="tt-draft-actions-title">' + apEscapeHtml(selectedVersion.title || '시간표 초안') + '</span>';
+        html += '<span class="tt-draft-actions-status">상태: ' + apEscapeHtml(getTimetableStatusLabel(selectedVersion.status)) + '</span>';
+        html += '<input id="tt-draft-effective-from" type="date" value="' + apEscapeHtml(selectedVersion.effective_from || '') + '" style="width:132px; padding:0 8px; border:1px solid var(--border); border-radius:999px; background:var(--surface); font-size:11px; font-weight:800; color:var(--text);">';
+        html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttSaveDraftEffectiveDate()">저장</button>';
+        html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttReturnActiveView()">운영 시간표로 이동</button>';
+        html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttRefreshDraftRoster()" title="현재 운영 명단으로 개편안을 다시 맞춥니다">명단 새로고침</button>';
+        html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttRestartDraft()" title="개편안을 버리고 현재 운영 명단으로 다시 만듭니다">새로 만들기</button>';
+        html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScanDraftPreview()">충돌 확인</button>';
+        html += '<button class="btn btn-primary" style="padding:5px 10px; font-size:11px; font-weight:800; border-radius:999px; white-space:nowrap;" onclick="window.ttOpenDraftActivateConfirm()">개편 시간표 적용</button>';
     } else if (primaryDraft) {
         html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">개편시간표</button>';
     } else if (shouldShowCreate) {
@@ -2574,8 +2594,6 @@ function handleTimetableStudentDragStart(event) {
         student_id: el.getAttribute('data-student-id') || '',
         source_class_id: el.getAttribute('data-source-class-id') || ''
     }));
-    // 개편안: 미배정 줄이 숨겨져 있어도 끄는 동안에는 "반에서 빼기" 놓는 자리를 보여 준다(드래그 시작 직후에 바꿔야 끌기가 끊기지 않는다).
-    if (isTimetableDraftMode()) setTimeout(function() { showTimetableUnassignedDropZone(true); }, 0);
     return true;
 }
 

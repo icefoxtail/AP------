@@ -141,6 +141,17 @@ function buildDb() {
   d = computeRosterDiff({ versionClasses: vcs, assignments: [], memberships: [mem('A', 'back')], students: [stu('back', '재원')] });
   assert.strictEqual(d.newcomers.length, 1);
 
+  // 운영에서 새로 연 활성 반: source가 맞는 개편안 반이 없을 때만. 삭제한(removed)·졸업(excluded) 반은 source 행이 남아 있어 해당 없음
+  d = computeRosterDiff({
+    versionClasses: vcs,
+    assignments: [],
+    memberships: [],
+    students: [],
+    opsClasses: [{ id: 'A', name: 'A반' }, { id: 'R', name: '삭제반' }, { id: 'G', name: '졸업반' }, { id: 'NEW', name: '새 반' }]
+  });
+  assert.deepStrictEqual(d.new_classes.map(c => c.ops_class_id), ['NEW']);
+  assert.strictEqual(d.in_sync, false, '가져오지 않은 새 운영 반이 있으면 맞지 않는 상태');
+
   // ───────────── DB 흐름 ─────────────
   const db = buildDb();
   const env = { DB: createMockD1(db) };
@@ -194,10 +205,11 @@ function buildDb() {
   assert.strictEqual(made.status, 200, JSON.stringify(made.body));
   const newVcId = made.body.timetable_version_class.id;
 
-  // 운영 변화: 신입 s7(c1), s10(원본 없는 새 운영 반 c5), s2 퇴원, s3 c2→c4 이동(손대지 않음), s1 c1→c4(원장이 옮긴 학생), s6 재원 유지
+  // 운영 변화: 신입 s7(c1), s10(개편안 만든 뒤 운영에서 새로 연 반 c5), s2 퇴원, s3 c2→c4 이동(손대지 않음), s1 c1→c4(원장이 옮긴 학생), s6 재원 유지
   addStudent('s7', '카'); addStudent('s10', '타');
   run("INSERT INTO classes (id, name, grade, is_active) VALUES ('c5','중1 신규반','중1',1)");
   join('c1', 's7'); join('c5', 's10');
+  run("INSERT INTO class_time_slots (id, class_id, day_of_week, start_time, end_time) VALUES ('cts5','c5','금','16:00','18:00')");
   run("UPDATE students SET status = '퇴원' WHERE id = 's2'");
   run("DELETE FROM class_students WHERE class_id = 'c2' AND student_id = 's3'"); join('c4', 's3');
   run("DELETE FROM class_students WHERE class_id = 'c1' AND student_id = 's1'"); join('c4', 's1');
@@ -208,6 +220,7 @@ function buildDb() {
   assert.strictEqual(blocked.body.error, 'roster_mismatch');
   assert.ok(blocked.body.roster_diff.newcomers.some(n => n.student_id === 's7'));
   assert.ok(blocked.body.roster_diff.withdrawn.some(w => w.student_id === 's2'));
+  assert.deepStrictEqual(blocked.body.roster_diff.new_classes.map(c => c.ops_class_id), ['c5'], '가져오지 않은 새 운영 반이 있으면 적용 차단');
   assert.strictEqual(get("SELECT status FROM timetable_versions WHERE id = ?", vid).status, 'draft', '거부되면 초안은 그대로');
   assert.strictEqual(get("SELECT COUNT(*) AS n FROM classes WHERE promotion_version_id = ?", vid).n, 0, '거부되면 운영에 아무것도 쓰지 않는다');
 
@@ -217,7 +230,11 @@ function buildDb() {
   const sync = opened.body.roster_sync;
   assert.deepStrictEqual(sync.added.map(x => x.student_id).sort(), ['s10', 's7']);
   assert.strictEqual(sync.added.find(x => x.student_id === 's7').class_name, vcOf('c1').name_snapshot);
-  assert.strictEqual(sync.added.find(x => x.student_id === 's10').unassigned, true);
+  assert.strictEqual(sync.added.find(x => x.student_id === 's10').unassigned, false, '새로 가져온 반의 학생은 미배정이 아니라 그 반으로');
+  assert.strictEqual(sync.added.find(x => x.student_id === 's10').class_name, vcOf('c5').name_snapshot);
+  assert.deepStrictEqual(sync.added_classes.map(c => c.name), [vcOf('c5').name_snapshot]);
+  assert.strictEqual(vcOf('c5').status, 'draft');
+  assert.deepStrictEqual(all('SELECT start_time FROM timetable_version_slots WHERE version_id = ? AND version_class_id = ?', vid, vcOf('c5').id).map(r => r.start_time), ['16:00'], '새 반의 슬롯도 현재 운영 슬롯에서 복사');
   assert.deepStrictEqual(sync.removed.map(x => x.student_id), ['s2']);
   assert.deepStrictEqual(sync.moved.map(x => x.student_id), ['s3']);
   a = assigned();
@@ -226,7 +243,7 @@ function buildDb() {
   assert.strictEqual(a.s3, vcOf('c4').id, '손대지 않은 학생은 운영의 새 반을 따라간다');
   assert.strictEqual(a.s1, vcOf('c2').id, '원장이 옮긴 학생은 그대로');
   assert.strictEqual(a.s9, '__unassigned__', '원장이 미배정으로 뺀 재원생은 그대로');
-  assert.strictEqual(a.s10, '__unassigned__');
+  assert.strictEqual(a.s10, vcOf('c5').id);
 
   // 멱등: 다시 열어도, 직접 sync해도 바뀌는 것이 없다
   const again = await call('GET', [vid]);
@@ -235,7 +252,7 @@ function buildDb() {
   assert.strictEqual(postSync.status, 200);
   assert.strictEqual(postSync.body.roster_sync.changed, 0);
   assert.deepStrictEqual(assigned(), a);
-  assert.deepStrictEqual(again.body.timetable_version_unassigned_students.map(r => r.student_id).sort(), ['s10', 's9']);
+  assert.deepStrictEqual(again.body.timetable_version_unassigned_students.map(r => r.student_id).sort(), ['s9']);
 
   // 반 수정
   const upd = await call('POST', [vid, 'classes', 'update'], { class_id: vcOf('c2').id, name: '중2 B반', grade: '중2', teacher_name: '김', subject: '수학', textbook: '쎈' });
@@ -283,16 +300,17 @@ function buildDb() {
   const activated = await call('POST', [vid, 'activate']);
   assert.strictEqual(activated.status, 200, JSON.stringify(activated.body));
   assert.strictEqual(activated.body.removed_class_count, 1);
-  assert.strictEqual(activated.body.unassigned_student_count, 3, 's3, s9, s10');
+  assert.strictEqual(activated.body.unassigned_student_count, 2, 's3, s9');
   assert.strictEqual(get("SELECT status FROM timetable_versions WHERE id = ?", vid).status, 'active');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c4'").is_active, 0, '삭제한 반의 원래 운영 반이 비활성화된다');
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c1'").is_active, 0);
   assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c3'").is_active, 1, '졸업(excluded) 반은 기존대로 운영에 그대로 둔다');
-  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c5'").is_active, 1, '초안에 없는 새 운영 반은 건드리지 않는다');
+  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c5'").is_active, 0, '가져온 새 운영 반은 적용되어 원래 운영 반은 닫힌다');
   assert.strictEqual(get("SELECT COUNT(*) AS n FROM class_students WHERE class_id = 'c4'").n, 0);
   const applied = all(`SELECT cs.student_id, c.name FROM class_students cs JOIN classes c ON c.id = cs.class_id WHERE c.promotion_version_id = ?`, vid);
   const appliedByStudent = Object.fromEntries(applied.map(r => [r.student_id, r.name]));
   assert.ok(appliedByStudent.s7, '신입 s7은 새 운영 반에 들어간다');
+  assert.ok(appliedByStudent.s10, '운영에서 새로 연 반의 학생은 적용 후 새 운영 반에 있다');
   assert.ok(appliedByStudent.s1 && appliedByStudent.s6, '기존 재원생은 유지');
   for (const gone of ['s2', 's4', 's3', 's9']) assert.ok(!(gone in appliedByStudent), `${gone}는 어느 새 반에도 들어가지 않는다`);
   assert.strictEqual(get("SELECT COUNT(*) AS n FROM student_enrollments WHERE student_id = 's3' AND status = 'active'").n, 0, '미배정 학생의 운영 수강 기록은 종료된다');
@@ -313,6 +331,41 @@ function buildDb() {
   const newAssigned = all('SELECT student_id FROM timetable_version_student_assignments WHERE version_id = ?', newId).map(r => r.student_id);
   assert.ok(!newAssigned.includes('s2') && !newAssigned.includes('s4'), '새 초안에 퇴원생이 없다');
   assert.strictEqual((await call('POST', [vid, 'restart'])).status, 400, '적용된 버전은 새로 만들 수 없다');
+
+  // 새 운영 반 가져오기 2: 원장이 삭제한 반은 다시 안 들어오고, 손대지 않은 학생은 새 반을 따라간다
+  const draft3 = newId;
+  const assigned3 = () => Object.fromEntries(all('SELECT student_id, version_class_id FROM timetable_version_student_assignments WHERE version_id = ?', draft3).map(r => [r.student_id, r.version_class_id]));
+  const mover = 's7';
+  assert.ok(assigned3()[mover], 's7은 새 초안에 배정돼 있다');
+  run("INSERT INTO classes (id, name, grade, is_active) VALUES ('c6','중1 D반','중1',1), ('c7','중1 E반','중1',1), ('c8','중1 닫힌반','중1',0)");
+  run("INSERT INTO class_time_slots (id, class_id, day_of_week, start_time, end_time) VALUES ('cts6','c6','월','17:00','19:00'), ('cts7','c7','화','17:00','19:00')");
+  addStudent('s11', '하'); addStudent('s12', '거');
+  join('c6', 's11'); join('c7', 's12');
+  run("DELETE FROM class_students WHERE student_id = ?", mover); join('c7', mover);
+  const blocked3 = await call('POST', [draft3, 'activate']);
+  assert.strictEqual(blocked3.status, 409, '새 운영 반을 아직 가져오지 않았으면 적용 차단');
+  assert.deepStrictEqual(blocked3.body.roster_diff.new_classes.map(c => c.ops_class_id).sort(), ['c6', 'c7'], '운영에서 닫힌 반(c8)은 가져오지 않는다');
+  const open3 = await call('GET', [draft3]);
+  assert.deepStrictEqual(open3.body.roster_sync.added_classes.length, 2);
+  const vc3 = src => get('SELECT * FROM timetable_version_classes WHERE version_id = ? AND source_class_id = ?', draft3, src);
+  assert.ok(vc3('c6') && vc3('c7') && !vc3('c8'));
+  assert.strictEqual(assigned3().s11, vc3('c6').id);
+  assert.strictEqual(assigned3().s12, vc3('c7').id);
+  assert.strictEqual(assigned3()[mover], vc3('c7').id, '손대지 않은 학생은 새로 가져온 반으로 따라간다');
+  assert.strictEqual((await call('GET', [draft3])).body.roster_sync.changed, 0, '두 번째 sync는 변경 0');
+  await call('POST', [draft3, 'classes', 'remove'], { class_id: vc3('c6').id });
+  const reopen3 = await call('GET', [draft3]);
+  assert.strictEqual(reopen3.body.roster_sync.changed, 0, '원장이 삭제한 반은 다시 가져오지 않는다');
+  assert.strictEqual(all('SELECT id FROM timetable_version_classes WHERE version_id = ? AND source_class_id = ?', draft3, 'c6').length, 1);
+  assert.strictEqual(vc3('c6').status, 'removed');
+  assert.strictEqual(assigned3().s11, '__unassigned__');
+  const activated3 = await call('POST', [draft3, 'activate']);
+  assert.strictEqual(activated3.status, 200, JSON.stringify(activated3.body));
+  const applied3 = Object.fromEntries(all('SELECT cs.student_id, c.name FROM class_students cs JOIN classes c ON c.id = cs.class_id WHERE c.promotion_version_id = ?', draft3).map(r => [r.student_id, r.name]));
+  assert.ok(applied3.s12 && applied3[mover], '새 반의 학생은 적용 후 새 운영 반에 있다');
+  assert.ok(!('s11' in applied3), '원장이 삭제한 반의 학생은 미배정');
+  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c7'").is_active, 0);
+  assert.strictEqual(get("SELECT is_active FROM classes WHERE id = 'c6'").is_active, 0, '삭제한 반의 운영 반도 닫힌다');
 
   console.log('apmath-timetable-draft-roster: all assertions passed');
 })().catch(error => {

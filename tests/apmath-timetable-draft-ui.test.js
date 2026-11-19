@@ -58,7 +58,8 @@ const detail = (extra = {}) => ({
       added: [{ student_id: 's9', student_name: '신입', class_name: null, unassigned: true, ops_class_names: ['중1 신규반'] }, { student_id: 's7', student_name: '카', class_name: '중2 A반', unassigned: false }],
       removed: [{ student_id: 's2', student_name: '퇴원생', class_name: '중2 A반' }],
       moved: [],
-      changed: 3
+      added_classes: [{ class_id: 'vc5', name: '중2 신규반' }],
+      changed: 4
     },
     roster_multi_class: [{ student_id: 's6', student_name: '바', class_names: ['A반', 'B반'] }]
   });
@@ -74,6 +75,7 @@ const detail = (extra = {}) => ({
 
   const banner = context.buildTimetableVersionBannerHtml();
   assert.match(banner, /현재 명단으로 갱신했습니다/);
+  assert.match(banner, /새 반 1개 추가\(중2 신규반\)/);
   assert.match(banner, /신입 2명 추가/);
   assert.match(banner, /신입 → 미배정/);
   assert.match(banner, /카 → 중2 A반/);
@@ -81,7 +83,7 @@ const detail = (extra = {}) => ({
   assert.match(banner, /두 반 수강 1명은 한 반만 들어갑니다/);
   assert.match(banner, /미배정 1명/);
   assert.match(banner, /삭제한 반 1개/);
-  assert.doesNotMatch(banner, /id="tt-unassigned-bar"[^>]*display:none/, '미배정이 있으면 줄이 보인다');
+  assert.doesNotMatch(banner, /display:none/, '미배정 줄은 항상 보인다');
 
   const detailHtml = (() => { let shown = ''; context.showModalStep = (t, b) => { shown = b; }; context.openTimetableDraftRosterDetailModal(); return shown; })();
   assert.match(detailHtml, /신입 추가 2명/);
@@ -96,7 +98,10 @@ const detail = (extra = {}) => ({
   assert.doesNotMatch(context.buildTimetableVersionBannerHtml(), /현재 명단으로 갱신했습니다/);
 
   // 0명이면 미배정 줄은 숨김 상태로 그려진다(끌기 시작하면 나타나는 놓는 자리)
-  assert.match(context.buildTimetableVersionBannerHtml(), /id="tt-unassigned-bar" data-has-students="0"[^>]*display:none/);
+  const emptyBanner = context.buildTimetableVersionBannerHtml();
+  assert.match(emptyBanner, /id="tt-unassigned-bar"/);
+  assert.match(emptyBanner, /미배정 0명 · ?<\/span><span style="color:var\(--secondary\);">학생을 여기로 끌면 반에서 빠집니다/);
+  assert.doesNotMatch(emptyBanner, /display:none/, '0명이어도 줄을 숨기지 않는다(표가 밀려 놓을 자리가 움직이지 않게)');
 
   // 명단 새로고침: 차이가 없으면 토스트
   toasts.length = 0;
@@ -152,7 +157,20 @@ const detail = (extra = {}) => ({
 
   // 반 삭제 확인 문구
   context.openTimetableDraftClassRemoveConfirm('vc1');
-  assert.match(modalBody, /중2 A반반을 개편안에서 삭제합니다\. 학생 1명은 미배정으로 옮겨집니다\./);
+  assert.match(modalBody, /중2 A반을 개편안에서 삭제합니다\. 학생 1명은 미배정으로 옮겨집니다\./);
+  assert.doesNotMatch(modalBody, /반반/);
+  assert.equal(context.getTimetableClassNameWithBanSuffix('심화'), '심화반');
+  assert.equal(context.getTimetableClassNameWithBanSuffix('중2 B반'), '중2 B반');
+
+  // 반 수정: 학년이 비어 있는 반은 빈 선택지를 유지한다(저장 때 중1로 바뀌지 않게)
+  context.state.ui.selectedTimetableVersionClasses.push({ id: 'vc7', name_snapshot: '학년 없음', next_grade: '', grade_snapshot: '', status: 'draft' });
+  context.openTimetableDraftClassEditModal('vc7');
+  assert.match(modalBody, /<option value="" selected>미지정<\/option>/);
+  assert.doesNotMatch(modalBody, /<option value="중1" selected>/);
+  context.openTimetableDraftClassEditModal('vc1');
+  assert.match(modalBody, /<option value="중2" selected>/);
+  assert.doesNotMatch(modalBody, /value="" selected/);
+  context.state.ui.selectedTimetableVersionClasses = context.state.ui.selectedTimetableVersionClasses.filter(c => c.id !== 'vc7');
 
   // 새로 만들기 확인 문구
   context.openTimetableDraftRestartConfirm();
@@ -161,7 +179,10 @@ const detail = (extra = {}) => ({
   // 적용 확인: 열기 전에 먼저 명단을 갱신하고, 미배정 이름을 경고로 보여 준다
   nextDetail = detail({
     timetable_version_student_assignments: [{ student_id: 's1', version_class_id: 'vc1', class_id: 'vc1', student_name_snapshot: '가나' }],
-    timetable_version_unassigned_students: [{ student_id: 's9', student_name_snapshot: '방금신입', version_class_id: '__unassigned__', excluded_reason: 'unassigned' }],
+    timetable_version_unassigned_students: [
+      { student_id: 's9', student_name_snapshot: '방금신입', version_class_id: '__unassigned__', excluded_reason: 'unassigned' },
+      { student_id: 'tmp_1', temp_student_id: 'tmp_1', student_name_snapshot: '신규등록생', version_class_id: '__unassigned__', excluded_reason: 'unassigned' }
+    ],
     roster_sync: { added: [{ student_id: 's9', student_name: '방금신입', class_name: null, unassigned: true, ops_class_names: ['신규'] }], removed: [], moved: [], changed: 1 }
   });
   calls.length = 0;
@@ -172,6 +193,8 @@ const detail = (extra = {}) => ({
   assert.match(confirmBody, /반 2개 · 학생 1명/);
   assert.match(confirmBody, /삭제한 반 1개: 삭제된 반/);
   assert.match(confirmBody, /미배정 1명은 반 없이 적용됩니다: 방금신입/);
+  assert.match(confirmBody, /신규 등록 학생 1명\(신규등록생\)은 반이 없어 등록되지 않습니다\./);
+  assert.doesNotMatch(confirmBody, /미배정 2명/, '신규 등록 학생은 일반 미배정과 따로 경고한다');
 
   // 서버 안전장치(409)에는 "먼저 현재 명단과 맞춰 주세요"
   nextPost = { success: false, status: 409, error: 'roster_mismatch' };
