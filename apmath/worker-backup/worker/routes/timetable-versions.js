@@ -251,13 +251,33 @@ function buildApplyLogPayload(versionId, status, options = {}) {
 }
 
 function safeVersionClassIdPart(value) {
-  return String(value || '')
-    .replace(/[^a-zA-Z0-9_-]+/g, '_')
-    .slice(0, 80) || 'none';
+  return String(value || '').replace(/[^a-zA-Z0-9_-]+/g, '_') || 'none';
 }
 
+// 64비트 FNV-1a 두 개를 이어 붙인 16자리 16진수. 같은 입력이면 항상 같은 값(결정적).
+function hashIdParts(text) {
+  let h1 = 0x811c9dc5;
+  let h2 = 0x01000193 ^ 0x9e3779b9;
+  const input = String(text || '');
+  for (let i = 0; i < input.length; i += 1) {
+    const code = input.charCodeAt(i);
+    h1 = Math.imul(h1 ^ code, 0x01000193) >>> 0;
+    h2 = Math.imul(h2 ^ code, 0x85ebca6b) >>> 0;
+    h2 = (h2 ^ (h2 >>> 13)) >>> 0;
+  }
+  return h1.toString(16).padStart(8, '0') + h2.toString(16).padStart(8, '0');
+}
+
+// 적용할 때마다 운영 반 id가 이전 id를 품고 길어지면, 세대가 이어질 때 앞부분만 같은 서로 다른 반이 같은 id가 된다.
+// 그래서 입력이 길면 전체 입력의 해시로 고정 길이 id를 만든다. 짧은 입력(이미 저장된 기존 초안)은 예전과 같은 값이다.
+const VERSION_CLASS_ID_PART_MAX = 80;
+const APPLIED_CLASS_ID_MAX = 120;
+
 function makeSourceVersionClassId(versionId, sourceClassId) {
-  return `tvc_${safeVersionClassIdPart(versionId)}_${safeVersionClassIdPart(sourceClassId)}`;
+  const ver = safeVersionClassIdPart(versionId);
+  const src = safeVersionClassIdPart(sourceClassId);
+  if (ver.length <= VERSION_CLASS_ID_PART_MAX && src.length <= VERSION_CLASS_ID_PART_MAX) return `tvc_${ver}_${src}`;
+  return `tvc_${hashIdParts(`${ver}|${src}`)}`;
 }
 
 function buildPromotedClassName(sourceName, sourceGrade, nextGrade) {
@@ -757,17 +777,11 @@ function uniqueValues(rows, key) {
 
 
 function makeAppliedClassId(versionId, versionClassId) {
-  // 개편안으로 만든 운영 반에서 다시 다음 개편안을 만들면 반 id가 길어져 앞부분만 자르면 서로 같아진다(UNIQUE 충돌).
-  // 짧을 때는 예전 규칙 그대로 두고, 길 때만 전체 id의 해시를 붙여 구분한다.
-  const raw = part => String(part || '').replace(/[^a-zA-Z0-9_-]+/g, '_') || 'none';
-  const full = `cls_${raw(versionId)}_${raw(versionClassId)}`;
-  if (full.length <= 120) return full;
-  let hash = 0x811c9dc5;
-  for (let i = 0; i < full.length; i += 1) {
-    hash ^= full.charCodeAt(i);
-    hash = Math.imul(hash, 0x01000193) >>> 0;
-  }
-  return `${full.slice(0, 100)}_${hash.toString(16).padStart(8, '0')}`;
+  const ver = safeVersionClassIdPart(versionId);
+  const vc = safeVersionClassIdPart(versionClassId);
+  const full = `cls_${ver}_${vc}`;
+  if (full.length <= APPLIED_CLASS_ID_MAX) return full;
+  return `cls_${hashIdParts(`${ver}|${vc}`)}`;
 }
 
 function getVersionClassTextbookInfo(versionClass = {}) {
@@ -1370,7 +1384,7 @@ export function isUntouchedDraftAssignment(row = {}, vcBySource = new Map()) {
   return !!sourceVc && rosterKey(sourceVc.id) === rosterKey(row.version_class_id);
 }
 
-export function computeRosterDiff({ versionClasses = [], assignments = [], memberships = [], students = [], opsClasses = [] } = {}) {
+export function computeRosterDiff({ versionClasses = [], assignments = [], memberships = [], students = [], opsClasses = null } = {}) {
   const vcById = new Map();
   const vcBySource = new Map();
   for (const vc of versionClasses) {
@@ -1470,10 +1484,21 @@ export function computeRosterDiff({ versionClasses = [], assignments = [], membe
   }
   // (4) 개편안을 만든 뒤 운영에서 새로 연 활성 반: 어떤 개편안 반과도 source_class_id가 맞지 않는 반.
   // 개편안에서 삭제한(removed) 반이나 졸업(excluded) 반은 source 행이 남아 있어 여기에 걸리지 않는다.
-  const newClasses = opsClasses
+  const newClasses = (Array.isArray(opsClasses) ? opsClasses : [])
     .filter(c => rosterKey(c.id) && !vcBySource.has(rosterKey(c.id)))
     .map(c => ({ ops_class_id: rosterKey(c.id), name: rosterKey(c.name) }))
     .sort((a, b) => a.name.localeCompare(b.name, 'ko') || a.ops_class_id.localeCompare(b.ops_class_id));
+  // (5) 개편안을 만든 뒤 운영에서 닫힌(is_active=0) 반이 개편안에 남아 있으면 적용 때 활성 반으로 되살아난다.
+  // 원장이 되살린 반(memo.restored_by_director)은 다시 지우지 않는다. opsClasses를 안 넘긴 호출에서는 판정하지 않는다.
+  let closedClasses = [];
+  if (Array.isArray(opsClasses)) {
+    const activeIds = new Set(opsClasses.map(c => rosterKey(c.id)));
+    closedClasses = versionClasses
+      .filter(vc => rosterKey(vc.source_class_id) && isRenderableVersionClass(vc) && !activeIds.has(rosterKey(vc.source_class_id)))
+      .filter(vc => !safeParseMemoJson(vc.memo, 'roster closed memo').restored_by_director)
+      .map(vc => ({ version_class_id: rosterKey(vc.id), ops_class_id: rosterKey(vc.source_class_id), name: rosterClassLabel(vc) }))
+      .sort((a, b) => a.name.localeCompare(b.name, 'ko') || a.version_class_id.localeCompare(b.version_class_id));
+  }
   newcomers.sort(compareRosterNames);
   withdrawn.sort(compareRosterNames);
   moves.sort(compareRosterNames);
@@ -1484,7 +1509,8 @@ export function computeRosterDiff({ versionClasses = [], assignments = [], membe
     moves,
     multi_class: multiClass,
     new_classes: newClasses,
-    in_sync: !newcomers.length && !withdrawn.length && !moves.length && !newClasses.length
+    closed_classes: closedClasses,
+    in_sync: !newcomers.length && !withdrawn.length && !moves.length && !newClasses.length && !closedClasses.length
   };
 }
 
@@ -1524,7 +1550,15 @@ function summarizeRosterSync(diff, importedClasses = []) {
   const removed = diff.withdrawn.map(w => ({ student_id: w.student_id, student_name: w.student_name, status: w.status, class_name: w.class_name }));
   const moved = diff.moves.map(m => ({ student_id: m.student_id, student_name: m.student_name, from_class_name: m.from_class_name, to_class_name: m.to_class_name }));
   const addedClasses = importedClasses.map(c => ({ class_id: c.id, name: c.name_snapshot || c.source_name || '' }));
-  return { added, removed, moved, added_classes: addedClasses, changed: added.length + removed.length + moved.length + addedClasses.length };
+  const closedClasses = (diff.closed_classes || []).map(c => ({ class_id: c.version_class_id, name: c.name }));
+  return {
+    added,
+    removed,
+    moved,
+    added_classes: addedClasses,
+    closed_classes: closedClasses,
+    changed: added.length + removed.length + moved.length + addedClasses.length + closedClasses.length
+  };
 }
 
 function buildRosterSyncStatements(env, versionId, diff, inputs) {
@@ -1572,6 +1606,16 @@ function buildRosterSyncStatements(env, versionId, diff, inputs) {
       SET class_id = ?, version_class_id = ?, source_class_id = ?, updated_at = CURRENT_TIMESTAMP
       WHERE version_id = ? AND student_id = ? AND (temp_student_id IS NULL OR temp_student_id = '')
     `).bind(getVersionClassCompatClassId(vc), vc.id, m.ops_class_id, versionId, m.student_id));
+  }
+
+  // 운영에서 닫힌 반은 removed로 바꾸고 남은 학생은 미배정으로 보낸다(위 이동이 먼저 실행되므로 옮겨 간 학생은 영향 없음).
+  for (const c of (diff.closed_classes || [])) {
+    statements.push(env.DB.prepare(`
+      UPDATE timetable_version_student_assignments
+      SET class_id = ?, version_class_id = ?, excluded_reason = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE version_id = ? AND version_class_id = ?
+    `).bind(UNASSIGNED_CLASS_ID, UNASSIGNED_CLASS_ID, UNASSIGNED_REASON, versionId, c.version_class_id));
+    statements.push(env.DB.prepare("UPDATE timetable_version_classes SET status = 'removed', updated_at = CURRENT_TIMESTAMP WHERE id = ? AND version_id = ?").bind(c.version_class_id, versionId));
   }
   return statements;
 }
@@ -1703,7 +1747,9 @@ async function restoreDraftClass(env, versionId, body) {
     return jsonResponse({ success: false, error: 'removed class not found' }, 404);
   }
   const restoredStatus = Number(versionClass.is_new || 0) === 1 ? 'new' : 'draft';
-  await env.DB.prepare('UPDATE timetable_version_classes SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?').bind(restoredStatus, versionClass.id).run();
+  // 원장이 직접 되살린 반은 표시를 남겨, 운영에서 닫힌 반이라도 다음 명단 갱신이 다시 지우지 않게 한다.
+  const restoredMemo = JSON.stringify({ ...safeParseMemoJson(versionClass.memo, 'restoreDraftClass memo'), restored_by_director: true });
+  await env.DB.prepare('UPDATE timetable_version_classes SET status = ?, memo = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?').bind(restoredStatus, restoredMemo, versionClass.id).run();
   const restored = await env.DB.prepare('SELECT * FROM timetable_version_classes WHERE id = ?').bind(versionClass.id).first();
   return jsonResponse({
     success: true,
@@ -1855,6 +1901,99 @@ async function restartDraftVersion(env, teacher, id) {
   return jsonResponse({ ...seeded, restarted_from_version_id: id });
 }
 
+// ───────────────────────── 적용 예약 · 적용일 자동 반영 ─────────────────────────
+// 한국 시간(KST, UTC+9) 기준 날짜 YYYY-MM-DD. cron은 UTC 15:05(= KST 0:05)에 돌므로 UTC 날짜로 보면 하루 어긋난다.
+export function kstDateString(value = new Date()) {
+  const date = value instanceof Date ? value : new Date(value);
+  return new Date(date.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
+const AUTO_APPLY_ACTOR = { id: 'system-scheduler', login_id: 'system-scheduler', name: '자동 적용', role: 'admin' };
+const AUTO_APPLY_LOG_STATUSES = ['auto_success', 'auto_failed'];
+
+async function writeAutoApplyLog(env, version, status, summary) {
+  const id = makeId('tval');
+  await env.DB.prepare(`
+    INSERT INTO timetable_version_apply_logs
+      (id, academy_id, version_id, status, started_at, finished_at, error_message, summary_json, created_at)
+    VALUES (?, 'apmath', ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, ?, ?, CURRENT_TIMESTAMP)
+  `).bind(id, version.id, status, summary.error ? String(summary.error).slice(0, 1000) : null, JSON.stringify(summary)).run();
+  return id;
+}
+
+function summarizeRosterSyncForLog(result) {
+  const sync = result?.roster_sync || {};
+  return {
+    changed: Number(sync.changed || 0),
+    added: (sync.added || []).map(r => ({ name: r.student_name, class_name: r.class_name || null, unassigned: !!r.unassigned })),
+    removed: (sync.removed || []).map(r => r.student_name),
+    moved: (sync.moved || []).map(r => r.student_name),
+    added_classes: (sync.added_classes || []).map(r => r.name),
+    closed_classes: (sync.closed_classes || []).map(r => r.name)
+  };
+}
+
+async function autoApplyScheduledVersion(env, versionId, today) {
+  // 다시 읽어서 아직 예약 상태일 때만 진행한다(그 사이 원장이 직접 적용·취소했으면 건너뜀 → 중복 적용 없음).
+  const version = await getVersion(env, versionId);
+  if (!version || version.status !== 'scheduled') return { version_id: versionId, skipped: true };
+  const summary = { source: 'scheduled', applied_on: today, title: version.title, effective_from: version.effective_from };
+  try {
+    // 짜는 동안 바뀐 명단을 먼저 맞춘다. 맞추지 못하면 낡은 명단으로 적용하지 않는다.
+    const syncResult = await syncDraftRoster(env, version);
+    summary.roster_sync = summarizeRosterSyncForLog(syncResult);
+    const unassigned = await listUnassignedStudents(env, versionId);
+    summary.unassigned_students = unassigned.map(row => String(row.student_name_snapshot || row.student_id || '').trim()).filter(Boolean);
+    const response = await activateVersion(env, versionId, AUTO_APPLY_ACTOR);
+    const body = await response.json().catch(() => ({}));
+    if (response.status !== 200 || body.success === false) {
+      summary.error = String(body.error || `activate status ${response.status}`);
+      await writeAutoApplyLog(env, version, 'auto_failed', summary);
+      return { version_id: versionId, success: false, error: summary.error };
+    }
+    summary.class_count = Number(body.activated_class_count || 0);
+    summary.student_count = Number(body.activated_student_assignment_count || 0);
+    summary.removed_class_count = Number(body.removed_class_count || 0);
+    summary.unassigned_student_count = Number(body.unassigned_student_count || 0);
+    await writeAutoApplyLog(env, version, 'auto_success', summary);
+    return { version_id: versionId, success: true, ...summary };
+  } catch (error) {
+    console.error('[timetable auto apply] failed:', error);
+    summary.error = String(error?.message || error);
+    try { await writeAutoApplyLog(env, version, 'auto_failed', summary); } catch (logError) { console.error('[timetable auto apply] log failed:', logError); }
+    return { version_id: versionId, success: false, error: summary.error };
+  }
+}
+
+// 매일 KST 0:05 cron에서 호출한다. status가 scheduled이고 적용일이 오늘 이전(포함)인 개편안만 적용한다.
+// draft는 날짜가 지나도 적용하지 않는다(기본 적용일이 다음 해 1월 1일이라, 짜다 만 개편안이 올라가는 사고를 막기 위해).
+// 실패하면 status가 scheduled로 남아(적용은 한 번의 batch라 중간 상태 없음) 다음 날 cron이 다시 시도한다.
+export async function runScheduledTimetableActivation(env, scheduledAt = new Date()) {
+  const today = kstDateString(scheduledAt);
+  const due = await env.DB.prepare(`
+    SELECT id FROM timetable_versions
+    WHERE status = 'scheduled' AND effective_from IS NOT NULL AND effective_from != '' AND effective_from <= ?
+    ORDER BY effective_from ASC, created_at ASC
+  `).bind(today).all();
+  const results = [];
+  for (const row of (due.results || [])) {
+    results.push(await autoApplyScheduledVersion(env, row.id, today));
+  }
+  return { today, due_count: results.length, results };
+}
+
+async function getLatestAutoApplyResult(env) {
+  const row = await env.DB.prepare(`
+    SELECT l.id, l.version_id, l.status, l.created_at, l.error_message, l.summary_json
+    FROM timetable_version_apply_logs l
+    WHERE l.status IN (${AUTO_APPLY_LOG_STATUSES.map(v => `'${v}'`).join(', ')})
+    ORDER BY l.created_at DESC, l.id DESC
+    LIMIT 1
+  `).first();
+  if (!row) return null;
+  return { ...row, summary: safeParseMemoJson(row.summary_json, 'auto apply summary') };
+}
+
 export async function handleTimetableVersions(request, env, teacher, path, url, body = {}) {
   if (!isAdminUser(teacher)) return forbidden();
 
@@ -1931,6 +2070,10 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
     return jsonResponse(await seedDraftFromOperations(env, versionId));
   }
 
+  if (method === 'GET' && id === 'auto-apply-latest') {
+    return jsonResponse({ success: true, auto_apply: await getLatestAutoApplyResult(env) });
+  }
+
   if (method === 'GET' && id && !action) {
     const version = await getVersion(env, id);
     if (!version) return jsonResponse({ success: false, error: 'Not found' }, 404);
@@ -1975,6 +2118,17 @@ export async function handleTimetableVersions(request, env, teacher, path, url, 
       return jsonResponse({ success: false, error: 'active version status cannot be changed here' }, 400);
     }
     const row = rowFromBody(body, ['title', 'status', 'effective_from', 'effective_to', 'memo']);
+    // 적용 예약(scheduled)은 적용일이 오늘보다 뒤여야 한다. 오늘 0:05 cron은 이미 지났으므로 오늘 이전·당일은 즉시 적용을 쓴다.
+    const nextStatus = String(row.status || version.status || '');
+    if (nextStatus === 'scheduled' && ('status' in row || 'effective_from' in row)) {
+      const nextEffective = String(('effective_from' in row ? row.effective_from : version.effective_from) || '').trim();
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(nextEffective)) {
+        return jsonResponse({ success: false, error: 'effective_from required for scheduled version' }, 400);
+      }
+      if (nextEffective <= kstDateString(new Date())) {
+        return jsonResponse({ success: false, error: 'effective_from must be after today for scheduled version' }, 400);
+      }
+    }
     if (row.status === 'cancelled') row.cancelled_at = new Date().toISOString();
     row.updated_at = new Date().toISOString();
     const keys = Object.keys(row);

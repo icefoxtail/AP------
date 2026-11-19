@@ -233,6 +233,8 @@ function installTimetableStyle() {
         '.tt-status-student-chip.tt-leave, .tt-std-name.tt-leave { color:#FF8C00 !important; }',
         '.tt-status-student-chip.tt-withdrawn, .tt-std-name.tt-withdrawn { color:#F9A8B8 !important; background:transparent !important; border:0 !important; text-decoration:none !important; }',
         '.tt-std-name.tt-search-hit { background:#FFE66D !important; color:#111827 !important; box-shadow:0 0 0 2px rgba(245,158,11,0.45) inset; font-weight:900; }',
+        '.tt-tab-row-draft { flex-wrap:wrap; }',
+        '.tt-tab-row-draft .tt-tab-scroll { flex:1 1 auto; }',
         '.tt-draft-actions { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:6px; min-width:0; }',
         '.tt-draft-actions .btn { min-height:28px; white-space:nowrap; }',
         '.tt-draft-actions input[type="date"] { height:28px; }',
@@ -942,9 +944,10 @@ function getNextTimetableDraftYear(now) {
 
 function getTimetableDueDraftVersions(now) {
     var today = (now instanceof Date ? now : new Date()).toLocaleDateString('sv-SE');
+    // 적용 예약(scheduled)된 개편안은 서버가 알아서 적용하므로 띠는 draft에만 띄운다.
     return getDraftTimetableVersionsForView().filter(function(version) {
         var effectiveFrom = String(version && version.effective_from || '').trim();
-        return !!effectiveFrom && effectiveFrom <= today;
+        return String(version && version.status || '') === 'draft' && !!effectiveFrom && effectiveFrom <= today;
     });
 }
 
@@ -1012,12 +1015,13 @@ function ensureTimetableVersionsLoaded() {
 function mergeTimetableRosterNotice(sync) {
     var ui = ensureTimetableVersionUiState();
     if (!sync || !Number(sync.changed || 0)) return;
-    var prev = ui.timetableRosterNotice || { added: [], removed: [], moved: [], addedClasses: [] };
+    var prev = ui.timetableRosterNotice || { added: [], removed: [], moved: [], addedClasses: [], closedClasses: [] };
     ui.timetableRosterNotice = {
         added: prev.added.concat(Array.isArray(sync.added) ? sync.added : []),
         removed: prev.removed.concat(Array.isArray(sync.removed) ? sync.removed : []),
         moved: prev.moved.concat(Array.isArray(sync.moved) ? sync.moved : []),
-        addedClasses: (prev.addedClasses || []).concat(Array.isArray(sync.added_classes) ? sync.added_classes : [])
+        addedClasses: (prev.addedClasses || []).concat(Array.isArray(sync.added_classes) ? sync.added_classes : []),
+        closedClasses: (prev.closedClasses || []).concat(Array.isArray(sync.closed_classes) ? sync.closed_classes : [])
     };
 }
 
@@ -1383,20 +1387,10 @@ function formatTimetableNameList(names, limit) {
     return text;
 }
 
-async function openTimetableDraftActivateConfirm() {
+// 적용·예약 확인 창이 함께 쓰는 요약(반 수·학생 수·삭제한 반·미배정). 호출 전에 명단을 먼저 갱신해 둔다.
+function buildTimetableDraftApplySummaryHtml() {
     var ui = ensureTimetableVersionUiState();
-    var version = getSelectedTimetableVersionForView();
-    if (!isTimetableAdminMode() || !isTimetableDraftMode() || !ui.selectedTimetableVersionId || !version) return;
-    // 열기 전에 먼저 현재 운영 명단으로 갱신한다. 그 결과가 반영된 숫자를 보여 줘야 낡은 명단으로 적용하지 않는다.
-    var fresh = await reloadTimetableDraftDetail();
-    if (!fresh) return;
-    version = getSelectedTimetableVersionForView() || version;
-    var effective = String(version.effective_from || '').trim() || '미지정';
-    var isFuture = /^\d{4}-\d{2}-\d{2}$/.test(effective) && effective > getTimetableTodayString();
     var warnStyle = 'padding:10px 12px; border:1px solid rgba(255,149,0,0.24); background:rgba(255,149,0,0.08); border-radius:8px; font-size:12px; font-weight:700; line-height:1.5;';
-    var futureWarn = isFuture
-        ? '<div style="' + warnStyle + '">적용일이 아직 지나지 않았습니다. 그래도 적용하면 지금 운영 시간표로 반영됩니다.</div>'
-        : '';
     var classCount = getTimetableClassList().length;
     var assigned = getTimetableDraftAssignmentRows();
     var studentCount = assigned.filter(function(row) { return !row.temp_student_id; }).length;
@@ -1404,8 +1398,8 @@ async function openTimetableDraftActivateConfirm() {
     var unassigned = ui.selectedTimetableVersionUnassigned || [];
     var removed = ui.selectedTimetableVersionRemovedClasses || [];
     var rosterNotice = ui.timetableRosterNotice;
-    var rosterNoticeHtml = rosterNotice && (rosterNotice.added.length || rosterNotice.removed.length || rosterNotice.moved.length || (rosterNotice.addedClasses || []).length)
-        ? '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">방금 현재 명단으로 갱신했습니다. 상단의 갱신 알림에서 바뀐 학생을 확인할 수 있습니다.</div>'
+    var rosterNoticeHtml = rosterNotice && (rosterNotice.added.length || rosterNotice.removed.length || rosterNotice.moved.length || (rosterNotice.addedClasses || []).length || (rosterNotice.closedClasses || []).length)
+        ? '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">방금 현재 명단으로 갱신했습니다. 상단의 갱신 알림에서 바뀐 내용을 확인할 수 있습니다.</div>'
         : '';
     // 개편안에서 새로 등록한 학생(temp)은 반이 없으면 적용 때 학생으로 등록되지 않으므로 일반 미배정과 따로 경고한다.
     var unassignedTemp = unassigned.filter(function(row) { return !!String(row.temp_student_id || '').trim(); });
@@ -1418,17 +1412,35 @@ async function openTimetableDraftActivateConfirm() {
     var removedHtml = removed.length
         ? '<div>삭제한 반 ' + removed.length + '개: ' + apEscapeHtml(formatTimetableNameList(removed.map(function(row) { return row.name_snapshot || row.source_name || ''; }), 8)) + ' (운영에서도 닫힙니다)</div>'
         : '';
+    return '' +
+        '<div style="display:flex; flex-direction:column; gap:4px; padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:13px; font-weight:700; color:var(--text); line-height:1.5;">' +
+            '<div>반 ' + classCount + '개 · 학생 ' + studentCount + '명' + (newCount ? ' · 신규 등록 ' + newCount + '명' : '') + '</div>' +
+            removedHtml +
+        '</div>' +
+        rosterNoticeHtml +
+        unassignedHtml;
+}
+
+async function openTimetableDraftActivateConfirm() {
+    var ui = ensureTimetableVersionUiState();
+    var version = getSelectedTimetableVersionForView();
+    if (!isTimetableAdminMode() || !isTimetableDraftMode() || !ui.selectedTimetableVersionId || !version) return;
+    // 열기 전에 먼저 현재 운영 명단으로 갱신한다. 그 결과가 반영된 숫자를 보여 줘야 낡은 명단으로 적용하지 않는다.
+    var fresh = await reloadTimetableDraftDetail();
+    if (!fresh) return;
+    version = getSelectedTimetableVersionForView() || version;
+    var effective = String(version.effective_from || '').trim() || '미지정';
+    var isFuture = /^\d{4}-\d{2}-\d{2}$/.test(effective) && effective > getTimetableTodayString();
+    var warnStyle = 'padding:10px 12px; border:1px solid rgba(255,149,0,0.24); background:rgba(255,149,0,0.08); border-radius:8px; font-size:12px; font-weight:700; line-height:1.5;';
+    var futureWarn = isFuture
+        ? '<div style="' + warnStyle + '">적용일이 아직 지나지 않았습니다. 그래도 적용하면 지금 운영 시간표로 반영됩니다. 적용일에 자동으로 반영하려면 [적용 예약]을 쓰세요.</div>'
+        : '';
     var body = '' +
         '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
             '<div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.5;">' + apEscapeHtml(version.title || '시간표 초안') + '</div>' +
             '<div style="font-size:13px; font-weight:700; color:var(--secondary); line-height:1.5;">적용일: ' + apEscapeHtml(effective) + '</div>' +
             futureWarn +
-            '<div style="display:flex; flex-direction:column; gap:4px; padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:13px; font-weight:700; color:var(--text); line-height:1.5;">' +
-                '<div>반 ' + classCount + '개 · 학생 ' + studentCount + '명' + (newCount ? ' · 신규 등록 ' + newCount + '명' : '') + '</div>' +
-                removedHtml +
-            '</div>' +
-            rosterNoticeHtml +
-            unassignedHtml +
+            buildTimetableDraftApplySummaryHtml() +
             '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">적용하면 개편안의 반, 시간, 학생 배치가 운영 기준으로 반영됩니다.</div>' +
             '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
                 '<button class="btn" onclick="closeModal()">취소</button>' +
@@ -1437,6 +1449,142 @@ async function openTimetableDraftActivateConfirm() {
         '</div>';
     if (typeof showModalStep === 'function') showModalStep('개편 시간표 적용', body); else showModal('개편 시간표 적용', body);
 }
+
+// "○월 ○일" (YYYY-MM-DD 입력). 형식이 아니면 원문을 돌려준다.
+function formatTimetableMonthDay(dateText) {
+    var m = String(dateText || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+    return m ? Number(m[2]) + '월 ' + Number(m[3]) + '일' : String(dateText || '');
+}
+
+function getTimetableDraftStatusText(version) {
+    if (version && String(version.status || '') === 'scheduled') {
+        return formatTimetableMonthDay(version.effective_from) + ' 자동 적용 예약';
+    }
+    return getTimetableStatusLabel(version && version.status);
+}
+
+// [적용 예약]: 적용일이 되면 서버가 매일 0시 5분(한국 시간)에 명단을 맞춘 뒤 자동 적용한다.
+async function openTimetableDraftScheduleConfirm() {
+    var ui = ensureTimetableVersionUiState();
+    var version = getSelectedTimetableVersionForView();
+    if (!isTimetableAdminMode() || !isTimetableDraftMode() || !ui.selectedTimetableVersionId || !version) return;
+    var fresh = await reloadTimetableDraftDetail();
+    if (!fresh) return;
+    version = getSelectedTimetableVersionForView() || version;
+    var effective = String(version.effective_from || '').trim();
+    var validDate = /^\d{4}-\d{2}-\d{2}$/.test(effective);
+    var warnStyle = 'padding:10px 12px; border:1px solid rgba(255,149,0,0.24); background:rgba(255,149,0,0.08); border-radius:8px; font-size:12px; font-weight:700; line-height:1.5;';
+    var tooLate = !validDate || effective <= getTimetableTodayString();
+    var message = !validDate
+        ? '적용일을 먼저 정하고 [저장]을 눌러 주세요.'
+        : (tooLate ? '적용일이 오늘이거나 이미 지났습니다. 예약 대신 [개편 시간표 적용]으로 바로 적용해 주세요.' : '');
+    var body = '' +
+        '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
+            '<div style="font-size:14px; font-weight:800; color:var(--text); line-height:1.5;">' + apEscapeHtml(version.title || '시간표 초안') + '</div>' +
+            '<div style="font-size:13px; font-weight:700; color:var(--secondary); line-height:1.5;">적용일: ' + apEscapeHtml(validDate ? effective : '미지정') + '</div>' +
+            (message ? '<div style="' + warnStyle + '">' + apEscapeHtml(message) + '</div>' : '') +
+            buildTimetableDraftApplySummaryHtml() +
+            '<div style="padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:12px; font-weight:700; color:var(--secondary); line-height:1.5;">예약해 두면 적용일 한국 시간 0시 5분에 그때의 현재 명단으로 맞춰 운영 시간표에 자동 반영됩니다. 예약한 뒤에도 배치와 적용일은 바꿀 수 있고, [예약 취소]로 되돌릴 수 있습니다. 반 없는 학생이 있어도 자동 적용은 진행됩니다.</div>' +
+            '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
+                '<button class="btn" onclick="closeModal()">취소</button>' +
+                (tooLate ? '' : '<button class="btn btn-primary" onclick="window.ttScheduleDraftConfirmed()">적용 예약</button>') +
+            '</div>' +
+        '</div>';
+    if (typeof showModalStep === 'function') showModalStep('적용 예약', body); else showModal('적용 예약', body);
+}
+
+async function setTimetableDraftScheduledState(scheduled) {
+    var ui = ensureTimetableVersionUiState();
+    if (!isTimetableAdminMode() || !isTimetableDraftMode() || !ui.selectedTimetableVersionId) return;
+    var actionBtn = document.querySelector('#modal-body .btn-primary');
+    if (actionBtn && actionBtn.disabled) return;
+    if (actionBtn) actionBtn.disabled = true;
+    try {
+        var res = await api.patch('timetable-versions/' + encodeURIComponent(ui.selectedTimetableVersionId), { status: scheduled ? 'scheduled' : 'draft' });
+        if (!res || res.success === false || !res.timetable_version) throw new Error((res && res.error) || 'schedule failed');
+        ui.selectedTimetableVersion = res.timetable_version;
+        ui.timetableVersions = (ui.timetableVersions || []).map(function(version) {
+            return String(version.id) === String(res.timetable_version.id) ? res.timetable_version : version;
+        });
+        if (typeof closeModal === 'function') closeModal(true);
+        if (typeof toast === 'function') toast(scheduled ? formatTimetableMonthDay(res.timetable_version.effective_from) + ' 자동 적용으로 예약했습니다.' : '적용 예약을 취소했습니다.', 'info');
+        renderTimetable();
+    } catch (e) {
+        console.error('[setTimetableDraftScheduledState] failed:', e);
+        if (typeof toast === 'function') toast(scheduled ? '적용 예약에 실패했습니다. 적용일이 오늘보다 뒤인지 확인해 주세요.' : '예약 취소에 실패했습니다.', 'warn');
+        if (actionBtn) actionBtn.disabled = false;
+    }
+}
+
+function openTimetableDraftScheduleCancelConfirm() {
+    var version = getSelectedTimetableVersionForView();
+    if (!isTimetableAdminMode() || !isTimetableDraftMode() || !version) return;
+    showModal('예약 취소', '' +
+        '<div style="display:flex; flex-direction:column; gap:12px; padding:0 4px 4px;">' +
+            '<div style="font-size:13px; font-weight:700; color:var(--text); line-height:1.6;">' + apEscapeHtml(formatTimetableMonthDay(version.effective_from)) + ' 자동 적용 예약을 취소합니다. 개편안은 그대로 남고 자동으로 적용되지 않습니다.</div>' +
+            '<div style="display:flex; justify-content:flex-end; gap:8px; padding-top:4px;">' +
+                '<button class="btn" onclick="closeModal(true)">닫기</button>' +
+                '<button class="btn btn-primary" onclick="window.ttScheduleDraftCancelConfirmed()">예약 취소</button>' +
+            '</div>' +
+        '</div>');
+}
+
+// 최근 자동 적용 결과 띠(원장이 시간표를 열면 한 번 보여 준다. 닫으면 로그 id를 브라우저에 기억해 다시 안 뜬다).
+var TIMETABLE_AUTO_APPLY_SEEN_KEY = 'ap_tt_auto_apply_seen';
+
+function getTimetableAutoApplySeenId() {
+    try { return String(localStorage.getItem(TIMETABLE_AUTO_APPLY_SEEN_KEY) || ''); } catch (e) { return ''; }
+}
+
+function setTimetableAutoApplySeenId(id) {
+    try { localStorage.setItem(TIMETABLE_AUTO_APPLY_SEEN_KEY, String(id || '')); } catch (e) { /* 저장소를 못 써도 화면은 동작한다 */ }
+}
+
+function ensureTimetableAutoApplyLoaded() {
+    var ui = ensureTimetableVersionUiState();
+    if (!isTimetableAdminMode() || ui.timetableAutoApplyLoaded || ui.timetableAutoApplyLoading) return;
+    ui.timetableAutoApplyLoading = true;
+    api.get('timetable-versions/auto-apply-latest')
+        .then(function(res) {
+            ui.timetableAutoApply = res && res.success !== false && res.auto_apply ? res.auto_apply : null;
+            ui.timetableAutoApplyLoaded = true;
+            if (ui.timetableAutoApply && getTimetableAutoApplySeenId() !== String(ui.timetableAutoApply.id)) {
+                if (document.getElementById('timetable-root') && typeof renderTimetable === 'function') renderTimetable();
+            }
+        })
+        .catch(function(e) { console.warn('[ensureTimetableAutoApplyLoaded] failed:', e); })
+        .finally(function() { ui.timetableAutoApplyLoading = false; });
+}
+
+function buildTimetableAutoApplyBannerHtml() {
+    var ui = ensureTimetableVersionUiState();
+    var log = ui.timetableAutoApply;
+    if (!log || !log.id || getTimetableAutoApplySeenId() === String(log.id)) return '';
+    var summary = log.summary || {};
+    var btnStyle = getTimetableHeaderActionButtonStyle();
+    var closeBtn = '<button class="btn" style="' + btnStyle + '" onclick="window.ttCloseAutoApplyNotice()">닫기</button>';
+    if (String(log.status) === 'auto_failed') {
+        return '<div class="tt-draft-bar" style="border-color:rgba(255,59,48,0.28);"><span>자동 적용에 실패했습니다. 개편안을 열어 직접 적용해 주세요.</span>' +
+            '<span class="tt-draft-bar-actions">' +
+                (log.version_id ? '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(log.version_id)) + '\')">개편안 보기</button>' : '') +
+                closeBtn +
+            '</span></div>';
+    }
+    var names = Array.isArray(summary.unassigned_students) ? summary.unassigned_students : [];
+    return '<div class="tt-draft-bar"><span>개편안이 ' + apEscapeHtml(formatTimetableMonthDay(summary.applied_on || String(log.created_at || '').slice(0, 10))) + ' 자동 적용되었습니다' +
+        (names.length ? ' · 반 없는 학생 ' + names.length + '명(' + apEscapeHtml(formatTimetableNameList(names, 5)) + ')' : '') + '</span>' +
+        '<span class="tt-draft-bar-actions">' + closeBtn + '</span></div>';
+}
+
+window.ttCloseAutoApplyNotice = function() {
+    var log = ensureTimetableVersionUiState().timetableAutoApply;
+    if (log && log.id) setTimetableAutoApplySeenId(log.id);
+    renderTimetable();
+};
+window.ttScheduleDraft = function() { openTimetableDraftScheduleConfirm(); };
+window.ttScheduleDraftConfirmed = function() { setTimetableDraftScheduledState(true); };
+window.ttScheduleDraftCancel = function() { openTimetableDraftScheduleCancelConfirm(); };
+window.ttScheduleDraftCancelConfirmed = function() { setTimetableDraftScheduledState(false); };
 
 async function confirmTimetableDraftActivate() {
     var ui = ensureTimetableVersionUiState();
@@ -1958,6 +2106,10 @@ function buildTimetableRosterSummaryParts(notice) {
     var removed = notice.removed || [];
     var moved = notice.moved || [];
     var addedClasses = notice.addedClasses || [];
+    var closedClasses = notice.closedClasses || [];
+    if (closedClasses.length) {
+        parts.push('운영에서 닫힌 반 ' + closedClasses.length + '개 삭제(' + formatTimetableNameList(closedClasses.map(function(row) { return row.name; }), 3) + ')');
+    }
     if (addedClasses.length) {
         parts.push('새 반 ' + addedClasses.length + '개 추가(' + formatTimetableNameList(addedClasses.map(function(row) { return row.name; }), 3) + ')');
     }
@@ -2023,7 +2175,7 @@ function buildTimetableDraftRosterBannerHtml() {
 
 function openTimetableDraftRosterDetailModal() {
     var ui = ensureTimetableVersionUiState();
-    var notice = ui.timetableRosterNotice || { added: [], removed: [], moved: [], addedClasses: [] };
+    var notice = ui.timetableRosterNotice || { added: [], removed: [], moved: [], addedClasses: [], closedClasses: [] };
     var multi = ui.timetableRosterMulti || [];
     var sectionStyle = 'display:flex; flex-direction:column; gap:4px; padding:10px 12px; border:1px solid var(--border); background:var(--surface-2); border-radius:8px; font-size:13px; font-weight:700; color:var(--text); line-height:1.5;';
     var section = function(title, rows, unit) {
@@ -2032,6 +2184,7 @@ function openTimetableDraftRosterDetailModal() {
             rows.map(function(text) { return '<div>' + apEscapeHtml(text) + '</div>'; }).join('') + '</div>';
     };
     var html = '<div style="display:flex; flex-direction:column; gap:10px; padding:0 4px 4px;">' +
+        section('운영에서 닫혀 삭제한 반(되살리기 가능, 남은 학생은 미배정)', (notice.closedClasses || []).map(function(row) { return row.name; }), '개') +
         section('새 반 추가(운영에서 새로 연 반)', (notice.addedClasses || []).map(function(row) { return row.name; }), '개') +
         section('신입 추가', (notice.added || []).map(function(row) {
             return row.student_name + ' → ' + (row.unassigned ? '미배정 (현재 운영 반: ' + (row.ops_class_names || []).join(', ') + ')' : row.class_name);
@@ -2085,7 +2238,7 @@ window.ttDraftStudentUnassign = function(studentId) { unassignTimetableDraftStud
 window.ttDraftStudentMove = function(studentId, sourceClassId) { moveTimetableDraftStudentFromModal(studentId, sourceClassId); };
 
 function getTimetableHeaderActionButtonStyle() {
-    return 'min-height:28px; padding:5px 9px; font-size:11px; font-weight:700; border-radius:999px; white-space:nowrap; ' +
+    return 'min-height:28px; padding:5px 9px; font-size:11px; font-weight:700; border-radius:999px; ' +
         'background:var(--surface); color:var(--secondary); border:1px solid var(--border); box-shadow:none;';
 }
 
@@ -2116,17 +2269,20 @@ function buildTimetableVersionHeaderActionsHtml() {
     var shouldShowCreate = !hasNextYearDraft;
     // 좁은 화면(휴대폰)에서는 버튼이 여러 줄에 놓이고 글자는 한 줄로 유지된다(.tt-draft-actions, installTimetableStyle).
     var html = '<div class="tt-draft-actions">';
-    var draftBtnStyle = btnStyle.replace('min-height:28px; ', '');
+    var draftBtnStyle = btnStyle.replace('min-height:28px; ', '') + ' white-space:nowrap;';
 
     if (isTimetableDraftMode() && selectedVersion) {
         html += '<span class="tt-draft-actions-title">' + apEscapeHtml(selectedVersion.title || '시간표 초안') + '</span>';
-        html += '<span class="tt-draft-actions-status">상태: ' + apEscapeHtml(getTimetableStatusLabel(selectedVersion.status)) + '</span>';
+        html += '<span class="tt-draft-actions-status">상태: ' + apEscapeHtml(getTimetableDraftStatusText(selectedVersion)) + '</span>';
         html += '<input id="tt-draft-effective-from" type="date" value="' + apEscapeHtml(selectedVersion.effective_from || '') + '" style="width:132px; padding:0 8px; border:1px solid var(--border); border-radius:999px; background:var(--surface); font-size:11px; font-weight:800; color:var(--text);">';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttSaveDraftEffectiveDate()">저장</button>';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttReturnActiveView()">운영 시간표로 이동</button>';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttRefreshDraftRoster()" title="현재 운영 명단으로 개편안을 다시 맞춥니다">명단 새로고침</button>';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttRestartDraft()" title="개편안을 버리고 현재 운영 명단으로 다시 만듭니다">새로 만들기</button>';
         html += '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScanDraftPreview()">충돌 확인</button>';
+        html += String(selectedVersion.status || '') === 'scheduled'
+            ? '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScheduleDraftCancel()" title="적용일 자동 적용 예약을 취소합니다">예약 취소</button>'
+            : '<button class="btn" style="' + draftBtnStyle + '" onclick="window.ttScheduleDraft()" title="적용일이 되면 자동으로 운영 시간표에 반영합니다">적용 예약</button>';
         html += '<button class="btn btn-primary" style="padding:5px 10px; font-size:11px; font-weight:800; border-radius:999px; white-space:nowrap;" onclick="window.ttOpenDraftActivateConfirm()">개편 시간표 적용</button>';
     } else if (primaryDraft) {
         html += '<button class="btn" style="' + btnStyle + '" onclick="window.ttOpenDraftVersion(\'' + apEscapeHtml(String(primaryDraft.id || '')) + '\')">개편시간표</button>';
@@ -2146,7 +2302,7 @@ function buildTimetableVersionBannerHtml() {
     var previewCounts = ui.timetableDraftPreviewResult && ui.timetableDraftPreviewResult.counts
         ? ui.timetableDraftPreviewResult.counts
         : null;
-    var html = '';
+    var html = buildTimetableAutoApplyBannerHtml();
 
     if (dueVersions.length > 0) {
         var dueVersion = dueVersions[0];
@@ -4479,7 +4635,10 @@ function renderTimetable() {
     enterTimetableWideMode();
     ensureTimetableClassTimeSlotsLoaded();
     ensureTimetableVersionUiState();
-    if (isTimetableAdminMode()) ensureTimetableVersionsLoaded();
+    if (isTimetableAdminMode()) {
+        ensureTimetableVersionsLoaded();
+        ensureTimetableAutoApplyLoaded();
+    }
 
     if (typeof state !== 'undefined') {
         if (!state.ui) state.ui = {};
@@ -4510,7 +4669,7 @@ function renderTimetable() {
                 apTimetableMonthControlsHtml() +
             '</div>' +
             buildTimetableVersionBannerHtml() +
-            '<div class="tt-tab-row">' +
+            '<div class="tt-tab-row' + (isTimetableDraftMode() ? ' tt-tab-row-draft' : '') + '">' +
                 '<div class="tt-tab-scroll">' +
                     '<button class="tab-btn' + (isMid ? ' active' : '') + '" data-tt-section-btn="middle" onclick="window.ttSetSection(\'middle\')">중등부</button>' +
                     '<button class="tab-btn' + (!isMid ? ' active' : '') + '" data-tt-section-btn="high" onclick="window.ttSetSection(\'high\')">고등부</button>' +

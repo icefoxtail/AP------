@@ -11,9 +11,12 @@ const toasts = [];
 let nextDetail = null;
 const api = {
   async get(resource) { calls.push(['GET', resource]); return nextDetail; },
-  async post(resource, body) { calls.push(['POST', resource, body]); return nextPost; }
+  async post(resource, body) { calls.push(['POST', resource, body]); return nextPost; },
+  async patch(resource, body) { calls.push(['PATCH', resource, body]); return nextPatch; }
 };
 let nextPost = {};
+let nextPatch = {};
+const storage = new Map();
 
 const context = {
   state: {
@@ -27,6 +30,7 @@ const context = {
   toast: (message, type) => toasts.push([message, type]),
   apEscapeHtml: text => String(text == null ? '' : text).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch])),
   setTimeout: () => 0,
+  localStorage: { getItem: key => (storage.has(key) ? storage.get(key) : null), setItem: (key, value) => storage.set(key, String(value)) },
   console, Set, Map, Array, Date, String, Number, Object, Math, JSON, Promise
 };
 vm.runInNewContext(timetable, context);
@@ -203,6 +207,65 @@ const detail = (extra = {}) => ({
   await context.confirmTimetableDraftActivate();
   assert.match(blockedBody, /먼저 현재 명단과 맞춰 주세요/);
   assert.match(blockedBody, /맞추기/);
+
+  // ───────────── 적용 예약 · 자동 적용 결과 ─────────────
+  const ui2 = context.state.ui;
+  ui2.timetableVersions = [{ id: 'v1', status: 'draft', title: '개편 초안', effective_from: '2031-01-10', school_year: 2031 }];
+  ui2.selectedTimetableVersion = ui2.timetableVersions[0];
+  let header2 = context.buildTimetableVersionHeaderActionsHtml();
+  assert.match(header2, /적용 예약/);
+  assert.doesNotMatch(header2, /예약 취소/);
+  assert.match(header2, /개편 시간표 적용/, '즉시 적용 버튼은 그대로');
+  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', title: '개편 초안', effective_from: '2031-01-10', school_year: 2031 }];
+  ui2.selectedTimetableVersion = ui2.timetableVersions[0];
+  header2 = context.buildTimetableVersionHeaderActionsHtml();
+  assert.match(header2, /예약 취소/);
+  assert.match(header2, /1월 10일 자동 적용 예약/);
+
+  // "적용 예정일이 지났습니다" 띠는 draft에만
+  ui2.timetableVersions = [{ id: 'v1', status: 'scheduled', effective_from: '2020-01-01' }];
+  assert.equal(context.getTimetableDueDraftVersions(new Date('2031-02-01T00:00:00')).length, 0);
+  ui2.timetableVersions = [{ id: 'v1', status: 'draft', effective_from: '2020-01-01' }];
+  assert.equal(context.getTimetableDueDraftVersions(new Date('2031-02-01T00:00:00')).length, 1);
+
+  // 예약 확인 창: 적용일이 미래면 [적용 예약] 버튼, 오늘 이전이면 즉시 적용 안내
+  nextDetail = detail({ timetable_version: { id: 'v1', status: 'draft', title: '개편 초안', school_year: 2031, effective_from: '2031-01-10' } });
+  await context.openTimetableDraftScheduleConfirm();
+  assert.match(confirmBody, /적용일: 2031-01-10/);
+  assert.match(confirmBody, /window\.ttScheduleDraftConfirmed\(\)/);
+  assert.match(confirmBody, /반 2개 · 학생 1명/, '예약 창에도 요약이 보인다');
+  nextDetail = detail({ timetable_version: { id: 'v1', status: 'draft', title: '개편 초안', school_year: 2031, effective_from: '2020-01-01' } });
+  await context.openTimetableDraftScheduleConfirm();
+  assert.match(confirmBody, /예약 대신 \[개편 시간표 적용\]으로 바로 적용/);
+  assert.doesNotMatch(confirmBody, /ttScheduleDraftConfirmed/);
+
+  // 예약/취소는 PATCH status
+  nextPatch = { success: true, timetable_version: { id: 'v1', status: 'scheduled', title: '개편 초안', effective_from: '2031-01-10' } };
+  calls.length = 0;
+  await context.setTimetableDraftScheduledState(true);
+  assert.equal(JSON.stringify(calls[0]), JSON.stringify(['PATCH', 'timetable-versions/v1', { status: 'scheduled' }]));
+  assert.equal(context.state.ui.selectedTimetableVersion.status, 'scheduled');
+  nextPatch = { success: true, timetable_version: { id: 'v1', status: 'draft', title: '개편 초안', effective_from: '2031-01-10' } };
+  calls.length = 0;
+  await context.setTimetableDraftScheduledState(false);
+  assert.equal(JSON.stringify(calls[0]), JSON.stringify(['PATCH', 'timetable-versions/v1', { status: 'draft' }]));
+
+  // 자동 적용 결과 띠: 한 번 보여 주고, 닫으면 로그 id를 기억해 다시 안 뜬다
+  ui2.timetableAutoApply = { id: 'log1', status: 'auto_success', version_id: 'v1', created_at: '2031-01-10 00:05:00', summary: { applied_on: '2031-01-10', unassigned_students: ['나', '다'] } };
+  let bannerA = context.buildTimetableVersionBannerHtml();
+  assert.match(bannerA, /개편안이 1월 10일 자동 적용되었습니다 · 반 없는 학생 2명\(나, 다\)/);
+  context.window.ttCloseAutoApplyNotice();
+  assert.doesNotMatch(context.buildTimetableVersionBannerHtml(), /자동 적용되었습니다/);
+  assert.equal(storage.get('ap_tt_auto_apply_seen'), 'log1');
+  ui2.timetableAutoApply = { id: 'log2', status: 'auto_failed', version_id: 'v1', created_at: '2031-01-11 00:05:00', summary: { error: 'x' } };
+  bannerA = context.buildTimetableVersionBannerHtml();
+  assert.match(bannerA, /자동 적용에 실패했습니다\. 개편안을 열어 직접 적용해 주세요/);
+  assert.match(bannerA, /개편안 보기/);
+
+  // 운영에서 닫힌 반 알림
+  context.state.ui.timetableRosterNotice = null;
+  context.mergeTimetableRosterNotice({ added: [], removed: [], moved: [], added_classes: [], closed_classes: [{ class_id: 'vc2', name: '닫힌 반' }], changed: 1 });
+  assert.match(context.buildTimetableVersionBannerHtml(), /운영에서 닫힌 반 1개 삭제\(닫힌 반\)/);
 
   console.log('apmath-timetable-draft-ui: all assertions passed');
 })().catch(error => {
