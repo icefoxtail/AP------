@@ -1,0 +1,53 @@
+{
+  "qid": 4,
+  "itemFingerprint": "131568ed2ed57967",
+  "solveSteps": [
+    "해일의 최고 높이 H = 100을 관계식 M = log H + 5.8 에 대입한다.",
+    "M = log 100 + 5.8 = log 10^2 + 5.8 = 2 + 5.8 = 7.8 이다.",
+    "따라서 지진의 규모 M은 7.8이다. 100 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "어느 지역의 해저에서 일어난 지진의 규모를 $",
+  "rpmRecordId": "H2-M1-RPM-075",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "관계식 M=log H+5.8에 H=100을 대입하여 M=2+5.8=7.8을 계산했다.",
+  "typeReason": "로그 실생활 관계식에 주어진 수치 H=100을 대입하여 규모를 계산하는 유형이다.",
+  "rpmReason": "상용로그의 기본 성질 log 100=2를 실생활 식에 적용하는 RPM 유형이다.",
+  "difficultyReason": "H=100을 대입해 2+5.8=7.8을 즉시 구하는 기본 난이도 1 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "높이",
+        "quote": "고 높이를 $H\\text{ m}$라고 하면  ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "quote": "에 대입하면  \n$M = \\log 100 + ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

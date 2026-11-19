@@ -1,0 +1,55 @@
+{
+  "qid": 13,
+  "itemFingerprint": "0bfaca6408d01240",
+  "solveSteps": [
+    "a > 0 이므로 y = a*sin(pi/(3b) * x) 의 최댓값은 a = 4 이다.",
+    "b > 0 이므로 주기는 2pi / (pi / (3b)) = 6b 이다. 4",
+    "주기가 6이므로 6b = 6 에서 b = 1 이다. 4",
+    "따라서 a + b = 4 + 1 = 5 이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "함수 $y = a\\sin\\dfrac{\\pi}{",
+  "rpmRecordId": "H2-M1-RPM-105",
+  "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+  "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "최댓값 a=4와 주기 6b=6에서 b=1을 얻어 a+b=5를 구했다.",
+  "typeReason": "사인함수의 진폭과 주기로부터 미정계수 4와 b를 결정하는 그래프 변환 유형이다.",
+  "rpmReason": "삼각함수 식의 주기 6과 진폭 최댓값 4를 공식으로 환원하는 RPM 유형이다.",
+  "difficultyReason": "최댓값 공식 a=4와 주기 공식 6b=6을 직접 적용하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "최댓값",
+        "quote": "의 최댓값은 $4$이고 주기는 $6$이다. 두",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "주기",
+        "quote": "로 주기는 $\\dfrac{2\\pi}{\\frac",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

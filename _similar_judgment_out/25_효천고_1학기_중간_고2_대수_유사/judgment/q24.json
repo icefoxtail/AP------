@@ -1,0 +1,55 @@
+{
+  "qid": 24,
+  "itemFingerprint": "27430b8c80ce1086",
+  "solveSteps": [
+    "u = 2(x - pi/12) 라 하면 -13pi/6 <= u <= 11pi/6 이다. 12",
+    "y = 1 과 만나는 점 n = 9 이므로 m - n = -1 에서 m = 8 이어야 한다. 12",
+    "따라서 k의 범위는 1/2 < k < 1 또는 1 < k < 3/2 이다. 12",
+    "각 범위에서의 실근 합은 각각 -4pi/3 과 2pi/3 이다. 12",
+    "정답은 1/2 < k < 1 이면 -4pi/3, 1 < k < 3/2 이면 2pi/3 이다. 12"
+  ],
+  "solvedAnswer": "$\\dfrac{1}{2} < k < 1$이면 $-\\dfrac{4\\pi}{3}$, $1 < k < \\dfrac{3}{2}$이면 $\\dfrac{2\\pi}{3}$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "술형 4. [5점]  \n함수 $f(x) = \\",
+  "rpmRecordId": "H2-M1-RPM-107",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "치환 u=2(x-pi/12)에서 n=9, m=8 범위를 구하고 대칭성을 이용해 8개 실근의 합 -4pi/3과 2pi/3을 구했다.",
+  "typeReason": "절댓값 삼각함수 그래프와 직선의 교점 12 개수 조건 및 대칭성을 이용한 실근 합을 구하는 심화 유형이다.",
+  "rpmReason": "삼각함수의 변환 그래프와 수평 직선의 교점 12 개수 및 실근의 합을 구하는 고난도 RPM 유형이다.",
+  "difficultyReason": "치환 범위 설정, 교점 개수 조건 m=8 판정, 두 구간별 대칭성 실근 합 계산 12를 서술하는 난이도 4 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "실근",
+        "quote": "든 실근의 합을 각각 구하는 과정을 서술하시오",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "치역",
+        "quote": "의 치역은 $\\left[\\dfrac{1}{2}",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

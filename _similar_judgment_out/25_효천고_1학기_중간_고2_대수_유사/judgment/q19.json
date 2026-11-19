@@ -1,0 +1,54 @@
+{
+  "qid": 19,
+  "itemFingerprint": "b8fae730ed695093",
+  "solveSteps": [
+    "f(x) = log(x-k) 와 g(x) = 10^(x-k) + k 는 직선 y = x + k 에 대해 대칭인 역함수 관계이다.",
+    "직선 y = -x + 2k 는 기울기가 -1 이므로 두 점 A, B는 y = x + k 에 대칭이다. 10",
+    "선분 AB의 중점이 교점이므로 거리가 4*sqrt(2) 일 때 k = 2 가 도출된다. 10",
+    "정답은 ⑤ k=2 이다. 10"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "상수 $k$ ($k > 0$)에 대하여 직선 ",
+  "rpmRecordId": "H2-M1-RPM-094",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "지수함수 10^(x-k)+k와 로그함수의 역함수 대칭축과 직선 y=-x+2k의 수직 교점 성질로부터 k=2를 판정했다.",
+  "typeReason": "지수함수 10^(x-k)+k와 로그함수의 역함수 대칭성과 기울기 -1인 직선 y=-x+2k의 기하적 성질을 융합하는 유형이다.",
+  "rpmReason": "로그함수와 지수함수 10 거듭제곱의 역함수 그래프 교점과 선분 길이를 다루는 RPM 유형이다.",
+  "difficultyReason": "역함수 대칭성을 파악하고 중점 좌표와 선분 길이 공식을 연립하여 10 관련 지수를 해석하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "직선",
+        "quote": "여 직선 $y = -x + 2k$가 두 함수 ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "quote": "의 역함수는 $y = \\log(x - k - ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

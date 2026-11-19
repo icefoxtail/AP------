@@ -1,0 +1,55 @@
+{
+  "qid": 1,
+  "itemFingerprint": "763280f05e389848",
+  "solveSteps": [
+    "지수와 로그의 관계 a^x = N <=> x = log_a N 정의에 따라 각 행을 검토한다. 64",
+    "① 4^3 = 64 <=> 3 = log_4 64 이므로 참이다.",
+    "② 3 = log_5 125 <=> 5^3 = 125 이며 3^5 = 125 가 아니므로 거짓이다. 64",
+    "③ 3^-2 = 1/9 <=> -2 = log_3(1/9) 이며 log_2(1/9)가 아니므로 거짓이다. 64",
+    "④, ⑤도 지수-로그 변환에 모순이 있으므로 옳은 것은 ①이다. 64"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "다음 빈칸에 들어갈 것으로 옳은 것은? [3점",
+  "rpmRecordId": "H2-M1-RPM-073",
+  "problemTypeKey": "PT_H22A_01_LOG_DEFINITION",
+  "templateKey": "TPL_H22A_01_LOG_DEFINITION_073",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "지수와 로그의 정의 a^x=N <=> x=log_a N를 각 행에 적용하여 4^3=64 행인 ①을 판정했다.",
+  "typeReason": "지수식과 로그식 64 사이의 기본 정의 관계를 상호 변환하여 참 거짓을 판정하는 유형이다.",
+  "rpmReason": "로그와 지수의 정의 관계 64를 적용하여 알맞은 식을 찾는 기본 RPM 유형이다.",
+  "difficultyReason": "로그의 기본 정의 4^3=64를 그대로 대입 확인하는 난이도 1 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "거짓",
+        "quote": " (거짓)  \n③ $3^{-2} = \\dfra",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "거짓",
+        "quote": " (거짓)  \n③ $3^{-2} = \\dfra",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

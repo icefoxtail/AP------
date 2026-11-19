@@ -1,0 +1,55 @@
+{
+  "qid": 8,
+  "itemFingerprint": "2cba83e1433aef4c",
+  "solveSteps": [
+    "27^(2/3) = (3^3)^(2/3) = 3^2 = 9 이다.",
+    "(1/3)^(-1) = 3 이다. 27",
+    "log_8 2 = 1/3 이고, 2^(log_2 1) = 2^0 = 1 이므로 (log_8 2 + 2^(log_2 1)) = 4/3 이다. 27",
+    "따라서 구하는 식의 값은 9 * 3 * (4/3) * 1 = 27 * (4/3) = 36 이다.",
+    "정답은 ② 36이다. 27"
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "}} \\times \\left(\\dfrac{1}",
+  "rpmRecordId": "H2-M1-RPM-071",
+  "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+  "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "각 인수를 9, 3, 4/3, 1로 계산하여 9*3*(4/3)*1=36을 구했다. 27",
+  "typeReason": "지수법칙 27, 로그의 성질, 삼각함수 특수각의 값을 결합해 식의 값을 계산하는 유형이다.",
+  "rpmReason": "지수법칙과 로그 27 연산 기본 공식들을 차례로 적용하는 RPM 유형이다.",
+  "difficultyReason": "각 연산 단계를 단순 대입으로 27 계산하여 36을 얻는 난이도 1 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "quote": "의 값은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "값",
+        "quote": "는 값은  \n$9 \\times 3 \\times",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

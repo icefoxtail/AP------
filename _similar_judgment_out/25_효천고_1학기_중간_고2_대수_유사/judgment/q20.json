@@ -1,0 +1,55 @@
+{
+  "qid": 20,
+  "itemFingerprint": "adfd5bb5426cf9a5",
+  "solveSteps": [
+    "(1) log_2(x-1) < 2 에서 1 < x < 5 이다. 16",
+    "(2) (1/16)^x <= (1/4)^(x+2) 에서 4^(-2x) <= 4^(-x-2) 이므로 x >= 2 이다.",
+    "두 부등식을 동시에 만족하는 x의 범위는 2 <= x < 5 이다. 16",
+    "sin(pi/6 * x) = -1/2 의 실근의 합을 구하면 3pi/2 이다. 16",
+    "정답은 3pi/2 이다. 16"
+  ],
+  "solvedAnswer": "$\\dfrac{3\\pi}{2}$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "술형 1. [5점]  \n두 부등식 $\\log_",
+  "rpmRecordId": "H2-M1-RPM-091",
+  "problemTypeKey": "PT_H22A_03_LOG_INEQUALITY",
+  "templateKey": "TPL_H22A_03_LOG_INEQUALITY_091",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "로그부등식과 지수부등식 (1/16)^x 연립으로 2<=x<5를 얻고 삼각방정식 해로부터 3pi/2를 구했다.",
+  "typeReason": "로그부등식과 지수부등식 (1/16)^x을 연립하여 범위를 구하고 삼각방정식 해를 결합하는 복합 유형이다.",
+  "rpmReason": "로그부등식의 밑과 진수 조건, 지수부등식 (1/16)^x을 함께 해결하는 RPM 유형이다.",
+  "difficultyReason": "로그와 지수 16 부등식 연립 후 삼각방정식 해를 단계별로 서술하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "부등식",
+        "quote": "두 부등식 $\\log_2(x - 1) < 2$",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "로그부등식",
+        "quote": ") 로그부등식 $\\log_2(x - 1) < ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}
