@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "13"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "16"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "4"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "7"
+          },
+          "dy": {
+            "kind": "rational",
+            "numerator": "28",
+            "denominator": "13"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "PD",
+      "refs": [
+        "P",
+        "D"
+      ]
+    },
+    {
+      "id": "PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "평행사변형 내부의 점 P에서 마주 보는 두 삼각형 △PAD와 △PBC의 넓이의 합은 평행사변형 넓이의 절반이다. 따라서 △PAD+△PBC=52÷2=26cm²이다. △PAD=12cm²이므로 △PBC=26−12=14cm²이다. 답은 ①이다.",
+  "accessibilityDescription": "평행사변형 ABCD 안의 점 P에서 네 꼭짓점으로 선분이 그어져 있고 위쪽 삼각형 PAD에 12, 아래쪽 삼각형 PBC에 14가 적혀 있으며 두 삼각형이 칠해져 있다.",
+  "newVisualInformation": [
+    "마주 보는 두 삼각형 PAD와 PBC의 넓이의 합이 평행사변형의 절반 26이어서 △PBC=14"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>16. 평행사변형 $\\mathrm{ABCD}$의 넓이는 $52\\text{ cm}^2$이고, $\\triangle\\mathrm{PAD}$의 넓이가 $12\\text{ cm}^2$일 때, $\\triangle\\mathrm{PBC}$의 넓이는? [4점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/q16.png\" alt=\"평행사변형 내부의 점 P 그림\" class=\"question-image\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "12",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "A",
+              "D"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "label": "14",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

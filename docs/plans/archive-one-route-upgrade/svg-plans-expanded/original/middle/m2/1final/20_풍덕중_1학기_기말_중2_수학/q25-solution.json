@@ -1,0 +1,240 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "10"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "D",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "8"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "6"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ac",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "bd",
+        "op": "LINE_THROUGH",
+        "inputs": [
+          "B",
+          "D"
+        ],
+        "args": {},
+        "outputType": "LINE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "O",
+        "op": "LINE_INTERSECTION",
+        "inputs": [
+          "ac",
+          "bd"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "D",
+    "B",
+    "C",
+    "O"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "AO",
+      "refs": [
+        "A",
+        "O"
+      ]
+    },
+    {
+      "id": "OC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "BO",
+      "refs": [
+        "B",
+        "O"
+      ]
+    },
+    {
+      "id": "OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    }
+  ],
+  "displayCircles": [],
+  "displayLines": [],
+  "caption": "AD∥BC이므로 밑변 BC가 공통이고 높이가 같아 △ABC=△DBC이다. △AOB=△ABC−△OBC이고 △DOC=△DBC−△OBC이다. △ABC=△DBC이므로 양변에서 같은 △OBC를 빼면 △AOB=△DOC이다. 그림에서 두 삼각형(같은 넓이 S)이 칠해져 있다.",
+  "accessibilityDescription": "사다리꼴 ABCD의 평행한 두 변 AD와 BC 사이에서 두 대각선이 점 O에서 만나고 양옆의 삼각형 AOB와 DOC가 같은 색으로 칠해져 있으며 같은 넓이 S가 적혀 있다.",
+  "newVisualInformation": [
+    "평행선 사이의 같은 밑변 BC 삼각형 ABC=DBC에서 공통 부분 OBC를 빼면 △AOB=△DOC"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>&lt;서술형 4&gt;</p><p>오른쪽 그림과 같이 $\\overline{\\mathrm{AD}} // \\overline{\\mathrm{BC}}$인 사다리꼴 $\\mathrm{ABCD}$에서 두 대각선의 교점을 $\\mathrm{O}$라고 할 때, $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이를 비교하고, $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유를 설명하시오. [5점]</p><p><img src=\"assets/images/20_풍덕중_1학기_기말_중2_수학/s04.png\" alt=\"사다리꼴 대각선 교점 그림\" class=\"question-image\" /></p><p>1) $\\triangle\\mathrm{ABC}$와 $\\triangle\\mathrm{DBC}$의 넓이를 비교하고, 이유를 설명하시오. [2점]</p><p>2) $\\triangle\\mathrm{AOB} = \\triangle\\mathrm{DOC}$인 이유를 설명하시오. [3점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "gauge",
+      "condition": "유일 SOURCE_POINT는 평행이동 자유도를 고정하는 배치 기준이다. 주어진 좌표로 주장하지 않는다. 나머지 점은 문항 길이·각 관계 또는 명시된 대표 배치에서 공식 연산으로 파생한다.",
+      "mappedTo": "mathPlan"
+    }
+  ],
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rg0",
+        "fill": "LIGHT",
+        "label": "S",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "A",
+              "O",
+              "B"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "rg1",
+        "fill": "LIGHT",
+        "label": "S",
+        "labelPlacement": "LEADER",
+        "shapes": [
+          {
+            "polygon": [
+              "D",
+              "O",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
