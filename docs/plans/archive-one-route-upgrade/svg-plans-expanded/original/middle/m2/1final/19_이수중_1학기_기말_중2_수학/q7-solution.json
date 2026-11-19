@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=−2x",
+        "color": "BLUE",
+        "style": "DASHED"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=−2x−3",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y축의 방향으로 −3만큼 평행이동하면 직선 전체가 아래로 3만큼 내려가므로 y=−2x−3이다. 기울기 −2는 그대로이고 y절편이 0에서 −3으로 바뀐다. 따라서 답은 ④이다.",
+  "newVisualInformation": [
+    "직선을 아래로 3만큼 옮기면 y절편이 0에서 −3이 되어 y=−2x−3"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 두 평행한 직선이 있다. 점선은 원점을 지나는 y=−2x이고 실선은 y절편 −3인 y=−2x−3이며 y축 위의 두 점이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>7. 다음 중 $y=-2x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 직선의 방정식은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

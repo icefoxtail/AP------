@@ -1,0 +1,67 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-3",
+          "-3/2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=−(3/2)x−3",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-3/2"
+        ],
+        "domain": [
+          "-4",
+          "2"
+        ],
+        "label": "y=−(3/2)x",
+        "color": "WARM",
+        "style": "DASHED"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "-2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-3",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "y=−(3/2)x−3에서 y=0이면 x=−2이므로 x절편은 −2이고 y절편은 −3이다. 기울기가 −3/2이고 y절편이 음수이므로 제2, 3, 4사분면을 지난다. 따라서 제3사분면을 지나지 않는다는 설명이 옳지 않다. y축의 방향으로 3만큼 평행이동하면 y=−(3/2)x가 된다. 답은 ②이다.",
+  "newVisualInformation": [
+    "기울기 −3/2, y절편 −3인 직선은 제3사분면을 지나므로 제3사분면을 지나지 않는다는 설명이 틀림"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 실선 직선이 x축과 (−2,0), y축과 (0,−3)에서 만나 제3사분면을 지나고, 원점을 지나는 점선 직선이 평행하게 함께 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>9. 일차함수 $y=-\\dfrac{3}{2}x-3$의 그래프에 대한 설명 중 옳지 않은 것은? (4점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

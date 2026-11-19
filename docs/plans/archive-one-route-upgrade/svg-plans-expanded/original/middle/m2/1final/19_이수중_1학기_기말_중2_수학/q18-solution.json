@@ -1,0 +1,72 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "4",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "x+y=4",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-3/2",
+          "3/2"
+        ],
+        "domain": [
+          "0",
+          "5"
+        ],
+        "label": "3x−2y=3",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "4",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "1",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "11/5",
+          "y": "9/5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "두 직선의 교점은 x+y=4와 3x−2y=3을 연립하여 구하며 x=11/5, y=9/5이므로 P(11/5, 9/5)이다. x축과의 교점은 x+y=4에서 (4,0), 3x−2y=3에서 (1,0)이다. 밑변은 4−1=3이고 높이는 9/5이므로 넓이는 (1/2)×3×9/5=27/10이다. 답은 ③이다.",
+  "newVisualInformation": [
+    "밑변 3, 높이 9/5인 삼각형이므로 넓이 27/10"
+  ],
+  "accessibilityDescription": "오른쪽 아래로 향하는 직선과 오른쪽 위로 향하는 직선이 점 P에서 만나고 각각 x축과 (4,0), (1,0)에서 만나 x축과 함께 삼각형을 이룬다. 세 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>18. 두 직선 $x+y=4$, $3x-2y=3$과 $x$축으로 둘러싸인 부분의 넓이는? (5점)</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

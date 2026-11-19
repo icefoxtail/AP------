@@ -1,0 +1,55 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "840",
+          "640"
+        ],
+        "domain": [
+          "0",
+          "25"
+        ],
+        "label": "y=640x+840",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "840",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P",
+          "x": "20",
+          "y": "13640",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "y(원)"
+    }
+  },
+  "caption": "표에서 사용량이 1씩 늘 때마다 요금이 640원씩 늘고 사용량이 0일 때 840원이므로 사용량 x와 요금 y 사이에 y=640x+840이 성립한다. y=13640이면 640x=12800에서 x=20이다. 따라서 도시가스의 사용량은 20m³이고 답은 ③이다.",
+  "newVisualInformation": [
+    "일차함수 y=640x+840에서 y=13640이면 x=20"
+  ],
+  "accessibilityDescription": "y절편 840에서 시작해 오른쪽 위로 올라가는 직선이 있고 x=20일 때 y=13640인 점 P가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>14. 다음은 어느 도시가스 회사의 도시가스 사용량에 따른 요금을 나타낸 것이다. 가스 요금이 13,640원일 때, 도시가스의 사용량은? (4점)</p><table border=\"1\" style=\"border-collapse:collapse; text-align:center; margin:10px auto;\"><tr><td style=\"padding:4px 8px;\">사용량($\\mathrm{m}^3$)</td><td style=\"padding:4px 8px;\">0</td><td style=\"padding:4px 8px;\">1</td><td style=\"padding:4px 8px;\">2</td><td style=\"padding:4px 8px;\">3</td><td style=\"padding:4px 8px;\">4</td></tr><tr><td style=\"padding:4px 8px;\">사용 요금(원)</td><td style=\"padding:4px 8px;\">840</td><td style=\"padding:4px 8px;\">1480</td><td style=\"padding:4px 8px;\">2120</td><td style=\"padding:4px 8px;\">2760</td><td style=\"padding:4px 8px;\">3400</td></tr></table>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
