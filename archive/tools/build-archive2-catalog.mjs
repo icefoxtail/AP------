@@ -117,8 +117,28 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
   pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  holdSkipped: 0 };
-function buildMetaHint(meta, binding) {
+  holdSkipped: 0, unit: 0, unitAmbiguous: 0 };
+// 단원 힌트(metaHintUnit): 행에 단원이 없고 승인된 유형(PT)이 있을 때, 그 PT의 ACTIVE 연결(curriculum_bindings)이 같은 학년의 대단원
+// 하나만 가리키면 그 대단원 이름을 표시 전용으로 싣는다(모호하면 싣지 않는다). 승인·정본 값은 만들지 않고 단원 선택·묶기만 읽는다
+// (archive2-unified-units.js unitFor: 원본 JS에 단원 값이 없을 때만). 학년은 정확도를 재서 넣는다(중1: 승인된 단원이 있는 문항 2,133건
+// 중 유형으로 정한 단원이 같은 것 97.8%). 유형으로 단원을 정하지 못하는 학년·문항은 예전처럼 "단원 미분류"에 남는다.
+const UNIT_HINT_GRADES = Object.freeze({ "중1": "M1" });
+const middleUnitsByProblemType = new Map();
+for (const row of foundationBindings.bindings) {
+  if (row.status !== "ACTIVE" || !/^M[123]-\d\d$/.test(row.standardUnitKey || "")) continue;
+  const key = row.problemTypeKey + "\u0000" + row.standardUnitKey.slice(0, 2);
+  if (!middleUnitsByProblemType.has(key)) middleUnitsByProblemType.set(key, new Set());
+  middleUnitsByProblemType.get(key).add(row.standardUnitKey);
+}
+function problemTypeUnitHint(pt, grade) {
+  const prefix = UNIT_HINT_GRADES[grade];
+  if (!prefix || !pt) return "";
+  const units = middleUnitsByProblemType.get(pt + "\u0000" + prefix);
+  if (!units) return "";
+  if (units.size !== 1) { hintStats.unitAmbiguous++; return ""; }
+  return standardUnitLabelByKey.get([...units][0]) || "";
+}
+function buildMetaHint(meta, binding, grade = "") {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
   const hold = meta.foundationTaxonomyStatus === "HOLD";
@@ -154,6 +174,10 @@ function buildMetaHint(meta, binding) {
     if (tpl) { out.metaHintTPL = tpl; hintStats.tpl++; }
   }
   if (curriculum) { out.metaHintCurriculum = curriculum; hintStats.curriculum++; }
+  if (pt && !String(meta.standardUnitKey || "").trim()) {
+    const unit = problemTypeUnitHint(pt, grade);
+    if (unit) { out.metaHintUnit = unit; hintStats.unit++; }
+  }
   return out;
 }
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
@@ -476,7 +500,7 @@ for (const exam of exams) {
       else hintStats.unbound++;
     }
     const metaBinding = bindingKind ? "text" : "";
-    const metaHint = buildMetaHint(meta, bindingKind);
+    const metaHint = buildMetaHint(meta, bindingKind, sourceGradeEvidence.grade);
     const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
       ? verifiedBasicAssignment({
           id,

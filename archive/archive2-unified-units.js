@@ -143,7 +143,9 @@
     if (rpmResolution?.status === "EXACT" && rpmResolution.parent)
       return { unitKey: rpmResolution.parent.unitKey, reason: "rpm-current-parent" };
     const key = text(record.legacyStandardUnitKey);
-    const unitLabel = text(record.legacyStandardUnit);
+    // 원본 JS에 단원 값(키·이름)이 둘 다 없는 문항만, 카탈로그가 승인된 유형으로 정해 싣는 대단원 이름(metaHintUnit, 표시 전용)을 쓴다.
+    // 원본의 단원 값, 정본 RPM 판정, 문항별 중단원 지정표가 있으면 그쪽이 먼저이고 이 값은 쓰이지 않는다.
+    const unitLabel = text(record.legacyStandardUnit) || (key ? "" : text(record.metaHintUnit));
     const numbered = Number(record.sourceQuestionNo);
     const identityRecord = {
       sourceFile: record.sourceFile,
