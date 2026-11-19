@@ -1,0 +1,72 @@
+{
+  "qid": 22,
+  "itemFingerprint": "51a66b2e9e7d557d",
+  "solveSteps": [
+    "유리판 1장을 통과할 때마다 밝기가 $10\\%$ 씩 감소하므로 1장 통과 후 원래 밝기의 0.9배가 된다 (15장 통과).",
+    "15장을 통과한 후의 밝기는 처음의 $k = (0.9)^{15}$ 배이다.",
+    "양변에 상용로그를 취한다: $\\log k = 15 \\log (9/10) = 15(\\log 9 - 1) = 15(0.9542 - 1) = 15 \\times (-0.0458) = -0.6870$.",
+    "$-0.6870 = -1 + 0.3130 = \\log 10^{-1} + \\log 2.056 = \\log 0.2056$.",
+    "따라서 $k = 0.2056$, 즉 처음의 $0.2056$배가 된다."
+  ],
+  "solvedAnswer": "$0.2056$배",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "빛이 어떤 유리판을 한 장 통과할 때마다 그 밝기가 $10\\%$씩 감소한다고 한다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "빛이 어떤 유리판을 한",
+  "rpmRecordId": "H2-M1-RPM-077",
+  "rpmReason": "상용로그값을 이용하여 거듭제곱 수의 값을 계산하는 H2-M1-RPM-077 상용로그 > 상용로그표·자릿수에 해당한다 (값 0.9542, 15).",
+  "problemTypeKey": "PT_H22A_01_COMMON_LOG",
+  "templateKey": "TPL_H22A_01_COMMON_LOG_SUBSTITUTE",
+  "typeReason": "상용로그를 취하여 주어진 로그값을 대입해 음의 소수를 정수부분과 양의 소수부분으로 분리하여 수의 배열을 결정하는 유형이다 (값 0.9542, 15).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "상용로그 계산 결과 음의 소수 $-0.6870$ 을 $-1 + 0.3130$ 으로 분리하여 자릿수와 수의 배열을 복원하는 서술형 문항이다 (값 0.9542, 15).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "$10\\%$씩 감소한다고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "리판을 한 장 통과할 때마다 그"
+      }
+    ],
+    "method": [
+      {
+        "term": "상용로그",
+        "src": "solution",
+        "quote": ".   양변에 상용로그를 취하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "양변에 상용로그를 취하면"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "밝기 배수 $k = (0.9)^{15}$ 에 상용로그를 취해 $\\log k = -0.6870 = \\log 0.2056$ 을 얻어 $0.2056$배로 판정했다 (값 0.9542, 15).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "상용로그를 이용한 실생활 감소율 계산과 거듭제곱값 추론을 다루므로 H22-A-01 지수와 로그에 속한다."
+}

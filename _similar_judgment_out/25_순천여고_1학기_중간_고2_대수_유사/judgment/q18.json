@@ -1,0 +1,73 @@
+{
+  "qid": 18,
+  "itemFingerprint": "3720359a1f78429b",
+  "solveSteps": [
+    "함수 $f(x)$ 는 cases 정의에 따라 주기가 2 이고 치역이 $[0, 1]$ 인 연속 주기함수이다 (교점 74, 배점 4.6점).",
+    "$y = \\log_{5n} x$ 는 $(1, 0)$ 과 $(5n, 1)$ 을 지나는 증가함수이다.",
+    "$x > 5n$ 에서는 $\\log_{5n} x > 1 \\ge f(x)$ 이므로 교점이 없다.",
+    "각 주기 $[2m, 2m+2]$ 마다 2개씩 교점이 생기며, 총 교점 개수 74(짝수)이므로 $5n$ 은 홀수여야 한다.",
+    "총 교점 개수: $1 + 2 \\times \\dfrac{5n - 3}{2} + 1 = 5n - 1 = 74 \\implies 5n = 75 \\implies n = 15$.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "실수 전체의 집합에서 정의된 함",
+  "rpmRecordId": "H2-M1-RPM-094",
+  "rpmReason": "로그함수 그래프와 다른 함수의 주기적 교점 개수를 모델링하는 H2-M1-RPM-094 로그함수의 활용 > 그래프 교점에 해당한다 (개수 74, 배점 4.6점).",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_PERIODIC_SYMMETRY_INTERSECTION",
+  "typeReason": "주기함수와 로그함수의 교점 개수를 끝점의 위치에 따라 일반화하여 미지수를 구하는 유형이다 (개수 74, 배점 4.6점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "주기별 교점 패턴과 끝점 $(5n, 1)$ 의 꼭짓점 일치 조건을 정밀하게 분석해야 하는 고난도 4 문항이다 (개수 74, 배점 4.6점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "주기함수",
+        "src": "solution",
+        "quote": "0, 1]$인 주기함수이다.   함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": ")$이다.   자연수 $n$에 대하"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "q 0$이므로 교점이 없다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "주기",
+        "src": "solution",
+        "quote": "f(x)$는 주기가 $2$이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "주기 2 마다 교점이 2개씩 발생하는 구조에서 교점 총수 $5n - 1 = 74$ 식을 세워 $n=15$ 로 판정했다 (배점 4.6점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "로그함수 그래프와 주기함수의 교점 개수 추론을 다루므로 H22-A-03 로그함수에 속한다."
+}

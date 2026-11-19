@@ -1,0 +1,70 @@
+{
+  "qid": 1,
+  "itemFingerprint": "fdfc5debd5cb3759",
+  "solveSteps": [
+    "$3^{2\\sqrt{2}} \\times 3^{4 - 2\\sqrt{2}}$ 에 밑이 같은 지수법칙을 적용한다 (배점 3.3점).",
+    "$3^{2\\sqrt{2} + (4 - 2\\sqrt{2})} = 3^4 = 81$ 이다.",
+    "따라서 정답은 ① ($81$)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "$3^{2\\sqrt{2}} \\times 3^{4 - 2\\sqrt{2}}$의 값은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "지수법칙에 의하여",
+  "rpmRecordId": "H2-M1-RPM-070",
+  "rpmReason": "실수 지수가 포함된 지수식의 곱셈 계산을 다루므로 H2-M1-RPM-070 지수의 확장 > 실수 지수 레코드에 해당한다 (값 81, 배점 3.3점).",
+  "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+  "templateKey": "TPL_H22A_01_EXPONENT_EXTENSION_070",
+  "typeReason": "실수 범위로 확장된 지수의 성질을 이용하여 식을 간단히 정리하는 유형이다 (값 81, 배점 3.3점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지수의 기본 성질을 공식에 바로 대입하여 간단히 한 줄로 풀리는 난이도 1 문항이다 (값 81, 배점 3.3점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "지수법칙에 의하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "법칙",
+        "src": "solution",
+        "quote": "지수법칙에 의하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "지수법칙에 의하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "밑이 3으로 같은 지수식을 더하여 $3^4 = 81$ 로 계산해 정답 ①로 판정했다 (배점 3.3점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "지수법칙에 의하여 거듭제곱 밑과 지수를 계산하는 문항이므로 H22-A-01 지수와 로그에 속한다."
+}

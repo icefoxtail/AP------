@@ -1,0 +1,73 @@
+{
+  "qid": 15,
+  "itemFingerprint": "132684e6ba22e82d",
+  "solveSteps": [
+    "진수 조건에 의해 $k > 0$ 이다 (배점 4.3점).",
+    "이차방정식 $x^2 - (2\\log_3 k)x + (\\log_3 k + 2) = 0$ 이 실근을 가지려면 판별식 $D/4 \\ge 0$ 이어야 한다.",
+    "$D/4 = (\\log_3 k)^2 - (\\log_3 k + 2) \\ge 0$.",
+    "$\\log_3 k = t$ 라 하면 $t^2 - t - 2 \\ge 0 \\implies (t - 2)(t + 1) \\ge 0 \\implies t \\le -1$ 또는 $t \\ge 2$.",
+    "$\\log_3 k \\le -1 \\implies k \\le 1/3$, $\\log_3 k \\ge 2 \\implies k \\ge 9$.",
+    "진수 조건 $k > 0$ 과 연립하면 $0 < k \\le 1/3$ 또는 $k \\ge 9$ 이며 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "이차방정식 $x^2 - x\\log_3 k^2 + \\log_3 k + 2 = 0$이 실근을 갖도록 하는 실수 $k$의 범위는?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "이차방정식 $x^2 -",
+  "rpmRecordId": "H2-M1-RPM-090",
+  "rpmReason": "로그를 치환하여 이차부등식을 세우고 진수 조건과 결합하는 H2-M1-RPM-090 로그방정식 > 치환에 해당한다 (배점 4.3점).",
+  "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+  "templateKey": "TPL_H22A_03_LOG_EQUATION_090",
+  "typeReason": "이차방정식의 판별식 $D \\ge 0$ 을 로그식에 적용하여 로그부등식을 해결하는 융합 유형이다 (배점 4.3점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "판별식 계산과 로그부등식 풀이 후 반드시 진수 조건 $k > 0$ 을 연립해야 하므로 난이도 3 문항이다 (배점 4.3점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 -"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "실수 $k$의 범위는? [4.3점"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "근을 가지려면 판별식 $D \\ge",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "진수",
+        "src": "solution",
+        "quote": "진수 조건에 의하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "판별식 $D/4 \\ge 0$ 에서 $t \\le -1$ 또는 $t \\ge 2$ 를 구하고 진수 조건 $k>0$ 과 합쳐 $0 < k \\le 1/3$ 또는 $k \\ge 9$ 로 판정했다 (배점 4.3점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "계수에 로그가 포함된 방정식의 실근 조건과 로그부등식을 다루므로 H22-A-03 로그함수에 속한다."
+}

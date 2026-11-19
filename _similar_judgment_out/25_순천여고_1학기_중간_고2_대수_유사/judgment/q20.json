@@ -1,0 +1,72 @@
+{
+  "qid": 20,
+  "itemFingerprint": "e9079f2b1ee95e79",
+  "solveSteps": [
+    "네 점의 좌표: $A(0, 2), B(\\log_a 2 - 1, 2), C(\\log_2 k - 1, k), D(\\log_a k - 1, k)$ (사각형 ADCB, 배점 4.7점).",
+    "평행사변형 조건 $\\overline{AB} = \\overline{DC} \\implies \\log_a 2 - 1 = \\log_2 k - \\log_a k$.",
+    "$\\log_2 k + 1 = \\log_a(2k) \\implies \\log_2(2k) = \\dfrac{\\log_2(2k)}{\\log_2 a} \\implies \\log_2(2k) = 0 \\implies k = 1/2$.",
+    "높이 $= 2 - k = 3/2$ 이고 넓이가 $3/2$ 이므로 $\\overline{AB} = 1 \\implies \\log_a 2 - 1 = 1 \\implies \\log_a 2 = 2 \\implies a = \\sqrt{2} = 2^{1/2}$.",
+    "$ak = 2^{1/2} \\times 2^{-1} = 2^{-1/2}$ 이며 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "사각형 $ADCB$가 넓이가 $\\dfrac{3}{2}$인 평행사변형일 때, $ak$의 값은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-02",
+  "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+  "unitEvidence": "D$라 하자. 사각형 $ADCB$가",
+  "rpmRecordId": "H2-M1-RPM-086",
+  "rpmReason": "지수함수 그래프 위의 교점들의 좌표를 구하고 도형의 성질과 넓이를 연립하는 H2-M1-RPM-086 지수함수의 활용 > 그래프 교점에 해당한다 (사각형 ADCB, 배점 4.7점).",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_DISTANCE_RATIO",
+  "typeReason": "평행사변형의 대변 길이 상등과 넓이 조건을 교점의 로그 좌표로 표현하여 미지수를 구하는 고난도 유형이다 (사각형 ADCB, 배점 4.7점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "네 점의 좌표를 밑이 다른 로그로 표현하고 평행사변형 대변 조건과 넓이를 연립해야 하는 난이도 4 문항이다 (사각형 ADCB, 배점 4.7점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "3}{2}$인 평행사변형일 때, $ak"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "두 상수 $a, k$"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "D$의 $x$좌표를 각각 구하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "}{2}$이고 넓이가 $\\dfra"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교점 좌표를 구하여 대변 상등 조건 $\\overline{AB}=\\overline{DC}$ 로 $k=1/2$, 넓이 $3/2$ 로 $a=\\sqrt{2}$ 를 구해 $ak = 2^{-1/2}$ 로 판정했다 (사각형 ADCB, 배점 4.7점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "지수함수 곡선과 직선의 교점으로 이루어진 평행사변형의 성질을 다루므로 H22-A-02 지수함수에 속한다."
+}

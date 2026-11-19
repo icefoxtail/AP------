@@ -1,0 +1,73 @@
+{
+  "qid": 17,
+  "itemFingerprint": "98f996b56621b6a2",
+  "solveSteps": [
+    "조건 (나): $\\log_a \\sqrt{b} = \\log_{\\sqrt{b}} a \\implies (1/2)\\log_a b = 2/\\log_a b \\implies (\\log_a b)^2 = 4$ (조건 가의 30, 배점 4.5점).",
+    "조건 (다) $1 < a < b$ 에서 $\\log_a b > 1$ 이므로 $\\log_a b = 2 \\implies b = a^2$.",
+    "조건 (가)에 $b = a^2$ 대입: $\\log_{\\sqrt{3}} a^3 = 6\\log_3 a = 30 \\implies \\log_3 a = 5$.",
+    "$\\log_3 b = \\log_3 a^2 = 10$, $\\log_a 3 = 1/\\log_3 a = 1/5$.",
+    "$(\\log_a 3)^2 \\times \\log_3 b = (1/25) \\times 10 = 2/5 = p/q$.",
+    "서로소인 두 자연수 $p=2, q=5$ 이므로 $p+q = 7$, 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "두 실수 $a, b$가 다음 <조건>을 만족시킬 때, $(\\log_a 3)^2 \\times \\log_3 b = \\dfrac{p}{q}$이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "두 실수 $a, b$가",
+  "rpmRecordId": "H2-M1-RPM-076",
+  "rpmReason": "밑변환 공식 $\\log_a b = 1/\\log_b a$ 및 밑의 거듭제곱 성질을 복합 활용하는 H2-M1-RPM-076 로그의 성질 > 밑의 변환에 해당한다 (값 30, 배점 4.5점).",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+  "typeReason": "밑변환 공식과 대소 조건을 이용해 두 변수의 관계를 찾아 로그값을 계산하는 유형이다 (값 30, 배점 4.5점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "조건 (나)에서 밑변환으로 $b=a^2$ 을 유도하고 조건 (가)와 연립하는 계산 절차가 필요한 난이도 3 문항이다 (값 30, 배점 4.5점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a, b$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$는 서로소인 자연수) [4.5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "b$가 다음 <조건>을 만족시킬",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "= a^2$을 대입하면   $\\l"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "밑변환 공식으로 $b=a^2$ 을 얻고 조건 (가)로부터 $\\log_3 a = 5$ 를 구해 구하는 식의 값 $2/5$ 에서 $p+q=7$ 로 판정했다 (배점 4.5점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "로그의 밑변환 공식과 연립 조건 해석을 다루므로 H22-A-01 지수와 로그에 속한다."
+}

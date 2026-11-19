@@ -1,0 +1,71 @@
+{
+  "qid": 2,
+  "itemFingerprint": "aae87444bae0b1cb",
+  "solveSteps": [
+    "진수 조건: $x - 4 > 0$ 이고 $x + 4 > 0$ 이므로 $x > 4$ 이다 (배점 3.4점).",
+    "로그의 성질: $\\log_3(x - 4) + \\log_3(x + 4) = \\log_3(x^2 - 16) = 2$.",
+    "$x^2 - 16 = 3^2 = 9 \\implies x^2 = 25 \\implies x = 5$ (진수 조건 $x > 4$).",
+    "따라서 정답은 ③ ($5$)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "다음 방정식 $\\log_3(x - 4) + \\log_3(x + 4) = 2$의 해를 구하면?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "다음 방정식 $\\log_3",
+  "rpmRecordId": "H2-M1-RPM-089",
+  "rpmReason": "로그방정식을 풀고 진수 조건을 통해 해를 한정하는 문제이므로 H2-M1-RPM-089 로그방정식 > 진수 조건에 해당한다 (식 $x^2 - 16 = 25$, 배점 3.4점).",
+  "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+  "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+  "typeReason": "로그의 덧셈 성질로 합쳐 이차방정식을 만들고 진수 조건을 적용하는 유형이다 (방정식 $x^2 - 16 = 25$, 배점 3.4점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "로그의 합 공식과 진수 조건을 연립하여 이차방정식의 해를 선별하는 기본 난이도 2 문항이다 (식 $x^2 - 16 = 25$, 배점 3.4점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "다음 방정식 $\\log_3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "> 4$   로그의 성질에 의하"
+      }
+    ],
+    "method": [
+      {
+        "term": "진수",
+        "src": "solution",
+        "quote": "진수 조건에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "조건",
+        "src": "solution",
+        "quote": "진수 조건에 의하여 $x"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "진수 조건 $x > 4$ 하에서 $x^2 - 16 = 9 \\implies x^2 = 25$ 로 $x = 5$ 정답을 판정했다 (배점 3.4점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "로그방정식의 해를 구하는 단원이므로 H22-A-03 로그함수에 속한다."
+}
