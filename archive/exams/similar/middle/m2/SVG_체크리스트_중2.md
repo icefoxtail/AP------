@@ -587,3 +587,235 @@
 | 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
 
 - 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 22_풍덕중_2학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q9[보기], q12[보기], q14[보기/정답④→②], q19[보기]. 해설 10개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | TABLE | 해설: 두 식의 자연수 순서쌍을 한 표에 나란히 두면 공통해 확인이 더 빠르다. |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | BENEFICIAL | 해설: 그래프를 함께 그리면 사분면과 절편, 평행 관계를 한눈에 확인할 수 있다. |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | BENEFICIAL | NOT_NEEDED | 문제: 좌표평면에 세 점을 표시하면 축에 평행한 관계가 바로 보인다. 좌표가 주어져 없어도 풀린다. |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | BENEFICIAL | NOT_NEEDED | 문제: 도로망과 A, P, B의 위치, 공사 구간을 그림으로 보여 주면 상황 파악이 빨라진다. |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | BENEFICIAL | 해설: 남은 두 경기의 갈래를 나무 그림으로 그리면 3/4이 나오는 과정이 한눈에 보인다. |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | BENEFICIAL | 해설: 집에서 도서관까지 2.2 km, 도서관에서 학교까지 1.2 km로 나눈 선분 그림을 넣으면 검산이 쉽다. |
+
+- 문제그림 REQUIRED/BENEFICIAL 2개: 8, 14. 해설그림 REQUIRED/BENEFICIAL 3개: 6, 21, 24.
+
+## 24_연향중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q1[보기], q5[보기/정답③→④], q6[보기/정답①→③], q7[보기/정답②→⑤], q11[보기/정답①→③], q12[보기/정답②→①], q13[보기/정답④→②], q16[보기], q17[보기/정답②→④], q18[보기/정답④→②], q19[보기/정답⑤→①], q20[보기/정답③→②], q21[발문], q22[발문], q23[발문]. 해설 4개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | BENEFICIAL | NOT_NEEDED | 문제: 원뿔(반지름 2a, 높이 3b)과 원기둥(반지름 3b, 높이 2a)의 치수를 표시한 그림이 있으면 두 입체의 대응 관계가 분명해진다. |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 1개: 21. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 23_금당중_2학기_기말_중2_유사 (25문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q2[보기/정답①→②], q6[보기], q8[보기], q11[보기], q18[보기], q20[보기], q24[발문], q25[발문]. 해설 14개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | 게시(기존 연결) | 해설: x절편 (-1,0)과 y절편 (0,-2), 직선 y=-2x-2를 함께 그린 좌표평면(기존 q02-solution.svg와 같은 구성) |
+| 3 | NOT_NEEDED | 게시(기존 연결) | 해설: 평행이동 전 직선 y=-3x+1과 후 직선 y=-3x+5, 두 점 (1,2), (3,-4)를 함께 표시한 좌표평면(기존 q03-solution.svg) |
+| 4 | NOT_NEEDED | 게시(기존 연결) | 해설: 두 점 (-1,-4), (2,2)를 지나는 직선 y=2x-2와 y절편 (0,-2)를 표시한 좌표평면(기존 q04-solution.svg) |
+| 5 | NOT_NEEDED | 게시(기존 연결) | 해설: 제2, 3, 4사분면만 지나는 예시 직선(y=-x-1)을 그려 기울기 음수와 y절편 음수를 눈으로 확인시키는 좌표평면(기존 q05-solution.svg) |
+| 6 | 게시(기존 연결) | 게시(기존 연결) | 문제: 사각형 ABCD와 y절편 (0,-2)를 지나는 직선의 위치를 좌표평면에 표시하되, C나 A를 지나는 극단 직선은 넣지 않는다(기존 q06-problem.svg 유지) / 해설: (0,-2)에서 A(1,4), C(4,2)를 각각 지나는 두 직선과 기울기 6, 1을 표시해 1≤a≤6을 보여 주는 좌표평면(기존 q06-solution.svg) |
+| 7 | NOT_NEEDED | 게시(기존 연결) | 해설: 수평선 y=-4와 y=-3, 점 (5,-3)을 함께 표시해 평행 관계를 보여 주는 좌표평면(기존 q07-solution.svg) |
+| 8 | 게시(기존 연결) | 게시(기존 연결) | 문제: 직사각형 ABCD의 네 꼭짓점과 원점을 표시하고 이등분선은 넣지 않는 좌표평면(기존 q08-problem.svg 유지) / 해설: 직사각형, 중심 M(3,4), 원점을 지나는 직선과 기울기 4/3을 표시한 좌표평면(기존 q08-solution.svg) |
+| 9 | NOT_NEEDED | 게시(기존 연결) | 해설: 두 직선 x-2y=5와 3x+y=1, 교점 (1,-2)를 표시한 좌표평면(기존 q09-solution.svg) |
+| 10 | NOT_NEEDED | 게시(기존 연결) | 해설: 두 직선의 교점 (-1, 5)와 그를 지나는 수직선 x = -1을 좌표평면에 겹쳐 보이면 이해가 빨라진다 |
+| 11 | NOT_NEEDED | 게시(기존 연결) | 해설: a = 1일 때 세 직선이 (2, 3)에서 만나는 모습을 한 그림에 보이면 경우 구분이 분명해진다 |
+| 12 | NOT_NEEDED | 게시(기존 연결) | 해설: 간식 4가지에서 음료 2가지로 뻗는 나뭇가지 그림을 보이면 곱의 법칙이 눈에 들어온다 |
+| 13 | NOT_NEEDED | 게시(기존 연결) | 해설: A의 손과 B의 손을 두 줄로 놓은 3 × 3 표에서 이기는 칸 3개를 표시하면 확인이 빠르다 |
+| 14 | NOT_NEEDED | 게시(기존 연결) | 해설: 3의 배수만 5개, 공통 12, 4의 배수만 4개를 세 칸으로 나눈 표로 정리하면 겹침 제거가 한눈에 보인다 |
+| 15 | NOT_NEEDED | 게시(기존 연결) | 해설: A와 B를 상자 하나로 묶은 그림과 그 안의 두 순서를 보이면 묶음 발상이 분명해진다 |
+| 16 | 게시(기존 연결) | 게시(기존 연결) | 문제: 가로·세로 칸 수가 글로 제시되어 풀 수는 있으나, A에서 P를 거쳐 B로 가는 격자 도로를 그려 주면 경로 구조가 즉시 이해된다 / 해설: A에서 P까지 3가지, P에서 B까지 6가지를 격자 위 경로로 나누어 보이면 곱의 법칙 적용이 분명해진다 |
+| 17 | NOT_NEEDED | 게시(기존 연결) | 해설: 남남 3, 남여 6, 여여 1과 전체 10을 정리한 표로 제시하면 참·거짓 판정이 한눈에 정리된다 |
+| 18 | NOT_NEEDED | 게시(기존 연결) | 해설: 가로·세로를 두 주사위 눈으로 둔 6 × 6 합 표에서 합이 4, 8, 12인 9칸을 표시하면 세기가 확실해진다 |
+| 19 | NOT_NEEDED | 게시(기존 연결) | 해설: 두 단계 확률의 곱 한 줄로 설명이 끝나 글로 충분하고 수형도는 보조 자료에 해당한다 |
+| 20 | NOT_NEEDED | 게시(기존 연결) | 해설: 짝과 홀 두 경우의 곱과 합이 글로 완결되어 표나 그림이 없어도 이해된다 |
+| 21 | NOT_NEEDED | 게시(기존 연결) | 해설: 여사건 한 번의 뺄셈으로 끝나 그림이 없어도 충분하다 |
+| 22 | NOT_NEEDED | 게시(기존 연결) | 해설: 대입과 일차방정식 풀이만으로 끝나 그래프가 없어도 이해에 지장이 없다 |
+| 23 | 게시(기존 연결) | 게시(기존 연결) | 문제: 처음 위치와 몇 분 후 위치가 모두 수치로 주어져 수직선 그림 없이 식을 세울 수 있다 / 해설: 두 물체의 위치를 시각에 대한 그래프로 그려 교점 (8, 9)를 보이면 만나는 시각의 의미가 분명해진다 |
+| 24 | NOT_NEEDED | 게시(기존 연결) | 해설: 일의 자리 1, 3, 5별로 가능한 십의 자리를 표로 정리하면 4 + 4 + 4를 빠짐없이 확인할 수 있다 |
+| 25 | NOT_NEEDED | 게시(기존 연결) | 해설: b가 1부터 6일 때 b + 2의 약수인 a를 표로 정리하면 15가지를 누락 없이 확인할 수 있다 |
+
+- 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 23_연향중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q1[보기], q2[보기], q3[보기], q4[보기], q5[보기], q6[보기], q7[보기], q8[보기], q9[보기], q10[보기], q11[보기], q12[보기], q13[보기], q14[보기], q15[보기], q16[보기], q17[보기], q18[보기], q19[보기], q23[발문]. 해설 16개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 0개: 없음. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
+
+## 21_풍덕중_2학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q7[보기], q12[보기], q15[보기/정답⑤→②], q18[보기], q19[보기], q20[보기], q21[발문], q22[발문], q23[발문], q24[발문]. 해설 12개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | BENEFICIAL | 해설: 평행이동 전후 두 직선과 점 (0, 8)을 좌표평면에 그리면 b가 위로 5만큼 이동한 양임이 바로 보임 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | BENEFICIAL | 해설: 직선이 x축, y축과 만나는 두 점 (2, 0), (0, -6)을 표시하면 절편의 의미가 분명해짐 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | BENEFICIAL | BENEFICIAL | 문제: 선분 AB와 원점을 지나는 직선을 그려 보면 기울기가 A에서 최대, B에서 최소가 됨이 직관적으로 보임 / 해설: 원점에서 A, B를 지나는 두 직선을 함께 그리면 a의 범위를 그림으로 확인할 수 있음 |
+| 6 | BENEFICIAL | BENEFICIAL | 문제: 제1, 3, 4사분면을 지나는 직선의 예를 좌표평면에 그리면 a와 b의 부호가 바로 보임 / 해설: 기울기가 양수이고 y절편이 음수인 직선 그림으로 결론을 확인하면 이해가 쉬움 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | BENEFICIAL | BENEFICIAL | 문제: 직선과 두 좌표축으로 둘러싸인 삼각형을 그리면 밑변과 높이가 무엇인지 분명해짐 / 해설: 삼각형의 세 꼭짓점 (0, 0), (0, 6), (-4, 0)을 표시하면 넓이 계산이 시각적으로 확인됨 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | BENEFICIAL | NOT_NEEDED | 문제: A, B, C 세 지점과 4개, 3개의 길을 간단한 그림으로 나타내면 경로 선택 구조가 한눈에 보임 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | BENEFICIAL | NOT_NEEDED | 문제: 4 곱하기 4 교차점 격자에 A, B, P와 공사로 막힌 (3, 0)을 표시한 그림이 있으면 어느 경로가 금지되는지 즉시 보임 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | BENEFICIAL | BENEFICIAL | 문제: 세 직선과 그로 둘러싸인 삼각형을 그린 그림이 있으면 어느 변을 밑변으로 잡을지 판단이 빨라짐 / 해설: 교점 (0, -3), (3, 6), (3, 0)과 밑변 6, 높이 3을 표시한 간단한 그래프가 계산을 눈으로 확인시켜 줌 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 6개: 5, 6, 9, 11, 17, 22. 해설그림 REQUIRED/BENEFICIAL 6개: 1, 3, 5, 6, 9, 22.
+
+## 21_이수중_2학기_기말_중2_유사 (26문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q1[보기/정답②→④], q2[보기/정답①→③], q6[보기/정답②→①], q7[보기/정답①→④], q9[보기/정답③→②], q10[보기/정답④→⑤], q13[보기/정답⑤→②], q15[보기/정답④→①], q18[보기/정답⑤→④], q19[보기/정답④→③], q21[보기/정답①→⑤], q22[보기/정답②→①]. 해설 13개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | BENEFICIAL | BENEFICIAL | 문제: 축 OO' 와 점 P, 밑면에 평행한 자르는 평면을 표시한 원뿔 그림이 있으면 상황 파악이 빠르다. / 해설: 축을 포함한 단면에 닮은 두 원뿔(높이 4 와 12)을 표시하면 닮음비 설명이 쉬워진다. |
+| 4 | BENEFICIAL | BENEFICIAL | 문제: 직각삼각형 ABC 와 빗변에 내린 수선 CD, 수선의 발 D 를 표시한 그림이 있으면 각 대응을 확인하기 쉽다. / 해설: 닮은 세 삼각형 ABC, ACD, CBD 를 나누어 표시하면 대응변 비례식 설명이 짧아진다. |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | REQUIRED | BENEFICIAL | 문제: 세 평행선 l, m, n 과 두 직선이 만나는 배치, 그리고 8 cm 와 12 cm, 10 cm 와 x cm 가 어느 선분인지 표시한 그림이 필요하다. / 해설: 같은 방향으로 대응하는 선분끼리 화살표로 이은 평행선 그림이 있으면 비례식 세우기가 쉬워진다. |
+| 7 | BENEFICIAL | NOT_NEEDED | 문제: 두 선분이 점 C 에서 만나고 AB 와 DE 가 평행한 엑스자 배치를 그린 그림이 있으면 엇각 관계가 바로 보인다. |
+| 8 | BENEFICIAL | BENEFICIAL | 문제: 삼각형 ABC 에 중선 AD, 무게중심 G, 중점 E 와 F 를 표시한 그림이 있으면 길이 관계가 한눈에 들어온다. / 해설: 삼각형 ABD 만 따로 떼어 중점연결 EF 를 표시하면 절반 관계 설명이 짧아진다. |
+| 9 | BENEFICIAL | BENEFICIAL | 문제: 각 B 가 직각인 사다리꼴과 변의 길이 5, 8, 10 을 표시한 그림이 있으면 어느 변이 빗변인지 바로 보인다. / 해설: 점 D 에서 BC 에 내린 수선의 발 H 와 직사각형 ABHD, 직각삼각형 DHC 를 표시한 보조선 그림이 있으면 풀이가 빨라진다. |
+| 10 | BENEFICIAL | BENEFICIAL | 문제: 직선 위 E-B-C 배치와 직선 BC의 같은 쪽에 있는 두 직각삼각형 ABC, BDE를 그린 그림이 있으면 각 ABD가 직각이 되는 관계를 바로 볼 수 있다. / 해설: 두 직각삼각형과 삼각형 ABD를 한 그림에 그리고 각 ABD가 90도가 되는 까닭을 표시하면 해설의 각도 계산이 눈으로 확인된다. |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | BENEFICIAL | BENEFICIAL | 문제: 점 D, E의 위치와 각 표시를 그림으로 함께 주면 어느 변끼리 대응하는지 학생이 빠르게 잡을 수 있다. / 해설: 삼각형 ABC 안에 점 D, E와 길이 3, 9, 4, x를 표시한 그림이 있으면 대응변 확인과 식 세우기가 쉬워진다. |
+| 24 | BENEFICIAL | BENEFICIAL | 문제: 삼각형 ABC, 중점 M, 두 무게중심 G와 G′의 위치를 그림으로 보여 주면 두 무게중심이 중선 위에 있다는 상황이 쉽게 잡힌다. / 해설: 중선 AD, AE와 선분 GG′를 그린 그림이 있으면 닮음비 2 : 3과 GG′ = BC/3 관계를 바로 확인할 수 있다. |
+| 25 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 26 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 9개: 3, 4, 6, 7, 8, 9, 10, 23, 24. 해설그림 REQUIRED/BENEFICIAL 8개: 3, 4, 6, 8, 9, 10, 23, 24.
+
+## 21_팔마중_2학기_기말_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q6[보기/정답②→⑤], q7[보기/정답③→⑤], q8[보기/정답①→④], q9[보기/정답⑤→③], q10[보기/정답④→②], q11[보기/정답②→④], q12[보기/정답②→④], q15[보기/정답④→③], q17[보기/정답③→①], q18[보기], q19[보기/정답⑤→③], q20[보기/정답④→②], q21[발문], q22[발문], q23[발문], q24[발문]. 해설 14개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | BENEFICIAL | BENEFICIAL | 문제: 두 삼각형의 배치와 연장선 위치를 그림으로 주면 발문 문장을 해석하는 부담이 크게 줄어든다 / 해설: 두 그림 각각에 대응변과 닮음비를 표시하면 대응 관계 확인이 빨라진다 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | BENEFICIAL | NOT_NEEDED | 문제: 네 평행선과 두 횡선의 교점 배치를 그림으로 주면 어느 구간이 어느 값인지 바로 확인된다 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | BENEFICIAL | BENEFICIAL | 문제: 중선 AD 위의 A-H-G-D 순서와 중점연결선 FE의 위치를 그림으로 보여 주는 편이 좋다 / 해설: 중선 위의 3k, 4k, k 구간을 그림으로 표시하면 GH = AD / 6 관계가 바로 보인다 |
+| 6 | BENEFICIAL | NOT_NEEDED | 문제: G, E, D, F의 위치와 DF가 BE와 평행한 관계를 그림으로 확인하는 편이 좋다 |
+| 7 | BENEFICIAL | BENEFICIAL | 문제: 직각사다리꼴의 모양과 두 직각 표시, 변 이름의 위치를 그림으로 주는 편이 좋다 / 해설: A에서 내린 수선 AH와 직사각형 AHCD, 직각삼각형 ABH를 표시하면 5-12-13 계산이 한눈에 보인다 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | BENEFICIAL | BENEFICIAL | 문제: 정사각형과 연장선의 교점 F 위치를 그림으로 주면 삼각형 DEF의 모양이 분명해진다 / 해설: 닮음인 두 삼각형 DEF, CEB를 나란히 표시하면 닮음비 1 : 3 적용이 쉬워진다 |
+| 10 | REQUIRED | BENEFICIAL | 문제: 종이접기 문항은 접기 전 직사각형, 접는 선 AF, 옮겨진 점 D와 E의 위치를 그림으로 보여 주어야 상황이 이해된다 / 해설: 접은 뒤의 삼각형 EFC와 EF = DF 표시를 그림으로 보여 주면 방정식 설정이 쉬워진다 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | BENEFICIAL | BENEFICIAL | 문제: 정사각형 ABCD와 이동 방향, D까지 3칸이라는 배치를 그림으로 보여 주면 이해가 빠르다 / 해설: 정사각형 둘레에 3, 7, 11칸 이동한 위치를 표시한 그림이 있으면 경우 확인이 쉽다 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | BENEFICIAL | BENEFICIAL | 문제: 삼각형과 평행선, 주어진 세 길이를 표시한 그림이 있으면 대응 관계 확인이 빠르다 / 해설: 닮은 두 삼각형에 대응변 길이를 표시한 그림이 풀이 이해를 돕는다 |
+| 22 | BENEFICIAL | BENEFICIAL | 문제: 평행사변형과 두 대각선, 중점 M, 교점 P를 표시한 그림이 있으면 위치 관계가 분명해진다 / 해설: 중선 BO와 AM, 무게중심 P를 표시한 그림이 무게중심 판단을 쉽게 한다 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | BENEFICIAL | BENEFICIAL | 문제: 좌표평면에 두 절편을 지나는 직선을 그린 그림이 있으면 순서쌍 확인이 쉽다 / 해설: 직선 y = 2x - 6과 주사위 눈 범위의 점을 함께 표시하면 (2)와 (3)의 이해가 빠르다 |
+
+- 문제그림 REQUIRED/BENEFICIAL 11개: 1, 3, 5, 6, 7, 9, 10, 19, 21, 22, 24. 해설그림 REQUIRED/BENEFICIAL 9개: 1, 5, 7, 9, 10, 19, 21, 22, 24.

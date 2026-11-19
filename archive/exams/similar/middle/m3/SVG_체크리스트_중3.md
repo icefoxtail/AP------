@@ -164,3 +164,167 @@
 | 23 | NOT_NEEDED | NOT_NEEDED |  |
 
 - 문제그림 REQUIRED 1개, BENEFICIAL 3개. 해설그림 REQUIRED 0개, BENEFICIAL 4개. TABLE(표 엔진 영역) 3건. 게시한 그림 0개.
+
+## 26_삼산중_1학기_중간_중3_유사2 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다, 깨진 참조 없음). 고친 내용: 13번 발문이 "직사각형을 잘라 직각삼각형 2조각과 이등변삼각형 2조각을 만들었다"로 되어 있어 조각 넓이의 합(48)이 직사각형(8×4=32)보다 커서 성립하지 않았으므로, 직각삼각형 2조각은 직사각형을 대각선으로 잘라 만든 것이고 이등변삼각형 2조각은 따로 있는 것으로 고쳤다(모든 수치와 정답은 그대로). 서술형 21~24번의 `<서술형 n>` 표기를 `[서술형 n]`으로 통일했다. 해설 24개를 판서형으로 정리했고 `\implies`와 7번 해설의 집합 기호·사라지던 중괄호를 고쳤다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 51535121324234112345). 수 보기(3·5·9·10·11·13·15번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장·식·순서 보기(1·2·4·8번)는 보기 순서를 옮겼다. 3번(두 수 사이에 있지 않은 수, 정답 $\sqrt{3}+3$)은 정답이 범위 밖의 가장 큰 값이라 크기순에서 자리가 ⑤로 정해져 목표를 ⑤로 두었다. 16번(ㄱ, ㄴ, ㄹ 관례 조합 보기)은 자리를 그대로 뒀다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 루트6, 루트18과 각 선택지의 대략적 위치를 표시하면 범위 판단이 한눈에 보인다. |
+| 4 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 a, b, c의 근삿값 위치를 표시하면 순서가 바로 확인된다. |
+| 5 | REQUIRED | BENEFICIAL | 문제: 변 DC를 공유하며 나란히 놓인 두 정사각형과, B를 중심으로 BD와 BE를 반지름으로 그린 두 원호가 수직선과 만나는 점 P, Q의 배치를 그림으로 보여 줘야  / 해설: 직각삼각형 ABD와 ABE, 두 원호와 점 P, Q를 표시한 그림이 있으면 계산 과정이 쉽게 따라온다. |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | TABLE | 해설: 제외하는 순서쌍을 x+y가 4, 9, 16인 경우별로 표로 정리하면 개수 확인이 쉽다. |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | BENEFICIAL | BENEFICIAL | 문제: 조각 네 개의 모양과 맞닿은 내부 선분, 완성된 다각형의 예를 그린 그림이 있으면 배치를 상상하지 않아도 된다. 현행 JS에는 이 문항의 그림 자산이 없다. / 해설: 조각 둘레의 합에서 내부 접촉선 길이의 두 배를 빼는 관계를 그림으로 표시하면 뺄셈의 의미가 분명해진다. |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | TABLE | 해설: ㄱ부터 ㄹ까지 각 항목의 참거짓과 근거, 실제 계산값을 표로 정리하면 대조가 쉽다. |
+| 17 | BENEFICIAL | BENEFICIAL | 문제: 사진 3장 곱하기 2장 배열과 좌우 여백 3, 상하 여백 2의 폭을 표시한 포스터 직사각형 그림. / 해설: 사진부 6x 곱하기 4x에 여백을 더해 6x+6과 4x+4가 되는 과정을 표시한 그림. |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | NOT_NEEDED |  |
+| 21 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 루트26과 루트95, 루트10과 자연수 4~8, 루트y의 위치를 표시한 그림. |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | NOT_NEEDED |  |
+| 24 | REQUIRED | REQUIRED | 문제: 긴 변 이등분을 반복한 계단형 내부 구획, AB에 평행한 3번째 선분 JK, 사다리꼴 ABJK를 표시한 직사각형 그림. / 해설: 사다리꼴 ABJK를 음영으로 표시하고 AB, JK, 두 평행선 사이 거리 3루트5/2를 라벨로 표시한 그림. |
+
+- 문제그림 REQUIRED 2개, BENEFICIAL 2개. 해설그림 REQUIRED 1개, BENEFICIAL 6개. TABLE(표 엔진 영역) 2건. 게시한 그림 0개.
+
+## 25_왕운중_1학기_중간_중3_유사3 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다). 기존 그림 연결이 깨진 곳은 없으나 9번 발문이 "아래 그림은 …"이라고 하는데 그림이 없어(점 좌표와 직각변 길이는 글로 주어져 풀이는 가능) 문제 그림 REQUIRED로 둔다. 고친 내용: 5번 발문의 탭·줄바꿈 제곱근표를 파이프 표(AP 표 엔진)로 바로잡았고, 17번 발문과 24번 정답의 `, ;`가 화면에 그대로 보이던 것을 정리했다. 20번 발문 "x의 계수 중 소수인 것의 개수"가 순서쌍 개수로도 읽혀 정답이 둘로 갈릴 수 있어 "서로 다른 값 중"으로 분명히 했다(정답 3개 그대로). 해설 24개를 판서형으로 정리했고 `\implies`·사라지던 중괄호(19번)·집합 기호(20번)를 고쳤다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 12521145451234342353). 수 보기(2·3·4·5·6·7·14·15·20번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장·식·짝 보기(8·16·19번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | TABLE | NOT_NEEDED | 문제: 발문의 제곱근표를 파이프 표(AP 표 엔진)로 교정 |
+| 6 | BENEFICIAL | NOT_NEEDED | 문제: 제곱근표를 표로 제시하면 24행 3열을 찾는 과정이 글로 풀어 쓴 문장보다 빨리 눈에 들어온다. |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | BENEFICIAL | BENEFICIAL | 문제: 수직선에 4.236과 7.162 두 경계 및 3 더하기 루트5의 위치를 표시하면 범위 판단이 한눈에 된다. / 해설: 수직선에 두 경계와 각 선지의 대표 수를 얹어 참·거짓을 시각적으로 비교할 수 있다. |
+| 9 | REQUIRED | BENEFICIAL | 문제: "아래 그림은 …"인데 그림이 없다. 모눈종이 위 두 직각삼각형과 수직선, 호가 수직선과 만나는 점 P, Q의 배치도 필요(P, Q의 값은 표시하지 않는다) |
+| 10 | NOT_NEEDED | TABLE | 해설: 구간(10부터 15까지, 16부터 24까지, 25부터 30까지)별로 x의 개수, g(x), 구간 합을 세 줄 표로 정리하면 같은 계산이 세 번 반복되는 해설을 한 |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | BENEFICIAL | BENEFICIAL | 문제: 발문이 '오른쪽 그림과 같이'를 참조하므로 네 칸으로 나뉜 직사각형 배치 그림을 넣는 것이 좋다(수치는 글에 모두 있음). / 해설: 가로 3x+5, 세로 x+2인 큰 직사각형과 네 칸을 표시한 넓이 모델 그림이 있으면 인수분해와 둘레 계산이 한눈에 들어온다. |
+| 20 | NOT_NEEDED | TABLE | 해설: 제곱 없는 부분별 묶음과 가능한 a+b, 소수 여부를 표로 정리하면 전수 조사 결과를 빠르게 확인할 수 있다. |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | NOT_NEEDED |  |
+| 24 | REQUIRED | BENEFICIAL | 문제: 발문이 참조하는 '다음 그림'이 없으므로 수직선 위 두 원의 중심 -3, 3과 교점 A, B, C, D의 배치를 보여 주는 그림이 필요하다. / 해설: 수직선에 A, B, C, D와 선분 AD, BC를 표시한 그림이 있으면 두 길이의 차 계산이 한눈에 들어온다. |
+
+- 문제그림 REQUIRED 2개, BENEFICIAL 3개. 해설그림 REQUIRED 0개, BENEFICIAL 4개. TABLE(표 엔진 영역) 3건. 게시한 그림 0개.
+
+## 25_연향중_1학기_중간_중3_유사 (23문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다, 깨진 참조 없음). 고친 내용: 서술형 21~23번 끝을 "…구하는 과정을 서술하시오."로 맞췄고, 22번 발문의 `\sqrt{12.6h},\mathrm{km}`(단위 앞 `\,` 누락)를 고쳤다. 해설 23개를 판서형으로 정리했고 `\implies`·사라지던 중괄호를 고쳤다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 32345122411253512553). 수 보기(2·6·10·13·14·18·19번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장·식 보기(1·8·20번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | BENEFICIAL | BENEFICIAL | 문제: 수직선 위 A, 모눈 위 B, 원호로 옮긴 P의 배치를 그림으로 보여 주면 글로만 읽을 때보다 상황 파악이 쉽다. / 해설: 가로 2, 세로 1인 직각삼각형과 수직선 위 원호를 그리면 루트5만큼 이동하는 과정이 시각적으로 확인된다. |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | TABLE | 해설: k 값, ab 값, 순서쌍 개수를 세 행 표로 정리하면 6가지를 세는 과정이 분명해진다. |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 -4와 5, 그 사이의 x 위치를 표시하면 두 절댓값의 부호 판정이 한눈에 보인다. |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | TABLE | 해설: b의 값에 따른 (m, n)과 a의 값, 채택 여부를 표로 정리하면 전수 조사 결과가 분명해진다. |
+
+- 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE(표 엔진 영역) 2건. 게시한 그림 0개.
+
+## 25_신흥중_1학기_중간_중3_유사 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다). 11번은 정육각형을 대각선으로 자른 조각을 이어 붙인 배열이 그림에만 있던 문항으로, 발문 끝에 그림 자리표시 잔여 글자(`b a b a b b → b b b a b a`)가 남아 있어 지웠다. 이 문항은 그림 없이는 조각 배열을 알 수 없어 문제 그림·해설 그림 모두 REQUIRED이며 그림이 생기기 전에는 학생 화면에서 완결되지 않는다. 고친 내용: 서술형 21·22·24번 끝을 "…구하는 과정을 서술하시오."로 맞췄고, 해설 24개를 판서형으로 정리했으며 19번 해설의 사라지던 중괄호와 `\implies`를 고쳤다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 41325123454134225135). 수 보기(1·9·11·16·18번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장·식 보기(2·4·12·15·17·19번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다. 본 해설은 DeepSeek 한도 이후 Sonnet이 작성했다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | TABLE | 해설: ㄱ부터 ㅁ까지 각 수를 유리수와 무리수로 나눈 두 칸 표로 정리하면 분류가 한눈에 들어온다. |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | REQUIRED | REQUIRED | 문제: 정육각형에 자르는 대각선을 표시한 그림과 네 조각을 다시 붙인 새 도형의 배열 그림이 함께 있어야 둘레를 셀 수 있다. / 해설: 새 도형의 바깥 둘레가 짧은 대각선 2개와 한 변 4개로 이루어짐을 표시한 도형 그림이 있어야 2a+4b 계산 근거가 보인다. |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | TABLE | 해설: a = 3, 6, 9, 12, 15에 대한 b와 a + b를 표로 정리하면 범위 탈락까지 한눈에 확인된다. |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | NOT_NEEDED |  |
+| 21 | NOT_NEEDED | TABLE | 해설: k 값에 따른 x와 72/x의 값을 표로 정리하면 후보 검토가 한눈에 들어온다. |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | NOT_NEEDED |  |
+| 24 | NOT_NEEDED | TABLE | 해설: (a, c), (b, d), A를 행으로 묶은 표로 정리하면 여섯 경우와 중복 제거가 한눈에 보인다. |
+
+- 문제그림 REQUIRED 1개, BENEFICIAL 0개. 해설그림 REQUIRED 1개, BENEFICIAL 0개. TABLE(표 엔진 영역) 4건. 게시한 그림 0개.
+
+## 25_금당중_1학기_중간_중3_유사 (24문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다). 5번은 발문이 "다음 그림은 모눈종이 위에 …"로 시작하는데 그림이 없고 자리표시 잔여 글자(`A B C P Q -1 0 1 2 3`)만 남아 있어 잔여 글자를 지웠고, 점 좌표와 변의 길이는 글로 주어져 풀이는 가능하나 문제 그림 REQUIRED로 둔다. 고친 내용: 서술형 22번 끝을 "…구하는 과정을 서술하시오."로 맞췄고, 해설 24개를 판서형으로 정리했다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 15232121154334552344). 수 보기(3·4·5·9·11·12·16·20번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장 보기(2번)·식 보기(8번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다. 이 시험지의 오답 짓기와 판서형 해설은 DeepSeek 한도 이후 Sonnet이 작성했다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | REQUIRED | BENEFICIAL | 문제: 모눈종이 위 직각삼각형 ABC와 A를 중심으로 AC를 반지름으로 하는 원호, 수직선 위의 P·Q 위치가 그림으로 제시되어야 발문의 '다음 그림'이 성립한다. / 해설: 수직선에 A(1), P(1+루트5), Q(1-루트5)를 표시한 그림이 있으면 P-Q가 지름 2루트5임이 한눈에 확인된다. |
+| 6 | NOT_NEEDED | NOT_NEEDED |  |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | TABLE | 해설: x의 구간, f(x) 값, 해당 x의 개수, 구간 합을 네 열 표로 정리하면 독해 부담이 크게 줄어든다. |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | NOT_NEEDED |  |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 -3과 1/2, x의 위치를 표시하고 두 절댓값 식의 부호를 함께 적으면 부호 판정이 한눈에 보인다. |
+| 20 | NOT_NEEDED | NOT_NEEDED |  |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | BENEFICIAL | NOT_NEEDED | 문제: 한 변이 x, y인 두 정사각형을 나란히 그리고 둘레 4x, 4y와 넓이 x^2, y^2를 표시하면 문제 상황이 분명해진다. |
+| 24 | NOT_NEEDED | NOT_NEEDED |  |
+
+- 문제그림 REQUIRED 1개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE(표 엔진 영역) 1건. 게시한 그림 0개.
