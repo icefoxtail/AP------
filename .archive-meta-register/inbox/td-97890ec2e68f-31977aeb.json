@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-97890ec2e68f-31977aeb",
+  "examUid": "25_연향중_2학기_중간_중2_수학",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/2mid/25_연향중_2학기_중간_중2_수학.js",
+  "expectedSourceBlobSha1": "de2472de761fdc6f33b445f6a19f69f01968d145",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97890ec2e68f-31977aeb.type-ledger.json",
+        "sha256": "a0ddffcc78fc072e5e41cf636abacc0d1b34755d4fb0a472f0a2ae2ed1997b11"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ff8571b93857cdc5f99426d4cf6635f516899a6bff912a0fe275e193de35b520",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT_M2_RELATED"
+      },
+      "rationale": "교점(0,4),(0,−4),(2,2)를 얻어 y축 위 밑변8과 높이2로 넓이8을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "e9869fd2b7f2d366ae3300dd981129fb764ef15de3cc5565236d79144f86c6bd",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-97890ec2e68f-31977aeb.type-ledger.json",
+          "sha256": "a0ddffcc78fc072e5e41cf636abacc0d1b34755d4fb0a472f0a2ae2ed1997b11"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-71b04c1efb42-7cd00b6d",
+  "examUid": "23_금당고_1학기_기말_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1final/23_금당고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "02402a3a6ea327e167d35b2b9433a959cf5cc7d6",
+  "expectedQuestionCount": 21,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+        "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_7762ffcbacce4c5c6a812f69853936c87969ade023f7cbf918ff8acec503b500",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "rationale": "좌표 차 3과 4에 거리 공식을 적용하여 AB=5를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "5a10c90d28598b5df349c143dac56d791a8fa1465c207bdff586ff7e8b7417a4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_365de743add70ab24741f8aa6b0595978dcb43e6a434174416bf27be4ca76f3c",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_POINT_SLOPE"
+      },
+      "rationale": "점 (1,3)과 기울기 1로 y-3=x-1을 세워 m+n=3을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "ef9289d7ead60776b16c839e341805efcee90f0c00481c3e6ec30656d45eec20",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_58cf79d479db3df3bf7e532da4305a8c615f8f167d7c03fa0c3e3ed05da6e3bb",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PARALLEL"
+      },
+      "rationale": "평행선의 기울기 2와 점 (1,1)을 대입해 y=2x-1을 정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "a481f218fe03013077f046f7017cdc8a7efc26ad24cc3de741fe1f4327a8481c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e9a33d15f39d015305f28a2a5f6438038eb86faed983744b1ec47ea259aed14e",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_CENTER_RADIUS"
+      },
+      "rationale": "완전제곱으로 (x-3)²+(y+1)²=9를 만들어 중심과 반지름을 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "079c2b1ac8794f6b1c4f2f3cd7dab4ba44de754ab49b281b2122ffb4fdb28685",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_974c3c78ceb1d983d3bd1227126c4b59b09498a4dd5915962534a4bdb8efe933",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_EQUATION",
+        "templateKey": "TPL_LINE_PERP_BISECTOR"
+      },
+      "rationale": "중점 (0,2)를 지나고 기울기 -1/2인 수직이등분선에서 y=0을 대입한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "ea8079b1fcfaa6552c43448884ad1a5dd84013abd0f81f3aa9e9896228467d1a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0d90bed626ea975cabaa59477a8fdfd6f982ab3e95304fdb9c488aca7181b94f",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_GEOMETRY_RATIO"
+      },
+      "rationale": "각의 이등분선 정리로 BD:DC=AB:AC=2:3을 구해 내분점 D=(11/5,7/5)를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "69c7c4cf11ab5c3a942c8111504d1a2e2226d563c9d4a1ea94b03675daa9ccf4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_598536c5ccdf614048f6560b28642782afde98585f94f868b94bbeed855693a2",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "rationale": "둘레에서 현 AB=8을 구하고 반지름 5와 반현 4로 중심의 직선까지 거리 3을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "d180729a82b5767db6684c0876b0ba0dfdcc7292e84821a2d725cbb1c47f47d3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_c73d905d6ab24fca1f5ae0146b836220080b5ed5d80f3f4454d99811b175442a",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_DISTANCE_AREA_APPLICATION"
+      },
+      "rationale": "평행 조건으로 a=1을 정하고 두 직선 사이 거리 1/√5를 정사각형 변으로 삼아 제곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "79021968b69d90d055d4e83591cd53a706f285b7531311c5979b05e66cfb7c8f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f18e4173995d1bdeaf83f956ff26cb49eb13a560828eb55585bdb1e041553716",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_APPLICATION"
+      },
+      "rationale": "BC=2로 두면 외분점에서 CP=2이고 N의 높이는 A의 절반이므로 두 삼각형 넓이비가 2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "1c8f58f2b2911f46b5d22e9bae683ac1fc9caffa4144466708596a86b39c2863",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_68101d8b3835f00f8720fc730b6eb740fba7419d0cb46928e2906f276c56e855",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT"
+      },
+      "rationale": "두 직선까지 거리 r로 중심 (r,√3r)을 정하고 접점 좌표에서 넓이 3√3r²/4=4√3을 세운다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "032ce7e87e26def97f5a409ce55c47e7f68d36de7e1eb3c3ef2b62f2efedb71f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e53df8308b0f651231fc75210299f56e02222c7ac71983923a1195e04f454280",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_DISTANCE_EXTREMUM",
+        "templateKey": "TPL_DISTANCE_EXTREMUM_SUM"
+      },
+      "rationale": "거리 합의 제곱 (3k+2)²/(2k²+2k+1)에 대해 5-f(k)²=(k-1)²/(2k²+2k+1)임을 보여 최대를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "19c56ec36b878cec4ccc8eaa645b965f706dbdaedb076f8dcf1180f4bcee8dfe",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b2860eb5887ca5a93e907c4357378ba91ebe093dbd6d95fe764736214e531582",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT"
+      },
+      "rationale": "두 축과 각각 두 교점을 갖는 k>4에서 원점이 겹치는 k=5를 제외한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "5722df78548ea39bc15861d146f1c17793362e183879988a45465cebd842343d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_35eaba599a897f5b789da435420f3c58d936a2c19a8fc2f38f62cb0485b9a2a0",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_INTERSECTION_COUNT"
+      },
+      "rationale": "넓이 조건을 y=x와 거리 6√2/t인 두 평행선으로 바꾸고 원과의 교점 개수의 경계 t=2,2√3을 나누어 f(t)=mt의 세 근 조건을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "a98893c466d2c8e84a5252a5fe189c6373153d5890e436745a65b2eff9438a1b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-71b04c1efb42-7cd00b6d.type-ledger.json",
+          "sha256": "0ac9cfeff44f93ca135d900ae39df7ab9bad110dfb022da9e3c1ecd992a9dbfe"
+        }
+      ]
+    }
+  ]
+}

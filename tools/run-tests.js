@@ -18,6 +18,54 @@ const quarantined = new Map([
   ['archive-latex-escapes.test.js', 'an in-progress Visang textbook solution contains two JS-unescaped \\dfrac commands; do not edit archived student math without freezing and checking the official source page']
 ]);
 
+// archive/·tools/ 아래 .mjs/.cjs 테스트 중 이전에 어느 잡에서도 안 돌던 것(tests/test-inventory.json notRun, pending)을 켠 목록.
+// 각각 로컬에서 두 번 통과·10초 미만이고, 네트워크·운영 자료 개수·python 같은 외부 명령에 기대지 않는 것만 넣었다.
+function idleSuiteCommands() {
+  const plainScripts = ['archive/tools/shape-movement-line-equation.test.mjs'];
+  return [
+    'archive/prototypes/ap-galaxy/tests/galaxy-all-profiles.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-core-volume.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-differential-rotation.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-integration-corrections.test.cjs',
+    'archive/prototypes/ap-galaxy/tests/galaxy-orbit-plane.test.cjs',
+    'archive/textbook/tools/textbook-pipeline/tests/pipeline-stage-contract.test.mjs',
+    'archive/tools/archive-publication-checkpoint.test.mjs',
+    'archive/tools/archive-source-reference-policy.test.mjs',
+    'archive/tools/generated-meta/auto-register-source-rebind.test.mjs',
+    'archive/tools/geometry-equation/production/svg-accessibility-v1.test.mjs',
+    'archive/tools/geometry-equation/tests/author-guide.test.mjs',
+    'archive/tools/geometry-equation/tests/condition-review-replay-invalidation.test.mjs',
+    'archive/tools/geometry-equation/tests/discontinuous-pair.test.mjs',
+    'archive/tools/geometry-equation/tests/graph-multi-curves-render-plan.test.mjs',
+    'archive/tools/geometry-equation/tests/native-solution-overlay.test.mjs',
+    'archive/tools/geometry-equation/tests/number-line-surd-ends.test.mjs',
+    'archive/tools/geometry-equation/tests/phase4-cubic-quartic-spec.test.mjs',
+    'archive/tools/geometry-equation/tests/publication-layout.test.mjs',
+    'archive/tools/geometry-equation/tests/record-visual-browser-evidence.test.mjs',
+    'archive/tools/geometry-equation/tests/repair-budget-replay.test.mjs',
+    'archive/tools/geometry-equation/tests/solid-tetra-parallel-sections.test.mjs',
+    'archive/tools/geometry-equation/tests/verification-replay-invalidation.test.mjs',
+    'archive/tools/js-bank-cleanup/tests/advanced-meta-audit.test.mjs',
+    'archive/tools/meta-foundation/semantic-authority-guard.test.mjs',
+    'archive/tools/pipeline-core/tests/authority-repair.test.mjs',
+    'archive/tools/pipeline-core/tests/capability-registry.test.mjs',
+    'archive/tools/pipeline-core/tests/execution-recovery.test.mjs',
+    'archive/tools/pipeline-core/tests/gold-contract.test.mjs',
+    'archive/tools/pipeline-core/tests/machine-evidence.test.mjs',
+    'archive/tools/pipeline-core/tests/resume-continuity.test.mjs',
+    'archive/tools/pipeline-core/tests/resume-runner.test.mjs',
+    'archive/tools/pipeline-core/tests/review-only-recheck.test.mjs',
+    'archive/tools/pipeline-core/tests/rulepack.test.mjs',
+    'archive/tools/pipeline-core/tests/source-recovery.test.mjs',
+    'archive/tools/pipeline-core/tests/v2.test.mjs',
+    'archive/tools/pipeline-core/tests/work-batch-lock.test.mjs',
+    'archive/tools/scan_dynamic_intake_v1/tests/scan-dispatch.test.mjs',
+    'archive/tools/shape-movement-line-equation.test.mjs',
+    'archive/tools/tag-enrichment/tests/tag-candidates.test.mjs',
+    'tools/harness/gpt-book-handoff.test.mjs'
+  ].map(file => ({ label: file, args: plainScripts.includes(file) ? [file] : ['--test', file] }));
+}
+
 // 격리(quarantined) 목록의 파일은 실패해도 막지 않고, 통과하면 FIXED 안내를 낸다. 그 밖의 실패는 그대로 실패로 센다.
 // (서명으로 알려진 실패를 허용하던 KNOWN-FAIL 장치는 2026-11-18 삭제했다: docs/agents/token-efficiency.md §12)
 function runPlan({ root, plan }) {
@@ -466,13 +514,11 @@ const requiredCommands = [
   },
   {
     label: 'tests/archive2-worker-validation.test.mjs (Grade/browse contracts)',
-    args: [
-      '--test',
-      '--test-name-pattern',
-      'grade-only canonical path filters pass mixed-question validation|Worker accepts an approved high2 source in the shared high3 semantic browse pool without rewriting its grade|shared browse grade cannot replace saved snapshot source grades at deployment|target-only grade validation accepts every supported class grade and preserves fail-closed fallbacks',
-      'tests/archive2-worker-validation.test.mjs'
-    ]
+    // The whole file runs (it was a 4-test name filter); it loads the 28k-record catalog and takes about 30-60 s.
+    args: ['--test', 'tests/archive2-worker-validation.test.mjs'],
+    timeout: 180000
   },
+  ...idleSuiteCommands(),
   {
     label: 'tests/archive2-saved-paper-namespace.test.mjs',
     args: ['--test', 'tests/archive2-saved-paper-namespace.test.mjs']

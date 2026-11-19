@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-95eb793f4d8c-a560fe4b",
+  "examUid": "20_순천여고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/20_순천여고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "315ce97fb4db13e093dea2202f935c54334b9920",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-95eb793f4d8c-a560fe4b.type-ledger.json",
+        "sha256": "65bcf3be905de5921fdb71788f7b1748495e473258cd13f4d5ec31a2fc1a2b0d"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ed1c880b20abc0c9fbfabaec2650c4ffa09b999e9f0e159886c6ceb126abbd1d",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY"
+      },
+      "rationale": "비영실수의근호식이성립하므로a,b>0. √ab=√a√b이고√3a·√3a=3a=√9a²이므로전체0.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "fb202eae65dfbc27b498eb8a59dce1a824e5e36fbec765e39c9e1365888722d2",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-95eb793f4d8c-a560fe4b.type-ledger.json",
+          "sha256": "65bcf3be905de5921fdb71788f7b1748495e473258cd13f4d5ec31a2fc1a2b0d"
+        }
+      ]
+    }
+  ]
+}

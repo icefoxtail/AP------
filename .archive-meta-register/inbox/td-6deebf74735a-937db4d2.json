@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-6deebf74735a-937db4d2",
+  "examUid": "26_제일고_1학기_중간_고2_대수",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/1mid/26_제일고_1학기_중간_고2_대수.js",
+  "expectedSourceBlobSha1": "fe6fc8eb7b2b07758f591a38106fb1c1030d76c8",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-937db4d2.type-ledger.json",
+        "sha256": "9295225e0fa19443cc8009906aa135e61fa233e7ba0a473af0d66527c477da32"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_357719f0692675780f1cf1369a0682d22c7f022e4ccbdd98578a715ac9f4a1c2",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_INVERSE_EQUATION"
+      },
+      "rationale": "역함수의 두 고정점을 원함수의 값으로 바꾸어 k,p의 연립식을 푼다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학2"
+      },
+      "textBindingFingerprint": "b3c127d02ac1c8484d9620b9c568808ee1bfe5f72d2478e8f44b4fa93f515e06",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-6deebf74735a-937db4d2.type-ledger.json",
+          "sha256": "9295225e0fa19443cc8009906aa135e61fa233e7ba0a473af0d66527c477da32"
+        }
+      ]
+    }
+  ]
+}

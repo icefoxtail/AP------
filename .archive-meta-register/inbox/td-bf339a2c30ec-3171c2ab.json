@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-bf339a2c30ec-3171c2ab",
+  "examUid": "24_연향중_1학기_중간_중3_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m3/1mid/24_연향중_1학기_중간_중3_기출.js",
+  "expectedSourceBlobSha1": "a175820399793dc77e2338826be49e66966d0398",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bf339a2c30ec-3171c2ab.type-ledger.json",
+        "sha256": "3ca7ca48dfc317e0cfb566089a11311f9dc825c8960adb324557c5a592ff4621"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_afcdd72b463fdaf81bf052c711f2d437dd63a70942dbed4c37906fdcdf5acd9a",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_PYTHAGOREAN_RELATION",
+        "templateKey": "TPL_M2_PYTHAGOREAN_SIDE_LENGTH"
+      },
+      "rationale": "단면의 가로·세로10으로 사선10√2를 구하고 두 방향 끈 및 매듭 합산.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "deca42236f4fb72adf5803dd659736b67653a0e99af75613ff3b068d03b8dee3",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bf339a2c30ec-3171c2ab.type-ledger.json",
+          "sha256": "3ca7ca48dfc317e0cfb566089a11311f9dc825c8960adb324557c5a592ff4621"
+        }
+      ]
+    }
+  ]
+}

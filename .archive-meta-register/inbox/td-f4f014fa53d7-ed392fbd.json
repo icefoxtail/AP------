@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-f4f014fa53d7-ed392fbd",
+  "examUid": "20_금당고_1학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1mid/20_금당고_1학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "e4b71b8239fd736852f1ce4bf1569c325de83b38",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f4f014fa53d7-ed392fbd.type-ledger.json",
+        "sha256": "4edbb030d1412a4594a421dad0c7ec43052288b2b504ba07d69353a78ee3c82f"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_be2df714e7a1a205d2da818b4eeb4ac80beadc857dd6c72778073be7a0c2144e",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY"
+      },
+      "rationale": "실수근호정의와비영조건으로x,y,z양수, x≤y에서절댓값과√제곱을부호에맞게풀어−y−2z.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "중3 수학"
+      },
+      "textBindingFingerprint": "7146914ea55052377c2b8fc372b7ddfca35103fd93badd0053d9a7ffeb4ea7b8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f4f014fa53d7-ed392fbd.type-ledger.json",
+          "sha256": "4edbb030d1412a4594a421dad0c7ec43052288b2b504ba07d69353a78ee3c82f"
+        }
+      ]
+    }
+  ]
+}
