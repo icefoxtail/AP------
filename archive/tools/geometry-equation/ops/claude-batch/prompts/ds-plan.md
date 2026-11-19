@@ -10,7 +10,7 @@
 {"decision":"FIGURE","plan":{"capability":"…","…":"…","caption":"…","accessibilityDescription":"…","newVisualInformation":["…"]}}
 === Q6 ===
 {"decision":"EXEMPT","why":"…무엇을 계산하는 문제라서 그림이 보탤 정보가 없다…"}
-- FIGURE: `plan`은 본보기와 같은 모양(최상위에 capability, 형태별 본문, caption, accessibilityDescription, newVisualInformation). **sourceConditions의 "source"(문제 원문) 항목은 쓰지 않는다**(스크립트가 넣는다). 풀이 방법을 적는 다른 sourceConditions 항목은 본보기대로 써도 되고 없어도 된다. newVisualInformation은 이 그림이 새로 보여 주는 정보를 한 줄 이상(문자열 배열).
+- FIGURE: `plan`은 본보기와 같은 모양(최상위에 capability, 형태별 본문, caption, accessibilityDescription, newVisualInformation). **단 stat-chart-figure-v1·set-diagram-figure-v1·lattice-path-figure-v1·container-fill-figure-v1 은 accessibilityDescription 을 쓰지 않는다**(엔진이 이 필드를 거절한다. 일괄 렌더에서 이 형태 plan 284개가 이 필드 하나 때문에 전부 실패했다). **sourceConditions의 "source"(문제 원문) 항목은 쓰지 않는다**(스크립트가 넣는다). 풀이 방법을 적는 다른 sourceConditions 항목은 본보기대로 써도 되고 없어도 된다. newVisualInformation은 이 그림이 새로 보여 주는 정보를 한 줄 이상(문자열 배열).
 - EXEMPT / CONTENT: `{"decision":"…","why":"구체적인 한국어 한 줄"}`.
 - UNSUPPORTED: `{"decision":"UNSUPPORTED","why":"…","errorCode":"찾아 본 capability·가이드 절","attempts":"찾아 본 방법"}`.
 - JSON 문자열의 큰따옴표·역슬래시·줄바꿈은 이스케이프한다(\" \\ \n). 값은 정확한 정수·분수 문자열로 쓴다("17/4").
@@ -54,6 +54,17 @@ construction-spike-v1(좌표·작도·원·삼각형·단위원, mathPlan·plane
 - **multi-curve `DUPLICATE_SEMANTIC_LABEL`**: 한 함수를 조각(H1, H2, H3…)으로 나눠 그리거나 점근선(y=1 등)이 같은 RATIONAL 곡선을 여럿 그리면 식·점근선 글이 중복된다. 한 곡선만 글을 두고 나머지는 `"hideLabels":["formula","asymptotes"]`를 쓴다. 직선 라벨 `y=4`와 같은 값의 `axisTickValues`는 같이 쓰지 않는다.
 - **`LAYOUT_INVENTORY_INCOMPLETE`(좌표·sampleNote 글 자리 없음)**: `coordinates:true`인 overlays 점은 한 그림에 **3개 이하**로 쓴다(4개인 plan은 4개 중 0개 통과). 직선 라벨·sampleNote·점 이름이 많으면 더 줄이고, 핵심 점만 좌표를 쓰고 나머지는 `coordinates`를 빼서 caption에 값을 쓴다. 점이 `axisTickValues` 눈금 위에 있으면 그 눈금을 뺀다(점 Z(-2,0)와 눈금 -2가 충돌한 예).
 - **근호 좌표 점**: requiredPoints의 `x`,`y`에 정확한 문자열(`"(2-sqrt(13))/3"`)만 쓰고 같은 id를 `exactCoordinates`에 또 쓰지 않는다(`PIECEWISE_POLY_EXACT_COORDINATES_CONFLICT`). 정수·분수 좌표 점만 `exactCoordinates`를 쓴다.
+- **아래는 2026-11-20 일괄 렌더(plan 1,421개 중 1,008개 실패)에서 엔진이 렌더 전에 plan 형식만으로 거절한 것들이다.** 지키면 렌더 한 번에 통과한다. 검증(validate)이 plan-lint 로 같은 검사를 먼저 해서 걸리면 이유와 고치는 법을 되돌려 주지만, 처음부터 지킨다.
+- **통계·벤·격자·용기 plan 에는 `accessibilityDescription` 을 쓰지 않는다**(`STAT_CHART_PLAN_INVALID`·`SET_DIAGRAM_PLAN_INVALID`·`LATTICE_PLAN_INVALID`; 이 세 형태 284개가 전부 실패한 원인). 엔진이 형태별 고정 문장을 쓴다. 최상위는 capability, 형태 본문(chart·diagram·lattice), caption, sourceConditions, newVisualInformation 뿐이다.
+- **multi-curve-figure-v1 은 곡선이 2~6개일 때만 쓴다**(`MULTI_CURVE_COUNT_INVALID` 74개: 모두 곡선 1개). 직선·다항 한 개는 piecewise-polynomial-spike-v1, 지수 한 개는 exponential-affine-spike-v1, 로그 한 개는 logarithmic-affine-spike-v1. 곡선 하나에 `emphasis`(일부 구간 강조)·`abs:true`·`regions`(영역 칠하기)가 있어야 하는 그림만 multi-curve 에 1개를 둘 수 있다. Y_OF_X 계수는 [c0,c1,c2] 세 개(삼차 이상은 불가).
+- **multi-curve 곡선 `label` 은 ASCII 식만**(`MULTI_CURVE_LABEL_INVALID` 82개): 마이너스는 `-`(U+2212 `−` 불가), 제곱은 `x^3`(`x³`·`₃` 불가), 한글·`<`·`>` 불가. 식이 필요 없으면 label 을 쓰지 않는다(엔진이 식을 쓴다).
+- **구간별 다항의 꼭짓점·극점은 전부 `requiredPoints` 에 쓴다**(`PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS` 55개). overlays 점의 `curveX` 로 점을 만들어도 requiredPoints 를 대신하지 못한다. `sourceDomain.range` 에 소수를 쓰지 않는다(`"-0.3"` → `"-3/10"`). pieces 는 4개 이하.
+- **`axisTickValues` 에 0 과 근호를 넣지 않는다**(`INVALID_AXIS_TICK_VALUE` 16개): 눈금은 0 이 아닌 정수·분수 문자열뿐이다(`"sqrt(2)"` 불가). 삼각함수 `axisTickPi` 의 x 눈금(π 배)에는 `sourceDomain.rangePi` 의 양 끝값을 넣지 않는다(끝은 엔진이 쓴다: `TRIG_PI_TICK_OUTSIDE_VIEW` 15개).
+- **각 라벨(`planeMarks.angles[].label`)에 `∠` 와 `°` 를 쓰지 않는다**: `"40°"` → `"40"`, `"∠A=40°"` → `"A=40"`(엔진이 숫자 뒤에 °를 붙여 `°` 를 쓰면 두 번 겹쳐 `MATHJAX_TYPESET_ERROR` 34개, `∠` 는 `UNSUPPORTED_MATH_TOKEN` 26개). 각의 `value` 는 실제로 그려지는 각과 같아야 한다(`ANGLE_MARK_FACT_MISMATCH`).
+- **수직선**(number-line-figure-v1): POINTS 행은 점 2~4개, 점 id 는 영문 대문자 한 글자(`"P0"`·`"a"` 불가: `NUMBER_LINE_POINTS_INVALID`). 행 `label` 은 6자 이내이고 `<`·`>` 가 없어야 한다(`"-3≤m<4"` 불가: `NUMBER_LINE_ROW_LABEL_INVALID` 20개).
+- **정규분포**(NORMAL_CURVE): 눈금 `text` 가 숫자면 그 눈금의 `x` 와 같아야 한다(`{"x":"-2","text":"430"}` 불가: `STAT_NORMAL_TICK_TEXT_MISMATCH`). 실제 단위로 쓰려면 curves 의 `mean`·`sd` 를 실제 값(`"450"`,`"10"`)으로 하고 눈금은 `{"x":"430"}`. 색칠 `shades` 의 from/to 는 모두 ticks 에 있는 값이다.
+- **수형도**(TREE): 가지 `label` 은 6자 이내, 단계는 3단계 이내(`STAT_TREE_LABEL_INVALID`·`STAT_TREE_TOO_DEEP`). **벤다이어그램** 원소는 `elements` 항목 하나에 원소 하나(`"4, 12"` 처럼 쉼표로 묶으면 `SET_ELEMENT_TEXT_UNSUPPORTED`).
+- **합성(composite-panels-v1) 그림 크기**: 위아래로 쌓은 전체가 높이 약 820, 폭 828 이상이면 렌더가 거절한다(`UNSUPPORTED_DISPLAY_ENVELOPE`). 패널을 줄이거나 패널 안 그림의 viewport 를 줄인다.
 
 [끝내기 전 점검 — 문항마다]
 본보기와 같은 구조·필드 이름인가 / capability가 위 목록에 있는가 / caption·accessibilityDescription 규칙을 지켰는가 / newVisualInformation이 있는가 / 표지 `=== Q<번호> ===`와 JSON이 문항마다 있는가 / 판정이 FIGURE가 아니면 why가 구체적인가.

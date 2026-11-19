@@ -16,6 +16,9 @@ const fs = require('fs'), path = require('path'), vm = require('vm'), cp = requi
 const LEDGER = 'archive/tools/geometry-equation/production/exam-figure-ledger/';
 const PLAN_BASE = 'docs/plans/archive-one-route-upgrade/svg-plans-expanded/';
 const DECISIONS = ['FIGURE', 'EXEMPT', 'CONTENT', 'UNSUPPORTED'];
+// 최상위 accessibilityDescription 을 받지 않는 capability(엔진이 형태별 고정 문장을 쓴다: production/stat-chart-v1.mjs:1789, set-diagram-v1.mjs:1080, lattice-path-v1.mjs:27, container-fill-v1.mjs:271).
+// 이 필드를 쓰면 렌더가 STAT_CHART_PLAN_INVALID 등으로 거절한다(2026-11-20 일괄 렌더: 이 세 형태 plan 284개 중 0개 통과). expand 가 지우고, validate 는 요구하지 않는다.
+const NO_A11Y_CAPS = new Set(['stat-chart-figure-v1', 'set-diagram-figure-v1', 'lattice-path-figure-v1', 'container-fill-figure-v1']);
 const [cmd, js, out, ...rest] = process.argv.slice(2);
 if (!cmd || !js || !out) { console.error('usage: ds-plan-lib.cjs prep|expand|retry-prep|validate|finalize|report <시험지 JS> <outdir>'); process.exit(2); }
 const src = js.replace(/\\/g, '/');
@@ -84,6 +87,21 @@ const pend = readJson(pendingPath).rows;
 const hasKorean = s => /[가-힣]/.test(s);
 const CONTAINERS = ['graphPlan', 'chart', 'numberLine', 'mathPlan', 'planeMarks', 'solids', 'ellipse', 'setDiagram'];
 
+// plan-lint: 렌더 전에 엔진의 검증 함수로 plan 형식 오류를 잡는다(Chrome 불필요, 문항당 1초 안팎). 기본으로 켠다.
+// 환경변수 PLAN_LINT=0 이면 건너뛴다(엔진·python 의존성이 없는 환경 점검용). lint 자체가 못 돌면 경고만 하고 기존 검증만 한다.
+let lintCache = null;
+function lintResults() {
+  if (lintCache) return lintCache;
+  lintCache = {};
+  if (process.env.PLAN_LINT === '0') return lintCache;
+  const files = pend.map(r => planDir + planFile(r.no)).filter(f => fs.existsSync(f));
+  if (!files.length) return lintCache;
+  const r = cp.spawnSync(process.execPath, [path.join(__dirname, 'plan-lint.cjs'), '--json', ...files], { encoding: 'utf8', maxBuffer: 1 << 26, timeout: 20 * 60e3 });
+  if (r.status === null || r.status === 2 || !r.stdout) { console.error('WARN: plan-lint 를 실행하지 못했다(' + String(r.stderr || r.error || '').split('\n')[0] + '). 렌더 사전검사 없이 기존 검증만 한다.'); return lintCache; }
+  for (const line of r.stdout.split('\n').filter(Boolean)) { try { const j = JSON.parse(line); lintCache[j.file.replace(/\\/g, '/')] = j; } catch { /* 한 줄이 깨져도 나머지는 쓴다 */ } }
+  return lintCache;
+}
+
 function checkLanguage(text, surface) {
   const { validateSvgStudentLanguage } = require(path.resolve('archive/tools/svg-language-contract.cjs'));
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -126,6 +144,7 @@ function problemsOfPlan(r) {
   if (!plan || typeof plan !== 'object' || Array.isArray(plan)) return ['plan 최상위가 객체가 아니다'];
   if (typeof plan.capability !== 'string' || !plan.capability) problems.push('plan.capability 가 없다');
   for (const k of ['caption', 'accessibilityDescription']) {
+    if (k === 'accessibilityDescription' && NO_A11Y_CAPS.has(plan.capability)) continue; // 이 형태는 받지 않는다(있으면 아래 plan-lint 가 짚는다)
     if (typeof plan[k] !== 'string' || !plan[k].trim()) { problems.push(`plan.${k} 가 없다`); continue; }
     if (/\^|sqrt|\\frac|\\dfrac|축척/.test(plan[k]) || /(?<![\w)])\*|\*(?![\w(])/.test(plan[k])) problems.push(`plan.${k} 에 입력용 표기(^, sqrt, *, \\frac)나 "축척"이 있다`);
     const errs = checkLanguage(plan[k], k === 'caption' ? 'title' : 'desc');
@@ -147,6 +166,8 @@ function problemsOfPlan(r) {
         if (b2.length) problems.push(`본보기에 없는 ${k} 하위 필드: ${b2.join(', ')}`); }
     }
   }
+  const lint = lintResults()[pf];
+  if (lint && lint.status === 'FAIL') for (const p of lint.problems || [lint]) problems.push(`렌더 사전검사(plan-lint) ${p.code}: ${p.reason}${p.fix ? ' → ' + p.fix : ''}`);
   return problems;
 }
 
@@ -225,6 +246,7 @@ if (cmd === 'expand') {
         const plan = obj.plan && typeof obj.plan === 'object' ? obj.plan : (obj.capability ? obj : null);
         if (!plan) { fs.writeFileSync(path.join(qdir(no), 'parse-error.txt'), 'decision 이 FIGURE 인데 plan 객체가 없다\n'); fail++; continue; }
         const q = bank[no - 1];
+        if (NO_A11Y_CAPS.has(plan.capability)) delete plan.accessibilityDescription; // 엔진이 받지 않는 필드(렌더가 PLAN_INVALID 로 거절한다)
         if (!Array.isArray(plan.sourceConditions)) plan.sourceConditions = [];
         if (!plan.sourceConditions.some(c => c && c.mappedTo === 'PRESERVED_ARCHIVE_BANK'))
           plan.sourceConditions.unshift({ id: 'source', condition: String(q.content ?? q.question ?? ''), mappedTo: 'PRESERVED_ARCHIVE_BANK' });
