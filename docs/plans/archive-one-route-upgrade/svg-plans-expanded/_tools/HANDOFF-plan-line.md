@@ -43,3 +43,9 @@
 
 ## 2026-11-18 엔진 수정 뒤
 - 엔진 `6b803c1c7f`(svg-engine/fail-corpus-20261117)로 비정수 x 필수점이 풀렸다. 매산여고 2mid q20, 제일고 2mid q9 플랜을 다시 써서 그 엔진 worktree로 렌더 ARCHIVE_BOUND, PNG 확인. 장부는 FIGURE로 되돌림. 이 엔진이 main에 들어가기 전에는 공장 렌더에서 실패할 수 있다.
+
+## 2026-11-19부터 DeepSeek plan 대기열
+- 장부 "plan 대기"(OPEN_LAYOUT) 약 1,750문항(171시험지)의 plan은 DeepSeek이 쓴다: `archive/tools/geometry-equation/ops/claude-batch/ds-plan-exam.sh <시험지 JS>`(시험지 1개, 렌더 ARCHIVE_BOUND·PNG 확인·기계 검증 뒤 이 폴더만 commit·push), 대기열 `qrun-ds-plan.sh <목록>`(한 번에 1개, 한도에 걸리면 멈춤), 목록 `mk-ds-plan-list.cjs`(고2 → 중2 → 중1 → 고1, 최신 연도 순). 도구 설명은 `ops/claude-batch/README.md`.
+- 이 폴더의 `_decisions.jsonl`·`source-revision.json`은 도구가 쓴다(note가 `ds-plan 2026-11-19`). 이 라인의 손 작성 plan과 같은 시험지를 건드리지 않게 이미 plan 파일/판정 행이 있는 문항은 건너뛴다.
+- 이 작업 트리는 sparse다. 렌더하려면 `archive/tools`, `archive/exams/original`, `archive/data`, `archive/assets`, `archive/vendor`, `archive/js`, `archive/generated`, `alive`를 `git sparse-checkout add`하고 `.tmp/apmath-visual-engine/dependencies`를 main repo 쪽으로 junction한다.
+

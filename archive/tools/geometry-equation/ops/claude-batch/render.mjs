@@ -16,7 +16,7 @@ for (;;) {
   const names = (process.env.RENDER_PRIORITY ? ['p'] : []).concat(Array.from({length: SLOTS}, (_, i) => String(i)));
   for (const n of names) {
     if (L) break;
-    const cand = path.join(HERE, 'render.lock.' + n);
+    const cand = path.join(process.env.RENDER_LOCK_DIR || HERE, 'render.lock.' + n); // RENDER_LOCK_DIR: share slots with another worktree (factory)
     try { fs.mkdirSync(cand); fs.writeFileSync(path.join(cand, 'owner'), String(process.pid)); L = cand; }
     catch (e) {
       if (e.code !== 'EEXIST') throw e;
