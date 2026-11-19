@@ -1,0 +1,51 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "A 비당첨",
+          "p": "4/5",
+          "children": [
+            {
+              "label": "B 당첨",
+              "p": "3/14"
+            },
+            {
+              "label": "B 비당첨",
+              "p": "11/14"
+            }
+          ]
+        },
+        {
+          "label": "A 당첨",
+          "p": "1/5",
+          "children": [
+            {
+              "label": "B 당첨",
+              "p": "1/7"
+            },
+            {
+              "label": "B 비당첨",
+              "p": "6/7"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true
+  },
+  "caption": "A가 당첨 제비를 뽑지 않을 확률은 12/15=4/5이고 이때 B가 당첨을 뽑을 확률은 3/14이다. A가 당첨을 뽑을 확률은 3/15=1/5이고 이때 B가 당첨을 뽑을 확률은 2/14=1/7이다. B가 당첨인 두 경로의 확률은 4/5×3/14=6/35와 1/5×1/7=1/35이고 합은 7/35=1/5이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "A가 당첨 제비를 뽑지 못한 경우와 뽑은 경우로 갈라지고 각각 B가 당첨과 비당첨을 뽑는 확률이 적힌 수형도이다.",
+  "newVisualInformation": [
+    "B가 당첨인 두 경로의 확률 6/35와 1/35가 보여 더하면 1/5가 됨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "3개의 당첨 제비를 포함하여 15개의 제비가 들어 있는 상자에서 두 사람 $A$, $B$가 $A$, $B$의 순서로 제비를 임의로 1개씩 뽑을 때, $B$가 당첨 제비를 뽑을 확률은? (단, 뽑은 제비는 다시 넣지 않는다.) [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
