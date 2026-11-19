@@ -20,6 +20,10 @@ echo Downloading AP Math print agent source...
 powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -UseBasicParsing -Uri '%SOURCE_URL%' -OutFile '%INSTALL_DIR%\Program.cs'"
 if errorlevel 1 goto :failed
 
+echo Stopping the running print agent, if any...
+taskkill /f /im native-print-agent.exe >nul 2>&1
+powershell.exe -NoProfile -Command "Start-Sleep -Milliseconds 800" >nul 2>&1
+
 echo Installing the local print agent...
 "%CSC%" /nologo /target:winexe /reference:System.Drawing.dll /out:"%INSTALL_DIR%\native-print-agent.exe" "%INSTALL_DIR%\Program.cs"
 if errorlevel 1 goto :failed
