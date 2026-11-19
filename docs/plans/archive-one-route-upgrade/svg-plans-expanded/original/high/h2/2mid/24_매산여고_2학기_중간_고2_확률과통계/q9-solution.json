@@ -1,0 +1,49 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1/3",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "1/6",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "1/2",
+        "in": []
+      }
+    ],
+    "shade": "B^c",
+    "subset": [
+      "A",
+      "B"
+    ]
+  },
+  "caption": "A와 B의 여사건이 서로 배반이면 A는 B에 포함된다. B는 A와 A의 여사건∩B로 나뉘고 두 부분은 서로 배반이므로 P(B)=1/3+1/6=1/2이다. 그림은 A 안쪽 1/3, B 안에서 A 밖 1/6, B 밖 1/2이며 색칠한 B 밖이 B의 여사건이다. 따라서 P(B의 여사건)=1−1/2=1/2이고 답은 ①이다.",
+  "accessibilityDescription": "전체집합 안에서 집합 A가 집합 B 안에 포함된 벤다이어그램이며 세 영역에 확률이 적혀 있고 B 바깥이 색칠되어 있다.",
+  "newVisualInformation": [
+    "A⊂B 관계와 세 영역의 확률 1/3, 1/6, 1/2가 보이고 B의 여사건이 B 바깥 영역임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 사건 $A,B$에 대하여 $A$와 $B^c$는 서로 배반사건이고 $P(A)=\\dfrac13$, $P(A^c\\cap B)=\\dfrac16$일 때, $P(B^c)$의 값을 구하면? (단, $A^c$은 $A$의 여사건, $B^c$은 $B$의 여사건이다.) [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
