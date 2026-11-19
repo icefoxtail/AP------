@@ -1,0 +1,64 @@
+{
+  "qid": 18,
+  "itemFingerprint": "f077c894d98568f5",
+  "solveSteps": [
+    "1) 일정한 속력으로 달리는 구간: 속력이 변하지 않으므로 수평선이다.",
+    "2) 속력을 줄여서 멈추는 구간: 속력이 감소하여 0이 되므로 우하향 선분이다.",
+    "3) \\begin{aligned} \\text{수평선} \\rightarrow \\text{감소하여 0} \\end{aligned} 모양이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-04",
+  "subUnitKey": "M1-04-GRAPH_RELATION",
+  "unitEvidence": "어느 자전거가 출발하여 일정한 속력으로 달리다가 속력을 점점 줄여서 멈추었다.",
+  "rpmRecordId": "M1-RPM-165",
+  "rpmReason": "자전거의 속력 변화 상황을 시간에 따른 그래프 형태 \\begin{aligned} \\text{일정} \\rightarrow \\text{감소} \\end{aligned} 로 나타내는 M1-RPM-165에 해당한다.",
+  "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+  "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH",
+  "typeReason": "실제 이동 상황(일정한 속력 유지 후 감속하여 정지)을 속력-시간 그래프 개형 \\begin{aligned} \\text{수평선 후 우하향} \\end{aligned} 과 연결하는 PT_M1_CONTEXT_GRAPH_INTERPRETATION과 TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_SPEED_GRAPH이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "상황 진술을 읽고 \\begin{aligned} \\text{일정 유지 후 감소} \\end{aligned} 개형을 바로 고르는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "발하여 일정한 속력으로 달리"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "변화를 나타낸 그래프의 모양"
+      }
+    ],
+    "method": [
+      {
+        "term": "속력",
+        "src": "solution",
+        "quote": "흐름에 따른 속력의 변화 과",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "일정한 속력 후 감속 정지하는 과정을 \\begin{aligned} \\text{수평선 후 감소하여 0} \\end{aligned} 개형으로 연결하여 정답 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

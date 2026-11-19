@@ -1,0 +1,57 @@
+{
+  "qid": 3,
+  "itemFingerprint": "a485caf6dde12323",
+  "solveSteps": [
+    "1) 주어진 식 4x - 5의 x에 3을 대입한다.",
+    "2) 4 * 3 - 5 = 12 - 5 = 7이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+  "unitEvidence": "$x = 3$일 때, 식 $4x - 5$의 값은? [3점]",
+  "rpmRecordId": "M1-RPM-142",
+  "rpmReason": "x = 3일 때 일차식 4x - 5에 대입하여 4*3 - 5 = 12 - 5 = 7을 구하는 M1-RPM-142에 해당한다.",
+  "problemTypeKey": "PT_M1_LITERAL_EXPRESSION_EVALUATION",
+  "templateKey": "TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION",
+  "typeReason": "일차식 4x - 5에 x = 3을 직접 대입하여 12 - 5 = 7을 계산하는 전형적인 PT_M1_LITERAL_EXPRESSION_EVALUATION과 TPL_M1_LITERAL_EXPRESSION_NUMERIC_SUBSTITUTION이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x = 3을 4x - 5에 대입하여 12 - 5 = 7을 바로 얻는 1단계 기본 문제이므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "자릿수",
+        "src": "solution",
+        "quote": "5$의 $x$ 자리에 $3$을 대"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "리에 $3$을 대입하여 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x = 3을 4x - 5에 대입하여 4*3 - 5 = 12 - 5 = 7을 계산하여 정답 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

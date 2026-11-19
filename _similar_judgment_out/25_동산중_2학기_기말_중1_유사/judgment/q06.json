@@ -1,0 +1,64 @@
+{
+  "qid": 6,
+  "itemFingerprint": "6bdd80cd12c7d90a",
+  "solveSteps": [
+    "1) \\begin{aligned} 3x + 2 + 2x - 7 \\end{aligned} 에서 3x의 동류항은 +2x(㉠)이다.",
+    "2) +2의 동류항은 -7(㉡)이다.",
+    "3) 동류항끼리 묶어 정리하면 (3x + 2x) + (2 - 7) = 5x - 5(㉢)이다.",
+    "따라서 옳은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+  "unitEvidence": "다음은 다항식 $3x + 2 + 2x - 7$을 간단히 하는 과정에 대한 설명이다. ㉠~㉢에 들어갈 것으로 옳은 것은? [3점]",
+  "rpmRecordId": "M1-RPM-145",
+  "rpmReason": "다항식 \\begin{aligned} 3x + 2 + 2x - 7 \\end{aligned} 에서 동류항을 찾아 묶고 정리하는 M1-RPM-145에 해당한다.",
+  "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+  "templateKey": "TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS",
+  "typeReason": "식 \\begin{aligned} 3x + 2 + 2x - 7 \\end{aligned} 에서 문자와 차수가 같은 동류항을 묶어 5x - 5로 정리하는 PT_M1_LINEAR_EXPRESSION_STRUCTURE와 TPL_M1_LINEAR_EXPRESSION_LIKE_TERMS이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "동류항의 뜻을 알고 \\begin{aligned} 3x + 2x = 5x \\end{aligned} 및 2 - 7 = -5를 구하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다음은 다항식 $3x + 2 + 2x - 7$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "동류항",
+        "src": "stem",
+        "quote": "$3x$와 ㉠, $+2$와 ㉡은 동류항이므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "문자와 차수가 같은 항을 동류항이라 한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "다항식 \\begin{aligned} 3x + 2 + 2x - 7 \\end{aligned} 에서 동류항을 정리하여 5x - 5를 얻어 정답 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 9,
+  "itemFingerprint": "26ff73a2c4d31158",
+  "solveSteps": [
+    "1) \\begin{aligned} \\dfrac{1}{3}(-x - 2) - \\dfrac{2x - 5}{6} = \\dfrac{2(-x - 2) - (2x - 5)}{6} \\end{aligned}",
+    "2) 분자를 전개하면 -2x - 4 - 2x + 5 = -4x + 1이다.",
+    "3) -4x/6 + 1/6 = -2/3 x + 1/6이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+  "unitEvidence": "$\\dfrac{1}{3}(-x - 2) - \\dfrac{2x - 5}{6}$를 계산한 식은? [5점]",
+  "rpmRecordId": "M1-RPM-147",
+  "rpmReason": "분모 3과 6의 공통분모 6으로 통분하여 일차식을 계산하는 \\begin{aligned} \\dfrac{-4x + 1}{6} = -\\dfrac{2}{3}x + \\dfrac{1}{6} \\end{aligned} 정리 M1-RPM-147에 해당한다.",
+  "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+  "templateKey": "TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE",
+  "typeReason": "분수 꼴의 두 일차식을 통분하여 \\begin{aligned} -\\dfrac{2}{3}x + \\dfrac{1}{6} \\end{aligned} 로 정리하는 PT_M1_LINEAR_EXPRESSION_STRUCTURE와 TPL_M1_LINEAR_EXPRESSION_SIGNED_SUM_DIFFERENCE이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "통분과 분자 괄호 전개 및 동류항 정리를 거치는 \\begin{aligned} -\\dfrac{2}{3}x + \\dfrac{1}{6} \\end{aligned} 2단계 분수 일차식 연산으로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "분모의 최소공배수인 $6$으"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "으로 통분하여 동류항을 정리",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "분모 6으로 통분하여 분자를 정리한 뒤 \\begin{aligned} -\\dfrac{2}{3}x + \\dfrac{1}{6} \\end{aligned} 을 도출하여 정답 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
