@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "0",
+        "text": "350"
+      },
+      {
+        "x": "2",
+        "text": "360"
+      }
+    ],
+    "shades": [
+      {
+        "from": "2",
+        "to": null,
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.02"
+      }
+    ]
+  },
+  "caption": "360mL의 표준점수는 (360−350)/5=2이다. 360mL 이상일 확률은 z=2의 오른쪽 꼬리이고 0.5−0.48=0.02이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "평균 350에 대응하는 중심 0의 표준정규분포 곡선이며 360에 해당하는 z=2 위치가 표시되고 그 오른쪽 꼬리가 칠해져 있다.",
+  "newVisualInformation": [
+    "360mL가 z=2에 대응하고 구하는 확률이 오른쪽 꼬리의 넓이 0.02임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 회사에서 생산된 표시 용량이 $350$ mL인 음료수 한 병에 들어 있는 음료의 양은 평균이 $350$ mL, 표준편차가 $5$ mL인 정규분포를 따른다고 한다. 이 회사에서 생산된 표시 용량이 $350$ mL인 음료수 한 병에 들어 있는 음료의 양이 $360$ mL 이상일 확률을 다음 표준정규분포표를 이용하여 구하면? (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

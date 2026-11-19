@@ -1,0 +1,88 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      2
+    ],
+    "viewport": [
+      -0.5,
+      2.6,
+      -0.2,
+      1.3
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "1"
+      }
+    ],
+    "regions": [
+      {
+        "id": "tri",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "2",
+        "fill": "LIGHT"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "B"
+      ]
+    }
+  },
+  "caption": "f(x)=2ax는 0≤x≤2에서 원점에서 올라가는 선분이고 x=2에서 높이가 4a이다. 그래프와 x축 사이는 밑변 2, 높이 4a인 삼각형이며 넓이 (1/2)×2×4a=4a가 전체 확률 1이어야 한다. 따라서 a=1/4이다. 그림은 이 값으로 그렸다(x=2에서 높이 1). 답은 ④이다.",
+  "accessibilityDescription": "원점에서 오른쪽 위로 올라가 x=2에서 끝나는 선분 모양의 확률밀도함수 그래프이며 그래프 아래의 삼각형이 칠해져 있다.",
+  "newVisualInformation": [
+    "그래프 아래 삼각형의 밑변 2와 높이 4a=1, 그리고 넓이가 전체 확률 1임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "연속확률변수 $X$의 확률밀도함수가 $f(x)=2ax$ $(0\\le x\\le2)$일 때, 상수 $a$의 값을 구하면? (3.5점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "제품 한 개 불량"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            {
+              "x": "-2",
+              "text": "50"
+            },
+            {
+              "x": "0",
+              "text": "58"
+            },
+            {
+              "x": "2",
+              "text": "66"
+            }
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "-2",
+              "color": "BLUE"
+            },
+            {
+              "from": "2",
+              "to": null,
+              "color": "BLUE"
+            }
+          ],
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.02"
+            },
+            {
+              "shade": 1,
+              "text": "0.02"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "불량품 168개 이상"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Z",
+              "mean": "0",
+              "sd": "1",
+              "label": "Z"
+            }
+          ],
+          "ticks": [
+            {
+              "x": "0",
+              "text": "150"
+            },
+            {
+              "x": "1.5",
+              "text": "168"
+            }
+          ],
+          "shades": [
+            {
+              "from": "1.5",
+              "to": null,
+              "color": "WARM"
+            }
+          ],
+          "areaLabels": [
+            {
+              "shade": 0,
+              "text": "0.07"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "제품 길이는 N(58, 4²)이고 50은 z=−2, 66은 z=2이므로 불량일 확률은 양쪽 꼬리 0.02+0.02=0.04이다. 불량품 개수는 B(3750, 0.04)이며 평균 150, 표준편차 12이므로 N(150, 12²)으로 근사한다. 168은 z=1.5이므로 P(Y≥168)=0.5−0.43=0.07이다. 따라서 답은 0.07이다.",
+  "accessibilityDescription": "표준정규분포 곡선 두 개가 나란히 있다. 왼쪽 곡선은 z=−2의 왼쪽과 z=2의 오른쪽 꼬리가, 오른쪽 곡선은 168에 해당하는 z=1.5의 오른쪽 꼬리가 칠해져 있다.",
+  "newVisualInformation": [
+    "제품 한 개의 양쪽 꼬리 불량률 0.04와 불량품 개수의 근사 분포에서 168개 이상이 오른쪽 꼬리 0.07임을 한 그림에서 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 공장에서 생산되는 제품의 길이는 평균 $58$ mm, 표준편차가 $4$ mm인 정규분포를 따른다고 한다. 이 공장에서 생산된 제품의 검사 과정에서 길이가 $50$ mm 미만이거나 $66$ mm 초과인 것은 불량품으로 판정한다. 다음 표준정규분포표를 이용하여 생산된 제품 $3750$개 중에서 불량품의 개수가 $168$개 이상일 확률을 구하는 과정을 서술하시오. ($7$점, 부분점수 있음.)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

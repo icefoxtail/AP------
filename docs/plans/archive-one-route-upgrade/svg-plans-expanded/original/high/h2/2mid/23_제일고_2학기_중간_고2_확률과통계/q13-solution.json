@@ -1,0 +1,49 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "Z",
+        "mean": "0",
+        "sd": "1",
+        "label": "Z"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "-1",
+        "text": "171"
+      },
+      {
+        "x": "0",
+        "text": "175"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "-1",
+        "color": "BLUE"
+      }
+    ],
+    "areaLabels": [
+      {
+        "shade": 0,
+        "text": "0.16"
+      }
+    ]
+  },
+  "caption": "키 171cm의 표준점수는 (171−175)/4=−1이다. 171cm 이하의 비율은 z=−1의 왼쪽 꼬리이고 0.5−0.34=0.16이다. 학생 수는 500×0.16=80명이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "평균 175에 대응하는 중심 0의 표준정규분포 곡선이며 171에 해당하는 z=−1 위치가 표시되고 그 왼쪽 꼬리가 칠해져 있다.",
+  "newVisualInformation": [
+    "171cm가 z=−1에 대응하고 구하는 비율이 왼쪽 꼬리의 넓이 0.16임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "어느 고등학교 $2$학년 학생 $500$명의 키는 평균이 $175$ cm, 표준편차 $4$ cm인 정규분포를 따른다고 할 때, 다음 표준정규분포표를 이용하여 키가 $171$ cm 이하인 학생의 수를 구하면? (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
