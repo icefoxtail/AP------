@@ -14,7 +14,7 @@
 
 | 누가 | 하는 일 |
 |---|---|
-| Claude 메인 | 지휘·판단·PNG 직접 확인·게시·PR·병합. 그림·코드를 직접 만들지 않는다. |
+| Claude 메인 | 지휘·판단·PNG 직접 확인·게시·PR·병합. 코드는 직접 고치지 않고, PNG 표본 결함만 plan·publish를 고쳐 재렌더한다(결함이 많으면 Sonnet으로 돌려보냄). |
 | DeepSeek | 시험지 전체 판정·plan·렌더·PNG 확인 초안. |
 | Sonnet 서브에이전트 | 검수·마감(effort high, 한 번). 판정표 작성도 맡긴다. |
 | dots(별도 라인) | OPEN 문항 입력을 triage 브랜치 `codex/svg-triage-20261107`에 올린다(§5-1). |
