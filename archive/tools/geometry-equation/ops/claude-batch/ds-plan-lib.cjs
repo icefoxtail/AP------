@@ -139,7 +139,8 @@ function problemsOfPlan(r) {
     const known = knownFields()[plan.capability];
     if (!known) problems.push(`capability "${plan.capability}" 로 쓴 기존 plan 이 없다(이름이 틀렸거나 새 형태다. 가이드의 정확한 이름을 확인하고, 엔진이 지원하지 않는 것이 확실하면 UNSUPPORTED)`);
     else if (known.n >= 3) {
-      const bad = Object.keys(plan).filter(k => !known.top.has(k));
+      const REQUIRED_TOP = ['capability', 'caption', 'accessibilityDescription', 'sourceConditions', 'newVisualInformation']; // 필수 필드는 본보기에 없어도 지어낸 필드가 아니다
+      const bad = Object.keys(plan).filter(k => !known.top.has(k) && !REQUIRED_TOP.includes(k));
       if (bad.length) problems.push(`본보기에 없는 최상위 필드: ${bad.join(', ')} (같은 capability 의 기존 plan ${known.n}개에서 쓰인 적 없다. 필드를 지어내지 않는다)`);
       for (const k of CONTAINERS) if (plan[k] && typeof plan[k] === 'object' && !Array.isArray(plan[k]) && known.sub[k]) {
         const b2 = Object.keys(plan[k]).filter(kk => !known.sub[k].has(kk));
