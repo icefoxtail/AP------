@@ -505,6 +505,22 @@ try {
     // A malformed asset record is rejected like any other snapshot defect.
     const malformedId = await insertRow({ snapshot_json: stableStringify({ ...stored, assets: [{ path: "not-an-image-path", sha256: "x", bytes: -1 }] }) });
     assert.equal((await request(`archive-saved-papers/${malformedId}`)).status, 409);
+
+    // A new-format snapshot (with assets) is read only while its hash matches the stored snapshot_hash.
+    assert.ok(Array.isArray(stored.assets) && stored.assets.length > 0, "fixture snapshot is the new key-reference format");
+    const intactId = await insertRow({ snapshot_json: stableStringify(stored) });
+    assert.equal((await request(`archive-saved-papers/${intactId}`)).status, 200, "control: intact new-format snapshot is readable");
+    // (a) snapshot_json altered after the hash was recorded (an image record changed).
+    const alteredAssets = stored.assets.map((asset, index) => index === 0 ? { ...asset, sha256: "0".repeat(64) } : asset);
+    await db.prepare("UPDATE archive_saved_papers SET snapshot_json=? WHERE id=?").bind(stableStringify({ ...stored, assets: alteredAssets }), intactId).run();
+    const alteredDetail = await request(`archive-saved-papers/${intactId}`);
+    assert.equal(alteredDetail.status, 409, "new-format snapshot whose assets no longer match its hash is rejected");
+    const alteredAssign = await request("class-exam-assignments", "POST", { ...assignmentInput, saved_paper_id: intactId, assignment_batch_id: uuid() });
+    assert.notEqual(alteredAssign.body?.saved, true, "a hash-mismatched saved paper cannot be assigned");
+    // (b) the stored hash itself is wrong while snapshot_json is intact.
+    const badHashId = await insertRow({ snapshot_json: stableStringify(stored) });
+    await db.prepare("UPDATE archive_saved_papers SET snapshot_hash=? WHERE id=?").bind("f".repeat(64), badHashId).run();
+    assert.equal((await request(`archive-saved-papers/${badHashId}`)).status, 409, "new-format snapshot with a wrong snapshot_hash is rejected");
   }
   const priorBlueprintCount = Number((await db.prepare("SELECT COUNT(*) n FROM exam_blueprints WHERE archive_file=?").bind(assignment.body.assignment.archive_file).first()).n);
   assert.ok(priorBlueprintCount >= 1);
