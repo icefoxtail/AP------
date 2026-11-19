@@ -12,12 +12,13 @@
   let
     $, api, button, composeFinishButtons, composeUnitLabel, currentSavedPaperIds, displayTemplate, esc,
     frozenPaperCache, lockedIndex, openAssignmentOutput, options, originalSettingsForExam, ownHistoryContext,
-    prepare, render, replace, request, review, state, status, teacherErrorMessage;
+    clearedResult, prepare, prepareSignature, render, replace, request, review, state, status, teacherErrorMessage;
   WS.links.push(() => {
     ({
       $, api, button, composeFinishButtons, composeUnitLabel, currentSavedPaperIds, displayTemplate, esc,
       frozenPaperCache, lockedIndex, openAssignmentOutput, options, originalSettingsForExam,
-      ownHistoryContext, prepare, render, replace, request, review, state, status, teacherErrorMessage
+      ownHistoryContext, clearedResult, prepare, prepareSignature, render, replace, request, review, state, status,
+      teacherErrorMessage
     } = WS.api);
   });
   let previewOutputEnvelope = null;
@@ -209,11 +210,14 @@
       if (state.derivationSource) return "";
       const info = V.composeLiveInfo;
       const disabled = !info || info.disabled;
+      // 좁은 화면에서 조건을 바꿔 문제지가 지워졌다면, 스크롤 없이 보이는 이 띠에도 되돌리기를 둔다(안내 줄 자리에). 띠는 넓은 화면에서 숨는다.
+      const restorable = Boolean(clearedResult());
+      const note = (text) => restorable ? button("restore-cleared", "방금 문제지 되돌리기", 'class="cz-bar-restore"') : `<span class="cz-bar-note">${text}</span>`;
       return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text">${info?.hasRows && info.overLimit
-        ? `<strong class="cz-bar-count">최대 400문항</strong><span class="cz-bar-note">지금 요청 ${info.requested}문항</span>`
+        ? `<strong class="cz-bar-count">최대 400문항</strong>${note(`지금 요청 ${info.requested}문항`)}`
         : info?.hasRows
-        ? `<strong class="cz-bar-count">${info.possible}문항 가능</strong><span class="cz-bar-note">요청 ${info.requested}문항</span>`
-        : '<strong class="cz-bar-count">조건을 고르세요</strong><span class="cz-bar-note">단원을 고르면 문항 수가 보입니다</span>'}</div>${button("generate", "문제지 만들기", `class="primary cz-bar-main" ${disabled ? "disabled" : ""}`)}</div>`;
+        ? `<strong class="cz-bar-count">${info.possible}문항 가능</strong>${note(`요청 ${info.requested}문항`)}`
+        : `<strong class="cz-bar-count">조건을 고르세요</strong>${note("단원을 고르면 문항 수가 보입니다")}`}</div>${button("generate", "문제지 만들기", `class="primary cz-bar-main" ${disabled ? "disabled" : ""}`)}</div>`;
     }
     const buttons = composeFinishButtons(r);
     const parts = Math.max(1, Math.ceil(state.selected.length / 50));
@@ -241,19 +245,92 @@
     });
     return { href: url.href, envelope };
   }
+  // 미리보기가 그려진 내용의 서명: 준비 서명(문항 순서·머리글·쪽당 문항·회차·QR·파생 원본)에 보는 권, 출력 종류,
+  // 그 권의 출제 영수증, 카탈로그 판을 더한 값이다. 이 값이 같으면 미리보기를 다시 그리지 않는다.
+  // 인쇄·저장·상태줄처럼 문제지 내용이 그대로인 다시 그리기는 iframe을 건드리지 않는다.
+  function previewSignature() {
+    return JSON.stringify([
+      prepareSignature(),
+      state.previewIndex,
+      state.outputMode,
+      Parts.receipt(state.receipts, state.previewIndex)?.key || "",
+      state.catalog?.indexVersion || "",
+    ]);
+  }
+  // render()가 #content 전체를 새로 쓸 때, 이미 그려진 미리보기(같은 서명)는 iframe째 그 자리에 남기고 나머지만 바꾼다.
+  // iframe은 DOM에서 빠졌다 들어오면 다시 불러오므로, 미리보기 칸으로 이어지는 조상 요소는 유지하고 그 곁가지만 교체한다.
+  function setContentKeepingPreview(html) {
+    const content = $("content");
+    const oldHost = content.querySelector?.("#preview-host");
+    if (!oldHost || state.view !== "compose" || oldHost.dataset.previewSignature !== previewSignature()) {
+      content.innerHTML = html;
+      return;
+    }
+    const template = document.createElement("template");
+    template.innerHTML = html;
+    const newHost = template.content.querySelector("#preview-host");
+    const chain = (node, root) => {
+      const path = [];
+      for (let n = node; n && n !== root; n = n.parentNode) path.unshift(n);
+      return path;
+    };
+    const oldPath = chain(oldHost, content);
+    const newPath = chain(newHost, template.content);
+    if (
+      !newHost || oldPath.length !== newPath.length ||
+      oldPath.some((node, i) => node.nodeName !== newPath[i].nodeName)
+    ) {
+      content.innerHTML = html;
+      return;
+    }
+    let oldParent = content;
+    for (let i = 0; i < oldPath.length - 1; i += 1) {
+      const oldNode = oldPath[i],
+        newNode = newPath[i];
+      const before = [],
+        after = [];
+      for (let n = newNode.previousSibling; n; n = n.previousSibling) before.unshift(n);
+      for (let n = newNode.nextSibling; n; n = n.nextSibling) after.push(n);
+      while (oldNode.previousSibling) oldNode.previousSibling.remove();
+      while (oldNode.nextSibling) oldNode.nextSibling.remove();
+      for (const n of before) oldParent.insertBefore(n, oldNode);
+      for (const n of after) oldParent.appendChild(n);
+      for (const attribute of [...oldNode.attributes]) if (!newNode.hasAttribute(attribute.name)) oldNode.removeAttribute(attribute.name);
+      for (const attribute of [...newNode.attributes]) oldNode.setAttribute(attribute.name, attribute.value);
+      oldParent = oldNode;
+    }
+    // 미리보기 칸(#preview-host) 자신과 그 안의 iframe은 그대로 둔다. 같은 부모 아래의 앞뒤 형제만 바꾼다.
+    const lastNew = newPath.at(-1),
+      lastOld = oldPath.at(-1);
+    const before = [],
+      after = [];
+    for (let n = lastNew.previousSibling; n; n = n.previousSibling) before.unshift(n);
+    for (let n = lastNew.nextSibling; n; n = n.nextSibling) after.push(n);
+    while (lastOld.previousSibling) lastOld.previousSibling.remove();
+    while (lastOld.nextSibling) lastOld.nextSibling.remove();
+    for (const n of before) oldParent.insertBefore(n, lastOld);
+    for (const n of after) oldParent.appendChild(n);
+  }
   async function updatePreview() {
     const host = $("preview-host");
     if (!host) return;
+    // 같은 서명으로 이미 그렸거나 그리는 중이면 아무것도 하지 않는다(깜박임·"준비 중" 되돌아감·두 번째 준비 없음).
+    const signature = previewSignature();
+    if (host.dataset.previewSignature === signature) return;
+    host.dataset.previewSignature = signature;
     const token = (state.previewToken = (state.previewToken || 0) + 1);
     const progress = document.createElement("div");
     progress.className = "preview-progress";
     progress.textContent = "문제지를 준비하고 있습니다.";
+    // 다시 그리는 동안 칸 높이를 지켜 화면이 위아래로 튀지 않게 한다(그리기가 끝나거나 실패하면 푼다).
+    if (host.offsetHeight) host.style.minHeight = host.offsetHeight + "px";
     host.setAttribute("aria-busy", "true");
     host.replaceChildren(progress);
     try {
       const papers = await prepare();
       if (host !== $("preview-host") || token !== state.previewToken) return;
       state.previewIndex = Math.min(state.previewIndex, papers.length - 1);
+      host.dataset.previewSignature = previewSignature();
       const frame = document.createElement("iframe");
       frame.className = "preview";
       frame.title = "실제 문제지 미리보기";
@@ -268,8 +345,10 @@
         const doc = frame.contentDocument;
         if (!doc) return;
         const complete = () => {
-          if (token === state.previewToken)
+          if (token === state.previewToken) {
             host.setAttribute("aria-busy", "false");
+            host.style.minHeight = "";
+          }
         };
         const observer = new MutationObserver(() => {
           const failed = frame.contentWindow.__AP_OUTPUT_RENDER_ERROR__ || doc.documentElement.dataset.apRenderError;
@@ -306,6 +385,9 @@
     } catch (e) {
       if (host === $("preview-host") && token === state.previewToken) {
         host.setAttribute("aria-busy", "false");
+        host.style.minHeight = "";
+        // 그리지 못한 서명은 남기지 않는다: 다음 다시 그리기가 새로 시도한다.
+        delete host.dataset.previewSignature;
         host.textContent = teacherErrorMessage(e);
         status(e.message, true, e);
       }
@@ -384,6 +466,8 @@
     renderMobileActions,
     outputUrl,
     updatePreview,
+    previewSignature,
+    setContentKeepingPreview,
     finalGate,
     print,
     printOnce,
