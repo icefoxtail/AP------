@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-2ba249a035c3-e9911382",
+  "sourceArchiveFile": "original/high/h1/1mid/25_순천여고_1학기_중간_고1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_f70efe8487e6b83683317b361d85c1edc0a8199eedc419e34b463d63f54e4719",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_MATRIX_BASIC_OPERATION",
+      "templateKey": "TPL_H1_MATRIX_BASIC_EQUALITY",
+      "step": "행렬의 대응 성분을 비교하여 (x-1)(y-1)=p와 x-y=p-1을 얻고 y=2, p=x-1≤49를 구한다.",
+      "note": "",
+      "figure": false,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_9edc012da8f457d4df4f39c4c5a2acf465b94de002963ab9c892721ca7cac670",
+      "sourceOrdinal": 20,
+      "decision": "PICK",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_ROOT_COEFFICIENT_RELATION_EQUATION",
+      "step": "교차하는 현의 정리로 AP·PB=54, 지름으로 AP+PB=20을 얻어 두 길이를 근으로 하는 x²-20x+54=0을 만든다.",
+      "note": "TPL 제안: 두 근으로 방정식 구성; 정의: 주어진 두 근의 합과 곱으로 최고차항 계수가 1인 이차방정식을 구성한다.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    }
+  ]
+}

@@ -23,7 +23,11 @@ function loadFormatter(engineFile) {
     state: { mode: 'exam' },
     wrapLatex(value) { return String(value ?? ''); }
   };
-  vm.runInNewContext(
+  // 실제 페이지에서는 render-text.js가 엔진 본문보다 먼저 로드되어 APRenderText를 만든다. 같은 순서로 실제 파일을 올린다.
+  vm.createContext(context);
+  vm.runInContext(fs.readFileSync(path.join(root, 'archive/render-text.js'), 'utf8'), context, { filename: 'archive/render-text.js' });
+  assert.equal(typeof context.APRenderText?.stripLeadingQuestionNumber, 'function', 'render-text.js must provide APRenderText');
+  vm.runInContext(
     `${source.slice(start, end)}\nthis.__api = { formatQuestionContent, stripInlineImagesFromContent };`,
     context,
     { filename: engineFile }
