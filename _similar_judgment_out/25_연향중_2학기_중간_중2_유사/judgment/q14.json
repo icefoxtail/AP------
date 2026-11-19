@@ -1,0 +1,63 @@
+{
+  "qid": 14,
+  "itemFingerprint": "35f217bfc0075ea2",
+  "solveSteps": [
+    "평행사변형 ABCD에서 이웃한 두 각의 합은 180도이므로 angle ADC = 180도 - 116도 = 64도이다.",
+    "DE가 각 D의 이등분선이므로 angle ADE = 64도 / 2 = 32도이다.",
+    "직각삼각형 ADE에서 angle DAE = 90도 - 32도 = 58도이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "평행사변형에서 이웃한 두 각의 합은 $180^\\circ",
+  "rpmRecordId": "M2-RPM-072",
+  "rpmReason": "평행사변형 ABCD의 이웃각 합 180도와 각의 이등분선으로 angle DAE = 58도를 구한다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "typeReason": "평행사변형 ABCD의 내각 116도로부터 직각삼각형 ADE의 각 DAE = 58도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이웃각 64도, 이등분각 32도, 직각삼각형 여각 58도를 순차 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle D$의 이등분선이 변 $BC$"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle D$의 이등분선이 변 $BC$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "angle ADC = 64도와 반각 32도로부터 직각삼각형에서 angle DAE = 90 - 32 = 58도를 산출해 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

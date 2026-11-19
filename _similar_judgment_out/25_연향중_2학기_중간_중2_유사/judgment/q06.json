@@ -1,0 +1,63 @@
+{
+  "qid": 6,
+  "itemFingerprint": "825cb75df1f26b42",
+  "solveSteps": [
+    "x = 0일 때 두 직선의 y절편은 (0, 6), (0, -6)이므로 밑변의 길이는 6 - (-6) = 12이다.",
+    "두 직선 x + y = 6과 2x - y = 6을 연립하면 3x = 12에서 교점 (4, 2)를 얻는다.",
+    "높이는 x = 4이므로 둘러싸인 삼각형의 넓이는 (1/2) * 12 * 4 = 24이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "$x = 0$을 두 직선에 대입하면 $y$절편은 각각 ",
+  "rpmRecordId": "M2-RPM-058",
+  "rpmReason": "세 직선의 밑변 12와 교점 높이 4로부터 넓이 24를 산출한다.",
+  "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+  "templateKey": "TPL_AREA_DIRECT",
+  "typeReason": "세 직선으로 둘러싸인 삼각형의 밑변 12와 높이 4로 넓이 24를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "y절편 차이 12와 교점 x좌표 4로 밑변과 높이를 구해 넓이 24를 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "세 직선 $x = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "러싸인 도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "을 두 직선에 대입하면 $y$절편",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "밑변 길이 12와 두 직선의 교점 x = 4에서 넓이 (1/2)*12*4 = 24를 산출하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

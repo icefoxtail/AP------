@@ -1,0 +1,63 @@
+{
+  "qid": 22,
+  "itemFingerprint": "f4b475db2f37362a",
+  "solveSteps": [
+    "(1) 이등변삼각형의 두 밑각의 크기는 같으므로 angle B = (180도 - 64도)/2 = 58도이다.",
+    "(2) CD가 각 C의 이등분선이므로 angle BCD = 58도 / 2 = 29도이다.",
+    "triangle BDC에서 angle BDC = 180도 - (58도 + 29도) = 93도이다."
+  ],
+  "solvedAnswer": "(1) $58^\\circ$, (2) $93^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "(1) 이등변삼각형의 두 밑각의 크기는 같으므로 $\\a",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "이등변삼각형 ABC의 밑각 성질로 angle B = 58도와 각 BDC = 93도를 산출한다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+  "typeReason": "이등변삼각형 ABC에서 꼭지각 64도와 각 이등분선으로 밑각과 교각을 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "밑각 공식으로 58도를 구하고 삼각형 내각 합으로 93도를 순차 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "서술형",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "e{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle C$의 이등분선과 변 $AB$"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "gle C$의 이등분선과 변 $AB$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "밑각 공식으로 angle B = 58도를 얻고 이등분각 29도로부터 angle BDC = 93도를 계산했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
