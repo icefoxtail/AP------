@@ -1,0 +1,85 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1/20"
+        ],
+        "domain": [
+          "0",
+          "20"
+        ],
+        "label": "걷기(시속 3km)",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/10"
+        ],
+        "domain": [
+          "20",
+          "40"
+        ],
+        "label": "뛰기(시속 6km)",
+        "color": "WARM"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "20",
+        "40"
+      ],
+      "y": [
+        "1",
+        "3"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "A",
+          "x": "20",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "40",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    },
+    "axisTitles": {
+      "x": "시간(분)",
+      "y": "거리(km)"
+    }
+  },
+  "caption": "걸어간 거리를 x km, 뛰어간 거리를 y km라 하면 x+y=3이고 걸린 시간이 x/3+y/6=2/3시간(40분)이다. 풀면 x=1, y=2이다. 그림은 처음 20분 동안 시속 3km로 1km를 걸어 점 A(20,1)에 이르고, 다음 20분 동안 시속 6km로 2km를 뛰어 점 B(40,3)에 도착하는 거리와 시간의 그래프이다. 따라서 뛰어간 거리는 2km이고 답은 ④이다.",
+  "newVisualInformation": [
+    "걸은 1km(20분)와 뛴 2km(20분)가 이어져 40분에 3km에 도착하는 거리-시간 그래프"
+  ],
+  "accessibilityDescription": "가로축이 시간(분), 세로축이 거리(km)인 좌표평면에서 원점에서 점 A(20,1)까지 완만한 선분, 점 A에서 점 B(40,3)까지 더 가파른 선분이 이어져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>9. 아침 8시 집에서 $3\\text{km}$ 떨어진 학교까지 가는데 처음에는 시속 $3\\text{km}$로 걸어가다가 도중에 시속 $6\\text{km}$로 뛰어가 아침 8시 40분에 도착하였다. 뛰어간 거리를 구하면? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

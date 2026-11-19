@@ -1,0 +1,58 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "id": "s1",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 1,
+        "depth": 3
+      },
+      "height": 4,
+      "names": "........"
+    },
+    {
+      "id": "s2",
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 6
+      },
+      "height": 8,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "solid": "s1",
+      "height": true
+    },
+    {
+      "solid": "s2",
+      "height": true
+    }
+  ],
+  "solidCaption": {
+    "text": "왼쪽 (가) / 오른쪽 (나)"
+  },
+  "caption": "예: 해설의 값에 맞춘 두 닮은 사각기둥이다(밑면의 가로 길이는 모양만 나타낸 예이다). (가)의 높이 4cm와 (나)의 높이 8cm가 대응하므로 닮음비는 1:2이다. 대응하는 모서리의 길이는 2배이므로 JK=2×3=6cm이고, 부피의 비는 1³:2³=1:8이다. (가)의 부피가 12cm³이면 (나)의 부피는 12×8=96cm³이므로 36cm³라는 ④가 옳지 않다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>12. 두 사각기둥 (가), (나)는 서로 닮은 도형이고, $\\square\\mathrm{ABFE}$에 대응하는 면이 $\\square\\mathrm{IJNM}$일 때, 옳지 않은 것은? [4점]</p><p><img src=\"assets/images/20_풍덕중_2학기_중간_중2_수학/q12.png\" alt=\"두 닮은 직육면체 모양의 사각기둥 (가)와 (나): 가의 가로 3cm, 높이 4cm, 나의 높이 8cm가 표시된 그림\" /></p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "닮음비 1:2, 부피비 1:8",
+      "mappedTo": "solids"
+    }
+  ],
+  "newVisualInformation": [
+    "높이 4와 8을 대응시켜 닮음비 1:2를 얻고 부피비 1:8로 (나)의 부피가 96임을 확인"
+  ],
+  "accessibilityDescription": "크기가 다른 두 사각기둥이 같은 배율로 나란히 놓여 있고 왼쪽 (가)는 높이 4, 오른쪽 (나)는 높이 8이 표시되어 있다."
+}
