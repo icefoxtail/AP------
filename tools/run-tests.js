@@ -153,6 +153,10 @@ const requiredCommands = [
     args: ['--test', 'tests/archive-text-binding-rebinds.test.mjs']
   },
   {
+    label: 'tests/archive-similar-choice-order.test.mjs',
+    args: ['--test', 'tests/archive-similar-choice-order.test.mjs']
+  },
+  {
     label: 'tests/archive-source-delta.test.mjs',
     args: ['--test', 'tests/archive-source-delta.test.mjs']
   },
