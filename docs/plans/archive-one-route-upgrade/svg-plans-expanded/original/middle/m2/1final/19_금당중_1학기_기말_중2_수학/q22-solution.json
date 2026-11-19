@@ -33,21 +33,6 @@
         "style": "DASHED"
       },
       {
-        "id": "f2",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "1",
-          "0"
-        ],
-        "domain": [
-          "-3",
-          "3"
-        ],
-        "label": "ax+b=0",
-        "color": "GREEN",
-        "style": "DASHED"
-      },
-      {
         "id": "f3",
         "kind": "LINE",
         "coefficients": [
@@ -77,7 +62,16 @@
         "color": "VIOLET",
         "style": "DASHED"
       }
-    ]
+    ],
+    "overlays": {
+      "lines": [
+        {
+          "id": "v",
+          "x": "1",
+          "label": "ax+b=0"
+        }
+      ]
+    }
   },
   "caption": "예: a=1, b=−1, c=1로 그렸다. ①은 y=−(a/b)x−c/b로 기울기와 y절편이 모두 양수이고 x절편이 음수이므로 제1, 2, 3사분면을 지난다. ②는 기울기 1, y절편 b<0이라 제1, 3, 4사분면을, ③은 x=−b/a>0인 수직선이라 제1, 4사분면을, ④는 y=−c/a<0인 수평선이라 제3, 4사분면을, ⑤는 원점을 지나는 기울기 c>0인 직선이라 제1, 3사분면을 지난다. 따라서 제2사분면을 지나는 것은 ①이다.",
   "newVisualInformation": [

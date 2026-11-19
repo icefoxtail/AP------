@@ -4,20 +4,6 @@
     "family": "multi-curve",
     "curves": [
       {
-        "id": "f0",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "1",
-          "0"
-        ],
-        "domain": [
-          "0",
-          "4"
-        ],
-        "label": "x=1",
-        "color": "BLUE"
-      },
-      {
         "id": "f1",
         "kind": "LINE",
         "coefficients": [
@@ -56,7 +42,7 @@
           "-2",
           "4"
         ],
-        "label": "y=−x/2+5/2",
+        "label": "y=-x/2+5/2",
         "color": "ROSE"
       },
       {
@@ -80,28 +66,24 @@
           "id": "P0",
           "x": "-1",
           "y": "1",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P1",
           "x": "3",
           "y": "1",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P2",
           "x": "3",
           "y": "3",
-          "coordinates": true,
           "unnamed": true
         },
         {
           "id": "P3",
           "x": "-1",
           "y": "3",
-          "coordinates": true,
           "unnamed": true
         },
         {
@@ -110,6 +92,23 @@
           "y": "2",
           "coordinates": true
         }
+      ],
+      "lines": [
+        {
+          "id": "v",
+          "x": "1",
+          "label": "x=1"
+        }
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "3"
+      ],
+      "y": [
+        "1",
+        "3"
       ]
     }
   },
