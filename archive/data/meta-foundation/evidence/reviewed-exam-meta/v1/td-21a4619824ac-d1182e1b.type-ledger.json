@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-21a4619824ac-d1182e1b",
+  "sourceArchiveFile": "original/middle/m3/1mid/26_왕운중_1학기_중간_중3_기출c.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_3a0dcfac27a4fcc6e17ad6ebf4f5798cd2ef8a9c704d33846c35a2584bfb08e8",
+      "sourceOrdinal": 14,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+      "step": "제곱·합차공식과 일차식곱을 전개해 계수와 부호 대조.",
+      "note": "",
+      "figure": "불필요",
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_fbaa7f3ed84fe766fca14dd0faf31712f27449b99f3c0c212eac3f8dcf3c25e7",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_IDENTITY_CHECK",
+      "step": "완전제곱의 부호두 경우,전개 중간항,곱꼴 인수분해 정의를 대조.",
+      "note": "필요 TPL: 다항식 전개·인수분해 개념 판별: 전개식과 곱꼴의 동치 및 완전제곱 조건을 함께 적용하여 설명의 오류를 판정한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_357ba3b751a8e726e240ced27ed190531e73222f80382495fd74c218c12a59db",
+      "sourceOrdinal": 23,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_VALUE",
+      "step": "(a-2)(a-4)와 (a-3)²-1 두 변형에3+√2를 각각 대입.",
+      "note": "필요 TPL: 이차식의 두 구조로 값 계산: 일차인수곱과 완전제곱 변형을 각각 이용하여 근호 대입식의 같은 값을 구한다. | 도구: CUE_LENGTH_4_TO_60_REQUIRED, TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    }
+  ]
+}

@@ -186,9 +186,9 @@
   function teacherSessionOk() {
     const rule = window.Archive2Session;
     if (!rule?.state) return true;
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    if (memory.login_id && memory.raw_password) return true;
-    return rule.state(session()).loggedIn;
+    // 토큰이 없는 세션은 로그인한 것으로 보지 않는다(요청도 보내지 않고 로그인 안내를 낸다).
+    const current = session();
+    return Boolean(current?.session_token) && rule.state(current).loggedIn;
   }
   const isAuthError = (error) => error?.status === 401 || error?.status === 403;
   function loginNoticeMarkup(kind) {
@@ -637,6 +637,11 @@
         await openQuickAssessment("all");
       } else if (a === "quick-open-selected") {
         await openQuickAssessment([...quickState.bundle]);
+      } else if (a === "quick-open-b") {
+        // The second window of an A·B pair cannot open with the same click everywhere; this click opens it.
+        const formB = quickState.formB;
+        if (formB?.url && window.open(formB.url, "_blank")) { quickState.formB = null; status(`${formB.title}를 열었습니다.`); render(); }
+        else status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true);
       } else if (a === "quick-grade") {
         quickState.grade = b.dataset.grade || "";
         quickState.subject = "";
@@ -644,6 +649,12 @@
         quickState.pick = "";
         quickState.shortOpen = false;
         replaceUrlState();
+        render();
+      } else if (a === "quick-semester") {
+        quickState.semester = ["1", "2"].includes(b.dataset.semester) ? b.dataset.semester : "";
+        quickState.bundle.clear();
+        quickState.pick = "";
+        quickState.shortOpen = false;
         render();
       } else if (a === "quick-subject") {
         quickState.subject = b.dataset.subject || "";
@@ -1030,6 +1041,12 @@
         render();
         return;
       }
+      if (isQuickAssessmentView() && el.dataset.quickTwoForms !== undefined) {
+        quickState.twoForms = Boolean(el.checked);
+        quickState.formB = null;
+        render();
+        return;
+      }
       if (isQuickAssessmentView() && el.dataset.quickBundle) {
         if (el.checked) quickState.bundle.add(el.dataset.quickBundle);
         else quickState.bundle.delete(el.dataset.quickBundle);
@@ -1397,7 +1414,7 @@
       state.selected = [];
       state.rows = [];
     }
-    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test"].includes(p.get("view"))
+    state.view = ["home", "find", "compose", "saved", "recent", "health", "five-minute", "subunit-test", "unit-test", "monthly-test", "diagnostic"].includes(p.get("view"))
       ? p.get("view")
       : "home";
     if (isQuickAssessmentView()) {

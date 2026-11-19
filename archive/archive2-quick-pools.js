@@ -43,6 +43,18 @@
         application: [[1, 2], [2, 8], [3, 10], [4, 4]],
         advanced: [[1, 0], [2, 4], [3, 12], [4, 8]],
       }) }),
+    // 진단평가 (first-consultation test, user decisions 2026-11-19): 24 questions from ORIGINAL past exams first (originalOnly), several
+    // units like 종합평가 (combine), the 4~5단계 slot counts 4단계 and 5단계 questions together (mergeTop, this product only), and the
+    // paper is printed from the lowest step up. The step counts are set here and nowhere else; 기본 is the default.
+    // fillFrom (2026-11-20): only when a step of the chosen range has fewer original questions than the preset asks, exactly the missing
+    // number of that step is filled from 유형 (types/) and 유사 (similar/) questions of the same grade, semester and unit.
+    diagnostic: Object.freeze({ title: "진단평가", count: 24, unitKind: "unit", unitLabel: "단원", combine: true, pick: "any",
+      originalOnly: true, mergeTop: true, fillFrom: Object.freeze(["types/", "similar/"]), stepLabels: Object.freeze({ 4: "4~5" }),
+      order: Object.freeze(["basic", "standard", "advanced"]), presets: Object.freeze({
+        basic: [[1, 5], [2, 5], [3, 10], [4, 4]],
+        standard: [[1, 3], [2, 5], [3, 10], [4, 6]],
+        advanced: [[1, 2], [2, 4], [3, 10], [4, 8]],
+      }) }),
   });
   const VIEWS = Object.freeze(Object.keys(PRODUCTS));
   const BUCKETS = Object.freeze([1, 2, 3, 4]);
@@ -55,10 +67,27 @@
   // annotations are labels, not gates. No legacy 하/중/상 inference is allowed. The
   // `difficultyMode` argument/option is kept for caller compatibility; every value gives the
   // same result. 5단계 has no quick-assessment preset and remains out of scope.
-  function usableBucket(record, difficultyMode = "recorded") {
+  // mergeTop (진단평가 only): a 5단계 question sits in the 4~5단계 slot (bucket 4); every other product keeps 5단계 out.
+  function usableBucket(record, difficultyMode = "recorded", mergeTop = false) {
     if (!Core.difficultyEligible(record)) return 0;
     const bucket = record.difficultyBucket;
+    if (mergeTop) return bucket >= 1 && bucket <= 5 ? Math.min(bucket, 4) : 0;
     return bucket >= 1 && bucket <= 4 ? bucket : 0;
+  }
+  // 원본 기출 = a question of an original school exam (similar, textbook, type and generated sources are not).
+  const isOriginalExam = (record) => text(record?.sourceFile).startsWith("original/");
+  // "1" / "2": the semester of the exam a question comes from (1학기·2학기 중간/기말); "" for sources without one.
+  const examSemester = (record) => { const axis = text(record?.examAxis); return /^1-/.test(axis) ? "1" : /^2-(mid|final)/.test(axis) ? "2" : ""; };
+  // A question that may fill a short step of a product with fillFrom: a 유형 / 유사 source (never an original, textbook or generated one).
+  const isFillSource = (record, product) => Boolean(product?.fillFrom) && product.fillFrom.some((prefix) => text(record?.sourceFile).startsWith(prefix));
+  // The semester of a fill question: a similar set keeps its exam's semester; a 유형 file has none (it follows its unit). A question with a
+  // semester must match the chosen one; "" (1·2학기) takes every semester.
+  const fillSemesterOk = (record, semester) => !semester || !examSemester(record) || examSemester(record) === semester;
+  // Is a chosen question still allowed in this product (the pools are cached per catalog load; checked again before printing).
+  function stillUsable(record, product) {
+    const merge = Boolean(product?.mergeTop), expected = merge ? Math.min(record.difficultyBucket, 4) : record.difficultyBucket;
+    return usableBucket(record, "recorded", merge) === expected &&
+      (!product?.originalOnly || isOriginalExam(record) || isFillSource(record, product));
   }
 
   const emptyBuckets = () => ({ 1: [], 2: [], 3: [], 4: [] });
@@ -71,8 +100,11 @@
   // same records built by buildScopes() from the shared unit tree (archive2-unit-tree.js), so every
   // screen names, orders and groups units the same way (2026-11-16: no more 2015 "이전 분류" cards,
   // no duplicated or English sub-unit names; the 2015 legacy keys fold into the tree's 중단원).
+  // options.product: a product with originalOnly/mergeTop (진단평가) builds its own pools; options.semester ("1" | "2") keeps one
+  // semester's exams. Without a product the pools are the common ones every other product shares.
   function buildPools(index, options = {}) {
     const difficultyMode = options.difficultyMode === "eligible" ? "eligible" : "recorded";
+    const only = options.product?.originalOnly ? options.product : null;
     const pools = {
       difficultyMode,
       units: {},
@@ -80,12 +112,22 @@
     };
     const countedRecords = new Set();
     for (const grade of Unified.GRADES) {
-      const unitMap = new Map(), seen = new Set();
+      const unitMap = new Map(), seen = new Set(), fillRows = [];
       for (const entry of index.views[grade] || []) {
         const record = entry.record;
+        if (only && !isOriginalExam(record)) {
+          // A 유형 / 유사 question waits here; it joins a unit only when that unit has original questions (see below).
+          if (isFillSource(record, only) && fillSemesterOk(record, options.semester) && entry.subject) {
+            const bucket = usableBucket(record, difficultyMode, Boolean(only.mergeTop));
+            const uid = text(record.questionUid);
+            if (bucket && uid) fillRows.push({ key: Unified.scopeKey(grade, entry.subject, entry.unclassified ? "" : entry.unitKey), bucket, record, uid });
+          }
+          continue;
+        }
+        if (only && options.semester && examSemester(record) !== options.semester) continue;
         const first = !countedRecords.has(record);
         if (first) { countedRecords.add(record); pools.stats.records++; }
-        const bucket = usableBucket(record, difficultyMode);
+        const bucket = usableBucket(record, difficultyMode, Boolean(only?.mergeTop));
         if (!bucket) {
           if (first) {
             if (record.difficultyBucket === 5 && Core.generalUseEligibility(record).ok) pools.stats.bucket5++;
@@ -109,9 +151,20 @@
         unit.buckets[bucket].push(record);
       }
       const list = [...unitMap.values()];
+      if (only?.fillFrom) {
+        const seenFill = new Set();
+        for (const unit of list) unit.fillBuckets = emptyBuckets();
+        for (const row of fillRows) {
+          const unit = unitMap.get(row.key);
+          if (!unit || seenFill.has(row.uid)) continue;
+          seenFill.add(row.uid);
+          unit.fillBuckets[row.bucket].push(row.record);
+        }
+      }
       for (const unit of list) {
         unit.counts = countsOf(unit.buckets);
         unit.total = BUCKETS.reduce((sum, bucket) => sum + unit.counts[bucket], 0);
+        if (unit.fillBuckets) unit.fillCounts = countsOf(unit.fillBuckets);
       }
       list.sort((a, b) => compareKo(a.subject, b.subject) || a.order - b.order ||
         compareKo(a.label, b.label) || compareKo(a.key, b.key));
@@ -146,17 +199,32 @@
   }
   // Pools of different units of one grade are disjoint (a question sits in exactly one unit), so
   // counts add. Returns the exact shortage per difficulty step for the chosen preset.
+  // A product with fillFrom (진단평가) counts the 유형/유사 questions of the same units as a reserve: a step with fewer original questions
+  // than the preset asks is still possible when the reserve covers the rest. `fills` names those steps and exactly how many questions
+  // the reserve has to give (the missing number only); `counts` stays the original questions.
+  function sumFill(units) {
+    const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    for (const unit of units) if (unit.fillCounts) for (const bucket of BUCKETS) counts[bucket] += unit.fillCounts[bucket] || 0;
+    return counts;
+  }
   function evaluate(units, product, presetName) {
     const preset = product.presets[presetName] || product.presets.standard;
     const counts = sumCounts(units);
-    const shortages = preset.filter(([bucket, need]) => need > 0 && counts[bucket] < need)
-      .map(([bucket, need]) => ({ bucket, need, have: counts[bucket] }));
-    return { ok: shortages.length === 0, counts, shortages };
+    const reserve = product.fillFrom ? sumFill(units) : { 1: 0, 2: 0, 3: 0, 4: 0 };
+    const stepLabel = (bucket) => (product.stepLabels?.[bucket] ? { label: product.stepLabels[bucket] } : {});
+    const shortages = preset.filter(([bucket, need]) => need > 0 && counts[bucket] + reserve[bucket] < need)
+      .map(([bucket, need]) => ({ bucket, need, have: counts[bucket] + reserve[bucket], ...stepLabel(bucket) }));
+    const fills = shortages.length ? [] : preset.filter(([bucket, need]) => need > 0 && counts[bucket] < need)
+      .map(([bucket, need]) => ({ bucket, count: need - counts[bucket], ...stepLabel(bucket) }));
+    return { ok: shortages.length === 0, counts, shortages, fills };
   }
+  // "4~5단계 2문항은 유형·유사 문항으로 채웁니다": one fact line for the steps a fill covers (empty when nothing is filled).
+  const fillText = (fills, verb = "채웁니다") => fills.length
+    ? `${fills.map(({ bucket, label, count }) => `${label || bucket}단계 ${count}문항`).join(" · ")}은 원본 기출이 모자라 유형·유사 문항으로 ${verb}.` : "";
   const shortageText = (shortages) =>
-    shortages.map(({ bucket, need, have }) => `${bucket}단계 ${need}문항 필요 · ${have}문항 가능`).join(" / ");
+    shortages.map(({ bucket, label, need, have }) => `${label || bucket}단계 ${need}문항 필요 · ${have}문항 가능`).join(" / ");
   const presetMix = (product, presetName) => (product.presets[presetName] || [])
-    .filter(([, count]) => count).map(([bucket, count]) => `${bucket}단계 ${count}문항`).join(" · ");
+    .filter(([, count]) => count).map(([bucket, count]) => `${product.stepLabels?.[bucket] || bucket}단계 ${count}문항`).join(" · ");
 
   // Splits a unit list for the screen: units that can make this preset, and the rest with the
   // reason. For combinable products (종합평가) the caller evaluates a chosen union instead.
@@ -199,8 +267,15 @@
   const finishNode = (node) => {
     node.counts = countsOf(node.buckets);
     node.total = BUCKETS.reduce((sum, bucket) => sum + node.counts[bucket], 0);
+    if (node.fillBuckets) node.fillCounts = countsOf(node.fillBuckets);
     return node;
   };
+  // The 유형 / 유사 reserve of a unit (진단평가) as [bucket, record] rows, like flatRecords().
+  function flatFillRecords(unit) {
+    const rows = [];
+    if (unit.fillBuckets) for (const bucket of BUCKETS) for (const record of unit.fillBuckets[bucket]) rows.push([bucket, record]);
+    return rows;
+  }
   function buildScopes(pools, grade, subject, options = {}) {
     const all = pools.units[grade]?.[subject] || [];
     const unclassified = all.find((unit) => unit.kind === "unclassified") || null;
@@ -222,7 +297,9 @@
       const treeUnits = classified.map((unit) => {
         const rows = flatRecords(unit);
         const wrapped = rows.map(([, record]) => wrapRecord(record, middle, options.index, options.metaByUid));
-        prepared.set(unit.key, { rows, wrapped });
+        const fillRows = flatFillRecords(unit);
+        const fillWrapped = fillRows.map(([, record]) => wrapRecord(record, middle, options.index, options.metaByUid));
+        prepared.set(unit.key, { rows, wrapped, fillRows, fillWrapped });
         return { key: unit.unitKey, name: unit.label, course: unit.subjectLabel, selectableRecords: wrapped };
       });
       try { tree = Tree.createTree(profileId, treeUnits); } catch (error) { tree = null; }
@@ -240,13 +317,17 @@
             grade, subject, subjectLabel: unit.subjectLabel, unitKey: unit.unitKey, unitLabel: unit.label,
             childKey: child.key, label: child.name, section: child.section || "", order: unit.order,
             orderInUnit: child.rank, root: unit, buckets: emptyBuckets(),
+            ...(unit.fillBuckets ? { fillBuckets: emptyBuckets() } : {}),
           };
           nodes.set(child.key, node);
           children.push(node);
         }
-        const { rows, wrapped } = prepared.get(unit.key);
+        const { rows, wrapped, fillRows, fillWrapped } = prepared.get(unit.key);
         rows.forEach(([bucket, record], i) => {
           nodes.get(tree.childKeyOf(unit.unitKey, wrapped[i]))?.buckets[bucket].push(record);
+        });
+        fillRows.forEach(([bucket, record], i) => {
+          nodes.get(tree.childKeyOf(unit.unitKey, fillWrapped[i]))?.fillBuckets[bucket].push(record);
         });
         for (const node of children) { finishNode(node); byKey.set(node.key, node); if (node.kind === "child") order.push(node); }
       }
@@ -297,7 +378,19 @@
     return "단원";
   }
   // "2단계 문항 부족" / "2·3단계 문항 부족": the short reason for a list. shortageText() has the exact numbers.
-  const shortReason = (shortages) => `${shortages.map(({ bucket }) => bucket).join("·")}단계 문항 부족`;
+  const shortReason = (shortages) => `${shortages.map(({ bucket, label }) => label || bucket).join("·")}단계 문항 부족`;
+
+  // Print order of a selection (every quick product): lowest difficulty first (the recorded step, so a 5단계 question follows the
+  // 4단계 ones); inside a step the unit (and 중단원) table-of-contents order; ties keep the selection order. The set of
+  // questions never changes. units are the chosen scope nodes the selection was drawn from.
+  function orderByStep(units, selected) {
+    const place = new Map();
+    for (const unit of units) for (const bucket of BUCKETS) for (const record of [...unit.buckets[bucket], ...(unit.fillBuckets?.[bucket] || [])])
+      if (!place.has(record.questionUid)) place.set(record.questionUid, [Number(unit.order) || 0, Number(unit.orderInUnit) || 0]);
+    return selected.map((record, index) => ({ record, index, key: place.get(record.questionUid) || [Infinity, 0] }))
+      .sort((a, b) => a.record.difficultyBucket - b.record.difficultyBucket || a.key[0] - b.key[0] || a.key[1] - b.key[1] || a.index - b.index)
+      .map((row) => row.record);
+  }
 
   // Everything a product needs for measurement across all grades/subjects (used by tests and the
   // before/after report).
@@ -321,7 +414,7 @@
   return {
     PRESET_LABELS, PRODUCTS, VIEWS, BUCKETS,
     isQuickView: (view) => VIEWS.includes(view),
-    usableBucket, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
+    usableBucket, isOriginalExam, isFillSource, examSemester, stillUsable, orderByStep, fillText, buildPools, subjectsFor, unitsFor, evaluate, partition, summarize,
     buildScopes, wrapRecord, pickableGroups, selectNodes, unitNoun, shortReason,
     shortageText, presetMix,
   };
