@@ -70,7 +70,7 @@ window.questionBank = [
       "$\\dfrac{11}{2\\times5\\times11^{2}}$"
     ],
     "answer": "②, ④",
-    "solution": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.\n$$\n\\begin{aligned}\n\\text{① } & \\frac{7}{21} = \\frac{1}{3} \\implies \\text{분모에 소인수 } 3\\text{이 남아 순환소수} \\\\\n\\text{② } & \\frac{21}{2^3\\times3\\times7} = \\frac{21}{2^3\\times21} = \\frac{1}{2^3} \\implies \\text{분모 소인수가 } 2\\text{뿐이므로 유한소수 (참)} \\\\\n\\text{③ } & \\frac{9}{2\\times3^2\\times7} = \\frac{9}{2\\times9\\times7} = \\frac{1}{2\\times7} \\implies \\text{분모에 소인수 } 7\\text{이 남아 순환소수} \\\\\n\\text{④ } & \\frac{27}{2^2\\times3^3\\times5} = \\frac{27}{2^2\\times27\\times5} = \\frac{1}{2^2\\times5} \\implies \\text{분모 소인수가 } 2, 5\\text{뿐이므로 유한소수 (참)} \\\\\n\\text{⑤ } & \\frac{11}{2\\times5\\times11^2} = \\frac{1}{2\\times5\\times11} \\implies \\text{분모에 소인수 } 11\\text{이 남아 순환소수}\n\\end{aligned}\n$$\n따라서 유한소수로 나타낼 수 있는 것은 ②, ④이다.",
+    "solution": "각 분수를 기약분수로 고쳐 분모에 남는 소인수를 확인한다.\n기약분수의 분모에 소인수 $2$와 $5$만 남으면 유한소수이고, 다른 소인수가 남으면 순환소수이다.\n①은 분자와 분모를 $7$로 약분한다.\n$$\\dfrac{7}{21} = \\dfrac{1}{3}$$\n분모에 소인수 $3$이 남으므로 ①은 순환소수이다.\n②는 분모의 $3\\times7$을 계산하여 약분한다.\n$$\\begin{aligned}\n\\dfrac{21}{2^{3}\\times3\\times7} &= \\dfrac{21}{2^{3}\\times21} \\\\\n&= \\dfrac{1}{2^{3}}\n\\end{aligned}\n$$\n분모의 소인수가 $2$뿐이므로 ②는 유한소수이다.\n③은 분모의 $3^{2}$을 계산하여 약분한다.\n$$\\begin{aligned}\n\\dfrac{9}{2\\times3^{2}\\times7} &= \\dfrac{9}{2\\times9\\times7} \\\\\n&= \\dfrac{1}{2\\times7}\n\\end{aligned}\n$$\n분모에 소인수 $7$이 남으므로 ③은 순환소수이다.\n④는 분모의 $3^{3}$을 계산하여 약분한다.\n$$\\begin{aligned}\n\\dfrac{27}{2^{2}\\times3^{3}\\times5} &= \\dfrac{27}{2^{2}\\times27\\times5} \\\\\n&= \\dfrac{1}{2^{2}\\times5}\n\\end{aligned}\n$$\n분모의 소인수가 $2$와 $5$뿐이므로 ④는 유한소수이다.\n⑤는 분모의 $11^{2}$을 계산하여 약분한다.\n$$\\begin{aligned}\n\\dfrac{11}{2\\times5\\times11^{2}} &= \\dfrac{11}{2\\times5\\times11\\times11} \\\\\n&= \\dfrac{1}{2\\times5\\times11}\n\\end{aligned}\n$$\n분모에 소인수 $11$이 남으므로 ⑤는 순환소수이다.\n따라서 정답은 ②, ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -181,7 +181,7 @@ window.questionBank = [
       "기약분수의 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수로 나타낼 수 있다."
     ],
     "answer": "①, ⑤",
-    "solution": "유리수와 소수의 분류 체계 및 성질을 각 선지별로 검토한다.\n$$\n\\begin{aligned}\n\\text{① } & \\text{순환소수는 모두 분수 } \\frac{a}{b} \\text{ (} a, b\\text{는 정수, } b \\ne 0\\text{) 꼴로 나타낼 수 있으므로 유리수이다. (참)} \\\\\n\\text{② } & \\text{순환하지 않는 무한소수는 분수로 나타낼 수 없는 무리수이므로 유리수가 될 수 없다. (거짓)} \\\\\n\\text{③ } & \\text{모든 유한소수는 분모가 } 10\\text{의 거듭제곱인 분수로 나타낼 수 있다. (거짓)} \\\\\n\\text{④ } & \\text{기약분수의 분모에 } 2\\text{ 또는 } 5 \\text{ 이외의 소인수인 } 3\\text{이 있으면 무한소수(순환소수)가 된다. (거짓)} \\\\\n\\text{⑤ } & \\text{기약분수의 분모의 소인수가 } 2\\text{ 또는 } 5\\text{뿐이면 분모를 } 10\\text{의 거듭제곱으로 고칠 수 있으므로 유한소수가 된다. (참)}\n\\end{aligned}\n$$\n따라서 옳은 것은 ①, ⑤이다.",
+    "solution": "각 보기의 설명이 유리수와 소수의 성질에 맞는지 ①부터 ⑤까지 차례로 확인한다.\n① 모든 순환소수는 분수로 나타낼 수 있으므로 유리수이다. (참)\n② 순환하지 않는 무한소수는 분수로 나타낼 수 없으므로 유리수가 아니다. (거짓)\n③ 유한소수는 분모가 $10$의 거듭제곱인 분수로 나타낼 수 있으므로 모두 분수로 나타낼 수 있다. (거짓)\n④ 기약분수의 분모에 소인수 $3$이 남아 있으면 순환소수가 되므로 유한소수로 나타낼 수 없다. (거짓)\n⑤ 기약분수의 분모의 소인수가 $2$ 또는 $5$뿐이면 분모를 $10$의 거듭제곱으로 고칠 수 있으므로 유한소수이다. (참)\n따라서 정답은 ①, ⑤이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -249,13 +249,13 @@ window.questionBank = [
     "content": "다음 중에서 옳은 것은? [3점]",
     "choices": [
       "$x^{3} \\times x^{4} = x^{12}$",
+      "$\\left(-2x^{2}y\\right)^{3} = -8x^{6}y^{3}$",
       "$x^{8} \\div x^{2} = x^{4}$",
       "$\\left(\\dfrac{a^{3}}{3b^{2}}\\right)^{2} = \\dfrac{a^{6}}{6b^{4}}$",
-      "$\\left(-2x^{2}y\\right)^{3} = -8x^{6}y^{3}$",
       "$y^{4} \\div y^{4} = 0$"
     ],
-    "answer": "④",
-    "solution": "지수법칙을 각 선지에 적용하여 계산 결과를 검증한다.\n$$\n\\begin{aligned}\n\\text{① } & x^3 \\times x^4 = x^{3+4} = x^7 \\ne x^{12} \\text{ (거짓)} \\\\\n\\text{② } & x^8 \\div x^2 = x^{8-2} = x^6 \\ne x^4 \\text{ (거짓)} \\\\\n\\text{③ } & \\left(\\frac{a^3}{3b^2}\\right)^2 = \\frac{(a^3)^2}{3^2 \\times (b^2)^2} = \\frac{a^6}{9b^4} \\ne \\frac{a^6}{6b^4} \\text{ (거짓)} \\\\\n\\text{④ } & (-2x^2 y)^3 = (-2)^3 \\times (x^2)^3 \\times y^3 = -8x^6 y^3 \\text{ (참)} \\\\\n\\text{⑤ } & y^4 \\div y^4 = 1 \\ne 0 \\text{ (거짓)}\n\\end{aligned}\n$$\n따라서 옳은 것은 ④이다.",
+    "answer": "②",
+    "solution": "지수법칙을 보기 ①부터 ⑤까지 차례로 적용하여 옳은 것을 찾는다.\n① 밑이 같은 두 거듭제곱의 곱은 지수를 더하여 계산한다.\n$$\n\\begin{aligned}\nx^3 \\times x^4 &= x^{3+4} \\\\\n&= x^7\n\\end{aligned}\n$$\n지수가 $12$가 아니므로 옳지 않다. (거짓)\n② 곱의 거듭제곱은 각 인수를 거듭제곱하여 계산한다.\n$$\n\\begin{aligned}\n\\left(-2x^2y\\right)^3 &= (-2)^3 \\times \\left(x^2\\right)^3 \\times y^3 \\\\\n&= -8x^6y^3\n\\end{aligned}\n$$\n주어진 식과 같으므로 옳다. (참)\n③ 밑이 같은 두 거듭제곱의 나눗셈은 지수를 빼서 계산한다.\n$$\n\\begin{aligned}\nx^8 \\div x^2 &= x^{8-2} \\\\\n&= x^6\n\\end{aligned}\n$$\n지수가 $4$가 아니므로 옳지 않다. (거짓)\n④ 분수의 거듭제곱은 분자와 분모를 각각 거듭제곱하여 계산한다.\n$$\n\\begin{aligned}\n\\left(\\dfrac{a^3}{3b^2}\\right)^2 &= \\dfrac{\\left(a^3\\right)^2}{3^2 \\times \\left(b^2\\right)^2} \\\\\n&= \\dfrac{a^6}{9b^4}\n\\end{aligned}\n$$\n분모가 $6b^4$이 아니므로 옳지 않다. (거짓)\n⑤ $0$이 아닌 같은 식끼리의 나눗셈은 $1$이다.\n$$\ny^4 \\div y^4 = 1\n$$\n$0$이 아니므로 옳지 않다. (거짓)\n따라서 정답은 ②이다.",
     "points": 3,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -292,7 +292,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "①",
-    "solution": "좌변을 지수법칙을 이용하여 전개한다.\n$$\n\\left(\\frac{x^a}{2y^{3b}}\\right)^3 = \\frac{(x^a)^3}{2^3 \\times (y^{3b})^3} = \\frac{x^{3a}}{8y^{9b}}\n$$\n우변 $\\dfrac{x^6}{8y^{27}}$과 각 문자의 지수를 비교한다.\n$$\n\\begin{aligned}\n3a &= 6 \\implies a = 2 \\\\\n9b &= 27 \\implies b = 3\n\\end{aligned}\n$$\n따라서 두 자연수 $a, b$의 합 $a+b$를 계산한다.\n$$\na + b = 2 + 3 = 5\n$$\n그러므로 정답은 ①이다.",
+    "solution": "좌변을 지수법칙으로 전개한 뒤 양변의 지수를 비교하여 $a$와 $b$를 구한다.\n$$\\begin{aligned}\n\\left(\\dfrac{x^{a}}{2y^{3b}}\\right)^{3} &= \\dfrac{\\left(x^{a}\\right)^{3}}{2^{3}\\times\\left(y^{3b}\\right)^{3}} \\\\\n&= \\dfrac{x^{3a}}{8y^{9b}}\n\\end{aligned}\n$$\n이 식이 $\\dfrac{x^{6}}{8y^{27}}$과 같으므로 $x$의 지수를 비교한다.\n$$3a = 6$$\n$$a = 2$$\n$y$의 지수를 비교한다.\n$$9b = 27$$\n$$b = 3$$\n구하는 $a+b$의 값을 계산한다.\n$$\\begin{aligned}\na+b &= 2+3 \\\\\n&= 5\n\\end{aligned}\n$$\n따라서 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -323,13 +323,13 @@ window.questionBank = [
     "content": "$1 \\times 2 \\times 3 \\times \\dots \\times 16 = 2^{a} \\times b$에서 $b$가 홀수일 때, 자연수 $a$의 값을 구하면? [5점]",
     "choices": [
       "$11$",
+      "$12$",
       "$13$",
-      "$15$",
-      "$16$",
-      "$17$"
+      "$14$",
+      "$15$"
     ],
-    "answer": "③",
-    "solution": "$b$가 홀수이므로 $2^a$는 $1$부터 $16$까지의 자연수의 곱(팩토리얼 $16!$)에 포함된 소인수 $2$의 총 개수를 의미한다.\n각 자연수에서 소인수 $2$가 몇 번 곱해지는지 세기 위해 $2$의 거듭제곱의 배수의 개수를 구한다.\n$$\n\\begin{aligned}\n1\\text{부터 } 16\\text{까지 } 2\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{2} \\right\\rfloor = 8\\text{개} \\\\\n1\\text{부터 } 16\\text{까지 } 4\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{4} \\right\\rfloor = 4\\text{개} \\\\\n1\\text{부터 } 16\\text{까지 } 8\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{8} \\right\\rfloor = 2\\text{개} \\\\\n1\\text{부터 } 16\\text{까지 } 16\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{16} \\right\\rfloor = 1\\text{개}\n\\end{aligned}\n$$\n따라서 소인수 $2$의 총 지수 $a$는\n$$\na = 8 + 4 + 2 + 1 = 15\n$$\n그러므로 정답은 ③이다.",
+    "answer": "⑤",
+    "solution": "$b$가 홀수이므로 $2^a$는 $1$부터 $16$까지의 자연수의 곱(팩토리얼 $16!$)에 포함된 소인수 $2$의 총 개수를 의미한다.\n각 자연수에서 소인수 $2$가 몇 번 곱해지는지 세기 위해 $2$의 거듭제곱의 배수의 개수를 구한다.\n$$\n\\begin{aligned}\n1\\text{부터 } 16\\text{까지 } 2\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{2} \\right\\rfloor = 8\\text{개} \\\\\n1\\text{부터 } 16\\text{까지 } 4\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{4} \\right\\rfloor = 4\\text{개} \\\\\n1\\text{부터 } 16\\text{까지 } 8\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{8} \\right\\rfloor = 2\\text{개} \\\\\n1\\text{부터 } 16\\text{까지 } 16\\text{의 배수의 개수: } & \\left\\lfloor \\frac{16}{16} \\right\\rfloor = 1\\text{개}\n\\end{aligned}\n$$\n따라서 소인수 $2$의 총 지수 $a$는\n$$\na = 8 + 4 + 2 + 1 = 15\n$$\n그러므로 정답은 ⑤이다.",
     "points": 5,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -359,14 +359,14 @@ window.questionBank = [
     "wide": false,
     "content": "$5^{3} \\times 20^{5}$을 $a \\times 10^{n}$ (단, $1 \\le a < 10$, $n$은 자연수)의 꼴로 나타낼 때, 두 수 $a$와 $n$의 합 $a+n$의 값은? [4점]",
     "choices": [
-      "$8$",
-      "$9$",
-      "$10$",
-      "$11$",
-      "$12$"
+      "$12$",
+      "$13$",
+      "$14$",
+      "$16$",
+      "$19$"
     ],
-    "answer": "⑤",
-    "solution": "$20$을 소인수분해하여 지수법칙을 적용한다.\n$$\n20 = 2^2 \\times 5 \\implies 20^5 = (2^2 \\times 5)^5 = (2^2)^5 \\times 5^5 = 2^{10} \\times 5^5\n$$\n주어진 식을 소인수 $2$와 $5$의 거듭제곱으로 나타낸다.\n$$\n\\begin{aligned}\n5^3 \\times 20^5 &= 5^3 \\times (2^{10} \\times 5^5) \\\\\n&= 2^{10} \\times 5^{3+5} \\\\\n&= 2^{10} \\times 5^8\n\\end{aligned}\n$$\n$10$의 거듭제곱인 $10 = 2 \\times 5$를 만들기 위해 지수를 분리한다.\n$$\n\\begin{aligned}\n2^{10} \\times 5^8 &= 2^{2+8} \\times 5^8 \\\\\n&= 2^2 \\times (2^8 \\times 5^8) \\\\\n&= 4 \\times (2 \\times 5)^8 \\\\\n&= 4 \\times 10^8\n\\end{aligned}\n$$\n$a \\times 10^n$과 비교하면 $1 \\le 4 < 10$이므로\n$$\na = 4, \\quad n = 8\n$$\n따라서 $a+n$의 값을 계산한다.\n$$\na + n = 4 + 8 = 12\n$$\n그러므로 정답은 ⑤이다.",
+    "answer": "①",
+    "solution": "주어진 식을 소인수 $2$와 $5$의 거듭제곱으로 정리한 뒤 $10$의 거듭제곱을 만든다.\n$$20 = 2^{2}\\times5$$\n$20^{5}$을 전개한다.\n$$\\begin{aligned}\n20^{5} &= \\left(2^{2}\\times5\\right)^{5} \\\\\n&= 2^{10}\\times5^{5}\n\\end{aligned}\n$$\n주어진 식에 대입하여 정리한다.\n$$\\begin{aligned}\n5^{3}\\times20^{5} &= 5^{3}\\times2^{10}\\times5^{5} \\\\\n&= 2^{10}\\times5^{8}\n\\end{aligned}\n$$\n$2^{10}$을 $2^{2}\\times2^{8}$로 고쳐 $10$의 거듭제곱을 만든다.\n$$\\begin{aligned}\n2^{10}\\times5^{8} &= 2^{2}\\times2^{8}\\times5^{8} \\\\\n&= 4\\times\\left(2\\times5\\right)^{8} \\\\\n&= 4\\times10^{8}\n\\end{aligned}\n$$\n$1 \\le a < 10$을 만족하도록 $a$와 $n$을 정한다.\n$$a = 4$$\n$$n = 8$$\n구하는 $a+n$의 값을 계산한다.\n$$\\begin{aligned}\na+n &= 4+8 \\\\\n&= 12\n\\end{aligned}\n$$\n따라서 정답은 ①이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -403,7 +403,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "②",
-    "solution": "밑을 소인수분해하여 지수법칙으로 각각의 식을 간단히 정리한다.\n1단계: 첫 번째 식을 정리하여 $a$를 구한다.\n$$\n\\begin{aligned}\n24 &= 2^3 \\times 3 \\implies 24^6 = (2^3 \\times 3)^6 = 2^{18} \\times 3^6 \\\\\n72 &= 2^3 \\times 3^2 \\implies 72^3 = (2^3 \\times 3^2)^3 = 2^9 \\times 3^6 \\\\\n\\frac{24^6}{72^3} &= \\frac{2^{18} \\times 3^6}{2^9 \\times 3^6} = 2^{18-9} = 2^9\n\\end{aligned}\n$$\n따라서 $2^a = 2^9$이므로 $a = 9$이다.\n2단계: 두 번째 식을 정리하여 $b$를 구한다.\n$$\n\\begin{aligned}\n\\text{분자: } 9^5 + 9^5 + 9^5 &= 3 \\times 9^5 = 3 \\times (3^2)^5 = 3 \\times 3^{10} = 3^{11} \\\\\n\\text{분모: } 3^4 + 3^4 + 3^4 &= 3 \\times 3^4 = 3^5 \\\\\n\\frac{9^5+9^5+9^5}{3^4+3^4+3^4} &= \\frac{3^{11}}{3^5} = 3^{11-5} = 3^6\n\\end{aligned}\n$$\n따라서 $3^b = 3^6$이므로 $b = 6$이다.\n3단계: $a-b$의 값을 계산한다.\n$$\na - b = 9 - 6 = 3\n$$\n그러므로 정답은 ②이다.",
+    "solution": "두 식의 밑을 소인수분해하여 지수법칙으로 정리한 뒤 $a$와 $b$를 각각 구한다.\n$24$와 $72$를 소인수분해한다.\n$$\\begin{aligned}\n24 &= 2^{3}\\times3 \\\\\n72 &= 2^{3}\\times3^{2}\n\\end{aligned}\n$$\n첫 번째 식의 분자를 정리한다.\n$$\\begin{aligned}\n24^{6} &= \\left(2^{3}\\times3\\right)^{6} \\\\\n&= 2^{18}\\times3^{6}\n\\end{aligned}\n$$\n첫 번째 식의 분모를 정리한다.\n$$\\begin{aligned}\n72^{3} &= \\left(2^{3}\\times3^{2}\\right)^{3} \\\\\n&= 2^{9}\\times3^{6}\n\\end{aligned}\n$$\n분자를 분모로 나눈다.\n$$\\begin{aligned}\n\\dfrac{24^{6}}{72^{3}} &= \\dfrac{2^{18}\\times3^{6}}{2^{9}\\times3^{6}} \\\\\n&= 2^{9}\n\\end{aligned}\n$$\n$2^{a} = 2^{9}$이므로 지수를 비교한다.\n$$a = 9$$\n두 번째 식의 분자를 정리한다.\n$$\\begin{aligned}\n9^{5}+9^{5}+9^{5} &= 3\\times9^{5} \\\\\n&= 3\\times\\left(3^{2}\\right)^{5} \\\\\n&= 3\\times3^{10} \\\\\n&= 3^{11}\n\\end{aligned}\n$$\n두 번째 식의 분모를 정리한다.\n$$\\begin{aligned}\n3^{4}+3^{4}+3^{4} &= 3\\times3^{4} \\\\\n&= 3^{5}\n\\end{aligned}\n$$\n분자를 분모로 나눈다.\n$$\\begin{aligned}\n\\dfrac{9^{5}+9^{5}+9^{5}}{3^{4}+3^{4}+3^{4}} &= \\dfrac{3^{11}}{3^{5}} \\\\\n&= 3^{6}\n\\end{aligned}\n$$\n$3^{b} = 3^{6}$이므로 지수를 비교한다.\n$$b = 6$$\n구하는 $a-b$의 값을 계산한다.\n$$\\begin{aligned}\na-b &= 9-6 \\\\\n&= 3\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -470,14 +470,14 @@ window.questionBank = [
     "wide": false,
     "content": "$3x^{2}y \\times A \\div (-2xy^{3}) = 6x^{2}y$ 를 만족하는 식 $A$를 구하면? [4점]",
     "choices": [
-      "$-4xy^{3}$",
       "$-4x^{2}y^{2}$",
       "$4xy^{3}$",
       "$-6xy^{2}$",
-      "$6x^{2}y^{3}$"
+      "$6x^{2}y^{3}$",
+      "$-4xy^{3}$"
     ],
-    "answer": "①",
-    "solution": "주어진 등식에서 미지 식 $A$를 구하기 위해 역연산을 적용한다.\n$$\n3x^2 y \\times A \\div (-2xy^3) = 6x^2 y\n$$\n양변에 $(-2xy^3)$을 곱한다.\n$$\n\\begin{aligned}\n3x^2 y \\times A &= 6x^2 y \\times (-2xy^3) \\\\\n3x^2 y \\times A &= -12x^3 y^4\n\\end{aligned}\n$$\n양변을 $3x^2 y$로 나눈다.\n$$\n\\begin{aligned}\nA &= \\frac{-12x^3 y^4}{3x^2 y} \\\\\n&= \\left(\\frac{-12}{3}\\right) x^{3-2} y^{4-1} \\\\\n&= -4xy^3\n\\end{aligned}\n$$\n그러므로 정답은 ①이다.",
+    "answer": "⑤",
+    "solution": "주어진 등식에서 미지 식 $A$를 구하기 위해 역연산을 적용한다.\n$$\n3x^2 y \\times A \\div (-2xy^3) = 6x^2 y\n$$\n양변에 $(-2xy^3)$을 곱한다.\n$$\n\\begin{aligned}\n3x^2 y \\times A &= 6x^2 y \\times (-2xy^3) \\\\\n3x^2 y \\times A &= -12x^3 y^4\n\\end{aligned}\n$$\n양변을 $3x^2 y$로 나눈다.\n$$\n\\begin{aligned}\nA &= \\frac{-12x^3 y^4}{3x^2 y} \\\\\n&= \\left(\\frac{-12}{3}\\right) x^{3-2} y^{4-1} \\\\\n&= -4xy^3\n\\end{aligned}\n$$\n그러므로 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -546,12 +546,12 @@ window.questionBank = [
     "choices": [
       "$x^{2}-7x+8$",
       "$4x^{2}+3x-3$",
+      "$x^{2}+7x-8$",
       "$x^{2}+x-8$",
-      "$x^{2}+7x+2$",
-      "$x^{2}+7x-8$"
+      "$x^{2}+7x+2$"
     ],
-    "answer": "⑤",
-    "solution": "잘못 계산한 식으로부터 어떤 식 $A$를 구한다.\n$$\nA + (3x^2 - 4x + 5) = 7x^2 - x + 2\n$$\n양변에서 $(3x^2 - 4x + 5)$를 뺀다.\n$$\n\\begin{aligned}\nA &= (7x^2 - x + 2) - (3x^2 - 4x + 5) \\\\\n&= 7x^2 - x + 2 - 3x^2 + 4x - 5 \\\\\n&= 4x^2 + 3x - 3\n\\end{aligned}\n$$\n바르게 계산한 식은 원래 식 $A$에서 $(3x^2 - 4x + 5)$를 빼야 하므로 대입하여 계산한다.\n$$\n\\begin{aligned}\nA - (3x^2 - 4x + 5) &= (4x^2 + 3x - 3) - (3x^2 - 4x + 5) \\\\\n&= 4x^2 + 3x - 3 - 3x^2 + 4x - 5 \\\\\n&= (4-3)x^2 + (3+4)x + (-3-5) \\\\\n&= x^2 + 7x - 8\n\\end{aligned}\n$$\n그러므로 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "잘못 계산한 식으로부터 어떤 식 $A$를 구한다.\n$$\nA + (3x^2 - 4x + 5) = 7x^2 - x + 2\n$$\n양변에서 $(3x^2 - 4x + 5)$를 뺀다.\n$$\n\\begin{aligned}\nA &= (7x^2 - x + 2) - (3x^2 - 4x + 5) \\\\\n&= 7x^2 - x + 2 - 3x^2 + 4x - 5 \\\\\n&= 4x^2 + 3x - 3\n\\end{aligned}\n$$\n바르게 계산한 식은 원래 식 $A$에서 $(3x^2 - 4x + 5)$를 빼야 하므로 대입하여 계산한다.\n$$\n\\begin{aligned}\nA - (3x^2 - 4x + 5) &= (4x^2 + 3x - 3) - (3x^2 - 4x + 5) \\\\\n&= 4x^2 + 3x - 3 - 3x^2 + 4x - 5 \\\\\n&= (4-3)x^2 + (3+4)x + (-3-5) \\\\\n&= x^2 + 7x - 8\n\\end{aligned}\n$$\n그러므로 정답은 ③이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -582,13 +582,13 @@ window.questionBank = [
     "content": "$2x - \\{3x - 2y - (-2x + 3y) - 4\\}$ 를 계산하면? [4점]",
     "choices": [
       "$-3x-5y+4$",
-      "$-3x+5y+4$",
       "$-3x+5y-4$",
       "$3x-5y+4$",
-      "$-7x+5y+4$"
+      "$-7x+5y+4$",
+      "$-3x+5y+4$"
     ],
-    "answer": "②",
-    "solution": "괄호가 있는 다항식의 계산은 소괄호, 중괄호 순서로 안쪽부터 풀어 정리한다.\n1단계: 소괄호를 풀고 중괄호 안의 식을 정리한다.\n$$\n\\begin{aligned}\n& 3x - 2y - (-2x + 3y) - 4 \\\\\n&= 3x - 2y + 2x - 3y - 4 \\\\\n&= (3+2)x + (-2-3)y - 4 \\\\\n&= 5x - 5y - 4\n\\end{aligned}\n$$\n2단계: 중괄호 앞의 뺄셈 부호를 분배하여 정리한다.\n$$\n\\begin{aligned}\n2x - \\{5x - 5y - 4\\} &= 2x - 5x + 5y + 4 \\\\\n&= (2-5)x + 5y + 4 \\\\\n&= -3x + 5y + 4\n\\end{aligned}\n$$\n그러므로 정답은 ②이다.",
+    "answer": "⑤",
+    "solution": "괄호가 있는 다항식의 계산은 소괄호, 중괄호 순서로 안쪽부터 풀어 정리한다.\n1단계: 소괄호를 풀고 중괄호 안의 식을 정리한다.\n$$\n\\begin{aligned}\n& 3x - 2y - (-2x + 3y) - 4 \\\\\n&= 3x - 2y + 2x - 3y - 4 \\\\\n&= (3+2)x + (-2-3)y - 4 \\\\\n&= 5x - 5y - 4\n\\end{aligned}\n$$\n2단계: 중괄호 앞의 뺄셈 부호를 분배하여 정리한다.\n$$\n\\begin{aligned}\n2x - \\{5x - 5y - 4\\} &= 2x - 5x + 5y + 4 \\\\\n&= (2-5)x + 5y + 4 \\\\\n&= -3x + 5y + 4\n\\end{aligned}\n$$\n그러므로 정답은 ⑤이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -625,7 +625,7 @@ window.questionBank = [
       "ㄴ, ㄷ, ㄹ"
     ],
     "answer": "④",
-    "solution": "$x=3$을 보기의 각 부등식에 대입하여 부등식이 참이 되는지 확인한다.\n$$\n\\begin{aligned}\n\\text{ㄱ: } & 3 - 1 = 2 > 4 \\text{ (거짓)} \\\\\n\\text{ㄴ: } & 2(3) + 1 = 7 \\ge 7 \\text{ (참)} \\\\\n\\text{ㄷ: } & 5 - 2(3) = -1 > -1 \\text{ (거짓: } -1\\text{은 } -1\\text{보다 크지 않다)} \\\\\n\\text{ㄹ: } & 3(3) - 2 = 7, \\quad 3 + 5 = 8 \\implies 7 \\le 8 \\text{ (참)}\n\\end{aligned}\n$$\n따라서 $x=3$이 해가 되는 부등식은 ㄴ, ㄹ이다.\n그러므로 정답은 ④이다.",
+    "solution": "보기의 각 부등식에 $x=3$을 대입하여 참인지 거짓인지 판정한다.\nㄱ. $x-1 > 4$의 좌변을 계산한다.\n$$3-1 = 2$$\n$2 > 4$는 거짓이므로 ㄱ은 해가 아니다.\nㄴ. $2x+1 \\ge 7$의 좌변을 계산한다.\n$$2\\times3+1 = 7$$\n$7 \\ge 7$은 참이므로 ㄴ은 해이다.\nㄷ. $5-2x > -1$의 좌변을 계산한다.\n$$5-2\\times3 = -1$$\n$-1 > -1$은 거짓이므로 ㄷ은 해가 아니다.\nㄹ. $3x-2 \\le x+5$의 양변을 각각 계산한다.\n$$3\\times3-2 = 7,\\quad 3+5 = 8$$\n$7 \\le 8$은 참이므로 ㄹ은 해이다.\n$x=3$이 해가 되는 부등식은 ㄴ, ㄹ이다.\n따라서 정답은 ④이다.",
     "points": 4,
     "curriculum": "2015",
     "curriculumKey": "2015",
@@ -690,7 +690,7 @@ window.questionBank = [
       "FINITE_DECIMAL_MULTIPLIER_CONDITION"
     ],
     "wide": false,
-    "content": "[서술형 1번] 분수 $\\dfrac{13}{60}$에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하는 과정을 서술하시오. [6점]",
+    "content": "[서술형 1]\n[서술형 1번] 분수 $\\dfrac{13}{60}$에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다. $a$가 한 자리의 자연수라고 할 때, $a$의 값을 모두 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$3, 6, 9$",
     "solution": "1단계: 분모를 소인수분해하여 기약분수의 형태를 확인한다.\n$$\n60 = 2^2 \\times 3 \\times 5\n$$\n따라서 주어진 분수는 다음과 같다.\n$$\n\\frac{13}{60} = \\frac{13}{2^2 \\times 3 \\times 5}\n$$\n분자 $13$은 소수이므로 분모의 소인수 $3$과 약분되지 않는다.\n2단계: 유한소수가 되기 위한 $a$의 조건을 구한다.\n$$\n\\frac{13}{2^2 \\times 3 \\times 5} \\times a\n$$\n이 수가 유한소수가 되려면 분모에 소인수 $2$ 또는 $5$만 남아야 하므로, 분모의 소인수 $3$이 $a$와 약분되어 소거되어야 한다.\n따라서 $a$는 $3$의 배수이어야 한다.\n3단계: 한 자리의 자연수 $a$를 모두 구한다.\n한 자리의 자연수 중 $3$의 배수는 다음과 같다.\n$$\na = 3, \\quad 6, \\quad 9\n$$\n따라서 구하는 $a$의 값은 $3, 6, 9$이다.",
@@ -721,7 +721,7 @@ window.questionBank = [
       "REPEATING_DECIMAL_CONVERSION_ALGEBRAIC"
     ],
     "wide": false,
-    "content": "[서술형 2번] 순환소수 $0.2\\dot{4}\\dot{6}$을 기약분수로 나타내는 과정을 서술하시오. [6점]",
+    "content": "[서술형 2]\n[서술형 2번] 순환소수 $0.2\\dot{4}\\dot{6}$을 기약분수로 나타내는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$\\dfrac{122}{495}$",
     "solution": "1단계: 순환소수 $0.2\\dot{4}\\dot{6}$을 $x$라 놓는다.\n$$\nx = 0.2464646\\dots\n$$\n2단계: 소수점 아래 순환마디의 자릿수를 맞추기 위해 양변에 $1000$과 $10$을 각각 곱한다.\n$$\n\\begin{aligned}\n1000x &= 246.464646\\dots \\\\\n10x &= 2.464646\\dots\n\\end{aligned}\n$$\n3단계: 두 식을 변끼리 빼어 소수 부분을 소거한다.\n$$\n\\begin{aligned}\n1000x - 10x &= 246.464646\\dots - 2.464646\\dots \\\\\n990x &= 244 \\\\\nx &= \\frac{244}{990}\n\\end{aligned}\n$$\n4단계: 분모와 분자를 최대공약수 $2$로 약분하여 기약분수로 나타낸다.\n$$\nx = \\frac{244 \\div 2}{990 \\div 2} = \\frac{122}{495}\n$$\n따라서 구하는 기약분수는 $\\dfrac{122}{495}$이다.",
@@ -752,7 +752,7 @@ window.questionBank = [
       "FRACTIONAL_POLYNOMIAL_COEFFICIENT_PRODUCT"
     ],
     "wide": false,
-    "content": "[서술형 3번] $2x+y - \\dfrac{3x-y}{3}$ 을 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하는 과정을 서술하시오. [6점]",
+    "content": "[서술형 3]\n[서술형 3번] $2x+y - \\dfrac{3x-y}{3}$ 을 계산한 식에서 $x$의 계수를 $a$, $y$의 계수를 $b$라고 할 때, $ab$의 값을 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$\\dfrac{4}{3}$",
     "solution": "1단계: 공통분모 $3$으로 통분하여 분자를 전개한다.\n$$\n\\begin{aligned}\n2x+y - \\frac{3x-y}{3} &= \\frac{3(2x+y) - (3x-y)}{3} \\\\\n&= \\frac{6x + 3y - 3x + y}{3}\n\\end{aligned}\n$$\n2단계: 분자의 동류항을 정리한다.\n$$\n\\frac{(6-3)x + (3+1)y}{3} = \\frac{3x + 4y}{3}\n$$\n3단계: 각 항별로 분리하여 $x$와 $y$의 계수를 구한다.\n$$\n\\frac{3x + 4y}{3} = \\frac{3}{3}x + \\frac{4}{3}y = x + \\frac{4}{3}y\n$$\n따라서 $x$의 계수 $a$와 $y$의 계수 $b$는 다음과 같다.\n$$\na = 1, \\quad b = \\frac{4}{3}\n$$\n4단계: $ab$의 값을 계산한다.\n$$\nab = 1 \\times \\frac{4}{3} = \\frac{4}{3}\n$$\n그러므로 구하는 값은 $\\dfrac{4}{3}$이다.",
@@ -783,7 +783,7 @@ window.questionBank = [
       "POLYNOMIAL_MONOMIAL_DIVISION_MIXED"
     ],
     "wide": false,
-    "content": "[서술형 4번] $(8x^{2}y - 6xy^{2}) \\div \\dfrac{2}{3}xy - \\dfrac{4x^{2}y - 8xy}{4xy}$ 를 계산하는 과정을 서술하시오. [6점]",
+    "content": "[서술형 4]\n[서술형 4번] $(8x^{2}y - 6xy^{2}) \\div \\dfrac{2}{3}xy - \\dfrac{4x^{2}y - 8xy}{4xy}$ 를 계산하는 과정을 서술하시오. [6점]",
     "choices": [],
     "answer": "$11x - 9y + 2$",
     "solution": "1단계: 첫 번째 식을 역수 곱셈으로 바꾸어 전개한다.\n$$\n\\begin{aligned}\n(8x^2 y - 6xy^2) \\div \\frac{2}{3}xy &= (8x^2 y - 6xy^2) \\times \\frac{3}{2xy} \\\\\n&= 8x^2 y \\times \\frac{3}{2xy} - 6xy^2 \\times \\frac{3}{2xy} \\\\\n&= 12x - 9y\n\\end{aligned}\n$$\n2단계: 두 번째 분수를 각 항별로 약분하여 정리한다.\n$$\n\\begin{aligned}\n\\frac{4x^2 y - 8xy}{4xy} &= \\frac{4x^2 y}{4xy} - \\frac{8xy}{4xy} \\\\\n&= x - 2\n\\end{aligned}\n$$\n3단계: 두 결과의 차를 계산한다. 뒤 식 전체에 뺄셈 부호를 분배한다.\n$$\n\\begin{aligned}\n(12x - 9y) - (x - 2) &= 12x - 9y - x + 2 \\\\\n&= (12-1)x - 9y + 2 \\\\\n&= 11x - 9y + 2\n\\end{aligned}\n$$\n따라서 구하는 식은 $11x - 9y + 2$이다.",
@@ -814,10 +814,10 @@ window.questionBank = [
       "INEQUALITY_PROPERTIES_PROOF"
     ],
     "wide": false,
-    "content": "[서술형 5번] $a \\le b$일 때, 부등식의 성질을 이용하여 다음 부등식이 성립함을 설명하시오. [6점]\n$$-4a + 5 \\ge -4b + 5$$",
+    "content": "[서술형 5]\n[서술형 5번] $a \\le b$일 때, 부등식의 성질을 이용하여 다음 부등식이 성립함을 설명하시오. [6점]\n$$-4a + 5 \\ge -4b + 5$$",
     "choices": [],
     "answer": "성립함 (풀이 참조)",
-    "solution": "1단계: $a \\le b$의 양변에 같은 음수 $-4$를 곱한다.\n부등식의 양변에 음수를 곱하면 부등호의 방향이 반대로 바뀐다.\n$$\n\\begin{aligned}\na \\le b &\\implies a \\times (-4) \\ge b \\times (-4) \\\\\n&\\implies -4a \\ge -4b\n\\end{aligned}\n$$\n2단계: 위 부등식의 양변에 같은 양수 $5$를 더한다.\n부등식의 양변에 같은 수를 더하여도 부등호의 방향은 바뀌지 않는다.\n$$\n\\begin{aligned}\n-4a \\ge -4b &\\implies -4a + 5 \\ge -4b + 5\n\\end{aligned}\n$$\n따라서 주어진 부등식 $-4a + 5 \\ge -4b + 5$는 성립한다.",
+    "solution": "$a \\le b$에서 시작하여 부등식의 성질을 두 번 적용한다.\n$a \\le b$의 양변에 음수 $-4$를 곱하면 부등호의 방향이 바뀐다.\n$$\\begin{aligned}\na\\times(-4) &\\ge b\\times(-4) \\\\\n-4a &\\ge -4b\n\\end{aligned}\n$$\n이 부등식의 양변에 양수 $5$를 더하면 부등호의 방향은 바뀌지 않는다.\n$$-4a+5 \\ge -4b+5$$\n따라서 주어진 부등식 $-4a+5 \\ge -4b+5$가 성립한다.",
     "points": 6,
     "curriculum": "2015",
     "curriculumKey": "2015",

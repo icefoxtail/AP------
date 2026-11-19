@@ -25,16 +25,16 @@ window.questionBank = [
     "content": "직육면체의 한 꼭짓점(모퉁이)을 평면으로 잘라내어 삼각뿔 모양을 떼어낸 입체도형에서 교점(꼭짓점)의 개수를 $a$, 교선(모서리)의 개수를 $b$라 할 때, $a + b$의 값은? [3점]",
     "choices": [
       "$25$",
-      "$21$",
-      "$23$",
-      "$27$",
-      "$29$"
+      "$29$",
+      "$32$",
+      "$35$",
+      "$45$"
     ],
     "answer": "①",
     "points": 3,
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_COUNT_TRUNCATION",
-    "solution": "입체도형에서 교점은 꼭짓점, 교선은 모서리이다. $$\\begin{aligned} &\\text{직육면체의 원래 꼭짓점은 } 8\\text{개이나, 한 꼭짓점을 잘라내면 그 자리에 삼각형 단면의 꼭짓점 } 3\\text{개가 생긴다.} \\ &\\implies a = 8 - 1 + 3 = 10 \\ &\\text{원래 모서리는 } 12\\text{개이고, 잘린 단면에 새로운 모서리 } 3\\text{개가 추가된다.} \\ &\\implies b = 12 + 3 = 15 \\ &a + b = 10 + 15 = 25 \\end{aligned}$$ 따라서 $a + b = 25$이므로 정답은 ①이다.",
+    "solution": "잘라낸 뒤의 꼭짓점과 모서리의 개수를 원래 직육면체와 비교하여 $a$와 $b$를 구한다.\n직육면체의 꼭짓점은 $8$개, 모서리는 $12$개이다.\n한 꼭짓점을 평면으로 잘라내면 그 꼭짓점 $1$개가 없어지고, 삼각형 단면의 꼭짓점 $3$개가 새로 생긴다.\n$$a = 8 - 1 + 3 = 10$$\n잘린 꼭짓점에 모이던 모서리 $3$개는 길이만 짧아져 그대로 남고, 삼각형 단면에 모서리 $3$개가 새로 생긴다.\n$$b = 12 + 3 = 15$$\n$$a + b = 10 + 15 = 25$$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -70,7 +70,7 @@ window.questionBank = [
     "points": 3,
     "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
     "templateKey": "TPL_M1_BASIC_GEOMETRY_JUDGMENT_NOTATION_VALIDITY",
-    "solution": "직선은 두 점을 어떤 순서나 쌍으로 잡아도 양쪽으로 한없이 뻗어나가는 동일한 직선을 나타낸다. $$\\begin{aligned} &\\text{네 점 } A, B, C, D\\text{가 모두 한 직선 } l\\text{ 위에 있으므로} \\ &\\overleftrightarrow{AB}\\text{와 } \\overleftrightarrow{CD}\\text{는 모두 직선 } l \\text{ 전체를 나타내어 서로 같다.} \\ &\\text{반면 선분이나 반직선은 끝점이나 시작점의 제약이 있으므로 직선 전체와 같을 수 없다.} \\end{aligned}$$ 따라서 서로 같은 것은 ④이다.",
+    "solution": "네 점이 모두 한 직선 위에 있을 때 두 점으로 나타내는 직선이 무엇인지 비교한다.\n네 점 $A, B, C, D$가 모두 직선 $l$ 위에 있으므로 직선 $AB$는 직선 $l$ 전체와 같다.\n$$\\overleftrightarrow{AB} = l$$\n같은 이유로 직선 $CD$도 직선 $l$ 전체와 같다.\n$$\\overleftrightarrow{CD} = l$$\n$$\\overleftrightarrow{AB} = \\overleftrightarrow{CD}$$\n선분 $\\overline{AB}$와 $\\overline{CD}$는 양 끝 점이 정해져 있다.\n반직선 $\\overrightarrow{BC}$와 $\\overrightarrow{CB}$는 시작점이 정해져 있다.\n그러므로 이것들은 양쪽으로 한없이 뻗는 직선 $l$ 전체와 같을 수 없다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -107,7 +107,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
     "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_MULTIPLE_MIDPOINTS",
-    "solution": "선분의 중점 성질을 이용하여 선분의 길이를 미지수로 표현하고 방정식을 세운다. $$\\begin{aligned} &\\overline{BC} = x\\,\\mathrm{cm}\\text{라 하면 } \\overline{AB} = 4x\\,\\mathrm{cm}\\text{이다.} \\ &\\text{점 } M\\text{은 선분 } AB\\text{의 중점이므로 } \\overline{MB} = \\dfrac{1}{2}\\overline{AB} = 2x\\,\\mathrm{cm} \\ &\\text{점 } N\\text{은 선분 } BC\\text{의 중점이므로 } \\overline{BN} = \\dfrac{1}{2}\\overline{BC} = 0.5x\\,\\mathrm{cm} \\ &\\overline{MN} = \\overline{MB} + \\overline{BN} = 2x + 0.5x = 2.5x\\,\\mathrm{cm} \\ &2.5x = 30 \\implies \\dfrac{5}{2}x = 30 \\implies x = 12 \\ &\\overline{AB} = 4x = 4 \\times 12 = 48\\,\\mathrm{cm} \\end{aligned}$$ 따라서 선분 $AB$의 길이는 $48\\,\\mathrm{cm}$이므로 정답은 ③이다.",
+    "solution": "선분 $BC$의 길이를 $x\\,\\mathrm{cm}$로 놓고 중점을 이용해 $\\overline{MN}$을 $x$로 나타낸다.\n$$\\overline{AB} = 4\\overline{BC} = 4x\\,\\mathrm{cm}$$\n점 $M$은 선분 $AB$의 중점이므로\n$$\\overline{MB} = \\dfrac{1}{2}\\overline{AB} = 2x\\,\\mathrm{cm}$$\n점 $N$은 선분 $BC$의 중점이므로\n$$\\overline{BN} = \\dfrac{1}{2}\\overline{BC} = 0.5x\\,\\mathrm{cm}$$\n점의 순서가 $A$, $M$, $B$, $N$, $C$이므로 점 $B$는 $M$과 $N$ 사이에 있다.\n$$\\overline{MN} = \\overline{MB} + \\overline{BN} = 2x + 0.5x = 2.5x\\,\\mathrm{cm}$$\n$\\overline{MN} = 30\\,\\mathrm{cm}$이므로\n$$\\begin{aligned} 2.5x &= 30 \\\\ \\dfrac{5}{2}x &= 30 \\\\ x &= 12 \\end{aligned}$$\n$$\\overline{AB} = 4x = 4 \\times 12 = 48\\,\\mathrm{cm}$$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -144,7 +144,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
     "templateKey": "TPL_M1_PERPENDICULAR_BISECTOR_PROPERTIES",
-    "solution": "수직이등분선과 수선의 발, 점과 직선 사이의 거리의 정의를 적용한다. $$\\begin{aligned} &\\text{직선 } l\\text{이 선분 } AB\\text{의 수직이등분선이므로 } l \\perp \\overline{AB}\\text{이고 점 } M\\text{은 선분 } AB\\text{의 중점이다.} \\ &\\text{ㄱ. } l \\perp \\overline{AB}\\text{이므로 참이다.} \\ &\\text{ㄴ. } \\overline{AM}\\text{은 선분 } AB\\text{의 절반이지만, 점 } P\\text{는 직선 } l \\text{ 위의 임의의 점이므로 } \\overline{PM}\\text{과 항상 같지 않다. (거짓)} \\ &\\text{ㄷ. } \\overline{PM} \\perp \\overline{AB}\\text{이므로 점 } P\\text{에서 직선 } AB\\text{에 내린 수선의 발은 교점 } M\\text{이다. (참)} \\ &\\text{ㄹ. 점과 직선 사이의 거리는 그 점에서 직선에 내린 수선의 길이이므로 } \\overline{PM}\\text{의 길이이다. (참)} \\end{aligned}$$ 따라서 옳은 것은 ㄱ, ㄷ, ㄹ이므로 정답은 ④이다.",
+    "solution": "수직이등분선의 뜻과 수선의 발, 점과 직선 사이의 거리의 뜻을 보기마다 확인한다.\n직선 $l$이 선분 $AB$의 수직이등분선이므로 $l$은 선분 $AB$에 수직이고, 점 $M$은 선분 $AB$의 중점이다.\nㄱ. 수직이등분선은 선분 $AB$에 수직이므로 옳다.\nㄴ. $\\overline{AM}$은 $\\overline{AB}$의 절반으로 일정하지만 $\\overline{PM}$은 점 $P$의 위치에 따라 변하므로 두 길이가 항상 같지는 않다. (거짓)\nㄷ. $\\overline{PM}$은 직선 $AB$에 수직이므로 점 $P$에서 직선 $AB$에 내린 수선의 발은 교점 $M$이다. (참)\nㄹ. 점과 직선 사이의 거리는 그 점에서 직선에 내린 수선의 길이이므로 $\\overline{PM}$의 길이와 같다. (참)\n따라서 옳은 것은 ㄱ, ㄷ, ㄹ이므로 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -183,7 +183,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_SYSTEM",
-    "solution": "점 $O$가 선분 $AD$, $BE$의 내부에 있고 반직선 $OB$가 $\\angle AOC$의 내부에 놓인다는 조건과 수직, 맞꼭지각, 평각의 성질로 각을 구한다. $$\\begin{aligned} &\\angle BOC = x^\\circ\\text{라 하면, } OC \\perp AD\\text{이므로 } \\angle AOC = 90^\\circ\\text{이다.} \\ &\\angle AOB = \\angle AOC - \\angle BOC = 90^\\circ - x^\\circ \\ &\\angle DOE\\text{와 } \\angle AOB\\text{는 맞꼭지각이므로 크기가 같다.} \\ &\\angle DOE = \\angle AOB = 90^\\circ - x^\\circ \\ &\\angle DOE = 4\\angle BOC\\text{이므로 } 90 - x = 4x \\implies 5x = 90 \\implies x = 18 \\ &\\angle AOB = 90^\\circ - 18^\\circ = 72^\\circ \\ &\\text{점 } O\\text{에서 직선 } BE\\text{는 평각(}180^\\circ\\text{)을 이루므로} \\ &\\angle AOE = 180^\\circ - \\angle AOB = 180^\\circ - 72^\\circ = 108^\\circ \\end{aligned}$$ 따라서 $\\angle AOE$의 크기는 $108^\\circ$이므로 정답은 ③이다.",
+    "solution": "$\\angle BOC$의 크기를 $x^\\circ$라 놓고 수직, 맞꼭지각, 평각의 성질로 $\\angle AOE$의 크기를 구한다.\n$OC \\perp AD$이므로\n$$\\angle AOC = 90^\\circ$$\n반직선 $OB$가 $\\angle AOC$의 내부에 있으므로\n$$\\angle AOB = \\angle AOC - \\angle BOC = 90^\\circ - x^\\circ$$\n$\\angle DOE$와 $\\angle AOB$는 맞꼭지각이므로\n$$\\angle DOE = \\angle AOB = 90^\\circ - x^\\circ$$\n$\\angle DOE = 4\\angle BOC$이므로\n$$\\begin{aligned} 90 - x &= 4x \\\\ 5x &= 90 \\\\ x &= 18 \\end{aligned}$$\n$$\\angle AOB = 90^\\circ - 18^\\circ = 72^\\circ$$\n점 $O$가 선분 $BE$의 내부에 있으므로 반직선 $OB$와 $OE$는 반대 방향이고, $\\angle AOB$와 $\\angle AOE$를 합하면 평각이 된다.\n$$\\angle AOE = 180^\\circ - \\angle AOB = 180^\\circ - 72^\\circ = 108^\\circ$$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -220,7 +220,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_BASIC_GEOMETRY_JUDGMENT",
     "templateKey": "TPL_M1_SPATIAL_LINE_RELATIONS_LOGIC",
-    "solution": "공간에서 두 직선의 위치 관계(한 점 만남, 평행, 꼬인 위치)와 평면의 결정 조건을 대조한다. $$\\begin{aligned} &\\text{ㄱ. 꼬인 위치에 있는 두 직선은 한 평면 위에 있지 않고 만나지도 않는 위치 관계이다. (거짓)} \\ &\\text{ㄴ. 한 점에서 만나는 서로 다른 두 직선은 오직 하나의 평면을 결정한다. (참)} \\ &\\text{ㄷ. 공간에서 서로 만나지 않는 두 직선은 평행하거나 꼬인 위치에 있을 수 있으므로 반드시 평행한 것은 아니다. (거짓)} \\ &\\text{ㄹ. 평행한 두 직선은 한 평면 위에 위치하며 서로 만나지 않는다. (참)} \\end{aligned}$$ 따라서 옳은 것은 ㄴ, ㄹ이므로 정답은 ⑤이다.",
+    "solution": "공간에서 두 직선의 위치 관계와 평면이 결정되는 조건을 보기마다 확인한다.\nㄱ. 꼬인 위치에 있는 두 직선은 한 평면 위에 있지 않고 만나지도 않으므로 한 평면 위에 있다는 설명은 옳지 않다. (거짓)\nㄴ. 한 점에서 만나는 서로 다른 두 직선은 오직 하나의 평면을 결정한다. (참)\nㄷ. 서로 만나지 않는 두 직선은 평행하거나 꼬인 위치에 있을 수 있으므로 반드시 평행한 것은 아니다. (거짓)\nㄹ. 서로 평행한 두 직선은 한 평면 위에 있고 서로 만나지 않는다. (참)\n따라서 옳은 것은 ㄴ, ㄹ이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -259,7 +259,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_SKEW_PERPENDICULAR_COUNT",
-    "solution": "정육면체에서 기준 모서리와 다른 모서리들의 공간적 위치 관계를 계수한다. $$\\begin{aligned} &1); \\text{모서리 } AB\\text{와 꼬인 위치에 있는 모서리 } x: \\ &\\text{정육면체의 전체 } 12\\text{개의 모서리 중} \\ &\\cdot \\text{만나는 모서리: } AD, ; AE, ; BC, ; BF ; (4\\text{개}) \\ &\\cdot \\text{평행한 모서리: } CD, ; EF, ; GH ; (3\\text{개}) \\ &\\cdot \\text{자기 자신: } AB ; (1\\text{개}) \\ &\\implies x = 12 - (4 + 3 + 1) = 4 \\ &2); \\text{모서리 } AB\\text{와 한 점에서 수직으로 만나는 모서리 } y: \\ &\\text{정육면체의 모든 인접한 면은 수직이므로 점 } A\\text{에서 만나는 } AD, ; AE\\text{와} \\ &\\text{점 } B\\text{에서 만나는 } BC, ; BF\\text{는 모두 } AB\\text{와 수직이다.} \\ &\\implies y = 4 \\ &x + y = 4 + 4 = 8 \\end{aligned}$$ 따라서 $x + y = 8$이므로 정답은 ③이다.",
+    "solution": "정육면체의 $12$개 모서리를 모서리 $AB$와 만나는 것, 평행한 것, 꼬인 것으로 나누어 $x$와 $y$를 구한다.\n모서리 $AB$와 한 점에서 만나는 모서리는 점 $A$에서 만나는 $AD$, $AE$와 점 $B$에서 만나는 $BC$, $BF$로 $4$개이다.\n모서리 $AB$와 평행한 모서리는 $CD$, $EF$, $GH$로 $3$개이다.\n자기 자신인 $AB$ $1$개를 빼고 남은 모서리는 모서리 $AB$와 꼬인 위치에 있다.\n$$x = 12 - (4 + 3 + 1) = 4$$\n정육면체에서 한 모서리와 수직으로 만나는 모서리는 그 모서리의 양 끝 점에서 만나는 모서리이다.\n점 $A$에서 만나는 $AD$, $AE$와 점 $B$에서 만나는 $BC$, $BF$는 모두 모서리 $AB$와 수직이다.\n$$y = 4$$\n$$x + y = 4 + 4 = 8$$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -286,17 +286,17 @@ window.questionBank = [
     ],
     "content": "두 수평선 $l, m$은 서로 평행하고, $l$은 위쪽, $m$은 아래쪽에 있다. 점 $A$는 $l$ 위에, 점 $C$는 $m$ 위에 있으며, 점 $B$는 두 직선 사이에서 $A, C$보다 오른쪽에 있다. 선분 $AB$가 직선 $l$과 이루는 예각은 $25^\\circ$, 선분 $BC$가 직선 $m$과 이루는 예각은 $35^\\circ$이고, $x=\\angle ABC$이다. 또 서로 평행한 두 직선 $p, q$를 한 직선이 가로지를 때 생기는 같은 쪽 내각을 각각 $y, z$라 하자. $x+y+z$의 값은? [4점]",
     "choices": [
-      "$210^\\circ$",
-      "$220^\\circ$",
-      "$230^\\circ$",
-      "$250^\\circ$",
+      "$150^\\circ$",
+      "$180^\\circ$",
+      "$190^\\circ$",
+      "$215^\\circ$",
       "$240^\\circ$"
     ],
     "answer": "⑤",
     "points": 4,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ZIGZAG_AND_COINTERIOR",
-    "solution": "평행선에서 엇각의 합과 동측내각의 합 성질을 이용한다. $$\\begin{aligned} &1); l \\parallel m\\text{에서 꺾인 점을 지나며 } l, m\\text{에 평행한 보조선을 그으면 엇각에 의해} \\ &\\angle x = 25^\\circ + 35^\\circ = 60^\\circ \\ &2); p \\parallel q\\text{에서 같은 쪽에 있는 두 내각 } \\angle y\\text{와 } \\angle z\\text{의 크기의 합은 항상 } 180^\\circ\\text{이다.} \\ &\\angle y + \\angle z = 180^\\circ \\ &\\angle x + \\angle y + \\angle z = 60^\\circ + 180^\\circ = 240^\\circ \\end{aligned}$$ 따라서 $\\angle x + \\angle y + \\angle z = 240^\\circ$이므로 정답은 ⑤이다.",
+    "solution": "점 $B$를 지나 두 직선 $l$, $m$에 평행한 보조선을 그어 $\\angle x$를 구하고, 같은 쪽 내각의 성질로 $\\angle y + \\angle z$를 구한다.\n보조선 위쪽에서 $\\overline{AB}$가 이루는 각은 직선 $l$과 $\\overline{AB}$가 이루는 $25^\\circ$의 각과 엇각이므로 크기가 같다.\n보조선 아래쪽에서 $\\overline{BC}$가 이루는 각은 직선 $m$과 $\\overline{BC}$가 이루는 $35^\\circ$의 각과 엇각이므로 크기가 같다.\n$$\\angle x = 25^\\circ + 35^\\circ = 60^\\circ$$\n서로 평행한 두 직선 $p$, $q$를 한 직선이 가로지를 때 생기는 같은 쪽 내각의 크기의 합은 $180^\\circ$이다.\n$$\\angle y + \\angle z = 180^\\circ$$\n$$\\angle x + \\angle y + \\angle z = 60^\\circ + 180^\\circ = 240^\\circ$$\n따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -332,7 +332,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
     "templateKey": "TPL_M1_TRIANGLE_CONSTRUCTION_ORDER_VALIDITY",
-    "solution": "삼각형의 작도는 이미 결정된 점이나 선분을 기준으로 다음 구성 요소를 차례로 옮겨야 한다. $$\\begin{aligned} &\\text{①, ②, ③, ⑤는 기준이 되는 선분을 먼저 작도하여 점의 위치를 확정한 뒤 각이나 다른 변을 작도하므로 올바르다.} \\ &\\text{④의 경우 } \\angle B\\text{를 작도한 상태에서는 점 } C\\text{의 위치가 아직 정해지지 않았으므로,} \\ &\\quad \\text{점 } C\\text{의 위치 없이 } \\angle C\\text{를 먼저 작도할 수 없다.} \\ &\\quad \\text{따라서 선분 } BC\\text{를 먼저 긋거나, } \\angle B \\rightarrow \\overline{BC} \\rightarrow \\angle C\\text{의 순서로 작도해야 한다.} \\end{aligned}$$ 따라서 올바른 작도 순서가 아닌 것은 ④이다.",
+    "solution": "보기마다 처음 작도하는 요소로 점의 위치가 확정되는지 확인하여 올바른 작도 순서가 아닌 것을 찾는다.\n① $\\overline{AB} \\rightarrow \\angle A \\rightarrow \\overline{AC}$는 $\\overline{AB}$로 두 점 $A$, $B$를 정한 뒤 $\\angle A$와 $\\overline{AC}$로 점 $C$를 정하므로 올바르다.\n② $\\overline{BC} \\rightarrow \\angle B \\rightarrow \\angle C$는 $\\overline{BC}$로 두 점 $B$, $C$를 정한 뒤 두 각의 반직선이 만나는 점으로 $A$를 정하므로 올바르다.\n③ $\\overline{AB} \\rightarrow \\overline{BC} \\rightarrow \\overline{CA}$는 세 변을 차례로 그어 세 점의 위치가 모두 정해지므로 올바르다.\n④ $\\angle B \\rightarrow \\angle C \\rightarrow \\overline{BC}$는 $\\angle B$만 작도한 상태에서 점 $C$의 위치가 정해지지 않아, 점 $C$에 세워야 하는 $\\angle C$를 먼저 작도할 수 없으므로 올바르지 않다.\n점 $C$를 먼저 정하려면 $\\overline{BC}$를 먼저 그어야 한다.\n$$\\overline{BC} \\rightarrow \\angle B \\rightarrow \\angle C$$\n⑤ $\\overline{BC} \\rightarrow \\overline{AB} \\rightarrow \\overline{AC}$는 $\\overline{BC}$로 두 점 $B$, $C$를 정한 뒤 $\\overline{AB}$로 점 $A$를 정하므로 올바르다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -368,7 +368,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
     "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ANGLE_COPY_RADIUS_VS_CHORD",
-    "solution": "크기가 같은 각의 작도에서 보존되는 반지름과 선분의 길이를 대조한다. $$\\begin{aligned} &\\text{점 } O\\text{와 } P\\text{에서 같은 컴퍼스 폭으로 호를 그렸으므로 } \\overline{OA} = \\overline{OB} = \\overline{PC} = \\overline{PD}\\text{이다. (①, ② 참)} \\ &\\text{컴퍼스로 선분 } AB\\text{의 길이를 재어 점 } C\\text{에서 옮겼으므로 } \\overline{AB} = \\overline{CD}\\text{이다. (③ 참)} \\ &\\text{두 각의 크기가 같도록 작도하였으므로 } \\angle AOB = \\angle CPD\\text{이다. (④ 참)} \\ &\\text{호의 반지름 } \\overline{OA}\\text{와 두 점 사이의 거리 } \\overline{AB}\\text{는 각이 } 60^\\circ\\text{일 때만 같고 일반적인 각에서는 같지 않다. (거짓)} \\end{aligned}$$ 따라서 항상 옳다고 할 수 없는 것은 ⑤이다.",
+    "solution": "작도 과정에서 컴퍼스로 옮긴 길이를 정리하고 두 삼각형의 합동을 이용하여 보기마다 항상 옳은지 확인한다.\n점 $O$를 중심으로 그린 호 위의 두 점 $A$, $B$까지의 거리는 반지름으로 같다.\n$$\\overline{OA} = \\overline{OB}$$\n① 두 점 $A$, $B$가 같은 호 위에 있으므로 $\\overline{OA} = \\overline{OB}$이고, 이는 항상 옳다.\n점 $P$를 중심으로 그린 호도 같은 컴퍼스 폭으로 그렸다.\n$$\\overline{PC} = \\overline{PD} = \\overline{OA}$$\n② 호의 반지름이 같으므로 $\\overline{OA} = \\overline{PC}$이고, 이는 항상 옳다.\n③ 컴퍼스로 $\\overline{AB}$의 길이를 재어 점 $C$를 중심으로 옮겨 점 $D$를 정했으므로 $\\overline{AB} = \\overline{CD}$이고, 이는 항상 옳다.\n④ 두 삼각형 $OAB$와 $PCD$에서 세 쌍의 변의 길이가 각각 같다.\n$$\\overline{OA} = \\overline{PC}, \\quad \\overline{OB} = \\overline{PD}, \\quad \\overline{AB} = \\overline{CD}$$\n세 변의 길이가 같으므로 두 삼각형은 합동이고, 대응각인 $\\angle AOB$와 $\\angle CPD$의 크기도 같다.\n④는 항상 옳다.\n⑤ $\\overline{OA}$는 호의 반지름이고 $\\overline{AB}$는 호 위의 두 점 사이의 거리이다.\n두 길이는 $\\angle XOY = 60^\\circ$일 때만 같고, 일반적인 각에서는 같지 않다.\n⑤는 항상 옳다고 할 수 없다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -404,7 +404,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_TRIANGLE_DETERMINATION_FAILURE_CASES",
-    "solution": "삼각형의 형성 조건과 유일 결정 조건을 점검한다. $$\\begin{aligned} &\\text{ㄱ. 가장 긴 변 } 10\\text{이 나머지 두 변의 합 } 4 + 5 = 9\\text{보다 크므로 삼각형 자체가 만들어지지 않는다. (결정되지 않음)} \\ &\\text{ㄴ. 두 변과 그 끼인각이 주어졌으므로 } \\mathrm{SAS}\\text{ 조건에 의해 오직 하나로 결정된다.} \\ &\\text{ㄷ. 한 변과 그 양 끝 각이 주어졌으므로 } \\mathrm{ASA}\\text{ 조건에 의해 오직 하나로 결정된다.} \\ &\\text{ㄹ. 세 각의 크기만 주어지면 모양은 같으나 크기가 다른 삼각형이 무수히 많다. (결정되지 않음)} \\end{aligned}$$ 따라서 오직 하나로 결정되지 않는 것은 ㄱ, ㄹ이므로 정답은 ②이다.",
+    "solution": "ㄱ부터 ㄹ까지 삼각형이 실제로 만들어지는지와 크기까지 하나로 정해지는지를 차례로 확인한다.\nㄱ. 가장 긴 변의 길이 $10\\,\\mathrm{cm}$가 나머지 두 변의 길이의 합 $4 + 5 = 9\\,\\mathrm{cm}$보다 길어 삼각형이 만들어지지 않으므로 결정되지 않는다.\nㄴ. 두 변의 길이와 그 끼인각의 크기가 주어졌으므로 두 변이 이루는 각을 그대로 따라 삼각형이 하나로 결정된다.\nㄷ. 한 변의 길이와 그 양 끝 각의 크기가 주어졌으므로 두 각의 반직선이 만나는 점이 하나로 정해져 삼각형이 하나로 결정된다.\nㄹ. 세 각의 크기만 주어지면 모양은 같고 크기만 다른 삼각형을 무수히 많이 그릴 수 있으므로 결정되지 않는다.\n오직 하나로 결정되지 않는 것은 ㄱ, ㄹ이다.\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -441,7 +441,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_MISSING_CONDITION",
-    "solution": "이미 주어진 변 $\\overline{BC} = \\overline{EF}$와 각 $\\angle C = \\angle F$에 대하여 합동 조건을 완성한다. $$\\begin{aligned} &\\angle C\\text{와 } \\angle F\\text{를 끼인각으로 만들려면 각을 이루는 다른 변인 } \\overline{AC}\\text{와 } \\overline{DF}\\text{의 길이가 같아야 한다.} \\ &\\overline{AC} = \\overline{DF}\\text{가 주어지면 두 쌍의 대응변의 길이가 같고 그 끼인각의 크기가 같으므로} \\ &\\triangle ABC \\equiv \\triangle DEF ; (\\mathrm{SAS}\\text{ 합동})\\text{이 성립한다.} \\ &\\text{반면 } \\overline{AB}=\\overline{DE}\\text{는 주어진 각이 끼인각이 아니므로 합동을 보장하지 못한다.} \\end{aligned}$$ 따라서 올바른 조건은 ①이다.",
+    "solution": "주어진 $\\overline{BC} = \\overline{EF}$와 $\\angle C = \\angle F$에 보기의 조건을 더해 어떤 합동 조건이 완성되는지 확인한다.\n① $\\overline{AC} = \\overline{DF}$이면 $\\angle C$가 두 변 $\\overline{BC}$, $\\overline{AC}$ 사이의 끼인각이 된다.\n$$\\overline{BC} = \\overline{EF}, \\quad \\angle C = \\angle F, \\quad \\overline{AC} = \\overline{DF}$$\n두 변의 길이와 그 끼인각의 크기가 같으므로 두 삼각형은 합동이다.\n①은 조건을 완성하므로 옳다.\n② $\\overline{AB} = \\overline{DE}$는 주어진 각 $\\angle C$의 반대쪽 변의 길이이므로 두 변과 끼인각이 아닌 각이 주어진 경우가 되어 합동이 보장되지 않는다.\n③ $\\overline{AB}$의 대응변은 $\\overline{DF}$가 아니라 $\\overline{DE}$이므로 $\\overline{AB} = \\overline{DF}$는 대응변이 같은 조건이 아니다.\n④ $\\angle B$의 대응각은 $\\angle D$가 아니라 $\\angle E$이므로 $\\angle B = \\angle D$는 대응각이 같은 조건이 아니다.\n⑤ $\\overline{BC}$의 대응변은 $\\overline{DE}$가 아니라 $\\overline{EF}$이므로 $\\overline{BC} = \\overline{DE}$는 대응변이 같은 조건이 아니다.\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -479,7 +479,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE",
-    "solution": "합동인 두 삼각형에서 대응각의 크기와 대응변의 길이는 각각 같다. $$\\begin{aligned} &\\triangle ABC \\equiv \\triangle DEF\\text{이므로 대응점은 } A\\text{와 } D, ; B\\text{와 } E, ; C\\text{와 } F\\text{이다.} \\ &\\angle C\\text{의 대응각은 } \\angle F\\text{이므로 } \\angle C = \\angle F = 45^\\circ\\text{이다.} \\ &\\triangle ABC\\text{에서 세 내각의 합은 } 180^\\circ\\text{이므로} \\ &a = \\angle A = 180^\\circ - (\\angle B + \\angle C) = 180^\\circ - (65^\\circ + 45^\\circ) = 70 \\implies a = 70 \\ &\\overline{EF}\\text{의 대응변은 } \\overline{BC}\\text{이므로} \\ &b = \\overline{EF} = \\overline{BC} = 7 \\implies b = 7 \\ &a + b = 70 + 7 = 77 \\end{aligned}$$ 따라서 $a + b = 77$이므로 정답은 ④이다.",
+    "solution": "합동인 두 삼각형에서 대응점을 찾아 $\\angle A$와 $\\overline{EF}$를 각각 구한 뒤 $a + b$를 계산한다.\n$\\triangle ABC \\equiv \\triangle DEF$이므로 꼭짓점의 대응은 $A$와 $D$, $B$와 $E$, $C$와 $F$이다.\n$\\angle C$의 대응각은 $\\angle F$이다.\n$$\\angle C = \\angle F = 45^\\circ$$\n$\\triangle ABC$에서 세 내각의 크기의 합은 $180^\\circ$이다.\n$$\\begin{aligned} \\angle A &= 180^\\circ - (\\angle B + \\angle C) \\\\ &= 180^\\circ - (65^\\circ + 45^\\circ) \\\\ &= 70^\\circ \\end{aligned}$$\n따라서 $a = 70$이다.\n$\\overline{EF}$의 대응변은 $\\overline{BC}$이다.\n$$b = \\overline{EF} = \\overline{BC} = 7$$\n따라서 $b = 7$이다.\n$$a + b = 70 + 7 = 77$$\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -518,7 +518,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_POLYGON_COMPOSITE_ISOSCELES_ANGLES",
-    "solution": "정사각형과 정삼각형의 변의 길이가 같음을 이용하여 이등변삼각형의 밑각을 구한다. $$\\begin{aligned} &\\text{정사각형 } ABCD\\text{에서 } \\overline{AB} = \\overline{BC}\\text{이고, 정삼각형 } EBC\\text{에서 } \\overline{BE} = \\overline{BC}\\text{이므로} \\ &\\overline{AB} = \\overline{BE}\\text{가 성립하여 } \\triangle ABE\\text{는 이등변삼각형이다.} \\ &\\angle ABE = \\angle ABC + \\angle EBC = 90^\\circ + 60^\\circ = 150^\\circ \\ &\\triangle ABE\\text{에서 두 밑각의 크기는 같으므로} \\ &\\angle EAB = \\dfrac{180^\\circ - 150^\\circ}{2} = 15^\\circ \\ &\\text{마찬가지로 } \\overline{CD} = \\overline{CE}\\text{이므로 } \\triangle CDE\\text{도 이등변삼각형이고 } \\angle DCE = 150^\\circ\\text{이다.} \\ &\\angle DEC = \\dfrac{180^\\circ - 150^\\circ}{2} = 15^\\circ \\ &\\angle EAB + \\angle DEC = 15^\\circ + 15^\\circ = 30^\\circ \\end{aligned}$$ 따라서 $\\angle EAB + \\angle DEC = 30^\\circ$이므로 정답은 ③이다.",
+    "solution": "정사각형과 정삼각형의 변의 길이가 같음을 이용해 $\\triangle ABE$와 $\\triangle CDE$가 이등변삼각형임을 보이고 두 각을 각각 구한다.\n정사각형 $ABCD$에서 $\\overline{AB} = \\overline{BC}$이고, 정삼각형 $EBC$에서 $\\overline{BE} = \\overline{BC}$이다.\n$$\\overline{AB} = \\overline{BE}$$\n따라서 $\\triangle ABE$는 두 변의 길이가 같은 이등변삼각형이다.\n점 $B$에서 $\\angle ABE$는 정사각형의 내각 $\\angle ABC$와 정삼각형의 내각 $\\angle EBC$의 합이다.\n$$\\angle ABE = 90^\\circ + 60^\\circ = 150^\\circ$$\n$\\triangle ABE$에서 두 밑각의 크기는 같다.\n$$\\angle EAB = \\dfrac{180^\\circ - 150^\\circ}{2} = 15^\\circ$$\n같은 방법으로 정사각형의 변 $\\overline{CD}$와 정삼각형의 변 $\\overline{CE}$의 길이가 같다.\n$$\\overline{CD} = \\overline{CE}$$\n따라서 $\\triangle CDE$도 이등변삼각형이고, 점 $C$에서 두 내각의 합은 $\\angle DCE = 150^\\circ$이다.\n$$\\angle DCE = 90^\\circ + 60^\\circ = 150^\\circ$$\n$$\\angle DEC = \\dfrac{180^\\circ - 150^\\circ}{2} = 15^\\circ$$\n두 각의 크기를 더한다.\n$$\\angle EAB + \\angle DEC = 15^\\circ + 15^\\circ = 30^\\circ$$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -554,7 +554,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_TRIANGLE_INTERIOR_ANGLE_SUM_COMPOSITE",
-    "solution": "삼각형의 세 내각의 크기의 합이 $180^\\circ$임을 각각 적용한다. $$\\begin{aligned} &\\text{왼쪽 삼각형에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle a + \\angle b + 35^\\circ = 180^\\circ \\implies \\angle a + \\angle b = 145^\\circ \\ &\\text{오른쪽 삼각형에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle c + \\angle d + 25^\\circ = 180^\\circ \\implies \\angle c + \\angle d = 155^\\circ \\ &\\angle a + \\angle b + \\angle c + \\angle d = 145^\\circ + 155^\\circ = 300^\\circ \\end{aligned}$$ 따라서 $\\angle a + \\angle b + \\angle c + \\angle d = 300^\\circ$이므로 정답은 ①이다.",
+    "solution": "왼쪽 삼각형과 오른쪽 삼각형에 각각 세 내각의 크기의 합이 $180^\\circ$임을 적용해 두 내각의 합을 구한 뒤 모두 더한다.\n왼쪽 삼각형의 세 내각은 $35^\\circ$, $\\angle a$, $\\angle b$이다.\n$$\\angle a + \\angle b + 35^\\circ = 180^\\circ$$\n$$\\angle a + \\angle b = 180^\\circ - 35^\\circ = 145^\\circ$$\n오른쪽 삼각형의 세 내각은 $25^\\circ$, $\\angle c$, $\\angle d$이다.\n$$\\angle c + \\angle d + 25^\\circ = 180^\\circ$$\n$$\\angle c + \\angle d = 180^\\circ - 25^\\circ = 155^\\circ$$\n네 각의 크기를 모두 더한다.\n$$\\angle a + \\angle b + \\angle c + \\angle d = 145^\\circ + 155^\\circ = 300^\\circ$$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -592,7 +592,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_REGULAR_POLYGON_INTERIOR_EXTERIOR_RATIO",
-    "solution": "정다각형의 한 꼭짓점에서 내각과 외각의 크기의 합은 $180^\\circ$이고, 외각의 총합은 $360^\\circ$이다. $$\\begin{aligned} &\\text{한 내각과 한 외각의 크기의 비가 } 3 : 1\\text{이므로 외각의 크기를 } x^\\circ\\text{라 하면 내각은 } 3x^\\circ\\text{이다.} \\ &3x + x = 180 \\implies 4x = 180 \\implies x = 45 \\ &\\text{따라서 한 외각의 크기는 } 45^\\circ\\text{이다.} \\ &\\text{모든 다각형의 외각의 크기의 합은 } 360^\\circ\\text{이므로 변의 수 } n\\text{은} \\ &n = \\dfrac{360^\\circ}{45^\\circ} = 8 \\end{aligned}$$ 따라서 구하는 정다각형은 정팔각형이므로 정답은 ②이다.",
+    "solution": "한 내각과 한 외각의 크기의 비로 한 외각의 크기를 구한 뒤, 외각의 크기의 합 $360^\\circ$로 변의 수를 구한다.\n한 꼭짓점에서 내각과 외각의 크기의 합은 $180^\\circ$이다.\n외각의 크기를 $x^\\circ$라 하면 내각의 크기는 $3x^\\circ$이다.\n$$3x + x = 180$$\n$$4x = 180$$\n$$x = 45$$\n따라서 한 외각의 크기는 $45^\\circ$이다.\n모든 다각형에서 외각의 크기의 합은 $360^\\circ$이다.\n변의 수 $n$은 외각의 크기의 합을 한 외각의 크기로 나누어 구한다.\n$$n = \\dfrac{360^\\circ}{45^\\circ} = 8$$\n변의 수가 $8$인 정다각형은 정팔각형이다.\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -630,7 +630,7 @@ window.questionBank = [
     "points": 4,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ISOSCELES_LINK",
-    "solution": "삼각형의 내각의 합과 외각, 평행선의 엇각, 이등변삼각형의 성질을 차례로 적용한다. $$\\begin{aligned} &\\triangle ABC\\text{에서 세 내각의 합은 } 180^\\circ\\text{이므로} \\ &\\angle BAC = 180^\\circ - (30^\\circ + 40^\\circ) = 110^\\circ \\ &\\text{점 } B, A, D\\text{가 한 직선 위에 있으므로} \\ &\\angle DAC = 180^\\circ - 110^\\circ = 70^\\circ \\ &DE \\parallel AC\\text{이므로 엇각의 크기가 같아} \\ &\\angle ADE = \\angle DAC = 70^\\circ \\ &\\overline{DA} = \\overline{DE}\\text{이므로 } \\triangle ADE\\text{는 이등변삼각형이고, 두 밑각의 크기는 서로 같다.} \\ &\\angle AED = \\dfrac{180^\\circ - 70^\\circ}{2} = 55^\\circ \\end{aligned}$$ 따라서 $\\angle AED = 55^\\circ$이므로 정답은 ②이다.",
+    "solution": "삼각형의 내각의 크기의 합과 평행선의 엇각, 이등변삼각형의 성질을 차례로 이용하여 $\\angle AED$의 크기를 구한다.\n삼각형 $ABC$에서 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\n\\begin{aligned}\n\\angle BAC &= 180^\\circ - (30^\\circ + 40^\\circ) \\\\\n&= 180^\\circ - 70^\\circ \\\\\n&= 110^\\circ\n\\end{aligned}\n$$\n점 $B, A, D$가 순서대로 한 직선 위에 있으므로 $\\angle DAC$는 $\\angle BAC$와 이웃한 각이다.\n$$\n\\begin{aligned}\n\\angle DAC &= 180^\\circ - \\angle BAC \\\\\n&= 180^\\circ - 110^\\circ \\\\\n&= 70^\\circ\n\\end{aligned}\n$$\n선분 $DE$가 변 $AC$와 평행하므로 엇각의 크기는 서로 같다.\n$$\\angle ADE = \\angle DAC = 70^\\circ$$\n변 $\\overline{DA}$와 변 $\\overline{DE}$의 길이가 같으므로 삼각형 $ADE$는 이등변삼각형이고, 두 밑각의 크기는 서로 같다.\n$$\n\\begin{aligned}\n\\angle AED &= \\dfrac{180^\\circ - \\angle ADE}{2} \\\\\n&= \\dfrac{180^\\circ - 70^\\circ}{2} \\\\\n&= \\dfrac{110^\\circ}{2} \\\\\n&= 55^\\circ\n\\end{aligned}\n$$\n따라서 $\\angle AED = 55^\\circ$이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -658,16 +658,16 @@ window.questionBank = [
     "content": "어떤 다각형의 한 꼭짓점에서 그을 수 있는 대각선을 포함한 모든 대각선의 총 개수가 $35$개일 때, 이 다각형의 내각의 크기의 합은? [4점]",
     "choices": [
       "$1440^\\circ$",
-      "$1260^\\circ$",
-      "$1080^\\circ$",
       "$1620^\\circ$",
-      "$1800^\\circ$"
+      "$1800^\\circ$",
+      "$2160^\\circ$",
+      "$2520^\\circ$"
     ],
     "answer": "①",
     "points": 4,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_DIAGONAL_COUNT_TO_INTERIOR_SUM",
-    "solution": "다각형의 대각선의 총 개수 공식을 이용하여 변의 수를 구한 뒤 내각의 총합을 계산한다. $$\\begin{aligned} &n\\text{각형의 대각선의 총 개수는 } \\dfrac{n(n - 3)}{2}\\text{개이므로} \\ &\\dfrac{n(n - 3)}{2} = 35 \\implies n(n - 3) = 70 \\ &n\\text{은 자연수이고 } 10 \\times 7 = 70\\text{이므로 } n = 10\\text{이다.} \\ &\\text{따라서 이 다각형은 십각형이다.} \\ &10\\text{각형의 내각의 크기의 합은} \\ &(10 - 2) \\times 180^\\circ = 8 \\times 180^\\circ = 1440^\\circ \\end{aligned}$$ 따라서 내각의 크기의 합은 $1440^\\circ$이므로 정답은 ①이다.",
+    "solution": "다각형의 대각선의 총 개수 공식으로 변의 수를 구한 뒤 내각의 크기의 합을 계산한다.\n$n$각형의 대각선의 총 개수는 $\\dfrac{n(n-3)}{2}$개이므로\n$$\\dfrac{n(n-3)}{2} = 35$$\n양변에 $2$를 곱하면\n$$n(n-3) = 70$$\n$n$은 자연수이고 $n$과 $n-3$의 차는 $3$이므로, 곱이 $70$인 두 자연수 $10$과 $7$을 찾을 수 있다.\n$$n = 10$$\n따라서 이 다각형은 십각형이다.\n십각형의 내각의 크기의 합은\n$$\n\\begin{aligned}\n(10 - 2) \\times 180^\\circ &= 8 \\times 180^\\circ \\\\\n&= 1440^\\circ\n\\end{aligned}\n$$\n따라서 내각의 크기의 합은 $1440^\\circ$이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -703,7 +703,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
     "templateKey": "TPL_M1_CIRCULAR_POINTS_SEGMENT_COUNT",
-    "solution": "원 위의 서로 다른 점들은 어느 세 점도 한 직선 위에 있지 않으므로 두 점을 고르면 선분이 오직 하나씩 정해진다. $$\\begin{aligned} &10\\text{개의 점 중 서로 다른 두 점을 택하는 방법의 수는} \\ &\\dfrac{10 \\times 9}{2} = 45 \\end{aligned}$$ 따라서 그을 수 있는 서로 다른 선분의 총개수는 $45$개이므로 정답은 ⑤이다.",
+    "solution": "원 위의 $10$개의 점 중에서 서로 다른 두 점을 택하는 방법의 수를 구한다.\n원 위의 서로 다른 점은 어느 세 점도 한 직선 위에 있지 않으므로, 두 점을 택하면 선분이 오직 하나씩 정해진다.\n$10$개의 점 중 서로 다른 두 점을 택하는 방법의 수는\n$$\n\\begin{aligned}\n\\dfrac{10 \\times 9}{2} &= \\dfrac{90}{2} \\\\\n&= 45\n\\end{aligned}\n$$\n따라서 그을 수 있는 서로 다른 선분의 총개수는 $45$개이므로 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -739,7 +739,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_REGULAR_POLYGON_EXTERIOR_TURNING",
-    "solution": "정오각형의 한 외각의 크기와 평행선의 성질을 이용한다. $$\\begin{aligned} &\\text{정오각형의 한 외각의 크기는 } \\dfrac{360^\\circ}{5} = 72^\\circ\\text{이다.} \\ &\\text{아래쪽 변이 직선 } m\\text{과 이루는 예각이 } 24^\\circ\\text{이고, 변을 따라 꼭짓점 } 2\\text{개를 지날 때마다} \\ &\\text{변의 방향은 외각만큼 꺾이므로 방향의 총 변화량은 } 72^\\circ + 72^\\circ = 144^\\circ\\text{이다.} \\ &\\text{따라서 위쪽 변이 수평 방향과 이루는 각은} \\ &180^\\circ - (24^\\circ + 144^\\circ) = 180^\\circ - 168^\\circ = 12^\\circ \\ &l \\parallel m\\text{이므로 직선 } l\\text{과 이루는 각 } \\angle x\\text{도 이와 같다.} \\ &\\angle x = 12^\\circ \\end{aligned}$$ 따라서 $\\angle x = 12^\\circ$이므로 정답은 ②이다.",
+    "solution": "정오각형의 한 외각의 크기와 평행선의 성질을 이용하여 $x$의 크기를 구한다.\n정오각형의 한 외각의 크기는\n$$\\dfrac{360^\\circ}{5} = 72^\\circ$$\n꼭짓점 $A$에서 $C$까지 변을 따라가면 변의 방향이 꼭짓점 $B$와 $C$에서 외각만큼 두 번 꺾이므로 방향의 총 변화량은\n$$72^\\circ \\times 2 = 144^\\circ$$\n변 $AB$가 아래쪽 직선 $m$의 오른쪽 방향과 $24^\\circ$를 이루므로, 변 $CD$의 방향이 오른쪽 방향과 이루는 각은\n$$24^\\circ + 144^\\circ = 168^\\circ$$\n이 각은 둔각이므로 변 $CD$가 수평 방향과 이루는 예각은\n$$180^\\circ - 168^\\circ = 12^\\circ$$\n직선 $l$은 직선 $m$과 평행하므로 변 $CD$가 직선 $l$과 이루는 예각 $x$도 $12^\\circ$이다.\n따라서 $x = 12^\\circ$이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -769,7 +769,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_BOWTIE_TRIANGLES_INTERIOR_ANGLE",
-    "solution": "삼각형의 세 내각의 합과 맞꼭지각의 성질을 이용하여 각의 크기를 단계별로 구한다. $$\\begin{aligned} &\\text{[1단계: } \\triangle AOB\\text{에서 } \\angle AOB\\text{의 크기 구하기]} \\ &\\triangle AOB\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle AOB = 180^\\circ - (72^\\circ + 46^\\circ) = 180^\\circ - 118^\\circ = 62^\\circ \\ &\\text{[2단계: 맞꼭지각 } \\angle COD\\text{의 크기 구하기]} \\ &\\angle COD\\text{와 } \\angle AOB\\text{는 맞꼭지각이므로 그 크기가 같다.} \\ &\\angle COD = \\angle AOB = 62^\\circ \\ &\\text{[3단계: } \\triangle COD\\text{에서 } \\angle x\\text{의 크기 계산]} \\ &\\triangle COD\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle x = 180^\\circ - (\\angle COD + \\angle D) = 180^\\circ - (62^\\circ + 52^\\circ) = 180^\\circ - 114^\\circ = 66^\\circ \\end{aligned}$$ 따라서 $\\angle x = 66^\\circ$이다.",
+    "solution": "삼각형의 세 내각의 크기의 합과 맞꼭지각의 성질을 이용하여 $\\angle x$의 크기를 단계별로 구한다.\n[1단계] 삼각형 $AOB$에서 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\n\\begin{aligned}\n\\angle AOB &= 180^\\circ - (72^\\circ + 46^\\circ) \\\\\n&= 180^\\circ - 118^\\circ \\\\\n&= 62^\\circ\n\\end{aligned}\n$$\n[2단계] $\\angle COD$와 $\\angle AOB$는 맞꼭지각이므로 크기가 서로 같다.\n$$\\angle COD = \\angle AOB = 62^\\circ$$\n[3단계] 삼각형 $COD$에서 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\n\\begin{aligned}\n\\angle x &= 180^\\circ - (\\angle COD + \\angle D) \\\\\n&= 180^\\circ - (62^\\circ + 52^\\circ) \\\\\n&= 180^\\circ - 114^\\circ \\\\\n&= 66^\\circ\n\\end{aligned}\n$$\n따라서 $\\angle x = 66^\\circ$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -801,7 +801,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_ROTATION",
-    "solution": "두 정삼각형의 변의 길이와 $60^\\circ$ 각도를 이용하여 $\\mathrm{SAS}$ 합동을 증명한다. $$\\begin{aligned} &\\text{① } \\triangle ABE \\equiv \\triangle ADC \\ &\\text{② [합동 조건 증명]} \\ &\\triangle ABD\\text{가 정삼각형이므로 } \\overline{AB} = \\overline{AD}\\text{이고 } \\angle DAB = 60^\\circ\\text{이다.} \\ &\\triangle ACE\\text{가 정삼각형이므로 } \\overline{AE} = \\overline{AC}\\text{이고 } \\angle CAE = 60^\\circ\\text{이다.} \\ &\\text{또한 두 변 사이의 끼인각을 구하면} \\ &\\angle BAE = \\angle BAC + \\angle CAE = \\angle BAC + 60^\\circ \\ &\\angle DAC = \\angle DAB + \\angle BAC = 60^\\circ + \\angle BAC \\ &\\implies \\angle BAE = \\angle DAC \\ &\\text{따라서 } \\triangle ABE\\text{와 } \\triangle ADC\\text{에서} \\ &\\overline{AB} = \\overline{AD}, \\quad \\overline{AE} = \\overline{AC}, \\quad \\angle BAE = \\angle DAC \\ &\\text{두 쌍의 대응변의 길이가 각각 같고 그 끼인각의 크기가 같으므로} \\ &\\triangle ABE \\equiv \\triangle ADC ; (\\mathrm{SAS}\\text{ 합동})\\text{이다.} \\end{aligned}$$ 따라서 ① $\\triangle ADC$, ② $\\mathrm{SAS}$ 합동이다.",
+    "solution": "두 정삼각형의 변의 길이와 $60^\\circ$인 각을 이용하여 합동인 삼각형을 찾고 그 합동 조건을 설명한다.\n① 삼각형 $ABE$와 합동인 삼각형은 $\\triangle ADC$이다.\n② 합동 조건을 밝히기 위해 두 정삼각형의 변의 길이와 각의 크기를 먼저 확인한다.\n삼각형 $ABD$가 정삼각형이므로 변 $\\overline{AB}$와 변 $\\overline{AD}$의 길이가 같고, $\\angle DAB$의 크기는 $60^\\circ$이다.\n$$\\overline{AB} = \\overline{AD}$$\n삼각형 $ACE$가 정삼각형이므로 변 $\\overline{AE}$와 변 $\\overline{AC}$의 길이가 같고, $\\angle CAE$의 크기는 $60^\\circ$이다.\n$$\\overline{AE} = \\overline{AC}$$\n두 변 $\\overline{AB}$와 $\\overline{AE}$가 이루는 각과 두 변 $\\overline{AD}$와 $\\overline{AC}$가 이루는 각을 차례로 구하면\n$$\n\\begin{aligned}\n\\angle BAE &= \\angle BAC + \\angle CAE \\\\\n&= \\angle BAC + 60^\\circ\n\\end{aligned}\n$$\n$$\n\\begin{aligned}\n\\angle DAC &= \\angle DAB + \\angle BAC \\\\\n&= 60^\\circ + \\angle BAC\n\\end{aligned}\n$$\n두 각의 크기가 같다.\n$$\\angle BAE = \\angle DAC$$\n삼각형 $ABE$와 삼각형 $ADC$에서 대응하는 두 변의 길이가 각각 같고 그 끼인각의 크기가 같으므로\n$$\\overline{AB} = \\overline{AD}, \\quad \\overline{AE} = \\overline{AC}, \\quad \\angle BAE = \\angle DAC$$\n$$\\triangle ABE \\equiv \\triangle ADC \\quad (\\mathrm{SAS} \\text{ 합동})$$\n따라서 ① $\\triangle ADC$, ② $\\mathrm{SAS}$ 합동이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -833,7 +833,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_REGULAR_POLYGON_EXTERIOR_TO_DIAGONAL_TRIANGLES",
-    "solution": "정다각형의 외각의 총합 공식과 다각형의 대각선 및 분할 삼각형 공식을 적용한다. $$\\begin{aligned} &\\text{[1단계: 꼭짓점의 개수 } x\\text{ 구하기]} \\ &\\text{모든 다각형의 외각의 크기의 합은 } 360^\\circ\\text{이고 한 외각이 } 18^\\circ\\text{이므로} \\ &x = \\dfrac{360^\\circ}{18^\\circ} = 20 \\ &\\text{[2단계: 한 꼭짓점에서의 대각선 개수 } y\\text{ 구하기]} \\ &n\\text{각형의 한 꼭짓점에서 그을 수 있는 대각선의 개수는 } n - 3\\text{개이므로} \\ &y = 20 - 3 = 17 \\ &\\text{[3단계: 한 꼭짓점에서의 대각선으로 생기는 삼각형 개수 } z\\text{ 구하기]} \\ &n\\text{각형의 한 꼭짓점에서 대각선을 그어 만들어지는 삼각형의 개수는 } n - 2\\text{개이므로} \\ &z = 20 - 2 = 18 \\ &\\text{[4단계: } x + y + z\\text{의 값 계산]} \\ &x + y + z = 20 + 17 + 18 = 55 \\end{aligned}$$ 따라서 $x + y + z = 55$이다.",
+    "solution": "정다각형의 외각과 대각선, 삼각형 분할의 성질을 차례로 이용하여 $x + y + z$의 값을 구한다.\n[1단계] 모든 다각형의 외각의 크기의 합은 $360^\\circ$이고 한 외각의 크기가 $18^\\circ$이므로 꼭짓점의 개수 $x$는\n$$\n\\begin{aligned}\nx &= \\dfrac{360^\\circ}{18^\\circ} \\\\\n&= 20\n\\end{aligned}\n$$\n[2단계] $n$각형의 한 꼭짓점에서 그을 수 있는 대각선의 개수는 $n-3$개이므로\n$$\n\\begin{aligned}\ny &= 20 - 3 \\\\\n&= 17\n\\end{aligned}\n$$\n[3단계] $n$각형의 한 꼭짓점에서 대각선을 모두 그어 만들어지는 삼각형의 개수는 $n-2$개이므로\n$$\n\\begin{aligned}\nz &= 20 - 2 \\\\\n&= 18\n\\end{aligned}\n$$\n[4단계] $x, y, z$의 값을 더하면\n$$\n\\begin{aligned}\nx + y + z &= 20 + 17 + 18 \\\\\n&= 55\n\\end{aligned}\n$$\n따라서 $x + y + z = 55$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -864,7 +864,7 @@ window.questionBank = [
     "points": 5,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_PARTITIONED_POLYGONS_EDGE_INVERSION",
-    "solution": "대각선이 나누는 영역의 변의 개수 중복 계산 원리로 원래 다각형을 특정하고 내각 및 외각의 합을 구한다. $$\\begin{aligned} &\\text{[1단계: 원래 정다각형의 변의 수 } n\\text{ 구하기]} \\ &\\text{한 꼭짓점에서 그은 } 2\\text{개의 대각선은 인접한 두 영역에 공통변으로 포함되므로 각각 } 2\\text{번씩 계산된다.} \\ &\\text{나누어진 세 다각형(삼각형, 사각형, 육각형)의 변의 수의 총합은} \\ &3 + 4 + 6 = 13 \\ &\\text{원래 정다각형의 변의 수를 } n\\text{이라 하면} \\ &n + 2 \\times 2 = 13 \\implies n + 4 = 13 \\implies n = 9 \\ &\\text{따라서 이 정다각형은 정구각형이다.} \\ &\\text{[2단계: 내각의 크기의 합과 외각의 크기의 합 계산]} \\ &\\text{정구각형(}n = 9\\text{)의 내각의 크기의 합은} \\ &(9 - 2) \\times 180^\\circ = 7 \\times 180^\\circ = 1260^\\circ \\ &\\text{모든 다각형의 외각의 크기의 합은 항상 } 360^\\circ\\text{이다.} \\end{aligned}$$ 따라서 ① 정구각형, ② 내각의 합 $1260^\\circ$, 외각의 합 $360^\\circ$이다.",
+    "solution": "대각선이 나눈 세 다각형의 변의 수를 이용하여 원래 정다각형을 찾고, 내각의 크기의 합과 외각의 크기의 합을 각각 구한다.\n① 한 꼭짓점에서 그은 $2$개의 대각선은 나누어진 두 영역의 공통변이므로, 세 다각형의 변의 수를 셀 때 각각 $2$번씩 계산된다.\n삼각형, 사각형, 육각형의 변의 수의 합은\n$$3 + 4 + 6 = 13$$\n원래 정다각형의 변의 수를 $n$이라 하면\n$$\n\\begin{aligned}\nn + 2 \\times 2 &= 13 \\\\\nn + 4 &= 13 \\\\\nn &= 9\n\\end{aligned}\n$$\n따라서 이 정다각형은 정구각형이다.\n② 정구각형의 내각의 크기의 합은\n$$\n\\begin{aligned}\n(9 - 2) \\times 180^\\circ &= 7 \\times 180^\\circ \\\\\n&= 1260^\\circ\n\\end{aligned}\n$$\n모든 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다.\n따라서 ① 정구각형, ② 내각의 합 $1260^\\circ$, 외각의 합 $360^\\circ$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
