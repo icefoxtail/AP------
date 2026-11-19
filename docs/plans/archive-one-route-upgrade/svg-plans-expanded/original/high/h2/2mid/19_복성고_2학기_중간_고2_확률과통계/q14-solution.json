@@ -1,0 +1,100 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1/8"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "4"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -0.05,
+      0.62
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "4"
+      ],
+      "y": [
+        "1/8",
+        "1/2"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 0,
+        "y": "0"
+      },
+      {
+        "id": "P",
+        "x": "1",
+        "y": "1/8"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "1/2"
+      }
+    ],
+    "regions": [
+      {
+        "id": "part",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT"
+      }
+    ],
+    "axisScale": {
+      "x": 1,
+      "y": 8
+    },
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "P",
+        "B"
+      ]
+    }
+  },
+  "caption": "전체 넓이는 밑변 4, 높이 4a인 삼각형이므로 (1/2)×4×4a=1에서 a=1/8이고, 그림은 이 값으로 그렸다. 색칠한 0≤x≤1은 밑변 1, 높이 f(1)=1/8인 삼각형이다. 넓이는 (1/2)×1×(1/8)=1/16이다.",
+  "accessibilityDescription": "원점에서 오른쪽 위로 올라가는 직선 모양의 확률밀도함수 그래프이며 x=0부터 x=1까지 아래쪽이 삼각형으로 칠해져 있다.",
+  "newVisualInformation": [
+    "a=1/8일 때의 직선과 구간 [0, 1] 아래의 색칠한 삼각형이 보이고 밑변 1, 높이 1/8로 넓이 1/16이 확인된다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "14. 확률변수 $X$의 확률 밀도함수가 $f(x)=ax \\; (0 \\le x \\le 4)$일 때, $P(0 \\le X \\le 1)$를 구하면? [3.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
