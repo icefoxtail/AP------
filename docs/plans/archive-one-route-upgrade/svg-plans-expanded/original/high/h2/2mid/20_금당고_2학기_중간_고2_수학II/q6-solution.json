@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.5,
+      2.5
+    ],
+    "viewport": [
+      -2.5,
+      2.5,
+      -1.5,
+      9
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-2",
+          "coordinates": true
+        },
+        {
+          "id": "V",
+          "curveX": "-1/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "0",
+          "intercept": "2",
+          "label": "y=2"
+        },
+        {
+          "id": "l2",
+          "slope": "0",
+          "intercept": "6",
+          "label": "y=6"
+        }
+      ]
+    }
+  },
+  "caption": "x²+x+a=0은 x²+x=-a이므로 곡선 y=x²+x와 수평선 y=-a가 열린구간 (-2,2)에서 한 번 만나는 경우를 센다. 이 곡선은 A(-2,2)에서 꼭짓점 V(-1/2,-1/4)까지 내려가고 V에서 B(2,6)까지 올라간다. 수평선이 y=2(a=-2, 교점 x=-2는 제외되고 x=1만 포함)에서 y=6 직전까지 있으면 구간 안에서 한 번 만난다. 정수 a는 -5, -4, -3, -2이고 합은 -14이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 방정식 $x^2+x+a=0$이 열린구간 $(-2, 2)$에서 하나의 실근을 갖도록 하는 정수 $a$의 값들의 합은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "포물선의 양 끝 높이 2, 6과 꼭짓점 V를 보이고 수평선 y=-a와의 교점 개수를 읽게 한다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 (-2,2)에서 y=x²+x의 양 끝 높이 2, 6과 꼭짓점 V(-1/2,-1/4), 기준 수평선 y=2, y=6을 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선이 왼쪽 점 A에서 내려가 꼭짓점 V에서 가장 낮고 오른쪽 점 B로 올라가며, 점 A와 점 B의 높이에 수평선이 하나씩 그려진 그래프이다."
+}

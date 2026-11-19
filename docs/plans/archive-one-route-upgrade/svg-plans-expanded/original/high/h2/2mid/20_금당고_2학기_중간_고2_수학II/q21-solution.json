@@ -1,0 +1,53 @@
+{
+  "capability": "sqrt-affine-spike-v1",
+  "graphPlan": {
+    "family": "sqrt-affine",
+    "radicand": [
+      "0",
+      "2"
+    ],
+    "sourceDomain": {
+      "kind": "NATURAL_SQRT_AFFINE"
+    },
+    "domain": [
+      0,
+      12
+    ],
+    "viewport": [
+      -0.5,
+      12.5,
+      -0.5,
+      5.5
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 8,
+        "y": 4
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "8",
+        "4"
+      ]
+    }
+  },
+  "caption": "예: a=8일 때를 그린다. A(8,4)이고 x축에 내린 수선의 발은 B(8,0)이다. 원점 중심의 두 원의 반지름은 OB=8, OA=√(64+16)=4√5이고 차 f(8)=4√5-8은 약 0.94이다. 일반적으로 f(a)=√(a²+2a)-a=2/(√(1+2/a)+1)이고 a가 커질수록 1에 가까워진다. 따라서 (3/2)f(a)의 극한은 3/2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 곡선 $y=\\sqrt{2x}$ 위의 점 $\\mathrm{A}(a, b)$에서 $x$축에 내린 수선의 발을 $\\mathrm{B}$라 하자. 원점 $\\mathrm{O}$가 중심이고, 점 $\\mathrm{A}$와 점 $\\mathrm{B}$를 각각 지나는 두 원의 반지름의 길이의 차를 $f(a)$라 할 때, $\\lim_{a \\to \\infty} \\frac{3}{2}f(a)$의 값은? [10.0점]\n<img src=\"assets/images/20_금당고_2학기_중간_고2_수학II/q21.png\" alt=\"20_금당고_2학기_중간_고2_수학II Q21\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=8인 예에서 곡선 위의 점 A(8,4)와 x축 위의 수선의 발 B(8,0)의 위치 관계를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 y=√(2x) 위의 점 A(8,4)의 위치와 좌표를 보여 OA, OB의 길이를 계산하게 한다."
+  ],
+  "accessibilityDescription": "원점에서 시작해 오른쪽 위로 완만하게 오르는 제곱근 곡선 위에 점 A가 표시된 그래프이다."
+}
