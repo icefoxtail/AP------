@@ -990,26 +990,13 @@ function saveApmathSession(data) {
     localStorage.setItem('APMATH_SESSION', JSON.stringify(sanitizeApmathSessionForStorage(data)));
 }
 
-function encodeBasicAuthUnicodeSafe(value) {
-    const str = String(value || '');
-    try {
-        return btoa(unescape(encodeURIComponent(str)));
-    } catch (e) {
-        return btoa(str);
-    }
-}
-
+// 인증은 토큰(Bearer)뿐이다. 토큰이 없는 세션은 null(호출한 쪽이 로그인 안내를 낸다): 비밀번호로 대신하지 않는다.
 function getAssignmentAuthHeader() {
     try {
         const session = getApmathSession();
         if (!session) return null;
         if (session.session_token) return { 'Authorization': 'Bearer ' + session.session_token };
-
-        const mem = window.__APMATH_AUTH_MEMORY || {};
-        const loginId = mem.login_id || session.login_id || session.loginId;
-        const rawPassword = mem.raw_password || session.raw_password;
-        if (!loginId || !rawPassword) return null;
-        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+        return null;
     } catch (e) {
         return null;
     }
@@ -3528,7 +3515,6 @@ return { AppState,
     getApmathSession,
     sanitizeApmathSessionForStorage,
     saveApmathSession,
-    encodeBasicAuthUnicodeSafe,
     getAssignmentAuthHeader,
     restoreApmathSessionFromHash,
     registerClassExamAssignmentToOS,
