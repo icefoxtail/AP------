@@ -1,23 +1,41 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "-2",
           "1"
-        ],
-        "domain": [
-          "-4",
-          "5"
-        ],
-        "label": "y=x−2",
-        "color": "BLUE"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-4",
+        "5"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4,
+      5
+    ],
+    "viewport": [
+      -5.62,
+      6.62,
+      -7.62,
+      4.62
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
     "overlays": {
       "points": [
         {

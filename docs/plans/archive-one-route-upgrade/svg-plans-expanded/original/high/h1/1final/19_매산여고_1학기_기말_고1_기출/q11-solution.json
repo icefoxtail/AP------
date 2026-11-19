@@ -1,23 +1,45 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "91/2",
           "1/6"
-        ],
-        "domain": [
-          "0",
-          "40"
-        ],
-        "label": "y=x/6+91/2",
-        "color": "BLUE"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "40"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      40
+    ],
+    "viewport": [
+      -7.2,
+      47.2,
+      -9.39,
+      61.56
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "온도 x",
+      "y": "부피 y"
+    },
     "overlays": {
       "points": [
         {
@@ -41,10 +63,6 @@
           "coordinates": true
         }
       ]
-    },
-    "axisTitles": {
-      "x": "x(°C)",
-      "y": "y(L)"
     }
   },
   "caption": "그래프는 두 점 (15,48), (27,50)을 지나는 직선이다. 기울기는 (50−48)/(27−15)=1/6이다. 온도가 27°C에서 36°C로 9°C 올라가면 부피는 9×(1/6)=1.5L 늘어난다. 따라서 36°C일 때 부피는 50+1.5=51.5L이고 점 P(36,51.5)이다. 답은 ④이다.",

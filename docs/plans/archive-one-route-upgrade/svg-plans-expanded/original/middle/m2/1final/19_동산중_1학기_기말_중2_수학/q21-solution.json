@@ -1,23 +1,45 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f0",
-        "kind": "LINE",
         "coefficients": [
           "3",
           "2"
-        ],
-        "domain": [
-          "0",
-          "10"
-        ],
-        "label": "y=2x+3",
-        "color": "BLUE"
+        ]
       }
     ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "10"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      10
+    ],
+    "viewport": [
+      -1.8,
+      11.8,
+      -4.14,
+      27.14
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "x(초)",
+      "y": "y"
+    },
     "overlays": {
       "points": [
         {
@@ -27,10 +49,6 @@
           "coordinates": true
         }
       ]
-    },
-    "axisTitles": {
-      "x": "x(초)",
-      "y": "y"
     }
   },
   "caption": "x초 후의 밑변의 길이는 3+2x cm이고 높이는 2cm이므로 넓이는 y=(1/2)×(3+2x)×2=2x+3이다. 넓이가 19cm²이면 2x+3=19에서 x=8이다. 그래프에서 y=19인 점은 P(8,19)이다. 따라서 8초 후이고 답은 ②이다.",
