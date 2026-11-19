@@ -1,0 +1,52 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=x/2−1",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "0",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "예: 기울기가 양수이고 y절편이 음수인 직선의 한 예이다. ax+by+c=0을 y=−(a/b)x−c/b로 정리하면, ab<0이므로 기울기 −a/b는 양수이고 주어진 조건에서 y절편은 음수이다. 오른쪽 위로 올라가고 y축의 아래쪽을 지나는 직선은 제1, 3, 4사분면을 지나고 제2사분면을 지나지 않는다. 따라서 답은 ②이다.",
+  "newVisualInformation": [
+    "기울기가 양수, y절편이 음수인 직선은 제2사분면을 지나지 않음"
+  ],
+  "accessibilityDescription": "오른쪽 위로 올라가는 직선이 y축의 아래쪽 점 (0,−1)과 x축의 오른쪽 점 (2,0)을 지나며 두 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>4. 일차방정식 $ax + by + c = 0$에서 $ab < 0$, $bc > 0$일 때, 이 일차방정식의 그래프가 지나지 않는 사분면은? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "TREE",
+    "root": {
+      "children": [
+        {
+          "label": "비",
+          "p": "1/10",
+          "children": [
+            {
+              "label": "비",
+              "p": "3/10"
+            },
+            {
+              "label": "맑음",
+              "p": "7/10"
+            }
+          ]
+        },
+        {
+          "label": "맑음",
+          "p": "9/10",
+          "children": [
+            {
+              "label": "비",
+              "p": "3/10"
+            },
+            {
+              "label": "맑음",
+              "p": "7/10"
+            }
+          ]
+        }
+      ]
+    },
+    "showPathProbability": true,
+    "pathColumn": true,
+    "highlightPaths": [
+      [
+        "맑음",
+        "맑음"
+      ]
+    ]
+  },
+  "caption": "토요일에 비가 오지 않을 확률은 1−10/100=9/10, 일요일에 비가 오지 않을 확률은 1−30/100=7/10이다. 이틀 모두 비가 오지 않는 경로(굵은 가지)의 확률은 9/10×7/10=63/100=0.63이다. 따라서 63%이고 답은 ⑤이다.",
+  "newVisualInformation": [
+    "토요일·일요일의 비/맑음 가지에서 두 날 모두 맑음인 경로의 확률 0.9×0.7=0.63"
+  ],
+  "accessibilityDescription": "토요일에 비가 오는 가지와 맑은 가지로 나뉘고 각각 일요일에 비가 오는 가지와 맑은 가지로 나뉘는 수형도이며 두 날 모두 맑음인 경로가 굵게 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>20. 일기 예보에서 이번 주말의 토요일에 비가 올 확률은 $10\\,\\%$, 다음 날인 일요일에 비가 올 확률은 $30\\,\\%$라 하였다. 이틀 모두 비가 오지 않을 확률은 몇 $\\%$인가? [4점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "-5/4"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "label": "ax+2y−3=0 (a=5/2)",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "-1/2",
+          "-5/4"
+        ],
+        "domain": [
+          "-2",
+          "5"
+        ],
+        "label": "5x+4y+2=0",
+        "color": "WARM"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "0",
+          "y": "3/2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "0",
+          "y": "-1/2",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "예: a=5/2일 때의 그림이다. 두 그래프가 만나지 않으려면 두 직선이 평행해야 한다. 계수의 비가 a/5=2/4이고 상수항의 비와는 달라야 하므로 a=5/2이다. 이때 두 직선은 기울기 −5/4로 같고 y절편 3/2, −1/2이 달라 만나지 않는다. 따라서 답은 ①이다.",
+  "newVisualInformation": [
+    "기울기가 같고 y절편이 다른 평행한 두 직선은 만나지 않아 a=5/2"
+  ],
+  "accessibilityDescription": "기울기가 같은 두 직선이 서로 만나지 않고 평행하게 놓여 있으며 y축과 만나는 점 (0,3/2)와 (0,−1/2)가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<p>1. 연립방정식 $\\begin{cases} ax + 2y - 3 = 0 \\\\ 5x + 4y + 2 = 0 \\end{cases}$의 그래프가 만나지 않을 때, 수 $a$의 값은? [3.5점]</p>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
