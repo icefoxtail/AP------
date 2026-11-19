@@ -22,17 +22,17 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림에서 두 직선 $l, m$이 서로 평행($l \\parallel m$)하고, $l, m$과 만나는 세로 직선과 $m$이 이루는 왼쪽 각이 $110^\\circ$, 비스듬한 직선과 $m$이 이루는 오른쪽 각이 $155^\\circ$이다. 세로 직선과 $l$이 이루는 오른쪽 각을 $\\angle y$, 세로 직선과 비스듬한 직선이 이루는 각을 $\\angle x$라 할 때, $\\angle x - \\angle y$의 크기는? [3점]",
     "choices": [
+      "$5^\\circ$",
+      "$10^\\circ$",
       "$15^\\circ$",
-      "$20^\\circ$",
-      "$25^\\circ$",
-      "$30^\\circ$",
-      "$35^\\circ$"
+      "$45^\\circ$",
+      "$85^\\circ$"
     ],
-    "answer": "①",
+    "answer": "③",
     "points": 0,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
-    "solution": "평행한 두 직선이 다른 한 직선과 만날 때 동위각의 크기는 서로 같다. $\\begin{aligned} &l \\parallel m\\text{이므로 세로 직선과 } m\\text{이 왼쪽에서 이루는 } 110^\\circ\\text{의 동위각은 세로 직선과 } l\\text{이 왼쪽에서 이루는 각 } 110^\\circ\\text{이다.} \\ &\\text{한 직선 위에서 이웃한 두 각의 합은 } 180^\\circ\\text{이므로 } \\angle y = 180^\\circ - 110^\\circ = 70^\\circ\\text{이다.} \\ &\\text{비스듬한 직선과 } m\\text{이 오른쪽에서 이루는 } 155^\\circ\\text{의 동위각은 비스듬한 직선과 } l\\text{이 오른쪽에서 이루는 각 } 155^\\circ\\text{이다.} \\ &\\text{이 각은 } \\angle x\\text{와 } \\angle y\\text{의 합이므로 } \\angle x + \\angle y = 155^\\circ \\ &\\angle x = 155^\\circ - 70^\\circ = 85^\\circ \\ &\\angle x - \\angle y = 85^\\circ - 70^\\circ = 15^\\circ \\end{aligned}$ 따라서 $\\angle x - \\angle y = 15^\\circ$이므로 정답은 ①이다.",
+    "solution": "평행선에서 동위각의 크기가 같음을 이용하여 $\\angle y$와 $\\angle x$를 차례로 구한다.\n$l \\parallel m$이므로 세로 직선과 $m$이 왼쪽에서 이루는 $110^\\circ$의 동위각은 세로 직선과 $l$이 왼쪽에서 이루는 각이다.\n한 직선 위에서 이웃한 두 각의 합은 $180^\\circ$이므로\n$$\\begin{aligned} \\angle y &= 180^\\circ - 110^\\circ \\\\ &= 70^\\circ \\end{aligned}$$\n비스듬한 직선과 $m$이 오른쪽에서 이루는 $155^\\circ$의 동위각은 비스듬한 직선과 $l$이 오른쪽에서 이루는 각이다.\n이 각은 $\\angle x$와 $\\angle y$의 합이므로\n$$\\angle x + \\angle y = 155^\\circ$$\n$\\angle x$의 값은\n$$\\begin{aligned} \\angle x &= 155^\\circ - 70^\\circ \\\\ &= 85^\\circ \\end{aligned}$$\n구하는 값은\n$$\\begin{aligned} \\angle x - \\angle y &= 85^\\circ - 70^\\circ \\\\ &= 15^\\circ \\end{aligned}$$\n따라서 $\\angle x - \\angle y = 15^\\circ$이므로 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -58,17 +58,17 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림과 같이 가로선과 두 비스듬한 직선이 서로 만날 때 생긴 각 중에서, 두 비스듬한 직선의 교점에서의 각 $\\angle a$의 동위각의 크기를 각각 구하여 모두 더한 값은? (단, 왼쪽 아래 교점에서 가로선 위쪽 둔각은 $110^\\circ$이고, 오른쪽 아래 교점에서 가로선 아래쪽 맞은편 예각은 $60^\\circ$이다.) [3점]",
     "choices": [
-      "$120^\\circ$",
+      "$50^\\circ$",
+      "$60^\\circ$",
+      "$70^\\circ$",
       "$130^\\circ$",
-      "$140^\\circ$",
-      "$150^\\circ$",
-      "$160^\\circ$"
+      "$170^\\circ$"
     ],
-    "answer": "②",
+    "answer": "④",
     "points": 0,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_POSITION",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_POSITION_FIND_CORRESPONDING",
-    "solution": "동위각은 한 직선이 두 직선과 만날 때 서로 같은 위치에 놓인 각이다. $\\begin{aligned} &\\text{왼쪽 교점에서 } 110^\\circ\\text{인 각과 이웃한 보각은 } 180^\\circ - 110^\\circ = 70^\\circ\\text{이다.} \\ &\\text{오른쪽 교점에서 } 60^\\circ\\text{인 각과 맞꼭지각의 크기는 } 60^\\circ\\text{이다.} \\ &\\angle a\\text{는 두 비스듬한 직선이 만나서 생긴 각이므로, 두 직선 각각을 자르는 직선으로 볼 때} \\ &\\text{첫째, 오른쪽 아래로 향하는 직선을 자르는 선으로 보면 동위각은 가로선과 만나는 점의 } 60^\\circ\\text{이다.} \\ &\\text{둘째, 왼쪽 아래로 향하는 직선을 자르는 선으로 보면 동위각은 가로선과 만나는 점의 } 70^\\circ\\text{이다.} \\ &\\text{따라서 두 동위각의 크기의 합은 } 60^\\circ + 70^\\circ = 130^\\circ\\text{이다.} \\end{aligned}$ 따라서 구하는 합은 $130^\\circ$이므로 정답은 ②이다.",
+    "solution": "동위각의 뜻을 이용하여 $\\angle a$의 두 동위각의 크기를 각각 구한 뒤 더한다.\n동위각은 한 직선이 두 직선과 만날 때 서로 같은 위치에 놓인 각이다.\n왼쪽 교점에서 $110^\\circ$인 각과 이웃한 각의 크기는\n$$180^\\circ - 110^\\circ = 70^\\circ$$\n오른쪽 교점에서 $60^\\circ$인 각의 맞꼭지각의 크기도 $60^\\circ$이다.\n오른쪽 아래로 향하는 비스듬한 직선을 자르는 직선으로 보면 $\\angle a$의 동위각은 $60^\\circ$이다.\n왼쪽 아래로 향하는 비스듬한 직선을 자르는 직선으로 보면 $\\angle a$의 동위각은 $70^\\circ$이다.\n두 동위각의 크기의 합은\n$$60^\\circ + 70^\\circ = 130^\\circ$$\n따라서 구하는 값은 $130^\\circ$이므로 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -95,16 +95,16 @@ window.questionBank = [
     "content": "세 직선 $l, m, n$과 이를 가로지르는 두 직선 $p, q$가 만날 때 생긴 교각에 대하여 다음과 같은 관계가 성립한다. 직선 $p$와 직선 $l$이 만나는 점의 왼쪽 아래 각이 $88^\\circ$이고, 직선 $p$와 직선 $n$이 만나는 점의 오른쪽 위 맞꼭지각이 $88^\\circ$이다. 한편 직선 $p$와 직선 $m$의 교각은 $85^\\circ$이며, 직선 $q$와 직선들의 교각은 평행 조건을 만족하지 않는다. 다음 중 서로 평행한 두 직선을 기호로 바르게 나타낸 것은? [5점]",
     "choices": [
       "$l \\parallel m$",
-      "$m \\parallel n$",
       "$l \\parallel n$",
+      "$m \\parallel n$",
       "$p \\parallel q$",
       "$l \\parallel p$"
     ],
-    "answer": "③",
+    "answer": "②",
     "points": 0,
     "problemTypeKey": "PT_M1_PARALLELISM_CONVERSE",
     "templateKey": "TPL_M1_PARALLELISM_CONVERSE_ANGLE_COMPARISON",
-    "solution": "두 직선이 다른 한 직선과 만날 때 동위각 또는 엇각의 크기가 같으면 두 직선은 서로 평행하다. $\\begin{aligned} &\\text{직선 } p\\text{를 자르는 직선으로 볼 때, } p\\text{와 } l\\text{의 교점의 왼쪽 아래 각은 } 88^\\circ\\text{이다.} \\ &p\\text{와 } n\\text{의 교점에서 오른쪽 위 각이 } 88^\\circ\\text{이므로 맞꼭지각인 왼쪽 아래 각도 } 88^\\circ\\text{이다.} \\ &\\text{두 각은 서로 동위각이고 그 크기가 } 88^\\circ\\text{로 같으므로 } l \\parallel n\\text{이다.} \\ &\\text{직선 } m\\text{과의 교각은 } 85^\\circ \\ne 88^\\circ\\text{이므로 } m\\text{은 } l, n\\text{과 평행하지 않다.} \\end{aligned}$ 따라서 서로 평행한 두 직선은 $l \\parallel n$이므로 정답은 ③이다.",
+    "solution": "동위각의 크기가 같으면 두 직선이 평행함을 이용하여 서로 평행한 두 직선을 찾는다.\n직선 $p$와 $l$의 교점에서 왼쪽 아래 각은 $88^\\circ$이다.\n직선 $p$와 $n$의 교점에서 오른쪽 위 각이 $88^\\circ$이므로 맞꼭지각인 왼쪽 아래 각도 $88^\\circ$이다.\n두 각은 직선 $p$가 $l$, $n$과 만날 때 생기는 동위각이고 크기가 같으므로\n$$l \\parallel n$$\n직선 $p$와 $m$의 교각은 $85^\\circ$로 $88^\\circ$와 다르므로 $m$은 $l$이나 $n$과 평행하지 않다.\n직선 $q$는 평행 조건을 만족하지 않는다.\n따라서 서로 평행한 두 직선은 $l \\parallel n$이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -140,7 +140,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
     "templateKey": "TPL_M1_BASIC_CONSTRUCTION_ANGLE_COPY_PROPERTIES",
-    "solution": "크기가 같은 각의 작도는 컴퍼스로 원의 반지름과 두 교점 사이의 거리를 그대로 옮기는 과정이다. $\\begin{aligned} &\\text{점 } O\\text{와 점 } P\\text{를 중심으로 같은 반지름의 호를 그리므로 } \\overline{OA} = \\overline{OB} = \\overline{PD} = \\overline{PC}\\text{이다.} \\ &\\text{컴퍼스로 두 점 } A, B \\text{ 사이의 거리를 재어 점 } D\\text{를 중심으로 호를 그리므로 } \\overline{AB} = \\overline{CD}\\text{이다.} \\ &\\text{점 } X, Y, Q\\text{는 반직선 위의 임의의 점이므로 } \\overline{OX}=\\overline{OY}, \\overline{OY}=\\overline{PQ}\\text{는 항상 성립하지 않는다.} \\ &\\text{따라서 옳은 것은 } \\overline{AB} = \\overline{CD}\\text{이다.} \\end{aligned}$ 따라서 옳은 것은 ④이다.",
+    "solution": "크기가 같은 각의 작도에서 컴퍼스로 옮기는 길이를 확인하여 보기마다 옳고 그름을 판정한다.\n점 $O$와 점 $P$를 중심으로 같은 반지름의 호를 그리므로\n$$\\overline{OA} = \\overline{OB} = \\overline{PD} = \\overline{PC}$$\n컴퍼스로 두 점 $A$, $B$ 사이의 거리를 재어 점 $D$를 중심으로 호를 그리므로\n$$\\overline{AB} = \\overline{CD}$$\n① $\\overline{OA}$는 호의 반지름이고 $\\overline{CD}$는 $\\overline{AB}$의 길이이므로 일반적으로 같지 않다. 옳지 않다.\n② 점 $X$, $Y$는 반직선 위의 임의의 점이므로 $\\overline{OX} = \\overline{OY}$는 항상 성립하지 않는다. 옳지 않다.\n③ 점 $Q$도 반직선 위의 임의의 점이므로 $\\overline{OY} = \\overline{PQ}$는 항상 성립하지 않는다. 옳지 않다.\n④ 컴퍼스로 $\\overline{AB}$의 길이를 그대로 옮겨 $\\overline{CD}$를 그었으므로 $\\overline{AB} = \\overline{CD}$이다. 옳다.\n⑤ 호 $AB$를 먼저 작도한 뒤 호 $CD$를 작도하고 반직선 $PC$를 긋는다. 옳지 않다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -164,19 +164,19 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "길이가 $18,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]",
+    "content": "길이가 $18\\,\\mathrm{cm}$인 철사를 구부려 세 변의 길이가 모두 $2\\,\\mathrm{cm}$보다 큰 자연수인 삼각형을 만들려고 한다. 만들 수 있는 서로 다른 모양의 삼각형은 모두 몇 개인가? (단, 철사의 굵기는 생각하지 않는다.) [5점]",
     "choices": [
-      "$2$개",
       "$3$개",
-      "$4$개",
-      "$5$개",
-      "$6$개"
+      "$6$개",
+      "$7$개",
+      "$8$개",
+      "$12$개"
     ],
-    "answer": "⑤",
+    "answer": "②",
     "points": 0,
     "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
     "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_COUNT",
-    "solution": "삼각형의 세 변의 길이를 $a \\le b \\le c$라 하면, 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다. $\\begin{aligned} &a + b + c = 18\\text{이고 각 변의 길이가 } 2,\\mathrm{cm}\\text{보다 큰 자연수이므로 } a \\ge 3\\text{이다.} \\ &c < a + b\\text{이고 } a + b = 18 - c\\text{이므로 } c < 18 - c \\implies 2c < 18 \\implies c < 9 \\ &\\text{또한 } c\\text{가 가장 긴 변이므로 } 3c \\ge a + b + c = 18 \\implies c \\ge 6 \\ &\\text{따라서 } c\\text{가 될 수 있는 자연수는 } 6, 7, 8\\text{이다.} \\ &1); c = 6\\text{일 때: } a + b = 12, ; 3 \\le a \\le b \\le 6 \\implies (a, b) = (6, 6) ; (1\\text{개}) \\ &2); c = 7\\text{일 때: } a + b = 11, ; 3 \\le a \\le b \\le 7 \\implies (a, b) = (4, 7), (5, 6) ; (2\\text{개}) \\ &3); c = 8\\text{일 때: } a + b = 10, ; 3 \\le a \\le b \\le 8 \\implies (a, b) = (3, 7), (4, 6), (5, 5) ; (3\\text{개}) \\ &\\text{총 개수} = 1 + 2 + 3 = 6\\text{ (개)} \\end{aligned}$ 따라서 만들 수 있는 서로 다른 삼각형은 모두 $6$개이므로 정답은 ⑤이다.",
+    "solution": "세 변의 길이를 $a \\le b \\le c$라 하고 가장 긴 변 $c$가 될 수 있는 값을 먼저 구한다.\n$$a + b + c = 18$$\n세 변의 길이가 모두 $2\\,\\mathrm{cm}$보다 큰 자연수이므로\n$$a \\ge 3$$\n삼각형이 되려면 가장 긴 변의 길이가 나머지 두 변의 길이의 합보다 작아야 하므로\n$$c < a + b$$\n$$a + b = 18 - c$$\n$$c < 18 - c$$\n$$2c < 18$$\n$$c < 9$$\n$c$가 가장 긴 변이므로\n$$3c \\ge a + b + c$$\n$$3c \\ge 18$$\n$$c \\ge 6$$\n따라서 $c$는 $6$, $7$, $8$ 중 하나이다.\n$c = 6$일 때, $a + b = 12$이고 $3 \\le a \\le b \\le 6$이므로 $(a, b)$는 $(6, 6)$의 $1$개이다.\n$c = 7$일 때, $a + b = 11$이고 $3 \\le a \\le b \\le 7$이므로 $(a, b)$는 $(4, 7)$, $(5, 6)$의 $2$개이다.\n$c = 8$일 때, $a + b = 10$이고 $3 \\le a \\le b \\le 8$이므로 $(a, b)$는 $(3, 7)$, $(4, 6)$, $(5, 5)$의 $3$개이다.\n만들 수 있는 삼각형의 총 개수는\n$$1 + 2 + 3 = 6$$\n따라서 만들 수 있는 서로 다른 모양의 삼각형은 모두 $6$개이므로 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -212,7 +212,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
     "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_ZIGZAG_AUXILIARY",
-    "solution": "꺾인 점을 지나면서 두 평행선과 평행한 보조선을 그어 엇각의 성질을 이용한다. $\\begin{aligned} &130^\\circ\\text{인 꼭짓점을 } P, ; 75^\\circ\\text{인 꼭짓점을 } Q\\text{라 하고 } P, Q\\text{를 지나며 } l, m\\text{에 평행한 보조선을 긋는다.} \\ &l\\text{과 } P\\text{를 지나는 보조선이 평행하므로 엇각에 의해 } P\\text{에서 보조선 위쪽 각은 } \\angle a\\text{이다.} \\ &\\text{따라서 } P\\text{에서 보조선 아래쪽 각은 } 130^\\circ - \\angle a\\text{이다.} \\ &P\\text{를 지나는 보조선과 } Q\\text{를 지나는 보조선이 평행하므로 엇각에 의해 } Q\\text{의 왼쪽 위 각은 } 130^\\circ - \\angle a\\text{이고,} \\ &Q\\text{의 오른쪽 위 각은 } 180^\\circ - (130^\\circ - \\angle a) = 50^\\circ + \\angle a\\text{이다.} \\ &\\text{따라서 } Q\\text{의 아래쪽 각은 } 75^\\circ - (50^\\circ + \\angle a) = 25^\\circ - \\angle a\\text{이다.} \\ &Q\\text{를 지나는 보조선과 } m\\text{이 평행하므로 엇각에 의해 } \\angle b = 25^\\circ - \\angle a \\ &\\angle a + \\angle b = 25^\\circ \\end{aligned}$ 따라서 $\\angle a + \\angle b = 25^\\circ$이므로 정답은 ③이다.",
+    "solution": "두 꼭짓점을 지나 $l$, $m$에 평행한 보조선을 그어 엇각의 성질로 $\\angle a + \\angle b$를 구한다.\n$130^\\circ$인 꼭짓점을 $P$, $75^\\circ$인 꼭짓점을 $Q$라 하고 $P$, $Q$를 지나 $l$, $m$에 평행한 보조선을 긋는다.\n$l$과 $P$를 지나는 보조선이 평행하므로 엇각에 의해 $P$에서 보조선 위쪽 각은 $\\angle a$이다.\n따라서 $P$에서 보조선 아래쪽 각은\n$$130^\\circ - \\angle a$$\n$P$를 지나는 보조선과 $Q$를 지나는 보조선이 평행하므로 엇각에 의해 $Q$의 왼쪽 위 각은 $130^\\circ - \\angle a$이다.\n$Q$의 오른쪽 위 각은\n$$180^\\circ - (130^\\circ - \\angle a) = 50^\\circ + \\angle a$$\n따라서 $Q$의 아래쪽 각은\n$$75^\\circ - (50^\\circ + \\angle a) = 25^\\circ - \\angle a$$\n$Q$를 지나는 보조선과 $m$이 평행하므로 엇각에 의해\n$$\\angle b = 25^\\circ - \\angle a$$\n그러므로\n$$\\angle a + \\angle b = 25^\\circ$$\n따라서 $\\angle a + \\angle b = 25^\\circ$이므로 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -248,7 +248,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_CORRESPONDENCE",
-    "solution": "합동인 두 삼각형에서 대응변의 길이와 대응각의 크기는 각각 서로 같다. $$\\begin{aligned} &\\triangle ABC \\equiv \\triangle FED\\text{이므로 대응점은 } A\\text{와 } F, ; B\\text{와 } E, ; C\\text{와 } D\\text{이다.} \\ &\\overline{AB}\\text{의 대응변은 } \\overline{FE}\\text{이므로 } x = \\overline{FE} = 12\\text{이다.} \\ &\\angle C\\text{의 대응각은 } \\angle D\\text{이므로 } \\angle D = \\angle C = 45^\\circ\\text{이다.} \\ &\\triangle FED\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로 } \\ &\\angle F = 180^\\circ - (\\angle E + \\angle D) = 180^\\circ - (105^\\circ + 45^\\circ) = 30^\\circ \\implies y = 30 \\ &x + y = 12 + 30 = 42 \\end{aligned}$$ 따라서 $x + y = 42$이므로 정답은 ①이다.",
+    "solution": "합동인 두 삼각형에서 대응변과 대응각을 찾아 $x$, $y$를 구한다.\n$\\triangle ABC \\equiv \\triangle FED$이므로 대응점은 $A$와 $F$, $B$와 $E$, $C$와 $D$이다.\n$\\overline{AB}$의 대응변은 $\\overline{FE}$이므로\n$$x = \\overline{FE} = 12$$\n$\\angle C$의 대응각은 $\\angle D$이므로\n$$\\angle D = \\angle C = 45^\\circ$$\n$\\triangle FED$에서 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\\begin{aligned} \\angle F &= 180^\\circ - (\\angle E + \\angle D) \\\\ &= 180^\\circ - (105^\\circ + 45^\\circ) \\\\ &= 30^\\circ \\end{aligned}$$\n$$y = 30$$\n구하는 값은\n$$\\begin{aligned} x + y &= 12 + 30 \\\\ &= 42 \\end{aligned}$$\n따라서 $x + y = 42$이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -284,7 +284,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_UNIQUENESS",
     "templateKey": "TPL_M1_CONGRUENCE_UNIQUENESS_MISSING_CONDITION",
-    "solution": "두 쌍의 대응변의 길이가 같을 때, 그 끼인각의 크기가 같으면 $\\mathrm{SAS}$ 합동이다. $\\begin{aligned} &\\text{주어진 조건에서 } \\overline{AB} = \\overline{DE}, ; \\overline{BC} = \\overline{EF}\\text{이므로 두 쌍의 대응변의 길이가 같다.} \\ &\\overline{AB}\\text{와 } \\overline{BC}\\text{의 끼인각은 } \\angle B\\text{이고, } \\overline{DE}\\text{와 } \\overline{EF}\\text{의 끼인각은 } \\angle E\\text{이다.} \\ &\\text{따라서 끼인각의 크기가 } \\angle B = \\angle E\\text{로 같으면 } \\mathrm{SAS}\\text{ 합동이 성립한다.} \\ &\\text{참고로 } \\overline{AC}=\\overline{DF}\\text{이면 } \\mathrm{SSS}\\text{ 합동이 된다.} \\end{aligned}$ 따라서 올바른 것은 $\\angle B = \\angle E$, $\\mathrm{SAS}$합동이므로 정답은 ③이다.",
+    "solution": "주어진 두 쌍의 대응변 사이의 끼인각을 찾아 보기마다 합동 조건을 판정한다.\n주어진 조건에서 $\\overline{AB} = \\overline{DE}$, $\\overline{BC} = \\overline{EF}$이므로 두 쌍의 대응변의 길이가 같다.\n$\\overline{AB}$와 $\\overline{BC}$의 끼인각은 $\\angle B$이고, $\\overline{DE}$와 $\\overline{EF}$의 끼인각은 $\\angle E$이다.\n① $\\overline{AC} = \\overline{DF}$이면 세 쌍의 대응변의 길이가 같아 $\\mathrm{SSS}$ 합동이 되므로 짝이 옳지 않다.\n② $\\angle A = \\angle D$는 두 변 $\\overline{AB}$, $\\overline{BC}$의 끼인각이 아니므로 $\\mathrm{SAS}$ 합동이 되지 않는다. 옳지 않다.\n③ $\\angle B = \\angle E$이면 끼인각의 크기가 같아 $\\mathrm{SAS}$ 합동이 된다. 옳다.\n④ $\\angle C = \\angle F$만으로는 $\\mathrm{ASA}$ 합동에 필요한 두 각과 그 끼인 변을 모두 알 수 없다. 옳지 않다.\n⑤ $\\angle B = \\angle E$이면 성립하는 것은 $\\mathrm{SAS}$ 합동이지 $\\mathrm{ASA}$ 합동이 아니다. 옳지 않다.\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -311,16 +311,16 @@ window.questionBank = [
     "content": "선분 $AB$ 위의 한 점 $C$에 대하여 $\\overline{AC}, \\overline{BC}$를 각각 한 변으로 하는 두 정삼각형 $ACD$와 $CBE$를 같은 쪽에 만들었다. $\\angle DAE = 25^\\circ$일 때, 다음 중 옳지 않은 것은? [5점]",
     "choices": [
       "$\\overline{AE} = \\overline{BD}$",
-      "$\\angle ACE = 100^\\circ$",
       "$\\angle DCE = 60^\\circ$",
       "$\\triangle ACE \\equiv \\triangle DCB$",
+      "$\\angle ACE = 100^\\circ$",
       "$\\angle BDC = 35^\\circ$"
     ],
-    "answer": "②",
+    "answer": "④",
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_EQUILATERAL_ROTATION",
-    "solution": "두 정삼각형의 변과 각의 성질을 이용하여 삼각형의 합동을 증명한다. $\\begin{aligned} &\\triangle ACD\\text{와 } \\triangle CBE\\text{는 정삼각형이므로 } \\overline{CA}=\\overline{CD}, ; \\overline{CE}=\\overline{CB}, ; \\angle ACD=\\angle BCE=60^\\circ\\text{이다.} \\ &\\text{점 } C\\text{가 선분 } AB\\text{ 위에 있으므로 평각에서 } \\angle DCE = 180^\\circ - 60^\\circ - 60^\\circ = 60^\\circ\\text{이다. (③ 참)} \\ &\\angle ACE = \\angle ACD + \\angle DCE = 60^\\circ + 60^\\circ = 120^\\circ\\text{이므로 } \\angle ACE = 100^\\circ\\text{는 거짓이다. (② 거짓)} \\ &\\angle DCB = \\angle DCE + \\angle ECB = 60^\\circ + 60^\\circ = 120^\\circ \\ &\\triangle ACE\\text{와 } \\triangle DCB\\text{에서 } \\overline{CA}=\\overline{CD}, ; \\overline{CE}=\\overline{CB}, ; \\angle ACE=\\angle DCB=120^\\circ\\text{이므로} \\ &\\triangle ACE \\equiv \\triangle DCB ; (\\mathrm{SAS}\\text{ 합동})\\text{이다. (④ 참)} \\ &\\text{합동인 두 삼각형의 대응변의 길이는 같으므로 } \\overline{AE} = \\overline{BD}\\text{이다. (① 참)} \\ &\\text{대응각에서 } \\angle BDC = \\angle EAC\\text{이고, } \\angle DAC = 60^\\circ, ; \\angle DAE = 25^\\circ\\text{이므로} \\ &\\angle EAC = 60^\\circ - 25^\\circ = 35^\\circ \\implies \\angle BDC = 35^\\circ\\text{이다. (⑤ 참)} \\end{aligned}$ 따라서 옳지 않은 것은 ②이다.",
+    "solution": "두 정삼각형의 변과 각의 성질을 이용하여 보기 ①~⑤의 참·거짓을 하나씩 판정한다.\n$\\triangle ACD$와 $\\triangle CBE$는 정삼각형이므로 세 변의 길이와 세 각의 크기가 각각 같다.\n$$\n\\begin{aligned}\n\\overline{CA} &= \\overline{CD} \\\\\n\\overline{CE} &= \\overline{CB} \\\\\n\\angle ACD &= \\angle BCE = 60^\\circ\n\\end{aligned}\n$$\n점 $C$가 선분 $AB$ 위에 있으므로 평각에서 $\\angle DCE$를 구하면\n$$\\angle DCE = 180^\\circ - 60^\\circ - 60^\\circ = 60^\\circ$$\n보기 ②의 값 $60^\\circ$와 같으므로 옳다.\n$\\angle ACE$를 구하면\n$$\n\\begin{aligned}\n\\angle ACE &= \\angle ACD + \\angle DCE \\\\\n&= 60^\\circ + 60^\\circ \\\\\n&= 120^\\circ\n\\end{aligned}\n$$\n보기 ④의 $100^\\circ$와 다르므로 옳지 않다.\n$\\angle DCB$를 구하면\n$$\n\\begin{aligned}\n\\angle DCB &= \\angle DCE + \\angle ECB \\\\\n&= 60^\\circ + 60^\\circ \\\\\n&= 120^\\circ\n\\end{aligned}\n$$\n$\\triangle ACE$와 $\\triangle DCB$에서 두 변과 그 끼인각이 각각 같다.\n$$\n\\begin{aligned}\n\\overline{CA} &= \\overline{CD} \\\\\n\\overline{CE} &= \\overline{CB} \\\\\n\\angle ACE &= \\angle DCB = 120^\\circ\n\\end{aligned}\n$$\n삼각형의 합동 조건 SAS에 의해 $\\triangle ACE \\equiv \\triangle DCB$이므로 보기 ③은 옳다.\n합동인 두 삼각형의 대응변의 길이가 같으므로\n$$\\overline{AE} = \\overline{BD}$$\n보기 ①은 옳다.\n$\\angle EAC$를 구하면\n$$\n\\begin{aligned}\n\\angle EAC &= \\angle DAC - \\angle DAE \\\\\n&= 60^\\circ - 25^\\circ \\\\\n&= 35^\\circ\n\\end{aligned}\n$$\n합동인 두 삼각형의 대응각의 크기가 같으므로 $\\angle BDC = 35^\\circ$이고, 보기 ⑤는 옳다.\n따라서 옳지 않은 것은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -348,15 +348,15 @@ window.questionBank = [
     "choices": [
       "한 권에 $x$원인 공책 $4$권의 가격 $y$원",
       "밑변의 길이가 $14$이고 높이가 $x$인 삼각형의 넓이 $y$",
-      "한 모서리의 길이가 $x$인 정육면체의 모든 모서리의 길이의 합 $y$",
       "넓이가 $48$인 직사각형의 가로의 길이 $x$와 세로의 길이 $y$",
-      "시속 $80,\\mathrm{km}$로 $x$시간 동안 달린 거리 $y,\\mathrm{km}$"
+      "한 모서리의 길이가 $x$인 정육면체의 모든 모서리의 길이의 합 $y$",
+      "시속 $80\\,\\mathrm{km}$로 $x$시간 동안 달린 거리 $y\\,\\mathrm{km}$"
     ],
-    "answer": "④",
+    "answer": "③",
     "points": 0,
     "problemTypeKey": "PT_DIRECT_INVERSE_PROPORTION_CLASSIFICATION",
     "templateKey": "TPL_DIRECT_INVERSE_PROPORTION_CLASSIFICATION_CONTEXT",
-    "solution": "$y$가 $x$에 정비례하면 $y = ax$ ($a \\ne 0$) 꼴의 관계식이 성립하고, 두 양의 곱이 일정하여 $xy = k$ ($k \\ne 0$)이면 반비례 관계이다. $\\begin{aligned} &\\text{① } y = 4x \\implies \\text{정비례 관계} \\ &\\text{② } y = \\dfrac{1}{2} \\times 14 \\times x = 7x \\implies \\text{정비례 관계} \\ &\\text{③ 정육면체의 모서리는 } 12\\text{개이므로 } y = 12x \\implies \\text{정비례 관계} \\ &\\text{④ } x \\times y = 48 \\implies y = \\dfrac{48}{x} \\implies \\text{반비례 관계 (정비례 아님)} \\ &\\text{⑤ } y = 80x \\implies \\text{정비례 관계} \\end{aligned}$ 따라서 정비례 관계가 아닌 것은 ④이다.",
+    "solution": "관계식이 $y = ax$ 꼴이면 정비례 관계, $xy = k$ 꼴이면 반비례 관계임을 이용하여 보기 ①~⑤를 판정한다.\n① 한 권에 $x$원인 공책 $4$권의 가격이 $y$원이므로\n$$y = 4x$$\n정비례 관계이다.\n② 밑변의 길이가 $14$이고 높이가 $x$인 삼각형의 넓이가 $y$이므로\n$$\n\\begin{aligned}\ny &= \\dfrac{1}{2} \\times 14 \\times x \\\\\n&= 7x\n\\end{aligned}\n$$\n정비례 관계이다.\n③ 넓이가 $48$인 직사각형의 가로의 길이가 $x$, 세로의 길이가 $y$이므로\n$$x \\times y = 48$$\n양변을 $x$로 나누면\n$$y = \\dfrac{48}{x}$$\n반비례 관계이므로 정비례 관계가 아니다.\n④ 한 모서리의 길이가 $x$인 정육면체의 모서리는 $12$개이므로\n$$y = 12x$$\n정비례 관계이다.\n⑤ 시속 $80\\,\\mathrm{km}$로 $x$시간 동안 달린 거리가 $y\\,\\mathrm{km}$이므로\n$$y = 80x$$\n정비례 관계이다.\n따라서 정비례 관계가 아닌 것은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -392,7 +392,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_QUADRANT_SIGN_DEDUCTION",
     "templateKey": "TPL_M1_QUADRANT_SIGN_DEDUCTION_COMPOSITE_PARAMETERS",
-    "solution": "정비례와 반비례 그래프는 비례상수가 양수이면 제1, 3사분면을, 음수이면 제2, 4사분면을 지난다. $\\begin{aligned} &y=ax\\text{의 그래프가 제2, 4사분면을 지나므로 } a < 0\\text{이다.} \\ &y=\\dfrac{b}{x}\\text{의 그래프가 제2, 4사분면을 지나므로 } b < 0\\text{이다.} \\ &a < 0, ; b < 0\\text{이므로 } a + b < 0 \\implies -(a + b) > 0 \\ &\\text{따라서 } y = -\\dfrac{a+b}{x}\\text{의 그래프는 비례상수가 양수이므로 제1, 3사분면을 지난다.} \\ &\\text{보기의 각 그래프의 사분면을 조사하면 다음과 같다.} \\ &\\text{ㄱ. } a < 0 \\implies -a > 0 \\implies y = -\\dfrac{a}{x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㄴ. } b < 0 \\implies y = bx\\text{는 제2, 4사분면을 지난다. (거짓)} \\ &\\text{ㄷ. } a < 0, ; b < 0 \\implies ab > 0 \\implies y = \\dfrac{ab}{x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㄹ. } b < 0 \\implies -\\dfrac{3b}{2} > 0 \\implies y = -\\dfrac{3b}{2x}\\text{는 제1, 3사분면을 지난다. (참)} \\ &\\text{ㅁ. } a < 0 \\implies 2a < 0 \\implies y = 2ax\\text{는 제2, 4사분면을 지난다. (거짓)} \\end{aligned}$ 따라서 제1, 3사분면을 지나는 것은 ㄱ, ㄷ, ㄹ이므로 정답은 ⑤이다.",
+    "solution": "두 그래프가 지나는 사분면으로 $a$, $b$의 부호를 정하고, 보기 ㄱ~ㅁ의 그래프가 지나는 사분면을 조사한다.\n$y = ax$의 그래프가 제2, 4사분면을 지나므로\n$$a < 0$$\n$y = \\dfrac{b}{x}$의 그래프가 제2, 4사분면을 지나므로\n$$b < 0$$\n$a + b$의 부호를 구하면\n$$\n\\begin{aligned}\na + b &< 0 \\\\\n-(a + b) &> 0\n\\end{aligned}\n$$\n그러므로 $y = -\\dfrac{a+b}{x}$의 그래프는 비례상수가 양수이므로 제1, 3사분면을 지난다.\nㄱ. $y = -\\dfrac{a}{x}$의 비례상수는 $-a$이고, $a < 0$이므로\n$$-a > 0$$\n비례상수가 양수이므로 제1, 3사분면을 지난다. (참)\nㄴ. $y = bx$의 비례상수는 $b$이고, $b < 0$이므로 제2, 4사분면을 지난다. (거짓)\nㄷ. $y = \\dfrac{ab}{x}$의 비례상수는 $ab$이고, $a < 0$, $b < 0$이므로\n$$ab > 0$$\n비례상수가 양수이므로 제1, 3사분면을 지난다. (참)\nㄹ. $y = -\\dfrac{3b}{2x}$의 비례상수는 $-\\dfrac{3b}{2}$이고, $b < 0$이므로\n$$-\\dfrac{3b}{2} > 0$$\n비례상수가 양수이므로 제1, 3사분면을 지난다. (참)\nㅁ. $y = 2ax$의 비례상수는 $2a$이고, $a < 0$이므로\n$$2a < 0$$\n비례상수가 음수이므로 제2, 4사분면을 지난다. (거짓)\n제1, 3사분면을 지나는 그래프는 ㄱ, ㄷ, ㄹ이다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -428,7 +428,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
     "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_CONTEXT_TO_RECIPROCAL_GRAPH",
-    "solution": "두 변수의 곱이 일정한 관계는 반비례 관계이다. $\\begin{aligned} &\\text{압력 } x\\text{와 부피 } y\\text{의 곱이 일정하므로 } xy = k ; (k > 0) \\implies y = \\dfrac{k}{x} \\ &\\text{이는 반비례 관계이며, } x > 0, ; y > 0\\text{이므로 제1사분면에 나타난다.} \\ &y = \\dfrac{k}{x}\\text{에서 } k > 0\\text{이므로 제1사분면에서 } x\\text{의 값이 증가할 때 } y\\text{의 값은 감소하는 매끄러운 곡선이다.} \\end{aligned}$ 따라서 옳은 설명은 ④이다.",
+    "solution": "압력과 부피의 곱이 일정하다는 조건으로 관계식을 세우고, 그 그래프의 모양과 성질을 판정한다.\n압력 $x$와 부피 $y$의 곱이 항상 일정한 값을 $k$라 하면\n$$xy = k \\quad (k > 0)$$\n양변을 $x$로 나누면\n$$y = \\dfrac{k}{x}$$\n이 관계식은 반비례 관계이다.\n$x > 0$, $y > 0$이므로 그래프는 제1사분면에만 그려진다.\n$k > 0$이므로 $x$의 값이 커질 때 $y$의 값은 작아진다.\n그래프는 원점을 지나지 않고 $x$축과 $y$축에 한없이 가까워지는 매끄러운 곡선이다.\n보기 ④의 설명과 같다.\n따라서 정답은 ④이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -454,17 +454,17 @@ window.questionBank = [
     "wide": false,
     "content": "다음 표에서 $y$가 $x$에 정비례할 때, 상수 $p, q, r$에 대하여 $p \\times q \\times r$의 값은? <div class=\"question-table-wrap\"><table><thead><tr><th>$x$</th><th>$-3$</th><th>$p$</th><th>$2$</th><th>$r$</th></tr></thead><tbody><tr><th>$y$</th><td>$\\dfrac{1}{2}$</td><td>$1$</td><td>$q$</td><td>$-2$</td></tr></tbody></table></div> [4점]",
     "choices": [
-      "$18$",
-      "$12$",
+      "$-24$",
+      "$2$",
       "$24$",
-      "$-12$",
-      "$-24$"
+      "$72$",
+      "$144$"
     ],
     "answer": "③",
     "points": 0,
     "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
     "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TABLE_EVAL",
-    "solution": "$y$가 $x$에 정비례하므로 $y = ax$ ($a \\ne 0$) 꼴의 관계식이 성립한다. $\\begin{aligned} &x = -3\\text{일 때 } y = \\dfrac{1}{2}\\text{이므로 } \\dfrac{1}{2} = a \\times (-3) \\implies a = -\\dfrac{1}{6} \\ &\\text{따라서 정비례 관계식은 } y = -\\dfrac{1}{6}x\\text{이다.} \\ &x = p\\text{일 때 } y = 1\\text{이므로 } 1 = -\\dfrac{1}{6}p \\implies p = -6 \\ &x = 2\\text{일 때 } y = q\\text{이므로 } q = -\\dfrac{1}{6} \\times 2 = -\\dfrac{1}{3} \\ &x = r\\text{일 때 } y = -2\\text{이므로 } -2 = -\\dfrac{1}{6}r \\implies r = 12 \\ &p \\times q \\times r = (-6) \\times \\left(-\\dfrac{1}{3}\\right) \\times 12 = 2 \\times 12 = 24 \\end{aligned}$ 따라서 $p \\times q \\times r = 24$이므로 정답은 ③이다.",
+    "solution": "$y$가 $x$에 정비례하므로 관계식을 $y = ax$로 놓고 $a$를 구한 뒤, $p$, $q$, $r$을 차례로 구한다.\n$x = -3$일 때 $y = \\dfrac{1}{2}$이므로\n$$\\dfrac{1}{2} = a \\times (-3)$$\n양변을 $-3$으로 나누면\n$$a = -\\dfrac{1}{6}$$\n따라서 정비례 관계식은\n$$y = -\\dfrac{1}{6}x$$\n$x = p$일 때 $y = 1$이므로\n$$1 = -\\dfrac{1}{6}p$$\n양변에 $-6$을 곱하면\n$$p = -6$$\n$x = 2$일 때 $y = q$이므로\n$$\n\\begin{aligned}\nq &= -\\dfrac{1}{6} \\times 2 \\\\\n&= -\\dfrac{1}{3}\n\\end{aligned}\n$$\n$x = r$일 때 $y = -2$이므로\n$$-2 = -\\dfrac{1}{6}r$$\n양변에 $-6$을 곱하면\n$$r = 12$$\n$p \\times q \\times r$을 계산하면\n$$\n\\begin{aligned}\np \\times q \\times r &= (-6) \\times \\left(-\\dfrac{1}{3}\\right) \\times 12 \\\\\n&= 2 \\times 12 \\\\\n&= 24\n\\end{aligned}\n$$\n따라서 정답은 ③이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -490,17 +490,17 @@ window.questionBank = [
     "wide": false,
     "content": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고 $\\overline{AO} = \\overline{OC}$, $\\overline{BO} = \\overline{OD}$인 평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은? [4점]",
     "choices": [
+      "직선 $BD$는 선분 $AO$의 수직이등분선이다.",
       "점 $O$는 선분 $AC$의 중점이다.",
       "직선 $BD$는 선분 $AC$의 수직이등분선이다.",
       "점 $C$에서 직선 $BD$에 내린 수선의 발은 점 $O$이다.",
-      "점 $B$와 직선 $AC$ 사이의 거리는 선분 $BO$의 길이와 같다.",
-      "직선 $BD$는 선분 $AO$의 수직이등분선이다."
+      "점 $B$와 직선 $AC$ 사이의 거리는 선분 $BO$의 길이와 같다."
     ],
-    "answer": "⑤",
+    "answer": "①",
     "points": 0,
     "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
     "templateKey": "TPL_QUADRILATERAL_PROPERTIES_DIAGONAL_ORTHOGONAL",
-    "solution": "수직이등분선은 어떤 선분의 중점을 지나면서 그 선분에 수직인 직선이다. $\\begin{aligned} &\\text{① } \\overline{AO} = \\overline{OC}\\text{이므로 점 } O\\text{는 선분 } AC\\text{의 중점이다. (참)} \\ &\\text{② 직선 } BD\\text{는 선분 } AC\\text{의 중점 } O\\text{를 지나고 } \\overline{AC} \\perp \\overline{BD}\\text{이므로 선분 } AC\\text{의 수직이등분선이다. (참)} \\ &\\text{③ } \\overline{AC} \\perp \\overline{BD}\\text{이므로 점 } C\\text{에서 직선 } BD\\text{에 내린 수선의 발은 점 } O\\text{이다. (참)} \\ &\\text{④ } \\overline{BD} \\perp \\overline{AC}\\text{이므로 점 } B\\text{에서 직선 } AC\\text{에 내린 수선의 길이는 선분 } BO\\text{의 길이와 같다. (참)} \\ &\\text{⑤ 직선 } BD\\text{는 선분 } AO\\text{의 한 끝점인 } O\\text{를 지날 뿐, 선분 } AO\\text{의 중점을 지나지 않으므로 수직이등분선이 아니다. (거짓)} \\end{aligned}$ 따라서 옳지 않은 것은 ⑤이다.",
+    "solution": "수직이등분선은 어떤 선분의 중점을 지나고 그 선분에 수직인 직선임을 이용하여 보기 ①~⑤를 판정한다.\n① 직선 $BD$는 선분 $AO$의 한 끝점 $O$를 지나지만 선분 $AO$의 중점은 지나지 않으므로 선분 $AO$의 수직이등분선이 아니다. (거짓)\n② $\\overline{AO} = \\overline{OC}$이므로 점 $O$는 선분 $AC$의 중점이다. (참)\n③ 점 $O$는 선분 $AC$의 중점이고\n$$\\overline{AC} \\perp \\overline{BD}$$\n이므로 직선 $BD$는 선분 $AC$의 수직이등분선이다. (참)\n④ $\\overline{AC} \\perp \\overline{BD}$이므로 점 $C$에서 직선 $BD$에 내린 수선의 발은 점 $O$이다. (참)\n⑤ 점 $B$에서 직선 $AC$에 내린 수선은 $\\overline{BO}$이므로 점 $B$와 직선 $AC$ 사이의 거리는 $\\overline{BO}$의 길이와 같다. (참)\n따라서 옳지 않은 것은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -536,7 +536,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
     "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_COLLINEAR_EXTERNAL",
-    "solution": "직선, 반직선, 선분의 정의에 따라 개수를 각각 구한다. $\\begin{aligned} &1); \\text{직선의 개수 } a: \\ &\\text{네 점 } A, B, C, D\\text{는 한 직선 위에 있으므로 직선은 } l \\text{ 하나뿐이다. (}1\\text{개)} \\ &\\text{점 } P\\text{와 네 점 } A, B, C, D\\text{를 각각 잇는 직선은 } 4\\text{개이다.} \\ &\\implies a = 1 + 4 = 5 \\ &2); \\text{반직선의 개수 } b: \\ &\\text{직선 } l \\text{ 위에서 생기는 반직선은 오른쪽 방향 } \\overrightarrow{AB}, \\overrightarrow{BC}, \\overrightarrow{CD}\\text{의 } 3\\text{개와} \\ &\\text{왼쪽 방향 } \\overrightarrow{DC}, \\overrightarrow{CB}, \\overrightarrow{BA}\\text{의 } 3\\text{개로 총 } 6\\text{개이다.} \\ &\\text{점 } P\\text{가 관련된 반직선은 } P\\text{에서 출발하는 } 4\\text{개와 } P\\text{로 향하는 } 4\\text{개로 총 } 8\\text{개이다.} \\ &\\implies b = 6 + 8 = 14 \\ &3); \\text{선분의 개수 } c: \\ &5\\text{개의 점 중 서로 다른 두 점을 택하는 방법의 수와 같으므로 } \\ &\\implies c = \\dfrac{5 \\times 4}{2} = 10 \\ &a + b + c = 5 + 14 + 10 = 29 \\end{aligned}$ 따라서 $a + b + c = 29$이므로 정답은 ②이다.",
+    "solution": "직선, 반직선, 선분의 정의에 따라 $a$, $b$, $c$를 각각 구한 뒤 그 합을 계산한다.\n직선의 개수 $a$부터 구한다.\n네 점 $A$, $B$, $C$, $D$는 한 직선 위에 있으므로 이 네 점으로 만드는 직선은 $l$ 하나이다.\n점 $P$와 네 점 $A$, $B$, $C$, $D$를 각각 이으면 직선이 $4$개 더 생기므로\n$$\n\\begin{aligned}\na &= 1 + 4 \\\\\n&= 5\n\\end{aligned}\n$$\n반직선의 개수 $b$를 구한다.\n직선 $l$ 위에서 오른쪽 방향으로는 $\\overrightarrow{AB}$, $\\overrightarrow{BC}$, $\\overrightarrow{CD}$의 $3$개를 만들 수 있다.\n왼쪽 방향으로는 $\\overrightarrow{DC}$, $\\overrightarrow{CB}$, $\\overrightarrow{BA}$의 $3$개를 만들 수 있다.\n직선 $l$ 위에서 만드는 반직선은 모두 $6$개이다.\n점 $P$가 관련된 반직선은 $P$에서 출발하는 $4$개와 $P$로 향하는 $4$개이므로\n$$\n\\begin{aligned}\nb &= 6 + 8 \\\\\n&= 14\n\\end{aligned}\n$$\n선분의 개수 $c$는 $5$개의 점 중 두 점을 택하는 방법의 수와 같으므로\n$$\n\\begin{aligned}\nc &= \\dfrac{5 \\times 4}{2} \\\\\n&= 10\n\\end{aligned}\n$$\n$a + b + c$를 계산하면\n$$\n\\begin{aligned}\na + b + c &= 5 + 14 + 10 \\\\\n&= 29\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -565,14 +565,14 @@ window.questionBank = [
       "모서리 $CG$",
       "모서리 $DH$",
       "모서리 $GH$",
-      "모서리 $AE$",
-      "모서리 $CD$"
+      "모서리 $CD$",
+      "모서리 $AE$"
     ],
-    "answer": "④",
+    "answer": "⑤",
     "points": 0,
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_INTERSECTING_EDGES",
-    "solution": "두 면의 교선은 두 면이 공유하는 모서리이다. $\\begin{aligned} &\\text{면 } ABCD\\text{와 면 } ABFE\\text{가 공유하는 모서리는 } \\overline{AB}\\text{이므로 두 면의 교선은 모서리 } AB\\text{이다.} \\ &\\text{모서리 } AB\\text{와 한 점에서 만나는 모서리는} \\ &\\text{점 } A\\text{를 지나는 모서리 } AD, ; AE\\text{와 점 } B\\text{를 지나는 모서리 } BC, ; BF\\text{의 } 4\\text{개이다.} \\ &\\text{보기 중 이에 해당하는 모서리는 모서리 } AE\\text{이다.} \\ &\\text{모서리 } CD\\text{는 } AB\\text{와 평행하고, 모서리 } CG, DH, GH\\text{는 } AB\\text{와 만나지 않는다.} \\end{aligned}$ 따라서 정답은 ④이다.",
+    "solution": "두 면이 공유하는 모서리를 찾아 교선을 정하고, 그 교선과 한 점에서 만나는 모서리를 고른다.\n면 $ABCD$와 면 $ABFE$가 공유하는 모서리는 $\\overline{AB}$이므로 두 면의 교선은 모서리 $AB$이다.\n모서리 $AB$와 한 점에서 만나는 모서리는 점 $A$를 지나는 모서리 $AD$, $AE$와 점 $B$를 지나는 모서리 $BC$, $BF$이다.\n이렇게 만나는 모서리는 모두 $4$개이다.\n보기 중 이에 해당하는 모서리는 모서리 $AE$이다.\n모서리 $CD$는 $\\overline{AB}$와 평행하고, 모서리 $CG$, $DH$, $GH$는 $\\overline{AB}$와 만나지 않는다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -596,19 +596,19 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]",
+    "content": "직선 위의 네 점 $A, B, C$에 대하여 점 $M$은 선분 $AC$의 중점이고, 점 $M'$은 선분 $AB$의 중점이다. 점들이 $A, M', M, B, C$의 순서로 놓여 있고 $\\overline{M'M} : \\overline{MB} = 4 : 3$, $\\overline{M'M} = 12\\,\\mathrm{cm}$일 때, 선분 $BC$의 길이는? [5점]",
     "choices": [
-      "$24,\\mathrm{cm}$",
-      "$26,\\mathrm{cm}$",
-      "$28,\\mathrm{cm}$",
-      "$30,\\mathrm{cm}$",
-      "$32,\\mathrm{cm}$"
+      "$24\\,\\mathrm{cm}$",
+      "$26\\,\\mathrm{cm}$",
+      "$28\\,\\mathrm{cm}$",
+      "$30\\,\\mathrm{cm}$",
+      "$32\\,\\mathrm{cm}$"
     ],
     "answer": "①",
     "points": 0,
     "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
     "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_NESTED_MIDPOINTS",
-    "solution": "선분의 중점 성질과 주어진 길이의 비를 이용하여 각 선분의 길이를 단계별로 구한다. $$\\begin{aligned} &\\overline{M'M} = 12,\\mathrm{cm}\\text{이고 } \\overline{M'M} : \\overline{MB} = 4 : 3\\text{이므로} \\ &\\overline{MB} = 12 \\times \\dfrac{3}{4} = 9,\\mathrm{cm} \\ &\\overline{M'B} = \\overline{M'M} + \\overline{MB} = 12 + 9 = 21,\\mathrm{cm} \\ &\\text{점 } M'\\text{은 선분 } AB\\text{의 중점이므로 } \\overline{AM'} = \\overline{M'B} = 21,\\mathrm{cm} \\ &\\overline{AB} = \\overline{AM'} + \\overline{M'B} = 21 + 21 = 42,\\mathrm{cm} \\ &\\text{점 } M\\text{은 선분 } AC\\text{의 중점이고, } \\overline{AM} = \\overline{AM'} + \\overline{M'M} = 21 + 12 = 33,\\mathrm{cm}\\text{이므로} \\ &\\overline{AC} = 2 \\times \\overline{AM} = 2 \\times 33 = 66,\\mathrm{cm} \\ &\\overline{BC} = \\overline{AC} - \\overline{AB} = 66 - 42 = 24,\\mathrm{cm} \\end{aligned}$$ 따라서 선분 $BC$의 길이는 $24,\\mathrm{cm}$이므로 정답은 ①이다.",
+    "solution": "선분의 중점 성질과 주어진 길이의 비를 이용하여 각 선분의 길이를 차례로 구한다.\n$\\overline{M'M} : \\overline{MB} = 4 : 3$이고 $\\overline{M'M} = 12\\,\\mathrm{cm}$이므로\n$$\\overline{MB} = 12 \\times \\dfrac{3}{4} = 9\\,\\mathrm{cm}$$\n점 $M'$에서 점 $B$까지의 거리는 두 선분의 길이의 합이므로\n$$\\overline{M'B} = \\overline{M'M} + \\overline{MB} = 12 + 9 = 21\\,\\mathrm{cm}$$\n점 $M'$은 선분 $AB$의 중점이므로 선분 $AM'$의 길이는 선분 $M'B$의 길이와 같다.\n$$\\overline{AM'} = \\overline{M'B} = 21\\,\\mathrm{cm}$$\n선분 $AB$의 길이는 두 선분의 길이의 합이므로\n$$\\overline{AB} = 21 + 21 = 42\\,\\mathrm{cm}$$\n점 $M$은 선분 $AC$의 중점이므로 먼저 선분 $AM$의 길이를 구한다.\n$$\\overline{AM} = \\overline{AM'} + \\overline{M'M} = 21 + 12 = 33\\,\\mathrm{cm}$$\n점 $M$이 선분 $AC$의 중점이므로 선분 $AC$의 길이는 선분 $AM$의 길이의 $2$배이다.\n$$\\overline{AC} = 2 \\times 33 = 66\\,\\mathrm{cm}$$\n선분 $BC$의 길이는 선분 $AC$의 길이에서 선분 $AB$의 길이를 뺀 것과 같다.\n$$\\overline{BC} = 66 - 42 = 24\\,\\mathrm{cm}$$\n따라서 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -644,7 +644,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_SPATIAL_LINE_PLANE_RELATIONS",
     "templateKey": "TPL_M1_SPATIAL_LINE_PLANE_RELATIONS_LOGICAL_DEDUCTION",
-    "solution": "공간에서 직선과 평면의 위치 관계의 참·거짓은 직육면체를 모델로 하여 반례를 찾아 검증한다. $\\begin{aligned} &\\text{① } m \\perp \\mathrm{P}\\text{이고 } l \\perp m\\text{이면 직선 } l\\text{은 평면 } \\mathrm{P}\\text{에 평행하거나 포함될 수 있으므로 } l \\perp \\mathrm{P}\\text{가 아니다.} \\ &\\text{② } m \\parallel \\mathrm{P}\\text{이고 } l \\perp m\\text{이면 직선 } l\\text{은 평면 } \\mathrm{P}\\text{와 수직일 수도 있지만 평행할 수도 있다.} \\ &\\text{③ } m \\parallel \\mathrm{P}\\text{이고 } l \\parallel m\\text{이면 직선 } l\\text{은 평면 } \\mathrm{P}\\text{에 평행하거나 포함된다.} \\ &\\text{④ } \\mathrm{P} \\perp \\mathrm{Q}\\text{이고 } l \\parallel \\mathrm{Q}\\text{이면 } l\\text{은 } \\mathrm{P}\\text{와 평행하거나 비스듬히 만날 수 있다.} \\ &\\text{⑤ 서로 평행한 두 평면 } \\mathrm{P}, \\mathrm{Q}\\text{ 중 한 평면 } \\mathrm{Q}\\text{에 수직인 직선 } l\\text{은 다른 평면 } \\mathrm{P}\\text{와도 항상 수직이다. (참)} \\end{aligned}$ 따라서 항상 참인 것은 ⑤이다.",
+    "solution": "공간에서 직선과 평면의 위치 관계를 직육면체를 모델로 확인하여 항상 $l \\perp \\mathrm{P}$인 조건을 찾는다.\n① $m \\perp \\mathrm{P}$이고 $l \\perp m$이면 $l$은 $\\mathrm{P}$에 평행하거나 $\\mathrm{P}$에 포함될 수 있으므로 항상 $l \\perp \\mathrm{P}$가 아니다.\n② $m \\parallel \\mathrm{P}$이고 $l \\perp m$이면 $l$이 $\\mathrm{P}$와 수직일 수도 있고 평행할 수도 있으므로 항상 $l \\perp \\mathrm{P}$가 아니다.\n③ $l \\parallel m$이고 $m \\parallel \\mathrm{P}$이면 $l$은 $\\mathrm{P}$에 평행하거나 $\\mathrm{P}$에 포함되므로 항상 $l \\perp \\mathrm{P}$가 아니다.\n④ $l \\parallel \\mathrm{Q}$이고 $\\mathrm{P} \\perp \\mathrm{Q}$이면 $l$은 $\\mathrm{P}$와 평행하거나 비스듬히 만날 수 있으므로 항상 $l \\perp \\mathrm{P}$가 아니다.\n⑤ $l \\perp \\mathrm{Q}$이고 $\\mathrm{P} \\parallel \\mathrm{Q}$이면 서로 평행한 두 평면 $\\mathrm{P}$, $\\mathrm{Q}$ 중 한 평면 $\\mathrm{Q}$에 수직인 직선 $l$은 다른 평면 $\\mathrm{P}$와도 수직이다.\n따라서 정답은 ⑤이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -680,7 +680,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
     "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_SKEW_PARALLEL_COUNT",
-    "solution": "꼬인 위치는 공간에서 만나지도 않고 평행하지도 않은 두 직선의 위치 관계이다. $\\begin{aligned} &1); \\text{직육면체 } ABCD-EFGH\\text{에서 모서리 } AB\\text{와} \\ &\\text{한 점에서 만나는 모서리: } AD, ; AE, ; BC, ; BF ; (4\\text{개}) \\ &\\text{평행한 모서리: } CD, ; EF, ; GH ; (3\\text{개}) \\ &\\text{따라서 모서리 } AB\\text{와 꼬인 위치에 있는 모서리는 } CG, ; DH, ; EH, ; FG\\text{의 } 4\\text{개이다.} \\implies x = 4 \\ &2); \\text{삼각기둥 } ABC-DEF\\text{에서 밑면 } DEF\\text{와} \\ &\\text{평행한 모서리는 마주 보는 밑면 } ABC\\text{의 세 변인 } AB, ; BC, ; CA\\text{뿐이다.} \\ &\\text{옆모서리 } AD, ; BE, ; CF\\text{는 면 } DEF\\text{와 한 점에서 만나고, 밑면의 세 모서리는 면에 포함된다.} \\ &\\implies y = 3 \\end{aligned}$ 따라서 순서대로 $4$개, $3$개이므로 정답은 ①이다.",
+    "solution": "꼬인 위치의 뜻을 이용하여 두 입체도형에서 조건에 맞는 모서리의 개수를 각각 센다.\n직육면체 $ABCD-EFGH$에서 모서리 $AB$와 한 점에서 만나는 모서리는 $AD$, $AE$, $BC$, $BF$의 $4$개이다.\n모서리 $AB$와 평행한 모서리는 $CD$, $EF$, $GH$의 $3$개이다.\n남은 모서리는 $CG$, $DH$, $EH$, $FG$의 $4$개이고, 이들은 모서리 $AB$와 만나지도 평행하지도 않으므로 꼬인 위치에 있다.\n$$x = 4$$\n삼각기둥 $ABC-DEF$에서 밑면 $DEF$와 평행한 모서리는 마주 보는 밑면 $ABC$의 세 변 $AB$, $BC$, $CA$의 $3$개이다.\n옆모서리 $AD$, $BE$, $CF$는 밑면 $DEF$와 한 점에서 만나고, 밑면 $DEF$의 세 모서리는 면 $DEF$에 포함되므로 평행한 모서리가 아니다.\n$$y = 3$$\n따라서 $x = 4$, $y = 3$이므로 정답은 ①이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -716,7 +716,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
     "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_VERTICAL_SEGMENT",
-    "solution": "좌표평면 위의 점의 좌표를 구하고, 공통 높이를 갖는 두 삼각형의 넓이 비를 이용한다. $\\begin{aligned} &\\text{점 } A(3, k)\\text{가 } y=\\dfrac{18}{x}\\text{ 위의 점이므로 } k = \\dfrac{18}{3} = 6 \\implies A(3, 6) \\ &\\text{세 점 } A, B, C\\text{의 } x\\text{좌표가 모두 } 3\\text{이므로} \\ &\\text{점 } B\\text{는 } y=-x\\text{ 위의 점이므로 } B(3, -3) \\ &\\text{점 } C\\text{는 } y=cx\\text{ 위의 점이므로 } C(3, 3c) \\ &\\triangle AOB\\text{와 } \\triangle AOC\\text{는 직선 } x=3\\text{ 위의 선분을 밑변으로 볼 때 높이가 모두 원점에서 직선까지의 거리인 } 3\\text{이다.} \\ &\\overline{AB} = 6 - (-3) = 9 \\implies \\triangle AOB = \\dfrac{1}{2} \\times 9 \\times 3 = \\dfrac{27}{2} \\ &\\triangle AOB = \\dfrac{1}{2}\\triangle AOC \\implies \\triangle AOC = 2 \\times \\dfrac{27}{2} = 27 \\ &\\dfrac{1}{2} \\times \\overline{AC} \\times 3 = 27 \\implies \\overline{AC} = 18 \\ &\\text{점 } C\\text{가 점 } B\\text{보다 아래쪽에 있으므로 } C\\text{의 } y\\text{좌표는 } 6 - 18 = -12 \\ &3c = -12 \\implies c = -4 \\end{aligned}$ 따라서 상수 $c$의 값은 $-4$이므로 정답은 ②이다.",
+    "solution": "점 $A$의 좌표를 구한 뒤, 밑변이 같은 직선 위에 있는 두 삼각형의 넓이의 비로 점 $C$의 좌표를 구하여 $c$를 정한다.\n점 $A(3, k)$가 $y=\\dfrac{18}{x}$의 그래프 위의 점이므로\n$$k = \\dfrac{18}{3} = 6$$\n점 $A$의 좌표는 $(3, 6)$이다.\n세 점 $A$, $B$, $C$의 $x$좌표가 모두 $3$이므로 세 점은 직선 $x=3$ 위에 있다.\n점 $B$는 $y=-x$의 그래프 위의 점이므로\n$$B(3, -3)$$\n점 $C$는 $y=cx$의 그래프 위의 점이므로\n$$C(3, 3c)$$\n$\\triangle AOB$와 $\\triangle AOC$는 밑변을 직선 $x=3$ 위에 두고, 높이가 원점 $O$에서 직선 $x=3$까지의 거리인 $3$으로 같다.\n선분 $AB$의 길이는 두 점의 $y$좌표의 차이이므로\n$$\\overline{AB} = 6 - (-3) = 9$$\n$$\\triangle AOB = \\dfrac{1}{2} \\times 9 \\times 3 = \\dfrac{27}{2}$$\n$\\triangle AOB$의 넓이가 $\\triangle AOC$의 넓이의 $\\dfrac{1}{2}$배이므로\n$$\\triangle AOC = 2 \\times \\dfrac{27}{2} = 27$$\n$$\\dfrac{1}{2} \\times \\overline{AC} \\times 3 = 27$$\n$$\\overline{AC} = 18$$\n점 $C$는 점 $B$보다 아래쪽에 있으므로 점 $C$의 $y$좌표는 점 $A$의 $y$좌표보다 $18$만큼 작다.\n$$6 - 18 = -12$$\n$$3c = -12$$\n$$c = -4$$\n따라서 정답은 ②이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -746,7 +746,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
     "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_LINEAR_SYSTEM",
-    "solution": "맞꼭지각의 크기는 서로 같고, 한 직선 위에서 이웃한 두 각의 크기의 합은 $180^\\circ$이다. $\\begin{aligned} &\\text{[1단계: } x\\text{의 값 구하기]} \\ &\\text{맞꼭지각의 크기는 서로 같으므로} \\ &2x + 15 = 4x - 17 \\ &2x = 32 \\implies x = 16 \\ &\\text{이때 이 각의 크기는 } 2 \\times 16 + 15 = 47^\\circ\\text{이다.} \\ &\\text{[2단계: } y\\text{의 값 구하기]} \\ &\\text{한 직선 위에서 이웃한 두 각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &(3y + 13) + 47 = 180 \\ &3y + 60 = 180 \\ &3y = 120 \\implies y = 40 \\end{aligned}$ 따라서 $x = 16$, $y = 40$이다.",
+    "solution": "맞꼭지각의 크기가 같다는 성질로 $x$를 구하고, 한 직선 위에서 이웃한 두 각의 크기의 합이 $180^\\circ$임을 이용하여 $y$를 구한다.\n맞꼭지각의 크기는 서로 같으므로\n$$\\begin{aligned} 2x + 15 &= 4x - 17 \\\\ 2x &= 32 \\\\ x &= 16 \\end{aligned}$$\n이때 맞꼭지각의 크기는\n$$2 \\times 16 + 15 = 47^\\circ$$\n한 직선 위에서 이웃한 두 각의 크기의 합은 $180^\\circ$이므로\n$$\\begin{aligned} (3y + 13) + 47 &= 180 \\\\ 3y + 60 &= 180 \\\\ 3y &= 120 \\\\ y &= 40 \\end{aligned}$$\n따라서 $x = 16$, $y = 40$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -776,7 +776,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS",
     "templateKey": "TPL_M1_SQUARE_COORDINATES_AND_GRAPH_COEFFICIENTS_STANDARD",
-    "solution": "정사각형의 한 변의 길이를 구하여 꼭짓점의 좌표를 결정한 뒤 각 함수식에 대입한다. $\\begin{aligned} &\\text{[1단계: 정사각형의 한 변의 길이와 점 } A, B\\text{의 좌표 구하기]} \\ &\\text{정사각형 } ABCD\\text{의 넓이가 } 25\\text{이므로 한 변의 길이는 } 5\\text{이다.} \\ &\\text{점 } A\\text{와 점 } D\\text{의 } y\\text{좌표가 같고 점 } A\\text{가 점 } D(-1, -2)\\text{의 왼쪽에 있으므로} \\ &A(-1 - 5, -2) \\implies A(-6, -2) \\ &\\text{점 } B\\text{는 점 } A\\text{에서 아래로 } 5\\text{만큼 떨어진 위치이므로} \\ &B(-6, -2 - 5) \\implies B(-6, -7) \\ &\\text{[2단계: 상수 } a, b\\text{의 값 구하기]} \\ &\\text{점 } A(-6, -2)\\text{가 } y=ax\\text{ 위의 점이므로} \\ &-2 = a \\times (-6) \\implies a = \\dfrac{1}{3} \\ &\\text{점 } B(-6, -7)\\text{가 } y=\\dfrac{b}{x}\\text{ 위의 점이므로} \\ &-7 = \\dfrac{b}{-6} \\implies b = 42 \\ &\\text{[3단계: } ab\\text{의 값 계산]} \\ &ab = \\dfrac{1}{3} \\times 42 = 14 \\end{aligned}$ 따라서 $ab = 14$이다.",
+    "solution": "정사각형의 한 변의 길이로 점 $A$, $B$의 좌표를 정한 뒤, 두 그래프의 식에 대입하여 $a$, $b$를 구한다.\n넓이가 $25$인 정사각형 $ABCD$의 한 변의 길이는 $5$이다.\n점 $A$와 점 $D$의 $y$좌표가 같고 점 $A$가 점 $D(-1, -2)$의 왼쪽에 있으므로\n$$A(-1 - 5, -2)$$\n$$A(-6, -2)$$\n점 $B$는 점 $A$보다 아래쪽에 있고 정사각형의 한 변의 길이가 $5$이므로\n$$B(-6, -2 - 5)$$\n$$B(-6, -7)$$\n점 $A(-6, -2)$가 $y=ax$의 그래프 위의 점이므로\n$$-2 = a \\times (-6)$$\n$$a = \\dfrac{1}{3}$$\n점 $B(-6, -7)$이 $y=\\dfrac{b}{x}$의 그래프 위의 점이므로\n$$-7 = \\dfrac{b}{-6}$$\n$$b = 42$$\n$$ab = \\dfrac{1}{3} \\times 42 = 14$$\n따라서 $ab = 14$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -800,13 +800,13 @@ window.questionBank = [
       "객관식"
     ],
     "wide": false,
-    "content": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]",
+    "content": "지점 $A$에서 강 건너에 있는 지점 $B$까지의 거리를 알아보기 위해 측량을 진행하였다. 선분 $AD$와 선분 $BC$의 교점을 $O$라 할 때, $\\overline{AO} = \\overline{DO}$, $\\overline{BO} = \\overline{CO}$가 되도록 평지 위에 두 지점 $C, D$를 정하였다. 지점 $C$와 지점 $D$ 사이의 거리를 측정한 값이 $15\\,\\mathrm{km}$일 때, 지점 $A$에서 지점 $B$까지의 거리를 구하고 이용된 삼각형의 합동 조건을 포함하여 서술하시오. [6점]",
     "choices": [],
-    "answer": "$15,\\mathrm{km}$",
+    "answer": "$15\\,\\mathrm{km}$",
     "points": 0,
     "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
     "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_DISTANCE_MEASUREMENT",
-    "solution": "두 삼각형의 합동 조건을 밝혀 대응변의 길이가 같음을 보인다. $\\begin{aligned} &\\text{[1단계: 삼각형의 합동 증명]} \\ &\\triangle OAB\\text{와 } \\triangle ODC\\text{에서} \\ &\\overline{AO} = \\overline{DO} ; (\\text{조건}) \\ &\\overline{BO} = \\overline{CO} ; (\\text{조건}) \\ &\\angle AOB = \\angle DOC ; (\\text{맞꼭지각}) \\ &\\text{따라서 두 쌍의 대응변의 길이가 각각 같고 그 끼인각의 크기가 같으므로} \\ &\\triangle OAB \\equiv \\triangle ODC ; (\\mathrm{SAS}\\text{ 합동}) \\ &\\text{[2단계: 거리 계산]} \\ &\\text{합동인 두 삼각형에서 대응변의 길이는 서로 같으므로} \\ &\\overline{AB} = \\overline{DC} = 15,\\mathrm{km} \\end{aligned}$ 따라서 지점 $A$에서 지점 $B$까지의 거리는 $15,\\mathrm{km}$이다.",
+    "solution": "두 삼각형이 합동임을 밝히고, 합동인 두 삼각형의 대응변의 길이가 같음을 이용하여 거리를 구한다.\n$\\triangle OAB$와 $\\triangle ODC$에서 주어진 조건과 맞꼭지각의 성질을 확인한다.\n$$\\overline{AO} = \\overline{DO} \\quad (\\text{조건})$$\n$$\\overline{BO} = \\overline{CO} \\quad (\\text{조건})$$\n$$\\angle AOB = \\angle DOC \\quad (\\text{맞꼭지각})$$\n두 쌍의 대응변의 길이가 각각 같고 그 끼인각의 크기가 같으므로\n$$\\triangle OAB \\equiv \\triangle ODC \\quad (\\mathrm{SAS} \\text{ 합동})$$\n합동인 두 삼각형에서 대응변의 길이는 서로 같으므로\n$$\\overline{AB} = \\overline{DC} = 15\\,\\mathrm{km}$$\n따라서 지점 $A$에서 지점 $B$까지의 거리는 $15\\,\\mathrm{km}$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
@@ -836,7 +836,7 @@ window.questionBank = [
     "points": 0,
     "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
     "templateKey": "TPL_MOVE_FOLDING_REFLECTION_RECTANGLE_TAPE",
-    "solution": "접은 각의 크기는 접기 전의 각의 크기와 같고, 직사각형의 마주 보는 두 변은 서로 평행하다. $\\begin{aligned} &\\text{[1단계: } \\angle FED\\text{와 } \\angle EFB\\text{의 크기 구하기]} \\ &\\text{점 } E\\text{는 선분 } AD\\text{ 위의 점이므로} \\ &\\angle FED = 180^\\circ - 124^\\circ = 56^\\circ \\ &\\overline{AD} \\parallel \\overline{BC}\\text{이므로 엇각의 크기가 같아} \\ &\\angle EFB = \\angle FED = 56^\\circ \\ &\\text{[2단계: 접은 각의 성질과 } \\triangle EFI\\text{의 내각 계산]} \\ &\\text{점 } B\\text{를 접어 옮긴 점이 } G\\text{이므로 } \\overline{FB}\\text{는 } \\overline{FG}\\text{와 겹친다.} \\ &\\text{접기에서 각이 보존되어 } \\angle EFG = \\angle EFB = 56^\\circ\\text{이고, } I\\text{가 } FG\\text{ 위에 있으므로 } \\angle EFI = 56^\\circ\\text{이다.} \\ &I\\text{는 } E,D\\text{ 사이에 있으므로 } \\angle FEI = \\angle FED = 56^\\circ \\ &\\triangle EFI\\text{에서 세 내각의 크기의 합은 } 180^\\circ\\text{이므로} \\ &\\angle x = 180^\\circ - (\\angle FEI + \\angle EFI) = 180^\\circ - (56^\\circ + 56^\\circ) = 180^\\circ - 112^\\circ = 68^\\circ \\end{aligned}$ 따라서 $\\angle x = 68^\\circ$이다.",
+    "solution": "접은 각의 크기가 접기 전의 각의 크기와 같음과 평행선의 엇각을 이용하여 $\\angle x$를 구한다.\n점 $E$는 변 $AD$ 위의 점이므로 $\\angle AEF$와 $\\angle FED$의 크기의 합은 $180^\\circ$이다.\n$$\\angle FED = 180^\\circ - 124^\\circ = 56^\\circ$$\n$\\overline{AD} \\parallel \\overline{BC}$이므로 엇각의 크기가 같다.\n$$\\angle EFB = \\angle FED = 56^\\circ$$\n점 $B$를 접어 옮긴 점이 $G$이므로 선분 $FB$는 선분 $FG$와 겹치고, 접기 전후의 각의 크기는 같다.\n$$\\angle EFG = \\angle EFB = 56^\\circ$$\n점 $I$가 선분 $FG$ 위의 점이므로\n$$\\angle EFI = \\angle EFG = 56^\\circ$$\n점 $I$는 점 $E$와 점 $D$ 사이에 있으므로\n$$\\angle FEI = \\angle FED = 56^\\circ$$\n$\\triangle EFI$에서 세 내각의 크기의 합은 $180^\\circ$이므로\n$$\\begin{aligned} \\angle x &= 180^\\circ - (\\angle FEI + \\angle EFI) \\\\ &= 180^\\circ - (56^\\circ + 56^\\circ) \\\\ &= 68^\\circ \\end{aligned}$$\n따라서 $\\angle x = 68^\\circ$이다.",
     "reviewStatus": "UNREVIEWED",
     "solutionStatus": "UNREVIEWED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
