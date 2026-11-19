@@ -1,0 +1,418 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-a230d8d64a1e-7b650e96",
+  "examUid": "24_매산고_1학기_기말_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/1final/24_매산고_1학기_기말_고1_기출.js",
+  "expectedSourceBlobSha1": "6be5659a2ee9d14432473eab553f762ca0ab24da",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+        "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_ebf01f0ad0012da20befa466ffb8b065d4716e72372bf2cf1f4388fc59f32434",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE",
+        "templateKey": "TPL_COORD_DISTANCE_DIRECT"
+      },
+      "rationale": "좌표 차3,-2의 제곱합에 제곱근을 취해 √13을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "c7a62732b05085ce614e121a786f629e2b39419265e563b3481fcac1150d3940",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_78db7a0f9ced105a12bf2de0f4a6400387c2ac5be01f71849b2039fbec2ce338",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_BOTH"
+      },
+      "rationale": "수직선에서 2:1 내분점4와 외분점16을 각각 구해 더한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "4d9c67a66952a87c490b2df56bbc715743684d4b4ca95498c494dbb52432d9b0",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_81307f7c2e823355da06123817b570ea2344ecb933efce16aa6c269f42e40df1",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_LINE_RELATION",
+        "templateKey": "TPL_RELATION_PARALLEL_PERP_COMBINED"
+      },
+      "rationale": "기울기3과 수직인 1-a=-1/3을 정한 뒤 평행 조건 -2/(b+1)=-1/3을 푼다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "82c5bdd34c70d6070cecb4ab8acbc90a7e3588a0449fb0e6f56d01ac4a792303",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_2d324b63161761d876a58767cbd013f6238747235bb02c0e3a42136dbb1c6f1c",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "rationale": "지름 끝점으로 중심(1,4),반지름5를 구하고 y=0에서 (x-1)²=9의 두 교점 거리를 계산한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "0ab827ab281c677ce97a31373cc67bd0a69ff2ea33c62c1e8fea7fc27747690e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_bd1521b1e905cb05a9b9c2277d697329b7d5818123480d36b70134f64edf32bc",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_DISTANCE_OPTIMIZATION",
+        "templateKey": "TPL_DISTANCE_SQSUM_MIN"
+      },
+      "rationale": "P=(t,0)으로 두어 AP²+BP²를 2(t+1)²+76으로 완전제곱한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "d02e2de91c55691e0fe071fdaa59c38336390ae4260518124ca17957633ed613",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f0cdf7dac099bfbfb3643b35c86a4aff2188d4444839c641bf8e10faac3aef84",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_TWO_SLOPES"
+      },
+      "rationale": "P를 지나는 기울기 m의 직선에 접선 거리 조건을 적용해 7m²-8m+1=0의 근의 곱을 읽는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "51a4d6ba89a08a688f85db40484e034b80b7e2817e92df8792ec317b2f7d8b1b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b9c9cad033aa5452420d31bd021ae449b5d9dbdf3b34618a655bc6644fa7c54c",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_GRAPH_REFLECTION",
+        "templateKey": "TT_GRAPH_REFLECTION_CONDITION"
+      },
+      "rationale": "x축 대칭한 포물선과 y=x를 연립한 x²-(a+1)x+4=0의 판별식이0이상인 양수 a를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "5441d0060f39425133e0f8a05a725ea92b9cda34f6da93c10ffcad14f761852b",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a623c286c4a34e16622c99a95feaf5e2010d0c775cd6e0b3a4c401640e7739c2",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_SECTION",
+        "templateKey": "TPL_SECTION_CONDITION_REVERSE"
+      },
+      "rationale": "두 그래프 교점의 x좌표 2±√(4+k)에 1:5 내분점의 x좌표가0인 조건을 적용한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "83eb4623a6494a0b42797d80ece08c6e6652e3012cddb9cbb87b3643523957c1",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_0677e4cbcd0b5e7cce72dfe64c562361a87837bf3bd80778d65c7d09665ead91",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+        "templateKey": "TPL_AREA_POINT"
+      },
+      "rationale": "D=(t,0)의 삼각형 넓이 3|t-3|/2를 ABC의 넓이3과 같게 놓아 두 점을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "d512821d4b22768f0b8a955c4147edfefbcef54d9ef19efd28bdc721fc762428",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_00f80a96fc78561b91fd0014929950c00d0d098558f5bd3a69e537a9530b0897",
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_AREA_BISECTING_LINE",
+        "templateKey": "TPL_AREA_BISECT_TRIANGLE"
+      },
+      "rationale": "직선 y=x+c가 자르는 작은 삼각형 넓이 2(c+4)²/5를 전체 넓이8의 절반4와 같게 놓는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "fbec69d6c56ae519e2760758468f7fa250099dc0d079045675544ecf46289076",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_4968bf7d2d0aff322c8698c2728b621d07bde9af3a181fc7cda4f93884821c72",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_POINT_LINE_DISTANCE"
+      },
+      "rationale": "원점 최대거리 조건으로 l을 OH에 수직인 4x+y-17=0으로 정한 후 원 중심의 거리 d에서 d±11의 곱을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "76d762f2efb3bcb5371ba4527bfceb19cde7de6377bd773f4215c8c8a8b06a82",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3c51f9ca6e3d417837e75f3699e8107e9849c9c33c1bb615ea47cf1203c41cfa",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_EQUATION"
+      },
+      "rationale": "이동 전 좌표 (x+1,y-k)를 대입한 2x-y+k+5=0의 상수항을7과 비교한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "0083ec63f474a39cb7f840a823c545f1d627b96212b6d2139ed940f131b41e1c",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1569c53ef8abc937de86d9ece5bac0d7d199b8d7f4127e38bf21cd0c817d46f0",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_EQUATION",
+        "templateKey": "TM_CIRCLE_MULTI_LINE_TANGENT"
+      },
+      "rationale": "중심에서 두 접선까지 거리를 같게 둔 |b|=|a-b|/√2에서 b/a의 이차방정식을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "c74e77ac4c70da1dea929e606b47e349226249e0cee19a6a21969408396665db",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6a1010cc752fff6200644c4c802b2919316096a4f7ecca1443e052cf936a1eff",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+        "templateKey": "TT_CIRCLE_REFLECTION_CENTER_RELATION"
+      },
+      "rationale": "대칭 중심(a,-b),(b,a)과 원 중심(a,b)의 거리를 모두 반지름 합4와 같게 놓는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "b55883e98a408667ccaf58ab003b3b357531723de1bed58645abf1b5ec3e09ca",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_acc9125b02d38b52338264d2c62b2e7ccdfa2eadee0a2e34984b4b02794a8e31",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_CIRCLE_TRANSLATION",
+        "templateKey": "TT_CIRCLE_TRANSLATION_CENTER"
+      },
+      "rationale": "이동 중심(h,k)에 두 점 통과식을 세워 h=k=2를 얻고 양수 이동량 a=1,b=3을 선택한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "9528f4d46817a057c31d24517da4f76b49b632089b548d5a9f950ca17b5fe69e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_377ab047fc7a4fe97cea561ac04ec9410830e699c80ddfc063eac903d150d1a1",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COORD_MIDPOINT",
+        "templateKey": "TPL_MIDPOINT_DISTANCE_RELATION"
+      },
+      "rationale": "중점이 원점인 대칭 좌표에서 AP²+BP²=2(PM²+AM²)를 증명하고 PM²=25로 자취 원의 넓이를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "dfbb53b020d61301a5eb4d714afd7d4969b0b32735791832f159ed0265f6f581",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a230d8d64a1e-7b650e96.type-ledger.json",
+          "sha256": "c1c92e420b57acebfd71ab3b46caed66849733ab6d40f1b06222dfbaeccd16be"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-75199951de20-8b0ef9a1",
+  "examUid": "26_동산중_1학기_중간_중2_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m2/1mid/26_동산중_1학기_중간_중2_기출.js",
+  "expectedSourceBlobSha1": "5a97f65b3b1a8e699193131dcbefde2cc2892f4c",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m2-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-75199951de20-8b0ef9a1.type-ledger.json",
+        "sha256": "f096a653925d90e0510acdbfc76cbcd8654d0fe8fcb31265cbf51552bd7085d9"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_08334eac5b9e532bc0a8973726b60f751ea0bb9a5a87d6f12f6dfcf657e13cb4",
+      "sourceOrdinal": 23,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL"
+      },
+      "rationale": "원기둥πa제곱(2a-4b)와원뿔(4/3)πa제곱h를같게놓고약분하여h=3a/2-3b를 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중2 수학"
+      },
+      "textBindingFingerprint": "028d27cc1834424278e5c166b887271ce08f9a9eb24f35a0f4f9e50a1b2bd584",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-75199951de20-8b0ef9a1.type-ledger.json",
+          "sha256": "f096a653925d90e0510acdbfc76cbcd8654d0fe8fcb31265cbf51552bd7085d9"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-4da8b05c57dc-f1b76f9d",
+  "sourceArchiveFile": "textbooks/비상교육_기하/비상_기하_벡터_대단원학습평가_고2/비상_기하_벡터_대단원학습평가_고2.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-t-20261116",
+    "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_a1807dacd42a0f6174436c56669cd9f2b8fd99b62b814def070e907afe1ed82a",
+      "sourceOrdinal": 9,
+      "decision": "PICK",
+      "problemTypeKey": "PT_GEO_SPACE_LINE",
+      "templateKey": null,
+      "step": "두 직선의 방향벡터 (-3,2,5)와 (1,2,-3)에 모두 수직인 방향벡터를 내적 조건으로 구해 (4,1,2)를 얻고, 점 (2,3,-1)을 지나는 직선의 방정식을 세운다.",
+      "note": "딥시크(opencode-go/deepseek-v4.1-flash) 채움 + Sonnet 검수 1회(동의; 딥시크값 PT_GEO_SPACE_LINE/-) — type-redo 2026-11-19",
+      "figure": false,
+      "check": "DS_SONNET_REVIEWED",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-r/redo-20261119.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_635db66694e873a76f08427cf13337fda54599e6199505242223fb3b49ab4c70",
+      "sourceOrdinal": 15,
+      "decision": "PICK",
+      "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+      "templateKey": "TPL_DISTANCE_PARALLEL_LINES",
+      "step": "평행 조건에서 a=−4를 구해 직선들을 3x+2y−4=0·3x+2y−7=0으로 맞추고 상수차 3을 √13으로 나눈다.",
+      "note": "",
+      "figure": false,
+      "check": "OUT_OF_CANDIDATES",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-t/비상교육_기하.jsonl"
+    }
+  ]
+}

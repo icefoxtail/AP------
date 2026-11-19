@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-89663d1f4c5b-0565d130",
+  "examUid": "25_금당고_2학기_중간_고2_확률과통계",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js",
+  "expectedSourceBlobSha1": "dcd56049115e51047412d2a7e29b917181db7935",
+  "expectedQuestionCount": 20,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-89663d1f4c5b-0565d130.type-ledger.json",
+        "sha256": "c5c7cc22a6c8cc7504e3ee8bb13c7d42c19a3e9ce770b5cf187fbac317e93234"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_8888c097785ecd71e74f5d458579fda472773932cbadc933b1bfda805213edc4",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_SET_CONDITION"
+      },
+      "rationale": "짝수 크기 부분집합의 선택을 세고 교차조건 실패를 포함배제로 제거한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "77de7dd4f4191c1264dd78f60f76a1079c4e5a02c1c396650d6c1e522f2a81ec",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-89663d1f4c5b-0565d130.type-ledger.json",
+          "sha256": "c5c7cc22a6c8cc7504e3ee8bb13c7d42c19a3e9ce770b5cf187fbac317e93234"
+        }
+      ]
+    }
+  ]
+}

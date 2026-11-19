@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-3dbe90f5df2a-4999c74b",
+  "examUid": "비상_대수_지수로그함수_익힘책_고2_유형확인",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그함수_익힘책_고2_유형확인.js",
+  "expectedSourceBlobSha1": "4b422e18b313205cb0c200398cc1b9e20bd74d14",
+  "expectedQuestionCount": 14,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3dbe90f5df2a-4999c74b.type-ledger.json",
+        "sha256": "7d0c83964f687fc4875fbba4bd3e0182a196a54b64bbad0620cb982998be1edd"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_92509573e77a4939de8dfa411e2f7b8125fefa29ee64d9ab9315b134c97d04f3",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_PRODUCT_EXTREMUM"
+      },
+      "rationale": "증가로그의 진수(x−1)(m−x)를 합일정 양수곱으로 최대화하고 m>1로 양의 해17을 고른다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "공통수학1"
+      },
+      "textBindingFingerprint": "ee22d9a9554aca8463a3b7cd6fd57e1d4334598e9a6f72892c86b3d56e496561",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3dbe90f5df2a-4999c74b.type-ledger.json",
+          "sha256": "7d0c83964f687fc4875fbba4bd3e0182a196a54b64bbad0620cb982998be1edd"
+        }
+      ]
+    }
+  ]
+}

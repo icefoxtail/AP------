@@ -1,0 +1,538 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-dd120c5aff9d-33d2f6df",
+  "examUid": "21_효천고_2학기_중간_고1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/high/h1/2mid/21_효천고_2학기_중간_고1_기출.js",
+  "expectedSourceBlobSha1": "ed7ed2d00f6cb4238affdbdeed127ec85fb61dc0",
+  "expectedQuestionCount": 22,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+        "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_edff063a52aacd5cc09fb7850742b02ba1859a98207a9f89c05c6727fd1e021e",
+      "sourceOrdinal": 1,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT"
+      },
+      "rationale": "대응도에서 왼쪽 2에서 출발한 화살표가 오른쪽 1에 도착하므로 f(2)=1이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "84d49059636501768bd4a4fe59051bd82f1313a937b12e4a69e6cabf6bb11310",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_6085f5a02cac6f069522b621b94be862d317d0633b0fcd5bca9de0ffc5c9d4da",
+      "sourceOrdinal": 2,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_SUBSET_COUNT_REQUIRED_FORBIDDEN"
+      },
+      "rationale": "서로소 조건으로 1,3을 제외하고 나머지 2,4,5를 각각 선택하거나 빼므로 2³개이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "c9b12f307192bdeee87a622978b8567164c2a40d24631230d88831864795cb83",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f1a1df1aa1ec180b0d95403c99ea63f574d658ed6c0f27764762c8ccf5663273",
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_LINE_TRANSLATION",
+        "templateKey": "TT_LINE_TRANSLATION_EQUATION"
+      },
+      "rationale": "옮긴 직선 y=2(x-a)+1에 (4,1)을 대입하여 a=4를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "9cdae2b9a9832186b54341584a505cd6a71d8590bd17d720c63616f72ad5a702",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_1a01eaaa4e1a675571d760906c036394daf8de34f6459b5b90caf618be89eddd",
+      "sourceOrdinal": 4,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER"
+      },
+      "rationale": "대우에서 x=a이면 x²-2x-5=0이어야 하므로 가능한 a는 이차방정식의 두 근이고 합은 2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "567163f68c8fbebae7e7efa8af44c5e9609753f6ae594b514058dacfb45864ba",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d0a5a546d9cdf2ea98effc83dee4de182bd647b73fa671a0793311c40d53f100",
+      "sourceOrdinal": 5,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_CIRCLE_REFLECTION",
+        "templateKey": "TT_CIRCLE_REFLECTION_CENTER_RELATION"
+      },
+      "rationale": "대칭 후 중심 (k,-6)이 넓이를 이등분하는 직선 2x+y=4 위에 있으므로 2k-6=4이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "7877774dbb36ae534a9a14f91334a270fb7f73d1f6d4cc735a7cad238b4c3b7d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_92d818b6613d71f388951563cb2d29e64927a559ed9b3088fe793760cd2b6002",
+      "sourceOrdinal": 6,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION",
+        "templateKey": "TPL_OPERATION_WITH_PARAMETER"
+      },
+      "rationale": "각 a의 집합을 중복 제거 후 비교하면 a=2에서만 A={1,2,3},B={0,1,2}로 대칭차 {0,3}이 된다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "1a26485fbaa7aa61d6741d88746b41a6ef72e22f1e54633a81a55f732d768d29",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_f04b00d52a587200c25b6f46e090f96850433ab3a74ab5e99fafa833eb55b6f3",
+      "sourceOrdinal": 7,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_INVERSE_COMPOSITION",
+        "templateKey": "TPL_INVERSE_COMPOSITION_FORMULA"
+      },
+      "rationale": "g∘f=x-3과 그 역 x+3,g⁻¹=2x+2를 직접 계산해 역합성의 순서와 빈칸 값을 확인한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "07fb56b4e8c69fd86d57e467c1dffb59085b0cfc3f45ea4204333883dc143909",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_b5e0a09a489391da5dd7feec0a8f68cd922673eea6d9b1c04c2cc37b10da3d7c",
+      "sourceOrdinal": 8,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_EQUATION_TRANSFORM",
+        "templateKey": "TT_EQUATION_RELATION"
+      },
+      "rationale": "그림의 대응점 변환 (x,y)→(x+5,-y-1)과 역치환을 확인해 ㄱ,ㄴ,ㄷ이 모두 참임을 판정한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "93f6f03d2c16a5292f4869838cf3a27bb52896ec5e0de20ceabbc4ec4d33148d",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_412da83ac449a6419e935154eeac0474c2482c4eab3bb0d58950dd17dbd8009f",
+      "sourceOrdinal": 9,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION"
+      },
+      "rationale": "끝점 함수값이 공역 끝값 -1,0을 한 번씩 가져야 하고 a≠0이므로 감소하는 배치에서 a=b=-1을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "9db86ed532ff4f37d1c6488f0795b1429b41ecf7b4f9d0a8b651b1e2c15ae6ec",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_937a2ebafa6b1f1ccca91efbe572917f8aa9dca1eb95454d125e29dd982e656b",
+      "sourceOrdinal": 10,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_VALUE",
+        "templateKey": "TPL_FUNCTION_VALUE_DIRECT"
+      },
+      "rationale": "함수의 정의에 따라 2부터 11까지 약수 개수를 2,2,3,2,4,2,4,3,4,2로 세어 합 28을 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "0c5e681f0ca3a0edef0d9fc076c5c7c6d78efed7413a1057c56c1130b7d33921",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_a4f8ada67bf8c26ba0038501e1310e687ab7ff9484f5d1a55ebcf225a445c8fe",
+      "sourceOrdinal": 11,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_OPERATION_LAW",
+        "templateKey": "TPL_OPERATION_LAW_JUDGMENT"
+      },
+      "rationale": "차집합을 교집합·여집합으로 바꾸면 ①의 좌변은 (A-B)∪(A∩C)여서 제시한 우변과 같지 않다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "99d1fd4ada7574e5ea9b1889fe3c66286416afb222741dc1604162016d446a8e",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ff3c3ee70bc833ed9a55d38273db5ab93cf8a26d838ad4e7d4da1ef5d81716e6",
+      "sourceOrdinal": 12,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+        "templateKey": "TPL_IMPLICATION_INTERVAL_PARAMETER"
+      },
+      "rationale": "Pᶜ=(-∞,-2)∪(1,3)가 x<a에 포함되고 (-∞,b)가 Pᶜ에 포함되려면 a≥3,b≤-2이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "f5a723553d5e0ca1dcd5bbee38f921c0db2e660db59e472da3cd581efa17a6e4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_84edaca43ae1f8b18f1ca229dcdaeb3ae671c39d752496a08435b834212dc939",
+      "sourceOrdinal": 13,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM"
+      },
+      "rationale": "그림의 두 삼각형 넓이 합을 9/(2m)+2m으로 나타내 산술기하평균으로 하한6과 등호 m=3/2를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "45dfc8c4927a22e24e6a3b9b1ff5068d10fbc5109c8c9dc92740a630f069a307",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_056f81a6b738d90ec9a933b964c30ef4395092a29d351c0de8557d8ceab22356",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_FINITE_BIJECTION",
+        "templateKey": "TPL_FINITE_BIJECTION_INVERSE_DEDUCTION"
+      },
+      "rationale": "역함숫값과 g(2)의 합7을 (3,4),(4,3)으로 나누고 일대일 대응과 두 번째 조건으로 최솟값3을 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "848026a66cb4f3026b0a116789e40effbda67b574d8ca5b9108d6c004a2a7181",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_838a57e2cf2063e5373b452c4da28bdc48c1f520642cac6fd3f38b80765047ca",
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SUBSET_COUNT",
+        "templateKey": "TPL_RELATED_SUBSET_PAIR_COUNT"
+      },
+      "rationale": "등식에서 A⊂X,B∩X=∅와",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "51c442f756dce510d0f6fc664ba659edb9fcd086919c600c2cd82fc18fb7ca6f",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_fd4f5dffa6514ec8bcf22f58f1caa2cdf835d054b7b09c029b232d8785df3e46",
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_EXTREMUM",
+        "templateKey": "TPL_SET_SUM_EXTREMUM"
+      },
+      "rationale": "대칭차 전체 조건으로 두 3원소 집합이 X를 분할하므로 합21의 절반을 넘는 S(A)의 최소 정수11을 실제 분할로 달성한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "671be7f94d73f949fbf4b51c4aa9ad8d5977f4454c0c14dac162c68be2c314e4",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_d5d93457bc55cc5f0a7245683b9a81ec03e7991354c47db7c99e905d0782b6b7",
+      "sourceOrdinal": 18,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_COMPOSITION_EQUATION",
+        "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE"
+      },
+      "rationale": "t=f(x)로 t+f(t)=4의 네 값을 먼저 구하고 각 함수값의 원상을 구간별 대칭으로 세어 해의 합19를 얻는다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "4ecfe45a61805b9e31cfbacb85a65b2d9890bf575e6eddd9da15f1b79d0a612a",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_3abe4b37e32e15bd8ccd81382b327c1e6cabdfa8f91e9fcf757479900b167d08",
+      "sourceOrdinal": 19,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_MOVE_COMPOSITE",
+        "templateKey": "TT_COMPOSITE_LINE"
+      },
+      "rationale": "$y=ax+2$를 $(4,1)$만큼 평행이동한 뒤 $y=x$에 대칭이동한 직선 $l'$을 구하고, $l$과 $l'$의 $x=0$에서의 $y$값을 같게 놓아 $a=\\frac32$를 구한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(상)"
+      },
+      "textBindingFingerprint": "40e1dc653468e34d7e867f43f472dd451b8d6e1bfd8b1b66556c3ed1e801a438",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_ef433fe269262748bd7b1c1d93a5d40de548ac8661ce4972f480f4c582222c7d",
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_SET_EXTREMUM",
+        "templateKey": "TPL_DIFFERENCE_RANGE"
+      },
+      "rationale": "합집합140과 인원차40에서 교집합=2b-100≥0을 얻어 A만인140-b를 b=50에서 최대90으로 만든다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "59932a112a19f2b42bd2bddf0e67a9685bf2b76cdfa2c83c8f10560c490f66c9",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_8bbe3131a614f8a2375233bffc4b2ef949d6f73e082a19a690ed283f1156509f",
+      "sourceOrdinal": 21,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+        "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION"
+      },
+      "rationale": "역함수 존재를 위해 미사용 함수값 2,3을 3+a,4+a에 순서대로 배정하면 a=-1이다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "deb675883d6d43d148673163235873ec76f1f25803773decf9034836ebfc9281",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    },
+    {
+      "questionUid": "qid_v1_e37d36e8b5f36ca86fe6426fa3f693097deab48d31b50c47fab6026060ab3fd2",
+      "sourceOrdinal": 22,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_NEC_SUFF_RELATION",
+        "templateKey": "TPL_NEC_SUFF_POLYNOMIAL_PARAMETER"
+      },
+      "rationale": "삼차식의 고정근1로 b=1을 정하고 나머지 이차식의 실근이 없거나 3만 나오도록 판별식과 중근을 조사한다.",
+      "scope": {
+        "curriculum": "2015",
+        "standardCourse": "수학(하)"
+      },
+      "textBindingFingerprint": "d64159fe5b8f50b4ebe3a89c19380bf7959f7c06362d5918de4901906369a866",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dd120c5aff9d-33d2f6df.type-ledger.json",
+          "sha256": "262e212096456d5eebad70d5c5af73a448a9517e05d8ae7728b9eec5e1e22d8a"
+        }
+      ]
+    }
+  ]
+}
