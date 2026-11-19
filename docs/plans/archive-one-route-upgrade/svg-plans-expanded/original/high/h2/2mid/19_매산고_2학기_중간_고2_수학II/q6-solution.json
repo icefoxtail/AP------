@@ -1,0 +1,74 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "5",
+          "-1"
+        ]
+      },
+      {
+        "coefficients": [
+          "3",
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "1",
+        "y": "4"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "1",
+        "y": "4"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "1",
+        "4"
+      ]
+    }
+  },
+  "caption": "연속 조건 4=1+a+b와 미분계수 조건 3=3+2a에서 a=0, b=3이다. 그림은 x≤1에서 포물선 y=-x²+5x, x>1에서 곡선 y=x³+3이고 점 P(1,4)에서 값이 같고 기울기도 3으로 같게 이어진다. 따라서 a-b=-3이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases} -x^2+5x & (x \\le 1) \\\\ x^3+ax^2+b & (x > 1) \\end{cases}$이 모든 실수 $x$에서 미분가능하도록 하는 상수 $a, b$에 대하여 $a-b$의 값은? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=0, b=3일 때 x=1에서 값 4와 기울기 3으로 이어지는 두 조각을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=1에서 포물선과 삼차곡선이 P(1,4)에서 값과 기울기 3이 같게 이어짐을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽의 위로 볼록한 포물선이 점 P에서 오른쪽의 삼차곡선으로 같은 기울기로 이어지는 그래프이다."
+}
