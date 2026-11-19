@@ -242,7 +242,7 @@ const gradeCourseAllowlist = new Set(
 const taxonomyVersion = canonicalMasterSha;
 const approvedFieldStatus = (value) => /^approved(?:_|$)/i.test(String(value || ""));
 const reviewedMetadataStatuses = new Set(["MOTHER_FINAL"]);
-function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGrade, assignmentFp }) {
+function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGrade, assignmentFp, rowBound = false }) {
   const fail = (reason) => ({ assignment: null, reason });
   if (!id || !meta || id.questionUid !== meta.questionUid) return fail("assignment_identity_unverified");
   if (
@@ -251,7 +251,8 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
     Number(id.sourceOrdinal) !== sourceOrdinal ||
     Number(meta.sourceOrdinal) !== sourceOrdinal
   ) return fail("assignment_identity_mismatch");
-  if (!sourceGrade || !assignmentFp || meta.contentFingerprint !== assignmentFp)
+  // 행의 발문·보기 결속(rowBound: classifyMetaBinding "row")이 확인된 행만 통과한다. 해설·정답·그림이 바뀐 것은 이유가 되지 않는다.
+  if (!sourceGrade || !assignmentFp || !rowBound)
     return fail("assignment_fingerprint_mismatch");
   const metadataStatus = String(meta.metadataStatus || "");
   const candidates = (sourceParentsByUid.get(id.questionUid) || []).filter((link) =>
@@ -460,16 +461,6 @@ for (const exam of exams) {
     });
     const registrationPending = meta?.registrationUpdateState?.schemaVersion === "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1" &&
       ["PHYSICAL_META_UPDATED_REVIEW_RESET_PENDING", "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING"].includes(meta.registrationUpdateState.disposition);
-    const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
-      ? verifiedBasicAssignment({
-          id,
-          meta: validJoin ? meta : null,
-          sourceFile: file,
-          sourceOrdinal: ordinal,
-          sourceGrade: sourceGradeEvidence.grade,
-          assignmentFp: assignmentFingerprint,
-        })
-      : { assignment: null, reason: sourceGradeEvidence.status };
     // Binding of the metadata row to this question (S14). "exact": the row was approved against
     // exactly these bytes. "content": only the answer/solution bytes changed after approval; the
     // stem, choices and image the classification describes are byte-identical (assignment
@@ -486,6 +477,17 @@ for (const exam of exams) {
     }
     const metaBinding = bindingKind ? "text" : "";
     const metaHint = buildMetaHint(meta, bindingKind);
+    const assignmentResult = identityStatus === "VERIFIED" && sourceGradeEvidence.status === "VALID"
+      ? verifiedBasicAssignment({
+          id,
+          meta: validJoin ? meta : null,
+          sourceFile: file,
+          sourceOrdinal: ordinal,
+          sourceGrade: sourceGradeEvidence.grade,
+          assignmentFp: assignmentFingerprint,
+          rowBound: bindingKind === "row",
+        })
+      : { assignment: null, reason: sourceGradeEvidence.status };
     const record = {
       sourceFile: file,
       sourceOrdinal: ordinal,
@@ -555,8 +557,9 @@ for (const exam of exams) {
             ? "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING" : "PHYSICAL_META_VALUES_BOUND_REVIEW_RESET_PENDING",
         } } : {}),
       } : null,
+      // 전체 지문이 같거나, 행의 발문·보기 결속이 확인되면 VERIFIED. 유형 판정만 묶인 행("type")은 행 자체의 발문·보기 일치가 확인되지 않아 HOLD 그대로.
       sourceStatus:
-        validJoin && meta.sourceFingerprint === fingerprint
+        validJoin && (meta.sourceFingerprint === fingerprint || bindingKind === "row")
           ? "VERIFIED"
           : "HOLD",
       // RPM Primary semantic confirmation is independent of PT/TPL projection materialization.
@@ -598,6 +601,7 @@ for (const exam of exams) {
         scopeParents: basicScopeLinks.records || [],
         canonicalParents: uniqueCanonicalParents,
         allowContentBoundRevision: true,
+        textBound: bindingKind === "row",
       });
       record.metaProjectionStatus = displayResult.projection
         ? "DISPLAY_ONLY_SOURCE_BOUND"

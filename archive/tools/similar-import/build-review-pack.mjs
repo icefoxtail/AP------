@@ -18,7 +18,9 @@ const hasBackslashPair = item => [item.content, item.solution, ...(item.choices 
 /** 풀이 과정에 정답 값이 나오는지: 정답 값의 숫자들이 모두 풀이 과정 글에 있어야 한다. */
 export function solutionShowsAnswer(item, steps, solvedAnswer) {
   const norm = s => String(s).replace(/\$/g, '').replace(/\s+/g, '');
-  const rawAnswer = item.questionType === '객관식' ? (item.choices?.[CIRC.indexOf(item.answer)] ?? '') : item.answer;
+  const rawAnswer = item.questionType === '객관식'
+    ? String(item.answer ?? '').split(/[,，、\s]+/).filter(Boolean).map(c => item.choices?.[CIRC.indexOf(c)] ?? '').join(' ')
+    : item.answer;
   void solvedAnswer; // 작성자가 따로 적은 답이 아니라 풀이 과정 줄에 값이 나오는지 본다
   const text = norm(steps.join(' '));
   const nums = [...String(rawAnswer).replace(/\\[a-zA-Z]+/g, ' ').matchAll(/\d+(?:\.\d+)?/g)].map(m => m[0]);

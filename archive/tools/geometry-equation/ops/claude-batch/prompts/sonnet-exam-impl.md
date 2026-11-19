@@ -1,6 +1,6 @@
 [Sonnet A — 고1 시험지 한 개 해설 SVG 구현·검수 (DeepSeek 초안 인계)]
 작업 트리: C:/Users/USER/Desktop/AP------/.claude/worktrees/svg-h1-batch1 (Git Bash; 모든 경로는 이 기준, 먼저 cd). 메인 지시에 시험지 JS 경로, 표 key, 초안 폴더가 있다: <JS>, <key>, <DS> = .tmp/work/runs/<key>/ds-draft(또는 메인이 지정한 ds-draft2 …). 결과는 <REV> = .tmp/work/runs/<key>/exam-rev 에 쓴다(이미 있으면 메인이 지정한 다른 폴더).
-이 지시는 옛 흐름의 "루나 구현 + 루나 검수"를 한 번에 맡은 것이다. DeepSeek이 그림을 못 보고 만든 초안을 **네가 PNG를 직접 보고** 고쳐 최종 후보를 만든다. 뒤에 다른 Sonnet(B)이 한 번 더 최종 검수하고 게시한다.
+이 지시는 옛 흐름의 "루나 구현 + 루나 검수"를 한 번에 맡은 것이다. DeepSeek이 만든 초안을 **네가 PNG를 직접 보고** 고쳐 최종 후보를 만든다. 뒤에 다른 Sonnet(B)이 한 번 더 최종 검수하고 게시한다.
 완료 기준은 "학생이 PC·휴대폰에서 그림을 보고 풀이를 이해할 수 있는가"이다. 수치상 완벽주의는 하지 않는다.
 
 금지: 손으로 SVG 작성·수정(렌더는 render.mjs로만), 정답·보기 번호를 그림/alt에 넣기, 원본 시험지 JS·archive/assets·엔진 코드 수정, git 명령, 다른 모델 위임, render.lock 직접 조작, 이름·명령줄 패턴으로 프로세스 종료(taskkill /IM, pkill 등. 다른 작업이 같이 죽는다). 렌더가 오래 걸리면 기다린다.

@@ -93,3 +93,21 @@ export function validateRpmPrimaryProvenance({ root, question, final, cache = ne
     scope: record.scope, rpmPath: declared, authorityUse: "RPM_PATH_PROVENANCE_ONLY", selectsPtTpl: false,
     ...(prerequisiteScopeBinding ? { prerequisiteScopeBinding } : {}) };
 }
+
+// Display fill: the author picks only rpmPrimaryRecordId; the registrar writes rpmL1~L4 from that crosswalk row.
+// Existing values are never overwritten (a differing value is only reported) and an unknown ID leaves the fields empty.
+const blank = value => value === null || value === undefined || value === "";
+export function fillRpmFromRecordId({ root, final, cache = new Map(), questionUid, reportTags }) {
+  const id = final.rpmPrimaryRecordId;
+  if (!present(id)) return;
+  const matches = readAuthority(root, cache).rows.filter(value => value.record.id === id);
+  if (matches.length !== 1) { reportTags.push({ questionUid, kind: "RPM_RECORD_ID_NOT_IN_CROSSWALK", rpmPrimaryRecordId: id }); return; }
+  const rpmPath = matches[0].record.rpmPath, filled = [], differs = [];
+  dimensions.forEach((dimension, i) => {
+    const field = `rpmL${i + 1}`;
+    if (blank(final[field])) { final[field] = rpmPath[dimension]; filled.push(field); }
+    else if (final[field] !== rpmPath[dimension]) differs.push(field);
+  });
+  if (filled.length) reportTags.push({ questionUid, kind: "RPM_FILLED_FROM_RECORD_ID", rpmPrimaryRecordId: id, fields: filled });
+  if (differs.length) reportTags.push({ questionUid, kind: "RPM_DIFFERS_FROM_CROSSWALK", rpmPrimaryRecordId: id, fields: differs });
+}

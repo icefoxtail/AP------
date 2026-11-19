@@ -39,6 +39,14 @@ test('new items without level pass; a present but wrong level still fails',()=>{
  assert.equal(run([q]).ok,true,JSON.stringify(run([q])));
  assert.equal(run([question({level:'최상'})]).ok,false);
 });
+test('copy/helper fields (category, originalCategory, tags, standardUnitOrder, subUnitConfidence) are not required but are checked when present',()=>{
+ const q=question();for(const k of ['category','originalCategory','tags','standardUnitOrder','subUnitConfidence'])delete q[k];
+ assert.equal(run([q]).ok,true,JSON.stringify(run([q])));
+ assert.equal(run([question({standardUnitOrder:-1})]).ok,false);
+ assert.equal(run([question({tags:['']})]).ok,false);
+ assert.equal(run([question({category:3})]).ok,false);
+ assert.equal(run([(()=>{const x=question();delete x.layoutTag;return x;})()]).ok,false);
+});
 test('invalid difficulty enums and non-null Meta placeholders fail',()=>{
  assert.equal(run([question({level:1})]).ok,false);
  for(const field of ['difficultyConfidence','difficultyBoundaryFlag','legacyLevelCompatibility'])assert.equal(run([question({[field]:'MADE_UP'})]).ok,false);
