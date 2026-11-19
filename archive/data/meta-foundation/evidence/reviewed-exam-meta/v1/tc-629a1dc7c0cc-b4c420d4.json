@@ -1,0 +1,838 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "tc-629a1dc7c0cc-b4c420d4",
+  "requestSha256": "a6faac2dbc263d9efbd31aa19eb6ff706c3cbd710d3161c86b5cd19495a4343f",
+  "examUid": "23_금당고_2학기_중간_고2_미적분",
+  "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+  "sourceBlobSha1": "d9e9fc5b19e05a68f1bbde4ab1f2217ebc17da77",
+  "sourceRawSha256": "864fca53697cd466415e812fce3142c2b3d2632ad5259ee5e67ae98ce26c27f2",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+        "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 9,
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "LIMIT_CONTINUITY",
+        "packVersion": "1.1.4",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학II",
+          "미적분I"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-01",
+          "H15-M2-02",
+          "H22-M1-01",
+          "H22-M1-02"
+        ],
+        "activeItemEvidenceCount": 189,
+        "problemTypeCount": 7,
+        "templateCount": 35,
+        "bindingCount": 19,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "notes": [
+          "Merged from independently completed MathII limit (104) and continuity (85) Stage6 evidence.",
+          "Legacy/RPM limit hierarchy normalized to Meta Foundation L3=problemTypeKey, L4=templateKey contract.",
+          "PT_INFINITY_GEOMETRY_APPLICATION merged into PT_LIMIT_GEOMETRY_APPLICATION because one template cannot have two canonical parents.",
+          "No production exam JS or production metadata modified.",
+          "v1.0.1 revalidates educational L3/L4 labels and CrossConcept mappings for all 189 MathII limit/continuity assignments.",
+          "Limit difficulty fresh blind recheck is complete; all 189 canonical assignments remain reviewed. After cross-pack ownership resolution, 5 derivative-primary overlaps are excluded from active runtime and 184 LIMIT_CONTINUITY rows remain automatic-eligible.",
+          "6-B taxonomy compression: owned L3 21→7 and bindings 25→11.",
+          "6-C L4 compression: owned templates 36→29; decisive solution skeletons retained and context moved to CrossConcepts.",
+          "v1.1.0 compresses owned L3 21→7 and L4 36→29 with 189/189 assignment migration and CrossConcept preservation.",
+          "Cross-pack ownership resolution preserves 189 historical assignments while active runtime excludes 5 DERIVATIVE-primary overlaps.",
+          "2026-10-29: 2022 미적분I 사잇값 정리 ACTIVE PT binding add-only; original UID 등록은 별도.",
+          "2026-10-30: 팔마고 미적분I 2015 수학II semantic PT/TPL 2022 exact ACTIVE binding add-only 7건, UID registration after Git source publication."
+        ],
+        "crossConceptReferenceCount": 31,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 0,
+        "externalProblemTypeReferenceCount": 4,
+        "promotionReviewDisposition": "LIMIT_CONTINUITY_V1_1_0_TAXONOMY_COMPRESSION"
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "LIMIT_CONTINUITY",
+        "packVersion": "1.1.4",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학II",
+          "미적분I",
+          "미적분"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-01",
+          "H15-M2-02",
+          "H22-M1-01",
+          "H22-M1-02"
+        ],
+        "activeItemEvidenceCount": 189,
+        "problemTypeCount": 7,
+        "templateCount": 35,
+        "bindingCount": 19,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "notes": [
+          "Merged from independently completed MathII limit (104) and continuity (85) Stage6 evidence.",
+          "Legacy/RPM limit hierarchy normalized to Meta Foundation L3=problemTypeKey, L4=templateKey contract.",
+          "PT_INFINITY_GEOMETRY_APPLICATION merged into PT_LIMIT_GEOMETRY_APPLICATION because one template cannot have two canonical parents.",
+          "No production exam JS or production metadata modified.",
+          "v1.0.1 revalidates educational L3/L4 labels and CrossConcept mappings for all 189 MathII limit/continuity assignments.",
+          "Limit difficulty fresh blind recheck is complete; all 189 canonical assignments remain reviewed. After cross-pack ownership resolution, 5 derivative-primary overlaps are excluded from active runtime and 184 LIMIT_CONTINUITY rows remain automatic-eligible.",
+          "6-B taxonomy compression: owned L3 21→7 and bindings 25→11.",
+          "6-C L4 compression: owned templates 36→29; decisive solution skeletons retained and context moved to CrossConcepts.",
+          "v1.1.0 compresses owned L3 21→7 and L4 36→29 with 189/189 assignment migration and CrossConcept preservation.",
+          "Cross-pack ownership resolution preserves 189 historical assignments while active runtime excludes 5 DERIVATIVE-primary overlaps.",
+          "2026-10-29: 2022 미적분I 사잇값 정리 ACTIVE PT binding add-only; original UID 등록은 별도.",
+          "2026-10-30: 팔마고 미적분I 2015 수학II semantic PT/TPL 2022 exact ACTIVE binding add-only 7건, UID registration after Git source publication."
+        ],
+        "crossConceptReferenceCount": 31,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 0,
+        "externalProblemTypeReferenceCount": 4,
+        "promotionReviewDisposition": "LIMIT_CONTINUITY_V1_1_0_TAXONOMY_COMPRESSION"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+        "canonicalLabelKo": "수열의 극한",
+        "definition": "수열의 일반항·지배항과 공비의 거동을 분석하여 극한값·수렴 조건 또는 극한으로 정의된 함수의 값을 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "supportingItemCount": 6,
+        "supportingQuestionUids": [
+          "qid_v1_083f6926b91b9a60558ae9b7db465f2125751e8f6618f6be42ce3ffdb43ba139",
+          "qid_v1_0fec87ac765e17ea344fce173ad768a75325d12d72db29148f9957f0c11da64c",
+          "qid_v1_6b7da4ece1a279ffcdc4216b9ef001da7e92f621ff836d199761f3c805bda8f2",
+          "qid_v1_88b1649ecb20b608e2043158733837a90eeb25f4d7ec936c1391fea6ba1352f2",
+          "qid_v1_8cdd0392d3f496f3cc561f170b282a8372b6c821495c12e56124ac592faaed21",
+          "qid_v1_ee0af5a719f7105245f0ae2e451b432eb6657014644f071f816419e252dcc036"
+        ],
+        "sourceUnits": [
+          "H15-CALC-01",
+          "H15-CALC-02"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NPT_CALCULUS_SEQUENCE_LIMIT",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "collection": "problemTypes",
+      "match": {
+        "problemTypeKey": "PT_CALCULUS_SERIES"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CALCULUS_SERIES",
+        "canonicalLabelKo": "급수",
+        "definition": "부분합의 극한과 일반항의 수렴 조건을 이용하여 무한급수의 성질과 합을 구한다.",
+        "aliases": [],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "supportingItemCount": 17,
+        "supportingQuestionUids": [
+          "qid_v1_035db3b98decd8d1fe0013e82cbd88406673fe69d272b06c6d8024533b1bea51",
+          "qid_v1_4c373af2f3e1dbd962dbab623d49339541f7e828967402bd4905f8665c066efa",
+          "qid_v1_4ec2da9885f7687c4b1c478efd0ec993e11b70118a87e179b10bebc35bf33171",
+          "qid_v1_4f873fd1c64ae48941519b3465268f322b10401bb01d67144b5715921162a80b",
+          "qid_v1_7667df81767fc2db0ed2609f3b91d8a7260d767901cda0260caa2545b6785344",
+          "qid_v1_806299108f8841d7918d546621b3c5fc0708d164e299e13855d35a2e10d98325",
+          "qid_v1_812420e4afcae513ba095924a1f7b90b5e902eab820530fbbc422b8e8e9de901",
+          "qid_v1_8227197a854671a58ad9e3a5265f7f4babd65a8de35b09c3328b59aca2e1e786",
+          "qid_v1_887d2dacc50db69bfc4ca66d03b69ae7d2fd1413d3f3044c88ac564b77982a94",
+          "qid_v1_8d260852f80a76868fa27d4e77eb18aefede9cc433315b5321aaef5a153ed201",
+          "qid_v1_975252b57a02328d56a9cb340942fd71ba412437a351036d6b544b46ecff11fb",
+          "qid_v1_9b8e51d90aaabf6bf8ba5ebc49dba5f8b2337e8ec426ce317d0826e6df811346",
+          "qid_v1_c46f5f6cc87c2a3ee01d4c98f88c7bd48a332d1be5c5b6ccef7f931e7f5ca226",
+          "qid_v1_cb03de37db4943f15b3f6ed6d5d1328a1988344f776e226889b380927f5ce9fd",
+          "qid_v1_d973836e758061961292e34ea0960047b5c3067f2747ea0f422f9fe745065ee0",
+          "qid_v1_f1295ae8fe45e98bd0db5550a84771ab77ccf3cc354c8e4379e5340e522e0c7d",
+          "qid_v1_f53c9b0245ff4305459edd22950ccd7ed795b1f0fad545d7d8bfb604df2a1f2b"
+        ],
+        "sourceUnits": [
+          "H15-CALC-01",
+          "H15-CALC-02"
+        ],
+        "evidenceProvenance": [
+          {
+            "source": "TYPE_BUNDLE_TABLE",
+            "bundle": "NPT_CALCULUS_SERIES",
+            "bundleTable": {
+              "branch": "data/type-bundles-20261117",
+              "commit": "f8e22e3a9e20ba6b2b8f38d6d322e9cc139aa692",
+              "dir": "docs/plans/archive-one-route-upgrade/type-bundles"
+            }
+          }
+        ]
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnitLabelKo": "수열의 극한",
+        "supportingItemCount": 5,
+        "supportingQuestionUids": [
+          "qid_v1_083f6926b91b9a60558ae9b7db465f2125751e8f6618f6be42ce3ffdb43ba139",
+          "qid_v1_0fec87ac765e17ea344fce173ad768a75325d12d72db29148f9957f0c11da64c",
+          "qid_v1_88b1649ecb20b608e2043158733837a90eeb25f4d7ec936c1391fea6ba1352f2",
+          "qid_v1_8cdd0392d3f496f3cc561f170b282a8372b6c821495c12e56124ac592faaed21",
+          "qid_v1_ee0af5a719f7105245f0ae2e451b432eb6657014644f071f816419e252dcc036"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnitLabelKo": "급수",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_6b7da4ece1a279ffcdc4216b9ef001da7e92f621ff836d199761f3c805bda8f2"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "problemTypeKey": "PT_CALCULUS_SERIES"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CALCULUS_SERIES",
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-02",
+        "subUnitKey": "H15-CALC-02-SERIES",
+        "subUnitLabelKo": "급수",
+        "supportingItemCount": 16,
+        "supportingQuestionUids": [
+          "qid_v1_035db3b98decd8d1fe0013e82cbd88406673fe69d272b06c6d8024533b1bea51",
+          "qid_v1_4c373af2f3e1dbd962dbab623d49339541f7e828967402bd4905f8665c066efa",
+          "qid_v1_4ec2da9885f7687c4b1c478efd0ec993e11b70118a87e179b10bebc35bf33171",
+          "qid_v1_4f873fd1c64ae48941519b3465268f322b10401bb01d67144b5715921162a80b",
+          "qid_v1_7667df81767fc2db0ed2609f3b91d8a7260d767901cda0260caa2545b6785344",
+          "qid_v1_806299108f8841d7918d546621b3c5fc0708d164e299e13855d35a2e10d98325",
+          "qid_v1_8227197a854671a58ad9e3a5265f7f4babd65a8de35b09c3328b59aca2e1e786",
+          "qid_v1_887d2dacc50db69bfc4ca66d03b69ae7d2fd1413d3f3044c88ac564b77982a94",
+          "qid_v1_8d260852f80a76868fa27d4e77eb18aefede9cc433315b5321aaef5a153ed201",
+          "qid_v1_975252b57a02328d56a9cb340942fd71ba412437a351036d6b544b46ecff11fb",
+          "qid_v1_9b8e51d90aaabf6bf8ba5ebc49dba5f8b2337e8ec426ce317d0826e6df811346",
+          "qid_v1_c46f5f6cc87c2a3ee01d4c98f88c7bd48a332d1be5c5b6ccef7f931e7f5ca226",
+          "qid_v1_cb03de37db4943f15b3f6ed6d5d1328a1988344f776e226889b380927f5ce9fd",
+          "qid_v1_d973836e758061961292e34ea0960047b5c3067f2747ea0f422f9fe745065ee0",
+          "qid_v1_f1295ae8fe45e98bd0db5550a84771ab77ccf3cc354c8e4379e5340e522e0c7d",
+          "qid_v1_f53c9b0245ff4305459edd22950ccd7ed795b1f0fad545d7d8bfb604df2a1f2b"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "problemTypeKey": "PT_CALCULUS_SERIES"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CALCULUS_SERIES",
+        "curriculum": "2015",
+        "standardCourse": "미적분",
+        "standardUnitKey": "H15-CALC-01",
+        "subUnitKey": "H15-CALC-01-SEQUENCE_LIMIT",
+        "subUnitLabelKo": "수열의 극한",
+        "supportingItemCount": 1,
+        "supportingQuestionUids": [
+          "qid_v1_812420e4afcae513ba095924a1f7b90b5e902eab820530fbbc422b8e8e9de901"
+        ],
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.type-ledger.json",
+          "sha256": "49dde554539555e36646ebcdbfbc201fcf35bb7bf9848eb2c86c7fa13096d4e7"
+        }
+      ]
+    }
+  ],
+  "typeApprovals": 9,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 8,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_083f6926b91b9a60558ae9b7db465f2125751e8f6618f6be42ce3ffdb43ba139",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "역수제곱항이 0으로 수렴함을 이용해 수열극한을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "e81d830883b715df1aa39ae7c82176d114a60f961de9daaf1bb3f8928abedad5",
+        "judgedContentFingerprint": "20280aa83c6ac51189295edf275f3534b644b31ecd57f97917f3277600c43aff",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "553a119aedcf8ae350cd1b84bddfa6fce643bc7494871770a99160b0ffff0103",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_0fec87ac765e17ea344fce173ad768a75325d12d72db29148f9957f0c11da64c",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "가장 큰 밑의 거듭제곱으로 나누어 공비 절댓값이 1보다 작은 항을 소거한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "75117d13f0c3719771e902b635683a40e2e3d13a195fda2fc8bcb14e568ffbab",
+        "judgedContentFingerprint": "e54a13a06568dc95f7d8a7c9618f514305ab9641afa573875c0f0f369df9ced8",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "837c11ed8a30d45742c5b07e0d9fd796e7efdcaba555b82cf4b77c99ad8023fb",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8d260852f80a76868fa27d4e77eb18aefede9cc433315b5321aaef5a153ed201",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "첫째항과 공비를 읽고 수렴하는 등비급수의 합을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "9814123a990c93316dfafd4145d3236ddec56ce9ed67772ea3121b9c2cd53739",
+        "judgedContentFingerprint": "a4f9e15adbb7b6c9975ce3045c9bc10304cbd9dcad5608a1d2db3ffb2f6cd822",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "6b16f1887d37a940cfdfd2cbf22cb7b8a210d0acace4f45a5030211e2a7ccae2",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6b7da4ece1a279ffcdc4216b9ef001da7e92f621ff836d199761f3c805bda8f2",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "공비 2cos x가 -1보다 크고 1이하인 범위를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "84a4ac56da2f563f2fa3d81fee01e616ee8601cdaf6ead40cd5a6166026067da",
+        "judgedContentFingerprint": "63d5f729640b41cff72ebccd54723c299e402faa1bcf3216daafa58f4d3a4b77",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "4cab609999e51f31e6b5d91326d3012164e44659ac947581d8afefd409bb3ea8",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_8227197a854671a58ad9e3a5265f7f4babd65a8de35b09c3328b59aca2e1e786",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "급수수렴의 일반항 0 필요조건과 반례로 명제의 참거짓을 판정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "db135820ad62f6f735e4b29c38f0e3a0980f99742b427d2b42673774b992d125",
+        "judgedContentFingerprint": "7864e887c0a706e319b8d682f8a8d3bf9d47e46044d1cec2777683da266d5f7f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f13b15964dd0db6662220e556e626627f76cafc583a66367197261c3dadb1936",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_806299108f8841d7918d546621b3c5fc0708d164e299e13855d35a2e10d98325",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "반복 내접도형의 길이비를 제곱하여 넓이공비를 얻고 무한합을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "630bee514c38b3cd78b95fc17d3a47cb32f08fbf7e79a7b85d28af8003bfde55",
+        "judgedContentFingerprint": "9c7b7d0e2e4a2da1d9e78549ec0d8e53a4481965cd4890b286b432b104e1822b",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a0067786eea9a8c60dff14689c6e1def5271deac253f38bd7abf6f5497958627",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ee0af5a719f7105245f0ae2e451b432eb6657014644f071f816419e252dcc036",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "거듭제곱 밑의 절댓값을 1과 비교하여 극한함수를 조각별로 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "730fde7f69163eb35ddd02cfc394e6e1b55b5626c7ac5c22317fb32eabf6db2b",
+        "judgedContentFingerprint": "2228b109d4645ff5df7f853b1e13ac5829b767f0a3ff61e4dda13c297b19ab8e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "6fba665a276bdd322527a02c07be4db34007593b5536728d43298343c6bf2f21",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4f873fd1c64ae48941519b3465268f322b10401bb01d67144b5715921162a80b",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "반복합성의 국소비율로 일반항 (1/4)의 n제곱을 얻고 등비급수를 합한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "00c0d294ced71b81789606e14817b2b175e264dd185a330bff1f08b9e401553b",
+        "judgedContentFingerprint": "66e3694041be9baacd542839e27d4c8a08ed8d7579ec2a2db7d457abbee33124",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "90b6b7080737ee53c4b302663f62c2a9b76bb80804816070fa7fa793283b3d4e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_035db3b98decd8d1fe0013e82cbd88406673fe69d272b06c6d8024533b1bea51",
+      "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "tc-629a1dc7c0cc-b4c420d4",
+        "judge": "dots",
+        "rationale": "방멱으로 원넓이의 일반항을 구한 후 등비급수의 합을 계산한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "미적분",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "673057711512e53a3d78be4052e6fa16d078623d8e31b745842e748501222109",
+        "judgedContentFingerprint": "f8f78f6422da3da41d25ac7f5be9012ed6aa4b50b5886136b128ea3b7042c192",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "17802c0e5f03c2eea891e7699d6b66703de9e7f46b6e06b62f15c00e5dd06854",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/tc-629a1dc7c0cc-b4c420d4.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [
+    {
+      "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
+      "sha256": "f2675999331d965f8ac1637e5810f73e5de9c1e65cdfc7af7e0e60d791c63aab"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
+      "sha256": "40e844f1a3e51c66782115c0fa37e6c620a8dee8996a91db550f89c48aeb9088"
+    },
+    {
+      "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
+      "sha256": "9a810454806104c10f3d0ff16ef8ddc16445651ac44a0f66a6141c27f8143253"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/registry_index.json",
+      "sha256": "23d4db29367743fd0baff1ccf9f6487be007f447f821f365d202e2967061d0d6"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+      "sha256": "df01189a7afe73ba71d6a1d2d8a43efa303cff5f65306ffb0a59fc03c930c211"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+      "sha256": "c62b50ad9edba9be53ed38718222af4e8555fa2459125d34790ac1e6de8768d4"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "sha256": "b511f5ec80b2b5a8c720ea361dbd389d78838d2b22e9f57096fdf6b1770f807d"
+    },
+    {
+      "path": "archive/data/meta-foundation/runtime/limit-continuity-v1.json",
+      "sha256": "2bed216e2b4649c3ca59f6524dcf26111d3fb517994ca599ce3f634f87cd888f"
+    }
+  ],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 9,
+  "expectedQuestionCount": 20
+}
