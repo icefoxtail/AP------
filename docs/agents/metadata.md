@@ -3,6 +3,17 @@
 > 2026-10-30 루트 `AGENTS.md`에서 옮긴 원문이다. 문구는 그대로 두고, 링크 경로만 이 폴더 기준으로 고쳤다. 본문 속 백틱 경로는 저장소 루트 기준이다.
 > 이 영역 작업을 시작할 때 읽는다. 공통 규칙과 작업별 안내는 루트 [AGENTS.md](../../AGENTS.md)에 있다. 새 지시는 루트 `AGENTS.md`가 아니라 이 문서에 추가한다.
 
+## CURRENT — 새 문항 메타는 최소 한 벌 (2026-11-19, 사용자 승인)
+
+- **작성자가 고르는 것:** `curriculum`(2015/2022), `standardUnitKey`·`subUnitKey`, `rpmPrimaryRecordId`(단수), `problemTypeKey`·`templateKey`, `difficultyBucket`(정수 1~5), `crossConceptKeys`·`conditionKeys`·`integrationPattern`, 4칸(`item-4slot/**` 별도 파일). 식별자와 결속 지문(발문+보기)은 기계가 만든다.
+- **도구가 채우는 것:** `rpmL1~rpmL4`는 등록기가 번호의 크로스워크 행에서 채운다(아래 "등록기 최소 한 벌"). 단원·소단원 라벨·순서는 키에서 정해지는 값이므로 마스터 글자를 바꾸지 않는다(하네스가 채우고, 하네스가 없는 라인은 마스터 글자를 그대로 옮긴다).
+- **쓰지 않는 것(요청에도 원본 JS에도):** `rpmPrimaryL1~L4`, `rpmPrimary{}`, `rpmPrimaryRecordIds`, `curriculumKey`(=`curriculum`), 맨 `L1~L4`, `ptTplCandidate`, `difficultyBasis`·`levelBasis`, `level`. `originalCategory`는 원본 기출에 적힌 글자만 적고 새 유사·생성 문항은 비운다. 원본 JS에 `level`·`L3` 같은 사본을 쓰면 파생 라벨과 달라 등록기 parity 검사로 거부된다.
+- **아직 남은 관문(쓰지 않으면 문제없음):** CI 후보 검사(`tools/ci/archive-reviewed-source-candidate.mjs`)는 허용 목록 밖 필드를 아직 `UNKNOWN_METADATA_FIELD`로 거부한다. 스테이지 검증기는 난이도 보조 3칸(`difficultyConfidence`·`difficultyBoundaryFlag`·`legacyLevelCompatibility`)을 아직 요구하므로 이 셋은 계속 적는다.
+- **허용 목록 안 필드를 `after`에 새로 넣을 때는 `before`에 `null`을 같이 쓴다**(CAS 규칙 그대로).
+- **금지:** 경로→번호 역산, 번호→TPL 계산, 소단원→L1·L2 계산. 맨 `L1~L4`는 RPM 값과 PT·TPL 라벨이 섞인 칸이므로 기존 값을 비교해 지우거나 옮기지 않는다.
+- **받는 쪽과 기존 값은 그대로다.** 화면·빌더·등록기는 옛 이름으로 들어온 값도 계속 받고, 기존 문항 값은 지우지 않는다.
+- 이유: 같은 값을 여러 칸에 쓰게 하면 칸끼리 어긋난다(2026-11-18 하/중/상 사고). 줄이는 것은 쓰게 하는 것이지 받는 것이 아니다.
+
 ## 난이도는 정수 1~5만 (2026-11-18 21시 KST부터 적용)
 
 - **적용 시점:** 2026-11-18 21:00 KST 이후 새로 만들거나 반입하는 모든 아카이브 문항(기출·유사·교과서·문제집·생성).
@@ -106,7 +117,7 @@
 
 ## CURRENT — 유사시험지 RPM Primary 경로(rpmPrimaryPath) 등록 (2026-11-02)
 
-- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다.
+- 등록기가 읽는 RPM 경로 필드는 `rpmPrimaryPath`(L1~L4, crosswalkRecordIds)뿐이다. 소형 메타가 `rpmPrimary{recordId}`·`rpmPrimaryL1~4`로만 적으면 등록 요청 생성기(`tools/main_merge_master.py`)가 버려 학생 검색 카드에 "RPM L1~L4 미지정"이 나온다(24 매산여고·25 제일고 수II, 25 금당고 확통이 그랬다). 이제 생성기가 공식 크로스워크에서 경로를 정해 `rpmPrimaryPath`로 싣는다: 같은 교육과정·과목·PT·TPL의 ACTIVE 행 중 소형 메타가 지목한 레코드이거나, 후보 경로가 하나뿐일 때만. 후보가 없거나 여럿인데 지목이 없거나 지목 레코드의 PT/TPL이 다르면 그 문항은 비워 둔다(EVIDENCE_DEBT, 이름이 비슷하다고 추정하지 않는다). 이유: RPM Primary는 Resolver/크로스워크 결과만 쓴다. (2026-11-19) 이제 등록기가 `rpmPrimaryRecordId`를 저장하고 빈 `rpmL1~L4`를 그 번호에서 채우므로, 새 문항은 위 "최소 한 벌"대로 번호만 쓴다.
 - 이미 등록된 시험지에 경로만 추가: `python3 tools/main_merge_master.py --exam <시험지> --rpm-path-delta --apply` → `.archive-meta-register/inbox/rpmpath-<시험지>.json`(FINAL_QA, 다른 승인 값 변경 없음, 기존 `targetParentRef` 유지, 경로를 못 정한 문항은 빈 패치). 이유: 같은 requestId로 다시 등록하면 "requestId reused with different content"로 거부된다.
 
 - 등록기 최소 한 벌(2026-11-19): 작성자는 키·`rpmPrimaryRecordId`·난이도 정수 같은 판정 값만 요청에 넣는다. 사본·보조 필드(`rpmPrimaryL1~L4`, `difficultyBasis` 등 `reviewed-meta-value-fields.mjs` 목록 밖)를 안 써도 등록되고, 써도 거부하지 않는다. 저장하지 않고 영수증·결과의 `reportTags`(`UNSTORED_FIELDS`)에 이름만 남긴다. `rpmPrimaryRecordId`가 있고 `rpmL1~L4`가 비어 있으면 등록기가 크로스워크 그 번호의 행에서 채운다(이미 있는 값은 덮지 않고 다르면 `RPM_DIFFERS_FROM_CROSSWALK`만 보고, 번호가 크로스워크에 없으면 비워 두고 `RPM_RECORD_ID_NOT_IN_CROSSWALK`로 보고). 운영 뒤쪽 검사(consumer-verify)도 같은 원칙이라 저장되지 않는 필드와 번호 자체는 소비자 값 비교에서 뺀다. 이유: 사본을 손으로 쓰다 어긋나 요청이 거부되는 일을 없애고, 글자는 도구가 채우게 하기 위해서다.
