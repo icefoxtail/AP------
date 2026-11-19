@@ -41,6 +41,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { REVIEW2_SOURCE_OVERRIDE_FIELDS, loadResolvedConsumerCatalog, registerReviewedExamV2, verifyIdentityFingerprintConsumer } from "./reviewed-exam-registration-v2.mjs";
 import { isAuditPreservation } from "./native-audit-preservation.mjs";
+import { REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
 import { isPartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
 import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
@@ -228,14 +229,17 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     }
     const rows = doc.items.map(item => {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
+      // The consumer is asked only about values the registrar stores and the page shows. A field outside the registrar's value contract is
+      // never stored (it is reported in the receipt), and rpmPrimaryRecordId is a crosswalk pointer the page does not expose (it reads null).
+      const claimed = Object.fromEntries(Object.entries(item.after).filter(([k]) => REVIEWED_META_VALUE_FIELDS.includes(k) && k !== "rpmPrimaryRecordId"));
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
-      const unchanged = Object.keys(item.after).every(k => same(item.before?.[k], item.after[k])) && item.identityBefore === undefined;
+      const unchanged = Object.keys(claimed).every(k => same(item.before?.[k], claimed[k])) && item.identityBefore === undefined;
       // REVIEW2 type-hold item: the consumer deliberately publishes no assignment, PT/TPL or value columns for it yet (they stay in the
       // registrar's own checks and, once grouped, in the output layer), so only the source binding is verified here. Any other item is unchanged.
       if (item.typeHold === true && doc.approval?.type === "REVIEW2")
         return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: {}, fingerprint: item.after.sourceFingerprint, unchanged, gated: false };
-      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged,
-        gated: touchesAssignment(changedKeys(item.before, item.after)) };
+      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: claimed, fingerprint: item.after.sourceFingerprint, unchanged,
+        gated: touchesAssignment(changedKeys(item.before, claimed)) };
     });
     return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
