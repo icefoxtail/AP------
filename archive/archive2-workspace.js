@@ -865,8 +865,14 @@
         if (state.sealed) return;
         const filter = a === "compose-grade" ? "grade" : "semanticSubject";
         const value = a === "compose-grade" ? b.dataset.grade : b.dataset.subject;
-        if (String(state.filters[filter] || "") === String(value ?? "")) return;
-        changeComposeFilter(filter, value ?? "");
+        let next = value ?? "";
+        if (a === "compose-subject" && value) {
+          // 과목이 둘뿐인 학년(고1)은 두 단추를 따로 켜고 끈다. 둘 다 눌린 상태(과목 값 없음)에서 하나를 누르면 그 과목만,
+          // 한 과목만 눌린 상태에서 다른 쪽(또는 같은 쪽)을 누르면 둘 다(전체)로 돌아간다.
+          if (Unified.subjectsForGrade(state.filters.grade).length === 2 && state.filters.semanticSubject) next = "";
+        }
+        if (String(state.filters[filter] || "") === String(next)) return;
+        changeComposeFilter(filter, next);
         // 다시 그린 뒤에도 키보드 위치가 그 버튼에 남게 한다.
         document.querySelector(`[data-action="${a}"][data-${a === "compose-grade" ? "grade" : "subject"}="${value ?? ""}"]`)?.focus?.({ preventScroll: true });
       } else if (a === "count-step") {

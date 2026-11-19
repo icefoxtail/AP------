@@ -132,6 +132,27 @@ test('한 화면: 왼쪽은 조건(학년·과목·단원·단계·문항 수·�
   assert.doesNotMatch(right, /data-action="print"|data-action="save-paper"/);
 });
 
+test('고1 과목 두 단추: 처음에는 둘 다 눌려 있고(전체), 하나를 누르면 그 과목만, 다른 쪽을 더 누르면 다시 둘 다(전체)', async () => {
+  const { w, click } = harness();
+  w.state.filters = { grade: '고1', semanticSubject: '' };
+  const pressedOf = () => ['COMMON_MATH_1', 'COMMON_MATH_2'].map(subject =>
+    new RegExp(`data-subject="${subject}" aria-pressed="true"`).test(w.filterMarkup(w.state.filters, 'compose', 'primary')));
+  assert.deepEqual(pressedOf(), [true, true], '과목을 따로 고르지 않은 전체는 두 단추가 모두 눌린 상태');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_2' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_2');
+  assert.deepEqual(pressedOf(), [false, true]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, '', '다른 쪽을 더 켜면 둘 다(1년 전체)');
+  assert.deepEqual(pressedOf(), [true, true]);
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, 'COMMON_MATH_1');
+  await click({ action: 'compose-subject', subject: 'COMMON_MATH_1' });
+  assert.equal(w.state.filters.semanticSubject, '', '하나만 켠 것을 끄면 전체로 돌아간다');
+  // 둘 다 켠 상태의 단원 목록은 두 과목 묶음을 모두 담는다.
+  const groups = new Set(w.scopeOptions().map(scope => scope.L1));
+  assert.ok(groups.size >= 2, '전체는 두 과목 묶음');
+});
+
 test('고2·고3 여러 과목은 칩, 학년 버튼은 학년을 바꾸고 단원 선택을 비운다', async () => {
   const { w, click } = harness();
   w.state.filters = { grade: '고2', semanticSubject: 'ALGEBRA' };
