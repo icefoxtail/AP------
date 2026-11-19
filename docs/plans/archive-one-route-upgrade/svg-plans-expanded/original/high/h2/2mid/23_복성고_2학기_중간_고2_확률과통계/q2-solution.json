@@ -1,0 +1,43 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "highlightGroups": [
+      {
+        "highlight": {
+          "expr": "a-b",
+          "in": [
+            1,
+            3,
+            5
+          ]
+        },
+        "tone": 1
+      },
+      {
+        "highlight": {
+          "expr": "a-b",
+          "in": [
+            2,
+            4
+          ]
+        },
+        "tone": 2
+      }
+    ]
+  },
+  "caption": "6×6 표에서 첫 번째 눈이 두 번째 눈보다 큰 칸이 사건 A이고 모두 15칸이다. 이 중 눈의 차가 2 또는 4인 6칸(진한 회색)은 합이 짝수여서 A와 B의 공통부분이고, 나머지 9칸(옅은 회색)은 합이 홀수이다. 따라서 P(B|A)=6/15=2/5이다. 답은 ④이다.",
+  "accessibilityDescription": "주사위 두 번의 눈 (a, b)를 가로세로로 놓은 6×6 표이며 a가 b보다 큰 칸이 두 가지 회색으로 나뉘어 칠해져 있다.",
+  "newVisualInformation": [
+    "a>b인 15칸 중 합이 짝수인 6칸이 진한 색으로 구분되어 조건부확률의 분모 15와 분자 6이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 개의 주사위를 두 번 던질 때, 첫 번째 나온 수가 두 번째 나온 수보다 큰 사건을 $A$, 눈의 합이 짝수일 사건을 $B$라 할 때, $P(B\\mid A)$의 값을 구하시오. [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

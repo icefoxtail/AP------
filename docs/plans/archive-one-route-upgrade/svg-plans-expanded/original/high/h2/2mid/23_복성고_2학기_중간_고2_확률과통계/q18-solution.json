@@ -1,0 +1,86 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "주봉이 98 이하"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "X",
+              "mean": "86",
+              "sd": "15",
+              "meanLine": true
+            }
+          ],
+          "ticks": [
+            {
+              "x": "86"
+            },
+            {
+              "x": "98"
+            }
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "98",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "양현이 a 이하"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "NORMAL_CURVE",
+          "curves": [
+            {
+              "id": "Y",
+              "mean": "88",
+              "sd": "10",
+              "meanLine": true
+            }
+          ],
+          "ticks": [
+            {
+              "x": "88"
+            },
+            {
+              "x": "96",
+              "text": "a"
+            }
+          ],
+          "shades": [
+            {
+              "from": null,
+              "to": "96",
+              "color": "BLUE"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "caption": "주봉이 과수원 사과는 N(86, 15²)이므로 98의 표준점수는 (98−86)/15=0.8이다. 양현이 과수원 사과는 N(88, 10²)이고 누적확률이 같으면 표준점수가 같으므로 (a−88)/10=0.8이다. 따라서 a=96이다. 답은 ⑤이다.",
+  "accessibilityDescription": "두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 86에서 98 이하가, 오른쪽 곡선은 평균 88에서 a 이하가 칠해져 있다.",
+  "newVisualInformation": [
+    "두 분포에서 누적확률이 같은 지점이 표준점수 0.8로 대응하여 98과 a가 대응함이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "주봉이 과수원에서 생산하는 사과의 무게는 평균이 $86$, 표준편차가 $15$인 정규분포를 따르고, 양현이 과수원에서 생산하는 사과의 무게는 평균이 $88$, 표준편차가 $10$인 정규분포를 따른다고 한다. 주봉이 과수원에서 임의로 선택한 사과의 무게가 $98$ 이하일 확률과 양현이 과수원에서 임의로 선택한 사과의 무게가 $a$ 이하일 확률이 같을 때, $a$의 값을 구하시오. (단, 사과의 무게의 단위는 g이다.) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

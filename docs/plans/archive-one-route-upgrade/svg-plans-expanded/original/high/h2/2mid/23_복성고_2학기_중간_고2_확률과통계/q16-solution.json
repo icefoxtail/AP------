@@ -1,0 +1,113 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "1",
+          "-1/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "1"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-1",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1.6,
+      2.6,
+      -0.2,
+      1.3
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "1",
+        "2"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "axisTitles": {
+      "x": "x",
+      "y": "f(x)"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-1",
+        "y": 0
+      },
+      {
+        "id": "M",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "N",
+        "x": "1",
+        "y": "1/2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": 0
+      }
+    ],
+    "regions": [
+      {
+        "id": "part",
+        "upper": "f",
+        "lower": "axis",
+        "from": "0",
+        "to": "1",
+        "fill": "LIGHT"
+      }
+    ],
+    "coordinateBand": {
+      "hide": [
+        "A",
+        "M",
+        "N",
+        "B"
+      ]
+    }
+  },
+  "caption": "그림은 a=1일 때의 모양이다(예). 전체는 밑변 3a, 높이 a인 삼각형이므로 넓이가 3a²/2이다. x=a에서 높이는 a/2이므로 색칠한 0≤x≤a 부분은 평행한 두 변이 a와 a/2, 폭 a인 사다리꼴이고 넓이가 3a²/4이다. 확률은 (3a²/4)/(3a²/2)=1/2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "왼쪽 끝에서 올라가 중간에서 꼭짓점을 이루고 오른쪽 끝에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 꼭짓점 오른쪽 일부가 사다리꼴로 칠해져 있다.",
+  "newVisualInformation": [
+    "a=1일 때의 삼각형과 x=a에서 높이 a/2, 색칠한 사다리꼴이 보여 전체 넓이에 대한 비 1/2이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "확률변수 $X$가 갖는 값의 범위가 $-a\\le X\\le2a$이고, $X$의 확률밀도함수의 그래프는 오른쪽 그림과 같다. $P(0\\le X\\le a)$의 값을 구하시오. (단, $a\\gt0$) [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
