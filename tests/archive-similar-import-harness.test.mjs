@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 import { convertSimilarExam } from '../archive/tools/similar-md-to-js.mjs';
 import { buildCandidateSet } from '../archive/tools/similar-import/build-candidates.mjs';
-import { checkJudgments } from '../archive/tools/similar-import/check-judgment.mjs';
+import { checkJudgments, answerMatchesStored } from '../archive/tools/similar-import/check-judgment.mjs';
 import { applyJudgments } from '../archive/tools/similar-import/apply-judgment.mjs';
 import { buildReviewMarkdown } from '../archive/tools/similar-import/build-review-pack.mjs';
 import { gitBlobSha1, readJson, writeJson, stripWs, loadCrosswalkRecords, loadCourseGroups, loadTermDictionary, loadTaxonomy, loadGuideExample, itemFingerprint, readBank, DEFAULT_REPO_ROOT } from '../archive/tools/similar-import/lib.mjs';
@@ -613,4 +613,12 @@ test('apply-judgment: provenance 는 변환기만 만든다 — 스테이지에 
     assert.throws(() => applyJudgments({ jsPath: ctx.jsPath, judgmentDir: ctx.judgmentDir, outDir: out, repoRoot, log: quiet }), /PROVENANCE_MISSING.*다시 변환/);
     assert.equal(fs.existsSync(out), false);
   } finally { ctx.cleanup(); }
+});
+
+test('answerMatchesStored: 복수 정답은 순서·표기와 상관없이 같은 집합이면 일치', () => {
+  const item = { questionType: '객관식', answer: '②, ④', choices: ['1', '2', '3', '4', '5'] };
+  for (const ok of ['②, ④', '④,②', '2, 4', '2번, 4번']) assert.equal(answerMatchesStored(item, ok), true, ok);
+  for (const no of ['②', '②, ③', '②, ④, ⑤', '2']) assert.equal(answerMatchesStored(item, no), false, no);
+  const single = { questionType: '객관식', answer: '③', choices: ['1', '2', '7', '4', '5'] };
+  for (const ok of ['③', '3', '3번', '7']) assert.equal(answerMatchesStored(single, ok), true, ok);
 });

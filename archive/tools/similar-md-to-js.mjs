@@ -13,6 +13,8 @@ import {
   orderItem,
   serializeBank,
   CIRCLED,
+  parseObjectiveAnswer,
+  formatObjectiveAnswer,
 } from './similar-import/lib.mjs';
 
 export { gitBlobSha1 };
@@ -101,12 +103,13 @@ export function formatExamDisplayTitle(stem, exam = {}) {
 
 function splitFences(md) {
   const parts = [];
-  const re = /```([A-Za-z0-9_:-]*)[ \t]*\n([\s\S]*?)\n```/g;
+  // 구글 문서 내보내기는 코드 블록 줄도 \`\`\`json:exam 처럼 백틱마다 역슬래시를 붙일 때가 있다. 시작·끝 줄 모두 그 형태를 받는다.
+  const re = /(?:\\?`){3}([A-Za-z0-9_:\\-]*)[ \t]*\n([\s\S]*?)\n(?:\\?`){3}/g;
   let last = 0;
   let m;
   while ((m = re.exec(md)) !== null) {
     if (m.index > last) parts.push({ type: 'text', text: md.slice(last, m.index) });
-    parts.push({ type: 'fence', tag: m[1], body: m[2] });
+    parts.push({ type: 'fence', tag: m[1].replace(/\\/g, ''), body: m[2] });
     last = m.index + m[0].length;
   }
   if (last < md.length) parts.push({ type: 'text', text: md.slice(last) });
@@ -231,7 +234,7 @@ export function validateConvertedExam({ exam, questionBank, metaRegisterDoc, fou
   for (const q of questionBank) {
     if (q.questionType === '객관식') {
       if (!Array.isArray(q.choices) || q.choices.length !== 5) errors.push(`OBJECTIVE_CHOICES_INVALID: qid ${q.id} has ${q.choices?.length ?? 0} choices`);
-      if (!CIRCLED.includes(q.answer)) errors.push(`OBJECTIVE_ANSWER_INVALID: qid ${q.id} answer "${q.answer}" is not ①~⑤`);
+      if (!parseObjectiveAnswer(q.answer)) errors.push(`OBJECTIVE_ANSWER_INVALID: qid ${q.id} answer "${q.answer}" is not ①~⑤ (복수 정답은 "②, ④")`);
     } else {
       if (Array.isArray(q.choices) && q.choices.length > 0) errors.push(`SUBJECTIVE_CHOICES_NOT_EMPTY: qid ${q.id}`);
       if (!q.answer || String(q.answer).trim() === '') errors.push(`SUBJECTIVE_ANSWER_EMPTY: qid ${q.id}`);
@@ -410,7 +413,7 @@ export function convertSimilarExam({
       wide: false,
       content: q.content,
       choices: q.choices,
-      answer: q.answer,
+      answer: questionType === '객관식' && parseObjectiveAnswer(q.answer) ? formatObjectiveAnswer(parseObjectiveAnswer(q.answer)) : q.answer,
       solution: q.solution,
       score: q.score,
       points: q.score,
