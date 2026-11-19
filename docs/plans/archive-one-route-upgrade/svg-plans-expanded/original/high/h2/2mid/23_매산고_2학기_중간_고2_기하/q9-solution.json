@@ -1,0 +1,84 @@
+{
+  "capability": "ellipse-figure-v1",
+  "ellipse": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "semiAxisSquared": {
+      "major": "25",
+      "minor": "9"
+    },
+    "majorAxis": "X"
+  },
+  "points": [
+    {
+      "id": "A",
+      "kind": "VERTEX",
+      "end": "MAJOR_POS"
+    },
+    {
+      "id": "B",
+      "kind": "VERTEX",
+      "end": "MINOR_POS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_ELLIPSE",
+      "x": "-5/2*sqrt(2)",
+      "branch": "NEG"
+    },
+    {
+      "id": "Q",
+      "kind": "OPPOSITE",
+      "of": "P"
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "ab",
+      "slope": "-3/5",
+      "intercept": "3"
+    },
+    {
+      "id": "t1",
+      "slope": "-3/5",
+      "intercept": "-3*sqrt(2)",
+      "tangent": true
+    },
+    {
+      "id": "t2",
+      "slope": "-3/5",
+      "intercept": "3*sqrt(2)",
+      "tangent": true,
+      "dashed": true
+    }
+  ],
+  "polygons": [
+    {
+      "id": "tri",
+      "points": [
+        "A",
+        "B",
+        "P"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "밑변 AB가 고정되어 있으므로 삼각형 ABP의 넓이는 P에서 직선 AB까지의 거리가 클 때 최대이다. 직선 AB는 y=−(3/5)x+3이고, 기울기 −3/5인 타원의 접선은 y=−(3/5)x±3√2이다. 직선 AB에서 더 먼 접선은 y=−(3/5)x−3√2이고 접점이 P이다. 점 Q는 P와 중심 O에 대하여 대칭이며 다른 접선의 접점이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "가로로 긴 타원과 꼭짓점 A, B를 잇는 직선, 이 직선과 평행한 두 접선이 있다. 아래쪽 접선의 접점 P와 삼각형 ABP가 색칠되어 있고, 위쪽 접점 Q가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 AB와 평행한 두 접선 중 AB에서 먼 접선의 접점 P와 삼각형 ABP를 보여 넓이가 최대인 위치를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "타원 $\\frac{x^2}{25}+\\frac{y^2}{9}=1$의 꼭짓점 $A(5,0)$, $B(0,3)$과 타원 위의 점 $P$에 대하여 삼각형 $ABP$의 넓이가 최대일 때, 점 $P$에서의 접선의 방정식은? [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

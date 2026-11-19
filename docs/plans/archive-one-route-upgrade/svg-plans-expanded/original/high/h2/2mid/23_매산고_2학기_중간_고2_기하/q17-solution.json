@@ -1,0 +1,88 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conics": [
+    {
+      "id": "c1",
+      "kind": "PARABOLA",
+      "vertex": [
+        "3",
+        "0"
+      ],
+      "p": "-2",
+      "axis": "X"
+    },
+    {
+      "id": "c2",
+      "kind": "PARABOLA",
+      "vertex": [
+        "0",
+        "0"
+      ],
+      "p": "1",
+      "axis": "X"
+    }
+  ],
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS",
+      "curve": "c1"
+    },
+    {
+      "id": "V1",
+      "kind": "VERTEX",
+      "curve": "c1"
+    },
+    {
+      "id": "V2",
+      "kind": "VERTEX",
+      "curve": "c2"
+    },
+    {
+      "id": "D1",
+      "kind": "POINT",
+      "x": "5",
+      "y": "0"
+    },
+    {
+      "id": "D2",
+      "kind": "POINT",
+      "x": "-1",
+      "y": "0"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l1",
+      "role": "DIRECTRIX",
+      "curve": "c1",
+      "label": "l"
+    },
+    {
+      "id": "l2",
+      "role": "DIRECTRIX",
+      "curve": "c2",
+      "label": "m"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sD",
+      "from": "D2",
+      "to": "D1",
+      "label": "6"
+    }
+  ],
+  "caption": "예: q=0, p=3인 경우의 그림이다. y²=−8(x−p)는 p′=−2이므로 초점 (p−2, 0), 준선 x=p+2이고, y²=4(x−q)는 p″=1이므로 초점 (q+1, 0), 준선 x=q−1이다. 초점이 같으므로 p−2=q+1에서 p−q=3이고 두 준선 사이의 거리는 (p+2)−(q−1)=6이다. 그림에서 준선 l은 x=5, 준선 m은 x=−1이다. 따라서 답은 6이다.",
+  "accessibilityDescription": "오른쪽 준선에서 왼쪽으로 열린 포물선과 왼쪽 준선에서 오른쪽으로 열린 포물선이 같은 초점 F를 공유한다. 두 준선과 x축이 만나는 점 D1, D2가 선분으로 이어져 있고 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "초점이 같은 두 포물선의 꼭짓점 V1, V2와 두 준선 l, m, 준선 사이의 거리 6을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 포물선 $y^2=-8(x-p)$와 $y^2=4(x-q)$의 초점이 일치할 때, 두 포물선의 준선 사이의 거리를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

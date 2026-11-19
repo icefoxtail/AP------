@@ -1,0 +1,227 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O3",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O1",
+          "O3"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "120"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O1",
+          "O3"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O1",
+          "O4"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C1",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O1"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C3",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O3"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C4",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O4"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O1",
+    "O3",
+    "O4",
+    "A",
+    "B"
+  ],
+  "displaySegments": [
+    {
+      "id": "sO1A",
+      "refs": [
+        "O1",
+        "A"
+      ]
+    },
+    {
+      "id": "sAO3",
+      "refs": [
+        "A",
+        "O3"
+      ]
+    },
+    {
+      "id": "sO1B",
+      "refs": [
+        "O1",
+        "B"
+      ]
+    },
+    {
+      "id": "sBO4",
+      "refs": [
+        "B",
+        "O4"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "C1",
+    "C3",
+    "C4"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "la1",
+        "ownerSegment": "sO1A",
+        "text": "a",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "la2",
+        "ownerSegment": "sAO3",
+        "text": "a",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "lb1",
+        "ownerSegment": "sO1B",
+        "text": "b",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "lb2",
+        "ownerSegment": "sBO4",
+        "text": "b",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "caption": "반지름이 같은 두 원이 한 점에서 만나면 그 점은 두 중심을 잇는 선분의 중점이다. A는 O₁O₃의 중점, B는 O₁O₄의 중점이므로 벡터 O₁O₃=2a, O₁O₄=2b이다(그림은 C₁, C₃, C₄만 그린 한 예이고 C₂는 합에서 소거된다). O₂O₁+O₄O₂=O₄O₁=−2b, −O₃B=BO₃=−b+2a, −O₃A=AO₃=a이다. 모두 더하면 3a−3b이므로 m=3, n=−3이고 m−n=6이다.",
+  "accessibilityDescription": "크기가 같은 세 원 C1, C3, C4가 있고 O1에서 O3, O4로 향하는 두 선분이 각각 중점 A, B에서 두 등분되어 있다. 각 절반의 길이가 문자 a, b로 표시되어 있다.",
+  "newVisualInformation": [
+    "A, B가 O₁O₃, O₁O₄의 중점이어서 각 선분이 a, a와 b, b로 나뉘는 배치를 보여 벡터를 a, b로 바꾸게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] 반지름이 같은 네 원 $C_1,C_2,C_3,C_4$의 중심을 $O_1,O_2,O_3,O_4$라 하고, $C_1,C_3$의 교점을 $A$, $C_1,C_4$의 교점을 $B$라 하자. $\\overrightarrow{O_1A}=\\vec a$, $\\overrightarrow{O_1B}=\\vec b$일 때 $\\overrightarrow{O_2O_1}+\\overrightarrow{O_4O_2}-\\overrightarrow{O_3B}-\\overrightarrow{O_3A}=m\\vec a+n\\vec b$를 만족시키는 $m-n$을 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

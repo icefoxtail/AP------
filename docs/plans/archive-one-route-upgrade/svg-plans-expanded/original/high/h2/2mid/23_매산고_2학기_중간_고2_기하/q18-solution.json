@@ -1,0 +1,206 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "B"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "3"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "AP",
+      "refs": [
+        "A",
+        "P"
+      ]
+    },
+    {
+      "id": "PC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    },
+    {
+      "id": "BP",
+      "refs": [
+        "B",
+        "P"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 420
+  },
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "planeMarks": {
+    "expressionLabels": [
+      {
+        "id": "ab",
+        "ownerSegment": "AB",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "bc",
+        "ownerSegment": "BC",
+        "text": "4",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "ap",
+        "ownerSegment": "AP",
+        "text": "3",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "pc",
+        "ownerSegment": "PC",
+        "text": "2",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "angles": [
+      {
+        "id": "th",
+        "refs": [
+          "B",
+          "A",
+          "P"
+        ],
+        "value": 53.13,
+        "label": "θ",
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "직각삼각형 ABC에서 AC=5이고 ∠A=θ이면 sinθ=BC/AC=4/5이다. 점 P가 AC 위에 있고 AP=AB=3이므로 ∠PAB=θ이다. 삼각형 ABP의 넓이는 S=(1/2)×3×3×sinθ=(1/2)×3×3×4/5=18/5이다. 따라서 5S=18이다.",
+  "accessibilityDescription": "B에서 직각을 이루는 직각삼각형 ABC가 있고 빗변 AC 위에 점 P가 있다. 선분 BP는 점선이며 AB=3, BC=4, AP=3, PC=2와 각 θ가 표시되어 있다.",
+  "newVisualInformation": [
+    "빗변 AC 위에서 AP=AB=3이 되는 점 P와 삼각형 ABP, 각 θ(sinθ=4/5)를 보여 넓이 계산을 연결한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$AB=3$, $BC=4$, $\\angle B=90^\\circ$인 삼각형 $ABC$의 변 $AC$ 위의 점 $P$에 대하여 $|\\overrightarrow{AB}|=|\\overrightarrow{AP}|$이다. 삼각형 $ABP$의 넓이를 $S$라 할 때, $5S$의 값을 구하시오. [6점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

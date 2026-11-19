@@ -1,0 +1,270 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "X",
+        "op": "TRANSLATE_POINT",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "dx": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "dy": {
+            "kind": "integer",
+            "value": "0"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P1",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "30"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P2",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "150"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P3",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "210"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P4",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "2"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "k",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "O"
+        ],
+        "args": {
+          "radius": {
+            "kind": "integer",
+            "value": "2"
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOP1",
+      "refs": [
+        "O",
+        "P1"
+      ]
+    },
+    {
+      "id": "sOP2",
+      "refs": [
+        "O",
+        "P2"
+      ]
+    },
+    {
+      "id": "sOP3",
+      "refs": [
+        "O",
+        "P3"
+      ]
+    },
+    {
+      "id": "sOP4",
+      "refs": [
+        "O",
+        "P4"
+      ]
+    },
+    {
+      "id": "sTop",
+      "refs": [
+        "P2",
+        "P1"
+      ],
+      "dashed": true
+    },
+    {
+      "id": "sBot",
+      "refs": [
+        "P3",
+        "P4"
+      ],
+      "dashed": true
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [
+    "k"
+  ],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 560,
+    "height": 480
+  },
+  "planeMarks": {
+    "arcs": [
+      {
+        "id": "arcTop",
+        "circle": "k",
+        "center": "O",
+        "from": "P1",
+        "to": "P2",
+        "side": "MINOR",
+        "label": "4pi/3"
+      },
+      {
+        "id": "arcBot",
+        "circle": "k",
+        "center": "O",
+        "from": "P3",
+        "to": "P4",
+        "side": "MINOR",
+        "label": "4pi/3"
+      }
+    ],
+    "angles": [
+      {
+        "id": "aTop",
+        "refs": [
+          "P1",
+          "O",
+          "P2"
+        ],
+        "value": 120,
+        "arcs": 1,
+        "style": "ARC"
+      },
+      {
+        "id": "aBot",
+        "refs": [
+          "P3",
+          "O",
+          "P4"
+        ],
+        "value": 120,
+        "arcs": 1,
+        "style": "ARC"
+      }
+    ]
+  },
+  "caption": "원 x²+y²=4 위의 점 P(a, b)에서 두 접선의 기울기의 곱은 −(b²+1)/b²이고 이 값이 −2 이상이면 b²≥1, 즉 1≤|b|≤2이다. 원 위에서 y좌표의 절댓값이 1 이상인 부분은 위쪽 호 P1P2(30°에서 150°)와 아래쪽 호 P3P4(210°에서 330°)이고 중심각은 각각 120°이다. 두 호의 길이는 각각 4π/3이고 합은 8π/3이다. 따라서 p=3, q=8이고 q−p=5이다.",
+  "accessibilityDescription": "원 위에 y좌표가 1인 점 P1, P2와 y좌표가 −1인 점 P3, P4가 있고 두 쌍이 각각 점선으로 이어져 있다. 위쪽 호와 아래쪽 호가 강조되어 있고 중심각 120°와 호의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "원 위에서 |b|≥1인 위쪽 호와 아래쪽 호, 중심각 120°와 호의 길이 4π/3씩을 보여 점 P가 나타내는 도형의 길이 8π/3을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 점 $P(a,b)$는 원 $x^2+y^2=4$ 위에 있고, $P$에서 쌍곡선 $x^2-4y^2=4$에 그은 두 접선의 기울기의 곱이 $-2$ 이상이다. 점 $P$가 나타내는 도형의 길이가 $(q/p)\\pi$일 때 서로소인 자연수 $p,q$에 대하여 $q-p$를 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

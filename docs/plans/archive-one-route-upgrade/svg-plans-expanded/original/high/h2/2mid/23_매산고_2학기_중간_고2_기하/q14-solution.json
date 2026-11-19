@@ -1,0 +1,115 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "HYPERBOLA",
+    "center": [
+      "0",
+      "0"
+    ],
+    "aSquared": "16",
+    "bSquared": "9",
+    "transverse": "X"
+  },
+  "points": [
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "4",
+      "sign": "POS"
+    },
+    {
+      "id": "Q",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "s1",
+      "rightAngle": true
+    },
+    {
+      "id": "R",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "s2",
+      "rightAngle": true
+    }
+  ],
+  "lines": [
+    {
+      "id": "s1",
+      "role": "ASYMPTOTE",
+      "sign": 1,
+      "dashed": true,
+      "label": "y=3x/4"
+    },
+    {
+      "id": "s2",
+      "role": "ASYMPTOTE",
+      "sign": -1,
+      "dashed": true,
+      "label": "y=-3x/4"
+    }
+  ],
+  "segments": [
+    {
+      "id": "sOQ",
+      "from": "O",
+      "to": "Q"
+    },
+    {
+      "id": "sQP",
+      "from": "Q",
+      "to": "P"
+    },
+    {
+      "id": "sPR",
+      "from": "P",
+      "to": "R"
+    },
+    {
+      "id": "sRO",
+      "from": "R",
+      "to": "O"
+    },
+    {
+      "id": "sOP",
+      "from": "O",
+      "to": "P",
+      "dashed": true,
+      "label": "4"
+    },
+    {
+      "id": "sQR",
+      "from": "Q",
+      "to": "R",
+      "dashed": true,
+      "label": "96/25"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "quad",
+      "points": [
+        "O",
+        "Q",
+        "P",
+        "R"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "x²/16−y²/9=1에서 주축의 길이는 2a=8이고 점근선은 y=±(3/4)x로 기울기의 곱은 −9/16이다. 예: P가 꼭짓점 (4, 0)이면 수선의 발은 Q(64/25, 48/25), R(64/25, −48/25)이고 대각선 OP=4, QR=96/25가 서로 수직이어서 넓이는 (1/2)×4×96/25=192/25이다. 이는 144/25가 아니므로 ㄷ은 거짓이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "좌우로 갈라진 쌍곡선과 두 점선 점근선이 있다. 오른쪽 가지의 꼭짓점 P에서 두 점근선에 내린 수선의 발 Q, R와 사각형 OQPR이 색칠되어 있고 두 대각선의 길이가 표시되어 있다.",
+  "newVisualInformation": [
+    "꼭짓점 P의 두 점근선 위 수선의 발 Q, R로 만든 사각형 OQPR의 수직인 두 대각선을 보여 넓이 192/25가 144/25가 아님을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "쌍곡선 $\\frac{x^2}{16}-\\frac{y^2}{9}=1$ 위의 점 $P$에서 두 점근선에 내린 수선의 발을 $Q,R$라 할 때 옳은 것을 고른 것은?<br>ㄱ. 주축의 길이는 8이다.<br>ㄴ. 두 점근선 기울기의 곱은 $-\\frac9{16}$이다.<br>ㄷ. 사각형 $OQPR$의 넓이는 $\\frac{144}{25}$로 일정하다. [4.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "capability": "ellipse-figure-v1",
+  "conic": {
+    "kind": "PARABOLA",
+    "vertex": [
+      "0",
+      "0"
+    ],
+    "p": "2",
+    "axis": "X"
+  },
+  "points": [
+    {
+      "id": "F",
+      "kind": "FOCUS"
+    },
+    {
+      "id": "P",
+      "kind": "ON_CONIC",
+      "x": "8",
+      "branch": "POS",
+      "coordinates": true
+    },
+    {
+      "id": "H",
+      "kind": "FOOT",
+      "from": "P",
+      "onto": "l",
+      "rightAngle": true,
+      "coordinates": true
+    },
+    {
+      "id": "Q",
+      "kind": "POINT",
+      "x": "-8",
+      "y": "0",
+      "coordinates": true
+    },
+    {
+      "id": "O",
+      "kind": "ORIGIN"
+    }
+  ],
+  "lines": [
+    {
+      "id": "l",
+      "role": "DIRECTRIX",
+      "label": "l"
+    },
+    {
+      "id": "t",
+      "slope": "1/2",
+      "intercept": "4",
+      "tangent": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "sHQ",
+      "from": "H",
+      "to": "Q",
+      "label": "10"
+    },
+    {
+      "id": "sQF",
+      "from": "Q",
+      "to": "F",
+      "label": "10"
+    },
+    {
+      "id": "sFP",
+      "from": "F",
+      "to": "P",
+      "label": "10"
+    },
+    {
+      "id": "sPH",
+      "from": "P",
+      "to": "H",
+      "label": "10"
+    }
+  ],
+  "polygons": [
+    {
+      "id": "quad",
+      "points": [
+        "H",
+        "Q",
+        "F",
+        "P"
+      ],
+      "fill": "LIGHT"
+    }
+  ],
+  "caption": "y²=8x에서 초점은 F(2, 0), 준선은 l: x=−2이다. 점 P(8, 8)에서의 접선 y=x/2+4가 x축과 만나는 점은 Q(−8, 0)이고, P에서 준선에 내린 수선의 발은 H(−2, 8)이다. HQ=QF=FP=PH=10이므로 사각형 HQFP의 둘레는 40이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선 l이 있다. 점 P에서의 접선이 x축과 만나는 점 Q, P에서 준선에 내린 수선의 발 H로 만든 사각형 HQFP가 색칠되어 있고 네 변의 길이 10이 표시되어 있다.",
+  "newVisualInformation": [
+    "접선이 x축과 만나는 점 Q(−8, 0), 수선의 발 H(−2, 8)와 네 변이 모두 10인 사각형 HQFP를 보여 둘레 40을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "포물선 $y^2=8x$의 초점을 $F$, 준선을 $l$이라 하자. 점 $P(8,8)$에서의 접선이 $x$축과 만나는 점을 $Q$, $P$에서 준선에 내린 수선의 발을 $H$라 할 때, 사각형 $HQFP$의 둘레는? [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
