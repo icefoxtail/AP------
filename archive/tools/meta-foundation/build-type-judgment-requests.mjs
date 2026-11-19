@@ -26,7 +26,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { DIRECT_JUDGMENT, DECISION_DOCUMENT } from "./register-type-judgment.mjs";
+import { DIRECT_JUDGMENT, DECISION_DOCUMENT, typeFieldHoldsRegisteredValue } from "./register-type-judgment.mjs";
 import { isLegacyPathFormulaUid } from "./reviewed-exam-registration-v2.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { loadCourseAliases, makeCourseAliases } from "./course-aliases.mjs";
@@ -264,12 +264,14 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
         }
       }
       // A status is a tag on a value: a field with no value has nothing to protect, whatever its tag says (approved_* on an empty field is fillable).
-      const status = { pt: empty(m.problemTypeKey) ? "" : String(m.fieldStatus?.problemType ?? ""), tpl: empty(m.templateKey) ? "" : String(m.fieldStatus?.template ?? "") };
+      // 등록부에 없는 옛 키로 채워진 칸은 지킬 값이 없는 칸과 같다(register-type-judgment.mjs typeFieldHoldsRegisteredValue, 등록기와 같은 함수). before는 현재 값 그대로 적는다.
+      const holds = { pt: typeFieldHoldsRegisteredValue(ctx.registry, "problemType", m.problemTypeKey), tpl: typeFieldHoldsRegisteredValue(ctx.registry, "template", m.templateKey) };
+      const status = { pt: holds.pt ? String(m.fieldStatus?.problemType ?? "") : "", tpl: holds.tpl ? String(m.fieldStatus?.template ?? "") : "" };
       let replace = false;
-      if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
+      if (holds.pt || holds.tpl || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
         // --replace-draft-types: a value that is only a draft (both status fields overwritable) and differs from the judgment is replaced;
         // an approved or adjudicated value stays (counted with its own reason, the list of "differs from dots"); a value equal to the judgment needs nothing.
-        const present = !empty(m.problemTypeKey) || !empty(m.templateKey);
+        const present = holds.pt || holds.tpl;
         if (!replaceDraft || !present) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
         const same = (m.problemTypeKey ?? "") === row.pt && (empty(row.tpl) || (m.templateKey ?? "") === row.tpl);
         if (same) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }

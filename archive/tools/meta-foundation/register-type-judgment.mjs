@@ -47,6 +47,11 @@ const ADDABLE_REGISTRY = [
   [/^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/bindings\.json$/, new Set(["bindings"])],
 ];
 
+// 유형 칸에 든 값이 등록부의 ACTIVE 키일 때만 "지킬 값"이다(2026-11-20, 값이 있으면 보인다). 등록부에 없는 옛 키로 채워진 칸은 값이 없는 칸과 같아
+// approved 상태여도 채울 수 있고, 옛 키와 옛 상태는 typeApproval.priorType에 그대로 남는다. 등록부의 ACTIVE 키가 든 approved 값은 그대로 보호한다.
+// registry는 { pt: Map, tpl: Map } (변환기의 ctx.registry, 등록기의 tables 모두 같은 모양). 변환기와 등록기가 이 함수 하나를 쓴다.
+export const typeFieldHoldsRegisteredValue = (registry, field, key) =>
+  !empty(key) && (field === "problemType" ? registry.pt : registry.tpl).get(key)?.status === "ACTIVE";
 export const isDirectJudgmentRequest = req => req?.approval?.type === DIRECT_JUDGMENT;
 // The judgment is bound to the stem and choices of each question (text-v1 fingerprint `textBindingFingerprint`), nothing else: the
 // exam file's blob, figures, solution and answer may change after the judge looked. The lane is atomic per request, so one question
@@ -204,7 +209,7 @@ export function registerTypeJudgment(ctx) {
     // A type that is already approved is final for this lane; an unapproved (draft/pending) value is replaced.
     // A field with no value has nothing to protect: its status is only a tag, so an empty field is filled whatever the tag says.
     for (const field of ["problemType", "template"]) {
-      if (empty(current[`${field}Key`])) continue;
+      if (!typeFieldHoldsRegisteredValue(tables, field, current[`${field}Key`])) continue;
       const status = String(current.fieldStatus?.[field] ?? "");
       if (/^approved/i.test(status)) failWith(`type already approved: ${uid}.${field}=${status}`);
       if (!OVERWRITABLE_STATUS.has(status)) failWith(`type field status is not overwritable: ${uid}.${field}=${status}`);

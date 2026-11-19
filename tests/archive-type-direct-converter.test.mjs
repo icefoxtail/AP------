@@ -18,7 +18,7 @@ const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`)
 const questions = [1, 2, 3, 4, 5, 6, 7].map(n => ({ id: n, content: `학생용 지문 ${n}`, choices: ["1", "2"], answer: "1", solution: `해설 ${n}`, image: "" }));
 const bytes = Buffer.from(`window.questions = ${JSON.stringify(questions)};\n`);
 const registry = makeRegistry({
-  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
+  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }, { problemTypeKey: "PT_DRAFT", status: "ACTIVE", ownerPack: "P1" }],
   templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_OTHER", status: "ACTIVE", parentProblemTypeKey: "PT_HIGH" }],
   bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" },
     { problemTypeKey: "PT_HIGH", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
@@ -292,14 +292,14 @@ test("selectable-by-type metric counts rows whose metadata is bound to the curre
   const stale = records.map(r => r.sourceOrdinal === 1 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
   const planned = new Map([["uid1", { pt: "PT_A", tpl: "TPL_A" }]]);
   const fresh = typeSelectable(makeCtx(), [EXAM], planned);
-  assert.equal(fresh.selectableBefore, 1); // uid3 already carries an approved PT_A and is bound
-  assert.equal(fresh.selectableAfter, 2);
+  assert.equal(fresh.selectableBefore, 2); // uid2 (a registered draft PT) and uid3 (approved PT_A) are bound and shown
+  assert.equal(fresh.selectableAfter, 3);
   assert.equal(fresh.plannedSelectable, 1);
   // a stale row (fingerprint of an older text) stays hidden unless planned; the planned type is shown
   const staleApproved = records.map(r => r.sourceOrdinal === 3 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
-  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 0);
+  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 1); // only the registered draft of uid2 is still shown
   const hidden = typeSelectable(makeCtx({ records: stale }), [EXAM], planned);
-  assert.equal(hidden.selectableAfter, 2);
+  assert.equal(hidden.selectableAfter, 3);
   assert.equal(hidden.plannedSelectable, 1);
 });
 
@@ -378,4 +378,13 @@ test("a type written in the exam file: a dots judgment is registered as judged; 
   assert.deepEqual(after.uid4, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded key outside the exam's course does not win");
   assert.deepEqual(after.uid5, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded type equal to the judgment changes nothing");
   assert.deepEqual(stats.embeddedDiffers, { registeredDots: 1, registeredEmbedded: 1, registeredJudgment: { EMBEDDED_PT_NOT_ACTIVE: 1, EMBEDDED_OUT_OF_COURSE_SCOPE: 1 } });
+
+test("a type field filled with a key the registry does not have holds no value (an old key is replaced, its old value kept in before); an approved registered key is still protected", () => {
+  const sem = "approved_semantic_review";
+  const recs = records.map(r => r.sourceOrdinal === 1 ? { ...r, problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } : r);
+  const { requests, skipped } = planRequests({ ctx: makeCtx({ records: recs }), resultRows: [line(1), line(3)], approvedBy: "x" });
+  const item = requests[0].items.find(i => i.questionUid === "uid1");
+  assert.deepEqual(item.before, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" });
+  assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+  assert.equal(skipped.find(x => x.uid === "uid3").reason, "TYPE_ALREADY_PRESENT", "uid3 holds an approved ACTIVE key and stays");
 });

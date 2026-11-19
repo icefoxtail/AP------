@@ -247,6 +247,22 @@ test("an approved row that holds a value is still never overwritten; a blank fie
   assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])), /before mismatch: uid1\.problemTypeKey/);
 });
 
+test("a type field that holds a key the registry does not have is not protected: an approved old key is replaced and kept in priorType; an ACTIVE registered key stays protected", t => {
+  const sem = "approved_semantic_review";
+  const a = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } } });
+  a.run(a.request([a.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { before: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" } })]), { write: true });
+  const row = a.read("archive/data/question_metadata.json").records.find(r => r.questionUid === "uid1");
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.equal(row.fieldStatus.problemType, "approved_direct_judgment");
+  assert.deepEqual(row.typeApproval.priorType, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", problemTypeStatus: sem, templateStatus: sem });
+  // the old value must still be named in `before`
+  const b = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => b.run(b.request([b.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })]), { write: true }), /before mismatch: uid1\.problemTypeKey/);
+  // an ACTIVE registered key with an approved status is final (PT_B is ACTIVE in the fixture registry)
+  const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" })]), { write: true }), /type already approved: uid1\.problemType=approved_semantic_review/);
+});
+
 test("filling a blank approved row still needs every other check: course, registry and the judged text", t => {
   const blankRow = { problemTypeKey: "", templateKey: "", fieldStatus: { problemType: "approved_semantic_review", template: "approved_semantic_review" } };
   const f = fixture(t, { rowMutations: { 1: blankRow } });
