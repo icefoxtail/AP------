@@ -199,3 +199,25 @@ test('parseSimilarMd: plan 객체가 있는 문항은 plan 파일과 problemPlan
     fs.rmSync(outDir, { recursive: true, force: true });
   }
 });
+
+test('복수 정답 "②, ④" 는 받고 기출과 같은 형식으로 저장한다, 백틱이 이스케이프된 코드 블록도 읽는다', () => {
+  const multi = { ...q1, answer: '④,②' };
+  const md = buildMd({ stem: '26_테스트중_1학기_중간_중2_유사', questions: [multi, q2] });
+  const { result, outDir } = convertTo(md);
+  assert.deepEqual(result.validation.errors, []);
+  const bank = loadBank(path.join(outDir, '26_테스트중_1학기_중간_중2_유사.js'));
+  assert.equal(bank[0].answer, '②, ④');
+
+  // 구글 문서가 코드 블록 줄까지 \`\`\` 로 내보낸 경우
+  const escapedMd = md.replace(/^```/gm, '\`\`\`');
+  const parsed = parseSimilarMd(escapedMd);
+  assert.equal(parsed.exam.stem, '26_테스트중_1학기_중간_중2_유사');
+  assert.equal(parsed.questions.length, 2);
+  assert.ok(parsed.questions[0].meta, 'meta 블록도 읽힌다');
+
+  // 보기 번호가 아닌 것·중복은 여전히 실패
+  for (const bad of ['②, ②', '⑥', '2, 4', '']) {
+    const r = convertTo(buildMd({ stem: '26_테스트중_1학기_중간_중2_유사', questions: [{ ...q1, answer: bad }, q2] })).result;
+    assert.ok(r.validation.errors.some(e => e.startsWith('OBJECTIVE_ANSWER_INVALID')), bad);
+  }
+});
