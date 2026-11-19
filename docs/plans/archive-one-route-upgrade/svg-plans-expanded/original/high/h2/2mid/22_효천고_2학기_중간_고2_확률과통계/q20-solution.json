@@ -1,0 +1,55 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "NORMAL_CURVE",
+    "curves": [
+      {
+        "id": "X",
+        "mean": "12",
+        "sd": "2"
+      },
+      {
+        "id": "Y",
+        "mean": "21",
+        "sd": "2"
+      }
+    ],
+    "ticks": [
+      {
+        "x": "12"
+      },
+      {
+        "x": "14"
+      },
+      {
+        "x": "21"
+      },
+      {
+        "x": "23"
+      },
+      {
+        "x": "25"
+      }
+    ],
+    "shades": [
+      {
+        "from": null,
+        "to": "25",
+        "color": "BLUE",
+        "curve": "Y"
+      }
+    ]
+  },
+  "caption": "두 곡선의 표준편차가 2로 같으므로 f(14)=g(23)이면 14와 23은 각 평균에서 거리가 같다. 14는 X의 평균 12에서 2만큼 떨어져 있으므로 |23−m|=2에서 m=21 또는 25이다. 조건 (가)에서 m=25이면 P(Y≥23)>1/2이라 어긋나므로 m=21이다. P(Y≤25)=P(Z≤(25−21)/2)=P(Z≤2)이므로 a=2이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "평균 12의 곡선 X와 평균 21의 곡선 Y가 겹쳐 있고 12, 14, 21, 23, 25 위치가 표시되며 Y의 25 이하 왼쪽 부분이 칠해져 있다.",
+  "newVisualInformation": [
+    "14와 23이 각 평균에서 같은 거리 2에 있고 25가 Y의 평균 21에서 표준편차 두 배임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "20. 두 확률변수 $X, Y$ 는 각각 정규분포 $N(12, 2^2)$, $N(m, 2^2)$을 따른다. 이때 각각의 확률밀도함수 $f(x)$와 $g(x)$가 다음 조건을 만족시킨다고 한다.\n\n$$\\begin{gathered}\n\\text{(가) } P(X \\le 12) \\ge P(Y \\ge 23)\\\\\n\\text{(나) } f(14) = g(23)\n\\end{gathered}$$\n\n표준정규분포를 따르는 확률변수 $Z$에 대하여 $P(Y \\le 25) = P(Z \\le a)$일 때, $a$값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

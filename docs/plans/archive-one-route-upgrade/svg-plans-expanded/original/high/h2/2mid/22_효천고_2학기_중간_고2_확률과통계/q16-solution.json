@@ -1,0 +1,46 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "1",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "6",
+              "state": "CLOSED"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ],
+    "variable": "a"
+  },
+  "caption": "판별식 D=4(a−2)(a−4)이다. D>0인 a의 범위는 수직선에 표시한 1≤a<2와 4<a≤6이다. 주사위 눈에서 이에 해당하는 것은 a=1, 5, 6의 3개로 실근이 2개이다. D=0인 a=2, 4는 실근 1개, D<0인 a=3은 실근 0개이다. P(X=2)=3/6, P(X=1)=2/6, P(X=0)=1/6이므로 E(X)=4/3이고 E(3X+2)=6이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "수직선 위에 1 이상 2 미만의 구간과 4 초과 6 이하의 구간이 칠해져 있다.",
+  "newVisualInformation": [
+    "판별식이 양수인 a의 범위가 수직선의 두 구간으로 보여 주사위 눈 1, 5, 6이 실근 2개인 경우임을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 주사위를 한 번 던질 때 나오는 눈의 수 $a$ 에 대하여 이차방정식 $x^2 - 2ax + 6a - 8 = 0$ 의 실근의 개수를 확률변수 $X$ 라고 할 때, $E(3X+2)$ 의 값은? [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
