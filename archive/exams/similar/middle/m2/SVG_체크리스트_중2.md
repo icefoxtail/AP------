@@ -293,3 +293,68 @@
 | 23 | 불필요 | 불필요 | 가격 조건이 글로 완결, 해설은 부등식 풀이 |
 
 - 문제그림 필요(일괄 대기) 2개: 18, 22. 해설그림 필요(일괄 대기) 0개. OPEN 1건: 13번 해설(표). 게시한 그림 0개.
+
+## 26_팔마중_1학기_중간_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q3[보기], q11[발문], q21[발문], q22[발문], q23[발문], q24[발문]. 해설 7개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | REQUIRED | BENEFICIAL | 문제: 수직선 위에 나타낸 것을 고르는 문항이므로 선택지 ①부터 ⑤까지가 수직선 그림이어야 하는데 지금은 글 설명으로 대체되어 있다. / 해설: 해 x <= 4를 수직선에 색칠한 점과 왼쪽 화살표로 그린 그림을 넣으면 경계값 포함과 방향을 한눈에 확인할 수 있다. |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | BENEFICIAL | NOT_NEEDED | 문제: 밑면 직각삼각형(밑변 6a, 높이 4b)과 기둥 높이 3a-5b를 표시한 삼각기둥 그림이 있으면 어느 길이가 밑넓이용인지 대응이 분명해진다. |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 2개: 16, 22. 해설그림 REQUIRED/BENEFICIAL 1개: 16.
+
+## 26_신흥중_2학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q12[발문], q21[발문], q22[발문], q23[발문]. 해설 8개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | REQUIRED | BENEFICIAL | 문제: 점 E가 A보다 위에 있다는 배치와 색칠된 도형 ABDE가 어디인지 그림으로 보여 주어야 퇴화한 사각형 표현이 무엇을 뜻하는지 분명해진다. / 해설: AD와 EC가 평행할 때 삼각형 ADE와 삼각형 ADC의 넓이가 같아지는 모습을 그림으로 보여 주면 넓이 변형이 한눈에 들어온다. |
+| 9 | BENEFICIAL | BENEFICIAL | 문제: 마름모의 두 대각선 수직이등분과 변 AB 위 E의 2 : 1 위치를 그리면 밑변 BD 기준 높이비가 눈에 보인다. / 해설: 삼각형 ABD 150과 높이비 1 : 3으로 삼각형 EBD 50을 얻는 도식을 함께 보여 주면 계산 흐름이 분명해진다. |
+| 10 | BENEFICIAL | BENEFICIAL | 문제: 각 B의 이등분선이 변 AD의 점 F와 변 CD의 연장선 위 점 E에서 만나는 배치를 그려야 E의 위치를 오해 없이 잡을 수 있다. / 해설: AF = AB인 이등변삼각형과 삼각형 ABF, DEF의 닮음비 2 : 1을 보조선과 길이 표시로 보여 주면 좋다. |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | REQUIRED | REQUIRED | 문제: A, B, C의 순서와 D, E의 위치가 각 관계를 결정하므로 도형이 반드시 필요하며 현재 자산이 없다. / 해설: 세 이등변삼각형의 밑각 표시와 외각 84도 = 3x 관계를 각 표식으로 보여 주어야 이해가 쉽다. |
+| 13 | BENEFICIAL | BENEFICIAL | 문제: 평행사변형 위에 두 각의 이등분선과 B-F-E-C 순서를 표시해야 FE 계산 근거가 한눈에 들어온다. / 해설: BE = 15, CF = 15, BC = 22를 한 선분 위에 표시해 BF = 7, FE = 8을 보여 주면 좋다. |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | BENEFICIAL | BENEFICIAL | 문제: ⑤의 반례가 등변사다리꼴임을 그림으로 보여 주면 조건 부족이 분명해진다. / 해설: 등변사다리꼴 반례 그림과 다섯 가지 평행사변형 조건을 나란히 대조하면 좋다. |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | REQUIRED | BENEFICIAL | 문제: 꼭짓점이 아래인 원뿔과 물 높이 1/2 지점, 닮음비 1 : 2를 표시해 방향 해석을 고정해야 한다. / 해설: 작은 원뿔과 전체 원뿔의 부피비 1 : 8을 단면 그림으로 보여 주면 3단계가 쉬워진다. |
+| 20 | REQUIRED | REQUIRED | 문제: 정사각형, 꼭짓점 B를 지나는 직선, 수선의 발 F와 G의 위치, B-F-G 순서를 그림 없이 확정하기 어렵다. / 해설: 합동인 두 직각삼각형과 FG = 6, AF = 15의 수직 배치를 그려야 넓이 계산이 이해된다. |
+| 21 | REQUIRED | BENEFICIAL | 문제: 변 BC의 중점 M과 두 수선의 발 D, E의 위치가 합동 논증의 대상이라 그림이 있어야 배치를 잡을 수 있다. / 해설: 각 B = 54도와 각 BMD = 36도를 각 표시로 그려 주면 서술 흐름이 분명해진다. |
+| 22 | REQUIRED | BENEFICIAL | 문제: 마름모, 대각선의 중점 O, O를 지나는 EF의 배치가 직사각형 판정의 핵심이라 그림이 있어야 이해된다. / 해설: 삼각형 AOE와 COF의 합동, 이어서 AECF가 직사각형이 되는 단계를 도식으로 보여 주면 좋다. |
+| 23 | REQUIRED | BENEFICIAL | 문제: 점 O-프라임이 AB와 AI 사이에 있는지 AI와 AO 사이에 있는지가 답을 가르므로 그림으로 위치를 고정해야 한다. / 해설: 각 BAO = 2y와 각 BAO-프라임 = 4y - 90도의 관계를 각 표시로 보여 주면 계산이 명확해진다. |
+
+- 문제그림 REQUIRED/BENEFICIAL 11개: 8, 9, 10, 12, 13, 15, 19, 20, 21, 22, 23. 해설그림 REQUIRED/BENEFICIAL 11개: 8, 9, 10, 12, 13, 15, 19, 20, 21, 22, 23.
