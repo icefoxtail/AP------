@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4"
+        ],
+        "domain": [
+          0,
+          4
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          4,
+          6
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "2"
+      },
+      {
+        "x": "4",
+        "y": "3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "0",
+        "4"
+      ],
+      "y": [
+        "2",
+        "3",
+        "4"
+      ]
+    }
+  },
+  "caption": "가로축이 a, 세로축이 교점의 개수 g(a)이다. a<0에서 0개, a=0에서 y=|x²-4x|가 x=0, 4에서 직선과 만나 2개(닫힌 점), 0<a<4에서 4개, a=4에서 꼭대기에 닿아 3개(닫힌 점), a>4에서 2개이다. a→0+에서 4, a→2에서 4, a→4+에서 2이므로 합은 4+4+2=10이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x) = |x^2-4x|$의 그래프와 직선 $y=a$의 교점의 개수를 $g(a)$라고 할 때, $\\lim_{a \\to 0+} g(a) + \\lim_{a \\to 2} g(a) + \\lim_{a \\to 4+} g(a)$의 값을 구하시오. [7.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "교점 개수 g(a)의 계단 그래프에서 a→0+, a→2, a→4+의 극한을 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=0, 4에서 g(a)가 끊어지고 두 점에 닫힌 점(교점 2개, 3개)이 따로 있음을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 가로축 위의 수평선 다음에 원점의 닫힌 점이 있고 높이 4의 수평선이 이어지다 a=4에서 중간 높이의 닫힌 점을 지나 높이 2의 수평선으로 내려가는 계단 모양의 그래프이다."
+}
