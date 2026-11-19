@@ -230,3 +230,35 @@
 | 24 | REQUIRED | BENEFICIAL | 문제: 발문이 참조하는 '다음 그림'이 없으므로 수직선 위 두 원의 중심 -3, 3과 교점 A, B, C, D의 배치를 보여 주는 그림이 필요하다. / 해설: 수직선에 A, B, C, D와 선분 AD, BC를 표시한 그림이 있으면 두 길이의 차 계산이 한눈에 들어온다. |
 
 - 문제그림 REQUIRED 2개, BENEFICIAL 3개. 해설그림 REQUIRED 0개, BENEFICIAL 4개. TABLE(표 엔진 영역) 3건. 게시한 그림 0개.
+
+## 25_연향중_1학기_중간_중3_유사 (23문항, 2026-11-19)
+
+통합 후보 마무리 작업(2026-11-19)에서 그림을 하나도 만들지 않았다. 그림 필요 여부만 판정해 기록한다(JS에 그림 참조는 없다, 깨진 참조 없음). 고친 내용: 서술형 21~23번 끝을 "…구하는 과정을 서술하시오."로 맞췄고, 22번 발문의 `\sqrt{12.6h},\mathrm{km}`(단위 앞 `\,` 누락)를 고쳤다. 해설 23개를 판서형으로 정리했고 `\implies`·사라지던 중괄호를 고쳤다. 객관식 정답 번호 배열이 1 2 3 4 5 되풀이였으므로 정본(docs/agents/similar-choices.md)의 목표 배열로 다시 배분했다(전 12345123451234512345 → 후 32345122411253512553). 수 보기(2·6·10·13·14·18·19번)는 정답 값을 그대로 두고 오답을 새로 지어 크기순으로 만들었고, 문장·식 보기(1·8·20번)는 보기 순서를 옮겼다. 정답 값은 전후로 같고 정답이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED |  |
+| 2 | NOT_NEEDED | NOT_NEEDED |  |
+| 3 | NOT_NEEDED | NOT_NEEDED |  |
+| 4 | NOT_NEEDED | NOT_NEEDED |  |
+| 5 | NOT_NEEDED | NOT_NEEDED |  |
+| 6 | BENEFICIAL | BENEFICIAL | 문제: 수직선 위 A, 모눈 위 B, 원호로 옮긴 P의 배치를 그림으로 보여 주면 글로만 읽을 때보다 상황 파악이 쉽다. / 해설: 가로 2, 세로 1인 직각삼각형과 수직선 위 원호를 그리면 루트5만큼 이동하는 과정이 시각적으로 확인된다. |
+| 7 | NOT_NEEDED | NOT_NEEDED |  |
+| 8 | NOT_NEEDED | NOT_NEEDED |  |
+| 9 | NOT_NEEDED | NOT_NEEDED |  |
+| 10 | NOT_NEEDED | NOT_NEEDED |  |
+| 11 | NOT_NEEDED | NOT_NEEDED |  |
+| 12 | NOT_NEEDED | NOT_NEEDED |  |
+| 13 | NOT_NEEDED | TABLE | 해설: k 값, ab 값, 순서쌍 개수를 세 행 표로 정리하면 6가지를 세는 과정이 분명해진다. |
+| 14 | NOT_NEEDED | NOT_NEEDED |  |
+| 15 | NOT_NEEDED | NOT_NEEDED |  |
+| 16 | NOT_NEEDED | NOT_NEEDED |  |
+| 17 | NOT_NEEDED | NOT_NEEDED |  |
+| 18 | NOT_NEEDED | NOT_NEEDED |  |
+| 19 | NOT_NEEDED | NOT_NEEDED |  |
+| 20 | NOT_NEEDED | BENEFICIAL | 해설: 수직선에 -4와 5, 그 사이의 x 위치를 표시하면 두 절댓값의 부호 판정이 한눈에 보인다. |
+| 21 | NOT_NEEDED | NOT_NEEDED |  |
+| 22 | NOT_NEEDED | NOT_NEEDED |  |
+| 23 | NOT_NEEDED | TABLE | 해설: b의 값에 따른 (m, n)과 a의 값, 채택 여부를 표로 정리하면 전수 조사 결과가 분명해진다. |
+
+- 문제그림 REQUIRED 0개, BENEFICIAL 1개. 해설그림 REQUIRED 0개, BENEFICIAL 2개. TABLE(표 엔진 영역) 2건. 게시한 그림 0개.
