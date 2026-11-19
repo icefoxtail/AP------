@@ -1,0 +1,73 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "12",
+          "-9",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      3
+    ],
+    "viewport": [
+      0,
+      3,
+      0,
+      12
+    ],
+    "requiredPoints": [
+      {
+        "id": "M",
+        "x": "1",
+        "y": "7"
+      },
+      {
+        "id": "N",
+        "x": "2",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "M": [
+        "1",
+        "7"
+      ],
+      "N": [
+        "2",
+        "6"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "f′(1)=0, f′(2)=0에서 a=-9, b=12이다. 그림은 f(x)=2x³-9x²+12x+2의 그래프로 x=1에서 극대인 점 M(1,7), x=2에서 극소인 점 N(2,6)이 있다. 따라서 극솟값 c=6이고 a+b+c=-9+12+6=9이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2x^3+ax^2+bx+2$가 $x=1$에서 극대이고 $x=2$에서 극솟값 $c$를 가질 때, $a+b+c$의 값은? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "극대점 M(1,7)과 극소점 N(2,6)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "극대점 M(1,7), 극소점 N(2,6)이며 극솟값 c=6이다."
+  ],
+  "accessibilityDescription": "삼차함수의 그래프에 극대점 M과 극소점 N이 표시되어 있고 두 점의 좌표가 쓰여 있다."
+}

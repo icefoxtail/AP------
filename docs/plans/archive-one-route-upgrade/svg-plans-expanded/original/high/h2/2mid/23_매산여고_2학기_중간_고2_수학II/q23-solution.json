@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "6",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "6",
+          "-15/2",
+          "3/2"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "0",
+        "y": "6"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "6"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "0",
+        "y": "6"
+      },
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "5/2",
+        "y": "-27/8"
+      },
+      {
+        "id": "B",
+        "x": "4",
+        "y": "0"
+      },
+      {
+        "id": "C",
+        "x": "5",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "0",
+        "6"
+      ],
+      "A": [
+        "1",
+        "0"
+      ],
+      "V": [
+        "5/2",
+        "-27/8"
+      ],
+      "B": [
+        "4",
+        "0"
+      ],
+      "C": [
+        "5",
+        "6"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "D",
+          "curveX": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "6",
+          "label": "y=6"
+        }
+      ]
+    }
+  },
+  "caption": "x>0의 이차함수를 q(x)=ax²+bx+6이라 하면 q(x)=6의 0이 아닌 해 r=-b/a에서 최댓값을 주는 끝점이 바뀐다. 미분 불가능점이 0, 1, 3이려면 r=5이고 b=-5a이며 g(4)=q(4)=0에서 a=3/2, b=-15/2이다. 그림은 이때의 f로 P(0,6)에서 꺾이고 x축과 A(1,0), B(4,0)에서 만나며 수평선 y=6과 C(5,6)에서 만난다. f(2)=-3(점 D)이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식5 (서술형)] [7점] (부분점수 있음)\n실수 전체의 집합에서 연속인 함수 $f(x)$가\n$f(x)=\\begin{cases}x+6&(x\\le0)\\\\ax^2+bx+6&(x\\gt0)\\end{cases}$\n일 때, 실수 $t$에 대하여 닫힌구간 $[t-1,t]$에서 함수 $f(x)$의 최댓값을 $g(t)$라 하자. 함수 $g(t)$가 다음 조건을 만족시킬 때, $f(2)$의 값을 구하시오. (단, $a,b$는 상수이고 $a\\gt0$이다.)\n<br><div class=\"note-box\">(가) $\\left\\{k\\mid \\displaystyle\\lim_{h\\to0+}\\dfrac{g(k+h)-g(k)}{h}\\ne\\displaystyle\\lim_{h\\to0-}\\dfrac{g(k+h)-g(k)}{h}\\right\\}=\\{0,1,3\\}$<br><br>(나) $g(4)=0$</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=3/2, b=-15/2일 때 f의 꺾임점 P, 영점 A, B, 수평선 y=6과의 교점 C, 점 D(2,-3)를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3/2, b=-15/2일 때 f가 P(0,6)에서 꺾이고 q(5)=6이며 f(2)=-3이다."
+  ],
+  "accessibilityDescription": "x=0에서 꺾이는 직선과 포물선으로 이어진 f의 그래프로 꺾임점 P, x축과의 교점 A, B, 극소점 V, 수평선과의 교점 C와 점 D가 표시되어 있다."
+}

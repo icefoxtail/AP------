@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-12",
+          "12",
+          "-3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -1,
+      5,
+      -30,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": "2",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "V": [
+        "2",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "예: a=3(범위의 끝)일 때 y=f′(x)=-3x²+12x-12=-3(x-2)²의 그래프이다. f가 항상 감소하려면 f′(x)≤0이 모든 x에서 성립해야 하므로 위로 볼록한 포물선이 x축 위로 올라가면 안 된다. 그림처럼 꼭짓점 V(2,0)이 x축에 닿는 경우가 한계이며 판별식 조건 4a²-12a≤0에서 0≤a≤3이다. 정수는 0, 1, 2, 3이고 합은 6이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=-x^3+2ax^2-4ax+5$가 임의의 두 실수 $x_1\\lt x_2$에 대하여 $f(x_1)\\gt f(x_2)$를 만족시키도록 하는 상수 $a$의 범위에 속하는 모든 정수의 합은? [3.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f′이 x축 위로 올라가지 않는 한계인 꼭짓점 V(2,0)을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=3일 때 f′의 꼭짓점이 x축에 닿아 f′≤0인 한계 경우이다."
+  ],
+  "accessibilityDescription": "위로 볼록한 포물선의 꼭짓점 V가 x축에 닿은 그래프로 나머지 부분은 모두 x축 아래에 있다."
+}

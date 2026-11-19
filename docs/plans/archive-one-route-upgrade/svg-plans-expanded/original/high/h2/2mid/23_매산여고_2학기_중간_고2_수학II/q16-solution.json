@@ -1,0 +1,50 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "f′의 두 근 2, -a가 서로 다르고 모두 (-1,4)에 있는 a의 범위",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-4",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "-2",
+              "state": "OPEN"
+            }
+          },
+          {
+            "lo": {
+              "value": "-2",
+              "state": "OPEN"
+            },
+            "hi": {
+              "value": "1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "f′(x)=6(x-2)(x+a)이므로 두 근은 2와 -a이다. 극대와 극소를 모두 가지려면 두 근이 서로 달라 -a≠2이고 -1<-a<4여야 하므로 -4<a<1, a≠-2이다. 수직선에서 -2는 빠진(속이 빈) 점이다. 이 범위의 정수는 -3, -1, 0의 3개이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=2x^3+3(a-2)x^2-12ax+1$이 열린구간 $(-1,4)$에서 극댓값과 극솟값을 모두 갖도록 하는 정수 $a$의 개수는? [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "-4<a<1에서 a=-2만 뺀 범위를 수직선에 보인다.",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "a의 범위 -4<a<1에서 a=-2가 빠지며 정수는 -3, -1, 0이다."
+  ],
+  "accessibilityDescription": "수직선 위에 -4와 1을 끝으로 하는 열린 구간에서 -2만 속이 빈 점으로 빠진 모양이 표시되어 있다."
+}

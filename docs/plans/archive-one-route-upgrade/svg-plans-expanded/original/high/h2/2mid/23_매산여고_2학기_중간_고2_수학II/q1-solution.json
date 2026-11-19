@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1"
+        ],
+        "domain": [
+          -1,
+          1
+        ],
+        "end": "CLOSED"
+      },
+      {
+        "coefficients": [
+          "-2",
+          "2"
+        ],
+        "domain": [
+          1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "2"
+      ],
+      "y": [
+        "2"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "2"
+      },
+      {
+        "id": "B",
+        "x": "2",
+        "y": "2"
+      }
+    ]
+  },
+  "caption": "예: 원문 그림은 이미지라 읽을 수 없어 해설이 말하는 값(f(1)=2, x→2-에서 2로 접근)을 갖는 예시 그래프를 그렸다. x=1의 채워진 점 A에서 f(1)=2이고, x=2의 왼쪽에서 곡선은 열린 점 B의 값 2로 다가가므로 좌극한은 2이다. 따라서 f(1)+(좌극한)=2+2=4이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=f(x)$의 그래프가 그림과 같을 때, $f(1)+\\displaystyle\\lim_{x\\to2-}f(x)$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=1의 채워진 점 A에서 함숫값 2를, x=2의 왼쪽에서 열린 점 B로 다가가는 극한 2를 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f(1)=2(채워진 점 A)이고 x→2-일 때 f는 2(열린 점 B)로 다가간다."
+  ],
+  "accessibilityDescription": "x=1에서 끊어지고 x=2에서 끝나는 직선 조각 그래프이며 x=1의 채워진 점 A와 x=2의 속이 빈 점 B가 표시되어 있다."
+}

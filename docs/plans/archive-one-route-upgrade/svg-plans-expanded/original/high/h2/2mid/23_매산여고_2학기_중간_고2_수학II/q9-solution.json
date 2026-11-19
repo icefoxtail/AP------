@@ -1,0 +1,149 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "5",
+          "4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1"
+        ]
+      },
+      {
+        "coefficients": [
+          "-6",
+          "4"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-3"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "-2"
+      },
+      {
+        "id": "E",
+        "x": "2",
+        "y": "2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "-3"
+      ],
+      "B": [
+        "-1",
+        "1"
+      ],
+      "C": [
+        "0",
+        "-3"
+      ],
+      "D": [
+        "1",
+        "-2"
+      ],
+      "E": [
+        "2",
+        "2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-5/3",
+          "y": "-5/3"
+        },
+        {
+          "id": "Q",
+          "x": "-3/5",
+          "y": "-3/5"
+        }
+      ],
+      "lines": [
+        {
+          "id": "d",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "예: 주어진 다섯 점 A(-2,-3), B(-1,1), C(0,-3), D(1,-2), E(2,2)를 꺾은선으로 이은 연속함수 f이다. h(x)=f(x)-x는 x=-2에서 -1, x=-1에서 2, x=0에서 -3이므로 (-2,-1)과 (-1,0)에서 부호가 바뀐다. 그림에서 f가 직선 y=x와 만나는 점 P, Q가 이 두 근이고 x=2는 열린구간 밖이다. 따라서 적어도 2개이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "모든 실수에서 연속인 함수 $f(x)$에 대하여 $f(-2)=-3$, $f(-1)=1$, $f(0)=-3$, $f(1)=-2$, $f(2)=2$일 때, 방정식 $f(x)=x$는 열린구간 $(-2,2)$에서 적어도 몇 개의 실근을 갖는가? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "예시 연속함수와 직선 y=x가 두 구간 (-2,-1), (-1,0)에서 만나는 점 P, Q를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f와 y=x가 (-2,-1)에서 P, (-1,0)에서 Q로 만나 구간에서 적어도 2개의 실근이 있다."
+  ],
+  "accessibilityDescription": "주어진 다섯 점을 꺾은선으로 이은 그래프와 직선 y=x가 두 점 P, Q에서 만나는 모습을 나타낸 그림이다."
+}
