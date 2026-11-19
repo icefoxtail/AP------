@@ -66,7 +66,7 @@ function setup(t) {
     render = () => {};
     save = () => {};
     globalThis.workspaceTest = { state, scopeOptions, request, review, generate, prepare, prepareSignature, previewSignature, draft, replace, replaceWith,
-      renderResultEmpty, renderResult, savePapers, newDraft, invalidate, clearedResult, selectedScopeQuestionUids, selectedScopePaths };
+      renderResultEmpty, renderResult, renderMobileActions, savePapers, newDraft, invalidate, clearedResult, selectedScopeQuestionUids, selectedScopePaths };
   `);
   const w = ctx.workspaceTest;
   w.state.catalog = data;
@@ -246,4 +246,38 @@ test('되살린 뒤: 미리보기 서명·준비 재사용이 이어지고(다�
   assert.equal(bodies[1].index_version, bodies[0].index_version);
   assert.equal(bodies[1].save_batch_id, bodies[0].save_batch_id, 'same paper, same save request');
   assert.deepEqual(plain(w.selectedScopeQuestionUids()), scopeUids);
+});
+
+test('좁은 화면 하단 띠: 되돌릴 것이 있는 동안만 "방금 문제지 되돌리기"가 띠에 보이고, 문제지 만들기 버튼은 그대로 있다', async t => {
+  const h = setup(t);
+  const { w, ctx } = h;
+  build(w);
+  ctx.Archive2Workspace.v.composeLiveInfo = { hasRows: true, possible: 50, requested: 50, disabled: false, overLimit: false };
+  const idle = w.renderMobileActions();
+  assert.doesNotMatch(idle, /restore-cleared/);
+  await h.click({ action: 'bucket', bucket: '3' });
+  const bar = w.renderMobileActions();
+  assert.match(bar, /data-action="restore-cleared"[^>]*class="cz-bar-restore"[^>]*>방금 문제지 되돌리기</);
+  assert.match(bar, /data-action="generate"[^>]*class="primary cz-bar-main"[^>]*>문제지 만들기</, 'the main button stays');
+  assert.match(bar, /50문항 가능/);
+  await h.click({ action: 'restore-cleared' });
+  assert.doesNotMatch(w.renderMobileActions(), /restore-cleared/);
+});
+
+test('같은 초안에서 조건을 바꿔 지운 뒤 찾기의 "문제지 만들기"(go-compose)로 새 조건을 들고 오면 되돌리기는 사라진다', async t => {
+  const h = setup(t);
+  const { w } = h;
+  build(w);
+  await h.click({ action: 'bucket', bucket: '3' });
+  assert.ok(w.clearedResult());
+  // 홈·찾기로 갔다가 조건 없이 그냥 돌아온 경우는 남는다.
+  w.state.view = 'find';
+  assert.ok(w.clearedResult(), 'just visiting another screen keeps it');
+  w.state.view = 'compose';
+  assert.ok(w.clearedResult());
+  w.state.view = 'find';
+  w.state.find = { grade: '고1' };
+  await h.click({ action: 'go-compose' });
+  assert.equal(w.clearedResult(), null, 'new conditions brought from the finder discard it');
+  assert.doesNotMatch(w.renderResultEmpty(), /data-compose-restore/);
 });

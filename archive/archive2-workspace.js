@@ -40,7 +40,7 @@
     scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
     state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
     updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult;
+    workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult;
   WS.links.push(() => {
     ({
       $, ASSESSMENT_RECIPE_KEYS, ASSESSMENT_RECIPE_TITLES, HOME_PRODUCT_REGISTRY, META_FACET_FILTERS, Quick,
@@ -63,7 +63,7 @@
       scopeIsSelected, scopeOpenState, scopeOptions, session, setOriginalStep, showDialog, showSavedPaper,
       state, status, stepComposeCount, teacherErrorMessage, unifiedIndex, unique, updateOriginalPreview,
       updatePreview, updateRecentResults, withDefaultComposeSubject, withoutShadowedChildren,
-      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult
+      workspaceEligibility, setContentKeepingPreview, rememberComposeConditions, restoreClearedResult, discardClearedResult
     } = WS.api);
   });
   // function declarations are hoisted: export them now so the other parts (and this file's own load-time code) see them
@@ -673,6 +673,7 @@
         render();
         window.scrollTo(0, 0);
       } else if (a === "go-compose") {
+        discardClearedResult();
         rememberCurrentHistoryEntry();
         const sources = b.dataset.useSources === "true" ? state.sources.slice() : [];
         if (state.selected.length || state.receipts.length || state.sealed) newDraft();

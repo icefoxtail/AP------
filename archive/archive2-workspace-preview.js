@@ -12,12 +12,12 @@
   let
     $, api, button, composeFinishButtons, composeUnitLabel, currentSavedPaperIds, displayTemplate, esc,
     frozenPaperCache, lockedIndex, openAssignmentOutput, options, originalSettingsForExam, ownHistoryContext,
-    prepare, prepareSignature, render, replace, request, review, state, status, teacherErrorMessage;
+    clearedResult, prepare, prepareSignature, render, replace, request, review, state, status, teacherErrorMessage;
   WS.links.push(() => {
     ({
       $, api, button, composeFinishButtons, composeUnitLabel, currentSavedPaperIds, displayTemplate, esc,
       frozenPaperCache, lockedIndex, openAssignmentOutput, options, originalSettingsForExam,
-      ownHistoryContext, prepare, prepareSignature, render, replace, request, review, state, status,
+      ownHistoryContext, clearedResult, prepare, prepareSignature, render, replace, request, review, state, status,
       teacherErrorMessage
     } = WS.api);
   });
@@ -210,11 +210,14 @@
       if (state.derivationSource) return "";
       const info = V.composeLiveInfo;
       const disabled = !info || info.disabled;
+      // 좁은 화면에서 조건을 바꿔 문제지가 지워졌다면, 스크롤 없이 보이는 이 띠에도 되돌리기를 둔다(안내 줄 자리에). 띠는 넓은 화면에서 숨는다.
+      const restorable = Boolean(clearedResult());
+      const note = (text) => restorable ? button("restore-cleared", "방금 문제지 되돌리기", 'class="cz-bar-restore"') : `<span class="cz-bar-note">${text}</span>`;
       return `<div class="cz-bar" role="region" aria-label="문제지 작업"><div class="cz-bar-text">${info?.hasRows && info.overLimit
-        ? `<strong class="cz-bar-count">최대 400문항</strong><span class="cz-bar-note">지금 요청 ${info.requested}문항</span>`
+        ? `<strong class="cz-bar-count">최대 400문항</strong>${note(`지금 요청 ${info.requested}문항`)}`
         : info?.hasRows
-        ? `<strong class="cz-bar-count">${info.possible}문항 가능</strong><span class="cz-bar-note">요청 ${info.requested}문항</span>`
-        : '<strong class="cz-bar-count">조건을 고르세요</strong><span class="cz-bar-note">단원을 고르면 문항 수가 보입니다</span>'}</div>${button("generate", "문제지 만들기", `class="primary cz-bar-main" ${disabled ? "disabled" : ""}`)}</div>`;
+        ? `<strong class="cz-bar-count">${info.possible}문항 가능</strong>${note(`요청 ${info.requested}문항`)}`
+        : `<strong class="cz-bar-count">조건을 고르세요</strong>${note("단원을 고르면 문항 수가 보입니다")}`}</div>${button("generate", "문제지 만들기", `class="primary cz-bar-main" ${disabled ? "disabled" : ""}`)}</div>`;
     }
     const buttons = composeFinishButtons(r);
     const parts = Math.max(1, Math.ceil(state.selected.length / 50));

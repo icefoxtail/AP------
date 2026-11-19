@@ -69,6 +69,11 @@
     }
     return last;
   }
+  // 다른 길(찾기의 "문제지 만들기" 등)로 새 조건을 들고 만들기에 왔을 때는 지워진 결과를 버린다.
+  function discardClearedResult() {
+    lastCleared = null;
+    conditionsBeforeEvent = null;
+  }
   function restoreClearedResult() {
     const last = clearedResult();
     if (!last) return;
@@ -1759,6 +1764,7 @@
     prepare,
     prepareSignature,
     rememberComposeConditions,
+    discardClearedResult,
     restoreClearedResult,
     clearedResult,
     generate,

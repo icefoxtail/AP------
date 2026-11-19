@@ -4313,6 +4313,22 @@ body[data-archive-view="compose"] .cz:not(.has-result) .cz-result {
   .cz-bar .cz-bar-sub:hover {
     background: transparent;
   }
+  /* 조건을 바꿔 문제지가 지워졌을 때만: 안내 줄 자리에 놓는 "방금 문제지 되돌리기"(글자 버튼, 눌러야 할 크기는 확보). */
+  .cz-bar .cz-bar-restore {
+    align-self: flex-start;
+    min-height: 32px;
+    margin: 0 0 -4px;
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    color: var(--surface);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
   .cz-bar :focus-visible {
     outline: 3px solid var(--surface);
     outline-offset: 2px;
