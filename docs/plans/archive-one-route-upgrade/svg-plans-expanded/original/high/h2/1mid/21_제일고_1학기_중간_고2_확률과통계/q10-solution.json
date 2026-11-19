@@ -1,0 +1,46 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "1~6 (B의 원소)",
+        "in": [
+          "B",
+          "A"
+        ]
+      },
+      {
+        "text": "7, 8",
+        "in": [
+          "A"
+        ]
+      }
+    ],
+    "shade": "A∩B^c",
+    "subset": [
+      "B",
+      "A"
+    ]
+  },
+  "caption": "B가 A 안에 있고 A에서 B 밖의 원소는 7, 8 두 개이다. C⊆A인 집합은 2의 8제곱=256개이다. B와 겹치지 않으려면 C는 색칠한 7, 8에서만 원소를 골라야 하므로 2의 2제곱=4개이다. 따라서 B∩C가 공집합이 아닌 경우는 256−4=252개이고 답은 ④이다.",
+  "accessibilityDescription": "전체집합 안에서 집합 B가 집합 A 안에 포함된 벤다이어그램이며 B에 1부터 6, B 밖의 A 부분에 7, 8이 적혀 있고 그 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "B와 겹치지 않는 C가 고를 수 있는 원소가 색칠한 7, 8뿐임이 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 집합 $A, B$가 $A=\\{1, 2, 3, 4, 5, 6, 7, 8\\}$, $B=\\{1, 2, 3, 4, 5, 6\\}$일 때, $C \\subseteq A$, $B \\cap C \\neq \\varnothing$을 만족시키는 집합 $C$의 개수를 구하면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
