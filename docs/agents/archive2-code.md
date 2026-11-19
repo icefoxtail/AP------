@@ -344,3 +344,16 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 
 - `archive/index.html`의 "믹서 출제" 버튼은 "문제지 만들기"(`workspace.html?view=compose`)로 바꿨고, 리포트센터(`apmath/js/report-center.js`)의 "믹서 열기" 버튼과 MIXED 출제물의 열기 링크(믹서 주소)는 없앴다. `mixer.html`·`mixer-selector.js`는 다른 화면이 모듈을 쓰고 저장된 주소로 열 수 있어 지우지 않았다.
 - 이유: 아카이브 난이도는 정수 1~5만 쓰는데, 옛 믹서는 상/중/하 필터를 쓰는 유일한 화면이다. 고치지 않고 입구를 숨기며(옛 화면 제거 계획과 같은 방향), 같은 기능은 문제지 만들기가 제공한다.
+
+## 기준 시험지로 다시 만들기: 선정 모듈 (2026-11-20, 화면 연결 전 본체)
+
+- `archive/archive2-derive.js`(브라우저·node 겸용 순수 함수)가 "같은 유형 / 다른 유형" × "기본 / 응용 / 심화"로 기준 시험지(빠른 평가·저장 문제지·출제본·학교 기출·교과서 단원)에서 한 벌을 다시 뽑는다. 화면은 아직 부르지 않는다(`?v=` 변경 없음). 진입: `buildDeriveIndex(records, {unified?, projectionPolicy, manifest})`로 색인을 한 번 만들고, `deriveFromPaper(baseItems, {typeMode, level, sources, exclude, seed}, index)` → `{items, perItem[{baseUid, pickedUid, rung, hintOnly, levelDelta, relaxed}], summary}`.
+- 문항 층 사다리: 세부 유형(templateKey, 없으면 metaHintTPL) → 유형(problemTypeKey / metaHintPT) → L4·conceptClusterKey → 소단원(subUnitKey) → 대단원(통합 단원 층 `unitKey`) → 범위 안 그 밖(`none`). 같은 칸 안에서 정식 일치가 힌트 일치보다 앞서고 힌트 일치는 `hintOnly`로 기록한다. CrossConcept·Condition은 같은 칸 안 동점 깨기 가산점이다.
+- 시험지 층: 난이도 목표(same = 기준 분포, up-some = 5가 아닌 문항의 절반쯤 +1, up-one = 전부 +1, 5는 5)를 맞춘다. 세부 유형 칸에서만 ±1을 허용하고 누적 편차가 줄어드는 쪽을 택해 전체에서 상쇄한다. 같은 원본 파일 몰림은 감점한다.
+- 필수 경계: 기준 문항들이 놓인 (학년·과목·교육과정)과 그 안에서 기준이 덮는 대단원 집합 밖은 어느 단에서도 뽑지 않는다. 후보가 없어도 문항 수를 유지하려고 범위 안 다른 단원에서 `none`으로 채우고, 범위 안에 아무것도 없으면 빈 자리로 두고 `summary.shortfall`에 알린다.
+- 제외: 기준 문항 자체와 `exclude`로 받은 UID만. **기준 문항의 유사 사본은 제외하지 않는다**(사용자 2026-11-20 정정, 같은 세부 유형 칸의 정상 후보). 이유: 학생이 풀어 본 유형을 다시 풀어도 괜찮다.
+- 다른 유형 모드: 기준에 나온 세부 유형(없으면 유형)을 피하고 같은 단원·난이도 구성을 유지한다. 모자라면 자기 문항의 유형만 피하도록 완화하고 `relaxed`·`summary.notes`에 기록한다.
+- 출처(`sources`): all / school(학교 기출) / similar(유사) / textbook(출판사별 `publisher`) / workbook(교재·유형: `types/`와 백발백중). 판정은 기존 `Archive2Output.materialKind`와 `textbooks/<폴더>` 폴더 표(textbook-source-manifest-v1.json의 folders)를 그대로 쓰고, 새 판정 규칙을 만들지 않았다(교재 구분만 `WORKBOOK_PUBLISHERS`).
+- 같은 seed + 같은 입력 → 같은 결과(후보별 (seed, uid) 해시로 동점 처리, 입력 순서 무관). summary 문구는 단 이름("같은 세부 유형·같은 유형·같은 개념·같은 단원")과 "기준보다 쉬움·같음·어려움"뿐이고 내부 키 이름은 넣지 않는다. 시험지 수준 일치율(세부 유형·유형·난이도·단원)은 `summary.match`.
+- 읽는 필드는 정본 필드뿐이다(사본 필드 `rpmPrimary*` 안 읽음): questionUid, sourceFile, contentType, problemTypeKey, templateKey, metaHintPT/TPL, difficultyBucket, L4, conceptClusterKey, subUnitKey, crossConceptKeys, conditionKeys와 통합 단원 층의 배치.
+- 부족 주문서: `node archive/tools/derive-coverage-report.mjs --out <저장소 밖 폴더>`가 원본 시험지 전체에 same 유형 × (same, up-one)을 돌려 (과정, 세부 유형, 목표 난이도)별 "후보가 모자란 칸 × 그 칸을 요구하는 시험지 수"와 학년·학기별 일치율을 낸다(유사·교재 문항 생성의 우선순위). 저장소에는 쓰지 않는다.
