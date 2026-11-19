@@ -78,6 +78,12 @@
 
 - 2026-11-18 삭제했다(`tests/known-failures.json`, `tools/lib/known-failures.js`, 실행기의 KNOWN-FAIL 처리). 이유: 대상이던 고정 비교(현재 원본·판본을 과거 영수증·상수와 대조하는 검사)를 없앴고, 실패를 서명으로 허용하는 장치가 남으면 새 실패가 묻힌다. 이제 `tools/run-tests.js`는 실패를 실패로 그대로 센다(파일 단위 `quarantined` 목록만 따로 남아 있다).
 
+## 13. CI `test`는 샤드로 나눠 돈다
+
+- PR·push CI의 전체 테스트는 `test-shards` 매트릭스(`node tools/run-tests.js --shard i/n`)로 나뉘어 돌고, 이름이 `test`인 집계 잡 하나가 모든 샤드의 PASS/FAIL을 모아 판정한다(`tools/ci/aggregate-test-shards.mjs`). 샤드가 실패·취소·누락이면 `test`는 실패한다. 체크 이름 `test`는 바꾸지 않는다.
+- 분할은 결정적이고(`tools/ci/test-shard.cjs`, 소요 시간 힌트 `tools/ci/test-durations.json`) 힌트에 없는 테스트도 어느 샤드엔가 자동으로 들어간다. 시간 힌트는 CI 샤드 결과 artifact(`test-shard-*`)에서 `node tools/ci/refresh-test-durations.mjs --dir <artifacts>`로 새로 만든다. 낡아도 테스트가 빠지지는 않고 균형만 흐트러진다.
+- 이유: 샤드마다 체크아웃·준비(약 8분)를 다시 하지만, 직렬 440개로 30~40분 기다리던 것을 줄이기 위해서다. 새 테스트는 그대로 `tests/이름.test.js`나 `requiredCommands`에 더하면 된다.
+
 ## 운영 교훈 (2026-10)
 
 - Pages 등록 커밋이 main 경쟁에서 지면 실패가 아니라 경고다. 다음 main의 배포가 등록을 이어받는다.
