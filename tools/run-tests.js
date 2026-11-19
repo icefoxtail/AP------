@@ -534,6 +534,7 @@ const requiredCommands = [
     label: 'tests/item-4slot-data.test.cjs',
     args: ['tests/item-4slot-data.test.cjs']
   },
+  { label: 'tests/item-4slot-index-format.test.cjs', args: ['--test', 'tests/item-4slot-index-format.test.cjs'] },
   {
     label: 'tests/archive2-canonical-projection.test.mjs',
     args: ['--test', 'tests/archive2-canonical-projection.test.mjs']

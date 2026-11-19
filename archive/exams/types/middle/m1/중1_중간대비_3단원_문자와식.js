@@ -444,6 +444,7 @@ window.questionBank = [
       "표"
     ],
     "wide": false,
+    "image": "assets/images/중1_중간대비_3단원_문자와식/q180.png",
     "content": "가로, 세로, 대각선에 있는 다항식의 합이 모두 같아지도록 빈칸 ㉠, ㉡에 들어갈 알맞은 다항식을 구하여라.",
     "choices": [],
     "answer": "㉠ $-y+6$, ㉡ $3x+5y-3$",
