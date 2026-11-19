@@ -182,7 +182,9 @@
   function donutSvg(totals) {
     const r = 70, c = 2 * Math.PI * r;
     const f = (totals.total ? totals.correct / totals.total : 0) * c;
-    return `<svg viewBox="0 0 170 170" role="img" aria-label="정답 ${totals.correct} / ${totals.total}"><circle cx="85" cy="85" r="${r}" fill="none" stroke="var(--wash)" stroke-width="15"/><circle cx="85" cy="85" r="${r}" fill="none" stroke="var(--ok)" stroke-width="15" stroke-linecap="round" stroke-dasharray="${f.toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 85 85)"/></svg>`;
+    const arc = totals.correct > 0 ? `<circle cx="85" cy="85" r="${r}" fill="none" stroke="var(--ok)" stroke-width="15" stroke-linecap="round" stroke-dasharray="${f.toFixed(2)} ${c.toFixed(2)}" transform="rotate(-90 85 85)"/>` : "";
+    // 정답 0이면 호를 그리지 않는다(길이 0에 둥근 끝을 주면 12시 방향에 점 하나가 찍힌다).
+    return `<svg viewBox="0 0 170 170" role="img" aria-label="정답 ${totals.correct} / ${totals.total}"><circle cx="85" cy="85" r="${r}" fill="none" stroke="var(--wash)" stroke-width="15"/>${arc}</svg>`;
   }
   function summaryHtml(vm) {
     const { reach, next, judge, judged } = vm;
@@ -192,7 +194,9 @@
     } else if (reach && next) {
       bits.push(`<b>${reach.k}(${reach.n})까지는 안정적으로 해결합니다.</b> ${next.k}(${next.n})에서는 ${next.g.total}문항 중 ${next.g.correct}문항을 맞혀, 이 단계부터 수업에서 함께 다집니다.`);
     } else if (reach) {
-      bits.push(`<b>${reach.k}(${reach.n})까지 모두 안정적으로 해결합니다.</b> 틀린 문항이 있는 부분은 아래 유형별 결과에서 수업 때 확인합니다.`);
+      // 틀린 문항이 하나도 없으면 "틀린 문항이 있는 부분" 꼬리 문장은 틀린 말이라 뺀다.
+      const wrongTail = vm.report.totals.wrong > 0 ? " 틀린 문항이 있는 부분은 아래 유형별 결과에서 수업 때 확인합니다." : "";
+      bits.push(`<b>${reach.k}(${reach.n})까지 모두 안정적으로 해결합니다.</b>${wrongTail}`);
     } else if (next) {
       bits.push(`<b>${next.k}(${next.n})부터 수업을 시작합니다.</b> ${next.g.total}문항 중 ${next.g.correct}문항을 맞혔고, 쉬운 문제부터 차근차근 짚어 갑니다.`);
     }

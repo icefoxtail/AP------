@@ -127,13 +127,22 @@
   }
 
   // ---- 쪽 맞춤: A4 폭(794px)으로 따로 재서, 한 쪽에 들어가는 가장 여유 있는 단계를 고른다 ----
-  function measureHeight(sheet, level) {
+  // 단계 0~5(5가 가장 촘촘). 5단계로도 넘치면 마지막 수단으로 본문 전체를 비율(--shrink)로 줄여 쪽 아래 푸터가 잘리지 않게 한다.
+  const MAX_LEVEL = 5;
+  const MIN_SHRINK = 0.55; // 이보다 작으면 글자를 읽기 어려워 더 줄이지 않고 화면 경고만 남긴다
+  function measureHeight(sheet, level, shrink) {
     const host = document.createElement("div");
     host.className = "sheetbox";
     host.style.cssText = "position:absolute;left:-10000px;top:0;width:794px;visibility:hidden;pointer-events:none;margin:0";
     const clone = sheet.cloneNode(true);
     clone.removeAttribute("id");
     clone.setAttribute("data-fit", String(level));
+    clone.removeAttribute("data-shrink");
+    clone.style.removeProperty("--shrink");
+    if (shrink < 1) {
+      clone.setAttribute("data-shrink", "");
+      clone.style.setProperty("--shrink", String(shrink));
+    }
     clone.style.minHeight = "0";
     host.appendChild(clone);
     document.body.appendChild(host);
@@ -142,22 +151,36 @@
     return height;
   }
   function fitSheet(sheet) {
-    let chosen = 3;
+    let chosen = MAX_LEVEL;
     let height = 0;
-    for (let level = 0; level <= 3; level++) {
-      height = measureHeight(sheet, level);
+    for (let level = 0; level <= MAX_LEVEL; level++) {
+      height = measureHeight(sheet, level, 1);
       if (height <= A4_FIT_PX) { chosen = level; break; }
     }
+    let shrink = 1;
+    if (height > A4_FIT_PX) {
+      // 줄일 부분은 푸터를 뺀 본문이라 비율이 정확히 맞지 않는다. 몇 번 다시 재서 맞춘다.
+      for (let i = 0; i < 6 && height > A4_FIT_PX && shrink > MIN_SHRINK; i++) {
+        shrink = Math.max(MIN_SHRINK, Math.floor(shrink * (A4_FIT_PX / height) * 0.99 * 1000) / 1000);
+        height = measureHeight(sheet, chosen, shrink);
+      }
+    }
     sheet.setAttribute("data-fit", String(chosen));
-    sheet.toggleAttribute("data-overflow", height > A4_FIT_PX);
-    return { level: chosen, height, overflow: height > A4_FIT_PX };
+    sheet.toggleAttribute("data-shrink", shrink < 1);
+    if (shrink < 1) sheet.style.setProperty("--shrink", String(shrink));
+    else sheet.style.removeProperty("--shrink");
+    const overflow = height > A4_FIT_PX;
+    sheet.toggleAttribute("data-overflow", overflow);
+    return { level: chosen, height, shrink, overflow };
   }
   let fitTimer = 0;
   function fitAll() {
     state.fit = [fitSheet($("sheet1")), fitSheet($("sheet2"))];
     const over = state.fit.some((f) => f.overflow);
     $("printBtn").disabled = !state.report;
-    if (over) setState("내용이 많아 한 쪽에 다 담지 못했습니다. 인쇄 전에 확인하세요.", true);
+    const shrunk = state.fit.some((f) => f.shrink < 1);
+    if (over) setState("내용이 아주 많아 글자를 줄여도 한 쪽에 다 담지 못했습니다. 인쇄 전에 확인하세요.", true);
+    else if (shrunk) setState("내용이 많아 글자를 줄여 한 쪽에 맞췄습니다. 인쇄 전에 확인하세요.");
     else if (state.report) setState("");
     return state.fit;
   }

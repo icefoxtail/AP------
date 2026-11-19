@@ -315,6 +315,14 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   // 틀린 문항 없음
   const perfect = run([]);
   assert.ok(perfect.wrong.includes('틀린 문항이 없습니다') && perfect.wrongN === '0문항');
+  // 전부 정답이면 "틀린 문항이 있는 부분은 …" 꼬리 문장을 뺀다(틀린 말이 된다). 틀린 문항이 있으면 그대로 둔다.
+  assert.ok(/모두 안정적으로 해결합니다\./.test(perfect.summary) && !/틀린 문항이 있는 부분/.test(perfect.summary), '전부 정답: 꼬리 문장 없음');
+  assert.ok(/틀린 문항이 있는 부분은 아래 유형별 결과/.test(hi.summary), '틀린 문항이 있으면 꼬리 문장 유지');
+  // 전부 오답이면 도넛 호를 그리지 않는다(길이 0 호에 둥근 끝을 주면 12시 방향에 점이 찍힌다). 일부 정답이면 호가 있다.
+  const allWrong = run(Array.from({ length: 24 }, (_, i) => i + 1));
+  assert.strictEqual((allWrong.donut.match(/<circle/g) || []).length, 1, '정답 0: 바탕 원만, 호 없음');
+  assert.strictEqual((perfect.donut.match(/<circle/g) || []).length, 2, '정답이 있으면 바탕 원 + 호');
+  assert.strictEqual((hi.donut.match(/<circle/g) || []).length, 2);
 }
 
 // 13. 화면 파일: 두 쪽 구성·인쇄 규칙·저장하지 않음·배포 목록
@@ -335,6 +343,10 @@ const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report
   assert.ok(/@page\s*\{\s*size:\s*A4;\s*margin:\s*0/.test(css) && /break-after:\s*page/.test(css) && /height:\s*296mm/.test(css), '인쇄 쪽 나눔 고정');
   assert.ok(/@container \(max-width: 640px\)/.test(css), '휴대폰 폭 규칙은 컨테이너 기준(쪽 맞춤 측정과 같은 배치)');
   assert.ok(/print-color-adjust:\s*exact/.test(css));
+  // 쪽 맞춤: 단원이 많아도 정확히 2쪽·푸터 보임. 단계 0~5 + 마지막 수단(본문 비율 축소), 입력 진행 표시는 스크롤해도 붙어 있다.
+  assert.ok(/MAX_LEVEL = 5/.test(js) && /data-fit="4"/.test(css) && /data-fit="5"/.test(css), '쪽 맞춤 단계 0~5');
+  assert.ok(/\.sheet\[data-shrink\] > :not\(\.foot\) \{ zoom: var\(--shrink/.test(css) && /MIN_SHRINK/.test(js), '4·5단계로도 넘치면 푸터를 뺀 본문을 비율로 줄인다');
+  assert.ok(/\.panel \.progress \{[^}]*position:\s*sticky/.test(css), '입력 N / M 진행 표시는 sticky');
   for (const file of [js, view].map((s) => s.replace(/\/\/.*$/gm, ''))) {
     assert.ok(!/localStorage|sessionStorage|indexedDB|document\.cookie|history\.(push|replace)State|sendBeacon|XMLHttpRequest|location\.(search|hash)\s*=/.test(file), '이름·O/X는 어디에도 저장하지 않는다');
   }
