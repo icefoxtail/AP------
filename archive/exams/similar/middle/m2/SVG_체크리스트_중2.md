@@ -620,3 +620,35 @@
 | 24 | NOT_NEEDED | BENEFICIAL | 해설: 집에서 도서관까지 2.2 km, 도서관에서 학교까지 1.2 km로 나눈 선분 그림을 넣으면 검산이 쉽다. |
 
 - 문제그림 REQUIRED/BENEFICIAL 2개: 8, 14. 해설그림 REQUIRED/BENEFICIAL 3개: 6, 21, 24.
+
+## 24_연향중_1학기_중간_중2_유사 (23문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q1[보기], q5[보기/정답③→④], q6[보기/정답①→③], q7[보기/정답②→⑤], q11[보기/정답①→③], q12[보기/정답②→①], q13[보기/정답④→②], q16[보기], q17[보기/정답②→④], q18[보기/정답④→②], q19[보기/정답⑤→①], q20[보기/정답③→②], q21[발문], q22[발문], q23[발문]. 해설 4개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | BENEFICIAL | NOT_NEEDED | 문제: 원뿔(반지름 2a, 높이 3b)과 원기둥(반지름 3b, 높이 2a)의 치수를 표시한 그림이 있으면 두 입체의 대응 관계가 분명해진다. |
+| 22 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 1개: 21. 해설그림 REQUIRED/BENEFICIAL 0개: 없음.
