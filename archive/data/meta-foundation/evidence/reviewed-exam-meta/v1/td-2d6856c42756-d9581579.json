@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-2d6856c42756-d9581579",
+  "requestSha256": "3391baaec93b85bd625ea2bead643cd47ec88266179d29d90e8e819b00412440",
+  "examUid": "21_팔마중_1학기_기말_중3_수학",
+  "sourceArchiveFile": "original/middle/m3/1final/21_팔마중_1학기_기말_중3_수학.js",
+  "sourceBlobSha1": "1cb2c22f7bbe3cfd344176dc3781661fa2960c8c",
+  "sourceRawSha256": "87965e6e941be2a1866411319a927db30a350d1d7402b91896e4786ac8fefae5",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d6856c42756-d9581579.type-ledger.json",
+        "sha256": "1e352cb4768170a822cbe63f118ee655456a53077710d20a8276ac3b8c48e185"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_2618219a51b006ca7a96e6dc87a7609878e533614a2d8dbf5036fe29cd836636",
+      "sourceArchiveFile": "original/middle/m3/1final/21_팔마중_1학기_기말_중3_수학.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-2d6856c42756-d9581579",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "이차방정식을 주어진 조건(인수분해, 근의 공식)에 맞게 풀이 과정과 함께 푼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "eb6603f24fbe4155ff834cdd6f3d61d4a00a1a0d59121932dd241122f40ca6c7",
+        "judgedContentFingerprint": "ff72d4f5e126425bb3e9b93263ba8df78b4d2bbc2c2afd9de71933416b2a786e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "c496fb45fd22a0efe4b8e7ebfe4793ffd62a7278691314b710688907f4a03ab2",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-2d6856c42756-d9581579.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 25
+}

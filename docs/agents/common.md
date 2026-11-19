@@ -26,6 +26,7 @@ Claude·GPT·Codex 모든 라인 공통이다. 상세 원문은 [metadata.md](me
    골든 표본 시험지(`25_효천고_2학기_중간_고1_기출.js`, `25_매산여고_2학기_중간_고1_기출.js`)의 해설 그림(solutionImage*, imageSize*)만 바꿨다면 m2 CREATE gate 테스트 10개가 GOLDEN_SAMPLE_SHA256_MISMATCH로 깨지므로, 같은 PR에서 `node archive/tools/rebind-m2-create-golden-sample-evidence.mjs --source <시험지 경로>`(dry-run) → 같은 명령에 `--write` → `tests/m2-*create-gate*.test.js` 순서로 고정값을 다시 묶는다. 이유: 그림 필드 외(content·answer·choices·solution·문항 수)가 바뀌었으면 도구가 REFUSE하므로 검사를 약하게 하지 않고 안전하게 재고정할 수 있다.
 6. 병합 전에 바꾼 부분의 관련 테스트를 직접 돌리고, PR CI의 실패 목록을 읽는다. 특히 "Approved source, scoped Meta, and Consumer validation", "test", "Archive2 runtime guard"를 본다(예전 "Archive2 runtime contract" 등 3개 잡이 이 잡 하나의 단계로 합쳐졌다. 어느 검사가 실패했는지는 실행 요약의 "outcome per check" 표와 단계 이름으로 본다). 실패가 있어도 병합하고, 실패한 검사와 짐작되는 원인을 PR에 한 줄 적어 관제의 수리 목록에 넘긴다(2026-11-17 사용자 결정, 위 절). PR 기술검사는 고정 event base와 실제 검증 snapshot에 결속한다. 이후 main 이동은 병합 충돌·보호 규칙과 별도로 확인하며, 바뀐 입력·직접 의존성·검사기에 해당하는 검사만 재실행한다. 무관한 main 이동만으로 전체 Archive 검사를 반복하지 않는다(이력 재작성·강제 push 금지).
 7. 보고에는 한 일, 확인 근거(실행한 명령과 결과), 남은 일, 사용자 결정이 필요한 것을 쓴다. 돌리지 않은 검사는 NOT_RUN으로 적는다.
+8. 원본 시험지 JS·메타를 고치는 PR은 생성물(카탈로그·manifest·source-verification index·runtime-bridge-receipt·readiness 등)을 커밋하지 않는다. 병합 뒤 등록기(archive-main-auto-meta)가 만들어 스냅숏으로 커밋한다. PR 검사는 임시 체크아웃에서 생성한 뒤 같은 검증을 한다(Archive2 save round trip은 PR에서 기본 빌드, main·배포는 `--package-only`). 깨진 JS는 이 빌드에서, 중복 questionUid는 PR 등록 투영의 verify-archive-registration에서 여전히 빨갛다. 이유: main이 움직일 때마다 생성물이 충돌해 PR을 세 번씩 다시 만들었다(#2598).
 
 ## CURRENT — 판본 장부: 승인은 그대로 두고 "같은 판본"만 덧붙인다 (2026-11-18, 사용자 결정)
 
