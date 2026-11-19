@@ -137,16 +137,29 @@ test('all changed analysis outputs are forbidden while production authority rece
   }
 });
 
-test('production images and the two canonical catalog projections are explicit large-data lanes', () => {
+test('production images and the canonical catalog projection are explicit large-data lanes', () => {
   const repo = makeRepo();
   try {
     write(repo.root, 'archive/assets/images/approved/diagram.png', Buffer.alloc(10 * 1024 * 1024));
     write(repo.root, 'archive/data/archive2-catalog.json', Buffer.alloc(40 * 1024 * 1024));
-    write(repo.root, 'archive/data/question_metadata.json', Buffer.alloc(46 * 1024 * 1024));
     commit(repo.root, 'add production data');
     const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
     assert.equal(report.ok, true, report.errors.join('\n'));
-    assert.ok(report.files.filter(file => !file.checked).length >= 3);
+    assert.ok(report.files.filter(file => !file.checked).length >= 2);
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+// The question metadata is committed as one small shard per exam. The assembled one-file form is no longer a large-data lane, so
+// committing it again (it is ignored, but a force-add is possible) is held to the ordinary per-file cap.
+test('the assembled question_metadata.json is no longer an exempt large file', () => {
+  const repo = makeRepo();
+  try {
+    write(repo.root, 'archive/data/question_metadata.json', Buffer.alloc(70 * 1024 * 1024));
+    commit(repo.root, 'add the assembled metadata file');
+    const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
+    assert.equal(report.ok, false);
   } finally {
     cleanRepo(repo);
   }

@@ -17,8 +17,7 @@ export const FOOTPRINT_LIMITS = Object.freeze({
 // Canonical catalog projections are production inputs consumed by the live
 // archive. They are intentionally large and have stable, explicit paths.
 export const CANONICAL_LARGE_DATA = Object.freeze([
-  'archive/data/archive2-catalog.json',
-  'archive/data/question_metadata.json'
+  'archive/data/archive2-catalog.json'
 ]);
 
 const PRODUCTION_ASSET_PREFIXES = Object.freeze([

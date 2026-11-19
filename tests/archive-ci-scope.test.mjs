@@ -15,7 +15,7 @@ const source = 'archive/exams/original/high/example.js';
 const asset = 'archive/assets/images/example/solution.svg';
 const repo = fileURLToPath(new URL('..', import.meta.url));
 const read = file => fs.readFileSync(path.join(repo, file), 'utf8');
-const metadataFile = 'archive/data/question_metadata.json';
+const metadataFile = 'archive/data/question-metadata/v1/' + 'ab'.repeat(32) + '.json';
 function fixture(t, changedFiles = { [source]: 'window.questions=[];' }) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-scope-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));

@@ -1,7 +1,7 @@
 // FINAL QA non-PT metadata registration: one 2022 Calculus I exam, no PT/TPL fabrication.
 // Invoked only by archive-reviewed-exam-meta-register.yml via small, source-bound inbox request.
 import fs from "node:fs";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, writeMetadataText } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -159,7 +159,7 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
     status:"REGISTERED_SEMANTICS_ONLY__CONSUMER_UNVERIFIED",ptTpl:"NOT_IN_SCOPE",q03ExactRpmPath:"NOT_APPLICABLE"};
   if(write&&!verifyProjection){
     if(identityTouched)fs.writeFileSync(path.join(root,IDENTITY),out(identity),"utf8");
-    fs.writeFileSync(path.join(root,META),questionMetadataText(metadata),"utf8");
+    writeMetadataText(root,questionMetadataText(metadata));
     fs.mkdirSync(path.dirname(receiptFile),{recursive:true});
     fs.writeFileSync(receiptFile,out(receipt),"utf8");
   }

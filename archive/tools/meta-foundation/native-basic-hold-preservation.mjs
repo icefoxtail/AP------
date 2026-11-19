@@ -1,6 +1,7 @@
 // Fingerprint continuation of an existing basic approval. An immutable native
 // source review and a separate explicit primary HOLD do not approve that primary.
 import fs from "node:fs";
+import { META_FILE, questionMetadataBytesAt } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -54,6 +55,7 @@ function requireCommit(root, commit) {
 }
 function gitBytes(root, commit, relative) {
   safe(relative); requireCommit(root, commit);
+  if (relative === META_FILE) return questionMetadataBytesAt(root, commit);
   const key = path.resolve(root) + "\0" + commit + "\0" + relative;
   if (gitCache.has(key)) return gitCache.get(key);
   let bytes;

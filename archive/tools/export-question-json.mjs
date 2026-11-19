@@ -32,6 +32,7 @@ const HISTORICAL_GENERATED_ROOT = path.join(archiveRoot, '_generated');
 const stableCompare = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const slash = value => String(value).replaceAll('\\', '/');
 const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const gitBlobSha1 = bytes => crypto.createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex');
 const repoRelative = full => slash(path.relative(repoRoot, full));
 const isPlainObject = value => {
   if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
@@ -210,7 +211,7 @@ function loadHeadBlobMap() {
     'archive/generated/lite/v1',
     'archive/db.js',
     'archive/data/question_identity_map.json',
-    'archive/data/question_metadata.json',
+    'archive/data/question-metadata/v1',
     'archive/data/generated-lite-consumer/v1',
     'archive/_generated'
   ];
@@ -599,7 +600,8 @@ function loadInputAuthorities(headBlobs) {
   const authority = file => ({
     sourcePath: repoRelative(file),
     sourceSha256: sha256(fs.readFileSync(file)),
-    sourceGitBlobSha1: headBlobs.get(repoRelative(file))?.objectSha || null
+    // The assembled question metadata is not tracked (its shards are): its blob id is that of the assembled bytes.
+    sourceGitBlobSha1: file === QUESTION_METADATA_PATH ? gitBlobSha1(questionMetadataBytes) : headBlobs.get(repoRelative(file))?.objectSha || null
   });
   return {
     db,
@@ -1066,7 +1068,8 @@ function runExport(outDirArgument) {
             identityMapSourceGitBlobSha1: headBlobs.get(repoRelative(IDENTITY_MAP_PATH))?.objectSha || null,
             identityMapSourceSha256: sha256(identityBytes),
             questionMetadataSourcePath: repoRelative(QUESTION_METADATA_PATH),
-            questionMetadataSourceGitBlobSha1: headBlobs.get(repoRelative(QUESTION_METADATA_PATH))?.objectSha || null,
+            // The assembled file is not tracked (git holds its shards); its Git blob id is that of the assembled bytes, the same value as before.
+            questionMetadataSourceGitBlobSha1: gitBlobSha1(questionMetadataBytes),
             questionMetadataSourceSha256: sha256(questionMetadataBytes)
           }
         : null;

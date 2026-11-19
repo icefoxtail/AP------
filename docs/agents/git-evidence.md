@@ -26,6 +26,11 @@
 - `tools/check-git-growth.mjs`는 파일 하나당 한도(일반 64MB, 분석 2MB, 임시 8MB)와 변경 묶음 전체 한도(새로 들어오는 객체 합계, **512MB**, `FOOTPRINT_LIMITS.changesetBytes`)를 따로 본다. 묶음 한도를 64MB에서 512MB로 올렸다. 이유: 이 검사는 이미지 자산 때문에 만들었는데 이미지는 어차피 저장소 밖으로 나가고, 등록 요청 수백 개나 등록 봇의 스냅샷 같은 정상 데이터 PR도 커서 한도가 빡빡하면 거짓 차단만 난다. 파일당 한도와 분류 규칙은 그대로다.
 - PR 검사는 `pull_request.base.sha`가 아니라 테스트 병합 커밋(HEAD)의 첫 부모를 기준으로 잰다. 이유: PR을 연 뒤 main이 앞서가면 base.sha가 낡아 남이 main에 올린 커밋까지 이 PR의 변경으로 세어졌다(2026-11-12 문서 2개짜리 PR이 130MB로 차단).
 
+## 운영 메타 조각화 (정본 시험지 메타)
+- git에는 `archive/data/question-metadata/v1/<sha256(sourceArchiveFile)>.json`(시험 하나의 레코드, questionUid 오름차순, 한 줄에 한 레코드)과 `_head.json`(records 외 최상위 키)만 있다. `archive/data/question_metadata.json`은 git이 무시하는 **조립본**으로, 모든 작업 폴더에 있어야 하고 읽는 쪽(화면·Worker 입력·catalog·검수 도구)은 그 한 파일을 그대로 읽는다. 새 클론·새 워크트리·`git checkout`/`restore`/rebase 뒤에는 `node archive/tools/meta-foundation/question-metadata-format.mjs assemble`로 만든다(`tools/run-tests.js`와 워크플로는 자동으로 한다). 조립본과 조각이 어긋났는지는 `check`로 본다.
+- 쓰는 도구(등록기 등)는 쓰기 전에 조립본이 조각과 같은지 확인해 다르면 멈추고, 쓴 뒤 바뀐 시험의 조각만 고치고 사라진 시험의 조각은 지운다. 조립본이 없으면 "assemble을 먼저 실행하라"는 한 줄 오류가 난다. 조립본을 직접 고치지 않는다(옛 도구가 직접 쓰면 위 확인이 잡는다). 조립본을 git에 다시 넣으면 파일당 한도(64MB)에 걸린다.
+- 이유: 80MB짜리 한 파일을 모든 등록 PR이 바꾸면 PR마다 파일 전체가 충돌 단위가 되어 병합 비용이 PR 수에 비례해 커졌다. 조각은 바뀐 시험만 충돌하고, 읽는 쪽 코드·화면·manifest sha는 그대로라 학생 화면은 달라지지 않는다.
+
 ## 워크트리 정리 (2026-11-10 사용자 지시)
 
 모든 라인(Claude·Codex·GPT, 메인과 하위 에이전트를 띄운 세션) 공통이다. 이유: 2026-11-10에 C 드라이브(232GB) 여유가 767MB까지 떨어져 작업을 멈췄고, 병합이 끝난 에이전트 워크트리 2개를 지우니 약 15GB가 확보됐다(워크트리 하나가 약 7GB).

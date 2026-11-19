@@ -28,7 +28,7 @@
 // Anything else (meta value change, stem/answer/choice/solution change, unapproved row, hash drift) is refused
 // before the first write and needs a normal re-review registration instead.
 import fs from "node:fs";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -416,6 +416,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
   const output = new Map([[META, questionMetadataText(metadata)], [IDENTITY, JSON.stringify(identity) + "\n"], [LINKS, json(links)], [receiptPath, json(receipt)]]);
   const changed = [...output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   if (write) {
+    assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -424,6 +425,7 @@ export function registerBasicScopeRebind({ root, request: req, write = false, ve
         fs.mkdirSync(path.dirname(full), { recursive: true });
         fs.writeFileSync(full, text, "utf8");
       }
+      syncMetadataShards(root);
     } catch (error) {
       for (const [full, original] of backup) { if (original === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, original); }
       throw error;

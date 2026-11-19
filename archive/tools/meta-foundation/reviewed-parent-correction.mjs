@@ -2,7 +2,7 @@
 // native type or an absent RPM leaf. The older Pungdeok correction contract and
 // figure-only rebind continue through their unchanged registrar branches.
 import fs from "node:fs";
-import { questionMetadataText } from "./question-metadata-format.mjs";
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from "./question-metadata-format.mjs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
@@ -282,9 +282,11 @@ export function registerReviewedParentCorrection({ root, request: req, write = f
     outputs.set(file, json(rt)); }
   const changed = [...outputs].filter(([file, value]) => !fs.existsSync(safe(root, file)) || fs.readFileSync(safe(root, file), "utf8") !== value);
   if (write) {
+    assertMetadataAssembledCurrent(root);
     const backups = new Map();
     try { for (const [file, value] of changed) { const full = safe(root, file); backups.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
-      fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, value); } }
+      fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, value); }
+      syncMetadataShards(root); }
     catch (error) { for (const [file, value] of backups) { if (value === null) fs.rmSync(file, { force: true }); else fs.writeFileSync(file, value); } throw error; }
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalRebound: applied.length,

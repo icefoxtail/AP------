@@ -26,7 +26,7 @@ const CONTENT_BROWSER_DEPENDENCIES = new Set([
 // inputs, not a second test registry; run-tests.js supplies its real commands.
 export const TECHNICAL_INPUTS = Object.freeze({
   metadata: Object.freeze([
-    'archive/data/question_metadata.json', 'archive/data/question_identity_map.json',
+    'archive/data/question_identity_map.json',
     'archive/data/archive2-catalog.json', 'archive/data/archive2-canonical-input-manifest.json',
     'archive/data/archive2-canonical-projection-policy.json', 'archive/data/archive2-item-review-overrides.json',
     'archive/data/archive2-source-verification-index.json', 'archive/data/archive2-source-verification-index-v2.json',
@@ -97,6 +97,9 @@ export const TECHNICAL_INPUTS = Object.freeze({
   ]),
 });
 const INPUT_GROUP = new Map(Object.entries(TECHNICAL_INPUTS).flatMap(([group, files]) => files.map(file => [file, group])));
+// The question metadata is tracked as one shard per exam (a flat folder); the assembled file is ignored by git.
+const METADATA_SHARD = /^archive\/data\/question-metadata\/v1\/[^/]+\.json$/;
+const groupOf = file => INPUT_GROUP.get(file) ?? (METADATA_SHARD.test(file) ? 'metadata' : undefined);
 
 export function scopeChecks(scope) {
   const full = scope.mode === 'full';
@@ -131,11 +134,11 @@ export function classifyPaths(files, { exists = () => true, assetConsumers = () 
     return { mode: 'playground', reason: 'only playground files changed; no Archive input or shared runtime dependency changed', groups: [], sources: [], assets: [] };
   }
   if (!files.every(file => ORIGINAL.test(file) || IMAGE.test(file))) {
-    if (files.some(file => !INPUT_GROUP.has(file))) {
+    if (files.some(file => groupOf(file) === undefined)) {
       return conservative('shared, mixed raw-content/code, or unclassified dependency changed');
     }
     if (files.some(file => !exists(file))) return conservative('deleted technical input requires existing inventory regression');
-    const groups = [...new Set(files.map(file => INPUT_GROUP.get(file)))].sort();
+    const groups = [...new Set(files.map(file => groupOf(file)))].sort();
     return { mode: groups.length === 1 ? `archive-${groups[0]}` : 'archive-technical', groups,
       reason: `only mapped Archive ${groups.join(', ')} inputs changed; use their technical and shared Consumer regressions`,
       sources: [], assets: [] };

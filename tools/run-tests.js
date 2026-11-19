@@ -678,6 +678,13 @@ function collectTests({ includeQuarantined = process.env.APMATH_RUN_QUARANTINE =
   return { includeQuarantined, files, tests, quarantined, requiredCommands, jsTestTimeout };
 }
 
+// The assembled question metadata is ignored by the repository (its shards are tracked): a fresh working folder has none, so build it once before any test.
+function assembleQuestionMetadata() {
+  if (!fs.existsSync(path.join(root, 'archive/data/question-metadata/v1'))) return;
+  const assemble = spawnSync(process.execPath, [path.join(root, 'archive/tools/meta-foundation/question-metadata-format.mjs'), 'assemble', '--root', root], { stdio: 'inherit' });
+  if (assemble.status !== 0) throw new Error('could not assemble archive/data/question_metadata.json from its shards');
+}
+
 async function main() {
 const args = process.argv.slice(2);
 if (args.length && (args.length !== 2 || args[0] !== '--ci-scope')) throw new Error('usage: run-tests.js [--ci-scope <plan>]');
@@ -714,8 +721,10 @@ if (args.length) {
       timeout: jsTestTimeout(file) })),
     ...requiredCommands.map(command => ({ ...command, timeout: command.timeout ?? 60000 })),
   ];
+  assembleQuestionMetadata();
   if (runScopedTests({ root, scopeFile: args[1], availableCommands })) return;
 }
+assembleQuestionMetadata();
 
 // The pre-step below regenerates the catalog and its runtime readiness receipt
 // together. While the post-merge registration bot commit is pending they are

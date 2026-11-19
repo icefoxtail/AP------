@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-import { questionMetadataText } from '../meta-foundation/question-metadata-format.mjs';
+import { questionMetadataText, writeMetadataText } from '../meta-foundation/question-metadata-format.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -196,7 +196,7 @@ function main() {
   };
   delete next.digest;
   next.digest = sha256(JSON.stringify(next));
-  fs.writeFileSync(metadataPath, questionMetadataText(next), 'utf8');
+  writeMetadataText(path.resolve(archiveDir, '..'), questionMetadataText(next));
   console.log(JSON.stringify({
     status: 'UPDATED',
     total: records.length,

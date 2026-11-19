@@ -9,6 +9,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { preparePrRegistration } from './archive-pr-registration-prepare.mjs';
 import { loadPatterns } from './push-touches-paths.mjs';
+import { META_FILE, hasShards, assembledTextFromShards } from '../../archive/tools/meta-foundation/question-metadata-format.mjs';
 import { NATIVE_PREVIEW_HELPER, selectNativeRequests, emptyNativePreview, verifyNativeRequests,
   nativeOutputManifest, validateNativePreview } from './archive-pr-native-preview.mjs';
 
@@ -142,6 +143,10 @@ function changedPaths(root) {
     ...git(root, 'ls-files', '--others', '--exclude-standard', '-z').split('\0')].filter(Boolean))].sort();
 }
 
+function assembledMatchesShards(root) {
+  try { return fs.readFileSync(path.join(root, META_FILE), 'utf8') === assembledTextFromShards(root); } catch { return false; }
+}
+
 function guardSnapshot(root, checkoutSha, allowGenerated, nativePaths = []) {
   if (git(root, 'rev-parse', 'HEAD').trim() !== checkoutSha) throw Error('REGISTRATION_HEAD_CHANGED');
   const changed = changedPaths(root);
@@ -152,8 +157,11 @@ function guardSnapshot(root, checkoutSha, allowGenerated, nativePaths = []) {
   // A clean git status alone misses ignored JS/JSON which the native inventory
   // walkers can load. Only the declared generated package shards may be absent
   // from the fixed Git tree; node_modules outside these inputs is irrelevant.
+  // The assembled question metadata is the one ignored file the registrars legitimately read: git holds its shards, so
+  // it must equal their assembly (a hand-edited or stale copy is not an input).
   const ignored = git(root, 'ls-files', '--others', '--ignored', '--exclude-standard', '-z', '--',
-    'archive', 'shared', 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION', 'docs/rules/01_CANONICAL/taxonomy').split('\0').filter(Boolean);
+    'archive', 'shared', 'alive/06_EXECUTION/H1_SCHOOL_EXPANSION', 'docs/rules/01_CANONICAL/taxonomy').split('\0').filter(Boolean)
+    .filter(file => !(hasShards(root) && file === META_FILE && assembledMatchesShards(root)));
   if (ignored.some(file => !allowGenerated || !(allowed.some(pattern => pattern.test(file.normalize('NFC')))
       || (file.startsWith(MIXED) && file.endsWith('.json'))))) throw Error('UNREGISTERED_IGNORED_REGISTRATION_INPUT');
   return changed;
