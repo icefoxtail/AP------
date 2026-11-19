@@ -204,3 +204,25 @@ test("replace mode: approved and adjudicated values stay and are listed with the
   assert.deepEqual(by.uid4.judged, { pt: "PT_A", tpl: "TPL_A" });
   assert.equal(by.uid5.existing.ptStatus, "r2e_adjudicated");
 });
+
+test("--owner-pack: a bundle of a course that no pack has bindings on is skipped; with a named existing pack it is placed there (the pack only gets the new values appended)", () => {
+  const master2 = new Map([...master, ["M2-01", { key: "M2-01", keyType: "standardUnitKey", status: "active" }], ["M2-01-A", { key: "M2-01-A", keyType: "subUnitKey", status: "active", standardUnitKey: "M2-01", labelKo: "소단원" }]]);
+  const recs = records().map(r => r.sourceOrdinal === 1 ? row(1, { standardCourse: "중2 수학", curriculum: "2015", standardUnitKey: "M2-01", subUnitKey: "M2-01-A" }) : r);
+  const tbl = () => ({ origin: { branch: "data/type-bundles", commit: "b".repeat(40), dir: "docs/plans/x/type-bundles" },
+    ptBundles: [{ bundle: "NPT_M2_NEW_THING", nameKo: "새 개념", definition: "새 개념을 묻는 문항", course: "middle2", absorbInto: null }],
+    ptAssign: [{ uid: "uid1", bundle: "NPT_M2_NEW_THING" }], tplBundles: [], tplAssign: [] });
+  const run = opts => {
+    const ctx = makeCtx(recs);
+    ctx.registry.packs.set("P2", { curricula: ["2015"], standardCourses: ["중1 수학"], packId: "P2" });
+    ctx.registry.packFiles = new Map([["P1", "archive/data/meta-foundation/canonical/packs/p1/pack.json"], ["P2", "archive/data/meta-foundation/canonical/packs/p2/pack.json"]]);
+    const nk = prepareNewKeys({ ctx, tables: tbl(), resultRows: [line(1)], env: { curriculumGuess, pathGrade }, opts: { master: master2, groups, ...opts } });
+    return planRequests({ ctx: { ...nk.ctx, newKeys: { finalize: nk.finalize } }, resultRows: nk.rows, approvedBy: "테스트 결정", allowPackAdditions: true });
+  };
+  assert.equal(run({}).skipped.find(s => s.uid === "uid1").reason, "NEW_KEY_OWNER_PACK_UNRESOLVED");
+  const { requests, skipped } = run({ ownerPackByBundle: new Map([["NPT_M2_NEW_THING", "P2"]]) });
+  assert.equal(requests.length, 1, JSON.stringify(skipped));
+  const changes = requests[0].registryChanges;
+  assert.equal(changes.find(c => c.collection === "problemTypes").after.ownerPack, "P2");
+  assert.ok(changes.some(c => /packs\/p2\/pack\.json$/.test(c.path) && c.after.standardCourses.includes("중2 수학") && c.after.standardCourses.includes("중1 수학")), "the pack file only gains the new course value");
+  assert.equal(run({ ownerPackByBundle: new Map([["NPT_M2_NEW_THING", "NO_SUCH_PACK"]]) }).skipped.find(s => s.uid === "uid1").reason, "NEW_KEY_OWNER_PACK_UNRESOLVED", "an unknown pack name is not used");
+});
