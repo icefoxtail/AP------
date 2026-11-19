@@ -637,6 +637,11 @@
         await openQuickAssessment("all");
       } else if (a === "quick-open-selected") {
         await openQuickAssessment([...quickState.bundle]);
+      } else if (a === "quick-open-b") {
+        // The second window of an A·B pair cannot open with the same click everywhere; this click opens it.
+        const formB = quickState.formB;
+        if (formB?.url && window.open(formB.url, "_blank")) { quickState.formB = null; status(`${formB.title}를 열었습니다.`); render(); }
+        else status("새 창을 열 수 없습니다. 팝업 설정을 확인하세요.", true);
       } else if (a === "quick-grade") {
         quickState.grade = b.dataset.grade || "";
         quickState.subject = "";
@@ -1033,6 +1038,12 @@
     try {
       if (isQuickAssessmentView() && el.id === "five-minute-level") {
         quickState.presets[state.view] = quickProduct().order[Number(el.value)] || "standard";
+        render();
+        return;
+      }
+      if (isQuickAssessmentView() && el.dataset.quickTwoForms !== undefined) {
+        quickState.twoForms = Boolean(el.checked);
+        quickState.formB = null;
         render();
         return;
       }
