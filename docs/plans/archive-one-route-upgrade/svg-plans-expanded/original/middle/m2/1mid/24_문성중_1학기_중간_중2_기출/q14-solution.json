@@ -1,0 +1,64 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 4,
+        "depth": 4
+      },
+      "height": 5,
+      "names": "........"
+    }
+  ],
+  "dims": [
+    {
+      "edge": [
+        "#b0",
+        "#b1"
+      ],
+      "label": "2a²b"
+    },
+    {
+      "edge": [
+        "#b1",
+        "#b2"
+      ],
+      "label": "2a²b"
+    },
+    {
+      "edge": [
+        "#b0",
+        "#t0"
+      ],
+      "label": "2ab"
+    }
+  ],
+  "highlights": [
+    {
+      "face": "bottom"
+    }
+  ],
+  "solidCaption": {
+    "math": "V=8a⁵b³",
+    "text": "직육면체"
+  },
+  "caption": "밑면(색칠)은 한 변이 2a²b인 정사각형이라 밑넓이는 4a⁴b²이다. 부피 8a⁵b³을 밑넓이로 나누면 높이는 2ab이다. 변의 비율은 모양만 나타낸 것이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "밑면은 한 변이 $2a^2 b$인 정사각형이고 부피가 $8a^5 b^3$인 직육면체의 높이는? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "밑넓이 (2a²b)²=4a⁴b², 높이 = 부피 ÷ 밑넓이 = 2ab",
+      "mappedTo": "solidCaption"
+    }
+  ],
+  "newVisualInformation": [
+    "색칠한 밑면의 변 2a²b와 부피 8a⁵b³에서 높이 2ab를 구하는 관계"
+  ],
+  "accessibilityDescription": "밑면이 정사각형인 직육면체이고 밑면이 색칠되어 있으며 밑면의 두 변과 높이에 길이가 적혀 있다."
+}
