@@ -21,6 +21,8 @@
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --revisions <approved.tsv> [--write-revisions]
 //   approved.tsv(탭 구분, 머리글 없음): questionUid  edit(format|content|figure)  commits(쉼표, 교정 커밋 sha)  prs(쉼표, 선택)
 //   기록이 효력을 가지려면 옛 지문 fp == 행이 들고 있던 지문, text == 현재 발문·보기의 text-v1 이어야 한다(소비자가 확인).
+//   원문 복귀: 수정(revision)했던 발문·보기를 다시 등록 당시 지문으로 되돌린 문항은 edit=figure(옛 지문의 발문·보기와 같음, from == text)로 한 줄을 더 추가한다.
+//   같은 (uid, fp)는 마지막 항목만 효력이 있으므로 이 항목이 앞의 수정 항목을 대체한다. 장부의 마지막 효력 항목이 이미 현재 text이면 거절한다(ALREADY_CURRENT/ALREADY_RECORDED).
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -273,8 +275,11 @@ export function analyzeRevisions(root, approved, { existing } = {}) {
       const curText = textFingerprint(q);
       const fp = row.contentFingerprint;
       if (!curText || !HEX64.test(fp || "")) { rejected.push({ uid: a.uid, why: "NO_STEM_OR_FP" }); continue; }
-      if (fp === contentFingerprint(q)) { rejected.push({ uid: a.uid, why: "ALREADY_CURRENT" }); continue; }
-      if (latestText.get(a.uid + "|" + fp) === curText || batchSeen.has(a.uid + "|" + fp)) { rejected.push({ uid: a.uid, why: "ALREADY_RECORDED" }); continue; }
+      // 현재 지문이 행의 지문과 같아도, 장부의 마지막 효력 항목이 현재와 다른 text이면(수정했다가 원문으로 되돌린 경우) "복귀 항목"을 뒤에 추가한다.
+      // 그 항목 없이는 옛 revision이 마지막 항목으로 남아 검증이 실패하고 읽는 쪽도 결속을 잃는다. 마지막 효력 항목이 이미 현재 text이거나 장부에 항목이 없으면 그대로 거절한다.
+      const priorText = latestText.get(a.uid + "|" + fp);
+      if (fp === contentFingerprint(q) && (priorText === undefined || priorText === curText)) { rejected.push({ uid: a.uid, why: "ALREADY_CURRENT" }); continue; }
+      if (priorText === curText || batchSeen.has(a.uid + "|" + fp)) { rejected.push({ uid: a.uid, why: "ALREADY_RECORDED" }); continue; }
       versions ??= fileVersions(root, rel, { follow: false });
       let r = resolveAnchor(versions, row.sourceOrdinal, "B", fp, curText);
       if (r.status === "NO_HISTORY" && !followed) { followed = true; versions = fileVersions(root, rel, { follow: true }); r = resolveAnchor(versions, row.sourceOrdinal, "B", fp, curText); }
