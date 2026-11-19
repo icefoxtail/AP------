@@ -1,0 +1,66 @@
+{
+  "qid": 3,
+  "itemFingerprint": "d9144d74a6781236",
+  "solveSteps": [
+    "3 tan A - sqrt(5) = 0 에서 tan A = sqrt(5) / 3 이다.",
+    "밑변 3, 높이 sqrt(5)인 직각삼각형을 그리면 빗변의 길이는 sqrt(3^2 + 5) = sqrt(14) 이다.",
+    "sin A = sqrt(5) / sqrt(14) 이고 cos A = 3 / sqrt(14) 이다.",
+    "따라서 sin A * cos A = (sqrt(5)/sqrt(14)) * (3/sqrt(14)) = 3*sqrt(5) / 14 이므로 답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "$3\\tan A - \\sqrt{5} = 0$일 때, $\\sin A \\times \\cos A$의 값은?",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmReason": "주어진 tan A 값으로부터 빗변 14 를 찾아 sin A 와 cos A 의 상호 관계를 다루므로 삼각비의 관계(M3-RPM-056)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "typeReason": "하나의 삼각비 tan A로부터 직각삼각형 빗변 14 를 구해 sin A 와 cos A 의 곱을 구하므로 삼각비의 기본 관계(TPL_TRIG_RATIO_BASIC_RELATION)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "tan A = sqrt(5)/3 에서 빗변 14 를 구하고 sin A 와 cos A 의 곱 3*sqrt(5)/14 를 계산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "예각",
+        "src": "stem",
+        "quote": "$\\angle\\text{A}$는 예각"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\sin A \\times \\cos A$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "src": "solution",
+        "quote": "직각삼각형을 그리면 빗변의 길이는",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "tan A = sqrt(5)/3 에서 빗변 sqrt(14)로 sin A = sqrt(5)/sqrt(14), cos A = 3/sqrt(14) 를 곱해 3*sqrt(5)/14 로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

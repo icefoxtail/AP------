@@ -1,0 +1,65 @@
+{
+  "qid": 11,
+  "itemFingerprint": "189dd6564772e1df",
+  "solveSteps": [
+    "두 대각선의 길이가 12 cm, 8 cm 이고 끼인각이 45도인 사각형 ABCD의 넓이 공식은 (1/2) * 12 * 8 * sin 45도 이다.",
+    "48 * (sqrt(2)/2) = 24*sqrt(2) cm^2 이다.",
+    "따라서 사각형 ABCD의 넓이는 24*sqrt(2) cm^2(①)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "사각형 $\\text{ABCD}$의 두 대각선 $\\text{AC}$, $\\text{BD}$의 길이가 각각 $12\\text{ cm}$, $8\\text{ cm}$이고",
+  "rpmRecordId": "M3-RPM-062",
+  "rpmReason": "두 대각선 AC, BD와 각 45도를 이용해 사각형 ABCD 넓이를 계산하므로 다각형의 길이·넓이(M3-RPM-062)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "두 대각선 AC, BD와 45도 사잇각에서 삼각비 넓이 공식을 직접 적용하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "사각형 ABCD의 두 대각선 12, 8과 예각 45도로 넓이 24*sqrt(2)를 공식을 써서 바로 구하는 기본 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "두 대각선 $\\text{AC}$, $\\text{BD}$의 길이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "사각형 $\\text{ABCD}$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "src": "solution",
+        "quote": "$$\\frac{1}{2} \\times 12 \\times 8 \\times \\sin 45^\\circ = 48 \\times \\frac{\\sqrt{2}}{2} = 24\\sqrt{2}\\text{ cm}^2$$",
+        "evidenceType": "IMPLIED",
+        "justification": "삼각비 대각선 넓이 공식으로 넓이를 구한다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대각선 공식 (1/2) * 12 * 8 * sin 45도 = 24*sqrt(2) cm^2 로 ①을 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

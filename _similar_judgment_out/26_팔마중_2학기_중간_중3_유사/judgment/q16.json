@@ -1,0 +1,66 @@
+{
+  "qid": 16,
+  "itemFingerprint": "035751b8641e0687",
+  "solveSteps": [
+    "OM = ON 이므로 두 현 AB와 BC의 길이가 같고 대응하는 중심각 AOB = BOC 이다.",
+    "중심에서 현에 내린 수선은 중심각을 이등분하므로 각 AOB = 각 MON = 124도이다.",
+    "원주각은 중심각의 절반이므로 각 ACB = (1/2) * 각 AOB = (1/2) * 124 = 62도이다.",
+    "따라서 각 ACB = 62도(②)이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $\\overline{\\text{OM}} \\perp \\overline{\\text{AB}}$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림에서 $\\overline{\\text{OM}} \\perp \\overline{\\text{AB}}$, $\\overline{\\text{ON}} \\perp \\overline{\\text{BC}}$이고 $\\overline{\\text{OM}} = \\overline{\\text{ON}}$이다.",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmReason": "중심각 124도로부터 원주각 각 ACB = 62도를 구하는 관계를 다루므로 중심각과 원주각(M3-RPM-075)에 해당한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "typeReason": "호 AB에 대한 중심각 AOB = 124도와 원주각 ACB의 절반 관계를 이용하므로 원주각과 중심각(TPL_CIRCLE_ANGLE_CENTER_ARC)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "OM = ON 으로 중심각 AOB = 124도를 구하고 원주각 성질로 각 ACB = 62도를 계산하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "중심에서 현에 내린 수선은 중심각을 이등분하므로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle\\text{ACB}$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "원주각은 중심각의 절반이므로",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "OM = ON 에서 중심각 AOB = 124도를 얻고 원주각 각 ACB = (1/2) * 124 = 62도로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

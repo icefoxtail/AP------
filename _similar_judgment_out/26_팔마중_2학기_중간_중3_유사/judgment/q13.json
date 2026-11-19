@@ -1,0 +1,66 @@
+{
+  "qid": 13,
+  "itemFingerprint": "79323101ab3d01c9",
+  "solveSteps": [
+    "종이를 접었을 때 엇각과 접은 각이 같으므로 삼각형 ABC는 AB = BC 인 이등변삼각형이다.",
+    "높이(폭)가 6 cm 이고 각 ABC = 45도이므로 BC = 6 / sin 45도 = 6*sqrt(2) cm 이다.",
+    "따라서 밑변 AB = 6*sqrt(2) cm 이다.",
+    "삼각형 ABC의 넓이 = (1/2) * 6*sqrt(2) * 6 = 18*sqrt(2) cm^2 이므로 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다음 그림과 같이 폭이 $6\\text{ cm}$인 종이를",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 폭이 $6\\text{ cm}$인 종이를 선분 $\\text{AC}$를 접는 선으로 하여 접었다.",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmReason": "밑변 AB와 높이 6 cm를 이용해 삼각형 ABC 넓이를 계산하므로 삼각형의 높이·넓이(M3-RPM-061)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "삼각형 ABC에서 sin 45도와 높이 6을 이용해 밑변과 넓이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "종이접기 이등변삼각형 성질과 sin 45도로 밑변 6*sqrt(2)를 구하고 넓이 18*sqrt(2)를 도출하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $\\text{ABC}$의 넓이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $\\text{ABC}$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "인 이등변삼각형이다.",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "이등변삼각형 ABC에서 BC = 6/sin 45도 = 6*sqrt(2)를 구하고 넓이 = (1/2)*6*sqrt(2)*6 = 18*sqrt(2)로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

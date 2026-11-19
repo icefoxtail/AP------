@@ -1,0 +1,66 @@
+{
+  "qid": 8,
+  "itemFingerprint": "6749f2f4a5eb38eb",
+  "solveSteps": [
+    "A에서 BC에 내린 수선의 발을 H라 하면 CH = 8 * cos 45도 = 4*sqrt(2), AH = 8 * sin 45도 = 4*sqrt(2) 이다.",
+    "BC = 5*sqrt(2) 이므로 BH = 5*sqrt(2) - 4*sqrt(2) = sqrt(2) 이다.",
+    "직각삼각형 ABH에서 피타고라스 정리에 의해 AB = sqrt((4*sqrt(2))^2 + (sqrt(2))^2) = sqrt(32 + 2) = sqrt(34) 이다.",
+    "따라서 AB = sqrt(34)(②)이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\overline{\\text{AC}} = 8$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 $\\overline{\\text{AC}} = 8$, $\\overline{\\text{BC}} = 5\\sqrt{2}$, $\\angle\\text{ACB} = 45^\\circ$인 삼각형 $\\text{ABC}$에서",
+  "rpmRecordId": "M3-RPM-059",
+  "rpmReason": "직각삼각형 ABH와 ACH에서 삼각비를 활용해 변의 길이를 결정하므로 직각삼각형의 변(M3-RPM-059)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "삼각형 ABC에서 45도 삼각비와 수선을 이용해 미지 변 AB 길이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "수선의 발 H를 내려 AH = 4*sqrt(2)와 BH = sqrt(2)를 구한 뒤 피타고라스 정리로 AB = sqrt(34)를 계산하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "인 삼각형 $\\text{ABC}$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overline{\\text{AB}}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스 정리",
+        "src": "solution",
+        "quote": "피타고라스 정리에 의해",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "수선 AH = 4*sqrt(2)와 BH = sqrt(2)를 찾고 피타고라스 정리로 AB = sqrt(34) 를 구해 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

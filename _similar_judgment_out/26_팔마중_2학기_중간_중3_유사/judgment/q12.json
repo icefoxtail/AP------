@@ -1,0 +1,67 @@
+{
+  "qid": 12,
+  "itemFingerprint": "245fb000e1c0917c",
+  "solveSteps": [
+    "AC = AE + EC = 9 + 4 = 13 이다.",
+    "직각삼각형 ADC에서 직각삼각형의 닮음 성질에 의해 AD^2 = AE * AC = 9 * 13 이므로 AD = 3*sqrt(13) 이다.",
+    "직사각형에서 BC = AD = 3*sqrt(13) 이다.",
+    "직각삼각형 ABC에서 cos x도 = BC / AC = 3*sqrt(13) / 13 이다.",
+    "따라서 답은 3*sqrt(13)/13(②)이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "다음 직사각형 $\\text{ABCD}$에서 대각선 $\\text{AC}$에 꼭짓점 $\\text{D}$에서 내린 수선의 발을 $\\text{E}$라 하자.",
+  "rpmRecordId": "M3-RPM-065",
+  "rpmReason": "직각삼각형 내부 수선 DE와 피타고라스·닮음 정리를 결합해 삼각비를 구하므로 보조선 활용(M3-RPM-065)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "typeReason": "직사각형 ABCD 내부 수선과 직각삼각형 닮음으로 변의 길이를 찾아 삼각비 cos x도를 유도하므로 도형에서 삼각비 값 유도(TPL_TRIG_RATIO_GEOMETRIC_DERIVATION)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "AC = 13과 직각삼각형 닮음으로 AD = 3*sqrt(13)을 구하고 cos x도 = 3*sqrt(13)/13을 도출하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "다음 직사각형 $\\text{ABCD}$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\cos x^\\circ$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "직각삼각형의 닮음에 의해",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "AC = 13과 AD^2 = 9*13 = 117 에서 BC = 3*sqrt(13)을 얻고 cos x도 = 3*sqrt(13)/13 으로 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}
