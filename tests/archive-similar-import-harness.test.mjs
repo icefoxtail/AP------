@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 import { convertSimilarExam } from '../archive/tools/similar-md-to-js.mjs';
 import { buildCandidateSet } from '../archive/tools/similar-import/build-candidates.mjs';
-import { checkJudgments } from '../archive/tools/similar-import/check-judgment.mjs';
+import { checkJudgments, answerMatchesStored } from '../archive/tools/similar-import/check-judgment.mjs';
 import { applyJudgments } from '../archive/tools/similar-import/apply-judgment.mjs';
 import { buildReviewMarkdown } from '../archive/tools/similar-import/build-review-pack.mjs';
 import { gitBlobSha1, readJson, writeJson, stripWs, loadCrosswalkRecords, loadCourseGroups, loadTermDictionary, loadTaxonomy, loadGuideExample, itemFingerprint, readBank, DEFAULT_REPO_ROOT } from '../archive/tools/similar-import/lib.mjs';
@@ -730,4 +730,12 @@ test('check-judgment: 선택표에 있는 이 과목·아래 학년 유형은 �
     r = mutate(js => { js[1].problemTypeKey = above.problemTypeKey; js[1].templateKey = 'NONE'; js[1].newKeyProposal = null; });
     assert.ok(codesOf(r, 1).includes('KEY_NOT_IN_CANDIDATES'), '위 학년 키');
   } finally { ctx.cleanup(); }
+});
+
+test('answerMatchesStored: 복수 정답은 순서·표기와 상관없이 같은 집합이면 일치', () => {
+  const item = { questionType: '객관식', answer: '②, ④', choices: ['1', '2', '3', '4', '5'] };
+  for (const ok of ['②, ④', '④,②', '2, 4', '2번, 4번']) assert.equal(answerMatchesStored(item, ok), true, ok);
+  for (const no of ['②', '②, ③', '②, ④, ⑤', '2']) assert.equal(answerMatchesStored(item, no), false, no);
+  const single = { questionType: '객관식', answer: '③', choices: ['1', '2', '7', '4', '5'] };
+  for (const ok of ['③', '3', '3번', '7']) assert.equal(answerMatchesStored(single, ok), true, ok);
 });

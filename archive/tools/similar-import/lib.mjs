@@ -28,6 +28,17 @@ export const writeJson = (file, value) => {
 export const pad2 = n => String(n).padStart(2, '0');
 export const stripWs = s => String(s ?? '').replace(/\s+/g, '');
 export const CIRCLED = ['①', '②', '③', '④', '⑤'];
+/**
+ * 객관식 정답 칸을 보기 번호 목록으로. "③" → ['③'], "②, ④" / "②,④" / "④, ②" → ['②','④'].
+ * 원본 기출의 복수 정답은 "②, ④" 형식으로 저장돼 있다. 읽을 수 없거나 중복이면 null.
+ */
+export function parseObjectiveAnswer(raw) {
+  const parts = String(raw ?? '').split(/[,，、\s]+/).filter(Boolean);
+  if (!parts.length || parts.some(p => !CIRCLED.includes(p))) return null;
+  if (new Set(parts).size !== parts.length) return null;
+  return [...parts].sort((a, b) => CIRCLED.indexOf(a) - CIRCLED.indexOf(b));
+}
+export const formatObjectiveAnswer = list => list.join(', ');
 
 // ---------- 문자열 점검 ----------
 // 탭·폼피드·백스페이스·CR 등 (줄바꿈 제외). LaTeX \times \frac \beta \right 가 JSON 이스케이프로 깨질 때 생기는 글자다.

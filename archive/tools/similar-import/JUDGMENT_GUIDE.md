@@ -19,6 +19,7 @@
 - 선택표: `build-candidates` 가 등록부에서 새로 만들어 `<작업폴더>/selection/*.md` 에 둔다 (`candidates/_exam.json` 의 `selectionFiles`, 이 시험 과목이 먼저). 단원 → 소단원·RPM 행·유형(PT→TPL)을 한글 이름과 함께 모았다. 저장소의 `archive/tools/similar-import/selection/` 은 `build-selection-tables.mjs --write` 가 만든 열람용 사본이다.
 - `build-candidates` 는 이미 있는 `judgment/qNN.json` 을 덮어쓰지 않는다. **이미 채워진 판정 파일이 있으면 내용을 믿지 말고** `--force` 로 빈 틀을 다시 만들어 처음부터 쓴다. 틀의 `itemFingerprint` 가 현재 문항과 다르거나 예시 글이 그대로 남아 있으면 `STALE_OR_EXAMPLE` 로 걸린다.
 - 진행 단계는 `C:/AI_WS/tmp/similar-judgment/STATUS.tsv` 에 쌓인다: `CONVERTED → JUDGED(검사 통과) → REVIEWED(검수 완료) → READY(운영 병합 가능)` 또는 `HOLD`.
+- **1단계 변환이 실패하면** 저장소 도구·원천 드라이브 파일은 고치지 않는다. 작업폴더에 내려받은 마크다운 사본에서 **형식만** 기계적으로 고쳐 다시 돌린다: 코드 블록 줄 앞뒤의 여분 역슬래시, 깨진 코드 블록 경계, 정답 칸의 표기(`②,④` → `②, ④`), 문항 번호 줄(`## Q07`) 같은 것. 무엇을 고쳤는지 작업폴더 `SOURCE_FIXES.md` 에 한 줄씩 적는다. 발문·보기·정답 번호·해설의 수학 내용을 바꿔야만 통과한다면 고치지 말고 그 시험지를 건너뛰고 보고한다.
 - 수학 내용(발문·보기·정답·해설)은 고치지 않는다. 틀렸다고 생각하면 `answerMatches:false` 와 `answerIssue` 로 보고하고 시험지는 보류된다.
 
 ## 1. 작성자용
@@ -36,7 +37,7 @@
 | 칸 | 뜻 | 채우는 법 |
 | --- | --- | --- |
 | `solveSteps` | 직접 푼 과정 | 2~6줄. 이 문항의 숫자와 식을 쓴다. |
-| `solvedAnswer` | 내가 푼 답 | 객관식은 `②` 또는 값(`12`). 서답형은 값만(`$`는 있어도 없어도 된다). 소문항이면 `(1) 144, (2) 216`. |
+| `solvedAnswer` | 내가 푼 답 | 객관식은 `②` 또는 값(`12`). 복수 정답은 `②, ④`(순서·`2, 4` 표기 상관없음). 서답형은 값만(`$`는 있어도 없어도 된다). 소문항이면 `(1) 144, (2) 216`. |
 | `answerMatches` | 저장 정답과 같은가 | `true` / `false`. 검사기가 직접 비교해 거짓말을 잡는다. |
 | `answerIssue` | 다르면 무엇이 다른가 | `false` 일 때만 쓴다. 비우면 실패. |
 | `figureNeed` | 그림 필요 여부 | `NONE` 그림 언급 없음 · `SELF_CONTAINED` 그림 언급은 있으나 글만으로 풀림 · `NEEDS_FIGURE` 그림의 값·모양을 읽어야 풀림 |
@@ -155,7 +156,7 @@
 | --- | --- |
 | `ANSWER_MISMATCH` | 풀이 답과 저장 정답이 다름. `answerMatches` 가 거짓말이면 실패, 정직하게 `false`+`answerIssue` 면 시험지 보류 |
 | `QUOTE_NOT_SUBSTRING` | 인용이 원문에 그대로 없음 / 4자 미만 |
-| `REASON_NO_ITEM_TOKEN` | 이유 문장에 이 문항의 숫자·식이 하나도 없음 |
+| `REASON_NO_ITEM_TOKEN` | 이유 문장에 이 문항의 숫자·식 토큰이 하나도 없음. 문항에 두 글자 이상 토큰(`12`, `0.5`, `x2`, `AB` 등)이 있으면 한 자리 숫자·한 글자 문자는 세지 않는다. 오류 메시지가 쓸 수 있는 토큰을 보여 주니 그중 하나를 이유 문장에 그대로 넣는다. 검사기 코드를 읽을 필요 없다. |
 | `REASON_DUPLICATE` | 다른 문항과 같은 문장 |
 | `KEY_NOT_IN_CANDIDATES` | 후보와 선택표 밖 키 |
 | `FIELD_EMPTY` | 빈 칸이거나 형식이 틀림 |

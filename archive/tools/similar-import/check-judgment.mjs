@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, readBank, readJson, writeJson, pad2, stripWs, CIRCLED, gitBlobSha1, parseCli, appendStatus, getPath,
+  DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, readBank, readJson, writeJson, pad2, stripWs, CIRCLED, parseObjectiveAnswer, gitBlobSha1, parseCli, appendStatus, getPath,
   loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage, itemFingerprint, loadGuideExample, BOUNDARY_FLAGS,
   buildAllSelections, selectionAccepts,
 } from './lib.mjs';
@@ -29,8 +29,16 @@ export function answerMatchesStored(item, solved) {
   const s = norm(solved);
   if (!s) return false;
   if (item.questionType === '객관식') {
-    const idx = CIRCLED.indexOf(item.answer);
-    if (idx < 0) return false;
+    const stored = parseObjectiveAnswer(item.answer);
+    if (!stored) return false;
+    if (stored.length > 1) {
+      // 복수 정답: "②, ④" / "2, 4" / "2번, 4번" 을 순서와 상관없이 같은 집합이면 일치로 본다.
+      const got = String(solved ?? '').replace(/\$/g, '').split(/[,，、\s]+/).filter(Boolean)
+        .map(p => (CIRCLED.includes(p) ? p : CIRCLED[Number(p.replace(/번$/, '')) - 1]));
+      if (got.some(g => !g) || new Set(got).size !== got.length) return false;
+      return got.length === stored.length && stored.every(x => got.includes(x));
+    }
+    const idx = CIRCLED.indexOf(stored[0]);
     if (s === CIRCLED[idx] || s === String(idx + 1) || s === `${idx + 1}번`) return true;
     return norm(item.choices?.[idx] ?? '') === s;
   }
@@ -192,7 +200,7 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     if (!nonEmpty(j.how) || j.how.trim().length < 15) add('FIELD_EMPTY', 'how 가 비었거나 15자 미만입니다');
     const tokenFields = { how: j.how, solveSteps: steps.join(' '), difficultyReason: j.difficultyReason, typeReason: j.typeReason, rpmReason: j.rpmReason };
     for (const [name, text] of Object.entries(tokenFields)) {
-      if (nonEmpty(text) && !sharesItemToken(text, itemTokens)) add('REASON_NO_ITEM_TOKEN', `${name} 에 이 문항의 숫자·식 토큰이 하나도 없습니다`);
+      if (nonEmpty(text) && !sharesItemToken(text, itemTokens)) add('REASON_NO_ITEM_TOKEN', `${name} 에 이 문항의 숫자·식 토큰이 하나도 없습니다. 이 중 하나 이상을 그대로 넣으세요: ${[...itemTokens].slice(0, 8).join(', ')}`);
     }
     for (const text of [j.how, j.difficultyReason, j.typeReason, j.rpmReason, ...Object.values(j.slotReasons || {})]) {
       for (const s of splitSentences(text)) {
