@@ -1,0 +1,58 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "785a03f3e318d3e0",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "점 A(3, k)가 y = 18/x 위의 점이므로 k = 18/3 = 6, 즉 A(3, 6)이다.",
+    "B는 y = -x 위의 점이므로 B(3, -3)이다.",
+    "C는 y = cx 위의 점이므로 C(3, 3c)이다.",
+    "직선 x=3 위에서 AB = 6 - (-3) = 9 이므로 삼각형 AOB = 1/2 * 9 * 3 = 27/2 이다.",
+    "삼각형 AOC = 2 * (27/2) = 27 이므로 1/2 * AC * 3 = 27 에서 AC = 18 이다.",
+    "C는 B보다 아래쪽에 있으므로 y좌표는 6 - 18 = -12 이고 3c = -12 에서 c = -4 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "반비례 관계 $y=\\dfra",
+  "standardUnitKey": "M1-04",
+  "subUnitKey": "M1-04-GRAPH_RELATION",
+  "problemTypeKey": "PT_M1_COORDINATE_COMPOSITE_AREA",
+  "templateKey": "TPL_M1_COORDINATE_COMPOSITE_AREA_GRAPH_AREA_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "반비례 y=18/x 와 정비례 교점 좌표 및 삼각형의 넓이 비를 이용해 상수 c 를 결정하는 유형이다.",
+  "rpmRecordId": "M1-RPM-171",
+  "rpmReason": "y=18/x 교점 A(3, 6)과 공통 밑변 직선 위의 삼각형 넓이 비를 활용한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "반비례식 18/x 에서 A를 구하고 밑변 길이 비로 C의 y좌표 -12를 구해 c=-4를 도출한다.",
+  "how": "A(3,6), B(3,-3)에서 넓이 비로 C(3,-12)를 찾아 c=-4를 계산하였다. 18",
+  "slots": {
+    "given": [
+      {
+        "term": "반비례",
+        "src": "stem",
+        "quote": "반비례 관계 $y=\\dfrac{18}{x}$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "상수 $c$의 값은? (단, 점 $O$는 원점이다.) [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "공통 높이를 갖는 두 삼각형의 넓이 비를 이용한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

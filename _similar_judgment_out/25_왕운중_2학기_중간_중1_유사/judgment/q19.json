@@ -1,0 +1,55 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "aad1adbfcf545368",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "직육면체에서 모서리 AB와 꼬인 위치에 있는 모서리는 CG, DH, EH, FG 의 4개이다 (x = 4).",
+    "삼각기둥에서 밑면 DEF와 평행한 모서리는 윗면의 세 변인 AB, BC, CA 의 3개이다 (y = 3).",
+    "따라서 순서대로 4개, 3개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직육면체 $ABCD-EFGH",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+  "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_SKEW_AND_FACE_COUNT",
+  "newKeyProposal": null,
+  "typeReason": "직육면체의 꼬인 위치 모서리 AB 기준 개수와 삼각기둥의 면 평행 모서리를 세는 유형이다.",
+  "rpmRecordId": "M1-RPM-181",
+  "rpmReason": "공간 도형에서 모서리 AB와의 꼬인 위치 및 평행 모서리 수를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "모서리 AB와 만나지도 평행하지도 않은 꼬인 위치 4개와 평행 3개를 정확히 센다.",
+  "how": "직육면체 꼬인 위치 x=4와 삼각기둥 평행 모서리 y=3을 각각 구하였다. AB",
+  "slots": {
+    "given": [
+      {
+        "term": "직육면체",
+        "src": "stem",
+        "quote": "직육면체 $ABCD-EFGH$에서 모서리 $AB$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼬인위치",
+        "src": "stem",
+        "quote": "모서리 $AB$와 꼬인 위치에 있는 모서리의 개수를 $x$"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "공간에서 만나지도 않고 평행하지도 않은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

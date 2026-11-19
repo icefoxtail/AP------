@@ -1,0 +1,57 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "59f11350ee28c029",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "꼭짓점 P(130도)와 Q(75도)를 지나며 평행선에 평행한 보조선을 긋는다.",
+    "P에서 엇각에 의해 위쪽 각은 각 a, 아래쪽 각은 130 - 각 a 이다.",
+    "Q의 왼쪽 위 각은 130 - 각 a, 오른쪽 위 각은 50 + 각 a 이다.",
+    "Q의 아래쪽 각은 75 - (50 + 각 a) = 25 - 각 a 이다.",
+    "엇각에 의해 각 b = 25 - 각 a 이므로 각 a + 각 b = 25도이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 직선 $l, m$이 서로",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+  "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT_LINE",
+  "newKeyProposal": null,
+  "typeReason": "평행선 사이의 꺾인 선 130도와 75도에서 보조선을 그어 각의 합을 계산하는 유형이다.",
+  "rpmRecordId": "M1-RPM-177",
+  "rpmReason": "보조선을 긋고 130도 꺾인 점의 엇각 관계를 연속 적용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "130도와 75도의 두 꼭짓점에 평행 보조선을 그어 a + b = 25도를 유도한다.",
+  "how": "130도와 75도 꼭짓점에 보조선을 그어 엇각의 전달로 a + b = 25도를 도출하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "$\\angle a + \\angle b$의 크기는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "보조선",
+        "src": "solution",
+        "quote": "평행한 보조선을 그어 엇각의 성질을 이용한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

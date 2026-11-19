@@ -1,0 +1,56 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "5505345fe43bc081",
+  "solvedAnswer": "$68^\\circ$",
+  "solveSteps": [
+    "점 E에서 각 FED = 180 - 124 = 56도이다.",
+    "AD // BC 이므로 엇각에 의해 각 EFB = 각 FED = 56도이다.",
+    "접은 각의 성질에 의해 각 EFI = 각 EFB = 56도, 각 FEI = 각 FED = 56도이다.",
+    "삼각형 EFI에서 세 내각의 합은 180도이므로 각 x = 180 - (56 + 56) = 68도이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 모양의 종이를 선분",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+  "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+  "newKeyProposal": null,
+  "typeReason": "직사각형 접기에서 124도 편각과 엇각 및 접은 각의 성질로 삼각형 내각을 구하는 서술형 유형이다.",
+  "rpmRecordId": "M1-RPM-177",
+  "rpmReason": "평행선 엇각과 접은 각이 같음을 이용해 56도를 옮기고 각 x를 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "124도에서 편각 56도를 구하고 접은 각 및 엇각으로 이등변삼각형 내각합을 적용한다.",
+  "how": "편각 56도와 접은 각 56도를 찾아 삼각형 내각합에서 180-112=68도를 계산하였다. 124",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 종이를 선분 $EF$를 접는 선으로 하여 접었을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "생기는 각 $\\angle x$의 크기를 구하고 그 과정을 서술하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "직사각형의 마주 보는 두 변은 서로 평행하다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
