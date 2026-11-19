@@ -1,0 +1,45 @@
+{
+  "capability": "lattice-path-figure-v1",
+  "lattice": {
+    "grid": {
+      "cols": 6,
+      "rows": 4
+    },
+    "points": {
+      "A": [
+        0,
+        0
+      ],
+      "X": [
+        2,
+        2
+      ],
+      "Y": [
+        4,
+        3
+      ],
+      "B": [
+        6,
+        4
+      ]
+    },
+    "viaPoints": [
+      "X",
+      "Y"
+    ],
+    "counts": "segments",
+    "hideTargetCount": false
+  },
+  "caption": "A에서 X까지는 오른쪽 2번, 위쪽 2번으로 4!/(2!2!)=6가지, X에서 Y까지는 오른쪽 2번, 위쪽 1번으로 3가지, Y에서 B까지도 오른쪽 2번, 위쪽 1번으로 3가지이다. 세 구간의 경로 수를 곱하면 6×3×3=54이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "가로 6칸 세로 4칸의 도로망이며 A, X, Y, B가 표시되고 A에서 X, X에서 Y, Y에서 B 구간별 경로 수가 적혀 있는 그림이다.",
+  "newVisualInformation": [
+    "X와 Y를 경계로 나눈 세 구간의 경로 수 6, 3, 3이 보이고 곱의 법칙으로 54가 됨을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같은 바둑판 모양의 도로망이 있다. $\\mathrm{A}$지점에서 $\\mathrm{B}$지점까지 도로를 따라 최단 거리로 가는 경우 중에서 $\\mathrm{X}$지점과 $\\mathrm{Y}$지점을 거치고 가는 경로의 경우의 수는?\n\n<div class=\"diagram-box\"><img src=\"assets/images/24_순천고_1학기_중간_고2_확률과통계/q05.png\" width=\"320\" /></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

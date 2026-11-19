@@ -1,0 +1,29 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DICE_TABLE",
+    "faces": 6,
+    "cell": "PAIR",
+    "highlight": {
+      "expr": "a-b",
+      "in": [
+        -5,
+        -4,
+        4,
+        5
+      ]
+    }
+  },
+  "caption": "두 주사위 A, B의 눈을 순서쌍 (a, b)로 가로세로에 놓은 6×6 표에서 눈의 차가 4 이상인 칸을 칠했다. 차가 4인 칸은 (1,5), (5,1), (2,6), (6,2)의 4칸이고 차가 5인 칸은 (1,6), (6,1)의 2칸이다. 모두 6칸이므로 확률은 6/36=1/6이다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "주사위 두 번의 눈 (a, b)를 가로세로로 놓은 6×6 표이며 두 눈의 차가 4 이상인 여섯 칸이 두 모서리 쪽에 칠해져 있다.",
+  "newVisualInformation": [
+    "차가 4, 5인 6칸이 두 모서리에 몰려 한눈에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 개의 주사위 $A, B$를 동시에 던질 때, 나오는 두 눈의 수의 차가 4 이상일 확률은?",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
