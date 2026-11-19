@@ -1,0 +1,75 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "fba95490446b3f94",
+  "solveSteps": [
+    "사는 사과의 개수를 x개 (x는 자연수)라 하면 사과 가격은 1800x원이고 포장비 5000원을 더한 총금액은 1800x + 5000원이다.",
+    "총금액이 45000원 이하이어야 하므로 1800x + 5000 <= 45000 이 성립한다.",
+    "1800x <= 40000 에서 x <= 40000 / 1800 = 200 / 9 = 22.222... 이다.",
+    "x는 자연수이므로 최대 22개까지 살 수 있다."
+  ],
+  "solvedAnswer": "22개",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "선물용 과일 바구니를 만드는데 바구니 포장비 $5000$원을 제외하고 한 개에 $1800$원인 사과를 사려고 한다. 총금액 $45000$원 이하로 사과를 살 때, 사과를 최대 몇 개까지 살 수 있는지 풀이과정과 함께 구하시오. [5점]",
+  "rpmRecordId": "M2-RPM-024",
+  "rpmReason": "포장비 5000원과 사과 가격 1800x의 합이 45000원 이하가 되는 수량 관계를 일차부등식으로 세워 해결하는 문장제 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "1800x + 5000 <= 45000의 일차부등식을 세우고 자연수 해의 최댓값 22를 구하는 일차부등식 활용 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기본적인 물건 구매 비용에 관한 일차부등식 1800x + 5000 <= 45000을 세우고 정수 해를 구하는 표준 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "제외",
+        "src": "stem",
+        "quote": "5000$원을 제외하고 한 개에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "때, 사과를 최대 몇 개까지 살"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차부등식",
+        "src": "solution",
+        "quote": "지수를 정하고 일차부등식을 세운다. 사",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "개 ($x$는 자연수)라 하자. 사"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "포장비 5000원을 제외하고 개당 1800원인 사과를 산다는 조건이다.",
+    "goal": "총금액 45000원 이하로 살 수 있는 사과의 최대 개수를 구하는 목표이다.",
+    "method": "조건을 일차부등식으로 모델링하여 푸는 방법이다.",
+    "condition": "사과의 개수가 자연수라는 조건이다."
+  },
+  "how": "1800x + 5000 <= 45000 부등식을 풀면 x <= 22.222...이므로 최대 22개임을 계산하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
