@@ -124,7 +124,6 @@ export function applyJudgments({
     const next = {
       ...item,
       category: sub.labelKo,
-      originalCategory: sub.labelKo,
       standardUnitKey: unit.key,
       standardUnit: unit.label,
       standardUnitOrder: unit.order,
@@ -141,7 +140,7 @@ export function applyJudgments({
     for (const k of ['level', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete next[k];
     if (j.rpmRecordId !== 'NONE') {
       const r = crosswalk.get(j.rpmRecordId);
-      Object.assign(next, { rpmPrimaryL1: r.rpmPath.majorUnit, rpmPrimaryL2: r.rpmPath.midUnit, rpmPrimaryL3: r.rpmPath.l3, rpmPrimaryL4: r.rpmPath.l4, rpmPrimaryRecordId: r.id });
+      next.rpmPrimaryRecordId = r.id;
     }
     return orderItem(next);
   });
@@ -165,17 +164,12 @@ export function applyJudgments({
     const q = newBank.find(b => b.id === it.sourceOrdinal);
     const j = check.judgments.get(q.id);
     const after = { ...it.after };
-    for (const f of ['standardCourse', 'curriculum', 'curriculumKey', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'difficultyBucket']) after[f] = q[f];
+    for (const f of ['standardCourse', 'curriculum', 'courseKey', 'standardUnitKey', 'standardUnit', 'standardUnitOrder', 'subUnitKey', 'subUnit', 'conceptClusterKey', 'problemTypeKey', 'templateKey', 'difficultyBucket']) after[f] = q[f];
     delete after.level;
-    for (const k of ['rpmPrimaryRecordIds', 'rpmPrimary', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete after[k];
-    if (q.rpmPrimaryRecordId) {
-      after.rpmPrimaryRecordIds = [q.rpmPrimaryRecordId];
-      after.rpmPrimary = { l1: q.rpmPrimaryL1, l2: q.rpmPrimaryL2, l3: q.rpmPrimaryL3, l4: q.rpmPrimaryL4, recordId: q.rpmPrimaryRecordId };
-      Object.assign(after, { rpmPrimaryL1: q.rpmPrimaryL1, rpmPrimaryL2: q.rpmPrimaryL2, rpmPrimaryL3: q.rpmPrimaryL3, rpmPrimaryL4: q.rpmPrimaryL4, rpmPrimaryRecordId: q.rpmPrimaryRecordId });
-    }
+    for (const k of ['curriculumKey', 'difficultyBasis', 'rpmPrimaryRecordIds', 'rpmPrimary', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4', 'rpmPrimaryRecordId']) delete after[k];
+    if (q.rpmPrimaryRecordId) after.rpmPrimaryRecordId = q.rpmPrimaryRecordId;
     after.difficultyConfidence = j.difficultyConfidence;
     after.difficultyBoundaryFlag = j.difficultyBoundaryFlag;
-    after.difficultyBasis = j.difficultyReason;
     after.metaRationale = {
       draftTier: 'SINGLE_MODEL_DRAFT',
       unit: `${q.standardUnitKey} / ${q.subUnitKey}: ${j.unitEvidence}`,
@@ -195,13 +189,11 @@ export function applyJudgments({
     // provenance 는 변환기만 만든다. 없으면 옛 변환기로 만든 스테이지이므로 다시 변환하게 한다.
     if (!after.provenance) throw new Error(`PROVENANCE_MISSING: Q${q.id} 스테이지 등록 요청에 provenance 가 없습니다 (md 머리글에 sourceArchiveFile 이 없거나 옛 변환 산출물). similar-md-to-js 로 다시 변환하세요.`);
     const proposal = j.newKeyProposal ? `; PROPOSAL: ${JSON.stringify(j.newKeyProposal)}` : '';
+    // 난이도 확신·경계·이유와 유형 후보 사본은 항목 위에 쓰지 않는다 (after 와 metaRationale 에 이미 있다).
+    const { difficultyConfidence, difficultyBoundaryFlag, difficultyReason, ptTplCandidate, ...itemRest } = it;
     return {
-      ...it,
+      ...itemRest,
       after,
-      difficultyConfidence: j.difficultyConfidence,
-      difficultyBoundaryFlag: j.difficultyBoundaryFlag,
-      difficultyReason: j.difficultyReason,
-      ptTplCandidate: { problemTypeKey: j.problemTypeKey === 'NONE' ? null : j.problemTypeKey, templateKey: j.templateKey === 'NONE' ? null : j.templateKey, why: j.typeReason },
       reason: `DRAFT_SINGLE_MODEL (${judge})${proposal}`,
     };
   });

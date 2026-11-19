@@ -263,7 +263,7 @@ test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없�
     assert.equal(bank[0].category, bank[0].subUnit);
     assert.deepEqual(bank[0].tags, ['객관식', bank[0].subUnit]);
     assert.equal(bank[0].rpmPrimaryRecordId, j[1].rpmRecordId);
-    assert.ok(bank[0].rpmPrimaryL1 && bank[0].rpmPrimaryL4);
+    for (const b of bank) for (const k of ['originalCategory', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4']) assert.equal(k in b, false, `사본 ${k} 를 쓰지 않는다`);
     assert.equal(bank[1].problemTypeKey, '');
     assert.equal(bank[1].difficultyBucket, 2);
     assert.equal(bank[0].content, hq1.content, '수학 내용은 그대로');
@@ -287,7 +287,9 @@ test('apply-judgment: 검수 기록이 없으면 review_required, 영수증 없�
       assert.equal('level' in it.after, false);
       assert.equal('levelBasis' in it.after, false);
       assert.equal(it.after.difficultyBoundaryFlag, i === 0 ? 'NONE' : 'B12');
-      assert.equal(it.difficultyBoundaryFlag, it.after.difficultyBoundaryFlag);
+      for (const k of ['difficultyConfidence', 'difficultyBoundaryFlag', 'difficultyReason', 'ptTplCandidate']) assert.equal(k in it, false, `항목 위 사본 ${k} 를 쓰지 않는다`);
+      for (const k of ['curriculumKey', 'difficultyBasis', 'rpmPrimary', 'rpmPrimaryRecordIds', 'rpmPrimaryL1', 'rpmPrimaryL2', 'rpmPrimaryL3', 'rpmPrimaryL4']) assert.equal(k in it.after, false, `after 사본 ${k} 를 쓰지 않는다`);
+      assert.equal(it.after.rpmPrimaryRecordId, j[i + 1].rpmRecordId);
       assert.equal(it.after.visualNecessity.problem, 'EXEMPT');
       assert.ok(it.after.visualNecessity.problemReason);
       assert.equal(it.after.visualNecessity.solution, 'EXEMPT');
