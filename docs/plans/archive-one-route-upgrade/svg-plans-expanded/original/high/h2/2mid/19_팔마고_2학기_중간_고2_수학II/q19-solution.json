@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "-2",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2.1,
+      2.1
+    ],
+    "viewport": [
+      -2.2,
+      2.2,
+      -1,
+      13
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "-9/5"
+        },
+        {
+          "id": "B",
+          "curveX": "-3/2"
+        },
+        {
+          "id": "C",
+          "curveX": "3/2"
+        },
+        {
+          "id": "D",
+          "curveX": "2"
+        },
+        {
+          "id": "M1",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "M2",
+          "curveX": "0",
+          "coordinates": true
+        },
+        {
+          "id": "M3",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "131/125",
+          "intercept": "863/125",
+          "label": "l"
+        },
+        {
+          "id": "h",
+          "slope": "0",
+          "intercept": "25/16",
+          "label": "h"
+        }
+      ]
+    }
+  },
+  "caption": "예: f(x)=(x²-1)²일 때를 그렸다(원본 그림은 이미지 파일이라 직접 볼 수 없다). 왼쪽 극소점 M1, 가운데 극대점 M2, 오른쪽 극소점 M3이 있다. 할선 l은 양 끝점 A, D를 잇는 직선으로 기울기가 양수이고, 이와 평행한 접선은 M1에서 M2로 올라가는 부분에 2개, M3에서 D로 올라가는 부분에 1개 있어 p=3이다. 수평선 h는 f(b)=f(c)인 B, C를 지나고 (b,c) 안에서 수평 접선이 세 극점 M1, M2, M3에 있어 q=3이다. 따라서 p+q=6이고 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $y=f(x)$의 그래프가 그림과 같을 때, 열린 구간 $(a, d)$에서 평균값 정리를 만족하는 실수 $x$는 $p$개, 열린 구간 $(b, c)$에서 롤의 정리를 만족하는 실수 $x$는 $q$개가 있다. 이때, $p+q$의 값은? (단, $a < b < 0 < c < d$) [4.2점]\n<img src=\"assets/images/19_팔마고_2학기_중간_고2_수학II/q19.png\" alt=\"19_팔마고_2학기_중간_고2_수학II Q19\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "W 모양 곡선에서 할선 l과 평행한 접선이 생기는 올라가는 구간과 수평선 h의 높이가 같은 두 점 B, C 사이의 세 극점을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "할선 l의 양 끝점 A, D, 높이가 같은 두 점 B, C와 수평선 h, 세 극점 M1, M2, M3을 보여 p와 q를 읽게 한다."
+  ],
+  "accessibilityDescription": "가운데가 솟은 W 모양의 곡선으로 왼쪽과 오른쪽에 극소점, 가운데에 극대점이 있고, 곡선 위의 두 끝점을 잇는 오르는 직선과 높이가 같은 두 점을 지나는 수평선이 그려진 그래프이다."
+}

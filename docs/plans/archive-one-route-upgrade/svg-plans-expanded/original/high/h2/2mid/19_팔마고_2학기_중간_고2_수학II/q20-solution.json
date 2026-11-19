@@ -1,0 +1,54 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          -3,
+          0
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          0,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "caption": "f(x)=|x|/x의 그래프이다. x>0이면 1, x<0이면 -1이므로 x→0-에서 좌극한 -1, x→0+에서 우극한 1로 다르다. x=0에서는 분모가 0이라 f(0)이 정의되지 않아 양쪽 수평선이 모두 열린 점으로 끝난다. 함숫값이 없고 좌우극한도 달라 x=0에서 불연속이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 1] $f(x)=\\frac{|x|}{x}$에 대하여 $x=0$에서 연속성을 조사하고 그 과정을 서술하시오. [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=0에서 좌극한 -1과 우극한 1이 다른 두 수평선과 정의되지 않은 점을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=0에서 왼쪽 수평선(높이 -1)과 오른쪽 수평선(높이 1)이 모두 열린 점으로 끝남을 보인다."
+  ],
+  "accessibilityDescription": "x=0에서 끊어지는 그래프로, 아래쪽 수평선과 위쪽 수평선이 x=0에서 각각 열린 점으로 끝나는 모양이다."
+}

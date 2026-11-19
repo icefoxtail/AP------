@@ -1,0 +1,83 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "24",
+          "-4/5"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      30
+    ],
+    "viewport": [
+      0,
+      30,
+      0,
+      190
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "5",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "20",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "25/2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "4",
+          "intercept": "80",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "4",
+          "intercept": "125",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "가로축이 시간 t, 세로축이 높이 s이다. t=5에서 t=20까지 두 점 A(5,100), B(20,160)을 잇는 할선 l의 기울기가 평균변화율 a=4이다. s′(t)=24-1.6t=4에서 b=12.5이고 접점 T(12.5,175)에서의 접선 m이 l과 평행하다. 따라서 ab=50이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "달 표면에서 $24\\text{ m/s}$의 속도로 달 표면과 수직하게 위로 돌을 던지면 던진 지 $t$초 후 돌의 높이를 $s(t)\\text{ m}$라고 할 때\n$$s(t)=24t-0.8t^2 \\quad (0 \\le t \\le 30)$$\n인 관계가 성립한다고 한다. $t=5$에서 $t=20$까지의 평균변화율을 $a$라 하고, $t=b$에서의 순간변화율이 $a$와 같을 때, $ab$의 값은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 l의 기울기 4와 같은 순간변화율을 갖는 접점 T(12.5,175)의 접선 m을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 [5,20]의 할선 l과 이에 평행한 접선 m, 접점 T(12.5,175)를 보인다."
+  ],
+  "accessibilityDescription": "위로 볼록한 포물선 모양의 높이 곡선 위의 두 점 A, B를 잇는 오르는 직선 l과, 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다."
+}

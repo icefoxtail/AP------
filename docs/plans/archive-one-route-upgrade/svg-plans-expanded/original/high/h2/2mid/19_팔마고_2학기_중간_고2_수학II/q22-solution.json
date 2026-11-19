@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -0.5,
+      2
+    ],
+    "viewport": [
+      -2,
+      3,
+      -1,
+      4
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "sqrt(2)",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "0",
+          "y": "2+sqrt(2)",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1-sqrt(2)",
+          "intercept": "2+sqrt(2)",
+          "label": "l"
+        }
+      ],
+      "circles": [
+        {
+          "id": "K",
+          "center": [
+            "0",
+            "0"
+          ],
+          "radiusSquared": "2"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "예: t=1일 때를 그린다. A(1,1)이고 원점 중심의 원은 A를 지나므로 반지름은 OA=√2, 양의 x축과 만나는 점은 B(√2,0)이다. 직선 AB가 y축과 만나는 점 C의 높이는 2+√2이다. 일반적으로 C의 높이는 √(1+t²)(√(1+t²)+1)이고 A가 원점에 가까워지는 t→0+에서 2에 가까워진다. 따라서 α=2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 포물선 $f(x)=x^2$와, 포물선 $f(x)$의 1사분면 위의 점 $A$에 대하여 원점 $O$를 중심으로 하고 점 $A$를 지나는 원이 $x$축의 양의 방향과 만나서 생기는 교점을 $B$라고 하자. 이때 직선 $AB$가 $y$축과 만나는 점을 $C$라고 하자. 점 $A$가 원점 $O$에 한없이 가까워 질 때, 점 $C$는 점 $(0, \\alpha)$에 한없이 가까워진다. $\\alpha$의 값을 구하고 그 과정을 서술하시오. [6.0점]\n<img src=\"assets/images/19_팔마고_2학기_중간_고2_수학II/q22.png\" alt=\"19_팔마고_2학기_중간_고2_수학II Q22\" />",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "t=1에서 포물선 위의 A, 원점 중심의 원과 x축의 교점 B, 직선 AB가 y축과 만나는 점 C를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "t=1인 예에서 포물선 위의 점 A, 원점 중심의 원과 x축의 교점 B, 직선 AB가 y축과 만나는 점 C를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 점 A를 지나는 원점 중심의 원이 가로축의 점 B와 만나고, A와 B를 지나는 내려가는 직선이 세로축의 점 C와 만나는 그래프이다."
+}

@@ -1,0 +1,76 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "-1"
+        ],
+        "domain": [
+          -3,
+          -1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0"
+        ],
+        "domain": [
+          -1,
+          0
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "-1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "0",
+        "y": "-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1",
+        "0"
+      ],
+      "y": [
+        "-2",
+        "-1",
+        "2"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). x→-1-에서 왼쪽 선분은 높이 2의 열린 점 (-1,2)로 가까워지므로 좌극한은 2이다. x→0+에서 오른쪽 선분은 높이 -1의 열린 점 (0,-1)에서 시작하므로 우극한은 -1이고 x=0의 닫힌 점은 f(0)=-2이다. 합은 2+(-1)+(-2)=-1이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)$의 그래프가 다음과 같다.\n<img src=\"assets/images/19_팔마고_2학기_중간_고2_수학II/q05.png\" alt=\"19_팔마고_2학기_중간_고2_수학II Q05\" />\n$\\lim_{x \\to -1-} f(x) + \\lim_{x \\to 0+} f(x) + f(0)$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=-1의 좌극한 2(열린 점), x=0의 우극한 -1(열린 점)과 함숫값 -2(닫힌 점)를 구별해 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=-1 왼쪽의 열린 점 (-1,2), x=0 오른쪽의 열린 점 (0,-1), 닫힌 점 (0,-2)를 보인다."
+  ],
+  "accessibilityDescription": "x=-1에서 내려오는 선분이 높은 열린 점으로 끝나고 x=0에서는 오른쪽 수평선이 위쪽 열린 점에서 시작하며 아래쪽에 닫힌 점이 따로 있는 끊어진 그래프이다."
+}

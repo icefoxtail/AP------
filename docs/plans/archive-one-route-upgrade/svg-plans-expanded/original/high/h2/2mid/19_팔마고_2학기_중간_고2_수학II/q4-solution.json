@@ -1,0 +1,65 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "2",
+          "1"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "2",
+        "y": "12"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "12"
+      ]
+    }
+  },
+  "caption": "분자가 x=2에서 0이어야 하므로 a=8이고, 그러면 x≠2에서 (x³-8)/(x-2)=x²+2x+4라 그래프는 이 곡선에서 x=2의 높이 12인 열린 점(구멍)이 빠진 모양이다. f(2)=b인 닫힌 점이 그 구멍과 같은 높이에 있어야 연속이므로 b=12이다. 따라서 a+b=20이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수\n$$f(x)=\\begin{cases} \\frac{x^3-a}{x-2} & (x \\ne 2) \\\\ b & (x = 2) \\end{cases}$$\n가 $x=2$에서 연속일 때, $a+b$의 값은? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "약분한 곡선의 x=2 구멍의 높이 12와 닫힌 점 (2,b)가 같아야 연속임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선 y=x²+2x+4의 x=2에서 높이 12의 열린 점과 닫힌 점 (2,b)가 일치해야 연속임을 보인다."
+  ],
+  "accessibilityDescription": "오른쪽 위로 오르는 곡선이 x=2에서 빈 점으로 끊겼다가, 같은 높이의 닫힌 점에서 이어지는 그래프이다."
+}

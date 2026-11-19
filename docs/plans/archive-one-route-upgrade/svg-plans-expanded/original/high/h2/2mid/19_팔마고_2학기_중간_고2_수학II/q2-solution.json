@@ -1,0 +1,57 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "CLOSED",
+        "end": "CLOSED"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "2",
+        "5"
+      ]
+    }
+  },
+  "caption": "③은 x<2에서 2, x≥2에서 x+3이다. x→2-에서 높이 2의 열린 점으로, x→2+에서 높이 5의 닫힌 점 f(2)=5로 갈라져 좌극한 2와 우극한·함숫값 5가 다르므로 x=2에서 불연속이다. 나머지 ①, ②, ④, ⑤는 x=2에서 끊기지 않고 이어진다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 중 $x=2$에서 불연속인 함수를 고르면? [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=2의 좌극한 2(열린 점)와 우극한·함숫값 5(닫힌 점)가 다른 점프를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=2에서 왼쪽 수평선이 높이 2의 열린 점으로 끝나고 오른쪽 직선이 높이 5의 닫힌 점에서 시작함을 보인다."
+  ],
+  "accessibilityDescription": "x=2에서 아래쪽 수평선이 열린 점으로 끝나고 위쪽의 닫힌 점에서 오르는 직선이 시작되는 끊어진 그래프이다."
+}
