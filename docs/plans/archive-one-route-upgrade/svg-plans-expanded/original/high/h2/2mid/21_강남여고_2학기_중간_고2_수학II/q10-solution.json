@@ -1,99 +1,60 @@
 {
-  "capability": "composite-panels-v1",
-  "panels": [
-    {
-      "caption": {
-        "text": "x≤1 직선"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      6,
+      0,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "7",
+          "-3"
+        ],
+        "domain": [
+          "-1",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "y=-3x+7"
       },
-      "plan": {
-        "capability": "piecewise-polynomial-spike-v1",
-        "graphPlan": {
-          "family": "piecewise-polynomial",
-          "pieces": [
-            {
-              "coefficients": [
-                "7",
-                "-3"
-              ]
-            }
-          ],
-          "breakpoints": [],
-          "sourceDomain": {
-            "kind": "INTERVAL",
-            "range": [
-              "-1",
-              "1"
-            ],
-            "states": [
-              "CLOSED",
-              "CLOSED"
-            ]
-          },
-          "axisTickValues": {
-            "x": [],
-            "y": []
-          },
-          "requiredPoints": [
-            {
-              "id": "P",
-              "x": "1",
-              "y": "4"
-            }
-          ],
-          "exactCoordinates": {
-            "P": [
-              "1",
-              "4"
-            ]
-          }
-        }
+      {
+        "id": "f2",
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "1"
+        ],
+        "offset": "2",
+        "domain": [
+          "1",
+          "6"
+        ],
+        "color": "WARM",
+        "label": "y=sqrt(x+3)+2"
       }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "4",
+          "coordinates": true
+        }
+      ]
     },
-    {
-      "caption": {
-        "text": "x>1 제곱근"
-      },
-      "plan": {
-        "capability": "sqrt-affine-spike-v1",
-        "graphPlan": {
-          "family": "sqrt-affine",
-          "radicand": [
-            "3",
-            "1"
-          ],
-          "offset": "2",
-          "sourceDomain": {
-            "kind": "NATURAL_SQRT_AFFINE"
-          },
-          "domain": [
-            -3,
-            6
-          ],
-          "viewport": [
-            -3.5,
-            6.5,
-            1.5,
-            7
-          ],
-          "requiredPoints": [
-            {
-              "id": "Q",
-              "x": 1,
-              "y": 4
-            }
-          ],
-          "exactCoordinates": {
-            "Q": [
-              "1",
-              "4"
-            ]
-          }
-        }
-      }
+    "axisTickValues": {
+      "x": [],
+      "y": []
     }
-  ],
-  "caption": "x>1에서 분모가 0으로 가므로 분자 x+b도 x=1에서 0이어야 하고 b=-1이다. 그러면 (x-1)/(√(x+3)-2)=√(x+3)+2이고 x→1+에서 극한은 4이다. 왼쪽 패널의 직선 -3x+a는 x=1에서 4가 되어야 하므로 a=7이고, 오른쪽 패널의 곡선과 같은 점 (1,4)에서 이어진다. 따라서 a+b=6이고 답은 ②이다.",
-  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 오른쪽 끝에 점 P가 있는 내려가는 직선이, 둘째 패널에는 점 Q를 지나는 오른쪽 위로 오르는 제곱근 곡선이 그려져 있다.",
+  },
+  "caption": "x>1에서 분모가 0으로 가므로 분자 x+b도 x=1에서 0이어야 하고 b=-1이다. 그러면 (x-1)/(√(x+3)-2)=√(x+3)+2이고 x→1+에서 극한은 4이다. 직선 -3x+a는 x=1에서 4가 되어야 하므로 a=7이고, 곡선 y=√(x+3)+2와 같은 점 P(1,4)에서 이어진다. 따라서 a+b=6이고 답은 ②이다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -102,11 +63,12 @@
     },
     {
       "id": "method",
-      "condition": "한 문항 한 장: a=7, b=-1일 때 x≤1의 직선과 x>1의 곡선이 모두 점 (1,4)를 지남을 두 패널로 보인다.",
+      "condition": "x≤1의 직선과 x>1의 제곱근 곡선이 점 (1,4)에서 이어짐을 한 좌표평면에 보인다.",
       "mappedTo": "diagram"
     }
   ],
   "newVisualInformation": [
-    "a=7, b=-1에서 x≤1의 직선과 x>1의 제곱근 곡선이 모두 높이 4의 점 (1,4)를 지남을 보인다."
-  ]
+    "a=7, b=-1일 때 x≤1의 직선과 x>1의 곡선이 점 (1,4)에서 이어진다."
+  ],
+  "accessibilityDescription": "왼쪽의 오른쪽 아래로 내려가는 직선과 오른쪽의 오르는 제곱근 곡선이 한 점 P에서 만나 이어지는 그래프이다."
 }

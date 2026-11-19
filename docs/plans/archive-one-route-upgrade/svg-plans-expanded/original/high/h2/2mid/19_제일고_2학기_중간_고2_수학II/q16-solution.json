@@ -1,98 +1,105 @@
 {
-  "capability": "piecewise-polynomial-spike-v1",
+  "capability": "piecewise-discontinuous-spike-v1",
   "graphPlan": {
-    "family": "piecewise-polynomial",
+    "family": "piecewise-discontinuous",
     "pieces": [
       {
         "coefficients": [
           "2",
           "-8"
-        ]
+        ],
+        "domain": [
+          0,
+          "1/4"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "-2",
           "8"
-        ]
+        ],
+        "domain": [
+          "1/4",
+          "1/2"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "6",
           "-8"
-        ]
+        ],
+        "domain": [
+          "1/2",
+          "3/4"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "-6",
           "8"
-        ]
+        ],
+        "domain": [
+          "3/4",
+          1
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "10",
           "-8"
-        ]
+        ],
+        "domain": [
+          1,
+          "5/4"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "-10",
           "8"
-        ]
+        ],
+        "domain": [
+          "5/4",
+          "3/2"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "14",
           "-8"
-        ]
+        ],
+        "domain": [
+          "3/2",
+          "7/4"
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
       },
       {
         "coefficients": [
           "-14",
           "8"
-        ]
+        ],
+        "domain": [
+          "7/4",
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
       }
     ],
-    "breakpoints": [
-      {
-        "x": "1/4",
-        "y": "0"
-      },
-      {
-        "x": "1/2",
-        "y": "2"
-      },
-      {
-        "x": "3/4",
-        "y": "0"
-      },
-      {
-        "x": "1",
-        "y": "2"
-      },
-      {
-        "x": "5/4",
-        "y": "0"
-      },
-      {
-        "x": "3/2",
-        "y": "2"
-      },
-      {
-        "x": "7/4",
-        "y": "0"
-      }
-    ],
-    "sourceDomain": {
-      "kind": "INTERVAL",
-      "range": [
-        "0",
-        "2"
-      ],
-      "states": [
-        "OPEN",
-        "OPEN"
-      ]
-    },
     "axisTickValues": {
       "x": [
         "1/2",
@@ -102,49 +109,9 @@
       "y": [
         "2"
       ]
-    },
-    "requiredPoints": [
-      {
-        "id": "A",
-        "x": "1/4",
-        "y": "0"
-      },
-      {
-        "id": "B",
-        "x": "3/4",
-        "y": "0"
-      },
-      {
-        "id": "C",
-        "x": "5/4",
-        "y": "0"
-      },
-      {
-        "id": "D",
-        "x": "7/4",
-        "y": "0"
-      }
-    ],
-    "exactCoordinates": {
-      "A": [
-        "1/4",
-        "0"
-      ],
-      "B": [
-        "3/4",
-        "0"
-      ],
-      "C": [
-        "5/4",
-        "0"
-      ],
-      "D": [
-        "7/4",
-        "0"
-      ]
     }
   },
-  "caption": "F(x)=f(f(f(x)))를 열린구간 (0,2)에서 그린 톱니 모양 그래프이다. 꺾이는 점은 x=1/4, 1/2, 3/4, 1, 5/4, 3/2, 7/4의 7곳이고 높이는 0, 2가 번갈아 나온다(아래 꺾임 A, B, C, D와 위 꺾임). 미분가능하지 않은 점은 a=7개이고 합은 7이므로 b=7이다. 따라서 답은 ⑤이다.",
+  "caption": "F(x)=f(f(f(x)))를 열린구간 (0,2)에서 그린 톱니 모양 그래프이다. 꺾이는 점은 x=1/4, 1/2, 3/4, 1, 5/4, 3/2, 7/4의 7곳이고 높이는 0, 2가 번갈아 나온다(채운 점이 꺾이는 점이다). 미분가능하지 않은 점은 a=7개이고 합은 7이므로 b=7이다. 따라서 답은 ⑤이다.",
   "sourceConditions": [
     {
       "id": "source",

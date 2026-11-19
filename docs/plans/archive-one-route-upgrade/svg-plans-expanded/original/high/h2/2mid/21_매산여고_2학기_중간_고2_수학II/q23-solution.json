@@ -1,56 +1,86 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
-    "viewport": [
-      -4,
-      5,
-      -62,
-      135
-    ],
-    "curves": [
+    "family": "piecewise-polynomial",
+    "pieces": [
       {
-        "id": "f",
-        "kind": "Y_OF_X",
         "coefficients": [
           "-24",
           "4",
           "2",
           "1"
-        ],
-        "domain": [
-          "-3.5",
-          "4.5"
-        ],
-        "color": "BLUE",
-        "label": "f"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "functionName": "f",
+    "domain": [
+      -4,
+      4.5
+    ],
+    "viewport": [
+      -4,
+      4.5,
+      -62,
+      135
+    ],
+    "requiredPoints": [
+      {
+        "id": "T",
+        "x": "2",
+        "y": "0"
       },
       {
+        "id": "U",
+        "x": "-3",
+        "y": "-45"
+      },
+      {
+        "id": "V",
+        "x": "-2",
+        "y": "-48"
+      }
+    ],
+    "exactCoordinates": {
+      "T": [
+        "2",
+        "0"
+      ],
+      "U": [
+        "-3",
+        "-45"
+      ],
+      "V": [
+        "-2",
+        "-48"
+      ]
+    },
+    "axisTickValues": {
+      "x": [
+        "4"
+      ],
+      "y": []
+    },
+    "referenceCurves": [
+      {
         "id": "g",
-        "kind": "Y_OF_X",
+        "name": "g",
         "coefficients": [
           "-36",
           "12",
           "3"
         ],
-        "domain": [
-          "-3.5",
-          "4.5"
-        ],
-        "color": "WARM",
-        "label": "g"
+        "intersectionX": [
+          "2",
+          "-3"
+        ]
       }
-    ],
-    "axisTickValues": {
-      "x": [
-        "-3",
-        "2",
-        "4"
-      ],
-      "y": []
-    }
+    ]
   },
-  "caption": "예: 조건에 맞는 한 쌍 f(x)=x³+2x²+4x-24, g(x)=3x²+12x-36을 그렸다. g′(x)=6x+12이고 h=f-g로 놓으면 h=(x-2)²(x+3)이다. x=2에서 값과 기울기가 같아 두 곡선이 접하고, x=-3에서는 서로 만난다. x=4에서 f(4)=88, g(4)=60이므로 f(4)-g(4)=h(4)=28이다. 이 차이는 f, g를 각각 구하지 않아도 h에서 얻는다.",
+  "caption": "예: 조건에 맞는 한 쌍 f(x)=x³+2x²+4x-24, g(x)=3x²+12x-36을 그렸다. g′(x)=6x+12이고 h=f-g로 놓으면 h=(x-2)²(x+3)이다. x=2에서 값과 기울기가 같아 두 곡선이 접하고, x=-3에서는 서로 만난다(두 점은 T(2,0), U(-3,-45)이고 g의 꼭짓점은 V(-2,-48)이다). x=4에서 f(4)=88, g(4)=60이므로 f(4)-g(4)=h(4)=28이다. 이 차이는 f, g를 각각 구하지 않아도 h에서 얻는다.",
   "sourceConditions": [
     {
       "id": "source",

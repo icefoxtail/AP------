@@ -1,60 +1,34 @@
 {
-  "capability": "multi-curve-figure-v1",
+  "capability": "piecewise-polynomial-spike-v1",
   "graphPlan": {
-    "family": "multi-curve",
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "functionName": "f",
     "viewport": [
       0,
       2,
       0,
-      12
-    ],
-    "curves": [
-      {
-        "id": "f",
-        "kind": "Y_OF_X",
-        "coefficients": [
-          "1",
-          "1",
-          "1"
-        ],
-        "domain": [
-          "0",
-          "2"
-        ],
-        "color": "BLUE",
-        "label": "f"
-      },
-      {
-        "id": "g",
-        "kind": "Y_OF_X",
-        "coefficients": [
-          "2",
-          "0",
-          "0",
-          "1"
-        ],
-        "domain": [
-          "0",
-          "2"
-        ],
-        "color": "WARM",
-        "label": "g"
-      },
-      {
-        "id": "t",
-        "kind": "LINE",
-        "coefficients": [
-          "0",
-          "3"
-        ],
-        "domain": [
-          "0",
-          "2"
-        ],
-        "color": "GREEN",
-        "style": "DASHED",
-        "label": "y=3x"
-      }
+      11
     ],
     "axisTickValues": {
       "x": [
@@ -62,6 +36,42 @@
       ],
       "y": [
         "3"
+      ]
+    },
+    "referenceCurves": [
+      {
+        "id": "g",
+        "name": "g",
+        "pieces": [
+          {
+            "coefficients": [
+              "2",
+              "0",
+              "0",
+              "1"
+            ]
+          }
+        ],
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "t",
+          "slope": "3",
+          "intercept": "0",
+          "label": "y=3x"
+        }
       ]
     }
   },

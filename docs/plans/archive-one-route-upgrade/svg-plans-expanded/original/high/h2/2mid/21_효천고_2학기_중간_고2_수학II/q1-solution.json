@@ -1,39 +1,56 @@
 {
-  "capability": "piecewise-discontinuous-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise-discontinuous",
-    "pieces": [
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      4,
+      -2,
+      2
+    ],
+    "curves": [
       {
+        "id": "a",
+        "kind": "LINE",
         "coefficients": [
-          "-1"
+          "-1",
+          "0"
         ],
         "domain": [
-          -2,
-          1
-        ],
-        "start": "CLOSED",
-        "end": "OPEN"
-      },
-      {
-        "coefficients": [
+          "-2",
           "1"
         ],
-        "domain": [
-          1,
-          4
+        "domainStates": [
+          "NONE",
+          "OPEN"
         ],
-        "start": "OPEN",
-        "end": "CLOSED"
+        "color": "BLUE",
+        "label": "y=-1"
+      },
+      {
+        "id": "b",
+        "kind": "LINE",
+        "coefficients": [
+          "1",
+          "0"
+        ],
+        "domain": [
+          "1",
+          "4"
+        ],
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ],
+        "color": "WARM",
+        "label": "y=1"
       }
     ],
     "axisTickValues": {
       "x": [
         "1"
       ],
-      "y": [
-        "-1",
-        "1"
-      ]
+      "y": []
     }
   },
   "caption": "x>1이면 |x-1|/(x-1)=1이므로 오른쪽은 높이 1의 수평선이고 x→1+에서 우극한 a=1이다. x<1이면 -1이므로 왼쪽은 높이 -1의 수평선이고 x→1-에서 좌극한 b=-1이다. x=1에서는 함수가 정의되지 않아 두 수평선 모두 열린 점으로 끝난다. 따라서 ab=1·(-1)=-1이고 답은 ⑤이다.",

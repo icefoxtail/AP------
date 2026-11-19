@@ -11,45 +11,42 @@
     "curves": [
       {
         "id": "lo",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "-1/5",
-          "0",
-          "1/5"
+        "kind": "SQRT",
+        "radicand": [
+          "1",
+          "5"
         ],
         "domain": [
-          "1",
-          "4"
+          "0",
+          "3"
         ],
         "color": "BLUE",
-        "label": "아래 경계"
+        "label": "y=sqrt(5x+1)"
       },
       {
         "id": "hi",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "-3/5",
-          "0",
-          "1/5"
+        "kind": "SQRT",
+        "radicand": [
+          "3",
+          "5"
         ],
         "domain": [
-          "1.8",
-          "4"
+          "0",
+          "3"
         ],
         "color": "WARM",
-        "label": "위 경계"
+        "label": "y=sqrt(5x+3)"
       },
       {
         "id": "f",
-        "kind": "X_OF_Y",
-        "coefficients": [
-          "-2/5",
-          "0",
-          "1/5"
+        "kind": "SQRT",
+        "radicand": [
+          "2",
+          "5"
         ],
         "domain": [
-          "1.5",
-          "4"
+          "0",
+          "3"
         ],
         "color": "GREEN",
         "label": "f"

@@ -1,29 +1,49 @@
 {
-  "capability": "piecewise-discontinuous-spike-v1",
+  "capability": "multi-curve-figure-v1",
   "graphPlan": {
-    "family": "piecewise-discontinuous",
-    "pieces": [
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      3,
+      -2,
+      2
+    ],
+    "curves": [
       {
+        "id": "a",
+        "kind": "LINE",
         "coefficients": [
-          "-1"
+          "-1",
+          "0"
         ],
         "domain": [
-          -3,
-          0
+          "-3",
+          "0"
         ],
-        "start": "CLOSED",
-        "end": "OPEN"
+        "domainStates": [
+          "NONE",
+          "OPEN"
+        ],
+        "color": "BLUE",
+        "label": "y=-1"
       },
       {
+        "id": "b",
+        "kind": "LINE",
         "coefficients": [
-          "1"
+          "1",
+          "0"
         ],
         "domain": [
-          0,
-          3
+          "0",
+          "3"
         ],
-        "start": "OPEN",
-        "end": "CLOSED"
+        "domainStates": [
+          "OPEN",
+          "NONE"
+        ],
+        "color": "WARM",
+        "label": "y=1"
       }
     ],
     "axisTickValues": {

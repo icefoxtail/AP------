@@ -1,113 +1,7 @@
 {
-  "capability": "composite-panels-v1",
-  "panels": [
-    {
-      "caption": {
-        "text": "④ x=2의 점프"
-      },
-      "plan": {
-        "capability": "piecewise-discontinuous-spike-v1",
-        "graphPlan": {
-          "family": "piecewise-discontinuous",
-          "pieces": [
-            {
-              "coefficients": [
-                "-1"
-              ],
-              "domain": [
-                0,
-                2
-              ],
-              "start": "CLOSED",
-              "end": "OPEN"
-            },
-            {
-              "coefficients": [
-                "1"
-              ],
-              "domain": [
-                2,
-                4
-              ],
-              "start": "OPEN",
-              "end": "CLOSED"
-            }
-          ],
-          "jumpValues": [
-            {
-              "x": "2",
-              "y": "2"
-            }
-          ],
-          "axisTickValues": {
-            "x": [
-              "2"
-            ],
-            "y": [
-              "-1",
-              "1",
-              "2"
-            ]
-          }
-        }
-      }
-    },
-    {
-      "caption": {
-        "text": "⑤ x=2의 구멍"
-      },
-      "plan": {
-        "capability": "piecewise-discontinuous-spike-v1",
-        "graphPlan": {
-          "family": "piecewise-discontinuous",
-          "pieces": [
-            {
-              "coefficients": [
-                "-4",
-                "0",
-                "1"
-              ],
-              "domain": [
-                1,
-                2
-              ],
-              "start": "CLOSED",
-              "end": "OPEN"
-            },
-            {
-              "coefficients": [
-                "-4",
-                "0",
-                "1"
-              ],
-              "domain": [
-                2,
-                3
-              ],
-              "start": "OPEN",
-              "end": "CLOSED"
-            }
-          ],
-          "jumpValues": [
-            {
-              "x": "2",
-              "y": "1"
-            }
-          ],
-          "axisTickValues": {
-            "x": [
-              "2"
-            ],
-            "y": [
-              "1"
-            ]
-          }
-        }
-      }
-    }
-  ],
-  "caption": "④는 x=2에서 좌극한 -1, 우극한 1로 끊어져 연속이 아니다. ⑤는 x≠2에서 x²-4이므로 극한이 0인데 f(2)=1인 닫힌 점이 그 열린 점 위에 따로 있어 연속이 아니다. ③은 x=2에서 분모가 0이고 ②는 x=2에서 정수부분이 뛰어 불연속이다. ①은 x→2-에서 0, x→2+에서 √(x-2)→0, f(2)=0으로 모두 같아 연속이다. 따라서 답은 ①이다.",
-  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 x=2에서 아래쪽 수평선이 열린 점으로 끝나고 위쪽 수평선이 열린 점에서 시작하며 위에 닫힌 점이 따로 있고, 둘째 패널에는 포물선이 x=2에서 열린 점으로 끊기고 위쪽에 닫힌 점이 따로 있는 그래프가 그려져 있다.",
+  "capability": "multi-curve-figure-v1",
+  "caption": "① f(x)=0 (x<2), √(x-2) (x≥2)의 그래프이다. x→2-에서 0, x→2+에서 √(x-2)→0이고 f(2)=0으로 세 값이 모두 같아 x=2에서 연속이다. ②는 [x]가 x=2에서 뛰고, ③은 분모가 0이 되며, ④는 좌우극한이 -1, 1로 다르고, ⑤는 극한 0과 함수값 1이 달라 연속이 아니다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "x=2의 왼쪽에서는 x축 위의 수평선이 점 (2,0)까지 이어지고, 오른쪽에서는 제곱근 곡선이 (2,0)에서 시작해 오른쪽 위로 올라가며 끊김없이 이어진 그래프이다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -116,11 +10,59 @@
     },
     {
       "id": "method",
-      "condition": "한 문항 한 장: x=2에서 연속이 아닌 ④의 점프와 ⑤의 구멍을 두 패널로 합쳤다.",
+      "condition": "한 문항 한 장: 정답 ①이 x=2에서 끊김없이 이어지는 모습을 보인다.",
       "mappedTo": "diagram"
     }
   ],
   "newVisualInformation": [
-    "④의 좌우극한 -1, 1과 ⑤의 열린 점과 따로 있는 닫힌 점이 서로 어긋나 불연속임을 보인다."
-  ]
+    "① 함수가 x=2에서 왼쪽 0, 오른쪽 √(x-2)로 끊김없이 이어지는 모습을 보인다."
+  ],
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -0.2,
+      4.2,
+      -0.5,
+      2.5
+    ],
+    "curves": [
+      {
+        "id": "a",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "BLUE",
+        "label": "y=0"
+      },
+      {
+        "id": "b",
+        "kind": "SQRT",
+        "radicand": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "2",
+          "4"
+        ],
+        "color": "WARM",
+        "label": "y=sqrt(x-2)"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1",
+        "2"
+      ]
+    }
+  }
 }

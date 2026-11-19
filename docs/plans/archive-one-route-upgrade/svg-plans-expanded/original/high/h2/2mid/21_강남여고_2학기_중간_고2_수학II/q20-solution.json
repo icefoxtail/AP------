@@ -1,109 +1,92 @@
 {
-  "capability": "composite-panels-v1",
-  "panels": [
-    {
-      "caption": {
-        "text": "f 그래프"
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      9,
+      0,
+      5
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "SQRT",
+        "radicand": [
+          "0",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "color": "BLUE",
+        "label": "y=sqrt(2x)"
       },
-      "plan": {
-        "capability": "sqrt-affine-spike-v1",
-        "graphPlan": {
-          "family": "sqrt-affine",
-          "radicand": [
-            "0",
-            "2"
-          ],
-          "sourceDomain": {
-            "kind": "NATURAL_SQRT_AFFINE"
-          },
-          "domain": [
-            0,
-            9
-          ],
-          "viewport": [
-            -0.5,
-            9.5,
-            -0.5,
-            5
-          ],
-          "requiredPoints": [
-            {
-              "id": "P",
-              "x": 2,
-              "y": 2
-            },
-            {
-              "id": "Q",
-              "x": 8,
-              "y": 4
-            }
-          ],
-          "exactCoordinates": {
-            "P": [
-              "2",
-              "2"
-            ],
-            "Q": [
-              "8",
-              "4"
-            ]
-          }
-        }
+      {
+        "id": "g",
+        "kind": "RATIONAL",
+        "numerator": [
+          "4",
+          "0"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "y=4/x"
       }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "8",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "8",
+          "y": "1/2",
+          "coordinates": true
+        }
+      ],
+      "segments": [
+        {
+          "id": "pq",
+          "from": "P",
+          "to": "Q"
+        },
+        {
+          "id": "pr",
+          "from": "P",
+          "to": "R"
+        },
+        {
+          "id": "qr",
+          "from": "Q",
+          "to": "R"
+        }
+      ]
     },
-    {
-      "caption": {
-        "text": "g 그래프"
-      },
-      "plan": {
-        "capability": "rational-spike-v1",
-        "graphPlan": {
-          "family": "rational",
-          "numerator": [
-            "4",
-            "0"
-          ],
-          "denominator": [
-            "0",
-            "1"
-          ],
-          "sourceDomain": {
-            "kind": "ALL_REALS"
-          },
-          "domain": [
-            -10,
-            10
-          ],
-          "viewport": [
-            -10,
-            10,
-            -10,
-            10
-          ],
-          "axisTickValues": {
-            "x": [],
-            "y": []
-          },
-          "overlays": {
-            "points": [
-              {
-                "id": "P",
-                "curveX": "2",
-                "coordinates": true
-              },
-              {
-                "id": "R",
-                "curveX": "8",
-                "coordinates": true
-              }
-            ]
-          }
-        }
-      }
+    "axisTickValues": {
+      "x": [],
+      "y": []
     }
-  ],
+  },
   "caption": "예: t=8일 때를 그린다. 두 곡선 f=√(2x), g=4/x는 P(2,2)에서 만나고 직선 x=8과의 교점은 Q(8,4), R(8,1/2)이다. 삼각형 PQR의 밑변은 QR이고 P에서 직선 x=8까지의 거리가 높이 t-2이므로 S(t)=(1/2)(t-2)[f(t)-g(t)]이다. S(t)/(t-2)²=(1/2)[f(t)-g(t)]/(t-2)이고 t→2+에서 (1/2)[f′(2)-g′(2)]=(1/2)(1/2+1)=3/4이다. 따라서 답은 ③이다.",
-  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 원점에서 시작해 오른쪽 위로 완만하게 오르는 제곱근 곡선과 점 P, Q가, 둘째 패널에는 두 점근선을 가진 쌍곡선의 제1사분면 가지와 점 P, R이 그려져 있다.",
   "sourceConditions": [
     {
       "id": "source",
@@ -112,11 +95,12 @@
     },
     {
       "id": "method",
-      "condition": "한 문항 한 장: f와 g의 그래프와 점 P, Q, R을 두 패널로 합쳤다.",
+      "condition": "한 문항 한 장: f와 g의 그래프와 점 P, Q, R을 한 좌표평면에 함께 그렸다.",
       "mappedTo": "diagram"
     }
   ],
   "newVisualInformation": [
     "f=√(2x)와 g=4/x의 교점 P(2,2)와 x=8에서의 점 Q(8,4), R(8,1/2)을 보인다."
-  ]
+  ],
+  "accessibilityDescription": "한 좌표평면에 완만하게 오르는 제곱근 곡선과 내려가는 반비례 곡선이 점 P에서 만나고, 직선 x=8 위의 점 Q, R과 삼각형 PQR이 그려져 있다."
 }
