@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "55868e43df3c92be",
+  "solveSteps": [
+    "1. 두 점 (2, 3) 과 (5, 9) 를 지나는 직선의 기울기는 (9 - 3) / (5 - 2) = 6 / 3 = 2 이다.",
+    "2. 두 일차함수의 그래프가 평행하므로 두 점 (1, a) 와 (3, 12) 를 지나는 직선의 기울기도 2 이다.",
+    "3. (12 - a) / (3 - 1) = 2 에서 (12 - a) / 2 = 2 이므로 12 - a = 4 에서 a = 8 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "두 점 $(1, a)$와 $(3, 12)$를 지나는 일차함수의 그래프가 두 점 $(2, 3)$과 $(5, 9)$를 지나는 일차함수의 그래프와 평행할 때",
+  "rpmRecordId": "M2-RPM-168",
+  "rpmReason": "두 점 (2, 3), (5, 9) 의 기울기 2 와 평행 조건을 이용해 (1, a), (3, 12) 에서 a = 8 을 구하는 평행 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION",
+  "templateKey": "TPL_M2_FIND_UNKNOWN_COORDINATE_FROM_PARALLEL_SLOPE",
+  "typeReason": "두 직선이 평행할 때 기울기가 같음을 이용해 (1, a) 와 (3, 12) 의 기울기로부터 a = 8 을 구하는 평행 조건 좌표 결정 문제이므로 PT_M2_LINEAR_FUNCTIONS_PARALLEL_CONDITION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기울기 2 를 구하고 (12 - a)/2 = 2 로 a = 8 을 바로 구하는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "지나는 일차함수의 그래프와 평행할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "일차함수의 그래프와 평행할 때, $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "지나는 직선의 기울기는 $\\frac{9 - 3}{5 - 2} = \\frac{6}{3} = 2$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "두 점 (2, 3), (5, 9) 의 기울기 2 를 구하고 (12 - a)/2 = 2 로부터 a = 8 을 얻어 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

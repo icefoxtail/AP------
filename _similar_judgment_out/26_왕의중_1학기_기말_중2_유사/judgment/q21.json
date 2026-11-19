@@ -1,0 +1,66 @@
+{
+  "qid": 21,
+  "itemFingerprint": "14c3733d5985ba08",
+  "solveSteps": [
+    "1. A코스 거리를 x m, B코스 거리를 y m 라 하면 총 거리는 x + y = 2800 이다.",
+    "2. 1시간 = 60분 이므로 걸린 시간 식은 x/60 + y/40 = 60 이다.",
+    "3. 양변에 120 을 곱하면 2x + 3y = 7200 이다.",
+    "4. y = 2800 - x 를 대입하면 2x + 3(2800 - x) = 7200 에서 -x + 8400 = 7200 이므로 x = 1200 이다.",
+    "5. y = 2800 - 1200 = 1600 이다.",
+    "6. 따라서 A코스 거리는 1200 m, B코스 거리는 1600 m 이다."
+  ],
+  "solvedAnswer": "$\\text{A}$코스 $1200\\text{ m}$, $\\text{B}$코스 $1600\\text{ m}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "지윤이가 걸은 거리가 총 $2800\\text{ m}$일 때, $\\text{A}$코스와 $\\text{B}$코스의 거리를",
+  "rpmRecordId": "M2-RPM-158",
+  "rpmReason": "거리 합 x + y = 2800 과 시간 합으로 2x + 3y = 7200 을 세워 1200 m 와 1600 m 를 구하는 속력·시간·거리 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "둘레길 2800 m 와 60분 시간 조건을 연립방정식으로 세워 2x + 3y = 7200 을 푸는 연립일차방정식 활용 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "거리 합 2800 과 분속에 따른 시간 합 60분으로 2x + 3y = 7200 을 연립해 1200 m, 1600 m 를 도출하는 3단계 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "지윤이가 걸은 거리가 총 $2800\\text{ m}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "어느 공원 둘레길을 $\\text{A}$코스는"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "첫째 식에서 $y = 2800 - x$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "거리 x+y=2800 과 시간 식 2x+3y=7200 을 연립해 x = 1200 m, y = 1600 m 를 얻어 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

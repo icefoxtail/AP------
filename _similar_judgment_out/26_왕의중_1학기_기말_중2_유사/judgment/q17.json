@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "460dcf37266a6a19",
+  "solveSteps": [
+    "1. 직선 l 은 두 점 (8, 0) 과 (0, 8) 을 지나므로 x절편 8, y절편 8 이다.",
+    "2. 직선 l 의 방정식은 x/8 + y/8 = 1 에서 x + y = 8 이다.",
+    "3. 직선 m 은 두 점 (-2, 0) 과 (0, 2) 를 지나므로 x절편 -2, y절편 2 이다.",
+    "4. 직선 m 의 방정식은 x/(-2) + y/2 = 1 에서 x - y = -2 이다.",
+    "5. 두 직선의 교점을 해로 갖는 연립방정식은 cases x + y = 8, x - y = -2 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "직선 $l$은 두 점 $(8, 0), (0, 8)$을 지나고, 직선 $m$은 두 점 $(-2, 0), (0, 2)$를 지날 때",
+  "rpmRecordId": "M2-RPM-174",
+  "rpmReason": "두 점으로 직선 l 의 식 x+y=8 과 직선 m 의 식 x-y=-2 를 구하고 연립방정식 cases 로 나타내는 교점과 연립방정식 문항이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION",
+  "templateKey": "TPL_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION_READ",
+  "typeReason": "두 직선 l 과 m 의 방정식을 각각 세워 교점 (a, b) 를 해로 갖는 연립방정식 cases x+y=8, x-y=-2 를 결정하는 문제이므로 PT_M2_SYSTEM_OF_EQUATIONS_GRAPH_INTERSECTION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "절편을 이용해 연립방정식 cases x + y = 8 과 x - y = -2 를 바로 작성해 교점 해를 찾는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $l$은 두 점 $(8, 0), (0, 8)$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "교점의 좌표 $(a, b)$가 해가 되는 연립방정식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "직선 $l$은 $x$절편이 $8$, $y$절편이 $8$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직선 l 의 식 x+y=8 과 직선 m 의 식 x-y=-2 로부터 교점을 해로 갖는 연립방정식이 cases x+y=8, x-y=-2 임을 확인하여 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

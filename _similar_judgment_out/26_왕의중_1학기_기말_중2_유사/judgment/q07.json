@@ -1,0 +1,66 @@
+{
+  "qid": 7,
+  "itemFingerprint": "ea709dda01de2e4d",
+  "solveSteps": [
+    "1. 함수는 x의 각 값에 y의 값이 오직 하나씩 정해지는 대응 관계이다.",
+    "2. ㄱ. 절댓값이 x인 수 y: x=2 일 때 y=2, -2 로 2개 정해지므로 함수가 아니다.",
+    "3. ㄴ. 나이가 x살인 사람의 키 y cm: 같은 나이라도 사람마다 키가 다르므로 함수가 아니다.",
+    "4. ㄷ. 자연수 x보다 작은 홀수의 개수 y: x의 값마다 홀수의 개수는 유일하게 하나로 정해지므로 함수이다.",
+    "5. ㄹ. x원 물건 7개의 가격 y: y = 7x 로 x마다 y가 오직 하나로 정해지므로 함수이다.",
+    "6. 따라서 함수인 것은 ㄷ, ㄹ 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "다음 보기에서 $y$가 $x$의 함수인 것을 있는 대로 고른 것은?",
+  "rpmRecordId": "M2-RPM-165",
+  "rpmReason": "y = 7x 및 사람의 키 y cm 등 여러 수량 관계에서 함수인 것과 아닌 것을 판별하는 일차함수 판별 문항이다.",
+  "problemTypeKey": "PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION",
+  "templateKey": "TPL_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION_FUNCTION",
+  "typeReason": "보기 중 절댓값, 키 y cm 등과 달리 y = 7x 및 홀수 개수가 함수임을 판별하는 문제이므로 PT_M2_FUNCTION_AND_LINEAR_FUNCTION_IDENTIFICATION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "함수의 정의를 y cm 나 y = 7x 등에 바로 적용해 함수인 보기를 찾는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $x$보다 작은 홀수의 개수 $y$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "다음 보기에서 $y$가 $x$의 함수인 것을"
+      }
+    ],
+    "method": [
+      {
+        "term": "홀수",
+        "src": "solution",
+        "quote": "보다 작은 홀수의 개수는 오직 하나로 정해지므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "키 y cm 나 절댓값과 달리 홀수 개수와 y = 7x 는 x마다 y가 하나로 정해져 함수이므로 ㄷ, ㄹ 인 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

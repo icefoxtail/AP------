@@ -1,0 +1,65 @@
+{
+  "qid": 16,
+  "itemFingerprint": "66d08a69847bf2ca",
+  "solveSteps": [
+    "1. 일차방정식 ax + by + 1 = 0 에서 b != 0 이므로 y 에 관해 정리하면 y = -(a/b)x - 1/b 이다.",
+    "2. 그래프가 제1, 2, 3사분면을 지나려면 오른쪽 위로 향해야 하므로 기울기 -(a/b) > 0 이고, y절편 -1/b > 0 이어야 한다.",
+    "3. y절편 -1/b > 0 에서 1/b < 0 이므로 b < 0 이다.",
+    "4. 기울기 -(a/b) > 0 이고 b < 0 이므로 a > 0 이다.",
+    "5. 따라서 a > 0, b < 0 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "일차방정식 $ax + by + 1 = 0$의 그래프가 제$1, 2, 3$사분면을 지날 때, 다음 중 옳은 것은?",
+  "rpmRecordId": "M2-RPM-172",
+  "rpmReason": "일차방정식 ax + by + 1 = 0 의 사분면 통과 조건으로부터 기울기와 y절편의 부호를 판단해 a > 0, b < 0 을 도출하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_M2_LINEAR_EQUATION_GRAPH_PROPERTIES_SIGNS",
+  "typeReason": "일차방정식 ax + by + 1 = 0 의 제1, 2, 3사분면 통과 조건에서 기울기 -(a/b)>0 과 절편 -1/b>0 부호를 판정하는 문제이므로 PT_M2_LINEAR_EQUATION_GRAPH_PROPERTIES를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax + by + 1 = 0 에서 y절편 -1/b > 0 과 기울기 -(a/b) > 0 로부터 a > 0, b < 0 을 찾는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 제$1, 2, 3$사분면을 지날 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $ax + by + 1 = 0$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기 $-\\frac{a}{b} > 0$, $y$절편",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ax + by + 1 = 0 에서 제1, 2, 3사분면을 지나므로 기울기 -(a/b) > 0, y절편 -1/b > 0 으로부터 a > 0, b < 0 임을 확인해 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

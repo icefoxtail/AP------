@@ -1,0 +1,66 @@
+{
+  "qid": 20,
+  "itemFingerprint": "c267e0b0cc085f6f",
+  "solveSteps": [
+    "1. A물통은 20 L 에서 1분에 1 L 씩 줄어들므로 x분 후 잔량은 y_A = 20 - x 이다.",
+    "2. B물통은 36 L 에서 1분에 3 L 씩 줄어들므로 x분 후 잔량은 y_B = 36 - 3x 이다.",
+    "3. 두 물통의 물의 양이 같아지는 시간은 20 - x = 36 - 3x 에서 2x = 16 이므로 x = 8(분) 후이다.",
+    "4. 9분 후 A 는 20 - 9 = 11 L, B 는 36 - 27 = 9 L 이므로 A물통에 더 많이 남아 있다.",
+    "5. B 는 1분에 3 L 씩 줄어들고 A 는 1분에 1 L 씩 줄어들므로 B물통의 물이 더 빨리 줄어든다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "두 물통 $\\text{A}, \\text{B}$에 각각 $20\\text{ L}$, $36\\text{ L}$의 물이 들어 있다.",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "물 배출 관계를 일차함수 y_A = 20 - x 와 y_B = 36 - 3x 로 모델링하고 감소율 3 과 2x = 16 등을 비교하는 일차함수 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "두 물통의 물 감소 상황을 일차함수 y_A = 20 - x 와 y_B = 36 - 3x 로 세워 각 보기를 판별하는 문제이므로 PT_M2_LINEAR_FUNCTION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "처음 물의 양 20 L 와 36 L 에서 감소율(기울기)이 3 L/분인 B가 1 L/분인 A보다 더 빨리 줄어듦을 확인하는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "0 - x$ (거짓)   ② $y"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "choices",
+        "quote": "물의 양을 $y\\text{ L}$라 할 때 $y = 20 - 3x$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "20 - x = 36 - 3x",
+        "evidenceType": "IMPLIED",
+        "justification": "두 물통의 잔량이 같아지는 일차방정식을 풀어 8분 후임을 확인"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y_A = 20 - x, y_B = 36 - 3x 에서 B의 감소율(3 L/분)이 A(1 L/분)보다 크므로 더 빨리 줄어듦을 확인해 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
