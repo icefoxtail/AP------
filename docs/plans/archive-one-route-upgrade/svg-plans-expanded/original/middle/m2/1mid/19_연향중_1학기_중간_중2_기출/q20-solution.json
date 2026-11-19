@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "v≥7",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": {
+              "value": "7",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "편의점까지 걸리는 시간은 2/4=0.5시간이다. 남은 거리는 3+4=7km이다. 편의점부터 학교까지의 평균 시속을 v km라 하면 0.5+7/v≤1.5이므로 7/v≤1에서 v≥7이다. 수직선에서 7은 찬 점이다. 따라서 최소 평균 시속은 7km이고 답은 ⑤이다.",
+  "accessibilityDescription": "수직선 위에 7 이상의 수 전체가 오른쪽으로 뻗은 구간이 있고 7에는 찬 점이 있다.",
+  "newVisualInformation": [
+    "전체 시간 조건 0.5+7/v≤1.5에서 v≥7이므로 최소 시속 7km"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "현아는 집에서 편의점, 도서관을 차례로 거쳐 학교에 가려고 한다. 집에서 편의점까지의 거리는 2km, 편의점에서 도서관까지의 거리는 3km, 도서관에서 학교까지의 거리는 4km이고, 집으로부터 편의점까지는 시속 4km로 걸어간다고 한다. 전체 이동 시간이 1시간 30분 이내가 되도록 하려면 편의점으로부터 학교까지는 최소한 평균 시속 몇 km로 걸어가야 할까? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

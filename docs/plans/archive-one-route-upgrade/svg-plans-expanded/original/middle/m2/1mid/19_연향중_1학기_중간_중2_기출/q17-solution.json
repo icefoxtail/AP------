@@ -1,0 +1,34 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "x<5",
+        "color": "BLUE",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "5",
+              "state": "OPEN"
+            }
+          }
+        ],
+        "hideSetLabel": true
+      }
+    ]
+  },
+  "caption": "0.5x−1<−(1−2x)/6의 양변에 6을 곱하면 3x−6<−1+2x이므로 x<5이다. 수직선에서 5는 속이 빈 점이어서 해에 포함되지 않는다. 따라서 x<5인 수직선인 ③이 답이다.",
+  "accessibilityDescription": "수직선 위에 5보다 작은 수 전체가 왼쪽으로 뻗은 구간이 있고 5에는 속이 빈 점이 있다.",
+  "newVisualInformation": [
+    "해 x<5를 수직선에 나타내면 5는 속이 빈 점"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "일차부등식 $0.5x - 1 < -\\frac{1-2x}{6}$을 풀면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
