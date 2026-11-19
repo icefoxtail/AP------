@@ -1,0 +1,91 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      2.2
+    ],
+    "viewport": [
+      -1.5,
+      2.2,
+      -3,
+      16
+    ],
+    "requiredPoints": [
+      {
+        "id": "N",
+        "x": "-1",
+        "y": "0"
+      },
+      {
+        "id": "E",
+        "x": "-2/3",
+        "y": "4/27"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "12"
+      }
+    ],
+    "exactCoordinates": {
+      "N": [
+        "-1",
+        "0"
+      ],
+      "E": [
+        "-2/3",
+        "4/27"
+      ],
+      "O": [
+        "0",
+        "0"
+      ],
+      "Q": [
+        "2",
+        "12"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x=0에서 g가 연속이려면 g(0)=|f(0)|+1≥1이고 x²/f(x)가 0이 아닌 유한한 극한을 가져야 하므로 0은 f의 이중근이다. 그래서 f(x)=x²(x+c)이고 g(x)=1/(x+c)에서 1/c=1이므로 c=1이다. 그림은 f(x)=x²(x+1)로 원점 O에서 x축에 접하고 N(-1,0)을 지난다. f(2)=12인 점 Q가 그림에 있다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "21. 최고차항의 계수가 $1$인 삼차함수 $f(x)$에 대하여 함수 $g(x) = \\begin{cases} |f(x)|+1 & (x \\le 0) \\\\ \\frac{x^2}{f(x)} & (x > 0) \\end{cases}$이 실수 전체의 집합에서 연속일 때, $f(2)$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f(x)=x²(x+1)이 원점에서 x축에 접하고 f(2)=12임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f=x²(x+1)이 원점 O에서 x축에 접하고 N(-1,0)을 지나며 f(2)=12인 점 Q를 보인다."
+  ],
+  "accessibilityDescription": "점 N에서 x축을 지나 올랐다 내려와 원점 O에서 x축에 접하고 오른쪽 위로 가파르게 오르는 삼차곡선과 곡선 위의 점 Q가 표시된 그래프이다."
+}

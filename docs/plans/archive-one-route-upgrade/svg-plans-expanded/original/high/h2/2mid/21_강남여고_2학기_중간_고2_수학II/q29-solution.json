@@ -1,0 +1,97 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-1",
+          "-3",
+          "1",
+          "1/3"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "8"
+      },
+      {
+        "id": "V",
+        "x": "1",
+        "y": "-8/3"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "8"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "8"
+      ],
+      "V": [
+        "1",
+        "-8/3"
+      ],
+      "B": [
+        "3",
+        "8"
+      ]
+    },
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "8",
+        "intersectionX": [
+          "-3",
+          "3"
+        ]
+      },
+      {
+        "id": "t",
+        "y": "-8/3",
+        "intersectionX": [
+          "1"
+        ]
+      }
+    ]
+  },
+  "caption": "f(-a)=f(a)에서 (2/3)a(a²-9)=0이므로 a=3이다. 그림은 구간 [-3,3]의 양 끝 A(-3,8), B(3,8)가 같은 높이(수평선 h)인 곡선이다. f′(x)=(x+3)(x-1)이므로 f′(c)=0인 c는 -3과 1이지만 -3은 구간의 끝점이라 제외되고, 그림의 극소점 V(1,-8/3)에서 수평 접선 t가 생기는 c=1만 가능하다. 따라서 a+c=4이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 3] 함수 $f(x)=\\frac{1}{3}x^3+x^2-3x-1$에 대하여 닫힌구간 $[-a, a]$에서 롤의 정리를 만족시키는 실수의 값이 $c$일 때, $a+c$의 값을 구하시오. (단, $a>0$) [5.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝 A, B가 같은 높이이고 구간 안에서 접선이 수평인 점 V의 x좌표가 c=1임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 [-3,3]의 양 끝 A, B가 같은 높이이고 극소점 V(1,-8/3)에서 접선이 수평임을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 끝 점 A에서 내려가 점 V에서 가장 낮고 오른쪽 끝 점 B로 올라가는 삼차곡선과 높이가 같은 A, B를 지나는 수평선 h, V에서 접하는 수평선 t가 그려진 그래프이다."
+}

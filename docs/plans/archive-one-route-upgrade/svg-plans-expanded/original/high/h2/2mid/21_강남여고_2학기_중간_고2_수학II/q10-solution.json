@@ -1,0 +1,112 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "x≤1 직선"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "7",
+                "-3"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-1",
+              "1"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": "1",
+              "y": "4"
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "1",
+              "4"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "x>1 제곱근"
+      },
+      "plan": {
+        "capability": "sqrt-affine-spike-v1",
+        "graphPlan": {
+          "family": "sqrt-affine",
+          "radicand": [
+            "3",
+            "1"
+          ],
+          "offset": "2",
+          "sourceDomain": {
+            "kind": "NATURAL_SQRT_AFFINE"
+          },
+          "domain": [
+            -3,
+            6
+          ],
+          "viewport": [
+            -3.5,
+            6.5,
+            1.5,
+            7
+          ],
+          "requiredPoints": [
+            {
+              "id": "Q",
+              "x": 1,
+              "y": 4
+            }
+          ],
+          "exactCoordinates": {
+            "Q": [
+              "1",
+              "4"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "x>1에서 분모가 0으로 가므로 분자 x+b도 x=1에서 0이어야 하고 b=-1이다. 그러면 (x-1)/(√(x+3)-2)=√(x+3)+2이고 x→1+에서 극한은 4이다. 왼쪽 패널의 직선 -3x+a는 x=1에서 4가 되어야 하므로 a=7이고, 오른쪽 패널의 곡선과 같은 점 (1,4)에서 이어진다. 따라서 a+b=6이고 답은 ②이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 오른쪽 끝에 점 P가 있는 내려가는 직선이, 둘째 패널에는 점 Q를 지나는 오른쪽 위로 오르는 제곱근 곡선이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "10. 함수 $f(x) = \\begin{cases} -3x+a & (x \\le 1) \\\\ \\frac{x+b}{\\sqrt{x+3}-2} & (x > 1) \\end{cases}$이 실수 전체의 집합에서 연속일 때, 상수 $a+b$의 값은? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: a=7, b=-1일 때 x≤1의 직선과 x>1의 곡선이 모두 점 (1,4)를 지남을 두 패널로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=7, b=-1에서 x≤1의 직선과 x>1의 제곱근 곡선이 모두 높이 4의 점 (1,4)를 지남을 보인다."
+  ]
+}

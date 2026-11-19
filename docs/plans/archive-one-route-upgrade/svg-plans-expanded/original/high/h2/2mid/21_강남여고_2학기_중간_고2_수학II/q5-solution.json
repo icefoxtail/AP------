@@ -1,0 +1,92 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -5,
+      5,
+      -1.5,
+      2.5
+    ],
+    "curves": [
+      {
+        "id": "lo",
+        "kind": "RATIONAL",
+        "numerator": [
+          "-1",
+          "0",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "color": "BLUE",
+        "label": "(2x²-1)/(x²+1)"
+      },
+      {
+        "id": "hi",
+        "kind": "RATIONAL",
+        "numerator": [
+          "0",
+          "0",
+          "2"
+        ],
+        "denominator": [
+          "1",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "color": "WARM",
+        "label": "2x²/(x²+1)"
+      },
+      {
+        "id": "lim",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "0"
+        ],
+        "domain": [
+          "-5",
+          "5"
+        ],
+        "color": "GREEN",
+        "style": "DASHED",
+        "label": "y=2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "2"
+      ]
+    }
+  },
+  "caption": "x²+1>0이므로 부등식을 나누면 (2x²-1)/(x²+1)≤f(x)≤2x²/(x²+1)이다. 그림처럼 x가 커질수록 두 곡선이 모두 점선 y=2로 모이므로 샌드위치 정리에 의해 f(x)의 극한은 2이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "5. 함수 $f(x)$가 모든 실수 $x$에 대하여 $2x^2-1 \\le (x^2+1)f(x) \\le 2x^2$을 만족시킬 때, 극한값 $\\lim_{x \\to \\infty} f(x)$의 값은? [2.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "f를 끼우는 두 곡선이 x→∞에서 같은 값 y=2로 모이는 것을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f를 끼우는 위아래 두 곡선이 x가 커질수록 같은 높이 y=2로 모이는 것을 보인다."
+  ],
+  "accessibilityDescription": "좌우 대칭인 위쪽 곡선과 아래쪽 곡선이 양 끝에서 한 점선 높이로 가까워지고 두 곡선 사이가 일정한 간격으로 좁아지는 그래프이다."
+}

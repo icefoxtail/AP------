@@ -1,0 +1,101 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "-3",
+          "2"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1.5,
+      2.5
+    ],
+    "viewport": [
+      -1.5,
+      2.5,
+      -20,
+      15
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "0",
+        "y": "0"
+      },
+      {
+        "id": "F",
+        "x": "1",
+        "y": "-1"
+      }
+    ],
+    "exactCoordinates": {
+      "E": [
+        "0",
+        "0"
+      ],
+      "F": [
+        "1",
+        "-1"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "U",
+          "curveX": "-1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "12",
+          "intercept": "-20",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "12",
+          "intercept": "7",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "접점의 x좌표 t에서 기울기 6t²-6t=12이면 t=2 또는 -1이다. t=2이면 접점 T(2,4)에서 y=12x-20(그림의 l, k=-20), t=-1이면 접점 U(-1,-5)에서 y=12x+7(그림의 m, k=7)이다. 양수인 k는 7이므로 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 직선 $y=12x+k$가 곡선 $y=2x^3-3x^2$에 접할 때, 양수 $k$의 값은? [3.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "기울기 12인 두 접선 l, m의 접점 T(2,4), U(-1,-5)와 y절편 -20, 7을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "기울기 12인 두 접선 l(y절편 -20), m(y절편 7)과 접점 T(2,4), U(-1,-5)를 보인다."
+  ],
+  "accessibilityDescription": "한 번 오르고 내려갔다 다시 오르는 삼차곡선과 서로 평행한 두 접선 l, m이 곡선의 양쪽 점 T, U에서 접하는 그래프이다."
+}
