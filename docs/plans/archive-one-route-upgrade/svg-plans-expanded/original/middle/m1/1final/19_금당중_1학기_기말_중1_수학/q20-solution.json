@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "a",
+        "kind": "RATIONAL",
+        "numerator": [
+          "8"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "-3/4"
+        ],
+        "color": "BLUE",
+        "label": "y=8/x"
+      },
+      {
+        "id": "b",
+        "kind": "RATIONAL",
+        "numerator": [
+          "8"
+        ],
+        "denominator": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "3/4",
+          "9"
+        ],
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P0",
+          "x": "1",
+          "y": "8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P1",
+          "x": "2",
+          "y": "4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P2",
+          "x": "4",
+          "y": "2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P3",
+          "x": "8",
+          "y": "1",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P4",
+          "x": "-1",
+          "y": "-8",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P5",
+          "x": "-2",
+          "y": "-4",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P6",
+          "x": "-4",
+          "y": "-2",
+          "coordinates": true,
+          "unnamed": true
+        },
+        {
+          "id": "P7",
+          "x": "-8",
+          "y": "-1",
+          "coordinates": true,
+          "unnamed": true
+        }
+      ]
+    }
+  },
+  "caption": "xy=8이므로 x가 8의 약수이어야 y도 정수이다. x=±1, ±2, ±4, ±8이고 이때 y=±8, ±4, ±2, ±1이다. 따라서 x좌표와 y좌표가 모두 정수인 점은 (1,8), (2,4), (4,2), (8,1), (−1,−8), (−2,−4), (−4,−2), (−8,−1)의 8개이다. 답은 ③이다.",
+  "accessibilityDescription": "제1사분면과 제3사분면에 걸친 두 갈래의 곡선이 있고 각 곡선 위에 x좌표와 y좌표가 모두 정수인 점 네 개씩이 표시되어 있다.",
+  "newVisualInformation": [
+    "xy=8의 정수점 (±1,±8), (±2,±4), (±4,±2), (±8,±1)의 8개"
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "반비례 관계 $y=\\frac{8}{x}$의 그래프 위에 있는 점 중에서 $x$좌표와 $y$좌표가 모두 정수인 점의 개수를 구하면? [4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

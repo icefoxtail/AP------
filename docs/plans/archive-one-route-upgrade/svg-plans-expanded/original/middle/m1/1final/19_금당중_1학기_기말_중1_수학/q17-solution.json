@@ -1,0 +1,44 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "-5"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=−5x",
+        "color": "BLUE"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "-2",
+          "y": "10",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "y가 x에 정비례하므로 y=ax로 놓는다. x=−2일 때 y=10이므로 10=−2a에서 a=−5이다. 따라서 관계식은 y=−5x이고 답은 ②이다. 그래프는 원점을 지나는 직선이고 점 P(−2,10)을 지난다.",
+  "newVisualInformation": [
+    "정비례 y=ax에 (−2,10)을 대입하면 a=−5이므로 y=−5x"
+  ],
+  "accessibilityDescription": "원점을 지나 오른쪽 아래로 향하는 직선이 있고 직선 위에 점 P(−2,10)이 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "두 변수 $x$, $y$에 대하여 $y$가 $x$에 정비례하고, $x=-2$일 때 $y=10$이다. $x$, $y$ 사이의 관계식을 구하면? [3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

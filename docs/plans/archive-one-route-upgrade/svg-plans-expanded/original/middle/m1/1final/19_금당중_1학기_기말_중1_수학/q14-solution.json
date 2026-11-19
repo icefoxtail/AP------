@@ -1,0 +1,84 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "f0",
+        "kind": "X_OF_Y",
+        "coefficients": [
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-2",
+          "3"
+        ],
+        "label": "AC",
+        "color": "BLUE"
+      },
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "3/2",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "AB",
+        "color": "WARM"
+      },
+      {
+        "id": "f2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "-1/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "BC",
+        "color": "GREEN"
+      }
+    ],
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "3",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "-3",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "-2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "점 A(3,3)과 C(3,−2)는 x좌표가 같아 선분 AC가 y축에 평행하고 길이는 3−(−2)=5이다. 점 B(−3,0)에서 직선 x=3까지의 거리는 3−(−3)=6이 높이이다. 따라서 삼각형 ABC의 넓이는 (1/2)×5×6=15이고 답은 ③이다.",
+  "newVisualInformation": [
+    "변 AC=5, 높이 6인 삼각형 ABC의 넓이 15"
+  ],
+  "accessibilityDescription": "좌표평면 위의 세 점 A(3,3), B(−3,0), C(3,−2)를 꼭짓점으로 하는 삼각형이 그려져 있고 변 AC는 수직이며 세 점의 좌표가 표시되어 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 세 점 $A(3, 3)$, $B(-3, 0)$, $C(3, -2)$를 꼭짓점으로 하는 삼각형 $ABC$의 넓이를 구하면? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
