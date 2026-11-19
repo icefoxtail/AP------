@@ -62,6 +62,12 @@ data.packs.forEach((pack, index) => {
     assert(q.l3Disposition !== 'HOLD' && q.l4Disposition !== 'HOLD' && !q.itemHold, `${where}: 보류 표시가 있는 문항입니다.`);
     assert(['하', '중', '상'].includes(q.level), `${where}: level 이상`);
     assert(!/^\s*(\[[^\]]*(서술|논술|서답)[^\]]*\]|(서·논술형|서술형|서답형|서술|논술)\s*\d+\s*[.．])/.test(String(q.content)), `${where}: 서술형 앞머리 번호 표기가 남았습니다.`);
+    // 배점 표기 0: 발문 속 [3점], (5점), [4.5점], [5점, 부분점수 있음], (과정: 2점, ...) 같은 원 시험지 배점. 발문 속 "60점 이상" 같은 점수 말은 허용한다.
+    const maskedStem = String(q.content).replace(/\$[^$]*\$/g, ' ');
+    assert(!/[[(][^[\]()]*\d(?:\.\d+)?\s*점[^[\]()]*[\])]/.test(maskedStem), `${where}: 발문에 배점 표기가 남았습니다.`);
+    // 그림 있는 문항은 imageScale(90~100) 있음. 본문 <img>는 data-scale 있음.
+    if (q.image) assert(Number(q.imageScale) >= 90 && Number(q.imageScale) <= 100, `${where}: imageScale이 없거나 90~100이 아닙니다: ${q.imageScale}`);
+    for (const m of String(q.content).matchAll(/<img\b[^>]*>/gi)) assert(/data-scale="(?:9\d|100)"/.test(m[0]), `${where}: 본문 그림에 data-scale이 없습니다.`);
     if (q.image) assertFile(q.image, `${where} image`);
     if (q.solutionImage) assertFile(q.solutionImage, `${where} solutionImage`);
     for (const m of String(q.content).matchAll(imageRe)) assertFile(m[1], `${where} content img`);
