@@ -1,0 +1,108 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "-4"
+        ]
+      },
+      {
+        "coefficients": [
+          "-3",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "x": "0",
+        "y": "-3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-2",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-2",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "-1",
+        "y": "1"
+      },
+      {
+        "id": "C",
+        "x": "0",
+        "y": "-3"
+      },
+      {
+        "id": "D",
+        "x": "1",
+        "y": "-2"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-2",
+        "-1"
+      ],
+      "B": [
+        "-1",
+        "1"
+      ],
+      "C": [
+        "0",
+        "-3"
+      ],
+      "D": [
+        "1",
+        "-2"
+      ]
+    }
+  },
+  "caption": "예: 네 점 A(-2,-1), B(-1,1), C(0,-3), D(1,-2)를 꺾은선으로 이은 연속함수이다. (-2,-1)에서 부호가 -에서 +로, (-1,0)에서 +에서 -로 바뀌어 x축을 한 번씩 지난다. (0,1)에서는 양 끝값이 모두 음수라 근이 보장되지 않는다. 앞의 두 구간은 겹치지 않으므로 근은 적어도 2개이고 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "4. 연속함수 $f(x)$에 대하여 $f(-2)=-1$, $f(-1)=1$, $f(0)=-3$, $f(1)=-2$일 때, 방정식 $f(x)=0$은 열린구간 $(-2, 1)$에서 적어도 몇 개의 실근을 갖는지 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "네 점을 잇는 연속함수가 부호가 바뀌는 두 구간에서 x축을 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "네 점을 잇는 연속함수가 부호가 바뀌는 구간 (-2,-1), (-1,0)에서 x축을 지남을 보인다."
+  ],
+  "accessibilityDescription": "점 A에서 올라 점 B에 이르러 가로축 위로 오른 뒤 점 C까지 내려가 가로축을 지나고 점 D로 조금 올라가는 꺾은선 그래프이다."
+}

@@ -1,0 +1,197 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "k=1 일 때 g"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "9",
+                "-9/2"
+              ]
+            },
+            {
+              "coefficients": [
+                "9",
+                "-3"
+              ]
+            },
+            {
+              "coefficients": [
+                "-9",
+                "3"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "9"
+            },
+            {
+              "x": "3",
+              "y": "0"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "5"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": "0",
+              "y": "9"
+            },
+            {
+              "id": "Q",
+              "x": "3",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "0",
+              "9"
+            ],
+            "Q": [
+              "3",
+              "0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "k=5 일 때 g"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "-9",
+                "-9/2"
+              ]
+            },
+            {
+              "coefficients": [
+                "9",
+                "9/2"
+              ]
+            },
+            {
+              "coefficients": [
+                "9",
+                "-3"
+              ]
+            },
+            {
+              "coefficients": [
+                "-9",
+                "3"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "-2",
+              "y": "0"
+            },
+            {
+              "x": "0",
+              "y": "9"
+            },
+            {
+              "x": "3",
+              "y": "0"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-4",
+              "5"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "R",
+              "x": "-2",
+              "y": "0"
+            },
+            {
+              "id": "P",
+              "x": "0",
+              "y": "9"
+            },
+            {
+              "id": "Q",
+              "x": "3",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "R": [
+              "-2",
+              "0"
+            ],
+            "P": [
+              "0",
+              "9"
+            ],
+            "Q": [
+              "3",
+              "0"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "g(0)=9이므로 (3/2)f(k)=(9/2)|k-3|=9에서 k=1, 5이다. 두 패널은 g가 x=0에서 연속인 k=1, 5의 경우이고 g의 꺾이는 점에서 g(x)h(x)가 미분가능하려면 h가 그 점에서 0이어야 한다. k=1이면 g는 P(0,9)와 Q(3,0)에서 꺾여 h(0)=h(3)=0이고 h(x)=x(x-3)(x+2)로 h(1)=-6이다. k=5이면 R(-2,0), P, Q에서 꺾여 같은 h를 쓰며 h(5)=70이다. 합은 64이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 점 P와 점 Q에서 꺾이는 꺾은선이, 둘째 패널에는 점 R, P, Q에서 꺾이는 꺾은선이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 4] 함수 $f(x)=|3x-9|$에 대하여 함수 $g(x)$는\n$$g(x) = \\begin{cases} \\frac{3}{2}f(x+k) & (x < 0) \\\\ f(x) & (x \\ge 0) \\end{cases}$$\n이고 $g(x)$는 $x=0$에서 연속이다. 최고차항의 계수가 1인 삼차함수 $h(x)$가 다음 조건을 만족시킬 때, 모든 $h(k)$의 값의 합을 구하시오. (단, $k>0$) [5.5점]\n\n(가) 함수 $g(x)h(x)$는 실수 전체의 집합에서 미분가능하다.\n(나) $h'(3)=15$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: k=1과 k=5일 때 g의 그래프를 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "k=1일 때 g의 꺾이는 점 P, Q와 k=5일 때 꺾이는 점 R, P, Q를 보여 h의 필요한 영점을 알게 한다."
+  ]
+}

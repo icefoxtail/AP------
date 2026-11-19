@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "3/2"
+        ],
+        "domain": [
+          2,
+          3
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3",
+          "1"
+        ],
+        "domain": [
+          3,
+          4
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "4",
+          "3/4"
+        ],
+        "domain": [
+          4,
+          5
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "4"
+      ],
+      "y": [
+        "6",
+        "7"
+      ]
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "4",
+        "y": "7"
+      },
+      {
+        "id": "Q",
+        "x": "3",
+        "y": "6"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "4",
+        "7"
+      ],
+      "Q": [
+        "3",
+        "6"
+      ]
+    }
+  },
+  "caption": "예: n=4일 때의 ([x]²+3x)/[x] 그래프이다. x→4-에서는 [x]=3이라 (9+3x)/3=x+3→7(열린 점), x→4+에서는 [x]=4라 (16+3x)/4→7(닫힌 점 P)로 양쪽이 같아 극한 k=7이다. 같은 방법으로 x=3에서는 좌극한 13/2, 우극한 6(닫힌 점 Q)으로 달라 극한이 없다. n=4, k=7이므로 k+n=11이고 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "13. 자연수 $n$에 대하여 $\\lim_{x \\to n} \\frac{[x]^2+3x}{[x]}=k$일 때, $k+n$의 값을 구하시오. (단, $[x]$는 $x$보다 크지않은 최대의 정수) [4.2점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=4에서만 좌우극한이 같고 x=3에서는 다름을 바닥함수 그래프로 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "바닥함수가 든 그래프에서 x=4에서는 열린 점과 닫힌 점이 같은 높이 7로 이어지고 x=3에서는 끊어짐을 보인다."
+  ],
+  "accessibilityDescription": "정수마다 끊어지며 오른쪽으로 갈수록 올라가는 직선 조각들의 그래프이고, x=4에서는 열린 점과 닫힌 점이 같은 높이로 이어지며 x=3에서는 아래쪽 닫힌 점으로 떨어진다."
+}
