@@ -1,0 +1,93 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -2,
+      2,
+      -1,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "O",
+          "x": "0",
+          "y": "0"
+        },
+        {
+          "id": "S",
+          "curveX": "-1",
+          "coordinates": true
+        },
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "2",
+          "intercept": "0",
+          "label": "l1"
+        },
+        {
+          "id": "l2",
+          "slope": "-2",
+          "intercept": "0",
+          "label": "l2"
+        }
+      ],
+      "segments": [
+        {
+          "id": "st",
+          "from": "S",
+          "to": "T"
+        }
+      ]
+    }
+  },
+  "pointNames": {
+    "O": "O"
+  },
+  "caption": "x=t에서의 접선 y=2tx-t²+1이 원점을 지나려면 t²=1이다. 접점은 S(-1,2), T(1,2)이고 두 접선은 l2: y=-2x, l1: y=2x이다. 삼각형 OST의 밑변 ST=2이고 O에서 밑변 y=2까지의 높이는 2이다. 넓이는 (1/2)·2·2=2이므로 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "좌표평면 위의 원점 $O$에서 곡선 $y=x^2+1$에 그은 두 접선의 접점과 원점 $O$가 이루는 삼각형의 넓이는? [4.1점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "원점 O에서 그은 두 접선 l1, l2와 접점 S, T, 밑변 ST를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "원점 O에서 포물선에 그은 두 접선의 접점 S(-1,2), T(1,2)와 밑변 ST를 보여 삼각형의 밑변과 높이를 읽게 한다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선과 원점을 지나는 두 직선이 있고, 두 직선이 포물선의 점 S와 점 T에서 각각 접하며 S와 T를 잇는 수평 선분이 그려진 그래프이다."
+}

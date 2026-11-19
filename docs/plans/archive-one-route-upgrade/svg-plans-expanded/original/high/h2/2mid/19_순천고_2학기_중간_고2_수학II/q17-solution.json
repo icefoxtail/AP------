@@ -1,0 +1,79 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "7",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      0,
+      8
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "g",
+          "slope": "1/2",
+          "intercept": "1",
+          "label": "G"
+        },
+        {
+          "id": "t",
+          "slope": "0",
+          "intercept": "3",
+          "label": "t"
+        }
+      ]
+    }
+  },
+  "caption": "예: F(x)=(x-2)²+3과 G(x)=x/2+1을 그렸다(원본 그림은 이미지 파일이라 직접 볼 수 없다). F는 x=2에서 극솟값 3인 점 P(2,3)을 가져 접선 t가 수평이므로 F′(2)=0이다. G는 (0,1)과 (4,3)을 지나는 직선이라 기울기 1/2이고 G(2)=2인 점 Q가 있다. 곱의 미분법으로 h′(2)=F′(2)G(2)+F(2)G′(2)=0+3·(1/2)=3/2이다. 따라서 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$y=F(x)$와 $y=G(x)$의 그래프가 다음과 같고,\n<img src=\"assets/images/19_순천고_2학기_중간_고2_수학II/q17.png\" alt=\"19_순천고_2학기_중간_고2_수학II Q17\" />\n$h(x)=F(x)G(x)$일 때, $h'(2)$를 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "F의 x=2 극소점 P(2,3)의 수평 접선과 G의 기울기 1/2인 직선을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "F의 극소점 P(2,3)에서 접선이 수평이고 G가 기울기 1/2인 직선임을 보여 h′(2)를 읽게 한다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선의 꼭짓점 P에서 수평 직선 t가 접하고, 왼쪽 아래에서 오른쪽 위로 완만하게 오르는 직선 G가 점 Q를 지나며 포물선 아래를 지나는 그래프이다."
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "2",
+          "-1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      2.6
+    ],
+    "viewport": [
+      0,
+      2.6,
+      -0.5,
+      3
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "1",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "2",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "d",
+          "slope": "1",
+          "intercept": "0",
+          "label": "y=x"
+        }
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). f(x)=2x-x²를 직선 y=x와 함께 그렸고 곡선이 직선과 A(1,1)에서 만난다. x=a에서 f(a)=a라 f(a)/a=1이어서 ㄱ의 엄격한 부등식은 거짓이다. b=2에서 곡선의 높이 f(b)=0이 직선의 높이 b=2보다 낮아 f(b)-f(a)<b-a이므로 ㄴ은 참이다. 곡선의 기울기가 점점 줄어 f′(a)>f′(b)라 ㄷ도 참이다. 따라서 답은 ④이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "오른쪽 그림은 미분가능한 함수 $y=f(x)$와 $y=x$의 그래프이다. $0 < a < b$일 때, <보기>에서 옳은 것만을 고른 것은? [4.2점]\n<img src=\"assets/images/19_순천고_2학기_중간_고2_수학II/q15.png\" alt=\"19_순천고_2학기_중간_고2_수학II Q15\" />\n<보기>\nㄱ. $\\frac{f(b)}{b} < 1 < \\frac{f(a)}{a}$\nㄴ. $f(b)-f(a) < b-a$\nㄷ. $f'(a) > f'(b)$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "곡선이 직선과 A에서 만나고 그 뒤에서 직선 아래로 내려가며 기울기가 줄어드는 예를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "곡선과 직선 y=x가 A(1,1)에서 만나고 그 뒤 곡선이 직선보다 낮아지며 기울기가 줄어드는 예를 보인다."
+  ],
+  "accessibilityDescription": "위로 볼록한 곡선과 오르는 직선이 한 점 A에서 만나고, A보다 오른쪽에서는 곡선이 직선 아래로 내려가는 그래프이다."
+}

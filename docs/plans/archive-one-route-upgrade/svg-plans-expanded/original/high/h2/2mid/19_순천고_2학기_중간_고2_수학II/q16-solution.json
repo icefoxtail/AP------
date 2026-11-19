@@ -1,0 +1,142 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "ㄴ x²-3|x|+2"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "2",
+                "3",
+                "1"
+              ]
+            },
+            {
+              "coefficients": [
+                "2",
+                "-3",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "2"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-3",
+              "3"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "P",
+              "x": "0",
+              "y": "2"
+            }
+          ],
+          "exactCoordinates": {
+            "P": [
+              "0",
+              "2"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "ㄷ |x|"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "-1"
+              ]
+            },
+            {
+              "coefficients": [
+                "0",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [
+            {
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "Q",
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "Q": [
+              "0",
+              "0"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "ㄴ은 x=0에서 좌우 기울기가 3, -3이고 ㄷ은 -1, 1이라 두 그래프 모두 끊기지 않지만 점 P와 점 Q에서 뾰족하게 꺾여 미분가능하지 않다. ㄱ은 x≥0에서 2x², x<0에서 -2x²이고 양쪽 미분계수가 모두 0이라 미분가능하다. 따라서 연속이면서 미분가능하지 않은 것은 ㄴ, ㄷ이고 답은 ④이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 점 P에서 뾰족하게 꺾이는 W 모양의 일부가, 둘째 패널에는 점 Q에서 V자로 꺾이는 그래프가 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$x=0$에서의 연속이지만 미분가능 하지 않은 것만을 <보기>에서 있는 대로 고른 것은? [4.2점]\n<보기>\nㄱ. $f(x)=2x|x|$\nㄴ. $g(x)=x^2-3|x|+2$\nㄷ. $h(x)=\\sqrt{x^2}=|x|$",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: x=0에서 뾰족하게 꺾이는 ㄴ과 ㄷ을 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "ㄴ과 ㄷ이 x=0에서 연속이지만 좌우 기울기가 달라 뾰족하게 꺾임을 보인다."
+  ]
+}
