@@ -37,7 +37,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_SOLUTION_TEST",
-    "solution": "주어진 부등식의 각 $x$ 자리에 $-3$을 대입하여 참과 거짓을 판정한다. $$ \\begin{aligned} \\text{ㄱ: } & -3 < 4 \\text{ (참)} \\ \\text{ㄴ: } & -2(-3) + 1 = 6 + 1 = 7 > 5 \\text{ (참)} \\ \\text{ㄷ: } & 2 + (-3) = -1 \\ge 2 \\text{ (거짓)} \\ \\text{ㄹ: } & 3(-3) = -9, \\quad -3 + 1 = -2 \\implies -9 \\ge -2 \\text{ (거짓)} \\end{aligned} $$ 따라서 참인 부등식은 ㄱ, ㄴ이므로 정답은 ①이다.",
+    "solution": "$x = -3$을 ㄱ부터 ㄹ까지의 부등식에 각각 대입하여 참과 거짓을 판정한다.\nㄱ. $x$ 자리에 $-3$을 넣으면\n$$-3 < 4$$\n참이다.\nㄴ. $x$ 자리에 $-3$을 넣으면\n$$-2 \\times (-3) + 1 = 6 + 1 = 7 > 5$$\n참이다.\nㄷ. $x$ 자리에 $-3$을 넣으면\n$$2 + (-3) = -1 \\ge 2$$\n$-1$은 $2$보다 작으므로 거짓이다.\nㄹ. 좌변과 우변의 값을 각각 구하면\n$$3 \\times (-3) = -9, \\quad -3 + 1 = -2$$\n$$-9 \\ge -2$$\n$-9$는 $-2$보다 작으므로 거짓이다.\n참인 부등식은 ㄱ, ㄴ이다.\n따라서 정답은 ①이다.",
     "points": 3
   },
   {
@@ -74,7 +74,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_BLANK_REDUCTION",
-    "solution": "등식의 성질을 이용하여 $\\square$에 대하여 식을 정리한다. $$ \\begin{aligned} \\square &= (2a + 9b) - (4a + 7b) \\ &= 2a + 9b - 4a - 7b \\ &= (2 - 4)a + (9 - 7)b \\ &= -2a + 2b \\end{aligned} $$ 따라서 알맞은 식은 $-2a + 2b$이므로 정답은 ④이다.",
+    "solution": "$\\square$를 등식의 성질을 이용하여 정리한다.\n$$\n\\begin{aligned}\n\\square &= (2a + 9b) - (4a + 7b) \\\\\n&= 2a + 9b - 4a - 7b \\\\\n&= (2 - 4)a + (9 - 7)b \\\\\n&= -2a + 2b\n\\end{aligned}\n$$\n따라서 알맞은 식은 $-2a + 2b$이므로 정답은 ④이다.",
     "points": 4
   },
   {
@@ -111,7 +111,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_COEFFICIENT_EXTRACTION",
-    "solution": "분배법칙을 이용하여 괄호를 전개하고 $x^2$ 항의 계수를 확인한다. $$ \\begin{aligned} &4x(2x + 3y + z) + 2y(y + 2z) \\ &= 8x^2 + 12xy + 4xz + 2y^2 + 4yz \\end{aligned} $$ 이 전개식에서 $x^2$을 포함하는 항은 $8x^2$이므로 $x^2$의 계수는 $8$이다. 따라서 정답은 ②이다.",
+    "solution": "분배법칙으로 괄호를 모두 풀고 $x^2$이 들어 있는 항을 찾는다.\n$$\n\\begin{aligned}\n&4x(2x + 3y + z) + 2y(y + 2z) \\\\\n&= 8x^2 + 12xy + 4xz + 2y^2 + 4yz\n\\end{aligned}\n$$\n전개식에서 $x^2$이 들어 있는 항은 $8x^2$ 하나이므로 $x^2$의 계수는 $8$이다.\n따라서 정답은 ②이다.",
     "points": 3
   },
   {
@@ -148,7 +148,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_NOTATION",
-    "solution": "순환마디의 양 끝 숫자 위에 점을 찍어 표기하는 규칙을 각 선지별로 검토한다. $$ \\begin{aligned} \\text{① } & 0.2777\\cdots \\text{는 } 7\\text{만 반복되므로 } 0.2\\dot{7} \\text{ (거짓)} \\ \\text{② } & 1.3525252\\cdots \\text{는 순환마디가 } 52\\text{이므로 } 1.3\\dot{5}\\dot{2} \\text{ (거짓)} \\ \\text{③ } & -2.146146\\cdots \\text{는 순환마디가 } 146\\text{이므로 } -2.\\dot{1}4\\dot{6} \\text{ (거짓)} \\ \\text{④ } & 5.4222\\cdots \\text{는 소수점 아래 } 2\\text{만 반복되므로 } 5.4\\dot{2} \\text{ (거짓)} \\ \\text{⑤ } & 0.6272727\\cdots \\text{는 } 6\\text{ 뒤에 } 27\\text{이 반복되므로 } 0.6\\dot{2}\\dot{7} \\text{ (참)} \\end{aligned} $$ 따라서 옳은 것은 ⑤이다.",
+    "solution": "순환마디의 양 끝 숫자 위에 점을 찍는 규칙으로 ①부터 ⑤까지를 확인한다.\n① $0.2777\\cdots$에서 반복되는 숫자는 $7$ 하나이다.\n$$0.2777\\cdots = 0.2\\dot{7}$$\n보기는 $0.\\dot{2}\\dot{7}$이므로 ①은 옳지 않다.\n② $1.3525252\\cdots$에서 반복되는 부분은 $52$이다.\n$$1.3525252\\cdots = 1.3\\dot{5}\\dot{2}$$\n보기는 $1.\\dot{3}5\\dot{2}$이므로 ②는 옳지 않다.\n③ $-2.146146\\cdots$에서 반복되는 부분은 $146$이다.\n$$-2.146146\\cdots = -2.\\dot{1}4\\dot{6}$$\n보기는 $-2.1\\dot{4}\\dot{6}$이므로 ③은 옳지 않다.\n④ $5.4222\\cdots$에서 반복되는 숫자는 $2$ 하나이다.\n$$5.4222\\cdots = 5.4\\dot{2}$$\n보기는 $5.\\dot{4}\\dot{2}$이므로 ④는 옳지 않다.\n⑤ $0.6272727\\cdots$에서는 $6$ 뒤에 $27$이 반복된다.\n$$0.6272727\\cdots = 0.6\\dot{2}\\dot{7}$$\n보기와 같으므로 ⑤는 옳다.\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -174,18 +174,18 @@ window.questionBank = [
     "wide": false,
     "content": "다음 분수 중에서 유한소수로 나타낼 수 없는 것은? [4점]",
     "choices": [
-      "$\\dfrac{7}{35}$",
       "$\\dfrac{9}{72}$",
+      "$\\dfrac{27}{180}$",
       "$\\dfrac{15}{84}$",
-      "$\\dfrac{27}{150}$",
-      "$\\dfrac{33}{60}$"
+      "$\\dfrac{21}{100}$",
+      "$\\dfrac{18}{80}$"
     ],
     "answer": "③",
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "FINITE_DECIMAL_DISCRIMINATION",
-    "solution": "분수를 기약분수로 나타낸 후, 분모의 소인수가 $2$ 또는 $5$뿐인지를 확인한다. $$ \\begin{aligned} \\text{① } & \\frac{7}{35} = \\frac{1}{5} \\implies \\text{분모 소인수 } 5 \\text{ (유한소수)} \\ \\text{② } & \\frac{9}{72} = \\frac{1}{8} = \\frac{1}{2^3} \\implies \\text{분모 소인수 } 2 \\text{ (유한소수)} \\ \\text{③ } & \\frac{15}{84} = \\frac{5}{28} = \\frac{5}{2^2 \\times 7} \\implies \\text{분모에 } 7\\text{이 남아 유한소수 불가(순환소수)} \\ \\text{④ } & \\frac{27}{150} = \\frac{9}{50} = \\frac{9}{2 \\times 5^2} \\implies \\text{분모 소인수 } 2, 5 \\text{ (유한소수)} \\ \\text{⑤ } & \\frac{33}{60} = \\frac{11}{20} = \\frac{11}{2^2 \\times 5} \\implies \\text{분모 소인수 } 2, 5 \\text{ (유한소수)} \\end{aligned} $$ 따라서 유한소수로 나타낼 수 없는 것은 ③이다.",
+    "solution": "각 분수를 기약분수로 고친 뒤 분모의 소인수가 $2$ 또는 $5$뿐인지 확인한다.\n①의 분수를 약분하면\n$$\\dfrac{7}{35} = \\dfrac{1}{5}$$\n분모의 소인수가 $5$뿐이므로 유한소수이다.\n②의 분수를 약분하면\n$$\\dfrac{9}{72} = \\dfrac{1}{8} = \\dfrac{1}{2^3}$$\n분모의 소인수가 $2$뿐이므로 유한소수이다.\n③의 분수를 약분하면\n$$\\dfrac{15}{84} = \\dfrac{5}{28} = \\dfrac{5}{2^2 \\times 7}$$\n분모에 소인수 $7$이 남으므로 유한소수로 나타낼 수 없다.\n④의 분수를 약분하면\n$$\\dfrac{27}{150} = \\dfrac{9}{50} = \\dfrac{9}{2 \\times 5^2}$$\n분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.\n⑤의 분수를 약분하면\n$$\\dfrac{33}{60} = \\dfrac{11}{20} = \\dfrac{11}{2^2 \\times 5}$$\n분모의 소인수가 $2$와 $5$뿐이므로 유한소수이다.\n따라서 정답은 ③이다.",
     "points": 4
   },
   {
@@ -222,7 +222,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_TO_FRACTION",
-    "solution": "순환소수를 $10$의 거듭제곱을 이용하여 분수로 나타내는 식을 전개한다. $$ \\begin{aligned} x &= 0.474747\\cdots \\quad \\cdots\\text{ ㉠} \\end{aligned} $$ 순환마디의 길이가 $2$이므로 ㉠의 양변에 $100$을 곱한다. $$ \\begin{aligned} 100x &= 47.474747\\cdots \\quad \\cdots\\text{ ㉡} \\ \\implies A &= 100 \\end{aligned} $$ ㉡에서 ㉠을 변끼리 빼면 소수점 아래 순환마디 부분이 소거된다. $$ \\begin{aligned} 100x - x &= 47 \\ 99x &= 47 \\ \\implies B &= 99, \\quad C = 47 \\end{aligned} $$ 따라서 구하는 식의 값은 다음과 같다. $$ \\begin{aligned} A - B + C &= 100 - 99 + 47 \\ &= 1 + 47 \\ &= 48 \\end{aligned} $$ 그러므로 정답은 ②이다.",
+    "solution": "$0.\\dot{4}\\dot{7}$을 $100$배 한 식에서 원래 식을 빼서 $A$, $B$, $C$를 찾는다.\n$$x = 0.474747\\cdots \\quad \\cdots \\text{㉠}$$\n순환마디의 길이가 $2$이므로 ㉠의 양변에 $100$을 곱한다.\n$$100x = 47.474747\\cdots \\quad \\cdots \\text{㉡}$$\n$$A = 100$$\n㉡에서 ㉠을 변끼리 빼면 소수점 아래의 순환마디가 지워진다.\n$$\n\\begin{aligned}\n100x - x &= 47.474747\\cdots - 0.474747\\cdots \\\\\n99x &= 47\n\\end{aligned}\n$$\n$$B = 99, \\quad C = 47$$\n구하는 값을 계산한다.\n$$\n\\begin{aligned}\nA - B + C &= 100 - 99 + 47 \\\\\n&= 1 + 47 \\\\\n&= 48\n\\end{aligned}\n$$\n따라서 정답은 ②이다.",
     "points": 4
   },
   {
@@ -259,7 +259,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "EXPONENT_LAW_BASIC",
-    "solution": "지수법칙을 적용하여 $x$와 $y$의 값을 각각 구한다. (가) 거듭제곱의 거듭제곱에서는 지수끼리 곱한다. $$ (a^3)^6 = a^{3 \\times 6} = a^{18} \\implies x = 18 $$ (나) 밑이 같은 거듭제곱의 나눗셈에서는 지수끼리 뺀다. $$ b^7 \\div b^3 = b^{7 - 3} = b^4 \\implies y = 4 $$ 따라서 $x + y$의 값은 다음과 같다. $$ x + y = 18 + 4 = 22 $$ 그러므로 정답은 ①이다.",
+    "solution": "지수법칙을 적용하여 $x$와 $y$의 값을 각각 구한 뒤 $x + y$를 계산한다.\n(가) 거듭제곱의 거듭제곱에서는 지수끼리 곱한다.\n$$\n\\begin{aligned}\n(a^3)^6 &= a^{3 \\times 6} \\\\\n&= a^{18}\n\\end{aligned}\n$$\n$$x = 18$$\n(나) 밑이 같은 거듭제곱의 나눗셈에서는 지수끼리 뺀다.\n$$\n\\begin{aligned}\nb^7 \\div b^3 &= b^{7 - 3} \\\\\n&= b^4\n\\end{aligned}\n$$\n$$y = 4$$\n구하는 값을 계산하면\n$$x + y = 18 + 4 = 22$$\n따라서 정답은 ①이다.",
     "points": 4
   },
   {
@@ -296,7 +296,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_PROPERTIES_AUDIT",
-    "solution": "부등식의 성질을 이용하여 각 선지의 식을 $a$와 $b$의 대소관계로 정리한다. $$ \\begin{aligned} \\text{① } & a > b \\ \\text{② } & 2 - 3a < 2 - 3b \\implies -3a < -3b \\implies a > b \\ \\text{③ } & \\frac{a}{4} + 2 > \\frac{b}{4} + 2 \\implies \\frac{a}{4} > \\frac{b}{4} \\implies a > b \\ \\text{④ } & 3a > 2a + b \\implies 3a - 2a > b \\implies a > b \\ \\text{⑤ } & -2a + 1 > -2b + 1 \\implies -2a > -2b \\implies a < b \\end{aligned} $$ ①~④는 모두 $a > b$이지만, ⑤는 음수 $-2$로 나눌 때 부등호의 방향이 바뀌어 $a < b$가 된다. 따라서 나머지 넷과 다른 하나는 ⑤이다.",
+    "solution": "각 보기의 부등식을 $a$와 $b$의 대소관계로 정리하여 나머지 넷과 다른 것을 찾는다.\n①은 그대로 $a > b$이다.\n②는 양변에서 $2$를 빼고 음수 $-3$으로 나눈다.\n$$2 - 3a < 2 - 3b$$\n$$-3a < -3b$$\n$$a > b$$\n부등호의 방향이 바뀌므로 ②도 $a > b$이다.\n③은 양변에서 $2$를 빼고 $4$를 곱한다.\n$$\\dfrac{a}{4} + 2 > \\dfrac{b}{4} + 2$$\n$$\\dfrac{a}{4} > \\dfrac{b}{4}$$\n$$a > b$$\n③도 $a > b$이다.\n④는 $2a$를 왼쪽으로 이항한다.\n$$3a > 2a + b$$\n$$a > b$$\n④도 $a > b$이다.\n⑤는 양변에서 $1$을 빼고 음수 $-2$로 나눈다.\n$$-2a + 1 > -2b + 1$$\n$$-2a > -2b$$\n$$a < b$$\n부등호의 방향이 바뀌므로 ⑤만 $a < b$이다.\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -333,7 +333,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "FINITE_DECIMAL_MULTIPLIER",
-    "solution": "두 분수를 소인수분해하여 분모에 남는 $2, 5$ 이외의 소인수를 확인한다. $$ \\begin{aligned} \\frac{11}{65} &= \\frac{11}{5 \\times 13} \\ \\frac{7}{44} &= \\frac{7}{2^2 \\times 11} \\end{aligned} $$ 두 분수가 모두 기약분수이므로: 1단계: $\\dfrac{11}{65} \\times A = \\dfrac{11A}{5 \\times 13}$가 유한소수가 되려면 분모의 소인수 $13$이 약분되어 없어져야 하므로 $A$는 $13$의 배수이어야 한다. 2단계: $\\dfrac{7}{44} \\times A = \\dfrac{7A}{2^2 \\times 11}$가 유한소수가 되려면 분모의 소인수 $11$이 약분되어 없어져야 하므로 $A$는 $11$의 배수이어야 한다. 3단계: 따라서 $A$는 $13$과 $11$의 공배수이어야 하며, 가장 작은 자연수 $A$는 $13$과 $11$의 최소공배수이다. $13$과 $11$은 서로소이므로 $$ A = 13 \\times 11 = 143 $$ 따라서 정답은 ③이다.",
+    "solution": "두 분수의 분모를 각각 소인수분해하여, 유한소수가 되려면 약분되어야 하는 소인수를 찾는다.\n$$\\dfrac{11}{65} = \\dfrac{11}{5 \\times 13}$$\n$$\\dfrac{7}{44} = \\dfrac{7}{2^2 \\times 11}$$\n두 분수는 모두 기약분수이므로 분모의 소인수가 그대로 남는다.\n첫째 분수에 $A$를 곱하면\n$$\\dfrac{11}{65} \\times A = \\dfrac{11A}{5 \\times 13}$$\n유한소수가 되려면 분모의 $13$이 약분되어야 하므로 $A$는 $13$의 배수이다.\n둘째 분수에 $A$를 곱하면\n$$\\dfrac{7}{44} \\times A = \\dfrac{7A}{2^2 \\times 11}$$\n유한소수가 되려면 분모의 $11$이 약분되어야 하므로 $A$는 $11$의 배수이다.\n따라서 $A$는 $13$과 $11$의 공배수이고, 가장 작은 자연수는 두 수의 최소공배수이다.\n$13$과 $11$은 서로소이므로\n$$A = 13 \\times 11 = 143$$\n따라서 정답은 ③이다.",
     "points": 4
   },
   {
@@ -370,7 +370,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "FINITE_DECIMAL_REVERSE_ENGINEERING",
-    "solution": "조건 (나), (다)를 분석하여 $x$와 $y$를 결정한다. 분모 $90$을 소인수분해하면 $90 = 2 \\times 3^2 \\times 5$이다. 1단계: $\\dfrac{x}{90}$가 유한소수가 되려면 분모의 소인수 $3^2 = 9$가 약분되어야 하므로 $x$는 $9$의 배수이어야 한다. 2단계: 기약분수의 분자가 $7$이므로 $x$와 $90$의 최대공약수를 $g$라 하면 $$ x = 7g, \\quad y = \\frac{90}{g} $$ $x$가 $9$의 배수이어야 하므로 최대공약수 $g$는 $9$의 배수이어야 한다. 3단계: $90$의 약수 중 $9$의 배수는 $9, 18, 45, 90$이다. 조건 (가)에서 $x = 7g < 100$이므로 $$ g < \\frac{100}{7} \\approx 14.28 $$ 따라서 $g$가 될 수 있는 수는 $g = 9$뿐이다. 4단계: $g = 9$일 때 $$ \\begin{aligned} x &= 7 \\times 9 = 63 \\ y &= \\frac{90}{9} = 10 \\end{aligned} $$ 이때 $\\dfrac{63}{90} = \\dfrac{7}{10}$이고 $10 = 2 \\times 5$이므로 기약분수 및 유한소수 조건을 모두 만족한다. 따라서 $x - y$의 값은 다음과 같다. $$ x - y = 63 - 10 = 53 $$ 그러므로 정답은 ④이다.",
+    "solution": "분모 $90$을 소인수분해한 뒤, 조건 (나)와 (다)로 $x$와 $y$를 차례로 정한다.\n$$90 = 2 \\times 3^2 \\times 5$$\n조건 (나)에서 $\\dfrac{x}{90}$이 유한소수가 되려면 분모의 $3^2$이 약분되어야 한다.\n따라서 $x$는 $9$의 배수이다.\n조건 (다)에서 기약분수의 분자가 $7$이므로 $x$와 $90$의 최대공약수를 $g$라 하면\n$$x = 7g, \\quad y = \\dfrac{90}{g}$$\n$x$가 $9$의 배수이므로 $g$도 $9$의 배수이다.\n$90$의 약수 중 $9$의 배수는 $9, 18, 45, 90$이다.\n조건 (가)에서 $x = 7g < 100$이므로\n$$g < \\dfrac{100}{7} = 14.28\\cdots$$\n이를 만족하는 $g$는 $9$뿐이다.\n$g = 9$일 때\n$$\n\\begin{aligned}\nx &= 7 \\times 9 = 63 \\\\\ny &= \\dfrac{90}{9} = 10\n\\end{aligned}\n$$\n$$\\dfrac{63}{90} = \\dfrac{7}{10}, \\quad 10 = 2 \\times 5$$\n분모의 소인수가 $2$와 $5$뿐이므로 두 조건을 모두 만족한다.\n$$x - y = 63 - 10 = 53$$\n따라서 정답은 ④이다.",
     "points": 4
   },
   {
@@ -407,7 +407,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "MONOMIAL_OPERATIONS_CHECK",
-    "solution": "각 선지의 단항식 계산 결과를 검토한다. $$ \\begin{aligned} \\text{① } & 24x^3y \\div 6x = \\frac{24x^3y}{6x} = 4x^2y \\text{ (옳음)} \\ \\text{② } & 2a^4 \\times 5a^3 = (2 \\times 5)a^{4+3} = 10a^7 \\ne 10a^{12} \\ \\text{③ } & \\frac{3}{4}xy^2 \\times (2x^2y)^2 = \\frac{3}{4}xy^2 \\times 4x^4y^2 = 3x^{1+4}y^{2+2} = 3x^5y^4 \\ne 3x^4y^4 \\ \\text{④ } & (-3x^3y^2)^2 \\div x^4y^2 = 9x^6y^4 \\div x^4y^2 = 9x^2y^2 \\ne -9x^2y^2 \\ \\text{⑤ } & 18a^4b^2 \\div 3ab^3 \\times 2a^2b = \\frac{18a^4b^2 \\times 2a^2b}{3ab^3} = \\frac{36a^6b^3}{3ab^3} = 12a^5 \\ne 12a^4 \\end{aligned} $$ 따라서 옳은 것은 ①이다.",
+    "solution": "각 보기의 단항식 계산을 차례로 하여 보기와 같은지 확인한다.\n① 분자와 분모의 계수와 문자를 각각 나눈다.\n$$24x^3y \\div 6x = \\dfrac{24x^3y}{6x} = 4x^2y$$\n보기와 같으므로 옳다.\n② 같은 밑의 거듭제곱끼리 곱하면 지수를 더한다.\n$$2a^4 \\times 5a^3 = (2 \\times 5)a^{4+3} = 10a^7$$\n$10a^{12}$이 아니므로 옳지 않다.\n③ 괄호 안을 먼저 거듭제곱한다.\n$$\\dfrac{3}{4}xy^2 \\times (2x^2y)^2 = \\dfrac{3}{4}xy^2 \\times 4x^4y^2 = 3x^5y^4$$\n$3x^4y^4$이 아니므로 옳지 않다.\n④ 음수의 짝수제곱은 양수이다.\n$$(-3x^3y^2)^2 \\div x^4y^2 = 9x^6y^4 \\div x^4y^2 = 9x^2y^2$$\n$-9x^2y^2$이 아니므로 옳지 않다.\n⑤ 나누기와 곱하기는 앞에서부터 차례로 계산한다.\n$$18a^4b^2 \\div 3ab^3 \\times 2a^2b = \\dfrac{18a^4b^2 \\times 2a^2b}{3ab^3} = \\dfrac{36a^6b^3}{3ab^3} = 12a^5$$\n$12a^4$이 아니므로 옳지 않다.\n따라서 정답은 ①이다.",
     "points": 4
   },
   {
@@ -444,7 +444,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "COMPOSITE_MONOMIAL_EVALUATION",
-    "solution": "좌변의 분자를 먼저 전개한 후 분모로 나눈다. 1단계: 분자의 거듭제곱을 전개한다. $$ (-2xy^3)^3 = (-2)^3 x^3 (y^3)^3 = -8x^3 y^9 $$ 2단계: 분자의 곱을 계산한다. $$ (-8x^3 y^9) \\times (-3x^3 y^2) = 24 x^{3+3} y^{9+2} = 24x^6 y^{11} $$ 3단계: 분모 $4x^2 y^5$로 나눈다. $$ \\frac{24x^6 y^{11}}{4x^2 y^5} = \\left(\\frac{24}{4}\\right) x^{6-2} y^{11-5} = 6x^4 y^6 $$ 4단계: 우변 $ax^b y^c$와 계수 및 지수를 비교한다. $$ a = 6, \\quad b = 4, \\quad c = 6 $$ 따라서 $a - b + c$의 값은 다음과 같다. $$ a - b + c = 6 - 4 + 6 = 8 $$ 그러므로 정답은 ③이다.",
+    "solution": "좌변을 정리하여 $ax^b y^c$의 꼴로 나타낸 뒤 $a, b, c$를 읽는다.\n분자의 거듭제곱을 먼저 전개한다.\n$$(-2xy^3)^3 = (-2)^3 x^3 (y^3)^3 = -8x^3y^9$$\n전개한 식과 $(-3x^3y^2)$를 곱한다.\n$$(-8x^3y^9) \\times (-3x^3y^2) = 24x^{3+3}y^{9+2} = 24x^6y^{11}$$\n분모 $4x^2y^5$로 나눈다.\n$$\n\\begin{aligned}\n\\dfrac{24x^6y^{11}}{4x^2y^5} &= \\left(\\dfrac{24}{4}\\right) x^{6-2} y^{11-5} \\\\\n&= 6x^4y^6\n\\end{aligned}\n$$\n우변 $ax^b y^c$와 계수 및 지수를 비교하면\n$$a = 6, \\quad b = 4, \\quad c = 6$$\n구하는 값은\n$$a - b + c = 6 - 4 + 6 = 8$$\n따라서 정답은 ③이다.",
     "points": 4
   },
   {
@@ -481,7 +481,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POWER_PRIME_FACTORIZATION_SUM",
-    "solution": "두 분수를 소인수의 밑으로 통일하여 정리한다. 1단계: $\\dfrac{24^6}{36^3}$을 밑 $2, 3$의 거듭제곱으로 나타낸다. $24 = 2^3 \\times 3$이므로 $$ 24^6 = (2^3 \\times 3)^6 = (2^3)^6 \\times 3^6 = 2^{18} \\times 3^6 $$ $36 = 2^2 \\times 3^2$이므로 $$ 36^3 = (2^2 \\times 3^2)^3 = (2^2)^3 \\times (3^2)^3 = 2^6 \\times 3^6 $$ 따라서 첫 번째 분수는 다음과 같다. $$ \\frac{24^6}{36^3} = \\frac{2^{18} \\times 3^6}{2^6 \\times 3^6} = \\frac{2^{18}}{2^6} = 2^{18-6} = 2^{12} \\implies a = 12 $$ 2단계: 두 번째 분수의 같은 항의 덧셈을 곱셈으로 바꾼다. 분자는 $27^3$이 $3$개 더해져 있으므로 $$ 27^3 + 27^3 + 27^3 = 3 \\times 27^3 = 3 \\times (3^3)^3 = 3 \\times 3^9 = 3^{10} $$ 분모는 $3^5$이 $3$개 더해져 있으므로 $$ 3^5 + 3^5 + 3^5 = 3 \\times 3^5 = 3^6 $$ 따라서 두 번째 분수는 다음과 같다. $$ \\frac{3^{10}}{3^6} = 3^{10-6} = 3^4 \\implies b = 4 $$ 3단계: $a - b$의 값을 구한다. $$ a - b = 12 - 4 = 8 $$ 그러므로 정답은 ②이다.",
+    "solution": "두 분수를 각각 $2$와 $3$의 거듭제곱으로 정리하여 $a$와 $b$를 구한다.\n$24$와 $36$을 각각 소인수분해한다.\n$$24 = 2^3 \\times 3, \\quad 36 = 2^2 \\times 3^2$$\n첫째 분수의 분자를 전개한다.\n$$24^6 = (2^3 \\times 3)^6 = 2^{18} \\times 3^6$$\n분모도 전개한다.\n$$36^3 = (2^2 \\times 3^2)^3 = 2^6 \\times 3^6$$\n따라서 첫째 분수는\n$$\n\\begin{aligned}\n\\dfrac{24^6}{36^3} &= \\dfrac{2^{18} \\times 3^6}{2^6 \\times 3^6} \\\\\n&= 2^{18-6} \\\\\n&= 2^{12}\n\\end{aligned}\n$$\n그러므로 $a = 12$이다.\n둘째 분수의 분자는 $27^3$이 $3$개 더해진 것이므로\n$$27^3 + 27^3 + 27^3 = 3 \\times 27^3 = 3 \\times (3^3)^3 = 3 \\times 3^9 = 3^{10}$$\n분모도 같은 방법으로 정리하면\n$$3^5 + 3^5 + 3^5 = 3 \\times 3^5 = 3^6$$\n따라서 둘째 분수는\n$$\n\\begin{aligned}\n\\dfrac{3^{10}}{3^6} &= 3^{10-6} \\\\\n&= 3^4\n\\end{aligned}\n$$\n그러므로 $b = 4$이다.\n$$a - b = 12 - 4 = 8$$\n따라서 정답은 ②이다.",
     "points": 5
   },
   {
@@ -505,7 +505,7 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "$5a - [3b - 2a - {5b - (a + 2b)}]$를 간단히 계산하면? [4점]",
+    "content": "$5a - [3b - 2a - \\{5b - (a + 2b)\\}]$를 간단히 계산하면? [4점]",
     "choices": [
       "$4a + b$",
       "$4a - b$",
@@ -518,7 +518,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "NESTED_BRACKETS_SIMPLIFICATION",
-    "solution": "가장 안쪽 소괄호부터 차례대로 풀고 동류항끼리 계산한다. 1단계: 소괄호를 푼다. $$ 5b - (a + 2b) = 5b - a - 2b = -a + 3b $$ 2단계: 중괄호/대괄호 내부를 정리한다. $$ \\begin{aligned} 3b - 2a - (-a + 3b) &= 3b - 2a + a - 3b \\ &= (-2 + 1)a + (3 - 3)b \\ &= -a \\end{aligned} $$ 3단계: 전체 식의 대괄호를 풀고 계산한다. $$ \\begin{aligned} 5a - [-a] &= 5a + a \\ &= 6a \\end{aligned} $$ 따라서 간단히 한 식은 $6a$이므로 정답은 ⑤이다.",
+    "solution": "가장 안쪽 소괄호부터 차례로 풀고 동류항끼리 계산한다.\n소괄호를 먼저 푼다.\n$$5b - (a + 2b) = 5b - a - 2b = -a + 3b$$\n대괄호 안의 식을 정리한다.\n$$\n\\begin{aligned}\n3b - 2a - \\{5b - (a + 2b)\\} &= 3b - 2a - (-a + 3b) \\\\\n&= 3b - 2a + a - 3b \\\\\n&= (-2 + 1)a + (3 - 3)b \\\\\n&= -a\n\\end{aligned}\n$$\n대괄호 안이 $-a$이므로 전체 식은\n$$\n\\begin{aligned}\n5a - [-a] &= 5a + a \\\\\n&= 6a\n\\end{aligned}\n$$\n따라서 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -555,7 +555,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "MONOMIAL_DIVISION_AUDIT",
-    "solution": "각 선지의 식을 계산하여 좌변과 우변의 일치 여부를 확인한다. $$ \\begin{aligned} \\text{① } & 2x \\times 4x \\div x^2 = \\frac{8x^2}{x^2} = 8 \\text{ (참)} \\ \\text{② } & \\frac{x}{3} - \\frac{x}{4} = \\frac{4x - 3x}{12} = \\frac{x}{12} \\implies x \\div \\left(\\frac{x}{12}\\right) = x \\times \\frac{12}{x} = 12 \\text{ (참)} \\ \\text{③ } & (5x - x) \\div \\frac{x}{3} = 4x \\times \\frac{3}{x} = 12 \\text{ (참)} \\ \\text{④ } & \\frac{x}{3} - \\frac{x}{6} = \\frac{2x - x}{6} = \\frac{x}{6} \\implies \\left(\\frac{x}{6}\\right) \\div x = \\frac{x}{6} \\times \\frac{1}{x} = \\frac{1}{6} \\ne 3 \\text{ (거짓)} \\ \\text{⑤ } & (9x - x) \\div 2x = 8x \\div 2x = \\frac{8x}{2x} = 4 \\text{ (참)} \\end{aligned} $$ ④의 올바른 계산값은 $\\dfrac{1}{6}$이므로 옳지 않은 것은 ④이다.",
+    "solution": "각 보기의 식을 계산하여 좌변의 값이 우변과 같은지 확인한다.\n① 앞에서부터 차례로 계산한다.\n$$2x \\times 4x \\div x^2 = \\dfrac{8x^2}{x^2} = 8$$\n우변과 같으므로 옳다.\n② 괄호 안의 분수를 통분하여 계산한다.\n$$\n\\begin{aligned}\nx \\div \\left(\\dfrac{x}{3} - \\dfrac{x}{4}\\right) &= x \\div \\dfrac{x}{12} \\\\\n&= x \\times \\dfrac{12}{x} \\\\\n&= 12\n\\end{aligned}\n$$\n우변과 같으므로 옳다.\n③ 괄호 안을 먼저 계산한다.\n$$(5x - x) \\div \\dfrac{x}{3} = 4x \\times \\dfrac{3}{x} = 12$$\n우변과 같으므로 옳다.\n④ 괄호 안의 분수를 통분하여 계산한다.\n$$\n\\begin{aligned}\n\\left(\\dfrac{x}{3} - \\dfrac{x}{6}\\right) \\div x &= \\dfrac{x}{6} \\div x \\\\\n&= \\dfrac{x}{6} \\times \\dfrac{1}{x} \\\\\n&= \\dfrac{1}{6}\n\\end{aligned}\n$$\n계산 결과가 $\\dfrac{1}{6}$이므로 옳지 않다.\n⑤ 괄호 안을 먼저 계산한다.\n$$(9x - x) \\div 2x = \\dfrac{8x}{2x} = 4$$\n우변과 같으므로 옳다.\n따라서 정답은 ④이다.",
     "points": 4
   },
   {
@@ -592,7 +592,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_APPLICATION_PURCHASE",
-    "solution": "문제의 상황을 일차부등식으로 세워 해결한다. 1단계: 케이크 $b$개와 포장 상자 값의 총금액은 $7{,}000b + 3{,}000$원이다. 총금액이 $25{,}000$원보다 작아야 하므로 $$ \\begin{aligned} 7000b + 3000 &< 25000 \\ 7000b &< 22000 \\ b &< \\frac{22000}{7000} = \\frac{22}{7} = 3.1428\\cdots \\end{aligned} $$ $b$는 자연수이므로 살 수 있는 케이크의 최대 개수는 $A = 3$개이다. 2단계: 케이크 $3$개를 살 때 지불해야 하는 총금액은 다음과 같다. $$ 7000 \\times 3 + 3000 = 21000 + 3000 = 24000\\text{ (원)} $$ $25{,}000$원을 내었을 때 남는 잔돈 $B$는 다음과 같다. $$ B = 25000 - 24000 = 1000\\text{ (원)} $$ 따라서 $A = 3$개, $B = 1{,}000$원이므로 정답은 ③이다.",
+    "solution": "케이크 $b$개와 포장 상자 값의 합을 일차부등식으로 세워 최대 개수와 잔돈을 구한다.\n$$7{,}000b + 3{,}000 < 25{,}000$$\n양변에서 $3{,}000$을 빼면\n$$7{,}000b < 22{,}000$$\n양변을 $7{,}000$으로 나누면\n$$b < \\dfrac{22{,}000}{7{,}000} = \\dfrac{22}{7} = 3.1428\\cdots$$\n$b$는 자연수이므로 살 수 있는 케이크의 최대 개수는 $A = 3$개이다.\n케이크 $3$개를 살 때 내야 하는 금액은\n$$7{,}000 \\times 3 + 3{,}000 = 21{,}000 + 3{,}000 = 24{,}000\\text{ (원)}$$\n$25{,}000$원을 내고 남는 잔돈은\n$$B = 25{,}000 - 24{,}000 = 1{,}000\\text{ (원)}$$\n따라서 $A = 3$개, $B = 1{,}000$원이므로 정답은 ③이다.",
     "points": 4
   },
   {
@@ -629,7 +629,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_NUMBER_LINE_REVERSE",
-    "solution": "부등식을 정리하여 $x$에 대한 해를 구한 후 수직선의 조건과 비교한다. 1단계: 부등식을 푼다. $$ \\begin{aligned} -4x - 3a &> 1 + a - x \\ -4x + x &> 1 + a + 3a \\ -3x &> 1 + 4a \\end{aligned} $$ 양변을 음수 $-3$으로 나누면 부등호의 방향이 바뀐다. $$ x < -\\frac{1 + 4a}{3} $$ 2단계: 수직선에 나타난 해가 $x < -1$이므로 경계값을 비교한다. $$ \\begin{aligned} -\\frac{1 + 4a}{3} &= -1 \\ 1 + 4a &= 3 \\ 4a &= 2 \\ a &= \\frac{2}{4} = \\frac{1}{2} \\end{aligned} $$ 따라서 상수 $a$의 값은 $\\dfrac{1}{2}$이므로 정답은 ②이다.",
+    "solution": "주어진 부등식을 $x$에 대하여 풀고, 그 해의 경계값을 수직선에 나타난 $-1$과 비교하여 $a$를 구한다.\n$$-4x - 3a > 1 + (a - x)$$\n$$-4x - 3a > 1 + a - x$$\n$$-4x + x > 1 + a + 3a$$\n$$-3x > 1 + 4a$$\n양변을 음수 $-3$으로 나누면 부등호의 방향이 바뀐다.\n$$x < -\\dfrac{1 + 4a}{3}$$\n수직선에 나타난 해가 $x < -1$이므로 두 경계값은 같다.\n$$-\\dfrac{1 + 4a}{3} = -1$$\n$$\\dfrac{1 + 4a}{3} = 1$$\n$$1 + 4a = 3$$\n$$4a = 2$$\n$$a = \\dfrac{1}{2}$$\n따라서 정답은 ②이다.",
     "points": 4
   },
   {
@@ -666,7 +666,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "EXPONENT_UNIT_CHAIN",
-    "solution": "단위 간의 배수 관계를 거듭제곱의 곱셈으로 나타낸다. $$ \\begin{aligned} 1\\text{ KB} &= 10^3\\text{ B} \\ 1\\text{ MB} &= 10^3\\text{ KB} = 10^3 \\times 10^3\\text{ B} = 10^{3+3}\\text{ B} = 10^6\\text{ B} \\ 1\\text{ GB} &= 10^3\\text{ MB} = 10^3 \\times 10^6\\text{ B} = 10^{3+6}\\text{ B} = 10^9\\text{ B} \\end{aligned} $$ 따라서 $1\\text{ GB}$는 $10^9\\text{ B}$이므로 정답은 ⑤이다.",
+    "solution": "단위가 한 단계 커질 때마다 $10^3$배가 되는 것을 차례로 곱하여 $1\\,\\text{GB}$를 $\\text{B}$로 나타낸다.\n$$1\\,\\text{KB} = 10^3\\,\\text{B}$$\n$$\n\\begin{aligned}\n1\\,\\text{MB} &= 10^3 \\times 1\\,\\text{KB} \\\\\n&= 10^3 \\times 10^3\\,\\text{B} \\\\\n&= 10^6\\,\\text{B}\n\\end{aligned}\n$$\n$$\n\\begin{aligned}\n1\\,\\text{GB} &= 10^3 \\times 1\\,\\text{MB} \\\\\n&= 10^3 \\times 10^6\\,\\text{B} \\\\\n&= 10^9\\,\\text{B}\n\\end{aligned}\n$$\n따라서 $1\\,\\text{GB}$는 $10^9\\,\\text{B}$이므로 정답은 ⑤이다.",
     "points": 4
   },
   {
@@ -690,7 +690,7 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "$A = x + 2y, B = 2x - y, C = -3x, D = 2y$에 대하여 ${(A + 2B) \\times C} - {(2A - B) \\times D}$를 계산하면? [4점]",
+    "content": "$A = x + 2y, B = 2x - y, C = -3x, D = 2y$에 대하여 $\\{(A + 2B) \\times C\\} - \\{(2A - B) \\times D\\}$를 계산하면? [4점]",
     "choices": [
       "$-15x^2 - 10y^2$",
       "$-15x^2 + 10y^2$",
@@ -703,7 +703,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_SUBSTITUTION_EVALUATION",
-    "solution": "$A$와 $B$의 식을 먼저 대입하여 각 괄호 안의 식을 간단히 정리한 후 $C, D$를 곱한다. 1단계: $A + 2B$를 계산한다. $$ \\begin{aligned} A + 2B &= (x + 2y) + 2(2x - y) \\ &= x + 2y + 4x - 2y \\ &= 5x \\end{aligned} $$ 여기에 $C = -3x$를 곱하면 $$ (A + 2B) \\times C = 5x \\times (-3x) = -15x^2 $$ 2단계: $2A - B$를 계산한다. $$ \\begin{aligned} 2A - B &= 2(x + 2y) - (2x - y) \\ &= 2x + 4y - 2x + y \\ &= 5y \\end{aligned} $$ 여기에 $D = 2y$를 곱하면 $$ (2A - B) \\times D = 5y \\times 2y = 10y^2 $$ 3단계: 두 결과의 차를 구한다. $$ {(A + 2B) \\times C} - {(2A - B) \\times D} = -15x^2 - 10y^2 $$ 따라서 계산한 결과는 $-15x^2 - 10y^2$이므로 정답은 ①이다.",
+    "solution": "$A$와 $B$의 식을 대입하여 $(A + 2B)$와 $(2A - B)$를 각각 간단히 하고, $C$와 $D$를 곱하여 전체 식을 계산한다.\n$$\n\\begin{aligned}\nA + 2B &= (x + 2y) + 2(2x - y) \\\\\n&= x + 2y + 4x - 2y \\\\\n&= 5x\n\\end{aligned}\n$$\n$$\n\\begin{aligned}\n(A + 2B) \\times C &= 5x \\times (-3x) \\\\\n&= -15x^2\n\\end{aligned}\n$$\n$$\n\\begin{aligned}\n2A - B &= 2(x + 2y) - (2x - y) \\\\\n&= 2x + 4y - 2x + y \\\\\n&= 5y\n\\end{aligned}\n$$\n$$\n\\begin{aligned}\n(2A - B) \\times D &= 5y \\times 2y \\\\\n&= 10y^2\n\\end{aligned}\n$$\n$$\\{(A + 2B) \\times C\\} - \\{(2A - B) \\times D\\} = -15x^2 - 10y^2$$\n따라서 계산한 결과는 $-15x^2 - 10y^2$이므로 정답은 ①이다.",
     "points": 4
   },
   {
@@ -727,7 +727,7 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "다음과 같이 $6$개의 다항식 ⓐ~ⓕ가 적혀 있는 판이 있다.\n\n\n[다항식 판] ⓐ $3x - 2y$\\quad ⓑ $-2x + 5y$\\quad ⓒ $-4x + y$\\quad ⓓ $-4x + 5y$\\quad ⓔ $2x + y$\\quad ⓕ $4x - 3y$\n\n\n민수와 지유가 각각 판에서 다항식을 하나씩 골랐는데, 민수가 고른 다항식은 $-x + 3y$이다. 두 사람이 고른 다항식의 뺄셈의 결과가 $3x - 2y$일 때, 지유가 고른 다항식이 될 수 있는 것을 모두 고른 것은? [5점]",
+    "content": "다음과 같이 $6$개의 다항식 ⓐ~ⓕ가 적혀 있는 판이 있다.\n\n\n[다항식 판] ⓐ $3x - 2y$\\quad ⓑ $-2x + 5y$\\quad ⓒ $-4x + y$\\quad ⓓ $-4x + 5y$\\quad ⓔ $2x + y$\\quad ⓕ $4x - 3y$\n\n\n민수와 지유가 각각 다항식을 하나씩 골랐는데, 지유는 판에서 골랐고 민수가 고른 다항식은 $-x + 3y$이다. 두 사람이 고른 다항식의 뺄셈의 결과가 $3x - 2y$일 때, 지유가 고른 다항식이 될 수 있는 것을 모두 고른 것은? [5점]",
     "choices": [
       "ⓐ, ⓒ",
       "ⓑ, ⓓ",
@@ -740,7 +740,7 @@ window.questionBank = [
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "POLYNOMIAL_SUBTRACTION_ORDER_CASES",
-    "solution": "민수가 고른 다항식을 $M = -x + 3y$, 지유가 고른 다항식을 $J$라 하자. 두 식의 뺄셈의 결과가 $3x - 2y$라는 것은 뺄셈의 순서에 따라 두 가지 경우가 성립함을 의미한다.\n\n\n[경우 1] 민수의 식에서 지유의 식을 뺀 결과가 $3x - 2y$인 경우: $$ \\begin{aligned} (-x + 3y) - J &= 3x - 2y \\ J &= (-x + 3y) - (3x - 2y) \\ &= -x + 3y - 3x + 2y \\ &= -4x + 5y \\end{aligned} $$ 이 식은 판의 ⓓ에 해당한다.\n\n\n[경우 2] 지유의 식에서 민수의 식을 뺀 결과가 $3x - 2y$인 경우: $$ \\begin{aligned} J - (-x + 3y) &= 3x - 2y \\ J &= (-x + 3y) + (3x - 2y) \\ &= -x + 3x + 3y - 2y \\ &= 2x + y \\end{aligned} $$ 이 식은 판의 ⓔ에 해당한다.\n\n\n따라서 지유가 고른 다항식이 될 수 있는 것은 ⓓ, ⓔ이므로 정답은 ④이다.",
+    "solution": "뺄셈의 순서를 두 가지 경우로 나누어 지유가 고른 다항식 $J$를 각각 구하고, 그 식이 판에 있는지 확인한다.\n민수가 고른 다항식은 $-x + 3y$이고, 지유가 고른 다항식을 $J$라 하자.\n경우 1: 민수의 식에서 지유의 식을 뺀 결과가 $3x - 2y$인 경우이다.\n$$\n\\begin{aligned}\n(-x + 3y) - J &= 3x - 2y \\\\\nJ &= (-x + 3y) - (3x - 2y) \\\\\n&= -x + 3y - 3x + 2y \\\\\n&= -4x + 5y\n\\end{aligned}\n$$\n$-4x + 5y$는 판의 ⓓ이므로 지유가 ⓓ를 골랐을 때 성립한다.\n경우 2: 지유의 식에서 민수의 식을 뺀 결과가 $3x - 2y$인 경우이다.\n$$\n\\begin{aligned}\nJ - (-x + 3y) &= 3x - 2y \\\\\nJ &= (3x - 2y) + (-x + 3y) \\\\\n&= -x + 3x - 2y + 3y \\\\\n&= 2x + y\n\\end{aligned}\n$$\n$2x + y$는 판의 ⓔ이므로 지유가 ⓔ를 골랐을 때 성립한다.\n따라서 지유가 고른 다항식이 될 수 있는 것은 ⓓ, ⓔ이므로 정답은 ④이다.",
     "points": 5
   },
   {
@@ -764,14 +764,14 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "〈서답형 1〉 분수 $\\dfrac{35}{111}$를 순환소수로 나타내고, 소수점 아래 100번째 자리의 숫자를 구하시오. [5점]",
+    "content": "[서술형 1]\n분수 $\\dfrac{35}{111}$를 순환소수로 나타내고, 소수점 아래 100번째 자리의 숫자를 구하는 과정을 서술하시오. [5점]",
     "choices": [],
     "answer": "$0.\\dot{3}1\\dot{5}$, 100번째 자리의 숫자는 $3$",
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "REPEATING_DECIMAL_DIGIT_PERIODICITY",
-    "solution": "1단계: 분수 $\\dfrac{35}{111}$를 나눗셈을 통해 소수로 나타낸다. 분모와 분자에 $9$를 곱하면 $$ \\frac{35}{111} = \\frac{35 \\times 9}{111 \\times 9} = \\frac{315}{999} = 0.\\dot{3}1\\dot{5} = 0.315315315\\cdots $$ 따라서 순환마디는 $315$이고, 순환마디의 길이는 $3$이다.\n\n\n2단계: 소수점 아래 자릿수의 규칙성을 적용한다. 소수점 아래 100번째 자리를 구하기 위해 $100$을 순환마디의 길이 $3$으로 나눈다. $$ 100 = 3 \\times 33 + 1 $$ 나머지가 $1$이므로, 소수점 아래 100번째 자리의 숫자는 순환마디 $315$의 첫 번째 숫자인 $3$이다.\n\n\n따라서 순환소수 표현은 $0.\\dot{3}1\\dot{5}$이고, 100번째 자리의 숫자는 $3$이다.",
+    "solution": "분모가 $999$가 되도록 분모와 분자에 $9$를 곱하여 순환소수로 나타내고, 순환마디의 길이로 나눈 나머지로 소수점 아래 100번째 자리의 숫자를 찾는다.\n$$\n\\begin{aligned}\n\\dfrac{35}{111} &= \\dfrac{35 \\times 9}{111 \\times 9} \\\\\n&= \\dfrac{315}{999}\n\\end{aligned}\n$$\n$$\\dfrac{315}{999} = 0.\\dot{3}1\\dot{5}$$\n$$0.\\dot{3}1\\dot{5} = 0.315315315\\cdots$$\n순환마디는 $315$이고 순환마디의 길이는 $3$이다.\n$$100 = 3 \\times 33 + 1$$\n나머지가 $1$이므로 100번째 자리의 숫자는 순환마디 $315$의 첫 번째 숫자이다.\n따라서 순환소수는 $0.\\dot{3}1\\dot{5}$이고, 소수점 아래 100번째 자리의 숫자는 $3$이다.",
     "points": 5
   },
   {
@@ -795,14 +795,14 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "〈서답형 2〉 가로의 길이가 $4a^2b$, 세로의 길이가 $3ab$인 직사각형과, 윗변의 길이가 $2a$, 아랫변의 길이가 $6a$인 사다리꼴이 있다. 직사각형의 넓이와 사다리꼴의 넓이가 서로 같을 때, 사다리꼴의 높이를 구하시오. (단, $a > 0, b > 0$) [5점]",
+    "content": "[서술형 2]\n가로의 길이가 $4a^2b$, 세로의 길이가 $3ab$인 직사각형과, 윗변의 길이가 $2a$, 아랫변의 길이가 $6a$인 사다리꼴이 있다. 직사각형의 넓이와 사다리꼴의 넓이가 서로 같을 때, 사다리꼴의 높이를 구하는 과정을 서술하시오. (단, $a > 0, b > 0$) [5점]",
     "choices": [],
     "answer": "$3a^2b^2$",
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "GEOMETRIC_AREA_ALGEBRAIC_DIVISION",
-    "solution": "직사각형의 넓이와 사다리꼴의 넓이를 각각 대수식으로 표현하여 등식을 세운다. 1단계: 직사각형의 넓이를 계산한다. $$ (\\text{직사각형의 넓이}) = 4a^2b \\times 3ab = 12a^3b^2 $$ 2단계: 사다리꼴의 높이를 $h$라 하고 사다리꼴의 넓이를 계산한다. $$ (\\text{사다리꼴의 넓이}) = \\frac{(2a + 6a) \\times h}{2} = \\frac{8a \\times h}{2} = 4ah $$ 3단계: 두 넓이가 같으므로 등식을 세워 $h$를 구한다. $$ \\begin{aligned} 12a^3b^2 &= 4ah \\ h &= \\frac{12a^3b^2}{4a} \\ &= 3a^{3-1}b^2 \\ &= 3a^2b^2 \\end{aligned} $$ 따라서 사다리꼴의 높이는 $3a^2b^2$이다.",
+    "solution": "직사각형의 넓이를 구하고, 사다리꼴의 높이를 $h$라 하여 넓이를 나타낸 뒤 두 넓이가 같다는 식에서 $h$를 구한다.\n$$\n\\begin{aligned}\n(\\text{직사각형의 넓이}) &= 4a^2b \\times 3ab \\\\\n&= 12a^3b^2\n\\end{aligned}\n$$\n사다리꼴의 높이를 $h$라 하면\n$$\n\\begin{aligned}\n(\\text{사다리꼴의 넓이}) &= \\dfrac{(2a + 6a) \\times h}{2} \\\\\n&= \\dfrac{8a \\times h}{2} \\\\\n&= 4ah\n\\end{aligned}\n$$\n두 넓이가 같으므로\n$$12a^3b^2 = 4ah$$\n$$\n\\begin{aligned}\nh &= \\dfrac{12a^3b^2}{4a} \\\\\n&= 3a^{3-1}b^2 \\\\\n&= 3a^2b^2\n\\end{aligned}\n$$\n따라서 사다리꼴의 높이는 $3a^2b^2$이다.",
     "points": 5
   },
   {
@@ -826,14 +826,14 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "content": "〈서답형 3〉 민우는 새로운 스마트폰을 구매하려고 한다. 자급제 알뜰 요금제와 통신사 일반 요금제의 비용을 비교하면 다음과 같다.\n\n\n[요금제 비교]\n\n\n* 자급제 알뜰 요금제: 스마트폰 기기 구매비용 $120$만원, 매월 요금 $3{,}000$원\n* 통신사 일반 요금제: 스마트폰 기기 구매비용 $0$원, 매월 요금 $53{,}000$원\n\n\n자급제 알뜰 요금제를 이용하는 것이 통신사 일반 요금제를 이용하는 것보다 총비용이 더 저렴해지려면 최소 몇 개월 이상 사용해야 하는지 구하려고 한다. 다음 물음에 대해 서술하여라. (단, 주어진 조건 외에 다른 비용은 고려하지 않는다.) [6점]\n\n\n(1) 미지수 정하기 (1점) (2) 식 세우기 (1점) (3) 부등식 풀기 (2점) (4) 답을 문장으로 서술하고 주어진 상황에 맞는지 확인하기 (2점)",
+    "content": "[서술형 3]\n민우는 새로운 스마트폰을 구매하려고 한다. 자급제 알뜰 요금제와 통신사 일반 요금제의 비용을 비교하면 다음과 같다.\n\n\n[요금제 비교]\n\n\n* 자급제 알뜰 요금제: 스마트폰 기기 구매비용 $120$만원, 매월 요금 $3{,}000$원\n* 통신사 일반 요금제: 스마트폰 기기 구매비용 $0$원, 매월 요금 $53{,}000$원\n\n\n자급제 알뜰 요금제를 이용하는 것이 통신사 일반 요금제를 이용하는 것보다 총비용이 더 저렴해지려면 최소 몇 개월 이상 사용해야 하는지 구하려고 한다. 다음 물음에 답하는 과정을 서술하시오. (단, 주어진 조건 외에 다른 비용은 고려하지 않는다.) [6점]\n\n\n(1) 미지수 정하기 (1점) (2) 식 세우기 (1점) (3) 부등식 풀기 (2점) (4) 답을 문장으로 서술하고 주어진 상황에 맞는지 확인하기 (2점)",
     "choices": [],
     "answer": "최소 25개월",
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "INEQUALITY_PLAN_COMPARISON_STEPWISE",
-    "solution": "단계별 서술 채점 기준에 맞추어 풀이를 서술한다.\n\n\n(1) [미지수 정하기] (1점) 스마트폰 사용 기간을 $x$개월이라 하자. (단, $x$는 자연수)\n\n\n(2) [식 세우기] (1점) $x$개월 동안 사용하는 총비용은 다음과 같다.\n\n\n* 자급제 알뜰 요금제 총비용: $1{,}200{,}000 + 3{,}000x$ (원)\n* 통신사 일반 요금제 총비용: $53{,}000x$ (원) 자급제 알뜰 요금제가 더 저렴해야 하므로 $$ 1{,}200{,}000 + 3{,}000x < 53{,}000x $$\n\n\n(3) [부등식 풀기] (2점) 양변에서 $3{,}000x$를 이항하여 정리한다. $$ \\begin{aligned} 1{,}200{,}000 &< 53{,}000x - 3{,}000x \\ 1{,}200{,}000 &< 50{,}000x \\end{aligned} $$ 양변을 양수 $50{,}000$으로 나눈다. $$ \\begin{aligned} x &> \\frac{1{,}200{,}000}{50{,}000} \\ x &> 24 \\end{aligned} $$\n\n\n(4) [답 서술 및 상황 확인] (2점) 부등식의 해 $x > 24$에서 $x$는 자연수이므로, 조건을 만족하는 가장 작은 $x$의 값은 $25$이다. $24$개월 사용 시 두 요금제의 총비용은 모두 $1{,}272{,}000$원으로 동일하고, $25$개월 사용 시 자급제 알뜰 요금제는 $1{,}275{,}000$원, 일반 요금제는 $1{,}325{,}000$원으로 자급제 알뜰 요금제가 더 저렴해진다. 따라서 최소 $25$개월 이상 사용해야 한다.",
+    "solution": "사용 기간을 $x$개월로 놓고, 두 요금제의 총비용을 각각 식으로 세운 뒤 부등식을 풀어 답을 확인한다.\n(1) [미지수 정하기]\n스마트폰 사용 기간을 $x$개월이라 하자. (단, $x$는 자연수) (1점)\n(2) [식 세우기]\n자급제 알뜰 요금제의 총비용은 $1{,}200{,}000 + 3{,}000x$원이다.\n통신사 일반 요금제의 총비용은 $53{,}000x$원이다.\n자급제 알뜰 요금제가 더 저렴해야 하므로\n$$1{,}200{,}000 + 3{,}000x < 53{,}000x$$\n이 부등식이 구하는 식이다. (1점)\n(3) [부등식 풀기]\n$$\n\\begin{aligned}\n1{,}200{,}000 + 3{,}000x &< 53{,}000x \\\\\n1{,}200{,}000 &< 53{,}000x - 3{,}000x \\\\\n1{,}200{,}000 &< 50{,}000x \\\\\nx &> \\dfrac{1{,}200{,}000}{50{,}000} \\\\\nx &> 24\n\\end{aligned}\n$$\n따라서 $x > 24$이다. (2점)\n(4) [답 서술 및 상황 확인]\n$x > 24$이고 $x$는 자연수이므로 가장 작은 $x$의 값은 $25$이다.\n$24$개월일 때 두 요금제의 총비용이 같은지 확인한다.\n$$1{,}200{,}000 + 3{,}000 \\times 24 = 1{,}272{,}000$$\n$$53{,}000 \\times 24 = 1{,}272{,}000$$\n$25$개월일 때 두 요금제의 총비용을 비교한다.\n$$1{,}200{,}000 + 3{,}000 \\times 25 = 1{,}275{,}000$$\n$$53{,}000 \\times 25 = 1{,}325{,}000$$\n$25$개월일 때 자급제 알뜰 요금제의 총비용이 $50{,}000$원 더 적다.\n따라서 최소 $25$개월 이상 사용해야 한다. (2점)",
     "points": 6
   },
   {
@@ -857,14 +857,14 @@ window.questionBank = [
       "수와 식"
     ],
     "wide": false,
-    "content": "〈서답형 4〉 다음 네 명의 학생이 주어진 문제를 해결한 과정이다. 잘못 계산한 학생들을 모두 찾아 그 이유를 간단히 서술하고, 바른 풀이를 완성하여라. [4점]\n\n\n* 민재: $(8a^3 + 4a) \\div 4a = \\dfrac{8a^3 + 4a}{4a} = 2a^2 + 4a$\n* 서준: $(3x^2 + 6x) \\div \\dfrac{1}{2}x = (3x^2 + 6x) \\times 2x = 6x^3 + 12x^2$\n* 지민: $\\dfrac{x}{3} - 1 < \\dfrac{x}{2} \\implies 2x - 6 < 3x \\implies -x < 6 \\implies x < -6$\n* 하은: $\\dfrac{x}{3} - \\dfrac{x}{4} > 1 \\implies 4x - 3x > 1 \\implies x > 1$",
+    "content": "[서술형 4]\n다음 네 명의 학생이 주어진 문제를 해결한 과정이다. 잘못 계산한 학생들을 모두 찾아 그 이유를 간단히 서술하고, 바른 풀이를 완성하여라. [4점]\n\n\n* 민재: $(8a^3 + 4a) \\div 4a = \\dfrac{8a^3 + 4a}{4a} = 2a^2 + 4a$\n* 서준: $(3x^2 + 6x) \\div \\dfrac{1}{2}x = (3x^2 + 6x) \\times 2x = 6x^3 + 12x^2$\n* 지민: $\\dfrac{x}{3} - 1 < \\dfrac{x}{2} \\implies 2x - 6 < 3x \\implies -x < 6 \\implies x < -6$\n* 하은: $\\dfrac{x}{3} - \\dfrac{x}{4} > 1 \\implies 4x - 3x > 1 \\implies x > 1$",
     "choices": [],
     "answer": "민재, 서준, 지민, 하은",
     "curriculum": "2015",
     "curriculumKey": "2015",
     "courseKey": "M2",
     "conceptClusterKey": "ALGEBRAIC_MISCONCEPTION_AUDIT",
-    "solution": "각 학생의 풀이 오류를 분석하고 바른 풀이를 작성한다.\n\n\n1. 민재의 오류 및 바른 풀이: 다항식을 단항식으로 나눌 때 분모 $4a$는 분자의 모든 항을 나누어야 한다. $4a \\div 4a = 1$인데 이를 $4a$로 잘못 적었다.\n* 바른 풀이: $(8a^3 + 4a) \\div 4a = \\frac{8a^3}{4a} + \\frac{4a}{4a} = 2a^2 + 1$\n2. 서준의 오류 및 바른 풀이: $\\dfrac{1}{2}x = \\dfrac{x}{2}$이므로 나눗셈을 역수의 곱셈으로 바꿀 때 $\\times \\dfrac{2}{x}$를 곱해야 하는데, $x$를 분자로 올려 $2x$를 곱하는 오류를 범했다.\n* 바른 풀이: $(3x^2 + 6x) \\div \\frac{x}{2} = (3x^2 + 6x) \\times \\frac{2}{x} = \\frac{6x^2}{x} + \\frac{12x}{x} = 6x + 12$\n3. 지민의 오류 및 바른 풀이: $-x < 6$에서 양변을 음수 $-1$로 나눌 때 부등호의 방향이 바뀌어야 하는데 부등호를 그대로 유지하였다.\n* 바른 풀이: $-x < 6 \\implies x > -6$\n4. 하은의 오류 및 바른 풀이: 부등식의 양변에 분모의 최소공배수 $12$를 곱할 때 우변의 상수항 $1$에도 $12$를 곱해야 하는데 곱하지 않았다.\n* 바른 풀이: $\\frac{x}{3} - \\frac{x}{4} > 1 \\implies 12\\left(\\frac{x}{3} - \\frac{x}{4}\\right) > 12 \\times 1 \\implies 4x - 3x > 12 \\implies x > 12$\n\n\n따라서 잘못 계산한 학생은 민재, 서준, 지민, 하은으로 네 명 모두이다.",
+    "solution": "네 학생의 풀이를 하나씩 검토하여 계산이 틀린 곳을 찾고, 바른 풀이로 고친다.\n(민재) 다항식을 단항식으로 나눌 때는 분자의 모든 항을 각각 나누어야 한다.\n$$\n\\begin{aligned}\n(8a^3 + 4a) \\div 4a &= \\dfrac{8a^3}{4a} + \\dfrac{4a}{4a} \\\\\n&= 2a^2 + 1\n\\end{aligned}\n$$\n$4a \\div 4a = 1$인데 $4a$로 적었으므로 민재의 풀이는 틀렸다.\n(서준) 나눗셈을 역수의 곱셈으로 바꾸면 $\\dfrac{2}{x}$를 곱해야 한다.\n$$\n\\begin{aligned}\n(3x^2 + 6x) \\div \\dfrac{1}{2}x &= (3x^2 + 6x) \\times \\dfrac{2}{x} \\\\\n&= 6x + 12\n\\end{aligned}\n$$\n$2x$를 곱했으므로 서준의 풀이는 틀렸다.\n(지민) 양변에 $6$을 곱하여 계수를 정수로 만든 뒤 부등호의 방향을 확인한다.\n$$\\dfrac{x}{3} - 1 < \\dfrac{x}{2}$$\n$$2x - 6 < 3x$$\n$$-x < 6$$\n$$x > -6$$\n$-x < 6$에서 양변을 음수 $-1$로 나눌 때 부등호의 방향을 바꾸지 않았으므로 지민의 풀이는 틀렸다.\n(하은) 양변에 $12$를 곱할 때 우변의 $1$에도 $12$를 곱해야 한다.\n$$12\\left(\\dfrac{x}{3} - \\dfrac{x}{4}\\right) > 12 \\times 1$$\n$$4x - 3x > 12$$\n$$x > 12$$\n우변의 $1$에 $12$를 곱하지 않았으므로 하은의 풀이는 틀렸다.\n따라서 잘못 계산한 학생은 민재, 서준, 지민, 하은으로 네 명 모두이다.",
     "points": 4
   }
 ];
