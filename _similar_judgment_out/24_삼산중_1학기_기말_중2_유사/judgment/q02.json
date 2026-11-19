@@ -1,0 +1,55 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "b9c343ff7d4daae6",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$x=1, y=b$를 첫째 식 $2x+3y=8$에 대입하면 $2+3b=8 \\implies b=2$이다. cases",
+    "$x=1, y=2$를 둘째 식 $4x+ay=2$에 대입하면 $4+2a=2 \\implies a=-1$이다. cases",
+    "$ab = (-1) \\times 2 = -2$이다. 따라서 정답은 ④이다. cases"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "해가 주어진 연립방정식에서 미지수 a, b를 구하고 곱을 계산하는 유형이다. cases",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "해를 대입하여 계수 a와 해의 성분 b를 순차적으로 결정한다. cases",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 식에 차례로 대입하여 a=-1, b=2를 구하고 ab=-2를 도출하는 표준 문항이다. cases",
+  "how": "첫째 식에서 b=2를 구하고 둘째 식에 대입해 a=-1을 얻어 곱 ab=-2를 계산했다. cases",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases}2x+3y=8"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ab$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=1$, $y=b$를 첫째 식 $2x+3y=8$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

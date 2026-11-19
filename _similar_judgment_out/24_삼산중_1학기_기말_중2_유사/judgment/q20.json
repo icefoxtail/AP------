@@ -1,0 +1,57 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "42805bf404060913",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(-2, 6)$을 지나고 x축에 평행한 직선은 $y=6$이다. 20 10",
+    "$y=6$과 $x+y-4=0$의 교점은 $(-2, 6)$, $2x-3y+2=0$과의 교점은 $(8, 6)$이다. 20 10",
+    "두 직선 $x+y-4=0, 2x-3y+2=0$의 교점은 $(2, 2)$이다. 20 10",
+    "삼각형의 밑변은 $8-(-2)=10$, 높이는 $6-2=4$이므로 넓이는 $1/2 \\times 10 \\times 4 = 20$이다. 20 10",
+    "따라서 정답은 ③이다. 20 10"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "점 $(-2, 6)$을 지나",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTIONS_ENCLOSED_AREA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "세 직선의 세 교점을 구하여 둘러싸인 삼각형의 넓이 20을 구하는 유형이다. 20 10",
+  "rpmRecordId": "M2-RPM-058",
+  "rpmReason": "세 직선의 교점을 구해 밑변 10, 높이 4인 삼각형 넓이를 계산한다. 20 10",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "세 직선의 연립을 통해 세 꼭짓점을 찾고 밑변과 높이로 넓이 20을 구하는 문항이다. 20 10",
+  "how": "세 교점 (-2, 6), (8, 6), (2, 2)를 구하고 1/2 * 10 * 4 = 20으로 넓이를 도출했다. 20 10",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "점 $(-2, 6)$을 지나고 $x$축에 평행한 직선과"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 직선 $x+y-4=0$과 $2x-3y+2=0$의 교점은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

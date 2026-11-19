@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "12ba8cf0f8ca4ea3",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$BC=10, CD=6$이고 $PC=x$이므로 $BP = 10-x$이다. 10 cm",
+    "삼각형 ABP의 넓이 $y = 1/2 \\times (10-x) \\times 6 = 3(10-x) = -3x + 30$이다. 10 cm",
+    "$y=18$일 때 $-3x+30=18 \\implies -3x=-12 \\implies x=4$이다. 10 cm",
+    "따라서 정답은 ①이다. 10 cm"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 $ABCD$에서 점",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "도형 위를 움직이는 점에 따른 삼각형 넓이 관계식을 세우고 길이를 구하는 유형이다. 10 cm",
+  "rpmRecordId": "M2-RPM-059",
+  "rpmReason": "변의 길이 10-x를 밑변으로 하여 넓이 함수 y=-3x+30을 세운다. 10 cm",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "움직이는 점 P에 따른 밑변 BP=10-x를 표현하고 넓이 18을 연립하는 응용 문항이다. 10 cm",
+  "how": "BP=10-x에서 넓이 식 y=-3x+30을 세우고 y=18을 대입해 x=4를 구했다. 10 cm",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서 점 $P$는 점 $B$를 출발하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "관계식",
+        "src": "stem",
+        "quote": "$x$와 $y$ 사이의 관계식과 삼각형 $ABP$의 넓이가"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "삼각형 $ABP$의 넓이 $y$는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

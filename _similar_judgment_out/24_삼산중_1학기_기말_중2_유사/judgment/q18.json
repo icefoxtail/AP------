@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "d6803cdcc58395b2",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$y=-1/2 x + 2$의 x절편은 4이므로 점 $(4, 0)$을 지난다. ax",
+    "$y=3x+6$의 y절편은 6이므로 $b=6$이다. ax",
+    "$y=ax+6$에 $(4, 0)$을 대입하면 $4a+6=0 \\implies a = -3/2$이다. ax",
+    "$b/a = 6 / (-3/2) = -4$이다. 따라서 정답은 ①이다. ax"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y=ax+b$의",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "각각의 일차함수와 만나는 x절편과 y절편으로 식을 구하고 b/a를 구하는 유형이다. ax",
+  "rpmRecordId": "M2-RPM-052",
+  "rpmReason": "두 함수의 절편으로 결정된 두 점 (4, 0), (0, 6)을 지나는 직선을 구한다. ax",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "각 함수에서 x절편 4, y절편 6을 찾아 a=-3/2를 구하고 b/a=-4를 계산하는 문항이다. ax",
+  "how": "점 (4, 0)과 (0, 6)을 이용해 a=-3/2, b=6을 구하고 b/a=-4를 도출했다. ax",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y=ax+b$의 그래프는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "두 수 $a$, $b$에 대하여 $\\dfrac{b}{a}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "$y=-\\dfrac{1}{2}x+2$의 그래프와 $x$축 위에서 만나므로 두 그래프의 $x$절편이 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

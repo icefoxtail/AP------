@@ -1,0 +1,55 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "0d6a40eac9a84d41",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "y=2x를 첫째 식에 대입하면 $\\frac{x}{4} + \\frac{2x}{6} = \\frac{7}{6}$에서 $7x = 14 \\implies x=2, y=4$이다. 0.2 cases",
+    "$x=2, y=4$를 둘째 식에 대입하면 $0.2(2) + 4k = -0.8 \\implies 4k = -1.2 \\implies k = -0.3$이다. 0.2 cases",
+    "따라서 정답은 ③이다. 0.2 cases"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "해의 조건 y=2x를 대입하여 연립방정식을 풀고 계수 k를 구하는 유형이다. 0.2 cases",
+  "rpmRecordId": "M2-RPM-035",
+  "rpmReason": "분수와 소수가 있는 연립방정식에 관계식 y=2x를 대입하여 해결한다. 0.2 cases",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "y=2x 대입 후 분수식과 소수식 0.2x+ky=-0.8을 차례로 푸는 문항이다. 0.2 cases",
+  "how": "첫째 식에 y=2x를 대입해 x=2, y=4를 구한 후 둘째 식에서 k=-0.3을 구했다. 0.2 cases",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases}\\dfrac{x}{4}+\\dfrac{y}{6}=\\dfrac{7}{6}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$y$의 값이 $x$의 $2$배이므로 $y=2x$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
