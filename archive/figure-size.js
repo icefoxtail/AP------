@@ -29,11 +29,28 @@
         return String(choice);
     }
 
+    // 객관식 답 꼴(①~⑤ 하나 또는 여럿). 숫자·글자 답(주관식·단답형)은 해당하지 않는다.
+    const OBJECTIVE_ANSWER = /^\s*[①-⑤](?:\s*[,，、]?\s*[①-⑤])*\s*$/;
+
+    // 보기 칸(choices)이 아예 없거나 빈 배열인 객관식 문항: 답이 ①~⑤ 꼴이고 그림이 있으며, 발문 글자(태그·alt 제외)에 ①·② 보기가 함께 없으면 보기가 그림 안에 있다.
+    // 이 판정은 크기 규칙(묶음 그림) 전용이다. 문항 결속(question-binding.js)은 자기 판정을 따로 가지며 이 함수를 쓰지 않는다.
+    function emptyChoicesAreFigure(question) {
+        const choices = question.choices;
+        if (choices !== undefined && choices !== null && !(Array.isArray(choices) && choices.length === 0)) return false;
+        if (!OBJECTIVE_ANSWER.test(String(question.answer === undefined || question.answer === null ? '' : question.answer))) return false;
+        if (/주관|서술|단답/.test(String(question.questionType || question.type || ''))) return false;
+        const content = String(question.content || question.question || '');
+        if (!(Boolean(question.image) || /<img\b|<svg\b/i.test(content))) return false;
+        const visibleText = content.replace(/<svg\b[\s\S]*?<\/svg>/gi, ' ').replace(/<[^>]*>/g, ' ');
+        return !(visibleText.includes('①') && visibleText.includes('②'));
+    }
+
     // (c) 보기가 전부 비었거나 번호 기호뿐인데 문항에 그림이 있으면 보기 내용이 그림 안에 있다. (d) choicesEmbeddedInImage === true.
-    // 보기가 없거나(주관식 등) 한 칸뿐인 문항은 그림 속 보기로 보지 않는다.
+    // 보기 칸이 아예 없거나 빈 배열인 객관식(답 ①~⑤ 꼴)은 emptyChoicesAreFigure가 맡는다. 주관식·한 칸뿐인 문항은 그림 속 보기로 보지 않는다.
     function choicesAreFigure(question) {
         if (!question || typeof question !== 'object') return false;
         if (question.choicesEmbeddedInImage === true || question.sourcePayload?.choicesEmbeddedInImage === true) return true;
+        if (emptyChoicesAreFigure(question)) return true;
         const choices = question.choices;
         if (!Array.isArray(choices) || choices.length < 2) return false;
         const texts = choices.map(extractChoice);
