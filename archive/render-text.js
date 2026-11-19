@@ -480,7 +480,24 @@
       return wrapLatex(value);
   }
 
+  // 원본 시험지 본문 일부는 "15. 다음 …"처럼 문항 번호로 시작한다. 엔진이 q-num으로 번호를 따로 붙이므로 그대로 그리면
+  // 화면·인쇄에 "15. 15. 다음 …"이 되고, 문제지 만들기·진단평가로 순서가 바뀌면 "3. 15. 다음 …"처럼 엉뚱한 번호가 남는다.
+  // 원본 파일은 고치지 않고(공유 데이터 고정값) 그리는 단계에서 렌더 사본의 앞 번호만 뗀다. 저장·지문 경로는 이 함수를 거치지 않는다.
+  // 조건을 좁게 둔다: 맨 앞(선택적 <p> 뒤)의 "N." 또는 "N)" 다음에 공백이 있고 본문이 이어지며, N이 이 문항의 원래 번호(q.id의 숫자)와 정확히 같을 때만.
+  // 번호가 다른 문항(서술형 번호가 1부터 다시 시작하는 시험지), 소수 "15.5", 수식 `$15.$` 안, 번호가 없는 문항은 그대로 둔다.
+  const LEADING_QUESTION_NUMBER_RE = /^((?:\s|<br\s*\/?>)*(?:<p(?:\s[^>]*)?>\s*)?)(\d{1,3})(?:\.|．|\))\s+(?=\S)/i;
+  function stripLeadingQuestionNumber(html, q) {
+      if (typeof html !== "string" || !q) return html;
+      // 원래 번호: 숫자 id("15") 또는 영문 한두 글자가 앞에 붙은 id("Q22", "q19"). 그 밖의 id는 번호로 보지 않는다.
+      const idMatch = /^(?:[A-Za-z]{1,2})?(\d{1,3})$/.exec(String(q.id ?? "").trim());
+      if (!idMatch) return html;
+      const match = LEADING_QUESTION_NUMBER_RE.exec(html);
+      if (!match || Number(match[2]) !== Number(idMatch[1])) return html;
+      return match[1] + html.slice(match[0].length);
+  }
+
   return {
+    stripLeadingQuestionNumber,
     wrapLatex,
     normalizeSolutionLineBreaks,
     extractChoice,

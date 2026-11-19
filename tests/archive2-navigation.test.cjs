@@ -117,8 +117,8 @@ test('only a teacher session shows 로그인됨; any other account is asked for 
     ['admin role', { role: 'admin', session_token: 't' }, true],
     ['owner role', { role: 'owner', session_token: 't' }, true],
     ['nested user role', { user: { role: 'Teacher ' }, session_token: 't' }, true],
-    ['built-in admin id', { id: 't_admin' }, true],
-    ['admin login id', { login_id: 'admin' }, true],
+    ['built-in admin id', { id: 't_admin', session_token: 't' }, true],
+    ['admin login id', { login_id: 'admin', session_token: 't' }, true],
     ['student', { role: 'student', session_token: 't', login_id: 's1' }, false],
     ['parent', { role: 'parent', session_token: 't' }, false],
     ['token without a role', { session_token: 't', name: '김선생' }, false],
@@ -134,6 +134,14 @@ test('only a teacher session shows 로그인됨; any other account is asked for 
       assert.match(html, /선생님 계정으로 로그인해 주세요/, label);
       assert.match(html, /data-login="teacher" href="\.\.\/apmath\/"/, label);
     }
+  }
+  // 토큰이 없는 옛 교사 세션은 요청을 보낼 수 없으므로 로그인됨으로 보이지 않고, 다른 계정 안내도 아닌 "로그인 필요"다.
+  for (const value of [{ role: 'teacher', name: '김선생' }, { id: 't_admin' }, { login_id: 'admin' }, { role: 'teacher', session_token: '' }]) {
+    const state = navigation.loginState(value);
+    assert.deepEqual([state.loggedIn, state.needsTeacher], [false, false], JSON.stringify(value));
+    const html = navigation.markup('workspace', { session: value });
+    assert.doesNotMatch(html, /로그인됨/, JSON.stringify(value));
+    assert.match(html, /data-login="out"/, JSON.stringify(value));
   }
   // Expired, empty and broken values are plain "logged out", not "wrong account".
   for (const value of [null, undefined, {}, [], 'text', 42, true, { role: 'teacher', expires_at: '2020-01-01T00:00:00Z' }]) {
