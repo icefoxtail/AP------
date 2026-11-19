@@ -1,0 +1,77 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "COS",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "-4/3",
+        "4/3"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      -4.2,
+      4.2
+    ],
+    "viewport": [
+      -4.5,
+      4.5,
+      -1.3,
+      1.3
+    ],
+    "referenceLines": [
+      {
+        "id": "p",
+        "y": "1/2",
+        "intersectionCount": 2,
+        "color": "BLUE"
+      },
+      {
+        "id": "n",
+        "y": "-1/2",
+        "intersectionCount": 4,
+        "color": "WARM",
+        "endCrossing": true
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "-4/3",
+        "-2/3",
+        "-1/3",
+        "1/3",
+        "2/3",
+        "4/3"
+      ],
+      "y": [
+        "1/2",
+        "-1/2"
+      ]
+    }
+  },
+  "caption": "식은 4cos²x=1, 즉 cos x=±1/2이다. −4π/3≤x≤4π/3에서 cos x=1/2의 해는 x=±π/3의 2개이고, cos x=−1/2의 해는 x=±2π/3, ±4π/3의 4개이다. 모두 6개이므로 a의 최솟값은 4π/3이다. 따라서 p=3, q=4이고 p+q=7이므로 답은 ①이다.",
+  "accessibilityDescription": "−4π/3에서 4π/3까지의 코사인 곡선과 가로선 y=1/2, y=−1/2이 있다. 위쪽 선은 두 점에서, 아래쪽 선은 끝점을 포함한 네 점에서 만나고 가로축에 π의 배수 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "−a≤x≤a에서 cos x=1/2의 2개와 cos x=−1/2의 4개의 근을 보여 6개가 되는 최소 a=4π/3을 읽게 한다. 이 그림은 a=4π/3인 경우이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">$-a \\le x \\le a$에서 방정식 $5\\sin^2\\left(x+\\frac{\\pi}{2}\\right)-\\sin^2 x+\\cos 2x=0$이 서로 다른 6개의 근을 갖도록 하는 양수 $a$의 최솟값은 $\\frac{q}{p}\\pi$이다. $p+q$의 값을 구하시오. (단, $p$와 $q$는 서로소인 자연수이다.)</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

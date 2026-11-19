@@ -1,0 +1,67 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1",
+      "1",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      6.3
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      -1.3,
+      1.3
+    ],
+    "referenceLines": [
+      {
+        "id": "h",
+        "y": "1/2",
+        "intersectionCount": 2
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickValues": {
+      "x": [
+        "1/6",
+        "5/6",
+        "2"
+      ],
+      "y": [
+        "1/2",
+        "-1",
+        "1"
+      ]
+    },
+    "keyPoints": true
+  },
+  "caption": "(2sin x−1)(sin x+2)=0에서 sin x=−2는 y=sin x의 값이 −1 이상이라 그래프와 만날 수 없다. sin x=1/2이므로 y=sin x의 그래프와 직선 y=1/2의 교점 x=π/6, 5π/6을 구한다. 두 해의 합은 π이다. 따라서 답은 ③이다.",
+  "accessibilityDescription": "0에서 2π까지 한 주기의 사인 곡선과 가로선 y=1/2이 두 점에서 만나고, 교점의 x좌표가 가로축 눈금으로 표시되어 있다.",
+  "newVisualInformation": [
+    "사인 곡선과 y=1/2의 두 교점 x=π/6, 5π/6을 보여 해의 합 π를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">$0 \\le x < 2\\pi$에서 방정식 $2\\sin^2 x + 3\\sin x - 2 = 0$의 모든 해의 합은? [4.2]</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

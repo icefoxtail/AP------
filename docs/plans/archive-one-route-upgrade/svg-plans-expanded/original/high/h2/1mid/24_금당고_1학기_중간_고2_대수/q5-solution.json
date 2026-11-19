@@ -1,0 +1,301 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "U",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "72"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "225"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "330"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "45"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "POLAR_POINT",
+        "inputs": [
+          "O",
+          "X"
+        ],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "6"
+          },
+          "angleDeg": {
+            "kind": "integer",
+            "value": "140"
+          },
+          "turn": "CCW"
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "X",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "displaySegments": [
+    {
+      "id": "sOA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "sOB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    },
+    {
+      "id": "sOC",
+      "refs": [
+        "O",
+        "C"
+      ]
+    },
+    {
+      "id": "sOD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "sOE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "coordinateLabels": [],
+  "coordinateCanvas": {
+    "width": 640,
+    "height": 480
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "a1",
+        "refs": [
+          "X",
+          "O",
+          "A"
+        ],
+        "value": 72,
+        "label": "72°",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 1,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a2",
+        "refs": [
+          "X",
+          "O",
+          "D"
+        ],
+        "value": 45,
+        "label": "405°",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 2,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a3",
+        "refs": [
+          "X",
+          "O",
+          "E"
+        ],
+        "value": 140,
+        "label": "500°",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 3,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a4",
+        "refs": [
+          "X",
+          "O",
+          "B"
+        ],
+        "value": 225,
+        "label": "225°",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 4,
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "a5",
+        "refs": [
+          "X",
+          "O",
+          "C"
+        ],
+        "value": 330,
+        "label": "330°",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "ring": 5,
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "caption": "각을 0° 이상 360° 미만으로 바꾸면 ①은 72°(동경 OA, 제1사분면), ②는 225°(동경 OB, 제3사분면), ③은 330°(동경 OC, 제4사분면), ④는 405°−360°=45°(동경 OD, 제1사분면), ⑤는 500°−360°=140°(동경 OE, 제2사분면)이다. 제2사분면은 90°<θ<180°이므로 OE뿐이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "원점에서 뻗은 다섯 동경 OA, OB, OC, OD, OE가 있고 각각 72°, 225°, 330°, 405°, 500°의 각 표시가 붙어 있다. OE만 위쪽 왼쪽 영역에 있다.",
+  "newVisualInformation": [
+    "다섯 보기의 각을 한 좌표평면에 동경으로 그려 405°는 제1사분면, 500°는 360°를 더 돈 140°로 제2사분면임을 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">다음 중 제2사분면의 각은? [4.0]</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

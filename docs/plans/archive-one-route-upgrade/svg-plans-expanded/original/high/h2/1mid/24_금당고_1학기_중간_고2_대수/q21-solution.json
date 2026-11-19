@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      9,
+      -2,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "81/4",
+        "shiftX": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "2",
+          "15/4"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "81/4",
+        "coefficients": [
+          "1",
+          "1",
+          "-3",
+          "0"
+        ],
+        "domain": [
+          "31/10",
+          "9"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "color": "GREEN",
+        "label": "l"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "3"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "7/2",
+          "y": "9/2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "15/2",
+          "y": "1/2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "3",
+          "y": "0",
+          "coordinates": true
+        }
+      ],
+      "polygons": [
+        {
+          "id": "tri",
+          "points": [
+            "A",
+            "B",
+            "C"
+          ],
+          "fill": "LIGHT"
+        }
+      ]
+    }
+  },
+  "caption": "a=81/4일 때의 그림이고 f는 y=aˣ⁻³, g는 y=logₐ(x−3), l은 y=−x+8이다. 두 곡선은 직선 y=x−3에 대칭이므로 중점의 x좌표 11/2에서 l이 y=−x+8이다. A(u+3, 5−u), B(8−u, u)와 C(3, 0)의 넓이 조건 |10u−25|/2=10에서 u=1/2이다. 따라서 A(7/2, 9/2), B(15/2, 1/2)이고 a의 1/2제곱=9/2에서 a=81/4이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f, 오른쪽으로 완만히 올라가는 주황 로그 곡선 g, 오른쪽 아래로 내려가는 초록 직선 l이 있다. 점 A, B, C를 꼭짓점으로 하는 삼각형이 색칠되어 있고 세 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=−x+8과 두 곡선의 교점 A(7/2, 9/2), B(15/2, 1/2), 점 C(3, 0)과 삼각형 ABC를 보여 넓이 10에서 a=81/4를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">$a>2$인 실수 $a$에 대하여 기울기가 $-1$인 직선이 두 곡선 $y=a^{x-3}$, $y=\\log_a(x-3)$과 만나는 점을 각각 A, B라 하자. 점 C(3, 0)에 대하여 삼각형 ABC의 넓이가 10이고 선분 AB의 중점의 $x$좌표가 $\\frac{11}{2}$일 때, $a$의 값을 구하시오. [10]</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

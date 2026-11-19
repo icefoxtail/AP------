@@ -1,0 +1,80 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-24",
+          "11",
+          "-1"
+        ]
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "2",
+        "9"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      2,
+      9
+    ],
+    "viewport": [
+      1,
+      10,
+      -8,
+      8
+    ],
+    "axisTickValues": {
+      "x": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "y": []
+    },
+    "axisTitles": {
+      "x": "n",
+      "y": "A"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "3",
+        "y": "0"
+      },
+      {
+        "id": "Q",
+        "x": "8",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "11/2",
+        "y": "25/4"
+      }
+    ]
+  },
+  "caption": "A는 n에 따른 A=−n²+11n−24=−(n−3)(n−8)의 그래프이다. 3<n<8에서 A>0이고 n=3, 8에서 A=0이다. n제곱근 중 실수의 개수는 A>0이면 홀수 n에서 1개, 짝수 n에서 2개이고 A=0이면 1개이다. 따라서 f(3)=1, f(4)=2, f(5)=1, f(6)=2, f(7)=1이어서 f(n)+f(n+1)=3인 n은 3, 4, 5, 6이고 합은 18이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "n이 2에서 9 사이일 때 위로 볼록한 포물선이 그려져 있고, 가로축과 만나는 두 점 P, Q와 꼭짓점 V의 좌표가 표시되어 있다. 3과 8 사이에서 곡선이 가로축 위에 있다.",
+  "newVisualInformation": [
+    "A=−(n−3)(n−8)의 부호가 3<n<8에서 양수임을 P(3, 0), Q(8, 0)로 보여 f(n)을 n의 홀짝과 함께 정하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">자연수 $n\\ (n \\ge 2)$에 대하여 $-n^2+11n-24$의 $n$제곱근 중에서 실수인 것의 개수를 $f(n)$이라 할 때, $f(n)+f(n+1)=3$을 만족시키는 모든 자연수 $n$의 값의 합은?</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

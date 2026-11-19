@@ -1,0 +1,73 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "6",
+      "2",
+      "3"
+    ],
+    "phasePi": "0",
+    "absolute": true,
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "2"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "domain": [
+      0,
+      6.3
+    ],
+    "viewport": [
+      -0.5,
+      6.8,
+      -0.5,
+      10
+    ],
+    "referenceLines": [
+      {
+        "id": "t3",
+        "y": "3",
+        "intersectionCount": 7,
+        "endCrossing": true,
+        "color": "BLUE"
+      },
+      {
+        "id": "t5",
+        "y": "5",
+        "intersectionCount": 4,
+        "color": "WARM"
+      }
+    ],
+    "keyPoints": true,
+    "axisTickPi": true,
+    "axisTickPiStep": "1/2",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "3",
+        "5",
+        "9"
+      ]
+    }
+  },
+  "caption": "f(t)=7이 되도록 a=6, b=3이면 그래프는 y=|6sin2x+3|이다. 직선 y=3은 양 끝점을 포함해 7개의 점에서 만난다(파란 선). 예: 직선 y=5(주황 선)는 4개의 점에서 만난다. 3<t<9일 때 sin2x=(t−3)/6에서만 해가 4개이고 최댓값은 9이다. 따라서 f(t)=4인 t의 범위는 3<t<9이다.",
+  "accessibilityDescription": "0에서 2π까지 절댓값이 씌워진 사인 곡선이 여러 번 오르내리며 최고 높이 9에 닿는다. 가로선 y=3은 일곱 점에서, 가로선 y=5는 네 점에서 만나고 세로축에 3, 5, 9 눈금이 표시되어 있다.",
+  "newVisualInformation": [
+    "y=|6sin2x+3|의 그래프에서 y=3은 7개, y=5는 4개의 교점을 가지며 최댓값 9를 표시해 f(t)=4인 범위 3<t<9를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">실수 $t$에 대하여 직선 $y=t$와 함수 $y=|a\\sin 2x + b|\\ (0 \\le x \\le 2\\pi)$의 그래프가 만나는 서로 다른 교점의 개수를 $f(t)$라 하자. $f(3)=7$일 때, $f(t)=4$를 만족시키는 모든 양수 $t$의 범위를 구하시오. (단, $a>0$, $b>0$) [5.0]</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

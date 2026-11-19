@@ -1,0 +1,113 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      10,
+      -3,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "6",
+        "coefficients": [
+          "1",
+          "1/2",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "5/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "6",
+        "coefficients": [
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/10",
+          "10"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "8",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "9"
+        ],
+        "color": "GREEN",
+        "label": "l"
+      },
+      {
+        "id": "hb",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "10"
+        ],
+        "style": "DASHED",
+        "label": "y=6"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "8",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "2",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "6",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "a²=6인 a=√6일 때의 그림이고 f는 y=aˣ, g는 y=logₐx, l은 y=−x+8이다. 두 곡선의 교점 B, C는 직선 위에서 좌표가 서로 바뀐 점이고 BC:CA=2:1에서 B(2, 6), C(6, 2)이다. 점 B를 지나는 수평선 y=6이 g와 만나는 점 D는 x=a⁶=216이므로 D(216, 6)이며 그림의 범위 밖에 있다. 삼각형 BCD의 넓이는 (1/2)(216−2)(6−2)=428이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f, 완만히 올라가는 주황 로그 곡선 g, 오른쪽 아래로 내려가는 초록 직선 l과 가로 점선 y=6이 있다. 직선 위의 점 A, B, C의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "직선 y=−x+8과 두 곡선의 교점 B(2, 6), C(6, 2), 점 A(8, 0), 수평선 y=6을 보여 삼각형 BCD의 높이 4와 밑변의 방향을 읽게 한다. D는 범위 밖(x=216)이다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">점 A(8, 0)을 지나는 직선 $y=-x+8$이 두 곡선 $y=a^x$, $y=\\log_a x$와 만나는 점을 각각 B, C라 하고, 점 B를 지나고 $y$축에 수직인 직선이 곡선 $y=\\log_a x$와 만나는 점을 D라 하자. $\\overline{BC}:\\overline{CA}=2:1$일 때, 삼각형 BCD의 넓이는? (단, $a>1$) [4.6]</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

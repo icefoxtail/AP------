@@ -1,0 +1,106 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      9,
+      -6,
+      6
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "0"
+        ],
+        "domain": [
+          "1/4",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "1/4",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "h",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "-1",
+          "1",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "1/4",
+          "8"
+        ],
+        "color": "GREEN",
+        "label": "h"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1",
+        "8"
+      ],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "-3",
+          "coordinates": true
+        },
+        {
+          "id": "R",
+          "x": "1",
+          "y": "3",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 y=log₂x, g는 f를 y축 방향으로 −3만큼 평행이동한 y=log₂x−3, h는 g를 x축에 대하여 대칭이동한 y=−log₂x+3의 그래프이다. 점 P(1, 0)이 Q(1, −3)을 거쳐 R(1, 3)으로 옮겨진다. h는 −log₂x=log(1/2)x를 이용해 log(1/2)(x/8)과 같으므로 a=1/2, b=1/8이다. 따라서 a+b=5/8이다.",
+  "accessibilityDescription": "파란 로그 곡선 f와 이를 아래로 내린 주황 곡선 g, g를 가로축에 대칭시킨 초록 곡선 h가 있다. x=1에서 세 곡선 위의 점 P, Q, R의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "평행이동한 g와 x축 대칭한 h를 f와 함께 그리고 x=1에서의 대응점 P(1, 0), Q(1, −3), R(1, 3)을 표시해 h=log(1/2)(x/8)을 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "<div class=\"box\">함수 $y=\\log_2 x$의 그래프를 $y$축의 방향으로 $-3$만큼 평행이동한 후 $x$축에 대하여 대칭이동한 그래프가 함수 $y=\\log_a bx$의 그래프와 일치할 때, $a+b$의 값을 구하시오. (단, $a \\ne 1$, $a>0$, $b>0$이고, $a, b$는 상수이다.) [4.0]</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
