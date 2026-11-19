@@ -1,0 +1,70 @@
+{
+  "qid": 1,
+  "itemFingerprint": "a71030c595713792",
+  "solveSteps": [
+    "부채꼴 호의 길이 $l = 2\\pi$, 넓이 $S = 6\\pi$이다.",
+    "부채꼴 넓이 공식 $S = \\frac{1}{2}rl$에 대입한다.",
+    "$6\\pi = \\frac{1}{2} \\cdot r \\cdot 2\\pi = \\pi r$이다.",
+    "따라서 반지름의 길이는 $r = 6$이다. (②번)"
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "어떤 부채꼴의 호의 길이가 $2\\pi$이고 넓이가 $6\\pi$일 때",
+  "rpmRecordId": "H2-M1-RPM-096",
+  "rpmReason": "호도법에서 부채꼴 호의 길이 $2\\pi$와 넓이 $6\\pi$ 공식 $S = \\frac{1}{2}rl$로 반지름 6을 구하는 H2-M1-RPM-096에 해당한다.",
+  "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+  "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+  "typeReason": "호의 길이 $l=2\\pi$와 넓이 공식 $S = \\frac{1}{2}rl$로부터 반지름의 길이를 구하는 호도법 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부채꼴 넓이 공식 $S = \\frac{1}{2}rl$에 $l = 2\\pi, S = 6\\pi$를 바로 대입하여 6을 얻는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "어떤 부채꼴의 호의 길이가 $2\\pi$이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "넓이를 $S$라 하면"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "호의 길이가 $2\\pi$이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$S = \\frac{1}{2}rl$에 $l = 2\\pi, S = 6\\pi$를 대입하여 $r = 6$으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

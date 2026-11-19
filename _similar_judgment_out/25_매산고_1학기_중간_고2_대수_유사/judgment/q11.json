@@ -1,0 +1,72 @@
+{
+  "qid": 11,
+  "itemFingerprint": "38845ebc0ccf537b",
+  "solveSteps": [
+    "배점 5.1점 문항으로 $a > 0$에서 $a = \\frac{5 - (-1)}{2} = 3, d = \\frac{5 + (-1)}{2} = 2$이다.",
+    "두 최댓값 사이의 간격이 주기이므로 $P = \\frac{3\\pi}{4} - \\frac{\\pi}{4} = \\frac{\\pi}{2}$이다.",
+    "$\\frac{2\\pi}{b} = \\frac{\\pi}{2} \\implies b = 4$이다.",
+    "$x = \\frac{\\pi}{4}$에서 $3\\sin(\\pi + c) + 2 = 5 \\implies \\sin(\\pi + c) = 1$이다.",
+    "$\\pi < c < 2\\pi$에서 $c = \\frac{3\\pi}{2}$이다.",
+    "따라서 $\\frac{abcd}{2\\pi} = \\frac{3 \\times 4 \\times (3\\pi/2) \\times 2}{2\\pi} = 18$이다. (③번)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "함수 $y = a\\sin(bx + c) + d$ ($a > 0$, $b > 0$, $\\pi < c < 2\\pi$)의 최댓값이 $5$, 최솟값이 $-1$이고",
+  "rpmRecordId": "H2-M1-RPM-105",
+  "rpmReason": "배점 5.1점 문항으로 삼각함수의 진폭, 주기, 평행이동을 해석하여 $\\frac{abcd}{2\\pi} = 18$을 구하는 H2-M1-RPM-105에 해당한다.",
+  "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+  "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+  "typeReason": "배점 5.1점 문항으로 최댓값·최솟값과 주기로 삼각함수 계수를 결정하여 $\\frac{abcd}{2\\pi}$를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "배점 5.1점 문항으로 주기 $\\pi/2$와 위상 $c=3\\pi/2$를 구하고 식의 값 18을 계산하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $y = a\\sin(bx + c) + d$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "점의 $x$좌표가 각각"
+      }
+    ],
+    "method": [
+      {
+        "term": "최댓값",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "인접한 두 최댓값을 갖는"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최댓값이 $5$, 최솟값이 $-1$이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "배점 5.1점 문항으로 $a=3, d=2, b=4, c=3\\pi/2$를 얻어 $\\frac{abcd}{2\\pi} = 18$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

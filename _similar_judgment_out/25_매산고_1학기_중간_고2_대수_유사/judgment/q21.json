@@ -1,0 +1,71 @@
+{
+  "qid": 21,
+  "itemFingerprint": "f7d2f0140e85ddc8",
+  "solveSteps": [
+    "$x > 0$이고 두 진수가 같으므로 $x^2 + (a + 1)x - a + 8 = x \\implies x^2 + ax - a + 8 = 0$이다.",
+    "오직 하나의 양의 실근을 가질 조건을 구한다.",
+    "(1) 양의 중근: $D = a^2 - 4(-a + 8) = a^2 + 4a - 32 = (a + 8)(a - 4) = 0$. $a = -8$일 때 중근 $x = 4 > 0$ (성립). $a = 4$일 때 중근 $x = -2 < 0$ (부적합).",
+    "(2) 한 양근과 한 0 이하의 실근: $f(0) = -a + 8 < 0 \\implies a > 8$일 때 두 근의 곱이 음수이므로 서로 다른 부호의 두 실근을 갖는다.",
+    "따라서 구하는 실수 $a$의 조건은 $a = -8$ 또는 $a > 8$이다."
+  ],
+  "solvedAnswer": "$a = -8$ 또는 $a > 8$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "방정식 $\\log_3\\{x^2 + (a + 1)x - a + 8\\} - \\log_3 x = 0$이 오직 한 개의 근을 갖기 위한",
+  "rpmRecordId": "H2-M1-RPM-089",
+  "rpmReason": "로그방정식의 진수 조건 $x>0$과 판별식 $a^2+4a-32=0$ 및 $f(0)<0$ 조건에서 $a=-8$ 또는 $a>8$을 구하는 H2-M1-RPM-089에 해당한다.",
+  "problemTypeKey": "PT_H22A_03_LOG_EQUATION",
+  "templateKey": "TPL_H22A_03_LOG_EQUATION_089",
+  "typeReason": "방정식 $x^2 + ax - a + 8 = 0$의 판별식 $a^2 + 4a - 32 = 0$과 진수 조건을 고려하여 양의 실근이 오직 하나 존재할 조건을 판정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "진수 조건 $x>0$ 하에서 $x^2 + ax - a + 8 = 0$의 판별식 $a^2+4a-32=0$과 근의 분리 $a>8$ 두 경우를 엄밀히 추론해야 하는 서술형 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $\\log_3\\{x^2 + (a + 1)x - a + 8\\} - \\log_3 x = 0$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "실수 $a$의 조건을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "양의 중근을 갖는 경우: 판별식 $D"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "갖기 위한 실수 $a$의 조건을"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "진수 $x>0$에서 $x^2+ax-a+8=0$의 양근 1개 조건으로 $a=-8$ 또는 $a>8$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "qid": 18,
+  "itemFingerprint": "79c0b1b75ec4f8b6",
+  "solveSteps": [
+    "중심각 $\\theta$, $\\overline{AC} = r_2 - r_1 = x$라 하자.",
+    "도형 $ABDC$의 둘레: $(r_1 + r_2)\\theta + 2x = 36 \\implies (r_1 + r_2)\\theta = 36 - 2x$이다.",
+    "넓이 $S = \\frac{1}{2}(r_2^2 - r_1^2)\\theta = \\frac{1}{2}x(36 - 2x) = -x^2 + 18x = -(x - 9)^2 + 81$이다.",
+    "$0 < x < 18$에서 $x = 9$일 때 넓이가 최대가 된다.",
+    "따라서 선분 $AC$의 길이는 $9$이다."
+  ],
+  "solvedAnswer": "$9$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "둘러싸인 도형 $ABDC$의 둘레의 길이가 $36$일 때, 도형 $ABDC$의 넓이가 최대가 되는",
+  "rpmRecordId": "H2-M1-RPM-096",
+  "rpmReason": "부채꼴 호도법 공식과 둘레 36 조건에서 이차함수 모델링으로 선분 $AC$의 길이 9를 구하는 H2-M1-RPM-096에 해당한다.",
+  "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+  "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+  "typeReason": "부채꼴의 호의 길이와 넓이 공식으로 둘러싸인 도형 $ABDC$의 최대넓이 조건을 모델링하는 호도법 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "도형 $ABDC$의 둘레와 넓이를 $x$의 이차함수 $-x^2+18x$로 표현하여 꼭짓점 9를 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "두 부채꼴 $OAB$, $OCD$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "선분 $AC$의 길이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "도형 $ABDC$의 넓이가 최대가 되는"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "중심각의 크기가 같고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "둘레 36에서 넓이 $S = x(18 - x) = -(x-9)^2+81$로 최대가 되는 $x = 9$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

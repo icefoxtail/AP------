@@ -1,0 +1,71 @@
+{
+  "qid": 13,
+  "itemFingerprint": "ebd5997ddda608da",
+  "solveSteps": [
+    "배점 5.4점 문항으로 $2^x = t > 0$으로 치환하면 $t^2 + at + 9 = 0$이다.",
+    "원 방정식이 실근을 갖지 않으려면 $t^2 + at + 9 = 0$이 양의 실근을 갖지 않아야 한다.",
+    "(1) 허근: $D = a^2 - 36 < 0 \\implies -6 < a < 6$.",
+    "(2) 0 이하의 실근: $D \\ge 0$이고 두 근의 곱 9 > 0이므로 두 음근이다. 두 근의 합 $-a < 0 \\implies a \\ge 6$.",
+    "(1), (2)에서 $a > -6$이므로 정수 $a$의 최솟값은 $-5$이다. (②번)"
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-02",
+  "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+  "unitEvidence": "방정식 $4^x + a \\cdot 2^x + 9 = 0$이 실근을 갖지 않도록 하는 정수 $a$의 최솟값은? (5.4점)",
+  "rpmRecordId": "H2-M1-RPM-082",
+  "rpmReason": "배점 5.4점 문항으로 지수방정식 $4^x + a \\cdot 2^x + 9 = 0$의 치환 이차방정식 실근 조건에서 최솟값 -5를 구하는 H2-M1-RPM-082에 해당한다.",
+  "problemTypeKey": "PT_H22A_02_EXP_EQUATION",
+  "templateKey": "TPL_H22A_02_EXP_EQUATION_082",
+  "typeReason": "배점 5.4점 문항으로 $2^x = t > 0$ 치환 후 양의 실근 부존재 조건을 이차방정식의 근의 분리로 해석하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "배점 5.4점 문항으로 $t>0$ 조건에서 허근과 음수 실근의 두 경우를 모두 고려해 $a > -6$에서 정수 $-5$를 도출하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $4^x + a \\cdot 2^x + 9 = 0$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "정수 $a$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정수",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "정수 $a$의 최솟값은?"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "실근을 갖지 않도록 하는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "배점 5.4점 문항으로 $t^2+at+9=0$이 $t>0$ 실근을 갖지 않을 조건 $a > -6$에서 정수 최솟값 $-5$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
