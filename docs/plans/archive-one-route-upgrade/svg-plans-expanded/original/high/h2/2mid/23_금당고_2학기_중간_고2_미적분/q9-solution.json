@@ -1,0 +1,89 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -3,
+      2,
+      -1,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f1",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "0"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "f2",
+        "kind": "EXPONENTIAL",
+        "coefficients": [
+          "2",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "0",
+          "7/5"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "t",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "2"
+        ],
+        "domain": [
+          "0",
+          "2"
+        ],
+        "color": "WARM",
+        "style": "DASHED",
+        "label": "y=2x+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "x=0에서 연속이므로 e의 b제곱이 2이므로 b=ln2이다. 미분가능하려면 좌미분계수 a와 우미분계수 e의 b제곱=2가 같아야 하므로 a=2이다. 그림은 왼쪽 직선 y=2x+2와 오른쪽 곡선 y=2eˣ가 P(0,2)에서 이어지고, 점선인 접선 y=2x+2가 P에서 두 조각에 함께 접함을 보인다. ab=2ln2이므로 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\begin{cases}ax+2&(x<0)\\\\e^{x+b}&(x\\ge0)\\end{cases}$가 $x=0$에서 미분가능할 때, $ab$의 값은? (단, $a,b$는 실수) [4.4점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=2, b=ln2일 때 두 조각이 P(0,2)에서 이어지고 접선이 같음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "a=2, b=ln2에서 두 조각이 P(0,2)에서 이어지고 기울기 2의 같은 접선을 가짐을 보인다."
+  ],
+  "accessibilityDescription": "점 P에서 왼쪽 직선과 오른쪽 지수곡선이 이어지고 P에서 두 조각에 접하는 점선 직선이 함께 그려진 그래프이다."
+}

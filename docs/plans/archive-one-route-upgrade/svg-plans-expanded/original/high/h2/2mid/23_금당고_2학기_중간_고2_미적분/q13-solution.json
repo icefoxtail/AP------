@@ -1,0 +1,91 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -4,
+      4,
+      -2,
+      4
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-5/2",
+          "3"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "-1",
+          "3",
+          "0"
+        ],
+        "domain": [
+          "-3",
+          "5/2"
+        ],
+        "color": "WARM",
+        "label": "g"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "Q",
+          "x": "1",
+          "y": "1",
+          "coordinates": true
+        },
+        {
+          "id": "H",
+          "x": "1",
+          "y": "0",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "g(x)=f(-x)=log₂(3-x)는 f(x)=log₂(x+3)의 y축 대칭이다. 그림은 t=1일 때로, P(1,2), Q(1,1)이고 PQ=log₂(3+t)-log₂(3-t)이다. t→0+에서 PQ/(2t)는 h(t)=log₂(3+t)-log₂(3-t)에 대해 h′(0)/2이고 h′(0)=2/(3ln2)이므로 극한은 1/(3ln2)이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=\\log_2(x+3)$의 그래프를 $y$축에 대하여 대칭이동한 곡선을 $y=g(x)$라 하자. 곡선 $y=f(x)$ 위의 점 $P(t,f(t))$에서 $x$축에 내린 수선과 곡선 $y=g(x)$가 만나는 점을 $Q$라 할 때, $\\displaystyle\\lim_{t\\to0+}\\frac{\\overline{PQ}}{2t}$의 값은? (단, $t>-3$) [4.7점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "y축 대칭인 두 로그곡선 위의 P(t,f(t)), Q(t,g(t))와 선분 PQ를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "y축 대칭인 두 로그곡선 f, g와 x=1에서의 점 P, Q, 수선의 발 H를 보인다."
+  ],
+  "accessibilityDescription": "y축에 대하여 대칭인 두 로그곡선이 파란색과 주황색으로 그려져 있고, x=1에서 두 곡선 위의 점 P, Q와 x축 위의 점 H가 표시되어 있다."
+}

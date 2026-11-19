@@ -1,0 +1,333 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "SOURCE_COORDINATE_AXES_v1",
+      "unit": "source-coordinate",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "NORMALIZATION_ORIGIN",
+        "inputs": [],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "X",
+        "op": "NORMALIZATION_AXIS",
+        "inputs": [],
+        "args": {
+          "length": {
+            "kind": "integer",
+            "value": "1"
+          }
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "ln",
+        "op": "SOURCE_LINE",
+        "inputs": [],
+        "args": {
+          "a": {
+            "kind": "integer",
+            "value": "0"
+          },
+          "b": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "c": {
+            "kind": "integer",
+            "value": "-2"
+          }
+        },
+        "outputType": "LINE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "4"
+                },
+                {
+                  "kind": "integer",
+                  "value": "49"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "9"
+                },
+                {
+                  "kind": "integer",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "17"
+                },
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "457"
+                },
+                {
+                  "kind": "integer",
+                  "value": "392"
+                }
+              ]
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "17"
+                },
+                {
+                  "kind": "integer",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "N",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "expression",
+              "op": "div",
+              "args": [
+                {
+                  "kind": "integer",
+                  "value": "31"
+                },
+                {
+                  "kind": "integer",
+                  "value": "14"
+                }
+              ]
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cBig",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "M"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "457"
+              },
+              {
+                "kind": "integer",
+                "value": "392"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "cSmall",
+        "op": "CIRCLE_CENTER_RADIUS",
+        "inputs": [
+          "N"
+        ],
+        "args": {
+          "radius": {
+            "kind": "expression",
+            "op": "div",
+            "args": [
+              {
+                "kind": "integer",
+                "value": "3"
+              },
+              {
+                "kind": "integer",
+                "value": "14"
+              }
+            ]
+          }
+        },
+        "outputType": "CIRCLE",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "D",
+    "C"
+  ],
+  "displaySegments": [
+    {
+      "id": "sCD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    }
+  ],
+  "displayLines": [
+    "ln"
+  ],
+  "displayCircles": [
+    "cBig",
+    "cSmall"
+  ],
+  "pointNames": {
+    "A": "A₂",
+    "B": "B₂",
+    "C": "C₂",
+    "D": "D₂"
+  },
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "caption": "예: n=2일 때를 그린다. 직선 y=2는 A₂(4/49,2), B₂(9/4,2)를 지나는 할선이고 D₂(0,2)에서 y축과 만난다. y축은 큰 원에 C₂에서 접하므로 방멱에 의해 C₂D₂²=D₂A₂·D₂B₂=(2/7)²·(3/2)²=(3/7)²이다. 일반적으로 C_nD_n²=(3/7)ⁿ이고 선분 C_nD_n을 지름으로 하는 작은 원의 넓이는 S_n=(π/4)(3/7)ⁿ이다. 공비 3/7인 등비급수의 합은 (π/4)·(3/7)/(1-3/7)=3π/16이다. 따라서 답은 3π/16이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[서술형 2] 자연수 $n$에 대하여 직선 $y=n$이 두 직선 $x=(\\frac{2}{7})^n$, $x=(\\frac{3}{2})^n$과 만나는 점을 각각 $A_n,B_n$이라 하자. 두 점을 지나고 $y$축에 접하는 원의 접점을 $C_n$이라 하고, $D_n(0,n)$에 대하여 선분 $C_nD_n$을 지름으로 하는 원의 넓이를 $S_n$이라 할 때, $\\displaystyle\\sum_{n=1}^{\\infty}S_n$의 값을 구하시오. [10점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 y=n 위의 A_n, B_n, D_n과 y축에 접하는 큰 원, 선분 C_nD_n을 지름으로 하는 작은 원을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "n=2인 예에서 A₂, B₂를 지나 y축의 C₂에서 접하는 큰 원과, 선분 C₂D₂를 지름으로 하는 작은 원, 할선 y=2를 보인다."
+  ],
+  "accessibilityDescription": "수평선 y=2가 있고 이 선 위의 두 점 A₂, B₂를 지나며 y축에 접하는 큰 원이 그려져 있다. y축 위의 접점 C₂와 수평선과 y축이 만나는 점 D₂를 잇는 선분을 지름으로 하는 작은 원도 함께 그려져 있다."
+}

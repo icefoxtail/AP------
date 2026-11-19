@@ -1,0 +1,301 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "1"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "A1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "B2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "B1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "C2",
+        "op": "MIDPOINT",
+        "inputs": [
+          "O",
+          "C1"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "O",
+    "A1",
+    "B1",
+    "C1",
+    "A2",
+    "B2",
+    "C2"
+  ],
+  "displaySegments": [
+    {
+      "id": "s1",
+      "refs": [
+        "O",
+        "A1"
+      ]
+    },
+    {
+      "id": "s2",
+      "refs": [
+        "A1",
+        "B1"
+      ]
+    },
+    {
+      "id": "s3",
+      "refs": [
+        "B1",
+        "C1"
+      ]
+    },
+    {
+      "id": "s4",
+      "refs": [
+        "C1",
+        "O"
+      ]
+    },
+    {
+      "id": "s5",
+      "refs": [
+        "A1",
+        "C1"
+      ]
+    },
+    {
+      "id": "s6",
+      "refs": [
+        "O",
+        "A2"
+      ]
+    },
+    {
+      "id": "s7",
+      "refs": [
+        "A2",
+        "B2"
+      ]
+    },
+    {
+      "id": "s8",
+      "refs": [
+        "B2",
+        "C2"
+      ]
+    },
+    {
+      "id": "s9",
+      "refs": [
+        "C2",
+        "O"
+      ]
+    },
+    {
+      "id": "s10",
+      "refs": [
+        "A2",
+        "C2"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "pointNames": {
+    "A1": "A₁",
+    "B1": "B₁",
+    "C1": "C₁",
+    "A2": "A₂",
+    "B2": "B₂",
+    "C2": "C₂"
+  },
+  "coordinateCanvas": {
+    "width": 440,
+    "height": 440
+  },
+  "planeMarks": {
+    "regions": [
+      {
+        "id": "rgS1",
+        "fill": "LIGHT",
+        "label": "S_1",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A1",
+              "to": "C1",
+              "side": "MINOR"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "O",
+              "steps": [
+                {
+                  "to": "A1"
+                },
+                {
+                  "to": "C1"
+                },
+                {
+                  "to": "O"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "rgS2",
+        "fill": "MEDIUM",
+        "label": "S_2",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "sector": {
+              "center": "O",
+              "from": "A2",
+              "to": "C2",
+              "side": "MINOR"
+            }
+          }
+        ],
+        "holes": [
+          {
+            "loop": {
+              "start": "O",
+              "steps": [
+                {
+                  "to": "A2"
+                },
+                {
+                  "to": "C2"
+                },
+                {
+                  "to": "O"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "S₁은 반지름 1인 사분원에서 직각이등변삼각형 OA₁C₁을 뺀 부분으로 S₁=π/4-1/2이다. 내접하는 정사각형 OA₂B₂C₂의 한 변은 s이고 B₂(s,s)가 빗변 x+y=1 위에 있으므로 s=1/2이다. 그림처럼 변의 길이가 1/2배, 넓이가 1/4배로 되풀이되므로 S₂는 S₁의 1/4이다. 공비 1/4인 등비급수의 합은 (π/4-1/2)/(1-1/4)=(π-2)/3이다. 따라서 답은 ④이다.",
+  "accessibilityDescription": "한 변이 1인 정사각형 OA₁B₁C₁과 그 안의 사분원, 삼각형 OA₁C₁에 내접하는 한 변이 1/2인 정사각형 OA₂B₂C₂와 그 안의 작은 사분원이 그려져 있다. 각 사분원에서 삼각형을 뺀 활꼴이 S₁과 S₂로 칠해져 있다.",
+  "newVisualInformation": [
+    "정사각형 OA₁B₁C₁과 사분원, 내접 정사각형 OA₂B₂C₂(한 변 1/2)와 작은 사분원을 그리고 활꼴 S₁, S₂를 칠해 닮음비 1/2, 넓이비 1/4을 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "한 변의 길이가 $1$인 정사각형 $OA_1B_1C_1$에 점 $O$를 중심, $OA_1$을 반지름으로 하는 사분원을 그리고, 삼각형 $OA_1C_1$에 내접하는 정사각형 $OA_2B_2C_2$를 그린다. 이 과정을 반복할 때, 호 $\\widehat{A_nC_n}$과 선분 $\\overline{A_nC_n}$으로 둘러싸인 부분의 넓이를 $S_n$이라 하자. $\\sum_{n=1}^{\\infty}S_n$의 값은? [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

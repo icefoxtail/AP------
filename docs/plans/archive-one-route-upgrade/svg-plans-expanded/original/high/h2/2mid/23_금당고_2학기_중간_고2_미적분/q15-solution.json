@@ -1,0 +1,245 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "1"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "4"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      },
+      {
+        "id": "P",
+        "op": "DIVISION_POINT",
+        "inputs": [
+          "B",
+          "H"
+        ],
+        "args": {
+          "m": {
+            "kind": "integer",
+            "value": "3"
+          },
+          "n": {
+            "kind": "integer",
+            "value": "1"
+          },
+          "mode": "INTERNAL"
+        },
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ]
+  },
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H",
+    "P"
+  ],
+  "displaySegments": [
+    {
+      "id": "sAB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "sBC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "sCA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "sBH",
+      "refs": [
+        "B",
+        "H"
+      ]
+    },
+    {
+      "id": "sPC",
+      "refs": [
+        "P",
+        "C"
+      ]
+    }
+  ],
+  "displayLines": [],
+  "displayCircles": [],
+  "rightAngles": [
+    {
+      "id": "rB",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "rH",
+      "refs": [
+        "B",
+        "H",
+        "C"
+      ]
+    }
+  ],
+  "coordinateCanvas": {
+    "width": 480,
+    "height": 400
+  },
+  "planeMarks": {
+    "angles": [
+      {
+        "id": "aA",
+        "refs": [
+          "B",
+          "A",
+          "C"
+        ],
+        "value": 26.57,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "aC",
+        "refs": [
+          "P",
+          "C",
+          "H"
+        ],
+        "value": 26.57,
+        "label": "θ",
+        "labelKind": "MATH",
+        "arcs": 1,
+        "style": "ARC",
+        "factRole": "GIVEN"
+      }
+    ],
+    "regions": [
+      {
+        "id": "rgPBC",
+        "fill": "MEDIUM",
+        "factRole": "CONCLUSION",
+        "shapes": [
+          {
+            "polygon": [
+              "P",
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "예: AB=2, BC=1일 때(tanθ=1/2)를 그린다. 삼각형 ABC에서 BC=AB tanθ, BH=AB sinθ이고 CH=BC sin θ이다. 점 P는 BH 위에서 ∠PCH=θ이므로 PH=CH tanθ, CP=CH/cosθ이다. 삼각형 PBC(진한 회색)의 넓이는 (1/2)·PB·CH이고 내접원의 반지름은 r=(넓이)/(둘레의 반)이다. θ→0+에서 넓이는 θ³/2, 둘레는 2θ에 가까워지므로 r(θ)≈θ²/2이고 극한은 1/2이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "그림과 같이 $AB=1$, $\\angle ABC=\\frac\\pi2$인 삼각형 $ABC$에서 $B$에서 변 $AC$에 내린 수선의 발을 $H$라 하고, 선분 $BH$ 위에 점 $P$를 $\\angle CAB=\\angle PCH=\\theta$가 되도록 잡는다. 삼각형 $PBC$의 내접원의 반지름을 $r(\\theta)$라 할 때, $\\displaystyle\\lim_{\\theta\\to0+}\\frac{r(\\theta)}{\\theta^2}$의 값은? (단, $0<\\theta<\\frac\\pi4$) [4.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직각삼각형 ABC, 수선의 발 H, BH 위의 점 P(∠PCH=θ)와 삼각형 PBC를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "tanθ=1/2인 예에서 직각삼각형 ABC, 수선의 발 H, BH 위의 점 P, 같은 크기의 각 θ 두 개와 삼각형 PBC를 보인다."
+  ],
+  "accessibilityDescription": "B에서 직각인 삼각형 ABC와 B에서 빗변 AC에 내린 수선의 발 H가 있고, 선분 BH 위의 점 P와 C를 이은 선분이 그려져 있다. 각 A와 각 PCH에 같은 크기의 각 표시 θ가 있고, 삼각형 PBC가 진한 회색으로 칠해져 있다."
+}

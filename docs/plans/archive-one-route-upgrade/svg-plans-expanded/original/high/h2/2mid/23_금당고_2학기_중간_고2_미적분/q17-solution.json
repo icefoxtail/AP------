@@ -1,0 +1,125 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "3/2"
+        ],
+        "domain": [
+          -4,
+          -2
+        ],
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "-1"
+        ],
+        "domain": [
+          -2,
+          2
+        ],
+        "start": "OPEN",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "0",
+          "3/2"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "OPEN"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-2",
+        "y": "-1/2"
+      },
+      {
+        "x": "2",
+        "y": "1/2"
+      }
+    ],
+    "referenceCurves": [
+      {
+        "id": "k",
+        "pieces": [
+          {
+            "coefficients": [
+              "0",
+              "1/4"
+            ],
+            "domain": [
+              -4,
+              4
+            ]
+          }
+        ],
+        "jumpValues": []
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-2",
+        "2"
+      ],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": "-2",
+        "y": "-1/2"
+      },
+      {
+        "id": "Q",
+        "x": "2",
+        "y": "1/2"
+      },
+      {
+        "id": "O",
+        "x": "0",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "P": [
+        "-2",
+        "-1/2"
+      ],
+      "Q": [
+        "2",
+        "1/2"
+      ],
+      "O": [
+        "0",
+        "0"
+      ]
+    }
+  },
+  "caption": "|x|>2에서 f(x)=3x/2, |x|<2에서 f(x)=-x이고 f(2)=1/2, f(-2)=-1/2이다. 직선 y=x/4와의 교점이 f(k)=k/4의 해이다. |x|>2에서는 3x/2=x/4에서 x=0이라 교점이 없고, |x|<2에서 -x=x/4는 x=0이며, x=±2에서는 점 Q(2,1/2), P(-2,-1/2)가 직선 위에 있다. 따라서 k=-2, 0, 2이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[단답형 1] 함수 $f(x)=\\displaystyle\\lim_{n\\to\\infty}\\frac{3\\left(\\frac x2\\right)^{2n+1}-x}{\\left(\\frac x2\\right)^{2n}+1}$에 대하여 $f(k)=\\frac k4$를 만족시키는 모든 실수 $k$를 구하시오. [5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "세 구간으로 나뉜 f의 그래프와 직선 y=x/4의 교점 P, O, Q를 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "세 구간으로 나뉜 f의 그래프와 직선 y=x/4가 P(-2,-1/2), O(0,0), Q(2,1/2)에서 만남을 보인다."
+  ],
+  "accessibilityDescription": "x=-2와 x=2에서 끊어지는 세 조각의 그래프와 원점을 지나는 완만한 직선이 그려져 있고, 직선이 두 끊어지는 지점의 닫힌 점 P, Q와 원점 O를 지난다."
+}
