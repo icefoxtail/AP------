@@ -1068,14 +1068,12 @@
         state.saveResultState = keepUnknown ? "RESULT_UNKNOWN" : "FAILED";
         state.saveMessage = "";
         state.saveError = error.message || "저장 요청에 실패했습니다.";
-        if (SAVE_STALE_VERSION.test(String(error?.data?.error || error?.message || "")) && Number(error?.status) === 409) {
-          console.warn("[archive2] save rejected: classification version is stale:", state.saveError);
-          state.saveError = SAVE_STALE_MESSAGE;
-        }
-        // 서버가 분류 자료(정본 메타)가 다르다고 거절한 경우: 영어 원문은 화면에 내지 않고 콘솔에만 남긴다.
-        if (SAVE_PARITY_MISMATCH.test(state.saveError)) {
-          console.warn("[archive2] save rejected by canonical metadata check:", state.saveError);
-          state.saveError = SAVE_PARITY_MESSAGE;
+        // 서버가 이유를 알려 준 거절(로그인 만료·너무 큼·분류 기준 갱신·분류 자료 불일치)은 할 일이 담긴 문구로 바꾼다.
+        // 서버 원문(영어 포함)은 화면 문구에 내지 않고 콘솔과 접힌 상세에만 남긴다. 문구는 SAVE_FAILURE_TEXT 표 한 곳에 있다.
+        const failureText = saveFailureMessage(error);
+        if (failureText) {
+          console.warn("[archive2] save rejected:", responseStatus || "", state.saveError);
+          state.saveError = failureText;
         }
         // 서버 원문(영문 포함)은 화면 문구에서 빠지므로, 어느 문제지를 저장하다 난 일인지와 함께 접힌 상세로 남긴다.
         window.Archive2ErrorDetail?.annotate(error, { title: state.header?.title });
@@ -1084,7 +1082,7 @@
         status(
           keepUnknown
             ? "저장 결과를 확인하지 못했습니다. 중복 저장을 막기 위해 같은 저장 요청을 유지합니다. '저장 결과 확인'을 다시 눌러 주세요."
-            : "시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.",
+            : failureText ? `시험지를 저장하지 못했습니다. ${failureText}` : "시험지를 저장하지 못했습니다. 작업과 미리보기는 유지했습니다.",
           true,
           error,
         );
@@ -1170,9 +1168,28 @@
       : catalogVersion;
   }
   const SAVE_STALE_VERSION = /분류 기준이 갱신/;
-  const SAVE_STALE_MESSAGE = "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.";
   const SAVE_PARITY_MISMATCH = /canonical metadata parity mismatch/i;
-  const SAVE_PARITY_MESSAGE = "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.";
+  // 저장이 서버에서 거절됐을 때 교사가 읽는 문구: 거절 이유 → "무엇을 하면 되는지"가 든 한 문장. 문구는 이 표 한 곳에만 있다.
+  // 서버 원문(영어 포함)은 여기에 넣지 않고 접힌 상세에만 남는다. 요청·재시도 동작은 이 표와 무관하다(문구만 고른다).
+  // 네트워크 끊김·시간 초과·서버 오류(5xx)는 거절이 아니라 "결과를 모름"이라 표가 아닌 저장 결과 확인 흐름(RESULT_UNKNOWN)이 안내한다.
+  const SAVE_FAILURE_TEXT = {
+    loginExpired: "로그인이 만료됐습니다. 다시 로그인한 뒤 저장해 주세요. 지금까지 작업한 내용은 초안에 남아 있습니다.",
+    tooLarge: "문제지가 너무 커서 저장하지 못했습니다. 권을 나누거나 문항 수를 줄여서 다시 저장해 주세요.",
+    staleCatalog: "문항 목록이 갱신되었습니다. 새로고침한 뒤 다시 저장해 주세요.",
+    metaMismatch: "분류 자료가 서버와 다릅니다. 새로고침한 뒤 다시 저장해 주세요.",
+  };
+  const SAVE_STALE_MESSAGE = SAVE_FAILURE_TEXT.staleCatalog;
+  const SAVE_PARITY_MESSAGE = SAVE_FAILURE_TEXT.metaMismatch;
+  // 저장 거절 → 위 표의 문구. 표에 없는 거절(그 밖의 4xx)은 빈 문자열이고, 화면은 서버 문장이 한글이면 그대로, 아니면 일반 문구를 쓴다.
+  function saveFailureMessage(error) {
+    const code = Number(error?.status);
+    const serverText = String(error?.data?.error || error?.message || "");
+    if (code === 401 || code === 403) return SAVE_FAILURE_TEXT.loginExpired;
+    if (code === 413) return SAVE_FAILURE_TEXT.tooLarge;
+    if (code === 409 && SAVE_STALE_VERSION.test(serverText)) return SAVE_FAILURE_TEXT.staleCatalog;
+    if (SAVE_PARITY_MISMATCH.test(String(error?.message || ""))) return SAVE_FAILURE_TEXT.metaMismatch;
+    return "";
+  }
   // The saved-paper endpoint rejects selection filters above 200 KB. A unified unit can hold
   // thousands of UIDs, so when the filters would not fit, record only the UIDs the papers use
   // (the server still replays every saved question against them).
@@ -1548,6 +1565,8 @@
     SAVE_STALE_MESSAGE,
     SAVE_PARITY_MISMATCH,
     SAVE_PARITY_MESSAGE,
+    SAVE_FAILURE_TEXT,
+    saveFailureMessage,
     SAVE_FILTER_BYTE_LIMIT,
     compactSaveFilters,
     assign,
