@@ -512,15 +512,8 @@
     (session()?.id || session()?.user?.id || "local");
   function headers() {
     const s = session();
+    // 교사 로그인의 인증은 토큰(Bearer)뿐이다. 토큰이 없는 세션(옛 세션)은 비밀번호로 대신하지 않고 다시 로그인하게 한다.
     if (s?.session_token) return { Authorization: "Bearer " + s.session_token };
-    const mem = window.__APMATH_AUTH_MEMORY || {},
-      login = mem.login_id || s?.login_id || s?.loginId,
-      password = mem.raw_password || s?.raw_password;
-    if (login && password)
-      return {
-        Authorization:
-          "Basic " + btoa(unescape(encodeURIComponent(login + ":" + password))),
-      };
     throw new Error(
       "교사 로그인이 필요합니다. 선생님 계정으로 로그인한 뒤 돌아와 주세요.",
     );
