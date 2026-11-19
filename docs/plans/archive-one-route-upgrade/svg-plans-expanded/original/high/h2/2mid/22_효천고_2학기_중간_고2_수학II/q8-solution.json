@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "1",
+          "0",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      -1,
+      2
+    ],
+    "viewport": [
+      -1,
+      2,
+      -3,
+      3
+    ],
+    "requiredPoints": [
+      {
+        "id": "E",
+        "x": "0",
+        "y": "1"
+      },
+      {
+        "id": "F",
+        "x": "4/3",
+        "y": "-5/27"
+      }
+    ],
+    "exactCoordinates": {
+      "E": [
+        "0",
+        "1"
+      ],
+      "F": [
+        "4/3",
+        "-5/27"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "T",
+          "curveX": "1",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "-1",
+          "intercept": "1",
+          "label": "l"
+        }
+      ]
+    }
+  },
+  "caption": "f(1)=0이므로 a=0이다. f′(x)=3x²-4x에서 m=f′(1)=-1이고 접선은 점 T(1,0)을 지나 y=-(x-1)=-x+1이므로 n=1이다(그림의 직선 l). a+m+n=0-1+1=0이므로 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "곡선 $y=x^3-2x^2+1$ 위의 점 $(1,a)$에서의 접선의 방정식이 $y=mx+n$일 때, 세 상수 $a,m,n$에 대하여 $a+m+n$의 값은? [3.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "점 T(1,0)에서 기울기 -1, y절편 1인 접선 l을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "점 T(1,0)에서의 접선 y=-x+1(기울기 -1, y절편 1)을 곡선과 함께 보인다."
+  ],
+  "accessibilityDescription": "한 번 오르고 내려갔다 다시 오르는 삼차곡선과 가로축 위의 점 T에서 접하는 오른쪽 아래로 내려가는 직선 l을 나타낸 그래프이다."
+}

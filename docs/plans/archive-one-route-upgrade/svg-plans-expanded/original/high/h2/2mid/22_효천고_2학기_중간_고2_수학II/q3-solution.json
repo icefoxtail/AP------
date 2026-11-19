@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "3",
+          "-4",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      0,
+      4,
+      -2,
+      4
+    ],
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "1",
+        "y": "0"
+      },
+      {
+        "id": "V",
+        "x": "2",
+        "y": "-1"
+      },
+      {
+        "id": "B",
+        "x": "3",
+        "y": "0"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "1",
+        "0"
+      ],
+      "V": [
+        "2",
+        "-1"
+      ],
+      "B": [
+        "3",
+        "0"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "referenceLines": [
+      {
+        "id": "t",
+        "y": "-1",
+        "intersectionX": [
+          "2"
+        ]
+      }
+    ]
+  },
+  "caption": "f(1)=f(3)=0이므로 구간 양 끝 A(1,0), B(3,0)의 높이가 같아 롤의 정리를 쓸 수 있다. f′(c)=2c-4=0에서 c=2이고 그림의 꼭짓점 V(2,-1)에서 접선 t가 수평이다. 따라서 답은 ②이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $f(x)=x^2-4x+3$에서 닫힌구간 $[1,3]$에서 롤의 정리를 만족시키는 실수 $c$의 값은? [2.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "양 끝 A, B가 같은 높이이고 접선이 수평인 점 V의 x좌표가 c=2임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "구간 양 끝 A(1,0), B(3,0)와 접선이 수평인 꼭짓점 V(2,-1)를 보인다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선이 가로축을 두 점 A, B에서 지나고 꼭짓점 V에서 수평선 t가 접하는 그래프이다."
+}

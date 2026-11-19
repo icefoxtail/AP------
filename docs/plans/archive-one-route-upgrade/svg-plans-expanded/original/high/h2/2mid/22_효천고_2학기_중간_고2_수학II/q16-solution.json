@@ -1,0 +1,138 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "예 ① f′ 그래프"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "0",
+                "2"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "O",
+              "x": "0",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "O": [
+              "0",
+              "0"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "예 ④ f′ 그래프"
+      },
+      "plan": {
+        "capability": "piecewise-polynomial-spike-v1",
+        "graphPlan": {
+          "family": "piecewise-polynomial",
+          "pieces": [
+            {
+              "coefficients": [
+                "1",
+                "-1",
+                "-1",
+                "1"
+              ]
+            }
+          ],
+          "breakpoints": [],
+          "sourceDomain": {
+            "kind": "INTERVAL",
+            "range": [
+              "-2",
+              "2"
+            ],
+            "states": [
+              "CLOSED",
+              "CLOSED"
+            ]
+          },
+          "axisTickValues": {
+            "x": [],
+            "y": []
+          },
+          "requiredPoints": [
+            {
+              "id": "A",
+              "x": "-1",
+              "y": "0"
+            },
+            {
+              "id": "E",
+              "x": "-1/3",
+              "y": "32/27"
+            },
+            {
+              "id": "B",
+              "x": "1",
+              "y": "0"
+            }
+          ],
+          "exactCoordinates": {
+            "A": [
+              "-1",
+              "0"
+            ],
+            "E": [
+              "-1/3",
+              "32/27"
+            ],
+            "B": [
+              "1",
+              "0"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "caption": "왼쪽은 f′가 x=0에서 음에서 양으로 한 번만 바뀌는 예(f=x²)이다. 이때 f는 한 점까지 감소한 뒤 계속 증가하므로 그 극솟값이 곧 최솟값이다. 오른쪽은 f′의 왼쪽 단순근 A에서 음에서 양으로 바뀌고 오른쪽의 중근 B에서는 부호가 바뀌지 않는 예이며, f가 사차함수라 극솟값이 최솟값과 같다. 두 유형이 정답 ①, ④이다.",
+  "accessibilityDescription": "두 패널이 나란히 있다. 첫째 패널에는 원점을 지나 오른쪽 위로 오르는 직선이, 둘째 패널에는 점 A에서 가로축을 지나 올랐다 내려와 점 B에서 가로축에 접하는 삼차곡선이 그려져 있다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다항함수 $f(x)$는 극솟값과 최솟값이 모두 존재하고 그 값이 일치한다. 다음 중 함수 $y=f'(x)$의 그래프가 될 수 있는 것은? (정답 2개) [4.5점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "한 문항 한 장: 정답 유형 ①과 ④의 f′ 그래프 예를 두 패널로 합쳤다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "f′가 한 번만 음에서 양으로 바뀌는 예와 단순근 뒤 중근을 가지는 예의 두 유형을 보인다."
+  ]
+}
