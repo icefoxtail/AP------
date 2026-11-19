@@ -1,0 +1,52 @@
+{
+  "capability": "set-diagram-figure-v1",
+  "diagram": {
+    "kind": "VENN",
+    "sets": [
+      {
+        "id": "A"
+      },
+      {
+        "id": "B"
+      }
+    ],
+    "elements": [
+      {
+        "text": "A만",
+        "in": [
+          "A"
+        ]
+      },
+      {
+        "text": "둘 다",
+        "in": [
+          "A",
+          "B"
+        ]
+      },
+      {
+        "text": "B만",
+        "in": [
+          "B"
+        ]
+      },
+      {
+        "text": "빠진 1개",
+        "in": []
+      }
+    ],
+    "shade": "A∩B"
+  },
+  "caption": "합집합에서 빠지는 원소 1개를 고르는 방법은 5C4=5가지이다. 합집합의 4개 원소는 각각 A만, 둘 다, B만 세 곳 중 하나에 들어가 3⁴=81가지이다. 조건 (나)는 색칠한 둘 다 영역이 비어 있지 않은 것이므로 둘 다 영역이 비는 2⁴=16가지를 뺀 65가지이다. 따라서 전체는 5×65=325이고 답은 ②이다.",
+  "accessibilityDescription": "전체집합 안에서 A와 B가 겹친 벤다이어그램이며 A만, 둘 다, B만 영역과 바깥의 빠진 1개가 적혀 있고 겹치는 부분이 색칠되어 있다.",
+  "newVisualInformation": [
+    "합집합의 원소가 들어갈 세 영역과 합집합에서 빠지는 1개가 구분되어 3의 4제곱에서 2의 4제곱을 빼는 이유가 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "다음 조건을 만족시키는 집합 $U=\\{0, 1, 2, 3, 4\\}$의 두 부분집합 $A, B$의 모든 순서쌍 $(A, B)$의 개수는?\n\n<div class=\"quote-box\">\n(가) $n(A \\cup B) = 4$<br>\n(나) $A \\cap B \\neq \\varnothing$\n</div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
