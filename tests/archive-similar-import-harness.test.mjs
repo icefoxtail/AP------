@@ -614,3 +614,120 @@ test('apply-judgment: provenance 는 변환기만 만든다 — 스테이지에 
     assert.equal(fs.existsSync(out), false);
   } finally { ctx.cleanup(); }
 });
+
+// ---------- 선택표 (학교급·학년·과목별 메타 선택 문서) ----------
+// 정확한 개수·키 이름을 고정하지 않는다. 결함 조건만 본다: 등록부 ACTIVE 키 누락·초과, 후보와의 불일치, 받아야 할 키를 거부함.
+const selectionCli = path.join(repoRoot, 'archive/tools/similar-import/build-selection-tables.mjs');
+const selTools = () => import('../archive/tools/similar-import/build-selection-tables.mjs');
+const libTools = () => import('../archive/tools/similar-import/lib.mjs');
+const KEY_RE = /`((?:PT|TPL)_[A-Za-z0-9_]+)`/g;
+
+test('선택표: 등록부의 ACTIVE 유형·템플릿이 단원마다 빠짐없이 있고 ACTIVE 가 아닌 키는 없다', async () => {
+  const { buildSelectionFiles } = await selTools();
+  const { buildAllSelections } = await libTools();
+  const all = buildAllSelections(repoRoot);
+  const files = buildSelectionFiles(repoRoot, all);
+  const tax = loadTaxonomy(repoRoot);
+  const groups = loadCourseGroups(repoRoot);
+  assert.ok(files.has('MIDDLE2.md') && files.has('MIDDLE1.md') && files.has('MIDDLE3.md'));
+  for (const [name, text] of files) assert.ok(Buffer.byteLength(text) <= 300 * 1024, `${name} 가 너무 크다`);
+  for (const sel of all.values()) {
+    const text = files.get(`${sel.id}.md`);
+    const members = new Set(groups.find(g => g.id === sel.id).members);
+    // 단원 구역을 잘라 그 안에 이 단원에 묶인 ACTIVE 유형이 전부 있는지 본다
+    for (const u of sel.units) {
+      const start = text.indexOf(`\n## ${u.standardUnitKey} `);
+      assert.ok(start >= 0, `${sel.id} ${u.standardUnitKey} 구역`);
+      const end = text.indexOf('\n## ', start + 4);
+      const section = text.slice(start, end < 0 ? undefined : end);
+      const missing = [];
+      for (const b of tax.bindings) {
+        if ((b.status && b.status !== 'ACTIVE') || !members.has(b.standardCourse) || b.standardUnitKey !== u.standardUnitKey || !b.problemTypeKey) continue;
+        const pt = tax.pts.get(b.problemTypeKey);
+        if (!pt || (pt.status && pt.status !== 'ACTIVE')) continue;
+        if (!section.includes(`\`${b.problemTypeKey}\``)) missing.push(b.problemTypeKey);
+        for (const t of tax.tpls.values()) if (t.parentProblemTypeKey === b.problemTypeKey && (!t.status || t.status === 'ACTIVE') && !section.includes(`\`${t.templateKey}\``)) missing.push(t.templateKey);
+      }
+      assert.deepEqual(missing, [], `${sel.id} ${u.standardUnitKey}`);
+    }
+    // 실은 모든 키는 등록부에 ACTIVE 로 있다
+    for (const m of text.matchAll(KEY_RE)) {
+      const e = tax.pts.get(m[1]) || tax.tpls.get(m[1]);
+      assert.ok(e && (!e.status || e.status === 'ACTIVE'), `${sel.id}: ${m[1]}`);
+    }
+    // 한글 이름이 있어 개념 단어로 찾을 수 있다
+    if (sel.units.some(u => u.problemTypes.length)) assert.ok(/\*\*[가-힣]/.test(text), `${sel.id} 한글 유형 이름`);
+  }
+});
+
+test('선택표: --write 로 만든 폴더는 --check 가 통과하고, 고치거나 지우면 종료 1', () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'sim-seltab-'));
+  try {
+    const w = spawnSync(process.execPath, [selectionCli, '--write', '--out', tmp], { encoding: 'utf8' });
+    assert.equal(w.status, 0, w.stderr);
+    assert.equal(spawnSync(process.execPath, [selectionCli, '--check', '--out', tmp], { encoding: 'utf8' }).status, 0);
+    fs.appendFileSync(path.join(tmp, 'MIDDLE2.md'), '\n손으로 고침\n');
+    const bad = spawnSync(process.execPath, [selectionCli, '--check', '--out', tmp], { encoding: 'utf8' });
+    assert.equal(bad.status, 1);
+    assert.match(bad.stderr, /MIDDLE2\.md/);
+    fs.rmSync(path.join(tmp, 'MIDDLE1.md'));
+    assert.match(spawnSync(process.execPath, [selectionCli, '--check', '--out', tmp], { encoding: 'utf8' }).stderr, /없음: MIDDLE1\.md/);
+  } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
+});
+
+test('선택표: 저장소에 둔 사본에는 과목마다 파일이 있고 지금 등록부에서 ACTIVE 가 아닌 키가 없다 (새 키 누락은 --check 가 본다)', async () => {
+  const { SELECTION_DIR } = await selTools();
+  const tax = loadTaxonomy(repoRoot);
+  for (const g of loadCourseGroups(repoRoot)) {
+    const f = path.join(SELECTION_DIR, `${g.id}.md`);
+    assert.ok(fs.existsSync(f), `${g.id}.md`);
+    for (const m of fs.readFileSync(f, 'utf8').matchAll(KEY_RE)) {
+      const e = tax.pts.get(m[1]) || tax.tpls.get(m[1]);
+      assert.ok(e && (!e.status || e.status === 'ACTIVE'), `${g.id}.md 의 ${m[1]} 가 등록부에서 사라졌거나 ACTIVE 가 아니다. --write 로 다시 만드세요.`);
+    }
+  }
+});
+
+test('build-candidates: 모든 단원의 등록된 유형이 후보에 나오고, 선택표 파일 경로가 _exam.json 에 있고 파일이 작업 폴더에 있다', async () => {
+  const ctx = fresh();
+  try {
+    const { buildAllSelections } = await libTools();
+    const all = buildAllSelections(repoRoot);
+    const c = readJson(path.join(ctx.candDir, 'q01.json'));
+    // 문항의 주 단원이 아닌 단원도 좁히지 않는다
+    for (const su of all.get('MIDDLE2').units) {
+      const have = new Set(c.units.find(u => u.standardUnitKey === su.standardUnitKey).problemTypes.map(p => p.problemTypeKey));
+      assert.deepEqual(su.problemTypes.map(p => p.problemTypeKey).filter(k => !have.has(k)), [], su.standardUnitKey);
+    }
+    const exam = readJson(path.join(ctx.candDir, '_exam.json'));
+    assert.equal(exam.selectionFiles[0], 'selection/MIDDLE2.md');
+    assert.ok(exam.selectionFiles.includes('selection/MIDDLE1.md'), '아래 학년 선택표');
+    for (const rel of exam.selectionFiles) assert.ok(fs.existsSync(path.join(ctx.work, rel)), rel);
+    // 모든 문항이 같은 단원 목록을 본다
+    assert.deepEqual(readJson(path.join(ctx.candDir, 'q02.json')).units, c.units);
+  } finally { ctx.cleanup(); }
+});
+
+test('check-judgment: 선택표에 있는 이 과목·아래 학년 유형은 후보에 없어도 받고, 선택표에 없는 키·남의 TPL·위 학년 키는 거부한다', async () => {
+  const ctx = fresh();
+  try {
+    const { buildAllSelections, groupPts } = await libTools();
+    const all = buildAllSelections(repoRoot);
+    const inCands = new Set(readJson(path.join(ctx.candDir, 'q01.json')).units.flatMap(u => u.problemTypes.map(p => p.problemTypeKey)));
+    const lower = groupPts(all.get('MIDDLE1')).find(p => !inCands.has(p.problemTypeKey) && p.templates.length);
+    assert.ok(lower, '후보에 없는 아래 학년(중1) 유형이 있어야 한다');
+    const mutate = fn => { const js = goodJudgments(ctx.candDir); fn(js); writeJudgments(ctx.judgmentDir, js); return check(ctx); };
+    let r = mutate(js => { js[1].problemTypeKey = lower.problemTypeKey; js[1].templateKey = lower.templates[0].templateKey; js[1].newKeyProposal = null; });
+    assert.deepEqual(codesOf(r, 1), [], '아래 학년 PT·TPL 은 선택표에 있으므로 받는다');
+    r = mutate(js => { js[1].problemTypeKey = lower.problemTypeKey; js[1].templateKey = 'TPL_NO_SUCH_TEMPLATE'; js[1].newKeyProposal = null; });
+    assert.ok(codesOf(r, 1).includes('KEY_NOT_IN_CANDIDATES'), '그 PT 의 것이 아닌 TPL');
+    r = mutate(js => { js[1].problemTypeKey = 'PT_NO_SUCH_KEY_IN_REGISTRY'; js[1].templateKey = 'NONE'; js[1].newKeyProposal = null; });
+    assert.ok(codesOf(r, 1).includes('KEY_NOT_IN_CANDIDATES'), '선택표에 없는 키');
+    // 중2 시험지에 고2 과목(대수) 유형은 위 학년이라 거부한다
+    const accepted = new Set([...all.get('MIDDLE2').units, ...all.get('MIDDLE1').units].flatMap(u => u.problemTypes.map(p => p.problemTypeKey)));
+    const above = groupPts(all.get('H22_ALGEBRA')).find(p => !accepted.has(p.problemTypeKey) && !inCands.has(p.problemTypeKey));
+    assert.ok(above, '중2 에서 받지 않는 고2 유형이 있어야 한다');
+    r = mutate(js => { js[1].problemTypeKey = above.problemTypeKey; js[1].templateKey = 'NONE'; js[1].newKeyProposal = null; });
+    assert.ok(codesOf(r, 1).includes('KEY_NOT_IN_CANDIDATES'), '위 학년 키');
+  } finally { ctx.cleanup(); }
+});

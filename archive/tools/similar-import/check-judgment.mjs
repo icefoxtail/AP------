@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   DEFAULT_REPO_ROOT, DEFAULT_WORK_ROOT, readBank, readJson, writeJson, pad2, stripWs, CIRCLED, gitBlobSha1, parseCli, appendStatus, getPath,
   loadTermDictionary, findBrokenStrings, itemTokenSet, sharesItemToken, itemHasImage, itemFingerprint, loadGuideExample, BOUNDARY_FLAGS,
+  buildAllSelections, selectionAccepts,
 } from './lib.mjs';
 
 export const FIGURE_NEEDS = ['NONE', 'SELF_CONTAINED', 'NEEDS_FIGURE'];
@@ -51,6 +52,8 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
   if (!examMeta) examCodes.push({ code: 'FIELD_EMPTY', msg: `후보 폴더가 없습니다: ${candDir}`, severity: 'FAIL' });
   else if (examMeta.jsBlobSha1 !== gitBlobSha1(jsText)) examCodes.push({ code: 'CANDIDATES_STALE', msg: '후보를 만든 뒤 시험지 JS가 바뀌었습니다. build-candidates 를 다시 돌리세요.', severity: 'FAIL' });
 
+  // 선택표(등록부의 ACTIVE 유형)에 있는 이 과목·아래 학년의 유형은 후보 파일에 없어도 받는다 (후보를 만든 뒤 등록부가 자랐거나 아래 학년 유형일 때).
+  const selected = examMeta ? selectionAccepts(examMeta.courses, buildAllSelections(repoRoot)) : new Map();
   const targets = bank.filter(it => !only || only.includes(it.id));
   const judgments = new Map();
   const items = [];
@@ -137,12 +140,13 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     // 6. 유형
     const ptAll = new Map((c.units || []).flatMap(u => u.problemTypes).map(p => [p.problemTypeKey, p]));
     if (!nonEmpty(j.problemTypeKey)) add('FIELD_EMPTY', 'problemTypeKey 가 비었습니다 (후보 키 또는 NONE)');
-    else if (j.problemTypeKey !== 'NONE' && !ptAll.has(j.problemTypeKey)) add('KEY_NOT_IN_CANDIDATES', `problemTypeKey "${j.problemTypeKey}" 는 이 과목의 후보가 아닙니다`);
+    else if (j.problemTypeKey !== 'NONE' && !ptAll.has(j.problemTypeKey) && !selected.has(j.problemTypeKey)) add('KEY_NOT_IN_CANDIDATES', `problemTypeKey "${j.problemTypeKey}" 는 후보와 선택표에 없습니다`);
     if (!nonEmpty(j.templateKey)) add('FIELD_EMPTY', 'templateKey 가 비었습니다 (후보 키 또는 NONE)');
     else if (j.templateKey !== 'NONE') {
       const pt = ptAll.get(j.problemTypeKey);
-      if (!pt) add('KEY_NOT_IN_CANDIDATES', `templateKey 를 쓰려면 후보 안의 problemTypeKey 가 먼저 있어야 합니다`);
-      else if (!pt.templates.some(t => t.templateKey === j.templateKey)) add('KEY_NOT_IN_CANDIDATES', `templateKey "${j.templateKey}" 의 상위가 ${j.problemTypeKey} 가 아닙니다`);
+      const selTpls = selected.get(j.problemTypeKey);
+      if (!pt && !selTpls) add('KEY_NOT_IN_CANDIDATES', `templateKey 를 쓰려면 후보·선택표 안의 problemTypeKey 가 먼저 있어야 합니다`);
+      else if (!pt?.templates.some(t => t.templateKey === j.templateKey) && !selTpls?.has(j.templateKey)) add('KEY_NOT_IN_CANDIDATES', `templateKey "${j.templateKey}" 의 상위가 ${j.problemTypeKey} 가 아닙니다`);
     }
     if (!nonEmpty(j.typeReason)) add('FIELD_EMPTY', 'typeReason 이 비었습니다');
     if (j.problemTypeKey === 'NONE') {
