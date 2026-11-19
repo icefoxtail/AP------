@@ -293,3 +293,36 @@
 | 23 | 불필요 | 불필요 | 가격 조건이 글로 완결, 해설은 부등식 풀이 |
 
 - 문제그림 필요(일괄 대기) 2개: 18, 22. 해설그림 필요(일괄 대기) 0개. OPEN 1건: 13번 해설(표). 게시한 그림 0개.
+
+## 26_팔마중_1학기_중간_중2_유사 (24문항, 2026-11-19)
+
+통합 후보 내용 마무리(2026-11-19)에서 그림은 만들지 않고 필요 여부만 판정했다. JS에 그림 참조가 있으면 그대로 두었다. 발문·보기를 고친 문항: q3[보기], q11[발문], q21[발문], q22[발문], q23[발문], q24[발문]. 해설 7개를 판서형(설명 한 문장 다음에 식 한 줄 한 단계, 보기별·소문항별 문단)으로 정리했다. 정답 값이 바뀐 문항은 없다.
+
+| 문항 | 문제그림 | 해설그림 | 비고 |
+| --- | --- | --- | --- |
+| 1 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 2 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 3 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 4 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 5 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 6 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 7 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 8 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 9 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 10 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 11 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 12 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 13 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 14 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 15 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 16 | REQUIRED | BENEFICIAL | 문제: 수직선 위에 나타낸 것을 고르는 문항이므로 선택지 ①부터 ⑤까지가 수직선 그림이어야 하는데 지금은 글 설명으로 대체되어 있다. / 해설: 해 x <= 4를 수직선에 색칠한 점과 왼쪽 화살표로 그린 그림을 넣으면 경계값 포함과 방향을 한눈에 확인할 수 있다. |
+| 17 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 18 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 19 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 20 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 21 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 22 | BENEFICIAL | NOT_NEEDED | 문제: 밑면 직각삼각형(밑변 6a, 높이 4b)과 기둥 높이 3a-5b를 표시한 삼각기둥 그림이 있으면 어느 길이가 밑넓이용인지 대응이 분명해진다. |
+| 23 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+| 24 | NOT_NEEDED | NOT_NEEDED | 글로 완결 |
+
+- 문제그림 REQUIRED/BENEFICIAL 2개: 16, 22. 해설그림 REQUIRED/BENEFICIAL 1개: 16.
