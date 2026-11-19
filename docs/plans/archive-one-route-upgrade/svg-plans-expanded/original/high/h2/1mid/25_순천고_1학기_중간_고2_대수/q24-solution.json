@@ -1,0 +1,120 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -1,
+      8,
+      -3,
+      8
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "shiftX": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0"
+        ],
+        "domain": [
+          "-1",
+          "7/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-2",
+          "0"
+        ],
+        "domain": [
+          "21/10",
+          "8"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "l",
+        "kind": "LINE",
+        "coefficients": [
+          "6",
+          "-1"
+        ],
+        "domain": [
+          "0",
+          "7"
+        ],
+        "color": "GREEN",
+        "label": "y=−x+6"
+      },
+      {
+        "id": "m",
+        "kind": "LINE",
+        "coefficients": [
+          "-2",
+          "1"
+        ],
+        "domain": [
+          "0",
+          "8"
+        ],
+        "style": "DASHED",
+        "label": "y=x−2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "C",
+          "x": "0",
+          "y": "6",
+          "coordinates": true
+        },
+        {
+          "id": "A",
+          "x": "3",
+          "y": "3",
+          "coordinates": true
+        },
+        {
+          "id": "M",
+          "x": "4",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "5",
+          "y": "1",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 y=aˣ⁻²의 그래프이고 g는 y=logₐ(x−2)의 그래프이며, 두 그래프는 직선 y=x−2에 대하여 대칭이다. y=−x+6과 y=x−2의 교점 M(4, 2)는 선분 AB의 중점이다. C(0, 6)이고 AB:AC=2:3이므로 AM:AC=1:3이다. 그래서 A는 선분 CM을 3:1로 나누는 점 A(3, 3)이다. A가 f 위의 점이므로 3=a이고 그림은 a=3인 경우이다. 따라서 답은 3이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 지수 곡선 f와 오른쪽 아래로 퍼지는 주황 로그 곡선 g, 초록 직선 y=−x+6, 점선 y=x−2가 있다. 점 C, A, M, B의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "지수·로그 그래프가 직선 y=x−2에 대칭이고 직선 y=−x+6과의 교점 A(3, 3), B(5, 1), 중점 M(4, 2), 점 C(0, 6)의 위치를 한 그림에 보인다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "아래 그림과 같이 함수 $y=a^{x-2}$, 함수 $y=\\log_a(x-2)$의 그래프와 함수 $y=-x+6$의 그래프의 교점을 각각 A, B라 하고 $y=-x+6$과 $y$축의 교점을 C라 하면 $\\overline{\\text{AB}}:\\overline{\\text{AC}}=2:3$이다. 이때 $a$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. (단, $a \\gt 1$) (6점)<br><div class='flex justify-center my-4'><svg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='200' x2='220' y2='200' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='210' x2='40' y2='20' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='50' x2='190' y2='200' stroke='black' stroke-width='1.5'/><path d='M 42 198 Q 100 195 115 125 C 122 80 125 40 128 15' fill='none' stroke='#000' stroke-width='1.8'/><path d='M 92 230 Q 95 185 165 175 C 205 170 230 165 245 162' fill='none' stroke='#000' stroke-width='1.8'/><circle cx='40' cy='50' r='2.5' fill='black'/><text x='20' y='55' font-size='14' font-family='serif' font-style='italic'>C</text><circle cx='115' cy='125' r='2.5' fill='black'/><text x='102' y='120' font-size='14' font-family='serif' font-style='italic'>A</text><circle cx='165' cy='175' r='2.5' fill='black'/><text x='170' y='170' font-size='14' font-family='serif' font-style='italic'>B</text><text x='225' y='215' font-size='13' font-family='serif' font-style='italic'>x</text><text x='20' y='25' font-size='13' font-family='serif' font-style='italic'>y</text><text x='20' y='215' font-size='14' font-family='serif' font-style='italic'>O</text></svg></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

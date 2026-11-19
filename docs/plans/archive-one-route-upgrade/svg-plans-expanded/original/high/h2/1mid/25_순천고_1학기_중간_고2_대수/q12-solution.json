@@ -1,0 +1,86 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      0,
+      9,
+      0,
+      6
+    ],
+    "curves": [
+      {
+        "id": "left",
+        "kind": "LOGARITHMIC",
+        "base": "1/2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "1/4",
+          "1"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "right",
+        "kind": "LOGARITHMIC",
+        "base": "2",
+        "coefficients": [
+          "1",
+          "1",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "1",
+          "8"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "1/4",
+          "y": "4",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "1",
+          "y": "2",
+          "coordinates": true
+        },
+        {
+          "id": "C",
+          "x": "8",
+          "y": "5",
+          "coordinates": true
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=|log(1/2)x|+2의 그래프이다. x=1에서 로그값이 0이라 그래프가 꺾이며 이 점이 최저점이다. 양 끝점은 A(1/4, 4), C(8, 5)이고 최저점은 B(1, 2)이다. 최댓값은 5, 최솟값은 2이므로 합은 7이다. 따라서 답은 ①이다.",
+  "accessibilityDescription": "x=1에서 가장 낮고 양쪽으로 올라가는 V자 모양의 곡선 f가 있고, 왼쪽 끝 A, 꼭짓점 B, 오른쪽 끝 C의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "구간 양 끝점 A(1/4, 4), C(8, 5)와 꺾임점 B(1, 2)의 높이를 표시해 최댓값과 최솟값을 비교하게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "정의역이 $\\{x \\mid \\frac{1}{4} \\le x \\le 8\\}$인 함수 $y=|\\log_{\\frac{1}{2}}x|+2$의 최댓값과 최솟값의 합은? (단, '||'은 절댓값 기호이다.) (4.3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

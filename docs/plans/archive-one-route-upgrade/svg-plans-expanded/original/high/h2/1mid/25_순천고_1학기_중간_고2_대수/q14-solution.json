@@ -1,0 +1,62 @@
+{
+  "capability": "trigonometric-spike-v1",
+  "graphPlan": {
+    "family": "trigonometric",
+    "function": "SIN",
+    "coefficients": [
+      "1/2",
+      "2",
+      "0"
+    ],
+    "phasePi": "0",
+    "sourceDomain": {
+      "kind": "INTERVAL_PI",
+      "rangePi": [
+        "0",
+        "1/2"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "domain": [
+      0,
+      1.57
+    ],
+    "viewport": [
+      -0.3,
+      1.9,
+      -0.2,
+      0.7
+    ],
+    "referenceLines": [
+      {
+        "id": "max",
+        "y": "1/2",
+        "intersectionCount": 1
+      }
+    ],
+    "axisTickPi": true,
+    "axisTickPiStep": "1/4",
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "1/2"
+      ]
+    },
+    "keyPoints": true
+  },
+  "caption": "tanθ cos²θ=sinθ cosθ=(1/2) sin 2θ이므로 0<θ<π/2에서 y=(1/2) sin 2θ의 그래프를 본다. 이 그래프의 가장 높은 점은 θ=π/4일 때의 높이 1/2이다. 직선 y=1/2은 이 점에서만 그래프에 닿는다. 따라서 답은 ②이다.",
+  "accessibilityDescription": "0에서 π/2 사이에서 올라갔다 내려오는 사인 곡선이 있고, 가운데 θ=π/4에서 가장 높으며 높이 1/2의 가로선이 이 점에 닿아 있다.",
+  "newVisualInformation": [
+    "y=(1/2) sin 2θ의 그래프에서 θ=π/4일 때 최대 높이 1/2을 직선 y=1/2과 함께 보여 준다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "$0 \\lt \\theta \\lt \\frac{\\pi}{2}$일 때 $\\tan\\theta\\cos^2\\theta$의 최댓값은? (4.3점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

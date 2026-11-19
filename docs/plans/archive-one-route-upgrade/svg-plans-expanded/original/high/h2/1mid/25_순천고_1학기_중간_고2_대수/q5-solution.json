@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -6,
+      3,
+      -4,
+      10
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "EXPONENTIAL",
+        "base": "2",
+        "coefficients": [
+          "4",
+          "1",
+          "-2"
+        ],
+        "domain": [
+          "-6",
+          "3/2"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": [
+        "-2"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "P",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "asym",
+          "slope": "0",
+          "intercept": "-2"
+        }
+      ]
+    }
+  },
+  "caption": "점근선이 y=−2이므로 b=−2이다. 그래프 f가 점 (0, 2)를 지나므로 2=2⁻ᵃ−2에서 2⁻ᵃ=4이고 a=−2이다. 그래프는 y=2ˣ⁺²−2이다. 따라서 ab=(−2)×(−2)=4이고 답은 ①이다.",
+  "accessibilityDescription": "지수함수의 그래프 f가 왼쪽에서 가로 점근선 y=−2에 가까워지며 오른쪽 위로 올라가고, y축과 만나는 점의 좌표가 표시되어 있다.",
+  "newVisualInformation": [
+    "점근선 y=−2와 y축 위의 점 (0, 2)를 표시해 b=−2, a=−2를 읽게 한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=2^{x-a}+b$의 그래프가 다음 그림과 같을 때, $ab$의 값은? (단, a, b는 상수이고 점선은 그래프의 점근선이다.) (3.5점)<br><div class='flex justify-center my-4'><svg width='280' height='220' viewBox='-100 -160 320 230' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrowhead' markerWidth='10' markerHeight='7' refX='0' refY='3.5' orient='auto'><polygon points='0 0, 10 3.5, 0 7' fill='#000'/></marker></defs><line x1='-90' y1='0' x2='200' y2='0' stroke='#000' stroke-width='1.2' marker-end='url(#arrowhead)'/><line x1='0' y1='60' x2='0' y2='-140' stroke='#000' stroke-width='1.2' marker-end='url(#arrowhead)'/><line x1='-90' y1='50' x2='200' y2='50' stroke='#000' stroke-width='1' stroke-dasharray='4 3'/><path d='M -100 48 Q -20 48 0 -50 T 25 -155' fill='none' stroke='#000' stroke-width='1.8'/><text x='190' y='18' font-family='serif' font-style='italic' font-size='14'>x</text><text x='-20' y='-130' font-family='serif' font-style='italic' font-size='14'>y</text><text x='8' y='-45' font-family='serif' font-size='14'>2</text><text x='8' y='68' font-family='serif' font-size='14'>-2</text><text x='-18' y='18' font-family='serif' font-size='14'>O</text></svg></div>",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "viewport": [
+      -2,
+      7,
+      -2,
+      7
+    ],
+    "curves": [
+      {
+        "id": "f",
+        "kind": "LOGARITHMIC",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "-1",
+          "0"
+        ],
+        "domain": [
+          "11/10",
+          "7"
+        ],
+        "color": "BLUE",
+        "label": "f"
+      },
+      {
+        "id": "g",
+        "kind": "EXPONENTIAL",
+        "base": "3",
+        "coefficients": [
+          "1",
+          "1",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "8/5"
+        ],
+        "color": "WARM",
+        "label": "g"
+      },
+      {
+        "id": "yx",
+        "kind": "LINE",
+        "coefficients": [
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-2",
+          "7"
+        ],
+        "style": "DASHED",
+        "label": "y=x"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "1"
+      ],
+      "y": [
+        "1"
+      ]
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "x": "2",
+          "y": "0",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "x": "0",
+          "y": "2",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "vx",
+          "x": "1"
+        },
+        {
+          "id": "hy",
+          "slope": "0",
+          "intercept": "1"
+        }
+      ]
+    }
+  },
+  "caption": "f는 f(x)=log₃(x−1)의 그래프이고 g는 g(x)=3ˣ+1의 그래프이다. f의 정의역은 x>1이고 점근선은 세로선 x=1이며, 밑이 3이라 증가한다. f는 점 (2, 0)을 지나고 (1, 0)은 지나지 않는다. g의 점근선은 가로선 y=1이고, f와 g는 직선 y=x에 대하여 대칭이다. 따라서 답은 ⑤이다.",
+  "accessibilityDescription": "오른쪽 위로 올라가는 파란 로그 곡선 f와 왼쪽 아래에서 올라오는 주황 지수 곡선 g, 점선 y=x, 두 점근선(세로선 x=1, 가로선 y=1)이 있고 점 (2, 0)과 (0, 2)가 표시되어 있다.",
+  "newVisualInformation": [
+    "f와 g를 직선 y=x와 함께 그려 대칭 관계를 보이고, 점근선 x=1·y=1과 점 (2, 0)·(0, 2)를 표시한다."
+  ],
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "함수 $y=\\log_3(x-1)$의 그래프의 특징에 대한 설명으로 옳은 것은? (3.8점)",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ]
+}
