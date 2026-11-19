@@ -1,0 +1,90 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "10/3",
+          "2"
+        ]
+      },
+      {
+        "coefficients": [
+          "-10/3",
+          "0",
+          "2/3"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "x": "-2",
+        "y": "-2/3"
+      }
+    ],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "CLOSED",
+        "CLOSED"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "-8/3"
+      },
+      {
+        "id": "B",
+        "x": "-2",
+        "y": "-2/3"
+      },
+      {
+        "id": "C",
+        "x": "1",
+        "y": "-8/3"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "-8/3"
+      ],
+      "B": [
+        "-2",
+        "-2/3"
+      ],
+      "C": [
+        "1",
+        "-8/3"
+      ]
+    }
+  },
+  "caption": "f(x-2)=f(x+2)는 주기 4를 뜻하므로 f(-3)=f(1)이다. 연속 조건 -4+a=4b-a와 f(-3)=f(1)에서 a=10/3, b=2/3이다. 그림은 한 주기 [-3,1]의 그래프로, 왼쪽 직선 조각이 B(-2,-2/3)에서 포물선 조각과 이어지고 양 끝점 A(-3,-8/3), C(1,-8/3)의 높이가 같다. 따라서 6a+3b=22이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "9. 함수 $f(x)$가 구간 $(-\\infty, \\infty)$에서 연속일 때, 함수 $f(x)$가 다음 조건을 만족시킨다.\n\n<조건>\n가) $f(x) = \\begin{cases} 2x+a & (-3 \\le x \\le -2) \\\\ bx^2-a & (-2 < x < 1) \\end{cases}$\n나) 모든 실수 $x$에 대하여 $f(x-2)=f(x+2)$이다.\n\n이때, $6a+3b$의 값을 구하면? (단, $a, b$는 상수이다.) [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "a=10/3, b=2/3일 때 B에서 두 조각이 이어지고 양 끝점 A, C의 높이가 같음을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "한 주기의 두 조각이 B(-2,-2/3)에서 이어지고 양 끝점 A(-3,-8/3), C(1,-8/3)의 높이가 같음을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 점 A에서 올라가는 직선이 점 B에서 아래로 볼록한 포물선 조각으로 이어져 가운데에서 내려갔다 올라 오른쪽 끝 점 C에서 점 A와 같은 높이에 이르는 그래프이다."
+}

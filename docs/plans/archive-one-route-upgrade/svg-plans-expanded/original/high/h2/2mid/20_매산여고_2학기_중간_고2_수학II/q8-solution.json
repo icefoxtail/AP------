@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          -4,
+          -1
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "2",
+          "1"
+        ],
+        "domain": [
+          -1,
+          2
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "-1",
+        "y": "1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "-1"
+      ],
+      "y": [
+        "1"
+      ]
+    }
+  },
+  "caption": "a=3이면 x≠-1에서 (x²+3x+2)/(x+1)=x+2라 그래프는 직선 y=x+2에서 x=-1의 높이 1인 열린 점(구멍)이 빠진 모양이다. f(-1)=b+3인 닫힌 점이 그 구멍과 같은 높이에 있어야 연속이므로 b+3=1, b=-2이다. 따라서 a+b=1이고 답은 ①이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "8. 함수 $f(x) = \\begin{cases} \\frac{x^2+ax+2}{x+1} & (x \\ne -1) \\\\ b+3 & (x = -1) \\end{cases}$ 가 모든 실수 $x$에서 연속이 되도록 하는 상수 $a, b$의 값의 합인 $a+b$를 구하면? [3.9점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "직선 y=x+2의 x=-1 구멍의 높이 1과 닫힌 점 (-1,b+3)이 같아야 연속임을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=x+2의 x=-1에서 높이 1의 열린 점과 닫힌 점 (-1,b+3)이 일치해야 연속임을 보인다."
+  ],
+  "accessibilityDescription": "오르는 직선이 x=-1에서 빈 점으로 끊겼다가, 같은 높이의 닫힌 점에서 이어지는 그래프이다."
+}

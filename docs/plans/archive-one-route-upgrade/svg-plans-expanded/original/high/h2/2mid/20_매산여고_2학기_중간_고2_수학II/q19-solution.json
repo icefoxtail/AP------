@@ -1,0 +1,70 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "-5",
+          "-2",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "INTERVAL",
+      "range": [
+        "-3",
+        "1"
+      ],
+      "states": [
+        "OPEN",
+        "OPEN"
+      ]
+    },
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": "-3",
+        "y": "10"
+      },
+      {
+        "id": "B",
+        "x": "1",
+        "y": "-6"
+      }
+    ],
+    "exactCoordinates": {
+      "A": [
+        "-3",
+        "10"
+      ],
+      "B": [
+        "1",
+        "-6"
+      ]
+    }
+  },
+  "caption": "예: a=-5일 때 g(x)=x²-2x-5를 열린구간 (-3,1)에서 그렸다. g′(x)=2x-2<0이라 곡선은 계속 내려가고 양 끝은 열린 점 A(-3,10), B(1,-6)이다. 왼쪽 끝 높이 g(-3)=15+a는 양수, 오른쪽 끝 높이 g(1)=a-1은 음수여야 곡선이 구간 안에서 x축을 한 번 지난다. 그래서 -15<a<1이고 경계 -15, 1은 제외한다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "[주관식1 (단답형)] 방정식 $x^2-2x+a=0$이 열린구간 $(-3, 1)$에서 하나의 실근을 갖도록 하는 상수 $a$의 값의 범위를 구하시오. [4.0점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "감소하는 곡선의 왼쪽 끝 높이가 양수, 오른쪽 끝 높이가 음수여야 구간 안에서 x축을 한 번 지남을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "열린구간 (-3,1)에서 감소하는 곡선의 양 끝 열린 점 A, B의 높이가 양수와 음수여서 x축을 한 번 지남을 보인다."
+  ],
+  "accessibilityDescription": "왼쪽 위의 열린 점 A에서 시작해 가로축을 한 번 지나 오른쪽 아래의 열린 점 B에서 끝나는 계속 내려가는 곡선 그래프이다."
+}

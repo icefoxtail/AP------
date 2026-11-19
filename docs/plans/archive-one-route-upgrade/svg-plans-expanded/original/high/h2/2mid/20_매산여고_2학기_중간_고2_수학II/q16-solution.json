@@ -1,0 +1,63 @@
+{
+  "capability": "piecewise-discontinuous-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-discontinuous",
+    "pieces": [
+      {
+        "coefficients": [
+          "1"
+        ],
+        "domain": [
+          0,
+          2
+        ],
+        "start": "CLOSED",
+        "end": "OPEN"
+      },
+      {
+        "coefficients": [
+          "3"
+        ],
+        "domain": [
+          2,
+          4
+        ],
+        "start": "OPEN",
+        "end": "CLOSED"
+      }
+    ],
+    "jumpValues": [
+      {
+        "x": "2",
+        "y": "5"
+      }
+    ],
+    "axisTickValues": {
+      "x": [
+        "2"
+      ],
+      "y": [
+        "1",
+        "3",
+        "5"
+      ]
+    }
+  },
+  "caption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). x=2에서 왼쪽 가지는 높이 1의 열린 점으로, 오른쪽 가지는 높이 3의 열린 점에서 시작하고 f(2)=5인 닫힌 점이 위에 따로 있다. x→∞이면 (4x+1)/(2x+1)=2-1/(2x+1)이 2의 왼쪽에서 가까워지므로 극한은 1이다. x→1+이면 √(3x+1)이 2의 오른쪽에서 가까워지므로 극한은 3이다. 합은 4이고 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "16. 실수 전체의 집합에서 정의된 함수 $f(x)$의 그래프가 다음 그림과 같을 때,\n<img src=\"assets/images/20_매산여고_2학기_중간_고2_수학II/q16.png\" alt=\"20_매산여고_2학기_중간_고2_수학II Q16\" />\n$$\\lim_{x \\to \\infty} f\\left(\\frac{4x+1}{2x+1}\\right) + \\lim_{x \\to 1+} f(\\sqrt{3x+1})$$\n의 값을 구하면? [4.3점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "x=2의 왼쪽 극한 1, 오른쪽 극한 3(열린 점)과 함숫값 5(닫힌 점)를 구별해 읽는다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "x=2에서 왼쪽 열린 점 (2,1), 오른쪽 열린 점 (2,3), 따로 있는 닫힌 점 (2,5)를 보인다."
+  ],
+  "accessibilityDescription": "x=2에서 왼쪽의 낮은 수평선은 열린 점으로 끝나고, 오른쪽의 중간 높이 수평선은 열린 점에서 시작하며, 그 위에 닫힌 점이 따로 있는 그래프이다."
+}

@@ -1,0 +1,78 @@
+{
+  "capability": "piecewise-polynomial-spike-v1",
+  "graphPlan": {
+    "family": "piecewise-polynomial",
+    "pieces": [
+      {
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ]
+      }
+    ],
+    "breakpoints": [],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "domain": [
+      4,
+      8
+    ],
+    "viewport": [
+      4,
+      8,
+      10,
+      66
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "points": [
+        {
+          "id": "A",
+          "curveX": "6",
+          "coordinates": true
+        },
+        {
+          "id": "B",
+          "curveX": "7",
+          "coordinates": true
+        }
+      ],
+      "lines": [
+        {
+          "id": "l",
+          "slope": "12",
+          "intercept": "-36",
+          "label": "l"
+        },
+        {
+          "id": "m",
+          "slope": "13",
+          "intercept": "-42",
+          "label": "m"
+        }
+      ]
+    }
+  },
+  "caption": "예: f(x)=x², a=6, h=1일 때를 그렸다(f′(6)=12). 직선 m은 두 점 A(6,36), B(7,49)를 잇는 할선이고 기울기 [f(a+h)-f(a)]/h=13이다. h→0이면 m이 A에서의 접선 l로 가까워져 기울기가 f′(a)=12에 모인다. 주어진 식은 분자가 f(a)-f(a+h)로 순서가 반대이고 분모가 3h이므로 -(1/3)·f′(a)=-12/3=-4이다. 따라서 답은 ③이다.",
+  "sourceConditions": [
+    {
+      "id": "source",
+      "condition": "6. 다항함수 $f(x)$에 대하여 $f'(a)=12$일 때, $\\lim_{h \\to 0} \\frac{f(a)-f(a+h)}{3h}$의 값을 구하면? [3.8점]",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    },
+    {
+      "id": "method",
+      "condition": "할선 m의 기울기가 h→0에서 접선 l의 기울기 f′(a)에 가까워짐을 보인다.",
+      "mappedTo": "diagram"
+    }
+  ],
+  "newVisualInformation": [
+    "두 점 A, B를 잇는 할선 m과 A에서의 접선 l(기울기 12)을 보여 차분몫이 미분계수에 가까워짐을 알게 한다."
+  ],
+  "accessibilityDescription": "아래로 볼록한 포물선 위의 점 A에서 접하는 오르는 직선 l과, A와 오른쪽 점 B를 지나는 약간 더 가파른 직선 m이 나타난 그래프이다."
+}
