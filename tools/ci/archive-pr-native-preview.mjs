@@ -639,6 +639,12 @@ export function selectNativeRequests({ root, baseSha, headSha }) {
     const file = fields[i + 1];
     if (['A', 'M'].includes(fields[i]) && flatInboxPath(file)) files.push(file);
   }
+  // A refusal record is a new file named like its request; if .gitignore matches that name the main writer
+  // cannot commit it and the refused request would vanish from the inbox. Stop it at the PR instead.
+  for (const file of files) {
+    const rejected = `.archive-meta-register/rejected/${file.slice(INBOX.length)}`;
+    if (spawnSync('git', ['check-ignore', '-q', '--no-index', '--', rejected], { cwd: root }).status === 0) fail(`INBOX_NAME_IGNORED_BY_GITIGNORE:${file}: a refusal record for this name would not be committed`);
+  }
   const changed = new Set(files), basePaths = new Set(pendingNativeRequestPaths({ root, headSha: baseSha }));
   const pendingPaths = pendingNativeRequestPaths({ root, headSha });
   const inherited = new Map(), inheritedReassessments = new Map(), fixedInputs = new Map();

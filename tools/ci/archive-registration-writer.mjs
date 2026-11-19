@@ -225,6 +225,18 @@ function checkPreserved(root,beforeRows,beforeSeals) {
   for(const e of beforeSeals.entries||[])if(after.get(`${e.path}\0${e.sha256}`)!==JSON.stringify(e))throw Error('EXISTING_CROSSWALK_SEAL_CHANGED');
 }
 
+// A request that left the inbox must be applied (the pass's applied list) or have its rejected/pending record in the
+// index. A new record whose name .gitignore matches (for example `*textbook*`) never reaches the index, so only the
+// inbox deletion would be committed: the request would vanish, neither applied nor rejected.
+const INBOX='.archive-meta-register/inbox/',REJECTED='.archive-meta-register/rejected/',PENDING='.archive-meta-register/pending-supplement/';
+export function silentInboxDrops(root,before,nativeWork) {
+  const after=new Set(indexRows(root).map(r=>r.path)),appliedFile=path.join(nativeWork,'archive-meta-register-pass','applied.txt');
+  const applied=new Set(fs.existsSync(appliedFile)?fs.readFileSync(appliedFile,'utf8').split(/\r?\n/).filter(Boolean).map(p=>path.posix.basename(p.replace(/\\/g,'/'))):[]);
+  return before.map(r=>r.path).filter(p=>p.startsWith(INBOX)&&p.endsWith('.json')&&!p.slice(INBOX.length).includes('/')&&!after.has(p))
+    .map(p=>p.slice(INBOX.length)).filter(name=>!applied.has(name)
+      &&!(after.has(REJECTED+name)&&after.has(REJECTED+name.replace(/\.json$/,'.rejection.json')))&&!after.has(PENDING+name));
+}
+
 function assertClean(root) {
   if(git(root,'status','--porcelain=v1','--untracked-files=all').trim())throw Error('WRITER_REQUIRES_CLEAN_RUNNER');
 }
@@ -555,6 +567,12 @@ export async function prepareRegistration({root=ROOT,work,execute=executeCommand
   guardFiles(changed(root),[...allOutputs,STATE],'TRANSACTION');
   if(unstaged(root).length)throw Error('UNSTAGED_TRANSACTION_OUTPUT');
   try {
+    const dropped=silentInboxDrops(root,before,nativeWork);
+    if(dropped.length) {
+      const names=dropped.slice(0,15).join(',');
+      if(env.GITHUB_STEP_SUMMARY)fs.appendFileSync(env.GITHUB_STEP_SUMMARY,`\nSILENT_INBOX_DROP: ${names}: left the inbox with no applied record and no committed rejected/pending record; nothing is committed and the requests stay in the inbox.\n`);
+      throw Error(`SILENT_INBOX_DROP:${names}: left the inbox with no applied record and no committed rejected/pending record (the rejected copy may have been dropped by .gitignore, for example a name containing "textbook")`);
+    }
     report.whitespace=checkStagedRegistrationWhitespace(root);
     checkPreserved(root,before,initialSeals);
   } catch(error) {

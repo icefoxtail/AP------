@@ -6,6 +6,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {recordRejection} from '../tools/ci/register-reviewed-meta-requests.mjs';
 import {prepareRegistration,checkRegistration,nativeLanes,matches,executeCommands,unrelatedRange,renderRegistrationSummary,readStageTimes,staleMaterializedPayloads,laneInstrumentation,inferRegistrationMode,STATE} from '../tools/ci/archive-registration-writer.mjs';
 
 // Orchestration fixtures, not student questions or mathematical review. Native producers are deliberately
@@ -969,4 +970,55 @@ fs.writeFileSync(report,JSON.stringify({status:'OK',changed:false,indexSha256:sh
   assert.ok(rows.every(r=>r.exitCode===0&&Number.isInteger(r.durationMs)));
   assert.ok(fs.existsSync(path.join(repo,'.archive-meta-register/auto/4slot/last-verification.json')));
   assert.ok(!fs.readFileSync(path.join(temp,'archive-four-slot/stage-times.jsonl'),'utf8').includes('"exitCode":1'));
+});
+
+// A request that leaves .archive-meta-register/inbox/ must be applied or have a committed refusal record.
+// A refusal copy whose name .gitignore matches is never staged, so the deletion alone would drop the request.
+const INBOX_DIR='.archive-meta-register/inbox/';
+function inboxFixture(t,modes) {
+  const f=fixture(t);
+  write(f.root,'.gitignore','*textbook*\n');
+  for(const name of Object.keys(modes))write(f.root,INBOX_DIR+name,{requestId:name});
+  git(f.root,'add','-A');git(f.root,'add','-f','--',INBOX_DIR);git(f.root,'commit','-q','-m','pending requests');
+  const reviewed={id:'reviewed',inputs:[INBOX_DIR],outputs:[INBOX_DIR,'.archive-meta-register/rejected/'],commands:[]};
+  const lanes=[reviewed,...f.lanes.slice(1)];
+  const execute=async(args)=>{
+    if(args.lane.id!=='reviewed')return f.execute(args);
+    const pass=path.join(args.env.RUNNER_TEMP,'archive-meta-register-pass');fs.mkdirSync(pass,{recursive:true});
+    const applied=[],opt={root:args.root,rejectedDir:'.archive-meta-register/rejected'};
+    for(const [name,mode] of Object.entries(modes)) {
+      const abs=path.join(args.root,INBOX_DIR+name);
+      if(mode==='reject')recordRejection(opt,abs,{error:'fixture refusal'},{log(){}});
+      else{applied.push(INBOX_DIR+name);fs.rmSync(abs);}
+    }
+    fs.writeFileSync(path.join(pass,'applied.txt'),applied.map(p=>p+'\n').join(''));
+    return {advisories:[]};
+  };
+  return {...f,options:{...f.options,lanes,execute}};
+}
+
+test('a rejected request whose refusal copy .gitignore drops fails the run, names the request, and persists nothing',async t=>{
+  const f=inboxFixture(t,{'zz__textbooks__dropped.json':'reject','zz__ordinary.json':'reject'});
+  await assert.rejects(prepareRegistration(f.options),error=>{
+    assert.match(error.message,/^SILENT_INBOX_DROP:zz__textbooks__dropped\.json:/);
+    assert.doesNotMatch(error.message,/zz__ordinary/);assert.match(error.message,/gitignore/i);return true;
+  });
+  const report=readJson(f.work,'report.json');
+  assert.equal(report.status,'FINAL_GATE_FAILED');assert.equal(report.safeToPersist,false);
+  assert.equal(git(f.root,'show',`HEAD:${INBOX_DIR}zz__textbooks__dropped.json`).includes('requestId'),true,'the request stays in the committed inbox');
+});
+
+test('a rejected request with a committable name stays a successful run with its refusal record staged',async t=>{
+  const f=inboxFixture(t,{'zz__ordinary.json':'reject'});
+  const result=await prepareRegistration(f.options);
+  assert.equal(result.safeToPersist,true);
+  assert.deepEqual(git(f.root,'diff','--cached','--name-only','--no-renames','--','.archive-meta-register/inbox','.archive-meta-register/rejected').split('\n').sort(),
+    ['.archive-meta-register/inbox/zz__ordinary.json','.archive-meta-register/rejected/zz__ordinary.json','.archive-meta-register/rejected/zz__ordinary.rejection.json']);
+});
+
+test('an applied request leaves the inbox without a refusal record and is not a silent drop, whatever its name',async t=>{
+  const f=inboxFixture(t,{'zz__textbooks__applied.json':'apply','zz__applied.json':'apply'});
+  const result=await prepareRegistration(f.options);
+  assert.equal(result.safeToPersist,true);
+  assert.equal(git(f.root,'diff','--cached','--name-only','--','.archive-meta-register/inbox').split('\n').length,2);
 });
