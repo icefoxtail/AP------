@@ -21,6 +21,7 @@ const FLOAT_SLACK=1e-9;// exactly 1 px must not be refused for float noise (a 1 
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});// the matrix row below, as in phase2.mjs 739
 const PROTECTED_FIELDS=['content','choices','answer','solution','image'];
 const PATCHED_FIELDS=['solutionImage','solutionImageSize','solutionImageAlt'];
+const SCALE_FIELD='solutionImageScale';// added to the patch only when the measured policy carries a scale (% of the column, 30-100)
 const LINEAGE_KEYS=['l1SvgSha256','policySha256','candidateBankSha256','assetPath','assetResponseSha256','archiveRowSha256','screenshotSha256s','matrixSha256','engineSha256'];
 
 // Internal control flow only: every domain outcome is returned as a status; anything else is a defect and propagates.
@@ -92,30 +93,71 @@ const writeNew=(file,data)=>{fs.mkdirSync(path.dirname(file),{recursive:true});f
  * LOCAL_ONLY. The policy provenance is ARCHIVE_MEASURED: the evidence refs name the raw Archive row and screenshot of this run.
  */
 export async function measureArchiveTypographyPolicy({identity,sourcePath,ordinal,requestedSizeClass,intrinsicSvg,runId,signal,onProgress}={}){
-  const state={policy:null,policySha256:null,provenance:null,paths:null,evidence:{observationSha256:null,matrixSha256:null,archiveRow:null,screenshot:null,engineSha256:null}};
-  const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,policy:state.policy,policySha256:state.policySha256,provenance:state.provenance,evidence:{...state.evidence},paths:state.paths,...flags(onProgress)});
+  const state={policy:null,policySha256:null,provenance:null,paths:null,solutionImageScale:undefined,evidence:{observationSha256:null,matrixSha256:null,archiveRow:null,screenshot:null,engineSha256:null}};
+  const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,policy:state.policy,policySha256:state.policySha256,provenance:state.provenance,evidence:{...state.evidence},paths:state.paths,...(state.solutionImageScale!==undefined?{solutionImageScale:state.solutionImageScale}:{}),...flags(onProgress)});
   try{
     const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress,requireOriginal:true});// measureArchiveDisplayEnvelope takes any .js under archive/exams/ (original, similar, textbooks, other folders; no path escape or link out of it)
     if(!Number.isInteger(intrinsicSvg?.width)||!Number.isInteger(intrinsicSvg?.height)||intrinsicSvg.width<1||intrinsicSvg.height<1)throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'INTRINSIC_SVG'});
     createRun(input.runRoot,runId);
-    const preflightRun=path.join(input.productionDir,'display-envelope-preflight');fs.mkdirSync(preflightRun,{recursive:true});
-    state.paths={runRoot:rel(input.runRoot),matrix:rel(path.join(preflightRun,'archive-render-matrix.json'))};
-    let measured;
-    try{measured=await measureArchiveDisplayEnvelope({run:preflightRun,sourceRef:input.sourceRef,sourceOrdinal:ordinal,targetId:identity.assetId,questionUid:identity.questionUid,intrinsicSvg,signal,onProgress,blockExternalRequests:true});}
-    catch(error){if(isCancel(error))throw error;throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:errorText(error)});}
-    if(measured.status!=='PASS')throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:'MEASUREMENT_NOT_PASS'});
-    const names=fs.readdirSync(measured.captureFolder),rowName=names.find(name=>name===identity.assetId+'-sol-desktop-envelope.json'),shotName=names.find(name=>name.endsWith('-'+identity.assetId+'-envelope-context.png'));
-    if(!rowName||!shotName)throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:'ENVELOPE_RAW_CAPTURE_MISSING'});
-    state.evidence={observationSha256:objectSha(measured.observation),matrixSha256:bytesSha(fs.readFileSync(path.join(preflightRun,'archive-render-matrix.json'))),archiveRow:fileRef(root,rel(path.join(measured.captureFolder,rowName))),screenshot:fileRef(root,rel(path.join(measured.captureFolder,shotName))),engineSha256:'sha256:'+measured.rowEvidence.engineSha256};
-    let policy;
-    try{policy=requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg,observation:measured.observation,fontFloorCssPx:11});}
-    catch(error){if(!isDomainCode(error))throw error;throw new Stop('ARCHIVE_POLICY_UNSUPPORTED',{message:errorText(error)});}
+    // One real-Archive measurement of the target at the given solutionImageScale (undefined = the default 60% rule); the evidence it leaves is what the policy is derived from.
+    const measureAt=async scale=>{
+      const preflightRun=path.join(input.productionDir,scale===undefined?'display-envelope-preflight':'display-envelope-preflight-scale'+scale);fs.mkdirSync(preflightRun,{recursive:true});
+      state.paths={runRoot:rel(input.runRoot),matrix:rel(path.join(preflightRun,'archive-render-matrix.json'))};
+      let measured;
+      try{measured=await measureArchiveDisplayEnvelope({run:preflightRun,sourceRef:input.sourceRef,sourceOrdinal:ordinal,targetId:identity.assetId,questionUid:identity.questionUid,intrinsicSvg,signal,onProgress,blockExternalRequests:true,...(scale!==undefined?{solutionImageScale:scale}:{})});}
+      catch(error){if(isCancel(error))throw error;throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:errorText(error)});}
+      if(measured.status!=='PASS')throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:'MEASUREMENT_NOT_PASS'});
+      const names=fs.readdirSync(measured.captureFolder),rowName=names.find(name=>name===identity.assetId+'-sol-desktop-envelope.json'),shotName=names.find(name=>name.endsWith('-'+identity.assetId+'-envelope-context.png'));
+      if(!rowName||!shotName)throw new Stop('ARCHIVE_PREFLIGHT_FAIL',{message:'ENVELOPE_RAW_CAPTURE_MISSING'});
+      state.evidence={observationSha256:objectSha(measured.observation),matrixSha256:bytesSha(fs.readFileSync(path.join(preflightRun,'archive-render-matrix.json'))),archiveRow:fileRef(root,rel(path.join(measured.captureFolder,rowName))),screenshot:fileRef(root,rel(path.join(measured.captureFolder,shotName))),engineSha256:'sha256:'+measured.rowEvidence.engineSha256};
+      return measured;
+    };
+    // The default 60% display is always the binding side (it is smaller than the phone's), so it keeps the policy's own minimum base font; a scaled display also keeps phone labels readable.
+    const derive=(measured,scale)=>requestedProfileTypographyPolicy({requestedSizeClass,intrinsicSvg,observation:measured.observation,fontFloorCssPx:11,...(scale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(intrinsicSvg.width)}:{})});
+    let measured=await measureAt(undefined),policy=null,refusal=null;
+    try{policy=derive(measured,undefined);}
+    catch(error){if(!isDomainCode(error))throw error;refusal=error;}
+    // 2026-11-19: A4 shows a solution figure at 60% of the column (figure-size.css), so a wide canvas (> about 540 px) would need a base font above the cap.
+    // Instead of refusing, the question carries solutionImageScale (% of the column, the same per-figure override the page reads): the figure is measured again
+    // at that scale in the real Archive, and the scale is handed to the capture and to publication. Phone layouts ignore it (they size by natural width), so their labels only get larger.
+    if(!policy&&refusal.message==='UNSUPPORTED_DISPLAY_ENVELOPE:REQUESTED_PROFILE_FONT_SCALE'){
+      for(const scale of solutionImageScaleCandidates({intrinsicSvg,observation:measured.observation})){
+        measured=await measureAt(scale);
+        try{policy=derive(measured,scale);state.solutionImageScale=scale;break;}
+        catch(error){if(!isDomainCode(error))throw error;refusal=error;}
+      }
+    }
+    if(!policy)throw new Stop('ARCHIVE_POLICY_UNSUPPORTED',{message:errorText(refusal)});
     state.policy=policy;state.policySha256=objectSha(policy);state.provenance='ARCHIVE_MEASURED';
     return outcome('MEASURED');
   }catch(error){
     if(!(error instanceof Stop))throw error;
     return outcome(error.status,error.detail);
   }
+}
+
+// A4 column the figure scale is a ratio of (figure-size.css --ap-col-w: 83.65mm = 316.2 px), the figure width a 375 px phone gives a 600+ px canvas
+// (phone layouts ignore the scale and show the figure at 90% of the column, viewport - 94 px: measured at 360/375/390 px), and the base label font the scale aims at
+// (the policy allows 20-32 SVG units; the middle of the range keeps labels in the proportion the standard 384-wide canvases have).
+export const A4_FIGURE_COLUMN_CSS_PX=316.2;
+export const PHONE_FIGURE_WIDTH_CSS_PX=253;
+export const PHONE_FONT_FLOOR_CSS_PX=10;// below the A4 floor (11): a phone shows a 600+ px canvas at about 250 px whatever the base font, and a base font above ~25 leaves labels no room on the canvas
+export const SOLUTION_SCALE_TARGET_BASE_FONT_PX=24;
+export const SOLUTION_SCALE_STEP=5;
+const ceilTenth=value=>Math.ceil((value-1e-9)*10)/10;
+/** Smallest base label font (SVG units) that still shows PHONE_FONT_FLOOR_CSS_PX labels when a phone fits the canvas into PHONE_FIGURE_WIDTH_CSS_PX; the policy cap (32) is the ceiling. */
+export function phoneMinimumBaseFontPx(canvasWidth,{minimumBaseFontPx=20,maximumBaseFontPx=32}={}){
+  return Math.min(maximumBaseFontPx,Math.max(minimumBaseFontPx,ceilTenth(PHONE_FONT_FLOOR_CSS_PX*canvasWidth/PHONE_FIGURE_WIDTH_CSS_PX)));
+}
+/** Scales (% of the column, multiples of 5, at most 100) to try when the default display cannot reach the font floor: the smallest that aims at the target base font, then one or two bigger, never more than the column can show. */
+export function solutionImageScaleCandidates({intrinsicSvg,observation,fontFloorCssPx=11,comfortCssPx=.25,targetBaseFontPx=SOLUTION_SCALE_TARGET_BASE_FONT_PX}){
+  const column=Math.min(A4_FIGURE_COLUMN_CSS_PX,Number.isFinite(observation?.solutionMetaContentWidth)&&observation.solutionMetaContentWidth>0?observation.solutionMetaContentWidth:A4_FIGURE_COLUMN_CSS_PX);
+  const baseWanted=Math.min(32,Math.max(targetBaseFontPx,phoneMinimumBaseFontPx(intrinsicSvg.width)));
+  const wantedWidth=(fontFloorCssPx+comfortCssPx)/baseWanted*intrinsicSvg.width;
+  const first=Math.max(SOLUTION_SCALE_STEP*Math.ceil(wantedWidth/A4_FIGURE_COLUMN_CSS_PX*100/SOLUTION_SCALE_STEP),30);
+  // The figure can never be shown wider than the column, so a larger scale does nothing more: the list stops at the largest step that fits (and starts there when the wanted one does not).
+  const largest=Math.min(100,SOLUTION_SCALE_STEP*Math.floor(column/A4_FIGURE_COLUMN_CSS_PX*100/SOLUTION_SCALE_STEP+1e-9));
+  return [...new Set([first,first+SOLUTION_SCALE_STEP,first+2*SOLUTION_SCALE_STEP].map(value=>Math.min(value,largest)))].filter(value=>value>=30&&(fontFloorCssPx+comfortCssPx)*intrinsicSvg.width/(A4_FIGURE_COLUMN_CSS_PX*value/100)<=32);
 }
 
 // The L1 SVG must be what it claims to be: COMPOSED, with bytes that hash to its own lineage.
@@ -175,9 +217,11 @@ function checkMeasuredPolicy({measuredPolicy,composed,identity,sourceRef,engineR
   const observation={...envelope,questionUid:identity.questionUid,synthetic:false,runtime:row.runtime,browserVersion:row.browserVersion,sourceRef,sourceAuthorityStatus:'MEASUREMENT_ONLY'};
   if(objectSha(observation)!==evidence.observationSha256)bad('OBSERVATION_SHA_DIFFERS');
   let derived;
-  try{derived=requestedProfileTypographyPolicy({requestedSizeClass:measuredPolicy.policy.requestedSizeClass,intrinsicSvg:envelope.intrinsicSvg,observation,fontFloorCssPx:measuredPolicy.policy.fontFloorCssPx});}
+  try{derived=requestedProfileTypographyPolicy({requestedSizeClass:measuredPolicy.policy.requestedSizeClass,intrinsicSvg:envelope.intrinsicSvg,observation,fontFloorCssPx:measuredPolicy.policy.fontFloorCssPx,...(envelope.solutionImageScale!==undefined?{minimumBaseFontPx:phoneMinimumBaseFontPx(envelope.intrinsicSvg.width)}:{})});}
   catch(error){bad('POLICY_NOT_DERIVED_FROM_EVIDENCE',{code:errorText(error)});}
   if(!same(derived,measuredPolicy.policy))bad('POLICY_NOT_DERIVED_FROM_EVIDENCE');
+  // The display scale the policy was measured at must be the one the row recorded (none = the default 60% rule): a different scale would display differently from what the policy assumed.
+  if(measuredPolicy.solutionImageScale!==envelope.solutionImageScale)bad('SOLUTION_IMAGE_SCALE_NOT_IN_EVIDENCE',{claimed:measuredPolicy.solutionImageScale??null,measured:envelope.solutionImageScale??null});
   if(!same(envelope.intrinsicSvg,intrinsic))bad('INTRINSIC_SVG_DIFFERS_FROM_MEASURED',{measured:envelope.intrinsicSvg,svg:intrinsic});
   // L1 relocates an owner label only under this measured policy and this source (its repairContext): re-check every such binding here.
   // A composite carries its repairs per panel, each bound to that panel's plan and SVG; one L1 figure carries them at the top.
@@ -209,8 +253,8 @@ function checkMeasuredPolicy({measuredPolicy,composed,identity,sourceRef,engineR
  */
 export async function captureArchiveCandidate({composed,identity,sourcePath,ordinal,requestedSizeClass,measuredPolicy,alt,runId,signal,onProgress,fixtureClassification=null}={}){
   const lineage=Object.fromEntries(LINEAGE_KEYS.map(key=>[key,null]));
-  const state={paths:null,protectedParity:null,sizeClass:null,observedDisplayScale:null,expectedDisplayScale:null,displayScaleDeltaCssPx:null,layout:null,checks:null};
-  const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,lineage:{...lineage},paths:state.paths,protectedParity:state.protectedParity,sizeClass:state.sizeClass,observedDisplayScale:state.observedDisplayScale,expectedDisplayScale:state.expectedDisplayScale,displayScaleDeltaCssPx:state.displayScaleDeltaCssPx,layout:state.layout,checks:state.checks,fixtureClassification,...flags(onProgress)});
+  const state={paths:null,protectedParity:null,solutionImageScale:undefined,sizeClass:null,observedDisplayScale:null,expectedDisplayScale:null,displayScaleDeltaCssPx:null,layout:null,checks:null};
+  const outcome=(status,detail=null)=>({schemaVersion:ARCHIVE_CAPTURE_VERSION,status,detail,lineage:{...lineage},paths:state.paths,protectedParity:state.protectedParity,...(state.solutionImageScale!==undefined?{solutionImageScale:state.solutionImageScale}:{}),sizeClass:state.sizeClass,observedDisplayScale:state.observedDisplayScale,expectedDisplayScale:state.expectedDisplayScale,displayScaleDeltaCssPx:state.displayScaleDeltaCssPx,layout:state.layout,checks:state.checks,fixtureClassification,...flags(onProgress)});
   try{
     const input=checkInput({identity,sourcePath,ordinal,requestedSizeClass,runId,onProgress});
     if(typeof alt!=='string'||!alt.trim())throw new Stop('ARCHIVE_INPUT_INVALID',{reason:'ALT'});
@@ -231,19 +275,21 @@ export async function captureArchiveCandidate({composed,identity,sourcePath,ordi
     const written=bytesSha(fs.readFileSync(assetFile));
     if(written!==svgSha256)throw new Stop('ARCHIVE_ASSET_WRITE_MISMATCH',{expected:svgSha256,written});
     // candidate bank: only the three solutionImage* fields of the target question change (phase2.mjs 727-734)
-    const patch={solutionImage:archiveAssetRef,solutionImageSize:requestedSizeClass,solutionImageAlt:alt};
+    state.solutionImageScale=measuredPolicy.solutionImageScale;
+    const patch={solutionImage:archiveAssetRef,solutionImageSize:requestedSizeClass,solutionImageAlt:alt,...(state.solutionImageScale!==undefined?{[SCALE_FIELD]:state.solutionImageScale}:{})};
+    const patchedFields=Object.keys(patch);
     const candidate=input.raw+bankAliasSuffix(input.raw)+'\n;Object.assign(window.questionBank.find(q=>q.id==='+JSON.stringify(ordinal)+'),'+JSON.stringify(patch)+');\n';
     const patched=clone(loadBank(candidate)),original=clone(input.bank);
     if(patched.length!==original.length)throw new Stop('ARCHIVE_PROTECTED_FIELD_MUTATION',{reason:'QUESTION_COUNT'});
     original.forEach((question,index)=>{
       const before={...question},after={...patched[index]};
       if(question.id===ordinal){
-        for(const field of PATCHED_FIELDS){delete before[field];delete after[field];}
-        if(!PATCHED_FIELDS.every(field=>patched[index][field]===patch[field]))throw new Stop('ARCHIVE_PROTECTED_FIELD_MUTATION',{reason:'PATCH_NOT_APPLIED',questionId:question.id});
+        for(const field of [...PATCHED_FIELDS,SCALE_FIELD]){delete before[field];delete after[field];}
+        if(!patchedFields.every(field=>patched[index][field]===patch[field]))throw new Stop('ARCHIVE_PROTECTED_FIELD_MUTATION',{reason:'PATCH_NOT_APPLIED',questionId:question.id});
       }
       if(!same(before,after))throw new Stop('ARCHIVE_PROTECTED_FIELD_MUTATION',{questionId:question.id});
     });
-    state.protectedParity={status:'PASS',sourceRef:input.sourceRef,originalQuestionSha256:objectSha(original.find(question=>question.id===ordinal)),questionCount:original.length,protectedFields:PROTECTED_FIELDS,changedFields:PATCHED_FIELDS,targetOrdinal:ordinal};
+    state.protectedParity={status:'PASS',sourceRef:input.sourceRef,originalQuestionSha256:objectSha(original.find(question=>question.id===ordinal)),questionCount:original.length,protectedFields:PROTECTED_FIELDS,changedFields:patchedFields,targetOrdinal:ordinal};
     const candidateFile=path.join(input.examRoot,'candidates',input.examUid+'.js'),candidateBytes=Buffer.from(candidate,'utf8');
     writeNew(candidateFile,candidateBytes);lineage.candidateBankSha256=bytesSha(candidateBytes);
     // matrix: phase2.mjs 738-740, except that the asset carries no sizeClass, so the row reports the class of the rendered wrapper instead of echoing the request
