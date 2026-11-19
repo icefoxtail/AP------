@@ -44,7 +44,7 @@ import { isAuditPreservation } from "./native-audit-preservation.mjs";
 import { REVIEWED_META_VALUE_FIELDS } from "./reviewed-meta-value-fields.mjs";
 import { isPartialSubsetPreservation } from "./native-partial-subset-preservation.mjs";
 import { APPROVED_RENDERER_PRESERVATION } from "./native-approved-renderer-preservation.mjs";
-import { bindDifficulty5Source, registerDifficulty5 } from "./register-difficulty5.mjs";
+import { bindDifficulty5Source, isTextBoundDraft, registerDifficulty5 } from "./register-difficulty5.mjs";
 import { registerBasicScopeRebind } from "./register-basic-scope-rebind.mjs";
 import { BASIC_PRESERVATION_SCHEMA } from "./reviewed-basic-preservation.mjs";
 import { NATIVE_BASIC_HOLD_SCHEMA, NATIVE_BASIC_HOLD_REASON } from "./native-basic-hold-preservation.mjs";
@@ -330,6 +330,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       exam: gemini.requestId || sourceFile,
       sourceFile,
       expectedBlob: gemini.latestBlobSha || doc.latestBlobSha,
+      textBoundDraft: isTextBoundDraft(doc),
       rows
     };
   }
@@ -668,7 +669,8 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
           ? bindDifficulty5Source(fs.readFileSync(path.join(root, sourcePath)), binding.expectedSourceBlobSha1).sha
           : gitBlobSha1(root, sourcePath);
         // A direct type judgment is verified per question by its replay below (stem + choices), not by the file blob.
-        if (binding.expectedSourceBlobSha1 !== blob && unit.kind !== "direct-type-judgment") {
+        // A draft difficulty request whose items all carry textBindingFingerprint is verified per question by the registrar, not by the file blob.
+        if (binding.expectedSourceBlobSha1 !== blob && unit.kind !== "direct-type-judgment" && !unit.textBoundDraft) {
           sourceBound = false;
           result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
         }

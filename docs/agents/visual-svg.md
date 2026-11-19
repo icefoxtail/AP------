@@ -6,7 +6,9 @@
 ## 정본 — 새 SVG는 무조건 엔진으로 만든다 (2026-11-19 사용자 지시)
 
 - 문제 그림이든 해설 그림이든, 기출·유사·교재·유형·생성 문항 어느 것이든 **새로 만들거나 다시 만드는 SVG는 전부 저장소의 SVG 엔진(`archive/tools/geometry-equation/`, 작성 규칙 정본 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`)으로 만든다.** 손으로 쓴 SVG, 스크립트로 직접 조립한 SVG, 다른 도구가 낸 SVG는 넣지 않는다. 문항 수리·원문 복원·메타 작업처럼 그림이 본업이 아닌 작업에서 그림이 필요해져도 같다.
-- **제작 방식(현행, 2026-11-19 사용자 지시): DeepSeek 초안 → Sonnet 검수·마감(한 번).** 흐름·명령은 아래 "SVG 해설 그림 엔진 라인"의 "현행 흐름"이다. 기출 해설 그림뿐 아니라 유사·교재·유형 문항과 문항 수리에서 생기는 그림도 같다. SVG 담당은 Claude SVG 라인 하나이고(2026-11-17, 코덱스·GPT SVG 라인 없음) 루나는 쓰지 않는다. 이유: 초안은 값싼 모델로 충분하고 마감 품질은 Sonnet이 책임진다. 작업 지시서에는 "그림은 엔진으로만 만든다"를 적고, 검수와 메인은 받은 그림이 엔진 산출물인지(plan·렌더 기록) 확인한 뒤에 보여 주거나 병합한다.
+- 엔진이 그 그림을 지원하지 못하면 손으로 그려 메우지 않는다. 지시선·라벨 등 기존 옵션으로 시도한 증거와 함께 "엔진 미지원"으로 보고하고, 그 문항은 그림 보류로 남긴다(엔진 확장은 엔진 라인의 일).
+- **제작 방식(현행, 2026-11-19 사용자 지시):** 규모에 따라 둘로 나눈다. ① **대규모 그림 캠페인**(시험지 여러 개의 해설·문제 그림을 한꺼번에 만드는 SVG 라인)은 효율을 위해 딥시크가 엔진으로 초안을 만들고 Sonnet이 검수·마감 한 번 하고 메인이 PNG 표본을 본다(① 전용 지시문: `archive/tools/geometry-equation/ops/claude-batch/prompts/ds-exam-draft.md`, `archive/tools/geometry-equation/ops/claude-batch/prompts/sonnet-exam-impl.md`). ② **그 밖의 작업에서 생기는 그림**(문항 수리, 원문 복원, 유사문제 반입의 최종 검수 등 몇 장~수십 장)은 Sonnet이 엔진으로 직접 만들고, 메인이 PNG를 눈으로 검수해 마감한다. 어느 쪽이든 엔진으로만 만든다. SVG 담당은 Claude SVG 라인 하나다(2026-11-17). 아래의 루나 구현·루나 검수 절차는 과거 이력이다. 이유: 초안을 싼 모델에 나누는 것은 양이 많을 때만 이득이고, 적은 양은 단계를 줄이는 편이 빠르고 정확하다.
+- 작업 지시서에는 "그림은 엔진으로만 만든다"를 적고, 검수와 메인은 받은 그림이 엔진 산출물인지(plan·렌더 기록) 확인한 뒤에 보여 주거나 병합한다.
 - 스캔에서 깨끗하게 잘라 넣는 원본 그림(PNG)은 이 규칙의 대상이 아니다. 아래 19행의 "엔진 표식의 부재만으로 교체 필요를 판정하지 않는다"는 이미 있는 그림에 대한 규칙이고, 새로 만드는 그림에는 이 절이 적용된다.
 - 이유: 원문 수리 작업에서 작업자가 그림 9장을 스크립트로 직접 조립해, 도수분포다각형에 점이 없고 선·글자 품질이 엔진 그림과 달랐다. 엔진 출력만 관측기가 식·라벨·눈금을 다시 대조하고, 학생이 보는 그림의 모양이 한결같아진다.
 
@@ -44,15 +46,12 @@
 - 전체 요약 `production/exam-figure-queue.md`는 게시 때 고치지 않고, 필요할 때 `figure_ledger.py queue`로 다시 만든다.
 - 이유: 한 파일 장부를 모든 그림 PR이 고쳐 서로 다른 시험지 PR도 하나씩만 병합됐고, 부분 게시가 기존 PUBLISHED를 OPEN으로 덮은 사고(22개 시험지 402문항, PR #1778로 복구)가 있었다.
 
-### 현행 흐름 (2026-11-19)
-
+### 현행 흐름 (2026-11-19) — ① 대규모 캠페인(SVG 라인)
 1. **DeepSeek 초안**(`opencode-go/deepseek-v4.1-flash`, effort 설정 없음). 시험지 단위로 `ops/claude-batch/ds-launch-exam.sh <key> <시험지 JS>`를 띄운다(지시문 `prompts/ds-exam-draft.md`). 전 문항의 그림 필요 여부를 판정하고 item/plan/publish JSON을 쓰고 `node .tmp/work/render.mjs --item <item.json> --plan <plan.json> --out <dir>`로 ARCHIVE_BOUND까지 렌더한 뒤, `node .tmp/svg-m1/svg2png.cjs <svg> <png> 600`으로 만든 PNG를 **직접 보고** 1차로 고친다. DeepSeek은 그림을 본다(2026-11-16 `opencode run -f <png>`로 정육각형 라벨 순서·대각선까지 읽음 확인). 실행 안에서 PNG를 못 열면 메모에 남기고 시각 판단은 Sonnet에 넘긴다.
 2. **Sonnet 검수·마감은 한 번**(effort high, 지시문 `prompts/sonnet-exam-impl.md`). 원문·정답·해설과 PNG를 대조하고 plan을 고쳐 다시 렌더한다(손 SVG 금지). 최종 판정표와 기계 점검(ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음)을 낸다. 두 번째 Sonnet 검수는 두지 않는다. 메인이 PNG 표본에서 결함을 찾으면 메인이 직접 plan·publish를 고쳐 `render.mjs`로 다시 렌더한다(손 SVG 금지; 이유: 결함 하나에 지시서를 쓰고 Sonnet을 다시 돌리는 것보다 빠르다). 같은 묶음에 결함이 여럿이거나 같은 종류가 반복되면 지적 목록을 붙여 그 묶음을 Sonnet 검수·마감 단계로 돌려보낸다. `sonnet-final.md`는 과거(Sonnet B) 지시서다.
 3. **메인이 PNG 표본을 확인한 뒤 게시하고 PR을 올린다.** 게시 도구는 `ops/svg-m1/publish-exam.py`·`pubflow.py`이고 사용법은 HANDOFF 문서 §3-2·§4다. 시험지 5개쯤을 PR 하나로 묶는다.
 4. **엔진 미지원(손으로 메우지 않는다)은 백 개 중 한두 개가 정상이다.** 더 많으면 plan부터 의심한다. 손으로 그리지 않고, 지시선·패널·옵션으로 시도한 증거와 오류 코드를 붙여 UNSUPPORTED로 두고 그림은 보류한 뒤 `ops/claude-batch/ENGINE_GAPS*.md`에 남겨 엔진 라인으로 넘긴다. 큰 묶음(플랜이 많이 쌓인 경우)은 같은 단계를 묶어 돈다: 일괄 렌더 → 자동 관문 → Sonnet 모음 시트 눈 검수 → 실패분 처리(SPEC은 플랜 수리, ENGINE은 엔진 라인) → 게시.
-
-**시험지 하나·문항 몇 개만 그릴 때 최소 순서** (저장소 루트, 새 작업 트리 기준):
-`mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-equation/ops/svg-m1/. .tmp/svg-m1/` → `bash archive/tools/geometry-equation/ops/claude-batch/restore.sh`(도구를 `.tmp/work/`로 펼침) → 렌더 의존성(playwright가 든 node_modules)이 없으면 `GEOMETRY_NODE_MODULES` 지정 → 문항 폴더마다 `item.json`({"sourcePath": 시험지 JS 경로, "ordinal": 문항 id})·`plan.json`(같은 형태의 통과 사례 `.tmp/work/runs/*/exam-rev/qNN/plan.json`을 본떠 값만 바꾼다)·`publish.json`(alt·caption·size) → `render.mjs` → `svg2png.cjs`로 PNG → DeepSeek(또는 직접)이 PNG 확인 → Sonnet이 원문·정답·해설 대조·마감 → 메인이 PNG 확인 → `make-dec-exam.cjs`·`build-pub.py`(BAD 없음) → `pubflow.py --batch`로 게시. 어느 문항이든 plan 작성 전에 `AUTHOR_GUIDE.md`와 `.tmp/svg-m1/guide/`의 해당 형태 가이드를 읽는다.
+**② 문항 몇 개만 그릴 때(문항 수리·유사문제 반입 등, DeepSeek 없이 Sonnet 작업자가 직접)** 저장소 루트, 새 작업 트리 기준: `mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-equation/ops/svg-m1/. .tmp/svg-m1/` → `bash archive/tools/geometry-equation/ops/claude-batch/restore.sh`(`.tmp/work/`로 펼침) → 렌더 의존성(playwright가 든 node_modules)이 없으면 `GEOMETRY_NODE_MODULES` 지정 → 먼저 `AUTHOR_GUIDE.md`와 `.tmp/svg-m1/guide/`의 해당 형태 가이드를 읽고, 문항 폴더마다 `item.json`({"sourcePath": 시험지 JS 경로, "ordinal": 문항 id})·`plan.json`(`ops/golden/<item>/plan.json`이나 같은 형태의 통과 사례 `.tmp/work/runs/*/exam-rev/qNN/plan.json`을 본떠 값만 바꾼다)·`publish.json`(alt·caption·size=sizeClass) 작성 → `node .tmp/work/render.mjs --item item.json --plan plan.json --out <dir>`로 ARCHIVE_BOUND 확인 → `node .tmp/svg-m1/svg2png.cjs <svg> <png> 600`으로 PNG를 만들어 원문·정답·해설과 직접 대조 → PNG를 메인에게 제출(메인이 눈으로 검수·마감) → 통과분을 `make-dec-exam.cjs`·`build-pub.py`(BAD 없음)·`pubflow.py --batch`로 게시. 손 SVG 금지, 결함은 plan을 고쳐 재렌더.
 **현행으로 살아 있는 품질 규칙:** y=x·기울기 ±1 직선·원이 있는 단일 유리·무리함수 그래프는 `equalUnits:true`를 쓰고 PNG를 정답·해설과 대조한다(눈금 비 차이로 45°보다 가파르게 그려진 그림이 검수를 통과해 사용자가 지적했다). 정해진 DeepSeek·Sonnet 단계 밖의 다른 모델·하위 에이전트에 구현·검수를 넘기지 않고, PNG는 직접 보고 판단한다. 이 흐름에서는 대기열 상태 줄·잠금 같은 라인 간 조율 문서를 쓰지 않는다. 옛 루나 구현·검수 절차(2026-11-04~08)는 git 이력에 있다.
 
 

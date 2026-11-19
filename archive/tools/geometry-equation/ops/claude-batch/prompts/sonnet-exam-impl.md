@@ -1,3 +1,4 @@
+[① 대규모 그림 캠페인(SVG 라인) 전용 지시문. 문항 수리·유사문제 반입 등 소량 그림은 DeepSeek 없이 Sonnet이 직접 만든다: docs/agents/visual-svg.md "현행 흐름" ②]
 [Sonnet A — 고1 시험지 한 개 해설 SVG 구현·검수 (DeepSeek 초안 인계)]
 작업 트리: C:/Users/USER/Desktop/AP------/.claude/worktrees/svg-h1-batch1 (Git Bash; 모든 경로는 이 기준, 먼저 cd). 메인 지시에 시험지 JS 경로, 표 key, 초안 폴더가 있다: <JS>, <key>, <DS> = .tmp/work/runs/<key>/ds-draft(또는 메인이 지정한 ds-draft2 …). 결과는 <REV> = .tmp/work/runs/<key>/exam-rev 에 쓴다(이미 있으면 메인이 지정한 다른 폴더).
 이 지시는 옛 흐름의 "루나 구현 + 루나 검수"를 한 번에 맡은 것이다. DeepSeek이 만든 초안을 **네가 PNG를 직접 보고** 고쳐 최종 후보를 만든다. 너의 검수·마감이 마지막 Sonnet 단계다(두 번째 Sonnet 검수는 없다). 메인이 PNG 표본을 보고 결함이 있으면 직접 고치거나 지적 목록과 함께 너에게 되돌린다.
