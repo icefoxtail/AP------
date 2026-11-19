@@ -33,6 +33,12 @@ on:
       - '.github/workflows/archive-output-performance.yml'
   workflow_dispatch:
 
+# A newer push to the same pull request cancels that PR's older run (runner demand; this job measures for up to 30 minutes).
+# Branch pushes and manual runs keep one group per run and are never cancelled.
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('archive-output-performance-pr-{0}', github.event.pull_request.number) || format('archive-output-performance-{0}-{1}', github.event_name, github.run_id) }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 

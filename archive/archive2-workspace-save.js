@@ -183,7 +183,6 @@
       updatedAt: new Date().toISOString(),
       ...Object.fromEntries(keys.map((k) => [k, state[k]])),
       scopeSourcePaths: selectedScopePaths(),
-      scopeQuestionUids: selectedScopeQuestionUids(),
       selected: state.selected.map((r) => ({
         questionUid: r.questionUid,
         rowId: r.rowId,
@@ -200,6 +199,14 @@
       return [];
     }
   }
+  // 초안의 최상위 scopeQuestionUids(범위 안 문항 uid 전체 목록)는 쓰기만 하고 읽는 곳이 없다: applyDraft가 복원 대상에서 빼고
+  // 현재 카탈로그로 범위를 다시 구한다. 초안 크기의 큰 몫이라 새 초안에는 넣지 않고, 이미 저장된 초안도 배열을 다시 쓸 때 이 키만 뺀다
+  // (다른 필드는 그대로, 열 수 있는 정보는 줄지 않는다). 옛 초안·작업 백업 파일에 이 키가 있어도 열린다(검증에서 선택 항목).
+  function withoutUnreadDraftFields(record) {
+    if (!record || typeof record !== "object" || Array.isArray(record) || !("scopeQuestionUids" in record)) return record;
+    const { scopeQuestionUids, ...rest } = record;
+    return rest;
+  }
   function save() {
     if (
       !state.catalog ||
@@ -208,13 +215,14 @@
       return;
     const record = draft();
     try {
+      // 새 초안과 기존 초안 모두 위 정리를 거쳐 쓴다. 공간이 모자라 쓰지 못하면 아무것도 지우지 않고(기존 초안은 그대로) 안내만 한다.
       localStorage.setItem(
         storageKey(),
         JSON.stringify(
           [
             record,
             ...drafts().filter((d) => d.draftId !== record.draftId),
-          ].slice(0, 20),
+          ].slice(0, 20).map(withoutUnreadDraftFields),
         ),
       );
     } catch {
