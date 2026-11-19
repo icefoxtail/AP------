@@ -8,6 +8,9 @@ const flag=n=>flags.includes(n),opt=n=>{const i=flags.indexOf(n);return i>=0?fla
 const apply=flag('--apply'),limit=Number(opt('--exams')||1e9),only=opt('--only');
 const rows=JSON.parse(fs.readFileSync(rowsPath,'utf8'));
 const NEW_KEYS=['solutionImage','solutionImageAlt','solutionImageCaption','solutionImageSize'];
+// 2026-11-19: a figure the default A4 display (60% of the column) cannot show with readable labels is bound at a larger % of the column; the row carries it as `scale` (30-100) and it is written beside solutionImageSize.
+const SCALE_KEY='solutionImageScale',VERIFY_KEYS=[...NEW_KEYS,SCALE_KEY];
+const validScale=v=>typeof v==='number'&&Number.isFinite(v)&&v>=30&&v<=100;
 
 // Locate the active literal without reserializing the bank or touching a separate examData mirror.
 // This scanner only needs source ranges. The VM still decides which bank the Archive uses.
@@ -98,7 +101,7 @@ function replaceFields(text,obj,fields){
   // replace the value of each existing top-level key inside obj; insert missing keys at the end
   let [open,close]=obj;const missing={};
   for(const [k,v] of Object.entries(fields)){
-    const re=new RegExp('"'+k+'"\\s*:\\s*"(?:[^"\\\\]|\\\\.)*"','g');re.lastIndex=open;let m,hit=null;
+    const re=new RegExp('"'+k+'"\\s*:\\s*(?:"(?:[^"\\\\]|\\\\.)*"|-?\\d+(?:\\.\\d+)?)','g');re.lastIndex=open;let m,hit=null;
     while((m=re.exec(text))&&m.index<close){const before=text.slice(open,m.index);if(before.includes('"'+k+'"'))continue;hit=m;break;}
     if(hit){const rep=JSON.stringify(k)+': '+JSON.stringify(v);text=text.slice(0,hit.index)+rep+text.slice(hit.index+hit[0].length);close+=rep.length-hit[0].length;}
     else missing[k]=v;
@@ -133,7 +136,10 @@ for(const [rel,items] of exams){
     const index=orderOf.get(it.ord);
     const bounds=before.findIndex(x=>x.id===it.ord)===index?active?.[index]:null;
     if(!bounds){res.items.push({ord:it.ord,skip:'QUESTION_OBJECT_NOT_LOCATED'});continue;}
-    const fields={solutionImage:assetRel,solutionImageAlt:alt,solutionImageCaption:caption,solutionImageSize:size};
+    if(it.scale!==undefined&&!validScale(it.scale)){res.items.push({ord:it.ord,skip:'BAD_SOLUTION_IMAGE_SCALE'});continue;}
+    // A replaced figure keeps the question's old scale unless the new one carries its own: a stale scale would silently resize the new figure.
+    if(it.replace&&it.scale===undefined&&Object.hasOwn(q,SCALE_KEY)){res.items.push({ord:it.ord,skip:'REPLACE_KEEPS_OLD_SOLUTION_IMAGE_SCALE'});continue;}
+    const fields={solutionImage:assetRel,solutionImageAlt:alt,solutionImageCaption:caption,solutionImageSize:size,...(it.scale!==undefined?{[SCALE_KEY]:it.scale}:{})};
     const obj=bounds.map(pos=>pos+offset),length=patched.length;
     patched=(it.replace?replaceFields:insertFields)(patched,obj,fields);
     offset+=patched.length-length; // items are ordered by their positions in the active array
@@ -145,7 +151,7 @@ for(const [rel,items] of exams){
     let after;try{after=bankOf(patched);}catch(e){res.status='PATCH_UNPARSEABLE:'+String(e.message).slice(0,80);{const k=patched.indexOf('"solutionImage"');if(process.env.DEBUG_SNIP)console.log(JSON.stringify(patched.slice(Math.max(0,k-120),k+260)));}report.push(res);continue;}
     let bad=null;
     if(after.length!==before.length)bad='LENGTH';
-    else before.forEach((q0,i)=>{const a={...after[i]},q={...q0};if(expected.has(q.id))for(const k of NEW_KEYS){if(a[k]!==expected.get(q.id)[k])bad=bad||('FIELDS_NOT_APPLIED_Q'+q.id+':'+k);delete a[k];delete q[k];}if(JSON.stringify(a)!==JSON.stringify(q)){const ks=[...new Set([...Object.keys(a),...Object.keys(q)])].filter(k=>JSON.stringify(a[k])!==JSON.stringify(q[k]));bad=bad||('FIELDS_CHANGED_Q'+q.id+':'+ks.join(','));}});
+    else before.forEach((q0,i)=>{const a={...after[i]},q={...q0};if(expected.has(q.id))for(const k of VERIFY_KEYS){if(a[k]!==expected.get(q.id)[k])bad=bad||('FIELDS_NOT_APPLIED_Q'+q.id+':'+k);delete a[k];delete q[k];}if(JSON.stringify(a)!==JSON.stringify(q)){const ks=[...new Set([...Object.keys(a),...Object.keys(q)])].filter(k=>JSON.stringify(a[k])!==JSON.stringify(q[k]));bad=bad||('FIELDS_CHANGED_Q'+q.id+':'+ks.join(','));}});
     if(bad){res.status='VERIFY_FAIL:'+bad;report.push(res);continue;}
     if(apply){fs.writeFileSync(file,patched);for(const a of assets){fs.mkdirSync(path.dirname(a.to),{recursive:true});fs.copyFileSync(a.from,a.to);}}
   }else res.status='NOTHING';
