@@ -63,10 +63,10 @@ window.questionBank = [
     "content": "다음 그림과 같은 오각기둥에서 교점의 개수를 $a$개, 교선의 개수를 $b$개라 할 때, $b-a$의 값은? [3점]",
     "choices": [
       "$5$",
-      "$3$",
-      "$4$",
       "$6$",
-      "$7$"
+      "$7$",
+      "$8$",
+      "$9$"
     ],
     "answer": "①",
     "points": 3,
@@ -102,9 +102,9 @@ window.questionBank = [
     "choices": [
       "$15\\,\\mathrm{cm}$",
       "$18\\,\\mathrm{cm}$",
-      "$12\\,\\mathrm{cm}$",
       "$21\\,\\mathrm{cm}$",
-      "$24\\,\\mathrm{cm}$"
+      "$24\\,\\mathrm{cm}$",
+      "$27\\,\\mathrm{cm}$"
     ],
     "answer": "②",
     "points": 4,
@@ -140,9 +140,9 @@ window.questionBank = [
     "choices": [
       "$2$개",
       "$3$개",
-      "$1$개",
       "$4$개",
-      "$5$개"
+      "$5$개",
+      "$6$개"
     ],
     "answer": "②",
     "points": 3,
@@ -444,11 +444,11 @@ window.questionBank = [
     "wide": false,
     "content": "삼각형의 세 변의 길이가 각각 $5\\,\\mathrm{cm}$, $x\\,\\mathrm{cm}$, $11\\,\\mathrm{cm}$이고, $11\\,\\mathrm{cm}$가 가장 긴 변일 때, $x$의 값으로 가능한 것은? [4점]",
     "choices": [
-      "$4$",
-      "$5$",
-      "$8$",
       "$6$",
-      "$12$"
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
     ],
     "answer": "③",
     "points": 4,
@@ -750,11 +750,11 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림의 $\\triangle ABC$에서 $\\angle B$의 이등분선과 $\\angle C$의 외각의 이등분선의 교점을 $D$라 하고, 변 $BC$의 연장선 위의 점을 $E$라 하자. $\\angle A = 50^\\circ$일 때, $\\angle x$의 크기는? [5점]",
     "choices": [
+      "$10^\\circ$",
       "$15^\\circ$",
       "$20^\\circ$",
-      "$30^\\circ$",
       "$25^\\circ$",
-      "$35^\\circ$"
+      "$30^\\circ$"
     ],
     "answer": "④",
     "points": 5,

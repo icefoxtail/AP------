@@ -156,13 +156,13 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 두 자연수의 최소공배수가 24이다. 다음 중 두 자연수의 공배수가 될 수 없는 수는?",
     "choices": [
-      "24",
-      "48",
-      "72",
-      "84",
-      "96"
+      "180",
+      "156",
+      "132",
+      "108",
+      "84"
     ],
-    "answer": "④",
+    "answer": "⑤",
     "solution": "두 자연수의 공배수는 최소공배수 24의 배수이다. 84는 24의 배수가 아니므로 공배수가 될 수 없다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
@@ -212,13 +212,13 @@ window.questionBank = [
     "wide": false,
     "content": "36의 배수 중에서 50보다 크고 120보다 작은 자연수를 모두 더한 값은?",
     "choices": [
+      "36",
+      "72",
       "108",
       "144",
-      "180",
-      "216",
-      "252"
+      "180"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "36의 배수는 $36,72,108,144,\\ldots$이다. 조건에 맞는 수는 72와 108이므로 합은 180이다.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
@@ -242,8 +242,8 @@ window.questionBank = [
     "choices": [
       "$-\\dfrac72$",
       "$-\\dfrac{12}4$",
-      "0.25",
       "$-\\dfrac94$",
+      "0.25",
       "$\\dfrac73$"
     ],
     "answer": "②",
@@ -268,10 +268,10 @@ window.questionBank = [
     "wide": false,
     "content": "다음 수 중 가장 작은 수는?",
     "choices": [
-      "$-2.7$",
-      "$-2.07$",
-      "$-\\dfrac32$",
       "0",
+      "$-\\dfrac32$",
+      "$-2.07$",
+      "$-2.7$",
       "$-\\dfrac{11}4$"
     ],
     "answer": "⑤",
@@ -296,13 +296,13 @@ window.questionBank = [
     "wide": false,
     "content": "수직선 위에서 $-\\dfrac32$와 $\\dfrac72$를 나타내는 두 점 사이의 거리는?",
     "choices": [
-      "3",
-      "4",
       "5",
       "6",
-      "7"
+      "7",
+      "8",
+      "9"
     ],
-    "answer": "③",
+    "answer": "①",
     "solution": "두 점 사이의 거리는 $\\dfrac72-\\left(-\\dfrac32\\right)=\\dfrac{10}2=5$이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",

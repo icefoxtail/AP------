@@ -22,17 +22,17 @@ window.questionBank = [
     "wide": false,
     "content": "다음 <보기>의 수 중에서 소수는 모두 몇 개인가?\n\n<보기>\n$1, \\quad 2, \\quad 7, \\quad 9, \\quad 13, \\quad 21, \\quad 27, \\quad 31$",
     "choices": [
-      "$2$개",
-      "$3$개",
       "$4$개",
       "$5$개",
-      "$6$개"
+      "$6$개",
+      "$7$개",
+      "$8$개"
     ],
-    "answer": "③",
+    "answer": "①",
     "points": 3,
     "problemTypeKey": "PT_M1_PRIME_COMPOSITE_JUDGMENT",
     "templateKey": "TPL_M1_PRIME_COMPOSITE_JUDGMENT_PRIME_COMPOSITE_CLAIM_AUDIT",
-    "solution": "주어진 <보기>의 수를 각각 소수인지 합성수인지 판별한다.\n- $1$은 $1$보다 큰 자연수 중에서 $1$과 자기 자신만을 약수로 가지는 수가 아니므로 소수도 합성수도 아니다.\n- $2$는 약수가 $1, 2$뿐인 가장 작은 소수이며, 유일한 짝수인 소수이다.\n- $7$은 약수가 $1, 7$뿐이므로 소수이다.\n- $9$는 $1, 3, 9$를 약수로 가지므로 합성수이다 ($9 = 3^2$).\n- $13$은 약수가 $1, 13$뿐이므로 소수이다.\n- $21$은 약수가 $1, 3, 7, 21$이므로 합성수이다 ($21 = 3 \\times 7$).\n- $27$은 약수가 $1, 3, 9, 27$이므로 합성수이다 ($27 = 3^3$).\n- $31$은 약수가 $1, 31$뿐이므로 소수이다.\n\n따라서 소수는 $2, 7, 13, 31$의 $4$개이다.\n정답은 ③이다.",
+    "solution": "주어진 <보기>의 수를 각각 소수인지 합성수인지 판별한다.\n- $1$은 $1$보다 큰 자연수 중에서 $1$과 자기 자신만을 약수로 가지는 수가 아니므로 소수도 합성수도 아니다.\n- $2$는 약수가 $1, 2$뿐인 가장 작은 소수이며, 유일한 짝수인 소수이다.\n- $7$은 약수가 $1, 7$뿐이므로 소수이다.\n- $9$는 $1, 3, 9$를 약수로 가지므로 합성수이다 ($9 = 3^2$).\n- $13$은 약수가 $1, 13$뿐이므로 소수이다.\n- $21$은 약수가 $1, 3, 7, 21$이므로 합성수이다 ($21 = 3 \\times 7$).\n- $27$은 약수가 $1, 3, 9, 27$이므로 합성수이다 ($27 = 3^3$).\n- $31$은 약수가 $1, 31$뿐이므로 소수이다.\n\n따라서 소수는 $2, 7, 13, 31$의 $4$개이다.\n정답은 ①이다.",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -62,17 +62,17 @@ window.questionBank = [
     "wide": false,
     "content": "$96$을 소인수분해하면 $2^{\\square} \\times 3$으로 나타낼 수 있다. $\\square$ 안에 들어갈 알맞은 수는?",
     "choices": [
+      "$1$",
       "$2$",
       "$3$",
       "$4$",
-      "$5$",
-      "$6$"
+      "$5$"
     ],
-    "answer": "④",
+    "answer": "⑤",
     "points": 3,
     "problemTypeKey": "PT_M1_POWER_BASE_EXPONENT_EVALUATION",
     "templateKey": "TPL_M1_POWER_BASE_EXPONENT_EVALUATION_CORE",
-    "solution": "$96$을 나누어떨어지는 소수로 차례대로 소인수분해한다.\n$96 = 2 \\times 48$\n$\\phantom{96} = 2 \\times 2 \\times 24$\n$\\phantom{96} = 2 \\times 2 \\times 2 \\times 12$\n$\\phantom{96} = 2 \\times 2 \\times 2 \\times 2 \\times 6$\n$\\phantom{96} = 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 3$\n$\\phantom{96} = 2^5 \\times 3$\n\n따라서 $2^5 \\times 3 = 2^{\\square} \\times 3$이므로 $\\square$ 안에 들어갈 알맞은 수는 $5$이다.\n정답은 ④이다.",
+    "solution": "$96$을 나누어떨어지는 소수로 차례대로 소인수분해한다.\n$96 = 2 \\times 48$\n$\\phantom{96} = 2 \\times 2 \\times 24$\n$\\phantom{96} = 2 \\times 2 \\times 2 \\times 12$\n$\\phantom{96} = 2 \\times 2 \\times 2 \\times 2 \\times 6$\n$\\phantom{96} = 2 \\times 2 \\times 2 \\times 2 \\times 2 \\times 3$\n$\\phantom{96} = 2^5 \\times 3$\n\n따라서 $2^5 \\times 3 = 2^{\\square} \\times 3$이므로 $\\square$ 안에 들어갈 알맞은 수는 $5$이다.\n정답은 ⑤이다.",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -222,17 +222,17 @@ window.questionBank = [
     "wide": false,
     "content": "네 사람이 정수 카드를 한 장씩 내는 보드게임을 하고 있다. 바닥에 놓인 네 카드의 정수의 합이 $0$ 또는 $4$가 되면 벨을 누르고 점수를 얻는다. 처음 세 사람이 낸 카드가 차례대로 $-5, +3, -2$일 때, 네 번째 사람이 다음 중 어떤 카드를 내야 벨을 누를 수 있는가?",
     "choices": [
-      "$+4$",
       "$-4$",
       "$-2$",
       "$+2$",
-      "$+6$"
+      "$+3$",
+      "$+4$"
     ],
-    "answer": "①",
+    "answer": "⑤",
     "points": 4,
     "problemTypeKey": "PT_M1_RATIONAL_ARITHMETIC",
     "templateKey": "TPL_M1_RATIONAL_ARITHMETIC_SIGNED_SUM",
-    "solution": "처음 세 사람이 낸 세 카드의 정수의 합을 구한다.\n$(-5) + (+3) + (-2) = (-2) + (-2) = -4$\n\n네 번째 사람이 낸 카드의 정수를 $x$라 하면, 네 카드의 합은 $-4 + x$이다.\n벨을 누르기 위한 조건은 합이 $0$ 또는 $4$가 되는 것이다.\n\n[경우 1] 합이 $0$이 되는 경우\n$-4 + x = 0 \\implies x = +4$\n\n[경우 2] 합이 $4$이 되는 경우\n$-4 + x = 4 \\implies x = +8$\n\n따라서 네 번째 사람이 내야 할 카드는 $+4$ 또는 $+8$이다.\n선지 중에서 이에 해당하는 수는 ① $+4$이다.\n정답은 ①이다.",
+    "solution": "처음 세 사람이 낸 세 카드의 정수의 합을 구한다.\n$(-5) + (+3) + (-2) = (-2) + (-2) = -4$\n\n네 번째 사람이 낸 카드의 정수를 $x$라 하면, 네 카드의 합은 $-4 + x$이다.\n벨을 누르기 위한 조건은 합이 $0$ 또는 $4$가 되는 것이다.\n\n[경우 1] 합이 $0$이 되는 경우\n$-4 + x = 0 \\implies x = +4$\n\n[경우 2] 합이 $4$이 되는 경우\n$-4 + x = 4 \\implies x = +8$\n\n따라서 네 번째 사람이 내야 할 카드는 $+4$ 또는 $+8$이다.\n선지 중에서 이에 해당하는 수는 ① $+4$이다.\n정답은 ⑤이다.",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
     "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
@@ -264,8 +264,8 @@ window.questionBank = [
     "choices": [
       "$-\\dfrac{22}{3}$",
       "$-7$",
-      "$-\\dfrac{17}{2}$",
       "$-3$",
+      "$0$",
       "$\\dfrac{26}{3}$"
     ],
     "answer": "①",
