@@ -1,0 +1,66 @@
+{
+  "qid": 3,
+  "itemFingerprint": "7b7e03db948f202d",
+  "solveSteps": [
+    "1. 직각삼각형 ABC 와 DEF 에서 각 C = 각 F = 90 도 이므로 빗변은 AB 와 DE 이다.",
+    "2. ① 빗변 AB = DE 이고 다른 한 변 AC = DF 이므로 RHS 합동이다.",
+    "3. ② 두 변 AC = DF, BC = EF 와 그 끼인각 90 도가 같으므로 SAS 합동이다.",
+    "4. ③ 빗변 AB = DE 이고 한 예각 각 B = 각 E 이므로 RHA 합동이다.",
+    "5. ④ AB 는 빗변이고 EF 는 직각을 낀 변이므로 대응변이 아니어서 직각삼각형의 합동이 성립하지 않는다.",
+    "6. ⑤ 한 변 BC = EF 와 양 끝 각이 같으므로 ASA 합동이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\angle C = \\angle F = 90^\\circ$인 두 직각삼각형 $ABC$와 $DEF$가 서로 합동이 되는 조건이 아닌 것은?",
+  "rpmRecordId": "M2-RPM-180",
+  "rpmReason": "두 직각삼각형 ABC 와 DEF 의 빗변과 대응변 관계를 검토하여 RHS, RHA, SAS 등 직각삼각형 합동 조건을 판별하는 문항이다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_CONGRUENCE_CRITERIA",
+  "typeReason": "두 직각삼각형의 합동 조건에서 빗변 AB 와 밑변 EF 처럼 대응변이 맞지 않는 보기를 선별하는 직각삼각형 합동 판정 문제이므로 PT_RIGHT_TRIANGLE_CONGRUENCE를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "RHS, RHA 등 직각삼각형의 합동 조건을 비교하여 빗변과 직각 낀 변을 혼동한 ④의 오류를 판별하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "두 직각삼각형 $ABC$와 $DEF$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "서로 합동이 되는 조건이 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대응변",
+        "src": "solution",
+        "quote": "대응변이 아니어서 합동을 보장하지 않는다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "AB 는 빗변이고 EF 는 직각을 낀 변으로 서로 대응변이 아니므로 직각삼각형 합동이 성립하지 않아 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

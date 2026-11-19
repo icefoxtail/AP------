@@ -1,0 +1,68 @@
+{
+  "qid": 21,
+  "itemFingerprint": "539e385573a13835",
+  "solveSteps": [
+    "삼각형 BDC에서 각 BDC = 180 - ADC = 180 - 70 = 110도이다.",
+    "각 BCD = 180 - (110 + 35) = 35도이므로 각 B = 각 BCD = 35도이다.",
+    "두 밑각이 같으므로 삼각형 BDC는 이등변삼각형이며 DC = BD = 7 cm 이다.",
+    "각 ACD = ACB - BCD = 75 - 35 = 40도이다.",
+    "삼각형 ADC에서 각 DAC = 180 - (70 + 40) = 70도이므로 각 DAC = 각 ADC = 70도이다.",
+    "따라서 삼각형 ADC도 이등변삼각형이므로 AC = DC = 7 cm 이다."
+  ],
+  "solvedAnswer": "$7\\text{ cm}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\triangle ABC$의 변 $AB$ 위의 점 $D$에 대하여",
+  "rpmRecordId": "M2-RPM-179",
+  "rpmReason": "각 B = 35도, ADC = 70도로부터 두 각이 같음을 확인해 변의 길이를 결정하므로 이등변삼각형 판정(M2-RPM-179)에 해당한다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_CONVERSE",
+  "typeReason": "삼각형 BDC와 ADC에서 두 내각의 크기가 같음을 밝혀 이등변삼각형임을 보이므로 이등변삼각형의 판정(TPL_ISOSCELES_CONVERSE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 BDC = 110도와 BCD = 35도로 DC = 7을 찾고 각 DAC = 70도로 AC = 7을 유도하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 변 $AB$ 위의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overline{AC}$의 길이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "이므로 $\\triangle BDC$는 이등변삼각형이고",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외각과 내각의 합으로 BCD = 35도, DAC = 70도를 구해 두 번의 이등변삼각형으로 AC = 7 cm 를 확정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

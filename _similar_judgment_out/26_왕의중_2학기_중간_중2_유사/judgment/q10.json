@@ -1,0 +1,65 @@
+{
+  "qid": 10,
+  "itemFingerprint": "40f837317adb0245",
+  "solveSteps": [
+    "1. 점 I 는 삼각형 ABC 의 내심이므로 각 AIC = 90 + (1/2) 각 B = 126 도 이다.",
+    "2. (1/2) 각 B = 126 - 90 = 36 도 이므로 각 B = 72 도 이다.",
+    "3. CI 는 각 C 의 이등분선이므로 각 C = 2 * 각 ICB = 2 * 22 = 44 도 이다.",
+    "4. 삼각형 ABC 의 내각의 합에서 각 A = 180 - (72 + 44) = 180 - 116 = 64 도 이다.",
+    "5. AI 는 각 A 의 이등분선이므로 각 IAB = (1/2) 각 A = 64 / 2 = 32 도 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "점 $I$는 $\\triangle ABC$의 내심이다. $\\angle AIC = 126^\\circ$, $\\angle ICB = 22^\\circ$일 때",
+  "rpmRecordId": "M2-RPM-186",
+  "rpmReason": "내심 I 에서 각 AIC = 126도와 각 ICB = 22도를 이용해 각 B, C 를 구하고 각 IAB = 32도를 도출하는 각의 이등분선과 내심 문항이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_INCENTER",
+  "typeReason": "삼각형 ABC 의 내심 각 공식 각 AIC = 90 + B/2 = 126도와 각 이등분선 성질로 각 IAB = 32도를 계산하는 삼각형의 내심 문제이므로 PT_TRIANGLE_CENTERS를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "내심 공식으로 각 B = 72도, 각 C = 44도를 구해 각 A = 64도에서 각 IAB = 32도를 찾는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$는 $\\triangle ABC$의 내심이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등분선",
+        "src": "solution",
+        "quote": "는 $\\angle A$의 이등분선이므로 $\\angle IAB ="
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "src": "solution",
+        "quote": "점 $I$는 내심이므로 $\\angle AIC = 90^\\circ +",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "내심 공식으로 각 B = 72도, 각 C = 44도를 얻어 각 A = 64도이므로 이등분선 각 IAB = 32도로 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

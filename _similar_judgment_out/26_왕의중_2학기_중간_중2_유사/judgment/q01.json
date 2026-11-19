@@ -1,0 +1,64 @@
+{
+  "qid": 1,
+  "itemFingerprint": "508b70d6698d7a4f",
+  "solveSteps": [
+    "1. 삼각형 ABC 에서 AB = AC 이므로 밑각 각 ABC = 각 ACB = 72 도 이다.",
+    "2. 삼각형 BCD 에서 BC = BD 이므로 이등변삼각형이고 각 BDC = 각 DCB = 72 도 이다.",
+    "3. 삼각형 BCD 의 내각의 합에서 각 CBD = 180 - (72 + 72) = 36 도 이다.",
+    "4. 따라서 각 ABD = 각 ABC - 각 CBD = 72 - 36 = 36 도 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$의 변 $AC$ 위의 점 $D$에 대하여",
+  "rpmRecordId": "M2-RPM-178",
+  "rpmReason": "이등변삼각형 ABC 와 BCD 의 밑각 성질 72도를 이용해 각 ABD = 36도를 구하는 밑각과 꼭짓각 문항이다.",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "TPL_ISOSCELES_BASE_ANGLES",
+  "typeReason": "이등변삼각형의 밑각이 같음을 이용해 각 DCB = 72도 로부터 각 ABD = 36도를 계산하는 이등변삼각형 밑각 문제이므로 PT_ISOSCELES_TRIANGLE을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이등변삼각형의 밑각 성질로 각 CBD = 36도를 구해 72 - 36 = 36도를 찾는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "인 이등변삼각형 $ABC$의 변 $AC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "이등변삼각형 $ABC$의 변 $AC$ 위의 점 $D$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "이므로 $\\triangle BCD$는 이등변삼각형이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "AB=AC 와 BC=BD 의 이등변삼각형 성질로 각 B=72도, 각 CBD=36도를 얻어 각 ABD = 72 - 36 = 36도로 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

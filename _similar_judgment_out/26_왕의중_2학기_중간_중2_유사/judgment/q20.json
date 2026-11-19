@@ -1,0 +1,67 @@
+{
+  "qid": 20,
+  "itemFingerprint": "e997694526d27ab2",
+  "solveSteps": [
+    "3 DF = 2 FC 에서 DF : FC = 2 : 3 이므로 DF = (2/5) DC 이다.",
+    "AD // BC 이므로 삼각형 ADF 와 ECF 는 AA 닮음이다.",
+    "닮음비에 의해 AD : CE = DF : FC = 2 : 3 이므로 CE = (3/2) AD 이다.",
+    "삼각형 DFE의 밑변을 DF, 높이를 CE로 볼 수 있으므로 DFE 넓이 = (1/2) * (2/5 DC) * (3/2 AD) = (3/10) * (DC * AD) 이다.",
+    "직사각형 ABCD 넓이가 150 cm^2 이므로 DFE 넓이 = (3/10) * 150 = 45 cm^2 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURES",
+  "unitEvidence": "직사각형 $ABCD$의 변 $DC$ 위에 $3\\overline{DF} = 2\\overline{FC}$가 되도록 점 $F$를 잡고",
+  "rpmRecordId": "M2-RPM-208",
+  "rpmReason": "삼각형 닮음비를 이용해 밑변과 높이를 비례로 표현하고 전체 직사각형 ABCD 넓이 150에 비를 곱하므로 넓이·부피 비(M2-RPM-208)이다.",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+  "typeReason": "직사각형 ABCD 내부의 평행선과 삼각형 닮음을 활용하여 부분삼각형 DFE의 넓이를 구하므로 삼각형 닮음의 활용(TPL_TRIANGLE_SIMILARITY_APPLICATION)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "삼각형 ADF와 ECF의 닮음비 2:3으로 CE = (3/2)AD를 구하고 밑변 DF와 결합해 직사각형 ABCD의 3/10인 45 cm^2를 구하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$의 변 $DC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle DFE$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "$\\triangle ADF \\sim \\triangle ECF$ ($\\text{AA}$ 닮음)",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "DF:FC = 2:3과 ADF 닮음으로 CE = (3/2)AD를 얻어 DFE 넓이 = (3/10) * 150 = 45 로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

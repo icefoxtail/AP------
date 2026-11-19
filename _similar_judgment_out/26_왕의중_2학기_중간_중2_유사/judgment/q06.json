@@ -1,0 +1,65 @@
+{
+  "qid": 6,
+  "itemFingerprint": "6ede3fcf84f80e5a",
+  "solveSteps": [
+    "1. 점 O 는 삼각형 ABC 의 외심이므로 각 AOB = 2 * 각 C = 2 * 68 = 136 도 이다.",
+    "2. OA = OB 이므로 각 OAB = 각 OBA = (180 - 136) / 2 = 22 도 이다.",
+    "3. 삼각형 ABD 에서 각 ADB = 180 - (각 B + 22) = 158 - 각 B 이다.",
+    "4. 삼각형 ABE 에서 각 BEA = 180 - (각 A + 22) = 158 - 각 A 이다.",
+    "5. 각 A + 각 B = 180 - 68 = 112 도 이므로 각 ADB + 각 BEA = (158 - 각 B) + (158 - 각 A) = 316 - 112 = 204 도 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "예각삼각형 $ABC$의 외심을 $O$라 하고, 선분 $AO$, $BO$의 연장선이 각각 변 $BC$, 변 $AC$와 만나는 점을 $D$, $E$라고 하자.",
+  "rpmRecordId": "M2-RPM-185",
+  "rpmReason": "외심 O 에서 중심각 각 AOB = 2 * 68 = 136 도와 삼각형 내각의 합으로 각 ADB + 각 BEA = 204도를 구하는 외심의 위치·각 문항이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "typeReason": "외심 각 AOB = 2각 C = 136도와 꼭짓점 삼각형 내각의 합을 결합하여 각 ADB + 각 BEA = 204도를 계산하는 삼각형의 외심 문제이므로 PT_TRIANGLE_CENTERS를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "외심 중심각 136도와 두 삼각형의 외각/내각 관계로부터 316 - 112 = 204도를 도출하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "예각삼각형 $ABC$의 외심을 $O$라 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $AO$, $BO$의 연장선이 각각"
+      }
+    ],
+    "method": [
+      {
+        "term": "외심",
+        "src": "solution",
+        "quote": "외심이므로 $\\angle AOB = 2\\angle C = 2 \\times 68^\\circ = 136^\\circ$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외심 O 에서 각 AOB = 136도를 구하고 삼각형 ABD, ABE 내각 합으로 각 ADB + 각 BEA = 316 - 112 = 204도를 얻어 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

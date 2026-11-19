@@ -1,0 +1,64 @@
+{
+  "qid": 8,
+  "itemFingerprint": "4e03be07e1bf6109",
+  "solveSteps": [
+    "1. 평행사변형 ABCD 에서 대변 AD 와 BC 가 평행하므로 엇각으로 각 ODA = 각 OBC 이다. 따라서 (가) = 각 OBC 이다.",
+    "2. 평행사변형에서 대변의 길이는 같으므로 AD = BC 이다. 따라서 (나) = BC 이다.",
+    "3. ㉠, ㉡, ㉢ 에 의해 삼각형 OAD 와 삼각형 OCB 는 ASA 합동이다. 따라서 (다) = 삼각형 OCB 이다.",
+    "4. 따라서 짝지어진 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "다음은 평행사변형 $ABCD$의 두 대각선 $AC$, $BD$의 교점을 $O$라 할 때",
+  "rpmRecordId": "M2-RPM-191",
+  "rpmReason": "평행사변형 ABCD 의 대각선 이등분 증명에서 엇각 각 OBC 와 대변 BC 및 ASA 합동 삼각형 OCB 를 완성하는 대각선 성질 문항이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES_PROOF",
+  "typeReason": "평행사변형 ABCD 의 대각선 성질 증명 빈칸에 들어갈 엇각 각 OBC, 대변 BC, 합동삼각형 OCB 를 선별하는 사각형 성질 증명 문제이므로 PT_QUADRILATERAL_PROPERTIES를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "평행사변형 ABCD 의 엇각과 대변 길이 조건을 차례로 찾아 ASA 합동을 완성하는 2단계 증명 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "다음은 평행사변형 $ABCD$의 두 대각선"
+      }
+    ],
+    "goal": [
+      {
+        "term": "증명",
+        "src": "stem",
+        "quote": "이등분함을 증명하는 과정이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "이므로 엇각으로 $\\angle ODA = \\angle OBC$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "평행사변형 ABCD 에서 엇각 각 ODA = 각 OBC, 대변 AD = BC, 합동 삼각형 OAD = 삼각형 OCB 로부터 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

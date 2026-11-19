@@ -1,0 +1,66 @@
+{
+  "qid": 5,
+  "itemFingerprint": "7e729f52b2790a59",
+  "solveSteps": [
+    "1. 예각삼각형 ABC 의 외심 O 의 성질을 분석한다.",
+    "2. ㄱ. 외심 O 에서 세 꼭짓점까지의 거리는 외접원의 반지름으로 같으므로 OA = OB = OC 이다. (참)",
+    "3. ㄴ. 외심 O 에서 변 AC 에 내린 수선 OF 는 AC 를 수직이등분하므로 AF = CF 이고 OF 공통, 각 OFA = 각 OFC = 90 도 이므로 삼각형 OFA 와 OFC 는 SAS 합동이다. (참)",
+    "4. ㄷ. 세 변까지의 거리가 같은 점 OD = OE = OF 는 내심의 성질이므로 외심에서는 거짓이다.",
+    "5. ㄹ. 각 OBD = 각 OBE 처럼 세 내각의 이등분선의 교점은 내심이므로 외심에서는 거짓이다.",
+    "6. 따라서 옳은 것은 ㄱ, ㄴ 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "예각삼각형 $ABC$의 외심을 $O$라 하고, 점 $O$에서 세 변 $AB$, $BC$, $CA$에 내린 수선의 발을",
+  "rpmRecordId": "M2-RPM-184",
+  "rpmReason": "외심 O 의 세 꼭짓점 거리 OA = OB = OC 와 삼각형 OFA 와 OFC 의 합동 등 외심의 성질을 판별하는 문항이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CIRCUMCENTER",
+  "typeReason": "예각삼각형 ABC 의 외심 O 의 꼭짓점 거리 OA = OB = OC 와 변의 수직이등분선 성질을 보기에서 선별하는 삼각형의 외심 문제이므로 PT_TRIANGLE_CENTERS를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "외심의 성질 OA = OB = OC 와 내심의 성질(변까지 거리 같음)을 구별하여 삼각형 ABC 에서 ㄱ, ㄴ 을 찾는 2단계 개념 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "예각삼각형 $ABC$의 외심을 $O$라 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "수선의 발을 각각 $D$, $E$, $F$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "OFC$ ($\\text{SAS}$ 합동)이다. (참)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "외심 O 에서 세 꼭짓점까지 거리 OA=OB=OC 가 같고 변의 수직이등분선으로 삼각형 OFA 와 OFC 가 합동이므로 ㄱ, ㄴ 인 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

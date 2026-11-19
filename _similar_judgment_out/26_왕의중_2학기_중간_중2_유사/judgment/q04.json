@@ -1,0 +1,66 @@
+{
+  "qid": 4,
+  "itemFingerprint": "7e93b62c04b8628f",
+  "solveSteps": [
+    "1. 직각삼각형 ADE 와 ADC 에서 각 EAD = 각 CAD 이고 AD 공통, 각 AED = 각 C = 90 도 이므로 삼각형 ADE 와 ADC 는 RHA 합동이다.",
+    "2. 따라서 AE = AC = 12 이고 DE = DC 이다.",
+    "3. BE = AB - AE = 20 - 12 = 8 이다.",
+    "4. 각의 이등분선 성질에 의해 BD : DC = AB : AC = 20 : 12 = 5 : 3 이다.",
+    "5. BC = 16 이므로 DE = DC = 16 * 3/(5+3) = 6 이다.",
+    "6. 따라서 삼각형 BDE 의 넓이 = (1/2) * BE * DE = (1/2) * 8 * 6 = 24 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 하고",
+  "rpmRecordId": "M2-RPM-182",
+  "rpmReason": "각 A의 이등분선 성질과 직각삼각형의 합동으로 DE = 6 을 구하고 삼각형 BDE 의 넓이 24 를 구하는 문항이다.",
+  "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+  "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_EQUIDISTANCE",
+  "typeReason": "각의 이등분선 위의 점 D에서 두 변에 이르는 거리가 같음을 이용해 DE = 6 을 구하고 삼각형 BDE 의 넓이를 구하는 문제이므로 PT_TRIANGLE_ANGLE_BISECTOR를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "RHA 합동으로 BE = 8 을 구하고 각 이등분선 비 5:3 으로 DE = 6 을 도출해 넓이 24 를 구하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "인 직각삼각형 $ABC$에서 $\\angle A$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle BDE$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "ADC$ ($\\text{RHA}$ 합동) 따라서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "RHA 합동으로 BE = 20 - 12 = 8 을 구하고 각의 이등분선 비 5:3 으로 DE = 6 을 구해 삼각형 BDE 넓이 24 로 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

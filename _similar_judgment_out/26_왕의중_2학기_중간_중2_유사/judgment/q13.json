@@ -1,0 +1,65 @@
+{
+  "qid": 13,
+  "itemFingerprint": "07e74edca28e8e4c",
+  "solveSteps": [
+    "평행사변형 ABCD의 두 대각선은 서로를 이등분하므로 네 부분삼각형 넓이가 서로 같다.",
+    "삼각형 AOD의 넓이는 전체 평행사변형 넓이 26의 4분의 1이다.",
+    "따라서 AOD = 26 / 4 = 13 / 2 cm^2 이므로 답은 13/2(④)이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "넓이가 $26\\text{ cm}^2$인 평행사변형 $ABCD$의 두 대각선의 교점을 $O$라 할 때",
+  "rpmRecordId": "M2-RPM-195",
+  "rpmReason": "평행사변형 ABCD 전체 넓이 26 cm^2 에서 대각선 분할 삼각형 AOD 넓이를 구하므로 분할도형(M2-RPM-195)에 해당한다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "typeReason": "평행사변형 ABCD에서 넓이 26 cm^2 와 대각선에 의해 나뉘는 삼각형 AOD 넓이를 구하므로 평행사변형의 성질(TPL_QUADRILATERAL_PROPERTIES)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "평행사변형 ABCD 대각선 4분할 넓이 성질을 바로 적용해 26 / 4 = 13/2 를 계산하는 기본 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle AOD$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "두 대각선의 교점을 $O$라 할 때",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "넓이 26 cm^2 와 대각선 교점 O의 성질로부터 AOD = 26 * (1/4) = 13/2 를 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}
