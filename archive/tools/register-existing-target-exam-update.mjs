@@ -6,6 +6,7 @@ import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { syncMetadataShards, assertMetadataAssembledCurrent } from './meta-foundation/question-metadata-format.mjs';
 import core from '../archive2-core.js';
 import { gitBlobSha } from './archive-stage-validator-compat-v1.mjs';
 import { validateCurrentProofChain } from './prepare-existing-target-registration-update.mjs';
@@ -953,6 +954,7 @@ export function applyExistingTargetOutputs({ root, outputDir, outputs, plan, rec
   if (fs.existsSync(out)) fail('FRESH_OUTPUT_DIRECTORY_REQUIRED');
   const currentHead = execFileSync('git', ['-C', realRoot, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
   if (currentHead !== plan.expectedHead || assignment.expectedHead !== plan.expectedHead) fail('HEAD_CHANGED_BEFORE_APPLY');
+  if (apply === true) assertMetadataAssembledCurrent(realRoot);
   const backups = new Map();
   for (const row of plan.baselineBindings) {
     const file = safeRootPath(realRoot, row.relativePath), bytes = fs.readFileSync(file);
@@ -1003,6 +1005,7 @@ export function applyExistingTargetOutputs({ root, outputDir, outputs, plan, rec
       renameFile(temp, target);
     }
     for (const [relative, bytes] of outputs) if (sha(fs.readFileSync(safeRootPath(realRoot, relative))) !== sha(bytes)) fail('APPLY_READBACK_MISMATCH', relative);
+    syncMetadataShards(realRoot); // git holds the question metadata as shards; the file just written is their assembly
     receipt.status = 'APPLIED_PENDING_VALIDATORS';
     receipt.nextRequiredAction = 'RUN_CURRENT_REGISTRATION_VALIDATORS_AND_READBACK';
     receipt.apply = { requested: true, sharedFilesWritten: true, rollbackBackupDirectory: path.relative(realRoot, backupRoot).replaceAll('\\', '/'), rollback: { restored: [], conflicts: [] } };
@@ -1023,6 +1026,7 @@ export function applyExistingTargetOutputs({ root, outputDir, outputs, plan, rec
       try { fs.writeFileSync(restoreTemp, saved); fs.renameSync(restoreTemp, target); restored.push(relative); }
       catch { if (fs.existsSync(restoreTemp)) fs.rmSync(restoreTemp); conflicts.push(relative); }
     }
+    try { syncMetadataShards(realRoot); } catch { conflicts.push('archive/data/question-metadata/v1'); }
     receipt.status = 'APPLY_FAILED_ROLLBACK_ATTEMPTED';
     receipt.apply = { requested: true, sharedFilesWritten: false, rollback: { restored, conflicts } };
     receipt.failure = String(error?.stack || error);

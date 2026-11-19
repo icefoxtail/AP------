@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import { questionMetadataBytesAt } from '../../archive/tools/meta-foundation/question-metadata-format.mjs';
 import { REVIEWED_META_VALUE_FIELDS } from '../../archive/tools/meta-foundation/reviewed-meta-value-fields.mjs';
 import { createQuestionIdentityResolver } from '../../archive/tools/intelligence/question-identity-contract.mjs';
 import { M2_PROBLEM_IMAGE_REPAIR8_PROFILE, validateM2ProblemImageRepair8Candidate,
@@ -149,10 +150,20 @@ function entry(root, commit, rel, required = true) {
 }
 
 function readJson(root, commit, rel, { metadataOnly = true, maxBytes = MAX_FILE_BYTES } = {}) {
-  const item = entry(root, commit, rel);
-  const size = Number(git(root, ['cat-file', '-s', item.blobSha1]).trim());
-  requireThat(Number.isSafeInteger(size) && size > 0 && size <= maxBytes, 'INPUT_SIZE');
-  const bytes = git(root, ['cat-file', 'blob', item.blobSha1], { encoding: null, maxBuffer: maxBytes + 1024 });
+  // Git holds the question metadata as per-exam shards: the one-file form at a commit is their assembly.
+  const assembled = rel === METADATA_PARENT_SOURCE;
+  const item = assembled ? null : entry(root, commit, rel);
+  const bytes = assembled ? questionMetadataBytesAt(root, commit) : null;
+  if (assembled) requireThat(Buffer.isBuffer(bytes) && bytes.length > 0 && bytes.length <= maxBytes, 'INPUT_SIZE');
+  else {
+    const size = Number(git(root, ['cat-file', '-s', item.blobSha1]).trim());
+    requireThat(Number.isSafeInteger(size) && size > 0 && size <= maxBytes, 'INPUT_SIZE');
+  }
+  const body = assembled ? bytes : git(root, ['cat-file', 'blob', item.blobSha1], { encoding: null, maxBuffer: maxBytes + 1024 });
+  return readJsonBytes(root, commit, rel, assembled ? { path: rel, blobSha1: createHash('sha1').update(`blob ${body.length}\0`).update(body).digest('hex') } : item, body, metadataOnly);
+}
+
+function readJsonBytes(root, commit, rel, item, bytes, metadataOnly) {
   let value;
   try { value = JSON.parse(bytes.toString('utf8')); } catch { fail('INPUT_JSON'); }
   requireThat(Buffer.from(bytes.toString('utf8')).equals(bytes), 'INPUT_UTF8');
@@ -372,7 +383,7 @@ function validateClosedInputGraph({ root, baseCommit, inputCommit, envelope, man
     const doc = file.value;
     // This is a current-public-base read only. The whole metadata document is
     // never accepted as an uploaded input or copied into the output commit.
-    requireThat(!files.has(METADATA_PARENT_SOURCE), 'METADATA_PARENT_BASE_ONLY');
+    requireThat(!files.has(METADATA_PARENT_SOURCE) && ![...files.keys()].some(p => p.startsWith('archive/data/question-metadata/v1/')), 'METADATA_PARENT_BASE_ONLY');
     const original = immutable(baseCommit, METADATA_PARENT_SOURCE, { metadataOnly: false, maxBytes: 128 * 1024 * 1024 });
     requireThat(original.sha256 === doc.sourceSha256 && original.value.schemaVersion === 'archive-question-metadata-v1' &&
       Array.isArray(original.value.records), 'METADATA_PARENT_SOURCE_HASH');

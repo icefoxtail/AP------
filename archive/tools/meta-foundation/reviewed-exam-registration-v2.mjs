@@ -1,5 +1,5 @@
 import { requireProjectionPhase, projectionInput } from './reviewed-projection-phase.mjs';
-import { questionMetadataText } from './question-metadata-format.mjs';
+import { questionMetadataText, assertMetadataAssembledCurrent, syncMetadataShards } from './question-metadata-format.mjs';
 import originalSourceError from '../../../tools/4slot/original-source-error-hold.cjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -3026,6 +3026,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // All semantic and reference checks precede the first write; restore originals
   // if an I/O failure occurs. CLI dry-run never changes production data.
   if (write) {
+    assertMetadataAssembledCurrent(root);
     const backup = new Map();
     try {
       for (const [file, text] of changed) {
@@ -3033,6 +3034,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
         backup.set(full, fs.existsSync(full) ? fs.readFileSync(full) : null);
         fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, text, "utf8");
       }
+      syncMetadataShards(root);
     } catch (error) {
       for (const [full, bytes] of backup) { if (bytes === null) fs.rmSync(full, { force: true }); else fs.writeFileSync(full, bytes); }
       throw error;

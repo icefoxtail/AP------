@@ -23,6 +23,7 @@
 // 2 = a refused request left the working tree changed (isolation cannot be proven) - fatal.
 // Nothing is committed or pushed here. Run it from the repository root (or pass --root).
 import crypto from "node:crypto";
+import { hasShards, assembleMetadataFile } from "../../archive/tools/meta-foundation/question-metadata-format.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -214,6 +215,8 @@ export function resetDerived(opt) {
     const clean = git(["clean", "-fdq", "--", spec]);
     if (clean.status !== 0) throw new Error(`clean failed for ${spec}: ${clean.stderr.trim()}`);
   }
+  // The assembled question_metadata.json is ignored by git, so the restore above did not touch it: rebuild it from the restored shards.
+  if (hasShards(opt.root)) assembleMetadataFile(opt.root);
 }
 
 // Moves a request out of the inbox into the rejected dir and writes its deterministic rejection record.

@@ -74,7 +74,7 @@ console.log(JSON.stringify(proof,null,2));
 JS
 stage git-diff-guards
 git diff --check
-git diff --exit-code -- archive/exams archive/data/item-4slot archive/data/question_metadata.json archive/data/meta-foundation/runtime
+git diff --exit-code -- archive/exams archive/data/item-4slot archive/data/question-metadata/v1 archive/data/meta-foundation/runtime
 stage path-allowlist
 python - "$work/commit.paths" <<'PY'
 import fnmatch,subprocess,sys
