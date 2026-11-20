@@ -1,0 +1,60 @@
+{
+  "qid": 8,
+  "itemFingerprint": "a3d056bd55443768",
+  "solveSteps": [
+    "ax^2 + 5x + 1 = 0 에 근의 공식을 적용하면 x = (-5 ± sqrt(25 - 4a)) / (2a) 이다.",
+    "주어진 해 x = (-5 ± sqrt(b)) / 6 과 계수를 비교하면 2a = 6 에서 a = 3 이다.",
+    "근호 안의 식은 b = 25 - 4a = 25 - 12 = 13 이다.",
+    "따라서 b - a = 13 - 3 = 10 이다.",
+    "정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $ax^2+5x+1=0$의 해가",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmEvidence": "b - a &= 13 - 3 = 10",
+  "problemTypeKey": "PT_M3_ROOT_FORMULA",
+  "templateKey": "NONE",
+  "typeReason": "근의 공식의 일반형 계수 비교로 미정계수 ax 25를 결정하는 유형이다.",
+  "rpmReason": "근의 공식 계수 비교를 통해 이차방정식의 미정계수를 복원하는 25 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "근의 공식을 직접 대입하고 계수를 일대일 비교하여 10을 aligned 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "근의 공식",
+        "quote": "이차방정식 $ax^2+5x+1=0$의 해가",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "quote": "두 수 $a$, $b$에 대하여 $b-a$의 값은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의 공식",
+        "quote": "b - a &= 13 - 3 = 10",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "근의 공식",
+        "quote": "2a &= 6 \\implies a = 3",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "근의 공식 x=(-5±sqrt(25-4a))/(2a)와 주어진 해를 비교하여 a=3, b=13을 구하고 b-a=10을 aligned 구했다."
+}

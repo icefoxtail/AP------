@@ -1,0 +1,59 @@
+{
+  "qid": 22,
+  "itemFingerprint": "d8b782bc2843efb1",
+  "solveSteps": [
+    "일차항의 계수 k와 상수항 k+7을 바꾸어 세운 식은 x^2 + (k+7)x + k = 0 이다.",
+    "한 해가 x = -4 이므로 대입하면 (-4)^2 + (k+7)(-4) + k = 0 에서 16 - 4k - 28 + k = 0, -3k - 12 = 0, k = -4 이다.",
+    "k = -4를 처음 이차방정식에 대입하면 x^2 - 4x + 3 = 0 이다.",
+    "(x - 1)(x - 3) = 0 이므로 처음 이차방정식의 해는 x = 1 또는 x = 3 이다."
+  ],
+  "solvedAnswer": "$x=1$ 또는 $x=3$",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "일차항의 계수와 상수항을 바꾸어 풀었더니 한 해가 $x=-4$이었다.",
+  "rpmRecordId": "M3-RPM-031",
+  "rpmEvidence": "일차항의 계수와 상수항을 바꾼 이차방정식은",
+  "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+  "templateKey": "NONE",
+  "typeReason": "계수와 상수항이 바뀐 조건에서 해를 대입하여 미정계수 k를 찾고 본 방정식을 푸는 kx 유형이다.",
+  "rpmReason": "해가 주어진 조건으로 계수를 결정한 후 원래 이차방정식을 푸는 kx 16 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "계수를 바꾸어 대입한 뒤 원래 식을 다시 인수분해하는 난이도 2 kx 16 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "일차항의 계수와 상수항을 바꾸어 풀었더니 한 해가 $x=-4$이었다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "quote": "처음 이차방정식의 해를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차방정식",
+        "quote": "일차항의 계수와 상수항을 바꾼 이차방정식은",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "quote": "한 해가 $x=-4$이므로 대입하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "바꾼 식 x^2+(k+7)x+k=0에 x=-4를 대입해 k=-4를 구하고 처음 식 x^2-4x+3=0의 해 x=1 또는 3을 aligned 구했다."
+}

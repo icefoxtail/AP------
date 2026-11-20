@@ -1,0 +1,59 @@
+{
+  "qid": 24,
+  "itemFingerprint": "f02d65b155d0d5c2",
+  "solveSteps": [
+    "높이 공식 h = -5t^2 + 25t + 1.2 에 시간 t = 4 를 대입한다.",
+    "h = -5(4)^2 + 25(4) + 1.2 = -5(16) + 100 + 1.2 = -80 + 100 + 1.2 이다.",
+    "계산하면 h = 21.2 m 이다.",
+    "답은 21.2 m 이다."
+  ],
+  "solvedAnswer": "$21.2\\text{ m}$",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "$h=-5t^2+25t+1.2$인 관계가 성립한다고 한다.",
+  "rpmRecordId": "M3-RPM-044",
+  "rpmEvidence": "$h = -5t^2 + 25t + 1.2$에 $t = 4$를 대입하면",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "포물선 운동의 이차함수 관계식에 시각 t=4를 대입하여 함숫값 높이 21.2를 구하는 25 유형이다.",
+  "rpmReason": "이차함수의 함숫값을 실생활 물리 공식에 직접 대입하여 계산하는 25 RPM 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "단순 수치 대입 연산으로 21.2 m를 구하는 기본 난이도 1 25 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "$h=-5t^2+25t+1.2$인 관계가 성립한다고 한다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함숫값",
+        "quote": "공을 친 지 $4$초 후의 높이를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "함숫값",
+        "quote": "$h = -5t^2 + 25t + 1.2$에 $t = 4$를 대입하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "함숫값",
+        "quote": "따라서 $4$초 후의 높이는 $21.2\\text{ m}$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "높이 공식 h=-5t^2+25t+1.2에 t=4를 대입하여 -80+100+1.2=21.2 m를 aligned 계산했다."
+}

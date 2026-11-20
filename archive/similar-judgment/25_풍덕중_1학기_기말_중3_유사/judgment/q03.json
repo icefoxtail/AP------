@@ -1,0 +1,59 @@
+{
+  "qid": 3,
+  "itemFingerprint": "07a34cc1606dda55",
+  "solveSteps": [
+    "4x^2 + 2(k-3)x + 25 가 완전제곱식이 되려면 (2x ± 5)^2 = 4x^2 ± 20x + 25 꼴이어야 한다.",
+    "일차항의 계수 2(k-3) = ±20 이므로 k-3 = ±10 이다.",
+    "따라서 k = 13 또는 k = -7 이 된다.",
+    "k의 값 중 가장 작은 값은 -7 이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "$4x^2+2(k-3)x+25$가 완전제곱식이 되기 위한",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmEvidence": "따라서 가장 작은 값은 $-7$이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+  "typeReason": "완전제곱식 조건 20을 이용하여 미정계수 k의 가능한 값을 aligned 구하는 유형이다.",
+  "rpmReason": "이차식이 완전제곱식이 되는 조건 20을 적용하여 k의 범위를 정하는 aligned RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "완전제곱식 계수 비교로 2(k-3)=±20을 푸는 표준적인 난이도 2 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "quote": "$4x^2+2(k-3)x+25$가 완전제곱식이 되기 위한",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "완전제곱식",
+        "quote": "수 $k$의 값 중 가장 작은 값은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "따라서 가장 작은 값은 $-7$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "quote": "완전제곱식이 되기 위한 수 $k$의 값 중",
+        "src": "stem"
+      }
+    ]
+  },
+  "how": "이차식 4x^2+2(k-3)x+25가 완전제곱식이 되도록 일차항 계수를 비교해 가장 작은 k=-7을 aligned 구했다."
+}

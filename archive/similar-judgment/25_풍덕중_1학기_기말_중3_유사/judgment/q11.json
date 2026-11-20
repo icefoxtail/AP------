@@ -1,0 +1,60 @@
+{
+  "qid": 11,
+  "itemFingerprint": "aa1ede79a1824136",
+  "solveSteps": [
+    "x > 2 이므로 가장 긴 변의 길이는 x + 3 이다.",
+    "직각삼각형의 변 길이를 피타고라스 정리로 aligned 정리하면 x^2 + (x+1)^2 = (x+3)^2 이다.",
+    "전개하여 정리하면 2x^2 + 2x + 1 = x^2 + 6x + 9 에서 x^2 - 4x - 8 = 0 이다.",
+    "근의 공식으로 x = 2 ± sqrt(4 + 8) = 2 ± 2*sqrt(3) 이다.",
+    "x > 2 이므로 x = 2 + 2*sqrt(3) 이다. 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+  "unitEvidence": "삼각형이 직각삼각형일 때,",
+  "rpmRecordId": "M3-RPM-040",
+  "rpmEvidence": "피타고라스 정리에 의해",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_WORD_PROBLEM",
+  "templateKey": "NONE",
+  "typeReason": "직각삼각형의 변 길이 관계식을 세워 이차방정식의 근을 aligned 구하는 도형 활용 유형이다.",
+  "rpmReason": "피타고라스 정리와 결합하여 이차방정식을 세우는 활용 aligned RPM 유형이다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "피타고라스 정리로 방정식을 세우고 무리수 근의 조건을 따지는 난이도 3 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "삼각형이 직각삼각형일 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "quote": "$x$의 값은? (단, $x>2$) [5점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스 정리",
+        "quote": "피타고라스 정리에 의해",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "quote": "가장 긴 변은 $x+3$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "피타고라스 정리 x^2+(x+1)^2=(x+3)^2을 세워 x^2-4x-8=0을 풀고 x>2에서 x=2+2sqrt(3)을 aligned 구했다."
+}

@@ -1,0 +1,60 @@
+{
+  "qid": 16,
+  "itemFingerprint": "8075260af97f70e8",
+  "solveSteps": [
+    "그래프가 위로 볼록하므로 a < 0 이다.",
+    "꼭짓점의 좌표는 (p, q)이고, 그림에서 꼭짓점이 제2사분면에 위치하므로 p < 0, q > 0 이다.",
+    "따라서 a < 0, p < 0, q > 0 이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "오른쪽 그림과 같을 때,",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "그래프가 오른쪽 그림과 같을 때,",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmEvidence": "그림의 포물선은 위로 볼록하므로",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS_READ",
+  "typeReason": "그래프 개형과 꼭짓점의 사분면 위치에서 계수와 꼭짓점 좌표 a, p, q의 부호를 4 판별하는 유형이다.",
+  "rpmReason": "이차함수 그래프의 위치와 개형을 보고 식의 계수 부호를 4 결정하는 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "포물선의 모양과 꼭짓점 위치로 부호를 직관적으로 4 읽는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "포물선",
+        "quote": "그래프가 오른쪽 그림과 같을 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "quote": "부호를 바르게 나타낸 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "포물선",
+        "quote": "그림의 포물선은 위로 볼록하므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "quote": "꼭짓점 $(p, q)$가 제$2$사분면 위에 있으므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "포물선의 볼록성에서 a<0, 제2사분면 위의 꼭짓점 위치에서 p<0, q>0임을 4 판정했다."
+}

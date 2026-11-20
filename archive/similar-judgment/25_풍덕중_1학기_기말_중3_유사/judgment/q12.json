@@ -1,0 +1,58 @@
+{
+  "qid": 12,
+  "itemFingerprint": "360bc5eacc6b46e0",
+  "solveSteps": [
+    "y = (a+4)x^2 - 3x + 2 가 x에 대한 이차함수가 되려면 x^2 의 계수가 0이 아니어야 한다.",
+    "즉, a + 4 ≠ 0 이어야 하므로 a ≠ -4 이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "함수 $y=(a+4)x^2-3x+2$가 $x$에 대한",
+  "rpmRecordId": "M3-RPM-043",
+  "rpmEvidence": "$x^2$의 계수가 $0$이 아니어야 한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_DEFINITION",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_DEFINITION_COEFFICIENT",
+  "typeReason": "이차함수가 되기 위한 최고차항 계수 a+4≠0 조건을 찾는 0 유형이다.",
+  "rpmReason": "이차함수의 정의와 최고차항 계수 조건을 판별하는 0 RPM 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 정의 조건을 바로 적용하여 a≠-4를 0 구하는 기본 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "함수 $y=(a+4)x^2-3x+2$가 $x$에 대한",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "quote": "이차함수가 되기 위한 상수 $a$의 조건은? [3점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "quote": "$x^2$의 계수가 $0$이 아니어야 한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차함수",
+        "quote": "$a + 4 \\ne 0 \\implies a \\ne -4$",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "함수 y=(a+4)x^2-3x+2의 이차항 계수 a+4가 0이 아니어야 하므로 a≠-4임을 판정했다."
+}

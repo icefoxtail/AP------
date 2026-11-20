@@ -1,0 +1,60 @@
+{
+  "qid": 9,
+  "itemFingerprint": "b9b4c66b8e772860",
+  "solveSteps": [
+    "x^2 + x - 6 = (x+3)(x-2) = 0 이므로 첫 번째 방정식의 해는 x = -3 또는 x = 2 이다.",
+    "공통인 해가 x = -3 일 때: 3(-3)^2 + k(-3) + 12 = 27 - 3k + 12 = 0 에서 3k = 39, k = 13 이다.",
+    "공통인 해가 x = 2 일 때: 3(2)^2 + k(2) + 12 = 12 + 2k + 12 = 0 에서 2k = -24, k = -12 이다.",
+    "가능한 k의 값의 합은 13 + (-12) = 1 이다.",
+    "정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "공통인 해를 갖도록 하는",
+  "rpmRecordId": "M3-RPM-031",
+  "rpmEvidence": "해는 $x=-3$ 또는 $x=2$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+  "templateKey": "NONE",
+  "typeReason": "두 이차방정식이 공통인 해를 가질 조건을 근의 대입으로 해결하는 kx 유형이다.",
+  "rpmReason": "해가 주어진 이차방정식에서 계수를 결정하는 RPM kx 12 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "인수분해로 해를 구한 후 대입하여 k의 합을 구하는 표준적인 난이도 2 kx 12 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "해",
+        "quote": "공통인 해를 갖도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "quote": "수 $k$의 값을 모두 구하여 더한 값은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "해",
+        "quote": "해는 $x=-3$ 또는 $x=2$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "quote": "$x^2+x-6 = (x+3)(x-2) = 0$이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "첫 방정식의 두 해 x=-3, 2를 둘째 식 3x^2+kx+12=0에 각각 대입하여 k=13, -12의 합 1을 계산했다."
+}

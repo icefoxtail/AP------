@@ -1,0 +1,60 @@
+{
+  "qid": 20,
+  "itemFingerprint": "5277a3d533373ab3",
+  "solveSteps": [
+    "y = 3x^2 - 6ax + 2 = 3(x - a)^2 - 3a^2 + 2 이므로 꼭짓점의 좌표는 (a, -3a^2 + 2)이다.",
+    "꼭짓점이 직선 y = -4x + 2 위의 점이므로 -3a^2 + 2 = -4a + 2 에서 3a^2 - 4a = 0, a(3a - 4) = 0 이다.",
+    "따라서 a = 0 또는 a = 4/3 이다.",
+    "a = 0이면 y = 3x^2 + 2 >= 2 > 0 이 되어 제4사분면을 지나지 않는다.",
+    "a = 4/3이면 꼭짓점이 (4/3, -10/3)으로 제4사분면에 있어 제4사분면을 지난다. 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "꼭짓점이 일차함수 $y=-4x+2$의 그래프 위의 점일 때,",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmEvidence": "직선 $y=-4x+2$ 위에 있으므로",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "이차함수의 꼭짓점이 일차함수 그래프 위에 있을 때 사분면 조건을 만족하는 계수 ax를 결정하는 aligned 유형이다.",
+  "rpmReason": "표준형 변환을 통한 꼭짓점 좌표와 직선의 위치 관계를 다루는 RPM 10 aligned 유형이다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식으로 a의 후보를 구하고 사분면 통과 여부를 검증해야 하는 난이도 3 10 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "꼭짓점",
+        "quote": "꼭짓점이 일차함수 $y=-4x+2$의 그래프 위의 점일 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "quote": "그래프가 제$4$사분면을 지나고",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "quote": "직선 $y=-4x+2$ 위에 있으므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "quote": "제$4$사분면을 지나지 않는다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "꼭짓점 (a, -3a^2+2)를 직선에 대입해 a=0, 4/3을 구한 후 제4사분면 지남 조건 10으로 a=4/3을 aligned 확정했다."
+}
