@@ -1,0 +1,54 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "c287a1f3cf0506d2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$A-2B = (3x^2+xy-2y^2) - 2(2x^2-xy+y^2)$ 식을 전개한다.",
+    "동류항을 정리하면 $-x^2+3xy-4y^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 다항식 $A=3x^2+x",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 연산과 전개 기본 뺄셈 유형이다. (xy)",
+  "rpmRecordId": "H1-RPM-002",
+  "rpmReason": "다항식의 연산 단원의 다항식의 덧셈·뺄셈 유형이다. (xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식의 전개와 동류항 계산을 수행하는 난이도 1 문항이다. (xy)",
+  "how": "식 A-2B를 전개하고 동류항을 정리해 -x^2+3xy-4y^2을 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $A=3x^2+xy-2y^2$, $B=2x^2-xy+y^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$A-2B$를 간단히 하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "-x^2+3xy-4y^2",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "e9465dcec29d1966",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "좌변을 인수분해하면 $(x+1)^2(x^2-5x+1) = 0$이다. (21)",
+    "네 근 중 최솟값 $\\beta = -1$, 최댓값 $\\alpha = (5+\\sqrt{21})/2$이다.",
+    "따라서 $\\alpha-\\beta = (7+\\sqrt{21})/2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "사차방정식 $x^4-3x^3",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "고차방정식의 풀이 및 근의 대소 비교 유형이다. (21)",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "여러 가지 방정식 단원의 삼차·사차방정식 인수분해형 유형이다. (21)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "조립제법으로 사차방정식을 인수분해하고 무리수 근의 대소를 판별하는 난이도 2 문항이다. (21)",
+  "how": "사차방정식을 인수분해하여 네 실근을 구하고 최대근과 최소근의 차 (7+sqrt(21))/2를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "사차방정식 $x^4-3x^3-8x^2-3x+1=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\alpha-\\beta$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(x+1)^2(x^2-5x+1)=0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "근",
+        "src": "stem",
+        "quote": "가장 큰 근을 $\\alpha$, 가장 작은 근을 $\\beta$"
+      }
+    ]
+  }
+}

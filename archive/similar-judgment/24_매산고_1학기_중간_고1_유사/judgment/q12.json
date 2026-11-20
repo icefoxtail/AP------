@@ -1,0 +1,61 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "9cfbaa079ce331c4",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "x축과 한 점에서 만나므로 판별식 $D=(m+k)^2-16(m-k)^2=0$이다.",
+    "$m+k=4(m-k) \\implies k=3m/5$, $m+k=-4(m-k) \\implies k=5m/3$이다. (16)",
+    "자연수 $m=1$일 때 양의 실수 $k$의 최솟값은 $3/5$이다. (16)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "자연수 $m$에 대하여 이차",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 판별식과 중근 조건 응용 유형이다. (16)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 x축 접점 조건에서 최솟값을 구하는 판별식 유형이다. (16)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 x축 접점 판별식 조건을 세우고 자연수 조건에서 최솟값을 구하는 난이도 2 문항이다. (16)",
+  "how": "판별식 D=0 조건으로 k=3m/5를 얻고 자연수 m=1 대입으로 최솟값 3/5를 계산했다. (16)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "자연수 $m$에 대하여 이차함수 $y=x^2+(m+k)x+4(m-k)^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "양의 실수 $k$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $m$에 대하여"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "9cc13685bb19167c",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "중근 조건으로 판별식 $D/4 = (p-3)^2 - (p+3) = p^2 - 7p + 6 = 0$이다. (x)",
+    "$(p-1)(p-6) = 0$이므로 $p = 1$ 또는 $p = 6$이고 합은 7이다. (x)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2+(2p-",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 판별식과 중근 조건 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 중근 조건과 미정계수 판별식 유형이다. (x)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식의 중근 조건 판별식을 세우고 미정계수 합을 구하는 난이도 2 문항이다. (x)",
+  "how": "중근 조건 판별식 D/4 = p^2-7p+6 = 0에서 p=1, 6의 합 7을 도출했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+(2p-6)x+p+3=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "모든 $p$의 값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "이차방정식이 중근을 가지므로 판별식 $D=0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 갖게 하는"
+      }
+    ]
+  }
+}

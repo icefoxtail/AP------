@@ -1,0 +1,61 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "f5b5fc4496e100f2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$f(x)=(x^2-x-1)(ux+v)$ 형태로 몫과 나머지를 일차식으로 설정한다. (12)",
+    "$t=x+1$ 치환 후 $t^2$으로 나눈 나머지 조건에서 $v-u=3, 2u-6(v-u)=0$을 풀어 $u=9, v=12$를 구한다.",
+    "따라서 $f(0) = -v = -12$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "삼차다항식 $f(x)$가 다",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리와 항등식 치환 전개 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 삼차식 몫과 나머지 동치 조건 나머지정리 유형이다. (12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식 나눗셈 구조에서 몫과 나머지 동치 조건과 치환 나눗셈을 결합하는 난이도 2 문항이다. (12)",
+  "how": "몫과 나머지가 같은 삼차다항식을 일차식 미정계수로 두고 치환 전개로 f(0)=-12를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "삼차다항식 $f(x)$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$f(0)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "t=x+1$로 치환하면 $x=t-1$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나눈 몫과 나머지가 같다."
+      }
+    ]
+  }
+}

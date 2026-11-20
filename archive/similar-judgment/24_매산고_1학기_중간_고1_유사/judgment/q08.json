@@ -1,0 +1,61 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "7b593412487c4d88",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$x+y=3, x^2+y^2=29$에서 $xy = -10$이다. (cases)",
+    "$b < 0$이므로 $x = -2, y = 5, b = -7$이다. (cases)",
+    "대입하여 $a = -12/7$을 구하고 $ab = 12$이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$, $y$에 대한 연립",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+  "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차 연립방정식의 풀이 및 대칭식 활용 유형이다. (cases)",
+  "rpmRecordId": "H1-RPM-041",
+  "rpmReason": "여러 가지 방정식 단원의 이차식이 포함된 연립방정식 유형이다. (cases)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "네 연립방정식의 공통해 조건에서 대칭식을 먼저 풀어 미정계수를 구하는 난이도 2 문항이다. (cases)",
+  "how": "대칭식 조건으로 x=-2, y=5, b=-7을 구하고 대입해 a=-12/7에서 ab=12를 계산했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "$x$, $y$에 대한 연립방정식 $\\begin{cases}x+y=3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ab$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "solution",
+        "quote": "이차방정식 $t^2-3t-10=0$, 즉 $(t-5)(t+2)=0$의 두 근이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a$, $b$에 대하여"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "3262487ef57933cb",
+  "solvedAnswer": "(1) $5x^2+7x+8$ (2) $4x^3+5x^2+7x+4$",
+  "solveSteps": [
+    "(1) $g(x) = (x-1)Q_1(x) + 5$를 대입해 $5(x^2+x+1) + 2x + 3 = 5x^2+7x+8$을 구한다. (4.0)",
+    "(2) $g(x)$를 $x^2-1$로 나눈 나머지 $4x+1$을 대입해 $(x^2+x+1)(4x+1) + 2x+3 = 4x^3+5x^2+7x+4$를 구한다. (4.0)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $f(x)$를 $x^",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리를 이용한 복합 다항식 나눗셈 서술형 유형이다. (4.0)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 몫함수 치환 전개와 복합 다항식 나머지정리 유형이다. (4.0)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "몫함수에 나머지정리를 적용하여 곱형태 나눗셈의 나머지를 구하는 난이도 3 서술형 문항이다. (4.0)",
+  "how": "몫 g(x)를 나머지정리로 식화하여 f(x)에 전개 대입해 두 나머지를 순차적으로 도출했다. (4.0)",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "다항식 $f(x)$를 $x^2+x+1$로 나눈 나머지는 $2x+3$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지를 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "g(x)=(x-1)Q_1(x)+5",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$를"
+      }
+    ]
+  }
+}

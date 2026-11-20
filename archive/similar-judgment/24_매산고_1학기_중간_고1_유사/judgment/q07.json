@@ -1,0 +1,61 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "a7173fafd9267979",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "우변을 전개하면 $ax^2 + (2a-8)x + (a+7)$이다.",
+    "상수항 $5 = a+7 \\implies a = -2$, $x$ 계수 $2b = -12 \\implies b = -6$이다. (ax)",
+    "따라서 $ab = (-2)(-6) = 12$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "모든 실수 $x$에 대하여",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식과 미정계수 계수비교법 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 미정계수법 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식 항등식의 우변 전개 후 계수비교로 두 미정계수를 구하는 난이도 2 문항이다. (ax)",
+  "how": "우변을 전개해 계수비교법으로 a=-2, b=-6을 구하고 곱 ab=12를 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 $ax^2+2bx+5=(a-2)(x+1)^2+2(x-1)^2+7$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ab$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "동류항의 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$, $b$"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "1728c7e2fbdd6113",
+  "solvedAnswer": "(1) $a=-5, b=7$ (2) $-3+2\\sqrt{2}<n\\le 0$",
+  "solveSteps": [
+    "(1) $f(2)=1, f(4)=3$을 대입 연립하여 $a=-5, b=7$을 구한다. (ax)",
+    "(2) $F(x) = x^2-(5+n)x+(6+n)=0$이 $[2, 4]$에서 두 실근을 갖도록 판별식, 축, 경계값을 연립한다. (ax)",
+    "세 조건의 공통 범위는 $-3+2\\sqrt{2} < n \\le 0$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $f(x)=x^2+",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 근의 분리와 이차함수-직선 교점 서술형 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-034",
+  "rpmReason": "이차방정식 단원의 구간 내 서로 다른 두 실근 분리와 위치 관계 유형이다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "근의 분리 이론(판별식, 축 위치, 경계값)을 종합 적용하는 난이도 3 심화 서술형 문항이다. (ax)",
+  "how": "연립으로 f(x)를 확정하고 구간 [2, 4]에서 두 실근을 갖도록 판별식, 축, 경계값을 연립해 범위를 구했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=x^2+ax+b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $n$의 범위를 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "D=(5+n)^2-4(6+n)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $g(x)=nx+1-n$과"
+      }
+    ]
+  }
+}

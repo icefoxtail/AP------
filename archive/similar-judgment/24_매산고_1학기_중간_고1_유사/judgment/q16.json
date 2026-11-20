@@ -1,0 +1,61 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "f68c44ca661f9dcf",
+  "solvedAnswer": "$15$",
+  "solveSteps": [
+    "서로 다른 두 실근 조건으로 판별식 $D/4 = (k-2)^2-(k^2-3k-2) = 6-k > 0$이다. (15)",
+    "$k < 6$이므로 자연수 $k = 1, 2, 3, 4, 5$이다. (15)",
+    "모든 자연수 $k$의 합은 $1+2+3+4+5=15$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차방정식 $",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 판별식과 실근 조건 유형이다. (15)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 서로 다른 두 실근을 만족하는 자연수 합 판별식 유형이다. (15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식의 서로 다른 두 실근 조건 판별식을 세우고 자연수 해의 총합을 구하는 난이도 2 문항이다. (15)",
+  "how": "판별식 D/4=6-k>0에서 k<6을 구하고 자연수 k의 합 15를 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2+2(k-2)x+k^2-3k-2=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "모든 자연수 $k$의 값의 합을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D>0$이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근을 갖도록 하는"
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "ef0cf662a3fe90ee",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "분모와 분자에 $1-i$를 곱해 실수화하면 $(3-5i)/2 = 3/2 - (5/2)i$이다. (4)",
+    "실수부분 $3/2$와 허수부분 $-5/2$의 합은 $-1$이다. (4)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\dfrac{4-i}{1+",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 연산과 상등 나눗셈 기본 유형이다. (4)",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "복소수 단원의 복소수의 사칙연산 유형이다. (4)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 나눗셈과 실수화 및 실수부·허수부 합산을 수행하는 난이도 1 문항이다. (4)",
+  "how": "분모의 켤레복소수를 곱해 실수화하고 실수부와 허수부의 합 -1을 구했다. (4)",
+  "slots": {
+    "given": [
+      {
+        "term": "허수단위",
+        "src": "stem",
+        "quote": "단, $i=\\sqrt{-1}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수부분과 허수부분의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "분모의 켤레복소수 $1-i$를 곱하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
