@@ -1,0 +1,57 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "666e58d9ec2d1864",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "뛰어간 거리를 x km, 걸어간 거리를 y km 라 하자.",
+    "거리의 차는 x - y = 2 km 이다.",
+    "총 걸린 시간은 x/6 + y/3 = 7/3 시간이다.",
+    "양변에 6을 곱하면 x + 2y = 14 이고, 차를 빼면 3y = 12 에서 y = 4 km, x = 6 km 이다.",
+    "한 바퀴 거리는 x + y = 6 + 4 = 10 km 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "호수공원에서 시속 $6\\te",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "속력과 시간, 거리 단위 km 를 활용하여 연립방정식을 세우는 유형이다.",
+  "rpmRecordId": "M2-RPM-040",
+  "rpmReason": "시속 6 km 와 3 km 및 거리 차 2 km 로 방정식을 세워 푼다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분 단위를 시간 단위로 바꾸고 거리 km 에 관한 연립방정식을 푼다.",
+  "how": "거리 단위 km 를 미지수로 설정하고 시간 합과 거리 차로 연립하여 10 km를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "뛰어간 거리와 걸어간 거리의 차가 $2\\text{ km}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "호수공원의 둘레를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거리",
+        "src": "solution",
+        "quote": "뛰어간 거리를 $x\\text{ km}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

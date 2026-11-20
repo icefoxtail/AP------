@@ -1,0 +1,55 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "b67f70fb35e4e09c",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "두 점 (-1, 5) 와 (2, -4) 를 지나므로 기울기 a = (-4 - 5)/(2 - (-1)) = -3 이다.",
+    "y = -3x + b 에 대입하면 b = 2 이다.",
+    "따라서 ab = (-3) * 2 = -6 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y = ax +",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "TPL_LINE_TWO_POINTS",
+  "newKeyProposal": null,
+  "typeReason": "두 점을 지나는 일차함수의 식을 완성하여 곱 ab 를 계산하는 유형이다.",
+  "rpmRecordId": "M2-RPM-053",
+  "rpmReason": "두 점으로 식을 세운 후 계수의 곱 ab 를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기와 절편을 구한 뒤 곱 ab = -6 을 계산하는 절차이다.",
+  "how": "두 점의 좌표로 a=-3, b=2를 구한 뒤 계수 곱 ab = -6을 계산하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $y = ax + b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "$ab$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "(-1, 5)$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "b69f2b3eb81dcd10",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "일차방정식 3x + y = 13 에 자연수 x를 1부터 대입한다.",
+    "x = 1 일 때 y = 10, x = 2 일 때 y = 7, x = 3 일 때 y = 4, x = 4 일 때 y = 1 이다.",
+    "x가 5 이상이면 y는 음수가 되므로 자연수 해는 4개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x, y$가 자연수일 때,",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "합이 13 이 되는 일차방정식에서 자연수 순서쌍 해의 개수를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-032",
+  "rpmReason": "일차방정식 3x + y = 13 을 만족하는 자연수 해의 개수를 조사한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "우변 13 이하가 되도록 x에 자연수를 차례로 대입하여 센다.",
+  "how": "3x + y = 13 에서 자연수 x를 1부터 4까지 대입하여 4개의 순서쌍을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $3x + y = 13$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "해의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$x, y$가 자연수일 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

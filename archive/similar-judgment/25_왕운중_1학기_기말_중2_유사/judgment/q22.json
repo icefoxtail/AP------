@@ -1,0 +1,51 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "f48e7f55459f146b",
+  "solvedAnswer": "38",
+  "solveSteps": [
+    "소 x마리, 오리 y마리라 하면 합이 25 마리이므로 x + y = 25 이다.",
+    "다리 수의 합은 4x + 2y = 74 에서 2x + y = 37 이다.",
+    "두 식을 빼면 x = 12 이고 y = 13 이다.",
+    "꼬리와 날개의 합은 12 * 1 + 13 * 2 = 12 + 26 = 38 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2] 어느 농장에는",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "전체 마릿수 25 와 다리 수로 연립방정식을 세워 해결하는 유형이다.",
+  "rpmRecordId": "M2-RPM-038",
+  "rpmReason": "총 마릿수 25 마리와 다리 수 관계를 연립방정식으로 푼다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "총합 25 에서 시작해 연립방정식을 풀고 꼬리와 날개 합을 계산해야 한다.",
+  "how": "총 마릿수 25 와 다리 수로 x=12, y=13을 구한 뒤 꼬리와 날개 합 38을 구하였다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "수의 합을 구하는 과정을 서술하여라."
+      }
+    ],
+    "method": [
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "변끼리 빼면 $x = 12$",
+        "evidenceType": "IMPLIED",
+        "justification": "두 식을 변끼리 빼어 미지수를 소거하는 가감법을 적용함"
+      }
+    ],
+    "condition": []
+  }
+}
