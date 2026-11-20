@@ -1,0 +1,57 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "4afff0685d4429ec",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "하위 인원수를 누적하여 커트라인이 속하는 계급을 파악한다.",
+    "전체 $40$명의 하위 $25%$에 해당하는 인원수는 $\\begin{aligned} 40 \\times 0.25 &= 10\\text{명} \\end{aligned}$",
+    "낮은 점수부터 도수를 누적하면 $\\begin{aligned} 50 \\sim 60\\text{점: } & 2\\text{명} \\ 60 \\sim 70\\text{점: } & 7\\text{명} \\implies 70\\text{점 미만 누적 } 2 + 7 = 9\\text{명} \\ 70 \\sim 80\\text{점: } & 15\\text{명} \\implies 80\\text{점 미만 누적 } 9 + 15 = 24\\text{명} \\end{aligned}$",
+    "하위 $10$번째 학생은 $70 \\sim 80$점 계급에 포함된다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 학생 $40$명의 영어 성적을 조사하여 나타낸 도수분포다각형이다.",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "rpmRecordId": "M1-RPM-110",
+  "rpmEvidence": "하위 인원수를 누적하여 커트라인이 속하는 계급을 파악한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_CUMULATIVE_CUTOFF",
+  "newKeyProposal": null,
+  "typeReason": "Q19번 문항은 PT_M1_FREQUENCY_DISTRIBUTION_READING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 40)",
+  "rpmReason": "Q19번 문항은 M1-RPM-110에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 40)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 40)",
+  "how": "Q19번 문항으로 M1-08 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 40)",
+  "slots": {
+    "given": [
+      {
+        "term": "다각형",
+        "src": "stem",
+        "quote": "다음은 학생 $40$명의 영어 성적을 조사하여 나타낸 도수분포다각형이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수분포",
+        "src": "stem",
+        "quote": "다음은 학생 $40$명의 영어 성적을 조사하여 나타낸 도수분포다각형이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "solution",
+        "quote": "하위 인원수를 누적하여 커트라인이 속하는 계급을 파악한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

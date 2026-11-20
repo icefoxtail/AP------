@@ -1,0 +1,57 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "806ddb0cddcb99fb",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "평행선의 동측내각 및 접힌 각의 대칭성을 이용한다.",
+    "$\\overline{PO} \\parallel \\overline{AB}$이므로 접는 선 $QR$이 직선 $PO$와 이루는 각 $\\angle PQR = 120^\\circ$의 보각은 $\\begin{aligned} \\angle b &= 180^\\circ - 120^\\circ \\ &= 60^\\circ \\end{aligned}$",
+    "종이를 접으면 접는 선 $QR$을 대칭축으로 하여 대칭 이동하므로, 접힌 직선과 원래 직선이 이루는 각 $\\angle a$는 $\\begin{aligned} \\angle a &= 180^\\circ - 2 \\times \\angle b \\ &= 180^\\circ - 2 \\times 60^\\circ \\ &= 180^\\circ - 120^\\circ \\ &= 60^\\circ \\end{aligned}$",
+    "따라서 $\\angle a = 60^\\circ, \\angle b = 60^\\circ$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 접었다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "선분 $PO$와 평행한 선분 $AB$가 그려진 직사각형 모양의 종이를 선분 $QR$를 접는 선으로 하여 다음 그림과 같이 접었다.",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "rpmRecordId": "M1-RPM-066",
+  "rpmEvidence": "평행선의 동측내각 및 접힌 각의 대칭성을 이용한다.",
+  "problemTypeKey": "PT_MOVE_FOLDING_REFLECTION",
+  "templateKey": "TPL_MOVE_FOLDING_REFLECTION_CORE",
+  "newKeyProposal": null,
+  "typeReason": "Q7번 문항은 PT_MOVE_FOLDING_REFLECTION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 PO)",
+  "rpmReason": "Q7번 문항은 M1-RPM-066에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 PO)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 PO)",
+  "how": "Q7번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 PO)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $PO$와 평행한 선분 $AB$가 그려진 직사각형 모양의 종이를 선분 $QR$를 접는 선으로 하여 다음 그림과 같이 접었다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "선분 $PO$와 평행한 선분 $AB$가 그려진 직사각형 모양의 종이를 선분 $QR$를 접는 선으로 하여 다음 그림과 같이 접었다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "평행선의 동측내각 및 접힌 각의 대칭성을 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

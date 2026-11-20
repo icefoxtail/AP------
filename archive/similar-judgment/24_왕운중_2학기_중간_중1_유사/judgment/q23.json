@@ -1,0 +1,57 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "2fe280995306fac5",
+  "solvedAnswer": "$3,\\mathrm{cm}$",
+  "solveSteps": [
+    "$\\triangle ABC$와 $\\triangle BDE$에서 각의 크기를 계산한다.",
+    "$\\triangle ABC$에서 $\\angle ABC = 90^\\circ, \\angle BAC = 34^\\circ$이므로 $\\begin{aligned} \\angle ACB &= 180^\\circ - 90^\\circ - 34^\\circ \\ &= 56^\\circ \\end{aligned}$",
+    "$\\triangle BDE$에서 $\\angle BDE = 90^\\circ, \\angle BED = 56^\\circ$이므로 $\\begin{aligned} \\angle DBE &= 180^\\circ - 90^\\circ - 56^\\circ \\ &= 34^\\circ \\end{aligned}$",
+    "따라서 $\\triangle ACB$와 $\\triangle BED$에서 $\\begin{aligned} \\angle BAC &= \\angle DBE = 34^\\circ \\ \\angle ACB &= \\angle BED = 56^\\circ \\ \\overline{AC} &= \\overline{BE} \\quad (\\text{주어진 조건}) \\end{aligned}$ 이므로 한 변의 길이가 같고 그 양 끝 각의 크기가 각각 같다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 직각삼각형 $ABC$와 직각삼각형 $BDE$에 대하여 $\\overline{AC}=\\overline{BE}$이고 $\\overline{AB}=7,\\mathrm{cm}, \\overline{ED}=4,\\mathrm{cm}$이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 직각삼각형 $ABC$와 직각삼각형 $BDE$에 대하여 $\\overline{AC}=\\overline{BE}$이고 $\\overline{AB}=7,\\mathrm{cm}, \\overline{ED}=4,\\mathrm{cm}$이다.",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-060",
+  "rpmEvidence": "$\\triangle ABC$와 $\\triangle BDE$에서 각의 크기를 계산한다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_RIGHT_TRIANGLE_CONGRUENCE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q23번 문항은 M1-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q23번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 $3,\\mathrm{cm}$을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "다음 그림에서 직각삼각형 $ABC$와 직각삼각형 $BDE$에 대하여 $\\overline{AC}=\\overline{BE}$이고 $\\overline{AB}=7,\\mathrm{cm}, \\overline{ED}=4,\\mathrm{cm}$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "다음 그림에서 직각삼각형 $ABC$와 직각삼각형 $BDE$에 대하여 $\\overline{AC}=\\overline{BE}$이고 $\\overline{AB}=7,\\mathrm{cm}, \\overline{ED}=4,\\mathrm{cm}$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "따라서 $\\triangle ACB$와 $\\triangle BED$에서 $\\begin{aligned} \\angle BAC &= \\angle DBE = 34^\\circ \\ \\angle ACB &= \\angle BED = 56^\\circ \\ \\overline{AC} &= \\overline{BE} \\quad (\\text{주어진 조건}) \\end{aligned}$ 이므로 한 변의 길이가 같고 그 양 끝 각의 크기가 각각 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

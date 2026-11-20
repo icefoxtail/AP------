@@ -1,0 +1,57 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "d93e60788c0f1bc0",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "둘레의 길이와 삼각부등식 성질을 만족하는 자연수 순서쌍 $(a, b)$를 구한다.",
+    "둘레의 길이가 $36,\\mathrm{cm}$이므로 $\\begin{aligned} 2a + b &= 36 \\ 2a &= 36 - b \\end{aligned}$",
+    "삼각형이 성립하기 위해서는 가장 긴 변이 나머지 두 변의 합보다 작아야 하므로 $\\begin{aligned} b &< a + a \\ b &< 2a \\ b &< 36 - b \\ 2b &< 36 \\ b &< 18 \\end{aligned}$",
+    "$a = \\dfrac{36 - b}{2}$가 자연수이어야 하므로 $b$는 짝수이어야 하고, $b$는 두 자리 자연수이므로 가능한 값은 $\\begin{aligned} b \\in {10, 12, 14, 16} \\end{aligned}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "둘레의 길이가 $36,\\mathrm{cm}$이고, 세 변의 길이가 각각 $a,\\mathrm{cm}, a,\\mathrm{cm}, b,\\mathrm{cm}$인 이등변삼각형이 있다.",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-060",
+  "rpmEvidence": "둘레의 길이와 삼각부등식 성질을 만족하는 자연수 순서쌍 $(a, b)$를 구한다.",
+  "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+  "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+  "newKeyProposal": null,
+  "typeReason": "Q12번 문항은 PT_M1_TRIANGLE_SIDE_FEASIBILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)",
+  "rpmReason": "Q12번 문항은 M1-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 36)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 36)",
+  "how": "Q12번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 36)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "둘레의 길이가 $36,\\mathrm{cm}$이고, 세 변의 길이가 각각 $a,\\mathrm{cm}, a,\\mathrm{cm}, b,\\mathrm{cm}$인 이등변삼각형이 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "둘레의 길이가 $36,\\mathrm{cm}$이고, 세 변의 길이가 각각 $a,\\mathrm{cm}, a,\\mathrm{cm}, b,\\mathrm{cm}$인 이등변삼각형이 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "둘레의 길이와 삼각부등식 성질을 만족하는 자연수 순서쌍 $(a, b)$를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

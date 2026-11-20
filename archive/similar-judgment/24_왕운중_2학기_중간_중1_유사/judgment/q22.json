@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "5f6d224777dcbf46",
+  "solvedAnswer": "$A=10, B=6, 56%$",
+  "solveSteps": [
+    "전체 $25$명의 $32%$에 해당하는 학생 수를 구한다.",
+    "$\\begin{aligned} 25 \\times 0.32 &= 8\\text{명} \\end{aligned}$",
+    "$6$편 이상 관람한 학생은 $6 \\sim 8$편 계급과 $8 \\sim 10$편 계급의 도수의 합이므로 $\\begin{aligned} B + 2 &= 8 \\ B &= 6 \\end{aligned}$",
+    "전체 도수의 합이 $25$명이므로 $\\begin{aligned} 4 + A + 3 + B + 2 &= 25 \\ 4 + A + 3 + 6 + 2 &= 25 \\ A + 15 &= 25 \\ A &= 10 \\end{aligned}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "도수분포표이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 어느 학급 학생 $25$명이 지난 $1$년 동안 관람한 영화 편수를 조사하여 나타낸 도수분포표이다.",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "rpmRecordId": "M1-RPM-108",
+  "rpmEvidence": "전체 $25$명의 $32%$에 해당하는 학생 수를 구한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q22번 문항은 PT_M1_FREQUENCY_DISTRIBUTION_READING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 25)",
+  "rpmReason": "Q22번 문항은 M1-RPM-108에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 25)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 25)",
+  "how": "Q22번 문항으로 M1-08 단원의 기본 개념과 성질을 적용하여 $A=10, B=6, 56%$을(를) 바르게 구하였다. (문항 토큰 25)",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "다음은 어느 학급 학생 $25$명이 지난 $1$년 동안 관람한 영화 편수를 조사하여 나타낸 도수분포표이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수분포",
+        "src": "stem",
+        "quote": "다음은 어느 학급 학생 $25$명이 지난 $1$년 동안 관람한 영화 편수를 조사하여 나타낸 도수분포표이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "solution",
+        "quote": "$6$편 이상 관람한 학생은 $6 \\sim 8$편 계급과 $8 \\sim 10$편 계급의 도수의 합이므로 $\\begin{aligned} B + 2 &= 8 \\ B &= 6 \\end{aligned}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

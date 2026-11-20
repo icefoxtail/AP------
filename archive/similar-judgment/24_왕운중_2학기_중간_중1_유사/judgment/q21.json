@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "bb296adad59ffcbb",
+  "solvedAnswer": "$65^\\circ$",
+  "solveSteps": [
+    "$\\angle AOB = 180^\\circ$이고 $\\angle AOC = 90^\\circ$이다.",
+    "$\\angle COD = x^\\circ$라 하면 $\\angle AOD = 90^\\circ + x$이다.",
+    "문제의 조건 $\\angle COD = \\dfrac{1}{3}\\angle AOD$에 의하여 $\\begin{aligned} x &= \\dfrac{1}{3}(90 + x) \\ 3x &= 90 + x \\ 2x &= 90 \\ x &= 45^\\circ \\end{aligned}$",
+    "따라서 $\\angle COD = 45^\\circ$이므로 $\\angle DOB$의 크기는 $\\begin{aligned} \\angle DOB &= 180^\\circ - \\angle AOD \\ &= 180^\\circ - (90^\\circ + 45^\\circ) \\ &= 45^\\circ \\end{aligned}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $\\angle AOB$가 평각이고 $\\angle AOC = 90^\\circ$이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 $\\angle AOB$가 평각이고 $\\angle AOC = 90^\\circ$이다.",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-060",
+  "rpmEvidence": "$\\angle AOB = 180^\\circ$이고 $\\angle AOC = 90^\\circ$이다.",
+  "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+  "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_ANGLE_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "Q21번 문항은 PT_M1_INTERSECTING_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AOB)",
+  "rpmReason": "Q21번 문항은 M1-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AOB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 AOB)",
+  "how": "Q21번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 $65^\\circ$을(를) 바르게 구하였다. (문항 토큰 AOB)",
+  "slots": {
+    "given": [
+      {
+        "term": "평각",
+        "src": "stem",
+        "quote": "다음 그림에서 $\\angle AOB$가 평각이고 $\\angle AOC = 90^\\circ$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "solution",
+        "quote": "문제의 조건 $\\angle COD = \\dfrac{1}{3}\\angle AOD$에 의하여 $\\begin{aligned} x &= \\dfrac{1}{3}(90 + x) \\ 3x &= 90 + x \\ 2x &= 90 \\ x &= 45^\\circ \\end{aligned}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "조건",
+        "src": "solution",
+        "quote": "문제의 조건 $\\angle COD = \\dfrac{1}{3}\\angle AOD$에 의하여 $\\begin{aligned} x &= \\dfrac{1}{3}(90 + x) \\ 3x &= 90 + x \\ 2x &= 90 \\ x &= 45^\\circ \\end{aligned}$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
