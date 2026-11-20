@@ -571,11 +571,7 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule",
-    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 오른쪽 준선에서 왼쪽으로 열린 포물선과 왼쪽 준선에서 오른쪽으로 열린 포물선이 같은 초점 F를 공유한다. 두 준선과 x축이 만나는 점 D1, D2가 선분으로 이어져 있고 길이가 표시되어 있다.",
-    "solutionImageCaption": "예: q=0, p=3인 경우의 그림이다. y²=−8(x−p)는 p′=−2이므로 초점 (p−2, 0), 준선 x=p+2이고, y²=4(x−q)는 p″=1이므로 초점 (q+1, 0), 준선 x=q−1이다. 초점이 같으므로 p−2=q+1에서 p−q=3이고 두 준선 사이의 거리는 (p+2)−(q−1)=6이다. 그림에서 준선 l은 x=5, 준선 m은 x=−1이다. 따라서 답은 6이다.",
-    "solutionImageSize": "full"
+    "subUnitClassificationDepth": "complete_rule"
   },
   {
     "id": 18,
