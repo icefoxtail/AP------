@@ -1,0 +1,62 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "a2d53984ee345e19",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(-2x)^2 = 4x^2$ 이다. (Bx)",
+    "좌변은 $3x^A \\times 4x^2 \\div 4x^3 = 12x^{A+2} \\div 4x^3 = 3x^{A+2-3} = 3x^{A-1}$ 이다. (Bx)",
+    "우변이 $Bx^6$ 이므로 $B=3$, $A-1=6 \\implies A=7$ 이다. (Bx)",
+    "따라서 $A+B = 7+3 = 10$ 이며 정답은 ③이다. (Bx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "등식 $3x^{A} \\tim",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단항식의 곱셈과 나눗셈을 이용한 미정계수 결정 유형이다. (Bx)",
+  "rpmRecordId": "M2-RPM-011",
+  "rpmReason": "식의 계산 단원의 미정계수 A와 B를 결정하는 단항식 연산 유형이다. (Bx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "단항식 혼합 계산 후 계수와 지수를 비교하여 미지수를 구하는 난이도 2 문항이다. (Bx)",
+  "how": "좌변을 지수법칙으로 정리하여 양변의 계수와 지수를 비교했다. (Bx)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "이 성립할 때, $A+B$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$A+B$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "좌변을 지수법칙을 이용하여 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $A$는 자연수, $B$는 상수"
+      }
+    ]
+  }
+}

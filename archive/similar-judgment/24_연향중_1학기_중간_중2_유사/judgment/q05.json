@@ -1,0 +1,56 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "0611b27039441d4e",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\frac{2}{7} = 0.\\dot{2}8571\\dot{4}$로 순환마디는 $2, 8, 5, 7, 1, 4$의 6개 숫자이다. (40)",
+    "$40 = 6 \\times 6 + 4$이므로 40번째 숫자는 4번째 숫자인 $7$이다 ($a=7$). (40)",
+    "$60 = 6 \\times 10$이므로 60번째 숫자는 6번째 숫자인 $4$이다 ($b=4$). (40)",
+    "따라서 $a+b = 7+4 = 11$이며 정답은 ③이다. (40)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "분수 $\\dfrac{2}{7",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수의 순환마디 주기를 이용해 n번째 자리 숫자를 구하는 유형이다. (40)",
+  "rpmRecordId": "M2-RPM-003",
+  "rpmReason": "유리수와 순환소수 단원의 순환소수의 자릿수 규칙 유형이다. (40)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "나머지 주기를 활용해 소수점 아래 자릿수를 결정하는 난이도 2 문항이다. (40)",
+  "how": "순환마디 길이의 나머지를 이용하여 특정 자릿수의 숫자를 구하고 합했다. (40)",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{2}{7}$를 소수로 나타낼 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "이때 $a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "분수 $\\dfrac{2}{7}$를 나눗셈하여 순환소수로 나타낸다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

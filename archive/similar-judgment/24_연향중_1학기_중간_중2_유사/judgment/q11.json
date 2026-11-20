@@ -1,0 +1,56 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "c0277596d558ee94",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "첫 번째 식: $4y + 6x - 3 = 6x + 4y - 3$ 이다. (23)",
+    "두 번째 식: $4(x - 3y - 2) = 4x - 12y - 8$ 이다. (23)",
+    "두 식의 차: $(6x + 4y - 3) - (4x - 12y - 8) = 2x + 16y + 5$ 이다. (23)",
+    "모든 계수와 상수항의 합: $2 + 16 + 5 = 23$ 이며 정답은 ①이다. (23)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "${4y + 3(2x-1)}",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 괄호 전개와 동류항 정리 및 계수의 합 구하기 유형이다. (23)",
+  "rpmRecordId": "M2-RPM-013",
+  "rpmReason": "식의 계산 단원의 괄호가 있는 다항식의 덧셈과 뺄셈 유형이다. (23)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다중 괄호 전개 및 부호 주의를 요하는 다항식 연산 난이도 2 문항이다. (23)",
+  "how": "괄호를 순차적으로 풀고 동류항을 정리한 후 계수들의 합을 구했다. (23)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "${4y + 3(2x-1)} - 4{x - (3y+2)}$ 를 간단히 하였을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "상수항을 포함한 모든 계수의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "소괄호와 중괄호를 순서대로 풀어 동류항끼리 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

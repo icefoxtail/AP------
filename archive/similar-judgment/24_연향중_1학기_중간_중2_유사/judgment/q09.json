@@ -1,0 +1,56 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "7f424bb005d11e32",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$\\left(\\frac{8}{3}\\right)^a = \\frac{(2^3)^a}{3^a} = \\frac{2^{3a}}{3^a}$ 이다. (81)",
+    "우변이 $\\frac{2^b}{81} = \\frac{2^b}{3^4}$ 이므로 $3^a = 3^4$ 에서 $a=4$ 이다. (81)",
+    "$b = 3a = 3 \\times 4 = 12$ 이다. (81)",
+    "따라서 $a=4, b=12$ 이며 정답은 ⑤이다. (81)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\left(\\dfrac{8",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수법칙을 이용하여 미지인 지수들을 결정하는 유형이다. (81)",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "식의 계산 단원의 지수법칙 거듭제곱의 거듭제곱 유형이다. (81)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱의 거듭제곱 및 분수의 거듭제곱 법칙을 연계하는 난이도 2 문항이다. (81)",
+  "how": "밑을 소인수분해하여 분모와 분자의 지수를 각각 비교했다. (81)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "$\\left(\\dfrac{8}{3}\\right)^{a} = \\dfrac{2^{b}}{81}$ 일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "두 자연수 $a, b$의 값으로 옳은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수",
+        "src": "solution",
+        "quote": "좌변을 소인수 $2$와 $3$의 거듭제곱으로 나타낸다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

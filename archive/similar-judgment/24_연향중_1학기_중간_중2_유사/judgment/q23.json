@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "575488c0b5f29c86",
+  "solvedAnswer": "$10$명",
+  "solveSteps": [
+    "어른 수를 $x$명이라 하면 어린이 수는 $30-x$명이다. (1200)",
+    "총 입장료 부등식: $1200x + 800(30-x) \\le 28000$ 이다. (1200)",
+    "양변을 400으로 나누면 $3x + 2(30-x) \\le 70 \\implies 3x + 60 - 2x \\le 70 \\implies x \\le 10$ 이다. (1200)",
+    "따라서 어른은 최대 10명까지 입장할 수 있다. (1200)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3번] 어느 체험",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "수량 관계와 총 금액 제한을 활용한 일차부등식 활용 유형이다. (1200)",
+  "rpmRecordId": "M2-RPM-024",
+  "rpmReason": "일차부등식의 활용 단원의 수량 관계 이상·이하 조건 유형이다. (1200)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "실생활 인원 및 금액 조건을 일차부등식으로 모델링하는 서술형 난이도 2 문항이다. (1200)",
+  "how": "어른 인원을 x로 두고 총 입장료에 대한 부등식을 세워 최대 정수를 구했다. (1200)",
+  "slots": {
+    "given": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "어느 체험 학습장의 입장료는 어른이 $1200$원, 어린이가 $800$원이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "어른은 최대 몇 명까지 입장할 수 있는지 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "미지수",
+        "src": "solution",
+        "quote": "입장하는 어른의 수를 $x$명이라 하면, 전체 인원이 $30$명이므로 어린이의 수는 $(30 - x)$명이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "총 입장료가 $28000$원 이하가 되게 하려면"
+      }
+    ]
+  }
+}

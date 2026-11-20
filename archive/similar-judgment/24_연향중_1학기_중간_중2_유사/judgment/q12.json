@@ -1,0 +1,55 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "84c1540e5e27e265",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$A - (-3x^2+2x-5) = 5x^2-4x+3$ 이므로 $A = 5x^2-4x+3 + (-3x^2+2x-5) = 2x^2-2x-2$ 이다. (aligned)",
+    "바르게 계산한 식은 $A + (-3x^2+2x-5) = (2x^2-2x-2) + (-3x^2+2x-5) = -x^2-7$ 이다. (aligned)",
+    "따라서 바르게 계산한 식은 ②이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어떤 식에 $-3x^{2}+",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "잘못 계산한 다항식의 바른 계산 복원 유형이다. (aligned)",
+  "rpmRecordId": "M2-RPM-012",
+  "rpmReason": "식의 계산 단원의 다항식의 덧셈과 뺄셈 동류항 정리 유형이다. (aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "잘못 계산한 식의 역연산과 바른 식 계산을 수행하는 난이도 2 문항이다. (aligned)",
+  "how": "잘못된 식의 결과를 이용해 어떤 식을 구한 후 올바른 덧셈 연산을 적용했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "어떤 식에 $-3x^{2}+2x-5$를 더해야 할 것을 잘못하여 빼었더니 $5x^{2}-4x+3$이 되었다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "바르게 계산한 식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "잘못 계산한 등식으로부터 어떤 식 $A$를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
