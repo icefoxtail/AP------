@@ -1,0 +1,57 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "03ad9e7f4bbd87ab",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "l // m 이므로 세로 직선과 m이 이루는 110도의 동위각은 l과 이루는 각도 110도이다.",
+    "한 직선 위 이웃한 각의 합은 180도이므로 각 y = 180 - 110 = 70도이다.",
+    "비스듬한 직선과 m이 이루는 155도의 동위각은 l과 이루는 각 155도이다.",
+    "각 x + 각 y = 155도이므로 각 x = 155 - 70 = 85도이다.",
+    "따라서 각 x - 각 y = 85 - 70 = 15도이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 두 직선 $l",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+  "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+  "newKeyProposal": null,
+  "typeReason": "평행선에서 110도 동위각과 보각 관계를 이용해 미지각을 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-177",
+  "rpmReason": "평행선과 110도 동위각의 성질을 적용하여 각을 이동한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "110도 동위각과 편각의 합 180도를 순차적으로 적용하여 x - y를 구한다.",
+  "how": "110도의 동위각으로 y=70도를 얻고 155도에서 x=85도를 찾아 차이 15도를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "두 직선 $l, m$이 서로 평행($l \\parallel m$)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "$\\angle x - \\angle y$의 크기는? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "동위각",
+        "src": "solution",
+        "quote": "동위각의 크기는 서로 같다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

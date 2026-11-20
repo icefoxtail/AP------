@@ -1,0 +1,58 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "f2c12513926c01a1",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "평행사변형 ABCD에서 두 대각선이 점 O에서 수직으로 만나고 AO = OC, BO = OD 이다.",
+    "점 O는 선분 AC의 중점이다 (참).",
+    "직선 BD는 선분 AC의 중점 O를 지나고 수직이므로 AC의 수직이등분선이다 (참).",
+    "점 C에서 직선 BD에 내린 수선의 발은 점 O이다 (참).",
+    "점 B와 직선 AC 사이의 거리는 선분 BO의 길이이다 (참).",
+    "직선 BD는 선분 AO의 중점이 아닌 끝점 O를 지나므로 AO의 수직이등분선이 아니다 (거짓)."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 대각선 $AC$와 $BD",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "problemTypeKey": "PT_M1_PERP_DISTANCE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "수직이등분선과 수선의 발, 점과 직선 사이의 거리 진술의 참·거짓을 선분 AC 등에 대해 판단하는 유형이다.",
+  "rpmRecordId": "M1-RPM-183",
+  "rpmReason": "선분 AC 수선의 발과 수직이등분선의 정의를 정확히 판별한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수직이등분선은 중점을 지나야 하므로 선분 AO 의 끝점을 지나는 직선 BD는 거짓이다. AC",
+  "how": "선분 AC의 수직이등분선 성질을 확인하고 선분 AO에 대해 거짓인 5번을 선택하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "두 대각선 $AC$와 $BD$가 점 $O$에서 서로 수직으로 만나고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에 대한 설명으로 옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직이등분선",
+        "src": "solution",
+        "quote": "선분의 중점을 지나면서 그 선분에 수직인 직선이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

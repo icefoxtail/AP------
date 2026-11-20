@@ -1,0 +1,55 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "a3817c92df00021c",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "면 ABCD와 면 ABFE의 교선은 모서리 AB 이다.",
+    "모서리 AB와 한 점에서 만나는 모서리는 AD, AE, BC, BF 이다.",
+    "보기 중 이에 해당하는 것은 모서리 AE 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직육면체 $ABCD-EFGH",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+  "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_EDGE_FACE_INCIDENCE",
+  "newKeyProposal": null,
+  "typeReason": "직육면체에서 두 면의 교선인 모서리 AB 와 한 점에서 만나는 모서리 AE 를 찾는 유형이다.",
+  "rpmRecordId": "M1-RPM-179",
+  "rpmReason": "공유 모서리 AB와 꼭짓점에서 만나는 모서리 AE 를 식별한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "교선 AB를 구하고 꼭짓점 A에서 만나는 모서리 AE 를 바로 선택할 수 있다.",
+  "how": "교선이 모서리 AB임을 파악하고 한 점에서 만나는 모서리 AE를 정답으로 선택하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직육면체",
+        "src": "stem",
+        "quote": "직육면체 $ABCD-EFGH$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "모서리",
+        "src": "stem",
+        "quote": "교선과 한 점에서 만나는 모서리는? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "교선",
+        "src": "solution",
+        "quote": "두 면의 교선은 두 면이 공유하는 모서리이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "03938ffe7732ea51",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "직선의 개수 a: 직선 l (1개) + 점 P와 4점을 잇는 직선 (4개) = 5개",
+    "반직선의 개수 b: 직선 l 위에서 6개 + 점 P 관련 8개 = 14개",
+    "선분의 개수 c: 5개 점 중 2개를 택하는 조합 5*4/2 = 10개",
+    "따라서 a + b + c = 5 + 14 + 10 = 29 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직선 $l$ 위에 서로 다른",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT",
+  "templateKey": "TPL_M1_GENERATED_GEOMETRIC_OBJECT_COUNT_MULTI_OBJECT_COUNT",
+  "newKeyProposal": null,
+  "typeReason": "공선점과 외부 점에서 결정되는 직선, 반직선, 선분의 개수를 세어 합 29 를 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-173",
+  "rpmReason": "직선, 반직선, 선분의 정의에 따라 개수를 분류하여 29 를 도출한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직선 5개, 반직선 14개, 선분 10개를 체계적으로 세어 합 29 를 계산해야 한다.",
+  "how": "직선 5개, 반직선 14개, 선분 10개의 개수를 합산하여 29를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $l$ 위에 서로 다른 네 점 $A, B, C, D$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "반직선",
+        "src": "stem",
+        "quote": "$a + b + c$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "직선, 반직선, 선분의 정의에 따라",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

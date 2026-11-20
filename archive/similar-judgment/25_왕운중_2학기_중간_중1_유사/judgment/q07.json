@@ -1,0 +1,56 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "3ba0555e024a58c7",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "삼각형 ABC와 FED가 합동이므로 대응변 x = FE = 12 이다.",
+    "각 C의 대응각은 각 D이므로 각 D = 45도이다.",
+    "삼각형 FED의 세 내각의 합은 180도이므로 각 F = 180 - (105 + 45) = 30도이다 (y = 30).",
+    "따라서 x + y = 12 + 30 = 42 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 삼각형 $ABC$와 $F",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+  "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+  "newKeyProposal": null,
+  "typeReason": "합동인 두 삼각형의 대응변 x = 12와 각 105도 및 45도로부터 내각합을 적용하는 유형이다.",
+  "rpmRecordId": "M1-RPM-192",
+  "rpmReason": "대응각과 105도 내각 합을 이용해 y=30을 구하고 x와 더한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형 합동 정의에 따라 대응변 x=12와 105도를 포함한 내각합으로 y=30을 쉽게 구한다.",
+  "how": "대응변 x=12와 삼각형 내각합으로 y=30도를 구하여 12+30=42를 계산하였다. 105",
+  "slots": {
+    "given": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "서로 합동($\\triangle ABC \\equiv \\triangle FED$)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "$x + y$의 값은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "대응변",
+        "src": "solution",
+        "quote": "대응변의 길이와 대응각의 크기는 각각 서로 같다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
