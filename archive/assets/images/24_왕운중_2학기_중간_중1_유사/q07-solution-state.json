@@ -1,0 +1,455 @@
+{
+ "meta": {
+  "sourcePath": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+  "ordinal": 7,
+  "dir": "q07-solution",
+  "tag": "q07-solution"
+ },
+ "identity": {
+  "questionUid": "24_왕운중_2학기_중간_중1_기출|7",
+  "surface": "SOLUTION_VISUAL",
+  "visualRole": "decisive-relation",
+  "visualAssetKey": "sha256:ead6e88471667a4b6e48c3269fb77a4a918a32092e363990e91d37d4fedb6a61",
+  "assetId": "va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06"
+ },
+ "plan": {
+  "capability": "construction-spike-v1",
+  "caption": "접은 각의 성질과 평각을 이용하여 각 a=70°, 각 b=55°를 구하는 해설 다이어그램이다.",
+  "accessibilityDescription": "접은 각과 엇각의 크기를 구하는 풀이 그림.",
+  "sourceQuote": "접는 선 QR과 수평선이 이루는 각의 크기는 b=55°",
+  "mathPlan": {
+   "schemaVersion": "construction-spike-v1",
+   "realization": {
+    "recipeId": "PLANE_FIGURE_v1",
+    "unit": "source-length",
+    "reflectionEquivalent": false
+   },
+   "nodes": [
+    {
+     "id": "P",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-5"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "Q",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "0"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "O",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "5"
+       },
+       {
+        "kind": "integer",
+        "value": "3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "A",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-5"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "R",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "-2"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    },
+    {
+     "id": "B",
+     "op": "SOURCE_POINT",
+     "inputs": [],
+     "args": {
+      "coordinates": [
+       {
+        "kind": "integer",
+        "value": "5"
+       },
+       {
+        "kind": "integer",
+        "value": "-3"
+       }
+      ]
+     },
+     "outputType": "POINT",
+     "factRole": "GIVEN"
+    }
+   ]
+  },
+  "displayPoints": [
+   "P",
+   "Q",
+   "O",
+   "A",
+   "R",
+   "B"
+  ],
+  "displaySegments": [
+   {
+    "id": "sPO",
+    "refs": [
+     "P",
+     "O"
+    ]
+   },
+   {
+    "id": "sAB",
+    "refs": [
+     "A",
+     "B"
+    ]
+   },
+   {
+    "id": "sQR",
+    "refs": [
+     "Q",
+     "R"
+    ]
+   }
+  ],
+  "assetPath": "assets/images/24_왕운중_2학기_중간_중1_유사/q07-solution.svg"
+ },
+ "model": {
+  "engine": "SymPy",
+  "version": "1.14.0",
+  "points": {
+   "A": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-5"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -5,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "B": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "5"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     5,
+     -3
+    ],
+    "precisionDigits": 17
+   },
+   "O": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "5"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     5,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "P": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-5"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     -5,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "Q": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "0"
+     },
+     {
+      "kind": "integer",
+      "value": "3"
+     }
+    ],
+    "approximation": [
+     0,
+     3
+    ],
+    "precisionDigits": 17
+   },
+   "R": {
+    "exact": [
+     {
+      "kind": "integer",
+      "value": "-2"
+     },
+     {
+      "kind": "integer",
+      "value": "-3"
+     }
+    ],
+    "approximation": [
+     -2,
+     -3
+    ],
+    "precisionDigits": 17
+   }
+  },
+  "scalars": {},
+  "lines": {},
+  "circles": {},
+  "pointSets": {},
+  "conditionAudits": [],
+  "transcript": [
+   {
+    "nodeId": "A",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "B",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "O",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "P",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "Q",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   },
+   {
+    "nodeId": "R",
+    "op": "SOURCE_POINT",
+    "dependencies": []
+   }
+  ],
+  "order": [
+   "A",
+   "B",
+   "O",
+   "P",
+   "Q",
+   "R"
+  ],
+  "coordinateMode": "CONSTRUCTED_REALIZATION"
+ },
+ "composed": {
+  "schemaVersion": "construction-candidate-svg-v1",
+  "status": "COMPOSED",
+  "detail": null,
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 384 320\" width=\"384\" height=\"320\" preserveAspectRatio=\"xMidYMid meet\" role=\"img\" aria-labelledby=\"visual-title visual-desc\" data-engine-version=\"geometry-visual-v1\" data-geometry-style-version=\"AP_GEOMETRY_PRINT_V1_0_DRAFT\" data-geometry-preset=\"GEOMETRY_STANDARD\" data-graph-style-version=\"AP_GRAPH_PRINT_V1_1_DRAFT\" data-geometry-mode=\"COORDINATE_GEOMETRY_HYBRID\" data-axis-scale-mode=\"EQUAL_UNIT\" data-geometry-fact-hash=\"44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a\" data-visual-provenance=\"independent-facts-python\" style=\"max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round\" data-publication-profile=\"fragment-publication-spike-v1\" data-safe-margin=\"12\"><title id=\"visual-title\">접은 각의 성질과 평각을 이용하여 각 a=70°, 각 b=55°를 구하는 해설 다이어그램이다.</title><desc id=\"visual-desc\">접은 각과 엇각의 크기를 구하는 풀이 그림.</desc><rect width=\"384\" height=\"320\" fill=\"#fff\"/><g data-layer=\"30\"><line id=\"sPO\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"49.142857143\" y1=\"74.285714286\" x2=\"334.857142857\" y2=\"74.285714286\"/></g><g data-layer=\"30\"><line id=\"sAB\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"49.142857143\" y1=\"245.714285714\" x2=\"334.857142857\" y2=\"245.714285714\"/></g><g data-layer=\"30\"><line id=\"sQR\" data-role=\"line\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" x1=\"192\" y1=\"74.285714286\" x2=\"134.857142857\" y2=\"245.714285714\"/></g><g data-layer=\"70\"><circle id=\"P\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"49.142857143\" cy=\"74.285714286\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"Q\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"192\" cy=\"74.285714286\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"O\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"334.857142857\" cy=\"74.285714286\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"A\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"49.142857143\" cy=\"245.714285714\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"R\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"134.857142857\" cy=\"245.714285714\" r=\"3.2\"/></g><g data-layer=\"70\"><circle id=\"B\" data-role=\"point\" stroke=\"#111\" stroke-width=\"0.8\" fill=\"#111\" cx=\"334.857142857\" cy=\"245.714285714\" r=\"3.2\"/></g><g data-layer=\"90\"><g id=\"A-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"A\" data-fragment-sha=\"sha256:ef1e05a9e135c1eeec98bb110727674ddd67ae4bb4e014ace6f496acf7387c37\" transform=\"translate(40.592857143 217.389485714)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.1\" height=\"16.3248\" viewBox=\"0 0 17.1 16.3248\" data-outline-width=\"17.1\" data-outline-height=\"16.3248\" id=\"lb-d06a2320cc0147af8e05c7dd240ff4f9df431b3a22369a743e123de0ad978556\" data-owner=\"A\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.3248) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D434\" d=\"M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"B-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"B\" data-fragment-sha=\"sha256:df1daf43189f405a7aa340a877349f98c47363388e5f4e724348222d0c0d44e6\" transform=\"translate(326.204542857 218.141885714)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3052\" height=\"15.5724\" viewBox=\"0 0 17.3052 15.5724\" data-outline-width=\"17.3052\" data-outline-height=\"15.5724\" id=\"lb-5f6ab175fb97671cc22cff254f74295239898a19e3ba5e932283943fb9e1b499\" data-owner=\"B\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.5724) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D435\" d=\"M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"O-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"O\" data-fragment-sha=\"sha256:5f0d43b065eb19a938d7f378619f2af4019c1cb8e2e699e870317089fe36f705\" transform=\"translate(326.158942857 45.732914286)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3964\" height=\"16.552799999999998\" viewBox=\"0 0 17.3964 16.552799999999998\" data-outline-width=\"17.3964\" data-outline-height=\"16.552799999999998\" id=\"lb-1c0f70c8b26b7b43a19c6a45303d17617c6d2ef83aec0f56f58dae92fb68f048\" data-owner=\"O\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.0512) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D442\" d=\"M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"P-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"P\" data-fragment-sha=\"sha256:f39d49b5a0934c070d5531021cf108c27f5ddab3196684697a3b918ba0d6ca4b\" transform=\"translate(40.581457143 46.713314286)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.122799999999998\" height=\"15.5724\" viewBox=\"0 0 17.122799999999998 15.5724\" data-outline-width=\"17.122799999999998\" data-outline-height=\"15.5724\" id=\"lb-73bd04d76ff9fa44840781623de760b4aea8a52f05202f7638f3c992baeb20c3\" data-owner=\"P\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.5724) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D443\" d=\"M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"Q-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"Q\" data-fragment-sha=\"sha256:46c0c55deecb4dcdb2e27b6e191a9927c827e9202263055d76dc4f47c5f58d6e\" transform=\"translate(182.9826 41.811314286)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18.0348\" height=\"20.474400000000003\" viewBox=\"0 0 18.0348 20.474400000000003\" data-outline-width=\"18.0348\" data-outline-height=\"20.474400000000003\" id=\"lb-97b0b0393cc8301055bf234e45c9a6c7365726ff248ebeb1410d4147a05363b4\" data-owner=\"Q\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 16.0512) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D444\" d=\"M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z\"></path></g></g></g></g></svg></g></g><g data-layer=\"90\"><g id=\"R-name\" data-label-kind=\"POINT_NAME\" data-priority=\"1\" data-font-px=\"22.8\" data-owner=\"R\" data-fragment-sha=\"sha256:5560d14c5ab4ffb593e8769e7199cd9d205112b40ce4039550107bff6c725b5f\" transform=\"translate(146.857142857 257.714285714)\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"17.3052\" height=\"16.0512\" viewBox=\"0 0 17.3052 16.0512\" data-outline-width=\"17.3052\" data-outline-height=\"16.0512\" id=\"lb-7d8b24a26552b0ea92e22a48018da3467c8bcc7fa1f3bd04ea6c378a9a4dd83f\" data-owner=\"R\" data-fact-role=\"GIVEN\"><g data-outline-units-per-em=\"1000\" transform=\"translate(0 15.5724) scale(0.0228)\"><g stroke=\"currentColor\" fill=\"currentColor\" stroke-width=\"30\" transform=\"scale(1,-1)\"><g data-mml-node=\"math\"><g data-mml-node=\"mi\"><path data-c=\"1D445\" d=\"M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z\"></path></g></g></g></g></svg></g></g></svg>\n",
+  "lineage": {
+   "planSha256": "sha256:a68a4040dc3316dfec9e0064275e5ce2342d6ff8344fb3b87e6278c0d0bbb2fb",
+   "modelSha256": "sha256:19d14847203fed94f2f0683cb23598c7d5ab3233ef331495121f7602d22be60e",
+   "typographyPolicySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "specSha256": "sha256:9d9a75b9d4f2c11dab06d8ad22ed6bd0adc9cc01703394de512ebd4f313bbe1b",
+   "fragmentSha256s": {
+    "P-name": "sha256:f39d49b5a0934c070d5531021cf108c27f5ddab3196684697a3b918ba0d6ca4b",
+    "Q-name": "sha256:46c0c55deecb4dcdb2e27b6e191a9927c827e9202263055d76dc4f47c5f58d6e",
+    "O-name": "sha256:5f0d43b065eb19a938d7f378619f2af4019c1cb8e2e699e870317089fe36f705",
+    "A-name": "sha256:ef1e05a9e135c1eeec98bb110727674ddd67ae4bb4e014ace6f496acf7387c37",
+    "R-name": "sha256:5560d14c5ab4ffb593e8769e7199cd9d205112b40ce4039550107bff6c725b5f",
+    "B-name": "sha256:df1daf43189f405a7aa340a877349f98c47363388e5f4e724348222d0c0d44e6"
+   },
+   "measurementsSha256": "sha256:5f050af60c675add6eb3a2a1f604a44abbeae81a3d19398cc6b0f26f23661001",
+   "svgSha256": "sha256:a6201c8b588f40ce0f9e15d06d9ca2bcd80f367f5cfe6d23457d47ee33864a5b",
+   "witnessSha256": "sha256:06bdf23a5f416c06d6e8fbe455f9fe160856034e477c6d48d4770d7b41a58a4b",
+   "staticAuditSha256": "sha256:7aba16e398556c69bf064e08c8a7c5234d87838a33dd6a5deef0238923ea73d5",
+   "renderedLayoutSha256": "sha256:36baa796dd403546a465ab990369b292256cc8e62daeb8dbd6b3ff199c8da70a"
+  },
+  "staticAudit": {
+   "status": "PASS",
+   "errors": []
+  },
+  "renderedLayout": {
+   "status": "PASS",
+   "display": {
+    "width": 189.671875,
+    "height": 158.05989583333334
+   },
+   "errors": []
+  },
+  "layoutRepairs": [],
+  "typographyPolicyProvenance": "CALLER_SUPPLIED_UNVERIFIED",
+  "sizeSelection": "NOT_RUN",
+  "actualArchive": "NOT_RUN",
+  "independentVisualReview": "NOT_RUN",
+  "productionAuthorized": false,
+  "qualification": "NOT_RUN"
+ },
+ "capture": {
+  "schemaVersion": "construction-archive-capture-v1",
+  "status": "ARCHIVE_BOUND",
+  "detail": null,
+  "lineage": {
+   "l1SvgSha256": "sha256:a6201c8b588f40ce0f9e15d06d9ca2bcd80f367f5cfe6d23457d47ee33864a5b",
+   "policySha256": "sha256:824b66bd1d2434306b93764afc4c7c5ded7355fcef4706e03ecc994c4b6bf259",
+   "candidateBankSha256": "sha256:198591ed813d7b8039219cf6f90366c7fcce61489859739af5e4356c5215ee24",
+   "assetPath": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/assets/images/24_왕운중_2학기_중간_중1_기출/q07-solution.svg",
+   "assetResponseSha256": "sha256:a6201c8b588f40ce0f9e15d06d9ca2bcd80f367f5cfe6d23457d47ee33864a5b",
+   "archiveRowSha256": "sha256:86a3aacc8e68cd72d59c2bfe4aef0925ea803f70af9a65e58c41ea6577677d4b",
+   "screenshotSha256s": {
+    "image": "sha256:e7e9c7069a1ac233e2ab41b5ea8ca0d4534307499ebe526f1c2a735520e7e9fa",
+    "context": "sha256:7954f7bb3e26956e2aa1bd7158bf9b17212f423d35ffb267dd7802a78ce2d17d",
+    "page": "sha256:de7cc8ea941db39d6188d3552233fa1f50945d5f5d1b95315ea079df1121462f"
+   },
+   "matrixSha256": "sha256:8f23dc498ddf00088db0f5528bd3e600b190072c618320040a8c4b1559cffd70",
+   "engineSha256": "sha256:08744d4ea9046c1de0b4d815147e7f350d745a9aceb6eff8df3d19fd3e80aac8"
+  },
+  "paths": {
+   "runRoot": ".tmp/archive/pilot-capture-cfbf901d",
+   "asset": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/assets/images/24_왕운중_2학기_중간_중1_기출/q07-solution.svg",
+   "candidateBank": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/candidates/24_왕운중_2학기_중간_중1_기출.js",
+   "matrix": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render-matrix.json",
+   "archiveRow": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06-sol-desktop.json",
+   "screenshots": {
+    "image": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06-sol-desktop-va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06.png",
+    "context": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06-sol-desktop-va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06-context.png",
+    "page": ".tmp/archive/pilot-capture-cfbf901d/24_왕운중_2학기_중간_중1_기출/visual-engine/production/archive-capture/archive-render/attempt-01/va-8a833157b046dc0add5ec9c3da1a174b77f4edf24fd5de83019374dbf6bdca06-sol-desktop.png"
+   }
+  },
+  "protectedParity": {
+   "status": "PASS",
+   "sourceRef": {
+    "path": "archive/exams/original/middle/m1/2mid/24_왕운중_2학기_중간_중1_기출.js",
+    "bytes": 56359,
+    "sha256": "sha256:02199f2746571cd29eaf1bfec5ea9d2d3bf7d63a01eeb8bc970ab6dc9d220254"
+   },
+   "originalQuestionSha256": "sha256:71818c164b2c28db5ab478558286123f413ecae7c926e29349f5346fd70d9a1d",
+   "questionCount": 23,
+   "protectedFields": [
+    "content",
+    "choices",
+    "answer",
+    "solution",
+    "image"
+   ],
+   "changedFields": [
+    "solutionImage",
+    "solutionImageSize",
+    "solutionImageAlt"
+   ],
+   "targetOrdinal": 7
+  },
+  "sizeClass": "full",
+  "observedDisplayScale": 0.4939371744791667,
+  "expectedDisplayScale": 0.4939371744791667,
+  "displayScaleDeltaCssPx": 0,
+  "layout": {
+   "source": "ARCHIVE_ROW_ISOLATED_REPLAY",
+   "status": "PASS",
+   "errors": []
+  },
+  "checks": {
+   "network": "PASS",
+   "assetResponse": "PASS",
+   "bankResponse": "PASS",
+   "naturalSize": "PASS",
+   "sizeClass": "PASS",
+   "displayScale": "PASS",
+   "layout": "PASS"
+  },
+  "fixtureClassification": "PILOT_AUTHOR_PLAN_CANDIDATE",
+  "evidenceIntegrity": "NO_CALLER_HOOK",
+  "uidAuthority": "STRUCTURAL_ONLY",
+  "independentInverseObservation": "NOT_RUN",
+  "qualification": "NOT_RUN",
+  "publication": "NOT_RUN",
+  "productionAuthorized": false
+ }
+}
