@@ -1,0 +1,57 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "e2f95c727fdb9457",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "주사위를 두 번 던져 나오는 순서쌍 $(a, b)$의 전체 경우의 수는 $6   imes 6 = 36$가지이다.",
+    "조건 (가)에 의해$a e b$이어야 하므로, 같은 눈이 나오는 $6$가지 $(1, 1), (2, 2), \\dots, (6, 6)$을 제외하면",
+    "36 - 6 = 30  ext{가지}",
+    "조건 (나)에서 두 직선 $y = 3x + 2$와 $y = ax + b$가 한 점에서 만나려면 두 직선의 기울기가 달라야 한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "주사위 한 개를 두 번 던져 첫 번째 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라고 할 때, 다음 두 조건을 동시에 만족시킬 확률은?",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_BASIC",
+  "rpmRecordId": "M2-RPM-113",
+  "rpmEvidence": "주사위를 두 번 던져 나오는 순서쌍 $(a, b)$의 전체 경우의 수는 $6   imes 6 = 36$가지이다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "Q17번 문항은 PT_PROBABILITY_PROPERTIES_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+  "rpmReason": "Q17번 문항은 M2-RPM-113에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+  "how": "Q17번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "주사위 한 개를 두 번 던져 첫 번째 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라고 할 때, 다음 두 조건을 동시에 만족시킬 확률은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "주사위 한 개를 두 번 던져 첫 번째 나온 눈의 수를 $a$, 두 번째 나온 눈의 수를 $b$라고 할 때, 다음 두 조건을 동시에 만족시킬 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "순서",
+        "src": "solution",
+        "quote": "주사위를 두 번 던져 나오는 순서쌍 $(a, b)$의 전체 경우의 수는 $6   imes 6 = 36$가지이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "51548a40557e7446",
+  "solvedAnswer": "$\\dfrac{12}{25}$",
+  "solveSteps": [
+    "첫째, 만들 수 있는 두 자리 자연수의 전체 개수를 구한다. (문항 토큰 imes)",
+    "십의 자리에는 $0$이 올 수 없으므로 올 수 있는 숫자는 $1, 2, 3, 4, 5$의 $5$가지이다.",
+    "일의 자리에는 십의 자리에 쓰인 숫자를 제외한 나머지$5$장의 카드 중 하나가 올 수 있으므로 $5$가지이다.",
+    "따라서 전체 경우의 수는 곱의 법칙에 의해"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3] $0, 1, 2, 3, 4, 5$의 숫자가 각각 하나씩 적힌 $6$장의 카드 중에서 서로 다른 $2$장을 임의로 뽑아 두 자리 자연수를 만들 때, 그 수가 홀수일 확률을 구하고 그 과정을 서술하시오.",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_BASIC",
+  "rpmRecordId": "M2-RPM-113",
+  "rpmEvidence": "첫째, 만들 수 있는 두 자리 자연수의 전체 개수를 구한다.",
+  "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+  "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_PROBABILITY_PROPERTIES_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 imes)",
+  "rpmReason": "Q23번 문항은 M2-RPM-113에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 imes)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 imes)",
+  "how": "Q23번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 $\\dfrac{12}{25}$을(를) 바르게 구하였다. (문항 토큰 imes)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "[서술형 3] $0, 1, 2, 3, 4, 5$의 숫자가 각각 하나씩 적힌 $6$장의 카드 중에서 서로 다른 $2$장을 임의로 뽑아 두 자리 자연수를 만들 때, 그 수가 홀수일 확률을 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "[서술형 3] $0, 1, 2, 3, 4, 5$의 숫자가 각각 하나씩 적힌 $6$장의 카드 중에서 서로 다른 $2$장을 임의로 뽑아 두 자리 자연수를 만들 때, 그 수가 홀수일 확률을 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "개수",
+        "src": "solution",
+        "quote": "첫째, 만들 수 있는 두 자리 자연수의 전체 개수를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

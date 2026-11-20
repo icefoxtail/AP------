@@ -1,0 +1,57 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "7fbcafc977fa2c3a",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\overline{AB} \\parallel \\overline{DC}$이므로 엇각과 맞꼭지각에 의해",
+    "riangle ABE \\sim   riangle CDE \\quad (  ext{AA 닮음})",
+    "대응변의 길이의 비는",
+    "\\overline{BE} : \\overline{ED} = \\overline{AB} : \\overline{DC} = 12 : 8 = 3 : 2"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림과 같이 $\\overline{AB} \\parallel \\overline{EF} \\parallel \\overline{DC}$이고, 선분 $BC$ 위에 점 $F$가 있다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "그림과 같이 $\\overline{AB} \\parallel \\overline{EF} \\parallel \\overline{DC}$이고, 선분 $BC$ 위에 점 $F$가 있다.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-PARALLEL_LENGTH_RATIO",
+  "rpmRecordId": "M2-RPM-091",
+  "rpmEvidence": "$\\overline{AB} \\parallel \\overline{DC}$이므로 엇각과 맞꼭지각에 의해",
+  "problemTypeKey": "PT_PARALLEL_SEGMENT_RATIO",
+  "templateKey": "TPL_PARALLEL_SEGMENT_RATIO_GENERAL",
+  "newKeyProposal": null,
+  "typeReason": "Q15번 문항은 PT_PARALLEL_SEGMENT_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q15번 문항은 M2-RPM-091에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q15번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "그림과 같이 $\\overline{AB} \\parallel \\overline{EF} \\parallel \\overline{DC}$이고, 선분 $BC$ 위에 점 $F$가 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$\\overline{AB}=12\\rm \\,cm$, $\\overline{DC}=8\\rm \\,cm$일 때, 선분 $\\overline{EF}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭지각",
+        "src": "solution",
+        "quote": "$\\overline{AB} \\parallel \\overline{DC}$이므로 엇각과 맞꼭지각에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

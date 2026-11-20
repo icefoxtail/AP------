@@ -1,0 +1,57 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "45ccf8a86c08a60a",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "안경을 쓰지 않은 학생 수는 전체 학생 수에서 안경을 쓴 학생 수를 뺀 것이므로",
+    "32 - 12 = 20  ext{명}",
+    "따라서 안경을 쓰지 않은 학생이 뽑힐 확률은",
+    "rac{20}{32} =  rac{5}{8}"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "현우네 반 학생 $32$명 중에서 안경을 쓴 학생이 $12$명이라고 한다.",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_BASIC",
+  "rpmRecordId": "M2-RPM-113",
+  "rpmEvidence": "안경을 쓰지 않은 학생 수는 전체 학생 수에서 안경을 쓴 학생 수를 뺀 것이므로",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+  "newKeyProposal": null,
+  "typeReason": "Q4번 문항은 PT_M2_BASIC_COUNTING_CASE_SPLIT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 32)",
+  "rpmReason": "Q4번 문항은 M2-RPM-113에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 32)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 32)",
+  "how": "Q4번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 32)",
+  "slots": {
+    "given": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "이 $32$명의 학생 중에서 한 명을 임의로 뽑을 때, 안경을 쓰지 않은 학생이 뽑힐 확률은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사건",
+        "src": "solution",
+        "quote": "(또는 여사건의 확률에 의해 $1 - \\dfrac{12}{32} = 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$)"
+      }
+    ],
+    "method": [
+      {
+        "term": "여사건",
+        "src": "solution",
+        "quote": "(또는 여사건의 확률에 의해 $1 - \\dfrac{12}{32} = 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

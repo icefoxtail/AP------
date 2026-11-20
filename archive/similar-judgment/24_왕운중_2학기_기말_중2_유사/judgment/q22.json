@@ -1,0 +1,57 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "01ccc846533d0a8e",
+  "solvedAnswer": "$\\dfrac{37}{75}$",
+  "solveSteps": [
+    "월요일에 비가 왔으므로, 화요일의 날씨에 따라 다음의 두 가지 경우로 나누어 생각한다.",
+    "첫째, 화요일에 비가 오고, 수요일에도 비가 오는 경우:",
+    "비가 온 다음 날 비가 올 확률은 $\\dfrac{3}{5}$이므로",
+    "P_1 =  rac{3}{5}   imes  rac{3}{5} =  rac{9}{25}"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2] 어느 지역에서 비가 온 다음 날 비가 올 확률은 $\\dfrac{3}{5}$이고, 비가 오지 않은 다음 날 비가 올 확률은 $\\dfrac{1}{3}$이라고 한다.",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_BASIC",
+  "rpmRecordId": "M2-RPM-113",
+  "rpmEvidence": "월요일에 비가 왔으므로, 화요일의 날씨에 따라 다음의 두 가지 경우로 나누어 생각한다.",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+  "newKeyProposal": null,
+  "typeReason": "Q22번 문항은 PT_M2_BASIC_COUNTING_CASE_SPLIT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 rac)",
+  "rpmReason": "Q22번 문항은 M2-RPM-113에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 rac)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 rac)",
+  "how": "Q22번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 $\\dfrac{37}{75}$을(를) 바르게 구하였다. (문항 토큰 rac)",
+  "slots": {
+    "given": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "[서술형 2] 어느 지역에서 비가 온 다음 날 비가 올 확률은 $\\dfrac{3}{5}$이고, 비가 오지 않은 다음 날 비가 올 확률은 $\\dfrac{1}{3}$이라고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "src": "stem",
+        "quote": "월요일에 비가 왔을 때, 이틀 후인 수요일에 비가 올 확률을 구하고 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "법칙",
+        "src": "solution",
+        "quote": "두 경우는 동시에 일어날 수 없으므로, 수요일에 비가 올 확률은 합의 법칙에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

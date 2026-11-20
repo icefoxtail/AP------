@@ -1,0 +1,57 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "caf432dfd7a850a5",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$1$부터 $25$까지의 자연수 중",
+    "egin{aligned}",
+    "4  ext{의 배수: } &{4, 8, 12, 16, 20, 24} \\implies 6  ext{개} \\",
+    "9  ext{의 배수: } &{9, 18} \\implies 2  ext{개}"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$1$부터 $25$까지의 자연수가 각각 적힌 $25$개의 공이 들어 있는 주머니에서 공 $1$개를 임의로 꺼낼 때, $4$의 배수 또는 $9$의 배수가 적힌 공이 나올 확률은?",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_BASIC",
+  "rpmRecordId": "M2-RPM-113",
+  "rpmEvidence": "$1$부터 $25$까지의 자연수 중",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+  "newKeyProposal": null,
+  "typeReason": "Q11번 문항은 PT_M2_BASIC_COUNTING_CASE_SPLIT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 25)",
+  "rpmReason": "Q11번 문항은 M2-RPM-113에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 25)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 25)",
+  "how": "Q11번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 25)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$1$부터 $25$까지의 자연수가 각각 적힌 $25$개의 공이 들어 있는 주머니에서 공 $1$개를 임의로 꺼낼 때, $4$의 배수 또는 $9$의 배수가 적힌 공이 나올 확률은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "$1$부터 $25$까지의 자연수가 각각 적힌 $25$개의 공이 들어 있는 주머니에서 공 $1$개를 임의로 꺼낼 때, $4$의 배수 또는 $9$의 배수가 적힌 공이 나올 확률은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "공배수",
+        "src": "solution",
+        "quote": "$4$와 $9$의 공배수는 $36$의 배수이므로 $1$부터 $25$ 사이에는 공배수가 없다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

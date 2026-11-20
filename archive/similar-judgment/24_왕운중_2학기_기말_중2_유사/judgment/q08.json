@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "ebf495c8b98c8215",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "사용하는 $500$원짜리 동전의 개수를 $a$, $1000$원짜리 지폐의 장수를 $b$라 하자.",
+    "문제의 조건에 의해",
+    "500a + 1000b = 4000 \\quad (0 \\le a \\le 8, \\; 0 \\le b \\le 6, \\; a, b  ext{는 정수})",
+    "양변을 $500$으로 나누면"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$500$원짜리 동전 $8$개와 $1000$원짜리 지폐 $6$장으로 $4000$원을 지불하는 방법의 수는?",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "rpmRecordId": "M2-RPM-107",
+  "rpmEvidence": "사용하는 $500$원짜리 동전의 개수를 $a$, $1000$원짜리 지폐의 장수를 $b$라 하자.",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+  "newKeyProposal": null,
+  "typeReason": "Q8번 문항은 PT_M2_BASIC_COUNTING_CASE_SPLIT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 500)",
+  "rpmReason": "Q8번 문항은 M2-RPM-107에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 500)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 500)",
+  "how": "Q8번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 500)",
+  "slots": {
+    "given": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "(단, 사용하는 동전이나 지폐의 개수에는 제한이 없으며, $0$개 사용해도 된다.)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "solution",
+        "quote": "문제의 조건에 의해"
+      }
+    ],
+    "method": [
+      {
+        "term": "정수",
+        "src": "solution",
+        "quote": "500a + 1000b = 4000 \\quad (0 \\le a \\le 8, \\; 0 \\le b \\le 6, \\; a, b  ext{는 정수})",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

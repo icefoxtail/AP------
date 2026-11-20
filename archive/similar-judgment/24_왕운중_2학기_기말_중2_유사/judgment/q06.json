@@ -1,0 +1,57 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "932d7e64d939b628",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "점 $D, E$는 각각 변 $AB, AC$의 중점이므로 중점연결정리에 의해 $\\overline{DE} \\parallel \\overline{BC}$이다.",
+    "$  riangle ADE \\sim   riangle ABC$이고 닮음비는 $1:2$이므로 넓이의 비는",
+    "S_{  riangle ADE} =  rac{1}{4} S_{  riangle ABC}",
+    "선분 $\\overline{CD}$는 $  riangle ABC$의 중선이므로 $S_{  riangle ADC} = \\dfrac{1}{2}S_{  riangle ABC}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$  riangle ABC$에서 두 변 $AB, AC$의 중점을 각각 $D, E$라 하고, 점 $G$를 $  riangle ABC$의 무게중심이라 하자.",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-TRIANGLE_CENTROID",
+  "rpmRecordId": "M2-RPM-097",
+  "rpmEvidence": "점 $D, E$는 각각 변 $AB, AC$의 중점이므로 중점연결정리에 의해 $\\overline{DE} \\parallel \\overline{BC}$이다.",
+  "problemTypeKey": "PT_COORD_CENTROID",
+  "templateKey": "TPL_CENTROID_DIRECT",
+  "newKeyProposal": null,
+  "typeReason": "Q6번 문항은 PT_COORD_CENTROID 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 riangle)",
+  "rpmReason": "Q6번 문항은 M2-RPM-097에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 riangle)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 riangle)",
+  "how": "Q6번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 riangle)",
+  "slots": {
+    "given": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "$  riangle ABC$에서 두 변 $AB, AC$의 중점을 각각 $D, E$라 하고, 점 $G$를 $  riangle ABC$의 무게중심이라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "무게중심",
+        "src": "stem",
+        "quote": "$  riangle ABC$에서 두 변 $AB, AC$의 중점을 각각 $D, E$라 하고, 점 $G$를 $  riangle ABC$의 무게중심이라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "결정",
+        "src": "solution",
+        "quote": "점 $D, E$는 각각 변 $AB, AC$의 중점이므로 중점연결정리에 의해 $\\overline{DE} \\parallel \\overline{BC}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

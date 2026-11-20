@@ -1,0 +1,57 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "a61c09d6e0a52d7e",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "평행사변형 $ABCD$의 전체 넓이를 $S$, 높이를 $h$라 하자.",
+    "$\\overline{AF} = \\dfrac{2}{3}\\overline{AD}$이고 $\\overline{GC} = \\dfrac{2}{3}\\overline{BC}$이며 $\\overline{AD} = \\overline{BC}$이므로",
+    "\\overline{AF} = \\overline{GC}, \\quad \\overline{AF} \\parallel \\overline{GC}",
+    "따라서 사각형 $AFGC$는 평행사변형이고, 두 대각선 $AC$와 $FG$는 서로를 이등분하므로 점 $Q$는 대각선 $\\overline{AC}$의 중점이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$의 두 변 $AD$와 $BC$의 삼등분점을 각각 $E, F$와 $G, H$라 하자 (점의 순서는 $A-E-F-D$, $B-G-H-C$).",
+  "standardUnitKey": "M2-06",
+  "subUnitKey": "M2-06-SIMILAR_FIGURE",
+  "rpmRecordId": "M2-RPM-084",
+  "rpmEvidence": "평행사변형 $ABCD$의 전체 넓이를 $S$, 높이를 $h$라 하자.",
+  "problemTypeKey": "PT_COORD_CENTROID",
+  "templateKey": "TPL_CENTROID_DIRECT",
+  "newKeyProposal": null,
+  "typeReason": "Q18번 문항은 PT_COORD_CENTROID 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q18번 문항은 M2-RPM-084에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q18번 문항으로 M2-06 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$의 두 변 $AD$와 $BC$의 삼등분점을 각각 $E, F$와 $G, H$라 하자 (점의 순서는 $A-E-F-D$, $B-G-H-C$)."
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$의 두 변 $AD$와 $BC$의 삼등분점을 각각 $E, F$와 $G, H$라 하자 (점의 순서는 $A-E-F-D$, $B-G-H-C$)."
+      }
+    ],
+    "method": [
+      {
+        "term": "평행",
+        "src": "solution",
+        "quote": "평행사변형 $ABCD$의 전체 넓이를 $S$, 높이를 $h$라 하자.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

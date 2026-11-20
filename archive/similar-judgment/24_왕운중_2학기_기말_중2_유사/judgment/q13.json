@@ -1,0 +1,57 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "9ff759053a327ffc",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "두 자리 자연수를 만들 때 (문항 토큰 28)",
+    "십의 자리에는 $0$이 올 수 없으므로 올 수 있는 숫자는 $1, 2, 3, 4, 5, 6$의 $6$가지이다.",
+    "일의 자리에는 십의 자리에 쓰인 숫자를 제외한 나머지$6$장의 카드 중 하나가 올 수 있으므로 $6$가지이다.",
+    "곱의 법칙에 의해 만들 수 있는 두 자리 자연수의 개수는"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0, 1, 2, 3, 4, 5, 6$의 숫자가 각각 적힌 $7$장의 카드 중에서 서로 다른 $2$장을 뽑아 만들 수 있는 두 자리 자연수의 개수는?",
+  "standardUnitKey": "M2-08",
+  "subUnitKey": "M2-08-PROBABILITY_COUNTING",
+  "rpmRecordId": "M2-RPM-107",
+  "rpmEvidence": "두 자리 자연수를 만들 때",
+  "problemTypeKey": "PT_M2_BASIC_COUNTING_CASE_SPLIT",
+  "templateKey": "TPL_M2_BASIC_COUNTING_ADD_CASES",
+  "newKeyProposal": null,
+  "typeReason": "Q13번 문항은 PT_M2_BASIC_COUNTING_CASE_SPLIT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 28)",
+  "rpmReason": "Q13번 문항은 M2-RPM-107에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 28)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 28)",
+  "how": "Q13번 문항으로 M2-08 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 28)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$0, 1, 2, 3, 4, 5, 6$의 숫자가 각각 적힌 $7$장의 카드 중에서 서로 다른 $2$장을 뽑아 만들 수 있는 두 자리 자연수의 개수는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$0, 1, 2, 3, 4, 5, 6$의 숫자가 각각 적힌 $7$장의 카드 중에서 서로 다른 $2$장을 뽑아 만들 수 있는 두 자리 자연수의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "자리",
+        "src": "solution",
+        "quote": "두 자리 자연수를 만들 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
