@@ -1,0 +1,62 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "2d1118bf9cb6beb0",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$x^2=y$ 치환으로 $(y-(a-3))(y-(a+2))=0$을 푼다.",
+    "$a=-1$일 때 $x^2=-4$ (허근) 또는 $x^2=1$ (실근 2개)이므로 $f(-1)=2$이다.",
+    "$a=5$일 때 $x^2=2, x^2=7$ 모두 양수이므로 실근 4개, $f(5)=4$이다.",
+    "$f(-1)+f(5) = 2+4 = 6$이다. (x)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 사차방정식 $",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복이차방정식의 근 판별과 실근 개수 함수 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-040",
+  "rpmReason": "여러 가지 방정식 단원의 삼차·사차방정식 치환형 실근 개수 유형이다. (x)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복이차방정식의 실근 개수를 매개변수 값에 따라 분석하는 난이도 3 문항이다. (x)",
+  "how": "복이차식을 인수분해하고 a 대입에 따른 양수근 개수로 실근 개수 합 6을 도출했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "사차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 사차방정식 $x^4-(2a-1)x^2+a^2-a-6=0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "실근의 개수를 $f(a)$라 할 때, $f(-1)+f(5)$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "y=x^2$이라 치환하면 주어진 방정식은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 실근의 개수를"
+      }
+    ]
+  }
+}

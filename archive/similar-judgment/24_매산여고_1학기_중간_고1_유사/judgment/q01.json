@@ -1,0 +1,54 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "c55003c296f45a22",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$A-2B = (2x^3-x^2+4x) - 2(x^2-3x+2)$ 식을 전개한다. (10)",
+    "동류항을 정리하면 $2x^3-3x^2+10x-4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 다항식 $A=2x^3-x",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 연산과 전개 기본 뺄셈 유형이다. (10)",
+  "rpmRecordId": "H1-RPM-002",
+  "rpmReason": "다항식의 연산 단원의 다항식의 덧셈·뺄셈 연산 유형이다. (10)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식의 전개와 동류항 계산을 수행하는 난이도 1 기본 문항이다. (10)",
+  "how": "식 A-2B를 전개하고 동류항을 정리해 2x^3-3x^2+10x-4를 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $A=2x^3-x^2+4x$, $B=x^2-3x+2$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$A-2B$를 계산하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "2x^3-3x^2+10x-4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

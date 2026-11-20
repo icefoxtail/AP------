@@ -1,0 +1,62 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "4fdf9b814f8ba852",
+  "solvedAnswer": "$8$",
+  "solveSteps": [
+    "$z_1^3 = 1$이므로 $n$은 3의 배수이다. (200)",
+    "$z_2^2 = -i, z_2^8 = 1$이므로 $n$은 8의 배수이다. (200)",
+    "따라서 $n$은 $\\operatorname{lcm}(3, 8) = 24$의 배수이다. (200)",
+    "200 이하의 24의 배수 개수는 $\\lfloor 200/24 \\rfloor = 8$개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 복소수 $z_1=\\dfr",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 거듭제곱 주기성과 단위근 공배수 계산 유형이다. (200)",
+  "rpmRecordId": "H1-RPM-025",
+  "rpmReason": "복소수 단원의 i의 거듭제곱 주기성 및 단위근 주기성 유형이다. (200)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 복소수의 거듭제곱 주기성을 분석하고 공배수 개수를 세는 난이도 3 주관식 문항이다. (200)",
+  "how": "두 복소수의 단위근 주기성 3과 8의 최소공배수 24를 구하고 200 이하 배수 개수 8을 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "두 복소수 $z_1=\\dfrac{-1+\\sqrt{3}i}{2}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $n$의 개수를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "$3$과 $8$의 최소공배수인 $24$의 배수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$200$ 이하의 자연수 $n$의"
+      }
+    ]
+  }
+}

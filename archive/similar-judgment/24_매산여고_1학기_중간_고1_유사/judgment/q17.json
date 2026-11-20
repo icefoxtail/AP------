@@ -1,0 +1,61 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "a30215ea9f62d548",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$z+1/z$ 실수 조건으로 $z\\bar{z}=1$을 유도하여 ㄱ 참이다. (bi)",
+    "$z^2/(z-1)$ 실수 조건에서 $z^3=-1, z^2-z+1=0$을 유도하여 $z+\\bar{z}=1$이므로 ㄴ은 거짓이다. (bi)",
+    "식 변형으로 $(z^4+2z^2)(z^2-2z) = 3$임을 밝혀 ㄷ 참이다. (bi)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수가 아닌 복소수 $z$에",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 실수 조건과 켤레복소수 성질 심화 판정 유형이다. (bi)",
+  "rpmRecordId": "H1-RPM-026",
+  "rpmReason": "복소수 단원의 복소수 조건식의 활용 심화 유형이다. (bi)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수 실수 조건을 대칭식과 켤레성으로 해석하는 난이도 3 심화 합답형 문항이다. (bi)",
+  "how": "복소수 실수 조건을 켤레복소수 일치성으로 변환하여 기하적·대수적 보기를 종합 판정했다. (bi)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "실수가 아닌 복소수 $z$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "자신의 켤레복소수와 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "모두 실수일 때, <보기>에서"
+      }
+    ]
+  }
+}

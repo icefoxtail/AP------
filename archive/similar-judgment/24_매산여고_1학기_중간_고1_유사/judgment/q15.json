@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "18236319accaf8b8",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "구간별 함수 $f(x)$의 치역이 $[-3, 1]$임을 구한다. (cases)",
+    "$t=f(x)$ 치환으로 $y = -t^2+4t+1 = -(t-2)^2+5$를 세운다. (cases)",
+    "꼭짓점 $t=2$가 구간 밖에 있으므로 $t=-3$에서 최솟값 $-20$, $t=1$에서 최댓값 $4$이다. (cases)",
+    "합은 $-20 + 4 = -16$이다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $f(x)=\\begin",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "합성함수 치환을 이용한 이차함수의 최대·최소 유형이다. (cases)",
+  "rpmRecordId": "H1-RPM-038",
+  "rpmReason": "이차함수 단원의 치환을 이용한 최대·최소 응용 유형이다. (cases)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "구간별 정의 함수의 치역을 유도하고 치환 이차함수의 최대·최소를 구하는 난이도 3 문항이다. (cases)",
+  "how": "구간별 함수의 치역을 치환 변수 범위로 잡고 단조 증가하는 구간에서 최대·최소 합 -16을 구했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=\\begin{cases}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "따라서 $t=f(x)$라 치환하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "-3\\le f(x)\\le 1"
+      }
+    ]
+  }
+}

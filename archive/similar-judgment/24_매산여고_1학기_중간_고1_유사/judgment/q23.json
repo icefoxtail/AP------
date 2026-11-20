@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "868768d4f5a1901b",
+  "solvedAnswer": "$m<-10-2\\sqrt{26}$ 또는 $\\dfrac{1}{2}<m<5-2\\sqrt{5}$",
+  "solveSteps": [
+    "구간별 포물선과 직선의 접점 판별식 $D_L, D_R$을 분석한다. (cases)",
+    "좌측 구간 실근 2개, 우측 1개인 경우 $m < -10-2\\sqrt{26}$을 구한다. (cases)",
+    "좌측 구간 실근 1개, 우측 2개인 경우 $1/2 < m < 5-2\\sqrt{5}$를 구한다. (cases)",
+    "두 경우를 종합하여 범위를 도출한다. (cases)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $f(x)=\\begin",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "구간별 이차함수와 직선의 다중 교점 위치 관계 서술형 유형이다. (cases)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 이차함수와 직선의 위치 관계 접선 판별식 유형이다. (cases)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "구간별 포물선과 직선의 교점 개수를 판별식과 경계점으로 분석하는 난이도 3 최고난도 서술형 문항이다. (cases)",
+  "how": "구간별 이차곡선과 회전 직선의 접선 판별식 및 실근 개수를 종합해 교점 3개 범위를 도출했다. (cases)",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "그래프와 직선 $y=mx+3m-1$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "상수 $m$의 값의 범위를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식은 $D_L=(m+2)^2-8(1-2m)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=mx+3m-1$이"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "3c2feb1f719a4e00",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$Q_1(x) = (x^2-x+1)(x-1)Q_2(x) + x-2$를 $f(x)$에 대입한다. (aligned)",
+    "$(x^2+x+1)(x^2-x+1) = x^4+x^2+1$이므로 전개하여 나머지를 구한다. (aligned)",
+    "$R(x) = (x^2+x+1)(x-2) + 3x+4 = x^3-x^2+2x+2$에서 $R(2)=10$이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $f(x)$를 $x^",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리와 복합 나눗셈 항등식 전개 유형이다. (aligned)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 연쇄 나눗셈 조건 나머지정리 유형이다. (aligned)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "몫함수에 나눗셈 관계식을 연쇄 대입하여 고차식 나눗셈의 나머지를 구하는 난이도 3 문항이다. (aligned)",
+  "how": "몫의 나눗셈 관계식을 원식에 대입 전개하여 합성 나눗셈의 나머지를 계산했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$를 $x^2+x+1$로 나누었을 때의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지를 $R(x)$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "주어진 나눗셈 관계를 식으로 나타내면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지가 $3x+4$이고"
+      }
+    ]
+  }
+}

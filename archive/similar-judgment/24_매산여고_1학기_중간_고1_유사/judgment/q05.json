@@ -1,0 +1,61 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "0d121d044a3dec7a",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "양변에서 2를 빼서 좌변을 인수분해하면 $(2x+1)(x+1)^2$이다. (A)",
+    "$f(x) = 2(x+1)^2, g(x) = (x+1)^2$를 구한다. (A)",
+    "$f(0)+g(1) = 2 + 4 = 6$이다. (A)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 등식에서 다항식 $A$",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식과 다항식의 구조 분석 미정다항식 결정 유형이다. (A)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 항등식의 성질과 식 변형 유형이다. (A)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "식 변형 후 인수분해를 통해 다항식을 결정하는 난이도 2 문항이다. (A)",
+  "how": "상수항을 이항하여 좌변을 인수분해하고 f(x), g(x)를 결정해 f(0)+g(1)=6을 구했다. (A)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "다음 등식에서 다항식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f(0)+g(1)$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "좌변을 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $A$를 $f(x)$"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "06efc865b52ae254",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "첫째 식에서 $\\alpha+\\beta=-m, \\alpha\\beta=n$이다. (mx)",
+    "둘째 식 두 근의 곱에서 $\\beta = 4(\\alpha+2)$를 얻는다. (mx)",
+    "두 근의 합 관계식을 정리하여 $u=\\alpha+2$ 치환으로 $(u-1)^2=0 \\implies \\alpha=-1, \\beta=4$를 구한다. (mx)",
+    "$m=-3, n=-4$이므로 $m+n = -7$이다. (mx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2+mx+n",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 근과 계수의 관계 연립 방정식 결정 유형이다. (mx)",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "이차방정식의 근과 계수 단원의 변환된 두 근과 계수 관계 유형이다. (mx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 이차방정식의 근과 계수의 관계를 연립하여 근을 직접 구하는 난이도 2 문항이다. (mx)",
+  "how": "근과 계수의 관계를 세우고 치환을 통해 알파와 베타를 구하여 m+n=-7을 도출했다. (mx)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+mx+n=0$의 두 근을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "실수 $m$, $n$에 대하여 $m+n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $4x^2+mx-1=0$의 두 근은"
+      }
+    ]
+  }
+}

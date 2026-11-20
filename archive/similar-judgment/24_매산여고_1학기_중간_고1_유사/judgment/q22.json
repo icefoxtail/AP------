@@ -1,0 +1,61 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "a1631a164339dc47",
+  "solvedAnswer": "(1) $(2, -9)$ (2) $-1, 5$",
+  "solveSteps": [
+    "(1) $a$에 대해 묶으면 $y = x^2-13 + a(x-2)$이므로 $a$에 관계없이 항상 지나는 점은 $(2, -9)$이다. (ax)",
+    "(2) 꼭짓점이 $(2, -9)$이면 축 $-a/2 = 2 \\implies a = -4$이다. (ax)",
+    "이차함수 $y = x^2-4x-5 = (x+1)(x-5) = 0$에서 $x$절편은 $-1, 5$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=x^2+ax-",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 항등식 정점과 꼭짓점 좌표 서술형 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-038",
+  "rpmReason": "이차함수 단원의 항등식 활용 정점과 이차함수 결정 유형이다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수가 항등적으로 지나는 정점과 꼭짓점 일치 조건에서 절편을 구하는 난이도 3 서술형 문항이다. (ax)",
+  "how": "항등식의 성질로 정점 (2, -9)를 구하고 꼭짓점 조건에서 a=-4를 구해 x절편 -1, 5를 도출했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2+ax-2a-13$의 그래프는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "(1) 점 $P$의 좌표를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "점 $P(2, -9)$가 꼭짓점이면 꼭짓점의 $x$좌표",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "점 $P$가 이 이차함수의 꼭짓점일 때"
+      }
+    ]
+  }
+}

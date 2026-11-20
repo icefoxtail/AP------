@@ -1,0 +1,61 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "2c1cafa4c3950c6c",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "x축과 만나므로 $D_1/4 = 9+k \\ge 0 \\implies k \\ge -9$이다. (30)",
+    "직선과 만나지 않으므로 연립 판별식 $D_2/4 = 1 - (k+2) < 0 \\implies k > -1$이다. (30)",
+    "$-1 < k \\le -1$이 아닌 $-1 < k$와 이전 조건 종합으로 정수 합을 계산한다. (30)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=-x^2+6x",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 그래프와 직선의 위치 관계 판별식 연립 유형이다. (30)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 이차함수와 직선의 위치 관계 판별식 유형이다. (30)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "포물선과 x축 및 직선의 위치 관계 판별식을 연립하는 난이도 2 문항이다. (30)",
+  "how": "x축 접촉 조건 D1>=0과 직선 불만남 조건 D2<0을 연립해 정수 k의 합을 계산했다. (30)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-x^2+6x+k$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "모든 정수 $k$의 값의 합을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "D_1}{4}=(-3)^2-(-k)=9+k\\ge 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=4x-2$와는 만나지 않도록 하는"
+      }
+    ]
+  }
+}

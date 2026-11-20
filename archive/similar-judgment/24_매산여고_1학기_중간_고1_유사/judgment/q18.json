@@ -1,0 +1,63 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "9857afecdd0a824a",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "대칭축 $x=3a$의 위치에 따라 세 경우로 나눈다. (ax)",
+    "1) $|3a| \\le 1$: 꼭짓점이 구간 안이면 $9a^2=5 \\implies a = \\pm\\sqrt{5}/3$ (조건 모순). (ax)",
+    "2) $3a > 1$: 최댓값 $f(1) = 6a-1 = 5 \\implies a=1$. (ax)",
+    "3) $3a < -1$: 최댓값 $f(-1) = -6a-1 = 5 \\implies a=-1$. (ax)",
+    "따라서 가능한 $a$의 값의 곱은 $(1)(-1) = -1$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-1\\le x\\le 1$에",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "대칭축 위치 분류를 통한 이차함수의 구간 최댓값 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 축의 위치에 따른 구간 최대·최소 분류 유형이다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "미정계수 대칭축의 위치에 따른 구간 최대·최소 케이스 분류 난이도 3 문항이다. (ax)",
+  "how": "대칭축 위치를 구간 내부와 외부로 케이스 분류하여 a=1, -1의 곱 -1을 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "$-1\\le x\\le 1$에서 이차함수 $y=-x^2+6ax$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$의 모든 값의 곱을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "대칭축은 $x=3a$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값이 $5$일 때"
+      }
+    ]
+  }
+}

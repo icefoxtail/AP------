@@ -1,0 +1,62 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "cfc1b569dce60367",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$z = (3x+3) + (-x+3)i$로 정리한다. (ab)",
+    "실수 조건: 허수부 $-x+3=0 \\implies a=3$이다. (ab)",
+    "순허수 조건: 실수부 $3x+3=0, -x+3 \\ne 0 \\implies b=-1$이다. (ab)",
+    "$ab = 3 \\times (-1) = -3$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "복소수 $z=(3-i)x+3",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 분류와 상등 실수·순허수 조건 유형이다. (ab)",
+  "rpmRecordId": "H1-RPM-021",
+  "rpmReason": "복소수 단원의 복소수의 실수 및 순허수 조건 유형이다. (ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수가 실수 및 순허수가 되는 조건을 각각 분립 해결하는 난이도 2 문항이다. (ab)",
+  "how": "복소수를 실수부와 허수부로 분리해 실수 조건과 순허수 조건으로 a=3, b=-1을 구하고 곱을 계산했다. (ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=(3-i)x+3(1+i)$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$ab$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "순허수",
+        "src": "solution",
+        "quote": "$z$가 순허수이려면 실수부분이 $0$이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x$의 값을 $a$라 하고"
+      }
+    ]
+  }
+}

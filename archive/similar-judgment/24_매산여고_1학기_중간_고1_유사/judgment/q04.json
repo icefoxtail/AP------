@@ -1,0 +1,55 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "edce2af6a05bf126",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$P(1)=0, P(-1)=0$이므로 조립제법을 연속 적용한다. (x)",
+    "$P(x) = (x-1)(x+1)^2(x-2)$로 인수분해된다.",
+    "보기를 대조하여 인수가 아닌 것을 판별한다. (x)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 다항식 $x^4-x",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "고차식의 인수분해와 인수 판별 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-017",
+  "rpmReason": "인수분해 단원의 인수정리와 조립제법을 이용한 고차식 인수분해 유형이다. (x)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "인수정리와 조립제법을 이용해 고차식을 인수분해하는 난이도 2 문항이다. (x)",
+  "how": "조립제법으로 사차다항식을 완전 인수분해하여 일차·이차 인수를 대조했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $x^4-x^3-3x^2+x+2$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "src": "stem",
+        "quote": "인수가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "조립제법",
+        "src": "solution",
+        "quote": "조립제법으로 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "6c058dbf8b44bd9d",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$y = (x-1)^2 + k-1$에서 꼭짓점 $x=1$이 $[-1, 4]$에 포함되므로 최솟값 $k-1=3 \\implies k=4$이다. (12)",
+    "축에서 가장 먼 $x=4$에서 최댓값 $f(4) = (4-1)^2 + 3 = 12$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$의 값의 범위가 $-1",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "제한된 범위에서 이차함수의 최대·최소 결정 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 제한 구간 내 이차함수 최대·최소 유형이다. (12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제한된 구간에서 이차함수의 꼭짓점 최솟값과 경계값 최댓값을 구하는 난이도 2 문항이다. (12)",
+  "how": "꼭짓점 최솟값 조건에서 k=4를 구하고 경계값 x=4를 대입해 최댓값 12를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-2x+k$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "이차함수의 최댓값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점의 $x$좌표 $x=1$이 포함되므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값은 $3$이다."
+      }
+    ]
+  }
+}
