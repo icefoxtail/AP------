@@ -1,0 +1,57 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "a644ca2d18b165dd",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "좌변을 완전제곱식으로 전개하여 우변과 계수를 비교한다.",
+    "1단계: 좌변을 전개한다.",
+    "$$(Ax-3)^2 = (Ax)^2 - 2(Ax)(3) + (-3)^2 = A^2x^2 - 6Ax + 9$$",
+    "2단계: 우변의 $16x^2 + 24x + B$와 동류항별로 계수를 비교한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(Ax-3)^2 = 16x^2 + 24x + B$ (단, $A, B$는 상수)가 성립할 때, $A+B$의 값을 구하면?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-015",
+  "rpmEvidence": "좌변을 완전제곱식으로 전개하여 우변과 계수를 비교한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q18번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 Ax)",
+  "rpmReason": "Q18번 문항은 M3-RPM-015에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 Ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 Ax)",
+  "how": "Q18번 문항으로 M3-02 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 Ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "성립",
+        "src": "stem",
+        "quote": "$(Ax-3)^2 = 16x^2 + 24x + B$ (단, $A, B$는 상수)가 성립할 때, $A+B$의 값을 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$(Ax-3)^2 = 16x^2 + 24x + B$ (단, $A, B$는 상수)가 성립할 때, $A+B$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱",
+        "src": "solution",
+        "quote": "좌변을 완전제곱식으로 전개하여 우변과 계수를 비교한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

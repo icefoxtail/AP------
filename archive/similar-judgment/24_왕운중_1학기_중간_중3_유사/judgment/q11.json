@@ -1,0 +1,57 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "a04e8bcb0cc0f68c",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "부등식 $30 < \\sqrt{2n} < 31$을 만족시키는 자연수 $n$의 개수를 구한다.",
+    "1단계: 부등식을 제곱하여 $2n$의 범위를 구한다.",
+    "$$30 < \\sqrt{2n} < 31$$ 각 변을 제곱하면 $$30^2 < 2n < 31^2$$ $$900 < 2n < 961$$",
+    "2단계: 양변을 $2$로 나누어 $n$의 범위를 구한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2$의 배수의 양의 제곱근 $\\sqrt{2}, \\sqrt{4}, \\sqrt{6}, \\sqrt{8}, \\dots, \\sqrt{2n}, \\dots$에 대응하는 점을 수직선 위에 나타낼 때, 두 정수 $30$과 $31$ 사이에 있는 점의 개수를 구하면?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-001",
+  "rpmEvidence": "부등식 $30 < \\sqrt{2n} < 31$을 만족시키는 자연수 $n$의 개수를 구한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q11번 문항은 PT_M3_SQUARE_ROOT_PROPERTY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 30)",
+  "rpmReason": "Q11번 문항은 M3-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 30)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 30)",
+  "how": "Q11번 문항으로 M3-01 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 30)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "$2$의 배수의 양의 제곱근 $\\sqrt{2}, \\sqrt{4}, \\sqrt{6}, \\sqrt{8}, \\dots, \\sqrt{2n}, \\dots$에 대응하는 점을 수직선 위에 나타낼 때, 두 정수 $30$과 $31$ 사이에 있는 점의 개수를 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "배수",
+        "src": "stem",
+        "quote": "$2$의 배수의 양의 제곱근 $\\sqrt{2}, \\sqrt{4}, \\sqrt{6}, \\sqrt{8}, \\dots, \\sqrt{2n}, \\dots$에 대응하는 점을 수직선 위에 나타낼 때, 두 정수 $30$과 $31$ 사이에 있는 점의 개수를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "부등식 $30 < \\sqrt{2n} < 31$을 만족시키는 자연수 $n$의 개수를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

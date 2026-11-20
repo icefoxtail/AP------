@@ -1,0 +1,57 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "9ca47719dd74b524",
+  "solvedAnswer": "$4\\sqrt{2}$",
+  "solveSteps": [
+    "다항식의 전개식을 통해 $a$와 $b$를 구한 후, 피타고라스 정리로 직각삼각형의 높이를 구하여 넓이를 계산한다.",
+    "1단계: 다항식을 전개하여 $a, b$의 값을 구한다.",
+    "$$(x+a)(x-2) = x^2 + (a-2)x - 2a$$ 우변의 $x^2 + bx - 8$과 계수를 비교하면",
+    "* 상수항: $-2a = -8 \\implies a = 4$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 3] $(x+a)(x-2)$를 전개하면 $x^2 + bx - 8$일 때, 빗변의 길이와 밑변의 길이가 각각 $a+b$, $a-b$인 직각삼각형의 넓이를 구하시오.",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-015",
+  "rpmEvidence": "다항식의 전개식을 통해 $a$와 $b$를 구한 후, 피타고라스 정리로 직각삼각형의 높이를 구하여 넓이를 계산한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_M3_POLY_FACTORIZATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 bx)",
+  "rpmReason": "Q23번 문항은 M3-RPM-015에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 bx)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 bx)",
+  "how": "Q23번 문항으로 M3-02 단원의 기본 개념과 성질을 적용하여 $4\\sqrt{2}$을(를) 바르게 구하였다. (문항 토큰 bx)",
+  "slots": {
+    "given": [
+      {
+        "term": "전개",
+        "src": "stem",
+        "quote": "[서·논술형 3] $(x+a)(x-2)$를 전개하면 $x^2 + bx - 8$일 때, 빗변의 길이와 밑변의 길이가 각각 $a+b$, $a-b$인 직각삼각형의 넓이를 구하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "[서·논술형 3] $(x+a)(x-2)$를 전개하면 $x^2 + bx - 8$일 때, 빗변의 길이와 밑변의 길이가 각각 $a+b$, $a-b$인 직각삼각형의 넓이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "다항식의 전개식을 통해 $a$와 $b$를 구한 후, 피타고라스 정리로 직각삼각형의 높이를 구하여 넓이를 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

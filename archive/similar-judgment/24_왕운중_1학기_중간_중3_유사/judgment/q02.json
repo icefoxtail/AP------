@@ -1,0 +1,57 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "894829126d6eba5a",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "근호 안의 수가 유리수의 제곱 꼴인지 소인수분해 또는 분수 표현을 통해 확인한다.",
+    "1단계: 제시된 수들을 각각 검토한다.",
+    "* $\\sqrt{144} = \\sqrt{12^2} = 12$(근호 없이 나타낼 수 있음) *$\\sqrt{\\dfrac{4}{9}} = \\sqrt{\\left(\\dfrac{2}{3}\\right)^2} = \\dfrac{2}{3}$(근호 없이 나타낼 수 있음) *$\\sqrt{0.9} = \\sqrt{\\dfrac{9}{10}} = \\dfrac{3}{\\sqrt{10}}$ ($10$이 제곱수가 아니므로 불가능) *$\\sqrt{\\dfrac{3}{16}} = \\dfrac{\\sqrt{3}}{4}$ ($3$이 제곱수가 아니므로 불가능) *$-\\sqrt{0.81} = -\\sqrt{0.9^2} = -0.9$ (근호 없이 나타낼 수 있음)",
+    "2단계: 근호 없이 나타낼 수 있는 수의 개수를 센다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 수 중에서 근호를 사용하지 않고 나타낼 수 있는 것은 모두 몇 개인가?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-001",
+  "rpmEvidence": "근호 안의 수가 유리수의 제곱 꼴인지 소인수분해 또는 분수 표현을 통해 확인한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q2번 문항은 PT_M3_SQUARE_ROOT_PROPERTY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 144)",
+  "rpmReason": "Q2번 문항은 M3-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 144)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 144)",
+  "how": "Q2번 문항으로 M3-01 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 144)",
+  "slots": {
+    "given": [
+      {
+        "term": "근호",
+        "src": "stem",
+        "quote": "다음 수 중에서 근호를 사용하지 않고 나타낼 수 있는 것은 모두 몇 개인가?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "음수",
+        "src": "stem",
+        "quote": "다음 수 중에서 근호를 사용하지 않고 나타낼 수 있는 것은 모두 몇 개인가?"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리수",
+        "src": "solution",
+        "quote": "근호 안의 수가 유리수의 제곱 꼴인지 소인수분해 또는 분수 표현을 통해 확인한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
