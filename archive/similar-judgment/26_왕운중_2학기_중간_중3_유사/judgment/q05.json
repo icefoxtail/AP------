@@ -1,0 +1,59 @@
+{
+  "qid": 5,
+  "itemFingerprint": "7c057b36aae03013",
+  "solveSteps": [
+    "45도 < A < 90도 에서 0 < sin A < 1 이므로 sin A - 1 < 0 이다.",
+    "tan A > 1 이므로 1 - tan A < 0 이다.",
+    "sqrt((sin A - 1)^2) = -(sin A - 1) = 1 - sin A 이다.",
+    "sqrt((1 - tan A)^2) = -(1 - tan A) = tan A - 1 이다.",
+    "준식은 (1 - sin A) - (tan A - 1) = 2 - sin A - tan A 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "t{(1 - \\tan A)^2}$$",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmReason": "45도와 90도 사이에서 삼각비의 범위와 관계를 이용해 식의 부호를 판별하는 문항이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "typeReason": "45도와 90도 범위의 각에 대한 삼각비의 대소 관계를 이용한 근호식 간단히 하기 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "45도 기준 삼각비의 크기 관계를 파악하고 근호의 성질을 결합하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "탄젠트",
+        "quote": "t{(1 - \\tan A)^2}$$",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "탄젠트",
+        "quote": "t{(1 - \\tan A)^2}$$",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "45도와 90도 사이 각 A에 대해 sin A < 1, tan A > 1 부호를 판별하여 근호 식을 정리했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
