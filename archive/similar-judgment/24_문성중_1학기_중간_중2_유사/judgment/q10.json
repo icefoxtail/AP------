@@ -1,0 +1,57 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "5576ef99f6d05962",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "좌변의 공통인수 $2^n$을 묶어 식을 정리한다.",
+    "\\begin{aligned}",
+    "2^{n+3} + 2^{n+2} + 2^{n+1} &= 2^n \\times 2^3 + 2^n \\times 2^2 + 2^n \\times 2^1 \\",
+    "&= 2^n \\times (8 + 4 + 2) \\"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2^{n+3} + 2^{n+2} + 2^{n+1} = 224$일 때, 자연수 $n$의 값은?",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmEvidence": "좌변의 공통인수 $2^n$을 묶어 식을 정리한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "newKeyProposal": null,
+  "typeReason": "Q10번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 224)",
+  "rpmReason": "Q10번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 224)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 224)",
+  "how": "Q10번 문항으로 M2-01 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 224)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$2^{n+3} + 2^{n+2} + 2^{n+1} = 224$일 때, 자연수 $n$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "src": "solution",
+        "quote": "좌변의 공통인수 $2^n$을 묶어 식을 정리한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "공통",
+        "src": "solution",
+        "quote": "좌변의 공통인수 $2^n$을 묶어 식을 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

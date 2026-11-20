@@ -1,0 +1,57 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "26fb760030ccc35b",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "두 순환소수를 분수로 나타내어 합을 구한다.",
+    "\\begin{aligned}",
+    "0.\\dot{a}\\dot{b} &= \\frac{10a+b}{99}, \\quad 0.\\dot{b}\\dot{a} = \\frac{10b+a}{99} \\",
+    "0.\\dot{a}\\dot{b} + 0.\\dot{b}\\dot{a} &= \\frac{(10a+b) + (10b+a)}{99} = \\frac{11(a+b)}{99} = \\frac{a+b}{9}"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 순환소수 $0.\\dot{a}\\dot{b}$와 $0.\\dot{b}\\dot{a}$의 합이 $0.\\dot{7}$일 때, $0.\\dot{a}-0.\\dot{b}$의 값을 순환소수로 나타낸 것은?",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "rpmRecordId": "M2-RPM-001",
+  "rpmEvidence": "두 순환소수를 분수로 나타내어 합을 구한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "newKeyProposal": null,
+  "typeReason": "Q5번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 prime)",
+  "rpmReason": "Q5번 문항은 M2-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 prime)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 prime)",
+  "how": "Q5번 문항으로 M2-01 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 prime)",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "두 순환소수 $0.\\dot{a}\\dot{b}$와 $0.\\dot{b}\\dot{a}$의 합이 $0.\\dot{7}$일 때, $0.\\dot{a}-0.\\dot{b}$의 값을 순환소수로 나타낸 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "두 순환소수 $0.\\dot{a}\\dot{b}$와 $0.\\dot{b}\\dot{a}$의 합이 $0.\\dot{7}$일 때, $0.\\dot{a}-0.\\dot{b}$의 값을 순환소수로 나타낸 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "두 순환소수를 분수로 나타내어 합을 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

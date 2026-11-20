@@ -1,0 +1,57 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "8ac7e4ab6de99ea7",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "좌변을 지수법칙으로 전개하여 우변과 비교한다.",
+    "(x^a y^b z^c)^d = x^{ad} y^{bd} z^{cd} = x^{36} y^{48} z^{60}",
+    "따라서 다음 세 식이 성립한다.",
+    "ad = 36, \\quad bd = 48, \\quad cd = 60"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "네 자연수 $a, b, c, d$에 대하여 $(x^{a}y^{b}z^{c})^{d} = x^{36}y^{48}z^{60}$이 성립할 때, $a+b+c$의 최솟값은?",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmEvidence": "좌변을 지수법칙으로 전개하여 우변과 비교한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "newKeyProposal": null,
+  "typeReason": "Q12번 문항은 PT_M2_MONOMIAL_MULTIPLICATION_DIVISION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)",
+  "rpmReason": "Q12번 문항은 M2-RPM-007에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 36)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
+  "how": "Q12번 문항으로 M2-01 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 36)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "네 자연수 $a, b, c, d$에 대하여 $(x^{a}y^{b}z^{c})^{d} = x^{36}y^{48}z^{60}$이 성립할 때, $a+b+c$의 최솟값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "네 자연수 $a, b, c, d$에 대하여 $(x^{a}y^{b}z^{c})^{d} = x^{36}y^{48}z^{60}$이 성립할 때, $a+b+c$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "비교",
+        "src": "solution",
+        "quote": "좌변을 지수법칙으로 전개하여 우변과 비교한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

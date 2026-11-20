@@ -1,0 +1,57 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "fe811ce297ad2502",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의 각 변에 음수 $a$를 곱하면 부등호의 방향이 바뀐다.",
+    "-7 \\le x \\le 3 \\implies 3a \\le ax \\le -7a",
+    "각 변에 $\\dfrac{1}{2}$을 더하면",
+    "\\frac{1}{2} + 3a \\le \\frac{1}{2} + ax \\le \\frac{1}{2} - 7a"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-7 \\le x \\le 3$일 때, $\\dfrac{1}{2} + ax$의 최댓값이 $4$, 최솟값이 $b$이다.",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "rpmRecordId": "M2-RPM-022",
+  "rpmEvidence": "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의 각 변에 음수 $a$를 곱하면 부등호의 방향이 바뀐다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+  "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+  "newKeyProposal": null,
+  "typeReason": "Q20번 문항은 PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ax)",
+  "rpmReason": "Q20번 문항은 M2-RPM-022에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ax)",
+  "how": "Q20번 문항으로 M2-02 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "$-7 \\le x \\le 3$일 때, $\\dfrac{1}{2} + ax$의 최댓값이 $4$, 최솟값이 $b$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$-7 \\le x \\le 3$일 때, $\\dfrac{1}{2} + ax$의 최댓값이 $4$, 최솟값이 $b$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "$a < 0$이므로 부등식 $-7 \\le x \\le 3$의 각 변에 음수 $a$를 곱하면 부등호의 방향이 바뀐다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
