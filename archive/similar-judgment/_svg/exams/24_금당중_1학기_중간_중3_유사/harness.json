@@ -187,8 +187,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「다음 그림은 한 눈금의 길이가 $1$인 모눈종이 위에 수직선과 직각삼각형 $ABC$를 그린 것이다. $\\overline{AB}=\\overline{AP}$, $\\overline{AC}=\\overline{AQ}$일 때」 만으로 풀이 가능"
       },
       "solution": {
         "need": "NO",
@@ -433,8 +433,8 @@
         "planPath": null,
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
-        "note": ""
+        "status": "NOT_NEEDED",
+        "note": "그림 없이 지문 「다음 그림은 넓이가 각각 $3,\\mathrm{cm^2}, ; 27,\\mathrm{cm^2}, ; 12,\\mathrm{cm^2}$인 정사각형 모양의 색종이 세 장을 밑변을 맞추어 이어 붙인 것이다.」 만으로 풀이 가능"
       },
       "solution": {
         "need": "YES",
@@ -443,15 +443,20 @@
         "originalImage": "assets/images/24_금당중_1학기_중간_중3_기출/q11-solution.svg",
         "reusePlan": null,
         "design": {
-          "kind": "",
-          "basedOn": "",
-          "solutionUses": "",
-          "mustShow": []
+          "kind": "geometry",
+          "basedOn": "archive/tools/geometry-equation/ops/golden/item01/plan.json",
+          "solutionUses": "\\text{둘레} = (\\text{가로 합}) + (\\text{세로 합}) = (6\\sqrt{3} + 6\\sqrt{3}) + 6\\sqrt{3} = 18\\sqrt{3},\\mathrm{cm}",
+          "mustShow": [
+            "3",
+            "27",
+            "12",
+            "18"
+          ]
         },
-        "planPath": null,
+        "planPath": "archive/similar-judgment/_svg/exams/24_금당중_1학기_중간_중3_유사/q11-sol/plan.json",
         "pngPath": null,
         "pngObservation": "",
-        "status": "TODO",
+        "status": "PLANNED",
         "note": ""
       }
     },
