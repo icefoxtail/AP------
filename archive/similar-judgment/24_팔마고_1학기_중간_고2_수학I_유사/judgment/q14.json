@@ -1,0 +1,57 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "7bdea01c30f1ea63",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$t = 3^x$로 치환하면 $t > 0$이고 $9^x = t^2$이므로 주어진 방정식은 (문항 토큰 12)",
+    "$$t^2 + (1-k)t + 9 = 0$$",
+    "이 된다.",
+    "원래 방정식이 서로 다른 두 실근 $x$를 가지려면 이차방정식 $t^2 + (1-k)t + 9 = 0$이 **서로 다른 두 양의 실근**을 가져야 한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수 $x$에 대하여 방정식 $k \\times 3^x = 9^x + 3^x + 9$가 서로 다른 두 개의 실근을 갖도록 하는 정수 $k$ 중 절댓값이 $12$보다 작은 것의 개수는?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$t = 3^x$로 치환하면 $t > 0$이고 $9^x = t^2$이므로 주어진 방정식은",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q14번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+  "rpmReason": "Q14번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
+  "how": "Q14번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "실수 $x$에 대하여 방정식 $k \\times 3^x = 9^x + 3^x + 9$가 서로 다른 두 개의 실근을 갖도록 하는 정수 $k$ 중 절댓값이 $12$보다 작은 것의 개수는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x$에 대하여 방정식 $k \\times 3^x = 9^x + 3^x + 9$가 서로 다른 두 개의 실근을 갖도록 하는 정수 $k$ 중 절댓값이 $12$보다 작은 것의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$t = 3^x$로 치환하면 $t > 0$이고 $9^x = t^2$이므로 주어진 방정식은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "fbd0d74c9a754cfc",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "밑이 다른 로그의 밑을 $3$으로 통일하면 다음과 같다.",
+    "$$\\begin{aligned}",
+    "\\log_9 16 &= \\frac{\\log_3 16}{\\log_3 9} = \\frac{\\log_3 2^4}{2} = \\frac{4\\log_3 2}{2} = \\log_3 2^2 = \\log_3 4 \\",
+    "x &= \\log_3 10 + \\log_3 4 = \\log_3 (10 \\times 4) = \\log_3 40"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x = \\log_3 10 + \\log_9 16$일 때, $3^x$의 값은?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "밑이 다른 로그의 밑을 $3$으로 통일하면 다음과 같다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q7번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+  "rpmReason": "Q7번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+  "how": "Q7번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "밑이 다른 로그의 밑을 $3$으로 통일하면 다음과 같다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "따라서 로그의 정의에 의해 $3^x = 40$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "src": "solution",
+        "quote": "밑이 다른 로그의 밑을 $3$으로 통일하면 다음과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

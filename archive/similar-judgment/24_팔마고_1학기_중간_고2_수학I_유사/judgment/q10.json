@@ -1,0 +1,57 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "c6940fd16848f2ab",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$n > 0$이고 $a^n < b^n$이므로 양의 지수에 대하여 밑의 대소 관계는 $0 < a < b$이다. (문항 토큰 ab)",
+    "$b > 1$이더라도 $0 < a < 1$인 경우(예: $a = \\frac{1}{2}$, $b = 2$)가 존재하므로 거짓이다.",
+    "$a > 1$이면 $b > a > 1$이므로 $b > 1$이다.",
+    "따라서 참이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$1$이 아닌 두 양수 $a, b$에 대하여 두 함수 $f(x)=a^x$, $g(x)=b^x$가 양수 $n$에 대하여 $f(n) < g(n)$을 만족시킬 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$n > 0$이고 $a^n < b^n$이므로 양의 지수에 대하여 밑의 대소 관계는 $0 < a < b$이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q10번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)",
+  "rpmReason": "Q10번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
+  "how": "Q10번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "$1$이 아닌 두 양수 $a, b$에 대하여 두 함수 $f(x)=a^x$, $g(x)=b^x$가 양수 $n$에 대하여 $f(n) < g(n)$을 만족시킬 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "$1$이 아닌 두 양수 $a, b$에 대하여 두 함수 $f(x)=a^x$, $g(x)=b^x$가 양수 $n$에 대하여 $f(n) < g(n)$을 만족시킬 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대소",
+        "src": "solution",
+        "quote": "$n > 0$이고 $a^n < b^n$이므로 양의 지수에 대하여 밑의 대소 관계는 $0 < a < b$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
