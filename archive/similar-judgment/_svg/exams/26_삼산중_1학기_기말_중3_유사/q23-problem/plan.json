@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "0",
+      "-2"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -2,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "X1",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "X2",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x축과 두 점 (-2, 0), (2, 0)에서 만나고 y절편이 8인 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "두 점 (-2, 0), (2, 0), 점 (0, 8)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "두 x절편과 y절편의 좌표"
+  ]
+}

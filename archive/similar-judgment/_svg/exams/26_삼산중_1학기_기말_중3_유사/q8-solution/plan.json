@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=3x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=3x^2과 y=x^2의 폭 비교, 계수 3과 1의 절댓값",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3x^2, y=x^2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "|3|>|1|이므로 y=3x^2의 폭이 더 좁음"
+  ]
+}

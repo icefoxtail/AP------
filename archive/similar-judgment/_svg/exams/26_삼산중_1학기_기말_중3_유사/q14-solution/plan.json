@@ -1,0 +1,58 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1/3",
+          "4/3",
+          "-1/3"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ]
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "7",
+          "-2",
+          "1/4"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ]
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "l1",
+          "slope": "1",
+          "intercept": "-1"
+        }
+      ]
+    }
+  },
+  "caption": "두 포물선의 꼭짓점 (2, a)와 (b, 3)을 지나는 기울기 1인 직선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "기울기 1인 직선과 두 꼭짓점",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 위의 두 꼭짓점"
+  ]
+}

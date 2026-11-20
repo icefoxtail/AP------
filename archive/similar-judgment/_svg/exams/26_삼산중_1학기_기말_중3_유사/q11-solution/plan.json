@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "43",
+      "-30",
+      "5"
+    ],
+    "domain": [
+      1,
+      5
+    ],
+    "viewport": [
+      0,
+      6,
+      -4,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -2
+      },
+      {
+        "id": "P",
+        "x": 4,
+        "y": 3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (3, -2)이고 점 (4, 3)을 지나는 포물선 y=5(x-3)^2-2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (3, -2), 점 (4, 3)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 꼭짓점과 지나는 점"
+  ]
+}

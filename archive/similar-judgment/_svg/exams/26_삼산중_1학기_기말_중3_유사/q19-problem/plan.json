@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=ax^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=bx^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 포물선 y=ax^2, y=bx^2과 점 A(-1, a), B(1, a), C(1, b)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=ax^2, y=bx^2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선과 점 A, B, C"
+  ]
+}

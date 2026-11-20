@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=1/4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/4"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=-1/4x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 (2, -1)을 지나는 대칭 포물선 y=-1/4x^2과 a=1/4",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x축 대칭 포물선과 점 (2, -1)",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "점 (2, -1)을 지나는 x축 대칭 그래프"
+  ]
+}

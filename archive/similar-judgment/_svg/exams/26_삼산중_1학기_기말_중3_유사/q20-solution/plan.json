@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 9
+      },
+      {
+        "id": "X1",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "X2",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a<0, b>0, c>0이고 x=1에서 f(1)=a+b+c>0임을 확인하는 개형",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a<0, 대칭축 x=1, f(1)=a+b+c>0",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "함숫값 f(1)>0 부호 판정"
+  ]
+}

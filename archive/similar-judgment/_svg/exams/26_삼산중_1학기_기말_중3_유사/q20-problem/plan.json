@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "2",
+      "-1"
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": 9
+      },
+      {
+        "id": "X1",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "X2",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "축 x=1, x절편 (-2, 0)과 (4, 0)을 갖는 위로 볼록한 포물선 y=ax^2+bx+c",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대칭축 x=1, 절편 (-2, 0), (4, 0)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "위로 볼록한 개형과 대칭축"
+  ]
+}

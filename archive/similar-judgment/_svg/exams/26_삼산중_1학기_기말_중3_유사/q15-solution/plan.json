@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8",
+      "-2",
+      "1"
+    ],
+    "domain": [
+      -3,
+      5
+    ],
+    "viewport": [
+      -4,
+      6,
+      -11,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 1,
+        "y": -9
+      },
+      {
+        "id": "A",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 B(1, -9)와 밑변 AC=6, 높이 9인 삼각형 ABC의 넓이 27",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "B(1, -9), AC=6, 넓이 27",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC의 넓이 27"
+  ]
+}

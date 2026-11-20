@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/4"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=-1/4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-4x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "위로 볼록한 포물선 개수 m=4와 y=3x^2보다 폭이 좁은 n개수 비교",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a<0, |a|>3",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "위로 볼록 및 폭 비교"
+  ]
+}
