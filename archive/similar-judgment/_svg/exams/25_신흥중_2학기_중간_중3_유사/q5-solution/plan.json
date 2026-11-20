@@ -1,0 +1,44 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "REGULAR_POLYHEDRON",
+      "faces": 4,
+      "side": 6,
+      "names": "BCDA",
+      "points": [
+        {
+          "id": "H",
+          "at": {
+            "base": "centroid"
+          }
+        },
+        {
+          "id": "M",
+          "at": {
+            "edge": [
+              "B",
+              "C"
+            ],
+            "t": "1/2"
+          }
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "H",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "M",
+      "style": "DASHED",
+      "role": "REF"
+    }
+  ],
+  "caption": "정사면체 모서리 6, 3과 높이 DM, 무게중심 H의 2:1 분할, 직각삼각형 ADH에서 cos x"
+}
