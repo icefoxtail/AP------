@@ -47,7 +47,12 @@ window.questionBank = [
       "객관식"
     ],
     "category": "미분계수와 도함수",
-    "originalCategory": "미분계수와 도함수"
+    "originalCategory": "미분계수와 도함수",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 가파르게 오르는 삼차곡선과 곡선 위의 점 T에서 접하는 오르는 직선 l이 나타난 그래프이다.",
+    "solutionImageCaption": "y′=3x²+2이므로 점 T(1,5)에서의 접선의 기울기는 3·1²+2=5이다. 그림의 직선 l은 T에서 곡선에 접하는 접선이고 y=5x이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -71,7 +76,12 @@ window.questionBank = [
       "객관식"
     ],
     "category": "도함수의 활용",
-    "originalCategory": "도함수의 활용"
+    "originalCategory": "도함수의 활용",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝의 점 V에서 가장 낮고 오른쪽으로 갈수록 점점 가파르게 올라 오른쪽 끝 점 B에서 가장 높은 포물선 그래프이다.",
+    "solutionImageCaption": "f(x)=(x+1)²+2는 꼭짓점이 (-1,2)인 아래로 볼록한 포물선이다. 닫힌구간 [-1,3]의 왼쪽 끝이 꼭짓점 V(-1,2)라 최솟값은 b=2이고, 곡선이 계속 올라 오른쪽 끝점 B(3,18)에서 최댓값 a=18이다. 따라서 a+b=20이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 4,
@@ -195,7 +205,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "미분가능성과 연속",
-    "originalCategory": "미분가능성과 연속"
+    "originalCategory": "미분가능성과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 위의 두 점 Q, P에서 뾰족하게 닿고 가운데가 위로 솟은 W 모양의 그래프이다.",
+    "solutionImageCaption": "y=|x²-1|의 그래프는 W 모양이고 Q(-1,0), P(1,0)에서 뾰족하게 꺾인다. x=1에서 함숫값 0과 좌우극한이 모두 0이라 연속이다. 왼쪽 미분계수는 -2, 오른쪽 미분계수는 2로 서로 달라 P에서 미분가능하지 않다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -243,7 +257,12 @@ window.questionBank = [
       "객관식"
     ],
     "category": "함수의 극한과 연속",
-    "originalCategory": "함수의 극한과 연속"
+    "originalCategory": "함수의 극한과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 같은 간격으로 나란히 오르는 두 직선 사이에 가운데 직선이 끼어 있는 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x+2일 때를 그렸다. x>0에서 f는 두 직선 y=x+1과 y=x+3 사이에 있다. 각 변을 제곱해 4를 곱하고 4x²+1로 나누면 4(x+1)²/(4x²+1)<{2f(x)}²/(4x²+1)<4(x+3)²/(4x²+1)이다. x가 커지면 양쪽이 모두 1로 가까워지므로 샌드위치 정리에 의해 극한은 1이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -291,7 +310,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "함수의 극한과 연속",
-    "originalCategory": "함수의 극한과 연속"
+    "originalCategory": "함수의 극한과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1에서 왼쪽 가지는 아래쪽 열린 점으로, 오른쪽 가지는 위쪽 열린 점에서 시작하고, 둘 사이 높이에 닫힌 점이 따로 찍혀 있는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). x=-1에서 왼쪽 가지는 열린 점 (-1,-1)로, 오른쪽 가지는 열린 점 (-1,1)에서 시작하고 f(-1)=0인 닫힌 점이 가운데에 따로 있다. 좌극한 -1, 우극한 1이므로 곱 f(x)g(x)의 좌우극한은 -g(-1), g(-1)이고 함숫값은 0이다. 세 값이 같으려면 g(-1)=0이어야 하므로 ㄷ만 옳고 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -353,7 +376,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "함수의 극한과 연속",
-    "originalCategory": "함수의 극한과 연속"
+    "originalCategory": "함수의 극한과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0, 1, 2에서 끊어지는 그래프로, 각 점마다 열린 점과 따로 찍힌 닫힌 점이 있어 극한과 함숫값이 다름을 보여 준다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). f는 x=0에서 좌극한 2와 함숫값 3이 다르고, x=1에서 좌우극한이 모두 2이지만 함숫값이 1이며, x=2에서 좌극한과 함숫값이 3이고 우극한이 2로 끊어진다. g가 연속이므로 곱 f(x)g(x)가 연속이려면 이 세 점에서 g=0이어야 한다. 그래서 b=0, a=1, c=3, d=2이고 a+b+c+d=6이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 14,
@@ -441,7 +468,11 @@ window.questionBank = [
       "서술형"
     ],
     "category": "함수의 극한과 연속",
-    "originalCategory": "함수의 극한과 연속"
+    "originalCategory": "함수의 극한과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1 오른쪽의 높은 열린 점에서 내려가는 선분이 x=3의 낮은 열린 점으로 끝나고, x=3에는 위쪽에 닫힌 점이 따로 있으며 그 오른쪽에 수평선이 이어지는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다(원본 그림은 이미지 파일이라 직접 볼 수 없다). x→∞이면 입력 (1-x)/(2+x)=-1+3/(x+2)가 -1의 오른쪽에서 -1로 가까워지므로 f의 x=-1 오른쪽 가지가 향하는 열린 점 (-1,1)을 읽어 극한은 1이다. x→-∞이면 입력이 3의 왼쪽에서 3으로 가까워지므로 왼쪽 가지가 향하는 열린 점 (3,-2)를 읽어 극한은 -2이다. 닫힌 점 f(3)=3은 쓰지 않는다. 따라서 합은 1+(-2)=-1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -459,7 +490,11 @@ window.questionBank = [
       "서술형"
     ],
     "category": "함수의 극한과 연속",
-    "originalCategory": "함수의 극한과 연속"
+    "originalCategory": "함수의 극한과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O, 세로축 위의 점 P, 점 P와 같은 높이의 점 Q가 직각삼각형을 이루고, 삼각형 안에 변에 접하는 원이 있으며 원의 중심 I에 좌표가 표시된 그림이다.",
+    "solutionImageCaption": "예: t=3일 때를 그린다. P(0,3), Q(4,3)이고 삼각형 POQ는 직각삼각형(OP=3, PQ=4, OQ=5)이다. 내접원은 y축과 직선 y=t에 접하므로 중심은 (r,t-r)이고 r=(3+4-5)/2=1에서 I(1,2)이다. 일반적으로 r=t(t+1)/(2t+1+√(t²+(t+1)²))이고 g/f=(t-r)/r=(t+√(t²+(t+1)²))/(t+1)이다. t→∞에서 극한은 1+√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -477,7 +512,12 @@ window.questionBank = [
       "서술형"
     ],
     "category": "미분가능성과 연속",
-    "originalCategory": "미분가능성과 연속"
+    "originalCategory": "미분가능성과 연속",
+    "solutionImage": "assets/images/21_매산고_1학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 가운데 점 P에서 뾰족하게 꺾이는 좌우 대칭의 그래프로, P에서 가장 낮고 양쪽으로 갈수록 가파르게 올라간다.",
+    "solutionImageCaption": "x>0에서 |2tx|=2|t|x이므로 f의 꼭짓점의 x좌표 6+|t|가 양수라서 g(t)=t²+12|t|+6이다. 그림은 g의 그래프이고 t=0의 점 P(0,6)에서 왼쪽 기울기 -12, 오른쪽 기울기 12로 뾰족하게 꺾인다. 그래서 h(t)=(t²-a)g(t)의 t=0에서 좌우 미분계수는 12a, -12a이고 같으려면 a=0이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 20,

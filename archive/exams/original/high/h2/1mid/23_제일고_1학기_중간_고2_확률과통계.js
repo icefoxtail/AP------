@@ -679,7 +679,11 @@ window.questionBank = [
     ],
     "sourceChoiceEncoding": "SOURCE_CHOICES_EXTRACTED_WITHOUT_LABELS; canonical choices are exact; the engine supplies objective labels.",
     "category": "원순열과 이웃",
-    "originalCategory": "원순열과 이웃"
+    "originalCategory": "원순열과 이웃",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 남자 자리 A, C, E, G와 그 사이의 빈자리 B, D, F, H가 번갈아 놓여 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 그림이다. A, C, E, G는 남자 4명이 앉은 자리이고 B, D, F, H는 남자 사이에 생기는 네 자리이다. 남자 4명을 원탁에 앉히는 방법은 (4−1)!=6가지이다. 여자 3명은 서로 이웃하지 않아야 하므로 네 자리 중 서로 다른 3자리를 골라 배열하며 4P3=24가지이다. 따라서 6×24=144이므로 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -1638,7 +1642,11 @@ window.questionBank = [
     ],
     "sourceChoiceEncoding": "SOURCE_CHOICES_EXTRACTED_WITHOUT_LABELS; canonical choices are exact; the engine supplies objective labels.",
     "category": "원순열과 여사건",
-    "originalCategory": "원순열과 여사건"
+    "originalCategory": "원순열과 여사건",
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 그림이며 이웃한 두 쌍 B와 F, C와 D가 포함된 배열이다.",
+    "solutionImageCaption": "원형 배열의 6자리를 육각형 꼭짓점으로 나타낸 한 예이다. 점 A부터 F는 수 1부터 6이다. 곱이 12인 이웃쌍은 (2, 6)과 (3, 4)이고, 그림은 B와 F, C와 D가 이웃한 배열이다. 전체 원순열은 (6−1)!=120가지이다. 한 쌍을 한 덩어리로 보면 대상 5개의 원순열 (5−1)!=24에 덩어리 안 순서 2를 곱해 48가지씩이고, 두 쌍을 모두 덩어리로 보면 (4−1)!×2×2=24가지이므로 포함배제로 120−48−48+24=48이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

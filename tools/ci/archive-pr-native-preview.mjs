@@ -36,7 +36,9 @@ const sorted = values => [...new Set(values)].sort();
 
 import { AUTHORITY_CORRECTION_MODE, isNativeAuthorityCorrection, authorityHoldSealPath } from '../../archive/tools/meta-foundation/native-authority-correction.mjs';
 import { bindDifficulty5Source, isTextBoundDraft } from '../../archive/tools/meta-foundation/register-difficulty5.mjs';
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from '../../archive/tools/meta-foundation/text-binding-lib.mjs';
 import { isPartialSubsetPreservation, validatePartialSubsetPreservation } from '../../archive/tools/meta-foundation/native-partial-subset-preservation.mjs';
+import { DECISION_DOCUMENT as TYPE_JUDGMENT_DECISION_DOCUMENT } from '../../archive/tools/meta-foundation/register-type-judgment.mjs';
 
 export function nativeCommand(program, args, root) {
   const r = spawnSync(program, args, { cwd: root, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
@@ -923,7 +925,12 @@ function selectFixedNativeRequests({ root, files, headSha, rejectUnsupported, in
     const sourcePath = `archive/exams/${request.sourceArchiveFile}`;
     const source = fileRef(root, sourcePath), blobSha1 = git(root, 'rev-parse', `${headSha}:${sourcePath}`).trim();
     // A direct type judgment is bound to each question's stem + choices (the registrar checks the text), not to the file blob.
-    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT') || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
+    // A plain REVIEW2/FINAL_QA request is likewise bound to the stem + choices of its questions (same predicate as the registrar and the consumer gate).
+    const textBoundReview = blobSha1 !== request.expectedSourceBlobSha1 && !correction && !preservation && !authorityCorrection &&
+      TEXT_BOUND_REVIEW_TYPES.includes(request.approval?.type) &&
+      reviewedSourceTextUnchanged({ root, expectedBlobSha1: request.expectedSourceBlobSha1, currentBytes: gitBytes(root, `${headSha}:${sourcePath}`),
+        ordinals: selectedItems.map(item => item.sourceOrdinal) }).ok;
+    if ((blobSha1 !== request.expectedSourceBlobSha1 && request.approval?.type !== 'DIRECT_JUDGMENT' && !textBoundReview) || sha(gitBytes(root, `${headSha}:${sourcePath}`)) !== source.sha256) fail('SOURCE_NOT_FIXED');
     let bank;
     try {
       const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
@@ -1682,6 +1689,10 @@ export function hydrateM3Q5CurrentUiInputs({ root, shadow, headSha, requests }) 
 // on the post-state returns plannedPaths:[] and cannot authenticate a new
 // allowlist. This shadow has independent bytes; verify-local never writes its
 // actual checkout, consumes inbox files or runs another catalog build.
+// Repository inputs the registrars read from the shadow root (the request, source exam and evidence files are written separately).
+// The type-judgment decision document is read by name from the registrar's own constant: a first registration refuses without it.
+export const SHADOW_RESTORE_PATHS = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy', TYPE_JUDGMENT_DECISION_DOCUMENT];
+
 export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
   if (!requests.length) return { plans: [], outputs: [] };
   const headSha = git(root, 'rev-parse', '--verify', 'HEAD').trim();
@@ -1691,7 +1702,7 @@ export function rederiveNativePlans({ root, requests, run = nativeCommand }) {
     // Renderer/source reviews revalidate the live asset bytes, including assets
     // reached through an older receipt. Recreate that immutable input tree too;
     // never copy current worktree bytes or share mutable asset inodes.
-    const restore = ['archive/data', 'archive/assets', 'docs/rules/01_CANONICAL/taxonomy']
+    const restore = SHADOW_RESTORE_PATHS
       .filter(file => git(root, 'ls-tree', headSha, '--', file).trim());
     // Data plus assets can exceed the child-process memory buffer. Stream Git's
     // exact archive into a private temporary file, removed with this shadow.

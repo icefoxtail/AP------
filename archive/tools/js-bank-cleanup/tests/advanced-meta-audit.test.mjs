@@ -1,9 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
 import { auditAdvancedMetaQuestion } from '../scripts/advanced-meta-audit.mjs';
 import { loadActiveMetaRegistry } from '../../meta-foundation/active-registry.mjs';
 
-const repoRoot = new URL('../../../..', import.meta.url).pathname.replace(/^\//, '').replaceAll('/', '\\');
+const repoRoot = fileURLToPath(new URL('../../../..', import.meta.url));
 
 test('advanced Meta audit is read-only and reports canonical, provenance, and runtime parity state', () => {
   const context = {

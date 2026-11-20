@@ -69,6 +69,12 @@ function fixtureRepo(t) {
   return { root, first, second, finalCommit, rows, v2 };
 }
 
+const canonicalRebinds = (value) => {
+  const head = { schemaVersion: value.schemaVersion, textFingerprintVersion: value.textFingerprintVersion, appendOnly: true, note: value.note, batches: value.batches, revisionsNote: value.revisionsNote };
+  return JSON.stringify(head, null, 2).replace(/\n}$/, "") + ',\n  "entries": [\n' + value.entries.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]"
+    + ',\n  "revisions": [\n' + value.revisions.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]\n}\n";
+};
+
 const run = (root, ...args) => {
   const result = spawnSync(process.execPath, [TOOL, "--root", root, ...args], { encoding: "utf8" });
   return { status: result.status, out: result.stdout, err: result.stderr, json: () => JSON.parse(result.stdout) };
@@ -331,11 +337,12 @@ for (const exact of [true, false]) test(`return to the original text (${exact ? 
   assert.equal(run(root, "--check", "--against", "HEAD").status, 0);
 });
 
-// 추가 전용: 이 변경이 기준 브랜치의 기존 항목을 고치거나 지우지 않았는가. 기준 ref를 풀 수 없는 얕은 체크아웃에서는 실패가 아니라
-// 눈에 띄는 "건너뜀"으로 표시한다(조용한 통과와 구분).
+// 추가 전용: 이 변경이 기준 브랜치의 기존 항목을 고치거나 지우지 않았는가. 기준은 기준 브랜치의 최신이 아니라 HEAD와의 merge-base 시점 파일이다
+// (기준 브랜치가 이 PR 분기 이후 기록을 늘려도 옛 분기 PR이 빨개지지 않게). 기준 ref나 merge-base를 풀 수 없는 얕은 체크아웃에서는
+// 실패가 아니라 눈에 띄는 "건너뜀"으로 표시한다(조용한 통과와 구분).
 test("the committed rebinds file equals the base branch's file (frozen)", (t) => {
   const base = process.env.GITHUB_BASE_REF ? "origin/" + process.env.GITHUB_BASE_REF : "origin/main";
-  const result = run(repo, "--check", "--against", base);
+  const result = run(repo, "--check", "--against", base, "--merge-base");
   const out = JSON.parse(result.out);
   if (out.errors.some((e) => e.startsWith("BASE_UNAVAILABLE:"))) {
     console.log(`# NOT_RUN append-only check: base ${base} is not available in this checkout (shallow clone?)`);
@@ -390,19 +397,78 @@ test("revisions: an approved correction rebinds the changed stem; unverifiable, 
   git(root, "add", "-A"); git(root, "commit", "-q", "-m", "revisions");
   const file = path.join(root, REBINDS_PATH);
   const good = fs.readFileSync(file, "utf8");
-  const canonical = (value) => {
-    const head = { schemaVersion: value.schemaVersion, textFingerprintVersion: value.textFingerprintVersion, appendOnly: true, note: value.note, batches: value.batches, revisionsNote: value.revisionsNote };
-    return JSON.stringify(head, null, 2).replace(/\n}$/, "") + ',\n  "entries": [\n' + value.entries.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]"
-      + ',\n  "revisions": [\n' + value.revisions.map((e) => "    " + JSON.stringify(e)).join(",\n") + "\n  ]\n}\n";
-  };
-  assert.equal(canonical(doc), good, "test serializer matches the tool's canonical form");
-  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], prs: ["#8"] }] }));
+  assert.equal(canonicalRebinds(doc), good, "test serializer matches the tool's canonical form");
+  fs.writeFileSync(file, canonicalRebinds({ ...doc, revisions: [{ ...doc.revisions[0], prs: ["#8"] }] }));
   assert.equal(run(root, "--check", "--against", "HEAD").status, 1, "changing a recorded revision is rejected");
-  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], from: doc.revisions[0].text }] }));
+  fs.writeFileSync(file, canonicalRebinds({ ...doc, revisions: [{ ...doc.revisions[0], from: doc.revisions[0].text }] }));
   assert.equal(run(root, "--check").status, 1, "content edit with from == text is inconsistent");
-  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], commits: ["short"] }] }));
+  fs.writeFileSync(file, canonicalRebinds({ ...doc, revisions: [{ ...doc.revisions[0], commits: ["short"] }] }));
   assert.equal(run(root, "--check").status, 1, "commits must be 40-hex");
-  fs.writeFileSync(file, canonical({ ...doc, revisions: [{ ...doc.revisions[0], text: sha("forged") }] }));
+  fs.writeFileSync(file, canonicalRebinds({ ...doc, revisions: [{ ...doc.revisions[0], text: sha("forged") }] }));
   assert.equal(run(root, "--check", "--verify-history").status, 1, "history does not support a forged text");
   fs.writeFileSync(file, good);
+});
+
+// ---- merge-base 기준 추가 전용 검사: 기준 브랜치가 분기 이후 늘어도 옛 분기 PR은 자기 변경만으로 판정된다 ------------------------------------
+const hexOf = (c) => c.repeat(64);
+const revision = (uid, tag) => ({ uid, fp: hexOf(tag), text: hexOf("1"), from: hexOf("2"), edit: "content", family: "B", commits: ["a".repeat(40)] });
+function mergeBaseFixture(t) {
+  const fx = fixtureRepo(t);
+  const { root } = fx;
+  git(root, "branch", "-M", "main");
+  git(root, "config", "core.autocrlf", "false"); // 브랜치를 오가며 파일이 CRLF로 바뀌면 정본 직렬화 검사가 다른 이유로 실패한다
+  assert.equal(run(root, "--write").status, 0);
+  const file = path.join(root, REBINDS_PATH);
+  const read = () => JSON.parse(fs.readFileSync(file, "utf8"));
+  const save = (doc) => fs.writeFileSync(file, canonicalRebinds(doc));
+  const commit = (message) => { git(root, "add", "-A"); git(root, "commit", "-q", "-m", message); };
+  save({ ...read(), revisionsNote: "n", revisions: [revision("uid2", "3"), revision("uid3", "7")] });
+  commit("branch point: two revisions recorded");
+  const branchPoint = git(root, "rev-parse", "HEAD").trim();
+  // main이 분기 이후 revision을 뒤에 추가한다.
+  save({ ...read(), revisions: [...read().revisions, revision("uid1", "4")] });
+  commit("main appends a revision");
+  git(root, "checkout", "-q", "-b", "pr", branchPoint);
+  const check = () => run(root, "--check", "--against", "main", "--merge-base");
+  const appendOnlyViolation = () => { const r = check(); return r.status === 1 && r.json().errors.some((e) => e.includes("append-only")); };
+  return { ...fx, read, save, commit, check, appendOnlyViolation, file };
+}
+
+test("merge-base check: an old-branch PR that did not touch the file passes even after the base branch appended records", (t) => {
+  const { root, commit, check } = mergeBaseFixture(t);
+  fs.writeFileSync(path.join(root, "unrelated.txt"), "x\n"); commit("unrelated change");
+  const result = check();
+  assert.equal(result.status, 0, result.out);
+  assert.equal(run(root, "--check", "--against", "main").status, 1, "the plain latest-base comparison is the false failure this fixes");
+});
+
+test("merge-base check: appending after the existing records passes; editing, deleting or inserting in the middle fails", (t) => {
+  const { read, save, check, appendOnlyViolation } = mergeBaseFixture(t);
+  const [first, second] = read().revisions;
+  save({ ...read(), revisions: [first, second, revision("uid1", "5")] });
+  assert.equal(check().status, 0, check().out);
+  save({ ...read(), revisions: [{ ...first, prs: ["#9"] }, second] });
+  assert.ok(appendOnlyViolation(), "modify an existing revision");
+  save({ ...read(), revisions: [second] });
+  assert.ok(appendOnlyViolation(), "delete the first revision");
+  save({ ...read(), revisions: [first] });
+  assert.ok(appendOnlyViolation(), "delete the last revision");
+  save({ ...read(), revisions: [first, revision("uid1", "6"), second] });
+  assert.ok(appendOnlyViolation(), "insert between existing revisions");
+  save({ ...read(), revisions: [revision("uid1", "6"), first, second] });
+  assert.ok(appendOnlyViolation(), "insert before the existing revisions");
+});
+
+test("merge-base check: changing the frozen entries fails; main itself and an unresolvable merge-base are explicit", (t) => {
+  const { root, read, save, check, file } = mergeBaseFixture(t);
+  const original = fs.readFileSync(file, "utf8");
+  save({ ...read(), entries: read().entries.slice(1) });
+  assert.ok(check().json().errors.some((e) => e.startsWith("frozen file differs")), "removing a frozen entry");
+  fs.writeFileSync(file, original);
+  assert.equal(check().status, 0, "untouched file");
+  git(root, "checkout", "-q", "main");
+  assert.equal(run(root, "--check", "--against", "main", "--merge-base").status, 0, "HEAD == base is trivially equal");
+  const missing = run(root, "--check", "--against", "no-such-branch", "--merge-base");
+  assert.equal(missing.status, 1);
+  assert.ok(missing.json().errors.some((e) => e.startsWith("BASE_UNAVAILABLE:")), "an unresolvable base is flagged, never a silent pass");
 });

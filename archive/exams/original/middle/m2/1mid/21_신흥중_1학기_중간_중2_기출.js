@@ -733,7 +733,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_신흥중_1학기_중간_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 송이 수, 세로축이 비용인 좌표평면에 원점을 지나는 가파른 직선과 위쪽에서 시작하는 완만한 직선이 있고 두 직선이 만나는 점 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "그림에서 파란 직선은 동네 상점, 주황 직선은 도매 상점이며 세로축은 천 원 단위이다(800x원 = 0.8x천 원). 장미꽃 x송이의 값은 동네 상점이 800x원, 도매 상점이 교통비를 더해 500x+2000원이다. 두 직선은 점 P에서 만나며 그 x좌표가 20/3(약 6.67)이다. x가 20/3보다 크면 도매 상점의 직선이 아래로 내려와 더 싸다. 300x>2000에서 x>20/3이므로 7송이 이상이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

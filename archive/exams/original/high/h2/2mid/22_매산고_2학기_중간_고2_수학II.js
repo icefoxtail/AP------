@@ -64,7 +64,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q02"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q02",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 1인 직선 위에 x=3인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=3에서 분모가 0이므로 분자도 0이어야 하고 9+3p-6=0에서 p=-1이다. 그러면 x≠3에서 f(x)=(x-3)(x+2)/(x-3)=x+2이므로 그래프는 직선 y=x+2이고 극한은 5이다. x=3의 함숫값 q가 이 극한과 같아야 연속이므로 점 P(3,5)가 직선 위에 있고 q=5이다. q-p=6이므로 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -130,7 +135,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q04"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q04",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점의 열린 점에서 끝나는 왼쪽 직선, 높이 1의 수평선 조각, x=1에서 열린 점으로 시작해 x=2의 닫힌 점 P를 지나는 오른쪽 직선으로 이루어진 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x→0-에서 왼쪽 직선이 열린 점 (0,0)으로 다가가므로 좌극한은 0이고, x→1+에서 오른쪽 선분이 열린 점 (1,0)에서 시작하므로 우극한은 0이다. x=2에서는 높이 1의 닫힌 점 P가 함숫값이므로 f(2)=1이다. 따라서 합은 0+0+1=1이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 5,
@@ -162,7 +171,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q05"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q05",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 가로축을 두 점 A, B에서 지나고 꼭짓점 V에서 가로축과 평행한 직선 m이 접하는 그래프이다.",
+    "solutionImageCaption": "f(x)=x²-4x+3이고 구간 [1,k]의 양 끝점을 잇는 할선의 기울기는 k-3이다. c=2에서 f′(2)=0이므로 k-3=0, k=3이다. 그림은 k=3일 때로 A(1,0), B(3,0)을 잇는 할선은 x축이고, 꼭짓점 V(2,-1)에서의 접선 m이 이 할선과 평행(수평)하다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -468,7 +481,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q14"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q14",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 점 P에서의 접선 l과 P에서 l에 수직인 직선 n이 그려져 있고, l이 y축과 만나는 점 Q, n이 x축과 만나는 점 R, 이 세 점을 잇는 삼각형 PQR이 표시된 그래프이다.",
+    "solutionImageCaption": "예: t=1일 때를 그린다. P(1,1)에서의 접선 l은 y=2x-1이고 y축과 만나는 점은 Q(0,-1)이다. P를 지나 l에 수직인 직선 n은 기울기가 -1/2이고 x축과 만나는 점은 R(3,0)이다. 일반적으로 Q=(0,-t²), R=(t+2t³,0)이고 삼각형 PQR의 넓이는 S(t)=(t³+4t⁵)/2이다. 따라서 S(t)/(3t⁵+1)은 t→∞에서 (4/2)/3=2/3이고 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 15,
@@ -646,7 +664,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "uid": "22_매산고_2학기_중간_고2_수학II:q20"
+    "uid": "22_매산고_2학기_중간_고2_수학II:q20",
+    "solutionImage": "assets/images/22_매산고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 조각과 직선 조각이 점 P에서 부드럽게 이어진 오른쪽 위로 가파르게 오르는 그래프이다.",
+    "solutionImageCaption": "x=1에서 연속이려면 1+a+b=b+4에서 a=3이다. 왼쪽 미분계수 3+a=6과 오른쪽 미분계수 b가 같아야 하므로 b=6이다. 그림은 x³+3x+6 (x<1)과 6x+4 (x≥1)이 P(1,10)에서 값과 기울기(둘 다 6)가 같게 이어지는 모습이다. ab=18이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 21,

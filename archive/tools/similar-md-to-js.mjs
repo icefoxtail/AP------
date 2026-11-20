@@ -394,7 +394,6 @@ export function convertSimilarExam({
     const qItem = {
       id: qid,
       category,
-      originalCategory: category,
       standardCourse: meta.standardCourse ?? '',
       curriculum,
       curriculumKey: meta.curriculumKey ?? curriculum,
@@ -459,12 +458,9 @@ export function convertSimilarExam({
       sourceQid: qItem.sourceQid,
       before: null,
       after,
-      primaryMethod: meta.primaryMethod ?? '',
-      decisiveStep: meta.decisiveStep ?? '',
       difficultyConfidence: after.difficultyConfidence,
       difficultyBoundaryFlag: after.difficultyBoundaryFlag,
       difficultyReason: meta.difficultyReason ?? '',
-      ptTplCandidate: meta.ptTplCandidate ?? { problemTypeKey: candPt || null, templateKey: candTpl || null },
       hold: meta.hold ?? '',
       reason: meta.hold
         ? `HOLD: ${meta.hold}`

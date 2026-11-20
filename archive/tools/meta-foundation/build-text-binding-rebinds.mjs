@@ -12,7 +12,7 @@
 // 사용:
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs                 # 예행: 건수만 보고
 //   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --write         # 파일이 없을 때만 만든다
-//   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --check [--against origin/main] [--verify-history [--sample N]]
+//   node archive/tools/meta-foundation/build-text-binding-rebinds.mjs --check [--against origin/main [--merge-base]] [--verify-history [--sample N]]
 //   옵션: --root <repo>  --report-pending  --explain [N]
 //
 // 승인된 교정 재결속(revisions): 위 `entries`는 "발문·보기가 같다"만 담고 동결이다. 승인된 교정 커밋·PR이 발문·보기를 정식으로 고친 행은
@@ -301,7 +301,7 @@ function writeRevisions(root, existing, added) {
 }
 
 // ---- 검증 ---------------------------------------------------------------------------------------------------------
-export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
+export function checkRebinds(root, { against, mergeBase, verifyHistory, sample } = {}) {
   const errors = [];
   const doc = readExisting(root, REBINDS_PATH);
   if (!doc) return { errors: ["missing " + REBINDS_PATH], entries: 0 };
@@ -338,8 +338,15 @@ export function checkRebinds(root, { against, verifyHistory, sample } = {}) {
   }
   if (serialize(doc) !== fs.readFileSync(path.join(root, REBINDS_PATH), "utf8")) errors.push("file is not in canonical serialization");
   if (against) {
-    let base = null, baseResolves = true;
-    try { git(root, ["rev-parse", "--verify", "--quiet", against + "^{commit}"]); } catch { baseResolves = false; }
+    // mergeBase: 기준을 ref의 최신이 아니라 HEAD와 ref의 merge-base 시점 파일로 삼는다. 이유: ref가 이 PR 분기 이후 재결속 기록을 늘렸다고
+    // 그 전에 갈라진 PR이 "기존 항목이 다르다"로 빨개지면 안 된다. 이 PR이 고친 부분(기존 항목 수정·삭제·중간 삽입)만 아래 검사가 잡는다.
+    // merge-base를 못 구하면(얕은 체크아웃 등) 조용히 통과하지 않고 BASE_UNAVAILABLE로 표시한다. HEAD가 ref와 같으면(main) 자명하게 같다.
+    let mergeBaseFailed = false;
+    if (mergeBase) {
+      try { const found = git(root, ["merge-base", "HEAD", against]).trim(); if (/^[0-9a-f]{40}$/.test(found)) against = found; else mergeBaseFailed = true; } catch { mergeBaseFailed = true; }
+    }
+    let base = null, baseResolves = !mergeBaseFailed;
+    if (baseResolves) try { git(root, ["rev-parse", "--verify", "--quiet", against + "^{commit}"]); } catch { baseResolves = false; }
     // 기준 ref를 못 풀면(얕은 체크아웃 등) 통과로 치지 않고 따로 표시한다: 호출자는 이를 "건너뜀"과 "실패"로 구분해 보여 줘야 한다.
     if (!baseResolves) errors.push("BASE_UNAVAILABLE:" + against);
     else {
@@ -434,7 +441,7 @@ export async function main(argv) {
   const root = args.has("--root") ? path.resolve(args.get("--root")) : DEFAULT_ROOT;
   if (args.has("--check")) {
     const sample = args.has("--sample") ? Number(args.get("--sample")) : undefined;
-    const result = checkRebinds(root, { against: args.get("--against") || undefined, verifyHistory: args.has("--verify-history"), sample });
+    const result = checkRebinds(root, { against: args.get("--against") || undefined, mergeBase: args.has("--merge-base"), verifyHistory: args.has("--verify-history"), sample });
     console.log(JSON.stringify({ check: result.errors.length ? "FAIL" : "PASS", entries: result.entries, revisions: result.revisions, verifiedAgainstHistory: result.verified, supersededRevisions: result.superseded, errors: result.errors.slice(0, 20) }, null, 2));
     process.exitCode = result.errors.length ? 1 : 0;
     return;

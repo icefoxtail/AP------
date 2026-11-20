@@ -334,7 +334,12 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽으로 열린 포물선과 그 바깥의 점 P가 있고, P를 지나는 두 접선이 포물선의 위아래 접점 T, S에서 닿는다. 세 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "포물선 y²=−4x에서 p=−1이므로 기울기 m인 접선은 y=mx−1/m이다. 점 P(3, 2)를 지나므로 2=3m−1/m, 즉 3m²−2m−1=0이다. 두 접선은 접점 S(−1, −2)에서 기울기 1, 접점 T(−9, 6)에서 기울기 −1/3이고 기울기의 곱은 −1/3이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -507,7 +512,12 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선 l이 있다. 점 P에서의 접선이 x축과 만나는 점 Q, P에서 준선에 내린 수선의 발 H로 만든 사각형 HQFP가 색칠되어 있고 네 변의 길이 10이 표시되어 있다.",
+    "solutionImageCaption": "y²=8x에서 초점은 F(2, 0), 준선은 l: x=−2이다. 점 P(8, 8)에서의 접선 y=x/2+4가 x축과 만나는 점은 Q(−8, 0)이고, P에서 준선에 내린 수선의 발은 H(−2, 8)이다. HQ=QF=FP=PH=10이므로 사각형 HQFP의 둘레는 40이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -617,7 +627,12 @@ window.questionBank = [
     "subUnitKey": "H22-GE-05-VECTOR_BASIC",
     "subUnit": "벡터의 뜻과 연산",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 크기가 같은 세 원 C1, C3, C4가 있고 O1에서 O3, O4로 향하는 두 선분이 각각 중점 A, B에서 두 등분되어 있다. 각 절반의 길이가 문자 a, b로 표시되어 있다.",
+    "solutionImageCaption": "반지름이 같은 두 원이 한 점에서 만나면 그 점은 두 중심을 잇는 선분의 중점이다. A는 O₁O₃의 중점, B는 O₁O₄의 중점이므로 벡터 O₁O₃=2a, O₁O₄=2b이다(그림은 C₁, C₃, C₄만 그린 한 예이고 C₂는 합에서 소거된다). O₂O₁+O₄O₂=O₄O₁=−2b, −O₃B=BO₃=−b+2a, −O₃A=AO₃=a이다. 모두 더하면 3a−3b이므로 m=3, n=−3이고 m−n=6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 20,
@@ -645,6 +660,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_2학기_중간_고2_기하/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 원 위에 y좌표가 1인 점 P1, P2와 y좌표가 −1인 점 P3, P4가 있고 두 쌍이 각각 점선으로 이어져 있다. 위쪽 호와 아래쪽 호가 강조되어 있고 중심각 120°와 호의 길이가 표시되어 있다.",
+    "solutionImageCaption": "원 x²+y²=4 위의 점 P(a, b)에서 두 접선의 기울기의 곱은 −(b²+1)/b²이고 이 값이 −2 이상이면 b²≥1, 즉 1≤|b|≤2이다. 원 위에서 y좌표의 절댓값이 1 이상인 부분은 위쪽 호 P1P2(30°에서 150°)와 아래쪽 호 P3P4(210°에서 330°)이고 중심각은 각각 120°이다. 두 호의 길이는 각각 4π/3이고 합은 8π/3이다. 따라서 p=3, q=8이고 q−p=5이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   }
 ];

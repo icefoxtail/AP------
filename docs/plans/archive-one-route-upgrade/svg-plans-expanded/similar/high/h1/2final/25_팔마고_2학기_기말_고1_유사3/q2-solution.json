@@ -1,0 +1,102 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "a",
+    "elements": [
+     "2"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "1단계",
+    "elements": [
+     "5",
+     "3"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "2단계",
+    "elements": [
+     "5",
+     "4"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   }
+  ],
+  "highlightPaths": [
+   {
+    "path": [
+     "2",
+     "5",
+     "5"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "path": [
+     "2",
+     "3",
+     "4"
+    ],
+    "color": "VIOLET"
+   }
+  ]
+ },
+ "caption": "g의 대응도에서 함숫값이 4인 원소는 3뿐이므로 f(a)=3이고, f의 대응도에서 함숫값이 3인 원소는 2뿐이므로 a=2이다. 그림의 보라 경로는 2 -f→ 3 -g→ 4로 (g∘f)(2)=4를 나타내고, 초록 경로는 2 -g→ 5 -f→ 5로 (f∘g)(2)=f(g(2))=f(5)=5를 나타낸다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "a=2에 g, f를 차례로 적용한다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "a=2에서 g(2)=5, f(5)=5로 이어지는 경로(초록)를 보인다."
+ ]
+}

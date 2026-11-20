@@ -200,7 +200,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 완만하게 오르는 곡선이 x=1에서 빈 점을 갖고, 그 빈 자리의 높이에 닫힌 점이 따로 찍혀 있는 그래프이다.",
+    "solutionImageCaption": "예: x≠1에서의 곡선은 유리화한 √(3x+1)+√(x+3)에 가깝게 그린 예시 곡선이다. x→1에서 이 값이 2+2=4로 가까워지므로 곡선이 높이 4의 열린 점으로 향한다. x=1에서 f(1)=a인 닫힌 점이 그 빈 자리와 같은 높이에 있어야 연속이므로 a=4이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 5,
@@ -302,7 +307,12 @@ window.questionBank = [
     "conditionKeys": [
       "COND_INTEGER"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래의 열린 점에서 시작해 오른쪽 위의 열린 점까지 계속 오르는 곡선 그래프이다.",
+    "solutionImageCaption": "근을 x라 하면 a=4x-x²이다. 그림은 열린구간 (-2,1)에서의 h(x)=4x-x²이고 도함수 4-2x>0이라 이 구간에서 계속 증가한다. 양 끝은 열린 점 (-2,-12), (1,3)이라 높이 -12와 3은 가지 않는다. 수평선 y=a가 곡선과 한 번 만나려면 -12<a<3이고 정수 a는 -11부터 2까지 14개이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -506,7 +516,11 @@ window.questionBank = [
       "CC_ROOT_INTERSECTION_COUNT_FUNCTION"
     ],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽과 오른쪽에 높이 2의 수평선이 있고 가운데 구간에는 가로축 위의 수평선이 있으며, 두 경계 a=-2, 1에는 중간 높이의 닫힌 점이 하나씩 있는 계단 모양의 그래프이다.",
+    "solutionImageCaption": "가로축이 a, 세로축이 실근의 개수 f(a)이다. 판별식 D=4(a+2)(a-1)이므로 a<-2 또는 a>1이면 f(a)=2, a=-2, 1이면 D=0이라 f(a)=1(닫힌 점), -2<a<1이면 f(a)=0이다. a=0 근방은 모두 0이라 ㄱ은 참이다. 좌우극한이 다른 점은 a=-2(2와 0), a=1(0과 2)의 2개라 ㄴ도 참이다. 극한과 함숫값이 다른 점도 이 두 곳뿐이라 ㄷ(3개)은 거짓이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -704,7 +718,11 @@ window.questionBank = [
     "sourceProvenance": "MASTER_INBOX_SOURCE_PACKET",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 번 올랐다 내려갔다 다시 오르는 삼차곡선과 서로 평행한 두 직선이 있고, 두 직선이 곡선의 점 P와 점 Q에서 각각 접하는 그래프이다.",
+    "solutionImageCaption": "y′=3x²=3에서 접점의 x좌표는 -1, 1이다. 접점 P(-1,0)에서의 접선은 l1: y=3x+3, 접점 Q(1,2)에서의 접선은 l2: y=3x-1이고 두 직선은 기울기가 같아 평행하다. 두 평행선 3x-y+3=0, 3x-y-1=0 사이의 거리는 |3-(-1)|/√10=4/√10=2√10/5이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -756,7 +774,11 @@ window.questionBank = [
     "sourceProvenance": "MASTER_INBOX_SOURCE_PACKET",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 점 A에서 올라 정점에 이른 뒤 내려가고 다시 올라 오른쪽 끝 점 B에 이르는 곡선과 A, B를 잇는 할선, 그리고 할선과 평행하게 곡선의 점 S와 점 T에 접하는 두 직선이 있는 그래프이다.",
+    "solutionImageCaption": "예: 양 끝점이 A(-2,-2), B(2,2)이고 한 번 올랐다 내려갔다 다시 오르는 곡선을 그렸다. 할선 AB의 기울기는 양수이고, 이 직선과 평행한 접선은 첫 극대점 앞의 상승 구간 접점 S와 마지막 극소점 뒤의 상승 구간 접점 T에서 생긴다. 중간 하강 구간에서는 접선의 기울기가 음수라 평행하지 않다. 따라서 c는 2개이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -959,7 +981,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선이 올랐다가 내려가며, 점 T에서만 오르는 직선과 접하고 나머지 구간에서는 직선보다 아래에 있는 그래프이다.",
+    "solutionImageCaption": "예: k=1인 f(x)=x-(x-1)²=-x²+3x-1을 그렸다. 아래로 볼록하지 않은 포물선이 점 T(1,1)에서 직선 y=x와 접하고 그 밖에서는 직선 아래에 있다. 그래서 f(a)/a=1은 a=1일 때만 성립하고 ㄱ은 거짓이다. a>1이면 접점 뒤에서 기울기가 1보다 작아져 f′(a)<1이므로 ㄴ도 거짓이다. f(a)-af′(a)=k(a²-1)<0이면 0<a<1이라 ㄷ은 참이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1007,7 +1033,11 @@ window.questionBank = [
     "conditionKeys": [
       "COND_PIECEWISE_DOMAIN_PARTITION"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오르는 직선이 x=0에서 열린 점으로 끝나고 원점의 닫힌 점에서 아래로 볼록한 곡선이 시작해 내려갔다 다시 오르는 그래프이다.",
+    "solutionImageCaption": "f는 x<0에서 x+1(x=0에서 열린 점 (0,1))이고 x≥0에서 x²-2x(x=0에서 닫힌 점 (0,0))이라 x=0에서 좌극한 1, 우극한 0으로 끊어진다. f의 영점은 x=-1, 0, 2이다. [1] f(x)f(x-k)가 x=k에서 연속이려면 f(k)=0이어야 하고, k=0은 제외되어 k=-1, 2이므로 a=1이다. [2] f(f(x))는 안쪽 f의 값이 0을 가로지르는 x=-1, 2와 안쪽 f가 끊어지는 x=0에서 불연속이라 b=-1+0+2=1이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-eeb2ea1160cf-cbcefe5c",
+  "requestSha256": "e2ec4619cfa68bfabdc990ee110e2c041eb965aa3601d683aa72198ac80ced55",
+  "examUid": "25_왕운중_2학기_기말_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+  "sourceBlobSha1": "3bfcf3713676cd5fa7f306e4ee3d7d5e6ba6ca6a",
+  "sourceRawSha256": "8cc691838409eecbcd38a8ee5c2e6f2869f8f122d3a66148076fcb4d75de85f5",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eeb2ea1160cf-cbcefe5c.type-ledger.json",
+        "sha256": "e0e3fa1fbe54c48082a3d382c8f60fc2fb7015ae1e180b63d8f8d22c80df4e29"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cc2a12e5f1bcb5aeda938edd3ffdfa7ebdadd0396bed0f332ee5fa620d316eda",
+      "sourceArchiveFile": "original/middle/m3/2final/25_왕운중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_M3_VARIANCE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "projection_unmaterialized"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-eeb2ea1160cf-cbcefe5c",
+        "judge": "dots",
+        "rationale": "도수가중 총합120/20으로 평균6을 구하고 도수가중 편차제곱합112를20으로 나누어28/5를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "d4b7dd6d297d6b4e0eb9ce1e9075d8831f7635da76d3971402db28056de2e477",
+        "judgedContentFingerprint": "530b1b0cae219484e9c6a3300bc423f98f41024ad2cc3be957cdf2d55392e160",
+        "rowBinding": "content",
+        "textBindingFingerprint": "dbd7c86519354cd5e101edeeaed4b9ee555c4c7cbdf67f8e7f14eb283a5e7aa9",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-eeb2ea1160cf-cbcefe5c.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M3_DISPERSION_FREQUENCY_TABLE",
+          "templateKey": "TPL_M3_CALCULATE_VARIANCE_FROM_FREQUENCY_TABLE",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

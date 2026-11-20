@@ -1,0 +1,207 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -8.4,
+   14.4,
+   -6.55,
+   10.55
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "1"
+    ],
+    "offset": "2",
+    "domain": [
+     "0",
+     "1"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "start"
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "-4",
+     "1"
+    ],
+    "domain": [
+     "4",
+     "5"
+    ],
+    "color": "WARM",
+    "hideLabels": [
+     "start"
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "l",
+    "kind": "LINE",
+    "coefficients": [
+     "7/2",
+     "-1/2"
+    ],
+    "domain": [
+     "1",
+     "5"
+    ],
+    "color": "GREEN",
+    "label": "x+2y-7=0"
+   },
+   {
+    "id": "pq",
+    "kind": "LINE",
+    "coefficients": [
+     "2",
+     "-1/2"
+    ],
+    "domain": [
+     "0",
+     "4"
+    ],
+    "style": "DASHED",
+    "color": "VIOLET",
+    "hideLabel": true
+   }
+  ],
+  "regions": [
+   {
+    "id": "S1",
+    "between": [
+     "f",
+     "axis"
+    ],
+    "from": "0",
+    "to": "1",
+    "fill": "MEDIUM"
+   },
+   {
+    "id": "S2",
+    "between": [
+     "l",
+     "axis"
+    ],
+    "from": "1",
+    "to": "4",
+    "fill": "MEDIUM"
+   },
+   {
+    "id": "S3",
+    "between": [
+     "l",
+     "g"
+    ],
+    "from": "4",
+    "to": "5",
+    "fill": "MEDIUM"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1",
+     "y": "3",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "5",
+     "y": "1",
+     "coordinates": true
+    },
+    {
+     "id": "P",
+     "x": "0",
+     "y": "2"
+    },
+    {
+     "id": "Q",
+     "x": "4",
+     "y": "0"
+    },
+    {
+     "id": "M",
+     "x": "2",
+     "y": "1",
+     "unnamed": true
+    },
+    {
+     "id": "F0",
+     "x": "1/4",
+     "y": "5/2",
+     "unnamed": true
+    },
+    {
+     "id": "G0",
+     "x": "17/4",
+     "y": "1/2",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cP",
+     "point": "P",
+     "text": "(0,2)",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "cQ",
+     "point": "Q",
+     "text": "(4,0)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "cM",
+     "point": "M",
+     "text": "PQ",
+     "labelKind": "MATH",
+     "direction": "SW"
+    },
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=√x+2",
+     "labelKind": "MATH",
+     "direction": "SW"
+    },
+    {
+     "id": "cg",
+     "point": "G0",
+     "text": "y=√(x-4)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "두 곡선의 시작점을 P(0,2), Q(4,0)이라 하자. 곡선 PA를 x축 방향으로 4, y축 방향으로 −2만큼 평행이동하면 곡선 QB와 겹치므로, 두 곡선 사이의 부분은 평행사변형 PABQ와 넓이가 같다. 가로 5, 세로 3인 직사각형에서 네 모서리의 직각삼각형을 빼면 PABQ=15−1−8=6이다. 여기에 점선 PQ 아래의 직각삼각형 POQ의 넓이 4를 더하면 구하는 넓이는 10이고 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "점선 PQ로 영역을 평행사변형 PABQ와 삼각형 POQ로 나누어 보인다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "시작점 P, Q를 잇는 점선 PQ로 영역이 평행사변형 PABQ와 삼각형 POQ로 나뉨을 보인다."
+ ],
+ "accessibilityDescription": "두 무리함수 곡선과 직선, 좌표축으로 둘러싸인 영역이 색칠되어 있고 두 시작점 P, Q를 잇는 점선이 영역을 둘로 나눈다."
+}

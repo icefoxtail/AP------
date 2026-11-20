@@ -61,7 +61,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 이어지는 직선 조각과 아래로 볼록한 포물선 조각으로 된 함수의 그래프이며 이어지는 점 P와 포물선의 꼭짓점 V가 표시되어 있다.",
+    "solutionImageCaption": "x→1에서 극한이 존재하려면 좌극한과 우극한이 같아야 한다. 우극한은 1-4+5=2이고 좌극한은 -3+k이므로 k=5이다. 그림은 k=5일 때 직선 y=-3x+5와 포물선 y=x²-4x+5가 P(1,2)에서 이어지는 모습이며 포물선의 꼭짓점은 V(2,1)이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -151,9 +155,9 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "곡선 밖의 점에서 그은 접선은 접점을 미지수로 놓고 그 점을 지난다는 조건으로 찾는다.\n$y=x^3-x+2$에서 $y'=3x^2-1$이므로 접점 $(t,\\,t^3-t+2)$에서의 접선의 기울기는 $3t^2-1$이다.\n\n접선의 $y$절편을 $t$로 나타낸 뒤 점 $(0,4)$를 지난다는 조건을 쓴다.\n접선의 방정식은 $y=(3t^2-1)(x-t)+t^3-t+2$이므로 $x=0$을 대입하면 $y$절편은\n$-(3t^2-1)t+t^3-t+2=-3t^3+t+t^3-t+2=-2t^3+2$이다.\n이 접선이 점 $(0,4)$를 지나므로 $-2t^3+2=4$에서 $t^3=-1$, 즉 $t=-1$이다. 이때 $y$절편은 $-2\\times(-1)+2=4$이다.\n\n따라서 정답은 ②이다.",
-    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q5-solution.svg",
-    "solutionImageAlt": "외부점 (0,4)와 접점 t=−1, 접선 y=2x+4의 관계를 보여 주는 해설 그래프",
-    "solutionImageCaption": "접선은 외부점 (0,4)를 지나며 y절편은 4이다.",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 접점 T에서 접하는 직선, 직선 위의 점 A를 나타낸 그래프이다.",
+    "solutionImageCaption": "접점을 (t, t³-t+2)라 하면 접선의 y절편은 -2t³+2이다. 이 접선이 점 A(0,4)를 지나므로 -2t³+2=4에서 t=-1이다. 접점은 T(-1,2), 기울기는 3·1-1=2이므로 접선은 y=2x+4이고 y절편은 4이다. 그림의 직선은 T에서 곡선에 접하며 점 A를 지난다. 따라서 답은 ②이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "subUnitKey": "H15-M2-05-TANGENT",
@@ -221,7 +225,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 그래프에 극대점 P와 극소점 Q가 표시된 그림이다.",
+    "solutionImageCaption": "f′(x)=3x²-6x-9=3(x+1)(x-3)이므로 f′은 x=-1에서 양에서 음으로, x=3에서 음에서 양으로 바뀐다. 따라서 극대점은 P(-1,6), 극소점은 Q(3,-26)이고 M=6, m=-26이다. 5M+m=30-26=4이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 8,
@@ -476,7 +485,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 위의 두 점 A, B를 잇는 수평한 할선 l과 점 T에서 접하는 수평한 접선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "c=2이므로 평균변화율은 f′(2)=3·4-6·2=0이다. 따라서 f(a)=f(0)=2이고 a³-3a²=0에서 a=3이다. 그림에서 할선 l은 A(0,2)와 B(3,2)를 지나 수평이고 접선 m은 T(2,-2)에서 수평이라 서로 평행하다. 따라서 f′(3)=3·9-6·3=9이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -639,7 +652,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 x축의 두 교점 P, Q, 꼭짓점 V를 나타낸 도함수의 그래프이다.",
+    "solutionImageCaption": "f(x)=x³+Ax²+Bx+C라 하면 x=1에서 극대이므로 f′(1)=0이고 B=-3-2A이다. f′의 다른 근 r은 (1,2)에서 f′<0이어야 하므로 r≥2이고 이로부터 A≤-5이다. f(5)-f(3)=92+12A는 A=-5일 때 최대이다. 그림은 이때의 y=f′(x)=3x²-10x+7=(x-1)(3x-7)이며 P(1,0), Q(7/3,0)에서 x축과 만나 x<1에서는 f′>0으로 증가, 1<x<7/3에서는 f′<0으로 감소한다. 최댓값은 92-60=32이므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

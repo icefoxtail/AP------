@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-dc8b252dbd98-f1c46bcb",
+  "requestSha256": "9ad39d5933d014b54ca662ac9075d9d52eaaa81fdc30133d9ae71e980b041733",
+  "examUid": "19_강남여고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "4301da23bebe6279b1c1331415a95efdd0338572",
+  "sourceRawSha256": "490bbf90c31171a0bcec184f66e319118c064348fa11e1ee9141313cbffe8100",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dc8b252dbd98-f1c46bcb.type-ledger.json",
+        "sha256": "fdedcfc76560a318773e00a35147e48a9c3b2b52dcaa31fa1b07ca95859b3247"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_d96bb2b9b068c291a7cbe2adca7dddf3f93ad8fd5c4a85858630bacc221ac012",
+      "sourceArchiveFile": "original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 25,
+      "problemTypeKey": "PT_TRIANGLE_ANGLE_BISECTOR",
+      "templateKey": "TPL_TRIANGLE_ANGLE_BISECTOR_SIDE_RATIO",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-dc8b252dbd98-f1c46bcb",
+        "judge": "dots",
+        "rationale": "각이등분선정리로중심거리비2:1,내외접에서합4를얻어8/3,4/3이다. 밑변2위분점4/3과두거리조건으로O3A²=8/3을얻는다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "d4b56b7ed9d3b3b497ec23cc9dd3b8308ff1489cfba87178f1d93693f7554867",
+        "judgedContentFingerprint": "7561c9bb31dd4ca5dcd3214ffeef4a3799b291798fb524635427c10e6e3f1462",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "8b6fa65301fb5c9914f8fcdade76522886e2f3dafbba245941ff10f6a1fe233d",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-dc8b252dbd98-f1c46bcb.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 30
+}

@@ -1,0 +1,116 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -10.48,
+   9.48,
+   -9.55,
+   7.55
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "s",
+    "kind": "SQRT",
+    "radicand": [
+     "2",
+     "1"
+    ],
+    "amplitude": "-1",
+    "offset": "0",
+    "domain": [
+     "-2",
+     "2"
+    ],
+    "color": "BLUE",
+    "label": "y=-sqrt(x+2)"
+   },
+   {
+    "id": "a",
+    "kind": "LINE",
+    "coefficients": [
+     "-2",
+     "-1"
+    ],
+    "domain": [
+     "-3",
+     "1"
+    ],
+    "color": "WARM",
+    "label": "y=-x-2"
+   },
+   {
+    "id": "b",
+    "kind": "LINE",
+    "coefficients": [
+     "-9/4",
+     "-1"
+    ],
+    "domain": [
+     "-3",
+     "1"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "B",
+     "x": "-1",
+     "y": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "T",
+     "x": "-7/4",
+     "y": "-1/2",
+     "unnamed": true
+    },
+    {
+     "id": "cb",
+     "x": "1",
+     "y": "-13/4",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cB",
+     "point": "cb",
+     "text": "y=-x-9/4",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "zB",
+     "point": "B",
+     "text": "B(-1,-1)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "zT",
+     "point": "T",
+     "text": "T(-7/4,-1/2)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "pointNames": {},
+ "caption": "t=√(x+2)로 놓으면 t²-t-(k+2)=0이 서로 다른 두 음이 아닌 실근을 가져야 한다. k=-2이면 직선 y=-x-2가 (-2,0), (-1,-1)에서 만나고, k=-9/4이면 직선이 곡선에 접하여 한 점 (-7/4,-1/2)에서 만난다. 따라서 -9/4<k≤-2이다.",
+ "sourceConditions": [
+  "y=-√(x+2)와 y=-x+k가 서로 다른 두 점에서 만나는 k의 범위"
+ ],
+ "newVisualInformation": [
+  "k=-2일 때 두 교점 (-2,0), (-1,-1)과 k=-9/4일 때 접점 (-7/4,-1/2)"
+ ]
+}

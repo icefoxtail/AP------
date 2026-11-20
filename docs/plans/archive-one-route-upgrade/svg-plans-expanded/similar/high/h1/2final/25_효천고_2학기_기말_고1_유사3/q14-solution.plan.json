@@ -1,0 +1,65 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MEMBERSHIP_TABLE",
+  "sets": [
+   {
+    "id": "A",
+    "name": "P1"
+   },
+   {
+    "id": "B",
+    "name": "P2"
+   },
+   {
+    "id": "C",
+    "name": "P3"
+   },
+   {
+    "id": "D",
+    "name": "Q"
+   }
+  ],
+  "elements": [
+   {
+    "text": "(1,2,3)",
+    "math": true,
+    "in": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   },
+   {
+    "text": "(1,-1,0)",
+    "math": true,
+    "in": [
+     "A",
+     "B",
+     "D"
+    ]
+   },
+   {
+    "text": "(1,1,2)",
+    "math": true,
+    "in": [
+     "B",
+     "C",
+     "D"
+    ]
+   },
+   {
+    "text": "(1,1,1)",
+    "math": true,
+    "in": [
+     "C"
+    ]
+   }
+  ]
+ },
+ "caption": "q는 a=b=c가 아니다와 같다. 표에서 p1이 참이면 q도 참이지만 (1,1,2)에서 q만 참이므로 N(p1)=1이다. p2는 q와 항상 같은 값이므로 N(p2)=2이고, p3은 (1,−1,0)에서 q만 참, (1,1,1)에서 p3만 참이므로 N(p3)=4이다. 따라서 합은 7이고 답은 ①이다.",
+ "newVisualInformation": [
+  "(a,b,c)의 예에서 p1, p2, p3과 q의 참 거짓 비교"
+ ]
+}

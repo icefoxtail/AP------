@@ -3,7 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const assessment = fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-mvp.html'), 'utf8');
+// 시험지 열기 주소 만들기는 공용 코드(assessment-pack-core.js)로 옮겨졌다(보관함과 빠른 평가가 같이 쓴다).
+const assessment = fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-mvp.html'), 'utf8') +
+  fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-pack-core.js'), 'utf8');
 const mixedEngine = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
 const examsRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'exams.js'), 'utf8');
 // 시험 묶기·정체성 판정은 통합 작업 화면의 자료 계산(ws-exam-data.js)으로 옮겨졌다(계산식은 그대로).

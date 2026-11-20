@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-36353861b73d-f404d8fa",
+  "requestSha256": "0704feffb56dfa7c6badb63527a51f2b1005a1a02f3e1b397117dcbb9004d733",
+  "examUid": "비상_대수_삼각함수_중단원_고2_유형심화",
+  "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_중단원_고2_유형심화.js",
+  "sourceBlobSha1": "65ebde811d545f13c3ec8830ac57b766648218c0",
+  "sourceRawSha256": "769b8f0848cc9f6e419f37853c2e5d3731f36a72da8faf63e6831585c4995b7a",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-36353861b73d-f404d8fa.type-ledger.json",
+        "sha256": "38ec83ebb81a937c8b37572425bae01b19318e7158be48a18db8a139b048cb45"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_1f1776cc9a34b079c9aa356d606a3151c1660b4562bdfa2429832963c3ebb869",
+      "sourceArchiveFile": "types/high/h2/비상_대수_삼각함수_중단원_고2_유형심화.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+      "templateKey": "TPL_TANGENT_CONSTRUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-36353861b73d-f404d8fa",
+        "judge": "dots",
+        "rationale": "접점π/4에서 tanx의 도함수sec²x=2를 접선 기울기k로 둔다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "3fe1e1799533e430ff260aa7792d9f1ad955862daa8d9c63c87c50a61110db3e",
+        "judgedContentFingerprint": "72d9a519f6b00f9fa9d306d83ef72757c0f32e437096f95f2e258edc4739d7ce",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "fac188092c97a92015da4449f0285f6ec2ce893f5129b29e9bd05659d0abc3e2",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-36353861b73d-f404d8fa.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 18
+}

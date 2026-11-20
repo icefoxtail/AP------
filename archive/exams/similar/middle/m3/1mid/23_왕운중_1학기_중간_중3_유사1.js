@@ -44,10 +44,10 @@ window.questionBank = [
     "wide": false,
     "content": "$(x-2)(4x+3)$를 전개했을 때 $x$의 계수를 $M$, 상수항을 $N$이라고 하자. $M+N$의 값은? [3점]",
     "choices": [
+      "$-7$",
+      "$-8$",
       "$-9$",
       "$-10$",
-      "$-12$",
-      "$-13$",
       "$-11$"
     ],
     "answer": "⑤",
@@ -102,9 +102,9 @@ window.questionBank = [
     "choices": [
       "$\\frac{5}{4}$",
       "$\\frac{25}{4}$",
+      "$10$",
       "$\\frac{25}{2}$",
-      "10",
-      "25"
+      "$25$"
     ],
     "answer": "②",
     "solution": "1단계: 이차식 $x^2+px+q$가 완전제곱식이 되려면 상수항 $q$는 일차항 계수 $p$의 절반의 제곱, 즉 $q = (\\frac{p}{2})^2$이어야 한다.\\n2단계: $k = (-\\frac{5}{2})^2 = \\frac{25}{4}$이다.\\n따라서 정답은 ②이다.",
@@ -131,9 +131,9 @@ window.questionBank = [
     "content": "[5-6] 아래의 제곱근표를 이용하여 물음에 답하시오.\\n\\n<div class=\"question-table-wrap\"><table class=\"question-table\">\\n<tr><th>수</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>\\n<tr><td>3.2</td><td>1.789</td><td>1.792</td><td>1.794</td><td>1.797</td><td>1.800</td><td>1.803</td></tr>\\n<tr><td>3.3</td><td>1.817</td><td>1.819</td><td>1.822</td><td>1.825</td><td>1.828</td><td>1.830</td></tr>\\n<tr><td>33</td><td>5.745</td><td>5.753</td><td>5.762</td><td>5.771</td><td>5.779</td><td>5.788</td></tr>\\n</table></div>\\n\\n$\\sqrt{3.32}$의 어림한 값은? (제곱근표 이용) [3점]",
     "choices": [
       "$1.794$",
+      "$1.797$",
+      "$1.817$",
       "$1.819$",
-      "$1.825$",
-      "$5.762$",
       "$1.822$"
     ],
     "answer": "⑤",
@@ -160,10 +160,10 @@ window.questionBank = [
     "wide": false,
     "content": "$\\sqrt{0.332}$의 어림한 값은? (제곱근표 이용) [4점]",
     "choices": [
+      "$0.0576$",
       "$0.1822$",
+      "$0.5745$",
       "$0.5753$",
-      "$0.5771$",
-      "$0.5788$",
       "$0.5762$"
     ],
     "answer": "⑤",
@@ -329,9 +329,9 @@ window.questionBank = [
     "content": "다음 식을 간단히 하면? [4점]\\n\\n$$2\\sqrt{14} \\div 3\\sqrt{15} \\times \\sqrt{10}$$",
     "choices": [
       "$\\frac{4\\sqrt{21}}{9}$",
-      "$\\frac{2\\sqrt{21}}{9}$",
-      "$\\frac{4\\sqrt{7}}{9}$",
-      "$\\frac{2\\sqrt{7}}{3}$",
+      "$\\frac{2\\sqrt{21}}{3}$",
+      "$\\frac{4\\sqrt{7}}{3}$",
+      "$2\\sqrt{7}$",
       "$\\frac{4\\sqrt{21}}{3}$"
     ],
     "answer": "①",

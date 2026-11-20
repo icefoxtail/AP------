@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-8c9a828dfae9-d58cdd2e",
+  "requestSha256": "2afc9c72be836ab89b037b4f256ceb7b7891f68ef8d94a254f7eb87611a2cae7",
+  "examUid": "20_매산여고_1학기_중간_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1mid/20_매산여고_1학기_중간_고2_수학I.js",
+  "sourceBlobSha1": "741d454d06cc4531f25798a1895306a94f48bcb1",
+  "sourceRawSha256": "a4ade4e1ca8c7ef55c4231a03f4261eac2631c51f657b7c1f08f41c3d052cb8c",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8c9a828dfae9-d58cdd2e.type-ledger.json",
+        "sha256": "ccec017a608b7d32fe77ca0b3cf84f35059ca9c088f84cc1e97ac32f3ff1018e"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_bdbf7fbbc7add1359fa102c437b7d918e7134c30ec0514b2e99b0e6b117c618d",
+      "sourceArchiveFile": "original/high/h2/1mid/20_매산여고_1학기_중간_고2_수학I.js",
+      "sourceOrdinal": 22,
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "templateKey": null,
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-8c9a828dfae9-d58cdd2e",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "진수 조건 x>-1을 확인하며 로그방정식 f(3x+6)=2f(x)를 푼다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "request"
+        },
+        "judgedSourceFingerprint": "14527bfa8c044617c141e2ddee127c7d4159f51da2a5b73781b86df9c5d5f667",
+        "judgedContentFingerprint": "a0d59eb7b8d16339ca9ed8bd19e870cdbea7b19bd83576c95ef23c9afd711d16",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "6f2ecc384eb8bb43aee720613e36e861602b021f4305a1b3ea7fdebd99b22799",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-8c9a828dfae9-d58cdd2e.json",
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

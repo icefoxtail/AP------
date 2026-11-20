@@ -1,0 +1,112 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "a",
+    "elements": [
+     "3",
+     "5"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "g(a)",
+    "elements": [
+     "2",
+     "3"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "f(g(a))",
+    "elements": [
+     "5",
+     "1"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   }
+  ],
+  "arrowGroups": [
+   {
+    "name": "g",
+    "from": "X",
+    "to": "Y",
+    "color": "BLUE"
+   },
+   {
+    "name": "f",
+    "from": "Y",
+    "to": "Z",
+    "color": "WARM"
+   }
+  ],
+  "highlightPaths": [
+   {
+    "path": [
+     "3",
+     "2",
+     "5"
+    ],
+    "startColumn": 0,
+    "color": "GREEN"
+   }
+  ]
+ },
+ "caption": "(f∘g)(a)=f(g(a))=5이다. f의 대응도에서 함숫값이 5인 원소는 2뿐이므로 g(a)=2이다. g의 대응도에서 함숫값이 2인 원소는 3뿐이므로 a=3이다. 그림은 이 풀이에 쓰이는 원소만 골라 초록색 경로 3→2→5로 나타냈다. 따라서 답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "a에 g를 적용한 뒤 f를 적용한다",
+   "mappedTo": [
+    "arrows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "3→2→5 경로를 강조해 f∘g의 합성 과정을 보여 준다."
+ ]
+}

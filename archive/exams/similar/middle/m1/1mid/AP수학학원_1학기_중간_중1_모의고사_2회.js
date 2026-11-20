@@ -44,13 +44,13 @@ window.questionBank = [
     "wide": false,
     "content": "어떤 자연수를 세 번 곱했더니 125가 되었다. 이 자연수는?",
     "choices": [
+      "1",
+      "2",
       "3",
       "4",
-      "5",
-      "6",
-      "7"
+      "5"
     ],
-    "answer": "③",
+    "answer": "⑤",
     "solution": "$125=5\\times5\\times5=5^3$이므로 구하는 자연수는 5이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
@@ -240,13 +240,13 @@ window.questionBank = [
     "wide": false,
     "content": "기온이 영하 3 ℃에서 5 ℃ 올라갔다. 변한 뒤의 기온은?",
     "choices": [
+      "영상 2 ℃",
       "영하 8 ℃",
       "영하 2 ℃",
       "0 ℃",
-      "영상 2 ℃",
       "영상 8 ℃"
     ],
-    "answer": "④",
+    "answer": "①",
     "solution": "영하 3 ℃는 $-3$ ℃이므로 $-3+5=2$이다. 따라서 영상 2 ℃이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
@@ -493,12 +493,12 @@ window.questionBank = [
     "content": "어떤 수 $x$의 3배에서 5를 뺀 다음 2를 더한 식을 간단히 나타내면?",
     "choices": [
       "$3x-7$",
-      "$3x-3$",
       "$3x+7$",
       "$3(x-7)$",
+      "$3x-3$",
       "$3(x+2)$"
     ],
-    "answer": "②",
+    "answer": "④",
     "solution": "문장을 식으로 나타내면 $3x-5+2$이므로 $3x-3$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
@@ -548,13 +548,13 @@ window.questionBank = [
     "wide": false,
     "content": "$a=-2$일 때, $2(a-3)-(a+1)$의 값은?",
     "choices": [
+      "$-12$",
       "$-11$",
       "$-10$",
       "$-9$",
-      "$-8$",
-      "$-7$"
+      "$-8$"
     ],
-    "answer": "③",
+    "answer": "④",
     "solution": "$2(a-3)-(a+1)=2a-6-a-1=a-7$이다. $a=-2$를 대입하면 $-2-7=-9$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",

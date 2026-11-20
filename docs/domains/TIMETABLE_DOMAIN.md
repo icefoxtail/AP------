@@ -38,6 +38,7 @@
 - **자동 적용 대상은 새 [적용 예약] 흐름으로 예약된 개편안뿐**: 예약 PATCH가 성공하면 `timetable_version_apply_logs`에 `schedule_requested`(적용일·예약한 사람) 표식을, 취소하면 `schedule_cancelled`를 남긴다. cron은 가장 최근 표식이 `schedule_requested`이고 그 적용일이 현재 `effective_from`과 같을 때만 적용한다(예약 뒤 적용일을 바꾸면 새 날짜로 표식을 다시 남김). 이유: 운영 DB에 예전 API로 `scheduled`가 된 채 남은 옛 개편안이 있으면 배포 후 첫 cron이 원장 모르게 적용하기 때문이다. 표식 없는 `scheduled`는 건너뛰고, 화면에는 draft와 같이 "적용 예정일이 지났습니다" 띠로 안내한다(응답의 `auto_apply_armed`).
 - **적용 차단**: `activate`는 적용 직전에 같은 비교를 다시 해서 신입 누락·퇴원생 포함·반 이동 미반영이 있으면 409 `roster_mismatch`와 차이 내용을 돌려주고 적용하지 않는다(안전장치).
 - **적용 시 삭제한 반**: `removed` 반의 원래 운영 반도 `is_active=0`, `class_students`·`teacher_classes` 삭제 대상에 넣는다. 안 넣으면 삭제한 반이 운영에 그대로 남는다. 졸업(중3) `excluded` 반은 기존대로 운영에 그대로 둔다(개편안에도 없고 적용 때 닫지도 않음).
+- **적용 시 졸업 반** (사용자 결정 2026-11-19): 졸업 대상(`status='excluded'`, `excluded_reason='middle_school_graduation'`) 반은 개편안에 반이 없으므로, 적용하면 원래 운영 반도 `removed` 반과 같은 방식으로 닫는다. 학생의 재원 상태는 건드리지 않고, 적용 확인 창에 닫히는 반을 담당 교사와 함께 보여 준다. 이유: 안 닫으면 새학기 시간표에 지난 학년 중3 반이 학생과 함께 그대로 남는다.
 - **새로 만들기**: `POST timetable-versions/{id}/restart`는 대상 초안을 `cancelled`로 바꾸고 같은 학년도·적용일·제목의 새 초안을 현재 운영 데이터에서 만든다. 반의 요일·시간은 직전 버전 슬롯이 아니라 현재 운영 `class_time_slots`에서, 학생은 퇴원·제적을 뺀 현재 `class_students`에서 복사한다(`create-next-draft`도 같음).
 - 한 학생이 운영에서 두 반 이상 들으면 개편안에는 한 반만 저장된다. 화면 상단에 "두 반 수강 n명" 안내만 띄운다.
 

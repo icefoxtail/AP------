@@ -258,7 +258,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 그래프에 극대점 M과 극소점 N이 표시되어 있고 두 점의 좌표가 쓰여 있다.",
+    "solutionImageCaption": "f′(x)=3(x+1)(x-3)이므로 a=-3, b=-9이고 f(3)=-23에서 c=4이다. 그림은 f(x)=x³-3x²-9x+4의 그래프로 x=-1에서 극대인 점 M(-1,9), x=3에서 극소인 점 N(3,-23)이 있다. 따라서 극댓값은 9이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -376,7 +381,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_조대부고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 직선 조각과 위로 볼록한 포물선 조각이 주기 5로 두 번 반복되며 모두 이어진 그래프이며 꺾임점과 이음점 A, B, C, D, E 및 점 P, Q가 표시되어 있다.",
+    "solutionImageCaption": "x=3에서 연속이므로 b=5이고 주기 5로 x=0과 x=5가 이어져야 하므로 f(5)=4a+5=f(0)=2에서 a=-3/4이다. 그림은 [0,5]의 한 주기와 그 반복(주기 5)이며 점 A, C, E의 높이가 모두 2로 이어진다. f(14)=f(4)=17/4(점 Q), f(12)=f(2)=4(점 P)이므로 차는 1/4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

@@ -1,0 +1,942 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-f97b04216691-013761f1",
+  "requestSha256": "2c50185a23e4ab910b242230975e54d092e3858b63082a4e3bd6f301fc577268",
+  "examUid": "26_금당고_2학기_중간_고2_미적분I",
+  "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+  "sourceBlobSha1": "d1977ff46ab82344af4555c0eb170d9b69350cda",
+  "sourceRawSha256": "307708da6e53dd3891f63dcd6bab52787314eaf471b953ec4ec8cada91734380",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.type-ledger.json",
+        "sha256": "4f8834402171c705f3ddcb9d7178e7a24fb1bb8cc0f309b591d6ebebbaedb9c6"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 20,
+  "registryChanges": [],
+  "typeApprovals": 20,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 20,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6651f42712980a1501563cf1e96d902b0f6758d9d079b8c6acf10e1586b11fce",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 1,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_INFINITY_LEADING_TERM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "분자분모의 최고차항 계수비로 무한대극한을 구한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "e41bba49cf9c951c0ab365e9d11563f2e2f9941e298b00e6172f99d711b5a4bc",
+        "judgedContentFingerprint": "5e08a2878d7056467b548506943dcefc6b2eb849af03441850824c2053ddf855",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "8c121d763dc5ac9f3cabf2ddeed1c890f361b5f47a7e5614bc18d81bdf3f7a11",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_6845413623d1ae5abf5497d1f7a613b00ee19f3bd71ff561fe93a2db2ad2ebc1",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 2,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_RATIONALIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "근호 분자를 유리화하여 소거한 뒤 대입한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "b00e103c2bce77446e902f1d1db59c8ffbd63f076e229ec29c42691ff3538129",
+        "judgedContentFingerprint": "606267cc5fc83ff1785f68f87f0bef8de7bd57f2027196b2b3287b2bdcba3981",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "7b82619e9375d28a205263d1e8fab7781e18fac3230ebff46984d0e9ef07a326",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_095831bd2508f54a5485b2c4642983dc7af923036757bf85ffe506ffab17d007",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 3,
+      "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+      "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "분모가 0인 입력을 제외하여 정의역을 구간으로 나타낸다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학2",
+          "curriculumSource": "row",
+          "rowCourse": "미적분I",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "40cb59666f12ab6658678e8009cc6cf2e07525911bb25920e23dfbfa72b2ff26",
+        "judgedContentFingerprint": "65ef86db2f227219d31161e0d4a62ca23d9812c944dec27de4f6ef50e494581d",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "5a90c5cccd10ecdee8337b6da1b2f2336bd43da3ed9277a14527285d14b66f90",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_23e1e6e923fc432d51aacc87dc34bff83d8d948b3cb7de12dc02ae0b40159752",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "주어진 구간에서 감소함을 이용해 양 끝점의 최대최소를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "row",
+          "rowCourse": "미적분I",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "d52e645dd4ad346c6222c0197b4a0eda9163c18d85369b8ae3be366fde72a634",
+        "judgedContentFingerprint": "1c29934c5b6d7ad90c3387c272ba2931f8010ceda584e02e3791113bcfd2fe71",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "dc38a6d85e8d627f2b83fcac6d31f863372466ca624ff22250e37119947f384f",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_ece0bba264779fcdeecadc2c42d5037ef861a3721d1d3687a3298a33e55338ef",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 5,
+      "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+      "templateKey": "TPL_CONTINUOUS_OPERATION_JUDGMENT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "다항함수 사칙연산의 연속성과 분모영점을 확인한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "2f80953201e7ac173f5e0a0475faad47db9caa8000579942c902548545ec08d3",
+        "judgedContentFingerprint": "0ac47c6bc8f1b4fa4bcb7fb1d74ea02801b193132124a652968db4224a9222c3",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "931702ea71bcd6f208f05cb13d4025d783056e2b4599b281217bc9dcc25b0911",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c0d55d6919291f32b332bb87f0acf5f597ec754b1a85b694d563dfd40f3a1cdc",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+      "templateKey": "TPL_DERIVATIVE_RULE_CALCULATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "다항식을 미분한 뒤 지정점 도함수값을 계산한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "646c49f6b72b7ca00dbe450d177352fc626d2bff88edb5e00202c1ae7f4f4f5b",
+        "judgedContentFingerprint": "5fc3343085af40fcf3779b53a926efb586b633fdffe09dcb829ac97294448951",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "e6e251c7b1870df7fbc369c8f53e1e74dd03783b1a3f66abc391f5abfa74e9e2",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_1c6021c39079a0827245b62ad2e09c2e76a01d6f65302ad915ae35e0605fd80f",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 7,
+      "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+      "templateKey": "TPL_AVERAGE_RATE_ANALYSIS",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "끝점 함수값 차를 입력차로 나누어 평균변화율을 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "row",
+          "rowCourse": "미적분I",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "b4a43b496e6aef6874f0263bb34dfb45212be3e48119b00fa66c78ec21a6e9d5",
+        "judgedContentFingerprint": "c498ccbed9bab30affb3c2784eb6e3d3d9d3fc989e06bbfcec2b9d5ca6a0f84d",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1120e774aace88b3000d709a446e249872d0239b7349022248ae4aaecb5225e5",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_2365a82e6f308cf720db27db5cf9eb86cfb532ae0fc66f8ac1c0e8dea4d7096d",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 8,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "입력증분 3h에 분모를 맞춰 미분계수로 환원한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "217b45f6f4967ee12f832803394f66f4981d5df50f2d9aa3a9886eb3dc416f6a",
+        "judgedContentFingerprint": "8d38773bc730f21bceb161fdbec62a9ccc39a2e35f768702986d35459c468252",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "0f59f6972f39b7d40530a06bb757776779a71266577f48a8e7ff478a27cbb232",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4343543c346ae6f606a3732c773421ec0b4765cc1331361ced6e969135a6348f",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 9,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_REDUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "분모를 인수분해하여 차분극한과 연속인 인자의 곱으로 만든다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "33c57a283b28c03baf007614d72b5f72641f688815a303b2bb07e2bba1a88412",
+        "judgedContentFingerprint": "601813a9b2d7625b21aa91b1f73f7ec7a151fb68450a7afae9e09851978404ff",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1dab4ae444fd3b601cabffd6da5990ded303a566aebfce76ca75bd783ad455a3",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4d85f8140c80b74a1ad7155e796b215d2307ebc12f694454526e133b3e70bb3d",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_FACTOR_CONDITION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "분자에 특이점 인수를 확보하고 약분한 극한을 주어진 함수값과 맞춘다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "c16b1c95b4c3bdea55cdd1e40f0bd6d95344aacf46339378b777d2e72abf73c5",
+        "judgedContentFingerprint": "6fd859d8812c247377e75ecd59e61c12ab03403e1fd4cc4b24fefc79d512b0ec",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "9d23b65fa5b0372655240f2c45753b1ab1273569b299f94e6a062d4a8d79e5ea",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4dd934d6e63241738399164ff687d533f2c64b9355d762ea04103bdd62fe42a0",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 11,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "중간 함수값과 두 경계의 좌우극한을 맞추어 세 계수를 정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "94bfb68211fa33891d684554f68b69665fdf07f8a000118ab1f7d6a23acc7731",
+        "judgedContentFingerprint": "f7691f501e31a15138d6cc6fb9481b5104c88aa3741cb9509531d2e4eb501cf1",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "7f66212ca03aa85dab566e9803f3cb0fc4f8717c07be721d6b2e9570010dd35d",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4973d97e11f6de07ff27e1dbfe779f75136e8ae75c882336e19b976e2ab10a4d",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_SQUEEZE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "위아래 경계함수의 극한이 같음을 이용해 f의 극한을 확정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "23781173f265beea8334896a350601d4933574f5b042e1cedbdea2fc315d8250",
+        "judgedContentFingerprint": "41bf8bb241375772de1356a0451df724974bfaa07ec5ad2bfb13bfcd4eaad216",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "75dc044081ea487b683b0ee1396d74f131f35388070dae44ba249f1cb004a78e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_4f8fb2d401502f21fa95befa71a42161250e5c1b352fcf9647090c0d19ab8558",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GRAPH_DIRECTION_READ",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "변환입력의 접근방향을 추적해 그래프의 좌극한을 읽는다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "0ad3c6494f1e8124ea7cf359f69d664d7b6048fad03361a64e7f461228d42ded",
+        "judgedContentFingerprint": "8469393c37abaad26c26ec37a5d4477399f77eded7e8d8a486afaa976cd61859",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "fd8970491bac0417d9cf39f97ad310bab4a022ebfd1534b2152935426183d5c0",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_d34ee4a09a0b9dadbd956e53e6dacb55993374556b3f4c195e6f8132a3396c4f",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 15,
+      "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+      "templateKey": "TPL_DERIVATIVE_LIMIT_INFORMATION_SYSTEM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "두 극한에서 함수값과 미분계수의 연립조건을 추출한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "51962e905cfafeb4acc4d3f9ef56c84677d78284c521803f117346264363caa9",
+        "judgedContentFingerprint": "056736e5b07ba31aa7d4307d3e494ca2ed68e3017b5eccfb4daaabeb36acaea9",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "2434c9eae1078f8a02b10de8cc6b80b82d6447b024326a3e07b9aa6241351c49",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_46bae5639a715e0930fa6039ccc74d5bf3c10f1a05f4fada920dad6226cc9d91",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+      "templateKey": "TPL_LIMIT_GEOMETRY_PARAMETERIZATION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "수직선의 두 절편으로 삼각형넓이를 매개변수식으로 바꾼 뒤 극한을 계산한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "2b8d2c9d6ff690fe4bbe8138a226c5044ff353841b1bdc5a4ddcdbc4773a6230",
+        "judgedContentFingerprint": "9078627c87476fcfde7f868c304095f0e25f4f6c2a8c572c9581366e13d7834f",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "c357159cae04a615639a13df7c8e82afb90d249dd3d092dfe0b3249b21285331",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_f285e326617c3adee0dcc63e36b1182bfba2fb6873ce98c56c30944b7984f96a",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 17,
+      "problemTypeKey": "PT_DERIVATIVE_FUNCTION_DETERMINATION",
+      "templateKey": "TPL_STRUCTURAL_FUNCTION_DETERMINE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "곱함수 연속성으로 이중근을 얻고 도함수값으로 나머지 인수를 정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "8ad9dbb498c70c3dd5ce2baeb263b7cba31e5f480ff2e4be079790da27067031",
+        "judgedContentFingerprint": "c276293f5d68790f4bce6b7c13f0d72a564c81a730680f0ab9500ee48d7ce644",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "b4d0d75526347f1cabd7e1533a01c14e4565ed4fbd5ac7f94284ae26ce0c5d91",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_5d9a7c68853e2a55b53e788add96e8f01fc376cc10b28dd5383907bc15e9e686",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 18,
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "역함수 그래프 교점의 대칭쌍 배치를 분류하고 함수계수를 정한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학II",
+          "curriculumSource": "row",
+          "rowCourse": "미적분I",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "46f620ee125b3e42b3c77194e3b362718f0792d5ea5a284828cdd05c10552716",
+        "judgedContentFingerprint": "c36473dfd1438136a639f9409a5ad1879587409f15aaba0394905d9e8f08e20e",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "bd9c357af87aca77db116ed5b1bfd84c801de4c3894eed254b9d372df80d12ea",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_7b8a770e3dff437abb2fb719b31a7276260b6a142dea433903ae455bb3875137",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 19,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_PIECEWISE_BOUNDARY_MATCH",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "조각함수 경계의 좌우극한 일치와 두 영점 조건으로 매개변수 범위를 판정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "99b33ee2111d853b7fd62596bd79f840c3a4a0485d1f6e35d884e3f82c086d0f",
+        "judgedContentFingerprint": "f3c1cdc5578b63469a7ef85b240bc52835ed857c69e2f316cadfd7e79e5745d6",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "65dcbe2552494113c98415c859424d8b26011edd19e128b93813d0cd79d4539e",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_c4e70d25c1084870947dae2dd3378f6ab1c97bf3bdb1d3d8e7a790a364357f61",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 20,
+      "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+      "templateKey": "TPL_LIMIT_POLYNOMIAL_RECONSTRUCTION",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "무한대에서 차수와 최고계수를 정하고 유한점 약분극한으로 다항식을 복원한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "cc8081ebc9ec069ff47835b4979fb5d9dc2d8b481e4b2cf443b091d4f4f6fd5a",
+        "judgedContentFingerprint": "ce697e66154d6ab86bf52a6095d9c3df80ac996dd2ca6e172691e632a31360b7",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "a512be08cbce4cdec1a5b0163ea92751715d4ed37feff27b0f3d9f25b55c03f2",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    },
+    {
+      "questionUid": "qid_v1_e49cb44e9a9b1874c579c795a9939a6dca98b5b7ac522450579f086128c9844f",
+      "sourceArchiveFile": "original/high/h2/2mid/26_금당고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_CONTINUITY_CONDITION",
+      "templateKey": "TPL_CONTINUITY_DENOMINATOR_NONZERO",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-f97b04216691-013761f1",
+        "judge": "dots",
+        "rationale": "연속성을 위해 남은 이차분모가 실근을 갖지 않도록 판별식 범위를 정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "미적분I",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "c5d80de25b2ef383f61d9855e5e03dbb5d48b6001cf2226187719aa8f0eddcfe",
+        "judgedContentFingerprint": "d16751faed82130c990bbae17dd45a53182a65dba36242d21452a9a2ee687719",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "06347857c71dd35a458204f006f72142a0a592910495e8e372ce8b1b2e2f1cc7",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-f97b04216691-013761f1.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 20,
+  "expectedQuestionCount": 21
+}

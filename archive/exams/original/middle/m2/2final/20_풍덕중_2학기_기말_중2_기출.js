@@ -95,7 +95,12 @@ window.questionBank = [
     "wide": false,
     "curriculum": "2015",
     "primaryMethod": "수직이동한 식과 점의 소속 판정",
-    "decisiveStep": "상수항을3만큼 올린 식에 각 점을 대입하여 등식성립을 확인한다."
+    "decisiveStep": "상수항을3만큼 올린 식에 각 점을 대입하여 등식성립을 확인한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 점선인 직선과 위로 평행이동한 실선 직선이 평행하게 그려져 있고 실선 위에 점 P(2,−1)과 y축과 만나는 점 Q(0,3)이 표시되어 있다.",
+    "solutionImageCaption": "y=−2x의 그래프를 y축 방향으로 3만큼 평행이동하면 함숫값에 3을 더한 y=−2x+3이다. 각 점의 좌표를 대입하면 점 (2,−1)에서 −2×2+3=−1이 되어 점 P가 이동한 직선 위에 있다. 나머지 점은 식을 만족하지 않는다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -246,7 +251,12 @@ window.questionBank = [
       "l4": "일차함수 그래프의 평행·일치"
     },
     "primaryMethod": "그래프의 기울기와 평행 계수 조건",
-    "decisiveStep": "실제 두절편의 기울기3을 k/2와 같게 놓는다."
+    "decisiveStep": "실제 두절편의 기울기3을 k/2와 같게 놓는다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 평행한 두 직선이 있고 파란 직선은 점 (0,−3)과 (1,0)을 지나며 주황 직선은 y축과 (0,−1)에서 만난다.",
+    "solutionImageCaption": "그림의 직선은 (0,−3)과 (1,0)을 지나므로 기울기가 (0−(−3))/(1−0)=3이다. y=(k/2)x−1은 기울기 k/2이고, 평행하려면 기울기가 같아야 하므로 k/2=3, 즉 k=6이다. 이때 y=3x−1이 그림의 직선과 평행하다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -300,7 +310,11 @@ window.questionBank = [
       "l4": "기울기·절편"
     },
     "primaryMethod": "한 직선의 기울기·절편·증가량 명제 비교",
-    "decisiveStep": "두절편에서 직선식을 정해 기울기,통과점,증가량과 평행 여부를 대조한다."
+    "decisiveStep": "두절편에서 직선식을 정해 기울기,통과점,증가량과 평행 여부를 대조한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 아래로 내려가는 실선 직선이 점 (0,2)와 (4,0)을 지나고 그 아래에 평행한 점선 직선이 있으며 실선 위의 점 (2,1)도 표시되어 있다.",
+    "solutionImageCaption": "그래프는 (0,2)와 (4,0)을 지나므로 기울기는 (0−2)/(4−0)=−1/2이고 x절편 4, y절편 2이다. x=2일 때 y=1이므로 (2,−1)은 그래프 위에 있지 않다. y=−x/2−2도 기울기가 −1/2이므로 그래프와 평행하다. 따라서 옳은 것은 ①, ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -506,7 +520,12 @@ window.questionBank = [
       "l4": "계수 조건으로 해의 상태 판단"
     },
     "primaryMethod": "기울기상등·절편상이로 무해 계수 결정",
-    "decisiveStep": "두식을 y형태로 정리하고 기울기는 같되 y절편은 다르게 만든다."
+    "decisiveStep": "두식을 y형태로 정리하고 기울기는 같되 y절편은 다르게 만든다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 같은 두 직선이 서로 만나지 않고 평행하게 놓여 있으며 파란 직선이 주황 직선보다 위에 있다.",
+    "solutionImageCaption": "예: b=3일 때의 그림이다. ax−y=1을 정리하면 y=ax−1, 4x−2y=2b를 정리하면 y=2x−b이다. 해가 없으려면 두 직선이 만나지 않아야 하므로 기울기는 같고 y절편은 달라야 한다. a=2이고 −1≠−b, 즉 b≠1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 11,
@@ -1094,7 +1113,12 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "중단경기의 승리경로 확률과 배분",
-    "decisiveStep": "즉시승리와 다음경기 뒤 승리경로를 합쳐 최종승률을 구하고 상금에 비례배분한다."
+    "decisiveStep": "즉시승리와 다음경기 뒤 승리경로를 합쳐 최종승률을 구하고 상금에 비례배분한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "먼저 3번 이기면 우승이므로 A가 2승 1패인 상태에서 남은 경기를 따진다. 다음 경기에서 A가 이기면 확률 1/2로 A가 우승한다. B가 이기면 2승씩 동점이 되고 마지막 경기에서 A가 이길 확률이 1/2이므로 1/2×1/2=1/4이다. A의 승리 확률은 1/2+1/4=3/4이고 B는 1/4이다. 상금 96만 원을 3:1로 나누면 A는 72만 원, B는 24만 원이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 22,
@@ -1141,7 +1165,12 @@ window.questionBank = [
       "l4": "조건에 따른 식 결정"
     },
     "primaryMethod": "일정 하강률과 초기높이의 일차모형",
-    "decisiveStep": "초기높이90과 매초감소량3으로 식을 쓰고 목표높이에 역대입한다."
+    "decisiveStep": "초기높이90과 매초감소량3으로 식을 쓰고 목표높이에 역대입한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축이 시간, 세로축이 높이인 좌표평면에서 y절편 90에서 시작해 내려오는 직선이 x축과 30에서 만나고 수평선 y=30과 만나는 점 P(20,30)이 표시되어 있다.",
+    "solutionImageCaption": "처음 높이가 90m이고 매초 3m씩 줄어들므로 x초 후의 높이는 y=90−3x이다. 높이 30m에 도착하는 때는 직선과 y=30의 교점 P이므로 30=90−3x에서 3x=60, x=20이다. 따라서 출발한 지 20초 후이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 23,
@@ -1291,6 +1320,11 @@ window.questionBank = [
       "l4": "경우를 나누어 구하는 확률"
     },
     "primaryMethod": "비복원 두번 추출의 같은색 경로 합",
-    "decisiveStep": "첫색에 따라 두번째색의 분자와전체수가 하나씩 줄어드는 곱을 두배반색경로에서 더한다."
+    "decisiveStep": "첫색에 따라 두번째색의 분자와전체수가 하나씩 줄어드는 곱을 두배반색경로에서 더한다.",
+    "solutionImage": "assets/images/20_풍덕중_2학기_기말_중2_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "처음 흰 공을 꺼낼 확률은 4/10이고 다음에도 흰 공일 확률은 3/9이므로 4/10×3/9=12/90이다. 처음 검은 공을 꺼낼 확률은 6/10이고 다음에도 검은 공일 확률은 5/9이므로 6/10×5/9=30/90이다. 둘 다 같은 색인 두 경우를 더하면 12/90+30/90=42/90=7/15이다. 확률은 기약분수로 적었다(4/10=2/5, 3/9=1/3, 6/10=3/5).",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   }
 ];

@@ -1,0 +1,51 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLineCaption": {
+  "text": "두 조건의 공통 범위"
+ },
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "-4",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "3",
+       "state": "OPEN"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "RESULT",
+    "integerPoints": true
+   }
+  ]
+ },
+ "caption": "분자의 근호 안은 x+4≥0이므로 x≥-4이고, 분모의 근호 안은 6-2x>0이므로 x<3이다. 공통 범위 -4≤x<3 안의 정수는 -4, -3, -2, -1, 0, 1, 2로 7개이므로 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x≥-4, x<3",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 조건의 공통 범위와 그 안의 정수점"
+ ]
+}
