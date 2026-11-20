@@ -1,0 +1,56 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "9f9ac38fdf547916",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "자신과 양옆의 2명을 제외한 사람과 악수하는 것은 십각형의 대각선을 긋는 것과 같다. (10)",
+    "십각형의 한 꼭짓점에서 그을 수 있는 대각선의 개수는 $10 - 3 = 7$개이다. (10)",
+    "총 대각선의 개수는 $\\frac{10 \\times 7}{2} = 35$개이다. (10)",
+    "따라서 악수를 모두 35번 하게 되므로 정답은 ④이다. (10)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원형 탁자에 $10$명의 학",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다각형의 꼭짓점과 대각선의 개수 관계를 활용한 실생활 응용 유형이다. (10)",
+  "rpmRecordId": "M1-RPM-085",
+  "rpmReason": "평면도형 다각형 단원의 변과 대각선의 개수 유형이다. (10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "실생활 악수 상황을 다각형의 대각선 개수 공식에 연결하는 난이도 2 문항이다. (10)",
+  "how": "원형 배치의 이웃하지 않는 사람 간의 악수를 n각형의 대각선 수로 모델링했다. (10)",
+  "slots": {
+    "given": [
+      {
+        "term": "다각형",
+        "src": "stem",
+        "quote": "원형 탁자에 $10$명의 학생이 둘러앉아 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "악수를 모두 몇 번 하게 되는지 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "한 학생이 악수할 수 있는 학생의 수는 자기 자신과 양옆의 두 학생을 제외하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

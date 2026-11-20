@@ -1,0 +1,56 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "326b868010c6f9ba",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "다각형의 외각의 크기의 합은 항상 $360^\\circ$ 이다. (65)",
+    "주어진 네 외각의 합: $65^\\circ + 75^\\circ + 80^\\circ + 60^\\circ = 280^\\circ$ 이다. (65)",
+    "따라서 나머지 한 외각 $\\angle x = 360^\\circ - 280^\\circ = 80^\\circ$ 이다. (65)",
+    "따라서 정답은 ②이다. (65)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같은 오각형에서",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다각형의 외각의 크기의 합을 이용한 미지각 계산 유형이다. (65)",
+  "rpmRecordId": "M1-RPM-082",
+  "rpmReason": "평면도형 다각형 단원의 다각형 외각의 합 유형이다. (65)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외각의 총합 360도 성질을 단순 뺄셈으로 적용하는 기본 난이도 1 문항이다. (65)",
+  "how": "다각형 외각의 총합이 360도임을 이용하여 미지 외각을 계산했다. (65)",
+  "slots": {
+    "given": [
+      {
+        "term": "외각",
+        "src": "stem",
+        "quote": "네 외각의 크기가 각각 $65^\\circ, 75^\\circ, 80^\\circ, 60^\\circ$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "외각",
+        "src": "stem",
+        "quote": "나머지 한 외각 $\\angle x$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "모든 다각형의 외각의 크기의 합은 항상 $360^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

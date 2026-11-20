@@ -1,0 +1,64 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "776f15b7d8a1ba95",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "구의 부피는 반지름의 세제곱에 비례하므로 큰 구와 작은 구의 부피비는 $1 : (\\frac{1}{3})^3 = 1 : \\frac{1}{27}$ 이다. (24)",
+    "따라서 녹여서 만든 작은 쇠구슬의 개수는 $a = 27$ 이다. (24)",
+    "구의 겉넓이는 반지름의 제곱에 비례하므로 큰 구 1개와 작은 구 1개의 겉넓이 비는 $1 : \\frac{1}{9}$ 이다. (24)",
+    "작은 구 27개의 겉넓이 합은 $27 \\times \\frac{1}{9} = 3$ 배이므로 $b = 3$ 이다. (24)",
+    "$a + b = 27 + 3 = 30$ 이다. (24)",
+    "따라서 정답은 ③이다. (24)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "반지름의 길이가 $r$인 큰",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "구의 부피와 겉넓이 공식을 이용한 분할 입체 비례 계산 유형이다. (24)",
+  "rpmRecordId": "M1-RPM-105",
+  "rpmReason": "입체도형 측정 단원의 구의 부피와 겉넓이 유형이다. (24)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부피 보존에 따른 개수 결정과 전체 겉넓이 비율을 복합 계산하는 난이도 3 문항이다. (24)",
+  "how": "구의 부피비와 겉넓이비 공식을 닮음비의 세제곱, 제곱 관계로 각각 적용했다. (24)",
+  "slots": {
+    "given": [
+      {
+        "term": "구",
+        "src": "stem",
+        "quote": "반지름의 길이가 $r$인 큰 쇠구슬 $1$개를 녹여서 반지름의 길이가 $\\dfrac{r}{3}$인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "$a + b$의 값은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "부피",
+        "src": "solution",
+        "quote": "구의 부피는 $\\dfrac{4}{3}\\pi r^3$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "겉넓이의 합의 비가 $1 : b$일 때"
+      }
+    ]
+  }
+}

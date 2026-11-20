@@ -1,0 +1,63 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "ffc4fade43cc2401",
+  "solvedAnswer": "전개도는 반지름이 각각 $4\\rm\\,cm, 8\\rm\\,cm$인 두 원과 안쪽반지름 $6\\rm\\,cm$, 바깥반지름 $12\\rm\\,cm$, 중심각 $240^\\circ$인 고리 모양의 부채꼴로 이루어지며, 겉넓이는 $152\\pi\\rm\\,cm^2$이다.",
+  "solveSteps": [
+    "사다리꼴을 회전시키면 원뿔대가 만들어진다. (cm)",
+    "밑면 두 원의 넓이의 합 = $\\pi \\times 4^2 + \\pi \\times 8^2 = 16\\pi + 64\\pi = 80\\pi\\rm\\,cm^2$ 이다. (cm)",
+    "옆면의 전개도는 큰 부채꼴에서 작은 부채꼴을 뺀 고리 모양 부채꼴이다. (cm)",
+    "모선의 비 $6 : 12 = 1 : 2$로부터 옆넓이 = $\\pi \\times 8 \\times 12 - \\pi \\times 4 \\times 6 = 96\\pi - 24\\pi = 72\\pi\\rm\\,cm^2$ 이다. (cm)",
+    "겉넓이 총합 = $80\\pi + 72\\pi = 152\\pi\\rm\\,cm^2$ 이다. (cm)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "서·논술형3. 다음 그림과",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "원뿔대의 전개도 분석 및 겉넓이 서술형 계산 유형이다. (cm)",
+  "rpmRecordId": "M1-RPM-103",
+  "rpmReason": "입체도형 측정 단원의 뿔대 및 원뿔대의 겉넓이 유형이다. (cm)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "원뿔대의 전개도 구조를 이해하고 옆넓이와 밑넓이를 정밀하게 계산하는 난이도 3 서술형 문항이다. (cm)",
+  "how": "원뿔대의 전개도(두 밑면과 고리형 부채꼴 옆면)를 분석하여 겉넓이를 서술형으로 계산했다. (cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "사다리꼴을 직선 $l$을 회전축으로 하여 $1$회전 시킬 때 생기는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "이 회전체의 겉넓이를 구하는 과정을 단계별로 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "전개도",
+        "src": "solution",
+        "quote": "사다리꼴을 직선 $l$을 축으로 $1$회전 시키면 두 밑면의 반지름이 각각 $4\\rm\\,cm, 8\\rm\\,cm$이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원뿔대",
+        "src": "solution",
+        "quote": "모선의 길이가 $6\\rm\\,cm$인 원뿔대가 된다."
+      }
+    ]
+  }
+}

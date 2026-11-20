@@ -1,0 +1,64 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "646a683ee4e68998",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "어두운 부분의 둘레 = 회전된 반원의 호 + 큰 부채꼴의 호 + 원래 반원의 지름 선분 AB 이다. (AB)",
+    "반원의 호의 길이는 지름이 16이므로 반지름이 8, $\\pi \\times 8 = 8\\pi$ 이다. (AB)",
+    "큰 부채꼴의 반지름은 16, 중심각은 45도이므로 호의 길이는 $2\\pi \\times 16 \\times \\frac{45}{360} = 4\\pi$ 이다. (AB)",
+    "선분 AB의 길이는 16 이다. (AB)",
+    "따라서 둘레의 총합은 $8\\pi + 4\\pi + 16 = 12\\pi + 16\\rm\\,cm$ 이다. (AB)",
+    "정답은 ⑤이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 선분 $A",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "반원의 회전이동으로 생기는 복합도형의 둘레 길이 계산 유형이다. (AB)",
+  "rpmRecordId": "M1-RPM-092",
+  "rpmReason": "평면도형 원과 부채꼴 단원의 부채꼴을 포함한 복합도형 둘레 유형이다. (AB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "도형의 회전에 따른 복합 경계선의 호와 선분을 정확히 합산해야 하는 난이도 3 문항이다. (AB)",
+  "how": "회전이동에 의해 생긴 도형의 경계선(호 2개와 선분 1개)을 분석하여 둘레를 구했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "지름",
+        "src": "stem",
+        "quote": "선분 $AB$를 지름으로 하는 반원을 점 $A$를 중심으로 하여 $45^\\circ$만큼"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "어두운 부분의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "호",
+        "src": "solution",
+        "quote": "어두운 부분의 둘레는 회전된 반원의 호, 점 $A$를 중심으로 회전하며 생긴 바깥쪽 부채꼴의 호",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "$\\overline{AB} = 16\\rm\\,cm$"
+      }
+    ]
+  }
+}

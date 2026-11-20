@@ -1,0 +1,63 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "b364bc460ff01cda",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "상대도수의 총합은 항상 1이다. (50)",
+    "알려진 계급들의 상대도수 합 = $0.12 + 0.24 + 0.26 + 0.10 = 0.72$ 이다. (50)",
+    "4시간 이상 6시간 미만 계급의 상대도수 = $1 - 0.72 = 0.28$ 이다. (50)",
+    "해당 계급의 학생 수 = 전체 학생 수 $\\times$ 상대도수 = $50 \\times 0.28 = 14$명이다. (50)",
+    "따라서 정답은 ⑤이다. (50)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 상대도수의 분포표는 민",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "상대도수의 분포표에서 빈칸의 상대도수와 도수를 구하는 유형이다. (50)",
+  "rpmRecordId": "M1-RPM-110",
+  "rpmReason": "통계 단원의 상대도수 계산 유형이다. (50)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "상대도수의 총합 조건과 도수 계산 공식을 연계하는 난이도 2 문항이다. (50)",
+  "how": "상대도수 총합이 1임을 이용해 빈 계급의 상대도수를 구하고 도수를 도출했다. (50)",
+  "slots": {
+    "given": [
+      {
+        "term": "상대도수",
+        "src": "stem",
+        "quote": "다음 상대도수의 분포표는 민우네 반 학생 $50$명의 일주일 동안의 독서 시간을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "독서 시간이 $4$시간 이상 $6$시간 미만인 학생 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "solution",
+        "quote": "상대도수의 총합은 항상 $1$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "학생 $50$명의 일주일 동안의 독서 시간을 조사하여 나타낸 것이다."
+      }
+    ]
+  }
+}
