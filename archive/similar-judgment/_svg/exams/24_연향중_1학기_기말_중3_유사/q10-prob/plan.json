@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-2x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-7",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-2x^2-7"
+      }
+    ],
+    "viewport": [
+      -4,
+      4,
+      -15,
+      2
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 이차함수 y=-2x^2과 y=-2x^2-7의 그래프와 선분 AB (-2, -7, A, B)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-2x^2, y=-2x^2-7, 선분 AB",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 두 포물선 사이의 선분 AB 길이 7"
+  ]
+}

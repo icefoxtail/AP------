@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "7",
+      "-14/3",
+      "7/9"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -2,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": 7
+      },
+      {
+        "id": "Q",
+        "x": 6,
+        "y": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점이 (3, 0)이고 점 (6, k)를 지나는 포물선 (6, k)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "포물선 위의 점 (6, k)",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "대칭축 x=3에 대해 x=0과 대칭인 점 (6, k)"
+  ]
+}

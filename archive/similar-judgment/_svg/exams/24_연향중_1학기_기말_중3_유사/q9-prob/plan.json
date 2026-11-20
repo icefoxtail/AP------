@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -2,
+      16
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "C",
+        "x": 2,
+        "y": 12
+      },
+      {
+        "id": "D",
+        "x": -2,
+        "y": 12
+      },
+      {
+        "id": "V",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=3x^2 위의 점 C, D와 x축 위의 점 A, B로 이루어진 직사각형 ABCD (A, B, C, D, 3)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 C, D는 y=3x^2 위, 직사각형 ABCD",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "이차함수에 내접하는 직사각형 ABCD"
+  ]
+}

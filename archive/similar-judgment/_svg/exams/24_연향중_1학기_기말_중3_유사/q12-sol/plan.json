@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "7",
+      "-14/3",
+      "7/9"
+    ],
+    "domain": [
+      -1,
+      7
+    ],
+    "viewport": [
+      -2,
+      8,
+      -2,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": 7
+      },
+      {
+        "id": "Q",
+        "x": 6,
+        "y": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (3, 0), 점 (0, 7), (6, 7)을 지나는 포물선 (3, 0, 7, 6)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (3, 0), 점 (0, 7), (6, 7)",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "x=3으로부터 거리 3인 두 점의 함숫값이 7로 동일"
+  ]
+}

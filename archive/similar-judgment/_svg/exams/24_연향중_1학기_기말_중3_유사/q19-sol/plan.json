@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -6,
+      4
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "A",
+        "x": 2,
+        "y": -4
+      },
+      {
+        "id": "B",
+        "x": 4,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "원점 O, 점 B(4, 0), 꼭짓점 (2, -4), 넓이 8인 삼각형 OAB (O, B, 4, 2, -4, 8)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "O(0, 0), B(4, 0), 꼭짓점 (2, -4), 넓이 8",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 OAB의 넓이 1/2 * 4 * 4 = 8 계산"
+  ]
+}

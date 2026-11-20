@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "4",
+      "-1"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "id": "P",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "Q",
+        "x": 5,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점의 x좌표 2, x축 교점 -1과 5 사이의 거리 6 (2, 6, -1, 5)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 x좌표 2, 교점 -1, 5 거리 6",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (2, 9)와 x축 절편 -1, 5 사이의 거리 6"
+  ]
+}
