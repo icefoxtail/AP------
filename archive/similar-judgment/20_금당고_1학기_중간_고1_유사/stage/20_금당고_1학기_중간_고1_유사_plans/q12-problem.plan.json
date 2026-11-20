@@ -1,0 +1,28 @@
+{
+  "status": "READY",
+  "pattern": "construction-spike-v1",
+  "viewBox": "0 0 360 320",
+  "elements": [
+    {
+      "type": "cube_3d",
+      "id": "outer_cube",
+      "edgeLength": "a+4",
+      "center": [
+        180,
+        160
+      ],
+      "style": "solid"
+    },
+    {
+      "type": "cube_3d",
+      "id": "inner_cube",
+      "edgeLength": "a",
+      "center": [
+        180,
+        160
+      ],
+      "style": "dashed_cutout"
+    }
+  ],
+  "note": "한 변의 길이가 a+4인 정육면체 내부 중앙에 한 변의 길이가 a인 정육면체가 제거된 입체 도식"
+}

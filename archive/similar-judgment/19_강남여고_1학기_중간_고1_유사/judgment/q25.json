@@ -1,0 +1,63 @@
+{
+  "qid": 25,
+  "itemFingerprint": "a7234ff47fd55906",
+  "solveSteps": [
+    "주어진 이차방정식을 전개해 정리하면 $$ (x^2-x)+(x^2-3x)+(x^2-4x+3) = 3x^2-8x+3 = 0 $$ 이다.",
+    "근과 계수의 관계에 의하여 $\\alpha+\\beta=\\dfrac{8}{3}$, $\\alpha\\beta=1$이다.",
+    "각 분모를 계산하면\n\n- $\\alpha\\beta = 1$  \n- $(\\alpha-1)(\\beta-1) = \\alpha\\beta-(\\alpha+\\beta)+1 = 1-\\dfrac{8}{3}+1 = -\\dfrac{2}{3}$  \n- $(\\alpha-3)(\\beta-3) = \\alpha\\beta-3(\\alpha+\\beta)+9 = 1-3\\cdot\\dfrac{8}{3}+9 = 2$ 따라서 구하는 값은 $$ \\dfrac{1}{1}+\\dfrac{2}{-\\frac{2}{3}}+\\dfrac{4}{2} = 1-3+2 = 0 $$ 이다."
+  ],
+  "solvedAnswer": "$0$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "서술형3) 이차방정식 $x(x-1)+x(x-3)+(x-",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q25(3): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+  "typeReason": "Q25(3): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q25(3): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x(x-1)+x(x-3)+(x-1)(x-3)=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대칭식",
+        "src": "solution",
+        "quote": "\\alpha\\beta-3(\\alpha+\\beta)+9"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q25(3): 발문과 해설의 풀이 과정을 점검하여 정답 $0$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

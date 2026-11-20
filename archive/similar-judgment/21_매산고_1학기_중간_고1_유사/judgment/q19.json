@@ -1,0 +1,64 @@
+{
+  "qid": 19,
+  "itemFingerprint": "6d295df360f98d6d",
+  "solveSteps": [
+    "$y=-x^2+10x=-(x-5)^2+25$의 대칭축이 $x=5$이고 $x$절편이 $0, 10$이므로, 점 $B$의 좌표를 $(t, 0)$ ($0<t<5$)라 하면 $C(10-t, 0)$이고 $A(t, -t^2+10t)$이다.",
+    "직사각형 $ABCD$의 둘레의 길이 $L$은 $$ L = 2{(10-2t)+(-t^2+10t)} = -2t^2+16t+20 = -2(t-4)^2+52 $$ 따라서 $t=4$일 때 둘레가 최대이고, 이때 변 $BC$는 $B(4, 0)$과 $C(6, 0)$을 잇는 선분이므로 $4\\le a\\le 6$이다.",
+    "$a+b=8$에서 $b=8-a$를 대입하면 $$ 2a^2+4b^2 = 2a^2+4(8-a)^2 = 6a^2-64a+256 = 6\\left(a-\\frac{16}{3}\\right)^2+\\frac{256}{3} $$ 꼭짓점 $a=\\dfrac{16}{3}=5.\\overline{3}$이 범위 $4\\le a\\le 6$에 포함되므로 구하는 최솟값은 $\\dfrac{256}{3}$이다."
+  ],
+  "solvedAnswer": "$\\dfrac{256}{3}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "제1사분면 위의 두 점 $A, D$가 이차함수 $y=-",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q19(10): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q19(10): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(10): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$2a^2+4b^2$의 최솟값을"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-x^2+10x$",
+        "evidenceType": "IMPLIED",
+        "justification": "대칭성으로 둘레 이차함수를 세워 a의 범위를 구하고 2a^2+4(8-a)^2의 최솟값을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(10): 발문과 해설의 풀이 과정을 점검하여 정답 $\\dfrac{256}{3}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

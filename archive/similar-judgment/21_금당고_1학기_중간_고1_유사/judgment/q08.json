@@ -1,0 +1,68 @@
+{
+  "qid": 8,
+  "itemFingerprint": "8935bcbb5275a99a",
+  "solveSteps": [
+    "계수가 모두 실수이므로 한 허근이 $3-3i$이면 다른 한 근은 $3+3i$이다. (bx)",
+    "근과 계수의 관계에 의하여 $$ b = -{(3-3i)+(3+3i)} = -6, \\qquad c = (3-3i)(3+3i) = 9+9 = 18 $$ 따라서 $\\sqrt{\\dfrac{c}{b}} = \\sqrt{\\dfrac{18}{-6}} = \\sqrt{-3} = \\sqrt{3}i$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+  "unitEvidence": "계수가 모두 실수인 이차방정식 $x^2+bx+c=0$의",
+  "rpmRecordId": "H1-RPM-031",
+  "rpmReason": "Q8(bx): 복소수와 이차방정식 단원의 RPM H1-RPM-031 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+  "typeReason": "Q8(bx): 복소수와 이차방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(bx): 복소수와 이차방정식 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근이 $3-3i$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "src": "stem",
+        "quote": "\\sqrt{\\dfrac{c}{b}}$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "다른 한 근은 $3+3i$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q8(bx): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

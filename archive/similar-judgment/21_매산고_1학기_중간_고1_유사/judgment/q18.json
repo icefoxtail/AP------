@@ -1,0 +1,64 @@
+{
+  "qid": 18,
+  "itemFingerprint": "d84f5d5ccf763ca6",
+  "solveSteps": [
+    "$z=\\dfrac{\\sqrt{3}+i}{\\sqrt{3}-i}$의 분모를 실수화하면 $$ z = \\frac{(\\sqrt{3}+i)^2}{3+1} = \\frac{2+2\\sqrt{3}i}{4} = \\frac{1+\\sqrt{3}i}{2} $$ $2z-1=\\sqrt{3}i$의 양변을 제곱하면 $4z^2-4z+4=0 \\implies z^2-z+1=0$이다.",
+    "양변에 $z+1$을 곱하면 $z^3+1=0$, 즉 $z^3=-1, z^6=1$이고 $1+z+z^2+z^3+z^4+z^5=0$이다.",
+    "$f(z)$는 $z^0$부터 $z^{1010}$까지 총 $1011$개 항의 합이고 $1011=6\\times 168+3$이므로 $$ f(z) = 1+z+z^2 = 1+\\frac{1+\\sqrt{3}i}{2}+\\frac{-1+\\sqrt{3}i}{2} = 1+\\sqrt{3}i $$ 따라서 $a=1, b=0, c=0, d=1$이므로 $$ 80\\left(\\frac{1}{2}+0\\right)^2+20\\left(0+\\frac{1}{2}\\right)^2 = 80\\cdot\\frac{1}{4}+20\\cdot\\frac{1}{4} = 20+5 = 25 $$ 이다."
+  ],
+  "solvedAnswer": "$25$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "다항식 $f(x)=1+x+x^2+x^3+\\cdots+x",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q18(1010): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q18(1010): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(1010): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)=1+x+x^2+x^3+\\cdots+x^{1010}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b, c, d$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "z^3=-1, z^6=1$이고",
+        "evidenceType": "IMPLIED",
+        "justification": "분모 실수화 후 z^2-z+1=0에서 6주기 합이 0임을 이용해 남은 3항을 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(1010): 발문과 해설의 풀이 과정을 점검하여 정답 $25$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

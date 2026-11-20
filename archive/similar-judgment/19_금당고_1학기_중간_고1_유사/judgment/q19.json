@@ -1,0 +1,71 @@
+{
+  "qid": 19,
+  "itemFingerprint": "1ad0483610beea80",
+  "solveSteps": [
+    "$h(x)=f(x)-g(x)$라 하면 $h(x)$는 이차식이고 조건 (가)에서 $h(x)=c(x-2)^2$ ($c\\ne 0$)이다. (24)",
+    "조건 (나)에서 $f(3)=1, g(3)=5$이므로 $h(3)=f(3)-g(3)=1-5=-4$이다.",
+    "$h(3)=c(3-2)^2=c=-4$이므로 $h(x)=-4(x-2)^2$이다.",
+    "따라서 $h(x)$를 $x+1$로 나눈 나머지는 $h(-1)=-4(-1-2)^2=-36$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "이차식 $f(x)$와 일차식 $g(x)$가 다음 조건을",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q19(24): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q19(24): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(24): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "이차식 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나누었을 때의 나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "$f(3)=1, g(3)=5$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "중근 조건으로 h(x)=c(x-2)^2을 세우고 나머지정리 h(3)=-4로 c를 결정함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근 $2$를 갖는다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q19(24): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

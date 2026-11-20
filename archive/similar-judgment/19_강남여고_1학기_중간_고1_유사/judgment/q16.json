@@ -1,0 +1,70 @@
+{
+  "qid": 16,
+  "itemFingerprint": "effb6f28770077e7",
+  "solveSteps": [
+    "$y=x^2-2ax+a^2+a-3=(x-a)^2+a-3$이므로 아래로 볼록하고 최솟값은 $a-3$이다.",
+    "그래프가 $x$축과 만나려면 최솟값이 $0$ 이하이어야 하므로 $a-3\\le 0 \\implies a\\le 3$이다.",
+    "따라서 정수 $a$의 최댓값은 $3$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "$x$에 대한 이차함수 $y=x^2-2ax+a^2+a-",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q16(ax): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "Q16(ax): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(ax): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-2ax+a^2+a-3$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "정수 $a$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "(x-a)^2+a-3",
+        "evidenceType": "IMPLIED",
+        "justification": "완전제곱식으로 꼭짓점의 y좌표를 구해 <=0 조건을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $a$의 최댓값은?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q16(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

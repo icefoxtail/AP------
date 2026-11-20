@@ -1,0 +1,65 @@
+{
+  "qid": 13,
+  "itemFingerprint": "6dbc076ac0761eeb",
+  "solveSteps": [
+    "$f(x)$의 차수를 $d$라 하면 좌변은 $2d$차, 우변은 $\\max(d+3, 4)$차이므로 $2d=d+3 \\implies d=3$, 즉 $f(x)$는 삼차다항식이다. (150)",
+    "항등식에 $x=0$을 대입하면 $f(0)=0$, $x=-1$을 대입하면 $f(1)=-f(0)=0$, $x=1$을 대입하면 $f(1)=f(2)=0$이다.",
+    "따라서 $f(x)=kx(x-1)(x-2)$ ($k\\ne 0$)라 놓을 수 있다.",
+    "주어진 항등식에 대입하면 $$ \\begin{aligned} kx^2(x^2-1)(x^2-2) &= x^3\\cdot k(x+1)x(x-1)-6x^4+6x^2 \\ kx^2(x^2-1)(x^2-2-x^2) &= -6x^2(x^2-1) \\ -2kx^2(x^2-1) &= -6x^2(x^2-1) \\end{aligned} $$ 따라서 $k=3$이므로 $f(x)=3x(x-1)(x-2)$이고 $f(5)=3\\cdot 5\\cdot 4\\cdot 3=180$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "다항식 $f(x)$에 관하여 모든 실수 $x$에 대하여",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q13(150): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "Q13(150): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(150): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "항등식에 $x=0$을 대입하면"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$에 관하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "f(0)=0$, $x=-1$을 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "차수 결정 후 x=0, -1, 1 대입으로 f(0)=f(1)=f(2)=0을 찾아 삼차식을 결정함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(150): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

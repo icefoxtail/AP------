@@ -1,0 +1,65 @@
+{
+  "qid": 18,
+  "itemFingerprint": "8b55a74dab01aae0",
+  "solveSteps": [
+    "항등식 $(x+2)f(x)=(x-3)g(x)$에 $x=3$을 대입하면 $5f(3)=0 \\implies f(3)=0$이고, $x=-2$를 대입하면 $0=-5g(-2) \\implies g(-2)=0$이다.",
+    "최고차항의 계수가 $1$인 두 이차식이므로 $$ f(x)=(x-3)(x-k), \\qquad g(x)=(x+2)(x-k) $$ 라 놓을 수 있다.",
+    "(항등식에 대입해 나머지 일차인수가 같음을 확인) $f(-2)=(-5)(-2-k)=10$에서 $-2-k=-2 \\implies k=0$이다.",
+    "따라서 $g(x)=x(x+2)$이므로 $g(4)=4\\cdot 6=24$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "최고차항의 계수가 $1$인 두 이차식 $f(x), g(",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q18(10): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q18(10): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(10): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "항등식 $(x+2)f(x)=(x-3)g(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "두 이차식 $f(x), g(x)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "f(3)=0$이고, $x=-2$를 대입하면",
+        "evidenceType": "IMPLIED",
+        "justification": "항등식에 x=3, -2를 대입해 인수를 찾고 나머지 공통인수 (x-k)를 비교 결정함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(10): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "qid": 9,
+  "itemFingerprint": "43168eb4e6849a64",
+  "solveSteps": [
+    "먼저 분모를 실수화하면 $$ z = \\dfrac{1-i}{1+i} = \\dfrac{(1-i)^2}{(1+i)(1-i)} = \\dfrac{1-2i+i^2}{1-i^2} = \\dfrac{-2i}{2} = -i $$ 이다.",
+    "따라서 $f(n)=(-i)^n$이고, $(-i)^n$은 $n=1, 2, 3, 4$에 대해 $-i, -1, i, 1$이 주기 $4$로 반복된다.",
+    "처음 세 항을 더하면 $f(3)+f(4)+f(5)=i+1+(-i)=1$이므로 $n=5$일 때 조건을 만족한다.",
+    "연속한 네 항의 합은 항상 $0$이므로 $n=4t+1$ ($t\\ge 1$)일 때마다 누적합이 $1$이 된다.",
+    "$4t+1 \\le 120$에서 $4t \\le 119$, 즉 $t \\le 29$이므로 $t=1, 2, \\ldots, 29$의 $29$개이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=\\dfrac{1-i}{1+i}$일 때, $",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q9(120): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q9(120): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(120): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=\\dfrac{1-i}{1+i}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $n$의 개수는"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=\\dfrac{1-i}{1+i}$",
+        "evidenceType": "IMPLIED",
+        "justification": "복소수를 실수화하여 -i의 주기 4 성질로 누적합이 1이 되는 n을 구함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$120$ 이하의 자연수 $n$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q9(120): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

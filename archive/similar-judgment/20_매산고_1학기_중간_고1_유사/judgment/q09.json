@@ -1,0 +1,63 @@
+{
+  "qid": 9,
+  "itemFingerprint": "9f71a6f623f2f540",
+  "solveSteps": [
+    "등식 $z^2=3+4\\sqrt{10}i$의 양변에 각각 켤레복소수를 취하면 $\\overline{z^2} = (\\bar{z})^2 = 3-4\\sqrt{10}i$이다.",
+    "두 식을 변끼리 곱하면 $$ (z\\bar{z})^2 = z^2(\\bar{z})^2 = (3+4\\sqrt{10}i)(3-4\\sqrt{10}i) = 3^2-(4\\sqrt{10}i)^2 = 9+160 = 169 = 13^2 $$ 이다.",
+    "$z=a+bi$ ($a, b$는 실수)라 하면 $z\\bar{z}=a^2+b^2>0$이므로 $z\\bar{z}=13$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+  "unitEvidence": "등식 $z^2=3+4\\sqrt{10}i$를 만족시키는 ",
+  "rpmRecordId": "H1-RPM-021",
+  "rpmReason": "Q9(10): 복소수의 뜻과 표현 단원의 RPM H1-RPM-021 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "Q9(10): 복소수의 뜻과 표현 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(10): 복소수의 뜻과 표현 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $z^2=3+4\\sqrt{10}i$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "$z\\bar{z}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "양변에 각각 켤레복소수를 취하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(10): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

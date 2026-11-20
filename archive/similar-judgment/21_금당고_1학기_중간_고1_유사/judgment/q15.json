@@ -1,0 +1,64 @@
+{
+  "qid": 15,
+  "itemFingerprint": "2e02632e8809296b",
+  "solveSteps": [
+    "$x^3+1=(x+1)(x^2-x+1)$이므로 $f(x)$를 $x^3+1$로 나눈 나머지 $R(x)$는 이차 이하의 다항식이고 $x^2-x+1$로 나눈 나머지가 $2x+7$이어야 한다. (10)",
+    "따라서 $R(x)=a(x^2-x+1)+2x+7$이라 놓을 수 있다.",
+    "조건에서 $f(-1)=R(-1)=8$이므로 $$ a(1+1+1)+2(-1)+7 = 3a+5 = 8 \\implies a = 1 $$ 그러므로 $R(x)=(x^2-x+1)+2x+7 = x^2+x+8$이고, $R(2)=4+2+8=14$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $f(x)$를 $x^2-x+1$로 나누었을 때의",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q15(10): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q15(10): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(10): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지를 $R(x)$라 하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "f(-1)=R(-1)=8",
+        "evidenceType": "IMPLIED",
+        "justification": "R(x)=a(x^2-x+1)+2x+7로 설정하고 나머지정리 f(-1)=8을 대입해 a를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q15(10): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

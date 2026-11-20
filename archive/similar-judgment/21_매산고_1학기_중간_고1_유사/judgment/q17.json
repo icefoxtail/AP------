@@ -1,0 +1,68 @@
+{
+  "qid": 17,
+  "itemFingerprint": "00aa146869ba3bd1",
+  "solveSteps": [
+    "$f(x)=ax^2+bx+c$ ($a\\ne 0$)라 두고 주어진 항등식에 대입하면 $$ \\begin{aligned} f(x-1)+2f(-x) &= a(x-1)^2+b(x-1)+c+2(ax^2-bx+c) \\ &= 3ax^2+(-2a-b)x+(a-b+3c) = 3x^2-6 \\end{aligned} $$ 계수를 비교하면 $3a=3, -2a-b=0, a-b+3c=-6$이므로 $a=1, b=-2, c=-3$이다.",
+    "따라서 $f(x)=x^2-2x-3=(x-1)^2-4$이고, 구간 $1\\le x\\le 4$에서\n\n- 최솟값: $f(1)=-4$  \n- 최댓값: $f(4)=16-8-3=5$ 그러므로 최댓값과 최솟값의 합은 $5+(-4)=1$이다."
+  ],
+  "solvedAnswer": "$1$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $f(x)$가 모든 실수 $x$에 대하여 $f",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q17(ax): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q17(ax): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(ax): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값의 합"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "주어진 항등식에"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $1$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

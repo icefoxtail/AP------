@@ -1,0 +1,64 @@
+{
+  "qid": 21,
+  "itemFingerprint": "8c08f2b15a401a00",
+  "solveSteps": [
+    "$\\overline{OC}=\\overline{BO}=p$, $\\overline{CD}=\\overline{AB}=q$라 하면 반원 대칭성에 의해 $\\overline{DA}=2p$이다.",
+    "조건 (가), (나)에 대입하면 $$ p+q = x+y+6, \\qquad 3p+q = 3x+y+12 $$ 두 식을 빼면 $2p=2x+6 \\implies p=x+3$, 이를 첫 식에 대입하면 $q=y+3$이다.",
+    "따라서 직사각형 $ABCD$의 넓이는 $\\overline{DA}\\cdot\\overline{AB}=2pq=2(x+3)(y+3)$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "그림과 같이 점 $O$를 중심으로 하는 반원에 내접하는",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q21(ABCD): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "Q21(ABCD): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(ABCD): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "내접하는 직사각형 $ABCD$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$의 넓이"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "solution",
+        "quote": "두 식을 빼면 $2p=2x+6",
+        "evidenceType": "IMPLIED",
+        "justification": "반원 대칭성으로 미지수 p, q를 잡아 조건 (가), (나)를 연립해 넓이 2pq를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(ABCD): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

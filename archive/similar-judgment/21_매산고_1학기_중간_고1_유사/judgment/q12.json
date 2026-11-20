@@ -1,0 +1,70 @@
+{
+  "qid": 12,
+  "itemFingerprint": "d34f1d8201d53fa8",
+  "solveSteps": [
+    "나머지정리에 의해 $P(-4)=-2, P(2)=-4$이고 $x^2+2x-8=(x+4)(x-2)$이다. (nx)",
+    "$(x^2+2)P(x)=(x+4)(x-2)A(x)+ax+b$에 $x=-4, 2$를 대입하면 $$ \\begin{aligned} (16+2)(-2) &= -4a+b \\implies -4a+b = -36 \\ (4+2)(-4) &= 2a+b \\implies 2a+b = -24 \\end{aligned} $$ 두 식을 빼면 $6a=12 \\implies a=2, b=-28$이므로 $R(x)=2x-28$, $m=R(-1)=-30$이다.",
+    "한편 $Q(x+3)$이 $x+5$로 나누어떨어지므로 $x=-5$를 대입하면 $Q(-2)=0$이다.",
+    "$$ Q(-2) = 8-4n-10+10 = 8-4n = 0 \\implies n=2 $$ 따라서 $m+n=-30+2=-28$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $P(x)$를 $x+4$로 나누었을 때의 나머지",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q12(nx): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q12(nx): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(nx): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지를 $R(x)$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "Q(-2)=0$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q12(nx): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

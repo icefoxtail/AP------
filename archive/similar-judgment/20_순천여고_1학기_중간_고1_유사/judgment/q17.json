@@ -1,0 +1,71 @@
+{
+  "qid": 17,
+  "itemFingerprint": "11cbea9877cf8248",
+  "solveSteps": [
+    "$|ax-2|<4$에서 $-4<ax-2<4$, 즉 $-2<ax<6$이다.",
+    "$a<0$이므로 양변을 $a$로 나누면 부등호 방향이 바뀌어 $\\dfrac{6}{a}<x<-\\dfrac{2}{a}$이다.",
+    "이를 $-3<x<b$와 비교하면 $\\dfrac{6}{a}=-3 \\implies a=-2$이고, $b=-\\dfrac{2}{-2}=1$이다.",
+    "따라서 $ab=(-2)\\cdot 1=-2$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-08",
+  "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+  "unitEvidence": "부등식 $|ax-2|<4$의 해가 $-3<x<b$일 때",
+  "rpmRecordId": "H1-RPM-045",
+  "rpmReason": "Q17(ax): 연립부등식 단원의 RPM H1-RPM-045 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+  "templateKey": "TPL_H1_LINEAR_INEQUALITY_INTERVAL",
+  "typeReason": "Q17(ax): 연립부등식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q17(ax): 연립부등식 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "부등식 $|ax-2|<4$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $a, b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "src": "stem",
+        "quote": "부등식 $|ax-2|<4$",
+        "evidenceType": "IMPLIED",
+        "justification": "절댓값 부등식을 -4<ax-2<4로 푼 뒤 음수 a로 나누어 해를 비교함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "src": "stem",
+        "quote": "단, $a<0$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q17(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

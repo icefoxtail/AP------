@@ -1,0 +1,63 @@
+{
+  "qid": 18,
+  "itemFingerprint": "da58a602580f4701",
+  "solveSteps": [
+    "나머지정리에 의하여 $P(4)=7$이다.",
+    "한편 $P(x)$를 $(x-4)(x+2)$로 나눈 몫을 $Q(x)$, 나머지를 $R(x)$라 하면 $$ P(x) = (x-4)(x+2)Q(x)+R(x) $$ 이다.",
+    "이 항등식의 양변에 $x=4$를 대입하면 $$ P(4) = (4-4)(4+2)Q(4)+R(4) = R(4) $$ 이므로 $R(4)=P(4)=7$이다."
+  ],
+  "solvedAnswer": "$7$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $P(x)$를 $x-4$로 나누었을 때 나머지가",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q18(P): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "Q18(P): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(P): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지를 $R(x)$라 하자"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "나머지정리에 의하여 $P(4)=7$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(P): 발문과 해설의 풀이 과정을 점검하여 정답 $7$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

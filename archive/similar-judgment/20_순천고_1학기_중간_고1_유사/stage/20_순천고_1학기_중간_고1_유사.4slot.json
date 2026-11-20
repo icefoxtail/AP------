@@ -1,0 +1,944 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/1mid/20_순천고_1학기_중간_고1_유사.js",
+  "sourceGitBlobSha": "fcf4d515881ab9dd07527daf06d7f2dd0bd3cfbd",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-md-importer",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "일체형 마크다운 변환 산출물(UNREVIEWED)"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $A=x^2-2x+4$"
+          }
+        ],
+        "method": [
+          {
+            "term": "동류항",
+            "src": "solution",
+            "quote": "2x^2-4x+8+3x^2-x+1",
+            "evidenceType": "IMPLIED",
+            "justification": "괄호를 푼 뒤 차수별 동류항 계수를 더함"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "두 다항식 $A=x^2-2x+4$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "2A를 계산 후 -B를 더해 동류항 정리함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "대각선",
+            "src": "stem",
+            "quote": "대각선 $AG$의 길이를"
+          }
+        ],
+        "method": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "(a+b+c)^2-2(ab+bc+ca)",
+            "evidenceType": "IMPLIED",
+            "justification": "세 수의 합의 제곱 곱셈 공식 변형으로 대각선 길이 제곱을 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "겉넓이",
+            "src": "stem",
+            "quote": "겉넓이는 $24\\,\\mathrm{cm}^2$이고"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "모서리 합과 겉넓이에 곱셈 공식 변형을 적용해 대각선 길이를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "곱셈공식",
+            "src": "solution",
+            "quote": "곱셈 공식의 변형에 의하여"
+          }
+        ],
+        "method": [
+          {
+            "term": "항등식",
+            "src": "solution",
+            "quote": "항등식이므로",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "등식",
+            "src": "stem",
+            "quote": "등식 $(a+b-4)x+ab-4=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "항등식 계수 조건으로 a+b, ab를 구해 a^3+b^3을 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수인 것은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수정리",
+            "src": "solution",
+            "quote": "인수정리에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "삼차식",
+            "src": "stem",
+            "quote": "x^3-(a-2)x^2-(3a+7)x+4a+4"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "P(a+1)=0을 확인해 인수정리로 x-a-1이 인수임을 보임"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "복소수",
+            "src": "solution",
+            "quote": "\\dfrac{1-i}{1+i} = \\dfrac{(1-i)^2}{(1+i)(1-i)}"
+          }
+        ],
+        "method": [
+          {
+            "term": "켤레복소수",
+            "src": "solution",
+            "quote": "분모를 실수화하면",
+            "evidenceType": "IMPLIED",
+            "justification": "분모의 켤레복소수를 곱해 각각 -i, i로 간단히 한 뒤 거듭제곱을 계산함"
+          }
+        ],
+        "given": [
+          {
+            "term": "허수",
+            "src": "stem",
+            "quote": "i=\\sqrt{-1}"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "분모 실수화 후 i의 주기 4 성질로 (-i)^202+i^202를 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근이 $\\omega$일 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "x^3+1=(x+1)(x^2-x+1)=0",
+            "evidenceType": "IMPLIED",
+            "justification": "x^3+1을 인수분해해 허근이 만족하는 이차식과 켤레근 성질을 적용함"
+          }
+        ],
+        "given": [
+          {
+            "term": "삼차방정식",
+            "src": "stem",
+            "quote": "방정식 $x^3=-1$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "허근",
+            "src": "stem",
+            "quote": "한 허근이 $\\omega$일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "x^3+1 인수분해와 허근 성질로 옳지 않은 보기 ②를 찾음"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D>0$이어야 한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-2(k-2)x+k^2-8=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 두 실근을 가질 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "짝수 판별식 D/4>0을 풀어 k<3을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $\\dfrac{D}{4}=0$이",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-2(a+k)x+k^2-6k-3a=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "항상 중근을 가질 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "판별식 D/4=0을 k에 대한 항등식으로 풀어 a=-3을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "음수",
+            "src": "solution",
+            "quote": "모두 음수이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+6x+4=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 근의 부호가 음수임을 확인해 음수 제곱근 곱의 부호를 적용함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "계수가 $1$인 이차방정식은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "근과계수의관계",
+            "src": "solution",
+            "quote": "근과 계수의 관계에 의하여",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $4x^2-x+1=0$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "근과 계수의 관계로 역수 근의 합과 곱을 구해 이차방정식을 작성함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D>0$이어야 한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-4x+a$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 범위"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "짝수 판별식 D/4>0을 풀어 a<4를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "상수",
+            "src": "stem",
+            "quote": "상수 $k$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $\\dfrac{D}{4}=0$에서",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2+5x$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "접함",
+            "src": "stem",
+            "quote": "직선 $y=x+k$가 접하도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "연립방정식의 판별식 D/4=0을 풀어 k=-4를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 변형하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=x^2-6x+4$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "이차함수를 완전제곱식으로 변형해 최솟값 -5를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "최댓값과 최솟값을 각각 $M, m$이라 할 때"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "4x+y^2 = 4x+(9-x^2)",
+            "evidenceType": "IMPLIED",
+            "justification": "y^2=9-x^2을 대입하고 실수 조건에서 얻은 x 범위로 최대·최소를 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "만족시키는 실수 $x, y$에 대하여"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "-3\\le x\\le 3"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "y^2=9-x^2 대입과 실수 범위 -3<=x<=3 도출로 최대·최소 합을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$f(x)$의 최솟값은 $-26$이다"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)$",
+            "evidenceType": "IMPLIED",
+            "justification": "교점 방정식으로 f(x)를 세우고 완전제곱식으로 정리해 최솟값 조건을 적용함"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "계수 $a$는 양수이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "교점 식으로 f(x)를 작성하고 표준형 최솟값으로 a=3을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "x^2+y^2=29$에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "연립방정식",
+            "src": "stem",
+            "quote": "연립방정식"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "y=x+3 대입으로 두 해를 구해 a+b의 합을 계산함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의 최솟값을 $a$"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "절댓값 안이 $0$이 되는 $x=-2, 4$를 기준으로",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 기호 내부의 영점을 기준으로 구간을 나누어 부등식을 풂"
+          }
+        ],
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $|x+2|+|x-4|<8$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "정수 $x$의 최솟값"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "구간 분할로 |x+2|+|x-4|<8을 풀어 정수 최대·최소 합을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $x+5>\\sqrt{(2x-1)^2}$의 해"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "\\sqrt{(2x-1)^2}=|2x-1|",
+            "evidenceType": "IMPLIED",
+            "justification": "제곱의 제곱근을 절댓값으로 고쳐 양방향 일차부등식을 풂"
+          }
+        ],
+        "given": [
+          {
+            "term": "부등식",
+            "src": "stem",
+            "quote": "부등식 $x+5>\\sqrt{(2x-1)^2}$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "sqrt((2x-1)^2)=|2x-1| 변환 후 절댓값 부등식을 풂"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식"
+          }
+        ],
+        "method": [
+          {
+            "term": "이차부등식",
+            "src": "solution",
+            "quote": "x^2+4x+3=(x+1)(x+3)\\le 0",
+            "evidenceType": "IMPLIED",
+            "justification": "일차부등식과 인수분해된 이차부등식의 해의 공통부분을 구함"
+          }
+        ],
+        "given": [
+          {
+            "term": "연립부등식",
+            "src": "stem",
+            "quote": "연립부등식"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차·이차부등식을 각각 풀어 공통범위 -2<x<=-1을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "자연수 $N$이라 하면"
+          }
+        ],
+        "method": [
+          {
+            "term": "연립부등식",
+            "src": "solution",
+            "quote": "두 범위의 공통부분에서 $204 < N \\le 208$",
+            "evidenceType": "IMPLIED",
+            "justification": "각 작업 속도의 소요일수로 N에 대한 두 부등식을 세워 연립함"
+          }
+        ],
+        "given": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "6\\cdot 34 < N \\le 6\\cdot 35"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "solution",
+            "quote": "자연수 $N$이라 하면"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "작업 일수 조건으로 연립부등식을 세워 N의 범위와 소요일수 21일을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "나머지",
+            "src": "stem",
+            "quote": "나누었을 때의 나머지를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "나머지정리",
+            "src": "solution",
+            "quote": "나머지정리에 의하여 $P(2)=5$, $P(5)=11$",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $P(x)$"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "나머지를 ax+b로 두고 나머지정리 P(2)=5, P(5)=11을 연립함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "stem",
+            "quote": "함수 $f(x)=|x^2+2x-8|$",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 내부 식의 부호가 바뀌는 x=-4, 2를 기준으로 k=|x^2+2x-8|+2x를 구간별 분석함"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=|x^2+2x-8|$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실수",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "k=|x^2+2x-8|+2x의 구간별 경계값 4와 최댓값 8로 네 교점 범위를 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단일 정답",
+      "slots": {
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위를 구하시오"
+          }
+        ],
+        "method": [
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $\\dfrac{D}{4} = (-4)^2-(k+6) = 10-k > 0",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-6x+k-1=0$"
+          }
+        ],
+        "condition": [
+          {
+            "term": "실근",
+            "src": "stem",
+            "quote": "서로 다른 두 실근이 모두 $-1$보다 크도록"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "t=x+1 치환 후 판별식과 두 근의 합·곱 조건으로 -6<k<10을 구함"
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

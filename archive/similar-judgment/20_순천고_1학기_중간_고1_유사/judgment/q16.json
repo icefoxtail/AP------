@@ -1,0 +1,62 @@
+{
+  "qid": 16,
+  "itemFingerprint": "e6812a6e918ce33c",
+  "solveSteps": [
+    "$x-y=-3$에서 $y=x+3$을 $x^2+y^2=29$에 대입하면 $$ x^2+(x+3)^2 = 29 \\implies 2x^2+6x-20 = 0 \\implies x^2+3x-10 = (x+5)(x-2) = 0 $$ 이다. (cases)",
+    "따라서 $x=2$일 때 $y=5$ ($a+b=7$), $x=-5$일 때 $y=-2$ ($a+b=-7$)이므로 가능한 모든 $a+b$의 합은 $7+(-7)=0$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+  "unitEvidence": "연립방정식 $\\begin{cases}x-y=-3\\x^2",
+  "rpmRecordId": "H1-RPM-041",
+  "rpmReason": "Q16(cases): 치환과 연립방정식 단원의 RPM H1-RPM-041 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+  "templateKey": "TPL_H1_SYSTEM_DIRECT",
+  "typeReason": "Q16(cases): 치환과 연립방정식 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q16(cases): 치환과 연립방정식 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "x^2+y^2=29$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q16(cases): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

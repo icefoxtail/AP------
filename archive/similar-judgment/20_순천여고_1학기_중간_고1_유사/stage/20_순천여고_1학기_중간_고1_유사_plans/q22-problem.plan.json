@@ -1,0 +1,75 @@
+{
+  "status": "READY",
+  "pattern": "piecewise-polynomial-spike-v1",
+  "viewBox": "0 0 360 280",
+  "elements": [
+    {
+      "type": "curve",
+      "id": "parabola_f",
+      "expr": "0.5*(x+2)*(x-6)",
+      "domain": [
+        -3.5,
+        7.5
+      ],
+      "label": "$y=f(x)$"
+    },
+    {
+      "type": "dashed_line",
+      "id": "axis_x2",
+      "points": [
+        [
+          2,
+          -9
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "label": "$x=2$"
+    },
+    {
+      "type": "polygon",
+      "id": "triangle_ACB",
+      "points": [
+        [
+          -2,
+          0
+        ],
+        [
+          0,
+          -6
+        ],
+        [
+          6,
+          0
+        ]
+      ]
+    },
+    {
+      "type": "point",
+      "coords": [
+        -2,
+        0
+      ],
+      "label": "$A$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        6,
+        0
+      ],
+      "label": "$B$"
+    },
+    {
+      "type": "point",
+      "coords": [
+        0,
+        -6
+      ],
+      "label": "$C(0,-6)$"
+    }
+  ],
+  "note": "x=2를 축으로 하고 A(-2,0), B(6,0), C(0,-6)을 지나는 아래로 볼록 포물선과 삼각형 ACB 도식"
+}

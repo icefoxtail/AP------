@@ -1,0 +1,70 @@
+{
+  "qid": 15,
+  "itemFingerprint": "30ce14bfaf873f86",
+  "solveSteps": [
+    "조건 (가), (나)에 의해 $f(x)-(-2ax-2)=a(x-2)(x-4)$이므로 $$ f(x) = a(x^2-6x+8)-2ax-2 = a(x^2-8x+8)-2 = a(x-4)^2-8a-2 $$ 이다.",
+    "$a>0$이고 $2\\le x\\le 6$에 꼭짓점 $x=4$가 포함되므로 $f(x)$의 최솟값은 $-8a-2$이다.",
+    "조건 (다)에서 $-8a-2=-26$이므로 $8a=24 \\implies a=3$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "이차함수 $f(x)$가 다음 조건을 만족시킬 때, $a",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q15(ax): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q15(ax): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(ax): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$f(x)$의 최솟값은 $-26$이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$",
+        "evidenceType": "IMPLIED",
+        "justification": "교점 방정식으로 f(x)를 세우고 완전제곱식으로 정리해 최솟값 조건을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "계수 $a$는 양수이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

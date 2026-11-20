@@ -1,0 +1,63 @@
+{
+  "qid": 7,
+  "itemFingerprint": "0e522677c91aba62",
+  "solveSteps": [
+    "$P(x)=2x^5-x^4-5x^3+3x+1$이라 두면 $$ P(1)=2-1-5+3+1=0, \\qquad P(-1)=-2-1+5-3+1=0 $$ 이므로 $x-1$과 $x+1$이 모두 인수이다.",
+    "조립제법으로 인수분해하면 $$ \\begin{aligned} P(x) &= (x-1)(x+1)(2x^3-x^2-3x-1) \\ &= (x-1)(x+1)(2x+1)(x^2-x-1) \\end{aligned} $$ 이다.",
+    "따라서 ① $x-1$, ② $x+1$, ③ $2x+1$, ④ $x^2-x-1$은 모두 인수이고, ⑤ $x^2+x-1$은 인수가 아니다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "$x$에 대한 다항식 $2x^5-x^4-5x^3+3x+",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q7(aligned): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q7(aligned): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(aligned): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $2x^5-x^4-5x^3+3x+1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "src": "stem",
+        "quote": "인수가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "조립제법으로 인수분해하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q7(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

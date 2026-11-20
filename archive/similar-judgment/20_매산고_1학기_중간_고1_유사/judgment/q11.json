@@ -1,0 +1,71 @@
+{
+  "qid": 11,
+  "itemFingerprint": "69886ccfd1cd4e99",
+  "solveSteps": [
+    "주어진 등식의 양변을 합차 공식으로 정리하면 $$ ((a-b)+c)((a-b)-c) = (c+(a+b))(c-(a+b)) $$ $$ (a-b)^2-c^2 = c^2-(a+b)^2 \\implies (a-b)^2+(a+b)^2 = 2c^2 $$ 이다.",
+    "좌변을 전개하면 $2(a^2+b^2)=2c^2$, 즉 $a^2+b^2=c^2$이므로 $c$가 빗변이고 직각을 낀 두 변의 길이가 $a, b$이다.",
+    "직각이등변삼각형이므로 $a=b$이고, 넓이가 $18$이므로 $$ \\dfrac{1}{2}a^2 = 18 \\implies a^2 = 36 \\implies a = b = 6 $$ 이다.",
+    "따라서 $c=\\sqrt{6^2+6^2}=6\\sqrt{2}$이므로 $$ \\dfrac{ab}{c} = \\dfrac{6\\cdot 6}{6\\sqrt{2}} = \\dfrac{6}{\\sqrt{2}} = 3\\sqrt{2} $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "넓이가 $18$인 직각이등변삼각형 $ABC$의 세 변의",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q11(18): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q11(18): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(18): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "넓이가 $18$인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각이등변삼각형",
+        "src": "stem",
+        "quote": "직각이등변삼각형 $ABC$"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "합차 공식으로 정리하면",
+        "evidenceType": "IMPLIED",
+        "justification": "합차 공식과 완전제곱 전개를 이용해 a^2+b^2=c^2을 유도함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $(c+a-b)(a-b-c)=(a+b+c)(c-a-b)$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q11(18): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

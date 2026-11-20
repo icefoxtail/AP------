@@ -1,0 +1,69 @@
+{
+  "qid": 20,
+  "itemFingerprint": "2d165648253d3501",
+  "solveSteps": [
+    "- ㄱ. (ax)",
+    "$f(3x)=0$에서 $3x=\\alpha, \\beta, \\gamma$이므로 세 근은 $\\dfrac{\\alpha}{3}, \\dfrac{\\beta}{3}, \\dfrac{\\gamma}{3}$이다.",
+    "(참)  \n- ㄴ.",
+    "$f\\left(\\dfrac{x}{3}\\right)=0$의 세 근은 $3\\alpha, 3\\beta, 3\\gamma$이고, 그 합은 $3(\\alpha+\\beta+\\gamma)=3a=6$이므로 $a=2$이다.",
+    "(참)  \n- ㄷ.",
+    "$f(2x-1)=0$의 세 근은 $\\dfrac{\\alpha+1}{2}, \\dfrac{\\beta+1}{2}, \\dfrac{\\gamma+1}{2}$이고, 세 근의 곱이 $0$이면 $f(x)=0$의 한 근이 $-1$이다.",
+    "이미 $\\alpha=1$이므로 세 근을 $1, -1, \\gamma$라 하면 $b=1(-1)+(-1)\\gamma+\\gamma(1)=-1\\ne 1$이다.",
+    "(거짓) 따라서 옳은 것은 ㄱ, ㄴ이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "$f(x)=x^3-ax^2+bx-c$이고 방정식 $f(",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q20(ax): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q20(ax): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(ax): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차식",
+        "src": "stem",
+        "quote": "$f(x)=x^3-ax^2+bx-c$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "방정식 $f(x)=0$의 세 근이"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "3(\\alpha+\\beta+\\gamma)=3a=6",
+        "evidenceType": "IMPLIED",
+        "justification": "일차 변환된 방정식의 근을 구해 삼차방정식 근과 계수의 관계를 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 12,
+  "itemFingerprint": "730c84135929cc00",
+  "solveSteps": [
+    "그림은 두 직사각형을 나란히 두고 가운데 세로 철망을 함께 사용하는 구조이다.",
+    "전체 가로 길이를 $w\\text{m}$, 세로 길이를 $h\\text{m}$ ($w>0, h>0$)라 하면 철망의 총 길이는 $$ 2w+3h = 240 \\implies w = \\frac{240-3h}{2} $$ 꽃밭 전체의 넓이 $S$는 $$ S = wh = \\frac{h(240-3h)}{2} = -\\frac{3}{2}h^2+120h = -\\frac{3}{2}(h-40)^2+2400 $$ $h=40$일 때 $w=60>0$이므로 전체 넓이의 최댓값은 $2400$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "길이가 $240\\text{m}$인 철망을 사용하여 그림",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q12(240): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q12(240): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q12(240): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "$2$개의 직사각형"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "전체 넓이의 최댓값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "-\\frac{3}{2}(h-40)^2+2400",
+        "evidenceType": "IMPLIED",
+        "justification": "철망 길이 2w+3h=240을 대입해 넓이를 h의 이차함수로 나타내 최댓값을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q12(240): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

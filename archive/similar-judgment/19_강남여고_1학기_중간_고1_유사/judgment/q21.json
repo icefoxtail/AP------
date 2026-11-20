@@ -1,0 +1,71 @@
+{
+  "qid": 21,
+  "itemFingerprint": "029656c89adf157b",
+  "solveSteps": [
+    "$B(0, 0), C(12, 0), A(0, 12), D(12, 12)$로 좌표평면 위에 놓고 $P(x, y)$라 하면 $\\overline{PQ}=x, \\overline{PR}=y$이다.",
+    "직사각형 $PQBR$의 둘레가 $32$, 넓이가 $50$이므로 $$ 2(x+y)=32 \\implies x+y=16, \\qquad xy=50 $$ 이다.",
+    "따라서 $x^2+y^2=(x+y)^2-2xy=16^2-2\\cdot 50=156$이다.",
+    "점 $D(12, 12)$와 점 $P(x, y)$ 사이의 거리의 제곱은 $$ \\overline{DP}^2 = (12-x)^2+(12-y)^2 = x^2+y^2-24(x+y)+288 = 156-24\\cdot 16+288 = 60 $$ 이므로 $\\overline{DP}=\\sqrt{60}=2\\sqrt{15}$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "오른쪽 그림과 같이 한 변의 길이가 $12$인 정사각형",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q21(12): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q21(12): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(12): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "정사각형 $ABCD$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "선분 $DP$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "(x+y)^2-2xy",
+        "evidenceType": "IMPLIED",
+        "justification": "좌표 설정 후 둘레·넓이를 x+y, xy로 바꾸어 곱셈 공식으로 DP^2을 계산함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "내접하는 원"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q21(12): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

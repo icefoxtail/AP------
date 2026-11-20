@@ -1,0 +1,63 @@
+{
+  "qid": 13,
+  "itemFingerprint": "782df507dacd71ac",
+  "solveSteps": [
+    "$a+b=4$, $ab=(2+\\sqrt{3})(2-\\sqrt{3})=4-3=1$이므로 $$ m = a^2+b^2 = (a+b)^2-2ab = 4^2-2\\cdot 1 = 14 $$ $$ n = a^3+b^3 = (a+b)^3-3ab(a+b) = 4^3-3\\cdot 1\\cdot 4 = 52 $$ 이다.",
+    "따라서 $m+n=14+52=66$이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "$a=2+\\sqrt{3}$, $b=2-\\sqrt{3}$",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q13(52): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q13(52): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q13(52): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "src": "stem",
+        "quote": "$a=2+\\sqrt{3}$, $b=2-\\sqrt{3}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대칭식",
+        "src": "stem",
+        "quote": "$a^2+b^2$의 값을 $m$, $a^3+b^3$의 값을 $n$"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "(a+b)^2-2ab",
+        "evidenceType": "IMPLIED",
+        "justification": "곱셈 공식의 변형으로 제곱의 합과 세제곱의 합을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q13(52): 발문과 해설의 풀이 과정을 점검하여 정답 ④를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

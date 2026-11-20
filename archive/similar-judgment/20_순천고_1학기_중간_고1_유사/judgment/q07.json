@@ -1,0 +1,68 @@
+{
+  "qid": 7,
+  "itemFingerprint": "d17039f628dc6ddc",
+  "solveSteps": [
+    "이차방정식이 서로 다른 두 실근을 가지므로 판별식 $D>0$이어야 한다.",
+    "$$ \\dfrac{D}{4} = (k-2)^2-(k^2-8) = k^2-4k+4-k^2+8 = -4k+12 > 0 $$ 따라서 $4k<12$이므로 $k<3$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "unitEvidence": "이차방정식 $x^2-2(k-2)x+k^2-8=0$이 서",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "Q7(12): 판별식과 근의 조건 단원의 RPM H1-RPM-028 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+  "typeReason": "Q7(12): 판별식과 근의 조건 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q7(12): 판별식과 근의 조건 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-2(k-2)x+k^2-8=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "실수 $k$의 값의 범위는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D>0$이어야 한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근을 가질 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q7(12): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

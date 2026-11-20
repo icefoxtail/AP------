@@ -1,0 +1,63 @@
+{
+  "qid": 4,
+  "itemFingerprint": "a87111935ee8aec1",
+  "solveSteps": [
+    "$x^3-1=(x-1)(x^2+x+1)=0$의 한 허근이 $\\omega$이므로 $\\omega^3=1$, $\\omega^2+\\omega+1=0$이다.",
+    "따라서 $$ \\begin{aligned} \\omega+\\omega^2+\\omega^3+\\omega^4+\\omega^5+\\omega^6+\\omega^7 &= (\\omega+\\omega^2+1)+\\omega^3(\\omega+\\omega^2+1)+\\omega^6\\cdot\\omega \\ &= 0+0+1\\cdot\\omega = \\omega \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "삼차방정식 $x^3=1$의 한 허근을 $\\omega$라",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q4(aligned): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+  "typeReason": "Q4(aligned): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q4(aligned): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "x^3-1=(x-1)(x^2+x+1)=0"
+      }
+    ],
+    "goal": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근을 $\\omega$라 할 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3=1$",
+        "evidenceType": "IMPLIED",
+        "justification": "ω^3=1과 ω^2+ω+1=0을 이용해 3항씩 0으로 묶어 소거함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q4(aligned): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

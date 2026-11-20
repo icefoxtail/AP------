@@ -1,0 +1,70 @@
+{
+  "qid": 6,
+  "itemFingerprint": "60a1e7044ca69eff",
+  "solveSteps": [
+    "$f(x)=-x^2+6x+2=-(x-3)^2+11$이므로 위로 볼록하고 축이 $x=3$이다.",
+    "구간 $0\\le x\\le 5$에서 최솟값은 양 끝점 $x=0$ 또는 $x=5$에서 나타나므로 $$ f(0) = 2, \\qquad f(5) = -25+30+2 = 7 $$ 이다.",
+    "따라서 최솟값은 $2$이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$0\\le x\\le 5$에서 이차함수 $f(x)=-x^",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q6(11): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q6(11): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(11): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=-x^2+6x+2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-(x-3)^2+11",
+        "evidenceType": "IMPLIED",
+        "justification": "완전제곱식으로 축과 개형을 확인하고 양 끝점 값을 비교함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$0\\le x\\le 5$에서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q6(11): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

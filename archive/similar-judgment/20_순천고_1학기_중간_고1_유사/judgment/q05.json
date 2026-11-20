@@ -1,0 +1,63 @@
+{
+  "qid": 5,
+  "itemFingerprint": "a1d54f60c161df9e",
+  "solveSteps": [
+    "분모를 실수화하면 $$ \\dfrac{1-i}{1+i} = \\dfrac{(1-i)^2}{(1+i)(1-i)} = \\dfrac{-2i}{2} = -i, \\qquad \\dfrac{1+i}{1-i} = \\dfrac{(1+i)^2}{2} = i $$ 이다.",
+    "$i^4=1$이고 $202=4\\cdot 50+2$이므로 $$ (-i)^{202}+i^{202} = (-i)^2+i^2 = -1+(-1) = -2 $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "$\\left(\\dfrac{1-i}{1+i}\\right)",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q5(202): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q5(202): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q5(202): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "허수",
+        "src": "stem",
+        "quote": "i=\\sqrt{-1}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "\\dfrac{1-i}{1+i} = \\dfrac{(1-i)^2}{(1+i)(1-i)}"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "분모를 실수화하면",
+        "evidenceType": "IMPLIED",
+        "justification": "분모의 켤레복소수를 곱해 각각 -i, i로 간단히 한 뒤 거듭제곱을 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q5(202): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "qid": 14,
+  "itemFingerprint": "d4f7e76bca07eff3",
+  "solveSteps": [
+    "$T=a^2-9b^2-c^2$이라 두면 $c^2-a^2+9b^2=-T$이므로 주어진 등식은 $$ Tc^2 = -Ta^2 \\implies T(a^2+c^2) = 0 $$ 이다.",
+    "$a, c$는 자연수이므로 $a^2+c^2>0$이고, 따라서 $T=0$, 즉 $a^2=c^2+(3b)^2$이다.",
+    "- ㄱ.",
+    "$(3b+c)^2 = 9b^2+6bc+c^2 > 9b^2+c^2 = a^2$이고 $3b+c>0, a>0$이므로 $3b+c>a$이다.",
+    "(참)  \n- ㄴ.",
+    "$(a, b, c)=(10, 2, 8)$은 $10^2=8^2+6^2$을 만족하지만 $a+3b=10+6=16 < 64=c^2$이다.",
+    "(거짓)  \n- ㄷ.",
+    "$a=b+c=10$에서 $a=10, c=10-b$를 $a^2=c^2+9b^2$에 대입하면 $100=(10-b)^2+9b^2=100-20b+10b^2 \\implies 10b(b-2)=0$이다.",
+    "$b$는 자연수이므로 $b=2, c=8$이고 $bc=16\\ne 21$이다.",
+    "(거짓) 따라서 옳은 것은 ㄱ뿐이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "세 자연수 $a$, $b$, $c$가 등식 $(a^2-",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q14(10): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q14(10): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(10): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $(a^2-9b^2-c^2)c^2=a^2(c^2-a^2+9b^2)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 자연수 $a$, $b$, $c$"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "T(a^2+c^2) = 0",
+        "evidenceType": "IMPLIED",
+        "justification": "공통인수 T=a^2-9b^2-c^2으로 묶어 인수분해한 뒤 자연수 조건으로 T=0을 얻음"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 자연수 $a$, $b$, $c$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q14(10): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

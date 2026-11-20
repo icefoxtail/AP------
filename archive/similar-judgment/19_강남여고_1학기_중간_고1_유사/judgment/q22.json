@@ -1,0 +1,73 @@
+{
+  "qid": 22,
+  "itemFingerprint": "20ca43a3e37ff82d",
+  "solveSteps": [
+    "근과 계수의 관계에 의하여 $\\alpha+\\beta=a, \\alpha\\beta=b$이고, $\\alpha^3+\\beta^3=7a, \\alpha^3\\beta^3=3b^2$이다. (ax)",
+    "따라서 $a^3-3ab=7a$이고 $b^3=3b^2 \\implies b^2(b-3)=0$이므로 $b=0$ 또는 $b=3$이다.",
+    "1) $b=0$일 때: $a^3=7a \\implies a(a^2-7)=0$에서 $a=0$ 또는 $a=\\pm\\sqrt{7}$.",
+    "$a=0$이면 $x^2=0$으로 중근이므로 제외하고, $a=\\pm\\sqrt{7}$이면 서로 다른 두 실근 $0, a$를 가지므로 $(a, b)=(\\sqrt{7}, 0), (-\\sqrt{7}, 0)$의 $2$개.",
+    "2) $b=3$일 때: $a^3-9a=7a \\implies a(a^2-16)=0$에서 $a=0$ 또는 $a=\\pm 4$.",
+    "$a=0$이면 $x^2+3=0$으로 실근이 없으므로 제외하고, $a=\\pm 4$이면 판별식 $D=a^2-4b=16-12=4>0$이므로 $(4, 3), (-4, 3)$의 $2$개.",
+    "따라서 순서쌍 $(a, b)$는 모두 $4$개이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "다음 조건을 만족시키는 실수 $a, b$의 순서쌍 $(",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q22(ax): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q22(ax): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(ax): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-ax+b=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "순서쌍 $(a, b)$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 두 실근은 $\\alpha, \\beta$이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "qid": 20,
+  "itemFingerprint": "f2cd125fc08022fc",
+  "solveSteps": [
+    "$x^2-9x+14=(x-2)(x-7)=0$이므로 $P(2, 0)$, $Q(7, 0)$이다. (cases)",
+    "직선 $y=-x+k$가 $y=g(x)$와 서로 다른 세 점에서 만나는 경우는 다음 두 가지뿐이다.",
+    "1) 직선이 $Q(7, 0)$을 지날 때: $k=7$이고 교점은 $A(1, 6), B(3, 4), C(7, 0)$이다.",
+    "이때 $\\triangle ABP$의 넓이는 $\\dfrac{1}{2}|(1-2)(4-0)-(3-2)(6-0)| = 5$이다.",
+    "2) 직선이 $2\\le x\\le 7$ 구간에서 $y=-x^2+9x-14$에 접할 때: $-x^2+9x-14=-x+k \\iff x^2-10x+k+14=0$의 판별식 $D/4=25-(k+14)=0$에서 $k=11$이고 접점은 $B(5, 6)$이다.",
+    "또한 $x<2$ 또는 $x>7$에서 $x^2-9x+14=-x+11 \\iff x^2-8x+3=0$이므로 $A(4-\\sqrt{13}, 7+\\sqrt{13})$, $C(4+\\sqrt{13}, 7-\\sqrt{13})$이다.",
+    "두 점 $A, B$는 직선 $x+y-11=0$ 위에 있으므로  \n- $\\overline{AB} = \\sqrt{2}{5-(4-\\sqrt{13})} = \\sqrt{2}(1+\\sqrt{13})$  \n- 점 $P(2, 0)$과 직선 $x+y-11=0$ 사이의 거리 $h = \\dfrac{|2+0-11|}{\\sqrt{2}} = \\dfrac{9}{\\sqrt{2}}$ 따라서 $\\triangle ABP$의 넓이는 $\\dfrac{1}{2}\\cdot\\sqrt{2}(1+\\sqrt{13})\\cdot\\dfrac{9}{\\sqrt{2}} = \\dfrac{9+9\\sqrt{13}}{2} > 5$이다.",
+    "그러므로 넓이가 최대일 때 $k=11$, 넓이는 $\\dfrac{9+9\\sqrt{13}}{2}$이고, 합은 $11+\\dfrac{9+9\\sqrt{13}}{2}=\\dfrac{31+9\\sqrt{13}}{2}$이다."
+  ],
+  "solvedAnswer": "$\\dfrac{31+9\\sqrt{13}}{2}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "unitEvidence": "함수 $f(x)$와 함수 $g(x)$가 다음과 같다. ",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "Q20(cases): 이차방정식과 이차함수의 관계 단원의 RPM H1-RPM-033 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+  "typeReason": "Q20(cases): 이차방정식과 이차함수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(cases): 이차방정식과 이차함수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $ABP$의 넓이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "넓이가 최대가 되도록"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D/4=25-(k+14)=0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "교점은 $A(1, 6), B(3, 4), C(7, 0)$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q20(cases): 발문과 해설의 풀이 과정을 점검하여 정답 $\\dfrac{31+9\\sqrt{13}}{2}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

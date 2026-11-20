@@ -1,0 +1,70 @@
+{
+  "qid": 15,
+  "itemFingerprint": "7219d61205f96de5",
+  "solveSteps": [
+    "이차방정식 $x^2-9x+6=0$에서 근과 계수의 관계에 의하여 $\\alpha+\\beta=9$, $\\alpha\\beta=6$이다.",
+    "직각삼각형 $ABC$에 내접하는 정사각형의 한 변의 길이를 $s$라 하면, 닮은 직각삼각형의 비례식에 의하여 $$ \\dfrac{s}{\\beta} = \\dfrac{\\alpha-s}{\\alpha} \\implies \\alpha s = \\alpha\\beta - \\beta s \\implies (\\alpha+\\beta)s = \\alpha\\beta $$ 이므로 $s = \\dfrac{\\alpha\\beta}{\\alpha+\\beta} = \\dfrac{6}{9} = \\dfrac{2}{3}$이고, 정사각형의 넓이는 $s^2 = \\dfrac{4}{9}$이다.",
+    "두 수 $\\dfrac{2}{3}$, $\\dfrac{4}{9}$를 근으로 하고 $x^2$의 계수가 $27$인 이차방정식은 $$ 27\\left(x-\\dfrac{2}{3}\\right)\\left(x-\\dfrac{4}{9}\\right) = 27\\left(x^2-\\dfrac{10}{9}x+\\dfrac{8}{27}\\right) = 27x^2-30x+8 = 0 $$ 이므로 $m=-30$, $n=8$이다.",
+    "따라서 $|m+n|=|-30+8|=22$이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "unitEvidence": "이차방정식 $x^2-9x+6=0$의 두 실근을 $\\al",
+  "rpmRecordId": "H1-RPM-029",
+  "rpmReason": "Q15(AB): 근과 계수의 관계 단원의 RPM H1-RPM-029 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+  "typeReason": "Q15(AB): 근과 계수의 관계 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q15(AB): 근과 계수의 관계 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "두 근인 이차방정식이 $27x^2+mx+n=0$"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "내접하는 정사각형"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q15(AB): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

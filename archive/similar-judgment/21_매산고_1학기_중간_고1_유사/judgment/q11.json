@@ -1,0 +1,74 @@
+{
+  "qid": 11,
+  "itemFingerprint": "801719dea75814df",
+  "solveSteps": [
+    "$\\dfrac{1-i}{1+i}=-i$, $\\dfrac{1+i}{1-i}=i$이고 $i^{n+2}=-i^n$이므로 $f(n)=(-i)^n-i^n$이다.",
+    "$n=1, 2, 3, 4$일 때 $f(1)=-2i, f(2)=0, f(3)=2i, f(4)=0$으로 주기 $4$로 반복된다.",
+    "- ㄱ.",
+    "$2021=4\\times 505+1$이므로 $f(2021)=f(1)=-2i\\ne 2i$.",
+    "(거짓)  \n- ㄴ.",
+    "$4$개씩 합이 $0$이고 $98=4\\times 24+2$이므로 $f(1)+f(2)=-2i+0=-2i$.",
+    "(참)  \n- ㄷ.",
+    "$2n$과 $6n$은 모두 짝수이므로 $f(6n)=f(2n)=0$.",
+    "(참)  \n- ㄹ.",
+    "$f(1)f(3)=(-2i)(2i)=4$, $f(3)f(5)=(2i)(-2i)=4$ 등 총 $25$개 항이 모두 $4$이므로 합은 $25\\times 4=100\\ne 96$.",
+    "(거짓)  \n- ㅁ.",
+    "$f(n)=0$은 $n$이 짝수일 때 성립하므로 $100$ 이하 자연수 중 $50$개이다.",
+    "(참) 따라서 옳은 것은 ㄴ, ㄷ, ㅁ의 $3$개이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "자연수 $n$에 대하여 $f(n)=\\left(\\dfra",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q11(2021): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "Q11(2021): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q11(2021): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $n$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "f(n)=(-i)^n-i^n$이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "f(1)=-2i, f(2)=0, f(3)=2i, f(4)=0",
+        "evidenceType": "IMPLIED",
+        "justification": "분수식을 ±i로 실수화해 f(n)의 4주기 값 -2i, 0, 2i, 0을 구하고 각 보기를 판별함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q11(2021): 발문과 해설의 풀이 과정을 점검하여 정답 ①를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

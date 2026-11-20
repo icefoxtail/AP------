@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "b0d3919a85078890",
+  "solveSteps": [
+    "조건 (가)에 의하여 $$ f(x) = g(x){g(x)-5x^2}+{g(x)-5x^2} = {g(x)+1}{g(x)-5x^2} $$ 나머지 $g(x)-5x^2$의 차수는 나누는 식 $g(x)$의 차수보다 작아야 하므로 $g(x)$는 $5x^2$이 소거되는 이차식 $g(x)=5x^2+ax+b$이다.",
+    "그러면 $g(x)-5x^2=ax+b$이고, $f(x)$의 최고차항은 $5x^2\\cdot ax=5ax^3$이므로 최고차항 계수가 $1$이 되려면 $5a=1 \\implies a=\\dfrac{1}{5}$이다.",
+    "조건 (나)에서 $f(1)=-9$이므로 $u=g(1)$이라 하면 $$ (u+1)(u-5) = -9 \\implies u^2-4u+4 = (u-2)^2 = 0 \\implies u = g(1) = 2 $$ $g(1) = 5+\\dfrac{1}{5}+b = 2$에서 $b = -\\dfrac{16}{5}$이므로 $g(x) = 5x^2+\\dfrac{1}{5}x-\\dfrac{16}{5}$이다.",
+    "따라서 $g(3) = 45+\\dfrac{3}{5}-\\dfrac{16}{5} = \\dfrac{212}{5}$, $g(3)-45 = -\\dfrac{13}{5}$이므로 $$ f(3) = \\left(\\frac{212}{5}+1\\right)\\left(-\\frac{13}{5}\\right) = \\frac{217}{5}\\cdot\\left(-\\frac{13}{5}\\right) = -\\frac{2821}{25} $$ 이다."
+  ],
+  "solvedAnswer": "$-\\dfrac{2821}{25}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+  "unitEvidence": "최고차항의 계수가 $1$인 다항식 $f(x)$가 다음 ",
+  "rpmRecordId": "H1-RPM-005",
+  "rpmReason": "Q22(ax): 다항식의 나눗셈 단원의 RPM H1-RPM-005 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_DIVISION",
+  "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+  "typeReason": "Q22(ax): 다항식의 나눗셈 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(ax): 다항식의 나눗셈 단원의 기본 개념과 계산을 적용하는 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$가"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "stem",
+        "quote": "다항식 $g(x)$로 나눈 몫과 나머지",
+        "evidenceType": "IMPLIED",
+        "justification": "나머지의 차수가 제수 g(x)보다 작다는 성질로 g(x)의 이차항을 결정하고 f(1)=-9를 대입함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지정리",
+        "src": "stem",
+        "quote": "$x-1$로 나눈 나머지는 $-9$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q22(ax): 발문과 해설의 풀이 과정을 점검하여 정답 $-\\dfrac{2821}{25}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

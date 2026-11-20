@@ -1,0 +1,63 @@
+{
+  "qid": 3,
+  "itemFingerprint": "4ffebfa5569496f5",
+  "solveSteps": [
+    "$y=x^2-4x+1=(x-2)^2-3$이므로 아래로 볼록하고 축이 $x=2$이다.",
+    "구간 $-1 \\le x \\le 5$에 축 $x=2$가 포함되므로\n\n- 최솟값: $x=2$일 때 $-3$  \n- 최댓값: 축에서 가장 먼 $x=-1$ 또는 $x=5$일 때 $(-1-2)^2-3=6$ 따라서 최댓값과 최솟값의 합은 $6+(-3)=3$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "$-1 \\le x \\le 5$에서 이차함수 $y=x^2",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q3(1): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q3(1): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q3(1): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "축",
+        "src": "solution",
+        "quote": "축이 $x=2$이다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값의 합"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2-4x+1$",
+        "evidenceType": "IMPLIED",
+        "justification": "표준형 변환으로 꼭짓점 x=2와 양 끝점 함숫값을 비교함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q3(1): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "qid": 18,
+  "itemFingerprint": "c19d2585c5d3ba60",
+  "solveSteps": [
+    "$(x^3+2x^2-3x)^5 = x^5(x^2+2x-3)^5$이므로 $(x^2+2x-3)^5 = b_0+b_1x+\\cdots+b_{10}x^{10}$이라 두면 $a_4=0$이고 $a_7=b_2, a_9=b_4, a_{11}=b_6, a_{13}=b_8$이다. (15)",
+    "즉, 구하는 값은 $b_2+b_4+b_6+b_8$이다.",
+    "$G(x)=(x^2+2x-3)^5$이라 하면 $$ G(1) = (1+2-3)^5 = 0, \\qquad G(-1) = (1-2-3)^5 = (-4)^5 = -1024 $$ 이다.",
+    "$G(1)+G(-1)$을 구하면 홀수차항이 소거되어 $$ 2(b_0+b_2+b_4+b_6+b_8+b_{10}) = -1024 \\implies b_0+b_2+b_4+b_6+b_8+b_{10} = -512 $$ 이다.",
+    "여기서 상수항 $b_0=(-3)^5=-243$이고 최고차항 계수 $b_{10}=1$이므로 $$ b_2+b_4+b_6+b_8 = -512 - (-243) - 1 = -270 $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "unitEvidence": "$x$에 대한 등식 $(x^3+2x^2-3x)^5=a_",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "Q18(15): 항등식과 계수비교 단원의 RPM H1-RPM-007 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "Q18(15): 항등식과 계수비교 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q18(15): 항등식과 계수비교 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 성립할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$a_4+a_7+a_9+a_{11}+a_{13}$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "수치대입법",
+        "src": "solution",
+        "quote": "G(1)+G(-1)$을 구하면",
+        "evidenceType": "IMPLIED",
+        "justification": "G(x)에 x=1과 x=-1을 대입해 짝수차항의 계수 합을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q18(15): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 20,
+  "itemFingerprint": "76ca71ac54f2e120",
+  "solveSteps": [
+    "계수 $a, b, c$가 모두 실수이므로 삼차방정식 $x^3+ax^2+bx+c=0$은 $1+\\sqrt{3}i$와 그 켤레복소수 $1-\\sqrt{3}i$를 근으로 가진다.",
+    "만약 공통근 $m$이 $1\\pm\\sqrt{3}i$라면 실계수 이차방정식 $x^2+ax+6=0$의 두 근이 $1\\pm\\sqrt{3}i$이어야 하지만, 두 근의 곱이 $(1+\\sqrt{3}i)(1-\\sqrt{3}i)=4\\ne 6$이므로 모순이다.",
+    "따라서 $m$은 삼차방정식의 실근이다.",
+    "근과 계수의 관계에 의하여 삼차방정식의 세 근의 합은 $$ (1+\\sqrt{3}i)+(1-\\sqrt{3}i)+m = -a \\implies a = -(m+2) $$ $m$이 $x^2+ax+6=0$의 근이므로 $m^2+am+6=0$에 $a=-(m+2)$를 대입하면 $$ m^2-(m+2)m+6 = -2m+6 = 0 \\implies m=3 $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "세 실수 $a, b, c$에 대하여 한 근이 $1+\\s",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q20(ax): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q20(ax): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q20(ax): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3+ax^2+bx+c=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "공통근",
+        "src": "solution",
+        "quote": "공통근 $m$이"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "켤레복소수 $1-\\sqrt{3}i$를 근으로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q20(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

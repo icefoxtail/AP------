@@ -1,0 +1,63 @@
+{
+  "qid": 1,
+  "itemFingerprint": "cc90db99594e20c8",
+  "solveSteps": [
+    "Q1 문제의 조건(xy)에 맞추어 식을 세운다.",
+    "식을 간단히 하면 $4A-3A-2B=A-2B$이므로 $$ \\begin{aligned} A-2B &= (3x^2-2xy+4y^2)-2(x^2-5xy+2y^2) \\ &= (3-2)x^2+(-2+10)xy+(4-4)y^2 \\ &= x^2+8xy \\end{aligned} $$ 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "두 다항식 $A$, $B$가 $A=3x^2-2xy+4y",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q1(xy): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "Q1(xy): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q1(xy): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $A$, $B$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $A$, $B$"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "A-2B$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "A-2B로 정리한 뒤 x^2, xy, y^2 동류항끼리 계수를 계산함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q1(xy): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

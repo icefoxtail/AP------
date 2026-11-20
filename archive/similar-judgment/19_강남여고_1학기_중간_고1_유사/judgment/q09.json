@@ -1,0 +1,63 @@
+{
+  "qid": 9,
+  "itemFingerprint": "ec5f18c53447c2d2",
+  "solveSteps": [
+    "$P(x)=x^3+ax^2+7x+b$라 두고 $x=1$로 조립제법을 두 번 연속 적용하면\n\n- 첫째 나머지: $1+a+7+b=a+b+8=0$  \n- 첫째 몫은 $x^2+(a+1)x+(a+8)$이고, 이 몫도 $x-1$로 나누어떨어지므로 $1+(a+1)+(a+8)=2a+10=0 \\implies a=-5$이다.",
+    "이를 $a+b+8=0$에 대입하면 $b=-3$이므로 $ab=(-5)(-3)=15$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "unitEvidence": "다항식 $x^3+ax^2+7x+b$가 $(x-1)^2$",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "Q9(ax): 나머지정리와 인수정리 단원의 RPM H1-RPM-009 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q9(ax): 나머지정리와 인수정리 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q9(ax): 나머지정리와 인수정리 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $x^3+ax^2+7x+b$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "조립제법을 두 번 연속 적용하면",
+        "evidenceType": "IMPLIED",
+        "justification": "x=1로 조립제법을 두 번 수행해 두 나머지를 모두 0으로 둠"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q9(ax): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "qid": 6,
+  "itemFingerprint": "7940a8876c6ce459",
+  "solveSteps": [
+    "$x^3+1=(x+1)(x^2-x+1)=0$이고 $\\omega$는 허근이므로 $\\omega^3=-1$, $\\omega^2-\\omega+1=0$이다.",
+    "- ① $\\omega^3=-1$ (참)  \n- ② $\\omega^2-\\omega+1=0$의 양변을 $\\omega$로 나누면 $\\omega-1+\\dfrac{1}{\\omega}=0$, 즉 $\\omega+\\dfrac{1}{\\omega}=1\\ne -1$이다.",
+    "(거짓)  \n- ③ $\\omega^2-\\omega+1=0$ (참)  \n- ④ $\\omega, \\bar{\\omega}$는 $x^2-x+1=0$의 두 근이므로 $\\omega+\\bar{\\omega}=1$이다.",
+    "(참)  \n- ⑤ $1-\\omega+\\omega^2=0$이고 $(-1)^k\\omega^k$가 주기 $3$ 부호 교대로 $3$항씩 합이 $0$이므로 앞의 $15$항 합은 $0$이고 마지막 항 $-\\omega^{15}=-(-1)^5=1$이다.",
+    "(참) 따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+  "unitEvidence": "방정식 $x^3=-1$의 한 허근이 $\\omega$일 ",
+  "rpmRecordId": "H1-RPM-039",
+  "rpmReason": "Q6(15): 고차방정식의 풀이 단원의 RPM H1-RPM-039 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+  "templateKey": "TPL_H1_HIGHER_SUBSTITUTION_REDUCTION",
+  "typeReason": "Q6(15): 고차방정식의 풀이 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q6(15): 고차방정식의 풀이 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "방정식 $x^3=-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근이 $\\omega$일 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "x^3+1=(x+1)(x^2-x+1)=0",
+        "evidenceType": "IMPLIED",
+        "justification": "x^3+1을 인수분해해 허근이 만족하는 이차식과 켤레근 성질을 적용함"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근이 $\\omega$일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "Q6(15): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
