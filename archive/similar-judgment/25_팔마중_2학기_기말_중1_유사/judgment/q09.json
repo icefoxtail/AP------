@@ -1,0 +1,63 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "dfcc8cbd61bb0926",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "반구 2개를 합치면 반지름 3 cm 인 구 1개의 부피와 같다.",
+    "구의 부피는 4/3 * pi * 3^3 = 36pi cm^3 이다.",
+    "원기둥의 부피는 pi * 3^2 * 8 = 72pi cm^3 이다.",
+    "결합된 입체도형의 부피는 36pi + 72pi = 108pi cm^3 이다.",
+    "정답은 ④번 108pi cm^3 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "양 끝에 반지름의 길이가 $",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "반구 2개와 원기둥이 결합된 입체도형의 부피 108pi 를 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-220",
+  "rpmReason": "구 부피 36pi 와 원기둥 부피 72pi 를 더해 합성 부피 108pi 를 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "반구 2개의 부피 36pi 와 원기둥 부피 72pi 를 각각 구해 108pi 를 얻는다.",
+  "how": "구 36pi 와 원기둥 72pi 를 합하여 부피 108pi cm^3 을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $3\\rm\\,cm$인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "입체도형",
+        "src": "stem",
+        "quote": "원기둥이 결합된 입체도형의 부피는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "원기둥",
+        "src": "stem",
+        "quote": "가운데에 밑면의 반지름의 길이가",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "높이가 $8\\rm\\,cm$인 원기둥이"
+      }
+    ]
+  }
+}

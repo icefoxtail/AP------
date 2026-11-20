@@ -1,0 +1,62 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "38c6df2e8d0e4d42",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "동아리 학생 전체는 30 명이다.",
+    "16초 이상 18초 미만 계급의 도수를 히스토그램에서 읽는다.",
+    "해당 계급의 도수는 10 명이고 전체의 10/30 = 1/3 (약 33.3%) 이다.",
+    "계산 결과에 따라 정답은 ①번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어느 동아리 학생 $30$명",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "problemTypeKey": "PT_M1_FREQUENCY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "히스토그램에서 전체 30 명 중 16초 이상 18초 미만 계급의 도수와 비율을 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-231",
+  "rpmReason": "히스토그램의 각 직사각형 높이로 30 명의 분포를 파악하여 16~18초 구간을 구한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "히스토그램에서 16초 이상 18초 미만 계급의 도수를 30 명 중에서 직접 읽는다.",
+  "how": "히스토그램의 직사각형 높이로부터 16~18초 계급의 학생 수를 30 명 중에서 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "히스토그램",
+        "src": "stem",
+        "quote": "조사하여 나타낸 히스토그램에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "히스토그램에서, 기록이 $16$초"
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "히스토그램에서, 기록이 $16$초",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계급값",
+        "src": "solution",
+        "quote": "찢어진 계급의 도수를 복원한다."
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "530c888d7072aae0",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "육각기둥의 밑면은 육각형이므로 n = 6 이다.",
+    "모서리의 개수는 a = 3n = 3 * 6 = 18 이다.",
+    "꼭짓점의 개수는 b = 2n = 2 * 6 = 12 이다.",
+    "따라서 a + b = 18 + 12 = 30 이다.",
+    "정답은 ①번 30 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "육각기둥의 모서리의 개수를",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "육각기둥에서 모서리 18 개와 꼭짓점 12 개를 구해 합 30 을 계산하는 유형이다.",
+  "rpmRecordId": "M1-RPM-207",
+  "rpmReason": "n각기둥의 모서리 3n과 꼭짓점 2n 공식을 적용하여 30 을 도출한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "육각기둥의 구성요소 개수 공식으로 a=18, b=12 에서 30 을 바로 구한다.",
+  "how": "육각기둥의 모서리 a=18, 꼭짓점 b=12 에서 a+b=30 을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "각기둥",
+        "src": "stem",
+        "quote": "육각기둥의 모서리의 개수를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "모서리의 개수를 $a$, 꼭짓점의"
+      }
+    ],
+    "method": [
+      {
+        "term": "모서리",
+        "src": "stem",
+        "quote": "육각기둥의 모서리의 개수를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "$a$, 꼭짓점의 개수를 $b$"
+      }
+    ]
+  }
+}
