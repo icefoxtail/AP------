@@ -234,7 +234,12 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "sourceQuestionRef": "2022_팔마고2_확통_1기말.pdf:p2:q07",
     "sourceQuestionUidStatus": "ORIGINAL_PDF_RECONSTRUCTED_R1",
-    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF"
+    "sourceRepairFlag": "SOURCE_PARITY_RESTORED_FROM_ORIGINAL_PDF",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 정규분포 곡선이 평균 1에서 가장 높다. 가로축에서 평균 1과 a 사이의 곡선 아래가 색칠되어 있고 넓이 0.4772가 적혀 있다. 가로축 아래에는 표준정규분포의 값 0과 2가 각각 1과 a에 맞추어 적혀 있다.",
+    "solutionImageCaption": "X는 N(1, 4)이므로 평균 1, 표준편차 2이다. P(1≤X≤a)=P(0≤Z≤(a−1)/2)=0.4772이고 표에서 P(0≤Z≤2)=0.4772이므로 (a−1)/2=2이다. 따라서 a=5이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 8,
@@ -692,7 +697,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "sourceQuestionRef": "22_팔마고_1학기_기말_고2_확률과통계:q21",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED"
+    "sourceRepairFlag": "SOURCE_ORIGINAL_PDF_MATCH_VISUALLY_CONFIRMED",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 2승, 3승, 4승이라고 적힌 세 칸에 각각 6, 4, 1이 들어 있고 칸 사이에 더하기 기호가 있다.",
+    "solutionImageCaption": "A는 앞으로 2승, B는 3승이 필요하므로 앞으로 4경기를 모두 한다고 가정해도 승부가 갈린다. A가 4경기 중 2번 이상 이기면 A가 먼저 6승에 도달한다. 칸은 4경기 중 A가 2승, 3승, 4승인 경우의 수 6, 4, 1이고 합은 11이다. 전체 경우는 2⁴=16가지이므로 A가 상금을 모두 가질 확률은 11/16, B는 5/16이다. 따라서 공정한 분배는 11:5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
