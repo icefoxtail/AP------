@@ -1,0 +1,73 @@
+{
+  "qid": 16,
+  "itemFingerprint": "605de57dd538582f",
+  "solveSteps": [
+    "$g(n) = n^2 - 13n + 36 = (n-4)(n-9)$ 라 하자 (합 20, 배점 4.4점).",
+    "$n$ 이 홀수이면 $g(n)$ 의 부호에 관계없이 $f(n) = 1$.",
+    "$n$ 이 짝수이면 $g(n)>0 \\implies f(n)=2$, $g(n)=0 \\implies f(n)=1$, $g(n)<0 \\implies f(n)=0$.",
+    "$2f(n) = f(n+1)$ 을 만족하려면 $f(n)=1, f(n+1)=2$ 여야 하므로 $n$ 은 홀수이고 $n+1$ 은 짝수이며 $g(n+1) > 0$ 이어야 한다.",
+    "$4 \\le n \\le 12$ 범위의 홀수 $n$ 중 $g(n+1) > 0$ 인 경우는 $n=9$ ($g(10)=6>0$) 와 $n=11$ ($g(12)=24>0$) 이다.",
+    "모든 $n$ 의 합은 $9 + 11 = 20$ 이며 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "$4 \\le n \\le 13$인 자연수 $n$에 대하여 $n^2 - 13n + 36$의 $n$제곱근 중 실수인 것의 개수를 $f(n)$이라 하자.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "36$의 $n$제곱근 중 실수인 것",
+  "rpmRecordId": "H2-M1-RPM-068",
+  "rpmReason": "거듭제곱근의 지수 홀짝성 및 밑의 부호에 따른 실수해의 개수를 판정하는 H2-M1-RPM-068 거듭제곱근 > 실수 조건에 해당한다 (값 20, 배점 4.4점).",
+  "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+  "templateKey": "TPL_H22A_01_ROOT_REAL_068",
+  "typeReason": "거듭제곱근의 지수가 홀수/짝수일 때 실수인 것의 개수 $f(n)$ 의 정의를 이용하여 관계식을 만족하는 $n$ 을 찾는 유형이다 (값 20, 배점 4.4점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "홀수·짝수 케이스 분류와 이차식 부호 판정을 종합적으로 결합해야 하는 난이도 3 문항이다 (값 20, 배점 4.4점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "le 13$인 자연수 $n$에 대하"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "을 만족시키는 모든 $n$의 값의"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "src": "stem",
+        "quote": "36$의 $n$제곱근 중 실수인 것",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "짝수",
+        "src": "solution",
+        "quote": "$n$이 짝수일 때는 $g("
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$f(n)=1, f(n+1)=2$ 조건으로부터 $n$ 은 홀수, $n+1$ 은 짝수이며 $(n-3)(n-8)>0$ 임을 만족하는 $n=9, 11$ 을 찾아 합 20 으로 판정했다 (배점 4.4점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "거듭제곱근 중 실수인 것의 개수 규칙을 다루므로 H22-A-01 지수와 로그에 속한다."
+}

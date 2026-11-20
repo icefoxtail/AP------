@@ -1,0 +1,75 @@
+{
+  "qid": 23,
+  "itemFingerprint": "569d3c3d13c54e11",
+  "solveSteps": [
+    "$-4\\log_a b = 16\\log_b c = \\log_c a = k$ 라 두면 $(-4)(16)(1) (\\log_a b \\cdot \\log_b c \\cdot \\log_c a) = k^3$ (모든 자연수 합 353).",
+    "$\\log_a b \\cdot \\log_b c \\cdot \\log_c a = 1$ 이므로 $k^3 = -64 \\implies k = -4$ ($k$는 실수).",
+    "$-4\\log_a b = -4 \\implies \\log_a b = 1 \\implies b = a$.",
+    "$16\\log_b c = -4 \\implies \\log_b c = -1/4 \\implies c = b^{-1/4} = a^{-1/4}$.",
+    "$b \\times c = a \\cdot a^{-1/4} = a^{3/4}$ 이다.",
+    "$a^{3/4}$ 이 100 이하의 자연수가 되려면 $a = m^4$ ($m \\ge 2$ 인 자연수) 꼴이어야 하고, $a^{3/4} = m^3 \\le 100 \\implies m \\in \\{2, 3, 4\\}$.",
+    "$m=2 \\implies a=16$, $m=3 \\implies a=81$, $m=4 \\implies a=256$.",
+    "모든 자연수 $a$ 의 합은 $16 + 81 + 256 = 353$ 이다."
+  ],
+  "solvedAnswer": "$353$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "$1$이 아닌 세 양수 $a, b, c$가 $-4\\log_a b = 16\\log_b c = \\log_c a$를 만족시킨다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "$이 아닌 세 양수 $a, b,",
+  "rpmRecordId": "H2-M1-RPM-076",
+  "rpmReason": "순환하는 세 로그의 곱이 1이 되는 밑변환 공식 성질을 활용하는 H2-M1-RPM-076 로그의 성질 > 밑의 변환에 해당한다 (값 81, 353).",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+  "typeReason": "로그의 순환 곱 항등식으로 공통 비례상수 $k$ 를 결정하고 거듭제곱식의 정수 조건을 추론하는 고난도 서술형 유형이다 (값 81, 353).",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "세 비례식을 변변 곱해 $k=-4$ 를 구하고 $b \\times c = a^{3/4}$ 의 자연수 조건을 해석해야 하는 고난도 서술형 문항이다 (값 81, 353).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "$이 아닌 세 양수 $a, b,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "00$ 이하의 자연수가 되도록 하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "양화",
+        "src": "solution",
+        "quote": "따라서 구하는 모든 자연수 $a$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "solution",
+        "quote": "$ ($k$는 실수)   따라서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "비례상수를 $k$ 로 두고 곱하여 $k=-4$ 를 구한 뒤 $bc = a^{3/4}$ 이 100 이하의 자연수가 되는 $a=16, 81, 256$ 을 합해 353 으로 판정했다 (값 81).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "로그의 밑변환 순환 곱 성질과 거듭제곱의 자연수 조건을 다루므로 H22-A-01 지수와 로그에 속한다."
+}

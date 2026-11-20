@@ -1,0 +1,73 @@
+{
+  "qid": 10,
+  "itemFingerprint": "c51b4580fc72acd2",
+  "solveSteps": [
+    "함수 $y = 2\\log(x + 2) + 1$ 의 성질을 분석한다 (밑 10 상용로그).",
+    "ㄱ. $x = -1 \\implies y = 2\\log 1 + 1 = 1$, 점 $(-1, 1)$ 지남 (참).",
+    "ㄴ. 진수 $x+2=0$ 에서 점근선은 직선 $x = -2$ 이다 (거짓).",
+    "ㄷ. $x=0 \\implies y = 2\\log 2 + 1 > 0$, 증가함수이므로 제4사분면을 지나지 않는다 (참).",
+    "ㄹ. $y = \\log(x+2)^2 + 1$ 은 정의역이 $x \\ne -2$ 인 반면 원 함수는 $x > -2$ 이므로 다른 함수이다 (거짓).",
+    "따라서 옳은 것은 ㄱ, ㄷ이며 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "함수 $y = 2\\log(x + 2) + 1$에 대한 설명으로 옳은 것만을 <보기>에서 있는 대로 고른 것은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "함수 $y = 2\\",
+  "rpmRecordId": "H2-M1-RPM-087",
+  "rpmReason": "로그함수 그래프의 점근선, 지나는 점, 사분면 통과 여부를 판단하는 H2-M1-RPM-087 로그함수의 그래프 > 증가·감소에 해당한다 (밑 10의 상용로그).",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "typeReason": "로그함수의 그래프적 성질과 정의역 일치 여부를 종합적으로 판정하는 합답형 문항 유형이다 (밑 10의 상용로그).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "보기의 각 항목이 로그함수의 정의, 점근선, 사분면 통과 등 기본 개념을 직접 묻고 있는 난이도 2 문항이다 (밑 10의 상용로그).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $y = 2\\"
+      }
+    ],
+    "goal": [
+      {
+        "term": "점근선",
+        "src": "stem",
+        "quote": "ㄴ. 그래프의 점근선은 직선 $y"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "로 $1$만큼 평행이동한 것이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역",
+        "src": "solution",
+        "quote": ") + 1$의 정의역은 $\\{x \\"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "지나는 점 ㄱ(참), 점근선 $x=-2$로 ㄴ(거짓), $y$절편 양수로 ㄷ(참), 정의역 차이로 ㄹ(거짓) 판정하여 ⑤로 결론지었다 (밑 10).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "상용로그함수의 그래프의 점근선, 지난 사분면, 정의역 등 성질을 다루므로 H22-A-03 로그함수에 속한다."
+}

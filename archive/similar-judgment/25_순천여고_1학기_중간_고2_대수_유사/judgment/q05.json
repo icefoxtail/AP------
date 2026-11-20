@@ -1,0 +1,76 @@
+{
+  "qid": 5,
+  "itemFingerprint": "1dde1bec77cf8d8e",
+  "solveSteps": [
+    "각 각도를 $360^\\circ \\times n + \\alpha^\\circ$ ($0 \\le \\alpha < 360$) 꼴로 바꾼다 (배점 3.6점).",
+    "① $-1000^\\circ = 360^\\circ \\times (-3) + 80^\\circ \\implies \\alpha = 80$.",
+    "② $-400^\\circ = 360^\\circ \\times (-2) + 320^\\circ \\implies \\alpha = 320$.",
+    "③ $400^\\circ = 360^\\circ \\times 1 + 40^\\circ \\implies \\alpha = 40$.",
+    "④ $-750^\\circ = 360^\\circ \\times (-3) + 330^\\circ \\implies \\alpha = 330$.",
+    "⑤ $1000^\\circ = 360^\\circ \\times 2 + 280^\\circ \\implies \\alpha = 280$. $\\alpha$가 가장 큰 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "각을 $360^\\circ \\times n + \\alpha^\\circ$ ($n$은 정수, $0^\\circ \\le \\alpha^\\circ < 360^\\circ$)의 꼴로 나타낼 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "각을 $360^\\circ",
+  "rpmRecordId": "H2-M1-RPM-095",
+  "rpmReason": "음의 각과 양의 각을 360n + 알파의 일반각 형태로 변환하는 H2-M1-RPM-095 일반각과 호도법 > 일반각에 해당한다 (값 360, 배점 3.6점).",
+  "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+  "templateKey": "TPL_H22A_04_ANGLE_RADIAN_095",
+  "typeReason": "각의 회전수를 정수 n으로 분리하고 $0 \\le \\alpha < 360$ 범위의 최소 양의 각을 비교하는 유형이다 (값 360, 배점 3.6점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "360도로 나눈 나머지를 음의 각에 대해 올바르게 계산하는 기본 계산 문항이다 (값 360, 배점 3.6점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "$ ($n$은 정수, $0^\\ci"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최대",
+        "src": "solution",
+        "quote": "alpha$의 값이 가장 큰 것은 ④이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "알파값이 가장 큰 보기를 구하는 목표"
+      }
+    ],
+    "method": [
+      {
+        "term": "일반각",
+        "src": "solution",
+        "quote": "꼴로 나타내면",
+        "evidenceType": "IMPLIED",
+        "justification": "360n + 알파 꼴로 변환하는 일반각 방법"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "$ ($n$은 정수, $0^\\ci"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "각 보기를 360도 배수로 나누어 나머지 $\\alpha$를 구하고 ④ $-750^\\circ$ 의 $\\alpha = 330$ 이 최대임을 판정했다 (배점 3.6점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "일반각의 표현과 동경의 위치를 다루는 문항이므로 H22-A-04 삼각함수에 속한다."
+}
