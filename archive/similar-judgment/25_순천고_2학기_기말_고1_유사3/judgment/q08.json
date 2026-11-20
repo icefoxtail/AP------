@@ -1,0 +1,75 @@
+{
+  "qid": 8,
+  "itemFingerprint": "9d9fadc67ecace31",
+  "solveSteps": [
+    "f(x)=-2x+k 는 기울기 -2<0 이므로 감소함수이다.",
+    "X={x|-1<=x<=3} 에서 치역이 Y={y|a<=y<=7} 이려면 f(-1)=7 이고 f(3)=a 이어야 한다.",
+    "f(-1)=2+k=7 에서 k=5 이고 a=f(3)=-6+5=-1 이다.",
+    "a+k=-1+5=4 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "$X$에서 $Y$로의 함수 $f(x)=-2x+k$가 일대일대응일 때",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "X 에서 Y 로 가는 f(x)=-2x+k 가 일대일대응이 되도록 감소함수의 두 끝점값 f(-1)=7, f(3)=a 를 쓰는 단계라 일대일함수 행이다.",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+  "typeReason": "닫힌구간 -1<=x<=3 에서 a<=y<=7 로 가는 일차함수가 일대일대응이려면 감소하고 f(-1)=7, f(3)=a 이어야 한다는 조건으로 k=5, a=-1 을 정하는 것이 일차함수의 구간 일대일대응 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "감소 조건을 알아낸 뒤 f(-1)=7 로 k=5, f(3)=a 로 a=-1 을 얻어 a+k=4 를 구하는 세 단계라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $X=\\{x\\mid -1\\le x\\le 3\\}$, $Y=\\{y\\mid a\\le y\\le 7\\}$"
+      },
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=-2x+k$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "$f(x)=-2x+k$는 기울기가 $-2\\lt 0$이므로 감소함수이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "$x=-1$에서 최댓값 $7$을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "감소함수 f(x)=-2x+k 에서 f(-1)=7, f(3)=a 로 k=5, a=-1 을 직접 얻어 a+k=4 로 ④와 맞췄다. 해설도 감소 조건과 끝점값이라 RPM-257 과 일차함수의 구간 일대일대응 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

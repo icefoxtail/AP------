@@ -1,0 +1,81 @@
+{
+  "qid": 7,
+  "itemFingerprint": "5cbb095b21df9447",
+  "solveSteps": [
+    "근호 안 2x+a>=0 에서 정의역이 x>=-a/2 이고 이것이 x>=-3 이므로 a=6 이다.",
+    "y=-sqrt(2x+6)+b 가 점 (5,-1) 을 지나므로 -1=-sqrt(16)+b=-4+b 에서 b=3 이다.",
+    "sqrt(2x+6)>=0 이므로 y=-sqrt(2x+6)+3<=3 이라 k=3 이다.",
+    "a+b+k=6+3+3=12 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그래프가 점 $(5,-1)$을 지날 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "함수 $y=-\\sqrt{2x+a}+b$의 정의역이 $\\{x\\mid x\\ge -3\\}$이고",
+  "rpmRecordId": "H1-RPM-268",
+  "rpmReason": "근호 안 2x+a>=0 의 해가 x>=-3 이 되도록 a=6 을 정하는 단계가 무리함수의 정의역 조건 행이다. (합 12)",
+  "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
+  "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_PARAMETER",
+  "typeReason": "정의역 x>=-3 에서 a=6, 점 (5,-1) 에서 b=3, 치역 y<=3 에서 k=3 을 정하는 것이 정의역·치역의 매개변수 조건 템플릿이다. (합 12)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정의역으로 a=6, 점 (5,-1) 로 b=3, 치역으로 k=3 을 차례로 구하고 a+b+k=12 를 더하는 네 단계라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정의역",
+        "src": "stem",
+        "quote": "정의역이 $\\{x\\mid x\\ge -3\\}$"
+      },
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "그래프가 점 $(5,-1)$을 지날 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+b+k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근호",
+        "src": "solution",
+        "quote": "근호 안의 식이 $0$ 이상이어야 하므로 $2x+a\\ge 0$에서 정의역은 다음과 같다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "그래프가 점 $(5,-1)$을 지나므로 대입한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "경계조건",
+        "src": "solution",
+        "quote": "정의역이 $\\{x\\mid x\\ge -3\\}$이므로 경계값을 비교한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "정의역 x>=-3 에서 a=6, 점 (5,-1) 에서 b=3, 치역 y<=3 에서 k=3 을 직접 얻어 a+b+k=12 로 보기 ②와 맞췄다. 해설의 결정적 단계가 정의역(근호 안 조건)과 점·치역으로 매개변수를 정하는 것이라 RPM-268 과 정의역·치역 매개변수 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

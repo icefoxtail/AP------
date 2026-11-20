@@ -1,0 +1,71 @@
+{
+  "qid": 4,
+  "itemFingerprint": "ac72da61f17429de",
+  "solveSteps": [
+    "그림에서 g(5)=7 이므로 g^{-1}(7)=5 이다.",
+    "그림에서 f(3)=6 이고 g(6)=8 이므로 (g∘f)(3)=g(6)=8 이다.",
+    "g^{-1}(7)+(g∘f)(3)=5+8=13 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다음 그림은 두 일대일대응 $f:X\\to Y$, $g:Y\\to Z$를 나타낸 것이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "$g^{-1}(7)+(g\\circ f)(3)$의 값은?",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "그림의 대응으로 (g∘f)(3)=g(f(3))=g(6)=8 을 계산하고 g^{-1}(7)=5 와 더하는 단계라 합성함수 계산 행이다. (합 13)",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+  "typeReason": "대응도에서 g(5)=7, f(3)=6, g(6)=8 을 읽어 g^{-1}(7)+(g∘f)(3)=5+8=13 을 얻는 것이 대응도에서 합성함숫값을 계산하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "그림에서 g(5)=7, f(3)=6, g(6)=8 세 화살표를 읽어 5+8=13 을 더하는 두세 단계라 1단계로 본다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일대일대응",
+        "src": "stem",
+        "quote": "두 일대일대응 $f:X\\to Y$, $g:Y\\to Z$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$g^{-1}(7)+(g\\circ f)(3)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "먼저 $g^{-1}(7)$을 구하기 위해 $g(y)=7$을 만족시키는 $Y$의 원소 $y$를 찾는다.",
+        "evidenceType": "IMPLIED",
+        "justification": "g^{-1}(7) 을 g(y)=7 인 y 로 읽는 역함수의 정의로 5 를 구한다."
+      },
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "다음으로 $(g\\circ f)(3)$을 구한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "f(3) 을 먼저 구한 뒤 g 에 넣는 합성 순서로 (g∘f)(3) 을 계산한다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림의 화살표에서 g(5)=7, f(3)=6, g(6)=8 을 읽어 5+8=13 을 직접 얻어 ⑤와 맞췄다. 해설도 대응도로 역함숫값과 합성값을 읽으므로 RPM-253 과 대응도 합성 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

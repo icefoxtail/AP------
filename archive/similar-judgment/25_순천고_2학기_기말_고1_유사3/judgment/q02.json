@@ -1,0 +1,87 @@
+{
+  "qid": 2,
+  "itemFingerprint": "226c75da17705d29",
+  "solveSteps": [
+    "q: x^2-5x-6=0 은 (x+1)(x-6)=0 이므로 진리집합이 {-1, 6} 이다.",
+    "p→q 의 역 q→p 가 참이려면 -1, 6 이 모두 |x-2|<=a 를 만족해야 한다.",
+    "|-1-2|=3<=a 와 |6-2|=4<=a 에서 a>=4 이다.",
+    "정수 a 의 최솟값은 4 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "명제 $p\\to q$의 역이 참이 되도록 하는 정수 $a$의 최솟값은?",
+  "rpmRecordId": "H1-RPM-248",
+  "rpmReason": "역 q→p 가 참이 되도록 하는 a 의 범위 a>=4 를 구하는 단계라 필요조건·충분조건의 매개변수 행이다.",
+  "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+  "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+  "typeReason": "역 q→p 가 참이려면 방정식 x^2-5x-6=0 의 두 근 -1, 6 이 모두 |x-2|<=a 를 만족해야 한다는 조건으로 a 의 범위를 정하는 것이 역·대우와 방정식의 근 조건 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "방정식을 풀고 역으로 바꾼 뒤 |-1-2|<=a, |6-2|<=a 에서 a>=4 를 얻어 최소 정수를 고르는 3~4단계라 2단계로 본다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "$p:|x-2|\\le a$"
+      },
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "$q:x^2-5x-6=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "정수 $a$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "진리집합",
+        "src": "solution",
+        "quote": "먼저 조건 $q$의 진리집합을 구한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "역",
+        "src": "solution",
+        "quote": "명제 $p\\to q$의 역은 $q\\to p$이므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "두 값을 부등식 $|x-2|\\le a$에 각각 대입한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "solution",
+        "quote": "두 부등식을 동시에 만족해야 하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "q 의 진리집합 {-1, 6} 에서 역 q→p 가 참이 되는 a>=4 를 직접 얻어 정수 최솟값 4 로 보기 ③과 맞췄다. 해설의 결정적 단계가 역과 매개변수 범위라 RPM-248 과 역 근 조건 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

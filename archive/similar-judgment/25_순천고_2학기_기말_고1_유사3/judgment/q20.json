@@ -1,0 +1,84 @@
+{
+  "qid": 20,
+  "itemFingerprint": "93e50849c6d91e75",
+  "solveSteps": [
+    "뒤집는 카드 집합을 S 라 하고 (가) 1∉S 이면 2∈S, (나) 2∈S 이면 4∈S, (다) 3∈S 이면 1∉S, (라) 4∉S 이면 3∈S 로 읽는다.",
+    "4∉S 라 하면 (라) 3∈S, (다) 1∉S, (가) 2∈S, (나) 4∈S 로 모순이므로 4∈S 이다.",
+    "1∉S 이면 2∈S 이고 S={2,4} 합 14, S={2,3,4} 합 16 이다. 1∈S 이면 3∉S 이고 S={1,4} 합 15, S={1,2,4} 합 18 이다.",
+    "가능한 합 14, 15, 16, 18 의 최솟값은 14 이다."
+  ],
+  "solvedAnswer": "14",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "다음 조건을 모두 만족시키도록 카드를 뒤집었을 때, 보이는 면에 적혀 있는 모든 수들의 합의 최솟값을 구하시오.",
+  "rpmRecordId": "H1-RPM-249",
+  "rpmReason": "4 번 카드를 뒤집지 않는다고 가정하면 (라)(다)(가)(나) 가 모순이 되어 4 번은 반드시 뒤집는다는 단계가 귀류법 행이다 (최솟값 14).",
+  "problemTypeKey": "PT_LOGIC_CHAIN",
+  "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+  "typeReason": "(가)~(라) 의 조건명제를 이어 4 번 배제의 반대를 모순으로 보이고 S={2,4}, {2,3,4}, {1,4}, {1,2,4} 의 합 14, 16, 15, 18 을 가려 최솟값 14 를 구하는 것이 논리 조건을 이용한 추론 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "조건 (가)~(라) 를 명제로 읽고 4 를 뒤집지 않으면 모순임을 보인 뒤 네 경우의 합 14, 15, 16, 18 중 최솟값 14 를 고르는 네 단계라 3단계로 본다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "(가) $1$이 적힌 카드를 뒤집지 않으면 $2$가 적힌 카드는 뒤집는다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "합의 최솟값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "귀류법",
+        "src": "solution",
+        "quote": "먼저 $4$가 적힌 카드를 뒤집지 않는다고 가정하자.",
+        "evidenceType": "IMPLIED",
+        "justification": "4 번 카드를 뒤집지 않는다고 가정해 (라)(다)(가)(나) 로 모순을 얻어 4 번은 뒤집음을 보인다."
+      },
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "조건 (다)의 대우에 의해 $3$이 적힌 카드는 뒤집지 않는다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "이제 $4$가 적힌 카드를 뒤집는 경우를 두 가지로 나눈다.",
+        "evidenceType": "IMPLIED",
+        "justification": "1 번 카드를 뒤집는 경우와 뒤집지 않는 경우로 나누어 가능한 S 를 모두 센다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "다음 조건을 모두 만족시키도록 카드를 뒤집었을 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "조건 (가)~(라) 를 직접 풀어 4 번 카드는 반드시 뒤집고 가능한 합이 14, 15, 16, 18 임을 확인해 최솟값 14 를 얻고 저장 정답 14 와 맞췄다. 해설의 결정적 단계가 가정으로 모순을 보이는 것이라 귀류법 행과 논리 조건 추론 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

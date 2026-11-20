@@ -1,0 +1,82 @@
+{
+  "qid": 19,
+  "itemFingerprint": "ca45dbea3991a76d",
+  "solveSteps": [
+    "t=x-2>0 으로 놓으면 x^2-4x+k=(t+2)^2-4(t+2)+k=t^2+k-4 이다.",
+    "주어진 식은 t/(t^2+k-4)=1/(t+(k-4)/t) 이고 k-4>0 이어야 양의 최댓값을 갖는다.",
+    "산술평균과 기하평균의 관계에서 t+(k-4)/t>=2 sqrt(k-4) 이고 등호는 t=sqrt(k-4) 이다. 최댓값은 1/(2 sqrt(k-4)) 이다.",
+    "1/(2 sqrt(k-4))=1/6 에서 sqrt(k-4)=3, k-4=9 이므로 k=13 이다."
+  ],
+  "solvedAnswer": "13",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "$x\\gt 2$일 때, $\\dfrac{x-2}{x^2-4x+k}$의 최댓값이 $\\dfrac{1}{6}$이 되도록 하는 상수 $k$의 값을 구하시오.",
+  "rpmRecordId": "H1-RPM-250",
+  "rpmReason": "t/(t^2+k-4) 의 분모 t+(k-4)/t 에 산술평균과 기하평균의 관계를 써서 최댓값 1/(2 sqrt(k-4))=1/6 을 얻는 단계가 절대부등식을 쓰는 행이다 (k=13).",
+  "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+  "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+  "typeReason": "t/(t^2+k-4) 를 1/(t+(k-4)/t) 로 바꿔 역수항 (k-4)/t 가 든 분모를 산술평균·기하평균으로 정리해 최솟값 2 sqrt(k-4) 를 얻고 최댓값 1/6 에서 k=13 을 구하는 것이 역수식의 최솟값 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "x-2=t 치환으로 t^2+k-4 를 만들고 분수를 뒤집어 산술기하평균으로 2 sqrt(k-4), 조건 1/6 로 sqrt(k-4)=3, k=13 을 얻는 네 단계라 3단계로 본다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리식",
+        "src": "stem",
+        "quote": "$\\dfrac{x-2}{x^2-4x+k}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값이 $\\dfrac{1}{6}$이 되도록"
+      },
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $k$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$t=x-2\\gt 0$으로 놓으면 $x=t+2$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "x-2 를 t 로 놓아 식을 t/(t^2+k-4) 꼴로 바꾼다."
+      },
+      {
+        "term": "산술기하평균",
+        "src": "solution",
+        "quote": "산술평균과 기하평균의 관계에 의해 분모의 최솟값을 구하면 다음과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "등호조건",
+        "src": "solution",
+        "quote": "(단, 등호는 $t=\\sqrt{k-4}$일 때 성립한다.)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "t=x-2 로 치환해 최댓값 1/(2 sqrt(k-4))=1/6 에서 k-4=9, k=13 을 직접 구해 저장 정답 13 과 맞췄다. 해설의 결정적 단계가 분모를 산술평균과 기하평균으로 평가하는 것이라 RPM-250 과 역수식 최솟값 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

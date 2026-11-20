@@ -1,0 +1,81 @@
+{
+  "qid": 14,
+  "itemFingerprint": "c284046c90d73b76",
+  "solveSteps": [
+    "y=k/(x-3)+2 의 점근선은 x=3, y=2 이고 k>0 이면 x>3 에서 y>2 라 제1사분면만 지난다.",
+    "x<3 에서 y 는 x 가 커질수록 줄어드므로 x<0 에서 y>f(0) 이다.",
+    "제3사분면을 지나지 않으려면 f(0)=-k/3+2>=0 이어야 하므로 k<=6 이다.",
+    "자연수 k 의 최댓값은 6 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그래프가 제$3$사분면을 지나지 않도록",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "유리함수 $y=\\dfrac{k}{x-3}+2$의 그래프가 제$3$사분면을 지나지 않도록 하는 자연수 $k$의 최댓값은?",
+  "rpmRecordId": "H1-RPM-262",
+  "rpmReason": "y=k/(x-3)+2 가 제3사분면을 지나지 않도록 y절편 f(0)=-k/3+2>=0 을 따지는 단계가 그래프의 사분면 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+  "typeReason": "y=k/(x-3)+2 가 제3사분면을 지나지 않도록 x=0 일 때의 y절편 -k/3+2>=0, 즉 k<=6 으로 매개변수 k 의 범위를 정하는 것이 매개변수에 따른 사분면 조건 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "점근선 x=3, y=2 와 x<0 에서 y>f(0) 를 알아 f(0)=-k/3+2>=0 으로 k<=6 을 얻는 세 단계라 2단계로 본다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수 $y=\\dfrac{k}{x-3}+2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "자연수 $k$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "주어진 유리함수의 두 점근선은 $x=3$과 $y=2$이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "$x\\lt 3$인 구간에서 $x$가 증가할수록 함숫값 $y$는 감소한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "solution",
+        "quote": "그래프가 제$3$사분면을 지나지 않으려면"
+      },
+      {
+        "term": "절편",
+        "src": "solution",
+        "quote": "$x=0$일 때의 함숫값($y$절편)이 $0$ 이상이어야 한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "점근선 x=3, y=2 와 x<0 에서 y>f(0) 로 제3사분면을 피하려면 f(0)=-k/3+2>=0, k<=6 이라 최댓값 6 을 직접 얻어 ④와 맞췄다. 해설의 결정적 단계가 사분면 조건이라 RPM-262 와 사분면 매개변수 조건 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

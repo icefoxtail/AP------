@@ -1,0 +1,74 @@
+{
+  "qid": 12,
+  "itemFingerprint": "969baf0ac3cb93d6",
+  "solveSteps": [
+    "f^{-1}(1) 을 구하려면 f(2x+3)=x-1 의 우변이 1 인 x 를 찾는다. x-1=1 이므로 x=2 이고 f(7)=1 이라 f^{-1}(1)=7 이다.",
+    "f^{-1}(7) 을 구하려면 x-1=7 이므로 x=8 이고 f(19)=7 이라 f^{-1}(7)=19 이다.",
+    "(f^{-1}∘f^{-1})(1)=f^{-1}(f^{-1}(1))=f^{-1}(7)=19 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "일차함수 $f(x)$의 역함수가 $f^{-1}(x)$이고 $f(2x+3)=x-1$을 만족시킬 때",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "f(2x+3)=x-1 에서 f(7)=1, f(19)=7 을 얻어 f^{-1}(1)=7, f^{-1}(7)=19 로 읽는 단계라 역함수 구하기 행이다.",
+  "problemTypeKey": "PT_INVERSE_VALUE",
+  "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+  "typeReason": "f(2x+3)=x-1 의 우변을 1, 7 로 맞춰 f(7)=1, f(19)=7 을 얻고 역함수의 정의로 f^{-1}(1)=7, f^{-1}(7)=19 를 직접 구하는 것이 역함숫값 직접 구하기 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "x-1=1 에서 x=2 로 f^{-1}(1)=7 을, x-1=7 에서 x=8 로 f^{-1}(7)=19 를 구하는 같은 절차 두 번이라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $f(x)$의 역함수가 $f^{-1}(x)$이고"
+      },
+      {
+        "term": "함수식",
+        "src": "stem",
+        "quote": "$f(2x+3)=x-1$을 만족시킬 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$(f^{-1}\\circ f^{-1})(1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "따라서 역함수의 정의에 의해 $f^{-1}(1)=7$이다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=2$를 식에 대입하면 다음과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "f(2x+3)=x-1 에 x=2, x=8 을 대입해 f(7)=1, f(19)=7 을 얻고 f^{-1}(1)=7, f^{-1}(7)=19 로 직접 구해 ②와 맞췄다. 해설의 결정적 단계가 역함수의 정의로 값을 읽는 것이라 RPM-255 와 역함숫값 직접 구하기 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

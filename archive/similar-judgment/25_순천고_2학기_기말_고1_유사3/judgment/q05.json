@@ -1,0 +1,70 @@
+{
+  "qid": 5,
+  "itemFingerprint": "7264142155206c96",
+  "solveSteps": [
+    "‘어떤 실수 x’ 의 부정은 ‘모든 실수 x’ 이다.",
+    "x<=-2 또는 x>3 의 부정은 ‘또는’ 이 ‘이고’ 로 바뀌고 부등호가 반대가 되어 x>-2 이고 x<=3 이다.",
+    "따라서 부정은 모든 실수 x 에 대하여 x>-2 이고 x<=3 이고 이는 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "어떤 실수 $x$에 대하여 $x\\le -2$ 또는 $x\\gt 3$이다.",
+  "rpmRecordId": "H1-RPM-246",
+  "rpmReason": "‘어떤 실수 x 에 대하여 x<=-2 또는 x>3’ 을 ‘모든 실수 x 에 대하여 x>-2 이고 x<=3’ 으로 바꾸는 명제 변환 단계가 이 행이다.",
+  "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+  "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+  "typeReason": "어떤→모든으로 바꾸고 조건 x<=-2 또는 x>3 을 x>-2 이고 x<=3 으로 부정하는 것이 양화명제의 부정과 구간 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "‘어떤’→‘모든’ 과 ‘또는’→‘이고’ 규칙을 x<=-2, x>3 에 바로 적용하는 한 단계라 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "어떤 실수 $x$에 대하여 $x\\le -2$ 또는 $x\\gt 3$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "부정",
+        "src": "stem",
+        "quote": "의 부정은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "드모르간법칙",
+        "src": "solution",
+        "quote": "‘또는’은 ‘이고’로 바뀌고 각 부등호의 방향이 반대로 바뀐다.",
+        "evidenceType": "IMPLIED",
+        "justification": "‘또는’ 의 부정이 ‘이고’ 가 되는 부정 규칙을 x<=-2 와 x>3 에 적용한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "solution",
+        "quote": "‘모든 실수 $x$에 대하여’이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "‘어떤’ 을 ‘모든’ 으로, x<=-2 또는 x>3 의 ‘또는’ 을 ‘이고’ 로 바꾸어 직접 부정을 만들고 보기 ③과 맞췄다. 부정 변환 단계라 명제 변환 행과 양화명제 부정 구간 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

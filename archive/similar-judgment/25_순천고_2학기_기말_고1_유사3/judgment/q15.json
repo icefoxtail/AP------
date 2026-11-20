@@ -1,0 +1,86 @@
+{
+  "qid": 15,
+  "itemFingerprint": "9d4219503558794b",
+  "solveSteps": [
+    "f(x)=(x-2)^2+a-4 (x>=2) 는 증가함수라 f 와 f^{-1} 의 교점은 y=x 위에 있다.",
+    "f(x)=x 에서 x^2-5x+a=0 이고 x>=2 에서 서로 다른 두 실근이어야 한다. 축 x=5/2>2 이므로 D=25-4a>0 이고 g(2)=a-6>=0 이다.",
+    "6<=a<25/4 이므로 p=6, q=25/4 이다.",
+    "4(p+q)=4(6+25/4)=24+25=49 이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나도록",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나도록 하는 실수 $a$의 값의 범위가",
+  "rpmRecordId": "H1-RPM-256",
+  "rpmReason": "f(x)=x^2-4x+a 와 역함수의 교점이 직선 y=x 위에 있음을 써서 x^2-5x+a=0 을 세우는 단계가 그래프 대칭 행이다. (4(p+q)=49, 25/4)",
+  "problemTypeKey": "PT_INVERSE_GRAPH",
+  "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+  "typeReason": "증가함수의 그래프와 역함수 그래프의 교점은 y=x 위이므로 f(x)=x, 즉 x^2-5x+a=0 이 x>=2 에서 서로 다른 두 실근을 갖는 조건 6<=a<25/4 를 구하는 것이 함수와 역함수의 교점 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "교점이 y=x 위임을 알아 x^2-5x+a=0 을 세우고 D=25-4a>0 과 g(2)=a-6>=0 두 조건으로 6<=a<25/4 를 얻어 4(p+q)=49 를 계산하는 네 단계라 3단계로 본다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "$f(x)=x^2-4x+a\\;(x\\ge 2)$"
+      },
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "그 역함수 $y=f^{-1}(x)$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "실수 $a$의 값의 범위가"
+      },
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$4(p+q)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "는 증가함수이므로 함수 $y=f(x)$와 역함수 $y=f^{-1}(x)$의 교점은 모두 직선 $y=x$ 위에 있다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "서로 다른 두 실근을 가지려면 판별식 $D\\gt 0$이고 $g(2)\\ge 0$이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "경계조건",
+        "src": "solution",
+        "quote": "경계값 조건 $g(2)\\ge 0$을 풀면 다음과 같다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교점이 y=x 위임을 써서 x^2-5x+a=0, D=25-4a>0, g(2)=a-6>=0 에서 6<=a<25/4, 4(p+q)=49 를 직접 구해 ①과 맞췄다. 해설의 결정적 단계가 함수와 역함수 그래프의 교점이 y=x 위인 것이라 RPM-256 과 역함수 교점 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
