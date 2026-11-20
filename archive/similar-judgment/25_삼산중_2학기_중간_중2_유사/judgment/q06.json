@@ -1,0 +1,76 @@
+{
+  "qid": 6,
+  "itemFingerprint": "5e1eede19e61728e",
+  "solveSteps": [
+    "1) ㄱ: 점 B에서 내접원 I에 그은 두 접선의 길이는 같으므로 BD = BE이다. (참)",
+    "2) ㄴ: 원 I가 삼각형 ABC의 세 변에 접하므로 중심 I는 삼각형 ABC의 내심이다. (참)",
+    "3) ㄷ: 접점 D, E, F에 대해 ID = IE = IF = (내접원 반지름)이므로 점 I는 삼각형 DEF의 세 꼭짓점에서 같은 거리에 있어 외심이다. (참)",
+    "4) ㄹ: AI = CI는 이등변삼각형 등의 특수 조건이 없으면 일반적으로 성립하지 않는다. (거짓)",
+    "5) 따라서 옳은 것은 ㄱ, ㄴ, ㄷ인 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "원 $I$는 $\\triangle ABC$의 내접원이고 세 변 $AB$, $BC$, $CA$와의 접점이 각각 $D$, $E$, $F$일 때, 다음 <보기> 중 옳은 것만을 있는 대로 고른 것은? 〈보기〉 ㄱ. $\\overline{BD} = \\overline{BE}$ ㄴ. 점 $I$는 $\\triangle ABC$의 내심이다. ㄷ. 점 $I$는 $\\triangle DEF$의 외심이다. ㄹ. $\\overline{AI} = \\overline{CI}$",
+  "rpmRecordId": "M2-RPM-067",
+  "rpmReason": "내접원 I의 접선 길이 BD = BE 성질과 반지름 ID = IE = IF를 통한 내심·외심 성질을 판정하는 M2-RPM-067 문제이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "typeReason": "내접원 I의 접선 성질과 접점으로 이루어진 삼각형 DEF의 외심 성질을 분석하는 PT_TRIANGLE_CENTERS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "내접원 접선 길이 BD = BE와 내심, 외심의 정의를 종합적으로 판단하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "e ABC$의 내접원이고 세 변"
+      }
+    ],
+    "goal": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "e DEF$의 외심이다. ㄹ. $"
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "e ABC$의 내심이다. ㄷ. 점",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접점",
+        "src": "stem",
+        "quote": "$CA$와의 접점이 각각 $D$"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 I가 삼각형 ABC의 내접원이라는 조건이다.",
+    "goal": "내심 I가 삼각형 DEF의 외심이 되는지 판정하는 목표이다.",
+    "method": "내심과 외심의 기본 정의를 비교하는 방법이다.",
+    "condition": "세 변과의 접점이 D, E, F라는 조건이다."
+  },
+  "how": "접선 길이 BD = BE와 ID = IE = IF에 의해 삼각형 DEF의 외심이 됨을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

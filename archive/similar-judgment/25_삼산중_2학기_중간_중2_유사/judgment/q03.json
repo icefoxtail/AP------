@@ -1,0 +1,76 @@
+{
+  "qid": 3,
+  "itemFingerprint": "030f330cd74540bd",
+  "solveSteps": [
+    "1) ㄱ: 빗변 6 cm, 한 내각 35도이므로 다른 예각은 90도 - 35도 = 55도이다.",
+    "2) ㄹ: 빗변 6 cm, 한 내각 55도이므로 다른 예각은 90도 - 55도 = 35도이다.",
+    "3) 직각삼각형 ㄱ과 ㄹ은 빗변의 길이가 6 cm로 같고 한 예각의 크기가 35도(또는 55도)로 같으므로 RHA 합동이다.",
+    "4) 다른 보기들은 빗변 길이가 다르거나 조건이 일치하지 않는다.",
+    "5) 따라서 바르게 연결된 것은 (ㄱ, ㄹ), RHA 합동인 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "다음 $6$개의 직각삼각형 ㄱ~ㅂ 중에서 서로 합동인 것끼리 짝짓고, 그 합동 조건과 바르게 연결한 것은? ㄱ. 빗변의 길이가 $6\\text{ cm}$이고, 한 내각의 크기가 $35^\\circ$인 직각삼각형",
+  "rpmRecordId": "M2-RPM-071",
+  "rpmReason": "빗변 6 cm와 한 예각 35도 및 55도가 주어진 두 직각삼각형 ㄱ, ㄹ의 RHA 합동을 판정하는 M2-RPM-071 문제이다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "NONE",
+  "typeReason": "여러 직각삼각형 중 빗변 6 cm와 예각 조건으로 RHA 합동 쌍을 가려내는 PT_RIGHT_TRIANGLE_CONGRUENCE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "빗변 6 cm와 여각 35도, 55도 관계를 계산하여 RHA 합동임을 선별하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "음 $6$개의 직각삼각형 ㄱ~ㅂ 중에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "고, 그 합동 조건과 바르게 연결"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "stem",
+        "quote": "}$이고, 한 내각의 크기가 $3",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "ㄱ. 빗변의 길이가 $6\\tex"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "6개의 직각삼각형 ㄱ~ㅂ의 변과 각 조건이다.",
+    "goal": "합동인 쌍과 RHA 합동 조건을 바르게 연결하는 목표이다.",
+    "method": "직각삼각형의 한 내각 35도로부터 다른 예각을 구하는 방법이다.",
+    "condition": "빗변의 길이가 6 cm라는 조건이다."
+  },
+  "how": "ㄱ과 ㄹ이 모두 빗변 6 cm이고 예각 35도, 55도를 가지므로 RHA 합동임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

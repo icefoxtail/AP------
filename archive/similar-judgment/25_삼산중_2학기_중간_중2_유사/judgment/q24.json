@@ -1,0 +1,76 @@
+{
+  "qid": 24,
+  "itemFingerprint": "b6158fa16f238ef2",
+  "solveSteps": [
+    "1) (1) 세 지점(우체국, 서점, 공원)으로부터 같은 거리에 있는 지점은 세 꼭짓점에서 같은 거리에 있는 삼각형의 외심이다.",
+    "2) 세 변의 수직이등분선의 교점 위에 도서관이 있으므로 지수가 찾는 약속 장소는 도서관이다.",
+    "3) (2) 해당 수학 용어는 외심이다.",
+    "4) 외심을 작도하는 방법은 각 변의 중점을 지나고 변과 90도를 이루는 수직이등분선을 작도하여 그 교점을 찾는 것이다.",
+    "5) 외심의 성질 1가지는 외심에서 삼각형의 세 꼭짓점까지의 거리는 모두 같다는 것이다."
+  ],
+  "solvedAnswer": "(1) 도서관, (2) 외심, $90^\\circ$로 세 변의 수직이등분선을 작도하며 외심에서 삼각형의 세 꼭짓점까지의 거리는 같다.",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "지수는 지도에서 한 직선 위에 있지 않은 세 지점(우체국, 서점, 공원)으로부터 같은 거리에 있는 지점에 약속 장소를 정하려고 한다. 지도에 표시된 도서관, 시청, 미술관 중 도서관이 세 지점을 꼭짓점으로 하는 삼각형의 세 변의 수직이등분선의 교점 위에 있을 때, 다음 물음에 답하시오. (1) 지수가 찾는 약속 장소는 어디인지 쓰시오. (2) 그 지점에 해당하는 수학 용어를 쓰고, 그 지점을 작도할 때 필요한 각도·방법과 그 수학 용어와 관련된 성질을 $1$가지 서술하시오.",
+  "rpmRecordId": "M2-RPM-064",
+  "rpmReason": "각 변과 90도를 이루는 세 변의 수직이등분선의 교점인 외심 도서관을 찾고 외심의 정의와 꼭짓점에 이르는 거리 성질을 서술하는 M2-RPM-064 문제이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "typeReason": "세 점으로부터 같은 거리에 있는 외심의 뜻과 90도 수직이등분선 작도 방법, 꼭짓점 거리 상등 성질을 종합 서술하는 PT_TRIANGLE_CENTERS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 변과 90도를 이루는 수직이등분선 교점인 외심 도서관을 찾고 작도와 성질을 서술하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "짓점으로 하는 삼각형의 세 변의 수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "src": "stem",
+        "quote": "으로부터 같은 거리에 있는 지점에"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직이등분선",
+        "src": "stem",
+        "quote": "형의 세 변의 수직이등분선의 교점 위에",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "이 세 지점을 꼭짓점으로 하는 삼각"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "세 지점을 꼭짓점으로 하는 삼각형 조건이다.",
+    "goal": "세 지점으로부터 같은 거리에 있는 장소와 외심 성질을 서술하는 목표이다.",
+    "method": "세 변의 수직이등분선 교점으로 외심을 작도하는 방법이다.",
+    "condition": "세 지점을 꼭짓점으로 한다는 조건이다."
+  },
+  "how": "각 변과 90도를 이루는 수직이등분선의 교점이 외심이므로 도서관이고, 외심의 작도법과 꼭짓점까지의 거리가 같음을 서술하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

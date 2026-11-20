@@ -1,0 +1,70 @@
+{
+  "qid": 10,
+  "itemFingerprint": "281a56b8245d84ae",
+  "solveSteps": [
+    "1) 마름모 ABCD의 넓이는 (1/2) * AC * BD = (1/2) * 16 * 15 = 120 cm^2이다.",
+    "2) 대각선 BD는 마름모의 넓이를 이등분하므로 삼각형 BCD의 넓이는 120 / 2 = 60 cm^2이다.",
+    "3) 삼각형 DBP와 삼각형 DPC는 꼭짓점 D를 공유하여 높이가 같고 밑변의 비는 BP : PC = 2 : 3이다.",
+    "4) 따라서 삼각형 DBP의 넓이는 60 * (2 / (2 + 3)) = 60 * (2 / 5) = 24 cm^2이다.",
+    "5) 따라서 정답은 24 cm^2인 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "마름모 $ABCD$에서 $\\overline{AC} = 16\\text{ cm}$, $\\overline{BD} = 15\\text{ cm}$이고, 변 $BC$ 위의 점 $P$에 대하여 $\\overline{BP} : \\overline{PC} = 2 : 3$일 때, $\\triangle DBP$의 넓이는?",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmReason": "대각선 16 cm, 15 cm로 마름모 ABCD 넓이 120 cm^2를 구하고 대각선 이등분 60 cm^2와 밑변 비 2:3으로 삼각형 DBP 넓이 24 cm^2를 구하는 M2-RPM-078 문제이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "typeReason": "마름모 ABCD의 대각선 16 cm, 15 cm를 이용한 넓이 공식과 선분 비에 따른 삼각형 넓이 분할을 결합한 PT_QUADRILATERAL_PROPERTIES 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "마름모 ABCD의 대각선 16 cm, 15 cm 넓이 계산 120 cm^2와 높이가 같은 삼각형의 밑변 비 2:3 비례배분을 결합한 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "e DBP$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "ext{)}$ 대각선 $BD$는 마",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {
+    "given": "마름모 ABCD의 두 대각선 길이 16, 15와 점 P의 비 2:3 조건이다.",
+    "goal": "삼각형 DBP의 넓이를 구하는 목표이다.",
+    "method": "대각선으로 이등분된 넓이와 밑변 비에 따른 넓이 비례배분 방법이다.",
+    "condition": "추가 조건 없음."
+  },
+  "how": "마름모 ABCD 넓이 120 cm^2의 절반인 60 cm^2에 밑변 비 2/5를 곱해 24 cm^2임을 계산하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

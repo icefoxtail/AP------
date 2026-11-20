@@ -1,0 +1,75 @@
+{
+  "qid": 12,
+  "itemFingerprint": "988bfd716b0fc0ad",
+  "solveSteps": [
+    "1) 평행사변형, 직사각형, 마름모, 정사각형은 모두 두 대각선이 서로 다른 것을 이등분하므로 (가)는 ㄴ이다.",
+    "2) 이 중 직사각형과 정사각형은 두 대각선의 길이가 같으므로 (나)는 ㄱ이다.",
+    "3) 평행사변형이 아닌 사각형 중 한 쌍의 대변이 평행한 것이 사다리꼴이므로 (다)는 ㄷ이다.",
+    "4) 따라서 알맞은 연결은 (가) ㄴ, (나) ㄱ, (다) ㄷ인 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "사각형을 분류하는 순서도에서 조건 (가)에 ‘예’이면 평행사변형·직사각형·마름모·정사각형으로 이어지고, 이 네 사각형을 조건 (나)로 나누어 ‘예’이면 직사각형·정사각형, ‘아니오’이면 평행사변형·마름모로 분류된다. 또 조건 (가)에 ‘아니오’인 사각형을 조건 (다)로 나누어 ‘예’이면 사다리꼴, ‘아니오’이면 그 외의 사각형으로 분류된다.",
+  "rpmRecordId": "M2-RPM-082",
+  "rpmReason": "여러 사각형의 대각선 성질과 평행 조건으로 (가) ㄴ, (나) ㄱ, (다) ㄷ의 분류 계통도를 완성하는 M2-RPM-082 문제이다.",
+  "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+  "templateKey": "NONE",
+  "typeReason": "사각형 계통도에서 단계별 조건 (가), (나), (다)를 대각선과 평행 성질로 판별하는 PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "대각선 이등분 ㄴ, 대각선 길이 상등 ㄱ, 한 쌍 대변 평행 ㄷ의 조건을 차례로 대조하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "에 ‘예’이면 평행사변형·직사각형·마름"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "어 ‘예’이면 사다리꼴, ‘아니오’이"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "로 다른 것을 이등분하는가? ㄷ. 한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "사각형·마름모·정사각형으로 이어지고,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "순서도에서 사각형들의 포함 관계 분류 조건이다.",
+    "goal": "사다리꼴 및 각 사각형으로 나뉘는 분류 조건들을 결정하는 목표이다.",
+    "method": "대각선의 이등분 성질을 확인하는 방법이다.",
+    "condition": "정사각형 등 특수 사각형으로의 세부 분류 조건이다."
+  },
+  "how": "(가)는 대각선 이등분 ㄴ, (나)는 대각선 길이 상등 ㄱ, (다)는 대변 평행 ㄷ임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
