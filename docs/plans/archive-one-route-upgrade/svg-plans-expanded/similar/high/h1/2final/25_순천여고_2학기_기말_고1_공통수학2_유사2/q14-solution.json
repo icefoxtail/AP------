@@ -1,0 +1,83 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-1",
+   "2"
+  ],
+  "denominator": [
+   "-2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -3,
+   9
+  ],
+  "viewport": [
+   -3,
+   9,
+   -3,
+   9
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "equalUnits": true,
+  "overlays": {
+   "lines": [
+    {
+     "id": "S",
+     "slope": "1",
+     "intercept": "0",
+     "style": "DASHED",
+     "color": "BLUE"
+    }
+   ],
+   "points": [
+    {
+     "id": "C",
+     "x": "2",
+     "y": "2",
+     "coordinates": true
+    },
+    {
+     "id": "P",
+     "curveX": "3",
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "curveX": "5",
+     "coordinates": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "PQ",
+     "from": "P",
+     "to": "Q",
+     "dashed": true
+    }
+   ]
+  },
+  "asymptoteLabelAt": "END",
+  "hideLabels": [
+   "formula"
+  ]
+ },
+ "pointNames": {
+  "C": "C",
+  "P": "P",
+  "Q": "Q"
+ },
+ "caption": "그래프가 직선 y=x에 대하여 대칭이므로 두 점근선의 교점 C(-b,2)가 직선 y=x 위에 있어 b=-2이다. 점 (3,5)를 지나므로 5=(6+a)/(3-2)에서 a=-1이다. 점 P(3,5)와 Q(5,3)은 y=x에 대하여 대칭이다. a+b=-3이다. 따라서 답은 ⑤이다.",
+ "accessibilityDescription": "두 가지로 이루어진 유리함수 그래프와 점선 직선 y=x가 있고, 점근선의 교점 C가 직선 위에 있으며 두 점 P, Q를 잇는 점선이 직선과 수직으로 만난다.",
+ "newVisualInformation": [
+  "점근선의 교점 C(2,2)가 y=x 위에 있고, 대칭인 두 점 (3,5), (5,3)을 보인다."
+ ]
+}

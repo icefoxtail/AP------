@@ -1,0 +1,164 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -6,
+   7,
+   -3,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "u",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "-1"
+    ],
+    "offset": "2",
+    "domain": [
+     "-4",
+     "0"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "v",
+    "kind": "SQRT",
+    "radicand": [
+     "-1",
+     "1"
+    ],
+    "amplitude": "-1",
+    "offset": "1",
+    "domain": [
+     "1",
+     "5"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   },
+   {
+    "id": "l",
+    "kind": "LINE",
+    "coefficients": [
+     "2",
+     "-1"
+    ],
+    "domain": [
+     "-3",
+     "4"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A1",
+     "unnamed": true,
+     "x": "-1",
+     "y": "3"
+    },
+    {
+     "id": "A2",
+     "unnamed": true,
+     "x": "2",
+     "y": "0"
+    },
+    {
+     "id": "A3",
+     "unnamed": true,
+     "x": "-4",
+     "y": "4"
+    },
+    {
+     "id": "A4",
+     "unnamed": true,
+     "x": "5",
+     "y": "-1",
+     "coordinates": true,
+     "labelDirection": "E"
+    },
+    {
+     "id": "Eu",
+     "unnamed": true,
+     "x": "-9/4",
+     "y": "7/2"
+    },
+    {
+     "id": "Ev",
+     "unnamed": true,
+     "x": "13/4",
+     "y": "-1/2"
+    },
+    {
+     "id": "El",
+     "unnamed": true,
+     "x": "-3",
+     "y": "5"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "k1",
+     "point": "A1",
+     "text": "(-1,3)",
+     "direction": "N",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "k2",
+     "point": "A2",
+     "text": "(2,0)",
+     "direction": "SW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "k3",
+     "point": "A3",
+     "text": "(-4,4)",
+     "direction": "W",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "ku",
+     "point": "Eu",
+     "text": "y=√(-x)+2",
+     "direction": "N",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "kv",
+     "point": "Ev",
+     "text": "y=1-√(x-1)",
+     "direction": "S",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "kl",
+     "point": "El",
+     "text": "y=-x+2",
+     "direction": "NE",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {},
+ "caption": "x≤0의 가지는 끝점 (0,2)에서 왼쪽 위로, x≥1의 가지는 시작점 (1,1)에서 오른쪽 아래로 뻗는다. 두 가지가 각각 직선과 두 점씩 만나려면 k=2이고 이때 교점은 (-1,3), (0,2), (1,1), (2,0)이다.",
+ "sourceConditions": [
+  "f(x)=√(-x)+2 (x≤0), 1-√(x-1) (x≥1)와 y=-x+k가 서로 다른 네 점에서 만난다"
+ ],
+ "newVisualInformation": [
+  "두 가지와 직선 y=-x+2가 네 점 (-1,3), (0,2), (1,1), (2,0)에서 만남"
+ ]
+}

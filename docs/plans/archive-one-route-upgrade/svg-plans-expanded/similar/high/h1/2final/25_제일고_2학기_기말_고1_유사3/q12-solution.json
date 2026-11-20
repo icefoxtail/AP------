@@ -1,0 +1,125 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "81/35",
+     "-611/420",
+     "127/280",
+     "-23/840"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "2",
+    "9"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   2,
+   9
+  ],
+  "viewport": [
+   -1,
+   12,
+   -1,
+   12
+  ],
+  "axisTickValues": {
+   "x": [
+    "4",
+    "6"
+   ],
+   "y": [
+    "2",
+    "4"
+   ]
+  },
+  "requiredPoints": [],
+  "overlays": {
+   "lines": [
+    {
+     "id": "d",
+     "slope": "1",
+     "intercept": "0",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "P1",
+     "curveX": "2",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "S",
+     "curveX": "4",
+     "unnamed": true
+    },
+    {
+     "id": "P",
+     "curveX": "6",
+     "unnamed": true
+    },
+    {
+     "id": "P4",
+     "curveX": "9",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "R",
+     "x": "4",
+     "y": "4",
+     "unnamed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "g2",
+     "from": "S",
+     "axis": "BOTH"
+    },
+    {
+     "id": "g3",
+     "from": "P",
+     "axis": "BOTH"
+    }
+   ],
+   "segments": [
+    {
+     "id": "s1",
+     "from": "R",
+     "to": "S",
+     "dashed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "P4",
+     "text": "y=f(x)",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  }
+ },
+ "caption": "곡선이 점 (6,4)를 지나므로 f(6)=4이고(파랑), 같은 점에서 x축의 6이 y=4에 대응하므로 f⁻¹(4)=6이다. y=4에서 직선 y=x까지 옮기면 x=4이고, 곡선이 점 (4,2)를 지나므로 f(4)=2이다(주황). 따라서 (f∘f)(6)=2이고 (f∘f)(6)+f⁻¹(4)=2+6=8이므로 답은 ③이다.",
+ "sourceConditions": [
+  "곡선 y=f(x)는 (2,1), (4,2), (6,4), (9,6)을 지난다."
+ ],
+ "newVisualInformation": [
+  "f(6)=4, f(4)=2를 점선 계단으로 읽고 f⁻¹(4)=6을 같은 점 (6,4)에서 읽는다."
+ ]
+}

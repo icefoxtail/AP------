@@ -1,0 +1,111 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "1/3",
+     "2/3",
+     "-7/30",
+     "1/30"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "2",
+    "7"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   2,
+   7
+  ],
+  "viewport": [
+   -1,
+   11,
+   -1,
+   11
+  ],
+  "axisTickValues": {
+   "x": [
+    "2",
+    "5",
+    "7"
+   ],
+   "y": [
+    "1",
+    "2",
+    "5"
+   ]
+  },
+  "requiredPoints": [],
+  "overlays": {
+   "lines": [
+    {
+     "id": "d",
+     "slope": "1",
+     "intercept": "0",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "P1",
+     "curveX": "2",
+     "unnamed": true
+    },
+    {
+     "id": "P2",
+     "curveX": "5",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "curveX": "7",
+     "unnamed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "g1",
+     "from": "P1",
+     "axis": "BOTH"
+    },
+    {
+     "id": "g2",
+     "from": "P2",
+     "axis": "BOTH"
+    },
+    {
+     "id": "g3",
+     "from": "Q",
+     "axis": "BOTH"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "Q",
+     "text": "y=f(x)",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  }
+ },
+ "caption": "함수 y=f(x)의 그래프와 직선 y=x이다. 곡선은 세 점 (2, 1), (5, 2), (7, 5)를 지나며 점선으로 각 점의 x좌표와 y좌표를 읽을 수 있다.",
+ "sourceConditions": [
+  "곡선 y=f(x)는 점 (2,1), (5,2), (7,5)를 지난다."
+ ],
+ "newVisualInformation": [
+  "곡선 위 세 점의 좌표와 직선 y=x"
+ ]
+}

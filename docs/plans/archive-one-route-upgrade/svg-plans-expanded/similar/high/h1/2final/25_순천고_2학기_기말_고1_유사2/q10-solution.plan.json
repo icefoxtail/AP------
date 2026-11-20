@@ -1,0 +1,163 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-23/45",
+     "253/90",
+     "-29/90",
+     "1/45"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "1",
+    "7"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   1,
+   7
+  ],
+  "viewport": [
+   0,
+   12,
+   0,
+   12
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=x"
+    }
+   ],
+   "points": [
+    {
+     "id": "a",
+     "x": "1",
+     "y": "1"
+    },
+    {
+     "id": "b",
+     "x": "2",
+     "y": "2"
+    },
+    {
+     "id": "c",
+     "x": "4",
+     "y": "4"
+    },
+    {
+     "id": "d",
+     "x": "7",
+     "y": "7"
+    },
+    {
+     "id": "e",
+     "x": "11",
+     "y": "11"
+    },
+    {
+     "id": "ca",
+     "curveX": "1",
+     "unnamed": true
+    },
+    {
+     "id": "cb",
+     "curveX": "2",
+     "unnamed": true
+    },
+    {
+     "id": "cc",
+     "curveX": "4",
+     "unnamed": true
+    },
+    {
+     "id": "cd",
+     "curveX": "7",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "h0",
+     "from": "ca",
+     "to": "b",
+     "dashed": true
+    },
+    {
+     "id": "h1",
+     "from": "cb",
+     "to": "c",
+     "color": "WARM"
+    },
+    {
+     "id": "h2",
+     "from": "cc",
+     "to": "d",
+     "color": "WARM"
+    },
+    {
+     "id": "h3",
+     "from": "cd",
+     "to": "e",
+     "color": "WARM"
+    }
+   ],
+   "guides": [
+    {
+     "id": "v0",
+     "from": "ca",
+     "axis": "x"
+    },
+    {
+     "id": "v1",
+     "from": "cb",
+     "axis": "x"
+    },
+    {
+     "id": "v2",
+     "from": "cc",
+     "axis": "x"
+    },
+    {
+     "id": "v3",
+     "from": "cd",
+     "axis": "x"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "cd",
+     "text": "y=f(x)",
+     "direction": "W",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "점선을 따라 직선 y=x로 y축의 값을 x축으로 옮기면 f(a)=b, f(b)=c, f(c)=d, f(d)=e이다. k=b이면 f(b)=c, f(c)=d, f(d)=e이므로 (f∘f∘f)(b)=e이다. 따라서 k=b이므로 답은 ②이다.",
+ "sourceConditions": [
+  "f(a)=b, f(b)=c, f(c)=d, f(d)=e"
+ ],
+ "newVisualInformation": [
+  "k=b에서 시작해 b→c→d→e로 세 번 옮기는 경로(색 점선)"
+ ]
+}

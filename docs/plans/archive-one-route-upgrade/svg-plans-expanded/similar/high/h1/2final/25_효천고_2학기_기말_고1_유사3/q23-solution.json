@@ -1,0 +1,146 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -6,
+   6,
+   -6,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "fa",
+    "kind": "LINE",
+    "coefficients": [
+     "-3",
+     "2"
+    ],
+    "domain": [
+     "1",
+     "4"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "fb",
+    "kind": "LINE",
+    "coefficients": [
+     "-4/3",
+     "1/3"
+    ],
+    "domain": [
+     "-6",
+     "1"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "ga",
+    "kind": "LINE",
+    "coefficients": [
+     "3/2",
+     "1/2"
+    ],
+    "domain": [
+     "-1",
+     "5"
+    ],
+    "color": "WARM",
+    "label": "y=f^-1(x)"
+   },
+   {
+    "id": "gb",
+    "kind": "LINE",
+    "coefficients": [
+     "4",
+     "3"
+    ],
+    "domain": [
+     "-3",
+     "-1"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   },
+   {
+    "id": "d",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-6",
+     "6"
+    ],
+    "label": "y=x",
+    "style": "DASHED"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "-2",
+     "y": "-2",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "3",
+     "y": "3",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "C",
+     "x": "-4/3",
+     "y": "0",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "K1",
+     "x": "1",
+     "y": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "K2",
+     "x": "-1",
+     "y": "1",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "ck1",
+     "point": "K1",
+     "text": "(1,-1)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "ck2",
+     "point": "K2",
+     "text": "(-1,1)",
+     "labelKind": "MATH",
+     "direction": "NW"
+    }
+   ]
+  }
+ },
+ "caption": "f의 그래프(파랑)와 역함수 f⁻¹의 그래프(주황)는 점선 y=x에 대칭이다. f⁻¹(x)=0인 x는 f(0)=−4/3이므로 점 (−4/3, 0)이다. f(x)=f⁻¹(x)인 x는 두 그래프가 y=x 위에서 만나는 점의 x좌표이므로 −2, 3이다. 따라서 모든 해의 합은 −4/3−2+3=−1/3이다.",
+ "newVisualInformation": [
+  "f와 f⁻¹이 y=x에 대칭인 모양과 해에 해당하는 점 (−4/3,0), (−2,−2), (3,3)"
+ ],
+ "accessibilityDescription": "꺾이는 직선 모양의 f의 그래프(파란색)와 역함수의 그래프(주황색)가 점선 y=x에 대칭으로 그려져 있다. x축 위의 점 (−4/3,0)과 y=x 위의 두 교점 (−2,−2), (3,3)이 표시되어 있다."
+}

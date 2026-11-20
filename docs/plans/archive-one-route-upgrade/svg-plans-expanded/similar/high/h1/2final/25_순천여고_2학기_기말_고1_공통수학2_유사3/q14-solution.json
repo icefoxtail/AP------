@@ -1,0 +1,93 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-2",
+   "-2"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -8,
+   4
+  ],
+  "viewport": [
+   -8,
+   4,
+   -8,
+   4
+  ],
+  "equalUnits": true,
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "hideLabels": [
+   "formula",
+   "asymptotes"
+  ],
+  "overlays": {
+   "lines": [
+    {
+     "id": "d",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=x",
+     "style": "DASHED"
+    }
+   ],
+   "points": [
+    {
+     "id": "A",
+     "curveX": "0",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "curveX": "-1",
+     "coordinates": true
+    },
+    {
+     "id": "C",
+     "x": "-2",
+     "y": "-2",
+     "coordinates": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "AB",
+     "from": "A",
+     "to": "B",
+     "dashed": true
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B",
+  "C": "C"
+ },
+ "coordinatePlacement": "PANEL",
+ "caption": "f(0)=-1에서 b=-2이고, (f∘f)(x)=x이므로 f의 역함수가 f 자신이어서 그래프가 직선 y=x에 대하여 대칭이다. 점근선의 교점 C(-2,-2)가 y=x 위에 있어야 하므로 a=-2이다. 따라서 f(x)=(-2x-2)/(x+2)이고 a+b=-4이므로 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=(ax+b)/(x+2), (f∘f)(x)=x, f(0)=-1",
+   "mappedTo": [
+    "graphPlan.numerator",
+    "graphPlan.denominator"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "곡선이 y=x에 대칭이고 두 점근선의 교점 C가 y=x 위에 있음을 보여 준다."
+ ]
+}

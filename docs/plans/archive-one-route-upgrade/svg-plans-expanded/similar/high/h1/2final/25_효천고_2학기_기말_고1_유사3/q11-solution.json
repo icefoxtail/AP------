@@ -1,0 +1,95 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   8,
+   -1,
+   8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "1",
+     "2"
+    ],
+    "offset": "1",
+    "domain": [
+     "-1/2",
+     "8"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)",
+    "hideLabels": [
+     "start"
+    ]
+   },
+   {
+    "id": "g",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "0",
+     "-1",
+     "1/2"
+    ],
+    "domain": [
+     "1",
+     "5"
+    ],
+    "color": "WARM",
+    "label": "y=f^-1(x)"
+   },
+   {
+    "id": "h",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "8"
+    ],
+    "label": "y=x",
+    "style": "DASHED"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "4",
+     "y": "4",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "x": "0",
+     "y": "2",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "R",
+     "x": "2",
+     "y": "0",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "f(x)=√(2x+a)+b와 그 역함수의 그래프는 직선 y=x 위의 점 (4,4)에서 만나므로 f(4)=4이다. f⁻¹(2)=0에서 f(0)=2이므로 그래프는 (0,2)를 지나고 역함수는 (2,0)을 지난다. 두 식 √(8+a)+b=4, √a+b=2에서 a=1, b=1이고 a+b=2이다. 따라서 답은 ②이다.",
+ "newVisualInformation": [
+  "f와 역함수의 그래프가 y=x에 대칭이고 (4,4)에서 만나며 (0,2)와 (2,0)을 지나는 모양"
+ ],
+ "accessibilityDescription": "파란색 무리함수 곡선과 주황색 역함수 곡선이 점선 y=x에 대칭으로 그려져 있고 두 곡선이 y=x 위의 한 점에서 만난다. 점 (0,2)와 (2,0)도 표시되어 있다."
+}

@@ -1,0 +1,139 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "2",
+   "2"
+  ],
+  "denominator": [
+   "-2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -4,
+   8
+  ],
+  "viewport": [
+   -4,
+   8,
+   -4,
+   8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "equalUnits": true,
+  "asymptoteLabelAt": "END",
+  "hideLabels": [
+   "formula"
+  ],
+  "overlays": {
+   "circles": [
+    {
+     "id": "K",
+     "center": [
+      "2",
+      "2"
+     ],
+     "radiusSquared": "12"
+    }
+   ],
+   "lines": [
+    {
+     "id": "d",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=x",
+     "color": "WARM"
+    }
+   ],
+   "points": [
+    {
+     "id": "C",
+     "x": "2",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "P",
+     "x": "2+sqrt(6)",
+     "y": "2+sqrt(6)",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "x": "2-sqrt(6)",
+     "y": "2-sqrt(6)",
+     "unnamed": true
+    },
+    {
+     "id": "T",
+     "x": "2",
+     "y": "2+2*sqrt(3)",
+     "unnamed": true
+    },
+    {
+     "id": "F",
+     "curveX": "6",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cC",
+     "point": "C",
+     "text": "C(2,2)",
+     "labelKind": "MATH",
+     "direction": "SW"
+    },
+    {
+     "id": "cP",
+     "point": "P",
+     "text": "P(2+√6,2+√6)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "cQ",
+     "point": "Q",
+     "text": "Q(2-√6,2-√6)",
+     "labelKind": "MATH",
+     "direction": "SW"
+    },
+    {
+     "id": "cr",
+     "point": "T",
+     "text": "r=2√3",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "cf",
+     "point": "F",
+     "text": "y=(2x+2)/(x-2)",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  }
+ },
+ "pointNames": {},
+ "caption": "y=2+k/(x−2)의 점근선의 교점이 원의 중심 C(2,2)이다. X=x−2, Y=y−2로 놓으면 XY=k, X²+Y²=12이고 (X−Y)²=12−2k≥0이므로 k≤6이다. k<6이면 네 점에서 만나고 k=6일 때만 X=Y=±√6, 즉 두 점 P, Q에서 만난다. 따라서 k=6이고 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "k=6, 원의 중심 (2,2), 반지름 2√3",
+   "mappedTo": "graphPlan"
+  }
+ ],
+ "accessibilityDescription": "점근선 x=2, y=2를 가지는 유리함수 그래프와 두 점근선의 교점 C(2,2)를 중심으로 하는 원이 그려져 있다. 원은 곡선과 직선 y=x 위의 두 점에서 만난다.",
+ "newVisualInformation": [
+  "점근선의 교점이 원의 중심",
+  "곡선과 원의 교점 P, Q가 y=x 위에 있음"
+ ]
+}
