@@ -1,0 +1,56 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "7b7e437846875747",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "밑 $a$가 $0 < a < 1$이므로 $0 < a < b < 1$에 $\\log_a$를 취하면 $\\log_a 1 < \\log_a b < \\log_a a$, 즉 $0 < C < 1$이다. (4.3)",
+    "$B = \\log_a(b/a) = \\log_a b - 1 = C - 1 < 0$이다. (4.3)",
+    "$A = \\log_b a = 1 / \\log_a b = 1/C > 1$이다. (4.3)",
+    "따라서 $B < 0 < C < 1 < A$이므로 $B < C < A$로 정답 ③이다. (4.3)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0 < a < b < 1$",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그함수의 성질을 이용한 수의 대소 비교 유형이다. (4.3)",
+  "rpmRecordId": "H2-M1-RPM-021",
+  "rpmReason": "로그함수 단원의 수의 대소 비교 성질과 일치한다. (4.3)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "문자로 주어진 조건에서 로그의 단조감소성을 이용해 대소를 판정하는 난이도 3 문항이다. (4.3)",
+  "how": "밑의 범위 0과 1 사이를 고려하여 각 로그값의 부호와 1과의 크기를 비교했다. (4.3)",
+  "slots": {
+    "given": [
+      {
+        "term": "대소비교",
+        "src": "stem",
+        "quote": "$0 < a < b < 1$일 때, 세 수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소비교",
+        "src": "stem",
+        "quote": "대소 관계를 바르게 나타낸 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대소비교",
+        "src": "solution",
+        "quote": "$0 < a < b < 1$에서 밑 $a$는 $0 < a < 1$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

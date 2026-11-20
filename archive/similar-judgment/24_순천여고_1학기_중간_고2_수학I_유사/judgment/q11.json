@@ -1,0 +1,56 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "ed054e21bcdb082b",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "지수 $g(x) = x^2 - 2x - 1 = (x-1)^2 - 2$의 닫힌구간 $[-1, 2]$에서의 극값을 구한다. (4.3)",
+    "$x = -1$일 때 최대 $g(-1) = 2$, $x = 1$일 때 최소 $g(1) = -2$이다. (4.3)",
+    "밑 $3 > 1$이므로 $M = 3^2 = 9$, $m = 3^{-2} = \\frac{1}{9}$이다. (4.3)",
+    "따라서 $M - m = 9 - \\frac{1}{9} = \\frac{80}{9}$로 정답 ⑤이다. (4.3)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정의역이 ${x \\mid -",
+  "standardUnitKey": "H15-M1-03",
+  "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수에 이차식이 포함된 지수함수의 최댓값과 최솟값 유형이다. (4.3)",
+  "rpmRecordId": "H2-M1-RPM-019",
+  "rpmReason": "지수함수 단원의 지수함수의 활용 최대 최소와 부합한다. (4.3)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 최대 최소와 지수함수의 단조성을 결합한 복합 난이도 3 문항이다. (4.3)",
+  "how": "지수의 이차식을 표준형으로 바꾸어 제한된 범위에서 극값을 구한 뒤 거듭제곱했다. (4.3)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "정의역이 ${x \\mid -1 \\le x \\le 2}$일 때, 함수 $y = 3^{x^2 - 2x - 1}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "$M - m$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "함수",
+        "src": "solution",
+        "quote": "$g(x) = x^2 - 2x - 1 = (x - 1)^2 - 2$라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

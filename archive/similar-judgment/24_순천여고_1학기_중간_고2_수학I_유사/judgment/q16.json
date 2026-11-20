@@ -1,0 +1,55 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "0663f6795df16b8f",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "근과 계수의 관계에 의해 $\\sin\\theta + \\cos\\theta = 1/4$이고, 양변 제곱하면 $1 + 2\\sin\\theta\\cos\\theta = 1/16$이므로 $\\sin\\theta\\cos\\theta = -15/32$이다. (15)",
+    "두 근 $\\tan\\theta, 1/\\tan\\theta$의 합은 $\\frac{\\sin^2\\theta + \\cos^2\\theta}{\\sin\\theta\\cos\\theta} = -\\frac{32}{15}$, 곱은 $1$이다. (15)",
+    "이차항 계수가 $15$인 이차방정식은 $15(x^2 + \\frac{32}{15}x + 1) = 15x^2 + 32x + 15 = 0$이므로 정답 ③이다. (15)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $4x^2 - x",
+  "standardUnitKey": "H15-M1-05",
+  "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
+  "problemTypeKey": "PT_TRIGONOMETRIC_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "삼각함수 사이의 관계와 이차방정식의 작성 융합 유형이다. (15)",
+  "rpmRecordId": "H2-M1-RPM-034",
+  "rpmReason": "삼각함수 단원의 삼각함수 사이의 관계식 계산과 일치한다. (15)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식 근과 계수의 관계를 두 번 적용하는 전형적인 난이도 3 문항이다. (15)",
+  "how": "근과 계수의 관계와 삼각함수 제곱 공식을 결합하여 탄젠트의 합과 곱을 구했다. (15)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $4x^2 - x + a = 0$의 두 근이 $\\sin\\theta, \\cos\\theta$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식은? (단, $a$는 상수이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차방정식",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

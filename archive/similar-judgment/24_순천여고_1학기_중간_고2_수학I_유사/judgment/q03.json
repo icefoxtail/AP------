@@ -1,0 +1,55 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "4dc48582e78bd55e",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "첫째 식은 $(a^4 b^7)^{1/6} = a^{2/3} b^{7/6}$이다. (11)",
+    "둘째 식은 $(a^8 b^{11})^{1/6} = a^{4/3} b^{11/6}$이다. (11)",
+    "두 식의 곱은 $a^{2/3+4/3} b^{7/6+11/6} = a^2 b^3$이므로 $x=2, y=3$, $x+y=5$로 정답 ②이다. (11)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt[3]{\\sqrt",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "problemTypeKey": "PT_EXPONENT_CALCULATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수의 확장에서 유리수 지수 연산을 수행하는 유형이다. (11)",
+  "rpmRecordId": "H2-M1-RPM-003",
+  "rpmReason": "지수 단원의 지수의 확장 유리수 지수 연산과 일치한다. (11)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱근의 유리수 지수 변환 공식을 적용하는 평이한 난이도 2 문항이다. (11)",
+  "how": "중첩된 거듭제곱근을 유리수 지수로 나타내어 지수법칙으로 계산했다. (11)",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱근",
+        "src": "stem",
+        "quote": "$\\sqrt[3]{\\sqrt{a^4 b^7}} \\times \\sqrt{\\sqrt[3]{a^8 b^{11}}} = a^x b^y$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱근",
+        "src": "solution",
+        "quote": "중첩된 거듭제곱근을 유리수 지수로 나타내면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

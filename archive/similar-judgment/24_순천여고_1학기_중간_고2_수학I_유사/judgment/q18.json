@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "1141d1b698ece35d",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "두 함수 $y = a^x + b$와 $y = \\log_a(x-b)$는 서로 역함수이므로 교점 $A, B$는 직선 $y = x$ 위에 있다. (AB)",
+    "수직이등분선 $x + y - 6 = 0$과 $y = x$의 교점이 중점이므로 중점은 $M(3, 3)$이다. (AB)",
+    "두 점 사이의 거리가 $2\\sqrt{2}$이므로 교점 좌표는 $A(2, 2)$, $B(4, 4)$이다. (AB)",
+    "곡선 $y = a^x + b$에 대입하면 $a^2 + b = 2$, $a^4 + b = 4$에서 $a = \\sqrt{2}$, $b = 0$이므로 $a + b = \\sqrt{2}$로 정답 ④이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$1$보다 큰 양수 $a$에",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_INVERSE_GRAPH",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수함수와 로그함수의 역함수 그래프 및 교점 기하 분석 유형이다. (AB)",
+  "rpmRecordId": "H2-M1-RPM-022",
+  "rpmReason": "로그함수 단원의 그래프 평행이동과 대칭이동에 일치한다. (AB)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "역함수의 대칭성과 기하적 거리, 수직이등분선을 모두 연계한 심화 난이도 4 문항이다. (AB)",
+  "how": "역함수 성질로 교점이 y=x 위에 있음을 알고 중점과 거리를 이용해 교점을 특정했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "수직이등분선",
+        "src": "stem",
+        "quote": "선분 $AB$의 수직이등분선은 $x + y - 6 = 0$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "수직이등분선",
+        "src": "stem",
+        "quote": "$a + b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직이등분선",
+        "src": "solution",
+        "quote": "중점 $M$은 직선 $y = x$와 수직이등분선",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

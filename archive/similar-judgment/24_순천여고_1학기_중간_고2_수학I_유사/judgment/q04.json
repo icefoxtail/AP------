@@ -1,0 +1,55 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "5972fb92e7f88fc5",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "밑 조건에 의해 $x > 0$이고 $x \\neq 1$이어야 한다. (3.7)",
+    "진수 조건에 의해 $7 - x > 0$, 즉 $x < 7$이어야 한다. (3.7)",
+    "만족하는 정수 $x$는 $2, 3, 4, 5, 6$이며 그 합은 $2+3+4+5+6=20$으로 정답 ①이다. (3.7)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\log_x(7 - x)$",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-LOGARITHM",
+  "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그의 정의와 밑 진수 성립 조건에 관한 문제 유형이다. (3.7)",
+  "rpmRecordId": "H2-M1-RPM-008",
+  "rpmReason": "로그 단원의 밑과 진수 조건 성립 검토와 정확히 일치한다. (3.7)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "밑 조건 $x \\ne 1$과 진수 양수 조건을 확인하는 전형적 난이도 2 문항이다. (3.7)",
+  "how": "로그의 밑 조건과 진수 조건의 공통 범위를 만족하는 정수를 모두 더했다. (3.7)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "$\\log_x(7 - x)$의 값이 존재하도록"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "모든 정수 $x$의 값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정수",
+        "src": "solution",
+        "quote": "밑 조건: $x > 0$이고 $x \\neq 1$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

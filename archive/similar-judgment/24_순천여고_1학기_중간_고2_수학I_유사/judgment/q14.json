@@ -1,0 +1,55 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "5da41b51a775652f",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$A = 5^{\\log_{\\sqrt{5}} 2} = 5^{2\\log_5 2} = 5^{\\log_5 4} = 4$이다. (4.5)",
+    "$B = 3^{\\log_3 5} = 5$이다. (4.5)",
+    "구하는 식은 $(A+B)^2 - (A-B)^2 = 4AB = 4 \\times 4 \\times 5 = 80$으로 정답 ①이다. (4.5)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(5^{\\log_{\\sqr",
+  "standardUnitKey": "H15-M1-02",
+  "subUnitKey": "H15-M1-02-LOGARITHM",
+  "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그의 성질과 거듭제곱의 결합 식 계산 유형이다. (4.5)",
+  "rpmRecordId": "H2-M1-RPM-009",
+  "rpmReason": "로그 단원의 로그의 성질 곱 몫 거듭제곱 계산에 부합한다. (4.5)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "밑과 진수의 교환 공식과 기본 곱셈공식을 결합한 난이도 2 문항이다. (4.5)",
+  "how": "곱셈공식을 적용하여 식을 단순화한 뒤 지수에 로그가 있는 성질로 각 항을 계산했다. (4.5)",
+  "slots": {
+    "given": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$(5^{\\log_{\\sqrt{5}} 2} + 3^{\\log_3 5})^2 - (5^{\\log_{\\sqrt{5}} 2} - 3^{\\log_3 5})^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "값",
+        "src": "solution",
+        "quote": "따라서 구하는 값은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "f85bab0a3cd2962e",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "로그함수 $y = \\log_2(x+a)+b$의 점근선은 $x = -a$이므로 $-a = -4$에서 $a = 4$이다. (10)",
+    "$y$절편이 $5$이므로 점 $(0, 5)$를 대입하면 $5 = \\log_2 4 + b = 2 + b$에서 $b = 3$이다. (10)",
+    "따라서 $a + b = 4 + 3 = 7$이므로 정답 ②이다. (10)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $y = \\log_2(",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그함수 그래프의 특징으로부터 상수를 결정하는 유형이다. (10)",
+  "rpmRecordId": "H2-M1-RPM-022",
+  "rpmReason": "로그함수의 그래프 평행이동과 점근선 성질에 부합한다. (10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "로그함수 평행이동에 따른 점근선과 대입으로 풀 수 있는 평이한 난이도 2 문항이다. (10)",
+  "how": "점근선 조건에서 a를 구하고 절편 좌표를 대입하여 b를 구했다. (10)",
+  "slots": {
+    "given": [
+      {
+        "term": "점근선",
+        "src": "stem",
+        "quote": "그래프의 점근선이 직선 $x = -4$이고 $y$절편이 $5$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a + b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "점근선은 $x + a = 0$, 즉 $x = -a$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

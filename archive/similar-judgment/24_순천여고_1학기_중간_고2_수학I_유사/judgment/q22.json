@@ -1,0 +1,56 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "55fd25126a65c9fa",
+  "solvedAnswer": "$1, 3$",
+  "solveSteps": [
+    "밑과 진수 조건: 진수 $2x-1 > 0 \\implies x > 1/2$, 밑 $x^2+2x > 0$ 및 $x^2+2x \\ne 1$이다. (15)",
+    "경우 1: 진수가 $1$인 경우 $2x - 1 = 1 \\implies x = 1$ (밑 $3 \\ne 1$ 성립). (15)",
+    "경우 2: 밑이 같은 경우 $x^2 + 2x = 15 \\implies (x+5)(x-3) = 0$, $x > 1/2$이므로 $x = 3$이다. (15)",
+    "따라서 구하는 모든 근은 $1, 3$이다. (15)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3] 로그방정식 $",
+  "standardUnitKey": "H15-M1-04",
+  "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "로그방정식에서 진수 조건과 정의역 검토를 요구하는 유형이다. (15)",
+  "rpmRecordId": "H2-M1-RPM-023",
+  "rpmReason": "로그함수 단원의 로그방정식 진수 조건과 일치한다. (15)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "로그방정식에서 진수가 1이 되는 해를 놓치지 않고 밑 조건을 검증해야 하는 서술형 난이도 3 문항이다. (15)",
+  "how": "밑 조건과 진수 조건을 먼저 명시하고 진수가 1인 경우와 밑이 같은 경우를 나누어 풀었다. (15)",
+  "slots": {
+    "given": [
+      {
+        "term": "로그방정식",
+        "src": "stem",
+        "quote": "로그방정식 $\\log_{(x^2 + 2x)}(2x - 1) = \\log_{15}(2x - 1)$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "로그방정식",
+        "src": "stem",
+        "quote": "만족시키는 모든 근을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "로그방정식",
+        "src": "solution",
+        "quote": "진수가 $1$인 경우와 밑이 같은 경우로 나눈",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

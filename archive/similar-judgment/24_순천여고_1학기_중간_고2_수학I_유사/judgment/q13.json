@@ -1,0 +1,55 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "cc15e2aa7daf54d2",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$3^a = 9^b = 3^{2b}$이므로 $a = 2b$이다. (abc)",
+    "$a + b = 2abc$에 $a = 2b$를 대입하면 $3b = 4b^2 c$에서 $bc = \\frac{3}{4}$이다. (abc)",
+    "$ac = 2bc = \\frac{3}{2}$이므로 $3^a = k^{1/c}$의 양변을 $c$제곱하면 $k = 3^{ac} = 3^{3/2} = 3\\sqrt{3}$으로 정답 ④이다. (abc)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "세 양수 $a, b, c$에",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수법칙과 연립 조건식을 이용한 미정계수 결정 유형이다. (abc)",
+  "rpmRecordId": "H2-M1-RPM-006",
+  "rpmReason": "지수 단원의 지수법칙 조건식 활용과 일치한다. (abc)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "연립 지수식 조건에서 ac의 곱을 찾아 k를 유도하는 난이도 3 문항이다. (abc)",
+  "how": "밑을 3으로 통일하여 변수 관계식을 세우고 지수 지배 변수를 계산했다. (abc)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "세 양수 $a, b, c$에 대하여 $3^a = 9^b = k^{\\frac{1}{c}}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "실수",
+        "src": "solution",
+        "quote": "$3^a = 9^b = 3^{2b}$이므로 $a = 2b$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
