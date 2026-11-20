@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "073dc4624b8973e3",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "포물선이 원점 $\\text{O}(0, 0)$과 점 $\\text{B}(4, 0)$을 지나므로 대칭축은 $x=2$이고 $y=ax(x-4)$이다.",
+    "꼭짓점 $\\text{A}$의 $x$좌표는 $2$이며, $\\triangle\\text{OAB}$의 넓이가 $8$이므로 밑변이 $4$일 때 높이는 $4$이다. 아래로 볼록이므로 꼭짓점은 $(2, -4)$이다.",
+    "$-4 = a(2)(-2) = -4a \\implies a=1$이므로 식은 $y=x^2-4x$이다. 따라서 $a=1, b=-4, c=0$이고 $a+b+c = -3$으로 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 이차함수 $y=ax^2+bx+c$의 그래프에서 꼭짓점을",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "꼭짓점을 $\\text{A}$라고 하자.",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmEvidence": "$\\triangle\\text{OAB}$의 넓이가 $8$일 때",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_M3_FIND_COEFFICIENT_FROM_TRIANGLE_AREA_WITH_VERTEX",
+  "newKeyProposal": null,
+  "typeReason": "포물선과 꼭짓점을 지나는 삼각형의 넓이 조건으로 함수식을 결정하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "도형의 넓이와 결합된 포물선 식 구하기 RPM 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "도형 넓이와 꼭짓점 좌표 연계가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
+  "how": "삼각형 넓이 조건으로부터 꼭짓점의 좌표를 특정하고 계수들의 합을 계산하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점을 $\\text{A}$라고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b+c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle\\text{OAB}$의 넓이가 $8$일 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

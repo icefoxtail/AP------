@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "43c95e83c9293870",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$y=2x^2$의 그래프를 $x$축 방향으로 $3$, $y$축 방향으로 $-7$만큼 평행이동하면 식은 $y=2(x-3)^2-7$이다.",
+    "전개하면 $y=2(x^2-6x+9)-7 = 2x^2-12x+11$이다.",
+    "따라서 $p=-12, q=11$이므로 $p+q = -12+11 = -1$로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=2x^2$의 그래프",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmEvidence": "$x$축의 방향으로 $3$만큼, $y$축의 방향으로 $-7$만큼 평행이동",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_CALCULATE_SUM_OF_TRANSLATION_PARAMETERS",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 평행이동과 전개식을 연계하는 유형이다. (문항 토큰 px)",
+  "rpmReason": "평행이동한 이차함수 식의 전개와 계수 합 RPM 유형이다. (문항 토큰 px)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행이동 공식 적용 후 전개하는 난이도 2 문항이다. (문항 토큰 px)",
+  "how": "평행이동 공식을 적용하여 표준형을 구한 후 전개하여 계수의 합을 구하였다. (문항 토큰 px)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=2x^2$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$p+q$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "$x$축의 방향으로 $3$만큼, $y$축의 방향으로 $-7$만큼 평행이동",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

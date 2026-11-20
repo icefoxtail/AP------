@@ -1,0 +1,56 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "b8a870a08762f16a",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "주어진 $y=a(x+p)^2$의 그래프는 아래로 볼록하므로 $a>0$이고, 꼭짓점 $(-p, 0)$이 음의 방향에 있으므로 $-p<0 \\implies p>0$이다.",
+    "이차함수 $y=ax^2+p$는 $a>0$이므로 아래로 볼록하고 꼭짓점이 $(0, p)$이며 $p>0$이므로 $x$축보다 위쪽에 있다.",
+    "따라서 모든 사분면 중 제1사분면과 제2사분면을 지나며 $x$축과 만나지 않는다. 옳은 설명은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "이차함수 $y=a(x+p)^2$의 그래프가 아래 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=a(x+p)^2$의 그래프",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmEvidence": "-p > 0 \\implies p < 0",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+  "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+  "newKeyProposal": null,
+  "typeReason": "포물선의 그래프에서 계수의 부호를 결정하고 다른 그래프의 성질을 유추하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "이차함수 식의 계수의 부호 판별 및 활용 RPM 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부호 판별과 그래프 유추의 복합 사고가 필요한 난이도 3 문항이다. (문항 토큰 ax)",
+  "how": "그래프의 볼록성과 꼭짓점 위치로 계수의 부호를 판정한 후 새로운 함수의 그래프 형태를 분석하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=a(x+p)^2$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점 $(0, p)$에서 $p<0$"
+      }
+    ],
+    "method": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "-p > 0 \\implies p < 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

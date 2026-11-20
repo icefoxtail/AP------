@@ -1,0 +1,56 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "4ab16194e9368d07",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$(x-2)(x+4)=3x-6$을 전개하여 정리하면 $x^2+2x-8 = 3x-6$에서 $x^2-x-2=(x-2)(x+1)=0$이므로 두 근은 $2, -1$이다.",
+    "큰 근이 $p$이므로 $p=2$이다. 이를 $px^2-(p^2+1)x-3=0$에 대입하면 $2x^2-5x-3=(2x+1)(x-3)=0$이다.",
+    "두 근은 $-\\dfrac{1}{2}, 3$이므로 두 근의 합은 $\\dfrac{5}{2}$로 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $(x-2)(x+4)=3x-6$",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-032",
+  "rpmEvidence": "(2x + 1)(x - 3) &= 0",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+  "templateKey": "TPL_M3_ZERO_PRODUCT_SOLVE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 풀이와 해의 연계를 다루는 유형이다. (문항 토큰 px)",
+  "rpmReason": "인수분해를 이용한 이차방정식 풀이 RPM 유형이다. (문항 토큰 px)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 번의 인수분해를 거치는 표준적인 난이도 2 문항이다. (문항 토큰 px)",
+  "how": "첫 번째 방정식을 풀어 큰 근을 구한 후 두 번째 방정식에 대입하여 두 근의 합을 구하였다. (문항 토큰 px)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $(x-2)(x+4)=3x-6$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "두 근의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(2x + 1)(x - 3) &= 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

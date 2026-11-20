@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "46eee28bbf0162d7",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "이차함수 $y=-2x^2+kx-3$이 점 $(2, 5)$를 지나므로 대입하면 $5 = -2(4) + 2k - 3 = 2k - 11$에서 $2k=16$, $k=8$이다.",
+    "함수식은 $y=-2x^2+8x-3 = -2(x-2)^2 + 5$이다.",
+    "따라서 축의 방정식은 $x=2$이므로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=-2x^2+kx-3$의 그래프",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmEvidence": "점 $(2, 5)$를 대입하면",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_AXIS_AND_MONOTONICITY",
+  "templateKey": "TPL_M3_FIND_VERTEX_FROM_DECREASING_INTERVAL_OF_PARABOLA",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 계수를 결정하고 대칭축을 구하는 유형이다. (문항 토큰 kx)",
+  "rpmReason": "점 대입을 통한 식 결정 및 축의 방정식 도출 RPM 유형이다. (문항 토큰 kx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "간단한 대입과 표준형 변형으로 해결되는 난이도 2 문항이다. (문항 토큰 kx)",
+  "how": "지나는 점을 대입하여 미정계수를 구한 후 축의 방정식을 구하였다. (문항 토큰 kx)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-2x^2+kx-3$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "축",
+        "src": "stem",
+        "quote": "축의 방정식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "점 $(2, 5)$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

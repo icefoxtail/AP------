@@ -1,0 +1,56 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "e997bb78a666be10",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "이차방정식 $3x^2-8x-p=0$에 짝수 근의 공식을 적용하면 $x = \\dfrac{4\\pm\\sqrt{(-4)^2-3(-p)}}{3} = \\dfrac{4\\pm\\sqrt{16+3p}}{3}$이다.",
+    "주어진 해 $x=\\dfrac{q\\pm\\sqrt{22}}{3}$와 비교하면 $q=4$이고 $16+3p=22$에서 $3p=6$, 즉 $p=2$이다.",
+    "따라서 $p+q = 2+4 = 6$이므로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $3x^2-8x-p=0$",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmEvidence": "해가 $x=\\dfrac{q\\pm\\sqrt{22}}{3}$일 때",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD",
+  "templateKey": "TPL_M3_QUADRATIC_EQUATION_SQUARE_ROOT_METHOD_FORMULA",
+  "newKeyProposal": null,
+  "typeReason": "근의 공식으로 구한 해와 주어진 식을 계수비교하는 유형이다. (문항 토큰 22)",
+  "rpmReason": "근의 공식을 이용한 미정계수 결정 RPM 유형이다. (문항 토큰 22)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "근의 공식 적용 후 단순 비교로 해결되는 난이도 2 문항이다. (문항 토큰 22)",
+  "how": "근의 공식을 적용하여 계수와 근의 형태를 비교하여 상수를 결정하였다. (문항 토큰 22)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $3x^2-8x-p=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$p+q$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "해",
+        "src": "stem",
+        "quote": "해가 $x=\\dfrac{q\\pm\\sqrt{22}}{3}$일 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "97b22961874d1d2c",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "이차방정식 $9x^2+px+16=0$이 중근을 가지려면 좌변이 완전제곱식이 되어야 하므로 $p^2 - 4 \\times 9 \\times 16 = 0$에서 $p^2 = 576$, $p=\\pm 24$이다.",
+    "음수 $p$라 하였으므로 $p=-24$이고, 식은 $9x^2-24x+16=(3x-4)^2=0$이 되어 중근은 $q=\\dfrac{4}{3}$이다.",
+    "따라서 $p-q = -24 - \\dfrac{4}{3} = -\\dfrac{76}{3}$이므로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $9x^2+px+16=0$이 중근을 가질 때",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmEvidence": "(3x - 4)^2 = 0",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+  "templateKey": "TPL_M3_CALCULATE_PARAMETER_DIFFERENCE_FROM_DOUBLE_ROOT",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식이 중근을 가질 조건을 이용하여 미정계수와 해를 구하는 유형이다. (문항 토큰 px)",
+  "rpmReason": "중근을 가질 조건과 해의 계산 RPM 유형이다. (문항 토큰 px)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "중근 조건과 분수 계산이 결합된 난이도 2 문항이다. (문항 토큰 px)",
+  "how": "완전제곱식 조건(판별식)으로 음수 계수를 구하고 중근을 계산하였다. (문항 토큰 px)",
+  "slots": {
+    "given": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "이차방정식 $9x^2+px+16=0$이 중근을 가질 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "차",
+        "src": "stem",
+        "quote": "$p-q$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "(3x - 4)^2 = 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "src": "stem",
+        "quote": "음수 $p$의 값"
+      }
+    ]
+  }
+}

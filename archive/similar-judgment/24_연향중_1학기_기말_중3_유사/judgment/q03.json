@@ -1,0 +1,56 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "5ab0a30eafc3f457",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "이차방정식 $x^2+2ax+15=0$에 한 근 $x=-3$을 대입하면 $(-3)^2-6a+15=0$에서 $6a=24$, 즉 $a=4$이다.",
+    "방정식 $x^2+8x+15=0$을 인수분해하면 $(x+3)(x+5)=0$이므로 다른 한 근은 $b=-5$이다.",
+    "따라서 $a+b = 4 + (-5) = -1$로 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2+2ax+15=0$의 한 근이 $-3$",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-029",
+  "rpmEvidence": "x^2 + 8x + 15 = (x+3)(x+5) = 0",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+  "templateKey": "TPL_M3_EVALUATE_FRACTIONAL_EXPRESSION_USING_QUADRATIC_ROOT_DESCRIPTIVE",
+  "newKeyProposal": null,
+  "typeReason": "한 근이 주어진 이차방정식에서 계수와 다른 근을 구하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "해가 주어진 이차방정식의 계수 결정 RPM 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대입과 인수분해의 2단계를 거치는 난이도 2 문항이다. (문항 토큰 ax)",
+  "how": "근을 대입하여 미정계수를 구하고 다시 인수분해하여 다른 근과 합을 구하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+2ax+15=0$의 한 근이 $-3$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "x^2 + 8x + 15 = (x+3)(x+5) = 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

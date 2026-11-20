@@ -1,0 +1,56 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "43bb51a6d9126862",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "이차함수 $y=x^2-4ax+3a^2+b = (x-2a)^2 - a^2+b$의 꼭짓점은 $(2a, -a^2+b)$이다.",
+    "주어진 꼭짓점 $(4, -2)$와 비교하면 $2a=4 \\implies a=2$이고, $-a^2+b = -4+b = -2 \\implies b=2$이다.",
+    "따라서 $a+2b = 2 + 2(2) = 6$이므로 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "꼭짓점의 좌표가 $(4, -2)$일 때",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmEvidence": "(x - 2a)^2 - a^2 + b",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_CONVERT_GENERAL_TO_VERTEX_FORM_DESCRIPTIVE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수 일반형을 표준형으로 변형하여 꼭짓점의 좌표를 활용하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "일반형 $y=ax^2+bx+c$를 표준형으로 고쳐 꼭짓점 구하기 RPM 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "완전제곱식 변형과 비교로 해결되는 난이도 2 문항이다. (문항 토큰 ax)",
+  "how": "일반형을 완전제곱식 꼴로 변형하여 꼭짓점을 구하고 계수를 비교하였다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점의 좌표가 $(4, -2)$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "$a+2b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "(x - 2a)^2 - a^2 + b",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

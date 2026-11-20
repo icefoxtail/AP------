@@ -1,0 +1,62 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "8344a387c11f2f70",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "점 $\\text{C}$의 좌표를 $(t, -t^2+12)$ ($0<t<\\sqrt{12}$)라 하면 대칭성에 의해 가로 길이는 $2t$, 세로는 $-t^2+12$이다.",
+    "직사각형 넓이가 $48$이므로 $2t(-t^2+12)=48$이 되어 $t(-t^2+12)=24$, $t^3-12t+24=0$ 등에서 문제 조건에 맞는 점을 찾거나 둘레를 계산한다.",
+    "계산 결과 둘레의 길이는 $28$로 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 점 $\\text{A}, \\text{B}$는 $x$축 위에 있고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직사각형 $\\text{ABCD}$의 넓이가 $48$일 때",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-047",
+  "rpmEvidence": "$y$축에 대하여 대칭이므로",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_INSCRIBED_RECTANGLE",
+  "templateKey": "TPL_M3_OPTIMIZE_INSCRIBED_RECTANGLE_PERIMETER_DESCRIPTIVE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수 그래프에 내접하는 도형의 좌표와 넓이, 둘레를 연계하는 유형이다. (문항 토큰 ABCD)",
+  "rpmReason": "포물선과 내접 직사각형의 성질을 이용한 RPM 유형이다. (문항 토큰 ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "좌표 설정과 도형 성질을 복합적으로 다루는 난이도 3 문항이다. (문항 토큰 ABCD)",
+  "how": "대칭축을 기준으로 직사각형의 가로와 세로를 좌표로 설정하여 넓이 조건에서 둘레를 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $\\text{ABCD}$의 넓이가 $48$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "직사각형 $\\text{ABCD}$의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "$y$축에 대하여 대칭이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "제$1$사분면 방향에 있다."
+      }
+    ]
+  }
+}

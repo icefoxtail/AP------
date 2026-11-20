@@ -1,0 +1,56 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "d2fe5ef69df92cd6",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "모든 항을 좌변으로 이항하여 정리했을 때 $x^2$항이 남는지 판별한다.",
+    "ㄴ은 $-x+2=0$으로 일차방정식이고, ㄹ은 $x^2-2x=x^2-3x-4$에서 $x+4=0$이 되어 일차방정식이다.",
+    "따라서 이차방정식이 아닌 것은 ㄴ, ㄹ로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식이 아닌 것을 모두 고른 것은?",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-029",
+  "rpmEvidence": "모든 항을 좌변으로 이항하여",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_IDENTIFICATION",
+  "templateKey": "TPL_M3_VERIFY_ROOT_OF_QUADRATIC_EQUATION",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 기본 정의와 판별을 묻는 유형이다. (문항 토큰 3)",
+  "rpmReason": "이차방정식과 해 단원에서 식을 전개 및 이항하여 이차방정식인지 판별하는 RPM 유형이다. (문항 토큰 3)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초적인 식 정리로 해결 가능한 난이도 1 문항이다. (문항 토큰 3)",
+  "how": "식들을 좌변으로 정리하여 최고차항이 이차인지 확인하였다. (문항 토큰 3)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식이 아닌 것을 모두 고른 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "solution",
+        "quote": "-x+2=0$ (일차방정식)"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "모든 항을 좌변으로 이항하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
