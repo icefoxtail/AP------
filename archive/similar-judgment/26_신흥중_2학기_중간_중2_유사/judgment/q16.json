@@ -1,0 +1,65 @@
+{
+  "qid": 16,
+  "itemFingerprint": "3c7248786410e670",
+  "solveSteps": [
+    "ㄱ. 평행사변형의 두 대각선이 수직이면 네 변의 길이가 같아져 마름모가 된다 (참).",
+    "ㄴ. 평행사변형의 두 대각선의 길이가 같으면 네 각이 모두 90도가 되어 직사각형이다 (참).",
+    "ㄷ. 직사각형의 이웃하는 두 변의 길이가 같으면 네 변의 길이가 모두 같아져 정사각형이다 (참).",
+    "ㄹ. 두 대각선이 서로 수직이더라도 이등분하지 않으면 마름모가 아니다 (거짓).",
+    "따라서 옳은 것은 ㄱ, ㄴ, ㄷ이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "서로 수직인 평행사변형은 마름모이다.",
+  "rpmRecordId": "M2-RPM-201",
+  "rpmReason": "90도 각 조건 및 대각선의 수직, 길이 조건을 비교하여 여러 사각형의 성질을 판정하는 단계이다.",
+  "problemTypeKey": "PT_MG_QUADRILATERAL_HIERARCHY_CONDITIONS",
+  "templateKey": "TPL_MG_COMPLETE_CONDITIONS_IN_QUADRILATERAL_FLOWCHART_DESCRIPTIVE",
+  "typeReason": "90도 각과 대각선 성질에 따른 사각형 간의 포함 관계 및 변환 명제의 참 거짓을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "90도 조건과 대각선 성질 등 사각형 계통 정의를 바로 적용해 판단하는 기본 난이도 1 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "서로 수직인 평행사변형은 마름모이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "평행사변형은 직사각형이다.} \\ &"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "행사변형의 두 대각선이 서로 수직이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대각선 수직, 90도 각 조건 등을 판별하여 ㄱ, ㄴ, ㄷ이 참이고 ㄹ이 거짓임을 확인해 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

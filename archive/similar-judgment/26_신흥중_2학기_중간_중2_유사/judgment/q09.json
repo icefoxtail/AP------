@@ -1,0 +1,66 @@
+{
+  "qid": 9,
+  "itemFingerprint": "f33eca48be5d836a",
+  "solveSteps": [
+    "마름모의 대각선은 서로 수직이등분하므로 BD = 2 * BO = 2 * 15 = 30 cm 이다.",
+    "AO 는 BD 에 수직이므로 삼각형 ABD 의 넓이는 1/2 * 30 * 10 = 150 cm^2 이다.",
+    "변 AB 위에서 AE : EB = 2 : 1 이므로 EB : AB = 1 : 3 이다.",
+    "삼각형 EBD 와 ABD 는 밑변 BD 를 공유하므로 넓이의 비는 높이의 비와 같다.",
+    "삼각형 EBD = 1/3 * 150 = 50 cm^2 이다.",
+    "따라서 정답은 50 cm^2 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "마름모 $ABCD$에",
+  "rpmRecordId": "M2-RPM-195",
+  "rpmReason": "마름모의 대각선 성질로 삼각형 ABD 넓이 150 cm^2 를 구하고 변의 비 1/3 로 50 cm^2 를 구하는 단계이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "마름모 ABCD 의 대각선 수직이등분 성질과 선분 분할비로 삼각형 EBD 의 넓이 50 cm^2 를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대각선 길이 30 과 AO = 10 으로 구한 넓이 150 에 1/3 을 곱해 50 을 도출하는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "e EBD$의 넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "각선은 서로를 수직이등분한다. $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "마름모 대각선에서 삼각형 ABD = 150 cm^2 이고 AE:EB = 2:1 에서 삼각형 EBD = 1/3 * 150 = 50 cm^2 로 ③을 선택했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

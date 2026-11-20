@@ -1,0 +1,66 @@
+{
+  "qid": 23,
+  "itemFingerprint": "b9dc87e6e99fc37d",
+  "solveSteps": [
+    "(1) I가 삼각형 ABO의 내심이므로 AI는 각 BAO의 이등분선이다: 각 BAI = 각 IAO = y.",
+    "순서에 의해 각 IAC = 각 IAO + 각 OAC = y + x = x + y 이다.",
+    "(2) O가 삼각형 ABC의 외심이므로 OA = OB 이고 각 BAO = 각 ABO = 2y, 각 AOB = 180도 - 4y 이다.",
+    "O'가 외심이므로 각 BOO' = 90도 - 2y 이고, 이등변삼각형 OBO'에서 각 OBO' = 90도 - 2y 이다.",
+    "각 BAO' = 각 ABO' = 2y - (90도 - 2y) = 4y - 90도 이다.",
+    "각 IAO' = 각 BAO' - 각 BAI = 4y - 90도 - y = 3y - 90도 = 15도에서 3y = 105도, y = 35도이다."
+  ],
+  "solvedAnswer": "(1) $x + y$ / (2) $35^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "[서술형 3] 삼각형 $ABC$의",
+  "rpmRecordId": "M2-RPM-189",
+  "rpmReason": "외심과 내심이 복합된 도형에서 각의 이등분선과 외심의 이등변삼각형 성질로 3y = 105도, y = 35도를 구하는 단계이다.",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_COMBINED",
+  "typeReason": "삼각형의 외심과 그 부분 삼각형의 외심, 내심이 결합된 복합도형에서 각 15도 조건으로 y = 35도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외심 2개와 내심 1개의 각 관계를 4단계에 걸쳐 추적하여 180도와 90도로부터 35도를 유도하는 난이도 4 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "$ABC$의 외심을 $O$라 하"
+      }
+    ],
+    "goal": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "O$의 외심과 내심을 각각 점 $"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직이등분선",
+        "src": "solution",
+        "quote": "분 $AB$의 수직이등분선이자 꼭지각 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "내심에서 각 IAC = x + y 를 구하고 외심 복합 각 관계 3y - 90도 = 15도에서 y = 35도임을 서술하여 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

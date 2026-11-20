@@ -1,0 +1,65 @@
+{
+  "qid": 21,
+  "itemFingerprint": "7835128f39799e40",
+  "solveSteps": [
+    "M이 BC의 중점이므로 BM = CM 이고, 수선에 의해 각 BDM = 각 CEM = 90도이다.",
+    "DM = EM 이므로 빗변과 한 직각변의 길이가 같아 삼각형 BDM 과 CEM 은 RHS 합동이다.",
+    "따라서 각 B = 각 C 이므로 삼각형 ABC 는 AB = AC 인 이등변삼각형이다.",
+    "각 A = 72도이므로 밑각 각 B = (180도 - 72도) / 2 = 54도이다.",
+    "직각삼각형 BDM 에서 각 BMD = 90도 - 54도 = 36도이다."
+  ],
+  "solvedAnswer": "$36^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "unitEvidence": "AC$에 내린 수선의 발을 각각",
+  "rpmRecordId": "M2-RPM-180",
+  "rpmReason": "직각삼각형의 RHS 합동으로 각 B = 각 C = 54도를 구하고 각 BMD = 36도를 도출하는 서술 단계이다.",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_SIDE",
+  "typeReason": "RHS 합동과 이등변삼각형 밑각 54도를 이용하여 직각삼각형 속 각 BMD = 36도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "90도 수선과 중점에서 RHS 합동을 보이고 꼭지각 72도로부터 36도를 계산하는 난이도 2 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "변 $BC$의 중점을 $M$이라"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "AC$에 내린 수선의 발을 각각"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "직각삼각형의 합동 증명 점 $M",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "RHS 합동으로 각 B = 54도를 구하고 90도 직각삼각형 BDM 에서 각 BMD = 36도임을 서술하여 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
