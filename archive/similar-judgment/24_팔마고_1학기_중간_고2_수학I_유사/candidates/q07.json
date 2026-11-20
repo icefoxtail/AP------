@@ -18,20 +18,38 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "밑이 다른 로그의 밑을 $3$으로 통일하면 다음과 같다.\n\n\n$$\\begin{aligned}\n\\log_9 16 &= \\frac{\\log_3 16}{\\log_3 9} = \\frac{\\log_3 2^4}{2} = \\frac{4\\log_3 2}{2} = \\log_3 2^2 = \\log_3 4 \\\nx &= \\log_3 10 + \\log_3 4 = \\log_3 (10 \\times 4) = \\log_3 40\n\\end{aligned}$$\n\n\n따라서 로그의 정의에 의해 $3^x = 40$이다. 정답은 ①이다.",
+    "solution": "밑이 다른 로그의 밑을 $3$으로 통일하면 다음과 같다.\n\n$$\\begin{aligned}  \n\\log_9 16 &= \\frac{\\log_3 16}{\\log_3 9} = \\frac{\\log_3 2^4}{2} = \\frac{4\\log_3 2}{2} = \\log_3 2^2 = \\log_3 4 \\\\  \nx &= \\log_3 10 + \\log_3 4 = \\log_3 (10 \\times 4) = \\log_3 40  \n\\end{aligned}$$\n\n따라서 로그의 정의에 의해 $3^x = 40$이다. 정답은 ①이다.",
     "sourcePrimaryMethod": "밑변환 공식으로 log_9 16을 log_3 4로 바꾼 뒤 로그의 합을 정리해 3^x를 구한다.",
     "sourceDecisiveStep": "log_9 16 = log_3 4로 밑을 통일하여 x = log_3 40을 얻는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-02",
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그",
+      "l3": "로그의 성질",
+      "l4": "밑의 변환"
+    },
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
     "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "로그"
+      ],
+      "goal": [
+        "식의값"
+      ],
+      "method": [
+        "밑변환",
+        "로그",
+        "성질"
+      ],
+      "condition": []
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1579,7 +1597,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

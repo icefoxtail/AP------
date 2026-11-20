@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "$A(a, 4\\log_2(a - 1))$이라 하면 $\\overline{AB} = 2$이고 $x_B > x_A$이므로 $B(a + 2, 4\\log_2(a - 1))$이다.\n점 $D$는 $x = a + 2$에서 곡선 $y = 4\\log_2(x - 1)$ 위의 점이고 $\\overline{BD} = 4$이므로\n$4\\log_2(a + 1) - 4\\log_2(a - 1) = 4 \\implies \\log_2 \\dfrac{a + 1}{a - 1} = 1 \\implies \\dfrac{a + 1}{a - 1} = 2 \\implies a = 3$\n따라서 $A(3, 4)$, $B(5, 4)$, $D(5, 8)$이다. ($B(5, 4)$는 $y = 2^{5-3} = 4$를 만족한다.)\n점 $C$는 $y = 2^{x - 3}$ 위의 점 중 $y = 8$인 점이므로 $2^{x - 3} = 8 \\implies x = 6$, 즉 $C(6, 8)$이다.\n사다리꼴 $ABCD$에서 $\\overline{AB} = 2$, $\\overline{DC} = 6 - 5 = 1$, 높이 $\\overline{BD} = 4$이므로 넓이는\n$\\dfrac{2 + 1}{2} \\times 4 = 6$",
+    "solution": "$A(a, 4\\log_2(a - 1))$이라 하면 $\\overline{AB} = 2$이고 $x_B > x_A$이므로 $B(a + 2, 4\\log_2(a - 1))$이다.  \n점 $D$는 $x = a + 2$에서 곡선 $y = 4\\log_2(x - 1)$ 위의 점이고 $\\overline{BD} = 4$이므로  \n$4\\log_2(a + 1) - 4\\log_2(a - 1) = 4 \\implies \\log_2 \\dfrac{a + 1}{a - 1} = 1 \\implies \\dfrac{a + 1}{a - 1} = 2 \\implies a = 3$  \n따라서 $A(3, 4)$, $B(5, 4)$, $D(5, 8)$이다. ($B(5, 4)$는 $y = 2^{5-3} = 4$를 만족한다.)  \n점 $C$는 $y = 2^{x - 3}$ 위의 점 중 $y = 8$인 점이므로 $2^{x - 3} = 8 \\implies x = 6$, 즉 $C(6, 8)$이다.  \n사다리꼴 $ABCD$에서 $\\overline{AB} = 2$, $\\overline{DC} = 6 - 5 = 1$, 높이 $\\overline{BD} = 4$이므로 넓이는  \n$\\dfrac{2 + 1}{2} \\times 4 = 6$",
     "sourcePrimaryMethod": "AB=2, BD=2 조건을 로그함수 식에 적용해 점 A, B, D의 좌표를 구하고 지수함수와 교점 C를 찾아 사다리꼴 넓이를 구한다.",
     "sourceDecisiveStep": "BD=2로부터 점 A, B, D의 좌표를 확정해 점 C의 x좌표를 구하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 활용",
+      "l4": "그래프 교점"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -1658,7 +1658,7 @@
       "matchedAs": "사다리꼴",
       "kind": "대상",
       "src": "solution",
-      "quote": "8)$이다. 사다리꼴 $ABCD$에"
+      "quote": ")$이다.   사다리꼴 $ABCD$에"
     },
     {
       "term": "곡선",
@@ -1672,7 +1672,7 @@
       "matchedAs": "넓이",
       "kind": "대상",
       "src": "solution",
-      "quote": "= 4$이므로 넓이는 $\\dfra"
+      "quote": "= 4$이므로 넓이는   $\\df"
     },
     {
       "term": "높이",

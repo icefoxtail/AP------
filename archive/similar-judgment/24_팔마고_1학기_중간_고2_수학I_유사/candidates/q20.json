@@ -6,26 +6,46 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[서답형4(서술형1)]\n함수 $y=\\log_3 (x-2) + \\log_3 (8-x)$는 $x=p$일 때 최댓값 $m$을 갖는다. $p$와 $m$의 값을 각각 구하는 과정을 서술하시오.",
+    "content": "[서답형4(서술형1)]  \n함수 $y=\\log_3 (x-2) + \\log_3 (8-x)$는 $x=p$일 때 최댓값 $m$을 갖는다. $p$와 $m$의 값을 각각 구하는 과정을 서술하시오.",
     "choices": [],
     "points": 6
   },
   "reference": {
     "answer": "$p=5$, $m=2$",
-    "solution": "로그가 정의되려면 진수가 모두 양수여야 하므로\n$$x-2 > 0 \\text{ 이고 } 8-x > 0 \\implies 2 < x < 8$$\n이다. 로그의 성질을 이용해 하나의 로그로 합치면\n$$\\begin{aligned}\ny &= \\log_3 {(x-2)(8-x)} \\\n&= \\log_3 \\left(-x^2 + 10x - 16\\right) \\\n&= \\log_3 \\left{9 - (x-5)^2\\right}\n\\end{aligned}$$\n이다. 정의역 $2 < x < 8$ 안에 $x=5$가 포함되므로 진수 $9 - (x-5)^2$은 $x=5$일 때 최댓값 $9$를 갖는다.\n\n\n밑이 $3 > 1$인 로그함수는 진수가 최대일 때 함숫값도 최대이므로 $x = 5$일 때 최댓값은\n$$m = \\log_3 9 = 2$$\n이다. 따라서 $p = 5$, $m = 2$이다.",
+    "solution": "로그가 정의되려면 진수가 모두 양수여야 하므로  \n$$x-2 > 0 \\text{ 이고 } 8-x > 0 \\implies 2 < x < 8$$  \n이다. 로그의 성질을 이용해 하나의 로그로 합치면  \n$$\\begin{aligned}  \ny &= \\log_3 \\{(x-2)(8-x)\\} \\\\  \n&= \\log_3 \\left(-x^2 + 10x - 16\\right) \\\\  \n&= \\log_3 \\left\\{9 - (x-5)^2\\right\\}  \n\\end{aligned}$$  \n이다. 정의역 $2 < x < 8$ 안에 $x=5$가 포함되므로 진수 $9 - (x-5)^2$은 $x=5$일 때 최댓값 $9$를 갖는다.\n\n밑이 $3 > 1$인 로그함수는 진수가 최대일 때 함숫값도 최대이므로 $x = 5$일 때 최댓값은  \n$$m = \\log_3 9 = 2$$  \n이다. 따라서 $p = 5$, $m = 2$이다.",
     "sourcePrimaryMethod": "진수 조건 2<x<8을 먼저 구한 뒤 로그의 합을 이차함수 진수로 바꾸어 완전제곱식으로 최댓값을 구한다.",
     "sourceDecisiveStep": "진수 (x-2)(8-x)=9-(x-5)^2의 꼭짓점 x=5가 정의역 안에 있음을 확인하고 최댓값 2를 구하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 활용",
+      "l4": "최대·최소"
+    },
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
     "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "로그함수"
+      ],
+      "goal": [
+        "최댓값",
+        "매개변수"
+      ],
+      "method": [
+        "로그",
+        "성질",
+        "완전제곱식",
+        "정의역"
+      ],
+      "condition": []
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1565,7 +1585,7 @@
       "matchedAs": "함수",
       "kind": "대상",
       "src": "stem",
-      "quote": "(서술형1)] 함수 $y=\\log"
+      "quote": "술형1)]   함수 $y=\\log"
     },
     {
       "term": "로그함수",
@@ -1579,7 +1599,7 @@
       "matchedAs": "정의역",
       "kind": "대상",
       "src": "solution",
-      "quote": "}$$ 이다. 정의역 $2 < x"
+      "quote": "$   이다. 정의역 $2 < x"
     },
     {
       "term": "최댓값",
@@ -1614,7 +1634,7 @@
       "matchedAs": "양수",
       "kind": "조건",
       "src": "solution",
-      "quote": "진수가 모두 양수여야 하므로 $"
+      "quote": "진수가 모두 양수여야 하므로"
     },
     {
       "term": "정의",
@@ -1650,7 +1670,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": {

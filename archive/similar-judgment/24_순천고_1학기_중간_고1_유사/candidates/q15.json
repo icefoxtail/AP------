@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "$$y=-2x^2+8x-3=-2(x-2)^2+5$$\n\n\n1. $0\\le x\\le k$에서 최댓값이 $5$이려면 꼭짓점 $x=2$가 구간에 포함되어야 하므로 $k\\ge 2$이다. 2.$x=0$에서의 함숫값이 $-3$이므로 최솟값이 $-3$이 되려면 오른쪽 끝점 $x=k$에서의 함숫값이 $-3$ 이상이어야 한다. $$-2k^2+8k-3\\ge -3 \\implies -2k(k-4)\\ge 0 \\implies 0\\le k\\le 4$$ 1)과 2)의 공통 범위는 $2\\le k\\le 4$이므로 $\\alpha=2$, $\\beta=4$이다. 따라서 $\\alpha+\\beta=2+4=6$이고, 정답은 ④이다.",
+    "solution": "$$y=-2x^2+8x-3=-2(x-2)^2+5$$\n\n1) $0\\le x\\le k$에서 최댓값이 $5$이려면 꼭짓점 $x=2$가 구간에 포함되어야 하므로 $k\\ge 2$이다.  \n2) $x=0$에서의 함숫값이 $-3$이므로 최솟값이 $-3$이 되려면 오른쪽 끝점 $x=k$에서의 함숫값이 $-3$ 이상이어야 한다. $$-2k^2+8k-3\\ge -3 \\implies -2k(k-4)\\ge 0 \\implies 0\\le k\\le 4$$ 1)과 2)의 공통 범위는 $2\\le k\\le 4$이므로 $\\alpha=2$, $\\beta=4$이다. 따라서 $\\alpha+\\beta=2+4=6$이고, 정답은 ④이다.",
     "sourcePrimaryMethod": "표준형 -2(x-2)^2+5에서 최댓값 5 조건으로 k>=2를, x=0에서의 값 -3으로 최솟값 조건 f(k)>=-3을 세운다.",
     "sourceDecisiveStep": "f(k)>=-3에서 0<=k<=4를 구해 k>=2와 교집합 2<=k<=4를 확정한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

@@ -19,20 +19,30 @@
   "reference": {
     "answer": "⑤",
     "solution": "$z = x + yi$ ($x, y$는 실수)라 하자. 실계수 이차방정식 $x^2 - kx + 4 = 0$의 한 근이 $w = s + ti$ ($s, t$는 실수)이면 $k = w + \\frac{4}{w}$가 실수여야 하므로 $t = 0$ 또는 $s^2 + t^2 = 4$이다.\n\n- 조건 (가)에서 $z - 2 = (x - 2) + yi$이므로 $y = 0$ 또는 $(x - 2)^2 + y^2 = 4$이다.  \n- 조건 (나)에서 $z - 2i = x + (y - 2)i$이므로 $y = 2$ 또는 $x^2 + (y - 2)^2 = 4$이다.\n\n$z \\neq 0$이므로 두 조건을 동시에 만족시키는 순서쌍 $(x, y)$를 구하면 $(x, y) = (2, 2)$, 즉 $z = 2 + 2i$뿐이다.\n\n1. 조건 (가): $z - 2 = 2i$이므로 두 근은 $2i, -2i$이고 $a = 2i + (-2i) = 0$이다.  \n2. 조건 (나): $z - 2i = 2$이므로 $x^2 - bx + 4 = 0$은 $(x - 2)^2 = 0$이 되어 $b = 4$이다.\n\n따라서 구하는 값은 $a + b = 0 + 4 = 4$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "실계수 이차방정식 $x^2-kx+4=0$의 근 $w$가 실수이거나 $|w|^2=4$임을 이용해 $z=2+2i$를 구한 뒤 $a, b$를 계산한다.",
+    "sourceDecisiveStep": "$z \\neq 0$ 조건으로 원과 직선의 교점 중 $(0,0)$을 제외하고 $z=2+2i$를 유일하게 결정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "복소수 근",
+      "l4": "계수 조건"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
     "templateKey": null,
-    "difficultyBucket": null,
+    "difficultyBucket": 4,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수와이차방정식",
+      "concept": "이차방정식의켤레근",
+      "skill": "실계수조건복소수추론",
+      "context": "복소수근과원"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

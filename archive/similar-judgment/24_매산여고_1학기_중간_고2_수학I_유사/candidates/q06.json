@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "이차함수 $f(x) = (x - 3)^2 - 4$와 일차함수 $g(x) = x - 1$에 대하여 부등식\n$$\\left(\\dfrac{3}{4}\\right)^{f(x)} > \\left(\\dfrac{3}{4}\\right)^{g(x)}$$\n를 만족시키는 모든 자연수 $x$의 값의 합을 구하면? [3.5점]",
+    "content": "이차함수 $f(x) = (x - 3)^2 - 4$와 일차함수 $g(x) = x - 1$에 대하여 부등식  \n$$\\left(\\dfrac{3}{4}\\right)^{f(x)} > \\left(\\dfrac{3}{4}\\right)^{g(x)}$$  \n를 만족시키는 모든 자연수 $x$의 값의 합을 구하면? [3.5점]",
     "choices": [
       "$14$",
       "$12$",
@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "밑이 $\\dfrac{3}{4}$ ($0 < \\dfrac{3}{4} < 1$)이므로 지수함수는 감소하고, 주어진 부등식은\n$f(x) < g(x)$\n$(x - 3)^2 - 4 < x - 1$\n$x^2 - 6x + 5 < x - 1$\n$x^2 - 7x + 6 < 0$\n$(x - 1)(x - 6) < 0 \\implies 1 < x < 6$\n이를 만족시키는 자연수 $x$는 $2, 3, 4, 5$이므로 합은 $2 + 3 + 4 + 5 = 14$이다.",
+    "solution": "밑이 $\\dfrac{3}{4}$ ($0 < \\dfrac{3}{4} < 1$)이므로 지수함수는 감소하고, 주어진 부등식은  \n$f(x) < g(x)$  \n$(x - 3)^2 - 4 < x - 1$  \n$x^2 - 6x + 5 < x - 1$  \n$x^2 - 7x + 6 < 0$  \n$(x - 1)(x - 6) < 0 \\implies 1 < x < 6$  \n이를 만족시키는 자연수 $x$는 $2, 3, 4, 5$이므로 합은 $2 + 3 + 4 + 5 = 14$이다.",
     "sourcePrimaryMethod": "밑이 3/4<1이므로 부등호를 반전해 f(x)<g(x) 이차부등식을 풀어 자연수 해를 더한다.",
     "sourceDecisiveStep": "0<3/4<1에서 f(x)<g(x)로 바꾸어 (x-1)(x-6)<0을 푸는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-03",
+    "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수부등식",
+      "l4": "밑의 범위에 따른 부등호"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+    "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
     "difficultyBucket": 2,
     "newKeyProposal": null,
     "item4slot": {
@@ -1598,7 +1598,7 @@
       "matchedAs": "부등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "1$에 대하여 부등식 $$\\left"
+      "quote": "1$에 대하여 부등식   $$\\le"
     },
     {
       "term": "자연수",
@@ -1612,7 +1612,7 @@
       "matchedAs": "등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "$에 대하여 부등식 $$\\left"
+      "quote": "$에 대하여 부등식   $$\\le"
     },
     {
       "term": "양화",
@@ -1640,7 +1640,7 @@
       "matchedAs": "부등식",
       "kind": "대상",
       "src": "solution",
-      "quote": "하고, 주어진 부등식은 $f(x)"
+      "quote": "하고, 주어진 부등식은   $f(x"
     },
     {
       "term": "자연수",
@@ -1654,7 +1654,7 @@
       "matchedAs": "등식",
       "kind": "대상",
       "src": "solution",
-      "quote": "고, 주어진 부등식은 $f(x)"
+      "quote": "고, 주어진 부등식은   $f(x"
     },
     {
       "term": "증가감소",

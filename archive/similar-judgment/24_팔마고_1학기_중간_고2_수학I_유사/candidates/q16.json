@@ -18,20 +18,41 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "$f(x) = 2^{|x-1|} + 3$, $g(x) = \\log_2(x+k)$라 하자. $x=0, 1, 2$에서의 $f(x)$의 값은 다음과 같다.\n$$f(0) = 2^1 + 3 = 5, \\quad f(1) = 2^0 + 3 = 4, \\quad f(2) = 2^1 + 3 = 5$$\n\n\n구간 $(0, 1)$에서 $f(x) = 2^{1-x}+3$은 감소하고 $g(x) = \\log_2(x+k)$는 증가하므로 두 곡선이 $0 < x_1 < 1$에서 만나려면 양 끝점의 함숫값이 서로 반대로 놓여야 한다.\n$$g(0) < f(0) \\text{ 이고 } g(1) > f(1) \\implies \\log_2 k < 5, \\; \\log_2(k+1) > 4$$\n\n\n구간 $(1, 2)$에서는 $f(x) = 2^{x-1}+3$과 $g(x) = \\log_2(x+k)$가 모두 증가하지만, $k > 15$인 범위에서 $g(x)$의 기울기는 작고 위로 볼록하며 $f(x)$는 아래로 볼록하므로 $g(1) > f(1)$이면서 $g(2) < f(2)$이면 구간 $(1, 2)$에서 오직 한 번 교차한다.\n$$g(1) > f(1) \\text{ 이고 } g(2) < f(2) \\implies \\log_2(k+1) > 4, \\; \\log_2(k+2) < 5$$\n\n\n두 조건을 종합하면\n$$\\begin{cases} \\log_2(k+1) > 4 \\implies k+1 > 16 \\implies k > 15 \\ \\log_2(k+2) < 5 \\implies k+2 < 32 \\implies k < 30 \\end{cases}$$\n(이때 $\\log_2 k < 5$, 즉 $k < 32$는 자동으로 만족한다.)\n\n\n따라서 $15 < k < 30$을 만족하는 자연수 $k$는 $16, 17, \\ldots, 29$로 모두 $29 - 16 + 1 = 14$개이다. 정답은 ③이다.",
+    "solution": "$f(x) = 2^{|x-1|} + 3$, $g(x) = \\log_2(x+k)$라 하자. $x=0, 1, 2$에서의 $f(x)$의 값은 다음과 같다.  \n$$f(0) = 2^1 + 3 = 5, \\quad f(1) = 2^0 + 3 = 4, \\quad f(2) = 2^1 + 3 = 5$$\n\n구간 $(0, 1)$에서 $f(x) = 2^{1-x}+3$은 감소하고 $g(x) = \\log_2(x+k)$는 증가하므로 두 곡선이 $0 < x_1 < 1$에서 만나려면 양 끝점의 함숫값이 서로 반대로 놓여야 한다.  \n$$g(0) < f(0) \\text{ 이고 } g(1) > f(1) \\implies \\log_2 k < 5, \\; \\log_2(k+1) > 4$$\n\n구간 $(1, 2)$에서는 $f(x) = 2^{x-1}+3$과 $g(x) = \\log_2(x+k)$가 모두 증가하지만, $k > 15$인 범위에서 $g(x)$의 기울기는 작고 위로 볼록하며 $f(x)$는 아래로 볼록하므로 $g(1) > f(1)$이면서 $g(2) < f(2)$이면 구간 $(1, 2)$에서 오직 한 번 교차한다.  \n$$g(1) > f(1) \\text{ 이고 } g(2) < f(2) \\implies \\log_2(k+1) > 4, \\; \\log_2(k+2) < 5$$\n\n두 조건을 종합하면  \n$$\\begin{cases} \\log_2(k+1) > 4 \\implies k+1 > 16 \\implies k > 15 \\\\ \\log_2(k+2) < 5 \\implies k+2 < 32 \\implies k < 30 \\end{cases}$$  \n(이때 $\\log_2 k < 5$, 즉 $k < 32$는 자동으로 만족한다.)\n\n따라서 $15 < k < 30$을 만족하는 자연수 $k$는 $16, 17, \\ldots, 29$로 모두 $29 - 16 + 1 = 14$개이다. 정답은 ③이다.",
     "sourcePrimaryMethod": "x=0, 1, 2의 경계 함숫값 대소 비교를 통해 구간 (0,1)과 (1,2)에서 각각 교점이 존재할 k의 범위를 연립한다.",
     "sourceDecisiveStep": "x=0, 1, 2에서의 함수값 부등식 g(0)<5, g(1)>4, g(2)<5를 동시에 세우는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 활용",
+      "l4": "그래프 교점"
+    },
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 4,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "지수함수",
+        "로그함수",
+        "절댓값"
+      ],
+      "goal": [
+        "개수"
+      ],
+      "method": [
+        "교점",
+        "대소비교"
+      ],
+      "condition": [
+        "자연수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1648,7 +1669,7 @@
       "matchedAs": "조건",
       "kind": "대상",
       "src": "solution",
-      "quote": "5$$ 두 조건을 종합하면 $"
+      "quote": "5$$ 두 조건을 종합하면"
     },
     {
       "term": "증가감소",
@@ -1672,7 +1693,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": {

@@ -19,20 +19,30 @@
   "reference": {
     "answer": "①",
     "solution": "근과 계수의 관계에 의하여 $z, \\bar{z}$는 이차방정식 $t^2 - t + 1 = 0$의 두 근이다. 따라서 $z^2 - z + 1 = 0$이고, 양변에 $z + 1$을 곱하면 $z^3 + 1 = 0$, 즉 $z^3 = -1$, $z^6 = 1$이다. 연속한 $6$개의 항의 합은 $$z + z^2 + z^3 + z^4 + z^5 + z^6 = z(1 + z + z^2) + z^4(1 + z + z^2) = z(1 + z + z^2)(1 + z^3) = 0$$ $2027 = 6 \\times 337 + 5$이므로 처음 $2022$개 항의 합은 $0$이고 마지막 $5$개 항만 남는다. $$z + z^2 + z^3 + z^4 + z^5 = (z + z^2 + z^3 + z^4 + z^5 + z^6) - z^6 = 0 - 1 = -1$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$z, \\bar{z}$가 $t^2-t+1=0$의 근임을 이용해 $z^3=-1, z^6=1$의 $6$주기성을 적용하여 $2027$항의 합을 구한다.",
+    "sourceDecisiveStep": "연속 $6$항의 합이 $0$이고 $2027=6\\times 337+5$임을 이용해 $5$항의 합을 $-z^6=-1$로 계산하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "근과 계수의 관계",
+      "l4": "근으로 방정식 구성"
+    },
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "복소수의거듭제곱",
+      "skill": "근과계수기반주기합",
+      "context": "켤레복소수거듭제곱합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

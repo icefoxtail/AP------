@@ -13,20 +13,30 @@
   "reference": {
     "answer": "$10$",
     "solution": "두 식을 연립하면 $-x^2 + m = 2x \\implies x^2 + 2x - m = 0$이다. 이 이차방정식의 두 근을 $\\alpha, \\beta$라 하면 근과 계수의 관계에 의하여 $\\alpha + \\beta = -2$, $\\alpha\\beta = -m$이다. 두 점의 좌표는 $\\mathrm{A}(\\alpha, 2\\alpha)$, $\\mathrm{B}(\\beta, 2\\beta)$이므로 두 삼각형의 넓이의 합은 $$\\triangle\\mathrm{AOC} + \\triangle\\mathrm{BOD} = \\frac{1}{2}|\\alpha||2\\alpha| + \\frac{1}{2}|\\beta||2\\beta| = \\alpha^2 + \\beta^2 = 24$$ 곱셈 공식의 변형에 의하여 $$\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = (-2)^2 - 2(-m) = 4 + 2m = 24$$ 따라서 $2m = 20$이므로 $m = 10$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "교점의 $x$좌표 $\\alpha, \\beta$로 두 직각삼각형의 넓이 합 $\\alpha^2+\\beta^2=24$를 세우고 근과 계수의 관계로 $m$을 구한다.",
+    "sourceDecisiveStep": "부호와 무관하게 두 삼각형의 넓이 합이 $\\alpha^2+\\beta^2$으로 표현됨을 파악하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "근과 계수의 관계",
+      "l4": "근으로 방정식 구성"
+    },
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "이차방정식과이차함수",
+      "concept": "이차함수와직선의위치관계",
+      "skill": "교점삼각형넓이합계산",
+      "context": "좌표평면삼각형넓이합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -273,6 +283,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -468,6 +482,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

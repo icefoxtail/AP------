@@ -6,28 +6,28 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[주관식1 (서술형)] [6점]\n각 $\\theta$가 $\\sin\\theta + \\cos\\theta = \\dfrac{1}{2}$을 만족시킬 때, $\\sin^6\\theta - \\cos^6\\theta$의 값을 구하고, 그 과정을 서술하시오. (단, $\\dfrac{3}{2}\\pi < \\theta < 2\\pi$이다.)",
+    "content": "[주관식1 (서술형)] [6점]  \n각 $\\theta$가 $\\sin\\theta + \\cos\\theta = \\dfrac{1}{2}$을 만족시킬 때, $\\sin^6\\theta - \\cos^6\\theta$의 값을 구하고, 그 과정을 서술하시오. (단, $\\dfrac{3}{2}\\pi < \\theta < 2\\pi$이다.)",
     "choices": [],
     "points": 6
   },
   "reference": {
     "answer": "$-\\dfrac{55\\sqrt{7}}{256}$",
-    "solution": "$\\sin\\theta + \\cos\\theta = \\dfrac{1}{2}$의 양변을 제곱하면\n$1 + 2\\sin\\theta\\cos\\theta = \\dfrac{1}{4} \\implies \\sin\\theta\\cos\\theta = -\\dfrac{3}{8}$\n$(\\sin\\theta - \\cos\\theta)^2 = 1 - 2\\sin\\theta\\cos\\theta = 1 + \\dfrac{3}{4} = \\dfrac{7}{4}$\n$\\dfrac{3}{2}\\pi < \\theta < 2\\pi$는 제$4$사분면의 각이므로 $\\sin\\theta < 0$, $\\cos\\theta > 0$이어서 $\\sin\\theta - \\cos\\theta < 0$이다.\n따라서 $\\sin\\theta - \\cos\\theta = -\\dfrac{\\sqrt{7}}{2}$이고,\n$\\sin^6\\theta - \\cos^6\\theta = (\\sin^2\\theta - \\cos^2\\theta)(\\sin^4\\theta + \\sin^2\\theta\\cos^2\\theta + \\cos^4\\theta)$\n$= (\\sin\\theta + \\cos\\theta)(\\sin\\theta - \\cos\\theta){(\\sin^2\\theta + \\cos^2\\theta)^2 - \\sin^2\\theta\\cos^2\\theta}$\n$= \\dfrac{1}{2} \\times \\left(-\\dfrac{\\sqrt{7}}{2}\\right) \\times \\left(1 - \\dfrac{9}{64}\\right) = -\\dfrac{\\sqrt{7}}{4} \\times \\dfrac{55}{64} = -\\dfrac{55\\sqrt{7}}{256}$",
+    "solution": "$\\sin\\theta + \\cos\\theta = \\dfrac{1}{2}$의 양변을 제곱하면  \n$1 + 2\\sin\\theta\\cos\\theta = \\dfrac{1}{4} \\implies \\sin\\theta\\cos\\theta = -\\dfrac{3}{8}$  \n$(\\sin\\theta - \\cos\\theta)^2 = 1 - 2\\sin\\theta\\cos\\theta = 1 + \\dfrac{3}{4} = \\dfrac{7}{4}$  \n$\\dfrac{3}{2}\\pi < \\theta < 2\\pi$는 제$4$사분면의 각이므로 $\\sin\\theta < 0$, $\\cos\\theta > 0$이어서 $\\sin\\theta - \\cos\\theta < 0$이다.  \n따라서 $\\sin\\theta - \\cos\\theta = -\\dfrac{\\sqrt{7}}{2}$이고,  \n$\\sin^6\\theta - \\cos^6\\theta = (\\sin^2\\theta - \\cos^2\\theta)(\\sin^4\\theta + \\sin^2\\theta\\cos^2\\theta + \\cos^4\\theta)$  \n$= (\\sin\\theta + \\cos\\theta)(\\sin\\theta - \\cos\\theta)\\{(\\sin^2\\theta + \\cos^2\\theta)^2 - \\sin^2\\theta\\cos^2\\theta\\}$  \n$= \\dfrac{1}{2} \\times \\left(-\\dfrac{\\sqrt{7}}{2}\\right) \\times \\left(1 - \\dfrac{9}{64}\\right) = -\\dfrac{\\sqrt{7}}{4} \\times \\dfrac{55}{64} = -\\dfrac{55\\sqrt{7}}{256}$",
     "sourcePrimaryMethod": "sin θ+cos θ=1/2에서 sin θ cos θ와 sin θ-cos θ(제4사분면 부호)를 구해 sin⁶θ-cos⁶θ를 인수분해 계산한다.",
     "sourceDecisiveStep": "sin⁶θ-cos⁶θ = (sin θ+cos θ)(sin θ-cos θ)(1-sin²θ cos²θ)로 변형해 대입하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-05",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "삼각함수의 성질",
+      "l4": "삼각함수 관계"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+    "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -1586,7 +1586,7 @@
       "matchedAs": "제곱",
       "kind": "대상",
       "src": "solution",
-      "quote": "}$의 양변을 제곱하면 $1 +"
+      "quote": "}$의 양변을 제곱하면   $1"
     }
   ],
   "figure": {

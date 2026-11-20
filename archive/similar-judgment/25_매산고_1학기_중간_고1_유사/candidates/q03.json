@@ -19,20 +19,30 @@
   "reference": {
     "answer": "⑤",
     "solution": "각 분수의 분모를 실수화하면 $$\\frac{1 + i}{1 - i} = \\frac{(1 + i)^2}{(1 - i)(1 + i)} = \\frac{2i}{2} = i, \\quad \\frac{1 - i}{1 + i} = \\frac{(1 - i)^2}{(1 + i)(1 - i)} = \\frac{-2i}{2} = -i$$ 주어진 식에 대입하면 $$i - 2(-i) = 3i = 0 + 3i = a + bi$$ $a, b$가 실수이므로 $a = 0, b = 3$이고 $a - b = 0 - 3 = -3$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "두 분수 복소수의 분모를 실수화하여 $i$와 $-i$로 정리한 뒤 복소수 상등 조건으로 $a, b$를 구한다.",
+    "sourceDecisiveStep": "$\\frac{1+i}{1-i}=i$와 $\\frac{1-i}{1+i}=-i$를 계산해 $3i$를 얻는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "복소수의상등",
+      "skill": "분모실수화후계수비교",
+      "context": "분수복소수차"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

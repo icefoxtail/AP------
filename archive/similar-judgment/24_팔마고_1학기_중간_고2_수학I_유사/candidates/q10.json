@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "$1$이 아닌 두 양수 $a, b$에 대하여 두 함수 $f(x)=a^x$, $g(x)=b^x$가 양수 $n$에 대하여 $f(n) < g(n)$을 만족시킬 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n\n\n<보기>\nㄱ. $b > 1$이면 $a > 1$이다.\nㄴ. $a > 1$이면 $b > 1$이다.\nㄷ. $ab < 1$이면 $0 < a < 1$이다.",
+    "content": "$1$이 아닌 두 양수 $a, b$에 대하여 두 함수 $f(x)=a^x$, $g(x)=b^x$가 양수 $n$에 대하여 $f(n) < g(n)$을 만족시킬 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n\n<보기>  \nㄱ. $b > 1$이면 $a > 1$이다.  \nㄴ. $a > 1$이면 $b > 1$이다.  \nㄷ. $ab < 1$이면 $0 < a < 1$이다.",
     "choices": [
       "ㄱ",
       "ㄴ",
@@ -18,20 +18,41 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "$n > 0$이고 $a^n < b^n$이므로 양의 지수에 대하여 밑의 대소 관계는 $0 < a < b$이다.\n\n\nㄱ. $b > 1$이더라도 $0 < a < 1$인 경우(예: $a = \\frac{1}{2}$, $b = 2$)가 존재하므로 거짓이다.\n\n\nㄴ. $a > 1$이면 $b > a > 1$이므로 $b > 1$이다. 따라서 참이다.\n\n\nㄷ. 대우를 생각하여 $a \\ge 1$이라 가정하면 $a \\ne 1$이므로 $a > 1$이고, $b > a > 1$이므로 $ab > 1$이 된다. 따라서 $ab < 1$이면 $0 < a < 1$이어야 하므로 참이다.\n\n\n그러므로 옳은 것은 ㄴ, ㄷ이므로 정답은 ⑤이다.",
+    "solution": "$n > 0$이고 $a^n < b^n$이므로 양의 지수에 대하여 밑의 대소 관계는 $0 < a < b$이다.\n\nㄱ. $b > 1$이더라도 $0 < a < 1$인 경우(예: $a = \\frac{1}{2}$, $b = 2$)가 존재하므로 거짓이다.\n\nㄴ. $a > 1$이면 $b > a > 1$이므로 $b > 1$이다. 따라서 참이다.\n\nㄷ. 대우를 생각하여 $a \\ge 1$이라 가정하면 $a \\ne 1$이므로 $a > 1$이고, $b > a > 1$이므로 $ab > 1$이 된다. 따라서 $ab < 1$이면 $0 < a < 1$이어야 하므로 참이다.\n\n그러므로 옳은 것은 ㄴ, ㄷ이므로 정답은 ⑤이다.",
     "sourcePrimaryMethod": "양수 n에 대해 a^n < b^n이면 0<a<b임을 파악하고 각 명제의 참·거짓을 반례와 대우로 판별한다.",
     "sourceDecisiveStep": "f(n)<g(n) (n>0)으로부터 0<a<b를 도출해 대우 ab>=1 논리로 ㄷ을 판정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-03",
     "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수함수의 그래프",
+      "l4": "증가·감소"
+    },
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "지수함수",
+        "부등식"
+      ],
+      "goal": [
+        "판정"
+      ],
+      "method": [
+        "지수함수",
+        "성질",
+        "대우"
+      ],
+      "condition": [
+        "양수"
+      ]
+    },
     "boundary": "B23"
   },
   "units": [
@@ -1599,7 +1620,7 @@
       "matchedAs": "대우",
       "kind": "방법",
       "src": "solution",
-      "quote": "다. ㄷ. 대우를 생각하여 $"
+      "quote": "이다. ㄷ. 대우를 생각하여 $"
     },
     {
       "term": "존재",
@@ -1628,7 +1649,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": {

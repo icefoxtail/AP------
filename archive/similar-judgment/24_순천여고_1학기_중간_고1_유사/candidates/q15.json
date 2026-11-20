@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "$t=x^2-2x=(x-1)^2-1$이라 치환하면 $-1\\le x\\le 4$에서\n\n\n* $x=1$일 때 $t$의 최솟값은 $-1$\n* $x=4$일 때 $t$의 최댓값은 $(4-1)^2-1=8$ (참고: $x=-1$일 때 $t=3$)\n\n\n따라서 $-1\\le t\\le 8$이다. 이제 $y=t^2-4t+7=(t-2)^2+3$에서 꼭짓점 $t=2$가 구간에 포함되므로 최댓값은 양 끝점 중 대칭축에서 더 먼 $t=8$에서 나온다. $$t=8 \\implies y=(8-2)^2+3=39$$ 정답은 ③이다.",
+    "solution": "$t=x^2-2x=(x-1)^2-1$이라 치환하면 $-1\\le x\\le 4$에서\n\n- $x=1$일 때 $t$의 최솟값은 $-1$  \n- $x=4$일 때 $t$의 최댓값은 $(4-1)^2-1=8$ (참고: $x=-1$일 때 $t=3$)\n\n따라서 $-1\\le t\\le 8$이다. 이제 $y=t^2-4t+7=(t-2)^2+3$에서 꼭짓점 $t=2$가 구간에 포함되므로 최댓값은 양 끝점 중 대칭축에서 더 먼 $t=8$에서 나온다. $$t=8 \\implies y=(8-2)^2+3=39$$ 정답은 ③이다.",
     "sourcePrimaryMethod": "t=x^2-2x의 치역 [-1, 8]을 먼저 구한 뒤 치환된 이차함수 y=(t-2)^2+3의 최댓값을 끝점에서 구한다.",
     "sourceDecisiveStep": "-1<=t<=8 범위에서 대칭축 t=2로부터 가장 먼 t=8을 대입해 최댓값 39를 얻는다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2586,7 +2603,7 @@
       "matchedAs": "최솟값",
       "kind": "행위",
       "src": "solution",
-      "quote": "때 $t$의 최솟값은 $-1$ *"
+      "quote": "때 $t$의 최솟값은 $-1$"
     },
     {
       "term": "축",

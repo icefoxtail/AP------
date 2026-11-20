@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "$1$보다 큰 양수 $a$에 대하여 함수 $y = a^x + b$의 그래프와 함수 $y = \\log_a(x - b)$의 그래프가 서로 다른 두 점 $A, B$에서 만나고 다음 <조건>을 만족시킨다.\n<조건>\n(가) 두 점 $A, B$ 사이의 거리는 $2\\sqrt{2}$이다.\n(나) 선분 $AB$의 수직이등분선은 $x + y - 6 = 0$이다.\n$a + b$의 값은? (단, $b$는 상수이다.) [4.9점]",
+    "content": "$1$보다 큰 양수 $a$에 대하여 함수 $y = a^x + b$의 그래프와 함수 $y = \\log_a(x - b)$의 그래프가 서로 다른 두 점 $A, B$에서 만나고 다음 <조건>을 만족시킨다.  \n<조건>  \n(가) 두 점 $A, B$ 사이의 거리는 $2\\sqrt{2}$이다.  \n(나) 선분 $AB$의 수직이등분선은 $x + y - 6 = 0$이다.  \n$a + b$의 값은? (단, $b$는 상수이다.) [4.9점]",
     "choices": [
       "$\\sqrt{2} - 2$",
       "$\\sqrt{2} - 1$",
@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "$a > 1$이므로 두 함수 $y = a^x + b$와 $y = \\log_a(x - b)$는 서로 역함수 관계이고 모두 증가함수이므로 교점 $A, B$는 직선 $y = x$ 위에 있다.\n선분 $AB$의 중점 $M$은 직선 $y = x$와 수직이등분선 $x + y - 6 = 0$의 교점이므로 $M(3, 3)$이다.\n두 점 $A, B$가 직선 $y = x$ 위에 있고 $\\overline{AB} = 2\\sqrt{2}$이므로 $A(2, 2)$, $B(4, 4)$이다.\n두 점이 곡선 $y = a^x + b$ 위의 점이므로\n$2 = a^2 + b$, $4 = a^4 + b$\n두 식을 빼면 $a^4 - a^2 = 2 \\implies (a^2 - 2)(a^2 + 1) = 0$\n$a > 1$이므로 $a^2 = 2 \\implies a = \\sqrt{2}$, $b = 2 - a^2 = 0$\n따라서 $a + b = \\sqrt{2}$이다.",
+    "solution": "$a > 1$이므로 두 함수 $y = a^x + b$와 $y = \\log_a(x - b)$는 서로 역함수 관계이고 모두 증가함수이므로 교점 $A, B$는 직선 $y = x$ 위에 있다.  \n선분 $AB$의 중점 $M$은 직선 $y = x$와 수직이등분선 $x + y - 6 = 0$의 교점이므로 $M(3, 3)$이다.  \n두 점 $A, B$가 직선 $y = x$ 위에 있고 $\\overline{AB} = 2\\sqrt{2}$이므로 $A(2, 2)$, $B(4, 4)$이다.  \n두 점이 곡선 $y = a^x + b$ 위의 점이므로  \n$2 = a^2 + b$, $4 = a^4 + b$  \n두 식을 빼면 $a^4 - a^2 = 2 \\implies (a^2 - 2)(a^2 + 1) = 0$  \n$a > 1$이므로 $a^2 = 2 \\implies a = \\sqrt{2}$, $b = 2 - a^2 = 0$  \n따라서 $a + b = \\sqrt{2}$이다.",
     "sourcePrimaryMethod": "증가 역함수 쌍의 교점이 y=x 위에 있음을 이용해 중점 (3,3)과 거리 2√2로 A(2,2), B(4,4)를 찾아 a, b를 연립한다.",
     "sourceDecisiveStep": "y=x와 수직이등분선 x+y-6=0의 교점 (3,3)에서 거리 √2만큼 떨어진 (2,2), (4,4)를 구하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-03",
     "subUnitKey": "",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수함수의 활용",
+      "l4": "그래프 교점"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -1639,7 +1639,7 @@
       "matchedAs": "선분",
       "kind": "대상",
       "src": "stem",
-      "quote": "이다. (나) 선분 $AB$의 수"
+      "quote": ".   (나) 선분 $AB$의 수"
     },
     {
       "term": "수선",
@@ -1695,7 +1695,7 @@
       "matchedAs": "곡선",
       "kind": "대상",
       "src": "solution",
-      "quote": "다. 두 점이 곡선 $y = a^"
+      "quote": "두 점이 곡선 $y = a^"
     },
     {
       "term": "관계",
@@ -1716,7 +1716,7 @@
       "matchedAs": "선분",
       "kind": "대상",
       "src": "solution",
-      "quote": "위에 있다. 선분 $AB$의 중"
+      "quote": "에 있다.   선분 $AB$의 중"
     },
     {
       "term": "수선",

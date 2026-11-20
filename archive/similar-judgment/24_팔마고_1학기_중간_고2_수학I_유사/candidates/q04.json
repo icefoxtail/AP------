@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "다음 <보기>에서 옳은 것만을 있는 대로 고른 것은?\n\n\n<보기>\nㄱ. $\\frac{5}{6}\\pi = 150^\\circ$\nㄴ. 시초선 $\\mathrm{OX}$를 고정된 것으로 생각할 때, 동경 $\\mathrm{OP}$의 위치가 정해지면 $\\angle \\mathrm{XOP}$의 크기는 유일하게 결정된다.\nㄷ. $\\theta = 360^\\circ \\times n + 210^\\circ$ ($n$은 정수)는 제$3$사분면의 각이다.",
+    "content": "다음 <보기>에서 옳은 것만을 있는 대로 고른 것은?\n\n<보기>  \nㄱ. $\\frac{5}{6}\\pi = 150^\\circ$  \nㄴ. 시초선 $\\mathrm{OX}$를 고정된 것으로 생각할 때, 동경 $\\mathrm{OP}$의 위치가 정해지면 $\\angle \\mathrm{XOP}$의 크기는 유일하게 결정된다.  \nㄷ. $\\theta = 360^\\circ \\times n + 210^\\circ$ ($n$은 정수)는 제$3$사분면의 각이다.",
     "choices": [
       "ㄱ",
       "ㄱ, ㄷ",
@@ -18,20 +18,38 @@
   },
   "reference": {
     "answer": "②",
-    "solution": "ㄱ. 라디안을 육십분법으로 바꾸면\n$$\\frac{5}{6}\\pi \\times \\frac{180^\\circ}{\\pi} = 150^\\circ$$\n이므로 참이다.\n\n\nㄴ. 동경 $\\mathrm{OP}$의 위치가 같더라도 회전수 $n$에 따라 $360^\\circ \\times n + \\alpha$ 형태로 무수히 많은 각이 대응하므로 $\\angle \\mathrm{XOP}$의 크기는 유일하게 결정되지 않는다. 따라서 거짓이다.\n\n\nㄷ. $\\theta = 360^\\circ \\times n + 210^\\circ$ ($n$은 정수)는 $210^\\circ$와 동경이 같은 일반각이고, $180^\\circ < 210^\\circ < 270^\\circ$이므로 제$3$사분면의 각이다. 따라서 참이다.\n\n\n그러므로 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
+    "solution": "ㄱ. 라디안을 육십분법으로 바꾸면  \n$$\\frac{5}{6}\\pi \\times \\frac{180^\\circ}{\\pi} = 150^\\circ$$  \n이므로 참이다.\n\nㄴ. 동경 $\\mathrm{OP}$의 위치가 같더라도 회전수 $n$에 따라 $360^\\circ \\times n + \\alpha$ 형태로 무수히 많은 각이 대응하므로 $\\angle \\mathrm{XOP}$의 크기는 유일하게 결정되지 않는다. 따라서 거짓이다.\n\nㄷ. $\\theta = 360^\\circ \\times n + 210^\\circ$ ($n$은 정수)는 $210^\\circ$와 동경이 같은 일반각이고, $180^\\circ < 210^\\circ < 270^\\circ$이므로 제$3$사분면의 각이다. 따라서 참이다.\n\n그러므로 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
     "sourcePrimaryMethod": "호도법과 육십분법의 환산, 동경의 일반각 표현, 사분면의 각 정의를 각각 판별한다.",
     "sourceDecisiveStep": "동경의 위치가 같아도 회전수에 따라 일반각이 무수히 많음을 확인하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-05",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "rpmPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "일반각과 호도법",
+      "l4": "일반각"
+    },
+    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+    "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
     "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "일반각",
+        "호도법"
+      ],
+      "goal": [
+        "판정"
+      ],
+      "method": [
+        "호도법",
+        "일반각"
+      ],
+      "condition": []
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1571,7 +1589,7 @@
       "matchedAs": "결정",
       "kind": "행위",
       "src": "stem",
-      "quote": "기는 유일하게 결정된다. ㄷ. $"
+      "quote": "기는 유일하게 결정된다.   ㄷ."
     },
     {
       "term": "위치",
@@ -1606,7 +1624,7 @@
       "matchedAs": "육십분법",
       "kind": "대상",
       "src": "solution",
-      "quote": "ㄱ. 라디안을 육십분법으로 바꾸면 $"
+      "quote": "ㄱ. 라디안을 육십분법으로 바꾸면"
     },
     {
       "term": "사분면",
@@ -1684,7 +1702,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

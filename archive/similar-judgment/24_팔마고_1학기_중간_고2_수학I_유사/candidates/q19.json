@@ -6,26 +6,50 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[서답형3(단답형3)]\n$16$ 이하의 양수 $a$에 대하여 $a^{\\log_2 9}$의 값이 $3^n$ ($n$은 자연수) 꼴이 되도록 하는 모든 $a$의 값의 곱을 구하시오.",
+    "content": "[서답형3(단답형3)]  \n$16$ 이하의 양수 $a$에 대하여 $a^{\\log_2 9}$의 값이 $3^n$ ($n$은 자연수) 꼴이 되도록 하는 모든 $a$의 값의 곱을 구하시오.",
     "choices": [],
     "points": 4
   },
   "reference": {
     "answer": "$2^{18}$",
-    "solution": "$a^{\\log_2 9} = 3^n$ ($n$은 자연수)이라 두고 양변에 밑이 $3$인 로그를 취하면\n\n\n$$\\begin{aligned}\n\\log_3 \\left(a^{\\log_2 9}\\right) &= \\log_3 3^n \\\n(\\log_2 9) (\\log_3 a) &= n \\\n(2\\log_2 3) (\\log_3 a) &= n \\\n2 \\log_2 a &= n \\implies a = 2^{\\frac{n}{2}}\n\\end{aligned}$$\n\n\n이다. 조건에서 $a \\le 16 = 2^4$이므로\n$$2^{\\frac{n}{2}} \\le 2^4 \\implies \\frac{n}{2} \\le 4 \\implies n \\le 8$$\n이다. $n$은 자연수이므로 가능한 $n$은 $1, 2, 3, 4, 5, 6, 7, 8$이다.\n\n\n따라서 구하는 모든 $a$의 값의 곱은\n$$\\prod_{n=1}^{8} 2^{\\frac{n}{2}} = 2^{\\frac{1+2+3+4+5+6+7+8}{2}} = 2^{\\frac{36}{2}} = 2^{18}$$\n이다.",
+    "solution": "$a^{\\log_2 9} = 3^n$ ($n$은 자연수)이라 두고 양변에 밑이 $3$인 로그를 취하면\n\n$$\\begin{aligned}  \n\\log_3 \\left(a^{\\log_2 9}\\right) &= \\log_3 3^n \\\\  \n(\\log_2 9) (\\log_3 a) &= n \\\\  \n(2\\log_2 3) (\\log_3 a) &= n \\\\  \n2 \\log_2 a &= n \\implies a = 2^{\\frac{n}{2}}  \n\\end{aligned}$$\n\n이다. 조건에서 $a \\le 16 = 2^4$이므로  \n$$2^{\\frac{n}{2}} \\le 2^4 \\implies \\frac{n}{2} \\le 4 \\implies n \\le 8$$  \n이다. $n$은 자연수이므로 가능한 $n$은 $1, 2, 3, 4, 5, 6, 7, 8$이다.\n\n따라서 구하는 모든 $a$의 값의 곱은  \n$$\\prod_{n=1}^{8} 2^{\\frac{n}{2}} = 2^{\\frac{1+2+3+4+5+6+7+8}{2}} = 2^{\\frac{36}{2}} = 2^{18}$$  \n이다.",
     "sourcePrimaryMethod": "a^(log_2 9) = 3^n에 밑 3인 로그를 취해 a=2^(n/2)를 구한 뒤 a<=16 범위의 모든 곱을 계산한다.",
     "sourceDecisiveStep": "밑변환 성질 (log_2 9)(log_3 a) = 2 log_2 a = n으로 a를 2의 거듭제곱 형태로 푸는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-02",
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그",
+      "l3": "로그의 성질",
+      "l4": "밑의 변환"
+    },
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
     "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "거듭제곱",
+        "로그",
+        "등식"
+      ],
+      "goal": [
+        "곱"
+      ],
+      "method": [
+        "밑변환",
+        "로그",
+        "성질",
+        "지수법칙"
+      ],
+      "condition": [
+        "자연수",
+        "양수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1586,7 +1610,7 @@
       "matchedAs": "로그",
       "kind": "대상",
       "src": "solution",
-      "quote": "밑이 $3$인 로그를 취하면"
+      "quote": "밑이 $3$인 로그를 취하면 $"
     },
     {
       "term": "양화",
@@ -1600,7 +1624,7 @@
       "matchedAs": "조건",
       "kind": "대상",
       "src": "solution",
-      "quote": "$ 이다. 조건에서 $a \\l"
+      "quote": "$$ 이다. 조건에서 $a \\l"
     }
   ],
   "figure": {
@@ -1608,7 +1632,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

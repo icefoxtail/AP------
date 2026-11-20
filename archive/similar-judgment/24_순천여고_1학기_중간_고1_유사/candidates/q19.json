@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "대칭축 $x=a$의 위치에 따라 경우를 나눈다.\n\n\n1. $a<1$일 때: 구간 $[1, 2]$에서 $x=1$일 때 최댓값을 가지므로 $$-(1-a)^2+b=5 \\implies b=5+(a-1)^2$$ 따라서 $a+b=a^2-a+6=\\left(a-\\dfrac{1}{2}\\right)^2+\\dfrac{23}{4}$이고, $a=\\dfrac{1}{2}<1$에서 최솟값 $\\dfrac{23}{4}$을 갖는다. 2.$1\\le a\\le 2$일 때: 꼭짓점이 구간에 속하므로 최댓값은 $b=5$이고, $a+b=a+5\\ge 6$이다. 3.$a>2$일 때: $x=2$일 때 최댓값을 가지므로 $b=5+(a-2)^2$이고, $a+b>2+5=7$이다.\n\n\n세 경우를 비교하면 $a+b$의 최솟값은 $\\dfrac{23}{4}$이다. 정답은 ①이다.",
+    "solution": "대칭축 $x=a$의 위치에 따라 경우를 나눈다.\n\n1) $a<1$일 때: 구간 $[1, 2]$에서 $x=1$일 때 최댓값을 가지므로 $$-(1-a)^2+b=5 \\implies b=5+(a-1)^2$$ 따라서 $a+b=a^2-a+6=\\left(a-\\dfrac{1}{2}\\right)^2+\\dfrac{23}{4}$이고, $a=\\dfrac{1}{2}<1$에서 최솟값 $\\dfrac{23}{4}$을 갖는다.  \n2) $1\\le a\\le 2$일 때: 꼭짓점이 구간에 속하므로 최댓값은 $b=5$이고, $a+b=a+5\\ge 6$이다.  \n3) $a>2$일 때: $x=2$일 때 최댓값을 가지므로 $b=5+(a-2)^2$이고, $a+b>2+5=7$이다.\n\n세 경우를 비교하면 $a+b$의 최솟값은 $\\dfrac{23}{4}$이다. 정답은 ①이다.",
     "sourcePrimaryMethod": "대칭축 a의 위치를 [1, 2] 기준 세 구간으로 나누어 b를 a의 식으로 나타낸 뒤 a+b의 최솟값을 비교한다.",
     "sourceDecisiveStep": "a<1 구간에서 a+b=(a-1/2)^2+23/4의 최솟값 23/4가 다른 구간 최솟값 6보다 작음을 확인한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

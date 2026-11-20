@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "두 실수 $a, b$에 대하여 $b^2 < b < a$일 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n\n\n<보기>\nㄱ. $b^b > b^a$\nㄴ. $\\log_b a > 1$\nㄷ. $\\log_{a+1} b \\times \\log_{a+1} (b+1) < 0$",
+    "content": "두 실수 $a, b$에 대하여 $b^2 < b < a$일 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?\n\n<보기>  \nㄱ. $b^b > b^a$  \nㄴ. $\\log_b a > 1$  \nㄷ. $\\log_{a+1} b \\times \\log_{a+1} (b+1) < 0$",
     "choices": [
       "ㄱ",
       "ㄱ, ㄷ",
@@ -18,20 +18,43 @@
   },
   "reference": {
     "answer": "②",
-    "solution": "$b^2 < b$에서 $b(b-1) < 0$이므로 $0 < b < 1$이다. 또한 $b < a$이므로 $a > b > 0$이다.\n\n\nㄱ. 밑 $b$가 $0 < b < 1$이므로 지수함수 $y = b^x$는 감소함수이다. $b < a$이므로 $b^b > b^a$가 성립하여 참이다.\n\n\nㄴ. 밑 $b$가 $0 < b < 1$이므로 로그함수 $y = \\log_b x$는 감소함수이다. $a > b$이므로 $\\log_b a < \\log_b b = 1$이다. 따라서 거짓이다.\n\n\nㄷ. $a > 0$이므로 $a+1 > 1$이다. 이때 $0 < b < 1$이므로 $\\log_{a+1} b < 0$이고, $b+1 > 1$이므로 $\\log_{a+1}(b+1) > 0$이다. 따라서 두 값의 곱은 음수이므로 참이다.\n\n\n그러므로 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
+    "solution": "$b^2 < b$에서 $b(b-1) < 0$이므로 $0 < b < 1$이다. 또한 $b < a$이므로 $a > b > 0$이다.\n\nㄱ. 밑 $b$가 $0 < b < 1$이므로 지수함수 $y = b^x$는 감소함수이다. $b < a$이므로 $b^b > b^a$가 성립하여 참이다.\n\nㄴ. 밑 $b$가 $0 < b < 1$이므로 로그함수 $y = \\log_b x$는 감소함수이다. $a > b$이므로 $\\log_b a < \\log_b b = 1$이다. 따라서 거짓이다.\n\nㄷ. $a > 0$이므로 $a+1 > 1$이다. 이때 $0 < b < 1$이므로 $\\log_{a+1} b < 0$이고, $b+1 > 1$이므로 $\\log_{a+1}(b+1) > 0$이다. 따라서 두 값의 곱은 음수이므로 참이다.\n\n그러므로 옳은 것은 ㄱ, ㄷ이므로 정답은 ②이다.",
     "sourcePrimaryMethod": "b^2<b에서 0<b<1을 파악한 뒤 지수함수와 로그함수의 증가·감소 성질로 대소와 부호를 판별한다.",
     "sourceDecisiveStep": "0<b<1과 a+1>1을 각각 지수·로그함수의 단조성에 적용해 부호를 확정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
     "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 그래프",
+      "l4": "증가·감소"
+    },
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "부등식",
+        "지수",
+        "로그"
+      ],
+      "goal": [
+        "판정"
+      ],
+      "method": [
+        "지수함수",
+        "성질",
+        "로그함수",
+        "이차부등식"
+      ],
+      "condition": [
+        "실수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1635,7 +1658,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

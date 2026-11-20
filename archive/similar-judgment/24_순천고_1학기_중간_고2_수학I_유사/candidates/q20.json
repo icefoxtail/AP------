@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "각 곡선의 $x$절편과 $y$절편을 확인하면\n- $y = 3^{x - 1}$: $(0, \\frac{1}{3})$, $(1, 1)$, $(2, 3)$을 지난다.\n- $y = \\log_3(x - 1)$: $(2, 0)$, $(4, 1)$을 지난다.\n- $y = \\log_{\\frac{1}{2}}(x - 2)$: 점근선 $x = 2$, $(3, 0)$, $(2.5, 1)$을 지난다.\n둘러싸인 영역 내 정수점 $(x, y)$를 $x$좌표별로 세면\n- $x = 0$: $0 \\le y \\le \\dfrac{1}{3} \\implies (0, 0)$ ($1$개)\n- $x = 1$: $0 \\le y \\le 1 \\implies (1, 0), (1, 1)$ ($2$개)\n- $x = 2$: $\\log_3(2 - 1) = 0 \\le y \\le 3 \\implies (2, 0), (2, 1), (2, 2), (2, 3)$ ($4$개)\n- $x = 3$: $\\log_{\\frac{1}{2}}(3 - 2) = 0 < \\log_3 2$이므로 영역에 포함되는 정수점이 없다.\n따라서 구하는 점의 개수는 $1 + 2 + 4 = 7$개이다.",
+    "solution": "각 곡선의 $x$절편과 $y$절편을 확인하면  \n- $y = 3^{x - 1}$: $(0, \\frac{1}{3})$, $(1, 1)$, $(2, 3)$을 지난다.  \n- $y = \\log_3(x - 1)$: $(2, 0)$, $(4, 1)$을 지난다.  \n- $y = \\log_{\\frac{1}{2}}(x - 2)$: 점근선 $x = 2$, $(3, 0)$, $(2.5, 1)$을 지난다.  \n둘러싸인 영역 내 정수점 $(x, y)$를 $x$좌표별로 세면  \n- $x = 0$: $0 \\le y \\le \\dfrac{1}{3} \\implies (0, 0)$ ($1$개)  \n- $x = 1$: $0 \\le y \\le 1 \\implies (1, 0), (1, 1)$ ($2$개)  \n- $x = 2$: $\\log_3(2 - 1) = 0 \\le y \\le 3 \\implies (2, 0), (2, 1), (2, 2), (2, 3)$ ($4$개)  \n- $x = 3$: $\\log_{\\frac{1}{2}}(3 - 2) = 0 < \\log_3 2$이므로 영역에 포함되는 정수점이 없다.  \n따라서 구하는 점의 개수는 $1 + 2 + 4 = 7$개이다.",
     "sourcePrimaryMethod": "세 곡선과 x축·y축이 이루는 영역의 x별 상한·하한을 구해 정수 격자점을 센다.",
     "sourceDecisiveStep": "x=2의 y∈[0,3]과 x=3에서의 경계 교차 여부를 확인해 7개를 세는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 활용",
+      "l4": "그래프 교점"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -1688,7 +1688,7 @@
       "matchedAs": "영역",
       "kind": "대상",
       "src": "solution",
-      "quote": "다. 둘러싸인 영역 내 정수점 $"
+      "quote": "둘러싸인 영역 내 정수점 $"
     },
     {
       "term": "절편",
@@ -1709,7 +1709,7 @@
       "matchedAs": "좌표",
       "kind": "대상",
       "src": "solution",
-      "quote": "y)$를 $x$좌표별로 세면 -"
+      "quote": "y)$를 $x$좌표별로 세면"
     }
   ],
   "figure": {

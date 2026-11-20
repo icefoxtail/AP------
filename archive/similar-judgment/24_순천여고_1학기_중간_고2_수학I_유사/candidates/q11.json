@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "정의역이 ${x \\mid -1 \\le x \\le 2}$일 때, 함수 $y = 3^{x^2 - 2x - 1}$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M - m$의 값은? [4.3점]",
+    "content": "정의역이 $\\{x \\mid -1 \\le x \\le 2\\}$일 때, 함수 $y = 3^{x^2 - 2x - 1}$의 최댓값을 $M$, 최솟값을 $m$이라 할 때, $M - m$의 값은? [4.3점]",
     "choices": [
       "$\\dfrac{74}{9}$",
       "$\\dfrac{76}{9}$",
@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "$g(x) = x^2 - 2x - 1 = (x - 1)^2 - 2$라 하면 $-1 \\le x \\le 2$에서\n- $x = 1$일 때 최솟값 $g(1) = -2$\n- $x = -1$일 때 최댓값 $g(-1) = (-1 - 1)^2 - 2 = 2$\n밑이 $3 > 1$이므로 $y = 3^{g(x)}$는\n최댓값 $M = 3^2 = 9$, 최솟값 $m = 3^{-2} = \\dfrac{1}{9}$\n따라서 $M - m = 9 - \\dfrac{1}{9} = \\dfrac{80}{9}$이다.",
+    "solution": "$g(x) = x^2 - 2x - 1 = (x - 1)^2 - 2$라 하면 $-1 \\le x \\le 2$에서  \n- $x = 1$일 때 최솟값 $g(1) = -2$  \n- $x = -1$일 때 최댓값 $g(-1) = (-1 - 1)^2 - 2 = 2$  \n밑이 $3 > 1$이므로 $y = 3^{g(x)}$는  \n최댓값 $M = 3^2 = 9$, 최솟값 $m = 3^{-2} = \\dfrac{1}{9}$  \n따라서 $M - m = 9 - \\dfrac{1}{9} = \\dfrac{80}{9}$이다.",
     "sourcePrimaryMethod": "지수 g(x)=(x-1)²-2의 [-1, 2] 최댓값 2와 최솟값 -2를 구해 밑 3>1인 지수함수의 M-m을 계산한다.",
     "sourceDecisiveStep": "완전제곱식으로 구간 내 g(x)의 최솟값 -2와 최댓값 2를 구하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-03",
     "subUnitKey": "",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수함수의 활용",
+      "l4": "최대·최소"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
     "difficultyBucket": 2,
     "newKeyProposal": null,
     "item4slot": {
@@ -1603,7 +1603,7 @@
       "matchedAs": "정의역",
       "kind": "대상",
       "src": "stem",
-      "quote": "정의역이 ${x \\m"
+      "quote": "정의역이 $\\{x \\"
     },
     {
       "term": "최댓값",
@@ -1624,14 +1624,14 @@
       "matchedAs": "정의",
       "kind": "대상",
       "src": "stem",
-      "quote": "정의역이 ${x \\"
+      "quote": "정의역이 $\\{x"
     },
     {
       "term": "함수",
       "matchedAs": "함수",
       "kind": "대상",
       "src": "stem",
-      "quote": "2}$일 때, 함수 $y = 3^"
+      "quote": "\\}$일 때, 함수 $y = 3^"
     },
     {
       "term": "최댓값",

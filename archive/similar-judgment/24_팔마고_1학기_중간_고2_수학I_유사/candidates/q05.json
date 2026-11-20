@@ -18,20 +18,39 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "로그 $\\log_{(x+2)}(30-x-x^2)$이 정의되려면 밑 조건과 진수 조건을 모두 만족해야 한다.\n\n\n$$\\begin{aligned}\n\\text{밑 조건: } & x+2 > 0 \\text{ 이고 } x+2 \\ne 1 \\implies x > -2, \\; x \\ne -1 \\\n\\text{진수 조건: } & 30 - x - x^2 > 0 \\iff x^2 + x - 30 < 0 \\\n& \\iff (x+6)(x-5) < 0 \\iff -6 < x < 5\n\\end{aligned}$$\n\n\n두 조건을 동시에 만족하는 $x$의 범위는\n$$-2 < x < 5, \\quad x \\ne -1$$\n이다. 이 범위에 속하는 정수 $x$는 $0, 1, 2, 3, 4$로 모두 $5$개이다.\n\n\n따라서 정답은 ⑤이다.",
+    "solution": "로그 $\\log_{(x+2)}(30-x-x^2)$이 정의되려면 밑 조건과 진수 조건을 모두 만족해야 한다.\n\n$$\\begin{aligned}  \n\\text{밑 조건: } & x+2 > 0 \\text{ 이고 } x+2 \\ne 1 \\implies x > -2, \\; x \\ne -1 \\\\  \n\\text{진수 조건: } & 30 - x - x^2 > 0 \\iff x^2 + x - 30 < 0 \\\\  \n& \\iff (x+6)(x-5) < 0 \\iff -6 < x < 5  \n\\end{aligned}$$\n\n두 조건을 동시에 만족하는 $x$의 범위는  \n$$-2 < x < 5, \\quad x \\ne -1$$  \n이다. 이 범위에 속하는 정수 $x$는 $0, 1, 2, 3, 4$로 모두 $5$개이다.\n\n따라서 정답은 ⑤이다.",
     "sourcePrimaryMethod": "로그의 밑 조건(양수 및 1이 아님)과 진수 조건(양수)을 연립부등식으로 풀어 정수 해를 센다.",
     "sourceDecisiveStep": "x+2 != 1에서 x != -1을 제외하여 정수 개수를 확정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-02",
+    "subUnitKey": "H15-M1-02-LOGARITHM",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그",
+      "l3": "로그의 뜻",
+      "l4": "밑과 진수 조건"
+    },
+    "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+    "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN",
     "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "로그"
+      ],
+      "goal": [
+        "개수"
+      ],
+      "method": [
+        "진수조건",
+        "이차부등식"
+      ],
+      "condition": [
+        "정수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1592,7 +1611,7 @@
       "matchedAs": "범위",
       "kind": "조건",
       "src": "solution",
-      "quote": "하는 $x$의 범위는 $$-2 <"
+      "quote": "하는 $x$의 범위는   $$-2"
     },
     {
       "term": "정수",
@@ -1628,7 +1647,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

@@ -19,20 +19,30 @@
   "reference": {
     "answer": "②",
     "solution": "$f(x) = 0$의 두 근을 $\\alpha, \\beta$라 하면 $\\alpha + \\beta = 16$이다. 방정식 $f(100 - 4x) = 0$의 두 근 $x_1, x_2$는 $$100 - 4x_1 = \\alpha, \\quad 100 - 4x_2 = \\beta$$ 을 만족시키므로 $x_1 = \\frac{100 - \\alpha}{4}$, $x_2 = \\frac{100 - \\beta}{4}$이다. $$x_1 + x_2 = \\frac{200 - (\\alpha + \\beta)}{4} = \\frac{200 - 16}{4} = \\frac{184}{4} = 46$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$f(\\alpha)=f(\\beta)=0$에서 $100-4x=\\alpha, \\beta$로 놓고 $x_1+x_2$를 $\\alpha+\\beta$로 표현한다.",
+    "sourceDecisiveStep": "$100-4x_1=\\alpha, 100-4x_2=\\beta$를 변변 더하여 $x_1+x_2$를 구하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "근과 계수의 관계",
+      "l4": "근의 합·곱"
+    },
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수와이차방정식",
+      "concept": "이차방정식의근과계수의관계",
+      "skill": "합성방정식근의합계산",
+      "context": "일차식합성이차방정식"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

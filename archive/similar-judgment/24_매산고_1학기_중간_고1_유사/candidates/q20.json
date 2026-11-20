@@ -12,17 +12,22 @@
   },
   "reference": {
     "answer": "(1) $a=-5, b=7$ (2) $-3+2\\sqrt{2}<n\\le 0$",
-    "solution": "(1) $f(2)=1$, $f(4)=3$이므로 $$4+2a+b=1 \\implies 2a+b=-3$$ $$16+4a+b=3 \\implies 4a+b=-13$$ 두 식을 빼면 $2a=-10 \\implies a=-5$이고, $b=-3-(-10)=7$이다. 따라서 $a=-5$, $b=7$이고 $f(x)=x^2-5x+7$이다.\n\n\n(2) 두 그래프의 교점의 $x$좌표는 방정식 $f(x)=g(x)$, 즉 $$F(x)=x^2-(5+n)x+(6+n)=0$$ 의 실근이다. $2\\le x\\le 4$에서 서로 다른 두 실근을 갖기 위한 조건은 다음 세 가지이다.\n\n\n1. 경계값 조건: $F(2)\\ge 0$이고 $F(4)\\ge 0$이어야 한다. $$F(2)=4-2(5+n)+6+n=-n\\ge 0 \\implies n\\le 0$$ $$F(4)=16-4(5+n)+6+n=2-3n\\ge 0 \\implies n\\le \\dfrac{2}{3}$$\n2. 대칭축의 위치 조건: $$2<\\dfrac{5+n}{2}<4 \\implies 4<5+n<8 \\implies -1<n<3$$\n3. 판별식 조건: 서로 다른 두 실근을 가져야 하므로 $D>0$이다. $$D=(5+n)^2-4(6+n)=n^2+6n+1=(n+3)^2-8>0$$ 따라서 $n<-3-2\\sqrt{2}$ 또는 $n>-3+2\\sqrt{2}$이다.\n\n\n1), 2), 3)의 공통 범위를 구하면 $-3+2\\sqrt{2}\\approx -0.172>-1$이므로 $$-3+2\\sqrt{2}<n\\le 0$$",
+    "solution": "(1) $f(2)=1$, $f(4)=3$이므로 $$4+2a+b=1 \\implies 2a+b=-3$$ $$16+4a+b=3 \\implies 4a+b=-13$$ 두 식을 빼면 $2a=-10 \\implies a=-5$이고, $b=-3-(-10)=7$이다. 따라서 $a=-5$, $b=7$이고 $f(x)=x^2-5x+7$이다.\n\n(2) 두 그래프의 교점의 $x$좌표는 방정식 $f(x)=g(x)$, 즉 $$F(x)=x^2-(5+n)x+(6+n)=0$$ 의 실근이다. $2\\le x\\le 4$에서 서로 다른 두 실근을 갖기 위한 조건은 다음 세 가지이다.\n\n1) 경계값 조건: $F(2)\\ge 0$이고 $F(4)\\ge 0$이어야 한다. $$F(2)=4-2(5+n)+6+n=-n\\ge 0 \\implies n\\le 0$$ $$F(4)=16-4(5+n)+6+n=2-3n\\ge 0 \\implies n\\le \\dfrac{2}{3}$$  \n2) 대칭축의 위치 조건: $$2<\\dfrac{5+n}{2}<4 \\implies 4<5+n<8 \\implies -1<n<3$$  \n3) 판별식 조건: 서로 다른 두 실근을 가져야 하므로 $D>0$이다. $$D=(5+n)^2-4(6+n)=n^2+6n+1=(n+3)^2-8>0$$ 따라서 $n<-3-2\\sqrt{2}$ 또는 $n>-3+2\\sqrt{2}$이다.\n\n1), 2), 3)의 공통 범위를 구하면 $-3+2\\sqrt{2}\\approx -0.172>-1$이므로 $$-3+2\\sqrt{2}<n\\le 0$$",
     "sourcePrimaryMethod": "두 점을 대입해 f(x)를 구한 뒤 차방정식 F(x)=f(x)-g(x)=0의 근의 분리(경계값, 축, 판별식) 세 조건을 연립한다.",
     "sourceDecisiveStep": "F(2)>=0, F(4)>=0, 축 2<(5+n)/2<4, D=n^2+6n+1>0의 네 부등식 공통범위 -3+2sqrt(2)<n<=0을 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-10",
+    "subUnitKey": "H15-SA-10-LINE_EQUATION",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "직선의 방정식",
+      "l3": "직선의 방정식",
+      "l4": "두 점을 지나는 직선"
+    },
+    "problemTypeKey": "PT_LINE_EQUATION",
+    "templateKey": "TPL_LINE_TWO_POINTS",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -261,6 +266,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -476,6 +485,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1709,6 +1722,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2622,21 +2639,21 @@
       "matchedAs": "대칭축",
       "kind": "대상",
       "src": "solution",
-      "quote": "3}$$ 2. 대칭축의 위치 조건:"
+      "quote": "$$   2) 대칭축의 위치 조건:"
     },
     {
       "term": "판별식",
       "matchedAs": "판별식",
       "kind": "방법",
       "src": "solution",
-      "quote": "<3$$ 3. 판별식 조건: 서로"
+      "quote": "$$   3) 판별식 조건: 서로"
     },
     {
       "term": "경계조건",
       "matchedAs": "경계",
       "kind": "조건",
       "src": "solution",
-      "quote": "다. 1. 경계값 조건: $F"
+      "quote": "이다. 1) 경계값 조건: $F"
     },
     {
       "term": "공통",
@@ -2664,7 +2681,7 @@
       "matchedAs": "대칭",
       "kind": "조건",
       "src": "solution",
-      "quote": "3}$$ 2. 대칭축의 위치 조건"
+      "quote": "$$   2) 대칭축의 위치 조건"
     },
     {
       "term": "범위",
@@ -2685,7 +2702,7 @@
       "matchedAs": "위치",
       "kind": "대상",
       "src": "solution",
-      "quote": "2. 대칭축의 위치 조건: $$2"
+      "quote": "2) 대칭축의 위치 조건: $$2"
     },
     {
       "term": "조건",
@@ -2706,7 +2723,7 @@
       "matchedAs": "판별",
       "kind": "행위",
       "src": "solution",
-      "quote": "<3$$ 3. 판별식 조건: 서로"
+      "quote": "$$   3) 판별식 조건: 서로"
     }
   ],
   "figure": {

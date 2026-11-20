@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "함수 $f(x)$를\n$$f(x) = \\begin{cases} \\log_2(4x - 4) & (1 < x < 5) \\ (\\sqrt{2})^{9 - x} & (x \\ge 5) \\end{cases}$$\n라 하자. $t \\le x \\le t + 2$에서 함수 $f(x)$의 최댓값이 $4$가 되도록 하는 모든 자연수 $t$의 개수를 $a$, $s \\le x \\le s + 1$에서 함수 $f(x)$의 최솟값이 $1$이 되도록 하는 모든 실수 $s$의 값의 합을 $b$라 할 때, $a + 2b$의 값을 구하면? (단, $t > 1$, $s > 1$, $a, b$는 상수이다.) [4.3점]",
+    "content": "함수 $f(x)$를  \n$$f(x) = \\begin{cases} \\log_2(4x - 4) & (1 < x < 5) \\\\ (\\sqrt{2})^{9 - x} & (x \\ge 5) \\end{cases}$$  \n라 하자. $t \\le x \\le t + 2$에서 함수 $f(x)$의 최댓값이 $4$가 되도록 하는 모든 자연수 $t$의 개수를 $a$, $s \\le x \\le s + 1$에서 함수 $f(x)$의 최솟값이 $1$이 되도록 하는 모든 실수 $s$의 값의 합을 $b$라 할 때, $a + 2b$의 값을 구하면? (단, $t > 1$, $s > 1$, $a, b$는 상수이다.) [4.3점]",
     "choices": [
       "$16$",
       "$18$",
@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "$1 < x < 5$에서 $f(x) = \\log_2(4x - 4)$는 증가하고 $\\lim_{x \\to 5-} f(x) = \\log_2 16 = 4$이다.\n$x \\ge 5$에서 $f(x) = (\\sqrt{2})^{9 - x}$는 감소하고 $f(5) = (\\sqrt{2})^4 = 4$이다.\n따라서 $f(x)$는 $x = 5$에서 최댓값 $4$를 가진다.\n(1) $t \\le x \\le t + 2$에서 $f(x)$의 최댓값이 $4$가 되려면 $t \\le 5 \\le t + 2$, 즉 $3 \\le t \\le 5$이어야 한다.\n자연수 $t$는 $3, 4, 5$이므로 $a = 3$이다.\n(2) $f(x) = 1$인 $x$를 구하면\n- $1 < x < 5$: $\\log_2(4x - 4) = 1 \\implies 4x - 4 = 2 \\implies x = \\dfrac{3}{2}$\n- $x \\ge 5$: $(\\sqrt{2})^{9 - x} = 1 \\implies 9 - x = 0 \\implies x = 9$\n구간 $[s, s + 1]$에서 최솟값은 양 끝점 $f(s), f(s+1)$ 중 작은 값이다.\n- $s = \\dfrac{3}{2}$일 때: 증가 구간 $\\left[\\dfrac{3}{2}, \\dfrac{5}{2}\\right]$에서 최솟값 $f\\left(\\dfrac{3}{2}\\right) = 1$\n- $s + 1 = 9$, 즉 $s = 8$일 때: 감소 구간 $[8, 9]$에서 최솟값 $f(9) = 1$\n(그 외 $s$에서는 $\\min(f(s), f(s+1)) \\neq 1$)\n따라서 $b = \\dfrac{3}{2} + 8 = \\dfrac{19}{2}$이고, $a + 2b = 3 + 19 = 22$이다.",
+    "solution": "$1 < x < 5$에서 $f(x) = \\log_2(4x - 4)$는 증가하고 $\\lim_{x \\to 5-} f(x) = \\log_2 16 = 4$이다.  \n$x \\ge 5$에서 $f(x) = (\\sqrt{2})^{9 - x}$는 감소하고 $f(5) = (\\sqrt{2})^4 = 4$이다.  \n따라서 $f(x)$는 $x = 5$에서 최댓값 $4$를 가진다.  \n(1) $t \\le x \\le t + 2$에서 $f(x)$의 최댓값이 $4$가 되려면 $t \\le 5 \\le t + 2$, 즉 $3 \\le t \\le 5$이어야 한다.  \n자연수 $t$는 $3, 4, 5$이므로 $a = 3$이다.  \n(2) $f(x) = 1$인 $x$를 구하면  \n- $1 < x < 5$: $\\log_2(4x - 4) = 1 \\implies 4x - 4 = 2 \\implies x = \\dfrac{3}{2}$  \n- $x \\ge 5$: $(\\sqrt{2})^{9 - x} = 1 \\implies 9 - x = 0 \\implies x = 9$  \n구간 $[s, s + 1]$에서 최솟값은 양 끝점 $f(s), f(s+1)$ 중 작은 값이다.  \n- $s = \\dfrac{3}{2}$일 때: 증가 구간 $\\left[\\dfrac{3}{2}, \\dfrac{5}{2}\\right]$에서 최솟값 $f\\left(\\dfrac{3}{2}\\right) = 1$  \n- $s + 1 = 9$, 즉 $s = 8$일 때: 감소 구간 $[8, 9]$에서 최솟값 $f(9) = 1$  \n(그 외 $s$에서는 $\\min(f(s), f(s+1)) \\neq 1$)  \n따라서 $b = \\dfrac{3}{2} + 8 = \\dfrac{19}{2}$이고, $a + 2b = 3 + 19 = 22$이다.",
     "sourcePrimaryMethod": "x=5에서 최댓값 4를 갖는 구간별 함수의 증감을 파악해 t∈[3,5]와 최솟값 1인 s값 3/2, 8을 구한다.",
     "sourceDecisiveStep": "단봉(x=5) 함수의 이동 구간 최솟값은 양 끝점 함숫값의 최솟값임을 이용해 s=3/2, 8을 찾는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 활용",
+      "l4": "최대·최소"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -1644,7 +1644,7 @@
       "matchedAs": "자연수",
       "kind": "대상",
       "src": "solution",
-      "quote": "이어야 한다. 자연수 $t$는 $3"
+      "quote": "야 한다.   자연수 $t$는 $3"
     },
     {
       "term": "최댓값",
@@ -1665,7 +1665,7 @@
       "matchedAs": "구간",
       "kind": "조건",
       "src": "solution",
-      "quote": "x = 9$ 구간 $[s, s"
+      "quote": "= 9$   구간 $[s, s"
     },
     {
       "term": "끝점",

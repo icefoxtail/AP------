@@ -12,17 +12,22 @@
   },
   "reference": {
     "answer": "$24$",
-    "solution": "$z^2=\\bar{z}$의 양변에 $z$를 곱하면 $z^3=z\\bar{z}$이다. 또한 $z^2=\\bar{z}$에서 $|z|^2=|\\bar{z}|=|z|$이고 $b>0$이므로 $z\\ne 0$, 따라서 $|z|=1$이다. 그러므로 $z\\bar{z}=|z|^2=1$이고, $z^3=1$이다. $b>0$이므로 $z\\ne 1$이고 $z^2+z+1=0$, 즉 $z+\\bar{z}=z+z^2=-1$이다. 이제 각 $k=1, 2, \\cdots, 24$에 대하여 쌍 $\\dfrac{1}{z^k+1}+\\dfrac{1}{\\bar{z}^k+1}$의 값을 구하면\n\n\n* $k$가 $3$의 배수일 때: $z^k=\\bar{z}^k=1$이므로 $\\dfrac{1}{2}+\\dfrac{1}{2}=1$\n* $k$가 $3$의 배수가 아닐 때: ${z^k, \\bar{z}^k}={z, \\bar{z}}$이므로 $$\\dfrac{1}{z+1}+\\dfrac{1}{\\bar{z}+1}=\\dfrac{z+\\bar{z}+2}{z\\bar{z}+z+\\bar{z}+1}=\\dfrac{-1+2}{1-1+1}=1$$\n\n\n따라서 $k=1$부터 $24$까지 모든 쌍의 합이 각각 $1$이므로 구하는 전체 합은 $24$이다.",
+    "solution": "$z^2=\\bar{z}$의 양변에 $z$를 곱하면 $z^3=z\\bar{z}$이다. 또한 $z^2=\\bar{z}$에서 $|z|^2=|\\bar{z}|=|z|$이고 $b>0$이므로 $z\\ne 0$, 따라서 $|z|=1$이다. 그러므로 $z\\bar{z}=|z|^2=1$이고, $z^3=1$이다. $b>0$이므로 $z\\ne 1$이고 $z^2+z+1=0$, 즉 $z+\\bar{z}=z+z^2=-1$이다. 이제 각 $k=1, 2, \\cdots, 24$에 대하여 쌍 $\\dfrac{1}{z^k+1}+\\dfrac{1}{\\bar{z}^k+1}$의 값을 구하면\n\n- $k$가 $3$의 배수일 때: $z^k=\\bar{z}^k=1$이므로 $\\dfrac{1}{2}+\\dfrac{1}{2}=1$  \n- $k$가 $3$의 배수가 아닐 때: ${z^k, \\bar{z}^k}={z, \\bar{z}}$이므로 $$\\dfrac{1}{z+1}+\\dfrac{1}{\\bar{z}+1}=\\dfrac{z+\\bar{z}+2}{z\\bar{z}+z+\\bar{z}+1}=\\dfrac{-1+2}{1-1+1}=1$$\n\n따라서 $k=1$부터 $24$까지 모든 쌍의 합이 각각 $1$이므로 구하는 전체 합은 $24$이다.",
     "sourcePrimaryMethod": "z^2=bar(z)에서 |z|=1과 z^3=1을 도출하고 지수 k별로 켤레 쌍 1/(z^k+1)+1/(bar(z)^k+1)=1임을 보인다.",
     "sourceDecisiveStep": "z^3=1의 3주기성을 이용해 3의 배수와 비배수 모두 각 켤레 쌍의 합이 1임을 확인한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-04",
+    "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -261,6 +266,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -476,6 +485,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1709,6 +1722,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

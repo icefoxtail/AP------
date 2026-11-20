@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "우변의 최고차항 계수가 $1$이고 $(x-2)^2$의 최고차항 계수가 $1$이므로 $f(x)=x^2+ax+b$라 놓을 수 있다. 좌변을 전개하면 $$(x^2-4x+4)(x^2+ax+b)=x^4+(a-4)x^3+(b-4a+4)x^2+(4a-4b)x+4b$$ 우변과 동류항의 계수를 비교하면\n\n\n* $x^3$의 계수: $a-4=-3 \\implies a=1$\n* $x^2$의 계수: $b-4(1)+4=2 \\implies b=2$\n\n\n따라서 $f(x)=x^2+x+2$이고, $p=4a-4b=4-8=-4$, $q=4b=8$이다. $f(1)=1+1+2=4$이므로 $$p+q+f(1)=-4+8+4=8$$ 정답은 ⑤이다.",
+    "solution": "우변의 최고차항 계수가 $1$이고 $(x-2)^2$의 최고차항 계수가 $1$이므로 $f(x)=x^2+ax+b$라 놓을 수 있다. 좌변을 전개하면 $$(x^2-4x+4)(x^2+ax+b)=x^4+(a-4)x^3+(b-4a+4)x^2+(4a-4b)x+4b$$ 우변과 동류항의 계수를 비교하면\n\n- $x^3$의 계수: $a-4=-3 \\implies a=1$  \n- $x^2$의 계수: $b-4(1)+4=2 \\implies b=2$\n\n따라서 $f(x)=x^2+x+2$이고, $p=4a-4b=4-8=-4$, $q=4b=8$이다. $f(1)=1+1+2=4$이므로 $$p+q+f(1)=-4+8+4=8$$ 정답은 ⑤이다.",
     "sourcePrimaryMethod": "최고차항 계수가 1인 이차식 f(x)=x^2+ax+b를 설정해 좌변을 전개한 뒤 항등식 계수비교로 a, b, p, q를 순차 결정한다.",
     "sourceDecisiveStep": "x^3, x^2 계수 비교로 a=1, b=2를 먼저 확정하고 x, 상수항 계수로 p=-4, q=8을 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-02",
+    "subUnitKey": "H15-SA-02-IDENTITY",
+    "rpmPath": {
+      "majorUnit": "다항식",
+      "midUnit": "항등식과 나머지정리",
+      "l3": "항등식",
+      "l4": "미정계수법"
+    },
+    "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+    "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2607,7 +2624,7 @@
       "matchedAs": "비교",
       "kind": "행위",
       "src": "solution",
-      "quote": "류항의 계수를 비교하면 * $"
+      "quote": "류항의 계수를 비교하면 - $x"
     },
     {
       "term": "전개",

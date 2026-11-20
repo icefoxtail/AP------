@@ -6,28 +6,28 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "서답형 2. (서술형) $-10 \\le x \\le 10$에서 다음 부등식\n$$\\log_{x - 1}(2x^2 - 7x + 6) > 2$$\n을 만족하는 정수 $x$의 개수를 풀이 과정과 함께 서술하시오. [6점]",
+    "content": "서답형 2. (서술형) $-10 \\le x \\le 10$에서 다음 부등식  \n$$\\log_{x - 1}(2x^2 - 7x + 6) > 2$$  \n을 만족하는 정수 $x$의 개수를 풀이 과정과 함께 서술하시오. [6점]",
     "choices": [],
     "points": 6
   },
   "reference": {
     "answer": "$7$",
-    "solution": "밑 조건과 진수 조건에 의하여\n$x - 1 > 0, x - 1 \\neq 1 \\implies x > 1, x \\neq 2$\n$2x^2 - 7x + 6 = (2x - 3)(x - 2) > 0 \\implies x < \\dfrac{3}{2}$ 또는 $x > 2$\n(1) $1 < x < 2$ (밑 $0 < x - 1 < 1$)일 때: $1 < x < \\dfrac{3}{2}$이므로 정수 없음.\n(2) $x > 2$ (밑 $x - 1 > 1$)일 때:\n$2x^2 - 7x + 6 > (x - 1)^2 = x^2 - 2x + 1$\n$x^2 - 5x + 5 > 0 \\implies x < \\dfrac{5 - \\sqrt{5}}{2} \\approx 1.38$ 또는 $x > \\dfrac{5 + \\sqrt{5}}{2} \\approx 3.62$\n$-10 \\le x \\le 10$이고 $x > 2$인 범위와 합치면 $4 \\le x \\le 10$인 정수 $x = 4, 5, 6, 7, 8, 9, 10$의 $7$개이다.",
+    "solution": "밑 조건과 진수 조건에 의하여  \n$x - 1 > 0, x - 1 \\neq 1 \\implies x > 1, x \\neq 2$  \n$2x^2 - 7x + 6 = (2x - 3)(x - 2) > 0 \\implies x < \\dfrac{3}{2}$ 또는 $x > 2$  \n(1) $1 < x < 2$ (밑 $0 < x - 1 < 1$)일 때: $1 < x < \\dfrac{3}{2}$이므로 정수 없음.  \n(2) $x > 2$ (밑 $x - 1 > 1$)일 때:  \n$2x^2 - 7x + 6 > (x - 1)^2 = x^2 - 2x + 1$  \n$x^2 - 5x + 5 > 0 \\implies x < \\dfrac{5 - \\sqrt{5}}{2} \\approx 1.38$ 또는 $x > \\dfrac{5 + \\sqrt{5}}{2} \\approx 3.62$  \n$-10 \\le x \\le 10$이고 $x > 2$인 범위와 합치면 $4 \\le x \\le 10$인 정수 $x = 4, 5, 6, 7, 8, 9, 10$의 $7$개이다.",
     "sourcePrimaryMethod": "밑 x-1의 범위를 (0,1)과 (1,∞)로 나누고 진수 조건을 함께 적용해 [-10,10] 내 정수를 센다.",
     "sourceDecisiveStep": "밑 x-1>1에서 이차부등식 x²-5x+5>0을 풀어 정수 4~10을 구하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그부등식",
+      "l4": "정의역·밑 조건"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+    "templateKey": "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -1598,7 +1598,7 @@
       "matchedAs": "부등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "0$에서 다음 부등식 $$\\log_"
+      "quote": "0$에서 다음 부등식   $$\\lo"
     },
     {
       "term": "개수",
@@ -1612,7 +1612,7 @@
       "matchedAs": "등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "$에서 다음 부등식 $$\\log_"
+      "quote": "$에서 다음 부등식   $$\\lo"
     },
     {
       "term": "정수",
@@ -1640,7 +1640,7 @@
       "matchedAs": "정수",
       "kind": "대상",
       "src": "solution",
-      "quote": "{2}$이므로 정수 없음. (2)"
+      "quote": "{2}$이므로 정수 없음.   ("
     },
     {
       "term": "조건",

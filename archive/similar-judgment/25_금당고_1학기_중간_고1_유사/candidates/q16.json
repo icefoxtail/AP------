@@ -19,20 +19,30 @@
   "reference": {
     "answer": "①",
     "solution": "1. 조건 (가)에서 근과 계수의 관계에 의하여 $\\alpha + \\beta = 2a$, $\\alpha\\beta = a + 2$이다. $$\\alpha^2\\beta + \\alpha\\beta^2 = \\alpha\\beta(\\alpha + \\beta) = (a + 2)(2a) = 48$$ $$a^2 + 2a - 24 = 0 \\implies (a + 6)(a - 4) = 0$$ $\\alpha\\beta = a + 2 > 0$이므로 $a > -2$이고, 따라서 $a = 4$이다.  \n2. 조건 (나)에서 $a = 4$이므로 두 근은 $a - 1 = 3$, $a + 1 = 5$이다. 근과 계수의 관계에 의하여 $$b = -(3 + 5) = -8, \\quad c = 3 \\times 5 = 15$$\n\n따라서 구하는 값은 $$a + b + c = 4 + (-8) + 15 = 11$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "(가)에서 근과 계수의 관계와 $\\bar{\\alpha\\beta}>0$ 조건으로 $a=4$를 확정한 뒤 (나)의 두 근 $3, 5$로 $b, c$를 구한다.",
+    "sourceDecisiveStep": "이차방정식 $(a+6)(a-4)=0$의 근 중 $\\bar{\\alpha\\beta}=a+2>0$ 조건으로 $a=4$를 선택하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "근과 계수의 관계",
+      "l4": "근으로 방정식 구성"
+    },
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수와이차방정식",
+      "concept": "이차방정식의근과계수의관계",
+      "skill": "부호조건미정계수결정",
+      "context": "이차방정식작성연계"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

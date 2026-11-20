@@ -6,26 +6,48 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[서답형6(서술형3)]\n$x$에 대한 부등식\n$$(\\log_2 x)^2 - (\\log_2 n + 1)\\log_2 x + 2(\\log_2 n - 1) < 0$$\n을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 모든 자연수 $n$의 값의 합을 구하는 과정을 서술하시오.",
+    "content": "[서답형6(서술형3)]  \n$x$에 대한 부등식  \n$$(\\log_2 x)^2 - (\\log_2 n + 1)\\log_2 x + 2(\\log_2 n - 1) < 0$$  \n을 만족시키는 정수 $x$의 개수가 $3$이 되도록 하는 모든 자연수 $n$의 값의 합을 구하는 과정을 서술하시오.",
     "choices": [],
     "points": 7
   },
   "reference": {
     "answer": "$32$",
-    "solution": "진수 조건에 의해 $x > 0$이다. $t = \\log_2 x$, $s = \\log_2 n$이라 두면 주어진 부등식은\n\n\n$$\\begin{aligned}\nt^2 - (s+1)t + 2(s-1) &< 0 \\\n(t - 2){t - (s - 1)} &< 0\n\\end{aligned}$$\n\n\n이다. 여기서 $s - 1 = \\log_2 n - 1 = \\log_2 \\frac{n}{2}$이고 밑이 $2 > 1$이므로 경계값 $2$와 $s-1$의 대소에 따라 $x$의 범위가 다음과 같이 나뉜다.\n\n\n**(i) $\\frac{n}{2} < 4$ (즉, $1 \\le n \\le 7$)일 때**\n$s - 1 < t < 2$이므로 $\\frac{n}{2} < x < 4$이다.\n$x > 0$인 정수 $x$는 최대 $1, 2, 3$의 $3$개뿐이므로, 정수 $x$의 개수가 $3$이 되려면 $1, 2, 3$이 모두 포함되어야 한다.\n$$0 < \\frac{n}{2} < 1 \\implies 0 < n < 2$$\n자연수 $n$은 $n = 1$이다.\n\n\n**(ii) $\\frac{n}{2} = 4$ (즉, $n = 8$)일 때**\n$(t-2)^2 < 0$이 되어 해가 존재하지 않는다.\n\n\n**(iii) $\\frac{n}{2} > 4$ (즉, $n \\ge 9$)일 때**\n$2 < t < s - 1$이므로 $4 < x < \\frac{n}{2}$이다.\n$4$보다 큰 정수 $x$가 차례로 $5, 6, 7, \\ldots$이므로 개수가 $3$이 되려면 $x = 5, 6, 7$만 포함되고 $8$은 포함되지 않아야 한다.\n$$7 < \\frac{n}{2} \\le 8 \\implies 14 < n \\le 16$$\n따라서 가능한 자연수 $n$은 $n = 15, 16$이다.\n\n\n(i)~(iii)에서 구한 모든 자연수 $n$은 $1, 15, 16$이므로 그 합은\n$$1 + 15 + 16 = 32$$\n이다.",
+    "solution": "진수 조건에 의해 $x > 0$이다. $t = \\log_2 x$, $s = \\log_2 n$이라 두면 주어진 부등식은\n\n$$\\begin{aligned}  \nt^2 - (s+1)t + 2(s-1) &< 0 \\\\  \n(t - 2)\\{t - (s - 1)\\} &< 0  \n\\end{aligned}$$\n\n이다. 여기서 $s - 1 = \\log_2 n - 1 = \\log_2 \\frac{n}{2}$이고 밑이 $2 > 1$이므로 경계값 $2$와 $s-1$의 대소에 따라 $x$의 범위가 다음과 같이 나뉜다.\n\n**(i) $\\frac{n}{2} < 4$ (즉, $1 \\le n \\le 7$)일 때**  \n$s - 1 < t < 2$이므로 $\\frac{n}{2} < x < 4$이다.  \n$x > 0$인 정수 $x$는 최대 $1, 2, 3$의 $3$개뿐이므로, 정수 $x$의 개수가 $3$이 되려면 $1, 2, 3$이 모두 포함되어야 한다.  \n$$0 < \\frac{n}{2} < 1 \\implies 0 < n < 2$$  \n자연수 $n$은 $n = 1$이다.\n\n**(ii) $\\frac{n}{2} = 4$ (즉, $n = 8$)일 때**  \n$(t-2)^2 < 0$이 되어 해가 존재하지 않는다.\n\n**(iii) $\\frac{n}{2} > 4$ (즉, $n \\ge 9$)일 때**  \n$2 < t < s - 1$이므로 $4 < x < \\frac{n}{2}$이다.  \n$4$보다 큰 정수 $x$가 차례로 $5, 6, 7, \\ldots$이므로 개수가 $3$이 되려면 $x = 5, 6, 7$만 포함되고 $8$은 포함되지 않아야 한다.  \n$$7 < \\frac{n}{2} \\le 8 \\implies 14 < n \\le 16$$  \n따라서 가능한 자연수 $n$은 $n = 15, 16$이다.\n\n(i)~(iii)에서 구한 모든 자연수 $n$은 $1, 15, 16$이므로 그 합은  \n$$1 + 15 + 16 = 32$$  \n이다.",
     "sourcePrimaryMethod": "t=log_2 x로 치환해 (t-2)(t-log_2(n/2))<0으로 인수분해한 뒤 n/2와 4의 대소 경우를 나누어 정수 x가 3개인 n을 구한다.",
     "sourceDecisiveStep": "n/2<4일 때 진수 조건 x>0 때문에 0<n/2<1에서 n=1을 찾고, n/2>4일 때 7<n/2<=8에서 n=15,16을 찾는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
     "subUnitKey": "",
-    "rpmPath": null,
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그부등식",
+      "l4": "치환"
+    },
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBucket": 4,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "로그부등식"
+      ],
+      "goal": [
+        "합"
+      ],
+      "method": [
+        "치환",
+        "인수분해",
+        "경우분류",
+        "진수조건"
+      ],
+      "condition": [
+        "정수",
+        "자연수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1558,7 +1580,7 @@
       "matchedAs": "부등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "$x$에 대한 부등식 $$(\\log"
+      "quote": "$x$에 대한 부등식   $$(\\l"
     },
     {
       "term": "자연수",
@@ -1579,7 +1601,7 @@
       "matchedAs": "등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "x$에 대한 부등식 $$(\\log"
+      "quote": "x$에 대한 부등식   $$(\\l"
     },
     {
       "term": "양화",
@@ -1600,14 +1622,14 @@
       "matchedAs": "부등식",
       "kind": "대상",
       "src": "solution",
-      "quote": "두면 주어진 부등식은 $$\\b"
+      "quote": "두면 주어진 부등식은 $$\\be"
     },
     {
       "term": "자연수",
       "matchedAs": "자연수",
       "kind": "대상",
       "src": "solution",
-      "quote": "n < 2$$ 자연수 $n$은 $n"
+      "quote": "< 2$$   자연수 $n$은 $n"
     },
     {
       "term": "개수",
@@ -1635,7 +1657,7 @@
       "matchedAs": "등식",
       "kind": "대상",
       "src": "solution",
-      "quote": "두면 주어진 부등식은 $$\\b"
+      "quote": "두면 주어진 부등식은 $$\\be"
     },
     {
       "term": "범위",
@@ -1699,7 +1721,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

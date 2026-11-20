@@ -19,20 +19,30 @@
   "reference": {
     "answer": "③",
     "solution": "복소수 $z = a + bi$ ($a, b$는 실수)에 대하여 $\\bar{z} = z$이면 $$a - bi = a + bi \\implies 2bi = 0 \\implies b = 0$$ 즉, $z$는 실수여야 한다. 선택지 중 ①, ②, ⑤는 허수부분이 $0$이 아니고, ④ $2 + \\sqrt{-3} = 2 + \\sqrt{3}i$ 역시 허수이다. 따라서 실수인 것은 ③ $3 - \\sqrt{5}$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$\\bar{z}=z$가 실수 조건과 동치임을 이용해 선택지 중 허수부분이 $0$인 실수를 고른다.",
+    "sourceDecisiveStep": "$2+\\sqrt{-3}=2+\\sqrt{3}i$가 허수이고 $3-\\sqrt{5}$만 실수임을 판별하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "difficultyBucket": 1,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "켤레복소수",
+      "skill": "실수판별",
+      "context": "복소수분류"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

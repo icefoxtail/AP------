@@ -19,20 +19,30 @@
   "reference": {
     "answer": "①",
     "solution": "분모와 분자에 $4 - 3i$를 곱하여 실수화하면 $$\\frac{3a - i}{4 + 3i} = \\frac{(3a - i)(4 - 3i)}{(4 + 3i)(4 - 3i)} = \\frac{12a - 9ai - 4i + 3i^2}{16 + 9} = \\frac{(12a - 3) - (9a + 4)i}{25}$$ 실수부분과 허수부분의 합이 $\\frac{1}{5}$이므로 $$\\frac{(12a - 3) - (9a + 4)}{25} = \\frac{3a - 7}{25} = \\frac{1}{5} = \\frac{5}{25}$$ $$3a - 7 = 5 \\implies 3a = 12 \\implies a = 4$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "분모를 실수화하여 실수부와 허수부를 분리한 뒤 합이 \\frac{1}{5}인 일차방정식을 푼다.",
+    "sourceDecisiveStep": "분모 $4^2+3^2=25$로 실수화해 \\frac{3a-7}{25}=\\frac{1}{5}을 세우는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "복소수의 뜻",
+      "l4": "실수부·허수부"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "복소수의나눗셈",
+      "skill": "분모실수화후계수결정",
+      "context": "실수부허수부합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

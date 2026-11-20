@@ -18,20 +18,39 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "$a^x = b^{2y} = c^{3z} = 5$에서 지수를 각 변의 역수로 넘기면 다음과 같다.\n\n\n$$\\begin{aligned}\na &= 5^{\\frac{1}{x}}, \\quad b = 5^{\\frac{1}{2y}}, \\quad c = 5^{\\frac{1}{3z}}\n\\end{aligned}$$\n\n\n세 수를 모두 곱하면 $abc = 125 = 5^3$이므로\n$$abc = 5^{\\frac{1}{x} + \\frac{1}{2y} + \\frac{1}{3z}} = 5^3$$\n이다. 밑이 $5$로 같으므로 지수를 비교하면\n$$\\frac{1}{x} + \\frac{1}{2y} + \\frac{1}{3z} = 3$$\n이다. 양변에 $6$을 곱하면\n$$\\frac{6}{x} + \\frac{3}{y} + \\frac{2}{z} = 18$$\n을 얻는다. 따라서 정답은 ③이다.",
+    "solution": "$a^x = b^{2y} = c^{3z} = 5$에서 지수를 각 변의 역수로 넘기면 다음과 같다.\n\n$$\\begin{aligned}  \na &= 5^{\\frac{1}{x}}, \\quad b = 5^{\\frac{1}{2y}}, \\quad c = 5^{\\frac{1}{3z}}  \n\\end{aligned}$$\n\n세 수를 모두 곱하면 $abc = 125 = 5^3$이므로  \n$$abc = 5^{\\frac{1}{x} + \\frac{1}{2y} + \\frac{1}{3z}} = 5^3$$  \n이다. 밑이 $5$로 같으므로 지수를 비교하면  \n$$\\frac{1}{x} + \\frac{1}{2y} + \\frac{1}{3z} = 3$$  \n이다. 양변에 $6$을 곱하면  \n$$\\frac{6}{x} + \\frac{3}{y} + \\frac{2}{z} = 18$$  \n을 얻는다. 따라서 정답은 ③이다.",
     "sourcePrimaryMethod": "a^x=b^(2y)=c^(3z)=5를 밑 5의 거듭제곱으로 표현한 뒤 abc=5^3에 대입해 지수의 합을 구한다.",
     "sourceDecisiveStep": "abc=5^(1/x+1/(2y)+1/(3z))=5^3으로부터 1/x+1/(2y)+1/(3z)=3을 끌어내는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-01",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수",
+      "l3": "지수법칙",
+      "l4": "조건식"
+    },
+    "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+    "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
     "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "거듭제곱",
+        "등식"
+      ],
+      "goal": [
+        "식의값"
+      ],
+      "method": [
+        "지수법칙"
+      ],
+      "condition": [
+        "양수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1571,7 +1590,7 @@
       "matchedAs": "비교",
       "kind": "행위",
       "src": "solution",
-      "quote": "으므로 지수를 비교하면 $$\\fr"
+      "quote": "으므로 지수를 비교하면   $$\\"
     },
     {
       "term": "역수",
@@ -1593,7 +1612,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

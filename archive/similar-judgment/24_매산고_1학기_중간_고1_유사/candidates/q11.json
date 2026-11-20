@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "$x$축과의 두 교점의 $x$좌표는 방정식 $x^2+(a^2+6a+5)x+2a+3=0$의 두 실근이다. 절댓값이 같고 부호가 서로 다르므로 두 근의 합이 $0$이다. $$-(a^2+6a+5)=0 \\implies (a+1)(a+5)=0 \\implies a=-1 \\text{ 또는 } a=-5$$\n\n\n* $a=-1$일 때: $y=x^2+1$이 되어 $x$축과 만나지 않는다. *$a=-5$일 때: $y=x^2-7$이 되어 $x$축과 서로 다른 두 점 $(\\pm\\sqrt{7}, 0)$에서 만난다.\n\n\n따라서 $a=-5$이므로 정답은 ①이다.",
+    "solution": "$x$축과의 두 교점의 $x$좌표는 방정식 $x^2+(a^2+6a+5)x+2a+3=0$의 두 실근이다. 절댓값이 같고 부호가 서로 다르므로 두 근의 합이 $0$이다. $$-(a^2+6a+5)=0 \\implies (a+1)(a+5)=0 \\implies a=-1 \\text{ 또는 } a=-5$$\n\n- $a=-1$일 때: $y=x^2+1$이 되어 $x$축과 만나지 않는다.  \n- $a=-5$일 때: $y=x^2-7$이 되어 $x$축과 서로 다른 두 점 $(\\pm\\sqrt{7}, 0)$에서 만난다.\n\n따라서 $a=-5$이므로 정답은 ①이다.",
     "sourcePrimaryMethod": "두 근의 합이 0인 조건에서 a 후보 -1, -5를 구한 뒤 서로 다른 두 교점(두 근의 곱<0) 조건으로 거른다.",
     "sourceDecisiveStep": "a=-1일 때 상수항이 양수(+1)여서 x축과 만나지 않음을 확인하고 a=-5만 남긴다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-05",
+    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "그래프와 근",
+      "l4": "x축과의 교점"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

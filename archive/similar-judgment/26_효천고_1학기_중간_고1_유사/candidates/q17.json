@@ -19,20 +19,30 @@
   "reference": {
     "answer": "①",
     "solution": "이차함수 $f(x) = (x - 2)^2 - 3$은 아래로 볼록하고 꼭짓점이 $(2, -3)$이다. 구간 $[k, k + 2]$에서의 최솟값이 $1 > -3$이므로 꼭짓점의 $x$좌표 $2$는 구간 $[k, k + 2]$에 포함되지 않는다.\n\n1. $k > 2$일 때: 구간에서 $f(x)$는 증가하므로 최솟값은 $f(k)$이다. $$(k - 2)^2 - 3 = 1 \\implies (k - 2)^2 = 4 \\implies k = 4 \\quad (k > 2)$$ 이때 최댓값은 $f(6) = (6 - 2)^2 - 3 = 13$으로 조건을 만족한다.  \n2. $k + 2 < 2$, 즉 $k < 0$일 때: 구간에서 $f(x)$는 감소하므로 최솟값은 $f(k + 2)$이다. $${(k + 2) - 2}^2 - 3 = 1 \\implies k^2 = 4 \\implies k = -2 \\quad (k < 0)$$ 이때 최댓값은 $f(-2) = (-2 - 2)^2 - 3 = 13$으로 조건을 만족한다.\n\n따라서 모든 상수 $k$의 값의 합은 $4 + (-2) = 2$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "최솟값이 꼭짓점의 $y$좌표 $-3$보다 크므로 축 $x=2$가 구간 바깥에 있음을 파악해 $k>2$와 $k<0$ 두 경우로 나누어 푼다.",
+    "sourceDecisiveStep": "최솟값 $1 \\neq -3$에서 구간 $[k, k+2]$가 대칭축 $x=2$를 포함하지 않음을 파악하고 좌우로 분기하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "이차방정식과이차함수",
+      "concept": "이차함수의최대와최소",
+      "skill": "축미포함구간분기",
+      "context": "이동구간최대최소"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

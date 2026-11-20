@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "1. $x$축과 만나려면 방정식 $-x^2+6x+k=0$, 즉 $x^2-6x-k=0$이 실근을 가져야 하므로 $$\\dfrac{D_1}{4}=(-3)^2-(-k)=9+k\\ge 0 \\implies k\\ge -9$$\n2. 직선 $y=4x-2$와 만나지 않으려면 방정식 $-x^2+6x+k=4x-2$, 즉 $x^2-2x-(k+2)=0$이 실근을 갖지 않아야 하므로 $$\\dfrac{D_2}{4}=(-1)^2-{-(k+2)}=k+3<0 \\implies k<-3$$ 따라서 $-9\\le k<-3$을 만족시키는 정수 $k$는 $-9, -8, -7, -6, -5, -4$이고, 그 합은 $$(-9)+(-8)+(-7)+(-6)+(-5)+(-4)=-39$$ 정답은 ④이다.",
+    "solution": "1) $x$축과 만나려면 방정식 $-x^2+6x+k=0$, 즉 $x^2-6x-k=0$이 실근을 가져야 하므로 $$\\dfrac{D_1}{4}=(-3)^2-(-k)=9+k\\ge 0 \\implies k\\ge -9$$  \n2) 직선 $y=4x-2$와 만나지 않으려면 방정식 $-x^2+6x+k=4x-2$, 즉 $x^2-2x-(k+2)=0$이 실근을 갖지 않아야 하므로 $$\\dfrac{D_2}{4}=(-1)^2-{-(k+2)}=k+3<0 \\implies k<-3$$ 따라서 $-9\\le k<-3$을 만족시키는 정수 $k$는 $-9, -8, -7, -6, -5, -4$이고, 그 합은 $$(-9)+(-8)+(-7)+(-6)+(-5)+(-4)=-39$$ 정답은 ④이다.",
     "sourcePrimaryMethod": "x축 교점 조건 D_1>=0과 직선 비교점 조건 D_2<0을 각각 세워 공통 정수 k를 합산한다.",
     "sourceDecisiveStep": "9+k>=0과 k+3<0의 공통 범위 -9<=k<-3에서 정수 6개를 빠짐없이 더한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-10",
+    "subUnitKey": "H15-SA-10-PARALLEL_PERPENDICULAR",
+    "rpmPath": {
+      "majorUnit": "도형의 방정식",
+      "midUnit": "직선의 방정식",
+      "l3": "두 직선의 위치 관계",
+      "l4": "교점"
+    },
+    "problemTypeKey": "PT_LINE_RELATION",
+    "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
     "difficultyBucket": 2,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2621,7 +2638,7 @@
       "matchedAs": "직선",
       "kind": "대상",
       "src": "solution",
-      "quote": "-9$$ 2. 직선 $y=4x-2"
+      "quote": "$$   2) 직선 $y=4x-2"
     }
   ],
   "figure": {

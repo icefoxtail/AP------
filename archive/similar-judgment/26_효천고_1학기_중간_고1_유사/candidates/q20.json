@@ -13,20 +13,30 @@
   "reference": {
     "answer": "$a = \\dfrac{1}{3}$, $Q(x) = x^3 + x - 1$",
     "solution": "제식 $3x - 1 = 3\\left(x - \\frac{1}{3}\\right)$이므로 조립제법에 사용되는 수 $a$의 값은 $\\frac{1}{3}$이다. 계수 $3, -1, 3, -4, 2$에 대하여 $\\frac{1}{3}$로 조립제법을 수행하면 몫의 계수는 $(3, 0, 3, -3)$이고 나머지는 $1$이다. $$3x^4 - x^3 + 3x^2 - 4x + 2 = \\left(x - \\frac{1}{3}\\right)(3x^3 + 3x - 3) + 1 = (3x - 1)(x^3 + x - 1) + 1$$ 따라서 $a = \\frac{1}{3}$이고, 몫은 $Q(x) = x^3 + x - 1$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$3x-1=3(x-\\frac{1}{3})$에서 조립제법 기준값 $a=\\frac{1}{3}$을 찾고, 조립제법 결과의 몫 계수를 $3$으로 나누어 실제 몫 $Q(x)$를 구한다.",
+    "sourceDecisiveStep": "일차항 계수가 $3$인 $3x-1$로 나눌 때 조립제법으로 얻은 몫을 $3$으로 나누어야 함을 적용하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-01",
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "rpmPath": {
+      "majorUnit": "다항식",
+      "midUnit": "다항식의 연산",
+      "l3": "다항식의 나눗셈",
+      "l4": "몫과 나머지"
+    },
+    "problemTypeKey": "PT_H1_POLY_DIVISION",
+    "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "다항식의연산",
+      "concept": "조립제법",
+      "skill": "일차식계수보정나눗셈",
+      "context": "사차식조립제법"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -273,6 +283,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -468,6 +482,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

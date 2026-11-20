@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "1. $\\dfrac{\\sqrt{x+2}}{\\sqrt{y+2}}=-\\sqrt{\\dfrac{x+2}{y+2}}$ ($x\\ne -2$)가 성립하려면 분자는 양수이고 분모는 음수여야 하므로 $$x+2>0, \\quad y+2<0 \\implies x>-2, \\quad y<-2$$\n2. $y<-2$이면 $y-3<0$이므로 $\\sqrt{x-2}\\sqrt{y-3}=-\\sqrt{(x-2)(y-3)}$가 성립하려면 $x-2\\le 0$, 즉 $x\\le 2$이어야 한다. 또한 $(\\sqrt{x})^2$이 실수 조건에서 정의되려면 $x\\ge 0$이므로 $0\\le x\\le 2$, $y<-2$이다. 따라서 $$|x-3|=3-x, \\quad (\\sqrt{x})^2=x, \\quad |y-4|=4-y, \\quad \\sqrt{y^2}=|y|=-y$$ 이므로 구하는 식은 $$(3-x)+x-(4-y)-y=-1$$ 정답은 ①이다.",
+    "solution": "1) $\\dfrac{\\sqrt{x+2}}{\\sqrt{y+2}}=-\\sqrt{\\dfrac{x+2}{y+2}}$ ($x\\ne -2$)가 성립하려면 분자는 양수이고 분모는 음수여야 하므로 $$x+2>0, \\quad y+2<0 \\implies x>-2, \\quad y<-2$$  \n2) $y<-2$이면 $y-3<0$이므로 $\\sqrt{x-2}\\sqrt{y-3}=-\\sqrt{(x-2)(y-3)}$가 성립하려면 $x-2\\le 0$, 즉 $x\\le 2$이어야 한다. 또한 $(\\sqrt{x})^2$이 실수 조건에서 정의되려면 $x\\ge 0$이므로 $0\\le x\\le 2$, $y<-2$이다. 따라서 $$|x-3|=3-x, \\quad (\\sqrt{x})^2=x, \\quad |y-4|=4-y, \\quad \\sqrt{y^2}=|y|=-y$$ 이므로 구하는 식은 $$(3-x)+x-(4-y)-y=-1$$ 정답은 ①이다.",
     "sourcePrimaryMethod": "음수의 제곱근 곱셈·나눗셈 부호 조건에서 x, y의 범위를 확정한 뒤 절댓값과 제곱근을 벗겨 정리한다.",
     "sourceDecisiveStep": "분수 조건에서 y<-2를 먼저 구하고 곱셈 조건과 실수 sqrt(x)에서 0<=x<=2를 확정한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-04",
+    "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

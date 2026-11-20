@@ -6,28 +6,28 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[주관식2 (서술형)] [7점]\n네 양수 $x, y, z, a$가 다음 <조건>을 만족시킬 때, $a^3$의 값을 구하고, 그 과정을 서술하시오.\n<조건>\n(가) $5^x = 3^y = a^z$\n(나) $\\log 3 + \\log xy - \\log(3x - y) = \\log z$",
+    "content": "[주관식2 (서술형)] [7점]  \n네 양수 $x, y, z, a$가 다음 <조건>을 만족시킬 때, $a^3$의 값을 구하고, 그 과정을 서술하시오.  \n<조건>  \n(가) $5^x = 3^y = a^z$  \n(나) $\\log 3 + \\log xy - \\log(3x - y) = \\log z$",
     "choices": [],
     "points": 7
   },
   "reference": {
     "answer": "$\\dfrac{27}{5}$",
-    "solution": "조건 (나)의 진수 조건에 의해 $3x - y > 0$이고 로그의 성질로 정리하면\n$\\log \\dfrac{3xy}{3x - y} = \\log z \\implies z = \\dfrac{3xy}{3x - y}$\n양변의 역수를 취하면\n$\\dfrac{1}{z} = \\dfrac{3x - y}{3xy} = \\dfrac{1}{y} - \\dfrac{1}{3x}$\n한편 조건 (가)에서 $5^x = 3^y = a^z = k$ ($k > 0$)라 하면\n$5 = k^{\\frac{1}{x}}$, $3 = k^{\\frac{1}{y}}$, $a = k^{\\frac{1}{z}}$\n$a = k^{\\frac{1}{z}} = k^{\\frac{1}{y} - \\frac{1}{3x}} = \\dfrac{k^{\\frac{1}{y}}}{\\left(k^{\\frac{1}{x}}\\right)^{\\frac{1}{3}}} = \\dfrac{3}{5^{\\frac{1}{3}}}$\n따라서 $a^3 = \\dfrac{3^3}{5} = \\dfrac{27}{5}$이다.",
+    "solution": "조건 (나)의 진수 조건에 의해 $3x - y > 0$이고 로그의 성질로 정리하면  \n$\\log \\dfrac{3xy}{3x - y} = \\log z \\implies z = \\dfrac{3xy}{3x - y}$  \n양변의 역수를 취하면  \n$\\dfrac{1}{z} = \\dfrac{3x - y}{3xy} = \\dfrac{1}{y} - \\dfrac{1}{3x}$  \n한편 조건 (가)에서 $5^x = 3^y = a^z = k$ ($k > 0$)라 하면  \n$5 = k^{\\frac{1}{x}}$, $3 = k^{\\frac{1}{y}}$, $a = k^{\\frac{1}{z}}$  \n$a = k^{\\frac{1}{z}} = k^{\\frac{1}{y} - \\frac{1}{3x}} = \\dfrac{k^{\\frac{1}{y}}}{\\left(k^{\\frac{1}{x}}\\right)^{\\frac{1}{3}}} = \\dfrac{3}{5^{\\frac{1}{3}}}$  \n따라서 $a^3 = \\dfrac{3^3}{5} = \\dfrac{27}{5}$이다.",
     "sourcePrimaryMethod": "조건 (나)에서 1/z = 1/y - 1/(3x)를 도출하고 조건 (가)를 k로 놓아 지수법칙으로 a=3/5^(1/3)을 구한다.",
     "sourceDecisiveStep": "z=3xy/(3x-y)의 역수를 취해 1/z = 1/y - 1/(3x)를 얻어 k의 지수로 연결하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-01",
+    "subUnitKey": "H15-M1-01-EXPONENT",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수",
+      "l3": "지수법칙",
+      "l4": "조건식"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+    "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -1579,7 +1579,7 @@
       "matchedAs": "양수",
       "kind": "조건",
       "src": "stem",
-      "quote": "[7점] 네 양수 $x, y,"
+      "quote": "7점]   네 양수 $x, y,"
     },
     {
       "term": "조건",
@@ -1600,21 +1600,21 @@
       "matchedAs": "성질",
       "kind": "대상",
       "src": "solution",
-      "quote": "$이고 로그의 성질로 정리하면 $"
+      "quote": "$이고 로그의 성질로 정리하면"
     },
     {
       "term": "역수",
       "matchedAs": "역수",
       "kind": "대상",
       "src": "solution",
-      "quote": "y}$ 양변의 역수를 취하면 $\\"
+      "quote": "$   양변의 역수를 취하면"
     },
     {
       "term": "정리",
       "matchedAs": "정리",
       "kind": "방법",
       "src": "solution",
-      "quote": "로그의 성질로 정리하면 $\\log"
+      "quote": "로그의 성질로 정리하면   $\\l"
     },
     {
       "term": "조건",

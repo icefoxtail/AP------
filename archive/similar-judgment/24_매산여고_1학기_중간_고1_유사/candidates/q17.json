@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "$z=a+bi$ ($a, b$는 실수)라 하면 $z$가 실수가 아니므로 $b\\ne 0$이다.\n\n\n1. $z+\\dfrac{1}{z}=\\left(a+\\dfrac{a}{a^2+b^2}\\right)+\\left(b-\\dfrac{b}{a^2+b^2}\\right)i$가 실수이므로 허수부가 $0$이다. $b\\ne 0$이므로 $a^2+b^2=1$, 즉 $z\\bar{z}=1$이다. (ㄱ 참) 2.$\\bar{z}=\\dfrac{1}{z}$이고 $\\dfrac{z^2}{z-1}$이 실수이므로 자신의 켤레복소수와 같다. $$\\dfrac{z^2}{z-1}=\\dfrac{\\bar{z}^2}{\\bar{z}-1}=\\dfrac{1/z^2}{1/z-1}=\\dfrac{1}{z(1-z)}$$ $z^3(1-z)=z-1 \\implies (z-1)(z^3+1)=0$이고 $z\\ne 1$이므로 $z^3=-1$이다. $z$가 실수가 아니므로 $z\\ne -1$이고 $z^2-z+1=0$이다. 따라서 $z+\\bar{z}=z+\\dfrac{1}{z}=1$이므로 ㄴ은 거짓이다. 3.$z^3=-1$, $z^2-z+1=0$에서 $z^4=-z$, $z^2=z-1$이므로 $$(z^4+2z^2)(z^2-2z)=(2z^2-z)(z^2-2z)=(z-2)(-z-1)=-z^2+z+2=-(z^2-z)+2=1+2=3$$ 이므로 ㄷ은 참이다. 따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
+    "solution": "$z=a+bi$ ($a, b$는 실수)라 하면 $z$가 실수가 아니므로 $b\\ne 0$이다.\n\n1) $z+\\dfrac{1}{z}=\\left(a+\\dfrac{a}{a^2+b^2}\\right)+\\left(b-\\dfrac{b}{a^2+b^2}\\right)i$가 실수이므로 허수부가 $0$이다. $b\\ne 0$이므로 $a^2+b^2=1$, 즉 $z\\bar{z}=1$이다. (ㄱ 참)  \n2) $\\bar{z}=\\dfrac{1}{z}$이고 $\\dfrac{z^2}{z-1}$이 실수이므로 자신의 켤레복소수와 같다. $$\\dfrac{z^2}{z-1}=\\dfrac{\\bar{z}^2}{\\bar{z}-1}=\\dfrac{1/z^2}{1/z-1}=\\dfrac{1}{z(1-z)}$$ $z^3(1-z)=z-1 \\implies (z-1)(z^3+1)=0$이고 $z\\ne 1$이므로 $z^3=-1$이다. $z$가 실수가 아니므로 $z\\ne -1$이고 $z^2-z+1=0$이다. 따라서 $z+\\bar{z}=z+\\dfrac{1}{z}=1$이므로 ㄴ은 거짓이다.  \n3) $z^3=-1$, $z^2-z+1=0$에서 $z^4=-z$, $z^2=z-1$이므로 $$(z^4+2z^2)(z^2-2z)=(2z^2-z)(z^2-2z)=(z-2)(-z-1)=-z^2+z+2=-(z^2-z)+2=1+2=3$$ 이므로 ㄷ은 참이다. 따라서 옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
     "sourcePrimaryMethod": "실수 조건(w=bar(w))을 연쇄 적용해 z*bar(z)=1과 z^3=-1을 도출한 뒤 z^2-z+1=0으로 식의 값을 판별한다.",
     "sourceDecisiveStep": "bar(z)=1/z을 이용해 z^2/(z-1)=1/(z(1-z))에서 z^3=-1과 z^2-z+1=0을 끌어낸다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-04",
+    "subUnitKey": "H15-SA-04-COMPLEX_BASIC",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "복소수의 뜻",
+      "l4": "실수부·허수부"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
     "difficultyBucket": 5,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2621,7 +2638,7 @@
       "matchedAs": "거짓",
       "kind": "행위",
       "src": "solution",
-      "quote": "$이므로 ㄴ은 거짓이다. 3.$z"
+      "quote": "$이므로 ㄴ은 거짓이다.   3)"
     },
     {
       "term": "허수",

@@ -19,20 +19,30 @@
   "reference": {
     "answer": "③",
     "solution": "두 식을 연립하면 $x^2 - 6x = -2x + k \\implies x^2 - 4x - k = 0$이다. 두 교점의 $x$좌표를 $\\alpha, \\beta$라 하면 근과 계수의 관계에 의하여 $\\alpha + \\beta = 4$, $\\alpha\\beta = -k$이다. 따라서 $$g(k) = \\alpha\\beta = -k$$ $$f(k) = (\\alpha - \\beta)^2 = (\\alpha + \\beta)^2 - 4\\alpha\\beta = 4^2 - 4(-k) = 16 + 4k$$ 조건 ${g(k)}^2 = f(0) \\times f(5)$에 대입하면 $$(-k)^2 = (16 + 0) \\times (16 + 20) = 16 \\times 36 = 576$$ $k > 0$이므로 $k = 24$이다. (이때 판별식 $\\frac{D}{4} = 4 + 24 > 0$을 만족한다.)",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "연립방정식 $x^2-4x-k=0$의 근과 계수의 관계로 $f(k)=16+4k$, $g(k)=-k$를 구해 방정식 $k^2=f(0)f(5)$를 푼다.",
+    "sourceDecisiveStep": "두 교점 차의 제곱 $(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta$를 $k$의 일차식으로 나타내는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "그래프와 근",
+      "l4": "판별식과 위치"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "이차방정식과이차함수",
+      "concept": "이차함수와직선의위치관계",
+      "skill": "교점차제곱과곱관계식",
+      "context": "교점좌표함수식"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
