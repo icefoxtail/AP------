@@ -1,0 +1,76 @@
+{
+  "qid": "02",
+  "itemFingerprint": "f7d9a1568f78eff5",
+  "solveSteps": [
+    "① -3x^2 - 2 = 12x + 10에서 -3x^2 - 12x - 12 = 0이다.",
+    "-3으로 양변을 나누면 x^2 + 4x + 4 = 0이므로 (x+2)^2 = 0으로 x = -2를 중근으로 갖는다.",
+    "② 9x^2 = 3에서 x = +-sqrt(3)/3으로 서로 다른 두 근을 갖는다.",
+    "③ (x-2)(x-3) = 0으로 서로 다른 두 근 2, 3을 갖는다.",
+    "④ (x+2)(x+5) = 0으로 서로 다른 두 근 -2, -5를 갖는다.",
+    "⑤ 3x^2 + 3x + 2 = 0으로 판별식 9 - 24 < 0이므로 실근이 없다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "다음 이차방정식 중 중근을 갖는 것은",
+  "rpmRecordId": "M3-RPM-032",
+  "rpmReason": "식 -3x^2 - 2 = 12x + 10을 정리하여 완전제곱식 (x+2)^2 = 0에서 중근 x = -2를 판별하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "이차방정식 -3x^2 - 2 = 12x + 10이 완전제곱식 형태가 되어 중근을 갖는 조건을 확인하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이차방정식 -3x^2 - 2 = 12x + 10을 정리하여 중근을 갖는지 판단하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "다음 이차방정식 중 중근을 갖는 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 갖는 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "나머지 방정식은 모두 서로 다른",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "solution",
+        "quote": "x = -2$를 중근으로 갖는다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "보기의 이차방정식들을 확인한다.",
+    "goal": "중근을 갖는 방정식을 찾는다.",
+    "method": "완전제곱식 (x+2)^2 = 0으로 인수분해하여 판단한다.",
+    "condition": "근이 하나로 겹치는 중근 조건을 쓴다."
+  },
+  "how": "식 -3x^2 - 2 = 12x + 10을 정리하면 x^2 + 4x + 4 = 0이 되어 중근 x = -2를 가지므로 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

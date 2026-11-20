@@ -1,0 +1,75 @@
+{
+  "qid": "04",
+  "itemFingerprint": "d5cfb8561136f850",
+  "solveSteps": [
+    "3(x+2)^2 = x^2 + 4x + 14를 전개하면 3x^2 + 12x + 12 = x^2 + 4x + 14이다.",
+    "이항하여 정리하면 2x^2 + 8x - 2 = 0이다.",
+    "양변을 2로 나누면 x^2 + 4x - 1 = 0이므로 x^2 + 4x = 1이다.",
+    "양변에 4를 더해 완전제곱식으로 고치면 (x+2)^2 = 5이다.",
+    "따라서 p = 2, q = 5이므로 pq = 2 * 5 = 10이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $3(x+2)^2 = x^2 + 4",
+  "rpmRecordId": "M3-RPM-034",
+  "rpmReason": "이차방정식을 완전제곱꼴 (x+2)^2 = 5로 변형하여 상수 pq = 10을 계산하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "이차방정식을 (x+p)^2 = q 형태로 변형하여 곱 pq = 10을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "식을 전개하고 완전제곱식을 만들어 p = 2, q = 5를 얻어 pq = 10을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $3(x+2)^2 = x^2"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $p, q$에 대하여 $pq$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "전개해 정리하면 $\\quad",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "이차방정식 $3(x+2)^2 = x^2"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 이차방정식 식을 확인한다.",
+    "goal": "pq의 값을 계산한다.",
+    "method": "완전제곱꼴 (x+p)^2 = q로 정리한다.",
+    "condition": "등식의 양변에 같은 수를 더해 완전제곱식을 만든다."
+  },
+  "how": "식을 정리하여 $(x+2)^2 = 5$ 꼴로 변형해 $p = 2, q = 5$에서 $pq = 10$을 얻어 정답 ②로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

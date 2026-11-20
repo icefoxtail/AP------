@@ -1,0 +1,73 @@
+{
+  "qid": "12",
+  "itemFingerprint": "2c65ddaed4432fc2",
+  "solveSteps": [
+    "y = x^2의 그래프를 x축 방향으로 4만큼 평행이동하면 x 대신 x-4를 대입한다.",
+    "y축 방향으로 -2만큼 평행이동하면 y 대신 y+2를 대입한다.",
+    "따라서 y + 2 = (x-4)^2에서 y = (x-4)^2 - 2이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = x^2$의 그래프를 $x$축",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmReason": "y = x^2의 그래프를 x축으로 4, y축으로 -2만큼 평행이동한 식 y = (x-4)^2 - 2를 구하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_TRANSLATION_FORMULA",
+  "typeReason": "이차함수 y = x^2에 평행이동 변환 규칙을 적용하여 표준형 식을 작성하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기본 포물선 y = x^2의 평행이동 공식을 그대로 적용하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = x^2$의 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "평행이동한 그래프를 나타내는 이차함수의"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "만큼 평행이동한 그래프를 나타내는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "대입하면 $y = (x-4)^2"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원래 함수식 y = x^2을 확인한다.",
+    "goal": "평행이동된 식을 찾는다.",
+    "method": "x축과 y축 평행이동 공식을 대입한다.",
+    "condition": "부호 변환 규칙을 정확히 적용한다."
+  },
+  "how": "$y = x^2$을 x축으로 4, y축으로 -2만큼 이동하여 $y = (x-4)^2 - 2$를 얻어 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

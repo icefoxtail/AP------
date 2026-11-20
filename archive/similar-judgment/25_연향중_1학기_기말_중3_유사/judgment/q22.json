@@ -1,0 +1,76 @@
+{
+  "qid": "22",
+  "itemFingerprint": "1dd6342ffd27f4c7",
+  "solveSteps": [
+    "축의 방정식이 x = -3이므로 이차함수의 식을 y = a(x+3)^2 + q로 둔다.",
+    "점 (-2, 5)를 대입하면 a(-2+3)^2 + q = 5이므로 a + q = 5이다.",
+    "점 (0, 21)을 대입하면 a(0+3)^2 + q = 21이므로 9a + q = 21이다.",
+    "두 식을 변끼리 빼면 8a = 16이므로 a = 2이다.",
+    "a = 2를 대입하면 2 + q = 5이므로 q = 3이다.",
+    "따라서 구하는 식은 y = 2(x+3)^2 + 3이다."
+  ],
+  "solvedAnswer": "y = 2(x+3)^2 + 3 (또는 y = 2x^2 + 12x + 21)",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "축의 방정식이 $x = -3$이고, 두 점 $",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmReason": "축 x = -3과 두 점 (-2, 5), (0, 21)로 식 y = 2(x+3)^2 + 3을 완성하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+  "typeReason": "대칭축과 지나는 두 점 (0, 21) 등의 좌표로 이차함수의 표준형 식을 도출하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "대칭축 x = -3과 점 (0, 21) 등의 좌표를 대입하여 a = 2, q = 3을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "그래프로 하는 이차함수의 식을 구하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "포물선",
+        "src": "stem",
+        "quote": "을 지나는 포물선을 그래프로 하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "solution",
+        "quote": "두 식을 연립하여 빼면 $8a = 16",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "축의 방정식이 $x = -3$이고,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "대칭축과 두 점의 좌표 조건을 파악한다.",
+    "goal": "이차함수의 식을 구한다.",
+    "method": "표준형 식에 두 점을 대입하여 a, q의 연립방정식을 푼다.",
+    "condition": "대칭축이 x = -3이어야 한다."
+  },
+  "how": "축 $x = -3$을 이용해 $y = a(x+3)^2 + q$로 두고 $(-2, 5), (0, 21)$을 대입해 $a = 2, q = 3$으로 $y = 2(x+3)^2 + 3$으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}
