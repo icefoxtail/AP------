@@ -1,0 +1,56 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "74f5c39f8bf2eac0",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "부등식 각 변을 제곱하면 $3^2 < 2x-1 \\le 5^2$에서 $9 < 2x-1 \\le 25$이다.",
+    "각 변에 $1$을 더하면 $10 < 2x \\le 26$이고, $2$로 나누면 $5 < x \\le 13$이다.",
+    "만족하는 자연수 $x$는 $6, 7, 8, 9, 10, 11, 12, 13$의 $8$개이다. 따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 두 실수의 대소 관계가 옳은 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmEvidence": "부등식의 기본 성질을 이용하여 각 선지의 대소 관계를 판별한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
+  "newKeyProposal": null,
+  "typeReason": "제곱근을 포함한 부등식을 만족하는 자연수 개수를 구하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "실수의 대소 관계 및 근호 부등식의 정수 해 RPM 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부등식 변형과 자연수 개수 카운팅의 표준 난이도 2 문항이다. (문항 토큰 10)",
+  "how": "근호가 포함된 부등식의 각 변을 제곱하여 자연수 해의 개수를 세었다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "다음 중 두 실수의 대소 관계가 옳은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소",
+        "src": "solution",
+        "quote": "부등식의 기본 성질을 이용하여 각 선지의 대소 관계를 판별한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식의 기본 성질을 이용하여 각 선지의 대소 관계를 판별한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "ba9c26355346eba6",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "각 보기를 인수분해 공식을 적용하여 점검한다.",
+    "③번 보기는 $x^2+xy-12y^2 = (x+4y)(x-3y)$ 등으로 바르게 인수분해되었다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 인수분해한 것이 옳지 않은 것은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "각 보기를 전개하여 좌변과 일치하는지 확인한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+  "newKeyProposal": null,
+  "typeReason": "인수분해 공식의 올바른 적용 여부를 종합적으로 판별하는 유형이다. (문항 토큰 25)",
+  "rpmReason": "인수분해 기본 공식의 적용을 확인하는 RPM 유형이다. (문항 토큰 25)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다양한 인수분해 공식을 대조하는 난이도 2 문항이다. (문항 토큰 25)",
+  "how": "인수분해 공식을 각 보기에 적용하여 옳게 분해된 식을 골랐다. (문항 토큰 25)",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "다음 중 인수분해한 것이 옳지 않은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "올바른 인수분해는 $(x+3)(2x-1)$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "각 보기를 전개하여 좌변과 일치하는지 확인한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

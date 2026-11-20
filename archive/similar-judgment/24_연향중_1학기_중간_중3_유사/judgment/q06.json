@@ -1,0 +1,56 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "0053b80cc9ff6cdc",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\sqrt{3} < \\sqrt{5}$일 때 두 수의 평균 $\\dfrac{\\sqrt{3}+\\sqrt{5}}{2}$는 항상 두 수 사이에 위치한다.",
+    "양변을 제곱하면 $4k^2 = 8+2\\sqrt{15}$이므로 $15$의 제곱근인 무리수 $\\sqrt{15}$에 의해 $\\dfrac{\\sqrt{3}+\\sqrt{5}}{2}$는 무리수이다.",
+    "따라서 $\\sqrt{3}$과 $\\sqrt{5}$ 사이에 있는 무리수인 것은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 $\\sqrt{3}$과 $\\sqrt{5}$ 사이에 있는 무리수인 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmEvidence": "두 실수 사이에 존재하는 수의 성질과 무리수 조건을 확인한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_BETWEEN",
+  "newKeyProposal": null,
+  "typeReason": "두 실수 사이에 위치하는 수의 대소와 무리수 여부를 확인하는 유형이다. (문항 토큰 15)",
+  "rpmReason": "수직선과 제곱근에서 무리수의 위치를 확인하는 RPM 유형이다. (문항 토큰 15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평균의 대소 관계와 무리수 조건을 확인하는 난이도 2 문항이다. (문항 토큰 15)",
+  "how": "두 무리수 사이의 값의 대소와 무리수 성질을 파악하였다. (문항 토큰 15)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "src": "stem",
+        "quote": "다음 중 $\\sqrt{3}$과 $\\sqrt{5}$ 사이에 있는 무리수인 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "solution",
+        "quote": "1단계: 두 실수의 평균의 위치를 확인한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "조건",
+        "src": "solution",
+        "quote": "두 실수 사이에 존재하는 수의 성질과 무리수 조건을 확인한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

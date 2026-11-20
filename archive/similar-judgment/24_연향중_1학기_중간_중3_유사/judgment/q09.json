@@ -1,0 +1,56 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "735c869519368e4e",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "각 근호 안의 수를 소인수분해하여 밖으로 꺼내면 $\\sqrt{75} = 5\\sqrt{3}$, $\\sqrt{12} = 2\\sqrt{3}$이다.",
+    "식에 대입하면 $5\\sqrt{3} - 2\\sqrt{3} + 2\\sqrt{3} = 5\\sqrt{3}$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "근호 안의 제곱수를 밖으로 빼내어 동류항 계산을 수행한다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmEvidence": "근호 안의 제곱수를 밖으로 빼내어 동류항 계산을 수행한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "근호를 포함한 식의 기본적인 덧셈과 뺄셈 혼합 계산 유형이다. (문항 토큰 75)",
+  "rpmReason": "근호의 덧셈과 뺄셈에서 동류근호 정리를 다루는 RPM 유형이다. (문항 토큰 75)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "간단한 근호 정리와 동류근호 계산의 난이도 1 문항이다. (문항 토큰 75)",
+  "how": "근호 안의 제곱수를 밖으로 빼내어 동류근호끼리 덧셈과 뺄셈을 하였다. (문항 토큰 75)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱",
+        "src": "solution",
+        "quote": "근호 안의 제곱수를 밖으로 빼내어 동류항 계산을 수행한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "변형",
+        "src": "solution",
+        "quote": "1단계: $\\sqrt{75}$를 $a\\sqrt{b}$ 꼴로 변형한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "근호 안의 제곱수를 밖으로 빼내어 동류항 계산을 수행한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

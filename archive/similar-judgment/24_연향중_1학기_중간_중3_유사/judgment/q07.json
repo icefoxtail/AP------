@@ -1,0 +1,56 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "36cc02a8fedefab0",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "정사각형 $\\text{ABCD}$의 대각선 $\\text{BD}$의 길이는 피타고라스 정리에 의해 $\\sqrt{1^2+1^2}=\\sqrt{2}$이다.",
+    "점 $\\text{B}$의 좌표가 $1$이고 $\\overline{\\text{BP}}=\\overline{\\text{BD}}$이므로 점 $\\text{P}$는 점 $\\text{B}$에서 오른쪽으로 $\\sqrt{2}$만큼 떨어진 점이다.",
+    "따라서 점 $\\text{P}$에 대응하는 수는 $1+\\sqrt{2}$로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmEvidence": "피타고라스 정리를 이용하여 정사각형의 대각선 길이를 구하고, 기준점으로부터의 거리를 더해 점 $\\mathrm{P}$의 좌표를 구한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+  "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+  "newKeyProposal": null,
+  "typeReason": "정사각형의 대각선을 회전시켜 수직선 위의 점의 좌표를 나타내는 유형이다. (문항 토큰 ABCD)",
+  "rpmReason": "수직선과 제곱근에서 무리수의 수직선 대응 RPM 유형이다. (문항 토큰 ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기준점과 방향, 대각선 길이를 조합하는 난이도 2 문항이다. (문항 토큰 ABCD)",
+  "how": "피타고라스 정리로 대각선 길이를 구하고 기준점으로부터의 거리를 더해 좌표를 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "수직선 위에 한 변의 길이가 $1$인 정사각형 $\\mathrm{ABCD}$가 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "대응",
+        "src": "stem",
+        "quote": "점 $\\mathrm{B}$의 오른쪽 수직선 위에서 점 $\\mathrm{P}$에 대응하는 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "피타고라스 정리를 이용하여 정사각형의 대각선 길이를 구하고, 기준점으로부터의 거리를 더해 점 $\\mathrm{P}$의 좌표를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

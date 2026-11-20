@@ -1,0 +1,56 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "91043c0f34adea9d",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$a>0$일 때 $\\sqrt{a^2}=a$, $(\\sqrt{a})^2=a$는 모두 참이다.",
+    "③에서 $-\\sqrt{(-a)^2} = -|-a| = -a$이며, $a>0$이므로 $-a \\ne a$이다. 따라서 ③은 옳지 않다.",
+    "정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a>0$일 때 제곱근의 성질에 따라 각 보기를 확인한다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "$a>0$일 때 제곱근의 성질에 따라 각 보기를 확인한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+  "newKeyProposal": null,
+  "typeReason": "문자의 부호가 주어졌을 때 제곱근의 성질을 판별하는 유형이다. (문항 토큰 a)",
+  "rpmReason": "제곱근의 성질 중 부호 판별과 절댓값 개념을 묻는 RPM 유형이다. (문항 토큰 a)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부호에 유의하여 근호를 벗기는 기본 난이도 1 문항이다. (문항 토큰 a)",
+  "how": "근호 안의 식의 부호에 따른 근호 풀기 성질을 적용하여 옳지 않은 것을 찾았다. (문항 토큰 a)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱",
+        "src": "solution",
+        "quote": "$a>0$일 때 제곱근의 성질에 따라 각 보기를 확인한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "$a>0$일 때 제곱근의 성질에 따라 각 보기를 확인한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "$a>0$일 때 제곱근의 성질에 따라 각 보기를 확인한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

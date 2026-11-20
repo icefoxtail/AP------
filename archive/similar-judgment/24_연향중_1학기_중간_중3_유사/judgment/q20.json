@@ -1,0 +1,56 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "c0c7934155e5ccd6",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$(1-a)(1+a) = 1-a^2$부터 시작하여 연쇄적으로 합차공식을 적용한다.",
+    "$(1-a^2)(1+a^2)=1-a^4, \\dots, (1-a^{32})(1+a^{32}) = 1-a^{64}$이다.",
+    "$p=1, q=64$이므로 $q-p = 64-1 = 63$으로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "합과 차의 곱셈 공식 $(X-Y)(X+Y) = X^2 - Y^2$을 반복적으로 적용한다.",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-016",
+  "rpmEvidence": "1단계: 앞의 두 인수를 곱한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_CHAIN",
+  "newKeyProposal": null,
+  "typeReason": "합차공식을 반복 적용하여 거듭제곱 다항식을 간단히 하는 유형이다. (문항 토큰 16)",
+  "rpmReason": "합과 차의 곱을 연쇄적으로 활용하는 곱셈공식 RPM 유형이다. (문항 토큰 16)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "연쇄적 곱셈공식 규칙을 추론하는 난이도 3 문항이다. (문항 토큰 16)",
+  "how": "합과 차의 곱셈공식을 연쇄적으로 적용하여 거듭제곱 형태의 식을 전개하였다. (문항 토큰 16)",
+  "slots": {
+    "given": [
+      {
+        "term": "곱셈",
+        "src": "solution",
+        "quote": "합과 차의 곱셈 공식 $(X-Y)(X+Y) = X^2 - Y^2$을 반복적으로 적용한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "비교",
+        "src": "solution",
+        "quote": "3단계: 우변의 $p - a^q$와 계수를 비교한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "인수",
+        "src": "solution",
+        "quote": "1단계: 앞의 두 인수를 곱한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

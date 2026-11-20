@@ -1,0 +1,56 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "5176242a1214a8b4",
+  "solvedAnswer": "$800$",
+  "solveSteps": [
+    "두 정사각형의 둘레의 합에서 $4x+4y=60 \\implies x+y=15$이고, 넓이의 합에서 $x^2+y^2=125$이다.",
+    "$(x+y)^2 = x^2+y^2+2xy$에 대입하면 $225 = 125+2xy \\implies 2xy=100 \\implies xy=50$이다.",
+    "두 정사각형의 둘레의 곱은 $(4x)(4y) = 16xy = 16 \\times 50 = 800$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다.",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-020",
+  "rpmEvidence": "정사각형의 둘레와 넓이 공식을 곱셈 공식의 변형과 연계하여 문제를 해결한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+  "newKeyProposal": null,
+  "typeReason": "도형의 둘레와 넓이 조건을 곱셈공식의 변형과 연계하여 식의 값을 구하는 서술형 유형이다. (문항 토큰 60)",
+  "rpmReason": "곱셈공식의 도형 활용 RPM 유형이다. (문항 토큰 60)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "곱셈공식 변형과 도형 둘레 곱 계산을 논리적으로 전개하는 서술형 난이도 3 문항이다. (문항 토큰 60)",
+  "how": "도형 조건을 곱셈공식 변형식에 대입하여 미지수의 곱을 구하고 둘레의 곱을 계산하였다. (문항 토큰 60)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "[서·논술형 3] 한 변의 길이가 각각 $x$와 $y$인 두 정사각형이 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈",
+        "src": "solution",
+        "quote": "정사각형의 둘레와 넓이 공식을 곱셈 공식의 변형과 연계하여 문제를 해결한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "변형",
+        "src": "solution",
+        "quote": "정사각형의 둘레와 넓이 공식을 곱셈 공식의 변형과 연계하여 문제를 해결한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

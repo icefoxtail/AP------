@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "2f360b208038b39e",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$X = x+2y$로 치환하면 $3X^2-2X-5 = (3X-5)(X+1)$이다.",
+    "$X = x+2y$를 대입하여 정리하면 $(3x+6y-5)(x+2y+1)$이다.",
+    "$(3x+ay+b)(x+cy+d)$와 비교하면 $a=6, b=-5, c=2, d=1$이므로 $ad+bc = 6(1) + (-5)(2) = -4$이다. 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3(x+2y)^2-2(x+2y)-5$를 인수분해하면 $(3x+ay+b)(x+cy+d)$일 때, 수 $a, b, c, d$에 대하여 $ad+bc$의 값은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-022",
+  "rpmEvidence": "1단계: $x+2y = t$로 치환한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+  "newKeyProposal": null,
+  "typeReason": "치환을 이용한 복잡한 식의 인수분해 유형이다. (문항 토큰 ay)",
+  "rpmReason": "공통부분이 있는 다항식의 인수분해 RPM 유형이다. (문항 토큰 ay)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "치환과 환원의 2단계를 요하는 난이도 3 문항이다. (문항 토큰 ay)",
+  "how": "공통부분을 치환하여 이차식으로 변형한 후 인수분해를 완료하였다. (문항 토큰 ay)",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "$3(x+2y)^2-2(x+2y)-5$를 인수분해하면 $(3x+ay+b)(x+cy+d)$일 때, 수 $a, b, c, d$에 대하여 $ad+bc$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "src": "solution",
+        "quote": "2단계: $t$에 관한 이차식을 인수분해한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "1단계: $x+2y = t$로 치환한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

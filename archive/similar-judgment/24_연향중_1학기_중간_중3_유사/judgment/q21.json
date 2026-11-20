@@ -1,0 +1,56 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "bcb05ff6989aaac0",
+  "solvedAnswer": "$-3$",
+  "solveSteps": [
+    "첫 번째 항을 분배하면 $\\sqrt{54}\\left(\\frac{1}{\\sqrt{2}}-\\sqrt{6}\\right) = \\sqrt{27}-\\sqrt{324} = 3\\sqrt{3}-18$이다.",
+    "두 번째 항은 $\\frac{a}{\\sqrt{3}}(4\\sqrt{3}-3) = 4a - a\\sqrt{3}$이다.",
+    "전체 식은 $(-18-4a) + (3+a)\\sqrt{3}$이며, 유리수가 되려면 $3+a=0 \\implies a=-3$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 1] $$\\sqrt{54}\\left(\\frac{1}{\\sqrt{2}}-\\sqrt{6}\\right)-\\frac{a}{\\sqrt{3}}(\\sqrt{48}-3)\\text{이 유리수일 때,}$$ 유리수 $a$의 값을 구하시오.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-014",
+  "rpmEvidence": "1단계: 첫 번째 항을 분배법칙으로 전개하여 간단히 한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONAL_CONDITION",
+  "newKeyProposal": null,
+  "typeReason": "근호가 포함된 식의 계산 결과가 유리수가 될 조건을 구하는 서술형 유형이다. (문항 토큰 54)",
+  "rpmReason": "근호를 포함한 식의 계산과 식의 값 RPM 유형이다. (문항 토큰 54)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분배법칙 전개와 무리수 계수 $0$ 조건을 논리적으로 서술하는 난이도 3 문항이다. (문항 토큰 54)",
+  "how": "식을 전개하여 유리수 부분과 무리수 부분으로 정리하고 무리수 항의 계수를 $0$으로 놓았다. (문항 토큰 54)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "[서·논술형 1] $$\\sqrt{54}\\left(\\frac{1}{\\sqrt{2}}-\\sqrt{6}\\right)-\\frac{a}{\\sqrt{3}}(\\sqrt{48}-3)\\text{이 유리수일 때,}$$ 유리수 $a$의 값을 구하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "유리수 $a$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "1단계: 첫 번째 항을 분배법칙으로 전개하여 간단히 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

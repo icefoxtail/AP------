@@ -1,0 +1,56 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "dd8a8e1223134879",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "좌변 $(3x+a)(bx-4) = 3bx^2 + (ab-12)x - 4a$로 전개된다.",
+    "우변 $12x^2+cx-12$와 계수를 비교하면 $3b=12 \\implies b=4$, $-4a=-12 \\implies a=3$이다.",
+    "$c = ab-12 = 3(4)-12 = 0$이므로 $a+b+c = 3+4+0 = 7$이다. 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(3x-a)(2x+4)$를 전개한 식에서 $x$의 계수가 상수항보다 $8$만큼 크다고 할 때, 상수 $a$의 값은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-017",
+  "rpmEvidence": "다항식을 전개하여 $x$의 계수와 상수항을 $a$에 관한 식으로 나타낸 후 일차방정식을 세워 푼다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 전개와 계수비교법으로 미정계수를 구하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "두 일차식의 곱 전개공식을 다루는 RPM 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "계수 비교를 통해 세 상수를 도출하는 난이도 2 문항이다. (문항 토큰 12)",
+  "how": "두 일차식을 전개하여 동류항끼리 묶은 뒤 양변의 계수를 비교하였다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$(3x-a)(2x+4)$를 전개한 식에서 $x$의 계수가 상수항보다 $8$만큼 크다고 할 때, 상수 $a$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수항보다 $8$만큼 크다고 할 때, 상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "다항식을 전개하여 $x$의 계수와 상수항을 $a$에 관한 식으로 나타낸 후 일차방정식을 세워 푼다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

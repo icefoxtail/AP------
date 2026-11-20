@@ -1,0 +1,56 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "d56be82ab369712d",
+  "solvedAnswer": "$230+40\\sqrt{2},\\mathrm{cm}$",
+  "solveSteps": [
+    "피타고라스 정리에 의해 사선 부분 하나의 길이는 $\\sqrt{10^2+10^2} = 10\\sqrt{2},(\\mathrm{cm})$이다.",
+    "한 방향 끈의 길이는 $30 + 2(10\\sqrt{2}) + 20 + 50 = 100 + 20\\sqrt{2},(\\mathrm{cm})$이다.",
+    "십자 묶음과 매듭 $30,\\mathrm{cm}$를 합하면 $2(100+20\\sqrt{2}) + 30 = 230 + 40\\sqrt{2},(\\mathrm{cm})$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 2] 밑면의 한 변의 길이가 각각 $30,\\mathrm{cm}$, $50,\\mathrm{cm}$인 정사각형이고, 높이는 모두 $10,\\mathrm{cm}$인 직육면체 모양의 두 상자를 끈으로 묶으려고 한다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-010",
+  "rpmEvidence": "상자의 단면에서 피타고라스 정리를 이용하여 사선 부분의 길이를 구하고, 십자 방향의 끈 전체 길이에 매듭 길이를 더한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "입체도형을 끈으로 묶는 실생활 상황에서 피타고라스 정리와 무리수를 활용하는 서술형 유형이다. (문항 토큰 30)",
+  "rpmReason": "근호를 포함한 식의 계산의 실생활 활용 RPM 유형이다. (문항 토큰 30)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공간 지각과 피타고라스 정리, 다단계 덧셈이 요구되는 서술형 난이도 3 문항이다. (문항 토큰 30)",
+  "how": "단면에서 피타고라스 정리로 대각선 길이를 구하고 십자 끈과 매듭의 총 길이를 합산하였다. (문항 토큰 30)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "[서·논술형 2] 밑면의 한 변의 길이가 각각 $30,\\mathrm{cm}$, $50,\\mathrm{cm}$인 정사각형이고, 높이는 모두 $10,\\mathrm{cm}$인 직육면체 모양의 두 상자를 끈으로 묶으려고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "매듭을 묶는 데 필요한 끈의 길이가 $30,\\mathrm{cm}$일 때, 필요한 총 끈의 길이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "단면",
+        "src": "solution",
+        "quote": "상자의 단면에서 피타고라스 정리를 이용하여 사선 부분의 길이를 구하고, 십자 방향의 끈 전체 길이에 매듭 길이를 더한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

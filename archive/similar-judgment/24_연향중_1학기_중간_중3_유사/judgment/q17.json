@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "baf57c9b9f74f370",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "근호 안의 식을 완전제곱식으로 고치면 $\\sqrt{a^2-10a+25} = \\sqrt{(a-5)^2}$이고 $\\sqrt{a^2+4a+4} = \\sqrt{(a+2)^2}$이다.",
+    "$-2 < a < 5$에서 $a-5 < 0$이므로 $\\sqrt{(a-5)^2} = -(a-5) = -a+5$이고, $a+2 > 0$이므로 $\\sqrt{(a+2)^2} = a+2$이다.",
+    "따라서 $(-a+5) - (a+2) = -2a+3$이므로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "근호 안의 식을 완전제곱식으로 인수분해한 후 주어진 범위에서 부호를 판정한다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "3단계: 절댓값을 풀고 식을 정리한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+  "newKeyProposal": null,
+  "typeReason": "변수의 범위가 주어졌을 때 근호 안의 완전제곱식을 절댓값으로 푸는 유형이다. (문항 토큰 10)",
+  "rpmReason": "제곱근의 성질을 이용하여 식을 간단히 정리하는 RPM 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부호 판별과 식의 덧셈을 결합한 표준 난이도 2 문항이다. (문항 토큰 10)",
+  "how": "주어진 범위에서 각 인수의 부호를 판정하여 근호를 벗겨 식을 간단히 하였다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱",
+        "src": "solution",
+        "quote": "근호 안의 식을 완전제곱식으로 인수분해한 후 주어진 범위에서 부호를 판정한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "2단계: 주어진 범위 $-2 < a < 5$에서 각 식의 부호를 판별한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "src": "solution",
+        "quote": "3단계: 절댓값을 풀고 식을 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
