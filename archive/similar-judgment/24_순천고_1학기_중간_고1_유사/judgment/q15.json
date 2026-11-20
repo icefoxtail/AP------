@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "9cad9133693acdfd",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$y = -2(x-2)^2 + 5$이므로 최댓값 $5$를 가지려면 $k \\ge 2$이어야 한다. (0)",
+    "$x=0$에서 $f(0) = -3$이므로 최솟값 $-3$을 유지하려면 $f(k) \\ge -3$이어야 한다.",
+    "$-2(k-2)^2 + 5 \\ge -3 \\implies (k-2)^2 \\le 4 \\implies 0 \\le k \\le 4$이다.",
+    "공통 범위는 $2 \\le k \\le 4$이므로 $\\alpha=2, \\beta=4$이다. (0)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0\\le x\\le k$에서",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "가변 구간에서의 이차함수의 최대·최소 조건 분석 유형이다. (0)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 구간 최대·최소 가변 구간 유형이다. (0)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "가변 구간 [0, k]에서 이차함수의 최대·최소를 동시에 만족하는 구간 끝점 범위를 구하는 난이도 3 문항이다.",
+  "how": "꼭짓점 포함 조건 k>=2와 경계 최솟값 조건 f(k)>=-3을 연립해 2<=k<=4를 도출했다. (0)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "$0\\le x\\le k$에서 이차함수 $y=-2x^2+8x-3$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$k$의 값의 범위가 $\\alpha\\le k\\le \\beta$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점 $x=2$가 구간에 포함되어야 하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값이 $5$, 최솟값이 $-3$"
+      }
+    ]
+  }
+}

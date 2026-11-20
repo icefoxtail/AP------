@@ -1,0 +1,61 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "dbe32bb14ff3881d",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "서로 다른 두 점에서 만나려면 판별식 $D = (-7)^2 - 4(3)(a) = 49 - 12a > 0$이어야 한다.",
+    "$12a < 49 \\implies a < 49/12 = 4.083...$이다.",
+    "자연수 $a$는 $1, 2, 3, 4$의 4개이다. (49)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=3x^2-7x",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 그래프와 x축의 위치 관계 판별식 부등식 유형이다. (49)",
+  "rpmRecordId": "H1-RPM-034",
+  "rpmReason": "이차방정식 단원의 이차함수와 x축 교점 개수 판별식 유형이다. (49)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수와 x축의 교점 개수 조건에서 부등식을 풀어 자연수 해의 개수를 세는 난이도 2 문항이다. (49)",
+  "how": "x축 교점 2개 조건 판별식 D>0에서 a<49/12를 얻고 자연수 4개를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=3x^2-7x+a$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $a$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D>0$이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $a$의"
+      }
+    ]
+  }
+}

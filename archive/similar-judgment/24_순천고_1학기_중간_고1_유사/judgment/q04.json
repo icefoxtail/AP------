@@ -1,0 +1,61 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "be9fa4b0d284a99b",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "좌변을 정리하면 $ax^2 + bx + (b+3c-2)$이다.",
+    "우변과 계수를 비교하면 $a=3, b=5$이고 $5+3c-2=9 \\implies 3c=6 \\implies c=2$이다. (ax)",
+    "따라서 $a+b+c = 3+5+2 = 10$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "등식 $ax^2+b(x+1)",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식과 미정계수 계수비교법 기본 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 항등식 미정계수법 유형이다. (ax)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "항등식에서 동류항의 계수를 비교하여 미정계수의 합을 구하는 난이도 1 문항이다. (ax)",
+  "how": "항등식의 계수비교법으로 a=3, b=5, c=2를 구하고 합 10을 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $ax^2+b(x+1)+(3c-2)=3x^2+5x+9$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a+b+c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "양변의 동류항의 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "stem",
+        "quote": "$x$의 값에 관계없이 항상 성립하도록 하는"
+      }
+    ]
+  }
+}

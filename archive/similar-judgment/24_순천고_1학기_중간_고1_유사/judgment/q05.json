@@ -1,0 +1,60 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "023e3d7455f16f2d",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "완전제곱식이 되려면 판별식 $D = (k-6)^2 - 4(k+3) = k^2 - 16k + 24 = 0$이어야 한다.",
+    "근과 계수의 관계에 의해 모든 실수 $k$의 값의 곱은 24이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차식 $x^",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차식의 완전제곱식 조건과 판별식 유형이다. (24)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 판별식과 완전제곱식 조건 유형이다. (24)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식이 완전제곱식이 되는 조건인 판별식 D=0을 적용하는 난이도 1 문항이다. (24)",
+  "how": "이차식의 완전제곱식 조건 D=0에서 이차방정식을 세우고 두 근의 곱 24를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차식 $x^2+(k-6)x+k+3$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "모든 실수 $k$의 값의 곱은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "src": "stem",
+        "quote": "완전제곱식이 되도록 하는"
+      }
+    ]
+  }
+}

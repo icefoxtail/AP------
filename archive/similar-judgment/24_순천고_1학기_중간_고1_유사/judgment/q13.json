@@ -1,0 +1,62 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "01f2e840a2f76c35",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$zi = -\\bar{z}$에서 $a=b$이므로 $z = a(1+i)$이다.",
+    "두 번째 식에 대입하여 $a = \\sqrt{2}$를 구하고 $z = \\sqrt{2}(1+i)$이다. (zi)",
+    "$z^2 = 4i, z^4 = -16 = -2^4, z^8 = 2^8$의 규칙으로 $z^{80} = 2^{60}$을 얻는다. (zi)",
+    "따라서 자연수 $n = 60$이다. (zi)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0$이 아닌 복소수 $z$",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수 조건식과 거듭제곱 주기성 지수 결정 유형이다. (zi)",
+  "rpmRecordId": "H1-RPM-025",
+  "rpmReason": "복소수 단원의 i의 거듭제곱 주기성과 복소수 거듭제곱 유형이다. (zi)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 대수적 조건식 해석과 거듭제곱 지수 계산을 결합하는 난이도 2 문항이다. (zi)",
+  "how": "복소수 조건식으로 z를 특정하고 거듭제곱 주기를 분석해 지수 n=60을 구했다. (zi)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$0$이 아닌 복소수 $z$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "z=a+bi$ ($a, b$는 실수)라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "zi=-\\bar{z}"
+      }
+    ]
+  }
+}

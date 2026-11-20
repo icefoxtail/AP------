@@ -1,0 +1,55 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "2f4095c8170374b9",
+  "solvedAnswer": "$(a-b)(b-c)(a-c)$",
+  "solveSteps": [
+    "한 문자 $a$에 대하여 내림차순으로 전개 정리한다. (aligned)",
+    "$a^2(b-c) + a(b^2-c^2+2b-2c) + ...$ 꼴로 정리하고 공통인수 $(b-c)$를 묶어낸다. (aligned)",
+    "남은 이차식을 인수분해하여 최종 $(a-b)(b-c)(a-c)$를 도출한다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "식 $a(a+2)(b-c)+",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "여러 개의 문자를 포함한 식의 내림차순 인수분해 서술형 유형이다. (aligned)",
+  "rpmRecordId": "H1-RPM-015",
+  "rpmReason": "인수분해 단원의 여러 문자를 포함한 식의 인수분해 유형이다. (aligned)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "여러 문자가 포함된 순환 대칭식을 내림차순 정리로 인수분해하는 난이도 3 서술형 문항이다. (aligned)",
+  "how": "문자가 여러 개인 대칭식을 한 문자에 대한 내림차순으로 정리하고 공통인수를 묶었다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "인수분해하는 풀이과정과 답을 상세히"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "인수분해하는 풀이과정과 답을 상세히 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "내림차순",
+        "src": "solution",
+        "quote": "$a$에 대하여 내림차순으로 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

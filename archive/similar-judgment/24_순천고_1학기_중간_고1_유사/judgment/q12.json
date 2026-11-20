@@ -1,0 +1,60 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "bfb872496b200192",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$y = -(x-2a)^2 + 4a^2 - 4a - 5$이므로 최댓값은 $M(a) = 4a^2 - 4a - 5$이다. (ax)",
+    "$M(a) = 4(a - 1/2)^2 - 6$이므로 $M$의 최솟값은 $-6$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=-x^2+4a",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 최대·최소의 이중 적용 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 최댓값의 최솟값 이중 최적화 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 최댓값을 매개변수의 이차함수로 표현하고 다시 최솟값을 구하는 난이도 2 문항이다. (ax)",
+  "how": "x에 대해 꼭짓점을 찾아 최댓값 함수 M(a)를 구하고 a에 대해 다시 최솟값 -6을 구했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-x^2+4ax-4a-5$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$M$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "완전제곱식으로 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 $M$이라 할 때"
+      }
+    ]
+  }
+}

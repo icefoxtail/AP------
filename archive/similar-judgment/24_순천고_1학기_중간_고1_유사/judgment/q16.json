@@ -1,0 +1,62 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "cab6bd3381a35f6a",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$(0,2)$를 지나는 접선 $y=mx+2$의 판별식 $D=(2-m)^2-16=0 \\implies m=6$ 또는 $m=-2$이다.",
+    "$y=-2x^2+k$가 두 직선과 만나지 않으려면 두 연립 판별식이 모두 음수여야 한다. (mx)",
+    "$D_1 < 0 \\implies k < 13/2$, $D_2 < 0 \\implies k < 5/2$이므로 $k < 5/2$이다. (mx)",
+    "정수 $k$의 최댓값은 2이다. (mx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "점 $(0,2)$를 지나고",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 접선과 다른 포물선의 위치 관계 판별식 연립 유형이다. (mx)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 이차함수와 직선의 위치 관계 복합 응용 유형이다. (mx)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선의 방정식을 먼저 구하고 새 포물선과의 위치 관계 판별식을 연립하는 난이도 3 문항이다. (mx)",
+  "how": "접선 기울기 m=6, -2를 구하고 새 포물선과의 불만남 판별식 연립으로 k<5/2에서 최댓값 2를 구했다. (mx)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=x^2+2x+6$의 그래프와 접하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "정수 $k$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "방정식 $x^2+(2-m)x+4=0$의 판별식이 $0$이어야 하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 직선 $l_1$, $l_2$와 모두 만나지 않도록 하는"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "3a082320d7b5b247",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$g(x)$는 일차식이고, $P(x)$를 $g(x)$로 나눈 나머지가 $f(x)+x^2+2x$이므로 이는 상수여야 한다.",
+    "$f(x) = -x^2-2x+C$ 꼴이고 나눗셈 관계식을 연립하여 $C$와 $g(x)$를 결정한다.",
+    "확정된 다항식에 값을 대입하여 계산한다. (x)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차다항식 $",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식 나눗셈의 차수 관계와 나머지정리 역추론 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 고차식 나눗셈 차수 관계와 나머지 유형이다. (x)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "나눗셈에서 나머지의 차수 제약 조건을 역으로 이용해 다항식을 추론하는 난이도 3 문항이다. (x)",
+  "how": "나머지의 차수 조건을 이용해 f(x)의 최고차항을 결정하고 나눗셈 항등식을 풀어 값을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차다항식 $f(x)$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지는 $g(x)$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "차수",
+        "src": "solution",
+        "quote": "f(x)$가 이차다항식이므로 $g(x)$는 일차 이하의 다항식이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "다음 조건을 만족시킨다."
+      }
+    ]
+  }
+}

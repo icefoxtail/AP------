@@ -1,0 +1,62 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "e0ceb71a95ab9f43",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "분수식 음수 제곱근 조건에서 $x+2 > 0, y+2 < 0 \\implies x > -2, y < -3$이다.",
+    "곱식 음수 제곱근 조건에서 $x-2 \\le 0, y-3 \\le 0$이다.",
+    "종합하면 $-2 < x \\le 2$이고 $y < -2$이다.",
+    "절댓값 기호를 풀어 식을 간단히 정리한다. (x)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수 $x$, $y$가 $\\",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "음수의 제곱근의 성질과 식의 간단화 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-022",
+  "rpmReason": "복소수 단원의 음수의 제곱근 계산 규칙 유형이다. (x)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수의 제곱근 성질로부터 부등식 범위를 이끌어내고 절댓값을 푸는 난이도 2 문항이다. (x)",
+  "how": "음수의 제곱근 곱셈과 나눗셈 부호 규칙으로 변수 범위를 확정하고 식을 정리했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x$, $y$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "solution",
+        "quote": "x\\ne -2$)가 성립하려면 분자는 양수이고 분모는 음수여야 하므로"
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "분자는 양수이고 분모는 음수여야 하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "solution",
+        "quote": "분자는 양수이고"
+      }
+    ]
+  }
+}

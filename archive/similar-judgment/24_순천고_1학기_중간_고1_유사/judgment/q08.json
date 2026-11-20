@@ -1,0 +1,55 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "4601ba9eeb6b496f",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$z = a+bi$라 두면 $z\\bar{z} = a^2+b^2, z-\\bar{z} = 2bi$이다. (12)",
+    "$a^2+b^2 + 4bi = 9 - 12i$에서 $4b = -12 \\implies b = -3$이다.",
+    "$a^2 + 9 = 9 \\implies a = 0$이므로 $z = -3i$이다. (12)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$z\\bar{z}+2(z-\\",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 연산과 복소수 상등 미정계수 결정 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-024",
+  "rpmReason": "복소수 단원의 켤레복소수 연산과 복소수 상등 유형이다. (12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수와 켤레복소수의 연산 등식에서 복소수 상등을 적용하는 난이도 2 문항이다. (12)",
+  "how": "z=a+bi 대입 후 복소수 상등으로 b=-3, a=0을 구해 z=-3i를 도출했다. (12)",
+  "slots": {
+    "given": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "단, $i=\\sqrt{-1}$, $\\bar{z}$는 $z$의 켤레복소수이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "만족시키는 복소수 $z$를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "z=a+bi$ ($a, b$는 실수)라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

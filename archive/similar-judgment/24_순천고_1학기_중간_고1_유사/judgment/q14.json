@@ -1,0 +1,62 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "c2d70f4800695531",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "양변이 항등식이고 $a \\ne c$이므로 $x^2+bx+16 = (x-c)^2, x^2+dx+9 = (x-a)^2$이다.",
+    "$c^2 = 16 \\implies c = 4$ ($c>0$), $a^2 = 9 \\implies a = 3$ ($a>0$)이다. (bx)",
+    "$b = -2c = -8, d = -2a = -6$이다. (bx)",
+    "따라서 $a+b+c+d = 3 - 8 + 4 - 6 = -7$이다. (bx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "등식 $(x-a)^2(x^2",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식의 인수 구조 분석과 미정계수 결정 유형이다. (bx)",
+  "rpmRecordId": "H1-RPM-008",
+  "rpmReason": "항등식과 나머지정리 단원의 항등식 계수비교와 인수 구조 유형이다. (bx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사차다항식 항등식에서 인수 구조의 대칭성으로 미정계수를 결정하는 난이도 2 문항이다. (bx)",
+  "how": "항등식의 인수 분해 일치 구조로부터 a=3, c=4, b=-8, d=-6을 확정해 합 -7을 구했다. (bx)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $(x-a)^2(x^2+bx+16)=(x-c)^2(x^2+dx+9)$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a+b+c+d$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "양변이 항등식이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "$x$에 대한 항등식이 되도록 하는"
+      }
+    ]
+  }
+}

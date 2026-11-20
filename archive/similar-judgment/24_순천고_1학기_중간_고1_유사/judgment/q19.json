@@ -1,0 +1,61 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "697b382a76a21d37",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$z-2i = a$ (실수)이므로 $z = a+2i$이고 $f(a) = 36$이다.",
+    "$3z-2 = (3a-2)+6i$가 $f(x)=0$의 근이면 켤레근 $(3a-2)-6i$도 근이다. (36)",
+    "두 근의 곱과 차 조건을 연립하여 $a$와 $f(x)$를 확정한다. (36)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수가 아닌 복소수 $z$와",
+  "standardUnitKey": "H15-SA-06",
+  "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
+  "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "실계수 이차방정식의 켤레복소수 근과 미정계수 결정 유형이다. (36)",
+  "rpmRecordId": "H1-RPM-030",
+  "rpmReason": "이차방정식의 근과 계수 단원의 켤레근 성질과 이차방정식 결정 유형이다. (36)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수 조건식과 실계수 이차방정식의 켤레근 성질을 결합하는 난이도 3 심화 문항이다. (36)",
+  "how": "실계수 이차방정식의 켤레복소수 근 성질과 함수값 조건을 연립하여 f(x)를 결정했다. (36)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "실수가 아닌 복소수 $z$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "src": "stem",
+        "quote": "이차식 $f(x)$가 다음 조건을 만족시킨다."
+      }
+    ],
+    "method": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "방정식 $f(x)=36$의 한 실근이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "모든 계수가 실수인"
+      }
+    ]
+  }
+}

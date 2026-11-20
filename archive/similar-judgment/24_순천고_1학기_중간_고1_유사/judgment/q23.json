@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "b9a351eecd66a5bf",
+  "solvedAnswer": "$\\dfrac{9\\sqrt{3}}{2}\\text{ m}^2$",
+  "solveSteps": [
+    "정삼각형의 높이는 $3\\sqrt{3}$이다. 직사각형의 가로를 $x$, 세로를 $y$라 하자. (6)",
+    "닮음비로부터 $y = \\sqrt{3}(3 - x/2)$ 관계식을 유도한다. (6)",
+    "넓이 $S(x) = xy = \\sqrt{3}x(3 - x/2) = -\\dfrac{\\sqrt{3}}{2}(x-3)^2 + \\dfrac{9\\sqrt{3}}{2}$이다. (6)",
+    "따라서 $x=3$일 때 넓이의 최댓값은 $\\dfrac{9\\sqrt{3}}{2}\\text{ m}^2$이다. (6)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "한 변의 길이가 $6\\tex",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "도형의 닮음과 이차함수의 최대·최소 모델링 서술형 유형이다. (6)",
+  "rpmRecordId": "H1-RPM-038",
+  "rpmReason": "이차함수 단원의 도형 조건식 활용 이차함수 최대·최소 유형이다. (6)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "정삼각형 내접 직사각형의 닮음비를 이용해 넓이 함수를 세우고 최댓값을 구하는 난이도 3 서술형 문항이다. (6)",
+  "how": "도형 닮음으로 가로와 세로의 관계식을 세워 넓이를 이차함수로 모델링하고 최댓값을 구했다. (6)",
+  "slots": {
+    "given": [
+      {
+        "term": "정삼각형",
+        "src": "stem",
+        "quote": "한 변의 길이가 $6\\text{ m}$인 정삼각형 모양의 천막의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "출입문의 넓이의 최댓값을 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음비",
+        "src": "solution",
+        "quote": "원래 정삼각형의 닮음비가",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 출입문을 만들려고 한다."
+      }
+    ]
+  }
+}
