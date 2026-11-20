@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "9",
+      "-12",
+      "2"
+    ],
+    "domain": [
+      1,
+      5
+    ],
+    "viewport": [
+      0,
+      6,
+      -11,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": -9
+      },
+      {
+        "id": "P",
+        "x": 1,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (3, -9)가 y=-3x 위에 있고 점 (1, -1)을 지나는 y=2(x-3)^2-9",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (3, -9), 점 (1, -1)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 직선 y=-3x의 관계"
+  ]
+}

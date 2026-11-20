@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -5,
+      5
+    ],
+    "viewport": [
+      -6,
+      6,
+      -5,
+      55
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P1",
+        "x": 2,
+        "y": 12
+      },
+      {
+        "id": "P2",
+        "x": 4,
+        "y": 48
+      },
+      {
+        "id": "P3",
+        "x": -4,
+        "y": 48
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 (2, 12)를 지나 a=3으로 결정된 y=3x^2과 k=±4일 때 (k, 48)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=3x^2, (2, 12), (k, 48)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "점 (2, 12)와 대칭점 (±4, 48)"
+  ]
+}

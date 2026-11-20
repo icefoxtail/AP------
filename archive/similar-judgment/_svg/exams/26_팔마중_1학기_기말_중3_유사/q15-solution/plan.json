@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-2x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-29",
+          "16",
+          "-2"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "y=-2(x-4)^2+3"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (0, 0)에서 (4, 3)으로 이동한 평행이동 m=4, n=3, m+n=7",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "평행이동 m=4, n=3",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (4, 3)으로의 이동 벡터"
+  ]
+}

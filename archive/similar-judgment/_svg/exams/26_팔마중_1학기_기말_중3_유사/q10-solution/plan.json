@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "0",
+      "0",
+      "5"
+    ],
+    "domain": [
+      -2,
+      2
+    ],
+    "viewport": [
+      -3,
+      3,
+      -2,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "O",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=5x^2은 a=5>0으로 아래로 볼록하고 y축을 축으로 함",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=5x^2, a=5",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (0, 0)과 y축 대칭 개형"
+  ]
+}

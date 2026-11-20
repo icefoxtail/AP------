@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -7,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=3x^2을 y축 방향으로 평행이동한 y=ax^2+b의 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=ax^2+b 평행이동",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (0, -5)의 위치"
+  ]
+}

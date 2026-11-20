@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "4",
+      "-1"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -2,
+      11
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": -1,
+        "y": 0
+      },
+      {
+        "id": "B",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "id": "C",
+        "x": 2,
+        "y": 9
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "포물선 y=-x^2+ax+b와 x절편 A, B, 꼭짓점 C로 이루어진 삼각형 ABC",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "x절편 A, B, 꼭짓점 C",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 ABC의 세 꼭짓점"
+  ]
+}

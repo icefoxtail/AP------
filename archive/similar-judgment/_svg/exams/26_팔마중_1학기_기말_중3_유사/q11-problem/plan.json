@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=ax^2"
+      },
+      {
+        "id": "c3",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2/3"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=2/3x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "세 포물선 y=4x^2, y=ax^2, y=2/3x^2의 폭 비교",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=4x^2, y=ax^2, y=2/3x^2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "세 포물선의 상대적 폭"
+  ]
+}

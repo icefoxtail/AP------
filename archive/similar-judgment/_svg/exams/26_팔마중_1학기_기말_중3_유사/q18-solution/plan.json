@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "8",
+      "6",
+      "1"
+    ],
+    "domain": [
+      -5,
+      -1
+    ],
+    "viewport": [
+      -6,
+      0,
+      -2,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -3,
+        "y": -1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a=-3일 때 꼭짓점 (-3, -1)이 제3사분면에 위치함, a<-2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (a, a+2), a<-2",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "제3사분면에 위치한 꼭짓점"
+  ]
+}

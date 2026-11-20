@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-5",
+      "0",
+      "3"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -7,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 0,
+        "y": -5
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (0, -5)로 이동하여 a=3, b=-5, a+b=-2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (0, -5), a=3, b=-5",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 꼭짓점과 식"
+  ]
+}

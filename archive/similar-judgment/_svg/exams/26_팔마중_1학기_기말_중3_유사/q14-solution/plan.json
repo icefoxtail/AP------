@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "12",
+          "-12",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "4"
+        ],
+        "label": "y=3(x-2)^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "0",
+          "-3"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=-3x^2+2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차항 계수의 절댓값이 3으로 같아 폭이 일치하는 두 포물선",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "|3|=|-3|=3 폭 일치",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선의 동일한 폭 확인"
+  ]
+}

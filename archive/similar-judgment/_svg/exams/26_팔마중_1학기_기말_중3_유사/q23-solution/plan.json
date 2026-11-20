@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-16",
+      "-16",
+      "-4"
+    ],
+    "domain": [
+      -4,
+      1
+    ],
+    "viewport": [
+      -5,
+      2,
+      -20,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": -3,
+        "y": -4
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": -16
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (-2, 0)과 점 (-3, -4)를 지나는 y=-4(x+2)^2의 y절편 -16",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (-2, 0), 점 (-3, -4), y절편 -16",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 y절편 (0, -16)"
+  ]
+}

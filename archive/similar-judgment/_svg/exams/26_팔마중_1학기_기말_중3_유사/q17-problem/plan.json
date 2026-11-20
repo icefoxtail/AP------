@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-3",
+      "-2",
+      "1"
+    ],
+    "domain": [
+      -2,
+      4
+    ],
+    "viewport": [
+      -3,
+      5,
+      -5,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 1,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "아래로 볼록하고 축이 y축 오른쪽, y절편이 음수인 포물선 y=ax^2+bx+c",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0, b<0, c<0",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "계수의 부호 결정 개형"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=ax^2"
+      },
+      {
+        "id": "c3",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2/3"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=2/3x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "2/3 < a < 4 범위를 만족하는 y=ax^2의 위치와 폭",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2/3 < a < 4",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "계수 a의 범위 2/3 < a < 4"
+  ]
+}
