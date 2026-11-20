@@ -1,0 +1,67 @@
+{
+  "qid": 24,
+  "itemFingerprint": "b4d2b70bb991294b",
+  "solveSteps": [
+    "직각삼각형 ABP와 ADQ에서 각 APB = 각 AQD = 90도, AB = AD, 각 B = 각 D = 68도이므로 RHA 합동이다.",
+    "합동에 의해 대응변 AP = AQ 이므로 삼각형 APQ는 이등변삼각형이다.",
+    "마름모의 이웃하는 내각의 합은 180도이므로 각 C = 180 - 68 = 112도이다.",
+    "사각형 APCQ 내각의 합에서 각 PAQ = 360 - (90 + 90 + 112) = 68도이다.",
+    "따라서 이등변삼각형의 밑각 각 AQP = (180 - 68) / 2 = 112 / 2 = 56도이다."
+  ],
+  "solvedAnswer": "$56^\\circ$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "마름모 $ABCD$의 꼭짓점 $A$에서 변 $BC$, 변 $CD$에 내린",
+  "rpmRecordId": "M2-RPM-196",
+  "rpmReason": "마름모 ABCD의 변과 대각 성질을 이용해 삼각형의 합동과 각을 계산하므로 각 사각형의 성질(M2-RPM-196)에 해당한다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "마름모 ABCD의 변과 각 B = 68도 성질 및 각 AQP = 56도 계산을 다루므로 특수한 사각형의 성질(TPL_SPECIAL_QUADRILATERALS)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "RHA 합동으로 AP = AQ 를 보이고 사각형 APCQ 에서 각 PAQ = 68도를 구해 각 AQP = 56도를 도출하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$의 꼭짓점 $A$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle AQP$의 크기를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "이므로 $\\triangle APQ$는 이등변삼각형이다.",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ABP 합동 ADQ(RHA)로 AP = AQ 와 각 PAQ = 68도를 얻고 이등변삼각형 밑각으로 각 AQP = 56도를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

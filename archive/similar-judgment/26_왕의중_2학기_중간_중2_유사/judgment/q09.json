@@ -1,0 +1,64 @@
+{
+  "qid": 9,
+  "itemFingerprint": "6d4e5f6d7f576041",
+  "solveSteps": [
+    "1. 평행사변형 ABCD 에서 대변 AD 와 BC 가 평행하므로 엇각에 의해 각 FBC = 각 AFB = 44 도 이다.",
+    "2. 선분 BF 가 각 B 의 이등분선이므로 각 B = 2 * 44 = 88 도 이다.",
+    "3. 평행사변형에서 이웃한 두 내각의 합은 180 도 이므로 각 B + 각 C = 180 도 이다.",
+    "4. 따라서 각 C = 180 - 88 = 92 도 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "평행사변형 $ABCD$에서 $\\angle B$의 이등분선이 변 $AD$와 만나는 점을 $F$라고 하자.",
+  "rpmRecordId": "M2-RPM-190",
+  "rpmReason": "평행사변형 ABCD 에서 각 이등분선과 엇각 44도로 각 B = 88도를 얻고 이웃한 각 합으로 각 C = 92도를 구하는 변·각 성질 문항이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_PROPERTIES",
+  "typeReason": "평행사변형 ABCD 의 평행선 엇각 각 FBC = 44도와 이웃한 각의 합 180도 성질을 이용해 각 C = 92도를 계산하는 사각형 성질 문제이므로 PT_QUADRILATERAL_PROPERTIES를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "엇각으로 각 B = 88도를 구하고 180 - 88 = 92도를 찾는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 $\\angle B$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "$\\angle B$의 이등분선이 변 $AD$와"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "이므로 엇각에 의해 $\\angle FBC = \\angle AFB = 44^\\circ$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "평행사변형 ABCD 에서 엇각으로 각 FBC = 44도를 얻어 각 B = 88도이고, 각 C = 180 - 88 = 92도로 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
