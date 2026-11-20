@@ -579,7 +579,7 @@ test('all changed browser scripts use new cache versions', () => {
     ['archive2-quick-pools.js', '20261120-diagnostic-4'],
     ['archive2-unit-tree.js', '20261117-middle-parent-1'],
     ['archive2-similar.js', '20261110-similar-1'],
-    ['archive2-unified-units.js', '20261117-middle-parent-1'],
+    ['archive2-unified-units.js', '20261119-unit-hint-1'],
   ])
     assert.match(html, new RegExp(file.replace('.', '\\.') + '\\?v=' + version));
   assertWorkspaceScriptVersions(assert);
