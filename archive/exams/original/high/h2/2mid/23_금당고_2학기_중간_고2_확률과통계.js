@@ -130,7 +130,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 4칸, 세로 2칸 격자 도로망에서 A는 왼쪽 아래, B는 오른쪽 위, P는 가운데 교차점이다. A에서 P까지와 P에서 B까지의 경로 수가 각각 3으로 표시되어 있다.",
+    "solutionImageCaption": "A에서 P까지는 오른쪽 2번, 위쪽 1번이므로 3!/(2!1!)=3가지이다. P에서 B까지도 오른쪽 2번, 위쪽 1번이므로 3가지이다. P를 반드시 지나므로 곱의 법칙으로 3×3=9가지이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
