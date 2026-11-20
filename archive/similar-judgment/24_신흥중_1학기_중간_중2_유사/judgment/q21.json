@@ -1,0 +1,56 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "aaa526ed75daa65c",
+  "solvedAnswer": "$\\dfrac{4}{3}$",
+  "solveSteps": [
+    "1단계: 분모 3으로 통분하면 $\\frac{3(2x+y) - (3x-y)}{3} = \\frac{6x + 3y - 3x + y}{3}$이다. (ab)",
+    "2단계: 동류항을 정리하면 $\\frac{3x + 4y}{3} = x + \\frac{4}{3}y$이다. (ab)",
+    "3단계: $x$의 계수 $a = 1$, $y$의 계수 $b = 4/3$이다. (ab)",
+    "4단계: 따라서 $ab = 1 \\times 4/3 = 4/3$이다. (ab)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3번] $2x+y",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 사칙연산과 동류항 계수 결정 서술형 유형이다. (ab)",
+  "rpmRecordId": "M2-RPM-012",
+  "rpmReason": "식의 계산 단원의 다항식 덧셈과 뺄셈 동류항 정리에 일치한다. (ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식의 분수식 통분과 동류항 정리를 단계별로 서술하는 난이도 2 문항이다. (ab)",
+  "how": "통분하여 괄호를 풀고 동류항을 모아 각 문자의 계수 곱을 계산했다. (ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$2x+y - \\dfrac{3x-y}{3}$ 을 계산한 식에서 $x$의 계수를 $a$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$ab$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "공통분모 $3$으로 통분하여 분자를 전개한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

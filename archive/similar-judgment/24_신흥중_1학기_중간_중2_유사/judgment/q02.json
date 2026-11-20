@@ -1,0 +1,56 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "12b62bc12cbf69c7",
+  "solvedAnswer": "②, ④",
+  "solveSteps": [
+    "기약분수로 약분했을 때 분모의 소인수가 $2$ 또는 $5$뿐이어야 유한소수이다. (21)",
+    "② $\\frac{21}{2^3 \\times 3 \\times 7} = \\frac{1}{2^3}$로 분모 소인수가 2뿐이므로 유한소수이다. (21)",
+    "④ $\\frac{27}{2^2 \\times 3^3 \\times 5} = \\frac{1}{2^2 \\times 5}$로 분모 소인수가 2와 5뿐이므로 유한소수이다. (21)",
+    "따라서 복수 정답 ②, ④이다. (21)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 분수 중에서 유한소수로",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "기약분수 분모의 소인수 조건으로 유한소수를 판별하는 유형이다. (21)",
+  "rpmRecordId": "M2-RPM-001",
+  "rpmReason": "유리수와 순환소수 단원의 유한소수 판별 조건에 일치한다. (21)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분모 소인수 분해와 약분을 통해 유한소수를 찾는 표준 난이도 2 문항이다. (21)",
+  "how": "각 분수를 기약분수로 약분하고 분모의 소인수를 확인하여 유한소수를 선별했다. (21)",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "다음 분수 중에서 유한소수로 나타낼 수 있는 것은? (정답 2개)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "유한소수로 나타낼 수 있는 것은? (정답 2개)"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "기약분수로 나타내었을 때 분모의 소인수가 $2$ 또는 $5$뿐이면 유한소수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,1238 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "24_신흥중_1학기_중간_중2_유사-candidate-v1",
+  "examUid": "24_신흥중_1학기_중간_중2_유사",
+  "sourceArchiveFile": "archive/exams/similar/middle/m2/1mid/24_신흥중_1학기_중간_중2_유사.js",
+  "expectedSourceBlobSha1": "2066012e97fe3ac7b99ac6f801ae9daa8523412c",
+  "expectedQuestionCount": 23,
+  "approval": {
+    "type": "CANDIDATE_CREATION_GATE",
+    "metadataReviewed": false,
+    "reviewStatus": "review_required",
+    "reviewPassCount": 0,
+    "evidenceRefs": []
+  },
+  "registryChanges": [],
+  "items": [
+    {
+      "questionUid": "qid_v1_32148106ee0653dea3210b6b73bead1a4244f199ee2e21c9e250287530f274d8",
+      "sourceOrdinal": 1,
+      "sourceQid": 1,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "FRACTION_DECIMAL_REAL_LIFE_HISTORY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REAL_WORLD_MATH"
+        ],
+        "conditionKeys": [
+          "COND_NONE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 1,
+        "variationType": "CONTEXT",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 1,
+          "variationType": "CONTEXT",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "야구 타율은 소수로 표현되므로 선지 ①의 분수 진술 오류를 판정한다.",
+      "decisiveStep": "야구 타율의 소수 표기 실생활 사례 확인",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "분수와 소수의 기본 개념과 실생활 쓰임을 대조하는 1단계 상식 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_DECIMAL_REAL_WORLD_CONTEXT",
+        "templateKey": "TPL_FRACTION_DECIMAL_APPLICATION_AUDIT",
+        "why": "분수와 소수의 실생활 활용과 역사적 맥락을 점검하는 개념 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_4bc97c450a0f5863ab36eb5d549d3e3146c2fe7c4aca369ff3d3a2c31f0fdbb6",
+      "sourceOrdinal": 2,
+      "sourceQid": 2,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "FINITE_DECIMAL_DETERMINATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REDUCING_FRACTION"
+        ],
+        "conditionKeys": [
+          "COND_IRREDUCIBLE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 2,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 2,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "기약분수 약분 후 분모에 2와 5 이외의 소인수가 없는 ②와 ④를 선별한다.",
+      "decisiveStep": "21/(2^3*21)=1/2^3과 27/(2^2*27*5)=1/(2^2*5)의 분모 소인수 확인",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "소인수 약분 과정을 꼼꼼히 거쳐 2개의 정답을 고르는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FINITE_DECIMAL_TEST",
+        "templateKey": "TPL_REPEATING_DECIMAL_FACTOR_SEARCH",
+        "why": "약분을 거쳐 분모 소인수 2, 5 조건을 만족하는 분수를 모두 고르는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_d148683579e2df51e339591f447b7b80102711c52525814b4101d4cb453b9a9a",
+      "sourceOrdinal": 3,
+      "sourceQid": 3,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_NOTATION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REPEATING_NOTATION"
+        ],
+        "conditionKeys": [
+          "COND_DECIMAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 3,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 3,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "순환마디 518과 양 끝 점 표기 40.(5)1(8)이 모두 일치하는 ③을 선별한다.",
+      "decisiveStep": "최소 순환마디 518 식별 및 양 끝 점 표기 규칙 대조",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "순환마디와 점 찍기 규칙을 직접 대조하는 1단계 기본 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_NOTATION",
+        "templateKey": "TPL_REPEATING_DOT_NOTATION",
+        "why": "순환소수의 순환마디와 점 표기법의 정확성을 판정하는 기본 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_270719e6930b7e6bb77f68c2abcbaeea3823c72b39bcb6559e7721f3aef4dbe3",
+      "sourceOrdinal": 4,
+      "sourceQid": 4,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_NTH_DIGIT",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_DIVISION_REMAINDER"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 4,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 4,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "8/27 = 0.(2)9(6)의 순환마디 296에서 50 = 3*16+2의 나머지 2를 적용해 두 번째 숫자 9를 확정한다.",
+      "decisiveStep": "주기 3에 대한 50의 나머지 2 산출 및 두 번째 숫자 9 결정",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "순환마디 길이 계산 후 나머지 정리를 적용하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_DIGIT_CYCLE",
+        "templateKey": "TPL_REPEATING_DECIMAL_NTH_DIGIT_ARITHMETIC",
+        "why": "나눗셈을 거쳐 순환소수의 자릿수 나머지를 통해 특정 자릿수를 구하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_0159bd6f12c508eef431cb9b43112b82975ef84b92232a864c0ba0de9420e1c6",
+      "sourceOrdinal": 5,
+      "sourceQid": 5,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "RATIONAL_NUMBER_DECIMAL_THEORY_AUDIT",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_NUMBER_CLASSIFICATION"
+        ],
+        "conditionKeys": [
+          "COND_RATIONAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 5,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 5,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "소수 분류 체계에서 순환소수의 유리수성(①)과 기약분수 유한소수 조건(⑤)을 참으로 식별한다.",
+      "decisiveStep": "선지 ①과 ⑤의 수학적 정의 일치 확인",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "수 체계의 정의와 성질을 엄밀하게 비교 검토하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_RATIONAL_DECIMAL_THEORY_CHECK",
+        "templateKey": "TPL_RATIONAL_DECIMAL_TRUE_FALSE_SET",
+        "why": "유리수와 소수의 정의, 기약분수의 소인수 조건을 종합 검증하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_f094c58f39f20af2f3e7766589d41cede3d244fc52e1a0594ab83392cbb25785",
+      "sourceOrdinal": 6,
+      "sourceQid": 6,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_SUBTRACTION_INTEGER",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_DECIMAL_PLACE_VALUE"
+        ],
+        "conditionKeys": [
+          "COND_DECIMAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 6,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 6,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "소수점 아래 숫자가 .247247...로 일치하는 ㉣과 ㉠의 차가 정수 247임을 확인한다.",
+      "decisiveStep": "소수점 아래 배열 일치 쌍 ㉣-㉠ 식별",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "자릿수 이동에 따른 소수점 아래 배열 패턴을 대조하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_DECIMAL_CONVERSION_PRINCIPLE",
+        "templateKey": "TPL_REPEATING_DECIMAL_SUBTRACTION_CHOICE",
+        "why": "순환소수의 분수 변환 원리인 소수 부분 일치 뺄셈식을 고르는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_865351d6fcab2ff7feab3914f30645e7eb450d61098b39eecd312b459ee87939",
+      "sourceOrdinal": 7,
+      "sourceQid": 7,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "EXPONENT_LAWS_BASIC_RULES",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_EXPONENT_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_MONOMIAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 7,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 7,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "(-2x^2 y)^3 = -8x^6 y^3의 부호와 지수 계산이 정확한 선지 ④를 확정한다.",
+      "decisiveStep": "거듭제곱 부호 (-2)^3=-8 및 지수 6, 3 일치 확인",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "지수법칙 공식을 보기별로 직접 대조하는 1단계 기본 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_EXPONENT_LAW_AUDIT",
+        "templateKey": "TPL_EXPONENT_LAWS_TRUE_FALSE_SET",
+        "why": "기본 지수법칙 공식의 올바른 적용을 점검하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_7931635a45a3b9fe8d506fb4ce005e0a01be1158dde8d6b96aa92c9e272cc874",
+      "sourceOrdinal": 8,
+      "sourceQid": 8,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "MONOMIAL_FRACTION_POWER_EXPANSION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_EXPONENT_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 8,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 8,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "x^(3a)=x^6에서 a=2, y^(9b)=y^27에서 b=3을 구하여 a+b=5를 산출한다.",
+      "decisiveStep": "3a=6, 9b=27로부터 a=2, b=3 산출",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "거듭제곱 전개 후 각 문자의 지수를 일차방정식으로 해결하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_MONOMIAL_EXPONENT_COMPARE_EQUATION",
+        "templateKey": "TPL_MONOMIAL_POWER_COEFFICIENT_MATCH",
+        "why": "분수 꼴 거듭제곱을 전개해 미지 지수를 구하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_9bda601d5c431ffc9bcbc4d1d1647e2a4636b60a4c7254d1db698016961cff10",
+      "sourceOrdinal": 9,
+      "sourceQid": 9,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "FACTORIAL_PRIME_FACTOR_EXPONENT",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 9,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 9,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "16까지의 2, 4, 8, 16의 배수의 개수를 합산하여 a = 8+4+2+1 = 15를 구한다.",
+      "decisiveStep": "2의 거듭제곱 배수 개수 8, 4, 2, 1 합산",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "2의 거듭제곱 배수의 포함 관계를 고려하여 소인수를 계수하는 3단계 심화 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_CONSECUTIVE_PRODUCT_PRIME_EXPONENT",
+        "templateKey": "TPL_PRODUCT_PRIME_FACTOR_COUNT",
+        "why": "연속한 자연수의 곱에서 특정 소인수의 총 거듭제곱 지수를 세는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_12fe5c57b1bb7fcbf84dfd036f89aae7cad5d69d5ed92cc7949213e110246b16",
+      "sourceOrdinal": 10,
+      "sourceQid": 10,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "POWERS_OF_TEN_SCIENTIFIC_FORM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 10,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 10,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "5^3 * 20^5 = 2^10 * 5^8 = 4 * 10^8로 변형하여 a=4, n=8, a+n=12를 구한다.",
+      "decisiveStep": "2^10 * 5^8 = 4 * 10^8 변형 후 a=4, n=8 도출",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "20의 소인수분해 후 2와 5의 지수를 묶는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_EXPONENT_SCIENTIFIC_NOTATION",
+        "templateKey": "TPL_POWERS_OF_TEN_REPRESENTATION",
+        "why": "소인수분해와 지수법칙을 활용해 a * 10^n 꼴로 정리하고 계수를 합산하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_3ae996eccdaf0af5c84c0609c6c9f577379352da5d3a6be2f666cdfd02d26553",
+      "sourceOrdinal": 11,
+      "sourceQid": 11,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "EXPONENT_BASE_REDUCTION_AND_SUM",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION",
+          "CC_DISTRIBUTIVE_LAW"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 11,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 11,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "소인수분해로 a=9를 얻고, 거듭제곱 합 묶기로 b=6을 구해 a-b=3을 산출한다.",
+      "decisiveStep": "a=9와 b=6 도출 후 차 3 계산",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "두 가지 서로 다른 지수 변형 기법을 각각 수행하여 차를 구하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_EXPONENT_COMPLEX_SIMPLIFY",
+        "templateKey": "TPL_EXPONENT_REDUCTION_SUM_DIFFERENCE",
+        "why": "밑이 다른 지수식의 약분과 동일 거듭제곱 덧셈의 곱셈 변환을 결합한 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_fb7d15eba244097d502ef9d024df8ca269cca09d33168e64c37f13d5396d1a8f",
+      "sourceOrdinal": 12,
+      "sourceQid": 12,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "MONOMIAL_ARITHMETIC_MIXED",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_MONOMIAL_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_MONOMIAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 12,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 12,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "(-3x^3)^2 = 9x^6 전개 후 -36x^8 / 6x^5 = -6x^3을 계산한다.",
+      "decisiveStep": "거듭제곱 9x^6 계산 후 -36x^8 / 6x^5 = -6x^3 산출",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호와 거듭제곱 순서를 정확히 지켜 계산하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_MONOMIAL_MIXED_OPERATION",
+        "templateKey": "TPL_MONOMIAL_POWER_MULT_DIV_SIMPLIFY",
+        "why": "거듭제곱, 곱셈, 나눗셈이 결합된 단항식 혼합 계산 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_73b36021304941b8d996893263816db65ce06ba5d2054d903d408691a357161b",
+      "sourceOrdinal": 13,
+      "sourceQid": 13,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-EXPONENT_LAW",
+        "subUnit": "지수법칙",
+        "conceptClusterKey": "MONOMIAL_EQUATION_UNKNOWN_FIND",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_MONOMIAL_DIVISION"
+        ],
+        "conditionKeys": [
+          "COND_MONOMIAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 13,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 13,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "A = 6x^2 y * (-2xy^3) / (3x^2 y) = -12x^3 y^4 / (3x^2 y) = -4xy^3을 계산한다.",
+      "decisiveStep": "역연산 식 A = -12x^3 y^4 / (3x^2 y) 세우기 및 -4xy^3 산출",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "등식의 성질을 이용해 미지 식을 고립시키고 나눗셈을 수행하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_MONOMIAL_UNKNOWN_SOLVE",
+        "templateKey": "TPL_MONOMIAL_EQUATION_ISOLATION",
+        "why": "단항식의 곱과 몫으로 이루어진 등식에서 특정 다항식을 구하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_67e737384c5f28c2c0cc13507e42c9aa3cd8ad16b651d6ad8628b7985dd9a03d",
+      "sourceOrdinal": 14,
+      "sourceQid": 14,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_VOCABULARY_AND_STRUCTURE",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_SIMPLIFY"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 14,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 14,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "식 x^2 + (1/2)x - 4로 정리한 후 x의 계수가 1/2임을 판정한다.",
+      "decisiveStep": "식 정리 x^2 + (1/2)x - 4 도출 후 x의 계수 1/2 확인",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "다항식의 기본 용어 정의를 동류항 정리와 함께 대조하는 1단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_TERMS_COEFFICIENTS",
+        "templateKey": "TPL_POLYNOMIAL_COMPONENT_AUDIT",
+        "why": "다항식을 정리하여 구성 요소(항, 계수, 차수, 상수항)의 정확성을 평가하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_b5abeb2478f9d2e8ac2300aa1e877b662287654d06da529cee3bbd07a403510b",
+      "sourceOrdinal": 15,
+      "sourceQid": 15,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_ERROR_RECOVERY_QUADRATIC",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_ADD_SUBTRACT"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 15,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 15,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "A = (7x^2-x+2)-(3x^2-4x+5) = 4x^2+3x-3을 구하고, A-(3x^2-4x+5) = x^2+7x-8을 계산한다.",
+      "decisiveStep": "A=4x^2+3x-3 도출 후 바른 차 x^2+7x-8 산출",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "다항식의 뺄셈 전개와 괄호 처리를 2회 반복하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_MISTAKE_CORRECTION",
+        "templateKey": "TPL_POLYNOMIAL_WRONG_OPERATION_RECOVER",
+        "why": "덧셈과 뺄셈을 혼동하여 잘못 계산한 식에서 올바른 결과를 구하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_cd735e6c2a4078fce0450994ef6b9362104fc65b38b332f8869d5f4bbcd6e472",
+      "sourceOrdinal": 16,
+      "sourceQid": 16,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_NESTED_BRACKETS_SIMPLIFY",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_DISTRIBUTIVE_LAW"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 16,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 16,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "중괄호 안 5x-5y-4를 정리한 후 2x-(5x-5y-4) = -3x+5y+4를 계산한다.",
+      "decisiveStep": "중괄호 내부 5x-5y-4 도출 및 최종 부호 분배",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부호 규칙에 주의하여 괄호를 순서대로 푸는 1단계 기본 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_NESTED_PARENTHESES",
+        "templateKey": "TPL_POLYNOMIAL_MULTIPLE_BRACKET_EVAL",
+        "why": "소괄호와 중괄호를 순차적으로 풀며 동류항을 결합하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_4f52df00d5e9e18628120943a132e9818cd2734d4c9cabfb8198c65274389b62",
+      "sourceOrdinal": 17,
+      "sourceQid": 17,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "INEQUALITY_SOLUTION_TEST",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_BASIC"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 17,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 17,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "x=3을 각 보기에 대입하여 부등호 성립 여부를 확인해 ㄴ, ㄹ을 고른다.",
+      "decisiveStep": "ㄴ(7>=7 참)과 ㄹ(7<=8 참), ㄷ(-1>-1 거짓) 판정",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부등식의 해의 정의에 따라 대입 계산하는 1단계 기본 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITY_SOLUTION_CHECK",
+        "templateKey": "TPL_INEQUALITY_VALUE_MEMBERSHIP_TEST",
+        "why": "특정 수의 대입을 통해 부등식의 해가 되는지 판별하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_2be92ad2529b8c255da287eca7dccade4145fe1c233916d4822e180f9837cfc5",
+      "sourceOrdinal": 18,
+      "sourceQid": 18,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+        "subUnit": "일차부등식의 활용",
+        "conceptClusterKey": "REAL_WORLD_INEQUALITY_MODELING",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REAL_WORLD_MATH"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 1,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 18,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 18,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "최소(이상) 표현의 x<=7 오류와 이하 배제 시 x>130이어야 하는 오류를 선별한다.",
+      "decisiveStep": "최소 조건(x>=7)과 탑승 불가 조건(x>130) 대조",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "실생활 국어 표현을 수학적 부등호로 직관 대조하는 1단계 기본 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITY_WORD_PROBLEM_SETUP",
+        "templateKey": "TPL_REAL_WORLD_INEQUALITY_TRANSLATION",
+        "why": "실생활 조건 문장을 수학적 부등호 관계로 모델링하는 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_9c997e796935bc430f2567e3b489875ca29f37e15c55234380705e73390cdc5e",
+      "sourceOrdinal": 19,
+      "sourceQid": 19,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "FINITE_DECIMAL_MULTIPLIER_CONDITION",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_MULTIPLE_DIVISOR"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 19,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 19,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "60=2^2*3*5에서 분모의 소인수 3을 소거하기 위해 a가 3의 배수여야 함을 밝히고 3, 6, 9를 산출한다.",
+      "decisiveStep": "분모 소인수 3 확인 후 3의 한 자리 배수 3, 6, 9 확정",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "소인수분해 후 불필요한 소인수를 약분으로 제거하는 조건을 단계별로 서술하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FINITE_DECIMAL_MULTIPLIER_SEARCH",
+        "templateKey": "TPL_FINITE_DECIMAL_FIND_FACTOR_MULTIPLIER",
+        "why": "분수에 자연수를 곱해 유한소수가 되도록 하는 소인수 배수를 구하는 서술형 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_30771c82606b43ae2023a434d252cf78ef0d5092aeec7719f97eefdd3b4d2a93",
+      "sourceOrdinal": 20,
+      "sourceQid": 20,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-REPEATING_DECIMAL",
+        "subUnit": "유리수와 순환소수",
+        "conceptClusterKey": "REPEATING_DECIMAL_CONVERSION_ALGEBRAIC",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_REDUCING_FRACTION"
+        ],
+        "conditionKeys": [
+          "COND_IRREDUCIBLE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 20,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 20,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "1000x-10x = 244에서 x=244/990 = 122/495를 단계별로 유도한다.",
+      "decisiveStep": "990x=244 도출 및 기약분수 122/495 약분",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "방정식 세우기와 뺄셈, 약분 과정을 체계적으로 서술하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_REPEATING_TO_FRACTION_EQ",
+        "templateKey": "TPL_REPEATING_DECIMAL_CONVERSION_PROCEDURE",
+        "why": "10의 거듭제곱을 곱해 소수 부분을 소거하고 기약분수를 얻는 서술형 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_95608188fe614c7b82b8ea63c6433ed2dbb166cec2b629d28ac9d857ea2ea51d",
+      "sourceOrdinal": 21,
+      "sourceQid": 21,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "FRACTIONAL_POLYNOMIAL_COEFFICIENT_PRODUCT",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_FRACTION_ARITHMETIC"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 21,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 21,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "통분하여 (3x+4y)/3 = x + (4/3)y를 얻고, a=1, b=4/3에서 ab=4/3을 산출한다.",
+      "decisiveStep": "통분 전개 (3x+4y)/3 도출 및 계수곱 ab=4/3 계산",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "분수식 통분 시 괄호 앞 마이너스 부호 분배에 유의하여 계수를 찾는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_FRACTIONAL_POLYNOMIAL_COEFFICIENT",
+        "templateKey": "TPL_FRACTIONAL_POLYNOMIAL_EVAL",
+        "why": "분수식 꼴의 다항식을 통분하여 각 문자의 계수곱을 구하는 서술형 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_7a2828bc6fbe98d61fa78ee30cafedb91dda6f163416406c30f3716b3fcc1cf2",
+      "sourceOrdinal": 22,
+      "sourceQid": 22,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-01",
+        "standardUnit": "수와 식",
+        "standardUnitOrder": 1,
+        "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+        "subUnit": "다항식의 계산",
+        "conceptClusterKey": "POLYNOMIAL_MONOMIAL_DIVISION_MIXED",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_DISTRIBUTIVE_LAW"
+        ],
+        "conditionKeys": [
+          "COND_POLYNOMIAL"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 22,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 22,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "첫 항 12x-9y와 둘째 항 x-2를 각각 구하고 차 (12x-9y)-(x-2) = 11x-9y+2를 산출한다.",
+      "decisiveStep": "첫 식 12x-9y와 둘째 식 x-2 정리 및 부호 분배",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "역수 곱셈과 분수 약분 시 부호 처리를 정확히 전개하는 2단계 서술형 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_POLYNOMIAL_MONOMIAL_MIXED_EVAL",
+        "templateKey": "TPL_POLYNOMIAL_DIVISION_SUBTRACTION_COMBINED",
+        "why": "다항식의 단항식 나눗셈과 분수 꼴 약분을 결합하여 동류항을 정리하는 서술형 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    },
+    {
+      "questionUid": "qid_v1_60c47c8c135063d479b84e8677317ec09f5e5f3aacdeddd9e6fefdddce27e10a",
+      "sourceOrdinal": 23,
+      "sourceQid": 23,
+      "before": null,
+      "after": {
+        "standardCourse": "중2",
+        "curriculum": "2015",
+        "curriculumKey": "2015",
+        "courseKey": "M2",
+        "standardUnitKey": "M2-02",
+        "standardUnit": "일차부등식",
+        "standardUnitOrder": 2,
+        "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+        "subUnit": "일차부등식",
+        "conceptClusterKey": "INEQUALITY_PROPERTIES_PROOF",
+        "problemTypeKey": "",
+        "templateKey": "",
+        "crossConceptKeys": [
+          "CC_INEQUALITY_SIGN_FLIP"
+        ],
+        "conditionKeys": [
+          "COND_INEQUALITY"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "sourceQid": 23,
+        "variationType": "NUMERIC",
+        "provenance": {
+          "kind": "SIMILAR_FROM_ORIGINAL",
+          "sourceExam": "24_신흥중_1학기_중간_중2_기출c",
+          "sourceArchiveFile": "archive/exams/original/middle/m2/1mid/24_신흥중_1학기_중간_중2_기출c.js",
+          "sourceQid": 23,
+          "variationType": "NUMERIC",
+          "createdAt": "2026-11-12",
+          "createdAtSource": "변환 마크다운 헤더의 generatedAt"
+        }
+      },
+      "primaryMethod": "양변에 -4를 곱해 부등호 방향 반전(-4a>=-4b) 후 5를 더해 성립함을 증명한다.",
+      "decisiveStep": "음수 곱셈에 따른 부등호 방향 반전 서술",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "difficultyReason": "부등식의 성질을 단계별 수학적 근거와 함께 서술하는 2단계 문항",
+      "ptTplCandidate": {
+        "problemTypeKey": "PT_M2_INEQUALITY_PROPERTY_PROOF",
+        "templateKey": "TPL_INEQUALITY_TRANSFORM_JUSTIFICATION",
+        "why": "부등식의 성질을 근거로 제시하며 부등호 관계의 성립을 단계별로 논증하는 서술형 템플릿"
+      },
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
+    }
+  ]
+}

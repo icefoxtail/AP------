@@ -1,0 +1,56 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "7e3a3b5f4f56c56f",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "소괄호 풀기: $3x - 2y + 2x - 3y - 4 = 5x - 5y - 4$이다. (aligned)",
+    "중괄호 풀기: $2x - (5x - 5y - 4) = 2x - 5x + 5y + 4$이다. (aligned)",
+    "동류항 정리: $-3x + 5y + 4$이다. (aligned)",
+    "따라서 정답 ②이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2x - {3x - 2y",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "괄호가 있는 다항식의 덧셈과 뺄셈 혼합 계산 유형이다. (aligned)",
+  "rpmRecordId": "M2-RPM-013",
+  "rpmReason": "식의 계산 단원의 다항식 덧셈과 뺄셈 괄호가 있는 계산에 일치한다. (aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "여러 겹의 괄호와 음수 부호 분배를 처리하는 표준 난이도 2 문항이다. (aligned)",
+  "how": "소괄호부터 부호를 주의하여 분배하고 중괄호를 푼 뒤 동류항을 모았다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$2x - {3x - 2y - (-2x + 3y) - 4}$ 를 계산하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "를 계산하면? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "괄호가 있는 다항식의 계산은 소괄호, 중괄호 순서로 안쪽부터 풀어 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

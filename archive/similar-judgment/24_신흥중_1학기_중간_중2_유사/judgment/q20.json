@@ -1,0 +1,56 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "cf6ffbf4aaee0e14",
+  "solvedAnswer": "$\\dfrac{122}{495}$",
+  "solveSteps": [
+    "1단계: $x = 0.2464646\\dots$라 놓는다. (0.2)",
+    "2단계: $1000x = 246.4646\\dots$, $10x = 2.4646\\dots$를 세운다. (0.2)",
+    "3단계: 변끼리 빼면 $990x = 244 \\implies x = 244 / 990$이다. (0.2)",
+    "4단계: 2로 약분하여 기약분수로 나타내면 $122 / 495$이다. (0.2)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2번] 순환소수 $",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수를 기약분수로 변환하는 대수적 서술 절차 유형이다. (0.2)",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "유리수와 순환소수 단원의 순환소수를 분수로 나타내기에 일치한다. (0.2)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순환소수를 10의 거듭제곱을 이용해 분수로 변환하는 표준 서술형 난이도 2 문항이다. (0.2)",
+  "how": "순환소수를 x로 놓고 1000x와 10x의 차를 이용하여 기약분수로 변환했다. (0.2)",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수 $0.2\\dot{4}\\dot{6}$을 기약분수로 나타내는 과정을 서술하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "기약분수",
+        "src": "stem",
+        "quote": "기약분수로 나타내는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "순환소수",
+        "src": "solution",
+        "quote": "소수점 아래 순환마디의 자릿수를 맞추기 위해 양변에 $1000$과 $10$을 각각 곱한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

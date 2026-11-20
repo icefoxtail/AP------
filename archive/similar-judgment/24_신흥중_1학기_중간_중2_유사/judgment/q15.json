@@ -1,0 +1,56 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "d4981a874505629c",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "어떤 식을 $A$라 하면 $A + (3x^2 - 4x + 5) = 7x^2 - x + 2$이다. (aligned)",
+    "$A = (7x^2 - x + 2) - (3x^2 - 4x + 5) = 4x^2 + 3x - 3$이다. (aligned)",
+    "바르게 계산한 식은 $A - (3x^2 - 4x + 5) = (4x^2 + 3x - 3) - (3x^2 - 4x + 5) = x^2 + 7x - 8$이다. (aligned)",
+    "따라서 정답 ⑤이다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어떤 식에서 $3x^{2}-",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "잘못 더한 다항식으로부터 바른 계산 결과를 복원하는 유형이다. (aligned)",
+  "rpmRecordId": "M2-RPM-012",
+  "rpmReason": "식의 계산 단원의 다항식의 덧셈과 뺄셈 괄호 계산에 일치한다. (aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식의 덧셈과 뺄셈 역연산으로 바른 계산을 복원하는 난이도 2 문항이다. (aligned)",
+  "how": "잘못 계산한 식에서 원래 식을 역산하여 구한 뒤 바른 연산을 적용했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "어떤 식에서 $3x^{2}-4x+5$를 빼야 할 것을 잘못하여 더했더니"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "이때 바르게 계산한 식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "잘못 계산한 식으로부터 어떤 식 $A$를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

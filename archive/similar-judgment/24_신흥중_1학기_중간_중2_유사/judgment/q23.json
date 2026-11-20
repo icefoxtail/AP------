@@ -1,0 +1,55 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "c4932c530f01c6c2",
+  "solvedAnswer": "성립함 (풀이 참조)",
+  "solveSteps": [
+    "1단계: $a \\le b$의 양변에 음수 $-4$를 곱하면 부등호 방향이 반대로 바뀌어 $-4a \\ge -4b$이다. (aligned)",
+    "2단계: 위 부등식의 양변에 같은 수 $5$를 더하여도 부등호 방향은 유지되므로 $-4a + 5 \\ge -4b + 5$이다. (aligned)",
+    "따라서 부등식의 성질에 의해 주어진 부등식이 성립한다. (aligned)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 5번] $a \\le",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "부등식의 기본 성질을 이용한 부등식 변형과 증명 서술 유형이다. (aligned)",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "일차부등식 단원의 부등식의 기본 성질에 일치한다. (aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부등식의 기본 성질(음수 곱과 덧셈)을 순서대로 증명하는 난이도 2 서술형 문항이다. (aligned)",
+  "how": "음수를 곱할 때 부등호 방향 반전과 같은 수를 더할 때 부등호 유지를 서술했다. (aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "$a \\le b$일 때, 부등식의 성질을 이용하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "다음 부등식이 성립함을 설명하시오. [6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식의 양변에 음수를 곱하면 부등호의 방향이 반대로 바뀐다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

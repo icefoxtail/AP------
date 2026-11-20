@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "68157deb3288d8d4",
+  "solvedAnswer": "$3, 6, 9$",
+  "solveSteps": [
+    "1단계: 분모 소인수분해 $60 = 2^2 \\times 3 \\times 5$이므로 $\\frac{13}{60} = \\frac{13}{2^2 \\times 3 \\times 5}$이다. (13)",
+    "2단계: 유한소수가 되려면 분모의 소인수 $3$이 약분되어 없어져야 하므로 $a$는 $3$의 배수여야 한다. (13)",
+    "3단계: $a$가 한 자리의 자연수이므로 $a \\in \\{3, 6, 9\\}$이다. (13)",
+    "따라서 모든 $a$의 값은 $3, 6, 9$이다. (13)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 1번] 분수 $\\d",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분수에 자연수를 곱하여 유한소수가 되도록 하는 미지수 결정 서술형 유형이다. (13)",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "유리수와 순환소수 단원의 분모의 소인수 조건과 유한소수 만들기에 일치한다. (13)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "유한소수 조건과 한 자리 자연수 배수 조건을 서술형으로 전개하는 난이도 3 문항이다. (13)",
+  "how": "분모를 소인수분해하여 제거해야 할 소인수 3을 찾고 한 자리 배수를 모두 구했다. (13)",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{13}{60}$에 어떤 자연수 $a$를 곱하면 유한소수가 된다고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$a$의 값을 모두 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "유한소수",
+        "src": "solution",
+        "quote": "분모를 소인수분해하여 기약분수의 형태를 확인한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

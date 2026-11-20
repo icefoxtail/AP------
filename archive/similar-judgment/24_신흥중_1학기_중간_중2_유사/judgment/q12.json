@@ -1,0 +1,56 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "ed305cffe213d762",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "거듭제곱: $(-3x^3)^2 = 9x^6$이다. (12)",
+    "곱셈: $9x^6 \\times (-4x^2) = -36x^8$이다. (12)",
+    "나눗셈: $-36x^8 \\div 6x^5 = -6x^3$이다. (12)",
+    "따라서 정답 ④이다. (12)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(-3x^{3})^{2}",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단항식의 곱셈과 나눗셈 혼합 계산 유형이다. (12)",
+  "rpmRecordId": "M2-RPM-011",
+  "rpmReason": "식의 계산 단원의 단항식의 곱셈과 나눗셈 혼합 계산에 일치한다. (12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "단항식의 거듭제곱, 곱셈, 나눗셈 혼합 연산을 수행하는 난이도 2 문항이다. (12)",
+  "how": "거듭제곱을 먼저 풀고 곱셈과 나눗셈을 차례로 계산하여 단항식을 정리했다. (12)",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "src": "stem",
+        "quote": "$(-3x^{3})^{2} \\times (-4x^{2}) \\div 6x^{5}$ 을 계산하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "단항식",
+        "src": "stem",
+        "quote": "을 계산하면? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "단항식의 거듭제곱을 먼저 계산한 후, 계수와 문자를 순서대로 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

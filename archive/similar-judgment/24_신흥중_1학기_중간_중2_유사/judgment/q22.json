@@ -1,0 +1,55 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "80e588e332179b2b",
+  "solvedAnswer": "$11x - 9y + 2$",
+  "solveSteps": [
+    "1단계: 첫째 식을 역수 곱셈으로 바꾸면 $(8x^2 y - 6xy^2) \\times \\frac{3}{2xy} = 12x - 9y$이다. (xy)",
+    "2단계: 둘째 식을 분수 약분하면 $\\frac{4x^2 y - 8xy}{4xy} = x - 2$이다. (xy)",
+    "3단계: 두 식을 빼면 $(12x - 9y) - (x - 2) = 11x - 9y + 2$이다. (xy)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 4번] $(8x^{",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식과 단항식의 나눗셈 및 뺄셈 혼합 계산 서술형 유형이다. (xy)",
+  "rpmRecordId": "M2-RPM-015",
+  "rpmReason": "식의 계산 단원의 다항식을 단항식으로 나누기에 일치한다. (xy)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식을 단항식으로 나누는 혼합 계산을 부호에 유의하여 서술하는 난이도 3 문항이다. (xy)",
+  "how": "나눗셈을 역수의 곱으로 바꾸고 각 항을 약분한 뒤 동류항을 계산했다. (xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$(8x^{2}y - 6xy^{2}) \\div \\dfrac{2}{3}xy - \\dfrac{4x^{2}y - 8xy}{4xy}$ 를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "계산하는 과정을 서술하시오. [6점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "첫 번째 식을 역수 곱셈으로 바꾸어 전개한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

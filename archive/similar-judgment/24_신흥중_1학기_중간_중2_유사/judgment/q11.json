@@ -1,0 +1,55 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "950d2a5af7882db2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "첫째 식: $24^6 / 72^3 = (2^3 \\times 3)^6 / (2^3 \\times 3^2)^3 = (2^{18} \\times 3^6) / (2^9 \\times 3^6) = 2^9$에서 $a = 9$이다. (24)",
+    "둘째 식: 분자는 $3 \\times 9^5 = 3 \\times 3^{10} = 3^{11}$, 분모는 $3 \\times 3^4 = 3^5$이므로 $3^{11} / 3^5 = 3^6$에서 $b = 6$이다. (24)",
+    "따라서 $a - b = 9 - 6 = 3$이므로 정답 ②이다. (24)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\dfrac{24^{6}}",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수법칙을 복합 적용하여 거듭제곱 밑과 지수를 계산하는 유형이다. (24)",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "식의 계산 단원의 복합 지수법칙 응용 및 분수식 거듭제곱 계산에 일치한다. (24)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱의 합과 곱을 지수법칙으로 각각 정리하여 차를 구하는 난이도 2 문항이다. (24)",
+  "how": "소인수분해와 지수법칙으로 두 분수식을 각각 밑이 2와 3인 거듭제곱으로 나타냈다. (24)",
+  "slots": {
+    "given": [
+      {
+        "term": "소인수분해",
+        "src": "stem",
+        "quote": "$\\dfrac{24^{6}}{72^{3}} = 2^{a}$, $\\dfrac{9^{5}+9^{5}+9^{5}}{3^{4}+3^{4}+3^{4}} = 3^{b}$ 일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a-b$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "밑을 소인수분해하여 지수법칙으로 각각의 식을 간단히 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

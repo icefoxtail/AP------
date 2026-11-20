@@ -1,0 +1,55 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "d1f602739378989f",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "양변에 $(-2xy^3)$을 곱하면 $3x^2 y \\times A = 6x^2 y \\times (-2xy^3) = -12x^3 y^4$이다. (xy)",
+    "양변을 $3x^2 y$로 나누면 $A = \\frac{-12x^3 y^4}{3x^2 y} = -4xy^3$이다. (xy)",
+    "따라서 정답 ①이다. (xy)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3x^{2}y \\times",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단항식 계산 등식에서 미지의 단항식을 구하는 유형이다. (xy)",
+  "rpmRecordId": "M2-RPM-011",
+  "rpmReason": "식의 계산 단원의 단항식 곱셈 나눗셈 혼합 계산에 일치한다. (xy)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "단항식 등식에서 나눗셈과 곱셈 역연산으로 식을 복원하는 난이도 2 문항이다. (xy)",
+  "how": "등식의 양변에 역연산을 적용하여 미지의 식 A를 고립시키고 계산했다. (xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "$3x^{2}y \\times A \\div (-2xy^{3}) = 6x^{2}y$ 를 만족하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "미지수",
+        "src": "stem",
+        "quote": "만족하는 식 $A$를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "등식",
+        "src": "solution",
+        "quote": "주어진 등식에서 미지 식 $A$를 구하기 위해 역연산을 적용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

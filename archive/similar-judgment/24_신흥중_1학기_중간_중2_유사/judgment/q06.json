@@ -1,0 +1,56 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "da4075ef62c1fb37",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "소수 부분이 완전히 일치하여 빼었을 때 정수가 되는 조합을 찾는다. (0.247247)",
+    "㉠은 소수점 아래 $247247\\dots$, ㉣은 $1000x = 247.247247\\dots$이다. (0.247247)",
+    "따라서 ㉣ - ㉠을 하면 소수점 아래가 $247247\\dots$로 같아 소수 부분이 소거되고 정수가 된다. (0.247247)",
+    "그러므로 정답 ②이다. (0.247247)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "보기는 순환소수 $0.\\do",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수의 소수 부분을 소거하여 정수로 만드는 식의 조합 유형이다. (0.247247)",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "유리수와 순환소수 단원의 순환소수를 분수로 나타내기 원리에 일치한다. (0.247247)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순환소수를 분수로 고치는 원리(소수 부분 소거)를 묻는 난이도 2 문항이다. (0.247247)",
+  "how": "순환마디 시작 위치와 주기가 일치하는 10의 거듭제곱 식을 찾아 차를 구성했다. (0.247247)",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수 $0.\\dot{2}4\\dot{7} = 0.247247\\dots$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "뺀 결과가 정수가 나오는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환소수",
+        "src": "solution",
+        "quote": "소수점 아래의 숫자 배열이 완전히 같아 뺄 때 소수 부분이 소거되어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
