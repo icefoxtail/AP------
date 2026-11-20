@@ -1,0 +1,71 @@
+{
+  "qid": 19,
+  "itemFingerprint": "d432dce521ef6484",
+  "solveSteps": [
+    "도수분포표 50명의 독서 시간 자료를 분석한다 (총 50명, thead tr 테이블).",
+    "각 계급의 계급값, 도수, 상대도수, 백분율을 검토한다.",
+    "④의 진술이 도수분포표의 수치와 일치하지 않으므로 옳지 않다.",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "다음 도수분포표는 어느 중학교 학생 $50$명의 일주일 동안의 독서 시간을 조사하여 나타낸 것이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "다음 도수분포표는 어느 중학교",
+  "rpmRecordId": "M1-RPM-227",
+  "rpmReason": "도수분포표의 각 항목과 도수 계산 진술의 정오를 판정하는 M1-RPM-227 도수분포표와 상대도수 > 도수분포표 > 계급·도수에 해당한다 (총 50명).",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+  "typeReason": "도수분포표의 각 계급과 도수를 읽고 비율 및 계급값을 종합 검증하는 유형이다 (총 50명).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "도수분포표의 행별 도수와 합계, 계급값을 읽어 보기를 확인하는 기본 난이도 2 문항이다 (총 50명).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "다음 도수분포표는 어느 중학교"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상대도수",
+        "src": "solution",
+        "quote": "에서 차지하는 백분율은   $$\\b"
+      }
+    ],
+    "method": [
+      {
+        "term": "계급값",
+        "src": "solution",
+        "quote": ", 이 계급의 계급값은   $$\\b",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "다음 도수분포표는 어느"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "도수분포표의 항목을 분석하여 수치 계산이 잘못된 ④를 정답으로 판정했다 (총 50명).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "도수분포표의 계급, 도수, 계급값, 상대도수 해석을 다루므로 M1-08 자료의 정리와 해석에 속한다."
+}

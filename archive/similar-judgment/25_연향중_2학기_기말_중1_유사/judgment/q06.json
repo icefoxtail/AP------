@@ -1,0 +1,71 @@
+{
+  "qid": 6,
+  "itemFingerprint": "f1ca8f9f711050fc",
+  "solveSteps": [
+    "세 호의 길이의 비 $\\wideparen{AB} : \\wideparen{BC} : \\wideparen{CA} = 2 : 3 : 5$ 이다 (호 AB, BC, CA).",
+    "호의 길이는 중심각에 정비례하므로 부채꼴 BOC의 중심각 $\\angle BOC = 360^\\circ \\times \\dfrac{3}{2+3+5} = 360^\\circ \\times \\dfrac{3}{10} = 108^\\circ$.",
+    "반지름 $r = 6\\rm\\,cm$ 일 때 부채꼴 BOC의 넓이는 $\\pi \\times 6^2 \\times \\dfrac{108}{360} = 36\\pi \\times \\dfrac{3}{10} = 10.8\\pi\\rm\\,cm^2$ 이므로 ㄹ은 거짓이다.",
+    "보기 진술을 검토하여 옳은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "원 $O$의 둘레 위의 점 $A, B, C$에 대하여 세 호의 길이의 비가 $\\wideparen{AB} : \\wideparen{BC} : \\wideparen{CA} = 2 : 3 : 5$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "unitEvidence": "cm$일 때, 부채꼴 $BOC$의",
+  "rpmRecordId": "M1-RPM-203",
+  "rpmReason": "원주를 비례배분하여 중심각을 구하고 부채꼴의 성질을 검토하는 M1-RPM-203 부채꼴의 넓이 > 중심각을 이용한 넓이에 해당한다 (호 AB, BC, CA).",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "typeReason": "호의 길이의 비를 이용해 각 중심각을 비례배분하고 관련 부채꼴의 호와 넓이를 종합 계산하는 유형이다 (호 AB, BC, CA).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "원 전체 $360^\\circ$ 에 대한 비례배분으로 각 중심각을 찾고 보기 진술의 참·거짓을 판별하는 난이도 2 문항이다 (호 AB, BC, CA).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "cm$일 때, 부채꼴 $BOC$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$BOC$의 넓이는 $18\\pi"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "r>   ㄹ. 반지름의 길이가 $6",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "하여 세 호의 길이의 비가 $\\w"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "호의 비 $2:3:5$ 로부터 중심각들을 구하고 보기 항목을 판별하여 ①을 정답으로 판정했다 (호 AB, BC, CA).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "호의 길이의 비와 중심각의 정비례 관계 및 부채꼴 측정을 다루므로 M1-06 평면도형의 성질에 속한다."
+}

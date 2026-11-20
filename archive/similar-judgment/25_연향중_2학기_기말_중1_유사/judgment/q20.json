@@ -1,0 +1,73 @@
+{
+  "qid": 20,
+  "itemFingerprint": "ebc6c6c633382488",
+  "solveSteps": [
+    "계급값이 7회인 도수를 $a$명이라 하면 전체 학생 수는 $8a$명이다 (나머지 21, 24 등).",
+    "6회 계급 도수는 $a + 3$명이다.",
+    "전체 학생 수: $8a = 21 + (a + 3) + a \\implies 8a = 2a + 24 \\implies 6a = 24 \\implies a = 4$.",
+    "따라서 7회 계급은 4명이고, 전체 학생 수는 $8 \\times 4 = 32$명이다.",
+    "7회 이상인 학생 수: 7회(4명) + 8회(2명) + 9회(1명) $= 4 + 2 + 1 = 7$명이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림은 어느 반 학생들의 턱걸이 기록을 나타낸 도수분포다각형의 일부이다. 종이가 찢어져서 일부 계급이 보이지 않는다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "기록을 나타낸 도수분포다각형의 일부이다.",
+  "rpmRecordId": "M1-RPM-228",
+  "rpmReason": "누락된 도수를 일차방정식으로 완성하는 M1-RPM-228 도수분포표와 상대도수 > 도수분포표 > 도수분포표 완성에 해당한다 (나머지 21, 24).",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_MISSING_FREQUENCY",
+  "typeReason": "찢어진 도수분포 자료에서 주어진 비율 조건을 활용해 누락된 도수를 복원하는 유형이다 (나머지 21, 24).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "전체 도수와 6회, 7회 계급 사이의 관계를 일차방정식으로 세워 해결해야 하는 난이도 3 문항이다 (나머지 21, 24).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포다각형",
+        "src": "stem",
+        "quote": "기록을 나타낸 도수분포다각형의 일부이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "계급값",
+        "src": "stem",
+        "quote": "이지 않는다. 계급값이 $7$회인"
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "찢어져서 일부 계급이 보이지 않는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "찢어지지 않은 나머지 계급의 학생"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "방정식 $8a = 21 + 2a + 24$ 에서 $a=4$ 를 구하고 7회 이상인 학생 수 $4+2+1=7$명으로 판정했다 (나머지 21).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "찢어진 도수분포다각형에서 미지수를 두고 전체 도수와 특정 계급의 도수를 복원하므로 M1-08 자료의 정리와 해석에 속한다."
+}

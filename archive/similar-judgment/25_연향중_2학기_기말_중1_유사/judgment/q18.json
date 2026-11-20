@@ -1,0 +1,72 @@
+{
+  "qid": 18,
+  "itemFingerprint": "dafdae0b4c449121",
+  "solveSteps": [
+    "자료 20명을 크기순으로 나열하여 중앙값을 구한다 (17-18번 문항, 학생 20명, 중앙값 30.5).",
+    "자료의 개수가 20(짝수)이므로 10번째와 11번째 값의 평균이 중앙값이다.",
+    "크기순 나열: 10번째 값은 30, 11번째 값은 31 이다.",
+    "중앙값 $= (30 + 31) / 2 = 30.5$회 이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "위 [17-18] 자료의 중앙값은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "18] 자료의 중앙값은? [4점]",
+  "rpmRecordId": "M1-RPM-223",
+  "rpmReason": "자료의 개수가 짝수일 때 가운데 두 값의 평균으로 중앙값을 구하는 M1-RPM-223 대푯값 > 중앙값과 최빈값 > 중앙값에 해당한다 (학생 20명, 중앙값 30.5).",
+  "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+  "templateKey": "TPL_M1_CENTRAL_TENDENCY_MEDIAN_ORDER_STATISTIC",
+  "typeReason": "순서대로 정렬된 자료에서 중앙 위치의 두 값의 평균을 취해 중앙값을 계산하는 유형이다 (학생 20명, 중앙값 30.5).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "20개 자료를 정렬한 후 10번째와 11번째 값 30과 31의 평균을 구하는 전형적인 기본 문항이다 (학생 20명, 중앙값 30.5).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "[17-18] 자료의 중앙값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "18] 자료의 중앙값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "짝수",
+        "src": "solution",
+        "quote": "자료의 개수가 짝수인 경우 중앙값",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "src": "solution",
+        "quote": "전체 자료의 개수가 짝수인 경우"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "20개 자료 중 10번째 값 30과 11번째 값 31의 평균을 내어 중앙값 30.5 로 정답 ③을 판정했다 (학생 20명).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "자료의 대푯값 중 중앙값을 계산하는 문항이므로 M1-08 자료의 정리와 해석에 속한다."
+}

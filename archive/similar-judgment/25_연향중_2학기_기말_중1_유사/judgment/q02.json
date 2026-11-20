@@ -1,0 +1,72 @@
+{
+  "qid": 2,
+  "itemFingerprint": "60b619bad1b5680f",
+  "solveSteps": [
+    "두 직선 AB와 CD의 교점 O에서 맞꼭지각의 크기는 같다 (각 AOC, BOD).",
+    "$3x + 10 = 2x + 40 \\implies x = 30$ 이다.",
+    "$\\angle AOC = 3(30^\\circ) + 10^\\circ = 100^\\circ$.",
+    "평각 $180^\\circ$ 에서 $\\angle BOC = 180^\\circ - 100^\\circ = 80^\\circ$ 이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "두 직선 $AB$와 $CD$가 점 $O$에서 만난다. $\\angle AOC = (3x + 10)^\\circ$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "두 직선 $AB$와 $",
+  "rpmRecordId": "M1-RPM-176",
+  "rpmReason": "맞꼭지각의 크기가 같음을 이용해 일차방정식을 세우는 M1-RPM-176 각 > 맞꼭지각에 해당한다 (직선 AB, CD, 각 AOC, BOD).",
+  "problemTypeKey": "PT_M1_INTERSECTING_ANGLE_RELATIONS",
+  "templateKey": "TPL_M1_INTERSECTING_ANGLE_RELATIONS_EQUATION",
+  "typeReason": "맞꼭지각의 성질로 각 방정식을 세워 $x$ 를 구하고 보각을 구하는 유형이다 (직선 AB, CD, 각 AOC, BOD).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "맞꼭지각 일치 조건과 평각 $180^\\circ$ 관계를 이용하는 기본 난이도 2 문항이다 (직선 AB, CD, 각 AOC, BOD).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 직선 $AB$와 $"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평각",
+        "src": "solution",
+        "quote": "OC$의 합은 평각인 $180^\\"
+      }
+    ],
+    "method": [
+      {
+        "term": "맞꼭지각",
+        "src": "solution",
+        "quote": "에서 만날 때 맞꼭지각의 크기는 서로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "= 30$을 대입하여 $\\ang"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "맞꼭지각 $3x+10 = 2x+40$ 에서 $x=30$ 을 구하고 $\\angle BOC = 180^\\circ - 100^\\circ = 80^\\circ$ 로 판정했다 (직선 AB, CD).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "두 직선이 만날 때 생기는 맞꼭지각과 평각의 크기 계산을 다루므로 M1-05 기본도형에 속한다."
+}
