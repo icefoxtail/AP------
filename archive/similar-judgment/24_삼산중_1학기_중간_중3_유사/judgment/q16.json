@@ -1,0 +1,62 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "6cff25fce623a0c1",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "식을 인수분해하면 $(a^2+b^2)(x^2+y^2)$이다.",
+    "$a^2+b^2 = 3^2 - 2(-1) = 11$, $x^2+y^2 = 4^2 - 2(2) = 12$이다.",
+    "따라서 $(11)(12) = 132$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a+b = 3, \\quad ab = -1, \\quad x+y = 4, \\quad xy = 2$ 일 때",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-027",
+  "rpmEvidence": "주어진 식을 공통인수로 묶어 인수분해하고",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_VALUE",
+  "newKeyProposal": null,
+  "typeReason": "공통인수 묶기와 곱셈 공식 변형을 복합 적용해 식의 값을 구하는 유형이다. (문항 토큰 ab)",
+  "rpmReason": "인수분해와 곱셈공식 변형을 활용하는 인수분해를 이용한 식의 값 유형이다. (문항 토큰 ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다변수 다항식의 인수분해와 변형 공식 대입을 결합한 난이도 2 문항이다. (문항 토큰 ab)",
+  "how": "공통인수로 식을 묶고 곱셈 공식 변형으로 각각의 제곱합을 구하여 곱했다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "quote": "$a+b = 3, \\quad ab = -1, \\quad x+y = 4, \\quad xy = 2$ 일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "quote": "$a^2x^2 + b^2x^2 + a^2y^2 + b^2y^2$ 의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통인수",
+        "quote": "주어진 식을 공통인수로 묶어 인수분해하고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "곱셈공식",
+        "quote": "각각의 이차식에 곱셈 공식의 변형을 적용하여",
+        "src": "solution"
+      }
+    ]
+  }
+}

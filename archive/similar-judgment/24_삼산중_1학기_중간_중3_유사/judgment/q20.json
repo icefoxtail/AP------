@@ -1,0 +1,63 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "26595f0fe1ce22f3",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "첫 번째 근호는 $|-3a| = 3a$이다.",
+    "두 번째 근호는 $\\left|a - \\dfrac{1}{a}\\right| = \\dfrac{1}{a} - a$이다.",
+    "세 번째 근호는 $\\left|a + \\dfrac{1}{a}\\right| = a + \\dfrac{1}{a}$이다.",
+    "따라서 결합하면 $3a - \\left(\\dfrac{1}{a}-a\\right) - \\left(a+\\dfrac{1}{a}\\right) = 3a - \\dfrac{2}{a}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0 < a < 1$ 일 때",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "곱셈 공식 변형으로 각 근호 안을 완전제곱식으로 정리하고",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+  "newKeyProposal": null,
+  "typeReason": "역수 꼴의 곱셈 공식 변형과 근호 부호 판별을 결합하여 정리하는 유형이다. (문항 토큰 0)",
+  "rpmReason": "절댓값과 문자의 부호를 분석하는 제곱근의 성질 유형이다. (문항 토큰 0)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "0과 1 사이 범위에서 역수의 대소 판단과 부호 처리가 요구되는 난이도 3 문항이다. (문항 토큰 0)",
+  "how": "곱셈 공식 변형으로 완전제곱식을 만들고 a 범위에 따른 절댓값 부호를 판정했다. (문항 토큰 0)",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "quote": "$0 < a < 1$ 일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "다음 식을 간단히 하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "곱셈 공식 변형으로 각 근호 안을 완전제곱식으로 정리하고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절댓값",
+        "quote": "각 근호 안의 식을 완전제곱식으로 변형한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "24e98b8c639151fb",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$2.280^2 = 5.1984$이므로 $\\sqrt{5.2} \\approx 2.280$이다.",
+    "선지의 $2.295$는 $2.295^2 = 5.267025$로 $5.2$와 일치하지 않는다.",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "제곱근의 근삿값을 소수 셋째 자리까지 반올림한 것으로 옳지 않은 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-006",
+  "rpmEvidence": "각 수의 제곱 계산을 통해 제곱근의 반올림 근삿값의 일치 여부를 검증한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_APPROXIMATION",
+  "newKeyProposal": null,
+  "typeReason": "제곱근의 근삿값 반올림 수치를 검증하는 유형이다. (문항 토큰 5.1)",
+  "rpmReason": "제곱근의 소수 근삿값 계산을 다루는 근삿값 유형이다. (문항 토큰 5.1)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱근의 소수점 아래 반올림 수치를 확인하는 난이도 1 문항이다. (문항 토큰 5.1)",
+  "how": "각 수의 제곱 계산을 통해 제곱근의 반올림 근삿값의 일치 여부를 검증했다. (문항 토큰 5.1)",
+  "slots": {
+    "given": [
+      {
+        "term": "소수",
+        "quote": "제곱근의 근삿값을 소수 셋째 자리까지 반올림한 것으로 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "소수",
+        "quote": "옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱근",
+        "quote": "각 수의 제곱 계산을 통해 제곱근의 반올림 근삿값의 일치 여부를 검증한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "quote": "$\\sqrt{5.2} = 2.295$",
+        "src": "choices"
+      }
+    ]
+  }
+}

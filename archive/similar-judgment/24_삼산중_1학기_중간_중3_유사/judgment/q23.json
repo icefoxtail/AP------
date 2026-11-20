@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "60a3552408eaa64e",
+  "solvedAnswer": "(1) $a^2+2ab+b^2$  (2) $(a+b)(a+b)=a^2+ab+ba+b^2=a^2+2ab+b^2$  (3) 한 변이 $a+b$인 정사각형을 넓이 $a^2, ab, ab, b^2$의 네 사각형으로 분할하여 합산",
+  "solveSteps": [
+    "(1) 빈칸 식은 $a^2+2ab+b^2$이다.",
+    "(2) $(a+b)(a+b) = a^2+ab+ba+b^2 = a^2+2ab+b^2$로 대수적 증명된다.",
+    "(3) 한 변 $a+b$인 큰 정사각형을 네 사각형 $a^2, ab, ab, b^2$로 분할하여 합산한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 3] 곱셈 공식 $(a+b)^2 = \\square$ 의 빈칸을 채우고",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-015",
+  "rpmEvidence": "완전제곱식 공식을 완성하고, 대수적 분배법칙과 기하학적 넓이 분할의 두 가지 관점으로 엄밀히 증명한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+  "newKeyProposal": null,
+  "typeReason": "곱셈 공식의 대수적 증명과 기하학적 모델링을 서술하는 서술형 유형이다. (문항 토큰 ab)",
+  "rpmReason": "합의 제곱 공식을 증명하고 유도하는 합·차의 제곱 유형이다. (문항 토큰 ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "곱셈 공식의 두 가지 증명 과정을 체계적으로 서술하는 난이도 2 문항이다. (문항 토큰 ab)",
+  "how": "완전제곱식 공식을 완성하고 대수적 분배법칙과 기하학적 넓이 분할로 증명했다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "곱셈공식",
+        "quote": "[서·논술형 3] 곱셈 공식 $(a+b)^2 = \\square$ 의 빈칸을 채우고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "quote": "이 공식이 성립함을 다음 두 가지 방법으로 설명하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "quote": "완전제곱식 공식을 완성하고, 대수적 분배법칙과 기하학적 넓이 분할의 두 가지 관점으로 엄밀히 증명한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정사각형",
+        "quote": "한 변의 길이가 $a+b$인 큰 정사각형의 넓이는 $(a+b)^2$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

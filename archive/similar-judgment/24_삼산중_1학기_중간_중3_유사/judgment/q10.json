@@ -1,0 +1,62 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "688a3314be520058",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "삼각형의 넓이는 $\\dfrac{1}{2} \\times 8\\sqrt{2} \\times 6 = 24\\sqrt{2}$이다.",
+    "직사각형의 높이가 $4$이므로 $4w = 24\\sqrt{2}$에서 $w = 6\\sqrt{2}\\text{cm}$이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "밑변의 길이가 $8\\sqrt{2},\\mathrm{cm}$이고 높이가 $6,\\mathrm{cm}$인 삼각형이 있다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-008",
+  "rpmEvidence": "삼각형의 넓이를 구한 후, 직사각형의 넓이 공식에 등치시켜 가로의 길이를 구한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "기하 도형의 넓이 공식을 근호 계산과 결합하는 유형이다. (문항 토큰 cm)",
+  "rpmReason": "근호의 나눗셈을 평면도형 넓이에 적용하는 근호의 몫 유형이다. (문항 토큰 cm)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "도형 넓이 공식과 기초 근호 곱셈·나눗셈을 적용하는 난이도 1 문항이다. (문항 토큰 cm)",
+  "how": "삼각형 넓이를 무리수 계산으로 구하고 직사각형 가로 길이를 나눗셈으로 도출했다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "밑변의 길이가 $8\\sqrt{2},\\mathrm{cm}$이고 높이가 $6,\\mathrm{cm}$인 삼각형이 있다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "quote": "이 직사각형의 가로의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "삼각형의 넓이를 구한 후, 직사각형의 넓이 공식에 등치시켜 가로의 길이를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "높이가 $4,\\mathrm{cm}$인 직사각형과 넓이가 같을 때",
+        "src": "stem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "4ee9259a34359944",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$(2x-a)(3x+2) = 6x^2 + (4-3a)x - 2a$이고 $6x^2 + bx - 4$와 일치한다.",
+    "$-2a = -4$에서 $a = 2$이고, $b = 4 - 3(2) = -2$이다.",
+    "따라서 $a - b = 2 - (-2) = 4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(2x-a)(3x+2)$를 전개한 식이 $6x^2 + bx - 4$일 때",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-017",
+  "rpmEvidence": "좌변을 분배법칙으로 전개하여 우변과 계수를 비교한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
+  "newKeyProposal": null,
+  "typeReason": "두 일차식의 곱을 전개하여 계수 비교법으로 미정계수를 구하는 유형이다. (문항 토큰 bx)",
+  "rpmReason": "일차식 전개와 계수 관계를 분석하는 두 일차식의 곱 유형이다. (문항 토큰 bx)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "전개식의 계수 비교와 정수 연산을 수행하는 난이도 1 문항이다. (문항 토큰 bx)",
+  "how": "식을 전개하여 계수와 상수항을 비교해 미정계수 a, b를 구하고 차를 계산했다. (문항 토큰 bx)",
+  "slots": {
+    "given": [
+      {
+        "term": "상수항",
+        "quote": "$(2x-a)(3x+2)$를 전개한 식이 $6x^2 + bx - 4$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수항",
+        "quote": "$a - b$의 값은? (단, $a, b$는 상수)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "quote": "좌변을 분배법칙으로 전개하여 우변과 계수를 비교한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수항",
+        "quote": "상수항 비교: $$-2a = -4 \\implies a = 2$$",
+        "src": "solution"
+      }
+    ]
+  }
+}

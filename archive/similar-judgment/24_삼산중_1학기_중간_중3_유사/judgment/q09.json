@@ -1,0 +1,63 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "60cdc630a2f4a7e0",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "식을 전개하면 $\\sqrt{12} = 2\\sqrt{3}$이므로 $(-5x-2) + (4x+2)\\sqrt{3}$이다.",
+    "결과가 유리수가 되려면 무리수 $\\sqrt{3}$의 계수가 $0$이어야 한다.",
+    "$4x+2 = 0$에서 $x = -\\dfrac{1}{2}$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(4\\sqrt{3}-5)x + \\sqrt{2}(\\sqrt{6}-\\sqrt{2})$ 를 계산한 결과가 유리수가 되도록 하는",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-014",
+  "rpmEvidence": "전체 식이 유리수가 되려면 무리수 $\\sqrt{3}$의 계수가 $0$이어야 한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONAL_CONDITION",
+  "newKeyProposal": null,
+  "typeReason": "무리수 식이 유리수가 되는 조건을 설정하여 미지수를 결정하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "혼합 계산에서 유리수 조건을 다루는 식의 값 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무리수 계수가 0이어야 한다는 성질을 적용하는 난이도 2 문항이다. (문항 토큰 12)",
+  "how": "식을 정리하여 무리수의 계수가 0이 되는 일차방정식을 세워 x를 구했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "$(4\\sqrt{3}-5)x + \\sqrt{2}(\\sqrt{6}-\\sqrt{2})$ 를 계산한 결과가 유리수가 되도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "quote": "유리수 $x$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "quote": "전체 식이 유리수가 되려면 무리수 $\\sqrt{3}$의 계수가 $0$이어야 한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "$\\sqrt{3}$의 동류항끼리 묶는다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

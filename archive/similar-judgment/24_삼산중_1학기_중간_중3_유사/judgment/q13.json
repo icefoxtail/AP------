@@ -1,0 +1,62 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "7e5629d316205080",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(x+y)(x-y) = x^2 - y^2$이다. (보기 ⑤의 전개식은 $-x^2 - 2xy - y^2$임)",
+    "$(-x+y)(-x-y) = [-(x-y)][-(x+y)] = (x-y)(x+y) = x^2 - y^2$이다.",
+    "따라서 전개식이 같은 것은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 $(x+y)(x-y)$와 전개식이 같은 것은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-016",
+  "rpmEvidence": "합차 공식의 부호 변형 원리를 적용하여 전개식이 $x^2 - y^2$과 일치하는 것을 찾는다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_EXPANSION",
+  "newKeyProposal": null,
+  "typeReason": "합차 곱셈 공식의 다양한 부호 표현 형태를 비교하는 유형이다. (문항 토큰 xy)",
+  "rpmReason": "두 식의 합과 차의 곱셈공식을 다루는 합과 차의 곱 유형이다. (문항 토큰 xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수 부호 추출과 합차 공식을 정확히 판별하는 난이도 1 문항이다. (문항 토큰 xy)",
+  "how": "합차 공식의 부호 변형 원리를 적용하여 전개식이 일치하는 식을 찾았다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "곱셈공식",
+        "quote": "다음 중 $(x+y)(x-y)$와 전개식이 같은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "quote": "전개식이 같은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합차공식",
+        "quote": "합차 공식의 부호 변형 원리를 적용하여 전개식이 $x^2 - y^2$과 일치하는 것을 찾는다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "quote": "$(-x+y)(-x-y) = [-(x-y)] \\times [-(x+y)] = (x-y)(x+y) = x^2 - y^2$",
+        "src": "solution"
+      }
+    ]
+  }
+}

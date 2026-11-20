@@ -1,0 +1,62 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "51e6c0c585c79e0d",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "분모를 유리화하면 $x = \\sqrt{7}-\\sqrt{6}, y = \\sqrt{7}+\\sqrt{6}$이다.",
+    "$x - y = (\\sqrt{7}-\\sqrt{6}) - (\\sqrt{7}+\\sqrt{6}) = -2\\sqrt{6}$이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x = \\dfrac{1}{\\sqrt{7}+\\sqrt{6}}, \\quad y = \\dfrac{1}{\\sqrt{7}-\\sqrt{6}}$ 일 때",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-012",
+  "rpmEvidence": "분모의 켤레식을 곱하여 두 수의 분모를 각각 유리화한 후",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+  "newKeyProposal": null,
+  "typeReason": "합차 공식을 이용해 분모를 유리화하고 두 식의 차를 구하는 유형이다. (문항 토큰 x)",
+  "rpmReason": "합과 차의 곱을 이용한 분모의 유리화 유형이다. (문항 토큰 x)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분모의 유리화와 무리수 뺄셈의 기본 계산 난이도 1 문항이다. (문항 토큰 x)",
+  "how": "켤레 무리수를 곱하여 분모를 각각 유리화한 후 차를 계산했다. (문항 토큰 x)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "$x = \\dfrac{1}{\\sqrt{7}+\\sqrt{6}}, \\quad y = \\dfrac{1}{\\sqrt{7}-\\sqrt{6}}$ 일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "무리수",
+        "quote": "$x-y$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "분모의 켤레식을 곱하여 두 수의 분모를 각각 유리화한 후",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "합차공식",
+        "quote": "$$x = \\dfrac{1}{\\sqrt{7}+\\sqrt{6}} = \\dfrac{\\sqrt{7}-\\sqrt{6}}{(\\sqrt{7}+\\sqrt{6})(\\sqrt{7}-\\sqrt{6})} = \\dfrac{\\sqrt{7}-\\sqrt{6}}{7-6} = \\sqrt{7}-\\sqrt{6}$$",
+        "src": "solution"
+      }
+    ]
+  }
+}

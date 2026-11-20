@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "dfd0f3ddc2ea2655",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "직사각형 넓이는 $x(x-2y) = x^2 - 2xy$이고 세 정사각형 넓이는 $3y^2$이다.",
+    "남은 넓이는 $x^2 - 2xy - 3y^2 = (x+y)(x-3y)$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "가로의 길이가 $x$, 세로의 길이가 $x-2y$인 직사각형에서 한 변의 길이가 $y$인 정사각형 $3$개를 겹치지 않게 잘라낸다.",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "남은 부분의 넓이를 식으로 세우고 인수분해한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "도형의 넓이 관계를 이차식으로 모델링하고 인수분해하는 유형이다. (문항 토큰 xy)",
+  "rpmReason": "두 일차식의 곱으로 이차식을 분해하는 이차식 유형이다. (문항 토큰 xy)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기하 상황의 식 세우기와 이차식 인수분해를 결합한 난이도 2 문항이다. (문항 토큰 xy)",
+  "how": "전체 직사각형 넓이에서 잘라낸 정사각형 넓이를 뺀 식을 인수분해했다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "quote": "가로의 길이가 $x$, 세로의 길이가 $x-2y$인 직사각형에서 한 변의 길이가 $y$인 정사각형 $3$개를 겹치지 않게 잘라낸다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "quote": "남은 부분의 넓이를 인수분해한 식은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "quote": "남은 부분의 넓이를 식으로 세우고 인수분해한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "직사각형의 전체 넓이에서 잘라낸 세 정사각형의 넓이의 합을 뺀 식을 세우고",
+        "src": "solution"
+      }
+    ]
+  }
+}

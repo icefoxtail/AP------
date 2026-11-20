@@ -1,0 +1,62 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "5f8bd2a0d8df3dff",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(2x-3)^2 = 4x^2 - 12x + 9$이므로 바르게 전개되었다.",
+    "다른 보기들의 전개식은 계수나 상수항이 틀렸다.",
+    "따라서 바르게 전개된 식은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 바르게 전개된 식은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-015",
+  "rpmEvidence": "곱셈 공식을 각 식에 정확히 적용하여 올바른 전개식을 판정한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_EXPANSION",
+  "newKeyProposal": null,
+  "typeReason": "완전제곱식 및 곱셈공식의 전개 결과를 판별하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "다항식의 합과 차의 제곱 공식을 적용하는 합·차의 제곱 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 곱셈 공식의 전개 결과를 확인하는 난이도 1 문항이다. (문항 토큰 12)",
+  "how": "곱셈 공식을 각 식에 정확히 적용하여 올바른 전개식을 판정했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "곱셈공식",
+        "quote": "다음 중 바르게 전개된 식은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "quote": "바르게 전개된 식은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "quote": "곱셈 공식을 각 식에 정확히 적용하여 올바른 전개식을 판정한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차식",
+        "quote": "$(2x-3)^2 = 4x^2 - 12x + 9$",
+        "src": "choices"
+      }
+    ]
+  }
+}

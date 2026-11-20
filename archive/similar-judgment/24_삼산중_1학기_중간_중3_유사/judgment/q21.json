@@ -1,0 +1,62 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "29f75399c2ce8053",
+  "solvedAnswer": "$4\\sqrt{3} - 7$",
+  "solveSteps": [
+    "정사각형 한 변의 길이는 $\\sqrt{12} = 2\\sqrt{3}$이다.",
+    "$a = 3 + 2\\sqrt{3}, b = 3 - 2\\sqrt{3}$이다.",
+    "$\\dfrac{b}{a} = \\dfrac{3-2\\sqrt{3}}{3+2\\sqrt{3}} = \\dfrac{(3-2\\sqrt{3})^2}{-3} = \\dfrac{21-12\\sqrt{3}}{-3} = 4\\sqrt{3} - 7$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 1] 수직선 위의 점 $A$는 수 $3$에 대응한다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-012",
+  "rpmEvidence": "$\\dfrac{b}{a}$의 값을 분모를 유리화하여 계산한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+  "newKeyProposal": null,
+  "typeReason": "수직선 위 좌표 결정과 분모의 유리화를 연계하는 서술형 유형이다. (문항 토큰 12)",
+  "rpmReason": "합차 꼴의 분모를 유리화하는 합·차 꼴의 유리화 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무리수 좌표 설정과 분모 유리화 전개를 정확히 서술하는 난이도 2 문항이다. (문항 토큰 12)",
+  "how": "수직선 좌표로 a, b를 구하고 분모를 유리화하여 b/a의 값을 서술형으로 계산했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "수직선",
+        "quote": "[서·논술형 1] 수직선 위의 점 $A$는 수 $3$에 대응한다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리화",
+        "quote": "$\\dfrac{b}{a}$의 값을 구하는 과정을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "$\\dfrac{b}{a}$의 값을 분모를 유리화하여 계산한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정사각형",
+        "quote": "넓이가 $12$인 정사각형의 한 변의 길이만큼",
+        "src": "stem"
+      }
+    ]
+  }
+}

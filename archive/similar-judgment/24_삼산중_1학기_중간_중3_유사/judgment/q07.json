@@ -1,0 +1,62 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "92a71b46f9246386",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\sqrt{a} = 3\\sqrt{2} = \\sqrt{18}$이므로 $a = 18$이다.",
+    "$\\dfrac{\\sqrt{3}}{3\\sqrt{2}} = \\dfrac{\\sqrt{6}}{6} = \\dfrac{1}{6}\\sqrt{6}$이므로 $b = \\dfrac{1}{6}$이다.",
+    "따라서 $\\sqrt{ab} = \\sqrt{18 \\times \\dfrac{1}{6}} = \\sqrt{3}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3\\sqrt{2} = \\sqrt{a}, \\quad \\dfrac{\\sqrt{3}}{3\\sqrt{2}} = b\\sqrt{6}$ 일 때",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-011",
+  "rpmEvidence": "분모의 유리화를 통해 $b$를 구한 후 곱하여 제곱근을 계산한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "근호 안팎의 변환과 분모의 유리화를 결합하여 계산하는 유형이다. (문항 토큰 ab)",
+  "rpmReason": "단항 분모를 유리화하는 한 항의 유리화 유형이다. (문항 토큰 ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱근 성질과 유리화 계산 단계를 결합한 난이도 2 문항이다. (문항 토큰 ab)",
+  "how": "근호 안으로 수를 넣어 a를 구하고 분모의 유리화로 b를 구해 sqrt(ab)를 계산했다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "$3\\sqrt{2} = \\sqrt{a}, \\quad \\dfrac{\\sqrt{3}}{3\\sqrt{2}} = b\\sqrt{6}$ 일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "$\\sqrt{ab}$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "분모의 유리화를 통해 $b$를 구한 후 곱하여 제곱근을 계산한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "$$\\sqrt{a} = 3\\sqrt{2} = \\sqrt{3^2 \\times 2} = \\sqrt{9 \\times 2} = \\sqrt{18}$$",
+        "src": "solution"
+      }
+    ]
+  }
+}

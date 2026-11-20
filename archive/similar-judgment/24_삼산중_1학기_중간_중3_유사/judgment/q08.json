@@ -1,0 +1,62 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "0ead34e8b56065d4",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "분배법칙으로 전개하면 $(\\sqrt{14}+3\\sqrt{2}) - (\\sqrt{98}-2\\sqrt{14})$이다.",
+    "$\\sqrt{98} = 7\\sqrt{2}$이므로 $\\sqrt{14} + 3\\sqrt{2} - 7\\sqrt{2} + 2\\sqrt{14} = 3\\sqrt{14} - 4\\sqrt{2}$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt{2}(\\sqrt{7}+3) - \\sqrt{7}(\\sqrt{14}-2\\sqrt{2})$ 를 계산하면?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-010",
+  "rpmEvidence": "분배법칙을 이용하여 괄호를 전개하고",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "무리수의 분배법칙과 동류항 정리를 수행하는 혼합 계산 유형이다. (문항 토큰 14)",
+  "rpmReason": "근호식의 전개와 분배법칙을 활용하는 분배법칙 유형이다. (문항 토큰 14)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항 근호식 전개와 동류항 계산을 수행하는 난이도 2 문항이다. (문항 토큰 14)",
+  "how": "분배법칙으로 괄호를 전개하고 제곱인수를 꺼내 동류근호끼리 묶어 계산했다. (문항 토큰 14)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "$\\sqrt{2}(\\sqrt{7}+3) - \\sqrt{7}(\\sqrt{14}-2\\sqrt{2})$ 를 계산하면?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "무리수",
+        "quote": "를 계산하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "quote": "분배법칙을 이용하여 괄호를 전개하고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "동류근호끼리 정리한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

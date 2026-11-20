@@ -1,0 +1,62 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "e540ff7eb055c754",
+  "solvedAnswer": "(1) $18\\sqrt{3},\\mathrm{cm^3}$  (2) $66,\\mathrm{cm^2}$",
+  "solveSteps": [
+    "세 모서리는 $3\\sqrt{3}, \\sqrt{3}, 2\\sqrt{3}$이다.",
+    "(1) 부피는 $3\\sqrt{3} \\times \\sqrt{3} \\times 2\\sqrt{3} = 18\\sqrt{3}\\text{cm}^3$이다.",
+    "(2) 겉넓이는 $2(9 + 6 + 18) = 66\\text{cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "세 모서리의 길이가 각각 $(\\sqrt{3}+\\sqrt{12}),\\mathrm{cm}, ; \\sqrt{3},\\mathrm{cm}, ; \\sqrt{12},\\mathrm{cm}$인 직육면체",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-007",
+  "rpmEvidence": "직육면체의 부피 공식과 겉넓이 공식을 적용한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "입체도형 직육면체의 부피와 겉넓이를 근호 곱셈으로 구하는 서술형 유형이다. (문항 토큰 12)",
+  "rpmReason": "근호의 곱셈 성질을 입체도형에 적용하는 근호의 곱 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무리수 길이의 부피와 겉넓이 공식을 적용하는 난이도 1 서술형 문항이다. (문항 토큰 12)",
+  "how": "모서리 길이를 정리한 후 직육면체의 부피와 겉넓이 공식에 대입해 계산했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "세 모서리의 길이가 각각 $(\\sqrt{3}+\\sqrt{12}),\\mathrm{cm}, ; \\sqrt{3},\\mathrm{cm}, ; \\sqrt{12},\\mathrm{cm}$인 직육면체",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "(1) 이 직육면체의 부피를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "직육면체의 부피 공식과 겉넓이 공식을 적용한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "세 모서리의 길이를 동류근호로 정리한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

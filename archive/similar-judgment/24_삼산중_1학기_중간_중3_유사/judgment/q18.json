@@ -1,0 +1,62 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "fb44f0a0b2e0112b",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "세 정사각형의 한 변의 길이는 $\\sqrt{12} = 2\\sqrt{3}, \\sqrt{27} = 3\\sqrt{3}, \\sqrt{75} = 5\\sqrt{3}$이다.",
+    "길이의 합은 $2\\sqrt{3} + 3\\sqrt{3} + 5\\sqrt{3} = 10\\sqrt{3}\\text{cm}$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "넓이가 각각 $12,\\mathrm{cm^2}, ; 27,\\mathrm{cm^2}, ; 75,\\mathrm{cm^2}$인 세 정사각형이 있다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmEvidence": "정사각형의 넓이 공식으로부터 각 한 변의 길이를 근호로 구하고",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_GEOMETRY",
+  "newKeyProposal": null,
+  "typeReason": "정사각형 넓이에서 변의 길이를 도출하고 동류근호를 덧셈하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "근호의 덧셈에서 동류근호 정리를 적용하는 동류근호 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱인수 추출과 동류근호 덧셈의 기본 계산 난이도 1 문항이다. (문항 토큰 12)",
+  "how": "정사각형 넓이에서 한 변의 길이를 근호로 구하고 동류근호를 합산했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "넓이가 각각 $12,\\mathrm{cm^2}, ; 27,\\mathrm{cm^2}, ; 75,\\mathrm{cm^2}$인 세 정사각형이 있다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정사각형",
+        "quote": "각 정사각형의 한 변의 길이의 합을 구하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "정사각형",
+        "quote": "정사각형의 넓이 공식으로부터 각 한 변의 길이를 근호로 구하고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "동류근호의 덧셈을 수행한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

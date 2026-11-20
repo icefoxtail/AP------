@@ -1,0 +1,62 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "8a0b36cab2922cd7",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$(x-2)(x+4) = x^2 + 2x - 8$이므로 올바르게 인수분해되었다.",
+    "다른 보기들의 전개식은 $4xy, 12xy$ 등 계수가 일치하지 않는다.",
+    "따라서 바르게 인수분해한 것은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 다항식을 바르게 인수분해한 것은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "각 선지의 인수분해 공식을 전개하여 일치 여부를 검증한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 인수분해 공식 적용의 정확성을 판별하는 유형이다. (문항 토큰 xy)",
+  "rpmReason": "이차식의 두 일차식 곱 분해를 검토하는 이차식 유형이다. (문항 토큰 xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 인수분해 공식의 진위를 확인하는 난이도 1 문항이다. (문항 토큰 xy)",
+  "how": "각 선지의 우변을 전개하여 좌변과 일치하는 참인 인수분해 식을 확인했다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다음 중 다항식을 바르게 인수분해한 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "quote": "바르게 인수분해한 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "quote": "각 선지의 인수분해 공식을 전개하여 일치 여부를 검증한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "quote": "$x^2 + 2x - 8 = (x-2)(x+4)$",
+        "src": "choices"
+      }
+    ]
+  }
+}
