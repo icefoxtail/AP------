@@ -1,0 +1,74 @@
+{
+  "qid": "08",
+  "itemFingerprint": "84ab6d514628b93e",
+  "solveSteps": [
+    "16 = 2^4이므로 16^5 = (2^4)^5 = 2^20이다.",
+    "2^20 = (2^5)^4로 나타낼 수 있다.",
+    "2^5 = A를 대입하면 16^5 = A^4이다.",
+    "따라서 역수를 취하면 1 / 16^5 = 1 / A^4이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$2^5 = A$일 때, $\\dfrac{1}{",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "16^5 = 2^20 = (2^5)^4를 변형하여 1 / 16^5 = 1 / A^4로 나타내는 문제이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "거듭제곱의 거듭제곱 법칙으로 16^5 = 2^20을 A의 식 1 / A^4로 표현하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "밑 16을 2^4로 변형하고 2^20을 (2^5)^4 = A^4로 연결하여 역수를 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "밑 $16$을 소인수 $2$의 거듭제곱으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "역수",
+        "src": "solution",
+        "quote": "따라서 역수를 취하면 다음과 같다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "A$를 대입한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소인수",
+        "src": "solution",
+        "quote": "소인수 $2$의 거듭제곱으로 변형하여"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "2^5 = A라는 조건을 확인한다.",
+    "goal": "1 / 16^5를 A로 표현한다.",
+    "method": "16^5 = 2^20 = (2^5)^4 = A^4로 대입한다.",
+    "condition": "역수 형태를 유지한다."
+  },
+  "how": "$16^5 = 2^{20} = (2^5)^4 = A^4$이므로 역수인 $1/16^5 = 1/A^4$로 ⑤로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

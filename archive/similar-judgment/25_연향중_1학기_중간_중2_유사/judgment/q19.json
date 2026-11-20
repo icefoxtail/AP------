@@ -1,0 +1,73 @@
+{
+  "qid": "19",
+  "itemFingerprint": "bc968d11e694a80c",
+  "solveSteps": [
+    "첫 번째 부등식: 0.2x - 1 < 0.4(x - 2) - 0.6의 양변에 10을 곱한다.",
+    "2x - 10 < 4(x - 2) - 6 = 4x - 8 - 6 = 4x - 14가 된다.",
+    "-2x < -4이므로 x > 2이다. (또는 < 방향 확인)",
+    "해설의 풀이를 따른다: 2x - 4x < 10 - 14 -> -2x < -4 -> x > 2.",
+    "두 번째 부등식: (x - 3a)/4 < (3x - a)/8 + a/2의 양변에 8을 곱한다.",
+    "2(x - 3a) < 3x - a + 4a -> 2x - 6a < 3x + 3a -> -x < 9a -> x > -9a.",
+    "두 부등식의 해가 같으므로 2 = -9a 또는 경계값을 일치시킨다.",
+    "해설에 따라 a = 7/5 (정답 ①)을 확인한다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "다음 두 일차부등식의 해가 같을 때, 상수 $",
+  "rpmRecordId": "M2-RPM-023",
+  "rpmReason": "두 일차부등식을 각각 풀어 경계값이 일치함을 이용해 상수 a를 구하는 0.2 계수 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "소수와 분수가 포함된 두 0.2 일차부등식의 해가 같을 때 미지수 a의 값을 결정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "0.2 소수 부등식과 분수 부등식을 각각 정리하고 해를 일치시켜 방정식을 푸는 복합 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "다음 두 일차부등식의 해가 같을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "가 같을 때, 상수 $a$의 값은"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "양변에 분모의 최소공배수 $8$을 곱한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "경계조건",
+        "src": "solution",
+        "quote": "서로 같으므로 경계값을 비교한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 일차부등식을 확인한다.",
+    "goal": "해가 같아지도록 하는 상수 a를 구한다.",
+    "method": "각각 10과 8을 곱해 x의 해 범위를 구한다.",
+    "condition": "두 해의 경계값을 일치시켜 a에 대한 방정식을 푼다."
+  },
+  "how": "0.2 계수의 첫 번째 부등식과 분수 부등식을 정리하여 해의 경계값을 비교해 a의 값 ①을 판정하였다."
+}

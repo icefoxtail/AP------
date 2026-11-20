@@ -1,0 +1,79 @@
+{
+  "qid": "09",
+  "itemFingerprint": "e3e164a7ae9cd51b",
+  "solveSteps": [
+    "좌변을 정리하면",
+    "(-3x^A y^2)^2 = 9 x^(2A) y^4이다.",
+    "9 x^(2A) y^4 * x^4 y^3 = 9 x^(2A+4) y^7이다.",
+    "/(x/y^3)^B = * (y^(3B) / x^B)이므로 9 x^(2A+4-B) y^(7+3B)이다.",
+    "우변 C x^7 y^16과 비교한다.",
+    "계수 C = 9이다.",
+    "y의 지수: 7 + 3B = 16이므로 3B = 9에서 B = 3이다.",
+    "x의 지수: 2A + 4 - 3 = 7이므로 2A + 1 = 7에서 2A = 6, A = 3이다.",
+    "따라서 A + B + C = 3 + 3 + 9 = 15이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$(-3x^A y^2)^2 \\times x^4",
+  "rpmRecordId": "M2-RPM-011",
+  "rpmReason": "단항식 혼합 계산으로 지수를 비교하여 A = 3, B = 3, C = 9에서 합 15를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식의 거듭제곱과 곱셈, 나눗셈을 정리해 지수 16 및 7과 계수 C를 비교하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "단항식의 거듭제곱과 나눗셈을 정리하여 미정 지수와 계수의 합 15를 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "세 상수 $A, B, C$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "좌변의 거듭제곱과 곱셈, 나눗셈을 전개한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "좌변을 지수법칙을 이용하여 정리한 후",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "우변의 계수 및 지수와 비교한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "단항식 등식 조건을 확인한다.",
+    "goal": "A + B + C의 합을 구한다.",
+    "method": "좌변을 전개하고 우변과 계수 및 각 지수를 비교한다.",
+    "condition": "미지수 A, B, C가 상수임을 쓴다."
+  },
+  "how": "좌변을 정리해 $C = 9, 7+3B = 16 \\implies B = 3, 2A+1 = 7 \\implies A = 3$에서 $A+B+C = 15$인 ③으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

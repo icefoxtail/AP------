@@ -1,0 +1,69 @@
+{
+  "qid": "13",
+  "itemFingerprint": "7b218745ceeeefa4",
+  "solveSteps": [
+    "주어진 식은 aligned 환경의 두 분수식 뺄셈이다.",
+    "첫 번째 분수식을 계산하면 (4x - 2x^3) / x = 4 - 2x^2이다.",
+    "두 번째 분수식을 계산하면 (9x^3 - 7x^5) / x^3 = 9 - 7x^2이다.",
+    "두 식의 뺄셈을 수행하면 (4 - 2x^2) - (9 - 7x^2) = 5x^2 - 5이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "다음 식 $\\dfrac{4x - 2x^3}{x",
+  "rpmRecordId": "M2-RPM-015",
+  "rpmReason": "분수식에서 공통인수를 약분한 뒤 동류항을 정리하여 aligned 식 5x^2 - 5를 계산하는 문제이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "다항식을 단항식 x와 x^3으로 각각 나눈 결과를 aligned 뺄셈으로 정리하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 분수식을 항별로 약분하고 괄호를 풀어 동류항을 모으는 aligned 기본 연산 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "분수식",
+        "src": "solution",
+        "quote": "1단계: 첫 번째 분수식을 계산한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "약분하여 정리한 후 뺄셈을 수행한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "약분",
+        "src": "solution",
+        "quote": "각각 항별로 약분하여 정리한 후",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "두 분수식을 각각 항별로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 두 분수식의 형태를 확인한다.",
+    "goal": "바르게 계산한 결과를 구한다.",
+    "method": "분모의 문자로 항별 약분을 수행한 뒤 뺀다.",
+    "condition": "뺄셈 부호에 주의하여 동류항을 계산한다."
+  },
+  "how": "aligned 식에서 각 분수식을 약분하여 $(4 - 2x^2) - (9 - 7x^2) = 5x^2 - 5$를 얻어 정답 ②로 판정하였다."
+}

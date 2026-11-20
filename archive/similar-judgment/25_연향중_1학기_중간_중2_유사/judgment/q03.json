@@ -1,0 +1,73 @@
+{
+  "qid": "03",
+  "itemFingerprint": "8ed32b57f2ad2e6b",
+  "solveSteps": [
+    "1/3을 소수로 나타내면 1/3 = 0.333... = 0.\\dot{3}으로 순환마디는 3(1개)이므로 x = 1이다.",
+    "4/27을 소수로 나타내면 4 / 27 = 0.148148... = 0.\\dot{1}4\\dot{8}로 순환마디는 148(3개)이므로 y = 3이다.",
+    "따라서 x + y = 1 + 3 = 4이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{1}{3}$과 $\\dfra",
+  "rpmRecordId": "M2-RPM-003",
+  "rpmReason": "분수 1/3과 4/27의 순환마디 길이 x = 1, y = 3을 구하여 합 x + y = 4를 계산하는 문제이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분수 1/3과 4/27을 직접 나눗셈하여 순환마디의 숫자의 개수를 세는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 분수 1/3과 4/27을 소수로 변환하여 순환마디 개수의 합을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{1}{3}$과 $\\dfrac{4}{27}$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환마디",
+        "src": "stem",
+        "quote": "순환마디의 숫자의 개수를 각각 $x, y$라"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "각 분수를 나눗셈하여 순환마디를 구하고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "순환마디의 숫자의 개수를 각각 $x, y$라"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 분수를 확인한다.",
+    "goal": "순환마디 숫자 개수의 합 x + y를 구한다.",
+    "method": "나눗셈으로 순환마디를 구한다.",
+    "condition": "각각의 순환마디 길이를 올바르게 센다."
+  },
+  "how": "$1/3$의 순환마디는 3(1개), $4/27$의 순환마디는 148(3개)이므로 $x + y = 1 + 3 = 4$인 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

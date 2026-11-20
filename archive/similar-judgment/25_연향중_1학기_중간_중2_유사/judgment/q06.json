@@ -1,0 +1,77 @@
+{
+  "qid": "06",
+  "itemFingerprint": "e166529617314f81",
+  "solveSteps": [
+    "지수법칙을 적용하여 각 보기를 정리한다.",
+    "① a^5 * a^3 = a^8",
+    "② a^16 / a^2 = a^(16-2) = a^14",
+    "③ (a^2)^4 = a^(2*4) = a^8",
+    "④ (ab)^4 / (b/a)^4 = a^4 b^4 * (a^4 / b^4) = a^8",
+    "⑤ a * a^3 * a^4 = a^(1+3+4) = a^8",
+    "따라서 ②만 a^14로 다른 결과이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "다음 중 계산 결과가 나머지 넷과 다른 하나를",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "지수법칙으로 보기 ② a^16 / a^2 = a^14만 다른 값임을 선별하는 문제이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "지수의 덧셈, 뺄셈, 곱셈 법칙을 비교하여 결과 a^14가 다른 보기를 고르는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "각 보기의 지수 계산 결과가 a^8 또는 a^14임을 확인하는 기본 지수법칙 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "계산 결과가 나머지 넷과 다른 하나를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "밑 $a$의 단일 거듭제곱으로 정리한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 적용하여 각 선지의 식을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "단일 거듭제곱으로 정리한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 다섯 거듭제곱 계산식을 확인한다.",
+    "goal": "결과가 다른 하나를 고른다.",
+    "method": "지수법칙을 적용해 각 식의 지수를 계산한다.",
+    "condition": "단일 밑 a의 거듭제곱으로 통일한다."
+  },
+  "how": "각 보기를 계산하면 ①, ③, ④, ⑤는 모두 $a^8$이고 ②만 $a^{14}$이므로 정답 ②로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

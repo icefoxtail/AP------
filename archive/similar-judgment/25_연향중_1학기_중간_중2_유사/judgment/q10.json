@@ -1,0 +1,75 @@
+{
+  "qid": "10",
+  "itemFingerprint": "eba67de5d3081fb9",
+  "solveSteps": [
+    "a(6a - 4b) - a(8a - 11b)에서 분배법칙을 적용한다.",
+    "6a^2 - 4ab - 8a^2 + 11ab로 전개된다.",
+    "동류항끼리 모아 정리하면 (6 - 8)a^2 + (-4 + 11)ab = -2a^2 + 7ab이다.",
+    "a^2의 계수 A = -2, ab의 계수 B = 7이다.",
+    "따라서 A + B = -2 + 7 = 5이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "다음 식 $a(6a - 4b) - a(8a -",
+  "rpmRecordId": "M2-RPM-014",
+  "rpmReason": "분배법칙으로 a(6a - 4b) - a(8a - 11b)를 정리하여 계수 합 -2 + 7 = 5를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식과 다항식 8a - 11b 등의 곱셈을 전개하고 동류항을 정리하여 계수 합을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분배법칙으로 괄호를 풀고 ab의 계수 B = 7과 A = -2의 합 5를 계산하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "전개",
+        "src": "stem",
+        "quote": "를 전개하여 간단히 했을 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$a^2$의 계수를 $A$, $ab$의 계수를"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "src": "solution",
+        "quote": "분배법칙으로 괄호를 풀고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "동류항끼리 모아 정리한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 전개식을 파악한다.",
+    "goal": "계수 합 A + B를 계산한다.",
+    "method": "분배법칙과 동류항 덧셈으로 식을 정리한다.",
+    "condition": "a^2과 ab의 계수를 각각 분리한다."
+  },
+  "how": "분배법칙으로 정리하면 $-2a^2 + 7ab$이므로 $A = -2, B = 7$에서 $A + B = 5$인 ④로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}
