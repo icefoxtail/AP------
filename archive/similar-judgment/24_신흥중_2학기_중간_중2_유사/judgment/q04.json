@@ -1,0 +1,61 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "9d76328970cb4edc",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "두 밑각의 크기는 $\\angle B = \\angle C = (180^\\circ - 48^\\circ)/2 = 66^\\circ$이다. (AB)",
+    "각의 이등분선에 의해 $\\angle BCD = 66^\\circ / 2 = 33^\\circ$이다. (AB)",
+    "$\\triangle BDC$에서 $\\angle BDC = 180^\\circ - 66^\\circ - 33^\\circ = 81^\\circ$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}=",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 밑각의 이등분선과 각의 크기 계산 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "이등변삼각형 단원의 밑각의 이등분선에 의해 생기는 삼각형의 각 구하기 유형이다. (AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형의 밑각과 밑각의 이등분선이 만드는 내부 삼각형의 각을 구하는 난이도 2 문항이다. (AB)",
+  "how": "이등변삼각형의 밑각 66도를 구하고 그 절반 33도와 삼각형 내각의 합으로 각 BDC 81도를 구했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle BDC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "밑각",
+        "src": "solution",
+        "quote": "$\\angle B=\\angle C=\\dfrac{180^\\circ-48^\\circ}{2}=66^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "$\\angle C$의 이등분선이 변 $AB$와 만나는 점을 $D$라"
+      }
+    ]
+  }
+}

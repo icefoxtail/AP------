@@ -1,0 +1,62 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "5bf31563a1316072",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "외심이 변 BC 바깥쪽에 있으므로 $\\angle ABO = 24^\\circ + 14^\\circ = 38^\\circ$이다. (ABC)",
+    "$\\overline{OA}=\\overline{OB}$이므로 $\\angle BAO = 38^\\circ$, $\\overline{OA}=\\overline{OC}$이므로 $\\angle OAC = c + 14^\\circ$이다. (ABC)",
+    "$\\triangle ABC$의 내각의 합 $2c + 76^\\circ = 180^\\circ \\implies c = 52^\\circ$이다.",
+    "따라서 $\\angle BAC = 38^\\circ + 66^\\circ = 104^\\circ$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "둔각삼각형 $ABC$의 외심",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "둔각삼각형의 외심의 위치와 각의 크기 계산 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-065",
+  "rpmReason": "외심과 내심 단원의 둔각삼각형에서 외심의 위치와 각의 크기 관계 유형이다. (ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외심이 외부에 있는 둔각삼각형에서 꼭짓점과 외심이 이루는 복잡한 각 관계를 추론하는 난이도 3 문항이다. (ABC)",
+  "how": "외심이 삼각형 외부에 위치할 때의 각의 덧셈 관계와 이등변삼각형 성질로 둔각 BAC 104도를 구했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "둔각삼각형 $ABC$의 외심 $O$가 변 $BC$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle BAC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "외심",
+        "src": "solution",
+        "quote": "외심 $O$가 변 $BC$의 반대쪽에 있으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "둔각",
+        "src": "stem",
+        "quote": "둔각삼각형 $ABC$의"
+      }
+    ]
+  }
+}

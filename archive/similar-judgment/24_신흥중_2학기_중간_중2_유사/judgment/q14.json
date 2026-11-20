@@ -1,0 +1,60 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "ee2f9dbff43c0909",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "대각선은 서로를 이등분하므로 $\\overline{AO} = 5\\text{ cm}, \\overline{BO} = 8\\text{ cm}$이다. (ABCD)",
+    "$\\overline{AB} = 7\\text{ cm}$이므로 $\\triangle ABO$의 둘레는 $7 + 5 + 8 = 20\\text{ cm}$이다. (ABCD)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "평행사변형 $ABCD$에서",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "평행사변형의 대각선 이등분 성질과 삼각형의 둘레 계산 유형이다. (ABCD)",
+  "rpmRecordId": "M2-RPM-073",
+  "rpmReason": "평행사변형 단원의 대각선의 상호 이등분 성질을 이용한 내부 삼각형 둘레 계산 유형이다. (ABCD)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행사변형의 대각선 이등분 성질을 이용해 분할된 삼각형의 둘레를 구하는 난이도 1 문항이다. (ABCD)",
+  "how": "평행사변형의 대각선 이등분 성질로 AO=5, BO=8을 구하고 둘레 20을 계산했다. (ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "평행사변형 $ABCD$에서 두 대각선 $AC$, $BD$의 교점을 $O$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "$\\triangle ABO$의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "평행사변형의 두 대각선은 서로를 이등분하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "$\\overline{AC}=10\\text{ cm}$, $\\overline{BD}=16\\text{ cm}$일 때"
+      }
+    ]
+  }
+}

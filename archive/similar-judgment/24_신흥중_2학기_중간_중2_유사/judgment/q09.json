@@ -1,0 +1,61 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "637817d74488f232",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "외심은 세 변의 수직이등분선의 교점이므로 $\\overline{AM}=\\overline{BM}$이고 세 꼭짓점까지의 거리가 같다. (ABC)",
+    "변까지의 거리 $\\overline{OM}$과 $\\overline{ON}$이 같다는 것은 내심의 성질이므로 외심에서는 항상 성립하지 않는다. (ABC)",
+    "따라서 항상 옳다고 할 수 없는 것은 ①이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "점 $O$가 $\\triang",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "외심의 수직이등분선 성질과 기하학적 참거짓 판정 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-064",
+  "rpmReason": "외심 단원의 수직이등분선과 외심의 성질 판별 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외심의 기본 정의와 성질을 내심의 성질과 구분하여 참거짓을 판별하는 난이도 2 문항이다. (ABC)",
+  "how": "외심의 수직이등분선 성질과 꼭짓점까지의 거리 일치를 확인하고 변까지의 거리 조건이 아님을 밝혔다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "외심",
+        "src": "stem",
+        "quote": "점 $O$가 $\\triangle ABC$의 외심이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "$\\overline{OM}$과 $\\overline{ON}$은 서로 다른 두 변"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직이등분선",
+        "src": "solution",
+        "quote": "외심의 성질에 의해 $\\overline{AM}=\\overline{BM}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선의발",
+        "src": "stem",
+        "quote": "내린 수선의 발을 각각 $M$, $L$, $N$이라 할 때"
+      }
+    ]
+  }
+}

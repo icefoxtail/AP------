@@ -1,0 +1,61 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "3f32b17e2b29ab3a",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "꼭짓각의 이등분선은 밑변을 수직이등분하므로 $\\overline{BD}=\\overline{CD}, \\overline{AD} \\perp \\overline{BC}$이다. (AB)",
+    "선분 $AD$ 위의 점 $P$에 대해 $\\triangle PBD \\equiv \\triangle PCD$이므로 $\\overline{PB}=\\overline{PC}$이다. (AB)",
+    "하지만 $\\overline{BP}=\\overline{AP}$는 일반적으로 성립하지 않는다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}=",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 꼭짓각의 이등분선의 성질 참거짓 판정 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-061",
+  "rpmReason": "이등변삼각형 단원의 꼭짓각의 이등분선 성질과 대칭축 위의 점 판정 유형이다. (AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 꼭짓각의 이등분선의 성질과 대칭축 위의 점의 기하학적 성질을 판별하는 난이도 2 문항이다. (AB)",
+  "how": "꼭짓각 이등분선 위의 임의의 점에서 두 꼭짓점까지의 거리는 같으나 AP와의 일치는 보장되지 않음을 판별했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "$\\overline{BP}=\\overline{AP}$는 점 $P$의 위치에 따라"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "$\\triangle ABD \\equiv \\triangle ACD$ (SAS 합동)이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $AD$ 위의 한 점 $P$를 잡을 때"
+      }
+    ]
+  }
+}

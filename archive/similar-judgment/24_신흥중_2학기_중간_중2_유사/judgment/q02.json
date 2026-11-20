@@ -1,0 +1,62 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "cd54132ea5a4d9e0",
+  "solvedAnswer": "①, ④",
+  "solveSteps": [
+    "$\\angle A$의 이등분선이므로 $\\angle BAD = \\angle CAD$이다 (㉠ 오답). (ABC)",
+    "한 변과 양 끝각이 같으므로 합동 조건은 ASA 합동이다 (㉣ 오답). (ABC)",
+    "따라서 알맞지 않은 것은 ①, ④이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 두 내각의 크기가 같",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 판정 조건과 삼각형의 합동 증명 빈칸 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-062",
+  "rpmReason": "이등변삼각형 단원의 두 내각의 크기가 같을 때 이등변삼각형 증명 빈칸 유형이다. (ABC)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 내각이 같은 삼각형이 이등변삼각형임을 보이는 증명 과정의 빈칸을 채우는 난이도 1 문항이다. (ABC)",
+  "how": "각의 이등분선과 삼각형 내각의 합으로 ASA 합동 조건을 확인하여 잘못된 빈칸을 찾았다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "두 내각의 크기가 같은 삼각형 $ABC$ ($\\angle B=\\angle C$)가 이등변삼각형임을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "합동 조건은 ASA 합동이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "$\\triangle ABD \\equiv \\triangle ACD$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "내각",
+        "src": "stem",
+        "quote": "두 내각의 크기가 같은"
+      }
+    ]
+  }
+}

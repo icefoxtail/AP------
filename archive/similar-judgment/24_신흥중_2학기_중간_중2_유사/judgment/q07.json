@@ -1,0 +1,61 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "bc55b22c112cc447",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\angle BDM = \\angle CEM = 90^\\circ$이다. (ABC)",
+    "점 $M$이 $BC$의 중점이므로 빗변 $\\overline{MB} = \\overline{MC}$이고, 조건에서 $\\overline{MD} = \\overline{ME}$이다. (ABC)",
+    "따라서 $\\triangle BMD \\equiv \\triangle CME$ (RHS 합동)이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "도형에서의 직각삼각형의 합동 증명과 조건 판별 유형이다. (ABC)",
+  "rpmRecordId": "M2-RPM-070",
+  "rpmReason": "직각삼각형의 합동 단원의 빗변 중점과 수선의 길이 조건에 따른 RHS 합동 유형이다. (ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "도형 조건에서 직각삼각형의 빗변과 다른 한 변의 일치를 찾아 RHS 합동을 증명하는 난이도 2 문항이다. (ABC)",
+  "how": "직각, 빗변의 중점 조건, 수선의 길이 조건을 확인하여 RHS 합동을 도출했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "변 $BC$의 중점을 $M$이라 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합동",
+        "src": "stem",
+        "quote": "합동인 삼각형과 그 합동 조건으로 옳은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "빗변",
+        "src": "solution",
+        "quote": "빗변 $\\overline{MB}=\\overline{MC}$이며, $\\overline{MD}=\\overline{ME}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선의발",
+        "src": "stem",
+        "quote": "내린 수선의 발을 각각 $D$, $E$라 하자."
+      }
+    ]
+  }
+}

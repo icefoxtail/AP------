@@ -1,0 +1,61 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "d77b34068346d206",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\overline{BD}=\\overline{DE}$이므로 $\\angle BED = 22^\\circ$, 외각 $\\angle EDA = 44^\\circ$이다. (BA)",
+    "$\\overline{DE}=\\overline{EA}$이므로 $\\angle DAE = 44^\\circ$, $\\triangle BAE$ 외각 $\\angle AEC = 22^\\circ + 44^\\circ = 66^\\circ$이다.",
+    "$\\overline{EA}=\\overline{AC}$이므로 $\\angle ECA = 66^\\circ$이고, $\\angle EAC = 180^\\circ - 66^\\circ - 66^\\circ = 48^\\circ$이다. (BA)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "선분 $BA$ 위에 점 $D",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "연속된 이등변삼각형과 외각 성질을 이용한 각의 크기 추적 유형이다. (BA)",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "이등변삼각형 단원의 여러 이등변삼각형과 외각 성질의 연속 적용 유형이다. (BA)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "여러 개의 이등변삼각형이 연결된 도형에서 외각 성질을 연속적으로 추적하는 난이도 2 문항이다. (BA)",
+  "how": "이등변삼각형의 밑각과 삼각형의 외각 성질을 계단식으로 연속 적용하여 각 EAC 48도를 계산했다. (BA)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\overline{BD}=\\overline{DE}=\\overline{EA}=\\overline{AC}$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle EAC$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "$\\triangle BDE$의 외각 성질에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $BA$ 위에 점 $D$가 있고"
+      }
+    ]
+  }
+}

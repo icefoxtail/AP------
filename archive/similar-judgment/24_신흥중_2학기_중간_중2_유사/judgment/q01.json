@@ -1,0 +1,61 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "ccbe2942959f32b6",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\angle ACB = 180^\\circ - 122^\\circ = 58^\\circ$이다. (AB)",
+    "이등변삼각형이므로 두 밑각의 크기는 $\\angle B = \\angle ACB = 58^\\circ$이다. (AB)",
+    "따라서 $\\angle A = 180^\\circ - 58^\\circ - 58^\\circ = 64^\\circ$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB}=",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 두 밑각의 크기와 꼭짓각 계산 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "이등변삼각형 단원의 외각 조건을 이용한 밑각과 꼭짓각 계산 유형이다. (AB)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형의 밑각의 성질과 평각의 크기를 이용하는 난이도 1 문항이다. (AB)",
+  "how": "외각의 정의로 밑각 58도를 구하고 이등변삼각형의 성질로 꼭짓각 64도를 계산했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle A$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "밑각",
+        "src": "solution",
+        "quote": "$\\angle B=\\angle ACB=58^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "변 $BC$의 연장선 위의 점 $D$에 대하여"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "555a4834475e88bc",
+  "solvedAnswer": "$\\triangle ABD \\equiv \\triangle ACD$ (SAS 합동)이므로 $\\angle B=\\angle C$",
+  "solveSteps": [
+    "꼭짓각 $\\angle A$의 이등분선 $\\overline{AD}$를 긋는다. (AB)",
+    "$\\overline{AB}=\\overline{AC}, \\angle BAD=\\angle CAD, \\overline{AD}$ 공통이므로 $\\triangle ABD \\equiv \\triangle ACD$ (SAS 합동)이다.",
+    "대응각의 크기가 같으므로 $\\angle B = \\angle C$이다. (AB)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 1] $\\overl",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_ISOSCELES_TRIANGLE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이등변삼각형의 성질 증명 서술형 유형이다. (AB)",
+  "rpmRecordId": "M2-RPM-060",
+  "rpmReason": "이등변삼각형 단원의 꼭짓각의 이등분선을 이용한 두 밑각의 크기 증명 서술형 유형이다. (AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형의 두 밑각의 크기가 같음을 삼각형의 합동을 통해 단계별로 서술하는 난이도 2 서술형 문항이다. (AB)",
+  "how": "꼭짓각의 이등분선으로 분할된 두 삼각형의 SAS 합동을 보여 두 밑각의 크기가 같음을 증명했다. (AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "$\\overline{AB}=\\overline{AC}$인 이등변삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "밑각",
+        "src": "stem",
+        "quote": "두 밑각의 크기가 같음을 다음 순서에 따라 설명하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "$\\triangle ABD \\equiv \\triangle ACD$ (SAS 합동)이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이등분선",
+        "src": "stem",
+        "quote": "꼭짓각 $\\angle A$의 이등분선을 그어 밑변 $BC$와 만나는 점을 $D$라"
+      }
+    ]
+  }
+}
