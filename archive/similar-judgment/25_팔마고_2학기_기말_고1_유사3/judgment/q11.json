@@ -1,0 +1,70 @@
+{
+  "qid": 11,
+  "itemFingerprint": "fcb9d8173942f550",
+  "solveSteps": [
+    "x≥-a/2 에서 f 는 증가하므로 f 와 f^{-1} 의 교점은 y=x 위에 있다.",
+    "점 (3,3) 에서 접하므로 f(x)=x, 즉 x^2+(a-1)x+b=0 이 x=3 을 중근으로 갖는다.",
+    "(x-3)^2=x^2-6x+9 와 계수를 비교하면 a-1=-6, b=9 이므로 a=-5, b=9 이다.",
+    "-a/2=5/2≤3 이므로 접점이 정의역에 있고 a+b=4 이므로 ③. (식 ax)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "교점은 직선 $y=x$ 위에 있으며",
+  "rpmRecordId": "H1-RPM-256",
+  "rpmReason": "증가함수와 역함수 그래프가 y=x 에 대칭이라 접점 (3,3) 이 y=x 위에 있음을 쓰는 단계라 역함수 그래프 대칭 행이다. (식 ax)",
+  "problemTypeKey": "PT_INVERSE_GRAPH",
+  "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+  "typeReason": "f 와 f^{-1} 의 접점 (3,3) 을 y=x 위의 중근 x=3 으로 보고 (x-3)^2 과 계수를 비교해 a=-5, b=9 를 구하는 것이 함수와 역함수의 교점·접점 템플릿의 정의와 같다. (식 ax)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "접점이 y=x 위의 중근이라는 발상, (x-3)^2 과 계수 비교로 a=-5, b=9, 정의역 5/2≤3 확인이 필요해 3단계로 본다. (식 ax)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "그 역함수 $y=f^{-1}(x)$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "양변의 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접함",
+        "src": "stem",
+        "quote": "점 $(3,3)$에서 접할 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "접점 (3,3) 이 y=x 위의 중근임을 이용해 a=-5, b=9, a+b=4 ③을 얻었고 해설과 같다. 함수와 역함수의 접점이라 역함수의 그래프 유형을 골랐다. (식 ax)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

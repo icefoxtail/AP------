@@ -1,0 +1,77 @@
+{
+  "qid": 23,
+  "itemFingerprint": "5c43fe032334c7d8",
+  "solveSteps": [
+    "y^2=4-2x, x=(4-y^2)/2 를 y=x+k 에 대입하면 y^2+2y-2k-4=0 이다.",
+    "서로 다른 두 실근이므로 D/4=2k+5>0, k>-5/2 이다.",
+    "두 근의 합 -2<0 이고 모두 0 이하이려면 곱 -2k-4≥0, k≤-2 이다.",
+    "k=-2 이면 y=0, -2 로 가능하므로 -5/2<k≤-2."
+  ],
+  "solvedAnswer": "$-\\dfrac{5}{2}\\lt k\\le -2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "그래프와 직선 $y=x+k$가 서로 다른 두 점에서 만나도록",
+  "rpmRecordId": "H1-RPM-272",
+  "rpmReason": "무리함수 y=-√(4-2x) 와 직선 y=x+k 의 교점 조건을 y^2+2y-2k-4=0 으로 바꿔 따지는 단계라 무리함수의 교점 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+  "typeReason": "y^2+2y-2k-4=0 이 y≤0 인 서로 다른 두 실근을 갖는 조건 -5/2<k≤-2 로 교점 두 개의 범위를 정하는 것이 그래프의 교점 개수 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B34",
+  "difficultyReason": "y 로 정리해 이차방정식 만들기, 판별식 k>-5/2, 두 근이 0 이하인 조건 k≤-2 와 경계 k=-2 확인까지 해야 해 3단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리함수",
+        "src": "stem",
+        "quote": "함수 $y=-\\sqrt{4-2x}$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$k$의 값의 범위를 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "이를 직선 $y=x+k$에 대입하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D>0$에서",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "두 근의 곱이 $0$ 이상이어야 한다",
+        "evidenceType": "IMPLIED",
+        "justification": "두 근의 합 -2<0 이므로 두 근이 모두 0 이하이려면 곱이 0 이상이면 된다는 근과 계수의 관계 활용이다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y 에 대한 이차방정식에서 판별식 k>-5/2 와 곱 조건 k≤-2 로 -5/2<k≤-2 를 얻었고 해설과 같다. 무리함수와 직선의 교점 개수 조건이라 교점 행과 교점 개수 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 19,
+  "itemFingerprint": "5a51e406fc834c74",
+  "solveSteps": [
+    "그림에서 f(x)=0 의 근이 1, 3 이고 꼭짓점이 (2,3) 이므로 f(x)=-3(x-1)(x-3)=-3x^2+12x-9 이다.",
+    "f(f(x))=0 에서 f(x)=1 또는 f(x)=3 이다.",
+    "3x^2-12x+10=0 은 D/4=6>0 이고 두 근의 합은 4, f(x)=3 은 x=2 이다.",
+    "x=2 는 3x^2-12x+10=0 의 근이 아니므로 세 근이 다르고 합은 4+2=6 이라 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다음 그림과 같은 이차함수",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "방정식 $(f\\circ f)(x)=0$에서 $f(f(x))=0$이므로",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "f(f(x))=0 을 f(x)=1 또는 f(x)=3 으로 바꿔 합성함수 방정식을 푸는 단계라 합성함수 계산 행이다. 판별식 6, 합 4. (배점 5.2점)",
+  "problemTypeKey": "PT_COMPOSITION_EQUATION",
+  "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+  "typeReason": "f(f(x))=0 에서 f(x)=1, 3 으로 나누어 3x^2-12x+10=0 의 근의 합 4 와 x=2 를 더해 6 을 구하는 것이 합성함수 방정식 풀기 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "그래프에서 f 결정, f(f(x))=0 분해, 이차방정식 판별식 6 과 근의 합 4, 중근 x=2 의 서로 다름 확인까지 해야 해 3단계로 본다. (배점 5.2점)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=f(x)$"
+      },
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점이 $(2,3)$이므로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "서로 다른 모든 실근의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "$f(f(x))=0$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "f(f(x))=0 을 f(x)=1 또는 f(x)=3 으로 나누어 푸는 합성함수 방정식 풀이다"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림에서 f(x)=-3x^2+12x-9 를 구하고 f(x)=1, 3 을 풀어 합 6 ②를 얻었고 해설과 같다. 합성함수 방정식이 결정 단계라 해당 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

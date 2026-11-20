@@ -1,0 +1,71 @@
+{
+  "qid": 1,
+  "itemFingerprint": "a37d19643df2a67f",
+  "solveSteps": [
+    "(1) 직선은 모든 수직선과 한 점에서 만나 함수의 그래프이다.",
+    "(2) x=0 에서 열린 점 (0,-1) 은 제외되고 닫힌 점 (0,1) 만 있어 x 마다 y 가 하나다.",
+    "(3) 반원과 (5) 세 점은 각 x 에 y 가 하나이다.",
+    "(4) x=1 에서 닫힌 점 (1,1) 과 (1,2) 가 함께 있어 한 x 에 y 가 둘이라 함수의 그래프가 아니고 ④. (배점 3.5점)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다섯 개의 그래프 중 함수의 그래프가 아닌 것은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "정의역의 각 원소 $x$에 공역의 원소 $y$가 오직 하나씩만 대응해야",
+  "rpmRecordId": "H1-RPM-251",
+  "rpmReason": "(4)의 x=1 에서 닫힌 점 (1,1) 과 (1,2) 가 둘 다 있는 것을 보고 x 하나에 y 가 둘 대응하는지 따지는 단계라 대응과 함수 행이다. (배점 3.5점)",
+  "problemTypeKey": "PT_FUNCTION_DEFINITION_JUDGMENT",
+  "templateKey": "TPL_FUNCTION_JUDGMENT_GRAPH",
+  "typeReason": "다섯 그래프 (1)~(5) 를 y축에 평행한 직선과의 교점 수로 걸러 (4) 만 함수가 아님을 찾는 것이 함수의 그래프 판정 템플릿의 정의와 같다. (배점 3.5점)",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "(1)~(5) 다섯 그래프에 수직선을 대 보기만 하면 되는 정의 확인이라 1단계다. (배점 3.5점)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "다섯 개의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "함수의 그래프가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수직선판정법",
+        "src": "solution",
+        "quote": "$y$축에 평행한 직선을 그었을 때",
+        "evidenceType": "IMPLIED",
+        "justification": "y축에 평행한 직선을 그어 만나는 점의 개수를 세는 방법이 수직선 판정법이다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유일성",
+        "src": "solution",
+        "quote": "오직 하나씩만 대응해야"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "다섯 그래프를 수직선 판정으로 직접 걸러 (4) ④를 얻었고 해설과 같다. 정의 판정 유형이라 함수의 뜻과 판정을 골랐다. (배점 3.5점)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

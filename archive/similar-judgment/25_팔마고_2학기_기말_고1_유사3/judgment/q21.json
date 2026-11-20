@@ -1,0 +1,81 @@
+{
+  "qid": 21,
+  "itemFingerprint": "a47558fbceff903b",
+  "solveSteps": [
+    "A→B 시간 x/60, B→C 시간 40/80=1/2 이므로 y=(x+40)/((x+30)/60)=(60x+2400)/(x+30) 이다.",
+    "y=60+600/(x+30) 로 변형하면 x 가 커질수록 y 가 감소한다.",
+    "10≤x≤70 에서 최댓값은 x=10 일 때 60+600/40=75 이다.",
+    "최솟값은 x=70 일 때 60+600/100=66 이다."
+  ],
+  "solvedAnswer": "(1) $y=\\dfrac{60x+2400}{x+30}$ (2) 최댓값 $75$, 최솟값 $66$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "평균 속력 $y$의 최댓값과 최솟값을 구하시오",
+  "rpmRecordId": "H1-RPM-264",
+  "rpmReason": "구간 10≤x≤70 에서 y=60+600/(x+30) 의 끝점 x=10, x=70 값 75, 66 을 구하는 단계라 유리함수의 최대·최소 행이다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+  "typeReason": "y=60+600/(x+30) 이 감소함을 보고 구간 끝점 x=10 에서 75, x=70 에서 66 을 구하는 것이 구간 끝점의 최댓값·최솟값 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "시간으로 식 세우기, 표준형 변형, 구간 끝점 75, 66 을 구하는 세 단계라 2단계다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "평균 $60\\text{ km/h}$의 속력으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "평균 속력 $y$의 최댓값"
+      },
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값을 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "(1)의 식을 변형하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "따라서 $y$는 감소한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "구간",
+        "src": "stem",
+        "quote": "$10\\le x\\le 70$일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "거리와 시간으로 y=(60x+2400)/(x+30) 를 세우고 구간 끝점에서 75, 66 을 얻었고 해설과 같다. 식 세우기 뒤 유리함수 최대·최소가 목표라 해당 행과 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

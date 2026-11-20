@@ -1,0 +1,77 @@
+{
+  "qid": 20,
+  "itemFingerprint": "ffe7bead9fd55103",
+  "solveSteps": [
+    "f(x)=(x-2)^2+1 이고 X=[k,∞) 에서 일대일이려면 k≥2 이다.",
+    "k≥2 이면 f 는 증가하고 치역이 [f(k),∞) 이다.",
+    "공역 Y=[2k,∞) 와 같으려면 f(k)=2k, k^2-6k+5=0, (k-1)(k-5)=0 이다.",
+    "k≥2 이므로 k=5."
+  ],
+  "solvedAnswer": "5",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "일대일대응이 되도록 하는 실수 $k$의 값",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "정의역 X=[k,∞) 에서 f(x)=x^2-4x+5 가 Y=[2k,∞) 로의 일대일대응이 되도록 k≥2, f(k)=2k 를 따지는 단계라 일대일함수 행이다.",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+  "typeReason": "꼭짓점 x=2 의 오른쪽만 정의역이 되도록 k≥2 를 정하고 치역 [f(k),∞) 가 공역 [2k,∞) 와 같도록 f(k)=2k 를 푸는 것이 이차함수의 정의역 제한과 일대일대응 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "꼭짓점 기준 k≥2, 치역=공역 조건 f(k)=2k, k^2-6k+5=0 의 두 근 중 k≥2 선택까지 세 단계라 3단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $X=\\{x\\mid x\\ge k\\}$, $Y=\\{y\\mid y\\ge 2k\\}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "실수 $k$의 값을 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "치역",
+        "src": "solution",
+        "quote": "공역 $Y=[2k,\\infty)$와 치역이 같아야 하므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "일대일함수",
+        "src": "solution",
+        "quote": "일대일이 되려면",
+        "evidenceType": "IMPLIED",
+        "justification": "정의역이 꼭짓점 왼쪽을 포함하면 일대일함수가 아니므로 k≥2 로 제한한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역제한",
+        "src": "solution",
+        "quote": "조건 $k\\ge 2$를 만족시키는 값은"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "k≥2 와 f(k)=2k 로 k=5 를 얻었고 해설과 같다. 정의역을 제한해 이차함수를 일대일대응으로 만드는 유형이라 해당 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

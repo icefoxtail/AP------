@@ -1,0 +1,77 @@
+{
+  "qid": 4,
+  "itemFingerprint": "1a6739a1ba297e28",
+  "solveSteps": [
+    "y=(-3x+k)/(x+1)=-3+(k+3)/(x+1) 이므로 점근선은 x=-1, y=-3 이다.",
+    "k+3<0 이면 x>-1 에서 y<-3 이라 제1사분면을 지나지 않는다.",
+    "k+3>0 이면 x>-1 에서 감소하므로 x>0 에서 y<f(0)=k, 따라서 k≤0 이어야 한다.",
+    "지나지 않는 k 의 범위가 k≤0 이므로 정수 k 의 최댓값은 0 이고 ⑤. (배점 3.7점)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "제1사분면을 지나지 않도록",
+  "rpmRecordId": "H1-RPM-262",
+  "rpmReason": "점근선 x=-1, y=-3 과 x=0 의 함숫값 k 로 제1사분면 통과 여부를 따지는 단계라 그래프의 사분면 행이다. (배점 3.7점)",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+  "typeReason": "그래프가 제1사분면을 지나지 않을 k+3 의 부호별 조건 k≤0 을 구하는 것이 사분면 조건으로 매개변수를 정하는 템플릿의 정의와 같다. (배점 3.7점)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "표준형 변형, k+3 의 부호로 경우를 나누고 x=0 의 함숫값 k≤0 을 찾는 단계라 3단계로 본다. (배점 3.7점)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수 $y=\\dfrac{-3x+k}{x+1}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "정수 $k$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준형",
+        "src": "solution",
+        "quote": "주어진 유리함수를 변형하면",
+        "evidenceType": "IMPLIED",
+        "justification": "유리함수를 y=-3+(k+3)/(x+1) 의 표준형으로 바꾸는 변형이다"
+      },
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "점근선은 두 직선 $x=-1$, $y=-3$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "제1사분면을 지나지 않도록"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "표준형으로 바꿔 k+3 의 부호별로 제1사분면 통과 조건을 따져 k≤0, 정수 최댓값 0 ⑤를 얻었고 해설과 같다. 사분면 조건으로 매개변수를 정하는 문제라 해당 템플릿을 골랐다. (배점 3.7점)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

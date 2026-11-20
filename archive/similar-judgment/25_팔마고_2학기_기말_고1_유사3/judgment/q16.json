@@ -1,0 +1,77 @@
+{
+  "qid": 16,
+  "itemFingerprint": "3629c38f224385a2",
+  "solveSteps": [
+    "역함수가 존재하므로 f 는 일대일대응이다.",
+    "f(1)<f(2)<f(3) 이 되도록 세 값을 고르는 방법은 5C3=10 가지이고 순서는 하나로 정해진다.",
+    "남은 2개는 f(4)<f(5) 로 1 가지이다.",
+    "10×1=10 이므로 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "역함수가 존재하려면 함수 $f:X\\to X$는 일대일대응이어야 한다.",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "역함수가 존재하는 f:X→X 를 일대일대응으로 보고 f(1)<f(2)<f(3), f(4)<f(5) 로 짝을 배치하는 단계라 일대일함수 행이다. (배점 4.8점)",
+  "problemTypeKey": "PT_FUNCTION_COUNTING",
+  "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+  "typeReason": "일대일대응 조건에서 5C3=10 으로 세 값을 고르고 크기 순서를 고정해 10×1=10 을 세는 것이 일대일대응의 개수 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "역함수 존재를 일대일대응으로 바꾸고 5C3=10 과 순서 고정 1가지를 곱해 10 을 세는 단계라 2단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "집합 $X=\\{1,2,3,4,5\\}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$f:X\\to X$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "일대일대응",
+        "src": "solution",
+        "quote": "일대일대응이어야 한다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "${}_{5}C_{3}=\\dfrac{5\\times 4\\times 3}{3\\times 2\\times 1}=10$",
+        "evidenceType": "IMPLIED",
+        "justification": "5개 중 3개를 고르는 5C3=10 으로 f(1), f(2), f(3) 의 값 묶음을 센다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "$f(1)\\lt f(2)\\lt f(3)$이고 $f(4)\\lt f(5)$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "역함수 존재를 일대일대응으로 보고 5C3×1=10 ①을 얻었고 해설과 같다. 조건을 만족하는 일대일대응의 개수를 세므로 함수의 개수 유형을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

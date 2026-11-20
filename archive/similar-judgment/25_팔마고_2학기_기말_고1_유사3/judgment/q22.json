@@ -1,0 +1,70 @@
+{
+  "qid": 22,
+  "itemFingerprint": "5595bad533ad691b",
+  "solveSteps": [
+    "(1) y=2x-5 에서 x 와 y 를 바꾸면 x=2y-5 이므로 f^{-1}(x)=x/2+5/2 이다.",
+    "(2) h∘f=g 의 양변 오른쪽에 f^{-1} 를 합성하면 h=g∘f^{-1} 이다.",
+    "h(x)=4(x/2+5/2)-1=2x+10-1=2x+9 이다."
+  ],
+  "solvedAnswer": "(1) $f^{-1}(x)=\\dfrac{1}{2}x+\\dfrac{5}{2}$ (2) $h(x)=2x+9$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "$h\\circ f=g$를 만족하는 $x$에 대한 일차함수 $h(x)$를 구하는",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "f(x)=2x-5 의 역함수 f^{-1}(x)=x/2+5/2 를 구해 g(f^{-1}(x)) 에 쓰는 단계라 역함수 구하기 행이다. (식 br)",
+  "problemTypeKey": "PT_FUNCTION_RECOVERY",
+  "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+  "typeReason": "h∘f=g 에서 양변에 f^{-1} 를 합성해 h=g∘f^{-1}=4(x/2+5/2)-1=2x+9 를 구하는 것이 합성관계에서 함수식을 구하는 템플릿의 정의와 같다. (식 br)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "(1)의 역함수 x/2+5/2 와 (2)의 h=g∘f^{-1}=2x+9 를 구하는 두 단계라 2단계다. (식 br)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "두 함수 $f(x)=2x-5$, $g(x)=4x-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $h(x)$를 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "$x$와 $y$를 서로 바꾸면",
+        "evidenceType": "IMPLIED",
+        "justification": "y=2x-5 에서 x 와 y 를 바꿔 역함수 x/2+5/2 를 구하는 방법이다"
+      },
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "양변의 오른쪽에 $f^{-1}$를 합성하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "(1)에서 f^{-1}(x)=x/2+5/2 를 구하고 (2)에서 h=g∘f^{-1}=2x+9 를 얻어 해설과 같다. 합성관계에서 함수식을 구하는 단계가 배점이 커 함수식 구하기를 골랐다. (식 br)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

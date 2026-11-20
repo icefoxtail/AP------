@@ -1,0 +1,75 @@
+{
+  "qid": 15,
+  "itemFingerprint": "afb1631cc6cafeae",
+  "solveSteps": [
+    "(f∘f)(x)=x 이므로 f^{-1}=f 이고 점근선의 교점 (2,a/2) 가 y=x 위에 있어 a/2=2, a=4 이다.",
+    "f(x)=(4x+6)/(2x-4) 이다.",
+    "f^{-1}(3)=f(3)=(12+6)/(6-4)=9 이므로 ④. (식 ax)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "$f$는 자기 자신의 역함수, 즉 $f^{-1}=f$이다.",
+  "rpmRecordId": "H1-RPM-263",
+  "rpmReason": "f=f^{-1} 임을 이용해 점근선 교점 (2,a/2) 가 y=x 위에 있다고 보고 a=4 를 정하는 단계라 유리함수 식 결정 행이다. (식 ax)",
+  "problemTypeKey": "PT_INVERSE_PROPERTIES",
+  "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+  "typeReason": "(f∘f)(x)=x 에서 f 가 자기역함수임을 알아 f^{-1}(3)=f(3)=9 로 바꾸는 것이 역함수의 성질(자기역함수) 템플릿의 정의와 같다. f(x)=(ax+6)/(2x-4) 에서 a=4.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "f∘f=x 에서 f=f^{-1} 을 알아내고 a=4 를 정한 뒤 f(3)=9 를 구하는 단계라 3단계로 본다. (식 ax)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "합성함수",
+        "src": "stem",
+        "quote": "$(f\\circ f)(x)=x$를 만족시킬 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f^{-1}(3)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "$f$는 자기 자신의 역함수, 즉 $f^{-1}=f$이다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "두 점근선의 교점 $\\left(2,\\dfrac{a}{2}\\right)$는 직선 $y=x$ 위에 있어야 한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "직선 $y=x$에 대하여 대칭이어야 하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "f∘f=x 로 자기역함수임을 알아 a=4, f(3)=9 ④를 얻었고 해설과 같다. 자기역함수 성질이 결정 단계라 역함수의 성질 유형을 골랐다. (식 ax)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

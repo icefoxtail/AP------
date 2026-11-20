@@ -1,0 +1,82 @@
+{
+  "qid": 10,
+  "itemFingerprint": "b638d0765f6a39a8",
+  "solveSteps": [
+    "(f∘g)(x)=3(kx+10)+k=3kx+k+30 이다.",
+    "(g∘f)(x)=k(3x+k)+10=3kx+k^2+10 이다.",
+    "모든 x 에서 같으려면 k^2-k-20=0, (k-5)(k+4)=0 이다.",
+    "k>0 이므로 k=5 이고 f(5)=3·5+5=20 이라 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "두 합성함수를 각각 계산하면",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "f∘g 와 g∘f 를 각각 3kx+k+30, 3kx+k^2+10 으로 합성해 계산하는 단계라 합성함수 계산 행이다.",
+  "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+  "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+  "typeReason": "f∘g=g∘f 가 성립할 조건으로 k^2-k-20=0 을 세워 k=5 (k>0) 를 정하는 것이 합성의 교환 관계 조건 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "두 합성식 전개, 계수 비교로 k^2-k-20=0, k>0 에서 k=5, f(5)=20 을 구하는 단계라 2단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "두 함수 $f(x)=3x+k$, $g(x)=kx+10$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f(k)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "두 합성함수를 각각 계산하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "$3kx+k^2+10=3kx+k+30$",
+        "evidenceType": "IMPLIED",
+        "justification": "양변의 x 의 계수 3k 가 같으므로 상수항 k^2+10, k+30 을 비교해 k^2-k-20=0 을 얻는다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $k$에 대하여"
+      },
+      {
+        "term": "항상성립",
+        "src": "solution",
+        "quote": "모든 실수 $x$에 대하여 성립하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "두 합성식의 상수항을 비교해 k=5 (k>0), f(5)=20 ⑤를 얻었고 해설과 같다. f∘g=g∘f 교환 조건이 핵심이라 합성함수의 성질을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

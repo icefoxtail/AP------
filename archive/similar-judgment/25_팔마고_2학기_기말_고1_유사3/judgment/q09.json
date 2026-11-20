@@ -1,0 +1,71 @@
+{
+  "qid": 9,
+  "itemFingerprint": "7a3f8eab7be96823",
+  "solveSteps": [
+    "f(4)=f(3)+f(1) 이므로 f(4)-f(1)=f(3)=9 이다.",
+    "f(3)=3f(1) 이므로 f(1)=3 이다.",
+    "f(0)=0 이고 f(1)+f(-1)=f(0)=0 이므로 f(-1)=-3 이다.",
+    "f(5)=5f(1)=15 이므로 15+(-3)=12 이고 ③."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "$f(x+y)=f(x)+f(y)$를 만족시키고",
+  "rpmRecordId": "NONE",
+  "rpmReason": "RPM 함수 행(대응과 함수, 합성함수 계산, 일대일함수 등)에 f(x+y)=f(x)+f(y) 대입 풀이에 맞는 행이 없어 NONE 으로 두며, 보기 12, 15 는 f(1)=3 으로 정해진다.",
+  "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+  "templateKey": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+  "typeReason": "f(x+y)=f(x)+f(y) 에 대입해 f(3)=9, f(1)=3, f(-1)=-3, f(5)=15 를 얻는 것이 가법형 함수방정식 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "f(3)=9, f(1)=3, f(0)=0, f(-1)=-3 을 차례로 구한 뒤 f(5)=15 를 쓰는 대입 네 번이라 2단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수방정식",
+        "src": "stem",
+        "quote": "$f(x+y)=f(x)+f(y)$를 만족시키고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f(5)+f(-1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$f(4)=f(3+1)=f(3)+f(1)$",
+        "evidenceType": "IMPLIED",
+        "justification": "x, y 에 3, 1 과 0, 0 등을 넣어 f(4)=f(3)+f(1), f(0)=0 을 얻는 대입이다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "임의의 실수 $x$, $y$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "가법 함수방정식에 대입해 f(1)=3, f(-1)=-3, f(5)=15 에서 12 ③을 얻었고 해설과 같다. 함수방정식 유형이 분명하나 맞는 RPM 행이 없어 RPM 은 NONE 으로 썼다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
