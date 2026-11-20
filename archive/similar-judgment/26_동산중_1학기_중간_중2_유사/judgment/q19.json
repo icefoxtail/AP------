@@ -1,0 +1,71 @@
+{
+  "qid": 19,
+  "itemFingerprint": "182e865294e0cd3a",
+  "solveSteps": [
+    "일차부등식 4x + 9 >= 7x - 3 에서 x항과 상수항을 이항한다.",
+    "4x - 7x >= -3 - 9 로부터 -3x >= -12 가 된다.",
+    "양변을 -3으로 나누면 부등호 방향이 바뀌어 x <= 4 이다.",
+    "경계값 4는 등호를 포함하므로 칠해진 점이고, 작거나 같으므로 왼쪽 영역이다.",
+    "따라서 12 가 포함된 계산 결과에 따라 3번 보기가 바르게 나타낸 것이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $4x + 9 \\ge 7x - 3$",
+  "rpmRecordId": "M2-RPM-137",
+  "rpmReason": "일차부등식을 풀어 -3x >= -12 로부터 x <= 4 를 구하고 수직선으로 해를 표현하는 행이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "부등식에서 -12 를 얻고 해를 수직선 위에 표현하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이항하여 -3x >= -12 를 풀고 수직선 경계와 방향을 읽는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식 $4"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수직선",
+        "src": "stem",
+        "quote": "수직선 위에 바르게"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "항은 우변으로 이항하여 정리한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": " 양변을 음수 $-3"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "4x+9 >= 7x-3 을 풀어 -3x >= -12 에서 x <= 4 를 얻고 수직선 폐구간 왼쪽인 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

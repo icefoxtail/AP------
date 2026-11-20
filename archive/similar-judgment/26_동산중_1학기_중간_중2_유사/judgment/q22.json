@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "e567472b05bc0993",
+  "solveSteps": [
+    "14/60 = 7/30 = 7 / (2 * 3 * 5) 이므로 A 는 3 의 배수이어야 한다.",
+    "15/78 = 5/26 = 5 / (2 * 13) 이므로 A 는 13 의 배수이어야 한다.",
+    "따라서 A 는 3 과 13 의 공배수이며 최소공배수는 39 이다.",
+    "A 가 될 수 있는 수는 39, 78, 117 등이다.",
+    "두 번째로 작은 자연수 A 는 78 이다."
+  ],
+  "solvedAnswer": "$78$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "유한소수로 나타내려고 한다.",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "기약분수 7/30 과 5/26 의 분모 소인수 조건을 분석하여 자연수 A=78 을 구하는 문항이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분수 14/60 에 A 를 곱해 유한소수가 되는 최소공배수 39 의 배수 78 을 구하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기약분수 7/30 및 5/26 의 소인수 3과 13의 공배수 39의 2배인 78을 산출하는 2단계 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $A$를 각"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "유한소수로 나타내려"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "소인수분해한다. $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "최소공배수는 $$ "
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "14/60과 15/78을 기약분수로 바꾸어 3과 13의 공배수임을 확인하고 39의 두 번째 배수인 78로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

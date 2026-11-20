@@ -1,0 +1,71 @@
+{
+  "qid": 24,
+  "itemFingerprint": "9943e9c339f28d03",
+  "solveSteps": [
+    "인화할 사진 수를 x 장이라 하면 사진관 A 의 비용은 250x 원이다.",
+    "사진관 B 의 비용은 150x + 3000 원이다.",
+    "B 가 더 저렴해야 하므로 150x + 3000 < 250x 부등식을 세운다.",
+    "이항하면 100x > 3000 이므로 x > 30 이다.",
+    "자연수 x 의 최솟값은 31 이므로 31 장 이상 인화해야 한다."
+  ],
+  "solvedAnswer": "$31$장 이상 (또는 $31$)",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "일차부등식을 세워서 해결해야 함.) ",
+  "rpmRecordId": "M2-RPM-146",
+  "rpmReason": "사진관 이용 비용 250x 와 150x + 3000 을 비교하여 31 장 이상을 구하는 가격 활용 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "단가 250 과 150, 배송비 3000 의 금액 비교 부등식을 세우는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "비용 식 250x 와 150x + 3000 을 세워 100x > 3000 을 풀고 자연수 최소 31 을 구하는 3단계 서술형 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "자연수)이라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "solution",
+        "quote": "최솟값은 $31$이"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "이항하면 $$ 30",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식을 세워서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "150x + 3000 < 250x 로부터 100x > 3000 을 얻고 x > 30 에서 최솟값인 31 장 이상으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

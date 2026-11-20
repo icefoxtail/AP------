@@ -1,0 +1,64 @@
+{
+  "qid": 8,
+  "itemFingerprint": "310cf9278cfa5386",
+  "solveSteps": [
+    "밑이 같은 거듭제곱끼리 모으면 (x^4 * x^2) * (y^3 * y^5) 이다.",
+    "지수법칙에 의해 x^{4+2} y^{3+5} = x^6 y^8 이 된다.",
+    "xy^{14} 나 x^6 y^{15} 와 같은 오답과 구별된다.",
+    "따라서 정답은 ④(x^6 y^8)이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$x^4 \\times y^3 \\times x^2 \\times y^5$을 간단히 한 식으로 옳은 것은?",
+  "rpmRecordId": "M2-RPM-125",
+  "rpmReason": "밑이 같은 x와 y 거듭제곱의 곱을 지수합으로 계산해 x^6 y^8 을 얻는 거듭제곱의 곱·몫 행이다 (xy^{14} 구별).",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "단항식 곱셈에서 지수법칙을 적용하여 xy^{14} 대신 x^6 y^8 을 산출하는 지수법칙 연산 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "지수합 공식 4+2=6, 3+5=8 을 바로 적용하여 x^6 y^8 을 구하는 1단계 기본 공식 문항이다 (xy^{14} 배제).",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "밑이 같은 거듭제곱끼리 모아"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수",
+        "src": "solution",
+        "quote": "각각의 지수를 더하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙 $a^m \\times a^n = a^{m+n}$을 적용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "밑이 같은 거듭제곱의 지수를 더해 x^6 y^8 임을 확인하고 xy^{14} 등을 배제하여 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

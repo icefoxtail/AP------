@@ -1,0 +1,64 @@
+{
+  "qid": 1,
+  "itemFingerprint": "5ce4cf3e0da62eef",
+  "solveSteps": [
+    "소수점 아래의 0이 아닌 숫자가 유한개이면 유한소수, 끝없이 계속되면 무한소수이다.",
+    "0.6, 2.48, 5.125, 0.3434 는 모두 자릿수가 끝나므로 유한소수이다.",
+    "0.555... 는 5가 끝없이 이어지므로 무한소수이다.",
+    "따라서 무한소수인 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 중 무한소수인 것은?",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "0.6, 2.48 등과 0.555... 를 비교하여 유한소수와 무한소수를 구분하는 유한소수 판별 행이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "0.555... 와 5.125 등의 보기를 보고 무한소수를 직접 고르는 판정 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "0.555... 가 무한소수임을 정의에 의해 바로 확인하는 1단계 기본 개념 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "solution",
+        "quote": "① $0.6$ (유한소수)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "무한소수",
+        "src": "stem",
+        "quote": "다음 중 무한소수인 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "소수",
+        "src": "solution",
+        "quote": "끝없이 계속되는 소수를 무한소수라고 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "0.6, 2.48 등의 유한소수와 달리 0.555... 는 끝없이 계속되는 무한소수임을 확인하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

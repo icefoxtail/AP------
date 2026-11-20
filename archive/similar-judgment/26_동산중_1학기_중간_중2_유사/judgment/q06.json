@@ -1,0 +1,65 @@
+{
+  "qid": 6,
+  "itemFingerprint": "5de1eb75219097ed",
+  "solveSteps": [
+    "순환소수 2.5\\dot{3}8\\dot{1} 에서 첫째 자리는 5 이고, 둘째 자리부터 25 번째 자리까지 24 개의 숫자가 3, 8, 1 로 반복된다.",
+    "순환마디 (3, 8, 1)의 합은 12 이며, 24 / 3 = 8 번 반복되므로 순환부의 합은 12 * 8 = 96 이다.",
+    "첫째 자리 5를 더하면 전체 합은 5 + 96 = 101 이다.",
+    "따라서 정답은 ④(101)이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "순환소수 $2.5\\dot{3}8\\dot{1}$의 소수점 아래 첫 번째 자리의 숫자부터",
+  "rpmRecordId": "M2-RPM-121",
+  "rpmReason": "2.5\\dot{3}8\\dot{1} 에서 24 개의 숫자가 순환마디 12 씩 8회 반복되어 96 이 되는 순환마디와 표현 행이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "비순환 5 와 24 개의 순환마디 합 96 을 더해 101 을 구하는 자릿수 합 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "비순환 자리 분리 후 24 개 숫자의 주기 8회 합 96 을 계산해 101 을 구하는 4.5점 배점의 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "세 숫자 $3, 8, 1$이 순환마디를 이루어 반복된다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "숫자까지의 합은? [4.5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "자릿수",
+        "src": "solution",
+        "quote": "소수점 아래 $2$번째 자리부터 $25$번째 자리까지의 숫자의 개수는",
+        "evidenceType": "IMPLIED",
+        "justification": "자릿수 구간을 나누어 주기성을 분석함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "25번째 자리까지 비순환 첫째 자리 5와 순환부 24개의 합 96을 더해 101임을 확인하고 ④로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

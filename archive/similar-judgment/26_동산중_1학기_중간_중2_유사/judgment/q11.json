@@ -1,0 +1,65 @@
+{
+  "qid": 11,
+  "itemFingerprint": "1454ec3223b961d6",
+  "solveSteps": [
+    "동류항끼리 묶으면 (4a + 2a) + (3b + 7b) 이다.",
+    "계수를 더하면 (4 + 2)a + (3 + 7)b = 6a + 10b 이다.",
+    "21 이나 16ab 와 같은 오답과 구별된다.",
+    "따라서 옳은 것은 ③(6a + 10b)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "$(4a + 3b) + (2a + 7b)$를 계산한 식으로 옳은 것은?",
+  "rpmRecordId": "M2-RPM-130",
+  "rpmReason": "동류항끼리 모아 6a + 10b 로 정리하는 동류항 정리 행이다 (16ab, 21 계수 배제).",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "동류항 계수를 더해 6a + 10b 를 산출하는 다항식 덧셈 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "동류항 계수합 (4+2)a + (3+7)b = 6a + 10b 를 바로 적용하는 1단계 기본 연산 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "동류항끼리 모아서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "계수를 더한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "괄호를 풀고 동류항끼리 모아서",
+        "evidenceType": "IMPLIED",
+        "justification": "동류항을 모아 식을 정리함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "동류항을 묶어 계수를 더해 6a + 10b 임을 확인하고 16ab 등을 배제하여 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

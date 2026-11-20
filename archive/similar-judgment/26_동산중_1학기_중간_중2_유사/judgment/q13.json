@@ -1,0 +1,64 @@
+{
+  "qid": 13,
+  "itemFingerprint": "0e58a789a620dba3",
+  "solveSteps": [
+    "각 항을 분모 4ab 로 나누면 (8a^2b - 12ab^2) / (4ab) = 2a - 3b 이다.",
+    "식 전체 앞의 음의 부호를 분배하면 -(2a - 3b) = -2a + 3b 이다.",
+    "-2a - 3b 나 12 가 포함된 보기와 구별된다.",
+    "따라서 옳은 식은 ①(-2a + 3b)이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "$-\\dfrac{8a^2b - 12ab^2}{4ab}$를 계산한 식으로 옳은 것은?",
+  "rpmRecordId": "M2-RPM-133",
+  "rpmReason": "다항식 8a^2b - 12ab^2 을 단항식 4ab 로 나누고 부호를 처리하는 다항식을 단항식으로 나누기 행이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "4ab 나눗셈 후 -(2a - 3b) = -2a + 3b 로 부호를 반전하는 단계이다 (12 계수 처리).",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "4ab 나눗셈 2a - 3b 에 음수 부호를 분배하여 -2a + 3b 를 산출하는 1단계 기본 연산 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "분수를 각 항별로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "앞의 음수 부호를 분배한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "분배",
+        "src": "solution",
+        "quote": "앞의 음수 부호를 분배한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "각 항을 4ab 로 나누어 2a - 3b 를 얻고 음수 부호를 적용해 -2a + 3b 임을 확인하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

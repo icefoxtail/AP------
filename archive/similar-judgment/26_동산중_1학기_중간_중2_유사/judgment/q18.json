@@ -1,0 +1,70 @@
+{
+  "qid": 18,
+  "itemFingerprint": "ebcc38ff6e6db2e9",
+  "solveSteps": [
+    "수식 matrix 전개 과정의 각 변형 단계를 분석한다.",
+    "ㄱ 과정: matrix 첫 줄에서 둘째 줄로 넘어가며 양변에 같은 수를 더하거나 뺀 것이므로 (가)이다.",
+    "ㄴ 과정: matrix 셋째 줄에서 넷째 줄로 넘어가며 양변을 음수로 나누어 부등호가 바뀌었으므로 (다)이다.",
+    "따라서 차례대로 연결하면 (가), (다) 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "다음 ㉠과 ㉡의 과정에서 사용된 부등식의 성질",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "수식 matrix 전개 단계에서 사용된 부등식의 기본 성질을 대응시키는 문항이다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+  "typeReason": "수식 matrix 풀이 과정에서 각 변형 단계에 사용된 부등식 성질을 검증하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수식 matrix 전개에서 이항 단계와 음수 계수 나눗셈 단계를 각각 분리하여 성질을 매칭하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "정에서 사용된 부등식의 성질을 <보"
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "src": "stem",
+        "quote": "용된 부등식의 성질을 <보기>에서"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "을 빼어 이항한 것이므로 ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "src": "stem",
+        "quote": "양변에 같은 음수를 곱하거나 양"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "수식 matrix 풀이의 ㉠은 이항(가), ㉡은 음수 나눗셈(다)임을 확인하고 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
