@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-0d4992d09dc0-f9449ca3",
+  "requestSha256": "bc08e7e11beee157f6cab2876d8a77d49e40ae47d22f6fcb4b69b298d038c4f0",
+  "examUid": "23_부영여고_1학기_중간_고1_기출",
+  "sourceArchiveFile": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+  "sourceBlobSha1": "da2b6088a9f03c04af2c36c63a0624b634611dfa",
+  "sourceRawSha256": "a2c794d62b72e85748d235b649bd450556010338c7ec3738cbcce6ee01c217e9",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0d4992d09dc0-f9449ca3.type-ledger.json",
+        "sha256": "70541e567dc62ca4311144d893cbedf275199b73ba0f9576b7238c64634b1f50"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_d24381ccfa6732fdd088e8a52c8d44d0594f88f7167e7ad6b18d115383acd75a",
+      "sourceArchiveFile": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 16,
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0d4992d09dc0-f9449ca3",
+        "judge": "dots",
+        "rationale": "교점의 두 근 u+v=1, uv=-k를 이용해 넓이 차 (u³+v³)/2=(1+3k)/2를 32와 같게 둔다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학(상)",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "331846bb102c3f09332a5d57937bd89934bff04b9b071ce68788604293877e81",
+        "judgedContentFingerprint": "342689774b9cd9c8b8dc091a81e0d40d439178c5a188d942ede81452b11a64ce",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "8d6f3c04c05d814e7d1eb0b7f1c30876318340076a83bef3235b41992b36de3d",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h1-1mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0d4992d09dc0-f9449ca3.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+          "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "approved_semantic_review",
+          "templateStatus": "approved_semantic_review"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}
