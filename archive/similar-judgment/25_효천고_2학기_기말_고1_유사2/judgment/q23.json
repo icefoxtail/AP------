@@ -1,0 +1,69 @@
+{
+ "qid": 23,
+ "itemFingerprint": "42b22919c6247228",
+ "solveSteps": [
+  "두 구간의 기울기가 양수이고 x=2 에서 값이 4 로 같아 f 는 증가하는 일대일대응이며 f^{-1}(x)=2x-6 (x≥4), (x+2)/3 (x<4).",
+  "f(x){f(x)-f^{-1}(x)}=0 에서 f(x)=0 은 x<2 의 3x-2=0 에서 x=2/3.",
+  "f(x)=f^{-1}(x) 를 구간별로 풀면 x=1, x=6 (x=-14 는 범위 밖) 이므로 합 2/3+1+6=23/3."
+ ],
+ "solvedAnswer": "\\dfrac{23}{3}",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+ "unitEvidence": "따라서 역함수가 존재한다",
+ "rpmRecordId": "H1-RPM-255",
+ "rpmReason": "구간별 정의(cases) 의 f(x)=1/2x+3, 3x-2 의 역함수 2x-6, (x+2)/3 를 구간별로 구하는 단계라 역함수 구하기 행이다.",
+ "problemTypeKey": "PT_INVERSE_PROPERTIES",
+ "templateKey": "TPL_FUNCTION_INVERSE_EQUATION",
+ "typeReason": "f(x){f(x)-f^{-1}(x)}=0 으로 인수분해해 f(x)=0 의 x=2/3 와 f(x)=f^{-1}(x) 의 x=1, 6 (x=-14 는 제외) 을 구해 합 23/3 을 얻는 함수와 역함수 방정식 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "조각함수의 역함수 구간 x≥4, x<4 를 구하고 f(f-f^{-1})=0 을 f=0 과 f=f^{-1} 으로 나눠 세 구간에서 풀어 x=-14 를 거르고 합 23/3 을 얻는 3단계이다.",
+ "difficultyBoundaryFlag": "B34",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "역함수",
+    "src": "stem",
+    "quote": "그 역함수 $f^{-1}(x)$에 대하여"
+   }
+  ],
+  "goal": [
+   {
+    "term": "합",
+    "src": "stem",
+    "quote": "모든 실수 $x$의 값의 합을 구하는"
+   }
+  ],
+  "method": [
+   {
+    "term": "일대일대응",
+    "src": "solution",
+    "quote": "실수 전체에서 증가하는 일대일대응이다",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "경우분류",
+    "src": "solution",
+    "quote": "세 구간으로 나눈다",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "역함수를 구간별로 구하고 f=0 과 f=f^{-1} 두 경우로 나눠 x=2/3, 1, 6 의 합 23/3 을 얻어 저장 정답과 대조했다. 함수와 역함수 방정식 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

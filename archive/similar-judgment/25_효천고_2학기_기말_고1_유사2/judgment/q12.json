@@ -1,0 +1,75 @@
+{
+ "qid": 12,
+ "itemFingerprint": "0d5266533881878a",
+ "solveSteps": [
+  "y=(ax+b)/(x-2)=a+(2a+b)/(x-2) 이므로 점근선은 x=2, y=a 이고 대칭 중심은 (2,a).",
+  "직선 y=-x+4 가 중심 (2,a) 를 지나므로 a=-2+4=2.",
+  "y=8/x 와 평행이동으로 겹치려면 2a+b=8 이므로 b=4, a+b=6."
+ ],
+ "solvedAnswer": "①",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-08",
+ "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+ "unitEvidence": "대칭의 중심은 $(2,a)$이다",
+ "rpmRecordId": "H1-RPM-260",
+ "rpmReason": "y=(ax+b)/(x-2)=a+(2a+b)/(x-2) 를 평행이동하면 y=8/x 와 겹쳐진다는 조건으로 2a+b=8 을 얻는 단계라 평행이동 행이다.",
+ "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+ "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+ "typeReason": "y=(ax+b)/(x-2) 가 y=8/x 로 겹치는 평행이동 조건 2a+b=8 과 대칭 중심 (2,a) 가 y=-x+4 위라는 조건 a=2 로 계수를 복원하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "y=(ax+b)/(x-2) 의 표준형 변형, 대칭 중심 (2,a) 가 y=-x+4 위라는 조건으로 a=2, 평행이동 조건으로 2a+b=8 을 잇는 3단계이다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "유리함수",
+    "src": "stem",
+    "quote": "유리함수 $y=\\dfrac{ax+b}{x-2}$의 그래프"
+   }
+  ],
+  "goal": [
+   {
+    "term": "값",
+    "src": "stem",
+    "quote": "$a+b$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "표준형",
+    "src": "solution",
+    "quote": "주어진 유리함수를 표준형으로 변형한다",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "평행이동",
+    "src": "stem",
+    "quote": "그래프를 평행이동하면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "대칭성",
+    "src": "stem",
+    "quote": "직선 $y=-x+4$에 대하여 대칭이다"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "y=(ax+b)/(x-2) 의 표준형에서 대칭 중심과 이동 조건을 써 a=2, b=4 를 얻어 ① 과 대조했다. 해설도 같은 두 조건을 쓰므로 이동 그래프 계수 복원 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

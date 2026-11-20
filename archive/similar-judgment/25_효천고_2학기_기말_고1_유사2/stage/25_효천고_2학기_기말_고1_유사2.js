@@ -1,0 +1,654 @@
+window.examTitle = "25_효천고_2학기_기말_고1_유사2";
+window.examDisplayTitle = "25_효천고_2학기_기말_고1_유사2";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "다음 중 명제가 아닌 것은?",
+    "choices": [
+      "정삼각형의 세 내각의 크기는 모두 같다.",
+      "$2+5=8$이다.",
+      "$2x-1\\lt 5$",
+      "$15$는 $3$의 배수이다.",
+      "모든 실수 $x$에 대하여 $x^2\\ge 0$이다."
+    ],
+    "answer": "③",
+    "solution": "명제는 참인지 거짓인지를 분명하게 판별할 수 있는 문장이나 식이다.\n\n①, ④, ⑤는 항상 참인 명제이고, ②는 거짓인 명제이다.\n\n③은 $x$의 값에 따라 참과 거짓이 달라지므로 조건이지 명제가 아니다.\n\n따라서 정답은 ③이다.",
+    "score": 3.1,
+    "points": 3.1,
+    "sourceQid": 1,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 2,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "정의역이 $\\{1,a\\}$ ($a\\ne 1$)인 두 함수 $f(x)=x^2-2x+3$, $g(x)=3x-1$에 대하여 $f=g$일 때, 실수 $a$의 값은?",
+    "choices": [
+      "$2$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$8$"
+    ],
+    "answer": "②",
+    "solution": "두 함수가 같으려면 정의역의 모든 원소에서 함숫값이 같아야 하므로 $x=a$일 때 $f(a)=g(a)$가 성립한다.\n$a^2-2a+3=3a-1$\n$a^2-5a+4=0$\n$(a-1)(a-4)=0$\n\n$a\\ne 1$이므로 $a=4$이다.\n\n따라서 정답은 ②이다.",
+    "score": 3.1,
+    "points": 3.1,
+    "sourceQid": 2,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 3,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 함수 $f(x)=2x-1$, $g(x)=x+a$에 대하여 $(f\\circ g)(1)=(g\\circ f)(4)$일 때, 상수 $a$의 값은?",
+    "choices": [
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$"
+    ],
+    "answer": "⑤",
+    "solution": "먼저 $(f\\circ g)(1)$을 $a$로 나타낸다.\n$g(1)=1+a$\n$(f\\circ g)(1)=f(1+a)=2(1+a)-1$\n$=2a+1$\n\n다음으로 $(g\\circ f)(4)$를 $a$로 나타낸다.\n$f(4)=2\\cdot 4-1=7$\n$(g\\circ f)(4)=g(7)=7+a$\n\n두 값이 같으므로 등식을 세워 $a$를 구한다.\n$2a+1=7+a$\n$a=6$\n\n따라서 정답은 ⑤이다.",
+    "score": 3.2,
+    "points": 3.2,
+    "sourceQid": 3,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 4,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "일차함수 $f(x)=ax+b$의 역함수 $f^{-1}$에 대하여 $f^{-1}(3)=1$, $f^{-1}(7)=3$일 때, $f(5)$의 값은? (단, $a$, $b$는 상수이다.)",
+    "choices": [
+      "$11$",
+      "$9$",
+      "$7$",
+      "$5$",
+      "$3$"
+    ],
+    "answer": "①",
+    "solution": "역함수의 성질을 이용하여 원래 함수의 함숫값으로 바꾼다.\n$f^{-1}(3)=1$에서 $f(1)=3$이므로\n$a+b=3$\n\n$f^{-1}(7)=3$에서 $f(3)=7$이므로\n$3a+b=7$\n\n두 식을 연립하여 풀면\n$2a=4$\n$a=2$\n\n$a=2$를 $a+b=3$에 대입하면 $b=1$이므로 $f(x)=2x+1$이다.\n\n$x=5$를 대입하면\n$f(5)=2\\cdot 5+1=11$\n\n따라서 정답은 ①이다.",
+    "score": 3.4,
+    "points": 3.4,
+    "sourceQid": 4,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 5,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "다음 식의 분모를 $0$으로 만들지 않는 모든 실수 $x$에 대하여 $\\dfrac{3x+1}{x^2-1}-\\dfrac{1}{x+1}-\\dfrac{1}{x-1}$을 간단히 한 식은?",
+    "choices": [
+      "$\\dfrac{1}{x+1}$",
+      "$\\dfrac{2}{x+1}$",
+      "$\\dfrac{2}{x-1}$",
+      "$\\dfrac{1}{x-1}$",
+      "$\\dfrac{3}{x-1}$"
+    ],
+    "answer": "④",
+    "solution": "분모를 $(x-1)(x+1)$로 통분한다.\n$\\dfrac{3x+1}{(x-1)(x+1)}-\\dfrac{x-1}{(x-1)(x+1)}-\\dfrac{x+1}{(x-1)(x+1)}$\n$=\\dfrac{(3x+1)-(x-1)-(x+1)}{(x-1)(x+1)}$\n\n분자를 정리하면\n$\\dfrac{x+1}{(x-1)(x+1)}$\n\n분모가 $0$이 되지 않는 실수 $x$에 대하여 $x+1$로 약분하면\n$\\dfrac{1}{x-1}$\n\n따라서 정답은 ④이다.",
+    "score": 3.4,
+    "points": 3.4,
+    "sourceQid": 5,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 6,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "전체집합 $U$에 대하여 세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자.<br>$P\\cup Q=Q$, $Q\\cap R=R$일 때, 다음 중 항상 참인 명제는?",
+    "choices": [
+      "$p\\to r$",
+      "$r\\to p$",
+      "$q\\to p$",
+      "$\\sim q\\to \\sim r$",
+      "$\\sim p\\to \\sim q$"
+    ],
+    "answer": "④",
+    "solution": "첫째 집합식 $P\\cup Q=Q$는 $P$의 모든 원소가 $Q$에 속한다는 뜻이므로\n$P\\subseteq Q$\n\n둘째 집합식 $Q\\cap R=R$는 $R$의 모든 원소가 $Q$에 속한다는 뜻이므로\n$R\\subseteq Q$\n\n$R\\subseteq Q$에서 명제 $r\\to q$가 항상 참이다.\n\n그 대우인 $\\sim q\\to \\sim r$도 항상 참이다.\n\n따라서 정답은 ④이다.",
+    "score": 3.5,
+    "points": 3.5,
+    "sourceQid": 6,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q06-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.",
+    "solutionImageCaption": "예: 전체집합의 원소 1부터 5까지가 P, Q, R에 속하는 경우를 표로 나타냈다. P∪Q=Q에서 P⊆Q이고, Q∩R=R에서 R⊆Q이므로 P와 R에 속하는 원소는 모두 Q에도 속한다. R⊆Q이므로 r→q가 항상 참이고, 그 대우인 ∼q→∼r도 항상 참이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 7,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 조건 $p$, $q$에 대하여 보기에서 $p$는 $q$이기 위한 충분조건이지만 필요조건이 아닌 것만을 있는 대로 고른 것은? (단, $a$, $b$, $x$, $y$는 실수이다.)<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">ㄱ. $p:x=1$이고 $y=2$ &nbsp;&nbsp;&nbsp; $q:x+y=3$<br>ㄴ. $p:a\\gt 2$이고 $b\\gt 2$ &nbsp;&nbsp;&nbsp; $q:ab\\gt 4$<br>ㄷ. $p:x^2=9$ &nbsp;&nbsp;&nbsp; $q:|x|\\ge 3$</div>",
+    "choices": [
+      "ㄱ",
+      "ㄴ",
+      "ㄱ, ㄷ",
+      "ㄴ, ㄷ",
+      "ㄱ, ㄴ, ㄷ"
+    ],
+    "answer": "⑤",
+    "solution": "$p$가 $q$이기 위한 충분조건이지만 필요조건이 아니려면 $p\\to q$는 참이고 $q\\to p$는 거짓이어야 한다.\n\nㄱ. $x=1$이고 $y=2$이면 $x+y=3$이므로 $p\\to q$는 참이다. 그러나 $x=0$, $y=3$이면 $q$는 참이지만 $p$는 거짓이므로 $q\\to p$는 거짓이다.\n\nㄴ. $a\\gt 2$이고 $b\\gt 2$이면 $ab\\gt 4$이므로 $p\\to q$는 참이다. 그러나 $a=-3$, $b=-3$이면 $ab=9\\gt 4$로 $q$는 참이지만 $p$는 거짓이므로 $q\\to p$는 거짓이다.\n\nㄷ. $x^2=9$이면 $x=\\pm 3$이므로 $|x|=3\\ge 3$이 되어 $p\\to q$는 참이다. 그러나 $x=4$이면 $q$는 참이지만 $p$는 거짓이므로 $q\\to p$는 거짓이다.\n\n따라서 해당하는 것은 ㄱ, ㄴ, ㄷ이고 정답은 ⑤이다.",
+    "score": 3.7,
+    "points": 3.7,
+    "sourceQid": 7,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q07-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.",
+    "solutionImageCaption": "표는 보기 ㄱ, ㄴ, ㄷ에서 p, q의 진리집합 P, Q에 속하는 원소의 예이다. 위에서부터 두 줄씩 ㄱ(1,2)·(0,3), ㄴ(3,3)·(-3,-3), ㄷ 3·4이다. 세 보기 모두 P에 속하는 원소는 Q에도 속하므로 p→q는 참이고, Q에만 속하는 원소 (0,3), (-3,-3), 4가 있으므로 q→p는 거짓이다. 따라서 p는 q이기 위한 충분조건이지만 필요조건은 아니다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 8,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "무리함수 $y=\\sqrt{2x}$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $-1$만큼 평행이동한 함수의 그래프에 대한 설명으로 옳지 않은 것은?",
+    "choices": [
+      "정의역은 $\\{x\\mid x\\ge 2\\}$이다.",
+      "치역은 $\\{y\\mid y\\ge -1\\}$이다.",
+      "그래프는 점 $(4,1)$을 지난다.",
+      "$x=2$일 때 최솟값 $-1$을 갖는다.",
+      "그래프는 제$3$사분면을 지난다."
+    ],
+    "answer": "⑤",
+    "solution": "$y=\\sqrt{2x}$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $-1$만큼 평행이동한 함수의 식은\n$y=\\sqrt{2(x-2)}-1$\n\n근호 안이 $0$ 이상이어야 하므로 정의역은 $\\{x\\mid x\\ge 2\\}$이다.\n\n$x=2$일 때 최솟값 $-1$을 가지므로 치역은 $\\{y\\mid y\\ge -1\\}$이다.\n\n$x=4$를 대입하면 $y=\\sqrt{4}-1=1$이므로 점 $(4,1)$을 지난다.\n\n정의역이 $x\\ge 2$이므로 그래프 위의 모든 점의 $x$좌표는 양수이다. 따라서 제$2$사분면과 제$3$사분면은 지나지 않는다.\n\n따라서 정답은 ⑤이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "sourceQid": 8,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q08-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 시작하는 주황색 점선 무리함수 곡선과, 끝점 (2,−1)에서 시작하는 파란색 무리함수 곡선이 그려져 있고 파란 곡선 위의 점 (4,1)이 표시되어 있다.",
+    "solutionImageCaption": "평행이동한 함수는 y=√(2(x−2))−1이고 끝점은 (2,−1)이다. 정의역은 x≥2, 치역은 y≥−1이며 x=4일 때 y=1이므로 점 (4,1)을 지난다. 주황색 점선은 처음 함수 y=√(2x)이고, 파란색 곡선은 x축으로 2, y축으로 −1만큼 평행이동한 그래프이다. 그래프는 제1사분면과 제4사분면만 지나고 제3사분면은 지나지 않는다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 9,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "임의의 두 정수 $a$, $b$에 대하여 함수 $f$가<br>$f(a+b)=f(a)+f(b)+2ab$<br>를 만족시키고 $f(1)=3$일 때, $f(5)$의 값은?",
+    "choices": [
+      "$15$",
+      "$24$",
+      "$31$",
+      "$35$",
+      "$39$"
+    ],
+    "answer": "④",
+    "solution": "주어진 식과 $f(1)=3$을 이용하여 함숫값을 차례로 구한다.\n먼저 $a=1$, $b=1$을 대입하면\n$f(2)=f(1)+f(1)+2\\cdot 1\\cdot 1$\n$=3+3+2=8$\n\n다음으로 $a=2$, $b=2$를 대입하면\n$f(4)=f(2)+f(2)+2\\cdot 2\\cdot 2$\n$=8+8+8=24$\n\n마지막으로 $a=4$, $b=1$을 대입하면\n$f(5)=f(4)+f(1)+2\\cdot 4\\cdot 1$\n$=24+3+8=35$\n\n따라서 정답은 ④이다.",
+    "score": 3.8,
+    "points": 3.8,
+    "sourceQid": 9,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 10,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$가 $f(x)=$ ($3x$를 $7$로 나누었을 때의 나머지)일 때, $f^{15}(a)=6$을 만족시키는 $a$의 값은?<br>(단, $f^1=f$, $f^2=f\\circ f$, $\\cdots$, $f^{n+1}=f\\circ f^n$, $n$은 자연수)",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "①",
+    "solution": "$1$에서 시작하여 함수 $f$를 반복 적용한 값을 차례로 구한다.\n$f(1)=3$\n$f(3)=2$\n$f(2)=6$\n$f(6)=4$\n$f(4)=5$\n$f(5)=1$\n\n$6$번 합성할 때마다 자기 자신으로 돌아오므로 주기는 $6$이다.\n$15=6\\times 2+3$이므로 모든 $a\\in X$에 대하여\n$f^{15}(a)=f^3(a)$\n\n$f$는 일대일대응이고 $1\\to 3\\to 2\\to 6$에서 $f^3(1)=6$이므로\n$a=1$\n\n따라서 정답은 ①이다.",
+    "score": 3.9,
+    "points": 3.9,
+    "sourceQid": 10,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 11,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "무리함수 $f(x)=\\sqrt{x+a}+3$의 정의역이 $\\{x\\mid x\\ge 1\\}$일 때, 함수 $y=f(x)$의 그래프와 그 역함수 $y=f^{-1}(x)$의 그래프의 교점의 $x$좌표는? (단, $a$는 상수이다.)",
+    "choices": [
+      "$2$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "③",
+    "solution": "무리함수 $f(x)=\\sqrt{x+a}+3$의 정의역은 근호 안이 $0$ 이상인 범위이므로\n$x+a\\ge 0$\n$x\\ge -a$\n\n정의역이 $\\{x\\mid x\\ge 1\\}$이므로 $-a=1$, 즉 $a=-1$이다.\n따라서 $f(x)=\\sqrt{x-1}+3$이다.\n\n함수 $f$는 증가함수이므로 $y=f(x)$의 그래프와 역함수 $y=f^{-1}(x)$의 그래프의 교점은 직선 $y=x$ 위에 있다.\n$\\sqrt{x-1}+3=x$\n$\\sqrt{x-1}=x-3$\n\n치역이 $y\\ge 3$이므로 교점의 $x$좌표는 $x\\ge 3$이어야 한다. 양변을 제곱하면\n$x-1=x^2-6x+9$\n$x^2-7x+10=0$\n$(x-2)(x-5)=0$\n\n$x\\ge 3$이므로 구하는 $x$좌표는 $5$이다.\n\n따라서 정답은 ③이다.",
+    "score": 4,
+    "points": 4,
+    "sourceQid": 11,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 파란색 무리함수 곡선과 주황색 역함수 곡선이 점선 y=x에 대칭으로 그려져 있고 두 곡선이 y=x 위의 한 점에서 만난다.",
+    "solutionImageCaption": "a=−1이므로 f(x)=√(x−1)+3이고 시작점은 (1,3)이다. f는 증가함수이므로 f와 역함수 f⁻¹의 그래프는 직선 y=x에 대하여 대칭이고 교점은 y=x 위에 있다. √(x−1)=x−3의 해 중 x≥3인 것은 x=5이므로 교점은 (5,5)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 12,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "유리함수 $y=\\dfrac{ax+b}{x-2}$의 그래프를 평행이동하면 $y=\\dfrac{8}{x}$의 그래프와 겹쳐지고, 직선 $y=-x+4$에 대하여 대칭이다. 두 상수 $a$, $b$에 대하여 $a+b$의 값은?",
+    "choices": [
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$"
+    ],
+    "answer": "①",
+    "solution": "주어진 유리함수를 표준형으로 변형한다.\n$y=\\dfrac{a(x-2)+2a+b}{x-2}$\n$=a+\\dfrac{2a+b}{x-2}$\n\n이 그래프의 두 점근선은 $x=2$, $y=a$이므로 대칭의 중심은 $(2,a)$이다.\n\n직선 $y=-x+4$에 대하여 대칭이므로 이 직선은 점 $(2,a)$를 지난다.\n$a=-2+4=2$\n\n또 평행이동하여 $y=\\dfrac{8}{x}$의 그래프와 겹쳐지므로 분자의 상수 부분이 같아야 한다.\n$2a+b=8$\n\n$a=2$를 대입하면\n$4+b=8$\n$b=4$\n\n따라서 $a+b=2+4=6$이다.\n\n따라서 정답은 ①이다.",
+    "score": 4.1,
+    "points": 4.1,
+    "sourceQid": 12,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=2, y=2를 가지는 파란색 유리함수 그래프이고 두 점근선의 교점을 기울기 −1, 1인 두 점선이 지난다.",
+    "solutionImageCaption": "y=(ax+b)/(x−2)=a+(2a+b)/(x−2)이므로 점근선은 x=2, y=a이고 대칭의 중심은 C(2,a)이다. 직선 y=−x+4(초록색 점선)가 C를 지나므로 a=2이다. y=8/x와 겹치므로 2a+b=8에서 b=4이다. 그림은 이 값으로 그린 y=(2x+4)/(x−2)이고, 주황색 점선 y=x도 C를 지난다. 따라서 a+b=6이고 답은 ①이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 13,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "유리함수 $y=\\dfrac{a}{x+b}+c$의 그래프가 다음 그림과 같다.<br>무리함수 $y=\\sqrt{a(x+b)}-c$의 그래프가 제$2$사분면을 지나지 않도록 하는 실수 $a$, $b$, $c$에 대하여 $a+b+c$의 최댓값은?",
+    "choices": [
+      "$9$",
+      "$11$",
+      "$13$",
+      "$15$",
+      "$17$"
+    ],
+    "answer": "③",
+    "solution": "그림에서 유리함수의 두 점근선은 $x=-1$, $y=3$이고, 두 곡선이 점근선의 교점을 기준으로 제$1$, 제$3$사분면 쪽에 놓여 있으므로\n$-b=-1$, $c=3$, $a\\gt 0$\n즉, $b=1$, $c=3$, $a\\gt 0$이다.\n\n무리함수의 식에 대입하면\n$y=\\sqrt{a(x+1)}-3$\n\n이 그래프는 점 $(-1,-3)$에서 시작하여 오른쪽 위로 증가한다. 따라서 제$2$사분면을 지나지 않으려면 $x=0$일 때의 함숫값이 $0$ 이하이어야 한다.\n$\\sqrt{a}-3\\le 0$\n$\\sqrt{a}\\le 3$\n\n$a\\gt 0$이므로 $0\\lt a\\le 9$이다.\n\n따라서 $a+b+c=a+1+3=a+4$의 최댓값은 $a=9$일 때 $13$이다.\n\n따라서 정답은 ③이다.",
+    "score": 4.3,
+    "points": 4.3,
+    "sourceQid": 13,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_효천고_2학기_기말_고1_유사2/q13-problem.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 시작점 (−1,−3)에서 오른쪽 위로 뻗는 두 무리함수 곡선이 그려져 있다. 파란색 곡선은 원점을 지나고 주황색 점선 곡선은 y축 왼쪽에서 x축 위로 올라간다.",
+    "solutionImageCaption": "b=1, c=3이므로 무리함수는 y=√(a(x+1))−3이고 시작점은 (−1,−3)이다. 이 그래프가 제2사분면을 지나지 않으려면 x=0에서의 함숫값 √a−3이 0 이하이어야 하므로 0<a≤9이다. a=9일 때 그래프(파란색)는 원점을 지나고, a=16일 때 그래프(주황색 점선)는 제2사분면을 지난다. a+b+c=a+4의 최댓값은 13이므로 답은 ③이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 14,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 조건 $p$, $q$에 대하여 조건 $q$가<br>$q:(a-2)(b-2)(c-2)\\gt 0$<br>일 때, $N(p)$를 다음과 같이 정의하자.<div style=\"border:1px solid #222;padding:10px 12px;margin-top:10px;line-height:1.8;\">$p$가 $q$이기 위한 충분조건이지만 필요조건이 아니면 $N(p)=1$<br>$p$가 $q$이기 위한 필요조건이지만 충분조건이 아니면 $N(p)=2$<br>$p$가 $q$이기 위한 필요충분조건이면 $N(p)=3$<br>$p$가 $q$이기 위한 필요조건도 충분조건도 아니면 $N(p)=4$</div><br>세 조건 $p_1$, $p_2$, $p_3$가<br>$p_1:a,b,c$ 중 적어도 하나는 $2$보다 크다.<br>$p_2:a,b,c$ 모두 $2$보다 크다.<br>$p_3:a,b,c$ 중 적어도 두 개는 $2$보다 작다.<br>일 때, $N(p_1)+N(p_2)+N(p_3)$의 값은? (단, $a$, $b$, $c$는 실수이다.)",
+    "choices": [
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$"
+    ],
+    "answer": "③",
+    "solution": "세 인수 $(a-2)$, $(b-2)$, $(c-2)$의 곱이 양수이려면 양수인 인수가 $1$개 또는 $3$개여야 한다. 즉, $q$가 참이면 $a$, $b$, $c$ 중 $2$보다 큰 수가 $3$개이거나, $1$개만 $2$보다 크고 나머지 $2$개는 $2$보다 작다.\n\n$p_1$: $q$가 참이면 $a$, $b$, $c$ 중 적어도 하나는 $2$보다 크므로 $q\\to p_1$은 참이다. 그러나 $a=3$, $b=3$, $c=1$이면 $p_1$은 참이지만 곱이 음수이므로 $q$는 거짓이다. 따라서 $p_1$은 $q$이기 위한 필요조건이지만 충분조건이 아니므로 $N(p_1)=2$이다.\n\n$p_2$: $a$, $b$, $c$가 모두 $2$보다 크면 세 인수가 모두 양수이므로 $p_2\\to q$는 참이다. 그러나 $a=3$, $b=1$, $c=1$이면 $q$는 참이지만 $p_2$는 거짓이다. 따라서 $p_2$는 $q$이기 위한 충분조건이지만 필요조건이 아니므로 $N(p_2)=1$이다.\n\n$p_3$: $a=3$, $b=3$, $c=3$이면 $q$는 참이지만 $p_3$은 거짓이고, $a=1$, $b=1$, $c=1$이면 $p_3$은 참이지만 $q$는 거짓이다. 따라서 $p_3$은 $q$이기 위한 필요조건도 충분조건도 아니므로 $N(p_3)=4$이다.\n\n그러므로 $N(p_1)+N(p_2)+N(p_3)=2+1+4=7$이다.\n\n따라서 정답은 ③이다.",
+    "score": 4.4,
+    "points": 4.4,
+    "sourceQid": 14,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 각 원소가 어느 집합에 속하는지 표로 나타낸 그림이다.",
+    "solutionImageCaption": "a, b, c의 값을 대입하여 각 조건이 참인 곳에 표시했다. q가 참인 경우는 (3,3,3)과 (3,1,1)이다. P2는 Q 안에 들어가고 Q는 P1 안에 들어가므로 N(p2)=1, N(p1)=2이다. (3,1,1)은 q와 p3가 모두 참이고 (3,3,3)은 q만, (1,1,1)은 p3만 참이므로 N(p3)=4이다. 따라서 합은 7이고 답은 ③이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 15,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "정의역과 공역이 각각 실수 전체의 집합인 함수 $f$가<br>$f(x)=\\begin{cases}(a-5)x+b&(x\\lt 2)\\\\ (-a-2)x&(x\\ge 2)\\end{cases}$<br>일 때, 함수 $f$가 일대일대응이 되도록 하는 두 정수 $a$, $b$에 대하여 $a+b$의 최댓값은?",
+    "choices": [
+      "$-6$",
+      "$-3$",
+      "$0$",
+      "$6$",
+      "$9$"
+    ],
+    "answer": "⑤",
+    "solution": "두 구간의 일차함수가 모두 증가하거나 모두 감소해야 일대일대응이 될 수 있다.\n\n두 기울기가 모두 양수라면 $a-5\\gt 0$과 $-a-2\\gt 0$, 즉 $a\\gt 5$와 $a\\lt -2$를 동시에 만족해야 하므로 불가능하다.\n\n따라서 두 기울기는 모두 음수이어야 한다.\n$a-5\\lt 0$, $-a-2\\lt 0$\n$-2\\lt a\\lt 5$\n\n이때 $x\\lt 2$인 구간의 치역은 $(2a-10+b,\\infty)$이고, $x\\ge 2$인 구간의 치역은 $(-\\infty,-2a-4]$이다. 치역이 실수 전체가 되려면 두 경계값이 같아야 한다.\n$2a-10+b=-2a-4$\n$b=-4a+6$\n\n정수 $a$는 $-1,0,1,2,3,4$이고, $a+b=-3a+6$은 $a$가 가장 작은 $-1$일 때 가장 크다.\n$-3(-1)+6=9$\n\n따라서 정답은 ⑤이다.",
+    "score": 4.4,
+    "points": 4.4,
+    "sourceQid": 15,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 (2,−2)에서 이어지는 두 직선 조각의 그래프이다. 파란색 조각은 점 (0,10)을 지나는 가파른 내리막이고 주황색 조각은 완만한 내리막이다.",
+    "solutionImageCaption": "예: a=−1이면 b=−4a+6=10이므로 x<2에서 y=−6x+10(파란색), x≥2에서 y=−x(주황색)이다. 두 직선은 모두 기울기가 음수이고 점 (2,−2)에서 이어지므로 일대일대응이다. a+b=−3a+6은 a가 가장 작은 −1일 때 최대이므로 9이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 16,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "서로 다른 네 실수 $a$, $b$, $c$, $d$에 대하여 집합 $X=\\{a,b,c,d\\}$를 정의역, 실수 전체의 집합을 공역으로 하는 함수 $f(x)=|x^2-6x+4|$가 상수함수일 때, 함수 $f(x)$의 치역 $\\{k\\}$가 되도록 하는 정수 $k$의 개수는?",
+    "choices": [
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$",
+      "$8$"
+    ],
+    "answer": "①",
+    "solution": "함수 $f(x)$의 치역이 $\\{k\\}$이려면 방정식 $|x^2-6x+4|=k$가 서로 다른 네 실근을 가져야 한다.\n\n$k\\le 0$이면 실근이 최대 $2$개뿐이므로 $k\\gt 0$이어야 한다.\n$k\\gt 0$일 때 주어진 방정식은 다음 두 방정식과 같다.\n$x^2-6x+4=k$\n$x^2-6x+4=-k$\n\n각 식을 완전제곱식으로 변형하면\n$(x-3)^2=5+k$\n$(x-3)^2=5-k$\n\n$k\\gt 0$이므로 두 방정식은 공통근을 갖지 않으며, 첫째 방정식은 항상 서로 다른 두 실근을 갖는다. 따라서 전체가 서로 다른 네 실근을 가지려면 둘째 방정식도 서로 다른 두 실근을 가져야 한다.\n$5-k\\gt 0$\n$k\\lt 5$\n\n그러므로 $0\\lt k\\lt 5$이고, 이를 만족하는 정수 $k$는 $1,2,3,4$의 $4$개이다.\n\n따라서 정답은 ①이다.",
+    "score": 4.5,
+    "points": 4.5,
+    "sourceQid": 16,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: W 모양의 절댓값 이차함수 그래프(파란색)와 수평선(주황색 점선)이 네 점에서 만나는 그림이다. 가운데 꼭짓점이 표시되어 있다.",
+    "solutionImageCaption": "예: k=4이면 수평선 y=k(주황색 점선)가 y=|x²−6x+4|의 그래프(파란색)와 x=0, 2, 4, 6의 서로 다른 네 점에서 만난다. 위로 볼록한 부분의 꼭짓점 V(3,5)의 높이 5(초록색 점선 y=5)보다 작아야 하므로 0<k<5일 때 네 점에서 만난다. 이를 만족하는 정수 k는 1, 2, 3, 4의 4개이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 17,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "집합 $X=\\{x\\mid 0\\le x\\le 6\\}$에 대하여 $X$에서 $X$로의 함수<br>$f(x)=\\begin{cases}\\dfrac{4}{3}x&(0\\le x\\lt 3)\\\\-\\dfrac{4}{3}x+8&(3\\le x\\le 6)\\end{cases}$<br>의 그래프는 아래 그림과 같다. $(f\\circ f\\circ f)(a)=\\dfrac{8}{3}$을 만족시키는 실수 $a$의 개수는?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$6$"
+    ],
+    "answer": "④",
+    "solution": "먼저 $f(t)=\\dfrac{8}{3}$을 만족시키는 $t$를 구한다.\n$\\dfrac{4}{3}t=\\dfrac{8}{3}$에서 $t=2$이고,\n$-\\dfrac{4}{3}t+8=\\dfrac{8}{3}$에서 $t=4$이다.\n\n따라서 $(f\\circ f\\circ f)(a)=\\dfrac{8}{3}$이려면 $f(f(a))=2$ 또는 $f(f(a))=4$이어야 한다.\n\n$f(u)=2$의 해는 $\\dfrac{4}{3}u=2$와 $-\\dfrac{4}{3}u+8=2$에서 $u=\\dfrac{3}{2}$, $\\dfrac{9}{2}$이다.\n$f(u)=4$의 해는 꼭짓점인 $u=3$ 하나뿐이다.\n\n따라서 $f(a)$는 $\\dfrac{3}{2}$, $3$, $\\dfrac{9}{2}$ 중 하나이어야 한다.\n\n함수 $f(x)$의 치역은 $[0,4]$이고, $0\\lt k\\lt 4$인 모든 $k$에 대하여 $f(a)=k$는 서로 다른 두 실근을 갖는다.\n$f(a)=\\dfrac{3}{2}$의 해는 $2$개이고,\n$f(a)=3$의 해는 $2$개이며,\n$f(a)=\\dfrac{9}{2}$는 $\\dfrac{9}{2}\\gt 4$이므로 해가 없다.\n\n따라서 구하는 실수 $a$의 개수는 $2+2+0=4$이다.\n\n따라서 정답은 ④이다.",
+    "score": 4.6,
+    "points": 4.6,
+    "sourceQid": 17,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_효천고_2학기_기말_고1_유사2/q17-problem.svg",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 산 모양의 꺾은선 y=f(x)와 수평선 y=3/2(초록색 점선), y=3(주황색 점선)이 그려져 있고, 수평선과 만나는 네 점에서 x축으로 점선이 내려와 있다.",
+    "solutionImageCaption": "f(t)=8/3의 해는 t=2, 4이므로 f(f(a))는 2 또는 4이고, 이로부터 f(a)는 3/2, 3, 9/2 중 하나이다. 최댓값이 4이므로 9/2는 불가능하다. 그림의 수평선 y=3/2(초록색 점선), y=3(주황색 점선)이 y=f(x)와 각각 두 점에서 만나고, 세로 점선이 x축에 닿는 네 곳(9/8, 9/4, 15/4, 39/8)이 a이다. 따라서 a는 4개이고 답은 ④이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 18,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "양수 $k$에 대하여 유리함수 $y=\\dfrac{2x+k-4}{x-2}$의 그래프와 중심이 $(2,2)$이고 반지름의 길이가 $2\\sqrt{3}$인 원이 서로 다른 두 점에서 만날 때, $k$의 값은?",
+    "choices": [
+      "$6$",
+      "$8$",
+      "$10$",
+      "$12$",
+      "$14$"
+    ],
+    "answer": "①",
+    "solution": "주어진 유리함수를 표준형으로 변형한다.\n$y=\\dfrac{2(x-2)+k}{x-2}$\n$=2+\\dfrac{k}{x-2}$\n\n이 그래프의 두 점근선은 $x=2$, $y=2$이고, 그 교점이 원의 중심 $(2,2)$와 같다.\n\n$X=x-2$, $Y=y-2$로 놓으면 유리함수는 $XY=k$이고, 원은 $X^2+Y^2=12$이다.\n\n$k\\gt 0$이므로 $X$와 $Y$는 같은 부호이다. 두 식에서\n$X^2+Y^2-2k=X^2+Y^2-2XY=(X-Y)^2\\ge 0$\n이므로 $12\\ge 2k$, 즉 $k\\le 6$이어야 한다.\n\n$k\\lt 6$이면 $(X-Y)^2\\gt 0$이 되어 서로 다른 네 점에서 만나고, $k=6$일 때만 $X=Y=\\pm\\sqrt{6}$으로 서로 다른 두 점에서 만난다.\n\n따라서 $k=6$이다.\n\n따라서 정답은 ①이다.",
+    "score": 4.8,
+    "points": 4.8,
+    "sourceQid": 18,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 점근선 x=2, y=2를 가지는 유리함수 그래프와 두 점근선의 교점 C(2,2)를 중심으로 하는 원이 그려져 있다. 원은 곡선과 직선 y=x 위의 두 점에서 만난다.",
+    "solutionImageCaption": "y=2+k/(x−2)의 점근선의 교점이 원의 중심 C(2,2)이다. X=x−2, Y=y−2로 놓으면 XY=k, X²+Y²=12이고 (X−Y)²=12−2k≥0이므로 k≤6이다. k<6이면 네 점에서 만나고 k=6일 때만 X=Y=±√6, 즉 두 점 P, Q에서 만난다. 따라서 k=6이고 답은 ①이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 19,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 1] 두 함수 $f(x)=3x-4$, $g(x)=x^2-2x$에 대하여 $(g\\circ f^{-1})(5)$의 값을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$3$",
+    "solution": "$f^{-1}(5)=k$라 하면 역함수의 성질에 의하여 $f(k)=5$이다.\n$3k-4=5$\n$3k=9$\n$k=3$\n\n따라서 $f^{-1}(5)=3$이다.\n\n이제 이 값을 함수 $g$에 대입하면\n$(g\\circ f^{-1})(5)=g(3)$\n$=3^2-2\\cdot 3$\n$=9-6=3$\n\n따라서 구하는 값은 $3$이다.",
+    "score": 5,
+    "points": 5,
+    "sourceQid": 19,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 20,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 2] 두 함수 $f(x)=ax+2m$, $g(x)=bx+3n$에 대하여 $0$이 아닌 두 실수 $m$, $n$의 값에 관계없이 $(f\\circ g)(x)=(g\\circ f)(x)-4m+9n$이 성립할 때, 두 상수 $a$, $b$의 합 $a+b$의 값을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$7$",
+    "solution": "두 합성함수를 각각 전개한다.\n$(f\\circ g)(x)=a(bx+3n)+2m=abx+2m+3an$\n\n$(g\\circ f)(x)-4m+9n=b(ax+2m)+3n-4m+9n$\n$=abx+(2b-4)m+12n$\n\n두 식이 $0$이 아닌 $m$, $n$의 값에 관계없이 항상 같으므로 $m$항과 $n$항의 계수를 각각 비교한다.\n$m$의 계수에서\n$2=2b-4$\n$2b=6$\n$b=3$\n\n$n$의 계수에서\n$3a=12$\n$a=4$\n\n따라서 $a+b=4+3=7$이다.",
+    "score": 6,
+    "points": 6,
+    "sourceQid": 20,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 21,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 3] 명제 ‘어떤 실수 $x$에 대하여 $x^2-2(a-1)x+3a+1\\le 0$이다.’의 부정이 참이 되도록 하는 정수 $a$의 개수를 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$4$",
+    "solution": "주어진 명제의 부정은 ‘모든 실수 $x$에 대하여 $x^2-2(a-1)x+3a+1\\gt 0$이다.’이다.\n\n이차부등식 $x^2-2(a-1)x+3a+1\\gt 0$이 모든 실수 $x$에 대하여 성립하려면 이차방정식 $x^2-2(a-1)x+3a+1=0$의 판별식 $D$가 $0$보다 작아야 한다.\n$\\dfrac{D}{4}=(a-1)^2-(3a+1)\\lt 0$\n$a^2-2a+1-3a-1\\lt 0$\n$a^2-5a\\lt 0$\n$a(a-5)\\lt 0$\n$0\\lt a\\lt 5$\n\n이 범위에 속하는 정수 $a$는 $1,2,3,4$이므로 모두 $4$개이다.",
+    "score": 6,
+    "points": 6,
+    "sourceQid": 21,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 범위를 나타낸 그림이다.",
+    "solutionImageCaption": "부정은 모든 실수 x에 대하여 x²−2(a−1)x+3a+1>0이고, 이는 판별식 D/4=a²−5a<0일 때 성립한다. a(a−5)<0에서 0<a<5이므로 수직선(그림의 x는 a를 뜻한다)에서 0과 5 사이의 정수 a는 1, 2, 3, 4이다. 따라서 정수 a는 4개이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 22,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 4] 유리함수 $y=\\dfrac{-9}{x-1}+2$ $(x\\lt 0)$의 그래프 위의 점 $P$에서 $x$축, $y$축에 내린 수선의 발을 각각 $Q$, $R$이라 할 때, $\\overline{PQ}+\\overline{PR}$의 최솟값을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$7$",
+    "solution": "점 $P$의 좌표를 $(x,y)$라 하면 $x\\lt 0$이므로 $1-x\\gt 1\\gt 0$이다.\n따라서\n$y=\\dfrac{9}{1-x}+2\\gt 0$\n\n점 $P$에서 $x$축과 $y$축에 내린 수선의 발이 각각 $Q$, $R$이므로\n$\\overline{PQ}=y=\\dfrac{9}{1-x}+2$\n$\\overline{PR}=-x=(1-x)-1$\n\n그러므로 두 선분의 길이의 합은\n$\\overline{PQ}+\\overline{PR}=(1-x)+\\dfrac{9}{1-x}+1$\n\n$t=1-x$라 놓으면 $t\\gt 1\\gt 0$이므로 산술평균과 기하평균의 관계에 의하여\n$t+\\dfrac{9}{t}+1\\ge 2\\sqrt{t\\cdot\\dfrac{9}{t}}+1=6+1=7$\n\n등호는 $t=\\dfrac{9}{t}$, 즉 $t=3$ ($x=-2\\lt 0$)일 때 성립한다.\n\n따라서 $\\overline{PQ}+\\overline{PR}$의 최솟값은 $7$이다.",
+    "score": 6,
+    "points": 6,
+    "sourceQid": 22,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: x&lt;0인 유리함수 그래프의 왼쪽 가지 위에 점 P가 있고, P에서 x축으로 내린 수선의 발 Q와 y축으로 내린 수선의 발 R이 선으로 이어져 있다.",
+    "solutionImageCaption": "t=1−x로 놓으면 x<0에서 t>1이고 PQ=9/t+2, PR=t−1이므로 PQ+PR=t+9/t+1이다. 산술평균과 기하평균의 관계에서 t=3, 즉 x=−2일 때 최소이다. 점 P는 (−2,5)이고 PQ=5, PR=2이다(그림의 점선은 PQ, 주황색 선분은 PR). 따라서 최솟값은 7이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 23,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 5] 함수 $f(x)=\\begin{cases}\\dfrac{1}{2}x+3&(x\\ge 2)\\\\3x-2&(x\\lt 2)\\end{cases}$과 그 역함수 $f^{-1}(x)$에 대하여 $\\{f(x)\\}^2=f(x)f^{-1}(x)$를 만족시키는 모든 실수 $x$의 값의 합을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$\\dfrac{23}{3}$",
+    "solution": "함수 $f(x)$의 두 구간은 모두 기울기가 양수이고 $x=2$에서 함숫값이 모두 $4$이므로 실수 전체에서 증가하는 일대일대응이다. 따라서 역함수가 존재한다.\n\n$x\\ge 2$일 때 $y=\\dfrac{1}{2}x+3\\ge 4$이므로 $x$와 $y$를 바꾸어 정리하면\n$x=\\dfrac{1}{2}y+3$\n$y=2x-6$ $(x\\ge 4)$\n\n$x\\lt 2$일 때 $y=3x-2\\lt 4$이므로 $x$와 $y$를 바꾸어 정리하면\n$x=3y-2$\n$y=\\dfrac{x+2}{3}$ $(x\\lt 4)$\n\n주어진 방정식을 정리하면\n$f(x)\\{f(x)-f^{-1}(x)\\}=0$\n\n먼저 $f(x)=0$인 경우를 구한다.\n$x\\ge 2$에서 $\\dfrac{1}{2}x+3=0$의 해는 $x=-6$이므로 범위에 맞지 않는다.\n$x\\lt 2$에서 $3x-2=0$의 해는 $x=\\dfrac{2}{3}$이다.\n\n다음으로 $f(x)=f^{-1}(x)$인 경우를 구한다. $f$의 식이 바뀌는 곳은 $x=2$, $f^{-1}$의 식이 바뀌는 곳은 $x=4$이므로 세 구간으로 나눈다.\n\n$x\\lt 2$일 때\n$3x-2=\\dfrac{x+2}{3}$\n$9x-6=x+2$\n$x=1$ (범위에 맞음)\n\n$2\\le x\\lt 4$일 때\n$\\dfrac{1}{2}x+3=\\dfrac{x+2}{3}$\n$3x+18=2x+4$\n$x=-14$ (범위에 맞지 않음)\n\n$x\\ge 4$일 때\n$\\dfrac{1}{2}x+3=2x-6$\n$\\dfrac{3}{2}x=9$\n$x=6$ (범위에 맞음)\n\n따라서 모든 해는 $\\dfrac{2}{3}$, $1$, $6$이고 그 합은\n$\\dfrac{2}{3}+1+6=\\dfrac{23}{3}$\n\n따라서 구하는 값은 $\\dfrac{23}{3}$이다.",
+    "score": 7,
+    "points": 7,
+    "sourceQid": 23,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_효천고_2학기_기말_고1_유사2/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 꺾이는 직선 모양의 f의 그래프(파란색)와 역함수의 그래프(주황색)가 점선 y=x에 대칭으로 그려져 있다. x축 위의 점 (2/3,0)과 y=x 위의 두 교점 (1,1), (6,6)이 표시되어 있다.",
+    "solutionImageCaption": "f는 실수 전체에서 증가하는 일대일대응이고 꺾임점은 (2,4)이며, 역함수 f⁻¹의 그래프(주황색)는 직선 y=x에 대하여 대칭이고 꺾임점은 (4,2)이다. f(x)=0의 해는 (2/3,0)에서 x=2/3이고, f(x)=f⁻¹(x)의 해는 y=x 위의 교점 (1,1), (6,6)에서 x=1, 6이다. 따라서 모든 x의 값의 합은 2/3+1+6=23/3이다.",
+    "solutionImageSize": "full"
+  }
+];

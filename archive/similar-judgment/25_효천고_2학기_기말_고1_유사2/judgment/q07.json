@@ -1,0 +1,64 @@
+{
+ "qid": 7,
+ "itemFingerprint": "e1ebbea368fadcd4",
+ "solveSteps": [
+  "ㄱ: x=1, y=2 이면 x+y=3 으로 p→q 참, x=0, y=3 이면 q 참·p 거짓이라 q→p 거짓이다.",
+  "ㄴ: a>2, b>2 이면 ab>4 로 참, a=b=-3 이면 ab=9>4 이지만 p 거짓이라 q→p 거짓이다.",
+  "ㄷ: x^2=9 이면 |x|=3≥3 으로 참, x=4 이면 q 참·p 거짓이라 q→p 거짓이다. 세 개 모두 해당하므로 ⑤."
+ ],
+ "solvedAnswer": "⑤",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-06",
+ "subUnitKey": "H22-C2-06-CORE",
+ "unitEvidence": "충분조건이지만 필요조건이 아닌 것만을 있는 대로 고른 것은",
+ "rpmRecordId": "H1-RPM-247",
+ "rpmReason": "ㄱ x+y=3, ㄴ ab>4, ㄷ |x|≥3 에서 p→q 와 q→p 의 참·거짓을 가리는 단계라 조건 관계 행이다.",
+ "problemTypeKey": "PT_NEC_SUFF_RELATION",
+ "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+ "typeReason": "ㄱ·ㄴ(ab>4)·ㄷ 각각 p→q 참과 반례 (0,3), (-3,-3), x=4 로 q→p 거짓을 보여 충분조건만인지 판정하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "세 조건 ㄱ·ㄴ(ab>4)·ㄷ 에서 반례 (0,3), (-3,-3), x=4 를 하나씩 찾는 반복 판정이라 2단계로 본다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "실수",
+    "src": "stem",
+    "quote": "(단, $a$, $b$, $x$, $y$는 실수이다.)"
+   }
+  ],
+  "goal": [
+   {
+    "term": "충분조건",
+    "src": "stem",
+    "quote": "충분조건이지만 필요조건이 아닌 것만을 있는 대로 고른 것은"
+   }
+  ],
+  "method": [
+   {
+    "term": "반례",
+    "src": "solution",
+    "quote": "그러나 $x=0$, $y=3$이면 $q$는 참이지만 $p$는 거짓이므로",
+    "evidenceType": "IMPLIED",
+    "justification": "q 가 참인데 p 가 거짓인 반례로 q→p 가 거짓임을 보인다"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "세 조건(ㄴ 은 ab>4) 모두 p→q 참, q→p 반례를 찾아 ㄱ·ㄴ·ㄷ 모두 해당함을 얻어 ⑤ 와 대조했다. 해설과 같은 판정 흐름이라 필요·충분조건 판정을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}
