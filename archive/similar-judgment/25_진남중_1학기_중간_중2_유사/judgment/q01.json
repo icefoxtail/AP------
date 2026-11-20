@@ -1,0 +1,63 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "ac37faf19c0ef4c2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "7 / (2^3 * 5) 의 분모를 10의 거듭제곱으로 만들기 위해 분모, 분자에 5^2 = 25 를 곱한다.",
+    "A = 7 * 25 = 175 이다.",
+    "B = 2^3 * 5^3 = 1000 이다.",
+    "C = 175 / 1000 = 0.175 이다.",
+    "A + B * C = 175 + 1000 * 0.175 = 175 + 175 = 350 이므로 정답은 ②번 350 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "분수 $\\dfrac{7}{2",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분수의 분모를 1000 과 같은 10의 거듭제곱으로 변환하여 유한소수 175 / 1000 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-001",
+  "rpmReason": "분모를 10의 거듭제곱 B = 1000 으로 고쳐 계산값 350 을 도출한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분모와 분자에 5^2 을 곱해 A = 175, B = 1000 을 구하고 350 을 계산한다.",
+  "how": "분모를 1000 으로 통일하여 A=175, B=1000, C=0.175 에서 A + B*C = 350 을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{7}{2^3 \\times 5}$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "유한소수로 나타내는 과정이다"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "분모를 $10$의 거듭제곱인",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "유한소수로 나타내는 과정이다"
+      }
+    ]
+  }
+}

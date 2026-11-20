@@ -1,0 +1,63 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "d9c1d41b83e818fd",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "0.dot{a}dot{b} + 0.dot{b}dot{a} = 0.dot{7} 을 분수로 나타낸다.",
+    "(10a + b)/99 + (10b + a)/99 = 7/9 이다.",
+    "11(a + b)/99 = 7/9 -> (a + b)/9 = 7/9 -> a + b = 7 이다.",
+    "a, b 는 한 자리의 소수(prime number)이므로 2 + 5 = 7 이다.",
+    "a > b 이므로 a = 5, b = 2 이고 a - b = 5 - 2 = 3 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 순환소수 $0.\\dot{",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수를 99 분모의 분수로 변환하여 prime 조건과 a + b = 7 을 만족하는 수를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "순환소수를 분모 99 인 분수로 나타내어 11(a+b)/99 = 7/9 방정식을 해결한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "순환소수 덧셈 식을 분모 99 로 통분하여 a+b=7 을 얻고 prime 조건을 적용한다.",
+  "how": "분모 99 로 식을 세워 11(a+b)/99 = 7/9 에서 a=5, b=2 및 a-b=3 을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "두 순환소수 $0.\\dot"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "두 순환소수 $0.\\dot"
+      }
+    ],
+    "method": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "순환소수를 분수로 나타내어 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "는 한 자리의 자연수이고 $a$와"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "5bda6af1c6bff4dc",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "2^18 * 5^15 = 2^(15 + 3) * 5^15 = 2^3 * (2 * 5)^15 = 8 * 10^15 이다.",
+    "8 은 1자리 자연수이고 뒤에 0이 15개 붙는다.",
+    "따라서 전체 자릿수는 1 + 15 = 16자리이다.",
+    "n = 16 이므로 정답은 ④번 16 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2^{18} \\times",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "2^18 * 5^15 을 10의 거듭제곱 8 * 10^15 형태로 변형하여 자릿수 16 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "지수가 작은 15 에 맞추어 8 * 10^15 으로 변형하고 자릿수 16 을 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "2^18 = 2^3 * 2^15 로 분리하여 8 * 10^15 에서 자릿수 16 을 구한다.",
+  "how": "2^18 * 5^15 = 8 * 10^15 에서 1자리 수에 0이 15개 붙어 16자리임을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "이 $n$자리 자연수일 때, $n$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자릿수",
+        "src": "stem",
+        "quote": "5}$이 $n$자리 자연수일 때,"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "춰 $10$의 거듭제곱으로 묶는다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "bb1941f0e5ae8ad9",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "(x^a y^b z^c)^d = x^(ad) y^(bd) z^(cd) = x^36 y^24 z^48 이다.",
+    "ad = 36, bd = 24, cd = 48 이므로 d는 36, 24, 48 의 공약수이다.",
+    "a + b + c = (36 + 24 + 48) / d = 108 / d 이다.",
+    "a + b + c 가 최소가 되려면 d가 36, 24, 48 의 최대공약수인 12 이어야 한다.",
+    "d = 12 일 때 a = 3, b = 2, c = 4 이므로 최솟값은 3 + 2 + 4 = 9 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "네 자연수 $a, b, c,",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수 등식 ad=36, bd=24, cd=48 에서 최대공약수 d=12 로 a+b+c 의 최솟값 9 를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "지수 곱이 36, 24, 48 인 조건에서 최대공약수 12 를 이용하여 최솟값을 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ad=36, bd=24, cd=48 에서 d의 최댓값인 gcd(36,24,48)=12 를 찾아 합을 구한다.",
+  "how": "ad=36, bd=24, cd=48 에서 d=12 일 때 a=3, b=2, c=4 이므로 최솟값 9 를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "네 자연수 $a, b, c, d$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$a + b + c$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "최대공약수",
+        "src": "solution",
+        "quote": "최대공약수이어야 한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "공약수",
+        "src": "solution",
+        "quote": "공약수이어야 한다"
+      }
+    ]
+  }
+}

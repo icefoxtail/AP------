@@ -1,0 +1,51 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "b0aba1ef376adf07",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "(x^3 y^2)^3 * (x^2 y^4)^2 를 전개한다.",
+    "(x^3 y^2)^3 = x^9 y^6 이다.",
+    "(x^2 y^4)^2 = x^4 y^8 이다.",
+    "곱하면 x^(9+4) y^(6+8) = x^13 y^14 이다.",
+    "a = 13, b = 14 이므로 a + b = 13 + 14 = 27 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x^3 y^2)^3 \\t",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단항식의 거듭제곱과 곱셈에서 지수법칙을 적용해 a=13, b=14 로부터 a+b=27 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "지수의 거듭제곱 및 곱셈 법칙으로 x^13 y^14 를 구하고 합 27 을 계산한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "괄호의 지수를 곱해 x^9 y^6 과 x^4 y^8 을 곱하고 지수 합 27 을 바로 구한다.",
+  "how": "지수법칙으로 x^13 y^14 를 얻어 a=13, b=14 에서 a+b=27 임을 확인했다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "2단계: 두 단항식을 곱한다. $"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙의 거듭제곱의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

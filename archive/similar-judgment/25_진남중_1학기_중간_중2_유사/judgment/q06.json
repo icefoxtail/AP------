@@ -1,0 +1,63 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "a2344800d4ee5329",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "0.41dot{6} = (416 - 41)/900 = 375/900 = 5/12 이다.",
+    "준우는 분모를 잘못 보았으므로 원래 분수는 분자가 5 이다.",
+    "하은이는 0.4dot{5} = (45 - 4)/90 = 41/90 로 분자를 잘못 보았으므로 분모는 90 이다.",
+    "원래의 기약분수는 5/90 = 1/18 이다.",
+    "1/18 = 0.0555... = 0.05dot{5} 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어떤 기약분수를 소수로 나타",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "잘못 본 순환소수 0.41dot{6} 과 0.4dot{5} 로부터 분자 5와 분모 90 을 복원하는 유형이다.",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "순환소수 0.41dot{6} = 375/900 = 5/12 의 약분 결과로 바른 분수를 복원한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "0.41dot{6} 을 분수로 고쳐 분자 5를 얻고 바른 분수 5/90 = 0.05dot{5} 를 계산한다.",
+  "how": "375/900 = 5/12 에서 분자 5, 41/90 에서 분모 90 을 취해 1/18 = 0.05dot{5} 를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "기약분수",
+        "src": "stem",
+        "quote": "어떤 기약분수를 소수로 나타"
+      }
+    ],
+    "goal": [
+      {
+        "term": "기약분수",
+        "src": "stem",
+        "quote": "어떤 기약분수를 소수로 나타"
+      }
+    ],
+    "method": [
+      {
+        "term": "복원",
+        "src": "solution",
+        "quote": "의 기약분수를 복원한다. 1단계:",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분모",
+        "src": "stem",
+        "quote": "는데, 준우는 분모를 잘못 보아"
+      }
+    ]
+  }
+}

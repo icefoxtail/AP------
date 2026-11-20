@@ -1,0 +1,64 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "b001259d720be433",
+  "solvedAnswer": "-2",
+  "solveSteps": [
+    "(2x^3 / y^a)^b = 2^b x^(3b) / y^(ab) 이다.",
+    "우변 8x^c / y^12 와 비교한다.",
+    "2^b = 8 = 2^3 -> b = 3 이다.",
+    "c = 3b = 3 * 3 = 9 이다.",
+    "ab = 12 -> 3a = 12 -> a = 4 이다.",
+    "a + b - c = 4 + 3 - 9 = -2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\left(\\dfrac{2",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수법칙 전개와 계수 및 지수 비교를 통해 ab=12 에서 a, b, c 를 구하고 a+b-c=-2 를 계산하는 유형이다.",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "좌변을 전개하여 분모 지수 ab = 12 와 계수 2^b = 8 을 일치시킨다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱의 분배 법칙으로 b=3, c=9, a=4 를 구하고 ab=12 식의 값을 계산한다.",
+  "how": "2^b = 8 에서 b=3, c=9, ab=12 에서 a=4 를 구해 a+b-c = -2 를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "단, $a, b, c$는 자연수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a, b, c$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 적용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "거듭제곱의 분배 및 곱셈"
+      }
+    ]
+  }
+}

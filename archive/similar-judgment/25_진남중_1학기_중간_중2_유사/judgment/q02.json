@@ -1,0 +1,64 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "84d8d90d29455b2b",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "각 분수를 기약분수로 나타내어 분모의 소인수를 확인한다.",
+    "① 7/35 = 1/5 -> 분모 소인수 5 (유한소수)",
+    "② 27/180 = 3/20 = 3/(2^2 * 5) -> 분모 소인수 2, 5 (유한소수)",
+    "③ 63/(2^2 * 3^2 * 5^2) = 7/(2^2 * 5^2) -> 분모 소인수 2, 5 (유한소수)",
+    "④ 42/(2^3 * 3 * 7) = 1/2^2 -> 분모 소인수 2 (유한소수)",
+    "⑤ 21/(2^2 * 3^2 * 5) = 7/(2^2 * 3 * 5) -> 분모에 3이 남아 순환소수이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 분수 중에서 순환소수로",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분수 21 / (2^2 * 3^2 * 5) 등의 기약분수 분모 소인수를 조사해 순환소수만 되는 분수를 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "기약분수 21 / (2^2 * 3^2 * 5) 분모에 3이 남는 소인수 조건을 적용한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "보기 21 / (2^2 * 3^2 * 5) 등 분수를 약분하여 분모 소인수에 2, 5 이외가 있는지 판별한다.",
+  "how": "각 분수를 약분하여 ⑤ 21/(2^2 * 3^2 * 5) 의 분모에 소인수 3이 남음을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "다음 분수 중에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수로만 나타낼 수 있는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "기약분수로 나타내었을 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소인수",
+        "src": "solution",
+        "quote": "분모의 소인수가 $2$ 또는 $5$"
+      }
+    ]
+  }
+}

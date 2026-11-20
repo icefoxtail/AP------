@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "3a96880f6b078cf3",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "a - 2 <= b - 2 의 양변에 2를 더하면 a <= b 이다.",
+    "① 양변에 음수 -1을 곱하면 -a >= -b 이고, 6을 더하면 6 - a >= 6 - b 로 부등호가 >= 로 바뀐다.",
+    "②, ③, ④, ⑤ 는 양수를 더하거나 곱하거나 나누므로 부등호가 <= 로 aligned 유지된다.",
+    "따라서 부등호 방향이 나머지 넷과 다른 하나는 ①번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a - 2 \\le b -",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "부등식의 성질에서 음수를 곱하거나 나눌 때 부등호 방향이 aligned 반대로 바뀌는 것을 고르는 유형이다.",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "음수를 곱하면 부등호 방향이 바뀌는 부등식의 성질을 aligned 적용한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수를 곱한 ①번만 부등호 방향이 aligned 바뀌므로 바로 판별된다.",
+  "how": "음수 -1을 곱한 ①번만 부등호가 >= 로 바뀌고 나머지는 <= 로 aligned 유지됨을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "등호의 방향이 나머지 넷과 다른 하"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "뀐다. 따라서 나머지 넷과 다른 하"
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "t{의 양변에 음수 } -1\\te",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "solution",
+        "quote": "t{의 양변에 양수 } 3\\tex"
+      }
+    ]
+  }
+}

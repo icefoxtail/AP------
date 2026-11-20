@@ -1,0 +1,60 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "fb86ff317e08411d",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "(3x + 2y - 1) - A = 4x - y + 2 로부터 어떤 식 A를 aligned 구한다.",
+    "A = (3x + 2y - 1) - (4x - y + 2) = -x + 3y - 3 이다.",
+    "바르게 계산한 식은 (3x + 2y - 1) + A 이다.",
+    "(3x + 2y - 1) + (-x + 3y - 3) = 2x + 5y - 4 이다.",
+    "따라서 바르게 계산한 식은 ③번 2x + 5y - 4 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3x + 2y - 1$에",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "problemTypeKey": "PT_M2_POLYNOMIAL_ADDITION_SUBTRACTION_CORRECTION",
+  "templateKey": "TPL_M2_RESTORE_CORRECT_POLYNOMIAL_CALCULATION",
+  "newKeyProposal": null,
+  "typeReason": "잘못 뺀 다항식 결과에서 어떤 식 A를 aligned 역산하여 바른 합을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-012",
+  "rpmReason": "어떤 식 A = -x + 3y - 3 을 aligned 복원한 뒤 원래 다항식에 더한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "오연산 등식에서 A를 aligned 구한 후 본래의 덧셈 식에 대입하여 계산한다.",
+  "how": "잘못된 식에서 A = -x + 3y - 3 을 aligned 구하고 덧셈하여 2x + 5y - 4 를 얻었다.",
+  "slots": {
+    "given": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "어떤 식 $A$를 더해야"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양화",
+        "src": "solution",
+        "quote": "어떤 식 $A$를 먼저"
+      }
+    ],
+    "method": [
+      {
+        "term": "식",
+        "candidate": true,
+        "parent": "다항식",
+        "note": "미지의 다항식을 의미하는 식",
+        "src": "stem",
+        "quote": "어떤 식 $A$를 더해야",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

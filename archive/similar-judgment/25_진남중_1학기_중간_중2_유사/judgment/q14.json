@@ -1,0 +1,62 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "16ededd1954c2d02",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "밑면이 한 변의 길이 3a^2 b 인 정사각형이므로 밑넓이는 (3a^2 b)^2 = 9a^4 b^2 이다.",
+    "직육면체의 부피는 밑넓이 * 높이 = 18a^5 b^4 이다.",
+    "높이 = 18a^5 b^4 / (9a^4 b^2) = 2ab^2 이다.",
+    "따라서 높이는 ⑤번 2ab^2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "밑면은 한 변의 길이가 $3",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직육면체의 부피 18a^5 b^4 를 밑넓이로 나누어 높이 2ab^2 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-010",
+  "rpmReason": "부피 18a^5 b^4 를 단항식 9a^4 b^2 으로 나누어 단항식 높이를 계산한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "부피 18a^5 b^4 / (3a^2 b)^2 = 2ab^2 의 단항식 나눗셈을 직접 수행한다.",
+  "how": "부피 18a^5 b^4 를 밑넓이 9a^4 b^2 으로 나누어 높이 2ab^2 을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "3a^2b$인 정사각형이고 부피가 $"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "인 직육면체의 높이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "$$ 3단계: 단항식의 나눗셈으로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부피",
+        "src": "stem",
+        "quote": "정사각형이고 부피가 $18a^5"
+      }
+    ]
+  }
+}

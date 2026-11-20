@@ -1,0 +1,50 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "9461eaa67b2e05a4",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "a = 2^(x-1) = 2^x / 2 이므로 2^x = 2a 이다.",
+    "4^x = (2^2)^x = (2^x)^2 이다.",
+    "2^x 에 2a 를 대입하면 (2a)^2 = 4a^2 이다.",
+    "따라서 4^x = 4a^2 이므로 정답은 ③번 4a^2 이다. (16a^2 아님)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a = 2^{x-1}$일",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "지수식 2^x = 2a 를 이용하여 4^x 을 a의 식으로 16 거듭제곱 관계와 비교하여 나타내는 유형이다.",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "밑을 2로 변환하여 (2^x)^2 = (2a)^2 = 4a^2 식을 구하고 보기 16a^2 과 구별한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "2^x = 2a 를 대입하여 4^x = 4a^2 임을 구하고 16 거듭제곱과 비교한다.",
+  "how": "2^x = 2a 로 치환하여 4^x = (2a)^2 = 4a^2 을 16 계수와 구별해 도출했다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "$2^x$의 거듭제곱으로 나타낸다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "= 2a$를 대입한다. $$ 4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
