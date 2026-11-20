@@ -1,0 +1,77 @@
+{
+  "qid": 24,
+  "itemFingerprint": "db5a7cc1353aaaaf",
+  "solveSteps": [
+    "1) 접선과 반지름의 수직 조건에 의해 각 OAP = 각 OBP = 90도이다.",
+    "2) 직각삼각형 OAP에서 각 APO = 30도이므로 반지름 OA = PA * tan 30도 = 3*sqrt(3) * (sqrt(3)/3) = 3 cm이다.",
+    "3) 사각형 PAOB에서 각 AOB = 360도 - 90도 - 90도 - 60도 = 120도이다.",
+    "4) 사각형 PAOB의 넓이는 2 * ((1/2) * 3*sqrt(3) * 3) = 9*sqrt(3) cm^2이다.",
+    "5) 부채꼴 AOB의 넓이는 pi * 3^2 * (120/360) = 3*pi cm^2이다.",
+    "6) 따라서 어두운 부분의 넓이는 (9*sqrt(3) - 3*pi) cm^2이다."
+  ],
+  "solvedAnswer": "$(9\\sqrt{3}-3\\pi),\\mathrm{cm}^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "unitEvidence": "[서술형 4] 다음 그림에서 두 반직선 $PA$, $PB$는 원 $O$의 접선이고 두 점 $A$, $B$는 각각 그 접점이다. $\\angle APB=60^\\circ$, $PA=3\\sqrt{3},\\mathrm{cm}$일 때, 어두운 부분(사각형 $PAOB$에서 부채꼴 $AOB$를 제외한 부분)의 넓이를 구하는 과정과 답을 쓰시오.",
+  "rpmRecordId": "M3-RPM-070",
+  "rpmReason": "접선 각 60도와 PA = 3*sqrt(3) cm로부터 반지름 3 cm를 구하고 사각형 PAOB 넓이 9*sqrt(3)과 중심각 120도 부채꼴 넓이 3*pi의 차를 구하는 M3-RPM-070 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_ARC_AREA",
+  "typeReason": "접선으로 둘러싸인 사각형 PAOB의 넓이 9*sqrt(3) cm^2에서 중심각 120도 부채꼴 넓이 3*pi cm^2를 빼어 영역 넓이를 계산하는 TPL_CIRCLE_TANGENT_ARC_AREA 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "두 반직선 $PA$, $PB$는 원 $O$의 접선이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "어두운 부분(사각형 $PAOB$에서 부채꼴 $AOB$를 제외한 부분)의 넓이를 구하는 과정과 답을 쓰시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "부채꼴 $AOB$를 제외한 부분)의 넓이를 구하는",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접점",
+        "src": "stem",
+        "quote": "두 점 $A$, $B$는 각각 그 접점이다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O 밖의 점 P에서 그은 두 접선 PA, PB 조건이다.",
+    "goal": "사각형 PAOB에서 부채꼴 AOB를 제외한 어두운 부분 넓이를 구하는 목표이다.",
+    "method": "사각형 PAOB의 넓이에서 중심각 120도 부채꼴 넓이를 빼는 방법이다.",
+    "condition": "접점 A, B 및 각 APB = 60도 조건이다."
+  },
+  "how": "직각삼각형 OAP에서 반지름 OA = 3 cm를 구하고 사각형 PAOB 넓이 9*sqrt(3)에서 부채꼴 AOB 넓이 3*pi를 빼어 (9*sqrt(3) - 3*pi) cm^2임을 서술하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "탄젠트 30도로 반지름 3 cm를 구하고 사각형 넓이 9*sqrt(3)과 부채꼴 넓이 3*pi의 차를 도출하는 2단계 서술형 문항이다."
+}

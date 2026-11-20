@@ -1,0 +1,76 @@
+{
+  "qid": 16,
+  "itemFingerprint": "4aeea25bfe402cd3",
+  "solveSteps": [
+    "1) 점 I는 삼각형 ABC의 내심이므로 세 변 AB, BC, CA에 이르는 거리가 모두 같다.",
+    "2) 세 현 DE, FG, HJ는 원의 중심 I에서 같은 거리에 있으므로 현의 길이가 같다.",
+    "3) 따라서 DE = FG = HJ = 8 cm이다.",
+    "4) 그러므로 FG + HJ = 8 + 8 = 16 cm이다.",
+    "5) 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "다음 그림에서 점 $I$는 $\\triangle ABC$의 내심이며 원의 중심이다. $DE=8,\\mathrm{cm}$일 때, $FG+HJ$의 값은?",
+  "rpmRecordId": "M3-RPM-069",
+  "rpmReason": "내심 I에서 세 변까지의 거리가 같음을 이용해 세 현의 길이 DE = FG = HJ = 8 cm로부터 FG + HJ = 16 cm를 구하는 M3-RPM-069 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+  "typeReason": "원의 중심에서 같은 거리에 있는 현의 길이가 같음을 활용하여 FG + HJ = 16 cm를 도출하는 TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "점 $I$는 $\\triangle ABC$의 내심이며 원의 중심이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "그러므로 $FG + HJ = 8 + 8 = 16,\\mathrm{cm}$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "현",
+        "src": "solution",
+        "quote": "원의 중심에서 같은 거리에 있는 현의 길이는 같으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$DE=8,\\mathrm{cm}$일 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "삼각형 ABC의 내심 I이자 원의 중심 조건이다.",
+    "goal": "FG + HJ의 합을 구하는 목표이다.",
+    "method": "중심거리 일치에 따른 현의 길이 상등 성질을 적용하는 방법이다.",
+    "condition": "현 DE = 8 cm 길이 조건이다."
+  },
+  "how": "내심 I에서 세 변까지의 거리가 같으므로 세 현의 길이가 모두 8 cm로 같아 FG + HJ = 8 + 8 = 16 cm임을 확인해 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "내심의 정의와 중심거리가 같은 현의 상등 성질을 이용해 8 + 8 = 16을 바로 계산하는 1단계 문항이다."
+}

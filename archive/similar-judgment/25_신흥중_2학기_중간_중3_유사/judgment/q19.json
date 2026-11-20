@@ -1,0 +1,76 @@
+{
+  "qid": 19,
+  "itemFingerprint": "0346c81130259321",
+  "solveSteps": [
+    "1) 직각삼각형 ABC에서 피타고라스 정리로 빗변 AB = sqrt(6^2 + 8^2) = 10 cm이다.",
+    "2) 삼각형 ABC의 넓이는 (1/2) * 6 * 8 = 24 cm^2이다.",
+    "3) 삼각형의 둘레는 6 + 8 + 10 = 24 cm이다.",
+    "4) 내접원 반지름 r에 대해 넓이 공식 (1/2) * r * 24 = 24이므로 12r = 24에서 r = 2 cm이다.",
+    "5) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "unitEvidence": "다음 그림에서 $\\triangle ABC$는 $\\angle C=90^\\circ$, $BC=8,\\mathrm{cm}$, $AC=6,\\mathrm{cm}$인 직각삼각형이고, 원 $O$는 $\\triangle ABC$의 내접원이다. 세 접점을 각각 $D$, $E$, $F$라 할 때, 원 $O$의 반지름의 길이는?",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmReason": "직각삼각형 ABC의 넓이 24와 둘레 24로부터 내접원 넓이 공식 (1/2)*r*(둘레)를 적용하여 반지름 r = 2 cm를 구하는 M3-RPM-071 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "typeReason": "직각삼각형 ABC의 넓이 24와 둘레 24의 관계로부터 내접원 반지름 r = 2 cm를 도출하는 TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "$\\angle C=90^\\circ$, $BC=8,\\mathrm{cm}$, $AC=6,\\mathrm{cm}$인 직각삼각형이고,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "원 $O$의 반지름의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내접원",
+        "src": "stem",
+        "quote": "원 $O$는 $\\triangle ABC$의 내접원이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$BC=8,\\mathrm{cm}$, $AC=6,\\mathrm{cm}$인"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 변 6 cm, 8 cm인 직각삼각형 ABC 조건이다.",
+    "goal": "내접원 O의 반지름 길이를 구하는 목표이다.",
+    "method": "삼각형의 넓이와 둘레를 결합한 내접원 반지름 공식을 적용하는 방법이다.",
+    "condition": "밑변과 높이 길이 조건이다."
+  },
+  "how": "빗변 10 cm를 구하고 넓이 24 cm^2와 둘레 24 cm에서 (1/2)*r*24 = 24로부터 r = 2 cm임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "피타고라스 정리로 빗변 10 cm를 구하고 내접원 반지름 공식 12r = 24에서 r = 2를 계산하는 2단계 문항이다."
+}

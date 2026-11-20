@@ -1,0 +1,75 @@
+{
+  "qid": 17,
+  "itemFingerprint": "a429d35d8c7e9f54",
+  "solveSteps": [
+    "1) 원 밖의 한 점 P에서 원에 그은 두 접선의 길이는 같으므로 PA = PB이다.",
+    "2) 따라서 삼각형 PAB는 이등변삼각형이며 각 PAB = 각 PBA이다.",
+    "3) 각 APB = 44도이므로 각 PAB = (180도 - 44도) / 2 = 136도 / 2 = 68도이다.",
+    "4) 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "unitEvidence": "다음 그림에서 두 직선 $PA$, $PB$가 원 $O$의 접선이고 두 점 $A$, $B$가 접점일 때, $\\angle APB=44^\\circ$이면 $\\angle PAB$의 크기는?",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmReason": "원 밖의 점 P에서 그은 두 접선의 길이 PA = PB로부터 이등변삼각형 밑각 각 PAB = (180-44)/2 = 68도를 구하는 M3-RPM-071 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+  "typeReason": "원 외부 점 P에서 그은 접선의 길이가 같아 형성되는 이등변삼각형 PAB의 밑각 68도를 계산하는 TPL_CIRCLE_TANGENT_EQUAL_LENGTH 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "두 직선 $PA$, $PB$가 원 $O$의 접선이고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle PAB$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "따라서 $\\triangle PAB$는 이등변삼각형이고,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접점",
+        "src": "stem",
+        "quote": "두 점 $A$, $B$가 접점일 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O 밖의 점 P에서 그은 접선 PA, PB 조건이다.",
+    "goal": "각 PAB의 크기를 구하는 목표이다.",
+    "method": "접선의 길이가 같아 생기는 이등변삼각형 밑각 공식을 적용하는 방법이다.",
+    "condition": "각 APB = 44도 및 접점 A, B 조건이다."
+  },
+  "how": "PA = PB인 이등변삼각형 PAB에서 각 PAB = (180 - 44)/2 = 68도임을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "접선의 길이 상등 성질로 이등변삼각형 밑각 (180 - 44)/2 = 68도를 바로 구하는 1단계 문항이다."
+}

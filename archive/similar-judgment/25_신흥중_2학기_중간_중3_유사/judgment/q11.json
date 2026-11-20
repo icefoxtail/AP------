@@ -1,0 +1,77 @@
+{
+  "qid": 11,
+  "itemFingerprint": "d05f50efb769163a",
+  "solveSteps": [
+    "1) 이등변삼각형 ABC에서 AB = AC이므로 각 C = 75도, 각 A = 30도이다.",
+    "2) 수선 AD를 내리면 BD = 3*sqrt(2)이고 각 BAD = 15도이다.",
+    "3) 보조선 점 E를 잡아 직각이등변삼각형 BDE에서 BE = 6, 각 ABE = 30도를 유도한다.",
+    "4) 직각삼각형 ABF에서 AF = 3*(sqrt(3) + 1)을 구한다.",
+    "5) 따라서 AB = 2*AF = 6 + 6*sqrt(3)이다.",
+    "6) 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 $\\angle B=75^\\circ$이고, 밑변 $BC$의 길이가 $6\\sqrt{2}$인 이등변삼각형 $ABC$($AB=AC$)에서 $AB$의 길이는?",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmReason": "이등변삼각형 ABC에서 밑각 75도와 밑변 6*sqrt(2)에 보조선을 내려 특수각 삼각비로 AB = 6 + 6*sqrt(3)을 구하는 M3-RPM-061 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+  "typeReason": "밑각 75도 이등변삼각형에서 공유 수선을 활용해 변의 길이 AB = 6 + 6*sqrt(3)을 유도하는 TPL_TRIG_APPLICATION_SHARED_HEIGHT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이등변삼각형",
+        "src": "stem",
+        "quote": "이등변삼각형 $ABC$($AB=AC$)에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$AB$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "꼭짓점 $A$에서 $BC$에 내린 수선의 발을 $D$라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle B=75^\\circ$이고,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "이등변삼각형 ABC 조건이다.",
+    "goal": "변 AB의 길이를 구하는 목표이다.",
+    "method": "수선을 내려 30도, 45도 특수각 직각삼각형으로 분할하는 방법이다.",
+    "condition": "밑각 75도 및 밑변 6*sqrt(2) 조건이다."
+  },
+  "how": "이등변삼각형 ABC에서 75도 각을 45도와 30도로 분할하는 보조선을 적용해 AB = 6 + 6*sqrt(3)임을 유도하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "75도 특수각 분할 및 다단계 보조선 직각삼각형을 활용해 빗변 6 + 6*sqrt(3)을 복원하는 3단계 심화 문항이다."
+}

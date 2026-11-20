@@ -1,0 +1,76 @@
+{
+  "qid": 8,
+  "itemFingerprint": "8a720fe21a2bd464",
+  "solveSteps": [
+    "1) 꼭짓점 A에서 변 BC에 내린 수선의 발을 H라 하자.",
+    "2) 직각삼각형 ABH에서 BH = 6 * cos 60도 = 3 cm, AH = 6 * sin 60도 = 3*sqrt(3) cm이다.",
+    "3) 직각삼각형 AHC에서 피타고라스 정리에 의해 HC = sqrt(8^2 - (3*sqrt(3))^2) = sqrt(64 - 27) = sqrt(37) cm이다.",
+    "4) 따라서 BC = BH + HC = (3 + sqrt(37)) cm이다.",
+    "5) 따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 $\\triangle ABC$에서 $AB=6,\\mathrm{cm}$, $AC=8,\\mathrm{cm}$, $\\angle B=60^\\circ$일 때, $BC$의 길이는?",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmReason": "삼각형 ABC에서 꼭짓점 A의 수선으로 높이 3*sqrt(3) cm를 구하고 피타고라스 정리로 선분 BC = (3 + sqrt(37)) cm를 구하는 M3-RPM-061 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+  "typeReason": "수선의 발 H를 내려 공유 높이 AH = 3*sqrt(3) cm를 삼각비로 구하고 두 직각삼각형을 결합해 BC = 3 + sqrt(37) cm를 도출하는 TPL_TRIG_APPLICATION_SHARED_HEIGHT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "다음 그림과 같이 $\\triangle ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$BC$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "꼭짓점 $A$에서 변 $BC$에 내린 수선의 발을 $H$라 하자.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle B=60^\\circ$일 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "삼각형 ABC에서 AB = 6 cm, AC = 8 cm, 각 B = 60도 조건이다.",
+    "goal": "변 BC의 길이를 구하는 목표이다.",
+    "method": "수선 AH를 내려 특수각 삼각비와 피타고라스 정리를 적용하는 방법이다.",
+    "condition": "각 B = 60도 조건이다."
+  },
+  "how": "수선 AH = 3*sqrt(3), BH = 3을 구하고 피타고라스 정리로 HC = sqrt(37)을 얻어 BC = 3 + sqrt(37) cm임을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "수선 AH를 도입하여 삼각비로 BH = 3, AH = 3*sqrt(3)을 구하고 피타고라스 정리로 HC = sqrt(37)을 합성하는 2단계 문항이다."
+}
