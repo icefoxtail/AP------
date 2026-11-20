@@ -1,0 +1,76 @@
+{
+  "qid": 2,
+  "itemFingerprint": "d88ca39503fb1a7b",
+  "solveSteps": [
+    "1) 한 원에서 호의 길이와 부채꼴의 넓이는 중심각의 크기에 정비례한다.",
+    "2) 각 AOB : 각 COD = 80도 : 20도 = 4 : 1이다.",
+    "3) 따라서 호 AB : 호 CD = 4 : 1 이므로 호 AB = 4 * 호 CD가 성립한다.",
+    "4) 현의 길이와 삼각형 넓이는 중심각에 정비례하지 않으므로 현 AB = 4 * CD는 성립하지 않는다.",
+    "5) 따라서 옳은 것은 호 AB = 4 * 호 CD인 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "원 $O$에서 두 부채꼴 $AOB$와 $COD$의 중심각의 크기가 각각 $\\angle AOB = 80^\\circ, \\angle COD = 20^\\circ$일 때, 다음 중 옳은 것은? [4점]",
+  "rpmRecordId": "M1-RPM-201",
+  "rpmReason": "중심각 80도, 20도의 비 4:1로부터 호 AB의 길이가 호 CD의 4배가 됨을 도출하는 M1-RPM-201 문제이다.",
+  "problemTypeKey": "PT_M1_CIRCLE_MEASURE",
+  "templateKey": "NONE",
+  "typeReason": "원 O의 중심각 각 AOB = 80도와 각 COD = 20도의 정비례 관계로부터 호 AB = 4 * 호 CD를 확인하는 PT_M1_CIRCLE_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "중심각의 크기 비 80:20 = 4:1이 호의 길이 비 4:1로 정비례함을 확인하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "$O$에서 두 부채꼴 $AOB$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "$COD$의 중심각의 크기가 각각"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "현의 길이와 삼각형의 넓이는 중심",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "$COD$의 중심각의 크기가 각"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O에서 두 부채꼴 AOB, COD 조건이다.",
+    "goal": "중심각 비에 따른 참인 관계식을 고르는 목표이다.",
+    "method": "삼각형 넓이나 현이 아닌 호의 정비례를 확인하는 방법이다.",
+    "condition": "원 O의 중심 조건이다."
+  },
+  "how": "중심각 각 AOB = 80도, 각 COD = 20도로 비가 4:1이므로 호 AB = 4 * 호 CD임을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

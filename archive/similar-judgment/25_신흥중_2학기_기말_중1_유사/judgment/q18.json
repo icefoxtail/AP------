@@ -1,0 +1,76 @@
+{
+  "qid": 18,
+  "itemFingerprint": "9ff8b23e0bb72fb9",
+  "solveSteps": [
+    "1) A 중학교 전체 학생 수는 150명이고 6시간 이상 상대도수의 합은 0.30이다.",
+    "2) 따라서 A 중학교에서 6시간 이상인 학생 수는 150 * 0.30 = 45명이다. (참)",
+    "3) B 중학교 전체 학생 수는 200명이고 6시간 이상 상대도수는 0.20이므로 학생 수는 200 * 0.20 = 40명이다.",
+    "4) 독서 시간이 6시간 이상인 학생의 비율은 A 중학교(0.30)가 B 중학교(0.20)보다 높다.",
+    "5) 따라서 옳은 설명은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "다음은 두 중학교 $A, B$의 학생들의 일주일 독서 시간에 대한 상대도수의 분포를 나타낸 그래프에 대한 설명이다. 옳은 것은? [5점] (단, $A$ 중학교 전체 학생 수는 $150$명, $B$ 중학교 전체 학생 수는 $200$명이다. $6$시간 이상인 계급의 상대도수의 합은 $A$ 중학교가 $0.30$, $B$ 중학교가 $0.20$이다.)",
+  "rpmRecordId": "M1-RPM-229",
+  "rpmReason": "A 중학교 전체 150명과 상대도수 0.30을 곱해 6시간 이상 도수가 45명임을 구하는 M1-RPM-229 문제이다.",
+  "problemTypeKey": "PT_M1_DATA_CATEGORY_PERCENTAGE",
+  "templateKey": "NONE",
+  "typeReason": "두 집단 A(150명), B(200명)의 상대도수 0.30, 0.20을 바탕으로 계급별 실제 인원 45명, 40명을 비교 해석하는 PT_M1_DATA_CATEGORY_PERCENTAGE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "상대도수 0.30과 전체 도수 150명으로부터 실제 도수 45명을 도출하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상대도수",
+        "src": "stem",
+        "quote": "시간에 대한 상대도수의 분포를 나타"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "분포를 나타낸 그래프에 대한 설명이"
+      }
+    ],
+    "method": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "$시간 이상인 계급의 상대도수의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "간에 대한 상대도수의 분포를 나타"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 학교 A, B의 상대도수 분포 조건이다.",
+    "goal": "상대도수 그래프를 해석하여 옳은 보기를 선별하는 목표이다.",
+    "method": "6시간 이상 계급의 상대도수를 도수와 곱하는 방법이다.",
+    "condition": "전체 도수 150명, 200명 조건이다."
+  },
+  "how": "A 중학교의 6시간 이상 도수는 150 * 0.30 = 45명이므로 보기 ③이 참임을 확인하여 정답 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

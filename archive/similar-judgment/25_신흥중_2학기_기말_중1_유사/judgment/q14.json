@@ -1,0 +1,78 @@
+{
+  "qid": 14,
+  "itemFingerprint": "be5e6676a9336f8a",
+  "solveSteps": [
+    "1) 줄기와 잎 그림에서 각 줄기별 도수는 줄기 1(3명), 줄기 2(5명), 줄기 3(7명), 줄기 4(3명), 줄기 5(2명)이다.",
+    "2) 잎이 가장 많은 줄기는 3 (7개)으로 옳다.",
+    "3) 전체 학생 수는 3 + 5 + 7 + 3 + 2 = 20명으로 옳다.",
+    "4) 40분 이상인 학생은 줄기 4(3명) + 줄기 5(2명) = 5명으로 옳다.",
+    "5) 사용 시간이 많은 쪽에서부터 5명은 56분, 52분, 45분, 43분, 40분이다. 5번째인 학생은 40분이므로 43분이라는 ④는 옳지 않다.",
+    "6) 가장 긴 학생(56분)과 짧은 학생(12분)의 차는 56 - 12 = 44분으로 옳다.",
+    "7) 따라서 옳지 않은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "다음은 지우네 반 학생 $20$명의 하루 스마트폰 사용 시간(분)을 조사하여 나타낸 줄기와 잎 그림에 대한 설명이다. 옳지 않은 것은? [4점] (단, 줄기는 십의 자리의 수, 잎은 일의 자리의 수이다. 줄기 1의 잎: 2, 5, 8 줄기 2의 잎: 0, 3, 4, 7, 9 줄기 3의 잎: 1, 2, 2, 5, 6, 8, 8 줄기 4의 잎: 0, 3, 5 줄기 5의 잎: 2, 6)",
+  "rpmRecordId": "M1-RPM-227-STEM-LEAF-CLASS-AUDIT-20261113",
+  "rpmReason": "학생 20명의 줄기와 잎 그림에서 56분부터 큰 순서대로 5번째 값이 40분임을 확인하여 43분으로 잘못 진술된 ④를 판정하는 M1-RPM-227-STEM-LEAF-CLASS-AUDIT-20261113 문제이다.",
+  "problemTypeKey": "PT_M1_STEM_LEAF",
+  "templateKey": "NONE",
+  "typeReason": "줄기와 잎 그림을 읽어 전체 도수 20명, 최댓값 56분과 최솟값 12분의 차 44분, 순서 통계량 5번째 값 40분을 해석하는 PT_M1_STEM_LEAF 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "줄기와 잎 그림에서 큰 순서대로 나열하여 5번째 값 40분을 찾아 보기 오류를 판별하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "줄기와잎",
+        "src": "stem",
+        "quote": "사하여 나타낸 줄기와 잎 그림에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자릿수",
+        "src": "stem",
+        "quote": "줄기는 십의 자리의 수, 잎은"
+      }
+    ],
+    "method": [
+      {
+        "term": "도수",
+        "src": "solution",
+        "quote": "ext{줄기별 도수} &: \\te",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "\\ \\text{최댓값과 최솟값} &"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "학생 20명의 스마트폰 사용 시간 줄기와 잎 그림 조건이다.",
+    "goal": "십의 자리와 일의 자리 수를 읽는 목표이다.",
+    "method": "줄기별 도수를 세어 순서를 나열하는 방법이다.",
+    "condition": "최댓값과 최솟값 범위 조건이다."
+  },
+  "how": "사용 시간이 많은 쪽에서 5번째 학생의 시간은 40분이므로 43분이라 진술한 보기 ④가 옳지 않음을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
