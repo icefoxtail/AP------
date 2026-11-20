@@ -1,0 +1,72 @@
+{
+  "qid": 23,
+  "itemFingerprint": "c4e0e0e23825cb3e",
+  "solveSteps": [
+    "아르키메데스 구, 원뿔, 원기둥 모델: 밑면 반지름 $r$, 높이 $h = 2r$ 이다 (div class question note box Archimedes).",
+    "(1) 원뿔 부피: $V_1 = \\dfrac{1}{3}\\pi r^2 (2r) = \\dfrac{2}{3}\\pi r^3$.",
+    "구 부피: $V_2 = \\dfrac{4}{3}\\pi r^3$.",
+    "원기둥 부피: $V_3 = \\pi r^2 (2r) = 2\\pi r^3$.",
+    "(2) 부피의 비: $\\dfrac{2}{3}\\pi r^3 : \\dfrac{4}{3}\\pi r^3 : 2\\pi r^3 = \\dfrac{2}{3} : \\dfrac{4}{3} : 2 = 1 : 2 : 3$ 이다."
+  ],
+  "solvedAnswer": "(1) 원뿔: $\\dfrac{2}{3}\\pi r^3$, 구: $\\dfrac{4}{3}\\pi r^3$, 원기둥: $2\\pi r^3$  (2) $1 : 2 : 3$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 밑면의 지름과 높이가 모두 구의 지름과 같은 원기둥에 꼭 맞는 구와 원뿔이 있다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "기둥의 밑면의 반지름의 길이를 $r",
+  "rpmRecordId": "M1-RPM-214",
+  "rpmReason": "원기둥에 내접하는 구와 원뿔의 기본 부피 공식을 적용하는 M1-RPM-214 기둥의 겉넓이와 부피 > 원기둥에 해당한다 (div Archimedes).",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+  "typeReason": "원기둥, 구, 원뿔의 부피 공식을 세우고 공통 인수를 약분하여 가장 간단한 자연수 비 $1:2:3$ 을 도출하는 대표적인 서술형 유형이다 (div Archimedes).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "세 입체도형의 기본 부피 공식을 $r$ 로 나타내고 비례식을 정수비로 정리하는 2단계 서술형 문항이다 (div Archimedes).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원기둥",
+        "src": "stem",
+        "quote": "medes)는 원기둥에 꼭 맞게 들"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "가장 간단한 자연수의 비로 나타내"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "기둥의 밑면의 반지름의 길이를 $r",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "규칙",
+        "src": "stem",
+        "quote": "의 기호 생략 규칙을 지켜 가장"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "높이 $2r$ 로 원뿔 $2/3\\pi r^3$, 구 $4/3\\pi r^3$, 원기둥 $2\\pi r^3$ 을 구하고 비를 $1:2:3$ 으로 판정했다 (div Archimedes).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "원기둥, 구, 원뿔의 부피 공식과 이들 사이의 정수 비를 다루므로 M1-07 입체도형의 성질에 속한다."
+}

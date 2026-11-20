@@ -1,0 +1,73 @@
+{
+  "qid": 16,
+  "itemFingerprint": "bcd4f98dbafb851d",
+  "solveSteps": [
+    "밑면 부채꼴 반지름 4, 중심각 $270^\\circ$, 높이 5 인 기둥의 겉넓이를 구한다 (중심각 270, 겉넓이 54pi + 40).",
+    "밑면 부채꼴 넓이: $\\pi \\times 4^2 \\times (270/360) = 16\\pi \\times (3/4) = 12\\pi$. 위아래 두 밑면 합 $= 24\\pi$.",
+    "밑면 부채꼴 호의 길이: $2\\pi \\times 4 \\times (3/4) = 6\\pi$. 굽은 옆면 넓이 $= 6\\pi \\times 5 = 30\\pi$.",
+    "직사각형 평면 옆면 2개: $2 \\times (4 \\times 5) = 40$.",
+    "총 겉넓이: $24\\pi + 30\\pi + 40 = (54\\pi + 40)\\rm\\,cm^2$.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "밑면인 부채꼴의 반지름의 길이가 $4\\rm\\,cm$, 중심각의 크기가 $270^\\circ$이고, 높이가 $5\\rm\\,cm$인 부채꼴 기둥 모양 입체도형의 겉넓이는?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "꼴 기둥 모양 입체도형의 겉넓이는?",
+  "rpmRecordId": "M1-RPM-213",
+  "rpmReason": "부채꼴 밑면 기둥의 밑넓이와 옆넓이(곡면 및 평면)를 합산하는 M1-RPM-213 기둥의 겉넓이와 부피 > 각기둥에 해당한다 (중심각 270, 겉넓이 54pi + 40).",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+  "typeReason": "두 밑면의 넓이와 굽은 옆면, 평면 옆면 2개를 분리 계산하여 합하는 기둥 겉넓이 유형이다 (중심각 270, 겉넓이 54pi + 40).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부채꼴 기둥에서 굽은 옆면뿐 아니라 평면 사각형 2개의 넓이를 놓치지 않고 합해야 하는 난이도 3 문항이다 (중심각 270, 겉넓이 54pi + 40).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "입체도형",
+        "src": "stem",
+        "quote": "꼴 기둥 모양 입체도형의 겉넓이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "양 입체도형의 겉넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "밑면인 부채꼴의 반지름의 길",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "m\\,cm$, 중심각의 크기가 $2"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "밑면 합 $24\\pi$, 곡면 옆면 $30\\pi$, 평면 옆면 40 을 더하여 $(54\\pi + 40)\\rm\\,cm^2$ 로 판정했다 (중심각 270).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "부채꼴을 밑면으로 하는 기둥의 겉넓이 계산을 다루므로 M1-07 입체도형의 성질에 속한다."
+}

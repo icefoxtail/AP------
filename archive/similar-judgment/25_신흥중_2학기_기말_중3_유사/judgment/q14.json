@@ -1,0 +1,76 @@
+{
+  "qid": 14,
+  "itemFingerprint": "4a1a4683f1f71aa7",
+  "solveSteps": [
+    "1) 자료 a, 4, 6, 12, 18의 중앙값이 a가 되려면 크기순 나열 시 a가 세 번째 값이어야 하므로 6 <= a <= 12이다.",
+    "2) 자료 3, a, 9, 11, 5를 크기순으로 놓을 때 3, 5가 이미 9보다 작으므로 중앙값이 9가 되려면 a >= 9이어야 한다.",
+    "3) 두 부등식을 동시에 만족하는 자연수 a의 범위는 9 <= a <= 12이다.",
+    "4) 따라서 가능한 자연수 a는 9, 10, 11, 12의 4개이다.",
+    "5) 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "자료 $a, 4, 6, 12, 18$의 중앙값이 $a$이고, 자료 $3, a, 9, 11, 5$의 중앙값이 $9$가 되도록 하는 자연수 $a$의 개수는? [4점]",
+  "rpmRecordId": "M3-RPM-087-S2P-8E9F",
+  "rpmReason": "두 자료 집합의 중앙값 조건으로부터 6 <= a <= 12와 a >= 9를 연립하여 a = 9, 10, 11, 12의 4개를 구하는 M3-RPM-087-S2P-8E9F 문제이다.",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_PARAMETER",
+  "typeReason": "미지수 a를 포함하는 두 자료의 중앙값 위치 조건으로부터 9 <= a <= 12 범위를 도출하는 TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_PARAMETER 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "자료 $a, 4, 6, 12, 18$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $a$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "중앙값이 $a$이고,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "되도록 하는 자연수 $a$의 개수는?"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "미지수 a를 포함하는 두 자료 조건이다.",
+    "goal": "조건을 만족하는 자연수 a의 개수를 구하는 목표이다.",
+    "method": "자료의 정렬 순서에서 중앙값의 위치 조건을 세우는 방법이다.",
+    "condition": "a가 자연수라는 조건이다."
+  },
+  "how": "첫 번째 자료의 중앙값 a 조건 6 <= a <= 12와 두 번째 자료의 중앙값 9 조건 a >= 9의 공통 범위 9 <= a <= 12에서 9, 10, 11, 12의 4개임을 확인해 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "5개 변량 자료 2개에서 중앙값 순위 조건 6 <= a <= 12와 a >= 9를 각각 세우고 연립하여 4개를 도출하는 2단계 문항이다."
+}

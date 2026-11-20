@@ -1,0 +1,54 @@
+{
+  "qid": 22,
+  "itemFingerprint": "c2cb7be4efecd104",
+  "solveSteps": [
+    "t = 3^x + 3^(-x) 라 두면 산술·기하 평균에 의해 t >= 2 이다. 52",
+    "t^2 - 2t - 8 = 0 에서 t = 4 이다. 52",
+    "27^x + 27^(-x) = t^3 - 3t = 4^3 - 3*4 = 64 - 12 = 52 이다.",
+    "정답은 52이다."
+  ],
+  "solvedAnswer": "$52$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "술형 2. [5점]  \n등식 $(3^x + 3",
+  "rpmRecordId": "H2-M1-RPM-071",
+  "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+  "templateKey": "TPL_H22A_01_EXPONENT_LAWS_071",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "3^x+3^(-x)=t 치환 이차방정식에서 t=4를 얻고 t^3-3t=64-12=52를 계산했다.",
+  "typeReason": "지수 대칭식 치환 t=3^x+3^(-x)과 곱셈공식 변형을 이용해 27^x+27^(-x)=52를 구하는 유형이다.",
+  "rpmReason": "지수 치환 방정식과 곱셈공식 변형 52를 결합하여 해결하는 RPM 유형이다.",
+  "difficultyReason": "t=4 도출 후 세제곱 곱셈공식에 대입하여 52를 서술하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "등식",
+        "quote": " \n등식 $(3^x + 3^{-x})^2 - ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "평균",
+        "quote": "하 평균의 관계에 의해 $t \\ge 2$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

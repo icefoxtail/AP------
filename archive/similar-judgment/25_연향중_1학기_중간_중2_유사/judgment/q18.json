@@ -1,0 +1,72 @@
+{
+  "qid": "18",
+  "itemFingerprint": "038d91a0594d9967",
+  "solveSteps": [
+    "a < b일 때 부등식의 성질을 aligned 관점에서 점검한다.",
+    "① a - 7 < b - 7: 양변에 같은 수를 빼도 부등호 방향은 그대로이다 (참).",
+    "② a + 4 < b + 4: 양변에 같은 수를 더해도 부등호 방향은 그대로이다 (참).",
+    "③ a/5 < b/5: 양변을 양수 5로 나누어도 부등호 방향은 그대로이다 (참).",
+    "④ 4a - 5 < 4b - 5: 양수 4를 곱하고 5를 빼도 부등호 방향은 그대로이다 (참).",
+    "⑤ -(a+3)/2 > -(b+3)/2: 양변에 -1/2을 곱하면 부등호 방향이 반대로 바뀌어야 하므로 >가 되어야 한다. 보기는 <로 되어 있어 거짓이다.",
+    "따라서 옳지 않은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "$a < b$일 때, 다음 중 옳지 않은 것은",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "부등식의 양변에 음수를 곱하거나 나눌 때 부등호 방향이 바뀌는 aligned 성질을 확인하는 문제이다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
+  "typeReason": "a < b 조건에서 사칙연산 적용 시 aligned 부등호 방향의 변화 여부를 판별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "음수를 곱하거나 나눌 때만 부등호가 반대로 바뀐다는 aligned 규칙을 검증하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식의 양변에 음수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "바뀐다는 기본 성질을 검토한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "등식의 양변에 음수를 곱하거나 나",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "옳지 않다. (거짓)} \\end{"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "a < b 기본 대소 관계를 확인한다.",
+    "goal": "부등식의 성질이 잘못 적용된 보기를 찾는다.",
+    "method": "음수의 곱셈과 나눗셈에서 부등호 반전 규칙을 적용한다.",
+    "condition": "양수의 덧셈, 뺄셈, 곱셈, 나눗셈은 부등호가 유지됨을 확인한다."
+  },
+  "how": "a < b에서 양변에 음수 -1/2을 곱한 ⑤가 aligned 부등호 방향이 유지된 채 적혀 있어 옳지 않으므로 ⑤로 판정하였다."
+}

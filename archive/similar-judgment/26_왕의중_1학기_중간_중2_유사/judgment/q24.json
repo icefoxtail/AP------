@@ -1,0 +1,71 @@
+{
+  "qid": 24,
+  "itemFingerprint": "25c57b59806f45c0",
+  "solveSteps": [
+    "정사각형 ABCD 넓이: 24 * 24 = 576 cm^2 이고, 5/9에 해당하는 넓이는 576 * (5/9) = 320 cm^2 이다.",
+    "삼각형 ABE = (1/2)*24*18 = 216 cm^2, 삼각형 ADF = (1/2)*24*x = 12x cm^2 이다.",
+    "사각형 AECF 넓이: 576 - (216 + 12x) = 360 - 12x cm^2 이다.",
+    "부등식: 360 - 12x <= 320 에서 -12x <= -40, x >= 40/12 = 10/3 = 3.333... 이다.",
+    "따라서 가장 작은 자연수 x는 4이다."
+  ],
+  "solvedAnswer": "4",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "한 변의 길이가 $24,\\text{cm}$인 정사각형 $ABCD$에서 점 $E$는 변 $BC$ 위에 있고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "$AECF$의 넓이가 정사각형 $",
+  "rpmRecordId": "M2-RPM-147",
+  "rpmReason": "정사각형 ABCD 576과 사각형 AECF의 넓이 360-12x<=320 부등식을 풀어 최소 자연수 4를 구한다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "정사각형 ABCD 분할 넓이 320 조건으로부터 일차부등식을 세워 자연수 x를 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정사각형에서 두 삼각형 216, 12x를 뺀 넓이 부등식 -12x<=-40을 푸는 서답형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "t{cm}$인 정사각형 $ABCD$에",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "중 가장 작은 자연수를 풀이과정과",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "$AECF$의 넓이가 정사각형 $",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "quote": "] 한 변의 길이가 $24,\\t",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "사각형 AECF 넓이 360-12x <= 320에서 x >= 10/3을 얻어 가장 작은 자연수 4를 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

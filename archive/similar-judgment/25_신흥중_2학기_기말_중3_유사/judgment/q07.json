@@ -1,0 +1,77 @@
+{
+  "qid": 7,
+  "itemFingerprint": "7b3cbf54fe2886ac",
+  "solveSteps": [
+    "1) 원의 네 호 AB, BC, CD, DA의 중심각을 각각 a, b, c, d라 하자.",
+    "2) 할선 각의 성질에서 (b - d) / 2 = 26도이므로 b - d = 52도이다.",
+    "3) 마찬가지로 (c - a) / 2 = 30도이므로 c - a = 60도이다.",
+    "4) a + b + c + d = 360도에 대입하면 2(a + d) + 112도 = 360도이므로 a + d = 124도이다.",
+    "5) 각 x = 각 BCD는 호 BAD(= a + d)를 바라보는 원주각이므로 각 x = 124도 / 2 = 62도이다.",
+    "6) 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림에서 사각형 $ABCD$는 원에 내접한다. 두 변 $\\overline{AB}$, $\\overline{CD}$의 연장선의 교점을 $E$, 두 변 $\\overline{AD}$, $\\overline{BC}$의 연장선의 교점을 $F$라고 하자. $\\angle AED = 26^\\circ$, $\\angle AFB = 30^\\circ$일 때, $\\angle x = \\angle BCD$의 크기는? [4점]",
+  "rpmRecordId": "M3-RPM-080",
+  "rpmReason": "내접사각형의 두 쌍의 대변 연장선이 이루는 각 26도와 30도에서 호의 차와 합 관계를 결합해 원주각 x = 62도를 구하는 M3-RPM-080 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "원 외부 교점의 각 26도, 30도를 호의 차로 표현하고 전체 호의 합 360도와 연립하여 원주각 x = 62도를 계산하는 TPL_CIRCLE_ANGLE_COMPOSITE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "사각형 $ABCD$는 원에 내접한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle x = \\angle BCD$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "$\\angle x = \\angle BCD$는 호 $BAD$($=a+d$)를 바라보는 원주각이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "연장선의 교점을 $E$, 두 변 $\\overline{AD}$, $\\overline{BC}$의 연장선의 교점을 $F$라고"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원에 내접하는 사각형 ABCD 조건이다.",
+    "goal": "각 x = 각 BCD의 크기를 구하는 목표이다.",
+    "method": "두 할선이 이루는 외각 공식과 원주각 성질을 결합하는 방법이다.",
+    "condition": "각 AED = 26도, 각 AFB = 30도 조건이다."
+  },
+  "how": "외부 교점의 각 26도와 30도로부터 b - d = 52도, c - a = 60도를 얻고 전체 호 합 360도에서 a + d = 124도를 유도하여 각 x = 62도임을 확인해 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "할선이 이루는 두 각 26도, 30도로부터 호의 연립방정식을 세워 원주각 62도를 도출하는 3단계 복합 추론 문항이다."
+}

@@ -1,0 +1,76 @@
+{
+  "qid": "02",
+  "itemFingerprint": "67f5d8de6b7401fa",
+  "solveSteps": [
+    "x = 2.15333...에서",
+    "① 소수점 아래 3이 끝없이 반복되므로 순환마디는 3이다. (참)",
+    "② 1000x = 2153.333..., 100x = 215.333...이므로 빼면 900x = 2153 - 215에서 x = (2153 - 215)/900이다. (참)",
+    "③ 분수로 나타낼 수 있으므로 무한소수이면서 유리수이다. (참)",
+    "④ 순환마디 위에 점을 찍어 x = 2.15\\dot{3}으로 나타낸다. (참)",
+    "⑤ 100x - 10x는 소수점 아래 순환마디가 일치하지 않으므로 1000x - 100x를 이용해야 한다. (거짓)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "순환소수 $x = 2.15333\\cdots$에",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "순환소수 x = 2.15333...의 분수 표현 및 순환마디 성질에서 잘못된 식 100x - 10x를 판별하는 문제이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수 x = 2.15333...의 순환마디, 유리수 여부, 분수 변환 식을 종합 검증하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수 x = 2.15333...의 성질을 각 선지별로 대조하여 오답을 찾는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수 $x = 2.15333\\cdots$에 대한"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환마디",
+        "src": "choices",
+        "quote": "순환마디는 $3$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "유리수",
+        "src": "choices",
+        "quote": "$x$는 무한소수이면서 유리수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분수",
+        "src": "choices",
+        "quote": "$100x - 10x$를 이용하면 분수로 나타낼 수 있다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "순환소수 x의 값을 확인한다.",
+    "goal": "성질 중 옳지 않은 보기를 찾는다.",
+    "method": "유리수 및 순환마디 소거 조건을 검증한다.",
+    "condition": "1000x - 100x를 이용해야 함을 확인한다."
+  },
+  "how": "순환마디를 소거하려면 1000x - 100x를 써야 하므로 잘못 기술된 ⑤로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

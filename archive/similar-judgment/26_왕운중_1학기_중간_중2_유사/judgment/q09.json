@@ -1,0 +1,73 @@
+{
+  "qid": 9,
+  "itemFingerprint": "72634a4d8d910f98",
+  "solveSteps": [
+    "① (-3a^3)^2 = 9a^6 (옳음)",
+    "② x^2 * x^4 * x = x^(2+4+1) = x^7 (옳음)",
+    "③ (a^2)^3 * a^4 / a^2 = a^6 * a^4 / a^2 = a^(6+4-2) = a^8 인데 선지는 a^7이므로 옳지 않다.",
+    "④ (-1/3 xy^2)^3 = -x^3 y^6 / 27 (옳음)",
+    "⑤ y^12 / y^4 = y^(12-4) = y^8 (옳음)",
+    "따라서 옳지 않은 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "지수법칙을 적용하여 각",
+  "rpmRecordId": "M2-RPM-125",
+  "rpmReason": "(a^2)^3 * a^4 / a^2 = a^8과 y^12 / y^4 = y^8 등 지수법칙을 적용해 계산 결과를 검증한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "식 (-1/3 xy^2)^3 = -x^3 y^6 / 27 및 y^12 / y^4 등 단항식의 곱셈·나눗셈 지수법칙 연산의 오류를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "거듭제곱과 나눗셈 y^12 / y^4 등 지수법칙 기본 공식을 바로 적용하는 1단계 확인 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지수법칙",
+        "quote": "지수법칙을 적용하여 각",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈공식",
+        "quote": "수법칙에 의해 곱셈과 나눗셈을 순",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "quote": "의해 곱셈과 나눗셈을 순서대로 계",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서",
+        "quote": "셈과 나눗셈을 순서대로 계산하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(a^2)^3 * a^4 / a^2 = a^6 * a^4 / a^2 = a^8인데 a^7로 잘못 계산한 선지 ③을 찾아내고 y^12 등 다른 선지를 점검하여 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

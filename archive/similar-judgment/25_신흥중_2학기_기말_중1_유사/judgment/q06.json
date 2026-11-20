@@ -1,0 +1,78 @@
+{
+  "qid": 6,
+  "itemFingerprint": "1eee1314c231c274",
+  "solveSteps": [
+    "1) n각뿔의 면의 개수는 n + 1개이고 꼭짓점의 개수도 n + 1개로 항상 서로 같다.",
+    "2) 따라서 보기 ①은 항상 참이다.",
+    "3) 팔각기둥은 면의 개수가 8 + 2 = 10개인 십면체이다. (거짓)",
+    "4) 각기둥의 옆면의 모양은 항상 직사각형이다. (거짓)",
+    "5) 육각뿔의 모서리의 개수는 6 * 2 = 12개이다. (거짓)",
+    "6) 각뿔대의 두 밑면은 평행하지만 크기가 달라 합동이 아니다. (거짓)",
+    "7) 따라서 옳은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "다면체에 대한 설명으로 옳은 것은? [4점]",
+  "rpmRecordId": "M1-RPM-207",
+  "rpmReason": "n각뿔의 면의 개수와 꼭짓점의 개수가 n + 1로 항상 같고 육각뿔 모서리가 12개임을 판정하는 M1-RPM-207 문제이다.",
+  "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+  "templateKey": "NONE",
+  "typeReason": "각뿔의 꼭짓점과 면의 개수 상등 관계 및 팔각기둥 10면체, 육각뿔 모서리 12개 등 다면체 구성요소를 판별하는 PT_M1_POLYHEDRON_COMPONENT_COUNT 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "팔각기둥 10면체, 육각뿔 모서리 12개 등 다면체의 면, 모서리, 꼭짓점 기본 공식을 적용하여 참인 보기를 고르는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다면체",
+        "src": "stem",
+        "quote": "다면체에 대한 설명으"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각기둥",
+        "src": "solution",
+        "quote": "\\text{팔각기둥의 면의 개수는"
+      }
+    ],
+    "method": [
+      {
+        "term": "직사각형",
+        "src": "solution",
+        "quote": "옆면의 모양은 직사각형이다. (거짓)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "면, 모서리, 꼭짓점)의 성질을 확"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "다면체의 기본 성질 조건이다.",
+    "goal": "각기둥 등 다면체의 올바른 설명을 찾는 목표이다.",
+    "method": "각기둥 옆면이 직사각형임을 대조하는 방법이다.",
+    "condition": "꼭짓점과 면의 개수 조건이다."
+  },
+  "how": "팔각기둥 10면체, 육각뿔 12개와 달리 각뿔의 면과 꼭짓점은 n + 1로 항상 같으므로 보기 ①이 옳음을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 22,
+  "itemFingerprint": "26678dd2ddfd0fa7",
+  "solveSteps": [
+    "35/210 = 1/6 = 1/(2 * 3) 이므로 a를 곱해 유한소수가 되려면 a는 3의 배수이어야 한다.",
+    "17/110 = 17/(2 * 5 * 11) 이므로 a를 곱해 유한소수가 되려면 a는 11의 배수이어야 한다.",
+    "따라서 a는 3과 11의 공배수이어야 하므로 가장 작은 자연수 a는 최소공배수인 33이다."
+  ],
+  "solvedAnswer": "33",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "두 분수 모두 유한소수로 나타낼 수",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "분수 35/210과 17/110의 분모 소인수 3과 11을 없애기 위한 최소공배수 a=33을 구한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "두 분수 35/210, 17/110의 분모 소인수를 분석하여 자연수 a=33을 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "약분 후 분모 소인수 3과 11의 최소공배수 33을 구하는 서답형 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "quote": "형 2] 두 분수 $\\dfrac",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "0}$에 어떤 자연수 $a$를 각각",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유한소수",
+        "quote": "두 분수 모두 유한소수로 나타낼 수",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "35/210=1/(2*3)에서 3의 배수, 17/110에서 11의 배수 조건을 찾아 최소공배수 33을 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

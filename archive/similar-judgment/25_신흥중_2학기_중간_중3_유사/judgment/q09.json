@@ -1,0 +1,76 @@
+{
+  "qid": 9,
+  "itemFingerprint": "36d8ca498353d649",
+  "solveSteps": [
+    "1) 삼각형 ABC에서 두 변 AB = 4*sqrt(3), BC = 9와 끼인각 B = 60도가 주어졌다.",
+    "2) 삼각형의 넓이 공식 S = (1/2) * AB * BC * sin B를 적용한다.",
+    "3) S = (1/2) * 4*sqrt(3) * 9 * sin 60도 = (1/2) * 4*sqrt(3) * 9 * (sqrt(3)/2)이다.",
+    "4) 계산하면 S = 27이다.",
+    "5) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 $\\triangle ABC$에서 $AB=4\\sqrt{3}$, $BC=9$, $\\angle B=60^\\circ$일 때, $\\triangle ABC$의 넓이는?",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmReason": "두 변 4*sqrt(3), 9와 끼인각 60도의 삼각형 넓이 공식 (1/2)*a*b*sin B를 적용하여 넓이 27을 구하는 M3-RPM-061 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "두 변과 끼인각 60도에 대한 삼각형 넓이 공식을 직접 적용하여 넓이 27을 도출하는 TPL_TRIG_APPLICATION_DIRECT_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "다음 $\\triangle ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle ABC$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형넓이공식",
+        "src": "solution",
+        "quote": "\\dfrac{1}{2}\\times AB\\times BC\\times\\sin B",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$AB=4\\sqrt{3}$, $BC=9$,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "삼각형 ABC에서 두 변 AB = 4*sqrt(3), BC = 9와 각 B = 60도 조건이다.",
+    "goal": "삼각형 ABC의 넓이를 구하는 목표이다.",
+    "method": "삼각비를 이용한 삼각형 넓이 공식을 적용하는 방법이다.",
+    "condition": "두 변의 길이 조건이다."
+  },
+  "how": "삼각형 넓이 공식 S = (1/2)*4*sqrt(3)*9*sin 60도에서 S = 27임을 계산하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "삼각형의 넓이 공식에 두 변의 길이와 sin 60도를 대입하여 바로 계산하는 1단계 기본 문항이다."
+}

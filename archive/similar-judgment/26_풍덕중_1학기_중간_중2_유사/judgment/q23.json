@@ -1,0 +1,66 @@
+{
+  "qid": 23,
+  "itemFingerprint": "0c36edc4e3da057b",
+  "solveSteps": [
+    "1) 일차부등식 4(2 - x) >= -(1 + x)의 괄호를 풀면 8 - 4x >= -1 - x이다.",
+    "2) -4x + x >= -1 - 8 이므로 -3x >= -9이다.",
+    "3) 양변을 -3으로 나누면 부등호 방향이 바뀌어 x <= 3이다.",
+    "4) 수직선 위에 x=3에 색칠된 점을 찍고 왼쪽 방향으로 화살표를 나타낸다."
+  ],
+  "solvedAnswer": "$x \\le 3$ (수직선: $x=3$에 칠해진 점 및 왼쪽 화살표)",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $4(2 - x) \\ge -(1 + x)$를 풀고, 그 해를 수직선 위에 나타내는 과정을 서술하시오.",
+  "rpmRecordId": "M2-RPM-137",
+  "rpmReason": "일차부등식 4(2 - x) >= -(1 + x)를 풀고 그 해 x <= 3을 수직선 위에 나타내는 문제이므로 M2-RPM-137이 적합하다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "괄호가 있는 일차부등식 4(2 - x) >= -(1 + x)를 전개하고 정리하여 해를 구하고 수직선에 표현하는 일차부등식 기본 문제이므로 PT_M2_LINEAR_INEQUALITY로 판정한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "4(2 - x) >= -(1 + x) 전개 후 음수 나눗셈에 따른 부등호 방향 변화 및 수직선 표현을 다루는 서술형 문항이므로 난이도 2로 평가한다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "술형 3]   일차부등식 $4(2 -"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수직선",
+        "src": "stem",
+        "quote": "고, 그 해를 수직선 위에 나타내는"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "src": "solution",
+        "quote": "양변의 괄호를 분배법칙으로 풀면 $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "4(2 - x) >= -(1 + x)를 전개하여 -3x >= -9에서 x <= 3을 구하고 수직선에 표현하여 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficulty": 2,
+  "isBorderline": false
+}

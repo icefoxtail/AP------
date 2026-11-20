@@ -1,0 +1,75 @@
+{
+  "qid": 4,
+  "itemFingerprint": "52906379c3cfc738",
+  "solveSteps": [
+    "9 / (16 * a) = 3^2 / (2^4 * a)가 유한소수가 되려면 기약분수의 분모 소인수가 2 또는 5뿐이어야 한다.",
+    "a의 소인수 중 2, 5 이외의 수는 분자의 3^2과 약분되어 분모에 남지 않아야 하므로 3 또는 9이어야 한다.",
+    "① a = 5: 소인수가 5뿐이므로 유한소수이다.",
+    "② a = 6 = 2 * 3: 3이 약분되어 유한소수이다.",
+    "③ a = 15 = 3 * 5: 3이 약분되어 유한소수이다.",
+    "④ a = 21 = 3 * 7: 3은 약분되지만 소인수 7이 분모에 남아 유한소수가 될 수 없다.",
+    "⑤ a = 25 = 5^2: 소인수가 5뿐이므로 유한소수이다.",
+    "따라서 옳지 않은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{9}{16 \\times a}$가 유한소수가 되도록 하는",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "9/(16*a)에서 a = 21일 때 소인수 7이 분모에 남아 유한소수가 되지 않음을 판별하는 분모의 소인수 조건 문항이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "9/(16*a)가 유한소수가 되기 위한 미지수 a의 조건을 분모 소인수와 분자 약분을 통해 판정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "9/(16*a)에서 21 = 3*7의 소인수 7이 분모에 남는 것을 확인해 답을 선별하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{9}{16 \\times a}$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 $a$의 값으로 옳지 않은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수",
+        "src": "solution",
+        "quote": "소인수 $7$은 약분되지 않고 분모에 그대로 남아",
+        "evidenceType": "IMPLIED",
+        "justification": "분자 약분 후 분모에 남는 소인수로 유한소수 조건 검증"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "유한소수가 되도록 하는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "9/(16*a)에서 a = 21 = 3*7일 때 소인수 7이 분모에 남아 유한소수가 될 수 없으므로 ④를 정답으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

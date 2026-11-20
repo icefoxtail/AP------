@@ -1,0 +1,65 @@
+{
+  "qid": 21,
+  "itemFingerprint": "917af54c55c45f66",
+  "solveSteps": [
+    "1) y = ax 에 (-4, 3)을 대입하면 3 = -4a 이므로 a = -3/4이다.",
+    "2) y = b/x 에 (-4, 3)을 대입하면 3 = b/(-4) 이므로 b = -12이다.",
+    "3) ab = (-3/4) * (-12) = 9이다.",
+    "\\begin{aligned} ab = \\left(-\\dfrac{3}{4}\\right) \\times (-12) = 9 \\end{aligned}",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-04",
+  "subUnitKey": "M1-04-GRAPH_RELATION",
+  "unitEvidence": "정비례 관계 $y = ax$의 그래프와 반비례 관계 $y = \\dfrac{b}{x}$의 그래프가 점 $(-4, 3)$에서 만날 때",
+  "rpmRecordId": "M1-RPM-171",
+  "rpmReason": "교점 (-4, 3)을 대입하여 정비례 상수 a = -3/4와 반비례 상수 b = -12를 구해 \\begin{aligned} ab = 9 \\end{aligned} 를 계산하는 M1-RPM-171에 해당한다.",
+  "problemTypeKey": "PT_M1_PROPORTION_PARAMETER_EVALUATION",
+  "templateKey": "TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS",
+  "typeReason": "두 비례 그래프의 교점 좌표 대입을 통해 상수 a, b를 결정하고 그 곱 \\begin{aligned} ab = 9 \\end{aligned} 를 구하는 PT_M1_PROPORTION_PARAMETER_EVALUATION과 TPL_M1_PROPORTION_PARAMETER_EVALUATION_TWO_GRAPH_CONSTANTS이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정비례와 반비례 식에 각각 점 (-4, 3)을 대입하여 상수를 구하고 곱하는 \\begin{aligned} ab = 9 \\end{aligned} 2단계 계산으로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정비례",
+        "src": "stem",
+        "quote": "정비례 관계 $y = ax$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "서 만날 때, 상수 $a, "
+      }
+    ],
+    "method": [
+      {
+        "term": "반비례",
+        "src": "solution",
+        "quote": "$은 정비례와 반비례 그래프",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "교점 (-4, 3)을 대입하여 a = -3/4, b = -12를 구하고 \\begin{aligned} ab = 9 \\end{aligned} 를 얻어 정답 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

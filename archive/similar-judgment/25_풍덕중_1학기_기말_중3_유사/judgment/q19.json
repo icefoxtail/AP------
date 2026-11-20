@@ -1,0 +1,61 @@
+{
+  "qid": 19,
+  "itemFingerprint": "ec7fd2d806fc052f",
+  "solveSteps": [
+    "점 C(2, -8)이고 y = -2x^2이 y축 대칭이므로 점 D는 (-2, -8)이다. 따라서 CD = 2 - (-2) = 4이다.",
+    "AB = 3*CD = 12 이고 y = ax^2 도 y축 대칭이므로 두 점 A, B의 x좌표는 각각 -6, 6이다.",
+    "점 B의 y좌표는 a*(6)^2 = 36a 이므로 사다리꼴의 높이는 36a - (-8) = 36a + 8 이다.",
+    "사다리꼴 넓이 = (1/2)*(12 + 4)*(36a + 8) = 8*(36a + 8) = 136 이므로 36a + 8 = 17, 36a = 9, a = 1/4 이다.",
+    "정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "다음 그림과 같이 이차함수 $y=ax^2\\ (a>0)$의 그래프 위에",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "사각형 $\\text{ABCD}$가 사다리꼴이 되도록",
+  "rpmRecordId": "M3-RPM-047",
+  "rpmEvidence": "점 $\\text{D}$의 좌표는 $(-2, -8)$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_M3_GRAPH_GEOMETRY_POLYGON_AREA",
+  "typeReason": "이차함수 그래프 위의 점들로 구성된 사다리꼴 ABCD의 넓이 조건으로 계수 ax를 결정하는 aligned 유형이다.",
+  "rpmReason": "포물선의 대칭성과 점의 좌표를 이용하여 도형의 넓이 방정식을 세우는 136 aligned RPM 유형이다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "좌표 설정, 사다리꼴 넓이 공식 적용, 일차방정식 풀이가 결합된 난이도 3 136 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "quote": "사각형 $\\text{ABCD}$가 사다리꼴이 되도록",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "사다리꼴 $\\text{ABCD}$의 넓이가 $136$일 때, 수 $a$의 값은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "사다리꼴",
+        "quote": "점 $\\text{D}$의 좌표는 $(-2, -8)$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사다리꼴",
+        "quote": "사다리꼴 $\\text{ABCD}$의 높이는",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "대칭성으로 CD=4, AB=12를 구하고 사다리꼴 ABCD 넓이 8(36a+8)=136에서 a=1/4을 aligned 계산했다."
+}

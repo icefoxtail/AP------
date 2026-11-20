@@ -1,0 +1,58 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "d674b0552fb6f823",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "① 7/4 = 1.75 (참)",
+    "② 9/40 = 0.225 (참)",
+    "③ 317/200 = 317 * 5 / 1000 = 1585 / 1000 = 1.585 인데 1.575 로 잘못 나타내었다 (거짓).",
+    "④ 7/20 = 0.35 (참)",
+    "⑤ 3/8 = 0.375 (참)",
+    "따라서 잘못 나타낸 것은 ③번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 분수를 유한소수로",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분수 317 / 200 을 소수로 변환하는 과정의 계산을 검증하는 유형이다.",
+  "rpmRecordId": "M2-RPM-005",
+  "rpmReason": "분수 317 / 200 의 분모를 1000으로 바꾸어 소수로 나타낸다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "317 / 200 = 1.585 임을 곱셈 5로 바로 검산할 수 있다.",
+  "how": "317 / 200 = 1.585 인데 1.575 로 잘못 표기된 3번을 정답으로 판정하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "다음 중 분수를 유한소수로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "잘못 나타낸 것을 고르면? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "분모",
+        "src": "solution",
+        "quote": "분모를 $10$의 거듭제곱으로 변형하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 12,
+  "itemFingerprint": "e2d6a897c258c65a",
+  "solveSteps": [
+    "A / (-3/4 xy) = 8x^2 - 12xy 에서 A = (8x^2 - 12xy) * (-3/4 xy) = -6x^3y + 9x^2y^2 이다.",
+    "바른 계산: A * (-3/4 xy) = (-6x^3y + 9x^2y^2) * (-3/4 xy) 이다.",
+    "분배법칙으로 전개하면 18/4 x^4y^2 - 27/4 x^3y^3 = 9/2 x^4y^2 - 27/4 x^3y^3 이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "어떤 다항식에 $-\\dfr",
+  "rpmRecordId": "M2-RPM-133",
+  "rpmReason": "어떤 다항식과 단항식 -3/4 xy의 나눗셈 결과 8x^2-12xy로부터 원래 식과 27/4 바른 계산 18을 구한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "어떤 식을 -3/4 xy로 잘못 나눈 결과 8x^2-12xy로부터 바른 식 27/4를 복원하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "역연산으로 원래 식을 구하고 다시 -3/4 xy를 곱해 12, 18, 27 계수를 도출하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "어떤 다항식에 $-\\dfr",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "quote": "어떤 다항식에 $-\\dfr",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "quote": "ght) $$ 분배법칙으로 전개하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "잘못 나눈 식에서 A=-6x^3y+9x^2y^2를 구하고 -3/4 xy를 다시 곱해 9/2 x^4y^2 - 27/4 x^3y^3을 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

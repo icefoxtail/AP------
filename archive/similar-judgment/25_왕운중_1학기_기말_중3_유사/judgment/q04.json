@@ -1,0 +1,56 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "92938092fb563427",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "x^2 + 10x + a - 3 = 0 이 중근을 가지려면 완전제곱식이 되어야 한다.",
+    "상수항은 (10/2)^2 = 25 이어야 하므로 a - 3 = 25 에서 a = 28 이다.",
+    "(x + 5)^2 = 0 이므로 중근은 x = -5 이다.",
+    "따라서 a = 28, x = -5 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 이차방정식 $x^2 +",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+  "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식이 중근을 가질 완전제곱식 조건으로 상수 a = 28 을 구하는 유형이다.",
+  "rpmRecordId": "M3-RPM-034",
+  "rpmReason": "완전제곱식 조건으로 상수 a = 28 과 중근을 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차항 계수의 반의 제곱으로 a = 28 을 구하고 중근을 계산한다.",
+  "how": "상수항이 25가 되도록 a = 28을 구하고 완전제곱식에서 중근 -5를 판정하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 + 10x + a - 3 = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "상수 $a$의 값과 중근을 차례로 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "이 중근을 가질 때",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

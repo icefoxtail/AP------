@@ -1,0 +1,59 @@
+{
+  "qid": 20,
+  "itemFingerprint": "c9dd2bd08f7cd590",
+  "solveSteps": [
+    "(1) 3x - 5 = 4 에서 3x = 9 이므로 x = 3 이다.",
+    "(2) 4(x - 2) = x + 7 에서 4x - 8 = x + 7, 3x = 15 이므로 x = 5 이다.",
+    "(3) 0.4x + 1 = 2.6 에서 0.4x = 1.6 이므로 x = 4 이다.",
+    "답은 (1) x = 3, (2) x = 5, (3) x = 4 이다."
+  ],
+  "solvedAnswer": "(1) $x = 3$, (2) $x = 5$, (3) $x = 4$",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-LINEAR_EQUATION",
+  "unitEvidence": "다음 일차방정식을 풀고, 그 과정을 서술하시오. [5점]",
+  "rpmRecordId": "M1-RPM-150",
+  "rpmEvidence": "상수항을 우변으로 이항하여 정리하면",
+  "problemTypeKey": "PT_M1_LINEAR_EQUATION_SOLVING",
+  "templateKey": "TPL_M1_LINEAR_EQUATION_DIRECT_SOLUTION",
+  "typeReason": "기본 일차방정식의 괄호 전개와 이항을 통해 해를 구하는 aligned 유형이다.",
+  "rpmReason": "이항과 등식의 성질을 적용하는 일차방정식의 풀이 aligned RPM 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기본 일차방정식을 직접 풀어 해를 구하는 난이도 1 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "quote": "다음 일차방정식을 풀고, 그 과정을 서술하시오. [5점]",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "quote": "다음 일차방정식을 풀고, 그 과정을 서술하시오. [5점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "quote": "상수항을 우변으로 이항하여 정리하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차방정식",
+        "quote": "(1) $3x - 5 = 4$",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "이항과 등식의 성질을 이용해 일차방정식 세 문제를 풀어 x=3, 5, 4를 aligned 계산했다."
+}

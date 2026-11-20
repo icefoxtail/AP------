@@ -1,0 +1,76 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "53ea09e289ba1ad8",
+  "solveSteps": [
+    "4/7 = 0.571428571428... = 0.[571428]로 순환마디의 길이는 6이고 숫자는 5, 7, 1, 4, 2, 8이다.",
+    "100 = 6 * 16 + 4 이므로 6개씩 16번 반복되고 나머지 4개의 자리가 더 나온다.",
+    "한 주기에서 5는 1번 나타나므로 16번의 주기에서 16번 나타난다.",
+    "남은 4개의 자리 5, 7, 1, 4 중 첫 번째에 5가 1번 포함된다.",
+    "따라서 100번째 자리까지 5가 나오는 총 횟수는 16 + 1 = 17회이다."
+  ],
+  "solvedAnswer": "17회",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{4}{7}$를 소수로 나타낼 때, 소수점 아래 $100$번째 자리까지의 숫자 중 $5$가 나오는 횟수를 풀이과정과 함께 구하시오. [6점]",
+  "rpmRecordId": "M2-RPM-003",
+  "rpmReason": "분수 4/7의 순환소수 전개에서 순환마디 571428의 주기 6과 100번째 자릿수를 파악하는 문제이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수 4/7의 순환마디 주기성을 분석하여 100번째 자리까지 5의 출현 횟수를 구하는 PT_M2_REPEATING_DECIMAL 문제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분수 4/7의 순환마디 6자리를 구하고 100 = 6 * 16 + 4를 이용해 계산하는 표준 난이도 2 서답형 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "서답형 1] 분수 $\\dfrac"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "5$가 나오는 횟수를 풀이과정과"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "수로 나타내고 순환마디를 구한다. 분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자릿수",
+        "src": "stem",
+        "quote": "$100$번째 자리까지의 숫자 중"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "소수로 나타낼 분수 조건이다.",
+    "goal": "소수점 아래 100번째 자리까지 5가 나오는 총 횟수이다.",
+    "method": "반복 주기를 파악하기 위해 순환마디를 구하는 방법이다.",
+    "condition": "100번째 자리까지라는 범위 조건이다."
+  },
+  "how": "직접 4를 7로 나누어 순환마디 571428의 길이 6을 구하고, 100 = 6 * 16 + 4에서 16 + 1 = 17회임을 도출하여 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

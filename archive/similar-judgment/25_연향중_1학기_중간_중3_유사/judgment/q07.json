@@ -1,0 +1,71 @@
+{
+  "qid": "07",
+  "itemFingerprint": "7fbd2e4ad4b55770",
+  "solveSteps": [
+    "① \\sqrt{500} = \\sqrt{5 \\times 100} = 10\\sqrt{5} = 10 \\times 2.236 = 22.36 (옳음).",
+    "② \\sqrt{5000} = \\sqrt{50 \\times 100} = 10\\sqrt{50} = 10 \\times 7.071 = 70.71이어야 하는데 223.6으로 잘못 계산되었다 (옳지 않음).",
+    "③ \\sqrt{0.5} = \\sqrt{50 / 100} = \\sqrt{50} / 10 = 0.7071 (옳음).",
+    "④ \\sqrt{0.05} = \\sqrt{5 / 100} = \\sqrt{5} / 10 = 0.2236 (옳음).",
+    "⑤ \\sqrt{0.005} = \\sqrt{50 / 10000} = \\sqrt{50} / 100 = 0.07071 (옳음).",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "$\\sqrt{5} = 2.236, \\quad ",
+  "rpmRecordId": "M3-RPM-006",
+  "rpmReason": "근호 안의 수 5000을 100의 거듭제곱으로 변형하여 50 근삿값과 비교하는 문제이다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_APPROXIMATION",
+  "typeReason": "제곱근의 성질을 이용해 근호 밖으로 10을 꺼내어 5000 등의 근삿값을 바르게 산출하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "100과 10000 거듭제곱을 이용해 소수점 이동을 점검하여 5000 오류를 찾는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "근호",
+        "src": "solution",
+        "quote": "근호 안의 수를 $"
+      }
+    ],
+    "goal": [
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "거듭제곱으로 변형하여 $\\sqr"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "10000$의 거듭제곱으로 변형하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "지 않은 것을 선택한다. 따라서"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "주어진 두 제곱근의 근삿값을 확인한다.",
+    "goal": "계산 결과가 옳지 않은 선지를 찾는다.",
+    "method": "근호 안을 100의 거듭제곱 곱으로 변형한다.",
+    "condition": "50과 5 중 올바른 근호 값을 적용했는지 검토한다."
+  },
+  "how": "$\\sqrt{5000} = 10\\sqrt{50} = 70.71$인데 $223.6$으로 잘못 표기된 ②를 정답으로 판정하였다."
+}

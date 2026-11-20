@@ -1,0 +1,76 @@
+{
+  "qid": 9,
+  "itemFingerprint": "66d098ddcf36f59f",
+  "solveSteps": [
+    "1) 밑면은 직각을 낀 두 변이 5 cm, 12 cm이고 빗변이 13 cm인 직각삼각형이다.",
+    "2) 한 밑면의 넓이는 (1/2) * 5 * 12 = 30 cm^2이고, 두 밑면의 넓이의 합은 30 * 2 = 60 cm^2이다.",
+    "3) 높이가 8 cm이므로 옆넓이는 밑면의 둘레 * 높이 = (5 + 12 + 13) * 8 = 30 * 8 = 240 cm^2이다.",
+    "4) 따라서 삼각기둥의 겉넓이는 60 + 240 = 300 cm^2이다.",
+    "5) 따라서 정답은 300 cm^2인 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "밑면이 세 변의 길이가 각각 $5\\text{ cm}, 12\\text{ cm}, 13\\text{ cm}$인 직각삼각형이고 높이가 $8\\text{ cm}$인 삼각기둥의 겉넓이는? [4점]",
+  "rpmRecordId": "M1-RPM-213",
+  "rpmReason": "밑면 5 cm, 12 cm 직각삼각형 넓이 30 cm^2와 둘레 30 cm, 높이 8 cm로부터 삼각기둥의 겉넓이 300 cm^2를 구하는 M1-RPM-213 문제이다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "typeReason": "직각삼각형 밑면의 두 넓이 60 cm^2와 밑면 둘레를 이용한 직사각형 옆넓이 240 cm^2를 합산하여 삼각기둥 겉넓이 300 cm^2를 계산하는 PT_M1_SOLID_FIGURE_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직각삼각형 밑면 넓이 30 * 2 = 60과 직사각형 옆면 전개도 넓이 30 * 8 = 240을 계산해 합산하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "각기둥",
+        "src": "stem",
+        "quote": "cm}$인 삼각기둥의 겉넓이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "인 삼각기둥의 겉넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "{ cm}$인 직각삼각형이고 높이가 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "면이 세 변의 길이가 각각 $5\\"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "세 변 5, 12, 13인 직각삼각형 밑면과 높이 8인 삼각기둥 조건이다.",
+    "goal": "삼각기둥의 겉넓이를 구하는 목표이다.",
+    "method": "직각삼각형 밑넓이 공식을 적용하는 방법이다.",
+    "condition": "밑면 세 변의 길이 조건이다."
+  },
+  "how": "두 밑넓이의 합 60 cm^2와 옆넓이 240 cm^2를 더해 삼각기둥 겉넓이가 300 cm^2임을 확인하여 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "83d05326eeb3a24c",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "a >= b 일 때",
+    "① 양변에 -1/5 을 곱하면 부등호 방향이 바뀌어 -a/5 <= -b/5 가 되고, 2를 더하면 -a/5 + 2 <= -b/5 + 2 이어야 하므로 aligned 부등호 방향이 잘못되었다 (거짓).",
+    "② 양변에 4를 더하면 성립한다.",
+    "③, ④, ⑤ 도 부등식의 성질에 맞다.",
+    "따라서 옳지 않은 것은 ①번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a \\ge b$일 때, 다",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+  "newKeyProposal": null,
+  "typeReason": "음수를 곱하거나 나눌 때 aligned 부등호 방향이 바뀌는 성질을 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "부등식 양변에 음수를 곱할 때 aligned 부등호 방향 역전을 확인한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수 -1/5 을 곱할 때 aligned 부등호가 바뀌어야 함을 바로 검산할 수 있다.",
+  "how": "음수를 곱할 때 부등호가 바뀌지 않은 1번의 aligned 오류를 찾아냈다.",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "부등식의 성질을 적용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "각 선지의 참과 거짓을 검토한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "부등식의 성질을 적용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

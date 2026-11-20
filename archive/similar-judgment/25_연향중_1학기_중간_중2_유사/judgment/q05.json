@@ -1,0 +1,79 @@
+{
+  "qid": "05",
+  "itemFingerprint": "7d14495e144fc6d9",
+  "solveSteps": [
+    "18 / (75 * x) = (2 * 3^2) / (3 * 5^2 * x) = 6 / (25 * x)이다.",
+    "이 분수가 유한소수가 되려면 기약분수의 분모의 소인수가 2 또는 5뿐이어야 한다.",
+    "이미 분모에 5^2이 있으므로 한 자리 자연수 x는 소인수로 2, 5만을 갖거나 분자의 3과 약분되어 소인수 3이 제거되어야 한다.",
+    "가능한 한 자리 자연수 x:",
+    "x = 1, 2, 3(3과 약분), 4(2^2), 5, 6(2*3, 3과 약분), 8(2^3)",
+    "x = 7은 분모에 7이 남아 불가, x = 9(3^2)는 분모에 3이 1개 남아 불가.",
+    "따라서 가능한 x는 1, 2, 3, 4, 5, 6, 8이다.",
+    "합은 1 + 2 + 3 + 4 + 5 + 6 + 8 = 29이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{18}{75 \\times ",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "식 18 / (75 * x)가 유한소수가 되는 한 자리 자연수 x의 합 29를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분수 18 / (75 * x)를 약분하여 분모의 소인수 2, 5 조건으로 x의 합 29를 결정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "약분 후 분모의 소인수 조건을 고려하여 18 / (75 * x)가 유한소수가 되는 x들을 합산하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "소수로 나타내면 유한소수가 될 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "모든 한 자리 자연수의 합을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "분수를 기약분수로 나타내어 분모의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "약분",
+        "src": "solution",
+        "quote": "소인수분해하여 약분한다.",
+        "evidenceType": "NAMED"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "유한소수가 되는 조건을 확인한다.",
+    "goal": "가능한 한 자리 자연수 x의 합을 구한다.",
+    "method": "기약분수로 정리하여 분모의 소인수를 분석한다.",
+    "condition": "분자의 소인수 3과 약분되는지 점검한다."
+  },
+  "how": "$18/(75x) = 6/(25x)$가 유한소수가 되도록 하는 x는 1, 2, 3, 4, 5, 6, 8이며 합은 29이므로 정답 ③으로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

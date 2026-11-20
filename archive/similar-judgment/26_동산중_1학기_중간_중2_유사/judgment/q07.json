@@ -1,0 +1,65 @@
+{
+  "qid": 7,
+  "itemFingerprint": "a88f58f91fa91457",
+  "solveSteps": [
+    "x = 0.2545454... 에 10 을 곱하면 10x = 2.545454... 이므로 ㉠ = 10 이다.",
+    "1000 을 곱하면 1000x = 254.545454... 이므로 ㉡ = 1000 이다.",
+    "변끼리 빼면 1000x - 10x = 990x = 252 이므로 ㉢ = 990, ㉣ = 252 이다.",
+    "x = 252 / 990 = 14/55 이므로 ㉤ = 14/55 이다.",
+    "따라서 옳은 것은 ⑤(14/55)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음은 순환소수 $0.2\\dot{5}\\dot{4}$를 분수로 나타내는 과정이다.",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "1000x - 10x = 252 를 이용해 x = 14/55 분수로 나타내는 순환소수를 분수로 행이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "1000 과 10 을 곱해 990x = 252 에서 x = 14/55 를 얻는 빈칸 완성 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "1000 과 10 의 거듭제곱을 정하고 990x = 252 에서 14/55 로 약분하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "다음은 순환소수 $0.2\\dot{5}\\dot{4}$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수로 나타내는 과정이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "기약분수로 약분하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "1000x - 10x = 990x = 252 에서 x = 252/990 = 14/55 임을 확인하고 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "qid": 12,
+  "itemFingerprint": "aa2fe8f59b11f6c9",
+  "solveSteps": [
+    "주어진 자료 중 x를 제외한 7개는 2가 2개, 4가 2개, 5, 7, 8이 각 1개이다.",
+    "최빈값이 1개이려면 x는 2 또는 4이어야 한다.",
+    "x = 4이면 4가 3개가 되어 최빈값은 4이다.",
+    "자료 8개를 크기순으로 정렬하면 2, 2, 4, 4, 4, 5, 7, 8 이고 중앙값은 (4+4)/2 = 4이다.",
+    "중앙값과 최빈값이 4로 일치하므로 x = 4 이다. 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "중앙값과 최빈값이 서로 같을 때,",
+  "rpmRecordId": "M1-RPM-223",
+  "rpmEvidence": "최빈값의 유일성 조건과 중앙값을 분석하여",
+  "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+  "templateKey": "NONE",
+  "typeReason": "중앙값과 최빈값이 같다는 조건에서 자료의 미지수 x를 복원하는 유형이다.",
+  "rpmReason": "대푯값 조건식을 만족하도록 자료의 순서와 빈도를 분석하는 RPM x 유형이다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "최빈값 후보를 세우고 중앙값과의 일치를 검증해야 하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "중앙값",
+        "quote": "중앙값과 최빈값이 서로 같을 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최빈값",
+        "quote": "$x$의 값을 옳게 구한 것은? (단, 최빈값은 $1$개이다.) [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최빈값",
+        "quote": "최빈값의 유일성 조건과 중앙값을 분석하여",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중앙값",
+        "quote": "최빈값과 중앙값이 모두 $4$로 일치하고, 최빈값도 $1$개뿐이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "최빈값의 유일성 조건과 중앙값 일치 조건으로부터 미지수 x=4를 판정했다."
+}

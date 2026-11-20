@@ -1,0 +1,65 @@
+{
+  "qid": 2,
+  "itemFingerprint": "fa0bde8ca4313094",
+  "solveSteps": [
+    "13 / 55 = 0.2363636... = 0.2 36 (3, 6에 순환마디) 이다.",
+    "소수점 아래 첫째 자리는 2이고, 둘째 자리부터 순환마디 (3, 6) 2개가 반복된다.",
+    "2026번째 자리는 순환마디 시작으로부터 2026 - 1 = 2025번째이다.",
+    "2025 = 2 * 1012 + 1 이므로 순환마디의 첫 번째 숫자인 3이다.",
+    "따라서 2026번째 자리의 숫자는 3이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "}{55}$을 소수로 나타낼 때,",
+  "rpmRecordId": "M2-RPM-121",
+  "rpmReason": "13 / 55 의 순환마디 3, 6 에서 2025 = 2 * 1012 + 1 로 2026번째 자리를 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분수 13 / 55 의 순환소수 전개에서 소수점 아래 2026번째 자리의 숫자를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "13 / 55 에서 비순환 자리 1개를 제외하고 2025 를 2로 나눈 나머지를 찾는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\frac{"
+      }
+    ],
+    "goal": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "}{55}$을 소수로 나타낼 때,"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "$3, 6$이 순환마디를 이루어 반복",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "13/55 = 0.23636... 에서 2025 = 2 * 1012 + 1 이므로 2026번째 숫자가 3 임을 확인해 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

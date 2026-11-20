@@ -1,0 +1,64 @@
+{
+  "qid": 24,
+  "itemFingerprint": "5e871f6533fdd62d",
+  "solveSteps": [
+    "1) 민수는 (0, 0)에서 출발하여 30분 동안 2km를 이동하였다.",
+    "2) 지호는 (10, 0)에서 출발하므로 민수보다 10분 늦게 출발하였고, 40분에 3km에 도달하였다.",
+    "3) 그래프를 보고 알 수 있는 사실: (1) 지호는 민수가 출발한 지 10분 뒤에 출발하였다. (2) 민수는 출발 후 30분 동안 2km를 이동하였다.",
+    "\\begin{aligned} (30, 2), (10, 0) \\end{aligned}"
+  ],
+  "solvedAnswer": "(1) 지호는 민수가 출발한 지 $10$분 뒤에 출발하였다. (2) 민수는 출발 후 $30$분 동안 $2\\text{ km}$를 이동하였다.",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-04",
+  "subUnitKey": "M1-04-GRAPH_RELATION",
+  "unitEvidence": "[서·논술형 3] 다음은 두 사람 민수와 지호가 직선 코스에서 걷기 운동을 할 때, 출발한 지 $x$분 후의 이동 거리 $y\\text{ km}$의 변화를 나타낸 그래프에 대한 설명이다.",
+  "rpmRecordId": "M1-RPM-166",
+  "rpmReason": "시간-거리 그래프의 출발점과 도달점을 좌표 \\begin{aligned} (30, 2), (10, 0) \\end{aligned} 로 해석하여 구체적 사실을 서술하는 M1-RPM-166에 해당한다.",
+  "problemTypeKey": "PT_M1_CONTEXT_GRAPH_INTERPRETATION",
+  "templateKey": "TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT",
+  "typeReason": "거리-시간 이동 그래프의 좌표 정보를 바탕으로 \\begin{aligned} 10\\text{분 뒤 출발}, 30\\text{분 동안 2km} \\end{aligned} 두 가지 사실을 추출하는 PT_M1_CONTEXT_GRAPH_INTERPRETATION과 TPL_M1_CONTEXT_GRAPH_INTERPRETATION_DISTANCE_TIME_FACT_AUDIT이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 사람의 이동 그래프에서 시간과 거리 조건을 각각 좌표 \\begin{aligned} (30, 2), (10, 0) \\end{aligned} 로 해석해 사실을 서술하는 2단계 문제로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원점",
+        "src": "stem",
+        "quote": "• 민수는 원점 $(0, 0)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "변화를 나타낸 그래프에 대한"
+      }
+    ],
+    "method": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "발하여 일정한 속력으로 걸어",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "민수의 (30, 2)와 지호의 (10, 0) 출발 정보를 좌표로 읽어 \\begin{aligned} 10\\text{분 뒤}, 30\\text{분 동안 2km} \\end{aligned} 를 서술하여 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

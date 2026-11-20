@@ -1,0 +1,63 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "5bedb1a4af681108",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "보기의 진술들을 aligned 판정한다.",
+    "ㄱ. 모든 순환소수는 분수로 나타낼 수 있으므로 유리수이다 (참).",
+    "ㄴ. 분수 21/30 = 7/10 = 0.7 은 유한소수이므로 모든 분수가 순환소수가 되는 것은 아니다 (거짓).",
+    "ㄷ. 기약분수의 분모에 2나 5 이외의 소인수가 있으면 유한소수가 될 수 없다 (거짓).",
+    "따라서 옳은 것은 ①번 ㄱ 뿐이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 <보기> 중 옳은 것만",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "순환소수와 10 의 거듭제곱 분수 표현에 관한 성질을 aligned 대조하여 진술을 판단하는 유형이다.",
+  "rpmRecordId": "M2-RPM-005",
+  "rpmReason": "유리수와 순환소수 개념 진술을 aligned 검증하여 10 거듭제곱 분수 성질을 확인한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "유리수와 순환소수의 정의와 분수 표현 성질을 aligned 단계별로 참 거짓 판정한다.",
+  "how": "각 보기를 aligned 검토하여 ㄱ만 참이고 ㄴ, ㄷ은 10 분수 성질에 어긋남을 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "수 있으므로 유리수이다. ㄴ. 유"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "> ㄱ. 모든 순환소수는 분수로 나타"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환소수",
+        "src": "solution",
+        "quote": "유리수와 순환소수의 정의 및 성",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "ext{분수가 기약분수라는 조건이 없"
+      }
+    ]
+  }
+}

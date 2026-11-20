@@ -1,0 +1,76 @@
+{
+  "qid": 14,
+  "itemFingerprint": "bf952f26f7c5ff6f",
+  "solveSteps": [
+    "1) OD = OE = OF이므로 원의 중심에서 세 현에 이르는 거리가 모두 같아 AB = BC = CA = 6*sqrt(3) cm인 정삼각형이다.",
+    "2) 한 변 6*sqrt(3) cm인 정삼각형 ABC의 높이는 6*sqrt(3) * (sqrt(3)/2) = 9 cm이다.",
+    "3) 정삼각형의 외심은 무게중심과 일치하므로 외접원 반지름 OB = (2/3) * 9 = 6 cm이다.",
+    "4) 따라서 원 O의 넓이는 pi * 6^2 = 36*pi cm^2이다.",
+    "5) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "다음 그림의 원 $O$에서 $OD \\perp AB$, $OE \\perp BC$, $OF \\perp AC$이고 $OD=OE=OF$이다. $BC=6\\sqrt{3},\\mathrm{cm}$일 때, 원 $O$의 넓이는?",
+  "rpmRecordId": "M3-RPM-069",
+  "rpmReason": "중심에서 세 현까지의 거리가 같아 정삼각형임을 식별하고 높이 9 cm와 반지름 6 cm로부터 원 넓이 36*pi cm^2를 구하는 M3-RPM-069 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+  "typeReason": "원 중심에서 같은 거리에 있는 현의 길이가 같음을 이용해 정삼각형의 외접원 넓이 36*pi cm^2를 도출하는 TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "src": "stem",
+        "quote": "다음 그림의 원 $O$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "원 $O$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정삼각형",
+        "src": "solution",
+        "quote": "$\\triangle ABC$는 정삼각형이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수직",
+        "src": "stem",
+        "quote": "$OD \\perp AB$, $OE \\perp BC$, $OF \\perp AC$이고"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 O와 중심거리 OD = OE = OF 및 변 BC = 6*sqrt(3) cm 조건이다.",
+    "goal": "원 O의 넓이를 구하는 목표이다.",
+    "method": "현의 길이가 같음을 통해 정삼각형의 외심을 구하는 방법이다.",
+    "condition": "수직 거리 조건이다."
+  },
+  "how": "OD = OE = OF에서 정삼각형 한 변 6*sqrt(3)의 높이 9 cm를 얻고 무게중심 반지름 6 cm에서 원의 넓이가 36*pi cm^2임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "세 현의 길이가 같아 정삼각형임을 파악하고 무게중심 성질로 반지름 6 cm를 구하여 넓이 36*pi를 계산하는 2단계 문항이다."
+}

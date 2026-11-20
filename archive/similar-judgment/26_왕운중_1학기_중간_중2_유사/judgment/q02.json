@@ -1,0 +1,74 @@
+{
+  "qid": 2,
+  "itemFingerprint": "809862b750fd4d94",
+  "solveSteps": [
+    "기약분수로 나타내었을 때 분모의 소인수에 2, 5 이외의 소인수가 있으면 순환소수이다.",
+    "3/11은 분모 소인수가 11이므로 순환소수이다.",
+    "21/(2*3*5*7) = 21/(21*10) = 1/10으로 분모 소인수가 2, 5뿐이므로 유한소수이다.",
+    "-2/17은 분모 소인수가 17이므로 순환소수이다.",
+    "15/75 = 1/5로 분모 소인수가 5뿐이므로 유한소수이다.",
+    "-14/(2*3*7) = -1/3로 분모 소인수가 3이므로 순환소수이다.",
+    "따라서 순환소수로만 나타낼 수 있는 것은 3/11, -2/17, -14/(2*3*7)로 총 3개이다. 답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "나타낼 때, 순환소수로만 나타낼 수",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "분수 3/11, 21/(2*3*5*7), 15/75 등을 기약분수로 약분하여 분모의 소인수를 판별한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "기약분수 분모의 소인수 11, 17, 3 등을 확인하여 순환소수가 되는 것 3개를 선별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "5개의 분수 15/75, 21/(2*3*5*7) 등을 각각 약분하고 소인수를 점검하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "quote": "다음 분수를 소수로 나타",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "quote": "수 있는 것의 개수는? [3점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환소수",
+        "quote": "나타낼 때, 순환소수로만 나타낼 수",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "quote": "다음 분수를 소수로 나타낼 때,",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "5개 분수를 약분하여 분모 소인수에 2, 5 이외의 소인수가 남는 3/11, -2/17, -14/(2*3*7)의 3개를 찾아 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

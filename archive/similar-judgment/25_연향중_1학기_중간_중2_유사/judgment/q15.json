@@ -1,0 +1,70 @@
+{
+  "qid": "15",
+  "itemFingerprint": "c0db4c8a1fac09f1",
+  "solveSteps": [
+    "부등식을 모든 항을 좌변으로 이항하여 aligned 형태로 정리한다.",
+    "ㄱ: 9 - 3x = 2x - 1 -> -5x + 10 = 0은 부등호가 없으므로 일차방정식이다.",
+    "ㄴ: 3x + 4 > 0, ㄷ: x > 7, ㄹ: -4x + 5 >= 0은 일차부등식이다.",
+    "ㅁ: 미지수 x가 분모에 있어 다항식이 아니므로 일차부등식이 아니다.",
+    "따라서 일차부등식이 아닌 것은 ㄱ, ㅁ이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "다음 <보기> 중에서 일차부등식이 아닌 것만을",
+  "rpmRecordId": "M2-RPM-020",
+  "rpmReason": "식들을 정리하여 aligned 및 10 형태로 일차부등식을 구분하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+  "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+  "typeReason": "식들을 이항하여 aligned 일차부등식인지 10 판별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식의 정의와 차수를 aligned 및 10 등식과 비교하여 판별하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "다음 <보기> 중에서 일차부등식이 아닌"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "다음 <보기> 중에서 일차부등식이 아닌 것만을"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "부등식을 모든 항을 좌변으로 이항하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "미지수 } x\\text{가 분모에 있으므로 다항식이"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "보기의 여러 식들을 확인한다.",
+    "goal": "일차부등식이 아닌 것을 모두 고른다.",
+    "method": "모든 항을 좌변으로 이항해 일차식 부등호 0 형태인지 점검한다.",
+    "condition": "등호만 있거나 분모에 미지수가 있는 경우를 제외한다."
+  },
+  "how": "각 보기를 aligned 형태로 정리하여 10 등호만 있는 ㄱ과 분모에 미지수가 있는 ㅁ을 찾아 정답 ②로 판정하였다."
+}

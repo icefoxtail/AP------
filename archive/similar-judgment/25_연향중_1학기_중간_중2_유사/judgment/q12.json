@@ -1,0 +1,69 @@
+{
+  "qid": "12",
+  "itemFingerprint": "d6197fd596bd6f2e",
+  "solveSteps": [
+    "어떤 다항식을 P라 하면 P * (-1/2 xy) = 4x^2y - 8xy^2이다.",
+    "P = (4x^2y - 8xy^2) / (-1/2 xy) = (4x^2y - 8xy^2) * (-2 / (xy)) = -8x + 16y이다.",
+    "바르게 계산한 식은 P / (-1/2 xy)이다.",
+    "(-8x + 16y) * (-2 / (xy)) = 16x/(xy) - 32y/(xy) = 16/y - 32/x이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "어떤 다항식을 $-\\dfrac{1}{2}xy$",
+  "rpmRecordId": "M2-RPM-015",
+  "rpmReason": "잘못 곱한 결과 4x^2y - 8xy^2에서 원래 다항식을 구하고 바르게 나누어 16/y - 32/x를 얻는 문제이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식 (-1/2)xy를 잘못 곱한 식에서 원래 식을 역연산으로 복원하고 바르게 나눗셈하여 16, 32 항을 얻는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다항식과 단항식의 곱셈 역연산으로 원래 식을 찾고 바른 나눗셈을 수행하여 16/y - 32/x를 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "어떤 다항식을 $-\\dfrac{1}{2}xy$로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "solution",
+        "quote": "1단계: 어떤 다항식을 $P$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "원래 나누어야 했던 $-\\dfrac{1}{2}xy$로 나눈다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "이때 바르게 계산한 식을 구하면?"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "잘못 계산된 식의 조건을 파악한다.",
+    "goal": "바르게 계산한 식을 구한다.",
+    "method": "역연산으로 원래 다항식을 구한 뒤 다시 나눈다.",
+    "condition": "나눗셈을 역수의 곱셈으로 변환한다."
+  },
+  "how": "잘못 곱한 식에서 $P = -8x + 16y$를 구하고 다시 나눗셈을 하여 $16/y - 32/x$인 ③으로 판정하였다."
+}

@@ -1,0 +1,73 @@
+{
+  "qid": 9,
+  "itemFingerprint": "8931761f6f3afe0d",
+  "solveSteps": [
+    "입체도형의 면, 모서리, 꼭짓점 성질을 검토한다 (보기 3점, 모서리 9, 면 4).",
+    "① 칠각기둥의 면의 개수는 9개이다 (참).",
+    "② 정팔면체의 한 꼭짓점에 모인 면의 개수는 4개이다 (참).",
+    "③ 원뿔의 회전축 포함 단면은 이등변삼각형이다 (참).",
+    "④ 정십이면체의 면의 모양은 정오각형이므로 정육각형이라는 진술은 옳지 않다.",
+    "따라서 옳지 않은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "입체도형에 대한 설명으로 옳지 않은 것은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "입체도형에 대한 설명으",
+  "rpmRecordId": "M1-RPM-209",
+  "rpmReason": "다면체와 정다면체의 기본 정의 및 면의 모양을 검증하는 M1-RPM-209 정다면체 > 정다면체의 종류에 해당한다 (배점 3점).",
+  "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+  "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FACE_PROPERTY_AUDIT",
+  "typeReason": "다면체의 종류별 면의 모양과 구성요소 진술의 참·거짓을 종합 검토하는 유형이다 (배점 3점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "입체도형의 명칭별 옆면의 형태와 구성요소 기본 성질을 확인하는 난이도 2 문항이다 (배점 3점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "입체도형",
+        "src": "stem",
+        "quote": "입체도형에 대한 설명으"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사다리꼴",
+        "src": "solution",
+        "quote": "사각형이므로 사다리꼴이다. (참)"
+      }
+    ],
+    "method": [
+      {
+        "term": "정다면체",
+        "src": "solution",
+        "quote": "으로 이루어진 정다면체는 존재하지 않",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "빗변이 모선인 이등변삼각형이다. (참)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "입체도형의 각 보기 성질을 비교 분석하여 옳지 않은 설명인 ③을 정답으로 판정했다 (배점 3점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "각기둥, 각뿔, 각뿔대, 정다면체 등 입체도형의 기본 성질을 다루므로 M1-07 입체도형의 성질에 속한다."
+}

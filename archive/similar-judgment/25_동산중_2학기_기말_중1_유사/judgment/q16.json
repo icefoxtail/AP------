@@ -1,0 +1,66 @@
+{
+  "qid": 16,
+  "itemFingerprint": "871fc9662eca2fb3",
+  "solveSteps": [
+    "1) \\begin{aligned} O(0, 0) \\end{aligned} 은 원점의 좌표로 참이다.",
+    "2) 순서쌍 (a, b)에서 x좌표는 a, y좌표는 b이다.",
+    "3) x축 위의 점은 y좌표가 0이다.",
+    "4) 축 위의 점은 어느 사분면에도 속하지 않는다.",
+    "5) x < 0, y > 0은 제2사분면이다.",
+    "따라서 옳은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-04",
+  "subUnitKey": "M1-04-COORDINATE_PLANE",
+  "unitEvidence": "좌표와 좌표평면에 대한 설명으로 옳은 것은? [4점]",
+  "rpmRecordId": "M1-RPM-163",
+  "rpmReason": "원점의 좌표 \\begin{aligned} O(0, 0) \\end{aligned} 및 좌표축, 사분면의 기본 성질을 검토하는 M1-RPM-163에 해당한다.",
+  "problemTypeKey": "PT_COORDINATE_POINT_READING",
+  "templateKey": "TPL_COORDINATE_POINT_READING_CLAIM_AUDIT",
+  "typeReason": "좌표평면의 원점 \\begin{aligned} O(0, 0) \\end{aligned} 및 좌표축 위의 점 성질 진술의 참·거짓을 판정하는 PT_COORDINATE_POINT_READING과 TPL_COORDINATE_POINT_READING_CLAIM_AUDIT이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "원점의 좌표가 \\begin{aligned} O(0, 0) \\end{aligned} 임을 정의에 따라 즉시 확인하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "좌표와 좌표평면에 대한 설명으로 옳은 것은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "원점",
+        "src": "solution",
+        "quote": "원점의 좌표는 "
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "사분면의 기본 정의를 확인한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "원점의 좌표가 \\begin{aligned} O(0, 0) \\end{aligned} 임을 확인하고 나머지 보기가 거짓임을 검토하여 정답 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

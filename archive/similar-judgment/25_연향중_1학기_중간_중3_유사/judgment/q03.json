@@ -1,0 +1,69 @@
+{
+  "qid": "03",
+  "itemFingerprint": "9185564d29e6455f",
+  "solveSteps": [
+    "\\sqrt{21+a}가 자연수가 되려면 21+a가 21보다 큰 완전제곱수이어야 한다.",
+    "21보다 큰 완전제곱수는 25, 36, 49 등이 있다.",
+    "가장 작은 자연수 a를 구해야 하므로 21+a = 25일 때이다.",
+    "따라서 a = 25 - 21 = 4이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "$\\sqrt{21+a}$가 자연수가 되도록 하",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "21+a가 완전제곱수 25가 되도록 하는 가장 작은 자연수 a = 4를 구하는 문제이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+  "typeReason": "근호 안의 식 21+a가 자연수가 되기 위한 완전제곱수 25 조건을 적용하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "21보다 큰 최초의 완전제곱수 25를 찾아 미지수를 계산하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "21+a}$가 자연수가 되도록 하는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "근호",
+        "src": "solution",
+        "quote": "연수가 되려면 근호 안의 식 $2"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱수",
+        "src": "solution",
+        "quote": "21$보다 큰 완전제곱수이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "21$보다 큰 완전제곱수이어야 한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "근호식이 자연수가 되는 조건을 확인한다.",
+    "goal": "가장 작은 자연수 a를 구한다.",
+    "method": "21보다 큰 완전제곱수를 나열한다.",
+    "condition": "a가 자연수임을 고려한다."
+  },
+  "how": "21보다 큰 가장 작은 완전제곱수가 25이므로 $21+a=25$에서 $a=4$인 ③으로 판정하였다."
+}

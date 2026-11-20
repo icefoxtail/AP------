@@ -1,0 +1,75 @@
+{
+  "qid": 5,
+  "itemFingerprint": "641c2e7272718094",
+  "solveSteps": [
+    "1) 호 BC에 대한 원주각 각 BDC = 65도이므로 중심각 각 BOC = 2 * 65도 = 130도이다.",
+    "2) 원 밖의 점 A에서 그은 두 접선의 접점 B, C에서 반지름과 접선은 수직이므로 각 ABO = 각 ACO = 90도이다.",
+    "3) 사각형 ABOC의 내각의 총합은 360도이므로 각 CAB = 360도 - (90도 + 90도 + 130도) = 50도이다.",
+    "4) 따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림에서 원 $O$ 밖의 한 점 $A$에서 이 원에 그은 두 접선의 접점을 각각 $B$와 $C$라고 하자. 원 $O$ 위의 한 점 $D$에 대하여 $\\angle BDC = 65^\\circ$일 때, 두 접선이 이루는 각 $\\angle CAB$의 크기는? [4점]",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmReason": "원주각 65도로부터 중심각 130도를 구하고 접선의 수직 조건 90도와 사각형 내각의 합 360도를 결합해 각 CAB = 50도를 구하는 M3-RPM-075 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE",
+  "typeReason": "원주각과 중심각의 관계(65도 -> 130도) 및 접선의 수직각을 사각형 내각합에 종합 적용하는 TPL_CIRCLE_ANGLE_COMPOSITE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접점",
+        "src": "stem",
+        "quote": "두 접선의 접점을 각각 $B$와 $C$라고 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "두 접선이 이루는 각 $\\angle CAB$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "src": "solution",
+        "quote": "$\\angle BDC = 65^\\circ$는 호 $BC$를 바라보는 원주각이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "한 점 $A$에서 이 원에 그은 두 접선의"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원 밖의 점 A에서 그은 두 접선의 접점 B, C 조건이다.",
+    "goal": "두 접선이 이루는 각 CAB의 크기를 구하는 목표이다.",
+    "method": "원주각 65도로부터 중심각 130도를 도출하는 방법이다.",
+    "condition": "원 밖의 점에서 그은 두 접선 조건이다."
+  },
+  "how": "호 BC의 원주각 65도에서 중심각 130도를 구하고 두 접점의 수직각 90도와 사각형 내각합 360도를 결합해 각 CAB = 50도임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "원주각 65도를 중심각 130도로 변환하고 사각형 ABOC 내각합 360도에서 50도를 유도하는 2단계 문항이다."
+}

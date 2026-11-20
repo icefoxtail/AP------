@@ -1,0 +1,70 @@
+{
+  "qid": 3,
+  "itemFingerprint": "8462128699d9fd0c",
+  "solveSteps": [
+    "x/14 = x/(2*7)이 순환소수이려면 x는 7의 배수가 아니어야 한다.",
+    "x/15 = x/(3*5)가 순환소수이려면 x는 3의 배수가 아니어야 한다.",
+    "12 이하의 자연수 12개 중 3의 배수는 3, 6, 9, 12의 4개이고 7의 배수는 7의 1개이다 (공배수 21은 없음).",
+    "제외할 수는 3, 6, 7, 9, 12의 5개이므로 가능한 수는 12 - 5 = 7개(1, 2, 4, 5, 8, 10, 11)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "$12$ 이하 자연수의 개수는? [",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "분모 14와 15의 소인수 7과 3에 따라 x가 만족해야 하는 12 이하 자연수 배수 조건을 구한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분모 14, 15의 소인수 조건으로부터 12 이하 자연수 x의 개수를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 분수 14, 15가 모두 순환소수가 되도록 12 이하에서 3과 7의 배수를 제외하는 2단계 추론 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "두 유리수 $\\dfrac",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "quote": "이하 자연수의 개수는? [5점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "quote": "분모를 각각 소인수분해하면 $$ \\f",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "$12$ 이하 자연수의 개수는? [",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x/14와 x/15의 분모 14, 15 소인수분해에서 7과 3의 배수를 제외하여 12-5=7개를 도출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

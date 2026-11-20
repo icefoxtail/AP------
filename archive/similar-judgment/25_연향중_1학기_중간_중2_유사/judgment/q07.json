@@ -1,0 +1,73 @@
+{
+  "qid": "07",
+  "itemFingerprint": "f38f7429240c6643",
+  "solveSteps": [
+    "1 MB = 2^10 KB = 2^10 * 2^10 B = 2^20 B이다.",
+    "1 B = 2^3 bit이므로 1 MB = 2^20 * 2^3 bit = 2^23 bit이다.",
+    "8 MB = 2^3 * 1 MB = 2^3 * 2^23 bit = 2^(3+23) bit = 2^26 bit이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "컴퓨터에서 데이터의 양을 나타내는 가장 작은 ",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "단위 환산 관계를 거듭제곱의 곱셈으로 연결하여 8 MB = 2^26 bit를 계산하는 문제이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "데이터 단위 환산 관계와 2의 거듭제곱 지수 덧셈을 적용하여 bit 수를 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "MB에서 bit까지 2의 거듭제곱 환산 곱셈을 순서대로 수행하여 2^26을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "관계",
+        "src": "stem",
+        "quote": "단위 사이의 관계가 다음과 같을 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "거듭제곱의 곱셈으로 차례대로 연결한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "bit}$ 단위로 변환한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "관계",
+        "src": "solution",
+        "quote": "주어진 단위 환산 관계를"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "단위 간의 2의 거듭제곱 환산 관계를 파악한다.",
+    "goal": "8 MB의 bit 환산값을 구한다.",
+    "method": "단계별로 거듭제곱을 곱해 최종 지수를 합산한다.",
+    "condition": "8 = 2^3을 반영한다."
+  },
+  "how": "$8\\text{ MB} = 2^3 \\times 2^{10} \\times 2^{10} \\times 2^3\\text{ bit} = 2^{26}\\text{ bit}$이므로 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

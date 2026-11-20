@@ -1,0 +1,64 @@
+{
+  "qid": 1,
+  "itemFingerprint": "fcd629412de60fd5",
+  "solveSteps": [
+    "복소수 $z = a + bi$ ($a, b$ 실수)의 켤레복소수는 $\\bar{z} = a - bi$이다.",
+    "주어진 복소수 $7 - 4i$의 실수부분은 7, 허수부분은 $-4$이다.",
+    "따라서 켤레복소수는 허수부분의 부호를 바꾼 $7 + 4i$이다.",
+    "선택지 중 ③번이 옳다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $7 - 4i$의 켤레복소수는?",
+  "rpmRecordId": "H1-RPM-157",
+  "rpmReason": "복소수 $z = a + bi$의 켤레복소수를 구하는 H1-RPM-157에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+  "typeReason": "복소수 $z = a + bi$에서 허수부 부호를 반대로 하는 켤레복소수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "복소수 $z = a + bi$의 켤레복소수 정의를 바로 적용하는 기본 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $7 - 4i"
+      }
+    ],
+    "goal": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "- 4i$의 켤레복소수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "허수부분",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "ar{z}$는 허수부분의 부호를 반대"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "복소수 $z = a + bi$의 켤레복소수 정의에 따라 $7 - 4i$의 켤레복소수 $7 + 4i$를 구해 ③번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

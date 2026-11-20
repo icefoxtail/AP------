@@ -1,0 +1,75 @@
+{
+  "qid": 17,
+  "itemFingerprint": "80c9a364e358269e",
+  "solveSteps": [
+    "8x - 17 <= 5x - 1 에서 이항하면 8x - 5x <= -1 + 17 이다.",
+    "3x <= 16 이므로 x <= 16/3 이다.",
+    "16/3 = 5.333... 이므로 x <= 16/3 을 만족하는 자연수는 1, 2, 3, 4, 5 이다.",
+    "따라서 자연수는 5개이다. 답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $8x - 1",
+  "rpmRecordId": "M2-RPM-140",
+  "rpmReason": "상수 17을 이항하여 3x <= 16을 얻고 5.333 이하의 자연수 개수를 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "일차부등식을 풀어 16/3 = 5.333 이하를 만족하는 자연수의 개수를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "-17을 이항하여 16을 얻고 16/3 이하의 자연수를 세는 2단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "quote": "일차부등식 $8x - 1",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "1$의 해 중 자연수는 몇 개인가?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "quote": "항은 우변으로 이항하여 푼다. $",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수항",
+        "quote": "은 좌변으로, 상수항은 우변으로 이",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "8x - 17 <= 5x - 1에서 3x <= 16, x <= 16/3을 풀어 5.333 이하인 자연수 5개를 구하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

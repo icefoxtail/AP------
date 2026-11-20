@@ -1,0 +1,73 @@
+{
+  "qid": 14,
+  "itemFingerprint": "bd2120261e7ddde8",
+  "solveSteps": [
+    "반지름 $4\\rm\\,cm$ 인 구의 $1/8$ 을 잘라내고 남은 입체의 겉넓이를 구한다 (겉넓이 68, 구면 56).",
+    "구 전체 겉넓이: $4\\pi \\times 4^2 = 64\\pi\\rm\\,cm^2$.",
+    "남은 구면: $64\\pi \\times (7/8) = 56\\pi\\rm\\,cm^2$.",
+    "새로 생긴 사분원 3개의 넓이: $3 \\times (\\dfrac{1}{4}\\pi \\times 4^2) = 3 \\times 4\\pi = 12\\pi\\rm\\,cm^2$.",
+    "총 겉넓이: $56\\pi + 12\\pi = 68\\pi\\rm\\,cm^2$.",
+    "따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "반지름의 길이가 $4\\rm\\,cm$인 구의 $\\dfrac{1}{8}$을 잘라내고 남은 입체도형의 겉넓이는?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "은 입체도형의 겉넓이는? [4점]",
+  "rpmRecordId": "M1-RPM-219",
+  "rpmReason": "구의 1/8 을 절단하고 남은 입체의 노출 겉넓이를 구하는 M1-RPM-219 복합입체도형 > 잘라낸 입체에 해당한다 (겉넓이 68, 구면 56).",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_COMPOSITE_SURFACE",
+  "typeReason": "절단 입체의 굽은 면과 새로 노출된 평면들의 넓이를 합산하여 총 겉넓이를 구하는 유형이다 (겉넓이 68, 구면 56).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "구면의 7/8 뿐만 아니라 절단면에 생기는 사분원 3개의 넓이를 빠짐없이 더해야 하는 난이도 3 문항이다 (겉넓이 68, 구면 56).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "입체도형",
+        "src": "stem",
+        "quote": "잘라내고 남은 입체도형의 겉넓이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "은 입체도형의 겉넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "반지름의 길이가 $4\\rm\\"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "구면의 7/8 인 $56\\pi$ 에 사분원 3개인 $12\\pi$ 를 더하여 $68\\pi\\rm\\,cm^2$ 로 정답을 판정했다 (겉넓이 68).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "구의 일부를 잘라낸 입체의 구면과 단면의 겉넓이를 계산하므로 M1-07 입체도형의 성질에 속한다."
+}

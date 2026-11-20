@@ -1,0 +1,60 @@
+{
+  "qid": 14,
+  "itemFingerprint": "d8150a5a3b6906a7",
+  "solveSteps": [
+    "줄기 1, 2, 3, 4의 잎의 개수는 각각 4, 6, 7, 5개이므로 전체 학생 수는 4+6+7+5 = 22명이다.",
+    "가장 높은 기록은 48회이고, 4번째로 낮은 기록은 19회이다.",
+    "줄넘기 기록이 40회 이상인 학생은 줄기가 4인 학생 전체로 42, 44, 46, 48, 48의 5명이다.",
+    "4명이라고 진술한 ④는 옳지 않다. 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 줄기와 잎 그림은 어느 반 학생들의",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "다음 줄기와 잎 그림은 어느 반 학생들의",
+  "rpmRecordId": "M1-RPM-227",
+  "rpmEvidence": "줄기와 잎 그림의 각 항목을 확인한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "NONE",
+  "typeReason": "줄기와 잎 그림에서 각 계급의 도수와 최댓값, 순위를 읽는 div 판별 유형이다.",
+  "rpmReason": "줄기와 잎 그림의 자료를 해석하여 참·거짓을 판단하는 RPM div 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "표에서 잎의 개수를 직접 세어 진술을 검토하는 기본 div 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "줄기와 잎",
+        "quote": "다음 줄기와 잎 그림은 어느 반 학생들의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "quote": "다음 설명 중 옳지 않은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "줄기와 잎",
+        "quote": "줄기와 잎 그림의 각 항목을 확인한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "줄기와 잎",
+        "quote": "각 줄기의 잎의 개수는 차례로",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "줄기와 잎 표를 읽어 줄기 4의 잎이 5개이므로 40회 이상 학생 수가 5명임을 div 확인했다."
+}

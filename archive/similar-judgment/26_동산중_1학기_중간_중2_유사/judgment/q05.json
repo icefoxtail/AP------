@@ -1,0 +1,64 @@
+{
+  "qid": 5,
+  "itemFingerprint": "39543d61479c27d2",
+  "solveSteps": [
+    "7/20, 33/88 = 3/8, 21/70 = 3/10 은 기약분수의 분모 소인수가 2 와 5 뿐이므로 유한소수이다.",
+    "④ (3 * 5^2) / (2 * 3 * 5) = 5/2 역시 분모 소인수가 2 뿐이므로 유한소수이다.",
+    "⑤ (3^2 * 5 * 13) / (2^3 * 3 * 5 * 7) = 39 / (2^3 * 7) 은 분모에 소인수 7 이 남아 순환소수이다.",
+    "따라서 순환소수로만 나타낼 수 있는 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 분수 중 순환소수로만 나타낼 수 있는 것은?",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "7/20, 33/88 등과 39 / (2^3 * 7) 의 분모 소인수를 조사하는 분모의 소인수 조건 행이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "약분하여 39 / (2^3 * 7) 의 분모에 소인수 7 이 남는 것을 확인해 순환소수를 판별하는 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "5개 보기를 기약분수로 약분하고 39 / (2^3 * 7) 등 분모 소인수를 각각 점검하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "기약분수로 나타내었을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "다음 분수 중 순환소수로만 나타낼 수 있는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수",
+        "src": "solution",
+        "quote": "분모의 소인수가 $2$ 또는 $5$뿐이면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "7/20, 33/88 등과 달리 ⑤는 약분 후 39 / (2^3 * 7) 로 분모에 7이 남아 순환소수임을 확인하고 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

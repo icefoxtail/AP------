@@ -1,0 +1,63 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "a5d0da48d54372f3",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "전체 학생 수는 40 명이다.",
+    "8시간 이상인 학생의 상대도수가 0.35 이다.",
+    "8시간 이상인 학생 수는 40 * 0.35 = 14 명이다.",
+    "8시간 이상 10시간 미만의 도수는 14 - (10시간 이상 도수 4) = 10 명이다.",
+    "따라서 10시간 미만인 학생 수는 전체 40 - 4 = 36명 또는 도수표 계산으로 ⑤번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어느 학급 학생 $40$명의",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "problemTypeKey": "PT_M1_FREQUENCY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "도수분포표에서 전체 40 명과 상대도수 0.35 조건을 이용해 특정 계급의 도수를 aligned 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-227",
+  "rpmReason": "전체 도수 40 과 상대도수 0.35 의 곱으로 14 명을 구하고 계급을 aligned 완성한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "상대도수 0.35 로부터 8시간 이상 인원 14 명을 구하고 표를 aligned 완성한다.",
+  "how": "전체 40 * 0.35 = 14 로부터 미지 도수를 찾아 ⑤번 답을 aligned 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "나타낸 도수분포표에서, 독서 시간이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "나타낸 도수분포표에서, 독서 시간이"
+      }
+    ],
+    "method": [
+      {
+        "term": "상대도수",
+        "src": "solution",
+        "quote": "전체 학생 수와 백분율을 이용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계급",
+        "src": "solution",
+        "quote": "상위 계급들의 도수의 합을 먼저 구한다."
+      }
+    ]
+  }
+}

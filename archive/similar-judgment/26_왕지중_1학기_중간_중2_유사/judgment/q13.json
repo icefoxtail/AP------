@@ -1,0 +1,71 @@
+{
+  "qid": 13,
+  "itemFingerprint": "df98c9aabd370122",
+  "solveSteps": [
+    "y = -2x + 3을 2x^2 - xy + 3y의 y에 대입한다.",
+    "2x^2 - x(-2x + 3) + 3(-2x + 3) = 2x^2 + 2x^2 - 3x - 6x + 9이다.",
+    "동류항을 정리하면 4x^2 - 9x + 9이다.",
+    "ax^2 + bx + c와 비교하면 a = 4, b = -9, c = 9이다.",
+    "a - b - c = 4 - (-9) - 9 = 4이다. 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "다항식 $2x^2 - xy + 3y$를 $x$에 대한 식으로 나타내면",
+  "rpmRecordId": "M2-RPM-135",
+  "rpmReason": "조건식 y = -2x + 3을 식 2x^2 - xy + 3y에 대입하여 ax^2 + bx + c를 구한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "y의 일차식을 대입하여 xy항이 포함된 식을 ax^2 + bx + c로 정리하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "-xy 항에 y=-2x+3을 대입하여 전개 및 동류항 계산을 거치는 2단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "$y = -2x + 3$일 때, 다항식 $2x^2 - xy + 3y$를",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "quote": "이때 상수 $a, b, c$에 대하여 $a - b - c$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "quote": "분배법칙을 이용하여 괄호를 풀면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "동류항",
+        "quote": "동류항끼리 계산하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "-xy항에 y=-2x+3을 대입하여 ax^2+bx+c=4x^2-9x+9를 얻고 a-b-c=4를 구하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

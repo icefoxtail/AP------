@@ -1,0 +1,71 @@
+{
+  "qid": "20",
+  "itemFingerprint": "760351d02e389383",
+  "solveSteps": [
+    "근호 안의 식을 완전제곱식으로 인수분해한다.",
+    "\\sqrt{x^2+8x+16} = \\sqrt{(x+4)^2} = |x+4|이다.",
+    "\\sqrt{x^2-10x+25} = \\sqrt{(x-5)^2} = |x-5|이다.",
+    "주어진 범위 -4 < x < 5에서 x+4 > 0이므로 |x+4| = x+4이다.",
+    "x-5 < 0이므로 |x-5| = -(x-5) = -x+5이다.",
+    "따라서 |x+4| - |x-5| = (x+4) - (-(x-5)) = (x+4) + (x-5) = 2x - 1이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "$-4 < x < 5$일 때, 다음 식을 간단",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "식 16, 25 완전제곱식을 절댓값으로 바꾸고 10 계수 범위를 점검해 식을 정리하는 문제이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_ABSOLUTE",
+  "typeReason": "근호 안의 16, 25 완전제곱식을 절댓값으로 변환하고 부호를 판별해 정리하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "완전제곱식의 절댓값 성질과 -4 < x < 5 부호를 적용하여 25 상수를 계산하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "근호",
+        "src": "solution",
+        "quote": "근호 안의 식을 완"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "호를 판정하여 정리한다. 1단계"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "호 안의 식을 완전제곱식으로 인수분해한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "절댓값",
+        "src": "solution",
+        "quote": "인수분해한 후 절댓값 기호로 변환하"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "근호 안의 이차식들과 x의 범위를 확인한다.",
+    "goal": "주어진 식을 간단히 정리한다.",
+    "method": "완전제곱식 인수분해 후 절댓값으로 변환한다.",
+    "condition": "범위에 따른 각 항의 부호를 판정한다."
+  },
+  "how": "16, 25의 완전제곱식으로부터 $|x+4| - |x-5| = (x+4) - (-(x-5)) = 2x-1$이므로 정답 ⑤로 판정하였다."
+}

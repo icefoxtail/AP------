@@ -1,0 +1,75 @@
+{
+  "qid": "06",
+  "itemFingerprint": "05eb6a11c3a218c4",
+  "solveSteps": [
+    "6x^2 - 7x - 3 = 0을 인수분해하면 (2x-3)(3x+1) = 0이다.",
+    "따라서 두 근은 x = 3/2 또는 x = -1/3이다.",
+    "두 근 사이에 있는 정수는 -1/3 < n < 3/2를 만족하는 정수이다.",
+    "해당하는 정수는 0, 1이다.",
+    "모든 정수의 합은 0 + 1 = 1이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $6x^2 - 7x - 3 = 0$",
+  "rpmRecordId": "M3-RPM-032",
+  "rpmReason": "이차방정식 6x^2 - 7x - 3 = 0의 두 근 -1/3과 3/2 사이에 있는 정수들의 합 1을 계산하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "이차방정식 6x^2 - 7x - 3 = 0의 해 구간에 속하는 정수해를 열거하고 합을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이차방정식 6x^2 - 7x - 3 = 0을 인수분해하여 두 근을 구하고 사이 정수의 합을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "사이에 있는 모든 정수의 합은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $6x^2 - 7x - 3 = 0$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "이차방정식 $6x^2 - 7x - 3 = 0$의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "사이에 있는 모든 정수의 합은? [4점]"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 근 사이에 위치한 정수 조건을 확인한다.",
+    "goal": "정수들의 총합을 계산한다.",
+    "method": "인수분해로 두 근을 직접 구한다.",
+    "condition": "근의 대소 범위에 속하는 모든 정수를 빠짐없이 찾는다."
+  },
+  "how": "$6x^2 - 7x - 3 = 0$에서 두 근이 $-1/3, 3/2$이므로 사이의 정수는 0, 1이며 합은 1이 되어 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

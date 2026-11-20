@@ -1,0 +1,70 @@
+{
+  "qid": "10",
+  "itemFingerprint": "3b4b436b73a8daf5",
+  "solveSteps": [
+    "좌변의 분수식을 간단히 한다: (2\\sqrt{a}) / (4\\sqrt{3}) = \\sqrt{a} / (2\\sqrt{3})이다.",
+    "주어진 등식은 \\sqrt{a} / (2\\sqrt{3}) = \\sqrt{21} / 6이다.",
+    "양변에 6을 곱하면 (6\\sqrt{a}) / (2\\sqrt{3}) = \\sqrt{21}이다.",
+    "좌변을 약분하면 3\\sqrt{a} / \\sqrt{3} = \\sqrt{3}\\sqrt{a} = \\sqrt{3a}이다.",
+    "따라서 \\sqrt{3a} = \\sqrt{21}이므로 3a = 21, 즉 a = 7이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "$\\dfrac{2\\sqrt{a}}{4\\sqrt",
+  "rpmRecordId": "M3-RPM-008",
+  "rpmReason": "근호가 포함된 분수 등식에서 21과 a의 관계를 풀어 자연수 7을 도출하는 문제이다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "NONE",
+  "typeReason": "분수식 약분과 분모의 곱셈을 통해 근호 안의 21 값과 일치하는 미지수를 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "양변에 6을 곱해 정리하고 21 근호와의 나눗셈을 풀어 a = 7을 찾는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "6}$일 때, 자연수 $a$의 값은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "등식",
+        "src": "solution",
+        "quote": "}$$ 따라서 등식은 다음과 같다"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "양변에 분모의 최소공배수인 $6$을 곱",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분수식",
+        "src": "solution",
+        "quote": "단계: 좌변의 분수식을 간단히 한다"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "근호가 포함된 비례 등식을 확인한다.",
+    "goal": "자연수 a의 값을 구한다.",
+    "method": "분모의 공배수를 곱해 근호 등식으로 변환한다.",
+    "condition": "a가 자연수임을 고려한다."
+  },
+  "how": "양변에 6을 곱해 $\\sqrt{3a} = \\sqrt{21}$로부터 $3a = 21 \\implies a = 7$인 ⑤로 판정하였다."
+}

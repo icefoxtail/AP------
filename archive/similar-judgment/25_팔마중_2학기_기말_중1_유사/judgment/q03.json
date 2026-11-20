@@ -1,0 +1,63 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "8cadfd4e0f1c9a19",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "반지름 12 cm 인 두 원의 중심과 교점을 잇는 삼각형은 정삼각형이므로 중심각은 60도 이다.",
+    "직선 경계는 반지름 2개이므로 12 + 12 = 24 cm 이다.",
+    "곡선 경계는 중심각 60도 호이므로 2 * pi * 12 * (60/360) = 4pi cm 이다.",
+    "둘레의 길이는 (4pi + 24) cm 이다.",
+    "정답은 ③번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "반지름의 길이가 $12\\rm",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "반지름 12 cm 와 중심각 60도 부채꼴 호 및 반지름 선분 24 cm 로 둘러싸인 둘레를 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-205",
+  "rpmReason": "부채꼴 호의 길이 4pi 와 반지름 2개 24 cm 를 더해 둘레를 완성한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "반지름 12 cm 의 두 배인 24 와 중심각 60 도 호의 길이를 각각 구해 합한다.",
+  "how": "호의 길이 4pi 와 반지름 2개 24 cm 로부터 둘레 (4pi + 24) cm 를 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $12\\rm\\,cm$인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "둘레의 길이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "중심각의 크기가 $60^\\circ$인",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $AB$가 원 $O'$"
+      }
+    ]
+  }
+}

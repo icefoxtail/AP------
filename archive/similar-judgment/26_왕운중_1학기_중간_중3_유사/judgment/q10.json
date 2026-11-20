@@ -1,0 +1,72 @@
+{
+  "qid": 10,
+  "itemFingerprint": "c1e9d82a7df27070",
+  "solveSteps": [
+    "(가) N(x) = 6 이므로 6 <= sqrt(x) < 7 이며 양변을 제곱하면 36 <= x < 49 이다.",
+    "(나) 소수부분이 0.5보다 크므로 sqrt(x) - 6 > 0.5 에서 sqrt(x) > 6.5 이다.",
+    "양변을 제곱하면 x > 6.5^2 = 42.25 이다.",
+    "공통 범위는 42.25 < x < 49 이므로 자연수 x는 43, 44, 45, 46, 47, 48의 6개이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "rt{x}$의 소수부분이 $0.5$보",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "정수부분 6으로 36 <= x < 49와 소수부분 sqrt(x) > 6.5에서 x > 42.25의 공통 범위를 구한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_INTEGER_DECIMAL_PART_EVALUATION",
+  "typeReason": "N(x) = 6과 소수부분 0.5 초과 조건으로부터 42.25 < x < 49를 유도해 개수 6을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정수부분 조건 36 <= x < 49와 6.5^2 = 42.25를 결합해 자연수 6개를 세는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "소수부분",
+        "quote": "rt{x}$의 소수부분이 $0.5$보",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "x}$ 이하의 자연수의 개수를 $N",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "개수",
+        "quote": "하의 자연수의 개수를 $N(x)$",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부분",
+        "quote": "{x}$의 소수부분이 $0.5$보",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "N(x)=6에서 36 <= x < 49, 소수부분 > 0.5에서 x > 42.25이므로 43~48의 6개를 얻어 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

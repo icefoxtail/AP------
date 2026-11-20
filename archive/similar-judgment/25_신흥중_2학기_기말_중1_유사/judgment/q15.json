@@ -1,0 +1,76 @@
+{
+  "qid": 15,
+  "itemFingerprint": "d1638ee208b2627c",
+  "solveSteps": [
+    "1) 전체 학생 40명 중 읽은 책이 8권 이상인 학생은 40 * (65 / 100) = 26명이다.",
+    "2) 따라서 8권 미만인 학생 수는 40 - 26 = 14명이다.",
+    "3) 8권 미만인 계급은 '0권 이상 4권 미만'과 '4권 이상 8권 미만'의 두 계급이다.",
+    "4) 0권 이상 4권 미만인 학생이 4명이므로 4권 이상 8권 미만인 계급의 도수는 14 - 4 = 10명이다.",
+    "5) 따라서 정답은 10명인 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "unitEvidence": "다음은 어느 학급 학생 $40$명이 지난 한 학기 동안 읽은 책의 수를 조사하여 나타낸 도수분포표의 일부이다. 읽은 책이 $8$권 이상인 학생이 전체의 $65%$이고, $0$권 이상 $4$권 미만인 학생이 $4$명일 때, $4$권 이상 $8$권 미만인 계급의 도수는? [4점]",
+  "rpmRecordId": "M1-RPM-227",
+  "rpmReason": "학생 40명 중 8권 이상 65%인 26명을 제외한 14명에서 4명을 빼서 4권 이상 8권 미만 도수 10명을 구하는 M1-RPM-227 문제이다.",
+  "problemTypeKey": "PT_M1_FREQUENCY",
+  "templateKey": "NONE",
+  "typeReason": "전체 도수 40명과 백분율 65%로부터 누적 인원 26명을 구하고 특정 계급의 도수 10명을 복원하는 PT_M1_FREQUENCY 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "백분율 65% 계산 26명과 여사건 14명에서 4명을 뺀 단순 뺄셈 10명을 구하는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "사하여 나타낸 도수분포표의 일부이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "8$권 미만인 계급의 도수는? ["
+      }
+    ],
+    "method": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "사하여 나타낸 도수분포표의 일부이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분포",
+        "src": "stem",
+        "quote": "여 나타낸 도수분포표의 일부이다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "학급 학생 40명의 독서 권수 도수분포표 조건이다.",
+    "goal": "4권 이상 8권 미만 계급의 도수를 구하는 목표이다.",
+    "method": "도수분포표의 비율과 인원수를 계산하는 방법이다.",
+    "condition": "도수분포 형태 조건이다."
+  },
+  "how": "8권 이상이 26명이므로 8권 미만은 14명이고, 여기서 4명을 뺀 계급의 도수는 10명임을 확인하여 정답 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

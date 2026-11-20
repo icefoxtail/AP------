@@ -1,0 +1,65 @@
+{
+  "qid": 6,
+  "itemFingerprint": "abdb536663d3b6fd",
+  "solveSteps": [
+    "1) 35 / (2 * 7 * x) = 5 / (2x) 로 약분하여 기약분수로 나타낸다.",
+    "2) 순환소수가 되려면 분모에 2, 5 이외의 소인수가 있어야 한다.",
+    "3) 한 자리 자연수 중 x = 3, 6, 7, 9 일 때 분모에 3 또는 7이 남아 순환소수가 된다.",
+    "4) 가능한 x의 합: 3 + 6 + 7 + 9 = 25 이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{35}{2 \\times 7 \\times x}$를 순환소수로만 나타낼 수 있을 때",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "약분 후 5/(2x)에서 분모 소인수 조건을 분석하여 합 3 + 6 + 7 + 9 = 25를 구하는 M2-RPM-002에 해당한다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "기약분수 5/(2x)의 분모 소인수가 2와 5 외의 수를 갖는 조건에서 한 자리 자연수의 합 25를 구하는 PT_M2_REPEATING_DECIMAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "약분과 소인수 분류 과정을 거쳐 가능한 수들을 구하고 합 25를 도출하는 2단계 문제로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "es x}$를 순환소수로만 "
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": ", 한 자리의 자연수 $x$"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "모와 약분하여 기약분수 꼴로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "35/(2*7*x) = 5/(2x)에서 가능한 한 자리 자연수 3, 6, 7, 9의 합이 25임을 확인하여 정답 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

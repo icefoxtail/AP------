@@ -1,0 +1,57 @@
+{
+  "qid": 11,
+  "itemFingerprint": "e70f67944a1d4e8f",
+  "solveSteps": [
+    "1. 좌변을 동류근호끼리 묶으면 (3 + a)*sqrt(5) + (b - 4)*sqrt(3)이다.",
+    "2. 우변 5/2 * sqrt(5) - 17/4 * sqrt(3)과 계수를 비교하면 3 + a = 5/2에서 a = -1/2 = -2/4이다.",
+    "3. b - 4 = -17/4에서 b = -1/4이다.",
+    "4. 따라서 a + b = -2/4 - 1/4 = -3/4이다. 따라서 정답은 1번이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "유리수 $a, b$에 대하여 등식",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmReason": "우변의 -17/4*sqrt(3)과 동류근호 b-4를 비교하여 a=-1/2, b=-1/4을 구하는 M3-RPM-009 레코드입니다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "typeReason": "우변의 -17/4*sqrt(3)과 동류근호 (3+a)*sqrt(5)+(b-4)*sqrt(3)의 계수를 비교하여 a=-1/2, b=-1/4, a+b=-3/4을 구하는 TPL_M3_RADICAL_MIXED_OPERATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "동류근호로 묶고 우변의 -17/4*sqrt(3)과 비교하여 a=-1/2, b=-1/4을 구하여 합 a+b=-3/4을 계산하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b$에 대하여 등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$a + b$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "같은 근호를 포함하는 동류항끼리 묶어 계수를 비교한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "동류근호 계수 비교 및 유리수 덧셈"
+      }
+    ],
+    "condition": []
+  },
+  "how": "좌변을 (3+a)*sqrt(5)+(b-4)*sqrt(3)으로 묶어 우변의 5/2*sqrt(5) - 17/4*sqrt(3)과 비교해 a=-1/2, b=-1/4을 구하고 a+b = -3/4인 1번으로 판정했습니다."
+}

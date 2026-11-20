@@ -1,0 +1,64 @@
+{
+  "qid": 2,
+  "itemFingerprint": "0770cb832ae346d8",
+  "solveSteps": [
+    "곱셈공식 $(a - b)(a^2 + ab + b^2) = a^3 - b^3$을 이용한다.",
+    "$(x - 3)(x^2 + 3x + 9) = (x - 3)(x^2 + 3x + 3^2) = x^3 - 3^3$이다.",
+    "$x^3 - 3^3 = x^3 - 27$이다.",
+    "따라서 정답은 ①번이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-01",
+  "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "다항식 $(x - 3)(x^2 + 3x + 9)$를 전개한 식은?",
+  "rpmRecordId": "H1-RPM-136",
+  "rpmReason": "곱셈공식 $(a - b)(a^2 + ab + b^2) = a^3 - b^3$을 적용해 27을 얻는 H1-RPM-136에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+  "typeReason": "곱셈공식을 이용해 $x^3 - 27$로 전개하는 다항식 연산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "기본 곱셈공식을 적용하여 $x^3 - 27$을 구하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $(x - 3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "전개",
+        "src": "stem",
+        "quote": "+ 9)$를 전개한 식은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "곱셈 공식 $(a"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "곱셈공식 $(a - b)(a^2 + ab + b^2) = a^3 - b^3$에 대입하여 $x^3 - 27$을 얻어 ①번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

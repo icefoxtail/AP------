@@ -1,0 +1,70 @@
+{
+  "qid": 21,
+  "itemFingerprint": "a8779831d4c6f64e",
+  "solveSteps": [
+    "$f(x) = x^3 + 2x^2 + ax + b$가 $(x - 2)^2$으로 나누어떨어지므로 $x = 2$로 두 번 조립제법을 실시한다.",
+    "첫 번째 나눗셈: 계수 $(1, 2, a, b)$에 대해 몫은 $(1, 4, a + 8)$이고 나머지는 $2a + b + 16 = 0$이다.",
+    "두 번째 나눗셈: 계수 $(1, 4, a + 8)$에 대해 나머지는 $a + 20 = 0 \\implies a = -20$이다.",
+    "$2(-20) + b + 16 = 0 \\implies b = 24$이다.",
+    "$f(x) = x^3 + 2x^2 - 20x + 24$이고 $f(1) = 1 + 2 - 20 + 24 = 7$이다."
+  ],
+  "solvedAnswer": "$a = -20$, $b = 24$, 나머지: $7$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "다항식 $f(x) = x^3 + 2x^2 + ax + b$가 $(x - 2)^2$으로 나누어떨어질 때",
+  "rpmRecordId": "H1-RPM-145",
+  "rpmReason": "완전제곱식 인수로 연속 조립제법을 적용하여 $a=-20, b=24$를 결정하는 H1-RPM-145에 해당한다.",
+  "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+  "templateKey": "TPL_H1_FACTOR_THEOREM_REPEATED",
+  "typeReason": "조립제법으로 $2a + b + 16 = 0$과 $a + 20 = 0$에서 $a = -20$, $b = 24$를 구하는 조립제법 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "연속 조립제법으로 $a = -20, b = 24$를 구하고 $f(1) = 7$을 계산하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "SHORT",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x) ="
+      },
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "어떨어질 때, 상수 $a, b$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나누었을 때의 나머지를 풀이 과정과"
+      }
+    ],
+    "method": [
+      {
+        "term": "조립제법",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "속하여 두 번 조립제법을 실시하면 나"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$(x - 2)^2$으로 연속 조립제법을 실시하여 $a = -20, b = 24$를 얻고 $f(1) = 7$로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

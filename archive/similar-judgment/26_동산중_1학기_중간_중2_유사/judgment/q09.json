@@ -1,0 +1,64 @@
+{
+  "qid": 9,
+  "itemFingerprint": "2f76cb07daf1c074",
+  "solveSteps": [
+    "지수법칙에 의해 좌변은 x^{3b} / (2^b y^{ab}) 이다.",
+    "우변 x^c / (16 y^{12}) 와 비교하면 2^b = 16 = 2^4 에서 b = 4 이다.",
+    "ab = 12 에서 4a = 12 이므로 a = 3 이고, c = 3b = 3 * 4 = 12 이다.",
+    "따라서 a + b + c = 3 + 4 + 12 = 19 이며 정답은 ③(19)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$\\left(\\dfrac{x^3}{2y^a}\\right)^b = \\dfrac{x^c}{16y^{12}}$일 때, 세 자연수 $a, b, c$에 대하여 $a+b+c$의 값은?",
+  "rpmRecordId": "M2-RPM-126",
+  "rpmReason": "거듭제곱의 거듭제곱으로 전개해 2^b=16, ab=12, c=12 를 비교하여 a+b+c=19 를 구하는 거듭제곱의 거듭제곱 행이다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "지수법칙 거듭제곱 분배 후 2^b=16, ab=12, c=12 를 비교하여 19 를 산출하는 단항식 연산 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거듭제곱 분배 후 2^b=16, ab=12, c=12 의 3개 방정식을 각각 풀어 합 19 를 구하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 자연수 $a, b, c$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "세 자연수 $a, b, c$의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "좌변에 지수법칙",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "2^b = 16 에서 b=4, ab = 12 에서 a=3, c = 12 를 얻어 a+b+c = 19 임을 확인하고 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

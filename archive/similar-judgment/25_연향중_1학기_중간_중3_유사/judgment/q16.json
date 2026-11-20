@@ -1,0 +1,71 @@
+{
+  "qid": "16",
+  "itemFingerprint": "ba399e985955573b",
+  "solveSteps": [
+    "① 9a^2 + 15ab + 4b^2 = (3a)^2 + 15ab + (2b)^2에서 가운데 항은 2 * 3a * 2b = 12ab이어야 하므로 15ab와 달라 완전제곱식이 아니다.",
+    "② x^2 - 14x + 49 = (x - 7)^2 (완전제곱식).",
+    "③ a^2 + 8ab + 16b^2 = (a + 4b)^2 (완전제곱식).",
+    "④ 4x^2 - 12x + 9 = (2x - 3)^2 (완전제곱식).",
+    "⑤ x^2 + x + 1/4 = (x + 1/2)^2 (완전제곱식).",
+    "따라서 완전제곱식으로 인수분해할 수 없는 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "다음 중 완전제곱식으로 인수분해할 수 없는 것",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmReason": "이차식의 계수 관계를 확인하여 15ab 항이 완전제곱 조건에 맞지 않음을 판별하는 문제이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
+  "typeReason": "완전제곱식의 계수 조건과 선지의 15ab 일치 여부를 검증하여 인수분해 불가를 판별하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "가운데 항이 2*3a*2b = 12ab여야 하는데 15ab로 주어진 ①을 판별하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "src": "stem",
+        "quote": "다음 중 완전제곱식으로 인수분해할"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "수 없는 것을 선택한다. 따라서"
+      }
+    ],
+    "method": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "완전제곱식으로 판별한다. ① $9",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "와 각 선지의 계수 관계를 점검한"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "보기의 다항식들을 확인한다.",
+    "goal": "완전제곱식으로 인수분해할 수 없는 것을 찾는다.",
+    "method": "완전제곱식의 계수 관계를 검토한다.",
+    "condition": "가운데 일차항의 부호와 계수가 일치하는지 비교한다."
+  },
+  "how": "①에서 $2 \\times 3a \\times 2b = 12ab \\ne 15ab$이므로 완전제곱식이 아닌 ①로 판정하였다."
+}

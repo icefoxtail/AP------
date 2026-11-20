@@ -1,0 +1,77 @@
+{
+  "qid": 2,
+  "itemFingerprint": "a70e4d7470c41dc2",
+  "solveSteps": [
+    "1) ① sin 30도 / cos 60도 = (1/2) / (1/2) = 1이다.",
+    "2) ② tan 45도 * sin 60도 = 1 * (sqrt(3)/2) = sqrt(3)/2이다.",
+    "3) ③ cos 30도 * tan 30도 = (sqrt(3)/2) * (sqrt(3)/3) = 1/2이다.",
+    "4) ④ tan 60도 / sin 30도 = sqrt(3) / (1/2) = 2*sqrt(3) = sqrt(12)이다.",
+    "5) ⑤ sin 90도 + cos 0도 - tan 0도 = 1 + 1 - 0 = 2 = sqrt(4)이다.",
+    "6) 2*sqrt(3) = sqrt(12) > 2이므로 결과가 가장 큰 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "다음 중 계산 결과가 가장 큰 것은?",
+  "rpmRecordId": "M3-RPM-058",
+  "rpmReason": "30도, 45도, 60도, 90도, 0도의 특수각 삼각비 값을 대입 계산하여 최댓값 2*sqrt(3)을 산출하는 M3-RPM-058 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+  "typeReason": "특수각 30도, 60도 삼각비 값 계산 결과 1, 2, 2*sqrt(3)의 크기를 비교하는 TPL_TRIG_RATIO_SPECIAL_ANGLE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각비",
+        "src": "choices",
+        "quote": "$\\sin 30^\\circ \\div \\cos 60^\\circ$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "계산 결과가 가장 큰 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "특수각",
+        "src": "solution",
+        "quote": "특수각의 삼각비 값을 각각 대입하여 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "src": "choices",
+        "quote": "$\\tan 60^\\circ \\div \\sin 30^\\circ$"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "특수각 삼각비 사칙연산 식 보기 조건이다.",
+    "goal": "계산 결과가 가장 큰 보기를 선별하는 목표이다.",
+    "method": "특수각의 삼각비 값을 대입하여 계산하는 방법이다.",
+    "condition": "30도, 45도, 60도 등의 각도 조건이다."
+  },
+  "how": "특수각 계산 결과 ④는 2*sqrt(3) = sqrt(12)로 다른 보기들(1, 2 등)보다 크므로 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "특수각 30도, 45도, 60도의 삼각비 값을 바로 대입하여 사칙연산을 수행하는 1단계 문항이다."
+}

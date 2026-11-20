@@ -1,0 +1,55 @@
+{
+  "qid": 23,
+  "itemFingerprint": "e7b3cbdf2d478faa",
+  "solveSteps": [
+    "h(x) = max{f(x), g(x)} 이다. 8",
+    "낮은 교점 x = 3pi/4 에서 최솟값 0을 가지므로 a = sqrt(2), b = sqrt(2) 이다. 8",
+    "극솟점 x = 7pi/4 에서 h = 2*sqrt(2) 이므로 3실근 조건 k = 2*sqrt(2) 이다. 8",
+    "최댓값 m = 2 + sqrt(2) 이므로 a*b*k*m = 8 + 8*sqrt(2) 이다.",
+    "정답은 8 + 8*sqrt(2) 이다."
+  ],
+  "solvedAnswer": "$8 + 8\\sqrt{2}$",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+  "unitEvidence": "술형 3. [5점]  \n$0 \\le x < 2",
+  "rpmRecordId": "H2-M1-RPM-108",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "h(x)=max{f,g} 그래프에서 a=b=sqrt(2), 세 실근 조건 k=2sqrt(2), 최댓값 m=2+sqrt(2)로 8+8sqrt(2)를 구했다.",
+  "typeReason": "최댓값 함수 max{f,g}의 구간별 그래프 개형과 극솟값 교점 조건으로 곱 8+8sqrt(2)를 구하는 심화 유형이다.",
+  "rpmReason": "삼각함수 결합 함수의 그래프 개형 분석과 극값 및 교점 8 개수를 분석하는 고난도 RPM 유형이다.",
+  "difficultyReason": "max 함수 정의 해석, 교점 분석, 3실근 k 결정, 최댓값 계산까지 종합적으로 요구되는 난이도 4 서술형 문항이다. 8",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "최댓값",
+        "quote": "의 최댓값 $m$의 곱 $a \\times b ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "실근",
+        "quote": "른 실근의 개수는  \n- $2 < k < 2\\",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

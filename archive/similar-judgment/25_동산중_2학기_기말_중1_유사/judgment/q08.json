@@ -1,0 +1,57 @@
+{
+  "qid": 8,
+  "itemFingerprint": "7622f4579191e05b",
+  "solveSteps": [
+    "1) (12x - 18) / (-3/2) = (12x - 18) * (-2/3)",
+    "2) 12x * (-2/3) - 18 * (-2/3) = -8x + 12이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-03",
+  "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
+  "unitEvidence": "$(12x - 18) \\div \\left(-\\dfrac{3}{2}\\right)$을 계산한 식은? [4점]",
+  "rpmRecordId": "M1-RPM-147",
+  "rpmReason": "일차식 (12x - 18)에 분수 나눗셈을 역수 곱셈으로 바꾸어 분배하는 M1-RPM-147에 해당한다.",
+  "problemTypeKey": "PT_M1_LINEAR_EXPRESSION_STRUCTURE",
+  "templateKey": "TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION",
+  "typeReason": "일차식 (12x - 18)에 음의 분수 나눗셈을 적용하여 -8x + 12로 정리하는 수배·나눗셈 유형이므로 PT_M1_LINEAR_EXPRESSION_STRUCTURE와 TPL_M1_LINEAR_EXPRESSION_SCALAR_OPERATION이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "(12x - 18)에 역수 -2/3을 곱하여 계수 12와 18을 각각 계산하는 1단계 기본 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "분수의 나눗셈은 역"
+      }
+    ],
+    "method": [
+      {
+        "term": "분배법칙",
+        "src": "solution",
+        "quote": "셈으로 바꾸어 분배법칙을 적",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "(12x - 18)에 역수 -2/3을 분배하여 -8x + 12를 얻어 정답 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

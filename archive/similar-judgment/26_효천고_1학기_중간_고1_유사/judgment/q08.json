@@ -1,0 +1,65 @@
+{
+  "qid": 8,
+  "itemFingerprint": "be22ba299df027ee",
+  "solveSteps": [
+    "주어진 항등식의 양변에 $x = 2$를 대입하면 $2^8 = a_1 + a_2 + \\dots + a_9$이다.",
+    "양변에 $x = 0$을 대입하면 $0 = a_1 - a_2 + a_3 - \\dots + a_9$이다.",
+    "두 식을 변변 빼면 $2^8 = 2(a_2 + a_4 + a_6 + a_8)$이다.",
+    "따라서 $a_2 + a_4 + a_6 + a_8 = 2^7$이다.",
+    "보기 $2^{10}$ 등 중 정답은 ②번 $2^7$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "$x$에 대한 항등식일 때, $a_2",
+  "rpmRecordId": "H1-RPM-141",
+  "rpmReason": "항등식의 수치대입법으로 $2^7$을 계산하고 보기 $2^{10}$ 등과 비교하는 H1-RPM-141에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
+  "typeReason": "항등식에 특수값을 대입하여 보기 $2^{10}$ 등 중 계수의 합 $2^7$을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "항등식에 $x = 2, 0$을 대입하여 계수합을 정리하는 수치대입 문항으로 보기 $2^{10}$ 등 중 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "$x$에 대한 항등식일 때, $a_"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "+ a_8$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "= 1$)를 대입하면 $$2^8"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "항등식에 $x = 2, 0$을 대입해 두 식을 빼서 $2(a_2 + a_4 + a_6 + a_8) = 2^8$에서 $2^7$을 얻어 보기 $2^{10}$ 중 ②번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

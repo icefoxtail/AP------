@@ -1,0 +1,72 @@
+{
+  "qid": 12,
+  "itemFingerprint": "438d46fc158ef980",
+  "solveSteps": [
+    "밑면 반지름이 $4\\rm\\,cm$ 인 원뿔의 밑면 둘레는 $2\\pi \\times 4 = 8\\pi\\rm\\,cm$ 이다 (넓이 144, 둘레 24).",
+    "3바퀴 굴러 원래 위치로 돌아왔으므로 큰 원의 둘레는 $3 \\times 8\\pi = 24\\pi\\rm\\,cm$.",
+    "큰 원의 반지름(모선의 길이) $l$ 은 $2\\pi l = 24\\pi \\implies l = 12\\rm\\,cm$.",
+    "페인트가 묻은 부분의 넓이는 큰 원의 넓이이므로 $\\pi \\times 12^2 = 144\\pi\\rm\\,cm^2$ 이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "밑면인 원의 반지름의 길이가 $4\\rm\\,cm$인 원뿔의 옆면에 페인트를 칠하고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "원의 반지름의 길이가 $4\\rm\\",
+  "rpmRecordId": "M1-RPM-216",
+  "rpmReason": "원뿔의 밑면 둘레와 회전 바퀴 수를 곱해 모선 반지름을 찾는 M1-RPM-216 뿔의 겉넓이와 부피 > 원뿔에 해당한다 (넓이 144, 둘레 24).",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_NET_MEASURE",
+  "typeReason": "원뿔 회전 궤적을 전개도 상의 큰 원으로 해석하여 넓이를 계산하는 유형이다 (넓이 144, 둘레 24).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "원뿔의 밑면 둘레와 회전 바퀴 수의 곱이 큰 원의 둘레가 됨을 파악해야 하는 난이도 3 문항이다 (넓이 144, 둘레 24).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원뿔",
+        "src": "stem",
+        "quote": "m\\,cm$인 원뿔의 옆면에 페인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "묻은 부분의 넓이는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "밑면인 원의 반지름의 길이가 $4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "평면 위에서 꼭짓점 $O$를 중심"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "밑면 둘레 $8\\pi$ 의 3배인 $24\\pi$ 로부터 큰 원의 반지름 $l=12$ 를 구하고 넓이 $144\\pi\\rm\\,cm^2$ 로 판정했다 (둘레 24).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "원뿔을 굴릴 때 생기는 궤적의 넓이와 전개도 모선의 길이를 구하므로 M1-07 입체도형의 성질에 속한다."
+}

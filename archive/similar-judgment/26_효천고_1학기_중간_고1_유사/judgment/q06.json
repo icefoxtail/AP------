@@ -1,0 +1,70 @@
+{
+  "qid": 6,
+  "itemFingerprint": "950f64f7504c3e8a",
+  "solveSteps": [
+    "조건 (나) ${f(x)}^2 - {g(x)}^2 = {f(x) + g(x)}{f(x) - g(x)} = 2x^2 - 4x + 1$이다.",
+    "조건 (가) $f(x) + g(x) = 1$이므로 $f(x) - g(x) = 2x^2 - 4x + 1$이다.",
+    "두 식을 더하면 $2f(x) = 2x^2 - 4x + 2 \\implies f(x) = x^2 - 2x + 1$이고 $g(x) = -x^2 + 2x$이다.",
+    "나머지정리에 의하여 구하는 나머지는 $f(3)g(3) = 4 \\times (-3) = -12$이다.",
+    "따라서 정답은 ①번이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "나머지정리에 의하여 $f(x)g(x)$를",
+  "rpmRecordId": "H1-RPM-142",
+  "rpmReason": "나머지정리로 $f(3)g(3) = -12$를 계산하는 H1-RPM-142에 해당한다.",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+  "typeReason": "다항식을 구하고 나머지정리로 $f(3)g(3) = -12$를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다항식의 합차 관계에서 $f(3)g(3) = -12$를 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $f(x),"
+      },
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "x)$가 다음 조건을 만족시킨다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "3$으로 나눈 나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "2x$이다. 나머지정리에 의하여 $f"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$f(x) + g(x) = 1$과 합차를 연립하여 $f(3)g(3) = -12$를 얻어 ①번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

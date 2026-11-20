@@ -1,0 +1,69 @@
+{
+  "qid": "06",
+  "itemFingerprint": "b75c0f5425f27b14",
+  "solveSteps": [
+    "직각삼각형의 두 직교하는 변의 길이가 2, 1이므로 빗변 AB의 길이는 \\sqrt{2^2 + 1^2} = \\sqrt{5}이다.",
+    "원호의 반지름은 선분 AB의 길이와 같으므로 AP = \\sqrt{5}이다.",
+    "원의 중심 A의 좌표가 -2이고 점 P는 점 A의 오른쪽에 위치한다.",
+    "따라서 점 P에 대응하는 수는 -2 + \\sqrt{5}이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 가로 2칸, 세로 1칸 등 기하 정보가 글에 완비되어 있어 그림 불필요",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 피타고라스 수식으로 계산되어 그림 불필요",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+  "unitEvidence": "수직선 위의 점 $A$의 좌표가 $-2$이다.",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmReason": "선분 AB 길이를 피타고라스 정리로 구하고 기준점 -2에서 AP 오른쪽 점을 대응시키는 문제이다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+  "templateKey": "NONE",
+  "typeReason": "수직선 위의 기준점과 선분 AB 피타고라스 빗변 길이를 결합하여 대응하는 무리수를 결정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "가로 2, 세로 1 모눈에서 선분 AB 길이를 구하고 중심 -2에서 더하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "수직선",
+        "src": "stem",
+        "quote": "수직선 위의 점 $A"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "점 $P$의 좌표를 구한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "src": "solution",
+        "quote": "이가 $1$인 직각삼각형의 빗변이 선분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "분 $AB$를 반지름으로 하는 원호"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "기준점 A의 좌표와 이동 거리를 확인한다.",
+    "goal": "수직선과 만나는 점 P에 대응하는 수를 구한다.",
+    "method": "피타고라스 정리로 빗변 AB 길이를 계산한다.",
+    "condition": "오른쪽 방향이므로 중심 좌표에 길이를 더한다."
+  },
+  "how": "선분 AB 길이가 $\\sqrt{5}$이고 중심이 -2이므로 오른쪽 점 P는 $-2 + \\sqrt{5}$인 ①로 판정하였다."
+}

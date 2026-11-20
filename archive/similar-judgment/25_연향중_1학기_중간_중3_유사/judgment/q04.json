@@ -1,0 +1,69 @@
+{
+  "qid": "04",
+  "itemFingerprint": "0a3b91563e7c7889",
+  "solveSteps": [
+    "\\sqrt{a}의 정수 부분이 6이라는 것은 6 <= \\sqrt{a} < 7임을 의미한다.",
+    "양변을 제곱하면 36 <= a < 49이다.",
+    "이를 만족하는 자연수 a는 36부터 48까지이다.",
+    "따라서 자연수 a의 개수는 49 - 36 = 13개이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "자연수 $a$에 대하여 $\\sqrt{a}$의 ",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "정수 부분이 6인 무리수 범위 36 <= a < 49에서 자연수 13개의 개수를 구하는 문제이다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
+  "typeReason": "제곱근의 정수 부분 조건으로부터 36과 49 사이의 자연수 개수 13을 세는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식 36 <= a < 49를 세우고 정수 개수 13개를 계산하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "부분",
+        "src": "stem",
+        "quote": "a}$의 정수 부분을 $f(a)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "연수 $a$의 개수는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "이라는 조건을 부등식으로 나타내고,",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "연수 $a$의 범위를 구한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "정수 부분이 6이라는 조건을 확인한다.",
+    "goal": "만족하는 자연수 a의 개수를 구한다.",
+    "method": "부등식을 세우고 양변을 제곱한다.",
+    "condition": "연속한 두 정수 사이의 범위를 취한다."
+  },
+  "how": "$6 \\le \\sqrt{a} < 7$에서 $36 \\le a < 49$가 되어 $49 - 36 = 13$개인 ④로 판정하였다."
+}

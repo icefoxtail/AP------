@@ -1,0 +1,71 @@
+{
+  "qid": "20",
+  "itemFingerprint": "04d7ccc98b58e7bb",
+  "solveSteps": [
+    "편도 거리를 x km라 하자.",
+    "가는 데 걸린 시간은 x/3 시간, 물건 사는 시간은 20분 = 1/3 시간, 돌아오는 데 걸린 시간은 x/4 시간이다.",
+    "전체 시간이 2시간 40분 = 8/3 시간 이하이어야 하므로 x/3 + 1/3 + x/4 <= 8/3이다.",
+    "양변에 12를 곱하면 4x + 4 + 3x <= 32이다.",
+    "7x <= 28이므로 x <= 4 km이다.",
+    "따라서 최대 4 km 떨어진 마트까지 다녀올 수 있다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "서우가 산을 등산하는 데, 올라갈 때는 시속 ",
+  "rpmRecordId": "M2-RPM-026",
+  "rpmReason": "왕복 이동 시간과 물건 사는 시간의 합이 제한 시간 8/3 시간 이하임을 이용해 최대 거리 4 km를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_WORD_PROBLEM_SPEED",
+  "templateKey": "TPL_M2_SOLVE_ROUND_TRIP_TIME_LIMIT_INEQUALITY",
+  "typeReason": "속력과 시간 제한 조건에서 최대 허용 편도 거리 x km를 일차부등식으로 세워 해결하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분 단위를 시간 단위로 환산하고 왕복 시간 합 부등식을 세워 최대 거리 km를 계산하는 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "한다. 서우가 최대 몇 $\\tex"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거리",
+        "src": "solution",
+        "quote": "코스의 편도 거리를 $x\\tex"
+      }
+    ],
+    "method": [
+      {
+        "term": "최소공배수",
+        "src": "solution",
+        "quote": "양변에 분모의 최소공배수 $12$를 곱",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "라 두고 시간 부등식을 세운다. 1"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "속력과 소요 시간 조건을 확인한다.",
+    "goal": "다녀올 수 있는 최대 거리를 구한다.",
+    "method": "시간 = 거리/속력 공식과 12 배수 곱셈으로 부등식을 푼다.",
+    "condition": "20분과 2시간 40분을 시간 단위로 통일한다."
+  },
+  "how": "거리 x km에 대해 $x/3 + 1/3 + x/4 \\le 8/3$을 세우고 양변에 12를 곱해 $x \\le 4$인 ④로 판정하였다."
+}

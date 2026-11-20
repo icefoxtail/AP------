@@ -1,0 +1,76 @@
+{
+  "qid": 21,
+  "itemFingerprint": "98d859ba9db6afb2",
+  "solveSteps": [
+    "180 = 2^2 * 3^2 * 5 이다.",
+    "(1) 유한소수가 되려면 분모의 3^2=9를 약분해야 하므로 n은 9의 배수이다. 가장 작은 자연수 n = 9 이다.",
+    "(2) 180 이하의 자연수 중 9의 배수는 180 / 9 = 20 개이다.",
+    "따라서 순환소수가 되는 n의 개수는 180 - 20 = 160 개이다.",
+    "답은 (1) 9, (2) 160개 이다."
+  ],
+  "solvedAnswer": "(1) $9$ (2) $160$개",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "$180$을 소인수분해하면 $$ 18",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "180을 소인수분해하여 유한소수 조건인 9의 배수 20개를 빼서 160개를 구한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분모 180의 소인수 조건을 분석하여 유한소수 및 순환소수가 되는 n의 개수 160개를 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "180을 소인수분해하고 9의 배수 20개를 센 뒤 여사건으로 160개를 구하는 2단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "quote": "자연수일 때, 분수 $\\frac{",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "quote": "연수 $n$의 개수를 구하고, 풀",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "quote": "$180$을 소인수분해하면 $$ 18",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유한소수",
+        "quote": "{180}$이 유한소수가 되도록 하는",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "180 = 2^2*3^2*5에서 n=9를 구하고 180 이하 9의 배수 20개를 전체에서 빼서 160개로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

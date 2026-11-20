@@ -1,0 +1,60 @@
+{
+  "qid": 6,
+  "itemFingerprint": "44cfebc668da6a02",
+  "solveSteps": [
+    "이차방정식은 등호가 있고 정리했을 때 ax^2+bx+c=0 (a≠0) 꼴인 식이다.",
+    "ㄱ, ㄴ은 등호가 없어 다항식이다.",
+    "ㄷ: 2x^2-x-5=0 (이차방정식), ㄹ: 4x^2-5x=0 (이차방정식).",
+    "ㅁ: 3x^2+2x = 3x^2+11x-4 에서 9x-4=0 (일차방정식).",
+    "따라서 이차방정식은 ㄷ, ㄹ의 2개이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "다음 중 이차방정식의 개수는? [3점]",
+  "rpmRecordId": "M3-RPM-029",
+  "rpmEvidence": "모든 항을 좌변으로 이항하여 정리했을 때",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "주어진 보기 중 이차방정식의 정의 ax 11를 만족하는 식의 개수를 찾는 유형이다.",
+  "rpmReason": "이차방정식의 기본 정의 ax와 판별법을 적용하는 RPM 11 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식의 정의 ax를 바로 판별하는 11 기본 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "quote": "다음 중 이차방정식의 개수는? [3점]",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "quote": "다음 중 이차방정식의 개수는? [3점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차방정식",
+        "quote": "모든 항을 좌변으로 이항하여 정리했을 때",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차방정식",
+        "quote": "따라서 이차방정식은 ㄷ, ㄹ의 $2$개이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "보기의 식들을 전개 및 이항하여 ax^2+bx+c=0 (a≠0) 꼴인 이차방정식 2개를 11 판별했다."
+}

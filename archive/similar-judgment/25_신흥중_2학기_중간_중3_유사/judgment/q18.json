@@ -1,0 +1,78 @@
+{
+  "qid": 18,
+  "itemFingerprint": "7a9ddc85736e3b20",
+  "solveSteps": [
+    "1) 직사각형 ABCD에서 원 O는 AB = 6에 접하므로 지름 6, 반지름 3이다.",
+    "2) 접점 성질에 의해 DT = DU = 9 - 3 = 6이다.",
+    "3) EC = x라 하면 ET = EV = (9 - x) - 3 = 6 - x이다.",
+    "4) 따라서 DE = DT + TE = 6 + (6 - x) = 12 - x이다.",
+    "5) 직각삼각형 DEC에서 피타고라스 정리로 (12 - x)^2 = 6^2 + x^2이므로 144 - 24x = 36에서 x = 9/2이다.",
+    "6) 삼각형 DEC의 넓이는 (1/2) * 6 * (9/2) = 27/2이다.",
+    "7) 따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "unitEvidence": "다음 그림에서 원 $O$는 직사각형 $ABCD$의 세 변 $AB$, $AD$, $BC$와 접하고, $AB=6$, $AD=9$이다. $DE$가 원 $O$의 접선일 때, $\\triangle DEC$의 넓이는?",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmReason": "접선 성질로 DE = 12 - x를 설정하고 직각삼각형 DEC에서 피타고라스 정리로 x = 9/2를 구해 넓이 27/2을 구하는 M3-RPM-072 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "typeReason": "원 O의 접선 길이 상등과 직각삼각형 DEC의 피타고라스 방정식을 연립하여 넓이 27/2을 산출하는 TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "원 $O$는 직사각형 $ABCD$의 세 변"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\triangle DEC$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "피타고라스정리",
+        "src": "solution",
+        "quote": "직각삼각형 $DEC$에서 피타고라스 정리에 의해",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "$DE$가 원 $O$의 접선일 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "변 6, 9인 직사각형 ABCD와 내접하는 원 O 조건이다.",
+    "goal": "삼각형 DEC의 넓이를 구하는 목표이다.",
+    "method": "접선 길이의 상등과 직각삼각형 피타고라스 방정식을 적용하는 방법이다.",
+    "condition": "선분 DE가 접선이라는 조건이다."
+  },
+  "how": "접선 길이 상등으로 DE = 12 - x를 설정하고 피타고라스 정리 (12 - x)^2 = 36 + x^2에서 x = 9/2를 얻어 넓이가 27/2임을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "원과 직사각형의 접점 성질로 DE = 12 - x를 표현하고 피타고라스 정리로 x = 9/2를 풀어 넓이를 구하는 3단계 문항이다."
+}

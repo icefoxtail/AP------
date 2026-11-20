@@ -1,0 +1,63 @@
+{
+  "qid": 1,
+  "itemFingerprint": "1aec1c1389dcb791",
+  "solveSteps": [
+    "동심원에서 작은 원의 접선 AB에 내린 수선의 발 M은 AB를 이등분하므로 AM = 8 cm이다.",
+    "작은 원의 반지름 r, 큰 원의 반지름 R이라 하면 직각삼각형 OMA에서 R^2 - r^2 = 8^2 = 64이다.",
+    "두 원 사이의 색칠한 부분의 넓이는 pi*(R^2 - r^2) = 64*pi cm^2이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 점 $O$를 중심으로 하는 두 동심원",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "작은 원이 직선 $AB$와 만나는 접점을 $M$이라 하",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmReason": "중심 O에서 현 AB = 16에 내린 수선이 현을 이등분함을 이용하여 64pi를 산출한다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "typeReason": "현 AB = 16의 절반인 AM = 8을 직각삼각형에 적용하여 두 동심원의 넓이 차 64pi를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직각삼각형 OMA에서 피타고라스 정리로 R^2 - r^2 = 64를 바로 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "동심원",
+        "src": "stem",
+        "quote": "으로 하는 두 동심원에서 작은 원의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "색칠한 부분의 넓이는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "정리",
+        "src": "solution",
+        "quote": "서 피타고라스 정리에 의하여 $$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "현 AB = 16의 중점 AM = 8에서 R^2 - r^2 = 64를 얻어 넓이 64pi를 계산하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

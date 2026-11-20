@@ -1,0 +1,72 @@
+{
+  "qid": 4,
+  "itemFingerprint": "d1bce8e5671fa783",
+  "solveSteps": [
+    "1번: 0.(dot)4 = 4/9 (옳음)",
+    "2번: -1.(dot)2(dot)5 = -(125 - 1)/99 = -124/99 이어야 하는데 -125/99로 표기되어 옳지 않다.",
+    "3번: 0.(dot)5(dot)8 = 58/99 (옳음)",
+    "4번: 0.(dot)23(dot)6 = 236/999 (옳음)",
+    "5번: 0.1(dot)7(dot)4 = (174 - 1)/990 = 173/990 (옳음)",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 중 순환소수를 분수로 나타",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "순환소수를 99, 999, 990 분모의 분수로 변환할 때 125-1=124 정수 부분 뺄셈 공식을 확인한다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수를 99, 999, 990 등 분모의 분수로 변환하는 계산 공식의 옳고 그름을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수를 분수로 변환하는 공식에서 125-1=124 정수 부분 뺄셈 여부를 확인하는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "quote": "다음 중 순환소수를 분수로 나타",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "quote": "중 순환소수를 분수로 나타낸 것으",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "공식",
+        "quote": "분수로 고치는 공식을 적용하여 각",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순환소수",
+        "quote": "순환소수를 분수로 고치",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "-1.(dot)2(dot)5의 분수 변환 시 125에서 순환하지 않는 정수 1을 빼지 않은 선지 2번의 오류를 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

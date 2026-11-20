@@ -1,0 +1,66 @@
+{
+  "qid": 11,
+  "itemFingerprint": "4d208d62b2129a36",
+  "solveSteps": [
+    "1) ① (-3a^2) * 2a^4 = -6a^6 != -6a^8 (거짓)",
+    "2) ② (-8xy) / (x/2) = -16y != -4y (거짓)",
+    "3) ③ (-3x^2y)^3 * (2xy^2)^2 = (-27x^6y^3) * (4x^2y^4) = -108x^8y^7 (거짓)",
+    "4) ④ 15a^4 / (-5a^5) = -3/a (참)",
+    "5) ⑤ (-a^3b^2)^2 / (a^4b^2/3) = 3a^2b^2 != -3a^2b^2 (거짓)",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "다음 중 계산 결과가 옳은 것은? [4점]",
+  "rpmRecordId": "M2-RPM-010",
+  "rpmReason": "15a^4 / (-5a^5) = -3/a 와 같이 단항식의 나눗셈 및 지수 감산을 계산하는 M2-RPM-010에 해당한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식 곱셈·나눗셈에서 15a^4 / (-5a^5) = -3/a 등 계수와 문자 지수 계산의 옳고 그름을 판별하는 PT_M2_MONOMIAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "15a^4 / (-5a^5) = -3/a 단항식 나눗셈 규칙을 직접 적용하여 판별하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "단항식의 곱셈과 나눗"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부호",
+        "src": "solution",
+        "quote": "^2b^2$ (부호 오류, "
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "항식의 곱셈과 나눗셈 법칙을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "단항식 나눗셈 15a^4 / (-5a^5) = -3/a 가 참임을 확인하여 정답 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

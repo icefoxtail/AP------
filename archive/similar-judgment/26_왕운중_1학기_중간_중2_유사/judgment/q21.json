@@ -1,0 +1,72 @@
+{
+  "qid": 21,
+  "itemFingerprint": "1d3f829d78cb647d",
+  "solveSteps": [
+    "x/420 = 1/y에서 xy = 420 = 2^2 * 3 * 5 * 7 이다.",
+    "1/y가 유한소수이므로 기약분모 y는 2와 5의 소인수만 갖는다.",
+    "50 < x < 100 이므로 420/100 < y < 420/50, 즉 4.2 < y < 8.4 이다.",
+    "소인수가 2, 5뿐인 y는 y = 5 (x = 84), y = 8 (x = 52.5로 부적합)이므로 x = 84, y = 5이다.",
+    "따라서 x + y = 84 + 5 = 89이다. 답은 89이다."
+  ],
+  "solvedAnswer": "89",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "{420}$은 유한소수로 나타낼 수",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "420 = 2^2*3*5*7에서 50 < x < 100 조건으로 유한소수가 되는 x = 84, y = 5, 합 89를 구한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분수 x/420이 유한소수 1/y가 되도록 분모 420의 소인수와 범위 50 < x < 100에서 x+y = 89를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "420 소인수분해 후 범위 50 < x < 100 안에서 y의 소인수 조건으로 x = 84, y = 5를 찾아 89를 서술하는 심화 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "quote": "서술형 1] 분수 $\\dfrac",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "기약분수",
+        "quote": "낼 수 있고, 기약분수로 나타내면 $",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유한소수",
+        "quote": "{420}$은 유한소수로 나타낼 수",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "0$보다 작은 자연수일 때, $x",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "xy = 420에서 4.2 < y < 8.4인 소인수 2, 5의 수 y = 5를 찾아 x = 84, x + y = 89를 도출하여 89로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

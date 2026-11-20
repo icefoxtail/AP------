@@ -1,0 +1,63 @@
+{
+  "qid": 23,
+  "itemFingerprint": "7233d2580decbc68",
+  "solveSteps": [
+    "4개의 수 2a+3, 2b+3, 2c+3, 2d+3의 평균이 13이므로 원래 평균 m = (13 - 3)/2 = 5이고 합 a+b+c+d = 20이다.",
+    "새로운 분산 16은 원래 분산 V의 2^2 = 4배이므로 V = 4이다.",
+    "편차 제곱합 sum((a-5)^2) = 4 * 4 = 16이고, 전개하면 sum(a^2) - 10(20) + 100 = 16에서 a^2 + b^2 + c^2 + d^2 = 116이다."
+  ],
+  "solvedAnswer": "$116$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "$a, b, c, d$의 평균을 $m$이라 하자. 각 ",
+  "rpmRecordId": "M3-RPM-087",
+  "rpmReason": "선형변환된 평균 13과 분산 16으로부터 원래 평균 5와 분산 4를 구하고 제곱합 116을 산출한다.",
+  "problemTypeKey": "PT_M3_LINEAR_TRANSFORMATION_STATISTICS",
+  "templateKey": "TPL_M3_LINEAR_TRANSFORMATION_STATISTICS_AFFINE",
+  "typeReason": "선형변환된 변량의 평균 13과 분산 16을 이용해 원래 변량의 제곱의 합 116을 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "선형변환 성질로 평균 5, 분산 4를 구하고 편차제곱합 전개식을 풀어 116을 얻으므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "서술형",
+  "slots": {
+    "given": [
+      {
+        "term": "변량",
+        "src": "solution",
+        "quote": "라 하자. 각 변량을 $2$배한"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분산",
+        "src": "stem",
+        "quote": "$13$이고, 분산이 $16$일"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "좌변의 식을 전개하면 $$ \\b",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "평균 13에서 m = 5, 분산 16에서 V = 4를 얻고 편차 제곱합 전개로 a^2+b^2+c^2+d^2 = 116을 산출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

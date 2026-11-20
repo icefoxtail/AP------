@@ -1,0 +1,72 @@
+{
+  "qid": 15,
+  "itemFingerprint": "f12967adbefc9915",
+  "solveSteps": [
+    "밑면 반지름 4, 높이 9 인 원기둥 수조 (가)에 물이 가득 차 있다 (부피 144, 36).",
+    "물 전체 부피: pi * 4^2 * 9 = 144pi cm^3.",
+    "반지름 3 인 쇠구슬의 부피: (4/3)pi * 3^3 = 36pi cm^3.",
+    "수조 (나)에 채워진 물의 높이 x 는 4 이다.",
+    "따라서 정답은 ⑤ ($)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "밑면인 원의 반지름의 길이가 $4\\rm\\,cm$인 원기둥 모양의 수조 (가)에 높이 $9\\rm\\,cm$까지 물이 채워져 있다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "unitEvidence": "원의 반지름의 길이가 $4\\rm\\",
+  "rpmRecordId": "M1-RPM-218",
+  "rpmReason": "구의 부피 공식과 원기둥의 부피 보존을 연계하여 높이를 구하는 M1-RPM-218 구 > 구의 부피에 해당한다 (부피 144, 36).",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+  "typeReason": "구슬이 잠길 때 넘친 물의 양을 구의 부피로 계산하고 다른 용기에서의 수면 높이를 구하는 부피 보존 유형이다 (부피 144, 36).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "원기둥 부피와 구의 부피 공식을 각각 계산하고 뺀 부피를 다른 원기둥에 부어 높이를 구하는 난이도 3 문항이다 (부피 144, 36).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원기둥",
+        "src": "stem",
+        "quote": "m\\,cm$인 원기둥 모양의 수조"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "수조 (가)에 높이 $9\\rm\\,"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "밑면인 원의 반지름의 길이가 $4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "지름",
+        "src": "stem",
+        "quote": "밑면인 원의 반지름의 길이가 $4"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "원기둥 부피 $144\\pi$ 에서 구 부피 $36\\pi$ 를 뺀 $108\\pi$ 를 수조 (나)의 밑넓이 $36\\pi$ 로 나누어 높이 $3\\rm\\,cm$ 로 판정했다 (부피 144).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "원기둥 수조 속 구의 침수와 물의 부피 보존 법칙을 다루므로 M1-07 입체도형의 성질에 속한다."
+}

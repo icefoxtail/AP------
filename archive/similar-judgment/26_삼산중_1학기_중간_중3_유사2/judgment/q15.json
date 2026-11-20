@@ -1,0 +1,57 @@
+{
+  "qid": 15,
+  "itemFingerprint": "7f6bf1ab1fa5a37b",
+  "solveSteps": [
+    "1. 1/sqrt(45) = 1/(3*sqrt(5))이다.",
+    "2. 1/(-2+sqrt(5)) = 1/(sqrt(5)-2) = (sqrt(5)+2)/(5-4) = sqrt(5)+2이다.",
+    "3. 두 식의 곱은 (sqrt(5)+2)/(3*sqrt(5)) = (5+2*sqrt(5))/15 = 1/3 + 2/15 * sqrt(5)이다.",
+    "4. a = 1/3 = 5/15, b = 2/15이므로 a - b = 5/15 - 2/15 = 3/15 = 1/5이다. 따라서 정답은 5번이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "유리수 $a, b$에 대하여",
+  "rpmRecordId": "M3-RPM-012",
+  "rpmReason": "1/(sqrt(5)-2)의 분모의 유리화와 1/sqrt(45) 계산을 다루는 M3-RPM-012 레코드입니다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+  "typeReason": "합차공식을 이용한 분모의 유리화로 (5+2*sqrt(5))/15를 정리하여 a-b=1/5를 구하는 TPL_M3_RADICAL_RATIONALIZATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "1/sqrt(45)와 합차공식 분모 유리화를 거쳐 분모 15인 (5+2*sqrt(5))/15에서 a-b=1/5를 구하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수 $a, b$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$a - b$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "src": "solution",
+        "quote": "분모의 유리화 및 제곱근의 단순화를 차례로 적용하여",
+        "evidenceType": "IMPLIED",
+        "justification": "분모의 유리화 공식 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "1/sqrt(45)와 분모를 유리화한 식의 곱 (sqrt(5)+2)/(3*sqrt(5)) = (5+2*sqrt(5))/15에서 a=5/15, b=2/15를 얻어 a-b=3/15=1/5인 5번으로 판정했습니다."
+}

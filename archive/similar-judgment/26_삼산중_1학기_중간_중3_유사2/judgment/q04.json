@@ -1,0 +1,57 @@
+{
+  "qid": 4,
+  "itemFingerprint": "13d2f8ed140cc87b",
+  "solveSteps": [
+    "1. a - b = (3*sqrt(5) - 2) - (sqrt(5) + 2) = 2*sqrt(5) - 4 = sqrt(20) - sqrt(16) > 0이므로 a > b, 즉 b < a이다.",
+    "2. c - a = (7 - sqrt(5)) - (3*sqrt(5) - 2) = 9 - 4*sqrt(5) = sqrt(81) - sqrt(80) > 0이므로 c > a, 즉 a < c이다.",
+    "3. 따라서 세 수의 대소 관계는 b < a < c이다.",
+    "4. 따라서 정답은 4번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+  "unitEvidence": "세 실수 $a = 3\\sqrt{5} - 2$, $b = \\sqrt{5} + 2$, $c = 7 - \\sqrt{5}$ 의 대소 관계로 옳은 것은? [4점]",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "세 실수 a, b, c의 차를 계산하여 sqrt(20) > sqrt(16), sqrt(81) > sqrt(80)으로 대소를 비교하는 M3-RPM-004 레코드입니다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+  "typeReason": "세 수의 차 a-b = 2*sqrt(5)-4 = sqrt(20)-sqrt(16) > 0과 c-a = 9-4*sqrt(5) = sqrt(81)-sqrt(80) > 0을 구하여 대소를 비교하는 TPL_M3_REAL_COMPARISON_ORDER 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 수의 차를 구하고 근호 안의 수를 sqrt(20), sqrt(16)과 같이 제곱 비교하여 부호를 결정하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "세 실수 $a = 3\\sqrt{5} - 2$, $b = \\sqrt{5} + 2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소비교",
+        "src": "stem",
+        "quote": "대소 관계로 옳은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "두 실수의 차를 구하여 부호를 판정함으로써",
+        "evidenceType": "IMPLIED",
+        "justification": "차의 부호 판별"
+      }
+    ],
+    "condition": []
+  },
+  "how": "a-b = 2*sqrt(5)-4 = sqrt(20)-sqrt(16) > 0에서 b<a, c-a = 9-4*sqrt(5) = sqrt(81)-sqrt(80) > 0에서 a<c임을 도출하여 b<a<c인 4번으로 판정했습니다."
+}

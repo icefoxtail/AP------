@@ -1,0 +1,63 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "de7d1679a4ba31fd",
+  "solvedAnswer": "(1) 원뿔대, 반지름이 다른 두 원과 잘린 부채꼴(고리 모양 부채꼴)  (2) $45\\rm\\,cm^2$",
+  "solveSteps": [
+    "(1) 직각사다리꼴 ABCD 를 높이 변을 회전축으로 1회전 시키면 생기는 회전체는 원뿔대 이다.",
+    "전개도는 크기가 다른 두 원과 옆면인 잘린 부채꼴(고리 모양 부채꼴)로 이루어진다.",
+    "(2) 회전축을 포함하는 평면으로 자른 단면은 대칭인 사다리꼴이다.",
+    "단면의 윗변은 2 * 3 = 6 cm, 아랫변은 2 * 6 = 12 cm, 높이는 5 cm 이다.",
+    "단면의 넓이는 1/2 * (6 + 12) * 5 = 1/2 * 18 * 5 = 45 cm^2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 1]  \n윗변의",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "problemTypeKey": "PT_M1_ROTATION_SOLID_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "직각사다리꼴 ABCD 의 1회전체인 원뿔대의 전개도와 단면 사다리꼴 넓이 45 를 aligned 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-212",
+  "rpmReason": "회전축을 포함하는 단면 사다리꼴의 윗변 6, 아랫변 12, 높이 5 로 넓이 45 cm^2 을 aligned 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "원뿔대 명칭과 전개도 구성면 서술 및 단면 넓이 45 cm^2 을 aligned 구한다.",
+  "how": "회전체는 원뿔대이고 단면 윗변 6, 아랫변 12, 높이 5 로 넓이 45 cm^2 을 aligned 산출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "직각사다리꼴 $ABCD$가 있다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "회전체",
+        "src": "stem",
+        "quote": "생기는 회전체에 대하여 다음 물음에"
+      }
+    ],
+    "method": [
+      {
+        "term": "단면",
+        "src": "solution",
+        "quote": "평면으로 자른 단면의 넓이 계산",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "단면의 넓이를 구하고"
+      }
+    ]
+  }
+}

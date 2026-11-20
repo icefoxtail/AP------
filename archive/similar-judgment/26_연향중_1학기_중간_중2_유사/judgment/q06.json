@@ -1,0 +1,80 @@
+{
+  "qid": 6,
+  "itemFingerprint": "d2ec98dcbf7ed9dc",
+  "solveSteps": [
+    "ㄱ: 순환하지 않는 무한소수는 유리수가 아니므로 거짓이다.",
+    "ㄴ: 순환소수는 분수 꼴로 나타낼 수 있으므로 유리수이다.",
+    "ㄷ: 분모의 소인수가 2 또는 5뿐이면 10의 거듭제곱으로 나타내어 유한소수가 되므로 참이다.",
+    "ㄹ: 2나 5 이외의 소인수가 있으면 순환소수가 되므로 거짓이다. 옳지 않은 것은 ㄱ, ㄹ이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "무한소수 중에는 순환소수와 같이 유리수인",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "10의 거듭제곱 꼴 및 유한소수와 순환소수의 유리수 포함 관계를 판정하는 기본 단계이다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "10의 거듭제곱 변형과 순환소수의 유리수 성질에 관한 참 거짓 판별 문항이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수와 10의 거듭제곱을 활용한 유한소수의 기본 정의를 묻는 1단계 판정 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무한소수",
+        "quote": "같다. ㄱ. 무한소수 중에는 순환소",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "quote": "참, 거짓을 판정하면 다음과 같",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "quote": "분수의 분모를 소인수분해했을 때 분모의",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "quote": "환소수와 같이 유리수인 것도 있지만",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "각 보기 문장의 참 거짓을 분석하여 10의 거듭제곱과 순환소수의 정의로부터 ㄱ, ㄹ이 거짓임을 확인하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "problemFigureNeed": "NONE",
+  "problemFigureQuote": "",
+  "solutionFigureQuote": "",
+  "rpmKey": "M2-RPM-119",
+  "difficulty": 1,
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

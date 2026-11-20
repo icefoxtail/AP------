@@ -1,0 +1,58 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "00e5fbdee682d561",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "20 = 2^2 * 5 이고 42 = 2 * 3 * 7 이다.",
+    "n/20 은 항상 유한소수이므로 n/42 가 유한소수가 되려면 n은 3과 7의 공배수, 즉 21의 배수이어야 한다.",
+    "정수가 아니어야 하므로 n은 20의 배수와 42의 배수가 아니어야 한다.",
+    "200에 가까운 21의 배수는 21 * 9 = 189 와 21 * 10 = 210 이다.",
+    "200과의 차이는 |189 - 200| = 11, |210 - 200| = 10 이나 210은 42의 배수(정수)이므로 제외된다.",
+    "따라서 189 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정수가 아닌 유리수 $\\df",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "두 분수가 모두 유한소수가 되는 조건과 200 근처의 21의 배수 189 를 찾는 유형이다.",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "분모 42의 소인수 3과 7을 소거하는 조건과 189 의 배수성을 확인한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "21의 배수 중 정수가 되는 210을 배제하고 189 를 결정해야 한다.",
+  "how": "분모 소인수 조건으로 21의 배수를 찾고 정수 조건을 피해 189 를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "정수가 아닌 유리수 $\\dfrac{n}{20}"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "자연수 중에서 $200$에 가장 가까운"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수",
+        "src": "solution",
+        "quote": "분모의 소인수 조건과",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

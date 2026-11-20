@@ -1,0 +1,63 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "5370307c2e3c080f",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "-5 <= x <= 3 에서 1/4 + ax 의 최댓값이 4, 최솟값이 b 이다.",
+    "a < 0 이어야 x = -5 일 때 최대가 된다.",
+    "1/4 - 5a = 4 -> -5a = 15/4 -> a = -3/4 이다.",
+    "최솟값 b 는 x = 3 일 때이므로 b = 1/4 + 3(-3/4) = 1/4 - 9/4 = -2 이다.",
+    "a - b = -3/4 - (-2) = -3/4 + 8/4 = 5/4 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-5 \\le x \\le 3",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "부등식 범위에서 일차식 1/4 + ax 의 최댓값과 최솟값 조건으로 a=-3/4, b=-2 를 aligned 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-019",
+  "rpmReason": "음수 계수 조건에서 x=-5 일 때 -5a = 15/4 로 최대가 됨을 aligned 이용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "a의 부호를 판정하여 x=-5 일 때 최대 4, x=3 일 때 최소 b를 aligned 계산한다.",
+  "how": "a<0 일 때 x=-5 에서 -5a = 15/4 로 a=-3/4, x=3 에서 b=-2 및 a-b=5/4 를 aligned 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "0$일 때, 상수 $a, b$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "+ ax$의 최댓값이 $4$, 최"
+      }
+    ],
+    "method": [
+      {
+        "term": "일차식",
+        "src": "solution",
+        "quote": "< 0$일 때 일차식의 단조감소 성",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "값이 $4$, 최솟값이 $b$이다."
+      }
+    ]
+  }
+}

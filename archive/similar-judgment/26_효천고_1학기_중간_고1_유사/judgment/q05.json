@@ -1,0 +1,59 @@
+{
+  "qid": 5,
+  "itemFingerprint": "26c7957868bbaf8b",
+  "solveSteps": [
+    "$2026 = x$로 치환하면 분자는 $x^3 - 1 = (x - 1)(x^2 + x + 1)$이다.",
+    "분모는 $2026^2 + 2027 = x^2 + (x + 1) = x^2 + x + 1$이다.",
+    "따라서 주어진 식은 $\\frac{(x - 1)(x^2 + x + 1)}{x^2 + x + 1} = x - 1$이다.",
+    "$x - 1 = 2026 - 1 = 2025$이므로 정답은 ②번 2025이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-03",
+  "subUnitKey": "H22-C-03-FACTORIZATION",
+  "unitEvidence": "$2026 = x$로 놓으면",
+  "rpmRecordId": "H1-RPM-151",
+  "rpmReason": "2026 수의 계산에 인수분해 공식을 적용하는 H1-RPM-151에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "2026 치환과 인수분해 구조를 활용하여 식의 값을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "2026을 치환하여 인수분해 공식 $x^3 - 1 = (x - 1)(x^2 + x + 1)$로 약분하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "2027}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "evidenceType": "IMPLIED",
+        "justification": "분자의 2026^3 - 1을 (x - 1)(x^2 + x + 1)로 인수분해하여 분모와 약분하였다.",
+        "src": "solution",
+        "quote": "\\frac{(x - 1)(x^2 + x + 1)}{x^2 + x + 1}"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "2026을 $x$로 치환하여 인수분해 공식으로 약분하면 $x - 1 = 2025$가 되어 ②번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

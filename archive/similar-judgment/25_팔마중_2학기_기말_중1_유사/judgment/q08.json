@@ -1,0 +1,63 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "b48271da6cd4fc96",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "한 모서리가 x cm 인 정육면체의 부피는 x^3 이다.",
+    "잘라낸 삼각뿔의 부피는 1/3 * (1/2 * x * x) * x = 1/6 x^3 이다.",
+    "남은 입체의 부피는 x^3 - 1/6 x^3 = 5/6 x^3 = 1440 이다.",
+    "x^3 = 1440 * (6/5) = 1728 이다.",
+    "12^3 = 1728 이므로 x = 12 cm 이다. 정답은 ③번 12 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "한 모서리의 길이가 $x\\r",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "정육면체에서 한 귀퉁이 삼각뿔을 잘라낸 남은 부피 1440 으로부터 모서리 x=12 를 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-219",
+  "rpmReason": "잘라낸 삼각뿔 부피 1/6 x^3 을 빼어 5/6 x^3 = 1440 방정식을 푼다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "남은 부피 식 5/6 x^3 = 1440 으로부터 x^3 = 1728, x = 12 를 계산한다.",
+  "how": "5/6 x^3 = 1440 에서 x^3 = 1728 = 12^3 이므로 x = 12 cm 임을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "정육면체",
+        "src": "stem",
+        "quote": "한 모서리의 길이가 $x\\rm\\,cm$인 정육면체에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "입체도형",
+        "src": "stem",
+        "quote": "남은 입체도형의 부피가 $1440\\"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "한 꼭짓점을 포함하는 세 꼭짓점을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "모서리",
+        "src": "stem",
+        "quote": "한 모서리의 길이가 $x\\rm\\,cm$인"
+      }
+    ]
+  }
+}

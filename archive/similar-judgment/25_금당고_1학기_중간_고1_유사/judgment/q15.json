@@ -1,0 +1,69 @@
+{
+  "qid": 15,
+  "itemFingerprint": "dfd47e02128baf87",
+  "solveSteps": [
+    "ㄱ. $x = 0$ 대입 시 $3{f(0)}^2 = f(0) \\implies f(0) = 0$ 또는 $1/3$이므로 반드시 $1/3$은 아니다. (거짓)",
+    "ㄴ. $f(1) \\neq 0$이면 $3f(1)f(-1) = f(1) \\implies f(-1) = 1/3$이므로 $f(x) - 1/3$은 $x + 1$을 인수로 갖는다. (참)",
+    "ㄷ. $f(x) = ax + b$ ($a \\neq 0$)라 하면 $3(b^2 - a^2x^2) = ax^2 + b$에서 $-3a^2 = a \\implies a = -1/3$이고 $3b^2 = b \\implies b = 0, 1/3$의 2개이다. (참)",
+    "따라서 옳은 것은 ㄴ, ㄷ의 ④번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "모든 실수 $x$에 대하여 등식 $3f(x)f(-x) = f(x^2)$",
+  "rpmRecordId": "H1-RPM-140",
+  "rpmReason": "항등식 $3f(x)f(-x) = f(x^2)$에서 $f(x) = ax + b$의 계수를 비교하는 H1-RPM-140에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+  "typeReason": "항등식 $3f(x)f(-x) = f(x^2)$에 대해 일차식 $f(x) = ax + b$를 계수비교하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "항등식에 수치를 대입하여 인수정리를 확인하고 일차식 $ax + b$의 계수를 비교하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$가"
+      },
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "x$에 대하여 등식 $3f(x)f"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$f(x)$의 개수는 $2$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "x = 0$을 대입하면 $$3{f"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "항등식의 수치대입과 $f(x) = ax + b$ 계수비교를 통해 ㄴ, ㄷ이 참임을 확인하여 ④번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "qid": "05",
+  "itemFingerprint": "5aae9d160f5c8e52",
+  "solveSteps": [
+    "함수 y = 3^{x-a} + b의 치역은 y > b이므로 점근선은 y = b이다.",
+    "점근선이 직선 y = -3이므로 b = -3이다.",
+    "그래프가 점 (0, 6)을 지나므로 x = 0, y = 6을 대입한다.",
+    "6 = 3^{0-a} - 3 => 3^{-a} = 9 = 3^2이므로 -a = 2, 즉 a = -2이다.",
+    "따라서 ab = (-2) \\times (-3) = 6이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-02",
+  "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+  "unitEvidence": "함수 $y = 3^{x-a} + b$",
+  "rpmRecordId": "H2-M1-RPM-080",
+  "rpmReason": "지수함수의 점근선 y = b와 지나는 점을 대입하여 상수 ab 값을 구하는 3.5점 문제이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "templateKey": "NONE",
+  "typeReason": "평행이동한 지수함수 그래프의 점근선과 지나는 점으로부터 ab를 결정하는 3.5점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "점근선 b = -3을 바로 읽고 점을 대입해 a = -2를 구해 ab를 계산하는 3.5점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "점근선",
+        "src": "stem",
+        "quote": "$의 그래프의 점근선이 직선 $y"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a, b$는 상수이다.) (3."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "y = 6$을 대입하면   $6",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "} + b$의 그래프의 점근선이 직"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "지수함수 식과 점근선, 지나는 점을 확인한다.",
+    "goal": "상수 곱 ab를 구한다.",
+    "method": "점근선 식과 좌표 대입으로 a, b를 연립하여 구한다.",
+    "condition": "지수방정식 3^{-a} = 9를 푼다."
+  },
+  "how": "점근선에서 $b = -3$, 지나는 점에서 $a = -2$를 얻어 $ab = 6$인 3.5점 문항의 ⑤로 판정하였다."
+}

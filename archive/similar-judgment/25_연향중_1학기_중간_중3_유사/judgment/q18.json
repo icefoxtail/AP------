@@ -1,0 +1,71 @@
+{
+  "qid": "18",
+  "itemFingerprint": "79ade7d65db21a37",
+  "solveSteps": [
+    "(ax + b)(x - 2) = ax^2 + (b - 2a)x - 2b이다.",
+    "이 식이 2x^2 + 3x - 14와 같으므로 a = 2, -2b = -14에서 b = 7이다. (b - 2a = 7 - 4 = 3 성립).",
+    "(x - d)(3x - 2) = 3x^2 - (2 + 3d)x + 2d이다.",
+    "이 식이 3x^2 + cx + 4와 같으므로 2d = 4에서 d = 2이다.",
+    "c = -(2 + 3d) = -(2 + 6) = -8이다.",
+    "따라서 a + b + c + d = 2 + 7 + (-8) + 2 = 3이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "$(ax+b)(x-2)$를 전개하면 $2x^2",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmReason": "전개식 ax 항과 인수분해 식의 계수 비교를 통해 14와 상수를 결정하는 문제이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_COEFFICIENT",
+  "typeReason": "이차식의 전개와 인수분해에서 ax, cx 등의 계수를 일치시켜 합을 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 식의 최고차항과 상수항을 비교해 미정계수를 찾고 14 관계를 검증하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "전개",
+        "src": "stem",
+        "quote": "(x-2)$를 전개하면 $2x^2"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "c, d$는 상수) [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "+cx+4$를 인수분해하면 $(x-d",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "과 인수분해의 계수 비교를 통해"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "전개식과 인수분해 항등식을 확인한다.",
+    "goal": "a+b+c+d의 값을 구한다.",
+    "method": "각 식의 동류항 계수를 일치시킨다.",
+    "condition": "최고차항과 상수항으로부터 미정계수를 순차적으로 구한다."
+  },
+  "how": "ax 전개식과 인수분해 식의 14 계수 비교로 $a=2, b=7, c=-8, d=2$를 얻어 합 3인 ③으로 판정하였다."
+}

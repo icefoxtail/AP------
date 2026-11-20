@@ -1,0 +1,63 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "4d9c06c5f29853b7",
+  "solvedAnswer": "112",
+  "solveSteps": [
+    "-2 <= x <= 4 의 각 변에 -1/3 을 곱하면 -4/3 <= -1/3 x <= 2/3 이다.",
+    "각 변에 4를 더하면 4 - 4/3 <= 4 - 1/3 x <= 4 + 2/3 이다.",
+    "8/3 <= 4 - 1/3 x <= 14/3 이므로 a = 8/3, b = 14/3 이다.",
+    "9ab = 9 * (8/3) * (14/3) = 8 * 14 = 112 이다.",
+    "따라서 9ab 의 값은 112 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-2 \\le x \\le 4",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "부등식의 성질로 음수를 곱하고 더하여 a = 8/3, b = 14/3 범위를 유도하고 9ab = 112 를 aligned 계산하는 유형이다.",
+  "rpmRecordId": "M2-RPM-019",
+  "rpmReason": "부등식 각 변에 음수를 곱해 방향을 바꾸고 9ab = 112 를 aligned 도출한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음수 곱셈 시 부등호 역전과 4를 더해 a=8/3, b=14/3 을 구하고 112 를 aligned 계산한다.",
+  "how": "-1/3 을 곱하고 4를 더해 a=8/3, b=14/3 을 얻고 9ab = 112 를 aligned 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a, b$는 상수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "주어진 부등식 $-2 \\le x \\le 4$"
+      }
+    ],
+    "method": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "부등식의 성질을 적용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "식의 범위를 차례대로 유도하고"
+      }
+    ]
+  }
+}

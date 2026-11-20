@@ -1,0 +1,66 @@
+{
+  "qid": 8,
+  "itemFingerprint": "ff8a44bad33da27b",
+  "solveSteps": [
+    "1번: 3ab^2 * 4a^2b = 12a^3b^3 (옳음)",
+    "2번: 12x^5y^4 / (3/2 x^2y) = 12x^5y^4 * (2 / 3x^2y) = 8x^3y^3 인데 선지는 8x^7y^5이므로 옳지 않다.",
+    "3번: 15a^3b / 5ab = 3a^2 (옳음)",
+    "4번: (4x - 2y) + (3x - 5y) = 7x - 7y (옳음)",
+    "5번: (2a^2 - 4a + 3) - (3a^2 - 2a + 1) = -a^2 - 2a + 2 (옳음)",
+    "따라서 옳지 않은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "② 나눗셈을 역수의 곱셈으로 바",
+  "rpmRecordId": "M2-RPM-129",
+  "rpmReason": "단항식 곱셈과 나눗셈 3ab^2*4a^2b=12a^3b^3 및 15a^3b/5ab=3a^2의 계산을 검토한다.",
+  "problemTypeKey": "PT_M2_MONOMIAL_MULTIPLICATION_DIVISION",
+  "templateKey": "TPL_M2_EVALUATE_EXPONENT_LAWS_MONOMIAL_OPERATIONS",
+  "typeReason": "단항식과 다항식의 곱셈, 나눗셈 12, 15 계수 계산의 옳고 그름을 평가하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분수 계수가 포함된 단항식 나눗셈에서 12와 ab 항의 역수 곱셈 계산 오류를 찾는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "역수",
+        "quote": "② 나눗셈을 역수의 곱셈으로 바",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수",
+        "quote": "^7y^5$로 지수를 곱셈처럼 더",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "quote": "(옳음) ② 나눗셈을 역수의 곱셈",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "12x^5y^4 나눗셈 역수 곱셈 시 지수가 8x^7y^5로 잘못 계산된 오류를 찾았다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 4,
+  "itemFingerprint": "9edea3136c9ea3ae",
+  "solveSteps": [
+    "각 보기의 로그 및 거듭제곱 값을 계산한다 (배점 3.5점).",
+    "① $\\log_{1/2} 8 = -3$, ② $\\log_3 \\sqrt{27} = 3/2$, ③ $\\log_9 27 = 3/2$.",
+    "④ $1/\\log_{32} 2 = \\log_2 32 = 5$, ⑤ $9^{\\log_3 4} = 4^{\\log_3 9} = 4^2 = 16$.",
+    "가장 큰 값은 ⑤ ($9^{\\log_3 4} = 16$)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "다음 중 그 값이 가장 큰 것은?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "따라서 가장 큰 것은 ⑤이다.",
+  "rpmRecordId": "H2-M1-RPM-075",
+  "rpmReason": "로그의 기본 성질 및 거듭제곱 성질로 식의 값을 계산하는 H2-M1-RPM-075 로그의 성질 > 곱·몫·거듭제곱에 해당한다 (값 16, 배점 3.5점).",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+  "typeReason": "다양한 로그의 성질과 거듭제곱의 성질을 적용하여 수의 대소를 비교하는 유형이다 (값 16, 배점 3.5점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "보기 5개의 로그값을 각각 성질에 따라 계산하고 크기를 비교하는 기본 난이도 2 문항이다 (값 16, 배점 3.5점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "다음 중 그 값이 가장 큰 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최대",
+        "src": "solution",
+        "quote": "따라서 가장 큰 것은 ⑤이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "보기 중 가장 큰 값을 선택하는 목표"
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "src": "choices",
+        "quote": "\\log_3 \\sqrt{27}",
+        "evidenceType": "IMPLIED",
+        "justification": "로그의 성질을 이용하여 각 보기의 값을 계산"
+      }
+    ],
+    "condition": [
+      {
+        "term": "비교",
+        "src": "solution",
+        "quote": "따라서 가장 큰 것은 ⑤이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "계산된 수들의 크기를 비교"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "다섯 보기의 값을 각각 계산하여 ⑤ $9^{\\log_3 4} = 16$ 이 가장 큼을 확인하여 정답으로 판정했다 (배점 3.5점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "로그의 성질과 거듭제곱의 값을 비교하는 문항이므로 H22-A-01 지수와 로그에 속한다."
+}

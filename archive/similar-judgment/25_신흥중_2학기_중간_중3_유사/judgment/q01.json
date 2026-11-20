@@ -1,0 +1,76 @@
+{
+  "qid": 1,
+  "itemFingerprint": "bee5d185869c5fd0",
+  "solveSteps": [
+    "1) 직각삼각형 DEF에서 직각은 꼭짓점 F에 있으므로 빗변은 DE = r이다.",
+    "2) 각 D를 기준으로 대변은 EF = p, 이웃한 변은 DF = q이므로 sin D = p/r, cos D = q/r, tan D = p/q이다.",
+    "3) 각 E를 기준으로 대변은 DF = q, 이웃한 변은 EF = p이므로 sin E = q/r, tan E = q/p이다.",
+    "4) 따라서 cos D = r/q라고 한 ②는 옳지 않다.",
+    "5) 따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "다음 직각삼각형 $DEF$에서 옳지 않은 것은?",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmReason": "직각삼각형 DEF에서 빗변 r과 각 D, E의 대변 p, q에 대한 삼각비 정의 sin, cos, tan의 식을 판별하는 M3-RPM-055 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "typeReason": "직각삼각형 DEF의 변 p, q, r과 각 D의 코사인 정의 cos D = q/r과의 일치 여부를 판별하는 TPL_TRIG_RATIO_BASIC_RELATION 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "다음 직각삼각형 $DEF$에서 옳지 않은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각비",
+        "src": "choices",
+        "quote": "$\\cos D=\\dfrac{r}{q}$"
+      }
+    ],
+    "method": [
+      {
+        "term": "빗변",
+        "src": "solution",
+        "quote": "꼭짓점 $F$에 있으므로 빗변은 $DE=r$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "변",
+        "src": "solution",
+        "quote": "이웃한 변은 $DF=q$이므로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "직각삼각형 DEF 조건이다.",
+    "goal": "옳지 않은 삼각비 식을 찾는 목표이다.",
+    "method": "빗변 r과 대변, 이웃변의 비로 코사인을 확인하는 방법이다.",
+    "condition": "각 D에 대한 대변 p, 이웃변 q 조건이다."
+  },
+  "how": "직각삼각형 DEF에서 빗변 r과 각 D의 이웃변 q에 대해 cos D = q/r이어야 하므로 r/q라 한 보기 ②가 옳지 않음을 확인하여 정답 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "직각삼각형 DEF의 세 변 p, q, r을 보고 삼각비의 기본 정의를 대조하는 1단계 문항이다."
+}

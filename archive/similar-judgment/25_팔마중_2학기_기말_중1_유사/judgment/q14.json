@@ -1,0 +1,64 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "affbeada39550e7a",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "줄기와 잎 그림에서 학생 20 명의 기록을 해석한다.",
+    "① 전체 학생 수는 4 + 5 + 6 + 3 + 2 = 20명이다 (참).",
+    "② 줄기가 3인 잎은 1, 2, 4, 6, 7, 9 로 6개이다 (참).",
+    "③ 가장 높은 기록은 51회이다 (참).",
+    "④ 높은 쪽부터 나열하면 51, 50, 45, 43, 42회이므로 5번째는 42회이다. 37회라는 설명은 거짓이다.",
+    "⑤ 가장 높은 51회와 가장 낮은 12회의 차는 39회이다 (참). 정답은 ④번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 줄기와 잎 그림은 어느",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "problemTypeKey": "PT_M1_STEM_LEAF",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "줄기와 잎 그림에서 학생 20 명의 자료 순위와 차이를 해석하는 유형이다.",
+  "rpmRecordId": "M1-RPM-227",
+  "rpmReason": "줄기와 잎으로 표현된 20 명의 기록에서 상위 5번째 값을 판정한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "높은 쪽부터 5번째 학생의 기록이 42회임을 20 명 자료에서 확인한다.",
+  "how": "높은 쪽부터 나열하여 5번째 값이 42회이므로 37회라는 ④가 거짓임을 20 명 자료에서 확인했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "줄기와잎",
+        "src": "stem",
+        "quote": "다음 줄기와 잎 그림은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자료",
+        "src": "solution",
+        "quote": "실제 자료 값으로 해석한다"
+      }
+    ],
+    "method": [
+      {
+        "term": "줄기와잎",
+        "src": "solution",
+        "quote": "줄기와 잎 그림을 실제",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "src": "solution",
+        "quote": "잎의 총개수는 $4 + 5 + 6"
+      }
+    ]
+  }
+}

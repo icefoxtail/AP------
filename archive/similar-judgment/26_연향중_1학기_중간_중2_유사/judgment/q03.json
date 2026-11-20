@@ -1,0 +1,65 @@
+{
+  "qid": 3,
+  "itemFingerprint": "4cdfd0c499ee03ec",
+  "solveSteps": [
+    "분자와 분모를 3으로 약분하면 33 / (2 * 3 * 5 * a) = 11 / (2 * 5 * a) = 11 / (10a) 이다.",
+    "기약분수가 순환소수가 되려면 분모 10a 에 2, 5 이외의 소인수가 존재해야 한다.",
+    "한 자리 자연수 a = 1, ..., 9 중 유한소수가 되는 것은 a in {1, 2, 4, 5, 8} 의 5개이다.",
+    "전체 9개 중 유한소수인 5개를 제외하면 a in {3, 6, 7, 9} 의 4개이다.",
+    "따라서 순환소수가 되도록 하는 a의 개수는 4개이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\frac{33}{2 \\times",
+  "rpmRecordId": "M2-RPM-120",
+  "rpmReason": "33 을 약분하여 11 / (10a) 로 만든 후 유한소수가 되는 5개를 제외해 순환소수 개수 4개를 구하는 단계이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "33 약분 후 분모 10a 에서 순환소수가 되도록 하는 자연수 a의 개수를 여사건으로 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "33 약분 후 10a 분모에서 유한소수 5개를 전체 9개에서 빼서 4개를 구하는 난이도 2 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\frac{"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "es a}$이 순환소수가 되도록 하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "으로 약분하여 기약분수로 나타내면 $",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "33 약분으로 11 / (10a) 에서 a = 3, 6, 7, 9 의 4개일 때 순환소수가 됨을 확인하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

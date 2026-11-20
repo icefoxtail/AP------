@@ -1,0 +1,77 @@
+{
+  "qid": 20,
+  "itemFingerprint": "2883ccd556b608bd",
+  "solveSteps": [
+    "1) 점 D에서 반원에 그은 접선이므로 DC = DA = 4 cm이다.",
+    "2) 점 E에서 반원에 그은 접선이므로 CE = EB = 12 cm이다.",
+    "3) 따라서 DC : CE = 4 : 12 = 1 : 3이다.",
+    "4) CF = x라 하고 평행선 닮음비를 적용하면 DC : CE = (x - 4) : (12 - x)이다.",
+    "5) 1 : 3 = (x - 4) : (12 - x)에서 3(x - 4) = 12 - x이므로 4x = 24에서 x = 6 cm이다.",
+    "6) 따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "unitEvidence": "다음 그림과 같이 $DA$, $EB$, $DE$는 지름이 $AB$인 반원 $O$의 접선이고, $A$, $B$, $C$는 접점이다. 점 $C$에서 $AB$에 내린 수선의 발을 $F$라 하자. $DA=4,\\mathrm{cm}$, $EB=12,\\mathrm{cm}$일 때, $CF$의 길이는?",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmReason": "접선 길이 DC = 4 cm, CE = 12 cm로부터 비 1:3을 구하고 사다리꼴 평행선 비 (x-4):(12-x) = 1:3을 풀어 CF = 6 cm를 구하는 M3-RPM-072 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+  "typeReason": "원 외부 점에서 그은 접선의 길이 성질과 평행선 사이의 선분 길이 비를 이용해 CF = 6 cm를 도출하는 TPL_CIRCLE_TANGENT_EQUAL_LENGTH 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "반원 $O$의 접선이고, $A$, $B$, $C$는 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "$CF$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "닮음인 두 직각삼각형이 생긴다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "점 $C$에서 $AB$에 내린 수선의 발을 $F$라 하자."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "지름 AB인 반원의 접선 DA, EB, DE 조건이다.",
+    "goal": "선분 CF의 길이를 구하는 목표이다.",
+    "method": "접선 길이 상등과 사다리꼴 평행선 닮음비를 적용하는 방법이다.",
+    "condition": "점 C에서 내린 수선 CF 조건이다."
+  },
+  "how": "DC = 4, CE = 12에서 1:3 = (x - 4):(12 - x)를 풀어 4x = 24에서 CF = 6 cm임을 확인하여 정답 ③로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "접선 상등으로 DC = 4, CE = 12를 구하고 닮음비 1:3으로 방정식 4x = 24를 풀어 CF = 6을 도출하는 2단계 문항이다."
+}

@@ -1,0 +1,63 @@
+{
+  "qid": 23,
+  "itemFingerprint": "b8bc7b2e26877721",
+  "solveSteps": [
+    "접선의 성질에 의해 AD = AF = 6 cm, CE = CF = 9 cm이고 내접원 반지름을 r이라 하면 BD = BE = r이다.",
+    "직각삼각형 ABC에서 (6 + r)^2 + (9 + r)^2 = 15^2를 풀면 2r^2 + 30r - 108 = 0에서 r = 3 cm이다.",
+    "삼각형 ABC의 넓이는 (1/2)*9*12 = 54 cm^2이고 원의 넓이는 9*pi cm^2이므로 색칠한 넓이는 (54 - 9*pi) cm^2이다."
+  ],
+  "solvedAnswer": "$(54-9\\pi),\\mathrm{cm}^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서술형] 다음 그림에서 원 $O$는 $\\angle B",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "한 점에서 원에 그은 두 접선의 길이는 같으므로 $AD",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmReason": "직각삼각형 ABC의 내접원 접선 길이 AF = 6 cm, CF = 9 cm로 세 변을 표현하고 피타고라스 정리로 r = 3 및 넓이를 구한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_LENGTH",
+  "typeReason": "직각삼각형 ABC의 내접원과 접선 조건으로부터 원을 제외한 부분의 넓이를 구하는 서술형 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "직각삼각형 ABC에서 이차방정식을 풀어 내접원 반지름 r = 3 cm를 구하고 넓이 차를 계산하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "서술형",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "\\circ$인 직각삼각형 $ABC$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "색칠한 부분의 넓이를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "원에 그은 두 접선의 길이는 같으",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "피타고라스 정리로 r = 3 cm를 얻어 삼각형 넓이 54와 원 넓이 9pi의 차 (54 - 9pi) cm^2를 산출했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

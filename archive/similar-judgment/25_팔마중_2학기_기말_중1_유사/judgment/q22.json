@@ -1,0 +1,62 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "4521825e1dba8734",
+  "solvedAnswer": "$160\\pi\\rm\\,cm^2$",
+  "solveSteps": [
+    "반지름 4 cm 인 구의 원래 겉넓이는 S_1 = 4pi * 4^2 = 64pi cm^2 이다.",
+    "수직인 평면으로 3번 자르면 반지름 4 cm 인 원판이 3쌍(총 6면) 생겨난다.",
+    "추가되는 단면 넓이의 합은 S_2 = 3 * (2 * pi * 4^2) = 3 * 32pi = 96pi cm^2 이다.",
+    "자른 8개 조각들의 겉넓이 총합은 S_1 + S_2 = 64pi + 96pi = 160pi cm^2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 2] 반지름의",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "구를 수직으로 3번 절단할 때 원래 겉넓이 64pi 와 새로 생기는 단면 96pi 를 합해 160pi 를 aligned 구하는 유형이다.",
+  "rpmRecordId": "M1-RPM-217",
+  "rpmReason": "구의 겉넓이 공식 4pi*r^2 = 64pi 와 3회 절단 단면 96pi 를 더해 160pi cm^2 을 aligned 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "원래 구면 64pi 에 절단면 6개 넓이 96pi 를 더하여 총 겉넓이 160pi 를 aligned 구한다.",
+  "how": "원래 겉넓이 64pi 와 절단에 의해 생긴 3개의 원판 단면 96pi 의 합 160pi cm^2 을 aligned 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $4\\rm\\,cm$인"
+      }
+    ],
+    "goal": [
+      {
+        "term": "겉넓이",
+        "src": "stem",
+        "quote": "겉넓이의 총합을 구하고 그 풀이"
+      }
+    ],
+    "method": [
+      {
+        "term": "입체도형",
+        "src": "solution",
+        "quote": "처음 구의 겉넓이에",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "단면",
+        "src": "solution",
+        "quote": "새로 생겨난 원판 모양 단면들의"
+      }
+    ]
+  }
+}

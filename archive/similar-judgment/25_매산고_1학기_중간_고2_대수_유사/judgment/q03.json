@@ -1,0 +1,70 @@
+{
+  "qid": 3,
+  "itemFingerprint": "e161bf8b6358bba0",
+  "solveSteps": [
+    "배점 4.2점 문항으로 $0 \\le x < 2\\pi$에서 $\\sin x = \\dfrac{\\sqrt{3}}{2}$를 만족하는 각을 구한다.",
+    "$\\sin x > 0$이므로 제1사분면과 제2사분면의 각이다.",
+    "제1사분면의 근은 $x = \\dfrac{\\pi}{3}$이고, 제2사분면의 근은 $x = \\pi - \\dfrac{\\pi}{3} = \\dfrac{2\\pi}{3}$이다.",
+    "따라서 모든 근의 합은 $\\dfrac{\\pi}{3} + \\dfrac{2\\pi}{3} = \\pi$이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+  "unitEvidence": "$0 \\le x < 2\\pi$일 때, 방정식 $\\sin x = \\dfrac{\\sqrt{3}}{2}$의",
+  "rpmRecordId": "H2-M1-RPM-102",
+  "rpmReason": "배점 4.2점 문항으로 삼각방정식 $\\sin x = \\frac{\\sqrt{3}}{2}$의 근의 합 $\\pi$를 구하는 H2-M1-RPM-102에 해당한다.",
+  "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+  "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+  "typeReason": "배점 4.2점 문항으로 주기 구간에서 특수각에 대한 삼각방정식의 모든 근의 합을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "배점 4.2점 문항으로 $\\sin x = \\frac{\\sqrt{3}}{2}$의 두 근의 합 $\\pi$를 구하는 기본 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "방정식 $\\sin x = \\dfrac{\\sqrt{3}}{2}$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "해",
+        "src": "solution",
+        "quote": "모든 근의 합은"
+      }
+    ],
+    "method": [
+      {
+        "term": "사분면",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "제1사분면과 제2사분면의 각이므로"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "$0 \\le x < 2\\pi$일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "배점 4.2점 문항으로 $\\sin x = \\frac{\\sqrt{3}}{2}$의 두 근의 합 $\\pi$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

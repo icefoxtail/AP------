@@ -1,0 +1,56 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "ac0aef09d0d7f5e4",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "512 KiB = 2^9 KiB 이고, 128개는 2^7 개이다.",
+    "전체 용량은 2^9 * 2^7 = 2^16 KiB 이다.",
+    "1 GiB = 2^20 KiB 이므로 GiB 단위로는 2^16 / 2^20 = 2^-4 = 1/16 GiB 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "용량이 $512\\text{",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "단위 용량 512 KiB 를 2의 거듭제곱으로 나타내어 단위 변환하는 지수법칙 유형이다.",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "512 와 128을 2의 거듭제곱으로 고쳐 지수 덧셈과 나눗셈을 적용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "512 KiB 와 128개의 곱 2^16을 2^20으로 나누는 2단계 거듭제곱 계산이다.",
+  "how": "512 = 2^9, 128 = 2^7에서 총 2^16을 2^20으로 나누어 1/16 GiB를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "밑을 $2$로 소인수분해하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "변환",
+        "src": "stem",
+        "quote": "전체 용량은 몇 $\\text{GiB}$인지"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "2^{20}\\text{ KiB}$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 21,
+  "itemFingerprint": "e9576bec9469862e",
+  "solveSteps": [
+    "1. 5^2 = 25 < 26 < 36이므로 5 < sqrt(26) < 6이고, 9^2 = 81 < 95 < 100이므로 9 < sqrt(95) < 10이다. 따라서 sqrt(26) < x <= sqrt(95)를 만족하는 자연수 x는 6, 7, 8, 9의 4개이다.",
+    "2. 3 < sqrt(10) < 4이므로 sqrt(10) 이상의 가장 작은 자연수는 4이다. 4부터 연속된 5개의 자연수는 4, 5, 6, 7, 8이다.",
+    "3. 이 5개의 자연수가 sqrt(y)보다 작고 9는 sqrt(y) 이상이어야 하므로 8 < sqrt(y) <= 9이다.",
+    "4. 제곱하면 64 < y <= 81이므로 자연수 y는 65부터 81까지의 81 - 64 = 17개이다. 따라서 정답은 (1) 4, (2) 17이다."
+  ],
+  "solvedAnswer": "(1) 4 (2) 17",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "(1) $\\sqrt{26} < x \\le \\sqrt{95}$를 만족하는 자연수 $x$의 개수를 구하시오. [3점]",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "제곱근 부등식 sqrt(26) < x <= sqrt(95)에서 4개, 64 < y <= 81에서 17개를 구하는 M3-RPM-004 레코드입니다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_INTEGER_RANGE",
+  "typeReason": "제곱근의 부등식 sqrt(26) < x <= sqrt(95)와 64 < y <= 81에서 자연수 개수 4개와 17개를 구하는 TPL_M3_REAL_COMPARISON_INTEGER_RANGE 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱수 범위를 이용하여 부등식 sqrt(26) < x <= sqrt(95)를 만족하는 자연수 개수 (1) 4개, (2) 17개를 2단계로 구하는 서술형 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "만족하는 자연수 $x$의 개수를 구하시오. [3점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "자연수 $y$의 개수를 구하시오. [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "부등식 $\\sqrt{26} < x \\le \\sqrt{95}$를 만족하는 자연수 $x$를 구한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "제곱근 부등식을 풀어 자연수 개수 계산"
+      }
+    ],
+    "condition": []
+  },
+  "how": "5<sqrt(26)<6, 9<sqrt(95)<10에서 x는 6..9의 4개, 4부터 8까지 5개이므로 64<y<=81에서 y는 81-64=17개로 판정했습니다."
+}

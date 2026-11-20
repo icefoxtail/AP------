@@ -1,0 +1,66 @@
+{
+  "qid": 7,
+  "itemFingerprint": "fb16677547c6ea6e",
+  "solveSteps": [
+    "순환소수 2.8(dot)3(dot)을 분수로 변환: (283 - 28) / 90 = 255 / 90 = 17 / 6",
+    "주어진 식 계산: 2.8(dot)3(dot) + 7/6 = 17/6 + 7/6 = 24/6 = 4",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "식 $2.8\\dot{3} + \\dfrac{7}{6}$을 계산한 값은? [4점]",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "순환소수 $2.8\\dot{3}$을 분수 $\\frac{17}{6}$로 고치고 $\\frac{7}{6}$과 더해 4를 구하는 순환소수를 분수로 문항이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수 $2.8\\dot{3}$을 분수 $\\frac{17}{6}$로 변환하여 $\\frac{7}{6}$과 덧셈을 수행하는 순환소수 계산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수 $2.8\\dot{3} = \\frac{17}{6}$의 변환 공식과 분수의 덧셈 $\\frac{17}{6} + \\frac{7}{6} = 4$를 적용하는 기본 계산으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "순환소수 $2.8\\dot{3}$을 분수로 고쳐서 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "순환소수 $2.8\\dot{3}$을 분수로 고쳐서 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "식의 계산 결과 값 도출"
+      }
+    ],
+    "method": [
+      {
+        "term": "약분",
+        "src": "solution",
+        "quote": "분모와 분자를 $15$로 약분하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$2.8\\dot{3} = \\frac{255}{90} = \\frac{17}{6}$으로 고친 뒤 $\\frac{17}{6} + \\frac{7}{6} = \\frac{24}{6} = 4$를 계산하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

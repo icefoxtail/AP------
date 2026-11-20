@@ -1,0 +1,72 @@
+{
+  "qid": 13,
+  "itemFingerprint": "07ccb0de0be52ed7",
+  "solveSteps": [
+    "부채꼴의 반지름을 $r$, 호의 길이를 $l$ 이라 하면 둘레 $2r + l = 16 \\implies l = 16 - 2r$ 이다 (배점 4.2점).",
+    "넓이 $S = (1/2)rl = (1/2)r(16 - 2r) = 8r - r^2 = -(r - 4)^2 + 16$.",
+    "$r = 4$ 일 때 넓이의 최댓값 $a = 16$ 을 가진다.",
+    "이때 호의 길이 $l = 16 - 8 = 8$ 이므로 중심각 $b = l/r = 8/4 = 2$ 이다.",
+    "$a + b = 16 + 2 = 18$ 이며 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "둘레의 길이가 $16$인 부채꼴 중에서 그 넓이가 최대인 부채꼴의 넓이를 $a$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "둘레의 길이가 $16$인",
+  "rpmRecordId": "H2-M1-RPM-096",
+  "rpmReason": "부채꼴의 호의 길이와 넓이 공식, 둘레 제약 하의 이차함수 극값을 구하는 H2-M1-RPM-096 일반각과 호도법 > 호도법에 해당한다 (값 16, 배점 4.2점).",
+  "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+  "templateKey": "TPL_H22A_04_ANGLE_RADIAN_096",
+  "typeReason": "둘레가 일정한 부채꼴의 넓이를 반지름 $r$ 에 대한 이차함수로 모델링하여 최대 넓이와 중심각을 구하는 유형이다 (값 16, 배점 4.2점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이차함수 표준형 변형과 중심각 공식 $b = l/r$ 만 적용하면 바로 해결되는 전형적인 필수 유형이다 (값 16, 배점 4.2점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "가 $16$인 부채꼴 중에서 그 넓"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "서 그 넓이가 최대인 부채꼴의 넓"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "부채꼴의 반지름의 길이를 $r",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "둘레",
+        "src": "solution",
+        "quote": "l$이라 하면 둘레의 길이가 $1"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$2r+l=16$ 에서 넓이 $S=-(r-4)^2+16$ 으로 최대 넓이 $a=16$, 중심각 $b=2$ 를 구해 $a+b=18$ 로 판정했다 (배점 4.2점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "부채꼴의 둘레, 넓이, 호의 길이, 중심각 사이의 관계를 다루므로 H22-A-04 삼각함수에 속한다."
+}

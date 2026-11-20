@@ -1,0 +1,57 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "9b938f257445372b",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "유리수는 분수 a/b (a, b는 정수, b!=0) 꼴로 나타낼 수 있는 수이다.",
+    "1.7, 0.555..., 2.131313..., 0.12345 는 모두 분수로 나타낼 수 있으므로 유리수는 4개이다 (a = 4).",
+    "4.020020002... 는 비순환 무한소수이므로 무리수이다.",
+    "순환소수는 0.555..., 2.131313... 의 2개이다 (b = 2).",
+    "따라서 a + b = 4 + 2 = 6 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 수 중에서 유리수의 개",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "소수 1.7 과 순환소수 등에서 유리수와 순환소수의 개수를 분류하는 유형이다.",
+  "rpmRecordId": "M2-RPM-001",
+  "rpmReason": "유한소수 1.7 및 순환소수의 유리수 성질을 확인한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수 1.7 등을 유리수와 순환소수로 분류하여 개수 합을 구하는 기본 문제이다.",
+  "how": "1.7 등 주어진 수에서 유리수 4개와 순환소수 2개를 세어 합 6을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "다음 수 중에서 유리수의 개수를 $a$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수의 개수를 $b$라 할 때, $a + b$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "분수",
+        "src": "solution",
+        "quote": "분수로 나타낼 수 있으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

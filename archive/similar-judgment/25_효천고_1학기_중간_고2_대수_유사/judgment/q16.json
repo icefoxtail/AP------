@@ -1,0 +1,55 @@
+{
+  "qid": 16,
+  "itemFingerprint": "78cee26ed070441b",
+  "solveSteps": [
+    "사분원의 중심각 pi/2를 7등분하므로 theta = pi/14 이다.",
+    "sin^2(k*theta) + sin^2((7-k)*theta) = sin^2(k*theta) + cos^2(k*theta) = 1 이다. 14",
+    "k = 1, 2, 3 에 대해 세 쌍의 합은 1 * 3 = 3 이다. 14",
+    "k = 7 일 때 sin^2(7*theta) = sin^2(pi/2) = 1 이므로 총합은 3 + 1 = 4 이다. 14",
+    "정답은 ① 4이다. 14"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "심이 $O$, 반지름의 길이가 $1$인 사분원",
+  "rpmRecordId": "H2-M1-RPM-099",
+  "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+  "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_099",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "theta=pi/14 대칭성으로 sin^2(k*theta)+cos^2(k*theta)=1 쌍 3개와 sin^2(pi/2)=1을 더해 4를 구했다.",
+  "typeReason": "사분면 호의 n등분 각 theta=pi/14에서 sin^2합의 여각 대칭성을 활용하는 유형이다.",
+  "rpmReason": "삼각함수 여각 공식 sin(pi/2-theta)=cos(theta) 주기 대칭성 14를 적용하는 RPM 유형이다.",
+  "difficultyReason": "각의 7등분 구조를 theta=pi/14로 두고 제곱합 쌍을 묶어 4를 구하는 난이도 3 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "사분원",
+        "quote": "인 사분원 $OPQ$의 호 $PQ$를 $7$등",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "quote": " \n반지름이 $1$이므로 $\\overline{",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

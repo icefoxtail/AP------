@@ -1,0 +1,71 @@
+{
+  "qid": 19,
+  "itemFingerprint": "6b4810e1144789a1",
+  "solveSteps": [
+    "$A = \\alpha^2 - \\alpha + 1, B = \\beta^2 - \\beta + 1$이라 두면 (가)는 $A + B = 0$, (나)는 $\\alpha^{n-1}A + \\beta^{n-1}B = 0$이다.",
+    "$n=2$ 대입 후 연립하면 $(\\alpha - \\beta)A = 0$이고 $\\alpha \\neq \\beta$이므로 $A = 0, B = 0$이다.",
+    "따라서 $\\alpha, \\beta$는 $x^2 - x + 1 = 0$의 두 근이므로 $\\alpha, \\beta = \\dfrac{1 \\pm \\sqrt{3}i}{2}$이다.",
+    "$x^3 = -1, x^6 = 1$이므로 주기 6이고, $2025 = 6 \\times 337 + 3$에서 각 3개 항씩 남는다.",
+    "$(\\alpha + \\alpha^2 + \\alpha^3) + (\\beta + \\beta^2 + \\beta^3) = (\\alpha + \\beta) + (\\alpha^2 + \\beta^2) + (\\alpha^3 + \\beta^3) = 1 + (-1) + (-2) = -2$이다."
+  ],
+  "solvedAnswer": "$\\alpha, \\beta = \\dfrac{1 \\pm \\sqrt{3}i}{2}$, 식의 값: $-2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+  "unitEvidence": "서로 다른 두 복소수 $\\alpha, \\beta$가 다음 조건을 만족시킨다.",
+  "rpmRecordId": "H1-RPM-301",
+  "rpmReason": "방정식 $x^2 - x + 1 = 0$의 근의 주기성을 이용하여 $2025$차 거듭제곱 합 $-2$를 구하는 H1-RPM-301에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+  "typeReason": "점화식 조건에서 $\\alpha^2 - \\alpha + 1 = 0$을 도출하고 주기성을 활용하여 $2025$ 거듭제곱 합 $-2$를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "주어진 두 식으로부터 $\\alpha^2 - \\alpha + 1 = 0$을 증명하고 주기 6을 활용해 $2025$까지의 합 $-2$를 계산하는 서술형 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "서로 다른 두 복소수 $\\alpha, \\beta$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "다음 조건을 만족시킨다."
+      }
+    ],
+    "method": [
+      {
+        "term": "이차방정식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "이차방정식 $x^2 - x + 1 = 0$의 두 근이므로"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$2$ 이상의 모든 자연수 $n$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "조건 (가),(나)로부터 $\\alpha^2-\\alpha+1=0$을 이끌어내어 $\\alpha, \\beta = \\frac{1 \\pm \\sqrt{3}i}{2}$ 및 $2025$ 거듭제곱 합 $-2$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 23,
+  "itemFingerprint": "e83e5a0305565ef0",
+  "solveSteps": [
+    "볼펜 x묶음(5x자루) 구매 시 문구점 비용은 1200 * 5x = 6000x 원이다.",
+    "대형 할인점 비용은 4200x + 3000 원이다.",
+    "4200x + 3000 < 6000x 에서 1800x > 3000 이다.",
+    "x > 3000 / 1800 = 5/3 = 1.666... 이다.",
+    "x는 자연수이므로 최솟값은 2이다. 따라서 최소 2묶음 이상이다."
+  ],
+  "solvedAnswer": "$2$묶음 (또는 $2$)",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "$를 우변으로 이항하면 $$ 30",
+  "rpmRecordId": "M2-RPM-146",
+  "rpmReason": "동네 문구점 6000원과 할인점 4200원 및 버스비 3000원을 비교하여 일차부등식을 세운다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "교통비 3000원과 묶음 가격 4200원, 낱개 가격 1200원을 비교하여 할인점 이용이 유리한 묶음 수를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "4200x + 3000 < 6000x 식을 세우고 1800x > 3000을 풀어 최솟값을 구하는 2단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "묶음",
+        "quote": "5$자루를 한 묶음으로 $4200",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "quote": "므로 $x$의 최솟값은 $2$이다.",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "quote": "$를 우변으로 이항하면 $$ 30",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "음 ($x$는 자연수) 산다고 하자",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "4200x + 3000 < 6000x에서 1800x > 3000, x > 1.666...를 풀어 자연수 최솟값 2묶음으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE2"
+  ],
+  "curriculum": "2022"
+}

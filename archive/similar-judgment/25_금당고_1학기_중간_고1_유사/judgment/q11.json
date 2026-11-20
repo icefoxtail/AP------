@@ -1,0 +1,70 @@
+{
+  "qid": 11,
+  "itemFingerprint": "20eb141b985ccc57",
+  "solveSteps": [
+    "이차방정식이 항상 중근을 가지므로 판별식 $D = 0$이다.",
+    "$D = (k + 2a)^2 - 4(k^2/4 - 3k - b) = k^2 + 4ak + 4a^2 - k^2 + 12k + 4b = (4a + 12)k + (4a^2 + 4b) = 0$이다.",
+    "실수 $k$에 대한 항등식이므로 $4a + 12 = 0 \\implies a = -3$이다.",
+    "$4a^2 + 4b = 0 \\implies b = -a^2 = -9$이다.",
+    "따라서 $a - b = -3 - (-9) = 6$이다. (①번)"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식이 항상 중근을",
+  "rpmRecordId": "H1-RPM-161",
+  "rpmReason": "이차방정식 판별식 $D = (4a + 12)k + (4a^2 + 4b) = 0$이 $k$의 항등식이 되는 H1-RPM-161에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+  "typeReason": "판별식을 전개하여 $4ak + 12k$처럼 매개변수 $k$의 항등식으로 해결하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "중근 조건 $D = 0$에서 $4ak + 12k$ 등을 묶어 항등식으로 $a, b$를 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2 +"
+      },
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "관계없이 항상 중근을 가질 때,"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "b = 0$이 실수 $k$의 값에"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "근을 가지므로 판별식 $D = 0$"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "판별식 $(4a + 12)k + (4a^2 + 4b) = 0$이 $k$의 항등식이므로 $a = -3, b = -9$에서 $a - b = 6$으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

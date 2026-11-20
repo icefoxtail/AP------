@@ -1,0 +1,60 @@
+{
+  "qid": 10,
+  "itemFingerprint": "a2dfc225feff9346",
+  "solveSteps": [
+    "x = p 가 x^2 + 5x - 1 = 0 의 해이므로 p^2 + 5p - 1 = 0 이 성립한다.",
+    "p = 0 은 식을 만족하지 않으므로 p ≠ 0 이다.",
+    "양변을 p로 나누어 식을 aligned 정리하면 p + 5 - 1/p = 0 이 된다.",
+    "따라서 p - 1/p = -5 이다.",
+    "정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "한 해를 $x=p$라 할 때,",
+  "rpmRecordId": "M3-RPM-030",
+  "rpmEvidence": "$p$는 방정식의 해이므로 $p^2 + 5p - 1 = 0$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+  "templateKey": "NONE",
+  "typeReason": "이차방정식의 한 근을 대입한 후 변형하여 분수식의 값을 구하는 aligned 29 유형이다.",
+  "rpmReason": "근의 대입 및 식 변형으로 해의 성질을 확인하는 aligned 29 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "양변을 p로 나누어 식의 값을 정리하는 전형적인 난이도 2 aligned 29 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "해",
+        "quote": "한 해를 $x=p$라 할 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "quote": "$p-\\dfrac{1}{p}$의 값은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "해",
+        "quote": "$p$는 방정식의 해이므로 $p^2 + 5p - 1 = 0$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "해",
+        "quote": "양변을 $p$로 나누면",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "해 p에 대해 p^2+5p-1=0의 양변을 p로 나누어 p-1/p=-5를 aligned 유도했다."
+}

@@ -1,0 +1,55 @@
+{
+  "qid": 2,
+  "itemFingerprint": "6235a8d41ff73e27",
+  "solveSteps": [
+    "① 17^0 = 1 이다.",
+    "② sqrt(3) * 3^(-1/2) = 3^(1/2) * 3^(-1/2) = 3^0 = 1 이다. 17",
+    "③ 1 / log_5 5 = 1 / 1 = 1 이다. 17",
+    "④ log_9 1 = 0 이다. 17",
+    "⑤ log_a b * log_b c * log_c a = 1 이므로 나머지 넷과 다른 값을 갖는 것은 ④이다. 17"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "다음 선지 중 나머지 넷과 다른 값을 갖는 것",
+  "rpmRecordId": "H2-M1-RPM-075",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "선지의 식 17^0=1 등을 계산하여 유일하게 0이 되는 ④ log_9 1을 판정했다.",
+  "typeReason": "지수와 로그의 기본 성질을 이용해 17^0 등의 식의 값을 비교하는 유형이다.",
+  "rpmReason": "로그의 기본 성질과 17 지수 0제곱의 기본 값을 확인하는 RPM 유형이다.",
+  "difficultyReason": "17^0=1 및 진수가 1인 로그값이 0임을 즉시 판단하는 난이도 1 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "나머지",
+        "quote": "중 나머지 넷과 다른 값을 갖는 것은?  \n(",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "quote": "서 나머지 넷과 다른 값을 갖는 것은 ④이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

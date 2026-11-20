@@ -1,0 +1,71 @@
+{
+  "qid": 5,
+  "itemFingerprint": "fe5f55072ab9e4bb",
+  "solveSteps": [
+    "부채꼴의 반지름 $r = 6\\rm\\,cm$, 넓이 $S = 27\\pi\\rm\\,cm^2$ 이다 (단위 cm, 넓이 27).",
+    "부채꼴의 넓이 공식: $S = \\dfrac{1}{2} r l$.",
+    "$27\\pi = \\dfrac{1}{2} \\times 6 \\times l = 3l \\implies l = 9\\pi\\rm\\,cm$.",
+    "따라서 호의 길이는 $9\\pi\\rm\\,cm$ 이며 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "반지름의 길이가 $6\\rm\\,cm$이고 넓이가 $27\\pi\\rm\\,cm^2$인 부채꼴의 호의 길이는?",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "unitEvidence": "반지름의 길이가 $6",
+  "rpmRecordId": "M1-RPM-204",
+  "rpmReason": "부채꼴 넓이 $S = (1/2)rl$ 공식을 적용하여 호의 길이를 구하는 M1-RPM-204 부채꼴의 넓이 > 호의 길이와 넓이 관계에 해당한다 (단위 cm, 넓이 27).",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "typeReason": "호의 길이와 넓이 관계식을 통해 미지수를 계산하는 기본 측정 유형이다 (단위 cm, 넓이 27).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "공식 $S = (1/2)rl$ 에 값을 대입하여 일차방정식으로 바로 풀리는 난이도 2 문항이다 (단위 cm, 넓이 27).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반지름의 길이가 $6"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": ",cm^2$인 부채꼴의 호의 길이는"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "\\,cm$이고 넓이가 $27\\pi",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "반지름의 길이가 $6\\rm\\"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "넓이 공식 $27\\pi = (1/2) \\times 6 \\times l$ 에서 $l = 9\\pi\\rm\\,cm$ 로 호의 길이를 구해 ⑤로 판정했다 (단위 cm, 넓이 27).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "부채꼴의 반지름, 넓이, 호의 길이 사이의 관계 공식을 다루므로 M1-06 평면도형의 성질에 속한다."
+}

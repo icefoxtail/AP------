@@ -1,0 +1,73 @@
+{
+  "qid": 7,
+  "itemFingerprint": "997101658e14fd39",
+  "solveSteps": [
+    "가로 5, 세로 12, 대각선 13 인 직사각형 ABCD 가 직선 위를 한 바퀴 구른다 (직사각형 ABCD, 대각선 13).",
+    "꼭짓점 A 는 점 B 중심 $90^\\circ$ 회전 (반지름 5) $\\implies \\dfrac{1}{4} \\times 2\\pi \\times 5 = \\dfrac{5}{2}\\pi$.",
+    "점 C 중심 $90^\\circ$ 회전 (반지름 13) $\\implies \\dfrac{1}{4} \\times 2\\pi \\times 13 = \\dfrac{13}{2}\\pi$.",
+    "점 D 중심 $90^\\circ$ 회전 (반지름 12) $\\implies \\dfrac{1}{4} \\times 2\\pi \\times 12 = 6\\pi$.",
+    "총 이동 거리: $\\dfrac{5}{2}\\pi + \\dfrac{13}{2}\\pi + 6\\pi = 9\\pi + 6\\pi = 15\\pi\\rm\\,cm$.",
+    "따라서 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "가로와 세로의 길이가 각각 $5\\rm\\,cm$, $12\\rm\\,cm$이고 대각선의 길이가 $13\\rm\\,cm$인 직사각형 $ABCD$가 있다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "unitEvidence": "m\\,cm$인 직사각형 $ABCD$가",
+  "rpmRecordId": "M1-RPM-202",
+  "rpmReason": "도형의 회전 이동에 따른 호의 길이를 각각 계산하여 합하는 M1-RPM-202 원과 부채꼴의 기본 > 부채꼴의 호의 길이에 해당한다 (직사각형 ABCD, 대각선 13, 합 15).",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "typeReason": "회전 중심과 회전 반경(가로, 대각선, 세로)을 파악하여 각 호의 길이를 더하는 도형 회전 궤적 유형이다 (직사각형 ABCD, 대각선 13, 합 15).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "회전 중심이 바뀌는 3단계 회전에서 각각의 회전 반경(5, 13, 12)과 중심각 $90^\\circ$ 를 정확히 추론해야 하는 난이도 3 문항이다 (직사각형 ABCD, 대각선 13, 합 15).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "m\\,cm$인 직사각형 $ABCD$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "퀴 굴릴 때, 꼭짓점 $A$가 움직"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "\\,cm$이고 대각선의 길이가 $1",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "가로와 세로의 길이가 각각"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "회전 반경 5, 13, 12 에 대한 $90^\\circ$ 호의 길이를 합하여 $(5/2 + 13/2 + 6)\\pi = 15\\pi\\rm\\,cm$ 로 판정했다 (직사각형 ABCD, 대각선 13).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "직사각형을 굴릴 때 꼭짓점이 그리는 원호의 길이의 합을 구하므로 M1-06 평면도형의 성질에 속한다."
+}

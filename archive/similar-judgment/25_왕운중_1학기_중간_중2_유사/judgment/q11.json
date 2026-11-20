@@ -1,0 +1,58 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "bbeaad086b5f04ba",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "ㄱ. 3^40 + 3^40 + 3^40 = 3 * 3^40 = 3^41 (참)",
+    "ㄴ. (a^m)^n = a^(mn) 이고 a^m * a^n = a^(m+n) 이므로 같지 않다 (거짓).",
+    "ㄷ. (-a^2)^3 = -a^6 (참)",
+    "ㄹ. 나눗셈의 지수 차 법칙 검토 (거짓)",
+    "따라서 옳은 것은 ㄱ, ㄷ이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중에서 옳은 것만을 있",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "거듭제곱의 덧셈 3^40 + 3^40 + 3^40 등 지수법칙의 진위를 판별하는 유형이다.",
+  "rpmRecordId": "M2-RPM-007",
+  "rpmReason": "같은 거듭제곱 3^40 의 반복 덧셈을 곱셈으로 고치는 지수법칙을 적용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "3^40 의 3번 덧셈을 3^41 로 바꾸는 원리를 정확히 알아야 한다.",
+  "how": "3^40을 3번 더하면 3*3^40=3^41이 됨을 확인하고 ㄱ, ㄷ을 골랐다. 40",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$m, n$은 자연수) [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 각 보기에 적용하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "method": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": "참과 거짓을 판정한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

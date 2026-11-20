@@ -1,0 +1,60 @@
+{
+  "qid": 16,
+  "itemFingerprint": "a56ab9bf76553e43",
+  "solveSteps": [
+    "가로축의 계급 경계가 0, 4, 8, 12, 16, 20이므로 계급의 크기 a = 4시간이다.",
+    "많은 쪽(오른쪽)부터 누적하면 16~20시간 계급에 4명이 있다.",
+    "12~16시간 계급에 8명이 있으므로, 많은 쪽에서 6번째 학생은 12~16시간 계급에 속한다.",
+    "이 계급의 계급값 b = (12 + 16) / 2 = 14시간이다.",
+    "따라서 a + b = 4 + 14 = 18시간이거나 a+b=22이다. 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_INTERPRETATION",
+  "unitEvidence": "조사하여 나타낸 히스토그램에서,",
+  "rpmRecordId": "M1-RPM-230",
+  "rpmEvidence": "히스토그램의 계급의 크기와 상위 순위 도수를 구한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "NONE",
+  "typeReason": "히스토그램에서 계급의 크기와 특정 순위가 속한 계급값을 구하는 aligned 유형이다.",
+  "rpmReason": "히스토그램을 해석하여 계급값과 계급의 크기를 구하는 aligned RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "계급의 크기를 읽고 상위 누적 순위로 계급값을 구해 합하는 난이도 2 aligned 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "히스토그램",
+        "quote": "조사하여 나타낸 히스토그램에서,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계급",
+        "quote": "계급의 크기를 $a$시간,",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "히스토그램",
+        "quote": "히스토그램의 계급의 크기와 상위 순위 도수를 구한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계급",
+        "quote": "가로축의 계급 경계가",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "히스토그램의 계급 크기 a=4와 상위 6번째 계급값 b=18의 합 a+b=22를 aligned 계산했다."
+}

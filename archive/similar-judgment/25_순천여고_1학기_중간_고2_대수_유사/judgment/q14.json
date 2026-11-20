@@ -1,0 +1,71 @@
+{
+  "qid": 14,
+  "itemFingerprint": "a03786c852bd030a",
+  "solveSteps": [
+    "함수 $f(x)$ 는 cases 식 정의에 따라 $y$축에 대하여 대칭인 그래프이다 (배점 4.2점).",
+    "$x \\ge 0$ 에서 $f(x) = |5^x - 5|$: $x=0$ 일 때 $f(0) = |1-5| = 4$, $x=1$ 에서 $f(1)=0$, $x>1$ 에서 무한히 증가한다.",
+    "$y$축 대칭성에 의해 $k=4$ 일 때 $x=0$ 및 $x = \\pm \\log_5 9$ 등 서로 다른 3개의 실근을 가진다.",
+    "따라서 $k = 4$ 이며 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "함수 $f(x) = \\begin{cases} |5^x - 5| & (x \\ge 0) \\\\ |5^{-x} - 5| & (x < 0) \\end{cases}$와 직선 $y = k$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-A-02",
+  "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+  "unitEvidence": "ases}$와 직선 $y = k$",
+  "rpmRecordId": "H2-M1-RPM-086",
+  "rpmReason": "지수함수 절댓값 그래프와 수평 직선의 교점 개수를 추론하는 H2-M1-RPM-086 지수함수의 활용 > 그래프 교점 레코드에 해당한다 (cases 식, 배점 4.2점).",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+  "typeReason": "조각별 절댓값 지수함수의 대칭성과 극점·경계값을 분석하여 직선 $y=k$ 와의 교점 개수가 3개가 되는 경계를 찾는 유형이다 (cases 식, 배점 4.2점).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "함수의 대칭성을 파악하고 절댓값 함수의 꺾이는 점과 $y$축 교점에서의 교점 개수 변화를 시각화해야 하는 난이도 3 문항이다 (cases 식, 배점 4.2점).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "수)에 대하여 방정식 $f(x) ="
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 세 실근을 가질 때,"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "$y$축 대칭성을 고려하면 방",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "ases}$와 직선 $y = k$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$y$축 대칭성과 $x \\ge 0$ 에서의 꼭짓점 $f(0)=4$ 를 분석하여 교점이 3개 생기는 높이가 $k=4$ 임을 판정했다 (cases 식, 배점 4.2점).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "절댓값 기호가 포함된 지수함수 그래프와 직선의 교점 개수를 다루므로 H22-A-02 지수함수에 속한다."
+}

@@ -1,0 +1,74 @@
+{
+  "qid": "17",
+  "itemFingerprint": "8b4d3de6176a3587",
+  "solveSteps": [
+    "y = x^2 - 4kx + 3k^2 - 4k - 10을 표준형으로 고친다.",
+    "y = (x - 2k)^2 - k^2 - 4k - 10이므로 꼭짓점은 (2k, -k^2 - 4k - 10)이다.",
+    "이 점이 y = x - 1 위에 있으므로 대입하면 -k^2 - 4k - 10 = 2k - 1이다.",
+    "k^2 + 6k + 9 = 0에서 (k+3)^2 = 0이므로 k = -3이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = x^2 - 4kx + 3k^",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "일차항 -4kx를 포함한 식을 완전제곱식으로 고쳐 꼭짓점을 직선에 대입해 k = -3을 구하는 문제이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_VERTEX_FORM_VERTEX_LOCUS",
+  "typeReason": "이차항과 일차항 -4kx로 꼭짓점을 구하고 직선 위의 점 조건으로 상수 k를 결정하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "일차항 -4kx가 포함된 식의 꼭짓점을 구해 일차함수 식에 대입하여 푸는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = x^2 - 4kx + 3k^2"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준형",
+        "src": "solution",
+        "quote": "이차함수를 표준형으로 고치면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "그래프의 꼭짓점이 일차함수 $y = x - 1$의"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "이차함수와 일차함수의 식을 확인한다.",
+    "goal": "상수 k의 값을 계산한다.",
+    "method": "표준형 변형으로 꼭짓점을 구한 뒤 직선에 대입한다.",
+    "condition": "꼭짓점이 직선 위에 있다는 조건을 쓴다."
+  },
+  "how": "식에서 꼭짓점 $(2k, -k^2-4k-10)$을 구해 $y = x - 1$에 대입하여 $k^2 + 6k + 9 = 0$에서 $k = -3$을 얻어 정답 ①로 판정하였다.",
+  "review": {
+    "reviewer": null,
+    "comment": null,
+    "pass": null
+  }
+}

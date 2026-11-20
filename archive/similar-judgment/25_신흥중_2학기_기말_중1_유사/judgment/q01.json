@@ -1,0 +1,76 @@
+{
+  "qid": 1,
+  "itemFingerprint": "c336bb5661c9e420",
+  "solveSteps": [
+    "1) 한 원에서 중심각의 크기에 정비례하는 것은 호의 길이와 부채꼴의 넓이이다.",
+    "2) 현의 길이는 중심각의 크기가 커짐에 따라 길어지지만 중심각에 정비례하지는 않는다.",
+    "3) 따라서 ①의 '한 원에서 현의 길이는 중심각의 크기에 정비례한다'는 옳지 않다.",
+    "4) 반원은 중심각 180도인 부채꼴이자 활꼴이며 나머지 보기들은 모두 참이다.",
+    "5) 따라서 옳지 않은 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "원과 부채꼴에 대한 설명 중 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M1-RPM-201",
+  "rpmReason": "중심각 180도인 반원 및 원과 부채꼴에서 호의 길이는 중심각에 정비례하나 현은 정비례하지 않는 성질을 판정하는 M1-RPM-201 문제이다.",
+  "problemTypeKey": "PT_M1_CIRCLE_MEASURE",
+  "templateKey": "NONE",
+  "typeReason": "원과 부채꼴, 활꼴, 중심각 180도 반원의 용어 정의와 중심각 정비례 성질을 확인하는 PT_M1_CIRCLE_MEASURE 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "중심각 180도인 반원과 부채꼴의 기본 개념 및 현의 길이 정비례 여부를 묻는 1단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "원과 부채꼴에 대한 설명"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심각",
+        "src": "solution",
+        "quote": "t{한 원에서 중심각의 크기에 정비"
+      }
+    ],
+    "method": [
+      {
+        "term": "정비례",
+        "src": "solution",
+        "quote": "심각의 크기에 정비례하는 것은 호의",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "부채꼴에서 두 반지름이 이루는 각을"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "원과 부채꼴의 기본 정의 조건이다.",
+    "goal": "중심각에 정비례하는 대상을 판별하는 목표이다.",
+    "method": "정비례 관계를 대조하는 방법이다.",
+    "condition": "두 반지름이 이루는 각 중심각 조건이다."
+  },
+  "how": "중심각 180도인 반원과 달리 현의 길이는 중심각에 정비례하지 않으므로 보기 ①이 옳지 않음을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

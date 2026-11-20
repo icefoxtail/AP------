@@ -1,0 +1,63 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "1b4ea15bab6d4768",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "25 / 11 을 소수로 나타내면 2.272727... = 2.dot{2}dot{7} 이다.",
+    "순환마디는 2, 7 로 길이가 2이다.",
+    "소수점 아래 홀수 번째 자리는 2, 짝수 번째 자리는 7 이다.",
+    "26번째 자리는 짝수이므로 7 이고, 27번째 자리는 홀수이므로 2 이다.",
+    "따라서 두 숫자의 곱은 7 * 2 = 14 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "분수 $\\dfrac{25}{",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "분수 25 / 11 의 순환마디 주기를 이용해 26번째, 27번째 자리 숫자의 곱 14 를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-003",
+  "rpmReason": "분수 25 / 11 의 순환마디 27 의 주기를 파악하여 특정 자릿수 숫자를 결정한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "분수 25 / 11 을 순환소수로 고치고 26번째 자리 7 과 27번째 자리 2 의 곱 14 를 구한다.",
+  "how": "25/11 = 2.dot{2}dot{7} 에서 26번째 숫자 7, 27번째 숫자 2 의 곱 14 를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac{25}{11}$를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자릿수",
+        "src": "stem",
+        "quote": "자리의 숫자와 $27$번째 자리의"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "src": "solution",
+        "quote": "순환마디의 주기를 파악한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "src": "stem",
+        "quote": "소수로 나타내었을 때"
+      }
+    ]
+  }
+}

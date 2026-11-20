@@ -1,0 +1,87 @@
+{
+  "qid": 1,
+  "solveSteps": [
+    "ㄱ. 0.248248248...의 순환마디는 248이므로 양 끝 숫자 위에만 점을 찍어야 한다.",
+    "ㄴ. 1.636363...의 순환마디는 63이므로 1.63 위에 점을 찍어야 하므로 거짓이다.",
+    "ㄷ. 0.575757...의 순환마디는 57이므로 0.57 위에 점을 찍은 것은 옳다.",
+    "ㄹ. 0.3888...의 순환마디는 8이므로 0.38 위에 점을 찍은 것은 옳다.",
+    "따라서 옳은 것은 ㄷ, ㄹ이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "순환소수를 간단히 나타낸 것",
+  "rpmRecordId": "M2-RPM-121",
+  "rpmReason": "순환소수 0.248248248과 1.636363의 순환마디와 표현 규칙을 확인하는 문제이다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "0.248248248 등의 순환마디 표기법의 옳고 그름을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수 0.248248248과 1.636363의 순환마디 정의를 직접 묻는 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "quote": "순환소수를 간단히 나타낸 것",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "quote": "순환소수를 간단히 나타낸 것으로 옳은 것",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환마디",
+        "quote": "순환마디를 이루는 숫자가 $3$개 이상일 때는",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순환소수",
+        "quote": "<보기>의 각 순환소수 표현을 검토하면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "0.248248248과 1.636363의 순환마디를 식별하고 3자리 이상일 때 양 끝점에만 점을 찍는 규칙을 적용하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "figureNeedReason": "문항의 발문과 보기에 순환소수 식 0.248248248, 1.636363 등이 텍스트로 완전히 제시되어 그림 없이 해결할 수 있다.",
+  "solutionFigureNeedReason": "해설의 순환마디 식별 및 점 표기 설명이 텍스트 수식만으로 완전하게 서술되어 있다.",
+  "unitReason": "순환소수의 순환마디 표기법을 다루는 문항이므로 유리수와 순환소수 단원에 속한다.",
+  "rpmKey": "M2-RPM-121",
+  "difficulty": 1,
+  "difficultyBorderline": false,
+  "termCitations": [
+    {
+      "term": "순환소수",
+      "text": "순환소수"
+    },
+    {
+      "term": "순환마디",
+      "text": "순환마디"
+    }
+  ],
+  "itemFingerprint": "ff2d80a7db2d63ee"
+}

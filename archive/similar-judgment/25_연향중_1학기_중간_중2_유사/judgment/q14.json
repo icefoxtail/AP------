@@ -1,0 +1,70 @@
+{
+  "qid": "14",
+  "itemFingerprint": "c5dfc4060d9ac42b",
+  "solveSteps": [
+    "원기둥 A의 밑면의 반지름을 r, 높이를 h라 하면 부피 V_A = pi * r^2 * h이다.",
+    "원기둥 B의 밑면의 반지름은 2r, 높이는 (1/3)h이다.",
+    "원기둥 B의 부피 V_B = pi * (2r)^2 * ((1/3)h) = (4/3) pi * r^2 * h = (4/3) V_A이다.",
+    "따라서 V_A = (3/4) V_B이다.",
+    "원기둥 A의 부피는 원기둥 B의 부피의 3/4배이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "두 원기둥 A, B가 있다. 원기둥 B의 높이",
+  "rpmRecordId": "M2-RPM-014",
+  "rpmReason": "원기둥 부피 공식 V = pi * r^2 * h를 이용하여 V_B = (4/3)V_A임을 유도하고 V_A = (3/4)V_B를 구하는 문제이다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식의 곱셈과 거듭제곱을 원기둥 A, B 부피 식에 적용하여 두 입체도형 부피의 비를 구하는 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "반지름 2배, 높이 1/3배에 따른 부피 변화율 (4/3)배를 계산하고 역수 (3/4)배를 도출하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "원기둥",
+        "src": "stem",
+        "quote": "두 원기둥 A, B가 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "부피",
+        "src": "stem",
+        "quote": "원기둥 A의 부피는 원기둥 B의 부피의 몇 배인지"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "원기둥의 부피 공식 $V = \\pi r^2 h$를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "밑면의 반지름의 길이는 원기둥 A의"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 원기둥의 반지름과 높이 관계를 확인한다.",
+    "goal": "원기둥 A의 부피가 B의 부피의 몇 배인지 구한다.",
+    "method": "원기둥 부피 공식을 적용하여 비를 계산한다.",
+    "condition": "높이 1/3배와 반지름 2배 조건을 반영한다."
+  },
+  "how": "$V_B = \\pi (2r)^2 (h/3) = (4/3)V_A$로부터 $V_A = (3/4)V_B$를 얻어 정답 ⑤로 판정하였다."
+}

@@ -1,0 +1,71 @@
+{
+  "qid": 1,
+  "itemFingerprint": "9f342c542c025b8d",
+  "solveSteps": [
+    "순환소수 x = 0.474747... 라 하자.",
+    "순환마디가 47로 2자리이므로 양변에 100을 곱하면 100x = 47.474747... 이다.",
+    "두 식을 변끼리 빼면 99x = 47 이므로 x = 47/99 이다.",
+    "47과 99는 서로소이므로 이미 기약분수이다. 답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "순환소수 $0.\\ove",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "100x - x = 99x = 47 관계식을 세워 순환소수를 분수 47/99로 바꾼다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환마디 47에 대해 100을 곱해 기약분수 47/99를 구하는 순환소수의 분수 표현 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환소수 0.4747...을 100을 곱해 기약분수 47/99로 고치는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "quote": "순환소수 $0.\\ove",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "기약분수",
+        "quote": "e{47}$을 기약분수로 나타낸 것은",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "분수",
+        "quote": "47}$을 기약분수로 나타낸 것은",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소수",
+        "quote": "순환소수 $0.\\ove",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "0.4747... 에 100을 곱한 100x - x = 47로부터 x = 47/99를 구하고 이미 기약분수임을 확인하여 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

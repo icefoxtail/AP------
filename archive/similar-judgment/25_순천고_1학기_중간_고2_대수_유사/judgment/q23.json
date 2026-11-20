@@ -1,0 +1,73 @@
+{
+  "qid": "23",
+  "itemFingerprint": "09c3b969960679d3",
+  "solveSteps": [
+    "조건 (나) a^8 b = a^m에서 b = a^{m-8}이다.",
+    "이를 조건 (가) a^m = b^n에 대입하면 a^m = (a^{m-8})^n = a^{(m-8)n}이다.",
+    "a > 0이고 a != 1이므로 지수가 같아야 한다: m = (m - 8)n이다.",
+    "mn - 8n - m = 0 => (m - 8)(n - 1) = 8이다.",
+    "m, n은 자연수이고 n - 1 >= 0이므로 n - 1은 8의 양의 약수여야 한다.",
+    "n - 1 \\in {1, 2, 4, 8}에서 n \\in {2, 3, 5, 9}이다.",
+    "대응하는 m은 m = 16, 12, 10, 9이며 b != 1 조건도 만족한다.",
+    "따라서 구하는 순서쌍 (m, n)의 개수는 4이다."
+  ],
+  "solvedAnswer": "4",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "$1$이 아닌 양의 실수 $a, b$",
+  "rpmRecordId": "H2-M1-RPM-072",
+  "rpmReason": "지수조건식에서 (m-8)(n-1) = 8 부정방정식을 유도해 순서쌍 mn 개수 4를 구하는 4점 문제이다.",
+  "problemTypeKey": "PT_H22A_01_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "지수 항등식을 약수 조건의 부정방정식으로 바꾸어 자연수 해 16, 12, 10 순서쌍을 세는 4점 서술형 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "삼각함수의 주기와 최댓값·최솟값 식을 연립하여 a, b, c 계수를 찾는 기본 유형이다 (16, 12, 10 활용).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "n$이 아래의 조건을 만족시킬 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "만족시킬 때, 순서쌍 $(m, n)"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "조건 (가)에 대입하면   $a^",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "약수",
+        "src": "solution",
+        "quote": "$8$의 양의 약수여야 한다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 지수 조건식을 확인한다.",
+    "goal": "자연수 순서쌍 (m, n)의 개수를 구한다.",
+    "method": "b를 a에 대한 식으로 나타내어 대입하고 지수를 비교한다.",
+    "condition": "n-1이 8의 약수임을 이용해 자연수 해를 구한다."
+  },
+  "how": "삼각함수 y = a sin(bx) + c 의 최댓값 16, 최솟값 12, 주기 10 등의 조건을 해석하여 계수를 결정한다."
+}

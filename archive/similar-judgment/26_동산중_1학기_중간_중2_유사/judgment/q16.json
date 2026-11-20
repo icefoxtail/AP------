@@ -1,0 +1,66 @@
+{
+  "qid": 16,
+  "itemFingerprint": "fee3a437bff481bd",
+  "solveSteps": [
+    "x = 2 를 각 보기의 부등식에 대입하여 참과 거짓을 판정한다.",
+    "1번: 3(2) - 1 = 5 > 8 은 거짓이다.",
+    "2번: 2 - 5 = -3 >= 0 은 거짓이다.",
+    "3번: 2(2) + 1 = 5 <= 7 은 참이다.",
+    "4번: -2(2) + 3 = -1 > 1 은 거짓, 5번: 4 - 2 = 2 <= 1 은 거짓이다.",
+    "따라서 x = 2 를 해로 갖는 올바른 식은 3번이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "$x = 2$를 해로 갖는 부등식은?",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "부등식의 기본 뜻에 따라 x = 2 를 대입하여 참 거짓을 판별하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "부등식에 x = 2 를 대입해 해가 되는지 확인하는 유형으로 후보에 적합한 PT가 없다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x = 2 를 각 선지에 단순 대입하여 부등호 성립을 점검하는 1단계 기본 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "stem",
+        "quote": "를 해로 갖는 부등식은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "solution",
+        "quote": " 8$ (거짓) "
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "대입하여 참이 되는 부등식을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x = 2 를 각 보기에 대입하여 2(2) + 1 = 5 <= 7 만이 참임을 확인하고 ③으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

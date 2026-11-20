@@ -1,0 +1,75 @@
+{
+  "qid": 1,
+  "itemFingerprint": "52d90608d5c61b8a",
+  "solveSteps": [
+    "1) 한 호에 대한 중심각의 크기는 그 호에 대한 원주각의 크기의 2배이다.",
+    "2) 원 O에서 호 AB에 대한 원주각이 54도이므로 중심각 x = 2 * 54도 = 108도이다.",
+    "3) 따라서 각 x의 크기는 108도이다.",
+    "4) 따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "unitEvidence": "다음 그림의 원 $O$에서 호 $AB$에 대한 원주각의 크기가 $54^\\circ$일 때, 같은 호에 대한 중심각 $\\angle x$의 크기는? [3점]",
+  "rpmRecordId": "M3-RPM-075",
+  "rpmReason": "호 AB에 대한 원주각 54도에서 중심각 x = 2 * 54도 = 108도를 구하는 M3-RPM-075 문제이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "typeReason": "호 AB에 대한 중심각의 크기가 원주각 54도의 2배인 108도임을 적용하는 TPL_CIRCLE_ANGLE_CENTER_ARC 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원주각",
+        "src": "stem",
+        "quote": "호 $AB$에 대한 원주각의 크기가 $54^\\circ$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심각",
+        "src": "stem",
+        "quote": "같은 호에 대한 중심각 $\\angle x$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "호",
+        "src": "stem",
+        "quote": "다음 그림의 원 $O$에서 호 $AB$에 대한",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "원",
+        "src": "stem",
+        "quote": "다음 그림의 원 $O$에서 호 $AB$에"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "호 AB에 대한 원주각이 54도라는 조건이다.",
+    "goal": "같은 호에 대한 중심각 x의 크기를 구하는 목표이다.",
+    "method": "동일한 호를 기준으로 원주각과 중심각의 관계를 적용하는 방법이다.",
+    "condition": "원 O 위의 호 AB 조건이다."
+  },
+  "how": "호 AB에 대한 중심각 x는 원주각 54도의 2배인 108도임을 확인하여 정답 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "원주각 54도로부터 중심각 108도를 2배 공식으로 직접 계산하는 1단계 기본 문항이다."
+}

@@ -1,0 +1,75 @@
+{
+  "qid": 12,
+  "itemFingerprint": "846c2558f28d6f73",
+  "solveSteps": [
+    "(10 + sqrt(5)) / sqrt(10) = (10*sqrt(10) + sqrt(50)) / 10 = sqrt(10) + (1/2)*sqrt(2) 이다.",
+    "(sqrt(5) + 6) / sqrt(2) = (sqrt(10) + 6*sqrt(2)) / 2 = (1/2)*sqrt(10) + 3*sqrt(2) 이다.",
+    "두 식을 빼면 (1 - 1/2)*sqrt(10) + (1/2 - 3)*sqrt(2) = (1/2)*sqrt(10) - (5/2)*sqrt(2) 이다.",
+    "a = 1/2, b = -5/2 이므로 a + b = -2 이다. 답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "unitEvidence": "분모의 유리화를 각각 수행하",
+  "rpmRecordId": "M3-RPM-008",
+  "rpmReason": "분모를 유리화하여 루트 50을 5루트 2로 바꾸고 루트 10과 루트 2의 계수를 구한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+  "typeReason": "분모를 유리화하고 동류근호를 정리하여 루트 10과 루트 2의 계수 a, b를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모를 10과 2로 각각 유리화하고 루트 50=5루트 2를 정리해 계수 합을 구하는 2단계 계산이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "유리수 $a, b$에",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": "은 후 유리수 계수 $a, b$를",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "quote": "분모의 유리화를 각각 수행하",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분모",
+        "quote": "분모의 유리화를 각",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "각 항을 유리화하여 (10+sqrt(5))/sqrt(10)에서 a=1/2, b=-5/2를 얻어 a+b=-2로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": [],
+  "course": [
+    "MIDDLE3"
+  ],
+  "curriculum": "2015"
+}

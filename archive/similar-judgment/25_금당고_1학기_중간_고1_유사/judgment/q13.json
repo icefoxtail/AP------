@@ -1,0 +1,65 @@
+{
+  "qid": 13,
+  "itemFingerprint": "8517443b962bdf72",
+  "solveSteps": [
+    "$z = \\frac{1 + i}{1 - i} = i$이고, $\\frac{1}{z} = -i$이다.",
+    "$z + \\frac{1}{z} = 0$, $z^2 + \\frac{1}{z^2} = -2$, $z^3 + \\frac{1}{z^3} = 0$, $z^4 + \\frac{1}{z^4} = 2$이다.",
+    "4쌍의 합은 $0 + (-2) + 0 + 2 = 0$이다.",
+    "$26 = 4 \\times 6 + 2$이므로 처음 24쌍의 합은 0이고 마지막 2쌍만 남는다.",
+    "구하는 값은 $(z + \\frac{1}{z}) + (z^2 + \\frac{1}{z^2}) = 0 + (-2) = -2$이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "z + \\frac{1}{z} + z^2 + \\frac{1}{z^2}",
+  "rpmRecordId": "H1-RPM-158",
+  "rpmReason": "$z = i$의 4주기 대칭합에서 24쌍이 0이 됨을 이용하는 H1-RPM-158에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+  "typeReason": "$z = i$의 거듭제곱의 주기 4를 활용하여 $z^{26}$까지의 대칭합을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$z = i$의 거듭제곱 대칭식의 4주기 합이 0임을 파악하여 24쌍을 소거하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z = \\d"
+      }
+    ],
+    "goal": [
+      {
+        "term": "주기",
+        "src": "solution",
+        "quote": "4$개씩 묶어 주기성을 확인하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "연속",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "2$ 이므로 연속한 $4$쌍의"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$z = i$의 4쌍의 합이 0이므로 24쌍 소거 후 마지막 2쌍의 합으로 $-2$를 얻어 ⑤번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

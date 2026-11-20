@@ -1,0 +1,67 @@
+{
+  "qid": 8,
+  "itemFingerprint": "6a46aaeb7f3a586a",
+  "solveSteps": [
+    "f(x) = x^3 + ax^2 + bx - 3 이 (x+1)^2으로 나누어떨어지므로 f(x) = (x+1)^2 * (x+c) 로 둘 수 있다.",
+    "전개식의 상수항은 1^2 * c = c 이고 원래 상수항이 -3이므로 c = -3 이다.",
+    "따라서 f(x) = (x+1)^2 * (x-3) 이다.",
+    "f(x)를 x+2로 나눈 나머지는 f(-2) = (-2+1)^2 * (-2-3) = 1 * (-5) = -5 이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-REMAINDER",
+  "unitEvidence": "다항식 $f(x) = x^3 + ax^2 + bx - 3$이 $(x + 1)^2$으로 나누어떨어질 때,",
+  "rpmRecordId": "H1-RPM-143",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "f(x)=x^3+ax^2+bx-3에서 f(x)=(x+1)^2(x-3)으로 식을 구성하고 f(-2)=-5를 계산했다.",
+  "typeReason": "완전제곱식 나누어떨어짐 조건으로 삼차식 x^3+ax^2+bx-3을 복원한 뒤 일차식 나눗셈 나머지를 구하는 유형이다.",
+  "rpmReason": "고차식 조건 ax^2에서 인수 구조를 세워 다항식을 결정하는 RPM 유형이다.",
+  "difficultyReason": "삼차식 x^3+ax^2+bx-3의 상수항 비교로 일차인수를 즉시 찾아 -5를 계산하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다항식 $f(x) = x^3 + ax^2 + bx - 3$이 $(x + 1)^2$으로 나누어떨어질 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "quote": "$f(x)$를 $x + 2$로 나누었을 때의 나머지는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "quote": "따라서 $f(x)$를 $x + 2$로 나누었을 때의 나머지는",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수항",
+        "quote": "상수항을 비교하면 $1^2 \\times c = -3 \\implies c = -3$이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

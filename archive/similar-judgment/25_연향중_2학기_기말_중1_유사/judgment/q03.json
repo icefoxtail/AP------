@@ -1,0 +1,72 @@
+{
+  "qid": 3,
+  "itemFingerprint": "0d7f8ea7c2de4f32",
+  "solveSteps": [
+    "오각별의 다섯 꼭짓점의 각의 합은 $180^\\circ$ 이다 (각 35, 40, 45).",
+    "$35^\\circ + 40^\\circ + 45^\\circ + 35^\\circ + \\angle z = 180^\\circ \\implies 155^\\circ + \\angle z = 180^\\circ \\implies \\angle z = 25^\\circ$.",
+    "주어진 조건 $\\angle x - \\angle y = 55^\\circ$ 이므로,",
+    "$\\angle x - \\angle y - \\angle z = 55^\\circ - 25^\\circ = 30^\\circ$ 이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "별 모양의 오각별에서 다섯 꼭짓점의 각의 크기가 각각 $35^\\circ$, $40^\\circ$, $45^\\circ$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "unitEvidence": "e z$이고, 삼각형의 외각 성질에",
+  "rpmRecordId": "M1-RPM-197",
+  "rpmReason": "삼각형의 외각의 성질을 결합하여 별 모양 다각형의 각을 계산하는 M1-RPM-197 삼각형·다각형의 각 > 각의 크기 계산에 해당한다 (각 35, 40, 45, 55).",
+  "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CHASE",
+  "templateKey": "TPL_M1_TRIANGLE_ANGLE_CHASE_EXTERIOR_ANGLE_EQUATION",
+  "typeReason": "외각 정리를 연속 적용하여 꼭짓점 각들의 합이 $180^\\circ$ 임을 이용해 각의 차를 구하는 유형이다 (각 35, 40, 45, 55).",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다섯 꼭짓점의 합 공식 $180^\\circ$ 에 대입하여 $\\angle z$ 를 구하고 식의 값을 찾는 난이도 2 문항이다 (각 35, 40, 45, 55).",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "e z$이고, 삼각형의 외각 성질에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "합은 삼각형의 외각 성질을 모으면"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "solution",
+        "quote": "삼각형의 세 내각의 합과 같으므",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성질",
+        "src": "stem",
+        "quote": "삼각형의 외각 성질에 의해 $\\a"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "오각별의 꼭짓점 합 $155^\\circ + \\angle z = 180^\\circ$ 에서 $\\angle z = 25^\\circ$ 를 구하고 $55^\\circ - 25^\\circ = 30^\\circ$ 로 판정했다 (각 35, 40).",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "unitReason": "삼각형의 외각 성질을 이용한 오각별의 각 추적을 다루므로 M1-06 평면도형의 성질에 속한다."
+}

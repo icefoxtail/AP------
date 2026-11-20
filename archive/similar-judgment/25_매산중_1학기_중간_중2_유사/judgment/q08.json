@@ -1,0 +1,66 @@
+{
+  "qid": 8,
+  "itemFingerprint": "4f29dbf1997b8154",
+  "solveSteps": [
+    "1) ① x^5 * x^3 = x^8 != x^15 (거짓)",
+    "2) ② x^8 / x^2 = x^6 != x^4 (거짓)",
+    "3) ③ (a^3)^5 = a^15 != a^8 (거짓)",
+    "4) ④ (3a^3 b)^2 = 9a^6 b^2 != 6a^6 b^2 (거짓)",
+    "5) ⑤ (-x^3 / y^2)^2 = x^6 / y^4 (참)",
+    "따라서 옳은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "지수법칙을 이용한 계산 결과가 옳은 것은? [3점]",
+  "rpmRecordId": "M2-RPM-008",
+  "rpmReason": "거듭제곱의 곱셈, 나눗셈 및 (a^3)^5 = a^15 등의 지수법칙을 검토하여 ⑤가 옳음을 확인하는 M2-RPM-008에 해당한다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "지수법칙의 각 연산 공식을 적용하여 x^15, a^15 등의 오류를 점검하고 올바른 계산식을 판별하는 PT_M2_EXPONENT_LAWS이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지수법칙을 각 보기에 직접 적용하여 a^15 확인 및 ⑤의 정답을 판별하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "지수법칙",
+        "src": "stem",
+        "quote": "지수법칙을 이용한 계산"
+      }
+    ],
+    "goal": [
+      {
+        "term": "지수법칙",
+        "src": "stem",
+        "quote": "지수법칙을 이용한 계산"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙을 각 선지에",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "지수법칙을 점검하여 (a^3)^5 = a^15 등 각 보기를 확인하고 ⑤가 옳음을 확인하여 정답 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

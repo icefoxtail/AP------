@@ -1,0 +1,65 @@
+{
+  "qid": 16,
+  "itemFingerprint": "2c74c114493443ef",
+  "solveSteps": [
+    "1) a > b 에서 양변에 5를 빼면 a - 5 > b - 5 이다. (① 참)",
+    "2) a > b 에서 양변에 -3을 곱하고 2를 더하면 -3a + 2 < -3b + 2 이다. (② 참)",
+    "3) a > b 에서 양변에 -1을 곱하면 -a < -b 이고 4를 더하면 4 - a < 4 - b 이어야 한다.",
+    "4) 따라서 4 - a > 4 - b 라 한 ③은 옳지 않다.",
+    "따라서 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "$a > b$일 때, 다음 중 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M2-RPM-018",
+  "rpmReason": "a > b에서 양변에 음수 -1을 곱하면 4 - a < 4 - b가 됨을 확인하는 부등식의 성질 M2-RPM-018에 해당한다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "부등식 a > b 양변에 음수를 곱할 때 부등호 방향이 바뀌는 성질 4 - a < 4 - b를 판정하는 PT_M2_LINEAR_INEQUALITY이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "a > b에서 -1을 곱하면 4 - a < 4 - b이어야 함을 개념 정의로 즉시 확인하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "> b$일 때 부등식의 기본"
+      }
+    ],
+    "goal": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "부등식의 기본 성질을 적용한"
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "b$의 양변에 음수 $-3$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "a > b에서 음수 -1을 곱하면 부등호 방향이 바뀌어 4 - a < 4 - b이어야 하므로 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

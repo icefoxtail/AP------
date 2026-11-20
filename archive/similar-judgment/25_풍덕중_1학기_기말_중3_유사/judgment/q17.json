@@ -1,0 +1,60 @@
+{
+  "qid": 17,
+  "itemFingerprint": "c97266269a6503c7",
+  "solveSteps": [
+    "y = 3x^2 - 12x + 7 = 3(x^2 - 4x + 4) - 12 + 7 = 3(x-2)^2 - 5 이다.",
+    "꼭짓점은 (2, -5)이고 대칭축은 x = 2 이다.",
+    "x^2의 계수의 절댓값은 |3| = 3 이고, y = 4x^2의 계수 절댓값은 |4| = 4 이므로 |3| < |4| 이다.",
+    "절댓값이 작을수록 폭이 넓으므로 y = 4x^2의 그래프보다 폭이 더 넓다.",
+    "따라서 폭이 좁다고 한 ①은 옳지 않다. 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y=3x^2-12x+7$의 그래프에 대한",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmEvidence": "꼭짓점은 $(2, -5)$, 축은 $x=2$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+  "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+  "typeReason": "일반형 이차함수를 표준형으로 변환하여 그래프의 꼭짓점, 축, 폭 성질의 참·거짓을 판별하는 12 유형이다.",
+  "rpmReason": "일반형 포물선의 완전제곱식 변형을 통해 그래프의 성질을 분석하는 12 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "표준형 변환 후 선지를 하나씩 12 대조하는 표준적인 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "quote": "이차함수 $y=3x^2-12x+7$의 그래프에 대한",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "quote": "설명으로 옳지 않은 것은? [4점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "quote": "꼭짓점은 $(2, -5)$, 축은 $x=2$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대칭축",
+        "quote": "그래프보다 폭이 더 넓다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "y=3x^2-12x+7을 표준형 3(x-2)^2-5로 고치고 계수 절댓값 비교로 폭에 관한 진술을 12 검토했다."
+}

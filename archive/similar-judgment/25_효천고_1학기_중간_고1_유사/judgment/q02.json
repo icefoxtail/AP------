@@ -1,0 +1,66 @@
+{
+  "qid": 2,
+  "itemFingerprint": "3002176521883cae",
+  "solveSteps": [
+    "나머지정리에 의해 f(x)를 x - 3으로 나눈 나머지는 f(3) = 2 이다.",
+    "다항식 x^2 * f(x)를 x - 3으로 나눈 나머지는 이 식에 x = 3을 대입한 값이다.",
+    "3^2 * f(3) = 9 * 2 = 18 이다.",
+    "정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-REMAINDER",
+  "unitEvidence": "다항식 $f(x)$를 $x - 3$으로 나누었을 때의 나머지가 $2$일 때,",
+  "rpmRecordId": "H1-RPM-142",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "TPL_H1_REMAINDER_DIRECT_SUBSTITUTION",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "나머지정리에 의해 f(3)=2이므로 x=3 대입한 3^2*f(3)=9*2=18을 구했다.",
+  "typeReason": "다항식의 일차식 나눗셈 나머지를 함숫값 18 대입으로 즉시 구하는 기본 나머지정리 유형이다.",
+  "rpmReason": "일차식으로 나눈 나머지 조건 f(3)=2를 활용해 18을 계산하는 기본 RPM 유형이다.",
+  "difficultyReason": "나머지정리 기본 공식을 바로 적용하여 9*2=18을 계산하는 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "quote": "다항식 $f(x)$를 $x - 3$으로 나누었을 때의 나머지가 $2$일 때,",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "quote": "다항식 $x^2f(x)$를 $x - 3$으로 나누었을 때의 나머지는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "quote": "나머지정리에 의하여 $f(3) = 2$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대입",
+        "quote": "$x^2f(x)$를 $x - 3$으로 나누었을 때의 나머지는 $x = 3$을 대입한 값이므로",
+        "src": "solution"
+      }
+    ]
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

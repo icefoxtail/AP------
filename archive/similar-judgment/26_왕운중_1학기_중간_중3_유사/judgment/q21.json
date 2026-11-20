@@ -1,0 +1,71 @@
+{
+  "qid": 21,
+  "itemFingerprint": "1189251db7369b22",
+  "solveSteps": [
+    "80을 소인수분해하면 80 = 2^4 * 5 이다.",
+    "sqrt(80x)가 자연수가 되려면 소인수의 지수가 짝수여야 하므로 x = 5*k^2 꼴이어야 한다.",
+    "x가 두 자리 자연수이므로 10 <= 5*k^2 < 100 에서 2 <= k^2 < 20 이다.",
+    "자연수 k는 2, 3, 4 가 가능하며 이때 x = 20, 45, 80 이다.",
+    "따라서 조건을 만족하는 두 자리 자연수 x의 개수는 3개이다."
+  ],
+  "solvedAnswer": "3",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "es x}$가 자연수가 되도록 하는",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmReason": "80 소인수분해를 통해 근호 안의 수가 제곱수가 되도록 하는 제곱근의 성질이다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+  "typeReason": "sqrt(80x)가 자연수가 되도록 하는 조건과 80 관련 수의 범위를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "80을 소인수분해하여 지수 조건을 만족시키는 80 이하의 두 자리 자연수 x의 범위를 구하는 중급 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자릿수",
+        "quote": "의 값 중 두 자리 자연수 $x$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "quote": "연수 $x$의 개수를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "quote": "] $80$을 소인수분해하면 $$80",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "es x}$가 자연수가 되도록 하는",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "80을 소인수분해하여 지수가 홀수인 5를 포함하는 x = 5*k^2 꼴을 세우고 두 자리 자연수 20, 45, 80의 개수 3을 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

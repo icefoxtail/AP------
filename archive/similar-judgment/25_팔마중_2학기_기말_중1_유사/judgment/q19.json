@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "e57d0cdf279f19f0",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "도수분포다각형과 가로축으로 둘러싸인 도형의 넓이는 (계급의 크기) * (도수의 총합) 이다.",
+    "계급의 크기는 12 - 10 = 2 시간이다.",
+    "전체 학생 수와 넓이 조건을 aligned 이용하여 10~12시간 계급의 도수를 구한다.",
+    "정답은 ④번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "어느 학급 학생들의 일주일",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "problemTypeKey": "PT_M1_FREQUENCY",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "도수분포다각형의 넓이 공식과 10~12시간 계급 도수의 관계를 aligned 해석하는 유형이다.",
+  "rpmRecordId": "M1-RPM-231",
+  "rpmReason": "계급의 크기 2 와 전체 도수 30 의 곱으로 다각형 넓이를 aligned 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다각형 넓이 공식으로 전체 도수를 구하고 10~12시간 계급 도수를 aligned 찾는다.",
+  "how": "다각형의 넓이 성질을 aligned 적용하여 10~12시간 계급의 학생 수를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포다각형",
+        "src": "stem",
+        "quote": "조사한 도수분포다각형에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수",
+        "src": "stem",
+        "quote": "계급의 도수가 아래와 같을 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "조사한 도수분포다각형에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계급",
+        "src": "stem",
+        "quote": "보이는 계급의 도수가 아래와 같을"
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "qid": "23",
+  "itemFingerprint": "03c1f81e6d1e64d6",
+  "solveSteps": [
+    "x^2 - ax + b가 두 일차식의 곱으로 인수분해되려면 x^2 - ax + b = (x - m)(x - n) (m, n은 자연수)이어야 한다.",
+    "우변을 전개하면 x^2 - (m + n)x + mn이므로 m + n = a, mn = b이다.",
+    "주사위 눈이므로 1 <= a, b <= 6이다. 완전제곱식이 아니므로 m != n이다.",
+    "1 <= m < n이라 둘 때 가능한 (m, n) 순서쌍을 조사한다.",
+    "m = 1일 때: n = 2이면 a = 3, b = 2; n = 3이면 a = 4, b = 3; n = 4이면 a = 5, b = 4; n = 5이면 a = 6, b = 5이다.",
+    "m = 2일 때: n = 3이면 a = 5, b = 6이다. (n = 4이면 b = 8 > 6이므로 불가).",
+    "따라서 가능한 (a, b) 순서쌍은 (3, 2), (4, 3), (5, 4), (6, 5), (5, 6)의 5가지이다.",
+    "주사위를 두 번 던질 때 나오는 모든 경우의 수는 36이므로 구하는 확률은 5/36이다."
+  ],
+  "solvedAnswer": "5/36",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "[서·논술형 3] 주사위를 두 번 던져서 나오",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmReason": "x^2 - ax + b가 인수분해될 조건 mn = b, m+n = a를 분류해 36 중 5개의 확률을 구하는 문제이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "typeReason": "이차식 ax 인수분해 조건에서 완전제곱식을 제외한 주사위 눈 순서쌍의 확률을 계산하는 서술형 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax 부정방정식의 해를 주사위 눈 범위에서 분류하여 5/36을 유도하는 서술형 복합 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "일차식",
+        "src": "stem",
+        "quote": "-ax+b$가 일차식의 곱으로 인수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "확률",
+        "src": "stem",
+        "quote": "인수분해 될 확률을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "차식의 곱으로 인수분해 될 확률을 구",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제외",
+        "src": "stem",
+        "quote": "해되는 경우는 제외한다.) [7점"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "이차식이 일차식의 곱으로 인수분해되는 조건을 확인한다.",
+    "goal": "만족할 확률을 구한다.",
+    "method": "m+n=a, mn=b 형태로 두고 순서쌍을 분류한다.",
+    "condition": "완전제곱식이 되는 경우를 제외하고 주사위 눈 범위를 지킨다."
+  },
+  "how": "완전제곱식을 제외하고 인수분해되는 순서쌍 5가지를 찾아 36으로 나눈 5/36으로 판정하였다."
+}

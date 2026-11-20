@@ -1,0 +1,59 @@
+{
+  "qid": 1,
+  "itemFingerprint": "ab2a7cbfe00f027c",
+  "solveSteps": [
+    "다항식 3x(x-2)(2x+1)은 단항식 3x와 두 일차식 (x-2), (2x+1)의 곱으로 인수분해되어 있다.",
+    "각 인수는 3, x, x-2, 2x+1 및 이들의 곱(예: x(2x+1))이다.",
+    "x+2는 주어진 다항식의 인수들의 곱으로 만들 수 없으므로 인수가 아니다.",
+    "따라서 인수가 아닌 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "다항식 $3x(x-2)(2x+1)$의",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmEvidence": "인수들의 곱이므로 인수이다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
+  "typeReason": "다항식 3x(x-2)(2x+1)에서 주어진 보기 중 인수가 아닌 것을 3 판별하는 인수 판별 유형이다.",
+  "rpmReason": "다항식 3x(x-2)(2x+1)을 공통인수와 각 인수의 곱 형태로 분석하는 공통인수 묶기 3 유형이다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식 3x(x-2)(2x+1)의 인수의 뜻을 직접 적용하여 3 답을 구하는 기본 난이도 1 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다항식 $3x(x-2)(2x+1)$의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "quote": "인수가 아닌 것은? [3점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수",
+        "quote": "인수들의 곱이므로 인수이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식",
+        "quote": "주어진 다항식은 $3x(x-2)(2x+1)$이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "다항식 3x(x-2)(2x+1)의 각 인수를 곱의 형태로 분해하여 x+2가 인수가 아님을 3 판정했다."
+}

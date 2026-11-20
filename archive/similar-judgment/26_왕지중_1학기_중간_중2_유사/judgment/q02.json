@@ -1,0 +1,88 @@
+{
+  "qid": 2,
+  "solveSteps": [
+    "기약분수로 나타내었을 때 분모의 소인수가 2 또는 5뿐이면 유한소수이다.",
+    "① 3/20에서 20 = 2^2 * 5로 유한소수이다.",
+    "② 7/40에서 40 = 2^3 * 5로 유한소수이다.",
+    "③ 9/75 = 3/25 = 3/5^2로 유한소수이다.",
+    "④ 5/18에서 18 = 2 * 3^2이므로 분모에 소인수 3이 있어 유한소수로 나타낼 수 없다.",
+    "⑤ 42/(2^2 * 3 * 7) = 1/2로 유한소수이다. 따라서 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "유한소수로 나타낼 수 없는 것은",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "분수 5/18과 3/20 등의 분모 소인수를 분석하여 유한소수 판별을 수행한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분모 18, 20 등을 소인수분해하여 유한소수로 나타낼 수 없는 것을 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모 18, 20의 소인수를 확인하여 유한소수를 바로 가려내는 1단계 기본 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "quote": "유한소수로 나타낼 수 없는 것은",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유한소수",
+        "quote": "유한소수로 나타낼 수 없는 것은",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "quote": "분수를 기약분수로 나타내었을 때",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "소인수",
+        "quote": "분모의 소인수가 $2$ 또는 $5$뿐이면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "선지 5/18의 분모 18을 소인수분해하면 2 * 3^2이므로 소인수 3이 남아 유한소수가 될 수 없음을 판별하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "figureNeedReason": "분수 3/20, 7/40, 9/75, 5/18 등이 수식으로 온전히 주어져 그림이 필요 없다.",
+  "solutionFigureNeedReason": "소인수분해와 약분 과정이 수식과 텍스트로 명확하게 서술되어 있다.",
+  "unitReason": "기약분수의 분모 소인수에 따른 유한소수 판별을 다루므로 유리수와 순환소수 단원이다.",
+  "rpmKey": "M2-RPM-119",
+  "difficulty": 1,
+  "difficultyBorderline": false,
+  "termCitations": [
+    {
+      "term": "유한소수",
+      "text": "유한소수"
+    },
+    {
+      "term": "기약분수",
+      "text": "기약분수"
+    }
+  ],
+  "itemFingerprint": "c5394fc2ebd8dfee"
+}

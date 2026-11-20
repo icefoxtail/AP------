@@ -1,0 +1,71 @@
+{
+  "qid": 17,
+  "itemFingerprint": "3021611b6389d381",
+  "solveSteps": [
+    "모든 항을 좌변으로 이항하여 일차부등식 기본형으로 정리한다.",
+    "(4/3 - 5/6 - a/6)x + 2 - (-1) >= 0이다.",
+    "x의 계수를 통분하면 (8 - 5 - a)/6 = (3 - a)/6이다.",
+    "x에 대한 일차부등식이 되려면 x의 계수가 0이 아니어야 하므로 (3 - a)/6 != 0에서 a != 3이다.",
+    "따라서 a의 값이 될 수 없는 것은 3이므로 정답은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "가 일차부등식이 되도록 하는 수 $a$의 값이 아닌 것은?",
+  "rpmRecordId": "M2-RPM-141",
+  "rpmReason": "x의 계수 (3 - a)/6이 0이 되지 않아야 하는 일차부등식의 계수 조건 문제이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY_IDENTIFICATION",
+  "templateKey": "TPL_M2_SELECT_VALID_LINEAR_INEQUALITIES",
+  "typeReason": "x의 계수 (3 - a)/6 != 0 조건을 통해 일차부등식이 될 조건을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "일차부등식의 정의에 따라 계수 (3 - a)/6 != 0에서 a != 3을 바로 판단하는 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "quote": "가 일차부등식이 되도록 하는 수 $a$의 값이 아닌 것은? (단, $a$는 상수)",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차부등식",
+        "quote": "가 일차부등식이 되도록 하는 수 $a$의 값이 아닌 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "최고차항",
+        "quote": "부등식이 $x$에 대한 일차부등식이 되려면 최고차항인 $x$의 계수가 $0$이 아니어야 한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "최고차항인 $x$의 계수가 $0$이 아니어야 한다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x의 계수가 (3-a)/6임을 구하고 0이 아니어야 하므로 a!=3임을 밝혀 ⑤번을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

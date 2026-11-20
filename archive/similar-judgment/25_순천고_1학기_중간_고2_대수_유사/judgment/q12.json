@@ -1,0 +1,71 @@
+{
+  "qid": "12",
+  "itemFingerprint": "f3c01cfb012633c0",
+  "solveSteps": [
+    "1/9 <= x <= 27에서 t = \\log_{1/3} x의 범위를 구한다.",
+    "\\log_{1/3}(27) = -3이고 \\log_{1/3}(1/9) = 2이므로 -3 <= t <= 2이다.",
+    "|t|의 범위는 0 <= |t| <= 3이다.",
+    "y = |t| + 1이므로 최솟값은 0 + 1 = 1 (t = 0일 때)이다.",
+    "최댓값은 3 + 1 = 4 (t = -3일 때)이다.",
+    "따라서 최댓값과 최솟값의 합은 4 + 1 = 5이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-03",
+  "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
+  "unitEvidence": "정의역이 $\\left\\{x \\,\\mi",
+  "rpmRecordId": "H2-M1-RPM-090",
+  "rpmReason": "27 구간에서 절댓값 로그함수를 치환해 최댓값과 최솟값의 합 5를 구하는 4.3점 문제이다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "NONE",
+  "typeReason": "로그의 절댓값 그래프 치환을 통해 27 범위에서 최대·최소 합을 도출하는 4.3점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "t 범위를 -3부터 2까지 구하고 절댓값 취해 0부터 3까지 범위로 5를 내는 4.3점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "정의역",
+        "src": "stem",
+        "quote": "정의역이 $\\left"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$의 최댓값과 최솟값의 합은? (4"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "< 1$이므로 감소함수이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "함수",
+        "src": "solution",
+        "quote": "1$이므로 감소함수이다.   $\\"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "정의역과 절댓값 로그함수 식을 확인한다.",
+    "goal": "최댓값과 최솟값의 합을 구한다.",
+    "method": "로그를 t로 치환해 절댓값의 범위를 구한다.",
+    "condition": "최소는 t = 0일 때, 최대는 t = -3일 때임을 파악한다."
+  },
+  "how": "치환 $t = \\log_{1/3} x$에서 $|t| \\le 3$이므로 최대 4, 최소 1의 합 5로 4.3점 ④를 판정하였다."
+}

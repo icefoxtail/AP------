@@ -1,0 +1,59 @@
+{
+  "qid": 3,
+  "itemFingerprint": "556204f960e1aad3",
+  "solveSteps": [
+    "정오각형 밑면에 삼각형 5개가 붙어 있는 전개도를 접으면 오각뿔이 만들어진다.",
+    "오각뿔의 모서리의 개수는 밑면 5개, 옆면 5개로 a = 10 이다.",
+    "오각뿔의 꼭짓점의 개수는 밑면 5개, 각뿔의 꼭짓점 1개로 b = 6 이다.",
+    "따라서 a + b = 10 + 6 = 16 이다. 정답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "figureNeed": "NONE",
+  "solutionFigureNeed": "NONE",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "unitEvidence": "전개도를 접어서 만든 입체도형의",
+  "rpmRecordId": "M1-RPM-208",
+  "rpmEvidence": "전개도를 접어 만들 수 있는 입체도형은",
+  "problemTypeKey": "PT_M1_POLYHEDRON_COMPONENT_COUNT",
+  "templateKey": "TPL_M1_POLYHEDRON_COMPONENT_COUNT_CORE",
+  "typeReason": "전개도에서 입체도형을 유추하고 구성요소인 모서리와 꼭짓점 개수를 16 구하는 유형이다.",
+  "rpmReason": "다면체의 전개도로부터 입체도형의 모서리와 꼭짓점을 계산하는 16 RPM 유형이다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "전개도를 접어 오각뿔임을 파악하고 a+b=16을 구하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "전개도",
+        "quote": "전개도를 접어서 만든 입체도형의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "모서리",
+        "quote": "모서리의 개수를 $a$, 꼭짓점의 개수를 $b$라 할 때, $a+b$의 값은? [3점]",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "각뿔",
+        "quote": "전개도를 접어 만들 수 있는 입체도형은",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "전개도",
+        "quote": "전개도를 접었을 때 만들어지는 입체도형을 파악한다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "how": "전개도로 오각뿔을 복원하고 모서리 a=10과 꼭짓점 b=6의 합 a+b=16을 aligned 계산했다."
+}

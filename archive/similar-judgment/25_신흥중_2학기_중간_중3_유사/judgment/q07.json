@@ -1,0 +1,76 @@
+{
+  "qid": 7,
+  "itemFingerprint": "6e059c007a0dd1e1",
+  "solveSteps": [
+    "1) 일차방정식 3x - 4y + 12 = 0을 y에 관해 정리하면 y = (3/4)x + 3이므로 기울기는 3/4이다.",
+    "2) x축과 이루는 예각 a에 대해 tan a = 3/4이다.",
+    "3) 밑변 4, 높이 3인 직각삼각형에서 빗변은 sqrt(4^2 + 3^2) = 5이다.",
+    "4) sin a = 3/5, cos a = 4/5이므로 sin a + cos a = 3/5 + 4/5 = 7/5이다.",
+    "5) 따라서 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "일차방정식 $3x-4y+12=0$의 그래프가 $x$축과 이루는 예각의 크기를 $a^\\circ$라 할 때, $\\sin a^\\circ + \\cos a^\\circ$의 값은?",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmReason": "일차방정식 3x - 4y + 12 = 0의 기울기 3/4으로부터 tan a = 3/4을 구하고 빗변 5인 직각삼각형에서 sin a + cos a = 7/5을 산출하는 M3-RPM-056 문제이다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "typeReason": "일차방정식 3x - 4y + 12 = 0의 기울기 3/4에서 탄젠트를 얻고 기하학적으로 sin, cos을 유도하여 합 7/5을 계산하는 TPL_TRIG_RATIO_GEOMETRIC_DERIVATION 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $3x-4y+12=0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "\\sin a^\\circ + \\cos a^\\circ = \\dfrac{3}{5} + \\dfrac{4}{5} = \\dfrac{7}{5}"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "직선의 기울기는 $\\dfrac{3}{4}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "예각",
+        "src": "stem",
+        "quote": "그래프가 $x$축과 이루는 예각의 크기를 $a^\\circ$라 할 때,"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "일차방정식 3x - 4y + 12 = 0 조건이다.",
+    "goal": "sin a + cos a의 합을 구하는 목표이다.",
+    "method": "직선의 기울기로부터 tan a = 3/4을 이용해 직각삼각형을 복원하는 방법이다.",
+    "condition": "x축의 양의 방향과 이루는 예각 a 조건이다."
+  },
+  "how": "일차방정식 3x - 4y + 12 = 0의 기울기 3/4에서 빗변 5인 직각삼각형을 얻어 sin a + cos a = 7/5임을 확인해 정답 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "일차방정식 3x - 4y + 12 = 0에서 기울기 3/4을 찾고 피타고라스 정리로 빗변 5를 구해 삼각비 합 7/5을 구하는 2단계 문항이다."
+}

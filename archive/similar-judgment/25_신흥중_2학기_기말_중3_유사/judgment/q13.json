@@ -1,0 +1,77 @@
+{
+  "qid": 13,
+  "itemFingerprint": "a5ddb7c228c9ca47",
+  "solveSteps": [
+    "1) ① 평균, 중앙값, 최빈값은 대푯값이고 산포도에는 분산, 표준편차가 있다. (거짓)",
+    "2) ② 편차의 제곱의 평균은 분산이며 표준편차는 분산의 양의 제곱근이다. (거짓)",
+    "3) ③ 표준편차가 작을수록 자료가 평균 주변에 밀집되어 고르게 분포한다. (참)",
+    "4) ④ 편차의 총합은 항상 0이다. (거짓)",
+    "5) ⑤ 편차의 절댓값이 클수록 평균에서 멀리 떨어져 있다. (거짓)",
+    "6) 따라서 옳은 설명은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "unitEvidence": "다음 설명 중 옳은 것은? [4점]",
+  "rpmRecordId": "M3-RPM-085",
+  "rpmReason": "표준편차가 작을수록 변량이 평균 주변에 밀집하여 고르게 분포한다는 산포도의 성질을 판별하는 M3-RPM-085 문제이다. 편차의 총합은 항상 0이다.",
+  "problemTypeKey": "PT_M3_STATISTICS_CONCEPTS_TRUE_FALSE",
+  "templateKey": "TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION",
+  "typeReason": "산포도, 편차 총합 0, 분산 및 표준편차의 정의와 분포 특성을 판정하는 TPL_M3_STATISTICS_CONCEPTS_TRUE_FALSE_DEFINITION 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "산포도",
+        "src": "choices",
+        "quote": "산포도에는 평균, 중앙값, 최빈값이 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "진술",
+        "src": "stem",
+        "quote": "다음 설명 중 옳은 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준편차",
+        "src": "choices",
+        "quote": "표준편차가 작을수록 변량들은 평균을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "평균",
+        "src": "choices",
+        "quote": "표준편차가 작을수록 변량들은 평균을"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "통계 산포도 개념 설명 조건이다.",
+    "goal": "옳은 설명을 선택하는 목표이다.",
+    "method": "표준편차와 자료의 밀집도 성질을 적용하는 방법이다.",
+    "condition": "평균 중심의 분포 조건이다."
+  },
+  "how": "표준편차가 작을수록 변량들이 평균을 중심으로 밀집되어 분포가 고르다는 보기 ③이 참임을 확인하여 정답 ③으로 판정하였다. 편차의 총합은 항상 0이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "표준편차와 산포도의 기본 개념 및 분포의 의미를 묻는 1단계 개념 판정 문항이다. 편차 총합 0의 정의를 확인한다."
+}

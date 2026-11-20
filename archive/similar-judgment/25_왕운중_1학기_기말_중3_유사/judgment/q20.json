@@ -1,0 +1,56 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "38ce95c1fb914996",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "y = x^2 - 4x - 5 = (x - 2)^2 - 9 이므로 꼭짓점은 C(2, -9) 이다.",
+    "y절편은 D(0, -5) 이므로 OD = 5 이고, 반대쪽 점은 E(0, 5) 이다.",
+    "두 삼각형 ABC 와 ABE 는 선분 AB 를 공통 밑변으로 갖는다.",
+    "따라서 넓이의 비는 높이의 비와 같으므로 |-9| : 5 = 9 : 5 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "아래 그림은 이차함수",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "아래 그림은 이차함수 $y",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_APPLICATION",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_M3_GRAPH_GEOMETRY_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "공통 밑변을 갖는 두 삼각형 ABC 와 ABE 의 넓이 비를 꼭짓점 높이로 구하는 유형이다.",
+  "rpmRecordId": "M3-RPM-052",
+  "rpmReason": "꼭짓점 C와 절편 점 E의 y좌표 크기 비로 삼각형 ABC 의 넓이 비를 계산한다.",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공통 밑변 성질을 파악하고 삼각형 ABC 의 높이 9와 절편 높이 5의 비를 구한다.",
+  "how": "두 삼각형 ABC와 ABE의 공통 밑변 성질로 높이 비 9:5를 계산하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "아래 그림은 이차함수 $y = x^2 - 4x - 5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "넓이의 비는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "두 삼각형 $\\triangle\\mathrm{ABC}$와",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

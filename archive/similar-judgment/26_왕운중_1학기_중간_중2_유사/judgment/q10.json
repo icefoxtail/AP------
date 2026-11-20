@@ -1,0 +1,70 @@
+{
+  "qid": 10,
+  "itemFingerprint": "7fdda26f79db0e00",
+  "solveSteps": [
+    "16 = 2^4 이므로 16^6 = (2^4)^6 = 2^(4*6) = 2^24 이다.",
+    "2^3 = A 이므로 2^24를 2^3의 거듭제곱으로 나타내면 2^(3*8) = (2^3)^8 = A^8 이다.",
+    "따라서 16^6을 A로 나타내면 A^8이다. 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$을 $2$의 거듭제곱으로 나타내면",
+  "rpmRecordId": "M2-RPM-126",
+  "rpmReason": "16^6 = (2^4)^6 = 2^24 = (2^3)^8 = A^8로 지수법칙 거듭제곱을 변형한다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "밑 16을 2^4로 바꾸어 16^6 = 2^24를 2^3 = A의 거듭제곱 A^8로 나타내는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "16 = 2^4로 변환하여 2^24를 만든 뒤 (2^3)^8 = A^8로 표현하는 2단계 지수 변형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "quote": "$을 $2$의 거듭제곱으로 나타내면",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "변환",
+        "quote": "듭제곱 형태로 변형하면 $$ 2^",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "quote": "주어진 식에 대입하면 $$ 16",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "거듭제곱",
+        "quote": "$을 $2$의 거듭제곱으로 나타내면",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "16^6 = 2^24 = (2^3)^8에서 2^3 = A를 대입하여 A^8을 얻고 보기 A^12 등 중 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

@@ -1,0 +1,73 @@
+{
+  "qid": 7,
+  "itemFingerprint": "6c7ee03dd47a9ede",
+  "solveSteps": [
+    "① 0.[7] = 7/9 (옳음)",
+    "② 0.[35] = 35/99 (옳음)",
+    "③ 0.5[8] = (58 - 5)/90 = 53/90 (옳음)",
+    "④ 1.4[18] = (1418 - 14)/990 = 1404/990 = 78/55 (옳음)",
+    "⑤ 0.23[4] = (234 - 23)/900 = 211/900 인데 선지는 211/990으로 분모가 틀렸다.",
+    "따라서 옳지 않은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 중 순환소수를 분수로 나타",
+  "rpmRecordId": "M2-RPM-122",
+  "rpmReason": "0.5[8] = 53/90, 0.[35] = 35/99, 0.23[4] = 211/900 공식을 적용해 분수 변환을 확인한다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "순환소수 0.[35]와 0.23[4] 등을 99, 90, 900 등의 분모를 갖는 분수로 고쳐 오류를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "순환마디 공식으로 0.23[4]의 분모가 900이어야 함을 211/990과 비교해 즉시 찾는 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "quote": "다음 중 순환소수를 분수로 나타",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "quote": "중 순환소수를 분수로 나타낸 것으",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "순환소수",
+        "quote": "다음 중 순환소수를 분수로 나타",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "분수",
+        "quote": "중 순환소수를 분수로 나타낸 것으",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "0.23[4] = (234 - 23)/900 = 211/900인데 선지는 211/990으로 잘못 표기되었음을 확인하여 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

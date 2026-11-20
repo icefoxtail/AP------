@@ -1,0 +1,71 @@
+{
+  "qid": "01",
+  "itemFingerprint": "e5e8878723cf3394",
+  "solveSteps": [
+    "① 9^{1/2} = (3^2)^{1/2} = 3 != \\sqrt{3}이다 (거짓).",
+    "② 5^{2/3} = \\sqrt[3]{5^2} = \\sqrt[3]{25}이다 (참).",
+    "③ 4^{-3/2} = (2^2)^{-3/2} = 2^{-3} = 1/8 != 8이다 (거짓).",
+    "④ 3^{-1} = 1/3 != -1/3이다 (거짓).",
+    "⑤ (-2)^{-4} = 1/(-2)^4 = 1/16 != -1/16이다 (거짓).",
+    "따라서 옳은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "다음 중 옳은 것은? (3.",
+  "rpmRecordId": "H2-M1-RPM-069",
+  "rpmReason": "유리수 지수의 정의를 적용하여 25 거듭제곱근과 지수식을 확인하는 3.2점 문제이다.",
+  "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+  "templateKey": "NONE",
+  "typeReason": "지수를 유리수와 정수 범위로 확장할 때 25 등식의 성립 여부를 검증하는 3.2점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "유리수 지수와 음의 정수 지수의 정의를 25와 16 등으로 직접 계산하는 3.2점 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "solution",
+        "quote": "따라서 옳은 것은 ②이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "choices",
+        "quote": "5^{\\frac{2}{3}} = \\sqrt[3]{25}"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "5^{\\frac{2}{3}} = \\sqrt[3]{5^2}",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성질",
+        "src": "stem",
+        "quote": "다음 중 옳은 것은?"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "선지의 지수 및 거듭제곱근 등식들을 확인한다.",
+    "goal": "옳은 선지를 선별한다.",
+    "method": "유리수 지수를 거듭제곱근으로 변환하는 법칙을 적용한다.",
+    "condition": "밑과 지수의 부호 및 연산 규칙을 검토한다."
+  },
+  "how": "유리수 지수 정의에 의해 $5^{2/3} = \\sqrt[3]{25}$가 참이므로 3.2점 문제의 정답 ②로 판정하였다."
+}

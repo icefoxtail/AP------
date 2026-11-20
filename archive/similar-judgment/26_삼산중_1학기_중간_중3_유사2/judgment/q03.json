@@ -1,0 +1,57 @@
+{
+  "qid": 3,
+  "itemFingerprint": "6eba744130d3fe78",
+  "solveSteps": [
+    "1. 기준 수의 범위: sqrt(6) ≈ 2.45, sqrt(18) = 3*sqrt(2) ≈ 4.24이다.",
+    "2. 1번 sqrt(10) ≈ 3.16, 2번 3.5 = sqrt(12.25), 4번 sqrt(6)+1 ≈ 3.45, 5번 2*sqrt(5)-1 ≈ 3.47은 모두 2.45와 4.24 사이에 있다.",
+    "3. 3번 sqrt(3)+3 ≈ 1.732 + 3 = 4.732 > 4.24이므로 sqrt(18)보다 커서 범위 바깥이다.",
+    "4. 따라서 사이에 있는 수가 아닌 것은 3번이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+  "unitEvidence": "두 수 $\\sqrt{6}$과 $\\sqrt{18}$ 사이에 있는 수가 아닌 것은? [4점]",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "두 무리수 sqrt(6)과 sqrt(18)의 대소 및 근삿값 범위를 다루는 M3-RPM-004 레코드입니다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_BETWEEN",
+  "typeReason": "sqrt(6)과 sqrt(18) 사이에 위치하는 무리수를 어림하는 TPL_M3_REAL_COMPARISON_BETWEEN 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "sqrt(6)과 sqrt(18)의 근삿값 범위를 추정하고 각 선지의 범위를 비교하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "src": "solution",
+        "quote": "기준이 되는 두 무리수의 근삿값"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "두 수 $\\sqrt{6}$과 $\\sqrt{18}$ 사이에 있는 수가 아닌 것은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "대소비교",
+        "src": "solution",
+        "quote": "범위를 설정하여 각 선지의 위치를 비교한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "무리수 범위 대소 비교"
+      }
+    ],
+    "condition": []
+  },
+  "how": "sqrt(6) ≈ 2.45, sqrt(18) ≈ 4.24의 범위를 설정하고 3번 선지 sqrt(3)+3 ≈ 4.73이 sqrt(18)을 초과함을 확인하여 3번으로 판정했습니다."
+}

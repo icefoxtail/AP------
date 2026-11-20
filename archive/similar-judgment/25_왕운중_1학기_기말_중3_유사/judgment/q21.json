@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "5b6e5c5913b7acc2",
+  "solvedAnswer": "$p = 12, ; q = 3$",
+  "solveSteps": [
+    "x = -4 를 x^2 + 7x + p = 0 에 대입하면 16 - 28 + p = 0 에서 p = 12 이다.",
+    "x^2 + 7x + 12 = (x + 4)(x + 3) = 0 이므로 다른 한 근은 x = -3 이다.",
+    "x = -3 을 2x^2 + qx + 3 - 4q = 0 에 대입하면 18 - 3q + 3 - 4q = 0 이다.",
+    "21 - 7q = 0 에서 7q = 21, q = 3 이다.",
+    "따라서 p = 12, q = 3 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2 + 7x",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ZERO_PRODUCT",
+  "templateKey": "TPL_M3_ZERO_PRODUCT_COMMON_ROOT",
+  "newKeyProposal": null,
+  "typeReason": "한 근 대입으로 상수 p = 12 를 구하고 다른 근으로 둘째 식의 q를 구하는 서술형 유형이다.",
+  "rpmRecordId": "M3-RPM-031",
+  "rpmReason": "근 x=-4 대입으로 p = 12 를 결정하고 연계된 근으로 q를 구한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "한 근 대입으로 p = 12 를 구하고 다른 근을 다시 대입하는 2단계 서술형이다.",
+  "how": "x=-4 대입으로 p=12를 얻고 다른 근 x=-3 대입으로 q=3을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 + 7x + p = 0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $p, q$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "에 대입하면 $16 - 28 + p = 0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

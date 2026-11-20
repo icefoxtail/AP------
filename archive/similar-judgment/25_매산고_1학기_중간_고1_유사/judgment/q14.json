@@ -1,0 +1,71 @@
+{
+  "qid": 14,
+  "itemFingerprint": "0f0fe72df9ee2f9c",
+  "solveSteps": [
+    "$p(x)$가 서로 다른 두 이차식 $A(x), B(x)$로 각각 나누어떨어지므로 일차 공통인수 $(x - k)$를 가진다.",
+    "$A(x) = (x - k)(x - a)$, $B(x) = (x - k)(x - b)$ ($a \\neq b$)라 하면 $A(x) + B(x) = (x - k)(2x - a - b)$이다.",
+    "이 식이 $(x - 4)^2$으로 나누어떨어지므로 $k = 4$이고 $a + b = 8$이다.",
+    "$A(2) = (2 - 4)(2 - a) = 0 \\implies a = 2$이므로 $b = 6$이다.",
+    "$p(x) = (x - 4)(x - 2)(x - 6)$이므로 $p(3) = (3 - 4)(3 - 2)(3 - 6) = (-1)(1)(-3) = 3$이다. (④번)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "최고차항의 계수가 $1$인 삼차다항식 $p(x)$가",
+  "rpmRecordId": "H1-RPM-145",
+  "rpmReason": "공통인수와 인수정리를 활용하여 삼차다항식 $p(x)$를 복원하고 $p(3) = 3$을 구하는 H1-RPM-145에 해당한다.",
+  "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+  "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
+  "typeReason": "공통인수 구조와 $(x - 4)^2$ 인수로 다항식을 복원하여 $p(3)$을 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "이차다항식 합의 완전제곱인수 조건에서 $k=4, a=2, b=6$을 추론하고 $p(3)=3$을 계산하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "최고차항",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인 삼차다항식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "삼차다항식 $p(x)$가 최고차항의 계수가 $1$인"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통인수",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "두 이차식은 일차 공통인수 $(x - k)$를 가진다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "src": "solution",
+        "quote": "두 이차식은 일차 공통인수"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "$A(x)+B(x)=(x-k)(2x-a-b)$가 $(x-4)^2$으로 나누어떨어짐에서 $p(x)=(x-4)(x-2)(x-6)$을 유도하여 $p(3)=3$으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

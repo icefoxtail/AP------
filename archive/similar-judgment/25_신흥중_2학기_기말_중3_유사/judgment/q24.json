@@ -1,0 +1,76 @@
+{
+  "qid": 24,
+  "itemFingerprint": "e0827891215739ca",
+  "solveSteps": [
+    "1) 10명의 (읽기, 듣기) 점수 합은 각각 19, 18, 17, 16, 15, 14, 13, 12, 11, 9이다.",
+    "2) 상위 50%는 상위 5명이므로 합이 큰 5명은 (10,9), (9,9), (8,9), (9,7), (8,7)이다.",
+    "3) 이 5명의 읽기 점수는 각각 10, 9, 8, 9, 8점이다.",
+    "4) 읽기 점수의 총합은 10 + 9 + 8 + 9 + 8 = 44점이다.",
+    "5) 따라서 합격자들의 읽기 점수 평균은 44 / 5 = 8.8점이다."
+  ],
+  "solvedAnswer": "$8.8$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+  "unitEvidence": "다음 자료는 읽기와 듣기를 각각 $10$점 만점으로 평가하는 영어 능력 시험에서 응시자 $10$명의 (읽기 점수, 듣기 점수)를 순서쌍으로 나타낸 것이다. $$(10, 9), \\ (9, 9), \\ (8, 9), \\ (9, 7), \\ (8, 7), \\ (7, 7), \\ (7, 6), \\ (6, 6), \\ (5, 6), \\ (5, 4)$$ 듣기 점수와 읽기 점수의 평균으로 등수를 매겨 상위 $50%$ 이내에 드는 사람을 합격시킨다고 할 때, 합격한 사람들의 읽기 점수의 평균을 구하고, 그 과정을 서술하시오. [4점]",
+  "rpmRecordId": "M3-RPM-088-S2P-FC25",
+  "rpmReason": "10명의 점수 합으로 상위 50%인 5명을 선별하고 이들의 읽기 점수 총합 44로부터 평균 8.8을 구하는 M3-RPM-088-S2P-FC25 문제이다.",
+  "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+  "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+  "typeReason": "이변량 순서쌍 데이터에서 총점 기준 상위 50% 하위 표본을 추출하고 부분 평균 8.8을 도출하는 TPL_M3_SCATTER_PLOT_READ_POINT_RATIO 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "다음 자료는 읽기와 듣기를 각각 $10$점 만점으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평균",
+        "src": "stem",
+        "quote": "합격한 사람들의 읽기 점수의 평균을 구하고, 그 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "순서쌍으로 나타낸 것이다. $$(10, 9), \\ (9, 9),",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "비율",
+        "src": "solution",
+        "quote": "전체 응시자 $10$명 중 상위 $50%$는 다음과 같다."
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "응시자 10명의 (읽기, 듣기) 점수 순서쌍 자료 조건이다.",
+    "goal": "합격자의 읽기 점수 평균을 구하는 목표이다.",
+    "method": "순서쌍 데이터의 합으로 순위를 매겨 상위 표본을 추출하는 방법이다.",
+    "condition": "상위 50% 합격 기준 조건이다."
+  },
+  "how": "두 점수의 합 상위 5명의 읽기 점수 합 10 + 9 + 8 + 9 + 8 = 44에서 평균이 44/5 = 8.8점임을 계산하여 서술 및 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyReason": "10명의 총점으로 상위 5명을 선별하고 5명의 읽기 점수 합 44에서 평균 8.8을 계산하는 2단계 서술형 문항이다."
+}

@@ -1,0 +1,55 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "8b151c74ed7c5cd4",
+  "solvedAnswer": "$y = 3x^2 - 12x + 9$",
+  "solveSteps": [
+    "꼭짓점이 (2, -3)이므로 y = a(x - 2)^2 - 3 이라 둔다.",
+    "점 (4, 9)를 지나므로 대입하면 9 = a(4 - 2)^2 - 3 에서 4a = 12, a = 3 이다.",
+    "전개하면 y = 3(x^2 - 4x + 4) - 3 = 3x^2 - 12x + 12 - 3 = 3x^2 - 12x + 9 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = ax^2",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_VERTEX_FORM_COEFFICIENT",
+  "newKeyProposal": null,
+  "typeReason": "꼭짓점과 지나는 점으로 계수를 구해 3x^2 - 12x + 9 를 완성하는 서술형 유형이다.",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "꼭짓점 (2, -3)과 점 (4, 9)로 표준형을 세워 3x^2 - 12x + 9 를 작성한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭짓점 표준형에 점을 대입해 12a = 12 에서 a=3을 구하고 전개한다.",
+  "how": "꼭짓점 (2, -3)과 점 (4, 9) 대입으로 y = 3x^2 - 12x + 9 를 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = ax^2 + bx + c$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수의 식을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "그래프의 꼭짓점의 좌표가 $(2, -3)$이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

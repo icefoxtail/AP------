@@ -1,0 +1,63 @@
+{
+  "qid": 13,
+  "itemFingerprint": "cf97b64ef38f3623",
+  "solveSteps": [
+    "A에서 BC에 내린 수선의 발 H에 대하여 AH = BH = 6*sqrt(2) * sin 45도 = 6이고 HC = 16 - 6 = 10이다.",
+    "AC = sqrt(6^2 + 10^2) = sqrt(136) = 2*sqrt(34)이다.",
+    "triangle ABC 넓이는 (1/2)*16*6 = 48이고 triangle ACD 넓이는 (1/2)*2*sqrt(34)*8*sin 30도 = 4*sqrt(34)이므로 합은 4(12 + sqrt(34))이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $AB=6\\sqrt{2}$, $BC=",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "$A$에서 $BC$에 내린 수선의 발을 $H$라 하면 ",
+  "rpmRecordId": "M3-RPM-062",
+  "rpmReason": "보조선 AH로 AC = 2*sqrt(34)를 구하고 두 삼각형의 넓이를 합산하여 사각형 ABCD 넓이를 계산한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+  "typeReason": "변 BC = 16과 각 45도, 30도로부터 사각형 ABCD의 분할 넓이를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "수선을 내려 AC = 2*sqrt(34)를 구하고 두 삼각형 넓이를 결합하므로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "\\circ$인 사각형 $ABCD$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$ABCD$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "BC$에 내린 수선의 발을 $H$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "triangle ABC 넓이 48과 triangle ACD 넓이 4*sqrt(34)를 더해 4(12 + sqrt(34))를 산출하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
