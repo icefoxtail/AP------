@@ -1,0 +1,63 @@
+{
+  "qid": 22,
+  "itemFingerprint": "fb5a547bd1f6c8ff",
+  "solveSteps": [
+    "좌변을 인수분해해 이항하면 $$ (x-3)(x^2+3x+9-m) = 0 $$ 이므로 $x=3$ 또는 $x^2+3x+9-m=0$이다.",
+    "삼차방정식이 중근을 가지는 경우는 다음 두 가지이다.",
+    "1) $x^2+3x+9-m=0$이 $x=3$을 근으로 가질 때: $3^2+3\\cdot 3+9-m = 27-m = 0 \\implies m=27$ (이때 $x^2+3x-18=(x-3)(x+6)=0$이므로 $x=3$이 중근이다.)  \n2) $x^2+3x+9-m=0$ 자체가 중근을 가질 때: 판별식 $D = 3^2-4(9-m) = 4m-27 = 0 \\implies m=\\dfrac{27}{4}$ 따라서 모든 실수 $m$의 값의 합은 $27+\\dfrac{27}{4}=\\dfrac{135}{4}$이다."
+  ],
+  "solvedAnswer": "$\\dfrac{135}{4}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-07",
+  "subUnitKey": "H15-SA-07-EQUATION_APPLICATION",
+  "unitEvidence": "$x$에 대한 방정식 $x^3-27=m(x-3)$이 중",
+  "rpmRecordId": "H1-RPM-043",
+  "rpmReason": "Q22(27): 방정식과 부등식의 활용 단원의 RPM H1-RPM-043 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "typeReason": "Q22(27): 방정식과 부등식의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(27): 방정식과 부등식의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "solution",
+        "quote": "삼차방정식이 중근을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 갖도록 하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": ": 판별식 $D = 3^2-4(9-m) = ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q22(27): 발문과 해설의 풀이 과정을 점검하여 정답 $\\dfrac{135}{4}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "qid": 22,
+  "itemFingerprint": "ebf05d8fc119d6f6",
+  "solveSteps": [
+    "$2x^2+12x+10=2(x+5)(x+1)=0$이므로 $x$축과의 교점은 $A(-5, 0), B(-1, 0)$이고, $y$축과의 교점은 $C(0, 10)$이다.",
+    "점 $P(x, y)$가 $A$에서 $C$까지 움직이므로 $x$의 범위는 $-5\\le x\\le 0$이고 $y=2x^2+12x+10$이다.",
+    "이를 $-6x+y+5$에 대입하면 $$ -6x+(2x^2+12x+10)+5 = 2x^2+6x+15 = 2\\left(x+\\frac{3}{2}\\right)^2+\\frac{21}{2} $$ 구간 $-5\\le x\\le 0$에 꼭짓점 $x=-\\dfrac{3}{2}$이 포함되므로\n\n- 최솟값: $x=-\\dfrac{3}{2}$일 때 $\\dfrac{21}{2}$  \n- 최댓값: 축에서 더 먼 끝점 $x=-5$일 때 $2(-5)^2+6(-5)+15=35$ 따라서 최댓값과 최솟값의 합은 $35+\\dfrac{21}{2}=\\dfrac{91}{2}$이다."
+  ],
+  "solvedAnswer": "$\\dfrac{91}{2}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "오른쪽 그림과 같이 이차함수 $y=2x^2+12x+10",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q22(12): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "Q22(12): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q22(12): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "x$축과의 교점은 $A(-5, 0), B(-1, 0)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값과 최솟값의 합"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=2x^2+12x+10$",
+        "evidenceType": "IMPLIED",
+        "justification": "x축·y축 절편으로 x 범위 [-5, 0]을 구하고 y를 대입해 이차식 최대·최소를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q22(12): 발문과 해설의 풀이 과정을 점검하여 정답 $\\dfrac{91}{2}$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

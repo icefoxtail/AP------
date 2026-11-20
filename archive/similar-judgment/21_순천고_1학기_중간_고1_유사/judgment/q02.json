@@ -1,0 +1,63 @@
+{
+  "qid": 2,
+  "itemFingerprint": "f1d472565aa24409",
+  "solveSteps": [
+    "$P(x)=x^3-7x^2+15x-9$라 하면 $P(1)=1-7+15-9=0$이므로 $x-1$을 인수로 갖는다.",
+    "조립제법을 적용하면 $$ P(x) = (x-1)(x^2-6x+9) = (x-1)(x-3)^2 $$ 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "$x^3-7x^2+15x-9$를 바르게 인수분해한 것은",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q2(15): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+  "typeReason": "Q2(15): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q2(15): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "x^3-7x^2+15x-9"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "바르게 인수분해한 것은"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "P(1)=1-7+15-9=0$이므로 $x-1$을 인수로",
+        "evidenceType": "IMPLIED",
+        "justification": "x=1 대입으로 0이 되는 인수를 찾아 조립제법으로 인수분해함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q2(15): 발문과 해설의 풀이 과정을 점검하여 정답 ③를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

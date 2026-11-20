@@ -1,0 +1,63 @@
+{
+  "qid": 14,
+  "itemFingerprint": "96e3fc89d3632632",
+  "solveSteps": [
+    "막대를 자르거나 구부릴 수 없으므로 가로와 세로에 사용한 막대의 개수를 각각 $m, n$ ($m, n$은 자연수)이라 하면 $$ 2(m+n)=10 \\implies m+n=5 $$ 직사각형의 넓이는 $(12m)\\cdot(12n)=144mn=144m(5-m)$이다.",
+    "$m$이 자연수이고 $1\\le m\\le 4$일 때\n\n- $m=1, 4$일 때 $mn=4$  \n- $m=2, 3$일 때 $mn=6$ 따라서 $mn$의 최댓값은 $6$이므로 최대 넓이는 $144\\times 6=864$이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "길이가 $12\\text{cm}$인 막대 $10$개를 빈",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q14(12): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q14(12): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q14(12): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형의 최대 넓이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "mn$의 최댓값은 $6$"
+      }
+    ],
+    "method": [
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "m, n$은 자연수",
+        "evidenceType": "IMPLIED",
+        "justification": "막대 변형 불가 조건으로 가로·세로 막대 개수를 자연수 m+n=5로 두어 최대 넓이를 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q14(12): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "capability": "construction-spike-v1",
+  "mode": "PLANE_FIGURE_v1",
+  "caption": "한 변의 길이가 12인 정사각형 ABCD에 내접하는 정사각형 EFGH",
+  "mathPlan": {
+    "nodes": [
+      {
+        "id": "A",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 4,
+        "label": "A"
+      },
+      {
+        "id": "B",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 0,
+        "label": "B"
+      },
+      {
+        "id": "C",
+        "kind": "SOURCE_POINT",
+        "x": 4,
+        "y": 0,
+        "label": "C"
+      },
+      {
+        "id": "D",
+        "kind": "SOURCE_POINT",
+        "x": 4,
+        "y": 4,
+        "label": "D"
+      },
+      {
+        "id": "E",
+        "kind": "SOURCE_POINT",
+        "x": 0,
+        "y": 2.5,
+        "label": "E"
+      },
+      {
+        "id": "F",
+        "kind": "SOURCE_POINT",
+        "x": 1.5,
+        "y": 0,
+        "label": "F"
+      },
+      {
+        "id": "G",
+        "kind": "SOURCE_POINT",
+        "x": 4,
+        "y": 1.5,
+        "label": "G"
+      },
+      {
+        "id": "H",
+        "kind": "SOURCE_POINT",
+        "x": 2.5,
+        "y": 4,
+        "label": "H"
+      }
+    ],
+    "segments": [
+      {
+        "from": "A",
+        "to": "B"
+      },
+      {
+        "from": "B",
+        "to": "C"
+      },
+      {
+        "from": "C",
+        "to": "D"
+      },
+      {
+        "from": "D",
+        "to": "A"
+      },
+      {
+        "from": "E",
+        "to": "F"
+      },
+      {
+        "from": "F",
+        "to": "G"
+      },
+      {
+        "from": "G",
+        "to": "H"
+      },
+      {
+        "from": "H",
+        "to": "E"
+      }
+    ]
+  }
+}

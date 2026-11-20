@@ -1,0 +1,62 @@
+{
+  "qid": 8,
+  "itemFingerprint": "3353f3b1d0e6aa3b",
+  "solveSteps": [
+    "주어진 식을 전개하면 $$ (x+a)(x+b)(x+2) = x^3+(a+b+2)x^2+(ab+2a+2b)x+2ab $$ 계수 조건에서 $a+b+2=7 \\implies a+b=5$이고, $ab+2(a+b)=14 \\implies ab+10=14 \\implies ab=4$이다.",
+    "따라서 $a^2+b^2 = (a+b)^2-2ab = 5^2-2\\cdot 4 = 17$이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "unitEvidence": "다항식 $(x+a)(x+b)(x+2)$의 전개식에서 $",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "Q8(14): 다항식의 기본 연산 단원의 RPM H1-RPM-001 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+  "typeReason": "Q8(14): 다항식의 기본 연산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q8(14): 다항식의 기본 연산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$x^2$의 계수가 $7$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대칭식",
+        "src": "solution",
+        "quote": "(a+b)^2-2ab"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "주어진 식을 전개하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q8(14): 발문과 해설의 풀이 과정을 점검하여 정답 ⑤를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

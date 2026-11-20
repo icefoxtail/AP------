@@ -1,0 +1,63 @@
+{
+  "qid": 19,
+  "itemFingerprint": "97e54c5df0bf2761",
+  "solveSteps": [
+    "이익금을 $100x$원 ($0\\le x<12$) 줄였다고 하면 개당 이익은 $(1200-100x)$원, 판매량은 $(20+5x)$개이다.",
+    "하루의 총 이익금 $P$는 $$ P = (1200-100x)(20+5x) = 500(12-x)(4+x) = -500(x-4)^2+32000 $$ 따라서 $x=4$일 때 이익금이 최대이고, 이때 팔리는 샌드위치의 개수는 $20+5\\cdot 4=40$개이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "unitEvidence": "현우는 불우 이웃 돕기 성금을 마련하기 위하여 친구들과",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "Q19(1200): 이차함수의 활용 단원의 RPM H1-RPM-037 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+  "typeReason": "Q19(1200): 이차함수의 활용 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q19(1200): 이차함수의 활용 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "-500(x-4)^2+32000"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "x=4$일 때 이익금이 최대"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "-500(x-4)^2+32000",
+        "evidenceType": "IMPLIED",
+        "justification": "총 이익금을 할인 횟수 x의 이차함수로 세워 꼭짓점 x=4에서 판매량을 구함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q19(1200): 발문과 해설의 풀이 과정을 점검하여 정답 ②를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

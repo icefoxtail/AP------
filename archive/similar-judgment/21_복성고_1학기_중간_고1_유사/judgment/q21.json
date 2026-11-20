@@ -1,0 +1,64 @@
+{
+  "qid": 21,
+  "itemFingerprint": "26d5bb9486aa9ded",
+  "solveSteps": [
+    "1) (가)의 좌변에서 각 계수를 인수분해하면 $$ \\begin{aligned} (b-c)a^2+(b-c)(2b+c)a+b(b-c)(b+c) &= (b-c){a^2+(2b+c)a+b(b+c)} \\ &= (a+b)(b-c)(a+b+c) \\end{aligned} $$  \n2) 세 변의 길이 $a, b, c$는 모두 양수이므로 $a+b>0, a+b+c>0$이고, 따라서 $b-c=0$, 즉 $b=c$인 이등변삼각형이다. (ABC)",
+    "(나)에서 $5a-3b-3b=0 \\implies a=\\dfrac{6}{5}b$로 양수 조건 및 삼각형 결정 조건($b+b>\\frac{6}{5}b$)을 만족한다.",
+    "3) $a=\\dfrac{6}{5}b > b=c$이므로 가장 긴 변은 $a$이다.",
+    "밑변 $a$에 내린 수선의 발이 밑변을 이등분하므로 직각삼각형에서 피타고라스 정리에 의해 $$ \\left(\\frac{a}{2}\\right)^2+4^2 = b^2 \\implies \\left(\\frac{3}{5}b\\right)^2+16 = b^2 \\implies \\frac{16}{25}b^2 = 16 \\implies b=5 $$ 따라서 $b=c=5$, $a=6$이므로 둘레의 길이는 $6+5+5=16$이다."
+  ],
+  "solvedAnswer": "1) $(a+b)(b-c)(a+b+c)$, 2) $b=c$인 이등변삼각형, 3) $16$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "unitEvidence": "세 변의 길이가 $a, b, c$인 삼각형 $ABC$가",
+  "rpmRecordId": "H1-RPM-013",
+  "rpmReason": "Q21(ABC): 인수분해 단원의 RPM H1-RPM-013 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+  "typeReason": "Q21(ABC): 인수분해 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(ABC): 인수분해 단원의 기본 개념과 계산을 적용하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $ABC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이등변삼각형",
+        "src": "solution",
+        "quote": "b=c$인 이등변삼각형"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "stem",
+        "quote": "식을 인수분해하시오",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(ABC): 발문과 해설의 풀이 과정을 점검하여 정답 1) $(a+b)(b-c)(a+b+c)$, 2) $b=c$인 이등변삼각형, 3) $16$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

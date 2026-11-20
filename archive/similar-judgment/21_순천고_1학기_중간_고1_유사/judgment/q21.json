@@ -1,0 +1,64 @@
+{
+  "qid": 21,
+  "itemFingerprint": "5baede94b6b7a478",
+  "solveSteps": [
+    "$z$를 실수부분과 허수부분으로 정리하면 $$ z = (x^2+2x-15)+(x-3)i = (x+5)(x-3)+(x-3)i $$\n\n1) $z$가 실수이려면 허수부분이 $0$이어야 하므로 $x-3=0 \\implies a=3$이다.",
+    "2) $z^2$이 음의 실수이려면 $z$는 순허수이어야 하므로 실수부분이 $0$이고 허수부분이 $0$이 아니어야 한다.",
+    "$(x+5)(x-3)=0$이고 $x-3\\ne 0$이므로 $b=-5$이다.",
+    "따라서 $a-b=3-(-5)=8$이다."
+  ],
+  "solvedAnswer": "$8$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "unitEvidence": "복소수 $z=x^2+(2+i)x-15-3i$에 대하여 ",
+  "rpmRecordId": "H1-RPM-023",
+  "rpmReason": "Q21(15): 복소수의 계산 단원의 RPM H1-RPM-023 유형에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+  "typeReason": "Q21(15): 복소수의 계산 단원의 핵심 개념을 확인하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "Q21(15): 복소수의 계산 단원의 기본 개념과 계산을 적용하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=x^2+(2+i)x-15-3i$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 $x$의 값을 $a$"
+      }
+    ],
+    "method": [
+      {
+        "term": "순허수",
+        "src": "solution",
+        "quote": "z$는 순허수이어야",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "Q21(15): 발문과 해설의 풀이 과정을 점검하여 정답 $8$를 도출하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
