@@ -1,0 +1,61 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "fa1f78fd9fb8a3d4",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "ㄱ. $D_f/4 = a^2-b^2 > 0$이므로 서로 다른 두 실근을 갖는다 (참). (ax)",
+    "ㄴ. $D_f/4 + D_g/4 = 0$이므로 적어도 하나는 0 이상이어서 실근을 갖는다 (참). (ax)",
+    "ㄷ. $f(x)=g(x)$에서 $2(a-b)x = a^2-b^2 \\implies x = (a+b)/2$이다 (참). (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a$, $b$가 $0$이",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 판별식과 실근의 조건 합답형 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 판별식 유형이다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 판별식의 합이 0임을 이용한 실근 존재성과 교점 x좌표를 논증하는 난이도 3 문항이다. (ax)",
+  "how": "판별식 D_f/4 = a^2-b^2와 D_g/4 = b^2-a^2의 관계를 분석하여 ㄱ, ㄴ, ㄷ 모두 참임을 증명했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $f(x)=x^2+2ax+b^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "근",
+        "src": "stem",
+        "quote": "항상 옳은 것만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "$f(x)=0$의 판별식",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$a$, $b$가 $0$이 아닌 실수일 때"
+      }
+    ]
+  }
+}

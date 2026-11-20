@@ -1,0 +1,60 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "09a28214c552d091",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "실계수 이차방정식이므로 켤레근 $4+\\sqrt{3}i$를 갖는다. (kx)",
+    "근과 계수의 관계에 의해 두 근의 합은 $(4-\\sqrt{3}i) + (4+\\sqrt{3}i) = 8 = -k \\implies k = -8$이다. (kx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2+kx+1",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_ROOT",
+  "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수 조건과 방정식 켤레근 유형이다. (kx)",
+  "rpmRecordId": "H1-RPM-031",
+  "rpmReason": "복소수 단원의 복소수 근과 허근 유형이다. (kx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "켤레복소수 근의 성질과 근과 계수의 합을 연계하는 난이도 2 문항이다. (kx)",
+  "how": "실계수 방정식의 켤레근 성질과 근과 계수의 관계로 k=-8을 구했다. (kx)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+kx+19=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "실수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "다른 한 근은 켤레복소수인",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "한 허근이 $4-\\sqrt{3}i$"
+      }
+    ]
+  }
+}

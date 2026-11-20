@@ -1,0 +1,54 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "2fa89d70b696e2b2",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "인수분해로 $f(2)=5$, $f(3)=4(3)+1=13$을 구한다. (11)",
+    "나머지 $R(x)=mx+n$에 대입하여 $2m+n=5, 3m+n=13$에서 $m=8, n=-11$을 구해 $R(x)=8x-11$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $f(x)$를 $x^",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리를 이용한 다항식 나눗셈 나머지 결정 유형이다. (11)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 고차식 나눗셈 조건 유형이다. (11)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식 나눗셈의 나머지를 두 함숫값의 연립으로 결정하는 난이도 2 문항이다. (11)",
+  "how": "인수분해로 f(2)=5, f(3)=13을 구하고 일차 나머지 R(x)=8x-11을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나누었을 때의 나머지가 $5$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "$x^2-5x+6$으로 나누었을 때의 나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "f(2)=5",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

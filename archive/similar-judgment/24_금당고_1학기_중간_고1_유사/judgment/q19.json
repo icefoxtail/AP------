@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "e15287a6d4634b34",
+  "solvedAnswer": "$\\dfrac{8}{3}$",
+  "solveSteps": [
+    "$f(x)-h(x) = 4(x-\\alpha)^2, g(x)-h(x) = (x-3\\alpha)^2$ 식을 작성한다. (y)",
+    "$4(x-\\alpha)^2 = (x-3\\alpha)^2$을 풀면 $t = x/\\alpha$에 대해 $3t^2-2t-5=0 \\implies t = 5/3$ 또는 $-1$이다. (y)",
+    "따라서 $|p-q|/\\alpha = |5/3 - (-1)| = 8/3$이다. (y)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 이차함수 $y=f(x)$",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식과 이차함수의 관계 및 접선 조건 서술형 유형이다. (y)",
+  "rpmRecordId": "H1-RPM-036",
+  "rpmReason": "이차방정식 단원의 직선과 포물선 접선 조건 유형이다. (y)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수와 접선의 관계를 차함수로 설정하고 두 포물선의 교점 거리를 비로 계산하는 난이도 3 서술형 문항이다. (y)",
+  "how": "접선 조건을 차함수의 완전제곱식으로 표현해 4(x-alpha)^2 = (x-3alpha)^2을 풀고 두 근의 차비 8/3을 구했다. (y)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "두 이차함수 $y=f(x)$, $y=g(x)$와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$\\dfrac{|p-q|}{\\alpha}$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "근",
+        "src": "solution",
+        "quote": "두 실근이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "$y=f(x)$와 $x=\\alpha$에서 접하고",
+        "evidenceType": "NAMED"
+      }
+    ]
+  }
+}

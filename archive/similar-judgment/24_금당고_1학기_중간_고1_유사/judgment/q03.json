@@ -1,0 +1,60 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "55ffe18ecfd600ea",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$x^2-5x+4 = (x-1)(x-4) = 0$에서 두 근은 1과 4이다.",
+    "$\\alpha=1, \\beta=4$이므로 $\\alpha-\\beta+\\alpha\\beta = 1 - 4 + 4 = 1$이다. (x)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2-5x+4",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 근과 식의 값 계산 기본 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-027",
+  "rpmReason": "이차방정식 단원의 인수분해·근의 공식 유형이다. (x)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "인수분해를 통해 근을 직접 구하고 대입하는 난이도 1 문항이다. (x)",
+  "how": "인수분해로 두 근 1, 4를 구하고 식의 값 1을 계산했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2-5x+4=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "$\\alpha-\\beta+\\alpha\\beta$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "(x-1)(x-4)=0",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "근",
+        "src": "stem",
+        "quote": "두 근을 $\\alpha$, $\\beta$"
+      }
+    ]
+  }
+}

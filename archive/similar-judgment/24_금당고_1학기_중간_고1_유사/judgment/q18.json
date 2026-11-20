@@ -1,0 +1,61 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "f18c52526cd1def2",
+  "solvedAnswer": "$4$",
+  "solveSteps": [
+    "$n=1$일 때 $x=-2$ 대입으로 $b = 2a - 4$를 유도한다. (ax)",
+    "$x+2$로 나눈 후 다시 $x=-2$ 대입으로 $a=2, b=0$을 구한다. (ax)",
+    "따라서 $a^2+b^2 = 2^2 + 0 = 4$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "홀수인 모든 자연수 $n$에",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식과 미정계수 결정 서술형 심화 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-008",
+  "rpmReason": "항등식과 나머지정리 단원의 다항식 나눗셈과 수치대입법 서술형 유형이다. ($x+2, 2^{n+1}, 4$) (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "완전제곱식 나눗셈에서 공통인수를 약분한 뒤 수치대입을 2회 적용하는 난이도 3 서술형 문항이다. (ax)",
+  "how": "x=-2 대입으로 b=2a-4를 유도해 x+2를 약분한 뒤 다시 x=-2를 대입해 a=2, b=0에서 a^2+b^2=4를 도출했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "홀수인 모든 자연수 $n$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a^2+b^2$의 값을 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "수치대입법",
+        "src": "solution",
+        "quote": "양변에 $x=-2$를 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "위 항등식은"
+      }
+    ]
+  }
+}

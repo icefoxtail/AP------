@@ -1,0 +1,54 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "3fd6557dc5ed6450",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$A+B = (2x^2-y^2) + (3x^2+y^2)$ 식을 세운다.",
+    "동류항을 정리하면 $(2+3)x^2 + (-1+1)y^2 = 5x^2$이다. (A)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 다항식 $A=2x^2-y",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 연산과 전개 단원의 기본 덧셈 유형이다. (A)",
+  "rpmRecordId": "H1-RPM-002",
+  "rpmReason": "다항식의 연산 단원의 다항식의 덧셈·뺄셈 유형이다. (A)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 다항식의 덧셈과 동류항 정리를 수행하는 난이도 1 문항이다. (A)",
+  "how": "동류항의 계수를 더해 A+B = 5x^2을 계산했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "두 다항식 $A=2x^2-y^2$, $B=3x^2+y^2$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "$A+B$를 간단히 하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "(2+3)x^2+(-1+1)y^2=5x^2",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

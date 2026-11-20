@@ -1,0 +1,61 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "cf860468d7a893cd",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(a+b+c)^2 = a^2+b^2+c^2 + 2(ab+bc+ca)$에서 $18 = 6 + 2(ab+bc+ca) \\implies ab+bc+ca = 6$이다. (abc)",
+    "$a^2+b^2+c^2 - (ab+bc+ca) = 0$이므로 $a=b=c=\\sqrt{2}$이다. (abc)",
+    "따라서 $abc = (\\sqrt{2})^3 = 2\\sqrt{2}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "세 실수 $a$, $b$,",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-MULTIPLICATION_FORMULA",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "곱셈공식과 대칭식 변형 유형이다. (abc)",
+  "rpmRecordId": "H1-RPM-003",
+  "rpmReason": "다항식의 연산 단원의 곱셈공식 유형이다. (abc)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "세 변수의 곱셈공식 변형과 완전제곱합 0 조건으로 변수값을 확정하는 난이도 3 문항이다. (abc)",
+  "how": "곱셈공식 변형으로 ab+bc+ca=6을 구하고 제곱합의 성질로 a=b=c=sqrt(2)에서 abc=2sqrt(2)를 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "세 실수 $a$, $b$, $c$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$abc$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "곱셈 공식의 변형에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "세 실수 $a$, $b$, $c$"
+      }
+    ]
+  }
+}

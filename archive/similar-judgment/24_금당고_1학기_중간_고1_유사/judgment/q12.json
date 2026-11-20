@@ -1,0 +1,60 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "00c43881b3587720",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "좌변을 분할하면 $(i+\\cdots+i^{17}) + (i^2+\\cdots+i^{18})$이다.",
+    "주기 4의 합 0 성질로 앞은 $i$, 뒤는 $i^{18}=i^2=-1$이므로 $-1+i$에서 $a=-1, b=1$이므로 $a+b=0$이다. (17)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 실수 $a$, $b$에",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 거듭제곱과 주기성 계산 유형이다. (17)",
+  "rpmRecordId": "H1-RPM-025",
+  "rpmReason": "복소수 단원의 i의 거듭제곱 주기성 유형이다. (17)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "허수단위 i의 거듭제곱 주기성을 이용해 긴 합을 축약하는 난이도 2 문항이다. (17)",
+  "how": "i의 주기성(연속 4개 합 0)을 이용해 좌변을 -1+i로 정리하고 a+b=0을 계산했다. (17)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "두 실수 $a$, $b$에 대하여 등식"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "$i$의 거듭제곱은 연속한 $4$개 항의 합이 $0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a$, $b$"
+      }
+    ]
+  }
+}

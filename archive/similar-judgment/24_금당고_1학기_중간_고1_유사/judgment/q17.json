@@ -1,0 +1,61 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "6016686fa3571b84",
+  "solvedAnswer": "$3x^2+2x+8$",
+  "solveSteps": [
+    "$R(x) = c(x^2+3) + 2x - 1$로 식을 설정한다. (12)",
+    "$f(-1) = 9$이므로 $R(-1) = 4c - 3 = 9 \\implies c = 3$이다. (12)",
+    "따라서 $R(x) = 3(x^2+3) + 2x - 1 = 3x^2 + 2x + 8$이다. (12)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $f(x)$를 $x^",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리와 인수정리 삼차식 나눗셈 서술형 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 고차식 조건 나머지정리 유형이다. (12)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식 나눗셈 나머지를 이용해 삼차식 나눗셈 나머지를 1문자화하여 푸는 난이도 3 서술형 문항이다. (12)",
+  "how": "삼차식 나눗셈의 나머지를 R(x)=c(x^2+3)+2x-1로 두고 f(-1)=9를 대입해 c=3, R(x)=3x^2+2x+8을 구했다. (12)",
+  "slots": {
+    "given": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "$x^2+3$으로 나누었을 때의 나머지가 $2x-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지 $R(x)$를 구하는 과정을 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지정리",
+        "src": "solution",
+        "quote": "R(x)=c(x^2+3)+2x-1",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$를"
+      }
+    ]
+  }
+}

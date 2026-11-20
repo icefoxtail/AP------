@@ -1,0 +1,60 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "242ccc2212dc44e3",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$y=2x-1$을 대입하면 $(3a+4b)x - 2b = 12$이다. (ax)",
+    "항등식이므로 $3a+4b=0, -2b=12$에서 $b=-6, a=8$이므로 $a+b=2$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$2x-y=1$을 만족시키는",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "조건식이 주어진 다항식의 항등식과 미정계수 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 항등식 미정계수법 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "조건식이 주어진 항등식을 한 문자로 정리하여 미정계수를 구하는 난이도 2 문항이다. (ax)",
+  "how": "y=2x-1을 대입해 x에 대한 항등식으로 정리하여 a=8, b=-6에서 a+b=2를 구했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "$2x-y=1$을 만족시키는"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$a+b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "$x$에 대한 항등식의 성질에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "두 상수 $a$, $b$"
+      }
+    ]
+  }
+}
