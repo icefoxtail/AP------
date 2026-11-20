@@ -12,17 +12,22 @@
   },
   "reference": {
     "answer": "$(a-b)(b-c)(a-c)$",
-    "solution": "주어진 식을 이차항 부분과 일차항 부분으로 나누어 정리하면 $$\\begin{aligned} &a(a+2)(b-c)+b(b+2)(c-a)+c(c+2)(a-b) \\ &= {a^2(b-c)+b^2(c-a)+c^2(a-b)}+2{a(b-c)+b(c-a)+c(a-b)} \\end{aligned}$$ 여기서 두 번째 중괄호는 $ab-ac+bc-ab+ca-bc=0$이므로 사라진다. 남은 식 $a^2(b-c)+b^2(c-a)+c^2(a-b)$를 $a$에 대하여 내림차순으로 정리하면 $$\\begin{aligned} (b-c)a^2-(b^2-c^2)a+bc(b-c) &= (b-c){a^2-(b+c)a+bc} \\ &= (b-c)(a-b)(a-c) \\ &= (a-b)(b-c)(a-c) \\end{aligned}$$",
+    "solution": "주어진 식을 이차항 부분과 일차항 부분으로 나누어 정리하면 $$\\begin{aligned} \\&a(a+2)(b-c)+b(b+2)(c-a)+c(c+2)(a-b) \\ &= {a^2(b-c)+b^2(c-a)+c^2(a-b)}+2{a(b-c)+b(c-a)+c(a-b)} \\end{aligned}$$ 여기서 두 번째 중괄호는 $ab-ac+bc-ab+ca-bc=0$이므로 사라진다. 남은 식 $a^2(b-c)+b^2(c-a)+c^2(a-b)$를 $a$에 대하여 내림차순으로 정리하면 $$\\begin{aligned} (b-c)a^2-(b^2-c^2)a+bc(b-c) &= (b-c){a^2-(b+c)a+bc} \\ &= (b-c)(a-b)(a-c) \\ &= (a-b)(b-c)(a-c) \\end{aligned}$$",
     "sourcePrimaryMethod": "식을 이차항과 일차항 부분으로 분리해 일차항 부분이 0으로 소거됨을 보인 뒤 한 문자 a에 대해 내림차순 인수분해한다.",
     "sourceDecisiveStep": "a(b-c)+b(c-a)+c(a-b)=0 소거 후 (b-c)로 묶어 (a-b)(b-c)(a-c)를 얻는다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-03",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "rpmPath": {
+      "majorUnit": "다항식",
+      "midUnit": "인수분해",
+      "l3": "공통인수",
+      "l4": "단계적 인수분해"
+    },
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -261,6 +266,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -476,6 +485,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1709,6 +1722,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

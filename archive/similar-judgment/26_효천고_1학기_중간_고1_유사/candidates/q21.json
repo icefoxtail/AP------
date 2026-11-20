@@ -13,20 +13,30 @@
   "reference": {
     "answer": "$-1$",
     "solution": "연속한 $4$개의 거듭제곱의 합은 $$i + i^2 + i^3 + i^4 = i - 1 - i + 1 = 0$$ 이고, $2027 = 4 \\times 506 + 3$이므로 앞에서부터 $4$개씩 묶으면 모두 $0$이 되고 마지막 $3$개 항만 남는다. 따라서 구하는 값은 $$i + i^2 + i^3 = i - 1 - i = -1$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "허수단위 $i$의 $4$주기성과 연속 $4$항의 합이 $0$임을 이용해 $2027$을 $4$로 나눈 나머지 $3$개 항의 합을 구한다.",
+    "sourceDecisiveStep": "$2027 = 4 \\times 506 + 3$에서 남는 $3$항 $i+i^2+i^3$의 합을 계산하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "주기성"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+    "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+    "difficultyBucket": 1,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "허수단위의거듭제곱",
+      "skill": "주기성합계산",
+      "context": "복소수거듭제곱합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -273,6 +283,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -468,6 +482,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

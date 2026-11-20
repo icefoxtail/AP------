@@ -18,20 +18,41 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "$t = 3^x$로 치환하면 $t > 0$이고 $9^x = t^2$이므로 주어진 방정식은\n$$t^2 + (1-k)t + 9 = 0$$\n이 된다.\n\n\n원래 방정식이 서로 다른 두 실근 $x$를 가지려면 이차방정식 $t^2 + (1-k)t + 9 = 0$이 **서로 다른 두 양의 실근**을 가져야 한다. 근의 부호와 판별식 조건은 다음과 같다.\n\n\n$$\\begin{aligned}\n\\text{판별식: } & D = (1-k)^2 - 36 > 0 \\iff (k-1)^2 > 36 \\implies k > 7 \\text{ 또는 } k < -5 \\\n\\text{두 근의 합: } & k - 1 > 0 \\implies k > 1 \\\n\\text{두 근의 곱: } & 9 > 0 \\quad (\\text{항상 성립})\n\\end{aligned}$$\n\n\n세 조건을 모두 만족하는 $k$의 범위는 $k > 7$이다. 이 중 $|k| < 12$를 만족하는 정수 $k$는 $8, 9, 10, 11$로 모두 $4$개이다.\n\n\n따라서 정답은 ①이다.",
+    "solution": "$t = 3^x$로 치환하면 $t > 0$이고 $9^x = t^2$이므로 주어진 방정식은  \n$$t^2 + (1-k)t + 9 = 0$$  \n이 된다.\n\n원래 방정식이 서로 다른 두 실근 $x$를 가지려면 이차방정식 $t^2 + (1-k)t + 9 = 0$이 **서로 다른 두 양의 실근**을 가져야 한다. 근의 부호와 판별식 조건은 다음과 같다.\n\n$$\\begin{aligned}  \n\\text{판별식: } & D = (1-k)^2 - 36 > 0 \\iff (k-1)^2 > 36 \\implies k > 7 \\text{ 또는 } k < -5 \\\\  \n\\text{두 근의 합: } & k - 1 > 0 \\implies k > 1 \\\\  \n\\text{두 근의 곱: } & 9 > 0 \\quad (\\text{항상 성립})  \n\\end{aligned}$$\n\n세 조건을 모두 만족하는 $k$의 범위는 $k > 7$이다. 이 중 $|k| < 12$를 만족하는 정수 $k$는 $8, 9, 10, 11$로 모두 $4$개이다.\n\n따라서 정답은 ①이다.",
     "sourcePrimaryMethod": "t=3^x(>0)로 치환한 이차방정식이 서로 다른 두 양의 실근을 갖도록 판별식과 근과 계수의 관계 조건을 세운다.",
     "sourceDecisiveStep": "치환 변수 t>0 조건 때문에 판별식 D>0 외에 두 근의 합 k-1>0 조건을 함께 적용하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-03",
+    "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수방정식",
+      "l4": "치환"
+    },
+    "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+    "templateKey": "TPL_NESTED_EXPONENTIAL_ROOT_COUNT",
     "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "지수방정식"
+      ],
+      "goal": [
+        "개수"
+      ],
+      "method": [
+        "치환",
+        "판별식",
+        "근과계수의관계"
+      ],
+      "condition": [
+        "실수",
+        "정수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1613,7 +1634,7 @@
       "matchedAs": "방정식",
       "kind": "대상",
       "src": "solution",
-      "quote": "이므로 주어진 방정식은 $$t^2"
+      "quote": "이므로 주어진 방정식은   $$t^"
     },
     {
       "term": "판별식",
@@ -1648,7 +1669,7 @@
       "matchedAs": "성립",
       "kind": "행위",
       "src": "solution",
-      "quote": "text{항상 성립}) \\end{"
+      "quote": "text{항상 성립})   \\en"
     },
     {
       "term": "실근",
@@ -1698,7 +1719,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

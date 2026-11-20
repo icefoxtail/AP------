@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "네 점 $A(-2,-a)$, $B(2,0)$, $C(2,3a)$, $D(-2,0)$에서 선분 $AD$와 선분 $BC$는 $y$축에 평행하고 길이가 각각 $a$, $3a$이며 두 평행선 사이의 거리는 $2-(-2)=4$이다. 사다리꼴 $ABCD$의 넓이가 $16$이므로 $$\\dfrac{1}{2}(a+3a)\\times 4=16 \\implies 8a=16 \\implies a=2$$ 따라서 $A(-2,-2)$, $C(2,6)$, $D(-2,0)$이다.\n\n\n1. $f(x)=c(x+2)^2-2$가 $B(2,0)$을 지나므로 $16c-2=0 \\implies c=\\dfrac{1}{8}$이다. $$8f(t)=(t+2)^2-16=t^2+4t-12$$\n2. 직선 $CD$는 두 점 $(-2,0)$, $(2,6)$을 지나므로 기울기가 $\\dfrac{3}{2}$이고 $y$절편은 $(0,3)$이다. $g(x)=d(x-2)^2+6$이 $(0,3)$을 지나므로 $4d+6=3 \\implies d=-\\dfrac{3}{4}$이다. $$4g(t)=-3(t-2)^2+24=-3t^2+12t+12$$ 따라서 $$8f(t)-4g(t)=(t^2+4t-12)-(-3t^2+12t+12)=4t^2-8t-24=4(t-1)^2-28$$ $-3\\le t\\le 3$에서 꼭짓점 $t=1$이 범위에 포함되므로 * 최솟값:$t=1$일 때 $-28$\n* 최댓값: $t=-3$일 때 $4(-4)^2-28=36$\n\n\n구하는 합은 $36+(-28)=8$이므로 정답은 ③이다.",
+    "solution": "네 점 $A(-2,-a)$, $B(2,0)$, $C(2,3a)$, $D(-2,0)$에서 선분 $AD$와 선분 $BC$는 $y$축에 평행하고 길이가 각각 $a$, $3a$이며 두 평행선 사이의 거리는 $2-(-2)=4$이다. 사다리꼴 $ABCD$의 넓이가 $16$이므로 $$\\dfrac{1}{2}(a+3a)\\times 4=16 \\implies 8a=16 \\implies a=2$$ 따라서 $A(-2,-2)$, $C(2,6)$, $D(-2,0)$이다.\n\n1) $f(x)=c(x+2)^2-2$가 $B(2,0)$을 지나므로 $16c-2=0 \\implies c=\\dfrac{1}{8}$이다. $$8f(t)=(t+2)^2-16=t^2+4t-12$$  \n2) 직선 $CD$는 두 점 $(-2,0)$, $(2,6)$을 지나므로 기울기가 $\\dfrac{3}{2}$이고 $y$절편은 $(0,3)$이다. $g(x)=d(x-2)^2+6$이 $(0,3)$을 지나므로 $4d+6=3 \\implies d=-\\dfrac{3}{4}$이다. $$4g(t)=-3(t-2)^2+24=-3t^2+12t+12$$ 따라서 $$8f(t)-4g(t)=(t^2+4t-12)-(-3t^2+12t+12)=4t^2-8t-24=4(t-1)^2-28$$ $-3\\le t\\le 3$에서 꼭짓점 $t=1$이 범위에 포함되므로  \n- 최솟값: $t=1$일 때 $-28$  \n- 최댓값: $t=-3$일 때 $4(-4)^2-28=36$\n\n구하는 합은 $36+(-28)=8$이므로 정답은 ③이다.",
     "sourcePrimaryMethod": "사다리꼴 넓이 8a=16으로 a=2를 결정하고 f(x), g(x)의 식을 각각 구한 뒤 8f(t)-4g(t)의 제한된 범위 최대·최소를 구한다.",
     "sourceDecisiveStep": "직선 CD의 y절편 (0,3)을 g(0)=3으로 연결해 d=-3/4를 구하고 8f(t)-4g(t)=4(t-1)^2-28을 완성한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 5,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2670,14 +2687,14 @@
       "matchedAs": "최댓값",
       "kind": "행위",
       "src": "solution",
-      "quote": "$-28$ * 최댓값: $t=-3$"
+      "quote": "28$   - 최댓값: $t=-3$"
     },
     {
       "term": "최솟값",
       "matchedAs": "최솟값",
       "kind": "행위",
       "src": "solution",
-      "quote": "포함되므로 * 최솟값:$t=1$일"
+      "quote": "되므로   - 최솟값: $t=1$일"
     },
     {
       "term": "거리",
@@ -2726,7 +2743,7 @@
       "matchedAs": "직선",
       "kind": "대상",
       "src": "solution",
-      "quote": "12$$ 2. 직선 $CD$는 두"
+      "quote": "$$   2) 직선 $CD$는 두"
     },
     {
       "term": "통과",
@@ -2747,7 +2764,7 @@
       "matchedAs": "포함",
       "kind": "대상",
       "src": "solution",
-      "quote": "1$이 범위에 포함되므로 * 최솟"
+      "quote": "1$이 범위에 포함되므로   -"
     }
   ],
   "figure": {

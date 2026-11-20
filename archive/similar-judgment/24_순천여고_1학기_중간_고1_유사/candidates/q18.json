@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "$x^2-2x-8=(x-4)(x+2)$이므로 $x=-2, 4$를 기준으로 구간을 나눈다.\n\n\n1. $-2\\le x\\le 4$ 구간: $f(x)=-x^2+2x+8$이므로 교점 방정식은 $$-x^2+2x+8=2x+k \\implies x^2=8-k$$ 이 구간 내부 $(-2, 4)$에서 서로 다른 두 실근을 가지려면 $0<8-k<4$여야 한다. (만약 $8-k\\ge 4$이면 왼쪽 근이 $-2$ 이하가 되어 구간 내부 교점이 $2$개가 되지 못한다.) 따라서 $4<k<8$이다. 2.$x<-2$ 또는 $x>4$ 구간: $f(x)=x^2-2x-8$이므로 교점 방정식은 $$x^2-2x-8=2x+k \\implies x^2-4x-(8+k)=0$$ 두 근은 $x=2\\pm\\sqrt{12+k}$이다. $4<k<8$일 때 $\\sqrt{12+k}>4$이므로 $2-\\sqrt{12+k}<-2$이고 $2+\\sqrt{12+k}>6>4$여서 바깥 구간에서도 항상 서로 다른 두 교점이 생긴다.\n\n\n따라서 조건을 만족시키는 정수 $k$는 $5, 6, 7$의 $3$개이다. 정답은 ⑤이다.",
+    "solution": "$x^2-2x-8=(x-4)(x+2)$이므로 $x=-2, 4$를 기준으로 구간을 나눈다.\n\n1) $-2\\le x\\le 4$ 구간: $f(x)=-x^2+2x+8$이므로 교점 방정식은 $$-x^2+2x+8=2x+k \\implies x^2=8-k$$ 이 구간 내부 $(-2, 4)$에서 서로 다른 두 실근을 가지려면 $0<8-k<4$여야 한다. (만약 $8-k\\ge 4$이면 왼쪽 근이 $-2$ 이하가 되어 구간 내부 교점이 $2$개가 되지 못한다.) 따라서 $4<k<8$이다.  \n2) $x<-2$ 또는 $x>4$ 구간: $f(x)=x^2-2x-8$이므로 교점 방정식은 $$x^2-2x-8=2x+k \\implies x^2-4x-(8+k)=0$$ 두 근은 $x=2\\pm\\sqrt{12+k}$이다. $4<k<8$일 때 $\\sqrt{12+k}>4$이므로 $2-\\sqrt{12+k}<-2$이고 $2+\\sqrt{12+k}>6>4$여서 바깥 구간에서도 항상 서로 다른 두 교점이 생긴다.\n\n따라서 조건을 만족시키는 정수 $k$는 $5, 6, 7$의 $3$개이다. 정답은 ⑤이다.",
     "sourcePrimaryMethod": "절댓값 경계 x=-2, 4를 기준으로 안쪽과 바깥쪽 구간의 교점 방정식을 나누어 4교점 조건을 판별한다.",
     "sourceDecisiveStep": "안쪽 (-2, 4)에서 x^2=8-k의 두 근이 모두 들어갈 조건 0<8-k<4로부터 4<k<8을 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-05",
+    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "직선과 포물선",
+      "l4": "교점 개수"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
     "difficultyBucket": 5,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2614,7 +2631,7 @@
       "matchedAs": "또는",
       "kind": "대상",
       "src": "solution",
-      "quote": ".$x<-2$ 또는 $x>4$ 구"
+      "quote": "$x<-2$ 또는 $x>4$ 구"
     },
     {
       "term": "실근",
@@ -2635,7 +2652,7 @@
       "matchedAs": "조건",
       "kind": "대상",
       "src": "solution",
-      "quote": ". 따라서 조건을 만족시키는"
+      "quote": "다. 따라서 조건을 만족시키는"
     }
   ],
   "figure": {

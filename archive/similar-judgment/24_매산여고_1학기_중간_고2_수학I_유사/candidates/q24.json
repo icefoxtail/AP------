@@ -6,28 +6,28 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[주관식3 (서술형)] [7점]\n두 정수 $a, n$에 대하여 직선 $y = n$이 두 함수 $f(x) = 2^{x - 1} + a$, $g(x) = -2^x - \\dfrac{a}{2} + 6$의 그래프와 모두 만나도록 하는 정수 $n$의 개수가 $4$일 때, $n$의 최솟값을 $b$, 최댓값을 $c$라 하자. 좌표평면에서 두 곡선 $y = f(x)$, $y = g(x)$와 두 직선 $x = b$, $x = c$로 둘러싸인 영역의 내부 또는 그 경계에 포함되고 $x$좌표와 $y$좌표가 모두 정수인 점의 개수를 구하고, 그 과정을 서술하시오. (단, $a, b, c$는 상수이다.)",
+    "content": "[주관식3 (서술형)] [7점]  \n두 정수 $a, n$에 대하여 직선 $y = n$이 두 함수 $f(x) = 2^{x - 1} + a$, $g(x) = -2^x - \\dfrac{a}{2} + 6$의 그래프와 모두 만나도록 하는 정수 $n$의 개수가 $4$일 때, $n$의 최솟값을 $b$, 최댓값을 $c$라 하자. 좌표평면에서 두 곡선 $y = f(x)$, $y = g(x)$와 두 직선 $x = b$, $x = c$로 둘러싸인 영역의 내부 또는 그 경계에 포함되고 $x$좌표와 $y$좌표가 모두 정수인 점의 개수를 구하고, 그 과정을 서술하시오. (단, $a, b, c$는 상수이다.)",
     "choices": [],
     "points": 7
   },
   "reference": {
     "answer": "$74$",
-    "solution": "두 함수의 치역은 각각 ${y \\mid y > a}$, $\\left{y \\,\\middle|\\, y < -\\dfrac{a}{2} + 6\\right}$이다.\n직선 $y = n$이 두 그래프와 모두 만나려면 $a < n < -\\dfrac{a}{2} + 6$이어야 하고, 이를 만족시키는 정수 $n$이 $4$개이려면\n$4 < \\left(-\\dfrac{a}{2} + 6\\right) - a \\le 5$\n$4 < 6 - \\dfrac{3}{2}a \\le 5 \\implies 1 \\le \\dfrac{3}{2}a < 2 \\implies \\dfrac{2}{3} \\le a < \\dfrac{4}{3}$\n$a$는 정수이므로 $a = 1$이다.\n따라서 $1 < n < \\dfrac{11}{2}$이므로 정수 $n$은 $2, 3, 4, 5$이고 $b = 2$, $c = 5$이다.\n이제 $2 \\le x \\le 5$에서 $g(x) = -2^x + \\dfrac{11}{2} \\le y \\le 2^{x - 1} + 1 = f(x)$를 만족시키는 정수점 $(x, y)$의 개수를 각 $x$별로 세면 다음과 같다.\n- $x = 2$: $1.5 \\le y \\le 3 \\implies y = 2, 3$ ($2$개)\n- $x = 3$: $-2.5 \\le y \\le 5 \\implies y = -2, -1, \\dots, 5$ ($8$개)\n- $x = 4$: $-10.5 \\le y \\le 9 \\implies y = -10, -9, \\dots, 9$ ($20$개)\n- $x = 5$: $-26.5 \\le y \\le 17 \\implies y = -26, -25, \\dots, 17$ ($44$개)\n따라서 구하는 점의 개수는 $2 + 8 + 20 + 44 = 74$이다.",
+    "solution": "두 함수의 치역은 각각 $\\{y \\mid y > a\\}$, $\\left\\{y \\,\\middle|\\, y < -\\dfrac{a}{2} + 6\\right\\}$이다.  \n직선 $y = n$이 두 그래프와 모두 만나려면 $a < n < -\\dfrac{a}{2} + 6$이어야 하고, 이를 만족시키는 정수 $n$이 $4$개이려면  \n$4 < \\left(-\\dfrac{a}{2} + 6\\right) - a \\le 5$  \n$4 < 6 - \\dfrac{3}{2}a \\le 5 \\implies 1 \\le \\dfrac{3}{2}a < 2 \\implies \\dfrac{2}{3} \\le a < \\dfrac{4}{3}$  \n$a$는 정수이므로 $a = 1$이다.  \n따라서 $1 < n < \\dfrac{11}{2}$이므로 정수 $n$은 $2, 3, 4, 5$이고 $b = 2$, $c = 5$이다.  \n이제 $2 \\le x \\le 5$에서 $g(x) = -2^x + \\dfrac{11}{2} \\le y \\le 2^{x - 1} + 1 = f(x)$를 만족시키는 정수점 $(x, y)$의 개수를 각 $x$별로 세면 다음과 같다.  \n- $x = 2$: $1.5 \\le y \\le 3 \\implies y = 2, 3$ ($2$개)  \n- $x = 3$: $-2.5 \\le y \\le 5 \\implies y = -2, -1, \\dots, 5$ ($8$개)  \n- $x = 4$: $-10.5 \\le y \\le 9 \\implies y = -10, -9, \\dots, 9$ ($20$개)  \n- $x = 5$: $-26.5 \\le y \\le 17 \\implies y = -26, -25, \\dots, 17$ ($44$개)  \n따라서 구하는 점의 개수는 $2 + 8 + 20 + 44 = 74$이다.",
     "sourcePrimaryMethod": "두 지수함수의 치역 교집합 (a, -a/2+6)에 정수 4개가 들어가도록 a=1을 구한 뒤 x=2,3,4,5별로 격자점을 센다.",
     "sourceDecisiveStep": "열린구간 (a, -a/2+6)에 정수 4개가 들어갈 조건 4 < 6-3a/2 ≤ 5로부터 정수 a=1을 결정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-03",
     "subUnitKey": "",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수함수의 활용",
+      "l4": "그래프 교점"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -1644,7 +1644,7 @@
       "matchedAs": "정수",
       "kind": "대상",
       "src": "stem",
-      "quote": "[7점] 두 정수 $a, n$에"
+      "quote": "7점]   두 정수 $a, n$에"
     },
     {
       "term": "좌표",
@@ -1707,14 +1707,14 @@
       "matchedAs": "직선",
       "kind": "대상",
       "src": "solution",
-      "quote": "ht}$이다. 직선 $y = n$"
+      "quote": "}$이다.   직선 $y = n$"
     },
     {
       "term": "치역",
       "matchedAs": "치역",
       "kind": "대상",
       "src": "solution",
-      "quote": "두 함수의 치역은 각각 ${y"
+      "quote": "두 함수의 치역은 각각 $\\{"
     },
     {
       "term": "함수",

@@ -3,7 +3,7 @@
   "requestId": "24_팔마고_1학기_중간_고2_수학I_유사-candidate-v1",
   "examUid": "24_팔마고_1학기_중간_고2_수학I_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I_유사.js",
-  "expectedSourceBlobSha1": "471cad984d88be031e72593446841ab655af93fc",
+  "expectedSourceBlobSha1": "2b98476d9ccf8bb2aa50ff3c28a071f9c0ccf8e0",
   "expectedQuestionCount": 22,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -23,15 +23,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-M1",
         "standardUnitKey": "H15-M1-01",
         "standardUnit": "지수의 뜻과 성질",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-M1-01-EXPONENT",
         "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "conceptClusterKey": "H15-M1-01-RADICAL-DEF",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -48,52 +48,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 27)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 다음 설명 중 옳은 것은?",
-          "curriculum": "H2-M1-RPM-001: Q1번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 27)",
-          "problemType": "Q1번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 27)",
-          "difficulty": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 27)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "제곱근과 n제곱근의 정의를 적용해 실수인 거듭제곱근의 개수와 부호를 판별한다.",
-      "decisiveStep": "짝수 거듭제곱근과 홀수 거듭제곱근의 실수 개수 차이를 구분하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q1번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 27)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q1번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 27)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "거듭제곱근의 기본 정의와 부호 판별만으로 즉시 해결되는 기본 문항이다.",
+      "hold": "RPM_ONLY: H2-M1-RPM-001 (지수 > 거듭제곱근 > n제곱근)",
+      "reason": "HOLD: RPM_ONLY: H2-M1-RPM-001 (지수 > 거듭제곱근 > n제곱근)"
     },
     {
       "questionUid": "qid_v1_5e669f2c7f51cbbb2c0722dac036667d61487b9e0b9fe6bf76e6da89a2788740",
@@ -104,15 +65,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "H15-M1-04-LOGFUNC-PROP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -129,52 +90,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 다음 중 함수 $y = \\log_3 \\frac{1}{3}(x-2)$에 대한 설명으로 옳지 않은 것은?",
-          "curriculum": "H2-M1-RPM-001: Q2번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
-          "problemType": "Q2번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
-          "difficulty": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "로그함수 y=log_3((x-2)/3)의 진수 조건, 점근선, 지나는 점 및 밑의 대소 관계를 통해 평행이동 가능 여부를 판별한다.",
-      "decisiveStep": "log_(1/3) x의 감소성과 log_3((x-2)/3)의 증가성을 비교해 평행이동 불가함을 판단하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q2번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "로그함수의 정의역, 점근선, 평행이동 성질을 종합 확인하는 표준 문항이다.",
+      "hold": "BINDING_GAP: H2-M1-RPM-021 (DIRECT_BINDING_GAP, exact binding MISSING)",
+      "reason": "HOLD: BINDING_GAP: H2-M1-RPM-021 (DIRECT_BINDING_GAP, exact binding MISSING)"
     },
     {
       "questionUid": "qid_v1_ab2cac79bc92ec66597e7de1372c3b786f89ce08c53d366a5595e6ee55bb1c73",
@@ -185,15 +107,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "H15-M1-03-EXPFUNC-MAXMIN",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -210,52 +132,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 정의역이 ${x \\mid -1 \\le x \\le 3}$인 함수 $y=3^{x+1}+2$는 $x=p$일 때 최솟값 $m$을 갖는다.",
-          "curriculum": "H2-M1-RPM-001: Q3번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
-          "problemType": "Q3번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
-          "difficulty": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "밑이 3인 지수함수 y=3^(x+1)+2의 증가성을 이용해 폐구간 [-1, 3]의 왼쪽 끝점에서 최솟값을 구한다.",
-      "decisiveStep": "밑 3>1이므로 x=-1에서 최솟값 3을 갖는다고 결정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 aligned)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q3번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "단일 지수함수의 단조성을 이용해 구간 최솟값을 바로 구하는 기초 문항이다.",
+      "hold": "BINDING_GAP: H2-M1-RPM-019 (FAMILY_BINDING_GAP, exact binding MISSING)",
+      "reason": "HOLD: BINDING_GAP: H2-M1-RPM-019 (FAMILY_BINDING_GAP, exact binding MISSING)"
     },
     {
       "questionUid": "qid_v1_02e2ac24349a3650dacbcf07f6a618bbc8c3eb7d318ebed059f0bcbac0d7ab95",
@@ -266,15 +149,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "subUnit": "삼각함수의 뜻과 값",
+        "conceptClusterKey": "H15-M1-05-ANGLE-RADIAN",
+        "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+        "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -291,52 +174,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 150)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 다음 <보기>에서 옳은 것만을 있는 대로 고른 것은?",
-          "curriculum": "H2-M1-RPM-001: Q4번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 150)",
-          "problemType": "Q4번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 150)",
-          "difficulty": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 150)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "호도법과 육십분법의 환산, 동경의 일반각 표현, 사분면의 각 정의를 각각 판별한다.",
-      "decisiveStep": "동경의 위치가 같아도 회전수에 따라 일반각이 무수히 많음을 확인하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 150)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q4번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 150)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "호도법, 일반각, 사분면 각의 개념을 보기형으로 함께 점검하는 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_87360d91d9f778630d0ac2cf42e269415a2715ef51be35e3101042dc3b786f6a",
@@ -347,15 +191,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOG-DEF",
+        "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+        "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -372,52 +216,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 30)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $\\log_{(x+2)} (30-x-x^2)$이 정의되도록 하는 정수 $x$의 개수는?",
-          "curriculum": "H2-M1-RPM-001: Q5번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 30)",
-          "problemType": "Q5번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 30)",
-          "difficulty": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 30)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "로그의 밑 조건(양수 및 1이 아님)과 진수 조건(양수)을 연립부등식으로 풀어 정수 해를 센다.",
-      "decisiveStep": "x+2 != 1에서 x != -1을 제외하여 정수 개수를 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 30)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q5번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 30)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "로그의 정의 조건과 이차부등식을 결합해 정수 개수를 세는 전형적 중위 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_1039d543c5e3169bf2bcc1b069975f3c21c3e87c5b2309e0c97a29894281447d",
@@ -428,15 +233,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-M1",
         "standardUnitKey": "H15-M1-01",
         "standardUnit": "지수의 뜻과 성질",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-M1-01-EXPONENT",
         "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "conceptClusterKey": "H15-M1-01-EXP-TRANS",
         "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -453,52 +258,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 abc)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 세 양수 $a, b, c$가 $a^x = b^{2y} = c^{3z} = 5$, $abc = 125$를 만족시킬 때, $\\frac{6}{x} + \\frac{3}{y} + \\frac{2}{z}$의 값은?",
-          "curriculum": "H2-M1-RPM-001: Q6번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 abc)",
-          "problemType": "Q6번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 abc)",
-          "difficulty": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 abc)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "a^x=b^(2y)=c^(3z)=5를 밑 5의 거듭제곱으로 표현한 뒤 abc=5^3에 대입해 지수의 합을 구한다.",
-      "decisiveStep": "abc=5^(1/x+1/(2y)+1/(3z))=5^3으로부터 1/x+1/(2y)+1/(3z)=3을 끌어내는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q6번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 abc)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q6번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 abc)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "유리수 지수 변형과 식의 값 계산을 연결한 기본적인 지수 계산 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_0033bc0935e36eedf3315612edb3b48d01cc085608f2cbf51a5330b551e86872",
@@ -509,15 +275,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOG-BASE",
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+        "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -534,52 +300,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $x = \\log_3 10 + \\log_9 16$일 때, $3^x$의 값은?",
-          "curriculum": "H2-M1-RPM-001: Q7번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
-          "problemType": "Q7번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
-          "difficulty": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "밑변환 공식으로 log_9 16을 log_3 4로 바꾼 뒤 로그의 합을 정리해 3^x를 구한다.",
-      "decisiveStep": "log_9 16 = log_3 4로 밑을 통일하여 x = log_3 40을 얻는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q7번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "밑변환과 로그의 덧셈 성질, 로그의 정의를 순차 적용하는 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_a5503ec42355753106243bf617aebd5fd636a689e6c3b4d4a6c8f8dc07a7887a",
@@ -590,15 +317,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOG-TELESCOPE",
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+        "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -615,52 +342,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 22)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 함수 $f(x) = \\log_2 \\left(1 + \\frac{1}{x+3}\\right)$에서",
-          "curriculum": "H2-M1-RPM-001: Q8번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 22)",
-          "problemType": "Q8번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 22)",
-          "difficulty": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 22)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "진수를 가분수로 통분한 뒤 로그의 합을 진수의 곱으로 바꿔 연쇄 약분하여 n을 구한다.",
-      "decisiveStep": "분모·분자의 연쇄 약분으로 log_2((n+4)/4)=3을 도출하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 22)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q8번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 22)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "진수 통분 후 로그의 성질로 망원곱 형태를 만드는 정형화된 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_5f4f2ce08166d066b8d38731f522df7e7d2b0f4ed3299ee843574ecbf3a995ac",
@@ -671,15 +359,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-M1",
         "standardUnitKey": "H15-M1-01",
         "standardUnit": "지수의 뜻과 성질",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-M1-01-EXPONENT",
         "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "conceptClusterKey": "H15-M1-01-INDETERMINATE-EQ",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -696,52 +384,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 mn)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $2$ 이상의 두 자연수 $m$, $n$에 대하여 등식",
-          "curriculum": "H2-M1-RPM-001: Q9번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 mn)",
-          "problemType": "Q9번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 mn)",
-          "difficulty": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 mn)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "거듭제곱근을 지수로 바꿔 3/m+1/n=1/2을 얻은 뒤 (m-6)(n-2)=12로 인수분해해 자연수 쌍을 구한다.",
-      "decisiveStep": "(m-6)(n-2)=12 형태 부정방정식으로 변환해 양의 약수쌍을 전수 조사하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 mn)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q9번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 mn)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "지수 등식을 정수 조건 부정방정식으로 전환하여 최솟값을 찾아야 하는 문항이다.",
+      "hold": "RPM_ONLY: H2-M1-RPM-003 (지수 > 지수의 확장 > 유리수 지수)",
+      "reason": "HOLD: RPM_ONLY: H2-M1-RPM-003 (지수 > 지수의 확장 > 유리수 지수)"
     },
     {
       "questionUid": "qid_v1_d6c65aca0baad6137351221d1aaa4aa669276a53e0a0e179f06528e8a189f1b3",
@@ -752,21 +401,21 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "H15-M1-03-EXPFUNC-BASE",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
         "difficultyBucket": 2,
         "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
+        "difficultyBoundaryFlag": "B23",
         "sourceQid": 10,
         "variationType": "CONDITION",
         "provenance": {
@@ -777,52 +426,13 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $1$이 아닌 두 양수 $a, b$에 대하여 두 함수 $f(x)=a^x$, $g(x)=b^x$가 양수 $n$에 대하여 $f(n) < g(n)$을 만족시킬 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?",
-          "curriculum": "H2-M1-RPM-001: Q10번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ab)",
-          "problemType": "Q10번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)",
-          "difficulty": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "양수 n에 대해 a^n < b^n이면 0<a<b임을 파악하고 각 명제의 참·거짓을 반례와 대우로 판별한다.",
-      "decisiveStep": "f(n)<g(n) (n>0)으로부터 0<a<b를 도출해 대우 ab>=1 논리로 ㄷ을 판정하는 단계",
       "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 ab)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q10번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyBoundaryFlag": "B23",
+      "difficultyReason": "지수함수의 밑 비교와 명제의 대우 판정이 결합되어 있어 중위권에서 경계성이 있는 문항이다.",
+      "hold": "BINDING_GAP: H2-M1-RPM-013 (DIRECT_BINDING_GAP, exact binding MISSING)",
+      "reason": "HOLD: BINDING_GAP: H2-M1-RPM-013 (DIRECT_BINDING_GAP, exact binding MISSING)"
     },
     {
       "questionUid": "qid_v1_3f8bd57e5fbebc912835542b13bdb26affb02e145b0afd29f4950b1a5d38e1fd",
@@ -833,15 +443,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "subUnit": "삼각함수의 뜻과 값",
+        "conceptClusterKey": "H15-M1-05-RAY-SYM-ARC",
+        "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+        "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -858,52 +468,13 @@
           "variationType": "CONDITION",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 반지름의 길이가 $7$이고 중심각의 크기가 $\\theta$인 부채꼴이 있다.",
-          "curriculum": "H2-M1-RPM-001: Q11번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
-          "problemType": "Q11번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
-          "difficulty": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "x축 대칭인 두 동경의 합이 2n*pi임을 이용해 범위 내 theta를 구하고 호의 길이 최댓값을 계산한다.",
-      "decisiveStep": "theta + 5theta = 2n*pi에서 0<theta<pi를 만족하는 최대 각 2pi/3을 찾는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q11번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "두 동경의 대칭 조건과 부채꼴 호의 길이 공식을 순차 연결하는 표준 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_b2fd0b04b3e65f773495a6b00675a59cfbd6773760e1511892b26794ca930269",
@@ -914,15 +485,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "H15-M1-04-EXPLOG-INEQ",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -939,52 +510,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 a)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 두 실수 $a, b$에 대하여 $b^2 < b < a$일 때, 옳은 것만을 <보기>에서 있는 대로 고른 것은?",
-          "curriculum": "H2-M1-RPM-001: Q12번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 a)",
-          "problemType": "Q12번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 a)",
-          "difficulty": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 a)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "b^2<b에서 0<b<1을 파악한 뒤 지수함수와 로그함수의 증가·감소 성질로 대소와 부호를 판별한다.",
-      "decisiveStep": "0<b<1과 a+1>1을 각각 지수·로그함수의 단조성에 적용해 부호를 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 a)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q12번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 a)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "이차부등식으로 밑의 범위를 잡은 뒤 지수·로그의 단조성을 복합 판정하는 문항이다.",
+      "hold": "BINDING_GAP: H2-M1-RPM-021 (DIRECT_BINDING_GAP, exact binding MISSING)",
+      "reason": "HOLD: BINDING_GAP: H2-M1-RPM-021 (DIRECT_BINDING_GAP, exact binding MISSING)"
     },
     {
       "questionUid": "qid_v1_8b5b912e7562c32b352bf1d59d6cc2715167a2b4e7bf0d06046597a472cd1a65",
@@ -995,15 +527,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-05",
+        "standardUnit": "삼각함수의 뜻과 값",
+        "standardUnitOrder": 5,
+        "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+        "subUnit": "삼각함수의 뜻과 값",
+        "conceptClusterKey": "H15-M1-05-SECTOR-CIRCLE",
+        "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+        "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1020,52 +552,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 길이가 $12$인 선분 $\\mathrm{AB}$를 지름으로 하는 반원의 호 위에 점 $\\mathrm{P}$가 있다.",
-          "curriculum": "H2-M1-RPM-001: Q13번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
-          "problemType": "Q13번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
-          "difficulty": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "호 BP의 길이로 중심각과 원주각 ∠PAB=pi/6을 구하고 직각삼각형 APB에서 AP를 계산해 부채꼴 APQ의 넓이를 구한다.",
-      "decisiveStep": "원주각 성질로 ∠PAQ=pi/6 및 현 AP=6sqrt(3)을 동시에 결정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q13번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "원주각과 직각삼각형, 부채꼴 넓이 공식을 연계해야 하는 도형 결합 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_4dd2c156a5e6e724eac250b73a2ad5dfe001a7292e3e237bfa158ccd6b12c908",
@@ -1076,15 +569,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "conceptClusterKey": "H15-M1-03-EXPEQ-ROOTS",
+        "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+        "templateKey": "TPL_NESTED_EXPONENTIAL_ROOT_COUNT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1101,52 +594,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 실수 $x$에 대하여 방정식 $k \\times 3^x = 9^x + 3^x + 9$가 서로 다른 두 개의 실근을 갖도록 하는 정수 $k$ 중 절댓값이 $12$보다 작은 것의 개수는?",
-          "curriculum": "H2-M1-RPM-001: Q14번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
-          "problemType": "Q14번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
-          "difficulty": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "t=3^x(>0)로 치환한 이차방정식이 서로 다른 두 양의 실근을 갖도록 판별식과 근과 계수의 관계 조건을 세운다.",
-      "decisiveStep": "치환 변수 t>0 조건 때문에 판별식 D>0 외에 두 근의 합 k-1>0 조건을 함께 적용하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 12)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q14번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "지수방정식 치환 시 양근 조건 누락 실수를 점검하는 핵심 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_f4cf8dc349e71e541185d2170bfe97ec1950ff927efc8375df549feaf5c36b93",
@@ -1157,15 +611,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-M1",
         "standardUnitKey": "H15-M1-01",
         "standardUnit": "지수의 뜻과 성질",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-M1-01-EXPONENT",
         "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "conceptClusterKey": "H15-M1-01-RADICAL-PAIR",
         "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1182,52 +636,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: $2$보다 큰 두 자연수 $a, b$에 대하여 두 양수 $x, y$가 다음 <조건>을 만족시킬 때, $a, b$의 순서쌍 $(a, b)$의 개수는?",
-          "curriculum": "H2-M1-RPM-001: Q15번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 36)",
-          "problemType": "Q15번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)",
-          "difficulty": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "조건 (가)에서 x, y를 밑 6의 거듭제곱으로 표현한 뒤 조건 (나)에 대입해 2a+b=42의 자연수 순서쌍을 센다.",
-      "decisiveStep": "2a+b=42와 a>=3, b>=3 조건을 연립해 3<=a<=19 범위를 확정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 36)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q15번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 36)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "거듭제곱근의 지수 변환과 일차 부정방정식의 정수해 개수를 함께 묻는 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_cf39f328efe7b496ff6a8a90cf2ee1d2e01143d08dad69b943d6e4803f096748",
@@ -1238,15 +653,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH",
+        "subUnit": "로그함수의 그래프",
+        "conceptClusterKey": "H15-M1-04-EXPLOG-INTERSECT",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "INTERDEPENDENT",
@@ -1263,52 +678,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 12)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: 좌표평면 위의 두 곡선 $y=2^{|x-1|}+3$과 $y=\\log_2 (x+k)$가 만나는 서로 다른 두 점의 $x$좌표를 $x_1, x_2$ ($x_1 < x_2$)라 할 때, $0 < x_1 < 1$, $1 < x_2 < 2$를 만족시키는 자연수 $k$의 개수는?",
-          "curriculum": "H2-M1-RPM-001: Q16번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
-          "problemType": "Q16번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
-          "difficulty": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 12)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "INTERDEPENDENT: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "x=0, 1, 2의 경계 함숫값 대소 비교를 통해 구간 (0,1)과 (1,2)에서 각각 교점이 존재할 k의 범위를 연립한다.",
-      "decisiveStep": "x=0, 1, 2에서의 함수값 부등식 g(0)<5, g(1)>4, g(2)<5를 동시에 세우는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 12)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q16번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "절댓값 지수함수와 로그함수의 교점 위치를 경계 함숫값 비교로 추론하는 준킬러 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_37dc95fd7d5724a6cd502c7e041e0c23dcc3003a52a8ba7e5a0b9e58ecb4f1a9",
@@ -1319,13 +695,13 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-M1",
         "standardUnitKey": "H15-M1-01",
         "standardUnit": "지수의 뜻과 성질",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-M1-01-EXPONENT",
         "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
+        "conceptClusterKey": "H15-M1-01-CUBIC-IDENTITY",
         "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
         "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
         "crossConceptKeys": [],
@@ -1344,52 +720,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: [서답형1(단답형1)]",
-          "curriculum": "H2-M1-RPM-001: Q17번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
-          "problemType": "Q17번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
-          "difficulty": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "곱셈 공식 (a+a^(-1))^3 = a^3+a^(-3)+3(a+a^(-1))을 이용해 x^3을 x에 관한 일차식으로 정리한다.",
-      "decisiveStep": "3x^3 - 9x = 10을 얻어 식의 값을 상수로 축약하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q17번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q17번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "지수 치환과 세제곱 곱셈 공식을 직접 적용하는 단답형 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_9c33c7d3c636f21ad1dddd1b8ce5898108408cd8a9d80adcfefb2c8ea32ba299",
@@ -1400,15 +737,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "H15-M1-04-LOGEXP-INV",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1425,52 +762,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 kx)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: [서답형2(단답형2)]",
-          "curriculum": "H2-M1-RPM-001: Q18번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 kx)",
-          "problemType": "Q18번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 kx)",
-          "difficulty": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 kx)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "로그함수를 평행이동하고 역함수를 구해 f(x)=m+(1/k)(1/2)^x를 얻은 뒤 점근선과 지나는 점으로 m, k를 결정한다.",
-      "decisiveStep": "역함수 f(x)의 점근선 y=m=-4와 점 (2,0) 대입으로 k=1/16을 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 kx)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q18번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 kx)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "로그함수의 평행이동과 역함수 변환, 지수함수의 점근선 성질을 차례로 적용하는 문항이다.",
+      "hold": "BINDING_GAP: H2-M1-RPM-022 (DIRECT_BINDING_GAP, exact binding MISSING)",
+      "reason": "HOLD: BINDING_GAP: H2-M1-RPM-022 (DIRECT_BINDING_GAP, exact binding MISSING)"
     },
     {
       "questionUid": "qid_v1_628d9abb127254a444f8cfff346c66994e39f5646be6607f8a3216f23e2ca1fc",
@@ -1481,15 +779,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-02",
+        "standardUnit": "로그의 뜻과 성질",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-M1-02-LOGARITHM",
+        "subUnit": "로그의 뜻과 성질",
+        "conceptClusterKey": "H15-M1-02-LOG-POWER",
+        "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+        "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1506,52 +804,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 16)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: [서답형3(단답형3)]",
-          "curriculum": "H2-M1-RPM-001: Q19번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 16)",
-          "problemType": "Q19번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 16)",
-          "difficulty": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 16)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "a^(log_2 9) = 3^n에 밑 3인 로그를 취해 a=2^(n/2)를 구한 뒤 a<=16 범위의 모든 곱을 계산한다.",
-      "decisiveStep": "밑변환 성질 (log_2 9)(log_3 a) = 2 log_2 a = n으로 a를 2의 거듭제곱 형태로 푸는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 16)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q19번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 16)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "지수의 로그 표현을 밑변환으로 정리하고 범위 내 모든 해의 곱을 계산해야 하는 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_c65db8115770709e632e869b70ec0a5d9a1297b45f0974fafc053de5ad60d58a",
@@ -1562,15 +821,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+        "subUnit": "로그함수의 활용",
+        "conceptClusterKey": "H15-M1-04-LOGFUNC-QUAD",
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1587,52 +846,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: [서답형4(서술형1)]",
-          "curriculum": "H2-M1-RPM-001: Q20번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
-          "problemType": "Q20번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
-          "difficulty": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "진수 조건 2<x<8을 먼저 구한 뒤 로그의 합을 이차함수 진수로 바꾸어 완전제곱식으로 최댓값을 구한다.",
-      "decisiveStep": "진수 (x-2)(8-x)=9-(x-5)^2의 꼭짓점 x=5가 정의역 안에 있음을 확인하고 최댓값 2를 구하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 aligned)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q20번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "로그의 정의역 확인과 이차함수 최대·최소 결합의 표준 서술형 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_360717dfb48572a1975719790413205eef89b50d0dcf7c3eb7928c78232b53d4",
@@ -1643,15 +863,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-03",
+        "standardUnit": "지수함수",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+        "subUnit": "지수함수의 활용",
+        "conceptClusterKey": "H15-M1-02-COMMONLOG-APP",
+        "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+        "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1668,52 +888,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: [서답형5(서술형2)]",
-          "curriculum": "H2-M1-RPM-001: Q21번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
-          "problemType": "Q21번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
-          "difficulty": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "n년 후 자기 자본 C(1.2)^n과 부채 5C(0.9)^n의 부등식 (4/3)^n > 5에 상용로그를 취해 최소 자연수 n을 구한다.",
-      "decisiveStep": "상용로그 부등식 0.12n > 0.70으로부터 n > 5.833...을 얻어 n=6을 결정하는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 10)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q21번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "실생활 증감률 모델링과 상용로그 부등식 계산을 서술하는 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_cfe2a76b53e952caab679bbd10f9f2f3bc39c66b1770539abf0dd5aea4c97e4b",
@@ -1724,15 +905,15 @@
         "standardCourse": "수학I",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-M1-01",
-        "standardUnit": "지수의 뜻과 성질",
-        "standardUnitOrder": 1,
-        "subUnitKey": "H15-M1-01-EXPONENT",
-        "subUnit": "지수의 뜻과 성질",
-        "conceptClusterKey": "H15-M1-01-EXPONENT",
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+        "courseKey": "H15-M1",
+        "standardUnitKey": "H15-M1-04",
+        "standardUnit": "로그함수",
+        "standardUnitOrder": 4,
+        "subUnitKey": "",
+        "subUnit": "",
+        "conceptClusterKey": "H15-M1-04-LOGINEQ-PARAM",
+        "problemTypeKey": "",
+        "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
@@ -1749,52 +930,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-19",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H2-M1-RPM-001"
-        ],
-        "rpmPrimary": {
-          "l1": "지수함수와 로그함수",
-          "l2": "지수",
-          "l3": "거듭제곱근",
-          "l4": "n제곱근",
-          "recordId": "H2-M1-RPM-001"
-        },
-        "rpmPrimaryL1": "지수함수와 로그함수",
-        "rpmPrimaryL2": "지수",
-        "rpmPrimaryL3": "거듭제곱근",
-        "rpmPrimaryL4": "n제곱근",
-        "rpmPrimaryRecordId": "H2-M1-RPM-001",
-        "difficultyBasis": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 aligned)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-M1-01 / H15-M1-01-EXPONENT: [서답형6(서술형3)]",
-          "curriculum": "H2-M1-RPM-001: Q22번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 aligned)",
-          "problemType": "Q22번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)",
-          "difficulty": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 aligned)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "t=log_2 x로 치환해 (t-2)(t-log_2(n/2))<0으로 인수분해한 뒤 n/2와 4의 대소 경우를 나누어 정수 x가 3개인 n을 구한다.",
-      "decisiveStep": "n/2<4일 때 진수 조건 x>0 때문에 0<n/2<1에서 n=1을 찾고, n/2>4일 때 7<n/2<=8에서 n=15,16을 찾는 단계",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 aligned)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-        "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
-        "why": "Q22번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 aligned)"
-      },
-      "hold": "정본 폴더에 메타_키선택표_고2.json 미구비로 키 확정 보류",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "로그 이차부등식 인수분해, 매개변수 기준 경우 분류, 진수 조건과 정수 개수 경계 판정이 모두 요구되는 고난도 문항이다.",
+      "hold": "RPM_ONLY: H2-M1-RPM-026 (로그함수 > 로그부등식 > 치환)",
+      "reason": "HOLD: RPM_ONLY: H2-M1-RPM-026 (로그함수 > 로그부등식 > 치환)"
     }
   ]
 }

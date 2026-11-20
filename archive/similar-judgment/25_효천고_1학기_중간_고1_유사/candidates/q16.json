@@ -19,20 +19,30 @@
   "reference": {
     "answer": "①",
     "solution": "$2x^2 + ax + b = 0$의 계수가 모두 실수이므로 한 근이 $-2 + i$이면 켤레복소수 $-2 - i$도 근이다. 근과 계수의 관계에 의하여 $$(-2 + i) + (-2 - i) = -4 = -\\frac{a}{2} \\implies a = 8$$ $$(-2 + i)(-2 - i) = 4 + 1 = 5 = \\frac{b}{2} \\implies b = 10$$ 이를 두 번째 방정식에 대입하면 $x^2 - 16x + 10 + k = 0$이고, 서로 다른 두 실근을 가지므로 $$\\frac{D}{4} = (-8)^2 - (10 + k) > 0 \\implies 54 - k > 0 \\implies k < 54$$ $54$보다 작은 홀수인 자연수는 $1, 3, 5, \\dots, 53$으로 총 $27$개이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "실계수 켤레근 $-2\\pm i$로 $a=8, b=10$을 구한 뒤 두 번째 방정식의 판별식 $D/4>0$에서 $k<54$를 얻어 홀수 개수를 센다.",
+    "sourceDecisiveStep": "첫 방정식의 최고차항 계수 $2$를 반영해 $a, b$를 구하고 $k<54$인 홀수 자연수 개수를 세는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "근과 계수의 관계",
+      "l4": "근으로 방정식 구성"
+    },
+    "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+    "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수와이차방정식",
+      "concept": "이차방정식의켤레근",
+      "skill": "켤레근후판별식개수",
+      "context": "복소수근과실근조건"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

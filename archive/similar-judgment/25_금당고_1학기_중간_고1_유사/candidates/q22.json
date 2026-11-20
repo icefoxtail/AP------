@@ -13,20 +13,30 @@
   "reference": {
     "answer": "$21$",
     "solution": "$f(x) = (x - a)^2 + a^2 - 4$이므로 아래로 볼록하고 축은 $x = a$이다. $a > 0$이므로 축 $x = a$의 위치에 따라 세 경우로 나눈다.\n\n1. $0 < a < 1$일 때: 구간 $[1, 3]$에서 최솟값은 $f(1) = (1 - a)^2 + a^2 - 4 = 2a^2 - 2a - 3 = 13$이다. $a^2 - a - 8 = 0$에서 $a = \\frac{1 + \\sqrt{33}}{2} > 3$ ($a > 0$)이므로 $0 < a < 1$에 모순이다.  \n2. $1 \\le a \\le 3$일 때: 최솟값은 꼭짓점의 $y$좌표 $f(a) = a^2 - 4 = 13$이다. $a^2 = 17$에서 $a = \\sqrt{17} > 4$이므로 $1 \\le a \\le 3$에 모순이다.  \n3. $a > 3$일 때: 구간 $[1, 3]$에서 최솟값은 $f(3) = (3 - a)^2 + a^2 - 4 = 2a^2 - 6a + 5 = 13$이다. $$2a^2 - 6a - 8 = 0 \\implies a^2 - 3a - 4 = 0 \\implies (a - 4)(a + 1) = 0$$ $a > 3$이므로 $a = 4$이다.\n\n따라서 $f(x) = (x - 4)^2 + 12$이고, 구간 $[1, 3]$에서 최댓값은 축 $x = 4$에서 가장 먼 $x = 1$일 때이므로 $$f(1) = (1 - 4)^2 + 12 = 9 + 12 = 21$$\n\n\n\n\n\n---",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "축 $x=a$의 위치에 따라 구간 $0<a<1$, $1 \\le a \\le 3$, $a>3$ 세 구간으로 나누어 최솟값 방정식을 풀고 조건을 만족하는 $a=4$를 찾아 최댓값을 구한다.",
+    "sourceDecisiveStep": "세 범위 모두에서 이차방정식을 푼 뒤 $a>3$ 범위와 일치하는 $a=4$만 유효함을 검증하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+    "difficultyBucket": 4,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "이차방정식과이차함수",
+      "concept": "이차함수의최대와최소",
+      "skill": "미지수축범위분류최대최소",
+      "context": "서술형축위치분기"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -273,6 +283,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -468,6 +482,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

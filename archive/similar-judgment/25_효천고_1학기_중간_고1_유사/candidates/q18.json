@@ -19,20 +19,30 @@
   "reference": {
     "answer": "②",
     "solution": "$z + 3i = a + (b + 3)i$와 $\\bar{z} - 3i = a - (b + 3)i$는 서로 켤레복소수이므로 $$(z + 3i)(\\bar{z} - 3i) = a^2 + (b + 3)^2 = 65$$ $a, b$가 자연수이므로 $b + 3 \\ge 4$이다. 제곱의 합이 $65$인 두 자연수 쌍은 $1^2 + 8^2$과 $4^2 + 7^2$이므로 가능한 $(a, b)$는\n\n- $(a, b + 3) = (1, 8) \\implies (a, b) = (1, 5)$  \n- $(a, b + 3) = (4, 7) \\implies (a, b) = (4, 4)$  \n- $(a, b + 3) = (7, 4) \\implies (a, b) = (7, 1)$\n\n구하는 값은 $(z + 2)(\\bar{z} + 2) = (a + 2)^2 + b^2$이므로 각 경우에 대입하면\n\n- $(1, 5)$: $3^2 + 5^2 = 34$  \n- $(4, 4)$: $6^2 + 4^2 = 52$  \n- $(7, 1)$: $9^2 + 1^2 = 82$\n\n따라서 최솟값은 $34$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "켤레복소수 곱으로 부정방정식 $a^2+(b+3)^2=65$를 얻어 자연수 해를 모두 구한 뒤 $(a+2)^2+b^2$의 최솟값을 찾는다.",
+    "sourceDecisiveStep": "$b+3 \\ge 4$ 조건으로 가능한 $(a, b)$ 쌍을 $(1,5), (4,4), (7,1)$ 세 가지로 추리는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "복소수의 뜻",
+      "l4": "서로 같은 복소수"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+    "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "켤레복소수의성질",
+      "skill": "제곱합부정방정식최소",
+      "context": "자연수성분복소수"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

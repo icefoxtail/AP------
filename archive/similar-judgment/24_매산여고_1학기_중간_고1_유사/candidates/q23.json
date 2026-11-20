@@ -12,17 +12,22 @@
   },
   "reference": {
     "answer": "$m<-10-2\\sqrt{26}$ 또는 $\\dfrac{1}{2}<m<5-2\\sqrt{5}$",
-    "solution": "$t=x+1$이라 두면 $x\\le -1$은 $t\\le 0$, $x>-1$은 $t>0$이다.\n\n\n1. $x\\le -1$ ($t\\le 0$) 구간: $2x^2+2x=2t^2-2t$이고, $mx+3m-1=mt+2m-1$이므로 교점 방정식은 $$2t^2-(m+2)t+(1-2m)=0$$ 판별식은 $D_L=(m+2)^2-8(1-2m)=m^2+20m-4$이고, 두 근의 합은 $\\dfrac{m+2}{2}$, 곱은 $\\dfrac{1-2m}{2}$이다. *$m<-10-2\\sqrt{26}$이면 $D_L>0$, 합 $<0$, 곱 $>0$이므로 $t<0$인 근이 $2$개이다. *$m=-10-2\\sqrt{26}$이면 $t<0$인 중근 $1$개이다. *$-10-2\\sqrt{26}<m<\\dfrac{1}{2}$이면 $t\\le 0$인 실근이 $0$개이다. *$m\\ge \\dfrac{1}{2}$이면 곱 $\\le 0$이므로 $t\\le 0$인 실근이 $1$개이다. 2.$x>-1$ ($t>0$) 구간: $-x^2-x=-t^2+t$이므로 교점 방정식은 $$t^2+(m-1)t+(2m-1)=0$$ 판별식은 $D_R=(m-1)^2-4(2m-1)=m^2-10m+5$이고, 두 근의 합은 $1-m$, 곱은 $2m-1$이다. *$m\\le \\dfrac{1}{2}$이면 곱 $\\le 0$이므로 $t>0$인 실근이 $1$개이다. *$\\dfrac{1}{2}<m<5-2\\sqrt{5}$이면 $D_R>0$, 합 $>0$, 곱 $>0$이므로 $t>0$인 근이 $2$개이다. *$m=5-2\\sqrt{5}$이면 $t>0$인 중근 $1$개, $m>5-2\\sqrt{5}$이면 $0$개이다.\n\n\n두 구간의 교점 개수의 합이 $3$이 되는 경우는 $(2+1)$개 또는 $(1+2)$개이므로 $$m<-10-2\\sqrt{26} \\quad \\text{또는} \\quad \\dfrac{1}{2}<m<5-2\\sqrt{5}$$",
+    "solution": "$t=x+1$이라 두면 $x\\le -1$은 $t\\le 0$, $x>-1$은 $t>0$이다.\n\n1) $x\\le -1$ ($t\\le 0$) 구간: $2x^2+2x=2t^2-2t$이고, $mx+3m-1=mt+2m-1$이므로 교점 방정식은 $$2t^2-(m+2)t+(1-2m)=0$$ 판별식은 $D_L=(m+2)^2-8(1-2m)=m^2+20m-4$이고, 두 근의 합은 $\\dfrac{m+2}{2}$, 곱은 $\\dfrac{1-2m}{2}$이다.  \n- $m<-10-2\\sqrt{26}$이면 $D_L>0$, 합 $<0$, 곱 $>0$이므로 $t<0$인 근이 $2$개이다.  \n- $m=-10-2\\sqrt{26}$이면 $t<0$인 중근 $1$개이다.  \n- $-10-2\\sqrt{26}<m<\\dfrac{1}{2}$이면 $t\\le 0$인 실근이 $0$개이다.  \n- $m\\ge \\dfrac{1}{2}$이면 곱 $\\le 0$이므로 $t\\le 0$인 실근이 $1$개이다.  \n2) $x>-1$ ($t>0$) 구간: $-x^2-x=-t^2+t$이므로 교점 방정식은 $$t^2+(m-1)t+(2m-1)=0$$ 판별식은 $D_R=(m-1)^2-4(2m-1)=m^2-10m+5$이고, 두 근의 합은 $1-m$, 곱은 $2m-1$이다.  \n- $m\\le \\dfrac{1}{2}$이면 곱 $\\le 0$이므로 $t>0$인 실근이 $1$개이다.  \n- $\\dfrac{1}{2}<m<5-2\\sqrt{5}$이면 $D_R>0$, 합 $>0$, 곱 $>0$이므로 $t>0$인 근이 $2$개이다.  \n- $m=5-2\\sqrt{5}$이면 $t>0$인 중근 $1$개, $m>5-2\\sqrt{5}$이면 $0$개이다.\n\n두 구간의 교점 개수의 합이 $3$이 되는 경우는 $(2+1)$개 또는 $(1+2)$개이므로 $$m<-10-2\\sqrt{26} \\quad \\text{또는} \\quad \\dfrac{1}{2}<m<5-2\\sqrt{5}$$",
     "sourcePrimaryMethod": "구간 경계 x=-1을 t=x+1로 평행이동하여 t<=0과 t>0 각 구간에서 판별식과 근의 부호로 교점 개수를 합산한다.",
     "sourceDecisiveStep": "왼쪽(t<=0) 2개+오른쪽(t>0) 1개인 m<-10-2sqrt(26)과 왼쪽 1개+오른쪽 2개인 1/2<m<5-2sqrt(5)를 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-05",
+    "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "직선과 포물선",
+      "l4": "교점 개수"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
     "difficultyBucket": 5,
     "newKeyProposal": null,
     "item4slot": {
@@ -261,6 +266,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -476,6 +485,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1709,6 +1722,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

@@ -13,20 +13,30 @@
   "reference": {
     "answer": "$3$",
     "solution": "주어진 방정식이 $x$에 대한 이차방정식이므로 최고차항의 계수 $k - 2 \\neq 0$, 즉 $k \\neq 2$이다. 서로 다른 두 실근을 가지므로 판별식 $\\frac{D}{4} > 0$이어야 한다. $$\\frac{D}{4} = 2^2 - (k - 2)(-5) = 4 + 5k - 10 = 5k - 6 > 0 \\implies k > \\frac{6}{5}$$ 따라서 $k > \\frac{6}{5}$이고 $k \\neq 2$인 정수 $k$는 $3, 4, 5, \\dots$이므로 최솟값은 $3$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "이차방정식 조건 $k-2 \\neq 0$과 판별식 $D/4>0$을 함께 적용해 정수 $k$의 최솟값을 구한다.",
+    "sourceDecisiveStep": "최고차항 계수가 $0$이 아니어야 함($k \\neq 2$)을 빠뜨리지 않고 $k=2$를 제외하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "복소수 근",
+      "l4": "계수 조건"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
     "templateKey": null,
-    "difficultyBucket": null,
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수와이차방정식",
+      "concept": "이차방정식의판별식",
+      "skill": "최고차항비영및판별식",
+      "context": "서술형이차방정식조건"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -273,6 +283,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -468,6 +482,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

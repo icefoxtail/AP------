@@ -12,22 +12,22 @@
   },
   "reference": {
     "answer": "$20$",
-    "solution": "$t = 2^x - 2^{-x}$라 하면 $2^x > 0$이므로 $t$는 모든 실수 값을 가질 수 있다.\n또한 $4^x + 4^{-x} = (2^x - 2^{-x})^2 + 2 = t^2 + 2$이므로 주어진 방정식은\n$(t^2 + 2) - kt + 3k + 14 = 0$\n$t^2 - kt + 3k + 16 = 0$\n원래 방정식이 실근 $x$를 가지려면 $t$에 대한 이차방정식이 실근을 가져야 하므로 판별식 $D \\ge 0$이어야 한다.\n$D = k^2 - 4(3k + 16) = k^2 - 12k - 64 = (k - 16)(k + 4) \\ge 0$\n따라서 $k \\ge 16$ 또는 $k \\le -4$이므로 $\\alpha = 16, \\beta = -4$이고,\n$|\\beta - \\alpha| = |-4 - 16| = 20$이다.",
+    "solution": "$t = 2^x - 2^{-x}$라 하면 $2^x > 0$이므로 $t$는 모든 실수 값을 가질 수 있다.  \n또한 $4^x + 4^{-x} = (2^x - 2^{-x})^2 + 2 = t^2 + 2$이므로 주어진 방정식은  \n$(t^2 + 2) - kt + 3k + 14 = 0$  \n$t^2 - kt + 3k + 16 = 0$  \n원래 방정식이 실근 $x$를 가지려면 $t$에 대한 이차방정식이 실근을 가져야 하므로 판별식 $D \\ge 0$이어야 한다.  \n$D = k^2 - 4(3k + 16) = k^2 - 12k - 64 = (k - 16)(k + 4) \\ge 0$  \n따라서 $k \\ge 16$ 또는 $k \\le -4$이므로 $\\alpha = 16, \\beta = -4$이고,  \n$|\\beta - \\alpha| = |-4 - 16| = 20$이다.",
     "sourcePrimaryMethod": "t=2^x-2^-x의 치역이 실수 전체임을 파악해 t²-kt+3k+16=0의 판별식 D≥0을 푼다.",
     "sourceDecisiveStep": "2^x-2^-x=t의 치역이 실수 전체이므로 판별식 D≥0이 실근 존재 필요충분조건임을 적용하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-03",
+    "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수함수",
+      "l3": "지수방정식",
+      "l4": "치환"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+    "templateKey": "TPL_NESTED_EXPONENTIAL_ROOT_COUNT",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -1637,7 +1637,7 @@
       "matchedAs": "방정식",
       "kind": "대상",
       "src": "solution",
-      "quote": "이므로 주어진 방정식은 $(t^2"
+      "quote": "이므로 주어진 방정식은   $(t^"
     },
     {
       "term": "판별식",

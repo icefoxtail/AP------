@@ -19,20 +19,30 @@
   "reference": {
     "answer": "③",
     "solution": "$g(x) = f(x) - x$라 놓으면 $$g(x) = \\begin{cases} x^2 + (a - 1)x + b & (x \\le 0) \\ -x^2 + (a - 1)x - b & (x > 0) \\end{cases}$$ 이고 $f(x) = x + t$의 실근은 $y = g(x)$와 직선 $y = t$의 교점의 $x$좌표와 같다. $x \\le 0$에서 최솟값은 $m = b - \\frac{(a - 1)^2}{4}$, $x > 0$에서 최댓값은 $M = -b + \\frac{(a - 1)^2}{4}$이다. $b > 0$이므로 교점이 $3$개가 되는 $t$가 오직 $1$개 존재하려면 $M = b$ (또는 $m = -b$)여야 하고, 두 식 모두 $$\\frac{(a - 1)^2}{4} = 2b \\implies (a - 1)^2 = 8b$$ 로 귀결된다. 이때 유일한 값은 $t = b$이며, 세 실근은\n\n- $x \\le 0$: $x^2 + (a - 1)x = 0 \\implies x = 0$ 또는 $x = -(a - 1)$  \n- $x > 0$: $x^2 - (a - 1)x + 2b = \\left(x - \\frac{a - 1}{2}\\right)^2 = 0 \\implies x = \\frac{a - 1}{2}$\n\n조건 (나)에서 세 실근의 합이 $-2$이므로 $$0 - (a - 1) + \\frac{a - 1}{2} = -\\frac{a - 1}{2} = -2 \\implies a - 1 = 4 \\implies a = 5$$ 이를 $(a - 1)^2 = 8b$에 대입하면 $16 = 8b \\implies b = 2 > 0$이다. 따라서 $a + b = 5 + 2 = 7$이다.",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$g(x)=f(x)-x$로 변환해 두 포물선의 꼭짓점 높이와 $x=0$ 불연속 경계값이 일치할 조건 $(a-1)^2=8b$를 구하고 세 근의 합으로 $a, b$를 결정한다.",
+    "sourceDecisiveStep": "$y=t$와의 교점이 $3$개인 $t$가 유일할 조건이 $M=b$임과 그 세 근의 합이 $-\\frac{a-1}{2}$임을 도출하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-05",
+    "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "직선과 포물선",
+      "l4": "교점 개수"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+    "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+    "difficultyBucket": 5,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "이차방정식과이차함수",
+      "concept": "구간별이차함수와직선의교점",
+      "skill": "경계극값일치조건추론",
+      "context": "불연속이차함수교점수"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "$x$축과 한 점에서 만나므로 이차방정식 $x^2+(m+k)x+4(m-k)^2=0$의 판별식 $D=0$이다. $$D=(m+k)^2-16(m-k)^2=0 \\implies (m+k)^2={4(m-k)}^2$$ 따라서 $m+k=4(m-k)$ 또는 $m+k=-4(m-k)$이다.\n\n\n* $m+k=4m-4k$에서 $5k=3m \\implies k=\\dfrac{3}{5}m$\n* $m+k=-4m+4k$에서 $3k=5m \\implies k=\\dfrac{5}{3}m$\n\n\n$m$은 자연수이고 $k>0$이므로 $k$의 최솟값은 $m=1$일 때 $k=\\dfrac{3}{5}$이다. 정답은 ④이다.",
+    "solution": "$x$축과 한 점에서 만나므로 이차방정식 $x^2+(m+k)x+4(m-k)^2=0$의 판별식 $D=0$이다. $$D=(m+k)^2-16(m-k)^2=0 \\implies (m+k)^2={4(m-k)}^2$$ 따라서 $m+k=4(m-k)$ 또는 $m+k=-4(m-k)$이다.\n\n- $m+k=4m-4k$에서 $5k=3m \\implies k=\\dfrac{3}{5}m$  \n- $m+k=-4m+4k$에서 $3k=5m \\implies k=\\dfrac{5}{3}m$\n\n$m$은 자연수이고 $k>0$이므로 $k$의 최솟값은 $m=1$일 때 $k=\\dfrac{3}{5}$이다. 정답은 ④이다.",
     "sourcePrimaryMethod": "x축 접점 조건 D=(m+k)^2-16(m-k)^2=0을 제곱차로 풀어 두 관계식을 얻고 자연수 m=1에서 최솟값을 택한다.",
     "sourceDecisiveStep": "k=3m/5와 k=5m/3 중 더 작은 식에 최소 자연수 m=1을 대입해 3/5을 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2607,7 +2624,7 @@
       "matchedAs": "자연수",
       "kind": "대상",
       "src": "solution",
-      "quote": "$m$은 자연수이고 $k>0$"
+      "quote": "$ $m$은 자연수이고 $k>0$"
     },
     {
       "term": "최솟값",

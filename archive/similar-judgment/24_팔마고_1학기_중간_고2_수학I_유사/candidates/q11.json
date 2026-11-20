@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "반지름의 길이가 $7$이고 중심각의 크기가 $\\theta$인 부채꼴이 있다. $\\theta$가 다음 <조건>을 만족시킬 때, 이 부채꼴의 호의 길이의 최댓값은?\n\n\n<조건>\n(가) $0 < \\theta < \\pi$\n(나) 좌표평면에서 각 $\\theta$를 나타내는 동경과 $5\\theta$를 나타내는 동경이 $x$축에 대하여 대칭이다.",
+    "content": "반지름의 길이가 $7$이고 중심각의 크기가 $\\theta$인 부채꼴이 있다. $\\theta$가 다음 <조건>을 만족시킬 때, 이 부채꼴의 호의 길이의 최댓값은?\n\n<조건>  \n(가) $0 < \\theta < \\pi$  \n(나) 좌표평면에서 각 $\\theta$를 나타내는 동경과 $5\\theta$를 나타내는 동경이 $x$축에 대하여 대칭이다.",
     "choices": [
       "$\\frac{7}{3}\\pi$",
       "$\\frac{10}{3}\\pi$",
@@ -18,20 +18,44 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "각 $\\theta$를 나타내는 동경과 $5\\theta$를 나타내는 동경이 $x$축에 대하여 대칭이므로 두 각의 합은 $2n\\pi$ ($n$은 정수) 꼴이다.\n\n\n$$\\begin{aligned}\n\\theta + 5\\theta &= 2n\\pi \\\n6\\theta &= 2n\\pi \\\n\\theta &= \\frac{n\\pi}{3}\n\\end{aligned}$$\n\n\n조건 (가)에 의해 $0 < \\frac{n\\pi}{3} < \\pi$이므로 $0 < n < 3$이고, 정수 $n$은 $1$ 또는 $2$이다. 따라서 가능한 $\\theta$는 $\\frac{\\pi}{3}$, $\\frac{2\\pi}{3}$이다.\n\n\n부채꼴의 호의 길이 $l = r\\theta$는 $\\theta$가 최대일 때 최대가 되므로 $\\theta = \\frac{2\\pi}{3}$일 때\n$$l = 7 \\times \\frac{2\\pi}{3} = \\frac{14}{3}\\pi$$\n이다. 따라서 정답은 ③이다.",
+    "solution": "각 $\\theta$를 나타내는 동경과 $5\\theta$를 나타내는 동경이 $x$축에 대하여 대칭이므로 두 각의 합은 $2n\\pi$ ($n$은 정수) 꼴이다.\n\n$$\\begin{aligned}  \n\\theta + 5\\theta &= 2n\\pi \\\\  \n6\\theta &= 2n\\pi \\\\  \n\\theta &= \\frac{n\\pi}{3}  \n\\end{aligned}$$\n\n조건 (가)에 의해 $0 < \\frac{n\\pi}{3} < \\pi$이므로 $0 < n < 3$이고, 정수 $n$은 $1$ 또는 $2$이다. 따라서 가능한 $\\theta$는 $\\frac{\\pi}{3}$, $\\frac{2\\pi}{3}$이다.\n\n부채꼴의 호의 길이 $l = r\\theta$는 $\\theta$가 최대일 때 최대가 되므로 $\\theta = \\frac{2\\pi}{3}$일 때  \n$$l = 7 \\times \\frac{2\\pi}{3} = \\frac{14}{3}\\pi$$  \n이다. 따라서 정답은 ③이다.",
     "sourcePrimaryMethod": "x축 대칭인 두 동경의 합이 2n*pi임을 이용해 범위 내 theta를 구하고 호의 길이 최댓값을 계산한다.",
     "sourceDecisiveStep": "theta + 5theta = 2n*pi에서 0<theta<pi를 만족하는 최대 각 2pi/3을 찾는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-05",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "rpmPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "일반각과 호도법",
+      "l4": "일반각"
+    },
+    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+    "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
     "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "부채꼴",
+        "일반각",
+        "호",
+        "길이"
+      ],
+      "goal": [
+        "최댓값"
+      ],
+      "method": [
+        "일반각",
+        "축대칭",
+        "호",
+        "길이"
+      ],
+      "condition": [
+        "범위"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1585,7 +1609,7 @@
       "matchedAs": "최댓값",
       "kind": "행위",
       "src": "stem",
-      "quote": "호의 길이의 최댓값은? <조건"
+      "quote": "호의 길이의 최댓값은? <조건>"
     },
     {
       "term": "길이",
@@ -1620,7 +1644,7 @@
       "matchedAs": "좌표",
       "kind": "대상",
       "src": "stem",
-      "quote": "pi$ (나) 좌표평면에서 각 $"
+      "quote": "$   (나) 좌표평면에서 각 $"
     },
     {
       "term": "중심",
@@ -1641,14 +1665,14 @@
       "matchedAs": "평면",
       "kind": "대상",
       "src": "stem",
-      "quote": "$ (나) 좌표평면에서 각 $\\t"
+      "quote": "(나) 좌표평면에서 각 $\\t"
     },
     {
       "term": "부채꼴",
       "matchedAs": "부채꼴",
       "kind": "대상",
       "src": "solution",
-      "quote": "}$이다. 부채꼴의 호의 길이"
+      "quote": "3}$이다. 부채꼴의 호의 길이"
     },
     {
       "term": "길이",
@@ -1690,7 +1714,7 @@
       "matchedAs": "조건",
       "kind": "대상",
       "src": "solution",
-      "quote": "ed}$$ 조건 (가)에 의해"
+      "quote": "ned}$$ 조건 (가)에 의해"
     },
     {
       "term": "최댓값",
@@ -1704,13 +1728,15 @@
     "cueWords": [
       {
         "word": "좌표평면",
-        "quote": "< \\pi$ (나) 좌표평면에서 각 $\\theta"
+        "quote": "\\pi$   (나) 좌표평면에서 각 $\\theta"
       }
     ],
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

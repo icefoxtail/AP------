@@ -6,7 +6,7 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "$2$ 이상의 두 자연수 $m$, $n$에 대하여 등식\n$$\\sqrt[m]{8} \\times \\sqrt[n]{2} = \\sqrt{2}$$\n가 성립할 때, $m-n$의 최솟값은?",
+    "content": "$2$ 이상의 두 자연수 $m$, $n$에 대하여 등식  \n$$\\sqrt[m]{8} \\times \\sqrt[n]{2} = \\sqrt{2}$$  \n가 성립할 때, $m-n$의 최솟값은?",
     "choices": [
       "$-9$",
       "$-7$",
@@ -18,20 +18,41 @@
   },
   "reference": {
     "answer": "②",
-    "solution": "$8 = 2^3$이므로 주어진 등식을 밑이 $2$인 거듭제곱으로 나타내면\n$$2^{\\frac{3}{m}} \\cdot 2^{\\frac{1}{n}} = 2^{\\frac{1}{2}} \\implies \\frac{3}{m} + \\frac{1}{n} = \\frac{1}{2}$$\n이다. 양변에 $2mn$을 곱하여 정리하면 다음과 같다.\n\n\n$$\\begin{aligned}\n6n + 2m &= mn \\\nmn - 2m - 6n &= 0 \\\n(m-6)(n-2) &= 12\n\\end{aligned}$$\n\n\n$n \\ge 2$이므로 $n - 2 \\ge 0$이고 곱이 $12 > 0$이므로 $m - 6 > 0$, $n - 2 > 0$이다. 두 인수가 양의 정수이므로 $12$의 양의 약수쌍을 모두 구하면\n\n\n$$\\begin{aligned}\n(m-6, n-2) &= (1, 12), \\; (2, 6), \\; (3, 4), \\; (4, 3), \\; (6, 2), \\; (12, 1) \\\n(m, n) &= (7, 14), \\; (8, 8), \\; (9, 6), \\; (10, 5), \\; (12, 4), \\; (18, 3)\n\\end{aligned}$$\n\n\n각 경우의 $m - n$의 값은 차례로 $-7, 0, 3, 5, 8, 15$이다. 따라서 $m - n$의 최솟값은 $-7$이므로 정답은 ②이다.",
+    "solution": "$8 = 2^3$이므로 주어진 등식을 밑이 $2$인 거듭제곱으로 나타내면  \n$$2^{\\frac{3}{m}} \\cdot 2^{\\frac{1}{n}} = 2^{\\frac{1}{2}} \\implies \\frac{3}{m} + \\frac{1}{n} = \\frac{1}{2}$$  \n이다. 양변에 $2mn$을 곱하여 정리하면 다음과 같다.\n\n$$\\begin{aligned}  \n6n + 2m &= mn \\\\  \nmn - 2m - 6n &= 0 \\\\  \n(m-6)(n-2) &= 12  \n\\end{aligned}$$\n\n$n \\ge 2$이므로 $n - 2 \\ge 0$이고 곱이 $12 > 0$이므로 $m - 6 > 0$, $n - 2 > 0$이다. 두 인수가 양의 정수이므로 $12$의 양의 약수쌍을 모두 구하면\n\n$$\\begin{aligned}  \n(m-6, n-2) &= (1, 12), \\; (2, 6), \\; (3, 4), \\; (4, 3), \\; (6, 2), \\; (12, 1) \\\\  \n(m, n) &= (7, 14), \\; (8, 8), \\; (9, 6), \\; (10, 5), \\; (12, 4), \\; (18, 3)  \n\\end{aligned}$$\n\n각 경우의 $m - n$의 값은 차례로 $-7, 0, 3, 5, 8, 15$이다. 따라서 $m - n$의 최솟값은 $-7$이므로 정답은 ②이다.",
     "sourcePrimaryMethod": "거듭제곱근을 지수로 바꿔 3/m+1/n=1/2을 얻은 뒤 (m-6)(n-2)=12로 인수분해해 자연수 쌍을 구한다.",
     "sourceDecisiveStep": "(m-6)(n-2)=12 형태 부정방정식으로 변환해 양의 약수쌍을 전수 조사하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
+    "standardUnitKey": "H15-M1-01",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수",
+      "l3": "지수의 확장",
+      "l4": "유리수 지수"
+    },
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "거듭제곱근",
+        "등식"
+      ],
+      "goal": [
+        "최솟값"
+      ],
+      "method": [
+        "지수법칙",
+        "인수분해",
+        "약수"
+      ],
+      "condition": [
+        "자연수"
+      ]
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1578,14 +1599,14 @@
       "matchedAs": "등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "n$에 대하여 등식 $$\\sqrt"
+      "quote": "n$에 대하여 등식   $$\\sq"
     },
     {
       "term": "성립조건",
       "matchedAs": "성립",
       "kind": "행위",
       "src": "stem",
-      "quote": "{2}$$ 가 성립할 때, $m-"
+      "quote": "}$$   가 성립할 때, $m-"
     },
     {
       "term": "거듭제곱",
@@ -1642,7 +1663,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

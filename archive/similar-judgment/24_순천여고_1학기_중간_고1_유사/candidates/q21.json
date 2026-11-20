@@ -12,17 +12,22 @@
   },
   "reference": {
     "answer": "$m=0$일 때 중근 $1$, $m=8$일 때 중근 $-3$",
-    "solution": "이차방정식 $x^2+(m-2)x+(m+1)=0$이 중근을 가지므로 판별식 $D=0$이다. $$D=(m-2)^2-4(m+1)=m^2-8m=m(m-8)=0 \\implies m=0 \\text{ 또는 } m=8$$\n\n\n1. $m=0$일 때: $x^2-2x+1=(x-1)^2=0$이므로 중근은 $1$이다. 2.$m=8$일 때: $x^2+6x+9=(x+3)^2=0$이므로 중근은 $-3$이다.",
+    "solution": "이차방정식 $x^2+(m-2)x+(m+1)=0$이 중근을 가지므로 판별식 $D=0$이다. $$D=(m-2)^2-4(m+1)=m^2-8m=m(m-8)=0 \\implies m=0 \\text{ 또는 } m=8$$\n\n1) $m=0$일 때: $x^2-2x+1=(x-1)^2=0$이므로 중근은 $1$이다.  \n2) $m=8$일 때: $x^2+6x+9=(x+3)^2=0$이므로 중근은 $-3$이다.",
     "sourcePrimaryMethod": "판별식 D=(m-2)^2-4(m+1)=0을 풀어 m을 구하고 각 m을 방정식에 대입해 중근을 구한다.",
     "sourceDecisiveStep": "m(m-8)=0에서 m=0, 8을 구하고 각각 (x-1)^2=0, (x+3)^2=0의 중근을 적는다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-05",
+    "subUnitKey": "H15-SA-05-DISCRIMINANT",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식",
+      "l3": "이차방정식의 근",
+      "l4": "판별식"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+    "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
     "difficultyBucket": 2,
     "newKeyProposal": null,
     "item4slot": {
@@ -261,6 +266,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -476,6 +485,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1709,6 +1722,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

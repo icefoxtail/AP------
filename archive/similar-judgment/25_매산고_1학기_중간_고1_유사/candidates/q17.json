@@ -13,20 +13,30 @@
   "reference": {
     "answer": "$34$",
     "solution": "첫 번째 방정식이 중근을 가지므로 판별식 $\\frac{D_1}{4} = a^2 - b = 0 \\implies b = a^2$이다. 두 번째 방정식이 서로 다른 두 실근을 가지므로 판별식 $\\frac{D_2}{4} = 5^2 - b > 0 \\implies b < 25$이다. $a, b$가 자연수이고 $b = a^2 < 25$이므로 가능한 순서쌍 $(a, b)$는 $$(1, 1), \\ (2, 4), \\ (3, 9), \\ (4, 16)$$ 따라서 $m = 4$, $n = 1 + 4 + 9 + 16 = 30$이므로 $$m + n = 4 + 30 = 34$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "두 이차방정식의 판별식 조건 $b=a^2$과 $b<25$를 결합해 자연수 순서쌍을 모두 나열한다.",
+    "sourceDecisiveStep": "$a^2=b<25$를 만족하는 자연수 $a \\in \\{1,2,3,4\\}$를 찾는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수와이차방정식",
+      "concept": "이차방정식의판별식",
+      "skill": "판별식자연수순서쌍세기",
+      "context": "두이차방정식근조건"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -273,6 +283,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -468,6 +482,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

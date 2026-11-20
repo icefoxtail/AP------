@@ -8,8 +8,8 @@
   "problem": {
     "content": "다음 중 함수 $y = \\log_{\\frac{1}{2}}(x + 3) + 2$에 대한 설명으로 옳은 것을 고르면? [3.4점]",
     "choices": [
-      "정의역은 ${x \\mid x < -3}$이다.",
-      "치역은 ${y \\mid y > 0}$이다.",
+      "정의역은 $\\{x \\mid x < -3\\}$이다.",
+      "치역은 $\\{y \\mid y > 0\\}$이다.",
       "그래프는 점 $(-3, 2)$를 지난다.",
       "$x$의 값이 증가하면 $y$의 값도 증가한다.",
       "그래프의 점근선은 직선 $x = -3$이다."
@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "⑤",
-    "solution": "① 진수 조건 $x + 3 > 0$에서 정의역은 ${x \\mid x > -3}$이다. (거짓)\n② 로그함수의 치역은 실수 전체의 집합이다. (거짓)\n③ $x = -2$일 때 $y = \\log_{\\frac{1}{2}} 1 + 2 = 2$이므로 점 $(-2, 2)$를 지난다. (거짓)\n④ 밑이 $\\dfrac{1}{2} < 1$이므로 $x$의 값이 증가하면 $y$의 값은 감소한다. (거짓)\n⑤ 진수 $x + 3 = 0$에서 점근선은 직선 $x = -3$이다. (참)\n따라서 옳은 것은 ⑤이다.",
+    "solution": "① 진수 조건 $x + 3 > 0$에서 정의역은 $\\{x \\mid x > -3\\}$이다. (거짓)  \n② 로그함수의 치역은 실수 전체의 집합이다. (거짓)  \n③ $x = -2$일 때 $y = \\log_{\\frac{1}{2}} 1 + 2 = 2$이므로 점 $(-2, 2)$를 지난다. (거짓)  \n④ 밑이 $\\dfrac{1}{2} < 1$이므로 $x$의 값이 증가하면 $y$의 값은 감소한다. (거짓)  \n⑤ 진수 $x + 3 = 0$에서 점근선은 직선 $x = -3$이다. (참)  \n따라서 옳은 것은 ⑤이다.",
     "sourcePrimaryMethod": "평행이동된 감소 로그함수의 정의역, 치역, 정점, 단조성, 점근선을 선지별로 판별한다.",
     "sourceDecisiveStep": "진수 x+3=0으로부터 수직 점근선 x=-3을 확인하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
     "subUnitKey": "",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그함수의 그래프",
+      "l4": "증가·감소"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
     "difficultyBucket": 1,
     "newKeyProposal": null,
     "item4slot": {
@@ -1588,7 +1588,7 @@
       "matchedAs": "로그함수",
       "kind": "대상",
       "src": "solution",
-      "quote": "(거짓) ② 로그함수의 치역은 실수"
+      "quote": "거짓)   ② 로그함수의 치역은 실수"
     },
     {
       "term": "점근선",
@@ -1602,14 +1602,14 @@
       "matchedAs": "정의역",
       "kind": "대상",
       "src": "solution",
-      "quote": "> 0$에서 정의역은 ${x \\m"
+      "quote": "> 0$에서 정의역은 $\\{x \\"
     },
     {
       "term": "로그",
       "matchedAs": "로그",
       "kind": "대상",
       "src": "solution",
-      "quote": "(거짓) ② 로그함수의 치역은"
+      "quote": "거짓)   ② 로그함수의 치역은"
     },
     {
       "term": "실수",
@@ -1623,7 +1623,7 @@
       "matchedAs": "정의",
       "kind": "대상",
       "src": "solution",
-      "quote": "> 0$에서 정의역은 ${x \\"
+      "quote": "> 0$에서 정의역은 $\\{x"
     },
     {
       "term": "조건",
@@ -1672,21 +1672,21 @@
       "matchedAs": "거짓",
       "kind": "행위",
       "src": "solution",
-      "quote": "3}$이다. (거짓) ② 로그함수"
+      "quote": "\\}$이다. (거짓)   ② 로그"
     },
     {
       "term": "함수",
       "matchedAs": "함수",
       "kind": "대상",
       "src": "solution",
-      "quote": "거짓) ② 로그함수의 치역은 실수"
+      "quote": ")   ② 로그함수의 치역은 실수"
     },
     {
       "term": "그래프",
       "matchedAs": "그래프",
       "kind": "대상",
       "src": "choices",
-      "quote": "0}$이다. 그래프는 점 $(-3"
+      "quote": "0\\}$이다. 그래프는 점 $(-3"
     },
     {
       "term": "점근선",
@@ -1700,14 +1700,14 @@
       "matchedAs": "정의역",
       "kind": "대상",
       "src": "choices",
-      "quote": "정의역은 ${x \\m"
+      "quote": "정의역은 $\\{x \\"
     },
     {
       "term": "정의",
       "matchedAs": "정의",
       "kind": "대상",
       "src": "choices",
-      "quote": "정의역은 ${x \\"
+      "quote": "정의역은 $\\{x"
     },
     {
       "term": "증가감소",
@@ -1728,14 +1728,14 @@
       "matchedAs": "치역",
       "kind": "대상",
       "src": "choices",
-      "quote": "-3}$이다. 치역은 ${y \\m"
+      "quote": "3\\}$이다. 치역은 $\\{y \\"
     }
   ],
   "figure": {
     "cueWords": [
       {
         "word": "그래프",
-        "quote": "y > 0}$이다. 그래프는 점 $(-3, 2)"
+        "quote": "y > 0\\}$이다. 그래프는 점 $(-3, 2)"
       },
       {
         "word": "그래프",

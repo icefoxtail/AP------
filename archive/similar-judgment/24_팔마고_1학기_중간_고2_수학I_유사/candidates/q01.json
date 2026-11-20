@@ -18,20 +18,36 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "각 선지에서 거듭제곱근의 정의와 실수인 거듭제곱근의 존재 조건을 확인한다.\n\n\n① $x^2 = 9$의 근은 $x = 3$ 또는 $x = -3$이므로 $9$의 제곱근은 $3$과 $-3$ 두 개이다. 따라서 옳지 않다.\n\n\n② $x^3 = -27$에서 $x^3 + 27 = (x+3)(x^2-3x+9) = 0$이므로 $-27$의 세제곱근은 실수 $-3$을 포함하여 복소수 범위에서 $\\frac{3\\pm 3\\sqrt{3}i}{2}$까지 총 $3$개이다. 따라서 옳지 않다.\n\n\n③ $5$는 홀수이므로 음수 $-11$의 다섯제곱근 중 실수인 것이 오직 하나 존재하며, $(-\\sqrt[5]{11})^5 = -11$이므로 $-\\sqrt[5]{11}$이다. 따라서 옳다.\n\n\n④ $\\sqrt[4]{81}$은 $81$의 양의 네제곱근을 뜻하므로 $\\sqrt[4]{81} = 3$이다. 따라서 옳지 않다.\n\n\n⑤ $4$는 짝수이므로 음수 $-6$의 네제곱근 중 실수인 것은 존재하지 않는다. 따라서 옳지 않다.\n\n\n따라서 옳은 것은 ③이다.",
+    "solution": "각 선지에서 거듭제곱근의 정의와 실수인 거듭제곱근의 존재 조건을 확인한다.\n\n① $x^2 = 9$의 근은 $x = 3$ 또는 $x = -3$이므로 $9$의 제곱근은 $3$과 $-3$ 두 개이다. 따라서 옳지 않다.\n\n② $x^3 = -27$에서 $x^3 + 27 = (x+3)(x^2-3x+9) = 0$이므로 $-27$의 세제곱근은 실수 $-3$을 포함하여 복소수 범위에서 $\\frac{3\\pm 3\\sqrt{3}i}{2}$까지 총 $3$개이다. 따라서 옳지 않다.\n\n③ $5$는 홀수이므로 음수 $-11$의 다섯제곱근 중 실수인 것이 오직 하나 존재하며, $(-\\sqrt[5]{11})^5 = -11$이므로 $-\\sqrt[5]{11}$이다. 따라서 옳다.\n\n④ $\\sqrt[4]{81}$은 $81$의 양의 네제곱근을 뜻하므로 $\\sqrt[4]{81} = 3$이다. 따라서 옳지 않다.\n\n⑤ $4$는 짝수이므로 음수 $-6$의 네제곱근 중 실수인 것은 존재하지 않는다. 따라서 옳지 않다.\n\n따라서 옳은 것은 ③이다.",
     "sourcePrimaryMethod": "제곱근과 n제곱근의 정의를 적용해 실수인 거듭제곱근의 개수와 부호를 판별한다.",
     "sourceDecisiveStep": "짝수 거듭제곱근과 홀수 거듭제곱근의 실수 개수 차이를 구분하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
+    "standardUnitKey": "H15-M1-01",
+    "subUnitKey": "H15-M1-01-EXPONENT",
+    "rpmPath": {
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "지수",
+      "l3": "거듭제곱근",
+      "l4": "n제곱근"
+    },
     "problemTypeKey": null,
     "templateKey": null,
     "difficultyBucket": 1,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "거듭제곱근"
+      ],
+      "goal": [
+        "판정"
+      ],
+      "method": [
+        "거듭제곱근"
+      ],
+      "condition": []
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1712,7 +1728,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

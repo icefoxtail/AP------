@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "③",
-    "solution": "$0<a<c$이므로 $a\\ne c$이다. 양변이 항등식이므로 좌변은 $(x-c)^2$으로 나누어떨어져야 하고, 우변은 $(x-a)^2$으로 나누어떨어져야 한다. 따라서 $x^2+bx+16=(x-c)^2$이고 $x^2+dx+9=(x-a)^2$이다. $c>0$, $a>0$이므로\n\n\n* $c^2=16 \\implies c=4$, $b=-2c=-8$\n* $a^2=9 \\implies a=3$, $d=-2a=-6$\n\n\n그러므로 $a+b+c+d=3+(-8)+4+(-6)=-7$이고, 정답은 ③이다.",
+    "solution": "$0<a<c$이므로 $a\\ne c$이다. 양변이 항등식이므로 좌변은 $(x-c)^2$으로 나누어떨어져야 하고, 우변은 $(x-a)^2$으로 나누어떨어져야 한다. 따라서 $x^2+bx+16=(x-c)^2$이고 $x^2+dx+9=(x-a)^2$이다. $c>0$, $a>0$이므로\n\n- $c^2=16 \\implies c=4$, $b=-2c=-8$  \n- $a^2=9 \\implies a=3$, $d=-2a=-6$\n\n그러므로 $a+b+c+d=3+(-8)+4+(-6)=-7$이고, 정답은 ③이다.",
     "sourcePrimaryMethod": "a!=c 조건을 이용해 양변의 중근 인수가 상대방의 이차식에서 나와야 함을 파악해 완전제곱식으로 등치한다.",
     "sourceDecisiveStep": "x^2+bx+16=(x-c)^2과 x^2+dx+9=(x-a)^2에서 c=4, a=3을 결정한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-03",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "rpmPath": {
+      "majorUnit": "다항식",
+      "midUnit": "인수분해",
+      "l3": "인수분해 공식",
+      "l4": "제곱식"
+    },
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

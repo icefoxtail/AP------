@@ -6,28 +6,28 @@
   ],
   "curriculum": "2015",
   "problem": {
-    "content": "[서술형 1] 연립부등식\n$$\\begin{cases} \\left(\\dfrac{2}{3}\\right)^{2x - 1} \\ge \\left(\\dfrac{3}{2}\\right)^{x - 5} \\ \\log_3 x + \\log_3(x + 8) \\le 2 \\end{cases}$$\n을 만족하는 $x$의 범위를 구하는 과정을 서술하시오. [6점]",
+    "content": "[서술형 1] 연립부등식  \n$$\\begin{cases} \\left(\\dfrac{2}{3}\\right)^{2x - 1} \\ge \\left(\\dfrac{3}{2}\\right)^{x - 5} \\\\ \\log_3 x + \\log_3(x + 8) \\le 2 \\end{cases}$$  \n을 만족하는 $x$의 범위를 구하는 과정을 서술하시오. [6점]",
     "choices": [],
     "points": 6
   },
   "reference": {
     "answer": "$0 < x \\le 1$",
-    "solution": "(1) 첫 번째 부등식: $\\left(\\dfrac{2}{3}\\right)^{2x - 1} \\ge \\left(\\dfrac{2}{3}\\right)^{5 - x}$에서 밑 $\\dfrac{2}{3} < 1$이므로\n$2x - 1 \\le 5 - x \\implies 3x \\le 6 \\implies x \\le 2$\n(2) 두 번째 부등식: 진수 조건에 의하여 $x > 0$이고 $x + 8 > 0$이므로 $x > 0$\n$\\log_3{x(x + 8)} \\le \\log_3 9$에서 밑 $3 > 1$이므로\n$x^2 + 8x \\le 9 \\implies x^2 + 8x - 9 \\le 0 \\implies (x + 9)(x - 1) \\le 0$\n$-9 \\le x \\le 1$과 진수 조건 $x > 0$의 공통 범위는 $0 < x \\le 1$\n(1), (2)의 공통 범위는 $0 < x \\le 1$이다.",
+    "solution": "(1) 첫 번째 부등식: $\\left(\\dfrac{2}{3}\\right)^{2x - 1} \\ge \\left(\\dfrac{2}{3}\\right)^{5 - x}$에서 밑 $\\dfrac{2}{3} < 1$이므로  \n$2x - 1 \\le 5 - x \\implies 3x \\le 6 \\implies x \\le 2$  \n(2) 두 번째 부등식: 진수 조건에 의하여 $x > 0$이고 $x + 8 > 0$이므로 $x > 0$  \n$\\log_3\\{x(x + 8)\\} \\le \\log_3 9$에서 밑 $3 > 1$이므로  \n$x^2 + 8x \\le 9 \\implies x^2 + 8x - 9 \\le 0 \\implies (x + 9)(x - 1) \\le 0$  \n$-9 \\le x \\le 1$과 진수 조건 $x > 0$의 공통 범위는 $0 < x \\le 1$  \n(1), (2)의 공통 범위는 $0 < x \\le 1$이다.",
     "sourcePrimaryMethod": "지수부등식과 진수 조건을 포함한 로그부등식을 각각 풀어 공통 범위를 구한다.",
     "sourceDecisiveStep": "로그부등식에서 진수 조건 x>0을 적용해 0<x≤1을 얻는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-04",
+    "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그함수",
+      "l3": "로그부등식",
+      "l4": "정의역·밑 조건"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+    "templateKey": "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION",
     "difficultyBucket": 2,
     "newKeyProposal": null,
     "item4slot": {
@@ -1597,21 +1597,21 @@
       "matchedAs": "연립부등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "[서술형 1] 연립부등식 $$\\begi"
+      "quote": "[서술형 1] 연립부등식   $$\\be"
     },
     {
       "term": "부등식",
       "matchedAs": "부등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "술형 1] 연립부등식 $$\\begi"
+      "quote": "술형 1] 연립부등식   $$\\be"
     },
     {
       "term": "등식",
       "matchedAs": "등식",
       "kind": "대상",
       "src": "stem",
-      "quote": "형 1] 연립부등식 $$\\begi"
+      "quote": "형 1] 연립부등식   $$\\be"
     },
     {
       "term": "범위",
@@ -1625,7 +1625,7 @@
       "matchedAs": "연립",
       "kind": "대상",
       "src": "stem",
-      "quote": "[서술형 1] 연립부등식 $$\\b"
+      "quote": "[서술형 1] 연립부등식   $$"
     },
     {
       "term": "부등식",

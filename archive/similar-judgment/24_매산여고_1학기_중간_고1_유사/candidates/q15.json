@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "먼저 $f(x)$의 치역을 구하면\n\n\n* $-2\\le x\\le 0$에서 $f(x)=(x+2)^2-3$이므로 $-3\\le f(x)\\le 1$\n* $0<x\\le 2$에서 $f(x)=(x-2)^2-3$이므로 $-3\\le f(x)<1$\n\n\n따라서 $t=f(x)$라 치환하면 $t$의 범위는 $-3\\le t\\le 1$이다. 이제 $$y=-t^2+4t+1=-(t-2)^2+5$$ 에서 꼭짓점 $t=2$가 구간 $[-3, 1]$의 오른쪽 밖에 있으므로 $t$가 증가할수록 $y$도 증가한다.\n\n\n* 최솟값: $t=-3$일 때 $-(-3-2)^2+5=-20$\n* 최댓값: $t=1$일 때 $-(1-2)^2+5=4$\n\n\n구하는 합은 $-20+4=-16$이므로 정답은 ④이다.",
+    "solution": "먼저 $f(x)$의 치역을 구하면\n\n- $-2\\le x\\le 0$에서 $f(x)=(x+2)^2-3$이므로 $-3\\le f(x)\\le 1$  \n- $0<x\\le 2$에서 $f(x)=(x-2)^2-3$이므로 $-3\\le f(x)<1$\n\n따라서 $t=f(x)$라 치환하면 $t$의 범위는 $-3\\le t\\le 1$이다. 이제 $$y=-t^2+4t+1=-(t-2)^2+5$$ 에서 꼭짓점 $t=2$가 구간 $[-3, 1]$의 오른쪽 밖에 있으므로 $t$가 증가할수록 $y$도 증가한다.\n\n- 최솟값: $t=-3$일 때 $-(-3-2)^2+5=-20$  \n- 최댓값: $t=1$일 때 $-(1-2)^2+5=4$\n\n구하는 합은 $-20+4=-16$이므로 정답은 ④이다.",
     "sourcePrimaryMethod": "구간별 정의 함수 f(x)의 치역 -3<=t<=1을 먼저 구한 뒤 치환된 이차함수 y=-(t-2)^2+5의 최대·최소를 구한다.",
     "sourceDecisiveStep": "t의 범위 [-3, 1]이 꼭짓점 t=2의 왼쪽에 있으므로 양 끝점 t=-3, t=1에서 최소·최대가 발생함을 확인한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 4,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2586,14 +2603,14 @@
       "matchedAs": "최댓값",
       "kind": "행위",
       "src": "solution",
-      "quote": "=-20$ * 최댓값: $t=1$일"
+      "quote": "20$   - 최댓값: $t=1$일"
     },
     {
       "term": "최솟값",
       "matchedAs": "최솟값",
       "kind": "행위",
       "src": "solution",
-      "quote": "한다. * 최솟값: $t=-3$"
+      "quote": "가한다. - 최솟값: $t=-3$"
     },
     {
       "term": "구간",
@@ -2621,7 +2638,7 @@
       "matchedAs": "치역",
       "kind": "대상",
       "src": "solution",
-      "quote": "$f(x)$의 치역을 구하면"
+      "quote": "$f(x)$의 치역을 구하면 -"
     },
     {
       "term": "치환",

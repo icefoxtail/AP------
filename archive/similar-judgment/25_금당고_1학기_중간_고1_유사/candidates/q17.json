@@ -19,20 +19,30 @@
   "reference": {
     "answer": "②",
     "solution": "$x \\neq 0$이므로 $x^2 - 4x + 1 = 0$의 양변을 $x$로 나누면 $x + \\frac{1}{x} = 4$이다. 곱셈 공식의 변형에 의하여 $$x^2 + \\frac{1}{x^2} = \\left(x + \\frac{1}{x}\\right)^2 - 2 = 4^2 - 2 = 14$$ $$x^3 + \\frac{1}{x^3} = \\left(x + \\frac{1}{x}\\right)^3 - 3\\left(x + \\frac{1}{x}\\right) = 4^3 - 3(4) = 52$$ 따라서 $$x^5 + \\frac{1}{x^5} = \\left(x^2 + \\frac{1}{x^2}\\right)\\left(x^3 + \\frac{1}{x^3}\\right) - \\left(x + \\frac{1}{x}\\right) = 14 \\times 52 - 4 = 728 - 4 = 724$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "양변을 $x$로 나누어 $x+\\frac{1}{x}=4$를 구한 뒤 제곱합($14$)과 세제곱합($52$)을 곱하고 $x+\\frac{1}{x}$을 빼서 $x^5+\\frac{1}{x^5}$을 구한다.",
+    "sourceDecisiveStep": "$(x^2+x^{-2})(x^3+x^{-3})$ 전개에서 남는 잉여항 $(x+x^{-1})$을 빼는 항등식을 구성하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-01",
+    "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+    "rpmPath": {
+      "majorUnit": "다항식",
+      "midUnit": "다항식의 연산",
+      "l3": "다항식의 곱셈",
+      "l4": "곱셈공식"
+    },
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "다항식의연산",
+      "concept": "곱셈공식의변형",
+      "skill": "고차역수거듭제곱합",
+      "context": "이차식기반역수합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

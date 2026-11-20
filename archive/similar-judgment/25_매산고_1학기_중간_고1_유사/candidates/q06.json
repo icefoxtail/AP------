@@ -19,20 +19,30 @@
   "reference": {
     "answer": "⑤",
     "solution": "각 항을 허수단위 $i$를 사용하여 정리하면\n\n- $\\sqrt{-9}\\sqrt{-16} = (3i)(4i) = 12i^2 = -12$  \n- $\\dfrac{\\sqrt{-12}}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}i}{\\sqrt{3}} = 2i$  \n- $\\dfrac{\\sqrt{-48}}{\\sqrt{-3}} = \\dfrac{4\\sqrt{3}i}{\\sqrt{3}i} = 4$  \n- $\\dfrac{\\sqrt{24}}{\\sqrt{-6}} = \\dfrac{2\\sqrt{6}}{\\sqrt{6}i} = \\dfrac{2}{i} = -2i$\n\n주어진 식에 대입하면 $$-12 + 2i - 4 - (-2i) = -16 + 4i = a + bi$$ 이므로 $a = -16$, $b = 4$이다. $$a^2 + b^2 = (-16)^2 + 4^2 = 256 + 16 = 272$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "음수의 제곱근을 $i$로 변환하여 네 항을 각각 계산한 뒤 실수부 $a$와 허수부 $b$를 구한다.",
+    "sourceDecisiveStep": "$\\sqrt{-9}\\sqrt{-16}=-12$와 $\\frac{\\sqrt{24}}{\\sqrt{-6}}=-2i$의 부호 변환을 정확히 처리하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "음수의제곱근",
+      "skill": "제곱근부호변환계산",
+      "context": "음수제곱근혼합계산"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

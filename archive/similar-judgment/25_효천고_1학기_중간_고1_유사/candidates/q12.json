@@ -19,20 +19,30 @@
   "reference": {
     "answer": "③",
     "solution": "$z = \\frac{1 - i}{\\sqrt{2}}$라 하면 $z^2 = \\frac{1 - 2i - 1}{2} = -i$, $z^4 = (-i)^2 = -1$, $z^6 = (-1)(-i) = i$이므로 $$z^7 = z^6 \\cdot z = i \\cdot \\frac{1 - i}{\\sqrt{2}} = \\frac{1 + i}{\\sqrt{2}}$$ 한편 $\\frac{\\sqrt{2}}{1 - i} = \\frac{\\sqrt{2}(1 + i)}{2} = \\frac{1 + i}{\\sqrt{2}} = \\bar{z}$이므로 $$\\left(\\frac{\\sqrt{2}}{1 - i}\\right)^7 = (\\bar{z})^7 = \\overline{z^7} = \\overline{\\left(\\frac{1 + i}{\\sqrt{2}}\\right)} = \\frac{1 - i}{\\sqrt{2}}$$ 따라서 구하는 값은 $$\\frac{1 + i}{\\sqrt{2}} + \\frac{1 - i}{\\sqrt{2}} = \\frac{2}{\\sqrt{2}} = \\sqrt{2}$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$z=\\frac{1-i}{\\sqrt{2}}$의 제곱 $z^2=-i$를 이용해 $z^7$을 구하고 역수가 켤레복소수 \\bar{z}임을 이용해 \\overline{z^7}과 더한다.",
+    "sourceDecisiveStep": "\\frac{\\sqrt{2}}{1-i}=\\bar{z}임을 파악해 $z^7+\\overline{z^7}$으로 실수화하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "복소수 조건"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+    "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+    "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "복소수의거듭제곱",
+      "skill": "거듭제곱과켤레성질결합",
+      "context": "역수복소수거듭제곱합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },

@@ -18,20 +18,43 @@
   },
   "reference": {
     "answer": "④",
-    "solution": "반원의 지름 $\\overline{\\mathrm{AB}} = 12$이므로 반원의 중심을 $\\mathrm{O}$라 하면 반지름의 길이는 $6$이다.\n\n\n호 $\\mathrm{BP}$의 길이가 $2\\pi$이므로 중심각 $\\angle \\mathrm{BOP}$의 크기는\n$$\\angle \\mathrm{BOP} = \\frac{2\\pi}{6} = \\frac{\\pi}{3}$$\n이다. 선분 $\\mathrm{AB}$가 지름이므로 $\\angle \\mathrm{APB} = \\frac{\\pi}{2}$이고, 호 $\\mathrm{BP}$에 대한 원주각 $\\angle \\mathrm{PAB}$는 중심각 $\\angle \\mathrm{BOP}$의 절반이므로\n$$\\angle \\mathrm{PAQ} = \\angle \\mathrm{PAB} = \\frac{1}{2} \\angle \\mathrm{BOP} = \\frac{\\pi}{6}$$\n이다. 또한 직각삼각형 $\\mathrm{APB}$에서\n$$\\overline{\\mathrm{AP}} = \\overline{\\mathrm{AB}} \\cos \\frac{\\pi}{6} = 12 \\times \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$$\n이다. 따라서 반지름의 길이가 $6\\sqrt{3}$이고 중심각의 크기가 $\\frac{\\pi}{6}$인 부채꼴 $\\mathrm{APQ}$의 넓이는\n$$S = \\frac{1}{2} \\times (6\\sqrt{3})^2 \\times \\frac{\\pi}{6} = \\frac{1}{2} \\times 108 \\times \\frac{\\pi}{6} = 9\\pi$$\n이다. 따라서 정답은 ④이다.",
+    "solution": "반원의 지름 $\\overline{\\mathrm{AB}} = 12$이므로 반원의 중심을 $\\mathrm{O}$라 하면 반지름의 길이는 $6$이다.\n\n호 $\\mathrm{BP}$의 길이가 $2\\pi$이므로 중심각 $\\angle \\mathrm{BOP}$의 크기는  \n$$\\angle \\mathrm{BOP} = \\frac{2\\pi}{6} = \\frac{\\pi}{3}$$  \n이다. 선분 $\\mathrm{AB}$가 지름이므로 $\\angle \\mathrm{APB} = \\frac{\\pi}{2}$이고, 호 $\\mathrm{BP}$에 대한 원주각 $\\angle \\mathrm{PAB}$는 중심각 $\\angle \\mathrm{BOP}$의 절반이므로  \n$$\\angle \\mathrm{PAQ} = \\angle \\mathrm{PAB} = \\frac{1}{2} \\angle \\mathrm{BOP} = \\frac{\\pi}{6}$$  \n이다. 또한 직각삼각형 $\\mathrm{APB}$에서  \n$$\\overline{\\mathrm{AP}} = \\overline{\\mathrm{AB}} \\cos \\frac{\\pi}{6} = 12 \\times \\frac{\\sqrt{3}}{2} = 6\\sqrt{3}$$  \n이다. 따라서 반지름의 길이가 $6\\sqrt{3}$이고 중심각의 크기가 $\\frac{\\pi}{6}$인 부채꼴 $\\mathrm{APQ}$의 넓이는  \n$$S = \\frac{1}{2} \\times (6\\sqrt{3})^2 \\times \\frac{\\pi}{6} = \\frac{1}{2} \\times 108 \\times \\frac{\\pi}{6} = 9\\pi$$  \n이다. 따라서 정답은 ④이다.",
     "sourcePrimaryMethod": "호 BP의 길이로 중심각과 원주각 ∠PAB=pi/6을 구하고 직각삼각형 APB에서 AP를 계산해 부채꼴 APQ의 넓이를 구한다.",
     "sourceDecisiveStep": "원주각 성질로 ∠PAQ=pi/6 및 현 AP=6sqrt(3)을 동시에 결정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-M1-05",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "rpmPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "일반각과 호도법",
+      "l4": "호도법"
+    },
+    "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+    "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
     "difficultyBucket": 3,
     "newKeyProposal": null,
-    "item4slot": null,
+    "item4slot": {
+      "given": [
+        "원",
+        "반원",
+        "부채꼴",
+        "호",
+        "길이"
+      ],
+      "goal": [
+        "넓이"
+      ],
+      "method": [
+        "원주각",
+        "직각삼각형",
+        "부채꼴",
+        "넓이"
+      ],
+      "condition": []
+    },
     "boundary": "NONE"
   },
   "units": [
@@ -1655,7 +1678,7 @@
       "matchedAs": "넓이",
       "kind": "대상",
       "src": "solution",
-      "quote": "{APQ}$의 넓이는 $$S ="
+      "quote": "{APQ}$의 넓이는   $$S"
     },
     {
       "term": "반원",
@@ -1669,7 +1692,7 @@
       "matchedAs": "선분",
       "kind": "대상",
       "src": "solution",
-      "quote": "}$$ 이다. 선분 $\\mathr"
+      "quote": "$   이다. 선분 $\\mathr"
     },
     {
       "term": "원주",
@@ -1705,7 +1728,9 @@
     "hasPlan": false,
     "problemPlanRef": null,
     "hasImage": false,
-    "sourcePlan": null,
+    "sourcePlan": {
+      "exempt": "NONE"
+    },
     "note": "그림 낱말이 있어도 글만으로 풀리면 SELF_CONTAINED, 그림의 값·모양을 읽어야 하면 NEEDS_FIGURE. hasImage가 false인데 NEEDS_FIGURE이면 시험지는 보류된다."
   },
   "sourceExamHint": null,

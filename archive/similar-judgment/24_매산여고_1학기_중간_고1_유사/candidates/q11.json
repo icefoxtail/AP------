@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "$$y=x^2-2x+k=(x-1)^2+k-1$$ 구간 $-1\\le x\\le 4$에 꼭짓점의 $x$좌표 $x=1$이 포함되므로 최솟값은 $k-1=3 \\implies k=4$이다. 따라서 $y=(x-1)^2+3$이고, 양 끝점에서의 함숫값을 비교하면\n\n\n* $x=-1$일 때: $(-1-1)^2+3=7$\n* $x=4$일 때: $(4-1)^2+3=12$\n\n\n그러므로 최댓값은 $12$이고, 정답은 ①이다.",
+    "solution": "$$y=x^2-2x+k=(x-1)^2+k-1$$ 구간 $-1\\le x\\le 4$에 꼭짓점의 $x$좌표 $x=1$이 포함되므로 최솟값은 $k-1=3 \\implies k=4$이다. 따라서 $y=(x-1)^2+3$이고, 양 끝점에서의 함숫값을 비교하면\n\n- $x=-1$일 때: $(-1-1)^2+3=7$  \n- $x=4$일 때: $(4-1)^2+3=12$\n\n그러므로 최댓값은 $12$이고, 정답은 ①이다.",
     "sourcePrimaryMethod": "표준형 (x-1)^2+k-1에서 꼭짓점이 구간 안에 있음을 이용해 k=4를 구하고 양 끝점 함숫값을 비교한다.",
     "sourceDecisiveStep": "x=1에서 최솟값 k-1=3으로 k=4를 확정한 뒤 x=4에서 최댓값 12를 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-13",
+    "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "이차방정식과 이차함수",
+      "l3": "최대·최소",
+      "l4": "구간 최대·최소"
+    },
+    "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+    "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
     "difficultyBucket": 2,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },
@@ -2600,7 +2617,7 @@
       "matchedAs": "최댓값",
       "kind": "행위",
       "src": "solution",
-      "quote": "그러므로 최댓값은 $12$이고"
+      "quote": "$ 그러므로 최댓값은 $12$이고"
     },
     {
       "term": "최솟값",
@@ -2635,7 +2652,7 @@
       "matchedAs": "비교",
       "kind": "행위",
       "src": "solution",
-      "quote": "서의 함숫값을 비교하면 * $"
+      "quote": "서의 함숫값을 비교하면 - $x"
     },
     {
       "term": "좌표",

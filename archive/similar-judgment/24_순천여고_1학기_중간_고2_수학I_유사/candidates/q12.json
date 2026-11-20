@@ -18,22 +18,22 @@
   },
   "reference": {
     "answer": "②",
-    "solution": "주어진 식을 정리하면 $\\log \\dfrac{7x - 2}{x} = \\log \\dfrac{10}{y}$이므로\n$\\dfrac{7x - 2}{x} = \\dfrac{10}{y} \\implies (7x - 2)y = 10x$\n- $x$가 홀수일 때: $\\gcd(x, 7x - 2) = 1$이므로 $7x - 2$는 $10$의 약수여야 하고 $7x - 2 \\ge 5$이므로 $7x - 2 = 5 \\implies x = 1$, 이때 $y = 2$\n- $x$가 짝수일 때: $x = 2m$ ($m \\ge 1$)이라 하면 $(14m - 2)y = 20m \\implies (7m - 1)y = 10m$이고 $\\gcd(m, 7m - 1) = 1$이므로 $7m - 1$은 $10$의 약수여야 하나, $7m - 1 \\ge 6$인 $10$의 약수는 $10$뿐이고 $7m - 1 = 10$은 정수 해가 없다.\n따라서 유일한 양의 정수 해는 $x = 1, y = 2$이므로 $x + y = 3$이다.",
+    "solution": "주어진 식을 정리하면 $\\log \\dfrac{7x - 2}{x} = \\log \\dfrac{10}{y}$이므로  \n$\\dfrac{7x - 2}{x} = \\dfrac{10}{y} \\implies (7x - 2)y = 10x$  \n- $x$가 홀수일 때: $\\gcd(x, 7x - 2) = 1$이므로 $7x - 2$는 $10$의 약수여야 하고 $7x - 2 \\ge 5$이므로 $7x - 2 = 5 \\implies x = 1$, 이때 $y = 2$  \n- $x$가 짝수일 때: $x = 2m$ ($m \\ge 1$)이라 하면 $(14m - 2)y = 20m \\implies (7m - 1)y = 10m$이고 $\\gcd(m, 7m - 1) = 1$이므로 $7m - 1$은 $10$의 약수여야 하나, $7m - 1 \\ge 6$인 $10$의 약수는 $10$뿐이고 $7m - 1 = 10$은 정수 해가 없다.  \n따라서 유일한 양의 정수 해는 $x = 1, y = 2$이므로 $x + y = 3$이다.",
     "sourcePrimaryMethod": "로그 방정식을 부정방정식 (7x-2)y=10x로 변형한 뒤 서로소 성질과 약수로 유일한 양의 정수해 (1,2)를 구한다.",
     "sourceDecisiveStep": "x의 홀짝성에 따라 서로소 관계를 적용해 7x-2=5로부터 x=1, y=2를 확정하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
+    "standardUnitKey": "H15-M1-02",
+    "subUnitKey": "H15-M1-02-LOGARITHM",
     "rpmPath": {
-      "majorUnit": "",
-      "midUnit": "",
-      "l3": "",
-      "l4": ""
+      "majorUnit": "지수함수와 로그함수",
+      "midUnit": "로그",
+      "l3": "로그의 성질",
+      "l4": "곱·몫·거듭제곱"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -1617,7 +1617,7 @@
       "matchedAs": "유일",
       "kind": "조건",
       "src": "solution",
-      "quote": "없다. 따라서 유일한 양의 정수"
+      "quote": ".   따라서 유일한 양의 정수"
     },
     {
       "term": "정리",

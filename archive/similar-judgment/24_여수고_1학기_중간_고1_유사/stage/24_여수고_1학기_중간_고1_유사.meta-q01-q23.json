@@ -3,7 +3,7 @@
   "requestId": "24_여수고_1학기_중간_고1_유사-candidate-v1",
   "examUid": "24_여수고_1학기_중간_고1_유사",
   "sourceArchiveFile": "archive/exams/similar/high/h1/1mid/24_여수고_1학기_중간_고1_유사.js",
-  "expectedSourceBlobSha1": "59b2d5afa2112601006489b6ee43c8672afc3083",
+  "expectedSourceBlobSha1": "eae700e38491309fc4dcfb543cdb4667d8370c6e",
   "expectedQuestionCount": 23,
   "approval": {
     "type": "CANDIDATE_CREATION_GATE",
@@ -23,19 +23,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-01",
         "standardUnit": "다항식의 연산",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
         "subUnit": "다항식의 기본 연산",
-        "conceptClusterKey": "H15-SA-01-POLYNOMIAL_BASIC",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -48,52 +48,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-002"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "다항식의 연산",
-          "l3": "다항식의 덧셈과 뺄셈",
-          "l4": "다항식의 덧셈·뺄셈",
-          "recordId": "H1-RPM-002"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "다항식의 연산",
-        "rpmPrimaryL3": "다항식의 덧셈과 뺄셈",
-        "rpmPrimaryL4": "다항식의 덧셈·뺄셈",
-        "rpmPrimaryRecordId": "H1-RPM-002",
-        "difficultyBasis": "다항식의 덧셈과 뺄셈의 기본 연산을 괄호 풀기와 동류항 정리로 수행하는 난이도 1 문항이다. (10)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-01 / H15-SA-01-POLYNOMIAL_BASIC: 세 다항식 $A=2x^2-3",
-          "curriculum": "H1-RPM-002: 다항식의 연산 단원의 다항식의 덧셈과 뺄셈 기본 연산 유형이다. (10)",
-          "problemType": "다항식의 사칙연산과 식의 간단화 기본 유형이다. (10)",
-          "difficulty": "다항식의 덧셈과 뺄셈의 기본 연산을 괄호 풀기와 동류항 정리로 수행하는 난이도 1 문항이다. (10)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "괄호를 전개해 B를 먼저 소거한 A-3C에 다항식 A와 C를 대입해 동류항을 정리한다.",
-      "decisiveStep": "A+3B-3(C+B)=A-3C로 줄인 뒤 계수를 합산해 5x^2-9x+10을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식의 덧셈과 뺄셈의 기본 연산을 괄호 풀기와 동류항 정리로 수행하는 난이도 1 문항이다. (10)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
-        "templateKey": null,
-        "why": "다항식의 사칙연산과 식의 간단화 기본 유형이다. (10)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "문자를 먼저 소거해 연산을 단순화한 뒤 다항식 뺄셈을 수행하는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_0028044f12bec7210cdea1436aa04a920e2d438036ab2ef87df8a4f684aeecfc",
@@ -104,19 +65,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-05",
         "standardUnit": "이차방정식",
         "standardUnitOrder": 5,
         "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
         "subUnit": "이차방정식과 이차함수의 관계",
-        "conceptClusterKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -129,52 +90,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-035"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식과 이차함수",
-          "l3": "직선과 포물선",
-          "l4": "교점 개수",
-          "recordId": "H1-RPM-035"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식과 이차함수",
-        "rpmPrimaryL3": "직선과 포물선",
-        "rpmPrimaryL4": "교점 개수",
-        "rpmPrimaryRecordId": "H1-RPM-035",
-        "difficultyBasis": "이차함수의 치역과 수평 직선의 교점이 생기지 않을 조건을 판별하는 난이도 1 문항이다. (y)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-05 / H15-SA-05-EQUATION_FUNCTION_RELATION: 이차함수 $y=x^2-4x+",
-          "curriculum": "H1-RPM-035: 이차방정식 단원의 이차함수와 직선이 만나지 않을 판별식 및 최솟값 조건 유형이다. (y)",
-          "problemType": "이차함수의 그래프와 직선의 위치 관계 불만남 유형이다. (y)",
-          "difficulty": "이차함수의 치역과 수평 직선의 교점이 생기지 않을 조건을 판별하는 난이도 1 문항이다. (y)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 직선 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "표준형 (x-2)^2-3에서 최솟값 -3을 구하고 수평선 y=k와 만나지 않을 조건 k<-3을 도출한다.",
-      "decisiveStep": "최솟값 -3보다 작은 k<-3 범위를 확정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차함수의 치역과 수평 직선의 교점이 생기지 않을 조건을 판별하는 난이도 1 문항이다. (y)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "templateKey": null,
-        "why": "이차함수의 그래프와 직선의 위치 관계 불만남 유형이다. (y)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "이차함수를 표준형으로 변형해 꼭짓점 y좌표와 상수함수의 위치관계를 비교하는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_2de1f5f231acfee15c435884253c09896014c797db70ca5492265c7fd0911696",
@@ -185,19 +107,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-01",
         "standardUnit": "다항식의 연산",
         "standardUnitOrder": 1,
-        "subUnitKey": "H15-SA-01-MULTIPLICATION_FORMULA",
-        "subUnit": "곱셈공식의 변형",
-        "conceptClusterKey": "H15-SA-01-MULTIPLICATION_FORMULA",
+        "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+        "subUnit": "다항식의 기본 연산",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-        "templateKey": "",
+        "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -210,52 +132,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-003"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "다항식의 연산",
-          "l3": "다항식의 곱셈",
-          "l4": "곱셈공식",
-          "recordId": "H1-RPM-003"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "다항식의 연산",
-        "rpmPrimaryL3": "다항식의 곱셈",
-        "rpmPrimaryL4": "곱셈공식",
-        "rpmPrimaryRecordId": "H1-RPM-003",
-        "difficultyBasis": "켤레무리수 두 값의 합과 곱을 대입하여 세제곱 합 공식을 적용하는 난이도 1 문항이다. (48)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-01 / H15-SA-01-MULTIPLICATION_FORMULA: $x=2+\\sqrt{3}$,",
-          "curriculum": "H1-RPM-003: 다항식의 연산 단원의 합과 곱을 이용한 세제곱 곱셈공식 변형 유형이다. (48)",
-          "problemType": "곱셈공식의 변형과 대칭식 값 계산 기본 유형이다. (48)",
-          "difficulty": "켤레무리수 두 값의 합과 곱을 대입하여 세제곱 합 공식을 적용하는 난이도 1 문항이다. (48)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "켤레무리수의 합 x+y=4와 곱 xy=1을 구해 세제곱 합 변형식 (x+y)^3-3xy(x+y)에 대입한다.",
-      "decisiveStep": "x+y=4, xy=1을 대입해 64-12=52를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "켤레무리수 두 값의 합과 곱을 대입하여 세제곱 합 공식을 적용하는 난이도 1 문항이다. (48)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
-        "templateKey": null,
-        "why": "곱셈공식의 변형과 대칭식 값 계산 기본 유형이다. (48)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "무리수 켤레쌍의 합과 곱을 구한 뒤 세제곱 합 곱셈공식 변형에 대입하는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_b667b6b72b2adeb285c2c8e95a2f7abf0f819cae66669cf6a4e88343fa4a5f34",
@@ -266,19 +149,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-06",
         "standardUnit": "이차방정식의 근과 계수",
         "standardUnitOrder": 6,
         "subUnitKey": "H15-SA-06-ROOT_COEFFICIENT_RELATION",
         "subUnit": "근과 계수의 관계",
-        "conceptClusterKey": "H15_SA_06_ROOT_COEFFICIENT_RELATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -291,52 +174,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-029"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식",
-          "l3": "근과 계수의 관계",
-          "l4": "근의 합·곱",
-          "recordId": "H1-RPM-029"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식",
-        "rpmPrimaryL3": "근과 계수의 관계",
-        "rpmPrimaryL4": "근의 합·곱",
-        "rpmPrimaryRecordId": "H1-RPM-029",
-        "difficultyBasis": "이차방정식의 근과 계수의 관계와 곱셈공식 변형으로 두 근의 차를 처리하는 난이도 1 문항이다. (64)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-06 / H15-SA-06-ROOT_COEFFICIENT_RELATION: 이차방정식 $x^2-8x-a",
-          "curriculum": "H1-RPM-029: 이차방정식의 근과 계수 단원의 두 근의 차와 근과 계수의 관계 유형이다. (64)",
-          "problemType": "근과 계수의 관계와 두 근의 차 조건 유형이다. (64)",
-          "difficulty": "이차방정식의 근과 계수의 관계와 곱셈공식 변형으로 두 근의 차를 처리하는 난이도 1 문항이다. (64)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 해 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "근과 계수의 관계로 합 8과 곱 -a를 구한 뒤 (alpha-beta)^2=(alpha+beta)^2-4alpha*beta=36을 푼다.",
-      "decisiveStep": "64+4a=36에서 a=-7을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차방정식의 근과 계수의 관계와 곱셈공식 변형으로 두 근의 차를 처리하는 난이도 1 문항이다. (64)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
-        "templateKey": null,
-        "why": "근과 계수의 관계와 두 근의 차 조건 유형이다. (64)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "두 근의 차 조건을 제곱 변형식과 근과 계수의 관계에 연결하는 2단계 문항이다.",
+      "hold": "BINDING_GAP",
+      "reason": "HOLD: BINDING_GAP"
     },
     {
       "questionUid": "qid_v1_0a8ae0cdb669a63cfbf973c39e328844f29aa7b8c7d5d39c0482700bdcd6e4a9",
@@ -347,19 +191,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-SA-02",
-        "standardUnit": "항등식과 나머지정리",
-        "standardUnitOrder": 2,
-        "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
-        "subUnit": "나머지정리와 인수정리",
-        "conceptClusterKey": "H15-SA-02-REMAINDER_FACTOR",
-        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
-        "templateKey": "",
+        "courseKey": "H15-SA",
+        "standardUnitKey": "H15-SA-03",
+        "standardUnit": "인수분해",
+        "standardUnitOrder": 3,
+        "subUnitKey": "H15-SA-03-FACTORIZATION",
+        "subUnit": "인수분해",
+        "conceptClusterKey": "",
+        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -372,52 +216,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-009"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "항등식과 나머지정리",
-          "l3": "나머지정리",
-          "l4": "일차식으로 나눈 나머지",
-          "recordId": "H1-RPM-009"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "항등식과 나머지정리",
-        "rpmPrimaryL3": "나머지정리",
-        "rpmPrimaryL4": "일차식으로 나눈 나머지",
-        "rpmPrimaryRecordId": "H1-RPM-009",
-        "difficultyBasis": "이차식으로 나누어떨어지는 다항식의 인수정리 연립방정식을 푸는 난이도 1 문항이다. (ax)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-02 / H15-SA-02-REMAINDER_FACTOR: 다항식 $P(x)=ax^3+",
-          "curriculum": "H1-RPM-009: 항등식과 나머지정리 단원의 인수정리를 이용한 미정계수법 유형이다. (ax)",
-          "problemType": "인수정리와 미정계수의 연립 결정 기본 유형이다. (ax)",
-          "difficulty": "이차식으로 나누어떨어지는 다항식의 인수정리 연립방정식을 푸는 난이도 1 문항이다. (ax)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 나머지 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "이차 나누는 식 x^2-x-2=(x-2)(x+1)을 인수분해한 뒤 인수정리 P(2)=0, P(-1)=0을 연립한다.",
-      "decisiveStep": "4a+b=1과 a+b=-5를 연립해 a=2, b=-7을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차식으로 나누어떨어지는 다항식의 인수정리 연립방정식을 푸는 난이도 1 문항이다. (ax)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
-        "templateKey": null,
-        "why": "인수정리와 미정계수의 연립 결정 기본 유형이다. (ax)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "이차 인수를 분해해 인수정리 두 식을 연립방정식으로 푸는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_1da85ee24ffbccb2630b509df6b84f6ddabcb6521bc6bed0c5ce6750a622fb11",
@@ -428,15 +233,15 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-04",
         "standardUnit": "복소수",
         "standardUnitOrder": 4,
         "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
         "subUnit": "복소수의 계산",
-        "conceptClusterKey": "H15-SA-04-COMPLEX_OPERATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
-        "templateKey": "",
+        "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -453,52 +258,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-025"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "복소수",
-          "l3": "i의 거듭제곱",
-          "l4": "주기성",
-          "recordId": "H1-RPM-025"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "복소수",
-        "rpmPrimaryL3": "i의 거듭제곱",
-        "rpmPrimaryL4": "주기성",
-        "rpmPrimaryRecordId": "H1-RPM-025",
-        "difficultyBasis": "복소수의 거듭제곱 주기성을 이용해 식을 간단히 계산하는 난이도 2 문항이다. (14)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-04 / H15-SA-04-COMPLEX_OPERATION: $\\left(\\dfrac{1",
-          "curriculum": "H1-RPM-025: 복소수 단원의 i의 거듭제곱 주기성과 복소수 거듭제곱 계산 유형이다. (14)",
-          "problemType": "복소수의 거듭제곱 규칙성과 사칙연산 유형이다. (14)",
-          "difficulty": "복소수의 거듭제곱 주기성을 이용해 식을 간단히 계산하는 난이도 2 문항이다. (14)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "복소수를 각각 제곱·실수화하여 ±i로 단순화한 뒤 i의 4주기로 거듭제곱을 계산한다.",
-      "decisiveStep": "(-i)^7=i와 i^15=-i를 각각 구해 합 0을 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "복소수의 거듭제곱 주기성을 이용해 식을 간단히 계산하는 난이도 2 문항이다. (14)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
-        "templateKey": null,
-        "why": "복소수의 거듭제곱 규칙성과 사칙연산 유형이다. (14)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "복소수 거듭제곱의 기본 변형(제곱=-i, 실수화=i)과 4주기성을 적용하는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_d9dad7cb58c352b365e09a6b8c8ddbc3641e9d5822b4fe01c23ca671ecd656ce",
@@ -509,19 +275,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-03",
         "standardUnit": "인수분해",
         "standardUnitOrder": 3,
         "subUnitKey": "H15-SA-03-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "H15-SA-03-FACTORIZATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -534,52 +300,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-014"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "인수분해",
-          "l3": "공통인수",
-          "l4": "단계적 인수분해",
-          "recordId": "H1-RPM-014"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "인수분해",
-        "rpmPrimaryL3": "공통인수",
-        "rpmPrimaryL4": "단계적 인수분해",
-        "rpmPrimaryRecordId": "H1-RPM-014",
-        "difficultyBasis": "복이차식을 인수분해하고 가능한 모든 곱 형태의 인수를 판별하는 난이도 1 문항이다. (81)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-03 / H15-SA-03-FACTORIZATION: 다항식 $x^4+3x^2-4",
-          "curriculum": "H1-RPM-014: 인수분해 단원의 복이차식 인수분해와 인수 판별 유형이다. (81)",
-          "problemType": "복이차식의 인수분해와 인수 판별 유형이다. (81)",
-          "difficulty": "복이차식을 인수분해하고 가능한 모든 곱 형태의 인수를 판별하는 난이도 1 문항이다. (81)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "복이차식을 (x-1)(x+1)(x^2+4)로 완전 인수분해한 뒤 보기 6개 식의 인수 여부를 각각 판별한다.",
-      "decisiveStep": "ㅂ을 (x+1)(x^2+4)로 인수분해해 P(x)의 인수임을 확인하고 ㄹ, ㅁ과 구별한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "복이차식을 인수분해하고 가능한 모든 곱 형태의 인수를 판별하는 난이도 1 문항이다. (81)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "복이차식의 인수분해와 인수 판별 유형이다. (81)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "사차식을 기약인수까지 분해한 뒤 6개 후보 중 3차식 포함 인수 조합을 모두 가려내야 하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_3d8da9be5ccdbd75f5e51acafb79e0aa59180631647e7d4f620893812c36d7bb",
@@ -590,19 +317,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-01",
         "standardUnit": "다항식의 연산",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
         "subUnit": "다항식의 나눗셈",
-        "conceptClusterKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -615,52 +342,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-006"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "다항식의 연산",
-          "l3": "다항식의 나눗셈",
-          "l4": "몫과 나머지",
-          "recordId": "H1-RPM-006"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "다항식의 연산",
-        "rpmPrimaryL3": "다항식의 나눗셈",
-        "rpmPrimaryL4": "몫과 나머지",
-        "rpmPrimaryRecordId": "H1-RPM-006",
-        "difficultyBasis": "다항식을 일차식으로 나누었을 때의 몫과 나머지를 구하는 난이도 1 문항이다. (3)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-01 / H15-SA-01-POLYNOMIAL_DIVISION: $(3x^3-x^2+6x-1",
-          "curriculum": "H1-RPM-006: 다항식의 연산 단원의 직접 나눗셈을 이용한 몫과 나머지 계산 유형이다. (3)",
-          "problemType": "다항식의 나눗셈과 몫, 나머지 계산 기본 유형이다. (3)",
-          "difficulty": "다항식을 일차식으로 나누었을 때의 몫과 나머지를 구하는 난이도 1 문항이다. (3)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "일차항 계수가 3인 일차식 3x-1로 직접 나누거나 조립제법 몫을 3으로 나누어 몫과 나머지를 구한다.",
-      "decisiveStep": "x-1/3로 나눈 몫 3x^2+6을 3으로 나누어 실제 몫 x^2+2를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식을 일차식으로 나누었을 때의 몫과 나머지를 구하는 난이도 1 문항이다. (3)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": null,
-        "why": "다항식의 나눗셈과 몫, 나머지 계산 기본 유형이다. (3)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "일차항 계수가 1이 아닌 일차식으로 나눌 때 몫을 최고차항 계수로 나누는 주의점을 묻는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_970edf2ca92d740bd9b501a94a57c7ca9b125e485326199fe1e1527965e27764",
@@ -671,21 +359,21 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-13",
         "standardUnit": "이차함수",
         "standardUnitOrder": 13,
         "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
         "subUnit": "이차함수의 활용",
-        "conceptClusterKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-        "templateKey": "",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_RANGE"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 1,
+        "difficultyBucket": 2,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -698,52 +386,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-037"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식과 이차함수",
-          "l3": "최대·최소",
-          "l4": "구간 최대·최소",
-          "recordId": "H1-RPM-037"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식과 이차함수",
-        "rpmPrimaryL3": "최대·최소",
-        "rpmPrimaryL4": "구간 최대·최소",
-        "rpmPrimaryRecordId": "H1-RPM-037",
-        "difficultyBasis": "축의 위치가 고정된 이차함수의 제한 구간에서 최댓값 조건으로 구간 끝점을 구하는 난이도 1 문항이다. (26)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-13 / H15-SA-13-QUADRATIC_APPLICATION: $3\\le x\\le k$에서",
-          "curriculum": "H1-RPM-037: 이차함수 단원의 축 오른쪽 제한구간에서의 증가 구간 최댓값 매개변수 결정 유형이다. (26)",
-          "problemType": "제한 구간에서의 이차함수의 최댓값과 미정계수 결정 유형이다. (26)",
-          "difficulty": "축의 위치가 고정된 이차함수의 제한 구간에서 최댓값 조건으로 구간 끝점을 구하는 난이도 1 문항이다. (26)",
-          "condition": "COND_RANGE: 4칸 condition: 최댓값",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "대칭축 x=2가 구간 [3, k]의 왼쪽에 있음을 확인해 x=k에서 최댓값 26 방정식을 푼다.",
-      "decisiveStep": "k^2-4k-21=0에서 k>=3 조건으로 k=7을 선택한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "축의 위치가 고정된 이차함수의 제한 구간에서 최댓값 조건으로 구간 끝점을 구하는 난이도 1 문항이다. (26)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-        "templateKey": null,
-        "why": "제한 구간에서의 이차함수의 최댓값과 미정계수 결정 유형이다. (26)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "대칭축 밖 증가 구간에서 오른쪽 끝점 최댓값 조건을 이차방정식으로 푸는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_f46120b74db86666c042603cd950896e2e0e890f5d77a3b8e6d3ba768b40a12e",
@@ -754,19 +403,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-05",
         "standardUnit": "이차방정식",
         "standardUnitOrder": 5,
         "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
         "subUnit": "이차방정식과 이차함수의 관계",
-        "conceptClusterKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -779,52 +428,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-034"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식과 이차함수",
-          "l3": "그래프와 근",
-          "l4": "판별식과 위치",
-          "recordId": "H1-RPM-034"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식과 이차함수",
-        "rpmPrimaryL3": "그래프와 근",
-        "rpmPrimaryL4": "판별식과 위치",
-        "rpmPrimaryRecordId": "H1-RPM-034",
-        "difficultyBasis": "이차함수의 접점 조건 판별식과 항등식의 성질을 결합하는 난이도 2 문항이다. (10)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-05 / H15-SA-05-EQUATION_FUNCTION_RELATION: $f(x)=x^2+2(a-3",
-          "curriculum": "H1-RPM-034: 이차방정식 단원의 이차함수 그래프가 항상 x축에 접할 항등식 조건 유형이다. (10)",
-          "problemType": "이차함수와 x축의 접점 판별식과 항등식 연계 유형이다. (10)",
-          "difficulty": "이차함수의 접점 조건 판별식과 항등식의 성질을 결합하는 난이도 2 문항이다. (10)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 접선 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "x축 접점 조건 D/4=0을 k에 대해 정리한 뒤 k에 대한 항등식 계수비교로 a, b를 구한다.",
-      "decisiveStep": "(4-6a)k+(a^2-b)=0에서 a=2/3, b=4/9를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차함수의 접점 조건 판별식과 항등식의 성질을 결합하는 난이도 2 문항이다. (10)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "templateKey": null,
-        "why": "이차함수와 x축의 접점 판별식과 항등식 연계 유형이다. (10)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "판별식 조건식에서 k^2이 소거된 뒤 k에 대한 항등식 계수비교로 두 상수를 결정하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_bd20f52165a8fed8aaf441e27c8af1a3049d225dbdc13b3c18b93eca1b7a3dc6",
@@ -835,19 +445,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-02",
         "standardUnit": "항등식과 나머지정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
         "subUnit": "나머지정리와 인수정리",
-        "conceptClusterKey": "H15-SA-02-REMAINDER_FACTOR",
-        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -860,52 +470,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-010"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "항등식과 나머지정리",
-          "l3": "나머지정리",
-          "l4": "고차식 조건",
-          "recordId": "H1-RPM-010"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "항등식과 나머지정리",
-        "rpmPrimaryL3": "나머지정리",
-        "rpmPrimaryL4": "고차식 조건",
-        "rpmPrimaryRecordId": "H1-RPM-010",
-        "difficultyBasis": "삼차식으로 나눈 나머지를 이차 인수의 나머지 형태로 표현하여 해결하는 난이도 2 문항이다. (17)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-02 / H15-SA-02-REMAINDER_FACTOR: 다항식 $P(x)$를 $(x",
-          "curriculum": "H1-RPM-010: 항등식과 나머지정리 단원의 삼차식으로 나눈 나머지정리 유형이다. (17)",
-          "problemType": "삼차식으로 나눈 다항식의 나머지정리 심화 유형이다. (17)",
-          "difficulty": "삼차식으로 나눈 나머지를 이차 인수의 나머지 형태로 표현하여 해결하는 난이도 2 문항이다. (17)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 나머지 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "삼차식 나눗셈의 나머지 R(x)를 a(x-1)^2+2x+3으로 설정한 뒤 R(3)=17을 대입해 a를 결정한다.",
-      "decisiveStep": "4a+9=17에서 a=2를 구하고 R(0)=2(1)+3=5를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "삼차식으로 나눈 나머지를 이차 인수의 나머지 형태로 표현하여 해결하는 난이도 2 문항이다. (17)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
-        "templateKey": null,
-        "why": "삼차식으로 나눈 다항식의 나머지정리 심화 유형이다. (17)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "완전제곱식 인수를 포함한 삼차식 나눗셈의 나머지 설정법을 적용하는 3단계 문항이다.",
+      "hold": "RPM_ONLY",
+      "reason": "HOLD: RPM_ONLY"
     },
     {
       "questionUid": "qid_v1_aa6a17f91e9366638639a42333db4877a11a1c4bf68abe59df93441b42764996",
@@ -916,15 +487,15 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-02",
         "standardUnit": "항등식과 나머지정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H15-SA-02-IDENTITY",
         "subUnit": "항등식과 계수비교",
-        "conceptClusterKey": "H15-SA-02-IDENTITY",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": "",
+        "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -941,52 +512,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-007"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "항등식과 나머지정리",
-          "l3": "항등식",
-          "l4": "미정계수법",
-          "recordId": "H1-RPM-007"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "항등식과 나머지정리",
-        "rpmPrimaryL3": "항등식",
-        "rpmPrimaryL4": "미정계수법",
-        "rpmPrimaryRecordId": "H1-RPM-007",
-        "difficultyBasis": "조건식이 주어진 다변수 등식을 한 문자 항등식으로 변형하여 미정계수를 구하는 난이도 2 문항이다. (ax)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-02 / H15-SA-02-IDENTITY: $x+y=2$일 때, 등식",
-          "curriculum": "H1-RPM-007: 항등식과 나머지정리 단원의 조건식이 주어진 미정계수 항등식 유형이다. (ax)",
-          "problemType": "조건식이 주어진 항등식과 계수비교법 유형이다. (ax)",
-          "difficulty": "조건식이 주어진 다변수 등식을 한 문자 항등식으로 변형하여 미정계수를 구하는 난이도 2 문항이다. (ax)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 성립조건 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "y=2-x를 대입해 x에 대한 일변수 항등식으로 바꾼 뒤 세 차수의 계수를 비교한다.",
-      "decisiveStep": "4c=8, 2b-4c=0, a-b+c=0을 차례로 풀어 a=2, b=4, c=2를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "조건식이 주어진 다변수 등식을 한 문자 항등식으로 변형하여 미정계수를 구하는 난이도 2 문항이다. (ax)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": null,
-        "why": "조건식이 주어진 항등식과 계수비교법 유형이다. (ax)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "일차관계식으로 한 문자를 소거한 뒤 이차항등식의 계수를 비교하는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_2b901791edd866e3cbbd35a0a4162cbc914cadadf1259d33b950bddd68e976e5",
@@ -997,19 +529,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-01",
         "standardUnit": "다항식의 연산",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
         "subUnit": "다항식의 나눗셈",
-        "conceptClusterKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -1022,52 +554,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-006"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "다항식의 연산",
-          "l3": "다항식의 나눗셈",
-          "l4": "몫과 나머지",
-          "recordId": "H1-RPM-006"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "다항식의 연산",
-        "rpmPrimaryL3": "다항식의 나눗셈",
-        "rpmPrimaryL4": "몫과 나머지",
-        "rpmPrimaryRecordId": "H1-RPM-006",
-        "difficultyBasis": "나눗셈 항등식을 통해 원래 다항식을 전개하고 다시 일차식으로 나누는 난이도 2 문항이다. (P)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-01 / H15-SA-01-POLYNOMIAL_DIVISION: 다항식 $P(x)$를 $x^",
-          "curriculum": "H1-RPM-006: 다항식의 연산 단원의 몫과 나머지 관계식 작성 후 일차식 나눗셈 조립제법 연계 유형이다. (P)",
-          "problemType": "다항식의 나눗셈 관계식 복원과 조립제법 유형이다. (P)",
-          "difficulty": "나눗셈 항등식을 통해 원래 다항식을 전개하고 다시 일차식으로 나누는 난이도 2 문항이다. (P)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 몫 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "나눗셈 식으로 P(x)를 전개한 뒤 x+1로 나눈 나머지 R=P(-1)과 조립제법 몫 Q(x)를 구한다.",
-      "decisiveStep": "P(x)=x^4+2x^3+x^2+3x+4에서 R=1, Q(x)=x^3+x^2+3을 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "나눗셈 항등식을 통해 원래 다항식을 전개하고 다시 일차식으로 나누는 난이도 2 문항이다. (P)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": null,
-        "why": "다항식의 나눗셈 관계식 복원과 조립제법 유형이다. (P)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "다항식 복원 후 조립제법으로 몫 다항식 Q(x)와 나머지 R을 모두 구하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_2e5954e8c8742fa06493ef5dd1853f39d682af7b38aa8b5f8599db18364a61c0",
@@ -1078,19 +571,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-03",
         "standardUnit": "인수분해",
         "standardUnitOrder": 3,
         "subUnitKey": "H15-SA-03-FACTORIZATION",
         "subUnit": "인수분해",
-        "conceptClusterKey": "H15-SA-03-FACTORIZATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -1103,52 +596,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-015"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "인수분해",
-          "l3": "인수분해 공식",
-          "l4": "제곱식",
-          "recordId": "H1-RPM-015"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "인수분해",
-        "rpmPrimaryL3": "인수분해 공식",
-        "rpmPrimaryL4": "제곱식",
-        "rpmPrimaryRecordId": "H1-RPM-015",
-        "difficultyBasis": "일차식 4개의 곱 형태를 적절히 짝지어 치환 후 완전제곱식 조건을 적용하는 난이도 2 문항이다. (12)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-03 / H15-SA-03-FACTORIZATION: $(x^2-3x+2)(x^2",
-          "curriculum": "H1-RPM-015: 인수분해 단원의 공통부분 치환과 완전제곱식 조건 유형이다. (12)",
-          "problemType": "공통부분 치환을 통한 다항식의 완전제곱식 조건 유형이다. (12)",
-          "difficulty": "일차식 4개의 곱 형태를 적절히 짝지어 치환 후 완전제곱식 조건을 적용하는 난이도 2 문항이다. (12)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "두 이차식을 네 일차식으로 분해한 뒤 x^2+x가 공통으로 나오도록 재조합하여 치환·완전제곱한다.",
-      "decisiveStep": "(x-1)(x+2)와 (x-2)(x+3)으로 짝지어 t^2-8t+12+k에서 k=4를 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "일차식 4개의 곱 형태를 적절히 짝지어 치환 후 완전제곱식 조건을 적용하는 난이도 2 문항이다. (12)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "공통부분 치환을 통한 다항식의 완전제곱식 조건 유형이다. (12)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "이차식 곱을 4개의 일차인수로 분해·재짝짓기해 치환 완전제곱하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_3f37577d8d8972dbb04c4bb7ebdc5b9f968ef7936463314ba3a49a52c4e1b609",
@@ -1159,15 +613,15 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-SA-05",
-        "standardUnit": "이차방정식",
-        "standardUnitOrder": 5,
-        "subUnitKey": "H15-SA-05-DISCRIMINANT",
-        "subUnit": "판별식과 근의 조건",
-        "conceptClusterKey": "H15-SA-05-DISCRIMINANT",
-        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
-        "templateKey": "",
+        "courseKey": "H15-SA",
+        "standardUnitKey": "H15-SA-13",
+        "standardUnit": "이차함수",
+        "standardUnitOrder": 13,
+        "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "subUnit": "이차함수의 활용",
+        "conceptClusterKey": "",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_NATURAL_NUMBER"
@@ -1186,52 +640,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-027"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식",
-          "l3": "이차방정식의 근",
-          "l4": "인수분해·근의 공식",
-          "recordId": "H1-RPM-027"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식",
-        "rpmPrimaryL3": "이차방정식의 근",
-        "rpmPrimaryL4": "인수분해·근의 공식",
-        "rpmPrimaryRecordId": "H1-RPM-027",
-        "difficultyBasis": "이차방정식의 허근 조건 판별식을 자연수 부정부등식으로 해결하는 난이도 2 문항이다. (mz)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-05 / H15-SA-05-DISCRIMINANT: $z^2-2mz+n=0$ (",
-          "curriculum": "H1-RPM-027: 이차방정식 단원의 이차방정식의 허근 조건과 판별식 부등식 유형이다. (mz)",
-          "problemType": "이차방정식의 근의 판별과 자연수 조건의 최적화 유형이다. (mz)",
-          "difficulty": "이차방정식의 허근 조건 판별식을 자연수 부정부등식으로 해결하는 난이도 2 문항이다. (mz)",
-          "condition": "COND_NATURAL_NUMBER: 4칸 condition: 허근",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "허근 조건 D/4=m^2-n<0에서 자연수 m=1일 때 최소 자연수 n=2를 찾아 합을 구한다.",
-      "decisiveStep": "n>m^2 조건에 최소 자연수 m=1을 대입해 n=2, m+n=3을 확정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차방정식의 허근 조건 판별식을 자연수 부정부등식으로 해결하는 난이도 2 문항이다. (mz)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
-        "templateKey": null,
-        "why": "이차방정식의 근의 판별과 자연수 조건의 최적화 유형이다. (mz)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "판별식 부등식 n>m^2을 만족시키는 최소 자연수 쌍을 찾는 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_765400f02146e2cd83ab2e8dc77aff79f907f2501625a1a018cfe8b4362b4558",
@@ -1242,19 +657,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-SA-03",
-        "standardUnit": "인수분해",
-        "standardUnitOrder": 3,
-        "subUnitKey": "H15-SA-03-FACTORIZATION",
-        "subUnit": "인수분해",
-        "conceptClusterKey": "H15-SA-03-FACTORIZATION",
-        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+        "courseKey": "H15-SA",
+        "standardUnitKey": "H15-SA-02",
+        "standardUnit": "항등식과 나머지정리",
+        "standardUnitOrder": 2,
+        "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+        "subUnit": "나머지정리와 인수정리",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -1267,52 +682,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-014"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "인수분해",
-          "l3": "공통인수",
-          "l4": "단계적 인수분해",
-          "recordId": "H1-RPM-014"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "인수분해",
-        "rpmPrimaryL3": "공통인수",
-        "rpmPrimaryL4": "단계적 인수분해",
-        "rpmPrimaryRecordId": "H1-RPM-014",
-        "difficultyBasis": "사차다항식의 인수 분해 구조로부터 계수를 비교하여 결정하는 난이도 2 문항이다. (ax)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-03 / H15-SA-03-FACTORIZATION: 다항식 $P(x)=x^4+a",
-          "curriculum": "H1-RPM-014: 인수분해 단원의 서로소인 두 이차식으로 나누어떨어지는 복이차식 미정계수 결정 유형이다. (ax)",
-          "problemType": "복이차식의 인수 구조와 미정계수 결정 유형이다. (ax)",
-          "difficulty": "사차다항식의 인수 분해 구조로부터 계수를 비교하여 결정하는 난이도 2 문항이다. (ax)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 나머지 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "서로소인 두 이차인수 x^2+1과 x^2+4의 곱이 최고차항 계수 1인 사차식 P(x)와 같음을 이용한다.",
-      "decisiveStep": "(x^2+1)(x^2+4)=x^4+5x^2+4를 전개해 a=5, b=4를 얻는다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "사차다항식의 인수 분해 구조로부터 계수를 비교하여 결정하는 난이도 2 문항이다. (ax)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
-        "templateKey": null,
-        "why": "복이차식의 인수 구조와 미정계수 결정 유형이다. (ax)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "서로소인 두 이차 인수의 곱으로 사차다항식 P(x)를 바로 구성해 계수를 구하는 문항이다.",
+      "hold": "RPM_ONLY",
+      "reason": "HOLD: RPM_ONLY"
     },
     {
       "questionUid": "qid_v1_ce3ec482be60a59660e1e38f1be7e421951e448e222df3f4a6ee0ee1f5589ac4",
@@ -1323,19 +699,19 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-02",
         "standardUnit": "항등식과 나머지정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H15-SA-02-IDENTITY",
         "subUnit": "항등식과 계수비교",
-        "conceptClusterKey": "H15-SA-02-IDENTITY",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": "",
+        "templateKey": "TPL_H1_IDENTITY_SPECIAL_VALUE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -1348,52 +724,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-008"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "항등식과 나머지정리",
-          "l3": "항등식",
-          "l4": "수치대입법",
-          "recordId": "H1-RPM-008"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "항등식과 나머지정리",
-        "rpmPrimaryL3": "항등식",
-        "rpmPrimaryL4": "수치대입법",
-        "rpmPrimaryRecordId": "H1-RPM-008",
-        "difficultyBasis": "x-1의 거듭제곱 꼴로 정리하는 연조립제법 또는 치환 전개를 수행하는 난이도 2 문항이다. (abcd)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-02 / H15-SA-02-IDENTITY: $x^3-4x^2+6x-5$",
-          "curriculum": "H1-RPM-008: 항등식과 나머지정리 단원의 연조립제법을 이용한 다항식의 변형 유형이다. (abcd)",
-          "problemType": "다항식의 연조립제법 및 거듭제곱 꼴 변형 유형이다. (abcd)",
-          "difficulty": "x-1의 거듭제곱 꼴로 정리하는 연조립제법 또는 치환 전개를 수행하는 난이도 2 문항이다. (abcd)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "t=x-1로 치환해 x=t+1을 대입하여 전개하거나 연쇄 조립제법으로 (x-1) 내림차순 계수를 구한다.",
-      "decisiveStep": "t^3-t^2+t-2의 계수 1, -1, 1, -2를 구해 곱 2를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "x-1의 거듭제곱 꼴로 정리하는 연조립제법 또는 치환 전개를 수행하는 난이도 2 문항이다. (abcd)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": null,
-        "why": "다항식의 연조립제법 및 거듭제곱 꼴 변형 유형이다. (abcd)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "x-1의 거듭제곱 전개 계수를 치환 전개 또는 연쇄 조립제법으로 구하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_5dad56513bee4f97406f9e16753b263e62371b3c6c18e8766f82e0ec9706c7fa",
@@ -1404,21 +741,21 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-04",
         "standardUnit": "복소수",
         "standardUnitOrder": 4,
         "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
         "subUnit": "복소수의 계산",
-        "conceptClusterKey": "H15-SA-04-COMPLEX_OPERATION",
-        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
-        "templateKey": "",
+        "conceptClusterKey": "",
+        "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+        "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_NATURAL_NUMBER"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -1431,52 +768,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-024"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "복소수",
-          "l3": "복소수의 연산",
-          "l4": "켤레복소수",
-          "recordId": "H1-RPM-024"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "복소수",
-        "rpmPrimaryL3": "복소수의 연산",
-        "rpmPrimaryL4": "켤레복소수",
-        "rpmPrimaryRecordId": "H1-RPM-024",
-        "difficultyBasis": "복소수의 크기 조건과 자연수 부정방정식을 결합하여 두 복소수의 차를 구하는 난이도 2 문항이다. (bi)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-04 / H15-SA-04-COMPLEX_OPERATION: 두 복소수 $z_1=a+bi",
-          "curriculum": "H1-RPM-024: 복소수 단원의 켤레복소수와의 곱과 정수 조건 연계 유형이다. (bi)",
-          "problemType": "복소수와 켤레복소수의 곱의 성질과 자연수 부정방정식 유형이다. (bi)",
-          "difficulty": "복소수의 크기 조건과 자연수 부정방정식을 결합하여 두 복소수의 차를 구하는 난이도 2 문항이다. (bi)",
-          "condition": "COND_NATURAL_NUMBER: 4칸 condition: 자연수",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "z*bar(z)=a^2+b^2 성질과 자연수·대소 조건(a>b, c>d)으로 두 제곱의 합 부정방정식을 풀어 z_1, z_2를 구한다.",
-      "decisiveStep": "a^2+b^2=25에서 (4,3), c^2+d^2=10에서 (3,1)을 유일하게 결정한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "복소수의 크기 조건과 자연수 부정방정식을 결합하여 두 복소수의 차를 구하는 난이도 2 문항이다. (bi)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
-        "templateKey": null,
-        "why": "복소수와 켤레복소수의 곱의 성질과 자연수 부정방정식 유형이다. (bi)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "켤레곱 a^2+b^2과 자연수·대소 부정방정식 조건을 결합해 복소수를 구하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_548128f7a098889803eab302187c7bb3dbf621ba1ae96552fa78d2f0e26d5ffd",
@@ -1487,20 +785,20 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-02",
         "standardUnit": "항등식과 나머지정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
         "subUnit": "나머지정리와 인수정리",
-        "conceptClusterKey": "H15-SA-02-REMAINDER_FACTOR",
-        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+        "conceptClusterKey": "",
+        "problemTypeKey": "",
         "templateKey": "",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
         "variationType": "NUMERIC",
@@ -1512,52 +810,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-010"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "항등식과 나머지정리",
-          "l3": "나머지정리",
-          "l4": "고차식 조건",
-          "recordId": "H1-RPM-010"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "항등식과 나머지정리",
-        "rpmPrimaryL3": "나머지정리",
-        "rpmPrimaryL4": "고차식 조건",
-        "rpmPrimaryRecordId": "H1-RPM-010",
-        "difficultyBasis": "다항식의 곱이 나누어떨어지는 조건에서 상수항 모순을 배제하고 인수를 특정하는 난이도 3 심화 문항이다. (ax)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-02 / H15-SA-02-REMAINDER_FACTOR: 최고차항의 계수가 $1$인",
-          "curriculum": "H1-RPM-010: 항등식과 나머지정리 단원의 두 다항식 곱의 인수 나눗셈과 조건 추론 유형이다. (ax)",
-          "problemType": "다항식의 곱의 나눗셈과 조건 추론을 통한 다항식 결정 유형이다. (ax)",
-          "difficulty": "다항식의 곱이 나누어떨어지는 조건에서 상수항 모순을 배제하고 인수를 특정하는 난이도 3 심화 문항이다. (ax)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 나머지 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "CASE_BRANCH: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "P(2)P(-1)=0과 P(5)P(2)=0에서 P(2)!=0인 경우의 상수항 모순을 보여 P(2)=0을 확정한다.",
-      "decisiveStep": "P(-1)=P(5)=0이면 상수항이 -5가 되어 P(0)=4와 모순임을 확인하고 P(x)=(x-2)^2을 얻는다.",
-      "difficultyConfidence": "high",
+      "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식의 곱이 나누어떨어지는 조건에서 상수항 모순을 배제하고 인수를 특정하는 난이도 3 심화 문항이다. (ax)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
-        "templateKey": null,
-        "why": "다항식의 곱의 나눗셈과 조건 추론을 통한 다항식 결정 유형이다. (ax)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "다항식 곱의 인수정리에서 경우를 나누고 상수항 조건으로 모순을 제거하는 4단계 추론 문항이다.",
+      "hold": "RPM_ONLY",
+      "reason": "HOLD: RPM_ONLY"
     },
     {
       "questionUid": "qid_v1_4c2847601f6a1f6a1af094b8d7f4ed2b9093c55754520e00c172d48edae05955",
@@ -1568,20 +827,20 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
-        "standardUnitKey": "H15-SA-05",
-        "standardUnit": "이차방정식",
-        "standardUnitOrder": 5,
-        "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
-        "subUnit": "이차방정식과 이차함수의 관계",
-        "conceptClusterKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
-        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "templateKey": "",
+        "courseKey": "H15-SA",
+        "standardUnitKey": "H15-SA-10",
+        "standardUnit": "직선의 방정식",
+        "standardUnitOrder": 10,
+        "subUnitKey": "H15-SA-10-DISTANCE_ANGLE",
+        "subUnit": "직선 사이의 거리와 각",
+        "conceptClusterKey": "",
+        "problemTypeKey": "PT_POINT_LINE_DISTANCE",
+        "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "medium",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
         "variationType": "NUMERIC",
@@ -1593,52 +852,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-033"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식과 이차함수",
-          "l3": "그래프와 근",
-          "l4": "x축과의 교점",
-          "recordId": "H1-RPM-033"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식과 이차함수",
-        "rpmPrimaryL3": "그래프와 근",
-        "rpmPrimaryL4": "x축과의 교점",
-        "rpmPrimaryRecordId": "H1-RPM-033",
-        "difficultyBasis": "이차함수 위의 점들의 대칭성과 두 직선의 기울기 조건을 연립하여 삼각형 넓이를 계산하는 난이도 3 문항이다. (ABC)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-05 / H15-SA-05-EQUATION_FUNCTION_RELATION: 이차함수 $f(x)=x^2-",
-          "curriculum": "H1-RPM-033: 이차방정식 단원의 이차함수 그래프의 대칭성과 직선의 기울기를 이용한 도형의 넓이 유형이다. (ABC)",
-          "problemType": "이차함수 그래프 위의 세 점과 직선의 기울기 연계 넓이 계산 유형이다. (ABC)",
-          "difficulty": "이차함수 위의 점들의 대칭성과 두 직선의 기울기 조건을 연립하여 삼각형 넓이를 계산하는 난이도 3 문항이다. (ABC)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 직선 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "대칭성 a+b=7과 두 할선 기울기 식 b+c-7=4, a+c-7=2를 연립해 세 점의 x좌표와 삼각형 넓이를 구한다.",
-      "decisiveStep": "a=5/2, b=9/2, c=13/2를 구하고 밑변 AB=2, 높이 4(c-b)=8로 넓이 8을 계산한다.",
-      "difficultyConfidence": "high",
+      "difficultyConfidence": "medium",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "이차함수 위의 점들의 대칭성과 두 직선의 기울기 조건을 연립하여 삼각형 넓이를 계산하는 난이도 3 문항이다. (ABC)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "templateKey": null,
-        "why": "이차함수 그래프 위의 세 점과 직선의 기울기 연계 넓이 계산 유형이다. (ABC)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "포물선 위 세 점의 대칭성과 두 할선 기울기를 연립해 좌표를 구하고 도형 넓이까지 연결하는 4단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_6bfa0f9f1f23e65961f02c6b63ee80ebbdf94c59aaf0cf07780a556c80a5e159",
@@ -1649,15 +869,15 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-02",
         "standardUnit": "항등식과 나머지정리",
         "standardUnitOrder": 2,
         "subUnitKey": "H15-SA-02-IDENTITY",
         "subUnit": "항등식과 계수비교",
-        "conceptClusterKey": "H15-SA-02-IDENTITY",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": "",
+        "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "NONE",
@@ -1674,52 +894,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-007"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "항등식과 나머지정리",
-          "l3": "항등식",
-          "l4": "미정계수법",
-          "recordId": "H1-RPM-007"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "항등식과 나머지정리",
-        "rpmPrimaryL3": "항등식",
-        "rpmPrimaryL4": "미정계수법",
-        "rpmPrimaryRecordId": "H1-RPM-007",
-        "difficultyBasis": "사차 이항정리 전개를 수행하고 계수비교법으로 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-02 / H15-SA-02-IDENTITY: $(x-2)^4=x^4+ax",
-          "curriculum": "H1-RPM-007: 항등식과 나머지정리 단원의 사차식 전개식을 이용한 계수비교법 서술형 유형이다. (ax)",
-          "problemType": "항등식의 계수비교법과 다항식 전개 서술형 유형이다. (ax)",
-          "difficulty": "사차 이항정리 전개를 수행하고 계수비교법으로 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다.",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "NONE: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "(x-2)^4=(x^2-4x+4)^2을 전개한 뒤 항등식 계수비교법으로 a, b를 구한다.",
-      "decisiveStep": "x^3항 계수 -8과 x항 계수 -32를 직접 비교해 구한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "사차 이항정리 전개를 수행하고 계수비교법으로 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "templateKey": null,
-        "why": "항등식의 계수비교법과 다항식 전개 서술형 유형이다. (ax)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "(x-2)^4 전개 후 항등식 계수비교를 적용하는 기본 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_adfd66c6fd06720678a9fc3c0892f3c3808865648191992b80e7ce27f4b3b1d2",
@@ -1730,15 +911,15 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-01",
         "standardUnit": "다항식의 연산",
         "standardUnitOrder": 1,
         "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
         "subUnit": "다항식의 나눗셈",
-        "conceptClusterKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": "",
+        "templateKey": "TPL_H1_POLY_DIVISION_EXECUTION",
         "crossConceptKeys": [],
         "conditionKeys": [],
         "integrationPattern": "SEQUENTIAL",
@@ -1755,52 +936,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-006"
-        ],
-        "rpmPrimary": {
-          "l1": "다항식",
-          "l2": "다항식의 연산",
-          "l3": "다항식의 나눗셈",
-          "l4": "몫과 나머지",
-          "recordId": "H1-RPM-006"
-        },
-        "rpmPrimaryL1": "다항식",
-        "rpmPrimaryL2": "다항식의 연산",
-        "rpmPrimaryL3": "다항식의 나눗셈",
-        "rpmPrimaryL4": "몫과 나머지",
-        "rpmPrimaryRecordId": "H1-RPM-006",
-        "difficultyBasis": "다항식 나눗셈의 기본 관계식을 세우고 수치를 대입하여 값을 계산하는 난이도 2 서술형 문항이다. (25)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-01 / H15-SA-01-POLYNOMIAL_DIVISION: 다항식 $P(x)$를 $x^",
-          "curriculum": "H1-RPM-006: 다항식의 연산 단원의 나눗셈 항등식 작성 후 특정 수치 대입 값 계산 서술형 유형이다. (25)",
-          "problemType": "다항식의 나눗셈 관계식과 수치 대입 서술형 유형이다. (25)",
-          "difficulty": "다항식 나눗셈의 기본 관계식을 세우고 수치를 대입하여 값을 계산하는 난이도 2 서술형 문항이다. (25)",
-          "condition": "NONE: 풀이에 쓰이는 별도 Condition 키가 없다 (4칸 condition 에는 몫 이 있다).",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "나눗셈 항등식 P(x)=(x^2-3x-4)(x^2+3x+2)+2x-5를 세우고 x=5를 대입한다.",
-      "decisiveStep": "P(5)=6*42+5=257을 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "다항식 나눗셈의 기본 관계식을 세우고 수치를 대입하여 값을 계산하는 난이도 2 서술형 문항이다. (25)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_POLY_DIVISION",
-        "templateKey": null,
-        "why": "다항식의 나눗셈 관계식과 수치 대입 서술형 유형이다. (25)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "나눗셈 관계식을 작성한 뒤 x=5를 대입해 함숫값을 구하는 기본 2단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     },
     {
       "questionUid": "qid_v1_5d7da17a79ff99170fc5a0ed99aa7590854938139c597d4cb38acfc34455884e",
@@ -1811,21 +953,21 @@
         "standardCourse": "수학(상)",
         "curriculum": "2015",
         "curriculumKey": "2015",
-        "courseKey": "",
+        "courseKey": "H15-SA",
         "standardUnitKey": "H15-SA-13",
         "standardUnit": "이차함수",
         "standardUnitOrder": 13,
         "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
         "subUnit": "이차함수의 활용",
-        "conceptClusterKey": "H15-SA-13-QUADRATIC_APPLICATION",
+        "conceptClusterKey": "",
         "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-        "templateKey": "",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
         "crossConceptKeys": [],
         "conditionKeys": [
           "COND_RANGE"
         ],
         "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 2,
+        "difficultyBucket": 3,
         "difficultyConfidence": "high",
         "difficultyBoundaryFlag": "NONE",
         "sourceQid": null,
@@ -1838,52 +980,13 @@
           "variationType": "NUMERIC",
           "createdAt": "2026-11-18",
           "createdAtSource": "변환 마크다운 헤더의 generatedAt"
-        },
-        "rpmPrimaryRecordIds": [
-          "H1-RPM-037"
-        ],
-        "rpmPrimary": {
-          "l1": "방정식과 부등식",
-          "l2": "이차방정식과 이차함수",
-          "l3": "최대·최소",
-          "l4": "구간 최대·최소",
-          "recordId": "H1-RPM-037"
-        },
-        "rpmPrimaryL1": "방정식과 부등식",
-        "rpmPrimaryL2": "이차방정식과 이차함수",
-        "rpmPrimaryL3": "최대·최소",
-        "rpmPrimaryL4": "구간 최대·최소",
-        "rpmPrimaryRecordId": "H1-RPM-037",
-        "difficultyBasis": "대칭축의 위치에 따른 구간 단조성을 파악하여 최대·최소 관계식으로부터 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
-        "metaRationale": {
-          "draftTier": "SINGLE_MODEL_DRAFT",
-          "unit": "H15-SA-13 / H15-SA-13-QUADRATIC_APPLICATION: 실수 $a$, $b$에 대하",
-          "curriculum": "H1-RPM-037: 이차함수 단원의 축 왼쪽 제한구간에서의 감소 구간 최대·최소 비례 조건 서술형 유형이다. (ax)",
-          "problemType": "제한 구간에서의 이차함수 최대·최소 조건식 서술형 유형이다. (ax)",
-          "difficulty": "대칭축의 위치에 따른 구간 단조성을 파악하여 최대·최소 관계식으로부터 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
-          "condition": "COND_RANGE: 4칸 condition: 최댓값",
-          "crossConcept": "NONE: 원천 마크다운 값, 재판정 안 함",
-          "integration": "SEQUENTIAL: 원천 마크다운 값, 재판정 안 함"
-        },
-        "visualNecessity": {
-          "problem": "EXEMPT",
-          "problemReason": "발문에 그림을 가리키는 말이 없고 글만으로 완결되어 그림이 필요 없다.",
-          "solution": "EXEMPT",
-          "solutionReason": "해설이 글만으로 완결되어 그림 없이 따라갈 수 있다."
         }
       },
-      "primaryMethod": "대칭축 x=7/2가 구간 [0, 3] 오른쪽에 있어 감소함을 이용해 M=f(0), m=f(3)으로 두고 M=3m을 푼다.",
-      "decisiveStep": "b=3(b-12)에서 b=18을 구해 2a+b=25를 계산한다.",
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
-      "difficultyReason": "대칭축의 위치에 따른 구간 단조성을 파악하여 최대·최소 관계식으로부터 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
-      "ptTplCandidate": {
-        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
-        "templateKey": null,
-        "why": "제한 구간에서의 이차함수 최대·최소 조건식 서술형 유형이다. (ax)"
-      },
-      "hold": "정본 폴더 내 메타_키선택표_고1.json 부재로 courseKey, standardUnitKey, subUnitKey, conceptClusterKey, rpm, ptTplCandidate를 null로 보류함.",
-      "reason": "DRAFT_SINGLE_MODEL (similar-import-draft)"
+      "difficultyReason": "대칭축 외부 감소 구간에서 최대·최솟값 식을 세우고 비례 조건 M=3m으로 미지수를 결정하는 3단계 문항이다.",
+      "hold": "",
+      "reason": "SOURCE CANDIDATE: converted from markdown (단원·유형·난이도·4칸은 문항별 판정 전 원천 값)"
     }
   ]
 }

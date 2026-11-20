@@ -18,17 +18,22 @@
   },
   "reference": {
     "answer": "①",
-    "solution": "$y=x^2$이라 치환하면 주어진 방정식은 $$y^2-(2a-1)y+(a-3)(a+2)=0 \\implies {y-(a-3)}{y-(a+2)}=0$$ 따라서 $x^2=a-3$ 또는 $x^2=a+2$이다.\n\n\n* $a=-1$일 때: $x^2=-4$ (실근 없음) 또는 $x^2=1$ ($x=\\pm 1$)이므로 $f(-1)=2$\n* $a=5$일 때: $x^2=2$ ($x=\\pm\\sqrt{2}$) 또는 $x^2=7$ ($x=\\pm\\sqrt{7}$)이므로 $f(5)=4$\n\n\n그러므로 $f(-1)+f(5)=2+4=6$이고, 정답은 ①이다.",
+    "solution": "$y=x^2$이라 치환하면 주어진 방정식은 $$y^2-(2a-1)y+(a-3)(a+2)=0 \\implies {y-(a-3)}{y-(a+2)}=0$$ 따라서 $x^2=a-3$ 또는 $x^2=a+2$이다.\n\n- $a=-1$일 때: $x^2=-4$ (실근 없음) 또는 $x^2=1$ ($x=\\pm 1$)이므로 $f(-1)=2$  \n- $a=5$일 때: $x^2=2$ ($x=\\pm\\sqrt{2}$) 또는 $x^2=7$ ($x=\\pm\\sqrt{7}$)이므로 $f(5)=4$\n\n그러므로 $f(-1)+f(5)=2+4=6$이고, 정답은 ①이다.",
     "sourcePrimaryMethod": "x^2=y로 치환해 (y-(a-3))(y-(a+2))=0으로 인수분해한 뒤 a=-1, a=5를 대입해 x^2=k의 실근 개수를 센다.",
     "sourceDecisiveStep": "a=-1에서 x^2=-4가 실근을 갖지 않음을 확인해 f(-1)=2, f(5)=4를 구한다."
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
+    "standardUnitKey": "H15-SA-03",
+    "subUnitKey": "H15-SA-03-FACTORIZATION",
+    "rpmPath": {
+      "majorUnit": "다항식",
+      "midUnit": "인수분해",
+      "l3": "공통인수",
+      "l4": "단계적 인수분해"
+    },
+    "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+    "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
     "difficultyBucket": 3,
     "newKeyProposal": null,
     "item4slot": {
@@ -267,6 +272,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -482,6 +491,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -1715,6 +1728,10 @@
             {
               "templateKey": "TPL_LINE_EQUATION_SLOPE",
               "label": "평행·수직 직선"
+            },
+            {
+              "templateKey": "TPL_LINE_EQUATION_DIRECTION",
+              "label": "점과 방향벡터 직선식"
             }
           ]
         },

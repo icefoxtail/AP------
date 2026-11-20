@@ -19,20 +19,30 @@
   "reference": {
     "answer": "⑤",
     "solution": "$$z = \\frac{1 + i}{1 - i} = \\frac{(1 + i)^2}{(1 - i)(1 + i)} = \\frac{2i}{2} = i, \\quad \\frac{1}{z} = \\frac{1}{i} = -i$$ 각 항을 $4$개씩 묶어 주기성을 확인하면\n\n- $z + \\frac{1}{z} = i + (-i) = 0$  \n- $z^2 + \\frac{1}{z^2} = (-1) + (-1) = -2$  \n- $z^3 + \\frac{1}{z^3} = (-i) + i = 0$  \n- $z^4 + \\frac{1}{z^4} = 1 + 1 = 2$\n\n이므로 연속한 $4$쌍의 합은 $0 + (-2) + 0 + 2 = 0$이다. $26 = 4 \\times 6 + 2$이므로 처음 $24$쌍의 합은 $0$이고 마지막 $2$쌍만 남는다. $$\\left(z^{25} + \\frac{1}{z^{25}}\\right) + \\left(z^{26} + \\frac{1}{z^{26}}\\right) = \\left(z + \\frac{1}{z}\\right) + \\left(z^2 + \\frac{1}{z^2}\\right) = 0 + (-2) = -2$$",
-    "sourcePrimaryMethod": "",
-    "sourceDecisiveStep": ""
+    "sourcePrimaryMethod": "$z=i$, $\\frac{1}{z}=-i$로 간단히 한 뒤 $4$주기마다 합이 $0$이 됨을 이용해 $26$을 $4$로 나눈 나머지 $2$쌍을 계산한다.",
+    "sourceDecisiveStep": "$z=i$로 환원하고 연속 $4$쌍의 합이 $0$임을 확인해 $26=4\\times 6+2$를 적용하는 단계"
   },
   "source": {
     "note": "원천 마크다운이 적어 온 값. 참고용이며 틀릴 수 있다. 판정은 문항을 읽고 직접 한다.",
-    "standardUnitKey": "",
-    "subUnitKey": "",
-    "rpmPath": null,
-    "problemTypeKey": null,
-    "templateKey": null,
-    "difficultyBucket": null,
+    "standardUnitKey": "H22-C-04",
+    "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+    "rpmPath": {
+      "majorUnit": "방정식과 부등식",
+      "midUnit": "복소수",
+      "l3": "i의 거듭제곱",
+      "l4": "주기성"
+    },
+    "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+    "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+    "difficultyBucket": 2,
     "newKeyProposal": null,
-    "item4slot": null,
-    "boundary": ""
+    "item4slot": {
+      "domain": "복소수",
+      "concept": "허수단위의거듭제곱",
+      "skill": "복소수역수거듭제곱합",
+      "context": "복소수주기합"
+    },
+    "boundary": "NONE"
   },
   "units": [
     {
@@ -279,6 +289,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
@@ -474,6 +488,10 @@
             {
               "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT_RECONSTRUCT",
               "label": "영점으로 다항식 복원"
+            },
+            {
+              "templateKey": "TPL_H1_FACTOR_THEOREM_QUOTIENT_VALUE",
+              "label": "인수 조건과 몫의 값"
             }
           ]
         },
