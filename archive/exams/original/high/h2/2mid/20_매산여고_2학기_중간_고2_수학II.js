@@ -330,7 +330,12 @@ window.questionBank = [
       "미분계수"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 점 A에서 접하는 오르는 직선 l과, A와 오른쪽 점 B를 지나는 약간 더 가파른 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "예: f(x)=x², a=6, h=1일 때를 그렸다(f′(6)=12). 직선 m은 두 점 A(6,36), B(7,49)를 잇는 할선이고 기울기 [f(a+h)-f(a)]/h=13이다. h→0이면 m이 A에서의 접선 l로 가까워져 기울기가 f′(a)=12에 모인다. 주어진 식은 분자가 f(a)-f(a+h)로 순서가 반대이고 분모가 3h이므로 -(1/3)·f′(a)=-12/3=-4이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -444,7 +449,11 @@ window.questionBank = [
       "함수의 연속"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 오르는 직선이 x=-1에서 빈 점으로 끊겼다가, 같은 높이의 닫힌 점에서 이어지는 그래프이다.",
+    "solutionImageCaption": "a=3이면 x≠-1에서 (x²+3x+2)/(x+1)=x+2라 그래프는 직선 y=x+2에서 x=-1의 높이 1인 열린 점(구멍)이 빠진 모양이다. f(-1)=b+3인 닫힌 점이 그 구멍과 같은 높이에 있어야 연속이므로 b+3=1, b=-2이다. 따라서 a+b=1이고 답은 ①이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -504,7 +513,11 @@ window.questionBank = [
       "함수의 연속"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 점 A에서 올라가는 직선이 점 B에서 아래로 볼록한 포물선 조각으로 이어져 가운데에서 내려갔다 올라 오른쪽 끝 점 C에서 점 A와 같은 높이에 이르는 그래프이다.",
+    "solutionImageCaption": "f(x-2)=f(x+2)는 주기 4를 뜻하므로 f(-3)=f(1)이다. 연속 조건 -4+a=4b-a와 f(-3)=f(1)에서 a=10/3, b=2/3이다. 그림은 한 주기 [-3,1]의 그래프로, 왼쪽 직선 조각이 B(-2,-2/3)에서 포물선 조각과 이어지고 양 끝점 A(-3,-8/3), C(1,-8/3)의 높이가 같다. 따라서 6a+3b=22이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -675,7 +688,12 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 점 A에서 내려가 가로축 아래에서 올라 점 P에서 가로축을 지나고 꼭대기를 찍은 뒤 점 B로 내려오는 곡선과 A, B를 잇는 내려가는 직선 l이 나타난 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. A(0,1), P(1,0), B(2,0)을 지나고 A에서 내려가다 올라 P를 지난 뒤 B로 내려가는 곡선이다. f(1)=f(2)=0이라 f(2)-f(1)=0<1이고(ㄱ 참), x=0에서 곡선이 내려가므로 f′(0)<0이며(ㄴ 거짓), x=1에서 증가하고 x=2에서 감소해 f′(2)<f′(1)이다(ㄷ 참). 할선 l은 기울기 -1/2이고 이와 평행한 접선은 왼쪽 내려가는 부분과 오른쪽 내려가는 부분에서 하나씩 생겨 c는 2개이다(ㄹ 참). 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -791,7 +809,12 @@ window.questionBank = [
       "도함수의 활용"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래 점 A에서 시작해 오른쪽 위로 가파르게 오르는 삼차곡선과 A와 오른쪽 끝 점 B를 잇는 직선 l, 그리고 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "f′(2)=4이다. k=1이면 구간 [0,3]의 양 끝점 A(0,1), B(3,13)를 잇는 할선 l의 기울기가 (13-1)/3=4이다. 그림에서 x=2의 점 T(2,5)에서의 접선 m이 l과 평행하다. 따라서 c=2이고 k=1이며 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 15,
@@ -905,7 +928,12 @@ window.questionBank = [
       "함수의 극한"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2에서 왼쪽의 낮은 수평선은 열린 점으로 끝나고, 오른쪽의 중간 높이 수평선은 열린 점에서 시작하며, 그 위에 닫힌 점이 따로 있는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=2에서 왼쪽 가지는 높이 1의 열린 점으로, 오른쪽 가지는 높이 3의 열린 점에서 시작하고 f(2)=5인 닫힌 점이 위에 따로 있다. x→∞이면 (4x+1)/(2x+1)=2-1/(2x+1)이 2의 왼쪽에서 가까워지므로 극한은 1이다. x→1+이면 √(3x+1)이 2의 오른쪽에서 가까워지므로 극한은 3이다. 합은 4이고 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 17,
@@ -1174,7 +1202,12 @@ window.questionBank = [
       "도함수"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_매산여고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 아래로 볼록한 포물선이 점 P에서 오른쪽의 오르는 직선으로 같은 기울기로 이어지는 그래프이다.",
+    "solutionImageCaption": "연속 조건 1+a=5+b에서 b=a-4이고, 왼쪽 기울기 2+a가 오른쪽 기울기 5와 같아야 하므로 a=3, b=-1이다. 그림은 x<1에서 포물선 y=x²+3x, x≥1에서 직선 y=5x-1이고 점 P(1,4)에서 값과 기울기(둘 다 5)가 같게 이어진다. 따라서 a²+b²=9+1=10이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 22,

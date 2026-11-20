@@ -300,7 +300,11 @@ window.examData = {
       "choices": [],
       "answer": "",
       "solution": "",
-      "score": 5.0
+      "score": 5.0,
+      "solutionImage": "assets/images/17_삼산중_1학기_중간_중1_수학/q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 점 네 개가 왼쪽부터 −3, −2, 0, 2의 위치에 있고 차례로 a, b, c, d의 값이다.",
+      "solutionImageCaption": "㉡㉢에서 |b|=|d|이고 b와 d 사이의 거리가 4이므로 b와 d는 원점에서 각각 2만큼 떨어져 있다. ㉣ b<d이므로 b=−2, d=2이다. ㉥ c=b+d=0이다. ㉠㉤에서 a는 절댓값이 4보다 작고 가장 왼쪽에 있으므로 서로 다른 값인 −3이다. 수직선의 점은 왼쪽부터 a, b, c, d의 값 −3, −2, 0, 2이다. 따라서 a=−3, b=−2, c=0, d=2이다.",
+      "solutionImageSize": "full"
     }
   ]
 };

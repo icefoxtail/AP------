@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "tc-629a1dc7c0cc-b4c420d4",
+  "sourceArchiveFile": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-d-20261116",
+    "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_083f6926b91b9a60558ae9b7db465f2125751e8f6618f6be42ce3ffdb43ba139",
+      "sourceOrdinal": 1,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": null,
+      "step": "역수제곱항이 0으로 수렴함을 이용해 수열극한을 구한다.",
+      "note": "정의: 무한 수열의 일반항을 정리하거나 공비·부호·지배항에 따라 수렴값과 수렴조건을 결정한다. 구별: ACTIVE 함수극한 유형은 실수입력 접근을 다루며 수열의 이산 지표 무한대 수렴 및 진동 판정이 명시되지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0fec87ac765e17ea344fce173ad768a75325d12d72db29148f9957f0c11da64c",
+      "sourceOrdinal": 2,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": null,
+      "step": "가장 큰 밑의 거듭제곱으로 나누어 공비 절댓값이 1보다 작은 항을 소거한다.",
+      "note": "정의: 무한 수열의 일반항을 정리하거나 공비·부호·지배항에 따라 수렴값과 수렴조건을 결정한다. 구별: ACTIVE 함수극한 유형은 실수입력 접근을 다루며 수열의 이산 지표 무한대 수렴 및 진동 판정이 명시되지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8d260852f80a76868fa27d4e77eb18aefede9cc433315b5321aaef5a153ed201",
+      "sourceOrdinal": 3,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "첫째항과 공비를 읽고 수렴하는 등비급수의 합을 구한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_6b7da4ece1a279ffcdc4216b9ef001da7e92f621ff836d199761f3c805bda8f2",
+      "sourceOrdinal": 7,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": null,
+      "step": "공비 2cos x가 -1보다 크고 1이하인 범위를 구한다.",
+      "note": "정의: 무한 수열의 일반항을 정리하거나 공비·부호·지배항에 따라 수렴값과 수렴조건을 결정한다. 구별: ACTIVE 함수극한 유형은 실수입력 접근을 다루며 수열의 이산 지표 무한대 수렴 및 진동 판정이 명시되지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_8227197a854671a58ad9e3a5265f7f4babd65a8de35b09c3328b59aca2e1e786",
+      "sourceOrdinal": 8,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "급수수렴의 일반항 0 필요조건과 반례로 명제의 참거짓을 판정한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_806299108f8841d7918d546621b3c5fc0708d164e299e13855d35a2e10d98325",
+      "sourceOrdinal": 11,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "반복 내접도형의 길이비를 제곱하여 넓이공비를 얻고 무한합을 구한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": true,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ee0af5a719f7105245f0ae2e451b432eb6657014644f071f816419e252dcc036",
+      "sourceOrdinal": 17,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SEQUENCE_LIMIT",
+      "templateKey": null,
+      "step": "거듭제곱 밑의 절댓값을 1과 비교하여 극한함수를 조각별로 정한다.",
+      "note": "정의: 무한 수열의 일반항을 정리하거나 공비·부호·지배항에 따라 수렴값과 수렴조건을 결정한다. 구별: ACTIVE 함수극한 유형은 실수입력 접근을 다루며 수열의 이산 지표 무한대 수렴 및 진동 판정이 명시되지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_4f873fd1c64ae48941519b3465268f322b10401bb01d67144b5715921162a80b",
+      "sourceOrdinal": 18,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "반복합성의 국소비율로 일반항 (1/4)의 n제곱을 얻고 등비급수를 합한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_035db3b98decd8d1fe0013e82cbd88406673fe69d272b06c6d8024533b1bea51",
+      "sourceOrdinal": 20,
+      "decision": "NEW_KEY",
+      "problemTypeKey": "PT_CALCULUS_SERIES",
+      "templateKey": null,
+      "step": "방멱으로 원넓이의 일반항을 구한 후 등비급수의 합을 계산한다.",
+      "note": "정의: 무한급수의 부분합 극한 또는 수렴정리를 이용해 수렴 여부와 합을 구한다. 구별: ACTIVE 대수 수열의 합은 유한합 범위이며 무한급수 수렴과 합을 포함하지 않는다. 검사 오류: [{\"code\":\"PT_NOT_ACTIVE\"},{\"code\":\"DUPLICATE_PROPOSED_NAME\"}]",
+      "figure": false,
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    }
+  ],
+  "packScopeAdditions": [
+    {
+      "packId": "LIMIT_CONTINUITY",
+      "curricula": [],
+      "standardCourses": [
+        "미적분"
+      ]
+    }
+  ]
+}

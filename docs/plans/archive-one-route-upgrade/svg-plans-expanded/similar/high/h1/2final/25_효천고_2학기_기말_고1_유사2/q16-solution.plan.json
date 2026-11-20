@@ -1,0 +1,111 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   7,
+   -1,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "4",
+     "-6",
+     "1"
+    ],
+    "domain": [
+     "-2/5",
+     "32/5"
+    ],
+    "abs": true,
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "k",
+    "kind": "LINE",
+    "coefficients": [
+     "4",
+     "0"
+    ],
+    "domain": [
+     "-1",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "WARM",
+    "hideLabel": true
+   },
+   {
+    "id": "m",
+    "kind": "LINE",
+    "coefficients": [
+     "5",
+     "0"
+    ],
+    "domain": [
+     "-1",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "V",
+     "x": "3",
+     "y": "5",
+     "coordinates": true
+    },
+    {
+     "id": "A",
+     "x": "0",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "B",
+     "x": "2",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "C",
+     "x": "4",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "D",
+     "x": "6",
+     "y": "4",
+     "unnamed": true
+    }
+   ]
+  }
+ },
+ "caption": "예: k=4이면 수평선 y=k(주황색 점선)가 y=|x²−6x+4|의 그래프(파란색)와 x=0, 2, 4, 6의 서로 다른 네 점에서 만난다. 위로 볼록한 부분의 꼭짓점 V(3,5)의 높이 5(초록색 점선 y=5)보다 작아야 하므로 0<k<5일 때 네 점에서 만난다. 이를 만족하는 정수 k는 1, 2, 3, 4의 4개이다. 따라서 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=|x²−6x+4|, 0<k<5",
+   "mappedTo": "graphPlan.curves"
+  }
+ ],
+ "accessibilityDescription": "W 모양의 절댓값 이차함수 그래프(파란색)와 수평선(주황색 점선)이 네 점에서 만나는 그림이다. 가운데 꼭짓점이 표시되어 있다.",
+ "newVisualInformation": [
+  "꼭짓점 V(3,5)와 점선 y=5",
+  "k=4에서 수평선과 네 교점"
+ ]
+}

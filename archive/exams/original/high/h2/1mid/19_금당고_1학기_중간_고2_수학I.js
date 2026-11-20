@@ -191,7 +191,11 @@ window.questionBank = [
       "객관식"
     ],
     "category": "지수함수와 로그함수",
-    "originalCategory": "지수함수와 로그함수"
+    "originalCategory": "지수함수와 로그함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 1에서 4까지의 구간에서 아래로 볼록한 포물선이 그려져 있고 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=2의 (−x)제곱으로 놓으면 −2≤x≤0에서 1≤t≤4이고 y=t²−6t+a=(t−3)²+a−9이다. 최솟값은 꼭짓점 t=3에서 a−9=4이므로 a=13이다. 그림은 y=(t−3)²+4이다. 꼭짓점 V(3, 4)에서 최소이고 꼭짓점에서 더 먼 끝점 A(1, 8)에서 최대이다. B(4, 5)는 더 작다. 따라서 최댓값은 8이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -335,7 +339,12 @@ window.questionBank = [
       "객관식"
     ],
     "category": "삼각함수",
-    "originalCategory": "삼각함수"
+    "originalCategory": "삼각함수",
+    "solutionImage": "assets/images/19_금당고_1학기_중간_고2_수학I/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 2π까지 한 주기의 코사인 곡선이 가운데 π를 중심으로 위아래가 뒤집혀 대칭을 이룬다. π/3과 4π/3, π, 2π에 눈금이 표시되어 있다.",
+    "solutionImageCaption": "코사인 그래프에서 α와 α+π에서의 값은 서로 반대이다. 그림의 π/3과 4π/3에서 값은 각각 1/2과 −1/2이다. k=0, 1, …, 11에 대하여 cos((k+12)π/12)=−cos(kπ/12)이므로 24개 항은 12쌍으로 상쇄되어 합이 0이다. 마지막에 더한 1만 남아 값은 1이고 답은 ⑤이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 15,

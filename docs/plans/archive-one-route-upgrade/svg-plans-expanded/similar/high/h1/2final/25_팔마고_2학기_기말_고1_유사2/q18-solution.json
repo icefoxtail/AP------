@@ -1,0 +1,162 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   8,
+   -1,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "1"
+    ],
+    "offset": "3",
+    "domain": [
+     "0",
+     "4"
+    ],
+    "color": "BLUE",
+    "label": "y=sqrt(x)+3",
+    "hideLabels": [
+     "start"
+    ]
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "-2",
+     "1"
+    ],
+    "domain": [
+     "2",
+     "6"
+    ],
+    "color": "GREEN",
+    "label": "y=sqrt(x-2)",
+    "hideLabels": [
+     "start"
+    ]
+   },
+   {
+    "id": "l",
+    "kind": "LINE",
+    "coefficients": [
+     "11",
+     "-3/2"
+    ],
+    "domain": [
+     "4",
+     "6"
+    ],
+    "color": "WARM",
+    "label": "3x+2y-22=0",
+    "hideLabel": true
+   },
+   {
+    "id": "pq",
+    "kind": "LINE",
+    "coefficients": [
+     "3",
+     "-3/2"
+    ],
+    "domain": [
+     "0",
+     "2"
+    ],
+    "style": "DASHED",
+    "hideLabel": true
+   }
+  ],
+  "regions": [
+   {
+    "id": "R1",
+    "between": [
+     "f",
+     "axis"
+    ],
+    "from": "0",
+    "to": "2"
+   },
+   {
+    "id": "R2",
+    "between": [
+     "f",
+     "g"
+    ],
+    "from": "2",
+    "to": "4"
+   },
+   {
+    "id": "R3",
+    "between": [
+     "l",
+     "g"
+    ],
+    "from": "4",
+    "to": "6"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "4",
+     "y": "5",
+     "coordinates": true,
+     "labelDirection": "N"
+    },
+    {
+     "id": "B",
+     "x": "6",
+     "y": "2",
+     "coordinates": true,
+     "labelDirection": "E"
+    },
+    {
+     "id": "P",
+     "x": "0",
+     "y": "3",
+     "coordinates": true,
+     "labelDirection": "W"
+    },
+    {
+     "id": "Q",
+     "x": "2",
+     "y": "0",
+     "coordinates": true,
+     "labelDirection": "SE"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B",
+  "P": "P",
+  "Q": "Q"
+ },
+ "caption": "곡선 PA를 x축 방향으로 2, y축 방향으로 -3만큼 평행이동하면 곡선 QB와 겹치므로 두 곡선 사이의 부분은 평행사변형 PABQ와 넓이가 같다. 가로 6, 세로 5인 직사각형에서 네 직각삼각형을 빼면 PABQ=30-8-6=16이다. 영역은 삼각형 POQ(넓이 3)를 포함하므로 구하는 넓이는 16+3=19이다. 따라서 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "평행이동으로 곡선 PA와 QB가 겹친다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "점선 PQ와 선분 AB로 이루어진 평행사변형 PABQ"
+ ]
+}

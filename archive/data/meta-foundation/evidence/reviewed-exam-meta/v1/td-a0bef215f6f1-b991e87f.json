@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-a0bef215f6f1-b991e87f",
+  "requestSha256": "cf9f1ac7ccb727b0e01d6b61dcdfbe6e002c948e6c067fd46362bfcea7064fef",
+  "examUid": "비상_대수_지수로그_대단원_고2_유형심화",
+  "sourceArchiveFile": "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+  "sourceBlobSha1": "d5580bd05c16b1c3bf0fe968b4df1453b912e56b",
+  "sourceRawSha256": "01421e450dda52f1735b7390fca70c16245feb84df59183d80eb6cd0fe3baa3c",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-t-20261116",
+      "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a0bef215f6f1-b991e87f.type-ledger.json",
+        "sha256": "82ca7c1641bd18e5804fe6d1f0274d2c9d144753845bc9346822f23d058a5b95"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_3bed465a5e694a30311b902b8ea7ca074cb59299c28df0e31419c3d412e58ce0",
+      "sourceArchiveFile": "types/high/h2/비상_대수_지수로그_대단원_고2_유형심화.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "templateKey": "TPL_AMGM_RECIPROCAL_MINIMUM",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-a0bef215f6f1-b991e87f",
+        "judge": "dots",
+        "rationale": "t=2^x>0에서 t/3+t/3+t/3+8/t³에 네 항 AM-GM을 적용하여 t⁴=24의 등호조건을 얻는다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request",
+          "rowCourse": "대수",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "4175587bba23d874460dac7aea449cffe4f4d98160f890639e676c9555cf7635",
+        "judgedContentFingerprint": "7830defe91b7aa3a2e9504c4b6b1dd8b5117e31aec3e6b127c0055ff711636d0",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "4a27e12501be6504d9a9acfbc62bff01cf72d78de9374f810192c5207ca8c129",
+        "resultSource": {
+          "branch": "data/type-judgment-t-20261116",
+          "commit": "e73ea4c1ac790d04b0a8faa1c7e85673e0e1362d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-t/types-고등.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-a0bef215f6f1-b991e87f.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 16
+}

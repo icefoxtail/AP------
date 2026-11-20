@@ -1,0 +1,87 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "6",
+     "-1"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "functionName": "f",
+  "domain": [
+   -0.5,
+   6.5
+  ],
+  "viewport": [
+   -1,
+   7.5,
+   -1,
+   10.5
+  ],
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": 3,
+    "y": 9
+   },
+   {
+    "id": "R0",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "id": "R6",
+    "x": 6,
+    "y": 0
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "3",
+     "intercept": "2",
+     "label": "y=3x+2"
+    }
+   ],
+   "points": [
+    {
+     "id": "A",
+     "curveX": "1",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "curveX": "2",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisScale": {
+   "x": "1",
+   "y": "1/2"
+  }
+ },
+ "pointNames": {
+  "V": "V",
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "f(x)=-x²+6x=-(x-3)²+9이므로 꼭짓점은 (3,9)이고, 역함수가 존재하려면 a≤3이어야 한다. 치역 {y|y≤f(a)}가 공역 {y|y≤3a+2}와 같아야 하므로 곡선 y=f(x)와 직선 y=3x+2가 만나는 점의 x좌표가 a이다. 교점은 x=1, x=2이므로 a의 합은 3이다. 따라서 답은 ⑤이다.",
+ "accessibilityDescription": "위로 볼록한 포물선과 오른쪽 위로 올라가는 직선이 두 점 A, B에서 만나고, 포물선의 꼭짓점 V가 표시되어 있다.",
+ "newVisualInformation": [
+  "포물선의 꼭짓점 (3,9)와 직선 y=3x+2와의 교점 (1,5), (2,8)"
+ ]
+}

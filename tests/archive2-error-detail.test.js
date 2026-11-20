@@ -292,3 +292,72 @@ test('서버가 거절한 건: 화면 문구는 그대로고, 서버 원문·응
   assert.match(body, /상세 보기/);
   assert.doesNotMatch(body, /fingerprint|서버 응답 상태/, '서버 원문은 열기 전에는 평소 화면 HTML에 섞이지 않는다');
 });
+
+// 파일을 개명한 시험지의 문항은 개명 전 UID를 그대로 둔다(카탈로그 만들기가 VERIFIED로 싣고 Worker도 통과시킨다). 화면 복원도 같은 판정을 따른다.
+// 카탈로그의 identityByUid가 그 UID를 VERIFIED로 같은 파일·같은 순번에 묶은 경우만 허용하고, 나머지 검증(파일 SHA·지문·순번)은 그대로다.
+const RENAMED_FROM = 'original/middle/m3/2mid/24_금당중_2학기_중간_중3_구형이름.js';
+async function renamedRecord(identityOverrides, recordOverrides = {}) {
+  const q1 = { id: 1, content: '첫 문항', answer: '1' };
+  const record = await recordFor(FILE, 1, q1, 1, {
+    questionUid: 'qid_v1_' + await Source.digest(RENAMED_FROM + '#1'), ...recordOverrides,
+  });
+  const identity = identityOverrides === null ? undefined
+    : { questionUid: record.questionUid, sourceArchiveFile: FILE, sourceOrdinal: 1, status: 'VERIFIED', ...identityOverrides };
+  const catalog = { sourceHashes: [], canonicalAuthority: { identityByUid: identity ? { [record.questionUid]: identity } : {} } };
+  return { record, catalog, files: { [FILE]: bankSource([q1]) } };
+}
+const restoreWith = (rename) => Source.restore([rename.record], rename.catalog, { fetcher: fetcherFor(rename.files), baseUrl: BASE });
+
+test('Source.restore: 개명된 시험지의 문항은 카탈로그가 VERIFIED로 묶은 UID로 복원된다', async () => {
+  const rename = await renamedRecord({});
+  const [question] = await restoreWith(rename);
+  assert.equal(question.questionUid, rename.record.questionUid);
+  assert.equal(await Source.uidMatchesSource(rename.record, rename.catalog), true);
+});
+
+test('Source.restore: 개명 허용은 카탈로그가 같은 파일·순번·UID로 VERIFIED한 경우뿐이다(그 밖은 QUESTION_UID_MISMATCH)', async () => {
+  const cases = {
+    '카탈로그에 신원 없음': await renamedRecord(null),
+    'VERIFIED 아님': await renamedRecord({ status: 'UNRESOLVED' }),
+    '다른 파일': await renamedRecord({ sourceArchiveFile: FILE_SYNTAX }),
+    '다른 순번': await renamedRecord({ sourceOrdinal: 2 }),
+    '신원의 UID가 다름': await renamedRecord({ questionUid: 'qid_v1_' + 'a'.repeat(64) }),
+  };
+  for (const [label, rename] of Object.entries(cases)) {
+    const failure = await restoreWith(rename).then(() => null, (error) => error);
+    assert.equal(failure?.apDetail?.code, 'QUESTION_UID_MISMATCH', label);
+  }
+  // 카탈로그에 canonicalAuthority 자체가 없어도 개명 문항은 막힌다(기존 음성 시험과 같은 호출 모양).
+  const bare = await renamedRecord({});
+  assert.equal((await restoreError([bare.record], bare.files)).apDetail.code, 'QUESTION_UID_MISMATCH');
+  // 지문이 바뀐 개명 문항은 UID 판정과 별개로 여전히 막힌다.
+  const changed = await renamedRecord({}, { sourceFingerprint: 'f'.repeat(64) });
+  assert.equal((await restoreWith(changed).then(() => null, (error) => error))?.apDetail?.code, 'QUESTION_CONTENT_CHANGED');
+});
+
+test('실제 자료: 개명 이력에 있는 시험지의 문항은 전부 화면 복원 판정을 통과하고 원본 파일에서 복원된다', async () => {
+  const fs = require('node:fs');
+  const path = require('node:path');
+  const { catalog } = require('./helpers/archive2-scope-harness.cjs');
+  const archive = path.resolve(__dirname, '../archive');
+  const identity = JSON.parse(fs.readFileSync(path.join(archive, 'data/question_identity_map.json'), 'utf8'));
+  const renamedFiles = new Set((identity.verifiedPathRenameHistory || []).map((row) => row.to));
+  const records = catalog.records.filter((record) => renamedFiles.has(record.sourceFile));
+  assert.ok(renamedFiles.size > 0 && records.length > 0, '개명 이력과 그 시험지의 문항이 있다');
+  for (const record of records) assert.equal(await Source.uidMatchesSource(record, catalog), true, record.questionUid);
+  const restored = await Source.restore(records, catalog, {
+    baseUrl: 'https://archive.test/archive/workspace.html',
+    fetcher: async (url) => {
+      const file = path.join(archive, decodeURIComponent(new URL(url).pathname.replace(/^\/archive\//, '')));
+      return { ok: true, status: 200, text: async () => fs.readFileSync(file, 'utf8') };
+    },
+  });
+  assert.deepEqual(restored.map((question) => question.questionUid), records.map((record) => record.questionUid));
+  // 개명 이력 밖에서 UID가 공식과 다른 문항은 없다(다른 이유로 어긋난 문항이 조용히 통과하지 않게).
+  const noIdentity = { ...catalog, canonicalAuthority: { identityByUid: {} } };
+  const stray = [];
+  for (const record of catalog.records) {
+    if (!renamedFiles.has(record.sourceFile) && !(await Source.uidMatchesSource(record, noIdentity))) stray.push(record.questionUid);
+  }
+  assert.deepEqual(stray, []);
+});

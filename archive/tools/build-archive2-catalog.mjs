@@ -8,6 +8,7 @@ import { materializePackageShards } from "./materialize-archive-package-shards.m
 import problemBankMeta from "../problem-bank-meta.js";
 import examSourceReader from "../exam-source-reader.js";
 import { classifyMetaBinding, loadRebinds } from "./meta-foundation/text-binding-lib.mjs";
+import { isMetadataConflict } from "./metadata-conflict-field.mjs";
 import { SOURCE_QUALITY_HOLD_FIELDS, loadSourceQualityHolds, applySourceQualityHold, assertSourceQualityHoldCoverage } from "./source-quality-holds.mjs";
 import { applyAssignment, loadToc as loadMiddleToc, readAssignments as readMiddleParentAssignments } from "./middle-parent-assignments-lib.mjs";
 import {
@@ -105,7 +106,7 @@ const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.
 // is bound to the question's CONTENT fingerprint (stem + choices + image, i.e. what the
 // classification describes) and (c) PT/TPL are ACTIVE labelled keys of the compiled taxonomy
 // registry with a consistent PT->TPL parent. Each facet keeps its own status code: A = approved
-// field status, P = recorded but not approved (검토 대기). Explicit field HOLDs are not exposed.
+// field status, P = recorded but not approved (검토 대기), H = the field carries a hold tag (shown all the same: a value that exists is visible).
 const hintActiveProblemTypes = new Map(foundationTaxonomy.problemTypes
   .filter((row) => row.status === "ACTIVE").map((row) => [row.problemTypeKey, row]));
 const hintActiveTemplates = new Map(foundationTaxonomy.templates
@@ -116,12 +117,12 @@ const hintFieldStatus = (value) => /^approved(_|$)/i.test(String(value || ""))
 // 해설·정답·그림이 바뀐 것은 이유가 되지 않는다. git 이력은 보지 않는다(동결된 재결속 기록 파일만 읽는다).
 const textRebinds = loadRebinds(root);
 const hintStats = { joined: 0, row: 0, type: 0, unbound: 0,
-  pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0,
-  holdSkipped: 0 };
+  pt: 0, tpl: 0, l3: 0, curriculum: 0, ptUnregistered: 0, tplUnregistered: 0, tplParentMismatch: 0 };
 function buildMetaHint(meta, binding) {
   if (!meta || !binding) return {};
   const status = meta.fieldStatus || {};
-  const hold = meta.foundationTaxonomyStatus === "HOLD";
+  // 값이 있으면 보인다(2026-11-20 사용자 결정): 행 전체의 HOLD(foundationTaxonomyStatus)나 유형 칸의 hold 꼬리표는 PT/TPL을 숨기는 이유가 아니다.
+  // hold 사유(L4_HOLD·난이도 보류·자료 문제)는 그 칸들의 일이고, 판정된 유형은 발문·보기가 같으면 그대로 보인다. 숨김은 발문·보기 결속 실패뿐(binding)이다.
   const l3Value = String(meta.L3 || meta.nativeL3 || "").trim();
   const l3State = hintFieldStatus(status.concept);
   const l3Held = l3State === "H" || ["HOLD", "ROUTE_OUT"].includes(meta.l3Disposition);
@@ -131,13 +132,11 @@ function buildMetaHint(meta, binding) {
   let pt = "", tpl = "";
   if (ptKey) {
     if (!hintActiveProblemTypes.has(ptKey)) hintStats.ptUnregistered++;
-    else if (hold || ptState === "H") hintStats.holdSkipped++;
     else pt = ptKey;
   }
   if (tplKey) {
     const row = hintActiveTemplates.get(tplKey);
     if (!row) hintStats.tplUnregistered++;
-    else if (hold || tplState === "H") hintStats.holdSkipped++;
     else if (!pt || row.parentProblemTypeKey !== pt) hintStats.tplParentMismatch++;
     else tpl = tplKey;
   }
@@ -431,14 +430,8 @@ for (const exam of exams) {
       if (!foundationScoped && !reviewedLegacySimilar && foundationProjectionFields.has(field)) continue;
       const sourceValue = question[field],
         value = validJoin ? meta[field] : undefined;
-      if (
-        sourceValue !== undefined &&
-        sourceValue !== null &&
-        String(sourceValue).trim() !== "" &&
-        value !== undefined &&
-        JSON.stringify(sourceValue) !== JSON.stringify(value) &&
-        !metaV2Sidecar
-      )
+      // 유형(PT/TPL)은 시험지 JS에 적힌 값과 달라도 충돌이 아니다(metadata-conflict-field.mjs). 다른 필드의 충돌 판정은 그대로다.
+      if (isMetadataConflict(field, sourceValue, value, { metaV2Sidecar }))
         metadataConflicts.push(field);
       if (value !== undefined) semantic[field] = value;
     }

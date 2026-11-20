@@ -76,7 +76,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 긴 타원과 두 초점 F, F′, 위쪽 꼭짓점 B가 있다. 원점 O, F, B를 이은 직각삼각형이 색칠되어 있고 점선 FF′와 세 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "x²/16+y²/7=1에서 a²=16, b²=7이고 c²=a²−b²=9이므로 c=3이다. 직각삼각형 OFB에서 OF=3, OB=√7, BF=a=4이다. 두 초점 F(3, 0), F′(−3, 0) 사이의 거리는 2c=6이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -277,7 +281,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 갈라진 쌍곡선과 위쪽 가지의 꼭짓점 V, 초점 F가 y축 위에 있다. 원점에서 V, F까지의 길이가 표시되어 있다.",
+    "solutionImageCaption": "x²/a²−y²/b²=−1은 y²/b²−x²/a²=1이므로 주축이 y축이고 주축의 길이가 4에서 b=2이다. 초점 F(0, 5)에서 c=5이고 꼭짓점은 V(0, 2)이다. 쌍곡선에서 c²=a²+b²이므로 25=a²+4에서 a²=21이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 8,
@@ -358,7 +367,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 변이 2인 정사각형 ABCD와 대각선 AC(점선)가 있다. 점 A에서 오른쪽으로 길게 뻗은 선분 AE가 있고 길이 2√10이 표시되어 있다.",
+    "solutionImageCaption": "AB=a, AD=b, AC=c=a+b이므로 a−b+2c=3a+b이다. 점 E는 A에서 a의 3배와 b를 더한 끝점이고 AE가 이 벡터이다. a⊥b이므로 |3a+b|²=9·4+4=40이고 |a−b+2c|=2√10이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -436,7 +450,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 옮겨진 좌우로 갈라진 쌍곡선과 중심 C, 두 초점 F, F′, 오른쪽 꼭짓점 V가 있다. 두 초점 사이의 점선 길이가 표시되어 있다.",
+    "solutionImageCaption": "3x²−12x−4y²−8y−4=0을 정리하면 (x−2)²/4−(y+1)²/3=1이다. 중심은 C(2, −1)이고 a²=4, b²=3이므로 c²=a²+b²=7, c=√7이다. 두 초점 F, F′는 중심에서 좌우로 √7씩 떨어져 있고 그 사이의 거리는 2c=2√7이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 12,
@@ -475,7 +494,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽으로 열린 포물선과 곡선 밖의 점 P가 있다. P에서 곡선에 그은 두 접선이 아래쪽 접점 S와 위쪽 접점 T에서 닿고, 실선 접선이 x축과 만나는 점 N의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y²=−16x에서 p=−4이고 접선은 ty=x−4t²이다. 점 P(3, −4)를 지나므로 4t²−4t−3=0에서 t=3/2 또는 −1/2이다. 기울기 1/t가 양수인 t=3/2의 접선(실선)은 접점 S(−9, −12)에서 닿고 기울기 2/3이다. 다른 접선(점선)은 접점 T(−1, 4)에서 닿고 기울기 −2이다. 양의 기울기 접선의 x절편은 4t²=9이므로 N(9, 0)이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -564,7 +588,12 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래 변 BC가 위 변 AD보다 긴 이등변 사다리꼴 ABCD가 있다. BC의 중점 P에서 A로 가는 점선 AP와 대각선 BD(점선)가 있고 길이가 표시되어 있다.",
+    "solutionImageCaption": "∠CBA=∠DCB이므로 사다리꼴은 이등변이고 밑변의 길이 차 8−4=4에서 한쪽 수평 차는 2이다. P를 BC의 중점이라 하면 AB+AC=2AP이므로 AP=2√5이다. 높이 h에서 2²+h²=(2√5)²이므로 h=4이다. 그림은 B(0, 0), C(8, 0), A(2, 4), D(6, 4)로 BD의 수평 성분 6, 높이 4이므로 BD=√(36+16)=2√13이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -709,7 +738,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로로 긴 타원과 두 초점 F, F′가 있다. 원점을 지나는 지름의 양 끝점 P, Q와 F′를 잇는 삼각형이 색칠되어 있고 PQ의 길이가 표시되어 있다.",
+    "solutionImageCaption": "타원에서 PF+PF′=2a=8이고 PQ가 중심 O를 지나므로 Q는 P와 O에 대하여 대칭이어서 F′Q=PF이다. 따라서 PF′+F′Q=8이고 삼각형 PF′Q의 둘레 13에서 PQ=13−8=5이다. O가 PQ의 중점이므로 OP=5/2이다. 따라서 답은 5/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -778,6 +811,11 @@ window.questionBank = [
     "templateKey": null,
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고2_기하와벡터_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 ABCD와 변 CD를 지름으로 하는 원이 있다. B에서 변 CD 위의 점 Q와 원 위의 점 P로 가는 점선이 있고 변의 길이 6과 8이 표시되어 있다.",
+    "solutionImageCaption": "B를 원점으로 C(6, 0), D(6, 8), A(0, 8)로 놓으면 Q(6, 8/5)이고 a=CD−BQ=(−6, 32/5)이므로 |a|=2√481/5이다. CD를 지름으로 하는 원의 중심은 O(6, 4), 반지름은 4이고 BO=2√13이므로 |b|=|BP|의 최댓값은 BO+4=2√13+4이다(그림의 P는 원 위의 한 예). a+b=QD+CP이고 CP는 중심 (0, 4), 반지름 4인 원 위에 있으므로 |a+b|의 최댓값은 32/5+4+4=72/5이다. 따라서 답은 (1) 2√481/5, (2) 2√13+4, (3) 72/5이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   }
 ];

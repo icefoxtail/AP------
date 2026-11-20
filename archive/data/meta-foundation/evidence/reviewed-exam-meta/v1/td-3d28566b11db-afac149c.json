@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-3d28566b11db-afac149c",
+  "requestSha256": "1a51fc59a4dd3663fb8727d071988bcd4ae6cc0fd7f404ce76e617c8ee7f98ea",
+  "examUid": "25_팔마고_1학기_기말_고1_유사1",
+  "sourceArchiveFile": "similar/high/h1/1final/25_팔마고_1학기_기말_고1_유사1.js",
+  "sourceBlobSha1": "9f531f2192df3824606e33daf63114c6ecf8f27e",
+  "sourceRawSha256": "1e804c18787af5411a82587e10b5b5cd96018cbe3862cb99fb321999f6b47348",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3d28566b11db-afac149c.type-ledger.json",
+        "sha256": "49b99a31cd0f45bc5111fbaf0d19d48cb8e01bc819262765d4ff1fd1e03f3d28"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cad74121fb31872063f7b66afbd61f2516d7f17f61da066d2ac19cecbfe1d59c",
+      "sourceArchiveFile": "similar/high/h1/1final/25_팔마고_1학기_기말_고1_유사1.js",
+      "sourceOrdinal": 10,
+      "problemTypeKey": "PT_H1_INEQUALITY_APPLICATION",
+      "templateKey": "TPL_H1_INEQUALITY_APPLICATION_GEOMETRY",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-3d28566b11db-afac149c",
+        "judge": "dots",
+        "rationale": "최장변이10또는x인경우예각조건을적용하면6<x<√164,정수7~12의6개.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request",
+          "rowCourse": "공통수학2",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "cafe911b70260b951fec89ae76744ee194391726268ed2be28c93d0a37de9481",
+        "judgedContentFingerprint": "44fc6639ba670303af74755ddea70c5feeee5569f14fe72adefb006b4c4b7f21",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "0240a32956a9212babbb3407330d5799a198eb18a4c53e47a686e953006743aa",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/similar-h1-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3d28566b11db-afac149c.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

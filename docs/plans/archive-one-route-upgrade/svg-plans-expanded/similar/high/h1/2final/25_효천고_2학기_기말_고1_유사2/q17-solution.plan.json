@@ -1,0 +1,202 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   7,
+   -1,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f1",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "4/3"
+    ],
+    "domain": [
+     "0",
+     "3"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "f2",
+    "kind": "LINE",
+    "coefficients": [
+     "8",
+     "-4/3"
+    ],
+    "domain": [
+     "3",
+     "6"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "h1",
+    "kind": "LINE",
+    "coefficients": [
+     "3/2",
+     "0"
+    ],
+    "domain": [
+     "-1",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "GREEN",
+    "hideLabel": true
+   },
+   {
+    "id": "h2",
+    "kind": "LINE",
+    "coefficients": [
+     "3",
+     "0"
+    ],
+    "domain": [
+     "-1",
+     "7"
+    ],
+    "style": "DASHED",
+    "color": "WARM",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P1",
+     "x": "9/8",
+     "y": "3/2",
+     "unnamed": true
+    },
+    {
+     "id": "P2",
+     "x": "9/4",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "P3",
+     "x": "15/4",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "P4",
+     "x": "39/8",
+     "y": "3/2",
+     "unnamed": true
+    },
+    {
+     "id": "T",
+     "x": "3",
+     "y": "4",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "H1",
+     "x": "13/2",
+     "y": "3/2",
+     "unnamed": true
+    },
+    {
+     "id": "H2",
+     "x": "13/2",
+     "y": "3",
+     "unnamed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "g1",
+     "from": "P1",
+     "axis": "x"
+    },
+    {
+     "id": "g2",
+     "from": "P2",
+     "axis": "x"
+    },
+    {
+     "id": "g3",
+     "from": "P3",
+     "axis": "x"
+    },
+    {
+     "id": "g4",
+     "from": "P4",
+     "axis": "x"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "ch1",
+     "point": "H1",
+     "text": "y=3/2",
+     "direction": "N",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "ch2",
+     "point": "H2",
+     "text": "y=3",
+     "direction": "N",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c1",
+     "point": "P1",
+     "text": "9/8",
+     "direction": "NW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c2",
+     "point": "P2",
+     "text": "9/4",
+     "direction": "NW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c3",
+     "point": "P3",
+     "text": "15/4",
+     "direction": "NE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c4",
+     "point": "P4",
+     "text": "39/8",
+     "direction": "NE",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "f(t)=8/3의 해는 t=2, 4이므로 f(f(a))는 2 또는 4이고, 이로부터 f(a)는 3/2, 3, 9/2 중 하나이다. 최댓값이 4이므로 9/2는 불가능하다. 그림의 수평선 y=3/2(초록색 점선), y=3(주황색 점선)이 y=f(x)와 각각 두 점에서 만나고, 세로 점선이 x축에 닿는 네 곳(9/8, 9/4, 15/4, 39/8)이 a이다. 따라서 a는 4개이고 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(f(f(a)))=8/3, f(a)=3/2 또는 3",
+   "mappedTo": "graphPlan.overlays"
+  }
+ ],
+ "accessibilityDescription": "산 모양의 꺾은선 y=f(x)와 수평선 y=3/2(초록색 점선), y=3(주황색 점선)이 그려져 있고, 수평선과 만나는 네 점에서 x축으로 점선이 내려와 있다.",
+ "newVisualInformation": [
+  "수평선 y=3/2, y=3과의 네 교점과 그때의 a 값",
+  "최댓값 4인 꼭짓점 (3,4)"
+ ]
+}

@@ -533,9 +533,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "회전 중복을 없애기 위해 먼저 네 여학생을 원형으로 앉힌다. 방법은 $(4-1)!=3!$가지이다.\n\n여학생 사이에는 남학생이 들어갈 자리가 4곳 생긴다. 남학생끼리 이웃하지 않으려면 이 중 서로 다른 3곳을 골라야 하므로 $\\binom{4}{3}$가지이다. 고른 자리에 남학생을 배열하는 방법은 $3!$가지이다.\n\n따라서 $3!\\times\\binom{4}{3}\\times3!=6\\times4\\times6=144$이고 정답은 ⑤이다.",
-    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q13-solution.svg",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고2_확률과통계/q13-solution-v2.svg",
     "solutionImageSize": "full",
-    "solutionImageAlt": "여학생 4명 사이 네 틈 중 서로 다른 3곳에 남학생을 한 명씩 배치한 예",
+    "solutionImageAlt": "해설 그림: 여덟 개의 점이 팔각형 꼭짓점으로 놓인 원탁 그림이며 여학생 자리 A, C, E, G와 그 사이 자리 B, D, F, H가 번갈아 있다.",
     "id": 13,
     "content": "남자 3명과 여자 4명으로 구성된 7인의 동아리 회원이 원 모양의 탁자에 둘러앉을 때, 남자끼리 이웃하지 않게 앉는 경우의 수는?(단, 회전하여 일치하는 것은 같은 것으로 봄.) [4.0점]",
     "category": "이웃하지 않는 원순열",
@@ -563,7 +563,8 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImageCaption": "원탁 둘레를 팔각형 꼭짓점으로 나타낸 그림이다. 점 A, C, E, G는 여학생 4명을 먼저 앉힌 자리이고 B, D, F, H는 여학생 사이의 네 자리이다. 여학생 4명의 원순열은 (4−1)!=3!=6가지이다. 남학생끼리 이웃하지 않으려면 네 자리 중 서로 다른 세 자리를 4C3=4가지로 고르고, 그 자리에 남학생 3명을 3!=6가지로 앉힌다. 따라서 6×4×6=144이고 답은 ⑤이다."
   },
   {
     "questionNumber": 14,

@@ -82,7 +82,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "④"
+    "answer": "④",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 위쪽으로 열린 포물선과 초점 F, 아래쪽의 가로 준선이 있다. 포물선 왼쪽 위의 점 A의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "초점 F(0, 2)와 준선 y=−2의 중점이 꼭짓점 (0, 0)이고 축이 y축이며 p=2이므로 포물선은 x²=8y이다. 점 A(−4, a)를 대입하면 16=8a에서 a=2이다. 그림은 이 포물선과 점 A(−4, 2)이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -339,7 +344,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "answer": "⑤"
+    "answer": "⑤",
+    "solutionImage": "assets/images/22_금당고_2학기_중간_고2_기하_기출/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌우로 갈라진 쌍곡선과 점 P가 있고, P에서 두 가지에 그은 두 접선이 오른쪽 가지의 접점 S와 왼쪽 가지의 접점 T에서 닿아 있다.",
+    "solutionImageCaption": "접점을 (u, v)라 하면 접선은 ux−vy=12이고 점 P(0, 3)을 지나므로 v=−4, u²=28에서 u=±2√7이다. 접점은 S(2√7, −4)와 T(−2√7, −4)이고 두 접선의 기울기는 u/v=∓√7/2이다. 따라서 보기 중 가능한 기울기는 −√7/2이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 9,

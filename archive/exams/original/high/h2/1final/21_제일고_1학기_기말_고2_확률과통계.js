@@ -323,7 +323,12 @@ window.questionBank = [
     "sourceQid": 9,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "가품으로 감별되는 경로는 진품을 가품으로 잘못 판정하는 0.7×0.03=0.021과 가품을 맞게 판정하는 0.3×0.95=0.285이고 파란색으로 표시했다. 합은 0.306이다. 이 중 실제 진품인 경로가 0.021이므로 확률은 0.021÷0.306=7/102이다. 따라서 a+b=102+7=109이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -395,7 +400,12 @@ window.questionBank = [
     "sourceQid": 11,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "남자를 m명이라 하면 풀이에서 m=40이므로 그림은 남자 40명, 여자 60명인 경우이다. 수강하는 경로는 남자 0.4×0.3=0.12와 여자 0.6×0.4=0.24이고 파란색으로 표시했다. 수강한 사람 중 남자일 확률은 0.12÷(0.12+0.24)=1/3으로 조건과 맞는다. 따라서 남자는 40명이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 12,
@@ -467,7 +477,11 @@ window.questionBank = [
     "sourceQid": 13,
     "sourceExamUid": "21_제일고_1학기_기말_고2_확률과통계",
     "provenance": "ORIGINAL_SOURCE_PLUS_CREATE_SOLUTION",
-    "metaProjectionStatus": "PROJECTION_REUSE"
+    "metaProjectionStatus": "PROJECTION_REUSE",
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고2_확률과통계/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "t=P(A∩B)로 두면 P(A|B)+P(B|A)=12t/5+2t=11/15에서 t=1/6이다. 그림은 A만 1/2−1/6=1/3, 겹침 1/6, B만 5/12−1/6=1/4, 바깥 1/4이다. 색칠한 합집합은 겹침을 한 번만 세어 1/3+1/6+1/4=3/4이고 P(A∪B)=1/2+5/12−1/6=3/4와 같다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

@@ -1118,7 +1118,11 @@ window.questionBank = [
     "imageStatus": "NOT_REQUIRED",
     "answerStatus": "CREATED",
     "solutionStatus": "CREATED",
-    "reviewStatus": "CREATE_REVIEWED"
+    "reviewStatus": "CREATE_REVIEWED",
+    "solutionImage": "assets/images/19_순천여고_1학기_중간_고2_수학I/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에서 원점 O와 제2사분면의 점 P를 잇는 동경이 있고 P에서 x축으로 내린 점선이 직각삼각형을 이룬다. 각 θ와 세 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "점 P(−6, 8)은 제2사분면에 있고 원점까지의 거리는 r=√(36+64)=10이다. 그림의 직각삼각형에서 sinθ=8/10=4/5, cosθ=−6/10=−3/5이다. 따라서 10(sinθ+cosθ)=10×(1/5)=2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

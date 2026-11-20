@@ -17,12 +17,17 @@ function includesAll(label, source, markers) {
   }
 }
 
+// 정답입력 초안 만들기는 공용 코드(assessment-pack-core.js)로 옮겨졌다(보관함과 빠른 평가가 같이 쓴다).
+const packCoreJs = fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-pack-core.js'), 'utf8');
 includesAll('assessment-mvp.html diagnostic start flow', mvpHtml, [
   'isDiagnosticAssessmentPack(pack)',
   'data-action="diagnostic-start"',
   '정답입력',
   'startDiagnosticAssessment(pack)',
-  'createDiagnosticAssessmentDraft(pack)',
+  'assessmentPackCore.diagnosticInputUrl(pack',
+]);
+includesAll('assessment-pack-core.js diagnostic draft', packCoreJs, [
+  'createDiagnosticDraft(pack)',
   'apms.diagnostic.assessment.result.',
   'apms.diagnostic.assessment.results',
   'apms.diagnostic.assessment.current',
@@ -36,10 +41,13 @@ includesAll('assessment-mvp.html diagnostic start flow', mvpHtml, [
 
 assert(!mvpHtml.includes('openDiagnosticAssessmentOmr'), 'assessment-mvp.html should not call an OMR wrapper for diagnostic assessment');
 
+// 진단평가 판정은 공용 코드(assessment-pack-core.js)로 옮겨졌고, 이 화면은 그것을 부른다.
+const packCore = fs.readFileSync(path.join(root, 'archive', 'assessment', 'assessment-pack-core.js'), 'utf8');
 assert(
-  mvpHtml.includes('pack.category === \'진단평가\'') ||
-  mvpHtml.includes('pack.title || \'\').includes(\'진단평가\'') ||
-  mvpHtml.includes('pack.id || \'\').startsWith(\'DIAG_\''),
+  mvpHtml.includes('AssessmentPackCore.isDiagnosticPack(pack)') &&
+  (packCore.includes('pack.category === \'진단평가\'') ||
+  packCore.includes('pack.title || \'\').includes(\'진단평가\'') ||
+  packCore.includes('pack.id || \'\').startsWith(\'DIAG_\'')),
   'assessment-mvp.html should identify diagnostic packs from existing generated pack metadata'
 );
 

@@ -87,7 +87,7 @@ const cloneRegistry = r => ({ ...r, pt: new Map(r.pt), tpl: new Map(r.tpl), bind
 
 // ---------------------------------------------------------------- planning
 // ctx: the converter's context ({ records, registry, aliases, root }); resultRows: the parsed result lines (with _source);
-// env: { curriculumGuess(row), pathGrade(file) } from the converter. opts: { master, groups, bundlesOnly }.
+// env: { curriculumGuess(row), pathGrade(file) } from the converter. opts: { master, groups, bundlesOnly, ownerPackByBundle }.
 // Returns { ctx (copy with the new keys visible in its registry), rows (converted lines), finalize(items), stats }.
 export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
   const registry = cloneRegistry(ctx.registry);
@@ -224,8 +224,10 @@ export function prepareNewKeys({ ctx, tables, resultRows, env, opts = {} }) {
       const withSub = top([...map].filter(([, x]) => x.pair.unit === e.pair.unit && x.pair.sub).map(([kk, x]) => [kk, x.n]), 1)[0];
       if (withSub) { map.get(withSub[0]).n += e.n; map.delete(k); }
     }
-    let owner = "";
-    for (const [unit] of top(unitCount, unitCount.size)) { owner = packOfUnit(unit); if (owner) break; }
+    // ownerPackByBundle (--owner-pack BUNDLE=PACK): an existing pack named by the caller for a bundle whose course no pack has bindings on yet (e.g. 미적분);
+    // the pack then only gets the new course/curriculum values appended (the converter's add-only pack scope addition).
+    let owner = ctx.registry.packs.has(opts.ownerPackByBundle?.get(bundle.bundle)) ? opts.ownerPackByBundle.get(bundle.bundle) : "";
+    if (!owner) for (const [unit] of top(unitCount, unitCount.size)) { owner = packOfUnit(unit); if (owner) break; }
     if (!owner) owner = packOfCourse([...new Set(list.map(c => c.group))].sort()[0]);
     const lost = reason => { for (const c of list) { dropped.add(c.row.uid); } created.pt.set(key, { bundle: bundle.bundle, lost: reason }); };
     if (!owner) { lost("NEW_KEY_OWNER_PACK_UNRESOLVED"); continue; }

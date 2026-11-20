@@ -1,0 +1,88 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -5,
+   80,
+   0,
+   85
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "2400",
+     "60"
+    ],
+    "denominator": [
+     "30",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "80"
+    ],
+    "color": "BLUE",
+    "emphasis": [
+     {
+      "from": "10",
+      "to": "70",
+      "color": "WARM",
+      "fromState": "CLOSED",
+      "toState": "CLOSED"
+     }
+    ],
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "10",
+     "y": "75",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "70",
+     "y": "66",
+     "coordinates": true
+    },
+    {
+     "id": "F0",
+     "x": "30",
+     "y": "70",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=(60x+2400)/(x+30)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "y=60+600/(x+30)은 x>0에서 감소하고 점근선은 y=60이다. 주황으로 강조한 10≤x≤70에서 최댓값은 x=10일 때 A(10,75)이고 최솟값은 x=70일 때 B(70,66)이다. 따라서 (1) y=(60x+2400)/(x+30), (2) 최댓값 75, 최솟값 66이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "정의역 10≤x≤70에서 감소하는 곡선의 양 끝점 A(10,75), B(70,66)을 보인다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "정의역 10≤x≤70을 강조하고 양 끝점 A(10,75), B(70,66)으로 최댓값과 최솟값을 읽게 한다."
+ ],
+ "accessibilityDescription": "점근선 y=60을 향해 내려가는 유리함수 곡선에서 정의역 구간이 강조되어 있고 그 양 끝점 A와 B가 표시되어 있다."
+}

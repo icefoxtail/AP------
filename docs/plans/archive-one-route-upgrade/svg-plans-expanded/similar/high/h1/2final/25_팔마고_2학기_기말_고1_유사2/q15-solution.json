@@ -1,0 +1,108 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-10",
+   "4"
+  ],
+  "denominator": [
+   "-4",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   10
+  ],
+  "viewport": [
+   -2,
+   10,
+   -3,
+   11
+  ],
+  "equalUnits": true,
+  "asymptoteLabelAt": "END",
+  "hideLabels": [
+   "formula"
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "l1",
+     "slope": "1",
+     "intercept": "0",
+     "label": "y=x",
+     "style": "DASHED"
+    }
+   ],
+   "points": [
+    {
+     "id": "C",
+     "x": "4",
+     "y": "4",
+     "coordinates": true,
+     "labelDirection": "NW"
+    },
+    {
+     "id": "A",
+     "curveX": "2",
+     "unnamed": true
+    },
+    {
+     "id": "B",
+     "curveX": "6",
+     "unnamed": true
+    },
+    {
+     "id": "F0",
+     "curveX": "8",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cA",
+     "point": "A",
+     "text": "(2,1)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cB",
+     "point": "B",
+     "text": "(6,7)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=(4x-10)/(x-4)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "C": "C"
+ },
+ "caption": "(f∘f)(x)=x이면 f⁻¹=f이므로 점근선의 교점 (4,a)가 직선 y=x 위에 있어 a=4이다. 점 (2,1)을 지나므로 b=-10이고 f(x)=(4x-10)/(x-4)이다. f⁻¹(6)=f(6)=14/2=7이다. 따라서 답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=(4x-10)/(x-4)의 그래프",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "점근선의 교점 C(4,4), 점 (2,1), 점 (6,7)과 직선 y=x"
+ ]
+}

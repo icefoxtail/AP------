@@ -1,0 +1,123 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "81/35",
+     "-611/420",
+     "127/280",
+     "-23/840"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "2",
+    "9"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   2,
+   9
+  ],
+  "viewport": [
+   -1,
+   12,
+   -1,
+   12
+  ],
+  "axisTickValues": {
+   "x": [
+    "2",
+    "4",
+    "6",
+    "9"
+   ],
+   "y": [
+    "1",
+    "2",
+    "4",
+    "6"
+   ]
+  },
+  "requiredPoints": [],
+  "overlays": {
+   "lines": [
+    {
+     "id": "d",
+     "slope": "1",
+     "intercept": "0",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "P1",
+     "curveX": "2",
+     "unnamed": true
+    },
+    {
+     "id": "S",
+     "curveX": "4",
+     "unnamed": true
+    },
+    {
+     "id": "P",
+     "curveX": "6",
+     "unnamed": true
+    },
+    {
+     "id": "P4",
+     "curveX": "9",
+     "unnamed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "g1",
+     "from": "P1",
+     "axis": "BOTH"
+    },
+    {
+     "id": "g2",
+     "from": "S",
+     "axis": "BOTH"
+    },
+    {
+     "id": "g3",
+     "from": "P",
+     "axis": "BOTH"
+    },
+    {
+     "id": "g4",
+     "from": "P4",
+     "axis": "BOTH"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "P4",
+     "text": "y=f(x)",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  }
+ },
+ "caption": "곡선 y=f(x)가 점선으로 표시한 네 점 (2,1), (4,2), (6,4), (9,6)을 지나고, 직선 y=x와 함께 그려져 있다.",
+ "sourceConditions": [
+  "곡선 y=f(x)는 (2,1), (4,2), (6,4), (9,6)을 지나고 직선 y=x와 함께 제시된다."
+ ],
+ "newVisualInformation": [
+  "곡선 위 네 점의 좌표를 점선과 눈금으로 읽을 수 있다."
+ ]
+}

@@ -31,19 +31,5 @@ function stripScoreLabels(content) {
 }
 
 // 그림 크기: 문항 필드 imageScale(단 폭 대비 %, 30~100)과 본문 <img data-scale>. 원본에 더 큰 값이 있으면 그 값을 둔다.
-function applyFigureScale(clone, scale) {
-  let touched = false;
-  if (clone.image) {
-    const prev = Number(clone.imageScale);
-    clone.imageScale = Number.isFinite(prev) && prev > scale ? prev : scale;
-    touched = true;
-  }
-  clone.content = String(clone.content).replace(/<img\b([^>]*)>/gi, (tag, attrs) => {
-    if (/\sdata-scale\s*=/.test(attrs)) return tag;
-    touched = true;
-    return `<img${attrs} data-scale="${scale}">`;
-  });
-  return touched;
-}
 
-module.exports = { stripScoreLabels, applyFigureScale, SCORE_GROUP };
+module.exports = { stripScoreLabels, SCORE_GROUP };

@@ -1,0 +1,79 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-4",
+   "3"
+  ],
+  "denominator": [
+   "-2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -3,
+   7
+  ],
+  "viewport": [
+   -3,
+   7,
+   -2,
+   8
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "equalUnits": true,
+  "hideLabels": [
+   "formula",
+   "asymptotes"
+  ],
+  "overlays": {
+   "lines": [
+    {
+     "id": "la",
+     "slope": "1",
+     "intercept": "1",
+     "label": "a",
+     "color": "BLUE",
+     "ownership": "NEAREST"
+    },
+    {
+     "id": "lb",
+     "slope": "-1",
+     "intercept": "5",
+     "label": "b",
+     "color": "GREEN",
+     "ownership": "NEAREST"
+    },
+    {
+     "id": "lc",
+     "slope": "-1",
+     "intercept": "3",
+     "color": "WARM",
+     "label": "c",
+     "ownership": "NEAREST"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "x": "2",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "y=(3x-4)/(x-2)=3+2/(x-2)이므로 점근선은 x=2, y=3이고 두 점근선의 교점 P(2, 3)이 대칭의 중심이다. 점 P를 지나고 기울기가 ±1인 직선 a: y=x+1(파랑)과 b: y=-x+5(초록)는 대칭축이다. 직선 c: y=-x+3(주황)은 점 P를 지나지 않아 대칭축이 아니므로 옳지 않은 것은 ⑤이고 답은 ⑤이다.",
+ "sourceConditions": [
+  "함수 y=(3x-4)/(x-2)의 그래프"
+ ],
+ "newVisualInformation": [
+  "점근선 x=2, y=3, 대칭의 중심 (2,3), 대칭축 y=x+1, y=-x+5와 대칭축이 아닌 y=-x+3"
+ ]
+}

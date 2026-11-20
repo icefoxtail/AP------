@@ -1,0 +1,97 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "4",
+     "2",
+     "-1"
+    ]
+   },
+   {
+    "coefficients": [
+     "3",
+     "2"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "1",
+    "y": "5"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   3
+  ],
+  "viewport": [
+   -3,
+   4,
+   -3,
+   10
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 1,
+    "y": 5
+   },
+   {
+    "id": "B",
+    "x": 0,
+    "y": 4
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "a",
+     "unnamed": true,
+     "curveX": "-1"
+    },
+    {
+     "id": "b",
+     "unnamed": true,
+     "curveX": "2"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "a",
+     "text": "y=-(x-1)^2+5",
+     "direction": "W",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c2",
+     "point": "b",
+     "text": "y=2x+3",
+     "direction": "SE",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "x≥1에서 f(x)=2x+3은 증가하고 치역이 y≥5이다. 역함수가 있으려면 x<1에서 f가 감소하며 치역이 y<5이어야 하므로 a<0, b=5이다. 예로 a=-1이면 f(x)=-(x-1)²+5이고 f(0)=4이다. a가 음의 정수이므로 a≤-1이고 f(0)=a+5≤4이다. 답은 ③이다.",
+ "sourceConditions": [
+  "f(x)=a(x-1)²+b (x<1), 2x+3 (x≥1), 예: a=-1, b=5"
+ ],
+ "newVisualInformation": [
+  "경계 (1,5)에서 두 조각이 이어지는 일대일대응(예: a=-1)과 f(0)=4"
+ ]
+}

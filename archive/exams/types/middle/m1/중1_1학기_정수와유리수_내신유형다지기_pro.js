@@ -3371,7 +3371,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "$-1<a<0$인 유리수 a에 대하여 다음 중 가장 큰 수와 두 번째로 작은 수를 차례대로 구하시오.\n\n$$-$a^{2}$,\\quad \\frac{1}{a},\\quad |a|,\\quad \\left(-\\frac{1}{a}\\right)^2$$",
+    "content": "$-1<a<0$인 유리수 a에 대하여 다음 중 가장 큰 수와 두 번째로 작은 수를 차례대로 구하시오.\n\n$$-a^{2},\\quad \\frac{1}{a},\\quad |a|,\\quad \\left(-\\frac{1}{a}\\right)^2$$",
     "choices": [],
     "answer": "(-1/a)², -a²",
     "answerStatus": "hand_solved_book_numbered",
@@ -3527,7 +3527,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 수직선 위에 4개의 유리수 $-\\frac{1}{5}$, x, $\\frac{1}{3}$, y를 나타내는 점 A, B, C, D를 차례대로 나타내면 4개의 점 사이의 간격이 일정하다. 이때 $y\\div x$의 값을 구하시오. $$A \\quad B \\quad C \\quad D$$\n$$\\frac{1}{3} \\quad x \\quad y \\quad -\\frac{1}{5}$$",
+    "content": "다음 그림과 같이 수직선 위에 4개의 유리수 $-\\frac{1}{5}$, x, $\\frac{1}{3}$, y를 나타내는 점 A, B, C, D를 차례대로 나타내면 4개의 점 사이의 간격이 일정하다. 이때 $y\\div x$의 값을 구하시오.",
     "choices": [],
     "answer": "9",
     "answerStatus": "hand_solved_book_numbered",
@@ -3623,7 +3623,7 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "다음 수직선에서 점 M은 두 점 A, B 사이를 1:1로 나누는 점이고, 점 N은 두 점 A, B 사이를 3:2로 나누는 점이다. 이때 두 점 M, N이 나타내는 수를 각각 a, b라 할 때, $a\\div b$의 값을 구하시오. $$A \\quad M \\quad B$$\n$$-\\frac{1}{2} \\quad N \\quad \\frac{5}{6}$$",
+    "content": "다음 수직선에서 점 M은 두 점 A, B 사이를 1:1로 나누는 점이고, 점 N은 두 점 A, B 사이를 3:2로 나누는 점이다. 이때 두 점 M, N이 나타내는 수를 각각 a, b라 할 때, $a\\div b$의 값을 구하시오.",
     "choices": [],
     "answer": "5/9",
     "answerStatus": "hand_solved_book_numbered",
@@ -3685,7 +3685,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 유리수 a, b에 대하여\n\n$$a \\star b = (a+b)\\div $a^{2}$ \\times b$$\n\n라 할 때, $\\left[2\\star\\left(-\\frac{2}{3}\\right)\\right]\\star\\frac{1}{3}$을 계산하시오.",
+    "content": "두 유리수 a, b에 대하여\n\n$$a \\star b = (a+b)\\div a^{2} \\times b$$\n\n라 할 때, $\\left[2\\star\\left(-\\frac{2}{3}\\right)\\right]\\star\\frac{1}{3}$을 계산하시오.",
     "choices": [],
     "answer": "3/4",
     "answerStatus": "hand_solved_book_numbered",

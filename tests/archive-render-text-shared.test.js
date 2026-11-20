@@ -225,3 +225,67 @@ test('render-text.js는 아카이브 배포 목록과 CI 범위에 올라 있다
   assert.ok(manifest.archiveRootFiles.includes('render-text.js'), 'archive-pages-release-manifest.json archiveRootFiles');
   assert.match(read('tools/ci/archive-ci-scope.mjs'), /'archive\/render-text\.js'/);
 });
+
+// ---- 본문 앞 문항 번호 제거 ("15. 15. 다음 …" 두 번 찍힘) ---------------------------------------
+// 원본 시험지 일부는 본문이 "15. 다음 …"처럼 번호로 시작하고 엔진이 q-num을 따로 붙인다.
+// 원본 파일은 그대로 두고 그리는 단계에서만 원래 번호(q.id)와 같은 앞 번호를 뗀다.
+
+test('앞 문항 번호: 원래 번호와 같은 "N." 또는 "N)" + 공백 + 본문일 때만 뗀다', () => {
+  const strip = T.stripLeadingQuestionNumber;
+  // original/middle/m3/1final/16_창포중_1학기_기말_중3_수학.js 문항 15 (본문이 <p>로 시작)
+  assert.equal(strip('<p>15. 다음 $9$개 자료의 중앙값을 $a$</p>', { id: 15 }), '<p>다음 $9$개 자료의 중앙값을 $a$</p>');
+  assert.equal(strip('15. 다음 중 옳은 것은?', { id: 15 }), '다음 중 옳은 것은?');
+  assert.equal(strip('5) 다음 중 옳은 것은?', { id: 5 }), '다음 중 옳은 것은?');
+  assert.equal(strip('  <br>16.\n이차함수', { id: '16' }), '  <br>이차함수');
+  // 영문 한두 글자가 붙은 id (original/middle/m1/1final/19_동산중_1학기_기말_중1_수학.js 의 "Q22")
+  assert.equal(strip('22. (서술형 1) (4점)<br>일차방정식', { id: 'Q22' }), '(서술형 1) (4점)<br>일차방정식');
+  // 번호가 다르면(서술형 번호가 1부터 다시 시작하는 original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js 문항 id 19의 "1.") 그대로 둔다.
+  assert.equal(strip('1. 집합 $X$에서', { id: 19 }), '1. 집합 $X$에서');
+  // 번호가 아닌 것: 소수, 점 뒤 공백 없음, 수식 안, 본문이 없음, 번호가 맨 앞이 아님
+  assert.equal(strip('15.5 이하의 수', { id: 15 }), '15.5 이하의 수');
+  assert.equal(strip('15.다음', { id: 15 }), '15.다음');
+  assert.equal(strip('$15.$ 다음', { id: 15 }), '$15.$ 다음');
+  assert.equal(strip('15. ', { id: 15 }), '15. ');
+  assert.equal(strip('다음 15. 번', { id: 15 }), '다음 15. 번');
+  assert.equal(strip('서술형 1. 다음', { id: 1 }), '서술형 1. 다음');
+  // id가 번호가 아니거나 없으면 건드리지 않는다.
+  assert.equal(strip('15. 다음', { id: 'abc-15x' }), '15. 다음');
+  assert.equal(strip('15. 다음', {}), '15. 다음');
+  assert.equal(strip('15. 다음', null), '15. 다음');
+  assert.equal(strip(undefined, { id: 15 }), undefined);
+  // 한 번만 뗀다(본문 첫 줄이 번호와 같은 숫자로 다시 시작해도 하나만).
+  assert.equal(strip('15. 15. 다음', { id: 15 }), '15. 다음');
+});
+
+test('앞 문항 번호: 실제 시험지 한 개에서 번호로 시작하는 문항은 번호만 떨어지고 나머지는 그대로다', () => {
+  const file = path.join(root, 'archive/exams/original/middle/m3/1final/16_창포중_1학기_기말_중3_수학.js');
+  const context = vm.createContext({});
+  context.window = context;
+  vm.runInContext(fs.readFileSync(file, 'utf8'), context);
+  let stripped = 0;
+  for (const q of context.examData.questions) {
+    const raw = String(q.content || q.question || '');
+    const out = T.stripLeadingQuestionNumber(raw, q);
+    const lead = /^((?:<p[^>]*>\s*)?)(\d{1,3})\.\s+/.exec(raw);
+    if (lead && Number(lead[2]) === Number(q.id)) {
+      stripped += 1;
+      assert.equal(out, lead[1] + raw.slice(lead[0].length), `id ${q.id}: 번호만 떨어져야 한다`);
+    } else {
+      assert.equal(out, raw, `id ${q.id}: 번호로 시작하지 않으면 그대로`);
+    }
+  }
+  assert.ok(stripped > 0, '이 시험지에는 번호로 시작하는 문항이 있어야 한다');
+});
+
+for (const file of ENGINES) {
+  test(`${file}: formatQuestionContent가 렌더 사본에서만 앞 번호를 뗀다`, () => {
+    const html = read(file);
+    const start = html.indexOf('function formatQuestionContent(html, q) {');
+    assert.ok(start >= 0, 'formatQuestionContent 선언');
+    const body = html.slice(start, html.indexOf('\n}\n', start));
+    assert.match(body, /html = APRenderText\.stripLeadingQuestionNumber\(html, q\);/);
+    assert.ok(body.indexOf('stripLeadingQuestionNumber') < body.indexOf('__apExamSubjectiveSpacing'), '발문 분리보다 먼저 뗀다');
+    // 저장·지문 계산 쪽으로 새지 않는다: HTML에서는 formatQuestionContent 안에서 한 번만 부른다.
+    assert.equal((html.match(/stripLeadingQuestionNumber/g) || []).length, 1, `${file}: 다른 곳에서 부르지 않는다`);
+  });
+}

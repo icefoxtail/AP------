@@ -70,7 +70,11 @@ window.examData = {
       ],
       "answer": "",
       "solution": "",
-      "score": 4.0
+      "score": 4.0,
+      "solutionImage": "assets/images/17_금당중_1학기_중간_중1_수학/q5-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 −10/3과 5/4 사이의 구간이 있고 −10/3은 속이 빈 점, 5/4는 찬 점이다.",
+      "solutionImageCaption": "−10/3은 약 −3.33이고 5/4는 1.25이다. 수직선에서 −10/3은 속이 빈 점, 5/4는 찬 점이다. 이 구간에 속하는 정수는 −3, −2, −1, 0, 1이므로 모두 5개이다. 따라서 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 6,

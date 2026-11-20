@@ -371,7 +371,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 3.5
+    "score": 3.5,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 점근선 y=3 위쪽으로 올라가는 파란 지수 곡선 f와 세로 점근선 x=3 오른쪽에서 올라가는 주황 로그 곡선 g가 있다. 두 점근선이 만나는 점 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=2ˣ⁻¹+a의 그래프로 수평 점근선은 y=a이고, g는 g(x)=log₃(2x−b)의 그래프로 수직 점근선은 x=b/2이다. 두 점근선이 점 P(3, 3)에서 만나므로 a=3이고 b/2=3에서 b=6이다. 따라서 a+b=9이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -414,7 +418,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "score": 4,
-    "preserveChoicePrefixes": false
+    "preserveChoicePrefixes": false,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 2π까지 한 주기의 사인 곡선과 가로선 y=1/2이 두 점에서 만나고, 교점의 x좌표가 가로축 눈금으로 표시되어 있다.",
+    "solutionImageCaption": "cos(π/2−x)=sin x이므로 부등식은 2sin x<1, 즉 sin x<1/2이다. y=sin x의 그래프가 직선 y=1/2 아래에 있는 부분은 교점 x=π/6과 x=5π/6의 바깥쪽으로 0≤x<π/6, 5π/6<x<2π이다. 따라서 a=π/6, b=5π/6이고 a+b=π이므로 답은 ④이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -622,7 +631,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 4
+    "score": 4,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 0시부터 12시까지 올라갔다 내려오는 사인 곡선과 가로선 y=2가 두 점에서 만나고, 교점의 시각이 가로축 눈금으로 표시되어 있다.",
+    "solutionImageCaption": "f(x)=4sin(πx/12)의 그래프는 0시에 0, 6시에 최댓값 4, 12시에 0이다. 유속이 2 이상인 구간은 직선 y=2 위쪽으로, 교점은 x=2와 x=10이다. 따라서 발전이 가능한 시간은 10−2=8시간이고 답은 ④이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 16,
@@ -666,7 +680,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "score": 4,
-    "image": "assets/images/24_강남여고_1학기_중간_고2_대수/q16.png"
+    "image": "assets/images/24_강남여고_1학기_중간_고2_대수/q16.png",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 파란 포물선 f와 오른쪽 위로 올라가는 주황 직선 g, 점선 −g가 있다. 포물선의 x절편 A, B와 꼭짓점 V, 직선의 x절편 D, 교점 C의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=x²/16−4, g는 g(x)=3x/5+12/5의 그래프이고 점선은 −g이다. 밑이 1/2인 로그는 감소하므로 부등식은 0<|f(x)|<|g(x)|이다. f가 g와 −g 사이에 있는 구간은 약 −11.8<x<−6.4와 약 2.2<x<16이고 x절편 A(−8, 0), B(8, 0)에서는 f=0이라 제외한다. 정수는 −11부터 −7까지 중 −8을 뺀 4개와 3부터 15까지 중 8을 뺀 12개로 모두 16개이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -751,7 +769,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "score": 4.5,
-    "image": "assets/images/24_강남여고_1학기_중간_고2_대수/q18.png"
+    "image": "assets/images/24_강남여고_1학기_중간_고2_대수/q18.png",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로 점근선 x=1 오른쪽에서 올라가는 파란 로그 곡선 f와 주황 로그 곡선 g, 오른쪽 아래로 내려가는 초록 점선 직선 l이 있다. 점 A와 점 B가 선분으로 이어져 있고 좌표가 표시되어 있다.",
+    "solutionImageCaption": "k=1일 때의 그림이다. f는 f(x)=log₂(x−1)+k, g는 g(x)=log₂(x+3)+5의 그래프이고 f의 점근선 x=1이 g와 만나는 점은 A(1, 7)이다. A를 지나는 기울기 −1인 직선 l이 f와 만나는 점 B에서 AB=4√2이면 가로와 세로의 차가 각각 4이므로 B(5, 3)이다. B가 f 위의 점이므로 3=2+k에서 k=1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -793,7 +815,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 4.5
+    "score": 4.5,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 서로 만나지 않는 두 지수 곡선이 가로 점근선 y=4와 y=−4를 향해 있다. 위쪽 곡선 g는 점근선 y=4 위쪽에서, 아래쪽 곡선 f는 점근선 y=−4 아래쪽에서 오른쪽으로 갈수록 가까워진다. y축 위의 두 점 P, Q가 점선으로 이어져 있다.",
+    "solutionImageCaption": "a=1/16일 때의 그림이다. f는 f(x)=−aˣ+log₂a, g는 g(x)=aˣ−log₂a의 그래프이다. 0<a<1이면 log₂a<0이고 aˣ>0이므로 두 곡선은 만나지 않는다. 두 점근선 y=log₂a=−4와 y=−log₂a=4 사이의 거리는 8이므로 log₂a=−4이고 a=1/16이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 20,
@@ -835,7 +862,12 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 4.5
+    "score": 4.5,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 2π/3에서 5π/3까지 내려가는 코사인 곡선이 그려져 있고, 왼쪽 끝은 높은 곳, 3π/2 근처에서 가장 낮으며 눈금이 표시되어 있다.",
+    "solutionImageCaption": "sin2x=0의 해 kπ/2와 sin3x=0의 해 kπ/3를 작은 순서로 나열하면 0, π/3, π/2, 2π/3, π, 4π/3, 3π/2, 5π/3이므로 x₄=2π/3, x₈=5π/3이다. 그래프는 y=cos(2x/3)의 2π/3≤x≤5π/3 부분이다. 각이 4π/9에서 10π/9까지 변하므로 최댓값은 왼쪽 끝 x=a=2π/3, 최솟값은 각이 π인 x=b=3π/2에서 얻는다. 따라서 a+b=13π/6이고 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -877,7 +909,12 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 4.5
+    "score": 4.5,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 2π까지 한 주기의 사인 곡선이 중심선 y=6 위아래로 오르내리며, 가로선 y=3이 곡선과 네 점에서 만난다. 세로축에는 최솟값과 최댓값 눈금이 표시되어 있다.",
+    "solutionImageCaption": "a=4, b=6일 때의 y=a sin2x+b의 그래프이다. 중심선은 y=b=6이고 최솟값은 b−a=2, 최댓값은 a+b=10이다. 예: 직선 y=3은 −a+b≤t<b인 값이어서 한 주기에 네 점에서 만나고 x좌표의 합은 5π이다. t=a+b=10이면 두 점에서 3π/2이고 g(t)가 최소가 되므로 a+b=10이다. g(2)+g(3)=15π/2에서 b−a=2이므로 a=4, b=6이고 ab=24이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 22,
@@ -912,7 +949,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "score": 5
+    "score": 5,
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_대수/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 제2사분면의 점 P와 원점을 잇는 동경 OP, P에서 x축으로 내린 점선이 직각삼각형을 이룬다. 각 θ와 점 P의 좌표, 세 변의 길이 3, 4, 5가 표시되어 있다.",
+    "solutionImageCaption": "P(−3, 4)에서 x축에 수선을 내리면 밑변 3, 높이 4인 직각삼각형이고 OP=5이다. θ는 제2사분면의 각이므로 sinθ=4/5, cosθ=−3/5, tanθ=−4/3이다. 합은 (12−9−20)/15=−17/15이어서 p=15, q=17이다. 따라서 p+q=32이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

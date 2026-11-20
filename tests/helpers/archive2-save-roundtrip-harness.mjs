@@ -38,6 +38,15 @@ function localFile(baseDir, relative) {
 export const MAX_SAVED_PAPER_BYTES = Number(
   /MAX_SAVED_PAPER_BYTES\s*=\s*([\d_]+)/.exec(fs.readFileSync(path.join(worker, "helpers/archive-saved-papers.js"), "utf8"))[1].replace(/_/g, ""));
 
+// The condition keys the saved-paper route accepts in selection_filters (any other key is answered 409), read from the Worker source.
+export function workerFilterKeys() {
+  const body = /const FILTER_KEYS = new Set\(\[([\s\S]*?)\]\)/.exec(fs.readFileSync(path.join(worker, "helpers/archive-saved-papers.js"), "utf8"));
+  if (!body) throw new Error("the Worker no longer declares FILTER_KEYS");
+  const keys = new Set([...body[1].matchAll(/"([^"]+)"/g)].map((match) => match[1]));
+  if (!keys.has("grade") || !keys.has("primaryPaths") || !keys.has("scopeQuestionUids")) throw new Error("the parsed Worker key list is not the real one");
+  return keys;
+}
+
 // ---------------------------------------------------------------- Worker
 export async function createWorker() {
   const { Miniflare } = requireWorker("miniflare");
@@ -134,6 +143,8 @@ export function createWorkspace(workerHandle) {
   };
   const uuids = seededUuids();
   const wire = { posts: [], beforePost: null, log: [] };
+  // The screen registers its click/change handlers with document.addEventListener; keep them so a sample can press the real buttons.
+  const events = new Map();
   const sourceForScreen = {
     ...archiveSource,
     restore: (records, cat, options = {}) => archiveSource.restore(records, cat, {
@@ -150,8 +161,14 @@ export function createWorkspace(workerHandle) {
     localStorage: { getItem: (k) => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) },
     document: {
       baseURI: BASE + "workspace.html", getElementById: node, querySelector: () => null, querySelectorAll: () => [],
-      createElement: () => ({ setAttribute() {}, append() {}, addEventListener() {}, classList: { add() {} } }),
-      body: { dataset: {}, appendChild() {} }, addEventListener() {},
+      // append() keeps the children: the screen's error alert (showErrorToast) reads firstChild / children[1] of the box it builds.
+      createElement: () => {
+        const el = { children: [], firstChild: null, textContent: "", innerHTML: "", setAttribute() {}, addEventListener() {}, classList: { add() {} } };
+        el.append = (...kids) => { el.children = kids; el.firstChild = kids[0] ?? null; };
+        return el;
+      },
+      body: { dataset: {}, appendChild() {} },
+      addEventListener: (name, callback) => { if (!events.has(name)) events.set(name, []); events.get(name).push(callback); },
     },
     addEventListener() {},
     fetch: async (url, init = {}) => {
@@ -190,14 +207,18 @@ export function createWorkspace(workerHandle) {
   storage.set("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   loadWorkspace(ctx, `
     render = () => {};
-    globalThis.ws = { state, scopeOptions, request, review, prepare, generate, savePapers, openSavedPaperRevision };
+    globalThis.ws = { state, scopeOptions, unifiedIndex, request, review, prepare, generate, savePapers, openSavedPaperRevision };
   `);
   const ws = ctx.ws;
   Object.assign(ws.state, {
     catalog, byUid: new Map(catalog.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r])),
     finderIndex: core.buildFinderIndex(catalog), metaIndex: [], metaIndexSource: null, useMode: "general", indexVersion: catalog.indexVersion, ackWarnings: true,
   });
-  return { ws, wire, seedMode: uuids.seedMode };
+  // click(dataset): a screen button press (e.g. { action: "compose-grade", grade: "고1" }); change(filter, value): a compose select/checkbox change.
+  // Both run the screen's own document handlers, so the state afterwards is what a teacher's press leaves behind.
+  const click = async (dataset) => { for (const callback of events.get("click") || []) await callback({ target: { closest: () => ({ dataset }) } }); };
+  const change = async (filter, value) => { for (const callback of events.get("change") || []) await callback({ target: { dataset: { group: "compose", filter }, value } }); };
+  return { ws, wire, seedMode: uuids.seedMode, click, change };
 }
 
 // ---------------------------------------------------------------- Sample choice (rule-based, data-driven)
@@ -215,16 +236,19 @@ export function imageRefs(question) {
     return i < 0 ? "" : p.slice(i);
   }).filter(Boolean);
 }
-// What the Worker will store, estimated from the screen's own paper: text bytes plus every image as base64 (4/3 of the file).
+// What the Worker will store, estimated from the screen's own paper. The Worker keeps images as paths and lists each one in the snapshot's
+// `assets` (path, sha256, size): it does not embed the picture bytes (only snapshots saved before that change did, and nothing reads them
+// as a size model any more). So the size follows the text: the snapshot repeats the questions as bridge rows, filters and scope lists.
+// Measured on 2026-11-20 (four 중3 two-unit, 20-question papers with 14-24 pictures): stored bytes were 3.7-4.5 times the paper's text bytes
+// whatever the picture count (14 pictures 273,533 B; 24 pictures 269,466 B), and the samples of all five grades stored 10-18% of the limit.
+// The factor below errs about 1.3 times above that, and each picture adds its asset row. The server limit itself is still checked on the real stored size (see the sample tests), not on this estimate.
+const SNAPSHOT_TEXT_FACTOR = 6;
+const ASSET_ROW_BYTES = 300;
 export function estimateSnapshotBytes(paper) {
-  let imageBytes = 0, images = 0;
-  for (const q of paper.questions) for (const rel of imageRefs(q)) {
-    images++;
-    try { imageBytes += Math.ceil(fs.statSync(path.join(root, "archive", decodeURIComponent(rel))).size * 4 / 3); } catch { /* the Worker reports a missing image itself */ }
-  }
+  let images = 0;
+  for (const q of paper.questions) images += imageRefs(q).length;
   const text = Buffer.byteLength(JSON.stringify({ questions: paper.questions, meta: paper.meta }));
-  // bridgeRows add roughly the same text again; double it so the estimate errs on the large side.
-  return { bytes: text * 2 + imageBytes, images };
+  return { bytes: text * SNAPSHOT_TEXT_FACTOR + images * ASSET_ROW_BYTES, images };
 }
 // Does the screen's restored question carry a metadata value that differs from the catalog record? (the S1 failure shape)
 export function metadataDiffersFromCatalog(ws, paper) {

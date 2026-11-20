@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-cd8f7e2d3977-d0c7adae",
+  "requestSha256": "ed86aa8f03b3c036e70b9d03ad7fa8587b1ac898b44dc67eb817a5fc54bfe045",
+  "examUid": "26_순천여고_2학기_중간_고2_미적분I",
+  "sourceArchiveFile": "original/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I.js",
+  "sourceBlobSha1": "81aeccd915a48789e63c62934fe4b7c0be6485b5",
+  "sourceRawSha256": "1326e663b5c1f10ba196745e4524fa7125a94363b0ce497e9f166fa1784bf943",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-d-20261116",
+      "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8f7e2d3977-d0c7adae.type-ledger.json",
+        "sha256": "5f3136994e7502e3b1756705c384d2af6bcd5ac4ec41422b68e0424ecb443377"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_042eabff67303fde477db2f647db166b71a15ab9503f46dec796b57b352f2326",
+      "sourceArchiveFile": "original/high/h2/2mid/26_순천여고_2학기_중간_고2_미적분I.js",
+      "sourceOrdinal": 6,
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-cd8f7e2d3977-d0c7adae",
+        "judge": "dots",
+        "rationale": "삼차식을 (2x-3)(2x-1)(2x+1)로 인수분해해 실근의 구간을 판정한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "공통수학1",
+          "curriculumSource": "request",
+          "rowCourse": "미적분I",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "705786d3a5135c1dd7c03a08e9fb46c415ad460f089b5dd5b5ce44abd77ebe0e",
+        "judgedContentFingerprint": "262589188bf665294acd77b67af24ccb7a44c63115d2dd181b03a07aee9b97b9",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "1546b33a9a9a35e9d3d06253d91836f05022a64c1acfa468a046311770555636",
+        "resultSource": {
+          "branch": "data/type-judgment-d-20261116",
+          "commit": "87ebdf34a3743d53139ab94aae2312e0e6c71274",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-d/h2-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd8f7e2d3977-d0c7adae.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 23
+}

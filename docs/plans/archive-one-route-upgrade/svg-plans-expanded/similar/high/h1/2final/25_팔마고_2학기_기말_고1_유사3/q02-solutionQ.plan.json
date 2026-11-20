@@ -1,0 +1,254 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   },
+   {
+    "id": "W",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 3
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 4
+    },
+    "to": {
+     "column": 1,
+     "element": 4
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 4
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 2
+    },
+    "to": {
+     "column": 2,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 3
+    },
+    "to": {
+     "column": 2,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 4
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 0
+    },
+    "to": {
+     "column": 3,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 1
+    },
+    "to": {
+     "column": 3,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 2
+    },
+    "to": {
+     "column": 3,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 3
+    },
+    "to": {
+     "column": 3,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 2,
+     "element": 4
+    },
+    "to": {
+     "column": 3,
+     "element": 4
+    }
+   }
+  ],
+  "arrowGroups": [
+   {
+    "name": "f",
+    "from": "X",
+    "to": "Y",
+    "color": "BLUE"
+   },
+   {
+    "name": "g",
+    "from": "Y",
+    "to": "Z",
+    "color": "WARM"
+   },
+   {
+    "name": "f",
+    "from": "Z",
+    "to": "W",
+    "color": "BLUE"
+   }
+  ],
+  "highlightPaths": [
+   {
+    "path": [
+     "2",
+     "3",
+     "4"
+    ],
+    "color": "GREEN"
+   },
+   {
+    "path": [
+     "2",
+     "5",
+     "5"
+    ],
+    "startColumn": 1,
+    "color": "ROSE"
+   }
+  ]
+ },
+ "caption": "g의 대응도에서 함숫값이 4인 원소는 3뿐이므로 f(a)=3이고, f의 대응도에서 함숫값이 3인 원소는 2뿐이므로 a=2이다(초록 경로 f(2)=3, g(3)=4). 이제 (f∘g)(2)=f(g(2))에서 g(2)=5, f(5)=5이므로(분홍 경로) 값은 5이다. 따라서 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "f, g의 대응도에서 (g∘f)(a)=4인 a=2를 찾고 (f∘g)(2)를 읽는다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "(g∘f)(a)=4가 되는 a=2의 경로(초록)와 (f∘g)(2)=5의 경로(분홍)를 보인다."
+ ]
+}

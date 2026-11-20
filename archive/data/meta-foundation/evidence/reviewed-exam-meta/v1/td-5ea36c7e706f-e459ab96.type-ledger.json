@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-5ea36c7e706f-e459ab96",
+  "sourceArchiveFile": "original/middle/m3/1mid/22_풍덕중_1학기_중간_중3_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_0edcceffbc1c7673f86fe598ed424163c5d95fcb3eba8a9c9de28ffd7e713345",
+      "sourceOrdinal": 3,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+      "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
+      "step": "(√3)²=3과√5²=5를 구별해합8.",
+      "note": "필요 TPL: 수치 제곱근 성질 평가: 근호와 제곱의 순서를 구별하고 √u²=|u|로 값 계산. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3481a9d1bbe59bb82f0d4430064112126ae3cea5cf9a74ca7cc3310bafab0739",
+      "sourceOrdinal": 5,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_MULTIPLICATION_EXPANSION",
+      "step": "분배법칙으로x²+3x-x-3을 전개정리.",
+      "note": "필요 TPL: 다항식 직접 전개: 분배법칙과 동류항 정리로 다항식의 곱을 전개한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3f9bf99a4c2826f6c7de6e09c2222df9a82a1074d280a0c9817c60d76ea1cba0",
+      "sourceOrdinal": 6,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FIND_OTHER_FACTOR_BY_FACTORIZATION",
+      "step": "주어진 공통인수2y를 추출하고 남은인수x-4를 읽는다.",
+      "note": "도구: CUE_LENGTH_4_TO_60_REQUIRED",
+      "figure": "불필요",
+      "check": "TOOL_ERROR",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_3c663261dbbb545d3fc681ffc384fa4a1d1994a9473e39e9cbf5cf946270a3fe",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_SQUARE_CONDITION",
+      "step": "x²+2x-8+k를(x+1)²와 비교해-8+k=1.",
+      "note": "필요 TPL: 완전제곱식 상수항 보충: 일차항계수의 절반제곱으로 필요한 상수항을 정하고 미정수를 구한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_84a3c2fec7ca9bda4b8eb3cbfee97f1e092e5cbc23696be381e27d8909e5b32f",
+      "sourceOrdinal": 18,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "templateKey": "TPL_M3_MULTIPLICATION_NUMERIC",
+      "step": "2122를 중심으로(2122-2)(2122+2)+4=2122².",
+      "note": "필요 TPL: 중앙값을 이용한 합차 수치계산: 두수의 평균을 공통항으로 잡아 합차공식으로 제곱값을 만든다. | 도구: TPL_NOT_ACTIVE",
+      "figure": "불필요",
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1mid.jsonl"
+    }
+  ]
+}

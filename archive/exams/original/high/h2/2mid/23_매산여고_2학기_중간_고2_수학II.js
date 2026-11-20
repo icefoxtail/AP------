@@ -68,7 +68,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: x=3에서 이어지는 직선 조각과 아래로 볼록한 포물선 조각의 그래프이며 이어지는 점 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x→3에서 극한이 존재하려면 좌극한과 우극한이 같아야 한다. 우극한은 9-9+11=11이고 좌극한은 6+k이므로 k=5이다. 그림은 k=5일 때 직선 조각과 포물선 조각이 P(3,11)에서 만나 좌극한과 우극한이 모두 11인 모습이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -152,9 +157,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "곡선 $y=2x^3-x-6$ 위의 점 $(1,-5)$에서 접하는 접선의 $x$절편은? [3.6점]",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q5-solution.svg",
-    "solutionImageAlt": "점 (1,−5)에서의 접선 y=5x−10과 x절편 (2,0)을 보여 주는 해설 그래프",
-    "solutionImageCaption": "접선의 기울기 5를 구해 x절편 2를 얻는다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q5-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 점 T에서 접하는 직선, 그 직선이 x축과 만나는 점 X를 나타낸 그래프이며 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "y′=6x²-1이므로 접점 T(1,-5)에서 접선의 기울기는 5이고 접선은 y=5x-10이다. 그림의 직선이 x축과 만나는 점 X(2,0)의 x좌표 2가 x절편이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -169,7 +174,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 80
   },
   {
     "id": 6,
@@ -202,7 +208,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선의 꼭짓점 V가 x축에 닿은 그래프로 나머지 부분은 모두 x축 아래에 있다.",
+    "solutionImageCaption": "예: a=3(범위의 끝)일 때 y=f′(x)=-3x²+12x-12=-3(x-2)²의 그래프이다. f가 항상 감소하려면 f′(x)≤0이 모든 x에서 성립해야 하므로 위로 볼록한 포물선이 x축 위로 올라가면 안 된다. 그림처럼 꼭짓점 V(2,0)이 x축에 닿는 경우가 한계이며 판별식 조건 4a²-12a≤0에서 0≤a≤3이다. 정수는 0, 1, 2, 3이고 합은 6이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -267,7 +277,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 P에서 이어지는 두 포물선 조각의 그래프이며 P에서 두 조각에 공통으로 접하는 직선이 그려져 있다.",
+    "solutionImageCaption": "x=1에서 우미분계수 2a-6과 좌미분계수 4가 같아야 하므로 a=5이다. 연속 조건 a-6=2-b에서 b=3이다. 그림은 a=5, b=3일 때 포물선 조각 두 개가 P(1,-1)에서 이어지며 기울기 4인 같은 접선 y=4x-5를 갖는 모습이다. 따라서 ab=15이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -299,7 +314,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 다섯 점을 꺾은선으로 이은 그래프와 직선 y=x가 두 점 P, Q에서 만나는 모습을 나타낸 그림이다.",
+    "solutionImageCaption": "예: 주어진 다섯 점 A(-2,-3), B(-1,1), C(0,-3), D(1,-2), E(2,2)를 꺾은선으로 이은 연속함수 f이다. h(x)=f(x)-x는 x=-2에서 -1, x=-1에서 2, x=0에서 -3이므로 (-2,-1)과 (-1,0)에서 부호가 바뀐다. 그림에서 f가 직선 y=x와 만나는 점 P, Q가 이 두 근이고 x=2는 열린구간 밖이다. 따라서 적어도 2개이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -364,7 +384,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차함수의 그래프에 극대점 M과 극소점 N이 표시되어 있고 두 점의 좌표가 쓰여 있다.",
+    "solutionImageCaption": "f′(1)=0, f′(2)=0에서 a=-9, b=12이다. 그림은 f(x)=2x³-9x²+12x+2의 그래프로 x=1에서 극대인 점 M(1,7), x=2에서 극소인 점 N(2,6)이 있다. 따라서 극솟값 c=6이고 a+b+c=-9+12+6=9이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 12,
@@ -385,9 +410,9 @@ window.questionBank = [
     ],
     "wide": false,
     "content": "점 $(1,-3)$에서 곡선 $y=2x^2-x+4$에 그은 두 접선의 기울기의 합은? [4.1점]",
-    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q12-solution.svg",
-    "solutionImageAlt": "외부점 (1,−3)에서 포물선에 그은 두 접선의 접점과 기울기를 비교하는 해설 그래프",
-    "solutionImageCaption": "접점 방정식의 근의 합 2로부터 두 기울기의 합 6을 계산한다.",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q12-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 곡선 밖의 점 A, 점 A를 지나 두 접점 T, S에서 접하는 두 접선을 나타낸 그래프이다.",
+    "solutionImageCaption": "점 A(1,-3)에서 곡선에 그은 접선의 접점은 t²-2t-3=0에서 t=-1, 3이다. 접점 T(-1,7)에서 기울기는 4·(-1)-1=-5이고 접점 S(3,19)에서 기울기는 4·3-1=11이다. 그림의 두 접선 l1, l2가 모두 점 A를 지난다. 기울기의 합은 -5+11=6이다. 따라서 답은 ①이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -402,7 +427,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -645,7 +671,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-01-LIMIT",
     "subUnit": "함수의 극한",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 접하는 위로 볼록한 포물선과 아래로 볼록한 포물선을 나타낸 그래프이며 원점과 두 꼭짓점이 표시되어 있다.",
+    "solutionImageCaption": "아래 경계는 h(x)=-x²+2x, 위 경계는 g(x)=x²+2x이고 f(x)는 두 곡선 사이에 있으며 두 곡선은 원점 O에서 기울기 2로 접한다. x>0에서 각 변을 x로 나누면 -x+2 ≤ f(x)/x ≤ x+2이고 x→0+에서 양 끝이 모두 2이므로 f(x)/x→2이다. 주어진 식은 (f/x)²/(3+f/x)이므로 극한은 4/5이다. 따라서 답은 4/5이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 20,
@@ -671,7 +702,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 위의 두 점 A, B를 잇는 할선 l과 그 할선에 평행하며 점 T에서 접하는 접선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "평균변화율은 (f(0)-f(-3))/3=(2-(-31))/3=11이다. 그림에서 할선 l은 A(-3,-31)과 B(0,2)를 지나고 접선 m은 접점 T에서 l과 평행하다. f′(c)=3c²+2=11에서 c²=3이고 c는 열린구간 (-3,0) 안에 있어야 하므로 c=-√3이다. 따라서 구하는 값은 -√3이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 21,
@@ -724,7 +760,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산여고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에 대해 대칭인 삼차함수의 그래프로 극대점 M, 극소점 N, 양 끝점 P, Q, 원점 O가 표시되어 있다.",
+    "solutionImageCaption": "(가)에서 f는 최고차항의 계수가 2인 삼차함수이고 (나)에서 기함수라 f(x)=2x³+ax이다. (다)에서 f′(-1)=6+a=0이므로 a=-6이고 f(x)=2x³-6x이다. 그림은 이 그래프로 원점 O에 대해 대칭이며 극대점 M(-1,4), 극소점 N(1,-4)이 있고 P(2,4)에서 f(2)=4이다. 따라서 f(x)=2x³-6x, f(2)=4이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 23,

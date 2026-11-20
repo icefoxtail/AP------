@@ -200,7 +200,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로 5칸, 세로 3칸 격자 도로망에서 A는 왼쪽 아래, B는 오른쪽 위이다. 없는 길은 점선이고, 각 교차점에 A에서 오는 최단 경로의 수가 적혀 있어 B에 42가 적힌다.",
+    "solutionImageCaption": "각 교차점에 A에서 오는 최단 경로 수를 적는다. 한 점의 수는 실제로 이어진 왼쪽 도로와 아래쪽 도로의 앞 점의 수를 더한 값이다. 오른쪽 위 격자로 들어가는 길목은 (2, 1)에서 (3, 1)로 가는 경우(3×6=18가지)와 (2, 2)까지 올라간 뒤 들어가는 경우(6×4=24가지)로 나뉘고 서로 겹치지 않는다. B에 18+24=42가 적힌다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -246,7 +250,7 @@ window.questionBank = [
     ],
     "difficultyReason": "동시 만남의 중간 위치·경로 쌍 및 원문 충돌",
     "metaProjectionStatus": "DIRECT_ACTIVE",
-    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q05_solution.svg",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q5-solution-v2.svg",
     "solutionImageSize": "full",
     "category": "확률의 뜻과 활용",
     "originalCategory": "확률의 뜻과 활용",
@@ -254,7 +258,9 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImageAlt": "해설 그림: 가로 5칸, 세로 3칸 격자 도로망에서 A는 왼쪽 아래, B는 오른쪽 위이다. 각 교차점에 A에서 오는 경로의 수가 적혀 있고, 만남 지점 P에 6, Q에 3, B에 42가 적혀 있다.",
+    "solutionImageCaption": "한 사람의 최단 경로는 8칸이므로 두 사람이 만난다면 각자 4칸 이동한 점에서 만나고 그 점은 P(2, 2)와 Q(3, 1)뿐이다. 그림의 수는 A에서 오는 경로 수이며 A에서 P까지 6가지, Q까지 3가지이고 P에서 B까지 4가지, Q에서 B까지 6가지여서 P를 지나는 경로는 6×4=24가지, Q를 지나는 경로는 3×6=18가지이고 전체는 42가지이다. 각자 경로를 같은 확률로 고르므로 만날 확률은 (24/42)의 제곱+(18/42)의 제곱=900/1764=25/49이다. m+n=49+25=74이고 답은 ①이다."
   },
   {
     "id": 6,
@@ -563,7 +569,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 겹침 2/7을 뺀 나머지 색칠한 부분이 1/7, 2/7, 2/7의 합 5/7임이 보여 드모르간 법칙이 확인된다.",
+    "solutionImageCaption": "A를 20대, B를 학생의 집합으로 본다. 덧셈정리로 P(A∩B)=3/7+4/7−5/7=2/7이다. 그림은 A만 1/7, 겹침 2/7, B만 2/7, 바깥 2/7이다. 20대가 아니거나 학생이 아닌 사건은 드모르간 법칙으로 겹침의 여사건이어서 색칠한 부분이다. 따라서 확률은 1−2/7=5/7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -613,7 +623,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 갑의 결과에 따라 을의 확률이 3/19, 4/19로 달라지고 두 경로의 합이 1/5임이 보인다.",
+    "solutionImageCaption": "갑이 뽑은 제비를 다시 넣지 않으므로 갑의 결과에 따라 을의 확률이 달라진다. 갑이 당첨이면 남은 19장 중 당첨이 3장이어서 을이 당첨일 확률이 3/19이고, 갑이 꽝이면 4/19이다. 을이 당첨이 되는 두 경로(파란색)의 확률은 1/5×3/19=3/95와 4/5×4/19=16/95이고 합은 1/5이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 13,
@@ -713,7 +728,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_documented"
+    "subUnitClassificationDepth": "complete_documented",
+    "solutionImage": "assets/images/19_복성고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 오른쪽 위로 올라가는 직선 모양의 확률밀도함수 그래프이며 x=0부터 x=1까지 아래쪽이 삼각형으로 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이는 밑변 4, 높이 4a인 삼각형이므로 (1/2)×4×4a=1에서 a=1/8이고, 그림은 이 값으로 그렸다. 색칠한 0≤x≤1은 밑변 1, 높이 f(1)=1/8인 삼각형이다. 넓이는 (1/2)×1×(1/8)=1/16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
