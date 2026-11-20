@@ -1,0 +1,37 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      40
+    ],
+    "axisBreak": {
+      "from": 9,
+      "to": 39
+    },
+    "xTitle": "변량",
+    "marks": {
+      "medianLine": {
+        "value": "5",
+        "label": "중앙값 5"
+      }
+    }
+  },
+  "caption": "변량 2, 3, 4, 5, 6, 8과 극단값 40이 있을 때 중앙값은 5이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "2, 3, 4, 5, 6, 8, 40",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "중앙값 5"
+  ]
+}

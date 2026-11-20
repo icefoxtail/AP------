@@ -1,0 +1,52 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "label": "첫째",
+        "pieces": [
+          {
+            "lo": {
+              "value": "6",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "12",
+              "state": "CLOSED"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "label": "둘째",
+        "pieces": [
+          {
+            "lo": {
+              "value": "9",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "label": "공통",
+        "integerPoints": true
+      }
+    ]
+  },
+  "caption": "두 조건 6<=a<=12와 a>=9의 공통 범위 9<=a<=12에서 자연수 a는 9, 10, 11, 12의 4개이다.",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "6<=a<=12, a>=9",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "공통 범위 9<=a<=12와 정수해 4개"
+  ]
+}
