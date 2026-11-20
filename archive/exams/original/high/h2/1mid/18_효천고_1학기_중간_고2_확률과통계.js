@@ -292,7 +292,11 @@ window.questionBank = [
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_효천고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "65ED7AA52ED8966A49A22BDD10A0ED76D0EE69B0BDE236F1D1FB25871F283DEE",
       "sourcePdfSha256": "9e5ed63b6a9dd3a6850edc1c28fe734f326e287b4e549bec08c346128735ce81"
-    }
+    },
+    "solutionImage": "assets/images/18_효천고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점이 육각형 꼭짓점으로 놓인 원탁 그림이며 혜민이가 앉는 점 A와 마주 보는 점 D, 나머지 점 B, C, E, F가 구분되어 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 그림이다. 혜민이의 자리를 점 A로 고정하면 회전이 없어진다. 지성이는 마주 보는 점 D 하나에만 앉을 수 있고, 나머지 네 학생이 남은 점 B, C, E, F에 앉는 방법은 4!=24가지이다. 따라서 답은 24이고 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -1226,10 +1230,10 @@ window.questionBank = [
       "sourceIntakeEvidenceSha256": "65ED7AA52ED8966A49A22BDD10A0ED76D0EE69B0BDE236F1D1FB25871F283DEE",
       "sourcePdfSha256": "9e5ed63b6a9dd3a6850edc1c28fe734f326e287b4e549bec08c346128735ce81"
     },
-    "solutionImage": "assets/images/18_효천고_1학기_중간_고2_확률과통계/q21-solution.svg",
-    "solutionImageAlt": "원 위 여덟 점의 마주 보는 쌍과 직사각형 대각선 지름 그림",
-    "solutionImageCaption": "직사각형의 두 대각선은 지름이므로 네 지름 중 두 개를 고른다.",
-    "solutionImageSize": "medium"
+    "solutionImage": "assets/images/18_효천고_1학기_중간_고2_확률과통계/q21-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 여덟 개의 점이 팔각형 꼭짓점으로 놓여 있고 서로 마주 보는 점끼리 이어진 네 개의 지름이 가운데에서 만나는 그림이다.",
+    "solutionImageCaption": "원 위에 같은 간격으로 놓인 8개의 점을 팔각형 꼭짓점으로 나타내고 마주 보는 두 점을 이은 지름 4개를 그렸다. (1) 네 점을 고르는 모든 방법은 8C4=70가지이다. (2) 직사각형의 두 대각선은 지름이고 지름 두 개를 고르면 끝점 네 개가 직사각형 하나를 정한다. 따라서 직사각형의 수는 4개의 지름 중 2개를 고르는 4C2=6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
