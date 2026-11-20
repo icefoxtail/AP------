@@ -1,0 +1,55 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "5c7a2abc0011d878",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$z = (3+\\sqrt{5}i)/2, \\bar{z} = (3-\\sqrt{5}i)/2$이다. (14)",
+    "$z/\\bar{z} = (3+\\sqrt{5}i)/(3-\\sqrt{5}i) = (3+\\sqrt{5}i)^2 / 14 = (4+6\\sqrt{5}i)/14 = (2+3\\sqrt{5}i)/7$이다.",
+    "$a=2, b=3$이므로 $a+b = 5$이다. (14)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "복소수 $\\alpha=\\df",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 사칙연산과 분모의 실수화 유형이다. (14)",
+  "rpmRecordId": "H1-RPM-024",
+  "rpmReason": "복소수 단원의 켤레복소수를 이용한 복소수의 나눗셈 유형이다. (14)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 켤레복소수 나눗셈과 분모의 실수화를 수행하는 난이도 2 문항이다. (14)",
+  "how": "복소수 z와 켤레복소수를 구하고 분모의 실수화로 a=2, b=3을 도출했다. (14)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $\\alpha=\\dfrac{1+\\sqrt{5}i}{2}$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $\\bar{z}$는 $z$의 켤레복소수이며 $a$, $b$는 상수"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "stem",
+        "quote": "단, $\\bar{z}$는 $z$의 켤레복소수이며",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

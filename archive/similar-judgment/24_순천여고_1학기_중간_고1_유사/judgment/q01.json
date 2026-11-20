@@ -1,0 +1,54 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "548a49ea35df27ed",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$(3x-4y+5z)^2$의 전개식에서 $yz$항은 $2 \\cdot (-4y) \\cdot (5z) = -40yz$이다.",
+    "따라서 $yz$의 계수는 $-40$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(3x-4y+5z)^2$의",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+  "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+  "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 연산 단원의 곱셈 공식 전개식 계수 유형이다. (yz)",
+  "rpmRecordId": "H1-RPM-001",
+  "rpmReason": "다항식의 연산 단원의 다항식 전개식에서 특정 항의 계수 유형이다. (yz)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식의 전개식에서 특정 항의 계수를 구하는 난이도 1 기본 문항이다. (yz)",
+  "how": "완전제곱식 전개 공식에서 yz 항의 계수를 추출하여 -40을 구했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "전개식",
+        "src": "stem",
+        "quote": "전개식에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "src": "stem",
+        "quote": "$yz$의 계수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "전개",
+        "src": "solution",
+        "quote": "전개식에서 $yz$항은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

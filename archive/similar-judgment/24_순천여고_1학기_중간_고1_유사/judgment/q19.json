@@ -1,0 +1,61 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "5e558e4f122b3e31",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "대칭축 $a<1$일 때 $b = 5+(a-1)^2$이고 $a+b$의 최솟값은 $a=1/2$에서 $23/4$이다.",
+    "$1 \\le a \\le 2$일 때 $b=5$이고 $a+b \\ge 6$이다. (23)",
+    "$a>2$일 때 $a+b > 7$이므로 전체 최솟값은 $23/4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$1\\le x\\le 2$에서",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "가변 대칭축을 가진 이차함수의 구간 제한 최대·최소 분류 유형이다. (23)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 축의 위치에 따른 이차함수의 구간 최대·최소 분류 유형이다. (23)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대칭축의 위치에 따라 구간 최댓값을 분류하고 합의 최솟값을 찾는 난이도 3 문항이다. (23)",
+  "how": "가변 대칭축의 위치를 구간 3개로 나누어 최댓값 관계식을 구하고 a+b의 최솟값 23/4를 얻었다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-(x-a)^2+b$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$a+b$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭축",
+        "src": "solution",
+        "quote": "대칭축 $x=a$의 위치에 따라",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값이 $5$일 때"
+      }
+    ]
+  }
+}

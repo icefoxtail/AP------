@@ -1,0 +1,61 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "613e1bd3226ba0a8",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "정삼각형 높이 $4\\sqrt{3}$에서 직사각형 세로를 $y$라 하면 가로는 $8(1 - y/(4\\sqrt{3}))$이다. (ABC)",
+    "넓이 $S(y) = 8y(1 - y/(4\\sqrt{3})) = -(2/\\sqrt{3})(y - 2\\sqrt{3})^2 + 8\\sqrt{3}$이다. (ABC)",
+    "따라서 $y=2\\sqrt{3}$일 때 넓이의 최댓값은 $8\\sqrt{3}$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "한 변의 길이가 $8$인 정",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "정삼각형 내접 직사각형의 닮음과 넓이의 최댓값 모델링 유형이다. (ABC)",
+  "rpmRecordId": "H1-RPM-038",
+  "rpmReason": "이차함수 단원의 정삼각형 내접 직사각형 넓이 최대·최소 모델링 유형이다. (ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기하 도형의 닮음비를 이용해 직사각형 넓이를 이차함수로 모델링하고 최댓값을 구하는 난이도 3 문항이다. (ABC)",
+  "how": "도형의 닮음으로 직사각형의 변의 길이를 매개화하고 이차함수 완전제곱식으로 최대넓이 8루트3을 구했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "정삼각형",
+        "src": "stem",
+        "quote": "한 변의 길이가 $8$인 정삼각형 $ABC$에"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "넓이의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "src": "solution",
+        "quote": "닮음에 의하여 가로의 길이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $PQRS$의"
+      }
+    ]
+  }
+}

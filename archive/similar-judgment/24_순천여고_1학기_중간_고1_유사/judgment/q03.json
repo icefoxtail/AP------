@@ -1,0 +1,60 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "ad1898c1da20b5be",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$-x^2+7x+2 = x+k \\implies x^2-6x+(k-2)=0$이다. (11)",
+    "접하므로 판별식 $D/4 = (-3)^2 - (k-2) = 11 - k = 0 \\implies k = 11$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=-x^2+7x",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 그래프와 직선의 위치 관계 접점 유형이다. (11)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 포물선과 직선이 접할 판별식 조건 유형이다. (11)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수와 직선의 위치 관계 접점 조건 판별식 난이도 1 문항이다. (11)",
+  "how": "이차함수와 직선의 연립방정식 판별식 D=0으로부터 k=11을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y=-x^2+7x+2$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$에서",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=x+k$가 접할 때"
+      }
+    ]
+  }
+}

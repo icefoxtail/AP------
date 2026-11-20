@@ -1,0 +1,60 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "88a8f6c914b06423",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$y = -(x-k)^2 + 2k^2-4k+3$이므로 최댓값 $f(k) = 2k^2-4k+3$이다. (kx)",
+    "$f(k) = 2(k-1)^2 + 1$이므로 $f(k)$의 최솟값은 1이다. (kx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수 $k$에 대하여 $x$",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_MAXMIN",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 최대·최소의 이중 최적화 유형이다. (kx)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 최댓값의 최솟값 매개변수 이차식 유형이다. (kx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 최댓값을 매개변수의 이차함수로 나타내고 다시 최솟값을 구하는 난이도 2 문항이다. (kx)",
+  "how": "x에 대한 완전제곱식으로 최댓값 함수 f(k)를 세우고 k에 대한 꼭짓점에서 최솟값 1을 구했다. (kx)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "$x$에 대한 이차함수 $y=-x^2+2kx+k^2-4k+3$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$f(k)$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "src": "solution",
+        "quote": "완전제곱식으로 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 $f(k)$라 할 때"
+      }
+    ]
+  }
+}

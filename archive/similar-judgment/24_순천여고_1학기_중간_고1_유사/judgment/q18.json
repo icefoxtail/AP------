@@ -1,0 +1,61 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "95fb3f26af52344a",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "절댓값 내부 꺾인 구간 $[-2, 4]$에서 $-x^2+2x+8 = 2x+k \\implies x^2 = 8-k$이다. (12)",
+    "구간 내부 두 실근을 가지려면 $0 < 8-k < 4 \\implies 4 < k < 8$이다. (12)",
+    "바깥 구간에서도 항상 두 교점이 존재하므로 정수 $k$는 $5, 6, 7$의 3개이다. (12)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "함수 $f(x)=|x^2-2",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "절댓값 이차함수 그래프와 직선의 위치 관계 및 교점 개수 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-035",
+  "rpmReason": "이차방정식 단원의 절댓값 이차함수 그래프와 직선의 다중 교점 유형이다. (12)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "절댓값 기호가 포함된 이차함수 그래프와 직선의 4개 교점 조건을 분석하는 난이도 3 심화 문항이다. (12)",
+  "how": "절댓값 이차함수의 구간별 연립 방정식의 실근 조건을 따져 4<k<8에서 정수 3개를 구했다. (12)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=|x^2-2x-8|$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "정수 $k$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "교점 방정식은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $y=2x+k$가 서로 다른 네 점에서 만나도록"
+      }
+    ]
+  }
+}

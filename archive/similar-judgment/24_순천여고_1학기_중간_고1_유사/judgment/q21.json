@@ -1,0 +1,61 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "0e2033d9575cac5c",
+  "solvedAnswer": "$m=0$일 때 중근 $1$, $m=8$일 때 중근 $-3$",
+  "solveSteps": [
+    "중근 조건 판별식 $D = (m-2)^2 - 4(m+1) = m^2-8m = 0 \\implies m=0$ 또는 $m=8$이다. (x)",
+    "$m=0$일 때 $x^2-2x+1=0 \\implies$ 중근 $1$이다.",
+    "$m=8$일 때 $x^2+6x+9=0 \\implies$ 중근 $-3$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2+(m-2",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 중근 조건과 중근 계산 서술형 유형이다. (x)",
+  "rpmRecordId": "H1-RPM-028",
+  "rpmReason": "이차방정식 단원의 중근을 가질 조건 판별식 서술형 유형이다. (x)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식의 중근 조건 판별식을 적용하고 각 경우의 해를 구하는 난이도 2 서술형 문항이다. (x)",
+  "how": "판별식 D=0으로부터 m=0, 8을 구하고 각 경우의 이차방정식을 풀어 중근을 계산했다. (x)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2+(m-2)x+(m+1)=0$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "이때의 중근을 구하는 과정 및 정답을 바르게 서술하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $D=0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중근",
+        "src": "stem",
+        "quote": "중근을 갖도록 하는"
+      }
+    ]
+  }
+}

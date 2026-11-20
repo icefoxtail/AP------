@@ -1,0 +1,61 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "82a1eb2758b3bbac",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$t = x^2-2x = (x-1)^2-1$이라 치환하면 $-1 \\le x \\le 4$에서 $-1 \\le t \\le 8$이다. (28)",
+    "$y = (t-2)^2 + 3$에서 최댓값은 대칭축 $t=2$에서 가장 먼 끝점 $t=8$에서 발생한다. (28)",
+    "$t=8 \\implies y = (8-2)^2 + 3 = 39$이다. (28)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$-1\\le x\\le 4$에",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "공통부분이 있는 사차함수의 치환을 통한 최대·최소 유형이다. (28)",
+  "rpmRecordId": "H1-RPM-038",
+  "rpmReason": "이차함수 단원의 공통부분 치환을 이용한 이차함수 최대·최소 유형이다. (28)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공통부분의 치환을 통해 새로운 변수의 범위를 찾고 이차함수 최댓값을 구하는 난이도 3 문항이다. (28)",
+  "how": "공통부분을 t로 치환하여 t의 변역 [-1, 8]을 구하고 t에 대한 이차함수 최댓값 39를 구했다. (28)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $y=(x^2-2x)^2-4(x^2-2x)+7$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "이라 치환하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최솟값",
+        "src": "solution",
+        "quote": "t$의 최솟값은 $-1$"
+      }
+    ]
+  }
+}

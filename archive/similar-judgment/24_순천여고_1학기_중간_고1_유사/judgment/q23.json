@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "769a9ffbaaea0e5a",
+  "solvedAnswer": "$\\dfrac{15}{2}$",
+  "solveSteps": [
+    "대칭축 $x=3$과 $f(7)=0$에서 $f(-1)=0$이므로 $f(x)=a(x+1)(x-7)$이다. (kx)",
+    "$f(4)=k$에서 $k = -15a \\implies a = -k/15$이다. (kx)",
+    "방정식 $f(x)=kx+3$을 정리하면 $kx^2+9kx+(45-7k)=0$이다.",
+    "근과 계수의 관계에 의해 $(45-7k)/k = -1 \\implies 6k = 45 \\implies k = 15/2$이다. (kx)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $f(x)$가 다음",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 대칭적 구조 추론과 직선과의 교점 방정식 복합 서술형 유형이다. (kx)",
+  "rpmRecordId": "H1-RPM-034",
+  "rpmReason": "이차방정식 단원의 이차함수 대칭성과 교점 방정식 두 근의 곱 서술형 유형이다. (kx)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 대칭성 해석과 직선과의 연립방정식 근과 계수의 관계를 결합하는 난이도 3 서술형 문항이다. (kx)",
+  "how": "이차함수의 대칭성으로 식을 세우고 직선과의 교점 방정식의 두 근의 곱 조건으로 k=15/2를 구했다. (kx)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)$가 다음 조건을 만족시킨다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "두 실근의 곱이 $-1$일 때"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "최댓값을 가지므로 위로 볼록하고"
+      }
+    ]
+  }
+}

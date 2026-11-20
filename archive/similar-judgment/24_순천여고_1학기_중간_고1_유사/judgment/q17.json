@@ -1,0 +1,60 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "07ab5784b7417dec",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$f(x) = (x-2)^2 Q(x) + 3x-1$의 양변에 $x$를 곱하면 $xf(x) = x(x-2)^2 Q(x) + 3x^2-x$이다.",
+    "$3x^2-x = 3(x-2)^2 + 11(x-2) + 10$이므로 나머지는 $11(x-2)+10 = 11x-12$이다. (xf)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $f(x)$를 $(x",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "나머지정리와 다항식 나눗셈의 항등식 변형 유형이다. (xf)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 x f(x)를 나눈 나머지 계산 유형이다. (xf)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식 나눗셈의 항등식 변형을 통해 변형된 식의 나머지를 계산하는 난이도 2 문항이다. (xf)",
+  "how": "x f(x)를 (x-2)^2으로 묶어내고 나머지 3x^2-x를 변형하여 일차식 나머지 11x-12를 도출했다. (xf)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $f(x)$를 $(x-2)^2$으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "구하는 나머지는 $3x^2-x$를 $(x-2)^2$으로 나눈 나머지와 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "나머지가 $3x-1$일 때"
+      }
+    ]
+  }
+}

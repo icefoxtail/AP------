@@ -1,0 +1,61 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "28b3845c1484c2f1",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "복소수 상등에 의해 $x^2-x=12 \\implies x=4$ 또는 $x=-3$, $-(y-6)=4 \\implies y=2$이다.",
+    "음수의 제곱근 분수 조건에 의해 분자 $y>0$, 분모 $x<0$이어야 하므로 $x=-3$이다. (12)",
+    "따라서 $x+y = -3+2 = -1$이다. (12)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$0$이 아닌 두 실수 $x",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "음수의 제곱근 성질과 복소수 상등의 연립 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-022",
+  "rpmReason": "복소수 단원의 음수의 제곱근 성질과 복소수 상등 유형이다. (12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수 상등과 음수의 제곱근 성질을 동시에 만족하는 해를 구하는 난이도 2 문항이다. (12)",
+  "how": "복소수 상등과 음수의 제곱근 분수 부호 규칙을 결합하여 x=-3, y=2를 특정하고 합을 구했다. (12)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "$0$이 아닌 두 실수 $x$, $y$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "이때, $x+y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "복소수",
+        "src": "solution",
+        "quote": "복소수가 서로 같을 조건에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "0$이 아닌 실수 $x$, $y$에 대하여 $\\dfrac{\\sqrt{y}}{\\sqrt{x}}=-\\sqrt{\\dfrac{y}{x}}$가 성립하려면"
+      }
+    ]
+  }
+}
