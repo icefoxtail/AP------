@@ -1,0 +1,62 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "a4edee310c4390c1",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "반지름 $1$인 사분원에서 $\\tan 50^\\circ = 1.1918$, $\\cos 40^\\circ = 0.7660$이다.",
+    "차: $1.1918 - 0.7660 = 0.4258$ (선지 중 0.3258 등과 대조)",
+    "따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 반지름의 길이가 $1$인 사분원에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "반지름의 길이가 $1$인 사분원",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "1.1918 - 0.7660 = 0.4258",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "단위원(사분원)에서 삼각비의 기하적 정의와 선분 대응 관계를 확인하는 유형이다. (문항 토큰 50)",
+  "rpmReason": "사분원 기하 모델에서 삼각비를 다루는 sin·cos·tan 유형이다. (문항 토큰 50)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사분원 선분 매핑 기초 개념을 확인하는 난이도 1 문항이다. (문항 토큰 50)",
+  "how": "사분원에서 각 삼각비에 대응하는 선분의 길이를 기하적으로 식별했다. (문항 토큰 50)",
+  "slots": {
+    "given": [
+      {
+        "term": "사분원",
+        "quote": "반지름의 길이가 $1$인 사분원",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "차",
+        "quote": "\\tan 50^\\circ - \\cos 40^\\circ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "차",
+        "quote": "1.1918 - 0.7660 = 0.4258",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각비",
+        "quote": "$\\tan 50^\\circ = 1.1918$, $\\cos 40^\\circ = 0.7660$",
+        "src": "stem"
+      }
+    ]
+  }
+}

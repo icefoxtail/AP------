@@ -1,0 +1,66 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "bb691ad2b851af9a",
+  "solvedAnswer": "$(192-56\\sqrt{3}),\\mathrm{cm}^2$",
+  "solveSteps": [
+    "한 변의 길이가 $12\\,\\mathrm{cm}$인 정사각형 $ABCD$에서 $\\angle ABE=60^\\circ$이다.",
+    "각 부분의 넓이를 삼각비로 구하여 색칠한 부분의 넓이를 계산하면 $(192-56\\sqrt{3})\\,\\mathrm{cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서술형 1] 다음 그림과 같이 한 변의 길이가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정사각형 $ABCD$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-062",
+  "rpmEvidence": "직각삼각형 $BCE$",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "다각형 내부에서 삼각비로 분할 넓이를 구하고 음영 부분 넓이를 완성하는 서술형 고난도 유형이다. (문항 토큰 12)",
+  "rpmReason": "다각형의 넓이 계산에 삼각비를 활용하는 다각형의 길이·넓이 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복합 도형 분할과 특수각 삼각비 연산을 종합 서술하는 난이도 4 문항이다. (문항 토큰 12)",
+  "how": "도형을 분할하여 특수각 삼각비로 각 부분의 넓이를 계산하고 차를 구했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "정사각형 $ABCD$",
+        "src": "stem"
+      },
+      {
+        "term": "각",
+        "quote": "$\\angle ABE=60^\\circ$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "색칠한 부분의 넓이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $BCE$",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "길이",
+        "quote": "한 변의 길이가 $12,\\mathrm{c",
+        "src": "stem"
+      }
+    ]
+  }
+}

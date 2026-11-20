@@ -1,0 +1,67 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "67f5f94aa420e79f",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "두 동심원의 넓이의 차가 $49\\pi\\,\\mathrm{cm}^2$이므로 $R^2 - r^2 = 49$이다.",
+    "현 $\\overline{AB}$의 절반 길이는 $\\sqrt{R^2 - r^2} = \\sqrt{49} = 7$이다.",
+    "따라서 $\\overline{AB} = 2 \\times 7 = 14\\,\\mathrm{cm}$이다. (정답 ③)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 점 $O$를 중심으로 하는 두 원에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 점 $O$를 중심으로",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "직각삼각형 $OMA$",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "동심원 기하 모델에서 현의 길이와 두 원의 반지름 관계를 구하는 유형이다. (문항 토큰 49)",
+  "rpmReason": "중심과 현의 수선 기하를 다루는 중심에서 현에 내린 수선 유형이다. (문항 토큰 49)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "동심원의 두 반지름과 현의 반쪽으로 피타고라스 정리를 세우는 난이도 3 문항이다. (문항 토큰 49)",
+  "how": "동심원에서 큰 원의 현과 작은 원의 접선 관계에 피타고라스 정리를 적용했다. (문항 토큰 49)",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "quote": "다음 그림에서 점 $O$를 중심으로",
+        "src": "stem"
+      },
+      {
+        "term": "접선",
+        "quote": "작은 원의 접선",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$\\overline{AB}$의 길이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $OMA$",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "두 원의 넓이의 차가 $49\\pi,\\ma",
+        "src": "stem"
+      }
+    ]
+  }
+}

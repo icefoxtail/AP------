@@ -1,0 +1,68 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "011466a9c96d8a7b",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "직각삼각형 $ABC$에서 $\\angle C=90^\\circ, \\angle ABC=30^\\circ, \\angle AEC=60^\\circ$이다.",
+    "$\\overline{BE}=8$이고 $\\triangle ABE$는 이등변삼각형이므로 $\\overline{AE} = 8$이다.",
+    "직각삼각형 $AEC$에서 $\\overline{EC} = 8\\cos 60^\\circ = 4$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $\\angle C=90^\\circ$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{BE}=8$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-059",
+  "rpmEvidence": "x\\tan 60^\\circ",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형에서 삼각비와 주어진 변의 길이를 이용해 미지 변을 계산하는 유형이다. (문항 토큰 90)",
+  "rpmReason": "직각삼각형의 변의 길이를 삼각비로 계산하는 직각삼각형의 변 유형이다. (문항 토큰 90)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 성질과 코사인 삼각비를 결합한 난이도 2 문항이다. (문항 토큰 90)",
+  "how": "외각 성질로 이등변삼각형을 확인하고 특수각 직각삼각형에서 변을 구했다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "길이",
+        "quote": "$\\overline{BE}=8$",
+        "src": "stem"
+      },
+      {
+        "term": "각",
+        "quote": "$\\angle ABC=30^\\circ$, $\\angle AEC=60^\\circ$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$\\overline{EC}$의 길이 $x$",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "x\\tan 60^\\circ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $ABC$",
+        "src": "solution"
+      }
+    ]
+  }
+}

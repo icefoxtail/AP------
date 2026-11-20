@@ -1,0 +1,67 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "9cd9a08f8b16528f",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "원 $O$의 중심에서 두 현까지의 거리가 모두 $3\\,\\mathrm{cm}$로 같다.",
+    "절반의 길이가 $6\\,\\mathrm{cm}$이므로 전체 현의 길이 $x = 12\\,\\mathrm{cm}$이다. (선지 10, 14, 15와 비교)",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 원 $O$의 중심에서 두 현까지의 거리가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-069",
+  "rpmEvidence": "두 현의 길이는 같으므로",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+  "newKeyProposal": null,
+  "typeReason": "중심거리와 현의 길이 사이의 일치 관계를 이용한 기하 계산 유형이다. (문항 토큰 cm)",
+  "rpmReason": "중심에서 현까지의 거리와 현 길이의 관계를 다루는 중심거리와 현의 길이 유형이다. (문항 토큰 cm)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 등거리 현의 성질을 직접 적용하는 난이도 1 문항이다. (문항 토큰 cm)",
+  "how": "원의 중심으로부터 같은 거리에 있는 두 현의 길이가 같다는 성질을 적용했다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "quote": "원 $O$",
+        "src": "stem"
+      },
+      {
+        "term": "거리",
+        "quote": "현까지의 거리가 모두 $3,\\mathrm",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "현",
+        "quote": "현의 길이 $x$",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "현",
+        "quote": "두 현의 길이는 같으므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "현",
+        "quote": "에서 두 현까지의 거리가 모두 $3,\\",
+        "src": "stem"
+      }
+    ]
+  }
+}

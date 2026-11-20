@@ -1,0 +1,67 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "1f1dbc82e3616827",
+  "solvedAnswer": "①, ④",
+  "solveSteps": [
+    "직각삼각형 $ABC$($\\angle C=90^\\circ$)에서 $\\overline{AB}=7, \\angle B=38^\\circ$이다.",
+    "$\\overline{AC} = 7\\sin 38^\\circ, \\overline{BC} = 7\\cos 38^\\circ$이다.",
+    "따라서 옳은 표현은 ①, ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 직각삼각형 $ABC$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직각삼각형 $ABC$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-059",
+  "rpmEvidence": "7\\sin 38^\\circ",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 변의 길이를 삼각비 기호로 올바르게 표현했는지 판정하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "변의 길이를 삼각비로 표현하는 직각삼각형의 변 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각비 표현식의 역수 및 곱 관계를 분별하는 난이도 2 문항이다. (문항 토큰 ABC)",
+  "how": "직각삼각형의 변과 삼각비의 대수적 표현식을 대조하여 옳은 것을 골랐다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $ABC$",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "AB=7",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$\\overline{AC}$의 길이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "7\\sin 38^\\circ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "quote": "\\angle B=38^\\circ",
+        "src": "stem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "442ba6ce4a508b3a",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "민지와 연 사이의 거리가 $50\\,\\mathrm{m}$, 올려본각이 $35^\\circ$, 손까지 높이 $1.5\\,\\mathrm{m}$이다.",
+    "수직 높이: $50\\sin 35^\\circ = 50 \\times 0.5736 = 28.68\\,\\mathrm{m}$",
+    "전체 높이: $28.68 + 1.5 = 30.18\\,\\mathrm{m}$로 소수 첫째 자리 반올림하면 $30.2\\,\\mathrm{m}$이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 민지가 연을 올려본각의 크기가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연까지의 거리는 $50,\\mathrm{m",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-064",
+  "rpmEvidence": "28.68 + 1.5 = 30.18",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "앙각과 사인의 곱에 관찰자 키를 보정하여 전체 높이를 구하는 실생활 활용 유형이다. (문항 토큰 35)",
+  "rpmReason": "올려본각(앙각)을 이용한 측정을 다루는 앙각·부각 유형이다. (문항 토큰 35)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사인 값 곱셈과 눈높이 보정 덧셈을 수행하는 난이도 2 문항이다. (문항 토큰 35)",
+  "how": "앙각 삼각비로 수직 높이를 구하고 관찰자의 눈높이를 더해 지면으로부터의 높이를 구했다. (문항 토큰 35)",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "quote": "연까지의 거리는 $50,\\mathrm{m",
+        "src": "stem"
+      },
+      {
+        "term": "각",
+        "quote": "$35^\\circ$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "quote": "연까지의 높이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합",
+        "quote": "28.68 + 1.5 = 30.18",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "높이",
+        "quote": "손까지의 높이가 $1.5,\\mathrm{",
+        "src": "stem"
+      }
+    ]
+  }
+}

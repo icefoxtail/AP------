@@ -1,0 +1,67 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "851815a50aa43c2b",
+  "solvedAnswer": "②, ④",
+  "solveSteps": [
+    "직각삼각형 $ABC$($\\angle C=90^\\circ$)에서 $AB=10, AC=8, BC=6$ 또는 $AB=13, AC=12, BC=5$이다.",
+    "피타고라스 정리와 삼각비 정의에 의해 $\\cos A = 12/13, \\sin B = 12/13$ 등 선지를 판별한다.",
+    "따라서 정답은 ②, ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직각삼각형 $ABC$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "\\cos A=\\dfrac{12}{13}",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형에서 삼각비 정의를 적용하여 각 삼각비 값을 판별하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "직각삼각형에서 삼각비의 뜻을 다루는 sin·cos·tan 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 삼각비 정의를 대조하는 난이도 1 문항이다. (문항 토큰 ABC)",
+  "how": "직각삼각형의 변의 길이로부터 삼각비 정의를 적용하여 참인 선지를 골랐다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $ABC$",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "AB=13, AC=12, BC=5",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각비",
+        "quote": "옳지 않은 것",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "\\cos A=\\dfrac{12}{13}",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "quote": "\\angle C=90^\\circ",
+        "src": "stem"
+      }
+    ]
+  }
+}

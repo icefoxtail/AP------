@@ -1,0 +1,67 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "7d9b083c9371fcf7",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\triangle ABC$에서 $BC=10\\,\\mathrm{cm}, \\angle B=30^\\circ, \\angle C=105^\\circ$이다.",
+    "점 $A$에서 $BC$에 수선 $AD$를 내리면 $\\triangle ABD$는 $30^\\circ, 60^\\circ, 90^\\circ$, $\\triangle ACD$는 $45^\\circ, 45^\\circ, 90^\\circ$이다.",
+    "넓이를 계산하면 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-065",
+  "rpmEvidence": "내린 수선의 발을 $D$",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "일반 삼각형에서 보조선 수선을 활용해 삼각비로 변의 길이를 구하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "보조선을 그어 삼각비를 활용하는 보조선 활용 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "보조선 수선 작도와 다단계 계산을 포함한 난이도 3 문항이다. (문항 토큰 ABC)",
+  "how": "수선의 발을 내려 특수각 직각삼각형을 만들고 피타고라스 정리로 변을 구했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "$\\triangle ABC$",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "다음 $\\triangle ABC$에서 $BC=",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "$\\triangle ABC$의 넓이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "quote": "내린 수선의 발을 $D$",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "quote": "$\\angle B=30^\\circ$, $\\angle C=105^\\circ$",
+        "src": "stem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "00a977aeba0ce775",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\triangle ABC$에서 $\\overline{AB}=6, \\overline{AC}=12, \\angle A=120^\\circ$이다.",
+    "각의 이등분선 $\\overline{AP}$에 의해 $\\triangle ABC = \\triangle ABP + \\triangle APC$이다.",
+    "넓이 공식을 이용해 $\\overline{AP}$의 길이를 구하면 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 $\\triangle ABC$에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\triangle ABC$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "\\triangle ABC = \\triangle ABP + \\triangle APC",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "삼각비를 이용한 삼각형 넓이 공식을 활용하여 넓이 또는 미지수를 구하는 고난도 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "삼각비를 활용한 삼각형의 넓이 계산을 다루는 삼각형의 높이·넓이 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "넓이 공식의 역산과 복합 기하 관계를 처리하는 난이도 4 문항이다. (문항 토큰 ABC)",
+  "how": "두 변과 끼인각의 사인 값을 이용한 삼각형 넓이 공식을 복합 적용했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "$\\triangle ABC$",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "$\\overline{AB}=6$, $\\overline{AC}=12$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$\\overline{AP}$의 길이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "\\triangle ABC = \\triangle ABP + \\triangle APC",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "quote": "$\\angle A=120^\\circ$",
+        "src": "stem"
+      }
+    ]
+  }
+}

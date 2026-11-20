@@ -1,0 +1,66 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "cfa352eff4cce661",
+  "solvedAnswer": "$8(\\sqrt{3}+1),\\mathrm{m}$",
+  "solveSteps": [
+    "$16\\,\\mathrm{m}$ 떨어진 두 지점에서 올려본각 $30^\\circ, 45^\\circ$를 이용해 건물의 높이를 구한다.",
+    "탄젠트 방정식을 풀면 높이는 $8(\\sqrt{3}+1)\\,\\mathrm{m}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서술형 2] 다음 그림과 같이 $16,\\mathrm{m}$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2] 다음 그림과 같이 $16,\\ma",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-063",
+  "rpmEvidence": "\\tan 30^\\circ",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "측정 문제에서 삼각비의 활용으로 높이 방정식을 세우고 서술형으로 풀이하는 유형이다. (문항 토큰 16)",
+  "rpmReason": "거리와 앙각으로부터 높이를 구하는 높이·거리 유형이다. (문항 토큰 16)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "탄젠트 덧셈/연립 방정식과 분모 유리화를 서술하는 난이도 3 문항이다. (문항 토큰 16)",
+  "how": "두 지점에서의 앙각을 이용해 탄젠트 분수 방정식을 세우고 유리화하여 높이를 도출했다. (문항 토큰 16)",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "quote": "[서술형 2] 다음 그림과 같이 $16,\\ma",
+        "src": "stem"
+      },
+      {
+        "term": "각",
+        "quote": "각각 $30^\\circ$, $45^\\circ$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "quote": "건물의 높이 $\\overline{AC}$",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "\\tan 30^\\circ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "높이",
+        "quote": "높이 $\\overline{AC}$",
+        "src": "stem"
+      }
+    ]
+  }
+}

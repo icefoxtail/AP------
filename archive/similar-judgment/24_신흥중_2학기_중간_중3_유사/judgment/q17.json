@@ -1,0 +1,67 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "42ba369802062193",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "직선 $PA$는 원 $O$의 접선이고 $\\overline{PA}=8\\sqrt{3}\\,\\mathrm{cm}, \\overline{PB}=8\\,\\mathrm{cm}$이다.",
+    "$\\overline{OA} = r, \\overline{PO} = 8 + r$에서 직각삼각형 $PAO$ 피타고라스 정리로 $\\overline{BO} = r$을 구하면 ⑤이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 직선 $PA$는 원 $O$의 접선이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$의 접선",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-070",
+  "rpmEvidence": "직각삼각형 $PAO$",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "원의 접선과 접점의 반지름이 이루는 직각 성질을 이용한 각 계산 유형이다. (문항 토큰 PA)",
+  "rpmReason": "접점과 반지름의 직교성을 다루는 접점의 반지름과 접선 유형이다. (문항 토큰 PA)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선 직각 성질과 삼각형 내각 합을 결합하는 난이도 2 문항이다. (문항 토큰 PA)",
+  "how": "접점에서의 반지름과 접선이 수직임을 이용해 직각삼각형 각을 구했다. (문항 토큰 PA)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "원 $O$의 접선",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "O}$의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$\\overline{BO}$의 길이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $PAO$",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접점",
+        "quote": "점 $A$는 접점",
+        "src": "stem"
+      }
+    ]
+  }
+}

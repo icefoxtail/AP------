@@ -1,0 +1,67 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "88813ec51b02ef62",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$\\triangle ABC$가 원 $O$에 내접하고 $\\overline{OM} \\perp \\overline{AB}, \\overline{ON} \\perp \\overline{AC}$이다.",
+    "중심에서 현에 내린 수선은 현을 수직이등분하므로 $M, N$은 중점이다.",
+    "따라서 옳지 않은 설명은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\triangle ABC$가 원 $O$에",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$에 내접",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "중점 연결 정리",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "원의 중심과 현의 수직이등분 성질을 이용해 현의 길이를 구하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "중심에서 현에 내린 수선의 성질을 다루는 중심에서 현에 내린 수선 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수직이등분선과 피타고라스 정리를 결합하는 난이도 2 문항이다. (문항 토큰 ABC)",
+  "how": "원의 중심에서 현에 내린 수선이 현을 이등분한다는 성질을 적용했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "quote": "원 $O$에 내접",
+        "src": "stem"
+      },
+      {
+        "term": "수선",
+        "quote": "\\overline{OM}\\perp\\overline{AB}",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "현",
+        "quote": "옳지 않은 것은",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "중점",
+        "quote": "중점 연결 정리",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "중점",
+        "quote": "각각 $AB$, $AC$의 중점",
+        "src": "solution"
+      }
+    ]
+  }
+}

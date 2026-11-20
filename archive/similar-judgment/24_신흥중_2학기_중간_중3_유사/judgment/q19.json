@@ -1,0 +1,66 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "6a093158998a0906",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "원 $O$에서 $\\overline{AP}=6, \\overline{BP}=5$이고 호 $AB$에 대한 원주각을 활용한다.",
+    "$\\triangle PAB$의 넓이를 구하면 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림은 원 $O$의 원주 위의 한 점이 원의 중심",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "원주각은 중심각의 절반",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "원 접기 대칭 모델에서 중심거리 $R/2$와 피타고라스 정리로 현 길이를 구하는 고난도 유형이다. (문항 토큰 AB)",
+  "rpmReason": "중심과 현의 수직이등분 기하를 응용하는 중심에서 현에 내린 수선 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접기 대칭 조건에서 중심거리를 파악해야 하는 난이도 4 문항이다. (문항 토큰 AB)",
+  "how": "원을 접었을 때 수선의 길이가 반지름의 절반이 됨을 이용해 현의 길이를 구했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "quote": "원 $O$",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "$\\overline{AP}=6$, $\\overline{BP}=5$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "$\\triangle PAB$의 넓이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원주각",
+        "quote": "원주각은 중심각의 절반",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "현",
+        "quote": "현 $AB$",
+        "src": "stem"
+      }
+    ]
+  }
+}

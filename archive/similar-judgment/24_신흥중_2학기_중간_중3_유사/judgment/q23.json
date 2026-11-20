@@ -1,0 +1,66 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "0ecf3fd0e340c5c9",
+  "solvedAnswer": "$16\\sqrt{3},\\mathrm{cm}^2$",
+  "solveSteps": [
+    "원 $O$에서 $\\overline{AB}=8\\,\\mathrm{cm}$이고 세 현의 길이가 같아 정삼각형을 이룬다.",
+    "피타고라스 정리와 삼각비로 계산하면 넓이는 $16\\sqrt{3}\\,\\mathrm{cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서술형 3] 다음 그림의 원 $O$에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "세 현의 길이는 같아",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "원의 현과 중심 사이의 수선 성질을 이용해 삼각형의 넓이를 구하는 서술형 유형이다. (문항 토큰 OL)",
+  "rpmReason": "현의 수선 성질을 이용한 기하 계산을 다루는 중심에서 현에 내린 수선 유형이다. (문항 토큰 OL)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "현의 길이 계산과 삼각형 넓이 도출 과정을 서술하는 난이도 2 문항이다. (문항 토큰 OL)",
+  "how": "중심에서 현에 내린 수선과 반지름으로 직각삼각형을 구성하여 넓이를 서술했다. (문항 토큰 OL)",
+  "slots": {
+    "given": [
+      {
+        "term": "원",
+        "quote": "원 $O$",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "[서술형 3] 다음 그림의 원 $O$에서 $\\",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "$\\triangle ABC$의 넓이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "현",
+        "quote": "세 현의 길이는 같아",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수선",
+        "quote": "내린 수선의 발",
+        "src": "stem"
+      }
+    ]
+  }
+}

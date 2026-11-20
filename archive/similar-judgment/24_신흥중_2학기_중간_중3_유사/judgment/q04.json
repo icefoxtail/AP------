@@ -1,0 +1,67 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "0386609f6cf1249c",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$y$절편이 $6$이고 $x$축과 이루는 예각의 크기가 $30^\\circ$이다.",
+    "기울기 $m = -\\tan 30^\\circ = -\\dfrac{\\sqrt{3}}{3}$이므로 직선의 방정식은 $y = -\\dfrac{\\sqrt{3}}{3}x + 6$이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $y$절편이 $6$이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$y$절편이 $6$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-060",
+  "rpmEvidence": "\\tan 30^\\circ",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "직선의 기울기와 탄젠트 삼각비의 관계를 결합한 일차함수 식 결정 유형이다. (문항 토큰 30)",
+  "rpmReason": "각과 기울기의 기하적 관계를 다루는 각을 이용한 길이 유형이다. (문항 토큰 30)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기와 삼각비의 융합 개념을 적용하는 난이도 3 문항이다. (문항 토큰 30)",
+  "how": "직선의 기울기가 예각 탄젠트 값에 음의 부호를 붙인 것임을 이용해 직선식을 구했다. (문항 토큰 30)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "quote": "$y$절편이 $6$",
+        "src": "stem"
+      },
+      {
+        "term": "예각",
+        "quote": "예각의 크기가 $30^\\circ$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직선",
+        "quote": "직선의 방정식",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "\\tan 30^\\circ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각비",
+        "quote": "\\tan 30^\\circ=\\dfrac{\\sqrt{3}}{3}",
+        "src": "solution"
+      }
+    ]
+  }
+}

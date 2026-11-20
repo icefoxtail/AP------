@@ -1,0 +1,67 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "85e86f912b7f302e",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\triangle ABC$는 $\\angle C=90^\\circ$인 직각삼각형이고 $\\overline{BC}=8\\,\\mathrm{cm}, \\overline{AC}=6\\,\\mathrm{cm}$이다.",
+    "빗변 $\\overline{AB} = 10\\,\\mathrm{cm}$이고 내접원의 반지름 $r = (6+8-10)/2 = 2\\,\\mathrm{cm}$이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $\\triangle ABC$는 $\\angle C=90^\\circ$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직각삼각형이고",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmEvidence": "$\\triangle ABC$의 넓이는",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 내접원 반지름과 접선의 성질을 이용한 기하 계산 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "접선 길이와 내접원 기하를 다루는 한 점에서 그은 두 접선 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직각삼각형 세 변과 내접원 반지름 공식을 적용하는 난이도 2 문항이다. (문항 토큰 ABC)",
+  "how": "직각삼각형의 내접원 접선 성질과 넓이 관계식을 이용해 내접원 반지름을 구했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형이고",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "반지름의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "반지름",
+        "quote": "반지름의 길이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "$\\triangle ABC$의 넓이는",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "각",
+        "quote": "$\\angle C=90^\\circ$",
+        "src": "stem"
+      }
+    ]
+  }
+}

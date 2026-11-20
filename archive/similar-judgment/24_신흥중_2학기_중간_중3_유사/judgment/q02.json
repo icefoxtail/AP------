@@ -1,0 +1,67 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "aba9ba1b1d5847a0",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "직각변의 길이가 $5, 12$인 직각삼각형에서 빗변의 길이는 $\\sqrt{5^2+12^2} = 13$이다.",
+    "예각 $x, y$에 대하여 $\\sin x + \\cos y = 12/13 + 5/13 = 17/13$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 직각변의 길이가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직각삼각형",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "\\dfrac{12}{13} + \\dfrac{5}{13} = \\dfrac{17}{13}",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "직각변의 길이로부터 빗변과 삼각비 식의 값을 계산하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "직각삼각형에서 삼각비 값을 구하는 sin·cos·tan 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "빗변 계산과 삼각비 덧셈을 수행하는 난이도 2 문항이다. (문항 토큰 12)",
+  "how": "피타고라스 정리로 빗변을 구하고 삼각비의 합을 계산했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "길이가 $5$, $12$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "quote": "$\\sin x + \\cos y$의 값",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합",
+        "quote": "\\dfrac{12}{13} + \\dfrac{5}{13} = \\dfrac{17}{13}",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "예각",
+        "quote": "예각의 크기는 같으므로 $y=x$",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "57d4020124cce9a7",
+  "solvedAnswer": "$28,\\mathrm{cm}$",
+  "solveSteps": [
+    "$\\overline{AE}=14\\,\\mathrm{cm}$이고 원 $O$의 두 접선의 길이는 같다.",
+    "접선 길이 치환에 의해 $\\triangle ABC$의 둘레의 길이는 $2 \\times 14 = 28\\,\\mathrm{cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서술형 4] 다음 그림에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$의 접선",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmEvidence": "두 접선의 길이는 같으므로",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "원의 외부점 접선 길이의 일치 성질을 활용해 삼각형의 둘레를 구하는 서술형 유형이다. (문항 토큰 AD)",
+  "rpmReason": "한 점에서 그은 두 접선의 길이 성질을 다루는 한 점에서 그은 두 접선 유형이다. (문항 토큰 AD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선 길이 치환 과정을 논리적으로 서술하는 난이도 2 문항이다. (문항 토큰 AD)",
+  "how": "외부점에서 그은 두 접선 길이가 같다는 성질을 변의 치환에 적용해 둘레를 구했다. (문항 토큰 AD)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "원 $O$의 접선",
+        "src": "stem"
+      },
+      {
+        "term": "길이",
+        "quote": "둘레의 길이를 구하는 과정과 답을 쓰시",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$\\triangle ABC$의 둘레의 길이",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "quote": "두 접선의 길이는 같으므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접점",
+        "quote": "세 점 $D$, $E$, $F$는 접점",
+        "src": "stem"
+      }
+    ]
+  }
+}

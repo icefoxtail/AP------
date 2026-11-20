@@ -1,0 +1,61 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "8ae2f5595bf24914",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$2\\sin 45^\\circ + \\tan 45^\\circ - 3\\cos 30^\\circ = 2(\\sqrt{2}/2) + 1 - 3(\\sqrt{3}/2) = \\sqrt{2} + 1 - \\dfrac{3\\sqrt{3}}{2}$이다.",
+    "특수각 $45^\\circ, 30^\\circ$의 삼각비를 대입하여 계산하면 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "2\\sin 45^\\circ + \\tan 45^\\circ",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-058",
+  "rpmEvidence": "\\sin 45^\\circ=\\dfrac{\\sqrt{2}}{2}",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "특수각의 삼각비 값을 이용해 대수식을 계산하는 유형이다. (문항 토큰 45)",
+  "rpmReason": "특수각 삼각비의 사칙연산을 다루는 특수각 계산 유형이다. (문항 토큰 45)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 특수각 수치를 직접 계산하는 난이도 1 문항이다. (문항 토큰 45)",
+  "how": "특수각의 삼각비 값을 대입하여 식을 계산했다. (문항 토큰 45)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각비",
+        "quote": "2\\sin 45^\\circ + \\tan 45^\\circ",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "quote": "$2\\sin 45^\\circ + \\t",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "\\sin 45^\\circ=\\dfrac{\\sqrt{2}}{2}",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대입",
+        "quote": "2\\times\\dfrac{\\sqrt{2}}{2} + 1",
+        "src": "solution"
+      }
+    ]
+  }
+}

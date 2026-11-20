@@ -1,0 +1,63 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "dca58fe534ccb52d",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "이차방정식 $5x^2 - 9x + 4 = 0 \\implies (5x-4)(x-1) = 0$",
+    "$0^\\circ < a^\\circ < 90^\\circ$이므로 $\\sin a^\\circ = 4/5$이다. (상수 12, 25 관련 계산)",
+    "$\\cos a^\\circ \\times \\tan a^\\circ = \\cos a^\\circ \\times \\dfrac{\\sin a^\\circ}{\\cos a^\\circ} = \\sin a^\\circ = 4/5$이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "\\sin a^\\circ",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmEvidence": "\\cos a^\\circ \\times \\dfrac{\\sin a^\\circ}{\\cos a^\\circ}",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 해로부터 삼각비를 결정하고 다른 삼각비 값을 연계하는 유형이다. (문항 토큰 90)",
+  "rpmReason": "방정식과 삼각비 값의 관계를 다루는 삼각비의 관계 유형이다. (문항 토큰 90)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식 인수분해와 삼각비 정의를 결합한 난이도 3 문항이다. (문항 토큰 90)",
+  "how": "이차방정식을 풀어 삼각비 값을 구하고 직각삼각형 비례로 나머지 삼각비를 계산했다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각비",
+        "quote": "\\sin a^\\circ",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "quote": "\\cos a^\\circ \\times \\tan a^\\circ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "\\cos a^\\circ \\times \\dfrac{\\sin a^\\circ}{\\cos a^\\circ}",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "예각",
+        "quote": "$0^\\circ < a^\\circ < 90^\\circ$",
+        "src": "stem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "36bb13011d524149",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$45^\\circ < x < 90^\\circ$에서 $\\sin x > \\cos x > 0$이다.",
+    "$\\sqrt{(\\sin x+\\cos x)^2} + \\sqrt{(\\sin x-\\cos x)^2} = |\\sin x+\\cos x| + |\\sin x-\\cos x| = (\\sin x+\\cos x) + (\\sin x-\\cos x) = 2\\sin x$이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$45^\\circ < x < 90^\\circ$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmEvidence": "\\sin x-\\cos x",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_MONOTONIC",
+  "newKeyProposal": null,
+  "typeReason": "삼각비의 대소 관계와 근호식의 절댓값 변환을 결합한 정리 유형이다. (문항 토큰 45)",
+  "rpmReason": "삼각비 사이의 대소와 부호 관계를 다루는 삼각비의 관계 유형이다. (문항 토큰 45)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각비 대소 판별과 근호 부호 처리를 함께 요구하는 난이도 2 문항이다. (문항 토큰 45)",
+  "how": "각의 범위에 따른 sin과 cos의 대소 관계를 이용해 근호식을 간단히 했다. (문항 토큰 45)",
+  "slots": {
+    "given": [
+      {
+        "term": "예각",
+        "quote": "$45^\\circ < x < 90^\\circ$",
+        "src": "stem"
+      },
+      {
+        "term": "제곱근",
+        "quote": "\\sqrt{(\\sin x+\\cos x)^2}",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "quote": "간단히 하면",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "차",
+        "quote": "\\sin x-\\cos x",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "삼각비",
+        "quote": "\\sin x > \\cos x > 0",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "4b48d639c7f7a484",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "두 지점 사이 거리 $20\\,\\mathrm{m}$, 앙각 $60^\\circ, 45^\\circ$에서 높이 $\\overline{AH}$를 구한다.",
+    "직각삼각형 $ABH$에서 $\\tan 60^\\circ = \\overline{AH}/\\overline{BH}$ 관계식을 세워 연립하면 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $20,\\mathrm{m}$ 떨어진 두 지점",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 $20,\\mathrm{m}$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-063",
+  "rpmEvidence": "\\tan 60^\\circ = \\dfrac{\\overline{AH}}{\\overline{BH}}",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "삼각비의 활용 측정 문제에서 두 각을 이용해 높이를 구하는 유형이다. (문항 토큰 20)",
+  "rpmReason": "실생활 측정 문제에서 높이와 거리를 구하는 높이·거리 유형이다. (문항 토큰 20)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "탄젠트 비례식 연립을 통해 높이를 산출하는 난이도 3 문항이다. (문항 토큰 20)",
+  "how": "두 지점에서의 앙각과 탄젠트 삼각비 관계식으로 높이를 계산했다. (문항 토큰 20)",
+  "slots": {
+    "given": [
+      {
+        "term": "거리",
+        "quote": "다음 그림과 같이 $20,\\mathrm{m}$",
+        "src": "stem"
+      },
+      {
+        "term": "각",
+        "quote": "각각 $60^\\circ$, $45^\\circ$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각비",
+        "quote": "알맞게 짝지어진 것은",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "quote": "\\tan 60^\\circ = \\dfrac{\\overline{AH}}{\\overline{BH}}",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "높이",
+        "quote": "높이 $\\overline{AH}$",
+        "src": "stem"
+      }
+    ]
+  }
+}
