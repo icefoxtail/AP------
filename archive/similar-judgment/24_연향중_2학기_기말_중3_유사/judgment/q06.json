@@ -1,0 +1,56 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "0989c31788e6fbdd",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "삼각형 $ABC$에서 $\\angle C = 180^\\circ - (50^\\circ + 60^\\circ) = 70^\\circ$이다.",
+    "점 $C$에서 그은 접선의 접점이 $E, F$이므로 $\\overline{CE} = \\overline{CF}$인 이등변삼각형이다.",
+    "따라서 $\\angle x = \\dfrac{180^\\circ - 70^\\circ}{2} = 55^\\circ$이므로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\triangle ABC$의 내접원 $O$는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 $\\triangle ABC$의 내접원 $O$는 세 변 $AB, BC, CA$와 각각 세 점 $D, E, F$에서 접한다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-079",
+  "rpmEvidence": "내접원의 중심과 접선 사이의 수직 관계 및 이등변삼각형의 성질을 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_TANGENT_CHORD",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 내접원과 접선이 이루는 각을 추론하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "원주각의 활용에서 접선과 현이 이루는 각을 다루는 RPM 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이등변삼각형 성질을 적용하는 난이도 2 문항이다. (문항 토큰 ABC)",
+  "how": "접선의 길이 성질로 생기는 이등변삼각형의 밑각을 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "내접",
+        "src": "stem",
+        "quote": "다음 그림과 같이 $\\triangle ABC$의 내접원 $O$는 세 변 $AB, BC, CA$와 각각 세 점 $D, E, F$에서 접한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "접점",
+        "src": "stem",
+        "quote": "$\\angle A = 50^\\circ, \\angle B = 60^\\circ$일 때, 접점 $E$에서 현 $EF$와 변 $BC$가 이루는 각 $\\angle x$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "내접원의 중심과 접선 사이의 수직 관계 및 이등변삼각형의 성질을 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

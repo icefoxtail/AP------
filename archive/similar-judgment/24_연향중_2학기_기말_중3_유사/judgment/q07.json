@@ -1,0 +1,56 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "d9467dd45edb5b9a",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\overline{PA} = \\overline{PB}$이므로 삼각형 $PAB$는 이등변삼각형이고 $\\angle PBA = \\angle PAB = 70^\\circ$이다.",
+    "선분 $\\overline{AC}$가 지름이므로 $\\angle ABC = 90^\\circ$이다.",
+    "접선과 반지름 수직 성질 또는 원주각 관계에 의해 $\\angle BAC = 35^\\circ$이다. 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 두 반직선 $\\overrightarrow{PA}, \\overrightarrow{PB}$는 원 $O$의 접선이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 두 반직선 $\\overrightarrow{PA}, \\overrightarrow{PB}$는 원 $O$의 접선이고 두 점 $A, B$는 그 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-076",
+  "rpmEvidence": "지름에 대한 원주각과 중심각, 접선의 성질을 차례로 적용한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "원의 지름과 접선이 만드는 원주각의 크기를 구하는 유형이다. (문항 토큰 PA)",
+  "rpmReason": "반원에 대한 원주각의 성질을 다루는 RPM 유형이다. (문항 토큰 PA)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선 성질과 지름의 원주각을 연계하는 난이도 2 문항이다. (문항 토큰 PA)",
+  "how": "접선으로 이루어진 이등변삼각형과 반원의 원주각을 결합하여 각의 크기를 구하였다. (문항 토큰 PA)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "다음 그림에서 두 반직선 $\\overrightarrow{PA}, \\overrightarrow{PB}$는 원 $O$의 접선이고 두 점 $A, B$는 그 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "선분 $\\overline{AC}$는 원 $O$의 지름이고 $\\angle BAC = 35^\\circ$일 때, $\\angle APB$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "지름에 대한 원주각과 중심각, 접선의 성질을 차례로 적용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

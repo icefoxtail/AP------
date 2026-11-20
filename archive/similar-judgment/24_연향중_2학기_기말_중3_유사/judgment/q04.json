@@ -1,0 +1,56 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "35c6d1a9516086b2",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "세 점 $P, B, C$가 한 직선 위에 있으므로 $\\angle ABP = 180^\\circ - 105^\\circ = 75^\\circ$이다.",
+    "삼각형 $PAB$에서 $\\angle PAB = 180^\\circ - (40^\\circ + 75^\\circ) = 65^\\circ$이다.",
+    "사각형 $ABCD$가 원에 내접하므로 외각 $\\angle PCD = \\angle PAB = 65^\\circ$이다. 따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고, 두 선분 $AD$와 $BC$의 연장선의 교점을 $P$라 하자.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-077",
+  "rpmEvidence": "1단계: 세 점 $P, B, C$가 한 직선 위에 있으므로 $\\angle ABC = 105^\\circ$에서 $$\\begin{aligned} \\angle ABP &= 180^\\circ - \\angle ABC \\ &= 180^\\circ - 105^\\circ \\ &= 75^\\circ \\end{aligned}$$",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_INSCRIBED_QUADRILATERAL_OPPOSITE_ANGLES",
+  "newKeyProposal": null,
+  "typeReason": "원에 내접하는 사각형의 성질과 삼각형 내각을 이용한 각도 추론 유형이다. (문항 토큰 ABCD)",
+  "rpmReason": "원주각의 활용에서 내접사각형의 각을 다루는 RPM 유형이다. (문항 토큰 ABCD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "외각과 대내각 성질을 2단계로 계산하는 난이도 2 문항이다. (문항 토큰 ABCD)",
+  "how": "삼각형의 내각의 합과 원에 내접하는 사각형의 한 외각의 성질을 연계하여 각도를 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림에서 사각형 $ABCD$는 원 $O$에 내접하고, 두 선분 $AD$와 $BC$의 연장선의 교점을 $P$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "사각형",
+        "src": "solution",
+        "quote": "원에 내접하는 사각형의 한 외각의 크기는 그 대내각의 크기와 같다."
+      }
+    ],
+    "method": [
+      {
+        "term": "직선",
+        "src": "solution",
+        "quote": "1단계: 세 점 $P, B, C$가 한 직선 위에 있으므로 $\\angle ABC = 105^\\circ$에서 $$\\begin{aligned} \\angle ABP &= 180^\\circ - \\angle ABC \\ &= 180^\\circ - 105^\\circ \\ &= 75^\\circ \\end{aligned}$$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

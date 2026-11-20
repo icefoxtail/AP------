@@ -1,0 +1,55 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "1d3d927979a498b9",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "산점도에서 각 점의 말하기 점수와 쓰기 점수를 읽어 최빈값을 구한다.",
+    "가장 많이 나타난 점수는 $8.5$점으로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 산점도는 학생 $15$명의 국어 수행평가에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "※ 다음 산점도는 학생 $15$명의 국어 수행평가에서 말하기 점수($x$점)와 쓰기 점수($y$점)를 각각 $10$점 만점으로 조사하여 나타낸 것이다.",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+  "rpmRecordId": "M3-RPM-088",
+  "rpmEvidence": "산점도의 세로축 좌표(쓰기 점수 $y$)의 빈도를 세어 최빈값을 구한다.",
+  "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+  "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "18번 문항은 산점도에서 좌표를 판독하고 대푯값을 구하는 유형이다. (문항 토큰 15)",
+  "rpmReason": "18번 문항은 산점도 최빈값 읽기를 다루는 RPM 유형이다. (문항 토큰 15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "18번 산점도 좌표를 정확히 판독하는 난이도 2 문항이다. (문항 토큰 15)",
+  "how": "18번 산점도에 주어진 점들의 좌표를 판독하여 최빈값을 구하였다. (문항 토큰 15)",
+  "slots": {
+    "given": [
+      {
+        "term": "산점도",
+        "src": "stem",
+        "quote": "※ 다음 산점도는 학생 $15$명의 국어 수행평가에서 말하기 점수($x$점)와 쓰기 점수($y$점)를 각각 $10$점 만점으로 조사하여 나타낸 것이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "산점도",
+        "src": "stem",
+        "quote": "• 산점도의 점 $(x, y)$ $15$개: $(4, 5), (5, 6), (6, 5), (6, 7), (7, 6), (7, 7), (7, 8), (7, 8),$ $(8, 6), (8, 7), (8, 8), (8, 9), (9, 8), (9, 9), (10, 9)$"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "산점도의 세로축 좌표(쓰기 점수 $y$)의 빈도를 세어 최빈값을 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

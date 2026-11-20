@@ -1,0 +1,56 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "88f014cf1ad43040",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "점 $B$가 접점이므로 반지름 $\\overline{OB}$와 접선 $\\overline{PB}$는 수직($\\angle OBP = 90^\\circ$)이다.",
+    "$\\overline{OB} = \\overline{OA} = 5\\rm\\,cm$이고 $\\overline{OP} = 9\\rm\\,cm$이다.",
+    "직각삼각형 $OPB$에서 피타고라스 정리에 의해 $\\overline{PB} = \\sqrt{9^2 - 5^2} = \\sqrt{56} = 2\\sqrt{14}\\rm\\,cm$이다. 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 두 선분 $\\overline{PA}, \\overline{PB}$는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 두 선분 $\\overline{PA}, \\overline{PB}$는 원 $O$의 접선이고 두 점 $A, B$는 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmEvidence": "원의 접선은 접점을 지나는 반지름과 수직을 이룬다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "원의 접선의 기본 성질과 직각삼각형의 길이를 구하는 유형이다. (문항 토큰 PA)",
+  "rpmReason": "한 점에서 그은 두 접선의 성질을 다루는 RPM 유형이다. (문항 토큰 PA)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선과 반지름의 수직 성질을 바로 적용하는 난이도 2 문항이다. (문항 토큰 PA)",
+  "how": "접선과 반지름의 수직 관계를 직각삼각형 피타고라스 정리와 연계하여 길이를 구하였다. (문항 토큰 PA)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "다음 그림에서 두 선분 $\\overline{PA}, \\overline{PB}$는 원 $O$의 접선이고 두 점 $A, B$는 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "$\\overline{OA} = 5\\rm,cm$, $\\overline{OP} = 9\\rm,cm$일 때, 접선 $\\overline{PB}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "원의 접선은 접점을 지나는 반지름과 수직을 이룬다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

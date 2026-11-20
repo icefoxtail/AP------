@@ -1,0 +1,56 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "9b6f49463bc4f597",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$이라 하면 $\\overline{AM} = 3\\rm\\,cm$이다.",
+    "직각삼각형 $OAM$에서 피타고라스 정리에 의해 $\\overline{OM} = \\sqrt{7^2 - 3^2} = \\sqrt{40} = 2\\sqrt{10}\\rm\\,cm$이다.",
+    "따라서 중심 $O$와 현 $\\overline{AB}$ 사이의 거리는 $2\\sqrt{10}\\rm\\,cm$로 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 반지름의 길이가 $7\\rm,cm$인 원 $O$에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 반지름의 길이가 $7\\rm,cm$인 원 $O$에서 길이가 $6\\rm,cm$인 현 $\\overline{AB}$가 있을 때, 원의 중심 $O$와 현 $\\overline{AB}$ 사이의 거리는?",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "1단계: 원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$이라 하면 $M$은 $\\overline{AB}$의 중점이므로 $$\\begin{aligned} \\overline{AM} &= \\dfrac{1}{2} \\overline{AB} \\ &= \\dfrac{1}{2} \\times 6 \\ &= 3\\rm,cm \\end{aligned}$$",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+  "newKeyProposal": null,
+  "typeReason": "원의 중심과 현의 수직이등분선 성질을 이용한 거리 계산 유형이다. (문항 토큰 cm)",
+  "rpmReason": "원의 중심과 현에서 중심거리와 현의 길이를 다루는 RPM 유형이다. (문항 토큰 cm)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기본적인 피타고라스 정리 적용으로 해결되는 난이도 2 문항이다. (문항 토큰 cm)",
+  "how": "원의 중심에서 현에 내린 수선이 현을 수직이등분함을 이용하여 직각삼각형에서 거리를 계산하였다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "다음 그림과 같이 반지름의 길이가 $7\\rm,cm$인 원 $O$에서 길이가 $6\\rm,cm$인 현 $\\overline{AB}$가 있을 때, 원의 중심 $O$와 현 $\\overline{AB}$ 사이의 거리는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심",
+        "src": "solution",
+        "quote": "원의 중심에서 현에 내린 수선은 그 현을 수직이등분한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "중심",
+        "src": "solution",
+        "quote": "1단계: 원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$이라 하면 $M$은 $\\overline{AB}$의 중점이므로 $$\\begin{aligned} \\overline{AM} &= \\dfrac{1}{2} \\overline{AB} \\ &= \\dfrac{1}{2} \\times 6 \\ &= 3\\rm,cm \\end{aligned}$$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

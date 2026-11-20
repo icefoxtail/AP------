@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "79c85de5552eebc5",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "접선 $\\overline{PT}$와 반지름 $\\overline{OT}$는 수직이므로 직각삼각형 $PTO$에서 $\\angle TPO = 30^\\circ$이다.",
+    "특수각의 삼각비에 의해 $\\overline{PO} = 2\\overline{OT} = 2r$, $\\overline{PT} = \\sqrt{3}r$이다.",
+    "$\\overline{PA} = \\overline{PO} - r = 2r - r = r$이므로 $\\overline{PA} = 4\\rm\\,cm$에서 $r = 4\\rm\\,cm$이다.",
+    "따라서 $\\overline{PT} = 4\\sqrt{3}\\rm\\,cm$이므로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 선분 $\\overline{PT}$는 원 $O$의 접선이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 선분 $\\overline{PT}$는 원 $O$의 접선이고 점 $T$는 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-070",
+  "rpmEvidence": "직각삼각형의 특수각의 삼각비와 원의 반지름의 성질을 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "원의 접선과 삼각비의 특수각을 연계한 길이 계산 유형이다. (문항 토큰 PT)",
+  "rpmReason": "접점의 반지름과 접선 성질을 다루는 RPM 유형이다. (문항 토큰 PT)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "특수각 직각삼각형 비를 이용하는 난이도 2 문항이다. (문항 토큰 PT)",
+  "how": "접선과 반지름의 수직 조건 및 $30^\\circ$ 특수각 삼각비를 적용하여 접선의 길이를 구하였다. (문항 토큰 PT)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "다음 그림에서 선분 $\\overline{PT}$는 원 $O$의 접선이고 점 $T$는 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "$\\angle TPO = 30^\\circ$이고 선분 $\\overline{PO}$가 원 $O$와 만나는 점을 $A$라 할 때 $\\overline{PA} = 8\\rm,cm$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "직각삼각형의 특수각의 삼각비와 원의 반지름의 성질을 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

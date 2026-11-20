@@ -1,0 +1,56 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "d613cd4670af5d81",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "음악 점수 $x$보다 미술 점수 $y$가 더 높다는 것은 $y > x$를 만족하는 점이다.",
+    "기준선 $y = x$의 위쪽에 위치한 점은 총 $15$명 중 $5$명이다.",
+    "비율은 $\\dfrac{5}{15} = \\dfrac{1}{3} = 33.3\\%$이다. 따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 산점도는 학생 $15$명의 음악 실기 점수($x$점)와",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 산점도는 학생 $15$명의 음악 실기 점수($x$점)와 미술 실기 점수($y$점)를 조사하여 나타낸 것이다.",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+  "rpmRecordId": "M3-RPM-088",
+  "rpmEvidence": "산점도에서 직선 $y = x$를 기준으로 위쪽에 위치하는 점의 비율을 구한다.",
+  "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+  "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "산점도에서 직선 기준 특정 조건을 만족하는 대상의 비율을 계산하는 유형이다. (문항 토큰 15)",
+  "rpmReason": "산점도 읽기와 비율 계산을 다루는 RPM 유형이다. (문항 토큰 15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대각선 기준 영역 판정 및 비율 계산 난이도 2 문항이다. (문항 토큰 15)",
+  "how": "대각선 $y=x$를 기준으로 위쪽 영역의 점의 개수를 전체에 대한 비율로 계산하였다. (문항 토큰 15)",
+  "slots": {
+    "given": [
+      {
+        "term": "산점도",
+        "src": "stem",
+        "quote": "다음 산점도는 학생 $15$명의 음악 실기 점수($x$점)와 미술 실기 점수($y$점)를 조사하여 나타낸 것이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "비율",
+        "src": "stem",
+        "quote": "음악 점수보다 미술 점수가 더 높은 학생의 비율은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "직선",
+        "src": "solution",
+        "quote": "산점도에서 직선 $y = x$를 기준으로 위쪽에 위치하는 점의 비율을 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "df85cae7330ca27c",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "자료에 극단적인 값(이상값)이 포함되어 있으면 평균이 크게 왜곡된다.",
+    "보기 ③의 자료는 극단값 $50$이 포함되어 있어 평균보다 중앙값이 대표성을 더 잘 나타낸다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 각 자료 중에서 중앙값이 평균보다 자료 전체의 중심적인 경향을 더 잘 나타낸다고 볼 수 있는 것은?",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-082",
+  "rpmEvidence": "• ①, ②, ④, ⑤의 자료는 변량들이 특정 구간에 고르게 분포되어 있거나 대칭성을 띠므로 평균이 자료의 대푯값으로 적절하다.",
+  "problemTypeKey": "PT_M3_REPRESENTATIVE",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "자료의 분포 특성에 적합한 대푯값을 선택하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "대푯값의 특성과 선택을 비교하는 RPM 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이상값 유무를 빠르게 판별하는 난이도 1 문항이다. (문항 토큰 10)",
+  "how": "극단값의 존재 여부에 따라 평균과 중앙값의 대표성을 비교하였다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "다음 각 자료 중에서 중앙값이 평균보다 자료 전체의 중심적인 경향을 더 잘 나타낸다고 볼 수 있는 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "포함",
+        "src": "solution",
+        "quote": "자료에 극단적인 값(이상치)이 포함되어 있을 때 평균은 그 값에 크게 영향을 받아 전체 자료의 대표성을 잃게 되므로, 극단값의 영향을 받지 않는 중앙값이 대푯값으로 적절하다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "• ①, ②, ④, ⑤의 자료는 변량들이 특정 구간에 고르게 분포되어 있거나 대칭성을 띠므로 평균이 자료의 대푯값으로 적절하다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

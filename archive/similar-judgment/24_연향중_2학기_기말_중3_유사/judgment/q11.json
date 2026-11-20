@@ -1,0 +1,56 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "2b53da59fad946f4",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$\\overline{AQ}$가 지름이므로 $\\angle ABQ = 90^\\circ$이다.",
+    "호 $AC$에 대한 원주각으로 $\\angle AQC = \\angle ABC$이며 삼각형의 닮음을 적용할 수 있다.",
+    "비례식을 세워 원의 지름 또는 반지름을 구하면 지름의 길이는 $15\\rm\\,cm$이다. 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 원 $O$는 $\\triangle ABC$의 외접원이고, 선분 $\\overline{AQ}$는 원 $O$의 지름이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 원 $O$는 $\\triangle ABC$의 외접원이고, 선분 $\\overline{AQ}$는 원 $O$의 지름이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-076",
+  "rpmEvidence": "외접원의 지름에 대한 원주각과 삼각형의 닮음을 결합하여 외접원의 지름을 구한다.",
+  "problemTypeKey": "PT_TRIANGLE_SIMILARITY",
+  "templateKey": "TPL_TRIANGLE_SIMILARITY_APPLICATION",
+  "newKeyProposal": null,
+  "typeReason": "원주각의 성질과 삼각형의 닮음을 융합한 외접원 계산 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "반원에 대한 원주각과 삼각형의 닮음을 다루는 RPM 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "보조선과 닮음비를 세우는 난이도 3 문항이다. (문항 토큰 ABC)",
+  "how": "지름의 원주각과 삼각형의 닮음비를 이용하여 외접원의 지름을 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림에서 원 $O$는 $\\triangle ABC$의 외접원이고, 선분 $\\overline{AQ}$는 원 $O$의 지름이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "꼭짓점 $A$에서 변 $\\overline{BC}$에 내린 수선의 발을 $H$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "외접원의 지름에 대한 원주각과 삼각형의 닮음을 결합하여 외접원의 지름을 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

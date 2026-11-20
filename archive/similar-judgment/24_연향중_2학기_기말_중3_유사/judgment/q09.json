@@ -1,0 +1,56 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "8a80aab8f0de4a4d",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "내접원의 반지름을 $r$이라 하면 사각형 $IECF$는 한 변의 길이가 $r$인 정사각형이다.",
+    "직각삼각형의 성질에 의해 $r = \\dfrac{a+b-c}{2}$를 적용하거나 넓이 공식 $S = \\dfrac{1}{2}r(a+b+c)$를 쓴다.",
+    "주어진 조건으로 반지름을 구하면 넓이는 $6$으로 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 원 $I$는 $\\angle C = 90^\\circ$인 직각삼각형 $ABC$의 내접원이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 원 $I$는 $\\angle C = 90^\\circ$인 직각삼각형 $ABC$의 내접원이고, 세 점 $D, E, F$는 각각 변 $AB, BC, CA$와의 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmEvidence": "직각삼각형의 변의 길이와 내접원의 반지름 사이의 관계식을 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_RIGHT_TRIANGLE",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 내접원 반지름과 넓이를 구하는 유형이다. (문항 토큰 90)",
+  "rpmReason": "접선 조건으로 직각삼각형 내접원 길이를 구하는 RPM 유형이다. (문항 토큰 90)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내접원 공식으로 반지름과 넓이를 도출하는 난이도 2 문항이다. (문항 토큰 90)",
+  "how": "직각삼각형의 내접원 반지름 공식과 삼각형의 넓이 공식을 결합하여 계산하였다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "다음 그림에서 원 $I$는 $\\angle C = 90^\\circ$인 직각삼각형 $ABC$의 내접원이고, 세 점 $D, E, F$는 각각 변 $AB, BC, CA$와의 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$\\overline{AB} = 20\\rm,cm, \\overline{AC} = 12\\rm,cm$일 때, 내접원 $I$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "직각삼각형의 변의 길이와 내접원의 반지름 사이의 관계식을 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

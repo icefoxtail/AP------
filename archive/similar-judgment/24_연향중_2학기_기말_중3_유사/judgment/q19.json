@@ -1,0 +1,56 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "27f511af0445e253",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "말하기 점수 $x \\ge 8$이고 쓰기 점수 $y \\ge 8$인 영역의 점을 센다.",
+    "조건을 동시에 만족하는 점은 $(8, 8), (8, 9), (9, 9), (9, 10)$ 등의 $5$명이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "위 산점도에서 말하기 점수($x$점)와 쓰기 점수($y$점)가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[18-19 공통자료] 위 산점도에서 말하기 점수($x$점)와 쓰기 점수($y$점)가 모두 $8$점 이상인 학생은 몇 명인가?",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_DATA_INTERPRETATION",
+  "rpmRecordId": "M3-RPM-088",
+  "rpmEvidence": "2단계: 나머지 점들을 확인하면 다음과 같다.",
+  "problemTypeKey": "PT_M3_SCATTER_PLOT_CORRELATION",
+  "templateKey": "TPL_M3_SCATTER_PLOT_READ_POINT_RATIO",
+  "newKeyProposal": null,
+  "typeReason": "19번 문항은 산점도의 영역별 조건을 만족하는 자료의 개수를 파악하는 유형이다. (문항 토큰 18)",
+  "rpmReason": "19번 문항은 산점도 영역 개수 세기를 다루는 RPM 유형이다. (문항 토큰 18)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "19번 직선 경계 기준 점 개수를 세는 난이도 2 문항이다. (문항 토큰 18)",
+  "how": "19번 산점도에서 두 변수 부등식 영역을 만족하는 점의 개수를 카운팅하였다. (문항 토큰 18)",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "[18-19 공통자료] 위 산점도에서 말하기 점수($x$점)와 쓰기 점수($y$점)가 모두 $8$점 이상인 학생은 몇 명인가?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "부등식",
+        "src": "solution",
+        "quote": "산점도에서 영역 부등식 $x \\ge 8$과 $y \\ge 8$을 동시에 만족하는 점의 개수를 센다."
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "2단계: 나머지 점들을 확인하면 다음과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

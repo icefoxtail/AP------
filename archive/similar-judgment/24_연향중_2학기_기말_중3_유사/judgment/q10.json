@@ -1,0 +1,56 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "92a56653a2ff0bdb",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "선분 $\\overline{AB}$가 원 $O$의 지름이므로 반원 위의 호 $\\wideparen{AC}$ 등의 길이가 모두 같아 원주각 크기도 같다.",
+    "반원에 대한 원주각의 총합 $90^\\circ$를 등분하여 구하는 각의 크기를 계산한다.",
+    "계산 결과 각의 크기는 $54^\\circ$로 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 선분 $\\overline{AB}$는 원 $O$의 지름이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 선분 $\\overline{AB}$는 원 $O$의 지름이고, 반원 위의 호가 $\\wideparen{AC} = \\wideparen{CD} = \\wideparen{DE} = \\wideparen{EF} = \\wideparen{FB}$로 $5$등분되어 있다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-074",
+  "rpmEvidence": "호의 길이와 중심각, 원주각의 비례 관계를 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "길이가 같은 호에 대한 원주각의 크기 성질을 이용하는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "같은 호에 대한 원주각의 크기 비례를 다루는 RPM 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "호의 분할에 따른 각의 비례 계산 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "호의 길이에 비례하는 원주각의 성질을 이용하여 각을 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림에서 선분 $\\overline{AB}$는 원 $O$의 지름이고, 반원 위의 호가 $\\wideparen{AC} = \\wideparen{CD} = \\wideparen{DE} = \\wideparen{EF} = \\wideparen{FB}$로 $5$등분되어 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "원주각",
+        "src": "stem",
+        "quote": "호 $\\wideparen{DE}$를 바라보는 원주각을 $\\angle x$, 호 $\\wideparen{CD}$를 바라보는 원주각을 $\\angle y$라 할 때, $\\angle x + \\angle y$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심",
+        "src": "solution",
+        "quote": "호의 길이와 중심각, 원주각의 비례 관계를 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

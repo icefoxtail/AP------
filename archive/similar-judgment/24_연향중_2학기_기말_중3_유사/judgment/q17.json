@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "774e09ab3624be23",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "(가)에서 $5$개의 변량의 중앙값이 $14$이고 평균이 $15$이므로 총합은 $75$이다. $a$를 구하면 $a = 16$이다.",
+    "(나)에서 $6$개의 변량의 중앙값 조건을 적용하여 $b$를 구하면 $b = 5$이다.",
+    "따라서 $a + b = 16 + 5 = 21$이므로 정답은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 두 조건을 모두 만족시키는 상수 $a, b$에 대하여 $a + b$의 값은?",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-081",
+  "rpmEvidence": "중앙값의 순위 조건과 평균의 정의를 연립하여 $a, b$를 구한다.",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_DETERMINE_UNKNOWN_FROM_MEAN_AND_MEDIAN_CONDITIONS",
+  "newKeyProposal": null,
+  "typeReason": "두 자료에서 중앙값과 평균을 연립하여 상수를 추론하는 유형이다. (문항 토큰 14)",
+  "rpmReason": "평균과 중앙값 조건으로 미지수를 추론하는 RPM 유형이다. (문항 토큰 14)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 개의 대푯값 조건을 순차 해결하는 난이도 2 문항이다. (문항 토큰 14)",
+  "how": "두 자료의 중앙값과 평균 조건을 각각 연립하여 미정 상수를 도출하였다. (문항 토큰 14)",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "다음 두 조건을 모두 만족시키는 상수 $a, b$에 대하여 $a + b$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "• (가) $5$개의 변량 $6, 9, 14, 16, a$의 중앙값은 $9$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "연립",
+        "src": "solution",
+        "quote": "중앙값의 순위 조건과 평균의 정의를 연립하여 $a, b$를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

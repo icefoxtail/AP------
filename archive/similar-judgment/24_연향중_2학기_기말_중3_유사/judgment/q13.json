@@ -1,0 +1,56 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "21b753c15eb6825d",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "학생 $40$명의 중앙값은 $20$번째와 $21$번째 변량의 평균이다.",
+    "누적 도수를 계산하면 중앙값 $a = 9.5$, 최빈값 $b = 10$이다.",
+    "따라서 $a + b = 9.5 + 10 = 19.5$이므로 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 표는 어느 중학교 학생 $40$명의 일주일 동안의",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "독서 시간의 중앙값을 $a$시간, 최빈값을 $b$시간이라 할 때, $a + b$의 값은?",
+  "standardUnitKey": "M3-07",
+  "subUnitKey": "M3-07-STATISTICS_REPRESENTATIVE",
+  "rpmRecordId": "M3-RPM-081",
+  "rpmEvidence": "1단계: 전체 학생 수가 $40$명(짝수)이므로 중앙값은 자료를 작은 값부터 차례로 나열했을 때 $20$번째와 $21$번째 값의 평균이다.",
+  "problemTypeKey": "PT_M3_CENTRAL_TENDENCY_MEDIAN_MODE",
+  "templateKey": "TPL_M3_CENTRAL_TENDENCY_MEDIAN_MODE_ORDER_POSITION",
+  "newKeyProposal": null,
+  "typeReason": "도수분포표에서 중앙값과 최빈값을 구하는 유형이다. (문항 토큰 40)",
+  "rpmReason": "평균·중앙값·최빈값의 계산을 다루는 RPM 유형이다. (문항 토큰 40)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "도수분포표 해석과 중앙값 계산의 난이도 2 문항이다. (문항 토큰 40)",
+  "how": "도수분포표에서 누적 도수로 중앙값의 위치를 찾고 도수가 가장 큰 계급값으로 최빈값을 구하였다. (문항 토큰 40)",
+  "slots": {
+    "given": [
+      {
+        "term": "중앙값",
+        "src": "stem",
+        "quote": "독서 시간의 중앙값을 $a$시간, 최빈값을 $b$시간이라 할 때, $a + b$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "중앙값",
+        "src": "solution",
+        "quote": "도수분포표에서 누적도수를 이용하여 중앙값과 최빈값을 구한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "자료",
+        "src": "solution",
+        "quote": "1단계: 전체 학생 수가 $40$명(짝수)이므로 중앙값은 자료를 작은 값부터 차례로 나열했을 때 $20$번째와 $21$번째 값의 평균이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
