@@ -1,0 +1,62 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "924aaa5ebd981e44",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "평행이동한 그래프의 식은 $y = ax^2 - 4$이다.",
+    "점 $(2, 8)$을 지나므로 $8 = 4a - 4 \\implies 4a = 12 \\implies a = 3$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=ax^2$의 그래프를 $y$축의 방향으로 $-4$만큼 평행이동하면 점 $(2, 8)$을 지날 때",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-049",
+  "rpmEvidence": "평행이동한 그래프의 식은 $y = ax^2 - 4$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_TRANSLATION_POINT",
+  "newKeyProposal": null,
+  "typeReason": "이차함수 그래프의 평행이동 식에 점을 대입하여 상수를 구하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "포물선의 y축 방향 평행이동을 다루는 평행이동 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 평행이동 식 작성과 점 대입을 수행하는 난이도 1 문항이다. (문항 토큰 ax)",
+  "how": "y축 평행이동 식을 작성하고 주어진 점의 좌표를 대입하여 a를 구했다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "좌표",
+        "quote": "이차함수 $y=ax^2$의 그래프를 $y$축의 방향으로 $-4$만큼 평행이동하면 점 $(2, 8)$을 지날 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수항",
+        "quote": "상수 $a$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "quote": "평행이동한 그래프의 식은 $y = ax^2 - 4$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "좌표",
+        "quote": "8 &= a(2)^2 - 4",
+        "src": "solution"
+      }
+    ]
+  }
+}

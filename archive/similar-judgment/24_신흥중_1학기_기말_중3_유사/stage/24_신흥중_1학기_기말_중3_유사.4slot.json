@@ -1,0 +1,910 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/middle/m3/1final/24_신흥중_1학기_기말_중3_유사.js",
+  "sourceGitBlobSha": "e10e432553d22d671a4acd332e567285c2f65ac2",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "similar-md-importer",
+    "at": "2026-11-16"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "일체형 마크다운 변환 산출물(UNREVIEWED)"
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "복수 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "다항식 $x^2-8x+12$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수",
+            "src": "stem",
+            "quote": "인수인 것을 모두 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "x^2 - 8x + 12 = (x-2)(x-6)"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "곱이 12, 합이 -8인 두 수로 이차식을 인수분해한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$x^2+px+18=(x+a)(x+b)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "수 $p$의 최솟값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "(x+a)(x+b) &= x^2+(a+b)x+ab"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정수",
+            "src": "stem",
+            "quote": "$a, b$가 정수일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "전개 계수 비교로 $ab=18$을 얻고 음의 정수 쌍에서 $a+b$의 최솟값을 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "$8x^2+bx-3$을 인수분해하면 $(2x+1)(4x+a)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "8x^2 + (2a+4)x + a"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$(2x+1)(4x+a)$를 전개하여 상수항과 일차항 계수를 비교한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식을 고르면?"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "2x^2-x-2=0$이므로 이차방정식이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "이항",
+            "src": "solution",
+            "quote": "x^2-4x=3x^2-5x-2"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각 선지를 전개하여 한쪽으로 이항했을 때 이차식이 남는지 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "$x=3$을 해로 갖는 이차방정식"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식을 고르면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "각 방정식에 $x=3$을 대입한다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "주어진 해 $x=3$을 각 보기에 대입해 참인 등식을 찾는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-8x-3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "solution",
+            "quote": "x &= 4 \\pm \\sqrt{19}"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "stem",
+            "quote": "완전제곱식을 이용하여 푸는 과정"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차항 계수 절반의 제곱 $16$을 양변에 더해 $(x-4)^2=19$를 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+ax+8=0$의 한 근이 $-4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$ab$의 값을 구하면?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$x=-4$를 대입하면"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 방정식에 각각의 근을 대입해 $a=6, b=2$를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $2(x+3)^2-18=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "해",
+            "src": "solution",
+            "quote": "$x = -6$ 또는 $x = 0$"
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "(x+3)^2 &= 9"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$(x+3)^2=9$로 정리한 뒤 제곱근을 취해 해를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "중근",
+            "src": "stem",
+            "quote": "이차방정식 $x^2+ax+9b=0$이 중근을 가진다."
+          }
+        ],
+        "goal": [
+          {
+            "term": "차",
+            "src": "stem",
+            "quote": "$a-b$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "a^2 &= 36b"
+          }
+        ],
+        "condition": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "두 자리 자연수 $a, b$에 대하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "중근 조건 $a=6\\sqrt{b}$에서 두 자리 자연수인 최소 제곱수 $b=16$을 찾는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $2x^2-8x+3=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$A+B$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "해",
+            "src": "stem",
+            "quote": "해가 $x=\\dfrac{A\\pm\\sqrt{B}}{2}$일 때"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "짝수 근의 공식으로 해를 구해 $A=4, B=10$을 얻는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "복수 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "$y$가 $x$의 이차함수인 것을"
+          }
+        ],
+        "goal": [
+          {
+            "term": "이차함수",
+            "src": "solution",
+            "quote": "이차함수인 것은 ①, ④이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "넓이",
+            "src": "solution",
+            "quote": "x^2+4x+4"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "각 보기의 관계식을 세워 $x$에 대한 이차식인지 확인한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $f(x)=x^2-3x+4$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "함숫값",
+            "src": "stem",
+            "quote": "$f(2)+f(-1)$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "2^2 - 3(2) + 4"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$x=2$와 $x=-1$을 대입해 구한 두 함숫값을 더한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=3x^2$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 좌표는 $(0, 0)$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "절댓값",
+            "src": "solution",
+            "quote": "|3|<|-5|"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=3x^2$의 꼭짓점이 $(0,0)$임을 이용해 거짓인 선지를 고른다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=ax^2$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "계수",
+            "src": "stem",
+            "quote": "상수 $a$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$y$축의 방향으로 $-4$만큼 평행이동하면"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=ax^2-4$에 $(2,8)$을 대입하여 $a$를 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=3x^2$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$m+n$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축의 방향으로 $m$만큼, $y$축의 방향으로 $n$만큼 평행이동"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$y=3(x-m)^2+n$과 $y=3(x-4)^2-5$를 비교해 $m, n$을 구한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $y=ax+b$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점은 제$2$사분면에 있다."
+          }
+        ],
+        "method": [
+          {
+            "term": "부호",
+            "src": "solution",
+            "quote": "$a < 0$이고, $y$축과 양의 부분에서 만나므로 $b > 0$이다."
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "일차함수의 기울기와 $y$절편 부호로 이차함수 꼭짓점의 사분면을 정한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=a(x-3)^2+6$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "음수 $a$의 최댓값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식",
+            "src": "solution",
+            "quote": "9a + 6 &\\le 0"
+          }
+        ],
+        "condition": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "제$2$사분면을 지나지 않도록 하는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "꼭짓점이 제1사분면이고 위로 볼록할 때 $y$절편 $\\le 0$ 조건을 세운다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=\\dfrac{1}{3}x^2-2x$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "교점",
+            "src": "solution",
+            "quote": "$x$축과의 교점은 $(0, 0)$, $(6, 0)$이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "\\frac{1}{3}x(x-6)=0"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "표준형 변형과 $y=0$ 대입을 통해 각 선지의 참·거짓을 판별한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "꼭짓점",
+            "src": "solution",
+            "quote": "꼭짓점의 좌표가 $(-2, -3)$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "$abc$의 값은?"
+          }
+        ],
+        "method": [
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "2(x+2)^2 - 3 = 2x^2 + 8x + 5"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "꼭짓점형 $y=a(x+2)^2-3$에 $y$절편 $(0,5)$를 대입한 뒤 전개한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=-x^2+8x+k$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "넓이",
+            "src": "stem",
+            "quote": "$\\triangle\\text{ABC}$의 넓이는?"
+          }
+        ],
+        "method": [
+          {
+            "term": "축",
+            "src": "solution",
+            "quote": "축의 방정식은 $x=4$이고"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "축 $x=4$ 대칭으로 $x$절편을 구해 $k$와 꼭짓점 높이를 찾는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "다항식",
+            "src": "stem",
+            "quote": "$4x^2-7x+3$을 인수분해하면"
+          }
+        ],
+        "goal": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "4x^2 - 7x + 3 &= (x - 1)(4x - 3)"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "stem",
+            "quote": "$x^2+2x-35$를 인수분해하면"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "두 이차식을 각각 일차식의 곱으로 인수분해한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "복수 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차방정식",
+            "src": "stem",
+            "quote": "이차방정식 $x^2-8x+a+7=0$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "자연수",
+            "src": "stem",
+            "quote": "자연수 $a$의 값을 모두 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "제곱근",
+            "src": "solution",
+            "quote": "\\sqrt{9 - a}"
+          }
+        ],
+        "condition": [
+          {
+            "term": "유리수",
+            "src": "stem",
+            "quote": "해가 모두 유리수가 되도록 하는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "근의 공식의 근호 안 $9-a$가 $0$ 또는 제곱수가 되는 자연수 $a$를 찾는다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 23,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "곱",
+            "src": "stem",
+            "quote": "두 남매의 나이의 곱이 $91$일 때"
+          }
+        ],
+        "goal": [
+          {
+            "term": "양수",
+            "src": "solution",
+            "quote": "나이는 양수이므로 동생의 나이는 $7$살이다."
+          }
+        ],
+        "method": [
+          {
+            "term": "이차방정식",
+            "src": "solution",
+            "quote": "x^2 + 6x - 91 &= 0"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "동생 나이 $x$에 대해 $x(x+6)=91$을 세워 인수분해한다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 24,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "이차함수",
+            "src": "stem",
+            "quote": "이차함수 $y=2(x-p)^2+q$의 그래프"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "$p+q$의 값을 구하시오."
+          }
+        ],
+        "method": [
+          {
+            "term": "꼭짓점",
+            "src": "stem",
+            "quote": "그래프의 꼭짓점이 직선 $y=x-2$ 위에 있을 때"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "$p>0$"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {
+        "method": "$q=p-2$를 이차함수 식에 대입하고 $(2,10)$을 대입해 $p$에 대한 이차방정식을 푼다."
+      },
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "a118b4ce6f096eeb",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "꼭짓점이 $(-2, -3)$이므로 $y = a(x+2)^2 - 3$이다.",
+    "점 $(0, 5)$를 대입하면 $5 = 4a - 3 \\implies a = 2$이다.",
+    "$y = 2(x+2)^2 - 3 = 2x^2 + 8x + 5$이므로 $a=2, b=8, c=5$이다.",
+    "따라서 $abc = 2 \\times 8 \\times 5 = 80$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-054",
+  "rpmEvidence": "그림에서 꼭짓점의 좌표가 $(-2, -3)$이고, $y$축과 만나는 점이 $(0, 5)$이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+  "newKeyProposal": null,
+  "typeReason": "그래프의 꼭짓점과 한 점의 좌표로부터 이차함수 식을 완성하고 계수를 구하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "꼭짓점과 y절편으로 식을 복원하는 조건으로 식 구하기 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭짓점형 식 설정과 일반형 전개 계수 계산을 결합한 난이도 2 문항이다. (문항 토큰 ax)",
+  "how": "꼭짓점형으로 식을 세우고 y절편을 대입하여 전개한 후 계수들의 곱 abc를 구했다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "좌표",
+        "quote": "이차함수 $y=ax^2+bx+c$의 그래프가 다음 그림과 같을 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": "$abc$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "quote": "그림에서 꼭짓점의 좌표가 $(-2, -3)$이고, $y$축과 만나는 점이 $(0, 5)$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "$y = 2(x+2)^2 - 3 = 2x^2 + 8x + 5$이므로 $a=2, b=8, c=5$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

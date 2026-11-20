@@ -1,0 +1,63 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "09a947f919aca87b",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "중근 조건에서 $\\left(\\dfrac{a}{2}\\right)^2 = 9b \\implies a^2 = 36b \\implies a = 6\\sqrt{b}$이다. ($a>0$)",
+    "$b$가 두 자리 자연수이고 제곱수이어야 하므로 최솟값은 $b=16$이다.",
+    "$a = 6\\sqrt{16} = 24$이므로 $a - b = 24 - 16 = 8$이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 자리 자연수 $a, b$에 대하여 이차방정식 $x^2+ax+9b=0$이 중근을 가진다.",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-036",
+  "rpmEvidence": "중근을 가지므로 일차항 계수의 절반의 제곱이 상수항과 같다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식이 중근을 가질 조건과 자연수 조건을 결합하여 미지수를 결정하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "중근 성질과 근의 판별식을 활용하는 근의 개수·판별 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "중근 판별식과 정수론적 제곱수 조건을 결합한 난이도 3 문항이다. (문항 토큰 ax)",
+  "how": "중근 조건 판별식으로 a와 b의 관계식을 세우고 두 자리 자연수 최솟값을 분석했다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "quote": "두 자리 자연수 $a, b$에 대하여 이차방정식 $x^2+ax+9b=0$이 중근을 가진다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "$a$의 값이 최소가 되도록 $b$의 값을 정할 때, $a-b$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "중근을 가지므로 일차항 계수의 절반의 제곱이 상수항과 같다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "$a$가 자연수이므로 $b$는 제곱수이어야 하고",
+        "src": "solution"
+      }
+    ]
+  }
+}

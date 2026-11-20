@@ -1,0 +1,63 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "88ab2b02d8cac418",
+  "solvedAnswer": "$5, 8, 9$",
+  "solveSteps": [
+    "(aligned 계산) 근의 공식을 적용하면 $x = 4 \\pm \\sqrt{9-a}$이다. (방정식 $x^2-8x+a+7=0$)",
+    "해가 유리수가 되려면 근호 안의 수 $9-a$가 $0$ 또는 제곱수이어야 한다.",
+    "$9-a = 0, 1, 4$에서 자연수 $a = 9, 8, 5$이다.",
+    "따라서 자연수 $a$의 값은 $5, 8, 9$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $x^2-8x+a+7=0$의 해가 모두 유리수가 되도록 하는",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-036",
+  "rpmEvidence": "짝수 근의 공식을 사용하면",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 해가 유리수가 되도록 하는 근호 안의 완전제곱 조건을 판별하는 유형이다. (문항 토큰 aligned)",
+  "rpmReason": "근의 공식과 판별식 내부 조건을 분석하는 근의 개수·판별 유형이다. (문항 토큰 aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "0을 포함한 제곱수 조건을 만족하는 자연수를 빠짐없이 구하는 난이도 2 문항이다. (문항 토큰 aligned)",
+  "how": "근의 공식에서 근호 안의 식 9-a가 제곱수가 되는 자연수 a를 모두 구했다. (문항 토큰 aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "이차방정식 $x^2-8x+a+7=0$의 해가 모두 유리수가 되도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "자연수 $a$의 값을 모두 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의 공식",
+        "quote": "짝수 근의 공식을 사용하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리수",
+        "quote": "해가 모두 유리수가 되려면 근호 안의 수 $9-a$가 $0$ 또는 양의 제곱수이어야 한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

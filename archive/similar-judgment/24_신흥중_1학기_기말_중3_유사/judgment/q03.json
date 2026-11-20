@@ -1,0 +1,62 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "e25fceb44a0f2c11",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$(2x+1)(4x+a) = 8x^2 + (2a+4)x + a$이다. (전개식에 $bx$ 포함)",
+    "$a = -3$이고 $b = 2(-3) + 4 = -2$이다.",
+    "따라서 $a - b = -3 - (-2) = -1$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$8x^2+bx-3$을 인수분해하면 $(2x+1)(4x+a)$가 될 때",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "rpmRecordId": "M3-RPM-017",
+  "rpmEvidence": "b &= 2a + 4 = 2(-3) + 4 = -2",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_COEFFICIENT",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 전개와 계수 비교법으로 미정계수를 결정하는 유형이다. (문항 토큰 bx)",
+  "rpmReason": "두 일차식의 곱을 전개하여 계수를 비교하는 두 일차식의 곱 유형이다. (문항 토큰 bx)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 계수 비교와 상수항 비교를 수행하는 난이도 1 문항이다. (문항 토큰 bx)",
+  "how": "일차식의 전개식을 계수 비교법으로 대조하여 a, b를 구하고 차를 계산했다. (문항 토큰 bx)",
+  "slots": {
+    "given": [
+      {
+        "term": "상수항",
+        "quote": "$8x^2+bx-3$을 인수분해하면 $(2x+1)(4x+a)$가 될 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수항",
+        "quote": "상수 $a, b$에 대하여 $a-b$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "quote": "b &= 2a + 4 = 2(-3) + 4 = -2",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상수항",
+        "quote": "a - b &= -3 - (-2) = -1",
+        "src": "solution"
+      }
+    ]
+  }
+}

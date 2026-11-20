@@ -1,0 +1,62 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "8c0a19cfb1bf6ed4",
+  "solvedAnswer": "4357",
+  "solveSteps": [
+    "$4x^2 - 7x + 3 = (x-1)(4x-3)$이므로 $ⓐ = 4, ⓑ = 3$이다.",
+    "$x^2 + 2x - 35 = (x-5)(x+7)$이므로 $ⓒ = 5, ⓓ = 7$이다.",
+    "따라서 비밀번호는 $4357$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "민지: $4x^2-7x+3$을 인수분해하면 $(x-1)(ⓐx-ⓑ)$이고, $x^2+2x-35$를 인수분해하면 $(x-ⓒ)(x+ⓓ)$야.",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "4x^2 - 7x + 3 &= (x - 1)(4x - 3) \\implies ⓐ = 4,\\ ⓑ = 3",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_COEFFICIENT",
+  "newKeyProposal": null,
+  "typeReason": "이차식의 인수분해를 통해 미정계수들을 찾아 실생활 비밀번호를 완성하는 서술형 유형이다. (문항 토큰 35)",
+  "rpmReason": "이차식의 인수분해 계수를 비교하는 이차식 유형이다. (문항 토큰 35)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 개의 기본 이차식 인수분해를 수행하는 난이도 1 문항이다. (문항 토큰 35)",
+  "how": "두 이차식을 각각 대각선 인수분해하여 미정계수 4개를 구하고 비밀번호를 완성했다. (문항 토큰 35)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "민지: $4x^2-7x+3$을 인수분해하면 $(x-1)(ⓐx-ⓑ)$이고, $x^2+2x-35$를 인수분해하면 $(x-ⓒ)(x+ⓓ)$야.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "민지네 집 현관문의 비밀번호를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "quote": "4x^2 - 7x + 3 &= (x - 1)(4x - 3) \\implies ⓐ = 4,\\ ⓑ = 3",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "quote": "x^2 + 2x - 35 &= (x - 5)(x + 7) \\implies ⓒ = 5,\\ ⓓ = 7",
+        "src": "solution"
+      }
+    ]
+  }
+}

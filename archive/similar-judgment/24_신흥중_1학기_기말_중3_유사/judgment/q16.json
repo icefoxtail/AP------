@@ -1,0 +1,63 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "a45c79d0209a4df6",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "일차함수 $y=ax+b$의 그래프에서 기울기 $a < 0$, $y$절편 $b > 0$이다.",
+    "이차함수 $y = (x-a)^2 + b$는 아래로 볼록하고 꼭짓점은 $(a, b)$이다.",
+    "$a < 0, b > 0$이므로 꼭짓점은 제$2$사분면에 있다.",
+    "따라서 옳은 설명은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "일차함수 $y=ax+b$의 그래프가 오른쪽 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "일차함수 $y=ax+b$의 그래프가 오른쪽 그림과 같을 때",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmEvidence": "꼭짓점 $(a, b)$에서 $a < 0, b > 0$이므로 꼭짓점은 제$2$사분면에 있다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION_PASSAGE",
+  "newKeyProposal": null,
+  "typeReason": "일차함수 계수 부호로부터 이차함수 꼭짓점의 위치와 모양을 판정하는 유형이다. (문항 토큰 ax)",
+  "rpmReason": "계수의 부호와 그래프 사분면 위치 관계를 다루는 그래프 위치 유형이다. (문항 토큰 ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차함수와 이차함수의 그래프 개형을 연계 분석하는 난이도 2 문항이다. (문항 토큰 ax)",
+  "how": "일차함수의 부호 a<0, b>0을 판정하고 이차함수 꼭짓점 (a, b)의 사분면 위치를 도출했다. (문항 토큰 ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "일차식",
+        "quote": "일차함수 $y=ax+b$의 그래프가 오른쪽 그림과 같을 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "quote": "이차함수 $y=(x-a)^2+b$의 그래프에 대한 설명으로 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "quote": "꼭짓점 $(a, b)$에서 $a < 0, b > 0$이므로 꼭짓점은 제$2$사분면에 있다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차식",
+        "quote": "일차함수 $y=ax+b$의 그래프가 오른쪽 아래로 향하므로 $a < 0$이고",
+        "src": "solution"
+      }
+    ]
+  }
+}

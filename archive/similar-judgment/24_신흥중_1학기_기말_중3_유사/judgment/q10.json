@@ -1,0 +1,62 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "6bd8a661138f94be",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "짝수 근의 공식에 의해 $x = \\dfrac{4 \\pm \\sqrt{16-6}}{2} = \\dfrac{4 \\pm \\sqrt{10}}{2}$이다.",
+    "$A = 4, B = 10$이므로 $A + B = 14$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차방정식 $2x^2-8x+3=0$의 해가 $x=\\dfrac{A\\pm\\sqrt{B}}{2}$일 때, $A+B$의 값은? (단, $A, B$는 유리수)",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmEvidence": "짝수 근의 공식을 적용하면 ($a=2, b'=-4, c=3$)",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "근의 공식을 이용하여 이차방정식의 해를 구하고 식의 값을 계산하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "이차방정식의 근의 공식을 직접 적용하는 근의 공식 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기초 근의 공식 대입과 근호 안의 계산을 확인하는 난이도 1 문항이다. (문항 토큰 12)",
+  "how": "근의 공식을 적용하여 해를 구하고 계수 A, B의 합을 도출했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "유리수",
+        "quote": "이차방정식 $2x^2-8x+3=0$의 해가 $x=\\dfrac{A\\pm\\sqrt{B}}{2}$일 때, $A+B$의 값은? (단, $A, B$는 유리수)",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "quote": "$A+B$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "근의 공식",
+        "quote": "짝수 근의 공식을 적용하면 ($a=2, b'=-4, c=3$)",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무리수",
+        "quote": "= \\frac{4 \\pm \\sqrt{10}}{2}",
+        "src": "solution"
+      }
+    ]
+  }
+}

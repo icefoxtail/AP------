@@ -1,0 +1,63 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "f4feaed33953f564",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "대칭축 $x=4$이고 $\\overline{\\text{BC}}=6$이므로 두 교점의 $x$좌표는 $1, 7$이다.",
+    "점 $(7, 0)$을 대입하면 $0 = -(7-4)^2 + 16 + k \\implies k = -7$이다.",
+    "꼭짓점 $\\text{A}$는 $(4, 9)$이므로 삼각형 넓이는 $\\dfrac{1}{2} \\times 6 \\times 9 = 27$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 이차함수 $y=-x^2+8x+k$의 그래프에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같은 이차함수 $y=-x^2+8x+k$의 그래프에서 꼭짓점을 $\\text{A}$라 하고, $x$축과의 두 교점을 각각 $\\text{B}, \\text{C}$라 하자.",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-050",
+  "rpmEvidence": "축의 방정식은 $x=4$이고, 두 교점 $\\text{B}, \\text{C}$는 축 $x=4$에 대하여 대칭이므로",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_X_INTERCEPTS_DISTANCE",
+  "templateKey": "TPL_M3_FIND_CONSTANT_FROM_CHORD_LENGTH_ON_X_AXIS",
+  "newKeyProposal": null,
+  "typeReason": "이차함수의 대칭성과 x절편 간격으로 꼭짓점을 찾고 삼각형 넓이를 구하는 유형이다. (문항 토큰 BC)",
+  "rpmReason": "대칭축과 꼭짓점의 성질을 분석하는 꼭짓점·축 유형이다. (문항 토큰 BC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대칭성을 이용한 절편 역산과 삼각형 넓이 계산을 결합한 난이도 3 문항이다. (문항 토큰 BC)",
+  "how": "대칭축과 교점 거리 조건으로 x절편을 찾고 꼭짓점 높이를 구해 삼각형 넓이를 계산했다. (문항 토큰 BC)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "다음 그림과 같은 이차함수 $y=-x^2+8x+k$의 그래프에서 꼭짓점을 $\\text{A}$라 하고, $x$축과의 두 교점을 각각 $\\text{B}, \\text{C}$라 하자.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "$\\triangle\\text{ABC}$의 넓이는? (단, $k$는 상수이다.)",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "quote": "축의 방정식은 $x=4$이고, 두 교점 $\\text{B}, \\text{C}$는 축 $x=4$에 대하여 대칭이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$\\overline{\\text{BC}}=6$일 때",
+        "src": "stem"
+      }
+    ]
+  }
+}

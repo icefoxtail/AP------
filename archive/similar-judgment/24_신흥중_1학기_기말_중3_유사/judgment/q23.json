@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "664f7044678435b3",
+  "solvedAnswer": "7살",
+  "solveSteps": [
+    "동생의 나이를 $x$라 하면 $x(x+6) = 91 \\implies x^2 + 6x - 91 = 0$이다.",
+    "$(x-7)(x+13) = 0$에서 $x > 0$이므로 $x = 7$이다.",
+    "따라서 동생의 나이는 $7$살이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "여섯 살 차이가 나는 두 남매의 나이의 곱이 $91$일 때",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+  "rpmRecordId": "M3-RPM-037",
+  "rpmEvidence": "동생의 나이를 $x$살이라 하면 손위 형제의 나이는 $(x+6)$살이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "실생활 나이 수량 조건을 이차방정식으로 세워 문제를 해결하는 서술형 유형이다. (문항 토큰 91)",
+  "rpmReason": "수량 차이와 곱셈 조건을 방정식으로 다루는 연속된 수 유형이다. (문항 토큰 91)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식 문장제 식 세우기와 음수 해 제외를 수행하는 난이도 2 문항이다. (문항 토큰 91)",
+  "how": "나이 차이를 미지수로 세워 이차방정식을 만들고 양수 해를 구했다. (문항 토큰 91)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "quote": "여섯 살 차이가 나는 두 남매의 나이의 곱이 $91$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "동생의 나이를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "quote": "동생의 나이를 $x$살이라 하면 손위 형제의 나이는 $(x+6)$살이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "quote": "나이는 양수이므로 동생의 나이는 $7$살이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

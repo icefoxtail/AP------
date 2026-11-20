@@ -1,0 +1,62 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "87366da733098912",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "선지 ②의 $2x^2 - 5x - 3 = 0$에 $x=3$을 대입하면 $2(9) - 5(3) - 3 = 18 - 15 - 3 = 0$으로 성립한다.",
+    "다른 보기들은 $x=3$을 대입했을 때 등식이 성립하지 않는다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 $x=3$을 해로 갖는 이차방정식을 고르면?",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-030",
+  "rpmEvidence": "각 방정식에 $x=3$을 대입한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "주어진 수가 이차방정식의 해인지 대입하여 검증하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "이차방정식의 해의 정의를 적용하는 해의 확인 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수치 대입을 통해 방정식의 해를 검증하는 난이도 1 문항이다. (문항 토큰 10)",
+  "how": "주어진 x=3을 각 이차방정식에 대입하여 등식이 성립하는 것을 확인했다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "quote": "다음 중 $x=3$을 해로 갖는 이차방정식을 고르면?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "quote": "이차방정식을 고르면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차식",
+        "quote": "각 방정식에 $x=3$을 대입한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "quote": "$2(9)-5(3)-3=18-15-3=0$ (참)",
+        "src": "solution"
+      }
+    ]
+  }
+}

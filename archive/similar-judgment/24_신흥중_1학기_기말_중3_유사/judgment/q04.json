@@ -1,0 +1,62 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "39fca6c70df99fa6",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "선지 ④에서 $x(x-4) = (3x+1)(x-2) \\implies x^2 - 4x = 3x^2 - 5x - 2 \\implies 2x^2 - x - 2 = 0$이다.",
+    "최고차항이 이차항이므로 이차방정식이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중에서 이차방정식을 고르면?",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "rpmRecordId": "M3-RPM-029",
+  "rpmEvidence": "$x^2-4x=3x^2-5x-2 \\implies 2x^2-x-2=0$이므로 이차방정식이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "등식을 정리하여 최고차항이 이차식인지 판별하는 이차방정식 판별 유형이다. (문항 토큰 4)",
+  "rpmReason": "이차방정식의 정의를 검증하는 이차방정식 판별 유형이다. (문항 토큰 4)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "괄호 전개 후 동류항을 정리하여 이차방정식을 판별하는 난이도 1 문항이다. (문항 토큰 4)",
+  "how": "각 식을 한쪽 변으로 이항 정리하여 이차항이 소거되지 않는 참인 이차방정식을 판별했다. (문항 토큰 4)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차식",
+        "quote": "다음 중에서 이차방정식을 고르면?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차식",
+        "quote": "이차방정식을 고르면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차식",
+        "quote": "$x^2-4x=3x^2-5x-2 \\implies 2x^2-x-2=0$이므로 이차방정식이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차식",
+        "quote": "$x(x-4)=(3x+1)(x-2)$",
+        "src": "choices"
+      }
+    ]
+  }
+}

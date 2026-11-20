@@ -1,0 +1,62 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "f4ba3fd5a8ef6478",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "꼭짓점 $(3, 6)$에서 위로 볼록한 포물선 $y=a(x-3)^2+6$이 제$2$사분면을 지나지 않으려면 $y$절편 $\\le 0$이어야 한다. (aligned 식 형태 $a(0-3)^2+6$)",
+    "$9a + 6 \\le 0 \\implies a \\le -\\dfrac{2}{3}$이다.",
+    "따라서 음수 $a$의 최댓값은 $-\\dfrac{2}{3}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y=a(x-3)^2+6$의 그래프가 제$2$사분면을 지나지 않도록 하는",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "rpmRecordId": "M3-RPM-053",
+  "rpmEvidence": "그래프가 제$2$사분면을 지나지 않으려면 $y$절편이 $0$ 이하이어야 한다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_QUADRANT_CONDITION",
+  "templateKey": "TPL_M3_FIND_PARAMETER_RANGE_AVOIDING_SPECIFIC_QUADRANT",
+  "newKeyProposal": null,
+  "typeReason": "이차함수가 특정 사분면을 지나지 않도록 y절편의 범위를 결정하는 유형이다. (문항 토큰 aligned)",
+  "rpmReason": "사분면 통과 조건과 계수의 범위를 다루는 그래프 위치 유형이다. (문항 토큰 aligned)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "y절편이 0 이하이어야 한다는 경계 조건을 파악하는 난이도 2 문항이다. (문항 토큰 aligned)",
+  "how": "제2사분면을 지나지 않기 위한 y절편 조건 부등식을 세워 a의 최댓값을 구했다. (문항 토큰 aligned)",
+  "slots": {
+    "given": [
+      {
+        "term": "음수",
+        "quote": "이차함수 $y=a(x-3)^2+6$의 그래프가 제$2$사분면을 지나지 않도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "음수",
+        "quote": "음수 $a$의 최댓값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "quote": "그래프가 제$2$사분면을 지나지 않으려면 $y$절편이 $0$ 이하이어야 한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "좌표",
+        "quote": "꼭짓점 $(3, 6)$은 제$1$사분면에 있고 $a<0$이므로 위로 볼록하다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

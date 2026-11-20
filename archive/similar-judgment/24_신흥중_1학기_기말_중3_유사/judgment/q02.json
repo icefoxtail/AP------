@@ -1,0 +1,62 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "d9342d199cd3aa6d",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(x+a)(x+b) = x^2 + (a+b)x + ab$에서 $ab = 18, p = a+b$이다.",
+    "$p$가 최소가 되려면 두 음의 정수 $(-1, -18)$일 때 $p = -1 + (-18) = -19$이다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$a, b$가 정수일 때, 등식 $x^2+px+18=(x+a)(x+b)$를 만족시키는",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "ab &= 18, \\quad p = a+b",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+  "newKeyProposal": null,
+  "typeReason": "정수 조건의 이차식 인수분해에서 미정계수의 최솟값을 구하는 유형이다. (문항 토큰 px)",
+  "rpmReason": "두 일차식의 곱과 계수의 성질을 분석하는 이차식 유형이다. (문항 토큰 px)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음의 정수쌍에서 절댓값 합이 최대가 되는 경우를 판단하는 난이도 2 문항이다. (문항 토큰 px)",
+  "how": "정수 계수 조건에서 곱이 18인 순서쌍 중 합이 최소인 음수쌍을 찾았다. (문항 토큰 px)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "quote": "$a, b$가 정수일 때, 등식 $x^2+px+18=(x+a)(x+b)$를 만족시키는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": "수 $p$의 최솟값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "quote": "ab &= 18, \\quad p = a+b",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "quote": "$(a, b) = (-1, -18)$일 때 $p = -1 + (-18) = -19$로 최소이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}
