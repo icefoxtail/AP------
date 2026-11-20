@@ -1,0 +1,54 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "8948b05f8cfe1f11",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$x+y = 4, xy = 4-3 = 1$이다. (48)",
+    "$x^3+y^3 = (x+y)^3 - 3xy(x+y) = 4^3 - 3(1)(4) = 64 - 12 = 52$이다. (48)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x=2+\\sqrt{3}$,",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-MULTIPLICATION_FORMULA",
+  "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "곱셈공식의 변형과 대칭식 값 계산 기본 유형이다. (48)",
+  "rpmRecordId": "H1-RPM-003",
+  "rpmReason": "다항식의 연산 단원의 합과 곱을 이용한 세제곱 곱셈공식 변형 유형이다. (48)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "켤레무리수 두 값의 합과 곱을 대입하여 세제곱 합 공식을 적용하는 난이도 1 문항이다. (48)",
+  "how": "켤레무리수의 합과 곱을 구하고 세제곱 합 곱셈공식 변형으로 52를 계산했다. (48)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "src": "stem",
+        "quote": "$x=2+\\sqrt{3}$, $y=2-\\sqrt{3}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$x^3+y^3$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "src": "solution",
+        "quote": "곱셈 공식의 변형에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "e7b0aa8dc8335c2f",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "A와 B의 y좌표가 같으므로 대칭축 $x=7/2$에 의해 $a+b=7$이다. (ABC)",
+    "두 점 BC 직선의 기울기가 4이므로 $b+c = 11$, AC 직선의 기울기가 2이므로 $a+c = 9$이다. (ABC)",
+    "연립하면 $a=5/2, b=9/2, c=13/2$이다. (ABC)",
+    "밑변은 $b-a = 2$, 높이는 $f(c)-f(b) = 4(c-b) = 8$이므로 넓이는 $1/2 \\times 2 \\times 8 = 8$이다. (ABC)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $f(x)=x^2-",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수 그래프 위의 세 점과 직선의 기울기 연계 넓이 계산 유형이다. (ABC)",
+  "rpmRecordId": "H1-RPM-033",
+  "rpmReason": "이차방정식 단원의 이차함수 그래프의 대칭성과 직선의 기울기를 이용한 도형의 넓이 유형이다. (ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수 위의 점들의 대칭성과 두 직선의 기울기 조건을 연립하여 삼각형 넓이를 계산하는 난이도 3 문항이다. (ABC)",
+  "how": "이차함수 할선의 기울기 공식과 대칭축 관계식을 연립하여 세 점의 좌표와 삼각형 넓이 8을 구했다. (ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x)=x^2-7x+t$의 그래프 위의 세 점"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $ABC$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭축",
+        "src": "solution",
+        "quote": "대칭축 $x=\\dfrac{7}{2}$에 대하여 대칭이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "기울기가 $4$인 직선이 점 $C$를 지나고"
+      }
+    ]
+  }
+}

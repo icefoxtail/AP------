@@ -1,0 +1,61 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "ad8acf1818f707a1",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "x축에 접하므로 판별식 $D/4 = (a-3k)^2 - (9k^2-4k+b) = (4-6a)k + (a^2-b) = 0$이다. (10)",
+    "k에 대한 항등식이므로 $4-6a = 0 \\implies a = 2/3$, $b = a^2 = 4/9$이다. (10)",
+    "따라서 $a+b = 2/3 + 4/9 = 10/9$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$f(x)=x^2+2(a-3",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차함수와 x축의 접점 판별식과 항등식 연계 유형이다. (10)",
+  "rpmRecordId": "H1-RPM-034",
+  "rpmReason": "이차방정식 단원의 이차함수 그래프가 항상 x축에 접할 항등식 조건 유형이다. (10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차함수의 접점 조건 판별식과 항등식의 성질을 결합하는 난이도 2 문항이다. (10)",
+  "how": "포물선이 x축에 접하는 조건 D=0을 k에 대한 항등식으로 정리하여 a, b를 구했다. (10)",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "solution",
+        "quote": "k$에 대한 항등식의 성질에 의하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$, $b$는 상수"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "방정식 $x^2+2(a-3k)x+9k^2-4k+b=0$의 판별식 $D=0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "y=f(x)$의 그래프가 $x$축에 접하므로"
+      }
+    ]
+  }
+}

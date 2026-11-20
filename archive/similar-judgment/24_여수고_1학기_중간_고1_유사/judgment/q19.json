@@ -1,0 +1,63 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "9e1541053cb36bc9",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$P(0)=4 \\implies b=4$이다. (ax)",
+    "나누어떨어짐 조건에서 $P(2)P(-1)=0, P(5)P(2)=0$이다. (ax)",
+    "만약 $P(2) \\ne 0$이면 $P(-1)=P(5)=0$이어야 하는데 상수항 모순이 발생하므로 $P(2)=0$이다. (ax)",
+    "$4+2a+4 = 0 \\implies a = -4$이므로 $P(x) = (x-2)^2$이다. (ax)",
+    "$P(4) = 4 \\implies {P(4)}^2 = 16$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "최고차항의 계수가 $1$인",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 곱의 나눗셈과 조건 추론을 통한 다항식 결정 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-010",
+  "rpmReason": "항등식과 나머지정리 단원의 두 다항식 곱의 인수 나눗셈과 조건 추론 유형이다. (ax)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식의 곱이 나누어떨어지는 조건에서 상수항 모순을 배제하고 인수를 특정하는 난이도 3 심화 문항이다. (ax)",
+  "how": "인수정리 조건의 논리적 귀류법으로 P(2)=0을 도출해 P(x)=(x-2)^2을 확정했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "최고차항의 계수가 $1$인 이차다항식 $P(x)=x^2+ax+b$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "${P(4)}^2$의 값을 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "P(x)P(x-3)$이 $(x-2)(x-5)$로 나누어떨어지므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "로 나누어떨어질 때"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "cfa5b9ce3563a11f",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$y = 2-x$를 대입하여 정리하면 $(a-b+c)x^2 + (2b-4c)x + 4c = 8$이다. (ax)",
+    "항등식이므로 $4c = 8 \\implies c = 2$, $2b-4(2) = 0 \\implies b = 4$, $a-4+2 = 0 \\implies a = 2$이다. (ax)",
+    "따라서 $abc = 2 \\times 4 \\times 2 = 16$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x+y=2$일 때, 등식",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "조건식이 주어진 항등식과 계수비교법 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 조건식이 주어진 미정계수 항등식 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "조건식이 주어진 다변수 등식을 한 문자 항등식으로 변형하여 미정계수를 구하는 난이도 2 문항이다. (ax)",
+  "how": "조건식 y=2-x를 대입하여 한 문자의 항등식으로 만든 후 계수비교법으로 abc=16을 구했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "$x+y=2$일 때, 등식 $ax^2+bxy+cy^2=8$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$, $b$, $c$에 대하여 $abc$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "이 등식이 모든 실수 $x$에 대하여 성립하므로 계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "stem",
+        "quote": "항상 성립하도록 하는"
+      }
+    ]
+  }
+}

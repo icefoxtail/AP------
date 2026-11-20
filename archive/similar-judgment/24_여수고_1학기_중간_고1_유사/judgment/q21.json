@@ -1,0 +1,54 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "affbc0229d0c33ff",
+  "solvedAnswer": "$a=-8, b=-32$",
+  "solveSteps": [
+    "$(x-2)^4 = (x^2-4x+4)^2 = x^4 - 8x^3 + 24x^2 - 32x + 16$으로 전개한다. (ax)",
+    "우변과 계수를 비교하면 $a = -8, b = -32$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x-2)^4=x^4+ax",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-IDENTITY",
+  "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "항등식의 계수비교법과 다항식 전개 서술형 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-007",
+  "rpmReason": "항등식과 나머지정리 단원의 사차식 전개식을 이용한 계수비교법 서술형 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사차 이항정리 전개를 수행하고 계수비교법으로 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
+  "how": "사차식을 완전 전개하여 우변의 다항식과 계수를 비교해 a=-8, b=-32를 도출했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "항등식",
+        "src": "stem",
+        "quote": "이 $x$에 대한 항등식일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $a$, $b$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "src": "solution",
+        "quote": "계수를 비교하면 $a=-8$, $b=-32$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

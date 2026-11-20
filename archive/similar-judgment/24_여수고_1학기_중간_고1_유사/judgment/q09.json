@@ -1,0 +1,61 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "1570ff54e7439151",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$y = (x-2)^2 + 1$의 대칭축은 $x=2$이다. (26)",
+    "구간 $[3, k]$는 축 오른쪽에 위치하므로 $x=k$에서 최댓값을 갖는다. (26)",
+    "$k^2-4k+5 = 26 \\implies (k-7)(k+3) = 0$에서 $k \\ge 3$이므로 $k=7$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$3\\le x\\le k$에서",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "제한 구간에서의 이차함수의 최댓값과 미정계수 결정 유형이다. (26)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 축 오른쪽 제한구간에서의 증가 구간 최댓값 매개변수 결정 유형이다. (26)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "축의 위치가 고정된 이차함수의 제한 구간에서 최댓값 조건으로 구간 끝점을 구하는 난이도 1 문항이다. (26)",
+  "how": "대칭축 오른쪽 증가 구간임을 파악하여 끝점 k를 대입해 k=7을 구했다. (26)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "대칭축은 $x=2$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭축",
+        "src": "solution",
+        "quote": "구간 $3\\le x\\le k$는 대칭축 $x=2$의 오른쪽에 있으므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값이 $26$일 때"
+      }
+    ]
+  }
+}

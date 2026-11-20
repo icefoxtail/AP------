@@ -1,0 +1,55 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "d078ec2cc6a75ac5",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "$( (1-i)/\\sqrt{2} )^2 = -i$이므로 14제곱은 $(-i)^7 = i$이다.",
+    "$(1+i)/(1-i) = i$이므로 15제곱은 $i^{15} = -i$이다. (14)",
+    "따라서 $i + (-i) = 0$이다. (14)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\left(\\dfrac{1",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수의 거듭제곱 규칙성과 사칙연산 유형이다. (14)",
+  "rpmRecordId": "H1-RPM-025",
+  "rpmReason": "복소수 단원의 i의 거듭제곱 주기성과 복소수 거듭제곱 계산 유형이다. (14)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 거듭제곱 주기성을 이용해 식을 간단히 계산하는 난이도 2 문항이다. (14)",
+  "how": "두 복소수 밑을 제곱 및 유리화하여 -i와 i로 바꾼 뒤 지수 주기를 적용해 합 0을 구했다. (14)",
+  "slots": {
+    "given": [
+      {
+        "term": "허수단위",
+        "src": "stem",
+        "quote": "단, $i=\\sqrt{-1}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "solution",
+        "quote": "따라서 구하는 값은 $i+(-i)=0$이고"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "이므로 $\\left(\\dfrac{1+i}{1-i}\\right)^{15}=i^{15}=-i$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

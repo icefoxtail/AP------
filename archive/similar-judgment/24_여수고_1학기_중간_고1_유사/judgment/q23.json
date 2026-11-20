@@ -1,0 +1,62 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "2ab19bfde5d2f04d",
+  "solvedAnswer": "$25$",
+  "solveSteps": [
+    "$f(x) = (x-7/2)^2 + b - 49/4$이고 대칭축 $7/2$는 구간 $[0, 3]$의 오른쪽에 있다. (ax)",
+    "감소 구간이므로 $M = f(0) = b, m = f(3) = b-12$이다. (ax)",
+    "$M = 3m \\implies b = 3(b-12) \\implies 2b = 36 \\implies b = 18$이다. (ax)",
+    "따라서 $2a+b = 2(7/2) + 18 = 7 + 18 = 25$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "실수 $a$, $b$에 대하",
+  "standardUnitKey": "H15-SA-13",
+  "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "제한 구간에서의 이차함수 최대·최소 조건식 서술형 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-037",
+  "rpmReason": "이차함수 단원의 축 왼쪽 제한구간에서의 감소 구간 최대·최소 비례 조건 서술형 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "대칭축의 위치에 따른 구간 단조성을 파악하여 최대·최소 관계식으로부터 미정계수를 구하는 난이도 2 서술형 문항이다. (ax)",
+  "how": "구간이 축 왼쪽에 있어 감소함수임을 이용해 M=b, m=b-12를 구하고 b=18을 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "solution",
+        "quote": "아래로 볼록한 포물선이고 대칭축 $x=\\dfrac{7}{2}$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$2a+b$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭축",
+        "src": "solution",
+        "quote": "구간 $0\\le x\\le 3$의 오른쪽에 있으므로 이 구간에서 $f(x)$는 감소한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "최댓값을 $M$, 최솟값을 $m$이라 할 때"
+      }
+    ]
+  }
+}

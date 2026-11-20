@@ -1,0 +1,61 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "cc2f0d6c266d3d2e",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$x^2-x-2 = (x-2)(x+1)$로 나누어떨어지므로 $P(2)=0, P(-1)=0$이다. (ax)",
+    "$4a+b=1, a+b=-5$를 연립하면 $a=2, b=-7$이다. (ax)",
+    "따라서 $ab = -14$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $P(x)=ax^3+",
+  "standardUnitKey": "H15-SA-02",
+  "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+  "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "인수정리와 미정계수의 연립 결정 기본 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-009",
+  "rpmReason": "항등식과 나머지정리 단원의 인수정리를 이용한 미정계수법 유형이다. (ax)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차식으로 나누어떨어지는 다항식의 인수정리 연립방정식을 푸는 난이도 1 문항이다. (ax)",
+  "how": "인수정리로 P(2)=0, P(-1)=0 연립방정식을 풀어 a=2, b=-7을 구하고 곱 -14를 계산했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x)=ax^3+x^2+bx-6$이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$, $b$는 상수"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "src": "solution",
+        "quote": "인수정리에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "두 식을 빼면 $3a=6 \\implies a=2$이고"
+      }
+    ]
+  }
+}

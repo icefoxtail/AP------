@@ -1,0 +1,61 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "20ff090dca4b2fc2",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$a^2+b^2 = 25$에서 자연수 $a>b$이므로 $(a, b) = (4, 3) \\implies z_1 = 4+3i$이다. (bi)",
+    "$c^2+d^2 = 10$에서 자연수 $c>d$이므로 $(c, d) = (3, 1) \\implies z_2 = 3+i$이다. (bi)",
+    "$z_1 - z_2 = (4+3i) - (3+i) = 1+2i$이다. (bi)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 복소수 $z_1=a+bi",
+  "standardUnitKey": "H15-SA-04",
+  "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복소수와 켤레복소수의 곱의 성질과 자연수 부정방정식 유형이다. (bi)",
+  "rpmRecordId": "H1-RPM-024",
+  "rpmReason": "복소수 단원의 켤레복소수와의 곱과 정수 조건 연계 유형이다. (bi)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "복소수의 크기 조건과 자연수 부정방정식을 결합하여 두 복소수의 차를 구하는 난이도 2 문항이다. (bi)",
+  "how": "복소수와 켤레복소수의 곱이 제곱의 합임을 이용해 자연수 순서쌍을 특정하고 차를 계산했다. (bi)",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "두 복소수 $z_1=a+bi$, $z_2=c+di$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "$z_1-z_2$는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "켤레복소수",
+        "src": "solution",
+        "quote": "z_1\\bar{z}_1=a^2+b^2=25$에서 $a, b$는 자연수이고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$a$, $b$, $c$, $d$는 자연수이고"
+      }
+    ]
+  }
+}

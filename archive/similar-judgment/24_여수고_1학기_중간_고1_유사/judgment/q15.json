@@ -1,0 +1,61 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "867ecb90e2501b8c",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "허근 조건 판별식 $D/4 = m^2 - n < 0 \\implies n > m^2$이다. (mz)",
+    "$m, n$이 자연수이므로 $m=1$일 때 $n > 1 \\implies n=2$가 최소이다. (mz)",
+    "따라서 $m+n$의 최솟값은 $1+2 = 3$이다. (mz)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$z^2-2mz+n=0$ (",
+  "standardUnitKey": "H15-SA-05",
+  "subUnitKey": "H15-SA-05-DISCRIMINANT",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "이차방정식의 근의 판별과 자연수 조건의 최적화 유형이다. (mz)",
+  "rpmRecordId": "H1-RPM-027",
+  "rpmReason": "이차방정식 단원의 이차방정식의 허근 조건과 판별식 부등식 유형이다. (mz)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "이차방정식의 허근 조건 판별식을 자연수 부정부등식으로 해결하는 난이도 2 문항이다. (mz)",
+  "how": "판별식 D<0에서 n>m^2 부등식을 세우고 자연수 조건에서 m=1, n=2로 최솟값 3을 구했다. (mz)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$m$, $n$은 자연수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "$m+n$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "이차방정식 $z^2-2mz+n=0$이 허근을 가지려면 판별식 $D<0$이어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "허근 $z$가 존재할 때"
+      }
+    ]
+  }
+}

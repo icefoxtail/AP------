@@ -1,0 +1,54 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "c7c4dd888a88cf5d",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$3x^3-x^2+6x-1 = x^2(3x-1) + 2(3x-1) + 1 = (3x-1)(x^2+2) + 1$이다.",
+    "따라서 몫은 $x^2+2$, 나머지는 $1$이다. (3)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(3x^3-x^2+6x-1",
+  "standardUnitKey": "H15-SA-01",
+  "subUnitKey": "H15-SA-01-POLYNOMIAL_DIVISION",
+  "problemTypeKey": "PT_H1_POLY_DIVISION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "다항식의 나눗셈과 몫, 나머지 계산 기본 유형이다. (3)",
+  "rpmRecordId": "H1-RPM-006",
+  "rpmReason": "다항식의 연산 단원의 직접 나눗셈을 이용한 몫과 나머지 계산 유형이다. (3)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다항식을 일차식으로 나누었을 때의 몫과 나머지를 구하는 난이도 1 문항이다. (3)",
+  "how": "삼차식을 일차식 3x-1로 나누어 몫 x^2+2와 나머지 1을 도출했다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "stem",
+        "quote": "$(3x^3-x^2+6x-1)\\div(3x-1)$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "몫",
+        "src": "stem",
+        "quote": "몫과 나머지를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "따라서 몫은 $x^2+2$, 나머지는 $1$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

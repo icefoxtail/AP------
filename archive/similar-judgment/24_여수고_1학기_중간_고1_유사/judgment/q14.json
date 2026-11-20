@@ -1,0 +1,55 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "2339c001516353dc",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$(x-1)(x-2)(x+2)(x+3)+k = (x^2+x-2)(x^2+x-6)+k$로 재배열한다. (12)",
+    "$t = x^2+x$로 치환하면 $(t-2)(t-6)+k = t^2-8t+12+k$이다.",
+    "완전제곱식이 되려면 $12+k = (-4)^2 = 16 \\implies k = 4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x^2-3x+2)(x^2",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "공통부분 치환을 통한 다항식의 완전제곱식 조건 유형이다. (12)",
+  "rpmRecordId": "H1-RPM-015",
+  "rpmReason": "인수분해 단원의 공통부분 치환과 완전제곱식 조건 유형이다. (12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일차식 4개의 곱 형태를 적절히 짝지어 치환 후 완전제곱식 조건을 적용하는 난이도 2 문항이다. (12)",
+  "how": "공통부분이 생기도록 인수들을 짝지어 t로 치환하고 상수항이 16이 되도록 k=4를 구했다. (12)",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "src": "stem",
+        "quote": "$(x^2-3x+2)(x^2+5x+6)+k$가 이차식의 완전제곱식일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "상수 $k$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "t=x^2+x$라 치환하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

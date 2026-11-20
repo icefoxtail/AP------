@@ -1,0 +1,61 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "bd6c17cc6249c58b",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$x^2+1$과 $x^2+4$는 서로소이므로 $P(x) = (x^2+1)(x^2+4)$이다. (ax)",
+    "$P(x) = x^4+5x^2+4$이므로 $a=5, b=4$이다. (ax)",
+    "따라서 $a+b = 9$이다. (ax)"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다항식 $P(x)=x^4+a",
+  "standardUnitKey": "H15-SA-03",
+  "subUnitKey": "H15-SA-03-FACTORIZATION",
+  "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "복이차식의 인수 구조와 미정계수 결정 유형이다. (ax)",
+  "rpmRecordId": "H1-RPM-014",
+  "rpmReason": "인수분해 단원의 서로소인 두 이차식으로 나누어떨어지는 복이차식 미정계수 결정 유형이다. (ax)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "사차다항식의 인수 분해 구조로부터 계수를 비교하여 결정하는 난이도 2 문항이다. (ax)",
+  "how": "서로소인 두 이차 인수의 곱으로 사차식을 전개하여 미정계수 a=5, b=4를 구했다. (ax)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x)=x^4+ax^2+b$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$, $b$는 상수"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수",
+        "src": "solution",
+        "quote": "P(x)=(x^2+1)(x^2+4)=x^4+5x^2+4",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "나머지",
+        "src": "stem",
+        "quote": "로 각각 나누어떨어질 때"
+      }
+    ]
+  }
+}
