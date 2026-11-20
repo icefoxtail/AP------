@@ -1,0 +1,55 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "4fd062664b2183c6",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "문항의 조건과 식을 분석하여 단계를 전개한다. (문항 토큰 ABCD)",
+    "주어진 조건을 계산하여 정답 ④을(를) 도출한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 사각형 $ABCD$에서 꼭짓점 $A$의 외각의 크기가 $x + 10^\\circ$, 꼭짓점 $B$의 외각의 크기가 $120^\\circ$이고, $\\angle C = 2x, \\angle D = 65^\\circ$일 때, $\\angle C$의 크기는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림의 사각형 $ABCD$에서 꼭짓점 $A$의 외각의 크기가 $x + 10^\\circ$, 꼭짓점 $B$의 외각의 크기가 $120^\\circ$이고, $\\angle C = 2x, \\angle D = 65^\\circ$일 때, $\\angle C$의 크기는?",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "rpmRecordId": "M1-RPM-081",
+  "rpmEvidence": "꼭짓점 $A$의 내각의 크기는 외각 $x + 10^\\circ$의 보각이므로 $$\\begin{aligned} \\angle A &= 180^\\circ - (x + 10^\\circ) = 170^\\circ - x \\end{aligned}$$ 꼭짓점 $B$의 내각의 크기는 외각 $120^\\circ$의 보각이므로 $$\\begin{aligned} \\angle B &= 180^\\circ - 120^\\circ = 60^\\circ \\end{aligned}$$ 사각형의 네 내각의 크기의 합은 $360^\\circ$이므로 $$\\begin{aligned} \\angle A + \\angle B + \\angle C + \\angle D &= 360^\\circ \\ (170^\\circ - x) + 60^\\circ + 2x + 65^\\circ &= 360^\\circ \\ x + 295^\\circ &= 360^\\circ \\ x &= 65^\\circ \\end{aligned}$$ 따라서 $\\angle C$의 크기는 $$\\begin{aligned} \\angle C &= 2x \\ &= 2 \\times 65^\\circ \\ &= 130^\\circ \\end{aligned}$$ 따라서 정답은 ④이다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+  "newKeyProposal": null,
+  "typeReason": "Q4번 문항은 PT_M1_POLYGON_ANGLE_AND_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q4번 문항은 M1-RPM-081에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q4번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "다음 그림의 사각형 $ABCD$에서 꼭짓점 $A$의 외각의 크기가 $x + 10^\\circ$, 꼭짓점 $B$의 외각의 크기가 $120^\\circ$이고, $\\angle C = 2x, \\angle D = 65^\\circ$일 때, $\\angle C$의 크기는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "다음 그림의 사각형 $ABCD$에서 꼭짓점 $A$의 외각의 크기가 $x + 10^\\circ$, 꼭짓점 $B$의 외각의 크기가 $120^\\circ$이고, $\\angle C = 2x, \\angle D = 65^\\circ$일 때, $\\angle C$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내각",
+        "src": "solution",
+        "quote": "꼭짓점 $A$의 내각의 크기는 외각 $x + 10^\\circ$의 보각이므로 $$\\begin{aligned} \\angle A &= 180^\\circ - (x + 10^\\circ) = 170^\\circ - x \\end{aligned}$$ 꼭짓점 $B$의 내각의 크기는 외각 $120^\\circ$의 보각이므로 $$\\begin{aligned} \\angle B &= 180^\\circ - 120^\\circ = 60^\\circ \\end{aligned}$$ 사각형의 네 내각의 크기의 합은 $360^\\circ$이므로 $$\\begin{aligned} \\angle A + \\angle B + \\angle C + \\angle D &= 360^\\circ \\ (170^\\circ - x) + 60^\\circ + 2x + 65^\\circ &= 360^\\circ \\ x + 295^\\circ &= 360^\\circ \\ x &= 65^\\circ \\end{aligned}$$ 따라서 $\\angle C$의 크기는 $$\\begin{aligned} \\angle C &= 2x \\ &= 2 \\times 65^\\circ \\ &= 130^\\circ \\end{aligned}$$ 따라서 정답은 ④이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

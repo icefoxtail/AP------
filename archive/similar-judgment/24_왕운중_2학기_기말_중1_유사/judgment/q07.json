@@ -1,0 +1,57 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "f3539550527cbaf0",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "세 선분 $\\overline{AB}, \\overline{CD}, \\overline{EF}$는 모두 원 $O$의 지름이므로 교점 $O$에서 마주 보는 맞꼭지각의 크기는 서로 같다.",
+    "따라서 $\\angle AOF, \\angle DOB, \\angle COE$의 반대편에 크기가 같은 각이 각각 하나씩 존재하므로 원 전체의 중심각 $360^\\circ$에 대한 비의 총합은 $$\\begin{aligned} 2 \\times (13 + 11 + 6) &= 2 \\times 30 \\ &= 60 \\end{aligned}$$ 호 $\\overparen{DF}$에 대한 중심각 $\\angle DOF$는 $\\angle COE$와 맞꼭지각이므로 크기가 같다.",
+    "$$\\begin{aligned} \\angle DOF &= \\angle COE = 6\\text{ (비율)} \\end{aligned}$$ 따라서 호 $\\overparen{DF}$의 길이는 원 전체 둘레의 $\\dfrac{6}{60} = \\dfrac{1}{10}$이다.",
+    "호 $\\overparen{DF} = 5\\text{ cm}$이므로 원 $O$의 둘레의 길이는 $$\\begin{aligned} \\text{원 } O\\text{의 둘레} &= 5 \\times \\dfrac{60}{6} \\ &= 5 \\times 10 \\ &= 50\\text{ cm} \\end{aligned}$$ 따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 원 $O$에서 $\\angle AOF : \\angle DOB : \\angle COE = 13 : 11 : 6$이고 $\\overparen{DF} = 5\\text{ cm}$일 때, 원 $O$의 둘레의 길이는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같은 원 $O$에서 $\\angle AOF : \\angle DOB : \\angle COE = 13 : 11 : 6$이고 $\\overparen{DF} = 5\\text{ cm}$일 때, 원 $O$의 둘레의 길이는?",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "rpmRecordId": "M1-RPM-089",
+  "rpmEvidence": "세 선분 $\\overline{AB}, \\overline{CD}, \\overline{EF}$는 모두 원 $O$의 지름이므로 교점 $O$에서 마주 보는 맞꼭지각의 크기는 서로 같다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "Q7번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AOF)",
+  "rpmReason": "Q7번 문항은 M1-RPM-089에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AOF)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 AOF)",
+  "how": "Q7번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AOF)",
+  "slots": {
+    "given": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "다음 그림과 같은 원 $O$에서 $\\angle AOF : \\angle DOB : \\angle COE = 13 : 11 : 6$이고 $\\overparen{DF} = 5\\text{ cm}$일 때, 원 $O$의 둘레의 길이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "다음 그림과 같은 원 $O$에서 $\\angle AOF : \\angle DOB : \\angle COE = 13 : 11 : 6$이고 $\\overparen{DF} = 5\\text{ cm}$일 때, 원 $O$의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "세 선분 $\\overline{AB}, \\overline{CD}, \\overline{EF}$는 모두 원 $O$의 지름이므로 교점 $O$에서 마주 보는 맞꼭지각의 크기는 서로 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

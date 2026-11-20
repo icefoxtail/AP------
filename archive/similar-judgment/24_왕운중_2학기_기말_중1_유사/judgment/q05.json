@@ -1,0 +1,57 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "e20d285ffffcdada",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "각 보기를 확인한다.",
+    "$$\\begin{aligned} \\text{① } & n\\text{각형의 내각의 합은 }(n-2) \\times 180^\\circ\\text{이므로} \\ & (8-2) \\times 180^\\circ = 6 \\times 180^\\circ = 1080^\\circ\\text{이다.",
+    "(참)} \\ \\text{② } & \\text{정}n\\text{각형의 한 외각의 크기는 }\\dfrac{360^\\circ}{n}\\text{이므로} \\ & \\dfrac{360^\\circ}{6} = 60^\\circ\\text{이다.",
+    "(참)} \\ \\text{③ } & n\\text{각형의 한 꼭짓점에서 그을 수 있는 대각선의 개수는 }n-3\\text{개이므로} \\ & 12 - 3 = 9\\text{개이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 옳지 않은 것은?",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "rpmRecordId": "M1-RPM-084",
+  "rpmEvidence": "각 보기를 확인한다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q5번 문항은 PT_M1_POLYGON_ANGLE_AND_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 1080)",
+  "rpmReason": "Q5번 문항은 M1-RPM-084에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 1080)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 1080)",
+  "how": "Q5번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 1080)",
+  "slots": {
+    "given": [
+      {
+        "term": "내각",
+        "src": "choices",
+        "quote": "팔각형의 내각의 크기의 합은 $1080^\\circ$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정육각형",
+        "src": "choices",
+        "quote": "정육각형의 한 외각의 크기는 $60^\\circ$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "외각",
+        "src": "solution",
+        "quote": "(참)} \\ \\text{② } & \\text{정}n\\text{각형의 한 외각의 크기는 }\\dfrac{360^\\circ}{n}\\text{이므로} \\ & \\dfrac{360^\\circ}{6} = 60^\\circ\\text{이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "3e07be96d6c32f11",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "정다각형의 한 꼭짓점에서 내각과 이웃한 외각의 크기의 합은 $180^\\circ$이다.",
+    "내각과 외각의 크기의 비가 $4 : 1$이므로 한 외각의 크기는 다음과 같다.",
+    "$$\\begin{aligned} \\text{한 외각의 크기} &= 180^\\circ \\times \\dfrac{1}{4+1} \\ &= 180^\\circ \\times \\dfrac{1}{5} \\ &= 36^\\circ \\end{aligned}$$ 정다각형의 모든 외각의 크기의 합은 항상 $360^\\circ$이므로 변의 개수를 $n$이라 하면 $$\\begin{aligned} n &= \\dfrac{360^\\circ}{36^\\circ} \\ &= 10 \\end{aligned}$$ 따라서 구하는 다각형은 정십각형이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 <조건>을 모두 만족시키는 다각형은?",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "rpmRecordId": "M1-RPM-083",
+  "rpmEvidence": "정다각형의 한 꼭짓점에서 내각과 이웃한 외각의 크기의 합은 $180^\\circ$이다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_REGULAR_POLYGON_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "Q2번 문항은 PT_M1_POLYGON_ANGLE_AND_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 180)",
+  "rpmReason": "Q2번 문항은 M1-RPM-083에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 180)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q2번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 180)",
+  "how": "Q2번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 180)",
+  "slots": {
+    "given": [
+      {
+        "term": "다각형",
+        "src": "stem",
+        "quote": "다음 <조건>을 모두 만족시키는 다각형은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "다음 <조건>을 모두 만족시키는 다각형은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정다각형",
+        "src": "solution",
+        "quote": "정다각형의 한 꼭짓점에서 내각과 이웃한 외각의 크기의 합은 $180^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

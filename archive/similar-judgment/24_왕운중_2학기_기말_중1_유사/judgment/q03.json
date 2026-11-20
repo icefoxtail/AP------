@@ -1,0 +1,55 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "346a48a6f20e0f84",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$n$각형의 $n$개의 꼭짓점 각각에서 내각과 외각의 크기의 합은 $180^\\circ$이다.",
+    "따라서 $n$각형의 내각의 크기와 외각의 크기의 총합은 $180^\\circ \\times n$이므로 $$\\begin{aligned} 180^\\circ \\times n &= 2160^\\circ \\ n &= \\dfrac{2160^\\circ}{180^\\circ} \\ &= 12 \\end{aligned}$$ 따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$n$각형의 내각의 크기와 외각의 크기의 총합이 $2160^\\circ$일 때, 자연수 $n$의 값은?",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "rpmRecordId": "M1-RPM-081",
+  "rpmEvidence": "$n$각형의 $n$개의 꼭짓점 각각에서 내각과 외각의 크기의 합은 $180^\\circ$이다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_INTERIOR_EXTERIOR_SUM",
+  "newKeyProposal": null,
+  "typeReason": "Q3번 문항은 PT_M1_POLYGON_ANGLE_AND_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 2160)",
+  "rpmReason": "Q3번 문항은 M1-RPM-081에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 2160)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q3번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 2160)",
+  "how": "Q3번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 2160)",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$n$각형의 내각의 크기와 외각의 크기의 총합이 $2160^\\circ$일 때, 자연수 $n$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "총합",
+        "src": "stem",
+        "quote": "$n$각형의 내각의 크기와 외각의 크기의 총합이 $2160^\\circ$일 때, 자연수 $n$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "$n$각형의 $n$개의 꼭짓점 각각에서 내각과 외각의 크기의 합은 $180^\\circ$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

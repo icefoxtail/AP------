@@ -1,0 +1,55 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "fb38ba85109ae27c",
+  "solvedAnswer": "$117^\\circ$",
+  "solveSteps": [
+    "삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.",
+    "왼쪽 아래 꼭짓점의 내각의 크기는 외각 $x + 10^\\circ$의 보각이므로 $$\\begin{aligned} 180^\\circ - (x + 10^\\circ) &= 170^\\circ - x \\end{aligned}$$ 꼭대기 외각 $\\angle x$는 이웃하지 않는 두 내각 $(170^\\circ - x)$와 $64^\\circ$의 합과 같으므로 $$\\begin{aligned} x &= (170^\\circ - x) + 64^\\circ \\ x &= 234^\\circ - x \\ 2x &= 234^\\circ \\ x &= 117^\\circ \\end{aligned}$$ 따라서 $\\angle x$의 크기는 $117^\\circ$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림에서 삼각형의 꼭대기 꼭짓점의 외각의 크기가 $x$, 왼쪽 아래 꼭짓점의 외각의 크기가 $x + 10^\\circ$이고, 오른쪽 아래 꼭짓점의 내각의 크기가 $64^\\circ$일 때, $\\angle x$의 크기를 구하시오",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 1] 아래 그림에서 삼각형의 꼭대기 꼭짓점의 외각의 크기가 $x$, 왼쪽 아래 꼭짓점의 외각의 크기가 $x + 10^\\circ$이고, 오른쪽 아래 꼭짓점의 내각의 크기가 $64^\\circ$일 때, $\\angle x$의 크기를 구하시오.",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "rpmRecordId": "M1-RPM-084",
+  "rpmEvidence": "삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.",
+  "problemTypeKey": "PT_M1_TRIANGLE_ANGLE_CONDITION",
+  "templateKey": "TPL_M1_TRIANGLE_ANGLE_CONDITION_EXTERIOR_SUM",
+  "newKeyProposal": null,
+  "typeReason": "Q21번 문항은 PT_M1_TRIANGLE_ANGLE_CONDITION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 10)",
+  "rpmReason": "Q21번 문항은 M1-RPM-084에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 10)",
+  "how": "Q21번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 $117^\\circ$을(를) 바르게 구하였다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "[서술형 1] 아래 그림에서 삼각형의 꼭대기 꼭짓점의 외각의 크기가 $x$, 왼쪽 아래 꼭짓점의 외각의 크기가 $x + 10^\\circ$이고, 오른쪽 아래 꼭짓점의 내각의 크기가 $64^\\circ$일 때, $\\angle x$의 크기를 구하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "[서술형 1] 아래 그림에서 삼각형의 꼭대기 꼭짓점의 외각의 크기가 $x$, 왼쪽 아래 꼭짓점의 외각의 크기가 $x + 10^\\circ$이고, 오른쪽 아래 꼭짓점의 내각의 크기가 $64^\\circ$일 때, $\\angle x$의 크기를 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "이웃",
+        "src": "solution",
+        "quote": "삼각형의 한 외각의 크기는 그와 이웃하지 않는 두 내각의 크기의 합과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

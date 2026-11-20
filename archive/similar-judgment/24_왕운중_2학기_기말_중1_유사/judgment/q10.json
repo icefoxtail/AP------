@@ -1,0 +1,56 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "5c1f3775d2debd36",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "두 작은 반원 $O', O''$의 반지름이 각각 $5\\text{ cm}, 3\\text{ cm}$이므로 지름의 길이는 각각 $10\\text{ cm}, 6\\text{ cm}$이다.",
+    "큰 원 $O$의 지름은 두 작은 반원의 지름의 합과 같으므로 $$\\begin{aligned} \\text{큰 원의 지름} &= 10 + 6 = 16\\text{ cm} \\ \\text{큰 원의 반지름} &= 8\\text{ cm} \\end{aligned}$$ 큰 원의 둘레의 길이는 $$\\begin{aligned} 2\\pi \\times 8 &= 16\\pi\\text{ cm} \\end{aligned}$$ 두 작은 반원의 호의 길이의 합은 $$\\begin{aligned} \\pi \\times 5 + \\pi \\times 3 &= 8\\pi\\text{ cm} \\end{aligned}$$ 색칠한 부분의 둘레에는 큰 원의 둘레 전체($16\\pi$), 두 작은 반원의 호($8\\pi$), 그리고 직선 부분인 두 반원의 지름 선분($10 + 6 = 16\\text{ cm}$)이 모두 포함된다.",
+    "따라서 색칠한 부분의 둘레의 길이는 $$\\begin{aligned} \\text{둘레의 길이} &= 16\\pi + 8\\pi + (10 + 6) \\ &= (24\\pi + 16)\\text{ cm} \\end{aligned}$$ 따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림은 두 반원 $O', O''$을 큰 원 $O$의 반원에 꼭 맞게 놓은 것이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림은 두 반원 $O', O''$을 큰 원 $O$의 반원에 꼭 맞게 놓은 것이다.",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "rpmRecordId": "M1-RPM-092",
+  "rpmEvidence": "두 작은 반원 $O', O''$의 반지름이 각각 $5\\text{ cm}, 3\\text{ cm}$이므로 지름의 길이는 각각 $10\\text{ cm}, 6\\text{ cm}$이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_M1_CIRCLE_COMPOSITE_ARC_PERIMETER",
+  "newKeyProposal": null,
+  "typeReason": "Q10번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)",
+  "rpmReason": "Q10번 문항은 M1-RPM-092에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cm)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 cm)",
+  "how": "Q10번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "반원",
+        "src": "stem",
+        "quote": "다음 그림은 두 반원 $O', O''$을 큰 원 $O$의 반원에 꼭 맞게 놓은 것이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "반원 $O'$와 $O''$의 반지름의 길이가 각각 $5\\text{ cm}, 3\\text{ cm}$일 때, 색칠한 부분의 둘레의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "src": "solution",
+        "quote": "두 작은 반원 $O', O''$의 반지름이 각각 $5\\text{ cm}, 3\\text{ cm}$이므로 지름의 길이는 각각 $10\\text{ cm}, 6\\text{ cm}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

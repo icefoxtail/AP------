@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "91038cd8fd80a999",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "정오각형 $ABCDE$의 각 성질을 점검한다.",
+    "정오각형의 한 내각의 크기는 $$\\begin{aligned} \\dfrac{(5-2) \\times 180^\\circ}{5} &= 108^\\circ\\text{ (① 참)} \\end{aligned}$$ 한 외각의 크기는 $$\\begin{aligned} \\dfrac{360^\\circ}{5} &= 72^\\circ\\text{ (② 참)} \\end{aligned}$$ 삼각형 $ABC$에서 $\\overline{AB} = \\overline{BC}$이므로 삼각형 $ABC$는 이등변삼각형이다.",
+    "(④ 참) 따라서 밑각의 크기는 $$\\begin{aligned} \\angle BCA &= \\dfrac{180^\\circ - 108^\\circ}{2} = 36^\\circ \\end{aligned}$$ 마찬가지로 삼각형 $ABE$에서 $\\overline{AB} = \\overline{AE}$이므로 $$\\begin{aligned} \\angle ABE &= \\dfrac{180^\\circ - 108^\\circ}{2} = 36^\\circ \\end{aligned}$$ 따라서 $\\angle CBF$의 크기는 $$\\begin{aligned} \\angle CBF &= \\angle ABC - \\angle ABE = 108^\\circ - 36^\\circ = 72^\\circ \\end{aligned}$$ 삼각형 $BFC$에서 세 내각의 크기의 합은 $180^\\circ$이므로 $$\\begin{aligned} \\angle BFC &= 180^\\circ - \\angle CBF - \\angle BCF \\ &= 180^\\circ - 72^\\circ - 36^\\circ \\ &= 72^\\circ \\end{aligned}$$ 따라서 $\\angle BFC = 80^\\circ$라고 한 ③의 설명은 옳지 않다.",
+    "또한 대각선 $BE = AC$이고 $\\overline{BF} = \\overline{AF}$이므로 $\\overline{CF} = \\overline{EF}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 정오각형 $ABCDE$에 대하여 탐구한 결과 발표한 내용이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "영수가 다음 그림과 같은 정오각형 $ABCDE$에 대하여 탐구한 결과 발표한 내용이다.",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-POLYGON_CIRCLE",
+  "rpmRecordId": "M1-RPM-083",
+  "rpmEvidence": "정오각형 $ABCDE$의 각 성질을 점검한다.",
+  "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+  "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_PROPERTY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q8번 문항은 PT_M1_POLYGON_ANGLE_AND_COUNT 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCDE)",
+  "rpmReason": "Q8번 문항은 M1-RPM-083에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCDE)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABCDE)",
+  "how": "Q8번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 ABCDE)",
+  "slots": {
+    "given": [
+      {
+        "term": "정오각형",
+        "src": "stem",
+        "quote": "영수가 다음 그림과 같은 정오각형 $ABCDE$에 대하여 탐구한 결과 발표한 내용이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "[5점] (단, 점 $F$는 대각선 $AC$와 대각선 $BE$의 교점이다.)"
+      }
+    ],
+    "method": [
+      {
+        "term": "성질",
+        "src": "solution",
+        "quote": "정오각형 $ABCDE$의 각 성질을 점검한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

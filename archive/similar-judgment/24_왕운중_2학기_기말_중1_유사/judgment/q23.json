@@ -1,0 +1,56 @@
+{
+  "qid": "q23",
+  "itemFingerprint": "c8957615d90f811f",
+  "solvedAnswer": "$8\\text{ cm}$",
+  "solveSteps": [
+    "쇠공의 반지름은 원기둥 밑면의 반지름과 같으므로 $4\\text{ cm}$이고, 쇠공 $1$개의 지름은 $8\\text{ cm}$이다.",
+    "쇠공 $3$개가 원기둥에 꼭 맞게 들어 있으므로 원기둥의 높이는 쇠공 $3$개의 지름의 합과 같다.",
+    "$$\\begin{aligned} \\text{원기둥의 높이} &= 3 \\times 8 = 24\\text{ cm} \\end{aligned}$$ 원기둥 통의 전체 부피는 $$\\begin{aligned} V_{\\text{원기둥}} &= \\pi \\times 4^2 \\times 24 \\ &= 16\\pi \\times 24 \\ &= 384\\pi\\text{ cm}^3 \\end{aligned}$$ 쇠공 $3$개의 부피의 합은 $$\\begin{aligned} V_{\\text{쇠공}} &= 3 \\times \\left(\\dfrac{4}{3}\\pi \\times 4^3\\right) \\ &= 4\\pi \\times 64 \\ &= 256\\pi\\text{ cm}^3 \\end{aligned}$$ 남은 공간에 채워진 물의 부피는 원기둥 부피에서 쇠공의 부피를 뺀 값이므로 $$\\begin{aligned} V_{\\text{물}} &= 384\\pi - 256\\pi \\ &= 128\\pi\\text{ cm}^3 \\end{aligned}$$ 쇠공을 모두 꺼낸 후 물은 밑넓이가 $\\pi \\times 4^2 = 16\\pi\\text{ cm}^2$인 원기둥을 채우므로, 남아있는 물의 높이를 $h$라 하면 $$\\begin{aligned} 16\\pi \\times h &= 128\\pi \\ h &= \\dfrac{128\\pi}{16\\pi} \\ &= 8\\text{ cm} \\end{aligned}$$ 따라서 남아있는 물의 높이는 $8\\text{ cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$인 원기둥 모양의 통에 쇠공 3개가 꼭 맞게 들어있고 남은 공간에 물이 가득 채워져 있다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3] 다음 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$인 원기둥 모양의 통에 쇠공 3개가 꼭 맞게 들어있고 남은 공간에 물이 가득 채워져 있다.",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
+  "rpmRecordId": "M1-RPM-100",
+  "rpmEvidence": "쇠공의 반지름은 원기둥 밑면의 반지름과 같으므로 $4\\text{ cm}$이고, 쇠공 $1$개의 지름은 $8\\text{ cm}$이다.",
+  "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
+  "templateKey": "TPL_M1_SOLID_FIGURE_VOLUME_CONSERVATION",
+  "newKeyProposal": null,
+  "typeReason": "Q23번 문항은 PT_M1_SOLID_FIGURE_MEASURE 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)",
+  "rpmReason": "Q23번 문항은 M1-RPM-100에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cm)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q23번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 cm)",
+  "how": "Q23번 문항으로 M1-07 단원의 기본 개념과 성질을 적용하여 $8\\text{ cm}$을(를) 바르게 구하였다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "공간",
+        "src": "stem",
+        "quote": "[서술형 3] 다음 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$인 원기둥 모양의 통에 쇠공 3개가 꼭 맞게 들어있고 남은 공간에 물이 가득 채워져 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "반지름",
+        "src": "stem",
+        "quote": "[서술형 3] 다음 그림과 같이 밑면의 반지름의 길이가 $4\\text{ cm}$인 원기둥 모양의 통에 쇠공 3개가 꼭 맞게 들어있고 남은 공간에 물이 가득 채워져 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "지름",
+        "src": "solution",
+        "quote": "쇠공의 반지름은 원기둥 밑면의 반지름과 같으므로 $4\\text{ cm}$이고, 쇠공 $1$개의 지름은 $8\\text{ cm}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

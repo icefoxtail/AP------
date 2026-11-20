@@ -1,0 +1,55 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "7932e51d438f97d9",
+  "solvedAnswer": "$10\\pi\\text{ cm}^2$",
+  "solveSteps": [
+    "문항의 조건과 식을 분석하여 단계를 전개한다. (문항 토큰 AB)",
+    "주어진 조건을 계산하여 정답 $10\\pi\\text{ cm}^2$을(를) 도출한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\overline{AB} \\parallel \\overline{DC}$이고 $\\overline{AB}=\\overline{AD}=\\overline{BC}=2\\text{ cm}, \\overline{DC}=4\\text{ cm}$인 사다리꼴 $ADCB$에서 꼭짓점 $A, B, C$를 중심으로 하는 부채꼴의 넓이를 각각 $P, Q, R$이라고 할 때, $R - Q + P$의 값을 구하시오",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 2] 다음 그림과 같이 $\\overline{AB} \\parallel \\overline{DC}$이고 $\\overline{AB}=\\overline{AD}=\\overline{BC}=2\\text{ cm}, \\overline{DC}=4\\text{ cm}$인 사다리꼴 $ADCB$에서 꼭짓점 $A, B, C$를 중심으로 하는 부채꼴의 넓이를 각각 $P, Q, R$이라고 할 때, $R - Q + P$의 값을 구하시오.",
+  "standardUnitKey": "M1-06",
+  "subUnitKey": "M1-06-PLANE_FIGURE_MEASURE",
+  "rpmRecordId": "M1-RPM-090",
+  "rpmEvidence": "부채꼴 $P$의 반지름은 $2\\text{ cm}$, 중심각은 $60^\\circ$이므로 넓이는 $$\\begin{aligned} P &= \\pi \\times 2^2 \\times \\dfrac{60^\\circ}{360^\\circ} \\ &= 4\\pi \\times \\dfrac{1}{6} \\ &= \\dfrac{2}{3}\\pi\\text{ cm}^2 \\end{aligned}$$ 부채꼴 $Q$의 반지름은 $4\\text{ cm}$, 중심각은 $60^\\circ$이므로 넓이는 $$\\begin{aligned} Q &= \\pi \\times 4^2 \\times \\dfrac{60^\\circ}{360^\\circ} \\ &= 16\\pi \\times \\dfrac{1}{6} \\ &= \\dfrac{8}{3}\\pi\\text{ cm}^2 \\end{aligned}$$ 부채꼴 $R$의 반지름은 $6\\text{ cm}$, 중심각은 $120^\\circ$이므로 넓이는 $$\\begin{aligned} R &= \\pi \\times 6^2 \\times \\dfrac{120^\\circ}{360^\\circ} \\ &= 36\\pi \\times \\dfrac{1}{3} \\ &= 12\\pi\\text{ cm}^2 \\end{aligned}$$ 따라서 $R - Q + P$의 값은 $$\\begin{aligned} R - Q + P &= 12\\pi - \\dfrac{8}{3}\\pi + \\dfrac{2}{3}\\pi \\ &= 12\\pi - \\dfrac{6}{3}\\pi \\ &= 12\\pi - 2\\pi \\ &= 10\\pi\\text{ cm}^2 \\end{aligned}$$ 따라서 정답은 $10\\pi\\text{ cm}^2$이다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "Q22번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q22번 문항은 M1-RPM-090에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q22번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q22번 문항으로 M1-06 단원의 기본 개념과 성질을 적용하여 $10\\pi\\text{ cm}^2$을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "부채꼴",
+        "src": "stem",
+        "quote": "[서술형 2] 다음 그림과 같이 $\\overline{AB} \\parallel \\overline{DC}$이고 $\\overline{AB}=\\overline{AD}=\\overline{BC}=2\\text{ cm}, \\overline{DC}=4\\text{ cm}$인 사다리꼴 $ADCB$에서 꼭짓점 $A, B, C$를 중심으로 하는 부채꼴의 넓이를 각각 $P, Q, R$이라고 할 때, $R - Q + P$의 값을 구하시오."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "[서술형 2] 다음 그림과 같이 $\\overline{AB} \\parallel \\overline{DC}$이고 $\\overline{AB}=\\overline{AD}=\\overline{BC}=2\\text{ cm}, \\overline{DC}=4\\text{ cm}$인 사다리꼴 $ADCB$에서 꼭짓점 $A, B, C$를 중심으로 하는 부채꼴의 넓이를 각각 $P, Q, R$이라고 할 때, $R - Q + P$의 값을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "부채꼴 $P$의 반지름은 $2\\text{ cm}$, 중심각은 $60^\\circ$이므로 넓이는 $$\\begin{aligned} P &= \\pi \\times 2^2 \\times \\dfrac{60^\\circ}{360^\\circ} \\ &= 4\\pi \\times \\dfrac{1}{6} \\ &= \\dfrac{2}{3}\\pi\\text{ cm}^2 \\end{aligned}$$ 부채꼴 $Q$의 반지름은 $4\\text{ cm}$, 중심각은 $60^\\circ$이므로 넓이는 $$\\begin{aligned} Q &= \\pi \\times 4^2 \\times \\dfrac{60^\\circ}{360^\\circ} \\ &= 16\\pi \\times \\dfrac{1}{6} \\ &= \\dfrac{8}{3}\\pi\\text{ cm}^2 \\end{aligned}$$ 부채꼴 $R$의 반지름은 $6\\text{ cm}$, 중심각은 $120^\\circ$이므로 넓이는 $$\\begin{aligned} R &= \\pi \\times 6^2 \\times \\dfrac{120^\\circ}{360^\\circ} \\ &= 36\\pi \\times \\dfrac{1}{3} \\ &= 12\\pi\\text{ cm}^2 \\end{aligned}$$ 따라서 $R - Q + P$의 값은 $$\\begin{aligned} R - Q + P &= 12\\pi - \\dfrac{8}{3}\\pi + \\dfrac{2}{3}\\pi \\ &= 12\\pi - \\dfrac{6}{3}\\pi \\ &= 12\\pi - 2\\pi \\ &= 10\\pi\\text{ cm}^2 \\end{aligned}$$ 따라서 정답은 $10\\pi\\text{ cm}^2$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
