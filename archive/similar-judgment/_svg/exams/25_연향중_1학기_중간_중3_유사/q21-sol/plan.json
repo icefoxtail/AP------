@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": {
+              "value": "6",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "2",
+              "state": "CLOSED"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "20 ≤ n < 300 범위의 자연수"
+  },
+  "caption": "20 ≤ n < 300 범위에서 40, 90 포함 자연수 4개 (20, 300, 40, 90, 4)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "20 ≤ n < 300, 40, 90 등 4개",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "20 이상 300 미만 범위와 가능한 값들"
+  ]
+}
