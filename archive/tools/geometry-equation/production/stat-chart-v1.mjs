@@ -1534,7 +1534,7 @@ const polygonRoom=(pt,ring)=>{ // the distance from a point to the outline of a 
   return inside?best:-best;
 };
 const LEADER_GAP=2,NAME_GAP=10,LABEL_APART=8; // a curve name keeps NAME_GAP px from the other labels so that it is not read as part of an area label
-const NORM_XL=44,NORM_XR=490,NORM_TIP=512,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
+const NORM_XL=44,NORM_XR=482,NORM_TIP=500,NORM_PEAK=140,NORM_TOP=58,NORM_STEP_MAX=2,NORM_STEP_MIN=0.5,NORM_Z_ROW=1.5;
 function normalSpec(m,ctx){
   const fontPx=ctx?.fontPx??DEFAULT_FONT_PX,BASE=NORM_TOP+NORM_PEAK;
   const lo=N(m.window.lo),hi=N(m.window.hi),scale=(NORM_XR-NORM_XL)/(hi-lo);
