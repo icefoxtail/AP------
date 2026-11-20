@@ -1,0 +1,65 @@
+{
+  "qid": 17,
+  "itemFingerprint": "9ef83ef0afa87ce3",
+  "solveSteps": [
+    "$f(x) = (x - 2)^2 - 3$은 꼭짓점이 $(2, -3)$인 아래로 볼록한 포물선이다.",
+    "구간 $[k, k + 2]$에서의 최솟값이 1이므로 꼭짓점 $x = 2$는 구간에 포함되지 않는다.",
+    "$k > 2$일 때 $f(x)$는 증가하므로 최솟값은 $f(k) = (k - 2)^2 - 3 = 1 \\implies k = 4$이다. 이때 최댓값 $f(6) = 13$을 만족한다.",
+    "$k < 0$일 때 $f(x)$는 감소하므로 최솟값은 $f(k + 2) = k^2 - 3 = 1 \\implies k = -2$이다. 이때 최댓값 $f(-2) = 13$을 만족한다.",
+    "따라서 가능한 $k$의 합은 $4 + (-2) = 2$이다. (①번)"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+  "unitEvidence": "최댓값이 $13$, 최솟값이 $1$이 되도록 하는",
+  "rpmRecordId": "H1-RPM-170",
+  "rpmReason": "구간 $[k, k + 2]$에서 최댓값 13과 최솟값 1을 만족하는 범위를 구하는 H1-RPM-170에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+  "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+  "typeReason": "제한된 구간 $[k, k + 2]$에서 꼭짓점 포함 여부에 따라 최댓값 13을 만족하는 $k$를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "구간 $[k, k + 2]$에서 최댓값 13, 최솟값 1이 되는 축의 위치에 따른 케이스를 분류하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $f(x) ="
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "+ 2$)의 최댓값이 $13$,"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "래로 볼록하고 꼭짓점이 $(2, -"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "꼭짓점 $x=2$가 구간 밖이어야 하므로 $k=4, -2$에서 최댓값 13을 만족함을 확인해 합 2로 ①번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

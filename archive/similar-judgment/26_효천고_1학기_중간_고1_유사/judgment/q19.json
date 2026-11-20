@@ -1,0 +1,63 @@
+{
+  "qid": 19,
+  "itemFingerprint": "b3e40d3c033ecee8",
+  "solveSteps": [
+    "$P(x) = 3x^3 - 2x^2 - kx + 4$가 $x - 2$로 나누어떨어지므로 인수정리에 의하여 $P(2) = 0$이다.",
+    "$P(2) = 3(2)^3 - 2(2)^2 - k(2) + 4 = 24 - 8 - 2k + 4 = 20 - 2k = 0$이다.",
+    "$2k = 20 \\implies k = 10$이다."
+  ],
+  "solvedAnswer": "$10$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "다항식 $P(x) = 3x^3 - 2x^2 - kx + 4$가 $x - 2$로 나누어떨어질 때",
+  "rpmRecordId": "H1-RPM-145",
+  "rpmReason": "$P(x) = 3x^3 - 2x^2 - kx + 4$에서 $P(2)=0$으로 미정계수 $k=10$을 결정하는 H1-RPM-145에 해당한다.",
+  "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+  "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+  "typeReason": "$P(x) = 3x^3 - 2x^2 - kx + 4$의 일차인수 조건 $P(2) = 0$으로 $k=10$을 구하는 인수정리 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$P(2) = 20 - 2k = 0$에서 $k = 10$을 바로 구하는 기본 공식 적용으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "SHORT",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x) ="
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "어떨어질 때, 실수 $k$의 값을"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "인수정리에 의하여 $P"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$P(x) = 3x^3 - 2x^2 - kx + 4$에 $x=2$를 대입하여 $20 - 2k = 0$에서 $k=10$으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

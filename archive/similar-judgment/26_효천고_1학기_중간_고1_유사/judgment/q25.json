@@ -1,0 +1,70 @@
+{
+  "qid": 25,
+  "itemFingerprint": "86a0e122b4638502",
+  "solveSteps": [
+    "이차함수와 직선을 연립하면 $x^2 - 6kx + a = 2bx - 9k^2 + 12k \\implies x^2 - 2(3k + b)x + 9k^2 - 12k + a = 0$이다.",
+    "항상 한 점에서 만나므로 판별식 $D/4 = (3k + b)^2 - (9k^2 - 12k + a) = 0$이다.",
+    "전개하면 $9k^2 + 6bk + b^2 - 9k^2 + 12k - a = (6b + 12)k + (b^2 - a) = 0$이다.",
+    "$k$의 값에 관계없이 성립하므로 $6b + 12 = 0 \\implies b = -2$이고 $b^2 - a = 0 \\implies a = 4$이다.",
+    "따라서 $2a - b = 2(4) - (-2) = 10$이다."
+  ],
+  "solvedAnswer": "$10$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = x^2 - 6kx + a$의 그래프와 직선",
+  "rpmRecordId": "H1-RPM-169",
+  "rpmReason": "이차함수와 직선이 접하는 판별식 조건을 $k$의 항등식으로 풀어 10을 구하는 H1-RPM-169에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+  "templateKey": "TPL_H1_DISCRIMINANT_PARAMETER_IDENTITY",
+  "typeReason": "이차방정식 판별식 $D/4 = (6b+12)k + b^2 - a = 0$이 $k$의 항등식이 되는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "판별식과 $k$에 대한 항등식 개념을 결합하여 $2a - b = 10$을 구하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "SHORT",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = x^"
+      },
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "$의 그래프와 직선 $y = 2b"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "+ 12k$가 실수 $k$의 값에"
+      }
+    ],
+    "method": [
+      {
+        "term": "판별식",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "이차방정식의 판별식을 $D$라 하"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "연립방정식의 판별식 $D/4 = (6b + 12)k + (b^2 - a) = 0$이 $k$의 항등식임에서 $a = 4, b = -2$를 얻어 10으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

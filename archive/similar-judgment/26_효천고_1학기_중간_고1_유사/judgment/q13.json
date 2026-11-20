@@ -1,0 +1,74 @@
+{
+  "qid": 13,
+  "itemFingerprint": "5785fdb2da1b1eb1",
+  "solveSteps": [
+    "$x^3 + 1 = (x + 1)(x^2 - x + 1) = 0$에서 $\\omega$는 $x^2 - x + 1 = 0$의 허근이다.",
+    "ㄱ. $\\omega^3 = -1$이다. (참)",
+    "ㄴ. $\\omega^2 - \\omega + 1 = 0$이므로 $\\omega^2 + \\omega + 1 = 2\\omega \\neq 0$이다. (거짓)",
+    "ㄷ. $\\omega + \\bar{\\omega} = 1$이다. (거짓)",
+    "ㄹ. $\\omega\\bar{\\omega} = 1$이다. (거짓)",
+    "ㅁ. $\\frac{1}{\\omega} + \\frac{1}{\\bar{\\omega}} = \\frac{\\omega + \\bar{\\omega}}{\\omega\\bar{\\omega}} = 1$이다. (참)",
+    "ㅂ. $\\bar{\\omega} = -\\omega^2$이다. (거짓)",
+    "ㅅ. $a, b$ 실수이고 $\\omega$ 허수이면 $a = 0, b = 0$이어야 한다. (거짓)",
+    "따라서 옳은 것은 ㄱ, ㅁ의 2개로 ①번이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-06",
+  "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+  "unitEvidence": "삼차방정식 $x^3 = -1$의 한 허근을",
+  "rpmRecordId": "H1-RPM-172",
+  "rpmReason": "삼차방정식 $x^3 = -1$의 허근 $\\omega$의 성질을 판별하는 H1-RPM-172에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+  "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+  "typeReason": "$x^3 = -1$의 허근의 주기와 켤레근 성질을 검증하는 복소수 거듭제곱 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$x^3 = -1$의 허근 $\\omega$의 성질 보기 7개를 각각 판별하는 난이도 3 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "삼차방정식",
+        "src": "stem",
+        "quote": "삼차방정식 $x^3 ="
+      },
+      {
+        "term": "허근",
+        "src": "stem",
+        "quote": "-1$의 한 허근을 $\\omeg"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "서 옳은 것의 개수는? <보기>"
+      }
+    ],
+    "method": [
+      {
+        "term": "관계",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여 $\\"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$x^3 = -1$의 허근에 대해 ㄱ과 ㅁ만 참임을 확인하여 옳은 것 2개로 ①번으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
