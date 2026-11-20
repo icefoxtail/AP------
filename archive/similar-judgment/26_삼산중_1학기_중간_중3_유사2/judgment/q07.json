@@ -1,0 +1,62 @@
+{
+  "qid": 7,
+  "itemFingerprint": "4c3dab89ea242b03",
+  "solveSteps": [
+    "1. 8 이하의 자연수 1부터 8 중 제곱수는 1, 4이다. sqrt(x)와 sqrt(y)가 모두 무리수이려면 x, y in {2, 3, 5, 6, 7, 8}이어야 하며, 전체 순서쌍 개수는 6 * 6 = 36개이다.",
+    "2. sqrt(x+y)가 유리수가 되는 경우, 즉 x+y가 완전제곱수 4, 9, 16이 되는 순서쌍을 센다.",
+    "3. x+y=4는 (2,2)의 1개, x+y=9는 (2,7), (3,6), (6,3), (7,2)의 4개, x+y=16은 (8,8)의 1개로 총 1+4+1 = 6개이다.",
+    "4. 따라서 구하는 순서쌍 개수는 36 - 6 = 30개이다. 따라서 정답은 2번이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "세 실수 $\\sqrt{x}, \\sqrt{y}, \\sqrt{x+y}$가 모두 무리수가 되도록 하는 $8$ 이하의 자연수",
+  "rpmRecordId": "M3-RPM-003",
+  "rpmReason": "세 수 sqrt(x), sqrt(y), sqrt(x+y)가 무리수가 되는 전체 36개 중 6개를 빼서 30개를 구하는 M3-RPM-003 레코드입니다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+  "typeReason": "자연수 x, y에 대해 sqrt(x), sqrt(y), sqrt(x+y)가 무리수가 되는 36개 중 합이 4, 9, 16인 6개를 제외하는 TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱수 1, 4를 제외한 6*6=36개에서 x+y=4, 9, 16이 되는 6개를 여사건으로 제외하여 30개를 구하는 3단계 심화 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "src": "stem",
+        "quote": "세 실수 $\\sqrt{x}, \\sqrt{y}, \\sqrt{x+y}$가 모두 무리수가 되도록 하는"
+      },
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$8$ 이하의 자연수 $x, y$의 순서쌍"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "순서쌍 $(x, y)$의 개수는? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱수",
+        "src": "solution",
+        "quote": "$4 \\le x+y \\le 16$ 범위의 완전제곱수는 $4, 9, 16$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "합이 완전제곱수가 되는 경우를 여사건으로 제외"
+      }
+    ],
+    "condition": []
+  },
+  "how": "8 이하 자연수 중 1, 4를 뺀 6개의 수로 만든 36개 쌍에서 x+y가 4, 9, 16인 6개를 빼서 30개로 2번을 판정했습니다."
+}

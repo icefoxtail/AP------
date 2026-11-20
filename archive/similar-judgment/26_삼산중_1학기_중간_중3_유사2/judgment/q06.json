@@ -1,0 +1,57 @@
+{
+  "qid": 6,
+  "itemFingerprint": "091402ca8a141a3b",
+  "solveSteps": [
+    "1. 1 < x < y이므로 양변을 y로 나누면 0 < x/y < 1이다. 0 < t < 1에서 t < sqrt(t)이므로 A = x/y < sqrt(x/y) = B < 1이다.",
+    "2. y/x > 1이므로 C = sqrt(y/x) > 1이다. 따라서 B < 1 < C이다.",
+    "3. C^2 = y/x < y (x > 1이므로), y < y^2 = D^2 (y > 1이므로) 따라서 C < D이다.",
+    "4. 따라서 작은 것부터 차례대로 나열하면 A, B, C, D이다. 따라서 정답은 1번이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+  "unitEvidence": "$1 < x < y$일 때, 보기의 네 수를 작은 것부터 차례대로 나열한 것으로 옳은 것은? [4점]",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "1 < x < y 조건에서 A, B, C, D의 대소를 문자로 비교하는 M3-RPM-004 레코드입니다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+  "typeReason": "0 < x/y < 1에서 A < B < 1 < C < D로 대소를 비교하는 TPL_M3_REAL_COMPARISON_ORDER 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "1 < x < y 조건에서 분수식과 근호 식 A, B, C, D의 대소를 2단계로 연쇄 비교하는 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "solution",
+        "quote": "실수 $t$에 대하여 $t < \\sqrt{t} < 1$이 성립한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소비교",
+        "src": "solution",
+        "quote": "상대적 크기를 논리적으로 비교한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대소비교",
+        "src": "solution",
+        "quote": "전체 대소 순서를 정리한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "부등식과 제곱근 성질로 대소 순서 비교"
+      }
+    ],
+    "condition": []
+  },
+  "how": "0 < x/y < 1에서 A < B < 1이고 C = sqrt(y/x) > 1, C < D임을 보여 A, B, C, D 순서인 1번으로 판정했습니다."
+}

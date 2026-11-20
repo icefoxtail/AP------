@@ -1,0 +1,57 @@
+{
+  "qid": 20,
+  "itemFingerprint": "e63c1a259329e482",
+  "solveSteps": [
+    "1. x = -c를 대입하면 (-c)^2 + a(-c) + 36 = 0에서 a = c + 36/c이고, (-c)^2 + b(-c) - 24 = 0에서 b = c - 24/c이다.",
+    "2. a, b, c가 자연수이므로 c는 36과 24의 공약수인 1, 2, 3, 4, 6, 12 중 하나이다.",
+    "3. b > 0이어야 하므로 c^2 > 24이고, c는 한 자리 자연수이므로 c = 6이다.",
+    "4. c = 6일 때 a = 6 + 6 = 12, b = 6 - 4 = 2이다. 따라서 a - b + c = 12 - 2 + 6 = 16이다. 정답은 5번이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "$x$에 대한 두 이차식 $x^2 + ax + 36$, $x^2 + bx - 24$를 각각 인수분해했을 때 공통인수가 $x + c$이다.",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmReason": "x^2+ax+36과 x^2+bx-24의 공통인수 x+c로부터 c=6, a=12, b=2를 구하는 M3-RPM-021 레코드입니다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+  "typeReason": "x^2+ax+36과 x^2+bx-24의 공통인수 x+c에서 c=6, a=12, b=2, a-b+c=16을 구하는 TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x^2+ax+36과 x^2+bx-24에 x=-c를 대입하여 c가 공약수임을 도출하고 c=6, a=12, b=2를 특정하는 3단계 심화 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 자연수 $a, b, c$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "식의값",
+        "src": "stem",
+        "quote": "이때 $a - b + c$의 값은? (단, $c$는 한 자리 자연수) [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통인수",
+        "src": "solution",
+        "quote": "공통인수의 성질을 이용하여 $x = -c$를 대입했을 때",
+        "evidenceType": "IMPLIED",
+        "justification": "공통인수 대입을 통한 미정계수 결정"
+      }
+    ],
+    "condition": []
+  },
+  "how": "x=-c를 대입해 x^2+ax+36과 x^2+bx-24에서 a=c+36/c, b=c-24/c를 얻고 c^2>24인 한 자리 자연수 c=6에서 a=12, b=2, a-b+c=16인 5번으로 판정했습니다."
+}

@@ -1,0 +1,57 @@
+{
+  "qid": 18,
+  "itemFingerprint": "4d8e16ef0956b422",
+  "solveSteps": [
+    "1. 다항식 6x^2 - 7x - 20을 대각선 곱셈법으로 인수분해하면 (2x - 5)(3x + 4)이다.",
+    "2. a, c > 0이고 정수이므로 ax + b = 2x - 5, cx + d = 3x + 4이다.",
+    "3. 두 일차식의 합을 구하면 (2x - 5) + (3x + 4) = (2 + 3)x + (-5 + 4) = 5x - 1이다.",
+    "4. 따라서 정답은 3번이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "다항식 $6x^2 - 7x - 20$을 인수분해하면 $(ax + b)(cx + d)$일 때",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmReason": "이차식 6x^2 - 7x - 20의 인수분해를 통해 ax+b와 cx+d의 합 5x-1을 구하는 M3-RPM-025 레코드입니다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+  "typeReason": "이차식 6x^2 - 7x - 20을 (2x-5)(3x+4)로 인수분해하여 합 (2x-5)+(3x+4) = 5x-1을 계산하는 TPL_M3_FACTORIZATION_FORMULA_APPLICATION 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "6x^2-7x-20을 대각선 인수분해하여 두 일차식의 합 5x-1을 구하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $6x^2 - 7x - 20$을 인수분해하면 $(ax + b)(cx + d)$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "두 일차식 $ax + b$와 $cx + d$의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "대각선 곱셈 인수분해 방법을 적용하여 이차식을 두 일차식의 곱으로 분해한 후 합을 구한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "대각선 곱셈 인수분해 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "6x^2 - 7x - 20을 대각선 곱셈으로 (2x-5)(3x+4)로 인수분해하고 합 (2+3)x + (-5+4) = 5x-1을 구하여 3번으로 판정했습니다."
+}

@@ -1,0 +1,62 @@
+{
+  "qid": 19,
+  "itemFingerprint": "509565ff657d5480",
+  "solveSteps": [
+    "1. (x + a)(x + b) = x^2 + (a + b)x + ab = x^2 + 10x + k이므로 a + b = 10이고 k = ab이다.",
+    "2. a, b가 자연수이므로 순서쌍 (a, b)는 (1, 9), (2, 8), (3, 7), (4, 6), (5, 5)이다.",
+    "3. 각각의 곱 k는 9, 16, 21, 24, 25이다. 따라서 최솟값 m = 9, 최댓값 M = 25이다.",
+    "4. 따라서 최댓값과 최솟값의 합은 25 + 9 = 34이다. 따라서 정답은 4번이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "다항식 $x^2 + 10x + k$가 두 일차식 $(x + a)(x + b)$의 곱으로 인수분해될 때",
+  "rpmRecordId": "M3-RPM-028",
+  "rpmReason": "x^2 + 10x + k의 인수분해 조건 a+b=10에서 k=ab의 최댓값 25와 최솟값 9의 합 34를 구하는 M3-RPM-028 레코드입니다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+  "typeReason": "자연수 a+b=10 조건에서 x^2+10x+k의 k=ab 최솟값 9와 최댓값 25를 구하여 M+m=34를 계산하는 TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT 템플릿입니다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "x^2+10x+k에서 a+b=10을 만족하는 자연수 쌍을 조사하여 k=ab의 최댓값 25와 최솟값 9를 구하고 합 34를 계산하는 2단계 문항입니다.",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $x^2 + 10x + k$가 두 일차식"
+      },
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "(단, $a, b$는 자연수) [5점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "상수 $k$의 최댓값과 최솟값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "사칙연산",
+        "src": "solution",
+        "quote": "$k$의 최솟값과 최댓값을 찾아 합을 계산한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "자연수 곱의 최대 최소 탐색"
+      }
+    ],
+    "condition": []
+  },
+  "how": "x^2+10x+k에서 a+b=10인 자연수 쌍에서 k=ab의 최솟값 1*9=9, 최댓값 5*5=25를 찾아 25+9=34인 4번으로 판정했습니다."
+}
