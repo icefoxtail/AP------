@@ -1,0 +1,76 @@
+{
+  "qid": 3,
+  "itemFingerprint": "72bb71c01faeeddd",
+  "solveSteps": [
+    "원 x^2+y^2=10 위의 점 (3,1) 에서의 접선은 3x+y=10 이다 (중심 (0,0) 과의 기울기 1/3 에 수직인 기울기 -3).",
+    "x절편 A(10/3,0), y절편 B(0,10) 이다.",
+    "삼각형 OAB 의 넓이는 (1/2)×(10/3)×10=50/3 이므로 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-03",
+  "subUnitKey": "H22-C2-03-TANGENT",
+  "unitEvidence": "에서의 접선이",
+  "rpmRecordId": "H1-RPM-221",
+  "rpmReason": "접점 (3,1) 이 주어진 접선 3x+y=10 을 세우는 단계라 접점이 주어진 접선 행이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_AT_POINT",
+  "typeReason": "원 x^2+y^2=10 위의 점 (3,1) 에서의 접선 3x+y=10 을 구하는 것이 원 위의 점에서의 접선 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "접선 3x+y=10 을 세우고 절편 10/3, 10 을 구해 넓이 50/3 으로 이어지는 세 단계라 2단계로 두고 1과의 경계를 표시한다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "원의방정식",
+        "src": "stem",
+        "quote": "$x^2+y^2=10$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $OAB$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선의방정식",
+        "src": "solution",
+        "quote": "접선의 방정식은",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "삼각형넓이공식",
+        "src": "solution",
+        "quote": "따라서 삼각형 $OAB$의 넓이는",
+        "evidenceType": "IMPLIED",
+        "justification": "절편 A(10/3,0), B(0,10) 으로 직각삼각형 OAB 의 넓이 (1/2)×(10/3)×10 을 구한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "원점",
+        "src": "stem",
+        "quote": "(단, $O$는 원점)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "접점 (3,1) 에서의 접선 3x+y=10 이 결정적 단계라 접점이 주어진 접선으로 골랐다. 절편과 삼각형 넓이 50/3 이 ④ 와 같다. 그림 낱말 \"위의\" 는 NONE 이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

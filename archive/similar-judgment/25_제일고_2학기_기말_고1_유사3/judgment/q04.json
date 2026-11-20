@@ -1,0 +1,76 @@
+{
+  "qid": 4,
+  "itemFingerprint": "cfae74e9743bebb5",
+  "solveSteps": [
+    "명제가 참이면 대우 \"x≤3 이고 y≤2k 이면 x+y≤9\" 가 참이어야 한다.",
+    "x≤3, y≤2k 의 변끼리 더하면 x+y≤3+2k 이므로 3+2k≤9 이어야 한다.",
+    "2k≤6, k≤3 이므로 실수 k 의 최댓값은 3 이고 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "가 참이 되도록 하는 실수",
+  "rpmRecordId": "H1-RPM-246",
+  "rpmReason": "x+y>9 이면 x>3 또는 y>2k 를 대우 x≤3 이고 y≤2k 이면 x+y≤9 로 바꾸는 명제 변환 단계라 명제 변환 행이다.",
+  "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+  "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_BOUND_PARAMETER",
+  "typeReason": "대우 x≤3 이고 y≤2k 이면 x+y≤9 의 경계 3+2k≤9 에서 k≤3 을 구하는 것이 역·대우의 경계조건과 매개변수 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "대우를 세우고 부등식을 더해 3+2k≤9 를 얻는 두 단계이나 대우 변환이 한 번 필요해 2단계로 두고 1과의 경계를 표시한다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "명제 “$x+y"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "그 대우인",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "부등식의성질",
+        "src": "solution",
+        "quote": "두 부등식을 변끼리 더하면",
+        "evidenceType": "IMPLIED",
+        "justification": "대우의 두 부등식 x≤3, y≤2k 를 변끼리 더해 x+y≤3+2k 를 얻는다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "solution",
+        "quote": "항상 성립하려면"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "결론이 \"또는\" 인 명제는 대우로 바꾸면 쉬워져 대우의 경계 3+2k≤9 에서 k≤3 을 구했고 ① 과 같다. 유사2 의 명제 매개변수 문항과 같은 계열이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

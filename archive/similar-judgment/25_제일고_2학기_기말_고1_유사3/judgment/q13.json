@@ -1,0 +1,75 @@
+{
+  "qid": 13,
+  "itemFingerprint": "7923802a4880fabe",
+  "solveSteps": [
+    "y=(2x+3)/(x+1)=2+1/(x+1) 이므로 점근선은 x=-1, y=2 이고 대칭의 중심은 (-1,2) 이다.",
+    "① 정의역은 x≠-1, ② 치역은 y≠2 이다. ③ 중심 (-1,2) 를 지나고 기울기 1 인 y=x+3 에 대칭이다. ⑤ y=1/x 를 x축으로 -1, y축으로 2 평행이동한 그래프이다.",
+    "④ x>0 이면 y=2+1/(x+1)>2>0 이라 x>0, y<0 인 점이 없으므로 제4사분면을 지나지 않는다. 따라서 옳지 않은 것은 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "의 그래프에 대한 설명으로",
+  "rpmRecordId": "H1-RPM-261",
+  "rpmReason": "y=2+1/(x+1) 로 점근선 x=-1, y=2 를 읽어 정의역·치역·대칭 중심을 정하는 단계라 점근선 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "typeReason": "중심 (-1,2) 와 평행이동으로 다섯 보기를 판정하고 x>0 에서 y>2 라 제4사분면을 지나지 않아 ④ 가 틀림을 보이는 것이 그래프 성질 판정 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "식 변형 y=2+1/(x+1), 정의역·치역, 대칭축 y=x+3, 평행이동, 사분면 판정까지 다섯 보기를 따져야 해 3단계로 두고 2와의 경계를 표시한다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "의 그래프에 대한 설명으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "choices",
+        "quote": "평행이동한 그래프이다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "두 점근선의 교점",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "그래프는 직선 $y=x+3$에 대하여 대칭이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "유리함수를 y=2+1/(x+1) 로 정리해 중심 (-1,2) 와 대칭축 y=x+3 을 확인하고 ④ 제4사분면 서술만 거짓임을 가렸다. ④ 와 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

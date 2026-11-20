@@ -1,0 +1,69 @@
+{
+  "qid": 1,
+  "itemFingerprint": "1d0bd3b7e115e957",
+  "solveSteps": [
+    "명제는 참·거짓이 분명한 문장이다. ② 모든 실수 x 에 대하여 x^2+2>0 은 참, ③ 정사각형은 마름모이다는 참, ④ 4 의 양의 약수는 1, 2, 4 로 3 개이므로 거짓, ⑤ {1,2}⊂{1,2,3} 은 참이다.",
+    "① x^2-4x+3=0 은 x=1 이면 참, x=0 이면 거짓으로 x 값에 따라 달라지는 조건이다. 따라서 명제가 아닌 것은 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "명제는 참인지 거짓인지를 분명하게 판별할 수 있는",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "보기 ①~⑤ 의 참·거짓이 정해지는지 가려 x^2-4x+3=0 만 조건임을 찾는 단계라 명제의 참·거짓 행이다.",
+  "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+  "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+  "typeReason": "① x^2-4x+3=0 은 x=1, x=0 에서 참·거짓이 갈리는 조건이고 나머지는 참 또는 거짓이 정해지는 명제라는 구별이 결정적 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "명제의 뜻을 보기 다섯 개에 직접 적용하는 한 단계이고 ④ 의 약수 3 개 확인이 가장 길어 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "명제가 아닌 것은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "명제가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "참인지 거짓인지를 분명하게 판별할 수 있는",
+        "evidenceType": "IMPLIED",
+        "justification": "명제의 정의(참·거짓이 분명한 문장)를 보기 ①~⑤ 에 적용해 조건과 명제를 가려낸다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "choices",
+        "quote": "모든 실수"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "보기마다 참·거짓이 정해지는지 읽어 ① x^2-4x+3=0 만 값에 따라 달라지는 조건임을 확인했다. \"아닌 것\" 을 묻는 점만 유사2 와 다르고 저장 정답 ① 과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

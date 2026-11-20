@@ -1,0 +1,88 @@
+{
+  "qid": 15,
+  "itemFingerprint": "bb5a09ee049f1a57",
+  "solveSteps": [
+    "두 그래프가 점 (2,4) 에서 만나므로 f(2)=4 이고 f^{-1}(2)=4 이다.",
+    "역함수의 성질에 의하여 f^{-1}(2)=4 이면 f(4)=2 이다.",
+    "2a+b=4, 4a+b=2 를 변끼리 빼면 2a=-2, a=-1 이고 b=6 이다.",
+    "a+b=-1+6=5 이므로 ③. (f(x)=ax+b 의 계수를 두 점 조건으로 정함)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "역함수의 성질에 의하여",
+  "rpmRecordId": "H1-RPM-256",
+  "rpmReason": "f 와 f^{-1} 의 그래프가 점 (2,4) 에서 만난다는 조건으로 f(2)=4, f(4)=2 를 얻는 단계라 그래프 대칭 행이다. f(x)=ax+b 와 역함수의 대칭 관계를 쓰는 단계이다.",
+  "problemTypeKey": "PT_FUNCTION_RECOVERY",
+  "templateKey": "TPL_FUNCTION_FORM_FROM_RELATION_SYMMETRY",
+  "typeReason": "(2,4) 가 f 와 f^{-1} 의 교점이라 f(2)=4, f(4)=2 가 되어 2a+b=4, 4a+b=2 로 f(x)=-x+6 을 구하는 것이 함수 관계·대칭 조건으로 함수식 구하기 템플릿이다. f(x)=ax+b 의 a, b 를 교점 조건으로 정한다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "교점 조건을 f(2)=4, f(4)=2 로 바꾸고 2a+b=4, 4a+b=2 를 연립하는 세 줄이라 2단계이다. f(x)=ax+b 의 두 계수를 연립으로 구하면 끝난다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $f(x)=ax+b$"
+      },
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "그 역함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "역함수의 성질에 의하여",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "아래 식에서 위 식을 변끼리 빼면",
+        "evidenceType": "IMPLIED",
+        "justification": "2a+b=4 와 4a+b=2 를 변끼리 빼서 2a=-2 를 얻는 연립방정식 풀이이다."
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "이를 $2a+b=4$에 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "점 $(2,4)$에서 만날 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(2,4) 가 f 와 f^{-1} 의 공통점임에서 f(2)=4, f(4)=2 를 얻어 a=-1, b=6 으로 ③ 과 같다. 풀면 f 가 자기 자신의 역함수라는 점도 확인했다. f(x)=ax+b 의 두 계수를 두 점에서 정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

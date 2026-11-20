@@ -1,0 +1,78 @@
+{
+  "qid": 17,
+  "itemFingerprint": "af941e9aee673259",
+  "solveSteps": [
+    "A 의 x좌표를 a 라 하면 A(a,√(3a)) 이다.",
+    "점 D 는 y=√x 위에서 y좌표가 √(3a) 이므로 x=3a 이다.",
+    "AD=3a-a=2a, AB=√(3a) 이고 AD=2AB 이므로 2a=2√(3a), a=√(3a) 이다.",
+    "a>0 이므로 제곱하면 a^2=3a, a=3 이다. 따라서 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그래프가 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "두 무리함수",
+  "rpmRecordId": "H1-RPM-266",
+  "rpmReason": "y=√(3x) 와 y=√x 의 기본 그래프 위 점 A(a,√(3a)), D(3a,√(3a)) 를 놓는 단계라 무리함수의 기본 그래프 행이다. AD=2AB 의 길이를 세우는 출발점이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DERIVATION",
+  "typeReason": "두 그래프 위의 점 A(a,√(3a)), D(3a,√(3a)) 로 AD=2a, AB=√(3a) 를 놓고 AD=2AB 에서 a=3 을 구하는 것이 그래프의 도형 관계에서 식 유도하기 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "좌표 놓기 A(a,√(3a)), D(3a,√(3a)), AD=2AB 조건의 제곱 풀이 a=3 까지 세 단계라 3단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리함수",
+        "src": "stem",
+        "quote": "두 무리함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "점 $A$의 $x$좌표는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "src": "solution",
+        "quote": "좌표를 $a$",
+        "evidenceType": "IMPLIED",
+        "justification": "점 A 의 x좌표를 a 로 두고 A(a,√(3a)), D(3a,√(3a)) 의 좌표로 변의 길이를 표현한다."
+      },
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "양변을 제곱하면",
+        "evidenceType": "IMPLIED",
+        "justification": "a=√(3a) 의 양변을 제곱해 a^2=3a 를 얻는다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$에서"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "그림이 있으나 발문이 함수식과 점의 정의를 모두 주어 글만으로 풀려 SELF_CONTAINED 로 두었다. a=3 이 ② 와 같다. AD=2AB 조건에서 식을 세웠다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

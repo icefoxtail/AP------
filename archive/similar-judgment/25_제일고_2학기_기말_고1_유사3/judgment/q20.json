@@ -1,0 +1,82 @@
+{
+  "qid": 20,
+  "itemFingerprint": "5d1ab74b05c4baef",
+  "solveSteps": [
+    "f(x)=√(x-k)+1 은 정의역 x≥k 에서 증가하므로 f 와 역함수 g 의 교점은 직선 y=x 위에 있다.",
+    "√(x-k)+1=x 에서 √(x-k)=x-1 (x≥1), 제곱하면 x^2-3x+k+1=0 이다.",
+    "이 방정식이 x≥1 에서 서로 다른 두 실근을 가지려면 D=9-4(k+1)>0 에서 k<5/4, 축 x=3/2>1 이고 h(1)=k-1≥0 에서 k≥1 이다.",
+    "따라서 1≤k<5/4 이다."
+  ],
+  "solvedAnswer": "$1\\le k\\lt\\dfrac{5}{4}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_INVERSE",
+  "unitEvidence": "교점은 직선 $y=x$ 위에 있다",
+  "rpmRecordId": "H1-RPM-271",
+  "rpmReason": "f(x)=√(x-k)+1 과 역함수 g 의 교점이 y=x 위에 있어 x^2-3x+k+1=0 의 두 근 조건으로 바뀌는 단계라 무리함수의 역함수 행이다.",
+  "problemTypeKey": "PT_INVERSE_GRAPH",
+  "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+  "typeReason": "증가함수 f 와 역함수의 교점이 y=x 위에 있어 √(x-k)+1=x 가 x≥1 에서 서로 다른 두 근을 갖는 k 의 범위 1≤k<5/4 를 구하는 것이 함수와 역함수의 교점 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "교점이 y=x 위라는 관찰, 제곱한 이차방정식 x^2-3x+k+1=0, 판별식 k<5/4 와 h(1)≥0 의 k≥1 두 조건까지 이어져 4단계이다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "그 역함수 $y=g(x)$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "값의 범위를 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "교점은 직선 $y=x$ 위에 있다",
+        "evidenceType": "IMPLIED",
+        "justification": "함수와 역함수의 그래프가 y=x 에 대칭이고 f 가 증가함수라 교점이 y=x 위에 있다고 본다."
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식을 $D$라 하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역제한",
+        "src": "solution",
+        "quote": "정의역 $x\\ge k$"
+      },
+      {
+        "term": "실근",
+        "src": "solution",
+        "quote": "서로 다른 두 실근"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "증가함수와 역함수의 교점이 y=x 위임을 써서 x^2-3x+k+1=0 이 x≥1 에서 서로 다른 두 근을 갖는 조건 D>0, h(1)≥0 으로 1≤k<5/4 를 얻었다. 저장 정답과 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

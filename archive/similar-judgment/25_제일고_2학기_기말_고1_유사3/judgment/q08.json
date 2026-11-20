@@ -1,0 +1,70 @@
+{
+  "qid": 8,
+  "itemFingerprint": "0a7540f0c7294871",
+  "solveSteps": [
+    "C 의 말 \"A 가 당선\" 과 D 의 말 \"C 의 말은 거짓\" 은 서로 반대이므로 C, D 중 정확히 한 명이 참말이다.",
+    "참말이 두 명이므로 A, B 중에서도 정확히 한 명이 참말이다.",
+    "당선자가 A 이면 참말은 C 하나뿐이고 B 이면 D 하나뿐이며 D 이면 A, B, D 세 명이라 모두 안 된다. 당선자가 C 이면 A, D 가 참말이고 B, C 가 거짓말이라 조건에 맞는다. 따라서 ③. (발문 br 줄 아래 A, B, C, D 의 말을 쓴다.)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "두 명만 참말을 하고 나머지 두 명은 거짓말을 하였을 때",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "네 학생 말의 참·거짓을 당선자 A, B, C, D 각 경우로 판정하는 단계라 명제의 참·거짓 행이다. 발문 br 줄 아래 네 말을 판정한다.",
+  "problemTypeKey": "PT_LOGIC_CHAIN",
+  "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+  "typeReason": "C 와 D 의 말이 반대라는 관계와 참말 두 명이라는 제약으로 당선자 네 경우를 따져 C 만 조건에 맞음을 보이는 것이 논리 조건 추론 템플릿이다. 발문 br 줄 아래 네 말의 관계를 제약으로 쓴다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "반대 관계 한 번과 당선자 4 가지 경우의 참말 수 세기까지 해야 해 유사2 보다 한 단계 많은 3단계로 두고 2와의 경계를 표시한다. 발문 br 줄 아래 네 말의 관계를 네 경우로 확인한다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "논리",
+        "src": "stem",
+        "quote": "두 명만 참말을 하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "당선된 학생은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "당선된 학생에 따라",
+        "evidenceType": "IMPLIED",
+        "justification": "당선자가 A, B, C, D 인 네 경우로 나누어 네 학생 말의 참·거짓을 세어 참말이 두 명인 경우를 찾는다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "유일성",
+        "src": "stem",
+        "quote": "한 명만 반장 선거에서 당선되었다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "C 와 D 가 반대라는 관찰 뒤 당선자 4 경우를 따져 참말이 두 명인 C 를 얻었고 ③ 과 같다. \"다음과 같이\" 는 그림 언급이 아니다. (발문 br 줄 아래 네 학생의 말이 있다.)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

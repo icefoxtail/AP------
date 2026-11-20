@@ -1,0 +1,70 @@
+{
+  "qid": 12,
+  "itemFingerprint": "2de87684ecc8cb65",
+  "solveSteps": [
+    "그림에서 곡선 y=f(x) 가 점 (6,4) 를 지나므로 f(6)=4, 점 (4,2) 를 지나므로 f(4)=2 이다.",
+    "(f∘f)(6)=f(f(6))=f(4)=2 이다.",
+    "f(6)=4 이므로 역함수의 정의에 의하여 f^{-1}(4)=6 이다.",
+    "구하는 값은 2+6=8 이므로 ③. (⑤ 10 은 합성값을 6 으로 본 경우이다.)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "$y=x$가 그림과 같을 때",
+  "solutionFigureNeed": "NEEDS_FIGURE",
+  "solutionFigureEvidence": "그림에서 곡선",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "합성함수의 값은",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "그래프의 점 (6,4), (4,2) 로 f(6)=4, f(4)=2 를 읽어 (f∘f)(6)=2 를 계산하는 단계라 합성함수 계산 행이다. ⑤ 10 이 아니라 합성값 2 를 읽는 단계이다.",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+  "typeReason": "그래프의 점 (6,4), (4,2) 를 읽어 (f∘f)(6)=2 와 f^{-1}(4)=6 을 구해 더하는 것이 그래프에서 합성함숫값을 따라가는 템플릿이다. 오답 ⑤ 10 은 f(f(6)) 를 4 로 본 경우이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "그래프에서 f(6)=4, f(4)=2 를 읽고 합성값 2 와 역함숫값 6 을 각각 구해 8 로 더하는 두 갈래라 2단계로 두고 1과의 경계를 표시한다. 오답 ⑤ 10 과 구별하려면 두 값 2, 6 을 모두 읽어야 한다.",
+  "difficultyBoundaryFlag": "B12",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "의 그래프와 직선"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "합성함수의 값은",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "역함수의 정의에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림의 곡선이 지나는 점 (6,4), (4,2) 를 읽어 합성값 2 와 역함숫값 6 을 구했고 합 8 이 ③ 과 같다. 그림이 있어야 하므로 NEEDS_FIGURE 이다. 보기 ⑤ 10 은 두 값을 잘못 더한 오답이다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

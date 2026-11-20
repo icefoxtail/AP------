@@ -1,0 +1,76 @@
+{
+  "qid": 7,
+  "itemFingerprint": "0e34cdb77168957f",
+  "solveSteps": [
+    "원 (x-1)^2+(y-1)^2=r^2 의 중심은 (1,1) 이고 점 (5,4) 를 지나는 직선은 y-4=m(x-5), 즉 mx-y-5m+4=0 이다.",
+    "중심에서 직선까지의 거리가 r 이므로 |-4m+3|=r√(m^2+1) 이고 제곱하면 (16-r^2)m^2-24m+9-r^2=0 이다.",
+    "두 접선의 기울기의 합은 근과 계수의 관계로 24/(16-r^2)=2 이므로 r^2=4, r>0 에서 r=2 이다. 따라서 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-03",
+  "subUnitKey": "H22-C2-03-TANGENT",
+  "unitEvidence": "두 접선의 기울기의 합이",
+  "rpmRecordId": "H1-RPM-222",
+  "rpmReason": "기울기 m 을 미지수로 두고 중심 (1,1) 에서 직선까지 거리 r 로 (16-r^2)m^2-24m+9-r^2=0 을 얻는 단계라 기울기가 주어진 접선 행에 가장 가깝다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TM_TANGENT_TWO_SLOPES",
+  "typeReason": "점 (5,4) 에서 그은 두 접선의 기울기 합 24/(16-r^2)=2 로 r^2=4 를 구하는 것이 두 접선의 기울기 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "low",
+  "difficultyReason": "접선을 m 으로 두고 (16-r^2)m^2-24m+9-r^2=0 을 만든 뒤 24/(16-r^2)=2 로 r=2 를 구하는 세 단계이고 반지름이 미지수라 3과 4 사이의 경계로 3 에 둔다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "에 그은 두 접선의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "양수 $r$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "점과직선사이의거리",
+        "src": "solution",
+        "quote": "이 직선까지의 거리가",
+        "evidenceType": "IMPLIED",
+        "justification": "원의 중심 (1,1) 에서 접선까지의 거리가 반지름 r 과 같다는 조건으로 m 의 이차방정식을 얻는다."
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $r$의 값은?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "외부점 (5,4) 에서의 두 접선을 m 으로 놓아 이차방정식을 만들고 근과 계수의 관계 24/(16-r^2)=2 로 r=2 를 구해 ② 와 확인했다. 유사2 와 달리 반지름이 미지수다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
