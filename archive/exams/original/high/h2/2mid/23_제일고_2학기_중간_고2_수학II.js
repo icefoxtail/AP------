@@ -324,7 +324,12 @@ window.questionBank=[
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 증가하는 포물선 조각, 오른쪽은 감소하는 직선 조각이 점 B에서 이어진 그래프이며 세 점 A, B, C의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x=2에서 연속이려면 4+k=3k-2이므로 k=3이다. 그림은 k=3일 때 [0,4]에서 포물선 조각이 A(0,3)에서 B(2,7)까지 증가하고 직선 조각이 B에서 C(4,5)까지 감소하는 모습이다. 최댓값 M=7(점 B), 최솟값 m=3(점 A)이므로 M+m=10이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 11,
@@ -356,7 +361,11 @@ window.questionBank=[
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 주어진 여섯 점을 꺾은선으로 이은 그래프와 직선 y=x가 세 점 P, Q, R에서 만나는 모습을 나타낸 그림이다.",
+    "solutionImageCaption": "예: 여섯 점 A(-2,-1/3), B(-1,-3/2), C(0,-1), D(1,5/4), E(2,3), F(3,-2)를 차례로 직선으로 이은 연속함수 f와 직선 y=x이다. h(x)=f(x)-x는 부호가 +, -, -, +, +, -로 바뀌어 (-2,-1), (0,1), (2,3)에서 영점이 생기며 그림에서 f와 y=x가 만나는 점 P, Q, R이 그 근이다. 따라서 적어도 3개이고 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -584,9 +593,9 @@ window.questionBank=[
     "wide": false,
     "content": "그림과 같이 곡선 $y=x^3-3x^2+27$ 위의 점 중에서 제1사분면에 있는 점의 좌표를 $(a,b)$이라 하자. $\\dfrac ba$가 최솟값을 가질 때, 상수 $a,b$에 대하여 $b-a$의 값은? [4.8점]",
     "image": "assets/images/23_제일고_2학기_중간_고2_수학II/q18.png",
-    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q18-solution.svg",
-    "solutionImageAlt": "곡선 위 점 (3,27)에서 원점을 잇는 최소 기울기 접선을 설명하는 해설 그래프",
-    "solutionImageCaption": "b/a를 원점과 점을 잇는 직선의 기울기로 보고 접점에서 최소를 구한다.",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면의 삼차곡선과 원점을 지나 점 T에서 곡선에 접하는 직선을 나타낸 그래프이며 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "b/a는 원점과 곡선 위의 점 (a,b)를 잇는 직선의 기울기이다. 이 기울기가 최소가 되는 것은 원점을 지나는 직선이 곡선에 접할 때이며 그림의 직선 y=9x가 접점 T(3,27)에서 접한다. k(a)=a²-3a+27/a의 도함수가 a=3에서 0이므로 a=3, b=27이고 b-a=24이다. 따라서 답은 ⑤이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -601,7 +610,8 @@ window.questionBank=[
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageScale": 80
   },
   {
     "id": 19,
@@ -634,7 +644,12 @@ window.questionBank=[
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: x축 위의 점 A, B에서 뾰족하게 꺾이는 삼차 조각 그래프이며 x축과 만나는 점 C가 표시되어 있다.",
+    "solutionImageCaption": "예: t=1일 때의 y=|x(x-2)|(x-1) 그래프이다. |x(x-2)|는 x=0과 x=2에서 꺾이고(점 A, B), 곱해진 (x-t)가 그 점에서 0이 되는 t=0 또는 t=2일 때만 꺾임이 사라진다. 따라서 g(0)=g(2)=1이고 그 밖에서 g(t)=2이다. ㄱ은 거짓, ㄴ은 극한이 2라 거짓, ㄷ은 불연속점이 t=0, 2의 2개라 참이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 20,
