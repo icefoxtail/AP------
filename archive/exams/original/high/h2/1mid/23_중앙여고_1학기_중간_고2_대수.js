@@ -114,9 +114,9 @@ window.questionBank = [
   {
     "id": 4,
     "level": "상",
-    "solutionImage": "assets/images/23_중앙여고_1학기_중간_고2_대수/q4-solution.svg",
-    "solutionImageAlt": "t=log₂x로 치환한 포물선 t²−2t−log₂k가 t축에 접하거나 그 위에 있도록 판별식 D≤0을 적용해 0<k≤1/2임을 나타낸다.",
-    "solutionImageCaption": "quadratic",
+    "solutionImage": "assets/images/23_중앙여고_1학기_중간_고2_대수/q4-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 가로축에 꼭짓점 V에서 접해 있고, V의 좌표가 표시되어 있다. 포물선의 나머지 부분은 모두 가로축 위쪽에 있다.",
+    "solutionImageCaption": "양변에 밑이 2인 로그를 취하고 t=log₂x로 두면 t²−2t−log₂k≥0이 모든 실수 t에서 성립해야 한다. h는 그 이차식의 경계 예 k=1/2일 때 h(t)=t²−2t+1의 그래프로 꼭짓점 V(1, 0)에서 t축에 접한다. 포물선이 t축 아래로 내려가지 않으려면 t축과 만나지 않거나 접해야 하므로 D/4=1+log₂k≤0이다. 따라서 0<k≤1/2이고 답은 ①이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "$x > 0$에서 부등식 $x^{\\log_2 x} \\ge kx^2$이 항상 성립하도록 하는 양수 $k$의 범위는? [4.1점]",
@@ -188,6 +188,10 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_중앙여고_1학기_중간_고2_대수/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선이 있고 t=−1에서의 점 A는 가로축 위쪽에, t=0에서의 점 B는 가로축 아래쪽에 있다. 두 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: k=−1인 f(t)=t²−2t+k의 그래프이다. 3x²−4x+1=0의 두 근은 1/3과 1이므로 log₃x=t의 한 근이 1/3<x<1에 있으려면 −1<t<0에 f의 근이 있어야 한다. 그림에서 f(−1)=2>0이고 f(0)=−1<0이어서 A와 B 사이에서 부호가 바뀐다. 일반적으로 f(−1)f(0)<0에서 (3+k)k<0이므로 −3<k<0이다. 두 근의 곱은 t₁+t₂=2에서 x₁x₂=3²=9이다. 따라서 답은 9, −3<k<0이다.",
+    "solutionImageSize": "full"
   }
 ];

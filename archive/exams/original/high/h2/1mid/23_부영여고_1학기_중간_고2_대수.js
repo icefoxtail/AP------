@@ -72,7 +72,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로 점근선 x=2 오른쪽에서 올라가는 파란 로그 곡선 f와 가로 점선 y=3이 한 점 P에서 만나고, P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 f(x)=log₃(3x−6)의 그래프이고 진수 조건 3x−6>0에서 점근선은 x=2이다. f가 점선 y=3보다 아래에 있는 부분은 두 그래프가 만나는 점 P(11, 3)의 왼쪽이므로 2<x<11이다. 이 범위의 자연수는 3, 4, …, 10의 8개이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -545,7 +549,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-LOGARITHMIC_FUNCTION",
     "subUnit": "logarithmic function",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 1과 7 사이에서 위로 볼록한 포물선이 그려져 있고 꼭짓점 V의 좌표가 표시되어 있다. 양 끝은 가로축 위의 열린 점이다.",
+    "solutionImageCaption": "h는 진수 h(x)=(x−1)(7−x)=−(x−4)²+9의 그래프이고 진수 조건 h(x)>0에서 정의역은 1<x<7이다. h의 최댓값은 꼭짓점 V(4, 9)의 9이므로 y=log₃h의 최댓값은 log₃9=2이고 치역은 y≤2이다. 정의역은 1≤x≤7이 아니고 최댓값은 4가 아니다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -766,6 +774,10 @@ window.questionBank = [
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_부영여고_1학기_중간_고2_대수/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 2보다 크고 6 이하인 구간이 표시되어 있고 구간 안의 정수 3, 4, 5, 6에 점이 찍혀 있다.",
+    "solutionImageCaption": "예: a=1, b=4인 경우의 그림이다. b<2ⁿa≤16b는 log₂(b/a)<n≤log₂(b/a)+4이므로 길이 4인 반열린 구간에 정수가 연속 네 개 들어간다. 합이 18이면 정수해는 3, 4, 5, 6이므로 2≤log₂(b/a)<3, 즉 4≤b/a<8이다. a+b가 최소이려면 a=1일 때 b=4이다. 따라서 답은 a=1, b=4이다.",
+    "solutionImageSize": "full"
   }
 ];

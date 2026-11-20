@@ -43,7 +43,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1과 x=1에서 끊어지는 세 조각의 그래프이고, x=-1의 왼쪽 수평선은 열린 점에서 끝나며 x=1의 오른쪽 직선은 열린 점에서 시작한다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x→-1-에서 함수값은 열린 점 (-1,-1)로 가까워지므로 좌극한은 -1이고, x→1+에서는 (1,2)에서 시작하는 직선이 열린 점 (1,2)에서 출발하므로 우극한은 2이다. 따라서 합은 -1+2=1이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 2,
@@ -131,7 +135,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 포물선 조각이 점 P에서 오른쪽의 직선 조각과 끊기지 않고 이어진 그래프이다.",
+    "solutionImageCaption": "x=1에서 연속이려면 왼쪽 식의 극한 1-4+a=a-3과 함숫값 3-a가 같아야 한다. a-3=3-a에서 a=3이다. 그림은 a=3일 때 x²-4x+3 (x<1)과 3x-3 (x≥1)이 점 P(1,0)에서 끊기지 않고 이어지는 모습이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 4,
@@ -395,7 +403,12 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 두 점 A, B를 지나는 기울기가 큰 직선 l이 그려진 그래프이다.",
+    "solutionImageCaption": "x가 a에서 a+1까지 변할 때의 평균변화율은 [f(a+1)-f(a)]/1=2a이다. 2a=6에서 a=3이고 그림의 두 점 A(3,8), B(4,14)를 잇는 직선 l의 기울기가 6이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "number": 10,
@@ -439,7 +452,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 점 T에서 접하는 기울기가 1인 직선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "접선의 기울기는 도함수 -2x+3이고 이것이 1이면 x=1이다. f(1)=-1이므로 접점은 T(1,-1)이고 접선은 y+1=x-1, 즉 y=x-2이다. 그림의 직선 l이 이 접선이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -484,7 +501,11 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 오른쪽 아래로 내려오다 x=-1에서 끊겨 위로 올라가고, 다시 내려가 x=1에서 가로축에 닿았다가 올라가고 x=3에서 다시 가로축에 닿는 꺾은선 모양의 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. a=-3, -2에서는 f→3, 2이고 x/f(x)→-1이며 극한이 있다. a=-1에서는 f의 좌극한 1, 우극한 2라 x/f(x)의 좌우 극한이 -1과 -1/2로 달라 극한이 없다. a=0에서는 f→1이므로 0으로 수렴하고, a=2에서는 f→1이므로 2로 수렴한다. a=1, 3에서는 f→0이고 분자가 0이 아니므로 극한이 없다. 극한이 존재하는 a는 -3, -2, 0, 2의 4개이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 12,
@@ -572,7 +593,12 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 아래로 계속 내려가는 삼차곡선과 곡선이 점 A, B에서 만나는 높이 6, 22의 수평선 두 개가 그려져 있다.",
+    "solutionImageCaption": "두 곡선의 교점에서 k=-x³+2x²-3x=F(x)이다. F′(x)=-3x²+4x-3은 항상 음수이므로 F는 감소하고, 그림의 수평선 y=6은 A(-1,6), y=22는 B(-2,22)에서 F와 만난다. 교점의 x좌표가 (-2,-1)에 있으려면 수평선 높이 k가 6<k<22이다. 자연수 k는 7부터 21까지 15개이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "number": 14,
@@ -704,7 +730,12 @@ window.questionBank = [
     "tags": [
       "객관식",
       "함수의 극한과 미분"
-    ]
+    ],
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선의 꼭짓점 A와 점 B를 잇는 직선 l과, 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "c=3이면 평균변화율은 f′(3)=4이다. 구간 양 끝점 A(1,-1), B(a,f(a))를 잇는 할선 l의 기울기 (a²-2a+1)/(a-1)=a-1이 4이므로 a=5이고 B(5,15)이다. 그림에서 할선 l과 평행한 접선 m이 접점 T(3,3)에서 접한다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "number": 17,
@@ -860,6 +891,9 @@ window.questionBank = [
       "서술형",
       "도형의 극한"
     ],
-    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q20-solution.svg"
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고2_수학II/q20-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 포물선 바깥 아래쪽의 점 K에서 그은 두 접선이 있고, 두 접선과 가로축이 이루는 삼각형 안에 원이 그려져 있다.",
+    "solutionImageCaption": "예: k=-1일 때를 그린다. 점 K(0,-1)에서 y=x²에 그은 두 접선 l, m은 접점이 T(1,1), U(-1,1)이고 y=2x-1, y=-2x-1이다. 두 접선의 x절편은 M(-1/2,0), N(1/2,0)이고 삼각형 KMN의 밑변은 1, 높이는 1이다. 내접원의 반지름은 r=(넓이)/(반둘레)=(1/2)/((1+√5)/2)=(√5-1)/4이다. 일반적으로 p=√(-k)이면 밑변 p, 높이 p²이고 r(k)/k=-1/(1+2√(1/4+p²))이며 k→0-에서 -1/2이다.",
+    "solutionImageSize": "full"
   }
 ];
