@@ -1,0 +1,72 @@
+{
+  "qid": 23,
+  "itemFingerprint": "5cbbb4b8e6c14f1d",
+  "solveSteps": [
+    "y = (x+2)^2의 꼭짓점은 (-2, 0)이다.",
+    "꼭짓점이 (-2, 0)인 이차함수 식은 y = a(x+2)^2이다.",
+    "점 (-3, -4)를 지나므로 대입하면 -4 = a(-3 + 2)^2에서 a = -4이다.",
+    "따라서 이차함수의 식은 y = -4(x+2)^2이다.",
+    "y절편은 x = 0일 때 y의 값이므로 y = -4(0 + 2)^2 = -16이다."
+  ],
+  "solvedAnswer": "-16",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "이차함수 $y = (x+2)^2$의 그래프와 꼭짓점이 일치하고",
+  "rpmRecordId": "M3-RPM-054",
+  "rpmReason": "y = (x+2)^2의 꼭짓점과 점 (-3, -4)로부터 식 y = -4(x+2)^2을 세워 y절편 -16을 구하는 조건으로 식 구하기 문항이다.",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION",
+  "templateKey": "NONE",
+  "typeReason": "꼭짓점 (-2, 0)과 점 (-3, -4)로부터 식 y = -4(x+2)^2을 결정하고 y절편 -16을 산출하는 포물선 식 결정 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "꼭짓점 조건과 한 점 (-3, -4) 대입으로 식을 완성하고 y절편 -16을 계산하므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = (x+2)^2$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "이차함수 그래프의 $y$절편을 구하는 과정을 서술하시오. [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "꼭짓점이 $(-2, 0)$으로 같으므로 구하는 이차함수의 식을 $y = a(x+2)^2$이라 하자.",
+        "evidenceType": "IMPLIED",
+        "justification": "꼭짓점 일치 조건으로 식을 세운 뒤 지나는 점 대입"
+      }
+    ],
+    "condition": [
+      {
+        "term": "꼭짓점",
+        "src": "stem",
+        "quote": "꼭짓점이 일치하고 점 $(-3, -4)$를 지나는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "꼭짓점 (-2, 0)과 점 (-3, -4)로부터 식 y = -4(x+2)^2을 도출하여 x = 0일 때 y절편이 -16임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

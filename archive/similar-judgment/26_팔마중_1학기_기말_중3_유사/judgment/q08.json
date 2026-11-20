@@ -1,0 +1,73 @@
+{
+  "qid": 8,
+  "itemFingerprint": "9904aa131a3aba73",
+  "solveSteps": [
+    "연속하는 두 자연수를 r, r+1이라 하자.",
+    "두 근의 제곱의 차가 11이므로 (r+1)^2 - r^2 = 2r + 1 = 11에서 2r = 10, 즉 r = 5이다.",
+    "따라서 두 근은 5와 6이다.",
+    "두 근이 5, 6인 이차방정식은 (x - 5)(x - 6) = x^2 - 11x + 30 = 0이다.",
+    "x^2 + ax + b = 0과 비교하면 a = -11, b = 30이다.",
+    "따라서 (a + b)^2 = (-11 + 30)^2 = 19^2 = 361이므로 정답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION_WORD",
+  "unitEvidence": "이차방정식 $x^2 + ax + b = 0$의 두 근이 연속하는 자연수이고",
+  "rpmRecordId": "M3-RPM-037",
+  "rpmReason": "연속하는 자연수 근의 제곱의 차 2r + 1 = 11에서 두 근 5, 6을 구하고 계수 합 (a+b)^2 = 361을 구하는 연속된 수 활용 문항이다.",
+  "problemTypeKey": "PT_M3_ROOT_COEFFICIENT",
+  "templateKey": "NONE",
+  "typeReason": "연속하는 두 근의 성질 2r + 1 = 11에서 근 5, 6을 복원하고 전개하여 x^2 + ax + b = 0의 계수를 연결하는 근과 계수 관계 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "제곱의 차 조건 2r + 1 = 11로 두 근을 결정하고 방정식을 세워 19^2 = 361을 계산하는 2단계 문제로 난이도 3이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 + ax + b = 0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "두 상수 $a, b$에 대하여 $(a+b)^2$의 값은? [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "제곱",
+        "src": "solution",
+        "quote": "제곱의 차가 $11$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "연속 자연수 제곱의 차 방정식으로 두 근 복원"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "두 근이 연속하는 자연수이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "두 근의 제곱의 차 2r + 1 = 11에서 두 근 5, 6을 구하고 x^2 - 11x + 30 = 0에서 (a+b)^2 = 19^2 = 361임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

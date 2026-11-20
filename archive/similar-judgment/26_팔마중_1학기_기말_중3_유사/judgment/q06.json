@@ -1,0 +1,73 @@
+{
+  "qid": 6,
+  "itemFingerprint": "03eb9fe274e5ff6f",
+  "solveSteps": [
+    "x^2 - 5x + 3 = 0에 근의 공식을 적용하면 x = (5 +- sqrt(13)) / 2이다.",
+    "두 근 중 큰 근은 m = (5 + sqrt(13)) / 2이다.",
+    "x^2 + 3x - 1 = 0에 근의 공식을 적용하면 x = (-3 +- sqrt(13)) / 2이다.",
+    "두 근 중 작은 근은 n = (-3 - sqrt(13)) / 2이다.",
+    "m + n = ((5 + sqrt(13)) + (-3 - sqrt(13))) / 2 = 2 / 2 = 1이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "unitEvidence": "이차방정식 $x^2 - 5x + 3 = 0$의 두 근 중",
+  "rpmRecordId": "M3-RPM-035",
+  "rpmReason": "x^2 - 5x + 3 = 0과 x^2 + 3x - 1 = 0의 근을 근의 공식으로 구해 sqrt(13) 항이 소거되는 m + n = 1을 구하는 문항이다.",
+  "problemTypeKey": "PT_M3_ROOT_FORMULA",
+  "templateKey": "NONE",
+  "typeReason": "두 이차방정식에 각각 근의 공식을 적용해 무리수 부분 sqrt(13)을 구하고 두 근의 합 m + n을 산출하는 근의 공식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "근의 공식으로 구한 무리수 근들의 합에서 sqrt(13)이 소거되어 1이 되는 계산 문제로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 - 5x + 3 = 0$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "근",
+        "src": "stem",
+        "quote": "$m + n$의 값은? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "근",
+        "src": "solution",
+        "quote": "$x^2 - 5x + 3 = 0$의 근은 $\\frac{5\\pm\\sqrt{13}}{2}$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "근의 공식으로 각 방정식의 근을 구하여 큰 근과 작은 근 합산"
+      }
+    ],
+    "condition": [
+      {
+        "term": "근",
+        "src": "stem",
+        "quote": "두 근 중 큰 근을 $m$,"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x^2 - 5x + 3 = 0의 큰 근과 x^2 + 3x - 1 = 0의 작은 근을 더하면 sqrt(13)이 상쇄되어 m + n = 1임을 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
