@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "42.25",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "49",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "42.25 < x < 49 범위의 자연수"
+  },
+  "caption": "42.25 < x < 49 범위의 자연수 6개 (42.25, 49, 6)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "42.25 < x < 49, 자연수 6개",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "42.25와 49 사이 6개의 자연수"
+  ]
+}

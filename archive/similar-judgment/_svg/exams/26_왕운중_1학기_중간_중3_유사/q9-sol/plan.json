@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "100",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "102",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "100 < √x < 102 부등식 범위"
+  },
+  "caption": "100 < √x < 102 범위와 자연수 403개 (100, 102, 403)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "100 < √x < 102, 자연수 403개",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "100과 102 사이 제곱근 범위"
+  ]
+}
