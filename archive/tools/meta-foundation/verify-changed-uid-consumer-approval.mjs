@@ -53,6 +53,7 @@ import { BINDING_COURSE_CORRECTION_SCHEMA, BINDING_COURSE_CORRECTION_SCHEMA_V2, 
 
 import { isNativeAuthorityCorrection, registerNativeAuthorityCorrection, verifyNativeAuthorityCorrectionConsumer } from "./native-authority-correction.mjs";
 import { DIRECT_JUDGMENT, FIELD_SCOPE_TYPE_ONLY, TYPE_FIELD_STATUS } from "./register-type-judgment.mjs";
+import { TEXT_BOUND_REVIEW_TYPES, reviewedSourceTextUnchanged } from "./text-binding-lib.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -688,7 +689,13 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
           : gitBlobSha1(root, sourcePath);
         // A direct type judgment is verified per question by its replay below (stem + choices), not by the file blob.
         // A draft difficulty request whose items all carry textBindingFingerprint is verified per question by the registrar, not by the file blob.
-        if (binding.expectedSourceBlobSha1 !== blob && unit.kind !== "direct-type-judgment" && !unit.textBoundDraft) {
+        // A plain reviewed-exam-v2 REVIEW2/FINAL_QA request is bound to the stem + choices of its questions (same predicate as the registrar).
+        const textBoundReview = unit.kind === "reviewed-exam-v2" && TEXT_BOUND_REVIEW_TYPES.includes(unit.approvalType) &&
+          binding.expectedSourceBlobSha1 !== blob &&
+          reviewedSourceTextUnchanged({ root, expectedBlobSha1: binding.expectedSourceBlobSha1, currentBytes: fs.readFileSync(path.join(root, sourcePath)),
+            ordinals: unit.rows.map(r => r.ordinal).filter(Number.isInteger) }).ok;
+        // Scoped parent links are bound per record to the question body (sourceBodyFingerprint, checked by the rows below), not to the file blob.
+        if (binding.expectedSourceBlobSha1 !== blob && unit.kind !== "direct-type-judgment" && unit.kind !== "scoped-parent-links" && !unit.textBoundDraft && !textBoundReview) {
           sourceBound = false;
           result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "SOURCE_BLOB_MISMATCH", detail: `${unit.sourceSnapshots ? binding.sourceArchiveFile + ': ' : ''}request ${binding.expectedSourceBlobSha1 ?? null} != worktree ${blob}` });
         }

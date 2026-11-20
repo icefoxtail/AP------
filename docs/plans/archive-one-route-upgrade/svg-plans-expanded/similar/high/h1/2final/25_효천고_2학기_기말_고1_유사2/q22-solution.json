@@ -1,0 +1,136 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -8,
+   4,
+   -2,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-11",
+     "2"
+    ],
+    "denominator": [
+     "-1",
+     "1"
+    ],
+    "domain": [
+     "-8",
+     "0"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "r",
+    "kind": "LINE",
+    "coefficients": [
+     "5",
+     "0"
+    ],
+    "domain": [
+     "-2",
+     "0"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "-2",
+     "y": "5",
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "x": "-2",
+     "y": "0"
+    },
+    {
+     "id": "R",
+     "x": "0",
+     "y": "5"
+    },
+    {
+     "id": "M1",
+     "x": "-2",
+     "y": "5/2",
+     "unnamed": true
+    },
+    {
+     "id": "M2",
+     "x": "-1",
+     "y": "5",
+     "unnamed": true
+    },
+    {
+     "id": "F",
+     "x": "-5",
+     "y": "7/2",
+     "unnamed": true
+    }
+   ],
+   "guides": [
+    {
+     "id": "gq",
+     "from": "P",
+     "axis": "x"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cpq",
+     "point": "M1",
+     "text": "PQ=5",
+     "labelKind": "MATH",
+     "direction": "W"
+    },
+    {
+     "id": "cpr",
+     "point": "M2",
+     "text": "PR=2",
+     "labelKind": "MATH",
+     "direction": "N"
+    },
+    {
+     "id": "cf",
+     "point": "F",
+     "text": "y=-9/(x-1)+2",
+     "labelKind": "MATH",
+     "direction": "NW"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "Q": "Q",
+  "R": "R"
+ },
+ "caption": "t=1−x로 놓으면 x<0에서 t>1이고 PQ=9/t+2, PR=t−1이므로 PQ+PR=t+9/t+1이다. 산술평균과 기하평균의 관계에서 t=3, 즉 x=−2일 때 최소이다. 점 P는 (−2,5)이고 PQ=5, PR=2이다(그림의 점선은 PQ, 주황색 선분은 PR). 따라서 최솟값은 7이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=−9/(x−1)+2 (x<0), P(−2,5), Q(−2,0), R(0,5)",
+   "mappedTo": "graphPlan.curves"
+  }
+ ],
+ "accessibilityDescription": "x<0인 유리함수 그래프의 왼쪽 가지 위에 점 P가 있고, P에서 x축으로 내린 수선의 발 Q와 y축으로 내린 수선의 발 R이 선으로 이어져 있다.",
+ "newVisualInformation": [
+  "점 P(−2,5)와 수선의 발 Q, R",
+  "PQ=5, PR=2"
+ ]
+}

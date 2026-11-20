@@ -278,7 +278,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE"
   ,
-    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q06-solution.svg"
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q6-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 오각형 꼭짓점에 학생 자리 다섯 곳이 있고 각 변 위에 학생 사이의 빈자리를 나타내는 점이 하나씩 있는 그림이다.",
+    "solutionImageCaption": "원탁에 학생 5명이 앉은 것을 오각형 꼭짓점 A, B, C, D, E로, 학생 사이의 빈자리 5곳을 변 위의 점 F, G, H, I, J로 나타낸 그림이다. 학생 5명을 원탁에 앉히는 방법은 (5−1)!=24가지이다. 교사는 서로 이웃하지 않아야 하므로 학생 사이 5자리 중 3자리를 골라 3명을 앉히며 5C3×3!=60가지이다. 따라서 24×60=1440이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -418,7 +421,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE"
   ,
-    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q09-solution.svg"
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q9-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 각 교차점까지 가는 최단 경로의 수를 왼쪽 교차점과 위쪽 교차점의 수를 더해 채운다. 도로가 없는 곳은 더하지 않는다. 이렇게 채우면 B에 49가 적힌다. 따라서 B까지 가는 최단 경로는 49가지이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -842,7 +848,10 @@ window.questionBank = [
     "conditionKeys": [],
     "integrationPattern": "NONE"
   ,
-    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q18-solution.svg"
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q18-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 일곱 자리가 칠각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리 A, B 양옆에 자리 G와 C가 있다.",
+    "solutionImageCaption": "원탁의 7자리를 칠각형 꼭짓점으로 나타낸 한 배치의 예이다. A, B는 1학년 두 명을 한 묶음으로 본 자리이고, 묶음 양옆 자리 G와 C에는 2학년이 와야 한다. 3학년은 1학년과 이웃하지 않으므로 G, C가 아닌 D, E, F에 앉는다. 묶음을 고정하면 양옆 2학년 배치는 3×2=6가지, 나머지 3명 배치는 3!=6가지, 묶음 안 순서는 2!=2가지이다. 따라서 6×6×2=72이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -979,7 +988,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCULAR_PERMUTATION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 원탁 그림이며 부모 자리 T와 U가 변으로 이어져 이웃해 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 한 배치의 예이다. T와 U는 부모 두 명이 이웃해 앉은 자리이고 P, Q, R, S는 자녀 자리이다. 부모를 한 묶음으로 보면 묶음 1개와 자녀 4명, 모두 5개의 대상을 원탁에 앉히므로 (5−1)!=24가지이고, 묶음 안 두 사람의 순서가 2!=2가지이다. 따라서 24×2=48이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1020,7 +1033,11 @@ window.questionBank = [
     "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "20면체의 눈 1~20에서 3의 배수 A는 3, 6, 9, 12, 15, 18의 6개이고 13 이상 B는 13부터 20까지 8개이다. 겹치는 15, 18의 2개를 뺀 영역별 개수는 A만 4, 둘 다 2, B만 6, 어디에도 없는 8이다. 덧셈정리 P(A∪B)=P(A)+P(B)−P(A∩B)=6/20+8/20−2/20=12/20=3/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

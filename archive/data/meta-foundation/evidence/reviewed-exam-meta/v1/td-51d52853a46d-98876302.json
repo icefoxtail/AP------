@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-51d52853a46d-98876302",
+  "requestSha256": "9d0db7e11d0f351e9b9c4100436b6c5ddf439382f20373c520ee2206d06b3794",
+  "examUid": "26_삼산중_1학기_기말_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+  "sourceBlobSha1": "dff0f25f188b0942ceba15877d2052da72b7e4b1",
+  "sourceRawSha256": "c7a68612150637a744a2b6d1c3aeaa2b11a0d635b1f64962e8a9f494d6465100",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-51d52853a46d-98876302.type-ledger.json",
+        "sha256": "d8d2f7b6269c144079d070aefa7714b817d5f372e37030803ef19d23f11d30a1"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_2b5071c37dd3a61e324d322f7c281d8e499915dd8821999b8effba383518ed0f",
+      "sourceArchiveFile": "original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js",
+      "sourceOrdinal": 21,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-51d52853a46d-98876302",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "인수분해와 완전제곱식으로 이차방정식을 풀고 과정을 서술한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "85587398aff64fe0cce3dd9c025b1bc2d604211d777d025e7427cd4a6574abcc",
+        "judgedContentFingerprint": "892cc503e63b4dd08606bf0496c28453975f2e63daf875abe3a1fb382d6e34e4",
+        "rowBinding": "content",
+        "textBindingFingerprint": "f66b10f6177a3ce0f0633799a8af5b0abdc85c801a4c472f3822e01b4a58804e",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-51d52853a46d-98876302.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

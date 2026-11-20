@@ -41,7 +41,12 @@ window.examData = {
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "그림의 교점을 연립방정식의 해로 읽기",
-    "decisiveStep": "그림에서 두 직선이 만나는 점의 x,y좌표를 그대로 읽는다."
+    "decisiveStep": "그림에서 두 직선이 만나는 점의 x,y좌표를 그대로 읽는다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선은 오른쪽 아래로, 다른 직선은 오른쪽 위로 향하며 두 직선이 점 P(−1,3)에서 만나고 좌표가 표시되어 있다.",
+    "solutionImageCaption": "연립방정식의 해는 두 일차방정식의 그래프가 만나는 점의 좌표이다. x+y=2는 y=2−x, 2x−y=−5는 y=2x+5이고 두 직선은 점 P(−1,3)에서 만난다. 따라서 해는 x=−1, y=3이고 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 2,
@@ -82,7 +87,12 @@ window.examData = {
       "l4": "교점과 연립방정식"
     },
     "primaryMethod": "일부 알려진 교점으로 미정계수 역산",
-    "decisiveStep": "y=1을 첫 식에 넣어 b를 얻고 그 공통점을 둘째 식에 대입한다."
+    "decisiveStep": "y=1을 첫 식에 넣어 b를 얻고 그 공통점을 둘째 식에 대입한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 직선은 오른쪽 위로, 다른 직선은 오른쪽 아래로 향하며 두 직선이 점 P(2,1)에서 만나고 좌표가 표시되어 있다.",
+    "solutionImageCaption": "교점 (b,1)은 2x−y=3 위에 있으므로 2b−1=3에서 b=2이다. 또 이 점은 x+ay=4 위에 있으므로 2+a=4에서 a=2이다. 그림은 a=2일 때 두 직선이 점 P(2,1)에서 만나는 모습이다. 따라서 a=2, b=2이고 답은 ③이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 3,
@@ -125,7 +135,12 @@ window.examData = {
       "l4": "조건에 따른 식 결정"
     },
     "primaryMethod": "평행한 원래 직선을 식별한 뒤 두 절편",
-    "decisiveStep": "주어진 직선의 기울기가 첫 일차함수와 같으므로 공통 교점을 지나는 목표 직선은 첫 함수임을 알고 절편을 읽는다."
+    "decisiveStep": "주어진 직선의 기울기가 첫 일차함수와 같으므로 공통 교점을 지나는 목표 직선은 첫 함수임을 알고 절편을 읽는다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 세 직선이 그려져 있고 실선 두 직선이 점 P(1,−2)에서 만난다. 점선은 기울기가 같은 평행한 직선이며 실선 중 기울기가 큰 직선이 x축과 (2,0)에서, y축과 (0,−4)에서 만난다.",
+    "solutionImageCaption": "두 일차함수 y=2x−4, y=x−3의 교점은 2x−4=x−3에서 x=1, y=−2이므로 P(1,−2)이다. −6x+3y=2는 y=2x+2/3이고 기울기가 2이므로 평행한 직선은 기울기가 2이고 P를 지나는 y=2x−4이다. 이 직선의 x절편은 2, y절편은 −4이다. 따라서 x절편 2, y절편 −4인 보기가 정답이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 4,
@@ -254,7 +269,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "직각삼각형 합동 충분조건 비교",
-    "decisiveStep": "두 직각을 공통으로 두고 RHS,RHA와 남은 각을 보완한 ASA 조건을 비교한다."
+    "decisiveStep": "두 직각을 공통으로 두고 RHS,RHA와 남은 각을 보완한 ASA 조건을 비교한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 빗변의 길이가 같은 두 직각삼각형 ABC와 DEF가 나란히 있고 각각 직각 표시가 있으며 빗변 AB와 DE에 같은 눈금이 있다. 두 삼각형의 예각의 크기가 서로 다르다.",
+    "solutionImageCaption": "예: 직각삼각형 ABC와 DEF(직각은 C, F)를 빗변 AB=DE로 그렸다. 빗변과 한 변, 또는 빗변과 한 예각이 같으면 RHS, RHA 합동이고, 한 예각과 한 변이 같아도 합동이 된다(①~④). 그러나 ⑤처럼 빗변 AB=DE 하나만 같으면 그림처럼 다른 모양의 삼각형이 될 수 있어 합동이라고 할 수 없다. 따라서 합동이 되지 않는 조건은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -298,7 +317,11 @@ window.examData = {
       "l4": "외심·내심을 이용한 복합도형"
     },
     "primaryMethod": "반빗변 외심과 직각이등변삼각형 넓이",
-    "decisiveStep": "OA=OB=OC와 45도 조건으로 OB가 AC의 수선높이임을 알아 넓이를 구한다."
+    "decisiveStep": "OA=OB=OC와 45도 조건으로 OB가 AC의 수선높이임을 알아 넓이를 구한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 B에서 직각인 직각삼각형 ABC와 빗변의 중점 O를 중심으로 하는 외접원이 있고 OB에 2가 적혀 있으며 꼭짓점 A의 각 45°가 표시되고 삼각형 안이 칠해져 넓이 4가 적혀 있다.",
+    "solutionImageCaption": "직각삼각형의 외심 O는 빗변 AC의 중점이므로 OA=OB=OC=2cm이고 AC=4cm이다. ∠A=45°이므로 직각이등변삼각형이고 높이 OB=2cm이다. 따라서 넓이는 (1/2)×AC×OB=(1/2)×4×2=4cm²이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -386,7 +409,11 @@ window.examData = {
       "l4": "내심과 거리"
     },
     "primaryMethod": "정삼각형 내심 수선발의 중점 성질",
-    "decisiveStep": "정삼각형에서 내심 수선발이 변의 중점임을 이용해 한 변을 복원하고 세 변을 더한다."
+    "decisiveStep": "정삼각형에서 내심 수선발이 변의 중점임을 이용해 한 변을 복원하고 세 변을 더한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 정삼각형 ABC의 내심 I에서 세 변으로 수직인 선분 ID, IE, IF가 내려져 있고 각 수선의 발에 직각 표시가 있다. 각 변이 중점으로 나뉘어 같은 길이의 여섯 선분에 같은 눈금이 있으며 AD에 2가 적혀 있다.",
+    "solutionImageCaption": "정삼각형의 내심 I에서 각 변에 내린 수선의 발 D, E, F는 각 변의 중점이다. 그러므로 AD가 한 변 AB의 절반이어서 AB=2×AD=2×2=4cm이다. 세 변의 길이가 같으므로 둘레는 4×3=12cm이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -513,7 +540,11 @@ window.examData = {
       "l4": "각 사각형의 성질"
     },
     "primaryMethod": "평행사변형 판정 후 마름모 둘레",
-    "decisiveStep": "한 쌍 대변의 평행·등변으로 평행사변형을 확인하고 대각선의 각이등분으로 이웃변이 같음을 얻는다."
+    "decisiveStep": "한 쌍 대변의 평행·등변으로 평행사변형을 확인하고 대각선의 각이등분으로 이웃변이 같음을 얻는다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에 대각선 AC가 그어져 있고 꼭짓점 A의 각이 AC로 이등분되어 같은 표시가 있다. 네 변에 같은 눈금이 있고 변 DA에 6이 적혀 있다.",
+    "solutionImageCaption": "AB=CD이고 AB∥CD이므로 사각형 ABCD는 평행사변형이다. AC가 ∠A를 이등분하면 ∠DAC=∠BAC이고 AB∥CD에서 ∠BAC=∠DCA(엇각)이므로 △ACD가 이등변삼각형이 되어 CD=AD=6cm이다. 따라서 이웃한 두 변이 같은 마름모이고 네 변이 모두 6cm이므로 둘레는 4×6=24cm이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -713,7 +744,11 @@ window.examData = {
       "l4": "조건으로 사각형 판정"
     },
     "primaryMethod": "이웃한 두 내각 이등분선의 직각",
-    "decisiveStep": "평행사변형의 이웃각 합180도를 반으로 나누어 내부 네 각이 직각임을 확인한다."
+    "decisiveStep": "평행사변형의 이웃각 합180도를 반으로 나누어 내부 네 각이 직각임을 확인한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 네 내각의 이등분선이 그어져 서로 만나 안쪽에 사각형 EFGH를 만들고 EFGH의 네 꼭짓점에 모두 직각 표시가 있다.",
+    "solutionImageCaption": "예: ∠A=70°인 평행사변형으로 그렸다. 이웃한 두 각의 합이 180°이므로 이웃한 두 내각의 이등분선이 이루는 각은 180°−(1/2)×180°=90°이다. 따라서 네 내각의 이등분선이 만드는 사각형 EFGH는 네 각이 모두 직각인 직사각형이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -754,7 +789,11 @@ window.examData = {
       "l4": "등변사다리꼴"
     },
     "primaryMethod": "등변사다리꼴 양쪽 밑변 여분의 절반",
-    "decisiveStep": "두 밑변의 차가 양쪽에 같게 나뉨을 이용해 BH를 구한다."
+    "decisiveStep": "두 밑변의 차가 양쪽에 같게 나뉨을 이용해 BH를 구한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 등변사다리꼴 ABCD에서 윗변 AD 3, 아랫변 BC 5가 적혀 있고 A에서 BC로 내린 수선의 발 H에 직각 표시가 있으며 BH 1, HC 4가 적혀 있고 두 다리 AB와 CD에 같은 눈금이 있다.",
+    "solutionImageCaption": "등변사다리꼴이므로 점 D에서 BC에 내린 수선의 발을 H′이라 하면 BH=H′C이고 HH′=AD=3cm이다. 따라서 BH=(BC−AD)/2=(5−3)/2=1cm이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -833,7 +872,12 @@ window.examData = {
       "l4": "넓이"
     },
     "primaryMethod": "두 직선의 교점과 절편으로 삼각형 넓이",
-    "decisiveStep": "연립해 교점 높이를 얻고 두 x절편 사이 길이를 밑변으로 잡는다."
+    "decisiveStep": "연립해 교점 높이를 얻고 두 x절편 사이 길이를 밑변으로 잡는다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 아래로 내려가는 직선과 오른쪽 위로 올라가는 직선이 y축 위의 점 (0,3)에서 만나고 각각 x축과 (1,0), (−3,0)에서 만나며 세 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "3x+y=3은 y=3−3x이고 x절편 1, y절편 3이다. x−y=−3은 y=x+3이고 x절편 −3, y절편 3이다. 두 직선은 y축 위의 점 (0,3)에서 만난다. 따라서 x축과 두 직선으로 둘러싸인 삼각형은 밑변이 −3부터 1까지의 길이 4, 높이가 3이므로 넓이는 (1/2)×4×3=6이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 23,
@@ -932,7 +976,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "평행선의 ASA 증명과 사다리꼴 밑변합 복원",
-    "decisiveStep": "AE와 CD의 평행·같음을 이용한 두 각과 한 변으로 합동을 보이고 BD가 사다리꼴의 밑변합임을 이용한다."
+    "decisiveStep": "AE와 CD의 평행·같음을 이용한 두 각과 한 변으로 합동을 보이고 BD가 사다리꼴의 밑변합임을 이용한다.",
+    "solutionImage": "assets/images/19_동산중_2학기_중간_중2_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 사다리꼴 ABCE의 변 BC를 C쪽으로 연장한 점 D가 있고 A에서 BD로 수선 AG가 내려져 있다. 선분 AD와 EC가 점 F에서 만나고 AE와 CD에 같은 눈금이 있으며 BD 6, AG 4가 적혀 있고 사다리꼴 ABCE가 칠해져 넓이 12가 적혀 있다.",
+    "solutionImageCaption": "예: AE=CD=2cm인 사다리꼴로 그렸다(AE∥BC). (1) △AEF와 △DCF에서 AE=DC, AE∥DC이므로 엇각 ∠EAF=∠CDF, ∠AEF=∠DCF이다. 한 변과 양 끝 각이 같아 △AEF≡△DCF(ASA 합동)이다. (2) AE+BC=CD+BC=BD=6cm이므로 사다리꼴 ABCE의 넓이는 (1/2)×(AE+BC)×AG=(1/2)×6×4=12cm²이다.",
+    "solutionImageSize": "full"
   }
 ]
 };

@@ -1,0 +1,222 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "rational",
+       "numerator": "10",
+       "denominator": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "10"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-10"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "k",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "sqrt",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "10"
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayCircles": [
+  "k"
+ ],
+ "displayLines": [
+  "l"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOP",
+   "refs": [
+    "O",
+    "P"
+   ],
+   "dashed": true
+  },
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "P",
+  "A",
+  "B"
+ ],
+ "coordinateLabels": [
+  "B"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "l",
+   "text": "3x+y=10"
+  }
+ ],
+ "planeMarks": {
+  "regions": [
+   {
+    "id": "tri",
+    "fill": "BLUE",
+    "shapes": [
+     {
+      "polygon": [
+       "O",
+       "A",
+       "B"
+      ]
+     }
+    ],
+    "factRole": "CONCLUSION"
+   }
+  ]
+ },
+ "rightAngles": [
+  {
+   "id": "rP",
+   "refs": [
+    "O",
+    "P",
+    "A"
+   ]
+  }
+ ],
+ "coordinateCanvas": {
+  "width": 420,
+  "height": 520
+ },
+ "caption": "원 위의 점 P(3,1)에서 반지름 OP의 기울기는 1/3이고 접선은 OP에 수직이므로 기울기가 −3이다. 접선은 3x+y=10이고 x축, y축과 만나는 점은 A(10/3, 0), B(0, 10)이다. 삼각형 OAB의 넓이는 1/2 × 10/3 × 10 = 50/3이므로 답은 ④이다.",
+ "sourceConditions": [
+  "원 x²+y²=10 위의 점 (3,1)에서의 접선이 x축, y축과 만나는 점을 A, B라 한다."
+ ],
+ "newVisualInformation": [
+  "접선 3x+y=10, 절편 A(10/3,0), B(0,10)와 색칠한 삼각형 OAB"
+ ]
+}

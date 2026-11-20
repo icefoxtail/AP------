@@ -184,14 +184,14 @@ window.questionBank = [
     "wide": false,
     "content": "세 자연수 $4\\times x$, $9\\times x$, $12\\times x$의 최소공배수가 $108$일 때, 자연수 $x$의 값은?",
     "choices": [
-      "2",
-      "3",
-      "4",
+      "6",
       "5",
-      "6"
+      "4",
+      "3",
+      "2"
     ],
-    "answer": "②",
-    "solution": "4, 9, 12의 최소공배수는 36이므로 $4x$, $9x$, $12x$의 최소공배수는 $36x$이다.<br>$36x=108$에서 $x=3$이다. 정답은 ②.",
+    "answer": "④",
+    "solution": "4, 9, 12의 최소공배수는 36이므로 $4x$, $9x$, $12x$의 최소공배수는 $36x$이다.<br>$36x=108$에서 $x=3$이다. 정답은 ④.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -240,14 +240,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 중 밑줄 친 부분을 부호 $+$ 또는 $-$를 사용하여 나타낸 것으로 옳지 않은 것은?",
     "choices": [
+      "준비물 구입으로 $1500$원을 지출하였다. $\\Rightarrow\\ +1500$원",
       "체중이 $2\\,\\mathrm{kg}$ 늘었다. $\\Rightarrow\\ +2\\,\\mathrm{kg}$",
       "영화가 시작되기 $10$분 전이다. $\\Rightarrow\\ -10$분",
       "오늘 낮 최고 기온은 영상 $15^\\circ\\mathrm{C}$이다. $\\Rightarrow\\ +15^\\circ\\mathrm{C}$",
-      "마리아나 해구는 해저 $11034\\,\\mathrm{m}$이다. $\\Rightarrow\\ -11034\\,\\mathrm{m}$",
-      "준비물 구입으로 $1500$원을 지출하였다. $\\Rightarrow\\ +1500$원"
+      "마리아나 해구는 해저 $11034\\,\\mathrm{m}$이다. $\\Rightarrow\\ -11034\\,\\mathrm{m}$"
     ],
-    "answer": "⑤",
-    "solution": "지출은 돈이 감소하는 상황이므로 음수로 나타낸다.<br>⑤의 1500원 지출은 $-1500$원으로 써야 한다. 정답은 ⑤.",
+    "answer": "①",
+    "solution": "지출은 돈이 감소하는 상황이므로 음수로 나타낸다.<br>①의 1500원 지출은 $-1500$원으로 써야 한다. 정답은 ①.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -438,8 +438,8 @@ window.questionBank = [
     "choices": [
       "$-9$",
       "$-\\dfrac{1}{9}$",
-      "1",
       "$\\dfrac{1}{9}$",
+      "1",
       "9"
     ],
     "answer": "②",

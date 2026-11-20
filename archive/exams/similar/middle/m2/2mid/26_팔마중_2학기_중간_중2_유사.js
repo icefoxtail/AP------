@@ -187,10 +187,10 @@ window.questionBank = [
     "content": "평행사변형 $ABDE$의 두 대각선 $AD$, $BE$의 교점을 $O$라 하자. 점 $E$가 아닌 쪽 평행사변형 $ABDE$의 외부에 $\\overline{BC} = \\overline{OD}$이고 $\\overline{BC} \\parallel \\overline{AD}$가 되도록 점 $C$를 잡아 사각형 $BCDO$를 만들 때, $\\triangle ABE$의 넓이가 $14$이면 사각형 $BCDO$의 넓이는?",
     "choices": [
       "$14$",
-      "$7$",
-      "$10$",
       "$21$",
-      "$28$"
+      "$28$",
+      "$35$",
+      "$42$"
     ],
     "answer": "①",
     "solution": "평행사변형 $ABDE$에서 두 대각선은 서로 다른 것을 이등분하므로 $\\overline{AO} = \\overline{OD}$이고, $\\square ABDE = 2\\triangle ABE = 2 \\times 14 = 28$이다. $\\overline{BC} = \\overline{OD}$이고 $\\overline{BC} \\parallel \\overline{OD}$이므로 사각형 $BCDO$는 한 쌍의 대변이 평행하고 길이가 같아 평행사변형이다. 대각선 $BD$가 평행사변형 $BCDO$의 넓이를 이등분하고, 평행사변형 $ABDE$는 두 대각선에 의해 넓이가 같은 네 삼각형으로 나뉘므로 $\\triangle BOD = \\dfrac{1}{4}\\square ABDE = \\dfrac{1}{4} \\times 28 = 7$ $\\therefore \\square BCDO = 2\\triangle BOD = 2 \\times 7 = 14$ $\\therefore$ ①",
@@ -556,10 +556,10 @@ window.questionBank = [
     "content": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$에서 변 $AC$ 위의 점 $D$와 선분 $BD$ 위의 점 $E$가 $\\overline{BC} = \\overline{BD}$, $\\overline{CD} = \\overline{CE}$를 만족시킨다. $\\angle A = 36^\\circ$일 때, $\\angle DCE$의 크기는?",
     "choices": [
       "$36^\\circ$",
-      "$32^\\circ$",
-      "$34^\\circ$",
       "$38^\\circ$",
-      "$40^\\circ$"
+      "$40^\\circ$",
+      "$42^\\circ$",
+      "$44^\\circ$"
     ],
     "answer": "①",
     "solution": "$\\overline{AB} = \\overline{AC}$이고 $\\angle A = 36^\\circ$이므로 $\\angle B = \\angle ACB = \\dfrac{180^\\circ - 36^\\circ}{2} = 72^\\circ$ $\\overline{BC} = \\overline{BD}$이므로 $\\triangle BCD$에서 $\\angle BDC = \\angle BCD = 72^\\circ$ 점 $E$는 $\\overline{BD}$ 위에 있으므로 $\\angle EDC = \\angle BDC = 72^\\circ$ $\\overline{CD} = \\overline{CE}$이므로 $\\triangle CDE$에서 $\\angle CED = \\angle EDC = 72^\\circ$ $\\therefore \\angle DCE = 180^\\circ - (72^\\circ + 72^\\circ) = 36^\\circ$ $\\therefore$ ①",
@@ -818,10 +818,10 @@ window.questionBank = [
     "content": "$\\overline{AB} = \\overline{AC}$인 이등변삼각형 $ABC$의 내심을 $I$라 하자. $\\angle IAC = 22^\\circ$일 때, $\\angle AIB$의 크기는?",
     "choices": [
       "$124^\\circ$",
-      "$118^\\circ$",
-      "$120^\\circ$",
-      "$122^\\circ$",
-      "$126^\\circ$"
+      "$126^\\circ$",
+      "$128^\\circ$",
+      "$130^\\circ$",
+      "$132^\\circ$"
     ],
     "answer": "①",
     "solution": "$\\overline{AI}$는 $\\angle A$의 이등분선이므로 $\\angle A = 2 \\times 22^\\circ = 44^\\circ$ $\\overline{AB} = \\overline{AC}$이므로 $\\angle C = \\dfrac{180^\\circ - 44^\\circ}{2} = 68^\\circ$ 점 $I$는 내심이므로 $\\angle AIB = 90^\\circ + \\dfrac{1}{2}\\angle C = 90^\\circ + 34^\\circ = 124^\\circ$ $\\therefore$ ①",

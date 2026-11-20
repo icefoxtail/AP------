@@ -288,7 +288,11 @@ window.questionBank = [
       "COND_RANGE"
     ],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 오른쪽 위로 올라가 x=2에서 끝나는 선분 모양의 확률밀도함수 그래프이며 그래프 아래의 삼각형이 칠해져 있다.",
+    "solutionImageCaption": "f(x)=2ax는 0≤x≤2에서 원점에서 올라가는 선분이고 x=2에서 높이가 4a이다. 그래프와 x축 사이는 밑변 2, 높이 4a인 삼각형이며 넓이 (1/2)×2×4a=4a가 전체 확률 1이어야 한다. 따라서 a=1/4이다. 그림은 이 값으로 그렸다(x=2에서 높이 1). 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -497,7 +501,11 @@ window.questionBank = [
       "COND_RANGE"
     ],
     "integrationPattern": "SEQUENTIAL",
-    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6"
+    "sourceProvenance": "MASTER_SOURCE_PACKET_SHA256:a544b23e2d9087392e57ac5ddb985450f2ec6afda5af5093c92f042792394ce6",
+    "solutionImage": "assets/images/22_복성고_2학기_중간_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: x=1에서 꺾이는 V자 모양의 확률밀도함수 그래프이며 왼쪽 삼각형과 오른쪽 삼각형이 다른 농도로 칠해져 있다.",
+    "solutionImageCaption": "f(x)=k|x−1|은 x=1에서 꺾이는 V자 모양이다. 왼쪽 삼각형은 밑변 1, 높이 k로 넓이 k/2이고 오른쪽 삼각형은 밑변 2, 높이 2k로 넓이 2k이다. 합 5k/2=1에서 k=2/5이다. 그림은 이 값으로 그렸다. P(0<X<1)은 왼쪽 삼각형의 넓이이므로 k/2=1/5이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

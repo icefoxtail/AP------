@@ -185,7 +185,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 오른쪽 위로 올라가는 직선 모양의 확률밀도함수 그래프이며 x=1부터 x=3까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이 (1/2)·6·f(6)=1에서 f(6)=1/3이고 f(6)=3a이므로 a=1/9, f(x)=x/18이다. f(1)=1/18, f(3)=1/6이며, 1≤x≤3의 색칠한 부분은 높이 1/18과 1/6, 밑변 2인 사다리꼴이다. 넓이는 (1/18+1/6)/2×2=2/9이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

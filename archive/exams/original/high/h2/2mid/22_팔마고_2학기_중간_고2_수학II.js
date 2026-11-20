@@ -82,7 +82,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 끊어지는 그래프이고, 왼쪽의 내려가는 직선은 높이 2의 열린 점에서 끝나며 오른쪽의 포물선은 원점의 닫힌 점에서 시작한다.",
+    "solutionImageCaption": "ㄹ의 그래프이다. x→0-에서 함수값은 열린 점 (0,2)로 가까워지고 x≥0에서는 원점의 닫힌 점 P(0,0)에서 시작하므로 좌극한 2와 함숫값 0이 달라 불연속이다. ㄱ은 다항함수, ㄷ은 x=0이 정의역 안쪽이라 연속이고 ㄴ은 x=0에서 정의되지 않아 불연속이다. 따라서 연속인 것은 ㄱ, ㄷ이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 4,
@@ -110,7 +114,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선의 구간 [0,3]에서 꼭짓점 V가 가장 높고 오른쪽 끝점 B가 가장 낮은 그래프이다.",
+    "solutionImageCaption": "f(x)=-x²+2x+5는 위로 볼록한 포물선이다. 닫힌구간 [0,3]에서 꼭짓점 V(1,6)이 최고점이므로 M=6이고, 양 끝 A(0,5), B(3,2) 중 낮은 B에서 최솟값 m=2이다. M-m=4이므로 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -398,7 +406,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 번 오르고 내려갔다 다시 오르는 삼차곡선과 점 P에서 접하고 오른쪽 점 Q에서 곡선과 다시 만나는 직선 t가 그려진 그래프이다.",
+    "solutionImageCaption": "f′(x)=3x²-2에서 f′(-1)=1이므로 P(-1,1)에서의 접선은 y=x+2(그림의 t)이다. x³-2x=x+2에서 (x+1)²(x-2)=0이므로 접선은 P에서 접하고 다시 Q(2,4)에서 곡선과 만난다. PQ=√((2+1)²+(4-1)²)=3√2이므로 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 15,
@@ -445,9 +458,9 @@ window.questionBank = [
     "wide": false,
     "content": "오른쪽 그림은 함수 $y=1$과 $y=0$의 그래프의 일부이다. 두 점 $A$, $B$사이를 삼차함수 $y=f(x)$의 그래프를 이용하여 연결하였다. 이와 같이 연결한 그래프 전체를 나타내는 함수가 모든 실수에서 미분가능 할 때, $f(2)$의 값은? [4.7점]",
     "image": "assets/images/22_팔마고_2학기_중간_고2_수학II/q16.png",
-    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "수평선과 삼차함수의 접합점 A·B에서 함수값과 도함수값을 맞추는 해설 그림",
-    "solutionImageCaption": "A=(0,1), B=(1,0)에서 네 접합 조건을 세워 f(2)=5를 구한다.",
+    "solutionImage": "assets/images/22_팔마고_2학기_중간_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 높이 1의 점 A에서 수평선에 접하고 내려가 높이 0의 점 B에서 다른 수평선에 접한 뒤 오른쪽 위로 올라가 점 Q에 이르는 삼차곡선과 두 수평선이 그려진 그래프이다.",
+    "solutionImageCaption": "수평선 y=1 (x≤0)과 y=0 (x≥1)에 매끄럽게 이어지려면 양 끝 A(0,1), B(1,0)에서 f의 값과 기울기가 각각 1, 0과 0, 0이어야 한다. 이를 풀면 f(x)=2x³-3x²+1이고 그림의 곡선은 A에서 수평선 u에, B에서 수평선 v에 접한다. f(2)=16-12+1=5이므로 점 Q(2,5)가 f(2)이다. 따라서 답은 ②이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "choices": [
@@ -462,7 +475,8 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageScale": 80
   },
   {
     "id": 17,

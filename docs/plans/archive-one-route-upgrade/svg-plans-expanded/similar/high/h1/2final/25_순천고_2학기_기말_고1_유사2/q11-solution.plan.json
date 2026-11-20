@@ -1,0 +1,37 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "P",
+    "name": "P"
+   },
+   {
+    "id": "Q",
+    "name": "Q"
+   },
+   {
+    "id": "R",
+    "name": "R"
+   }
+  ],
+  "elements": [],
+  "subset": [
+   "P",
+   "Q",
+   "R"
+  ]
+ },
+ "caption": "P-Q=∅이므로 P⊆Q이고, Rᶜ-Qᶜ=∅이므로 Rᶜ⊆Qᶜ, 즉 Q⊆R이다. 따라서 P⊆Q⊆R이다. ㄱ. P⊆R이므로 p→r는 참이고, ㄴ. R⊆Q라고 할 수 없으므로 r→q는 참이 아니며, ㄷ. Rᶜ⊆Qᶜ이므로 ¬r→¬q는 참이다. 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "P⊆Q⊆R",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "세 진리집합의 포함 관계 P⊆Q⊆R"
+ ]
+}

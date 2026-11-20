@@ -127,7 +127,11 @@ window.examData = {
       "l4": "RHS"
     },
     "primaryMethod": "공통 빗변 RHS의 대응각",
-    "decisiveStep": "공통 AD와AE=AC로 ADE와ADC를 합동시켜 A의 두 반각을 구하고 B를 보완한다."
+    "decisiveStep": "공통 AD와AE=AC로 ADE와ADC를 합동시켜 A의 두 반각을 구하고 B를 보완한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 ABC의 빗변 AB 위에 점 E가 있고 변 BC 위의 점 D에서 DE가 AB에 수직으로 그어져 있다. C와 E에 직각 표시가 있고 AC와 AE에 같은 눈금이 있으며 선분 AD가 그어져 있다. 각 ADE와 각 ADC에 60°, 각 B에 30°가 표시되어 있다.",
+    "solutionImageCaption": "△ACD와 △AED는 ∠C=∠AED=90°이고 빗변 AD가 공통이며 AC=AE이므로 RHS 합동이다. 따라서 ∠ADC=∠ADE=60°이고 ∠BDE=180°−60°−60°=60°이다. 직각삼각형 DEB에서 ∠B=90°−60°=30°이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -273,7 +277,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심·내심과 변중점 성질의 구별",
-    "decisiveStep": "외심의 꼭짓점 등거리와 내심의 변까지 수선거리를 구별하며 임의 중점까지 거리를 같다고 하지 않는다."
+    "decisiveStep": "외심의 꼭짓점 등거리와 내심의 변까지 수선거리를 구별하며 임의 중점까지 거리를 같다고 하지 않는다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 예각삼각형 ABC의 세 변의 중점 D, E, F와 외심 O가 있고 O에서 세 꼭짓점과 세 중점으로 선분이 그어져 있다. D와 F에 직각 표시가 있고 OA, OB, OC에 같은 눈금이 있다.",
+    "solutionImageCaption": "외심 O는 세 변의 수직이등분선의 교점이므로 세 꼭짓점까지의 거리가 같아 OA=OB=OC이다(③). 내심 I는 세 내각의 이등분선의 교점이고 내접원의 반지름은 접점까지의 거리이며 IA′, IB′, IC′는 같지 않다. OD, OE, OF도 일반적으로 같지 않고 ∠OBA와 ∠OBE도 같지 않다. 따라서 옳은 것은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -355,7 +363,11 @@ window.examData = {
       "l4": "외심·내심을 이용한 복합도형"
     },
     "primaryMethod": "내심각으로 꼭지각을 얻어 외심각 계산",
-    "decisiveStep": "BIC=90+A/2로 A를 복원한 뒤 BOC=2A를 적용한다."
+    "decisiveStep": "BIC=90+A/2로 A를 복원한 뒤 BOC=2A를 적용한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 안쪽에 내심 I와 외심 O가 있고 I와 O에서 B와 C로 선분이 그어져 있다. 꼭짓점 A의 각 80°, 각 BIC 130°, 각 BOC 160°가 표시되어 있고 OB와 OC에 같은 눈금이 있다.",
+    "solutionImageCaption": "내심 I에서 ∠BIC=90°+(1/2)∠A이므로 130°=90°+(1/2)∠A에서 ∠A=80°이다. 외심 O에서 ∠BOC는 ∠A에 대한 중심각이므로 ∠BOC=2∠A=160°이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -399,7 +411,11 @@ window.examData = {
       "l4": "변·각의 성질"
     },
     "primaryMethod": "평행사변형 대변과 평행 수선의 ASA 대응",
-    "decisiveStep": "그림의 BF와DE가 같은 대각선에 수직이므로 평행임을 써 ABF와CDE의 ASA 및 대응 요소를 비교한다."
+    "decisiveStep": "그림의 BF와DE가 같은 대각선에 수직이므로 평행임을 써 ABF와CDE의 ASA 및 대응 요소를 비교한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 대각선 AC가 그어져 있고 B에서 AC에 수직으로 내린 선이 변 AD와 점 F에서, D에서 AC에 수직으로 내린 선이 변 BC와 점 E에서 만난다. 각 BAC와 각 DCA에 같은 표시가 있고 AB와 CD에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: 평행사변형 ABCD에서 B, D에서 대각선 AC에 내린 수선의 연장선이 AD, BC와 만나는 점을 F, E로 그렸다. BF와 DE는 모두 AC에 수직이어서 BF∥DE이고 BE∥FD이므로 □BEDF는 평행사변형이다. 따라서 BF=DE이고 △ABF≡△CDE이며 AF=CE이다. 또 AB∥DC이므로 ∠BAC=∠DCA이다. 그러나 ∠ABF=∠CDE이지 ∠DEC가 아니다. 따라서 옳지 않은 것은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -440,7 +456,11 @@ window.examData = {
       "l4": "변·각의 성질"
     },
     "primaryMethod": "평행사변형 이웃각의 연립 관계",
-    "decisiveStep": "A+B=180과 주어진2B=A+30을 결합해 B의 일차방정식을 세운다."
+    "decisiveStep": "A+B=180과 주어진2B=A+30을 결합해 B의 일차방정식을 세운다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 대변에 같은 눈금이 있고 꼭짓점 B의 각 70°, 꼭짓점 A의 각 110°가 표시되어 있다.",
+    "solutionImageCaption": "평행사변형에서 이웃한 두 각의 합은 180°이므로 ∠A+∠B=180°이다. 조건 2∠B=∠A+30°에 ∠A=180°−∠B를 대입하면 2∠B=210°−∠B이므로 3∠B=210°에서 ∠B=70°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -484,7 +504,11 @@ window.examData = {
       "l4": "분할도형"
     },
     "primaryMethod": "대각선 교점을 지나는 횡단선의 넓이 전이",
-    "decisiveStep": "ODP와OBQ의 합동으로 작은 넓이를 옮겨 OBC의 넓이를 구하고 대각선의 네 등넓이를 이용한다."
+    "decisiveStep": "ODP와OBQ의 합동으로 작은 넓이를 옮겨 OBC의 넓이를 구하고 대각선의 네 등넓이를 이용한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD의 두 대각선이 점 O에서 만나고 O를 지나는 직선 PQ가 변 AD 위의 P와 변 BC 위의 Q를 잇는다. 삼각형 ODP에 15, 삼각형 OCQ에 30이 적혀 칠해져 있고 OA와 OC, OB와 OD에 각각 같은 눈금이 있다.",
+    "solutionImageCaption": "평행사변형의 두 대각선은 서로를 이등분하므로 △ODP≡△OBQ(ASA 합동)이다. 따라서 △OBQ=15cm²이고 △OBC=△OBQ+△OCQ=15+30=45cm²이다. 대각선이 평행사변형을 넓이가 같은 네 삼각형으로 나누므로 □ABCD=4×45=180cm²이다. 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -539,7 +563,11 @@ window.examData = {
       "$\\angle \\text{A} = \\angle \\text{C}, \\ \\angle \\text{B} = \\angle \\text{D}$"
     ],
     "answer": "",
-    "solution": ""
+    "solution": "",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 모양의 문짝 ABCD에 두 대각선 AC와 BD가 그어져 있고 두 대각선에 같은 눈금이 있다. 네 꼭짓점에 직각 표시가 있고 마주 보는 변에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: 문짝은 두 쌍의 대변의 길이가 같은 평행사변형 모양이다. 평행사변형에서 두 대각선의 길이가 같으면 이웃한 두 각 ∠A, ∠B에 대해 △ABD≡△BAC(SSS 합동)이므로 ∠A=∠B이다. ∠A+∠B=180°이므로 ∠A=∠B=90°이고 네 각이 모두 직각이다. 따라서 AC=BD인지 확인하는 것은 네 각이 모두 같은지(직사각형인지) 확인하기 위한 것이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -706,7 +734,11 @@ window.examData = {
       "l4": "분할도형"
     },
     "primaryMethod": "각이등분선이 자른 평행사변형의 넓이",
-    "decisiveStep": "평행·이등분각에서 AE=AB,CF=CD를 얻어 양쪽 작은 삼각형을 제외하거나 같은 높이의 내부 밑변비를 쓴다."
+    "decisiveStep": "평행·이등분각에서 AE=AB,CF=CD를 얻어 양쪽 작은 삼각형을 제외하거나 같은 높이의 내부 밑변비를 쓴다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 각 B의 이등분선이 변 AD와 점 E에서, 각 D의 이등분선이 변 BC와 점 F에서 만나고 사각형 EBFD가 칠해져 넓이 30이 적혀 있다. AB, AE, ED, DC, CF, FB에 같은 눈금이 있고 AB에 6, BC에 12가 적혀 있다.",
+    "solutionImageCaption": "∠B의 이등분선과 AD∥BC에서 ∠AEB=∠EBC=∠ABE이므로 AE=AB=6cm이고 ED=12−6=6cm이다. 같은 방법으로 ∠D의 이등분선에서 CF=CD=6cm이고 BF=6cm이다. BF∥ED이고 BF=ED=6cm이므로 □EBFD는 평행사변형이다. □ABCD의 높이는 60÷12=5cm이므로 □EBFD=6×5=30cm²이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -971,7 +1003,11 @@ window.examData = {
       "l4": "넓이·부피 비"
     },
     "primaryMethod": "넓이비에서 길이비와 부피비로 전환",
-    "decisiveStep": "밑면 넓이비9:16의 제곱근인3:4를 얻고 세제곱 부피비27:64를 적용한다."
+    "decisiveStep": "밑면 넓이비9:16의 제곱근인3:4를 얻고 세제곱 부피비27:64를 적용한다.",
+    "solutionImage": "assets/images/19_이수중_2학기_중간_중2_수학/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 크기가 다른 닮은 두 원뿔 (가)와 (나)가 나란히 있다. (가)는 밑면의 반지름 3k, 높이 6k이고 (나)는 밑면의 반지름 4k, 높이 8k가 적혀 있다.",
+    "solutionImageCaption": "두 원뿔의 밑면의 넓이의 비가 9:16이므로 닮음비는 3:4이다. 닮은 입체도형의 부피의 비는 닮음비의 세제곱의 비이므로 27:64이다. (가)의 부피가 54cm³이므로 54:(나)=27:64에서 (나)의 부피는 54×64/27=128cm³이다.",
+    "solutionImageSize": "full"
   }
 ]
 };

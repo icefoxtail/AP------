@@ -930,9 +930,12 @@ window.questionBank = [
     "sourceIdentity": "2019|강남여고|h1|1mid",
     "layoutTag": "grid",
     "wide": false,
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q21-solution-v2.svg",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD에 내접하는 원이 있고 원 위의 점 P에서 변 AB와 BC로 내린 수선의 발 Q, R이 있다. 직사각형 PQBR이 칠해져 넓이 32가 적혀 있고 Q, R, P, B에 직각 표시가 있으며 P에서 D로 선분 DP가 그어져 있고 DP에 3√5가 적혀 있다.",
+    "solutionImageCaption": "예: B를 원점으로 놓으면 P=(x,y)에서 PQ=x, PR=y이다. 직사각형 PQBR의 둘레가 26이므로 x+y=13이고 넓이가 32이므로 xy=32이다. x²+y²=(x+y)²−2xy=169−64=105이다. D=(10,10)이므로 DP²=(10−x)²+(10−y)²=200−20(x+y)+(x²+y²)=200−260+105=45이다. 따라서 DP=3√5이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

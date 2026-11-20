@@ -30,7 +30,11 @@ window.questionBank = [
     "templateKey": "TPL_CIRCULAR_PERMUTATION",
     "rpmPrimaryPathId": "H2-PS-RPM-002",
     "sourceMode": "ORIGINAL",
-    "curriculum": "2015"
+    "curriculum": "2015",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 개의 점이 사각형 꼭짓점으로 놓인 원탁 그림이며 점 A는 부모 묶음, 나머지 B, C, D는 자녀 세 명의 자리이다.",
+    "solutionImageCaption": "원탁의 4개 대상을 사각형 꼭짓점으로 나타낸 그림이다. 점 A는 부모를 한 묶음으로 본 자리이고 B, C, D는 자녀 3명의 자리이다. 4개 대상의 원순열은 (4−1)!=3!=6가지이고 묶음 안에서 부와 모의 순서가 2가지이므로 6×2=12이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -292,10 +296,10 @@ window.questionBank = [
     ],
     "category": "순열과 조합",
     "originalCategory": "순열과 조합",
-    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_확률과통계/q11-solution.svg",
-    "solutionImageAlt": "빠진 도로를 제외하고 교점마다 최단 경로 수를 누적한 도식, B는 62",
-    "solutionImageCaption": "없는 도로는 건너뛰고 아래쪽·왼쪽 경로 수를 더한다.",
-    "solutionImageSize": "large"
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_확률과통계/q11-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "각 교점에 A에서 오는 최단 경로 수를 적는다. 한 교점의 수는 실제로 이어진 왼쪽 도로의 수와 아래쪽 도로의 수를 더한 값이고, 끊긴 도로 쪽은 더하지 않는다. 끊긴 곳은 세 군데이며 이를 건너뛰지 않고 채우면 B에 62가 적힌다. B에는 왼쪽에서 22, 아래에서 40이 오므로 22+40=62이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

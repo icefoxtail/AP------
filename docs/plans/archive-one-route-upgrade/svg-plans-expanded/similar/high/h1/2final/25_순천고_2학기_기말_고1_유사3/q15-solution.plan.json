@@ -1,0 +1,112 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   12,
+   -1,
+   12
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "6",
+     "-4",
+     "1"
+    ],
+    "domain": [
+     "2",
+     "5"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "inverseOf": "f",
+    "color": "WARM",
+    "hideLabels": [
+     "formula",
+     "start"
+    ]
+   },
+   {
+    "id": "d",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "11"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "2",
+     "y": "2",
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "x": "3",
+     "y": "3",
+     "coordinates": true
+    },
+    {
+     "id": "Ef",
+     "unnamed": true,
+     "x": "5",
+     "y": "11"
+    },
+    {
+     "id": "Eg",
+     "unnamed": true,
+     "x": "11",
+     "y": "5"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "Ef",
+     "text": "y=f(x)",
+     "direction": "W",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cg",
+     "point": "Eg",
+     "text": "y=f^-1(x)",
+     "direction": "S",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "Q": "Q"
+ },
+ "caption": "f는 x≥2에서 증가하므로 f의 그래프와 역함수의 그래프의 교점은 y=x 위에 있다. f(x)=x에서 x²-5x+a=0이 x≥2에서 서로 다른 두 실근을 가지려면 a<25/4이고 g(2)=a-6≥0이다. 그림은 a=6인 예로 두 교점 (2,2), (3,3)을 보여 준다. 6≤a<25/4이므로 4(p+q)=49이고 답은 ①이다.",
+ "sourceConditions": [
+  "f(x)=x²-4x+a (x≥2)와 역함수가 서로 다른 두 점에서 만나는 a의 범위, 예: a=6"
+ ],
+ "newVisualInformation": [
+  "예: a=6일 때 f와 역함수가 y=x 위의 두 점 (2,2), (3,3)에서 만남"
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -7,
+   0,
+   0,
+   16
+  ],
+  "axisScale": {
+   "x": 1,
+   "y": "1/2"
+  },
+  "curves": [
+   {
+    "id": "a1",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "7",
+     "-2",
+     "-1/3"
+    ],
+    "domain": [
+     "-6",
+     "-3"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "a2",
+    "kind": "LINE",
+    "coefficients": [
+     "16",
+     "2"
+    ],
+    "domain": [
+     "-3",
+     "-1"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "-3",
+     "y": "10",
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "x": "-1",
+     "y": "14",
+     "coordinates": true
+    },
+    {
+     "id": "F1",
+     "x": "-5",
+     "y": "26/3",
+     "unnamed": true
+    },
+    {
+     "id": "F2",
+     "x": "-2",
+     "y": "12",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "F1",
+     "text": "y=-x^2/3-2x+7",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "c2",
+     "point": "F2",
+     "text": "y=2x+16",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "예: a=−1/3, c=16일 때의 그래프이다. x≥b에서 2x+c는 증가하고, x<b에서 이차식이 증가하려면 a<0이고 b≤−3이어야 하므로 b의 최댓값은 t=−3이다. b=−3에서 두 조각이 점 P(−3, −9a+7)에서 이어져야 하므로 −9a+7=−6+c, 즉 9a+c=13이다. 그림은 P(−3,10)에서 이어지는 예이고 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "예: a=−1/3, c=16에서 b=−3일 때 두 조각이 한 점 P에서 이어지는 그래프를 보인다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "b=−3에서 이차 조각의 꼭짓점과 직선 조각의 시작점이 한 점 P에서 만나 치역이 빈틈없이 이어짐을 보인다."
+ ],
+ "accessibilityDescription": "왼쪽의 위로 볼록한 포물선 조각이 점 P에서 오른쪽의 올라가는 직선 조각과 이어지는 그래프이고 직선 조각 위에 점 Q가 있다."
+}

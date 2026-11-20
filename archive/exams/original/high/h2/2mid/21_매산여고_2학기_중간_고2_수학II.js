@@ -321,7 +321,12 @@ window.questionBank = [
       "sourceQid": "q06",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "fd6100eb59e8c0bd96981629f296adfeb3034c438eb005b92e287e8877acdeff"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 오르는 직선이 점 P에서 오른쪽의 삼차곡선과 같은 기울기로 이어지는 그래프이다.",
+    "solutionImageCaption": "연속 조건 a+6=3b와 미분계수 조건 7+2a=3b에서 a=-1, 3b=5이다. 그래프는 x<1에서 직선 y=5x-1, x≥1에서 곡선 y=x³-x²+4x이고, 점 P(1,4)에서 값이 같고 기울기도 5로 같아 직선이 곡선에 접하며 이어진다. 3ab=3·(-1)·(5/3)=-5이므로 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -373,7 +378,11 @@ window.questionBank = [
       "sourceQid": "q07",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "c709e4423fbd7c4d51be7ff1612ed4f675ed600549b9f79e7fe03cf1f89cb76d"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 수평선이 점 P에서 끝나지 않고 이어져, 오른쪽의 완만하게 내려가는 곡선이 같은 점 P에서 시작하는 그래프이다.",
+    "solutionImageCaption": "예: x>3의 곡선은 1/(√(x+1)+2)에 가깝게 그린 예시 곡선이다. 켤레식으로 약분하면 x→3+에서 이 값이 1/(2+2)=1/4로 가까워지고, 그래서 곡선이 높이 1/4인 점 P(3,1/4)로 모인다. x≤3에서는 f(x)=a이므로 연속이려면 수평선 y=a도 같은 점 P를 지나야 한다. 따라서 a=1/4이고 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 8,
@@ -481,7 +490,12 @@ window.questionBank = [
       "sourceQid": "q09",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "7d7484b8068c61417cbd8d07988cac2dcc4c8847c851e75bbc0859afcff7d617"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 위아래로 같은 간격으로 나란히 놓인 두 포물선 사이에 가운데 포물선이 끼어 있고 세 곡선이 오른쪽 위로 가파르게 오르는 그래프이다.",
+    "solutionImageCaption": "예: f(x)=2x²+2일 때를 그렸다. x>0에서 f는 두 포물선 y=2x²+1과 y=2x²+3 사이에 있다. x²으로 나누면 2+1/x²≤f(x)/x²≤2+3/x²이고 x가 커질수록 양쪽이 2로 모이므로 샌드위치 정리에 의해 f(x)/x²→2이다. 따라서 극한은 2²/1=4이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -535,7 +549,12 @@ window.questionBank = [
       "sourceQid": "q10",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "d435fab3c94c2fdb0ed5ffb92ed74f62aa86e7c6fc7a896d3b24f32e8c0319a1"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 두 패널이 나란히 있다. 첫째 패널에는 직선이 가운데에서 열린 점으로 끊기고 위쪽에 따로 떨어진 점이 있고, 둘째 패널에는 가로축 위아래의 수평선 두 개가 원점에서 서로 어긋나 끊어진다.",
+    "solutionImageCaption": "끊어지는 두 보기를 그렸다. ④는 x≠-3에서 y=x-3이라 x→-3일 때 열린 점 (-3,-6)으로 가까워지지만 f(-3)=6인 점은 그 위에 따로 있어 극한과 함숫값이 다르다. ⑤는 x→0-일 때 -1, x→0+일 때 1로 좌우극한이 달라 끊어진다. ①은 x=-4, 1에서 분모가 0이고 ②는 x<-2에서 정의되지 않는다. ③만 분모 (x-2)²+1>0이라 모든 실수에서 연속이므로 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -595,7 +614,11 @@ window.questionBank = [
       "sourceQid": "q11",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "40369a03f88714535696619c6d47dae27d11f974da2954175c09d3708f313e0e"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1에서 왼쪽 선분이 높은 열린 점으로 올라가고 아래쪽에 닫힌 점이 따로 있으며, 가운데 선분이 내려가 x=1에서 열린 점으로 끝나고 오른쪽에서 다시 시작하는 그래프이다.",
+    "solutionImageCaption": "예: 해설이 읽은 값에 맞춘 그래프이다. x=-1에서 닫힌 점은 아래의 (-1,-1)이지만 좌우 선분은 모두 위의 열린 점 (-1,1)로 가까워지므로 극한은 1이다. x=1에서 왼쪽 선분은 열린 점 (1,-1)로 가까워진다. x→0-이면 x+1→1-이므로 f(x+1)의 극한은 -1이다. 합은 1+(-1)=0이고 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 12,
@@ -651,7 +674,12 @@ window.questionBank = [
       "sourceQid": "q12",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "7a3f0e6bd01abdf23bf8dc2ea02948f3ebe28864c5ab537ceecdef74229742f1"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선의 구간으로, 왼쪽 끝 점 A에서 내려가 꼭짓점 V에서 가장 낮고 오른쪽 끝 점 B로 가파르게 올라가는 그래프이다.",
+    "solutionImageCaption": "t에 관한 극한을 계산하면 f(x)=2x(x+2)=2(x+1)²-2이다. 그림은 닫힌구간 [-3,2]에서의 이 포물선이고 꼭짓점 V(-1,-2)가 구간 안에 있어 최솟값은 -2이다. 양 끝점은 A(-3,6), B(2,16)이고 B가 더 높아 최댓값은 16이다. 따라서 합은 16+(-2)=14이고 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 13,
@@ -921,7 +949,12 @@ window.questionBank = [
       "sourceQid": "q17",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "cf7930a76f08de81796cf7b8781372d02cc17243616e0d7c7d736a796aa904b4"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 정수마다 끊어지며 오른쪽으로 갈수록 점점 가파르게 높아지는 짧은 직선 조각들의 그래프이고, 각 조각은 왼쪽 끝이 닫힌 점이고 오른쪽 끝이 열린 점이다.",
+    "solutionImageCaption": "가로축이 u인 f(u)=[u]²+[u]+u의 그래프로, 정수마다 층이 한 단계씩 올라가는 계단 모양의 직선 조각들이다. x→-1-이면 u=-2x+1→3+이고 u가 3의 오른쪽에 있을 때는 [u]=3인 층이므로 값이 닫힌 점 (3,15)로 모여 a=15이다. x→2+이면 u→-3-이고 u가 -3의 왼쪽에서는 [u]=-4인 층이라 열린 점 (-3,9)로 모여 b=9이다. 따라서 a+b=24이고 답은 ④이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 18,
@@ -1031,7 +1064,11 @@ window.questionBank = [
       "sourceQid": "q19",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "707a95dadd7b5f1f1b9a3dd1638f1a86f647594042a7c26850d5ed337db0423b"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 제1사분면에 중심 P인 원이 있고, 원이 세로축의 점 T에 접하며 원점을 지나는 오르는 직선이 점 H에서 원에 접한다. P에서 T와 H로 점선 반지름이 그어져 있고 두 접점에 직각 표시가 있다.",
+    "solutionImageCaption": "예: t=1일 때를 그린다. 중심 P(1,3)이고 y축에 접하므로 반지름은 1이고, 접점 T는 (0,3)이다. 원점을 지나는 y축이 아닌 접선은 y=mx이고 중심에서 직선까지의 거리가 반지름과 같다는 조건 |m-3|/√(m²+1)=1에서 m=4/3이다. 그림의 직선 y=(4/3)x가 점 H에서 원에 접한다. 일반적으로 m=(9t²-1)/(6t)=(3/2)t-1/(6t)이므로 f(t)/t→3/2이다. 답은 3/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -1079,7 +1116,11 @@ window.questionBank = [
       "sourceQid": "q20",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "b094cd9cb790046365600b68c45c74dcdc19318fd88fea977b6d977ce1cfff10"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: a가 커질수록 높이 2의 수평선이 열린 점에서 끝나고, 가운데에 닫힌 점이 하나 있으며, 가로축 위의 수평선이 이어져 다시 위쪽 수평선으로 올라가는 계단 모양의 그래프이다.",
+    "solutionImageCaption": "가로축이 a, 세로축이 교점의 개수 f(a)이다. 판별식 D=8a(8a+3)이므로 a<-3/8이면 D>0이라 f(a)=2, a=-3/8이면 D=0이라 f(a)=1(닫힌 점), -3/8<a<0이면 D<0이라 f(a)=0이다. a=-3/8에서 좌극한 2, 우극한 0이다. 곱 f(a)h(a)가 이 점에서 연속이려면 2h(-3/8)=0이어야 하므로 g(-3/8)=-27이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 21,
@@ -1177,7 +1218,11 @@ window.questionBank = [
       "sourceQid": "q22",
       "uidResolution": "PENDING_OFFICIAL_RESOLVER",
       "localIdentitySha256": "7ec852d95f436678339a4f7101a061d74b47c5eaa8bc351bcebea7d00be68bde"
-    }
+    },
+    "solutionImage": "assets/images/21_매산여고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 내려오는 직선이 점 P에서 이어지는 아래로 볼록한 곡선을 타고 원점 O로 내려와 O에서 Q까지 가로축을 따라 가다가 Q에서 오른쪽 위로 올라가는 그래프이다.",
+    "solutionImageCaption": "예: a=2, b=-1일 때 g(x)=max{f(x),0}의 그래프이다. x≤-1에서 3-x, -1<x≤0에서 2x(x-1)=2x²-2x이고 P(-1,4)에서 값 4로 이어진다. 0<x<1에서는 f가 음수라 0으로 잘려 선분 OQ가 되고 x>1에서는 x-1이다. Q(1,0)에서 f(1)=0이고 오른쪽 극한이 max{1+b,0}=0이므로 b≤-1이다. a=2이고 b≤-1이므로 a+b의 최댓값은 b=-1일 때 1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

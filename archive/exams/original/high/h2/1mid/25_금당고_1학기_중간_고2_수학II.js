@@ -40,7 +40,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 곡선 위의 점 T에서 접하는 직선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "y=2x²-x+3의 도함수는 4x-1이므로 x=1에서 접선의 기울기는 4-1=3이다. 그림의 직선 l은 접점 T(1,4)에서 곡선에 접하는 접선 y=3x+1이고 기울기가 3이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 2,
@@ -124,7 +129,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 1인 직선 위에 x=1인 점 P와 y축과 만나는 점 Q가 표시된 그래프이다.",
+    "solutionImageCaption": "x=1에서 분모가 0이므로 분자가 0이어야 하고 1-2+m=0에서 m=1이다. x≠1에서 f(x)=(x-1)²/(x-1)=x-1이므로 극한은 0이고 그래프는 직선 y=x-1이다. x=1의 값 n+1이 이 극한 0과 같아야 연속이므로 점 P(1,0)이 그래프 위에 있어야 하고 n=-1이다. 따라서 m+n=0이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -292,7 +301,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 점 T에서 접하는 기울기가 양수인 직선 l을 나타낸 그래프이다.",
+    "solutionImageCaption": "f(x)=x²-x+3의 도함수는 2x-1이고 기울기가 3이려면 2x-1=3에서 x=2이다. f(2)=5이므로 접점은 T(2,5)이고 접선은 y-5=3(x-2), 즉 y=3x-1이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -334,7 +347,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 위의 두 점 A, B를 잇는 직선 l과 두 점 사이의 점 T에서 접하며 l과 평행한 직선 m을 나타낸 그래프이다.",
+    "solutionImageCaption": "구간 [1,2]의 양 끝점 A(1,2), B(2,5)를 잇는 할선 l의 기울기는 (5-2)/(2-1)=3이다. 평균값 정리의 c는 f′(c)=2c=3을 만족하므로 c=3/2이고, 접점 T(3/2,13/4)에서의 접선 m이 할선 l과 평행하다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -376,7 +394,12 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 포물선 y=x²과 그 위아래에 흩어진 여섯 개의 점 A부터 F를 나타낸 그래프이다.",
+    "solutionImageCaption": "포물선 y=x²과 y=f(x)가 지나는 여섯 점 A~F를 함께 그렸다. h(x)=f(x)-x²이라 하면 A(-3,2)는 포물선 아래(h=-7)이고 B(-2,5)는 위(h=1)이므로 (-3,-2)에서 근이 있고, B에서 C(0,-1)로 가며 아래로 내려오므로 (-2,0)에서 근이 있다. E(3,9)는 포물선 위의 점이라 h(3)=0인 근이다. 따라서 열린구간 (-3,4)에서 적어도 3개의 실근을 가지며 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -504,7 +527,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: x=-1에서 두 조각이 서로 다른 높이의 열린 점으로 끊어지고, x=1에서는 높이 2의 열린 점 두 개와 높이 1의 닫힌 점 P가 있는 조각 함수의 그래프이다.",
+    "solutionImageCaption": "예: 해설의 값을 따라 그린 그래프이다. x=-1에서 왼쪽 극한 1과 오른쪽 극한 0이 달라 극한값이 없고 f(-1)도 정의되지 않아 두 열린 점 사이가 비어 있다(ㄱ은 옳지 않다). x=1에서는 좌극한과 우극한이 모두 2이므로 극한값이 있으나 f(1)=1인 닫힌 점 P(1,1)이 따로 있어 불연속이다(ㄴ, ㄷ은 옳다). f(-1)이 없으므로 ㄹ은 옳지 않다. 따라서 답은 ③이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 13,
@@ -639,7 +666,12 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선이 점 A에서 x축에 접하고 점 B에서 x축을 지나며 오른쪽 위로 점 P까지 뻗는 그래프이다.",
+    "solutionImageCaption": "g가 x=2에서 연속이려면 f(2)=0이고 f가 x=2를 중근으로 가져야 하며, g(4)=0에서 f(4)=0이다. 따라서 f(x)=(x-2)²(x-4)이다. 그래프는 A(2,0)에서 x축에 접하고 B(4,0)에서 x축을 가로지르며 그림의 P(6,32)가 f(6)=16·2=32이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 16,
@@ -711,7 +743,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고2_수학II/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O가 중심이고 점 A와 점 B를 각각 지나는 두 원과, 점 B에서 직각인 삼각형 OBA가 그려져 있다.",
+    "solutionImageCaption": "예: a=3일 때를 그린다. A(3,3)은 y=√(3x) 위의 점이고 B(3,0)이다. 원점 O가 중심인 두 원의 반지름은 OB=3과 OA=√18=3√2이다. 일반적으로 f(a)=√(a²+3a)-a=3/(√(1+3/a)+1)이고 a→∞이면 3/2이다. 따라서 답은 3/2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

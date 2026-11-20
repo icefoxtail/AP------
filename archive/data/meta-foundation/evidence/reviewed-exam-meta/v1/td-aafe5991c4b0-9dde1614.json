@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-aafe5991c4b0-9dde1614",
+  "requestSha256": "8b038dad6f07bb80a10e8074072493956affe557031c8015df59594556f8e38d",
+  "examUid": "19_매산여고_1학기_기말_고2_수학I",
+  "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+  "sourceBlobSha1": "d0a9ced3b32ee06e46669070bc2deeb317b610c6",
+  "sourceRawSha256": "2d636150ec81f69686f24c081dcb5bdb7e0696d2666b44b492a66f6dde2dea19",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "claude-sonnet-5.5",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-r-20261120",
+      "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aafe5991c4b0-9dde1614.type-ledger.json",
+        "sha256": "9c36ef861bb280ed859a95177fb1ac1dba62b9ca41be02f8063a1d4b27917c11"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 1,
+    "content": 0,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_e4d75e97d3b7e6887b56ea757dac2bb9b486f0e873867fb7498e3c7d43bb5f07",
+      "sourceArchiveFile": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
+      "sourceOrdinal": 14,
+      "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+      "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_122",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-aafe5991c4b0-9dde1614",
+        "judge": "claude-sonnet-5.5",
+        "rationale": "분열 직전 수에서 3을 빼고 2배가 되는 점화식 a_n=2a_(n-1)-6으로 a_1과 a_5를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "수학I",
+          "curriculumSource": "row",
+          "rowCourse": "대수",
+          "courseRelation": "successor"
+        },
+        "judgedSourceFingerprint": "64febec978b2bc9fd730e88d84e3e0fd3e8576b300ad625dc393aff6d12330bb",
+        "judgedContentFingerprint": "3a2d33fa28261cf9e83e425c17e4560a5da18668764fbf3ff907bdf4f3deed00",
+        "rowBinding": "exact",
+        "textBindingFingerprint": "f11e4f991e9402d6f66b1d3dd825dac3045a5d11d8a2aa68c4d0337f6e335283",
+        "resultSource": {
+          "branch": "data/type-judgment-r-20261120",
+          "commit": "049faee372d70dd47dc7d42a666f6aafc5cb5d8d",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-r/redo-1.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-aafe5991c4b0-9dde1614.json",
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 22
+}

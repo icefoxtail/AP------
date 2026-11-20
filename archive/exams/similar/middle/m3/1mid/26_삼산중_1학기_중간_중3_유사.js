@@ -478,13 +478,13 @@ window.questionBank = [
     "questionType": "객관식",
     "content": "$(2x - 3y)(4x + 5y)$를 전개하였을 때, $xy$의 계수는?",
     "solution": "다항식을 전개하여 $xy$ 항만 추출합니다.\n$(2x) \\times (5y) + (-3y) \\times (4x) = 10xy - 12xy = -2xy$\n따라서 $xy$의 계수는 $-2$이다.",
-    "answer": "①",
+    "answer": "⑤",
     "choices": [
-      "① $-2$",
-      "② $-1$",
-      "③ $0$",
-      "④ $1$",
-      "⑤ $2$"
+      "① $-6$",
+      "② $-5$",
+      "③ $-4$",
+      "④ $-3$",
+      "⑤ $-2$"
     ],
     "score": 3.8
   },
@@ -652,11 +652,11 @@ window.questionBank = [
     "solution": "$x^2 + kx - 24 = (x+a)(x+b) = x^2 + (a+b)x + ab$이므로\n$ab = -24$, $k = a+b$이다.\n곱이 $-24$가 되는 두 정수 $a, b$의 순서쌍과 그 합 $k$는 다음과 같다:\n- $a=24, b=-1 \\implies k = 23$\n- $a=-24, b=1 \\implies k = -23$\n- $a=12, b=-2 \\implies k = 10$\n- $a=-12, b=2 \\implies k = -10$\n- $a=8, b=-3 \\implies k = 5$\n- $a=-8, b=3 \\implies k = -5$\n- $a=6, b=-4 \\implies k = 2$\n- $a=-6, b=4 \\implies k = -2$\n따라서 $k$가 될 수 있는 값은 $\\pm 23, \\pm 10, \\pm 5, \\pm 2$이다.\n선지 중 8은 $k$의 값이 될 수 없다.",
     "answer": "④",
     "choices": [
-      "① 2",
-      "② 5",
-      "③ 10",
+      "① -2",
+      "② 2",
+      "③ 5",
       "④ 8",
-      "⑤ 23"
+      "⑤ 10"
     ],
     "score": 4.3
   },

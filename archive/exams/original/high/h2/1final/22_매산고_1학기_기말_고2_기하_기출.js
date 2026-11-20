@@ -122,9 +122,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q03-solution.svg",
-    "solutionImageAlt": "중심에서 두 초점까지의 거리 c=5인 타원",
-    "solutionImageCaption": "c²=45−20을 적용해 초점 사이 길이를 확인한다.",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q3-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 가로로 긴 타원과 두 초점 F, F′, 위쪽 꼭짓점 B가 있다. 원점 O와 F, B를 이은 직각삼각형이 색칠되어 있고 점선 FF′의 길이와 세 변의 길이가 표시되어 있다.",
+    "solutionImageCaption": "x²/45+y²/20=1에서 a²=45, b²=20이고 c²=a²−b²=25이므로 c=5이다. 직각삼각형 OFB에서 OF=c=5, OB=b=2√5, BF=a=3√5이고 5²+(2√5)²=(3√5)²이다. 두 초점 F(5, 0), F′(−5, 0) 사이의 거리는 FF′=2c=10이다. 따라서 답은 ④이다.",
     "solutionImageSize": "full"
   },
   {
@@ -293,7 +293,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q7-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 파란 직선 l과 주황 직선 m이 점 P에서 만나 예각을 이루고, P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "l은 x−2y−5=0이고 m은 3x−y−1=0이며 두 직선은 점 P에서 만난다. 방향벡터는 각각 (2, 1), (1, 3)이고 내적 2+3=5>0이므로 두 방향이 이루는 각이 예각이다. cosθ=5/(√5·√10)=√2/2이다. 이때 기울기 1/2, 3에서 tanθ=1이므로 θ=45°이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -334,7 +338,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축, y축이 있는 좌표평면에서 y축의 왼쪽에 반지름 1인 원이 있고 원이 y축에 한 점 T에서 접한다. 원의 중심 C와 T의 좌표, 중심에서 T까지의 거리가 표시되어 있다.",
+    "solutionImageCaption": "그림은 구를 z=−3인 평면으로 자른 단면이다. 구는 (x+1)²+(y−1)²+(z+3)²=k+11이므로 중심 C(−1, 1, −3), 반지름의 제곱 k+11이다. 중심에서 yz평면(x=0)까지의 거리는 1이고 접하려면 반지름이 1이어야 하므로 k+11=1이다. 단면에서 원 C가 y축에 접하는 점은 T(0, 1)이다. 따라서 k=−10이고 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -416,7 +424,12 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q10-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: H에서 직각을 이루는 직각삼각형 CHX가 있다. 세로 변 CH는 3, 가로 변 HX는 √2, 빗변 CX는 √11이고 직각 표시가 있다.",
+    "solutionImageCaption": "지름의 양 끝점의 중점이 구의 중심 C(4, 3, 1)이고 반지름의 제곱은 (1/4)(2²+2²+6²)=11이다. 그림은 구의 중심 C에서 xz평면에 내린 수선의 발 H와 단면원 위의 한 점 X를 지나는 직각삼각형이다. CH=3은 중심에서 xz평면(y=0)까지의 거리이고 CX=√11은 구의 반지름이므로 단면원의 반지름은 HX=√(11−9)=√2이다. 단면의 넓이는 2π이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 11,
@@ -635,7 +648,12 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점 O에서 길이 1인 OA와 OB가 60°를 이루고, OB의 연장선 위에 OX=6인 점 X가 있다. A와 X를 점선이 잇고 길이가 표시되어 있다.",
+    "solutionImageCaption": "OA=u, OB=v로 두면 |u|=|v|=1이고 u·v=1/2이다. 좌표로 x=(3, 3√3)이고 이는 6v와 같다. 점 X는 반직선 OB 위에서 OX=6인 점이고 BX=5이다. 점선 AX의 길이는 |u−x|=|u−6v|이고 |u−6v|²=1+36−6=31이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 16,
@@ -709,7 +727,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽으로 열린 포물선과 초점 F, 왼쪽의 준선 l이 있다. 곡선 위의 점 A, B에서 F와 준선으로 가는 선분이 있고 길이 6과 7이 표시되어 있다.",
+    "solutionImageCaption": "y²=4x의 초점은 F(1, 0), 준선은 x=−1이다. A, B의 x좌표를 m, n이라 하면 AF=m+1, BF=n+1이고 무게중심의 x좌표 (m+n+1)/3=4에서 m+n=11이다. AF×BF=mn+12이므로 합이 11인 두 자연수(2 이상) 중 가장 가까운 m=5, n=6일 때 최대이다. 그림은 이 경우로 AF=6, BF=7이다. 따라서 최댓값은 6×7=42이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -781,7 +803,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고2_기하_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로로 선 선분 AD를 축으로 한 사면체 ABCD가 있다. B와 C는 같은 높이의 축 둘레에 있고 B에는 직각 표시가 있다.",
+    "solutionImageCaption": "△ABD는 B에서 직각이므로 BD²=8²−4²=48, BD=CD=4√3이다. AD를 축으로 두고 A에서 AD 방향으로 B의 정사영 길이가 (16+64−48)/16=2이므로 축에서 B, C까지의 거리는 2√3이고, 평면 ABD와 ACD가 이루는 각이 60°이므로 BC=2√3이다. 사면체의 부피는 8√3, △DBC의 넓이는 3√15이다. 3V=AD×[△DBC]×sinθ에서 sinθ=1/√5이고 θ는 예각이므로 cosθ=2√5/5이다. 따라서 답은 2√5/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

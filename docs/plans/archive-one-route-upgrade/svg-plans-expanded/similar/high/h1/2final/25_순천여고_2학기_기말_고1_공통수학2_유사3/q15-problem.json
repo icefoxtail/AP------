@@ -1,0 +1,72 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "13/2",
+   "0"
+  ],
+  "denominator": [
+   "0",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -1,
+   8
+  ],
+  "viewport": [
+   -1,
+   7,
+   -1,
+   8
+  ],
+  "equalUnits": true,
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "formulaLabel": "y=k/x",
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "-1",
+     "intercept": "6"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "curveX": "3-sqrt(10)/2"
+    },
+    {
+     "id": "Q",
+     "curveX": "3+sqrt(10)/2"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "Q": "Q"
+ },
+ "coordinatePlacement": "PANEL",
+ "caption": "반비례 곡선 y=k/x (k>0)가 직선 y=-x+6과 제1사분면의 두 점 P, Q에서 만난다.",
+ "sourceConditions": [
+  {
+   "id": "S1",
+   "condition": "유리함수 y=k/x (k>0)의 그래프가 직선 y=-x+6과 두 점 P, Q에서 만난다.",
+   "mappedTo": [
+    "graphPlan.overlays.lines",
+    "graphPlan.overlays.points"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "곡선과 직선이 만나는 두 교점 P, Q의 위치를 보여 준다."
+ ],
+ "sourceQuote": "직선 $y=-x+6$과 두 점 $P, Q$에서 만난다"
+}

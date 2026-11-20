@@ -1,0 +1,51 @@
+{
+ "capability": "sqrt-affine-spike-v1",
+ "graphPlan": {
+  "family": "sqrt-affine",
+  "radicand": [
+   "6",
+   "-2"
+  ],
+  "amplitude": "1",
+  "sign": 1,
+  "offset": "-5",
+  "sourceDomain": {
+   "kind": "NATURAL_SQRT_AFFINE"
+  },
+  "domain": [
+   -10,
+   3
+  ],
+  "viewport": [
+   -11,
+   5,
+   -8,
+   3
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "domainRangeLabels": true,
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "3",
+     "y": "-5",
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A"
+ },
+ "caption": "근호 안 ax+6≥0의 해가 x≤3이므로 a<0이고 -6/a=3에서 a=-2이다. y=√(-2x+6)+b≥b이고 치역이 y≥-5이므로 b=-5이다. 그래프는 점 (3,-5)에서 시작해 왼쪽 위로 뻗는다. a+b=-7이므로 답은 ①이다.",
+ "sourceConditions": [
+  "y=√(-2x+6)-5"
+ ],
+ "newVisualInformation": [
+  "정의역 x≤3, 치역 y≥-5와 시작점 (3,-5)"
+ ]
+}

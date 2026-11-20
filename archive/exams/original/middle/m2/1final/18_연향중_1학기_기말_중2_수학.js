@@ -182,7 +182,11 @@ window.examData = {
         "3"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/18_연향중_1학기_기말_중2_수학/q13-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 −4와 3 사이의 구간이 있고 두 끝점 −4와 3은 찬 점이다.",
+      "solutionImageCaption": "2(x−a)≤4(x+1)에서 −2x≤4+2a이므로 x≥−2−a이다. 3x+b≤5에서 x≤(5−b)/3이다. 해가 −4≤x≤3이므로 −2−a=−4에서 a=2이고 (5−b)/3=3에서 b=−4이다. 따라서 ab=2×(−4)=−8이고 답은 ①이다. 수직선에서 두 끝점은 찬 점이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 14,

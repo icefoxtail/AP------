@@ -1,0 +1,63 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "0",
+   "2"
+  ],
+  "denominator": [
+   "-3",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -6,
+   10
+  ],
+  "viewport": [
+   -6,
+   10,
+   -5,
+   9
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "O",
+     "x": "0",
+     "y": "0",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "zO",
+     "point": "O",
+     "text": "O(0,0)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula"
+  ],
+  "asymptoteLabelAt": "END",
+  "verticalAsymptoteLabelAt": "TOP_RIGHT"
+ },
+ "pointNames": {},
+ "caption": "점근선은 x=3, y=2이고 k>0이므로 x>3에서는 y>2이다. x<3에서 y는 감소하므로 제3사분면을 지나지 않으려면 y절편이 0 이상이어야 한다. k=6이면 y절편이 0이어서 곡선이 원점을 지난다. 자연수 k의 최댓값은 6이므로 답은 ④이다.",
+ "sourceConditions": [
+  "y=k/(x-3)+2, 경계 k=6"
+ ],
+ "newVisualInformation": [
+  "k=6일 때 곡선이 원점 (0,0)을 지나 제3사분면과 만나지 않음"
+ ]
+}

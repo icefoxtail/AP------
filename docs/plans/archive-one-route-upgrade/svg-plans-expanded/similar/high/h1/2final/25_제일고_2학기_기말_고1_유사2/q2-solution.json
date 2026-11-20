@@ -1,0 +1,157 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "XU",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "-2"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-3"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "R",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "2"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "-5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayPoints": [
+  "P",
+  "Q",
+  "R",
+  "A"
+ ],
+ "displaySegments": [
+  {
+   "id": "sPQ",
+   "refs": [
+    "P",
+    "Q"
+   ],
+   "dashed": true,
+   "arrow": "END"
+  },
+  {
+   "id": "sAR",
+   "refs": [
+    "A",
+    "R"
+   ],
+   "dashed": true,
+   "arrow": "END"
+  }
+ ],
+ "coordinateLabels": [
+  "P",
+  "Q",
+  "R",
+  "A"
+ ],
+ "caption": "점 P(1, -2)를 점 Q(-3, 4)로 옮기는 평행이동은 x좌표가 4만큼 줄고 y좌표가 6만큼 늘어나는 이동이다. 같은 이동으로 점 A가 점 R(2, 1)로 옮겨졌으므로 A의 좌표는 (2+4, 1-6)=(6, -5)이다. 따라서 답은 ③이다.",
+ "sourceConditions": [
+  "P(1,-2)가 Q(-3,4)로, A가 R(2,1)로 같은 평행이동에 의해 옮겨진다."
+ ],
+ "newVisualInformation": [
+  "두 화살표가 같은 이동(x축 방향 -4, y축 방향 +6)임과 점 A(6,-5)의 위치"
+ ],
+ "coordinateCanvas": {
+  "width": 520,
+  "height": 480
+ }
+}
