@@ -1,0 +1,72 @@
+{
+  "qid": 22,
+  "itemFingerprint": "a004f14dfb8f4a17",
+  "solveSteps": [
+    "2^a * 13 * 5^8 = 13 * 2^(a-8) * (2^8 * 5^8) = 13 * 2^(a-8) * 10^8 이다.",
+    "10자리의 자연수가 되려면 13 * 2^(a-8)이 두 자리 자연수이어야 하므로 10 <= 13 * 2^(a-8) < 100 이다.",
+    "a - 8 = 0일 때 13 (a = 8), a - 8 = 1일 때 26 (a = 9), a - 8 = 2일 때 52 (a = 10)이다.",
+    "a - 8 = 3일 때 104로 100 이상이 되어 부적합하다.",
+    "따라서 가능한 자연수 a의 값은 8, 9, 10이다. 답은 8, 9, 10이다."
+  ],
+  "solvedAnswer": "8, 9, 10",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$10$의 거듭제곱 꼴 $10^n",
+  "rpmRecordId": "M2-RPM-125",
+  "rpmReason": "10^8을 묶어내고 10 <= 13*2^(a-8) < 100에서 13, 26, 52가 되는 a = 8, 9, 10을 구한다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "2^a와 5^8에서 10^8을 묶어 10자리가 되는 10 <= 13*2^(a-8) < 100 조건을 푸는 자릿수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "10^8을 묶은 뒤 10 <= 13*2^(a-8) < 100 범위 조사를 통해 a = 8, 9, 10을 모두 찾아내는 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자릿수",
+        "quote": "8$이 $10$자리의 자연수라고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "$10$자리의 자연수라고 할 때,",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "quote": "$10$의 거듭제곱 꼴 $10^n",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "지수법칙",
+        "quote": "를 조사한다. 지수법칙에 의해 $2^",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "10^8 앞의 계수 13*2^(a-8)이 두 자리 자연수 13, 26, 52가 되도록 a = 8, 9, 10을 도출하여 8, 9, 10으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

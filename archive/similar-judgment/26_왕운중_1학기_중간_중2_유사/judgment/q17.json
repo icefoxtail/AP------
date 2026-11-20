@@ -1,0 +1,74 @@
+{
+  "qid": 17,
+  "itemFingerprint": "085e6f95e66cd5b3",
+  "solveSteps": [
+    "a + 4 < b + 4에서 양변에 4를 빼면 a < b 이다.",
+    "① 3a < 3b (참)",
+    "② a - 7 < b - 7 (참)",
+    "③ -a/2 > -b/2 (참)",
+    "④ -2a > -2b 이므로 5 - 2a > 5 - 2b (참)",
+    "⑤ -4를 곱하면 -4a > -4b 이므로 1을 더하면 -4a + 1 > -4b + 1 이어야 하므로 옳지 않다.",
+    "따라서 옳지 않은 것은 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "주어진 부등식 $a + 4",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "a < b에 음수 -4를 곱하면 부등호가 바뀌어 -4a+1 > -4b+1이 됨을 검토한다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_EVALUATE_INEQUALITY_TRANSFORMATION_PROPERTIES",
+  "typeReason": "a < b의 양변에 3을 곱하거나 음수 -4 등을 곱할 때 부등호 방향 성질을 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식의 양변에 음수를 곱할 때 부등호 방향이 바뀌는 성질을 묻는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "quote": "주어진 부등식 $a + 4",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "등식",
+        "quote": "주어진 부등식 $a + 4",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "양수",
+        "quote": "b$의 양변에 양수 $3$을 곱하",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "quote": "b$의 양변에 음수 $-\\frac",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "a < b에서 음수 -4를 곱하면 부등호가 바뀌어 -4a + 1 > -4b + 1이어야 하므로 ⑤로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

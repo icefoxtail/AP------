@@ -1,0 +1,71 @@
+{
+  "qid": 23,
+  "itemFingerprint": "446ec0d9260c0eb5",
+  "solveSteps": [
+    "직사각형 A의 가로: (12a^2b + 18ab^3) / 6ab = 2a + 3b^2 이다.",
+    "직사각형 B의 가로: (20a^3b^2 - 16a^2b^4) / 4a^2b^2 = 5a - 4b^2 이다.",
+    "두 가로의 합 L = (2a + 3b^2) + (5a - 4b^2) = 7a - b^2 이다.",
+    "따라서 L의 값은 $7a - b^2$이다."
+  ],
+  "solvedAnswer": "$7a - b^2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "서술형 3] 넓이가 각각 $12",
+  "rpmRecordId": "M2-RPM-133",
+  "rpmReason": "12a^2b+18ab^3을 6ab로, 20a^3b^2-16a^2b^4를 4a^2b^2로 나누어 가로 합 7a - b^2를 구한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "넓이 12a^2b+18ab^3과 20a^3b^2-16a^2b^4를 단항식 세로로 나눈 뒤 가로 합 7a - b^2를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "다항식을 각각 6ab, 4a^2b^2로 나눈 후 동류항을 더해 7a - b^2를 구하는 2단계 서술형 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "넓이",
+        "quote": "서술형 3] 넓이가 각각 $12",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "quote": "b^4$인 두 직사각형 $A, B$를",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "길이",
+        "quote": "A$의 세로의 길이가 $6ab$,",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사각형",
+        "quote": "^4$인 두 직사각형 $A, B$를",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "A의 넓이 12a^2b + 18ab^3을 6ab로 나눈 2a + 3b^2와 B의 넓이 20a^3b^2 - 16a^2b^4를 나눈 5a - 4b^2의 합으로 L = 7a - b^2를 구하여  - b^2 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

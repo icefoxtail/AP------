@@ -1,0 +1,73 @@
+{
+  "qid": 6,
+  "itemFingerprint": "76c3654bb71704fe",
+  "solveSteps": [
+    "민준: 5월 20일은 5/20 = 1/4 = 1/2^2 로 분모 소인수가 2뿐이므로 유한소수이다. (참)",
+    "서아: b = 16 = 2^4일 때 a < 16인 분수 a/16은 분모 소인수가 2뿐이므로 항상 유한소수이며 순환소수는 없다. (참)",
+    "하은: 2월 a = 2에서 b는 3부터 28까지 총 26개이다.",
+    "2/b가 유한소수가 되는 b는 홀수 5, 25(2개), 짝수 4, 8, 10, 16, 20(5개)로 총 7개이다.",
+    "따라서 순환소수가 되는 날의 개수는 26 - 7 = 19개이므로 하은의 20개 설명은 옳지 않다. (거짓)",
+    "옳은 학생은 민준, 서아이다. 답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "때, 분수가 순환소수가 되는 $a$",
+  "rpmRecordId": "M2-RPM-119",
+  "rpmReason": "5월 20일인 5/20, b = 16일 때 a/16, 2월의 26개 중 유한소수 7개를 제외한 19개의 소인수를 판별한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "날짜 분수 5/20과 b = 16, 2월의 날짜 26개에서 유한소수와 순환소수 19개를 구분하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "민준, 서아의 조건 점검과 하은의 2월 26일 중 유한소수 7개를 빼서 19개를 도출하는 복합 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "분수",
+        "quote": "월 $b$일을 분수 $\\dfrac",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순환소수",
+        "quote": "때, 분수가 순환소수가 되는 $a$",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "유한소수",
+        "quote": "수로 나타내면 유한소수야. 서아:",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "quote": "가 되는 날의 개수가 20개야.",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "5/20 유한소수(민준 참), a/16 순환소수 없음(서아 참), 2월 순환소수 26 - 7 = 19개(하은 거짓)를 확인하여 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

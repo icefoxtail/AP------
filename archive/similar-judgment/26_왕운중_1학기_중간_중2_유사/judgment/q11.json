@@ -1,0 +1,71 @@
+{
+  "qid": 11,
+  "itemFingerprint": "17df1a9f5b46e518",
+  "solveSteps": [
+    "(12a^2b^3 + 18ab^4) / 2b = 6a^2b^2 + 9ab^3 이다.",
+    "(6a^2b^2 + 9ab^3) - (15a^3b - 9a^2b^2) = 6a^2b^2 + 9ab^3 - 15a^3b + 9a^2b^2 = -15a^3b + 15a^2b^2 + 9ab^3 이다.",
+    "a^2b^2의 계수는 6 + 9 = 15이다.",
+    "따라서 설명으로 옳은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "번째 괄호를 단항식 $2b$로 나",
+  "rpmRecordId": "M2-RPM-133",
+  "rpmReason": "12a^2b^3 + 18ab^4를 2b로 나눈 뒤 15a^3b - 9a^2b^2를 빼서 계수 15를 구한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "단항식 2b 나눗셈과 괄호의 뺄셈을 통해 ab^3 계수 9 및 a^2b^2 계수 15를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "12a^2b^3 나눗셈 후 동류항 계산으로 a^2b^2의 계수 15를 찾아 선지를 검토하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "quote": "번째 괄호를 단항식 $2b$로 나",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최고차항",
+        "quote": "$a$에 대한 최고차항이 $-15a^",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "quote": "괄호를 빼서 동류항끼리 정리한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "계수",
+        "quote": "^2b^2$의 계수는 $15$이다",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "식 전개 후 -15a^3b + 15a^2b^2 + 9ab^3에서 a^2b^2 계수가 15임을 확인하여 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

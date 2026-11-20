@@ -1,0 +1,71 @@
+{
+  "qid": 15,
+  "itemFingerprint": "3d8f118e2feedca7",
+  "solveSteps": [
+    "(24a^2 - 16ab) / 8a = 3a - 2b 이다.",
+    "(18ab + 12b^3) / 6b = 3a + 2b^2 이다.",
+    "(3a - 2b) - (3a + 2b^2) = -2b - 2b^2 이다.",
+    "b의 계수는 -2, b^2의 계수는 -2이므로 모든 항의 계수의 합은 -2 + (-2) = -4이다. 답은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": ", 모든 항의 계수의 합을 구하면",
+  "rpmRecordId": "M2-RPM-133",
+  "rpmReason": "24a^2 - 16ab와 18ab + 12b^3을 각각 단항식으로 나눈 뒤 빼서 계수 합을 구한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "24a^2 - 16ab와 18ab + 12b^3의 나눗셈을 수행하고 계수의 합 -4를 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "식 24a^2 - 16ab와 18ab + 12b^3의 나눗셈 후 괄호 뺄셈으로 -2b - 2b^2의 계수 합을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "quote": "각 분수를 단항식으로 나누어 계",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": ", 모든 항의 계수의 합을 구하면",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "양화",
+        "quote": "하였을 때, 모든 항의 계수의",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "다항식의나눗셈",
+        "quote": "첫 번째 분수 나눗셈: $$ \\fr",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(24a^2 - 16ab)/8a = 3a - 2b와 (18ab + 12b^3)/6b = 3a + 2b^2의 차인 -2b - 2b^2에서 계수 합 -4를 구하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}
