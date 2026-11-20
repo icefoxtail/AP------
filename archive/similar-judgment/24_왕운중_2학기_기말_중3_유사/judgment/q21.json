@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "b336b49477020a2d",
+  "solvedAnswer": "\\sin x^\\circ = \\dfrac{\\sqrt{17}}{17}, \\quad \\cos x^\\circ = \\dfrac{4\\sqrt{17}}{17}",
+  "solveSteps": [
+    "직사각형의 접기 성질과 피타고라스 정리를 이용하여 선분의 길이를 구하고 직각삼각형에서 삼각비를 계산한다.",
+    "1단계: 접었으므로 선분 $\\overline{AE}$의 길이는 접히기 전의 변 $\\overline{AD}$의 길이와 같다.",
+    "$$\\overline{AE} = \\overline{AD} = 17\\rm,cm$$ 직각삼각형 $ABE$에서 $\\angle B = 90^\\circ$이므로 피타고라스 정리에 의하여 $$\\begin{aligned} \\overline{BE} &= \\sqrt{\\overline{AE}^2 - \\overline{AB}^2} \\ &= \\sqrt{17^2 - 8^2} \\ &= \\sqrt{289 - 64} \\ &= \\sqrt{225} \\ &= 15\\rm,cm \\end{aligned}$$",
+    "2단계: 선분 $\\overline{EC}$의 길이는 다음과 같다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 직사각형 $ABCD$에서 $\\overline{AB} = 8\\rm,cm, \\overline{AD} = 17\\rm,cm$이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 1] 다음 그림과 같은 직사각형 $ABCD$에서 $\\overline{AB} = 8\\rm,cm, \\overline{AD} = 17\\rm,cm$이다.",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "직사각형의 접기 성질과 피타고라스 정리를 이용하여 선분의 길이를 구하고 직각삼각형에서 삼각비를 계산한다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q21번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q21번 문항은 M3-RPM-061에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q21번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 \\sin x^\\circ = \\dfrac{\\sqrt{17}}{17}, \\quad \\cos x^\\circ = \\dfrac{4\\sqrt{17}}{17}을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "[서술형 1] 다음 그림과 같은 직사각형 $ABCD$에서 $\\overline{AB} = 8\\rm,cm, \\overline{AD} = 17\\rm,cm$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "[서술형 1] 다음 그림과 같은 직사각형 $ABCD$에서 $\\overline{AB} = 8\\rm,cm, \\overline{AD} = 17\\rm,cm$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "직사각형의 접기 성질과 피타고라스 정리를 이용하여 선분의 길이를 구하고 직각삼각형에서 삼각비를 계산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "0974c91e65f65725",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "원에 외접하는 사각형의 마주 보는 두 대변의 합이 같다는 성질을 이용하여 사다리꼴의 각 변의 길이를 구한다.",
+    "1단계: 원에 외접하는 사각형 $ABCD$에서 두 대변의 길이의 합은 서로 같으므로 $$\\overline{AB} + \\overline{CD} = \\overline{AD} + \\overline{BC}$$ $\\overline{CD}$는 원 $O$의 지름이므로 $\\overline{CD} = 2r$ (단, $r$은 원의 반지름)이다.",
+    "$\\overline{AB} = 10\\rm,cm, \\overline{BC} = 12\\rm,cm$이므로 $$10 + 2r = \\overline{AD} + 12 \\implies \\overline{AD} = 2r - 2$$",
+    "2단계: 직각사다리꼴 $ABCD$의 넓이는 다음과 같다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 원 $O$가 직각사다리꼴 $ABCD$($\\angle C = \\angle D = 90^\\circ$)의 각 변과 네 점에서 접하고 있다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 원 $O$가 직각사다리꼴 $ABCD$($\\angle C = \\angle D = 90^\\circ$)의 각 변과 네 점에서 접하고 있다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "원에 외접하는 사각형의 마주 보는 두 대변의 합이 같다는 성질을 이용하여 사다리꼴의 각 변의 길이를 구한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q10번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABCD)",
+  "rpmReason": "Q10번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABCD)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q10번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 ABCD)",
+  "how": "Q10번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "다음 그림과 같이 원 $O$가 직각사다리꼴 $ABCD$($\\angle C = \\angle D = 90^\\circ$)의 각 변과 네 점에서 접하고 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각",
+        "src": "stem",
+        "quote": "다음 그림과 같이 원 $O$가 직각사다리꼴 $ABCD$($\\angle C = \\angle D = 90^\\circ$)의 각 변과 네 점에서 접하고 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "사각형",
+        "src": "solution",
+        "quote": "원에 외접하는 사각형의 마주 보는 두 대변의 합이 같다는 성질을 이용하여 사다리꼴의 각 변의 길이를 구한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

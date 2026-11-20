@@ -1,0 +1,57 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "a1894ebb34e7d7fb",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "두 변의 길이 변화율과 삼각형의 넓이 변화율 사이의 관계식을 세워 방정식을 푼다.",
+    "1단계: 원래 삼각형 $ABC$의 넓이를 $S$라 하면 $$S = \\dfrac{1}{2} \\overline{AB} \\times \\overline{BC}$$",
+    "2단계: 새로운 삼각형 $A'BC'$의 밑변과 높이는 다음과 같다.",
+    "$$\\begin{aligned} \\overline{BC'} &= \\overline{BC} \\times (1 + 0.25) = 1.25\\overline{BC} \\ \\overline{A'B} &= \\overline{AB} \\times \\left(1 - \\dfrac{x}{100}\\right) \\end{aligned}$$ 새로운 삼각형 $A'BC'$의 넓이 $S'$는 다음과 같다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직각삼각형 $ABC$에서 밑변 $\\overline{BC}$의 길이는 $25%$ 늘리고, 높이 $\\overline{AB}$의 길이는 $x%$ 줄여서 새로운 직각삼각형 $A'BC'$을 만들었다.",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "두 변의 길이 변화율과 삼각형의 넓이 변화율 사이의 관계식을 세워 방정식을 푼다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "Q5번 문항은 PT_TRIG_RATIO 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q5번 문항은 M3-RPM-061에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q5번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q5번 문항으로 M3-05 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$에서 밑변 $\\overline{BC}$의 길이는 $25%$ 늘리고, 높이 $\\overline{AB}$의 길이는 $x%$ 줄여서 새로운 직각삼각형 $A'BC'$을 만들었다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$에서 밑변 $\\overline{BC}$의 길이는 $25%$ 늘리고, 높이 $\\overline{AB}$의 길이는 $x%$ 줄여서 새로운 직각삼각형 $A'BC'$을 만들었다."
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "두 변의 길이 변화율과 삼각형의 넓이 변화율 사이의 관계식을 세워 방정식을 푼다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

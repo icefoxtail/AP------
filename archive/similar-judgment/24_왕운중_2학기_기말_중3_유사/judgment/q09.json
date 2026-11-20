@@ -1,0 +1,57 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "c96d7b7388887d59",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "직각삼각형 $OMA$에서 반지름 $x$에 대한 피타고라스 방정식을 세운다.",
+    "1단계: 선분 $\\overline{OC}$는 원의 반지름이므로 $\\overline{OC} = x\\rm,cm$이다.",
+    "점 $M$이 선분 $\\overline{OC}$ 위에 있고 $\\overline{MC} = 4\\rm,cm$이므로 $$\\overline{OM} = \\overline{OC} - \\overline{MC} = x - 4$$",
+    "2단계: 점 $A$는 원 위의 점이므로 $\\overline{OA} = x\\rm,cm$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$, 선분 $\\overline{OM}$의 연장선이 원과 만나는 점을 $C$라 하자",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$, 선분 $\\overline{OM}$의 연장선이 원과 만나는 점을 $C$라 하자.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "직각삼각형 $OMA$에서 반지름 $x$에 대한 피타고라스 방정식을 세운다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q9번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q9번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q9번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림과 같이 원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$, 선분 $\\overline{OM}$의 연장선이 원과 만나는 점을 $C$라 하자."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "다음 그림과 같이 원의 중심 $O$에서 현 $\\overline{AB}$에 내린 수선의 발을 $M$, 선분 $\\overline{OM}$의 연장선이 원과 만나는 점을 $C$라 하자."
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "src": "solution",
+        "quote": "직각삼각형 $OMA$에서 반지름 $x$에 대한 피타고라스 방정식을 세운다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

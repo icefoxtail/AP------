@@ -1,0 +1,57 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "a4688b78efac3e67",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "접선의 길이의 성질과 직각삼각형 피타고라스 정리를 이용한다.",
+    "1단계: 점 $D$가 접점이므로 반지름 $\\overline{OD}$와 접선 $\\overline{AD}$는 수직이다.",
+    "$$\\angle ADO = 90^\\circ$$ 직각삼각형 $AOD$에서 $\\overline{AO} = 10\\rm,cm, \\overline{OD} = 6\\rm,cm$이므로 피타고라스 정리에 의하여 $$\\begin{aligned} \\overline{AD} &= \\sqrt{\\overline{AO}^2 - \\overline{OD}^2} \\ &= \\sqrt{10^2 - 6^2} \\ &= \\sqrt{100 - 36} \\ &= \\sqrt{64} \\ &= 8\\rm,cm \\end{aligned}$$",
+    "2단계: 원 밖의 한 점에서 그은 두 접선의 길이는 같으므로 점 $A$에서 그은 접선에 대하여 $\\overline{AD} = \\overline{AE} = 8\\rm,cm$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 두 직선 $AD, AE$와 선분 $BC$가 각각 세 점 $D, E, F$에서 원 $O$에 접한다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 두 직선 $AD, AE$와 선분 $BC$가 각각 세 점 $D, E, F$에서 원 $O$에 접한다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "접선의 길이의 성질과 직각삼각형 피타고라스 정리를 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q13번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)",
+  "rpmReason": "Q13번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+  "how": "Q13번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AD)",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "다음 그림에서 두 직선 $AD, AE$와 선분 $BC$가 각각 세 점 $D, E, F$에서 원 $O$에 접한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림에서 두 직선 $AD, AE$와 선분 $BC$가 각각 세 점 $D, E, F$에서 원 $O$에 접한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "src": "solution",
+        "quote": "접선의 길이의 성질과 직각삼각형 피타고라스 정리를 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "f840b486ddcc8cae",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "직각삼각형의 합동(RHS) 조건을 만족하기 위한 대응변의 길이 관계를 증명 맥락에서 파악한다.",
+    "1단계: 증명의 목표는 두 직각삼각형 $OAM$과 $OCN$이 RHS 합동임을 보여 $\\overline{OM} = \\overline{ON}$을 도출하는 것이다.",
+    "이미 $\\angle OMA = \\angle ONC = 90^\\circ$ (직각 R)과 $\\overline{OA} = \\overline{OC}$ (빗변 H)가 제시되어 있으므로, 합동을 완성하기 위해서는 직각변의 길이 $\\overline{AM} = \\overline{CN}$ (변 S)이 성립함을 밝혀야 한다.",
+    "2단계: 원의 중심에서 현에 내린 수선은 현을 이등분하므로 $$\\overline{AM} = \\dfrac{1}{2}\\overline{AB}, \\quad \\overline{CN} = \\dfrac{1}{2}\\overline{CD}$$ 조건에서 $\\overline{AB} = \\overline{CD}$이므로 $$\\overline{AM} = \\overline{CN}$$ 따라서 (가)에 들어갈 내용은 '$\\overline{AM} = \\dfrac{1}{2}\\overline{AB}, \\overline{CN} = \\dfrac{1}{2}\\overline{CD}$이므로 $\\overline{AM} = \\overline{CN}$'이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음은 '한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다'를 증명하는 과정이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "직각삼각형의 합동(RHS) 조건을 만족하기 위한 대응변의 길이 관계를 증명 맥락에서 파악한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q8번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q8번 문항은 M3-RPM-067에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q8번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q8번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "증명",
+        "src": "stem",
+        "quote": "다음은 '한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다'를 증명하는 과정이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중심",
+        "src": "stem",
+        "quote": "다음은 '한 원에서 길이가 같은 두 현은 원의 중심으로부터 같은 거리에 있다'를 증명하는 과정이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대응",
+        "src": "solution",
+        "quote": "직각삼각형의 합동(RHS) 조건을 만족하기 위한 대응변의 길이 관계를 증명 맥락에서 파악한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

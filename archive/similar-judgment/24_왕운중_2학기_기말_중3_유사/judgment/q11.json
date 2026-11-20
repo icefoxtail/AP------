@@ -1,0 +1,57 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "844822df0f8668f6",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "원주각과 중심각의 $2$배 관계 및 길이가 같은 호의 원주각 성질을 이용한다.",
+    "1단계: $\\angle APB = 40^\\circ$는 호 $\\wideparen{AB}$에 대한 원주각이므로, 호 $\\wideparen{AB}$에 대한 중심각 $\\angle AOB$의 크기는 원주각의 $2$배이다.",
+    "$$\\angle AOB = 2 \\times 40^\\circ = 80^\\circ$$",
+    "2단계: 조건에서 $\\wideparen{AB} = \\wideparen{BC}$이므로 호 $\\wideparen{BC}$에 대한 중심각 $\\angle b = \\angle BOC$의 크기도 호 $\\wideparen{AB}$의 중심각과 같다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 원 $O$에서 원주각 $\\angle APB = 40^\\circ$이고 호의 길이가 $\\wideparen{AB} = \\wideparen{BC}$일 때, $\\angle a + \\angle b$의 크기는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림의 원 $O$에서 원주각 $\\angle APB = 40^\\circ$이고 호의 길이가 $\\wideparen{AB} = \\wideparen{BC}$일 때, $\\angle a + \\angle b$의 크기는?",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-074",
+  "rpmEvidence": "원주각과 중심각의 $2$배 관계 및 길이가 같은 호의 원주각 성질을 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q11번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 APB)",
+  "rpmReason": "Q11번 문항은 M3-RPM-074에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 APB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 APB)",
+  "how": "Q11번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 APB)",
+  "slots": {
+    "given": [
+      {
+        "term": "원주각",
+        "src": "stem",
+        "quote": "다음 그림의 원 $O$에서 원주각 $\\angle APB = 40^\\circ$이고 호의 길이가 $\\wideparen{AB} = \\wideparen{BC}$일 때, $\\angle a + \\angle b$의 크기는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "다음 그림의 원 $O$에서 원주각 $\\angle APB = 40^\\circ$이고 호의 길이가 $\\wideparen{AB} = \\wideparen{BC}$일 때, $\\angle a + \\angle b$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "중심",
+        "src": "solution",
+        "quote": "원주각과 중심각의 $2$배 관계 및 길이가 같은 호의 원주각 성질을 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

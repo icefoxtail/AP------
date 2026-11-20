@@ -1,0 +1,57 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "6872f940c54799e4",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "접선과 반지름의 수직 관계 및 이등변삼각형의 성질을 이용한다.",
+    "1단계: 삼각형 $AOC$에서 선분 $\\overline{OA}$와 $\\overline{OC}$는 원 $O$의 반지름이므로 $$\\overline{OA} = \\overline{OC}$$ 따라서 삼각형 $AOC$는 이등변삼각형이다.",
+    "꼭지각 $\\angle COA = 104^\\circ$이므로 밑각 $\\angle OAC$의 크기는 다음과 같다.",
+    "$$\\begin{aligned} \\angle OAC &= \\dfrac{180^\\circ - 104^\\circ}{2} \\ &= \\dfrac{76^\\circ}{2} \\ &= 38^\\circ \\end{aligned}$$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 직선 $AT$는 원 $O$의 접선이고 점 $A$는 접점이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 직선 $AT$는 원 $O$의 접선이고 점 $A$는 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+  "rpmRecordId": "M3-RPM-077",
+  "rpmEvidence": "접선과 반지름의 수직 관계 및 이등변삼각형의 성질을 이용한다.",
+  "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+  "templateKey": "TPL_CIRCLE_ANGLE_CENTER_ARC",
+  "newKeyProposal": null,
+  "typeReason": "Q16번 문항은 PT_CIRCLE_ANGLE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AT)",
+  "rpmReason": "Q16번 문항은 M3-RPM-077에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AT)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q16번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 AT)",
+  "how": "Q16번 문항으로 M3-06 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 AT)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "src": "stem",
+        "quote": "다음 그림에서 직선 $AT$는 원 $O$의 접선이고 점 $A$는 접점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "다음 그림에서 직선 $AT$는 원 $O$의 접선이고 점 $A$는 접점이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "src": "solution",
+        "quote": "접선과 반지름의 수직 관계 및 이등변삼각형의 성질을 이용한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
