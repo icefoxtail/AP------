@@ -1,0 +1,64 @@
+{
+  "qid": 22,
+  "itemFingerprint": "1815d7e77d88b36b",
+  "solveSteps": [
+    "x = 0 일 때 처음 온도가 10 이므로 y절편은 10 이다.",
+    "x가 1분 증가할 때 온도가 4 씩 올라가므로 기울기는 4 이며 관계식은 y = 4x + 10 이다.",
+    "온도가 90 이 되는 시간은 90 = 4x + 10 에서 4x = 80 이므로 x = 20 이다.",
+    "따라서 답은 (1) y = 4x + 10, (2) 20분 후 이다."
+  ],
+  "solvedAnswer": "(1) $y = 4x + 10$ / (2) $20$분 후",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "아래 표와 같이 온도가 일정하게 상승하였다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "물을 가열하기 시작한 지 $x$분 후의 물의 온도를 $y^\\circ\\text{C}$라 할 때",
+  "rpmRecordId": "M2-RPM-177",
+  "rpmReason": "표의 10 에서 26 까지의 변화로 y = 4x + 10 식을 세우고 y=90 일 때 x=20 을 구하는 조건에 따른 식 결정 행이다.",
+  "problemTypeKey": "PT_M2_LINEAR_FUNCTION_WORD_PROBLEM_TEMPERATURE",
+  "templateKey": "TPL_M2_SOLVE_TEMPERATURE_ALTITUDE_WORD_PROBLEM_DESCRIPTIVE",
+  "typeReason": "초깃값 10 과 1분당 4도 상승 조건으로 y = 4x + 10 을 세우고 90 도 달성 시간 20분을 구하는 온도 활용 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "표의 10 과 기울기 4 로 관계식을 세우고 y=90 일 때 x=20 을 역산하는 2단계 서술형 문항이다.",
+  "format": "서술",
+  "slots": {
+    "given": [
+      {
+        "term": "변수",
+        "src": "stem",
+        "quote": "시작한 지 $x$분 후의 물의 온도를 $y^\\circ\\text{C}$라 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "관계식",
+        "src": "stem",
+        "quote": "$x$와 $y$ 사이의 관계식을 구하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "관계식에 $y = 90$을 대입한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "표의 처음 온도 10과 분당 증가량 4로 y = 4x + 10 을 얻고 90 = 4x + 10 에서 x=20 을 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

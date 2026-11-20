@@ -1,0 +1,63 @@
+{
+  "qid": 8,
+  "itemFingerprint": "b22a0b24a0ecb67a",
+  "solveSteps": [
+    "y = ax + b 가 y = -3x + 4 와 평행하므로 기울기 a = -3 이다.",
+    "y = 2x - 3 과 y축 위에서 만나므로 y절편 b = -3 이다.",
+    "상수 a, b에 대하여 곱 ab = (-3) * (-3) = 9 이므로 정답은 ④(9)이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = ax + b$의 그래프는 $y = -3x + 4$의 그래프와 평행하고",
+  "rpmRecordId": "M2-RPM-168",
+  "rpmReason": "y = ax + b 가 평행 조건에서 a=-3 을 갖고 y축 교점에서 b=-3 을 얻는 그래프의 평행·일치 행이다.",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "TPL_RELATION_PARALLEL_PARAMETER",
+  "typeReason": "평행 조건에서 a=-3 과 y축 절편 일치로 b=-3 을 구하여 ab = 9 를 계산하는 매개변수 결정 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평행 조건 a=-3 과 절편 일치 b=-3 을 각각 연계하여 곱 ab = 9 를 산출하는 2단계 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "그래프와 평행하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "src": "solution",
+        "quote": "상수 $a, b$의 곱은"
+      }
+    ],
+    "method": [
+      {
+        "term": "y절편",
+        "src": "solution",
+        "quote": "$y$축 위에서 만나므로 $y$절편이 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = ax + b 에서 평행 조건 a=-3 과 y축 교점 b=-3 을 구해 ab = 9 로 ④를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

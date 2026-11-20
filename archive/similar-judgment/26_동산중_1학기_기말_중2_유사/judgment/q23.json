@@ -1,0 +1,66 @@
+{
+  "qid": 23,
+  "itemFingerprint": "fc3492a6891cba3a",
+  "solveSteps": [
+    "현재 형의 나이를 x, 동생의 나이를 y라 하면 x - y = 6 이다.",
+    "4년 후 형은 x+4, 동생은 y+4 이므로 x + 4 = 2(y + 4) - 5 에서 x - 2y = -1 이다.",
+    "두 식을 변끼리 빼면 y = 7 이고 x = 13 이다.",
+    "4년 후 형 17 살, 동생 11 살로 2 * 11 - 5 = 22 - 5 = 17 이 성립한다.",
+    "따라서 답은 형 13살, 동생 7살 이다."
+  ],
+  "solvedAnswer": "형 13살, 동생 7살",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "현재 형과 동생의 나이의 차는 $6$살이고",
+  "rpmRecordId": "M2-RPM-156",
+  "rpmReason": "형 나이 13 과 동생 나이 7 의 차와 배수 관계를 연립방정식으로 세워 푸는 두 수 관계 활용 행이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "현재 나이 차 6 과 4년 후 17, 11 살 관계식을 세워 형 13 살, 동생 7 살을 구하는 나이 활용 단계이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "현재와 미래 나이의 관계식을 세워 연립하고 형 13 살, 동생 7 살을 구하는 2단계 서술형 문항이다.",
+  "format": "서술",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "solution",
+        "quote": "$x, y$는 자연수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "미지수",
+        "src": "solution",
+        "quote": "미지수 설정 및 연립방정식 세우기"
+      }
+    ],
+    "method": [
+      {
+        "term": "가감법",
+        "src": "solution",
+        "quote": "변끼리 뺀다.",
+        "evidenceType": "IMPLIED",
+        "justification": "식 ㉠과 ㉡을 변끼리 빼서 x를 소거하는 가감법을 적용함"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "x - y = 6 과 x - 2y = -1 을 세워 연립하고 형 13살, 동생 7살임을 검산하여 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

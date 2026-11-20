@@ -1,0 +1,63 @@
+{
+  "qid": 10,
+  "itemFingerprint": "3dcc70c8bdeeee67",
+  "solveSteps": [
+    "y = ax + b 가 제4사분면을 지나지 않으므로 기울기 a > 0 이고 y절편 b > 0 이다.",
+    "일차함수 y = -(b/a)x + b 에서 기울기는 -b/a < 0 이고 y절편은 b > 0 이다.",
+    "기울기가 음수이고 y절편이 양수인 직선은 제1, 2, 4사분면을 지나므로 지나지 않는 사분면은 제3사분면(⑤)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = ax + b$의 그래프가 제$4$사분면을 지나지 않을 때",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "y = ax + b 의 사분면 조건으로 기울기 a와 절편 b의 부호를 판정하는 일차함수 그래프 기울기·절편 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+  "typeReason": "주어진 y = ax + b 의 사분면 통과 조건으로부터 a>0, b>0 을 도출하고 새 함수의 사분면을 판정하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "y = ax + b 에서 a>0, b>0 부호를 정하고 새 함수의 사분면 개형을 추론하는 4.5점 배점의 2단계 추론 문항이다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "오른쪽 위로 향해야 하므로 기울기 $a > 0$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "지나지 않는 사분면은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "y절편",
+        "src": "solution",
+        "quote": "$y$축의 양의 부분을 지나야 하므로 $y$절편 $b > 0$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = ax + b 에서 a>0, b>0 을 얻고 -b/a < 0, b > 0 이 제3사분면을 지나지 않음을 파악하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
