@@ -201,7 +201,7 @@ export function checkJudgments({ jsPath, judgmentDir, candidatesDir = null, only
     if (!nonEmpty(j.how) || j.how.trim().length < 15) add('FIELD_EMPTY', 'how 가 비었거나 15자 미만입니다');
     const tokenFields = { how: j.how, solveSteps: steps.join(' '), difficultyReason: j.difficultyReason, typeReason: j.typeReason, rpmReason: j.rpmReason };
     for (const [name, text] of Object.entries(tokenFields)) {
-      if (nonEmpty(text) && !sharesItemToken(text, itemTokens)) add('REASON_NO_ITEM_TOKEN', `${name} 에 이 문항의 숫자·식 토큰이 하나도 없습니다. 이 중 하나 이상을 그대로 넣으세요: ${[...itemTokens].slice(0, 8).join(', ')}`);
+      if (nonEmpty(text) && itemTokens.size > 0 && !sharesItemToken(text, itemTokens)) add('REASON_NO_ITEM_TOKEN', `${name} 에 이 문항의 숫자·식 토큰이 하나도 없습니다. 이 중 하나 이상을 그대로 넣으세요: ${[...itemTokens].slice(0, 8).join(', ')}`);
     }
     for (const text of [j.how, j.difficultyReason, j.typeReason, j.rpmReason, ...Object.values(j.slotReasons || {})]) {
       for (const s of splitSentences(text)) {
