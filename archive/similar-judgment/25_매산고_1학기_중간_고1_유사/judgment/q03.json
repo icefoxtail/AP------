@@ -1,0 +1,66 @@
+{
+  "qid": 3,
+  "itemFingerprint": "7b0f39c6f9995775",
+  "solveSteps": [
+    "각 분수의 분모를 실수화한다.",
+    "$\\dfrac{1+i}{1-i} = \\dfrac{(1+i)^2}{2} = \\dfrac{2i}{2} = i$",
+    "$\\dfrac{1-i}{1+i} = \\dfrac{(1-i)^2}{2} = \\dfrac{-2i}{2} = -i$",
+    "주어진 식 좌변: $i - 2(-i) = 3i = 0 + 3i$",
+    "$a + bi = 0 + 3i$에서 $a = 0, b = 3$이므로 $a - b = 0 - 3 = -3$이다. (⑤번)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-04",
+  "subUnitKey": "H22-C-04-COMPLEX_OPERATION",
+  "unitEvidence": "등식 $\\dfrac{1 + i}{1 - i} - \\dfrac{2(1 - i)}{1 + i} = a + bi$가",
+  "rpmRecordId": "H1-RPM-156",
+  "rpmReason": "복소수 사칙연산과 $a + bi$ 꼴로의 정리를 다루는 H1-RPM-156에 해당한다.",
+  "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+  "templateKey": "TPL_H1_COMPLEX_COMPONENT_OPERATION",
+  "typeReason": "분모의 실수화와 사칙연산 후 $a + bi$ 복소수 상등을 적용하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모를 실수화하여 $a + bi = 3i$에서 $a - b = -3$을 바로 구하는 기본 난이도 1 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "등식",
+        "src": "stem",
+        "quote": "등식 $\\dfrac{1 + i}{1 - i} - \\dfrac{2(1 - i)}{1 + i} = a + bi$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a, b$에 대하여"
+      }
+    ],
+    "method": [
+      {
+        "term": "분모",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "각 분수의 분모를 실수화하면"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$\\frac{1+i}{1-i} = i$, $\\frac{1-i}{1+i} = -i$에서 $3i = a+bi$로 $a-b = -3$을 얻어 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyBoundary": null
+}

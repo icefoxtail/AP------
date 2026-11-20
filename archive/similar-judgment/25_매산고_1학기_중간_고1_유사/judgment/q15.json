@@ -1,0 +1,72 @@
+{
+  "qid": 15,
+  "itemFingerprint": "eedb5d571cb76059",
+  "solveSteps": [
+    "$g(x) = f(x) - x$라 하면 $g(x) = t$의 교점 $x$좌표가 $f(x) = x + t$의 실근이다.",
+    "$x \\le 0$: $g(x) = x^2 + (a - 1)x + b$, $x > 0$: $g(x) = -x^2 + (a - 1)x - b$이다.",
+    "교점이 3개가 되는 $t$가 오직 하나 존재하려면 $x>0$의 극댓값과 $x\\le 0$의 경계값이 $t=b$에서 일치해야 한다.",
+    "즉 $-b + \\frac{(a - 1)^2}{4} = b \\implies (a - 1)^2 = 8b$이다.",
+    "이때 세 실근은 $x = 0, -(a - 1), \\frac{a - 1}{2}$이고 합은 $-\\frac{a - 1}{2} = -2 \\implies a - 1 = 4 \\implies a = 5$이다.",
+    "$(5 - 1)^2 = 8b \\implies 16 = 8b \\implies b = 2$이므로 $a + b = 5 + 2 = 7$이다. (③번)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-05",
+  "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
+  "unitEvidence": "방정식 $f(x) = x + t$의 서로 다른 실근의 개수가",
+  "rpmRecordId": "H1-RPM-168",
+  "rpmReason": "구간별 이차함수 $x^2 + ax + b$와 직선의 교점 개수 조건에서 $(a-1)^2 = 16 = 8b$로 $a+b=7$을 구하는 H1-RPM-168에 해당한다.",
+  "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+  "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+  "typeReason": "구간별 이차함수 $x^2 + ax + b$와 직선의 교점 개수 조건으로 미정계수 $a+b=7$을 결정하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$x^2 + ax + b$의 꼭짓점 조건 $(a-1)^2 = 16 = 8b$와 세 실근의 합에서 $a+b=7$을 구하는 고난도 난이도 4 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "두 실수 $a, b$ ($b > 0$)에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "실근",
+        "src": "stem",
+        "quote": "서로 다른 실근의 개수가 $3$이 되도록 하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "방정식",
+        "evidenceType": "NAMED",
+        "src": "stem",
+        "quote": "$x$에 대한 방정식 $f(x) = x + t$의"
+      }
+    ],
+    "condition": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "조건 (가)에서 방정식 $f(x) = x + t$의"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "구간별 함수 $x^2 + ax + b$에서 $(a-1)^2 = 16 = 8b$와 세 근의 합 $-2$로부터 $a=5, b=2$를 구해 $a+b=7$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

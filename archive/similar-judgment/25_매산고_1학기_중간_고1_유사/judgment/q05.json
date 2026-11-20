@@ -1,0 +1,66 @@
+{
+  "qid": 5,
+  "itemFingerprint": "e9fc363b6bf2d7c7",
+  "solveSteps": [
+    "$P(x) = ax^3 - 4x^2 + 3ax + 6a$가 $x + 1$로 나누어떨어지므로 $P(-1) = 0$이다.",
+    "$P(-1) = -a - 4 - 3a + 6a = 2a - 4 = 0 \\implies a = 2$이다.",
+    "$P(x) = 2x^3 - 4x^2 + 6x + 12$이다.",
+    "$x=1$로 조립제법을 시행하면 몫의 계수는 $2, -2, 4$이므로 $Q(x) = 2x^2 - 2x + 4$이다.",
+    "따라서 $Q(1) = 2(1)^2 - 2(1) + 4 = 4$이다. (③번)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C-02",
+  "subUnitKey": "H22-C-02-CORE",
+  "unitEvidence": "다항식 $P(x) = ax^3 - 4x^2 + 3ax + 6a$가 $x + 1$로 나누어떨어질 때",
+  "rpmRecordId": "H1-RPM-145",
+  "rpmReason": "다항식 $ax^3$과 12가 포함된 식에서 인수정리로 $a=2$를 구하는 H1-RPM-145에 해당한다.",
+  "problemTypeKey": "PT_H1_FACTOR_THEOREM",
+  "templateKey": "TPL_H1_FACTOR_THEOREM_ROOT",
+  "typeReason": "인수정리로 $ax^3$ 식의 미정계수 $a$를 정하고 나눗셈 몫 $Q(1)$을 계산하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$P(x) = ax^3$에서 $a=2$를 찾고 $x=1$로 나누어 몫의 값 4를 구하는 난이도 2 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "src": "stem",
+        "quote": "다항식 $P(x) = ax^3 - 4x^2 + 3ax + 6a$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a$는 상수이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "인수정리",
+        "evidenceType": "NAMED",
+        "src": "solution",
+        "quote": "인수정리에 의하여 $P(-1) = 0$이다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$P(-1) = 2a - 4 = 0$에서 $a=2$, $ax^3$ 식을 조립제법하여 $Q(1)=4$로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "difficultyBoundary": null
+}
