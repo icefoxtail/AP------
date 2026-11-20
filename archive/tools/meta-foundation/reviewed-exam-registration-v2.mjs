@@ -2127,7 +2127,9 @@ export function receiptRecordMatchesRow(current, record) {
   return eq(withoutTypeLane(current), withoutTypeLane(record));
 }
 
-export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null }) {
+// typeBatch (register-type-batch.mjs): lets a run of DIRECT_JUDGMENT requests in one process share the parsed metadata/identity map and
+// the registry tables and write question_metadata.json once. Ignored for every other request and for dry runs/verification.
+export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false, projectionPhase = null, typeBatch = null }) {
   if (projectionPhase !== null) requireProjectionPhase(projectionPhase, { root, write, verifyProjection });
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
   if (isNativeAuthorityCorrection(req)) {
@@ -2183,8 +2185,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const metaPipelineAudit = auditPreservationRequested ? null : validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
     bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [],
     requestId: req.requestId, requestSha256: digest(stable(req)) });
+  const batch = typeBatch && write && !verifyProjection && req.approval.type === DIRECT_JUDGMENT && !req.registryChanges?.length ? typeBatch : null;
   const read = file => {
     const load = () => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
+    if (batch && (file === META || file === IDENTITY)) return batch.input(file, load);
     return projectionPhase && file.startsWith("archive/data/") ? projectionInput(projectionPhase, root, "json:" + file, load) : load();
   };
   // Cache only current input definitions. Every request still executes its
@@ -2245,10 +2249,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.registrationMode === "IDENTITY_FINGERPRINT_ONLY") return registerIdentityFingerprintOnly({
     root, req, metadata, identity, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, write, verifyProjection, read, projectionPhase });
   // Direct type judgment (type fields only): its own lane, replay and receipt; it shares only the registry planner and the checks above.
-  if (req.approval.type === DIRECT_JUDGMENT) return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields,
-    h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
-      sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
-        isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
+  if (req.approval.type === DIRECT_JUDGMENT) {
+    // In a batch, a refused request must leave the shared rows as a fresh process would have found them.
+    const undo = batch ? batch.begin(metadata, req.items.map(item => rows[item.sourceOrdinal - 1])) : null;
+    try {
+      return registerTypeJudgment({ root, req, write, verifyProjection, metadata, rows, ids, bank, bytes, blob, receiptPath, requestSha256, previous, scopeFields, batch,
+        h: { fail, requireText, eq, safePath, json, digest, evidenceRefs, registryPlan, lookup, sourceFingerprints,
+          sourceUidMatches: (q, current, id, ordinal) => !q.questionUid || q.questionUid === current.questionUid || isLegacyPathFormulaUid(q.questionUid, source, ordinal) ||
+            isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: source, sourceOrdinal: ordinal, identityRecord: id, identityMap: identity, bank }) } });
+    } catch (error) {
+      undo?.();
+      throw error;
+    }
+  }
   if (previous) {
     let preservedAudit = null;
     if (auditPreservationRequested) {

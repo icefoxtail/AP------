@@ -1,0 +1,76 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-1",
+   "-1"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -7,
+   5
+  ],
+  "viewport": [
+   -7,
+   5,
+   -5,
+   4
+  ],
+  "asymptoteLabelAt": "END",
+  "hideLabels": [
+   "formula"
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "curveX": "-1",
+     "unnamed": true
+    },
+    {
+     "id": "B",
+     "curveX": "0",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cA",
+     "point": "A",
+     "text": "(-1,0)",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cB",
+     "point": "B",
+     "text": "(0,-1/2)",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "caption": "y=(-x-1)/(x+2)=1/(x+2)-1이므로 점근선은 x=-2, y=-1이다. x절편은 (-1,0), y절편은 (0,-1/2)이다. 그래프는 x<-2에서 제3사분면, -2<x<-1에서 제2사분면, x>0에서 제4사분면을 지나고 제1사분면은 지나지 않는다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "유리함수 y=(-x-1)/(x+2)의 그래프",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "점근선 x=-2, y=-1과 x절편, y절편"
+ ]
+}

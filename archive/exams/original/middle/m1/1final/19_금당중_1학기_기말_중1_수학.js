@@ -242,7 +242,11 @@ window.examData = {
         "30"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_금당중_1학기_기말_중1_수학/Q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 좌표평면 위의 세 점 A(3,3), B(−3,0), C(3,−2)를 꼭짓점으로 하는 삼각형이 그려져 있고 변 AC는 수직이며 세 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "점 A(3,3)과 C(3,−2)는 x좌표가 같아 선분 AC가 y축에 평행하고 길이는 3−(−2)=5이다. 점 B(−3,0)에서 직선 x=3까지의 거리는 3−(−3)=6이 높이이다. 따라서 삼각형 ABC의 넓이는 (1/2)×5×6=15이고 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "Q15",
@@ -290,7 +294,12 @@ window.examData = {
         "$y=\\frac{12}{x}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_금당중_1학기_기말_중1_수학/Q17-solution.svg",
+      "solutionImageAlt": "해설 그림: 원점을 지나 오른쪽 아래로 향하는 직선이 있고 직선 위에 점 P(−2,10)이 표시되어 있다.",
+      "solutionImageCaption": "y가 x에 정비례하므로 y=ax로 놓는다. x=−2일 때 y=10이므로 10=−2a에서 a=−5이다. 따라서 관계식은 y=−5x이고 답은 ②이다. 그래프는 원점을 지나는 직선이고 점 P(−2,10)을 지난다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": "Q18",
@@ -306,7 +315,11 @@ window.examData = {
         "$(-10, -5)$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_금당중_1학기_기말_중1_수학/Q18-solution.svg",
+      "solutionImageAlt": "해설 그림: 원점을 지나 오른쪽 위로 향하는 직선 위에 네 점이 표시되어 있고 직선 바로 아래에 직선 위에 있지 않은 점 P(3,1)이 표시되어 있다.",
+      "solutionImageCaption": "예: 그림의 그래프를 원점을 지나는 직선 y=x/2로 읽었다. (4,2), (6,3), (−4,−2), (−10,−5)는 모두 y=x/2 위에 있다. 점 (3,1)은 x/2=3/2≠1이어서 직선 위에 있지 않다(그림의 P). 따라서 그래프 위의 점이 아닌 것은 ①이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "Q19",
@@ -322,7 +335,11 @@ window.examData = {
         "$y=\\frac{11}{x}$"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_금당중_1학기_기말_중1_수학/Q19-solution.svg",
+      "solutionImageAlt": "해설 그림: 원점을 지나 오른쪽 아래로 향하는 직선이 제2사분면과 제4사분면을 지나고 제3사분면을 지나지 않는다.",
+      "solutionImageCaption": "y=x, y=(5/2)x, y=(1/x), y=11/x는 모두 x, y의 부호가 같아 제1사분면과 제3사분면을 지난다. y=−x는 x와 y의 부호가 반대여서 제2사분면과 제4사분면만 지나고 제3사분면을 지나지 않는다. 따라서 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "Q20",
@@ -368,7 +385,12 @@ window.examData = {
       "question": "[서술형 3] 형과 동생이 달리기를 하는데 형은 동생보다 3분 늦게 같은 장소에서 출발하였다. 형은 분속 $100\\text{ m}$로 달리고, 동생은 분속 $50\\text{ m}$로 달린다면 형은 출발한 지점에서부터 몇 $\\text{m}$ 떨어진 지점에서 동생과 만나게 되는지 구하여라. [5점]",
       "choices": [],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_금당중_1학기_기말_중1_수학/Q23-solution.svg",
+      "solutionImageAlt": "해설 그림: 원점에서 시작하는 완만한 직선(동생)과 x=3에서 시작하는 더 가파른 직선(형)이 점 P(6,300)에서 만나고 좌표가 표시되어 있다.",
+      "solutionImageCaption": "그림에서 파란 직선은 동생, 주황 직선은 형을 나타낸다. 동생이 출발한 지 x분 후의 위치는 y=50x이고 형은 3분 늦게 출발하므로 y=100(x−3)이다. 두 식이 같을 때 50x=100x−300에서 x=6이고 y=300이다. 따라서 형은 출발한 지점에서 300m 떨어진 점 P(6,300)에서 동생과 만난다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     },
     {
       "id": "Q24",

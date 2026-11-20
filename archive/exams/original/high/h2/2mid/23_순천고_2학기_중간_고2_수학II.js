@@ -198,7 +198,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: x=2에서 끊어지는 직선 조각과 포물선 조각의 그래프이며 두 점 Q, P를 잇는 할선이 그려져 있다.",
+    "solutionImageCaption": "f(2)=4이고 x<2에서 f(x)=x이므로 x가 2에서 2-h까지 변할 때 평균변화율은 (f(2-h)-f(2))/(-h)=(2-h-4)/(-h)=1+2/h이다. 이 값이 3이면 h=1이다. 그림에서 h=1일 때 점 Q(1,1)과 P(2,4)를 잇는 할선 y=3x-2의 기울기가 3이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -468,7 +473,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 기울기가 4인 직선의 구간 [-2,1] 부분이며 왼쪽 끝점 A와 오른쪽 끝점 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "평균값 정리에서 (f(1)-f(-2))/3=f′(c)≥4이므로 f(1)-1≥12이고 f(1)≥13이다. 그림은 기울기가 항상 4인 직선 f(x)=4x+9로 A(-2,1)에서 시작해 B(1,13)에 도달하며 등호가 성립하는 경우이다. 따라서 f(1)의 최솟값은 13이고 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 15,

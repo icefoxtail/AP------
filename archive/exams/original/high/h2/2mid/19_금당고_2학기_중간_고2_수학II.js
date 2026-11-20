@@ -317,7 +317,12 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "BORDERLINE_REVIEW"
+    "legacyLevelCompatibility": "BORDERLINE_REVIEW",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 가파르게 올라 점 B에서 꼭대기에 이르고 점 C까지 내려갔다 점 D로 올라가는 꺾은선과 원점을 지나는 오르는 직선이 두 번 교차하는 그래프이다.",
+    "solutionImageCaption": "예: 네 점 A(-1,-2), B(0,3), C(1,-4), D(2,-1)을 꺾은선으로 이은 연속함수와 직선 y=x를 그렸다. A는 직선 아래, B는 위, C와 D는 아래에 있어 f(x)-x의 부호가 -, +, -, -로 바뀐다. 곡선이 직선을 (-1,0)과 (0,1)에서 한 번씩 만나고 (1,2)에서는 만나지 않으므로 이 예의 실근은 정확히 2개이다. 중간값 정리로 적어도 2개가 보장되므로 최소 개수는 2이고 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -352,7 +357,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: x=0에서 아래쪽 수평선이 열린 점으로 끝나고 위쪽 수평선이 닫힌 점에서 시작하는 끊어진 그래프이다.",
+    "solutionImageCaption": "ㄷ이 거짓인 반례이다. f(x)=1(x≥0), f(x)=-1(x<0)은 x=0에서 높이 -1의 열린 점과 높이 1의 닫힌 점으로 끊어져 불연속이다. 그러나 |f(x)|=1은 상수라 x=0에서 연속이다. ㄱ(연속함수의 곱), ㄴ(연속함수의 절댓값)은 참이다. 따라서 옳은 것은 ㄱ, ㄴ이고 답은 ②이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 11,
@@ -391,7 +400,11 @@ window.questionBank = [
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점을 중심으로 한 원과 원점을 지나는 오르는 직선이 있고, 직선이 원과 왼쪽 아래의 점 P에서 만나며 원점에서 P로 반지름이 그려진 그림이다.",
+    "solutionImageCaption": "예: a=3/8일 때를 그린다. 원은 중심 O, 반지름 3/8이고 직선은 y=2ax=(3/4)x이다. 연립하면 (1+4a²)x²=a²에서 제3사분면의 교점 P의 x좌표는 -a/√(1+4a²)=-3/10이고 P(-3/10,-9/40)이다. 일반적으로 f(a)=-1/√(1/a²+4)이고 a→∞에서 극한은 -1/2이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -537,7 +550,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에서 내려오는 직선이 x=0에서 열린 점으로 끝나고, 원점의 닫힌 점에서 오르는 직선이 시작되는 끊어진 그래프이다.",
+    "solutionImageCaption": "④는 x<0에서 -x+1, x≥0에서 x이다. x→0-에서 높이 1의 열린 점으로 가까워지지만 f(0)=0인 닫힌 점이 있어 x=0에서 불연속이다. 그러나 구간 [-2,2]에서 왼쪽 끝 x=-2의 높이 3이 최댓값, x=0의 높이 0이 최솟값이라 최댓값과 최솟값이 모두 있다. 연속이 아닌데도 최댓값과 최솟값이 있으므로 최대·최소 정리의 역이 성립하지 않는 예이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 16,
@@ -741,6 +758,11 @@ window.questionBank = [
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_금당고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 세로축 위의 높은 점 P에서 시작해 내려가 가로축 위의 꼭짓점 V에서 닿았다가 다시 올라가는 아래로 볼록한 포물선 그래프이다.",
+    "solutionImageCaption": "x=2에서 f(x)g(x)=2g(x)/(x-2)의 극한이 유한하려면 g(2)=0이고, 함숫값 f(2)g(2)=0과 같으려면 g′(2)=0이어야 한다. 그러면 g는 x=2에서 x축에 접하는 포물선이다. 그림은 g(x)=3(x-2)²이고 꼭짓점 V(2,0)이 x축 위에 있으며 P(0,12)를 지난다. 따라서 g(x)=3(x-2)²이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   }
 ];

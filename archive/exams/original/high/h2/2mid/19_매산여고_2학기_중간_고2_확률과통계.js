@@ -155,7 +155,11 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "rpmProjectionStatus": "RPM_COVERAGE_GAP_META_ONLY",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 x=3에서 높이 1/4인 꼭짓점을 찍고 x=8에서 0으로 내려오는 삼각형 모양의 확률밀도함수 그래프이며 x=1부터 x=3까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "전체 넓이가 밑변 8, 높이 h인 삼각형이므로 (1/2)×8×h=1에서 h=1/4이고, 그림은 이 값으로 그렸다. 왼쪽 선분은 f(x)=x/12이므로 f(1)=1/12, f(3)=1/4이다. 색칠한 1≤x≤3은 높이 1/12과 1/4, 폭 2인 사다리꼴이고 넓이는 (1/12+1/4)/2×2=1/3이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -570,7 +574,11 @@ window.questionBank = [
     "rpmL3": null,
     "rpmL4": null,
     "rpmProjectionStatus": "RPM_COVERAGE_GAP_META_ONLY",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/19_매산여고_2학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 높이 1/4로 일정한 직선 모양의 확률밀도함수 그래프이며 x=0부터 x=4까지 이어지고 x=1부터 x=3까지 아래쪽이 직사각형으로 칠해져 있다.",
+    "solutionImageCaption": "조건 ㄴ에서 x=0이면 P(0≤X≤2)=1/2이어서 a=1/2이다. 또 P(x≤X≤2)=1/2−x/4를 x로 미분하면 f(x)=1/4이므로 f는 0부터 4까지 높이 1/4로 일정하고, 그림은 이 값으로 그렸다. 이 그래프는 x=2를 축으로 좌우 대칭이다. 색칠한 1≤x≤3은 [1, 2]와 [2, 3]의 같은 넓이 1/4씩이므로 합은 1/2이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

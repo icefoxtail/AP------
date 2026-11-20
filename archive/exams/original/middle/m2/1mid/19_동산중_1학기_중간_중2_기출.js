@@ -852,7 +852,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_기출/q24-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 6 이하의 수 전체가 왼쪽으로 뻗은 구간이 있고 6에는 찬 점이 있다.",
+    "solutionImageCaption": "어떤 수를 x라 하면 5(x−3)≤2x+3이다. 5x−15≤2x+3에서 3x≤18이므로 x≤6이다. 수직선에서 6은 찬 점으로 해에 포함된다. 자연수는 1, 2, 3, 4, 5, 6이므로 개수는 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 25,
@@ -883,6 +887,10 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_동산중_1학기_중간_중2_기출/q25-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 4 이하의 수 전체가 왼쪽으로 뻗은 구간이 있고 4에는 찬 점이 있다.",
+    "solutionImageCaption": "처음에 뛴 거리를 x km라 하면 차를 탄 거리는 (16−x) km이다. 걸린 시간은 x/5+(16−x)/60이고 1시간 이내이므로 x/5+(16−x)/60≤1이다. 양변에 60을 곱하면 12x+16−x≤60에서 11x≤44이므로 x≤4이다. 수직선에서 4는 찬 점이다. 따라서 처음에 뛴 최대 거리는 4km이다.",
+    "solutionImageSize": "full"
   }
 ];

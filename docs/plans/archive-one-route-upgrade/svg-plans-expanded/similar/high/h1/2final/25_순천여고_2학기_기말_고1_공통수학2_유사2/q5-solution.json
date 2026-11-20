@@ -1,0 +1,63 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "Q",
+    "name": "Q"
+   },
+   {
+    "id": "P",
+    "name": "P"
+   },
+   {
+    "id": "R",
+    "name": "R"
+   }
+  ],
+  "subset": [
+   "Q",
+   "P",
+   "R"
+  ],
+  "elements": [
+   {
+    "text": "1",
+    "in": [
+     "Q",
+     "P",
+     "R"
+    ]
+   },
+   {
+    "text": "2",
+    "in": [
+     "P",
+     "R"
+    ]
+   },
+   {
+    "text": "3",
+    "in": [
+     "R"
+    ]
+   },
+   {
+    "text": "4",
+    "in": []
+   }
+  ]
+ },
+ "caption": "(가)에서 Q⊂P, (나)에서 P⊂R이므로 Q⊂P⊂R이다. 예: U={1,2,3,4}, Q={1}, P={1,2}, R={1,2,3}으로 두면 Q⊂R이므로 R의 여집합이 Q의 여집합에 포함되어 ~r→~q만 항상 참이고, 나머지 보기는 이 예에서 거짓이다. 따라서 답은 ①이다.",
+ "sourceConditions": [
+  {
+   "id": "S1",
+   "condition": "(가) P∪Q^c=U, (나) P∩R=P",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "Q⊂P⊂R의 포함관계와 반례 원소 1, 2, 3, 4의 위치를 보인다."
+ ]
+}

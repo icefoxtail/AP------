@@ -35,6 +35,8 @@
         session.user?.login_id || session.id);
       return { loggedIn: false, needsTeacher: signedIn, name: "" };
     }
+    // 인증은 토큰(Bearer)뿐이다. 토큰이 없는 옛 세션은 로그인한 것으로 보지 않는다(요청도 못 보내므로 메뉴도 "로그인 필요"로 맞춘다).
+    if (!session.session_token) return none;
     return { loggedIn: true, needsTeacher: false, name };
   }
 

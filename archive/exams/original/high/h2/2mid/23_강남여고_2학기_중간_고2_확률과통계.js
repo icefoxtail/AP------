@@ -289,7 +289,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 을이 빨간 공을 꺼내는 두 경로의 확률 6/56과 15/56이 보여 합 3/8을 구하는 구조가 보인다.",
+    "solutionImageCaption": "갑이 먼저 빨간 공을 꺼내면 남은 7개 중 빨간 공이 2개, 파란 공을 꺼내면 빨간 공이 3개이다. 을이 빨간 공을 꺼내는 두 경로의 확률은 3/8×2/7=6/56과 5/8×3/7=15/56이고 합은 21/56=3/8이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 10,
@@ -453,7 +458,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
     "subUnit": "확률의 덧셈정리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: A만 1명, 겹침 11명, B만 8명, 바깥 16명이 보여 덧셈정리로 겹침을 구하는 구조가 보인다.",
+    "solutionImageCaption": "A는 야구, B는 축구 경기를 본 학생의 모임이다. 합집합이 20명이므로 바깥은 36−20=16명이고, 두 경기를 모두 본 학생 수를 n이라 하면 12+19−n=20에서 n=11이다. 야구만 본 학생은 12−11=1명, 축구만 본 학생은 19−11=8명이다. 색칠한 겹침이 11명이므로 확률은 11/36이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -487,7 +496,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 네 점 A, B, C, D를 이은 사각형과 서로 교차하는 두 대각선 AC, BD가 있는 그림이다.",
+    "solutionImageCaption": "원 위의 서로 다른 네 점 A, B, C, D를 택하면 두 현이 원의 내부에서 만나는 경우는 두 대각선 AC, BD 한 쌍뿐이다. 따라서 내부에서 만나는 선분 쌍의 수는 네 점을 고르는 10C4=210이다. 선분 2개를 택하는 전체 경우는 45C2=990이므로 확률은 210/990=7/33이다. 따라서 답은 ④이다. 그림은 네 점을 이은 사각형과 두 대각선만 나타낸 것이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -687,7 +700,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 좌표평면에 세 점 A, B, C를 꼭짓점으로 하는 삼각형이 있고 세 변 위에 격자점이 이름 없는 점으로 찍혀 있다.",
+    "solutionImageCaption": "삼각형 ABC의 세 변 위에서 x좌표와 y좌표가 모두 1 이상 6 이하의 자연수이면서 a와 b가 서로 다른 점(이름 없는 점)을 표시했다. 변 AC에서는 x=1이고 y가 2, 3, 4, 5인 4개, 변 AB에서는 y=2이고 x가 3, 4, 5, 6인 새로운 4개이다. 변 BC는 x+2y=11이고 (5,3), (3,4)의 새로운 2개이다(꼭짓점 (1,2), (1,5)는 이미 센 점이다). 모두 10개이고 a≠b인 순서쌍은 전체 6×5=30개이므로 확률은 10/30=1/3이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -714,7 +731,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
     "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_2학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 자리가 오각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리 A, B와 나머지 세 자리 C, D, E가 있다.",
+    "solutionImageCaption": "원탁의 5자리를 오각형 꼭짓점으로 나타낸 한 배치의 예이다. A와 B는 이웃해 앉은 두 사람이고 C, D, E는 나머지 세 사람의 자리이다. 일렬은 전체 5!=120가지 중 A, B를 한 묶음으로 본 4!×2!=48가지이므로 a=2/5이다. 원형은 전체 (5−1)!=24가지 중 묶음을 쓴 (4−1)!×2!=12가지이므로 b=1/2이다. 따라서 a+b=9/10이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

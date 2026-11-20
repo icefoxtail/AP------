@@ -62,7 +62,11 @@ window.questionBank = [
       "subUnit": "원순열",
       "difficulty": 1
     },
-    "sourceCorrection": "Q01 only: source-only intake said 4 people and options 2,4,6,8,10; exact original PDF p.1 crop confirms 6 total family members including parents and options 24,48,72,96,120. Corrected prompt and choices; original 6-person circular block count is 48."
+    "sourceCorrection": "Q01 only: source-only intake said 4 people and options 2,4,6,8,10; exact original PDF p.1 crop confirms 6 total family members including parents and options 24,48,72,96,120. Corrected prompt and choices; original 6-person circular block count is 48.",
+    "solutionImage": "assets/images/22_제일고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 점이 오각형 꼭짓점으로 놓인 원탁 그림이며 점 A는 부모 묶음, 나머지 B, C, D, E는 네 사람의 자리이다.",
+    "solutionImageCaption": "원탁의 5개 대상을 오각형 꼭짓점으로 나타낸 그림이다. 점 A는 부모를 한 묶음으로 본 자리이고 B, C, D, E는 나머지 네 사람이다. 5개 대상의 원순열은 (5−1)!=24가지이다. 묶음 안에서 부모의 순서를 바꾸는 방법이 2가지이므로 24×2=48이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

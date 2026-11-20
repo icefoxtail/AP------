@@ -325,13 +325,23 @@ for (const [label, mutateRequest, expected] of [
   ['approval', r => { r.approval.userWrapper = {}; }, /UNKNOWN_OR_MISSING_FIELD/],
   ['item', r => { r.items[0].userWrapper = {}; }, /UNKNOWN_OR_MISSING_FIELD/],
   ['native spec', r => { r.items[0].sourceReview.userWrapper = {}; }, /UNKNOWN_OR_MISSING_FIELD/],
-  ['metadata field', r => { r.items[0].after.userWrapper = 'value'; }, /UNKNOWN_METADATA_FIELD/],
   ['metadata nested object', r => { r.items[0].after.courseKey = { payload: 'value' }; }, /METADATA_SCALAR/],
   ['missing native evidence', r => { delete r.items[0].sourceReview; }, /NATIVE_SOURCE_REVIEW_REQUIRED/],
   ['native not bound to item', r => { r.items[0].evidenceRefs = [{ path: EXTRA, sha256: 'a'.repeat(64) }]; }, /ITEM_EVIDENCE_NOT_APPROVAL/],
 ]) test(`closed request shape rejects ${label}`, t => {
   const f = fixture(t, { mutateRequest });
   assert.throws(() => inspectSourceMetadataCandidate(f.opts), expected);
+});
+
+test('a field outside the value contract is not rejected; its name is reported in the result', async t => {
+  const f = fixture(t, { mutateRequest: r => { r.items[0].after.userWrapper = 'value'; r.items[0].before.userWrapper = null; } });
+  assert.doesNotThrow(() => inspectSourceMetadataCandidate(f.opts));
+  const result = await buildSourceMetadataCandidate(f.opts);
+  assert.ok(result.unstoredFields.includes('userWrapper'));
+  assert.equal(result.unstoredFields.includes('courseKey'), false, 'a stored field is not reported as unstored');
+  // a later call in the same process does not inherit the earlier call's names
+  const g = fixture(t);
+  assert.deepEqual((await buildSourceMetadataCandidate(g.opts)).unstoredFields, []);
 });
 
 test('parent labels are newly authored only from exact current public parent records', t => {

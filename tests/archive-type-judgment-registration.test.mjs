@@ -11,6 +11,9 @@ import { fileURLToPath } from "node:url";
 import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
 import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
+import { createTypeBatch, isTypeBatchRequest } from "../archive/tools/meta-foundation/register-type-batch.mjs";
+import { registerRequests, loadTypeBatchRuntime } from "../tools/ci/register-reviewed-meta-requests.mjs";
+import { isMetadataConflict } from "../archive/tools/metadata-conflict-field.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CANON = "archive/data/meta-foundation/canonical";
@@ -245,6 +248,22 @@ test("an approved row that holds a value is still never overwritten; a blank fie
   // a request that claims "blank" for a field that actually holds a value
   const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
   assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])), /before mismatch: uid1\.problemTypeKey/);
+});
+
+test("a type field that holds a key the registry does not have is not protected: an approved old key is replaced and kept in priorType; an ACTIVE registered key stays protected", t => {
+  const sem = "approved_semantic_review";
+  const a = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } } });
+  a.run(a.request([a.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { before: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" } })]), { write: true });
+  const row = a.read("archive/data/question_metadata.json").records.find(r => r.questionUid === "uid1");
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.equal(row.fieldStatus.problemType, "approved_direct_judgment");
+  assert.deepEqual(row.typeApproval.priorType, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", problemTypeStatus: sem, templateStatus: sem });
+  // the old value must still be named in `before`
+  const b = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => b.run(b.request([b.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })]), { write: true }), /before mismatch: uid1\.problemTypeKey/);
+  // an ACTIVE registered key with an approved status is final (PT_B is ACTIVE in the fixture registry)
+  const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" })]), { write: true }), /type already approved: uid1\.problemType=approved_semantic_review/);
 });
 
 test("filling a blank approved row still needs every other check: course, registry and the judged text", t => {
@@ -599,4 +618,119 @@ test("a request is refused when a stem or the choices changed, or when an item h
   }
   const f = fixture(t);
   assert.throws(() => f.run(f.request([{ ...f.item(1, { problemTypeKey: "PT_A" }), textBindingFingerprint: undefined }]), { write: true }), /stem or choices differ from the judged text.*uid1/);
+});
+
+// ---- one process, many requests (register-type-batch.mjs): same files, same refusals, the metadata written once ----
+const treeOf = root => {
+  const out = new Map();
+  const walk = dir => { for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walk(full); else out.set(path.relative(root, full).split(path.sep).join("/"), hash(fs.readFileSync(full)));
+  } };
+  walk(root);
+  return out;
+};
+// R2 changes row 3 and then refuses on row 4 (type already approved): a request that edited rows before it was refused.
+// R3 needs row 3 clean again. R4 repeats a row R1 registered (refused).
+const batchRequests = f => [
+  f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }), f.item(2, { problemTypeKey: "PT_B" })], { requestId: "batch-r1" }),
+  f.request([f.item(3, { problemTypeKey: "PT_A" }), f.item(4, { problemTypeKey: "PT_B", templateKey: "TPL_B" })], { requestId: "batch-r2" }),
+  f.request([f.item(3, { problemTypeKey: "PT_B", templateKey: "TPL_B" }), f.item(5, { problemTypeKey: "PT_A", templateKey: "TPL_A" })], { requestId: "batch-r3" }),
+  f.request([f.item(1, { problemTypeKey: "PT_B" })], { requestId: "batch-r4" })
+];
+const attempt = run => { try { run(); return "PASS"; } catch (error) { return `${error.name}: ${error.message}`; } };
+
+test("a batch writes the same bytes and gives the same answers as one registrar run per request (refused requests included)", t => {
+  const alone = fixture(t), batched = fixture(t);
+  const aloneAnswers = batchRequests(alone).map(req => attempt(() => alone.run(req, { write: true })));
+  const batch = createTypeBatch(batched.root);
+  const batchedAnswers = batchRequests(batched).map(req => attempt(() => batched.run(req, { write: true, typeBatch: batch })));
+  batch.flush();
+  assert.deepEqual(aloneAnswers.map(answer => answer.slice(0, 5)), ["PASS", "Error", "PASS", "Error"], aloneAnswers.join(" | "));
+  assert.deepEqual(batchedAnswers, aloneAnswers);
+  assert.deepEqual(treeOf(batched.root), treeOf(alone.root), "every file of the tree is byte-identical");
+  assert.equal(alone.read(META).records[2].problemTypeKey, "PT_B", "row 3 carries R3's value, not the refused R2's");
+});
+
+test("the batch writes question_metadata.json once, at flush; receipts are written per request", t => {
+  const f = fixture(t), before = f.bytes(), batch = createTypeBatch(f.root);
+  const [r1, , r3] = batchRequests(f);
+  f.run(r1, { write: true, typeBatch: batch });
+  assert.equal(fs.existsSync(path.join(f.root, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${r1.requestId}.json`)), true);
+  assert.deepEqual(f.bytes().meta, before.meta, "metadata is still the old file");
+  f.run(r3, { write: true, typeBatch: batch });
+  assert.equal(batch.dirty, true);
+  assert.equal(batch.flush(), true);
+  assert.equal(batch.dirty, false);
+  assert.notDeepEqual(f.bytes().meta, before.meta);
+  assert.equal(batch.flush(), false, "nothing left to write");
+  assert.equal(f.rows()[0].typeApproval.requestId, "batch-r1");
+  assert.equal(f.rows()[4].typeApproval.requestId, "batch-r3");
+});
+
+test("dry runs and verification leave the batch alone; only plain type judgments qualify for it", t => {
+  const f = fixture(t), before = f.bytes(), batch = createTypeBatch(f.root);
+  const req = f.request([f.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" })]);
+  f.run(req, { typeBatch: batch }); // dry run
+  assert.deepEqual(f.bytes(), before);
+  assert.equal(batch.dirty, false);
+  f.run(req, { write: true });
+  assert.equal(f.run(req, { verifyProjection: true, typeBatch: batch }).consumerSearchStatus, "TYPE_FIELDS_VERIFIED");
+  assert.equal(batch.dirty, false);
+  assert.equal(isTypeBatchRequest(req), true);
+  assert.equal(isTypeBatchRequest({ ...req, registryChanges: [{ path: "x" }] }), false);
+  assert.equal(isTypeBatchRequest({ ...req, approval: { ...req.approval, type: "REVIEW2" } }), false);
+  assert.equal(isTypeBatchRequest({ ...req, registrationMode: "IDENTITY_FINGERPRINT_ONLY" }), false);
+  assert.equal(isTypeBatchRequest(null), false);
+  batch.markMetadataChanged();
+  assert.throws(() => batch.drop(), /flush\(\) first/, "cached inputs are never dropped while the metadata is unwritten");
+});
+
+test("the isolator runs plain type judgments in one process: same applied/rejected answers and the same metadata as one run per request", async t => {
+  const inbox = ".archive-meta-register/inbox";
+  const batched = fixture(t), alone = fixture(t);
+  const names = batchRequests(batched).map((req, i) => { const rel = `${inbox}/0${i + 1}-${req.requestId}.json`; batched.put(rel, req); return rel; });
+  const options = { root: batched.root, registrar: "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs", rejectedDir: ".archive-meta-register/rejected",
+    guardPathsFile: "tools/ci/missing.paths", stage: "registrar", requests: names, typeBatchRuntime: await loadTypeBatchRuntime() };
+  const result = registerRequests(options, { log() {} });
+  assert.deepEqual(result.applied.map(a => a.name), ["01-batch-r1.json", "03-batch-r3.json"]);
+  assert.deepEqual(result.rejected.map(r => r.name), ["02-batch-r2.json", "04-batch-r4.json"]);
+  assert.match(result.rejected[0].error, /^Error: type already approved: uid4\.problemType=approved_review2/);
+  assert.equal(result.dirtied, null);
+  for (const req of batchRequests(alone)) attempt(() => alone.run(req, { write: true }));
+  assert.deepEqual(batched.bytes().meta, alone.bytes().meta, "the metadata is on disk when the isolator returns");
+  for (const name of ["02-batch-r2", "04-batch-r4"]) {
+    assert.equal(fs.existsSync(path.join(batched.root, `.archive-meta-register/rejected/${name}.rejection.json`)), true);
+    assert.equal(fs.existsSync(path.join(batched.root, inbox, `${name}.json`)), false, "a refused request leaves the inbox");
+  }
+});
+
+test("an exception in the isolator loop still writes the metadata of the requests already applied (no receipt without its metadata), and nothing of the refused one", async t => {
+  const inbox = ".archive-meta-register/inbox";
+  const crashed = fixture(t), alone = fixture(t);
+  const [r1, r2] = batchRequests(crashed);
+  const names = [r1, r2].map((req, i) => { const rel = `${inbox}/0${i + 1}-${req.requestId}.json`; crashed.put(rel, req); return rel; });
+  // R2 is refused after it edited row 3; recording the refusal then throws (the rejected dir's parent is a file), i.e. the loop dies mid-run.
+  crashed.put("blocker", "not a directory");
+  const options = { root: crashed.root, registrar: "archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs", rejectedDir: "blocker/rejected",
+    guardPathsFile: "tools/ci/missing.paths", stage: "registrar", requests: names, typeBatchRuntime: await loadTypeBatchRuntime() };
+  assert.throws(() => registerRequests(options, { log() {} }));
+  alone.run(batchRequests(alone)[0], { write: true });
+  assert.deepEqual(crashed.bytes().meta, alone.bytes().meta, "R1's rows are on disk, R2's edit of row 3 is not");
+  assert.equal(fs.existsSync(path.join(crashed.root, `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${r1.requestId}.json`)), true);
+});
+
+test("catalog conflict rule: the two type fields never count as a conflict, every other field keeps the old rule", () => {
+  // 유형 두 필드: 시험지 JS에 적힌 값과 행 값이 달라도 충돌이 아니다(등록 판정 유무와 무관, 값은 행 그대로 보인다).
+  assert.equal(isMetadataConflict("problemTypeKey", "PT_A", "PT_B"), false);
+  assert.equal(isMetadataConflict("templateKey", "TPL_A", "TPL_B"), false);
+  // 다른 필드: 둘 다 값이 있고 다르면 충돌.
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상"), true);
+  assert.equal(isMetadataConflict("reviewStatus", "reviewed_pass", "review_required"), true);
+  // 같거나, 시험지 쪽이 비었거나, 행 쪽 값이 없거나, 사이드카 행이면 충돌이 아니다.
+  assert.equal(isMetadataConflict("difficultyBucket", "상", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", null, "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", undefined), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상", { metaV2Sidecar: true }), false);
 });

@@ -1,0 +1,118 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "2"
+    ]
+   },
+   {
+    "coefficients": [
+     "0",
+     "1"
+    ]
+   },
+   {
+    "coefficients": [
+     "-1",
+     "2"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "0",
+    "y": "0"
+   },
+   {
+    "x": "1",
+    "y": "1"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   3
+  ],
+  "viewport": [
+   -3,
+   4,
+   -5,
+   6
+  ],
+  "requiredPoints": [
+   {
+    "id": "O",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "id": "A",
+    "x": 1,
+    "y": 1
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "a",
+     "unnamed": true,
+     "curveX": "-1"
+    },
+    {
+     "id": "b",
+     "unnamed": true,
+     "curveX": "1/2"
+    },
+    {
+     "id": "c",
+     "unnamed": true,
+     "curveX": "2"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "a",
+     "text": "y=2x",
+     "direction": "SE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c2",
+     "point": "b",
+     "text": "y=x",
+     "direction": "NW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c3",
+     "point": "c",
+     "text": "y=2x-1",
+     "direction": "SE",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "O": "O",
+  "A": "A"
+ },
+ "caption": "(1) f(x)≥1인 x의 범위는 x≤0이다. (2) f(f(x))는 안쪽 값 f(x)가 1 이상인지로 나뉜다. x≤0이면 y=2x, 0<x<1이면 y=x, x≥1이면 y=2x-1이다. 세 조각이 (0,0), (1,1)에서 이어진다.",
+ "sourceConditions": [
+  "f(f(x))=2x (x≤0), x (0<x<1), 2x-1 (x≥1)"
+ ],
+ "newVisualInformation": [
+  "세 조각이 (0,0), (1,1)에서 이어지는 꺾은선"
+ ]
+}

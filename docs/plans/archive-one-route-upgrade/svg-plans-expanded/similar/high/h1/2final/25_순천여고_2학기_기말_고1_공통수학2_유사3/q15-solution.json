@@ -1,0 +1,96 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "13/2",
+   "0"
+  ],
+  "denominator": [
+   "0",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -1,
+   8
+  ],
+  "viewport": [
+   -1,
+   8,
+   -1,
+   8
+  ],
+  "equalUnits": true,
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "formulaLabel": "y=k/x",
+  "overlays": {
+   "lines": [
+    {
+     "id": "L",
+     "slope": "-1",
+     "intercept": "6"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "curveX": "3-sqrt(10)/2"
+    },
+    {
+     "id": "Q",
+     "curveX": "3+sqrt(10)/2"
+    },
+    {
+     "id": "R",
+     "x": "3+sqrt(10)/2",
+     "y": "3+sqrt(10)/2"
+    }
+   ],
+   "polygons": [
+    {
+     "id": "T",
+     "points": [
+      "P",
+      "R",
+      "Q"
+     ],
+     "fill": "LIGHT"
+    }
+   ],
+   "rightAngles": [
+    {
+     "at": "R",
+     "from": [
+      "P",
+      "Q"
+     ]
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "Q": "Q",
+  "R": "R"
+ },
+ "coordinatePlacement": "PANEL",
+ "caption": "두 교점의 x좌표 u, v는 x²-6x+k=0의 두 근이므로 u+v=6, uv=k이다. 점 R을 직각의 꼭짓점으로 하는 직각삼각형 PRQ에서 PQ=√2·|u-v|=2√5이므로 (u-v)²=10이고, 36-4k=10에서 k=13/2이다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=k/x와 y=-x+6의 교점 P, Q, PQ=2√5",
+   "mappedTo": [
+    "graphPlan.overlays"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "기울기 -1인 직선 위에서 가로·세로 차가 같은 직각삼각형 PRQ로 PQ=√2|u-v|를 보여 준다."
+ ]
+}

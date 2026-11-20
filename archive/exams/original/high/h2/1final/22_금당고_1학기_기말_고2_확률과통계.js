@@ -139,7 +139,11 @@ window.questionBank = [
       "$\\dfrac{17}{4}$"
     ],
     "answer": "③",
-    "solution": "확률밀도함수의 그래프는 $y=\\dfrac{x}{2}$인 선분이므로, 그래프 아래의 전체 넓이는 밑변 $a$, 높이 $\\dfrac{a}{2}$인 삼각형의 넓이이다. 확률밀도함수 아래의 전체 넓이는 1이므로\n$\\dfrac12\\times a\\times\\dfrac{a}{2}=1$\n$\\dfrac{a^2}{4}=1$\n$a^2=4$\n$a=2$ (조건 $a>1$을 사용하였다.)\n\n$b=P(X\\ge1)$은 전체 확률에서 $0\\le X<1$일 확률을 뺀 값이다. $0\\le x\\le1$ 구간의 그래프 아래는 밑변이 1, 높이가 $f(1)=\\dfrac12$인 삼각형이므로\n$P(0\\le X<1)=\\dfrac12\\times1\\times\\dfrac12=\\dfrac14$\n$b=1-\\dfrac14=\\dfrac34$\n따라서 $a+b=2+\\dfrac34=\\dfrac{11}{4}$이고 정답은 ③이다."
+    "solution": "확률밀도함수의 그래프는 $y=\\dfrac{x}{2}$인 선분이므로, 그래프 아래의 전체 넓이는 밑변 $a$, 높이 $\\dfrac{a}{2}$인 삼각형의 넓이이다. 확률밀도함수 아래의 전체 넓이는 1이므로\n$\\dfrac12\\times a\\times\\dfrac{a}{2}=1$\n$\\dfrac{a^2}{4}=1$\n$a^2=4$\n$a=2$ (조건 $a>1$을 사용하였다.)\n\n$b=P(X\\ge1)$은 전체 확률에서 $0\\le X<1$일 확률을 뺀 값이다. $0\\le x\\le1$ 구간의 그래프 아래는 밑변이 1, 높이가 $f(1)=\\dfrac12$인 삼각형이므로\n$P(0\\le X<1)=\\dfrac12\\times1\\times\\dfrac12=\\dfrac14$\n$b=1-\\dfrac14=\\dfrac34$\n따라서 $a+b=2+\\dfrac34=\\dfrac{11}{4}$이고 정답은 ③이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 오른쪽 위로 올라가 x=2에서 끝나는 선분 모양의 확률밀도함수 그래프이며 x=1부터 x=2까지 아래쪽이 사다리꼴로 칠해져 있다.",
+    "solutionImageCaption": "그래프 아래는 밑변 a, 높이 a/2인 삼각형이고 넓이 a²/4=1에서 a=2이다. 그림은 a=2로 그렸다. 0≤x<1의 넓이는 (1/2)×1×(1/2)=1/4이므로 색칠한 P(X≥1)=b=1−1/4=3/4이다. 따라서 a+b=11/4이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -195,7 +199,12 @@ window.questionBank = [
       "413"
     ],
     "answer": "②",
-    "solution": "정상인 사건을 $N$, 확진된 사건을 $D$, 음성 판정을 $-$라 하자.\n음성 판정이면서 실제 확진일 확률은\n$P(D\\cap -)=P(D)P(-\\mid D)=\\dfrac15\\times\\dfrac3{100}=\\dfrac3{500}$\n정상인데 음성 판정일 확률은 $1-\\dfrac1{50}=\\dfrac{49}{50}$이므로\n$P(N\\cap -)=\\dfrac45\\times\\dfrac{49}{50}=\\dfrac{392}{500}$\n따라서 음성 판정 전체의 확률은\n$P(-)=\\dfrac3{500}+\\dfrac{392}{500}=\\dfrac{395}{500}$\n베이즈 정리에 따라\n$P(D\\mid -)=\\dfrac{P(D\\cap -)}{P(-)}=\\dfrac{\\frac{3}{500}}{\\frac{395}{500}}=\\dfrac3{395}$\n따라서 $p=395$, $q=3$이고 $p+q=398$이므로 정답은 ②이다."
+    "solution": "정상인 사건을 $N$, 확진된 사건을 $D$, 음성 판정을 $-$라 하자.\n음성 판정이면서 실제 확진일 확률은\n$P(D\\cap -)=P(D)P(-\\mid D)=\\dfrac15\\times\\dfrac3{100}=\\dfrac3{500}$\n정상인데 음성 판정일 확률은 $1-\\dfrac1{50}=\\dfrac{49}{50}$이므로\n$P(N\\cap -)=\\dfrac45\\times\\dfrac{49}{50}=\\dfrac{392}{500}$\n따라서 음성 판정 전체의 확률은\n$P(-)=\\dfrac3{500}+\\dfrac{392}{500}=\\dfrac{395}{500}$\n베이즈 정리에 따라\n$P(D\\mid -)=\\dfrac{P(D\\cap -)}{P(-)}=\\dfrac{\\frac{3}{500}}{\\frac{395}{500}}=\\dfrac3{395}$\n따라서 $p=395$, $q=3$이고 $p+q=398$이므로 정답은 ②이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "정상 4/5, 확진 1/5로 갈라지고 각각 양성과 음성으로 이어진다. 음성으로 끝나는 두 경로의 확률은 정상 4/5×49/50=392/500과 확진 1/5×3/100=3/500이고 합은 395/500이다. 이 중 확진 경로의 비율이 3/395이므로 p=395, q=3이고 p+q=398이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 15,

@@ -544,7 +544,12 @@ window.questionBank = [
       "qid": 10,
       "curriculum": "2015",
       "scope": "CURRENT"
-    }
+    },
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 끝 점 A에서 오르는 직선이 점 P에서 위로 볼록한 포물선으로 이어져 오른쪽 끝 점 B까지 내려가는 그래프이다.",
+    "solutionImageCaption": "그림은 구간 [-1,3]에서 왼쪽 직선 y=x+3과 오른쪽 포물선 y=-x²+5가 점 P(1,4)에서 이어지는 그래프이다. 직선 부분은 A(-1,2)에서 P까지 올라 가장 높은 값 4에 이르고, 포물선 부분은 P에서 B(3,-4)까지 계속 내려가 가장 낮은 값 -4가 된다. 최댓값 M=4, 최솟값 m=-4이므로 M+m=0이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 11,
@@ -708,7 +713,11 @@ window.questionBank = [
       "qid": 13,
       "curriculum": "2015",
       "scope": "LOWER_ONLY_PREREQUISITE"
-    }
+    },
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 나머지 2, 4, 0, 3이 2에서 4, 4에서 0, 0에서 3, 3에서 2로 이어지는 주기 4의 대응을 보인다.",
+    "solutionImageCaption": "a1=2에서 시작하면 항은 2, 4, 0, 3 다음에 다시 2가 나와 주기 4로 되풀이된다. 대응도는 현재 나머지에서 다음 나머지로 가는 규칙(2에서 4, 4에서 0, 0에서 3, 3에서 2)이다. 10=4·2+2이므로 a10=a2=4이고 100=4·24+4이므로 a100=a4=3이다. 따라서 합은 7이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -764,7 +773,11 @@ window.questionBank = [
       "qid": 14,
       "curriculum": "2015",
       "scope": "CURRENT"
-    }
+    },
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 점 A에서 내려가 점 B에서 가장 낮고 점 C로 올라갔다 점 D로 내려가는 꺾은선과 원점을 지나는 오르는 직선이 서로 세 번 교차하는 그래프이다.",
+    "solutionImageCaption": "예: 네 점 A(-1,1), B(0,-1), C(1,2), D(2,1)을 꺾은선으로 이은 연속함수와 직선 y=x를 그렸다. A에서는 곡선이 직선 위, B에서는 아래, C에서는 위, D에서는 아래에 있어 f(x)-x의 부호가 +, -, +, -로 바뀐다. 곡선이 직선을 (-1,0), (0,1), (1,2) 세 구간에서 한 번씩 만나므로 서로 다른 실근이 적어도 3개이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1243,7 +1256,10 @@ window.questionBank = [
       "curriculum": "2015",
       "scope": "CURRENT"
     },
-    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q23-solution.svg"
+    "solutionImage": "assets/images/20_제일고_2학기_중간_고2_수학II/q23-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 가로축 위의 수평선 다음에 원점의 닫힌 점이 있고 높이 4의 수평선이 이어지다 a=4에서 중간 높이의 닫힌 점을 지나 높이 2의 수평선으로 내려가는 계단 모양의 그래프이다.",
+    "solutionImageCaption": "가로축이 a, 세로축이 교점의 개수 g(a)이다. a<0에서 0개, a=0에서 y=|x²-4x|가 x=0, 4에서 직선과 만나 2개(닫힌 점), 0<a<4에서 4개, a=4에서 꼭대기에 닿아 3개(닫힌 점), a>4에서 2개이다. a→0+에서 4, a→2에서 4, a→4+에서 2이므로 합은 4+4+2=10이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 24,

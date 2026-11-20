@@ -596,7 +596,11 @@ window.questionBank = [
     ],
     "wide": false,
     "projectionStatus": "PROJECTION_REUSE",
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 자리가 육각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리 T, U와 나머지 네 자리 P, Q, R, S가 있다.",
+    "solutionImageCaption": "원탁의 6자리를 육각형 꼭짓점으로 나타낸 한 배치의 예이다. T와 U는 할머니와 할아버지가 이웃해 앉은 자리이고 P, Q, R, S는 나머지 가족 4명의 자리이다. 두 사람을 한 묶음으로 보면 묶음 1개와 4명, 모두 5개의 단위를 원탁에 앉히므로 (5−1)!=24가지이고 묶음 안 순서가 2가지이다. 따라서 24×2=48이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 11,
@@ -957,7 +961,11 @@ window.questionBank = [
     ],
     "wide": false,
     "projectionStatus": "PROJECTION_REUSE",
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "A는 a=2, B는 b=2, C는 c=2인 해의 모임이다. a+b+c=12의 음이 아닌 정수해는 14C2=91개이다. 각 모임은 11개이고 두 모임의 겹침은 나머지 변수가 8인 1개씩이며 세 모임의 겹침은 합이 6이라 0개이다. 그림은 A만, B만, C만이 각각 9, 두 모임의 겹침이 각각 1, 세 모임의 겹침이 0, 바깥이 61이며 색칠한 바깥이 조건 (나)를 만족하는 해이다. 91−33+3=61이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "number": 17,
@@ -1304,6 +1312,10 @@ window.questionBank = [
     ],
     "wide": false,
     "projectionStatus": "PROJECTION_REUSE",
-    "difficultyConfidence": "high"
+    "difficultyConfidence": "high",
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "S₁⊂S₂⊂S₃이므로 그림의 A는 S₁, B는 S₂, C는 S₃에 해당하고 안쪽에서 바깥으로 포함된다. 전체집합의 원소 하나는 ① S₃ 밖, ② S₃에는 있고 S₂ 밖, ③ S₂에는 있고 S₁ 밖, ④ S₁ 안의 네 영역 중 하나에만 들어간다. 원소가 10개이고 각각 4가지이므로 순서삼중항의 수는 4¹⁰=1048576이다.",
+    "solutionImageSize": "full"
   }
 ];

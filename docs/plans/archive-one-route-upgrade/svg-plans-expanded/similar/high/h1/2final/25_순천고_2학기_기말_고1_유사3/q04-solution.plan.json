@@ -1,0 +1,132 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "Y",
+    "elements": [
+     "4",
+     "5",
+     "6"
+    ]
+   },
+   {
+    "id": "Z",
+    "name": "Z",
+    "elements": [
+     "7",
+     "8",
+     "9"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 0
+    },
+    "to": {
+     "column": 2,
+     "element": 2
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 1
+    },
+    "to": {
+     "column": 2,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 1,
+     "element": 2
+    },
+    "to": {
+     "column": 2,
+     "element": 1
+    }
+   }
+  ],
+  "highlight": {
+   "elements": [
+    {
+     "column": 1,
+     "element": 1
+    },
+    {
+     "column": 2,
+     "element": 0
+    },
+    {
+     "column": 0,
+     "element": 2
+    },
+    {
+     "column": 1,
+     "element": 2
+    },
+    {
+     "column": 2,
+     "element": 1
+    }
+   ]
+  }
+ },
+ "caption": "g(5)=7이므로 g⁻¹(7)=5이다. f(3)=6이고 g(6)=8이므로 (g∘f)(3)=8이다. 따라서 g⁻¹(7)+(g∘f)(3)=5+8=13이므로 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f: 1→5, 2→4, 3→6, g: 4→9, 5→7, 6→8",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "g⁻¹(7)=5, (g∘f)(3)=8을 읽는 경로"
+ ]
+}

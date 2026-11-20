@@ -233,4 +233,138 @@ for (const input of [undefined, null, {}, { questions: [], responses: [] }, { qu
   assert.strictEqual(checkConsistency(r).ok, false);
 }
 
+// 12. 화면 층(diagnostic-report-view.js): 가상 응답 상·중·하 3벌, 작은 표본·문구·내부 용어·쪽 구성
+const View = require(path.join(root, 'archive', 'assessment', 'diagnostic-report-view.js'));
+{
+  const unitNames = ['소인수분해', '정수와 유리수', '문자와 식', '좌표평면과 그래프'];
+  const lv = (no) => (no <= 5 ? 1 : no <= 10 ? 2 : no <= 20 ? 3 : no <= 22 ? 4 : 5);
+  const viewQuestions = (unitOf) => Array.from({ length: 24 }, (_, k) => {
+    const no = k + 1;
+    const u = unitOf ? unitOf(no) : unitNames[k % 4];
+    return { no, questionUid: 'qid_v1_' + no, unit: u, unitOrder: unitNames.indexOf(u) + 1, difficulty: lv(no), problemTypeKey: 'PT_' + (k % 8) };
+  });
+  const labelOf = (key) => ({ PT_0: '정수의 대소 비교', PT_1: '절댓값', PT_2: '식의 값', PT_3: '방정식의 해', PT_4: '일차식의 계산', PT_5: '사분면' })[key] || '';
+  const respond = (wrongNos) => Object.fromEntries(Array.from({ length: 24 }, (_, i) => [i + 1, wrongNos.includes(i + 1) ? 'X' : 'O']));
+  const run = (wrong, qs) => View.render(computeDiagnosticReport({ questions: qs || viewQuestions(), responses: respond(wrong), labelOf }));
+  const flat = (out) => [out.donut, out.donutBig, out.summary, out.facts, out.levels, out.line, out.lineCap, out.units, out.unitCap, out.heat, out.types, out.wrong, out.plan].join('\n');
+
+  const hi = run([24]);
+  const mid = run([8, 13, 15, 17, 20, 22, 23, 24]);
+  const low = run(Array.from({ length: 19 }, (_, i) => i + 6));
+  for (const out of [hi, mid, low]) {
+    assert.ok(out.vm.report.consistency.ok);
+    assert.ok(!/PT_|TPL_|bucket|UID|qid_|undefined|NaN|null/i.test(flat(out)), '내부 용어·키·빈 값이 화면에 나오면 안 된다');
+    assert.ok(out.types.includes('유형 미분류'), '이름 없는 유형은 유형 미분류로 묶는다');
+  }
+  assert.ok(/4~5단계\(심화\)까지 모두 안정적으로/.test(hi.summary), '상: 모든 단계 안정');
+  assert.ok(/2단계\(기본\)까지는 안정적으로/.test(mid.summary) && /3단계\(응용\)에서는 10문항 중 6문항/.test(mid.summary), '중: 3단계에서 정답이 줄기 시작');
+  assert.ok(/2단계\(기본\)에서는 5문항 중 0문항/.test(low.summary) && /1단계\(기초\)까지는 안정적으로/.test(low.summary), '하: 2단계부터 보완');
+  assert.ok(!/(잘못|부족|못합니다|실패)/.test(flat(hi) + flat(mid) + flat(low)), '학생·학부모를 깎아내리는 말을 쓰지 않는다');
+
+  // 꺾은선 x축: 띠마다 글자를 찍지 않고 문항 번호 눈금 + 범례 한 줄. 단계가 번갈아 나오는 최악의 순서에서도 눈금 글자가 서로 닿지 않는다.
+  for (const count of [1, 2, 3, 5, 7, 10, 12, 20, 24, 30, 50, 80, 100]) {
+    for (const pattern of ['alternate', 'sorted', 'reverse']) {
+      const levelOf = (no) => (pattern === 'alternate' ? (no % 2 ? 1 : 4) : pattern === 'sorted' ? Math.min(5, 1 + Math.floor((no - 1) * 5 / count)) : Math.max(1, 5 - Math.floor((no - 1) * 5 / count)));
+      const qs = Array.from({ length: count }, (_, k) => ({ no: k + 1, questionUid: 'qid_v1_' + (k + 1), unit: unitNames[k % 4], unitOrder: (k % 4) + 1, difficulty: levelOf(k + 1), problemTypeKey: 'PT_' + (k % 8) }));
+      const resp = Object.fromEntries(qs.map((q, i) => [q.no, i % 3 === 2 ? 'X' : 'O']));
+      const out = View.render(computeDiagnosticReport({ questions: qs, responses: resp, labelOf }));
+      const texts = [...out.line.matchAll(/<text x="([\d.]+)"[^>]*>([^<]*)<\/text>/g)].map((m) => ({ x: Number(m[1]), t: m[2] }));
+      const ticks = texts.filter((m) => /^\d+번$/.test(m.t));
+      assert.ok(ticks.length >= 1 && ticks[ticks.length - 1].t === count + '번' && ticks[0].t === '1번', `x축 눈금은 1번부터 ${count}번까지 (${pattern})`);
+      for (let i = 1; i < ticks.length; i++) assert.ok(ticks[i].x - ticks[i - 1].x >= 33, `눈금 글자끼리 닿지 않는다: ${count}문항 ${pattern} ${ticks[i - 1].t}/${ticks[i].t}`);
+      assert.ok(!texts.some((m) => /단계/.test(m.t)), '그래프 안에는 단계 글자를 찍지 않는다(범례 한 줄이 맡는다)');
+      assert.strictEqual((out.line.match(/class="legend band-legend"/g) || []).length, 1, '단계 범례는 그래프 아래 한 줄');
+    }
+  }
+  assert.ok(mid.plan.includes('다시 세우기') && mid.plan.includes('확인 평가') && /1~2주차/.test(mid.plan));
+  assert.strictEqual(hi.wrongLayout, 'single');
+  assert.strictEqual(mid.wrongLayout, 'single');
+  assert.strictEqual(low.wrongLayout, 'double');
+  assert.ok(low.wrong.includes('two-tables'));
+  assert.ok(!/class="tag/.test(hi.heat), '단원×단계 칸에는 태그가 없고 숫자와 농도만 쓴다');
+
+  // 작은 표본: 3문항 미만 칸은 판정 문구·색 없이 맞은 수/문항 수만
+  const small = run([1, 24], viewQuestions((no) => (no >= 23 ? '통계' : unitNames[no % 4])));
+  const statsBar = small.units.split('<div class="bar">').find((s) => s.includes('통계'));
+  assert.ok(statsBar && statsBar.includes('meter none') && !/\d+%/.test(statsBar), '2문항 단원은 퍼센트·색 막대 없이 맞은 수/문항 수만');
+  assert.ok(/h0">1 \/ 2<|h0">2 \/ 2</.test(small.heat), '2문항 칸은 h0(판정 없음)');
+  const shortLevels = run([1], viewQuestions().filter((q) => q.no > 3).map((q, i) => ({ ...q, no: i + 1 })));
+  assert.ok(shortLevels.levels.includes('문항이 적어 판정하지 않습니다'), '3문항 미만 단계는 판정하지 않는다');
+  // 유형 판단: 3문항 미만은 맞은 수/문항 수만, 3문항 이상은 글자 태그
+  assert.strictEqual(View.typeVerdict({ n: 2, ok: 2, wrong: 0 }), null);
+  assert.strictEqual(View.typeVerdict({ n: 3, ok: 3, wrong: 0 }).label, '안정');
+  assert.strictEqual(View.typeVerdict({ n: 3, ok: 0, wrong: 3 }).label, '보완 권장');
+  assert.strictEqual(View.typeVerdict({ n: 4, ok: 2, wrong: 2 }).label, '다시 확인');
+
+  // 단원 강약: 차이가 2문항 이상일 때만
+  const U = (name, ok, n) => ({ name, ok, n, r: ok / n });
+  assert.ok(View.unitJudgement([U('가', 6, 6), U('나', 3, 6)]), '3문항 차이는 판정');
+  assert.ok(View.unitJudgement([U('가', 6, 6), U('나', 4, 6)]), '2문항 차이는 판정');
+  assert.strictEqual(View.unitJudgement([U('가', 5, 6), U('나', 4, 6)]), null, '1문항 차이는 판정하지 않는다');
+  assert.strictEqual(View.unitJudgement([U('가', 6, 6), U('나', 1, 2)]), null, '3문항 미만 단원은 비교하지 않는다');
+
+  // 글 이스케이프, 유형 표 상한
+  const evil = run([2], viewQuestions((no) => (no % 2 ? '<b>x</b>' : '정수와 유리수')));
+  assert.ok(!evil.units.includes('<b>x</b>') && evil.units.includes('&lt;b&gt;x&lt;/b&gt;'));
+  const manyTypes = View.render(computeDiagnosticReport({
+    questions: viewQuestions().map((q) => ({ ...q, problemTypeKey: 'PT_U' + q.no })), responses: respond([3, 9]), labelOf: (key) => '유형 ' + key.slice(4),
+  }));
+  assert.strictEqual((manyTypes.types.match(/<tr/g) || []).length, 1 + View.TYPE_ROWS_MAX + 1, '유형 표는 머리줄 + 상한 + 나머지 한 줄');
+  assert.ok(manyTypes.types.includes('class="rest"'));
+  assert.ok(manyTypes.typeRowsHidden > 0);
+  // 틀린 문항 없음
+  const perfect = run([]);
+  assert.ok(perfect.wrong.includes('틀린 문항이 없습니다') && perfect.wrongN === '0문항');
+  // 전부 정답이면 "틀린 문항이 있는 부분은 …" 꼬리 문장을 뺀다(틀린 말이 된다). 틀린 문항이 있으면 그대로 둔다.
+  assert.ok(/모두 안정적으로 해결합니다\./.test(perfect.summary) && !/틀린 문항이 있는 부분/.test(perfect.summary), '전부 정답: 꼬리 문장 없음');
+  assert.ok(/틀린 문항이 있는 부분은 아래 유형별 결과/.test(hi.summary), '틀린 문항이 있으면 꼬리 문장 유지');
+  // 전부 오답이면 도넛 호를 그리지 않는다(길이 0 호에 둥근 끝을 주면 12시 방향에 점이 찍힌다). 일부 정답이면 호가 있다.
+  const allWrong = run(Array.from({ length: 24 }, (_, i) => i + 1));
+  assert.strictEqual((allWrong.donut.match(/<circle/g) || []).length, 1, '정답 0: 바탕 원만, 호 없음');
+  assert.strictEqual((perfect.donut.match(/<circle/g) || []).length, 2, '정답이 있으면 바탕 원 + 호');
+  assert.strictEqual((hi.donut.match(/<circle/g) || []).length, 2);
+}
+
+// 13. 화면 파일: 두 쪽 구성·인쇄 규칙·저장하지 않음·배포 목록
+{
+  const dir = path.join(root, 'archive', 'assessment');
+  const html = fs.readFileSync(path.join(dir, 'diagnostic-report.html'), 'utf8');
+  const css = fs.readFileSync(path.join(dir, 'diagnostic-report.css'), 'utf8');
+  const js = fs.readFileSync(path.join(dir, 'diagnostic-report.js'), 'utf8');
+  const view = fs.readFileSync(path.join(dir, 'diagnostic-report-view.js'), 'utf8');
+  assert.strictEqual((html.match(/<section class="sheet"/g) || []).length, 2, 'A4 두 쪽');
+  // 이 파일의 src·href는 모두 파일 위치(assessment/) 기준이다(배포 검사도 그렇게 푼다). base 태그는 쓰지 않고, archive/ 기준으로 data/…를 읽는 자료 층을 위해
+  // document.baseURI만 한 칸 위로 맞춘다.
+  assert.ok(!/<base\b/i.test(html), 'base 태그를 쓰지 않는다');
+  assert.ok(html.includes('Object.defineProperty(document, "baseURI", { value: new URL("../", location.href).href })'), '자료 읽기 길의 기준 주소는 archive/');
+  assert.ok(html.indexOf('defineProperty(document, "baseURI"') < html.indexOf('archive2-boot.js'), '기준 주소를 맞추는 줄이 자료 층 스크립트보다 먼저');
+  assert.ok(!/id="inOrg"|id="inMemo"|<textarea/.test(html) && /ORG_NAME = "AP 수학학원"/.test(js), '학원명은 상수 한 곳, 선생님 의견은 입력 없이 빈칸');
+  assert.ok(!/inOrg|inMemo/.test(js), '학원명·의견 입력을 읽지 않는다');
+  assert.ok(/@page\s*\{\s*size:\s*A4;\s*margin:\s*0/.test(css) && /break-after:\s*page/.test(css) && /height:\s*296mm/.test(css), '인쇄 쪽 나눔 고정');
+  assert.ok(/@container \(max-width: 640px\)/.test(css), '휴대폰 폭 규칙은 컨테이너 기준(쪽 맞춤 측정과 같은 배치)');
+  assert.ok(/print-color-adjust:\s*exact/.test(css));
+  // 쪽 맞춤: 단원이 많아도 정확히 2쪽·푸터 보임. 단계 0~5 + 마지막 수단(본문 비율 축소), 입력 진행 표시는 스크롤해도 붙어 있다.
+  assert.ok(/MAX_LEVEL = 5/.test(js) && /data-fit="4"/.test(css) && /data-fit="5"/.test(css), '쪽 맞춤 단계 0~5');
+  assert.ok(/\.sheet\[data-shrink\] > :not\(\.foot\) \{ zoom: var\(--shrink/.test(css) && /MIN_SHRINK/.test(js), '4·5단계로도 넘치면 푸터를 뺀 본문을 비율로 줄인다');
+  assert.ok(/\.panel \.progress \{[^}]*position:\s*sticky/.test(css), '입력 N / M 진행 표시는 sticky');
+  for (const file of [js, view].map((s) => s.replace(/\/\/.*$/gm, ''))) {
+    assert.ok(!/localStorage|sessionStorage|indexedDB|document\.cookie|history\.(push|replace)State|sendBeacon|XMLHttpRequest|location\.(search|hash)\s*=/.test(file), '이름·O/X는 어디에도 저장하지 않는다');
+  }
+  assert.strictEqual((js.match(/fetch\(/g) || []).length, 1, 'fetch는 data 자료 읽기 한 곳뿐');
+  assert.ok(!/document\.title\s*=/.test(js), '제목에 학생 이름을 넣지 않는다');
+  assert.ok(!/\b(PT_|TPL_|bucket|UID)\b/.test(html.replace(/<script[\s\S]*?<\/script>/g, '')), '화면 문구에 내부 용어가 없다');
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, 'tools', 'archive-pages-release-manifest.json'), 'utf8'));
+  for (const name of ['diagnostic-report.html', 'diagnostic-report.css', 'diagnostic-report.js', 'diagnostic-report-view.js']) {
+    assert.ok(manifest.files.includes('archive/assessment/' + name), name + ' 배포 목록에 있어야 한다');
+  }
+  // html이 부르는 로컬 스크립트·스타일(같은 폴더, ../ 위 폴더)이 파일 위치 기준으로 모두 있다
+  let localRefs = 0;
+  for (const m of html.matchAll(/<(?:script|link)\b[^>]*?\b(?:src|href)="([^"#?]+)/gi)) {
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(m[1])) continue;
+    assert.ok(fs.existsSync(path.join(dir, m[1])), m[1]);
+    localRefs++;
+  }
+  assert.ok(localRefs >= 12, '로컬 스크립트·스타일 12개 이상');
+}
+
 console.log('diagnostic-report-data tests passed');

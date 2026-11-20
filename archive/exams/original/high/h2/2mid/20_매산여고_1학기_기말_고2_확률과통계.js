@@ -240,7 +240,12 @@ window.questionBank = [
     "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
     "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
     "rpmL3": "조건부확률",
-    "rpmL4": "조건부확률 계산"
+    "rpmL4": "조건부확률 계산",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 첫 결과에 따라 두 번째 확률이 4/19, 5/19로 달라지고 세 진술의 경로 확률이 모두 보인다.",
+    "solutionImageCaption": "제비를 다시 넣지 않으므로 첫 번째 결과에 따라 두 번째 확률이 달라진다. P(A)=5/20=1/4이다(ㄱ 참). 둘 다 당첨인 경로는 1/4×4/19=1/19이다(ㄴ 참). 희석이 꽝이고 금석이 당첨인 경로는 3/4×5/19=15/76이다(ㄷ 참). 세 진술이 모두 옳아 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 7,
@@ -330,7 +335,11 @@ window.questionBank = [
     "problemTypeKey": "PT_EVENT_INDEPENDENCE",
     "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
     "rpmL3": "사건의 독립",
-    "rpmL4": "독립 판정"
+    "rpmL4": "독립 판정",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: A와 B의 겹침이 6 하나뿐임이 보여 n(A∩B)=1이고 확률 1/6이 곱 1/6과 같음이 확인된다.",
+    "solutionImageCaption": "주사위 눈에서 2의 배수 A={2, 4, 6}, 3의 배수 B={3, 6}이다. 그림에서 겹침은 6 하나뿐이므로 n(A∩B)=1이다(ㄱ 거짓). P(A)P(B)=1/2×1/3=1/6이다(ㄴ 참). P(A∩B)=1/6=P(A)P(B)이므로 두 사건은 독립이다(ㄷ 참). 따라서 ㄴ, ㄷ이 옳아 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -599,7 +608,11 @@ window.questionBank = [
     "problemTypeKey": "PT_EVENT_INDEPENDENCE",
     "templateKey": "TPL_EVENT_INDEPENDENCE_JUDGMENT",
     "rpmL3": "사건의 독립",
-    "rpmL4": "독립사건의 확률"
+    "rpmL4": "독립사건의 확률",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 한 학생만 입상하는 두 영역 4/15와 1/5이 보여 합 7/15가 확인된다.",
+    "solutionImageCaption": "두 학생의 입상이 독립이므로 겹침은 2/5×1/3=2/15이다. 그림은 A만 2/5×2/3=4/15, 겹침 2/15, B만 3/5×1/3=1/5, 둘 다 아님 2/5이다. 색칠한 한 학생만 입상하는 두 영역은 서로 겹치지 않으므로 4/15+3/15=7/15이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -932,7 +945,11 @@ window.questionBank = [
     "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
     "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
     "rpmL3": "조건부확률",
-    "rpmL4": "조건부확률 계산"
+    "rpmL4": "조건부확률 계산",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: A 전체 5/8 가운데 겹침이 1/8이어서 조건부확률의 분자와 분모가 구분된다.",
+    "solutionImageCaption": "덧셈정리로 P(A∩B)=5/8+1/4−3/4=1/8이다. 그림은 A만 5/8−1/8=1/2, 겹침 1/8, B만 1/4−1/8=1/8, 바깥 1−3/4=1/4이다. 조건부확률 P(B|A)는 색칠한 A를 분모로 하므로 분자는 겹침 1/8, 분모는 A 전체 5/8이다. 따라서 (1/8)÷(5/8)=1/5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

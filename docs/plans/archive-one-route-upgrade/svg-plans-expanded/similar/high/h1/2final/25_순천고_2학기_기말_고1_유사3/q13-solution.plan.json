@@ -1,0 +1,65 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "2",
+   "3"
+  ],
+  "denominator": [
+   "2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -12,
+   8
+  ],
+  "viewport": [
+   -12,
+   8,
+   -4,
+   10
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "0",
+     "y": "1",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "B",
+     "x": "-6",
+     "y": "4",
+     "coordinates": true,
+     "labelDirection": "SW"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula"
+  ],
+  "asymptoteLabelAt": "END",
+  "verticalAsymptoteLabelAt": "BOTTOM_LEFT"
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "수직 점근선이 x=-2이므로 c=2, 수평 점근선이 y=3이므로 a=3이다. 점 (0,1)을 지나므로 b=2이고 f(x)=(3x+2)/(x+2)이다. f⁻¹(4)=k이면 f(k)=4이므로 k=-6이고 그래프 위의 점 (-6,4)로 읽을 수 있다. 답은 ④이다.",
+ "sourceConditions": [
+  "a=3, b=2, c=2일 때 y=(3x+2)/(x+2)"
+ ],
+ "newVisualInformation": [
+  "f(-6)=4인 점 B(-6,4)"
+ ]
+}

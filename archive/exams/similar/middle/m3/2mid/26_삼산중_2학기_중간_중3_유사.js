@@ -74,8 +74,8 @@ window.questionBank = [
       "$1$",
       "$2$",
       "$3$",
-      "$\\sqrt{3}$",
-      "$2\\sqrt{3}$"
+      "$2\\sqrt{3}$",
+      "$4$"
     ],
     "answer": "②",
     "solution": "특수각의 삼각비의 값은 다음과 같다.\n$\\cos 30^\\circ = \\dfrac{\\sqrt{3}}{2}$, $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$, $\\tan 60^\\circ = \\sqrt{3}$, $\\sin 30^\\circ = \\dfrac{1}{2}$\n각 괄호 안의 식을 계산하면\n$2\\cos 30^\\circ + \\sqrt{2}\\sin 45^\\circ = 2 \\times \\dfrac{\\sqrt{3}}{2} + \\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2} = \\sqrt{3} + 1$\n$\\tan 60^\\circ - 2\\sin 30^\\circ = \\sqrt{3} - 2 \\times \\dfrac{1}{2} = \\sqrt{3} - 1$\n따라서 주어진 식의 값은\n$(2\\cos 30^\\circ + \\sqrt{2}\\sin 45^\\circ)(\\tan 60^\\circ - 2\\sin 30^\\circ) = (\\sqrt{3} + 1)(\\sqrt{3} - 1) = (\\sqrt{3})^2 - 1^2 = 3 - 1 = 2$이다.\n정답은 ②이다.",
@@ -166,14 +166,14 @@ window.questionBank = [
     "wide": false,
     "content": "$\\angle C = 90^\\circ$인 직각삼각형 $ABC$에서 $\\tan A = 2$일 때, $\\cos B$의 값은? [4점]",
     "choices": [
-      "$\\dfrac{1}{2}$",
-      "$\\dfrac{\\sqrt{5}}{5}$",
       "$\\dfrac{2}{5}$",
-      "$\\dfrac{2\\sqrt{5}}{5}$",
-      "$\\dfrac{\\sqrt{5}}{2}$"
+      "$\\dfrac{\\sqrt{5}}{5}$",
+      "$\\dfrac{1}{2}$",
+      "$\\dfrac{3}{5}$",
+      "$\\dfrac{2\\sqrt{5}}{5}$"
     ],
-    "answer": "④",
-    "solution": "직각삼각형 $ABC$에서 $\\angle C = 90^\\circ$이므로 $\\tan A = \\dfrac{BC}{AC} = 2$이다.\n양수 $k$에 대하여 $AC = k$, $BC = 2k$라 둘 수 있다.\n피타고라스 정리에 의해 빗변 $AB$의 길이는\n$AB = \\sqrt{AC^2 + BC^2} = \\sqrt{k^2 + (2k)^2} = \\sqrt{5k^2} = \\sqrt{5}k$이다.\n각 $B$에 대하여 빗변은 $AB = \\sqrt{5}k$이고 이웃한 변은 $BC = 2k$이므로\n$\\cos B = \\dfrac{BC}{AB} = \\dfrac{2k}{\\sqrt{5}k} = \\dfrac{2}{\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$이다.\n따라서 정답은 ④이다.",
+    "answer": "⑤",
+    "solution": "직각삼각형 $ABC$에서 $\\angle C = 90^\\circ$이므로 $\\tan A = \\dfrac{BC}{AC} = 2$이다.\n양수 $k$에 대하여 $AC = k$, $BC = 2k$라 둘 수 있다.\n피타고라스 정리에 의해 빗변 $AB$의 길이는\n$AB = \\sqrt{AC^2 + BC^2} = \\sqrt{k^2 + (2k)^2} = \\sqrt{5k^2} = \\sqrt{5}k$이다.\n각 $B$에 대하여 빗변은 $AB = \\sqrt{5}k$이고 이웃한 변은 $BC = 2k$이므로\n$\\cos B = \\dfrac{BC}{AB} = \\dfrac{2k}{\\sqrt{5}k} = \\dfrac{2}{\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$이다.\n따라서 정답은 ⑤이다.",
     "points": 4.0,
     "problemTypeKey": "PT_TRIG_RATIO",
     "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
@@ -403,14 +403,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음은 높이가 $4\\text{ m}$인 직사각형 모양의 전시 공간이다. 바닥의 $A$지점에서 바닥과 $30^\\circ$의 각도로 수직 벽면의 거울이 있는 $B$지점에 레이저 빛을 쏘았을 때, 빛이 거울에 반사되어 천장의 $C$지점에 닿았다. $B$지점의 높이가 $3\\text{ m}$일 때, $A$지점과 $C$지점 사이의 직선거리는? (단, 입사각과 반사각의 크기는 같고 벽면과 바닥은 수직이다.) [4점]",
     "choices": [
-      "$3\\sqrt{3}\\text{ m}$",
-      "$4\\sqrt{2}\\text{ m}$",
       "$5\\text{ m}$",
+      "$3\\sqrt{3}\\text{ m}$",
       "$2\\sqrt{7}\\text{ m}$",
+      "$4\\sqrt{2}\\text{ m}$",
       "$6\\text{ m}$"
     ],
-    "answer": "④",
-    "solution": "벽면을 $y$축, 바닥을 $x$축이라 하자.\n$B$지점은 높이가 $3\\text{ m}$이므로 좌표는 $(0, 3)$이다.\n빛이 바닥과 $30^\\circ$의 각도로 나아가므로, 직각삼각형에서 $A$지점에서 벽면까지의 수평거리는\n$x_1 = \\dfrac{3}{\\tan 30^\\circ} = \\dfrac{3}{1/\\sqrt{3}} = 3\\sqrt{3}\\text{ m}$이다. 따라서 $A$의 좌표는 $(-3\\sqrt{3}, 0)$이다.\n천장의 높이는 $4\\text{ m}$이므로 $B$에서 천장까지의 수직거리는 $4 - 3 = 1\\text{ m}$이다.\n입사각과 반사각이 같으므로 반사된 빛이 수평선과 이루는 각도 역시 $30^\\circ$이다.\n따라서 반사된 빛이 천장에 닿는 $C$지점까지의 수평거리는\n$x_2 = \\dfrac{1}{\\tan 30^\\circ} = \\sqrt{3}\\text{ m}$이다. 즉 $C$의 좌표는 $(-\\sqrt{3}, 4)$이다.\n두 지점 $A$와 $C$ 사이의 수평거리 차는 $3\\sqrt{3} - \\sqrt{3} = 2\\sqrt{3}\\text{ m}$이고, 수직거리 차는 $4 - 0 = 4\\text{ m}$이다.\n따라서 두 지점 $A, C$ 사이의 직선거리는 피타고라스 정리에 의해\n$AC = \\sqrt{(2\\sqrt{3})^2 + 4^2} = \\sqrt{12 + 16} = \\sqrt{28} = 2\\sqrt{7}\\text{ m}$이다.\n정답은 ④이다.",
+    "answer": "③",
+    "solution": "벽면을 $y$축, 바닥을 $x$축이라 하자.\n$B$지점은 높이가 $3\\text{ m}$이므로 좌표는 $(0, 3)$이다.\n빛이 바닥과 $30^\\circ$의 각도로 나아가므로, 직각삼각형에서 $A$지점에서 벽면까지의 수평거리는\n$x_1 = \\dfrac{3}{\\tan 30^\\circ} = \\dfrac{3}{1/\\sqrt{3}} = 3\\sqrt{3}\\text{ m}$이다. 따라서 $A$의 좌표는 $(-3\\sqrt{3}, 0)$이다.\n천장의 높이는 $4\\text{ m}$이므로 $B$에서 천장까지의 수직거리는 $4 - 3 = 1\\text{ m}$이다.\n입사각과 반사각이 같으므로 반사된 빛이 수평선과 이루는 각도 역시 $30^\\circ$이다.\n따라서 반사된 빛이 천장에 닿는 $C$지점까지의 수평거리는\n$x_2 = \\dfrac{1}{\\tan 30^\\circ} = \\sqrt{3}\\text{ m}$이다. 즉 $C$의 좌표는 $(-\\sqrt{3}, 4)$이다.\n두 지점 $A$와 $C$ 사이의 수평거리 차는 $3\\sqrt{3} - \\sqrt{3} = 2\\sqrt{3}\\text{ m}$이고, 수직거리 차는 $4 - 0 = 4\\text{ m}$이다.\n따라서 두 지점 $A, C$ 사이의 직선거리는 피타고라스 정리에 의해\n$AC = \\sqrt{(2\\sqrt{3})^2 + 4^2} = \\sqrt{12 + 16} = \\sqrt{28} = 2\\sqrt{7}\\text{ m}$이다.\n정답은 ③이다.",
     "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q9.svg",
     "points": 4.0,
     "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
@@ -500,10 +500,10 @@ window.questionBank = [
     "content": "다음 $\\triangle ABC$의 넓이가 $6\\sqrt{3}\\text{ cm}^2$이고 $\\overline{AB} = 6\\text{ cm}$, $\\angle A = 60^\\circ$일 때, $\\overline{BC}$의 길이는? [4점]",
     "choices": [
       "$2\\sqrt{7}\\text{ cm}$",
-      "$3\\sqrt{3}\\text{ cm}$",
       "$\\sqrt{30}\\text{ cm}$",
       "$4\\sqrt{2}\\text{ cm}$",
-      "$6\\text{ cm}$"
+      "$6\\text{ cm}$",
+      "$7\\text{ cm}$"
     ],
     "answer": "①",
     "solution": "삼각형 $ABC$의 넓이 공식을 적용하면\n$[\\triangle ABC] = \\dfrac{1}{2} \\times AB \\times AC \\times \\sin 60^\\circ = 6\\sqrt{3}$\n$\\dfrac{1}{2} \\times 6 \\times AC \\times \\dfrac{\\sqrt{3}}{2} = 6\\sqrt{3} \\implies \\dfrac{3\\sqrt{3}}{2} AC = 6\\sqrt{3} \\implies AC = 4\\text{ cm}$이다.\n이제 점 $C$에서 변 $AB$에 내린 수선의 발을 $H$라 하자.\n직각삼각형 $ACH$에서\n$AH = AC \\cos 60^\\circ = 4 \\times \\dfrac{1}{2} = 2\\text{ cm}$\n$CH = AC \\sin 60^\\circ = 4 \\times \\dfrac{\\sqrt{3}}{2} = 2\\sqrt{3}\\text{ cm}$이다.\n$AB = 6\\text{ cm}$이므로\n$HB = AB - AH = 6 - 2 = 4\\text{ cm}$이다.\n직각삼각형 $BCH$에서 피타고라스 정리에 의해\n$BC = \\sqrt{CH^2 + HB^2} = \\sqrt{(2\\sqrt{3})^2 + 4^2} = \\sqrt{12 + 16} = \\sqrt{28} = 2\\sqrt{7}\\text{ cm}$이다.\n따라서 정답은 ①이다.",
@@ -550,9 +550,9 @@ window.questionBank = [
     "choices": [
       "$12\\sqrt{2}\\text{ cm}^2$",
       "$15\\sqrt{2}\\text{ cm}^2$",
+      "$15\\sqrt{3}\\text{ cm}^2$",
       "$20\\sqrt{2}\\text{ cm}^2$",
-      "$30\\sqrt{2}\\text{ cm}^2$",
-      "$15\\sqrt{3}\\text{ cm}^2$"
+      "$30\\sqrt{2}\\text{ cm}^2$"
     ],
     "answer": "②",
     "solution": "평행사변형에서 이웃한 두 내각의 크기의 합은 $180^\\circ$이므로 $\\angle A + \\angle B = 180^\\circ$이다.\n$\\angle A : \\angle B = 1 : 3$이므로\n$\\angle A = 180^\\circ \\times \\dfrac{1}{1 + 3} = 45^\\circ$, $\\angle B = 135^\\circ$이다.\n평행사변형 $ABCD$의 넓이는 두 변의 길이와 그 끼인각의 사인값을 이용하여 구하면\n$[ABCD] = BC \\times CD \\times \\sin 45^\\circ = 10 \\times 6 \\times \\dfrac{\\sqrt{2}}{2} = 30\\sqrt{2}\\text{ cm}^2$이다.\n평행사변형의 두 대각선은 서로를 이등분하므로 평행사변형을 넓이가 같은 네 개의 삼각형으로 나눈다.\n색칠된 부분은 마주 보는 두 삼각형 $\\triangle OAB$와 $\\triangle OCD$이므로\n$[\\triangle OAB] = [\\triangle OCD] = \\dfrac{1}{4}[ABCD]$이다.\n따라서 색칠된 두 삼각형의 넓이의 합은 전체 넓이의 절반이다.\n$[\\triangle OAB] + [\\triangle OCD] = \\dfrac{1}{2}[ABCD] = \\dfrac{1}{2} \\times 30\\sqrt{2} = 15\\sqrt{2}\\text{ cm}^2$이다.\n정답은 ②이다.",
@@ -645,11 +645,11 @@ window.questionBank = [
       "$2\\sqrt{3}\\text{ cm}$",
       "$4\\text{ cm}$",
       "$3\\sqrt{3}\\text{ cm}$",
-      "$4\\sqrt{3}\\text{ cm}$",
-      "$6\\text{ cm}$"
+      "$6\\text{ cm}$",
+      "$4\\sqrt{3}\\text{ cm}$"
     ],
-    "answer": "④",
-    "solution": "현 $AB$와 반지름 $OC$의 교점을 $M$이라 하자.\n현 $AB$가 반지름 $OC$를 수직이등분하므로 $OM = MC = \\dfrac{r}{2}$이고 $AB \\perp OC$이다.\n원의 중심에서 현에 내린 수선은 그 현을 이등분하므로\n$AM = \\dfrac{1}{2}AB = \\dfrac{1}{2} \\times 12 = 6\\text{ cm}$이다.\n점 $A$와 중심 $O$를 이으면 $OA = r$는 원의 반지름이다.\n직각삼각형 $OMA$에서 피타고라스 정리에 의해\n$OA^2 = OM^2 + AM^2$\n$r^2 = \\left(\\dfrac{r}{2}\\right)^2 + 6^2$\n$r^2 = \\dfrac{r^2}{4} + 36 \\implies \\dfrac{3}{4}r^2 = 36 \\implies r^2 = 48$\n$r > 0$이므로 $r = \\sqrt{48} = 4\\sqrt{3}\\text{ cm}$이다.\n따라서 정답은 ④이다.",
+    "answer": "⑤",
+    "solution": "현 $AB$와 반지름 $OC$의 교점을 $M$이라 하자.\n현 $AB$가 반지름 $OC$를 수직이등분하므로 $OM = MC = \\dfrac{r}{2}$이고 $AB \\perp OC$이다.\n원의 중심에서 현에 내린 수선은 그 현을 이등분하므로\n$AM = \\dfrac{1}{2}AB = \\dfrac{1}{2} \\times 12 = 6\\text{ cm}$이다.\n점 $A$와 중심 $O$를 이으면 $OA = r$는 원의 반지름이다.\n직각삼각형 $OMA$에서 피타고라스 정리에 의해\n$OA^2 = OM^2 + AM^2$\n$r^2 = \\left(\\dfrac{r}{2}\\right)^2 + 6^2$\n$r^2 = \\dfrac{r^2}{4} + 36 \\implies \\dfrac{3}{4}r^2 = 36 \\implies r^2 = 48$\n$r > 0$이므로 $r = \\sqrt{48} = 4\\sqrt{3}\\text{ cm}$이다.\n따라서 정답은 ⑤이다.",
     "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q14-audit-rework.svg",
     "imageSize": "full",
     "points": 4.0,
@@ -743,10 +743,10 @@ window.questionBank = [
     "content": "다음 그림과 같이 원 $O$ 내부에 길이가 각각 같은 두 쌍의 평행한 현 $AB, CD$와 현 $EF, GH$가 있다. 현 $AB$와 현 $EF$는 서로 수직이고, 두 현 $AB, CD$ 사이의 거리는 $8\\text{ cm}$, 두 현 $EF, GH$ 사이의 거리는 $12\\text{ cm}$이다. $\\overline{AB} = 16\\text{ cm}$일 때, $\\overline{EF}$의 길이는? [4점]",
     "choices": [
       "$4\\sqrt{11}\\text{ cm}$",
-      "$2\\sqrt{11}\\text{ cm}$",
-      "$6\\sqrt{3}\\text{ cm}$",
-      "$8\\sqrt{2}\\text{ cm}$",
-      "$12\\text{ cm}$"
+      "$6\\sqrt{5}\\text{ cm}$",
+      "$8\\sqrt{3}\\text{ cm}$",
+      "$10\\sqrt{2}\\text{ cm}$",
+      "$16\\text{ cm}$"
     ],
     "answer": "①",
     "solution": "평행한 같은 길이의 두 현 $AB$와 $CD$는 원의 중심 $O$를 사이에 두고 대칭을 이룬다.\n따라서 원의 중심 $O$에서 현 $AB$에 이르는 거리는 두 현 사이의 거리의 절반이므로 $d_1 = \\dfrac{8}{2} = 4\\text{ cm}$이다.\n현 $AB$의 길이가 $16\\text{ cm}$이므로 현의 절반은 $\\dfrac{16}{2} = 8\\text{ cm}$이다.\n직각삼각형에서 원의 반지름 $r$은 피타고라스 정리에 의해\n$r^2 = 8^2 + 4^2 = 64 + 16 = 80$이다.\n마찬가지로 평행한 같은 길이의 두 현 $EF$와 $GH$에 대해서도 원의 중심 $O$에서 현 $EF$에 이르는 거리는 두 현 사이의 거리의 절반이므로\n$d_2 = \\dfrac{12}{2} = 6\\text{ cm}$이다.\n원의 중심에서 현 $EF$에 내린 수선의 발을 $N$이라 하면, 직각삼각형 $ONE$에서\n$EN = \\sqrt{r^2 - d_2^2} = \\sqrt{80 - 6^2} = \\sqrt{80 - 36} = \\sqrt{44} = 2\\sqrt{11}\\text{ cm}$이다.\n원의 중심에서 현에 내린 수선은 현을 이등분하므로 현 $EF$의 길이는\n$EF = 2 \\times EN = 2 \\times 2\\sqrt{11} = 4\\sqrt{11}\\text{ cm}$이다.\n정답은 ①이다.",
@@ -792,14 +792,14 @@ window.questionBank = [
     "wide": false,
     "content": "다음 그림에서 $\\overline{AD}, \\overline{BC}, \\overline{AF}$가 각각 세 점 $D, E, F$를 접점으로 하는 원 $O$의 접선이다. $\\overline{AD} = 15\\text{ cm}$, $\\overline{AC} = 10\\text{ cm}$, $\\overline{AB} = 10\\text{ cm}$, $\\angle ACB = 60^\\circ$일 때, $\\triangle ACB$의 넓이는? [4점]",
     "choices": [
+      "$15\\sqrt{3}\\text{ cm}^2$",
       "$20\\sqrt{3}\\text{ cm}^2$",
       "$25\\sqrt{3}\\text{ cm}^2$",
-      "$30\\sqrt{3}\\text{ cm}^2$",
       "$50\\text{ cm}^2$",
-      "$50\\sqrt{3}\\text{ cm}^2$"
+      "$30\\sqrt{3}\\text{ cm}^2$"
     ],
-    "answer": "②",
-    "solution": "원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 서로 같다.\n점 $A$에서 그은 두 접선에 대하여 $AF = AD = 15\\text{ cm}$이다.\n점 $B$에서 그은 두 접선에 대하여 $BE = BD$이므로\n$BE = BD = AD - AB = 15 - 10 = 5\\text{ cm}$이다.\n점 $C$에서 그은 두 접선에 대하여 $CE = CF$이므로\n$CE = CF = AF - AC = 15 - 10 = 5\\text{ cm}$이다.\n따라서 선분 $BC$의 길이는\n$BC = BE + CE = 5 + 5 = 10\\text{ cm}$이다.\n이제 삼각형 $ACB$에서 $AC = 10\\text{ cm}$, $BC = 10\\text{ cm}$이고 끼인각 $\\angle ACB = 60^\\circ$이므로 넓이는\n$[\\triangle ACB] = \\dfrac{1}{2} \\times AC \\times BC \\times \\sin 60^\\circ = \\dfrac{1}{2} \\times 10 \\times 10 \\times \\dfrac{\\sqrt{3}}{2} = 25\\sqrt{3}\\text{ cm}^2$이다.\n정답은 ②이다.",
+    "answer": "③",
+    "solution": "원 밖의 한 점에서 그 원에 그은 두 접선의 길이는 서로 같다.\n점 $A$에서 그은 두 접선에 대하여 $AF = AD = 15\\text{ cm}$이다.\n점 $B$에서 그은 두 접선에 대하여 $BE = BD$이므로\n$BE = BD = AD - AB = 15 - 10 = 5\\text{ cm}$이다.\n점 $C$에서 그은 두 접선에 대하여 $CE = CF$이므로\n$CE = CF = AF - AC = 15 - 10 = 5\\text{ cm}$이다.\n따라서 선분 $BC$의 길이는\n$BC = BE + CE = 5 + 5 = 10\\text{ cm}$이다.\n이제 삼각형 $ACB$에서 $AC = 10\\text{ cm}$, $BC = 10\\text{ cm}$이고 끼인각 $\\angle ACB = 60^\\circ$이므로 넓이는\n$[\\triangle ACB] = \\dfrac{1}{2} \\times AC \\times BC \\times \\sin 60^\\circ = \\dfrac{1}{2} \\times 10 \\times 10 \\times \\dfrac{\\sqrt{3}}{2} = 25\\sqrt{3}\\text{ cm}^2$이다.\n정답은 ③이다.",
     "image": "assets/images/26_삼산중_2학기_중간_중3_유사/q17-engine-upgrade.svg",
     "points": 4.0,
     "problemTypeKey": "PT_CIRCLE_TANGENT",

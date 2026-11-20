@@ -29,7 +29,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 남학생 자리 A, C, E, G와 여학생 자리 B, D, F, H가 번갈아 놓여 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 그림이다. A, C, E, G는 남학생 자리, B, D, F, H는 여학생 자리로 남녀가 교대로 앉는 배치이다. 남학생 4명을 원형으로 배열하는 방법은 (4−1)!=6가지이고, 남학생 사이의 4자리에 여학생 4명을 배열하는 방법은 4!=24가지이다. 따라서 6×24=144이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -331,7 +335,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-01-PERMUTATION",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 반장 자리 A의 양옆에 자리 B와 H가 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 그림이다. A는 반장 자리이고 양옆 자리 B와 H에 부반장과 회장이 앉는 배치의 예이다. 반장을 A에 고정하면 B, H에 두 사람이 앉는 방법은 2!=2가지이고, 나머지 5명이 남은 5자리 C, D, E, F, G에 앉는 방법은 5!=120가지이다. 따라서 2×120=240이므로 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

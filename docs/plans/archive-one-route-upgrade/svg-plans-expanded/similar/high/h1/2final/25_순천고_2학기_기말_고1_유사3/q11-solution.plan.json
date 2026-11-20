@@ -1,0 +1,37 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   {
+    "id": "A",
+    "name": "R"
+   },
+   {
+    "id": "B",
+    "name": "P^{c}"
+   },
+   {
+    "id": "C",
+    "name": "Q"
+   }
+  ],
+  "elements": [],
+  "subset": [
+   "A",
+   "B",
+   "C"
+  ]
+ },
+ "caption": "(P∪Q)ᶜ=∅이므로 P∪Q=U, 즉 Pᶜ⊆Q이고, P∩R=∅이므로 R⊆Pᶜ이다. 따라서 R⊆Pᶜ⊆Q이다. ㄱ. P⊆Rᶜ이므로 p→¬r는 참이고, ㄴ. Q⊆Pᶜ라고 할 수 없어 참이 아니며, ㄷ. R⊆Q이므로 r→q는 참이다. 답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "R⊆P^c⊆Q",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "세 집합의 포함 관계 R⊆Pᶜ⊆Q"
+ ]
+}

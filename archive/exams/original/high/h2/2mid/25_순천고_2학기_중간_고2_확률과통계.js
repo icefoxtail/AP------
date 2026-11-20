@@ -314,7 +314,12 @@ window.questionBank = [
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 저녁 양식으로 끝나는 두 경로와 경로 확률 0.18, 0.16이 보여 조건부확률의 분모와 분자를 구분한다.",
+    "solutionImageCaption": "첫 가지는 점심 선택, 둘째 가지는 저녁 선택이다. 저녁 양식은 점심 양식 뒤 0.6×0.3=0.18과 점심 한식 뒤 0.4×0.4=0.16의 두 경로이며 합 0.34이다. 이 중 점심 한식인 경로의 비율이 0.16/0.34=8/17이므로 p=17, q=8, p+q=25이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -507,7 +512,11 @@ window.questionBank = [
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_2학기_중간_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 1에서 올라가 6까지 평평하다가 10에서 0으로 내려오는 사다리꼴 모양 확률밀도함수 f의 그래프이며 0부터 5까지가 색칠되어 있다.",
+    "solutionImageCaption": "f의 그래프는 높이 k인 사다리꼴 모양이며 k=2/15이다(전체 넓이 k/2+5k+2k=15k/2=1). 그림은 k=2/15로 그렸고 0≤x≤5의 넓이(색칠)는 k/2+4k=9k/2=3/5이다. f(x)+g(x)가 x=5에 대칭이고 전체 넓이가 2이므로 0부터 5까지 넓이는 1이어서 P(0≤Y≤5)=1−3/5=2/5이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

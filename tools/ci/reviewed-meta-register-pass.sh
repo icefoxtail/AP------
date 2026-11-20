@@ -83,7 +83,8 @@ for round in 1 2; do
   applied=()
   mapfile -t reqs < <(find .archive-meta-register/inbox -maxdepth 1 -type f -name '*.json' -print 2>/dev/null | sort)
   if [[ ${#reqs[@]} -gt 0 ]]; then
-    node "$isolate" --applied-file "$work/applied.txt" --rejected-file "$work/rejected.txt" --pending-file "$work/pending.txt" --summary-file "$summary" -- "${reqs[@]}"
+    # --type-batch: plain direct type judgments share one process (metadata read and written once); every other request keeps its own.
+    node "$isolate" --applied-file "$work/applied.txt" --rejected-file "$work/rejected.txt" --pending-file "$work/pending.txt" --summary-file "$summary" --type-batch -- "${reqs[@]}"
     while IFS= read -r pending || [[ -n "$pending" ]]; do
       [[ -z "$pending" ]] || cp -- "$pending" "$work/requests/$(basename "$pending")"
     done < "$work/pending.txt"

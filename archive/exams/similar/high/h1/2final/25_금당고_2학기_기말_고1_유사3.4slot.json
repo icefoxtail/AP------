@@ -1,0 +1,1041 @@
+{
+  "schemaVersion": "archive-meta-4slot-v0",
+  "sourceArchiveFile": "similar/high/h1/2final/25_금당고_2학기_기말_고1_유사3.js",
+  "sourceGitBlobSha": "6031908ed7a242c1cd06128047cfe1fdc96fbbb5",
+  "dictionaryVersion": "term-dict-v1.6-2026-11-15",
+  "judgedBy": {
+    "agent": "Claude Sonnet 5.5 (DRAFT_SINGLE_MODEL)",
+    "at": "2026-11-20"
+  },
+  "candidates": [],
+  "selfCheck": {
+    "note": "단일 모델 초안(UNREVIEWED). 인용은 check-judgment 로 원문 포함을 확인했다."
+  },
+  "items": [
+    {
+      "sourceOrdinal": 1,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "자연수",
+            "src": "choices",
+            "quote": "을 만족시키는 자연수 $x$의 모임"
+          },
+          {
+            "term": "실수",
+            "src": "choices",
+            "quote": "아주 가까운 실수들의 모임"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 집합인 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "사람마다 판단 기준이 달라",
+            "evidenceType": "IMPLIED",
+            "justification": "보기 ①~⑤ 를 기준이 분명한 모임과 모호한 모임으로 나누어 집합 여부를 가린다"
+          },
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x-1)(x-2)=0$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "x^2-3x+2=0 을 (x-1)(x-2)=0 으로 인수분해해 해 1, 2 를 구한다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 2,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $A="
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "의 양의 배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "부분집합이 아닌 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "원소나열법",
+            "src": "solution",
+            "quote": "원소를 모두 구하면",
+            "evidenceType": "IMPLIED",
+            "justification": "15 미만의 3의 배수를 {3,6,9,12} 로 나열해 보기 원소와 비교한다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 3,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $A="
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "실수 $a$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$a^2-2=3^2-2=7$이 되어",
+            "evidenceType": "IMPLIED",
+            "justification": "a=3 을 A 의 원소 a^2-2 에 넣어 7 이 되는지 확인한다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "포함관계",
+            "src": "stem",
+            "quote": "$A\\subset B$이고 $B\\subset A$일 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 4,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U$에서"
+          },
+          {
+            "term": "진리집합",
+            "src": "stem",
+            "quote": "두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "반드시 참인 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "의 대우를 구하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "진리집합 사이의 포함 관계"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 5,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "조건",
+            "src": "stem",
+            "quote": "두 조건 $p$, $q$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "어떤 조건인가"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "부등식 $|x|<3$을 풀면",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 부등식 |x|<3 을 -3<x<3 으로 바꾸어 푼다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 6,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f:X\\to Y$가 그림과 같을 때"
+          },
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "두 집합 $X="
+          }
+        ],
+        "goal": [
+          {
+            "term": "판정",
+            "src": "stem",
+            "quote": "다음 중 옳지 않은 것은"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "서로 다른 원소의 함숫값이 모두 다르므로",
+            "evidenceType": "IMPLIED",
+            "justification": "보기 ①~⑤ 를 정의역·치역·일대일대응·역함수·함숫값으로 나누어 하나씩 참 거짓을 가린다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 7,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "두 함수 $f(x)=x^2-2$"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$(f\\circ g)(2)-(g\\circ f)(2)$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$f(3)=3^2-2=7$",
+            "evidenceType": "IMPLIED",
+            "justification": "g(2)=3 을 f(x)=x^2-2 에 넣어 f(3)=7 을 구한다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 8,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "일차함수",
+            "src": "stem",
+            "quote": "일차함수 $f(x)=ax+b$에"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수 $y=f^{-1}(x)$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$b-a$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "두 식을 $f(x)=ax+b$에 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "가감법",
+            "src": "solution",
+            "quote": "둘째 식에서 첫째 식을 빼면",
+            "evidenceType": "IMPLIED",
+            "justification": "두 식 a+b=4, 4a+b=1 을 빼서 b 를 없앤다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "모두 점 $(1,4)$를 지날 때"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 9,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "유리함수",
+            "src": "stem",
+            "quote": "유리함수"
+          },
+          {
+            "term": "평행이동",
+            "src": "stem",
+            "quote": "$x$축의 방향으로 $-2$만큼, $y$축의 방향으로 $3$만큼 평행이동한"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$k+p+q$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "평행이동",
+            "src": "solution",
+            "quote": "$y$축의 방향으로 $3$만큼 평행이동한 함수의 식은",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "이 그래프가 점 $(1,5)$를 지나므로 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "통과",
+            "src": "stem",
+            "quote": "평행이동한 그래프가 점 $(1,5)$를 지난다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 10,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "무리식",
+            "src": "stem",
+            "quote": "무리식 $\\sqrt{x+5}"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "자연수 $x$의 값의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "$2x\\le 10$",
+            "evidenceType": "IMPLIED",
+            "justification": "10-2x≥0 을 이항해 2x≤10, x≤5 로 푼다"
+          },
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$1,2,3,4,5$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "범위 -5≤x≤5 의 자연수를 1부터 5 까지 나열해 합 15 를 구한다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "범위",
+            "src": "solution",
+            "quote": "$x$의 값의 범위는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 11,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "양의 배수를 원소로 하는 집합"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "모든 자연수 $n$의 개수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$12,24,36,72$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "72의 약수 가운데 12의 배수를 나열해 4개를 센다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "포함관계",
+            "src": "solution",
+            "quote": "주어진 포함 관계는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 12,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "명제",
+            "src": "stem",
+            "quote": "두 실수 $x,y$에 대한 명제"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최댓값",
+            "src": "stem",
+            "quote": "실수 $a$의 값의 최댓값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대우",
+            "src": "solution",
+            "quote": "그 대우도 참이어야 한다",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "반례",
+            "src": "solution",
+            "quote": "대우가 거짓이 되는 반례가 생긴다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "항상성립",
+            "src": "solution",
+            "quote": "대우가 항상 참이다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 13,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "양수",
+            "src": "stem",
+            "quote": "두 양수 $x,y$에 대하여"
+          }
+        ],
+        "goal": [
+          {
+            "term": "최솟값",
+            "src": "stem",
+            "quote": "$x+y$의 최솟값을 $m$"
+          }
+        ],
+        "method": [
+          {
+            "term": "산술기하평균",
+            "src": "solution",
+            "quote": "산술평균과 기하평균의 관계에 의해",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "전개",
+            "src": "solution",
+            "quote": "식을 곱하여 전개하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "에 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "등호조건",
+            "src": "solution",
+            "quote": "즉 $x=2y$일 때 성립한다"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 14,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X="
+          },
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f:X\\to X$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$f^{10}(1)+f^{11}(4)$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "열거",
+            "src": "solution",
+            "quote": "$f^4(1)=f(4)=3$",
+            "evidenceType": "IMPLIED",
+            "justification": "f^1(1) 부터 f^4(1) 까지 차례로 계산해 나열하며 반복을 확인한다"
+          },
+          {
+            "term": "규칙",
+            "src": "solution",
+            "quote": "주기가 $3$으로 반복되고",
+            "evidenceType": "IMPLIED",
+            "justification": "합성 결과가 3번마다 반복되는 규칙으로 f^10(1)=f^1(1) 로 줄인다"
+          }
+        ],
+        "condition": []
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 15,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "함수",
+            "src": "stem",
+            "quote": "함수 $f(x)=\\sqrt{6x-17}+2$"
+          },
+          {
+            "term": "역함수",
+            "src": "stem",
+            "quote": "그 역함수 $y=f^{-1}(x)$의 그래프가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "길이",
+            "src": "stem",
+            "quote": "선분 $PQ$의 길이는"
+          }
+        ],
+        "method": [
+          {
+            "term": "인수분해",
+            "src": "solution",
+            "quote": "$(x-3)(x-7)=0$",
+            "evidenceType": "IMPLIED",
+            "justification": "x^2-10x+21=0 을 (x-3)(x-7)=0 으로 인수분해해 근 3, 7 을 구한다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "solution",
+            "quote": "$x\\ge\\dfrac{17}{6}$을 만족시키므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 16,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "의 그래프가 그림과 같을 때"
+          },
+          {
+            "term": "무리함수",
+            "src": "stem",
+            "quote": "무리함수 $y="
+          }
+        ],
+        "goal": [
+          {
+            "term": "사분면",
+            "src": "stem",
+            "quote": "그래프가 지나는 사분면은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "그래프가 점 $(0,-4)$를 지나므로 대입하면",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "수평",
+            "src": "solution",
+            "quote": "수평 점근선이 $y=-2$이므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 17,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "소수",
+            "src": "stem",
+            "quote": "한 자리의 소수"
+          },
+          {
+            "term": "배수",
+            "src": "stem",
+            "quote": "의 양의 배수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "합",
+            "src": "stem",
+            "quote": "모든 자연수 $k$의 값의 합은"
+          }
+        ],
+        "method": [
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "두 경우 모두 $k\\ge 21$이므로",
+            "evidenceType": "IMPLIED",
+            "justification": "합이 10 인 A∩B 가 {3,7} 인 경우와 {2,3,5} 인 경우로 나누어 k 를 구한다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "성립조건",
+            "src": "stem",
+            "quote": "이 성립하도록 하는"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 18,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "점",
+            "src": "stem",
+            "quote": "두 점 $A(-3,2)$, $B(1,4)$와"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $l:x+2y=k$가 있다"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "정수 $k$의 개수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "점과직선사이의거리",
+            "src": "solution",
+            "quote": "중심 $(-1,3)$에서 직선 $l$까지의 거리가 반지름 이하이어야 한다",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "양화",
+            "src": "stem",
+            "quote": "어떤 점 $P$에 대하여"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 19,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "상수함수",
+            "src": "stem",
+            "quote": "이 상수함수이고"
+          },
+          {
+            "term": "집합",
+            "src": "stem",
+            "quote": "집합 $X="
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "가능한 정수 $k$의 개수는"
+          }
+        ],
+        "method": [
+          {
+            "term": "완전제곱식",
+            "src": "solution",
+            "quote": "완전제곱식으로 나타내면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "경우분류",
+            "src": "solution",
+            "quote": "이 방정식은 다음 두 식으로 나뉜다",
+            "evidenceType": "IMPLIED",
+            "justification": "절댓값 안이 양수일 때와 음수일 때로 나누어 두 방정식으로 푼다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "중복불허",
+            "src": "stem",
+            "quote": "서로 다른 네 실수"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 20,
+      "format": "단일 정답",
+      "slots": {
+        "given": [
+          {
+            "term": "공역",
+            "src": "stem",
+            "quote": "정의역과 공역이 각각 실수 전체의 집합인"
+          }
+        ],
+        "goal": [
+          {
+            "term": "값",
+            "src": "stem",
+            "quote": "$g(2)$의 값은"
+          }
+        ],
+        "method": [
+          {
+            "term": "대입",
+            "src": "solution",
+            "quote": "$b=-a-3$을 대입하면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "부등식의성질",
+            "src": "solution",
+            "quote": "양변에 $2a$를 곱하면",
+            "evidenceType": "IMPLIED",
+            "justification": "양수 2a 를 곱해 -b≤2a 로 분모를 없앤다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "존재",
+            "src": "stem",
+            "quote": "역함수 $f^{-1}$가 존재하도록 하는"
+          },
+          {
+            "term": "경계조건",
+            "src": "solution",
+            "quote": "경계 $x=1$에서 이어져야 하므로"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 21,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "전체집합",
+            "src": "stem",
+            "quote": "전체집합 $U="
+          },
+          {
+            "term": "서로소",
+            "src": "stem",
+            "quote": "와 서로소인 $U$의 부분집합 $B$의 개수"
+          }
+        ],
+        "goal": [
+          {
+            "term": "개수",
+            "src": "stem",
+            "quote": "부분집합 $B$의 개수를 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "지수법칙",
+            "src": "solution",
+            "quote": "$2^{6-2}=2^4=16$",
+            "evidenceType": "IMPLIED",
+            "justification": "남은 원소 4개로 만든 부분집합의 개수를 2^4=16 으로 센다"
+          }
+        ],
+        "condition": [
+          {
+            "term": "공통",
+            "src": "solution",
+            "quote": "공통 원소가 없어"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    },
+    {
+      "sourceOrdinal": 22,
+      "format": "서술",
+      "slots": {
+        "given": [
+          {
+            "term": "그래프",
+            "src": "stem",
+            "quote": "의 그래프와 직선 $y=-x+k$가"
+          },
+          {
+            "term": "직선",
+            "src": "stem",
+            "quote": "직선 $y=-x+k$가"
+          }
+        ],
+        "goal": [
+          {
+            "term": "범위",
+            "src": "stem",
+            "quote": "실수 $k$의 값의 범위를 구하는"
+          }
+        ],
+        "method": [
+          {
+            "term": "치환",
+            "src": "solution",
+            "quote": "$t=\\sqrt{x+2}$라 놓으면",
+            "evidenceType": "NAMED"
+          },
+          {
+            "term": "판별식",
+            "src": "solution",
+            "quote": "판별식 $D>0$이어야",
+            "evidenceType": "NAMED"
+          }
+        ],
+        "condition": [
+          {
+            "term": "정의역제한",
+            "src": "solution",
+            "quote": "교점의 $x$좌표는 무리함수의 정의역"
+          }
+        ]
+      },
+      "steps": [],
+      "scenarioNote": "",
+      "reasons": {},
+      "review": {
+        "status": "UNREVIEWED"
+      }
+    }
+  ]
+}

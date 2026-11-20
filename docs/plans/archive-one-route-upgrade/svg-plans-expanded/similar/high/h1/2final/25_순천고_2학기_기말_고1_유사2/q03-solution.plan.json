@@ -1,0 +1,51 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLineCaption": {
+  "text": "두 조건의 공통 범위"
+ },
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "-2",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "6",
+       "state": "OPEN"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "RESULT",
+    "integerPoints": true
+   }
+  ]
+ },
+ "caption": "분자의 근호 안은 x+2≥0이므로 x≥-2, 분모의 근호 안은 6-x>0이므로 x<6이다. 공통 범위 -2≤x<6 안의 정수는 -2, -1, 0, 1, 2, 3, 4, 5이고 합은 12이므로 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x≥-2, x<6",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 조건의 공통 범위와 그 안의 정수점"
+ ]
+}

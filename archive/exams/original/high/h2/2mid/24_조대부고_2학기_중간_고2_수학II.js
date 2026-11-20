@@ -257,14 +257,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 접점의 $x$좌표를 $t$라 두고, 그 점에서의 접선이 $(1,4)$를 지난다는 조건을 이용한다.\n조건 정리: $f(x)=-x^2+x+3$이면 $f'(t)=-2t+1$이다.\n풀이 방향: 접선식 $y-f(t)=f'(t)(x-t)$에 $(1,4)$를 대입하여 접점 후보를 구하고, $p<0$인 접선을 고른다.\n정석 풀이:\n$4-f(t)=f'(t)(1-t)$에서 $4-(-t^2+t+3)=(-2t+1)(1-t)$이다.\n양변을 전개하면 $t^2-t+1=2t^2-3t+1$, 따라서 $t(t-2)=0$이므로 $t=0,2$이다.\n$t=0$일 때 기울기는 $1$, $t=2$일 때 기울기는 $-3$이므로 $p<0$에서 $t=2$이다.\n접선은 $y-1=-3(x-2)$, 즉 $y=-3x+7$이므로 $p=-3$, $q=7$, $pq=-21$이다.\n\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q08-solution.svg",
-    "solutionImageAlt": "포물선 y=−x²+x+3과 점 (1,4)를 지나는 두 접선 y=x+3, y=−3x+7을 그려, 접점 t=0, 2 중 기울기가 음수인 접선에서 p=−3, q=7, pq=−21임을 보여 준다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q8-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 위로 볼록한 포물선과 곡선 밖의 점 A, 두 접점 S, T, 점 A를 지나는 두 접선을 나타낸 그래프이다.",
+    "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "점 A(1,4)에서 곡선에 그은 접선은 접점의 x좌표 t가 0, 2인 두 개이다. t=0이면 접점 S(0,3)에서 기울기 1인 직선 y=x+3, t=2이면 접점 T(2,1)에서 기울기 -3인 직선 y=-3x+7이다. p<0이므로 후자이고 p=-3, q=7이다. 따라서 pq=-21이고 답은 ④이다.",
+    "solutionImageScale": 80
   },
   {
     "id": 9,
@@ -295,7 +297,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선 위의 두 점 A, B를 잇는 할선과 그 할선에 평행하며 두 점 P, Q에서 접하는 두 접선을 나타낸 그래프이다.",
+    "solutionImageCaption": "예: a=0일 때의 그래프이다. 구간 [-1,1]의 평균변화율은 a+2이고 f′(k)=6k²+a이므로 6k²+a=a+2에서 k²=1/3, k=±1/√3이다. 그림에서 할선 l은 A, B를 지나고 접선 m, n은 접점 P, Q에서 l과 평행하다. 두 값의 곱은 -1/3이므로 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -483,14 +490,15 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 두 극한 조건으로 삼차다항식의 최고차항 계수와 $x=-1$에서의 이중근 구조를 동시에 결정한다.\n조건 정리: 첫 조건에서 $f$는 최고차항 계수가 $\\dfrac14$인 삼차다항식이고, 둘째 조건에서 $(x+1)^2$이 인수이며 나눈 값의 $x=-1$에서의 극한이 $1$이다.\n풀이 방향: $f(x)=\\dfrac14(x+1)^2(x-r)$로 두고 $r$을 구한 뒤 $x=-3$에서 접선을 구한다.\n정석 풀이:\n$\\displaystyle\\lim_{x\\to-1}\\dfrac{f(x)}{(x+1)^2}=\\dfrac14(-1-r)=1$이므로 $r=-5$이다.\n따라서 $f(x)=\\dfrac14(x+1)^2(x+5)$이다.\n$f(-3)=2$이고, $f'(x)=\\dfrac14\\{2(x+1)(x+5)+(x+1)^2\\}$이므로 $f'(-3)=-1$이다.\n접선은 $y-2=-(x+3)$, 즉 $y=-x-1$이다.\n$x=-11$일 때 $y=10$이므로 $a=10$이다.\n\n따라서 정답은 ⑤이다.",
-    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q15-solution.svg",
-    "solutionImageAlt": "삼차함수 f(x)=1/4(x+1)²(x+5)의 그래프와 점 (−3,2)에서의 접선 y=−x−1을 그려, 이 접선이 x=−11에서 y=10을 지나 a=10임을 보여 준다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q15-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: x축과 x=-5에서 만나고 x=-1에서 접하는 삼차곡선과 점 T에서 접하는 직선을 나타낸 그래프이다.",
+    "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "subUnitKey": "H15-M2-05-TANGENT",
     "subUnit": "접선의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "f(x)=(x+1)²(x+5)/4이다. 그림은 x=-5에서 x축과 만나고 x=-1에서 x축에 접하는 삼차곡선이다. 점 T(-3,2)에서 f′(-3)=-1이므로 접선은 y=-x-1이고 x=-11에서 y=10이다(그림 범위 밖). 따라서 a=10이고 답은 ⑤이다."
   },
   {
     "id": 16,
@@ -519,14 +527,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 먼저 접선의 $y$절편 $g(t)$를 식으로 만든 뒤, $t=2$에서 함수값과 미분계수를 각각 맞춘다.\n조건 정리: $x=t$에서의 접선은 $y-f(t)=f'(t)(x-t)$이므로 $y$절편은 $g(t)=f(t)-tf'(t)$이다.\n풀이 방향: $g(2)$와 $g'(2)$를 구해 오른쪽 직선 $2at+b$의 값과 기울기에 맞춘다.\n정석 풀이:\n$f'(t)=3t^2-6t+2$이므로 $g(t)=t^3-3t^2+2t-t(3t^2-6t+2)=-2t^3+3t^2$이다.\n따라서 $g(2)=-4$, $g'(t)=-6t^2+6t$이므로 $g'(2)=-12$이다.\n미분가능하려면 먼저 연속이어야 하므로 $4a+b=-4$, 또 좌우 미분계수가 같아야 하므로 $2a=-12$이다.\n따라서 $a=-6$, $b=20$이고 $a+b=14$이다.\n\n따라서 정답은 ④이다.",
-    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q16-solution.svg",
-    "solutionImageAlt": "g(t)=−2t³+3t²의 그래프가 점 (2,−4)에서 끝나고, 같은 점에서 기울기 −12로 이어지는 직선 y=−12t+20을 그려 a=−6, b=20임을 보여 준다.",
-    "solutionImageSize": "medium",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q16-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 직선이 점 R에서 매끄럽게 이어진 함수의 그래프이며 곡선의 극소점 O, 극대점 Q가 표시되어 있다.",
+    "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImageCaption": "접선의 y절편은 g(t)=-2t³+3t²이다. t≥2에서 h(t)=2at+b가 직선이므로 t=2에서 값과 기울기를 맞춰야 한다. g(2)=-4, g′(2)=-12이므로 4a+b=-4, 2a=-12에서 a=-6, b=20이다. 그림은 이때의 h의 그래프로, 삼차곡선이 점 R(2,-4)에서 기울기 -12인 직선 y=-12t+20과 매끄럽게 이어진다. a+b=14이므로 답은 ④이다.",
+    "solutionImageScale": 80
   },
   {
     "id": 17,
@@ -677,7 +687,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE_DEFINITION",
     "subUnit": "미분계수",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 점 T에서 접하는 직선을 나타낸 그래프이며 T의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "(가)에서 h=f-g가 h(2)=0, h′(2)=0이다. 즉 f(2)=g(2), f′(2)=g′(2)이다. (나)에서 f(2)=g(2)=8, f′(2)=g′(2)=3이므로 f(x)=3x+2, g(x)=3x²-9x+14이다. 그림에서 직선 y=f(x)는 포물선 y=g(x)에 점 T(2,8)에서 접한다. f(1)=5, g(1)=8이므로 f(1)g(1)=40이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 22,
@@ -704,7 +719,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_조대부고_2학기_중간_고2_수학II/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼차곡선과 원점을 지나는 직선이 원점에서 접하고 한 점 P에서 다시 만나는 그래프이며 곡선의 극대점 M과 극소점 N이 표시되어 있다.",
+    "solutionImageCaption": "(가)에서 f′(2)=12+4a+b=0이다. f(x)-8x=x{x²+ax+(b-8)}이고 서로 다른 실근이 2개이려면 b=8이어야 하므로 a=-5이다. f(x)=x³-5x²+8x이면 f(x)-8x=x²(x-5)이어서 그림처럼 직선 y=8x가 원점 O에서 접하고 P(5,40)에서 다시 만난다. f′(x)=(3x-4)(x-2)이므로 x=2에서 극소이고 극솟값은 N(2,4)의 4이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 23,

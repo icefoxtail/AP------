@@ -1,0 +1,97 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "1",
+     "3"
+    ]
+   },
+   {
+    "coefficients": [
+     "5",
+     "-2",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "1",
+    "y": "4"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -2,
+   3
+  ],
+  "viewport": [
+   -3,
+   4,
+   -6,
+   9
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 1,
+    "y": 4
+   },
+   {
+    "id": "B",
+    "x": 2,
+    "y": 5
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "a",
+     "unnamed": true,
+     "curveX": "-1"
+    },
+    {
+     "id": "b",
+     "unnamed": true,
+     "curveX": "5/2"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "a",
+     "text": "y=3x+1",
+     "direction": "SE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c2",
+     "point": "b",
+     "text": "y=(x-1)^2+4",
+     "direction": "W",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "x<1에서 f(x)=3x+a는 증가하고 치역이 y<3+a이다. 역함수가 있으려면 x≥1에서 b>0이고 치역이 y≥4이므로 3+a=4, 즉 a=1이다. 예로 b=1이면 f(x)=(x-1)²+4이고 f(2)=5이므로 f⁻¹(5)=2이다. f⁻¹(5)=1+1/√b는 b=1일 때 최대 2이므로 a+f⁻¹(5)의 최댓값은 3이고 답은 ②이다.",
+ "sourceConditions": [
+  "f(x)=3x+a (x<1), b(x-1)²+4 (x≥1), 예: a=1, b=1"
+ ],
+ "newVisualInformation": [
+  "경계 (1,4)에서 이어지는 일대일대응(예: b=1)과 f(2)=5"
+ ]
+}

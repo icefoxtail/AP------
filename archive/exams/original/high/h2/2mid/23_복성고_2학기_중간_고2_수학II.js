@@ -264,7 +264,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "해설 그림: 구간 [-3,2]에서 V 모양으로 꺾이는 절댓값 그래프이며 꼭짓점 V와 양 끝점 A, B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f(x)=|x+1|+2는 꼭짓점 V(-1,2)에서 최솟값 m=2를 갖는다. 양 끝점은 A(-3,4), B(2,5)이고 더 큰 B에서 최댓값 M=5를 갖는다. 따라서 M+m=7이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -328,7 +332,12 @@ window.questionBank = [
     "subUnitKey": "H15-M2-03-DERIVATIVE",
     "subUnit": "미분",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_수학II/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽은 직선, 오른쪽은 삼차곡선이 점 P에서 매끄럽게 이어진 그래프이며 P의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "x=1에서 연속이려면 a-3=b+2이고 좌미분계수 a와 우미분계수 3+2b가 같아야 하므로 b=2, a=7이다. 그림은 이때 직선 y=7x-3과 삼차곡선 y=x³+2x²+1이 P(1,4)에서 기울기 7로 매끄럽게 이어지는 모습이다. a+b=9이므로 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 11,
@@ -469,7 +478,11 @@ window.questionBank = [
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_복성고_2학기_중간_고2_수학II/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 여섯 개의 점 A부터 F까지를 차례로 직선으로 이은 꺾은선 그래프이며 각 점의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "예: 여섯 점 A(-2,-1), B(-1,1), C(0,2), D(1,3), E(2,2), F(3,0)을 차례로 직선으로 이은 연속함수 f이다. h(x)=x²f(x)-2x-1은 x=-2, -1, 0, 1, 2, 3에서 -1, 2, -1, 0, 3, -7이므로 (-2,-1), (-1,0), (2,3)에서 부호가 바뀌어 근이 각각 하나 있고 h(1)=0이라 x=1도 근이다. 따라서 최소 4개이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

@@ -1,0 +1,149 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   4.5,
+   -1.5,
+   4.5
+  ],
+  "axisTickValues": {
+   "x": [
+    "1",
+    "2",
+    "3"
+   ],
+   "y": [
+    "1",
+    "2",
+    "3"
+   ]
+  },
+  "curves": [
+   {
+    "id": "f1",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "-1",
+     "4",
+     "-1"
+    ],
+    "domain": [
+     "0",
+     "2"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "f2",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "7",
+     "-4",
+     "1"
+    ],
+    "domain": [
+     "2",
+     "3"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "d",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "4"
+    ],
+    "style": "DASHED",
+    "color": "WARM",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "S0",
+     "x": "1",
+     "y": "1",
+     "unnamed": true,
+     "coordinates": false
+    },
+    {
+     "id": "S1",
+     "x": "1",
+     "y": "2",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "S2",
+     "x": "2",
+     "y": "2",
+     "unnamed": true,
+     "coordinates": false
+    },
+    {
+     "id": "S3",
+     "x": "2",
+     "y": "3",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "Y0",
+     "x": "0",
+     "y": "-1",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "E",
+     "x": "3",
+     "y": "4",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "a",
+     "from": "S0",
+     "to": "S1",
+     "dashed": true
+    },
+    {
+     "id": "b",
+     "from": "S1",
+     "to": "S2",
+     "dashed": true
+    },
+    {
+     "id": "c",
+     "from": "S2",
+     "to": "S3",
+     "dashed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "E",
+     "text": "f",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "caption": "x≥2에서 f(x)=(x-2)²+3은 증가하고 x<2에서 f(x)=-(x-2)²+3도 증가하며 치역이 겹치지 않아 f는 일대일대응이므로 g=f^{-1}이다. (g∘g)(a)=1에서 a=(f∘f)(1)이다. 직선 y=x를 이용한 점선 계단에서 보듯 f(1)=2, f(2)=3이므로 a=3이다.",
+ "newVisualInformation": [
+  "f(1)=2, f(2)=3을 직선 y=x를 이용한 계단으로 이어 (f∘f)(1)=3을 보인다."
+ ]
+}

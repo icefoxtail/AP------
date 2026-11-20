@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-c04beb265090-4dfd5638",
+  "sourceArchiveFile": "original/middle/m3/1final/25_풍덕중_1학기_기말_중3_기출c.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_bdcab596deae992c04b13f805c38efbbe86f9d5db606c650187b2263297dec2c",
+      "sourceOrdinal": 1,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+      "templateKey": "TPL_M3_FACTORIZATION_FACTOR_IDENTIFY",
+      "step": "곱 형태 인수 판별: 곱을 이루는 인수와 그 곱인지를 확인해 x-1을 제외한다.",
+      "note": "필요 TPL: 곱 형태 인수 판별: 곱을 이루는 인수와 그 곱인지를 확인해 x-1을 제외한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_ca58a5815fac1e69aa57a4efc0503cf49eae84e0a7224384ebb84bd2f7a327f4",
+      "sourceOrdinal": 10,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION",
+      "templateKey": "TPL_M3_QUADRATIC_EQUATION_ROOT_SUBSTITUTION_RECIPROCAL",
+      "step": "근의 관계식 나눗셈: p²+3p-1=0을 p로 나누어 p-1/p를 계산한다.",
+      "note": "필요 TPL: 근의 관계식 나눗셈: p²+3p-1=0을 p로 나누어 p-1/p를 계산한다. | 도구: TPL_NOT_ACTIVE",
+      "figure": false,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_119d76d2eb10f03a1697904958f345795f1eb9e08604cd99e8ddab1b27bc7c19",
+      "sourceOrdinal": 16,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_COEFFICIENT_SIGNS",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_FROM_PARABOLA_GRAPH",
+      "step": "위로 열린 개형과 제4사분면 꼭짓점에서 a>0,p>0,q<0을 읽는다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_091108d782853742f208c5997711ae7a65258ca2933937733cb3e8f2372068d8",
+      "sourceOrdinal": 17,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_PROPERTIES",
+      "templateKey": "TPL_M3_IDENTIFY_FALSE_PROPERTY_OF_TRANSLATED_PARABOLA",
+      "step": "표준형-2(x-2)²+5에서 축·꼭짓점·사분면·폭을 검증한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    }
+  ]
+}

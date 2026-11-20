@@ -47,7 +47,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B12",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "이등변 밑각에서 외각으로 보완",
-    "decisiveStep": "꼭지각50으로밑각65를구하고평각180에서빼115를얻는다."
+    "decisiveStep": "꼭지각50으로밑각65를구하고평각180에서빼115를얻는다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 변 BC를 C쪽으로 연장한 점 D가 있고 꼭지각 50°, 두 밑각 65°, 꼭짓점 C의 외각 x=115°가 표시되어 있으며 변 AB와 CA에 같은 눈금이 있다.",
+    "solutionImageCaption": "AB=AC이고 ∠A=50°이므로 두 밑각은 ∠B=∠ACB=(180°−50°)/2=65°이다. 꼭짓점 C에서의 외각은 평각에서 ∠ACB를 뺀 것이므로 ∠x=180°−65°=115°이다. 이는 이웃하지 않는 두 내각의 합 50°+65°=115°와도 같다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -98,7 +102,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "수직이등분선의 등거리와 각이등분 연결",
-    "decisiveStep": "DA=DB로두밑각을같게두고A의두반각과B의합90으로β를정한다."
+    "decisiveStep": "DA=DB로두밑각을같게두고A의두반각과B의합90으로β를정한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭짓점 C에서 직각인 직각삼각형 ABC의 변 BC 위에 점 D가 있고 선분 AD가 그어져 있다. DA와 DB에 같은 눈금이 있고 꼭짓점 B의 각, 각 DAB, 각 DAC에 같은 크기 30°가 표시되어 있다.",
+    "solutionImageCaption": "점 D가 AB의 수직이등분선 위에 있으므로 DA=DB이고 △DAB는 이등변삼각형이어서 ∠DAB=∠B이다. AD가 ∠A를 이등분하므로 ∠DAB=∠DAC이다. 따라서 ∠B=∠DAB=∠DAC이고 세 각의 합 ∠B+∠A+90°=180°에서 ∠B+2∠B=90°이므로 ∠B=30°이다. 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -147,7 +155,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "꼭지각 이등분선 위 점의 합동·각 성질 판정",
-    "decisiveStep": "밑변수직이등분과두SAS쌍으로네진술을확인하고임의점의중앙각90을배제한다."
+    "decisiveStep": "밑변수직이등분과두SAS쌍으로네진술을확인하고임의점의중앙각90을배제한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 꼭짓점 A에서 밑변 BC의 점 D로 선분 AD가 그어져 있고 D에 직각 표시가 있다. AD 위의 점 P에서 B와 C로 선분이 그어져 있으며 PB와 PC에 같은 눈금이 있다.",
+    "solutionImageCaption": "이등변삼각형에서 꼭지각의 이등분선 AD는 밑변 BC를 수직이등분하므로 AD 위의 점 P는 PB=PC이다. 따라서 ∠PBC=∠PCB(②), △ABP≡△ACP(SAS, ③), △PBD≡△PCD(④), ∠BPD=∠CPD(①)이다. 그러나 ∠BPC=90°라는 ⑤는 P의 위치에 따라 달라져 항상 성립하지 않는다. 따라서 옳지 않은 것은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -246,7 +258,11 @@ window.examData = {
     "subUnit": "삼각형의 성질",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "외심의 등거리·수직이등분·합동 성질 비교",
-    "decisiveStep": "꼭짓점등거리와변중점·RHS를확인하고서로다른변까지의거리가항상같다는진술을배제한다."
+    "decisiveStep": "꼭짓점등거리와변중점·RHS를확인하고서로다른변까지의거리가항상같다는진술을배제한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 세 변의 중점 M, N, L에서 수선이 세워져 점 O에서 만나고 O에서 세 중점과 세 꼭짓점으로 선분이 그어져 있다. 중점에 직각 표시가 있고 O에서 세 꼭짓점으로의 선분에 같은 눈금이 있다.",
+    "solutionImageCaption": "외심 O는 세 변의 수직이등분선의 교점이므로 M, N, L은 각 변의 중점이고 AM=BM이다(②). 외심에서 세 꼭짓점까지의 거리는 같아 OA=OB=OC이다(①). △OBN≡△OCN(RHS 합동, ④)이고 △OAL≡△OCL에서 ∠OAL=∠OCL(③)이다. 그러나 외심에서 각 변까지의 거리 OM, ON은 일반적으로 같지 않으므로 ⑤는 옳지 않다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -293,7 +309,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심각 공식의 직접 적용",
-    "decisiveStep": "BIC=90+A/2에A50을넣는다."
+    "decisiveStep": "BIC=90+A/2에A50을넣는다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부에 내심 I가 있고 I에서 B와 C로 선분이 그어져 있으며 꼭짓점 A의 각 50°, 각 BIC 115°, 꼭짓점 B와 C에서 이등분된 각이 같은 표시로 나타나 있다.",
+    "solutionImageCaption": "예: ∠A=50°, ∠B=70°, ∠C=60°인 삼각형으로 그렸다. 내심 I에서 BI, CI는 ∠B, ∠C의 이등분선이므로 ∠IBC=(1/2)∠B, ∠ICB=(1/2)∠C이다. ∠BIC=180°−(1/2)(∠B+∠C)=180°−(1/2)(180°−50°)=115°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -442,7 +462,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "내심을 지나는 평행선의 이등변과 둘레",
-    "decisiveStep": "각이등분과엇각으로DI=DB,EI=EC를얻어작은삼각형둘레를AB+AC로합친다."
+    "decisiveStep": "각이등분과엇각으로DI=DB,EI=EC를얻어작은삼각형둘레를AB+AC로합친다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내심 I를 지나 밑변 BC에 평행한 선분 DE가 변 AB, AC와 점 D, E에서 만나고 B와 C에서 I로 선분이 그어져 있다. 같은 크기의 각끼리 같은 표시가 있고 DI와 DB, EI와 EC에 같은 눈금이 있다.",
+    "solutionImageCaption": "예: AB=9cm, AC=7cm, BC=8cm인 삼각형으로 그렸다. I가 내심이므로 BI는 ∠B의 이등분선이고 DE∥BC이므로 ∠DIB=∠IBC=∠DBI이다. 따라서 △DBI는 이등변삼각형이고 DI=DB이며 같은 방법으로 EI=EC이다. △ADE의 둘레는 AD+DI+IE+EA=AD+DB+EC+EA=AB+AC=9+7=16cm이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -639,7 +663,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "정사각형 대각선의 SAS 대칭과 각 전달",
-    "decisiveStep": "대각선의45도와같은두변으로CBE,CDE를합동시켜65를옮기고외각에서45를뺀다."
+    "decisiveStep": "대각선의45도와같은두변으로CBE,CDE를합동시켜65를옮기고외각에서45를뺀다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 정사각형 ABCD의 대각선 AC 위에 점 E가 있고 B와 D에서 E로 선분이 그어져 있다. 각 BEC 65°, 꼭짓점 A의 각 45°, 각 EBA와 각 EDA에 같은 크기 20°가 표시되어 있다.",
+    "solutionImageCaption": "정사각형에서 AB=AD, AE는 공통, ∠BAE=∠DAE=45°이므로 △ABE≡△ADE(SAS 합동)이고 ∠EDA=∠EBA이다. △ABE에서 외각 ∠BEC=∠BAE+∠EBA이므로 65°=45°+∠EBA에서 ∠EBA=20°이다. 따라서 ∠EDA=20°이고 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -691,7 +719,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "연장선의 합동으로 직각삼각형 외심 구성",
-    "decisiveStep": "BE와CD연장교점G를만들어DG=DC를증명하고D를직각삼각형GCF의빗변중점으로본다."
+    "decisiveStep": "BE와CD연장교점G를만들어DG=DC를증명하고D를직각삼각형GCF의빗변중점으로본다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 평행사변형 ABCD에서 변 AD의 중점 E를 지나는 직선 BE가 변 CD의 연장선과 점 G에서 만나고 C에서 BE로 수선 CF가 내려져 있다. F에 직각 표시가 있고 D에서 F로 선분이 그어져 있으며 CD, DG, DF에 같은 눈금이 있고 AB 4, BC 6, DF 4가 적혀 있다.",
+    "solutionImageCaption": "직선 BE와 직선 CD의 교점을 G라 하면 △ABE≡△DGE(ASA 합동)이어서 DG=AB=4cm이고 BE=GE이다. 그러면 CG=CD+DG=8cm이고 D는 CG의 중점이다. △CFG는 ∠F=90°인 직각삼각형이고 D가 빗변 CG의 중점이므로 DF=DC=DG=4cm이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -736,7 +768,11 @@ window.examData = {
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "도형 종류의 항상 닮음 판정",
-    "decisiveStep": "원이나다각형의고정각·변비와달리이등변삼각형은꼭지각이자유롭다는반례로구별한다."
+    "decisiveStep": "원이나다각형의고정각·변비와달리이등변삼각형은꼭지각이자유롭다는반례로구별한다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 모양이 다른 두 이등변삼각형이 나란히 있고 각각 같은 두 변에 같은 눈금이 있다. 왼쪽은 꼭지각이 40°로 뾰족하고 오른쪽은 꼭지각이 100°로 납작하다.",
+    "solutionImageCaption": "예: 두 이등변삼각형의 꼭지각을 40°와 100°로 그렸다. 두 원, 두 정삼각형, 두 정사각형, 두 직각이등변삼각형은 각의 크기가 일정하게 정해져 항상 닮은 도형이다. 그러나 이등변삼각형은 두 변의 길이만 같고 꼭지각의 크기가 달라질 수 있어 그림처럼 닮음이 아닐 수 있다. 따라서 항상 닮은 도형이 아닌 것은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -832,7 +868,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "전체·부분 비에서 뒤바뀐 SAS 대응 선택",
-    "decisiveStep": "AB=2AC와AD=AB/4에서AD:AC=AC:AB=1:2를만들어공통각A의닮음을찾는다."
+    "decisiveStep": "AB=2AC와AD=AB/4에서AD:AC=AC:AB=1:2를만들어공통각A의닮음을찾는다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 AB 위에 점 D가 있고 선분 CD가 그어져 있다. 변 BC에 8, 선분 CD에 4가 적혀 있고 AD는 AB의 4분의 1이다.",
+    "solutionImageCaption": "예: AC=4cm, AB=8cm로 그린 그림이다. AC=b라 하면 AB=2b이고 BD=3DA에서 AD=(1/4)AB=b/2이다. △ADC와 △ACB에서 ∠A는 공통이고 AD:AC=(b/2):b=1:2, AC:AB=b:2b=1:2이므로 △ADC∽△ACB(SAS 닮음)이다. 닮음비가 1:2이므로 CD:BC=1:2에서 CD=(1/2)×8=4cm이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -1114,7 +1154,11 @@ window.examData = {
     "difficultyBoundaryFlag": "B23",
     "legacyLevelCompatibility": "UNKNOWN",
     "primaryMethod": "주어진 등각과 공통각의 AA 후 전체·부분 길이",
-    "decisiveStep": "ABC와EDC의AA를설명하고AC8:EC4=2:1로BC12에서EC4를뺀다."
+    "decisiveStep": "ABC와EDC의AA를설명하고AC8:EC4=2:1로BC12에서EC4를뺀다.",
+    "solutionImage": "assets/images/19_신흥중_2학기_중간_중2_수학/q23-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 변 AC 위에 점 D, 변 BC 위에 점 E가 있고 선분 DE가 그어져 있다. 꼭짓점 A의 각과 각 DEC에 같은 표시가 있고 AD 2, DC 6, CE 4, EB 8이 적혀 있다.",
+    "solutionImageCaption": "(1) △ABC와 △EDC에서 ∠A=∠DEC이고 ∠C는 공통이므로 두 각이 각각 같아 △ABC∽△EDC(AA 닮음)이다. (2) 대응변의 비에서 CA:CE=CB:CD이고 CA=2+6=8cm이므로 8:4=CB:6에서 CB=12cm이다. 따라서 BE=BC−EC=12−4=8cm이다.",
+    "solutionImageSize": "full"
   }
 ]
 };

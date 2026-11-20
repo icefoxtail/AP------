@@ -1,0 +1,137 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "6",
+   "2"
+  ],
+  "denominator": [
+   "1",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -9,
+   5
+  ],
+  "viewport": [
+   -9,
+   5,
+   -4,
+   10
+  ],
+  "axisTickValues": {
+   "x": [
+    "1"
+   ],
+   "y": [
+    "4",
+    "6"
+   ]
+  },
+  "equalUnits": true,
+  "overlays": {
+   "lines": [
+    {
+     "id": "L1",
+     "slope": "1",
+     "intercept": "3",
+     "style": "DASHED",
+     "color": "BLUE",
+     "label": "y=x+3"
+    },
+    {
+     "id": "L2",
+     "slope": "-1",
+     "intercept": "1",
+     "style": "DASHED",
+     "color": "WARM",
+     "label": "y=-x+1"
+    }
+   ],
+   "points": [
+    {
+     "id": "C",
+     "intersect": [
+      "L1",
+      "L2"
+     ],
+     "coordinates": true
+    },
+    {
+     "id": "P",
+     "curveX": "1",
+     "coordinates": true
+    },
+    {
+     "id": "X1",
+     "curveX": "-3",
+     "unnamed": true
+    },
+    {
+     "id": "Y1",
+     "curveX": "0",
+     "unnamed": true
+    },
+    {
+     "id": "AV",
+     "x": "-1",
+     "y": "8",
+     "unnamed": true
+    },
+    {
+     "id": "AH",
+     "x": "4",
+     "y": "2",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "X1",
+     "text": "(-3,0)",
+     "labelKind": "MATH",
+     "direction": "SW"
+    },
+    {
+     "id": "c2",
+     "point": "Y1",
+     "text": "(0,6)",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "c3",
+     "point": "AV",
+     "text": "x=-1",
+     "labelKind": "MATH",
+     "direction": "W"
+    },
+    {
+     "id": "c4",
+     "point": "AH",
+     "text": "y=2",
+     "labelKind": "MATH",
+     "direction": "S"
+    }
+   ]
+  },
+  "hideLabels": [
+   "formula",
+   "asymptotes"
+  ]
+ },
+ "pointNames": {
+  "C": "C",
+  "P": "P"
+ },
+ "caption": "두 대칭축 y=x+3, y=-x+1의 교점 C(-1,2)가 대칭의 중심이므로 점근선은 x=-1, y=2이다. 따라서 a=2, c=1이고, 점 P(1,4)를 지나므로 b=6이다. a+b+c=9이다. 따라서 답은 ②이다.",
+ "accessibilityDescription": "두 가지로 이루어진 유리함수 그래프와 두 점선 직선이 점 C에서 만나고, 그래프가 점 P를 지난다.",
+ "newVisualInformation": [
+  "두 대칭축의 교점 C(-1,2)가 점근선의 교점이며 그래프가 P(1,4)를 지난다."
+ ]
+}
