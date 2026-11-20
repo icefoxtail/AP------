@@ -7,6 +7,20 @@
 
 ---
 
+## 지금은 1단계: 설계와 plan만 쓴다 (2026-11-20 사용자 결정)
+
+- 이번 작업은 **문제 읽기 → 설계(design) → item.json·plan.json 작성 → plan-lint OK**까지다. 문제 그림과 해설 그림의 plan을 모두 쓴다.
+- **렌더, PNG, publish.json은 하지 않는다.** 이것은 2단계로, 렌더 환경이 있는 다른 라인이 맡는다. 작업 폴더에 SVG가 하나도 있으면 안 된다.
+- 상태는 `PLANNED`(설계·plan 완료), `NOT_NEEDED`(CHECK만, 근거 인용), `CONTENT`(문항 오류) 중 하나로 끝낸다.
+  - 엔진이 못 그릴 것 같아도 plan은 최대한 쓰고, 그 우려를 `note`에 적는다.
+- 아래 4-d·e·g와 5절의 렌더 관련 내용은 2단계용이다. 1단계 마감 검사는 `--stage plan`으로 한다(5절).
+- 순서: `index.json` 위에서부터 한다. 이미 정렬돼 있다.
+  - 학년: 중3 → 중2 → 중1 → 고3 → 고2 → 고1
+  - 같은 학년 안: 2학기 기말 → 2학기 중간 → 1학기 기말 → 1학기 중간
+  - 같은 시기 안: 최근 연도 먼저
+
+---
+
 ## 0. 절대 규칙
 
 - **SVG는 엔진 출력만 쓴다.** 손으로 쓴 SVG, 스크립트로 조립한 SVG, 다른 도구가 낸 SVG는 금지다.
@@ -47,7 +61,8 @@ node .tmp/work/render.mjs                                               # "usage
 
 - 렌더 의존성(playwright, 엔진 python 패키지, 글꼴)이 없으면 `archive/tools/geometry-equation/ops/claude-batch/README.md` "새 PC 준비" 4~6번대로 맞춘다.
   - 필요하면 `GEOMETRY_NODE_MODULES`, `GEOMETRY_BROWSER_EXECUTABLE`를 지정한다.
-- 렌더를 돌릴 수 없으면 그 사실만 보고하고 멈춘다. 렌더하지 않은 그림을 DONE으로 적지 않는다.
+- 1단계(plan만)는 위 restore·render 준비가 필요 없다. 저장소를 받고 merge만 하면 된다. plan-lint(`--shallow`)는 node만으로 돈다.
+- 렌더하지 않은 그림을 DONE으로 적지 않는다. 1단계에서는 PLANNED로 적는다.
 
 ## 3. 하네스 구조
 
@@ -80,7 +95,7 @@ node .tmp/work/render.mjs                                               # "usage
 **c. plan.** `item.json`({"sourcePath": stagePath, "ordinal": 문항 번호})과 `plan.json`을 쓴다.
 - plan은 `basedOn`의 구조를 본떠 **이 문항의 숫자·조건으로 바꾼다.** 그대로 복사한 plan은 검사기가 막는다(`PLAN_UNCHANGED_COPY`).
 - `mustShow`의 값이 모두 plan에 들어가야 한다.
-- `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <plan.json>`가 OK가 될 때까지 고친다.
+- `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs --shallow <plan.json>`가 OK가 될 때까지 고친다.
 
 **d. 엔진 렌더.**
 ```bash
@@ -123,6 +138,14 @@ node .tmp/svg-m1/svg2png.cjs <폴더>/out/<name>-solution.svg <폴더>/figure.pn
 
 ## 5. 시험지 마감
 
+**1단계(지금)**
+```bash
+node archive/tools/similar-import/svg-harness/check-svg-harness.mjs archive/similar-judgment/_svg/exams/<시험지>/harness.json --stage plan
+```
+- PASS가 나오면 그 시험지 폴더(harness.json, item.json, plan.json)만 커밋한다.
+- 커밋 메시지는 `svg plan: <시험지> (하네스 plan 단계 PASS)`로 쓰고, push한 뒤 다음 시험지로 간다.
+
+**2단계(렌더 라인, 나중)**
 ```bash
 node archive/tools/similar-import/svg-harness/check-svg-harness.mjs archive/similar-judgment/_svg/exams/<시험지>/harness.json
 ```
