@@ -1,0 +1,55 @@
+{
+  "qid": 17,
+  "itemFingerprint": "0de086d9156ee8ba",
+  "solveSteps": [
+    "a > 3 이고 a <= x < a^2 에서 밑 a > 1 인 로그를 취하면 1 <= log_a x < 2 이다. 4.5",
+    "t = log_a x 라 두면 1 <= t < 2 에서 log_a t < 1 이다. 4.5",
+    "t^2 과 2t 는 1 <= t < 2 에서 t^2 < 2t 이다. 4.5",
+    "따라서 log_a(log_a x) < (log_a x)^2 < log_a x^2 순이다. 4.5",
+    "정답은 ②이다. 4.5"
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "보다 큰 실수 $a$에 대하여 $a \\le x",
+  "rpmRecordId": "H2-M1-RPM-075",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_075",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "t=log_a x로 치환하여 1<=t<2에서 log_a t < t^2 < 2t 대소 관계를 판정했다. 4.5",
+  "typeReason": "로그 치환 t의 범위 [1, 2)에서 t^2, 2t, log_a t의 대소를 비교하는 4.5점 유형이다.",
+  "rpmReason": "로그의 성질과 치환 함수의 대소 비교를 다루는 심화 4.5점 RPM 유형이다.",
+  "difficultyReason": "치환 후 각 식의 구간 내 함수값을 비교하여 부등호를 결정하는 4.5점 난이도 3 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "실수",
+        "quote": "큰 실수 $a$에 대하여 $a \\le x < ",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "로그",
+        "quote": "인 로그를 취하면  \n$1 \\le \\log_a",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

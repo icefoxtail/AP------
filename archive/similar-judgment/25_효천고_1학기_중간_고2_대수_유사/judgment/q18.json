@@ -1,0 +1,55 @@
+{
+  "qid": 18,
+  "itemFingerprint": "65cb4860a5fdf896",
+  "solveSteps": [
+    "log_9 m = log_(3^k) n 에서 (1/2)*log_3 m = (1/k)*log_3 n 이므로 m^k = n^2 이다. 300",
+    "m, n은 1 이상 300 이하의 자연수이다.",
+    "교집합의 원소의 개수가 10개 이상이 되도록 하는 k의 개수를 구한다. 300",
+    "조건을 만족하는 k는 총 8개 존재한다. 300",
+    "정답은 ④이다. 300"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "두 집합 $A_9 = \\{\\log_9 1, \\",
+  "rpmRecordId": "H2-M1-RPM-076",
+  "problemTypeKey": "PT_H22A_01_LOG_PROPERTIES",
+  "templateKey": "TPL_H22A_01_LOG_PROPERTIES_076",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "m^k=n^2 부정방정식에서 m, n<=300 조건으로 교집합 원소 개수 10개 이상인 k 8개를 구했다.",
+  "typeReason": "로그 밑변환 공식을 이용해 지수 정수 조건 m^k=n^2 및 집합 교집합 원소 300을 카운트하는 유형이다.",
+  "rpmReason": "로그의 밑변환 공식으로 거듭제곱근 정수 관계 300을 분석하는 RPM 유형이다.",
+  "difficultyReason": "밑변환 후 거듭제곱 부정방정식의 순서쌍 개수가 300 이하 10개 이상이 되는 k를 세는 난이도 3 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "집합",
+        "quote": "두 집합 $A_9 = \\{\\log_9 1, \\",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "원소",
+        "quote": "여 원소의 개수를 구하면 다음과 같다.  \n-",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

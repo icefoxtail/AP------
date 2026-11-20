@@ -1,0 +1,55 @@
+{
+  "qid": 14,
+  "itemFingerprint": "a7315a4892901ffc",
+  "solveSteps": [
+    "(sin + cos)^2 = 1 + 2*sin*cos = 1/9 이므로 2*sin*cos = -8/9 이다. 17",
+    "(sin - cos)^2 = 1 - 2*sin*cos = 1 - (-8/9) = 17/9 이다.",
+    "sin < cos 조건에 의해 sin - cos < 0 이다. 17",
+    "따라서 sin - cos = -sqrt(17)/3 이다.",
+    "정답은 ⑤이다. 17"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "ta + \\cos\\theta = \\dfrac{",
+  "rpmRecordId": "H2-M1-RPM-100",
+  "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+  "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "합의 제곱에서 2sincos=-8/9를 구하고 차의 제곱 17/9와 음수 조건으로 -sqrt(17)/3을 구했다.",
+  "typeReason": "삼각함수의 합과 곱, 차의 관계식을 곱셈공식 변형 17에 적용하는 유형이다.",
+  "rpmReason": "sin+cos 값으로부터 sin-cos 17 값을 도출하는 삼각함수 관계 RPM 유형이다.",
+  "difficultyReason": "제곱 관계와 대소 부호를 적용해 -sqrt(17)/3을 판별하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "값",
+        "quote": "의 값은? (단, $\\sin\\theta < \\",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "값",
+        "quote": "의 값은? (단, $\\sin\\theta < \\",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}

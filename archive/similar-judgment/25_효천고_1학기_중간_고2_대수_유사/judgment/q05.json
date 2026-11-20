@@ -1,0 +1,55 @@
+{
+  "qid": 5,
+  "itemFingerprint": "88d7fb349c319e75",
+  "solveSteps": [
+    "점근선이 y = 3 이므로 함수 꼴은 y = a^(x-p) + 3 꼴이다. 13",
+    "x가 증가할 때 y도 증가하므로 밑이 1보다 크거나 증가함수이어야 한다. 13",
+    "③ y = 2^(x-2) + 3 은 밑 2 > 1 이므로 증가함수이고 점근선은 y = 3 이다. 13",
+    "x = 0 을 대입하면 y = 2^(-2) + 3 = 1/4 + 3 = 13/4 으로 점 (0, 13/4)를 지난다.",
+    "정답은 ③이다. 13"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "H22-A-02",
+  "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
+  "unitEvidence": "선이 직선 $y = 3$이고 점 $\\left(",
+  "rpmRecordId": "H2-M1-RPM-080",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "templateKey": "TPL_FUNCTION_GRAPH_TRANSFORM_ASYMPTOTE_POINT",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "how": "점근선 y=3과 증가함수 조건, 점 (0, 13/4) 통과를 만족하는 지수함수 ③ y=2^(x-2)+3을 구했다.",
+  "typeReason": "점근선, 증가 조건, 점 (0, 13/4) 대입 조건으로부터 알맞은 지수함수 식을 결정하는 유형이다.",
+  "rpmReason": "지수함수의 평행이동과 점근선, 13 함숫값을 검증하는 RPM 유형이다.",
+  "difficultyReason": "점근선과 증가 조건, 13/4 좌표 확인을 결합해 함수를 판별하는 난이도 2 문항이다.",
+  "slots": {
+    "given": [],
+    "goal": [
+      {
+        "term": "점근선",
+        "quote": "점근선이 직선 $y = 3$이고 점 $\\lef",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수함수",
+        "quote": "는 지수함수 $y = a^{x - p} + 3",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "review": {
+    "verdict": null,
+    "note": null,
+    "fixes": null
+  }
+}
