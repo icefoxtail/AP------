@@ -1,0 +1,57 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "fe58c9d6c024786c",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "6x - 5y + 10 = 0 에서 y = 6/5 x + 2 이다.",
+    "ax - 5y - 2 = 0 에서 y = a/5 x - 2/5 이다.",
+    "해가 없으므로 기울기가 같아야 하여 a/5 = 6/5, 즉 a = 6 이다.",
+    "해가 무수히 많으려면 두 직선이 일치해야 하므로 y절편이 같아야 한다.",
+    "따라서 2 - (-2/5) = 12/5 만큼 y축 방향으로 평행이동해야 한다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "연립방정식 $\\begin{c",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_LINE_RELATION",
+  "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+  "newKeyProposal": null,
+  "typeReason": "연립방정식 6x 식의 불능 조건으로 a=6을 찾고 일치 조건의 평행이동량 12/5 를 구하는 유형이다. ax",
+  "rpmRecordId": "M2-RPM-057",
+  "rpmReason": "두 직선의 평행 조건 a=6과 일치 조건을 만족하는 6x 평행이동량을 결정한다. ax",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "해가 없을 조건에서 a=6을 구하고 y절편 차이 12/5 를 계산해야 한다. 6x",
+  "how": "기울기가 같아 a=6이고 두 직선이 일치하도록 y절편 차 12/5만큼 평행이동해야 함을 구하였다. 6x",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} 6x - 5y + 10 = 0 \\ ax - 5y - 2 = 0 \\end{cases}$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "얼마만큼 평행이동해야 하는가?"
+      }
+    ],
+    "method": [
+      {
+        "term": "그래프",
+        "src": "solution",
+        "quote": "두 식을 $y$에 대하여 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

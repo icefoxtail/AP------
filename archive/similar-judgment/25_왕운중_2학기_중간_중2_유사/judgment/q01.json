@@ -1,0 +1,56 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "1ef15c3fed259fb3",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "두 점 (-3, 0)과 (0, 9)를 지나는 직선의 기울기는 (9 - 0) / (0 - (-3)) = 3 이다.",
+    "주어진 보기 중 기울기가 3인 직선을 찾는다.",
+    "① 3x - y + 4 = 0 에서 y = 3x + 4 이므로 기울기는 3이고 y절편은 4이다.",
+    "따라서 평행한 직선은 ①번이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 점 $(-3, 0)$과",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "TPL_LINE_PARALLEL",
+  "newKeyProposal": null,
+  "typeReason": "두 점을 지나는 직선의 기울기 3을 구하고 3x - y + 4 = 0 식의 평행을 판정하는 유형이다.",
+  "rpmRecordId": "M2-RPM-050",
+  "rpmReason": "기울기가 같고 y절편이 다른 3x 평행 조건을 적용한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기울기 3을 계산한 뒤 3x - y + 4 = 0 의 기울기와 일치함을 바로 확인할 수 있다.",
+  "how": "두 점의 기울기 3과 일치하는 일차방정식 3x - y + 4 = 0 을 골랐다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "두 점 $(-3, 0)$과 $(0, 9)$를 지나는 직선의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "평행한 일차방정식의 그래프는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기가 $3$으로 같고",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

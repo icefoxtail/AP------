@@ -1,0 +1,55 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "4e8c604a568c2931",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "직각삼각형 ABC의 넓이는 1/2 * 6 * 8 = 24 cm^2 이다.",
+    "내접원 반지름 r에 대해 24 = 1/2 * (10 + 6 + 8) * r = 12r 에서 r = 2 cm 이다.",
+    "삼각형 IAB 의 넓이는 1/2 * 10 * r = 1/2 * 10 * 2 = 10 cm^2 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\angle C = 90^",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_TRIANGLE_CENTERS",
+  "templateKey": "TPL_TRIANGLE_CENTERS_SEMANTIC",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 넓이로부터 내접원 반지름을 구하고 삼각형 IAB 의 넓이를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-067",
+  "rpmReason": "내심과 변 사이의 거리 r=2를 구해 삼각형 IAB 의 넓이에 적용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각형 넓이 24 = 12r 에서 r=2를 구하고 밑변 10과의 곱으로 넓이를 산출한다. IAB",
+  "how": "전체 넓이 24에서 내접원 반지름 r=2를 얻어 삼각형 IAB의 넓이 10을 구하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "src": "stem",
+        "quote": "직각삼각형 $ABC$의 내심을 $I$라 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "$\\triangle IAB$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "내접",
+        "src": "solution",
+        "quote": "내접원의 반지름의 길이를",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

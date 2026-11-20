@@ -1,0 +1,57 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "2a59605612408b38",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "y = x + 8 과 y = -3x - 4 의 y절편은 (0, 8)과 (0, -4)이다.",
+    "밑변의 길이는 8 - (-4) = 12 이다.",
+    "두 직선의 교점은 x + 8 = -3x - 4 에서 4x = -12, x = -3 이다.",
+    "y축에서 교점까지의 거리는 |-3| = 3 이다.",
+    "따라서 도형의 넓이는 1/2 * 12 * 3 = 18 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 일차방정식 $x - y",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+  "newKeyProposal": null,
+  "typeReason": "두 일차방정식과 3x 그래프의 교점 및 y절편으로 둘러싸인 삼각형 넓이 18 을 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-058",
+  "rpmReason": "두 직선의 y절편 차이와 교점 x좌표 절댓값으로 3x 도형의 넓이 18 을 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "교점 (-3, 5)와 y축 위의 밑변 12를 구하여 넓이 18을 도출해야 한다. 3x",
+  "how": "y절편 간격 12와 교점 x좌표 절댓값 3을 곱해 1/2*12*3 = 18을 구하였다. 3x",
+  "slots": {
+    "given": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "두 일차방정식 $x - y + 8 = 0$, $3x + y + 4 = 0$의 그래프와"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "$y$축으로 둘러싸인 도형의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "교점",
+        "src": "solution",
+        "quote": "두 직선의 교점은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

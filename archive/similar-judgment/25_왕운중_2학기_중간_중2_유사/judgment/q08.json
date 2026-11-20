@@ -1,0 +1,57 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "be2791627dde543b",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "직각이등변삼각형 ABC에서 AB = AC 이고 각 ADB = 각 CEA = 90도이다.",
+    "각 DAB + 각 DBA = 90도이고 각 DAB + 각 EAC = 90도이므로 각 DBA = 각 EAC 이다.",
+    "따라서 삼각형 ABD와 CAE는 RHA 합동이다.",
+    "AD = CE = 7 이고 AE = BD = 9 이다.",
+    "따라서 DE = DA + AE = 7 + 9 = 16 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\angle A = 90^",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
+  "problemTypeKey": "PT_RIGHT_TRIANGLE_CONGRUENCE",
+  "templateKey": "TPL_RIGHT_TRIANGLE_HYPOTENUSE_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "직각이등변삼각형의 꼭짓점을 지나는 직선에서 RHA 합동으로 선분 DE 의 길이를 구하는 유형이다.",
+  "rpmRecordId": "M2-RPM-071",
+  "rpmReason": "직각삼각형의 RHA 합동을 이용하여 대응변의 합으로 DE 를 계산한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 직각삼각형의 RHA 합동을 증명하고 AD=7, AE=9를 더해 16을 얻어야 한다. DE",
+  "how": "삼각형 ABD와 CAE의 RHA 합동에서 AD=7, AE=9를 찾아 DE=16을 계산하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직각이등변삼각형",
+        "src": "stem",
+        "quote": "$\\angle A = 90^\\circ$인 직각이등변삼각형 $ABC$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "수선",
+        "src": "stem",
+        "quote": "$\\overline{DE}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "($\\text{RHA}$ 합동)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

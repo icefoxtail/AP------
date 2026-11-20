@@ -1,0 +1,56 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "3d58266e33f8f22e",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "마름모의 두 대각선은 수직이므로 각 BOC = 90도이다.",
+    "삼각형 BOC에서 x = 180 - (90 + 54) = 36 이다.",
+    "정사각형의 두 대각선은 길이가 같고 서로 이등분하므로 y = 1/2 * 14 = 7 이다.",
+    "따라서 x + y = 36 + 7 = 43 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "마름모 $ABCD$의 두 대",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "newKeyProposal": null,
+  "typeReason": "마름모 대각선의 직교 성질과 정사각형 대각선 14 cm 이등분 성질을 결합하는 유형이다.",
+  "rpmRecordId": "M2-RPM-079",
+  "rpmReason": "마름모의 대각선 수직과 정사각형의 대각선 14 이등분 성질을 각각 적용한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "마름모에서 x=36을 구하고 대각선 14 에서 y=7을 얻어 합 43을 계산한다.",
+  "how": "마름모 직교에서 x=36, 정사각형 대각선 절반 y=7을 찾아 36+7=43을 구하였다. 14",
+  "slots": {
+    "given": [
+      {
+        "term": "마름모",
+        "src": "stem",
+        "quote": "마름모 $ABCD$의 두 대각선의 교점을 $O$라 할 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정사각형",
+        "src": "stem",
+        "quote": "이때 $x + y$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "마름모의 두 대각선은 서로 수직이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

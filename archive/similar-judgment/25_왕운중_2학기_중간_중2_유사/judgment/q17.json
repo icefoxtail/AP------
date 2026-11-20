@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "641e0d7d8ca794d7",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "평행사변형 넓이가 40 cm^2 이므로 대각선 4등분 넓이는 각각 10 cm^2 이다 (①, ④ 참).",
+    "삼각형 AOE 합동 COF 이므로 삼각형 AOE + BFO = 10 cm^2 이다 (② 참).",
+    "사각 FCDE 는 전체 넓이의 절반인 20 cm^2 이다 (⑤ 참).",
+    "직선 EF의 기울기에 따라 삼각형 FOB의 넓이는 변하므로 삼각형 AOB = FOB 는 항상 성립하지 않는다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "넓이가 $40\\text{ c",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "넓이 40 cm^2 인 평행사변형의 대각선 교점을 지나는 직선의 분할 넓이 성질을 검증하는 유형이다.",
+  "rpmRecordId": "M2-RPM-077",
+  "rpmReason": "대각선 교점을 지나는 직선에 의해 40 cm^2 평행사변형이 20 cm^2 로 이등분됨을 분석한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "40 cm^2 평행사변형에서 분할도형의 합동과 넓이 불변성을 판별해야 한다.",
+  "how": "F의 위치에 따라 삼각형 FOB의 넓이가 변하므로 항상 같지 않은 3번을 선택하였다. 40",
+  "slots": {
+    "given": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "넓이가 $40\\text{ cm}^2$인 평행사변형 $ABCD$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "다음 중 옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "src": "solution",
+        "quote": "두 대각선은 넓이를 $4$등분하므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
