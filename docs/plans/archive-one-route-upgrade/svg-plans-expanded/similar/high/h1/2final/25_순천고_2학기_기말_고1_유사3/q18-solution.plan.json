@@ -1,0 +1,146 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-1",
+   "3"
+  ],
+  "denominator": [
+   "-1",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   -3,
+   5
+  ],
+  "viewport": [
+   -4,
+   6,
+   -3,
+   9
+  ],
+  "equalUnits": true,
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "hideLabels": [
+   "formula"
+  ],
+  "overlays": {
+   "circles": [
+    {
+     "id": "K",
+     "center": [
+      "1",
+      "3"
+     ],
+     "radiusSquared": "5"
+    }
+   ],
+   "points": [
+    {
+     "id": "A",
+     "x": "2",
+     "y": "5",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "3",
+     "y": "4",
+     "unnamed": true
+    },
+    {
+     "id": "C",
+     "x": "0",
+     "y": "1",
+     "unnamed": true
+    },
+    {
+     "id": "D",
+     "x": "-1",
+     "y": "2",
+     "unnamed": true
+    },
+    {
+     "id": "K1",
+     "unnamed": true,
+     "x": "3",
+     "y": "2"
+    }
+   ],
+   "segments": [
+    {
+     "id": "AB",
+     "from": "A",
+     "to": "B",
+     "dashed": true
+    },
+    {
+     "id": "BC",
+     "from": "B",
+     "to": "C",
+     "dashed": true
+    },
+    {
+     "id": "CD",
+     "from": "C",
+     "to": "D",
+     "dashed": true
+    },
+    {
+     "id": "DA",
+     "from": "D",
+     "to": "A",
+     "dashed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cb",
+     "point": "B",
+     "text": "B(3,4)",
+     "direction": "E",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cc",
+     "point": "C",
+     "text": "C(0,1)",
+     "direction": "SW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cd",
+     "point": "D",
+     "text": "D(-1,2)",
+     "direction": "W",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "ck",
+     "point": "K1",
+     "text": "(x-1)^2+(y-3)^2=5",
+     "direction": "SE",
+     "labelKind": "MATH"
+    }
+   ]
+  },
+  "asymptoteLabelAt": "END"
+ },
+ "pointNames": {
+  "A": "A"
+ },
+ "caption": "u=x-1로 놓으면 y-3=2/u이고 원의 식에 대입하면 u⁴-5u²+4=0, 즉 u=±1, ±2이다. 네 교점은 A(2,5), B(3,4), C(0,1), D(-1,2)이고 사각형 ABCD는 직사각형이다. AB=√2, BC=3√2이므로 넓이는 6이다.",
+ "sourceConditions": [
+  "f(x)=2/(x-1)+3, 원 (x-1)²+(y-3)²=5가 만나는 네 점"
+ ],
+ "newVisualInformation": [
+  "곡선과 원의 네 교점 A, B, C, D와 직사각형 ABCD"
+ ]
+}

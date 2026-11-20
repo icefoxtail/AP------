@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-cd2831e21c24-fb92725c",
+  "requestSha256": "aaede04d42eff3be9fa53133843b465a6b6bda2031271143c94cf21c490cb2aa",
+  "examUid": "26_팔마중_1학기_기말_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/1final/26_팔마중_1학기_기말_중3_기출.js",
+  "sourceBlobSha1": "06f0cc09b64f6794235fa3cfc4909f73eafcc3d9",
+  "sourceRawSha256": "995043c4245f40c78caad0f8aeebcf9b57286f3b9d7f922e79df4aaba0754b5d",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd2831e21c24-fb92725c.type-ledger.json",
+        "sha256": "a66b070d4137be50e74c1b6187d61fb1ced6bb9c89cb59d5121cce619850f69b"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 1,
+    "stale": 0
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_6ac75fbfe3412c97569e46a24ac0edd8f53ca8de7382d3a2fd0f6728ab097c4e",
+      "sourceArchiveFile": "original/middle/m3/1final/26_팔마중_1학기_기말_중3_기출.js",
+      "sourceOrdinal": 4,
+      "problemTypeKey": "PT_M3_QUADRATIC_EQUATION_DOUBLE_ROOT",
+      "templateKey": "TPL_M3_SOLVE_PARAMETER_FROM_PERFECT_SQUARE_CONSTANT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-cd2831e21c24-fb92725c",
+        "judge": "dots",
+        "rationale": "상수항4k+1=9 조건으로 k2를 구한다.",
+        "scope": {
+          "curriculum": "2015",
+          "standardCourse": "중3-1",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "alias"
+        },
+        "judgedSourceFingerprint": "e02f11dfb0593fbba702316e84aa2ea32e80bbdec7f817126e911215ee1de466",
+        "judgedContentFingerprint": "61d8c770180737430f67278076115a01e45376608d941053d93611b231030fd2",
+        "rowBinding": "content",
+        "textBindingFingerprint": "9faba93177a467f8c39a51515c17df90febe6a95a63d14c2e9428c00cd027572",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-1final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-cd2831e21c24-fb92725c.json",
+        "priorType": {
+          "problemTypeKey": "QUADRATIC_EQUATION_DISCRIMINANT",
+          "templateKey": "QUADRATIC_EQUATION_DISCRIMINANT",
+          "problemTypeStatus": "approved_semantic_review",
+          "templateStatus": "approved_semantic_review"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

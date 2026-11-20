@@ -207,7 +207,7 @@ export function createWorkspace(workerHandle) {
   storage.set("APMATH_SESSION", JSON.stringify({ id: "fixture-teacher", session_token: "fixture-token" }));
   loadWorkspace(ctx, `
     render = () => {};
-    globalThis.ws = { state, scopeOptions, request, review, prepare, generate, savePapers, openSavedPaperRevision };
+    globalThis.ws = { state, scopeOptions, unifiedIndex, request, review, prepare, generate, savePapers, openSavedPaperRevision };
   `);
   const ws = ctx.ws;
   Object.assign(ws.state, {

@@ -1,0 +1,84 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -3,
+   5,
+   -3,
+   5
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "-3",
+     "2"
+    ],
+    "denominator": [
+     "-1",
+     "1"
+    ],
+    "domain": [
+     "-3",
+     "5"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "g",
+    "inverseOf": "f",
+    "color": "WARM",
+    "label": "y=f^-1(x)"
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-3",
+     "5"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1",
+     "y": "2",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "2",
+     "y": "1",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "파랑 곡선 y=f(x), 주황 곡선 y=f⁻¹(x)이다. f(x)=2−1/(x−1)의 점근선은 x=1, y=2이고 점근선의 교점은 A(1,2)이다. x<0에서 y는 2와 3 사이여서 제3사분면을 지나지 않으므로 ㄱ은 거짓이다. 역함수의 그래프는 y=x에 대칭이므로 두 점근선의 교점은 B(2,1)이어서 ㄴ은 참이다. 곡선 f가 점선 y=x와 만나지 않으므로 f(x)=x는 실근이 없어 ㄷ은 거짓이다. 따라서 답은 ②이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "f와 역함수의 그래프, 점근선의 교점, 직선 y=x와의 위치 관계를 보인다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "f가 제3사분면을 지나지 않고 y=x와 만나지 않으며 점근선의 교점이 A(1,2), 역함수의 점근선의 교점이 B(2,1)임을 보인다."
+ ],
+ "accessibilityDescription": "두 유리함수 곡선과 점선 y=x가 그려져 있고 두 곡선의 점근선 교점 A와 B가 y=x에 대칭인 위치에 표시되어 있다."
+}

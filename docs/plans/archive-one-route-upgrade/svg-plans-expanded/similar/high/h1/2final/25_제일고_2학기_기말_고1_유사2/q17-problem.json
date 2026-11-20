@@ -1,0 +1,133 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   12,
+   -1,
+   7
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "4"
+    ],
+    "domain": [
+     "0",
+     "25/4"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "start"
+    ],
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "2"
+    ],
+    "domain": [
+     "0",
+     "81/8"
+    ],
+    "color": "WARM",
+    "hideLabels": [
+     "start"
+    ],
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "4",
+     "y": "4"
+    },
+    {
+     "id": "B",
+     "x": "4",
+     "y": "0"
+    },
+    {
+     "id": "C",
+     "x": "8",
+     "y": "0"
+    },
+    {
+     "id": "D",
+     "x": "8",
+     "y": "4"
+    },
+    {
+     "id": "PF",
+     "x": "25/4",
+     "y": "5",
+     "unnamed": true
+    },
+    {
+     "id": "PG",
+     "x": "81/8",
+     "y": "9/2",
+     "unnamed": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "ab",
+     "from": "A",
+     "to": "B"
+    },
+    {
+     "id": "bc",
+     "from": "B",
+     "to": "C"
+    },
+    {
+     "id": "cd",
+     "from": "C",
+     "to": "D"
+    },
+    {
+     "id": "da",
+     "from": "D",
+     "to": "A"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "PF",
+     "text": "y=√(4x)",
+     "labelKind": "MATH",
+     "direction": "N"
+    },
+    {
+     "id": "c2",
+     "point": "PG",
+     "text": "y=√(2x)",
+     "labelKind": "MATH",
+     "direction": "E"
+    }
+   ]
+  }
+ },
+ "caption": "제1사분면에서 두 무리함수 y=√(4x), y=√(2x)의 그래프와 정사각형 ABCD이다. 점 A는 y=√(4x) 위에, 점 D는 y=√(2x) 위에 있고 AD는 x축에 평행하며, B, C는 A, D에서 x축에 내린 수선의 발이다.",
+ "sourceConditions": [
+  "A는 y=sqrt(4x) 위의 점이고 D는 y=sqrt(2x) 위에서 A와 y좌표가 같으며 B, C는 A, D에서 x축에 내린 수선의 발이고 ABCD는 정사각형이다."
+ ],
+ "newVisualInformation": [
+  "두 무리함수의 그래프와 정사각형 ABCD의 위치 관계"
+ ]
+}

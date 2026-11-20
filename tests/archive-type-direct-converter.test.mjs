@@ -18,7 +18,7 @@ const sha1 = bytes => crypto.createHash("sha1").update(`blob ${bytes.length}\0`)
 const questions = [1, 2, 3, 4, 5, 6, 7].map(n => ({ id: n, content: `학생용 지문 ${n}`, choices: ["1", "2"], answer: "1", solution: `해설 ${n}`, image: "" }));
 const bytes = Buffer.from(`window.questions = ${JSON.stringify(questions)};\n`);
 const registry = makeRegistry({
-  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
+  problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }, { problemTypeKey: "PT_DRAFT", status: "ACTIVE", ownerPack: "P1" }],
   templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_OTHER", status: "ACTIVE", parentProblemTypeKey: "PT_HIGH" }],
   bindings: [{ problemTypeKey: "PT_A", curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" },
     { problemTypeKey: "PT_HIGH", curriculum: "2015", standardCourse: "수학(상)", ownerPack: "P2", status: "ACTIVE" }],
@@ -292,14 +292,14 @@ test("selectable-by-type metric counts rows whose metadata is bound to the curre
   const stale = records.map(r => r.sourceOrdinal === 1 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
   const planned = new Map([["uid1", { pt: "PT_A", tpl: "TPL_A" }]]);
   const fresh = typeSelectable(makeCtx(), [EXAM], planned);
-  assert.equal(fresh.selectableBefore, 1); // uid3 already carries an approved PT_A and is bound
-  assert.equal(fresh.selectableAfter, 2);
+  assert.equal(fresh.selectableBefore, 2); // uid2 (a registered draft PT) and uid3 (approved PT_A) are bound and shown
+  assert.equal(fresh.selectableAfter, 3);
   assert.equal(fresh.plannedSelectable, 1);
   // a stale row (fingerprint of an older text) stays hidden unless planned; the planned type is shown
   const staleApproved = records.map(r => r.sourceOrdinal === 3 ? { ...r, contentFingerprint: "f".repeat(64) } : r);
-  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 0);
+  assert.equal(typeSelectable(makeCtx({ records: staleApproved }), [EXAM], planned).selectableBefore, 1); // only the registered draft of uid2 is still shown
   const hidden = typeSelectable(makeCtx({ records: stale }), [EXAM], planned);
-  assert.equal(hidden.selectableAfter, 2);
+  assert.equal(hidden.selectableAfter, 3);
   assert.equal(hidden.plannedSelectable, 1);
 });
 
@@ -355,46 +355,34 @@ test("reach: a key of a grade at or below the exam's grade is chosen; a key abov
   assert.equal(sc({ sourceArchiveFile: M3_20, standardCourse: "중3" }, "PT_LOW", makeCourseAliases(null)).skip, "SCOPE_PT_BOUND_TO_OTHER_COURSE");
 });
 
-test("a type written in the exam file: a dots judgment is registered as judged; another judge's judgment yields to a valid in-scope embedded type, and stands when the embedded type is dead or out of scope", () => {
-  const b = (problemTypeKey, curriculum, standardCourse, ownerPack) => ({ problemTypeKey, curriculum, standardCourse, ownerPack, status: "ACTIVE" });
-  const reg = makeRegistry({
-    problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_OFF", status: "INACTIVE", ownerPack: "P1" },
-      { problemTypeKey: "PT_HIGH", status: "ACTIVE", ownerPack: "P2" }],
-    templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }],
-    bindings: [b("PT_A", "2015", "중1 수학", "P1"), b("PT_B", "2015", "중1 수학", "P1"), b("PT_OFF", "2015", "중1 수학", "P1"), b("PT_HIGH", "2015", "수학(상)", "P2")],
-    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중1 수학"] }], ["P2", { curricula: ["2015"], standardCourses: ["수학(상)"] }]])
-  });
-  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_B", "TPL_B"], 3: ["PT_OFF", ""], 4: ["PT_HIGH", ""], 5: ["PT_A", "TPL_A"] };
-  const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n));
-  const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
-  const ctx = makeCtx({ records: recs, ctx: { registry: reg, readBank } });
-  const sonnet = { judge: "claude-sonnet-5.5" };
-  const { requests, stats } = planRequests({ ctx, resultRows: [line(1), line(2, sonnet), line(3, sonnet), line(4, sonnet), line(5, sonnet)], approvedBy: "테스트 결정" });
-  const items = requests.flatMap(r => r.items), after = Object.fromEntries(items.map(i => [i.questionUid, i.after]));
-  assert.deepEqual(after.uid1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "a dots judgment is registered as judged, the embedded value only differs");
-  assert.deepEqual(after.uid2, { problemTypeKey: "PT_B", templateKey: "TPL_B" }, "a non-dots judgment yields to a valid in-scope embedded type");
-  assert.match(items.find(i => i.questionUid === "uid2").rationale, /새 판정\(claude-sonnet-5\.5\): PT_A\/TPL_A/, "the new judgment stays on record in the rationale");
-  assert.deepEqual(after.uid3, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "a dead embedded key does not win");
-  assert.deepEqual(after.uid4, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded key outside the exam's course does not win");
-  assert.deepEqual(after.uid5, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, "an embedded type equal to the judgment changes nothing");
-  assert.deepEqual(stats.embeddedDiffers, { registeredDots: 1, registeredEmbedded: 1, registeredJudgment: { EMBEDDED_PT_NOT_ACTIVE: 1, EMBEDDED_OUT_OF_COURSE_SCOPE: 1 } });
+test("a type field filled with a key the registry does not have holds no value (an old key is replaced, its old value kept in before); an approved registered key is still protected", () => {
+  const sem = "approved_semantic_review";
+  const recs = records.map(r => r.sourceOrdinal === 1 ? { ...r, problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } : r);
+  const { requests, skipped } = planRequests({ ctx: makeCtx({ records: recs }), resultRows: [line(1), line(3)], approvedBy: "x" });
+  const item = requests[0].items.find(i => i.questionUid === "uid1");
+  assert.deepEqual(item.before, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" });
+  assert.deepEqual(item.after, { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+  assert.equal(skipped.find(x => x.uid === "uid3").reason, "TYPE_ALREADY_PRESENT", "uid3 holds an approved ACTIVE key and stays");
 });
 
-test("on a meta-foundation row an exam-embedded type that differs from the value to register keeps the question out of the request (the catalog counts it as a metadata conflict and the consumer check refuses it)", () => {
-  const reg = makeRegistry({
-    problemTypes: [{ problemTypeKey: "PT_A", status: "ACTIVE", ownerPack: "P1" }, { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }],
-    templates: [{ templateKey: "TPL_A", status: "ACTIVE", parentProblemTypeKey: "PT_A" }, { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }],
-    bindings: ["PT_A", "PT_B"].map(problemTypeKey => ({ problemTypeKey, curriculum: "2015", standardCourse: "중1 수학", ownerPack: "P1", status: "ACTIVE" })),
-    packs: new Map([["P1", { curricula: ["2015"], standardCourses: ["중1 수학"] }]])
-  });
-  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_B", "TPL_B"], 3: ["PT_A", "TPL_A"], 4: ["PT_B", ""] };
+test("a type written in the exam file never keeps a judged question out of a request (the registered judgment wins; the registrar records the embedded value)", () => {
+  const embedded = { 1: ["PT_B", "TPL_B"], 2: ["PT_A", "TPL_A"], 3: ["PT_OFF", ""] };
   const recs = [1, 2, 3, 4, 5, 6, 7].map(n => row(n, { metadataRevision: "meta-foundation:X" }));
   const readBank = () => ({ bank: questions.map((q, i) => ({ ...q, problemTypeKey: embedded[i + 1]?.[0] || "", templateKey: embedded[i + 1]?.[1] || "" })), bytes });
-  const ctx = makeCtx({ records: recs, ctx: { registry: reg, readBank } });
-  const sonnet = { judge: "claude-sonnet-5.5" };
-  const { requests, skipped } = planRequests({ ctx, resultRows: [line(1), line(2, sonnet), line(3), line(4, { tpl: null })], approvedBy: "x" });
+  const ctx = makeCtx({ records: recs, ctx: { readBank } });
+  const { requests } = planRequests({ ctx, resultRows: [line(1), line(2), line(3)], approvedBy: "x" });
   const after = Object.fromEntries(requests.flatMap(r => r.items).map(i => [i.questionUid, i.after]));
-  assert.deepEqual(Object.keys(after).sort(), ["uid2", "uid3"], "uid2 (a valid embedded type wins over a non-dots judgment) and uid3 (equal) are registered");
-  assert.deepEqual(after.uid2, { problemTypeKey: "PT_B", templateKey: "TPL_B" });
-  for (const uid of ["uid1", "uid4"]) assert.equal(skipped.find(s => s.uid === uid).reason, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT");
+  assert.deepEqual(Object.keys(after).sort(), ["uid1", "uid2", "uid3"]);
+  for (const uid of ["uid1", "uid2", "uid3"]) assert.deepEqual(after[uid], { problemTypeKey: "PT_A", templateKey: "TPL_A" });
+});
+
+test("a later result line for the same question is used when the earlier one was held; once one line is in a request the rest are duplicates", () => {
+  const held = line(1, { decision: "HOLD", pt: null, tpl: null });
+  const better = line(1, { judge: "claude-sonnet-5.5" });
+  const again = line(1, { judge: "dots" });
+  const { requests, skipped } = planRequests({ ctx: makeCtx(), resultRows: [held, better, again], approvedBy: "x" });
+  const items = requests.flatMap(r => r.items);
+  assert.equal(items.length, 1);
+  assert.equal(requests[0].approval.judge, "claude-sonnet-5.5");
+  assert.deepEqual(skipped.map(s => s.reason).sort(), ["DECISION_HOLD", "DUPLICATE_RESULT_LINE"]);
 });

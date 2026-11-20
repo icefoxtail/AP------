@@ -11,6 +11,7 @@ import { fileURLToPath } from "node:url";
 import { registerReviewedExamV2, receiptRecordMatchesRow } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 import { DIRECT_JUDGMENT, TYPE_FIELD_STATUS, DECISION_DOCUMENT } from "../archive/tools/meta-foundation/register-type-judgment.mjs";
 import { textFingerprint } from "../archive/tools/meta-foundation/text-binding-lib.mjs";
+import { isMetadataConflict } from "../archive/tools/metadata-conflict-field.mjs";
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CANON = "archive/data/meta-foundation/canonical";
@@ -245,6 +246,22 @@ test("an approved row that holds a value is still never overwritten; a blank fie
   // a request that claims "blank" for a field that actually holds a value
   const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
   assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })])), /before mismatch: uid1\.problemTypeKey/);
+});
+
+test("a type field that holds a key the registry does not have is not protected: an approved old key is replaced and kept in priorType; an ACTIVE registered key stays protected", t => {
+  const sem = "approved_semantic_review";
+  const a = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", fieldStatus: { problemType: sem, template: sem } } } });
+  a.run(a.request([a.item(1, { problemTypeKey: "PT_A", templateKey: "TPL_A" }, { before: { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL" } })]), { write: true });
+  const row = a.read("archive/data/question_metadata.json").records.find(r => r.questionUid === "uid1");
+  assert.equal(row.problemTypeKey, "PT_A");
+  assert.equal(row.fieldStatus.problemType, "approved_direct_judgment");
+  assert.deepEqual(row.typeApproval.priorType, { problemTypeKey: "OLD_KEY", templateKey: "OLD_TPL", problemTypeStatus: sem, templateStatus: sem });
+  // the old value must still be named in `before`
+  const b = fixture(t, { rowMutations: { 1: { problemTypeKey: "OLD_KEY", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => b.run(b.request([b.item(1, { problemTypeKey: "PT_A" }, { before: { problemTypeKey: "", templateKey: "" } })]), { write: true }), /before mismatch: uid1\.problemTypeKey/);
+  // an ACTIVE registered key with an approved status is final (PT_B is ACTIVE in the fixture registry)
+  const c = fixture(t, { rowMutations: { 1: { problemTypeKey: "PT_B", fieldStatus: { problemType: sem, template: sem } } } });
+  assert.throws(() => c.run(c.request([c.item(1, { problemTypeKey: "PT_A" })]), { write: true }), /type already approved: uid1\.problemType=approved_semantic_review/);
 });
 
 test("filling a blank approved row still needs every other check: course, registry and the judged text", t => {
@@ -599,4 +616,19 @@ test("a request is refused when a stem or the choices changed, or when an item h
   }
   const f = fixture(t);
   assert.throws(() => f.run(f.request([{ ...f.item(1, { problemTypeKey: "PT_A" }), textBindingFingerprint: undefined }]), { write: true }), /stem or choices differ from the judged text.*uid1/);
+});
+
+test("catalog conflict rule: the two type fields never count as a conflict, every other field keeps the old rule", () => {
+  // 유형 두 필드: 시험지 JS에 적힌 값과 행 값이 달라도 충돌이 아니다(등록 판정 유무와 무관, 값은 행 그대로 보인다).
+  assert.equal(isMetadataConflict("problemTypeKey", "PT_A", "PT_B"), false);
+  assert.equal(isMetadataConflict("templateKey", "TPL_A", "TPL_B"), false);
+  // 다른 필드: 둘 다 값이 있고 다르면 충돌.
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상"), true);
+  assert.equal(isMetadataConflict("reviewStatus", "reviewed_pass", "review_required"), true);
+  // 같거나, 시험지 쪽이 비었거나, 행 쪽 값이 없거나, 사이드카 행이면 충돌이 아니다.
+  assert.equal(isMetadataConflict("difficultyBucket", "상", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "", "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", null, "상"), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", undefined), false);
+  assert.equal(isMetadataConflict("difficultyBucket", "하", "상", { metaV2Sidecar: true }), false);
 });

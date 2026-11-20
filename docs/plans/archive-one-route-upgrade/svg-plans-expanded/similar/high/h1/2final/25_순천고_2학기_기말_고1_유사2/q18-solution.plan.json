@@ -1,0 +1,112 @@
+{
+ "capability": "rational-spike-v1",
+ "graphPlan": {
+  "family": "rational",
+  "numerator": [
+   "-5",
+   "3"
+  ],
+  "denominator": [
+   "-2",
+   "1"
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   2.25,
+   9
+  ],
+  "viewport": [
+   -3,
+   9,
+   -2,
+   9
+  ],
+  "equalUnits": true,
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "hideLabels": [
+   "formula"
+  ],
+  "overlays": {
+   "circles": [
+    {
+     "id": "K",
+     "center": [
+      "2",
+      "3"
+     ],
+     "radiusSquared": "10"
+    }
+   ],
+   "points": [
+    {
+     "id": "M",
+     "x": "2",
+     "y": "3",
+     "unnamed": true
+    },
+    {
+     "id": "P",
+     "x": "2573/500",
+     "y": "1659/500",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "x": "1159/500",
+     "y": "3073/500",
+     "unnamed": true
+    },
+    {
+     "id": "Kc",
+     "x": "5",
+     "y": "4",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cm",
+     "point": "M",
+     "text": "M(2,3)",
+     "direction": "SW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cp",
+     "point": "P",
+     "text": "P(2+√3+√2,3+√3-√2)",
+     "direction": "SE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cq",
+     "point": "Q",
+     "text": "Q(2+√3-√2,3+√3+√2)",
+     "direction": "NE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "ck",
+     "point": "Kc",
+     "text": "(x-2)^2+(y-3)^2=10",
+     "direction": "NE",
+     "labelKind": "MATH"
+    }
+   ]
+  },
+  "asymptoteLabelAt": "END"
+ },
+ "caption": "그림은 x>2인 오른쪽 가지의 두 교점이 문제의 두 점이다(왼쪽 가지는 정의역 밖). 원의 중심 M(2,3)은 곡선 y=1/(x-2)+3의 점근선의 교점이다. u=x-2로 놓으면 교점은 (2+u,3+1/u)이고 u²+1/u²=r²이다. 두 교점의 u의 곱이 1이므로 PQ²=2(r²-2)=16에서 r²=10이다.",
+ "sourceConditions": [
+  "f(x)=1/(x-2)+3 (x>2), 원 (x-2)²+(y-3)²=r², 두 교점 사이의 거리 4"
+ ],
+ "newVisualInformation": [
+  "곡선과 원의 교점, 원의 중심 M(2,3)"
+ ],
+ "pointNames": {}
+}

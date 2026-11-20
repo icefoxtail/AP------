@@ -178,7 +178,7 @@ const replaceRecords = () => [
   row(6, { problemTypeKey: "PT_B", templateKey: "", fieldStatus: { problemType: "", template: "" } }) // blank status with a value, differs
 ];
 const replaceLines = () => [1, 2, 3, 4, 5, 6].map(n => line(n, { decision: "PICK", pt: "PT_A", tpl: "TPL_A" }));
-const replaceCtx = () => { const c = makeCtx(replaceRecords()); c.registry.pt.set("PT_B", { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }); return c; };
+const replaceCtx = () => { const c = makeCtx(replaceRecords()); c.registry.pt.set("PT_B", { problemTypeKey: "PT_B", status: "ACTIVE", ownerPack: "P1" }); c.registry.tpl.set("TPL_B", { templateKey: "TPL_B", status: "ACTIVE", parentProblemTypeKey: "PT_B" }); return c; };
 
 test("replace mode: a draft value that differs from the judgment is replaced in a separate tr- request; default mode leaves it", () => {
   const off = planRequests({ ctx: replaceCtx(), resultRows: replaceLines(), approvedBy: "x" });

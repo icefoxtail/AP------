@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-bc67dc6c0538-1a82dc32",
+  "requestSha256": "733f1afbc9f02e3801cb94508a6af442f0f89f7929419327ce7a932825413eae",
+  "examUid": "23_순여중_2학기_기말_중3_기출",
+  "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+  "sourceBlobSha1": "f5ef767821a0ca8dff0c57c03a5d743faab53d8b",
+  "sourceRawSha256": "2675d94e8f965c81ba73fc2faa7c41934be17148eca5cfd9e3296d617359c342",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-1a82dc32.type-ledger.json",
+        "sha256": "57a42fd2a8938405a728c6e9746ead8c20280e4b4e56c60e95fab681b273f8d4"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_76615834f3cec761eeb5bac803803dbe93d485bb21092de4d34e20014102fd0a",
+      "sourceArchiveFile": "original/middle/m3/2final/23_순여중_2학기_기말_중3_기출.js",
+      "sourceOrdinal": 13,
+      "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+      "templateKey": "TPL_M1_CENTRAL_TENDENCY_AUDIT",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "approved_direct_judgment"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-bc67dc6c0538-1a82dc32",
+        "judge": "dots",
+        "rationale": "치수의 평균96, 중앙값95, 최빈값95를 구하고 등급자료의 평균 및 중앙값의 유일성을 검토하여③을 고른다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row",
+          "rowCourse": "중3 수학",
+          "courseRelation": "reach"
+        },
+        "judgedSourceFingerprint": "11f6abab3ebb7536df5d4d5681ebbaaf253f1cb689c343b7a4a832699c3d0250",
+        "judgedContentFingerprint": "05863a6fb68ad524f3d7071a3bf7b776950eb43965f9d18976ff6a6ef462ee8c",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "f2e175a3e6782eafd29c24b21b55547d66241de890db92c4617162fea4041dd8",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m3-2final.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-bc67dc6c0538-1a82dc32.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M1_CENTRAL_TENDENCY",
+          "templateKey": "TPL_M1_CENTRAL_TENDENCY_DEFINITION_CLAIM_AUDIT",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": null,
+          "templateKey": null,
+          "problemTypeStatus": "projection_unmaterialized",
+          "templateStatus": "projection_unmaterialized"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

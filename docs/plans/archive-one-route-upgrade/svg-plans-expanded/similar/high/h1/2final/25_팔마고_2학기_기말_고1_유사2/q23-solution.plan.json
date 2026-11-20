@@ -1,0 +1,159 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   16,
+   -2,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-4",
+     "2"
+    ],
+    "domain": [
+     "2",
+     "12"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "l1",
+    "kind": "LINE",
+    "coefficients": [
+     "-1",
+     "1/2"
+    ],
+    "domain": [
+     "0",
+     "12"
+    ],
+    "color": "WARM",
+    "hideLabel": true
+   },
+   {
+    "id": "l2",
+    "kind": "LINE",
+    "coefficients": [
+     "-1/2",
+     "1/2"
+    ],
+    "domain": [
+     "0",
+     "12"
+    ],
+    "color": "GREEN",
+    "hideLabel": true
+   },
+   {
+    "id": "l3",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1/2"
+    ],
+    "domain": [
+     "0",
+     "12"
+    ],
+    "color": "VIOLET",
+    "hideLabel": true
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "T",
+     "x": "4",
+     "y": "2",
+     "coordinates": true,
+     "labelDirection": "NW"
+    },
+    {
+     "id": "P",
+     "x": "10",
+     "y": "4",
+     "coordinates": true,
+     "labelDirection": "SE"
+    },
+    {
+     "id": "E3",
+     "x": "12",
+     "y": "6",
+     "unnamed": true
+    },
+    {
+     "id": "E2",
+     "x": "12",
+     "y": "11/2",
+     "unnamed": true
+    },
+    {
+     "id": "E1",
+     "x": "12",
+     "y": "5",
+     "unnamed": true
+    },
+    {
+     "id": "F0",
+     "x": "5/2",
+     "y": "1",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c3",
+     "point": "E3",
+     "text": "y=x/2",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "c2",
+     "point": "E2",
+     "text": "y=x/2-1/2",
+     "labelKind": "MATH",
+     "direction": "E"
+    },
+    {
+     "id": "c1",
+     "point": "E1",
+     "text": "y=x/2-1",
+     "labelKind": "MATH",
+     "direction": "SE"
+    },
+    {
+     "id": "cf",
+     "point": "F0",
+     "text": "y=√(2x-4)",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  }
+ },
+ "caption": "y=√(2x-4)에서 y²=2x-4이고 y=x/2+k에 대입하면 y²-4y+4k+4=0이다. 서로 다른 두 점에서 만나려면 0 이상의 서로 다른 두 실근이 필요하므로 D>0에서 k<0, 두 근의 곱 4k+4≥0에서 k≥-1이다. 직선이 끝점 (2,0)을 지날 때 k=-1, 접할 때 k=0이므로 그림에서 주황색 k=-1, 초록색 k=-1/2인 직선은 곡선과 두 점에서 만나고 보라색 k=0인 직선은 접점 (4,2)에서 접한다. 따라서 -1≤k<0이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "y=√(2x-4)와 y=x/2+k가 서로 다른 두 점에서 만난다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "k=-1, -1/2, 0일 때의 직선과 접점 (4,2)"
+ ]
+}

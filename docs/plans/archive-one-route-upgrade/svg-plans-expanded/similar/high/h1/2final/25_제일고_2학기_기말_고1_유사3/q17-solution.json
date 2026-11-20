@@ -1,0 +1,109 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   11,
+   -1,
+   6
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "3"
+    ],
+    "domain": [
+     "0",
+     "10"
+    ],
+    "color": "BLUE",
+    "hideLabels": [
+     "start"
+    ],
+    "label": "y=sqrt(3x)"
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "radicand": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "10"
+    ],
+    "color": "WARM",
+    "hideLabels": [
+     "start"
+    ],
+    "label": "y=sqrt(x)"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "3",
+     "y": "3",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "3",
+     "y": "0"
+    },
+    {
+     "id": "C",
+     "x": "9",
+     "y": "0"
+    },
+    {
+     "id": "D",
+     "x": "9",
+     "y": "3",
+     "coordinates": true
+    }
+   ],
+   "segments": [
+    {
+     "id": "ab",
+     "from": "A",
+     "to": "B",
+     "length": true
+    },
+    {
+     "id": "bc",
+     "from": "B",
+     "to": "C"
+    },
+    {
+     "id": "cd",
+     "from": "C",
+     "to": "D"
+    },
+    {
+     "id": "da",
+     "from": "D",
+     "to": "A",
+     "length": true
+    }
+   ]
+  }
+ },
+ "caption": "점 A의 x좌표를 a라 하면 A(a, √(3a))이고 D는 같은 높이의 y=√x 위의 점이므로 x좌표가 3a이다. 그러면 AD=2a, AB=√(3a)이고 AD=2AB에서 a=3이다. 그림은 a=3일 때 A(3,3), D(9,3), B(3,0), C(9,0)이며 AD=6, AB=3이다. 따라서 답은 ②이다.",
+ "sourceConditions": [
+  "점 A는 y=√(3x) 위, 점 D는 y=√x 위에 있고 AD는 x축에 평행하며 AD=2AB이다."
+ ],
+ "newVisualInformation": [
+  "a=3일 때 A(3,3), D(9,3)의 좌표와 AD=6, AB=3의 길이"
+ ]
+}
