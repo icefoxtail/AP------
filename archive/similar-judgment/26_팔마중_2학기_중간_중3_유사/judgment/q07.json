@@ -1,0 +1,66 @@
+{
+  "qid": 7,
+  "itemFingerprint": "e80905b9a4562592",
+  "solveSteps": [
+    "지점 A에서 나무 꼭대기 B를 올려본 각이 28도이고 밑변 거리가 15 m 이다.",
+    "눈높이 위 나무 높이는 15 * tan 28도 = 15 * 0.532 = 7.98 m 이다.",
+    "학생의 눈높이 1.5 m 를 더하면 전체 높이는 7.98 + 1.5 = 9.48 m 이다.",
+    "따라서 나무의 높이는 9.48 m(⑤)이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 학생이",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 학생이 나무로부터 $15\\text{ m}$ 떨어진 지점 $\\text{A}$에서",
+  "rpmRecordId": "M3-RPM-064",
+  "rpmReason": "올려본 각 28도를 이용해 높이를 측정하는 실생활 문제이므로 앙각·부각(M3-RPM-064)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "올려본 각 28도와 거리 15 m 에서 삼각비를 이용해 나무의 높이를 직접 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "밑변 15 m 와 tan 28도 = 0.532 로 7.98 m 를 구하고 눈높이 1.5 m 를 더해 9.48 m 를 구하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "이 학생의 눈높이가 $1.5\\text{ m}$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "이 나무의 높이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합",
+        "src": "solution",
+        "quote": "$$7.98 + 1.5 = 9.48\\text{ m}$$",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "거리 15 m 와 tan 28도 = 0.532 에서 높이 7.98 m 에 눈높이 1.5 m 를 합쳐 9.48 m 로 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

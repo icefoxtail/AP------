@@ -1,0 +1,67 @@
+{
+  "qid": 22,
+  "itemFingerprint": "250b4cbd093ac865",
+  "solveSteps": [
+    "성벽의 높이를 h m라 하면 직각삼각형 BCD에서 CD = h / tan 45도 = h m 이다.",
+    "직각삼각형 BCA에서 AC = h / tan 30도 = h*sqrt(3) m 이다.",
+    "AC - CD = 30 m 이므로 h*sqrt(3) - h = 30 이다.",
+    "(sqrt(3) - 1)h = 30 에서 h = 30 / (sqrt(3) - 1) = 15*(sqrt(3) + 1) m 이다.",
+    "따라서 성벽의 높이는 15*(sqrt(3) + 1) m 이다."
+  ],
+  "solvedAnswer": "$15(\\sqrt{3} + 1)\\text{ m}$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 성 밖의",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 성 밖의 $\\text{A}$ 지점에서 성벽의 꼭대기 $\\text{B}$ 지점을 올려본 각의 크기가 $30^\\circ$이고",
+  "rpmRecordId": "M3-RPM-064",
+  "rpmReason": "올려본각 30도와 45도를 이용해 성벽 높이를 측정하는 전형적인 문제이므로 앙각·부각(M3-RPM-064)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_SHARED_HEIGHT",
+  "typeReason": "두 지점에서 측정한 앙각과 거리 30 m를 이용해 공통 높이를 구하므로 공통 높이·거리 측량(TPL_TRIG_APPLICATION_SHARED_HEIGHT)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyReason": "두 올려본각 30도, 45도로 h*sqrt(3) - h = 30 방정식을 세우고 유리화하여 15*(sqrt(3)+1) m를 구하는 4단계 심화 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "성벽의 높이를 구하는 과정을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "높이",
+        "src": "stem",
+        "quote": "성벽의 높이를 구하는 과정을"
+      }
+    ],
+    "method": [
+      {
+        "term": "유리화",
+        "src": "solution",
+        "quote": "$$h = \\frac{30}{\\sqrt{3} - 1} = \\frac{30(\\sqrt{3} + 1)}{(\\sqrt{3} - 1)(\\sqrt{3} + 1)} = 15(\\sqrt{3} + 1)\\text{ m}$$",
+        "evidenceType": "IMPLIED",
+        "justification": "켤레무리수를 곱하여 분모를 유리화한다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "CD = h 와 AC = h*sqrt(3) 에서 h*(sqrt(3)-1) = 30 으로 높이 h = 15*(sqrt(3)+1) m 를 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

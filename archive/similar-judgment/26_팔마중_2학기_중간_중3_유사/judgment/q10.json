@@ -1,0 +1,67 @@
+{
+  "qid": 10,
+  "itemFingerprint": "3193a51f83846061",
+  "solveSteps": [
+    "직각삼각형 ABC에서 AC = 16, 각 A = 30도이므로 AB = 16 * cos 30도 = 8*sqrt(3) 이다.",
+    "BD 수직 AC 인 직각삼각형 ABD에서 BD = AB * sin 30도 = 8*sqrt(3) * (1/2) = 4*sqrt(3) 이다.",
+    "AD = AB * cos 30도 = 8*sqrt(3) * (sqrt(3)/2) = 12 이다.",
+    "삼각형 ABD 넓이 = (1/2) * AD * BD = (1/2) * 12 * 4*sqrt(3) = 24*sqrt(3) 이다.",
+    "따라서 삼각형 ABD의 넓이는 24*sqrt(3)(③)이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\angle\\text{B} = 90^\\circ$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 $\\angle\\text{B} = 90^\\circ$, $\\angle\\text{A} = 30^\\circ$, $\\overline{\\text{AC}} = 16$인 직각삼각형 $\\text{ABC}$에서",
+  "rpmRecordId": "M3-RPM-065",
+  "rpmReason": "직각삼각형 내부 수선 BD에 의한 부분삼각형 넓이를 삼각비로 계산하므로 보조선 활용(M3-RPM-065)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "직각삼각형 ABC 내부 수선에서 30도 삼각비를 연쇄 적용해 넓이를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "큰 직각삼각형 ABC에서 AB = 8*sqrt(3)을 구하고 삼각형 ABD에서 30도 삼각비로 넓이 24*sqrt(3)을 계산하는 3단계 발전 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "인 직각삼각형 $\\text{ABC}$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "삼각형 $\\text{ABD}$의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "src": "solution",
+        "quote": "$\\overline{\\text{BD}} \\perp \\overline{\\text{AC}}$이므로 직각삼각형 $\\text{ABD}$에서",
+        "evidenceType": "NAMED",
+        "justification": ""
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "AB = 8*sqrt(3)을 먼저 구하고 직각삼각형 ABD에서 AD = 12, BD = 4*sqrt(3)으로 넓이 24*sqrt(3)을 확정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}

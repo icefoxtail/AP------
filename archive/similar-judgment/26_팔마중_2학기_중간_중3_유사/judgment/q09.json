@@ -1,0 +1,66 @@
+{
+  "qid": 9,
+  "itemFingerprint": "a09b79fa81a9b484",
+  "solveSteps": [
+    "둔각삼각형 ABC의 넓이 공식은 (1/2) * 8 * 10 * sin(180 - A) = 20*sqrt(2) 이다.",
+    "40 * sin(180 - A) = 20*sqrt(2) 이므로 sin(180 - A) = sqrt(2) / 2 이다.",
+    "180 - A = 45도 이므로 각 A = 180 - 45 = 135도이다.",
+    "따라서 각 A = 135도(④)이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\overline{\\text{AB}} = 8\\text{ cm}$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "다음 그림과 같이 $\\overline{\\text{AB}} = 8\\text{ cm}$, $\\overline{\\text{AC}} = 10\\text{ cm}$인 삼각형 $\\text{ABC}$의 넓이가 $20\\sqrt{2}\\text{ cm}^2$일 때",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmReason": "두 변 AB = 8, AC = 10과 끼인각을 이용한 삼각형 ABC의 넓이 공식으로 넓이 20*sqrt(2)를 다루므로 삼각형의 높이·넓이(M3-RPM-061)에 해당한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "두 변 AB, AC와 넓이로부터 사잇각 A의 크기를 구하므로 삼각비로 직접 길이·높이·거리 구하기(TPL_TRIG_APPLICATION_DIRECT_MEASURE)이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "삼각형 ABC 넓이 20*sqrt(2)에서 sin(180-A) = sqrt(2)/2 를 구하고 각 A = 135도를 결정하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "인 삼각형 $\\text{ABC}$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle\\text{A}$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각비",
+        "src": "solution",
+        "quote": "$$\\sin(180^\\circ - A) = \\frac{20\\sqrt{2}}{40} = \\frac{\\sqrt{2}}{2}$$",
+        "evidenceType": "IMPLIED",
+        "justification": "삼각비 넓이 공식에서 sin(180-A)를 구해 각을 결정한다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "넓이 공식 40 * sin(180 - A) = 20*sqrt(2) 에서 180 - A = 45도이므로 각 A = 135도로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundary": "NONE"
+}
