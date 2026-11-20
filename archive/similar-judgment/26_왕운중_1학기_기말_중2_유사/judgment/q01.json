@@ -1,0 +1,79 @@
+{
+  "qid": 1,
+  "itemFingerprint": "d72be59f2d585a82",
+  "solveSteps": [
+    "1. 주어진 식 ax - 4y + 5 = -3x + by - 2 의 모든 항을 좌변으로 이항하여 정리하면 (a+3)x - (b+4)y + 7 = 0 이다.",
+    "2. 미지수가 2개인 일차방정식이 되려면 x와 y의 계수가 모두 0이 아니어야 한다.",
+    "3. 따라서 x의 계수에서 a+3 != 0 이므로 a != -3 이고, y의 계수에서 -(b+4) != 0 이므로 b != -4 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "미지수가 $2$개인 일차방정식이 되기 위한 조건을 구하면?",
+  "rpmRecordId": "M2-RPM-151",
+  "rpmReason": "식 ax - 4y + 5 = -3x + by - 2 가 미지수가 2개인 일차방정식이 되도록 계수 a, b 의 조건을 정하는 계수 결정 문항이다.",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "식 ax - 4y + 5 = -3x + by - 2 를 정리하여 미지수 x, y 가 모두 살아남도록 미정계수 조건을 판단하는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax 와 by 의 동류항을 이항해 계수가 0이 되지 않는 조건을 바로 찾는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a, b$는 상수)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "가 $2$개인 일차방정식이 되기 위한"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "항을 좌변으로 이항하여 정리하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "식 ax - 4y + 5 = -3x + by - 2 를 이항해 (a+3)x - (b+4)y + 7 = 0 으로 두고 a != -3, b != -4 임을 구하여 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "figureEvidenceQuote": "식 $ax - 4y + 5 = -3x + by - 2$가 미지수가 $2$개인 일차방정식이 되기 위한 조건을 구하면?",
+  "curriculumSubjectKey": "MIDDLE2",
+  "rpmRecordKey": "M2-RPM-151",
+  "difficulty": 2,
+  "mathTerms": [
+    {
+      "term": "일차방정식",
+      "quote": "가 $2$개인 일차방정식이 되기 위한"
+    },
+    {
+      "term": "미지수",
+      "quote": "y - 2$가 미지수가 $2$개인"
+    }
+  ],
+  "problemTextQuote": "미지수가 $2$개인 일차방정식이 되기 위한",
+  "solutionTextQuote": "$x$와 $y$의 계수가 모두 $0$이 아니어야 하므로"
+}

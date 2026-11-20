@@ -1,0 +1,65 @@
+{
+  "qid": 20,
+  "itemFingerprint": "c229f0d02fada869",
+  "solveSteps": [
+    "1. 일차방정식 -x + 2y = 4 의 양변에 -2 를 곱하면 2x - 4y = -8 이다.",
+    "2. ax - 4y = -8 과 일치하므로 x의 계수가 같아야 하므로 a = 2 이다.",
+    "3. -x + 2y = 4 의 양변에 3 을 곱하면 -3x + 6y = 12 이다.",
+    "4. -3x + 6y = 3b 와 만나지 않으려면(평행) 상수항이 달라야 하므로 3b != 12 에서 b != 4 이다.",
+    "5. 따라서 a + b != 2 + 4 = 6 이므로 a + b 의 값이 될 수 없는 것은 6 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "일차방정식 $-x + 2y = 4$의 그래프는 $ax - 4y = -8$의 그래프와는 일치하고",
+  "rpmRecordId": "M2-RPM-175",
+  "rpmReason": "-x + 2y = 4 와 ax - 4y = -8 의 일치 조건 및 -3x + 6y = 3b 와의 평행 조건으로 계수를 결정하는 두 직선의 평행·일치 문항이다.",
+  "problemTypeKey": "PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION",
+  "templateKey": "TPL_M2_FIND_PARAMETER_FOR_NO_SOLUTION_SYSTEM",
+  "typeReason": "-x + 2y = 4 와 일치하는 조건에서 ax - 4y = -8 과 비교해 a = 2, 만나지 않는 조건에서 3b != 12 를 구하여 a + b != 6 임을 판단하는 해가 없을 조건 유형이므로 PT_M2_SYSTEM_OF_EQUATIONS_NO_SOLUTION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "-x + 2y = 4 에서 a = 2 및 3b != 12 로 b != 4 를 찾아 a+b 가 6 이 될 수 없음을 판별하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a, b$는 상수)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차방정식",
+        "src": "stem",
+        "quote": "일차방정식 $-x + 2y = 4$의"
+      }
+    ],
+    "method": [
+      {
+        "term": "상등",
+        "src": "solution",
+        "quote": "과 일치하려면 $a = 2$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "-x + 2y = 4 로부터 일치 조건 a=2 와 평행 조건 3b != 12 (b != 4) 를 얻어 a+b 가 6 이 될 수 없음을 확인하여 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

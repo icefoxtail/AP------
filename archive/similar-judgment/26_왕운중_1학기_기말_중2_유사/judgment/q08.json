@@ -1,0 +1,64 @@
+{
+  "qid": 8,
+  "itemFingerprint": "6e4a53dc60295e71",
+  "solveSteps": [
+    "1. 타일 한 장의 짧은 변을 x cm, 긴 변을 y cm 라 하면 위쪽 5장 가로와 아래쪽 6장 가로가 같으므로 6x = 5y 이다.",
+    "2. 큰 직사각형의 가로는 6x cm 이고 세로는 (x + y) cm 이므로 둘레는 2(6x + x + y) = 164 에서 7x + y = 82 이다.",
+    "3. y = 82 - 7x 를 6x = 5y 에 대입하면 6x = 5(82 - 7x) = 410 - 35x 에서 41x = 410 이므로 x = 10 이다.",
+    "4. y = 82 - 70 = 12 이므로 타일 한 장의 넓이는 10 * 12 = 120 cm^2 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "모양과 크기가 같은 직사각형 모양의 타일 $11$장을 겹치지 않게 빈틈없이 이어 붙여",
+  "rpmRecordId": "M2-RPM-162",
+  "rpmReason": "타일 11장을 이어붙인 큰 직사각형의 둘레 164 cm 조건으로 연립방정식을 세워 타일의 넓이 120 을 구하는 도형 활용 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "타일 배치 조건을 6x = 5y 와 둘레 164 cm 로부터 7x + y = 82 로 연립방정식을 세워 푸는 도형 활용 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "타일의 가로·세로 변의 관계식 6x=5y 와 둘레 164 를 연립해 410 을 풀어 넓이를 구하는 3단계 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "둘레",
+        "src": "stem",
+        "quote": "둘레의 길이가 $164\\text{ cm}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "타일 한 장의 넓이를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 모양의 타일 $11$장",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "타일의 변 6x=5y 와 둘레 164 로부터 7x+y=82 를 연립하여 x=10, y=12 를 얻어 타일 넓이 120 cm^2 를 구해 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "qid": 7,
+  "itemFingerprint": "f110b50fe40e34b6",
+  "solveSteps": [
+    "1. 연립방정식 cases ax + by + c = 0, a'x + b'y + c' = 0 의 해의 개수는 두 일차방정식이 나타내는 직선의 위치 관계에 따른다.",
+    "2. ① a != a', b != b' 이더라도 계수의 비가 같으면 평행하거나 일치할 수 있으므로 항상 해가 하나뿐인 것은 아니다.",
+    "3. ② a=a', b=b', c=c' 이면 두 식이 완전히 일치하므로 해가 무수히 많다.",
+    "4. ③ a=a', b=b', c!=c' 이면 기울기가 같고 절편이 달라 평행하므로 해가 없다.",
+    "5. ④ a != 0, b = 0 이면 x = -c/a (y축 평행 직선)이고 a' = 0, b' != 0 이면 y = -c'/b' (x축 평행 직선)이므로 한 점에서 수직으로 만나 해가 오직 하나뿐이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} ax + by + c = 0 \\ a'x + b'y + c' = 0 \\end{cases}$ ($a, b, c, a', b', c'$는 상수)에 대한 설명으로 옳은 것은?",
+  "rpmRecordId": "M2-RPM-155",
+  "rpmReason": "일반형 ax + by + c = 0 과 a'x + b'y + c' = 0 의 계수 조건에 따른 해의 개수 상태를 판별하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "연립방정식 cases ax + by + c = 0, a'x + b'y + c' = 0 의 계수 조건에 따른 해의 개수를 분석하는 문항이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax + by + c = 0 의 계수 조건과 직선의 위치 관계를 종합적으로 이해해야 하는 3단계 개념 분석 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "는 상수)에 대한 설명으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin"
+      }
+    ],
+    "method": [
+      {
+        "term": "해",
+        "src": "solution",
+        "quote": "로 해가 오직 하나뿐이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ax + by + c = 0 과 a'x + b'y + c' = 0 에서 b=0, a'=0 이면 수직 교차하여 해가 오직 하나임을 확인하여 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
