@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "14",
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "7"
+        ],
+        "label": "y=(x-4)^2-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=x^2을 x축 4, y축 -2 평행이동한 y=(x-4)^2-2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=(x-4)^2-2 평행이동",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 두 포물선"
+  ]
+}

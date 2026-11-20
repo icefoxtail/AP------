@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "4",
+      "1"
+    ],
+    "domain": [
+      -4,
+      0
+    ],
+    "viewport": [
+      -5,
+      2,
+      -1,
+      7
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "a>0, p<0, q>0인 이차함수 y=a(x-p)^2+q의 그래프 개형",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0 (아래로 볼록), 꼭짓점 (p, q)가 제2사분면",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "제2사분면에 꼭짓점이 있는 아래로 볼록한 포물선"
+  ]
+}

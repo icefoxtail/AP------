@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-8/3",
+      "4/3",
+      "1/3"
+    ],
+    "domain": [
+      -6,
+      2
+    ],
+    "viewport": [
+      -7,
+      3,
+      -6,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -2,
+        "y": -4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점이 (-2, -4)인 y=1/3(x+2)^2-4의 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=1/3(x+2)^2-4",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (-2, -4)"
+  ]
+}

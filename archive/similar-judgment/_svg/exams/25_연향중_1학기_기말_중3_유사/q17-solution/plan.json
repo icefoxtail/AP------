@@ -1,0 +1,50 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "29",
+          "12",
+          "1"
+        ],
+        "domain": [
+          "-9",
+          "-3"
+        ],
+        "label": "y=(x+6)^2-7"
+      },
+      {
+        "id": "c2",
+        "kind": "LINE",
+        "coefficients": [
+          "-1",
+          "1"
+        ],
+        "domain": [
+          "-8",
+          "2"
+        ],
+        "label": "y=x-1"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "k=-3일 때 꼭짓점 (2k, -k^2-4k-10)=(-6, -7)이 직선 y=x-1 위에 위치함",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (2k, -k^2-4k-10)과 직선 y=x-1",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 위에 있는 포물선의 꼭짓점"
+  ]
+}

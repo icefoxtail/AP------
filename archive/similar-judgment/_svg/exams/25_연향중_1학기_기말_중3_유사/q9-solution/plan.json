@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-6",
+          "6"
+        ],
+        "label": "y=1/2x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-7",
+          "7"
+        ],
+        "label": "y=-1/2x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=1/2x^2과 x축 대칭인 y=-1/2x^2의 그래프",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 (-4, 8)을 지나는 y=1/2 x^2",
+      "mappedTo": "graphPlan.curves"
+    },
+    {
+      "id": "c2",
+      "condition": "x축에 대칭인 y=-1/2 x^2 위의 점 (6, -18)",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "x축 대칭 포물선 쌍"
+  ]
+}

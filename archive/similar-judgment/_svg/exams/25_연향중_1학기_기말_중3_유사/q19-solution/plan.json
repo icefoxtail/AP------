@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-4",
+      "4",
+      "-1"
+    ],
+    "domain": [
+      0,
+      4
+    ],
+    "viewport": [
+      -1,
+      5,
+      -6,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (2, 8-2a)에서 a=4일 때 꼭짓점 (2, 0)이 x축 위에 접함",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (2, 8-2a)가 x축 위에 있음 (8-2a=0)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "x축에 접하는 포물선의 꼭짓점"
+  ]
+}

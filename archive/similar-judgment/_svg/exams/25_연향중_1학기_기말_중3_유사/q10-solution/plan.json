@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-2",
+          "0",
+          "4"
+        ],
+        "domain": [
+          "-2",
+          "2"
+        ],
+        "label": "y=4x^2-2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "y=4x^2과 y축 방향으로 -2 평행이동한 y=4x^2-2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=4x^2-2는 y=4x^2를 y축 방향으로 -2 평행이동",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "y축 방향 평행이동한 두 포물선"
+  ]
+}
