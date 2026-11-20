@@ -1,0 +1,71 @@
+{
+  "qid": "21",
+  "itemFingerprint": "ff8d92c979d3a65d",
+  "solveSteps": [
+    "동경 theta와 3theta가 y축에 대칭이므로 theta + 3theta = 2n\\pi + \\pi (n은 정수)이다.",
+    "4\\theta = (2n + 1)\\pi => \\theta = ((2n + 1)/4)\\pi이다.",
+    "0 < \\theta < 2\\pi이므로 n = 0, 1, 2, 3일 때 \\theta = \\pi/4, 3\\pi/4, 5\\pi/4, 7\\pi/4이다.",
+    "sin\\theta + cos\\theta < 0을 만족하는 각은 제3사분면의 각인 \\theta = 5\\pi/4뿐이다.",
+    "tan(\\theta + 5\\pi/12) = tan(5\\pi/4 + 5\\pi/12) = tan(20\\pi/12) = tan(5\\pi/3)이다.",
+    "tan(5\\pi/3) = tan(2\\pi - \\pi/3) = -\\tan(\\pi/3) = -\\sqrt{3}이다."
+  ],
+  "solvedAnswer": "-\\sqrt{3}",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-04",
+  "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+  "unitEvidence": "각 $\\theta$를 나타내는 동경과",
+  "rpmRecordId": "H2-M1-RPM-095",
+  "rpmReason": "두 동경의 y축 대칭 조건과 sin+cos < 0으로 5\\pi/4를 특정하고 tan 20\\pi/12를 구하는 4점 문제이다.",
+  "problemTypeKey": "PT_H22A_04_ANGLE_RADIAN",
+  "templateKey": "NONE",
+  "typeReason": "각변환 공식을 이용해 삼각방정식을 일차·이차방정식 형태로 정리하고 실근의 범위를 구하는 유형이다 (12, 20 관련 풀이).",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "4theta = (2n+1)pi에서 5pi/4를 선별하고 tan(20pi/12) = -\\sqrt{3}을 내는 4점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "DESCRIPTIVE",
+  "slots": {
+    "given": [
+      {
+        "term": "일반각",
+        "src": "stem",
+        "quote": "$를 나타내는 동경과 각 $3\\t"
+      }
+    ],
+    "goal": [
+      {
+        "term": "탄젠트",
+        "src": "stem",
+        "quote": "$일 때, $\\tan\\left(\\t"
+      }
+    ],
+    "method": [
+      {
+        "term": "대칭성",
+        "src": "stem",
+        "quote": "$축에 대하여 대칭이고 $\\sin",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사분면",
+        "src": "solution",
+        "quote": "키는 각은 제3사분면의 각인 $\\t"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 동경의 y축 대칭과 부호 조건을 확인한다.",
+    "goal": "탄젠트 식의 값을 구한다.",
+    "method": "두 각의 합이 2n pi + pi임을 이용해 theta를 구한다.",
+    "condition": "sin + cos < 0을 만족하는 제3사분면 각을 고른다."
+  },
+  "how": "$\\theta = 5\\pi/4$에서 $\\tan(5\\pi/4 + 5\\pi/12) = \\tan(20\\pi/12) = -\\sqrt{3}$으로 판정하였다."
+}

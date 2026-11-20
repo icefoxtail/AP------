@@ -1,0 +1,72 @@
+{
+  "qid": "10",
+  "itemFingerprint": "e2c6428f6a9c4ef2",
+  "solveSteps": [
+    "식의 각 항을 밑이 2인 거듭제곱으로 나타낸다.",
+    "\\sqrt[3]{4\\sqrt{2}} = \\sqrt[3]{2^2 \\times 2^{1/2}} = \\sqrt[3]{2^{5/2}} = 2^{5/6}이다.",
+    "\\sqrt[3]{4} = \\sqrt[3]{2^2} = 2^{2/3} = 2^{4/6}이다.",
+    "\\sqrt{\\sqrt{32}} = \\sqrt[4]{2^5} = 2^{5/4}이다.",
+    "a = 2^{5/6} \\times 2^{4/6} \\div 2^{5/4} = 2^{9/6 - 5/4} = 2^{3/2 - 5/4} = 2^{1/4}이다.",
+    "a가 b의 12제곱근 중 하나이므로 a^{12} = b이다.",
+    "따라서 b = (2^{1/4})^{12} = 2^3 = 8이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "$\\sqrt[3]{4 \\times \\",
+  "rpmRecordId": "H2-M1-RPM-067",
+  "rpmReason": "32 거듭제곱근 식을 지수법칙으로 정리해 12제곱근 정의로 8을 구하는 4.0점 문제이다.",
+  "problemTypeKey": "PT_H22A_01_ROOT_REAL",
+  "templateKey": "NONE",
+  "typeReason": "거듭제곱근의 곱셈과 나눗셈을 지수로 계산하고 12제곱하여 b를 구하는 4.0점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "거듭제곱근 32 식을 2^{1/4}로 약분하고 12제곱하여 8을 얻는 4.0점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "밑이 $2$인 거듭제곱으로 나타내면"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "src": "stem",
+        "quote": "b$의 $12$제곱근 중 하나이면"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "stem",
+        "quote": "b$의 $12$제곱근 중 하나이면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제곱근",
+        "src": "solution",
+        "quote": "b$의 $12$제곱근 중 하나이므로"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "복잡한 거듭제곱근 식과 12제곱근 조건을 확인한다.",
+    "goal": "b의 값을 구한다.",
+    "method": "밑 2의 분수 지수로 통일하여 계산한다.",
+    "condition": "a^{12} = b를 계산한다."
+  },
+  "how": "$a = 2^{1/4}$이므로 12제곱하여 $b = 2^3 = 8$을 얻어 4.0점 문항의 ⑤로 판정하였다."
+}

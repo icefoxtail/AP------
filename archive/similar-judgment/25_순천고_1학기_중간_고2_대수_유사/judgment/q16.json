@@ -1,0 +1,70 @@
+{
+  "qid": "16",
+  "itemFingerprint": "391d4c31c910b97a",
+  "solveSteps": [
+    "집합 A = {a in R | 모든 정수 m, n 에 대해 a^{m+n}=a^m a^n} (배점 4.4점).",
+    "정수 지수법칙 성립 밑의 범위는 a != 0, A = R - {0}.",
+    "집합 B = {a in R | 모든 유리수 p, q 에 대해 a^{p+q}=a^p a^q}.",
+    "유리수 지수법칙 성립 밑의 범위는 a > 0, B = (0, inf).",
+    "B subset A 참, B - A = 공집합 참 등 보기 판단."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": "발문에 그림 언급 없음",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "해설에 그림 언급 없음",
+  "standardUnitKey": "H22-A-01",
+  "subUnitKey": "H22-A-01-EXPONENT_LOG",
+  "unitEvidence": "모든 정수 $m, n$과 모든 유리수",
+  "rpmRecordId": "H2-M1-RPM-069",
+  "rpmReason": "지수가 정수 및 유리수일 때 mn, pq 지수법칙 성립을 위한 밑 조건을 판별하는 4.4점 문제이다.",
+  "problemTypeKey": "PT_H22A_01_EXPONENT_EXTENSION",
+  "templateKey": "NONE",
+  "typeReason": "지수의 확장 단계에 따른 밑의 실수 조건 집합 A, B의 포함관계를 검증하는 4.4점 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "정수 지수는 a != 0, 유리수 지수는 a > 0임을 비교해 A \\subset B가 거짓임을 찾는 4.4점 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "CHOICE",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "에 대하여 두 집합   $A ="
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "n$과 모든 유리수 $p, q$에"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "가 정수일 때 지수법칙이 성립하는 밑",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "solution",
+        "quote": "때 지수법칙이 성립하는 밑의 범위"
+      }
+    ]
+  },
+  "slotReasons": {
+    "given": "두 지수법칙 성립 집합 A, B를 확인한다.",
+    "goal": "설명으로 옳지 않은 선지를 찾는다.",
+    "method": "정수 지수와 유리수 지수의 밑 조건을 각각 파악한다.",
+    "condition": "A와 B의 진부분집합 관계를 비교한다."
+  },
+  "how": "$A = \\{a \\ne 0\\}$, $B = \\{a > 0\\}$이므로 $A \\subset B$는 거짓이어 4.4점 문항 정답 ②로 판정하였다."
+}
