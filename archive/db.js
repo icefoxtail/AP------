@@ -11693,6 +11693,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "similar/middle/m1/2mid/24_연향중_2학기_중간_중1_유사.js",
+      "school": "연향중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2024,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "M1-05",
+      "rangeStartUnit": "기본도형",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M1-08",
+      "rangeEndUnit": "자료의 정리와 해석",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-05",
+          "rangeStartUnit": "기본도형",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M1-08",
+          "rangeEndUnit": "자료의 정리와 해석",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/high/h2/1final/23_강남여고_1학기_기말_고2_수학I.js",
       "school": "강남여고",
       "topic": "",
@@ -34270,6 +34301,68 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "types/middle/m1/중1_1학기_문자와식_내신유형다지기_pro.js",
+      "school": "",
+      "topic": "문자와식_내신유형다지기_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 115,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "types/middle/m1/중1_1학기_문자와식_만점유형+시험만점_pro.js",
+      "school": "",
+      "topic": "문자와식_만점유형+시험만점_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 49,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "types/middle/m1/중1_1학기_문자의사용.js",
       "school": "",
       "topic": "문자의사용",
@@ -34363,6 +34456,99 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "types/middle/m1/중1_1학기_소인수분해_내신유형다지기_pro.js",
+      "school": "",
+      "topic": "소인수분해_내신유형다지기_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 109,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-01",
+      "rangeEndUnit": "소인수분해",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-01",
+          "rangeEndUnit": "소인수분해",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "types/middle/m1/중1_1학기_소인수분해_만점유형도전_pro.js",
+      "school": "",
+      "topic": "소인수분해_만점유형도전_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 12,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-01",
+      "rangeEndUnit": "소인수분해",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-01",
+          "rangeEndUnit": "소인수분해",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "types/middle/m1/중1_1학기_소인수분해_시험만점완성_pro.js",
+      "school": "",
+      "topic": "소인수분해_시험만점완성_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 44,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-01",
+      "rangeEndUnit": "소인수분해",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-01",
+          "rangeEndUnit": "소인수분해",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "types/middle/m1/중1_1학기_식의값.js",
       "school": "",
       "topic": "식의값",
@@ -34394,6 +34580,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "types/middle/m1/중1_1학기_일차방정식_만점유형+시험만점_pro.js",
+      "school": "",
+      "topic": "일차방정식_만점유형+시험만점_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 22,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "types/middle/m1/중1_1학기_일차방정식의풀이.js",
       "school": "",
       "topic": "일차방정식의풀이",
@@ -34404,6 +34621,37 @@ window.mainDB = {
       "subject": "중1 수학",
       "contentType": "유형",
       "qCount": 59,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "types/middle/m1/중1_1학기_일차방정식의활용_내신유형다지기_pro.js",
+      "school": "",
+      "topic": "일차방정식의활용_내신유형다지기_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 67,
       "rangeStartUnitKey": "M1-03",
       "rangeStartUnit": "문자와 식",
       "rangeStartUnitOrder": 3,
@@ -34487,6 +34735,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "types/middle/m1/중1_1학기_정비례와반비례_전체_pro.js",
+      "school": "",
+      "topic": "정비례와반비례_전체_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 81,
+      "rangeStartUnitKey": "M1-04",
+      "rangeStartUnit": "좌표평면과 그래프",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "M1-04",
+      "rangeEndUnit": "좌표평면과 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-04",
+          "rangeStartUnit": "좌표평면과 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M1-04",
+          "rangeEndUnit": "좌표평면과 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "types/middle/m1/중1_1학기_정수와유리수.js",
       "school": "",
       "topic": "정수와유리수",
@@ -34528,6 +34807,68 @@ window.mainDB = {
       "subject": "중1 수학",
       "contentType": "유형",
       "qCount": 71,
+      "rangeStartUnitKey": "M1-02",
+      "rangeStartUnit": "정수와 유리수",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "M1-02",
+      "rangeEndUnit": "정수와 유리수",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-02",
+          "rangeStartUnit": "정수와 유리수",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "M1-02",
+          "rangeEndUnit": "정수와 유리수",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "types/middle/m1/중1_1학기_정수와유리수_내신유형다지기_pro.js",
+      "school": "",
+      "topic": "정수와유리수_내신유형다지기_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 121,
+      "rangeStartUnitKey": "M1-02",
+      "rangeStartUnit": "정수와 유리수",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "M1-02",
+      "rangeEndUnit": "정수와 유리수",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-02",
+          "rangeStartUnit": "정수와 유리수",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "M1-02",
+          "rangeEndUnit": "정수와 유리수",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "types/middle/m1/중1_1학기_정수와유리수_만점유형+시험만점_pro.js",
+      "school": "",
+      "topic": "정수와유리수_만점유형+시험만점_pro",
+      "grade": "중1",
+      "year": "",
+      "semester": "1",
+      "examType": "",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 40,
       "rangeStartUnitKey": "M1-02",
       "rangeStartUnit": "정수와 유리수",
       "rangeStartUnitOrder": 2,
