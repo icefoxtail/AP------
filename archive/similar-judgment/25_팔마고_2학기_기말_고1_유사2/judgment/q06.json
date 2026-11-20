@@ -1,0 +1,64 @@
+{
+  "qid": 6,
+  "itemFingerprint": "eb162bafe8575fe2",
+  "solveSteps": [
+    "점근선은 x=-b, y=a 이고 교점이 (-2,3) 이므로 b=2, a=3 이다.",
+    "f(x)=(3x+10)/(x+2) 이다.",
+    "f^{-1}(1)=t 라 하면 f(t)=1 이므로 3t+10=t+2, t=-4 이고 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "두 점근선의 교점이 $(-2,3)$일 때",
+  "rpmRecordId": "H1-RPM-261",
+  "rpmReason": "점근선 x=-b, y=a 의 교점 (-2,3) 에서 b=2, a=3 을 읽어 내는 단계라 점근선 행이다. (식 ax)",
+  "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+  "templateKey": "TPL_RATIONAL_ASYMPTOTE_DIRECT",
+  "typeReason": "두 점근선의 교점 (-2,3) 에서 a=3, b=2 를 정하는 것이 유리함수의 점근선 조건을 이용하는 점근선 직접 구하기 템플릿의 정의와 같다. (식 ax)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "점근선으로 a=3, b=2 를 정하고 f(t)=1 에서 t=-4 를 얻는 두 단계라 2단계다. (식 ax)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "점근선",
+        "src": "stem",
+        "quote": "두 점근선의 교점이 $(-2,3)$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f^{-1}(1)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "$f^{-1}(1)=t$라 하면 $f(t)=1$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "f^{-1}(1)=t 로 놓고 f(t)=1 을 푸는 역함숫값 구하기 방법이다"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "점근선에서 a=3, b=2 를 정하고 f(t)=1 로 t=-4 ②를 얻었고 해설과 같다. 점근선 읽기가 결정 단계라 유리함수의 점근선 유형을 골랐다. (식 ax)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

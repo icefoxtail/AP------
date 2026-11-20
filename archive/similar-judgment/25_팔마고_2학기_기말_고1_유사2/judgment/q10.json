@@ -1,0 +1,76 @@
+{
+  "qid": 10,
+  "itemFingerprint": "4f8b5661d7afac72",
+  "solveSteps": [
+    "(g∘f)(x)=k(2x+k)+6=2kx+k^2+6 이다.",
+    "(f∘g)(x)=2(kx+6)+k=2kx+k+12 이다.",
+    "모든 x 에서 같으려면 k^2-k-6=0, (k-3)(k+2)=0 이므로 k=3, -2 이고 곱은 -6 이라 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "두 합성함수를 각각 구하면",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "g∘f 와 f∘g 를 각각 2kx+k^2+6, 2kx+k+12 로 합성해 계산하는 단계라 합성함수 계산 행이다.",
+  "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+  "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+  "typeReason": "g∘f=f∘g 가 성립할 조건으로 k^2-k-6=0 을 세워 k=3, -2 를 정하는 것이 합성의 교환 관계 조건 템플릿의 정의와 같다. (식 kx)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "두 합성식 전개, 계수 비교로 k^2-k-6=0, 근의 곱 -6 을 얻는 세 단계라 2단계로 본다. (식 kx)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "두 함수 $f(x)=2x+k$, $g(x)=kx+6$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱",
+        "src": "stem",
+        "quote": "$k$의 값의 곱은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "두 합성함수를 각각 구하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "$2kx+k^2+6=2kx+k+12$",
+        "evidenceType": "IMPLIED",
+        "justification": "양변의 x 의 계수 2k 가 같으므로 상수항 k^2+6, k+12 를 비교해 k^2-k-6=0 을 얻는다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "solution",
+        "quote": "모든 실수 $x$에 대하여 성립하므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "두 합성식을 구해 상수항을 비교해 k=3, -2, 곱 -6 ①을 얻었고 해설과 같다. g∘f=f∘g 교환 조건이 핵심이라 합성함수의 성질을 골랐다. (식 kx)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

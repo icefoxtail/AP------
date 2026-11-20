@@ -1,0 +1,75 @@
+{
+  "qid": 15,
+  "itemFingerprint": "c831b36e97bec775",
+  "solveSteps": [
+    "(f∘f)(x)=x 이므로 f^{-1}=f 이고 점근선의 교점 (4,a) 가 y=x 위에 있어 a=4 이다.",
+    "f(2)=1 에서 (8+b)/(-2)=1 이므로 b=-10 이다.",
+    "f^{-1}(6)=f(6)=(24-10)/2=7 이므로 ③."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "함수 $f$는 자기 자신의 역함수, 즉 $f^{-1}=f$이다.",
+  "rpmRecordId": "H1-RPM-263",
+  "rpmReason": "f=f^{-1} 임을 이용해 점근선 교점 (4,a) 가 y=x 위에 있다고 보고 a=4, b=-10 을 정하는 단계라 유리함수 식 결정 행이다.",
+  "problemTypeKey": "PT_INVERSE_PROPERTIES",
+  "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+  "typeReason": "(f∘f)(x)=x 에서 f 가 자기역함수임을 알아 f^{-1}(6)=f(6)=7 로 바꾸는 것이 역함수의 성질(자기역함수) 템플릿의 정의와 같다. (식 ax)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "f∘f=x 에서 f=f^{-1} 을 알아내고 a=4, b=-10 을 정한 뒤 f(6)=7 을 구하는 단계라 3단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "합성함수",
+        "src": "stem",
+        "quote": "$(f\\circ f)(x)=x$를 만족시키고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f^{-1}(6)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "즉 $f^{-1}=f$이다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "점근선의 교점 $(4,a)$는 직선 $y=x$ 위에",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "stem",
+        "quote": "그 그래프가 점 $(2,1)$을 지날 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "f∘f=x 로 자기역함수임을 알아 a=4, b=-10, f(6)=7 ③을 얻었고 해설과 같다. 자기역함수 성질이 결정 단계라 역함수의 성질 유형을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

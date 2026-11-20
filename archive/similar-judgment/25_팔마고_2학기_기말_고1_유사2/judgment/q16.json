@@ -1,0 +1,77 @@
+{
+  "qid": 16,
+  "itemFingerprint": "59b2ed9389f49330",
+  "solveSteps": [
+    "역함수가 존재하므로 f 는 일대일대응이다.",
+    "f(1)<f(2) 가 되도록 두 값을 고르는 방법은 5C2=10 가지이다.",
+    "남은 3개에서 f(3)>f(4) 인 두 값을 고르면 3C2=3 가지, f(5) 는 1 가지로 정해진다.",
+    "10×3×1=30 이므로 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "역함수가 존재하려면 $f:X\\to X$는 일대일대응이어야 한다.",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "역함수가 존재하는 f:X→X 를 일대일대응으로 보고 f(1)<f(2), f(3)>f(4) 로 짝을 배치하는 단계라 일대일함수 행이다. (배점 4.8점)",
+  "problemTypeKey": "PT_FUNCTION_COUNTING",
+  "templateKey": "TPL_INJECTIVE_BIJECTION_COUNT",
+  "typeReason": "일대일대응 조건에서 5C2=10, 3C2=3 으로 값을 고르고 크기 순서를 고정해 10×3×1=30 을 세는 것이 일대일대응의 개수 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "역함수 존재를 일대일대응으로 바꾸고 5C2, 3C2 와 순서 고정 1가지를 곱해 30 을 세는 단계라 3단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "집합 $X=\\{1,2,3,4,5\\}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "$f:X\\to X$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "일대일대응",
+        "src": "solution",
+        "quote": "일대일대응이어야 한다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "조합",
+        "src": "solution",
+        "quote": "${}_{5}C_{2}=\\dfrac{5\\times 4}{2\\times 1}=10$",
+        "evidenceType": "IMPLIED",
+        "justification": "5개 중 2개를 고르는 5C2=10 으로 f(1), f(2) 의 값 쌍을 센다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "$f(1)\\lt f(2)$이고 $f(3)\\gt f(4)$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "역함수 존재를 일대일대응으로 보고 5C2×3C2=30 ④를 얻었고 해설과 같다. 조건을 만족하는 일대일대응의 개수를 세므로 함수의 개수 유형을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

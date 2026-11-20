@@ -1,0 +1,71 @@
+{
+  "qid": 22,
+  "itemFingerprint": "d9a58ff0ae479661",
+  "solveSteps": [
+    "(1) y=x/3+1 에서 x 와 y 를 바꾸면 x=y/3+1 이므로 f^{-1}(x)=3x-3 이다.",
+    "(2) h(x)=ax+b 라 하면 (h∘f^{-1})(x)=h(3x-3)=3ax-3a+b 이다.",
+    "g(x)=6x-1 과 계수를 비교하면 3a=6, -3a+b=-1 이므로 a=2, b=5 이다.",
+    "h(x)=2x+5."
+  ],
+  "solvedAnswer": "(1) $f^{-1}(x)=3x-3$ (2) $h(x)=2x+5$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "$h\\circ f^{-1}=g$를 만족하는 $x$에 대한 일차함수 $h(x)$를 구하는",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "f(x)=x/3+1 의 역함수 f^{-1}(x)=3x-3 을 구해 h(3x-3) 에 쓰는 단계라 역함수 구하기 행이다. (식 br)",
+  "problemTypeKey": "PT_FUNCTION_RECOVERY",
+  "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+  "typeReason": "h∘f^{-1}=g 에서 h(x)=ax+b 로 놓고 3ax-3a+b=6x-1 로 a=2, b=5 를 정하는 것이 합성관계에서 함수식을 구하는 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "(1)의 역함수 3x-3 과 (2)의 h(3x-3)=6x-1 에서 계수 비교로 a=2, b=5 를 얻는 두 단계라 2단계다. (식 br)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "두 함수 $f(x)=\\dfrac{1}{3}x+1$, $g(x)=6x-1$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $h(x)$를 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "$x$와 $y$를 서로 바꾸면",
+        "evidenceType": "IMPLIED",
+        "justification": "y=x/3+1 에서 x 와 y 를 바꿔 역함수 3x-3 을 구하는 방법이다"
+      },
+      {
+        "term": "계수비교",
+        "src": "solution",
+        "quote": "계수를 비교하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "(1)에서 f^{-1}(x)=3x-3 을 구하고 (2)에서 계수 비교로 h(x)=2x+5 를 얻어 해설과 같다. 합성관계에서 함수식을 구하는 단계가 배점이 커 함수식 구하기를 골랐다. (식 br)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

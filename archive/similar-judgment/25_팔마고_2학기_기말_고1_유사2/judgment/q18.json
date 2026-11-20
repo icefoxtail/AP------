@@ -1,0 +1,70 @@
+{
+  "qid": 18,
+  "itemFingerprint": "1525d17b2a63e8e3",
+  "solveSteps": [
+    "시작점 P(0,3), Q(2,0) 이고 g(x)=√(x-2) 는 f(x)=√x+3 을 x축 방향 2, y축 방향 -3 평행이동한 것이다.",
+    "곡선 PA 를 평행이동하면 곡선 QB 와 겹치므로 둘러싸인 부분의 넓이는 평행사변형 PABQ 의 넓이와 같다.",
+    "6×5-2(1/2×4×2)-2(1/2×2×3)=30-8-6=16 이다.",
+    "삼각형 POQ 의 넓이 1/2×2×3=3 을 더하면 16+3=19 이므로 ①."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그림과 같이 함수 $f(x)$, $g(x)$의 그래프와",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "$g(x)=\\sqrt{x-2}$의 그래프는 $f(x)=\\sqrt{x}+3$의 그래프를 $x$축의 방향으로 $2$만큼",
+  "rpmRecordId": "H1-RPM-267",
+  "rpmReason": "g(x)=√(x-2) 가 f(x)=√x+3 의 평행이동임을 이용해 곡선 PA 와 QB 를 겹치는 단계라 무리함수의 평행이동 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_GRAPH_AREA_BY_SYMMETRY",
+  "typeReason": "곡선 PA 를 (2,-3) 만큼 평행이동하면 QB 와 겹쳐 넓이가 평행사변형 PABQ=16 과 삼각형 POQ=3 의 합 19 가 되는 것이 그래프와 직선으로 둘러싸인 넓이 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B34",
+  "difficultyReason": "평행이동으로 곡선 사이 넓이를 평행사변형 16 으로 바꾸는 발상과 삼각형 POQ=3 을 더하는 단계가 필요해 4단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리함수",
+        "src": "stem",
+        "quote": "두 무리함수 $f(x)=\\sqrt{x}+3$, $g(x)=\\sqrt{x-2}$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "src": "stem",
+        "quote": "둘러싸인 부분의 넓이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "평행이동한 것이므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "평행사변형",
+        "src": "solution",
+        "quote": "평행사변형 $PABQ$의 넓이와 같다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "평행이동으로 영역을 평행사변형 PABQ 와 삼각형 POQ 로 나눠 16+3=19 ①을 얻었고, 적분으로도 19 임을 확인했다. 도형 넓이 활용이라 함수 그래프와 도형을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "qid": 4,
+  "itemFingerprint": "e8454e481883e229",
+  "solveSteps": [
+    "y=(-x-1)/(x+2)=1/(x+2)-1 이므로 점근선은 x=-2, y=-1 이다.",
+    "x절편은 (-1,0), y절편은 (0,-1/2) 이다.",
+    "-2<x<-1 에서 제2사분면, -1<x<0 에서 제3사분면, x>0 에서 y<-1/2<0 이므로 제4사분면을 지난다.",
+    "제1사분면은 지나지 않으므로 ④. (배점 3.7점)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "그래프가 지나는 사분면은?",
+  "rpmRecordId": "H1-RPM-262",
+  "rpmReason": "표준형 1/(x+2)-1 의 점근선 x=-2, y=-1 과 절편 (-1,0) 으로 사분면을 따지는 단계라 그래프의 사분면 행이다. (배점 3.7점)",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_DIRECT",
+  "typeReason": "y=(-x-1)/(x+2) 의 그래프가 제1사분면을 지나지 않고 제2·3·4사분면을 지남을 보이는 것이 함수 그래프가 지나는 사분면 템플릿의 정의와 같다. (배점 3.7점)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "표준형 변형, 점근선 x=-2, y=-1, x절편 (-1,0) 확인, 구간별 사분면 판정까지 네 단계라 2단계다. (배점 3.7점)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수 $y=\\dfrac{-x-1}{x+2}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사분면",
+        "src": "stem",
+        "quote": "그래프가 지나는 사분면은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "표준형",
+        "src": "solution",
+        "quote": "표준형으로 변형하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "점근선은 $x=-2$, $y=-1$이다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "구간",
+        "src": "solution",
+        "quote": "$-2<x<-1$에서는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "표준형으로 바꿔 점근선과 절편으로 구간별 사분면을 직접 확인해 ④를 얻었고 해설과 같다. 사분면 판정이 목표라 그래프의 사분면 행과 유형을 골랐다. (배점 3.7점)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

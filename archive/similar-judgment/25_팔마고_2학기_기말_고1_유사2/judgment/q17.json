@@ -1,0 +1,76 @@
+{
+  "qid": 17,
+  "itemFingerprint": "721936c5e7b743b1",
+  "solveSteps": [
+    "역함수가 존재하므로 f 는 일대일대응이다. x<b 에서 -2x+c 는 감소하고 치역은 (-2b+c,∞) 이다.",
+    "둘째 조각 a(x+2)^2-4a+5 는 감소하고 치역이 (-∞, ...] 이어야 하므로 a<0 이고 b≥-2 이다.",
+    "따라서 t=-2 이고 b=-2 일 때 두 치역이 이어지려면 4+c=-4a+5 이다.",
+    "4a+c=1 이므로 ⑤. (식 cases)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "함수 $f$가 실수 전체의 집합에서 일대일대응이어야 한다.",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "두 조각 -2x+c, ax^2+4ax+5 가 실수 전체에서 일대일대응이 되도록 b≥-2, a<0 을 정하는 단계라 일대일함수 행이다.",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+  "typeReason": "x<b 의 치역 (4+c,∞) 와 x≥b 의 치역 (-∞,-4a+5] 를 빈틈없이 이어 4+c=-4a+5 를 얻는 것이 조각함수의 치역을 이어 일대일대응으로 만드는 템플릿의 정의와 같다. (식 cases)",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B34",
+  "difficultyReason": "일대일대응 조건에서 a<0, b≥-2, 두 조각 치역 연결 4+c=-4a+5 를 모두 따져야 하는 다단계 추론이라 4단계로 본다. (식 cases)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "역함수가 존재하도록"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$4a+c$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "일대일대응",
+        "src": "solution",
+        "quote": "일대일대응이어야 한다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "치역",
+        "src": "solution",
+        "quote": "첫째 조각의 치역은",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역제한",
+        "src": "solution",
+        "quote": "$b\\ge -2$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "일대일대응 조건으로 a<0, b≥-2, t=-2 를 정하고 치역을 이어 4a+c=1 ⑤를 얻었고 해설과 같다. 조각함수 일대일대응이 핵심이라 해당 템플릿을 골랐다. (식 cases)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "qid": 21,
+  "itemFingerprint": "f98e99889f203fec",
+  "solveSteps": [
+    "A→B 거리 80x, B→C 거리 50×1/2=25 이므로 y=(80x+25)/(x+1/2) 이다.",
+    "y=80-15/(x+1/2) 로 변형하면 x 가 커질수록 y 가 증가한다.",
+    "0.5≤x≤2.5 에서 최댓값은 x=2.5 일 때 80-5=75 이다.",
+    "최솟값은 x=0.5 일 때 80-15=65 이다."
+  ],
+  "solvedAnswer": "(1) $y=\\dfrac{80x+25}{x+\\dfrac{1}{2}}$ (2) 최댓값 $75$, 최솟값 $65$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "평균 속력 $y$의 최댓값과 최솟값을 구하시오",
+  "rpmRecordId": "H1-RPM-264",
+  "rpmReason": "구간 0.5≤x≤2.5 에서 y=80-15/(x+1/2) 의 끝점 x=0.5, x=2.5 값 65, 75 를 구하는 단계라 유리함수의 최대·최소 행이다.",
+  "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+  "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+  "typeReason": "y=80-15/(x+1/2) 이 증가함을 보고 구간 끝점 x=2.5 에서 75, x=0.5 에서 65 를 구하는 것이 구간 끝점의 최댓값·최솟값 템플릿의 정의와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "거리·시간으로 식 세우기, 표준형 변형, 구간 끝점 75, 65 를 구하는 세 단계라 2단계다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "속력",
+        "src": "stem",
+        "quote": "평균 $80\\text{ km/h}$의 속력으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "평균 속력 $y$의 최댓값"
+      },
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값을 구하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "(1)의 식을 변형하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "따라서 $y$는 증가한다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "구간",
+        "src": "stem",
+        "quote": "$0.5\\le x\\le 2.5$일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "거리와 시간으로 y=(80x+25)/(x+1/2) 를 세우고 구간 끝점에서 75, 65 를 얻었고 해설과 같다. 식 세우기 뒤 유리함수 최대·최소가 목표라 해당 행과 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
