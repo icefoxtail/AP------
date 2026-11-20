@@ -1,0 +1,57 @@
+{
+  "qid": 16,
+  "itemFingerprint": "24952d392eaa00f8",
+  "solveSteps": [
+    "직사각형 ABCD의 두 대각선은 길이가 같고 서로 다른 것을 이등분하므로 AC = BD = 2 * BO이다.",
+    "5x + 4 = 2(4x - 1) = 8x - 2이므로 3x = 6에서 x = 2이다.",
+    "따라서 대각선 AC = 5(2) + 4 = 14이다.",
+    "따라서 정답은 ② 14이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "unitEvidence": "직사각형 $ABCD$의 두 대각선의 교점을 $O$라 할 때",
+  "rpmRecordId": "M2-RPM-197",
+  "rpmReason": "직사각형 ABCD의 대각선 AC와 선분 BO = 4x - 1로부터 대각선 길이 14를 구하는 특수 사각형 대각선 성질 유형이다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_SPECIAL_QUADRILATERALS",
+  "typeReason": "직사각형 ABCD의 두 대각선의 길이가 같고 서로를 이등분하는 성질로 AC = 2 BO 방정식을 풀어 길이를 산출하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "직사각형의 대각선 성질 AC = 2 BO를 일차방정식으로 풀어 길이 14를 바로 구하므로 난이도 1이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "src": "stem",
+        "quote": "직사각형 $ABCD$의 두 대각선의 교점을 $O$라 할 때, $\\overline{AC} = 5x + 4$, $\\overline{BO} = 4x - 1$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "src": "stem",
+        "quote": "이때 대각선 $\\overline{AC}$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대각선",
+        "src": "solution",
+        "quote": "직사각형의 두 대각선은 길이가 같고 서로 다른 것을 이등분하므로",
+        "evidenceType": "IMPLIED",
+        "justification": "직사각형 대각선의 성질과 길이 관계 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "직사각형 ABCD의 두 대각선 성질 AC = 2 BO로부터 5x + 4 = 8x - 2를 풀어 x = 2를 구하고 AC = 14로 판정하였다."
+}
