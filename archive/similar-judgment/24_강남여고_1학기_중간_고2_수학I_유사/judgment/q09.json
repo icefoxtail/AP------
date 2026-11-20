@@ -1,0 +1,57 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "424487f2482044ae",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "곡선 $y = 3^{x - 2} + a$의 점근선은 $y = a$이고, 곡선 $y = \\log_2(3x - b)$의 점근선은 $3x - b = 0$, 즉 $x = \\dfrac{b}{3}$이다.",
+    "두 점근선의 교점의 좌표가 $\\left(\\dfrac{b}{3}, a\\right) = (4, 5)$이므로",
+    "$\\dfrac{b}{3} = 4 \\implies b = 12$, $a = 5$",
+    "따라서 $a + b = 5 + 12 = 17$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "곡선 $y = 3^{x - 2} + a$의 점근선과 곡선 $y = \\log_2(3x - b)$의 점근선의 교점의 좌표가 $(4, 5)$일 때, 두 상수 $a, b$에 대하여 $a + b$의 값은?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "곡선 $y = 3^{x - 2} + a$의 점근선은 $y = a$이고, 곡선 $y = \\log_2(3x - b)$의 점근선은 $3x - b = 0$, 즉 $x = \\dfrac{b}{3}$이다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q9번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 3.5)",
+  "rpmReason": "Q9번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 3.5)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q9번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 3.5)",
+  "how": "Q9번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 3.5)",
+  "slots": {
+    "given": [
+      {
+        "term": "점근선",
+        "src": "stem",
+        "quote": "곡선 $y = 3^{x - 2} + a$의 점근선과 곡선 $y = \\log_2(3x - b)$의 점근선의 교점의 좌표가 $(4, 5)$일 때, 두 상수 $a, b$에 대하여 $a + b$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "좌표",
+        "src": "stem",
+        "quote": "곡선 $y = 3^{x - 2} + a$의 점근선과 곡선 $y = \\log_2(3x - b)$의 점근선의 교점의 좌표가 $(4, 5)$일 때, 두 상수 $a, b$에 대하여 $a + b$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "곡선",
+        "src": "solution",
+        "quote": "곡선 $y = 3^{x - 2} + a$의 점근선은 $y = a$이고, 곡선 $y = \\log_2(3x - b)$의 점근선은 $3x - b = 0$, 즉 $x = \\dfrac{b}{3}$이다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

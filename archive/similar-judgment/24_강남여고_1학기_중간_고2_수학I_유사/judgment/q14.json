@@ -1,0 +1,57 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "3c39892e2301410c",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "이차방정식의 근과 계수의 관계에 의하여 (문항 토큰 12)",
+    "$\\cos\\theta + \\tan\\theta = 4$, $\\cos\\theta\\tan\\theta = 5a\\sin\\theta$",
+    "$\\cos\\theta\\tan\\theta = \\cos\\theta \\cdot \\dfrac{\\sin\\theta}{\\cos\\theta} = \\sin\\theta$이고 $0 < \\theta < \\dfrac{\\pi}{2}$에서 $\\sin\\theta > 0$이므로",
+    "$\\sin\\theta = 5a\\sin\\theta \\implies a = \\dfrac{1}{5}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$에 대한 이차방정식 $x^2 - 4x + 5a\\sin\\theta = 0$의 두 근이 $\\cos\\theta, \\tan\\theta$일 때, $\\dfrac{1 + \\sin\\theta - \\sin^2\\theta}{a\\cos\\theta}$의 값은?",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "이차방정식의 근과 계수의 관계에 의하여",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q14번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 12)",
+  "rpmReason": "Q14번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q14번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 12)",
+  "how": "Q14번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ⑤을(를) 바르게 구하였다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2 - 4x + 5a\\sin\\theta = 0$의 두 근이 $\\cos\\theta, \\tan\\theta$일 때, $\\dfrac{1 + \\sin\\theta - \\sin^2\\theta}{a\\cos\\theta}$의 값은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "$x$에 대한 이차방정식 $x^2 - 4x + 5a\\sin\\theta = 0$의 두 근이 $\\cos\\theta, \\tan\\theta$일 때, $\\dfrac{1 + \\sin\\theta - \\sin^2\\theta}{a\\cos\\theta}$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "src": "solution",
+        "quote": "이차방정식의 근과 계수의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "da6a9d23cec49ec2",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$0 \\le x \\le 2\\pi$에서 $y = a\\sin 2x + b$는 주기가 $\\pi$이므로 $2$주기가 그려진다. (문항 토큰 ab)",
+    "$t$의 값에 따른 교점의 $x$좌표의 합 $g(t)$는 다음과 같다.",
+    "- $t = a + b$: 교점은 $\\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}$이므로 $g(a + b) = \\dfrac{3}{2}\\pi$",
+    "- $b < t < a + b$ 또는 $-a + b < t < b$: 교점이 $4$개이고 $x = \\pi$에 대해 대칭이거나 각 주기의 합이 $2\\pi$이므로 $g(t) = 4\\pi$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 양수 $a, b$에 대하여 $0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = a\\sin 2x + b$가 있다.",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "$0 \\le x \\le 2\\pi$에서 $y = a\\sin 2x + b$는 주기가 $\\pi$이므로 $2$주기가 그려진다.",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q21번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ab)",
+  "rpmReason": "Q21번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ab)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 ab)",
+  "how": "Q21번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "두 양수 $a, b$에 대하여 $0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = a\\sin 2x + b$가 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "정의",
+        "src": "stem",
+        "quote": "두 양수 $a, b$에 대하여 $0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = a\\sin 2x + b$가 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "주기",
+        "src": "solution",
+        "quote": "$0 \\le x \\le 2\\pi$에서 $y = a\\sin 2x + b$는 주기가 $\\pi$이므로 $2$주기가 그려진다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

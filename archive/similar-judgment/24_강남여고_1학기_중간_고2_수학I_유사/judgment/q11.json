@@ -1,0 +1,57 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "a2a27712be77847d",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "각 변환 공식을 적용하면",
+    "- $\\sin\\left(\\dfrac{\\pi}{2} + \\theta\\right) = \\cos\\theta$, $\\tan(\\pi - \\theta) = -\\tan\\theta$, $\\cos\\left(\\dfrac{3}{2}\\pi - \\theta\\right) = -\\sin\\theta$",
+    "첫째 항: $\\dfrac{\\cos\\theta \\cdot (-\\tan\\theta)^2}{-\\sin\\theta} = \\dfrac{\\cos\\theta \\cdot \\frac{\\sin^2\\theta}{\\cos^2\\theta}}{-\\sin\\theta} = -\\dfrac{\\sin\\theta}{\\cos\\theta} = -\\tan\\theta$",
+    "- $\\sin\\left(\\dfrac{3}{2}\\pi + \\theta\\right) = -\\cos\\theta$, $\\cos(2\\pi - \\theta) = \\cos\\theta$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$$\\dfrac{\\sin\\left(\\dfrac{\\pi}{2} + \\theta\\right)\\tan^2(\\pi - \\theta)}{\\cos\\left(\\dfrac{3}{2}\\pi - \\theta\\right)} + \\dfrac{\\sin^3\\left(\\dfrac{3}{2}\\pi + \\theta\\right)}{\\cos(2\\pi - \\theta)\\cos^2\\theta} - \\dfrac{\\cos\\left(\\dfrac{5}{2}\\pi + \\theta\\right)}{\\sin\\left(\\dfrac{\\pi}{2} + \\theta\\right)}$$",
+  "standardUnitKey": "H15-M1-01",
+  "subUnitKey": "H15-M1-01-EXPONENT",
+  "rpmRecordId": "H2-M1-RPM-001",
+  "rpmEvidence": "각 변환 공식을 적용하면",
+  "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+  "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+  "newKeyProposal": null,
+  "typeReason": "Q11번 문항은 PT_EXPONENT_LAW_APPLICATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 2)",
+  "rpmReason": "Q11번 문항은 H2-M1-RPM-001에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 2)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q11번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 2)",
+  "how": "Q11번 문항으로 H15-M1-01 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 2)",
+  "slots": {
+    "given": [
+      {
+        "term": "tan",
+        "src": "stem",
+        "quote": "$$\\dfrac{\\sin\\left(\\dfrac{\\pi}{2} + \\theta\\right)\\tan^2(\\pi - \\theta)}{\\cos\\left(\\dfrac{3}{2}\\pi - \\theta\\right)} + \\dfrac{\\sin^3\\left(\\dfrac{3}{2}\\pi + \\theta\\right)}{\\cos(2\\pi - \\theta)\\cos^2\\theta} - \\dfrac{\\cos\\left(\\dfrac{5}{2}\\pi + \\theta\\right)}{\\sin\\left(\\dfrac{\\pi}{2} + \\theta\\right)}$$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "각 변환 공식을 적용하면"
+      }
+    ],
+    "method": [
+      {
+        "term": "공식",
+        "src": "solution",
+        "quote": "각 변환 공식을 적용하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
