@@ -92,6 +92,8 @@
       composeStale: false,
       composeStalePins: 0,
       composeNotice: "",
+      // 과목을 좁혀 "범위 밖이라 해제했습니다" 안내가 떠 있었다면, 단원이 되돌아왔으므로 그 안내도 지운다.
+      scopeNotice: "",
       ackWarnings: false,
     });
     scheduleSave();
@@ -2071,6 +2073,10 @@
     // PT -> TPL: a template belongs to one problem type, so a new type resets the template.
     if (key === "metaPT") state.filters.metaTPL = "";
     if (["grade", "curriculumKey", "courseKey", "semanticSubject", "originalCurriculum"].includes(key)) {
+      // 과목이 둘뿐인 학년(고1)의 과목 단추: 새 범위 안에 있는 단원 선택은 남기고 범위 밖이 된 것만 뺀다(뺀 것이 있으면 알린다).
+      // 단원 키는 u:<학년>:<과목>:<단원>[~중단원]이라 과목 칸으로 소속을 안다. 그 밖의 전환(학년·고2·고3·중등)은 지금처럼 전부 비운다.
+      const previousScopes = state.scopes.slice();
+      const keepScopes = key === "semanticSubject" && unifiedIndex() && Unified.subjectsForGrade(state.filters.grade).length === 2;
       state.scopes = [];
       state.scopeNotice = "";
       delete state.filters.L3;
@@ -2102,6 +2108,16 @@
         state.filters = C.reconcileFinderFilters(state.filters, state.catalog.taxonomy);
       }
       reconcileFinderSchool(state.filters);
+      if (keepScopes && previousScopes.length) {
+        const subject = state.filters.semanticSubject;
+        const subjectOf = (scopeKey) => String(scopeKey).split(":")[2];
+        state.scopes = previousScopes.filter((scopeKey) => !subject || subjectOf(scopeKey) === subject);
+        const dropped = previousScopes.filter((scopeKey) => !state.scopes.includes(scopeKey));
+        if (dropped.length) {
+          const labels = [...new Set(dropped.map((scopeKey) => Unified.subjectByValue(state.filters.grade, subjectOf(scopeKey))?.label || "선택한"))];
+          state.scopeNotice = `${labels.join("·")} 단원 ${dropped.length}개는 선택한 과목 범위 밖이라 해제했습니다.`;
+        }
+      }
     }
     invalidate();
     render();
