@@ -778,13 +778,13 @@ test('the workspace and the unit page load the new scripts with a new cache vers
   assert.match(workspace, new RegExp('problem-bank-meta\\.js\\?v=' + version));
   // The shared unit layer and the canonical authority moved on with the registered textbooks (S11).
   assert.match(workspace, /archive2-unified-units\.js\?v=20261119-unit-hint-1/);
-  assert.match(workspace, /archive2-canonical\.js\?v=20261104-source-meta-approval-1/);
+  assert.match(workspace, /archive2-canonical\.js\?v=20261119-receipt-row-binding-1/);
   // The workspace itself moved on with the final-check fixes (S10).
   assertWorkspaceScriptVersions(assert);
   const unitPage = read('unit-past-exams.html');
   assert.match(unitPage, new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(unitPage, /unit-past-exams-core\.js\?v=20261117-middle-parent-1/);
-  assert.match(unitPage, /unit-past-exams\.js\?v=20261118-q01-id-match-1/);
+  assert.match(unitPage, /unit-past-exams\.js\?v=20261119-no-basic-1/);
   assert.match(read('problem-bank-search.html'), new RegExp('archive2-core\\.js\\?v=' + coreVersion));
   assert.match(read('problem-bank-search.html'), new RegExp('problem-bank-meta\\.js\\?v=' + version));
   const clinic = fs.readFileSync(path.join(root, 'apmath/js/clinic-print.js'), 'utf8');

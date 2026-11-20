@@ -322,7 +322,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "$B=(A\\cap B)\\cup(A^C\\cap B)$이고 두 사건은 서로 배반이므로 $P(B)=P(A\\cap B)+P(A^C\\cap B)=\\frac18+\\frac3{16}=\\frac5{16}$이다.",
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "B는 A와 겹치는 부분과 A 밖의 부분으로 나뉘고 두 부분은 서로 겹치지 않는다. 그림에서 겹침의 확률이 1/8, A 밖의 부분의 확률이 3/16이다. 따라서 P(B)=1/8+3/16=2/16+3/16=5/16이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -386,7 +390,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "$2P(A)=3P(A^C)$와 $P(A)+P(A^C)=1$에서 $P(A^C)=\\frac25$이다. $A,B$가 서로 배반이므로 $B\\subset A^C$이고 $P(B\\mid A^C)=\\frac{P(B)}{P(A^C)}=\\frac{1/3}{2/5}=\\frac56$이다.",
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "2P(A)=3P(A의 여사건)과 P(A)+P(A의 여사건)=1에서 P(A)=3/5, P(A의 여사건)=2/5이다. 그림은 A가 3/5이고 A와 B가 서로 배반이라 겹침은 0이며 B는 A 밖에서 1/3이다. 나머지 바깥은 2/5−1/3=1/15이다. B는 A의 여사건 안에 있으므로 P(B|A의 여사건)=(1/3)÷(2/5)=5/6이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -716,7 +724,11 @@ window.questionBank = [
     "metaDebtFields": [
       "templateKey"
     ],
-    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다."
+    "metaDebtReason": "현재 활성 crosswalk에서 이 문항 구조에 정확히 일치하는 templateKey binding을 확인하지 못해 null로 보존한다. 정답과 해설은 완료했고 key를 추정하지 않는다.",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 다섯 개의 점이 오각형 꼭짓점으로 놓인 원탁 그림이며 점 P는 A와 B의 묶음이고 나머지 네 점은 C, D, E, F가 앉는 자리이다.",
+    "solutionImageCaption": "원탁의 5개 대상을 오각형 꼭짓점으로 나타낸 그림이다. 점 P는 A와 B를 한 묶음으로 본 자리이고 Q, R, S, T는 나머지 C, D, E, F가 앉는 자리이다. 5개 대상의 원순열은 (5−1)!=24가지이고 묶음 안의 순서가 2가지이므로 48가지이다. 이 중 C와 D도 이웃하면 두 묶음과 E, F의 4개 대상이 되어 (4−1)!×2×2=24가지이다. 따라서 48−24=24이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -911,7 +923,12 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "decisiveStep": "A,B,C의 전체 판매량 비율을 각각 $0.2,x,0.8-x$라 하자. 반품된 상품 중 A 또는 B의 비율 조건은 $\\frac{0.02(0.2)+0.01x}{0.02(0.2)+0.01x+0.03(0.8-x)}=\\frac12$이다. 이를 풀면 $0.008+0.02x=0.028-0.02x$, 따라서 $x=0.5$이고 C의 비율은 $0.8-0.5=0.3$, 즉 30%이다.",
-    "metaDebtFields": []
+    "metaDebtFields": [],
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "판매 비율을 A는 0.2, B는 x, C는 0.8−x로 두고 풀면 x=0.5이므로 그림은 B가 1/2, C가 3/10인 경우이다. 반품되는 경로의 확률은 A가 0.2×0.02=0.004, B가 0.5×0.01=0.005, C가 0.3×0.03=0.009이다. 반품 중 A 또는 B의 비율은 (0.004+0.005)÷(0.004+0.005+0.009)=1/2로 조건과 맞는다. 따라서 C의 판매 비율은 30퍼센트이고 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 15,

@@ -1,0 +1,112 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -1,
+   11,
+   -1,
+   11
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "4",
+     "-2",
+     "1/2"
+    ],
+    "domain": [
+     "2",
+     "6"
+    ],
+    "color": "BLUE",
+    "hideLabel": true
+   },
+   {
+    "id": "g",
+    "kind": "SQRT",
+    "inverseOf": "f",
+    "color": "WARM",
+    "hideLabels": [
+     "formula",
+     "start"
+    ]
+   },
+   {
+    "id": "d",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-1",
+     "10"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "2",
+     "y": "2",
+     "coordinates": true
+    },
+    {
+     "id": "Q",
+     "x": "4",
+     "y": "4",
+     "coordinates": true
+    },
+    {
+     "id": "Ef",
+     "unnamed": true,
+     "x": "6",
+     "y": "10"
+    },
+    {
+     "id": "Eg",
+     "unnamed": true,
+     "x": "10",
+     "y": "6"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cf",
+     "point": "Ef",
+     "text": "y=f(x)",
+     "direction": "W",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "cg",
+     "point": "Eg",
+     "text": "y=f^-1(x)",
+     "direction": "S",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "P": "P",
+  "Q": "Q"
+ },
+ "caption": "f는 x≥2에서 증가하므로 f의 그래프와 역함수 y=f⁻¹(x)의 그래프는 y=x에 대하여 대칭이고 교점은 y=x 위에 있다. f(x)=x에서 x²-6x+2a=0이고 두 교점 사이의 거리가 2√2이므로 두 근의 차는 2, 합은 6이어서 근은 2, 4이다. 곱 2a=8에서 a=4이므로 답은 ⑤이다.",
+ "sourceConditions": [
+  "f(x)=x²/2-2x+a (x≥2)와 역함수가 서로 다른 두 점에서 만나고 거리가 2√2"
+ ],
+ "newVisualInformation": [
+  "f와 역함수의 그래프가 직선 y=x 위의 두 점 P(2,2), Q(4,4)에서 만남"
+ ]
+}

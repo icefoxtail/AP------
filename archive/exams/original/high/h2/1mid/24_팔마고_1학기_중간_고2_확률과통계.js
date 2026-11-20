@@ -251,7 +251,11 @@ window.questionBank = [
     "sourceExamUid": "24_팔마고_1학기_중간_고2_확률과통계",
     "projectionStatus": "REUSE",
     "rpmPrimaryRecordId": "H2-PS-RPM-002",
-    "rpmL4Namespace": "RPM_EXISTING"
+    "rpmL4Namespace": "RPM_EXISTING",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 여덟 자리가 팔각형 꼭짓점으로 놓인 원탁 그림이며 이웃한 두 자리 A, B와 나머지 여섯 자리 C부터 H가 있다.",
+    "solutionImageCaption": "원탁의 8자리를 팔각형 꼭짓점으로 나타낸 한 배치의 예이다. A, B는 현민이와 민석이가 이웃해 앉은 두 자리이고 C부터 H는 나머지 6명의 자리이다. 두 사람을 한 묶음으로 보면 묶음 1개와 6명, 모두 7개의 단위를 원탁에 앉히므로 (7−1)!=6!가지이고 묶음 안 순서가 2가지이다. 따라서 2×6!이므로 답은 ④이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 5,
@@ -633,7 +637,11 @@ window.questionBank = [
     "sourceExamUid": "24_팔마고_1학기_중간_고2_확률과통계",
     "projectionStatus": "REUSE",
     "rpmPrimaryRecordId": "H2-PS-RPM-003",
-    "rpmL4Namespace": "RPM_EXISTING"
+    "rpmL4Namespace": "RPM_EXISTING",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "A에서 B까지 오른쪽 4번, 위쪽 4번의 전체 최단 경로는 8C4=70가지이다. P를 지나는 경로는 A에서 P까지 6가지, P에서 B까지 6가지이므로 6×6=36가지이다. P를 지나지 않는 경우는 70−36=34가지이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 11,
@@ -1076,7 +1084,11 @@ window.questionBank = [
     "sourceExamUid": "24_팔마고_1학기_중간_고2_확률과통계",
     "projectionStatus": "REUSE",
     "rpmPrimaryRecordId": "H2-PS-RPM-002",
-    "rpmL4Namespace": "RPM_EXISTING"
+    "rpmL4Namespace": "RPM_EXISTING",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 직사각형 모양으로 놓인 여덟 자리 그림이며 위쪽 변에 세 자리 A, B, C, 아래쪽 변에 세 자리 E, F, G, 양 끝에 한 자리씩 D, H가 있다.",
+    "solutionImageCaption": "직사각형 탁자의 8자리를 위 변 A, B, C, 아래 변 E, F, G, 양 끝 D, H로 나타낸 그림이다. 두 사람이 앉는 순서쌍은 8×7=56가지이다. 같은 변에 앉는 순서쌍은 위 변과 아래 변에서 각각 3×2=6가지씩 12가지이므로 서로 다른 변에 앉는 순서쌍은 44가지이다. 나머지 6명의 배치 6!가지를 곱하고 180° 회전이 같은 배열이므로 2로 나누면 44×6!/2=22×6!이다. 따라서 k=22이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
 {
     "id": 18,
@@ -1369,6 +1381,10 @@ window.questionBank = [
     "sourceExamUid": "24_팔마고_1학기_중간_고2_확률과통계",
     "projectionStatus": "REUSE",
     "rpmPrimaryRecordId": "H2-PS-RPM-004",
-    "rpmL4Namespace": "RPM_EXISTING"
+    "rpmL4Namespace": "RPM_EXISTING",
+    "solutionImage": "assets/images/24_팔마고_1학기_중간_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "X, Y, Z는 각각 상자 A, B, C가 비는 경우의 모임이다. 전체는 135가지이고 한 상자가 비는 경우는 각각 20가지이다. 두 상자가 동시에 비는 경우는 모두 한 상자에 담기는 1가지씩이고 세 상자가 모두 비는 경우는 없다. 그림은 X만, Y만, Z만이 각각 18, 두 모임의 겹침이 각각 1, 세 모임의 겹침이 0, 바깥이 78이며 색칠한 바깥이 빈 상자가 없는 경우이다. 135−3×20+3=78이다.",
+    "solutionImageSize": "full"
   }
 ];

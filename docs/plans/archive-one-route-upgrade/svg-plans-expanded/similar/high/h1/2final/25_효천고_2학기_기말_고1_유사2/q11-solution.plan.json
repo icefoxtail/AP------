@@ -1,0 +1,89 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   0,
+   8,
+   0,
+   8
+  ],
+  "axisTickValues": {
+   "x": [
+    "5"
+   ],
+   "y": [
+    "5"
+   ]
+  },
+  "curves": [
+   {
+    "id": "f",
+    "kind": "SQRT",
+    "radicand": [
+     "-1",
+     "1"
+    ],
+    "offset": "3",
+    "domain": [
+     "1",
+     "8"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "g",
+    "kind": "Y_OF_X",
+    "coefficients": [
+     "10",
+     "-6",
+     "1"
+    ],
+    "domain": [
+     "3",
+     "28/5"
+    ],
+    "color": "WARM",
+    "label": "y=f^-1(x)"
+   },
+   {
+    "id": "h",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "0",
+     "8"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "P",
+     "x": "5",
+     "y": "5",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "a=−1이므로 f(x)=√(x−1)+3이고 시작점은 (1,3)이다. f는 증가함수이므로 f와 역함수 f⁻¹의 그래프는 직선 y=x에 대하여 대칭이고 교점은 y=x 위에 있다. √(x−1)=x−3의 해 중 x≥3인 것은 x=5이므로 교점은 (5,5)이다. 따라서 답은 ③이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=√(x−1)+3, 역함수 f⁻¹(x)=(x−3)²+1 (x≥3)",
+   "mappedTo": "graphPlan.curves"
+  }
+ ],
+ "accessibilityDescription": "파란색 무리함수 곡선과 주황색 역함수 곡선이 점선 y=x에 대칭으로 그려져 있고 두 곡선이 y=x 위의 한 점에서 만난다.",
+ "newVisualInformation": [
+  "f와 역함수의 y=x에 대한 대칭과 교점 (5,5)"
+ ]
+}

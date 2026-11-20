@@ -1,0 +1,96 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "MAPPING",
+  "columns": [
+   {
+    "id": "X",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   },
+   {
+    "id": "Y",
+    "name": "X",
+    "elements": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ]
+   }
+  ],
+  "arrows": [
+   {
+    "from": {
+     "column": 0,
+     "element": 0
+    },
+    "to": {
+     "column": 1,
+     "element": 3
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 1
+    },
+    "to": {
+     "column": 1,
+     "element": 4
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 2
+    },
+    "to": {
+     "column": 1,
+     "element": 0
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 3
+    },
+    "to": {
+     "column": 1,
+     "element": 1
+    }
+   },
+   {
+    "from": {
+     "column": 0,
+     "element": 4
+    },
+    "to": {
+     "column": 1,
+     "element": 2
+    }
+   }
+  ],
+  "arrowGroups": [
+   {
+    "name": "f",
+    "from": "X",
+    "to": "Y"
+   }
+  ]
+ },
+ "caption": "집합 X={1, 2, 3, 4, 5}에서 X로 가는 함수 f의 대응도이다.",
+ "sourceConditions": [
+  "f(1)=4, f(2)=5, f(3)=1, f(4)=2, f(5)=3"
+ ],
+ "newVisualInformation": [
+  "문제에서 주어진 대응관계를 화살표로 나타낸다."
+ ]
+}

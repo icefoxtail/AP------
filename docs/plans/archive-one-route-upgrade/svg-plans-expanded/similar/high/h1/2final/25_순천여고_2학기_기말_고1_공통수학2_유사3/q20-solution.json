@@ -1,0 +1,65 @@
+{
+ "capability": "sqrt-affine-spike-v1",
+ "graphPlan": {
+  "family": "sqrt-affine",
+  "radicand": [
+   "3",
+   "1"
+  ],
+  "amplitude": "1",
+  "sign": -1,
+  "offset": "1",
+  "sourceDomain": {
+   "kind": "NATURAL_SQRT_AFFINE"
+  },
+  "equalUnits": true,
+  "domain": [
+   -3,
+   6
+  ],
+  "viewport": [
+   -4,
+   6,
+   -4,
+   3
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "S",
+     "curveX": "-3"
+    },
+    {
+     "id": "Z",
+     "curveX": "-2"
+    },
+    {
+     "id": "Y",
+     "curveX": "0"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "S": "S",
+  "Z": "Z",
+  "Y": "Y"
+ },
+ "caption": "예: (a,b,c)=(1,3,1)이면 y=-√(x+3)+1은 시작점 S(-3,1)에서 출발해 x절편 Z(-2,0)을 지나고 y절편 Y(0,1-√3)이 음수이다. 따라서 제2, 3, 4사분면만 지난다. 조건을 만족하는 순서쌍은 (1,3,1), (1,5,2), (1,6,2), (1,10,3), (2,6,1), (2,6,2), (2,7,2), (2,8,2), (2,9,2), (2,10,3), (3,9,1), (3,9,2), (3,10,2), (3,10,3)이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=-√(ax+b)+c가 제2, 3, 4사분면만 지난다.",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "시작점이 제2사분면, x절편 (-2,0), y절편이 음수인 개형으로 제2, 3, 4사분면만 지남을 보여 준다."
+ ]
+}

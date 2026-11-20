@@ -516,7 +516,12 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
     "subUnit": "삼각함수의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 π/2 사이에서 올라갔다 내려오는 사인 곡선이 있고, 가운데 θ=π/4에서 가장 높으며 높이 1/2의 가로선이 이 점에 닿아 있다.",
+    "solutionImageCaption": "tanθ cos²θ=sinθ cosθ=(1/2) sin 2θ이므로 0<θ<π/2에서 y=(1/2) sin 2θ의 그래프를 본다. 이 그래프의 가장 높은 점은 θ=π/4일 때의 높이 1/2이다. 직선 y=1/2은 이 점에서만 그래프에 닿는다. 따라서 답은 ②이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 15,
@@ -552,7 +557,11 @@ window.questionBank = [
     "subUnitKey": "H22-A-02-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선 f가 0에서 3까지 그려져 있고, 왼쪽 끝 A, 꼭짓점 V, 오른쪽 끝 B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 지수 f(x)=x²−2x−1=(x−1)²−2의 그래프이다. 0<a<1이므로 y=aᶠ⁽ˣ⁾은 f가 작을수록 크다. 꼭짓점 V(1, −2)에서 f가 최소라 최댓값 a⁻²=9이고 a=1/3이다. 0≤x≤3에서 f의 최댓값은 끝점 B(3, 2)의 값 2이므로 m=a²=1/9이다. 따라서 a+m=4/9이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -826,9 +835,9 @@ window.questionBank = [
   },
   {
     "id": 24,
-    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q24-solution.svg",
-    "solutionImageAlt": "지수함수 y=a^(x−2), 로그함수 y=log_a(x−2), 직선 y=−x+6과 대칭축 y=x−2를 그리고, 교점 A(3,3)·B와 C(0,6), 중점 M(4,2)을 표시하여 a=3임을 보여 준다.",
-    "solutionImageCaption": "inverse_line",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q24-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선 f와 오른쪽 아래로 퍼지는 주황 로그 곡선 g, 초록 직선 y=−x+6, 점선 y=x−2가 있다. 점 C, A, M, B의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 y=aˣ⁻²의 그래프이고 g는 y=logₐ(x−2)의 그래프이며, 두 그래프는 직선 y=x−2에 대하여 대칭이다. y=−x+6과 y=x−2의 교점 M(4, 2)는 선분 AB의 중점이다. C(0, 6)이고 AB:AC=2:3이므로 AM:AC=1:3이다. 그래서 A는 선분 CM을 3:1로 나누는 점 A(3, 3)이다. A가 f 위의 점이므로 3=a이고 그림은 a=3인 경우이다. 따라서 답은 3이다.",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "아래 그림과 같이 함수 $y=a^{x-2}$, 함수 $y=\\log_a(x-2)$의 그래프와 함수 $y=-x+6$의 그래프의 교점을 각각 A, B라 하고 $y=-x+6$과 $y$축의 교점을 C라 하면 $\\overline{\\text{AB}}:\\overline{\\text{AC}}=2:3$이다. 이때 $a$의 값을 구하는 과정을 풀이 과정과 함께 서술하시오. (단, $a \\gt 1$) (6점)<br><div class='flex justify-center my-4'><svg width='240' height='240' viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'><defs><marker id='arrow' viewBox='0 0 10 10' refX='8' refY='5' markerWidth='6' markerHeight='6' orient='auto-start-reverse'><path d='M 0 0 L 10 5 L 0 10 z' fill='black'/></marker></defs><line x1='40' y1='200' x2='220' y2='200' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='210' x2='40' y2='20' stroke='black' stroke-width='1.2' marker-end='url(#arrow)'/><line x1='40' y1='50' x2='190' y2='200' stroke='black' stroke-width='1.5'/><path d='M 42 198 Q 100 195 115 125 C 122 80 125 40 128 15' fill='none' stroke='#000' stroke-width='1.8'/><path d='M 92 230 Q 95 185 165 175 C 205 170 230 165 245 162' fill='none' stroke='#000' stroke-width='1.8'/><circle cx='40' cy='50' r='2.5' fill='black'/><text x='20' y='55' font-size='14' font-family='serif' font-style='italic'>C</text><circle cx='115' cy='125' r='2.5' fill='black'/><text x='102' y='120' font-size='14' font-family='serif' font-style='italic'>A</text><circle cx='165' cy='175' r='2.5' fill='black'/><text x='170' y='170' font-size='14' font-family='serif' font-style='italic'>B</text><text x='225' y='215' font-size='13' font-family='serif' font-style='italic'>x</text><text x='20' y='25' font-size='13' font-family='serif' font-style='italic'>y</text><text x='20' y='215' font-size='14' font-family='serif' font-style='italic'>O</text></svg></div>",
@@ -857,6 +866,7 @@ window.questionBank = [
     "subUnitKey": "H22-A-03-EXPONENTIAL_FUNCTION",
     "subUnit": "지수함수",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImageScale": 80
   }
 ];

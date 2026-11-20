@@ -295,10 +295,10 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
   <script>if (new URLSearchParams(location.search).get('scope') === 'subunit') { var navHost = document.querySelector('[data-archive-navigation]'); navHost.dataset.archiveView = 'five-minute'; navHost.dataset.archiveTitle = '소단원 평가 보관함'; }</script>
   <!-- AP Math OS가 주소 뒤(#apmsess=)에 실어 보낸 로그인을 메뉴가 읽기 전에 먼저 복원한다. -->
   <script src="../archive-session.js"></script>
-  <script src="../archive2-session.js?v=20261110-library-2"></script>
-  <script src="../archive2-navigation.js?v=20261116-standalone-1"></script>
+  <script src="../archive2-session.js?v=20261119-small-fixes-1"></script>
+  <script src="../archive2-navigation.js?v=20261119-diagnostic-1"></script>
   <script src="../archive2-error-detail.js?v=20261118-error-detail-1"></script>
-  <script src="../archive2-assign.js?v=20261119-assessment-pack-1"></script>
+  <script src="../archive2-assign.js?v=20261119-small-fixes-1"></script>
   <div class="modal-overlay" id="assessmentPrintModeModal">
     <div class="modal-box">
       <div class="modal-title">시험지 출력 방식 선택</div>
@@ -389,17 +389,13 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
 
   <script src="assessment-packs-1sem.generated.js"></script>
   <script src="assessment-packs-2sem-final-mock.generated.js"></script>
+  <script src="assessment-pack-core.js?v=20261119-pack-core-1"></script>
   <script>
-    const MOCK_CATEGORY = '26년 2학기 기말 모의고사';
+    const MOCK_CATEGORY = AssessmentPackCore.MOCK_CATEGORY;
     const BASE_DATA = window.APMATH_ASSESSMENT_PACKS_1SEM || { packs: [], sourceSummary: {} };
-    // 모의고사 자료는 별도 파일이다. 파일이 없거나 비어 있으면 탭을 숨기고 기존 화면 그대로 동작한다.
+    // 모의고사 자료는 별도 파일이다. 파일이 없거나 비어 있으면 탭을 숨기고 기존 화면 그대로 동작한다(합치기는 공용 코드).
     const MOCK_DATA = window.APMATH_ASSESSMENT_PACKS_MOCK_2SEM_FINAL || { packs: [], categoryOrder: [] };
-    const DATA = {
-      ...BASE_DATA,
-      packs: [...(MOCK_DATA.packs || []), ...(BASE_DATA.packs || [])],
-      categoryOrder: [...(MOCK_DATA.packs || []).length ? [MOCK_CATEGORY] : [],
-        ...(BASE_DATA.categoryOrder || ['진단평가', '단원평가', '중간·기말평가'])],
-    };
+    const DATA = AssessmentPackCore.mergeData(BASE_DATA, MOCK_DATA);
     const subunitScope = new URLSearchParams(location.search).get('scope') === 'subunit';
     const packs = (DATA.packs || []).filter((pack) =>
       !subunitScope || (pack.category === '단원평가' && String(pack.id || '').startsWith('SUB_1SEM_')));
@@ -419,7 +415,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
     }
 
     function countObj(obj) {
-      return Object.entries(obj || {}).map(([key, value]) => `${key} ${value}`).join(' · ') || '-';
+      return AssessmentPackCore.countText(obj);
     }
 
     function renderStats() {
@@ -475,22 +471,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
       const query = document.getElementById('search').value.trim().toLowerCase();
       const grade = document.getElementById('grade').value;
       const count = document.getElementById('count').value;
-      return packs.filter((pack) => {
-        if (pack.category !== active) return false;
-        if (grade && pack.grade !== grade) return false;
-        if (count && String(pack.questionCount) !== count) return false;
-        if (!query) return true;
-        return [
-          pack.title,
-          pack.category,
-          pack.grade,
-          pack.unitLabel,
-          pack.unitKey,
-          pack.scopeLabel,
-          (pack.scopeUnits || []).join(' '),
-          pack.purpose,
-        ].join(' ').toLowerCase().includes(query);
-      });
+      return AssessmentPackCore.filterPacks(packs, { category: active, grade, count, query });
     }
 
     function renderDifficultyChips(mix) {
@@ -507,7 +488,7 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
 
     // 카드 범위 설명에서 단원 코드 "(M1-01)", "(H22-C-06~09)"는 화면에 보이지 않게 한다(교사가 모르는 내부 코드).
     function plainScopeText(text) {
-      return String(text || '').replace(/\s*\((?:[A-Z]\d*)(?:-[A-Z0-9]+)+(?:~\d+)?\)/g, '');
+      return AssessmentPackCore.plainScopeText(text);
     }
 
     function renderMeta(pack) {
@@ -519,80 +500,13 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
     }
 
     function isDiagnosticAssessmentPack(pack) {
-      if (!pack) return false;
-      return pack.category === '진단평가' ||
-        (pack.title || '').includes('진단평가') ||
-        (pack.id || '').startsWith('DIAG_');
+      return AssessmentPackCore.isDiagnosticPack(pack);
     }
 
-    function getDiagnosticStorageKey(diagnosticId) {
-      return `apms.diagnostic.assessment.result.${diagnosticId}`;
-    }
-
-    function getDiagnosticResultsListKey() {
-      return 'apms.diagnostic.assessment.results';
-    }
-
-    function getDiagnosticCurrentKey() {
-      return 'apms.diagnostic.assessment.current';
-    }
-
-    function todayString() {
-      return new Date(Date.now() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
-    }
-
-    function createDiagnosticAssessmentDraft(pack) {
-      // questionCount 0 fallback 금지: 진단평가는 실제 pack.questions 배열이 있을 때만 시작한다.
-      const hasDiagnosticQuestions = Array.isArray(pack.questions) && pack.questions.length > 0;
-      if (!hasDiagnosticQuestions) {
-        alert('문항 수 확인이 필요합니다.');
-        return null;
-      }
-      const diagnosticId = `diagnostic_${String(pack.id || 'pack').replace(/[^a-zA-Z0-9_-]+/g, '_')}_${Date.now()}`;
-      const payload = {
-        diagnosticId,
-        packId: pack.id,
-        packTitle: pack.title || '',
-        category: pack.category || '',
-        type: pack.examType || '',
-        grade: pack.grade || '',
-        scope: pack.scopeLabel || pack.unitLabel || '',
-        range: pack.scopeLabel || pack.unitLabel || '',
-        questionCount: pack.questions.length,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        status: 'input_pending',
-        studentName: '',
-        className: '',
-        schoolName: '',
-        gradeLabel: '',
-        examDate: todayString(),
-        results: [],
-        source: 'assessment_mvp',
-        mode: 'diagnostic',
-      };
-      localStorage.setItem(getDiagnosticStorageKey(diagnosticId), JSON.stringify(payload));
-      localStorage.setItem(getDiagnosticCurrentKey(), diagnosticId);
-      const listKey = getDiagnosticResultsListKey();
-      const list = JSON.parse(localStorage.getItem(listKey) || '[]').filter((item) => item?.diagnosticId !== diagnosticId);
-      list.unshift({
-        diagnosticId,
-        packId: pack.id,
-        packTitle: pack.title || '',
-        questionCount: pack.questions.length,
-        status: payload.status,
-        updatedAt: payload.updatedAt,
-      });
-      localStorage.setItem(listKey, JSON.stringify(list.slice(0, 30)));
-      return payload;
-    }
-
+    // 진단평가 정답입력 시작(초안을 localStorage에 만들고 분석 화면 주소를 돌려준다)은 공용 코드(assessment-pack-core.js)다.
     function startDiagnosticAssessment(pack) {
-      const draft = createDiagnosticAssessmentDraft(pack);
-      if (!draft) return;
-      const url = './assessment-analysis.html?packId=' + encodeURIComponent(pack.id) +
-        '&diagnosticId=' + encodeURIComponent(draft.diagnosticId) +
-        '&mode=diagnostic-input';
+      const url = assessmentPackCore.diagnosticInputUrl(pack, './assessment-analysis.html');
+      if (!url) return;
       window.location.href = url;
     }
 
@@ -888,35 +802,9 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
       }
     }
 
-    function stableAssessmentJson(value) {
-      if (Array.isArray(value)) return `[${value.map(stableAssessmentJson).join(',')}]`;
-      if (value && typeof value === 'object') {
-        return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableAssessmentJson(value[key])}`).join(',')}}`;
-      }
-      return JSON.stringify(value ?? null);
-    }
-
-    function simpleAssessmentHash(value) {
-      const text = stableAssessmentJson(value);
-      let hash = 2166136261;
-      for (let i = 0; i < text.length; i++) {
-        hash ^= text.charCodeAt(i);
-        hash = Math.imul(hash, 16777619);
-      }
-      return `fnv1a_${(hash >>> 0).toString(16).padStart(8, '0')}`;
-    }
-
+    // 팩 → 문항 구성 해시·MIXED 키·출제 항목은 빠른 평가의 "준비된 평가지"와 같은 공용 코드(assessment-pack-core.js)를 쓴다.
     function buildAssessmentPackHash(pack) {
-      return simpleAssessmentHash({
-        pack_id: pack?.id || '',
-        questions: (pack?.questions || []).map((question, index) => ({
-          order: index + 1,
-          source_file: question?._sourceFile || '',
-          source_question_no: question?._sourceQuestionNo || '',
-          standard_unit_key: question?.standardUnitKey || '',
-          level: question?.level || '',
-        })),
-      });
+      return AssessmentPackCore.packHash(pack);
     }
 
     function getAssessmentAssignmentBatchId(pack, gradeLabel) {
@@ -1345,129 +1233,9 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
     }
     window.previewPendingAssessment = previewPendingAssessment;
 
-    // ── 시험지 열기 보조 (2026-11-19 핫픽스) ──────────────────────────────────────────
-    // 열 때마다 mixedQuestions_assessment_<팩>_<시각> / mixedMeta_… 를 새로 쓰는데 지우는 코드가 없어, 오래 쓴 브라우저는 저장 공간(약 5MB)이
-    // 가득 차 setItem이 던지고 창이 안 열렸다. 이 두 이름의 키만, 최근 몇 개를 남기고 정리한다. 가득 차면 더 많이 정리한 뒤 다시 쓰고,
-    // 그래도 안 되면 엔진이 평가팩 번호(packId)로 팩 자료 파일에서 직접 읽게 한다. Archive 2.0 초안·로그인·mix_ 키는 건드리지 않는다.
-    const ASSESSMENT_SNAPSHOT_KEEP = 6;
-    const ASSESSMENT_SNAPSHOT_KEEP_ON_QUOTA = 2;
-    // 끝이 시각(열 때 만든 키)이면 그 시각으로, 출제 패널의 고정 키(assessment_<팩>_<해시>)는 저장해 둔 meta.generatedAt으로 최근 순서를 정한다.
-    const ASSESSMENT_SNAPSHOT_KEY = /^mixed(?:Questions|Meta)_(assessment_.+)$/;
-    const ASSESSMENT_SNAPSHOT_TIME = /_(\d{10,})$/;
-
-    function assessmentSnapshotTime(key) {
-      const stamped = ASSESSMENT_SNAPSHOT_TIME.exec(key);
-      if (stamped) return Number(stamped[1]);
-      try {
-        const meta = JSON.parse(localStorage.getItem('mixedMeta_' + key) || 'null');
-        const parsed = Date.parse(meta && meta.generatedAt);
-        return Number.isFinite(parsed) ? parsed : 0;
-      } catch (error) { return 0; }
-    }
-
-    function listAssessmentSnapshots() {
-      const times = new Map();
-      try {
-        for (let i = 0; i < localStorage.length; i += 1) {
-          const match = ASSESSMENT_SNAPSHOT_KEY.exec(localStorage.key(i) || '');
-          if (match && !times.has(match[1])) times.set(match[1], assessmentSnapshotTime(match[1]));
-        }
-      } catch (error) { /* 정리는 보조 동작 */ }
-      return [...times].map(([k, t]) => ({ k, t })).sort((a, b) => b.t - a.t);
-    }
-
-    function pruneAssessmentSnapshots(keepCount, protectKey) {
-      const list = listAssessmentSnapshots();
-      const kept = new Set(list.slice(0, keepCount).map((entry) => entry.k));
-      if (protectKey) kept.add(protectKey);
-      list.forEach((entry) => {
-        if (kept.has(entry.k)) return;
-        try {
-          localStorage.removeItem('mixedQuestions_' + entry.k);
-          localStorage.removeItem('mixedMeta_' + entry.k);
-        } catch (error) { /* 다음 정리에서 다시 */ }
-      });
-    }
-
-    // 엔진에 넘길 자료를 저장한다. 저장하지 못하면 false(그때는 packId로 연다).
-    function storeAssessmentSnapshot(key, questions, meta) {
-      let questionsJson;
-      let metaJson;
-      try {
-        questionsJson = JSON.stringify(questions);
-        metaJson = JSON.stringify(meta);
-      } catch (error) { return false; }
-      const write = () => {
-        localStorage.setItem('mixedQuestions_' + key, questionsJson);
-        try {
-          localStorage.setItem('mixedMeta_' + key, metaJson);
-        } catch (error) {
-          try { localStorage.removeItem('mixedQuestions_' + key); } catch (ignored) { /* ignore */ }
-          throw error;
-        }
-      };
-      pruneAssessmentSnapshots(ASSESSMENT_SNAPSHOT_KEEP - 1, key);
-      for (const keep of [null, ASSESSMENT_SNAPSHOT_KEEP_ON_QUOTA, 0]) {
-        if (keep !== null) pruneAssessmentSnapshots(keep, key);
-        try { write(); return true; } catch (error) { /* 더 많이 정리하고 다시 */ }
-      }
-      return false;
-    }
-
-    // 새 창은 클릭한 그 순간에 먼저 연다. 출제 등록처럼 오래 걸리는 일을 기다린 뒤에 열면 브라우저가 팝업으로 보고 막을 수 있다.
-    function openAssessmentWindowNow() {
-      let win = null;
-      try { win = window.open('', '_blank'); } catch (error) { win = null; }
-      if (win) {
-        try {
-          win.document.title = '시험지 준비 중';
-          win.document.body.style.cssText = 'font:16px sans-serif;padding:24px;color:#333';
-          win.document.body.textContent = '시험지를 준비하는 중입니다…';
-        } catch (error) { /* 안내문은 보조 */ }
-      }
-      return win;
-    }
-
-    function showAssessmentNotice(message, link) {
-      try {
-        const old = document.getElementById('assessmentOpenNotice');
-        if (old && old.remove) old.remove();
-        const box = document.createElement('div');
-        box.id = 'assessmentOpenNotice';
-        box.setAttribute('role', 'alert');
-        box.style.cssText = 'position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:9999;max-width:min(92vw,640px);padding:14px 18px;border-radius:12px;background:#FFF7E6;border:1px solid #F0B429;color:#5B3A00;font-size:14px;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,.18)';
-        const text = document.createElement('span');
-        text.textContent = message;
-        box.appendChild(text);
-        if (link) {
-          const anchor = document.createElement('a');
-          anchor.href = link;
-          anchor.target = '_blank';
-          anchor.textContent = ' 시험지 열기';
-          anchor.style.cssText = 'margin-left:8px;font-weight:700;color:#0B5CAD';
-          box.appendChild(anchor);
-        }
-        const close = document.createElement('button');
-        close.type = 'button';
-        close.textContent = '닫기';
-        close.style.cssText = 'margin-left:12px;border:0;background:transparent;color:#5B3A00;font-weight:700;cursor:pointer';
-        close.addEventListener('click', () => { if (box.remove) box.remove(); });
-        box.appendChild(close);
-        document.body.appendChild(box);
-      } catch (error) { /* 안내를 못 그려도 열기는 계속 */ }
-    }
-
-    function showAssessmentWindowTarget(win, url) {
-      if (win && !win.closed) {
-        try { win.location.replace(url); return true; } catch (error) { /* 아래에서 다시 연다 */ }
-      }
-      let again = null;
-      try { again = window.open(url, '_blank'); } catch (error) { again = null; }
-      if (again) return true;
-      showAssessmentNotice('브라우저가 새 창(팝업)을 막았습니다. 이 사이트의 팝업을 허용하거나 아래 링크로 여세요.', url);
-      return false;
-    }
-
+    // ── 시험지 열기·출제 패널 (공용 코드: assessment-pack-core.js) ──────────────────────────────────
+    // 평가 전달 자료(mixedQuestions_assessment_…) 정리·저장, 팝업 차단 대비, 엔진 주소 만들기, 출제 패널 열기는
+    // 빠른 평가의 "준비된 평가지"와 같은 코드를 쓴다(두 벌 없음). 이 화면에 남은 것: 옛 출제 모달(?assign=legacy)과 그 등록.
     // 출제 등록이 실패했을 때 선생님께 보일 안내(영어 원문·내부 용어 없이, 등록됐는지 모를 때는 모른다고 말한다).
     // 등록 요청은 서버가 PDF를 만드는 동안 기다리므로, 실패 응답이어도 출제 행이 이미 생겼을 수 있다: 무조건 "다시 누르라"고 하지 않는다.
     function assessmentRegistrationFailureMessage(error) {
@@ -1481,268 +1249,31 @@ body.archive2-assessment .exam-card.is-active .card-actions { padding: 0 21px 19
       return '출제가 등록되었는지 확인하지 못했습니다(' + reason + '). 출제 내역에서 확인한 뒤, 없으면 다시 출제해 주세요.' + tail;
     }
 
+    const assessmentPackCore = AssessmentPackCore.create({
+      window,
+      engineUrl: () => new URL('../mixed_engine.html', window.location.href),
+      apiBase: ASSESSMENT_AP_API_BASE,
+      authHeader: getAssessmentAssignmentAuthHeader,
+      session: getApmathSession,
+      sessionHash: appendCurrentArchiveSessionToHash,
+      getPacks: () => packs,
+      // 옛 출제 모달 길: 엔진을 열기 전에 반 하나를 옛 방식(registerAssessmentClassExamAssignment)으로 등록한다.
+      registerLegacy: (classRow, pack, key, opts) => registerAssessmentClassExamAssignment(classRow, pack, key, {
+        ...opts,
+        assignmentBatchId: opts.assignmentBatchId || getAssessmentAssignmentBatchId(pack, opts.gradeLabel || pack.grade || 'class'),
+      }),
+      registrationFailureMessage: assessmentRegistrationFailureMessage,
+    });
+    const ASSESSMENT_SNAPSHOT_KEEP = assessmentPackCore.SNAPSHOT_KEEP;
+    const pruneAssessmentSnapshots = assessmentPackCore.pruneSnapshots;
+    const openAssessmentWindowNow = assessmentPackCore.openWindowNow;
+    const assessmentAssignPanelAvailable = assessmentPackCore.assignPanelAvailable;
+    const openAssessmentAssignPanel = assessmentPackCore.openAssignPanel;
     // 반환: { registrationFailed: '선생님용 안내문' } — 등록이 실패해 QR 없이 연 경우만.
-    async function goAssessmentMixedEngine(pack, mode, qpp, options = {}) {
-      // 첫 await 전에, 클릭 순간에 창부터 연다(학년별 출제처럼 호출하는 쪽이 이미 열었으면 그것을 쓴다).
-      const win = options.targetWindow !== undefined ? options.targetWindow : openAssessmentWindowNow();
-      try {
-        const key = options.keyOverride || `assessment_${pack.id}_${Date.now()}`;
-        const questions = (pack.questions || []).map((question) => ({ ...question }));
-        let assignmentRegistered = !!(options.assignmentRegistered || options.preRegistered);
-        const meta = {
-          title: pack.title,
-          customTitle: pack.title,
-          count: questions.length,
-          qpp,
-          generatedAt: new Date().toISOString(),
-          assessmentPackId: pack.id,
-          category: pack.category,
-          packId: pack.id,
-          grade: pack.grade,
-          gradeLabel: options.gradeLabel || pack.grade,
-          scopeLabel: pack.scopeLabel,
-          assignmentBatchId: options.assignmentBatchId || '',
-          targetScope: options.target_scope || (options.submitQr ? 'class' : ''),
-        };
-        const stored = storeAssessmentSnapshot(key, questions, meta);
-
-        const url = new URL('../mixed_engine.html', window.location.href);
-        url.searchParams.set('key', key);
-        url.searchParams.set('qpp', qpp);
-        url.searchParams.set('mode', mode || 'exam');
-        // 자료를 브라우저에 저장하지 못했으면 엔진이 평가팩 번호로 팩 자료 파일에서 직접 읽는다.
-        // (출제 패널로 낸 시험지는 자료가 나중에 정리돼 사라져도 다시 열리도록 packId를 항상 붙인다.)
-        if (!stored || options.packIdFallback) url.searchParams.set('packId', pack.id);
-        if (options.date) url.searchParams.set('date', options.date);
-        if (options.preview) {
-          // Reuse the renderer's frozen-paper UI so review cannot shuffle or edit
-          // a copy that differs from the pack subsequently assigned by this page.
-          url.searchParams.set('studio', '1');
-          url.searchParams.set('preview', '1');
-          url.searchParams.set('submitQr', '0');
-          url.searchParams.set('preRegistered', '1');
-          url.searchParams.set('assignmentRegistered', '1');
-        }
-        let registrationFailed = options.registrationFailed || '';
-        if (options.submitQr) url.searchParams.set('submitQr', '1');
-        if (options.classId) url.searchParams.set('class', options.classId);
-        if (options.teacherName) url.searchParams.set('teacher', options.teacherName);
-        if (options.className) url.searchParams.set('className', options.className);
-        if (assignmentRegistered) {
-          url.searchParams.set('assignmentRegistered', '1');
-          url.searchParams.set('preRegistered', '1');
-        }
-        if (options.submitQr && options.classId && !assignmentRegistered) {
-          try {
-            await registerAssessmentClassExamAssignment(
-              { id: options.classId, name: options.className || '', grade: options.gradeLabel || pack.grade, teacher_name: options.teacherName || '' },
-              pack,
-              key,
-              {
-                assignmentBatchId: options.assignmentBatchId || getAssessmentAssignmentBatchId(pack, options.gradeLabel || pack.grade || 'class'),
-                target_scope: options.target_scope || 'class',
-                gradeLabel: options.gradeLabel || pack.grade || '',
-                qpp,
-              }
-            );
-            assignmentRegistered = true;
-            url.searchParams.set('assignmentRegistered', '1');
-            url.searchParams.set('preRegistered', '1');
-          } catch (error) {
-            console.warn('[assessment assignment] 사전 등록 실패:', error);
-            registrationFailed = assessmentRegistrationFailureMessage(error);
-          }
-        }
-        if (registrationFailed) {
-          // 등록이 확인되지 않았는데 제출 QR이 찍혀 나가면 학생이 제출할 곳이 없을 수 있다: QR 없이, 반 연결 없이 연다.
-          ['class', 'teacher', 'className', 'assignmentRegistered', 'preRegistered'].forEach((name) => url.searchParams.delete(name));
-          url.searchParams.set('submitQr', '0');
-        }
-        showAssessmentWindowTarget(win, appendCurrentArchiveSessionToHash(url.toString()));
-        return registrationFailed ? { registrationFailed } : {};
-      } catch (error) {
-        if (win && !win.closed) { try { win.close(); } catch (ignored) { /* ignore */ } }
-        showAssessmentNotice('시험지를 열지 못했습니다. 화면을 새로고침한 뒤 다시 시도해 주세요.');
-        throw error;
-      }
+    function goAssessmentMixedEngine(pack, mode, qpp, options = {}) {
+      return assessmentPackCore.openEngine(pack, mode, qpp, options);
     }
-
-    // ── 출제 패널 (2026-11-19) ─────────────────────────────────────────────────────────
-    // 보관함의 "AP 제출 QR 시험지 출력"(출제)은 Archive 2.0 출제 패널(archive2-assign.js)의 단원별(unit) 종류로 낸다.
-    // 서버·요청 본문은 옛 모달(registerAssessmentClassExamAssignment)과 같다: 머리글 없는 POST /class-exam-assignments,
-    // MIXED:<키> + mixed_payload_json, pack_id·pack_hash. 옛 모달 길은 주소에 assign=legacy가 있을 때(또는 패널 스크립트가 없을 때) 그대로 쓴다.
-    let _assessmentAssignPanel = null; // { handle, pack, key }
-
-    function assessmentAssignPanelAvailable() {
-      const panel = window.Archive2Assign;
-      return Boolean(panel && typeof panel.open === 'function' && !(typeof panel.useLegacy === 'function' && panel.useLegacy(window.location.search)));
-    }
-
-    // 같은 팩·같은 문항 구성은 늘 같은 키다 → 같은 반·같은 날 다시 출제하면 서버가 같은 건으로 받고 패널이 "이미 출제됨"으로 보여 준다.
-    function assessmentAssignKey(pack) {
-      return `assessment_${String(pack?.id || 'pack').replace(/[^a-zA-Z0-9_-]+/g, '_')}_${buildAssessmentPackHash(pack)}`;
-    }
-
-    // 팩 번호에 학년이 들어 있다(M1=중1, H2=고2). pack.grade는 '고11'처럼 학기가 붙은 표시라서 반 학년과 맞지 않는다.
-    function assessmentAssignGrade(pack) {
-      const match = /(?:^|_)([MH])([123])(?:_|$)/.exec(String(pack?.id || ''));
-      return match ? (match[1] === 'M' ? '중' : '고') + match[2] : String(pack?.grade || '');
-    }
-
-    function assessmentAssignItem(pack) {
-      return {
-        kind: 'unit',
-        snapshotKey: assessmentAssignKey(pack),
-        title: pack.title,
-        identityTitle: pack.title,
-        grade: assessmentAssignGrade(pack),
-        subject: '',
-        count: (pack.questions || []).length,
-        packId: pack.id,
-        packHash: buildAssessmentPackHash(pack),
-        ref: { packId: pack.id },
-      };
-    }
-
-    // 옛 모달이 보내던 mixed_payload_json과 같은 문항·meta(패널이 쪽당 문항 qpp를 meta에 더한다).
-    async function loadAssessmentAssignPayload(item) {
-      const pack = packs.find((entry) => entry.id === item?.ref?.packId);
-      if (!pack || !Array.isArray(pack.questions) || !pack.questions.length) throw new Error('평가팩 문항을 찾지 못했습니다.');
-      return { questions: pack.questions, meta: { customTitle: pack.title || '', packId: pack.id || '' } };
-    }
-
-    // 패널에 꽂는 request(route, {method, headers, body, timeoutMs}). unit-past-exams.js assignRequest와 같은 규칙:
-    // 로그인이 없으면 요청 없이 status=401, 제한 시간이 지나면 timeout=true, 오류 응답은 error.status/error.data를 달아 던진다.
-    function assessmentAssignRequest(route, opt = {}) {
-      const rule = window.Archive2Session;
-      const memory = window.__APMATH_AUTH_MEMORY || {};
-      const loggedIn = !rule || !rule.state || (memory.login_id && memory.raw_password) || rule.state(getApmathSession()).loggedIn;
-      const auth = loggedIn ? getAssessmentAssignmentAuthHeader() : null;
-      if (!auth) return Promise.reject(Object.assign(new Error('교사 로그인이 필요합니다.'), { status: 401 }));
-      const method = opt.method || (opt.body ? 'POST' : 'GET');
-      const timeoutMs = Number.isFinite(opt.timeoutMs) && opt.timeoutMs > 0 ? opt.timeoutMs : (method === 'GET' ? 30000 : 0);
-      const controller = timeoutMs && typeof AbortController === 'function' ? new AbortController() : null;
-      const perform = async () => {
-        const response = await fetch(ASSESSMENT_AP_API_BASE + route, {
-          method,
-          headers: { ...auth, ...(opt.body ? { 'Content-Type': 'application/json' } : {}), ...(opt.headers || {}) },
-          ...(opt.body ? { body: JSON.stringify(opt.body) } : {}),
-          ...(controller ? { signal: controller.signal } : {}),
-        });
-        return { response, data: await response.json().catch(() => ({})) };
-      };
-      return (async () => {
-        let result;
-        let timer;
-        if (timeoutMs) {
-          const pending = perform();
-          pending.catch(() => {});
-          try {
-            result = await Promise.race([pending, new Promise((_, reject) => {
-              timer = setTimeout(() => {
-                if (controller) controller.abort();
-                reject(Object.assign(new Error('응답이 늦습니다. 잠시 뒤 다시 시도해 주세요.'), { timeout: true }));
-              }, timeoutMs);
-            })]);
-          } finally { clearTimeout(timer); }
-        } else result = await perform();
-        const { response, data } = result;
-        if (!response.ok || data.success === false) {
-          const error = new Error(data.error || `요청 실패 (${response.status})`);
-          error.status = response.status;
-          error.data = data;
-          throw error;
-        }
-        return data;
-      })();
-    }
-
-    function openAssessmentAssignPanel(pack, opener) {
-      const panel = window.Archive2Assign;
-      if (panel.isOpen && panel.isOpen()) return;
-      try {
-        const item = assessmentAssignItem(pack);
-        const handle = panel.open({
-          items: [item],
-          unit: { load: loadAssessmentAssignPayload },
-          request: assessmentAssignRequest,
-          opener,
-          jobActions: assessmentAssignJobActions,
-          onClose: () => { _assessmentAssignPanel = null; },
-        });
-        _assessmentAssignPanel = { handle, pack, key: item.snapshotKey };
-      } catch (error) {
-        console.error(error);
-        alert(error.message || '출제 준비에 실패했습니다.');
-      }
-    }
-
-    // 출제가 안 된 반(실패·결과 모름)의 줄에는 시험지를 QR 없이 여는 단추를 둔다: 출제 등록이 안 됐는데 QR이 찍혀 나가면
-    // 학생이 제출할 곳이 없을 수 있으니 반 연결 없이 연다(#2565 핫픽스와 같은 규칙). 안내는 패널 줄의 실패 문구가 맡는다.
-    function assessmentAssignJobActions(job) {
-      return job && (job.status === 'failed' || job.status === 'unknown')
-        ? [{ action: 'plain-paper', label: 'QR 없이 시험지 열기' }]
-        : [];
-    }
-
-    function openAssessmentPlainPaper() {
-      const context = _assessmentAssignPanel;
-      if (!context) return;
-      const qpp = Number(context.handle.model.state.qpp) || 4;
-      goAssessmentMixedEngine(context.pack, 'exam', qpp, {
-        keyOverride: context.key,
-        packIdFallback: true,
-        registrationFailed: '출제가 확인되지 않아 시험지를 QR 없이 열었습니다.',
-      }).catch((error) => console.error(error));
-    }
-
-    // 출제된 건의 시험지·해설·정답 단추(패널 결과 줄). 시험지는 반 연결 + 등록 끝남 표시로 열어 엔진이 다시 등록하지 않는다(옛 출제 뒤 열기와 같다).
-    function openAssessmentAssignedOutput(assignmentId, mode) {
-      const context = _assessmentAssignPanel;
-      const model = context && context.handle && context.handle.model;
-      const job = model && model.state.jobs.find((entry) => entry.assignmentId === assignmentId);
-      if (!job) return;
-      if (mode === 'sol' || mode === 'ans') {
-        goAssessmentMixedEngine(context.pack, mode, 2, { keyOverride: context.key, packIdFallback: true }).catch((error) => console.error(error));
-        return;
-      }
-      const cls = (model.state.classes || []).find((entry) => entry.id === job.classId) || {};
-      const body = job.body || {};
-      goAssessmentMixedEngine(context.pack, 'exam', Number(model.state.qpp) || 4, {
-        submitQr: true,
-        classId: job.classId,
-        teacherName: cls.teacher || '',
-        className: job.className || cls.name || '',
-        target_scope: body.target_scope || 'class',
-        gradeLabel: body.grade_label || '',
-        assignmentBatchId: body.assignment_batch_id || '',
-        keyOverride: context.key,
-        assignmentRegistered: true,
-        preRegistered: true,
-        packIdFallback: true,
-        date: job.date,
-      }).catch((error) => console.error(error));
-    }
-
-    document.addEventListener('click', (event) => {
-      const target = event.target;
-      if (!target || !target.closest || !_assessmentAssignPanel) return;
-      const output = target.closest('dialog.assign-panel [data-action="assignment-output-direct"]');
-      if (output) {
-        event.preventDefault();
-        openAssessmentAssignedOutput(output.dataset.assignment, output.dataset.mode);
-        return;
-      }
-      if (target.closest('dialog.assign-panel [data-host-action="plain-paper"]')) {
-        event.preventDefault();
-        openAssessmentPlainPaper();
-      }
-    });
-    // 패널이 열려 있을 때 뒤로 가기는 패널이 먼저 처리한다(닫기·진행 중 잠금).
-    window.addEventListener('popstate', () => {
-      const panel = window.Archive2Assign;
-      if (panel && typeof panel.handlePopState === 'function') panel.handlePopState();
-    });
+    assessmentPackCore.bindPanelEvents();
 
     window.openPack = openPack;
     window.openAssessmentPrintModeModal = openAssessmentPrintModeModal;

@@ -129,7 +129,11 @@ window.examData = {
         "15"
       ],
       answer: "",
-      solution: ""
+      solution: "",
+      "solutionImage": "assets/images/19_서울압구정중_1학기_중간_중2_수학/q10-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 4 이하의 수 전체가 왼쪽으로 뻗은 구간이 있고 4에는 찬 점이 있다.",
+      "solutionImageCaption": "7−3x≥2x−13에서 −5x≥−20이고 양변을 음수 −5로 나누면 부등호의 방향이 바뀌어 x≤4이다. 수직선에서 4는 찬 점으로 해에 포함된다. 해에 속하는 자연수는 1, 2, 3, 4이므로 합은 1+2+3+4=10이고 답은 ④이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 11,
@@ -181,7 +185,11 @@ window.examData = {
         "500"
       ],
       answer: "",
-      solution: ""
+      solution: "",
+      "solutionImage": "assets/images/19_서울압구정중_1학기_중간_중2_수학/q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 수직선 위에 500 이하의 수 전체가 왼쪽으로 뻗은 구간이 있고 500에는 찬 점이 있다.",
+      "solutionImageCaption": "8시 10분에 출발해 8시 30분까지 20분 안에 도착해야 한다. 걸은 거리를 x m라 하면 뛴 거리는 (2500−x) m이다. 걸린 시간은 x/50+(2500−x)/200이고 20분 이하이므로 x/50+(2500−x)/200≤20이다. 양변에 200을 곱하면 4x+2500−x≤4000에서 3x≤1500이므로 x≤500이다. 수직선에서 500은 찬 점이다. 따라서 걸은 거리는 최대 500m이고 답은 ⑤이다.",
+      "solutionImageSize": "full"
     },
     {
       id: 15,

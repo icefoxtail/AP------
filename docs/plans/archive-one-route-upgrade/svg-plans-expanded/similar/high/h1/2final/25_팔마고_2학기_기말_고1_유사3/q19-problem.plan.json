@@ -1,0 +1,49 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-9",
+     "12",
+     "-3"
+    ]
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "requiredPoints": [
+   {
+    "id": "r1",
+    "x": 1,
+    "y": 0
+   },
+   {
+    "id": "r2",
+    "x": 3,
+    "y": 0
+   },
+   {
+    "id": "V",
+    "x": 2,
+    "y": 3
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "axisTitles": {
+   "x": "x",
+   "y": "y"
+  },
+  "plotHeightLimit": 320
+ },
+ "coordinateLeader": [
+  "V"
+ ],
+ "caption": "x축과 (1,0), (3,0)에서 만나고 꼭짓점이 V(2,3)인 이차함수 y=f(x)의 그래프",
+ "accessibilityDescription": "위로 볼록한 포물선이 x축과 x=1, x=3인 두 점에서 만나고 꼭짓점 V의 좌표가 (2,3)이다."
+}

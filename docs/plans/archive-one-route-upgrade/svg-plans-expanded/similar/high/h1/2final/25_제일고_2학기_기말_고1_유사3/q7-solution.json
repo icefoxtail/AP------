@@ -1,0 +1,347 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "k",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "C"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "2"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "t1",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "expression",
+      "op": "add",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "6"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "21"
+         }
+        ]
+       }
+      ]
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-6"
+     },
+     "c": {
+      "kind": "expression",
+      "op": "add",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "-6"
+       },
+       {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "-5"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "21"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t2",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "expression",
+      "op": "add",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "6"
+       },
+       {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "-1"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "21"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-6"
+     },
+     "c": {
+      "kind": "expression",
+      "op": "add",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "-6"
+       },
+       {
+        "kind": "expression",
+        "op": "mul",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "5"
+         },
+         {
+          "kind": "expression",
+          "op": "sqrt",
+          "args": [
+           {
+            "kind": "integer",
+            "value": "21"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "T1",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "C",
+     "t1"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "T2",
+    "op": "PERPENDICULAR_FOOT",
+    "inputs": [
+     "C",
+     "t2"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayCircles": [
+  "k"
+ ],
+ "displayLines": [
+  "t1",
+  "t2"
+ ],
+ "displaySegments": [
+  {
+   "id": "sCT1",
+   "refs": [
+    "C",
+    "T1"
+   ]
+  },
+  {
+   "id": "sCT2",
+   "refs": [
+    "C",
+    "T2"
+   ]
+  },
+  {
+   "id": "sCP",
+   "refs": [
+    "C",
+    "P"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "C",
+  "P",
+  "T1",
+  "T2"
+ ],
+ "coordinateLabels": [
+  "C",
+  "P"
+ ],
+ "rightAngles": [
+  {
+   "id": "r1",
+   "refs": [
+    "C",
+    "T1",
+    "P"
+   ]
+  },
+  {
+   "id": "r2",
+   "refs": [
+    "C",
+    "T2",
+    "P"
+   ]
+  }
+ ],
+ "planeMarks": {
+  "lineColors": [
+   {
+    "lines": [
+     "t1"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "lines": [
+     "t2"
+    ],
+    "color": "GREEN"
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "e1",
+    "ownerSegment": "sCT1",
+    "text": "r"
+   },
+   {
+    "id": "e2",
+    "ownerSegment": "sCT2",
+    "text": "r"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 480,
+  "height": 420
+ },
+ "caption": "점 P(5,4)를 지나는 접선의 기울기를 m이라 하면 mx−y−5m+4=0이고, 중심 C(1,1)에서 이 직선까지의 거리가 반지름 r이므로 (16−r²)m²−24m+9−r²=0이다. 두 접선의 기울기 m₁, m₂의 합은 24/(16−r²)=2이므로 r²=4, r=2이다. 그림은 r=2일 때의 두 접선이다. 파랑 접선의 기울기가 m₁, 초록 접선의 기울기가 m₂이고 접점은 각각 T1, T2이다. 따라서 답은 ②이다.",
+ "sourceConditions": [
+  "점 (5,4)에서 원 (x−1)²+(y−1)²=r²에 그은 두 접선의 기울기의 합이 2"
+ ],
+ "newVisualInformation": [
+  "r=2일 때 중심 C(1,1), 점 P(5,4)와 두 접선, 접점에서의 반지름 CT₁, CT₂"
+ ]
+}

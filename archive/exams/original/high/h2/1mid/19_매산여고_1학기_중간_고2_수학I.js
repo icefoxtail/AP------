@@ -245,7 +245,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "삼각함수의 주기와 최댓값·최솟값을 판단하기 쉽도록 먼저 식을 바꿉니다.<br>$\\sin(2x-\\pi)=-\\sin2x$이므로 $f(x)=1-2\\sin2x$입니다.<br>① $\\sin2x$의 주기는 $2\\pi/2=\\pi$이고 $\\tan2x$의 주기는 $\\pi/2$입니다. 두 주기는 다릅니다.<br>②③ $-1\\le\\sin2x\\le1$이므로 $-2\\le-2\\sin2x\\le2$, 따라서 $-1\\le f(x)\\le3$입니다. 최댓값은 $3$, 최솟값은 $-1$이므로 둘 다 틀립니다.<br>④ $0\\le x\\le\\pi/2$이면 $0\\le2x\\le\\pi$입니다. $\\sin2x$는 $x=0$부터 $\\pi/4$까지 증가하고 $\\pi/4$부터 $\\pi/2$까지 감소하므로, $f(x)=1-2\\sin2x$는 먼저 감소했다가 증가합니다. 구간 전체에서 계속 감소하지 않습니다.<br>⑤ $f(0)=1-2\\sin0=1$, $f(\\pi)=1-2\\sin2\\pi=1$이므로 $f(0)+f(\\pi)=2$입니다.<br>따라서 옳은 것은 ⑤입니다.",
-    "provenance": "SOURCE_DRAFT_AUDIT_PENDING"
+    "provenance": "SOURCE_DRAFT_AUDIT_PENDING",
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "해설 그림: 0에서 π까지 한 주기의 사인 곡선이 y=1에서 시작해 π/4에서 가장 낮고 3π/4에서 가장 높았다가 y=1로 돌아온다. 세로축에 3, 1, −1 눈금이 표시되어 있다.",
+    "solutionImageCaption": "f(x)=2sin(2x−π)+1=1−2sin2x이다. 그림에서 최댓값은 3, 최솟값은 −1이므로 ②, ③은 틀리다. 구간 0≤x≤π/2에서 x=π/4까지 감소하다가 다시 증가하므로 ④도 틀리다. f의 주기는 π이고 tan2x의 주기는 π/2이므로 ①도 틀리다. f(0)=1, f(π)=1이므로 f(0)+f(π)=2이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
   {
     "id": 17,

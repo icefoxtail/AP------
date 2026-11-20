@@ -242,7 +242,11 @@ window.examData = {
         "6"
       ],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중1_수학/Q14-solution.svg",
+      "solutionImageAlt": "해설 그림: 제2사분면과 제4사분면에 걸친 두 갈래의 곡선이 있고 곡선 위에 점 (1,−6)과 점 (−2,3)이 표시되어 있다.",
+      "solutionImageCaption": "그래프가 점 (1,−6)을 지나므로 a=1×(−6)=−6이고 관계식은 y=−6/x이다. x=−2를 대입하면 b=−6/(−2)=3이다. 따라서 a+b=−6+3=−3이고 답은 ③이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "Q15",
@@ -348,7 +352,11 @@ window.examData = {
       "question": "[서술형 1] $y=ax$의 그래프와 $y=\\frac{b}{x}$의 그래프가 점 $(5, 4)$에서 만날 때, $ab$의 값을 구하여라. [5점]",
       "choices": [],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중1_수학/Q21-solution.svg",
+      "solutionImageAlt": "해설 그림: 원점을 지나는 직선과 제1사분면과 제3사분면에 걸친 두 갈래의 곡선이 점 P(5,4)에서 만나고 좌표가 표시되어 있다.",
+      "solutionImageCaption": "점 (5,4)가 y=ax 위에 있으므로 4=5a에서 a=4/5이다. 또 y=b/x 위에 있으므로 b=5×4=20이다. 따라서 ab=(4/5)×20=16이다. 그림은 두 그래프가 점 P(5,4)에서 만나는 모습이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": "Q22",
@@ -378,7 +386,12 @@ window.examData = {
       "question": "[서술형 4] 좌표평면 위의 두 점 $A\\left(a+\\frac{1}{3}, \\frac{3}{2}a-1\\right)$, $B(2-b, b+4)$는 각각 $x$축, $y$축 위의 점이다. 이때, $a$, $b$를 구하고 원점을 포함한 세 점 O, A, B를 꼭짓점으로 하는 삼각형 OAB의 넓이를 구하여라. [5점]",
       "choices": [],
       "answer": "",
-      "solution": ""
+      "solution": "",
+      "solutionImage": "assets/images/19_왕운중_1학기_기말_중1_수학/Q24-solution.svg",
+      "solutionImageAlt": "해설 그림: 원점 O와 x축 위의 점 A(1,0), y축 위의 점 B(0,6)를 꼭짓점으로 하는 직각삼각형이 그려져 있고 세 점의 좌표가 표시되어 있다.",
+      "solutionImageCaption": "점 A가 x축 위의 점이므로 y좌표가 0이다. (3/2)a−1=0에서 a=2/3이고 A(1,0)이다. 점 B가 y축 위의 점이므로 x좌표가 0이다. 2−b=0에서 b=2이고 B(0,6)이다. 삼각형 OAB는 직각삼각형이므로 넓이는 (1/2)×1×6=3이다.",
+      "solutionImageSize": "full",
+      "solutionImageScale": 80
     }
   ]
 };

@@ -16,6 +16,8 @@
 - **문제은행의 모든 기출·ALIVE Generated·교재/유형/유사문항**에서 *문제용*과 *해설용* 시각자료의 필요성을 UID마다 **독립 판단**한다. 문자·수식만으로 문제를 풀 수 있어도 해설의 접선/교점/대칭/보조선/그래프/영역 관계를 학생에게 명확히 전달하는 SVG가 필요하면 반드시 제작한다. `VISUAL_OPTIONAL`도 실질 교육 효과가 있으면 ADD하며, 진짜 중복·장식은 근거 있는 EXEMPT.
 - 기존 Visual 생성 스킬과 엔진을 재사용하고, source PNG 불변·교육과정·실제 primitive/렌더 검증을 유지한다. 기존 승인 문항의 품질 상태를 일괄 취소하지 말고 누락 UID의 시각 결함만 보강한다. 실측 누락률은 고유 UID × 문제/해설 전수조사 후 확정한다.
 - 실행 정본: `docs/rules/04_VISUAL/Problem_Bank_Per_Item_Problem_Solution_SVG_Full_Audit_CURRENT_v1.md`. 문서 작성은 전수조사/SVG 생성/Chrome 완료가 아니다.
+- **유사(1:1 변형) 시험지 그림은 판정하지 않는다:** 원본 기출·기존 유사의 같은 번호 문항에 있던 문제/해설 그림과 새 시험지의 `[그림: …]` 자리표시를 그대로 만들 목록으로 쓰고, 같은 종류면 원본 plan을 복사해 이 문항의 숫자·조건만 바꿔 렌더한다. 원본·기존 유사에 그림 자료가 없을 때만 일반 판정 규칙을 쓴다.
+- 이유: 유사는 원본 구성을 따르므로 그림 필요도 같고, 다시 판정하면 느리다(사용자 2026-11-20).
 
 ## CURRENT HARD — 문제은행 전 문항 문제·해설 SVG 필요시 의무 생성 (2026-10-10 형님 지시)
 - **팔마고 한정 아님**. 기출·ALIVE Generated 후보/승인·교재/평가문항 등 실제 문제은행 모든 UID에 대해 **문제 그림과 해설 그림을 각각** 전수 triage한다. 텍스트만으로 풀이 가능하다는 이유로 해설 SVG를 자동 생략하지 않는다.
@@ -52,6 +54,8 @@
 2. **Sonnet 검수·마감은 한 번**(effort high, 지시문 `prompts/sonnet-exam-impl.md`). 원문·정답·해설과 PNG를 대조하고 plan을 고쳐 다시 렌더한다(손 SVG 금지). 최종 판정표와 기계 점검(ARCHIVE_BOUND, publish size = sizeClass, alt·caption 비어 있지 않음)을 낸다. 두 번째 Sonnet 검수는 두지 않는다. 메인이 PNG 표본에서 결함을 찾으면 메인이 직접 plan·publish를 고쳐 `render.mjs`로 다시 렌더한다(손 SVG 금지; 이유: 결함 하나에 지시서를 쓰고 Sonnet을 다시 돌리는 것보다 빠르다). 같은 묶음에 결함이 여럿이거나 같은 종류가 반복되면 지적 목록을 붙여 그 묶음을 Sonnet 검수·마감 단계로 돌려보낸다. `sonnet-final.md`는 과거(Sonnet B) 지시서다.
 3. **메인이 PNG 표본을 확인한 뒤 게시하고 PR을 올린다.** 게시 도구는 `ops/svg-m1/publish-exam.py`·`pubflow.py`이고 사용법은 HANDOFF 문서 §3-2·§4다. 시험지 5개쯤을 PR 하나로 묶는다.
 4. **엔진 미지원(손으로 메우지 않는다)은 백 개 중 한두 개가 정상이다.** 더 많으면 plan부터 의심한다. 손으로 그리지 않고, 지시선·패널·옵션으로 시도한 증거와 오류 코드를 붙여 UNSUPPORTED로 두고 그림은 보류한 뒤 `ops/claude-batch/ENGINE_GAPS*.md`에 남겨 엔진 라인으로 넘긴다. 큰 묶음(플랜이 많이 쌓인 경우)은 같은 단계를 묶어 돈다: 일괄 렌더 → 자동 관문 → Sonnet 모음 시트 눈 검수 → 실패분 처리(SPEC은 플랜 수리, ENGINE은 엔진 라인) → 게시.
+5. **plan 사전검사:** plan을 쓴 뒤 렌더 전에 `node archive/tools/geometry-equation/ops/claude-batch/plan-lint.cjs <plan.json…>`로 검사하고 OK가 될 때까지 고친다(문항당 1초 안팎). 렌더 결과에 좌우되는 오류(라벨 배치, 표시 크기 일부)는 lint로 못 잡는다. 이유: 2026-11-20 렌더 실패 1,008개 중 863개가 렌더 없이 잡히는 plan 형식 오류였다.
+6. **공장 동시 렌더:** 재사용 엔진(#2590 병합)부터 동시 4개가 기본이고 6개까지 새 실패가 0이었다(8코어 16스레드 PC). 다른 렌더가 함께 돌면 4로 둔다. 이유: 예전 상한 2는 4코어 PC와 매번 python·Chrome을 띄우던 엔진 기준이었다.
 **② 문항 몇 개만 그릴 때(문항 수리·유사문제 반입 등, DeepSeek 없이 Sonnet 작업자가 직접)** 저장소 루트, 새 작업 트리 기준: `mkdir -p .tmp/svg-m1/runs .tmp/svg-m1/packets && cp -r archive/tools/geometry-equation/ops/svg-m1/. .tmp/svg-m1/` → `bash archive/tools/geometry-equation/ops/claude-batch/restore.sh`(`.tmp/work/`로 펼침) → 렌더 의존성(playwright가 든 node_modules)이 없으면 `GEOMETRY_NODE_MODULES` 지정 → 먼저 `AUTHOR_GUIDE.md`와 `.tmp/svg-m1/guide/`의 해당 형태 가이드를 읽고, 문항 폴더마다 `item.json`({"sourcePath": 시험지 JS 경로, "ordinal": 문항 id})·`plan.json`(`ops/golden/<item>/plan.json`이나 같은 형태의 통과 사례 `.tmp/work/runs/*/exam-rev/qNN/plan.json`을 본떠 값만 바꾼다)·`publish.json`(alt·caption·size=sizeClass) 작성 → `node .tmp/work/render.mjs --item item.json --plan plan.json --out <dir>`로 ARCHIVE_BOUND 확인 → `node .tmp/svg-m1/svg2png.cjs <svg> <png> 600`으로 PNG를 만들어 원문·정답·해설과 직접 대조 → PNG를 메인에게 제출(메인이 눈으로 검수·마감) → 통과분을 `make-dec-exam.cjs`·`build-pub.py`(BAD 없음)·`pubflow.py --batch`로 게시. 손 SVG 금지, 결함은 plan을 고쳐 재렌더.
 **현행으로 살아 있는 품질 규칙:** y=x·기울기 ±1 직선·원이 있는 단일 유리·무리함수 그래프는 `equalUnits:true`를 쓰고 PNG를 정답·해설과 대조한다(눈금 비 차이로 45°보다 가파르게 그려진 그림이 검수를 통과해 사용자가 지적했다). 정해진 DeepSeek·Sonnet 단계 밖의 다른 모델·하위 에이전트에 구현·검수를 넘기지 않고, PNG는 직접 보고 판단한다. 이 흐름에서는 대기열 상태 줄·잠금 같은 라인 간 조율 문서를 쓰지 않는다. 옛 루나 구현·검수 절차(2026-11-04~08)는 git 이력에 있다.
 

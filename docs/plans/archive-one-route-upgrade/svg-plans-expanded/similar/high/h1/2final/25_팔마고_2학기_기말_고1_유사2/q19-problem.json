@@ -1,0 +1,61 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-4",
+     "-2",
+     "2"
+    ]
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "requiredPoints": [
+   {
+    "id": "r1",
+    "x": -1,
+    "y": 0
+   },
+   {
+    "id": "r2",
+    "x": 2,
+    "y": 0
+   },
+   {
+    "id": "Y",
+    "x": 0,
+    "y": -4
+   },
+   {
+    "id": "V",
+    "x": "1/2",
+    "y": "-9/2",
+    "marker": "NONE"
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "axisTitles": {
+   "x": "x",
+   "y": "y"
+  },
+  "plotHeightLimit": 320
+ },
+ "caption": "x축과 두 점 (-1,0), (2,0)에서 만나고 y축과 점 (0,-4)에서 만나는 아래로 볼록한 이차함수의 그래프",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x축과 (-1,0), (2,0), y축과 (0,-4)에서 만난다",
+   "mappedTo": [
+    "graphPlan"
+   ]
+  }
+ ],
+ "newVisualInformation": []
+}

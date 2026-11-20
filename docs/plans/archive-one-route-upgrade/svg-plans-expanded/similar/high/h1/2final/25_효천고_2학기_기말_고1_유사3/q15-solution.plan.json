@@ -1,0 +1,69 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -4,
+   6,
+   -1,
+   15
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "curves": [
+   {
+    "id": "f1",
+    "kind": "LINE",
+    "coefficients": [
+     "7",
+     "1"
+    ],
+    "domain": [
+     "-4",
+     "1"
+    ],
+    "color": "BLUE",
+    "label": "y=x+7"
+   },
+   {
+    "id": "f2",
+    "kind": "LINE",
+    "coefficients": [
+     "2",
+     "6"
+    ],
+    "domain": [
+     "1",
+     "2"
+    ],
+    "color": "WARM",
+    "label": "y=6x+2"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "A",
+     "x": "1",
+     "y": "8",
+     "unnamed": true,
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "0",
+     "y": "7",
+     "unnamed": true,
+     "coordinates": true
+    }
+   ]
+  }
+ },
+ "caption": "역함수가 존재하려면 f가 일대일대응이어야 하므로 두 기울기 4−a, a+3이 모두 양수여야 하고 −3<a<4이다. x=1에서 두 식이 이어지려면 4−a+b=a+5, 즉 b=2a+1이다. 그림은 최댓값을 주는 a=3, b=7일 때로 f(x)=x+7 (x<1), 6x+2 (x≥1)이고 점 (1,8)에서 이어진다. 이때 a+b=10이므로 답은 ⑤이다.",
+ "newVisualInformation": [
+  "a=3, b=7일 때 x=1에서 이어지는 두 직선 조각이 모두 증가하는 일대일대응 모양"
+ ],
+ "accessibilityDescription": "점 (1,8)에서 이어지는 두 직선 조각의 그래프이다. 파란색 조각은 점 (0,7)을 지나는 완만한 오르막이고 주황색 조각은 가파른 오르막이다."
+}

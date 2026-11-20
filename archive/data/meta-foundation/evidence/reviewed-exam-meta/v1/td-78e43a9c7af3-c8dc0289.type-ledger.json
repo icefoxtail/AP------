@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "archive-type-direct-judgment-ledger-v1",
+  "requestId": "td-78e43a9c7af3-c8dc0289",
+  "sourceArchiveFile": "original/middle/m1/2mid/23_향림중_2학기_중간_중1_기출.js",
+  "judge": "dots",
+  "resultSource": {
+    "branch": "data/type-judgment-c-20261116",
+    "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+    "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+  },
+  "rule": "유형(PT/TPL)은 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md, 2026-11-17 사용자 결정)",
+  "rows": [
+    {
+      "questionUid": "qid_v1_777a27b1bd09ba9fb94a39f242c087f660c0198beda93021c9397836f411d0e1",
+      "sourceOrdinal": 8,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+      "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_BENT",
+      "step": "평행선을 보조로 그어 3x-2x=30에서 x=30을 얻고 90과 55의 관계로 y=145를 구한다.",
+      "note": "필요 TPL: 세 평행선과 다중 꺾임의 일차식 각 전이.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_7a800fc4a2143d52890f1a83a2339da8699e12751ab5389d43695b0af9c04dd1",
+      "sourceOrdinal": 21,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_POLYGON_ANGLE_AND_COUNT",
+      "templateKey": "TPL_M1_POLYGON_ANGLE_AND_COUNT_ANGLE_SUM",
+      "step": "외각 합 360에서 60,80,65,90을 빼 나머지 외각 65를 구한다.",
+      "note": "필요 TPL: 불규칙 다각형의 외각 합으로 미지각 계산.",
+      "figure": true,
+      "check": "PT_ONLY",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    {
+      "questionUid": "qid_v1_0d865e49fccedf24c77de2e93607490134924546d93efd764e8e8fcaa83d0c0c",
+      "sourceOrdinal": 22,
+      "decision": "PICK",
+      "problemTypeKey": "PT_M1_REGULAR_POLYGON_COMPOSITE_ANGLE",
+      "templateKey": "TPL_M1_REGULAR_POLYGON_COMPOSITE_ANGLE_SHARED_SIDE_EXTENSION_AUDIT",
+      "step": "정오각형·정육각형 내각 108,120과 보각 72,60을 빈 영역에 전이하여 c+d=204를 확인한다.",
+      "note": "",
+      "figure": true,
+      "check": "PASS",
+      "resultFile": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    }
+  ]
+}

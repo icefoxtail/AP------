@@ -1,0 +1,116 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "functionName": "f",
+  "pieces": [
+   {
+    "coefficients": [
+     "-3",
+     "-2",
+     "1"
+    ]
+   },
+   {
+    "coefficients": [
+     "3",
+     "2",
+     "-1"
+    ]
+   },
+   {
+    "coefficients": [
+     "-3",
+     "-2",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "-1",
+    "y": "0"
+   },
+   {
+    "x": "3",
+    "y": "0"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "abs(x^2-2x-3)",
+  "viewport": [
+   -3,
+   5,
+   -1,
+   7
+  ],
+  "requiredPoints": [
+   {
+    "id": "V",
+    "x": "1",
+    "y": "4"
+   },
+   {
+    "id": "A",
+    "x": "-1",
+    "y": "0"
+   },
+   {
+    "id": "B",
+    "x": "3",
+    "y": "0"
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": [
+    "4"
+   ]
+  },
+  "overlays": {
+   "lines": [
+    {
+     "id": "k",
+     "slope": "0",
+     "intercept": "4",
+     "label": "y=4",
+     "labelAt": "END"
+    }
+   ],
+   "points": [
+    {
+     "id": "P",
+     "curveX": "1-2*sqrt(2)",
+     "unnamed": true
+    },
+    {
+     "id": "Q",
+     "curveX": "1+2*sqrt(2)",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "cp",
+     "point": "P",
+     "text": "1-2√2",
+     "labelKind": "MATH",
+     "direction": "NW"
+    },
+    {
+     "id": "cq",
+     "point": "Q",
+     "text": "1+2√2",
+     "labelKind": "MATH",
+     "direction": "NE"
+    }
+   ]
+  }
+ },
+ "caption": "f(x)=|x²−2x−3|의 그래프에서 직선 y=k와 서로 다른 세 점에서 만나는 경우는 k가 꼭짓점의 높이와 같은 4일 때뿐이다. y=4와 만나는 세 점의 x좌표는 1−2√2, 1, 1+2√2이다. 따라서 세 수의 제곱의 합은 1+(9+4√2)+(9−4√2)=19이고 답은 ①이다.",
+ "newVisualInformation": [
+  "y=|x²−2x−3|의 꺾임점 (−1,0), (3,0), 꼭짓점 (1,4)와 직선 y=4가 만나는 세 점"
+ ]
+}

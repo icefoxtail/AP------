@@ -1,0 +1,273 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "6"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "9"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Y",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "9"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "R",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "6"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l1",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-9"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l2",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-3"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "l3",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-6"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayCircles": [],
+ "displayLines": [
+  "l1",
+  "l2",
+  "l3"
+ ],
+ "displaySegments": [],
+ "displayPoints": [
+  "O",
+  "P",
+  "X",
+  "Y",
+  "Q",
+  "R"
+ ],
+ "hiddenPointNames": [
+  "X",
+  "Y",
+  "Q",
+  "R"
+ ],
+ "unmarkedPointNames": [
+  "X",
+  "Y",
+  "Q",
+  "R"
+ ],
+ "coordinateLabels": [
+  "P"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "l1",
+   "text": "x+y=9"
+  },
+  {
+   "nodeId": "l2",
+   "text": "x=3"
+  },
+  {
+   "nodeId": "l3",
+   "text": "y=6"
+  }
+ ],
+ "planeMarks": {
+  "lineColors": [
+   {
+    "lines": [
+     "l1"
+    ],
+    "color": "ROSE"
+   },
+   {
+    "lines": [
+     "l2"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "lines": [
+     "l3"
+    ],
+    "color": "WARM"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 480,
+  "height": 480
+ },
+ "caption": "대우 \"x≤3이고 y≤2k이면 x+y≤9\"가 참이려면 x=3, y=2k일 때의 합 3+2k가 9 이하여야 한다. 그림은 k=3일 때 직선 x=3(파랑)과 y=6(주황)의 교점 (3,6)이 직선 x+y=9(분홍) 위에 놓인 경우이다. 따라서 k≤3이므로 최댓값은 3이고 답은 ①이다.",
+ "sourceConditions": [
+  "x≤3이고 y≤2k인 영역의 꼭짓점 (3,2k)에서 x+y≤9가 성립해야 한다."
+ ],
+ "newVisualInformation": [
+  "k=3일 때 영역의 꼭짓점 (3,6)이 직선 x+y=9 위에 있음"
+ ]
+}

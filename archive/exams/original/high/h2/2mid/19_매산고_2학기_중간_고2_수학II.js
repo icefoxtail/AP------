@@ -126,7 +126,11 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 아래로 볼록한 포물선과 세로축 위의 점 T에서 접하는 오르는 직선 l이 나타난 그래프이다.",
+    "solutionImageCaption": "y′=2x+1이므로 점 T(0,1)에서의 접선의 기울기는 1이고 접선 l은 y=x+1이다. 따라서 a=1, b=1이고 a+b=2이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -192,7 +196,12 @@ window.questionBank = [
     ],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽의 위로 볼록한 포물선이 점 P에서 오른쪽의 삼차곡선으로 같은 기울기로 이어지는 그래프이다.",
+    "solutionImageCaption": "연속 조건 4=1+a+b와 미분계수 조건 3=3+2a에서 a=0, b=3이다. 그림은 x≤1에서 포물선 y=-x²+5x, x>1에서 곡선 y=x³+3이고 점 P(1,4)에서 값이 같고 기울기도 3으로 같게 이어진다. 따라서 a-b=-3이고 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 7,
@@ -288,7 +297,12 @@ window.questionBank = [
     "conditionKeys": [],
     "tags": [],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽 아래 점 A에서 시작해 오른쪽 위로 가파르게 오르는 삼차곡선과 A, B를 잇는 직선 l, 그리고 구간 안의 점 T에서 접하며 l과 평행한 직선 m이 나타난 그래프이다.",
+    "solutionImageCaption": "구간 [0,3]의 양 끝점 A(0,-3), B(3,24)를 잇는 할선 l의 기울기는 27/3=9이다. f′(c)=3c²=9에서 c²=3이고 구간 (0,3) 안의 값은 c=√3이다. 접점 T에서의 접선 m이 할선 l과 평행하다. 음수 해 -√3은 구간 밖이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 80
   },
   {
     "id": 10,
@@ -580,7 +594,11 @@ window.questionBank = [
       "그래프"
     ],
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산고_2학기_중간_고2_수학II/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: t에 따라 1, 4, 2, 1로 바뀌는 계단 모양의 그래프이고 t=-1과 t=0에는 수평선과 다른 높이의 닫힌 점이 따로 찍혀 있다.",
+    "solutionImageCaption": "가로축이 t, 세로축이 교점의 개수 g(t)의 그래프이다. t<-1에서 1개, t=-1에서 2개(닫힌 점), -1<t<0에서 4개, t=0에서 3개(닫힌 점), 0<t≤1에서 2개, t>1에서 1개이다. 좌우 개수가 달라지는 t=-1, 0, 1의 3곳에서 끊어지므로 ㄷ은 참이다. f(x)h(x)가 연속이 되게 하는 h(x)=x(x+1)이 있어 ㄱ도 참이고, x→0-에서 f(x)→-1이라 ㄴ은 거짓이며, f(|x|)g(x)는 x=-1에서 좌우극한이 달라 ㄹ은 거짓이다. 따라서 옳은 것은 ㄱ, ㄷ이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,

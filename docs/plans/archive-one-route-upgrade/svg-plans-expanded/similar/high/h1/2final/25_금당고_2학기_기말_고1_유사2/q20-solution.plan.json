@@ -1,0 +1,108 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "5",
+     "-2"
+    ]
+   },
+   {
+    "coefficients": [
+     "-3",
+     "4",
+     "-1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "2",
+    "y": "1"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "domain": [
+   0,
+   5
+  ],
+  "viewport": [
+   -1,
+   6,
+   -4,
+   7
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 2,
+    "y": 1
+   },
+   {
+    "id": "B",
+    "x": 4,
+    "y": -3
+   },
+   {
+    "id": "C",
+    "x": 0,
+    "y": 5
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "coordinateBand": {
+   "hide": [
+    "C"
+   ]
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "c1",
+     "curveX": "1/2",
+     "unnamed": true
+    },
+    {
+     "id": "c2",
+     "curveX": "7/2",
+     "unnamed": true
+    }
+   ],
+   "callouts": [
+    {
+     "id": "n1",
+     "point": "c1",
+     "text": "y=-2x+5",
+     "labelKind": "MATH",
+     "direction": "NE"
+    },
+    {
+     "id": "n2",
+     "point": "c2",
+     "text": "y=-x^2+4x-3",
+     "labelKind": "MATH",
+     "direction": "SE"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B",
+  "C": "C"
+ },
+ "caption": "x<2에서 f(x)=-2x+5는 감소하고 값이 1보다 크다. x≥2에서 f(x)=-x²+4x-3은 꼭짓점 (2,1)에서 감소하며 값이 1 이하이다. 두 조각이 (2,1)에서 이어져 f 전체가 감소하는 일대일대응이다. 따라서 a는 -1이 최대이고 f(4)=-16+16-3=-3이므로 답은 ③이다.",
+ "sourceConditions": [
+  "f(x)=-2x+5 (x<2), ax²+bx-3 (x≥2)"
+ ],
+ "newVisualInformation": [
+  "x<2의 직선과 x≥2의 포물선이 (2,1)에서 이어지는 감소 그래프와 점 (4,-3)"
+ ]
+}

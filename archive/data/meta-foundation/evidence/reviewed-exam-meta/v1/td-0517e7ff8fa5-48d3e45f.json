@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-registration-v2",
+  "requestId": "td-0517e7ff8fa5-48d3e45f",
+  "requestSha256": "f17071f3aa02ab44fb203453d2a940b652b3136775ad3b07321cf4c97b66e9ab",
+  "examUid": "25_동산중_2학기_중간_중1_수학",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+  "sourceBlobSha1": "a984b1302f3595b09284378987a3127d14e2a52a",
+  "sourceRawSha256": "0b5eb488096c46fe55271cfb34c06affa6cf2f5aafd3ac744d669d4047d3aa93",
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0517e7ff8fa5-48d3e45f.type-ledger.json",
+        "sha256": "86bd4325800a015985e2e70b3bbe06e04f75b9aed2f81803ba6ace3184960b6a"
+      }
+    ]
+  },
+  "fieldScope": "TYPE_ONLY",
+  "metadataRegistrationStatus": "REGISTERED",
+  "examFinalQaStatus": "NOT_EVALUATED_BY_REGISTRAR",
+  "consumerSearchStatus": "NOT_RUN",
+  "totalQuestions": 1,
+  "registryChanges": [],
+  "typeApprovals": 1,
+  "newMetadataApprovals": 0,
+  "rowBindingCounts": {
+    "exact": 0,
+    "content": 0,
+    "stale": 1
+  },
+  "appliedRecords": [],
+  "appliedIdentityRecords": [],
+  "fingerprintRepairs": [],
+  "runtimeRecords": [],
+  "typeRecords": [
+    {
+      "questionUid": "qid_v1_cf49e4d1f9459afcd0cbf913119e66ebba1d55f05b21fce5277c7a12b0fe5bc4",
+      "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
+      "sourceOrdinal": 12,
+      "problemTypeKey": "PT_M1_RATIONAL_CLASS",
+      "templateKey": "",
+      "fieldStatus": {
+        "problemType": "approved_direct_judgment",
+        "template": "manual_review_pending"
+      },
+      "typeApproval": {
+        "schemaVersion": "archive-type-direct-judgment-approval-v1",
+        "approvalType": "DIRECT_JUDGMENT",
+        "reviewPassCount": 1,
+        "requestId": "td-0517e7ff8fa5-48d3e45f",
+        "judge": "dots",
+        "rationale": "-3부터 -2까지 삼등분한 첫 눈금은 -8/3임을 읽고 다른 네 점의 분수좌표와 비교한다.",
+        "scope": {
+          "curriculum": "2022",
+          "standardCourse": "중1 수학",
+          "curriculumSource": "row"
+        },
+        "judgedSourceFingerprint": "08f04d0a07ee53d660ecd69538b278a68b3dc1ae8daa8252004b24bec91419fc",
+        "judgedContentFingerprint": "47dfca136fc375881bba7e30671a481d53bebe69a193ec75eb1d730c386d64eb",
+        "rowBinding": "stale",
+        "textBindingFingerprint": "12292188f3a557d2db6d68b11f53c6c144ae20f0b0a3211134849959b6458fb0",
+        "resultSource": {
+          "branch": "data/type-judgment-c-20261116",
+          "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+          "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+        },
+        "decisionRef": {
+          "document": "docs/agents/metadata.md",
+          "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+        },
+        "receipt": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-0517e7ff8fa5-48d3e45f.json",
+        "examEmbeddedType": {
+          "problemTypeKey": "PT_M1_RATIONAL_VALUE_COMPARISON",
+          "templateKey": "TPL_M1_RATIONAL_VALUE_COMPARISON_SIGNED_NUMBER_ORDER",
+          "matchesRegistered": false
+        },
+        "priorType": {
+          "problemTypeKey": "",
+          "templateKey": "",
+          "problemTypeStatus": "manual_review_pending",
+          "templateStatus": "manual_review_pending"
+        }
+      }
+    }
+  ],
+  "outputDigests": [],
+  "scope": "PARTIAL_UIDS",
+  "partialUidCount": 1,
+  "expectedQuestionCount": 24
+}

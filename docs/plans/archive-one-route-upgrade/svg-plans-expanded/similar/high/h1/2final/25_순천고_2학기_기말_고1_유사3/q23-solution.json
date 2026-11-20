@@ -1,0 +1,257 @@
+{
+ "capability": "composite-panels-v1",
+ "caption": "(1) x≤0의 가지는 끝점 (0,1)에서 왼쪽 아래로, x≥1의 가지는 시작점 (1,2)에서 오른쪽 위로 뻗는다(그림). (2) 직선 y=x+3/4은 왼쪽 가지에 점 (-1/4,1/2)에서 접하고, y=x+5/4은 오른쪽 가지에 점 (5/4,5/2)에서 접하며, y=x+1은 두 끝점 (0,1), (1,2)를 모두 지난다(그림에는 그리지 않았다). 세 점에서 만나는 k의 범위는 3/4<k<1 또는 1<k<5/4이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=1-√(-x) (x≤0), √(x-1)+2 (x≥1)와 y=x+k가 서로 다른 세 점에서 만나는 k의 범위",
+   "mappedTo": [
+    "p1",
+    "p2"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "끝점 (0,1)과 시작점 (1,2)를 가진 두 무리함수 가지의 모양"
+ ],
+ "panels": [
+  {
+   "caption": {
+    "text": "(1) 왼쪽 가지"
+   },
+   "plan": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+     "family": "multi-curve",
+     "viewport": [
+      -5,
+      2,
+      -1.5,
+      1.5
+     ],
+     "axisTickValues": {
+      "x": [],
+      "y": []
+     },
+     "curves": [
+      {
+       "id": "u",
+       "kind": "SQRT",
+       "radicand": [
+        "0",
+        "-1"
+       ],
+       "amplitude": "-1",
+       "offset": "1",
+       "domain": [
+        "-4",
+        "0"
+       ],
+       "color": "BLUE",
+       "hideLabel": true
+      },
+      {
+       "id": "l1",
+       "kind": "LINE",
+       "coefficients": [
+        "3/4",
+        "1"
+       ],
+       "domain": [
+        "-2",
+        "3/4"
+       ],
+       "style": "DASHED",
+       "color": "GREEN",
+       "hideLabel": true
+      }
+     ],
+     "overlays": {
+      "points": [
+       {
+        "id": "A1",
+        "x": "-1/4",
+        "y": "1/2",
+        "unnamed": true
+       },
+       {
+        "id": "A2",
+        "x": "-1",
+        "y": "0",
+        "unnamed": true
+       },
+       {
+        "id": "A3",
+        "x": "-4",
+        "y": "-1",
+        "unnamed": true
+       },
+       {
+        "id": "Eu",
+        "x": "-9/4",
+        "y": "-1/2",
+        "unnamed": true
+       },
+       {
+        "id": "E1",
+        "x": "3/4",
+        "y": "3/2",
+        "unnamed": true
+       }
+      ],
+      "callouts": [
+       {
+        "id": "k1",
+        "point": "A1",
+        "text": "(-1/4,1/2)",
+        "direction": "SE",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "k2",
+        "point": "A2",
+        "text": "(-1,0)",
+        "direction": "NW",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "k3",
+        "point": "A3",
+        "text": "(-4,-1)",
+        "direction": "N",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "ku",
+        "point": "Eu",
+        "text": "y=1-√(-x)",
+        "direction": "S",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "kl",
+        "point": "E1",
+        "text": "y=x+3/4",
+        "direction": "E",
+        "labelKind": "MATH"
+       }
+      ]
+     }
+    },
+    "caption": "x≤0인 가지와 직선 y=x+3/4"
+   }
+  },
+  {
+   "caption": {
+    "text": "(2) 오른쪽 가지"
+   },
+   "plan": {
+    "capability": "multi-curve-figure-v1",
+    "graphPlan": {
+     "family": "multi-curve",
+     "viewport": [
+      -1,
+      7,
+      1.5,
+      4.5
+     ],
+     "axisTickValues": {
+      "x": [],
+      "y": []
+     },
+     "curves": [
+      {
+       "id": "v",
+       "kind": "SQRT",
+       "radicand": [
+        "-1",
+        "1"
+       ],
+       "offset": "2",
+       "domain": [
+        "1",
+        "5"
+       ],
+       "color": "VIOLET",
+       "hideLabel": true
+      },
+      {
+       "id": "l3",
+       "kind": "LINE",
+       "coefficients": [
+        "5/4",
+        "1"
+       ],
+       "domain": [
+        "3/4",
+        "11/4"
+       ],
+       "style": "DASHED",
+       "color": "WARM",
+       "hideLabel": true
+      }
+     ],
+     "overlays": {
+      "points": [
+       {
+        "id": "B1",
+        "x": "5/4",
+        "y": "5/2",
+        "unnamed": true
+       },
+       {
+        "id": "B2",
+        "x": "2",
+        "y": "3",
+        "unnamed": true
+       },
+       {
+        "id": "B3",
+        "x": "5",
+        "y": "4",
+        "unnamed": true
+       },
+       {
+        "id": "E3",
+        "x": "11/4",
+        "y": "4",
+        "unnamed": true
+       }
+      ],
+      "callouts": [
+       {
+        "id": "m1",
+        "point": "B1",
+        "text": "(5/4,5/2)",
+        "direction": "SE",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "m2",
+        "point": "B2",
+        "text": "(2,3)",
+        "direction": "SE",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "kv",
+        "point": "B3",
+        "text": "y=√(x-1)+2",
+        "direction": "N",
+        "labelKind": "MATH"
+       },
+       {
+        "id": "kl3",
+        "point": "E3",
+        "text": "y=x+5/4",
+        "direction": "N",
+        "labelKind": "MATH"
+       }
+      ]
+     }
+    },
+    "caption": "x≥1인 가지와 직선 y=x+5/4"
+   }
+  }
+ ]
+}

@@ -1,0 +1,84 @@
+{
+ "capability": "multi-curve-figure-v1",
+ "graphPlan": {
+  "family": "multi-curve",
+  "viewport": [
+   -3,
+   11,
+   -3,
+   11
+  ],
+  "curves": [
+   {
+    "id": "f",
+    "kind": "RATIONAL",
+    "numerator": [
+     "6",
+     "4"
+    ],
+    "denominator": [
+     "-4",
+     "2"
+    ],
+    "domain": [
+     "-3",
+     "11"
+    ],
+    "color": "BLUE",
+    "label": "y=f(x)"
+   },
+   {
+    "id": "yx",
+    "kind": "LINE",
+    "coefficients": [
+     "0",
+     "1"
+    ],
+    "domain": [
+     "-3",
+     "11"
+    ],
+    "style": "DASHED",
+    "label": "y=x"
+   }
+  ],
+  "overlays": {
+   "points": [
+    {
+     "id": "C",
+     "x": "2",
+     "y": "2",
+     "coordinates": true
+    },
+    {
+     "id": "A",
+     "x": "3",
+     "y": "9",
+     "coordinates": true
+    },
+    {
+     "id": "B",
+     "x": "9",
+     "y": "3",
+     "coordinates": true
+    }
+   ]
+  },
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "caption": "(f∘f)(x)=x이면 f⁻¹=f이므로 f의 그래프는 직선 y=x에 대칭이고 두 점근선의 교점 C(2, a/2)가 y=x 위에 있다. 따라서 a/2=2, a=4이고 f(x)=(4x+6)/(2x−4)이다. f⁻¹(3)=f(3)=9이므로 점 A(3,9)와 y=x에 대칭인 점 B(9,3)이 곡선 위에 있다. 따라서 답은 ④이다.",
+ "sourceConditions": [
+  {
+   "id": "method",
+   "condition": "a=4일 때 f의 그래프가 y=x에 대칭이고 점근선의 교점 C(2,2), 점 A(3,9), B(9,3)을 보인다.",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "f의 그래프가 y=x에 대칭이고 점근선의 교점이 y=x 위에 있으며 f(3)=9, f(9)=3임을 보인다."
+ ],
+ "accessibilityDescription": "유리함수 곡선과 점선 y=x가 그려져 있고 두 점근선의 교점 C가 y=x 위에 있으며 곡선 위의 점 A와 B가 y=x에 대칭인 위치에 표시되어 있다."
+}

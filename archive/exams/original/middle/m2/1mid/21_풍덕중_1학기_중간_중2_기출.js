@@ -388,7 +388,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 변 BC를 C쪽으로 연장한 점 D가 있고 외각 ACD 115°, 두 밑각 65°, 꼭지각 A 50°가 표시되어 있으며 변 AB와 CA에 같은 길이 눈금이 있다.",
+    "solutionImageCaption": "∠C의 외각이 115°이므로 ∠C=180°−115°=65°이다. AB=AC이므로 두 밑각이 같아 ∠B=∠C=65°이다. 따라서 ∠A=180°−(65°+65°)=50°이다. 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -424,7 +428,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: 꼭지각 A가 100°인 이등변삼각형 ABC이며 변 AB와 CA에 같은 길이 눈금이 있고 두 밑각 B와 C에 같은 표시와 40°가 적혀 있다.",
+    "solutionImageCaption": "AB=AC이므로 두 밑각이 같아 ∠B=∠C이다. ∠B+∠C=180°−100°=80°이므로 ∠B=40°이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -460,7 +468,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC의 꼭짓점 A에서 밑변 BC로 수선 AD가 내려져 있고 D에 직각 표시가 있으며 BD와 DC에 같은 눈금이 있다. 밑변 BC 아래에 16이 적혀 있고 BD에 8이 적혀 있다.",
+    "solutionImageCaption": "AB=AC인 이등변삼각형에서 꼭지각 A에서 밑변에 내린 수선 AD는 밑변을 수직이등분한다. 따라서 BD=(1/2)BC=(1/2)×16=8cm이다. 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -494,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 이등변삼각형 ABC에서 변 BC를 C쪽으로 연장한 점 E가 있고 B에서 나온 각의 이등분선과 C의 외각의 이등분선이 점 D에서 만나며 꼭지각 38°, 두 이등분선의 각 35.5°와 54.5°, 각 BDC가 표시되어 있다.",
+    "solutionImageCaption": "∠A=38°이고 AB=AC이므로 ∠B=∠C=(180°−38°)/2=71°이다. ∠B의 이등분선은 BC와 35.5°를 이루고, BC를 연장한 점 E에 대해 ∠C의 외각 ACE=180°−71°=109°이므로 그 이등분선은 CE와 54.5°를 이룬다. 삼각형 DBC에서 외각의 성질로 ∠BDC=54.5°−35.5°=19°이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -530,7 +546,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 합동인 두 직각삼각형 ABC와 DEF가 나란히 있고 C와 F에 직각 표시가 있으며 빗변 AB와 DE, 한 변 BC와 EF에 같은 눈금이 있다. B와 E의 각 40°, D의 각 x=50°가 표시되어 있다.",
+    "solutionImageCaption": "두 삼각형은 직각삼각형이고 빗변 AB=DE, 한 변 BC=EF이므로 RHS 합동이다. 따라서 대응각의 크기가 같아 ∠E=∠B=40°이다. 직각삼각형 DEF에서 ∠D=180°−90°−40°=50°이므로 x=50이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -637,7 +657,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내부에 내심 I가 있고 I에서 B와 C로 선분이 그어져 있으며 꼭짓점 A의 각 50°, 각 BIC 115°, 꼭짓점 B와 C에서 이등분된 각이 같은 표시로 나타나 있다.",
+    "solutionImageCaption": "예: ∠A=50°, ∠B=70°, ∠C=60°인 삼각형으로 그렸다. 내심 I에서 BI, CI는 ∠B, ∠C의 이등분선이므로 ∠IBC=β, ∠ICB=γ이다. ∠BIC=180°−(β+γ)=180°−(1/2)(180°−∠A)=90°+(1/2)∠A이다. ∠A=50°이므로 ∠BIC=90°+25°=115°이고 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -673,7 +697,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC와 세 꼭짓점을 지나는 원이 있고 외심 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 이 선분에 r, 변 CA에 8이 적혀 있다.",
+    "solutionImageCaption": "예: 반지름이 같은 원 위에 세 꼭짓점이 있는 삼각형으로 그렸다. 외심 O에서 세 꼭짓점까지의 거리가 같아 OA=OC=r이다. △AOC의 둘레가 20이고 AC=8이므로 2r+8=20, 2r=12에서 r=6이다. 따라서 반지름은 6cm이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
@@ -707,7 +735,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 내접원이 세 변과 만나는 점 D, E, F가 있고 내심 I에서 접점으로 수직인 선분이 그어져 있다. AD와 AF에 4, CE와 CF에 6이 적혀 있고 변 CA 바깥쪽에 10이 적혀 있다.",
+    "solutionImageCaption": "한 점에서 원에 그은 두 접선의 길이는 같다. 점 A에서 AD=AF=4이고 점 C에서 CE=CF=6이다. 따라서 AC=AF+FC=4+6=10이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -743,7 +775,11 @@ window.questionBank = [
     "subUnitKey": "M2-05-TRIANGLE_PROPERTIES",
     "subUnit": "삼각형의 성질",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/21_풍덕중_1학기_중간_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 삼각형 ABC의 안쪽에 외심 O가 있고 O에서 세 꼭짓점으로 길이가 같은 선분이 그어져 있으며 삼각형 OBC의 내심 I에서 B와 C로 선분이 그어져 있다. 꼭짓점 A의 각 60°, 각 BOC 120°, 각 BIC 150°가 표시되어 있다.",
+    "solutionImageCaption": "예: ∠A=60°, ∠B=70°, ∠C=50°인 삼각형으로 그렸다. I가 △OBC의 내심이므로 ∠BIC=90°+(1/2)∠BOC이다. 150°=90°+(1/2)∠BOC에서 ∠BOC=120°이다. O가 △ABC의 외심이므로 ∠BOC=2∠A이고 2∠A=120°에서 ∠A=60°이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

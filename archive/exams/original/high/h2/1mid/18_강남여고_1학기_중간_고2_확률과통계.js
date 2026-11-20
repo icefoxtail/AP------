@@ -582,7 +582,12 @@ window.questionBank = [
       "sourceRawSha256": "1EE67A6441C9FC1C9951072BF39D7062DA0B34DACB256E2D0056C025270305AE",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_강남여고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "9E10CCFBEF105B8B037DDE989AC596D3DD8FA92C34B058516A0E5EAA1D023D9D"
-    },},
+    },
+    "solutionImage": "assets/images/18_강남여고_1학기_중간_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "그림은 위아래를 뒤집어 A를 왼쪽 아래, B를 오른쪽 위에 놓았고 두 번째 세로 이동이 일어나는 가운데 도로에서 세로 도로 두 곳이 끊겨 있다. 각 교차점에 A에서 오는 최단 경로 수를 적는다. 한 점의 수는 왼쪽 점과 실제로 이어진 아래쪽 점의 수를 더한 값이다. 이렇게 채우면 B에 82가 적힌다. 따라서 최단경로는 82가지이고 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85,},
   {
     "id": 12,
     "questionNumber": 12,
@@ -1066,7 +1071,12 @@ window.questionBank = [
       "sourceRawSha256": "1EE67A6441C9FC1C9951072BF39D7062DA0B34DACB256E2D0056C025270305AE",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_강남여고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "9E10CCFBEF105B8B037DDE989AC596D3DD8FA92C34B058516A0E5EAA1D023D9D"
-    }
+    },
+    "solutionImage": "assets/images/18_강남여고_1학기_중간_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "당선자는 갑, 을, 병 중 한 명이다. 버스 노선이 개편되는 세 경로(파란색)의 확률은 3/10×4/5=24/100, 1/2×1/10=5/100, 1/5×2/5=8/100이고 서로 겹치지 않는다. 합은 37/100이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 21,
@@ -1120,7 +1130,11 @@ window.questionBank = [
       "sourceRawSha256": "1EE67A6441C9FC1C9951072BF39D7062DA0B34DACB256E2D0056C025270305AE",
       "sourceIntakeEvidencePath": "archive/analysis/source-only-h2-1mid-20261011-b5/18_강남여고_1학기_중간_고2_확률과통계.evidence.json",
       "sourceIntakeEvidenceSha256": "9E10CCFBEF105B8B037DDE989AC596D3DD8FA92C34B058516A0E5EAA1D023D9D"
-    }
+    },
+    "solutionImage": "assets/images/18_강남여고_1학기_중간_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "주사위의 눈에서 6의 약수 A={1, 2, 3, 6}이고 P(A)=2/3이다. P(A∩B)=1/3이므로 겹침은 2개이다. A와 B가 독립이면 1/3=(2/3)P(B)에서 P(B)=1/2이어서 B는 3개이다. 그림은 A만 2개, 겹침 2개, B만 1개, 바깥 1개이며 색칠한 B는 A에서 2개와 A 밖의 2개 중 1개로 이루어진다. 따라서 B의 개수는 4C2×2C1=12이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

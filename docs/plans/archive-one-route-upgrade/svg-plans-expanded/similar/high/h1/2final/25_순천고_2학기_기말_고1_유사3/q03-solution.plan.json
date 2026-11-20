@@ -1,0 +1,51 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLineCaption": {
+  "text": "두 조건의 공통 범위"
+ },
+ "numberLine": {
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "value": "-2.5",
+       "state": "CLOSED"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "4",
+       "state": "OPEN"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "RESULT",
+    "integerPoints": true
+   }
+  ]
+ },
+ "caption": "√(2x+5)가 실수이려면 2x+5≥0이므로 x≥-5/2이고, 1/√(4-x)이 실수이려면 4-x>0이므로 x<4이다. 공통 범위 -5/2≤x<4 안의 정수는 -2, -1, 0, 1, 2, 3으로 6개이므로 답은 ⑤이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x≥-5/2, x<4",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 조건의 공통 범위와 그 안의 정수점"
+ ]
+}

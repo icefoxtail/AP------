@@ -141,7 +141,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "primaryMethod": "순열",
-    "decisiveStep": "남학생 원순열 뒤 여학생 비인접 틈 선택"
+    "decisiveStep": "남학생 원순열 뒤 여학생 비인접 틈 선택",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 열 개의 점이 십각형 꼭짓점으로 놓인 원탁 그림이며 남학생 자리 A, C, E, G, I와 그 사이 틈 B, D, F, H, J가 번갈아 있다.",
+    "solutionImageCaption": "원탁 둘레를 십각형 꼭짓점으로 나타낸 그림이다. 점 A, C, E, G, I는 남학생 5명을 먼저 앉힌 자리이고 B, D, F, H, J는 그 사이의 다섯 틈이다. 남학생 5명의 원순열은 (5−1)!=24가지이다. 여학생이 서로 이웃하지 않으려면 다섯 틈 중 서로 다른 세 틈을 5C3=10가지로 고르고, 그 틈에 여학생 3명을 3!=6가지로 앉힌다. 따라서 24×10×6=1440이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -421,7 +425,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "primaryMethod": "순열",
-    "decisiveStep": "A-P-B 경로에서 R 경유 제외"
+    "decisiveStep": "A-P-B 경로에서 R 경유 제외",
+    "solutionImage": "assets/images/21_효천고_1학기_중간_고2_확률과통계/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "P를 지나므로 A에서 P까지는 오른쪽 2칸, 위쪽 2칸이어서 4C2=6가지이다. P에서 B까지는 오른쪽 3칸, 위쪽 2칸이어서 5C2=10가지이고, 이 중 R을 지나는 경로는 P에서 R까지 2가지와 R에서 B까지 3가지의 곱 6가지이다. R을 막은 그림에서 P에서 B까지는 10−6=4가지이다. 따라서 6×4=24가지이고 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

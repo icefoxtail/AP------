@@ -59,7 +59,7 @@
     <script src="archive-asset-base.js?v=20261110-teacher-copy-1"></script>
     <script src="student-svg-refresh.js?v=1"></script>
     <script src="js/ap-table-engine.js?v=20261109-ap-table-1"></script>
-    <script src="render-text.js?v=20261118-render-text-1"></script>
+    <script src="render-text.js?v=20261120-render-text-2"></script>
     <script src="print_image_optimizer.js?v=20261030.1"></script>
     <script src="mathjax_render_loop.js?v=20261116-enclosed-latin"></script>
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
@@ -420,7 +420,8 @@
     <script src="answer-render-executor.js?v=20261029-sections-1"></script>
     <link rel="stylesheet" href="archive2-reader-controls.css?v=20261116-output-bar-1">
     <script src="render-feedback.js?v=20261116-output-bar-1"></script>
-    <script defer src="archive2-reader-controls.js?v=20261111-student-navigation-1"></script>
+    <script defer src="archive2-derive-entry.js?v=20261120-derive-ui-1"></script>
+    <script defer src="archive2-reader-controls.js?v=20261120-derive-ui-1"></script>
     <link rel="stylesheet" href="../apmath/css/student-navigation.css?v=2026.11.11.4">
     <script defer src="../apmath/js/student-navigation.js?v=2026.11.11.4" data-student-nav-active="exams" data-student-nav-context-only="true"></script>
 </head>
@@ -990,26 +991,13 @@ function saveApmathSession(data) {
     localStorage.setItem('APMATH_SESSION', JSON.stringify(sanitizeApmathSessionForStorage(data)));
 }
 
-function encodeBasicAuthUnicodeSafe(value) {
-    const str = String(value || '');
-    try {
-        return btoa(unescape(encodeURIComponent(str)));
-    } catch (e) {
-        return btoa(str);
-    }
-}
-
+// 인증은 토큰(Bearer)뿐이다. 토큰이 없는 세션은 null(호출한 쪽이 로그인 안내를 낸다): 비밀번호로 대신하지 않는다.
 function getAssignmentAuthHeader() {
     try {
         const session = getApmathSession();
         if (!session) return null;
         if (session.session_token) return { 'Authorization': 'Bearer ' + session.session_token };
-
-        const mem = window.__APMATH_AUTH_MEMORY || {};
-        const loginId = mem.login_id || session.login_id || session.loginId;
-        const rawPassword = mem.raw_password || session.raw_password;
-        if (!loginId || !rawPassword) return null;
-        return { 'Authorization': 'Basic ' + encodeBasicAuthUnicodeSafe(`${loginId}:${rawPassword}`) };
+        return null;
     } catch (e) {
         return null;
     }
@@ -1628,6 +1616,8 @@ function splitSubjectiveHeadingSource(source) {
 
 function formatQuestionContent(html, q) {
     if (!html) return '';
+    // 본문 앞에 박힌 원래 문항 번호("15. …")는 q-num과 겹치므로 렌더 사본에서만 뗀다(공용 규칙: render-text.js).
+    html = APRenderText.stripLeadingQuestionNumber(html, q);
     if (q?.__apExamSubjectiveSpacing === true) {
         const split = splitSubjectiveHeadingSource(html);
         if (split) {
@@ -3528,7 +3518,6 @@ return { AppState,
     getApmathSession,
     sanitizeApmathSessionForStorage,
     saveApmathSession,
-    encodeBasicAuthUnicodeSafe,
     getAssignmentAuthHeader,
     restoreApmathSessionFromHash,
     registerClassExamAssignmentToOS,

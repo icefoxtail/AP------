@@ -180,6 +180,7 @@
       <div id="archive2-reader-menu" class="archive2-reader-menu" role="menu" aria-label="출력 도구" hidden>
         <button id="archive2-reader-print" type="button" role="menuitem">인쇄 / PDF 저장</button>
         <button id="archive2-reader-open" type="button" role="menuitem">새 창 열기</button>
+        <button id="archive2-reader-derive" type="button" role="menuitem" hidden>이 시험지로 다시 만들기</button>
       </div>`;
     toolbar.appendChild(controls);
     controls.querySelector("#archive2-reader-back").addEventListener("click", returnToSource);
@@ -190,6 +191,12 @@
     });
     controls.querySelector("#archive2-reader-print").addEventListener("click", printCurrentMode);
     controls.querySelector("#archive2-reader-open").addEventListener("click", openCurrentOutput);
+    // The output window of the teacher workspace (archive2-derive-entry.js is loaded there) offers a re-make of the paper.
+    const deriveItem = controls.querySelector("#archive2-reader-derive");
+    if (root.Archive2DeriveEntry?.available?.()) {
+      deriveItem.hidden = false;
+      deriveItem.addEventListener("click", () => { setMenu(false); root.Archive2DeriveEntry.start(); });
+    }
     document.addEventListener("click", (event) => {
       if (!controls.contains(event.target)) setMenu(false);
     });

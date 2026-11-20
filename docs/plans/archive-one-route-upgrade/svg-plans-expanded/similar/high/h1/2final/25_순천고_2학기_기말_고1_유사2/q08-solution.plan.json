@@ -1,0 +1,81 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "7",
+     "-3"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "2",
+    "5"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "domain": [
+   2,
+   5
+  ],
+  "viewport": [
+   -1,
+   6,
+   -9,
+   9
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 2,
+    "y": 1
+   },
+   {
+    "id": "B",
+    "x": 5,
+    "y": -8
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "a",
+     "unnamed": true,
+     "curveX": "4"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "a",
+     "text": "y=-3x+7",
+     "direction": "NE",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "정의역 x≥2에서 치역이 y≤1과 같으려면 f는 감소하고 f(2)=1이어야 한다. f(2)=2a+7=1에서 a=-3이고 a<0을 만족한다. 그림은 x≥2에서 직선 y=-3x+7의 일부이며 점 (2,1)에서 시작한다. 답은 ③이다.",
+ "sourceConditions": [
+  "f(x)=ax+7, X={x|x≥2}, Y={y|y≤1}"
+ ],
+ "newVisualInformation": [
+  "시작점 A(2,1)에서 아래로 내려가는 직선 y=-3x+7"
+ ]
+}

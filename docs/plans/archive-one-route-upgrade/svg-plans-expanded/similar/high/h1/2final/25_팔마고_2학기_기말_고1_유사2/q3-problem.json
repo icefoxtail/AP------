@@ -1,0 +1,166 @@
+{
+ "capability": "composite-panels-v1",
+ "panels": [
+  {
+   "caption": {
+    "math": "f"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "MAPPING",
+     "columns": [
+      {
+       "id": "X",
+       "name": "X",
+       "elements": [
+        "2",
+        "3",
+        "4",
+        "5"
+       ]
+      },
+      {
+       "id": "Y",
+       "name": "X",
+       "elements": [
+        "2",
+        "3",
+        "4",
+        "5"
+       ]
+      }
+     ],
+     "arrows": [
+      {
+       "from": {
+        "column": 0,
+        "element": 0
+       },
+       "to": {
+        "column": 1,
+        "element": 2
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 1
+       },
+       "to": {
+        "column": 1,
+        "element": 3
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 2
+       },
+       "to": {
+        "column": 1,
+        "element": 0
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 3
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      }
+     ]
+    }
+   }
+  },
+  {
+   "caption": {
+    "math": "g"
+   },
+   "plan": {
+    "capability": "set-diagram-figure-v1",
+    "diagram": {
+     "kind": "MAPPING",
+     "columns": [
+      {
+       "id": "X",
+       "name": "X",
+       "elements": [
+        "2",
+        "3",
+        "4",
+        "5"
+       ]
+      },
+      {
+       "id": "Y",
+       "name": "X",
+       "elements": [
+        "2",
+        "3",
+        "4",
+        "5"
+       ]
+      }
+     ],
+     "arrows": [
+      {
+       "from": {
+        "column": 0,
+        "element": 0
+       },
+       "to": {
+        "column": 1,
+        "element": 3
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 1
+       },
+       "to": {
+        "column": 1,
+        "element": 0
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 2
+       },
+       "to": {
+        "column": 1,
+        "element": 1
+       }
+      },
+      {
+       "from": {
+        "column": 0,
+        "element": 3
+       },
+       "to": {
+        "column": 1,
+        "element": 2
+       }
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "caption": "집합 X에서 X로의 두 함수 f, g의 대응도",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "각 집합의 원소에 화살표가 대응한다",
+   "mappedTo": [
+    "arrows"
+   ]
+  }
+ ],
+ "newVisualInformation": []
+}

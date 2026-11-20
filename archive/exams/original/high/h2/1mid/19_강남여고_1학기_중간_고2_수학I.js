@@ -545,8 +545,11 @@ window.questionBank = [
       "conditionReason": "별도 조건축을 추가하지 않아도 source의 수학 구조가 완전히 분류된다."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q7-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q7-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선 f와 더 오른쪽 위에 놓인 주황 지수 곡선 g, 두 가로 점근선이 있다. 대응하는 점 P와 Q의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "f는 y=3ˣ⁺¹−2, g는 y=(1/27)·3ˣ+3=3ˣ⁻³+3의 그래프이다. f를 x축으로 p, y축으로 q만큼 옮기면 y=3⁽ˣ⁻ᵖ⁾⁺¹−2+q이다. 지수부에서 x−p+1=x−3이므로 p=4이고 상수항에서 −2+q=3이므로 q=5이다. 그림에서 점 P(0, 1)이 Q(4, 6)으로 옮겨지고 점근선 y=−2가 y=3으로 옮겨진다. 따라서 p+q=9이고 답은 ④이다.",
+    "solutionImageScale": 80
   },
       {
     "id": 8,
@@ -1111,8 +1114,10 @@ window.questionBank = [
       ]
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q14-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q14-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선 f와 주황 지수 곡선 g가 점 C에서 만나고, 두 곡선이 y축과 만나는 점 A, B가 있다. 세 점을 이은 삼각형 ABC가 색칠되어 있다.",
+    "solutionImageCaption": "f는 f(x)=2ˣ/3, g는 g(x)=2ˣ−2의 그래프이다. y축과 만나는 점은 A(0, 1/3), B(0, −1)이다. 2ˣ/3=2ˣ−2에서 2ˣ=3, 즉 x=log₂3이고 y=1이므로 C(log₂3, 1)(약 1.585)이다. AB=4/3이고 C에서 y축까지의 거리가 log₂3이므로 넓이는 a=(1/2)(4/3)log₂3=(2/3)log₂3이다. 따라서 2의 a제곱은 3의 2/3제곱이고 답은 ②이다."
   },
       {
     "id": 15,
@@ -1200,7 +1205,12 @@ window.questionBank = [
       ],
       "metaDebtReason": "Current graph-transform PT/TPL was semantically false: q15 reads sinusoid amplitude, midline, and period from a graph. No exact ACTIVE H15-M1 parameter-read PT/TPL binding was found; keep both null with EVIDENCE_DEBT."
     },
-    "visualDisposition": "PROBLEM_ASSET_SUFFICIENT"
+    "visualDisposition": "PROBLEM_ASSET_SUFFICIENT",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: −π에서 3π까지 한 주기의 사인 곡선이 중심선 y=−1 위아래로 오르내리며 양 끝에서 가장 낮고 가운데에서 가장 높다. 세로축에 2, −1, −4 눈금이 표시되어 있다.",
+    "solutionImageCaption": "그래프의 최댓값은 2, 최솟값은 −4이므로 진폭 a=3, 중간값 c=−1이다. 최솟값을 갖는 x가 −π와 3π이므로 주기는 4π이고 2π/b=4π에서 b=1/2이다. 따라서 y=3sin(x/2)−1이고 a+2b+3c=3+1−3=1이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "medium",
+    "solutionImageScale": 90
   },
       {
     "id": 16,
@@ -1682,8 +1692,10 @@ window.questionBank = [
       "conditionReason": "명시적 범위·자연수·양수 조건이 해집합 또는 개수 판정에 사용된다."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q21-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q21-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 0에서 약 1.26까지의 구간에서 아래로 볼록한 포물선이 그려져 있고 왼쪽 끝 A와 꼭짓점 V의 좌표가 표시되어 있다.",
+    "solutionImageCaption": "t=log₃x로 두면 1≤x≤4에서 0≤t≤log₃4(약 1.26)이다. f(x)는 3의 h제곱 꼴이고 지수는 h(t)=2(t−1)²이다. h는 꼭짓점 V(1, 0)에서 최소이고 왼쪽 끝 A(0, 2)에서 최대이다. 따라서 m=3⁰=1, M=3²=9이고 M−m=8이다. 따라서 답은 ⑤이다."
   },
         {
     "id": 22,
@@ -1929,8 +1941,10 @@ window.questionBank = [
       "conditionReason": "명시적 범위·자연수·양수 조건이 해집합 또는 개수 판정에 사용된다."
     },
     "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q24-solution.svg",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q24-solution-v2.svg",
+    "solutionImageSize": "full",
+    "solutionImageAlt": "해설 그림: 2 이상의 구간에서 아래로 볼록한 포물선이 그려져 있고 왼쪽 끝 A와 꼭짓점 V의 좌표가 표시되어 있다. 꼭짓점이 가로축에 닿는다.",
+    "solutionImageCaption": "t=2ˣ+2⁻ˣ로 두면 산술기하평균에 의해 t≥2이고 방정식은 t²−kt+9=0이다. 그림은 경계인 k=6일 때 h(t)=t²−6t+9로 t≥2에서 꼭짓점 V(3, 0)에서 t축에 닿는다. k<6이면 t≥2에서 h가 항상 양수이므로 실근이 없고 k=6이면 t=3에서 0이 되어 실근이 있다. 따라서 k<6이고 답은 ③이다."
   },
         {
     "id": 25,
@@ -2072,7 +2086,7 @@ window.questionBank = [
       "COND_RANGE"
     ],
     "integrationPattern": "NONE",
-    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q26-solution.svg",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고2_수학I/q26-solution-v2.svg",
     "solutionImageSize": "full",
     "itemStatus": "READY",
     "meta": {
@@ -2107,7 +2121,10 @@ window.questionBank = [
         "templateKey"
       ]
     },
-    "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED"
+    "visualDisposition": "SOLUTION_VISUAL_ADD_STATIC_REVIEW_REQUIRED",
+    "solutionImageAlt": "해설 그림: 지름 AB가 2인 원과 지름의 중점 O가 있다. 원 위의 점 P1, P2, P3과 B를 잇는 점선 세 개가 있다.",
+    "solutionImageCaption": "예: n=2인 경우의 그림으로 반원의 호를 4등분하는 점 P1, P2, P3이다. 반지름은 1이고 B에서 k번째 점까지의 중심각은 kπ/(2n)이므로 현의 길이는 2sin(kπ/4n)이다. 그 제곱은 4sin²(kπ/4n)이고 k와 2n−k의 두 각은 서로 여각이어서 sin² 합이 1이다. 이런 쌍이 n−1개이고 가운데 항은 1/2이므로 합은 4n−2이다. 4n−2≥50에서 n≥13이므로 최솟값은 13이다. 따라서 답은 ②이다.",
+    "solutionImageScale": 90
   },
     {
     "id": 27,

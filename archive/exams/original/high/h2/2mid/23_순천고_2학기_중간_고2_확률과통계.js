@@ -164,7 +164,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_candidate",
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: 원점에서 올라가 꼭짓점을 이루고 x=8에서 내려오는 삼각형 모양의 확률밀도함수 그래프이며 꼭짓점의 왼쪽 삼각형이 칠해져 있다.",
+    "solutionImageCaption": "전체는 밑변 8, 높이 b인 삼각형이므로 (1/2)×8×b=1에서 b=1/4이다. 그림은 이 값으로 그렸다. 왼쪽 작은 삼각형(색칠)은 밑변 a, 높이 b이고 넓이가 1/4이므로 a/8=1/4에서 a=2이다. 따라서 꼭짓점은 (2, 1/4)이고 a−b=2−1/4=7/4이다. 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -763,7 +767,11 @@ window.questionBank = [
     "originalCategory": "확률분포",
     "originalCategoryProvenance": "CANONICAL_DERIVED_SOURCE_CATEGORY_ABSENT",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q14-solution.svg"
+    "solutionImage": "assets/images/23_순천고_2학기_중간_고2_확률과통계/q14-solution-v2.svg",
+    "solutionImageAlt": "해설 그림: 두 정규분포 곡선이 나란히 있다. 왼쪽 곡선은 평균 5에서 3부터 7까지가, 오른쪽 곡선은 평균 3에서 5 이하가 칠해져 있다.",
+    "solutionImageCaption": "f(2)=f(8)이므로 X의 평균은 2와 8의 중점 5이다. P(3≤X≤7)=0.6826이고 구간이 평균 5에서 양쪽 2씩이므로 표준편차는 2이다. g(x)=f(x+2)는 f를 왼쪽으로 2만큼 옮긴 것이므로 Y는 N(3, 2²)이다. Y=5는 z=1이므로 P(Y≤5)=0.5+0.3413=0.8413이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 85
   },
   {
     "id": 15,

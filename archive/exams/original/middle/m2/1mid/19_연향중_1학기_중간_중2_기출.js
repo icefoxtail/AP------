@@ -512,7 +512,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_기출/q15-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 8 이하의 수 전체가 왼쪽으로 뻗은 구간이 있고 8에는 찬 점이 있다.",
+    "solutionImageCaption": "x−8≤16−2x에서 3x≤24이므로 x≤8이다. 수직선에서 8은 찬 점으로 해에 포함된다. 보기 중 8보다 큰 9는 해가 아니므로 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -686,7 +690,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_연향중_1학기_중간_중2_기출/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 7 이상의 수 전체가 오른쪽으로 뻗은 구간이 있고 7에는 찬 점이 있다.",
+    "solutionImageCaption": "편의점까지 걸리는 시간은 2/4=0.5시간이다. 남은 거리는 3+4=7km이다. 편의점부터 학교까지의 평균 시속을 v km라 하면 0.5+7/v≤1.5이므로 7/v≤1에서 v≥7이다. 수직선에서 7은 찬 점이다. 따라서 최소 평균 시속은 7km이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

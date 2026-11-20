@@ -1,0 +1,144 @@
+{
+ "capability": "piecewise-discontinuous-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-discontinuous",
+  "xWindow": [
+   -2,
+   3
+  ],
+  "pieces": [
+   {
+    "coefficients": [
+     "2",
+     "-2"
+    ],
+    "domain": [
+     null,
+     0
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "4",
+     "-2"
+    ],
+    "domain": [
+     0,
+     1
+    ],
+    "end": "OPEN"
+   },
+   {
+    "coefficients": [
+     "-6",
+     "4"
+    ],
+    "domain": [
+     1,
+     null
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 0,
+    "y": 4
+   },
+   {
+    "id": "B",
+    "x": 1,
+    "y": -2
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "overlays": {
+   "points": [
+    {
+     "id": "e1",
+     "unnamed": true,
+     "x": "-1",
+     "y": "4"
+    },
+    {
+     "id": "e2",
+     "unnamed": true,
+     "x": "1/2",
+     "y": "3"
+    },
+    {
+     "id": "e3",
+     "unnamed": true,
+     "x": "2",
+     "y": "2"
+    },
+    {
+     "id": "o1",
+     "unnamed": true,
+     "x": "0",
+     "y": "2",
+     "marker": "OPEN"
+    },
+    {
+     "id": "o2",
+     "unnamed": true,
+     "x": "1",
+     "y": "2",
+     "marker": "OPEN"
+    }
+   ],
+   "callouts": [
+    {
+     "id": "c1",
+     "point": "e1",
+     "text": "y=-2x+2",
+     "direction": "SW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c2",
+     "point": "e2",
+     "text": "y=-2x+4",
+     "direction": "NE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c3",
+     "point": "e3",
+     "text": "y=4x-6",
+     "direction": "SE",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c4",
+     "point": "o1",
+     "text": "(0,2)",
+     "direction": "NW",
+     "labelKind": "MATH"
+    },
+    {
+     "id": "c5",
+     "point": "o2",
+     "text": "(1,2)",
+     "direction": "NE",
+     "labelKind": "MATH"
+    }
+   ]
+  }
+ },
+ "pointNames": {
+  "A": "A",
+  "B": "B"
+ },
+ "caption": "(1) f(x)<0인 x의 범위는 0≤x<1이다. (2) f(f(x))는 안쪽 값 f(x)의 부호로 나뉜다. x<0이면 y=-2x+2, 0≤x<1이면 y=-2x+4, x≥1이면 y=4x-6이다. 그래프는 x=0과 x=1에서 끊어지고 닫힌 점은 (0,4), (1,-2)이다.",
+ "sourceConditions": [
+  "f(f(x))=-2x+2 (x<0), -2x+4 (0≤x<1), 4x-6 (x≥1)"
+ ],
+ "newVisualInformation": [
+  "세 조각과 x=0, x=1에서 끊어지는 점(닫힌 점 (0,4), (1,-2))"
+ ]
+}

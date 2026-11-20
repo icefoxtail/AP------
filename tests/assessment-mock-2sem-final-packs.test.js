@@ -25,6 +25,15 @@ const allowedUnits = new Set(['M1-06', 'M1-07', 'M1-08']);
 const domainOrder = ['다각형', '원과 부채꼴', '다면체·회전체', '입체도형의 겉넓이와 부피', '히스토그램·도수분포다각형', '상대도수'];
 const seenKeys = new Map();
 const imageRe = /<img[^>]+src="([^"]+)"/g;
+const sourceBanks = new Map();
+function sourceQuestion(q) {
+  if (!sourceBanks.has(q._sourceFile)) {
+    const ctx = { window: {} };
+    vm.runInNewContext(fs.readFileSync(path.join(archiveRoot, 'exams', q._sourceFile), 'utf8'), ctx);
+    sourceBanks.set(q._sourceFile, ctx.window.questionBank || ctx.window.questions || ctx.window.examData?.questions || []);
+  }
+  return sourceBanks.get(q._sourceFile).find((x) => String(x.id) === String(q._sourceQuestionNo));
+}
 
 function assertFile(rel, label) {
   assert(rel && !/^[a-z]+:\/\//i.test(rel), `${label}: 경로 형식 이상: ${rel}`);
@@ -69,9 +78,8 @@ data.packs.forEach((pack, index) => {
     // 배점 표기 0: 발문 속 [3점], (5점), [4.5점], [5점, 부분점수 있음], (과정: 2점, ...) 같은 원 시험지 배점. 발문 속 "60점 이상" 같은 점수 말은 허용한다.
     const maskedStem = String(q.content).replace(/\$[^$]*\$/g, ' ');
     assert(!/[[(][^[\]()]*\d(?:\.\d+)?\s*점[^[\]()]*[\])]/.test(maskedStem), `${where}: 발문에 배점 표기가 남았습니다.`);
-    // 그림 있는 문항은 imageScale(90~100) 있음. 본문 <img>는 data-scale 있음.
-    if (q.image) assert(Number(q.imageScale) >= 90 && Number(q.imageScale) <= 100, `${where}: imageScale이 없거나 90~100이 아닙니다: ${q.imageScale}`);
-    for (const m of String(q.content).matchAll(/<img\b[^>]*>/gi)) assert(/data-scale="(?:9\d|100)"/.test(m[0]), `${where}: 본문 그림에 data-scale이 없습니다.`);
+    // 그림 크기는 원본 그대로다(생성기가 imageScale·data-scale을 덧붙이지 않는다, 사용자 2026-11-20).
+    if (q.image) { const src = sourceQuestion(q); assert(String(q.imageScale ?? '') === String(src?.imageScale ?? ''), `${where}: imageScale이 원본(${src?.imageScale})과 다릅니다: ${q.imageScale}`); }
     if (q.image) assertFile(q.image, `${where} image`);
     if (q.solutionImage) assertFile(q.solutionImage, `${where} solutionImage`);
     for (const m of String(q.content).matchAll(imageRe)) assertFile(m[1], `${where} content img`);

@@ -1,0 +1,248 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "3"
+      },
+      {
+       "kind": "integer",
+       "value": "7"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "5"
+      },
+      {
+       "kind": "integer",
+       "value": "1"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "m",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "n",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-16"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayCircles": [],
+ "displayLines": [
+  "m",
+  "n"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAP",
+   "refs": [
+    "A",
+    "P"
+   ]
+  },
+  {
+   "id": "sCP",
+   "refs": [
+    "C",
+    "P"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ],
+   "dashed": true
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "A",
+  "B",
+  "C",
+  "P"
+ ],
+ "pointNames": {
+  "C": "A'"
+ },
+ "coordinateLabels": [
+  "A",
+  "B",
+  "C",
+  "P"
+ ],
+ "lineLabels": [
+  {
+   "nodeId": "m",
+   "text": "y=x"
+  },
+  {
+   "nodeId": "n",
+   "text": "y=-3x+16"
+  }
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eq",
+    "count": 1,
+    "segments": [
+     "sAP",
+     "sCP"
+    ]
+   }
+  ],
+  "lineColors": [
+   {
+    "lines": [
+     "m"
+    ],
+    "color": "BLUE"
+   },
+   {
+    "lines": [
+     "n"
+    ],
+    "color": "WARM"
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 480,
+  "height": 480
+ },
+ "caption": "점 A(1,5)를 직선 y=x에 대하여 대칭이동한 점을 A'(5,1)이라 하면(직선 y=x는 파랑) AP=A'P이므로 AP+BP=A'P+BP≥A'B이다. 등호는 P가 선분 A'B와 직선 y=x의 교점일 때 성립한다. 직선 A'B(주황)는 y=−3x+16이고 y=x와의 교점은 P(4,4)이므로 x좌표는 4이고 답은 ④이다.",
+ "sourceConditions": [
+  "두 점 A(1,5), B(3,7)과 직선 y=x 위의 점 P"
+ ],
+ "newVisualInformation": [
+  "대칭점 A'(5,1), 직선 A'B와 y=x의 교점 P(4,4), AP=A'P"
+ ]
+}

@@ -36,8 +36,10 @@ on:
       - '.github/workflows/archive-reviewed-apply.yml'
       - '.github/workflows/archive-pages-release.yml'
   workflow_dispatch:
+  # Safety net only: every main push already runs this, and RETRY_EXHAUSTED queues one more run. Hourly runs held the
+  # single registration lock for 40-60 min and made each merge wait up to 30 min, so run once a day (03:43 KST).
   schedule:
-    - cron: '43 * * * *'
+    - cron: '43 18 * * *'
 permissions:
   contents: read
 jobs:

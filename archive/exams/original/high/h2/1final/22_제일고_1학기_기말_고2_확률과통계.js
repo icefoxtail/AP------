@@ -42,7 +42,11 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q1-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "주사위의 눈에서 짝수 A={2, 4, 6}, 홀수 B={1, 3, 5}, 3의 배수 C={3, 6}이다. A와 B는 겹치는 부분이 없어(색칠한 부분이 빈 집합) 서로 배반이다(ㄱ 참). B와 C는 3에서, A와 C는 6에서 겹치므로 서로 배반이 아니다(ㄴ, ㄷ 거짓). 따라서 ㄱ만 옳아 답은 ①이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -86,7 +90,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "정확히 한 명만 명중하는 경로는 찬우만 명중(파랑)과 영수만 명중(주황)이다. 찬우만 명중할 확률은 2/3×2/5=4/15, 영수만 명중할 확률은 1/3×3/5=3/15이다. 두 경로는 동시에 일어나지 않으므로 합은 7/15이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 3,
@@ -179,7 +188,11 @@ window.questionBank = [
     ],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: 격자 모양의 길에서 출발점 A부터 각 교차점까지 가는 최단 경로의 수를 적은 그림이다.",
+    "solutionImageCaption": "앞면이 나오면 x축 방향으로 1, 뒷면이 나오면 y축 방향으로 1만큼 움직인다. 도착점 A(3, 2)에 가려면 5번 중 앞면이 3번, 뒷면이 2번이어야 하고 그림의 각 교차점 수는 그 점에 가는 순서의 수이다. 유리한 순서는 5C3=10가지이고 전체 순서는 2⁵=32가지이므로 확률은 10/32=5/16이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -223,7 +236,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "컵라면으로 끝나는 세 경로의 확률은 A사 0.5×0.22=0.110, B사 0.3×0.16=0.048, C사 0.2×0.26=0.052이고 합은 0.210이다. 컵라면을 샀다는 조건에서 B사인 비율은 0.048/0.210=8/35이다. 따라서 답은 ①이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 6,
@@ -446,7 +464,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "독감 환자는 3%, 비독감은 97%이고 판정 정확도는 80%이다. 양성으로 끝나는 두 경로는 독감 0.03×0.8=0.024와 비독감 0.97×0.2=0.194이며 합은 0.218이다. 이 중 비독감 경로의 비율이 0.194/0.218=97/109이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 11,
@@ -636,7 +659,11 @@ window.questionBank = [
     ],
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: 수직선 위에 −1부터 −4/9까지의 구간과 0부터 1까지의 구간이 칠해져 있다.",
+    "solutionImageCaption": "판별식 D=9a²+4a=a(9a+4)≥0이면 실근이 있으므로 a≤−4/9 또는 a≥0이다. −1≤a≤1과 겹치면 수직선에 표시한 −1≤a≤−4/9와 0≤a≤1이다. 길이는 5/9와 1이고 전체 구간 [−1, 1]의 길이는 2이므로 확률은 (5/9+1)/2=7/9이다. 따라서 답은 ③이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -773,7 +800,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "초코스콘이 3/4이고 이 중 크랜베리가 1/6, 아몬드가 7/12이다. 아몬드가 든 스콘은 전체의 4/5이므로 얼그레이스콘에 아몬드가 든 비율은 4/5−7/12=13/60이다. 얼그레이스콘은 1/4이므로 얼그레이를 골랐을 때 아몬드일 확률은 (13/60)/(1/4)=13/15이다. 따라서 답은 ④이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 18,
@@ -817,7 +849,12 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가지마다 확률을 적어 사건이 일어나는 경우를 나타낸 나무그림이다.",
+    "solutionImageCaption": "홈 경기가 40%, 원정 경기가 60%이다. 승리로 끝나는 두 경로의 확률은 홈 0.4×0.7=0.28과 원정 0.6×0.4=0.24이고 합은 0.52이다. 이 중 원정 경로의 비율이 0.24/0.52=6/13이다. 따라서 답은 ⑤이다.",
+    "solutionImageSize": "full",
+    "solutionImageScale": 90
   },
   {
     "id": 19,
@@ -856,7 +893,11 @@ window.questionBank = [
     "conditionKeys": [],
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_제일고_1학기_기말_고2_확률과통계/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: 집합 사이의 포함 관계와 원소가 속한 영역을 벤 다이어그램으로 나타낸 그림이다.",
+    "solutionImageCaption": "P(A∩B)=P(A|B)P(B)=3/5×1/2=3/10이다. 그림은 A만 1/10, 겹침 3/10, B만 1/5, 바깥 2/5이고 색칠한 B만의 영역이 A의 여사건과 B의 겹침이다. P(A의 여사건∩B)=1/2−3/10=1/5이고 P(A의 여사건)=3/5이므로 P(B|A의 여사건)=(1/5)/(3/5)=1/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

@@ -547,19 +547,14 @@
   function assignAuthHeader() {
     const session = getSession();
     if (session && session.session_token) return { Authorization: 'Bearer ' + session.session_token };
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    const login = memory.login_id || (session && (session.login_id || session.loginId));
-    const secret = memory.raw_password || (session && session.raw_password);
-    if (login && secret) return { Authorization: 'Basic ' + btoa(unescape(encodeURIComponent(login + ':' + secret))) };
-    return null;
+    return null; // 토큰이 없으면 헤더가 없다(비밀번호로 대신하지 않는다): 호출한 쪽이 로그인 안내를 낸다.
   }
   // 패널에 꽂는 request(route, {method, headers, body, timeoutMs}). archive2-workspace.js api()와 같은 방식이다:
   // 같은 서버 주소, 같은 세션 인증, 로그인이 없으면 요청 없이 status=401, 제한 시간이 지나면 timeout=true,
   // 오류 응답은 error.status/error.data를 달아 던진다. 읽기 30초·쓰기 150초는 패널이 timeoutMs로 정한다.
   function assignRequest(route, opt = {}) {
     const rule = window.Archive2Session;
-    const memory = window.__APMATH_AUTH_MEMORY || {};
-    const loggedIn = !rule || !rule.state || (memory.login_id && memory.raw_password) || rule.state(getSession()).loggedIn;
+    const loggedIn = !rule || !rule.state || rule.state(getSession()).loggedIn;
     const auth = loggedIn ? assignAuthHeader() : null;
     if (!auth) return Promise.reject(Object.assign(new Error('교사 로그인이 필요합니다.'), { status: 401 }));
     const method = opt.method || (opt.body ? 'POST' : 'GET');
