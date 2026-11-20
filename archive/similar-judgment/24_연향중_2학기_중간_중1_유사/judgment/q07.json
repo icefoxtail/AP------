@@ -1,0 +1,57 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "7631ceb21fefd643",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "전개도를 접었을 때 만나는 점과 모서리를 정육면체 겨냥도 위에 대응시킨다.",
+    "모서리 $\\overline{AB}$와의 위치 관계를 분류하면 다음과 같다.",
+    "$\\begin{aligned} \\text{만나는 모서리: } & \\overline{BM}, \\overline{BC}, \\overline{AL}, \\overline{AF} \\ \\text{평행한 모서리: } & \\overline{ML}, \\overline{DE}, \\overline{CF} \\ \\text{꼬인 위치의 모서리: } & \\overline{CD}, \\overline{DM}, \\overline{EF}, \\overline{EL} \\end{aligned}$",
+    "따라서 모서리 $\\overline{DE}$는 모서리 $\\overline{AB}$와 평행하므로 꼬인 위치에 있지 않다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "전개도를 접어 정육면체를 완성하였을 때, 모서리 $AB$와 꼬인 위치에 있는 모서리가 아닌 것은",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정육면체의 전개도를 접어 정육면체를 완성하였을 때, 모서리 $AB$와 꼬인 위치에 있는 모서리가 아닌 것은?",
+  "standardUnitKey": "M1-07",
+  "subUnitKey": "M1-07-SOLID_FIGURE",
+  "rpmRecordId": "M1-RPM-094",
+  "rpmEvidence": "전개도를 접었을 때 만나는 점과 모서리를 정육면체 겨냥도 위에 대응시킨다.",
+  "problemTypeKey": "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS",
+  "templateKey": "TPL_M1_POLYHEDRON_EDGE_FACE_RELATIONS_FOLDED_NET_RELATION_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q7번 문항은 PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q7번 문항은 M1-RPM-094에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q7번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 4 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q7번 문항으로 M1-07 단원의 기본 개념과 성질을 적용하여 ③을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "전개",
+        "src": "stem",
+        "quote": "정육면체의 전개도를 접어 정육면체를 완성하였을 때, 모서리 $AB$와 꼬인 위치에 있는 모서리가 아닌 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "전개도",
+        "src": "stem",
+        "quote": "정육면체의 전개도를 접어 정육면체를 완성하였을 때, 모서리 $AB$와 꼬인 위치에 있는 모서리가 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대응",
+        "src": "solution",
+        "quote": "전개도를 접었을 때 만나는 점과 모서리를 정육면체 겨냥도 위에 대응시킨다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

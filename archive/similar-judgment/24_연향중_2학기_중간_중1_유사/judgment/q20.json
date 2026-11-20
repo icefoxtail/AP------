@@ -1,0 +1,57 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "0251558933d67dcf",
+  "solvedAnswer": "$30,\\mathrm{cm}$",
+  "solveSteps": [
+    "선분 $AB$의 길이를 $x,\\mathrm{cm}$라 하자.",
+    "$\\overline{BD} = 4\\overline{AB}$이므로 $\\begin{aligned} \\overline{BD} &= 4x,\\mathrm{cm} \\end{aligned}$",
+    "네 점이 한 직선 위에 순서대로 있으므로 선분 $AD$의 길이는 $\\begin{aligned} \\overline{AD} &= \\overline{AB} + \\overline{BD} \\ &= x + 4x \\ &= 5x,\\mathrm{cm} \\end{aligned}$",
+    "점 $C$가 선분 $AD$의 중점이므로 $\\begin{aligned} \\overline{AC} &= \\dfrac{1}{2}\\overline{AD} \\ &= \\dfrac{5}{2}x,\\mathrm{cm} \\end{aligned}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 한 직선 위에 네 점 $A, B, C, D$가 순서대로 놓여 있다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 한 직선 위에 네 점 $A, B, C, D$가 순서대로 놓여 있다.",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-060",
+  "rpmEvidence": "선분 $AB$의 길이를 $x,\\mathrm{cm}$라 하자.",
+  "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+  "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_RATIO_AND_MIDPOINT",
+  "newKeyProposal": null,
+  "typeReason": "Q20번 문항은 PT_M1_SEGMENT_LENGTH_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 BD)",
+  "rpmReason": "Q20번 문항은 M1-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 BD)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q20번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 3 수준의 문항이다. (문항 토큰 BD)",
+  "how": "Q20번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 $30,\\mathrm{cm}$을(를) 바르게 구하였다. (문항 토큰 BD)",
+  "slots": {
+    "given": [
+      {
+        "term": "순서",
+        "src": "stem",
+        "quote": "다음 그림과 같이 한 직선 위에 네 점 $A, B, C, D$가 순서대로 놓여 있다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "다음 그림과 같이 한 직선 위에 네 점 $A, B, C, D$가 순서대로 놓여 있다."
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "src": "solution",
+        "quote": "선분 $AB$의 길이를 $x,\\mathrm{cm}$라 하자.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

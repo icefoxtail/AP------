@@ -1,0 +1,57 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "75516667274fd3c7",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "원자료를 줄기별로 작은 수부터 크기순으로 정렬한다.",
+    "$\\begin{aligned} \\text{줄기 } 2\\text{ (20대): } & 23, 24, 25, 27, 28 \\implies \\text{잎: } 3, 4, 5, 7, 8 \\ & \\text{셋째 잎 } a = 5 \\ \\text{줄기 } 3\\text{ (30대): } & 31, 32, 34, 34, 37, 39 \\implies \\text{잎: } 1, 2, 4, 4, 7, 9 \\ & \\text{마지막 잎 } b = 9 \\ \\text{줄기 } 4\\text{ (40대): } & 40, 42, 43, 46, 47, 48, 49 \\implies \\text{잎: } 0, 2, 3, 6, 7, 8, 9 \\ & \\text{넷째 잎 } c = 6 \\end{aligned}$",
+    "따라서 구하는 식의 값을 계산하면 $\\begin{aligned} a \\times b - c &= 5 \\times 9 - 6 \\ &= 45 - 6 \\ &= 39 \\end{aligned}$",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "표는 어느 학교 교사 $20$명의 나이를 조사한 원자료이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "※ (15~17) 다음 표는 어느 학교 교사 $20$명의 나이를 조사한 원자료이다.",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "rpmRecordId": "M1-RPM-108",
+  "rpmEvidence": "원자료를 줄기별로 작은 수부터 크기순으로 정렬한다.",
+  "problemTypeKey": "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION",
+  "templateKey": "TPL_M1_STEM_LEAF_PLACEHOLDER_EVALUATION_CORE",
+  "newKeyProposal": null,
+  "typeReason": "Q15번 문항은 PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 15)",
+  "rpmReason": "Q15번 문항은 M1-RPM-108에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 15)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q15번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 15)",
+  "how": "Q15번 문항으로 M1-08 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 15)",
+  "slots": {
+    "given": [
+      {
+        "term": "자료",
+        "src": "stem",
+        "quote": "※ (15~17) 다음 표는 어느 학교 교사 $20$명의 나이를 조사한 원자료이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "줄기와잎",
+        "src": "stem",
+        "quote": "이 자료를 줄기와 잎 그림으로 정리할 때, 물음에 답하시오."
+      }
+    ],
+    "method": [
+      {
+        "term": "줄기",
+        "src": "solution",
+        "quote": "원자료를 줄기별로 작은 수부터 크기순으로 정렬한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

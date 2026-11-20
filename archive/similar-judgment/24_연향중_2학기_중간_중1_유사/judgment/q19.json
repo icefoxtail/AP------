@@ -1,0 +1,57 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "f0ecd355f2028d58",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "전체 학생 수의 합계가 $40$명이므로 알려진 도수들을 합산한다.",
+    "$\\begin{aligned} 130 \\sim 140,\\mathrm{cm}: & \\quad 5\\text{명} \\ 150 \\sim 160,\\mathrm{cm}: & \\quad 13\\text{명} \\ 160 \\sim 170,\\mathrm{cm}: & \\quad 5\\text{명} \\ 170 \\sim 180,\\mathrm{cm}: & \\quad 3\\text{명} \\end{aligned}$",
+    "따라서 $140 \\sim 150,\\mathrm{cm}$ 계급의 학생 수 $A$는 $\\begin{aligned} A &= 40 - (5 + 13 + 5 + 3) \\ &= 40 - 26 \\ &= 14\\text{명} \\end{aligned}$",
+    "키가 $150,\\mathrm{cm}$ 미만인 학생은 $130 \\sim 140,\\mathrm{cm}$와 $140 \\sim 150,\\mathrm{cm}$의 두 계급에 속하므로 $\\begin{aligned} 5 + 14 &= 19\\text{명} \\end{aligned}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "도수분포표에서 키가 $150,\\mathrm{cm}$ 미만인 학생 수는",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "위 18번의 도수분포표에서 키가 $150,\\mathrm{cm}$ 미만인 학생 수는?",
+  "standardUnitKey": "M1-08",
+  "subUnitKey": "M1-08-DATA_ORGANIZATION",
+  "rpmRecordId": "M1-RPM-108",
+  "rpmEvidence": "전체 학생 수의 합계가 $40$명이므로 알려진 도수들을 합산한다.",
+  "problemTypeKey": "PT_M1_FREQUENCY_DISTRIBUTION_READING",
+  "templateKey": "TPL_M1_FREQUENCY_DISTRIBUTION_READING_FREQUENCY_AUDIT",
+  "newKeyProposal": null,
+  "typeReason": "Q19번 문항은 PT_M1_FREQUENCY_DISTRIBUTION_READING 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 18)",
+  "rpmReason": "Q19번 문항은 M1-RPM-108에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 18)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q19번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 18)",
+  "how": "Q19번 문항으로 M1-08 단원의 기본 개념과 성질을 적용하여 ④을(를) 바르게 구하였다. (문항 토큰 18)",
+  "slots": {
+    "given": [
+      {
+        "term": "도수분포표",
+        "src": "stem",
+        "quote": "위 18번의 도수분포표에서 키가 $150,\\mathrm{cm}$ 미만인 학생 수는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "도수분포",
+        "src": "stem",
+        "quote": "위 18번의 도수분포표에서 키가 $150,\\mathrm{cm}$ 미만인 학생 수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "도수",
+        "src": "solution",
+        "quote": "전체 학생 수의 합계가 $40$명이므로 알려진 도수들을 합산한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

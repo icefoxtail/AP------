@@ -1,0 +1,57 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "d6ff5f9a5fa0bc42",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다.",
+    "세 변의 길이가 $5, 11, x$일 때 $x$의 범위는 다음과 같다.",
+    "$\\begin{aligned} 11 - 5 &< x < 11 + 5 \\ 6 &< x < 16 \\end{aligned}$",
+    "보기 중에서 이 범위를 만족하지 않는 값은 $5$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "삼각형의 세 변의 길이가 각각 $5,\\mathrm{cm}$, $11,\\mathrm{cm}$, $x,\\mathrm{cm}$일 때, $x$의 값이 될 수 없는 것은?",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-075",
+  "rpmEvidence": "삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다.",
+  "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+  "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_THIRD_SIDE_RANGE",
+  "newKeyProposal": null,
+  "typeReason": "Q13번 문항은 PT_M1_TRIANGLE_SIDE_FEASIBILITY 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 cm)",
+  "rpmReason": "Q13번 문항은 M1-RPM-075에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 cm)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q13번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 cm)",
+  "how": "Q13번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 ①을(를) 바르게 구하였다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형의 세 변의 길이가 각각 $5,\\mathrm{cm}$, $11,\\mathrm{cm}$, $x,\\mathrm{cm}$일 때, $x$의 값이 될 수 없는 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "삼각형의 세 변의 길이가 각각 $5,\\mathrm{cm}$, $11,\\mathrm{cm}$, $x,\\mathrm{cm}$일 때, $x$의 값이 될 수 없는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "삼각형의 가장 긴 변의 길이는 나머지 두 변의 길이의 합보다 작아야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

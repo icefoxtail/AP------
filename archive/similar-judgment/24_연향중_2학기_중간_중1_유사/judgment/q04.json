@@ -1,0 +1,57 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "da6d791870ae7c63",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "선분의 중점은 주어진 선분의 길이를 정확히 이등분한다.",
+    "점 $M$이 선분 $AB$의 중점이므로 $\\begin{aligned} \\overline{AM} &= \\dfrac{1}{2}\\overline{AB} \\ &= \\dfrac{1}{2} \\times 24 \\ &= 12,\\mathrm{cm} \\end{aligned}$",
+    "점 $N$이 선분 $AM$의 중점이므로 선분 $NM$의 길이는 $\\begin{aligned} \\overline{NM} &= \\dfrac{1}{2}\\overline{AM} \\ &= \\dfrac{1}{2} \\times 12 \\ &= 6,\\mathrm{cm} \\end{aligned}$",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 점 $M$은 선분 $AB$의 중점이고, 점 $N$은 선분 $AM$의 중점이다",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 점 $M$은 선분 $AB$의 중점이고, 점 $N$은 선분 $AM$의 중점이다.",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-060",
+  "rpmEvidence": "선분의 중점은 주어진 선분의 길이를 정확히 이등분한다.",
+  "problemTypeKey": "PT_M1_SEGMENT_LENGTH_RELATIONS",
+  "templateKey": "TPL_M1_SEGMENT_LENGTH_RELATIONS_CHAINED_MIDPOINT",
+  "newKeyProposal": null,
+  "typeReason": "Q4번 문항은 PT_M1_SEGMENT_LENGTH_RELATIONS 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q4번 문항은 M1-RPM-060에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q4번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q4번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "src": "stem",
+        "quote": "다음 그림에서 점 $M$은 선분 $AB$의 중점이고, 점 $N$은 선분 $AM$의 중점이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "중점",
+        "src": "stem",
+        "quote": "다음 그림에서 점 $M$은 선분 $AB$의 중점이고, 점 $N$은 선분 $AM$의 중점이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "이등분",
+        "src": "solution",
+        "quote": "선분의 중점은 주어진 선분의 길이를 정확히 이등분한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

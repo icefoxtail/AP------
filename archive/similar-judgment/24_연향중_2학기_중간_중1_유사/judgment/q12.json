@@ -1,0 +1,57 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "077efc0195f3cabc",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "합동인 두 삼각형에서 서로 대응하는 변의 길이와 대응하는 각의 크기는 서로 같다.",
+    "$\\triangle ABC \\equiv \\triangle DEF$이므로 꼭짓점의 대응 관계는 $\\begin{aligned} A &\\leftrightarrow D \\ B &\\leftrightarrow E \\ C &\\leftrightarrow F \\end{aligned}$",
+    "따라서 $\\begin{aligned} \\overline{DE} &= \\overline{AB} \\ \\overline{DF} &= \\overline{AC} \\ \\angle D &= \\angle A \\ \\angle F &= \\angle C \\end{aligned}$ 는 직접 대응으로 바로 알 수 있다.",
+    "반면 $\\overline{EF}$는 $\\overline{BC}$에 대응하는데, 그림에 $\\overline{BC}$의 길이가 주어지지 않았으므로 추가 계산 없이 알 수 없다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 삼각형이 $\\triangle ABC \\equiv \\triangle DEF$일 때, 그림에 주어진 조건과 합동 기호의 대응 관계만으로 추가 계산 없이 바로 알 수 없는 것은?",
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "rpmRecordId": "M1-RPM-078",
+  "rpmEvidence": "합동인 두 삼각형에서 서로 대응하는 변의 길이와 대응하는 각의 크기는 서로 같다.",
+  "problemTypeKey": "PT_M1_CONGRUENCE_DATA_TRANSFER",
+  "templateKey": "TPL_M1_CONGRUENCE_DATA_TRANSFER_ORDERED_CORRESPONDENCE",
+  "newKeyProposal": null,
+  "typeReason": "Q12번 문항은 PT_M1_CONGRUENCE_DATA_TRANSFER 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 ABC)",
+  "rpmReason": "Q12번 문항은 M1-RPM-078에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 ABC)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q12번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 1 수준의 문항이다. (문항 토큰 ABC)",
+  "how": "Q12번 문항으로 M1-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "대응",
+        "src": "stem",
+        "quote": "두 삼각형이 $\\triangle ABC \\equiv \\triangle DEF$일 때, 그림에 주어진 조건과 합동 기호의 대응 관계만으로 추가 계산 없이 바로 알 수 없는 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "두 삼각형이 $\\triangle ABC \\equiv \\triangle DEF$일 때, 그림에 주어진 조건과 합동 기호의 대응 관계만으로 추가 계산 없이 바로 알 수 없는 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "src": "solution",
+        "quote": "합동인 두 삼각형에서 서로 대응하는 변의 길이와 대응하는 각의 크기는 서로 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
