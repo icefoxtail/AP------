@@ -1,0 +1,62 @@
+{
+  "qid": "q22",
+  "itemFingerprint": "f21e2759bbca4c44",
+  "solvedAnswer": "$3x^2-12 = 3(x-2)(x+2), \\quad 2x^2+x-6 = (2x-3)(x+2)$, 공통인수: $x+2$",
+  "solveSteps": [
+    "$3x^2 - 12 = 3(x^2 - 4) = 3(x-2)(x+2)$이다.",
+    "$2x^2 + x - 6 = (x+2)(2x-3)$이다.",
+    "두 다항식에 공통으로 포함된 인수는 $x+2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서·논술형 2] 다음 두 다항식을 각각 인수분해하고",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmEvidence": "공통인수 $3$으로 묶은 후 합차 공식을 적용한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_BY_FACTORIZATION",
+  "newKeyProposal": null,
+  "typeReason": "두 다항식을 각각 인수분해하여 공통인수를 구하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "공통인수 추출과 기본 인수분해를 다루는 공통인수 묶기 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "합차 인수분해와 일차식 계수 분해를 결합한 난이도 2 서술형 문항이다. (문항 토큰 12)",
+  "how": "각 다항식을 공통인수와 대각선 인수분해로 분해한 후 공통인수를 찾았다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "[서·논술형 2] 다음 두 다항식을 각각 인수분해하고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "공통인수",
+        "quote": "공통인수를 구하는 과정을 서술하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합차공식",
+        "quote": "공통인수 $3$으로 묶은 후 합차 공식을 적용한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이차식",
+        "quote": "두 다항식을 각각 공통인수 및 대각선 인수분해법으로",
+        "src": "solution"
+      }
+    ]
+  }
+}

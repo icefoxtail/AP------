@@ -1,0 +1,63 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "e0e2cac1b170d680",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$(x+a)(x+b) = x^2 + (a+b)x + ab = x^2 + kx + 18$이므로 $ab = 18, k = a+b$이다.",
+    "곱이 $18$인 두 정수쌍의 합 $k$는 $\\pm 19, \\pm 11, \\pm 9$이다.",
+    "보기 중 $-7$은 가능한 값에 없다.",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x+a)(x+b) = x^2 + kx + 18$일 때, 다음 중 $k$의 값이 될 수 없는 것은? (단, $a, b$는 정수)",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-025",
+  "rpmEvidence": "좌변을 전개하여 계수를 비교하고",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_INTEGER_CONSTRAINT",
+  "newKeyProposal": null,
+  "typeReason": "정수 조건에서 두 일차식의 곱으로 전개될 때 미정계수의 범위를 구하는 유형이다. (문항 토큰 kx)",
+  "rpmReason": "두 일차식의 곱과 계수 관계를 분석하는 이차식 유형이다. (문항 토큰 kx)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "음의 정수쌍을 포함한 모든 경우를 분류해야 하는 난이도 2 문항이다. (문항 토큰 kx)",
+  "how": "곱이 18인 정수 순서쌍을 나열하여 가능한 합 k를 구하고 보기를 판별했다. (문항 토큰 kx)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "quote": "$(x+a)(x+b) = x^2 + kx + 18$일 때, 다음 중 $k$의 값이 될 수 없는 것은? (단, $a, b$는 정수)",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "계수",
+        "quote": "다음 중 $k$의 값이 될 수 없는 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "계수",
+        "quote": "좌변을 전개하여 계수를 비교하고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "quote": "곱이 $18$인 두 정수의 합으로",
+        "src": "solution"
+      }
+    ]
+  }
+}

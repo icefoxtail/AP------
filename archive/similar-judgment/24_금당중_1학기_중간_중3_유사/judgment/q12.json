@@ -1,0 +1,62 @@
+{
+  "qid": "q12",
+  "itemFingerprint": "0387c7ac2604c1e8",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$(x+2)(x+8)+k = x^2 + 10x + 16 + k$이다.",
+    "완전제곱식이 되려면 일차항 계수 $10$의 절반의 제곱인 $25$가 상수항이어야 한다.",
+    "따라서 $16 + k = 25$에서 $k = 9$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$(x+2)(x+8)+k$ 가 완전제곱식이 되도록 하는",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmEvidence": "완전제곱식이 될 조건을 적용한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+  "newKeyProposal": null,
+  "typeReason": "이차식이 완전제곱식이 되도록 하는 미정계수를 결정하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "완전제곱식의 성질을 이용하는 제곱식 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "완전제곱식의 기본 공식을 적용하는 난이도 1 문항이다. (문항 토큰 12)",
+  "how": "식을 전개한 뒤 일차항 계수의 절반의 제곱이 상수항이 되는 조건을 세웠다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "quote": "$(x+2)(x+8)+k$ 가 완전제곱식이 되도록 하는",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수항",
+        "quote": "상수 $k$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "완전제곱식이 될 조건을 적용한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "일차식",
+        "quote": "일차항 계수의 절반의 제곱이 상수항이 되도록 하는",
+        "src": "solution"
+      }
+    ]
+  }
+}

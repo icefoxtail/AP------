@@ -1,0 +1,61 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "8ac3b9003e4fa3a7",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "나눗셈 성질에 의하여 $\\sqrt{18} \\div \\sqrt{3} = \\sqrt{\\dfrac{18}{3}} = \\sqrt{6}$이다.",
+    "따라서 계산 결과가 옳은 것은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "제곱근의 사칙연산 및 성질을 각 선지에 적용하여",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-008",
+  "rpmEvidence": "나눗셈 성질에 의하여",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "근호가 포함된 식의 사칙연산 성질을 검증하는 유형이다. (문항 토큰 18)",
+  "rpmReason": "근호 안의 수의 나눗셈을 다루는 근호의 몫 유형이다. (문항 토큰 18)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "기본적인 근호 계산 공식을 적용하는 난이도 1 문항이다. (문항 토큰 18)",
+  "how": "근호의 나눗셈 성질을 적용하여 2번 선지가 옳음을 확인했다. (문항 토큰 18)",
+  "slots": {
+    "given": [
+      {
+        "term": "사칙연산",
+        "quote": "제곱근의 사칙연산 및 성질을 각 선지에 적용하여",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "사칙연산",
+        "quote": "다음 중 계산 결과가 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "나눗셈",
+        "quote": "나눗셈 성질에 의하여",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "사칙연산",
+        "quote": "$\\sqrt{18}\\div\\sqrt{3} = \\sqrt{6}$",
+        "src": "choices"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q04",
+  "itemFingerprint": "bcbe719860dc366a",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "선지 ④에서 양변에서 $\\sqrt{10}$을 빼고 $1$을 더하면 $3 < \\sqrt{10}$이 된다.",
+    "$3 = \\sqrt{9} < \\sqrt{10}$이므로 $2+\\sqrt{10} < -1+2\\sqrt{10}$은 참이다.",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 두 실수의 대소 관계가 옳은 것은?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmEvidence": "부등식의 성질로 대소 관계를 판정한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "TPL_M3_REAL_COMPARISON_ORDER",
+  "newKeyProposal": null,
+  "typeReason": "무리수와 실수의 대소 관계를 부등식의 성질로 판별하는 유형이다. (문항 토큰 11)",
+  "rpmReason": "두 실수의 차와 부등식 성질을 이용한 실수의 대소 유형이다. (문항 토큰 11)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무리수를 포함한 두 식의 대소 비교를 수행하는 난이도 2 문항이다. (문항 토큰 11)",
+  "how": "부등식의 성질을 이용하여 식을 정리하고 근호 안의 수를 비교했다. (문항 토큰 11)",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "quote": "다음 중 두 실수의 대소 관계가 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대소",
+        "quote": "대소 관계가 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식",
+        "quote": "부등식의 성질로 대소 관계를 판정한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무리수",
+        "quote": "$2+\\sqrt{10} < -1+2\\sqrt{10}$",
+        "src": "choices"
+      }
+    ]
+  }
+}

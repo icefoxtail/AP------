@@ -1,0 +1,63 @@
+{
+  "qid": "q03",
+  "itemFingerprint": "f2936b23f8443745",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\sqrt{16} = 4$의 양의 제곱근은 $a = 2$이다.",
+    "$9$의 양의 제곱근은 $b = 3$이다.",
+    "$(-3)^2 = 9$의 음의 제곱근은 $c = -3$이다.",
+    "따라서 $a+b+c = 2 + 3 + (-3) = 2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt{16}$의 양의 제곱근을 $a$, $9$의 양의 제곱근을 $b$, $(-3)^2$의 음의 제곱근을 $c$",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-001",
+  "rpmEvidence": "양의 제곱근이므로",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_ROOT_PROPERTY_ROOT_VALUE",
+  "newKeyProposal": null,
+  "typeReason": "근호와 거듭제곱으로 주어진 수의 제곱근 값을 구하여 계산하는 유형이다. (문항 토큰 16)",
+  "rpmReason": "수의 양의 제곱근과 음의 제곱근의 정의를 적용하는 제곱근의 뜻 유형이다. (문항 토큰 16)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다단계로 제곱근을 구하고 합산하는 난이도 2 문항이다. (문항 토큰 16)",
+  "how": "각 식의 값을 먼저 계산한 뒤 양의 제곱근과 음의 제곱근을 구하여 합산했다. (문항 토큰 16)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "$\\sqrt{16}$의 양의 제곱근을 $a$, $9$의 양의 제곱근을 $b$, $(-3)^2$의 음의 제곱근을 $c$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "$a+b+c$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "양수",
+        "quote": "양의 제곱근이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "quote": "음의 제곱근을 $c$라고 할 때",
+        "src": "stem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "a8dd9eb20b141360",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\sqrt{27} = 3\\sqrt{3}$, $\\dfrac{6}{\\sqrt{3}} = 2\\sqrt{3}$, $\\sqrt{6}\\times\\sqrt{2} = 2\\sqrt{3}$이다.",
+    "세 항을 더하면 $3\\sqrt{3} + 2\\sqrt{3} + 2\\sqrt{3} = 7\\sqrt{3}$이다.",
+    "따라서 정답은 ②이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt{27} + \\dfrac{6}{\\sqrt{3}} + \\sqrt{6}\\times\\sqrt{2}$ 를 계산하면?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-010",
+  "rpmEvidence": "$\\sqrt{3}$의 동류항으로 정리한 후 덧셈을 수행한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "유리화와 덧셈·곱셈이 혼합된 근호식 계산 유형이다. (문항 토큰 27)",
+  "rpmReason": "근호의 덧셈과 분배법칙을 활용하는 분배법칙 유형이다. (문항 토큰 27)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "유리화와 동류근호 덧셈의 기본 계산을 수행하는 난이도 1 문항이다. (문항 토큰 27)",
+  "how": "각 항을 유리화 및 근호 밖 꺼내기로 정리한 뒤 동류항을 합산했다. (문항 토큰 27)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "$\\sqrt{27} + \\dfrac{6}{\\sqrt{3}} + \\sqrt{6}\\times\\sqrt{2}$ 를 계산하면?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리화",
+        "quote": "각 항의 근호를 꺼내거나 유리화하여",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "동류항",
+        "quote": "$\\sqrt{3}$의 동류항으로 정리한 후 덧셈을 수행한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "유리화",
+        "quote": "$\\dfrac{6}{\\sqrt{3}} = \\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}$",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "3a79f0efcef08c59",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$x$가 자연수이므로 $40-x \\le 39$이고, 정수가 되려면 $40-x \\ge 0$이어야 한다.",
+    "$40-x$가 될 수 있는 완전제곱수는 $0, 1, 4, 9, 16, 25, 36$의 7개이다.",
+    "각각에 대응하는 자연수 $x$는 $40, 39, 36, 31, 24, 15, 4$로 총 7개이다.",
+    "따라서 정답은 ④이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt{40-x}$ 가 정수가 되도록 하는 자연수 $x$의 개수는?",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "근호 안의 식 $40-x$가 $0$ 이상의 완전제곱수가 되어야 정수가 된다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+  "newKeyProposal": null,
+  "typeReason": "근호식이 정수 또는 자연수가 되는 조건을 구하는 유형이다. (문항 토큰 40)",
+  "rpmReason": "완전제곱수를 이용해 근호를 벗기는 제곱근의 성질 유형이다. (문항 토큰 40)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "0을 포함한 완전제곱수의 개수를 빠짐없이 세어야 하는 난이도 2 문항이다. (문항 토큰 40)",
+  "how": "근호 안의 식이 0 이상의 완전제곱수가 되는 조건을 만족하는 자연수 개수를 조사했다. (문항 토큰 40)",
+  "slots": {
+    "given": [
+      {
+        "term": "정수",
+        "quote": "$\\sqrt{40-x}$ 가 정수가 되도록 하는 자연수 $x$의 개수는?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "자연수",
+        "quote": "자연수 $x$의 개수는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "근호 안의 식 $40-x$가 $0$ 이상의 완전제곱수가 되어야 정수가 된다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "$x$가 자연수라는 조건을 고려하여",
+        "src": "solution"
+      }
+    ]
+  }
+}

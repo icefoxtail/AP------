@@ -1,0 +1,62 @@
+{
+  "qid": "q10",
+  "itemFingerprint": "b007b93c66afbf42",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$ab < 0, a > b$로부터 $a > 0, b < 0$이다.",
+    "$\\sqrt{16a^2} = |4a| = 4a$, $\\sqrt{25b^2} = |5b| = -5b$이다.",
+    "따라서 $\\sqrt{16a^2} + \\sqrt{25b^2} = 4a - 5b$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$ab < 0, \\quad a > b$ 일 때",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "rpmRecordId": "M3-RPM-002",
+  "rpmEvidence": "각 근호를 절댓값으로 변환하여 정리한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+  "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+  "newKeyProposal": null,
+  "typeReason": "문자의 부호 조건에 따라 제곱근 안의 제곱식을 정리하는 유형이다. (문항 토큰 ab)",
+  "rpmReason": "절댓값과 부호를 이용한 근호의 성질 유형이다. (문항 토큰 ab)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 문자의 부호를 판별하고 음수 항의 부호 처리를 하는 난이도 2 문항이다. (문항 토큰 ab)",
+  "how": "부호 조건을 판정하여 절댓값 기호로 변환한 뒤 식을 간단히 정리했다. (문항 토큰 ab)",
+  "slots": {
+    "given": [
+      {
+        "term": "부등식",
+        "quote": "$ab < 0, \\quad a > b$ 일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "제곱근",
+        "quote": "$\\sqrt{16a^2} + \\sqrt{25b^2}$ 을 간단히 하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "절댓값",
+        "quote": "각 근호를 절댓값으로 변환하여 정리한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "quote": "양수가 음수보다 크다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

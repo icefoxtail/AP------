@@ -1,0 +1,63 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "e9966ffc61efb8aa",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "세 정사각형의 한 변의 길이는 각각 $\\sqrt{3}, 3\\sqrt{3}, 2\\sqrt{3}$이다.",
+    "아랫변과 윗변의 가로 길이 합은 $6\\sqrt{3} + 6\\sqrt{3} = 12\\sqrt{3}$이다.",
+    "세로 방향 변들의 길이 합은 $6\\sqrt{3}$이다.",
+    "따라서 도형의 둘레의 길이는 $12\\sqrt{3} + 6\\sqrt{3} = 18\\sqrt{3}\\text{cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "정사각형 모양의 색종이 세 장을 밑변을 맞추어 이어 붙인 것이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "정사각형 모양의 색종이 세 장을 밑변을 맞추어 이어 붙인 것이다.",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-009",
+  "rpmEvidence": "각 정사각형의 한 변의 길이를 근호로 구한 후",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+  "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
+  "newKeyProposal": null,
+  "typeReason": "제곱근의 기하학적 넓이 정의를 이용하여 둘레를 구하는 유형이다. (문항 토큰 cm)",
+  "rpmReason": "무리수 길이의 덧셈을 다루는 동류근호 유형이다. (문항 토큰 cm)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접하는 도형의 단차와 둘레를 체계적으로 계산하는 난이도 2 문항이다. (문항 토큰 cm)",
+  "how": "정사각형 넓이에서 한 변의 길이를 근호로 구하고 외곽 둘레를 합산했다. (문항 토큰 cm)",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "정사각형 모양의 색종이 세 장을 밑변을 맞추어 이어 붙인 것이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "둘레",
+        "quote": "이 색종이로 이루어진 도형의 둘레의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "정사각형",
+        "quote": "각 정사각형의 한 변의 길이를 근호로 구한 후",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "넓이",
+        "quote": "넓이가 각각 $3,\\mathrm{cm^2}, ; 27,\\mathrm{cm^2}, ; 12,\\mathrm{cm^2}$인",
+        "src": "stem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "4cd22706c3b318a6",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$10 \\times 11 \\times 12 \\times 13 = (10 \\times 13)(11 \\times 12) = 130 \\times 132$이다.",
+    "$130 \\times 132 + 1 = (131-1)(131+1) + 1 = 131^2 - 1 + 1 = 131^2$이다.",
+    "따라서 $\\sqrt{131^2} = 131$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "인수분해 공식을 이용하여 $\\sqrt{10\\times 11\\times 12\\times 13+1}$ 의 값을 계산하면?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-026",
+  "rpmEvidence": "가운데 수를 기준으로 합차 공식을 적용한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+  "newKeyProposal": null,
+  "typeReason": "연속한 네 자연수의 곱에 1을 더한 식을 인수분해 공식으로 계산하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "인수분해 공식을 활용한 수의 계산 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수의 적절한 짝짓기와 합차 공식을 연계 적용하는 난이도 2 문항이다. (문항 토큰 10)",
+  "how": "연속한 네 수의 곱을 둘씩 짝지어 합차 공식으로 완전제곱수를 만들어 근호를 벗겼다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "인수분해",
+        "quote": "인수분해 공식을 이용하여 $\\sqrt{10\\times 11\\times 12\\times 13+1}$ 의 값을 계산하면?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수분해",
+        "quote": "의 값을 계산하면?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합차공식",
+        "quote": "가운데 수를 기준으로 합차 공식을 적용한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "연속하는 네 자연수의 곱에 $1$을 더한 식을",
+        "src": "solution"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "70e33e31998750b4",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\sqrt{2000} = 20\\sqrt{5}$이므로 $m = 20$이다.",
+    "$n = \\dfrac{\\sqrt{0.2}}{\\sqrt{5}} = \\sqrt{\\dfrac{1}{25}} = \\dfrac{1}{5}$이다.",
+    "따라서 $mn = 20 \\times \\dfrac{1}{5} = 4$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\sqrt{2000} = m\\sqrt{5}, \\quad \\dfrac{\\sqrt{0.2}}{\\sqrt{5}} = n$일 때",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
+  "rpmRecordId": "M3-RPM-008",
+  "rpmEvidence": "근호 나눗셈을 통해 $n$을 구한 후 곱한다.",
+  "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+  "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+  "newKeyProposal": null,
+  "typeReason": "근호의 변형과 나눗셈을 통해 미지수를 결정하고 곱하는 유형이다. (문항 토큰 2000)",
+  "rpmReason": "근호의 곱셈과 나눗셈 성질을 이용하는 근호의 몫 유형이다. (문항 토큰 2000)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "제곱인수 추출과 분수 나눗셈을 결합한 난이도 2 문항이다. (문항 토큰 2000)",
+  "how": "근호 안의 제곱인수를 꺼내어 m을 구하고 나눗셈으로 n을 구하여 곱했다. (문항 토큰 2000)",
+  "slots": {
+    "given": [
+      {
+        "term": "제곱근",
+        "quote": "$\\sqrt{2000} = m\\sqrt{5}, \\quad \\dfrac{\\sqrt{0.2}}{\\sqrt{5}} = n$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "곱셈",
+        "quote": "$mn$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "나눗셈",
+        "quote": "근호 나눗셈을 통해 $n$을 구한 후 곱한다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "자연수",
+        "quote": "$\\sqrt{2000} = \\sqrt{400 \\times 5} = \\sqrt{20^2 \\times 5} = 20\\sqrt{5}$",
+        "src": "solution"
+      }
+    ]
+  }
+}

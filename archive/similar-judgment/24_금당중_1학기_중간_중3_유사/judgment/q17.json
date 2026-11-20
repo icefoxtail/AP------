@@ -1,0 +1,63 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "926bdea6a0cb6844",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$x^2y - xy^2 = xy(x-y)$이다.",
+    "$xy = (\\sqrt{5}+\\sqrt{2})(\\sqrt{5}-\\sqrt{2}) = 5 - 2 = 3$이다.",
+    "$x-y = 2\\sqrt{2}$이다.",
+    "따라서 $xy(x-y) = 3 \\times 2\\sqrt{2} = 6\\sqrt{2}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x=\\sqrt{5}+\\sqrt{2}, \\quad y=\\sqrt{5}-\\sqrt{2}$ 일 때",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-027",
+  "rpmEvidence": "공통인수로 식을 먼저 묶은 후",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_FACTORIZATION_VALUE",
+  "newKeyProposal": null,
+  "typeReason": "인수분해 공식을 활용하여 무리수 식의 값을 구하는 유형이다. (문항 토큰 xy)",
+  "rpmReason": "인수분해를 이용해 식의 값을 간편하게 구하는 인수분해를 이용한 식의 값 유형이다. (문항 토큰 xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공통인수 묶기와 무리수 합차 대입의 기본 계산 난이도 1 문항이다. (문항 토큰 xy)",
+  "how": "공통인수로 식을 묶은 뒤 합차 공식과 차를 대입하여 계산했다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "무리수",
+        "quote": "$x=\\sqrt{5}+\\sqrt{2}, \\quad y=\\sqrt{5}-\\sqrt{2}$ 일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "다항식",
+        "quote": "$x^2y - xy^2$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통인수",
+        "quote": "공통인수로 식을 먼저 묶은 후",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수분해",
+        "quote": "식을 공통인수 $xy$로 인수분해한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

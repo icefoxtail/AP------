@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "6e9748de23b9ec5b",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$4x^2 - 8xy = 4x(x-2y) = 2^2 \\times x \\times (x-2y)$이다.",
+    "$4x-2y = 2(2x-y)$는 원래 다항식의 인수들의 곱으로 표현할 수 없다.",
+    "따라서 인수가 아닌 것은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 중 다항식 $4x^2 - 8xy$ 의 인수가 아닌 것은?",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "rpmRecordId": "M3-RPM-021",
+  "rpmEvidence": "다항식을 공통인수로 인수분해하여",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "다항식을 인수분해하여 가능한 인수를 식별하는 유형이다. (문항 토큰 xy)",
+  "rpmReason": "공통인수를 묶어내는 공통인수 묶기 유형이다. (문항 토큰 xy)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "공통인수 추출 후 인수의 정의를 확인하는 난이도 1 문항이다. (문항 토큰 xy)",
+  "how": "공통인수로 다항식을 완전히 인수분해하여 각 선지의 인수 여부를 판별했다. (문항 토큰 xy)",
+  "slots": {
+    "given": [
+      {
+        "term": "다항식",
+        "quote": "다음 중 다항식 $4x^2 - 8xy$ 의 인수가 아닌 것은?",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "인수",
+        "quote": "인수가 아닌 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "공통인수",
+        "quote": "다항식을 공통인수로 인수분해하여",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "인수분해",
+        "quote": "주어진 다항식을 완전히 인수분해한다.",
+        "src": "solution"
+      }
+    ]
+  }
+}
