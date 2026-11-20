@@ -1,0 +1,57 @@
+{
+  "qid": 4,
+  "itemFingerprint": "40773e2b3b4bfa21",
+  "solveSteps": [
+    "평행선의 작도는 점 P를 지나는 직선을 그은 뒤 직선 l과의 동위각을 점 P에 복사하여 작도한다. (ㄱ 참, aligned 구조)",
+    "크기가 같은 각의 작도 시 기준점 Q와 목표점 P에서 같은 반지름의 원호를 컴퍼스로 그린다. (ㄴ 참, aligned 단계)",
+    "선분의 길이를 그대로 복사하는 도구는 눈금 없는 자가 아니라 컴퍼스이다. (ㄷ 거짓)",
+    "따라서 옳은 것은 ㄱ, ㄴ이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$과 평행한 직선을 작도하는 과정",
+  "rpmRecordId": "M1-RPM-185",
+  "rpmReason": "점 P를 지나 직선 l에 평행한 직선을 동위각 복사와 컴퍼스를 이용해 aligned 단계로 작도하는 기본 작도 유형이다.",
+  "problemTypeKey": "PT_M1_BASIC_CONSTRUCTION",
+  "templateKey": "TPL_M1_BASIC_CONSTRUCTION_TOOL_USAGE",
+  "typeReason": "평행선 작도에서 컴퍼스와 눈금 없는 자의 용도 및 동위각 작도 원리를 aligned 과정에 따라 점검하는 기본 작도 도구와 절차 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "작도에 쓰이는 컴퍼스와 눈금 없는 자의 기능 및 동위각의 평행선 성질을 aligned 단계별로 정확히 숙지해야 하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "직선 $l$ 위에 있지 않은 한 점 $P$를 지나고 직선 $l$과 평행한 직선을 작도하는 과정"
+      }
+    ],
+    "goal": [
+      {
+        "term": "작도",
+        "src": "stem",
+        "quote": "평행한 직선을 작도하는 과정에 대한 설명 중 옳은 것만을 보기에서 모두 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "동위각",
+        "src": "stem",
+        "quote": "동위각의 크기가 같으면 두 직선이 평행하다는 성질을 이용한다.",
+        "evidenceType": "IMPLIED",
+        "justification": "동위각 복사를 통한 평행선 작도 원리 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "점 P를 지나는 평행선 작도의 aligned 원리에서 동위각 성질 ㄱ과 컴퍼스 반지름 ㄴ이 참이고 ㄷ에서 눈금 없는 자가 아닌 컴퍼스임을 확인하여 판정하였다."
+}

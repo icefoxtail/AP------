@@ -1,0 +1,58 @@
+{
+  "qid": 11,
+  "itemFingerprint": "d35ea2d2a426415f",
+  "solveSteps": [
+    "세 변의 길이를 자연수 a, b, c (a <= b <= c)라 하면 a + b + c = 14 cm이다. (aligned 구조)",
+    "가장 긴 변 c < a + b = 14 - c이므로 2c < 14에서 c <= 6이고 3c >= 14에서 c >= 5이다.",
+    "c = 6일 때 a + b = 8 (a <= b <= 6) -> (2, 6, 6), (3, 5, 6), (4, 4, 6)으로 3가지이다.",
+    "c = 5일 때 a + b = 9 (a <= b <= 5) -> (4, 5, 5)로 1가지이다.",
+    "따라서 만들 수 있는 서로 다른 삼각형은 총 3 + 1 = 4가지이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "세 변의 길이가 모두 자연수인 삼각형을 만들려고 한다.",
+  "rpmRecordId": "M1-RPM-188",
+  "rpmReason": "둘레 14 cm인 삼각형의 세 변 길이 조건을 삼각부등식과 자연수 순서쌍으로 aligned 분석하는 삼각형 성립조건 유형이다.",
+  "problemTypeKey": "PT_M1_TRIANGLE_SIDE_FEASIBILITY",
+  "templateKey": "TPL_M1_TRIANGLE_SIDE_FEASIBILITY_INTEGER_PERIMETER_CASES",
+  "typeReason": "둘레 14 cm가 주어진 상황에서 가장 긴 변의 범위를 정하고 자연수 세 변 순서쌍을 aligned 나열하여 가능한 삼각형 개수를 세는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각부등식을 만족하는 합 14 cm의 자연수 조합을 부등식과 경우 나누기로 구하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "세 변의 길이가 모두 자연수인 삼각형을 만들려고 한다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "만들 수 있는 서로 다른 삼각형은 모두 몇 가지인가?"
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "삼각부등식에 의해 가장 긴 변 $c$는 나머지 두 변의 합보다 작아야 하므로",
+        "evidenceType": "IMPLIED",
+        "justification": "삼각부등식을 통한 가장 긴 변의 범위 결정"
+      }
+    ],
+    "condition": []
+  },
+  "how": "둘레 14 cm인 삼각형의 가장 긴 변이 5 또는 6임을 확인하고 aligned 조건에 맞는 순서쌍 4가지를 계산하여 판정하였다."
+}

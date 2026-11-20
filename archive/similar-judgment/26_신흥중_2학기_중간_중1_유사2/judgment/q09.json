@@ -1,0 +1,57 @@
+{
+  "qid": 9,
+  "itemFingerprint": "792926d8019a2f62",
+  "solveSteps": [
+    "꺾인 점들을 지나며 평행선 l, m에 평행한 보조선을 긋는다.",
+    "평행선 사이의 엇각에 의해 왼쪽 꺾인 각은 35^\\circ와 t^\\circ로 나뉜다.",
+    "오른쪽 꺾인 각 80^\\circ는 t^\\circ + y와 같으므로 x + y = 35^\\circ + 80^\\circ = 115^\\circ이다.",
+    "따라서 각의 합은 115^\\circ이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "그림의 두 각 $\\angle x, \\angle y$에 대하여",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-BASIC_FIGURE",
+  "unitEvidence": "두 직선 $l$과 $m$이 서로 평행하다.",
+  "rpmRecordId": "M1-RPM-177",
+  "rpmReason": "평행선과 꺾은선에서 35도, 80도의 엇각 관계를 이용하여 각의 합 115도를 계산하는 동위각·엇각 유형이다.",
+  "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+  "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_DIRECT_TRANSFER",
+  "typeReason": "평행선 사이의 꺾인 선에 보조선을 그어 35도와 80도로부터 각 x + y = 115도를 도출하는 평행선 각의 이동·계산 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꺾인 점에 평행 보조선을 긋고 35도와 80도의 엇각을 연계하여 115도를 구하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "평행",
+        "src": "stem",
+        "quote": "두 직선 $l$과 $m$이 서로 평행하다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "각",
+        "src": "stem",
+        "quote": "$\\angle x + \\angle y$의 크기는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "꺾인 점들을 지나고 두 직선 $l, m$에 평행한 보조선을 각각 긋는다.",
+        "evidenceType": "IMPLIED",
+        "justification": "평행 보조선과 엇각 크기 일치 원리 적용"
+      }
+    ],
+    "condition": []
+  },
+  "how": "평행선 사이의 꺾인 점에 보조선을 긋고 35도와 80도를 엇각으로 묶어 x + y = 115도임을 판정하였다."
+}

@@ -1,0 +1,58 @@
+{
+  "qid": 3,
+  "itemFingerprint": "462f1de2e6fc56a8",
+  "solveSteps": [
+    "사다리꼴 ABCD에서 AD와 BC가 평행하므로 두 직선은 평행하다. (ㄱ 참)",
+    "각 B = 90도이므로 선분 AB와 BC는 수직이다. 따라서 점 A에서 직선 BC에 내린 수선의 발은 점 B이다. (ㄴ 참)",
+    "사다리꼴 ABCD는 한 평면 위의 도형이므로 직선 AB와 CD는 평행하지 않아 한 점에서 만나며, 꼬인 위치에 있지 않다. (ㄷ 거짓)",
+    "직각사다리꼴의 대각선 AC와 BD는 일반적으로 수직이 아니다. (ㄹ 거짓)",
+    "따라서 옳은 것은 ㄱ, ㄴ이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": null,
+  "figureNeed": "NONE",
+  "figureEvidence": null,
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": null,
+  "standardUnitKey": "M1-05",
+  "subUnitKey": "M1-05-POSITION_RELATION",
+  "unitEvidence": "사다리꼴 $ABCD$의 변과 직선의 위치 관계를 검토한다.",
+  "rpmRecordId": "M1-RPM-179",
+  "rpmReason": "평면의 직각사다리꼴 ABCD에서 두 직선 AD, BC의 평행, 수선의 발, 꼬인 위치 여부를 판별하는 두 직선의 위치 관계 유형이다.",
+  "problemTypeKey": "PT_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK",
+  "templateKey": "TPL_M1_RIGHT_TRAPEZOID_PROPERTY_CHECK_CORE",
+  "typeReason": "직각사다리꼴 ABCD에서 AD와 BC의 평행 및 90도 조건을 바탕으로 보기의 직선 관계와 수선의 발 진술을 확인하는 직각사다리꼴 성질 판단 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "평면도형 사다리꼴 ABCD의 성질과 평행, 90도 수직, 꼬인 위치의 정의를 조합하여 4개의 진술을 검토하므로 난이도 2이다.",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "$\\overline{AD} \\parallel \\overline{BC}$이고 $\\angle B = 90^\\circ$인 직각사다리꼴 $ABCD$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "위치관계",
+        "src": "solution",
+        "quote": "사다리꼴 $ABCD$의 변과 직선의 위치 관계를 검토한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "수선의발",
+        "src": "stem",
+        "quote": "점 $A$에서 $\\overleftrightarrow{BC}$에 내린 수선의 발은 점 $B$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "직각 조건과 수선의 발 정의 대조"
+      }
+    ],
+    "condition": []
+  },
+  "how": "직각사다리꼴 ABCD에서 AD와 BC의 평행선과 각 B = 90도로부터 수선의 발 B를 확인하고 평면 내 직선 AB, CD는 꼬인 위치가 아님을 이용해 ㄱ, ㄴ을 판정하였다."
+}
