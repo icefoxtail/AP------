@@ -1,0 +1,64 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 9,
+        "y": 9
+      },
+      {
+        "x": 8,
+        "y": 4
+      },
+      {
+        "x": 2,
+        "y": 2
+      },
+      {
+        "x": 3,
+        "y": 8
+      },
+      {
+        "x": 4,
+        "y": 5
+      },
+      {
+        "x": 5,
+        "y": 6
+      },
+      {
+        "x": 6,
+        "y": 6
+      },
+      {
+        "x": 7,
+        "y": 7
+      }
+    ],
+    "xRange": [
+      0,
+      10
+    ],
+    "yRange": [
+      0,
+      10
+    ],
+    "xStep": 2,
+    "yStep": 2,
+    "diagonal": true,
+    "xTitle": "영어",
+    "yTitle": "국어"
+  },
+  "caption": "직선 y=x 위쪽의 점 D는 y > x이므로 국어가 우수함(A, B, C, D)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 D 위치 판별",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "점 D가 y > x 영역에 위치"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "DOT_PLOT",
+    "values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4,
+      4,
+      6
+    ],
+    "xTitle": "횟수",
+    "marks": {
+      "meanLine": {
+        "value": "3",
+        "label": "평균 3"
+      },
+      "medianLine": {
+        "value": "3.5",
+        "label": "중앙값 3.5"
+      }
+    }
+  },
+  "caption": "8명의 턱걸이 횟수 총합 24, 평균 3, 최빈값 4, 중앙값 3.5",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "8명의 턱걸이 횟수",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "평균 3과 최빈값 4"
+  ]
+}

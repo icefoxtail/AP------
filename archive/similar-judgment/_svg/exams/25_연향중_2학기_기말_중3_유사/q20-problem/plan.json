@@ -1,0 +1,64 @@
+{
+  "capability": "stat-chart-figure-v1",
+  "chart": {
+    "kind": "SCATTER",
+    "points": [
+      {
+        "x": 9,
+        "y": 9
+      },
+      {
+        "x": 8,
+        "y": 4
+      },
+      {
+        "x": 2,
+        "y": 2
+      },
+      {
+        "x": 3,
+        "y": 8
+      },
+      {
+        "x": 4,
+        "y": 5
+      },
+      {
+        "x": 5,
+        "y": 6
+      },
+      {
+        "x": 6,
+        "y": 6
+      },
+      {
+        "x": 7,
+        "y": 7
+      }
+    ],
+    "xRange": [
+      0,
+      10
+    ],
+    "yRange": [
+      0,
+      10
+    ],
+    "xStep": 2,
+    "yStep": 2,
+    "diagonal": true,
+    "xTitle": "영어",
+    "yTitle": "국어"
+  },
+  "caption": "영어, 국어 성적 산점도에서 대각선 y=x와 네 점 A, B, C, D",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "학생 A, B, C, D의 위치",
+      "mappedTo": "chart"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=x와 점 A, B, C, D"
+  ]
+}

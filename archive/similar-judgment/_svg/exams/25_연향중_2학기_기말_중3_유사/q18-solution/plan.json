@@ -1,0 +1,54 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "POINTS",
+        "label": "기존",
+        "points": [
+          {
+            "id": "A",
+            "value": "1"
+          },
+          {
+            "id": "B",
+            "value": "3"
+          },
+          {
+            "id": "C",
+            "value": "5"
+          }
+        ]
+      },
+      {
+        "kind": "POINTS",
+        "label": "이동",
+        "points": [
+          {
+            "id": "D",
+            "value": "6"
+          },
+          {
+            "id": "E",
+            "value": "8"
+          },
+          {
+            "id": "F",
+            "value": "10"
+          }
+        ]
+      }
+    ]
+  },
+  "caption": "변량에 5를 더하면 평균은 m+5로 이동하고 분산 v는 변하지 않음",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "변량 평행이동",
+      "mappedTo": "numberLine"
+    }
+  ],
+  "newVisualInformation": [
+    "평행이동한 평균 m+5와 분산 v"
+  ]
+}

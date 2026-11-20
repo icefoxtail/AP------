@@ -1,0 +1,92 @@
+{
+  "capability": "composite-panels-v1",
+  "panels": [
+    {
+      "caption": {
+        "text": "자료 A: 총합 49, 중앙값 7"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            1,
+            2,
+            2,
+            7,
+            7,
+            13,
+            17
+          ],
+          "marks": {
+            "medianLine": {
+              "value": "7",
+              "label": "중앙값 7"
+            }
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "자료 B: 중앙값 16"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            9,
+            14,
+            16,
+            16,
+            18,
+            23
+          ],
+          "marks": {
+            "medianLine": {
+              "value": "16",
+              "label": "중앙값 16"
+            }
+          }
+        }
+      }
+    },
+    {
+      "caption": {
+        "text": "자료 C: 중앙값 7"
+      },
+      "plan": {
+        "capability": "stat-chart-figure-v1",
+        "chart": {
+          "kind": "DOT_PLOT",
+          "values": [
+            5,
+            5,
+            5,
+            9,
+            9,
+            9
+          ],
+          "marks": {
+            "medianLine": {
+              "value": "7",
+              "label": "중앙값 7"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "caption": "세 자료 A, B, C의 분포와 중앙값(자료 C 중앙값 7)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "세 자료 A, B, C",
+      "mappedTo": "panels"
+    }
+  ],
+  "newVisualInformation": [
+    "자료 C의 중앙값 7"
+  ]
+}
