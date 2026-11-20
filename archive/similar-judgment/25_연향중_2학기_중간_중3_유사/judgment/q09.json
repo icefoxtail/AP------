@@ -1,0 +1,63 @@
+{
+  "qid": 9,
+  "itemFingerprint": "60eb86578b34080f",
+  "solveSteps": [
+    "직각삼각형 ABC에서 빗변 AB = 8이고 각 B = 32도이다.",
+    "a = 8 * sin 32도 = 8 * 0.53 = 4.24이다.",
+    "b = 8 * cos 32도 = 8 * 0.85 = 6.80이므로 a + b = 4.24 + 6.80 = 11.04이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\angle C=90^\\circ$,",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "unitEvidence": "빗변이 $AB=8$이고 $\\angle B=32^\\cir",
+  "rpmRecordId": "M3-RPM-060",
+  "rpmReason": "빗변 AB = 8과 각 B = 32도의 삼각비로 두 변 a, b의 길이를 각각 산출한다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "typeReason": "직각삼각형 ABC에서 빗변과 삼각비 값으로 두 변의 합 11.04를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "sin 32도 = 0.53과 cos 32도 = 0.85를 곱해 합산하여 11.04를 얻으므로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "src": "stem",
+        "quote": "\\circ$인 직각삼각형 $ABC$에서"
+      }
+    ],
+    "goal": [
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "irc$인 직각삼각형 $ABC$에서"
+      }
+    ],
+    "method": [
+      {
+        "term": "탄젠트",
+        "src": "stem",
+        "quote": ".85$, $\\tan 32^\\cir",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "a = 8*0.53 = 4.24와 b = 8*0.85 = 6.80에서 a + b = 11.04를 계산하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

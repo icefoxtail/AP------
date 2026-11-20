@@ -1,0 +1,63 @@
+{
+  "qid": 14,
+  "itemFingerprint": "94ac983a1e419473",
+  "solveSteps": [
+    "원의 중심에서 현 AB에 내린 수선은 현을 이등분하므로 AM = BM이다.",
+    "직각삼각형 OAM에서 OA = 8 cm, OM = 3 cm이므로 AM = sqrt(8^2 - 3^2) = sqrt(55) cm이다.",
+    "따라서 현 AB = 2 * AM = 2*sqrt(55) cm이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림의 원 $O$에서 $AB \\perp OM$이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "unitEvidence": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 $A",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmReason": "중심에서 현 AB에 내린 수선 OM = 3과 반지름 8로부터 현의 길이 2*sqrt(55)를 계산한다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "typeReason": "현의 수직이등분 성질과 피타고라스 정리로 현 AB의 길이를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "피타고라스 정리 AM = sqrt(55)와 2배 공식으로 2*sqrt(55)를 바로 구하므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "현 $AB$의 길이는?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "src": "stem",
+        "quote": "현 $AB$의 길이는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "src": "solution",
+        "quote": "서 현에 내린 수선은 현을 이등분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "직각삼각형 OAM에서 AM = sqrt(55)를 얻고 현 AB = 2*sqrt(55) cm로 계산하여 ⑤로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

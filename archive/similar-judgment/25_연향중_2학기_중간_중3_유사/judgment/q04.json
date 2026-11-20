@@ -1,0 +1,62 @@
+{
+  "qid": 4,
+  "itemFingerprint": "9fbb95e4d82af865",
+  "solveSteps": [
+    "10도 < x < 50도이므로 5도 < 2x - 15도 < 85도이다.",
+    "sin 45도 = sqrt(2)/2이므로 2x - 15도 = 45도에서 2x = 60도, 즉 x = 30도이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "unitEvidence": "$10^\\circ < x < 50^\\circ$이므로 $",
+  "rpmRecordId": "M3-RPM-057",
+  "rpmReason": "특수각 45도의 사인 값이 sqrt(2)/2임을 이용해 일차방정식 2x - 15 = 45도를 푼다.",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+  "typeReason": "사인 함수의 특수각 값 sqrt(2)/2로부터 미지각 x = 30도를 구하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "sin 45도 = sqrt(2)/2를 바로 적용하여 2x = 60도에서 x = 30도를 구하므로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "객관식",
+  "slots": {
+    "given": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "c$이다. 이 범위에서 $\\sin"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "c$이다. 이 범위에서 $\\sin"
+      }
+    ],
+    "method": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "c$이다. 이 범위에서 $\\sin",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "sin(2x - 15도) = sqrt(2)/2에서 2x - 15 = 45도를 풀어 x = 30도로 계산하여 ②로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
