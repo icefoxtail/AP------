@@ -1,0 +1,76 @@
+{
+  "qid": 1,
+  "itemFingerprint": "9b1149dba4f1d870",
+  "solveSteps": [
+    "① 은 모든 실수 x 에 대하여 x^2+1>0 이 항상 참이라 참·거짓이 정해진 명제이다.",
+    "② x^2-9=0 은 x=3 이면 참, x=0 이면 거짓이라 조건이다.",
+    "③ 2x-3<7 은 x=1 이면 참, x=6 이면 거짓이고 ④ x^2=4x, ⑤ x^2-3x+2<=0 도 값에 따라 참·거짓이 갈린다.",
+    "따라서 조건이 아닌 것은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "다음 중 조건이 아닌 것은?",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "① 모든 실수 x 에 대하여 x^2+1>0 은 항상 참인 명제이고 나머지는 값에 따라 참·거짓이 갈리는 조건이라, 명제와 조건의 구별 단계가 명제의 참·거짓 행이다.",
+  "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+  "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+  "typeReason": "보기 ①~⑤ 가운데 x=3, x=0 처럼 값을 넣어 참·거짓이 갈리면 조건, 항상 참이면 명제라고 가려내는 것이 명제와 조건의 구별 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "② x^2-9=0 에 x=3, x=0 을 넣어 보는 정의 확인 한 단계이고 ① 이 항상 참임만 알아보면 되어 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "방정식",
+        "src": "choices",
+        "quote": "$x^2-9=0$"
+      },
+      {
+        "term": "부등식",
+        "src": "choices",
+        "quote": "$2x-3\\lt 7$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 중 조건이 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "수치대입법",
+        "src": "solution",
+        "quote": "$x=3$이면 참이고 $x=0$이면 거짓이므로 조건이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "x 에 3 과 0 같은 값을 넣어 참·거짓이 갈리는지 확인해 조건임을 판정한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "choices",
+        "quote": "모든 실수 $x$에 대하여"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "보기 ①~⑤ 를 직접 읽고 ①만 모든 실수 x 에서 x^2+1>0 이 항상 참인 명제라 조건이 아님을 확인했다. 해설도 같은 구별이라 명제의 참·거짓 행과 조건 식별 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

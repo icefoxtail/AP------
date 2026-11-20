@@ -1,0 +1,80 @@
+{
+  "qid": 6,
+  "itemFingerprint": "cc2eec256ef115c2",
+  "solveSteps": [
+    "p 가 ¬q 이기 위한 필요조건이면 ¬q→p 가 참이므로 Q^c ⊂ P 이다.",
+    "양변에 Q 와의 합집합을 취하면 Q^c∪Q ⊂ P∪Q 이므로 U ⊂ P∪Q 이다.",
+    "P∪Q 는 U 의 부분집합이므로 P∪Q=U 이고 보기 ⑤이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "$p$가 $\\neg q$이기 위한 필요조건일 때, 다음 중 항상 옳은 것은?",
+  "rpmRecordId": "H1-RPM-247",
+  "rpmReason": "p 가 ¬q 이기 위한 필요조건이라는 조건 관계를 ¬q→p, 즉 Q^c ⊂ P 로 읽는 단계라 조건 관계 행이다.",
+  "problemTypeKey": "PT_NEC_SUFF_RELATION",
+  "templateKey": "TPL_NEC_SUFF_SET_RELATION",
+  "typeReason": "필요조건 ¬q→p 를 진리집합의 포함 Q^c ⊂ P 로 바꾸고 합집합 P∪Q=U 를 얻는 것이 집합과 필요충분조건 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "필요조건을 Q^c ⊂ P 로 바꾸고 합집합 U ⊂ P∪Q 를 이끄는 집합 변형 두세 단계라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "진리집합",
+        "src": "stem",
+        "quote": "두 조건 $p$, $q$의 진리집합을 각각 $P$, $Q$라 하자."
+      },
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "다음 중 항상 옳은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "따라서 진리집합 사이의 포함 관계는 다음과 같다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "합집합",
+        "src": "solution",
+        "quote": "양변에 $Q$와의 합집합을 취하면 다음이 성립한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "필요조건",
+        "src": "stem",
+        "quote": "$p$가 $\\neg q$이기 위한 필요조건일 때"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "필요조건 ¬q→p 에서 Q^c ⊂ P 를 얻고 합집합을 취해 P∪Q=U 가 항상 성립함을 직접 보여 ⑤와 맞췄다. 해설의 결정적 단계가 필요조건의 집합 포함 번역이라 RPM-247 과 필요충분조건 집합 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

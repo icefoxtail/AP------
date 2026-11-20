@@ -1,0 +1,70 @@
+{
+  "qid": 5,
+  "itemFingerprint": "132adcbaac235cd1",
+  "solveSteps": [
+    "‘모든 실수 x’ 의 부정은 ‘어떤 실수 x’ 이다.",
+    "-1<x<=4 는 -1<x 이고 x<=4 이므로 부정은 x<=-1 또는 x>4 이다.",
+    "따라서 부정은 어떤 실수 x 에 대하여 x<=-1 또는 x>4 이고 이는 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "모든 실수 $x$에 대하여 $-1\\lt x\\le 4$이다.",
+  "rpmRecordId": "H1-RPM-246",
+  "rpmReason": "‘모든 실수 x 에 대하여 -1<x<=4’ 를 ‘어떤 실수 x 에 대하여 x<=-1 또는 x>4’ 로 바꾸는 명제 변환 단계가 이 행이다.",
+  "problemTypeKey": "PT_QUANTIFIER_NEGATION",
+  "templateKey": "TPL_QUANTIFIER_NEGATION_INTERVAL",
+  "typeReason": "모든→어떤으로 바꾸고 구간 -1<x<=4 를 x<=-1 또는 x>4 로 부정하는 것이 양화명제의 부정과 구간 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "‘모든’→‘어떤’ 과 ‘이고’→‘또는’ 규칙을 -1<x<=4 에 바로 적용하는 한 단계라 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여 $-1\\lt x\\le 4$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "부정",
+        "src": "stem",
+        "quote": "의 부정은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "드모르간법칙",
+        "src": "solution",
+        "quote": "각 부등호의 방향을 반대로 바꾸면 다음과 같다.",
+        "evidenceType": "IMPLIED",
+        "justification": "‘이고’ 의 부정이 ‘또는’ 이 되는 부정 규칙을 -1<x 와 x<=4 에 적용한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "solution",
+        "quote": "‘어떤 실수 $x$에 대하여’이다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "‘모든’ 을 ‘어떤’ 으로, -1<x<=4 의 ‘이고’ 를 ‘또는’ 으로 바꾸어 직접 부정을 만들고 보기 ④와 맞췄다. 부정 변환 단계라 명제 변환 행과 양화명제 부정 구간 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "qid": 15,
+  "itemFingerprint": "5bf825d560c13d0f",
+  "solveSteps": [
+    "f(x)=(1/2)(x-2)^2+a-2 (x>=2) 는 증가함수라 f 와 f^{-1} 의 교점은 y=x 위에 있다.",
+    "f(x)=x 에서 (1/2)x^2-2x+a=x 이므로 x^2-6x+2a=0 이고 두 근을 α<β 라 한다.",
+    "교점 (α,α), (β,β) 의 거리 sqrt(2)(β-α)=2 sqrt(2) 에서 β-α=2 이고 α+β=6 이라 α=2, β=4 이다.",
+    "2a=αβ=8 이므로 a=4 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "그 역함수 $y=f^{-1}(x)$의 그래프가 서로 다른 두 점에서 만나고",
+  "rpmRecordId": "H1-RPM-256",
+  "rpmReason": "f(x)=(1/2)x^2-2x+a 와 역함수의 교점이 직선 y=x 위에 있음을 써서 x^2-6x+2a=0 을 세우는 단계가 그래프 대칭 행이다.",
+  "problemTypeKey": "PT_INVERSE_GRAPH",
+  "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+  "typeReason": "증가함수의 그래프와 역함수 그래프의 교점은 y=x 위이므로 f(x)=x 의 두 근 α, β 의 차 2 와 합 6 으로 a=4 를 정하는 것이 함수와 역함수의 교점 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "교점이 y=x 위임을 알아 x^2-6x+2a=0 을 세우고 거리 2sqrt(2) 와 근과 계수로 α=2, β=4, a=4 를 구하는 네 단계라 3단계로 본다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "$f(x)=\\dfrac{1}{2}x^2-2x+a\\;(x\\ge 2)$"
+      },
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "그 역함수 $y=f^{-1}(x)$의 그래프가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "는 증가함수이므로, 함수 $y=f(x)$와 역함수 $y=f^{-1}(x)$의 교점은 모두 직선 $y=x$ 위에 있다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "근과 계수의 관계에서 $\\alpha+\\beta=6$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역제한",
+        "src": "solution",
+        "quote": "두 근 모두 정의역 $x\\ge 2$에 속한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교점이 y=x 위임을 써서 x^2-6x+2a=0, β-α=2, α+β=6 에서 a=4 를 직접 구해 ⑤와 맞췄다. 해설의 결정적 단계가 함수와 역함수 그래프의 교점이 y=x 위인 것이라 RPM-256 과 역함수 교점 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

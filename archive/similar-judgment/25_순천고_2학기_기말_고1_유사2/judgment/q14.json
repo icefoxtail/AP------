@@ -1,0 +1,71 @@
+{
+  "qid": 14,
+  "itemFingerprint": "61d58efca14e503f",
+  "solveSteps": [
+    "x<0 이면 x-2<-2 이므로 -3<6/(x-2)<0 이다.",
+    "따라서 x<0 에서 a-3<y<a 이다.",
+    "제3사분면(x<0, y<0)을 지나지 않으려면 x<0 에서 y>=0 이어야 하므로 a-3>=0 이다.",
+    "a>=3 이므로 a 의 최솟값은 3 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "그래프가 제$3$사분면을 지나지 않도록",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "유리함수 $y=\\dfrac{6}{x-2}+a$의 그래프가 제$3$사분면을 지나지 않도록 하는 실수 $a$의 최솟값은?",
+  "rpmRecordId": "H1-RPM-262",
+  "rpmReason": "y=6/(x-2)+a 가 제3사분면을 지나지 않도록 x<0 에서 a-3>=0 을 따지는 단계가 그래프의 사분면 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+  "typeReason": "y=6/(x-2)+a 가 제3사분면을 지나지 않도록 x<0 에서 a-3>=0, 즉 a>=3 으로 매개변수 a 의 범위를 정하는 것이 매개변수에 따른 사분면 조건 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "x<0 에서 -3<6/(x-2)<0 을 구하고 a-3>=0 으로 a>=3 을 얻는 세 단계이나 하한이 열린 구간 처리가 있어 2단계로 본다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수 $y=\\dfrac{6}{x-2}+a$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "실수 $a$의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "부등식의성질",
+        "src": "solution",
+        "quote": "$x\\lt 0$일 때 $x-2\\lt -2$이므로 분수 부분의 범위는 다음과 같다.",
+        "evidenceType": "IMPLIED",
+        "justification": "x<0 에서 x-2<-2 로부터 6/(x-2) 의 범위 -3<6/(x-2)<0 을 부등식의 성질로 구한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "통과",
+        "src": "solution",
+        "quote": "그래프가 제$3$사분면($x\\lt 0$, $y\\lt 0$)을 지나지 않으려면"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x<0 에서 y 의 범위 a-3<y<a 를 구하고 제3사분면을 피하려면 a-3>=0 이라 a>=3, 최솟값 3 을 직접 얻어 ④와 맞췄다. 해설의 결정적 단계가 사분면 조건이라 RPM-262 와 사분면 매개변수 조건 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

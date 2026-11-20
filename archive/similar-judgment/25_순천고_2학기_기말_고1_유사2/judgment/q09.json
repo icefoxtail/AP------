@@ -1,0 +1,82 @@
+{
+  "qid": 9,
+  "itemFingerprint": "80ea79c0d9eef21d",
+  "solveSteps": [
+    "x>=1 에서 f(x)=2x+3 은 증가하고 최솟값 f(1)=5 이므로 치역은 y>=5 이다.",
+    "역함수가 있으려면 일대일대응이므로 x<1 에서 a<0 이어야 하고 치역이 y<b 가 되어 b=5 이다.",
+    "a 는 음의 정수라 a<=-1 이고 f(0)=a+5<=-1+5=4 이다.",
+    "f(0) 의 최댓값은 4 이다. (cases 꼴 조각함수)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "가 실수 전체의 집합에서 정의된 역함수를 가질 때, $f(0)$의 최댓값은?",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "역함수를 가지려면 x<1 과 x>=1 의 두 치역이 y<5 와 y>=5 로 이어지는 일대일대응이어야 한다는 단계가 일대일함수 행이다. (cases 꼴)",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+  "typeReason": "조각함수 a(x-1)^2+b (x<1), 2x+3 (x>=1) 의 두 치역을 b=5 에서 이어 붙여 일대일대응이 되도록 a<0, b=5 를 정하는 것이 조각함수의 일대일대응 조건 템플릿이다. (cases 꼴)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "x>=1 의 치역 y>=5, x<1 에서 a<0 과 b=5, 정수 조건 a<=-1 로 f(0)=a+5<=4 를 얻는 네 단계라 3단계로 본다. (cases 꼴)",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조각함수",
+        "src": "stem",
+        "quote": "a(x-1)^2+b&(x\\lt 1)"
+      },
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "두 정수 $a$, $b$에 대하여 함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "$f(0)$의 최댓값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "일대일대응",
+        "src": "solution",
+        "quote": "실수 전체의 집합에서 역함수를 가지려면 $f$가 일대일대응이어야 한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "$x\\ge 1$인 구간에서 $f(x)=2x+3$은 증가함수이고 최솟값은 $f(1)=5$이므로 치역은 $\\{y\\mid y\\ge 5\\}$이다.",
+        "evidenceType": "IMPLIED",
+        "justification": "x>=1 에서 증가함수 2x+3 의 최솟값으로 치역 y>=5 를 구한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "경계조건",
+        "src": "solution",
+        "quote": "경계값이 같아야 한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x>=1 의 치역 y>=5 와 x<1 의 치역 y<b 를 b=5 로 이어 a<=-1, f(0)=a+5<=4 를 직접 구해 ③과 맞췄다. 해설의 결정적 단계가 조각함수 두 치역의 이음이라 RPM-257 과 조각함수 일대일대응 템플릿을 골랐다. (cases 꼴)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

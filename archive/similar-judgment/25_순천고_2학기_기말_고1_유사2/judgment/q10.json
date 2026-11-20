@@ -1,0 +1,69 @@
+{
+  "qid": 10,
+  "itemFingerprint": "a114371d76b0f5b6",
+  "solveSteps": [
+    "그림에서 점선을 따라 y=x 로 옮기면 f(a)=b, f(b)=c, f(c)=d, f(d)=e 이다.",
+    "(f∘f∘f)(k)=e 이면 f(d)=e, f(c)=d, f(b)=c 이므로 k 에서 세 번 보내 e 가 되는 k=b 이다.",
+    "확인: f(f(f(b)))=f(f(c))=f(d)=e 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "함수 $y=f(x)$의 그래프와 직선 $y=x$가 다음 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "$(f\\circ f\\circ f)(k)=e$를 만족시키는 $k$는?",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "그래프에서 f(a)=b, f(b)=c, f(c)=d, f(d)=e 를 읽어 (f∘f∘f)(k)=e 인 k=b 를 찾는 단계라 합성함수 계산 행이다.",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+  "typeReason": "y=x 를 이용한 점선 그림에서 f(d)=e, f(c)=d, f(b)=c 를 거꾸로 따라가 (f∘f∘f)(k)=e 인 k=b 를 찾는 것이 그래프에서 합성함숫값을 역추적하는 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "그림에서 a→b→c→d→e 대응을 읽고 e 에서 세 번 거꾸로 올라가 k=b 를 얻는 세 단계라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "함수 $y=f(x)$의 그래프와 직선 $y=x$가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "만족시키는 $k$는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "세 번 합성한 결과가 $e$가 되려면 거꾸로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "실제로 $k=b$를 대입하면 다음과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "그림의 점선으로 f(a)=b, f(b)=c, f(c)=d, f(d)=e 를 읽고 (f∘f∘f)(b)=e 를 직접 확인해 ②와 맞췄다. 해설도 그래프에서 합성값을 거꾸로 따라가므로 RPM-253 과 그래프 역추적 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

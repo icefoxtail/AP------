@@ -1,0 +1,81 @@
+{
+  "qid": 11,
+  "itemFingerprint": "2c21abe674926bad",
+  "solveSteps": [
+    "(P-Q)∪(R^c-Q^c)=∅ 이므로 P-Q=∅, R^c-Q^c=∅ 이다.",
+    "P-Q=∅ 에서 P ⊂ Q, R^c-Q^c=∅ 에서 R^c ⊂ Q^c 이므로 Q ⊂ R 이다. 즉 P ⊂ Q ⊂ R 이다.",
+    "ㄱ p→r: P ⊂ R 이라 참, ㄴ r→q: R ⊂ Q 라 할 수 없어 거짓, ㄷ ¬r→¬q: R^c ⊂ Q^c 라 참이다.",
+    "항상 참인 것은 ㄱ, ㄷ 이므로 ④이다. (보기 q-box)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "$(P-Q)\\cup(R^c-Q^c)=\\varnothing$일 때, 다음 보기에서 항상 참인 명제만을 있는 대로 고른 것은?",
+  "rpmRecordId": "H1-RPM-243",
+  "rpmReason": "(P-Q)∪(R^c-Q^c)=∅ 에서 진리집합 P ⊂ Q ⊂ R 의 포함 관계를 얻는 단계라 진리집합 행이다. (보기 q-box)",
+  "problemTypeKey": "PT_TRUTH_SET_RELATION",
+  "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
+  "typeReason": "집합식 (P-Q)∪(R^c-Q^c)=∅ 에서 P ⊂ Q ⊂ R 의 연쇄 포함을 만들어 ㄱ p→r, ㄴ r→q, ㄷ ¬r→¬q 의 참·거짓을 가르는 것이 진리집합의 연쇄 포함 템플릿이다. (보기 q-box)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "합집합이 공집합임에서 P ⊂ Q 와 Q ⊂ R 을 따로 끌어낸 뒤 ㄱ·ㄴ·ㄷ 세 명제를 포함 관계로 판정하는 네 단계라 3단계로 본다. (보기 q-box)",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "진리집합",
+        "src": "stem",
+        "quote": "세 조건 $p$, $q$, $r$의 진리집합을 각각 $P$, $Q$, $R$이라 하자."
+      },
+      {
+        "term": "공집합",
+        "src": "stem",
+        "quote": "$(P-Q)\\cup(R^c-Q^c)=\\varnothing$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "항상 참인 명제만을 있는 대로 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합집합",
+        "src": "solution",
+        "quote": "합집합이 공집합이므로 두 집합이 모두 공집합이어야 한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "세 진리집합 사이에는 다음 포함 관계가 성립한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "항상 참인 명제만을"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "합집합이 공집합임에서 P ⊂ Q ⊂ R 을 얻어 ㄱ·ㄷ 만 항상 참임을 직접 판정해 ④와 맞췄다. 해설의 결정적 단계가 진리집합의 연쇄 포함이라 RPM-243 과 진리집합 연쇄 포함 템플릿을 골랐다. (보기 q-box)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

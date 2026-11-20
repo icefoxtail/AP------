@@ -1,0 +1,80 @@
+{
+  "qid": 8,
+  "itemFingerprint": "ea5f6f62110e47cf",
+  "solveSteps": [
+    "X={x|x>=2} 에서 치역이 Y={y|y<=1} 이려면 일차함수 f(x)=ax+7 은 감소해야 하므로 a<0 이다.",
+    "감소함수라 x=2 에서 최댓값 f(2)=2a+7=1 이다.",
+    "2a=-6 이므로 a=-3 이고 a<0 을 만족한다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "$X$에서 $Y$로의 함수 $f(x)=ax+7$이 일대일대응이 되도록 하는 상수 $a$의 값은?",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "X 에서 Y 로 가는 f(x)=ax+7 이 일대일대응이 되도록 a<0 과 f(2)=1 을 쓰는 단계라 일대일함수 행이다.",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+  "typeReason": "반직선 x>=2 에서 y<=1 로 가는 일차함수가 일대일대응이려면 감소하고 f(2)=1 이어야 한다는 조건으로 a=-3 을 정하는 것이 일차함수의 구간 일대일대응 템플릿이다. (f(x)=ax+7)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "감소 조건 a<0 을 알아낸 뒤 f(2)=2a+7=1 로 a=-3 을 구하는 두세 단계라 2단계이다. (f(x)=ax+7)",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $X=\\{x\\mid x\\ge 2\\}$, $Y=\\{y\\mid y\\le 1\\}$"
+      },
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=ax+7$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $a$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "증가감소",
+        "src": "solution",
+        "quote": "일차함수 $f(x)=ax+7$은 감소해야 한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "최댓값",
+        "src": "solution",
+        "quote": "감소함수이므로 $x=2$일 때 함숫값이 최댓값 $1$이 되어야 한다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "따라서 기울기는 음수여야 한다."
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "반직선 x>=2 에서 y<=1 로 일대일대응이려면 감소해 f(2)=2a+7=1 임을 직접 얻어 a=-3 으로 ③과 맞췄다. 해설도 감소 조건과 끝점값이라 RPM-257 과 일차함수의 구간 일대일대응 템플릿을 골랐다. (f(x)=ax+7)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "qid": 2,
+  "itemFingerprint": "59283c0217b56d99",
+  "solveSteps": [
+    "q: x^2-x-6=0 은 (x+2)(x-3)=0 이므로 진리집합이 {-2, 3} 이다.",
+    "p→q 의 역 q→p 가 참이려면 -2, 3 이 모두 a<=x<=a+7 에 속해야 한다.",
+    "a<=-2 이고 3<=a+7 에서 -4<=a<=-2 이다.",
+    "정수 a 는 -4, -3, -2 로 3개이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "명제 $p\\to q$의 역이 참이 되도록 하는 정수 $a$의 개수는?",
+  "rpmRecordId": "H1-RPM-248",
+  "rpmReason": "역 q→p 가 참이 되도록 하는 a 의 범위 -4<=a<=-2 를 구하는 단계라 필요조건·충분조건의 매개변수 행이다.",
+  "problemTypeKey": "PT_PROPOSITION_PARAMETER_CONDITION",
+  "templateKey": "TPL_CONVERSE_CONTRAPOSITIVE_ROOT_PARAMETER",
+  "typeReason": "역 q→p 가 참이려면 방정식 x^2-x-6=0 의 두 근 -2, 3 이 모두 구간 a<=x<=a+7 에 들어가야 한다는 조건으로 a 를 정하는 것이 역·대우와 방정식의 근 조건 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "방정식을 풀고 역으로 바꾼 뒤 a<=-2, 3<=a+7 두 부등식을 합쳐 정수를 세는 3~4단계라 2단계로 본다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조건",
+        "src": "stem",
+        "quote": "$p:a\\le x\\le a+7$"
+      },
+      {
+        "term": "방정식",
+        "src": "stem",
+        "quote": "$q:x^2-x-6=0$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "정수 $a$의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "진리집합",
+        "src": "solution",
+        "quote": "먼저 조건 $q$의 진리집합을 구한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "역",
+        "src": "solution",
+        "quote": "명제 $p\\to q$의 역은 $q\\to p$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "성립조건",
+        "src": "solution",
+        "quote": "두 부등식이 동시에 성립해야 한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "q 의 진리집합 {-2, 3} 을 구하고 역 q→p 가 참이 되는 a 의 범위 -4<=a<=-2 를 직접 얻어 보기 ③과 맞췄다. 해설의 결정적 단계가 역과 매개변수 범위라 RPM-248 과 역 근 조건 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

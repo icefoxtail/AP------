@@ -1,0 +1,74 @@
+{
+  "qid": 12,
+  "itemFingerprint": "842dcd70a9be98fb",
+  "solveSteps": [
+    "f(5)=k 라 하면 역함수의 정의에 의해 f^{-1}(k)=5 이다.",
+    "f^{-1}(2x+1)=3x-4 에서 3x-4=5 이면 x=3 이다.",
+    "x=3 을 넣으면 f^{-1}(2·3+1)=f^{-1}(7)=5 이므로 f(5)=7 이다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "일차함수 $f(x)$의 역함수 $f^{-1}(x)$가 $f^{-1}(2x+1)=3x-4$를 만족시킬 때, $f(5)$의 값은?",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "f^{-1}(2x+1)=3x-4 에서 f^{-1}(7)=5 를 얻어 f(5)=7 로 읽는 단계라 역함수 구하기 행이다.",
+  "problemTypeKey": "PT_INVERSE_VALUE",
+  "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+  "typeReason": "f(5)=k 를 f^{-1}(k)=5 로 바꾸고 3x-4=5 에서 x=3, k=2x+1=7 로 역함숫값을 직접 구하는 것이 역함숫값 직접 구하기 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "f(5)=k 를 f^{-1}(k)=5 로 바꾸고 3x-4=5 에서 x=3, 2x+1=7 로 k=7 을 얻는 세 단계라 2단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "일차함수 $f(x)$의 역함수 $f^{-1}(x)$가"
+      },
+      {
+        "term": "역함수",
+        "src": "stem",
+        "quote": "$f^{-1}(2x+1)=3x-4$를 만족시킬 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "$f(5)$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "역함수의 정의에 의해 다음이 성립한다.",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x=3$을 주어진 식에 대입하면 다음과 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "f(5)=k 로 놓고 f^{-1}(k)=5 와 f^{-1}(2x+1)=3x-4 를 맞춰 x=3, f(5)=7 을 직접 얻어 ⑤와 맞췄다. 해설의 결정적 단계가 역함수의 정의로 값을 읽는 것이라 RPM-255 와 역함숫값 직접 구하기 템플릿을 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
