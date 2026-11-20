@@ -1,0 +1,66 @@
+{
+  "qid": 3,
+  "itemFingerprint": "dc6c23c3aae850ad",
+  "solveSteps": [
+    "1) ① 5/24 = 5/(2^3 * 3) (분모 소인수 3으로 순환소수)",
+    "2) ② 7/42 = 1/(2 * 3) (분모 소인수 3으로 순환소수)",
+    "3) ③ 11/(2^2 * 3 * 5) (분모 소인수 3으로 순환소수)",
+    "4) ④ 21/(2^3 * 3 * 5^2) = 7/(2^3 * 5^2) (약분 후 분모 소인수가 2와 5뿐이므로 유한소수)",
+    "5) ⑤ 35/(2 * 5 * 7^2) = 1/(2 * 7) (분모 소인수 7로 순환소수)",
+    "따라서 유한소수는 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "다음 분수 중 소수로 나타내었을 때 유한소수로 나타낼 수 있는 것은? [4점]",
+  "rpmRecordId": "M2-RPM-002",
+  "rpmReason": "분수 21/(2^3 * 3 * 5^2)을 약분한 7/(2^3 * 5^2)에서 분모 소인수가 2와 5뿐임을 판별하는 M2-RPM-002에 해당한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "기약분수로 정리했을 때 분모 소인수 조건을 통해 21/(2^3 * 3 * 5^2)이 유한소수임을 판정하는 PT_M2_FINITE_DECIMAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "21/(2^3 * 3 * 5^2)에서 3이 약분되어 분모에 2와 5만 남음을 확인하는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "나타내었을 때 유한소수로 나"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "다음 분수 중 소수로 나"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "분수를 기약분수로 나타내었을",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "21/(2^3 * 3 * 5^2)에서 3을 약분하면 7/(2^3 * 5^2)로 분모 소인수가 2, 5뿐이므로 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "qid": 2,
+  "itemFingerprint": "4b4d16c65345020a",
+  "solveSteps": [
+    "1) 500을 소인수분해하면 500 = 2^2 * 5^3이다.",
+    "2) 10^3으로 만들기 위해 분모와 분자에 2를 곱한다. (가) = 2, (나) = 2",
+    "3) 분자: 7 * 2 = 14 (다), 분모: 10^3 (라)",
+    "4) 소수로 나타내면 14 / 1000 = 0.014 (마)",
+    "5) 따라서 (마)를 0.14라 한 ⑤가 옳지 않다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "분수 $\\dfrac{7}{500}$을 유한소수로 나타내는 과정이다. 빈칸에 알맞은 수로 옳지 않은 것은? [3점]",
+  "rpmRecordId": "M2-RPM-005",
+  "rpmReason": "분수 7/500의 분모 500을 10의 거듭제곱 1000으로 고쳐 0.014의 유한소수로 변환하는 M2-RPM-005에 해당한다.",
+  "problemTypeKey": "PT_M2_FINITE_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "분모 500을 소인수분해하여 10의 거듭제곱으로 나타내고 유한소수 0.014로 바꾸는 과정을 검토하는 PT_M2_FINITE_DECIMAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "분모 500에 2를 곱해 14/1000 = 0.014를 얻고 0.14 오류를 찾는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유한소수",
+        "src": "stem",
+        "quote": "{500}$을 유한소수로 나"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "분수 $\\dfrac"
+      }
+    ],
+    "method": [
+      {
+        "term": "소인수분해",
+        "src": "solution",
+        "quote": "$500$을 소인수분해하면 ",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "7/500 = 14/1000 = 0.014이므로 (마)가 0.14라는 ⑤가 옳지 않음을 판별하여 정답 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

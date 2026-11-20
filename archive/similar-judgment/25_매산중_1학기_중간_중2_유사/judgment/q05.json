@@ -1,0 +1,65 @@
+{
+  "qid": 5,
+  "itemFingerprint": "6684f1beebf705c8",
+  "solveSteps": [
+    "1) x = 1.4353535... 에서 양변에 10을 곱하면 10x = 14.353535... ((가) = 10)",
+    "2) 양변에 1000을 곱하면 1000x = 1435.353535... ((나) = 1000x)",
+    "3) 변끼리 빼면 1000x - 10x = 990x = 1421 ((다) = 990, (라) = 1421)",
+    "4) x = 1421 / 990 ((마))",
+    "5) 따라서 (다)를 900이라 한 ③이 옳지 않다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "순환소수 $1.4\\dot{3}\\dot{5}$를 분수로 나타내는 과정이다. 빈칸에 들어갈 수로 옳지 않은 것은? [4점]",
+  "rpmRecordId": "M2-RPM-004",
+  "rpmReason": "1000x - 10x = 990x = 1421 식을 거쳐 순환소수를 분수 1421/990으로 변환하는 M2-RPM-004에 해당한다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "10의 거듭제곱 1000과 10을 곱하여 990x = 1421로 분수를 유도하는 과정을 검증하는 PT_M2_REPEATING_DECIMAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "1000x - 10x = 990x에서 계수가 990이어야 함을 바로 찾아내는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "순환소수 $1.4\\do"
+      }
+    ],
+    "goal": [
+      {
+        "term": "분수",
+        "src": "stem",
+        "quote": "ot{5}$를 분수로 나타내"
+      }
+    ],
+    "method": [
+      {
+        "term": "거듭제곱",
+        "src": "solution",
+        "quote": "록 $10$의 거듭제곱을 곱",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "1000x - 10x = 990x = 1421로부터 (다)가 990이어야 하므로 900이라 표기된 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

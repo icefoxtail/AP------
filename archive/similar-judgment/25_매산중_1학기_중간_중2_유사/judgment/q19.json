@@ -1,0 +1,65 @@
+{
+  "qid": 19,
+  "itemFingerprint": "44e469edb598b0ca",
+  "solveSteps": [
+    "1) 4x - 5 >= a - 2x 에서 4x + 2x >= a + 5 => 6x >= a + 5 이다.",
+    "2) x >= (a + 5) / 6 이다.",
+    "3) 주어진 해 x >= 1 과 일치하므로 (a + 5) / 6 = 1 이다.",
+    "4) a + 5 = 6 => a = 1 이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "일차부등식 $4x - 5 \\ge a - 2x$의 해가 $x \\ge 1$일 때, 상수 $a$의 값은? [5점]",
+  "rpmRecordId": "M2-RPM-023",
+  "rpmReason": "4x - 5 >= a - 2x를 풀어 x >= (a + 5)/6을 얻고 경계값 1과 비교하여 a = 1을 구하는 M2-RPM-023에 해당한다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "일차부등식의 해가 x >= 1이 되도록 경계값 방정식 (a + 5)/6 = 1을 풀어 상수 a = 1을 구하는 PT_M2_LINEAR_INEQUALITY이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식을 a에 대해 정리하여 x >= (a+5)/6을 얻고 1과 일치시켜 a=1을 구하는 2단계 문제로 난이도 2이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "일차부등식 $4x - 5"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "1$일 때, 상수 $a$의 "
+      }
+    ],
+    "method": [
+      {
+        "term": "경계조건",
+        "src": "solution",
+        "quote": "치해야 하므로 경계값이 같아",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "4x - 5 >= a - 2x 에서 x >= (a + 5)/6을 얻고 (a + 5)/6 = 1 로부터 a = 1을 도출하여 정답 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

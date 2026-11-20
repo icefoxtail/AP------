@@ -1,0 +1,66 @@
+{
+  "qid": 1,
+  "itemFingerprint": "cf2b6f6a63c90b65",
+  "solveSteps": [
+    "1) ① 0.\\dot{5} = 0.555... 이므로 0.5보다 크다. (거짓)",
+    "2) ② 1/12의 분모 12를 소인수분해하면 12 = 2^2 * 3이다.",
+    "3) 분모에 2, 5 이외의 소인수 3이 있으므로 순환소수로만 나타낼 수 있다. (참)",
+    "4) ③ 순환소수는 분수로 나타낼 수 있으므로 유리수이다. (거짓)",
+    "5) ④ 기약분수 분모에 다른 소인수가 있으면 순환소수가 된다. (거짓)",
+    "따라서 옳은 것은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-REPEATING_DECIMAL",
+  "unitEvidence": "유리수와 순환소수에 대한 설명으로 옳은 것은? [4점]",
+  "rpmRecordId": "M2-RPM-001",
+  "rpmReason": "분수 1/12의 분모 12 소인수를 확인하여 유한소수와 순환소수 성질을 판별하는 M2-RPM-001에 해당한다.",
+  "problemTypeKey": "PT_M2_REPEATING_DECIMAL",
+  "templateKey": "NONE",
+  "typeReason": "1/12의 분모 12의 소인수 3으로 인해 순환소수가 됨을 확인하고 각 보기의 성질을 점검하는 PT_M2_REPEATING_DECIMAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "1/12 분모 소인수에 3이 있어 순환소수로 표현됨을 개념 정의로 판별하는 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "순환소수",
+        "src": "stem",
+        "quote": "유리수와 순환소수에 대한 설명으로 옳은 것은? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "src": "stem",
+        "quote": "유리수와 순환소수에 대한 설"
+      }
+    ],
+    "method": [
+      {
+        "term": "기약분수",
+        "src": "solution",
+        "quote": "s 3$이다. 기약분수의 분",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "1/12의 분모 12에 소인수 3이 있어 순환소수로만 나타낼 수 있음을 확인하여 정답 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

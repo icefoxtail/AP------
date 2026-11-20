@@ -1,0 +1,64 @@
+{
+  "qid": 13,
+  "itemFingerprint": "25570cf8598a2a89",
+  "solveSteps": [
+    "1) (가): (15x^2 - 10x) / (-5x) = -3x + 2 이다. 제시된 식은 -3x - 2 로 부호가 틀렸다.",
+    "2) (나): (12x^2y - 9xy^2) * (4/(3xy)) = 16x - 12y 로 제시된 식과 일치하여 옳다.",
+    "3) 따라서 계산 과정이 틀린 식은 (가)이다.",
+    "따라서 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
+  "unitEvidence": "다음 중 계산 과정이 틀린 식을 고르면? [4점] (가) $(15x^2 - 10x) \\div (-5x) = -3x - 2$",
+  "rpmRecordId": "M2-RPM-015",
+  "rpmReason": "다항식을 단항식으로 나눌 때 (15x^2 - 10x) / (-5x) = -3x + 2 부호 처리를 검증하는 M2-RPM-015에 해당한다.",
+  "problemTypeKey": "PT_M2_POLYNOMIAL",
+  "templateKey": "NONE",
+  "typeReason": "다항식을 단항식으로 나누는 계산 과정에서 (가)의 15x^2, -10x 나눗셈 부호 오류를 판별하는 PT_M2_POLYNOMIAL이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "(15x^2 - 10x) / (-5x) = -3x + 2 임을 확인하여 부호가 잘못된 (가)를 바로 찾는 기본 1단계 문제이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "단항식",
+        "src": "solution",
+        "quote": "다항식을 단항식으로 나누는 "
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수항",
+        "src": "solution",
+        "quote": "x - 2$로 상수항의 부호"
+      }
+    ],
+    "method": [
+      {
+        "term": "다항식의나눗셈",
+        "src": "solution",
+        "quote": "}{4}xy$ 나눗셈을 역수",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "(15x^2 - 10x) / (-5x)의 나눗셈 결과가 -3x + 2이어야 하므로 -3x - 2로 표기된 (가)가 틀림을 확인하여 정답 ①로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
