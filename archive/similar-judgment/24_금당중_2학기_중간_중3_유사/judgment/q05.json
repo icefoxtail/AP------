@@ -1,0 +1,62 @@
+{
+  "qid": "q05",
+  "itemFingerprint": "9f6fa6fcb0bc0c0d",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\tan A = 3$에서 밑변 $1$, 높이 $3$이면 빗변은 $\\sqrt{10}$이다.",
+    "$\\cos A = \\dfrac{1}{\\sqrt{10}}, \\sin A = \\dfrac{3}{\\sqrt{10}}$이다.",
+    "따라서 $\\cos A - \\sin A = \\dfrac{-2}{\\sqrt{10}} = -\\dfrac{\\sqrt{10}}{5}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "예각 $A$에 대하여 $\\tan A=3$일 때",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-056",
+  "rpmEvidence": "밑변의 길이가 $1$, 높이가 $3$인 직각삼각형을 생각하면",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION",
+  "newKeyProposal": null,
+  "typeReason": "하나의 삼각비 값으로부터 다른 삼각비 값을 유도하여 식을 정리하는 유형이다. (문항 토큰 10)",
+  "rpmReason": "삼각비 사이의 상호 관계를 이용하는 삼각비의 관계 유형이다. (문항 토큰 10)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "무리수 유리화와 삼각비 관계 대수를 적용하는 난이도 2 문항이다. (문항 토큰 10)",
+  "how": "탄젠트 값으로 직각삼각형의 세 변을 설정하고 코사인과 사인의 차를 계산했다. (문항 토큰 10)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "예각 $A$에 대하여 $\\tan A=3$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "quote": "$\\cos A - \\sin A$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "밑변의 길이가 $1$, 높이가 $3$인 직각삼각형을 생각하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무리수",
+        "quote": "빗변의 길이는 $\\sqrt{1^2+3^2}=\\sqrt{10}$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

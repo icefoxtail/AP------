@@ -1,0 +1,62 @@
+{
+  "qid": "q01",
+  "itemFingerprint": "f3c0ff103cca5bf8",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "세 직각삼각형 $ABC, ADE, AFG$는 $\\angle A$를 공유하므로 모두 닮음이다.",
+    "$\\triangle ABC$에서 $\\cos A = \\dfrac{AB}{AC}$이다.",
+    "따라서 $\\cos A = \\dfrac{AC}{AB}$라고 한 ②가 옳지 않다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\angle A$의 크기가 같은 세 직각삼각형",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 $\\angle A$의 크기가 같은 세 직각삼각형 $ABC$, $ADE$, $AFG$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "세 직각삼각형 $ABC$, $ADE$, $AFG$는 모두 $\\angle A$를 공유하므로 닮음이고",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+  "newKeyProposal": null,
+  "typeReason": "닮은 세 직각삼각형에서 삼각비의 기본 관계식을 검토하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "삼각비의 정의인 sin, cos, tan의 비례식을 확인하는 삼각비의 뜻 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "삼각비의 기초 정의를 확인하는 난이도 1 문항이다. (문항 토큰 ABC)",
+  "how": "직각삼각형의 닮음 성질과 삼각비 코사인의 정의를 대조하여 2번 선지가 거짓임을 판별했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "다음 그림과 같이 $\\angle A$의 크기가 같은 세 직각삼각형 $ABC$, $ADE$, $AFG$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "quote": "다음 중 옳지 않은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "세 직각삼각형 $ABC$, $ADE$, $AFG$는 모두 $\\angle A$를 공유하므로 닮음이고",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$\\cos A=\\dfrac{AC}{AB}$",
+        "src": "choices"
+      }
+    ]
+  }
+}

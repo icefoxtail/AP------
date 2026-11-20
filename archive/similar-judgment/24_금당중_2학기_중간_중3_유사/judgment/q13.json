@@ -1,0 +1,62 @@
+{
+  "qid": "q13",
+  "itemFingerprint": "00f11eefe0f406e6",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "정사각형 넓이에서 여사건 삼각형 3개의 넓이를 빼면 $\\triangle BMN = \\dfrac{27}{2}$이다.",
+    "$\\dfrac{1}{2}\\times 3\\sqrt{5}\\times 3\\sqrt{5}\\times\\sin x^\\circ = \\dfrac{27}{2}$에서 $\\sin x^\\circ = \\dfrac{3}{5}$이다.",
+    "예각이므로 $\\cos x^\\circ = \\dfrac{4}{5}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "한 변의 길이가 $6$인 정사각형 $ABCD$의 두 변 $AD$, $CD$의 중점을 각각 $M$, $N$이라 하고",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "정사각형의 넓이 $36$에서 세 직각삼각형 $ABM$, $MDN$, $BCN$의 넓이",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "정사각형 내부 삼각형의 넓이로부터 삼각비를 역산하는 유형이다. (문항 토큰 ABCD)",
+  "rpmReason": "넓이 공식과 삼각비의 관계를 이용하는 삼각형의 높이·넓이 유형이다. (문항 토큰 ABCD)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "간접 넓이 계산과 삼각비 상호 변환을 요구하는 난이도 4 문항이다. (문항 토큰 ABCD)",
+  "how": "전체 넓이에서 주변 삼각형들을 빼 넓이를 구하고 삼각비 공식으로 sin을 찾아 cos을 계산했다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "한 변의 길이가 $6$인 정사각형 $ABCD$의 두 변 $AD$, $CD$의 중점을 각각 $M$, $N$이라 하고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "정사각형",
+        "quote": "$\\cos x^\\circ$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "넓이",
+        "quote": "정사각형의 넓이 $36$에서 세 직각삼각형 $ABM$, $MDN$, $BCN$의 넓이",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$BM=BN=\\sqrt{6^2+3^2}=3\\sqrt{5}$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

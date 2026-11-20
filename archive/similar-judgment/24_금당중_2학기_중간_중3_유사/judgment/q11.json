@@ -1,0 +1,62 @@
+{
+  "qid": "q11",
+  "itemFingerprint": "44da2715e063becb",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "$\\triangle ADE$에서 $AD = \\dfrac{8}{\\sqrt{2}} = 4\\sqrt{2}$이다.",
+    "직각삼각형 $ADF$에서 $DF = 4\\sqrt{2}\\tan 30^\\circ = \\dfrac{4\\sqrt{6}}{3}$이다.",
+    "따라서 $\\triangle ADF = \\dfrac{1}{2}\\times 4\\sqrt{2}\\times\\dfrac{4\\sqrt{6}}{3} = \\dfrac{16\\sqrt{3}}{3}\\text{cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 두 직각삼각형 $ABC$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "두 직각삼각형 $ABC$($\\angle B=90^\\circ, \\angle ACB=60^\\circ$)와 $ADE$($\\angle D=90^\\circ, \\angle AED=45^\\circ$)가 겹쳐져 있다.",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-061",
+  "rpmEvidence": "직각삼각형 $ADF$에서 $DF = AD\\tan 30^\\circ",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "두 직각삼각형이 겹쳐진 영역의 각과 변을 삼각비로 추론하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "삼각비로 밑변과 높이를 도출해 넓이를 구하는 삼각형의 높이·넓이 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다단계 각 추론과 무리수 분수 넓이 계산이 포함된 난이도 4 문항이다. (문항 토큰 ABC)",
+  "how": "겹쳐진 직각삼각형에서 특수각을 찾아 밑변과 높이를 구하고 넓이를 계산했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "두 직각삼각형 $ABC$($\\angle B=90^\\circ, \\angle ACB=60^\\circ$)와 $ADE$($\\angle D=90^\\circ, \\angle AED=45^\\circ$)가 겹쳐져 있다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "겹쳐진 부분인 $\\triangle ADF$의 넓이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $ADF$에서 $DF = AD\\tan 30^\\circ",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이등변삼각형",
+        "quote": "$\\triangle ADE$는 빗변이 $AE=8,\\mathrm{cm}$인 직각이등변삼각형이므로",
+        "src": "solution"
+      }
+    ]
+  }
+}

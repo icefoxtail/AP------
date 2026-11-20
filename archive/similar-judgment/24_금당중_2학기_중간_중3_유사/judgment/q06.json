@@ -1,0 +1,62 @@
+{
+  "qid": "q06",
+  "itemFingerprint": "9e45186781026aa4",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "직각삼각형 $ABC$에서 $BC = \\sqrt{3}\\tan 60^\\circ = 3$이다.",
+    "직각삼각형 $BCD$는 $\\angle D=45^\\circ$인 직각이등변삼각형이므로 $BC=CD=3$이다.",
+    "따라서 $BD = \\sqrt{3^2+3^2} = 3\\sqrt{2}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $AB=\\sqrt{3}$, $\\angle ABC=\\angle BCD=90^\\circ$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 $AB=\\sqrt{3}$, $\\angle ABC=\\angle BCD=90^\\circ$, $\\angle A=60^\\circ$, $\\angle D=45^\\circ$일 때",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-060",
+  "rpmEvidence": "직각삼각형 $ABC$에서 $\\tan 60^\\circ = \\dfrac{BC}{AB} = \\dfrac{BC}{\\sqrt{3}} = \\sqrt{3}$이므로 $BC=3$이다.",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "연결된 두 직각삼각형에서 특수각의 삼각비를 이용해 길이를 연쇄 측정하는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "특수각을 이용하여 도형의 변의 길이를 구하는 각을 이용한 길이 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "두 단계의 직각삼각형 삼각비 계산을 연계하는 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "직각삼각형 ABC에서 삼각비로 BC를 구하고 직각이등변삼각형 BCD에서 BD를 계산했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "다음 그림에서 $AB=\\sqrt{3}$, $\\angle ABC=\\angle BCD=90^\\circ$, $\\angle A=60^\\circ$, $\\angle D=45^\\circ$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "$BD$의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $ABC$에서 $\\tan 60^\\circ = \\dfrac{BC}{AB} = \\dfrac{BC}{\\sqrt{3}} = \\sqrt{3}$이므로 $BC=3$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "이등변삼각형",
+        "quote": "직각삼각형 $BCD$는 $\\angle D=45^\\circ$인 직각이등변삼각형이므로",
+        "src": "solution"
+      }
+    ]
+  }
+}

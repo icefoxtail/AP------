@@ -1,0 +1,62 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "b35168fe2987caec",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB = CD = 8$이다.",
+    "수선의 발 $P$에서 $AP = 4$이다.",
+    "직각삼각형 $AOP$에서 $AO = \\dfrac{4}{\\cos 30^\\circ} = \\dfrac{8\\sqrt{3}}{3}\\text{cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $CD$에 이르는 거리가 같고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $CD$에 이르는 거리가 같고 $CD=8,\\mathrm{cm}$",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-069",
+  "rpmEvidence": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+  "newKeyProposal": null,
+  "typeReason": "중심에서 같은 거리에 있는 현의 성질과 특수각 삼각비를 연계하는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "중심에서 현까지의 거리와 현의 길이 관계를 이용하는 중심거리와 현의 길이 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "현의 성질과 30도 삼각비 계산을 함께 활용하는 난이도 3 문항이다. (문항 토큰 AB)",
+  "how": "등거리 현의 성질로 AB 길이를 구하고 30도 직각삼각형 삼각비로 반지름을 계산했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $CD$에 이르는 거리가 같고 $CD=8,\\mathrm{cm}$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "원 $O$의 반지름의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "선분",
+        "quote": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $AOP$에서 $\\cos 30^\\circ = \\dfrac{4}{AO} = \\dfrac{\\sqrt{3}}{2}$이므로",
+        "src": "solution"
+      }
+    ]
+  }
+}

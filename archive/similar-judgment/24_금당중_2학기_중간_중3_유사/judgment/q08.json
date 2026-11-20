@@ -1,0 +1,63 @@
+{
+  "qid": "q08",
+  "itemFingerprint": "28d6c8b0964cbcf2",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "$\\angle A = 180^\\circ - 75^\\circ - 60^\\circ = 45^\\circ$이다.",
+    "수선의 발 $D$를 내리면 $BD = 10\\sin 60^\\circ = 5\\sqrt{3}$이다.",
+    "직각이등변삼각형 $ABD$에서 $AB = BD\\sqrt{2} = 5\\sqrt{6}$이다.",
+    "따라서 정답은 ⑤이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같은 $\\triangle ABC$에서 $BC=10,\\mathrm{cm}$",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같은 $\\triangle ABC$에서 $BC=10,\\mathrm{cm}$, $\\angle B=75^\\circ$, $\\angle C=60^\\circ$일 때",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-065",
+  "rpmEvidence": "꼭짓점 $B$에서 $AC$에 내린 수선의 발을 $D$라 하면",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "일반삼각형에서 보조선 수선을 내려 특수각 삼각비로 변의 길이를 구하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "보조선을 활용하여 직각삼각형을 만드는 보조선 활용 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "수선 보조선을 직접 작도하고 두 직각삼각형을 연계하는 난이도 3 문항이다. (문항 토큰 ABC)",
+  "how": "꼭짓점에서 수선의 발 보조선을 그어 두 직각삼각형으로 분할하여 AB를 계산했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "다음 그림과 같은 $\\triangle ABC$에서 $BC=10,\\mathrm{cm}$, $\\angle B=75^\\circ$, $\\angle C=60^\\circ$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "$AB$의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "수선",
+        "quote": "꼭짓점 $B$에서 $AC$에 내린 수선의 발을 $D$라 하면",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $BCD$에서 $$ BD = BC\\sin 60^\\circ",
+        "src": "solution"
+      }
+    ]
+  }
+}

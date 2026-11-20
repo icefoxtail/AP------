@@ -1,0 +1,62 @@
+{
+  "qid": "q19",
+  "itemFingerprint": "5b791669410197e6",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "$PO = \\sqrt{4^2+(4\\sqrt{3})^2} = 8$이고 $\\angle APO = 30^\\circ, \\angle AOB = 120^\\circ$이다.",
+    "사각형 $PAOB = 16\\sqrt{3}$, 부채꼴 $OAB = \\dfrac{16\\pi}{3}$이다.",
+    "따라서 색칠한 부분의 넓이는 $\\left(16\\sqrt{3}-\\dfrac{16\\pi}{3}\\right)\\text{cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 두 직선 $PA$, $PB$는 원 $O$의 접선이고 두 점 $A$, $B$는 그 접점이다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 두 직선 $PA$, $PB$는 원 $O$의 접선이고 두 점 $A$, $B$는 그 접점이다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "rpmRecordId": "M3-RPM-071",
+  "rpmEvidence": "부채꼴 $OAB$의 넓이는 $\\pi\\times 4^2\\times\\dfrac{120^\\circ}{360^\\circ} = \\dfrac{16\\pi}{3},\\mathrm{cm}^2$이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_ARC_AREA",
+  "newKeyProposal": null,
+  "typeReason": "접선과 반지름이 이루는 직각삼각형에서 부채꼴을 뺀 영역의 넓이를 구하는 유형이다. (문항 토큰 PA)",
+  "rpmReason": "원 밖의 한 점에서 그은 두 접선의 성질을 활용하는 한 점에서 그은 두 접선 유형이다. (문항 토큰 PA)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "특수각 삼각비와 부채꼴 넓이 뺄셈을 결합한 난이도 3 문항이다. (문항 토큰 PA)",
+  "how": "접선 직각삼각형에서 중심각을 찾고 사각형 넓이에서 부채꼴 넓이를 뺐다. (문항 토큰 PA)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "다음 그림에서 두 직선 $PA$, $PB$는 원 $O$의 접선이고 두 점 $A$, $B$는 그 접점이다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "다음 중 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "부채꼴",
+        "quote": "부채꼴 $OAB$의 넓이는 $\\pi\\times 4^2\\times\\dfrac{120^\\circ}{360^\\circ} = \\dfrac{16\\pi}{3},\\mathrm{cm}^2$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$PA=4\\sqrt{3},\\mathrm{cm}$, $OA=4,\\mathrm{cm}$일 때",
+        "src": "stem"
+      }
+    ]
+  }
+}

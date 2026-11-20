@@ -1,0 +1,62 @@
+{
+  "qid": "q16",
+  "itemFingerprint": "6312506dad2a752b",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB = AC$이다.",
+    "$\\triangle ABC$는 이등변삼각형이므로 두 밑각의 크기는 같다.",
+    "따라서 $x = \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $AC$에 이르는 거리가 같고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $AC$에 이르는 거리가 같고 $\\angle A=50^\\circ$일 때",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-069",
+  "rpmEvidence": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB=AC$이고 $\\triangle ABC$는 이등변삼각형이다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TPL_CIRCLE_LINE_RELATION_EQUAL_CHORD",
+  "newKeyProposal": null,
+  "typeReason": "현의 길이 성질로 이등변삼각형을 판정하고 각의 크기를 구하는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "원의 중심과 현의 거리 성질을 활용하는 중심거리와 현의 길이 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "등거리 현의 길이와 이등변삼각형 밑각 성질을 연계한 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "중심에서 거리가 같은 두 현이 같아 이등변삼각형이 됨을 이용해 밑각을 구했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "다음 그림과 같이 원 $O$의 중심에서 두 현 $AB$와 $AC$에 이르는 거리가 같고 $\\angle A=50^\\circ$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "$\\angle B$의 크기 $x$는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "이등변삼각형",
+        "quote": "중심에서 같은 거리에 있는 두 현의 길이는 같으므로 $AB=AC$이고 $\\triangle ABC$는 이등변삼각형이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$x = \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

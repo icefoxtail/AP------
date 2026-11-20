@@ -1,0 +1,63 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "0f8d854ac443df24",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "합동에 의해 (가)는 $\\angle BOP$이다.",
+    "(나)는 $\\dfrac{1}{2}$이다.",
+    "평각의 절반이므로 (다)는 $90^\\circ$이다.",
+    "따라서 알맞은 것은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림에서 $PA$, $PQ$, $QC$는 지름이 $AC$인 반원 $O$의 접선이고",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림에서 $PA$, $PQ$, $QC$는 지름이 $AC$인 반원 $O$의 접선이고",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "rpmRecordId": "M3-RPM-073",
+  "rpmEvidence": "$\\triangle OAP \\equiv \\triangle OBP$이므로 $\\angle AOP = \\angle BOP = \\dfrac{1}{2}\\angle AOB$이다.",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_HALF_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "원의 접선 성질과 삼각형의 합동으로 각의 관계를 증명하고 빈칸을 채우는 유형이다. (문항 토큰 PA)",
+  "rpmReason": "접선이 이루는 각의 성질을 추론하는 접선 조건으로 각 구하기 유형이다. (문항 토큰 PA)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선 증명 과정의 빈칸을 단계별로 채우는 난이도 2 문항이다. (문항 토큰 PA)",
+  "how": "접선의 합동 성질을 이용해 사잇각의 반각 관계와 평각의 합 90도를 추론했다. (문항 토큰 PA)",
+  "slots": {
+    "given": [
+      {
+        "term": "접선",
+        "quote": "다음 그림에서 $PA$, $PQ$, $QC$는 지름이 $AC$인 반원 $O$의 접선이고",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "접선",
+        "quote": "(가), (나), (다)에 알맞은 것을 차례로 쓴 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "합동",
+        "quote": "$\\triangle OAP \\equiv \\triangle OBP$이므로 $\\angle AOP = \\angle BOP = \\dfrac{1}{2}\\angle AOB$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "접점",
+        "quote": "세 점 $A$, $B$, $C$는 그 접점이다.",
+        "src": "stem"
+      }
+    ]
+  }
+}

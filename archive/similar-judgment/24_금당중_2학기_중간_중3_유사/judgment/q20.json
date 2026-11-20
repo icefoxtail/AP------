@@ -1,0 +1,62 @@
+{
+  "qid": "q20",
+  "itemFingerprint": "927cf8e27d04084f",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "현의 절반 길이가 $3$이므로 피타고라스 정리에 의해 $R^2 - r^2 = 3^2 = 9$이다.",
+    "현이 지나간 고리 모양 부분의 넓이는 $\\pi(R^2 - r^2) = 9\\pi$이다. (보기에 $12\\pi, 36\\pi$ 제시)",
+    "따라서 정답은 ③이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 중심이 같은 두 원에서 큰 원의 길이가 $6$인 현이",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "중심이 같은 두 원에서 큰 원의 길이가 $6$인 현이 작은 원에 접하면서",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "피타고라스 정리에 의해 $R^2 - r^2 = 3^2 = 9$이다.",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "동심원에서 접현의 길이와 피타고라스 정리를 이용해 원환의 넓이를 구하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "동심원 구조에서 원의 중심에서 현에 내린 수선의 성질을 이용하는 중심에서 현에 내린 수선 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "반지름의 개별 값 없이 제곱의 차만으로 넓이를 도출하는 난이도 3 문항이다. (문항 토큰 12)",
+  "how": "피타고라스 정리로 두 반지름 제곱의 차를 구하고 원환의 넓이 공식에 대입했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "중심이 같은 두 원에서 큰 원의 길이가 $6$인 현이 작은 원에 접하면서",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "현이 지나간 부분의 넓이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "피타고라스 정리에 의해 $R^2 - r^2 = 3^2 = 9$이다.",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "길이가 $6$인 현의 절반의 길이는 $3$이므로",
+        "src": "solution"
+      }
+    ]
+  }
+}

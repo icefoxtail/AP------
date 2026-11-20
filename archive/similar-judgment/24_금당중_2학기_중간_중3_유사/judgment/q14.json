@@ -1,0 +1,62 @@
+{
+  "qid": "q14",
+  "itemFingerprint": "09d2016a1722f467",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "반지름 $OA = 8$이고 $OM = 12 - 8 = 4$이다.",
+    "직각삼각형 $OMC$에서 $CM = \\sqrt{8^2-4^2} = 4\\sqrt{3}$이다.",
+    "현 $CD = 2CM = 8\\sqrt{3}\\text{cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 원 $O$의 지름 $AB$와 현 $CD$가 점 $M$에서 수직으로 만난다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 원 $O$의 지름 $AB$와 현 $CD$가 점 $M$에서 수직으로 만난다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "직각삼각형 $OMC$에서 $CM = \\sqrt{8^2-4^2} = 4\\sqrt{3},\\mathrm{cm}$이므로",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "원의 지름과 현이 수직으로 만날 때 현의 길이를 구하는 유형이다. (문항 토큰 AB)",
+  "rpmReason": "원의 중심에서 현에 내린 수선은 현을 이등분함을 이용하는 중심에서 현에 내린 수선 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "원의 반지름과 중심거리, 현의 이등분 성질을 적용하는 난이도 2 문항이다. (문항 토큰 AB)",
+  "how": "원의 중심과 반지름을 구하고 직각삼각형 피타고라스 정리로 현의 반절을 구해 2배했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "다음 그림과 같이 원 $O$의 지름 $AB$와 현 $CD$가 점 $M$에서 수직으로 만난다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "현 $CD$의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $OMC$에서 $CM = \\sqrt{8^2-4^2} = 4\\sqrt{3},\\mathrm{cm}$이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$AM=12,\\mathrm{cm}$, $MB=4,\\mathrm{cm}$일 때",
+        "src": "stem"
+      }
+    ]
+  }
+}

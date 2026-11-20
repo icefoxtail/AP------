@@ -1,0 +1,62 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "73135761d57af7da",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "피타고라스 정리에 의해 $AC = \\sqrt{5^2 - (\\sqrt{11})^2} = \\sqrt{14}$이다.",
+    "$\\cos B = \\dfrac{\\sqrt{11}}{5}$, $\\tan B = \\dfrac{\\sqrt{14}}{\\sqrt{11}}$이다.",
+    "따라서 $\\cos B \\times \\tan B = \\dfrac{\\sqrt{11}}{5} \\times \\dfrac{\\sqrt{14}}{\\sqrt{11}} = \\dfrac{\\sqrt{14}}{5}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 $\\angle C=90^\\circ$, $AB=5$, $BC=\\sqrt{11}$인 직각삼각형 $ABC$에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "다음 그림과 같이 $\\angle C=90^\\circ$, $AB=5$, $BC=\\sqrt{11}$인 직각삼각형 $ABC$에서",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-055",
+  "rpmEvidence": "피타고라스 정리에 의해",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_GEOMETRIC_DERIVATION",
+  "newKeyProposal": null,
+  "typeReason": "직각삼각형의 두 변의 길이로부터 삼각비의 값을 유도하여 계산하는 유형이다. (문항 토큰 90)",
+  "rpmReason": "직각삼각형의 변의 비로 삼각비를 계산하는 삼각비의 뜻 유형이다. (문항 토큰 90)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "피타고라스 정리와 삼각비 곱셈을 결합한 난이도 2 문항이다. (문항 토큰 90)",
+  "how": "피타고라스 정리로 높이 AC를 구한 후 cos B와 tan B를 곱해 답을 구했다. (문항 토큰 90)",
+  "slots": {
+    "given": [
+      {
+        "term": "직각삼각형",
+        "quote": "다음 그림과 같이 $\\angle C=90^\\circ$, $AB=5$, $BC=\\sqrt{11}$인 직각삼각형 $ABC$에서",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "quote": "$\\cos B\\times\\tan B$의 값은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "피타고라스 정리에 의해",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무리수",
+        "quote": "$\\cos B = \\dfrac{BC}{AB} = \\dfrac{\\sqrt{11}}{5}$",
+        "src": "solution"
+      }
+    ]
+  }
+}

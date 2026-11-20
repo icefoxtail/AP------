@@ -1,0 +1,63 @@
+{
+  "qid": "q07",
+  "itemFingerprint": "6057bef58fb09c63",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "밑면 정삼각형에서 $MC=6, MD=6\\sqrt{3}$이다.",
+    "무게중심 $H$에 의해 $DH=4\\sqrt{3}$이다.",
+    "직각삼각형 $ADH$에서 $AH = \\sqrt{12^2 - (4\\sqrt{3})^2} = 4\\sqrt{6}$이다.",
+    "따라서 옳은 것은 ①이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 한 모서리의 길이가 $12$인 정사면체 $ABCD$의",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "한 모서리의 길이가 $12$인 정사면체 $ABCD$의 꼭짓점 $A$에서 밑면 $BCD$에 내린 수선의 발 $H$",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+  "rpmRecordId": "M3-RPM-066",
+  "rpmEvidence": "밑면 $BCD$는 한 변의 길이가 $12$인 정삼각형이므로",
+  "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+  "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+  "newKeyProposal": null,
+  "typeReason": "입체도형 정사면체에서 수선의 발과 피타고라스 정리를 적용하는 유형이다. (문항 토큰 12)",
+  "rpmReason": "도형의 대칭성과 피타고라스를 결합하는 피타고라스 결합 유형이다. (문항 토큰 12)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "입체도형 내부 단면과 무게중심 비를 분석하는 난이도 3 문항이다. (문항 토큰 12)",
+  "how": "정사면체 밑면의 무게중심과 피타고라스 정리를 결합하여 높이 AH를 구했다. (문항 토큰 12)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "한 모서리의 길이가 $12$인 정사면체 $ABCD$의 꼭짓점 $A$에서 밑면 $BCD$에 내린 수선의 발 $H$",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "다음 중 옳은 것은?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "정삼각형",
+        "quote": "밑면 $BCD$는 한 변의 길이가 $12$인 정삼각형이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "무게중심",
+        "quote": "수선의 발 $H$는 $\\triangle BCD$의 무게중심이고, $M$은 변 $BC$의 중점이다.",
+        "src": "stem"
+      }
+    ]
+  }
+}

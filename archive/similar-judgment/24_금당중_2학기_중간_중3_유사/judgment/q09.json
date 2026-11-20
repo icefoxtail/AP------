@@ -1,0 +1,62 @@
+{
+  "qid": "q09",
+  "itemFingerprint": "38480f9f2126a249",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "내심 조건에서 $\\dfrac{\\angle B}{2} + 45^\\circ + 120^\\circ = 180^\\circ$이므로 $\\angle B = 30^\\circ, \\angle A = 60^\\circ$이다.",
+    "$\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}, \\cos 60^\\circ = \\dfrac{1}{2}, \\tan 60^\\circ = \\sqrt{3}$이다.",
+    "따라서 비례식은 $\\sqrt{3} : 1 : 2\\sqrt{3}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "직각삼각형 $ABC$($\\angle C=90^\\circ$)에서 점 $I$는 내심이고 $\\angle BIC=120^\\circ$일 때",
+  "standardUnitKey": "M3-05",
+  "subUnitKey": "M3-05-TRIG_RATIO",
+  "rpmRecordId": "M3-RPM-057",
+  "rpmEvidence": "$I$는 내심이므로 $\\angle IBC=\\dfrac{\\angle B}{2}$",
+  "problemTypeKey": "PT_TRIG_RATIO",
+  "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+  "newKeyProposal": null,
+  "typeReason": "삼각형의 내심 성질로부터 특수각을 찾고 삼각비의 비례식을 구하는 유형이다. (문항 토큰 ABC)",
+  "rpmReason": "특수각 30도와 60도의 삼각비 값을 묻는 30°·45°·60° 유형이다. (문항 토큰 ABC)",
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "내심 각 공식과 특수각 삼각비 비례식을 복합한 난이도 3 문항이다. (문항 토큰 ABC)",
+  "how": "내심 각의 성질로 각 A가 60도임을 구한 후 특수각 삼각비의 연비를 도출했다. (문항 토큰 ABC)",
+  "slots": {
+    "given": [
+      {
+        "term": "내심",
+        "quote": "직각삼각형 $ABC$($\\angle C=90^\\circ$)에서 점 $I$는 내심이고 $\\angle BIC=120^\\circ$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직각삼각형",
+        "quote": "$\\sin A : \\cos A : \\tan A$는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "내심",
+        "quote": "$I$는 내심이므로 $\\angle IBC=\\dfrac{\\angle B}{2}$",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "직각삼각형",
+        "quote": "$\\angle B=30^\\circ$이고 $\\angle A=60^\\circ$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}

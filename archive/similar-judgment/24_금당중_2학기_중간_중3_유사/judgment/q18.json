@@ -1,0 +1,62 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "e37e110eeacb2cf1",
+  "solvedAnswer": "⑤",
+  "solveSteps": [
+    "직각삼각형 $DCE$에서 $CE = \\sqrt{10^2-8^2} = 6$이다.",
+    "원의 반지름은 $4$이므로 가로를 $w$라 할 때 $DE = (w-4) + (w-10) = 10$에서 $w = 12$이다.",
+    "따라서 $BE = 12 - 6 = 6\\text{cm}$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "다음 그림과 같이 원 $O$는 직사각형 $ABCD$의 세 변 $AB$, $AD$, $BC$와 접한다.",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "원 $O$는 직사각형 $ABCD$의 세 변 $AB$, $AD$, $BC$와 접한다.",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+  "rpmRecordId": "M3-RPM-072",
+  "rpmEvidence": "원의 반지름의 길이는 $\\dfrac{8}{2}=4,\\mathrm{cm}$이다. 직사각형의 가로 길이를 $BC=AD=w$라 하면 접선의 성질에 의해",
+  "problemTypeKey": "PT_CIRCLE_TANGENT",
+  "templateKey": "TPL_CIRCLE_TANGENT_EQUAL_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "외접사각형과 원의 접선 성질을 이용해 길이를 구하는 유형이다. (문항 토큰 ABCD)",
+  "rpmReason": "접선의 길이 성질로 미지수의 길이를 도출하는 접선 조건으로 길이 구하기 유형이다. (문항 토큰 ABCD)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "접선 길이 분할과 직각삼각형 피타고라스를 결합한 난이도 4 문항이다. (문항 토큰 ABCD)",
+  "how": "접선의 길이 성질을 이용해 미지수 가로 w의 방정식을 세우고 선분 BE의 길이를 구했다. (문항 토큰 ABCD)",
+  "slots": {
+    "given": [
+      {
+        "term": "직사각형",
+        "quote": "원 $O$는 직사각형 $ABCD$의 세 변 $AB$, $AD$, $BC$와 접한다.",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "선분",
+        "quote": "$BE$의 길이는?",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "접선",
+        "quote": "원의 반지름의 길이는 $\\dfrac{8}{2}=4,\\mathrm{cm}$이다. 직사각형의 가로 길이를 $BC=AD=w$라 하면 접선의 성질에 의해",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$DC=8,\\mathrm{cm}$, $DE=10,\\mathrm{cm}$일 때",
+        "src": "stem"
+      }
+    ]
+  }
+}

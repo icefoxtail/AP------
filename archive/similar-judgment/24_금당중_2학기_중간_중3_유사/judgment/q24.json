@@ -1,0 +1,63 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "6c230b7222a939c0",
+  "solvedAnswer": "$21\\pi,\\mathrm{cm}^2$",
+  "solveSteps": [
+    "직각삼각형 $OAM$에서 $AM = \\sqrt{8^2-4^2} = 4\\sqrt{3}$이므로 $MB = 4\\sqrt{3}$이다.",
+    "$MD = 4\\sqrt{3} - \\sqrt{3} = 3\\sqrt{3}$이다.",
+    "작은 원 반지름의 제곱은 $OD^2 = 4^2 + (3\\sqrt{3})^2 = 43$이다.",
+    "따라서 고리 부분의 넓이는 $(64-43)\\pi = 21\\pi\\text{cm}^2$이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "[서술형 4] 다음 그림과 같이 중심 $O$가 같고 반지름의 길이가 서로 다른 두 원에서",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "반지름의 길이가 서로 다른 두 원에서 $AB \\perp OM$, $OA=8,\\mathrm{cm}$, $OM=4,\\mathrm{cm}$, $DB=\\sqrt{3},\\mathrm{cm}$일 때",
+  "standardUnitKey": "M3-06",
+  "subUnitKey": "M3-06-CIRCLE_LINE",
+  "rpmRecordId": "M3-RPM-067",
+  "rpmEvidence": "직각삼각형 $OAM$에서 $AM = \\sqrt{8^2 - 4^2} = \\sqrt{48} = 4\\sqrt{3},\\mathrm{cm}$이므로",
+  "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+  "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+  "newKeyProposal": null,
+  "typeReason": "동심원에서 수직인 선분과 피타고라스 정리로 원환의 넓이를 구하는 서술형 유형이다. (문항 토큰 AB)",
+  "rpmReason": "동심원 고리 영역에서 현과 수선의 성질을 결합한 중심에서 현에 내린 수선 유형이다. (문항 토큰 AB)",
+  "difficultyBucket": 4,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "다단계 피타고라스 정리와 원환 넓이 계산을 결합한 난이도 4 서술형 문항이다. (문항 토큰 AB)",
+  "how": "직각삼각형 두 개에서 피타고라스 정리로 두 원의 반지름 제곱을 각각 구해 넓이 차를 계산했다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "선분",
+        "quote": "반지름의 길이가 서로 다른 두 원에서 $AB \\perp OM$, $OA=8,\\mathrm{cm}$, $OM=4,\\mathrm{cm}$, $DB=\\sqrt{3},\\mathrm{cm}$일 때",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "넓이",
+        "quote": "두 원 사이의 어두운 고리 부분의 넓이를 구하시오.",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "직각삼각형",
+        "quote": "직각삼각형 $OAM$에서 $AM = \\sqrt{8^2 - 4^2} = \\sqrt{48} = 4\\sqrt{3},\\mathrm{cm}$이므로",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "선분",
+        "quote": "$AB \\perp OM$이므로 $M$은 현 $AB$의 중점이고 $AM=MB$이다.",
+        "src": "solution"
+      }
+    ]
+  }
+}
