@@ -294,9 +294,9 @@ window.questionBank = [
   },
   {
     "id": 9,
-    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q9-solution-v2.svg",
-    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 로그 곡선 f와 왼쪽 아래에서 올라오는 주황 지수 곡선 g, 점선 y=x, 두 점근선(세로선 x=1, 가로선 y=1)이 있고 점 (2, 0)과 (0, 2)가 표시되어 있다.",
-    "solutionImageCaption": "f는 f(x)=log₃(x−1)의 그래프이고 g는 g(x)=3ˣ+1의 그래프이다. f의 정의역은 x>1이고 점근선은 세로선 x=1이며, 밑이 3이라 증가한다. f는 점 (2, 0)을 지나고 (1, 0)은 지나지 않는다. g의 점근선은 가로선 y=1이고, f와 g는 직선 y=x에 대하여 대칭이다. 따라서 답은 ⑤이다.",
+    "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q9-solution.svg",
+    "solutionImageAlt": "로그함수 y=log₃(x−1)과 그 역함수 y=3^x+1의 그래프를 함께 그리고, 수직점근선 x=1과 두 그래프가 직선 y=x에 대하여 대칭임을 나타낸다.",
+    "solutionImageCaption": "log_inverse",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
     "content": "함수 $y=\\log_3(x-1)$의 그래프의 특징에 대한 설명으로 옳은 것은? (3.8점)",
