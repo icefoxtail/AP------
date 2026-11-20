@@ -1,0 +1,83 @@
+{
+  "qid": 11,
+  "itemFingerprint": "7a621e532010bf8a",
+  "solveSteps": [
+    "f(x)=-(x-3)^2+9 이므로 위로 볼록하고 꼭짓점은 (3,9) 이다.",
+    "x≤a 에서 일대일이려면 a≤3 이고, 치역은 y≤f(a) 이다.",
+    "일대일대응이려면 f(a)=3a+2, 즉 -a^2+6a=3a+2 이고 (a-1)(a-2)=0 이므로 a=1, 2 이다.",
+    "두 값 모두 a≤3 을 만족하므로 합은 1+2=3 이고 정답은 ⑤ 이다 (배점 4.8)"
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "함수 $f(x)=-x^2+6x$의 역함수가",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "역함수가 있으려면 x≤a 에서 일대일이어야 하므로 a≤3 을 정하고 일대일대응 조건 f(a)=3a+2 를 세우는 단계라 일대일함수 행이다 (배점 4.8)",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
+  "typeReason": "f(x)=-(x-3)^2+9 의 정의역 x≤a 를 a≤3 으로 제한하고 치역 y≤f(a) 를 공역 y≤3a+2 와 맞추는 단계가 이차함수의 정의역 제한과 일대일대응과 같다 (배점 4.8)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭짓점 (3,9) 으로 a≤3 을 정하고 f(a)=3a+2 에서 a=1,2 를 구해 조건을 확인하는 3단계다 (배점 4.8)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $X=\\{x|x \\le a\\}, Y=\\{y|y \\le 3a+2\\}$"
+      },
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=-x^2+6x$의 역함수가"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "모든 상수 $a$의 값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "$(a-1)(a-2)=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "a^2-3a+2=0 을 (a-1)(a-2)=0 으로 인수분해해 a=1, 2 를 얻는다"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$f(a)=3a+2$",
+        "evidenceType": "IMPLIED",
+        "justification": "치역의 끝값 f(a) 를 공역의 끝값 3a+2 와 같게 두는 식을 세운다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정의역제한",
+        "src": "solution",
+        "quote": "정의역이 놓여야 하므로 $a \\le 3$이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x≤a 에서 일대일이려면 a≤3, 치역=공역 f(a)=3a+2 로 a=1,2 의 합 3 이 나와 ⑤와 같았다. 이차함수의 정의역을 제한해 일대일대응을 만드는 문제라 해당 템플릿을 골랐다 (배점 4.8)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

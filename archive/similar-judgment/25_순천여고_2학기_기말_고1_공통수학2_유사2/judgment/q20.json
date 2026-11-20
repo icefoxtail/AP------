@@ -1,0 +1,82 @@
+{
+  "qid": 20,
+  "itemFingerprint": "34fab48c684c4654",
+  "solveSteps": [
+    "정의역 x≥-3 에서 ax+b≥0 이려면 a≥0, b≥3a 이고, a=0 은 상수함수라 안 되므로 a≥1 이며 f 는 감소한다.",
+    "X→Y 이려면 최댓값 f(-3)=-√(b-3a)+c≤2 이다.",
+    "제1,2,4사분면만 지나려면 f(0)=-√b+c>0, 즉 c>√b 이다.",
+    "3a≤b≤10 이므로 a=1,2,3 으로 나눠 √b<c≤2+√(b-3a) 인 정수 c 를 세면 순서쌍은 (1,3,2),(1,4,3),...,(2,10,4) 의 13개이다."
+  ],
+  "solvedAnswer": "(1,3,2), (1,4,3), (1,5,3), (1,6,3), (1,7,3), (1,7,4), (1,8,3), (1,8,4), (1,9,4), (1,10,4), (2,7,3), (2,8,3), (2,10,4)",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "$f(x)=-\\sqrt{ax+b}+c$가 제 $1, 2, 4$ 사분면만을 지나도록 하는 상수",
+  "rpmRecordId": "H1-RPM-269",
+  "rpmReason": "정의역 x≥-3 에서 f(x)=-√(ax+b)+c 의 시작점과 f(0)=-√b+c>0 으로 그래프의 위치를 정해 사분면 조건을 쓰는 단계라 그래프 위치 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+  "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+  "typeReason": "제1,2,4사분면만 지난다는 조건을 f(0)=-√b+c>0 과 f(-3)≤2 로 바꿔 순서쌍 (a,b,c) 를 구하는 단계가 매개변수에 따른 사분면 조건과 같다 (배점 ax)",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B34",
+  "difficultyReason": "a≥1, b≥3a, c>√b, c≤2+√(b-3a) 네 조건을 세우고 a=1,2,3 별로 b=3~10 을 훑어 13개 순서쌍을 모두 찾는 4단계로 본다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=-\\sqrt{ax+b}+c$"
+      },
+      {
+        "term": "집합",
+        "src": "stem",
+        "quote": "두 집합 $X=\\{x|x \\ge -3\\}, Y=\\{y|y \\le 2\\}$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "순서쌍",
+        "src": "stem",
+        "quote": "순서쌍 $(a, b, c)$를 모두 구하는 과정을 서술하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "$a=1, 2, 3$인 경우로 나눈다",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "열거",
+        "src": "solution",
+        "quote": "$b=7$: $\\sqrt{7} < c \\le 4$에서 $c=3, 4$",
+        "evidenceType": "IMPLIED",
+        "justification": "b 를 3부터 10까지 하나씩 두고 가능한 정수 c 를 나열한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$-10 \\le a, b, c \\le 10$인 정수"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "a≥1, b≥3a, c>√b, c≤2+√(b-3a) 를 세워 a=1,2,3 별로 세어 13개 순서쌍을 구했고 해설과 같았다. 사분면 조건을 매개변수로 바꾸는 문제라 매개변수에 따른 사분면 조건을 골랐다 (배점 ax)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

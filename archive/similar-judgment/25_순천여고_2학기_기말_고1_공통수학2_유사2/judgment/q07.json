@@ -1,0 +1,76 @@
+{
+  "qid": 7,
+  "itemFingerprint": "e6900b102eaa452d",
+  "solveSteps": [
+    "일대일함수는 수평선이 많아야 한 점에서 만나야 한다.",
+    "①(V자)·②(포물선)는 같은 수평선과 두 점에서 만나고 ⑤는 수평 구간이 있어 일대일함수가 아니다.",
+    "③은 모든 수평선과 한 점에서 만나는 일대일대응이다.",
+    "④는 -1≤y<2 인 수평선과 만나지 않아 치역이 공역과 다른 일대일함수이므로 정답은 ④ 이다 (배점 4.1)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "함수의 그래프 중에서 일대일함수이지만 일대일대응이 아닌 것은",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+  "unitEvidence": "일대일함수이지만 일대일대응이 아닌 것은",
+  "rpmRecordId": "H1-RPM-257",
+  "rpmReason": "①~⑤ 그래프에서 수평선과 만나는 점의 수로 일대일함수와 일대일대응을 가르는 단계라 일대일함수 행이다 (배점 4.1)",
+  "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+  "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+  "typeReason": "④의 -1≤y<2 인 수평선이 만나지 않는다는 점으로 일대일함수이나 일대일대응이 아님을 가르는 단계가 일대일함수·일대일대응 판정과 같다 (배점 4.1)",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "일대일함수와 일대일대응의 정의를 ①~⑤ 그래프에 바로 대 보는 한 단계 판정이라 1단계다 (배점 4.1)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "함수의 그래프 중에서"
+      },
+      {
+        "term": "실수",
+        "src": "stem",
+        "quote": "실수 전체의 집합 $R$에서 $R$로의 함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "일대일대응이 아닌 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "모든 수평선과 정확히 한 점에서 만나므로",
+        "evidenceType": "IMPLIED",
+        "justification": "보기 ①~⑤ 그래프를 수평선과 만나는 점의 개수로 하나씩 가려낸다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수평",
+        "src": "solution",
+        "quote": "임의의 수평선과 많아야 한 점에서 만나고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "보기 그림 ①~⑤를 직접 보고 ④만 수평선과 만나지 않는 구간이 있어 ④를 얻었고 해설과 같았다. 판정이 일대일함수·일대일대응 구분이라 판정 템플릿을 골랐다 (배점 4.1)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

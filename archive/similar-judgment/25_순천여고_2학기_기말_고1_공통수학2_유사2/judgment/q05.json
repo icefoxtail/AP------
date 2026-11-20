@@ -1,0 +1,83 @@
+{
+  "qid": 5,
+  "itemFingerprint": "18db9e28091c1249",
+  "solveSteps": [
+    "(가) P∪Q^c=U 의 양변에 여집합을 취하면 P^c∩Q=∅ 이므로 Q⊂P 이다.",
+    "(나) P∩R=P 이므로 P⊂R 이고, 따라서 Q⊂P⊂R 이다.",
+    "Q⊂R 이므로 R^c⊂Q^c, 즉 ~r→~q 가 항상 참이다.",
+    "U={1,2,3,4}, Q={1}, P={1,2}, R={1,2,3} 으로 ②~⑤ 는 거짓이라 정답은 ① 이다 (배점 4.6)"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "세 조건 $p, q, r$의 진리집합을 각각 $P, Q, R$이라 하자",
+  "rpmRecordId": "H1-RPM-243",
+  "rpmReason": "조건 p,q,r 의 진리집합 P,Q,R 에 대한 (가) P∪Q^c=U, (나) P∩R=P 를 포함 관계 Q⊂P⊂R 로 바꾸는 단계라 진리집합 행이다 (배점 4.6)",
+  "problemTypeKey": "PT_TRUTH_SET_RELATION",
+  "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
+  "typeReason": "두 집합 조건에서 Q⊂P 와 P⊂R 을 얻어 Q⊂P⊂R 로 잇고 ~r→~q 를 고르는 단계가 진리집합의 연쇄 포함과 같다 (배점 4.6)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "여집합 P^c∩Q=∅ 로 Q⊂P 를 얻고 Q⊂P⊂R 을 대우로 바꾼 뒤 U={1,2,3,4} 반례로 나머지 네 개를 걸러내는 3단계 풀이다 (배점 4.6)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U$에 대하여"
+      },
+      {
+        "term": "합집합",
+        "src": "stem",
+        "quote": "(가) $P \\cup Q^c = U$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "항상 참인 명제는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대우",
+        "src": "solution",
+        "quote": "$R^c \\subset Q^c$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "Q⊂R 에서 양변의 여집합을 취해 ~r→~q (대우) 가 참임을 얻는다"
+      },
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "(가)와 (나)를 모두 만족하지만",
+        "evidenceType": "IMPLIED",
+        "justification": "U={1,2,3,4}, Q={1}, P={1,2}, R={1,2,3} 반례로 ②~⑤를 거짓으로 가린다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "항상성립",
+        "src": "stem",
+        "quote": "항상 참인 명제는?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(가),(나)를 포함 관계 Q⊂P⊂R 로 바꿔 ~r→~q 가 항상 참이라 ①이 나왔고 해설과 같았다. 판단이 진리집합의 연쇄 포함에서 나와 연쇄 포함 템플릿을 골랐다 (배점 4.6)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

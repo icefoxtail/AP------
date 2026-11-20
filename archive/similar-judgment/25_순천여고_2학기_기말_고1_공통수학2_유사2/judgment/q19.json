@@ -1,0 +1,83 @@
+{
+  "qid": 19,
+  "itemFingerprint": "bf123121f2604a58",
+  "solveSteps": [
+    "x≥2 에서 f=(x-2)^2+3 은 증가하며 치역 [3,∞), x<2 에서 f=-(x-2)^2+3 은 증가하며 치역 (-∞,3) 이라 f 는 일대일대응이다.",
+    "임의의 x 에서 (g∘f)(x)=x 이므로 g=f^{-1} 이다.",
+    "(g∘g)(a)=1 의 양변에 f 를 두 번 적용하면 a=(f∘f)(1) 이다.",
+    "f(1)=-1+4-1=2, f(2)=4-8+7=3 이므로 a=3 이다 (배점 br)"
+  ],
+  "solvedAnswer": "3",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+  "unitEvidence": "임의의 실수 $x$에 대하여 $(g \\circ f)(x)=x$를 만족시키는 함수 $g(x)$가 존재한다",
+  "rpmRecordId": "H1-RPM-255",
+  "rpmReason": "(g∘f)(x)=x 에서 g=f^{-1} 임을 알고 a=(f∘f)(1)=3 으로 역함수를 이용하는 단계라 역함수 구하기 행이다 (배점 br)",
+  "problemTypeKey": "PT_FUNCTION_RECOVERY",
+  "templateKey": "TPL_RECOVER_FUNCTION_FROM_COMPOSITION",
+  "typeReason": "(g∘f)(x)=x 라는 합성관계에서 g=f^{-1} 로 g 를 복원하고 a=(f∘f)(1)=3 을 얻는 단계가 합성관계에서 함수식 구하기와 같다 (배점 br)",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "f 가 일대일대응임을 보여 g=f^{-1} 로 놓고 (g∘g)(a)=1 의 양변에 f 를 두 번 써서 a=f(f(1))=3 으로 가는 착상이 필요한 2~3단계다 (배점 br)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "조각함수",
+        "src": "stem",
+        "quote": "x^2-4x+7 & (x \\ge 2)"
+      },
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $g(x)$가 존재한다"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $a$의 값을 구하는"
+      }
+    ],
+    "method": [
+      {
+        "term": "역함수",
+        "src": "solution",
+        "quote": "$g=f^{-1}$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "(g∘f)(x)=x 에서 g 가 f 의 역함수 f^{-1} 임을 이용한다"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$f(2)=2^2-4 \\times 2+7=3$",
+        "evidenceType": "IMPLIED",
+        "justification": "f(1)=2 를 f 에 다시 넣어 f(2)=3 을 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "존재",
+        "src": "stem",
+        "quote": "함수 $g(x)$가 존재한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "x≥2 와 x<2 에서 f 가 증가하고 치역이 [3,∞)·(-∞,3) 이라 일대일대응임을 보고 g=f^{-1} 로 a=f(f(1))=3 을 얻었고 해설과 같았다. 합성관계에서 g 를 복원하는 문제라 합성관계 함수식 구하기를 골랐다 (배점 br)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

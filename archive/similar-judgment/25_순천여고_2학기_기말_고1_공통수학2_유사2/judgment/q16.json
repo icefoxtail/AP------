@@ -1,0 +1,78 @@
+{
+  "qid": 16,
+  "itemFingerprint": "f87d586146c7e4d3",
+  "solveSteps": [
+    "x≠2 에서 f(f(x))=(2(2x+1)+(x-2))/((2x+1)-2(x-2))=5x/5=x 이다.",
+    "주어진 방정식은 x=x^2+2x-6, 즉 x^2+x-6=0 이므로 x=2 또는 x=-3 이다.",
+    "x=2 는 f 의 정의역에서 제외되므로 x=-3 만 가능하다.",
+    "구하는 합은 -3 이므로 정답은 ① 이다 (배점 4.7)"
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "$f(f(x))=x^2+2x-6$을 만족하는 실수 $x$의 값들의 합은?",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "f(x)=(2x+1)/(x-2) 를 한 번 더 넣어 f(f(x))=x 로 정리한 뒤 정의역 x≠2 를 따지는 단계라 합성함수 계산 행이다 (배점 4.7)",
+  "problemTypeKey": "PT_COMPOSITION_EQUATION",
+  "templateKey": "TPL_COMPOSITION_EQUATION_SOLVE",
+  "typeReason": "f(f(x))=x 로 정리해 x=x^2+2x-6 을 풀고 x=2 를 정의역에서 제외하는 단계가 합성함수 방정식 풀기와 같다 (배점 4.7)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B23",
+  "difficultyReason": "번분수 f(f(x))=5x/5=x 를 정리하고 x=2 를 제외하는 두 단계라 낮은 쪽 2로 둔다 (배점 4.7)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "함수 $f(x)=\\frac{2x+1}{x-2}$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "실수 $x$의 값들의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "약분",
+        "src": "solution",
+        "quote": "$=\\dfrac{5x}{5}=x$",
+        "evidenceType": "IMPLIED",
+        "justification": "분자 5x 와 분모 5 를 약분해 f(f(x))=x 를 얻는다"
+      },
+      {
+        "term": "인수분해",
+        "src": "solution",
+        "quote": "$(x-2)(x+3)=0$",
+        "evidenceType": "IMPLIED",
+        "justification": "x^2+x-6=0 을 (x-2)(x+3)=0 으로 인수분해해 x=2,-3 을 얻는다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "제외",
+        "src": "solution",
+        "quote": "정의역에서 제외되므로"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "f(f(x))=x 로 정리하고 x^2+x-6=0 의 해 x=2 를 정의역 때문에 버려 -3 이 나와 ①과 같았다. 합성식 방정식을 푸는 문제라 합성함수 방정식 풀기를 골랐다 (배점 4.7)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

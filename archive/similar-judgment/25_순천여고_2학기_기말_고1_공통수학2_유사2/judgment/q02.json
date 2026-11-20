@@ -1,0 +1,83 @@
+{
+  "qid": 2,
+  "itemFingerprint": "cb558645ee34fe9b",
+  "solveSteps": [
+    "ㄱ: $a=0$, $b=\\sqrt2$ 이면 $ab=0$ 이 유리수이므로 거짓이다.",
+    "ㄴ: $\\bar z=1+2i$ 이므로 $z+\\bar z=2$ 로 참이다.",
+    "ㄷ: x=-1 이면 (x+1)^2=0 이라 > 0 이 깨져 거짓이다. ㄹ: n=2 이면 n^2-5n+4=-2<0 이므로 참이다.",
+    "참인 명제는 ㄴ, ㄹ 이므로 정답은 ④ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "참인 명제인 것만을 모두 고른 것은?",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "ㄱ~ㄹ 네 문장을 반례 a=0, b=√2 나 x=-1, n=2 로 하나씩 참·거짓 판정하는 단계라 명제의 참·거짓 행이다 (배점 4.1)",
+  "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+  "templateKey": "TPL_PROPOSITION_TRUTH_JUDGMENT",
+  "typeReason": "ㄱ은 a=0, b=√2 반례, ㄷ은 x=-1 반례, ㄹ은 n=2 예시로 각 문장의 참·거짓을 가리는 것이 명제의 참·거짓 템플릿이다 (배점 4.1)",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "ㄱ 반례 a=0, ㄷ 등호 x=-1 의 함정을 찾으며 네 문장을 모두 판정해야 해 2단계다 (배점 4.1)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "복소수",
+        "src": "stem",
+        "quote": "복소수 $z=1-2i$에 대하여"
+      },
+      {
+        "term": "양화",
+        "src": "stem",
+        "quote": "모든 실수 $x$에 대하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "참인 명제인 것만을 모두 고른 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "반례",
+        "src": "solution",
+        "quote": "$a=0$, $b=\\sqrt{2}$이면",
+        "evidenceType": "IMPLIED",
+        "justification": "a=0, b=√2 를 넣어 ㄱ이 거짓임을 보이는 반례 사용"
+      },
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$n=2$일 때",
+        "evidenceType": "IMPLIED",
+        "justification": "ㄹ에 n=2 를 대입해 n^2-5n+4=-2 를 확인한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "존재",
+        "src": "solution",
+        "quote": "$n$이 존재한다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "ㄱ~ㄹ을 직접 판정해 ㄴ, ㄹ만 참이라 ④를 얻었고 해설과 같았다. 문장마다 반례·예시를 쓰는 판정이라 명제의 참·거짓 템플릿을 골랐다 (배점 4.1)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

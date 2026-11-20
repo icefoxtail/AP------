@@ -1,0 +1,82 @@
+{
+  "qid": 15,
+  "itemFingerprint": "7259c486e5ab04b0",
+  "solveSteps": [
+    "교점의 x좌표 u,v 는 9/x=-x+m 에서 x^2-mx+9=0 의 두 근이므로 u+v=m, uv=9 이다.",
+    "삼각형 OPQ 의 넓이는 (1/2)m|u-v|=40 이므로 m|u-v|=80 이다.",
+    "(u-v)^2=m^2-36 이므로 m^2(m^2-36)=6400, (m^2-100)(m^2+64)=0 이다.",
+    "m>0 이므로 m=10 이고 판별식 64>0 이라 정답은 ④ 이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "아래 그림과 같이 유리함수 $y=\\frac{9}{x}$의 그래프가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "삼각형 $OPQ$의 넓이가 $40$일 때",
+  "rpmRecordId": "H1-RPM-265",
+  "rpmReason": "y=9/x 와 직선 y=-x+m 의 교점 P,Q 의 좌표를 x^2-mx+9=0 의 근으로 잡는 단계라 유리함수와 그래프의 교점 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+  "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_TRIANGLE_AREA",
+  "typeReason": "교점 P,Q 의 좌표 합 m, 곱 9 로 삼각형 OPQ 의 넓이 (1/2)m|u-v|=40 을 세우는 단계가 교점 삼각형 넓이와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B34",
+  "difficultyReason": "근과 계수의 관계, 넓이 식 (1/2)m|u-v|=40, 4차식 m^4-36m^2-6400=0 의 인수분해까지 이어져 3~4단계 경계라 낮은 쪽 3으로 둔다.",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "유리함수 $y=\\frac{9}{x}$의 그래프가 직선"
+      },
+      {
+        "term": "삼각형",
+        "src": "stem",
+        "quote": "삼각형 $OPQ$의 넓이가 $40$일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "상수 $m$의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "의 두 근이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "x^2-mx+9=0 의 두 근 u,v 로 u+v=m, uv=9 를 얻는다"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식 $m^2-36=64>0$",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "($m>0$)"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교점의 x좌표를 근으로 두고 넓이 (1/2)m|u-v|=40 에서 m^4-36m^2-6400=0 으로 m=10 이 나와 ④와 같았다. 교점으로 만든 삼각형 넓이 문제라 교점 삼각형 넓이를 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "qid": 1,
+  "itemFingerprint": "014cb4eac2b8cf5d",
+  "solveSteps": [
+    "$\\sim p$는 $|x-4|<3$ 이므로 $1<x<7$ 이다.",
+    "전체집합이 자연수 전체이므로 $\\sim p$의 진리집합은 $\\{2,3,4,5,6\\}$ 이다.",
+    "원소의 합은 2+3+4+5+6=20 이므로 정답은 ② 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "$\\sim p$의 진리집합의 모든 원소의 합은?",
+  "rpmRecordId": "H1-RPM-243",
+  "rpmReason": "|x-4|<3 을 풀어 자연수 원소 2,3,4,5,6 으로 이루어진 ~p 의 진리집합을 정하는 단계라 진리집합 행이다 (배점 3.8)",
+  "problemTypeKey": "PT_TRUTH_SET_RELATION",
+  "templateKey": "TPL_FINITE_TRUTHSET_ENUMERATION",
+  "typeReason": "조건 p 의 부정 ~p 의 진리집합을 {2,3,4,5,6} 으로 나열해 합 20 을 구하는 단계가 유한 진리집합의 판정과 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "B12",
+  "difficultyReason": "|x-4|<3 에서 1<x<7 을 얻고 자연수 2~6 을 더하는 두 단계라 1단계로 본다 (배점 3.8)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "전체집합",
+        "src": "stem",
+        "quote": "전체집합 $U$가 자연수 전체의 집합일 때"
+      },
+      {
+        "term": "절댓값",
+        "src": "stem",
+        "quote": "$p: |x-4| \\ge 3$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "합",
+        "src": "stem",
+        "quote": "모든 원소의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "부정",
+        "src": "solution",
+        "quote": "조건 $p$를 부정하면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "열거",
+        "src": "solution",
+        "quote": "진리집합은 $\\{2, 3, 4, 5, 6\\}$이다",
+        "evidenceType": "IMPLIED",
+        "justification": "1<x<7 인 자연수 2,3,4,5,6 을 하나씩 나열해 합을 구한다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "범위",
+        "src": "solution",
+        "quote": "$1 < x < 7$"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "발문만 보고 ~p: |x-4|<3 으로 풀어 원소의 합 20 이 나와 ②와 같았다. 해설도 같은 풀이이고 양화가 없어 부정 유형이 아니라 유한 진리집합의 나열로 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

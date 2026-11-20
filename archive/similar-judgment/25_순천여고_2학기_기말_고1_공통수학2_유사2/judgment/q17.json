@@ -1,0 +1,83 @@
+{
+  "qid": 17,
+  "itemFingerprint": "e9c80f033b68abc3",
+  "solveSteps": [
+    "t=√(4-x) (t≥0) 라 하면 x=4-t^2 이고 교점에서 t=-x+k 이므로 t^2-t+k-4=0 이다.",
+    "서로 다른 두 교점은 t≥0 인 서로 다른 두 실근이므로 D=17-4k>0 에서 k<17/4 이다.",
+    "두 근의 합이 1>0 이므로 곱 k-4≥0, 즉 k≥4 이다.",
+    "4≤k<17/4 이므로 정답은 ② 이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-09",
+  "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+  "unitEvidence": "함수 $y=\\sqrt{4-x}$와 $y=-x+k$의 그래프의 교점의 개수가 $2$개가 되도록",
+  "rpmRecordId": "H1-RPM-272",
+  "rpmReason": "y=√(4-x) 와 y=-x+k 의 교점이 2개가 되도록 t^2-t+k-4=0 의 두 실근 조건을 세우는 단계라 무리함수의 교점 행이다 (배점 4.9)",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+  "templateKey": "TPL_GRAPH_INTERSECTION_COUNT",
+  "typeReason": "교점 2개를 t≥0 인 서로 다른 두 실근 조건 17-4k>0, k-4≥0 으로 바꾸는 단계가 그래프의 교점 개수와 같다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "t=√(4-x) 로 치환해 t≥0 의 두 근 조건 D>0, 합 1>0, 곱 k-4≥0 을 세우는 3단계다 (배점 4.9)",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "무리함수",
+        "src": "stem",
+        "quote": "함수 $y=\\sqrt{4-x}$와 $y=-x+k$의 그래프"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "상수 $k$의 값의 범위는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "치환",
+        "src": "solution",
+        "quote": "$t=\\sqrt{4-x}$라 놓으면",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "판별식",
+        "src": "solution",
+        "quote": "판별식이 양수여야 하므로",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "근과계수의관계",
+        "src": "solution",
+        "quote": "두 근의 합이 $1>0$이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "두 근의 합 1 과 곱 k-4 의 부호로 두 근이 0 이상인 조건을 가린다"
+      }
+    ],
+    "condition": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "교점의 개수가 $2$개가 되도록"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "t=√(4-x) 로 놓고 t^2-t+k-4=0 의 비음수 두 실근 조건으로 4≤k<17/4 가 나와 ②와 같았다. 교점 개수를 묻는 문제라 그래프의 교점 개수를 골랐다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
