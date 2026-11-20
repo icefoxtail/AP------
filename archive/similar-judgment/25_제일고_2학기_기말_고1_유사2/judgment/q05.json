@@ -1,0 +1,82 @@
+{
+  "qid": 5,
+  "itemFingerprint": "2f63582e09778649",
+  "solveSteps": [
+    "p: x^2-3x-10≥0 에서 (x-5)(x+2)≥0 이므로 P={x≤-2 또는 x≥5} 이다.",
+    "p 가 q 의 충분조건이므로 P⊂Q 이다. x≤-2 인 모든 x 가 x<a 이어야 하므로 a>-2 이고 정수 a 의 최솟값은 -1 이다.",
+    "p 가 r 의 필요조건이므로 R⊂P 이다. x≥b 가 모두 P 에 속하려면 b≥5 이고 정수 b 의 최솟값은 5 이다.",
+    "두 최솟값의 합은 -1+5=4 이므로 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "이기 위한 충분조건이고",
+  "rpmRecordId": "H1-RPM-248",
+  "rpmReason": "충분조건 P⊂Q 에서 a>-2, 필요조건 R⊂P 에서 b≥5 를 얻는 매개변수 단계라 필요충분조건 매개변수 행이다. p: x^2-3x-10≥0 에서 시작한다.",
+  "problemTypeKey": "PT_NEC_SUFF_RELATION",
+  "templateKey": "TPL_NEC_SUFF_INTERVAL_PARAMETER",
+  "typeReason": "진리집합 P={x≤-2 또는 x≥5} 와 Q, R 의 포함 관계로 a>-2, b≥5 를 구하는 것이 구간과 필요조건·충분조건 템플릿이다. 조건 p: x^2-3x-10≥0 의 진리집합이 출발점이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "이차부등식 풀이, P⊂Q 에서 a>-2, R⊂P 에서 b≥5, 정수 최솟값의 합 4 까지 네 단계 이상이고 경계 처리가 필요해 3단계이다. x^2-3x-10≥0 풀이가 첫 단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "충분조건",
+        "src": "stem",
+        "quote": "이기 위한 충분조건이고"
+      },
+      {
+        "term": "필요조건",
+        "src": "stem",
+        "quote": "이기 위한 필요조건이"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "최솟값의 합은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "진리집합",
+        "src": "solution",
+        "quote": "진리집합을 각각",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "포함관계",
+        "src": "solution",
+        "quote": "충분조건이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "충분조건 P⊂Q, 필요조건 R⊂P 로 두 조건을 진리집합의 포함 관계로 바꿔 a, b 의 범위를 구한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "src": "stem",
+        "quote": "정수 $a$의 최솟값"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "이차부등식으로 P 를 구한 뒤 충분·필요조건을 포함 관계로 바꿔 a=-1, b=5 를 얻었고 합 4 가 ④ 와 같다. 먼저 x^2-3x-10≥0 을 풀어 P 를 구했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

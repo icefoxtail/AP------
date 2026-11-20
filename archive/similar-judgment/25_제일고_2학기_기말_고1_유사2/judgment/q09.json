@@ -1,0 +1,69 @@
+{
+  "qid": 9,
+  "itemFingerprint": "bd85dd459f064aa6",
+  "solveSteps": [
+    "직선 x/a+y/b=1 이 점 (2,3) 을 지나므로 2/a+3/b=1 이다.",
+    "산술·기하평균 관계로 1=2/a+3/b ≥ 2√(6/(ab)) 이므로 ab≥24 이다.",
+    "삼각형 OAB 의 넓이는 ab/2 ≥ 12 이고 등호는 a=4, b=6 일 때 성립해 최솟값 12 이다. 따라서 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-02",
+  "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+  "unitEvidence": "삼각형 $OAB$의 넓이의 최솟값은?",
+  "rpmRecordId": "H1-RPM-216",
+  "rpmReason": "절편 a, b 로 만든 삼각형 OAB 의 넓이 ab/2 의 최솟값 12 를 구하는 단계라 도형의 넓이·최소거리 행이다.",
+  "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
+  "templateKey": "TPL_INTERCEPT_AREA_OPTIMIZATION",
+  "typeReason": "x절편 a 와 y절편 b 로 넓이 ab/2 를 놓고 2/a+3/b=1 과 산술·기하평균으로 ab≥24, 넓이 12 를 구하는 것이 절편을 이용한 넓이의 최솟값 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "지나는 점 조건 2/a+3/b=1, 산술·기하평균 ab≥24, 등호 조건 a=4, b=6 확인까지 세 단계라 3단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "직선",
+        "src": "stem",
+        "quote": "이 직선이 $x$축"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최솟값",
+        "src": "stem",
+        "quote": "의 최솟값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "산술기하평균",
+        "src": "solution",
+        "quote": "산술평균과 기하평균의 관계에 의하여",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "는 양수이고"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "절편꼴 직선이 (2,3) 을 지난다는 조건에 산술·기하평균을 써서 ab≥24, 넓이 최솟값 12 를 얻어 ② 와 확인했다. 선택표의 절편 최적화 유형과 가장 맞는다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

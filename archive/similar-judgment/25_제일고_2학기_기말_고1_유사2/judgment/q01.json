@@ -1,0 +1,69 @@
+{
+  "qid": 1,
+  "itemFingerprint": "766c6598fe259adc",
+  "solveSteps": [
+    "명제는 참·거짓을 판별할 수 있는 문장이다. ① x+3=7, ② 2x-1<5, ③ x는 6의 약수, ⑤ x+y=10 은 x, y 값에 따라 참·거짓이 달라지는 조건이다.",
+    "④ 모든 실수 x 에 대하여 x^2+1>0 은 x^2≥0 이므로 항상 성립하는 참인 명제이다. 따라서 ④."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "명제는 참인지 거짓인지를 분명하게 판별할 수 있는",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "다섯 보기 중 ④ x^2+1>0 만 참·거짓이 정해지는 문장임을 가려내는 단계라 명제의 참·거짓 행이다. ⑤ x+y=10 은 참·거짓이 정해지지 않는 조건이다.",
+  "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+  "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+  "typeReason": "① x+3=7 처럼 변수 값에 따라 달라지는 식은 조건이고 ④ 모든 실수 x 에 대한 x^2+1>0 은 명제라는 구별이 결정적 단계이다. ⑤ x+y=10 은 변수 값에 따라 참·거짓이 달라져 조건이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "명제의 뜻을 바로 적용해 ④ 하나를 고르는 한 단계 판별이라 1단계이다. ⑤ x+y=10 과 ④ 의 구별만 하면 된다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "명제",
+        "src": "stem",
+        "quote": "명제인 것은"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "명제인 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "정의",
+        "src": "solution",
+        "quote": "참인지 거짓인지를 분명하게 판별할 수 있는",
+        "evidenceType": "IMPLIED",
+        "justification": "명제의 정의(참·거짓이 분명한 문장)를 보기 ①~⑤ 에 적용해 가려낸다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "양화",
+        "src": "solution",
+        "quote": "모든 실수"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "보기 ①~⑤ 를 명제의 뜻에 비추어 읽고 ④ 만 x^2+1>0 이 항상 성립하는 명제임을 확인했다. 저장 정답 ④ 와 같다. 보기 ⑤ x+y=10 은 조건으로 분류했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

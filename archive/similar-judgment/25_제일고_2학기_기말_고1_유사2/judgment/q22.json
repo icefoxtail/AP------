@@ -1,0 +1,76 @@
+{
+  "qid": 22,
+  "itemFingerprint": "95ff839801997c6c",
+  "solveSteps": [
+    "결론을 부정해 a, b 가 모두 3 의 배수가 아니라고 가정한다.",
+    "3 의 배수가 아닌 수는 3k+1 또는 3k+2 꼴이고 (3k+1)^2=3(3k^2+2k)+1, (3k+2)^2=3(3k^2+4k+1)+1 이므로 제곱을 3 으로 나눈 나머지는 항상 1 이다.",
+    "따라서 a^2+b^2 을 3 으로 나눈 나머지는 2 이다.",
+    "c^2 을 3 으로 나눈 나머지는 0 또는 1 이라 2 가 될 수 없으므로 a^2+b^2=c^2 과 모순이다. 따라서 a, b 중 적어도 하나는 3 의 배수이다. (전개식 9k^2+12k+4 의 계수 12 는 3 의 배수이다.)"
+  ],
+  "solvedAnswer": "$a,b$ 중 적어도 하나는 $3$의 배수이다.",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "귀류법을 사용하여 증명하시오",
+  "rpmRecordId": "H1-RPM-249",
+  "rpmReason": "결론을 부정해 a, b 가 모두 3 의 배수가 아니라 가정하고 a^2+b^2≡2 (mod 3) 인 모순을 이끄는 단계라 귀류법 행이다. 계수 12 와 9 가 3 의 배수라 나머지 1 이 남는다.",
+  "problemTypeKey": "PT_CONTRADICTION_PROOF",
+  "templateKey": "TPL_DIVISIBILITY_PARITY_CONTRADICTION",
+  "typeReason": "a, b 가 3 의 배수가 아니면 a^2+b^2 을 3 으로 나눈 나머지가 2 가 되어 c^2 과 모순임을 보이는 것이 배수 성질의 귀류법 증명 템플릿이다. (3k+2)^2 의 계수 12 가 3 의 배수라 나머지가 1 이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 4,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "결론 부정, 3k+1, 3k+2 두 경우 제곱의 나머지 1, a^2+b^2≡2, c^2≡0 또는 1 과의 모순까지 서술 논증 여러 단계라 4단계로 두고 3과의 경계를 표시한다. 전개에서 계수 12 가 3 의 배수라는 관찰이 핵심이다.",
+  "difficultyBoundaryFlag": "B34",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "가 자연수일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "증명",
+        "src": "stem",
+        "quote": "귀류법을 사용하여 증명하시오"
+      }
+    ],
+    "method": [
+      {
+        "term": "귀류법",
+        "src": "stem",
+        "quote": "귀류법을 사용하여",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "나머지",
+        "src": "solution",
+        "quote": "나눈 나머지는 항상",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "적어도",
+        "src": "stem",
+        "quote": "중 적어도 하나는"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "결론의 부정에서 제곱의 나머지를 3 으로 나눠 a^2+b^2 의 나머지 2 와 c^2 의 가능한 나머지 0, 1 이 모순임을 따랐다. 서술형이라 결론 문장을 답으로 적었다. (3k+2)^2 전개의 계수 12 항까지 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "qid": 10,
+  "itemFingerprint": "18c031e33e174793",
+  "solveSteps": [
+    "그림의 대응은 1→3, 2→4, 3→5, 4→1, 5→2 이다.",
+    "(f∘f)(x)=f(f(x))=4 에서 f(t)=4 인 t 는 t=2 이다.",
+    "따라서 f(x)=2 이고 대응도에서 함숫값이 2 가 되는 x 는 5 이다. 따라서 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "오른쪽 그림과 같은 함수",
+  "solutionFigureNeed": "NEEDS_FIGURE",
+  "solutionFigureEvidence": "대응도에서 찾으면",
+  "standardUnitKey": "H22-C2-07",
+  "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+  "unitEvidence": "를 만족시키는 $t$를 대응도에서",
+  "rpmRecordId": "H1-RPM-253",
+  "rpmReason": "대응도에서 f(t)=4 인 t=2 를 찾고 다시 f(x)=2 인 x=5 를 찾는 합성함수 값 계산 단계라 합성함수 계산 행이다.",
+  "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+  "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+  "typeReason": "대응도에서 f(t)=4 → t=2, f(x)=2 → x=5 로 합성 순서를 거꾸로 따라가는 것이 대응도에서 합성함숫값 계산 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "대응도를 두 번 거꾸로 읽어 4→2→5 를 얻는 두 단계라 1단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "함수",
+        "src": "stem",
+        "quote": "그림과 같은 함수"
+      },
+      {
+        "term": "대응",
+        "src": "solution",
+        "quote": "대응도에서 찾으면"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "합성함수",
+        "src": "solution",
+        "quote": "를 만족시키는 $t$를 대응도에서",
+        "evidenceType": "IMPLIED",
+        "justification": "(f∘f)(x)=f(f(x))=4 를 안쪽부터 f(t)=4, f(x)=t 두 번으로 나누어 푼다."
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "대응도를 읽어 f(t)=4 → t=2, f(x)=2 → x=5 를 얻었고 ⑤ 와 같다. 그림이 있어야 풀리므로 NEEDS_FIGURE 이고 파일은 연결되어 있다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

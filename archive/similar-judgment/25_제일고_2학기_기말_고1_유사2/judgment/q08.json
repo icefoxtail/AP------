@@ -1,0 +1,70 @@
+{
+  "qid": 8,
+  "itemFingerprint": "d5219f1c662f66f0",
+  "solveSteps": [
+    "B 의 말 \"D 가 열쇠를 가지고 있다\" 와 D 의 말 \"B 의 말은 거짓이다\" 는 서로 반대이므로 둘 중 정확히 하나만 참이다.",
+    "참말은 한 사람뿐이므로 A 와 C 의 말은 모두 거짓이다.",
+    "C 의 말 \"나는 열쇠를 가지고 있지 않다\" 가 거짓이므로 열쇠는 C 에게 있다. 이때 D 의 말만 참이라 조건에 맞다. 따라서 ③. (발문 br 줄바꿈 아래 A, B, C, D 의 말을 쓴다.)"
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-06",
+  "subUnitKey": "H22-C2-06-CORE",
+  "unitEvidence": "한 사람만 참말을 하였을 때",
+  "rpmRecordId": "H1-RPM-244",
+  "rpmReason": "A, B, C, D 네 사람 말의 참·거짓을 B 와 D 가 반대인 점으로 판정하는 단계라 명제의 참·거짓 행이다. 발문 br 줄 아래 네 말을 판정한다.",
+  "problemTypeKey": "PT_LOGIC_CHAIN",
+  "templateKey": "TPL_LOGIC_CONSTRAINT_PUZZLE",
+  "typeReason": "참말이 한 사람뿐이라는 제약과 B 와 D 의 말이 반대라는 관계로 A 와 C 의 말이 거짓임을 정해 열쇠 주인 C 를 추론하는 것이 논리 조건 추론 템플릿이다. 발문 br 줄 아래 네 말의 관계를 제약으로 쓴다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "B, D 가 반대라는 관찰 하나와 C 의 말이 거짓이라는 결론까지 두세 단계의 추론이라 2단계이다. 발문 br 줄 아래 네 말의 관계만 보면 된다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "논리",
+        "src": "stem",
+        "quote": "한 사람만 참말을 하였을 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "가지고 있는 사람은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "경우분류",
+        "src": "solution",
+        "quote": "한 사람뿐이므로",
+        "evidenceType": "IMPLIED",
+        "justification": "B 와 D 중 누가 참말을 했는지 나누고 A, C 의 말이 거짓이어야 함을 이용해 열쇠 주인을 정한다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "유일성",
+        "src": "stem",
+        "quote": "한 사람만 열쇠를 가지고 있다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "B 와 D 의 말이 서로 반대라는 점에서 A, C 가 거짓이 됨을 추론해 열쇠 주인 C 를 얻었고 ③ 과 같다. \"다음과 같이\" 는 그림 언급이 아니다. (발문 br 줄바꿈 뒤에 네 사람의 말이 있다.)",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

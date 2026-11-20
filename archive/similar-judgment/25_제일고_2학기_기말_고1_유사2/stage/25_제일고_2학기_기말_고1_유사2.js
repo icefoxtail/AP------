@@ -1,0 +1,601 @@
+window.examTitle = "25_제일고_2학기_기말_고1_유사2";
+window.examDisplayTitle = "25_제일고_2학기_기말_고1_유사2";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "다음 중 명제인 것은?",
+    "choices": [
+      "$x+3=7$",
+      "$2x-1\\lt 5$",
+      "$x$는 $6$의 약수이다.",
+      "모든 실수 $x$에 대하여 $x^2+1\\gt 0$이다.",
+      "$x+y=10$"
+    ],
+    "answer": "④",
+    "solution": "명제는 참인지 거짓인지를 분명하게 판별할 수 있는 문장이나 식이다.\n\n①, ②, ③, ⑤는 $x$ 또는 $y$의 값에 따라 참과 거짓이 달라지는 조건이므로 명제가 아니다.\n\n④는 모든 실수 $x$에 대하여 $x^2\\ge 0$이므로 $x^2+1\\ge 1\\gt 0$이 항상 성립한다. 따라서 참인 명제이다.\n\n따라서 정답은 ④이다.",
+    "sourceQid": 1,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 2,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "점 $(1,-2)$를 점 $(-3,4)$로 옮기는 평행이동에 의하여 점 $A$가 점 $(2,1)$로 옮겨졌을 때, 점 $A$의 좌표는?",
+    "choices": [
+      "$(-2,-5)$",
+      "$(-2,7)$",
+      "$(6,-5)$",
+      "$(6,7)$",
+      "$(10,-5)$"
+    ],
+    "answer": "③",
+    "solution": "점 $(1,-2)$가 점 $(-3,4)$로 옮겨질 때 $x$좌표와 $y$좌표의 변화량은 각각\n$-3-1=-4$\n$4-(-2)=6$\n이다.\n\n점 $A$의 좌표를 $(a,b)$라 하면 이 평행이동에 의하여 점 $(2,1)$로 옮겨지므로\n$a-4=2$\n$a=6$\n\n$b+6=1$\n$b=-5$\n이다.\n\n따라서 점 $A$의 좌표는 $(6,-5)$이므로 정답은 ③이다.",
+    "sourceQid": 2,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q2-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 3,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "원 $(x-2)^2+(y+1)^2=13$ 위의 점 $(5,1)$에서의 접선이 점 $(1,k)$를 지날 때, 실수 $k$의 값은?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$7$",
+      "$9$"
+    ],
+    "answer": "④",
+    "solution": "원의 중심 $(2,-1)$과 접점 $(5,1)$을 잇는 직선의 기울기는\n$\\dfrac{1-(-1)}{5-2}=\\dfrac{2}{3}$\n이다.\n\n접선은 중심과 접점을 잇는 반지름에 수직이므로 접선의 기울기는 $-\\dfrac{3}{2}$이다.\n\n접점 $(5,1)$을 지나고 기울기가 $-\\dfrac{3}{2}$인 접선의 방정식은\n$y-1=-\\dfrac{3}{2}(x-5)$\n$2y-2=-3x+15$\n$3x+2y=17$\n이다.\n\n이 직선이 점 $(1,k)$를 지나므로 $x=1$, $y=k$를 대입하면\n$3\\times 1+2k=17$\n$2k=14$\n$k=7$\n이다.\n\n따라서 정답은 ④이다.",
+    "sourceQid": 3,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q3-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 4,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "명제 “$x\\gt 2$이고 $y\\gt k-1$이면 $x+y\\gt 7$이다.”가 참이 되도록 하는 실수 $k$의 최솟값은?",
+    "choices": [
+      "$6$",
+      "$7$",
+      "$8$",
+      "$9$",
+      "$10$"
+    ],
+    "answer": "①",
+    "solution": "가정에서 $x\\gt 2$이고 $y\\gt k-1$이므로 두 부등식을 변끼리 더하면\n$x+y\\gt 2+(k-1)$\n$x+y\\gt k+1$\n이다.\n\n이때 $x+y\\gt 7$이 항상 성립하려면 $k+1$이 $7$보다 작지 않아야 하므로\n$k+1\\ge 7$\n$k\\ge 6$\n이다.\n\n따라서 실수 $k$의 최솟값은 $6$이므로 정답은 ①이다.",
+    "sourceQid": 4,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q4-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 5,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "세 조건 $p,q,r$이 다음과 같을 때, $p$는 $q$이기 위한 충분조건이고 $p$는 $r$이기 위한 필요조건이 되도록 하는 정수 $a$의 최솟값과 정수 $b$의 최솟값의 합은?<br>$p:x^2-3x-10\\ge 0$, &nbsp; $q:x\\lt a$ 또는 $x\\ge 5$, &nbsp; $r:x\\ge b$",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "④",
+    "solution": "조건 $p$의 부등식을 풀면\n$(x-5)(x+2)\\ge 0$\n$x\\le -2$ 또는 $x\\ge 5$\n이다.\n\n세 조건 $p,q,r$의 진리집합을 각각 $P,Q,R$이라 하자.\n$p$는 $q$이기 위한 충분조건이므로 $P\\subset Q$이어야 한다.\n$x\\le -2$인 모든 $x$가 $x\\lt a$를 만족해야 하므로\n$a\\gt -2$\n이다.\n따라서 정수 $a$의 최솟값은 $-1$이다.\n\n$p$는 $r$이기 위한 필요조건이므로 $R\\subset P$이어야 한다.\n$x\\ge b$인 모든 $x$가 $P$에 속하려면\n$b\\ge 5$\n이어야 한다.\n따라서 정수 $b$의 최솟값은 $5$이다.\n\n두 최솟값의 합은\n$-1+5=4$\n이다.\n\n따라서 정답은 ④이다.",
+    "sourceQid": 5,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q5-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 6,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 점 $A(1,3)$, $B(9,k)$ ($k\\gt 0$)와 $x$축 위의 점 $P$에 대하여 $\\overline{AP}+\\overline{BP}$의 최솟값이 $10$일 때, $k$의 값은?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "①",
+    "solution": "점 $A(1,3)$을 $x$축에 대하여 대칭이동한 점을 $A'$이라 하면\n$A'(1,-3)$\n이다.\n\n점 $P$가 $x$축 위에 있으므로 $\\overline{AP}=\\overline{A'P}$이다.\n$k\\gt 0$이므로 두 점 $A'(1,-3)$과 $B(9,k)$는 $x$축을 기준으로 서로 반대쪽에 있다.\n따라서 $\\overline{AP}+\\overline{BP}=\\overline{A'P}+\\overline{BP}$의 최솟값은 선분 $A'B$의 길이와 같다.\n\n선분 $A'B$의 길이가 $10$이므로\n$\\sqrt{(9-1)^2+(k+3)^2}=10$\n$64+(k+3)^2=100$\n$(k+3)^2=36$\n이다.\n\n$k\\gt 0$이므로 $k+3=6$이고\n$k=3$\n이다.\n\n따라서 정답은 ①이다.",
+    "sourceQid": 6,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q6-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 7,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "점 $(-2,1)$에서 원 $(x-1)^2+(y+3)^2=5$에 그은 두 접선의 기울기의 합은?",
+    "choices": [
+      "$-10$",
+      "$-9$",
+      "$-8$",
+      "$-7$",
+      "$-6$"
+    ],
+    "answer": "⑤",
+    "solution": "원의 중심은 $(1,-3)$, 반지름의 길이는 $\\sqrt{5}$이다.\n직선 $x=-2$와 중심 $(1,-3)$ 사이의 거리는 $|1-(-2)|=3\\ne \\sqrt{5}$이므로 두 접선은 모두 기울기를 가진다.\n\n접선의 기울기를 $m$이라 하면 점 $(-2,1)$을 지나는 직선의 방정식은\n$y-1=m(x+2)$\n$mx-y+2m+1=0$\n이다.\n\n중심 $(1,-3)$에서 이 직선까지의 거리가 반지름의 길이 $\\sqrt{5}$와 같아야 하므로\n$\\dfrac{|m+3+2m+1|}{\\sqrt{m^2+1}}=\\sqrt{5}$\n$|3m+4|=\\sqrt{5}\\sqrt{m^2+1}$\n이다.\n\n양변을 제곱하여 정리하면\n$(3m+4)^2=5(m^2+1)$\n$9m^2+24m+16=5m^2+5$\n$4m^2+24m+11=0$\n이다.\n\n두 접선의 기울기를 $m_1, m_2$라 하면 근과 계수의 관계에 의하여\n$m_1+m_2=-\\dfrac{24}{4}$\n$=-6$\n이다.\n\n따라서 정답은 ⑤이다.",
+    "sourceQid": 7,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q7-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 8,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "$A,B,C,D$ 네 사람 중 한 사람만 열쇠를 가지고 있다. 네 사람이 다음과 같이 말하였고, 이 중 한 사람만 참말을 하였을 때, 열쇠를 가지고 있는 사람은?<br><br>$A$: 나는 열쇠를 가지고 있다.<br>$B$: $D$가 열쇠를 가지고 있다.<br>$C$: 나는 열쇠를 가지고 있지 않다.<br>$D$: $B$의 말은 거짓이다.",
+    "choices": [
+      "$A$",
+      "$B$",
+      "$C$",
+      "$D$",
+      "알 수 없다"
+    ],
+    "answer": "③",
+    "solution": "$B$의 말은 “$D$가 열쇠를 가지고 있다.”이고, $D$의 말은 “$B$의 말은 거짓이다.”이므로 두 사람의 말은 서로 반대이다.\n\n참말을 한 사람은 한 사람뿐이므로 $B$와 $D$ 중 한 사람만 참말을 하였고, $A$와 $C$의 말은 모두 거짓이다.\n\n$C$의 말인 “나는 열쇠를 가지고 있지 않다.”가 거짓이므로 열쇠를 가지고 있는 사람은 $C$이다.\n\n$C$가 열쇠를 가지고 있으면 $A,B,C$의 말은 모두 거짓이고 $D$의 말만 참이므로 조건을 만족한다.\n\n따라서 정답은 ③이다.",
+    "sourceQid": 8,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 9,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "$a,b$는 양수이고 직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$은 점 $(2,3)$을 지난다. 이 직선이 $x$축, $y$축과 만나는 점을 각각 $A,B$라 할 때, 삼각형 $OAB$의 넓이의 최솟값은? (단, $O$는 원점)",
+    "choices": [
+      "$10$",
+      "$12$",
+      "$15$",
+      "$18$",
+      "$24$"
+    ],
+    "answer": "②",
+    "solution": "직선 $\\dfrac{x}{a}+\\dfrac{y}{b}=1$이 점 $(2,3)$을 지나므로\n$\\dfrac{2}{a}+\\dfrac{3}{b}=1$\n이다.\n\n$a\\gt 0$, $b\\gt 0$이므로 산술평균과 기하평균의 관계에 의하여\n$1=\\dfrac{2}{a}+\\dfrac{3}{b}\\ge 2\\sqrt{\\dfrac{2}{a}\\cdot\\dfrac{3}{b}}=2\\sqrt{\\dfrac{6}{ab}}$\n이다.\n\n양변을 제곱하여 정리하면\n$1\\ge \\dfrac{24}{ab}$\n$ab\\ge 24$\n이다.\n\n삼각형 $OAB$의 넓이는 $\\dfrac{1}{2}ab$이므로\n$\\dfrac{1}{2}ab\\ge \\dfrac{1}{2}\\times 24=12$\n이다.\n\n등호는 $\\dfrac{2}{a}=\\dfrac{3}{b}=\\dfrac{1}{2}$, 즉 $a=4$, $b=6$일 때 성립하므로 넓이의 최솟값은 $12$이다.\n\n따라서 정답은 ②이다.",
+    "sourceQid": 9,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q9-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 10,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "오른쪽 그림과 같은 함수 $f:X\\to X$에 대하여 $(f\\circ f)(x)=4$를 만족시키는 $x$의 값은?",
+    "choices": [
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$",
+      "$5$"
+    ],
+    "answer": "⑤",
+    "solution": "$(f\\circ f)(x)=f(f(x))=4$에서 먼저 $f(t)=4$를 만족시키는 $t$를 대응도에서 찾으면\n$t=2$\n이다.\n\n따라서 $f(x)=2$이어야 한다.\n다시 대응도에서 함숫값이 $2$가 되는 $x$를 찾으면\n$x=5$\n이다.\n\n따라서 정답은 ⑤이다.",
+    "sourceQid": 10,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_제일고_2학기_기말_고1_유사2/q10.svg",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q10-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 11,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "함수 $y=-\\sqrt{x+4}+k$의 그래프가 제$1$사분면을 지나지 않도록 하는 정수 $k$의 최댓값은?",
+    "choices": [
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$",
+      "$4$"
+    ],
+    "answer": "③",
+    "solution": "함수 $y=-\\sqrt{x+4}+k$의 정의역은 $x\\ge -4$이고, $x$의 값이 커질수록 $y$의 값은 작아지는 감소함수이다.\n\n그래프가 제$1$사분면을 지나지 않으려면 $x\\gt 0$인 모든 $x$에 대하여 $y\\le 0$이어야 한다.\n함수가 감소하므로 $x=0$일 때의 함숫값이 $0$ 이하이면 $x\\gt 0$일 때 항상 $y\\lt 0$이다.\n\n$x=0$을 대입하면\n$-\\sqrt{0+4}+k\\le 0$\n$-2+k\\le 0$\n$k\\le 2$\n이다.\n\n따라서 정수 $k$의 최댓값은 $2$이므로 정답은 ③이다.",
+    "sourceQid": 11,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q11-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 12,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "함수 $y=f(x)$의 그래프와 직선 $y=x$가 그림과 같을 때, $(f^{-1}\\circ f^{-1})(2)$의 값은?",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "⑤",
+    "solution": "그림에서 곡선 $y=f(x)$가 점 $(5,2)$를 지나므로\n$f(5)=2$\n이다.\n역함수의 정의에 의하여\n$f^{-1}(2)=5$\n이다.\n\n또 곡선 $y=f(x)$가 점 $(7,5)$를 지나므로\n$f(7)=5$\n이다.\n따라서\n$f^{-1}(5)=7$\n이다.\n\n그러므로 구하는 값은\n$(f^{-1}\\circ f^{-1})(2)=f^{-1}(f^{-1}(2))$\n$=f^{-1}(5)$\n$=7$\n이다.\n\n따라서 정답은 ⑤이다.",
+    "sourceQid": 12,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_제일고_2학기_기말_고1_유사2/q12.svg",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q12-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 13,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "다음 중 $y=\\dfrac{3x-4}{x-2}$의 그래프에 대한 설명으로 옳지 않은 것은?",
+    "choices": [
+      "점 $(2,3)$에 대하여 대칭이다.",
+      "직선 $y=x+1$에 대하여 대칭이다.",
+      "$y=\\dfrac{2}{x}$의 그래프를 평행이동하여 겹칠 수 있다.",
+      "$x\\gt 2$일 때 $x$의 값이 증가하면 $y$의 값은 감소한다.",
+      "직선 $y=-x+3$에 대하여 대칭이다."
+    ],
+    "answer": "⑤",
+    "solution": "식을 변형하면\n$y=\\dfrac{3(x-2)+2}{x-2}$\n$=3+\\dfrac{2}{x-2}$\n이다.\n\n① 두 점근선이 $x=2$, $y=3$이므로 그래프는 점 $(2,3)$에 대하여 대칭이다.\n\n② 대칭의 중심 $(2,3)$을 지나고 기울기가 $1$인 직선은\n$y-3=x-2$\n$y=x+1$\n이므로 직선 $y=x+1$에 대하여 대칭이다.\n\n③ $y=\\dfrac{2}{x}$의 그래프를 $x$축의 방향으로 $2$만큼, $y$축의 방향으로 $3$만큼 평행이동하면 주어진 그래프가 된다.\n\n④ 비례상수 $2\\gt 0$이므로 $x\\gt 2$일 때 $x$의 값이 증가하면 $y$의 값은 감소한다.\n\n⑤ 점 $(2,3)$을 지나고 기울기가 $-1$인 직선은\n$y-3=-(x-2)$\n$y=-x+5$\n이다. 따라서 직선 $y=-x+3$에 대하여 대칭이 아니다.\n\n따라서 정답은 ⑤이다.",
+    "sourceQid": 13,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q13-solution.svg",
+    "solutionImageAlt": "해설 그림: y=(3x-4)/(x-2)=3+2/(x-2)이므로 점근선은 x=2, y=3이고 두 점근선의 교점 P(2, 3)이 대칭의 중심이다. 점 P를 지나고 기울기가 ±1인 직선 a: y=x+1(파랑)과 b: y=-x+5(초록)는 대칭축이다. 직선 c: y=-x+3(주황)은 점 P를 지나지 않아 대칭축이 아니므로 옳지 않은 것은 ⑤이고 답은 ⑤이다.",
+    "solutionImageCaption": "y=(3x-4)/(x-2)=3+2/(x-2)이므로 점근선은 x=2, y=3이고 두 점근선의 교점 P(2, 3)이 대칭의 중심이다. 점 P를 지나고 기울기가 ±1인 직선 a: y=x+1(파랑)과 b: y=-x+5(초록)는 대칭축이다. 직선 c: y=-x+3(주황)은 점 P를 지나지 않아 대칭축이 아니므로 옳지 않은 것은 ⑤이고 답은 ⑤이다.",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 14,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 유리함수 $y=\\dfrac{1}{x-2}+1$, $y=\\dfrac{kx+1}{x+k}$의 그래프의 점근선으로 둘러싸인 직사각형의 넓이가 $18$일 때, 양수 $k$의 값은? (단, $k\\ne 1$)",
+    "choices": [
+      "$3$",
+      "$4$",
+      "$5$",
+      "$6$",
+      "$7$"
+    ],
+    "answer": "②",
+    "solution": "첫째 유리함수 $y=\\dfrac{1}{x-2}+1$의 점근선은\n$x=2$, $y=1$\n이다.\n\n둘째 유리함수를 변형하면\n$y=\\dfrac{k(x+k)+1-k^2}{x+k}$\n$=k+\\dfrac{1-k^2}{x+k}$\n이다.\n$k\\gt 0$, $k\\ne 1$이므로 $1-k^2\\ne 0$이고 점근선은\n$x=-k$, $y=k$\n이다.\n\n$k\\gt 0$이므로 두 수직 점근선 사이의 거리는\n$2-(-k)=k+2$\n이고, 두 수평 점근선 사이의 거리는 $|k-1|$이다.\n\n직사각형의 넓이가 $18$이므로\n$(k+2)|k-1|=18$\n이다.\n\n$0\\lt k\\lt 1$이면 $(k+2)(1-k)\\lt 3\\times 1=3\\lt 18$이므로 해가 없다.\n\n$k\\gt 1$이면\n$(k+2)(k-1)=18$\n$k^2+k-2=18$\n$k^2+k-20=0$\n$(k+5)(k-4)=0$\n이다.\n$k\\gt 1$이므로 $k=4$이다.\n\n따라서 정답은 ②이다.",
+    "sourceQid": 14,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q14-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 15,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "일차함수 $f(x)=ax+b$에 대하여 $f^{-1}(3)=1$이고 $(f\\circ f)(1)=7$일 때, $f(5)$의 값은? (단, $a,b$는 상수)",
+    "choices": [
+      "$9$",
+      "$10$",
+      "$11$",
+      "$12$",
+      "$13$"
+    ],
+    "answer": "③",
+    "solution": "$f^{-1}(3)=1$이므로 역함수의 정의에 의하여\n$f(1)=3$\n이다.\n\n이를 $(f\\circ f)(1)=7$에 대입하면\n$f(f(1))=f(3)$\n$=7$\n이다.\n\n$f(x)=ax+b$에서 $f(1)=3$, $f(3)=7$이므로\n$a+b=3$\n$3a+b=7$\n이다.\n\n두 식을 변끼리 빼면\n$2a=4$\n$a=2$\n이고, 이를 $a+b=3$에 대입하면 $b=1$이다.\n\n따라서 $f(x)=2x+1$이므로\n$f(5)=2\\times 5+1$\n$=11$\n이다.\n\n따라서 정답은 ③이다.",
+    "sourceQid": 15,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 16,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "분모를 $0$으로 만들지 않는 모든 실수 $x$에 대하여 함수 $y=\\dfrac{1}{1-\\dfrac{1}{2+\\dfrac{1}{x}}}$의 그래프의 두 점근선의 교점의 좌표가 $(p,q)$일 때, $p+q$의 값은?",
+    "choices": [
+      "$-1$",
+      "$0$",
+      "$1$",
+      "$2$",
+      "$3$"
+    ],
+    "answer": "③",
+    "solution": "가장 안쪽 분수부터 차례로 정리하면\n$2+\\dfrac{1}{x}=\\dfrac{2x+1}{x}$\n이므로\n$\\dfrac{1}{2+\\dfrac{1}{x}}=\\dfrac{x}{2x+1}$\n이다.\n\n따라서 바깥 분모는\n$1-\\dfrac{x}{2x+1}=\\dfrac{(2x+1)-x}{2x+1}$\n$=\\dfrac{x+1}{2x+1}$\n이다.\n\n전체 식을 정리하면\n$y=\\dfrac{2x+1}{x+1}$\n$=2-\\dfrac{1}{x+1}$\n이다.\n\n두 점근선은 $x=-1$, $y=2$이므로 교점의 좌표는 $(-1,2)$이다.\n따라서 $p=-1$, $q=2$이고\n$p+q=-1+2$\n$=1$\n이다.\n\n따라서 정답은 ③이다.",
+    "sourceQid": 16,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 17,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "두 무리함수 $y=\\sqrt{4x}$, $y=\\sqrt{2x}$의 그래프가 그림과 같을 때, $y=\\sqrt{4x}$ 위의 점 $A$에서 $x$축에 평행한 직선을 그어 $y=\\sqrt{2x}$와 만나는 점을 $D$라 하고, 두 점 $A,D$에서 $x$축에 내린 수선의 발을 각각 $B,C$라 하자. 사각형 $ABCD$가 정사각형일 때, 정사각형 $ABCD$의 넓이는?",
+    "choices": [
+      "$4$",
+      "$8$",
+      "$12$",
+      "$16$",
+      "$20$"
+    ],
+    "answer": "④",
+    "solution": "점 $A$의 $x$좌표를 $a$ ($a\\gt 0$)라 하면\n$A(a,\\sqrt{4a})$\n이다.\n\n점 $D$는 $y=\\sqrt{2x}$ 위에서 점 $A$와 $y$좌표가 같으므로 $D$의 $x$좌표를 $x_D$라 하면\n$\\sqrt{2x_D}=\\sqrt{4a}$\n$2x_D=4a$\n$x_D=2a$\n이다.\n\n따라서 정사각형 $ABCD$의 가로 길이는\n$\\overline{AD}=2a-a=a$\n이고, 세로 길이는\n$\\overline{AB}=\\sqrt{4a}=2\\sqrt{a}$\n이다.\n\n사각형 $ABCD$가 정사각형이므로\n$a=2\\sqrt{a}$\n이다.\n$a\\gt 0$이므로 양변을 제곱하면\n$a^2=4a$\n$a=4$\n이다.\n\n정사각형의 한 변의 길이가 $4$이므로 넓이는\n$4\\times 4=16$\n이다.\n\n따라서 정답은 ④이다.",
+    "sourceQid": 17,
+    "variationType": "STRICT_VARIANT",
+    "image": "assets/images/25_제일고_2학기_기말_고1_유사2/q17.svg",
+    "imageSize": "full",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q17-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 18,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "객관식",
+    "layoutTag": "grid",
+    "tags": [
+      "객관식"
+    ],
+    "wide": false,
+    "content": "$0\\le x\\le 2$에서 정의된 두 함수<br>$f(x)=\\begin{cases}3x&(0\\le x\\lt 1)\\\\-x+4&(1\\le x\\le 2)\\end{cases}$, $g(x)=\\begin{cases}x+1&(0\\le x\\lt 1)\\\\-2x+4&(1\\le x\\le 2)\\end{cases}$<br>에 대하여 함수 $y=(f\\circ g)(x)$의 그래프와 $x$축 및 $y$축으로 둘러싸인 부분의 넓이는?",
+    "choices": [
+      "$\\dfrac{1}{2}$",
+      "$\\dfrac{3}{2}$",
+      "$\\dfrac{5}{2}$",
+      "$\\dfrac{7}{2}$",
+      "$\\dfrac{9}{2}$"
+    ],
+    "answer": "⑤",
+    "solution": "합성함수 $(f\\circ g)(x)=f(g(x))$의 식을 $g(x)$의 값의 범위에 따라 나눈다.\n\n$0\\le x\\lt 1$일 때 $g(x)=x+1$이므로 $1\\le g(x)\\lt 2$이다.\n따라서 $f$의 둘째 식을 적용하면\n$(f\\circ g)(x)=-(x+1)+4$\n$=-x+3$\n이다.\n\n$1\\le x\\le 2$일 때 $g(x)=-2x+4$이고, $g(x)=1$이 되는 값은 $x=\\dfrac{3}{2}$이다.\n$1\\le x\\le \\dfrac{3}{2}$이면 $1\\le g(x)\\le 2$이므로\n$(f\\circ g)(x)=-(-2x+4)+4$\n$=2x$\n이다.\n\n$\\dfrac{3}{2}\\lt x\\le 2$이면 $0\\le g(x)\\lt 1$이므로 $f$의 첫째 식을 적용하면\n$(f\\circ g)(x)=3(-2x+4)$\n$=-6x+12$\n이다.\n\n$0\\le x\\le 1$ 구간의 넓이는 양 끝 높이가 $3$과 $2$인 사다리꼴이므로\n$\\dfrac{3+2}{2}\\times 1=\\dfrac{5}{2}$\n이다.\n\n$1\\le x\\le \\dfrac{3}{2}$ 구간의 넓이는 양 끝 높이가 $2$와 $3$이고 폭이 $\\dfrac{1}{2}$인 사다리꼴이므로\n$\\dfrac{2+3}{2}\\times \\dfrac{1}{2}=\\dfrac{5}{4}$\n이다.\n\n$\\dfrac{3}{2}\\le x\\le 2$ 구간은 밑변이 $\\dfrac{1}{2}$, 높이가 $3$인 삼각형이므로\n$\\dfrac{1}{2}\\times \\dfrac{1}{2}\\times 3=\\dfrac{3}{4}$\n이다.\n\n따라서 전체 넓이는\n$\\dfrac{5}{2}+\\dfrac{5}{4}+\\dfrac{3}{4}=\\dfrac{9}{2}$\n이다.\n\n따라서 정답은 ⑤이다.",
+    "sourceQid": 18,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 19,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 1] 실수 전체의 집합에 대하여 명제 “어떤 실수 $x$에 대하여 $x^2+2kx+k+6\\le 0$이다.”의 부정을 쓰고, 그 부정이 참이 되도록 하는 정수 $k$의 개수를 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$4$",
+    "solution": "주어진 명제의 부정은\n“모든 실수 $x$에 대하여 $x^2+2kx+k+6\\gt 0$이다.”\n이다.\n\n모든 실수 $x$에 대하여 이차부등식 $x^2+2kx+k+6\\gt 0$이 성립하려면 이차방정식 $x^2+2kx+k+6=0$의 판별식을 $D$라 할 때 $D\\lt 0$이어야 하므로\n$\\dfrac{D}{4}=k^2-(k+6)\\lt 0$\n$k^2-k-6\\lt 0$\n$(k-3)(k+2)\\lt 0$\n$-2\\lt k\\lt 3$\n이다.\n\n이를 만족하는 정수 $k$는 $-1,0,1,2$이므로 구하는 개수는 $4$이다.",
+    "sourceQid": 19,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q19-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 20,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 2] 함수 $f(x)=\\sqrt{x-2}+2$의 역함수를 $g(x)$라 할 때, 두 함수 $y=f(x)$, $y=g(x)$의 그래프의 두 교점 사이의 거리를 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$\\sqrt{2}$",
+    "solution": "함수 $f(x)=\\sqrt{x-2}+2$의 정의역은 $x\\ge 2$, 치역은 $y\\ge 2$이다.\n$f$는 정의역에서 증가하는 함수이므로 두 함수 $y=f(x)$, $y=g(x)$의 그래프의 교점은 직선 $y=x$ 위에 있다.\n\n따라서 교점의 $x$좌표는 방정식\n$\\sqrt{x-2}+2=x$\n의 해와 같다.\n$\\sqrt{x-2}=x-2$에서 $x\\ge 2$이므로 양변을 제곱하면\n$x-2=(x-2)^2$\n$(x-2)(x-3)=0$\n$x=2$ 또는 $x=3$\n이다.\n\n두 교점의 좌표는 $(2,2)$, $(3,3)$이므로 두 교점 사이의 거리는\n$\\sqrt{(3-2)^2+(3-2)^2}=\\sqrt{2}$\n이다.",
+    "sourceQid": 20,
+    "variationType": "STRICT_VARIANT",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고1_유사2/q20-solution.svg",
+    "solutionImageAlt": "해설 그림: ",
+    "solutionImageCaption": "",
+    "solutionImageSize": "full"
+  },
+  {
+    "id": 21,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 3] 함수 $f(x)=\\dfrac{1}{(2x-1)(2x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(50)$의 값을 구하는 과정을 서술하시오.",
+    "choices": [],
+    "answer": "$\\dfrac{50}{101}$",
+    "solution": "부분분수로 분해하면\n$f(x)=\\dfrac{1}{(2x-1)(2x+1)}$\n$=\\dfrac{1}{2}\\left(\\dfrac{1}{2x-1}-\\dfrac{1}{2x+1}\\right)$\n이다.\n\n따라서 구하는 합은\n$f(1)+f(2)+\\cdots+f(50)$\n$=\\dfrac{1}{2}\\left\\{\\left(1-\\dfrac{1}{3}\\right)+\\left(\\dfrac{1}{3}-\\dfrac{1}{5}\\right)+\\cdots+\\left(\\dfrac{1}{99}-\\dfrac{1}{101}\\right)\\right\\}$\n이다.\n\n중간의 항들이 차례로 소거되므로\n$=\\dfrac{1}{2}\\left(1-\\dfrac{1}{101}\\right)$\n$=\\dfrac{1}{2}\\times\\dfrac{100}{101}$\n$=\\dfrac{50}{101}$\n이다.",
+    "sourceQid": 21,
+    "variationType": "STRICT_VARIANT"
+  },
+  {
+    "id": 22,
+    "standardCourse": "공통수학2",
+    "curriculum": "2022",
+    "curriculumKey": "2022",
+    "courseKey": "공통수학2",
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형"
+    ],
+    "wide": false,
+    "content": "[서술형 4] $a,b,c$가 자연수일 때, 명제 “$a^2+b^2=c^2$이면 $a,b$ 중 적어도 하나는 $3$의 배수이다.”가 참임을 귀류법을 사용하여 증명하시오.",
+    "choices": [],
+    "answer": "$a,b$ 중 적어도 하나는 $3$의 배수이다.",
+    "solution": "결론을 부정하여 $a,b$가 모두 $3$의 배수가 아니라고 가정하자.\n\n$3$의 배수가 아닌 자연수는 음이 아닌 정수 $k$에 대하여 $3k+1$ 또는 $3k+2$ 꼴로 나타낼 수 있다.\n각 경우를 제곱하면\n$(3k+1)^2=9k^2+6k+1=3(3k^2+2k)+1$\n$(3k+2)^2=9k^2+12k+4=3(3k^2+4k+1)+1$\n이므로 $3$의 배수가 아닌 자연수의 제곱을 $3$으로 나눈 나머지는 항상 $1$이다.\n\n따라서 $a^2+b^2$을 $3$으로 나눈 나머지는\n$1+1=2$\n이다.\n\n한편 자연수 $c$가 $3$의 배수이면 $c^2$을 $3$으로 나눈 나머지는 $0$이고, $3$의 배수가 아니면 $c^2$을 $3$으로 나눈 나머지는 $1$이다.\n즉, 어떤 자연수 $c$에 대하여도 $c^2$을 $3$으로 나눈 나머지는 $2$가 될 수 없다.\n\n이는 $a^2+b^2=c^2$과 모순이므로 $a,b$가 모두 $3$의 배수가 아니라는 가정은 거짓이다.\n따라서 $a,b$ 중 적어도 하나는 $3$의 배수이다.",
+    "sourceQid": 22,
+    "variationType": "STRICT_VARIANT"
+  }
+];

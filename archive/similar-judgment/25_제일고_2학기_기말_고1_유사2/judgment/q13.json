@@ -1,0 +1,69 @@
+{
+  "qid": 13,
+  "itemFingerprint": "89933f277ae45439",
+  "solveSteps": [
+    "y=(3x-4)/(x-2)=3+2/(x-2) 이므로 점근선은 x=2, y=3 이고 대칭의 중심은 (2,3) 이다.",
+    "① 점 (2,3) 에 대칭이다. ② 중심을 지나고 기울기 1 인 y=x+1 에 대칭이다. ③ y=2/x 를 x축으로 2, y축으로 3 평행이동한 그래프이다. ④ 2>0 이므로 x>2 에서 감소한다.",
+    "⑤ 중심 (2,3) 을 지나고 기울기가 -1 인 직선은 y=-x+5 이므로 y=-x+3 에 대해서는 대칭이 아니다. 따라서 ⑤."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "의 그래프에 대한 설명으로",
+  "rpmRecordId": "H1-RPM-261",
+  "rpmReason": "y=3+2/(x-2) 로 점근선 x=2, y=3 을 읽어 대칭의 중심 (2,3) 을 정하는 단계라 점근선 행이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "typeReason": "중심 (2,3) 과 평행이동, 증가·감소로 다섯 보기를 판정하고 y=-x+3 은 중심을 지나지 않아 틀림을 보이는 것이 그래프 성질 판정 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "식 변형 y=3+2/(x-2), 중심 (2,3), 기울기 ±1 인 대칭축 확인, 평행이동·증감 판정까지 여러 보기를 따져야 해 3단계로 두고 2와의 경계를 표시한다.",
+  "difficultyBoundaryFlag": "B23",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "의 그래프에 대한 설명으로"
+      }
+    ],
+    "goal": [
+      {
+        "term": "판정",
+        "src": "stem",
+        "quote": "옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "solution",
+        "quote": "평행이동하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "대칭성",
+        "src": "solution",
+        "quote": "에 대하여 대칭이다"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "유리함수를 y=3+2/(x-2) 로 정리해 중심 (2,3) 과 대칭축 y=x+1, y=-x+5 를 구한 뒤 ⑤ y=-x+3 이 틀림을 확인했다. 저장 정답 ⑤ 와 같다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

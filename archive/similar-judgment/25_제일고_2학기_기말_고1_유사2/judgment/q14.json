@@ -1,0 +1,77 @@
+{
+  "qid": 14,
+  "itemFingerprint": "2fc1cd0bd02d61f9",
+  "solveSteps": [
+    "y=1/(x-2)+1 의 점근선은 x=2, y=1 이다.",
+    "y=(kx+1)/(x+k)=k+(1-k^2)/(x+k) 이고 k>0, k≠1 이므로 점근선은 x=-k, y=k 이다.",
+    "직사각형의 가로는 2-(-k)=k+2, 세로는 |k-1| 이므로 (k+2)|k-1|=18 이다.",
+    "0<k<1 이면 18 보다 작아 불가능하고 k>1 이면 k^2+k-20=0 이라 k=4 이다. 따라서 ②."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "H22-C2-08",
+  "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+  "unitEvidence": "점근선으로 둘러싸인 직사각형의 넓이가",
+  "rpmRecordId": "H1-RPM-261",
+  "rpmReason": "두 유리함수의 점근선 x=2, y=1 과 x=-k, y=k 를 구해 직사각형 변으로 쓰는 단계라 점근선 행이다. 직사각형 넓이 18 의 변이 되는 점근선이다.",
+  "problemTypeKey": "PT_RATIONAL_ASYMPTOTE",
+  "templateKey": "TPL_RATIONAL_ASYMPTOTE_GEOMETRY",
+  "typeReason": "점근선 x=2, y=1 과 x=-k, y=k 로 가로 k+2, 세로 |k-1| 인 직사각형의 넓이 18 을 식으로 세우는 것이 점근선과 도형 관계 템플릿이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "medium",
+  "difficultyReason": "둘째 함수의 변형으로 점근선 x=-k, y=k 를 얻고 (k+2)|k-1|=18 을 경우 나누어 k=4 를 얻는 세 단계라 3단계이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "유리함수",
+        "src": "stem",
+        "quote": "두 유리함수"
+      }
+    ],
+    "goal": [
+      {
+        "term": "값",
+        "src": "stem",
+        "quote": "의 값은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "점근선",
+        "src": "solution",
+        "quote": "점근선은",
+        "evidenceType": "NAMED"
+      },
+      {
+        "term": "변환",
+        "src": "solution",
+        "quote": "둘째 유리함수를 변형하면",
+        "evidenceType": "IMPLIED",
+        "justification": "y=(kx+1)/(x+k) 를 y=k+(1-k^2)/(x+k) 꼴로 바꿔 점근선을 읽는다."
+      }
+    ],
+    "condition": [
+      {
+        "term": "양수",
+        "src": "stem",
+        "quote": "양수 $k$의 값은?"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "두 유리함수의 점근선을 읽어 직사각형 변 k+2, |k-1| 로 (k+2)|k-1|=18 을 세우고 k>1 에서 k=4, ② 와 확인했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
