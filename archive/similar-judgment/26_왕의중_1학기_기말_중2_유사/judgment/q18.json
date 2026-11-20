@@ -1,0 +1,66 @@
+{
+  "qid": 18,
+  "itemFingerprint": "fa5dc81121696f47",
+  "solveSteps": [
+    "1. 연립방정식 cases -x + 3y = -3, ax + by = -6 의 해의 성질을 분석한다.",
+    "2. 첫째 식을 정리하면 y = (1/3)x - 1 이므로 해는 이 직선 위에 존재한다. (①은 옳음)",
+    "3. 둘째 식을 정리하면 y = -(a/b)x - 6/b 이므로 해는 이 직선 위에 존재한다. (②는 옳음)",
+    "4. a = -2, b = 6 이면 -2x + 6y = -6 이 되어 -x + 3y = -3 과 완전히 일치하므로 해가 무수히 많다. (③은 옳음)",
+    "5. a = 0, b = -3 이면 -3y = -6 에서 y = 2 이고, -x + 6 = -3 에서 x = 9 이므로 해가 (9, 2) 로 오직 하나 존재한다. 따라서 해가 없다는 설명은 옳지 않다. (④는 옳지 않음)",
+    "6. a = -1, b = 3 이면 -x + 3y = -6 이 되어 -x + 3y = -3 과 기울기가 같고 상수항이 달라 평행하므로 해가 없다. (⑤는 옳음)"
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} -x + 3y = -3 \\\\ ax + by = -6 \\end{cases}$의 해에 대한 설명으로 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-174",
+  "rpmReason": "연립방정식 cases -x + 3y = -3 과 ax + by = -6 의 계수에 따른 해의 개수와 직선의 관계를 종합 분석하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "연립방정식 cases -x + 3y = -3, ax + by = -6 의 계수 a, b 에 따른 해의 개수와 직선 위의 점 여부를 판별하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "ax + by = -6 에서 a=0, b=-3 일 때 x=9, y=2 의 유일한 해가 존재함을 확인하여 ④의 거짓을 판별하는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} -x + 3y = -3"
+      }
+    ],
+    "goal": [
+      {
+        "term": "직선",
+        "src": "solution",
+        "quote": "정리하면 $y = \\frac{1}{3}x - 1$이므로 해는 이 직선 위에 존재한다."
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "첫째 식에 대입하면 $-x + 6 = -3",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "ax + by = -6 에서 a=0, b=-3 일 때 -3y=-6 에서 y=2, x=9 로 유일한 해가 존재하므로 해가 없다고 한 ④가 거짓임을 확인해 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

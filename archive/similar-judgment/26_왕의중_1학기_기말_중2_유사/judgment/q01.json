@@ -1,0 +1,65 @@
+{
+  "qid": 1,
+  "itemFingerprint": "f9d79c3b55fae751",
+  "solveSteps": [
+    "1. 일차방정식 3x + 2y = 22 에서 x, y 가 자연수이므로 2y = 22 - 3x 에서 3x < 22 이다.",
+    "2. x = 2 일 때 6 + 2y = 22 에서 2y = 16 이므로 y = 8 이다.",
+    "3. x = 4 일 때 12 + 2y = 22 에서 2y = 10 이므로 y = 5 이다.",
+    "4. x = 6 일 때 18 + 2y = 22 에서 2y = 4 이므로 y = 2 이다.",
+    "5. x >= 8 이면 2y <= -2 가 되어 자연수 해가 없으므로 순서쌍은 (2, 8), (4, 5), (6, 2) 의 3개이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "$x, y$가 자연수일 때, 일차방정식 $3x + 2y = 22$의 해의 개수는?",
+  "rpmRecordId": "M2-RPM-150",
+  "rpmReason": "일차방정식 3x + 2y = 22 의 자연수 해 순서쌍 개수를 구하는 해와 계수 문항이다.",
+  "problemTypeKey": "PT_M2_TWO_VARIABLE_LINEAR_EQUATION",
+  "templateKey": "NONE",
+  "typeReason": "일차방정식 3x + 2y = 22 를 만족시키는 자연수 해 순서쌍 (x, y) 의 개수를 구하는 문제이므로 PT_M2_TWO_VARIABLE_LINEAR_EQUATION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "3x + 2y = 22 에 짝수 x 를 대입해 자연수 해 3개를 구하는 2단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "자연수",
+        "src": "stem",
+        "quote": "$x, y$가 자연수일 때"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "src": "stem",
+        "quote": "일차방정식 $3x + 2y = 22$의 해의 개수는?"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "$x$에 $1$부터 차례로 대입하면",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "3x + 2y = 22 에 자연수 x를 대입하여 순서쌍 (2, 8), (4, 5), (6, 2) 의 3개를 얻어 ④로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

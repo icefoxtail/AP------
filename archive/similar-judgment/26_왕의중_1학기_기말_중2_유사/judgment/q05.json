@@ -1,0 +1,67 @@
+{
+  "qid": 5,
+  "itemFingerprint": "6af0d0516a720fb3",
+  "solveSteps": [
+    "1. 민수는 m 을 -1 로 잘못 보았으므로 (1, -1) 은 ax + 3y = -1 과 2x - by = n 을 만족한다.",
+    "2. a(1) + 3(-1) = -1 에서 a = 2 이고, 2(1) - b(-1) = n 에서 2 + b = n 이다.",
+    "3. 서연이는 n 을 -7 로 잘못 보았으므로 (1, 3) 은 ax + 3y = m 과 2x - by = -7 을 만족한다.",
+    "4. 2(1) - b(3) = -7 에서 -3b = -9 이므로 b = 3 이다.",
+    "5. b = 3 이므로 n = 2 + 3 = 5 이고, a = 2, (1, 3) 을 대입하면 m = 2(1) + 3(3) = 11 이다.",
+    "6. 바른 연립방정식은 cases 2x + 3y = 11, 2x - 3y = 5 이다.",
+    "7. 더하면 4x = 16 에서 x = 4, 빼면 6y = 6 에서 y = 1 이므로 x + y = 4 + 1 = 5 이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+  "unitEvidence": "연립방정식 $\\begin{cases} ax + 3y = m \\\\ 2x - by = n \\end{cases}$을 풀 때",
+  "rpmRecordId": "M2-RPM-151",
+  "rpmReason": "잘못 본 계수 m=-1 과 n=-7 에서 a=2, b=3, m=11, n=5 를 구하고 바른 연립방정식을 풀어 x+y = 5 를 구하는 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "잘못 본 상수 m, n 조건으로부터 연립방정식 cases ax + 3y = m 의 원래 식을 복원하고 해를 구하는 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "민수와 서연이가 바르게 본 식에 각각 대입해 a, b, m, n 을 구하고 4x = 16 을 푸는 3단계 복원 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "단, $a, b, m, n$은 상수)"
+      }
+    ],
+    "goal": [
+      {
+        "term": "연립방정식",
+        "src": "stem",
+        "quote": "연립방정식 $\\begin{cases} ax + 3y = m"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "에 $(1, 3)$과 함께 대입하면 $m",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "잘못 본 상수로부터 a=2, b=3, m=11, n=5 를 복원하여 2x+3y=11, 2x-3y=5 를 풀어 4x=16 에서 x=4, y=1 을 얻어 x+y=5 로 ③으로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

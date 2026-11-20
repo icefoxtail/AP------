@@ -1,0 +1,65 @@
+{
+  "qid": 22,
+  "itemFingerprint": "6e215d126c5da1e1",
+  "solveSteps": [
+    "1. 일차함수 y = ax + b 에서 현우는 y절편을 잘못 보고 기울기 a 는 바르게 보았으므로 두 점 (2, 1) 과 (4, 7) 을 지나는 직선의 기울기는 a = (7 - 1) / (4 - 2) = 6 / 2 = 3 이다.",
+    "2. 예나는 기울기를 잘못 보고 y절편 b 는 바르게 보았으므로 두 점 (1, 2) 와 (3, -6) 을 지나는 직선의 기울기는 (-6 - 2) / (3 - 1) = -4 이다.",
+    "3. y = -4x + b 에 (1, 2) 를 대입하면 2 = -4 + b 에서 b = 6 이다.",
+    "4. 따라서 실제 일차함수 y = ax + b 의 식은 y = 3x + 6 이다.",
+    "5. y = 0 일 때 3x + 6 = 0 에서 3x = -6 이므로 x = -2 이다."
+  ],
+  "solvedAnswer": "$-2$",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "일차함수 $y = ax + b$의 그래프를 그리는데 현우는 $y$절편을 잘못 보고",
+  "rpmRecordId": "M2-RPM-170",
+  "rpmReason": "일차함수 y = ax + b 에서 현우의 두 점으로 기울기 3, 예나의 두 점으로 y절편 6 을 복원해 식 y = 3x + 6 에서 x절편 -2 를 구하는 두 점 식 구하기 문항이다.",
+  "problemTypeKey": "PT_LINE_EQUATION",
+  "templateKey": "TPL_LINE_TWO_POINTS",
+  "typeReason": "일차함수 y = ax + b 의 잘못 본 두 점 조건들로부터 바른 기울기와 y절편을 각각 구해 실제 식 y = 3x + 6 의 x절편 -2 를 결정하는 문제이므로 PT_LINE_EQUATION을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "일차함수 y = ax + b 에서 a = 3, b = 6 을 복원해 y = 3x + 6 에서 x절편 -2 를 구하는 3단계 복원 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "기울기",
+        "src": "stem",
+        "quote": "예나는 기울기를 잘못 보고 두 점"
+      }
+    ],
+    "goal": [
+      {
+        "term": "절편",
+        "src": "stem",
+        "quote": "실제 일차함수 $y = ax + b$의 그래프의 $x$절편을"
+      }
+    ],
+    "method": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "에 $(1, 2)$를 대입하면 $2 = -4 + b",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = ax + b 에서 현우의 두 점으로 a = 3, 예나의 두 점으로 b = 6 을 복원해 y = 3x + 6 을 얻고 x절편 -2 를 구해 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

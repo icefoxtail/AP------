@@ -1,0 +1,66 @@
+{
+  "qid": 11,
+  "itemFingerprint": "1dfdbd521ffdc11f",
+  "solveSteps": [
+    "1. 일차함수 y = -(2/3)x + 4 의 그래프의 성질을 분석한다.",
+    "2. ① x=3 일 때 y = -(2/3)(3) + 4 = 2 이므로 점 (3, 2) 를 지난다. (옳음)",
+    "3. ② 기울기 -(2/3) < 0, y절편 4 > 0 이므로 제1, 2, 4사분면을 지난다. (옳음)",
+    "4. ③ 기울기가 음수이므로 오른쪽 아래로 향하는 직선이다. (옳음)",
+    "5. ④ y = -(2/3)x - 5 와 기울기가 같고 y절편이 다르므로 평행하다. (옳음)",
+    "6. ⑤ 기울기가 -(2/3) 이므로 x가 6만큼 증가할 때 y는 6 * (-(2/3)) = -4, 즉 4만큼 감소해야 하므로 9만큼 감소한다는 설명은 옳지 않다."
+  ],
+  "solvedAnswer": "⑤",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-04",
+  "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+  "unitEvidence": "다음 중 일차함수 $y = -\\frac{2}{3}x + 4$의 그래프에 대한 설명으로 옳지 않은 것은?",
+  "rpmRecordId": "M2-RPM-166",
+  "rpmReason": "일차함수 y = -(2/3)x + 4 의 기울기 -(2/3) 와 y절편 4 를 이용해 지나는 점, 사분면, 증가·감소량을 판별하는 기울기·절편 문항이다.",
+  "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+  "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+  "typeReason": "일차함수 y = -(2/3)x + 4 의 그래프 개형과 기울기 변화율을 종합 판정하는 문제이므로 PT_FUNCTION_GRAPH_PROPERTIES를 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "y = -(2/3)x + 4 에서 x가 6 증가할 때 y 감소량이 4 임을 확인하여 ⑤의 오류를 찾는 2단계 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차함수",
+        "src": "stem",
+        "quote": "다음 중 일차함수 $y = -\\frac{2}{3}x + 4$의"
+      }
+    ],
+    "goal": [
+      {
+        "term": "그래프",
+        "src": "stem",
+        "quote": "그래프에 대한 설명으로 옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "기울기",
+        "src": "solution",
+        "quote": "기울기가 $-\\frac{2}{3} < 0$, $y$절편이",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "y = -(2/3)x + 4 의 기울기가 -(2/3) 이므로 x가 6 증가할 때 y는 4 감소해야 하는데 9 감소라 한 ⑤가 거짓임을 확인해 ⑤로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

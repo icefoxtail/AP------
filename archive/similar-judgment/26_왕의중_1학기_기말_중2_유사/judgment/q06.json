@@ -1,0 +1,67 @@
+{
+  "qid": 6,
+  "itemFingerprint": "18f1cf564d203e27",
+  "solveSteps": [
+    "1. 지난달 남학생 방문자 수를 x명, 여학생 방문자 수를 y명이라 하면 x + y = 600 이다.",
+    "2. 이번 달 남학생은 15% 증가, 여학생은 10% 감소하여 15명 증가했으므로 (15/100)x - (10/100)y = 15 이다.",
+    "3. 양변에 20 을 곱하면 3x - 2y = 300 이다.",
+    "4. y = 600 - x 를 대입하면 3x - 2(600 - x) = 300 에서 5x - 1200 = 300 이므로 5x = 1500 이 되어 x = 300 이다.",
+    "5. 따라서 지난달 남학생 방문자 수는 300명이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-03",
+  "subUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION_WORD",
+  "unitEvidence": "지난달 어느 학교 도서관의 방문자 수는 남학생과 여학생을 합쳐 모두 $600$명이었다.",
+  "rpmRecordId": "M2-RPM-161",
+  "rpmReason": "남학생과 여학생 합 600명과 증감률 조건으로 연립방정식을 세워 5x = 1500 으로 남학생 수 300명을 구하는 증감률 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_SYSTEM",
+  "templateKey": "NONE",
+  "typeReason": "도서관 남녀 학생 수의 합 600명과 증감량 조건으로 연립방정식을 세워 5x = 1500 을 푸는 연립일차방정식 활용 문제이므로 PT_M2_LINEAR_SYSTEM을 선택함.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "증감률을 분수로 표현해 x + y = 600 과 3x - 2y = 300 을 연립하여 300명을 구하는 3단계 활용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "증가감소",
+        "src": "stem",
+        "quote": "여학생 방문자 수는 지난달보다 $10\\%$ 감소하여"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대입",
+        "src": "solution",
+        "quote": "y = 600 - x$를 대입하면 $3x",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "method": [
+      {
+        "term": "연립방정식",
+        "src": "solution",
+        "quote": "x + y = 600",
+        "evidenceType": "IMPLIED",
+        "justification": "총 방문자 수와 증감량으로 연립방정식을 세워 대입법으로 풂"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "남녀 합 x+y=600 과 증감량 식 3x-2y=300 을 연립해 5x=1500 에서 남학생 수 300명을 얻어 ②로 판정함.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
