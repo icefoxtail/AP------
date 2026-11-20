@@ -1,0 +1,57 @@
+{
+  "qid": "q21",
+  "itemFingerprint": "034bc46a3e6fc6d2",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "$\\overline{AD} \\parallel \\overline{BC}$이므로 $\\angle ADB = \\angle DBC = 28^{\\circ}$ (엇각)",
+    "$\\overline{AB} = \\overline{AD}$이므로 $\\triangle ABD$는 이등변삼각형이고 $\\angle ABD = \\angle ADB = 28^{\\circ}$",
+    "따라서 $\\angle ABC = 28^{\\circ} + 28^{\\circ} = 56^{\\circ}$",
+    "등변사다리꼴에서 밑각의 크기가 같으므로 $\\angle C = \\angle ABC = 56^{\\circ}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AD} \\parallel \\overline{BC}$인 등변사다리꼴 $ABCD$에서 $\\overline{AB} = \\overline{AD}$이고 $\\angle DBC = 28^{\\circ}$일 때, $\\angle BDC$의 크기를 구하면?",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-080",
+  "rpmEvidence": "$\\overline{AD} \\parallel \\overline{BC}$이므로 $\\angle ADB = \\angle DBC = 28^{\\circ}$ (엇각)",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q21번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)",
+  "rpmReason": "Q21번 문항은 M2-RPM-080에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q21번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+  "how": "Q21번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "$\\overline{AD} \\parallel \\overline{BC}$인 등변사다리꼴 $ABCD$에서 $\\overline{AB} = \\overline{AD}$이고 $\\angle DBC = 28^{\\circ}$일 때, $\\angle BDC$의 크기를 구하면?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "등변사다리꼴",
+        "src": "stem",
+        "quote": "$\\overline{AD} \\parallel \\overline{BC}$인 등변사다리꼴 $ABCD$에서 $\\overline{AB} = \\overline{AD}$이고 $\\angle DBC = 28^{\\circ}$일 때, $\\angle BDC$의 크기를 구하면?"
+      }
+    ],
+    "method": [
+      {
+        "term": "엇각",
+        "src": "solution",
+        "quote": "$\\overline{AD} \\parallel \\overline{BC}$이므로 $\\angle ADB = \\angle DBC = 28^{\\circ}$ (엇각)",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

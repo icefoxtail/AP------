@@ -1,0 +1,56 @@
+{
+  "qid": "q18",
+  "itemFingerprint": "59834211414143d9",
+  "solvedAnswer": "②",
+  "solveSteps": [
+    "평행사변형 $ABCD$의 네 내각의 이등분선의 교점으로 이루어진 $\\square PQRS$는 직사각형이다($\\overline{AB} \\ne \\overline{BC}$이므로 정사각형은 아니다).",
+    "직사각형은 두 쌍의 대변의 길이가 같고($\\overline{PS} = \\overline{QR},\\ \\overline{PQ} = \\overline{SR}$), 네 내각이 모두 $90^{\\circ}$이며, 두 대각선의 길이가 같다($\\overline{PR} = \\overline{QS}$).",
+    "그러나 두 대각선은 서로 수직이 아니므로 ② $\\overline{PR} \\perp \\overline{QS}$는 옳지 않다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$\\overline{AB} \\ne \\overline{BC}$인 평행사변형 $ABCD$에서 네 내각의 이등분선의 교점으로 이루어진 사각형 $PQRS$에 대한 설명으로 다음 중 옳지 않은 것은?",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-078",
+  "rpmEvidence": "평행사변형 $ABCD$의 네 내각의 이등분선의 교점으로 이루어진 $\\square PQRS$는 직사각형이다($\\overline{AB} \\ne \\overline{BC}$이므로 정사각형은 아니다).",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q18번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AB)",
+  "rpmReason": "Q18번 문항은 M2-RPM-078에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AB)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q18번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AB)",
+  "how": "Q18번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 ②을(를) 바르게 구하였다. (문항 토큰 AB)",
+  "slots": {
+    "given": [
+      {
+        "term": "사각형",
+        "src": "stem",
+        "quote": "$\\overline{AB} \\ne \\overline{BC}$인 평행사변형 $ABCD$에서 네 내각의 이등분선의 교점으로 이루어진 사각형 $PQRS$에 대한 설명으로 다음 중 옳지 않은 것은?"
+      }
+    ],
+    "goal": [
+      {
+        "term": "평행사변형",
+        "src": "stem",
+        "quote": "$\\overline{AB} \\ne \\overline{BC}$인 평행사변형 $ABCD$에서 네 내각의 이등분선의 교점으로 이루어진 사각형 $PQRS$에 대한 설명으로 다음 중 옳지 않은 것은?"
+      }
+    ],
+    "method": [
+      {
+        "term": "직사각형",
+        "src": "solution",
+        "quote": "평행사변형 $ABCD$의 네 내각의 이등분선의 교점으로 이루어진 $\\square PQRS$는 직사각형이다($\\overline{AB} \\ne \\overline{BC}$이므로 정사각형은 아니다).",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

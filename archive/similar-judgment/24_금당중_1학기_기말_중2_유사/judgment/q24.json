@@ -1,0 +1,57 @@
+{
+  "qid": "q24",
+  "itemFingerprint": "ccdb8836230792a8",
+  "solvedAnswer": "(1) $\\triangle ABC = \\triangle DBC$에서 공통 부분 $\\triangle OBC$를 빼면 $\\triangle OAB = \\triangle ODC$, (2) $35\\text{ cm}^{2}$",
+  "solveSteps": [
+    "(1) $\\overline{AD} \\parallel \\overline{BC}$이므로 밑변 $\\overline{BC}$가 같고 높이가 같은 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 넓이는 같다.",
+    "양쪽 넓이에서 공통 부분인 $\\triangle OBC$의 넓이를 빼면 $\\triangle OAB = \\triangle ODC$이다.",
+    "(2) $\\triangle OAB = \\triangle ODC = 14\\text{ cm}^{2}$이고, $\\triangle OAB$와 $\\triangle OBC$는 높이가 같으므로 넓이의 비는 밑변의 길이의 비 $\\overline{AO} : \\overline{OC} = 2 : 5$와 같다.",
+    "$14 : \\triangle OBC = 2 : 5 \\implies \\triangle OBC = 35\\text{ cm}^{2}$"
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "[서술형 3] $\\overline{AD} \\parallel \\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라고 할 때, $\\overline{AO} : \\overline{OC} = 2 : 5$이다.",
+  "standardUnitKey": "M2-05",
+  "subUnitKey": "M2-05-QUADRILATERAL_PROPERTIES",
+  "rpmRecordId": "M2-RPM-076",
+  "rpmEvidence": "(1) $\\overline{AD} \\parallel \\overline{BC}$이므로 밑변 $\\overline{BC}$가 같고 높이가 같은 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 넓이는 같다.",
+  "problemTypeKey": "PT_QUADRILATERAL_PROPERTIES",
+  "templateKey": "TPL_QUADRILATERAL_CRITERIA",
+  "newKeyProposal": null,
+  "typeReason": "Q24번 문항은 PT_QUADRILATERAL_PROPERTIES 유형에 해당하며 관련 개념의 성질을 종합적으로 묻는다. (문항 토큰 AD)",
+  "rpmReason": "Q24번 문항은 M2-RPM-076에 배정된 유형으로 대표적인 풀이 원리를 다룬다. (문항 토큰 AD)",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "Q24번 문항은 핵심 성질을 한두 단계 적용하여 해결되는 난이도 2 수준의 문항이다. (문항 토큰 AD)",
+  "how": "Q24번 문항으로 M2-05 단원의 기본 개념과 성질을 적용하여 (1) $\\triangle ABC = \\triangle DBC$에서 공통 부분 $\\triangle OBC$를 빼면 $\\triangle OAB = \\triangle ODC$, (2) $35\\text{ cm}^{2}$을(를) 바르게 구하였다. (문항 토큰 AD)",
+  "slots": {
+    "given": [
+      {
+        "term": "사다리꼴",
+        "src": "stem",
+        "quote": "[서술형 3] $\\overline{AD} \\parallel \\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라고 할 때, $\\overline{AO} : \\overline{OC} = 2 : 5$이다."
+      }
+    ],
+    "goal": [
+      {
+        "term": "교점",
+        "src": "stem",
+        "quote": "[서술형 3] $\\overline{AD} \\parallel \\overline{BC}$인 사다리꼴 $ABCD$에서 두 대각선 $AC, BD$의 교점을 $O$라고 할 때, $\\overline{AO} : \\overline{OC} = 2 : 5$이다."
+      }
+    ],
+    "method": [
+      {
+        "term": "삼각형",
+        "src": "solution",
+        "quote": "(1) $\\overline{AD} \\parallel \\overline{BC}$이므로 밑변 $\\overline{BC}$가 같고 높이가 같은 두 삼각형 $\\triangle ABC$와 $\\triangle DBC$의 넓이는 같다.",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
