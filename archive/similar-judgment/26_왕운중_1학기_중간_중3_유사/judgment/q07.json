@@ -1,0 +1,71 @@
+{
+  "qid": 7,
+  "itemFingerprint": "e92d0e18c4235101",
+  "solveSteps": [
+    "한 변의 길이가 1인 정사각형의 대각선의 길이는 피타고라스 정리에 의해 sqrt(1^2 + 1^2) = sqrt(2)이다.",
+    "-1 - sqrt(2)는 수직선 위의 점 -1을 중심으로 하고 반지름 sqrt(2)로 왼쪽으로 내린 점이다.",
+    "조건에서 점 -1을 중심으로 하고 대각선 길이로 왼쪽으로 내린 점은 B이다.",
+    "따라서 -1 - sqrt(2)에 대응하는 점은 B이다. 답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "SELF_CONTAINED",
+  "figureEvidence": "수직선 위에 한 변의 길이가",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "수직선 위에 한 변의 길이가",
+  "rpmRecordId": "M3-RPM-005",
+  "rpmReason": "대각선 길이 sqrt(2)와 기준점 -1에서 왼쪽으로 내린 무리수 좌표 -1 - sqrt(2)의 위치를 결정한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+  "templateKey": "NONE",
+  "typeReason": "정사각형의 대각선 길이를 이용해 수직선 위에 기준점 -1에서 내린 무리수 대응점 B를 찾는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "대각선 길이 sqrt(2)와 기준점 -1에서 왼쪽 회전 이동 점 B를 1단계로 파악하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "정사각형",
+        "quote": "$1$인 세 정사각형이 수직선의 구",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "대각선",
+        "quote": "각 정사각형의 대각선의 길이를 반지",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "반지름",
+        "quote": "로 하는 원호를 그려 수직선과 만",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "수직선",
+        "quote": "수직선 위에 한 변의 길이가",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "대각선 길이 sqrt(2)를 반지름으로 하여 기준점 -1에서 왼쪽으로 내린 점이 B(-1 - sqrt(2))임을 확인하여 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

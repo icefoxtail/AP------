@@ -1,0 +1,73 @@
+{
+  "qid": 3,
+  "itemFingerprint": "99a9f47a43f4adf6",
+  "solveSteps": [
+    "① 순환소수가 아닌 무한소수는 무리수이다. (거짓)",
+    "② sqrt(4) = 2처럼 유리수도 있으므로 거짓이다.",
+    "③ 실수는 유리수와 무리수로 이루어져 있다. (참)",
+    "④ 순환소수 0.333...은 유리수이므로 모든 무한소수가 무리수인 것은 아니다. (거짓)",
+    "⑤ 0은 유리수이다. (거짓)",
+    "따라서 옳은 것은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "실수의 체계(유리수와 무리수, 소",
+  "rpmRecordId": "M3-RPM-003",
+  "rpmReason": "순환소수 0.333...과 무리수, 실수의 분류 체계 개념을 확인한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+  "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+  "typeReason": "실수는 유리수와 무리수로 구성되며 0.333... 등 무한소수의 분류를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "실수의 구성 요소와 순환소수 0.333...의 유리수 성질 등 개념을 판별하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "실수",
+        "quote": "실수의 체계(유리수와 무리수, 소",
+        "src": "solution"
+      }
+    ],
+    "goal": [
+      {
+        "term": "유리수",
+        "quote": "실수의 체계(유리수와 무리수, 소",
+        "src": "solution"
+      }
+    ],
+    "method": [
+      {
+        "term": "무리수",
+        "quote": "체계(유리수와 무리수, 소수의 분류",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "순환소수",
+        "quote": "무한소수 중 순환소수는 분수 꼴로",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "순환소수 0.333...의 유리수성과 실수는 유리수와 무리수로 구성됨(③)이 참임을 확인하여 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

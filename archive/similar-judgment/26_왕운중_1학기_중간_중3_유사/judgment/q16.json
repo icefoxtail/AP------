@@ -1,0 +1,71 @@
+{
+  "qid": 16,
+  "itemFingerprint": "40684c8cc986df28",
+  "solveSteps": [
+    "4x^2 + (m+3)xy + 25y^2 = (2x +- 5y)^2 = 4x^2 +- 20xy + 25y^2 이다.",
+    "가운데 xy의 계수를 비교하면 m + 3 = 20 또는 m + 3 = -20 이다.",
+    "m + 3 = 20일 때 m = 17 이고, m + 3 = -20일 때 m = -23 이다.",
+    "따라서 가능한 모든 수 m의 값은 17, -23 이다. 답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-FACTORIZATION",
+  "unitEvidence": "25y^2$이 완전제곱식이 될 때, 가",
+  "rpmRecordId": "M3-RPM-023",
+  "rpmReason": "4x^2 + (m+3)xy + 25y^2에서 가운데 항 +-20xy로부터 m = 17, -23을 구한다.",
+  "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+  "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+  "typeReason": "4x^2과 25y^2의 양 끝 항으로부터 가운데 xy의 계수 m+3 = +-20을 결정하는 완전제곱식 계수 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyReason": "완전제곱식의 가운데 항이 양수 20과 음수 -20의 두 가지임을 고려하여 17, -23을 구하는 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "완전제곱식",
+        "quote": "25y^2$이 완전제곱식이 될 때, 가",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "양화",
+        "quote": "때, 가능한 모든 수 $m$의",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "완전제곱식",
+        "quote": "완전제곱식 $(ax \\p",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "거듭제곱",
+        "quote": "y^2$이 완전제곱식이 될 때,",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "가운데 항이 +-20xy이므로 m + 3 = 20에서 17, m + 3 = -20에서 -23을 얻어 ①로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

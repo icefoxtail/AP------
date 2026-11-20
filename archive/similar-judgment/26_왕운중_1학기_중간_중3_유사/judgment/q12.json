@@ -1,0 +1,72 @@
+{
+  "qid": 12,
+  "itemFingerprint": "32607c0d4a5eb8ea",
+  "solveSteps": [
+    "A3와 B4의 넓이의 비는 2 : 1.5 = 4 : 3 이다.",
+    "닮은 도형에서 길이의 비(확대 배율)는 sqrt(4/3) = 2/sqrt(3) = 2*sqrt(3)/3 이다.",
+    "sqrt(3) = 1.732를 대입하면 (2 * 1.732) / 3 = 3.464 / 3 = 1.15466... 이다.",
+    "백분율로 나타내면 115.466...% 이고 둘째 자리에서 반올림하면 약 115.5%이다.",
+    "따라서 x의 값으로 가장 적절한 것은 115.5%이다. 답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "보여. 영철: 넓이가 A4 용지의",
+  "rpmRecordId": "M3-RPM-006",
+  "rpmReason": "A3와 B4의 넓이비 4/3의 제곱근 2*sqrt(3)/3에 sqrt(3)=1.732를 대입하여 약 115.5%를 계산한다.",
+  "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+  "templateKey": "NONE",
+  "typeReason": "A4, A3, B4 용지의 넓이비 1.5배와 닮음비 공식으로부터 배율 115.5%를 근삿값 계산하는 실생활 활용 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "B4와 A3의 넓이비 4/3에서 길이비 2/sqrt(3)을 도출하고 1.732로 나눗셈하여 115.5%를 구하는 응용 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "넓이",
+        "quote": "보여. 영철: 넓이가 A4 용지의",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "길이",
+        "quote": "$1:2$이면 길이의 비는 $1:",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "닮음",
+        "quote": "용지도 서로 닮음인 관계야. 그",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "관계",
+        "quote": "서로 닮음인 관계야. 그러면 B",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "B4에서 A3의 넓이비 4/3의 제곱근 2/sqrt(3)에 1.732를 대입해 3.464/3 약 115.5%를 도출하여 ②로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

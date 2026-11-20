@@ -1,0 +1,74 @@
+{
+  "qid": 13,
+  "itemFingerprint": "82ca8645e6d8a58d",
+  "solveSteps": [
+    "삼각형의 경계는 y = sqrt(3)x - 6, y = -sqrt(3)x + 6, x = 0 이다.",
+    "두 직선의 교점은 2*sqrt(3)x = 12에서 x = 2*sqrt(3) = sqrt(12) 약 3.464이다.",
+    "변을 제외하므로 정수 x는 1, 2, 3이 가능하다.",
+    "x = 1일 때 -4.268 < y < 4.268 이므로 정수 y는 -4부터 4까지 9개이다.",
+    "x = 2일 때 -2.536 < y < 2.536 이므로 정수 y는 -2부터 2까지 5개이다.",
+    "x = 3일 때 -0.804 < y < 0.804 이므로 정수 y는 0으로 1개이다.",
+    "총 정수점의 개수는 9 + 5 + 1 = 15개이다. 답은 ③이다."
+  ],
+  "solvedAnswer": "③",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-01",
+  "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+  "unitEvidence": "으로 둘러싸인 삼각형 내부에 있으면",
+  "rpmRecordId": "M3-RPM-004",
+  "rpmReason": "교점 x = 2*sqrt(3) = sqrt(12) 범위 내에서 x = 1, 2, 3에 따른 정수 y의 개수 9+5+1 = 15를 구한다.",
+  "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+  "templateKey": "NONE",
+  "typeReason": "무리수 기울기 직선으로 둘러싸인 삼각형 영역에서 부등식을 만족하는 정수 좌표점 15개를 세는 격자점 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 3,
+  "difficultyConfidence": "high",
+  "difficultyReason": "교점 x = 2*sqrt(3) = sqrt(12)에서 x = 1, 2, 3의 각 구간별 정수 y 개수 9, 5, 1을 합산하는 심화 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "삼각형",
+        "quote": "으로 둘러싸인 삼각형 내부에 있으면",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "개수",
+        "quote": "정수인 점들의 개수를 구하면? (",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "좌표",
+        "quote": "있으면서 $x$좌표, $y$좌표가",
+        "src": "stem",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "정수",
+        "quote": "$좌표가 모두 정수인 점들의 개수",
+        "src": "stem"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "교점 x = 2*sqrt(3) 약 3.464에서 x = 1(9개), x = 2(5개), x = 3(1개)의 정수 격자점 합 15를 도출하여 ③으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}

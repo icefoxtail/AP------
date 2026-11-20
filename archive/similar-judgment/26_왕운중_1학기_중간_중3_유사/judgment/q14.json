@@ -1,0 +1,73 @@
+{
+  "qid": 14,
+  "itemFingerprint": "3d0ba4f6d804b5a2",
+  "solveSteps": [
+    "① (2x - 3)^2 = 4x^2 - 12x + 9 이므로 거짓이다.",
+    "② (x - 3)(x + 4) = x^2 + x - 12 이므로 거짓이다.",
+    "③ (2x - 1)(3x - 4) = 6x^2 - 11x + 4 이므로 거짓이다.",
+    "④ (-sqrt(3) + 1)^2 = 3 - 2*sqrt(3) + 1 = 4 - 2*sqrt(3) (참)",
+    "⑤ (sqrt(3) + 1)(sqrt(3) - 1) = 3 - 1 = 2 이므로 거짓이다.",
+    "따라서 옳은 것은 ④이다."
+  ],
+  "solvedAnswer": "④",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M3-02",
+  "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
+  "unitEvidence": "다음 중 전개 또는 계산 결과가",
+  "rpmRecordId": "M3-RPM-015",
+  "rpmReason": "(-sqrt(3) + 1)^2 = 4 - 2*sqrt(3)과 (2x-1)(3x-4)=6x^2-11x+4 등 곱셈공식을 검증한다.",
+  "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+  "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+  "typeReason": "(x-3)(x+4) = x^2+x-12 및 (-sqrt(3)+1)^2 = 4-2*sqrt(3) 등 곱셈공식 전개 결과를 판별하는 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "일차식의 곱 전개 x^2 - x - 12 및 6x^2 - 11x + 4 등 5개 선지를 바로 확인하는 1단계 기본 문항이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "논리합",
+        "quote": "다음 중 전개 또는 계산 결과가",
+        "src": "stem"
+      }
+    ],
+    "goal": [
+      {
+        "term": "전개",
+        "quote": "다음 중 전개 또는 계산 결",
+        "src": "stem"
+      }
+    ],
+    "method": [
+      {
+        "term": "곱셈공식",
+        "quote": "곱셈 공식 $(a",
+        "src": "solution",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": [
+      {
+        "term": "상등",
+        "quote": "}$$ 우변과 일치하므로 참이다.",
+        "src": "solution"
+      }
+    ]
+  },
+  "slotReasons": {},
+  "how": "(-sqrt(3)+1)^2 = 3 - 2*sqrt(3) + 1 = 4 - 2*sqrt(3)이 참이고 (x-3)(x+4)=x^2+x-12 등 오답을 확인하여 ④로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  },
+  "boundaryFlags": []
+}
