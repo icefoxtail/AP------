@@ -1,0 +1,70 @@
+{
+ "qid": 7,
+ "itemFingerprint": "46adddd09e582453",
+ "solveSteps": [
+  "상자(div) 의 ㄱ: |a|+|b|=0 과 a^2+b^2=0 은 모두 a=0 이고 b=0 과 같으므로 필요충분조건이다.",
+  "ㄴ: x=1, y=-1 이면 x^2=y^2 이지만 x≠y 라 p→q 가 거짓이다.",
+  "ㄷ: a=3, b=-1 이면 a+b=2>0 이지만 b>0 이 아니라 q→p 가 거짓이므로 필요충분조건은 ㄱ뿐이다."
+ ],
+ "solvedAnswer": "①",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-06",
+ "subUnitKey": "H22-C2-06-CORE",
+ "unitEvidence": "필요충분조건인 것만을 있는 대로 고른 것은",
+ "rpmRecordId": "H1-RPM-247",
+ "rpmReason": "상자(div) 의 ㄱ |a|+|b|=0 과 a^2+b^2=0, ㄴ x^2=y^2 과 x=y, ㄷ a>0 이고 b>0 과 a+b>0 의 p→q, q→p 를 가리는 단계라 조건 관계 행이다.",
+ "problemTypeKey": "PT_NEC_SUFF_RELATION",
+ "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+ "typeReason": "상자(div) 의 ㄱ 은 둘 다 a=b=0 과 같아 필요충분, ㄴ 은 x=1, y=-1 반례, ㄷ 은 a=3, b=-1 반례로 필요충분조건인지 판정하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "상자(div) 의 세 조건에서 ㄱ 은 a=b=0 으로 동치임을 보이고 ㄴ x=1, y=-1 과 ㄷ a=3, b=-1 반례를 찾는 2단계로 본다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "실수",
+    "src": "stem",
+    "quote": "(단, $a$, $b$, $x$, $y$는 실수이다.)"
+   }
+  ],
+  "goal": [
+   {
+    "term": "필요충분조건",
+    "src": "stem",
+    "quote": "필요충분조건인 것만을 있는 대로 고른 것은"
+   }
+  ],
+  "method": [
+   {
+    "term": "반례",
+    "src": "solution",
+    "quote": "그러나 $x=1$, $y=-1$이면 $x^2=y^2$이지만 $x\\ne y$이므로",
+    "evidenceType": "IMPLIED",
+    "justification": "x=1, y=-1 반례로 p→q 가 거짓임을 보인다"
+   },
+   {
+    "term": "절댓값",
+    "src": "solution",
+    "quote": "$|a|\\ge 0$, $|b|\\ge 0$이므로",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "상자(div) 의 ㄱ 은 a=b=0 과 같아 필요충분, ㄴ 은 x=1, y=-1, ㄷ 은 a=3, b=-1 반례로 거짓임을 얻어 ① 과 대조했다. 해설과 같아 필요·충분조건 판정을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

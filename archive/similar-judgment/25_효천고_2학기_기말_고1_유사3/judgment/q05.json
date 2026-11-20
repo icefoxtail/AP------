@@ -1,0 +1,76 @@
+{
+ "qid": 5,
+ "itemFingerprint": "b9489aa62a4db365",
+ "solveSteps": [
+  "항등식 1/AB=1/(B-A)(1/A-1/B) 로 1/(x(x+1))=1/x-1/(x+1) 등 각 항을 두 분수의 차로 나눈다.",
+  "세 식을 더하면 가운데 항 1/(x+1), 1/(x+2) 가 소거되어 1/x-1/(x+3).",
+  "통분하면 ((x+3)-x)/(x(x+3))=3/(x(x+3))."
+ ],
+ "solvedAnswer": "③",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-08",
+ "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+ "unitEvidence": "각 분수를 두 분수의 차로 나눈다",
+ "rpmRecordId": "NONE",
+ "rpmReason": "1/AB 꼴로 이어진 세 분수 1/(x(x+1))+1/((x+1)(x+2))+1/((x+2)(x+3)) 의 합이라 유리함수의 그래프·점근선 행(H1-RPM-259~265) 어느 것에도 맞지 않는다.",
+ "problemTypeKey": "PT_RATIONAL_EXPRESSION",
+ "templateKey": "TPL_RATIONAL_TELESCOPING_SUM",
+ "typeReason": "1/AB=1/(B-A)(1/A-1/B) 로 세 분수를 차로 나눠 가운데 항을 소거하고 3/(x(x+3)) 을 얻는 유리식의 망원합 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "1/AB 를 두 분수의 차로 나누는 부분분수 변형과 세 식의 소거, 마지막 통분 3/(x(x+3)) 까지 세 동작이라 2단계로 본다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "분모",
+    "src": "stem",
+    "quote": "분모를 $0$으로 만들지 않는"
+   }
+  ],
+  "goal": [
+   {
+    "term": "유리식",
+    "src": "stem",
+    "quote": "간단히 한 식은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "부분분수",
+    "src": "solution",
+    "quote": "각 분수를 두 분수의 차로 나눈다",
+    "evidenceType": "IMPLIED",
+    "justification": "1/AB 꼴을 1/A-1/B 꼴의 차로 쪼개는 부분분수 변형이다"
+   },
+   {
+    "term": "소거",
+    "src": "solution",
+    "quote": "가운데 항들이 차례로 소거된다",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "통분",
+    "src": "solution",
+    "quote": "두 분수를 통분하여 정리하면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "1/AB 꼴을 차로 나눠 소거하면 1/x-1/(x+3)=3/(x(x+3)) 이 되어 ③ 과 대조했다. 유리함수 단원이지만 계산 행이 없어 RPM 은 NONE, 유형은 유리식의 망원합을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

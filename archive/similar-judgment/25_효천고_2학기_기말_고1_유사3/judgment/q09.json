@@ -1,0 +1,68 @@
+{
+ "qid": 9,
+ "itemFingerprint": "7290e02a4fb006e8",
+ "solveSteps": [
+  "f(a+b)=f(a)+f(b)+4ab 에 a=0, b=0 을 넣으면 f(0)=0.",
+  "b=-a 를 넣으면 f(0)=f(a)+f(-a)-4a^2 이므로 f(a)+f(-a)=4a^2.",
+  "a=3 이면 f(3)+f(-3)=36 이고 f(3)=15 이므로 f(-3)=21."
+ ],
+ "solvedAnswer": "②",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+ "unitEvidence": "이제 $b=-a$를 대입하면",
+ "rpmRecordId": "NONE",
+ "rpmReason": "f(a+b)=f(a)+f(b)+4ab 에 b=-a 를 대입해 f(a)+f(-a)=4a^2 을 얻는 함수방정식이라 H1-RPM-251~258 어느 행에도 맞지 않는다.",
+ "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
+ "templateKey": "TPL_FUNCTIONAL_EQUATION_SYMMETRY",
+ "typeReason": "f(a+b)=f(a)+f(b)+4ab 에 b=-a 를 대입해 f(a)+f(-a)=4a^2 의 대칭 관계를 얻는 대입 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "f(0)=0 을 확인한 뒤 f(a+b)=f(a)+f(b)+4ab 에 b=-a 를 넣어야 한다는 착안이 필요하나 이후 f(3)+f(-3)=36 은 직접 계산이라 2단계로 본다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "함수방정식",
+    "src": "stem",
+    "quote": "$f(a+b)=f(a)+f(b)+4ab$"
+   },
+   {
+    "term": "정수",
+    "src": "stem",
+    "quote": "임의의 두 정수 $a$, $b$에 대하여"
+   }
+  ],
+  "goal": [
+   {
+    "term": "함숫값",
+    "src": "stem",
+    "quote": "$f(-3)$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "대입",
+    "src": "solution",
+    "quote": "이제 $b=-a$를 대입하면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "a=b=0 으로 f(0)=0, b=-a 로 f(a)+f(-a)=4a^2 을 얻어 f(-3)=21 이라 ② 와 대조했다. 대입으로 대칭 관계를 얻는 함수방정식이라 해당 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

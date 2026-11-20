@@ -1,0 +1,75 @@
+{
+ "qid": 22,
+ "itemFingerprint": "39e9e121f60c1bce",
+ "solveSteps": [
+  "P(x,y), x>2 이므로 y=9/(x-2)+2>2>0 이고 직사각형 OQPR 의 넓이 S=xy=x(9/(x-2)+2).",
+  "t=x-2>0 으로 놓으면 S=(t+2)(9/t+2)=2t+18/t+13.",
+  "산술·기하평균으로 2t+18/t+13≥2√36+13=25 이고 등호는 t=3 (x=5) 일 때 성립하므로 최솟값 25."
+ ],
+ "solvedAnswer": "25",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "SELF_CONTAINED",
+ "figureEvidence": "그래프 위의 점",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-08",
+ "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+ "unitEvidence": "$t=x-2$라 놓으면",
+ "rpmRecordId": "H1-RPM-264",
+ "rpmReason": "직사각형 OQPR 의 넓이 2t+18/t+13 (t=x-2>0) 의 최솟값 25 를 구하는 단계라 유리함수의 최대·최소 행이다.",
+ "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+ "templateKey": "TPL_FUNCTION_EXTREMUM_DISTANCE_AREA_PERIMETER",
+ "typeReason": "그래프 위의 점 P 로 직사각형 OQPR 의 넓이 S=xy 를 2t+18/t+13 으로 세워 산술·기하평균으로 최솟값 25 를 구하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "직사각형 OQPR 의 넓이를 S=x(9/(x-2)+2)=2t+18/t+13 으로 정리하고 산술·기하평균 25, 등호 t=3 이 t>0 에서 가능한지 확인하는 3단계이다.",
+ "difficultyBoundaryFlag": "NONE",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "유리함수",
+    "src": "stem",
+    "quote": "유리함수 $y=\\dfrac{9}{x-2}+2$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "최솟값",
+    "src": "stem",
+    "quote": "직사각형 $OQPR$의 넓이의 최솟값을"
+   }
+  ],
+  "method": [
+   {
+    "term": "산술기하평균",
+    "src": "solution",
+    "quote": "산술평균과 기하평균의 관계에 의하여",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "치환",
+    "src": "solution",
+    "quote": "$t=x-2$라 놓으면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "수선",
+    "src": "stem",
+    "quote": "수선의 발을 각각 $Q$, $R$이라"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "점 P 로 직사각형 OQPR 의 넓이 2t+18/t+13 을 세워 산술·기하평균으로 최솟값 25 를 얻어 저장 정답 25 와 대조했다. 거리·넓이 최솟값 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}
