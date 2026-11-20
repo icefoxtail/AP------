@@ -1,0 +1,65 @@
+{
+  "qid": 6,
+  "itemFingerprint": "18e9b87c0083e8d1",
+  "solveSteps": [
+    "지수법칙 (x^m)^n = x^{mn}을 적용하여 (x^3)^2 = x^6으로 계산한다.",
+    "x^4 / x^6 * x^7에서 나눗셈과 곱셈의 지수 연산을 수행한다.",
+    "x^(4 - 6 + 7) = x^5이다.",
+    "따라서 바르게 간단히 한 식은 x^5이므로 정답은 ②이다."
+  ],
+  "solvedAnswer": "②",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-01",
+  "subUnitKey": "M2-01-EXPONENT_LAW",
+  "unitEvidence": "$x \\ne 0$일 때, $x^4 \\div (x^3)^2 \\times x^7$을",
+  "rpmRecordId": "M2-RPM-125",
+  "rpmReason": "(x^m)^n = x^{mn} 법칙과 거듭제곱의 곱·몫을 적용하여 x^(4-6+7) = x^5으로 계산하는 문항이다.",
+  "problemTypeKey": "PT_M2_EXPONENT_LAWS",
+  "templateKey": "NONE",
+  "typeReason": "지수법칙 (x^m)^n = x^{mn}을 적용하여 x^4 / (x^3)^2 * x^7을 간단히 정리하는 지수법칙 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "지수법칙 공식 (x^m)^n = x^{mn}과 나눗셈·곱셈을 직접 적용하는 기본 계산 문항으로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "거듭제곱",
+        "src": "stem",
+        "quote": "$x^4 \\div (x^3)^2 \\times x^7$을"
+      }
+    ],
+    "goal": [
+      {
+        "term": "거듭제곱",
+        "src": "stem",
+        "quote": "간단히 한 식으로 옳은 것은? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "지수법칙",
+        "src": "solution",
+        "quote": "지수법칙 $(x^m)^n = x^{mn}$과",
+        "evidenceType": "IMPLIED",
+        "justification": "지수법칙의 거듭제곱과 곱셈·나눗셈 성질 적용"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "(x^m)^n = x^{mn}에 따라 (x^3)^2 = x^6이고 x^(4-6+7) = x^5이므로 ②를 정답으로 판정하였다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

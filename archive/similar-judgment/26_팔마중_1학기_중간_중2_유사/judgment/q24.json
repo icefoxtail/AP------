@@ -1,0 +1,65 @@
+{
+  "qid": 24,
+  "itemFingerprint": "8ce73488e0010325",
+  "solveSteps": [
+    "1) 구입할 연습장의 수를 x권이라 하면 총 비용은 1600x + 3000원이다.",
+    "2) 가진 돈이 22000원이므로 1600x + 3000 <= 22000",
+    "3) 1600x <= 19000 => x <= 190/16 = 95/8 = 11.875",
+    "4) x는 자연수이므로 최대 11권까지 구입할 수 있다.",
+    "따라서 최대 권수는 11권이다."
+  ],
+  "solvedAnswer": "$11$권 (또는 $11$)",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
+  "unitEvidence": "연습장을 최대 몇 권까지 구입할 수 있는지 일차부등식을 세워 구하고",
+  "rpmRecordId": "M2-RPM-143",
+  "rpmReason": "연습장 금액과 배송비의 총액 부등식 $1600x + 3000 \\le 22000$으로부터 최대 자연수 11권을 구하는 최소·최대 정수 문항이다.",
+  "problemTypeKey": "PT_M2_LINEAR_INEQUALITY",
+  "templateKey": "NONE",
+  "typeReason": "주어진 실생활 비용 조건을 일차부등식 $1600x + 3000 \\le 22000$으로 세워 최대 정수해 11을 구하는 일차부등식 유형이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "부등식 $1600x + 3000 \\le 22000$을 세워 $x \\le 11.875$에서 최대 권수 11권을 구하는 직관적인 실생활 일차부등식 문제로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "일차부등식",
+        "src": "stem",
+        "quote": "할 수 있는지 일차부등식을 세워 구하고"
+      }
+    ],
+    "goal": [
+      {
+        "term": "최댓값",
+        "src": "stem",
+        "quote": "때, 연습장을 최대 몇 권까지 구입할"
+      }
+    ],
+    "method": [
+      {
+        "term": "이항",
+        "src": "solution",
+        "quote": "$을 우변으로 이항하면 $$ 1600x \\le 22000 - 3000",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$1600x + 3000 \\le 22000 \\implies 1600x \\le 19000 \\implies x \\le 11.875$이므로 최대 자연수는 11권이어서 11권으로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}

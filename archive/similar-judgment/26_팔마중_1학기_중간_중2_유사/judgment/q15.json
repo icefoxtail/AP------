@@ -1,0 +1,63 @@
+{
+  "qid": 15,
+  "itemFingerprint": "331677fea91c8b68",
+  "solveSteps": [
+    "1) x >= -6 의 양변에 음수 -1/3을 곱하면 -1/3 x <= 2",
+    "2) 양변에 4를 더하면 4 - 1/3 x <= 6",
+    "따라서 4 - 1/3 x <= 6 이므로 정답은 ①이다."
+  ],
+  "solvedAnswer": "①",
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "standardUnitKey": "M2-02",
+  "subUnitKey": "M2-02-LINEAR_INEQUALITY",
+  "unitEvidence": "$x \\ge -6$일 때, $4 - \\dfrac{1}{3}x$의 값의 범위는?",
+  "rpmRecordId": "M2-RPM-136",
+  "rpmReason": "$x \\ge -6$의 양변에 음수 $-\\frac{1}{3}$을 곱하고 4를 더해 식 $4 - \\frac{1}{3}x \\le 6$의 범위를 구하는 부등식의 성질 문항이다.",
+  "problemTypeKey": "PT_M2_INEQUALITY_PROPERTIES_TRUE_FALSE",
+  "templateKey": "TPL_M2_INEQUALITY_PROPERTIES_TRUE_FALSE_RULE",
+  "typeReason": "$x \\ge -6$에서 부등식 성질을 이용해 $4 - \\dfrac{1}{3}x \\le 6$의 범위를 구하는 부등식 변형 성질 과제이다.",
+  "newKeyProposal": null,
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyReason": "$x \\ge -6$의 양변에 음수 $-\\frac{1}{3}$을 곱하고 4를 더해 식 $4 - \\frac{1}{3}x \\le 6$을 구하는 기본 성질 문제로 난이도 1이다.",
+  "difficultyBoundaryFlag": "NONE",
+  "format": "",
+  "slots": {
+    "given": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$4 - \\dfrac{1}{3}x$의 값의 범위는? [4점]"
+      }
+    ],
+    "goal": [
+      {
+        "term": "범위",
+        "src": "stem",
+        "quote": "$4 - \\dfrac{1}{3}x$의 값의 범위는? [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "음수",
+        "src": "solution",
+        "quote": "양변에 음수 $-\\frac{1}{3}$을 곱하면 부등호의 방향이 반대로 바뀌므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  },
+  "slotReasons": {},
+  "how": "$x \\ge -6$의 양변에 $-\\frac{1}{3}$을 곱해 $-\\frac{1}{3}x \\le 2$를 얻고 4를 더해 $4 - \\frac{1}{3}x \\le 6$을 도출하여 ①로 판정했다.",
+  "review": {
+    "reviewerSolvedAnswer": "",
+    "verdict": "",
+    "fixes": [],
+    "note": ""
+  }
+}
