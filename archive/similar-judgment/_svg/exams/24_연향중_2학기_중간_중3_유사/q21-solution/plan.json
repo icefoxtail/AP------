@@ -1,0 +1,39 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 6,
+        "depth": 6
+      },
+      "height": 6,
+      "names": {
+        "base": "EFGH",
+        "top": "ABCD"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "B",
+      "to": "H",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "D",
+      "to": "H",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "caption": "직각삼각형 BDH에서 BD=6루트2, DH=6, 대각선 BH, 삼각형 DNH 닮음 DBH, 각 NDH=x"
+}
