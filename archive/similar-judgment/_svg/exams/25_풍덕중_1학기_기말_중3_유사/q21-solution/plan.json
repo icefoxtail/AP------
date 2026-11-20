@@ -1,0 +1,51 @@
+{
+  "capability": "number-line-figure-v1",
+  "numberLine": {
+    "rows": [
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": {
+              "value": "-3",
+              "state": "OPEN"
+            },
+            "hi": null
+          }
+        ]
+      },
+      {
+        "kind": "SET",
+        "pieces": [
+          {
+            "lo": null,
+            "hi": {
+              "value": "-1",
+              "state": "OPEN"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "RESULT",
+        "integerPoints": true
+      }
+    ]
+  },
+  "numberLineCaption": {
+    "text": "-3 < x < -1의 공통 범위"
+  },
+  "caption": "-3 < x < -1 범위에서 |x+3|+|x+1|=2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "-3 < x < -1 범위에서 식의 값은 2",
+      "mappedTo": [
+        "numberLine.rows"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "수직선 위의 범위 (-3, -1)"
+  ]
+}

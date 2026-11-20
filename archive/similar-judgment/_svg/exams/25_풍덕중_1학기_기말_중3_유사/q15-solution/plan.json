@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-9/2",
+      "3",
+      "-1/2"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -10,
+      2
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 3,
+        "y": 0
+      },
+      {
+        "id": "P",
+        "x": -1,
+        "y": -8
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "x축 방향으로 3만큼 평행이동하여 점 (-1, -8)을 대입하면 16a=-8",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 (-1, -8) 대입 시 16a=-8, x축으로 3 평행이동",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "x축으로 3만큼 평행이동한 포물선 위의 점 (-1, -8)"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "2",
+          "-8",
+          "3"
+        ],
+        "domain": [
+          "0",
+          "3"
+        ],
+        "label": "y=3(x-4/3)^2-10/3"
+      },
+      {
+        "id": "c2",
+        "kind": "LINE",
+        "coefficients": [
+          "2",
+          "-4"
+        ],
+        "domain": [
+          "-1",
+          "3"
+        ],
+        "label": "y=-4x+2"
+      }
+    ],
+    "viewport": [
+      -2,
+      4,
+      -5,
+      5
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점이 직선 y=-4x+2 위의 점 (4/3, -10/3)에 위치함",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "직선 y=-4x+2 위의 점 a=4/3",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 위에 위치한 포물선의 꼭짓점"
+  ]
+}

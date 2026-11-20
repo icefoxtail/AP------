@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -1,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 0,
+        "y": 5
+      },
+      {
+        "id": "A",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "밑변 OB=5, 높이 a=4, 넓이 10에서 a+b=4+5=9",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "밑변 5, 넓이 10에서 a=4, b=5, a+b=9",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 OAB의 밑변과 높이 분석"
+  ]
+}

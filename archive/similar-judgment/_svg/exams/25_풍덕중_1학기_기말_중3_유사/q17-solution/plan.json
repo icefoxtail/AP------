@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "7",
+      "-12",
+      "3"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -6,
+      10
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 2,
+        "y": -5
+      },
+      {
+        "id": "P",
+        "x": 0,
+        "y": 7
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 (2, -5), y=4x^2보다 폭이 넓고 제3사분면을 지나지 않음",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 (2, -5), y=4x^2 보다 폭 넓음",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점과 y절편이 있는 아래로 볼록 포물선"
+  ]
+}

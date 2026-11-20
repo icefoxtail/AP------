@@ -1,0 +1,56 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "5",
+      "-4",
+      "1"
+    ],
+    "domain": [
+      -1,
+      5
+    ],
+    "viewport": [
+      -2,
+      6,
+      -1,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "B",
+        "x": 0,
+        "y": 5
+      },
+      {
+        "id": "A",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "id": "V",
+        "x": 2,
+        "y": 1
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 A(4, 5), B(0, 5) 및 삼각형 OAB의 넓이 10",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 A, B와 삼각형 OAB의 넓이 10",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "포물선 위의 점 A, B와 삼각형 OAB"
+  ]
+}

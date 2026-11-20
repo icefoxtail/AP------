@@ -1,0 +1,57 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "domain": [
+          "-7",
+          "7"
+        ],
+        "label": "y=1/4x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-2"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-2x^2"
+      }
+    ],
+    "viewport": [
+      -8,
+      8,
+      -10,
+      12
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "점 C(2, -8) 및 사다리꼴 ABCD의 넓이 136",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "점 C(2, -8), 사다리꼴 ABCD 넓이 136",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선 사이에 형성된 사다리꼴"
+  ]
+}
