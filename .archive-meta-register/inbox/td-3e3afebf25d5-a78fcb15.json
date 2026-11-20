@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "td-3e3afebf25d5-a78fcb15",
+  "examUid": "25_연향중_2학기_중간_중1_기출",
+  "scope": "PARTIAL_UIDS",
+  "fieldScope": "TYPE_ONLY",
+  "sourceArchiveFile": "original/middle/m1/2mid/25_연향중_2학기_중간_중1_기출.js",
+  "expectedSourceBlobSha1": "99cd522479988a1a968228e3d86cd26bfd1d5f3e",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "DIRECT_JUDGMENT",
+    "metadataReviewed": true,
+    "reviewPassCount": 1,
+    "approvedBy": "사용자 결정 2026-11-17: 유형(PT/TPL)은 dots 직접 판정 1회를 정본으로 받는다 (docs/agents/metadata.md CURRENT). 판정 근거 문장은 증거 원장에 있다.",
+    "judge": "dots",
+    "decisionRef": {
+      "document": "docs/agents/metadata.md",
+      "section": "CURRENT — 유형(PT/TPL) 판정은 직접 판정 결과를 정본으로 받는다 (2026-11-17, 사용자 결정)"
+    },
+    "resultSource": {
+      "branch": "data/type-judgment-c-20261116",
+      "commit": "52d2699b5ce8463fa9446e87a811863a275a3ab8",
+      "file": "docs/plans/archive-one-route-upgrade/type-results-c/m1-2mid.jsonl"
+    },
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3e3afebf25d5-a78fcb15.type-ledger.json",
+        "sha256": "897e2a4a65775ea2a91116d1809747168014dff1e88ae598715d12bfd2bfd8ad"
+      }
+    ]
+  },
+  "items": [
+    {
+      "questionUid": "qid_v1_bdb9d3bbc904d9ae1bc39e408002ef43155c4f853dee344645c378b4b9a20270",
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "",
+        "templateKey": ""
+      },
+      "after": {
+        "problemTypeKey": "PT_M1_PARALLEL_ANGLE_TRANSFER",
+        "templateKey": "TPL_M1_PARALLEL_ANGLE_TRANSFER_TRANSFER"
+      },
+      "rationale": "엇각으로 a50을 옮기고 동측내각 보각으로 b70을 얻어 합120을 구한다.",
+      "scope": {
+        "curriculum": "2022",
+        "standardCourse": "중1 수학"
+      },
+      "textBindingFingerprint": "58c3e21d71eaa4d942bdeaad90db531ea0354086a45699f7f4987c6c081eddd8",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/td-3e3afebf25d5-a78fcb15.type-ledger.json",
+          "sha256": "897e2a4a65775ea2a91116d1809747168014dff1e88ae598715d12bfd2bfd8ad"
+        }
+      ]
+    }
+  ]
+}

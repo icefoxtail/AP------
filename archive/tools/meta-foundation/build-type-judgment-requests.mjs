@@ -26,7 +26,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { DIRECT_JUDGMENT, DECISION_DOCUMENT } from "./register-type-judgment.mjs";
+import { DIRECT_JUDGMENT, DECISION_DOCUMENT, typeFieldHoldsRegisteredValue } from "./register-type-judgment.mjs";
 import { isLegacyPathFormulaUid } from "./reviewed-exam-registration-v2.mjs";
 import { isUnambiguousLegacySourceUidAlias } from "../intelligence/question-identity-contract.mjs";
 import { loadCourseAliases, makeCourseAliases } from "./course-aliases.mjs";
@@ -207,15 +207,13 @@ const gitBlob = (root, rel, bytes) => fs.existsSync(path.join(root, ".git"))
 const SKIP_ORDER = ["DUPLICATE_RESULT_LINE", "DECISION_NEW_KEY_NOT_HANDLED", "DECISION_HOLD", "DECISION_UNKNOWN"];
 // ctx: { records: Map uid->row, identity: Map uid->identity, identityCountBySource: Map, registry, readBank(file) -> {bank, bytes}, blobOf(file, bytes) }
 export function planRequests({ ctx, resultRows, exams = null, limit = null, approvedBy, allowPackAdditions = false, includeReceiptRows = false, replaceDraft = false, excludeUids = null }) {
-  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 }, embeddedDiffers: { registeredDots: 0, registeredEmbedded: 0, registeredJudgment: {} } };
+  const skipped = [], stats = { judgedBase: { checked: 0, unverified: 0 } };
   const aliases = ctx.aliases || makeCourseAliases(null);
   const skip = (row, reason, extra = {}) => skipped.push({ uid: row.uid, exam: row.exam ?? null, no: row.no ?? null, decision: row.decision ?? null, reason, ...extra });
   const wanted = exams ? new Set(exams.map(normalizeExam)) : null;
-  const seen = new Set();
+  const taken = new Set(); // a question one result line already put into a request: its other lines are duplicates (a line that was held or skipped does not take it)
   const candidates = new Map(); // exam -> rows
   for (const row of resultRows) {
-    if (seen.has(row.uid)) { skip(row, "DUPLICATE_RESULT_LINE"); continue; }
-    seen.add(row.uid);
     if (row._skip) { skip(row, row._skip); continue; } // decided by the new-key bundles (--bundles), see new-type-keys.mjs
     if (row.decision === "NEW_KEY") { skip(row, "DECISION_NEW_KEY_NOT_HANDLED"); continue; }
     if (row.decision === "HOLD") { skip(row, "DECISION_HOLD"); continue; }
@@ -242,34 +240,16 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
     if ((ctx.identityCountBySource.get(file) || 0) !== bank.length) { for (const { row } of entries) skip(row, "EXAM_IDENTITY_COUNT_DIFFERS_FROM_SOURCE"); continue; }
     const items = [];
     for (let { row, m } of entries) {
-      // 시험지 JS에 적힌 유형과 판정이 다를 때(2026-11-20 관제 결정): dots 판정은 그대로 등록(사용자 원칙), dots가 아닌 판정(Sonnet 등)은 적힌 유형이
-      // 등록부 ACTIVE 키이고 TPL 부모가 맞고 그 시험지 과정 범위 안이면 적힌 유형을 등록하고 새 판정은 근거 문장에만 남긴다. 아니면 새 판정을 등록한다.
-      // 등록기는 적힌 값과 등록 값의 차이를 typeApproval.examEmbeddedType에 기록할 뿐 거절하지 않는다.
-      let embKind = null;
-      const emb = bank[m.sourceOrdinal - 1], embPt = text(emb?.problemTypeKey), embTpl = text(emb?.templateKey);
-      if (embPt && (embPt !== row.pt || (embTpl && embTpl !== text(row.tpl)))) {
-        if ((row.judge || "dots") === "dots") embKind = "dots";
-        else {
-          const ep = ctx.registry.pt.get(embPt), et = embTpl ? ctx.registry.tpl.get(embTpl) : null;
-          let why = "";
-          if (!ep || ep.status !== "ACTIVE") why = "EMBEDDED_PT_NOT_ACTIVE";
-          else if (embTpl && (!et || et.status !== "ACTIVE")) why = "EMBEDDED_TPL_NOT_ACTIVE";
-          else if (embTpl && et.parentProblemTypeKey !== embPt) why = "EMBEDDED_TPL_PARENT_DIFFERS";
-          else { const fit = chooseScope(ctx.registry, aliases, m, embPt, { allowPackAdditions: false }); if (fit.skip || fit.packAddition || fit.relation === "reach") why = "EMBEDDED_OUT_OF_COURSE_SCOPE"; }
-          if (why) embKind = why;
-          else {
-            embKind = "embedded";
-            row = { ...row, pt: embPt, tpl: embTpl || null, step: text(row.step) + " [시험지에 적힌 유형을 등록. 새 판정(" + row.judge + "): " + row.pt + (text(row.tpl) ? "/" + text(row.tpl) : "") + "]" };
-          }
-        }
-      }
+      if (taken.has(row.uid)) { skip(row, "DUPLICATE_RESULT_LINE"); continue; }
       // A status is a tag on a value: a field with no value has nothing to protect, whatever its tag says (approved_* on an empty field is fillable).
-      const status = { pt: empty(m.problemTypeKey) ? "" : String(m.fieldStatus?.problemType ?? ""), tpl: empty(m.templateKey) ? "" : String(m.fieldStatus?.template ?? "") };
+      // 등록부에 없는 옛 키로 채워진 칸은 지킬 값이 없는 칸과 같다(register-type-judgment.mjs typeFieldHoldsRegisteredValue, 등록기와 같은 함수). before는 현재 값 그대로 적는다.
+      const holds = { pt: typeFieldHoldsRegisteredValue(ctx.registry, "problemType", m.problemTypeKey), tpl: typeFieldHoldsRegisteredValue(ctx.registry, "template", m.templateKey) };
+      const status = { pt: holds.pt ? String(m.fieldStatus?.problemType ?? "") : "", tpl: holds.tpl ? String(m.fieldStatus?.template ?? "") : "" };
       let replace = false;
-      if (!empty(m.problemTypeKey) || !empty(m.templateKey) || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
+      if (holds.pt || holds.tpl || /^approved/i.test(status.pt) || /^approved/i.test(status.tpl)) {
         // --replace-draft-types: a value that is only a draft (both status fields overwritable) and differs from the judgment is replaced;
         // an approved or adjudicated value stays (counted with its own reason, the list of "differs from dots"); a value equal to the judgment needs nothing.
-        const present = !empty(m.problemTypeKey) || !empty(m.templateKey);
+        const present = holds.pt || holds.tpl;
         if (!replaceDraft || !present) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
         const same = (m.problemTypeKey ?? "") === row.pt && (empty(row.tpl) || (m.templateKey ?? "") === row.tpl);
         if (same) { skip(row, "TYPE_ALREADY_PRESENT"); continue; }
@@ -311,16 +291,12 @@ export function planRequests({ ctx, resultRows, exams = null, limit = null, appr
       if (!id || id.sourceArchiveFile !== m.sourceArchiveFile || id.sourceOrdinal !== m.sourceOrdinal) { skip(row, "IDENTITY_DIFFERS_FROM_ROW"); continue; }
       if (q.questionUid && q.questionUid !== row.uid && !isLegacyPathFormulaUid(q.questionUid, m.sourceArchiveFile, m.sourceOrdinal) &&
           !isUnambiguousLegacySourceUidAlias({ question: q, sourceArchiveFile: m.sourceArchiveFile, sourceOrdinal: m.sourceOrdinal, identityRecord: id, identityMap: ctx.identityDoc, bank })) { skip(row, "SOURCE_UID_DIFFERS_FROM_ROW"); continue; }
-      // 시험지 JS에 적힌 유형이 등록할 값과 다르면 카탈로그가 meta-foundation 행에서 그 둘을 충돌(metadataConflicts)로 세고 소비자 검증이 거절한다
-      // (verify-changed-uid-consumer-approval METADATA_CONFLICT; 등록기도 같은 이유로 거절). 이런 문항은 요청에 넣지 않고 사유를 세어 남긴다.
-      // 적힌 유형을 바꾸려면 시험지 JS를 고치는 별도 절차가 필요하다. 위 규칙으로 적힌 유형이 등록 값이 된 문항은 같아서 통과한다.
-      if (String(m.metadataRevision || "").startsWith("meta-foundation:") &&
-          ((!empty(q.problemTypeKey) && q.problemTypeKey !== row.pt) || (!empty(q.templateKey) && q.templateKey !== tplKey))) { skip(row, "SOURCE_EMBEDDED_TYPE_DIFFERS_FROM_JUDGMENT"); continue; }
+      // 시험지 JS에 적힌 유형이 판정과 달라도 거절하지 않는다(2026-11-20, 등록된 판정이 우선; 적힌 값은 등록기가 typeApproval.examEmbeddedType에 기록한다).
       const picked = chooseScope(ctx.registry, aliases, m, row.pt, { allowPackAdditions });
       if (picked.skip) { skip(row, picked.skip); continue; }
       const textFp = textFingerprint(judgedQ);
       if (!textFp) { skip(row, "STEM_EMPTY"); continue; }
-      if (embKind) { const ed = stats.embeddedDiffers; if (embKind === "dots") ed.registeredDots++; else if (embKind === "embedded") ed.registeredEmbedded++; else ed.registeredJudgment[embKind] = (ed.registeredJudgment[embKind] || 0) + 1; }
+      taken.add(row.uid);
       items.push({ row, m, scope: picked.scope, textFp, rationale, tplKey, relation: picked.relation, packAddition: picked.packAddition || null, replace });
     }
     // Replacements of draft values never share a request with the blank-field registrations (they are held back as the last batch).
@@ -527,7 +503,6 @@ export function run(args) {
   summary.options = { allowPackScopeAdditions: args.allowPackAdditions, includeReceiptRows: args.includeReceiptRows, judgedBase: args.judgedBase,
     bundles: args.bundles || args.bundlesDir || null, bundlesOnly: args.bundlesOnly, replaceDraftTypes: args.replaceDraft, maxRequests: args.maxRequests };
   if (newKeys) summary.newKeys = { bundleTables: bundleOrigin, bundles: { pt: newKeys.stats.ptBundles, tpl: newKeys.stats.tplBundles }, lines: newKeys.stats.lines, ...built.stats.newKeys };
-  summary.embeddedDiffers = built.stats.embeddedDiffers;
   if (args.judgedBase) summary.judgedBaseCheck = built.stats.judgedBase; // unverified = judged-time exam not found: the current question is used and counted here
   const planned = new Map(built.requests.flatMap(r => r.items.map(i => [i.questionUid, { pt: i.after.problemTypeKey, tpl: i.after.templateKey || "" }])));
   summary.typeSelectable = { scope: "requested exams", estimate: "catalog metaHint gate replicated; builder not run", ...typeSelectable(planCtx, built.requests.map(r => r.sourceArchiveFile), planned) };
