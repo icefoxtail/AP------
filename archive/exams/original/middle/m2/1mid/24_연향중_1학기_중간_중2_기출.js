@@ -612,7 +612,11 @@ window.questionBank = [
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중2_기출/q18-solution.svg",
+    "solutionImageAlt": "해설 그림: 가로축 변수가 a인 수직선에 −3은 닫힌 점, −2는 열린 점으로 하여 그 사이 구간이 칠해져 있다.",
+    "solutionImageCaption": "x−3≤−2x+3a에서 x≤a+1이다. 가장 큰 정수해가 −2이려면 −2≤a+1<−1이어야 한다. 각 변에서 1을 빼면 −3≤a<−2이고 수직선의 가로축 변수는 a이다. 따라서 답은 ②이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -716,7 +720,11 @@ window.questionBank = [
     "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
     "subUnit": "입체도형의 측정",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/24_연향중_1학기_중간_중2_기출/q21-solution.svg",
+    "solutionImageAlt": "해설 그림: 왼쪽에 원뿔, 오른쪽에 원기둥이 같은 배율로 나란히 놓여 있고 원뿔은 반지름과 높이, 원기둥도 반지름과 높이에 길이 문자가 적혀 있다.",
+    "solutionImageCaption": "두 입체를 같은 배율로 나란히 그렸다(길이의 비율은 모양만 나타낸 예시이다). 원뿔의 부피는 (1/3)π×a²×3b=πa²b이고, 원기둥의 부피는 π×(2b)²×a=4πab²이다. 두 부피의 비는 πa²b÷4πab²=a/(4b)이다. 따라서 원뿔의 부피는 원기둥의 a/(4b)배이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
