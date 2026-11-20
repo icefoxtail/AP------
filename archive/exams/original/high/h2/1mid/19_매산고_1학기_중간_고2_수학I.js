@@ -41,12 +41,7 @@ window.questionBank = [
       "y=2"
     ],
     "answer": "①",
-    "solution": "$2^{x+1}>0$이므로 $3\\cdot2^{x+1}$도 항상 양수이다. $x$가 매우 작아질수록 $2^{x+1}$은 $0$에 가까워진다.\n$$y=3\\cdot2^{x+1}-2\\longrightarrow -2\\qquad(x\\to-\\infty).$$\n즉 그래프가 가까워지는 수평선은 $y=-2$이다. $x=-2$와 같은 수직선이 아니므로 ①이다.",
-    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q3-solution.svg",
-    "solutionImageAlt": "해설 그림: 왼쪽에서는 가로선 아래쪽 부근에 거의 붙어 있다가 오른쪽 위로 가파르게 올라가는 지수 곡선과 가로 점근선 y=−2가 있다. 곡선 위의 점 P의 좌표가 표시되어 있다.",
-    "solutionImageCaption": "2의 (x+1)제곱은 항상 양수이므로 y=3·2ˣ⁺¹−2는 −2보다 크다. x가 매우 작아지면 곡선은 직선 y=−2에 한없이 가까워진다. 그림의 점선 y=−2가 점근선이고 곡선은 점 P(0, 4)를 지나 오른쪽 위로 올라간다. 따라서 점근선의 방정식은 y=−2이고 답은 ①이다.",
-    "solutionImageSize": "medium",
-    "solutionImageScale": 90
+    "solution": "$2^{x+1}>0$이므로 $3\\cdot2^{x+1}$도 항상 양수이다. $x$가 매우 작아질수록 $2^{x+1}$은 $0$에 가까워진다.\n$$y=3\\cdot2^{x+1}-2\\longrightarrow -2\\qquad(x\\to-\\infty).$$\n즉 그래프가 가까워지는 수평선은 $y=-2$이다. $x=-2$와 같은 수직선이 아니므로 ①이다."
   },
   {
     "id": 4,
@@ -244,12 +239,7 @@ window.questionBank = [
     "content": "[단답형2] 함수 $y=2^x$의 그래프와 기울기가 1인 직선이 두 점에서 만날 때, 만나는 두 점을 각각 $\\mathrm{A}(\\alpha, 2^\\alpha)$, $\\mathrm{B}(\\beta, 2^\\beta)$라 하자. $\\overline{\\mathrm{AB}}=3\\sqrt{2}$일 때, $\\alpha+\\beta$의 값을 구하시오. (단, $\\log 2=0.30$, $\\log 3=0.48$, $\\log 7=0.85$로 계산한다.) [5점]<br><br><img src=\"assets/images/19_매산고_1학기_중간_고2_수학I/q17.png\" class=\"question-img\">",
     "choices": [],
     "answer": "8/15",
-    "solution": "두 교점이 기울기 $1$인 같은 직선 위에 있으므로, $x$좌표가 작은 점을 $\\mathrm A$, 큰 점을 $\\mathrm B$로 잡아 $\\beta>\\alpha$라고 놓아도 된다. 직선의 기울기 공식에서\n$$\\frac{2^\\beta-2^\\alpha}{\\beta-\\alpha}=1,$$\n$$2^\\beta-2^\\alpha=\\beta-\\alpha.$$\n이 식은 두 점의 $y$좌표 차와 $x$좌표 차가 같다는 뜻이다. 거리 조건에 그대로 대입하면\n$$\\overline{\\mathrm{AB}}=\\sqrt{(\\beta-\\alpha)^2+(2^\\beta-2^\\alpha)^2}$$\n$$=\\sqrt{(\\beta-\\alpha)^2+(\\beta-\\alpha)^2}=\\sqrt2(\\beta-\\alpha)=3\\sqrt2.$$\n$\\beta>\\alpha$이므로 $\\beta-\\alpha=3$, 즉 $\\beta=\\alpha+3$이다.\n$$2^\\beta-2^\\alpha=3\\quad\\Longrightarrow\\quad2^{\\alpha+3}-2^\\alpha=3,$$\n$$2^\\alpha(2^3-1)=3\\quad\\Longrightarrow\\quad7\\cdot2^\\alpha=3,$$\n$$2^\\alpha=\\frac37.$$\n양변에 상용로그를 취하면\n$$\\alpha\\log2=\\log3-\\log7,$$\n$$\\alpha=\\frac{0.48-0.85}{0.30}=\\frac{-0.37}{0.30}=-\\frac{37}{30}.$$\n$$\\beta=\\alpha+3=-\\frac{37}{30}+\\frac{90}{30}=\\frac{53}{30}.$$\n따라서\n$$\\alpha+\\beta=-\\frac{37}{30}+\\frac{53}{30}=\\frac{16}{30}=\\frac8{15}.$$\n답은 $\\dfrac8{15}$이다.",
-    "solutionImage": "assets/images/19_매산고_1학기_중간_고2_수학I/q17-solution.svg",
-    "solutionImageAlt": "해설 그림: 오른쪽 위로 올라가는 파란 지수 곡선과 기울기 1인 주황 직선이 두 점 A, B에서 만난다. A에서 오른쪽으로, B에서 아래로 내린 선이 만나는 점 R과 함께 직각삼각형 ARB가 색칠되어 있다.",
-    "solutionImageCaption": "직선의 기울기가 1이므로 두 점 A, B의 x좌표의 차와 y좌표의 차가 같다. 그림의 직각이등변삼각형 ARB에서 AR=RB=β−α이고 AB=√2(β−α)=3√2이므로 β−α=3이다. 2의 β제곱−2의 α제곱=3에서 7·2의 α제곱=3이므로 2의 α제곱=3/7, 곧 α=(log3−log7)/log2=−37/30(약 −1.23)이다. β=α+3=53/30이고 α+β=16/30=8/15이다.",
-    "solutionImageSize": "full",
-    "solutionImageScale": 80
+    "solution": "두 교점이 기울기 $1$인 같은 직선 위에 있으므로, $x$좌표가 작은 점을 $\\mathrm A$, 큰 점을 $\\mathrm B$로 잡아 $\\beta>\\alpha$라고 놓아도 된다. 직선의 기울기 공식에서\n$$\\frac{2^\\beta-2^\\alpha}{\\beta-\\alpha}=1,$$\n$$2^\\beta-2^\\alpha=\\beta-\\alpha.$$\n이 식은 두 점의 $y$좌표 차와 $x$좌표 차가 같다는 뜻이다. 거리 조건에 그대로 대입하면\n$$\\overline{\\mathrm{AB}}=\\sqrt{(\\beta-\\alpha)^2+(2^\\beta-2^\\alpha)^2}$$\n$$=\\sqrt{(\\beta-\\alpha)^2+(\\beta-\\alpha)^2}=\\sqrt2(\\beta-\\alpha)=3\\sqrt2.$$\n$\\beta>\\alpha$이므로 $\\beta-\\alpha=3$, 즉 $\\beta=\\alpha+3$이다.\n$$2^\\beta-2^\\alpha=3\\quad\\Longrightarrow\\quad2^{\\alpha+3}-2^\\alpha=3,$$\n$$2^\\alpha(2^3-1)=3\\quad\\Longrightarrow\\quad7\\cdot2^\\alpha=3,$$\n$$2^\\alpha=\\frac37.$$\n양변에 상용로그를 취하면\n$$\\alpha\\log2=\\log3-\\log7,$$\n$$\\alpha=\\frac{0.48-0.85}{0.30}=\\frac{-0.37}{0.30}=-\\frac{37}{30}.$$\n$$\\beta=\\alpha+3=-\\frac{37}{30}+\\frac{90}{30}=\\frac{53}{30}.$$\n따라서\n$$\\alpha+\\beta=-\\frac{37}{30}+\\frac{53}{30}=\\frac{16}{30}=\\frac8{15}.$$\n답은 $\\dfrac8{15}$이다."
   },
   {
     "id": 18,
