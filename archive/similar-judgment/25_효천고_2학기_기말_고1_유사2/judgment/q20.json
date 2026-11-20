@@ -1,0 +1,75 @@
+{
+ "qid": 20,
+ "itemFingerprint": "2629f04312705741",
+ "solveSteps": [
+  "(f∘g)(x)=a(bx+3n)+2m=abx+2m+3an.",
+  "(g∘f)(x)-4m+9n=b(ax+2m)+3n-4m+9n=abx+(2b-4)m+12n.",
+  "m, n 값에 관계없이 같으려면 계수비교로 2=2b-4 에서 b=3, 3a=12 에서 a=4 이므로 a+b=7."
+ ],
+ "solvedAnswer": "7",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+ "unitEvidence": "두 합성함수를 각각 전개한다",
+ "rpmRecordId": "H1-RPM-253",
+ "rpmReason": "(f∘g)(x)=abx+2m+3an 과 (g∘f)(x)=abx+2bm+3n 을 합성 순서대로 전개하는 단계라 합성함수 계산 행이다.",
+ "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+ "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+ "typeReason": "f∘g 와 g∘f-4m+9n 이 m, n 에 관계없이 같다는 합성함수의 관계 조건으로 2=2b-4, 3a=12 를 세우는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "두 합성식을 전개해 m 의 계수 2=2b-4 와 n 의 계수 3a=12 를 비교하면 a=4, b=3 이 나오는 2단계이다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "함수",
+    "src": "stem",
+    "quote": "두 함수 $f(x)=ax+2m$, $g(x)=bx+3n$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "상수",
+    "src": "stem",
+    "quote": "두 상수 $a$, $b$의 합 $a+b$의 값을"
+   }
+  ],
+  "method": [
+   {
+    "term": "전개",
+    "src": "solution",
+    "quote": "두 합성함수를 각각 전개한다",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "계수비교",
+    "src": "solution",
+    "quote": "$m$항과 $n$항의 계수를 각각 비교한다",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "항상성립",
+    "src": "stem",
+    "quote": "$0$이 아닌 두 실수 $m$, $n$의 값에 관계없이"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "두 합성식을 abx+(2b-4)m+12n 꼴로 전개해 m, n 의 계수를 비교해 a=4, b=3, a+b=7 을 얻어 저장 정답 7 과 대조했다. 합성함수의 관계 조건 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

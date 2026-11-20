@@ -1,0 +1,68 @@
+{
+ "qid": 19,
+ "itemFingerprint": "5328723f4b0f81e4",
+ "solveSteps": [
+  "f^{-1}(5)=k 라 하면 f(k)=5 이므로 3k-4=5, k=3.",
+  "(g∘f^{-1})(5)=g(3)=3^2-2·3=9-6=3."
+ ],
+ "solvedAnswer": "3",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+ "unitEvidence": "역함수의 성질에 의하여 $f(k)=5$이다",
+ "rpmRecordId": "H1-RPM-253",
+ "rpmReason": "(g∘f^{-1})(5) 를 f^{-1}(5)=3 으로 안쪽부터 풀고 g(3)=3 을 계산하는 단계라 합성함수 계산 행이다.",
+ "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+ "templateKey": "TPL_COMPOSITION_WITH_INVERSE_VALUE",
+ "typeReason": "f^{-1}(5)=k 에서 f(k)=5, 3k-4=5 로 k=3 을 얻고 g(3)=3 을 구하는 역함수가 들어간 합성함숫값 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 1,
+ "difficultyConfidence": "high",
+ "difficultyReason": "f^{-1}(5) 를 3k-4=5 에서 3 으로 정하고 g(3)=9-6 만 계산하면 되는 1단계 서술형이다.",
+ "difficultyBoundaryFlag": "NONE",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "함수",
+    "src": "stem",
+    "quote": "두 함수 $f(x)=3x-4$, $g(x)=x^2-2x$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "값",
+    "src": "stem",
+    "quote": "$(g\\circ f^{-1})(5)$의 값을 구하는"
+   }
+  ],
+  "method": [
+   {
+    "term": "역함수",
+    "src": "solution",
+    "quote": "역함수의 성질에 의하여",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "대입",
+    "src": "solution",
+    "quote": "이 값을 함수 $g$에 대입하면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "f(k)=5 로 k=3 을 정하고 g(3)=3 을 계산해 저장 정답 3 과 대조했다. 역함수가 들어간 합성값이라 해당 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

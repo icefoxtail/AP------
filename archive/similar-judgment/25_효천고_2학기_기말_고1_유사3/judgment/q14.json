@@ -1,0 +1,77 @@
+{
+ "qid": 14,
+ "itemFingerprint": "19da01ec29fc8415",
+ "solveSteps": [
+  "q: a^2+b^2+c^2>ab+bc+ca 는 (1/2){(a-b)^2+(b-c)^2+(c-a)^2}>0 이므로 a=b=c 가 아니다와 같다.",
+  "p1: 세 수가 모두 다르면 q 참이지만 a=1, b=1, c=2 이면 q 참·p1 거짓이라 N=1. p2: a≠b 또는 b≠c 는 a=b=c 가 아니다와 같아 q 와 필요충분이라 N=2.",
+  "p3: a=1, b=-1, c=0 이면 q 참·p3 거짓, a=b=c=1 이면 p3 참·q 거짓이라 N=4. 따라서 1+2+4=7."
+ ],
+ "solvedAnswer": "①",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-06",
+ "subUnitKey": "H22-C2-06-CORE",
+ "unitEvidence": "충분조건이지만 필요조건이 아니면 $N(p)=1$",
+ "rpmRecordId": "H1-RPM-247",
+ "rpmReason": "q:a^2+b^2+c^2>ab+bc+ca 와 p1, p2, p3 사이의 p→q, q→p 참·거짓을 가려 N 값을 정하는 단계라 조건 관계 행이다.",
+ "problemTypeKey": "PT_NEC_SUFF_RELATION",
+ "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+ "typeReason": "q 를 ab+bc+ca 항으로 정리해 a=b=c 가 아니다로 바꾼 뒤 p1 (N=1), p2 (필요충분, N=2), p3 (N=4) 를 반례로 판정하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "a^2+b^2+c^2-ab-bc-ca 를 제곱합으로 바꿔 q 를 a=b=c 가 아니다로 읽고 p1·p2·p3 각각 N=1, 2, 4 를 정하는 3단계이다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "조건",
+    "src": "stem",
+    "quote": "$q:a^2+b^2+c^2\\gt ab+bc+ca$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "값",
+    "src": "stem",
+    "quote": "$N(p_1)+N(p_2)+N(p_3)$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "변환",
+    "src": "solution",
+    "quote": "조건 $q$의 식을 변형하면",
+    "evidenceType": "IMPLIED",
+    "justification": "q 의 부등식 ab+bc+ca 항을 옮겨 제곱합으로 바꾼다"
+   },
+   {
+    "term": "반례",
+    "src": "solution",
+    "quote": "그러나 $a=1$, $b=1$, $c=2$이면 $q$는 참이지만 $p_1$은 거짓이다",
+    "evidenceType": "IMPLIED",
+    "justification": "a=1, b=1, c=2 반례로 q→p1 이 거짓임을 보인다"
+   }
+  ],
+  "condition": [
+   {
+    "term": "논리합",
+    "src": "stem",
+    "quote": "$p_2:a\\ne b$ 또는 $b\\ne c$"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "q 를 ab+bc+ca 항을 옮겨 a=b=c 가 아니다로 바꿔 p1·p2·p3 의 필요·충분을 판정해 N=1, 2, 4, 합 7 을 얻어 ① 과 대조했다. 해설도 같은 판정이라 필요·충분조건 판정 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

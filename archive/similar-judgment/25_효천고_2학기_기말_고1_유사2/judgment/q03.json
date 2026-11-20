@@ -1,0 +1,71 @@
+{
+ "qid": 3,
+ "itemFingerprint": "906bd2343f434333",
+ "solveSteps": [
+  "g(1)=1+a 이므로 (f∘g)(1)=f(1+a)=2(1+a)-1=2a+1.",
+  "f(4)=2·4-1=7 이므로 (g∘f)(4)=g(7)=7+a.",
+  "두 값이 같으므로 2a+1=7+a, a=6."
+ ],
+ "solvedAnswer": "⑤",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+ "unitEvidence": "$(f\\circ g)(1)$을 $a$로 나타낸다",
+ "rpmRecordId": "H1-RPM-253",
+ "rpmReason": "(f∘g)(1)=2a+1 과 (g∘f)(4)=7+a 를 합성 순서대로 계산하는 단계라 합성함수 계산 행이다.",
+ "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+ "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+ "typeReason": "g(1)=1+a 를 f 에 넣어 2a+1, f(4)=7 을 g 에 넣어 7+a 로 두 합성함숫값을 직접 계산하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 1,
+ "difficultyConfidence": "high",
+ "difficultyReason": "합성함숫값 2a+1 과 7+a 를 차례로 계산해 일차방정식 2a+1=7+a 만 풀면 되는 1단계 문항이다.",
+ "difficultyBoundaryFlag": "NONE",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "함수",
+    "src": "stem",
+    "quote": "두 함수 $f(x)=2x-1$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "상수",
+    "src": "stem",
+    "quote": "상수 $a$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "합성함수",
+    "src": "solution",
+    "quote": "$(g\\circ f)(4)=g(7)=7+a$",
+    "evidenceType": "IMPLIED",
+    "justification": "f 를 먼저 적용한 뒤 g 를 적용하는 합성 순서로 (g∘f)(4) 를 계산한다"
+   },
+   {
+    "term": "대입",
+    "src": "solution",
+    "quote": "$(f\\circ g)(1)=f(1+a)=2(1+a)-1$",
+    "evidenceType": "IMPLIED",
+    "justification": "g(1)=1+a 를 f 의 x 에 대입해 합성값을 구한다"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "합성 순서에 맞춰 두 값을 a 로 나타내 a=6 을 얻고 보기 ⑤ 와 대조했다. 해설과 같은 직접 계산 단계라 합성함숫값 직접 계산을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

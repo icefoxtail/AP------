@@ -1,0 +1,91 @@
+{
+ "qid": 6,
+ "itemFingerprint": "db5a39eb1113df5a",
+ "solveSteps": [
+  "발문 br 줄 아래 P-Q=∅ 이면 P⊂Q 이고, Q^C∪R=U 의 양변에 여집합을 취하면 Q∩R^C=∅ 이므로 Q⊂R.",
+  "P⊂Q 와 Q⊂R 에서 P⊂R 이므로 명제 p→r 이 항상 참이다.",
+  "그 대우 ~r→~p 도 참이므로 ① 이다."
+ ],
+ "solvedAnswer": "①",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-06",
+ "subUnitKey": "H22-C2-06-CORE",
+ "unitEvidence": "항상 참인 명제는",
+ "rpmRecordId": "H1-RPM-243",
+ "rpmReason": "발문 br 줄 아래 P-Q=∅, Q^C∪R=U 에서 진리집합 P⊂Q, Q⊂R 를 읽는 단계라 진리집합 행이다.",
+ "problemTypeKey": "PT_TRUTH_SET_RELATION",
+ "templateKey": "TPL_TRUTHSET_CHAINED_INCLUSION",
+ "typeReason": "발문 br 줄 아래 P⊂Q 와 Q⊂R 을 이어 P⊂R 을 얻고 p→r 과 그 대우 ~r→~p 가 참임을 쓰는 진리집합의 연쇄 포함 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "발문 br 줄 아래 P-Q=∅ 에서 P⊂Q, Q^C∪R=U 에 드모르간 법칙을 써 Q⊂R, 연쇄 P⊂R 과 대우 ~r→~p 까지 세 동작이라 3단계이다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "진리집합",
+    "src": "stem",
+    "quote": "진리집합을 각각 $P$, $Q$, $R$이라 하자"
+   },
+   {
+    "term": "차집합",
+    "src": "stem",
+    "quote": "$P-Q=\\varnothing$"
+   },
+   {
+    "term": "여집합",
+    "src": "stem",
+    "quote": "$Q^C\\cup R=U$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "명제",
+    "src": "stem",
+    "quote": "항상 참인 명제는"
+   }
+  ],
+  "method": [
+   {
+    "term": "드모르간법칙",
+    "src": "solution",
+    "quote": "드모르간 법칙에 의하여",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "포함관계",
+    "src": "solution",
+    "quote": "두 포함 관계 $P\\subseteq Q$와 $Q\\subseteq R$에서",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "대우",
+    "src": "solution",
+    "quote": "그 대우인",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "항상성립",
+    "src": "stem",
+    "quote": "항상 참인"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "발문 br 줄 아래 두 집합식을 P⊂Q, Q⊂R 로 바꿔 p→r 과 대우 ~r→~p 가 항상 참임을 얻어 ① 과 대조했다. 해설도 연쇄 포함이라 진리집합의 연쇄 포함 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

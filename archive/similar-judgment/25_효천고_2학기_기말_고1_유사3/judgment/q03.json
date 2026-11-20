@@ -1,0 +1,80 @@
+{
+ "qid": 3,
+ "itemFingerprint": "ad0be592a1523d65",
+ "solveSteps": [
+  "구간별 정의(cases) 의 g(2)=-2^2+2=-2, -2<0 이므로 f(-2)=-2+3=1, 즉 (f∘g)(2)=1.",
+  "f(-1)=-1+3=2 (-1<0), g(2)=-2 이므로 (g∘f)(-1)=-2.",
+  "두 값의 합 1+(-2)=-1."
+ ],
+ "solvedAnswer": "②",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+ "unitEvidence": "합성함수는 안쪽 함수의 값부터 차례로 구한다",
+ "rpmRecordId": "H1-RPM-253",
+ "rpmReason": "구간별 정의(cases) 의 f 에 g(2)=-2 와 f(-1)=2 를 구간에 맞춰 넣어 (f∘g)(2)=1, (g∘f)(-1)=-2 를 계산하는 합성함수 계산 행이다.",
+ "problemTypeKey": "PT_COMPOSITION_EVALUATION",
+ "templateKey": "TPL_COMPOSITION_VALUE_DIRECT",
+ "typeReason": "구간별 정의(cases) 에서 g(2)=-2<0 이라 위쪽 식 x+3 으로 f(-2)=1, f(-1)=2 를 g 에 넣어 -2 로 두 합성함숫값을 직접 계산하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "구간별 정의(cases) 의 f 에서 g(2)=-2<0 과 f(-1)=2 로 식을 골라 (f∘g)(2)=1, (g∘f)(-1)=-2 를 더하는 2단계이다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "조각함수",
+    "src": "stem",
+    "quote": "\\begin{cases}x+3&(x\\lt 0)"
+   },
+   {
+    "term": "함수",
+    "src": "stem",
+    "quote": "$g(x)=-x^2+2$에 대하여"
+   }
+  ],
+  "goal": [
+   {
+    "term": "값",
+    "src": "stem",
+    "quote": "$(f\\circ g)(2)+(g\\circ f)(-1)$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "합성함수",
+    "src": "solution",
+    "quote": "합성함수는 안쪽 함수의 값부터 차례로 구한다",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "대입",
+    "src": "solution",
+    "quote": "$-2\\lt 0$이므로 $f(-2)$는 위쪽 식에 대입하여 구한다",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "구간",
+    "src": "stem",
+    "quote": "(x\\lt 0)"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "구간별 정의(cases) 에서 g(2)=-2, f(-1)=2 로 식을 골라 1+(-2)=-1 을 얻어 ② 와 대조했다. 해설도 안쪽부터 계산하므로 합성함숫값 직접 계산 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

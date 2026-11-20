@@ -1,0 +1,75 @@
+{
+ "qid": 16,
+ "itemFingerprint": "bdf22b49c95571ef",
+ "solveSteps": [
+  "f 가 상수함수이면 |x^2-2x-3|=k 가 서로 다른 세 실근을 가져야 하고 k=0 이면 실근이 -1, 3 두 개뿐이다.",
+  "k>0 이면 (x-1)^2=4+k 는 항상 두 실근, (x-1)^2=4-k 가 중근이어야 하므로 k=4.",
+  "세 실근 1, 1+2√2, 1-2√2 이므로 a^2+b^2+c^2=1+(9+4√2)+(9-4√2)=19."
+ ],
+ "solvedAnswer": "①",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+ "unitEvidence": "함수 $f$가 상수함수이려면 어떤 상수 $k$에 대하여",
+ "rpmRecordId": "H1-RPM-258",
+ "rpmReason": "세 원소의 함숫값이 모두 같은 상수 k 인 상수함수 f(x)=|x^2-2x-3| 조건에서 a^2+b^2+c^2=19 로 이어지는 단계라 항등함수·상수함수 행이다.",
+ "problemTypeKey": "PT_SPECIAL_FUNCTION_PROPERTIES",
+ "templateKey": "TPL_CONSTANT_FUNCTION_PREIMAGE",
+ "typeReason": "상수함수가 되려면 |x^2-2x-3|=k 가 서로 다른 세 실근을 가져야 해 (x-1)^2=4-k 의 중근 k=4 로 a^2+b^2+c^2=19 를 얻는 상수함수 원상 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "치역 {k} 를 세 실근 조건으로 바꾸고 (x-1)^2=4+k, (x-1)^2=4-k 에서 중근 k=4 를 찾아 세 근 1, 1±2√2 의 제곱합 19 를 계산하는 3단계이다.",
+ "difficultyBoundaryFlag": "NONE",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "상수함수",
+    "src": "stem",
+    "quote": "$f(x)=|x^2-2x-3|$이 상수함수일 때"
+   }
+  ],
+  "goal": [
+   {
+    "term": "제곱합",
+    "src": "stem",
+    "quote": "$a^2+b^2+c^2$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "완전제곱식",
+    "src": "solution",
+    "quote": "각 식을 완전제곱식으로 변형하면",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "중근",
+    "src": "solution",
+    "quote": "둘째 방정식이 중근을 가져야 하므로",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "공통근",
+    "src": "solution",
+    "quote": "두 방정식은 공통근을 갖지 않으며"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "해설의 읽기대로 세 실근이 되는 k=4 에서 a^2+b^2+c^2=19 를 얻어 ① 과 일치한다. 다만 0<k<4 이면 네 실근 중 세 개를 고르는 경우마다 값이 달라져 발문만으로는 유일하지 않으니 보고한다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

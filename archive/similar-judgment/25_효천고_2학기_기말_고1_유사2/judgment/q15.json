@@ -1,0 +1,76 @@
+{
+ "qid": 15,
+ "itemFingerprint": "9717a1df7d5c90be",
+ "solveSteps": [
+  "두 기울기 a-5, -a-2 가 모두 양수이면 a>5 이고 a<-2 라 불가능하므로 모두 음수: -2<a<5.",
+  "x<2 의 치역 (2a-10+b, ∞), x≥2 의 치역 (-∞, -2a-4] 이 이어져야 해 2a-10+b=-2a-4, b=-4a+6.",
+  "정수 a=-1,0,…,4 에서 a+b=-3a+6 은 a=-1 일 때 최대 9."
+ ],
+ "solvedAnswer": "⑤",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+ "unitEvidence": "모두 감소해야 일대일대응이 될 수 있다",
+ "rpmRecordId": "H1-RPM-257",
+ "rpmReason": "두 구간의 기울기 a-5, -a-2 가 모두 음수이고 경계값 2a-10+b 와 -2a-4 가 같아야 일대일대응이 되는 조건을 쓰는 단계라 일대일함수 행이다.",
+ "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+ "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+ "typeReason": "조각함수의 두 구간 치역이 2a-10+b=-2a-4 에서 이어져야 일대일대응이라는 조건으로 b=-4a+6 을 얻는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "기울기 부호 판단으로 -2<a<5, 경계값 2a-10+b=-2a-4 일치로 b=-4a+6, 정수 a 에서 a+b=-3a+6 의 최댓값 9 를 얻는 3단계이다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "공역",
+    "src": "stem",
+    "quote": "정의역과 공역이 각각 실수 전체의 집합인"
+   }
+  ],
+  "goal": [
+   {
+    "term": "최댓값",
+    "src": "stem",
+    "quote": "$a+b$의 최댓값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "기울기",
+    "src": "solution",
+    "quote": "따라서 두 기울기는 모두 음수이어야 한다",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "경계조건",
+    "src": "solution",
+    "quote": "두 경계값이 같아야 한다",
+    "evidenceType": "IMPLIED",
+    "justification": "두 구간 치역의 끝값을 같게 놓아 b 를 a 로 나타낸다"
+   }
+  ],
+  "condition": [
+   {
+    "term": "정수",
+    "src": "stem",
+    "quote": "일대일대응이 되도록 하는 두 정수 $a$, $b$에 대하여"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "기울기가 모두 음수이고 경계값 2a-10+b 가 같아야 함을 써 b=-4a+6, a=-1 에서 최대 9 를 얻어 ⑤ 와 대조했다. 해설과 같아 조각함수 일대일대응 조건 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

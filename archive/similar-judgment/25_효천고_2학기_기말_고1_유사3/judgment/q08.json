@@ -1,0 +1,69 @@
+{
+ "qid": 8,
+ "itemFingerprint": "baac877400edc35b",
+ "solveSteps": [
+  "y=√(4-2x)-1 에서 근호 안 4-2x≥0 이므로 정의역은 x≤2 이고 치역은 y≥-1 이라 ①② 는 옳지 않다.",
+  "x≤0 이면 4-2x≥4 라 y≥√4-1=1>0 이므로 제3사분면을 지나지 않아 ③ 이 옳다.",
+  "y=√(-2(x-2))-1 은 y=√(-2x) 를 x 축 방향 2 이동한 것이고 y=0 이면 x=3/2 라 ④⑤ 는 옳지 않다."
+ ],
+ "solvedAnswer": "③",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "SELF_CONTAINED",
+ "figureEvidence": "그래프에 대한 설명으로 옳은 것은",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-09",
+ "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+ "unitEvidence": "근호 안이 $0$ 이상이어야 하므로",
+ "rpmRecordId": "H1-RPM-268",
+ "rpmReason": "y=√(4-2x)-1 의 근호 안 4-2x≥0 에서 정의역 x≤2 를 구하는 단계가 첫 판정이라 정의역 조건 행이다.",
+ "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+ "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+ "typeReason": "y=√(4-2x)-1 의 정의역 x≤2, 치역 y≥-1, 제3사분면, 이동 관계, x 절편 (3/2,0) 을 보기마다 판정하는 그래프 성질 판정 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 2,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "y=√(4-2x)-1 의 정의역·치역·사분면, y=√(-2x) 에서의 평행이동 y=√(-2(x-2))-1 변형, x 절편까지 다섯 보기를 모두 판정해야 해 2단계로 본다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "무리함수",
+    "src": "stem",
+    "quote": "무리함수 $y=\\sqrt{4-2x}-1$의 그래프"
+   }
+  ],
+  "goal": [
+   {
+    "term": "그래프",
+    "src": "stem",
+    "quote": "그래프에 대한 설명으로 옳은 것은"
+   }
+  ],
+  "method": [
+   {
+    "term": "평행이동",
+    "src": "solution",
+    "quote": "평행이동한 것이다",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "범위",
+    "src": "solution",
+    "quote": "근호 안이 $0$ 이상이어야 하므로"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "정의역 x≤2, 치역 y≥-1, x≤0 일 때 y≥1 로 ③ 이 옳고 ④⑤ 는 틀림을 확인했다. 그림 없이 글만으로 풀려 SELF_CONTAINED, 그래프 성질 판정을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

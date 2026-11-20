@@ -1,0 +1,70 @@
+{
+ "qid": 17,
+ "itemFingerprint": "95e4f409bf8cfca5",
+ "solveSteps": [
+  "구간별 정의(cases) 에서 f(t)=8/3 의 해는 4t/3=8/3 에서 t=2, -4t/3+8=8/3 에서 t=4 이므로 f(f(a))=2 또는 4.",
+  "f(u)=2 의 해 u=3/2, 9/2, f(u)=4 의 해 u=3 이므로 f(a)∈{3/2, 3, 9/2}.",
+  "치역이 [0,4] 라 f(a)=9/2 는 해가 없고 f(a)=3/2, 3 은 각각 해 2개이므로 2+2=4."
+ ],
+ "solvedAnswer": "④",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "SELF_CONTAINED",
+ "figureEvidence": "그래프는 아래 그림과 같다",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+ "unitEvidence": "$f(f(a))=2$ 또는 $f(f(a))=4$이어야 한다",
+ "rpmRecordId": "H1-RPM-253",
+ "rpmReason": "구간별 정의(cases) 의 f∘f∘f(a)=8/3 을 f(f(a))=2 또는 4 로 거꾸로 풀어 가는 합성함수 계산 단계라 합성함수 계산 행이다.",
+ "problemTypeKey": "PT_ITERATED_COMPOSITION",
+ "templateKey": "TPL_ITERATION_EQUATION_GRAPH",
+ "typeReason": "구간별 정의(cases) 의 세 번 합성한 f∘f∘f(a)=8/3 을 f(t)=8/3 의 해 t=2, 4 부터 거꾸로 풀고 치역 [0,4] 로 개수 2+2+0 을 세는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 4,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "구간별 정의(cases) 의 세 번 합성한 방정식을 t=2, 4, 다시 u=3/2, 3, 9/2, 다시 a 로 세 단계 거꾸로 풀며 치역 [0,4] 로 해의 개수를 가려 4단계이다.",
+ "difficultyBoundaryFlag": "B34",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "그래프",
+    "src": "stem",
+    "quote": "그래프는 아래 그림과 같다"
+   }
+  ],
+  "goal": [
+   {
+    "term": "개수",
+    "src": "stem",
+    "quote": "실수 $a$의 개수는?"
+   }
+  ],
+  "method": [
+   {
+    "term": "합성함수",
+    "src": "solution",
+    "quote": "$f(f(a))=2$ 또는 $f(f(a))=4$이어야 한다",
+    "evidenceType": "IMPLIED",
+    "justification": "f∘f∘f(a)=8/3 을 바깥 f 부터 거꾸로 풀어 f(f(a)) 의 값을 구한다"
+   },
+   {
+    "term": "치역",
+    "src": "solution",
+    "quote": "함수 $f(x)$의 치역은 $[0,4]$이고",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "구간별 정의(cases) 의 세 번 합성한 식을 거꾸로 풀고 치역 [0,4] 로 f(a)=9/2 를 제외해 4개를 얻어 ④ 와 대조했다. 함수식이 글에 있어 그림은 SELF_CONTAINED, 반복합성 방정식 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

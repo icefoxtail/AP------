@@ -1,0 +1,70 @@
+{
+ "qid": 1,
+ "itemFingerprint": "d676f18fabc73e34",
+ "solveSteps": [
+  "①·④(15 는 3 의 배수)·⑤ 는 참인 명제이고 ② 2+5=8 은 거짓이지만 참·거짓이 정해지는 명제이다.",
+  "③ 2x-1<5 는 x=1 이면 1<5 로 참, x=4 이면 7<5 로 거짓이라 참·거짓이 정해지지 않는 조건이다.",
+  "따라서 명제가 아닌 것은 ③이다."
+ ],
+ "solvedAnswer": "③",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-06",
+ "subUnitKey": "H22-C2-06-CORE",
+ "unitEvidence": "조건이지 명제가 아니다",
+ "rpmRecordId": "H1-RPM-244",
+ "rpmReason": "④ 15 는 3 의 배수이다 같은 참 명제와 달리 ③ 2x-1<5 가 명제인지 조건인지 참·거짓 정함 여부로 가르는 단계라 명제의 참·거짓 행이다.",
+ "problemTypeKey": "PT_PROPOSITION_JUDGMENT",
+ "templateKey": "TPL_PROPOSITION_CONDITION_IDENTIFICATION",
+ "typeReason": "④ 15 는 3 의 배수이다 는 명제이고 ③ 2x-1<5 는 x 값에 따라 참·거짓이 달라지는 조건이므로 명제와 조건을 구별하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 1,
+ "difficultyConfidence": "high",
+ "difficultyReason": "명제의 뜻만 알면 ④ 15 는 3 의 배수이다 와 달리 ③ 2x-1<5 가 조건임을 바로 알아보는 한 단계 문항이라 1단계이다.",
+ "difficultyBoundaryFlag": "NONE",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "정삼각형",
+    "src": "choices",
+    "quote": "정삼각형의 세 내각의 크기는 모두 같다"
+   }
+  ],
+  "goal": [
+   {
+    "term": "명제",
+    "src": "stem",
+    "quote": "명제가 아닌 것은"
+   }
+  ],
+  "method": [
+   {
+    "term": "판정",
+    "src": "solution",
+    "quote": "참인지 거짓인지를 분명하게 판별할 수 있는",
+    "evidenceType": "IMPLIED",
+    "justification": "보기마다 참·거짓이 분명히 판별되는지로 명제 여부를 판정한다"
+   }
+  ],
+  "condition": [
+   {
+    "term": "양화",
+    "src": "choices",
+    "quote": "모든 실수 $x$에 대하여"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "보기 ①~⑤ 의 참·거짓 여부(④ 15 는 3 의 배수 포함)를 직접 따져 ③ 2x-1<5 만 조건임을 확인했고 해설의 구분 기준과 같아 명제·조건 구별 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

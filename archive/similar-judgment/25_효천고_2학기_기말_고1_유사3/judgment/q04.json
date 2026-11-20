@@ -1,0 +1,69 @@
+{
+ "qid": 4,
+ "itemFingerprint": "30ac256c856aa50d",
+ "solveSteps": [
+  "역함수의 그래프가 점 (5,4) 를 지나므로 f^{-1}(5)=4, 즉 f(4)=5 이고 f(x)=ax-3 에서 4a-3=5, a=2.",
+  "f(x)=2x-3 이고 f^{-1}(7)=k 라 하면 f(k)=7 이므로 2k-3=7.",
+  "k=5 이므로 f^{-1}(7)=5."
+ ],
+ "solvedAnswer": "③",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "SELF_CONTAINED",
+ "figureEvidence": "그래프가 점 $(5,4)$를 지날 때",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-07",
+ "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+ "unitEvidence": "역함수의 성질에 의하여 $f(4)=5$이므로",
+ "rpmRecordId": "H1-RPM-255",
+ "rpmReason": "f(x)=ax-3 에서 f^{-1}(5)=4 를 f(4)=5, f^{-1}(7)=k 를 f(k)=7 로 되돌리는 역함수 성질 단계라 역함수 행이다.",
+ "problemTypeKey": "PT_INVERSE_VALUE",
+ "templateKey": "TPL_INVERSE_VALUE_DIRECT",
+ "typeReason": "f(x)=ax-3 에서 점 (5,4) 로 f(4)=5, f^{-1}(7)=k 로 f(k)=7 을 세워 k=5 를 얻는 역함숫값 직접 구하기 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 1,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "f(x)=ax-3 에서 f(4)=5 로 a=2, f(k)=7 로 2k-3=7 을 푸는 역함수 성질 두 번의 일차방정식이라 1단계로 본다.",
+ "difficultyBoundaryFlag": "B12",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "역함수",
+    "src": "stem",
+    "quote": "역함수 $y=f^{-1}(x)$의 그래프가 점 $(5,4)$를 지날 때"
+   }
+  ],
+  "goal": [
+   {
+    "term": "함숫값",
+    "src": "stem",
+    "quote": "$f^{-1}(7)$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "성질",
+    "src": "solution",
+    "quote": "역함수의 성질에 의하여",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "대입",
+    "src": "solution",
+    "quote": "$f(x)=ax-3$에 대입하면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": []
+ },
+ "slotReasons": {},
+ "how": "점 (5,4) 로 f^{-1}(5)=4 를 읽고 f(x)=ax-3 에서 a=2, f^{-1}(7)=5 를 얻어 ③ 과 대조했다. 그림 없이 글만으로 풀려 SELF_CONTAINED, 역함숫값 직접 구하기를 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

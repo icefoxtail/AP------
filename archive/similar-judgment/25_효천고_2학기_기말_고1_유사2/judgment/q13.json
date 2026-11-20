@@ -1,0 +1,75 @@
+{
+ "qid": 13,
+ "itemFingerprint": "69e03112daeddf56",
+ "solveSteps": [
+  "그림에서 점근선이 x=-1, y=3 이고 곡선이 제1·3사분면 쪽이라 b=1, c=3, a>0.",
+  "y=√(a(x+1))-3 은 (-1,-3) 에서 시작해 증가하므로 제2사분면을 지나지 않으려면 x=0 에서 √a-3≤0.",
+  "0<a≤9 이므로 a+b+c=a+4 의 최댓값은 a=9 일 때 13."
+ ],
+ "solvedAnswer": "③",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NEEDS_FIGURE",
+ "figureEvidence": "그래프가 다음 그림과 같다",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-09",
+ "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+ "unitEvidence": "제$2$사분면을 지나지 않으려면",
+ "rpmRecordId": "H1-RPM-269",
+ "rpmReason": "y=√(a(x+1))-3 이 제2사분면을 지나지 않도록 x=0 에서 √a-3≤0 을 써 최댓값 13 을 구하는 단계라 그래프 위치 행이다.",
+ "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+ "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+ "typeReason": "그림의 점근선으로 b=1, c=3 을 얻고 제2사분면을 피하도록 0<a≤9 를 구해 a+b+c 의 최댓값 13 을 얻는 매개변수에 따른 사분면 조건 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "그림에서 b=1, c=3, a>0 을 읽고 무리함수가 x=0 에서 0 이하여야 함을 써 0<a≤9, 최댓값 13 을 얻는 3단계이다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "유리함수",
+    "src": "stem",
+    "quote": "유리함수 $y=\\dfrac{a}{x+b}+c$의 그래프가 다음 그림과 같다"
+   }
+  ],
+  "goal": [
+   {
+    "term": "최댓값",
+    "src": "stem",
+    "quote": "$a+b+c$의 최댓값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "점근선",
+    "src": "solution",
+    "quote": "유리함수의 두 점근선은 $x=-1$, $y=3$이고",
+    "evidenceType": "NAMED"
+   },
+   {
+    "term": "대입",
+    "src": "solution",
+    "quote": "무리함수의 식에 대입하면",
+    "evidenceType": "NAMED"
+   }
+  ],
+  "condition": [
+   {
+    "term": "통과",
+    "src": "stem",
+    "quote": "제$2$사분면을 지나지 않도록 하는"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "그림의 점근선에서 b=1, c=3, a>0 을 읽고 사분면 조건으로 a≤9, 최댓값 13 을 얻어 ③ 과 대조했다. 그림 값을 읽어야 해 NEEDS_FIGURE, 사분면 조건 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}

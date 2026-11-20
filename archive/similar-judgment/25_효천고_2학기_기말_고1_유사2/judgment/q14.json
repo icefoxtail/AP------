@@ -1,0 +1,77 @@
+{
+ "qid": 14,
+ "itemFingerprint": "f46552b30281f6bc",
+ "solveSteps": [
+  "정의 상자(div) 의 N(p) 를 쓰기 위해 q: (a-2)(b-2)(c-2)>0 이면 2보다 큰 수가 3개 또는 1개이다.",
+  "p1: q→p1 은 참이지만 a=3, b=3, c=1 이면 p1 참·q 거짓이라 필요조건만 N=2. p2: p2→q 참이고 a=3, b=1, c=1 이면 q 참·p2 거짓이라 충분조건만 N=1.",
+  "p3: a=b=c=3 이면 q 참·p3 거짓, a=b=c=1 이면 p3 참·q 거짓이라 N=4. 따라서 2+1+4=7."
+ ],
+ "solvedAnswer": "③",
+ "answerMatches": true,
+ "answerIssue": "",
+ "figureNeed": "NONE",
+ "figureEvidence": "",
+ "solutionFigureNeed": "NONE",
+ "solutionFigureEvidence": "",
+ "standardUnitKey": "H22-C2-06",
+ "subUnitKey": "H22-C2-06-CORE",
+ "unitEvidence": "충분조건이지만 필요조건이 아니면 $N(p)=1$",
+ "rpmRecordId": "H1-RPM-247",
+ "rpmReason": "정의 상자(div) 의 N(p) 를 정하려고 p1, p2, p3 와 q:(a-2)(b-2)(c-2)>0 사이의 p→q, q→p 참·거짓을 가리는 단계라 조건 관계 행이다.",
+ "problemTypeKey": "PT_NEC_SUFF_RELATION",
+ "templateKey": "TPL_NEC_SUFF_DIRECT_JUDGMENT",
+ "typeReason": "정의 상자(div) 의 N(p) 에 맞춰 세 조건 p1, p2, p3 에 반례 (3,3,1), (3,1,1), (3,3,3), (1,1,1) 을 들어 N=2, 1, 4 로 필요·충분을 판정하는 템플릿이다.",
+ "newKeyProposal": null,
+ "difficultyBucket": 3,
+ "difficultyConfidence": "medium",
+ "difficultyReason": "정의 상자(div) 의 N(p) 를 위해 곱이 양수인 경우 2보다 큰 수 1개 또는 3개를 분석한 뒤 세 조건 각각에 반례를 찾아 N=2, 1, 4 를 합하는 3단계이다.",
+ "difficultyBoundaryFlag": "B23",
+ "format": "",
+ "slots": {
+  "given": [
+   {
+    "term": "조건",
+    "src": "stem",
+    "quote": "$q:(a-2)(b-2)(c-2)\\gt 0$"
+   }
+  ],
+  "goal": [
+   {
+    "term": "값",
+    "src": "stem",
+    "quote": "$N(p_1)+N(p_2)+N(p_3)$의 값은?"
+   }
+  ],
+  "method": [
+   {
+    "term": "반례",
+    "src": "solution",
+    "quote": "그러나 $a=3$, $b=1$, $c=1$이면 $q$는 참이지만 $p_2$는 거짓이다",
+    "evidenceType": "IMPLIED",
+    "justification": "q 참·p2 거짓인 반례 (3,1,1) 로 q→p2 가 거짓임을 보인다"
+   },
+   {
+    "term": "경우분류",
+    "src": "solution",
+    "quote": "양수인 인수가 $1$개 또는 $3$개여야 한다",
+    "evidenceType": "IMPLIED",
+    "justification": "곱이 양수인 경우를 양수 인수 1개와 3개로 나눈다"
+   }
+  ],
+  "condition": [
+   {
+    "term": "적어도",
+    "src": "stem",
+    "quote": "$p_1:a,b,c$ 중 적어도 하나는 $2$보다 크다"
+   }
+  ]
+ },
+ "slotReasons": {},
+ "how": "정의 상자(div) 의 N(p) 에 맞춰 곱이 양수인 경우를 나눠 p1·p2·p3 별 반례를 찾아 N=2, 1, 4 와 합 7 을 얻어 ③ 과 대조했다. 해설도 같은 판정이라 필요·충분조건 판정 템플릿을 골랐다.",
+ "review": {
+  "reviewerSolvedAnswer": "",
+  "verdict": "",
+  "fixes": [],
+  "note": ""
+ }
+}
