@@ -1,0 +1,39 @@
+{
+  "capability": "solid-figure-v1",
+  "solids": [
+    {
+      "kind": "PRISM",
+      "base": {
+        "kind": "RECT",
+        "width": 2,
+        "depth": 2
+      },
+      "height": 2,
+      "names": {
+        "base": "EFGH",
+        "top": "ABCD"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "from": "A",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "E",
+      "to": "G",
+      "style": "DASHED",
+      "role": "ACCENT"
+    },
+    {
+      "from": "A",
+      "to": "E",
+      "style": "SOLID",
+      "role": "ACCENT"
+    }
+  ],
+  "caption": "직각삼각형 AEG에서 모서리 AE=2, 밑면 대각선 EG, 공간대각선 AG"
+}

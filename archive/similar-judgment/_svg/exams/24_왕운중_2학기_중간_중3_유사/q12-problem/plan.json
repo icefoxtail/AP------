@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-10",
+      "8",
+      "-1"
+    ],
+    "domain": [
+      1,
+      7
+    ],
+    "viewport": [
+      0,
+      8,
+      -6,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": 4,
+        "y": 6
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "이차함수 y=-x^2+8x-10을 y=-(x-4)^2+16-10=-(x-4)^2+6으로 변형한 꼭짓점 (4, 6)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-x^2+8x-10",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "표준형 변형과 꼭짓점 (4, 6)"
+  ]
+}

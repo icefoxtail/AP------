@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "4",
+      "2",
+      "-1/2"
+    ],
+    "domain": [
+      -2,
+      6
+    ],
+    "viewport": [
+      -3,
+      7,
+      -2,
+      8
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "A",
+        "x": 2,
+        "y": 6
+      },
+      {
+        "id": "B",
+        "x": 0,
+        "y": 4
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 A(2, 6), y절편 B(0, 4)와 밑변 OB=4, 높이 2인 삼각형 AOB의 넓이 4",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "A(2, 6), B(0, 4), OB=4",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "삼각형 AOB의 밑변과 높이"
+  ]
+}

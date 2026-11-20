@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-4",
+      "-2"
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -4,
+      2,
+      -6,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -1,
+        "y": 4
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "P(-1, 4)와 (0, 2)로 결정된 y=-2x^2-4x+2와 a=-2, b=-4, c=2",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a=-2, b=-4, c=2",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "완성된 이차함수 포물선"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "-2",
+      "2",
+      "1"
+    ],
+    "domain": [
+      -3,
+      3
+    ],
+    "viewport": [
+      -4,
+      4,
+      -4,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "V",
+        "x": -1,
+        "y": -3
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "제1, 2, 4사분면을 지나고 제3사분면을 지나지 않는 y=a(x+p)^2+q 꼭짓점 (-p, q)",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a>0, p<0, q<0",
+      "mappedTo": "graphPlan.coefficients"
+    }
+  ],
+  "newVisualInformation": [
+    "제3사분면을 지나지 않는 포물선"
+  ]
+}

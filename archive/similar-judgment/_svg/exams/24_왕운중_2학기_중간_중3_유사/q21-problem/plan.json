@@ -1,0 +1,51 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": [
+      "2",
+      "-4",
+      "-2"
+    ],
+    "domain": [
+      -3,
+      1
+    ],
+    "viewport": [
+      -4,
+      2,
+      -6,
+      6
+    ],
+    "sourceDomain": {
+      "kind": "ALL_REALS"
+    },
+    "requiredPoints": [
+      {
+        "id": "P",
+        "x": -1,
+        "y": 4
+      },
+      {
+        "id": "Y",
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "꼭짓점 P(-1, 4)와 점 (0, 2)를 지나는 포물선 y=ax^2+bx+c",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "꼭짓점 P(-1, 4), 점 (0, 2)",
+      "mappedTo": "graphPlan.requiredPoints"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 P와 y절편 위치"
+  ]
+}

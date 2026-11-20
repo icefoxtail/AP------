@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-4/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-4/3x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=ax^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 이차함수 y=-4/3x^2과 y=ax^2의 폭 비교",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=-4/3x^2, y=ax^2",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "y=ax^2의 폭이 y=-4/3x^2보다 넓음"
+  ]
+}

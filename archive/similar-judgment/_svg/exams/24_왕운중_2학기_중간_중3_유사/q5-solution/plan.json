@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-4/3"
+        ],
+        "domain": [
+          "-3",
+          "3"
+        ],
+        "label": "y=-4/3x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "-1/2"
+        ],
+        "domain": [
+          "-4",
+          "4"
+        ],
+        "label": "y=ax^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "위로 볼록하여 a<0이고 폭이 넓어 -4/3 < a < 0인 범위",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "a<0, |a|<4/3",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "실수 a의 범위 -4/3 < a < 0"
+  ]
+}

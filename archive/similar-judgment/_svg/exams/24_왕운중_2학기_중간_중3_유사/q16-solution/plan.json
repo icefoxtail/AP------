@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "2"
+        ],
+        "domain": [
+          "-10",
+          "10"
+        ],
+        "label": "y=2x^2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "domain": [
+          "-20",
+          "20"
+        ],
+        "label": "y=1/2x^2"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 포물선 위의 점 A, B에서 y좌표 같고 AB=9일 때 모든 t의 곱 729",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "y=2x^2, y=1/2x^2, AB=9",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선의 점 A, B 위치 관계"
+  ]
+}

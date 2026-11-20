@@ -1,0 +1,60 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-46",
+          "24",
+          "-3"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "y=-3(x-4)^2+2"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "58",
+          "-24",
+          "3"
+        ],
+        "domain": [
+          "2",
+          "6"
+        ],
+        "label": "y=3(x-4)^2+10"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    },
+    "overlays": {
+      "lines": [
+        {
+          "id": "sym",
+          "slope": "0",
+          "intercept": "6"
+        }
+      ]
+    }
+  },
+  "caption": "직선 y=6에 대해 대칭인 두 포물선과 p=4, q=10, p+q=14",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "대칭축 y=6",
+      "mappedTo": "graphPlan.overlays"
+    }
+  ],
+  "newVisualInformation": [
+    "직선 y=6 대칭 이동 결과"
+  ]
+}

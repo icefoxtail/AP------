@@ -1,0 +1,51 @@
+{
+  "capability": "multi-curve-figure-v1",
+  "graphPlan": {
+    "family": "multi-curve",
+    "curves": [
+      {
+        "id": "c1",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "-1",
+          "4",
+          "1"
+        ],
+        "domain": [
+          "-5",
+          "1"
+        ],
+        "label": "y=(x+2)^2-5"
+      },
+      {
+        "id": "c2",
+        "kind": "Y_OF_X",
+        "coefficients": [
+          "11",
+          "-8",
+          "1"
+        ],
+        "domain": [
+          "1",
+          "7"
+        ],
+        "label": "y=x^2+ax+11"
+      }
+    ],
+    "axisTickValues": {
+      "x": [],
+      "y": []
+    }
+  },
+  "caption": "두 꼭짓점 P(-2, -5), Q(4, -5)와 직사각형 넓이 30, y절편 11",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "P(-2, -5), Q 꼭짓점 y좌표 -5",
+      "mappedTo": "graphPlan.curves"
+    }
+  ],
+  "newVisualInformation": [
+    "두 포물선의 꼭짓점과 직사각형"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "realization": {
+      "recipeId": "PLANE_FIGURE_v1",
+      "unit": "source-length",
+      "reflectionEquivalent": false
+    },
+    "nodes": [
+      {
+        "id": "T1",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T2",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "T3",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ]
+  },
+  "axisTickValues": {
+    "x": [],
+    "y": []
+  },
+  "displayLines": [],
+  "displayCircles": [],
+  "displaySegments": [
+    {
+      "id": "s12",
+      "refs": [
+        "T1",
+        "T2"
+      ]
+    },
+    {
+      "id": "s23",
+      "refs": [
+        "T2",
+        "T3"
+      ]
+    }
+  ],
+  "rightAngles": [],
+  "displayPoints": [
+    "T1",
+    "T2",
+    "T3"
+  ],
+  "planeMarks": {
+    "equalLengths": [],
+    "angles": [],
+    "facts": []
+  },
+  "caption": "1단계에 2개, 2단계에 5개, 3단계에 10개의 타일을 배열하는 규칙",
+  "sourceConditions": [
+    {
+      "id": "c1",
+      "condition": "타일 배열: 1단계 2개, 2단계 5개, 3단계 10개",
+      "mappedTo": [
+        "T1",
+        "T2",
+        "T3"
+      ]
+    }
+  ],
+  "newVisualInformation": [
+    "각 단계별 타일 개수 증가"
+  ]
+}
