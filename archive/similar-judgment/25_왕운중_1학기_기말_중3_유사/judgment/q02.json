@@ -1,0 +1,56 @@
+{
+  "qid": "q02",
+  "itemFingerprint": "73a41989f5e48d48",
+  "solvedAnswer": "④",
+  "solveSteps": [
+    "x^2 - 1 = 4x - 4 를 정리하면 x^2 - 4x + 3 = 0 이다.",
+    "(x - 1)(x - 3) = 0 이므로 해는 x = 1 또는 x = 3 이다.",
+    "주어진 x의 값 {-2, -1, 0, 1, 2} 중에서는 1 만 해당된다.",
+    "따라서 해는 x = 1 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "$x$의 값이 $-2, -1",
+  "standardUnitKey": "M3-03",
+  "subUnitKey": "M3-03-QUADRATIC_EQUATION",
+  "problemTypeKey": "PT_M3_QUADRATIC_ROOT",
+  "templateKey": "NONE",
+  "newKeyProposal": null,
+  "typeReason": "주어진 후보 수 중에서 방정식의 근 1 을 찾는 유형이다.",
+  "rpmRecordId": "M3-RPM-030",
+  "rpmReason": "주어진 값 중 x = 1 이 등식을 참이 되게 하는지 확인한다.",
+  "difficultyBucket": 1,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "방정식을 푼 뒤 후보 범위에 있는 근 1 을 선택하는 기본 문제이다.",
+  "how": "인수분해로 구한 두 근 중 주어진 집합에 포함되는 1 을 해로 판정하였다.",
+  "slots": {
+    "given": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "이차방정식 $x^2 - 1 = 4x - 4$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차방정식",
+        "src": "stem",
+        "quote": "해를 구하면? [3점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "이차방정식",
+        "src": "solution",
+        "quote": "x = 1$만 해가 된다",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

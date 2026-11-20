@@ -1,0 +1,55 @@
+{
+  "qid": "q15",
+  "itemFingerprint": "a8275fbe9fd84315",
+  "solvedAnswer": "③",
+  "solveSteps": [
+    "y = ax^2 - 2 를 x축 방향으로 3만큼 평행이동하면 y = a(x - 3)^2 - 2 이다.",
+    "이 식이 y = 4(x + b)^2 - 2 와 같으므로 a = 4 이고 x - 3 = x + b 에서 b = -3 이다.",
+    "따라서 a + b = 4 + (-3) = 1 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NONE",
+  "figureEvidence": "",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = ax^2",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_TRANSLATION",
+  "templateKey": "TPL_M3_TRANSLATION_FORMULA",
+  "newKeyProposal": null,
+  "typeReason": "포물선 y = ax^2 - 2 의 x축 평행이동 식을 비교하여 계수를 결정하는 유형이다.",
+  "rpmRecordId": "M3-RPM-047",
+  "rpmReason": "x축 평행이동 공식으로 ax 식을 변형하여 계수를 일치시킨다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "y = ax^2 - 2 에서 x 대신 x-3을 대입하여 b = -3과 a = 4를 비교한다.",
+  "how": "a(x-3)^2 - 2 와 4(x+b)^2 - 2 를 비교해 a=4, b=-3으로 a+b=1을 구하였다. ax",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = ax^2 - 2$의 그래프를"
+      }
+    ],
+    "goal": [
+      {
+        "term": "상수",
+        "src": "stem",
+        "quote": "$a + b$의 값은? (단, $a, b$는 상수) [4점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "평행이동",
+        "src": "stem",
+        "quote": "$x$축의 방향으로 $3$만큼 평행이동하였더니",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}

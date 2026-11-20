@@ -1,0 +1,56 @@
+{
+  "qid": "q17",
+  "itemFingerprint": "daf97e51ff101620",
+  "solvedAnswer": "①",
+  "solveSteps": [
+    "그림에서 꼭짓점이 (2, -5)이므로 y = a(x - 2)^2 - 5 로 둘 수 있다.",
+    "y절편이 (0, -3)이므로 대입하면 -3 = 4a - 5 에서 4a = 2, a = 1/2 이다.",
+    "전개하면 y = 1/2 (x^2 - 4x + 4) - 5 = 1/2 x^2 - 2x - 3 이다.",
+    "따라서 구하는 식은 ax^2 + bx + c 꼴에서 y = 1/2 x^2 - 2x - 3 이다."
+  ],
+  "answerMatches": true,
+  "answerIssue": "",
+  "figureNeed": "NEEDS_FIGURE",
+  "figureEvidence": "오른쪽 그림과 같을 때",
+  "solutionFigureNeed": "NONE",
+  "solutionFigureEvidence": "",
+  "unitEvidence": "이차함수 $y = ax^2",
+  "standardUnitKey": "M3-04",
+  "subUnitKey": "M3-04-QUADRATIC_FUNCTION_GRAPH",
+  "problemTypeKey": "PT_M3_QUADRATIC_FUNCTION_VERTEX_FORM",
+  "templateKey": "TPL_M3_DETERMINE_COEFFICIENTS_FROM_VERTEX_AND_Y_INTERCEPT",
+  "newKeyProposal": null,
+  "typeReason": "그래프의 꼭짓점과 y절편으로 이차함수 식 y = ax^2 + bx + c 를 완성하는 유형이다.",
+  "rpmRecordId": "M3-RPM-051",
+  "rpmReason": "꼭짓점 (2, -5)와 점 (0, -3)을 이용하여 ax 식을 완성한다.",
+  "difficultyBucket": 2,
+  "difficultyConfidence": "high",
+  "difficultyBoundaryFlag": "NONE",
+  "difficultyReason": "꼭짓점 표준형 식에 y절편을 대입하고 일반형 ax 식으로 전개한다.",
+  "how": "꼭짓점 (2, -5)와 y절편 (0, -3)으로 y = 1/2 x^2 - 2x - 3 을 구하였다. ax",
+  "slots": {
+    "given": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이차함수 $y = ax^2 + bx + c$"
+      }
+    ],
+    "goal": [
+      {
+        "term": "이차함수",
+        "src": "stem",
+        "quote": "이 이차함수의 식은? (단, $a, b, c$는 상수) [5점]"
+      }
+    ],
+    "method": [
+      {
+        "term": "꼭짓점",
+        "src": "solution",
+        "quote": "그림에서 꼭짓점이 $(2, -5)$이므로",
+        "evidenceType": "NAMED"
+      }
+    ],
+    "condition": []
+  }
+}
